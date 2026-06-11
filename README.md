@@ -23,6 +23,7 @@ The code in this repository was generated on my side with Claude Fable 5. This w
 | [linkflow-boomerang-hero](./linkflow-boomerang-hero/) | Linkflow hero concept with boomerang-style visual direction and CSS-only animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [mainframe-aria-hero](./mainframe-aria-hero/) | Mainframe A.R.I.A hero experiment with polished agency/SaaS visual styling | React, TypeScript, Vite, Tailwind CSS |
 | [mainframe-contact-hero](./mainframe-contact-hero/) | Interactive contact-page hero for Mainframe with background video, navbar, service pills, and typewriter behavior | React, TypeScript, Vite, Tailwind CSS, Vitest |
+| [mainframe-scrub-hero](./mainframe-scrub-hero/) | Mainframe contact hero whose background film is scrubbed by cursor movement, with typewriter headline and multi-select service pills | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide |
 | [mentality-landing](./mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
 | [mindloop-mono-landing](./mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
 | [noctis-cinematic-hero](./noctis-cinematic-hero/) | NOCTIS full-screen dark cinematic hero with video background, nav, and timecode details | React, TypeScript, Vite, CSS |
