@@ -1,84 +1,406 @@
-BUILD A FULL-SCREEN HERO LANDING PAGE FOR A CREATIVE AGENCY CALLED "MAINFRAME" USING REACT, TYPESCRIPT, VITE, AND TAILWIND CSS. HERE IS EVERY DETAIL:
+# Mainframe® — A.R.I.A Cinematic Hero
 
----
+## Overview
 
-FONTS
+Build a full-screen hero landing page for a creative agency called "Mainframe". The page layers a mouse-scrub-controlled background video behind a fixed navbar and a hero block that introduces an AI agent named A.R.I.A via a blurred intro label, a typewriter line, and a row of action pill buttons. Built with React, TypeScript, Vite, and Tailwind CSS.
 
-LOAD TWO FONTS IN `INDEX.HTML` VIA THESE STYLESHEET LINKS:
+## Tech Stack
 
-- HEADING: `HTTPS://DB.ONLINEWEBFONTS.COM/C/5AC3FE7C6ABD2F62067F266D89671492?FAMILY=HELVETICANOWDISPLAY-MEDIUM`
-- BODY: `HTTPS://DB.ONLINEWEBFONTS.COM/C/1AA3377E489837A26D019BBA501E779D?FAMILY=HELVETICANOWDISPLAYW01-RG`
+- **Framework:** React 18 (`react` `^18.3.1`, `react-dom` `^18.3.1`) with `React.StrictMode`.
+- **Build tool:** Vite (`vite` `^5.4.10`) with `@vitejs/plugin-react` (`^4.3.3`).
+- **Language:** TypeScript (`typescript` `^5.6.3`), `@types/react` `^18.3.12`, `@types/react-dom` `^18.3.1`.
+- **Styling:** Tailwind CSS (`tailwindcss` `^3.4.14`) with `postcss` `^8.4.49` and `autoprefixer` `^10.4.20`.
+- **Fonts:** Helvetica Now Display — `HelveticaNowDisplay-Medium` (headings) and `HelveticaNowDisplayW01-Rg` (body), loaded from local `@font-face` stylesheets.
+- **Available but unused:** `lucide-react` (`^0.460.0`) is a dependency but is not used in any component (the copy icon is an inline SVG).
+- **Notable techniques:** serialized video seeking via the `seeked` event to avoid seek-flooding, a custom `useTypewriter` hook, and CSS-driven cursor blink / pill fade-in animations.
 
-IN `INDEX.CSS`, DEFINE CSS VARIABLES:
+## Global Setup
 
-```CSS
-:ROOT {
-  --FONT-HEADING: 'HELVETICANOWDISPLAY-MEDIUM', 'HELVETICA NEUE', ARIAL, SANS-SERIF;
-  --FONT-BODY: 'HELVETICANOWDISPLAYW01-RG', 'HELVETICA NEUE', ARIAL, SANS-SERIF;
-}
-BODY {
-  FONT-FAMILY: VAR(--FONT-BODY);
+### Dependencies
+
+Only React, ReactDOM, Tailwind CSS, and Vite are used. No other UI libraries. `lucide-react` is installed but not used in this component.
+
+`package.json` scripts:
+
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "verify": "node scripts/verify.mjs"
+  }
 }
 ```
 
-THE ENTIRE PAGE USES `VAR(--FONT-BODY)` EXCEPT THE LOGO TEXT WHICH USES `VAR(--FONT-HEADING)`.
+### Config
 
----
+- **`vite.config.ts`** — `defineConfig({ plugins: [react()] })`.
+- **`postcss.config.js`** — plugins `tailwindcss: {}` and `autoprefixer: {}`.
+- **`tailwind.config.js`** — `content: ['./index.html', './src/**/*.{ts,tsx}']`, empty `theme.extend` and `plugins`.
 
-BACKGROUND VIDEO (MOUSE-SCRUB CONTROLLED)
+### Entry HTML
 
-- A FULL-SCREEN ``ELEMENT IS`POSITION: FIXED; INSET: 0; Z-INDEX: 0; OBJECT-FIT: COVER; OBJECT-POSITION: 70% CENTER;`.
-- VIDEO SOURCE URL: `HTTPS://D8J0NTLCM91Z4.CLOUDFRONT.NET/USER_38XZZBOKVIGWJOTTWIXH07LWA1P/HF_20260530_042513_DF96A13B-6155-4F6E-8B93-C9DEE66FBA08.MP4`
-- THE VIDEO IS `MUTED`, `PLAYSINLINE`, `PRELOAD="AUTO"`. IT DOES NOT AUTOPLAY.
-- THE VIDEO SCRUBS FORWARD/BACKWARD BASED ON HORIZONTAL MOUSE MOVEMENT. USE A `MOUSEMOVE` EVENT LISTENER ON `WINDOW`. TRACK `PREVX`, COMPUTE `DELTA = CURRENTX - PREVX`, CONVERT TO A TIME OFFSET: `(DELTA / WINDOW.INNERWIDTH)  SENSITIVITY  VIDEO.DURATION` WHERE `SENSITIVITY = 0.8`. CLAMP `TARGETTIME` BETWEEN 0 AND `VIDEO.DURATION`. USE `VIDEO.CURRENTTIME` TO SEEK, AND AN `ONSEEKED` HANDLER TO QUEUE THE NEXT SEEK IF `TARGETTIME` HAS MOVED, PREVENTING SEEK-FLOODING.
+`index.html` sets `<title>Mainframe® — A.R.I.A</title>`, mounts `<div id="root">`, loads `/src/main.tsx` as a module, and links the two font stylesheets:
 
----
+```html
+<link rel="stylesheet" href="/fonts/HelveticaNowDisplay-Medium.css" />
+<link rel="stylesheet" href="/fonts/HelveticaNowDisplayW01-Rg.css" />
+```
 
-**NAVBAR (FIXED, Z-INDEX: 10)**
+### Entry script
 
-- FIXED TO TOP, FULL WIDTH. PADDING: `PX-5 SM:PX-8 PY-4 SM:PY-5`. FLEX ROW, `JUSTIFY-BETWEEN`, `ITEMS-CENTER`.
-- **LOGO (LEFT):** FLEX ROW WITH `GAP-3`. TEXT "MAINFRAME(R)" (USE THE REGISTERED TRADEMARK SYMBOL) AT `TEXT-[21PX] SM:TEXT-[26PX]`, `TRACKING-TIGHT`, BLACK, USING `VAR(--FONT-HEADING)`. BESIDE IT, A DECORATIVE ASTERISK CHARACTER `✳︎` AT `TEXT-[25PX] SM:TEXT-[30PX]`, BLACK, `SELECT-NONE`, `LETTER-SPACING: -0.02EM`.
-- **DESKTOP NAV LINKS (CENTER, HIDDEN BELOW MD):** FLEX ROW, `TEXT-[23PX]`, BLACK. LINKS: "LABS", "STUDIO", "OPENINGS", "SHOP" SEPARATED BY COMMAS RENDERED AS `, `. EACH LINK HAS `HOVER:OPACITY-60 TRANSITION-OPACITY`.
-- **DESKTOP CTA (RIGHT, HIDDEN BELOW MD):** AN ANCHOR "GET IN TOUCH" AT `TEXT-[23PX]`, BLACK, `UNDERLINE UNDERLINE-OFFSET-2`, `HOVER:OPACITY-60 TRANSITION-OPACITY`.
-- **MOBILE HAMBURGER (VISIBLE BELOW MD):** A BUTTON WITH 3 HORIZONTAL BARS (EACH `W-6 H-[2PX] BG-BLACK`), SPACED WITH `GAP-[5PX]`. ON TOGGLE, THE TOP BAR ROTATES 45DEG AND TRANSLATES DOWN 7PX, MIDDLE BAR FADES TO OPACITY 0, BOTTOM BAR ROTATES -45DEG AND TRANSLATES UP 7PX. ALL TRANSITIONS ARE `DURATION-300`.
-- **MOBILE OVERLAY (Z-INDEX: 9):** `FIXED INSET-0 BG-WHITE/95 BACKDROP-BLUR-SM`, FLEX COLUMN, VERTICALLY CENTERED, LEFT-ALIGNED WITH `PX-8 GAP-8`. SAME LINKS AT `TEXT-[32PX] FONT-MEDIUM`, PLUS "GET IN TOUCH" UNDERLINED. FADES IN/OUT WITH `OPACITY` AND `POINTEREVENTS` TOGGLED. HIDDEN ON MD+.
+`src/main.tsx` renders `<App />` inside `<React.StrictMode>` into `#root` using `ReactDOM.createRoot`.
 
----
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
 
-**HERO SECTION (Z-INDEX: 1)**
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
+```
 
-- FULL `H-SCREEN`, FLEX COLUMN. ON MOBILE: `JUSTIFY-END PB-12`. ON `MD:`: `JUSTIFY-CENTER PB-0`. HORIZONTAL PADDING: `PX-5 SM:PX-8 MD:PX-10`. `OVERFLOW-HIDDEN`.
-- CONTENT CONTAINER: `MAX-W-XL`, `RELATIVE Z-10`.
+### App composition
 
-**1. BLURRED INTRO LABEL:**
+`src/App.tsx` renders three components in order inside a fragment: `<BackgroundVideo />`, `<Navbar />`, `<Hero />`.
 
-- `POINTER-EVENTS-NONE`, `SELECT-NONE`, `MB-5 SM:MB-6`.
-- FONT SIZE: `CLAMP(18PX, 4VW, 26PX)`, `LINE-HEIGHT: 1.3`, `FONT-WEIGHT: 400`, `COLOR: #000`, `FILTER: BLUR(4PX)`.
-- TWO LINES OF TEXT:
-  - LINE 1: "HEY THERE, MEET A.R.I.A,"
-  - LINE 2: "MAINFRAME'S ADAPTIVE RESPONSE INTERFACE AGENT"
-- SEPARATED BY A `
-`.
+## Fonts
 
-**2. TYPEWRITER TEXT:**
+Two fonts are loaded via local stylesheet links in `index.html` (vendored under `public/fonts/`). The original external sources were:
 
-- TEXT: `"GLAD YOU STOPPED IN. GOOD TASTE TENDS TO FIND US. NOW, WHAT ARE WE BUILDING?"`
-- CUSTOM `USETYPEWRITER` HOOK: TAKES `TEXT`, `SPEED` (DEFAULT 38MS PER CHARACTER), `STARTDELAY` (DEFAULT 600MS). AFTER THE DELAY, AN INTERVAL REVEALS ONE CHARACTER AT A TIME. RETURNS `{ DISPLAYED, DONE }`.
-- RENDERED IN A `
+- **Heading:** `https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium`
+- **Body:** `https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg`
 
-`TAG, BLACK,`MB-5 SM:MB-6`, FONT SIZE `CLAMP(18PX, 4VW, 26PX)`, `LINE-HEIGHT: 1.35`, `FONT-WEIGHT: 400`, `MIN-HEIGHT: 54PX`.
+> Note: the live project vendors these locally rather than fetching the onlinewebfonts URLs. The host part of those URLs is lowercased here per casing rules; the hashed path segments are kept verbatim.
 
-- WHILE TYPING, SHOW A BLINKING CURSOR: `INLINE-BLOCK W-[2PX] H-[1.1EM] BG-BLACK ALIGN-MIDDLE ML-[2PX]` WITH CSS ANIMATION `BLINK 1S STEP-END INFINITE` (`OPACITY: 1 AT 0%/100%, 0 AT 50%`). CURSOR DISAPPEARS WHEN `DONE` IS TRUE.
+The local `@font-face` definitions live in `public/fonts/HelveticaNowDisplay-Medium.css` and `public/fonts/HelveticaNowDisplayW01-Rg.css`:
 
-**3. ACTION PILL BUTTONS:**
+```css
+@font-face {
+  font-family: "HelveticaNowDisplay-Medium";
+  src: url("/fonts/5ac3fe7c6abd2f62067f266d89671492.woff2") format("woff2"),
+       url("/fonts/5ac3fe7c6abd2f62067f266d89671492.woff") format("woff"),
+       url("/fonts/5ac3fe7c6abd2f62067f266d89671492.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
-- APPEAR WITH A FADE-IN + SLIDE-UP ANIMATION (`OPACITY 0->1`, `TRANSLATEY(8PX)->0`, `TRANSITION: OPACITY 0.4S EASE, TRANSFORM 0.4S EASE`). THEY BECOME VISIBLE 400MS AFTER PAGE LOAD, INDEPENDENT OF THE TYPEWRITER ANIMATION (DO NOT WAIT FOR TYPING TO FINISH).
-- CONTAINER: `FLEX FLEX-WRAP GAP-Y-1`.
-- **4 WHITE PILL BUTTONS:** LABELS: "PITCH US AN IDEA", "COME WORK HERE", "SEND A BRIEF HELLO", "SEE HOW WE OPERATE". EACH IS `INLINE-FLEX ITEMS-CENTER JUSTIFY-CENTER BG-WHITE TEXT-BLACK BORDER BORDER-BLACK/10 ROUNDED-FULL TEXT-[13PX] SM:TEXT-[15PX] PX-4 SM:PX-5 PY-[0.3EM] MX-[0.2EM] MB-[0.4EM] WHITE-SPACE: NOWRAP`. HOVER: `BG-BLACK TEXT-WHITE`, `TRANSITION-COLORS DURATION-200`.
-- **1 OUTLINE PILL BUTTON:** TEXT "REACH US: HELLO@MAINFRAME.CO" (EMAIL IS UNDERLINED WITH `UNDERLINE-OFFSET-1`), FOLLOWED BY A SMALL 12X12 COPY ICON (INLINE SVG OF TWO OVERLAPPING RECTANGLES). STYLED: `TEXT-WHITE BG-TRANSPARENT BORDER BORDER-WHITE ROUNDED-FULL`, SAME SIZING AS ABOVE, WITH `GAP-2 SM:GAP-3` BETWEEN TEXT AND ICON. HOVER: `BG-WHITE TEXT-BLACK`. ON CLICK, COPIES "HELLO@MAINFRAME.CO" TO CLIPBOARD VIA `NAVIGATOR.CLIPBOARD.WRITETEXT()`.
+@font-face {
+  font-family: "HelveticaNowDisplayW01-Rg";
+  src: url("/fonts/1aa3377e489837a26d019bba501e779d.woff2") format("woff2"),
+       url("/fonts/1aa3377e489837a26d019bba501e779d.woff") format("woff"),
+       url("/fonts/1aa3377e489837a26d019bba501e779d.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+```
 
----
+In `src/index.css`, define CSS variables and a base `font-family`:
 
-DEPENDENCIES
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-ONLY REACT, REACTDOM, TAILWIND CSS, AND VITE. NO OTHER UI LIBRARIES. LUCIDE-REACT IS AVAILABLE BUT NOT USED IN THIS COMPONENT.
+:root {
+  --font-heading: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+```
+
+The entire page uses `var(--font-body)` except the logo text, which uses `var(--font-heading)`.
+
+## Background Video (Mouse-Scrub Controlled)
+
+Component: `src/components/BackgroundVideo.tsx`.
+
+- A full-screen `<video>` element styled with Tailwind `fixed inset-0 z-0 h-full w-full object-cover`, plus inline style `objectPosition: '70% center'`.
+- **Video source:** `/assets/hf_20260530_042513_df96a13b-6155-4f6e-8b93-c9dee66fba08.mp4` (defined as `const VIDEO_SRC`).
+  - > Note: this asset is vendored locally under `public/assets/`. The original source was the CloudFront URL `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260530_042513_df96a13b-6155-4f6e-8b93-c9dee66fba08.mp4`.
+- The video is `muted`, `playsInline`, `preload="auto"`, plus `aria-hidden="true"` and `tabIndex={-1}`. It does **not** autoplay.
+- The video scrubs forward/backward based on horizontal mouse movement.
+
+### Scrub behavior
+
+Use a `mousemove` event listener on `window`. Track `prevX`, compute `delta = currentX - prevX`, and convert it to a time offset:
+
+```
+offset = (delta / window.innerWidth) * SENSITIVITY * video.duration
+```
+
+where `const SENSITIVITY = 0.8`. Clamp `targetTime` between `0` and `video.duration`. Use `video.currentTime` to seek, and a `seeked` event handler to queue the next seek if `targetTime` has moved — preventing seek-flooding while a seek is in flight.
+
+```tsx
+import { useEffect, useRef } from 'react';
+
+const VIDEO_SRC =
+  '/assets/hf_20260530_042513_df96a13b-6155-4f6e-8b93-c9dee66fba08.mp4';
+
+const SENSITIVITY = 0.8;
+
+export default function BackgroundVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let prevX: number | null = null;
+    let targetTime = 0;
+    let seeking = false;
+
+    const seekTo = (time: number) => {
+      seeking = true;
+      video.currentTime = time;
+    };
+
+    const handleSeeked = () => {
+      seeking = false;
+      if (Math.abs(targetTime - video.currentTime) > 0.01) {
+        seekTo(targetTime);
+      }
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      if (prevX === null) {
+        prevX = event.clientX;
+        return;
+      }
+      const delta = event.clientX - prevX;
+      prevX = event.clientX;
+
+      const { duration } = video;
+      if (!Number.isFinite(duration) || duration <= 0) return;
+
+      const offset = (delta / window.innerWidth) * SENSITIVITY * duration;
+      targetTime = Math.min(Math.max(targetTime + offset, 0), duration);
+      if (!seeking) seekTo(targetTime);
+    };
+
+    video.addEventListener('seeked', handleSeeked);
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      video.removeEventListener('seeked', handleSeeked);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={VIDEO_SRC}
+      muted
+      playsInline
+      preload="auto"
+      aria-hidden="true"
+      tabIndex={-1}
+      className="fixed inset-0 z-0 h-full w-full object-cover"
+      style={{ objectPosition: '70% center' }}
+    />
+  );
+}
+```
+
+## Navbar (Fixed, z-index 10)
+
+Component: `src/components/Navbar.tsx`. Holds `menuOpen` state for the mobile menu; `closeMenu` sets it to `false`.
+
+- **Header:** fixed to top, full width. Classes: `fixed left-0 top-0 z-10 flex w-full items-center justify-between px-5 py-4 sm:px-8 sm:py-5`.
+- **Logo (left):** an anchor with `flex items-center gap-3 text-black`.
+  - Text "Mainframe®" (using the registered-trademark symbol) at `text-[21px] tracking-tight sm:text-[26px]`, inline style `fontFamily: 'var(--font-heading)'`.
+  - Beside it, a decorative asterisk character `✳︎` at `text-[25px] sm:text-[30px]`, `select-none`, `aria-hidden="true"`, inline style `letterSpacing: '-0.02em'`.
+- **Desktop nav links (center, hidden below `md`):** `<nav>` with `hidden text-[23px] text-black md:flex` and `aria-label="Primary"`. Links come from `const NAV_LINKS = ['Labs', 'Studio', 'Openings', 'Shop']`, each wrapped in a `<span className="whitespace-pre">`. Each link `<a>` has `transition-opacity hover:opacity-60`. A `, ` separator is rendered after every link except the last (`index < NAV_LINKS.length - 1 && ', '`).
+- **Desktop CTA (right, hidden below `md`):** an anchor "Get in touch" with `hidden text-[23px] text-black underline underline-offset-2 transition-opacity hover:opacity-60 md:inline-block`.
+- **Mobile hamburger (visible below `md`):** a button with `flex flex-col gap-[5px] md:hidden`, `aria-expanded={menuOpen}`, and `aria-label` toggling between `'Close menu'` and `'Open menu'`. It contains 3 bars, each `h-[2px] w-6 bg-black transition-all duration-300`:
+  - Top bar — when open adds `translate-y-[7px] rotate-45`.
+  - Middle bar — when open adds `opacity-0`.
+  - Bottom bar — when open adds `-translate-y-[7px] -rotate-45`.
+- **Mobile overlay (z-index 9):** a `<div>` with `fixed inset-0 z-[9] flex flex-col items-start justify-center gap-8 bg-white/95 px-8 backdrop-blur-sm transition-opacity duration-300 md:hidden`. When open it is `opacity-100`; when closed it is `pointer-events-none opacity-0`. It lists the same `NAV_LINKS` plus "Get in touch", each an anchor at `text-[32px] font-medium text-black` (the "Get in touch" link additionally `underline`), each calling `closeMenu` on click.
+
+## Hero Section (z-index 1)
+
+Component: `src/components/Hero.tsx`.
+
+- **Section:** `relative z-[1] flex h-screen flex-col justify-end overflow-hidden px-5 pb-12 sm:px-8 md:justify-center md:px-10 md:pb-0`. (On mobile: `justify-end` with `pb-12`; on `md:`: `justify-center` with `pb-0`. Horizontal padding `px-5 sm:px-8 md:px-10`.)
+- **Content container:** `relative z-10 max-w-xl`.
+
+### Constants
+
+```tsx
+const TYPED_TEXT =
+  'Glad you stopped in. Good taste tends to find us. Now, what are we building?';
+const EMAIL = 'hello@mainframe.co';
+const PILL_ACTIONS = [
+  'Pitch us an idea',
+  'Come work here',
+  'Send a brief hello',
+  'See how we operate',
+];
+```
+
+State: `const { displayed, done } = useTypewriter(TYPED_TEXT)` and `const [pillsVisible, setPillsVisible] = useState(false)`.
+
+### 1. Blurred Intro Label
+
+- A `<p>` with classes `pointer-events-none mb-5 select-none sm:mb-6`.
+- Inline style: `fontSize: 'clamp(18px, 4vw, 26px)'`, `lineHeight: 1.3`, `fontWeight: 400`, `color: '#000'`, `filter: 'blur(4px)'`.
+- Two lines of text separated by a `<br />`:
+  - Line 1: "Hey there, meet A.R.I.A,"
+  - Line 2: "Mainframe's Adaptive Response Interface Agent" (rendered as `Mainframe&apos;s Adaptive Response Interface Agent`).
+
+### 2. Typewriter Text
+
+- Text: `"Glad you stopped in. Good taste tends to find us. Now, what are we building?"`.
+- Rendered in a `<p>` with classes `mb-5 min-h-[54px] text-black sm:mb-6` and inline style `fontSize: 'clamp(18px, 4vw, 26px)'`, `lineHeight: 1.35`, `fontWeight: 400`.
+- While typing (`!done`), show a blinking cursor `<span>` with `aria-hidden="true"` and classes `cursor-blink ml-[2px] inline-block h-[1.1em] w-[2px] bg-black align-middle`. The cursor disappears when `done` is `true`.
+
+The cursor blink is a CSS animation defined in `src/index.css`:
+
+```css
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+```
+
+#### `useTypewriter` hook
+
+File: `src/hooks/useTypewriter.ts`. Takes `text`, `speed` (default `38` ms per character), and `startDelay` (default `600` ms). On mount it resets state, then after `startDelay` starts an interval that reveals one more character every `speed` ms via `text.slice(0, count)` until the full text is displayed, at which point it clears the interval and sets `done`. Returns `{ displayed, done }`. Cleans up the timeout and interval on unmount/dependency change.
+
+```ts
+import { useEffect, useState } from 'react';
+
+export function useTypewriter(text: string, speed = 38, startDelay = 600) {
+  const [displayed, setDisplayed] = useState('');
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setDisplayed('');
+    setDone(false);
+
+    let interval: number | undefined;
+    const timeout = window.setTimeout(() => {
+      let count = 0;
+      interval = window.setInterval(() => {
+        count += 1;
+        setDisplayed(text.slice(0, count));
+        if (count >= text.length) {
+          window.clearInterval(interval);
+          setDone(true);
+        }
+      }, speed);
+    }, startDelay);
+
+    return () => {
+      window.clearTimeout(timeout);
+      window.clearInterval(interval);
+    };
+  }, [text, speed, startDelay]);
+
+  return { displayed, done };
+}
+```
+
+### 3. Action Pill Buttons
+
+- The pill container appears with a fade-in + slide-up animation. The pills become visible 400 ms after page load, independent of the typewriter (they do **not** wait for typing to finish):
+
+  ```tsx
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setPillsVisible(true), 400);
+    return () => window.clearTimeout(timeout);
+  }, []);
+  ```
+
+- **Container:** `flex flex-wrap gap-y-1`, with inline style:
+  - `opacity: pillsVisible ? 1 : 0`
+  - `transform: pillsVisible ? 'translateY(0)' : 'translateY(8px)'`
+  - `transition: 'opacity 0.4s ease, transform 0.4s ease'`
+
+- **4 white pill buttons** (mapped from `PILL_ACTIONS`): "Pitch us an idea", "Come work here", "Send a brief hello", "See how we operate". Each is a `<button type="button">` with classes:
+
+  ```
+  mx-[0.2em] mb-[0.4em] inline-flex items-center justify-center whitespace-nowrap rounded-full border border-black/10 bg-white px-4 py-[0.3em] text-[13px] text-black transition-colors duration-200 hover:bg-black hover:text-white sm:px-5 sm:text-[15px]
+  ```
+
+- **1 outline pill button:** a `<button type="button">` with `onClick={copyEmail}` and `aria-label={`Copy ${EMAIL} to clipboard`}`. Classes:
+
+  ```
+  mx-[0.2em] mb-[0.4em] inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white bg-transparent px-4 py-[0.3em] text-[13px] text-white transition-colors duration-200 hover:bg-white hover:text-black sm:gap-3 sm:px-5 sm:text-[15px]
+  ```
+
+  - Contents: a `<span>` reading `Reach us: ` followed by the email in a nested `<span className="underline underline-offset-1">` (the email is `hello@mainframe.co`).
+  - Then a 12×12 inline copy SVG icon of two overlapping rectangles:
+
+    ```tsx
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      aria-hidden="true"
+    >
+      <rect x="3.9" y="3.9" width="7.4" height="7.4" rx="1" />
+      <rect x="0.7" y="0.7" width="7.4" height="7.4" rx="1" />
+    </svg>
+    ```
+
+  - On click, `copyEmail` copies `hello@mainframe.co` to the clipboard via `navigator.clipboard.writeText(EMAIL)`, catching and ignoring errors (clipboard unavailable due to permissions / insecure context).
+
+## Color Palette
+
+- **Black:** `#000` / Tailwind `text-black`, `bg-black`, `border-black/10` — primary text, logo, asterisk, hamburger bars, cursor, white-pill hover background.
+- **White:** Tailwind `bg-white`, `text-white`, `border-white`, `bg-white/95` — pill backgrounds, outline-pill text/border, mobile overlay background.
+
+## File Structure
+
+```
+mainframe-aria-hero/
+├─ index.html
+├─ package.json
+├─ vite.config.ts
+├─ postcss.config.js
+├─ tailwind.config.js
+├─ tsconfig.json
+├─ public/
+│  ├─ assets/
+│  │  └─ hf_20260530_042513_df96a13b-6155-4f6e-8b93-c9dee66fba08.mp4
+│  └─ fonts/
+│     ├─ HelveticaNowDisplay-Medium.css
+│     ├─ HelveticaNowDisplayW01-Rg.css
+│     ├─ 5ac3fe7c6abd2f62067f266d89671492.{woff2,woff,ttf}
+│     └─ 1aa3377e489837a26d019bba501e779d.{woff2,woff,ttf}
+└─ src/
+   ├─ main.tsx
+   ├─ App.tsx
+   ├─ index.css
+   ├─ components/
+   │  ├─ BackgroundVideo.tsx
+   │  ├─ Hero.tsx
+   │  └─ Navbar.tsx
+   └─ hooks/
+      └─ useTypewriter.ts
+```
