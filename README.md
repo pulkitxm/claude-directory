@@ -6,6 +6,19 @@ Most project folders are self-contained and include the originating prompt as `p
 
 The code in this repository was generated on my side with Claude Fable 5. This whole repo is vibe coded, so use it with precautions: review the code, check dependencies, verify accessibility/responsiveness, and run the local project checks before using anything in production.
 
+## Contributing
+
+Got a cool experiment? Toss it in. No issues, no templates, no ceremony — just shoot a PR.
+
+Only two things are non-negotiable:
+
+- **`prompt.md`** — the prompt you used to generate the project, dropped in the project folder.
+- **`demo.mp4`** — a short screen recording of the thing actually working.
+
+Beyond that, do whatever: any stack, any vibe, as long as your project lives in its own self-contained folder. Bonus points if you add a row to the table below, but no stress if you forget.
+
+All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
+
 ## Projects
 
 | Project | Description | Stack |
