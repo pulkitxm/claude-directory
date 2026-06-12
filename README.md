@@ -12,6 +12,7 @@ The code in this repository was generated on my side with Claude Fable 5. This w
 |---------|-------------|-------|
 | [aethera-cinematic-hero](./aethera-cinematic-hero/) | Cinematic hero for Aethera with video-driven visual treatment and headless verification | React, TypeScript, Vite, Tailwind CSS |
 | [ai-builder-dark-hero](./ai-builder-dark-hero/) | Dark-mode hero section for an AI website builder with animated reveals and HLS video streaming | React, TypeScript, Vite, Tailwind CSS, Motion, hls.js, Lucide |
+| [apex-scroll-hero](./apex-scroll-hero/) | Apple-product-page-style "Apex" hero whose 5-second F1 sunset film is scroll-scrubbed full-screen (scroll drives `video.currentTime`) with a synced speed/gear telemetry HUD | Next.js 16, React 19, TypeScript, Tailwind CSS v4 |
 | [asme-hero-landing](./asme-hero-landing/) | Full-screen dark Asme landing page with Mux/HLS-style video, liquid-glass navbar, and email-capture CTA | React, JavaScript, Vite, CSS |
 | [asme-liquid-glass-landing](./asme-liquid-glass-landing/) | Dark cinematic Asme single-page landing site with liquid-glass UI details | React, TypeScript, Vite, Tailwind CSS |
 | [aura-email-landing](./aura-email-landing/) | Dark, cinematic landing page for "Aura", an AI-native email client, with fullscreen video, a shiny gradient headline, a macOS-style menu bar, and a liquid-glass inbox mockup | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide, Supabase |
