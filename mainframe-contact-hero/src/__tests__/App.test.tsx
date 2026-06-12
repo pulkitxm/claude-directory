@@ -35,7 +35,7 @@ describe('App', () => {
     expect(video?.muted).toBe(true);
     expect(video?.getAttribute('playsinline')).not.toBeNull();
     expect(video?.getAttribute('preload')).toBe('auto');
-    expect(video?.getAttribute('src')).toContain('cloudfront.net');
+    expect(video?.getAttribute('src')).toContain('/assets/hf_20260601_110537_3a579fa0-7bbc-4d94-9d25-0e816c7840f5.mp4');
 
     expect(container.querySelector('#spade-hero')).toBeTruthy();
     expect(screen.getByText('What sort of service?')).toBeTruthy();
