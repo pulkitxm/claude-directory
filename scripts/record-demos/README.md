@@ -2,8 +2,15 @@
 
 Records a `demo.mp4` walkthrough for each landing-page project in this repo.
 
-Each project is a Vite app. The recorder boots the project's dev server, drives a
-headless Chromium through it, and writes `demo.mp4` into that project's folder.
+Projects come in two shapes, both supported:
+
+- **Vite apps** (have a `package.json`): the recorder boots `npm run dev`.
+- **Static pages** (no `package.json`, just a root-level `.html`): the folder is
+  served with `python3 -m http.server`. If there is no `index.html`, the first
+  `*.html` file at the project root is used as the entry page.
+
+Either way it drives a headless Chromium through the page and writes `demo.mp4`
+into that project's folder.
 
 Pages are classified automatically:
 

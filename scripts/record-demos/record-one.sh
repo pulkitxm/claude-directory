@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
-# Record a demo.mp4 for ONE project (a Vite app directory with a package.json).
-# Starts the project's dev server on a strict port, records, and tears everything
-# down. The recorder (record.mjs) auto-detects scrollable vs static pages.
+# Record a demo.mp4 for ONE project.
+#
+# Two project shapes are supported:
+#   - Vite app (has package.json): boots `npm run dev` on a strict port.
+#   - Static page (no package.json, root-level .html): serves the folder with
+#     python3 http.server. If there is no index.html, the first *.html file at
+#     the project root is used as the entry page.
+#
+# Either way the recorder (record.mjs) auto-detects scrollable vs static pages,
+# and everything is torn down on exit.
 #
 # Usage: ./record-one.sh <project-dir> [port]
 #   port defaults to 5199 (override to run several in parallel on distinct ports).
@@ -19,9 +26,23 @@ TMPROOT="${TMPDIR:-/tmp}"
 TMP="${TMPROOT%/}/demo-rec-${SAFE}-${PORT}"
 
 echo "=== [$NAME] (port $PORT) ==="
-[ -f "$PROJ/package.json" ] || { echo "SKIP: no package.json in $PROJ"; exit 3; }
 
-if [ ! -d "$PROJ/node_modules" ]; then
+MODE=""
+if [ -f "$PROJ/package.json" ]; then
+  MODE=vite
+else
+  ENTRY=""
+  if [ -f "$PROJ/index.html" ]; then
+    ENTRY="index.html"
+  else
+    ENTRY="$(cd "$PROJ" && ls -- *.html 2>/dev/null | head -1)"
+  fi
+  [ -n "$ENTRY" ] || { echo "SKIP: no package.json and no root-level .html in $PROJ"; exit 3; }
+  MODE=static
+  URL="http://localhost:${PORT}/${ENTRY}"
+fi
+
+if [ "$MODE" = vite ] && [ ! -d "$PROJ/node_modules" ]; then
   echo "[$NAME] installing project deps..."
   ( cd "$PROJ" && npm install --silent --no-audit --no-fund >"${TMPROOT%/}/demo-install-${SAFE}.log" 2>&1 ) \
     || { echo "INSTALL FAILED"; tail -15 "${TMPROOT%/}/demo-install-${SAFE}.log"; exit 4; }
@@ -35,7 +56,11 @@ free_port() {
 free_port "$PORT"
 
 LOG="${TMPROOT%/}/demo-dev-${SAFE}.log"
-( cd "$PROJ" && npm run dev -- --port "$PORT" --strictPort >"$LOG" 2>&1 ) &
+if [ "$MODE" = vite ]; then
+  ( cd "$PROJ" && npm run dev -- --port "$PORT" --strictPort >"$LOG" 2>&1 ) &
+else
+  ( cd "$PROJ" && python3 -m http.server "$PORT" --bind 127.0.0.1 >"$LOG" 2>&1 ) &
+fi
 DEV_PID=$!
 trap 'kill "$DEV_PID" 2>/dev/null; pkill -P "$DEV_PID" 2>/dev/null; free_port "$PORT"' EXIT
 
