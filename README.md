@@ -6,6 +6,20 @@ Most project folders are self-contained and include the originating prompt as `p
 
 The code in this repository was generated on my side with Claude Fable 5. This whole repo is vibe coded, so use it with precautions: review the code, check dependencies, verify accessibility/responsiveness, and run the local project checks before using anything in production.
 
+## Full overview
+
+The fastest way to get a feel for everything in this repo is the **Project Gallery** — a Bun-only local dashboard that lists every project, plays its `demo.mp4`, and can launch a selected project live.
+
+![Project Gallery dashboard](./project-gallery/image.webp)
+
+```bash
+cd project-gallery
+bun run dev
+# then open http://127.0.0.1:4321
+```
+
+It loads the existing demos without installing anything; use **Run live** only when you want to install and start a specific project. See [`project-gallery/README.md`](./project-gallery/README.md) for thumbnail generation and full behavior.
+
 ## Contributing
 
 Got a cool experiment? Toss it in. No issues, no templates, no ceremony — just shoot a PR.

@@ -2,6 +2,8 @@
 
 Bun-only local dashboard for browsing this repository's generated homepage demos and launching one selected project at a time.
 
+![Project Gallery dashboard](./image.webp)
+
 ```bash
 cd project-gallery
 bun run dev
