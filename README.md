@@ -130,7 +130,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (4)</b></summary>
+<summary><b>Components &amp; UI (5)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -138,14 +138,20 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [core-features-gradient-cards](./components-ui/core-features-gradient-cards/) | Static "Core Features" marketing section with three gradient feature cards | Single-file HTML/CSS |
 | [nexto-404-hero](./components-ui/nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Pixel-faithful "Sixsense" AI reference-finder page with canvas pixel-grid glass backgrounds, an organic cursor hover blob, a layered folder/lights stack, three floating reference cards, and a glass typewriter prompt box with a spinning gradient send button | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
+| [terminal-cli-control-deck](./components-ui/terminal-cli-control-deck/) | "ACME Control Deck" infrastructure panel built in a phosphor-green Terminal CLI design system — centralized tokens, composable windows/panes, ASCII art logo, typewriter headline, raw-data ASCII progress meters, a live syslog feed, an interactive zsh console, a box-less access form, and a subtle CRT scanline overlay | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
 
 </details>
 
 <details>
-<summary><b>UI Design (1)</b></summary>
+<summary><b>UI design (6)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [bauhaus-form-follows-function](./ui-design/bauhaus-form-follows-function/) | "WERKBUND" Bauhaus design-system landing page — a constructivist poster brought to life with three primary colours, thick black borders, hard offset shadows, binary radii, geometric circle/square/triangle primitives, color-blocked sections, a stats band, feature grid, pricing tiers, testimonials, journal, and a red/cream FAQ accordion | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
+| [flatline-design-system](./ui-design/flatline-design-system/) | Complete flat-design-system showcase landing page — centralized tokens, sharp full-section color blocks (Blue/Emerald/Amber/dark), tinted color-block cards, thick outline buttons, a scaled "popular" pricing tier, multi-color stat count-ups, and high-contrast solid focus rings with zero box-shadows anywhere | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [lumen-design-system](./ui-design/lumen-design-system/) | Showcase landing page that fully expresses the Linear/Modern design language — four-layer ambient background with floating gradient blobs, mouse-tracking spotlight cards, gradient typography, scroll-linked hero parallax, multi-layer shadows, an asymmetric bento grid, a live token gallery and component playground, and a responsive hamburger menu, all on centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
+| [lumina-minimalist-modern](./ui-design/lumina-minimalist-modern/) | Full "Minimalist Modern" design-system landing page for analytics platform Lumina — Electric Blue signature gradient, inverted slate sections, Calistoga/Inter dual-font type, an animated abstract hero graphic, and centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
+| [newsprint-editorial-press](./ui-design/newsprint-editorial-press/) | Full editorial landing page expressing the "Newsprint" design system — massive Playfair headlines, zero radius, collapsed grid borders, drop caps, a breaking-news ticker, an inverted black "How It's Filed" section, grayscale halftone engravings, hard offset hover shadows, and sparing editorial red | React, TypeScript, Vite, Tailwind CSS, CVA, tailwind-merge, Lucide |
+| [swiss-design-system](./ui-design/swiss-design-system/) | Self-contained Swiss International (International Typographic Style) design-system showcase — strict B/W/Swiss-Red tokens, four CSS texture patterns (grid, dots, diagonal, noise), a Bauhaus hero composition, a mathematical type specimen, a 2×2 component gallery, and bold mechanical interactions (color inversions, rotating plus icons, count-up); fully offline | HTML, CSS, vanilla JS, Inter |
 
 </details>
