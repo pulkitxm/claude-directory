@@ -1,0 +1,568 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   VAPORWAVE / OUTRUN DESIGN SYSTEM — "NEONWAVE OS"
+   ----------------------------------------------------------------------------
+   The single source of truth for the design system's DNA. Every color, font,
+   gradient, glow, radius and motion value lives here as a token so the rest of
+   the app (and the reusable primitives in components/primitives.tsx) reference
+   names, never raw values. Change a token here and the whole synthetic reality
+   shifts at once.
+
+   Structure note: under Tailwind v4 the Lightning-based parser does not accept
+   `@media` / `@keyframes` nested inside `@layer`. So component/utility classes
+   live in `@layer` blocks, while all `@keyframes` and responsive `@media`
+   tweaks live at the top level below.
+   ========================================================================== */
+
+/* ---- Self-hosted fonts (vendored in /public/fonts, no remote CDN) -------- */
+@font-face {
+	font-family: "Orbitron";
+	font-style: normal;
+	font-weight: 400 900; /* variable font: covers 400/500/700/900 */
+	font-display: swap;
+	src: url("/fonts/orbitron-latin-var.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Share Tech Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/share-tech-mono-latin.woff2") format("woff2");
+}
+
+/* ---- Tokens exposed to Tailwind's utility engine ---------------------- */
+@theme {
+	/* Colors — pure digital primaries, dark-mode only */
+	--color-void: #090014; /* background — the infinite digital space   */
+	--color-chrome: #e0e0e0; /* foreground — silver-gray body text        */
+	--color-panel: #1a103c; /* glass card background                     */
+	--color-magenta: #ff00ff; /* primary accent — THE hero color           */
+	--color-cyan: #00ffff; /* secondary accent — links, focus, titles  */
+	--color-orange: #ff9900; /* tertiary accent — sun, sparing highlights */
+	--color-edge: #2d1b4e; /* default, non-interactive border           */
+
+	/* Typography */
+	--font-heading: "Orbitron", sans-serif;
+	--font-mono: "Share Tech Mono", ui-monospace, monospace;
+
+	/* Radii — aggressively geometric */
+	--radius-none: 0px;
+
+	/* Motion — snappy, mechanical, digital. No organic curves. */
+	--ease-digital: linear;
+}
+
+/* ============================================================================
+   BASE
+   ========================================================================== */
+@layer base {
+	:root {
+		color-scheme: dark;
+	}
+
+	* {
+		border-color: var(--color-edge);
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		margin: 0;
+		background-color: var(--color-void);
+		color: var(--color-chrome);
+		font-family: var(--font-mono);
+		font-size: 1rem;
+		line-height: 1.65;
+		letter-spacing: 0.02em;
+		overflow-x: hidden;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-heading);
+		margin: 0;
+		line-height: 1.05;
+	}
+
+	::selection {
+		background: var(--color-magenta);
+		color: #000;
+	}
+
+	/* Neon scrollbar */
+	::-webkit-scrollbar {
+		width: 12px;
+		height: 12px;
+	}
+	::-webkit-scrollbar-track {
+		background: var(--color-void);
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--color-magenta);
+		border: 2px solid var(--color-void);
+		box-shadow: 0 0 8px var(--color-magenta);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--color-cyan);
+		box-shadow: 0 0 8px var(--color-cyan);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-cyan);
+		outline-offset: 2px;
+	}
+}
+
+/* ============================================================================
+   COMPONENT TOKENS
+   Reusable classes so the "wow factor" rules (skew, glow, dual borders, gradient
+   text, terminal chrome) are written ONCE and composed everywhere — never as
+   one-off styles. Tailwind utilities still layer on top for spacing/layout.
+   ========================================================================== */
+@layer components {
+	/* ---- Layout primitives ------------------------------------------------ */
+	.shell {
+		width: 100%;
+		max-width: 80rem; /* max-w-7xl */
+		margin-inline: auto;
+		padding-inline: 1.25rem;
+	}
+
+	/* Skewed, uppercase, neon-edged eyebrow tag — a signature badge. */
+	.eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		transform: skewX(-12deg);
+		border: 2px solid var(--color-magenta);
+		background: rgba(255, 0, 255, 0.08);
+		padding: 0.3rem 0.9rem;
+		font-family: var(--font-mono);
+		font-size: 0.7rem;
+		letter-spacing: 0.25em;
+		text-transform: uppercase;
+		color: var(--color-magenta);
+	}
+	.eyebrow > * {
+		transform: skewX(12deg);
+	}
+
+	/* ---- Gradient text fill (the iconic sunset gradient) ------------------ */
+	.text-sunset {
+		background-image: linear-gradient(
+			to right,
+			var(--color-orange),
+			var(--color-magenta),
+			var(--color-cyan)
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		filter: drop-shadow(0 0 30px rgba(255, 0, 255, 0.6));
+	}
+
+	/* White heading with a soft glow */
+	.text-glow-white {
+		filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+	}
+	/* Cyan card title with the spec's exact glow */
+	.title-cyan {
+		font-family: var(--font-heading);
+		color: var(--color-cyan);
+		filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.8));
+	}
+
+	/* ---- Buttons ---------------------------------------------------------- */
+	/* Base: the skewed container; inner <span> counter-skews so text stays
+	   upright. Un-skews on hover for the kinetic morph. */
+	.btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		transform: skewX(-12deg);
+		border-radius: var(--radius-none);
+		padding-inline: 1.6rem;
+		height: 3rem; /* h-12 default */
+		font-family: var(--font-mono);
+		font-size: 0.9rem;
+		font-weight: 400;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: all 0.2s linear;
+		-webkit-user-select: none;
+		user-select: none;
+	}
+	.btn > span {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		transform: skewX(12deg);
+	}
+	.btn:hover {
+		transform: skewX(0deg);
+	}
+	.btn:focus-visible {
+		outline: 2px solid var(--color-orange);
+		outline-offset: 3px;
+	}
+
+	.btn-sm {
+		height: 2.25rem;
+		font-size: 0.78rem;
+		padding-inline: 1.1rem;
+	}
+	.btn-lg {
+		height: 3.5rem;
+		font-size: 1rem;
+		padding-inline: 2rem;
+	}
+
+	.btn-primary {
+		border: 2px solid var(--color-cyan);
+		background: transparent;
+		color: var(--color-cyan);
+	}
+	.btn-primary:hover {
+		background: var(--color-cyan);
+		color: #000;
+		box-shadow: 0 0 20px var(--color-cyan);
+	}
+
+	.btn-secondary {
+		border: 2px solid var(--color-magenta);
+		background: var(--color-magenta);
+		color: #fff;
+	}
+	.btn-secondary:hover {
+		transform: skewX(0deg) scale(1.05);
+		opacity: 0.85;
+		box-shadow: 0 0 20px var(--color-magenta);
+	}
+
+	.btn-outline {
+		border: 2px solid var(--color-magenta);
+		background: transparent;
+		color: var(--color-magenta);
+	}
+	.btn-outline:hover {
+		background: var(--color-magenta);
+		color: #fff;
+		box-shadow: 0 0 20px var(--color-magenta);
+	}
+
+	.btn-ghost {
+		transform: skewX(0deg);
+		border: 2px solid transparent;
+		background: transparent;
+		color: var(--color-chrome);
+	}
+	.btn-ghost > span {
+		transform: skewX(0deg);
+	}
+	.btn-ghost:hover {
+		background: rgba(0, 255, 255, 0.1);
+		color: var(--color-cyan);
+	}
+
+	/* ---- Cards ------------------------------------------------------------ */
+	/* Dual-border neon-tube card: cyan laser on top, faint magenta sides. */
+	.card {
+		position: relative;
+		border: 1px solid rgba(255, 0, 255, 0.3);
+		border-top: 2px solid var(--color-cyan);
+		background: rgba(26, 16, 60, 0.8);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-radius: var(--radius-none);
+		transition: all 0.2s linear;
+	}
+	.card-hover:hover {
+		transform: translateY(-0.5rem);
+		border-color: var(--color-cyan);
+		box-shadow: 0 0 28px rgba(0, 255, 255, 0.35);
+	}
+
+	/* ---- Terminal / window chrome ----------------------------------------- */
+	.window {
+		border: 2px solid var(--color-cyan);
+		background: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+		border-radius: var(--radius-none);
+	}
+	.window-bar {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		background: rgba(0, 255, 255, 0.1);
+		border-bottom: 1px solid var(--color-cyan);
+		padding: 0.5rem 1rem;
+	}
+	.window-dots {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.window-dots i {
+		display: block;
+		height: 0.75rem;
+		width: 0.75rem;
+		border-radius: 9999px;
+	}
+
+	/* Neutral file-explorer window (benefits) */
+	.explorer {
+		border: 2px solid rgba(224, 224, 224, 0.2);
+		background: rgba(26, 16, 60, 0.9);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		border-radius: var(--radius-none);
+	}
+	.explorer-bar {
+		background: rgba(224, 224, 224, 0.1);
+		border-bottom: 2px solid rgba(224, 224, 224, 0.2);
+		padding: 0.5rem 1rem;
+	}
+	.explorer-status {
+		border-top: 2px solid rgba(224, 224, 224, 0.2);
+		background: var(--color-void);
+		color: rgba(224, 224, 224, 0.5);
+		font-size: 0.7rem;
+		padding: 0.35rem 1rem;
+	}
+
+	/* ---- Terminal-style input --------------------------------------------- */
+	.field {
+		width: 100%;
+		border: 0;
+		border-bottom: 2px solid var(--color-magenta);
+		background: #000;
+		color: var(--color-cyan);
+		font-family: var(--font-mono);
+		font-size: 1.05rem;
+		letter-spacing: 0.05em;
+		padding: 0.55rem 0.75rem;
+		border-radius: var(--radius-none);
+		transition: all 0.2s linear;
+	}
+	.field::placeholder {
+		color: rgba(255, 0, 255, 0.5);
+	}
+	.field:focus-visible {
+		border-bottom-color: var(--color-cyan);
+		box-shadow: 0 0 15px var(--color-cyan);
+		outline: none;
+	}
+
+	/* ---- Diamond icon container (rotates on hover) ------------------------ */
+	.diamond {
+		display: grid;
+		place-items: center;
+		height: 3.5rem;
+		width: 3.5rem;
+		transform: rotate(45deg);
+		border: 2px solid var(--color-magenta);
+		background: rgba(255, 0, 255, 0.08);
+		box-shadow: 0 0 12px rgba(255, 0, 255, 0.4);
+		transition: all 0.2s linear;
+	}
+	.diamond > * {
+		transform: rotate(-45deg);
+	}
+	.group:hover .diamond {
+		transform: rotate(90deg);
+		border-color: var(--color-cyan);
+		box-shadow: 0 0 18px rgba(0, 255, 255, 0.6);
+	}
+	.group:hover .diamond > * {
+		transform: rotate(-90deg);
+	}
+}
+
+/* ============================================================================
+   GLOBAL OVERLAYS & BACKGROUND TEXTURES
+   The void is never empty: a fixed perspective grid + blurred sun behind
+   everything, and CRT scanlines + RGB chromatic aberration in front of it.
+   ========================================================================== */
+@layer utilities {
+	/* Perspective grid floor (fixed, z-0) */
+	.grid-floor {
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		perspective: 500px;
+		overflow: hidden;
+	}
+	.grid-floor::after {
+		content: "";
+		position: absolute;
+		left: -50%;
+		right: -50%;
+		bottom: -20%;
+		height: 130%;
+		background-image:
+			linear-gradient(transparent 95%, rgba(255, 0, 255, 0.55) 95%),
+			linear-gradient(90deg, transparent 95%, rgba(255, 0, 255, 0.55) 95%);
+		background-size: 40px 40px;
+		transform: rotateX(70deg) scale(2);
+		transform-origin: bottom center;
+		-webkit-mask-image: linear-gradient(to bottom, transparent, #000 70%);
+		mask-image: linear-gradient(to bottom, transparent, #000 70%);
+	}
+
+	/* Floating sun — giant blurred gradient orb (fixed) */
+	.sun {
+		position: fixed;
+		top: 8%;
+		left: 50%;
+		z-index: 0;
+		height: 600px;
+		width: 600px;
+		transform: translateX(-50%);
+		border-radius: 9999px;
+		background: linear-gradient(
+			to bottom,
+			var(--color-orange),
+			var(--color-magenta)
+		);
+		opacity: 0.2;
+		filter: blur(100px);
+		pointer-events: none;
+	}
+
+	/* Global CRT scanlines + chromatic aberration (fixed, z-50) */
+	.scanlines {
+		position: fixed;
+		inset: 0;
+		z-index: 50;
+		pointer-events: none;
+		background:
+			linear-gradient(
+				90deg,
+				rgba(255, 0, 0, 0.06),
+				rgba(0, 255, 0, 0.02),
+				rgba(0, 0, 255, 0.06)
+			),
+			linear-gradient(rgba(18, 16, 20, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+		background-size:
+			100% 100%,
+			100% 4px;
+		animation: scan 8s linear infinite;
+	}
+
+	/* Section dot pattern */
+	.dots {
+		background-image: radial-gradient(
+			rgba(255, 0, 255, 0.35) 1px,
+			transparent 1px
+		);
+		background-size: 20px 20px;
+	}
+
+	/* Animated blinking terminal cursor */
+	.cursor::after {
+		content: "\2588";
+		margin-left: 0.1em;
+		color: var(--color-cyan);
+		animation: blink 1s steps(2, start) infinite;
+	}
+
+	/* Marquee for the logo / status strip */
+	.marquee {
+		display: inline-flex;
+		white-space: nowrap;
+		will-change: transform;
+		animation: marquee 28s linear infinite;
+	}
+
+	/* Pulsing glow used on the live trust indicator dot */
+	.pulse-dot {
+		animation: pulse-dot 1.4s ease-in-out infinite;
+	}
+}
+
+/* ============================================================================
+   KEYFRAMES (top-level — not nested in @layer for Tailwind v4 compatibility)
+   ========================================================================== */
+@keyframes scan {
+	from {
+		background-position:
+			0 0,
+			0 0;
+	}
+	to {
+		background-position:
+			0 0,
+			0 100vh;
+	}
+}
+
+@keyframes blink {
+	to {
+		visibility: hidden;
+	}
+}
+
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes pulse-dot {
+	0%,
+	100% {
+		opacity: 1;
+		box-shadow: 0 0 6px currentColor;
+	}
+	50% {
+		opacity: 0.4;
+		box-shadow: 0 0 14px currentColor;
+	}
+}
+
+/* ============================================================================
+   RESPONSIVE & MOTION-PREFERENCE TWEAKS (top-level)
+   ========================================================================== */
+@media (min-width: 640px) {
+	.shell {
+		padding-inline: 2rem;
+	}
+}
+
+/* Slightly reduce glow intensity on small screens (per spec). */
+@media (max-width: 640px) {
+	.sun {
+		height: 420px;
+		width: 420px;
+		opacity: 0.16;
+	}
+}
+
+/* Respect reduced-motion: still all continuous animations. */
+@media (prefers-reduced-motion: reduce) {
+	.scanlines,
+	.marquee,
+	.pulse-dot,
+	.cursor::after {
+		animation: none !important;
+	}
+	html {
+		scroll-behavior: auto;
+	}
+}
