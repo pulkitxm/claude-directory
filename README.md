@@ -143,7 +143,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI design (24)</b></summary>
+<summary><b>UI design (25)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -171,6 +171,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [retro-90s-nostalgia-design-system](./ui-design/retro-90s-nostalgia-design-system/) | "WEBMASTER 95" Retro / 90s Nostalgia design-system showcase — a faux Windows 95 desktop that documents its own DNA with centralized bevel tokens, a scrolling marquee, animated rainbow text, title-bar windowed cards, a tiled crosshatch background, blue/underlined hyperlinks, alternating rows, groove HR dividers, a glowing green hit counter, pulsing NEW!/HOT! badges, a construction-stripe CTA, dotted focus rings, and zero border-radius; fully offline | HTML, CSS, vanilla JS |
 | [swiss-design-system](./ui-design/swiss-design-system/) | Self-contained Swiss International (International Typographic Style) design-system showcase — strict B/W/Swiss-Red tokens, four CSS texture patterns (grid, dots, diagonal, noise), a Bauhaus hero composition, a mathematical type specimen, a 2×2 component gallery, and bold mechanical interactions (color inversions, rotating plus icons, count-up); fully offline | HTML, CSS, vanilla JS, Inter |
 | [vaporwave-outrun-design-system](./ui-design/vaporwave-outrun-design-system/) | "NEONWAVE OS" Vaporwave / Outrun design-system showcase — centralized neon tokens (magenta/cyan/sunset) and skew/glow/window component classes, a fixed receding perspective grid floor, a 600px blurred sun, and a global CRT scanline + RGB chromatic-aberration overlay, with a typing-terminal hero, gradient-clipped headlines, skewed un-skewing buttons, rotating diamond icons, an interactive file-explorer, IRC `<username>` testimonials, a scaled pricing tier, and an accordion FAQ; vendored Orbitron / Share Tech Mono | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
+| [verdant-organic-design-system](./ui-design/verdant-organic-design-system/) | Full "Organic / Natural" design-system landing for botanical apothecary "Verdant" — earth-drawn palette, Fraunces + Nunito, a global paper-grain overlay, drifting+morphing blob backgrounds, bespoke palette-drawn botanical SVG illustrations, asymmetric feature-card radii, a hand-drawn curved-dashed ritual connector, a rotated-tin product spotlight, an organic image mask, hover-tilt testimonials, and varied moss/terracotta sections; fonts + noise vendored, fully offline | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 
 </details>
 
