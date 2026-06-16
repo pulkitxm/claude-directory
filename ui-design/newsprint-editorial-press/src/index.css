@@ -1,0 +1,157 @@
+/* Fonts vendored locally via @fontsource — no remote CDN calls, fully offline. */
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/800.css";
+@import "@fontsource/playfair-display/900.css";
+@import "@fontsource/playfair-display/400-italic.css";
+@import "@fontsource/lora/400.css";
+@import "@fontsource/lora/500.css";
+@import "@fontsource/lora/600.css";
+@import "@fontsource/lora/400-italic.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #f9f9f7;
+    color: #111111;
+    font-family: "Lora", Georgia, serif;
+    /* Dot grid pattern — subtle 4x4 halftone-style speckle over the whole page. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23111111' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  }
+
+  /* Thick black focus ring for keyboard users — high contrast, sharp corners. */
+  :focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: 2px;
+    border-radius: 0;
+  }
+
+  ::selection {
+    background: #cc0000;
+    color: #f9f9f7;
+  }
+}
+
+@layer components {
+  /* Enforce zero radius anywhere it might creep back in. */
+  .sharp-corners {
+    border-radius: 0 !important;
+  }
+
+  /* Fine graph-paper texture layered over major sections for tactile depth. */
+  .newsprint-texture {
+    position: relative;
+  }
+  .newsprint-texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(0deg, transparent 98%, rgba(0, 0, 0, 0.03) 100%),
+      linear-gradient(90deg, transparent 98%, rgba(0, 0, 0, 0.03) 100%);
+    background-size: 22px 22px;
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: 0;
+  }
+  .newsprint-texture > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Inverted variant for black sections — faint white graph lines. */
+  .newsprint-texture-inverted::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(0deg, transparent 98%, rgba(255, 255, 255, 0.05) 100%),
+      linear-gradient(90deg, transparent 98%, rgba(255, 255, 255, 0.05) 100%);
+    background-size: 22px 22px;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  /* Halftone print dots used inside grayscale image placeholders. */
+  .halftone {
+    background-image: radial-gradient(#111111 1px, transparent 1px);
+    background-size: 6px 6px;
+  }
+
+  /* The signature hard-offset "newspaper cutout" hover lift. */
+  .hard-shadow-hover {
+    transition:
+      box-shadow 0.18s ease-out,
+      transform 0.18s ease-out,
+      background-color 0.18s ease-out;
+  }
+  .hard-shadow-hover:hover {
+    box-shadow: 4px 4px 0px 0px #111111;
+    transform: translate(-2px, -2px);
+  }
+  .hard-shadow-hover-red:hover {
+    box-shadow: 4px 4px 0px 0px #cc0000;
+    transform: translate(-2px, -2px);
+  }
+
+  /* Massive editorial drop cap for the first letter of a lead paragraph. */
+  .dropcap::first-letter {
+    float: left;
+    font-family: "Playfair Display", serif;
+    font-weight: 900;
+    font-size: 5.2rem;
+    line-height: 0.72;
+    padding: 0.06em 0.12em 0 0;
+    margin-top: 0.05em;
+    color: #111111;
+  }
+  .dropcap-red::first-letter {
+    color: #cc0000;
+  }
+
+  /* Grayscale-by-default editorial photo treatment. */
+  .editorial-photo {
+    filter: grayscale(100%) contrast(1.05);
+    transition: filter 0.4s ease-out;
+  }
+  .editorial-photo:hover {
+    filter: grayscale(40%) sepia(45%) contrast(1.05);
+  }
+}
+
+@layer utilities {
+  /* Pause animations + drop transforms for users who prefer reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
