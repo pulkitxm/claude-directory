@@ -126,7 +126,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI design (10)</b></summary>
+<summary><b>UI design (13)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -141,6 +141,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [luxury-editorial-design-system](./ui-design/luxury-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [material-you-showcase](./ui-design/material-you-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4 |
 | [newsprint-editorial-press](./ui-design/newsprint-editorial-press/) | Full editorial landing page expressing the "Newsprint" design system — massive Playfair headlines, zero radius, collapsed grid borders, drop caps, a breaking-news ticker, an inverted black "How It's Filed" section, grayscale halftone engravings, hard offset hover shadows, and sparing editorial red | React, TypeScript, Vite, Tailwind CSS, CVA, tailwind-merge, Lucide |
+| [playful-geometric-design-system](./ui-design/playful-geometric-design-system/) | "Blobby" Playful Geometric design-system showcase — a Memphis-inspired "stable grid, wild decoration" landing with centralized tokens (warm paper + slate + four rotational pop colors), chunky 2px borders, hard no-blur "pop" shadows, varied/blob radii, a blob-masked geometric mascot illustration, confetti shapes, keyword + logo marquees, a dashed-line feature grid, a star-badged scaled pricing tier, a live token gallery, an ARIA FAQ, and a focus-shadowed CTA form — all honoring prefers-reduced-motion | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
 | [swiss-design-system](./ui-design/swiss-design-system/) | Self-contained Swiss International (International Typographic Style) design-system showcase — strict B/W/Swiss-Red tokens, four CSS texture patterns (grid, dots, diagonal, noise), a Bauhaus hero composition, a mathematical type specimen, a 2×2 component gallery, and bold mechanical interactions (color inversions, rotating plus icons, count-up); fully offline | HTML, CSS, vanilla JS, Inter |
 
 </details>
