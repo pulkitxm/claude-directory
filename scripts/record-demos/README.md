@@ -53,8 +53,8 @@ never collide. Per-project logs are written to `$TMPDIR` (path printed on failur
 
 ```bash
 cd scripts/record-demos
-./record-one.sh ../../mindloop-mono-landing          # default port 5199
-./record-one.sh ../../aethera-cinematic-hero 5205    # custom port
+./record-one.sh ../../landing-pages/mindloop-mono-landing       # default port 5199
+./record-one.sh ../../hero-sections/aethera-cinematic-hero 5205 # custom port
 ```
 
 ## Tuning
