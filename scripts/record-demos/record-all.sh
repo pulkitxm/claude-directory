@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Record demo.mp4 for every project in the repo root — Vite apps (package.json)
-# and plain static pages (root-level .html, served via python3 http.server).
+# Record demo.mp4 for every project (each lives in <category>/<project>/) — Vite
+# apps (package.json) and plain static pages (root-level .html, served via
+# python3 http.server).
 # Bounded concurrency (each worker owns a distinct port, so no collisions).
 # Resumable: skips any project that already has a demo.mp4 (use --force to redo).
 #
@@ -27,15 +28,22 @@ while [ $# -gt 0 ]; do
 done
 
 projects=()
-while IFS= read -r d; do
-  case "$d" in "$HERE"*) continue ;; esac          # never record the tooling dir
-  if [ ! -f "$d/package.json" ]; then
-    # Static project: needs at least one root-level .html to serve.
-    [ -n "$(find "$d" -maxdepth 1 -name '*.html' -print -quit)" ] || continue
-  fi
-  if [ "$FORCE" = 0 ] && [ -f "$d/demo.mp4" ]; then continue; fi
-  projects+=("$d")
-done < <(find "$ROOT" -maxdepth 1 -mindepth 1 -type d | sort)
+# Projects live one level deep, under category folders (<category>/<project>/).
+# Skip tooling/non-category top-level dirs; the `*/` globs ignore dotfiles.
+for catdir in "$ROOT"/*/; do
+  case "$(basename "$catdir")" in scripts|extras|node_modules) continue ;; esac
+  for d in "$catdir"*/; do
+    d="${d%/}"                                       # strip trailing slash
+    [ -d "$d" ] || continue                          # no children → glob stayed literal
+    case "$d" in "$HERE"*) continue ;; esac          # never record the tooling dir
+    if [ ! -f "$d/package.json" ]; then
+      # Static project: needs at least one root-level .html to serve.
+      [ -n "$(find "$d" -maxdepth 1 -name '*.html' -print -quit)" ] || continue
+    fi
+    if [ "$FORCE" = 0 ] && [ -f "$d/demo.mp4" ]; then continue; fi
+    projects+=("$d")
+  done
+done
 
 if [ "${#projects[@]}" -eq 0 ]; then
   echo "Nothing to record (all projects already have demo.mp4; use --force to redo)."
