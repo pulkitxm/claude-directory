@@ -123,3 +123,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
 
 </details>
+
+<details>
+<summary><b>UI Design (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [newsprint-editorial-press](./ui-design/newsprint-editorial-press/) | Full editorial landing page expressing the "Newsprint" design system — massive Playfair headlines, zero radius, collapsed grid borders, drop caps, a breaking-news ticker, an inverted black "How It's Filed" section, grayscale halftone engravings, hard offset hover shadows, and sparing editorial red | React, TypeScript, Vite, Tailwind CSS, CVA, tailwind-merge, Lucide |
+
+</details>
