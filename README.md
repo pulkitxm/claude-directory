@@ -126,7 +126,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI design (13)</b></summary>
+<summary><b>UI design (14)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -138,6 +138,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [kinetic-typography-poster](./ui-design/kinetic-typography-poster/) | Kinetic Typography design-system showcase — a festival poster page with viewport-width `clamp()` headlines, two infinite marquees, towering background numbers, hard acid-yellow color-inversion hover states, sticky-stacking cards, scroll-driven hero zoom, and a `prefers-reduced-motion` static fallback | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, react-fast-marquee, Space Grotesk |
 | [lumen-design-system](./ui-design/lumen-design-system/) | Showcase landing page that fully expresses the Linear/Modern design language — four-layer ambient background with floating gradient blobs, mouse-tracking spotlight cards, gradient typography, scroll-linked hero parallax, multi-layer shadows, an asymmetric bento grid, a live token gallery and component playground, and a responsive hamburger menu, all on centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [lumina-minimalist-modern](./ui-design/lumina-minimalist-modern/) | Full "Minimalist Modern" design-system landing page for analytics platform Lumina — Electric Blue signature gradient, inverted slate sections, Calistoga/Inter dual-font type, an animated abstract hero graphic, and centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
+| [neo-brutalism-loud-system](./ui-design/neo-brutalism-loud-system/) | "LOUDHOUSE" Neo-brutalism design-system showcase — centralized `@theme` tokens (cream/black + red/yellow/violet highlighters), hard offset shadows (zero blur) as `shadow-neo*` utilities, hollow text-stroke display type, sticker rotations, a chaos-zone hero, live token gallery, count-up stats, an interactive component playground, scaled pricing, two marquees, a keyboard FAQ, mechanical click-down buttons / lift cards / yellow-flood inputs, and a full `prefers-reduced-motion` fallback | React, TypeScript, Vite, Tailwind CSS v4, react-fast-marquee, Lucide, Space Grotesk |
 | [luxury-editorial-design-system](./ui-design/luxury-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [material-you-showcase](./ui-design/material-you-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4 |
 | [newsprint-editorial-press](./ui-design/newsprint-editorial-press/) | Full editorial landing page expressing the "Newsprint" design system — massive Playfair headlines, zero radius, collapsed grid borders, drop caps, a breaking-news ticker, an inverted black "How It's Filed" section, grayscale halftone engravings, hard offset hover shadows, and sparing editorial red | React, TypeScript, Vite, Tailwind CSS, CVA, tailwind-merge, Lucide |
