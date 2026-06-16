@@ -1,0 +1,330 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   INDUSTRIAL SKEUOMORPHISM — CENTRALIZED DESIGN TOKENS (THE DNA)
+   Every color, shadow, radius and font the system uses lives here once.
+   Components reference these via Tailwind theme keys or var(--token).
+   ========================================================================== */
+
+/* ---- Self-hosted fonts (vendored in /public/fonts, fully offline) -------- */
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/inter-400.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/fonts/inter-500.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("/fonts/inter-600.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/fonts/inter-700.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+	src: url("/fonts/inter-800.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-400.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-500.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-700.woff2") format("woff2");
+}
+
+/* ---- Tailwind theme: tokens usable as utilities (bg-chassis, etc.) ------- */
+@theme {
+	/* Industrial palette (strictly light mode) */
+	--color-chassis: #e0e5ec; /* Level 0 — base plastic */
+	--color-panel: #f0f2f5; /* raised panel */
+	--color-recessed: #d1d9e6; /* sunken / muted */
+	--color-ink: #2d3436; /* primary text */
+	--color-label: #4a5568; /* muted text (WCAG-AA) */
+	--color-accent: #ff4757; /* safety orange / Braun red */
+	--color-accent-fg: #ffffff;
+	--color-edge: #babecc; /* neumorphic shadow color */
+	--color-highlight: #ffffff; /* neumorphic highlight color */
+	--color-edge-deep: #a3b1c6; /* deep shadow / divider */
+	--color-online: #22c55e; /* online LED green */
+	--color-warning: #f5a623; /* warning LED amber */
+
+	/* Dark technical surfaces */
+	--color-charcoal: #2d3436;
+	--color-slate: #2c3e50;
+	--color-slate-soft: #a8b2d1;
+
+	/* Radii */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 16px;
+	--radius-xl: 24px;
+	--radius-2xl: 30px;
+
+	/* Type */
+	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+	/* Mechanical easing — spring overshoot */
+	--ease-mech: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+	/* Container */
+	--container-deck: 72rem;
+}
+
+/* ---- Raw shadow tokens (referenced via shadow-[var(--shadow-*)]) --------- */
+:root {
+	--shadow-card: 8px 8px 16px #babecc, -8px -8px 16px #ffffff;
+	--shadow-floating: 12px 12px 24px #babecc, -12px -12px 24px #ffffff,
+		inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+	--shadow-pressed: inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff;
+	--shadow-recessed: inset 4px 4px 8px #babecc, inset -4px -4px 8px #ffffff;
+	--shadow-recessed-soft: inset 3px 3px 6px #babecc, inset -3px -3px 6px #ffffff;
+	--shadow-sharp: 4px 4px 8px rgba(0, 0, 0, 0.15),
+		-1px -1px 1px rgba(255, 255, 255, 0.8);
+	--shadow-glow: 0 0 10px 2px rgba(255, 71, 87, 0.6);
+	--shadow-glow-green: 0 0 10px 2px rgba(34, 197, 94, 0.7);
+	/* red-tinted neumorphic pair for the accent button */
+	--shadow-accent: 5px 5px 12px rgba(166, 50, 60, 0.45),
+		-5px -5px 12px rgba(255, 110, 120, 0.4);
+}
+
+/* ============================================================================
+   BASE
+   ========================================================================== */
+* {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-sans);
+	color: var(--color-ink);
+	background-color: var(--color-chassis);
+	/* Reinforce the top-left light source with a subtle hotspot. */
+	background-image: radial-gradient(
+		120% 80% at 12% 0%,
+		rgba(255, 255, 255, 0.55),
+		rgba(255, 255, 255, 0) 55%
+	);
+	background-attachment: fixed;
+	line-height: 1.65;
+}
+
+::selection {
+	background: var(--color-accent);
+	color: #fff;
+}
+
+/* Accent, branded focus ring for keyboard users on every interactive atom. */
+:where(a, button, input, [tabindex]):focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 2px var(--color-chassis), 0 0 0 4px var(--color-accent),
+		var(--shadow-glow);
+	border-radius: var(--radius-md);
+}
+
+/* ============================================================================
+   TEXTURE + SURFACE UTILITIES (composition primitives)
+   ========================================================================== */
+
+/* Matte-plastic micro-noise overlay — sits above the page, ignores pointers. */
+.noise-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 60;
+	pointer-events: none;
+	background-image: url("/assets/noise.svg");
+	background-size: 220px 220px;
+	opacity: 0.28;
+	mix-blend-mode: overlay;
+}
+
+/* Carbon-fibre weave for tech-heavy dark panels / device bezels. */
+.carbon {
+	background-image: url("/assets/carbon-fibre.png");
+	background-size: 14px 14px;
+}
+
+/* CRT scanline overlay for "screen" elements. */
+.scanlines {
+	background-image: linear-gradient(
+		rgba(18, 16, 16, 0) 50%,
+		rgba(0, 0, 0, 0.28) 50%
+	);
+	background-size: 100% 4px;
+}
+
+/* Blueprint / schematic grid for technical sections. */
+.blueprint-grid {
+	background-image: linear-gradient(rgba(74, 85, 104, 0.5) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(74, 85, 104, 0.5) 1px, transparent 1px);
+	background-size: 40px 40px;
+}
+
+/* Corner-screw decoration — four machined screw indentations (12px inset). */
+.screws {
+	background-image: radial-gradient(
+			circle at 14px 14px,
+			rgba(0, 0, 0, 0.16) 1.6px,
+			rgba(255, 255, 255, 0.65) 2.6px,
+			transparent 3.4px
+		),
+		radial-gradient(
+			circle at calc(100% - 14px) 14px,
+			rgba(0, 0, 0, 0.16) 1.6px,
+			rgba(255, 255, 255, 0.65) 2.6px,
+			transparent 3.4px
+		),
+		radial-gradient(
+			circle at 14px calc(100% - 14px),
+			rgba(0, 0, 0, 0.16) 1.6px,
+			rgba(255, 255, 255, 0.65) 2.6px,
+			transparent 3.4px
+		),
+		radial-gradient(
+			circle at calc(100% - 14px) calc(100% - 14px),
+			rgba(0, 0, 0, 0.16) 1.6px,
+			rgba(255, 255, 255, 0.65) 2.6px,
+			transparent 3.4px
+		);
+	background-repeat: no-repeat;
+}
+
+/* Engraved / embossed text helpers. */
+.emboss {
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+.emboss-dark {
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Stamped technical label. */
+.stamp {
+	font-family: var(--font-mono);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-weight: 700;
+}
+
+/* ============================================================================
+   ANIMATIONS
+   ========================================================================== */
+@keyframes radar-sweep {
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes spin-slow {
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes bar-load {
+	0% {
+		width: 12%;
+	}
+	50% {
+		width: 86%;
+	}
+	100% {
+		width: 12%;
+	}
+}
+@keyframes eq-bounce {
+	0%,
+	100% {
+		transform: scaleY(0.3);
+	}
+	50% {
+		transform: scaleY(1);
+	}
+}
+@keyframes ticker {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+@keyframes blink {
+	0%,
+	49% {
+		opacity: 1;
+	}
+	50%,
+	100% {
+		opacity: 0.25;
+	}
+}
+
+.animate-radar {
+	animation: radar-sweep 4s linear infinite;
+}
+.animate-spin-slow {
+	animation: spin-slow 8s linear infinite;
+}
+.animate-bar-load {
+	animation: bar-load 3.4s ease-in-out infinite;
+}
+.animate-ticker {
+	animation: ticker 32s linear infinite;
+}
+.animate-blink {
+	animation: blink 1.1s steps(1) infinite;
+}
+.eq-bar {
+	transform-origin: bottom;
+	animation: eq-bounce 0.9s ease-in-out infinite;
+}
+
+/* Respect reduced-motion: still tactile, but no looping/auto motion. */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+}

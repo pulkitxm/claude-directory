@@ -1,0 +1,461 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   NORTHWIND — "Corporate Trust" Design System
+   ----------------------------------------------------------------------------
+   The single source of truth for tokens. Everything downstream composes these
+   variables and the @utility helpers below — no component hard-codes a raw
+   hex, shadow, or gradient. The visual DNA of this system lives here:
+
+     1. Colored shadows (blue/violet tints, never neutral gray)
+     2. Indigo → Violet gradients (the brand signature)
+     3. Isometric 3D transforms (perspective + rotate-x / rotate-y)
+     4. Soft, blurred gradient blobs for atmospheric depth
+     5. Elevated white cards that lift on hover
+
+   Built on Tailwind v4's @theme so the palette is available as utilities
+   (bg-indigo-600, text-slate-500, …) AND as CSS variables for bespoke effects.
+   ========================================================================== */
+
+/* ---- Self-hosted typeface: Plus Jakarta Sans ----------------------------- */
+/* Geometric sans with friendly rounded terminals — professional authority +
+   modern warmth. Variable woff2 slices (weights 400–800) are vendored locally
+   in /public/fonts so the project runs fully offline. */
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	font-style: normal;
+	font-weight: 400 800;
+	font-display: swap;
+	src: url("/fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+		U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+		U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	font-style: normal;
+	font-weight: 400 800;
+	font-display: swap;
+	src: url("/fonts/plus-jakarta-sans-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+		U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+		U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---- Design tokens ------------------------------------------------------- */
+@theme {
+	/* Surfaces */
+	--color-canvas: #f8fafc; /* Slate 50  — page background          */
+	--color-surface: #ffffff; /* White     — cards / raised elements  */
+
+	/* Brand — the dual-tone indigo/violet spectrum */
+	--color-indigo-50: #eef2ff;
+	--color-indigo-100: #e0e7ff;
+	--color-indigo-200: #c7d2fe;
+	--color-indigo-300: #a5b4fc;
+	--color-indigo-400: #818cf8;
+	--color-indigo-500: #6366f1;
+	--color-indigo-600: #4f46e5; /* Primary */
+	--color-indigo-700: #4338ca;
+	--color-indigo-900: #312e81;
+	--color-indigo-950: #1e1b4b;
+
+	--color-violet-100: #ede9fe;
+	--color-violet-200: #ddd6fe;
+	--color-violet-400: #a78bfa;
+	--color-violet-500: #8b5cf6;
+	--color-violet-600: #7c3aed; /* Secondary */
+	--color-violet-700: #6d28d9;
+
+	/* Ink + supporting text */
+	--color-slate-50: #f8fafc;
+	--color-slate-100: #f1f5f9;
+	--color-slate-200: #e2e8f0; /* Border  */
+	--color-slate-300: #cbd5e1;
+	--color-slate-400: #94a3b8;
+	--color-slate-500: #64748b; /* Text muted */
+	--color-slate-600: #475569;
+	--color-slate-700: #334155;
+	--color-slate-800: #1e293b;
+	--color-slate-900: #0f172a; /* Text main  */
+
+	/* Accent / success */
+	--color-emerald-50: #ecfdf5;
+	--color-emerald-100: #d1fae5;
+	--color-emerald-500: #10b981;
+	--color-emerald-600: #059669;
+	--color-amber-400: #fbbf24;
+	--color-rose-500: #f43f5e;
+
+	/* Typeface — geometric sans mirrors the friendly-but-precise UI. */
+	--font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system,
+		"Segoe UI", sans-serif;
+
+	/* Radii — rounded-lg inputs, rounded-xl cards, pill buttons. */
+	--radius-lg: 0.5rem; /* 8px  */
+	--radius-xl: 0.75rem; /* 12px */
+	--radius-2xl: 1rem; /* 16px */
+	--radius-3xl: 1.5rem; /* 24px */
+
+	/* Colored shadows — the signature. Blue/violet tints, never gray. */
+	--shadow-soft: 0 4px 20px -2px rgba(79, 70, 229, 0.1);
+	--shadow-lift: 0 10px 25px -5px rgba(79, 70, 229, 0.15),
+		0 8px 10px -6px rgba(79, 70, 229, 0.1);
+	--shadow-button: 0 4px 14px 0 rgba(79, 70, 229, 0.3);
+	--shadow-button-hover: 0 10px 22px -2px rgba(79, 70, 229, 0.45);
+	--shadow-glow: 0 0 20px rgba(79, 70, 229, 0.5);
+
+	/* Refined-motion easing. */
+	--ease-refined: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Base layer: enforce the philosophy globally ------------------------- */
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		margin: 0;
+		background-color: var(--color-canvas);
+		color: var(--color-slate-900);
+		font-family: var(--font-sans);
+		font-weight: 400;
+		line-height: 1.65; /* relaxed body leading */
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		overflow-x: hidden; /* blobs extend past the edge — never scroll sideways */
+	}
+
+	/* Headlines: extra-bold, tight tracking & leading for impact. */
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		line-height: 1.08;
+		color: var(--color-slate-900);
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	/* Universal, always-visible focus ring (indigo, offset). Never removed. */
+	:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+		outline: 2px solid var(--color-indigo-600);
+		outline-offset: 2px;
+		border-radius: var(--radius-lg);
+	}
+	/* On the dark final-CTA / footer, the ring reads better in white. */
+	.on-dark
+		:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+		outline-color: #ffffff;
+	}
+
+	::selection {
+		background: var(--color-indigo-600);
+		color: #ffffff;
+	}
+}
+
+/* ---- Reusable component classes ------------------------------------------ */
+/* Centralized so every button/card/input/eyebrow is identical across the page
+   and one-off styles never creep in. They compose the @theme tokens above. */
+@layer components {
+	/* The max-w-7xl container used by every section. */
+	.shell {
+		width: 100%;
+		max-width: 80rem; /* max-w-7xl = 1280px */
+		margin-inline: auto;
+		padding-inline: 1rem; /* px-4 */
+	}
+	@media (min-width: 640px) {
+		.shell {
+			padding-inline: 1.5rem; /* sm:px-6 */
+		}
+	}
+
+	/* ---- Buttons --------------------------------------------------------- */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		min-height: 2.75rem; /* 44px touch target */
+		padding: 0.75rem 1.5rem;
+		border: 0;
+		border-radius: 9999px; /* rounded-full */
+		font-weight: 600;
+		font-size: 0.9375rem;
+		line-height: 1;
+		cursor: pointer;
+		user-select: none;
+		white-space: nowrap;
+		transition: transform 200ms var(--ease-refined),
+			box-shadow 200ms var(--ease-refined), background-color 200ms ease,
+			color 200ms ease, border-color 200ms ease;
+	}
+	.btn-lg {
+		min-height: 3.25rem;
+		padding: 0.95rem 1.9rem;
+		font-size: 1rem;
+	}
+
+	/* Primary — the indigo→violet gradient, lifts on hover. */
+	.btn-primary {
+		background-image: linear-gradient(
+			to right,
+			var(--color-indigo-600),
+			var(--color-violet-600)
+		);
+		color: #ffffff;
+		box-shadow: var(--shadow-button);
+	}
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-button-hover);
+	}
+	.btn-primary:active {
+		transform: translateY(0);
+	}
+
+	/* Secondary — white card surface, subtle border. */
+	.btn-secondary {
+		background: var(--color-surface);
+		color: var(--color-slate-700);
+		border: 1px solid var(--color-slate-200);
+		box-shadow: var(--shadow-soft);
+	}
+	.btn-secondary:hover {
+		background: var(--color-slate-50);
+		border-color: var(--color-slate-300);
+		transform: translateY(-2px);
+	}
+
+	/* White button on the dark CTA — inverts the contrast. */
+	.btn-on-dark {
+		background: #ffffff;
+		color: var(--color-indigo-700);
+	}
+	.btn-on-dark:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.4);
+	}
+
+	/* Ghost button used in nav. */
+	.btn-ghost {
+		background: transparent;
+		color: var(--color-slate-700);
+	}
+	.btn-ghost:hover {
+		background: var(--color-indigo-50);
+		color: var(--color-indigo-700);
+	}
+
+	/* ---- Cards ----------------------------------------------------------- */
+	/* White surface, 12px radius, hairline border, soft colored shadow that
+	   intensifies + lifts on hover. The whole system's elevated-card behavior. */
+	.card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-slate-100);
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-soft);
+		transition: transform 200ms var(--ease-refined),
+			box-shadow 200ms var(--ease-refined), border-color 200ms ease;
+	}
+	.card-hover:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lift);
+		border-color: var(--color-indigo-100);
+	}
+
+	/* ---- Inputs ---------------------------------------------------------- */
+	.field {
+		width: 100%;
+		min-height: 2.75rem;
+		padding: 0.7rem 1rem;
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+		color: var(--color-slate-900);
+		border: 1px solid var(--color-slate-200);
+		font: inherit;
+		font-size: 0.9375rem;
+		transition: border-color 200ms ease, box-shadow 200ms ease;
+	}
+	.field::placeholder {
+		color: var(--color-slate-400);
+	}
+	.field:focus {
+		outline: none;
+		border-color: var(--color-indigo-500);
+		box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--color-indigo-500);
+	}
+
+	/* The uppercase eyebrow label that opens most sections. */
+	.eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-weight: 600;
+		font-size: 0.8125rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-indigo-600);
+	}
+}
+
+/* ---- Bespoke utilities (the visual DNA) ---------------------------------- */
+
+/* Gradient text — the split-headline signature. */
+@utility text-gradient {
+	background-image: linear-gradient(
+		to right,
+		var(--color-indigo-600),
+		var(--color-violet-600)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+/* Colored-shadow utilities, exposed as classes for one-off composition. */
+@utility shadow-soft {
+	box-shadow: var(--shadow-soft);
+}
+@utility shadow-lift {
+	box-shadow: var(--shadow-lift);
+}
+@utility shadow-glow {
+	box-shadow: var(--shadow-glow);
+}
+
+/* 3D scene helpers — isometric depth without inline magic numbers. */
+@utility scene {
+	perspective: 2000px;
+}
+@utility preserve-3d {
+	transform-style: preserve-3d;
+}
+@utility iso-tilt {
+	/* The hero card's resting isometric pose. */
+	transform: rotateX(6deg) rotateY(-14deg);
+	transition: transform 500ms var(--ease-refined);
+}
+@utility iso-tilt-hover {
+	transform: rotateX(2deg) rotateY(-8deg);
+}
+
+/* ---- Keyframes ----------------------------------------------------------- */
+
+/* Gentle "breathing" used on the soft background blobs and floating cards. */
+@keyframes blob-drift {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+	50% {
+		transform: translate3d(0, -22px, 0) scale(1.06);
+	}
+}
+.animate-blob {
+	animation: blob-drift 14s ease-in-out infinite;
+}
+.animate-blob-slow {
+	animation: blob-drift 20s ease-in-out infinite;
+}
+
+@keyframes float-soft {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+.animate-float {
+	animation: float-soft 4s ease-in-out infinite;
+}
+.animate-float-delayed {
+	animation: float-soft 4s ease-in-out infinite;
+	animation-delay: 1.6s;
+}
+
+/* Soft pulsing ring for the live status dot. */
+@keyframes ping-soft {
+	0% {
+		transform: scale(1);
+		opacity: 0.6;
+	}
+	75%,
+	100% {
+		transform: scale(2.2);
+		opacity: 0;
+	}
+}
+.animate-ping-soft {
+	animation: ping-soft 2.4s var(--ease-refined) infinite;
+}
+
+/* Marquee for the logo trust strip — pure CSS, continuous. */
+@keyframes ct-marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+.marquee-track {
+	display: flex;
+	width: max-content;
+	animation: ct-marquee 34s linear infinite;
+}
+.marquee-mask {
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent,
+		#000 8%,
+		#000 92%,
+		transparent
+	);
+	mask-image: linear-gradient(
+		to right,
+		transparent,
+		#000 8%,
+		#000 92%,
+		transparent
+	);
+}
+
+/* Subtle dotted grid texture for atmospheric sections. */
+.dot-grid {
+	background-image: radial-gradient(
+		circle at center,
+		var(--color-indigo-200) 1px,
+		transparent 1px
+	);
+	background-size: 26px 26px;
+}
+
+/* ---- Reduced motion: kill all the ambient movement ----------------------- */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+	.iso-tilt {
+		transform: none;
+	}
+}
