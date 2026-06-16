@@ -123,3 +123,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
 
 </details>
+
+<details>
+<summary><b>Ui design (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [luxury-editorial-design-system](./ui-design/luxury-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
+
+</details>
