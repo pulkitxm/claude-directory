@@ -2,6 +2,7 @@
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [art-deco-gatsby-showcase](./art-deco-gatsby-showcase/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [bauhaus-form-follows-function](./bauhaus-form-follows-function/) | "WERKBUND" Bauhaus design-system landing page — a constructivist poster brought to life with three primary colours, thick black borders, hard offset shadows, binary radii, geometric circle/square/triangle primitives, color-blocked sections, a stats band, feature grid, pricing tiers, testimonials, journal, and a red/cream FAQ accordion | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
 | [flatline-design-system](./flatline-design-system/) | Complete flat-design-system showcase landing page — centralized tokens, sharp full-section color blocks (Blue/Emerald/Amber/dark), tinted color-block cards, thick outline buttons, a scaled "popular" pricing tier, multi-color stat count-ups, and high-contrast solid focus rings with zero box-shadows anywhere | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [lumina-minimalist-modern](./lumina-minimalist-modern/) | Full "Minimalist Modern" design-system landing page for analytics platform Lumina — Electric Blue signature gradient, inverted slate sections, Calistoga/Inter dual-font type, an animated abstract hero graphic, and centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
