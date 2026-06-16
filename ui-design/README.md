@@ -1,9 +1,10 @@
 # UI design
 
-9 **UI design** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+10 **UI design** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [aperture-minimalist-dark](./aperture-minimalist-dark/) | Full "Minimalist Dark" design-system landing page for fictional dev tool "Aperture" — layered-slate palette with a warm amber accent, vendored Space Grotesk / Inter / JetBrains Mono, drifting ambient glow orbs + noise/grid ambience, a self-driving glass ⌘K command palette that types and streams a deploy log, glass-effect bento features, count-up stats, a numbered workflow + tinted config code panel, a glowing featured pricing tier, accent-line testimonials, an accessible max-height FAQ accordion, and an amber-ring email CTA | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [art-deco-gatsby-showcase](./art-deco-gatsby-showcase/) | Self-contained Art Deco ("Gatsby") design-system showcase — gold-on-obsidian, vendored Marcellus/Josefin Sans, a rotating sunburst hero, stepped-corner cards with rotated-diamond icons, a Roman-numeral timeline, pricing tiers, testimonials, an accordion FAQ, underlined-input enquiry form, and a 5-column footer | HTML, CSS, vanilla JS |
 | [bauhaus-form-follows-function](./bauhaus-form-follows-function/) | "WERKBUND" Bauhaus design-system landing page — a constructivist poster brought to life with three primary colours, thick black borders, hard offset shadows, binary radii, geometric circle/square/triangle primitives, color-blocked sections, a stats band, feature grid, pricing tiers, testimonials, journal, and a red/cream FAQ accordion | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
 | [flatline-design-system](./flatline-design-system/) | Complete flat-design-system showcase landing page — centralized tokens, sharp full-section color blocks (Blue/Emerald/Amber/dark), tinted color-block cards, thick outline buttons, a scaled "popular" pricing tier, multi-color stat count-ups, and high-contrast solid focus rings with zero box-shadows anywhere | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
