@@ -1,0 +1,385 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   HIGH-FIDELITY CLAYMORPHISM — CENTRALIZED DESIGN TOKENS
+   ----------------------------------------------------------------------------
+   The single source of truth for the entire "digital clay" world. Every color,
+   the two typefaces, the super-rounded radii, and (crucially) the 4-layer
+   shadow stacks live here so the physics of clay are expressed once and reused.
+   Components never hard-code a one-off shadow or hex — they compose these.
+   ========================================================================== */
+
+/* ---- Self-hosted variable fonts (offline, no CDN) ----------------------- */
+@font-face {
+	font-family: "Nunito";
+	font-style: normal;
+	font-weight: 100 900; /* variable font — carries every weight we use (700/800/900) */
+	font-display: swap;
+	src: url("/fonts/nunito-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+		U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+		U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: "Nunito";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/nunito-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+		U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+		U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+		U+A720-A7FF;
+}
+@font-face {
+	font-family: "DM Sans";
+	font-style: normal;
+	font-weight: 100 1000;
+	font-display: swap;
+	src: url("/fonts/dmsans-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+		U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+		U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: "DM Sans";
+	font-style: normal;
+	font-weight: 100 1000;
+	font-display: swap;
+	src: url("/fonts/dmsans-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+		U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+		U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+		U+A720-A7FF;
+}
+
+/* ---- Theme tokens (consumed as bg-clay-*, text-clay-*, font-*, etc.) ----- */
+@theme {
+	/* The "candy shop" palette */
+	--color-clay-canvas: #f4f1fa; /* pale cool lavender-white — never pure white */
+	--color-clay-foreground: #332f3a; /* soft charcoal, WCAG-AA primary text */
+	--color-clay-muted: #635f69; /* dark lavender-gray — the lightest gray allowed */
+	--color-clay-accent: #7c3aed; /* vivid violet — hero / CTA */
+	--color-clay-accent-light: #a78bfa; /* lighter violet for gradients */
+	--color-clay-accent-alt: #db2777; /* hot pink — secondary emphasis */
+	--color-clay-sky: #0ea5e9; /* sky blue — info + blobs */
+	--color-clay-emerald: #10b981; /* success / benefits */
+	--color-clay-amber: #f59e0b; /* warning / ratings */
+	--color-clay-cardbg: rgba(255, 255, 255, 0.62); /* glass-clay card surface */
+	--color-clay-recess: #efebf5; /* recessed input fill */
+
+	/* Typefaces */
+	--font-display: "Nunito", ui-sans-serif, system-ui, sans-serif;
+	--font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+	/* The super-rounded radii scale (absolute values only) */
+	--radius-clay-xl: 60px; /* large hero containers */
+	--radius-clay-lg: 48px;
+	--radius-clay-md: 32px; /* standard card default */
+	--radius-clay-sm: 24px; /* medium / pills / nested images */
+	--radius-clay-xs: 20px; /* buttons + inputs minimum */
+}
+
+/* ============================================================================
+   THE SHADOW ENGINE — 4-layer stacks that make clay feel dense and physical.
+   Exposed as utilities so any element can opt into a clay material.
+   ========================================================================== */
+@layer utilities {
+	/* 1. Deep clay — large surfaces / the recessed "tray" containers */
+	.shadow-clay-deep {
+		box-shadow:
+			30px 30px 60px #cdc6d9,
+			-30px -30px 60px #ffffff,
+			inset 10px 10px 20px rgba(139, 92, 246, 0.05),
+			inset -10px -10px 20px rgba(255, 255, 255, 0.8);
+	}
+
+	/* 2. Clay card — standard floating content card */
+	.shadow-clay-card {
+		box-shadow:
+			16px 16px 32px rgba(160, 150, 180, 0.2),
+			-10px -10px 24px rgba(255, 255, 255, 0.9),
+			inset 6px 6px 12px rgba(139, 92, 246, 0.03),
+			inset -6px -6px 12px rgba(255, 255, 255, 1);
+	}
+	/* Card hover — lifts toward the viewer with a deeper, wider drop */
+	.shadow-clay-card-hover {
+		box-shadow:
+			26px 30px 50px rgba(150, 138, 175, 0.32),
+			-14px -14px 30px rgba(255, 255, 255, 1),
+			inset 6px 6px 12px rgba(139, 92, 246, 0.04),
+			inset -6px -6px 12px rgba(255, 255, 255, 1);
+	}
+
+	/* 3. Clay button — high convexity, bulging out */
+	.shadow-clay-button {
+		box-shadow:
+			12px 12px 24px rgba(139, 92, 246, 0.3),
+			-8px -8px 16px rgba(255, 255, 255, 0.4),
+			inset 4px 4px 8px rgba(255, 255, 255, 0.4),
+			inset -4px -4px 8px rgba(0, 0, 0, 0.1);
+	}
+	.shadow-clay-button-hover {
+		box-shadow:
+			18px 20px 34px rgba(124, 58, 237, 0.42),
+			-10px -10px 20px rgba(255, 255, 255, 0.5),
+			inset 4px 4px 8px rgba(255, 255, 255, 0.45),
+			inset -4px -4px 8px rgba(0, 0, 0, 0.12);
+	}
+	/* White / secondary convex button — neutral colored drop */
+	.shadow-clay-button-soft {
+		box-shadow:
+			12px 12px 24px rgba(160, 150, 180, 0.28),
+			-8px -8px 16px rgba(255, 255, 255, 0.95),
+			inset 3px 3px 6px rgba(255, 255, 255, 0.9),
+			inset -4px -4px 8px rgba(0, 0, 0, 0.05);
+	}
+
+	/* 4. Clay pressed — recessed into the surface (inputs, active states, open FAQ) */
+	.shadow-clay-pressed {
+		box-shadow:
+			inset 10px 10px 20px #d9d4e3,
+			inset -10px -10px 20px #ffffff;
+	}
+	/* A softer recess for smaller chips */
+	.shadow-clay-pressed-sm {
+		box-shadow:
+			inset 6px 6px 12px #d9d4e3,
+			inset -6px -6px 12px #ffffff;
+	}
+
+	/* Colored orb shadow — used on the circular icon orbs / stat orbs so the
+	   drop shadow tints to match the orb's own gradient. Hue is fed via the
+	   --orb custom property by the component. */
+	.shadow-clay-orb {
+		box-shadow:
+			10px 14px 26px var(--orb, rgba(124, 58, 237, 0.35)),
+			-6px -6px 14px rgba(255, 255, 255, 0.7),
+			inset 4px 4px 8px rgba(255, 255, 255, 0.45),
+			inset -5px -6px 10px rgba(0, 0, 0, 0.12);
+	}
+}
+
+/* ============================================================================
+   ANIMATIONS — the zero-gravity "buoyancy" of the clay world.
+   ========================================================================== */
+@keyframes clay-float {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-20px) rotate(2deg);
+	}
+}
+@keyframes clay-float-delayed {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-15px) rotate(-2deg);
+	}
+}
+@keyframes clay-float-slow {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-30px) rotate(5deg);
+	}
+}
+@keyframes clay-breathe {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.02);
+	}
+}
+/* Blobs drift on two axes so the ambient lighting never feels mechanical */
+@keyframes clay-blob {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+	}
+	33% {
+		transform: translate(4%, -6%) scale(1.06);
+	}
+	66% {
+		transform: translate(-5%, 4%) scale(0.96);
+	}
+}
+@keyframes clay-blob-alt {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+	}
+	33% {
+		transform: translate(-6%, 5%) scale(0.95);
+	}
+	66% {
+		transform: translate(5%, -4%) scale(1.08);
+	}
+}
+@keyframes clay-rise {
+	from {
+		opacity: 0;
+		transform: translateY(28px) scale(0.97);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+@keyframes clay-pop {
+	0% {
+		opacity: 0;
+		transform: scale(0.6);
+	}
+	70% {
+		transform: scale(1.06);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+@keyframes clay-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@layer utilities {
+	.animate-clay-float {
+		animation: clay-float 8s ease-in-out infinite;
+	}
+	.animate-clay-float-delayed {
+		animation: clay-float-delayed 10s ease-in-out infinite;
+	}
+	.animate-clay-float-slow {
+		animation: clay-float-slow 12s ease-in-out infinite;
+	}
+	.animate-clay-breathe {
+		animation: clay-breathe 6s ease-in-out infinite;
+	}
+	.animate-clay-blob {
+		animation: clay-blob 18s ease-in-out infinite;
+	}
+	.animate-clay-blob-alt {
+		animation: clay-blob-alt 22s ease-in-out infinite;
+	}
+	.animate-clay-spin-slow {
+		animation: clay-spin 14s linear infinite;
+	}
+	/* Scroll-reveal entrance, toggled by the data-attribute set by useReveal */
+	.clay-reveal {
+		opacity: 0;
+	}
+	.clay-reveal[data-shown="true"] {
+		animation: clay-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	}
+	.clay-pop[data-shown="true"] {
+		animation: clay-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	}
+
+	.animation-delay-2000 {
+		animation-delay: 2s;
+	}
+	.animation-delay-4000 {
+		animation-delay: 4s;
+	}
+}
+
+/* ============================================================================
+   BASE — canvas background, body type, sensible defaults.
+   ========================================================================== */
+@layer base {
+	* {
+		-webkit-tap-highlight-color: transparent;
+	}
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 7rem;
+	}
+	body {
+		margin: 0;
+		background-color: var(--color-clay-canvas);
+		color: var(--color-clay-foreground);
+		font-family: var(--font-body);
+		font-weight: 500;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		overflow-x: hidden;
+	}
+	::selection {
+		background: rgba(124, 58, 237, 0.18);
+		color: var(--color-clay-foreground);
+	}
+	/* Headings default to the rounded display face */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+	}
+	/* The multi-stop hero gradient text — kept large by usage (text-5xl+) */
+	.clay-text-gradient {
+		background-image: linear-gradient(
+			120deg,
+			var(--color-clay-foreground) 18%,
+			var(--color-clay-accent) 58%,
+			var(--color-clay-accent-alt) 100%
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+	/* A soft inner-paper texture used by the big "tray" containers */
+	.clay-tray {
+		background:
+			radial-gradient(
+				120% 80% at 18% 0%,
+				rgba(255, 255, 255, 0.65),
+				rgba(255, 255, 255, 0) 60%
+			),
+			#ece7f6;
+	}
+	/* Custom scrollbar that fits the clay world */
+	::-webkit-scrollbar {
+		width: 14px;
+	}
+	::-webkit-scrollbar-track {
+		background: var(--color-clay-canvas);
+	}
+	::-webkit-scrollbar-thumb {
+		background: #d4ccdf;
+		border: 4px solid var(--color-clay-canvas);
+		border-radius: 9999px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #c2b6d6;
+	}
+}
+
+/* ============================================================================
+   ACCESSIBILITY — honor reduced-motion by stilling the whole clay world.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+	.clay-reveal {
+		opacity: 1 !important;
+	}
+}
