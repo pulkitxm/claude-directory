@@ -140,3 +140,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Pixel-faithful "Sixsense" AI reference-finder page with canvas pixel-grid glass backgrounds, an organic cursor hover blob, a layered folder/lights stack, three floating reference cards, and a glass typewriter prompt box with a spinning gradient send button | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
 
 </details>
+
+<details>
+<summary><b>UI Design (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [lumen-design-system](./ui-design/lumen-design-system/) | Showcase landing page that fully expresses the Linear/Modern design language — four-layer ambient background with floating gradient blobs, mouse-tracking spotlight cards, gradient typography, scroll-linked hero parallax, multi-layer shadows, an asymmetric bento grid, a live token gallery and component playground, and a responsive hamburger menu, all on centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
+
+</details>
