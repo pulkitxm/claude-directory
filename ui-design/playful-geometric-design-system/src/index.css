@@ -1,0 +1,338 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   PLAYFUL GEOMETRIC — design tokens
+   "Stable grid, wild decoration." A Memphis-inspired system cleaned up for
+   modern screens: punchy saturated colors over a warm paper neutral, chunky
+   2px borders, hard offset "pop" shadows (no blur), and bouncy elastic motion.
+   All tokens live here so every component reads from one source of truth.
+   ========================================================================== */
+@theme {
+	/* Core palette (light mode) */
+	--color-background: #fffdf5; /* warm cream / paper */
+	--color-foreground: #1e293b; /* slate 800 — softer than black */
+	--color-muted: #f1f5f9; /* slate 100 */
+	--color-muted-foreground: #64748b; /* slate 500 */
+	--color-accent: #8b5cf6; /* vivid violet — primary brand */
+	--color-accent-foreground: #ffffff;
+	--color-secondary: #f472b6; /* hot pink — playful pop */
+	--color-tertiary: #fbbf24; /* amber / yellow — optimism */
+	--color-quaternary: #34d399; /* emerald / mint — freshness */
+	--color-border: #e2e8f0; /* slate 200 */
+	--color-input-border: #cbd5e1; /* slate 300 */
+	--color-card: #ffffff;
+	--color-ring: #8b5cf6;
+
+	/* Radii — varied on purpose (mix rounded + sharp for "leaf"/blob shapes) */
+	--radius-sm: 8px;
+	--radius-md: 16px;
+	--radius-lg: 24px;
+	--radius-xl: 28px;
+
+	/* Type families (vendored, see @font-face below) */
+	--font-heading: "Outfit", system-ui, sans-serif;
+	--font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+
+	/* Type scale — 1.25 (Major Third), melodic + harmonious */
+	--text-step--1: 0.8rem;
+	--text-step-0: 1rem;
+	--text-step-1: 1.25rem;
+	--text-step-2: 1.5625rem;
+	--text-step-3: 1.953rem;
+	--text-step-4: 2.441rem;
+	--text-step-5: 3.052rem;
+	--text-step-6: 3.815rem;
+
+	/* The signature bounce — overshoot/elastic */
+	--ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+	/* Keyframes registered as Tailwind animations */
+	--animate-marquee: marquee 38s linear infinite;
+	--animate-marquee-reverse: marquee-reverse 44s linear infinite;
+	--animate-float: float 7s ease-in-out infinite;
+	--animate-float-slow: float 11s ease-in-out infinite;
+	--animate-spin-slow: spin-slow 26s linear infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Vendored fonts (Outfit + Plus Jakarta Sans). Variable fonts: one file per
+   unicode range covers the full weight axis, so we declare a font-weight range.
+   -------------------------------------------------------------------------- */
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/outfit-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+		U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+		U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/outfit-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+		U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+		U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+		U+A720-A7FF;
+}
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	font-style: normal;
+	font-weight: 200 800;
+	font-display: swap;
+	src: url("/fonts/jakarta-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+		U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+		U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	font-style: normal;
+	font-weight: 200 800;
+	font-display: swap;
+	src: url("/fonts/jakarta-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+		U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+		U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+		U+A720-A7FF;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+	body {
+		margin: 0;
+		background-color: var(--color-background);
+		color: var(--color-foreground);
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-synthesis-weight: none;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		overflow-x: hidden;
+	}
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: var(--font-heading);
+		font-weight: 800;
+		line-height: 1.04;
+		letter-spacing: -0.02em;
+		text-wrap: balance;
+	}
+	::selection {
+		background: var(--color-tertiary);
+		color: var(--color-foreground);
+	}
+	/* High-contrast focus ring — thick + offset, in keeping with the system */
+	:focus-visible {
+		outline: 3px solid var(--color-accent);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+}
+
+/* ============================================================================
+   Component utilities — the reusable "look" of the system, expressed once.
+   ========================================================================== */
+@layer components {
+	/* The pop shadow (hard, no blur). Driven by a CSS var so hover/active states
+	   only have to swap the offset + the element translates to meet it. */
+	.pop {
+		--pop-x: 4px;
+		--pop-y: 4px;
+		--pop-color: var(--color-foreground);
+		box-shadow: var(--pop-x) var(--pop-y) 0 0 var(--pop-color);
+		transition:
+			box-shadow 0.3s var(--ease-bounce),
+			transform 0.3s var(--ease-bounce),
+			background-color 0.3s var(--ease-bounce),
+			color 0.3s var(--ease-bounce);
+	}
+	.pop-lg {
+		--pop-x: 8px;
+		--pop-y: 8px;
+	}
+
+	/* Press interaction shared by buttons + clickable cards. */
+	.pop-press:hover {
+		transform: translate(-2px, -2px);
+		--pop-x: 6px;
+		--pop-y: 6px;
+	}
+	.pop-press:active {
+		transform: translate(2px, 2px);
+		--pop-x: 2px;
+		--pop-y: 2px;
+	}
+	.pop-lg.pop-press:hover {
+		transform: translate(-3px, -3px);
+		--pop-x: 11px;
+		--pop-y: 11px;
+	}
+	.pop-lg.pop-press:active {
+		transform: translate(3px, 3px);
+		--pop-x: 4px;
+		--pop-y: 4px;
+	}
+}
+
+/* ============================================================================
+   Pattern fills + decorative textures (dot grid, diagonal stripes, grid lines).
+   ========================================================================== */
+@utility dot-grid {
+	background-image: radial-gradient(
+		var(--color-input-border) 1.6px,
+		transparent 1.6px
+	);
+	background-size: 22px 22px;
+}
+@utility dot-grid-accent {
+	background-image: radial-gradient(
+		color-mix(in srgb, var(--color-accent) 55%, transparent) 2px,
+		transparent 2px
+	);
+	background-size: 20px 20px;
+}
+@utility stripes {
+	background-image: repeating-linear-gradient(
+		45deg,
+		var(--color-foreground) 0,
+		var(--color-foreground) 2px,
+		transparent 2px,
+		transparent 9px
+	);
+}
+@utility grid-lines {
+	background-image:
+		linear-gradient(
+			to right,
+			color-mix(in srgb, var(--color-foreground) 7%, transparent) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			to bottom,
+			color-mix(in srgb, var(--color-foreground) 7%, transparent) 1px,
+			transparent 1px
+		);
+	background-size: 44px 44px;
+}
+
+/* ============================================================================
+   Keyframes — bouncy, elastic, fun.
+   ========================================================================== */
+@keyframes pop-in {
+	0% {
+		opacity: 0;
+		transform: translateY(22px) scale(0.92);
+	}
+	70% {
+		transform: translateY(-4px) scale(1.01);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+@keyframes wiggle {
+	0%,
+	100% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(3deg);
+	}
+	50% {
+		transform: rotate(-3deg);
+	}
+	75% {
+		transform: rotate(2deg);
+	}
+}
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+@keyframes marquee-reverse {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0) rotate(var(--float-rot, 0deg));
+	}
+	50% {
+		transform: translateY(-14px) rotate(var(--float-rot, 0deg));
+	}
+}
+@keyframes spin-slow {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Pop-in entrance, triggered when [data-reveal] flips to data-show="true".
+   Each child can stagger via --d. */
+[data-reveal] {
+	opacity: 0;
+}
+[data-reveal][data-show="true"] {
+	animation: pop-in 0.62s var(--ease-bounce) both;
+	animation-delay: var(--d, 0ms);
+}
+
+/* Wiggle on hover for enclosed icons / badges. */
+.group:hover .wiggle,
+.wiggle-hover:hover {
+	animation: wiggle 0.5s var(--ease-bounce);
+}
+
+/* ============================================================================
+   Reduced motion — disable bounce, wiggle, float, marquee, pop-in.
+   Content still appears (opacity forced to 1); nothing moves.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+	[data-reveal] {
+		opacity: 1 !important;
+	}
+	.animate-marquee,
+	.animate-marquee-reverse,
+	.animate-float,
+	.animate-float-slow,
+	.animate-spin-slow {
+		animation: none !important;
+	}
+	.pop-press:hover,
+	.pop-press:active {
+		transform: none !important;
+	}
+}
