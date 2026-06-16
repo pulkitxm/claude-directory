@@ -1,0 +1,15 @@
+# Animations & loaders
+
+9 **Animations & loaders** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [apex-scroll-hero](./apex-scroll-hero/) | Apple-product-page-style "Apex" hero whose 5-second F1 sunset film is scroll-scrubbed full-screen (scroll drives `video.currentTime`) with a synced speed/gear telemetry HUD | Next.js 16, React 19, TypeScript, Tailwind CSS v4 |
+| [bags-editorial-collage](./bags-editorial-collage/) | Three-section animated bags landing — a warm cream editorial sticker-collage hero, a scroll-driven unfolding-envelope collection stage, and an orbiting "perfect match" field, tied together by glowing serif accent words | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
+| [dot-nokia-typing-hero](./dot-nokia-typing-hero/) | Single-screen "dot." calm-messaging hero with a full-bleed Nokia-phone background video, a live typing/deleting animation in a Nokia cellphone font overlaid on the phone screen, and a floating glass pill navbar | React 19, Vite, TypeScript, Tailwind CSS v4, Motion |
+| [linkflow-boomerang-hero](./linkflow-boomerang-hero/) | Linkflow hero concept with boomerang-style visual direction and CSS-only animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [mainframe-scrub-hero](./mainframe-scrub-hero/) | Mainframe contact hero whose background film is scrubbed by cursor movement, with typewriter headline and multi-select service pills | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide |
+| [microvisuals-boomerang-hero](./microvisuals-boomerang-hero/) | Fullscreen hero with GSAP boomerang-style animation and a custom display font | React, TypeScript, Vite, Tailwind CSS, GSAP, Lucide |
+| [moneta-key-preloader](./moneta-key-preloader/) | Full-viewport cinematic "Moneta Key" preloader — color-dodge glowing sphere, masked dashed orbit line, wave-cut logo, and a curved canvas-based 0–100 number arc that idles forever | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Canvas 2D |
+| [pallet-ross-landing](./pallet-ross-landing/) | Scroll-driven landing for fictional artist marketplace "Pallet Ross" where seven artwork cards perform a choreographed intro, then gather into a stack, descend, and fan into a diagonal cascade ladder locked across three full-height sections | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, Lucide |
+| [qclay-hexagon-loader](./qclay-hexagon-loader/) | Full-screen recreation of the QClay loader — an animated honeycomb of real SVG hexagon tiles with a glowing blue active center, breathing rAF motion, crossfading icons, a shimmering label, and an organic looping progress bar | React, TypeScript, Vite, SVG |

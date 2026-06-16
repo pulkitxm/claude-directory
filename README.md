@@ -23,7 +23,8 @@ All PRs get reviewed and merged by Claude Opus, so don't be shy — if the promp
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
-### Hero sections (32)
+<details>
+<summary><b>Hero sections (32)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -60,7 +61,10 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [wanderful-cinematic-hero](./hero-sections/wanderful-cinematic-hero/) | Full-viewport cinematic hero for travel brand "Wanderful" with GSAP animation and a custom display font | React, TypeScript, Vite, Tailwind CSS, GSAP, Lucide |
 | [xero-encryption-hero](./hero-sections/xero-encryption-hero/) | Single-page encryption-product hero for "Xero" with an animated icon pipeline and a pink-magenta gradient arc on a black page, written in plain CSS | React, TypeScript, Vite, CSS |
 
-### Landing pages (21)
+</details>
+
+<details>
+<summary><b>Landing pages (21)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -86,7 +90,10 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
 | [viktor-oddy-landing](./landing-pages/viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
 
-### Animations & loaders (9)
+</details>
+
+<details>
+<summary><b>Animations &amp; loaders (9)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -100,21 +107,30 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [pallet-ross-landing](./animations-loaders/pallet-ross-landing/) | Scroll-driven landing for fictional artist marketplace "Pallet Ross" where seven artwork cards perform a choreographed intro, then gather into a stack, descend, and fan into a diagonal cascade ladder locked across three full-height sections | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, Lucide |
 | [qclay-hexagon-loader](./animations-loaders/qclay-hexagon-loader/) | Full-screen recreation of the QClay loader — an animated honeycomb of real SVG hexagon tiles with a glowing blue active center, breathing rAF motion, crossfading icons, a shimmering label, and an organic looping progress bar | React, TypeScript, Vite, SVG |
 
-### 3D & games (2)
+</details>
+
+<details>
+<summary><b>3D &amp; games (2)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [lovable-webgl-hero](./3d-games/lovable-webgl-hero/) | 1:1 recreation of the Lovable landing page — a full-viewport WebGL hero driven by the real CoreRenderer runtime, a glass navbar with full-width dropdowns, an animated typewriter prompt input, and a 3D trusted-by logo carousel | TanStack Start, React 19, Tailwind CSS v4, Framer Motion, Lucide, WebGL |
 | [sidi-bou-said-3d-walk](./3d-games/sidi-bou-said-3d-walk/) | Navigable, fully procedural 3D walk through Sidi Bou Said, Tunisia in a single HTML file | Three.js, single-file HTML/JS |
 
-### Portfolios (2)
+</details>
+
+<details>
+<summary><b>Portfolios (2)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [jack-3d-portfolio](./portfolios/jack-3d-portfolio/) | Dark-themed 3D creator portfolio landing page for Jack with gradient hero text | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [michael-smith-portfolio](./portfolios/michael-smith-portfolio/) | Dark single-page creator portfolio with GSAP / Framer Motion animations and HLS video | React, TypeScript, Vite, Tailwind CSS, GSAP, Framer Motion, hls.js, React Router |
 
-### Components & UI (4)
+</details>
+
+<details>
+<summary><b>Components &amp; UI (4)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -122,3 +138,5 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [core-features-gradient-cards](./components-ui/core-features-gradient-cards/) | Static "Core Features" marketing section with three gradient feature cards | Single-file HTML/CSS |
 | [nexto-404-hero](./components-ui/nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Pixel-faithful "Sixsense" AI reference-finder page with canvas pixel-grid glass backgrounds, an organic cursor hover blob, a layered folder/lights stack, three floating reference cards, and a glass typewriter prompt box with a spinning gradient send button | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
+
+</details>
