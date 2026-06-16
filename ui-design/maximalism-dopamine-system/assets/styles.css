@@ -1,0 +1,1722 @@
+/* =============================================================================
+   DOPAMINE — A MAXIMALISM / DOPAMINE DESIGN SYSTEM
+   The DNA: centralized tokens, reusable pattern / shadow / animation utilities.
+   "MORE IS MORE." Empty space is wasted space.
+   ============================================================================= */
+
+/* ----------------------------------------------------------------- 0. FONTS */
+/* All fonts vendored locally as woff2 (latin subset). No remote requests. */
+
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 100 900; /* variable */
+	font-display: swap;
+	src: url("./fonts/outfit.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Unbounded";
+	font-style: normal;
+	font-weight: 200 900; /* variable */
+	font-display: swap;
+	src: url("./fonts/unbounded.woff2") format("woff2");
+}
+@font-face {
+	font-family: "DM Sans";
+	font-style: normal;
+	font-weight: 100 1000; /* variable */
+	font-display: swap;
+	src: url("./fonts/dm-sans.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Bangers";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("./fonts/bangers.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Bungee";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("./fonts/bungee.woff2") format("woff2");
+}
+
+/* ------------------------------------------------------- 1. DESIGN TOKENS */
+:root {
+	/* --- Base colors (dark-mode foundation) --- */
+	--bg: #0d0d1a; /* deep cosmic purple-black */
+	--fg: #ffffff; /* pure white, 19.5:1 on --bg */
+	--muted: #2d1b4e; /* dark purple containers */
+	--border-base: #ff3af2; /* hot magenta default border */
+
+	/* --- The five accents (the soul of the system) --- */
+	--accent: #ff3af2; /* 1 magenta  */
+	--secondary: #00f5d4; /* 2 cyan     */
+	--tertiary: #ffe600; /* 3 yellow   */
+	--quaternary: #ff6b35; /* 4 orange   */
+	--quinary: #7b2fff; /* 5 purple   */
+
+	/* rgb channels for rgba() glows */
+	--accent-rgb: 255, 58, 242;
+	--secondary-rgb: 0, 245, 212;
+	--tertiary-rgb: 255, 230, 0;
+	--quaternary-rgb: 255, 107, 53;
+	--quinary-rgb: 123, 47, 255;
+
+	/* --- Type --- */
+	--font-heading: "Outfit", "Unbounded", system-ui, sans-serif;
+	--font-display: "Bungee", "Bangers", system-ui, sans-serif;
+	--font-comic: "Bangers", "Bungee", system-ui, sans-serif;
+	--font-body: "DM Sans", system-ui, sans-serif;
+
+	/* --- Radii --- */
+	--r-btn: 9999px;
+	--r-card: 24px;
+	--r-container: 16px;
+
+	/* --- Multi-layer shadows (always stacked, never single) --- */
+	--shadow-multi: 8px 8px 0 var(--tertiary), 16px 16px 0 var(--accent);
+	--shadow-multi-lg: 12px 12px 0 var(--secondary), 24px 24px 0 var(--accent),
+		36px 36px 0 var(--tertiary);
+	--glow: 0 0 20px rgba(var(--accent-rgb), 0.5),
+		0 0 40px rgba(var(--secondary-rgb), 0.3);
+	--glow-lg: 0 0 40px rgba(var(--accent-rgb), 0.6),
+		0 0 80px rgba(var(--tertiary-rgb), 0.4),
+		0 0 120px rgba(var(--quinary-rgb), 0.3);
+
+	/* --- Text-shadow stacks (2px increments, rotate accents) --- */
+	--ts-single: 2px 2px 0 var(--quinary);
+	--ts-double: 2px 2px 0 var(--quinary), 4px 4px 0 var(--accent);
+	--ts-triple: 2px 2px 0 var(--quinary), 4px 4px 0 var(--accent),
+		6px 6px 0 var(--secondary);
+	--ts-mega: 4px 4px 0 var(--quinary), 8px 8px 0 var(--accent),
+		12px 12px 0 var(--secondary);
+
+	/* --- Easing --- */
+	--ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ------------------------------------------------------------- 2. RESET */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	scroll-behavior: smooth;
+	-webkit-text-size-adjust: 100%;
+	overflow-x: clip; /* clip rotated-marquee / bleeding-word overhang */
+}
+body {
+	background: var(--bg);
+	color: var(--fg);
+	font-family: var(--font-body);
+	font-size: 18px; /* larger than typical */
+	line-height: 1.625;
+	font-weight: 400;
+	overflow-x: clip;
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	min-height: 100vh;
+	-webkit-font-smoothing: antialiased;
+}
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+button,
+input,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+.skip-link {
+	position: absolute;
+	left: 1rem;
+	top: -120px;
+	z-index: 100;
+	background: var(--tertiary);
+	color: var(--bg);
+	font-family: var(--font-heading);
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	padding: 0.75rem 1.5rem;
+	border: 4px solid var(--accent);
+	border-radius: var(--r-btn);
+	transition: top 0.2s var(--ease-bounce);
+}
+.skip-link:focus {
+	top: 1rem;
+}
+
+/* --------------------------------------------------- 3. GLOBAL PATTERNS */
+/* Two fixed, full-page patterns (dots + stripes), layered behind everything. */
+body::before,
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+}
+body::before {
+	background-image: radial-gradient(
+		circle,
+		rgba(var(--accent-rgb), 0.14) 1.4px,
+		transparent 1.4px
+	);
+	background-size: 28px 28px;
+}
+body::after {
+	background-image: repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 12px,
+		rgba(var(--tertiary-rgb), 0.05) 12px,
+		rgba(var(--tertiary-rgb), 0.05) 24px
+	);
+}
+
+/* ---------------------------------------- 4. PATTERN UTILITY CLASSES ----- */
+/* Applied via pseudo-elements on sections so they never catch pointer events. */
+.pattern-dots,
+.pattern-stripes,
+.pattern-checker,
+.pattern-mesh {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+}
+.pattern-dots {
+	background-image: radial-gradient(
+		circle,
+		var(--dot-color, rgba(var(--secondary-rgb), 0.18)) 2px,
+		transparent 2px
+	);
+	background-size: var(--dot-size, 34px) var(--dot-size, 34px);
+}
+.pattern-stripes {
+	background-image: repeating-linear-gradient(
+		var(--stripe-angle, 45deg),
+		transparent,
+		transparent 11px,
+		var(--stripe-color, rgba(var(--tertiary-rgb), 0.07)) 11px,
+		var(--stripe-color, rgba(var(--tertiary-rgb), 0.07)) 22px
+	);
+}
+.pattern-checker {
+	background-image: conic-gradient(
+		from 90deg at 1px 1px,
+		transparent 90deg,
+		var(--check-color, rgba(var(--secondary-rgb), 0.06)) 0
+	);
+	background-size: var(--check-size, 44px) var(--check-size, 44px);
+}
+.pattern-mesh {
+	background:
+		radial-gradient(
+			ellipse at 18% 28%,
+			rgba(var(--accent-rgb), 0.18) 0%,
+			transparent 50%
+		),
+		radial-gradient(
+			ellipse at 82% 68%,
+			rgba(var(--secondary-rgb), 0.16) 0%,
+			transparent 50%
+		),
+		radial-gradient(
+			ellipse at 52% 50%,
+			rgba(var(--quinary-rgb), 0.14) 0%,
+			transparent 60%
+		);
+}
+
+/* ------------------------------------------- 5. SHADOW / GLOW UTILITIES --- */
+.shadow-multi {
+	box-shadow: var(--shadow-multi);
+}
+.shadow-multi-lg {
+	box-shadow: var(--shadow-multi-lg);
+}
+.glow-accent {
+	box-shadow: var(--glow);
+}
+.glow-accent-lg {
+	box-shadow: var(--glow-lg);
+}
+
+/* -------------------------------------------------- 6. TYPE UTILITIES ----- */
+.ts-single {
+	text-shadow: var(--ts-single);
+}
+.ts-double {
+	text-shadow: var(--ts-double);
+}
+.ts-triple {
+	text-shadow: var(--ts-triple);
+}
+.ts-mega {
+	text-shadow: var(--ts-mega);
+}
+
+.font-heading {
+	font-family: var(--font-heading);
+}
+.font-display {
+	font-family: var(--font-display);
+}
+.font-comic {
+	font-family: var(--font-comic);
+}
+
+/* Animated multi-color gradient text. */
+.grad-text {
+	background: linear-gradient(
+		90deg,
+		var(--accent),
+		var(--secondary),
+		var(--tertiary),
+		var(--quaternary),
+		var(--accent)
+	);
+	background-size: 300% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	animation: gradient-shift 4s ease infinite;
+	text-shadow: none;
+}
+
+/* ----------------------------------------------------- 7. KEYFRAMES ------ */
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-20px) rotate(5deg);
+	}
+}
+@keyframes float-reverse {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(20px) rotate(-5deg);
+	}
+}
+@keyframes float-slow {
+	0%,
+	100% {
+		transform: translateY(0) translateX(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-28px) translateX(10px) rotate(-8deg);
+	}
+}
+@keyframes pulse-glow {
+	0%,
+	100% {
+		box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.5);
+	}
+	50% {
+		box-shadow:
+			0 0 40px rgba(var(--accent-rgb), 0.85),
+			0 0 70px rgba(var(--secondary-rgb), 0.5);
+	}
+}
+@keyframes gradient-shift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@keyframes spin-slow {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes spin-slow-rev {
+	from {
+		transform: rotate(360deg);
+	}
+	to {
+		transform: rotate(0deg);
+	}
+}
+@keyframes wiggle {
+	0%,
+	100% {
+		transform: rotate(-3deg);
+	}
+	50% {
+		transform: rotate(3deg);
+	}
+}
+@keyframes bounce-subtle {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+@keyframes marquee-rev {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes rise-in {
+	from {
+		opacity: 0;
+		transform: translateY(40px) rotate(var(--rise-rot, 0deg));
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) rotate(var(--rise-rot, 0deg));
+	}
+}
+
+.animate-float {
+	animation: float 6s ease-in-out infinite;
+	will-change: transform;
+}
+.animate-float-reverse {
+	animation: float-reverse 5s ease-in-out infinite;
+	will-change: transform;
+}
+.animate-float-slow {
+	animation: float-slow 8s ease-in-out infinite;
+	will-change: transform;
+}
+.animate-pulse-glow {
+	animation: pulse-glow 2s ease-in-out infinite;
+}
+.animate-spin-slow {
+	animation: spin-slow 20s linear infinite;
+	will-change: transform;
+}
+.animate-spin-slow-rev {
+	animation: spin-slow-rev 26s linear infinite;
+	will-change: transform;
+}
+.animate-wiggle {
+	animation: wiggle 1.6s ease-in-out infinite;
+	will-change: transform;
+}
+.animate-bounce-subtle {
+	animation: bounce-subtle 2s ease-in-out infinite;
+	will-change: transform;
+}
+
+/* ----------------------------------------------- 8. LAYOUT PRIMITIVES ---- */
+.shell {
+	width: 100%;
+	max-width: 1280px;
+	margin-inline: auto;
+	padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+	.shell {
+		padding-inline: 2rem;
+	}
+}
+.section {
+	position: relative;
+	z-index: 1;
+	padding-block: 6rem;
+	overflow: clip;
+}
+@media (min-width: 768px) {
+	.section {
+		padding-block: 8rem;
+	}
+}
+.section > .shell {
+	position: relative;
+	z-index: 10;
+}
+
+/* Big section eyebrow label */
+.eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	font-family: var(--font-heading);
+	font-weight: 800;
+	font-size: 0.8rem;
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+	color: var(--bg);
+	background: var(--eyebrow-bg, var(--tertiary));
+	border: 4px solid var(--eyebrow-border, var(--accent));
+	border-radius: var(--r-btn);
+	padding: 0.55rem 1.25rem;
+	transform: rotate(-2deg);
+	box-shadow: 4px 4px 0 var(--eyebrow-border, var(--accent));
+}
+
+/* Section headline */
+.headline {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	line-height: 0.92;
+	letter-spacing: -0.03em;
+	text-transform: uppercase;
+}
+.headline-xl {
+	font-size: clamp(3rem, 11vw, 9rem);
+}
+.headline-lg {
+	font-size: clamp(2.6rem, 7vw, 5rem);
+}
+
+.lead {
+	font-size: clamp(1.1rem, 2vw, 1.35rem);
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.86);
+	max-width: 46ch;
+}
+
+/* Massive bleeding background word */
+.bg-word {
+	position: absolute;
+	font-family: var(--font-display);
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: -0.04em;
+	line-height: 0.8;
+	font-size: clamp(8rem, 26vw, 22rem);
+	color: transparent;
+	-webkit-text-stroke: 3px rgba(255, 255, 255, 0.06);
+	z-index: 0;
+	pointer-events: none;
+	user-select: none;
+	white-space: nowrap;
+}
+.bg-word.filled {
+	color: var(--bgword-color, rgba(var(--quinary-rgb), 0.1));
+	-webkit-text-stroke: 0;
+}
+
+/* ----------------------------------------------------- 9. BUTTONS -------- */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.6rem;
+	font-family: var(--font-heading);
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.16em;
+	font-size: 0.95rem;
+	height: 3.5rem; /* 56px touch target */
+	padding-inline: 2.5rem;
+	border-radius: var(--r-btn);
+	border: 4px solid transparent;
+	cursor: pointer;
+	position: relative;
+	transition:
+		transform 0.3s var(--ease-bounce),
+		box-shadow 0.3s ease,
+		background-position 0.5s ease,
+		background-color 0.3s ease,
+		color 0.3s ease;
+	background-color: transparent;
+	white-space: nowrap;
+}
+.btn:focus-visible {
+	outline: 3px dashed var(--secondary);
+	outline-offset: 4px;
+	box-shadow:
+		0 0 0 4px rgba(var(--accent-rgb), 0.4),
+		0 0 0 10px rgba(var(--tertiary-rgb), 0.3);
+}
+.btn .ico {
+	width: 1.25rem;
+	height: 1.25rem;
+	stroke-width: 3;
+}
+
+.btn-lg {
+	height: 4rem;
+	padding-inline: 3rem;
+	font-size: 1.05rem;
+}
+
+/* Primary — gradient across 3 accents, clashing yellow border, glow+hard */
+.btn-primary {
+	background-image: linear-gradient(
+		90deg,
+		var(--accent),
+		var(--quinary),
+		var(--secondary)
+	);
+	background-size: 200% 100%;
+	background-position: 0% 50%;
+	border-color: var(--tertiary);
+	color: #fff;
+	box-shadow:
+		0 0 26px rgba(var(--accent-rgb), 0.55),
+		6px 6px 0 var(--tertiary),
+		12px 12px 0 var(--quinary);
+}
+.btn-primary:hover {
+	transform: scale(1.08) rotate(-1deg);
+	background-position: 100% 50%;
+	box-shadow:
+		0 0 44px rgba(var(--accent-rgb), 0.8),
+		8px 8px 0 var(--tertiary),
+		16px 16px 0 var(--quinary);
+}
+.btn-primary:active {
+	transform: scale(0.95);
+	box-shadow:
+		0 0 20px rgba(var(--accent-rgb), 0.5),
+		3px 3px 0 var(--tertiary);
+}
+
+/* Secondary — transparent, dashed border, fills on hover */
+.btn-secondary {
+	background-color: transparent;
+	border-style: dashed;
+	border-color: var(--secondary);
+	color: var(--secondary);
+}
+.btn-secondary:hover {
+	transform: scale(1.05) rotate(1deg);
+	background-color: var(--secondary);
+	border-style: solid;
+	color: var(--bg);
+	box-shadow: 6px 6px 0 var(--accent);
+}
+.btn-secondary:active {
+	transform: scale(0.96);
+}
+
+/* Outline — semi muted bg, hard stacked shadow, lifts toward shadow on hover */
+.btn-outline {
+	background-color: rgba(45, 27, 78, 0.6);
+	border-color: var(--tertiary);
+	color: var(--tertiary);
+	box-shadow: 8px 8px 0 var(--accent), 16px 16px 0 var(--quinary);
+	backdrop-filter: blur(4px);
+}
+.btn-outline:hover {
+	transform: translate(-4px, -4px) scale(1.02);
+	box-shadow:
+		12px 12px 0 var(--accent),
+		24px 24px 0 var(--quinary),
+		0 0 24px rgba(var(--tertiary-rgb), 0.4);
+}
+.btn-outline:active {
+	transform: translate(0, 0);
+	box-shadow: 2px 2px 0 var(--accent);
+}
+
+/* Ghost — gradient underline, light fill on hover */
+.btn-ghost {
+	background-color: transparent;
+	border-color: transparent;
+	color: #fff;
+	padding-inline: 1.5rem;
+}
+.btn-ghost::after {
+	content: "";
+	position: absolute;
+	left: 1.5rem;
+	right: 1.5rem;
+	bottom: 0.9rem;
+	height: 4px;
+	border-radius: 9999px;
+	background: linear-gradient(90deg, var(--accent), var(--secondary), var(--tertiary));
+	transform: scaleX(0.4);
+	transform-origin: left;
+	transition: transform 0.3s var(--ease-bounce);
+}
+.btn-ghost:hover {
+	transform: scale(1.05);
+	background-color: rgba(var(--quinary-rgb), 0.18);
+}
+.btn-ghost:hover::after {
+	transform: scaleX(1);
+}
+
+.btn[disabled],
+.btn[aria-disabled="true"] {
+	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none;
+	filter: saturate(0.5);
+}
+
+/* ----------------------------------------------------- 10. CARDS --------- */
+.card {
+	position: relative;
+	background: rgba(45, 27, 78, 0.8);
+	backdrop-filter: blur(4px);
+	border: 4px solid var(--card-border, var(--accent));
+	border-radius: var(--r-card);
+	padding: 2rem;
+	box-shadow:
+		8px 8px 0 var(--card-shadow-1, var(--tertiary)),
+		16px 16px 0 var(--card-shadow-2, var(--secondary));
+	transition:
+		transform 0.3s ease-out,
+		box-shadow 0.3s ease-out;
+	overflow: hidden;
+}
+@media (min-width: 768px) {
+	.card {
+		padding: 2.5rem;
+	}
+}
+/* low-opacity pattern overlay inside each card */
+.card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 0.05) 1px,
+		transparent 1px
+	);
+	background-size: 18px 18px;
+	pointer-events: none;
+	z-index: 0;
+}
+.card > * {
+	position: relative;
+	z-index: 1;
+}
+.card:hover {
+	transform: translateY(-6px) scale(1.02) rotate(var(--card-hover-rot, 1deg));
+	box-shadow:
+		12px 12px 0 var(--card-shadow-1, var(--tertiary)),
+		24px 24px 0 var(--card-shadow-2, var(--secondary)),
+		0 0 36px rgba(var(--accent-rgb), 0.3);
+}
+.card-clip {
+	clip-path: polygon(
+		0 0,
+		100% 0,
+		100% calc(100% - 26px),
+		calc(100% - 26px) 100%,
+		0 100%
+	);
+}
+
+.card-header {
+	border-bottom: 4px dashed var(--card-divider, var(--tertiary));
+	padding-bottom: 1.25rem;
+	margin-bottom: 1.25rem;
+}
+.card-title {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	text-transform: uppercase;
+	font-size: 1.5rem;
+	line-height: 1.05;
+	letter-spacing: -0.01em;
+	text-shadow: var(--ts-double);
+}
+.card-desc {
+	color: rgba(255, 255, 255, 0.82);
+	font-size: 1.02rem;
+	line-height: 1.6;
+}
+
+/* Icon chip */
+.icon-chip {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 4.5rem;
+	height: 4.5rem;
+	border-radius: 18px;
+	border: 4px dashed var(--chip-border, var(--tertiary));
+	background: rgba(var(--chip-bg-rgb, var(--accent-rgb)), 0.2);
+	color: var(--chip-fg, var(--accent));
+	margin-bottom: 1.5rem;
+}
+.icon-chip.round {
+	border-radius: 9999px;
+	border-style: solid;
+}
+.icon-chip svg {
+	width: 2.2rem;
+	height: 2.2rem;
+	stroke-width: 2.75;
+}
+
+/* ------------------------------------------------- 11. FORM INPUTS ------- */
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+.field-label {
+	font-family: var(--font-comic);
+	font-size: 1.3rem;
+	letter-spacing: 0.04em;
+	color: var(--label-color, var(--tertiary));
+	transform: rotate(-1.5deg);
+	align-self: flex-start;
+}
+.input,
+.textarea {
+	width: 100%;
+	background: rgba(45, 27, 78, 0.5);
+	backdrop-filter: blur(4px);
+	border: 4px solid var(--input-border, var(--accent));
+	color: #fff;
+	font-size: 1.05rem;
+	font-weight: 700;
+	padding: 0.95rem 1.5rem;
+	transition: all 0.3s ease;
+}
+.input {
+	border-radius: var(--r-btn);
+}
+.textarea {
+	border-radius: var(--r-container);
+	min-height: 8rem;
+	resize: vertical;
+}
+.input::placeholder,
+.textarea::placeholder {
+	color: rgba(255, 255, 255, 0.4);
+	font-weight: 500;
+}
+.input:focus,
+.textarea:focus {
+	outline: none;
+	border-color: var(--secondary);
+	background: var(--muted);
+	box-shadow:
+		0 0 22px rgba(var(--secondary-rgb), 0.5),
+		0 0 0 4px rgba(var(--accent-rgb), 0.3),
+		0 0 0 8px rgba(var(--tertiary-rgb), 0.25);
+}
+
+/* --------------------------------------------- 12. FLOATING DECORATION --- */
+.deco {
+	position: absolute;
+	z-index: 3;
+	pointer-events: none;
+	user-select: none;
+}
+.deco svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+	filter: drop-shadow(0 0 14px rgba(var(--deco-glow-rgb, var(--accent-rgb)), 0.6));
+}
+.deco-emoji {
+	position: absolute;
+	z-index: 3;
+	pointer-events: none;
+	user-select: none;
+	line-height: 1;
+}
+
+/* tiny chip / badge / pill helpers */
+.tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-family: var(--font-heading);
+	font-weight: 800;
+	font-size: 0.78rem;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	padding: 0.35rem 0.9rem;
+	border-radius: 9999px;
+	border: 3px solid currentColor;
+}
+
+/* ----------------------------------------------------- 13. NAV ---------- */
+.nav {
+	position: fixed;
+	top: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 50;
+	width: calc(100% - 2rem);
+	max-width: 1180px;
+}
+.nav-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	background: rgba(13, 13, 26, 0.78);
+	backdrop-filter: blur(14px);
+	border: 4px solid var(--accent);
+	border-radius: var(--r-btn);
+	padding: 0.6rem 0.6rem 0.6rem 1.5rem;
+	box-shadow: 0 0 24px rgba(var(--accent-rgb), 0.35), 5px 5px 0 var(--quinary);
+}
+.brand {
+	font-family: var(--font-display);
+	font-weight: 900;
+	font-size: 1.5rem;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+}
+.brand .dot {
+	width: 1.1rem;
+	height: 1.1rem;
+	border-radius: 9999px;
+	background: linear-gradient(135deg, var(--tertiary), var(--quaternary));
+	box-shadow: 0 0 14px rgba(var(--tertiary-rgb), 0.8);
+}
+.nav-links {
+	display: none;
+	align-items: center;
+	gap: 0.35rem;
+}
+@media (min-width: 900px) {
+	.nav-links {
+		display: flex;
+	}
+}
+.nav-link {
+	font-family: var(--font-heading);
+	font-weight: 800;
+	font-size: 0.82rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	padding: 0.55rem 1rem;
+	border-radius: 9999px;
+	border: 3px solid transparent;
+	transition: all 0.2s var(--ease-bounce);
+	color: rgba(255, 255, 255, 0.85);
+}
+.nav-link:hover {
+	color: var(--bg);
+	background: var(--nav-link-c, var(--secondary));
+	border-color: var(--fg);
+	transform: translateY(-2px) rotate(-2deg);
+}
+.nav-link:focus-visible {
+	outline: 3px dashed var(--tertiary);
+	outline-offset: 3px;
+}
+.nav-cta {
+	height: 2.9rem;
+	padding-inline: 1.6rem;
+	font-size: 0.82rem;
+}
+
+/* mobile menu toggle */
+.nav-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.9rem;
+	height: 2.9rem;
+	border-radius: 9999px;
+	border: 3px solid var(--tertiary);
+	background: rgba(var(--quinary-rgb), 0.3);
+	color: var(--tertiary);
+	cursor: pointer;
+	transition: all 0.2s var(--ease-bounce);
+}
+.nav-toggle svg {
+	width: 1.4rem;
+	height: 1.4rem;
+	stroke-width: 3;
+}
+.nav-toggle:hover {
+	transform: scale(1.08) rotate(6deg);
+}
+.nav-toggle:focus-visible {
+	outline: 3px dashed var(--secondary);
+	outline-offset: 3px;
+}
+@media (min-width: 900px) {
+	.nav-toggle {
+		display: none;
+	}
+}
+
+/* mobile drawer */
+.drawer {
+	position: fixed;
+	inset: 0;
+	z-index: 49;
+	background: rgba(13, 13, 26, 0.97);
+	backdrop-filter: blur(8px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.drawer[data-open="true"] {
+	opacity: 1;
+	visibility: visible;
+}
+.drawer a {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	text-shadow: var(--ts-double);
+	transform: rotate(-2deg);
+	transition: all 0.2s var(--ease-bounce);
+}
+.drawer a:nth-child(even) {
+	transform: rotate(2deg);
+}
+.drawer a:hover {
+	color: var(--tertiary);
+	transform: scale(1.1) rotate(0deg);
+}
+
+/* ----------------------------------------------------- 14. MARQUEE ------ */
+.marquee {
+	position: relative;
+	z-index: 4;
+	overflow: hidden;
+	border-block: 8px solid var(--marquee-border, var(--accent));
+	background: var(--marquee-bg, var(--tertiary));
+	padding-block: 1rem;
+	transform: rotate(var(--marquee-rot, -2deg));
+	margin-block: -1.5rem;
+}
+.marquee-track {
+	display: flex;
+	width: max-content;
+	gap: 2.5rem;
+	animation: marquee var(--marquee-dur, 26s) linear infinite;
+	will-change: transform;
+}
+.marquee.rev .marquee-track {
+	animation-name: marquee-rev;
+}
+.marquee-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 2.5rem;
+	font-family: var(--font-display);
+	font-weight: 900;
+	font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	color: var(--bg);
+	white-space: nowrap;
+}
+.marquee-item .star {
+	color: var(--bg);
+	font-size: 1.4em;
+}
+
+/* -------------------------------------------- 15. STATS / NUMBER GRID ---- */
+.stat-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5rem;
+}
+@media (min-width: 640px) {
+	.stat-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (min-width: 1024px) {
+	.stat-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+.stat {
+	position: relative;
+	border: 4px solid var(--stat-border, var(--accent));
+	border-radius: var(--r-card);
+	background: rgba(45, 27, 78, 0.7);
+	padding: 2rem 1.5rem;
+	text-align: center;
+	box-shadow: 6px 6px 0 var(--stat-shadow, var(--tertiary));
+	transition: transform 0.3s var(--ease-bounce), box-shadow 0.3s ease;
+}
+.stat:hover {
+	transform: translateY(-6px) rotate(-2deg);
+	box-shadow: 10px 10px 0 var(--stat-shadow, var(--tertiary)),
+		0 0 28px rgba(var(--accent-rgb), 0.3);
+}
+.stat-num {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	font-size: clamp(2.6rem, 6vw, 3.6rem);
+	line-height: 1;
+	color: var(--stat-num, var(--tertiary));
+	text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+.stat-label {
+	margin-top: 0.6rem;
+	font-family: var(--font-heading);
+	font-weight: 700;
+	font-size: 0.8rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.85);
+}
+
+/* ----------------------------------------------- 16. FEATURE GRID ------- */
+.feature-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+}
+@media (min-width: 768px) {
+	.feature-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2.5rem;
+	}
+}
+@media (min-width: 1024px) {
+	.feature-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+/* broken-grid vertical offsets */
+@media (min-width: 1024px) {
+	.offset-down {
+		transform: translateY(3rem);
+	}
+	.offset-up {
+		transform: translateY(-1.5rem);
+	}
+	.feature-grid .card:hover {
+		transform: translateY(-6px) scale(1.02) rotate(var(--card-hover-rot, 1deg));
+	}
+	.feature-grid .offset-down.card:hover {
+		transform: translateY(calc(3rem - 6px)) scale(1.02)
+			rotate(var(--card-hover-rot, 1deg));
+	}
+	.feature-grid .offset-up.card:hover {
+		transform: translateY(calc(-1.5rem - 6px)) scale(1.02)
+			rotate(var(--card-hover-rot, 1deg));
+	}
+}
+
+/* --------------------------------------------- 17. TOKEN / SWATCH ------- */
+.swatch-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.25rem;
+}
+@media (min-width: 640px) {
+	.swatch-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media (min-width: 1024px) {
+	.swatch-grid {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+.swatch {
+	border: 4px solid var(--bg);
+	border-radius: var(--r-container);
+	padding: 1.25rem;
+	min-height: 9rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.4);
+	transition: transform 0.25s var(--ease-bounce);
+	cursor: default;
+}
+.swatch:hover {
+	transform: translateY(-5px) rotate(-2deg) scale(1.03);
+}
+.swatch-name {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	text-transform: uppercase;
+	font-size: 1.05rem;
+	color: var(--bg);
+}
+.swatch-hex {
+	font-family: var(--font-body);
+	font-weight: 700;
+	font-size: 0.85rem;
+	letter-spacing: 0.05em;
+	color: var(--bg);
+	opacity: 0.8;
+}
+
+/* demo tiles for shadow + pattern showcase */
+.demo-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+	margin-top: 3rem;
+}
+@media (min-width: 768px) {
+	.demo-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+.demo-tile {
+	position: relative;
+	border: 4px dashed var(--secondary);
+	border-radius: var(--r-card);
+	background: rgba(45, 27, 78, 0.6);
+	padding: 2rem;
+	min-height: 12rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	overflow: hidden;
+}
+.demo-caption {
+	font-family: var(--font-heading);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	font-size: 0.8rem;
+	color: var(--tertiary);
+}
+.demo-chip {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 14px;
+	align-self: center;
+	margin-top: auto;
+}
+
+/* ----------------------------------------------------- 18. PRICING ------ */
+.price-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2.5rem;
+	align-items: center;
+}
+@media (min-width: 1024px) {
+	.price-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+.price-card {
+	position: relative;
+	border: 4px solid var(--price-border, var(--accent));
+	border-radius: var(--r-card);
+	background: rgba(45, 27, 78, 0.82);
+	backdrop-filter: blur(4px);
+	padding: 2.5rem 2rem;
+	box-shadow: 8px 8px 0 var(--price-shadow, var(--tertiary));
+	transition: transform 0.3s var(--ease-bounce), box-shadow 0.3s ease;
+}
+.price-card:hover {
+	transform: translateY(-8px) rotate(-1deg);
+	box-shadow: 12px 12px 0 var(--price-shadow, var(--tertiary)),
+		0 0 32px rgba(var(--accent-rgb), 0.3);
+}
+.price-card.popular {
+	border-width: 8px;
+	border-style: double;
+	box-shadow: var(--glow-lg), 10px 10px 0 var(--tertiary);
+}
+@media (min-width: 1024px) {
+	.price-card.popular {
+		transform: scale(1.06);
+	}
+	.price-card.popular:hover {
+		transform: scale(1.06) translateY(-8px) rotate(-1deg);
+	}
+}
+.price-badge {
+	position: absolute;
+	top: -1.1rem;
+	right: 1.5rem;
+	font-family: var(--font-comic);
+	font-size: 1.2rem;
+	letter-spacing: 0.04em;
+	color: var(--bg);
+	background: var(--tertiary);
+	border: 4px solid var(--accent);
+	border-radius: 9999px;
+	padding: 0.25rem 1.1rem;
+	transform: rotate(6deg);
+	box-shadow: 3px 3px 0 var(--quinary);
+}
+.price-tier {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	text-transform: uppercase;
+	font-size: 1.5rem;
+	letter-spacing: 0.02em;
+	text-shadow: var(--ts-single);
+}
+.price-amount {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	font-size: clamp(3rem, 7vw, 4.2rem);
+	line-height: 1;
+	margin-block: 0.75rem 0.25rem;
+	color: var(--price-amt, var(--tertiary));
+}
+.price-amount span {
+	font-size: 1.1rem;
+	color: rgba(255, 255, 255, 0.7);
+	-webkit-text-fill-color: rgba(255, 255, 255, 0.7);
+}
+.price-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+	margin-block: 1.75rem;
+}
+.price-list li {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	color: rgba(255, 255, 255, 0.9);
+	font-weight: 500;
+}
+.price-list svg {
+	flex: none;
+	width: 1.4rem;
+	height: 1.4rem;
+	stroke-width: 3;
+	color: var(--secondary);
+}
+
+/* ------------------------------------------- 19. PLAYGROUND / DEMO ------- */
+.play-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2.5rem;
+}
+@media (min-width: 900px) {
+	.play-grid {
+		grid-template-columns: 1.1fr 0.9fr;
+	}
+}
+.play-panel {
+	border: 4px solid var(--play-border, var(--tertiary));
+	border-radius: var(--r-card);
+	background: rgba(45, 27, 78, 0.7);
+	backdrop-filter: blur(4px);
+	padding: 2rem;
+	box-shadow: 8px 8px 0 var(--play-shadow, var(--accent));
+}
+.play-panel h3 {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	font-size: 1.25rem;
+	margin-bottom: 1.5rem;
+	text-shadow: var(--ts-single);
+}
+.btn-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	align-items: center;
+}
+
+/* ----------------------------------------- 20. TESTIMONIALS ------------- */
+.quote-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+}
+@media (min-width: 768px) {
+	.quote-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (min-width: 1024px) {
+	.quote-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+.quote {
+	position: relative;
+	border: 4px solid var(--q-border, var(--accent));
+	border-radius: var(--r-card);
+	background: rgba(45, 27, 78, 0.78);
+	padding: 2rem;
+	box-shadow: 8px 8px 0 var(--q-shadow, var(--tertiary));
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.quote:hover {
+	transform: translateY(-6px) rotate(var(--q-rot, 1deg));
+	box-shadow: 12px 12px 0 var(--q-shadow, var(--tertiary)),
+		0 0 28px rgba(var(--secondary-rgb), 0.3);
+}
+.quote-mark {
+	font-family: var(--font-display);
+	font-size: 3rem;
+	line-height: 0.6;
+	color: var(--q-border, var(--accent));
+}
+.quote-text {
+	margin-block: 1rem 1.5rem;
+	font-size: 1.05rem;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.92);
+}
+.quote-author {
+	display: flex;
+	align-items: center;
+	gap: 0.9rem;
+}
+.quote-avatar {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 9999px;
+	border: 3px solid var(--bg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--font-heading);
+	font-weight: 900;
+	color: var(--bg);
+	font-size: 1.1rem;
+}
+.quote-name {
+	font-family: var(--font-heading);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-size: 0.95rem;
+}
+.quote-role {
+	font-size: 0.82rem;
+	color: rgba(255, 255, 255, 0.6);
+}
+
+/* ----------------------------------------------------- 21. FAQ ---------- */
+.faq-list {
+	max-width: 768px;
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+.faq-item {
+	border: 4px solid var(--faq-border, var(--accent));
+	border-radius: var(--r-container);
+	background: rgba(45, 27, 78, 0.7);
+	overflow: hidden;
+	box-shadow: 5px 5px 0 var(--faq-shadow, var(--tertiary));
+	transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.faq-item:hover {
+	transform: translate(-2px, -2px);
+	box-shadow: 7px 7px 0 var(--faq-shadow, var(--tertiary));
+}
+.faq-q {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	text-align: left;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 1.5rem;
+	font-family: var(--font-heading);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	font-size: 1.05rem;
+	color: #fff;
+}
+.faq-q:focus-visible {
+	outline: 3px dashed var(--secondary);
+	outline-offset: -6px;
+}
+.faq-icon {
+	flex: none;
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius: 9999px;
+	border: 3px solid var(--faq-border, var(--accent));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--faq-border, var(--accent));
+	transition: transform 0.3s var(--ease-bounce), background 0.3s ease,
+		color 0.3s ease;
+}
+.faq-icon svg {
+	width: 1.3rem;
+	height: 1.3rem;
+	stroke-width: 3.5;
+}
+.faq-q[aria-expanded="true"] .faq-icon {
+	transform: rotate(135deg);
+	background: var(--faq-border, var(--accent));
+	color: var(--bg);
+}
+.faq-a {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.35s ease;
+}
+/* Driven by [data-open] on .faq-item (set in JS): the question button is
+   wrapped in an <h3>, so a CSS adjacent-sibling selector can't reach .faq-a. */
+.faq-item[data-open="true"] .faq-a {
+	grid-template-rows: 1fr;
+}
+.faq-a-inner {
+	overflow: hidden;
+	min-height: 0; /* lets the 1fr grid track collapse/expand cleanly */
+}
+.faq-a p {
+	padding: 0 1.5rem 1.5rem;
+	color: rgba(255, 255, 255, 0.85);
+	line-height: 1.65;
+}
+
+/* ----------------------------------------------------- 22. CTA ---------- */
+.cta-box {
+	position: relative;
+	border: 8px solid var(--tertiary);
+	border-radius: var(--r-card);
+	background: rgba(45, 27, 78, 0.85);
+	backdrop-filter: blur(6px);
+	padding: 3rem 2rem;
+	text-align: center;
+	overflow: hidden;
+	box-shadow: var(--glow-lg), 10px 10px 0 var(--accent);
+}
+@media (min-width: 768px) {
+	.cta-box {
+		padding: 4.5rem 3rem;
+	}
+}
+.cta-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	max-width: 540px;
+	margin-inline: auto;
+	margin-top: 2rem;
+}
+@media (min-width: 560px) {
+	.cta-form {
+		flex-direction: row;
+	}
+	.cta-form .input {
+		flex: 1;
+	}
+}
+.cta-note {
+	margin-top: 1.25rem;
+	font-size: 0.85rem;
+	letter-spacing: 0.04em;
+	color: rgba(255, 255, 255, 0.65);
+}
+.form-msg {
+	margin-top: 1rem;
+	font-family: var(--font-heading);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--secondary);
+	min-height: 1.2em;
+}
+
+/* ----------------------------------------------------- 23. FOOTER ------- */
+.footer {
+	position: relative;
+	z-index: 1;
+	border-top: 8px solid var(--accent);
+	padding-block: 4rem 2.5rem;
+	overflow: clip;
+}
+.footer-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2.5rem;
+}
+@media (min-width: 640px) {
+	.footer-grid {
+		grid-template-columns: 2fr 1fr 1fr;
+	}
+}
+@media (min-width: 1024px) {
+	.footer-grid {
+		grid-template-columns: 2fr 1fr 1fr 1.4fr;
+	}
+}
+.footer h4 {
+	font-family: var(--font-heading);
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	font-size: 0.85rem;
+	margin-bottom: 1.25rem;
+	color: var(--ft-c, var(--tertiary));
+}
+.footer-links {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+}
+.footer-links a {
+	color: rgba(255, 255, 255, 0.78);
+	font-weight: 500;
+	width: fit-content;
+	transition: all 0.2s var(--ease-bounce);
+}
+.footer-links a:hover {
+	color: var(--secondary);
+	transform: translateX(4px);
+}
+.footer-links a:focus-visible {
+	outline: 2px dashed var(--secondary);
+	outline-offset: 2px;
+}
+.footer-bottom {
+	margin-top: 3rem;
+	padding-top: 2rem;
+	border-top: 4px dashed rgba(255, 255, 255, 0.15);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 0.85rem;
+}
+@media (min-width: 640px) {
+	.footer-bottom {
+		flex-direction: row;
+		text-align: left;
+	}
+}
+.social-row {
+	display: flex;
+	gap: 0.75rem;
+}
+.social {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 9999px;
+	border: 3px solid var(--secondary);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--secondary);
+	transition: all 0.2s var(--ease-bounce);
+}
+.social svg {
+	width: 1.3rem;
+	height: 1.3rem;
+	stroke-width: 2.5;
+}
+.social:hover {
+	background: var(--secondary);
+	color: var(--bg);
+	transform: translateY(-3px) rotate(-8deg);
+}
+.social:focus-visible {
+	outline: 3px dashed var(--tertiary);
+	outline-offset: 3px;
+}
+
+/* ------------------------------------------- 24. SCROLL-REVEAL --------- */
+.reveal {
+	opacity: 0;
+	transform: translateY(36px);
+	transition: opacity 0.6s ease-out, transform 0.6s var(--ease-bounce);
+	will-change: opacity, transform;
+}
+.reveal.in {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* ----------------------------------------- 25. REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.15s !important;
+		scroll-behavior: auto !important;
+	}
+	/* Keep all visual styles; only kill continuous motion + entrance offsets. */
+	.reveal {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+	.grad-text {
+		background-position: 0% 50% !important;
+	}
+	.marquee {
+		overflow-x: auto;
+	}
+}
