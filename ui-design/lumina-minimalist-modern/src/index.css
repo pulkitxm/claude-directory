@@ -1,0 +1,113 @@
+@import "./assets/fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * The "Minimalist Modern" design system.
+ * All design tokens live here as CSS custom properties — a single source of
+ * truth consumed by Tailwind (tailwind.config.ts) and the utilities below.
+ */
+:root {
+	--background: #fafafa;
+	--foreground: #0f172a;
+	--muted: #f1f5f9;
+	--muted-foreground: #64748b;
+	--accent: #0052ff;
+	--accent-secondary: #4d7cff;
+	--accent-foreground: #ffffff;
+	--border: #e2e8f0;
+	--card: #ffffff;
+	--ring: #0052ff;
+}
+
+@layer base {
+	* {
+		border-color: var(--border);
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		background-color: var(--background);
+		color: var(--foreground);
+		font-family: "Inter", system-ui, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+	}
+
+	::selection {
+		background-color: rgba(0, 82, 255, 0.18);
+		color: var(--foreground);
+	}
+
+	/* Consistent, on-brand focus ring across all interactive elements. */
+	:where(a, button, input, [tabindex]):focus-visible {
+		outline: none;
+		box-shadow:
+			0 0 0 2px var(--background),
+			0 0 0 4px var(--accent);
+		border-radius: 0.5rem;
+	}
+}
+
+@layer components {
+	/* Signature gradient text — the heartbeat of the system. */
+	.gradient-text {
+		background: linear-gradient(to right, var(--accent), var(--accent-secondary));
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+
+	/* Soft gradient bar that underscores the hero's highlighted word. */
+	.gradient-underline {
+		position: absolute;
+		bottom: -0.25rem;
+		left: 0;
+		height: 0.75rem;
+		width: 100%;
+		border-radius: 0.125rem;
+		background: linear-gradient(
+			to right,
+			rgba(0, 82, 255, 0.18),
+			rgba(77, 124, 255, 0.1)
+		);
+		z-index: -1;
+	}
+
+	@media (min-width: 768px) {
+		.gradient-underline {
+			bottom: -0.5rem;
+			height: 1rem;
+		}
+	}
+
+	/* Dot-grid texture for the dark inverted sections. Felt, not seen. */
+	.dot-texture {
+		background-image: radial-gradient(
+			circle,
+			rgba(255, 255, 255, 0.9) 1px,
+			transparent 1px
+		);
+		background-size: 32px 32px;
+		opacity: 0.03;
+	}
+}
+
+/* Honor reduced-motion: kill the slow continuous loops, keep content visible. */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}

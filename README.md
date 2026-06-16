@@ -123,3 +123,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
 
 </details>
+
+<details>
+<summary><b>UI Design (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [lumina-minimalist-modern](./ui-design/lumina-minimalist-modern/) | Full "Minimalist Modern" design-system landing page for analytics platform Lumina — Electric Blue signature gradient, inverted slate sections, Calistoga/Inter dual-font type, an animated abstract hero graphic, and centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
+
+</details>
