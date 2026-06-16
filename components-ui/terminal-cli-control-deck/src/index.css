@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   TERMINAL CLI DESIGN SYSTEM — centralized tokens & global primitives
+   ----------------------------------------------------------------------------
+   Everything visual derives from the tokens declared in @theme below. No
+   component re-defines a colour, radius, or font: they consume these names.
+   Vendored fonts (JetBrains Mono + VT323) are loaded from ./assets/fonts.
+   ========================================================================== */
+
+/* --- Vendored fonts (local, offline-safe) -------------------------------- */
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("./assets/fonts/jetbrains-mono-400.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("./assets/fonts/jetbrains-mono-700.woff2") format("woff2");
+}
+@font-face {
+	font-family: "VT323";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("./assets/fonts/vt323-400.woff2") format("woff2");
+}
+
+/* --- DESIGN TOKENS -------------------------------------------------------- */
+@theme {
+	/* Monospace supremacy: one family, everywhere. */
+	--font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+	--font-display: "VT323", "JetBrains Mono", monospace;
+
+	/* Phosphor palette (dark mode only). */
+	--color-bg: #0a0a0a;
+	--color-bg-soft: #0d120d;
+	--color-primary: #33ff00;
+	--color-secondary: #ffb000;
+	--color-muted: #1f521f;
+	--color-accent: #33ff00;
+	--color-error: #ff3333;
+	--color-border: #1f521f;
+	--color-dim: #2a6b2a; /* mid-tone for secondary body copy */
+
+	/* Strict modular scale — headers snap to grid sizes, no fluid in-betweens. */
+	--text-2xs: 0.6875rem; /* 11px  */
+	--text-xs: 0.75rem; /*  12px  */
+	--text-sm: 0.8125rem; /* 13px  */
+	--text-base: 0.9375rem; /* 15px */
+	--text-lg: 1.25rem; /*  20px  */
+	--text-xl: 1.75rem; /*  28px  */
+	--text-2xl: 2.5rem; /*  40px  */
+	--text-3xl: 3.5rem; /*  56px  */
+
+	/* Radius: zero. Always. */
+	--radius: 0px;
+
+	/* Phosphor glow utilities. */
+	--glow-primary: 0 0 5px rgba(51, 255, 0, 0.5);
+	--glow-secondary: 0 0 5px rgba(255, 176, 0, 0.5);
+	--glow-error: 0 0 5px rgba(255, 51, 51, 0.55);
+
+	/* Animations. */
+	--animate-blink: blink 1.05s step-end infinite;
+	--animate-flicker: flicker 7s linear infinite;
+	--animate-scan: scan 7.5s linear infinite;
+	--animate-glitch: glitch 0.36s steps(2, end) 1;
+	--animate-boot: boot 0.5s ease-out both;
+}
+
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+/* Whole-screen brightness flicker, the way an old CRT never sits perfectly still. */
+@keyframes flicker {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	2% {
+		opacity: 0.86;
+	}
+	4% {
+		opacity: 1;
+	}
+	38% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 0.93;
+	}
+	42% {
+		opacity: 1;
+	}
+	71% {
+		opacity: 1;
+	}
+	72% {
+		opacity: 0.82;
+	}
+	73% {
+		opacity: 1;
+	}
+}
+
+/* A bright horizontal sweep that travels down the panel. */
+@keyframes scan {
+	0% {
+		transform: translateY(-12%);
+	}
+	100% {
+		transform: translateY(112%);
+	}
+}
+
+@keyframes glitch {
+	0% {
+		transform: translate(0, 0);
+		text-shadow: var(--glow-primary);
+	}
+	25% {
+		transform: translate(-2px, 1px);
+		text-shadow: 2px 0 var(--color-error), -2px 0 var(--color-secondary);
+	}
+	50% {
+		transform: translate(2px, -1px);
+		text-shadow: -2px 0 var(--color-error), 2px 0 var(--color-secondary);
+	}
+	75% {
+		transform: translate(-1px, 0);
+		text-shadow: 1px 0 var(--color-error), -1px 0 var(--color-secondary);
+	}
+	100% {
+		transform: translate(0, 0);
+		text-shadow: var(--glow-primary);
+	}
+}
+
+@keyframes boot {
+	from {
+		opacity: 0;
+		transform: translateY(4px);
+		filter: brightness(2.4);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+		filter: brightness(1);
+	}
+}
+
+@keyframes caret {
+	0%,
+	49% {
+		opacity: 1;
+	}
+	50%,
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes barfill {
+	from {
+		width: 0;
+	}
+}
+
+/* --- BASE ----------------------------------------------------------------- */
+@layer base {
+	* {
+		border-radius: var(--radius);
+	}
+
+	html {
+		background: var(--color-bg);
+		color-scheme: dark;
+	}
+
+	body {
+		font-family: var(--font-mono);
+		background-color: var(--color-bg);
+		color: var(--color-primary);
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		letter-spacing: 0.02em;
+		/* faint phosphor floor glow + subtle vertical fade */
+		background-image:
+			radial-gradient(
+				120% 80% at 50% -10%,
+				rgba(51, 255, 0, 0.06),
+				transparent 60%
+			),
+			repeating-linear-gradient(
+				0deg,
+				rgba(51, 255, 0, 0.018) 0px,
+				rgba(51, 255, 0, 0.018) 1px,
+				transparent 1px,
+				transparent 3px
+			);
+	}
+
+	::selection {
+		background: var(--color-primary);
+		color: var(--color-bg);
+		text-shadow: none;
+	}
+
+	/* Phosphor scrollbar. */
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: var(--color-bg);
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--color-muted);
+		border: 1px solid var(--color-bg);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--color-primary);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+/* --- DESIGN-SYSTEM UTILITIES --------------------------------------------- */
+@layer utilities {
+	.glow {
+		text-shadow: var(--glow-primary);
+	}
+	.glow-amber {
+		text-shadow: var(--glow-secondary);
+	}
+	.glow-error {
+		text-shadow: var(--glow-error);
+	}
+	.glow-box {
+		box-shadow:
+			0 0 0 1px var(--color-border),
+			0 0 14px -2px rgba(51, 255, 0, 0.28),
+			inset 0 0 24px -16px rgba(51, 255, 0, 0.5);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+}
