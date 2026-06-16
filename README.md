@@ -126,7 +126,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI design (20)</b></summary>
+<summary><b>UI design (21)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -145,6 +145,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [neo-brutalism-loud-system](./ui-design/neo-brutalism-loud-system/) | "LOUDHOUSE" Neo-brutalism design-system showcase — centralized `@theme` tokens (cream/black + red/yellow/violet highlighters), hard offset shadows (zero blur) as `shadow-neo*` utilities, hollow text-stroke display type, sticker rotations, a chaos-zone hero, live token gallery, count-up stats, an interactive component playground, scaled pricing, two marquees, a keyboard FAQ, mechanical click-down buttons / lift cards / yellow-flood inputs, and a full `prefers-reduced-motion` fallback | React, TypeScript, Vite, Tailwind CSS v4, react-fast-marquee, Lucide, Space Grotesk |
 | [luxury-editorial-design-system](./ui-design/luxury-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [material-you-showcase](./ui-design/material-you-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4 |
+| [maximalism-dopamine-system](./ui-design/maximalism-dopamine-system/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [neumorphism-soft-ui](./ui-design/neumorphism-soft-ui/) | "SOFTFORM" Neumorphism (Soft UI) design-system showcase — one cool-grey surface (`#E0E5EC`) where dual opposing RGBA shadows carve every edge: extruded / inset / inset-deep / nested depth states, hyper-rounded 32px corners, floating concentric-circle hero art, a working component playground (buttons in all states, inset inputs with accent focus rings, a switch, segmented control, draggable+keyboard slider), an inset token gallery, a soft-dark theme toggle, and zero borders anywhere; fully offline | HTML, CSS, vanilla JS |
 | [newsprint-editorial-press](./ui-design/newsprint-editorial-press/) | Full editorial landing page expressing the "Newsprint" design system — massive Playfair headlines, zero radius, collapsed grid borders, drop caps, a breaking-news ticker, an inverted black "How It's Filed" section, grayscale halftone engravings, hard offset hover shadows, and sparing editorial red | React, TypeScript, Vite, Tailwind CSS, CVA, tailwind-merge, Lucide |
 | [playful-geometric-design-system](./ui-design/playful-geometric-design-system/) | "Blobby" Playful Geometric design-system showcase — a Memphis-inspired "stable grid, wild decoration" landing with centralized tokens (warm paper + slate + four rotational pop colors), chunky 2px borders, hard no-blur "pop" shadows, varied/blob radii, a blob-masked geometric mascot illustration, confetti shapes, keyword + logo marquees, a dashed-line feature grid, a star-badged scaled pricing tier, a live token gallery, an ARIA FAQ, and a focus-shadowed CTA form — all honoring prefers-reduced-motion | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
