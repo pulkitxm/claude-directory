@@ -126,7 +126,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI design (9)</b></summary>
+<summary><b>UI design (10)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -138,6 +138,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [lumina-minimalist-modern](./ui-design/lumina-minimalist-modern/) | Full "Minimalist Modern" design-system landing page for analytics platform Lumina — Electric Blue signature gradient, inverted slate sections, Calistoga/Inter dual-font type, an animated abstract hero graphic, and centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [luxury-editorial-design-system](./ui-design/luxury-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [newsprint-editorial-press](./ui-design/newsprint-editorial-press/) | Full editorial landing page expressing the "Newsprint" design system — massive Playfair headlines, zero radius, collapsed grid borders, drop caps, a breaking-news ticker, an inverted black "How It's Filed" section, grayscale halftone engravings, hard offset hover shadows, and sparing editorial red | React, TypeScript, Vite, Tailwind CSS, CVA, tailwind-merge, Lucide |
+| [serif-editorial-design-system](./ui-design/serif-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [swiss-design-system](./ui-design/swiss-design-system/) | Self-contained Swiss International (International Typographic Style) design-system showcase — strict B/W/Swiss-Red tokens, four CSS texture patterns (grid, dots, diagonal, noise), a Bauhaus hero composition, a mathematical type specimen, a 2×2 component gallery, and bold mechanical interactions (color inversions, rotating plus icons, count-up); fully offline | HTML, CSS, vanilla JS, Inter |
 
 </details>
