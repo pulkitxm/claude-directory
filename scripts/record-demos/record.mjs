@@ -40,8 +40,10 @@ const CONFIG = {
 		holdEnd: 0.6,
 	},
 	// A page counts as scrollable when it extends more than this fraction of a
-	// viewport beyond the fold.
-	scrollableThreshold: 0.25,
+	// viewport beyond the fold. Kept low so pages with a modest amount of real
+	// below-the-fold content (e.g. a hero plus a "trusted by" strip) take the
+	// smooth deterministic scroll path instead of real-time video capture.
+	scrollableThreshold: 0.15,
 };
 
 const args = Object.fromEntries(
@@ -121,6 +123,19 @@ async function recordScrollable(browser) {
 	});
 	const m = await stabilize(page);
 	await sleep(1500); // let hero/intro settle before the first frame
+	// Let any fade-in / WebGL warm-up finish on the REAL clock before we freeze
+	// time for capture. CSS transitions are compositor-driven and complete here;
+	// the opacity probe is best-effort and a no-op on pages with no hero canvas.
+	await page
+		.waitForFunction(
+			() => {
+				const el = document.getElementById("hero-canvas");
+				return !el || getComputedStyle(el).opacity === "1";
+			},
+			{ timeout: 8000 },
+		)
+		.catch(() => {});
+	await sleep(600);
 
 	const distance = Math.max(0, m.scrollHeight - m.innerHeight);
 	const screens = m.innerHeight > 0 ? distance / m.innerHeight : 0;
@@ -129,41 +144,119 @@ async function recordScrollable(browser) {
 	const upSec = clamp(downSec * s.upRatio, s.upMin, s.upMax);
 
 	resetTmp();
+
+	// --- Deterministic animation clock -------------------------------------
+	// Time-based animations advance on either performance.now()+rAF (WebGL
+	// shaders, canvas loops, framer-motion) or setTimeout/setInterval (e.g. a
+	// typewriter placeholder). A real screenshot takes an uneven amount of wall
+	// time and the whole deterministic pass spans real minutes, so anything left
+	// on the real clock either judders (uneven rAF sampling) or races (timers
+	// firing in real time, then compressed into a short playback). So we freeze
+	// ALL of the page's clocks and advance them by exactly one frame (1000/FPS ms)
+	// per screenshot: rAF renders one generation, and any timers due in that slice
+	// fire in order. Every encoded frame is then an even slice of animation time,
+	// so playback matches the live page. Installed AFTER warm-up so load / texture
+	// decode / fade-in all run on the real clock first.
+	await page.evaluate(() => {
+		const w = window;
+		const realNow = performance.now();
+		let vnow = realNow;
+		let raf = []; // queued requestAnimationFrame callbacks
+		let timers = []; // virtual setTimeout / setInterval entries
+		let id = 1;
+
+		performance.now = () => vnow;
+		w.requestAnimationFrame = (cb) => {
+			const i = id++;
+			raf.push({ i, cb });
+			return i;
+		};
+		w.cancelAnimationFrame = (i) => {
+			raf = raf.filter((e) => e.i !== i);
+		};
+		w.setTimeout = (cb, delay, ...a) => {
+			const i = id++;
+			timers.push({ i, due: vnow + Math.max(0, +delay || 0), cb: () => cb(...a) });
+			return i;
+		};
+		w.setInterval = (cb, delay, ...a) => {
+			const i = id++;
+			const every = Math.max(1, +delay || 0);
+			timers.push({ i, due: vnow + every, every, cb: () => cb(...a) });
+			return i;
+		};
+		w.clearTimeout = (i) => {
+			timers = timers.filter((e) => e.i !== i);
+		};
+		w.clearInterval = w.clearTimeout;
+
+		const base = Date.now();
+		Date.now = () => base + (vnow - realNow);
+
+		w.__rec = {
+			// Advance virtual time by ms, firing timers due in that slice in
+			// chronological order (and any they schedule). Capped so a pathological
+			// fast interval can't spin forever.
+			advance: (ms) => {
+				const target = vnow + ms;
+				for (let guard = 0; guard < 10000; guard++) {
+					let next = null;
+					for (const t of timers)
+						if (t.due <= target && (!next || t.due < next.due)) next = t;
+					if (!next) break;
+					vnow = next.due;
+					if (next.every == null) timers = timers.filter((t) => t !== next);
+					else next.due += next.every;
+					try {
+						next.cb();
+					} catch (_) {}
+				}
+				vnow = target;
+			},
+			// Run the rAF callbacks queued so far once, at the current virtual
+			// time. Self-rescheduling loops re-register into the next generation,
+			// so this renders exactly one frame per call.
+			flush: () => {
+				const due = raf;
+				raf = [];
+				for (const e of due) {
+					try {
+						e.cb(vnow);
+					} catch (_) {}
+				}
+				return due.length;
+			},
+		};
+	});
+	// Let the renderer's in-flight (real) rAF fire once and hand its loop off
+	// into our virtual queue before we start stepping.
+	await sleep(150);
+
+	const DT = 1000 / FPS;
 	let frame = 0;
 	const pad = (n) => String(n).padStart(5, "0");
-	const paint = () =>
-		page.evaluate(
-			() =>
-				new Promise((r) =>
-					requestAnimationFrame(() => requestAnimationFrame(r)),
-				),
-		);
 	const setY = (y) =>
 		page.evaluate((yy) => window.scrollTo(0, yy), Math.round(y));
-	const shoot = async () => {
+	// One output frame: park the scroll, advance the virtual clock by exactly one
+	// frame, render that frame, screenshot.
+	const step = async (y) => {
+		await setY(y);
+		await page.evaluate((dt) => {
+			window.__rec.advance(dt);
+			window.__rec.flush();
+		}, DT);
 		await page.screenshot({ path: path.join(TMP, pad(frame) + ".png") });
 		frame++;
 	};
 
-	// Hold N frames by capturing once and duplicating the file (cheap).
+	// Holds park the scroll but keep the shader animating (no frozen duplicates).
 	const hold = async (y, sec) => {
-		await setY(y);
-		await paint();
-		const first = path.join(TMP, pad(frame) + ".png");
-		await page.screenshot({ path: first });
-		frame++;
-		for (let i = 0, n = Math.max(0, Math.round(sec * FPS) - 1); i < n; i++) {
-			fs.copyFileSync(first, path.join(TMP, pad(frame) + ".png"));
-			frame++;
-		}
+		const n = Math.max(1, Math.round(sec * FPS));
+		for (let i = 0; i < n; i++) await step(y);
 	};
 	const scroll = async (from, to, sec) => {
 		const n = Math.max(1, Math.round(sec * FPS));
-		for (let i = 1; i <= n; i++) {
-			await setY(from + (to - from) * ease(i / n));
-			await paint();
-			await shoot();
-		}
+		for (let i = 1; i <= n; i++) await step(from + (to - from) * ease(i / n));
 	};
 
 	console.log(
