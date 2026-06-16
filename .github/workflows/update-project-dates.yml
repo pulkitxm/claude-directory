@@ -1,0 +1,46 @@
+name: Update project dates
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Needed so the job can push the regenerated project-dates.json back to main.
+permissions:
+  contents: write
+
+# Never run two updaters at once; let an in-progress run finish.
+concurrency:
+  group: "project-dates"
+  cancel-in-progress: false
+
+jobs:
+  update-dates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history is required: the script reads each project's last commit
+          # date via `git log`, which a shallow (depth 1) checkout cannot see.
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate project-dates.json
+        run: node scripts/generate-project-dates.mjs
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- project-dates.json; then
+            echo "project-dates.json is up to date — nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add project-dates.json
+          git commit -m "chore: update project-dates.json [skip ci]"
+          git push
