@@ -1,6 +1,6 @@
 # UI design
 
-9 **UI design** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+10 **UI design** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -12,4 +12,5 @@
 | [lumina-minimalist-modern](./lumina-minimalist-modern/) | Full "Minimalist Modern" design-system landing page for analytics platform Lumina — Electric Blue signature gradient, inverted slate sections, Calistoga/Inter dual-font type, an animated abstract hero graphic, and centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [luxury-editorial-design-system](./luxury-editorial-design-system/) | "MAISON" Luxury / Editorial design-system showcase — a full editorial landing (hero, drop-cap features, dark stats, multi-layer testimonials, ARIA FAQ accordion, blog grid, footer CTA) with vendored Playfair/Inter fonts, vertical writing-mode labels, fixed gridlines, a gold-sliding button, and a paper-grain noise overlay | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [newsprint-editorial-press](./newsprint-editorial-press/) | Full editorial landing page expressing the "Newsprint" design system — massive Playfair headlines, zero radius, collapsed grid borders, drop caps, a breaking-news ticker, an inverted black "How It's Filed" section, grayscale halftone engravings, hard offset hover shadows, and sparing editorial red | React, TypeScript, Vite, Tailwind CSS, CVA, tailwind-merge, Lucide |
+| [serif-editorial-design-system](./serif-editorial-design-system/) | "Roman & Quill" Serif design-system showcase — a private-publishing-house editorial landing (hero, stats, drop-cap features, asymmetric 1.3fr/0.7fr benefits, decorative-quote testimonials, gold-tinted featured pricing, journal grid, ARIA FAQ, inverted correspond form, footer) with vendored Playfair/Source Sans 3/IBM Plex Mono, a rule-line + small-caps label system, bespoke SVG engraving plates, burnished-gold accent, paper-grain overlay, and ambient glow — all on channel-format design tokens, fully offline | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [swiss-design-system](./swiss-design-system/) | Self-contained Swiss International (International Typographic Style) design-system showcase — strict B/W/Swiss-Red tokens, four CSS texture patterns (grid, dots, diagonal, noise), a Bauhaus hero composition, a mathematical type specimen, a 2×2 component gallery, and bold mechanical interactions (color inversions, rotating plus icons, count-up); fully offline | HTML, CSS, vanilla JS, Inter |
