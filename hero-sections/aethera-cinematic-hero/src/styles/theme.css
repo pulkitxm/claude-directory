@@ -13,6 +13,33 @@
 		"Inter", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
+/* ---- Dark mode -------------------------------------------------- */
+/* Every surface paints from these three tokens, so overriding them under
+ * `.dark` inverts the whole page in one swap. The toggle lives in the navbar;
+ * index.html applies the stored/system preference before first paint. */
+:root {
+	color-scheme: light;
+}
+
+html.dark {
+	color-scheme: dark;
+	--color-background: #0a0a0b;
+	--color-ink: #f5f5f4;
+	--color-muted: #9b9b9b;
+}
+
+/* Ease the palette swap when toggling. Buttons keep their own transform
+ * transition, so their inverted colors snap — which reads as crisp. */
+@media (prefers-reduced-motion: no-preference) {
+	*,
+	::before,
+	::after {
+		transition-property: background-color, color, border-color;
+		transition-duration: 0.5s;
+		transition-timing-function: ease;
+	}
+}
+
 /* ---- Entrance choreography ------------------------------------- */
 
 @keyframes fade-rise {
@@ -51,8 +78,8 @@
 /* ---- Base ------------------------------------------------------- */
 
 ::selection {
-	background: #000000;
-	color: #ffffff;
+	background: var(--color-ink);
+	color: var(--color-background);
 }
 
 html {

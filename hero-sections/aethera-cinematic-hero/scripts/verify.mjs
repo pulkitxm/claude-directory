@@ -440,12 +440,67 @@ try {
 	);
 	check("second pass fades back in to 1", true);
 
-	console.log("\n— Responsive & console health —");
+	console.log("\n— Dark mode —");
 	mkdirSync("screenshots", { recursive: true });
-	await page.screenshot({
-		path: "screenshots/desktop-1440.png",
-		fullPage: false,
-	});
+	const toggle = page.locator("[data-theme-toggle]");
+	check("theme toggle present in navbar", (await toggle.count()) === 1);
+
+	const isDark = () =>
+		page.evaluate(() => document.documentElement.classList.contains("dark"));
+	const containerBg = () =>
+		page
+			.locator("#root > div")
+			.evaluate((el) => getComputedStyle(el).backgroundColor);
+	const logoColor = () =>
+		page
+			.locator("header a", { hasText: "Aethera" })
+			.first()
+			.evaluate((el) => getComputedStyle(el).color);
+
+	check("starts in light mode", (await isDark()) === false);
+	check(
+		"light container bg #ffffff",
+		(await containerBg()) === "rgb(255, 255, 255)",
+		await containerBg(),
+	);
+
+	await page.screenshot({ path: "screenshots/desktop-1440.png", fullPage: false });
+
+	// Toggle -> dark, wait out the 0.5s palette transition, then assert.
+	await toggle.click();
+	await page.waitForTimeout(650);
+	check("toggle adds .dark to <html>", (await isDark()) === true);
+	check(
+		"dark container bg #0a0a0b",
+		(await containerBg()) === "rgb(10, 10, 11)",
+		await containerBg(),
+	);
+	check(
+		"dark logo ink #f5f5f4",
+		(await logoColor()) === "rgb(245, 245, 244)",
+		await logoColor(),
+	);
+	const storedDark = await page.evaluate(() =>
+		localStorage.getItem("aethera-theme"),
+	);
+	check("preference persisted as 'dark'", storedDark === "dark", storedDark);
+	await page.screenshot({ path: "screenshots/dark-1440.png", fullPage: false });
+
+	// Toggle back -> light, preference flips.
+	await toggle.click();
+	await page.waitForTimeout(650);
+	check("toggle removes .dark from <html>", (await isDark()) === false);
+	check(
+		"light container bg restored",
+		(await containerBg()) === "rgb(255, 255, 255)",
+		await containerBg(),
+	);
+	const storedLight = await page.evaluate(() =>
+		localStorage.getItem("aethera-theme"),
+	);
+	check("preference persisted as 'light'", storedLight === "light", storedLight);
+
+	console.log("\n— Responsive & console health —");
 
 	await page.setViewportSize({ width: 390, height: 844 });
 	await page.waitForTimeout(300);
