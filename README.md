@@ -173,12 +173,13 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (11)</b></summary>
+<summary><b>Shaders (12)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [animated-shader-background](./shaders/animated-shader-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./shaders/animated-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
+| [anomalous-matter-hero](./shaders/anomalous-matter-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [celestial-matrix-shader](./shaders/celestial-matrix-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [molten-core-shader](./shaders/molten-core-shader/) | shadcn-style integration of the `MoltenCoreShader` component — a procedural FBM lava fragment shader rendered full-viewport with Three.js, framed as a live "foundry core monitor" with a base-color toggle, a melt-intensity dial, and a telemetry panel that reads core temperature straight off the GPU | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
