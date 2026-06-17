@@ -126,7 +126,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI design (40)</b></summary>
+<summary><b>UI design (41)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -142,6 +142,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [clay-design-system](./ui-design/clay-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
 | [copy-machine-landing](./ui-design/copy-machine-landing/) | Exact-spec single-page landing-page scaffold built to act as a "copy machine" — a Vite + React + TypeScript base with the `@/` path alias, Tailwind v3 (`@tailwind` base/components/utilities), a `cn()` clsx/tailwind-merge util, and framer-motion + lucide-react preinstalled, ready for components to be dropped verbatim into `/src/components/ui/` and stacked in `App.tsx` | React, TypeScript, Vite, Tailwind CSS, Framer Motion, clsx, tailwind-merge, Lucide |
 | [copy-machine-landing-exact-spec](./ui-design/copy-machine-landing-exact-spec/) | Setup-phase scaffold for a multi-turn "copy machine" landing-page brief — a single-page project stood up to an exact spec (Vite + React + TS, classic Tailwind directives, tailwind-merge + clsx `cn()`, Framer Motion, Lucide, `@/`→`/src/` alias), with character-for-character spec files and an empty `App.tsx` ready for components, verified to build/run headlessly | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
+| [copy-machine-pixel-perfect](./ui-design/copy-machine-pixel-perfect/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [copy-machine-scaffold](./ui-design/copy-machine-scaffold/) | Exact-spec "copy machine" landing-page scaffold built to a multi-turn setup prompt — Vite + React + TypeScript with the verbatim `@/`→`./src` alias (vite + tsconfig), Tailwind CSS + tailwind-merge/clsx `cn()` helper, Framer Motion and Lucide React, and the mandated `/src/components/ui` + `/src/lib` layout with an intentionally empty `App.tsx` shell; ships a type-checked production build and a CLI-only verifier (`scripts/verify.mjs`) that bundles against the real Vite config to assert the alias resolves, `cn()` merges Tailwind classes, `App.tsx` renders the exact spec'd markup, and framer-motion + lucide-react render | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
 | [copy-machine-setup](./ui-design/copy-machine-setup/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
 | [corporate-trust-design-system](./ui-design/corporate-trust-design-system/) | "Northwind" Corporate Trust design-system showcase — a modern enterprise-SaaS landing fully expressing the style: indigo→violet gradients, colored (blue/violet-tinted) shadows, an isometric 3D hero dashboard, soft blurred blobs, a split gradient headline, zig-zag deep-dives on tilted gradient slabs, a count-up stats band, glowing numbered steps, a scaled "popular" pricing tier, a details/summary FAQ, and a dramatic dark final CTA — all on centralized tokens | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
@@ -205,13 +206,16 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [celestial-ink-shader](./shaders/celestial-ink-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [celestial-matrix-shader](./shaders/celestial-matrix-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
+| [celestial-matrix-terminal](./shaders/celestial-matrix-terminal/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [celestial-sphere-shader](./shaders/celestial-sphere-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn structure, Three.js, Lucide |
+| [crystal-voronoi-shader](./shaders/crystal-voronoi-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, WebGL, Lucide |
 | [cybernetic-grid-shader](./shaders/cybernetic-grid-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [digital-glitch-shader](./shaders/digital-glitch-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [digital-petals-shader](./shaders/digital-petals-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [dithering-shader-lab](./shaders/dithering-shader-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [dynamic-waveform-shader](./shaders/dynamic-waveform-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, three.js, Lucide |
 | [exoplanet-survey-shader](./shaders/exoplanet-survey-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
+| [gaming-vibe-shader](./shaders/gaming-vibe-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [interactive-flux-shader](./shaders/interactive-flux-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [living-nebula-shader](./shaders/living-nebula-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, shadcn/ui, Lucide |
 | [molten-core-shader](./shaders/molten-core-shader/) | shadcn-style integration of the `MoltenCoreShader` component — a procedural FBM lava fragment shader rendered full-viewport with Three.js, framed as a live "foundry core monitor" with a base-color toggle, a melt-intensity dial, and a telemetry panel that reads core temperature straight off the GPU | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
