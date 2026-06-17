@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================================
+   Tide — design tokens & base styles
+   A deep oceanic twilight. The page is the surface of dark water at dusk;
+   bioluminescent teal and a warm coral bloom are the only light sources.
+   ========================================================================== */
+@layer base {
+  :root {
+    /* surfaces */
+    --abyss: 4 7 14;
+    --ink: 7 11 20;
+    --deep: 12 20 36;
+    --shelf: 20 32 58;
+    /* text */
+    --foam: 232 237 244;
+    --mist: 138 151 173;
+    --haze: 88 101 126;
+    /* accents */
+    --tide: 61 212 200;
+    --glow: 111 233 221;
+    --coral: 255 122 147;
+    --amber: 255 184 119;
+    /* hairlines */
+    --line: 30 42 68;
+    --line-bright: 44 59 92;
+  }
+
+  * {
+    border-color: rgb(var(--line));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: rgb(var(--ink));
+    color: rgb(var(--foam));
+    font-family: "Inter", system-ui, sans-serif;
+    font-feature-settings: "cv05" 1, "ss03" 1;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgb(var(--tide) / 0.28);
+    color: rgb(var(--foam));
+  }
+
+  /* characterful display face, tuned optical size + soft "wonk" off */
+  .font-display {
+    font-family: "Fraunces", Georgia, serif;
+    font-variation-settings: "opsz" 120, "SOFT" 0, "WONK" 0;
+    letter-spacing: -0.015em;
+  }
+
+  /* a quieter focus ring than the default, but always visible */
+  :focus-visible {
+    outline: 2px solid rgb(var(--glow));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  /* small-caps tracked label used as eyebrows / section kickers */
+  .label {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(var(--mist));
+  }
+
+  /* the recurring hairline rule that grows in */
+  .rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgb(var(--tide) / 0.5),
+      rgb(var(--line) / 0)
+    );
+    transform-origin: left;
+  }
+
+  /* glass surface used by floating chrome (nav, cards) */
+  .glass {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--shelf) / 0.5),
+      rgb(var(--deep) / 0.55)
+    );
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border: 1px solid rgb(var(--line-bright) / 0.7);
+  }
+
+  /* the gradient ink used on the single emphasized display word */
+  .text-tideink {
+    background: linear-gradient(
+      100deg,
+      rgb(var(--glow)) 0%,
+      rgb(var(--tide)) 38%,
+      rgb(var(--coral)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  /* generous tracked utility for the data/timestamp readouts */
+  .tracking-data {
+    letter-spacing: 0.08em;
+  }
+
+  /* a fine grain overlay element can use this background */
+  .bg-grain {
+    background-image: url("/grain.svg");
+    background-repeat: repeat;
+  }
+}
+
+/* Respect reduced motion: pause ambient loops, keep content readable. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
