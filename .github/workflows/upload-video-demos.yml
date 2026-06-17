@@ -1,0 +1,60 @@
+name: Upload Video Demos to Cloudinary
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: list what would upload, but do NOT upload to Cloudinary"
+        type: boolean
+        default: false
+      force:
+        description: "Force re-upload even if the asset already exists"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: upload-video-demos
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: scripts/upload-demos
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+      CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+      CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Upload demos (dry run)
+        if: ${{ inputs.dry_run }}
+        run: node index.js --dry-run
+
+      - name: Upload demos
+        if: ${{ !inputs.dry_run }}
+        run: node index.js ${{ inputs.force && '--force' || '' }}
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "### Video demos → Cloudinary"
+            echo ""
+            echo "- Mode: ${{ inputs.dry_run && 'dry run (no upload)' || (inputs.force && 'force re-upload' || 'upload new only') }}"
+          } >> "$GITHUB_STEP_SUMMARY"
