@@ -193,3 +193,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [serif-editorial-design-system](./ui-desgin/serif-editorial-design-system/) | "Roman & Quill" Serif design-system showcase — a private-publishing-house editorial landing (hero, stats, drop-cap features, asymmetric 1.3fr/0.7fr benefits, decorative-quote testimonials, gold-tinted featured pricing, journal grid, ARIA FAQ, inverted correspond form, footer) with vendored Playfair/Source Sans 3/IBM Plex Mono, a rule-line + small-caps label system, bespoke SVG engraving plates, burnished-gold accent, paper-grain overlay, and ambient glow — all on channel-format design tokens, fully offline | React, TypeScript, Vite, Tailwind CSS, Lucide |
 
 </details>
+
+<details>
+<summary><b>Shaders (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
+
+</details>
