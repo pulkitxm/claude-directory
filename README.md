@@ -17,6 +17,8 @@ Only two things are non-negotiable:
 
 Beyond that, do whatever: any stack, any vibe, as long as your project lives in its own self-contained folder. Bonus points if you add a row to the table below, but no stress if you forget.
 
+Once your `demo.mp4` is in, generate its poster so the directory can show a sharp placeholder while the video loads (`node scripts/generate-posters/generate-posters.mjs`). This writes a `poster.jpg` next to the video and updates the root [`posters.json`](./posters.json) manifest — see [`scripts/generate-posters`](./scripts/generate-posters/).
+
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
 ## Projects
