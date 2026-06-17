@@ -199,10 +199,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (10)</b></summary>
+<summary><b>Shaders (11)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [aether-flow-shader](./shaders/aether-flow-shader/) | Faithful shadcn integration of the **Aether Flow** component — a procedural fractal-noise (fBm) gas rendered on a single full-screen Three.js quad — framed as an *atmosphere synthesizer* console: a left instrument rail of five faders (Hue/Speed/Intensity/Complexity/Warp) wired straight to the shader's `u_*` uniforms, a named patch bank (Nebula/Ember/Abyss/Drift/Solar/Bloom), pointer-driven warp, and a live telemetry strip reading the field's per-frame state back out; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [animated-shader-background](./shaders/animated-shader-background/) | "AnoAI" product hero set over a full-viewport three.js aurora fragment shader, integrated as a shadcn `components/ui` piece, with a graceful CSS-aurora fallback when WebGL is unavailable, vendored Geist font + generated avatar art, and a headless screenshot-based shader verification | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./shaders/animated-shader-hero/) | "Emberfield" showcase for a reusable WebGL2 animated shader hero (drifting fractal ember field by @atzedent) — a single drop-in `@/components/ui` component with a live uniforms HUD, pointer-reactive canvas, and a shadcn/Tailwind/TypeScript integration story; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
 | [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Procedural GLSL "Celestial Bloom" fragment shader — a five-petalled nebula with a glowing star core and twinkling field, rendered full-viewport with Three.js and framed as an observatory specimen plate with reticle corners, a Fraunces hero lockup, and a live telemetry HUD (mission clock, render FPS, petals) driven by the shader's own per-frame state; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
