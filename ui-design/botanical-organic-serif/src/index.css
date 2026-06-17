@@ -1,0 +1,280 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   VERDANT — Botanical / Organic Serif design tokens.
+
+   The whole design system lives in this one file: colour, type, radius, shadow,
+   easing and motion. Components reference these exclusively through Tailwind
+   utilities generated from @theme (e.g. `bg-forest`, `rounded-card`,
+   `shadow-bloom`, `font-display`) so there is not a single one-off hex value or
+   magic shadow scattered through the JSX. Change a token here, the whole site
+   moves with it.
+   ========================================================================== */
+
+/* ---- Vendored fonts (variable woff2, latin + latin-ext). Zero network. ----
+   Playfair Display = headings (high-contrast transitional serif, incl. italic
+   for emphasis words). Source Sans 3 = body (humanist sans that pairs with it). */
+@font-face {
+	font-family: "Playfair Display";
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/playfair-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+		U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+		U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: "Playfair Display";
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/playfair-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+		U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+		U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: "Playfair Display";
+	font-style: italic;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/playfair-italic-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+		U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+		U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: "Playfair Display";
+	font-style: italic;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/playfair-italic-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+		U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+		U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: "Source Sans 3";
+	font-style: normal;
+	font-weight: 400 600;
+	font-display: swap;
+	src: url("/fonts/source-sans-3-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+		U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+		U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: "Source Sans 3";
+	font-style: normal;
+	font-weight: 400 600;
+	font-display: swap;
+	src: url("/fonts/source-sans-3-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+		U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+		U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@theme {
+	/* ---- Earthbound palette ------------------------------------------------ */
+	--color-paper: #f9f8f4; /* warm alabaster / rice paper — never stark white */
+	--color-forest: #2d3a31; /* deep forest green — primary text */
+	--color-forest-deep: #222c25; /* darker forest for footer / depth */
+	--color-sage: #8c9a84; /* sage green — buttons, highlights, icons */
+	--color-sage-soft: #b6bfac; /* paler sage for icon halos */
+	--color-clay: #dccfc2; /* soft clay / mushroom — secondary surfaces */
+	--color-clay-soft: #f2f0eb; /* the lightest clay — card / input fills */
+	--color-stone: #e6e2da; /* stone — very subtle borders */
+	--color-terracotta: #c27b66; /* terracotta — hover / CTA pops */
+	--color-terracotta-deep: #a8624e; /* pressed terracotta */
+	--color-cream: #f4f1ea; /* sectional warm break */
+
+	/* ---- Type ------------------------------------------------------------- */
+	--font-display: "Playfair Display", ui-serif, Georgia, serif;
+	--font-body: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+
+	/* ---- Radii — highly rounded, organic ---------------------------------- */
+	--radius-card: 1.5rem; /* 24px — rounded-3xl standard card */
+	--radius-soft: 2.5rem; /* 40px — rounded-[40px] organic image */
+	--radius-arch: 200px; /* the iconic arch radius for image tops */
+
+	/* ---- Shadows — soft, diffused, never harsh ---------------------------- */
+	--shadow-soft: 0 4px 6px -1px rgba(45, 58, 49, 0.05);
+	--shadow-medium: 0 10px 15px -3px rgba(45, 58, 49, 0.05);
+	--shadow-bloom: 0 20px 40px -10px rgba(45, 58, 49, 0.08);
+	--shadow-lift: 0 25px 50px -12px rgba(45, 58, 49, 0.15);
+
+	/* ---- Motion — suspended in honey -------------------------------------- */
+	--ease-organic: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		border-color: var(--color-stone);
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+		scroll-padding-top: 6rem; /* clear the sticky nav on anchor jumps */
+	}
+
+	body {
+		margin: 0;
+		background-color: var(--color-paper);
+		color: var(--color-forest);
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 1.0625rem;
+		line-height: 1.7;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		overflow-x: hidden;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: var(--font-display);
+		font-weight: 600;
+		color: var(--color-forest);
+		line-height: 1.04;
+		letter-spacing: -0.012em;
+	}
+
+	::selection {
+		background: var(--color-sage);
+		color: var(--color-paper);
+	}
+
+	/* Soft sage focus ring — never a harsh blue. 2px width + offset (a11y). */
+	:where(a, button, input, textarea, [tabindex]):focus-visible {
+		outline: 2px solid var(--color-sage);
+		outline-offset: 3px;
+		border-radius: 0.35rem;
+	}
+}
+
+@layer utilities {
+	/* Italic emphasis word inside a Playfair headline. */
+	.em {
+		font-style: italic;
+		font-weight: 500;
+	}
+
+	/* The iconic Roman arch: flat bottom, semicircular top. */
+	.arch {
+		border-top-left-radius: var(--radius-arch);
+		border-top-right-radius: var(--radius-arch);
+	}
+
+	/* An organic blob — asymmetric super-ellipse corners. */
+	.blob {
+		border-radius: 62% 38% 46% 54% / 60% 56% 44% 40%;
+	}
+	.blob-2 {
+		border-radius: 41% 59% 56% 44% / 56% 42% 58% 44%;
+	}
+
+	/* Pause/play scroll fade via IntersectionObserver toggling .is-visible. */
+	.reveal {
+		opacity: 0;
+		transform: translateY(1.25rem);
+		transition:
+			opacity 0.9s var(--ease-organic),
+			transform 0.9s var(--ease-organic);
+		will-change: opacity, transform;
+	}
+	.reveal.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ----------------------------------------------------------------------------
+   Ambient, breeze-like motion. Slow, eased, never snappy. All honour
+   prefers-reduced-motion.
+---------------------------------------------------------------------------- */
+@keyframes sway {
+	0%,
+	100% {
+		transform: rotate(-2.2deg);
+	}
+	50% {
+		transform: rotate(2.2deg);
+	}
+}
+@keyframes drift {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-14px);
+	}
+}
+@keyframes bloom-in {
+	from {
+		opacity: 0;
+		transform: translateY(28px) scale(0.985);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+@keyframes grow-stem {
+	from {
+		stroke-dashoffset: var(--len, 600);
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+.animate-sway {
+	transform-origin: 50% 90%;
+	animation: sway 11s ease-in-out infinite;
+}
+.animate-sway-slow {
+	transform-origin: 50% 95%;
+	animation: sway 16s ease-in-out infinite;
+}
+.animate-drift {
+	animation: drift 9s ease-in-out infinite;
+}
+.animate-bloom {
+	opacity: 0;
+	animation: bloom-in 1s var(--ease-organic) forwards;
+}
+.animate-marquee {
+	animation: marquee 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+	.reveal {
+		opacity: 1;
+		transform: none;
+	}
+}
