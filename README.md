@@ -120,6 +120,15 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
+<summary><b>Shaders (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [spooky-smoke-shader](./shaders/spooky-smoke-shader/) | "AETHER" séance instrument that integrates a WebGL2 fbm-noise smoke component — a live observation window tuned by a single `smokeColor` prop, an alchemical reagent tray of preset swatches plus a brass colour dial, and two documented specimen panes, all on a shadcn/ui project structure | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide, WebGL2 |
+
+</details>
+
+<details>
 <summary><b>Portfolios (2)</b></summary>
 
 | Project | Description | Stack |
