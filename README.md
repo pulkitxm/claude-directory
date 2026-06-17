@@ -192,10 +192,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (11)</b></summary>
+<summary><b>Shaders (13)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [abstract-glassy-shader](./shaders/abstract-glassy-shader/) | GLASSWORKS — a drop-in WebGL2 metaball field (two SDF circles fused with a smooth union, an exponential glow and a cosine spectrum) integrated into shadcn `components/ui` and framed as a glass component lab: a live telemetry HUD reading the shader's own blob centres/FPS/clock, a control deck of faders that promote the baked-in constants to live uniforms, copyable source tabs, and a props/uniforms API; fully procedural with a CSS metaball fallback | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [animated-shader-background](./shaders/animated-shader-background/) | "AnoAI" product hero set over a full-viewport three.js aurora fragment shader, integrated as a shadcn `components/ui` piece, with a graceful CSS-aurora fallback when WebGL is unavailable, vendored Geist font + generated avatar art, and a headless screenshot-based shader verification | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./shaders/animated-shader-hero/) | "Emberfield" showcase for a reusable WebGL2 animated shader hero (drifting fractal ember field by @atzedent) — a single drop-in `@/components/ui` component with a live uniforms HUD, pointer-reactive canvas, and a shadcn/Tailwind/TypeScript integration story; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
 | [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Procedural GLSL "Celestial Bloom" fragment shader — a five-petalled nebula with a glowing star core and twinkling field, rendered full-viewport with Three.js and framed as an observatory specimen plate with reticle corners, a Fraunces hero lockup, and a live telemetry HUD (mission clock, render FPS, petals) driven by the shader's own per-frame state; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
