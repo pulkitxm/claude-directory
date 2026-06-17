@@ -199,10 +199,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (4)</b></summary>
+<summary><b>Shaders (6)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [animated-shader-background](./shaders/animated-shader-background/) | "AnoAI" product hero set over a full-viewport three.js aurora fragment shader, integrated as a shadcn `components/ui` piece, with a graceful CSS-aurora fallback when WebGL is unavailable, vendored Geist font + generated avatar art, and a headless screenshot-based shader verification | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./shaders/animated-shader-hero/) | "Emberfield" showcase for a reusable WebGL2 animated shader hero (drifting fractal ember field by @atzedent) — a single drop-in `@/components/ui` component with a live uniforms HUD, pointer-reactive canvas, and a shadcn/Tailwind/TypeScript integration story; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
 | [paper-shaders-control-deck](./shaders/paper-shaders-control-deck/) | Instrument-console "Control Deck" for driving live WebGL shaders — four selectable channels (paper-design Mesh Gradient / Dot Orbit / Combined plus the prompt's custom react-three-fiber GLSL Shader Plane + energy rings), a brushed-graphite scope housing with corner brackets/scanlines/vignette, live FPS·frame·uptime telemetry, and speed/intensity faders wired straight into the shader uniforms | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, @react-three/fiber, three, Lucide |
 | [shader-lines-showcase](./shaders/shader-lines-showcase/) | shadcn-style integration of the "Shader Lines" component — a generative GLSL line field on one full-screen quad — wrapped in a component-library docs page with a full-bleed live hero, a tabbed copyable source panel, an anatomy walkthrough, and a props/uniforms API, with Three.js r89 and all fonts vendored locally so it runs offline | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
