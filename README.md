@@ -193,10 +193,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (22)</b></summary>
+<summary><b>Shaders (24)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [aether-flow-shader](./shaders/aether-flow-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [animated-shader-background](./shaders/animated-shader-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./shaders/animated-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
 | [aura-core-shader](./shaders/aura-core-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, WebGL2, Lucide |
