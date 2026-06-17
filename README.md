@@ -164,6 +164,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [copy-machine-landing](./ui-desgin/copy-machine-landing/) | Exact-spec single-page landing-page scaffold built to act as a "copy machine" — a Vite + React + TypeScript base with the `@/` path alias, Tailwind v3 (`@tailwind` base/components/utilities), a `cn()` clsx/tailwind-merge util, and framer-motion + lucide-react preinstalled, ready for components to be dropped verbatim into `/src/components/ui/` and stacked in `App.tsx` | React, TypeScript, Vite, Tailwind CSS, Framer Motion, clsx, tailwind-merge, Lucide |
 | [industrial-skeuomorphism](./ui-desgin/industrial-skeuomorphism/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [landing-page-scaffold](./ui-desgin/landing-page-scaffold/) | Pre-component landing-page scaffold built to an exact multi-turn spec — Vite + React + TypeScript, Tailwind CSS with tailwind-merge/clsx (`cn()` helper), Framer Motion and Lucide React installed, a verbatim `@/`→`/src/` path alias in vite/tsconfig, and the mandated `/src/components/ui` + `/src/lib` folder layout with an empty `App.tsx` shell ready for components to stack into | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
 | [serif-editorial-design-system](./ui-desgin/serif-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
