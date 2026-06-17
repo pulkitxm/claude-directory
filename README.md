@@ -160,10 +160,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI Desgin (12)</b></summary>
+<summary><b>UI Desgin (13)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [ai-budget-tracking-landing-page-velara-al](./ui-desgin/ai-budget-tracking-landing-page-velara-al/) | "Velara AI" AI budget-tracking landing page — a dark, purple-accented (#A855F7) fintech site assembled from 10 numbered sections: a video-background hero with a glass dashboard mockup (animated wave chart, sidebar, asset list), a feature-grid "Why Choose Us", a 3-step "How It Works" with animated goal/insight mockups, a bento Features grid (stacked encryption cards, smart-alert feed, animated budget bars, sparkline mini-cards), a global-transfers map card with floating glass widgets, an infinite dual-column testimonials ticker, a security band + app-download banner with browser-chrome dashboard, a cosmic-horizon pricing trio with a "Popular" tier, an animated FAQ accordion, and an SVG globe-arc footer with cycling country badges and a glowing VELARAAI wordmark | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [aurora-flow-landing](./ui-desgin/aurora-flow-landing/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [copy-machine-landing](./ui-desgin/copy-machine-landing/) | Exact-spec single-page landing-page scaffold built to act as a "copy machine" — a Vite + React + TypeScript base with the `@/` path alias, Tailwind v3 (`@tailwind` base/components/utilities), a `cn()` clsx/tailwind-merge util, and framer-motion + lucide-react preinstalled, ready for components to be dropped verbatim into `/src/components/ui/` and stacked in `App.tsx` | React, TypeScript, Vite, Tailwind CSS, Framer Motion, clsx, tailwind-merge, Lucide |
 | [copy-machine-landing-exact-spec](./ui-desgin/copy-machine-landing-exact-spec/) | Setup-phase scaffold for a multi-turn "copy machine" landing-page brief — a single-page project stood up to an exact spec (Vite + React + TS, classic Tailwind directives, tailwind-merge + clsx `cn()`, Framer Motion, Lucide, `@/`→`/src/` alias), with character-for-character spec files and an empty `App.tsx` ready for components, verified to build/run headlessly | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
@@ -180,15 +181,20 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (6)</b></summary>
+<summary><b>Shaders (11)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [animated-shader-background](./shaders/animated-shader-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./shaders/animated-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
+| [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
+| [celestial-matrix-shader](./shaders/celestial-matrix-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
+| [molten-core-shader](./shaders/molten-core-shader/) | shadcn-style integration of the `MoltenCoreShader` component — a procedural FBM lava fragment shader rendered full-viewport with Three.js, framed as a live "foundry core monitor" with a base-color toggle, a melt-intensity dial, and a telemetry panel that reads core temperature straight off the GPU | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [paper-shaders-control-deck](./shaders/paper-shaders-control-deck/) | Instrument-console "Control Deck" for driving live WebGL shaders — four selectable channels (paper-design Mesh Gradient / Dot Orbit / Combined plus the prompt's custom react-three-fiber GLSL Shader Plane + energy rings), a brushed-graphite scope housing with corner brackets/scanlines/vignette, live FPS·frame·uptime telemetry, and speed/intensity faders wired straight into the shader uniforms | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, @react-three/fiber, three, Lucide |
 | [shader-flow-field-rings](./shaders/shader-flow-field-rings/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-lines-showcase](./shaders/shader-lines-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-plasma-grid-background](./shaders/shader-plasma-grid-background/) | "PLASMASIGNAL" showcase for a drop-in WebGL plasma-grid background (shadcn `components/ui`) — the brief's fragment shader ported to TS, wrapped in a "Signal Lab" page with an oscilloscope HUD reading live `iTime`/FPS/`iResolution`, and a control deck of faders that promote the shader's baked-in constants to live uniforms to re-tint/re-shape the whole field in real time | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
+| [spooky-smoke-shader](./shaders/spooky-smoke-shader/) | "AETHER" séance instrument that integrates a WebGL2 fbm-noise smoke component — a live observation window tuned by a single `smokeColor` prop, an alchemical reagent tray of preset swatches plus a brass colour dial, and two documented specimen panes, all on a shadcn/ui project structure | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide, WebGL2 |
 | [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
 
 </details>
