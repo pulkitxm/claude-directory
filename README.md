@@ -203,6 +203,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [aura-core-shader](./shaders/aura-core-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, WebGL2, Lucide |
 | [aurora-borealis-shader](./shaders/aurora-borealis-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
+| [celestial-ink-shader](./shaders/celestial-ink-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [celestial-matrix-shader](./shaders/celestial-matrix-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [celestial-sphere-shader](./shaders/celestial-sphere-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn structure, Three.js, Lucide |
 | [cybernetic-grid-shader](./shaders/cybernetic-grid-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
