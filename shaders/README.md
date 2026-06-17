@@ -6,6 +6,7 @@
 | [animated-shader-hero](./animated-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
 | [celestial-bloom-shader](./celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [celestial-matrix-shader](./celestial-matrix-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
+| [celestial-sphere-shader](./celestial-sphere-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn structure, Three.js, Lucide |
 | [cybernetic-grid-shader](./cybernetic-grid-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [interactive-flux-shader](./interactive-flux-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [molten-core-shader](./molten-core-shader/) | shadcn-style integration of the `MoltenCoreShader` component — a procedural FBM lava fragment shader rendered full-viewport with Three.js, framed as a live "foundry core monitor" with a base-color toggle, a melt-intensity dial, and a telemetry panel that reads core temperature straight off the GPU | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
