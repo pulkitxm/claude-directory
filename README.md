@@ -192,7 +192,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (11)</b></summary>
+<summary><b>Shaders (13)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -206,6 +206,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [shader-lines-showcase](./shaders/shader-lines-showcase/) | shadcn-style integration of the "Shader Lines" component — a generative GLSL line field on one full-screen quad — wrapped in a component-library docs page with a full-bleed live hero, a tabbed copyable source panel, an anatomy walkthrough, and a props/uniforms API, with Three.js r89 and all fonts vendored locally so it runs offline | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-plasma-grid-background](./shaders/shader-plasma-grid-background/) | "PLASMASIGNAL" showcase for a drop-in WebGL plasma-grid background (shadcn `components/ui`) — the brief's fragment shader ported to TS, wrapped in a "Signal Lab" page with an oscilloscope HUD reading live `iTime`/FPS/`iResolution`, and a control deck of faders that promote the shader's baked-in constants to live uniforms to re-tint/re-shape the whole field in real time | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
 | [spooky-smoke-shader](./shaders/spooky-smoke-shader/) | "AETHER" séance instrument that integrates a WebGL2 fbm-noise smoke component — a live observation window tuned by a single `smokeColor` prop, an alchemical reagent tray of preset swatches plus a brass colour dial, and two documented specimen panes, all on a shadcn/ui project structure | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide, WebGL2 |
+| [vitruvian-ascii-shader](./shaders/vitruvian-ascii-shader/) | shadcn/Tailwind v4/TS integration of the prompt's `hero-ascii` "PERFECT PROPORTIONS" hero, with its network-blocked UnicornStudio embed rebuilt as a self-contained HTML-canvas ASCII shader of Da Vinci's Vitruvian Man — bright limbs sweeping between the square and circle poses over a breathing frame, a faint pose-superposition, and a twinkling starfield, under the verbatim UIMIX chrome; JetBrains Mono vendored locally | React, TypeScript, Vite, Tailwind CSS v4, HTML Canvas, shadcn/ui |
 | [webgl-flowing-gradient-shader](./shaders/webgl-flowing-gradient-shader/) | shadcn/Tailwind v4/TS integration of a raw-WebGL flowing-gradient fragment shader, framed as the "PRISMA Shader Lab" — a cursor-reactive fractal field with viewfinder chrome, a layers/glow/speed control rail, and a live FPS/time/resolution telemetry HUD | React, TypeScript, Vite, Tailwind CSS v4, WebGL, Lucide |
 | [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
 
