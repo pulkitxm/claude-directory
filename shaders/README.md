@@ -2,10 +2,12 @@
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [abstract-glassy-shader](./abstract-glassy-shader/) | GLASSWORKS — a drop-in WebGL2 metaball field (two SDF circles fused with a smooth union, an exponential glow and a cosine spectrum) integrated into shadcn `components/ui` and framed as a glass component lab: a live telemetry HUD reading the shader's own blob centres/FPS/clock, a control deck of faders that promote the baked-in constants to live uniforms, copyable source tabs, and a props/uniforms API; fully procedural with a CSS metaball fallback | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [aether-flow-shader](./aether-flow-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [ai-input-wave-hero](./ai-input-wave-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, GSAP, Lucide |
 | [animated-shader-background](./animated-shader-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./animated-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
+| [anomalous-matter-hero](./anomalous-matter-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [atc-tunnel-shader](./atc-tunnel-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, Lucide |
 | [aura-core-shader](./aura-core-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, WebGL2, Lucide |
 | [aurora-borealis-shader](./aurora-borealis-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
@@ -21,11 +23,14 @@
 | [digital-glitch-shader](./digital-glitch-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [digital-petals-shader](./digital-petals-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [dithering-shader-lab](./dithering-shader-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
+| [dithering-sphere-shader](./dithering-sphere-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [dynamic-waveform-shader](./dynamic-waveform-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, three.js, Lucide |
 | [exoplanet-survey-shader](./exoplanet-survey-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [galactic-spiral-shader](./galactic-spiral-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [gaming-vibe-shader](./gaming-vibe-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
+| [generative-mountain-scene](./generative-mountain-scene/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [hero-button-expandable](./hero-button-expandable/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
+| [hero-dithering-card](./hero-dithering-card/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
 | [interactive-flux-shader](./interactive-flux-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [liquid-crystal-shader](./liquid-crystal-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL, Lucide |
 | [living-nebula-shader](./living-nebula-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, shadcn/ui, Lucide |
@@ -39,6 +44,8 @@
 | [shader-plasma-grid-background](./shader-plasma-grid-background/) | "PLASMASIGNAL" showcase for a drop-in WebGL plasma-grid background (shadcn `components/ui`) — the brief's fragment shader ported to TS, wrapped in a "Signal Lab" page with an oscilloscope HUD reading live `iTime`/FPS/`iResolution`, and a control deck of faders that promote the shader's baked-in constants to live uniforms to re-tint/re-shape the whole field in real time | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
 | [spooky-smoke-shader](./spooky-smoke-shader/) | "AETHER" séance instrument that integrates a WebGL2 fbm-noise smoke component — a live observation window tuned by a single `smokeColor` prop, an alchemical reagent tray of preset swatches plus a brass colour dial, and two documented specimen panes, all on a shadcn/ui project structure | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide, WebGL2 |
 | [vitruvian-ascii-shader](./vitruvian-ascii-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, HTML Canvas, shadcn/ui |
+| [warp-dithering-shader](./warp-dithering-shader/) | "DITHER LAB" integration of the verbatim `DitheringShader` WebGL2 component — seven procedural shape fields (warp, simplex, dots, wave, ripple, swirl, sphere) thresholded through random + Bayer 2×2/4×4/8×8 ordered dithering — dropped into shadcn `components/ui` and framed as a live 1-bit CRT console: a full-bleed Warp hero, a driving deck wired straight to the props/uniforms, a click-to-apply shape library, animated Bayer-matrix explainers, and a live props API mirroring the hero state | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [warp-drive-shader-bridge](./warp-drive-shader-bridge/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
+| [warp-shader-hero](./warp-shader-hero/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
 | [webgl-flowing-gradient-shader](./webgl-flowing-gradient-shader/) | shadcn/Tailwind v4/TS integration of a raw-WebGL flowing-gradient fragment shader, framed as the "PRISMA Shader Lab" — a cursor-reactive fractal field with viewfinder chrome, a layers/glow/speed control rail, and a live FPS/time/resolution telemetry HUD | React, TypeScript, Vite, Tailwind CSS v4, WebGL, Lucide |
 | [webgl-rgb-shift-shader-hero](./webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
