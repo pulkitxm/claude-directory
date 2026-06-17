@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Vendored fonts (variable, latin subset) --- */
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0a1014;
+    color: #eaf2ef;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    /* The board: faint copper grid + a deep substrate vignette */
+    background-image:
+      radial-gradient(
+        140% 90% at 50% -10%,
+        rgba(31, 182, 110, 0.07) 0%,
+        transparent 55%
+      ),
+      linear-gradient(rgba(31, 49, 56, 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31, 49, 56, 0.35) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      28px 28px,
+      28px 28px;
+    background-attachment: fixed, fixed, fixed;
+  }
+
+  ::selection {
+    background: rgba(232, 162, 75, 0.3);
+    color: #fff;
+  }
+
+  /* Visible focus for keyboard users */
+  :focus-visible {
+    outline: 2px solid #34d17f;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070c0f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e3138;
+    border: 3px solid #070c0f;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a444d;
+  }
+}
+
+@layer utilities {
+  .font-feature-mono {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "ss01", "zero";
+  }
+
+  /* copper-foil text — used sparingly on key numerals/marks */
+  .text-copper-foil {
+    background-image: linear-gradient(135deg, #f5b968 0%, #e8a24b 45%, #8a5318 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .bg-board-fade {
+    background:
+      radial-gradient(120% 70% at 50% 0%, rgba(31, 182, 110, 0.06), transparent 60%);
+  }
+
+  /* the routed copper trace look on a divider */
+  .trace-line {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(232, 162, 75, 0.5) 20%,
+      rgba(232, 162, 75, 0.5) 80%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
