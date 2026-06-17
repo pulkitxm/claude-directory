@@ -160,10 +160,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI Desgin (2)</b></summary>
+<summary><b>UI Desgin (3)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [ai-budget-tracking-landing-page-velara-al](./ui-desgin/ai-budget-tracking-landing-page-velara-al/) | "Velara AI" AI budget-tracking landing page — a dark, purple-accented (#A855F7) fintech site assembled from 10 numbered sections: a video-background hero with a glass dashboard mockup (animated wave chart, sidebar, asset list), a feature-grid "Why Choose Us", a 3-step "How It Works" with animated goal/insight mockups, a bento Features grid (stacked encryption cards, smart-alert feed, animated budget bars, sparkline mini-cards), a global-transfers map card with floating glass widgets, an infinite dual-column testimonials ticker, a security band + app-download banner with browser-chrome dashboard, a cosmic-horizon pricing trio with a "Popular" tier, an animated FAQ accordion, and an SVG globe-arc footer with cycling country badges and a glowing VELARAAI wordmark | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [industrial-skeuomorphism](./ui-desgin/industrial-skeuomorphism/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [serif-editorial-design-system](./ui-desgin/serif-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
 
