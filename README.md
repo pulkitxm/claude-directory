@@ -160,10 +160,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI Desgin (2)</b></summary>
+<summary><b>UI Desgin (3)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [copy-machine-setup](./ui-desgin/copy-machine-setup/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
 | [industrial-skeuomorphism](./ui-desgin/industrial-skeuomorphism/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [serif-editorial-design-system](./ui-desgin/serif-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
 
