@@ -177,11 +177,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI Desgin (2)</b></summary>
+<summary><b>UI Desgin (3)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [industrial-skeuomorphism](./ui-desgin/industrial-skeuomorphism/) | "SCHEMATIC" Industrial Skeuomorphism design-system showcase — a tactile hardware-control landing built on centralized neumorphic tokens, with an all-CSS hero device mockup (scanline screen + live dashboard), glowing LED status indicators, corner screws & vent slots on every panel, a cylindrical How-It-Works pipe connector, push-pinned testimonials with masking tape, punched-hole pricing tags, a conic-gradient radar sweep, recessed "data slot" inputs, and a matte-plastic noise overlay; vendored Inter/JetBrains Mono and all assets, fully offline & responsive | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
+| [landing-page-component-scaffold](./ui-desgin/landing-page-component-scaffold/) | Exact-spec single-page landing-page scaffold set up before any components — Vite + React + TypeScript, Tailwind CSS with a clsx + tailwind-merge `cn()` helper, the `@/`→`src/` path alias wired in both vite.config and tsconfig, an empty `src/components/ui/` for stacked components, and a headless Chromium smoke test | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide, clsx, tailwind-merge |
 | [serif-editorial-design-system](./ui-desgin/serif-editorial-design-system/) | "Roman & Quill" Serif design-system showcase — a private-publishing-house editorial landing (hero, stats, drop-cap features, asymmetric 1.3fr/0.7fr benefits, decorative-quote testimonials, gold-tinted featured pricing, journal grid, ARIA FAQ, inverted correspond form, footer) with vendored Playfair/Source Sans 3/IBM Plex Mono, a rule-line + small-caps label system, bespoke SVG engraving plates, burnished-gold accent, paper-grain overlay, and ambient glow — all on channel-format design tokens, fully offline | React, TypeScript, Vite, Tailwind CSS, Lucide |
 
 </details>
