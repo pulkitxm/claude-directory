@@ -198,11 +198,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (2)</b></summary>
+<summary><b>Shaders (3)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [paper-shaders-control-deck](./shaders/paper-shaders-control-deck/) | Instrument-console "Control Deck" for driving live WebGL shaders — four selectable channels (paper-design Mesh Gradient / Dot Orbit / Combined plus the prompt's custom react-three-fiber GLSL Shader Plane + energy rings), a brushed-graphite scope housing with corner brackets/scanlines/vignette, live FPS·frame·uptime telemetry, and speed/intensity faders wired straight into the shader uniforms | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, @react-three/fiber, three, Lucide |
+| [shader-lines-showcase](./shaders/shader-lines-showcase/) | shadcn-style integration of the "Shader Lines" component — a generative GLSL line field on one full-screen quad — wrapped in a component-library docs page with a full-bleed live hero, a tabbed copyable source panel, an anatomy walkthrough, and a props/uniforms API, with Three.js r89 and all fonts vendored locally so it runs offline | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
 
 </details>
