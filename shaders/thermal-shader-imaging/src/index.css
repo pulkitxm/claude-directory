@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #05070c;
+  color: #e8edf6;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------------------------------------------------------------------------
+   Instrument chrome — the bay reads like a piece of thermographic hardware.
+--------------------------------------------------------------------------- */
+
+/* Faint scanlines over dark panels, like a sensor readout. */
+.scanlines {
+  position: relative;
+}
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(83, 213, 253, 0.05) 0px,
+    rgba(83, 213, 253, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
+
+/* Corner brackets for viewport / specimen frames. */
+.bracket {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(83, 213, 253, 0.55);
+}
+.bracket-tl {
+  top: 8px;
+  left: 8px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.bracket-tr {
+  top: 8px;
+  right: 8px;
+  border-top: 1.5px solid;
+  border-right: 1.5px solid;
+}
+.bracket-bl {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.bracket-br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+/* Live status dot. */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.live-dot {
+  animation: pulse-dot 1.4s steps(2, jump-none) infinite;
+}
+
+/* The thermal palette ramp, used in the legend. */
+.thermal-ramp {
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #073dff 17%,
+    #53d5fd 33%,
+    #fefcdd 50%,
+    #ffec6a 66%,
+    #f9d400 83%,
+    #a61904 100%
+  );
+}
+
+/* Subtle vignette + grain so the deep blacks don't band on cheap panels. */
+.bay-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Reticle crosshair drawn over a live viewport. */
+.reticle::before,
+.reticle::after {
+  content: "";
+  position: absolute;
+  background: rgba(254, 252, 221, 0.18);
+  pointer-events: none;
+}
+.reticle::before {
+  left: 50%;
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+  transform: translateX(-0.5px);
+}
+.reticle::after {
+  top: 50%;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  transform: translateY(-0.5px);
+}
+
+::selection {
+  background: rgba(255, 236, 106, 0.3);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05070c;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b2330;
+  border-radius: 999px;
+  border: 2px solid #05070c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3547;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
