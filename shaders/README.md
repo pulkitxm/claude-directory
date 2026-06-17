@@ -10,6 +10,7 @@
 | [celestial-ink-shader](./celestial-ink-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [celestial-matrix-shader](./celestial-matrix-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [celestial-sphere-shader](./celestial-sphere-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn structure, Three.js, Lucide |
+| [crystalline-cube-shader](./crystalline-cube-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
 | [cybernetic-grid-shader](./cybernetic-grid-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [digital-glitch-shader](./digital-glitch-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [dithering-shader-lab](./dithering-shader-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
