@@ -157,3 +157,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [swiss-design-system](./ui-design/swiss-design-system/) | Self-contained Swiss International (International Typographic Style) design-system showcase — strict B/W/Swiss-Red tokens, four CSS texture patterns (grid, dots, diagonal, noise), a Bauhaus hero composition, a mathematical type specimen, a 2×2 component gallery, and bold mechanical interactions (color inversions, rotating plus icons, count-up); fully offline | HTML, CSS, vanilla JS, Inter |
 
 </details>
+
+<details>
+<summary><b>Shaders (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [shader-lines-showcase](./shaders/shader-lines-showcase/) | shadcn-style integration of the "Shader Lines" component — a generative GLSL line field on one full-screen quad — wrapped in a component-library docs page with a full-bleed live hero, a tabbed copyable source panel, an anatomy walkthrough, and a props/uniforms API, with Three.js r89 and all fonts vendored locally so it runs offline | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
+
+</details>
