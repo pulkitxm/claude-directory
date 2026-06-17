@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Vendored fonts (offline-self-contained) ─────────────────────────────── */
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/newsreader-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/space-mono-400-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/space-mono-700-latin.woff2") format("woff2");
+}
+
+/* ── Design tokens ───────────────────────────────────────────────────────── */
+:root {
+  --ink: #0a0c16;
+  --ink-2: #0f1320;
+  --plate: #13182a;
+  --brass: #d8c39a;
+  --brass-dim: #9c8b69;
+  --parchment: #ece3d0;
+  --coral: #ec6a4d;
+  --oxide: #86d2e6;
+  --haze: #8b93ab;
+  --line: rgba(216, 195, 154, 0.18);
+  --line-soft: rgba(139, 147, 171, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Content fits the viewport on roomy screens but stays reachable by scroll
+     on short / mobile ones (the console is taller than a phone is tall). */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* The starfield sits over the deep-ink ground but under the shader window. */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/assets/stardust.png");
+  background-repeat: repeat;
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+
+/* Engraved hairline grid that reads like graph paper on the instrument deck. */
+.deck-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(216, 195, 154, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 195, 154, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(120% 90% at 30% 40%, black 35%, transparent 78%);
+  -webkit-mask-image: radial-gradient(120% 90% at 30% 40%, black 35%, transparent 78%);
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes scope-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes corner-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
+
+@keyframes blip {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.reveal {
+  animation: plate-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .scope-reveal {
+    animation: none !important;
+  }
+  .radar-sweep {
+    display: none !important;
+  }
+}
+
+/* Brass slider styling — reused by every range input in the console. */
+.dial {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--brass-dim) 0%,
+    var(--brass-dim) var(--fill, 0%),
+    rgba(139, 147, 171, 0.22) var(--fill, 0%),
+    rgba(139, 147, 171, 0.22) 100%
+  );
+  border-radius: 2px;
+  cursor: pointer;
+  outline: none;
+}
+.dial::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--parchment);
+  border: 2px solid var(--brass);
+  box-shadow: 0 0 0 3px rgba(10, 12, 22, 0.9), 0 0 10px rgba(216, 195, 154, 0.4);
+  transition: transform 0.15s ease;
+}
+.dial::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+.dial::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--parchment);
+  border: 2px solid var(--brass);
+  box-shadow: 0 0 10px rgba(216, 195, 154, 0.4);
+}
+.dial:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(10, 12, 22, 0.9), 0 0 0 5px var(--oxide);
+}
+
+/* Native colour swatch, restyled to look like a catalogued mineral chip. */
+.chip {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+.chip::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.chip::-webkit-color-swatch {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+.chip::-moz-color-swatch {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
