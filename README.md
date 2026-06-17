@@ -173,7 +173,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (11)</b></summary>
+<summary><b>Shaders (13)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -186,6 +186,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [shader-flow-field-rings](./shaders/shader-flow-field-rings/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-lines-showcase](./shaders/shader-lines-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-plasma-grid-background](./shaders/shader-plasma-grid-background/) | "PLASMASIGNAL" showcase for a drop-in WebGL plasma-grid background (shadcn `components/ui`) — the brief's fragment shader ported to TS, wrapped in a "Signal Lab" page with an oscilloscope HUD reading live `iTime`/FPS/`iResolution`, and a control deck of faders that promote the shader's baked-in constants to live uniforms to re-tint/re-shape the whole field in real time | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
+| [simplex-dithering-shader](./shaders/simplex-dithering-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [spooky-smoke-shader](./shaders/spooky-smoke-shader/) | "AETHER" séance instrument that integrates a WebGL2 fbm-noise smoke component — a live observation window tuned by a single `smokeColor` prop, an alchemical reagent tray of preset swatches plus a brass colour dial, and two documented specimen panes, all on a shadcn/ui project structure | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide, WebGL2 |
 | [webgl-flowing-gradient-shader](./shaders/webgl-flowing-gradient-shader/) | shadcn/Tailwind v4/TS integration of a raw-WebGL flowing-gradient fragment shader, framed as the "PRISMA Shader Lab" — a cursor-reactive fractal field with viewfinder chrome, a layers/glow/speed control rail, and a live FPS/time/resolution telemetry HUD | React, TypeScript, Vite, Tailwind CSS v4, WebGL, Lucide |
 | [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
