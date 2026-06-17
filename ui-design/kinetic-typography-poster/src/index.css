@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   KINETIC TYPOGRAPHY — DESIGN TOKEN SYSTEM (THE DNA)
+   Tokens are centralised here so every component reads from one source of
+   truth. Tailwind v4 exposes each @theme entry as a utility (e.g. `bg-ink`,
+   `text-acid`, `border-line`) and a CSS variable (e.g. `var(--color-acid)`).
+   ========================================================================== */
+
+@theme {
+	/* Foundation */
+	--color-ink: #09090b; /* background — rich black, softer than pure black */
+	--color-bone: #fafafa; /* foreground — off-white, less harsh than pure white */
+	--color-muted: #27272a; /* secondary surfaces / depth layers */
+	--color-muted-foreground: #a1a1aa; /* zinc-400 — all secondary text */
+
+	/* Accent */
+	--color-acid: #dfe104; /* acid yellow/lime — the single accent */
+	--color-acid-foreground: #000000; /* pure black, only ever on top of acid */
+	--color-line: #3f3f46; /* zinc-700 — every structural border */
+
+	/* Type */
+	--font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+	/* Brutalist geometry — zero radius is the default */
+	--radius: 0px;
+}
+
+/* ----- Local fonts (vendored, variable 300–700) -------------------------- */
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+		U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+		U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url("/fonts/space-grotesk-latin-ext.woff2") format("woff2");
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+		U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+		U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+		U+A720-A7FF;
+}
+
+/* ----- Base -------------------------------------------------------------- */
+html {
+	scroll-behavior: smooth;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background-color: var(--color-ink);
+	color: var(--color-bone);
+	font-family: var(--font-display);
+	font-feature-settings: "ss01", "ss02";
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	overflow-x: hidden;
+}
+
+/* Selection: acid background, black text (token rule) */
+::selection {
+	background: var(--color-acid);
+	color: #000;
+}
+
+/* Focus: never invisible — a thick acid ring everywhere (token rule). */
+:focus-visible {
+	outline: 3px solid var(--color-acid);
+	outline-offset: 3px;
+}
+
+/* The marquee library injects inline styles; keep its edges raw (no fade).
+   The real wrapper class react-fast-marquee renders is `.rfm-marquee-container`. */
+.rfm-marquee-container {
+	overflow: hidden;
+}
+
+/* ----- Motion preferences ----------------------------------------------- */
+/* The whole point of this style is motion, so it must degrade gracefully.
+   When a user asks for reduced motion we: freeze every marquee on its first
+   frame, neutralise scroll-/hover-driven transforms, and cut transitions to
+   an instant. Layout, scale hierarchy and colour contrast are untouched, so
+   the poster still reads exactly the same — it just stops moving. */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+	/* react-fast-marquee animates an inner track via CSS animation; pinning it
+	   to its start keeps all the content visible and static. */
+	.rfm-marquee {
+		animation: none !important;
+		transform: none !important;
+	}
+}
+
+/* Utility: hairline-connected grid uses the line colour as the gap fill. */
+.grid-hairline {
+	background-color: var(--color-line);
+}
