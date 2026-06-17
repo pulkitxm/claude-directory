@@ -173,10 +173,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (11)</b></summary>
+<summary><b>Shaders (13)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [abstract-glassy-shader](./shaders/abstract-glassy-shader/) | GLASSWORKS — a drop-in WebGL2 metaball field (two SDF circles fused with a smooth union, an exponential glow and a cosine spectrum) integrated into shadcn `components/ui` and framed as a glass component lab: a live telemetry HUD reading the shader's own blob centres/FPS/clock, a control deck of faders that promote the baked-in constants to live uniforms, copyable source tabs, and a props/uniforms API; fully procedural with a CSS metaball fallback | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [animated-shader-background](./shaders/animated-shader-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./shaders/animated-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
 | [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
