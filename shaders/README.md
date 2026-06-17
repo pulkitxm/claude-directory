@@ -3,6 +3,7 @@
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aether-flow-shader](./aether-flow-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
+| [ai-input-wave-hero](./ai-input-wave-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, GSAP, Lucide |
 | [animated-shader-background](./animated-shader-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./animated-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
 | [atc-tunnel-shader](./atc-tunnel-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, Lucide |
