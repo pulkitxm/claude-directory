@@ -26,6 +26,7 @@
 | [dithering-sphere-shader](./dithering-sphere-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [dotted-surface-waves](./dotted-surface-waves/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, next-themes, Lucide |
 | [dynamic-waveform-shader](./dynamic-waveform-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, three.js, Lucide |
+| [electric-waves-shader](./electric-waves-shader/) | shadcn/Tailwind v4/TS integration of the prompt's `ElectricWavesShader` (a Three.js fragment shader piling additive R/G/B sine-interference lines onto one full-screen quad), framed as the "ARCWAVE" signal instrument — viewfinder brackets, CRT scanlines, the component's own five-slider uniform deck (wave count / amplitude / frequency / brightness / colour separation), and a live FPS / uptime / resolution telemetry HUD; system fonts, runs offline | React, TypeScript, Vite, Tailwind CSS v4, Three.js, shadcn/ui, Lucide |
 | [endless-pursuit-shader-hero](./endless-pursuit-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
 | [exoplanet-survey-shader](./exoplanet-survey-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [flowing-waves-shader](./flowing-waves-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
