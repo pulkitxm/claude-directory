@@ -2,6 +2,7 @@
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [abstract-glassy-shader](./abstract-glassy-shader/) | GLASSWORKS — a drop-in WebGL2 metaball field (two SDF circles fused with a smooth union, an exponential glow and a cosine spectrum) integrated into shadcn `components/ui` and framed as a glass component lab: a live telemetry HUD reading the shader's own blob centres/FPS/clock, a control deck of faders that promote the baked-in constants to live uniforms, copyable source tabs, and a props/uniforms API; fully procedural with a CSS metaball fallback | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [aether-flow-shader](./aether-flow-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [ai-input-wave-hero](./ai-input-wave-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, GSAP, Lucide |
 | [animated-shader-background](./animated-shader-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
