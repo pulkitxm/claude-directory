@@ -180,10 +180,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (4)</b></summary>
+<summary><b>Shaders (6)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [animated-shader-background](./shaders/animated-shader-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
 | [animated-shader-hero](./shaders/animated-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
 | [paper-shaders-control-deck](./shaders/paper-shaders-control-deck/) | Instrument-console "Control Deck" for driving live WebGL shaders — four selectable channels (paper-design Mesh Gradient / Dot Orbit / Combined plus the prompt's custom react-three-fiber GLSL Shader Plane + energy rings), a brushed-graphite scope housing with corner brackets/scanlines/vignette, live FPS·frame·uptime telemetry, and speed/intensity faders wired straight into the shader uniforms | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, @react-three/fiber, three, Lucide |
 | [shader-lines-showcase](./shaders/shader-lines-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
