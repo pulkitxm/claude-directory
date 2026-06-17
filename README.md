@@ -160,11 +160,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI Desgin (2)</b></summary>
+<summary><b>UI Desgin (3)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [industrial-skeuomorphism](./ui-desgin/industrial-skeuomorphism/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
+| [landing-page-copy-machine](./ui-desgin/landing-page-copy-machine/) | Exact-spec Vite + React + TypeScript landing-page scaffold for a strict "copy machine" workflow — `@/`→`/src/` alias wired in both `vite.config.ts` and `tsconfig.json`, a `cn()` (`twMerge(clsx())`) utility, Tailwind base styles, a `src/components/ui` drop zone, and an empty `relative min-h-screen flex flex-col` `App.tsx` stacking shell; deps (Framer Motion, Lucide, clsx, tailwind-merge) installed, builds clean, fully self-contained | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
 | [serif-editorial-design-system](./ui-desgin/serif-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
 
 </details>
