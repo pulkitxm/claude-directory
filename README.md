@@ -177,7 +177,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI Desgin (9)</b></summary>
+<summary><b>UI Desgin (10)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|

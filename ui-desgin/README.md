@@ -1,6 +1,6 @@
 # UI Desgin
 
-9 **UI Desgin** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+10 **UI Desgin** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
