@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects
+## Projects (167)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -174,27 +174,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>UI Desgin (12)</b></summary>
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [aurora-flow-landing](./ui-desgin/aurora-flow-landing/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [copy-machine-landing](./ui-desgin/copy-machine-landing/) | Exact-spec single-page landing-page scaffold built to act as a "copy machine" — a Vite + React + TypeScript base with the `@/` path alias, Tailwind v3 (`@tailwind` base/components/utilities), a `cn()` clsx/tailwind-merge util, and framer-motion + lucide-react preinstalled, ready for components to be dropped verbatim into `/src/components/ui/` and stacked in `App.tsx` | React, TypeScript, Vite, Tailwind CSS, Framer Motion, clsx, tailwind-merge, Lucide |
-| [copy-machine-landing-exact-spec](./ui-desgin/copy-machine-landing-exact-spec/) | Setup-phase scaffold for a multi-turn "copy machine" landing-page brief — a single-page project stood up to an exact spec (Vite + React + TS, classic Tailwind directives, tailwind-merge + clsx `cn()`, Framer Motion, Lucide, `@/`→`/src/` alias), with character-for-character spec files and an empty `App.tsx` ready for components, verified to build/run headlessly | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
-| [copy-machine-scaffold](./ui-desgin/copy-machine-scaffold/) | Exact-spec "copy machine" landing-page scaffold built to a multi-turn setup prompt — Vite + React + TypeScript with the verbatim `@/`→`./src` alias (vite + tsconfig), Tailwind CSS + tailwind-merge/clsx `cn()` helper, Framer Motion and Lucide React, and the mandated `/src/components/ui` + `/src/lib` layout with an intentionally empty `App.tsx` shell; ships a type-checked production build and a CLI-only verifier (`scripts/verify.mjs`) that bundles against the real Vite config to assert the alias resolves, `cn()` merges Tailwind classes, `App.tsx` renders the exact spec'd markup, and framer-motion + lucide-react render | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
-| [copy-machine-setup](./ui-desgin/copy-machine-setup/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
-| [industrial-skeuomorphism](./ui-desgin/industrial-skeuomorphism/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
-| [landing-page-component-scaffold](./ui-desgin/landing-page-component-scaffold/) | Exact-spec single-page landing-page scaffold set up before any components — Vite + React + TypeScript, Tailwind CSS with a clsx + tailwind-merge `cn()` helper, the `@/`→`src/` path alias wired in both vite.config and tsconfig, an empty `src/components/ui/` for stacked components, and a headless Chromium smoke test | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide, clsx, tailwind-merge |
-| [landing-page-copy-machine](./ui-desgin/landing-page-copy-machine/) | Exact-spec Vite + React + TypeScript landing-page scaffold for a strict "copy machine" workflow — `@/`→`/src/` alias wired in both `vite.config.ts` and `tsconfig.json`, a `cn()` (`twMerge(clsx())`) utility, Tailwind base styles, a `src/components/ui` drop zone, and an empty `relative min-h-screen flex flex-col` `App.tsx` stacking shell; deps (Framer Motion, Lucide, clsx, tailwind-merge) installed, builds clean, fully self-contained | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
-| [landing-page-foundation-kit](./ui-desgin/landing-page-foundation-kit/) | Single-page landing-page foundation/scaffold set up to an exact spec — Vite + React + TypeScript, Tailwind + tailwind-merge + clsx (`cn()` helper), Framer Motion and Lucide React, a `@/` → `/src/` path alias, and the fixed `/src/components/ui` + `/src/lib/utils.ts` + `App.tsx` structure, ready for components to be stacked in verbatim | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
-| [landing-page-scaffold](./ui-desgin/landing-page-scaffold/) | Pre-component landing-page scaffold built to an exact multi-turn spec — Vite + React + TypeScript, Tailwind CSS with tailwind-merge/clsx (`cn()` helper), Framer Motion and Lucide React installed, a verbatim `@/`→`/src/` path alias in vite/tsconfig, and the mandated `/src/components/ui` + `/src/lib` folder layout with an empty `App.tsx` shell ready for components to stack into | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
-| [scaffold-ready-splash](./ui-desgin/scaffold-ready-splash/) | Exact-spec single-page landing scaffold (Vite + React + TypeScript + Tailwind v3, `@/` alias, `cn()` helper, Framer Motion + Lucide) whose App shell — instead of an empty page — renders a polished, self-contained "Scaffold ready" splash: ambient drifting orbs + a panning technical grid, a gradient headline, a self-typing macOS terminal, stack chips, a scroll-sequenced setup checklist, a `src/` file tree, and a dashed "drop your first component" target; fully offline (system fonts) and `prefers-reduced-motion`–aware | React, TypeScript, Vite, Tailwind CSS, Framer Motion, clsx, tailwind-merge, Lucide |
-| [serif-editorial-design-system](./ui-desgin/serif-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
-
-</details>
-
-<details>
-<summary><b>Shaders (52)</b></summary>
+<summary><b>Shaders (55)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
