@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (183)
+## Projects (184)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -174,7 +174,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (71)</b></summary>
+<summary><b>Shaders (72)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -213,6 +213,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [gaming-vibe-shader](./shaders/gaming-vibe-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [generative-mountain-scene](./shaders/generative-mountain-scene/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [glsl-hills-shader](./shaders/glsl-hills-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
+| [grain-gradient-corners-lab](./shaders/grain-gradient-corners-lab/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, shadcn/ui, Lucide |
 | [grainy-gradient-ripple-card](./shaders/grainy-gradient-ripple-card/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, framer-motion, Lucide |
 | [hero-button-expandable](./shaders/hero-button-expandable/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [hero-dithering-card](./shaders/hero-dithering-card/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |

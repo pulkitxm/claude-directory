@@ -37,6 +37,7 @@
 | [gaming-vibe-shader](./gaming-vibe-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [generative-mountain-scene](./generative-mountain-scene/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [glsl-hills-shader](./glsl-hills-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
+| [grain-gradient-corners-lab](./grain-gradient-corners-lab/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, shadcn/ui, Lucide |
 | [grainy-gradient-ripple-card](./grainy-gradient-ripple-card/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, framer-motion, Lucide |
 | [hero-button-expandable](./hero-button-expandable/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [hero-dithering-card](./hero-dithering-card/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
