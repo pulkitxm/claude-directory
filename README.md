@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (160)
+## Projects (161)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -186,7 +186,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (55)</b></summary>
+<summary><b>Shaders (56)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -231,6 +231,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [molten-core-shader](./shaders/molten-core-shader/) | shadcn-style integration of the `MoltenCoreShader` component — a procedural FBM lava fragment shader rendered full-viewport with Three.js, framed as a live "foundry core monitor" with a base-color toggle, a melt-intensity dial, and a telemetry panel that reads core temperature straight off the GPU | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [paper-shaders-control-deck](./shaders/paper-shaders-control-deck/) | Instrument-console "Control Deck" for driving live WebGL shaders — four selectable channels (paper-design Mesh Gradient / Dot Orbit / Combined plus the prompt's custom react-three-fiber GLSL Shader Plane + energy rings), a brushed-graphite scope housing with corner brackets/scanlines/vignette, live FPS·frame·uptime telemetry, and speed/intensity faders wired straight into the shader uniforms | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, @react-three/fiber, three, Lucide |
 | [radial-aperture-shader](./shaders/radial-aperture-shader/) | shadcn/Tailwind v4/TypeScript integration of the brief's raw-WebGL2 `raidal-2` radial-bloom shader (nine accumulating blades on one full-screen triangle, an angular `smoothstep` gate and a `tanh` tone-map), framed as the optical "APERTURE" instrument — a live hero with FPS/uptime telemetry, a control deck that promotes the field's baked-in `9`/`0.03`/hue constants to live uniforms, a GLSL anatomy walkthrough, a self-rendered specimen gallery, and the verbatim drop-in shown contained + fullscreen; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
+| [realistic-fog-background](./shaders/realistic-fog-background/) | "HAAR" sea-fog instrument integrating the prompt's realistic-fog-background — a WebGL fragment-shader fog (six octaves of domain-warped fBm on one full-screen quad lit by a cursor "lighthouse beam") dropped into @/components/ui; the signature visibility gauge reads the shader's own framebuffer luminance off the GPU via gl.readPixels, a control deck promotes every baked constant to a live uniform with a five-patch fog bank (Sea Haar → Pea Souper → Dry Ice → Moor Drift → Clear Dawn), plus a full shadcn/Tailwind/TS integration story; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS v4, WebGL, shadcn/ui, Lucide |
 | [sdf-dreamscape-shader](./shaders/sdf-dreamscape-shader/) | shadcn-style integration of the verbatim "SDF Dreamscape" component — a native-WebGL fractal signed-distance-field (a recursive Julia-fold bent live by the cursor) ported to strict TS in `@/components/ui` and reframed as the "Oneirograph" dream-recorder console: a Big Shoulders hero lockup, a registration frame + reticle, four tuning dials (Spectrum/Drift/Recursion/Lens) annotated with their `u_*` uniforms, Lucid/Abyssal/Solar/REM presets that snap all four at once, and a live telemetry strip reading the shader's own FPS and dream clock; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
 | [shader-animation-integration](./shaders/shader-animation-integration/) | shadcn/ui integration of a zero-prop Three.js WebGL fragment-shader component (radiating RGB lines) — a full-bleed shader hero plus a docs page covering the `components/ui` path, the `three` dependency, copy-paste usage, and a props/state/assets/responsive/placement Q&A | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-flow-field-rings](./shaders/shader-flow-field-rings/) | shadcn/Tailwind/TypeScript integration of the prompt's `ShaderAnimation` (a Three.js fragment shader drawing additive R/G/B interference rings on one full-screen quad), framed as a signal/oscilloscope lab — a live shader hero with transport + FPS/time/uptime telemetry, a signature "channel decomposition" reading each `color[j]` loop as its own live sparkline, an install/`components/ui` story, copyable source tabs, and a props/uniforms API; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
