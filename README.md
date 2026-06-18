@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (166)
+## Projects (167)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -171,7 +171,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (57)</b></summary>
+<summary><b>Shaders (58)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -224,6 +224,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [shader-plasma-grid-background](./shaders/shader-plasma-grid-background/) | "PLASMASIGNAL" showcase for a drop-in WebGL plasma-grid background (shadcn `components/ui`) — the brief's fragment shader ported to TS, wrapped in a "Signal Lab" page with an oscilloscope HUD reading live `iTime`/FPS/`iResolution`, and a control deck of faders that promote the shader's baked-in constants to live uniforms to re-tint/re-shape the whole field in real time | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
 | [simplex-dithering-shader](./shaders/simplex-dithering-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [spooky-smoke-shader](./shaders/spooky-smoke-shader/) | "AETHER" séance instrument that integrates a WebGL2 fbm-noise smoke component — a live observation window tuned by a single `smokeColor` prop, an alchemical reagent tray of preset swatches plus a brass colour dial, and two documented specimen panes, all on a shadcn/ui project structure | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide, WebGL2 |
+| [starship-shader](./shaders/starship-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, Lucide |
 | [thermal-shader-imaging](./shaders/thermal-shader-imaging/) | "THERMA — Thermal Imaging Bay" integration of the prompt's verbatim `ThermalEffect` (Apple-style three.js shader painting a pointer-reactive 7-stop thermal gradient inside a logo's alpha mask) dropped into `@/components/ui`, framed as thermographic hardware — bracketed viewports with a reticle, a live sensor-clock/FPS/core-temp telemetry HUD, the brief's `logo × logo` two-up plus a specimen tray, a palette/LUT calibration ramp and props API; logo masks are drawn on a canvas at runtime so it runs fully offline | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, three.js, Lucide |
 | [vitruvian-ascii-shader](./shaders/vitruvian-ascii-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, HTML Canvas, shadcn/ui |
 | [warp-dithering-shader](./shaders/warp-dithering-shader/) | "DITHER LAB" integration of the verbatim `DitheringShader` WebGL2 component — seven procedural shape fields (warp, simplex, dots, wave, ripple, swirl, sphere) thresholded through random + Bayer 2×2/4×4/8×8 ordered dithering — dropped into shadcn `components/ui` and framed as a live 1-bit CRT console: a full-bleed Warp hero, a driving deck wired straight to the props/uniforms, a click-to-apply shape library, animated Bayer-matrix explainers, and a live props API mirroring the hero state | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
