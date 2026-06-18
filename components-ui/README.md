@@ -2,6 +2,7 @@
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [animated-hud-targeting-ui](./animated-hud-targeting-ui/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, next-themes, Lucide |
 | [aurora-sign-up](./aurora-sign-up/) | Two-column "Aurora" registration interface with a background-video hero, staggered Motion reveals, and a multi-step sign-up form | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [background-paths-hero](./background-paths-hero/) | Integration of the "Background Paths" shadcn/ui hero — 72 flowing animated SVG paths behind a per-letter spring headline and a glassy CTA, wrapped in a dark/light theme toggle and a preset-headline switcher | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
 | [core-features-gradient-cards](./core-features-gradient-cards/) | Static "Core Features" marketing section with three gradient feature cards | Single-file HTML/CSS |

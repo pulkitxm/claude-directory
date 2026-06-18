@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (197)
+## Projects (198)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -119,10 +119,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (11)</b></summary>
+<summary><b>Components &amp; UI (12)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [animated-hud-targeting-ui](./components-ui/animated-hud-targeting-ui/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, next-themes, Lucide |
 | [aurora-sign-up](./components-ui/aurora-sign-up/) | Two-column "Aurora" registration interface with a background-video hero, staggered Motion reveals, and a multi-step sign-up form | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [background-paths-hero](./components-ui/background-paths-hero/) | Integration of the "Background Paths" shadcn/ui hero — 72 flowing animated SVG paths behind a per-letter spring headline and a glassy CTA, wrapped in a dark/light theme toggle and a preset-headline switcher | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
 | [core-features-gradient-cards](./components-ui/core-features-gradient-cards/) | Static "Core Features" marketing section with three gradient feature cards | Single-file HTML/CSS |
