@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (201)
+## Projects (202)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -181,7 +181,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (82)</b></summary>
+<summary><b>Shaders (83)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -231,6 +231,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [hive-noise-shader](./shaders/hive-noise-shader/) | "HIVE" — a faithful shadcn integration of the prompt's verbatim `hive.tsx` component, a single full-screen **WebGL2** fragment shader that raymarches a 20-step noise field and tints it with a flowing amber → magenta cosine spectrum; dropped **unedited** into `@/components/ui` (zero props, zero deps, zero assets) and mounted as a fixed full-viewport backdrop under a frosted shader lab: a hero, a spec HUD reading the shader's real shape (its `u_res`/`u_time` uniforms, raymarch steps, DPR clamp) instead of faked telemetry, an integration ticker, and a below-the-fold integration story (default paths, why `components/ui`, from-scratch setup, copyable source, a render-pipeline walkthrough, and a props/state/assets Q&A); CLI-verified with a headless screenshot light-check | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [horizon-strata-shader](./shaders/horizon-strata-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [interactive-flux-shader](./shaders/interactive-flux-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
+| [launch-shader](./shaders/launch-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [liquid-crystal-shader](./shaders/liquid-crystal-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL, Lucide |
 | [liquid-metal-foundry](./shaders/liquid-metal-foundry/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [living-nebula-shader](./shaders/living-nebula-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, shadcn/ui, Lucide |
