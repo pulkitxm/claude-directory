@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (174)
+## Projects (177)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -115,7 +115,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (8)</b></summary>
+<summary><b>Components &amp; UI (9)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -125,6 +125,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [gradient-dots-background](./components-ui/gradient-dots-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, framer-motion, shadcn/ui, Lucide |
 | [interactive-3d-spline-scene](./components-ui/interactive-3d-spline-scene/) | shadcn/ui integration of a Spline 3D scene — the exact SplineScene + Card + Spotlight demo, a graceful animated WebGL fallback for when the remote scene is unreachable, a live props playground, and an on-page guide to the shadcn structure, default paths and why components/ui matters | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline, Framer Motion, Lucide, Canvas |
 | [nexto-404-hero](./components-ui/nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
+| [scanner-card-stream](./components-ui/scanner-card-stream/) | Draggable Three.js card stream that decodes each photo into glitching, scrambling ASCII as it crosses a glowing violet scan line, with an ambient WebGL particle field and a 2D spark burst — packaged as a shadcn-style `@/components/ui` drop | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
 | [terminal-cli-control-deck](./components-ui/terminal-cli-control-deck/) | "ACME Control Deck" infrastructure panel built in a phosphor-green Terminal CLI design system — centralized tokens, composable windows/panes, ASCII art logo, typewriter headline, raw-data ASCII progress meters, a live syslog feed, an interactive zsh console, a box-less access form, and a subtle CRT scanline overlay | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
 
@@ -172,7 +173,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (64)</b></summary>
+<summary><b>Shaders (66)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -222,6 +223,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [morphing-light-shader](./shaders/morphing-light-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [old-television-shader](./shaders/old-television-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, @react-three/fiber, @react-three/drei, three, Lucide |
 | [paper-shaders-control-deck](./shaders/paper-shaders-control-deck/) | Instrument-console "Control Deck" for driving live WebGL shaders — four selectable channels (paper-design Mesh Gradient / Dot Orbit / Combined plus the prompt's custom react-three-fiber GLSL Shader Plane + energy rings), a brushed-graphite scope housing with corner brackets/scanlines/vignette, live FPS·frame·uptime telemetry, and speed/intensity faders wired straight into the shader uniforms | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, @react-three/fiber, three, Lucide |
+| [paper-shaders-hero-lab](./shaders/paper-shaders-hero-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [phosphor-30-shader-hero](./shaders/phosphor-30-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, CVA, @radix-ui/react-slot, Lucide |
 | [radial-aperture-shader](./shaders/radial-aperture-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [sdf-dreamscape-shader](./shaders/sdf-dreamscape-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
@@ -229,6 +231,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [shader-flow-field-rings](./shaders/shader-flow-field-rings/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-lines-showcase](./shaders/shader-lines-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-plasma-grid-background](./shaders/shader-plasma-grid-background/) | "PLASMASIGNAL" showcase for a drop-in WebGL plasma-grid background (shadcn `components/ui`) — the brief's fragment shader ported to TS, wrapped in a "Signal Lab" page with an oscilloscope HUD reading live `iTime`/FPS/`iResolution`, and a control deck of faders that promote the shader's baked-in constants to live uniforms to re-tint/re-shape the whole field in real time | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
+| [sickui-waitlist-mesh-shader](./shaders/sickui-waitlist-mesh-shader/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
 | [simplex-dithering-shader](./shaders/simplex-dithering-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [spooky-smoke-shader](./shaders/spooky-smoke-shader/) | "AETHER" séance instrument that integrates a WebGL2 fbm-noise smoke component — a live observation window tuned by a single `smokeColor` prop, an alchemical reagent tray of preset swatches plus a brass colour dial, and two documented specimen panes, all on a shadcn/ui project structure | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide, WebGL2 |
 | [starship-shader](./shaders/starship-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, Lucide |
