@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (189)
+## Projects (190)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -175,7 +175,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (76)</b></summary>
+<summary><b>Shaders (77)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
