@@ -1,6 +1,6 @@
 # Hero sections
 
-34 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+35 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -37,4 +37,5 @@
 | [vaultshield-hero](./vaultshield-hero/) | VaultShield hero experiment with security-product positioning and CLI/headless verification | React, TypeScript, Vite, Tailwind CSS |
 | [velorah-hero-landing](./velorah-hero-landing/) | Velorah hero landing page built with a modern Tailwind/shadcn-style component approach | React, TypeScript, Vite, Tailwind CSS, shadcn/ui |
 | [wanderful-cinematic-hero](./wanderful-cinematic-hero/) | Full-viewport cinematic hero for travel brand "Wanderful" with GSAP animation and a custom display font | React, TypeScript, Vite, Tailwind CSS, GSAP, Lucide |
+| [woven-light-hero](./woven-light-hero/) | Interactive hero with 50k cursor-reactive Three.js particles woven into a torus-knot tapestry, integrated as a shadcn-style component | React, TypeScript, Vite, Tailwind CSS, Three.js, Framer Motion |
 | [xero-encryption-hero](./xero-encryption-hero/) | Single-page encryption-product hero for "Xero" with an animated icon pipeline and a pink-magenta gradient arc on a black page, written in plain CSS | React, TypeScript, Vite, CSS |

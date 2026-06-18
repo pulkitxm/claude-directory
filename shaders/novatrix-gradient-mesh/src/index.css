@@ -1,0 +1,212 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Self-hosted, latin-subset fonts — no network calls at runtime. */
+@import "./fonts/fonts.css";
+
+/* ── Design tokens ────────────────────────────────────────────────────────
+   NOVATRIX is a "palette studio" for the GradientMesh shader. The mesh is the
+   only source of color in the room; every piece of chrome is monochrome glass
+   so nothing competes with the GPU output behind it. */
+@theme {
+  --color-ink: #07060f;
+  --color-ink-soft: #0c0b18;
+  --color-ink-plate: #100e1f;
+  --color-paper: #f3f1fb;
+  --color-haze: #9a98bf;
+  --color-haze-dim: #6b6990;
+
+  /* Brand accents pulled straight from the shader's default palette. */
+  --color-iris: #3b2a8d;
+  --color-lilac: #aaa7d7;
+  --color-rose: #f75092;
+
+  --color-line: rgba(243, 241, 251, 0.1);
+  --color-line-strong: rgba(243, 241, 251, 0.18);
+  --color-glass: rgba(12, 11, 24, 0.46);
+  --color-glass-strong: rgba(9, 8, 18, 0.72);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-plate: 22px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: var(--color-rose);
+    color: #fff;
+  }
+
+  /* Range inputs — monochrome, thin, with a rose thumb. */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 22px;
+    background: transparent;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      var(--color-lilac) 0%,
+      var(--color-lilac) var(--fill, 0%),
+      rgba(243, 241, 251, 0.12) var(--fill, 0%),
+      rgba(243, 241, 251, 0.12) 100%
+    );
+  }
+  input[type="range"]::-moz-range-track {
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(243, 241, 251, 0.12);
+  }
+  input[type="range"]::-moz-range-progress {
+    height: 3px;
+    border-radius: 999px;
+    background: var(--color-lilac);
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -6.5px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--color-paper);
+    border: 3px solid var(--color-rose);
+    box-shadow: 0 0 0 4px rgba(247, 80, 146, 0.15);
+    transition: box-shadow 0.15s ease;
+  }
+  input[type="range"]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--color-paper);
+    border: 3px solid var(--color-rose);
+  }
+  input[type="range"]:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 5px rgba(247, 80, 146, 0.32);
+  }
+
+  /* Custom thin scrollbars inside scrollable panels. */
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(243, 241, 251, 0.18) transparent;
+  }
+  .scroll-thin::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: rgba(243, 241, 251, 0.18);
+    border-radius: 999px;
+  }
+  .scroll-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* ── Utilities ────────────────────────────────────────────────────────── */
+@layer utilities {
+  .glass {
+    background: var(--color-glass);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+  }
+  .glass-strong {
+    background: var(--color-glass-strong);
+    backdrop-filter: blur(26px) saturate(150%);
+    -webkit-backdrop-filter: blur(26px) saturate(150%);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* Corner registration brackets used on the live preview plate. */
+  .bracket {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: var(--color-line-strong);
+    pointer-events: none;
+  }
+  .bracket-tl {
+    top: 12px;
+    left: 12px;
+    border-top: 1.5px solid;
+    border-left: 1.5px solid;
+  }
+  .bracket-tr {
+    top: 12px;
+    right: 12px;
+    border-top: 1.5px solid;
+    border-right: 1.5px solid;
+  }
+  .bracket-bl {
+    bottom: 12px;
+    left: 12px;
+    border-bottom: 1.5px solid;
+    border-left: 1.5px solid;
+  }
+  .bracket-br {
+    bottom: 12px;
+    right: 12px;
+    border-bottom: 1.5px solid;
+    border-right: 1.5px solid;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+.animate-blink {
+  animation: blink 1.4s steps(1) infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

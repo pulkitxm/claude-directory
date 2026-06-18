@@ -1,0 +1,179 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ----------------------------------------------------------------------------
+   Vendored fonts (no network at runtime) — Space Grotesk for display, JetBrains
+   Mono for timecode / telemetry. Both are variable Latin subsets.
+---------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Spectral accents — the same wavelengths the shader paints. */
+  --color-spec-violet: #7b2cff;
+  --color-spec-blue: #2c8bff;
+  --color-spec-cyan: #2cf0d8;
+  --color-spec-green: #2cff9a;
+  --color-spec-amber: #ffe14d;
+  --color-spec-rose: #ff4d6d;
+
+  --color-ink: #05060f;
+  --color-ink-2: #090b18;
+  --color-panel: #0d1022;
+  --color-edge: #1c2138;
+  --color-edge-2: #2a3052;
+  --color-muted: #8b93b7;
+  --color-paper: #eef1ff;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  border-color: var(--color-edge);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* The brief's demo.tsx references `animate-fadeIn` — define it so that file
+   works verbatim when used standalone. */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Thin spectral scrollbar. */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-spec-violet), var(--color-spec-blue), var(--color-spec-green));
+  border-radius: 99px;
+  border: 3px solid var(--color-ink);
+}
+
+/* Faint film grain + scanline texture used by the hero stage. */
+.tex-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+.tex-scan {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.22) 0px,
+    rgba(0, 0, 0, 0.22) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Spectral text gradient used in the wordmark. */
+.text-spectral {
+  background: linear-gradient(
+    100deg,
+    var(--color-spec-violet),
+    var(--color-spec-blue),
+    var(--color-spec-cyan),
+    var(--color-spec-green),
+    var(--color-spec-amber),
+    var(--color-spec-rose)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Range input — spectral track + glowing thumb. */
+input[type="range"].spec-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-spec-violet), var(--color-spec-blue), var(--color-spec-green));
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"].spec-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-paper);
+  border: 2px solid var(--color-spec-cyan);
+  box-shadow: 0 0 0 4px rgba(44, 240, 216, 0.16), 0 2px 8px rgba(0, 0, 0, 0.6);
+  transition: transform 0.12s ease;
+}
+input[type="range"].spec-range::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+input[type="range"].spec-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-paper);
+  border: 2px solid var(--color-spec-cyan);
+  box-shadow: 0 0 0 4px rgba(44, 240, 216, 0.16);
+}
+
+/* Reticle corner bracket helper. */
+.reticle::before,
+.reticle::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(238, 241, 255, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fadeIn {
+    animation: none;
+  }
+}

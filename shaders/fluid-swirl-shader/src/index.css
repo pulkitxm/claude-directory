@@ -1,0 +1,147 @@
+@import "./fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 252 30% 5%;
+    --foreground: 232 100% 90%;
+    --border: 232 60% 70%;
+    --input: 232 60% 70%;
+    --ring: 232 100% 75%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink font-sans text-foreground antialiased;
+    /* The shader paints the live field; this is the console behind it. */
+    background-color: #08070e;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #ff6f91;
+    color: #08070e;
+  }
+}
+
+@layer components {
+  /* Frosted instrument panel — the recurring glass card of the console. */
+  .panel {
+    background: linear-gradient(
+      160deg,
+      rgba(20, 17, 31, 0.78) 0%,
+      rgba(13, 11, 22, 0.72) 100%
+    );
+    border: 1px solid rgba(205, 210, 255, 0.1);
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.05) inset,
+      0 24px 60px -28px rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  }
+}
+
+@layer utilities {
+  /* Iridescent sweeping text — the three pigments running through the wordmark. */
+  .iridescent {
+    background-image: linear-gradient(
+      100deg,
+      #ff6f91 0%,
+      #ffd66f 32%,
+      #cdd2ff 55%,
+      #6f9bff 78%,
+      #ff6f91 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Soft pigment bloom behind the headline. */
+  .pigment-glow {
+    text-shadow:
+      0 0 22px rgba(255, 111, 145, 0.35),
+      0 0 60px rgba(111, 155, 255, 0.22);
+  }
+
+  /* Fine vignette so the swirl falls off into the console bezel. */
+  .console-vignette::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background: radial-gradient(
+      130% 130% at 50% 42%,
+      rgba(8, 7, 14, 0) 48%,
+      rgba(8, 7, 14, 0.62) 100%
+    );
+  }
+
+  /* Top + bottom film grade so chrome reads clearly over a bright field. */
+  .console-grade::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 7, 14, 0.55) 0%,
+      rgba(8, 7, 14, 0) 22%,
+      rgba(8, 7, 14, 0) 72%,
+      rgba(8, 7, 14, 0.6) 100%
+    );
+  }
+
+  /* Themeable range slider used across the mixing console. */
+  .flux-range {
+    background: linear-gradient(
+      to right,
+      var(--flux-accent, #ff6f91) 0%,
+      var(--flux-accent, #ff6f91) var(--flux-fill, 50%),
+      rgba(205, 210, 255, 0.15) var(--flux-fill, 50%),
+      rgba(205, 210, 255, 0.15) 100%
+    );
+  }
+  .flux-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 9999px;
+    background: #f6f7ff;
+    border: 2px solid var(--flux-accent, #ff6f91);
+    box-shadow: 0 0 10px rgba(255, 111, 145, 0.45);
+    cursor: pointer;
+    margin-top: -1px;
+  }
+  .flux-range::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 9999px;
+    background: #f6f7ff;
+    border: 2px solid var(--flux-accent, #ff6f91);
+    box-shadow: 0 0 10px rgba(255, 111, 145, 0.45);
+    cursor: pointer;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
