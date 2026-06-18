@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------------------------------------------------------
+   Vendored fonts (served from /public/fonts, no network at runtime).
+   Fraunces + Space Grotesk are variable across weight; Space Mono ships two
+   static cuts.
+---------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/fraunces-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/space-mono-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/space-mono-bold-latin.woff2") format("woff2");
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #05070d;
+  color: #e8edf6;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+.font-display {
+  font-family: "Fraunces", Georgia, serif;
+  font-optical-sizing: auto;
+}
+.font-mono {
+  font-family: "Space Mono", ui-monospace, monospace;
+}
+
+/* Hide the native cursor over the scope stage; the instrument draws its own
+   reticle so the cursor reads as a focusing tool, not an OS pointer. */
+.scope-stage {
+  cursor: none;
+}
+
+/* Entrance reveal for the chrome overlay — runs once on the real clock. */
+@keyframes scope-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.scope-rise {
+  animation: scope-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes scope-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.scope-fade {
+  animation: scope-fade 1.2s ease both;
+}
+
+/* Faint scanning sweep behind the chrome label, optical-bench flavour. */
+@keyframes hairline-sweep {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+.hairline-pulse {
+  animation: hairline-sweep 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scope-rise,
+  .scope-fade,
+  .hairline-pulse {
+    animation: none;
+  }
+}
