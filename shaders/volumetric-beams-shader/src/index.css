@@ -1,0 +1,179 @@
+@import "./fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 226 44% 4%;
+    --foreground: 222 60% 95%;
+    --border: 226 32% 20%;
+    --input: 226 32% 20%;
+    --ring: 220 100% 72%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-950 text-chalk font-sans antialiased;
+  }
+
+  ::selection {
+    background: rgba(111, 156, 255, 0.32);
+    color: #fff;
+  }
+
+  /* Slim instrument scrollbar. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #04050a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1a2138;
+    border-radius: 999px;
+    border: 2px solid #04050a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a3458;
+  }
+}
+
+@layer utilities {
+  /* Hairline film grain over the dark panels so they don't read as flat fills. */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Engraved hairline divider between console sections. */
+  .rule {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(111, 156, 255, 0.3),
+      transparent
+    );
+  }
+
+  /* Optics-lab grid backdrop for panel interiors. */
+  .lab-grid {
+    background-image:
+      linear-gradient(rgba(111, 156, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(111, 156, 255, 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .glow-beam {
+    box-shadow:
+      0 0 0 1px rgba(111, 156, 255, 0.18),
+      0 0 40px -12px rgba(111, 156, 255, 0.45);
+  }
+}
+
+/* Demote the verbatim demo.tsx root (fixed inset-0) to fill its frame instead
+   of the viewport, so the unmodified component can be embedded in a card. The
+   heading overlay's md:top-80 is pulled back up to sit inside the frame too. */
+.verbatim-frame > div {
+  position: absolute !important;
+  inset: 0 !important;
+}
+@media (min-width: 768px) {
+  .verbatim-frame .md\:top-80 {
+    top: 1.5rem !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Fader controls — native <input type="range"> reskinned as precision optics
+   trims. The fill is driven by a --fill CSS var set inline from the React value.
+--------------------------------------------------------------------------- */
+input[type="range"].beam-fader {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"].beam-fader::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(111, 156, 255, 0.9) var(--fill, 50%),
+    rgba(120, 134, 180, 0.2) var(--fill, 50%)
+  );
+}
+input[type="range"].beam-fader::-moz-range-track {
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(120, 134, 180, 0.2);
+}
+input[type="range"].beam-fader::-moz-range-progress {
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(111, 156, 255, 0.9);
+}
+input[type="range"].beam-fader::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  margin-top: -5.5px;
+  border-radius: 2px;
+  background: #eaf0ff;
+  border: 1px solid rgba(111, 156, 255, 0.95);
+  box-shadow:
+    0 0 0 4px rgba(111, 156, 255, 0.12),
+    0 0 14px rgba(111, 156, 255, 0.55);
+  transition: box-shadow 0.2s ease, transform 0.12s ease;
+}
+input[type="range"].beam-fader::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 5px rgba(111, 156, 255, 0.18),
+    0 0 18px rgba(111, 156, 255, 0.78);
+}
+input[type="range"].beam-fader::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  background: #eaf0ff;
+  border: 1px solid rgba(111, 156, 255, 0.95);
+  box-shadow: 0 0 14px rgba(111, 156, 255, 0.55);
+}
+input[type="range"].beam-fader:focus-visible {
+  outline: none;
+}
+input[type="range"].beam-fader:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 3px #04050a,
+    0 0 0 5px rgba(111, 156, 255, 0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
