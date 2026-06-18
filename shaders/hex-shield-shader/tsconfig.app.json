@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"],
+  // `shield-shader.tsx` and its `demo.tsx` are preserved EXACTLY as pasted in
+  // the brief — the verbatim drop-in. They compile and run fine through Vite /
+  // esbuild (types are simply stripped), but the pasted code is not written to
+  // satisfy `strict` / `noUnusedLocals`, so it is excluded from the type-check
+  // only. The typed, console-driven sibling lives in `aegis-shield.tsx` and is
+  // fully checked.
+  "exclude": ["src/components/ui/shield-shader.tsx", "src/components/demo.tsx"]
+}
