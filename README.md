@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (198)
+## Projects (199)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -138,10 +138,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (12)</b></summary>
+<summary><b>Components &amp; UI (13)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [animated-dots-rain](./components-ui/animated-dots-rain/) | shadcn/ui integration of the verbatim `AnimatedDots` component — a raw-`<canvas>` dot rain where columns of dots fall and each dot bleeds a single R/G/B channel from black to full as it accelerates down, then recycles with a new colour and speed — dropped into `@/components/ui` and framed as a component lab: a full-bleed live hero (the verbatim demo) with a render-FPS/uptime telemetry strip, a control deck of faders wired to every real prop (dotsNum/dotRadius/dotSpacing/speedRange/opacity + blend-mode and background-colour controls) with named presets and a live-usage snippet, a shadcn-CLI integration story explaining the default paths and why `/components/ui` matters, and a props API with the prompt's data/state/assets/responsive/placement Q&A; zero runtime deps, zero component assets, fonts vendored locally, fully offline | React, TypeScript, Vite, Tailwind CSS v4, Canvas, shadcn/ui, Lucide |
 | [animated-hud-targeting-ui](./components-ui/animated-hud-targeting-ui/) | shadcn/ui integration of the verbatim `TargetingUI` + `HudFrame` primitives — an animated SVG targeting reticle inside a chamfered, notched clip-path frame — driven as a live avionics fire-control display: a `SCANNING → ACQUIRING → TRACKING → LOCKED` acquisition state machine re-tints and re-draws the reticle per phase over vendored recon stills, with a scrolling bearing tape, a pitch/roll horizon ladder, four bracketed corner readouts of easing tabular-num telemetry, a sensor sweep, and L-brackets that snap shut on lock with an amber flash; cold cyan/white instrument palette with one reserved amber lock accent, fonts + images vendored locally, fully offline | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, next-themes, Lucide |
 | [aurora-sign-up](./components-ui/aurora-sign-up/) | Two-column "Aurora" registration interface with a background-video hero, staggered Motion reveals, and a multi-step sign-up form | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [background-paths-hero](./components-ui/background-paths-hero/) | Integration of the "Background Paths" shadcn/ui hero — 72 flowing animated SVG paths behind a per-letter spring headline and a glassy CTA, wrapped in a dark/light theme toggle and a preset-headline switcher | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
