@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (160)
+## Projects (161)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -167,7 +167,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (55)</b></summary>
+<summary><b>Shaders (56)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -205,6 +205,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [generative-mountain-scene](./shaders/generative-mountain-scene/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [hero-button-expandable](./shaders/hero-button-expandable/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [hero-dithering-card](./shaders/hero-dithering-card/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
+| [hero-futuristic-webgpu](./shaders/hero-futuristic-webgpu/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js (WebGPU + TSL), @react-three/fiber, @react-three/drei, Lucide |
 | [interactive-flux-shader](./shaders/interactive-flux-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [liquid-crystal-shader](./shaders/liquid-crystal-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL, Lucide |
 | [living-nebula-shader](./shaders/living-nebula-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, shadcn/ui, Lucide |
