@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Vendored fonts (offline, zero external requests) ---- */
+@font-face {
+	font-family: "Cormorant Garamond";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/fonts/cormorant-garamond-500.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Cormorant Garamond";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("/fonts/cormorant-garamond-600.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/fonts/inter-500.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-500.woff2") format("woff2");
+}
+
+@layer base {
+	:root {
+		--font-display: "Cormorant Garamond", Georgia, serif;
+		--font-body: "Inter", system-ui, sans-serif;
+		--font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+		/* Crypt black, candle smoke, altar white. */
+		--background: 258 40% 3%;
+		--foreground: 40 28% 92%;
+		--muted: 258 24% 9%;
+		--muted-foreground: 252 12% 58%;
+		--primary: 40 30% 92%;
+		--primary-foreground: 258 40% 4%;
+		--border: 255 22% 16%;
+		--radius: 0.5rem;
+
+		/* Stained-glass channels — sampled from the shader's sin(p.y + (6,1,2,3)) palette */
+		--glass-rose: 344 78% 64%; /* deep rose-window red */
+		--glass-gold: 41 86% 62%; /* leaded amber */
+		--glass-azure: 211 80% 64%; /* chartres blue */
+		--glass-jade: 158 52% 56%; /* nave green */
+	}
+
+	* {
+		@apply border-border;
+	}
+
+	html {
+		background: #05030b;
+	}
+
+	body {
+		@apply bg-background text-foreground antialiased;
+		font-family: var(--font-body);
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	::selection {
+		background: hsl(var(--glass-gold) / 0.28);
+		color: hsl(var(--foreground));
+	}
+}
+
+@layer components {
+	/* Engraved telemetry text */
+	.tele {
+		font-family: var(--font-mono);
+		font-size: 0.625rem;
+		line-height: 1;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		font-variant-numeric: tabular-nums;
+	}
+
+	/* Hairline panel atop the live nave */
+	.glass-panel {
+		background: linear-gradient(
+			180deg,
+			hsl(258 40% 6% / 0.72),
+			hsl(258 40% 4% / 0.82)
+		);
+		border: 1px solid hsl(var(--border) / 0.9);
+		backdrop-filter: blur(14px) saturate(118%);
+		-webkit-backdrop-filter: blur(14px) saturate(118%);
+	}
+
+	/* Leaded divider with a faint gold core */
+	.leaded-rule {
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			hsl(var(--glass-gold) / 0.5),
+			hsl(var(--border)),
+			transparent
+		);
+	}
+
+	/* Range input restyled into a brass fader */
+	.fader {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 100%;
+		height: 2px;
+		border-radius: 999px;
+		background: hsl(var(--border));
+		outline: none;
+		cursor: pointer;
+	}
+	.fader::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 13px;
+		height: 13px;
+		border-radius: 999px;
+		background: hsl(var(--foreground));
+		border: 1px solid hsl(var(--glass-gold) / 0.65);
+		box-shadow: 0 0 0 4px hsl(var(--glass-gold) / 0.12),
+			0 0 14px hsl(var(--glass-gold) / 0.4);
+		transition: transform 0.12s ease;
+	}
+	.fader::-webkit-slider-thumb:hover {
+		transform: scale(1.16);
+	}
+	.fader::-moz-range-thumb {
+		width: 13px;
+		height: 13px;
+		border-radius: 999px;
+		background: hsl(var(--foreground));
+		border: 1px solid hsl(var(--glass-gold) / 0.65);
+		box-shadow: 0 0 0 4px hsl(var(--glass-gold) / 0.12);
+	}
+}
+
+@layer utilities {
+	.text-monument {
+		font-family: var(--font-display);
+		font-weight: 600;
+		line-height: 0.92;
+	}
+	/* Vertical engraving for the rails */
+	.vertical-rl {
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+	}
+	/* Faint paper-grain over everything to kill flat gradients */
+	.nave-grain {
+		background-image: radial-gradient(
+			hsl(40 28% 92% / 0.05) 1px,
+			transparent 1px
+		);
+		background-size: 3px 3px;
+	}
+}
