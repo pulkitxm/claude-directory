@@ -334,7 +334,15 @@ function encode(inputArgs) {
 
 async function main() {
 	fs.mkdirSync(path.dirname(OUT), { recursive: true });
-	const browser = await chromium.launch({ headless: true });
+	// Allow a locally-provided Chromium + extra launch args via env (used in sandboxed
+	// environments where Playwright's bundled browser can't be downloaded). When unset,
+	// this is identical to the original `chromium.launch({ headless: true })`.
+	const launchOpts = { headless: true };
+	if (process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE)
+		launchOpts.executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;
+	if (process.env.PLAYWRIGHT_LAUNCH_ARGS)
+		launchOpts.args = process.env.PLAYWRIGHT_LAUNCH_ARGS.split(" ").filter(Boolean);
+	const browser = await chromium.launch(launchOpts);
 
 	// Warm-up + measure (no recording). The reload absorbs Vite's first-load
 	// dependency-optimization full reload so it never lands in the recording.
