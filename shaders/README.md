@@ -47,6 +47,7 @@
 | [morphing-light-shader](./morphing-light-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [old-television-shader](./old-television-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, @react-three/fiber, @react-three/drei, three, Lucide |
 | [paper-shaders-control-deck](./paper-shaders-control-deck/) | Instrument-console "Control Deck" for driving live WebGL shaders — four selectable channels (paper-design Mesh Gradient / Dot Orbit / Combined plus the prompt's custom react-three-fiber GLSL Shader Plane + energy rings), a brushed-graphite scope housing with corner brackets/scanlines/vignette, live FPS·frame·uptime telemetry, and speed/intensity faders wired straight into the shader uniforms | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, @react-three/fiber, three, Lucide |
+| [paper-shaders-hero-lab](./paper-shaders-hero-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [phosphor-30-shader-hero](./phosphor-30-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, CVA, @radix-ui/react-slot, Lucide |
 | [radial-aperture-shader](./radial-aperture-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [sdf-dreamscape-shader](./sdf-dreamscape-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
