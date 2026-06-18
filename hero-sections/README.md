@@ -1,6 +1,6 @@
 # Hero sections
 
-35 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+36 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -21,6 +21,7 @@
 | [mainframe-hero-landing](./mainframe-hero-landing/) | Full-screen hero landing page for a creative agency called "Mainframe" with custom Helvetica Now display fonts | React, TypeScript, Vite, Tailwind CSS |
 | [nexora-automation-hero](./nexora-automation-hero/) | Single-viewport SaaS automation hero ("Nexora") with Instrument Serif / Inter type and Framer Motion | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [noctis-cinematic-hero](./noctis-cinematic-hero/) | NOCTIS full-screen dark cinematic hero with video background, nav, and timecode details | React, TypeScript, Vite, CSS |
+| [particle-hero](./particle-hero/) | Night-sky particle-canvas hero with a clickable gold-mode invert toggle, rotating spotlights, and a radial-reveal headline | React, TypeScript, Vite, Tailwind CSS, Canvas 2D, shadcn/ui, Lucide |
 | [power-ai-hero](./power-ai-hero/) | Full-screen dark AI hero with a JS-controlled fade-loop background video, headline, CTA, and logo marquee | React, TypeScript, Vite, Tailwind CSS, Geist Sans, Lucide |
 | [rivr-defi-hero](./rivr-defi-hero/) | DeFi dashboard hero for RIVR with glassmorphism, badge/cards, and verification script | React, TypeScript, Vite, Tailwind CSS |
 | [securify-data-hero](./securify-data-hero/) | Full-screen hero section for a fictional data-security SaaS called securify | React, TypeScript, Vite, Tailwind CSS |
