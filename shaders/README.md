@@ -1,6 +1,6 @@
 # Shaders
 
-66 **Shaders** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+68 **Shaders** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
