@@ -54,6 +54,7 @@
 | [phosphor-30-shader-hero](./phosphor-30-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, CVA, @radix-ui/react-slot, Lucide |
 | [radial-aperture-shader](./radial-aperture-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [radial-shader](./radial-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, Lucide |
+| [realistic-fog-background](./realistic-fog-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL, shadcn/ui, Lucide |
 | [sdf-dreamscape-shader](./sdf-dreamscape-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
 | [shader-animation-integration](./shader-animation-integration/) | shadcn/ui integration of a zero-prop Three.js WebGL fragment-shader component (radiating RGB lines) — a full-bleed shader hero plus a docs page covering the `components/ui` path, the `three` dependency, copy-paste usage, and a props/state/assets/responsive/placement Q&A | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-flow-field-rings](./shader-flow-field-rings/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
