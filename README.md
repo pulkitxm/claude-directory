@@ -26,7 +26,7 @@ All PRs get reviewed and merged by Claude Opus, so don't be shy — if the promp
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
 <details>
-<summary><b>Hero sections (35)</b></summary>
+<summary><b>Hero sections (36)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -47,6 +47,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [mainframe-hero-landing](./hero-sections/mainframe-hero-landing/) | Full-screen hero landing page for a creative agency called "Mainframe" with custom Helvetica Now display fonts | React, TypeScript, Vite, Tailwind CSS |
 | [nexora-automation-hero](./hero-sections/nexora-automation-hero/) | Single-viewport SaaS automation hero ("Nexora") with Instrument Serif / Inter type and Framer Motion | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [noctis-cinematic-hero](./hero-sections/noctis-cinematic-hero/) | NOCTIS full-screen dark cinematic hero with video background, nav, and timecode details | React, TypeScript, Vite, CSS |
+| [particle-hero](./hero-sections/particle-hero/) | Night-sky particle-canvas hero with a clickable gold-mode invert toggle, rotating spotlights, and a radial-reveal headline | React, TypeScript, Vite, Tailwind CSS, Canvas 2D, shadcn/ui, Lucide |
 | [power-ai-hero](./hero-sections/power-ai-hero/) | Full-screen dark AI hero with a JS-controlled fade-loop background video, headline, CTA, and logo marquee | React, TypeScript, Vite, Tailwind CSS, Geist Sans, Lucide |
 | [rivr-defi-hero](./hero-sections/rivr-defi-hero/) | DeFi dashboard hero for RIVR with glassmorphism, badge/cards, and verification script | React, TypeScript, Vite, Tailwind CSS |
 | [securify-data-hero](./hero-sections/securify-data-hero/) | Full-screen hero section for a fictional data-security SaaS called securify | React, TypeScript, Vite, Tailwind CSS |
