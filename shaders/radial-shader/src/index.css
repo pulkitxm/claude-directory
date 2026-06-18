@@ -1,0 +1,133 @@
+@import "./fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 13% 3%;
+    --foreground: 36 22% 90%;
+    --border: 240 14% 16%;
+    --input: 240 14% 16%;
+    --ring: 28 84% 65%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-void-950 text-bone font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(239, 111, 74, 0.32);
+    color: #fff;
+  }
+
+  /* Slimmer, themed scrollbar so the long documentation column reads as part of
+     the instrument rather than an OS chrome afterthought. */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070709;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #23232f;
+    border-radius: 999px;
+    border: 3px solid #070709;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #34343f;
+  }
+}
+
+@layer utilities {
+  /* Fine film grain laid over dark panels so they never read as flat fills. */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Engraved hairline divider, brightest in the centre. */
+  .rule {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(240, 179, 94, 0.34),
+      transparent
+    );
+  }
+
+  /* Dotted observatory grid for empty panel backgrounds. */
+  .dot-grid {
+    background-image: radial-gradient(
+      rgba(154, 149, 143, 0.16) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  .glass {
+    background: rgba(9, 9, 13, 0.52);
+    backdrop-filter: blur(14px) saturate(115%);
+    -webkit-backdrop-filter: blur(14px) saturate(115%);
+  }
+
+  .glass-strong {
+    background: rgba(7, 7, 10, 0.74);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+  }
+
+  .ring-hairline {
+    box-shadow: inset 0 0 0 1px rgba(236, 231, 223, 0.08);
+  }
+
+  /* Bracketed corner accents used on the hero frame + telemetry cards. */
+  .corner-tl,
+  .corner-tr,
+  .corner-bl,
+  .corner-br {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: rgba(240, 179, 94, 0.6);
+  }
+  .corner-tl {
+    top: 0;
+    left: 0;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  .corner-tr {
+    top: 0;
+    right: 0;
+    border-top: 1px solid;
+    border-right: 1px solid;
+  }
+  .corner-bl {
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+  }
+  .corner-br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+}

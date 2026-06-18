@@ -1,0 +1,106 @@
+@import "./assets/fonts/fonts.css";
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * Design tokens — an "observatory at night" identity built around the
+ * component's own ice-blue night sky (#05060f) and its gold-mode accent
+ * (#d8bd10). Space Grotesk carries the technical/astronomical display voice,
+ * Inter the body, JetBrains Mono the data + code captions.
+ * ------------------------------------------------------------------------- */
+@theme {
+	--font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+	--color-night: #05060f;
+	--color-night-2: #080a16;
+	--color-panel: #0b0e1d;
+	--color-panel-2: #0e1226;
+	--color-ice: #bad6f7;
+	--color-ice-2: #9dc3f7;
+	--color-ice-3: #d8ecf8;
+	--color-haze: #7c91b6;
+	--color-gold: #d8bd10;
+	--color-foreground: #eaf1fb;
+	--color-muted: #6f80a3;
+	--color-hairline: rgba(186, 215, 247, 0.14);
+}
+
+:root {
+	--radius: 0.5rem;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+html,
+body {
+	background-color: var(--color-night);
+	color: var(--color-foreground);
+}
+
+body {
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+}
+
+::selection {
+	background-color: rgba(216, 189, 16, 0.32);
+	color: #fff;
+}
+
+*:focus-visible {
+	outline: 2px solid var(--color-gold);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+/* Faint star-grid haze layered behind the whole page for atmosphere. */
+.starfield {
+	background-image:
+		radial-gradient(1px 1px at 12% 22%, rgba(186, 215, 247, 0.5), transparent),
+		radial-gradient(1px 1px at 34% 64%, rgba(186, 215, 247, 0.35), transparent),
+		radial-gradient(1px 1px at 58% 18%, rgba(186, 215, 247, 0.4), transparent),
+		radial-gradient(1px 1px at 71% 78%, rgba(186, 215, 247, 0.3), transparent),
+		radial-gradient(1px 1px at 88% 42%, rgba(186, 215, 247, 0.45), transparent),
+		radial-gradient(1.5px 1.5px at 22% 88%, rgba(157, 195, 247, 0.3), transparent),
+		radial-gradient(1px 1px at 46% 36%, rgba(186, 215, 247, 0.3), transparent);
+	background-size: 720px 720px;
+	background-repeat: repeat;
+}
+
+/* Hairline grid used by section eyebrows + panel edges. */
+.hairline-x {
+	background-image: linear-gradient(
+		90deg,
+		transparent,
+		var(--color-hairline) 12%,
+		var(--color-hairline) 88%,
+		transparent
+	);
+}
+
+/* Code-block scrollbar that matches the night palette. */
+.codeblock::-webkit-scrollbar {
+	height: 8px;
+	width: 8px;
+}
+.codeblock::-webkit-scrollbar-thumb {
+	background: rgba(186, 215, 247, 0.2);
+	border-radius: 8px;
+}
+.codeblock::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+@keyframes ticker-shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}

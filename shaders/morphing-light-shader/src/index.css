@@ -1,0 +1,130 @@
+@import "./fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 13% 4%;
+    --foreground: 210 25% 95%;
+    --border: 215 14% 16%;
+    --input: 215 14% 16%;
+    --ring: 327 100% 69%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-bench-800 text-chalk font-sans antialiased;
+  }
+
+  ::selection {
+    background: rgba(255, 95, 176, 0.3);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  /* Hairline noise grain over the casing so dark panels don't read as flat. */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Engraved hairline divider between console sections. */
+  .rule {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 95, 176, 0.28),
+      transparent
+    );
+  }
+}
+
+/* Re-skin native range inputs as precision instrument faders. The component
+   markup stays plain <input type="range">; only its appearance changes. */
+input[type="range"].fader {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+}
+input[type="range"].fader::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 230, 255, 0.85) var(--fill, 50%),
+    rgba(120, 130, 140, 0.22) var(--fill, 50%)
+  );
+}
+input[type="range"].fader::-moz-range-track {
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(120, 130, 140, 0.22);
+}
+input[type="range"].fader::-moz-range-progress {
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(34, 230, 255, 0.85);
+}
+input[type="range"].fader::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  margin-top: -5.5px;
+  border-radius: 2px;
+  background: #eef2f6;
+  border: 1px solid rgba(34, 230, 255, 0.9);
+  box-shadow:
+    0 0 0 4px rgba(34, 230, 255, 0.1),
+    0 0 12px rgba(34, 230, 255, 0.5);
+  transition: box-shadow 0.2s ease, transform 0.12s ease;
+  cursor: pointer;
+}
+input[type="range"].fader::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 0 0 5px rgba(34, 230, 255, 0.16),
+    0 0 16px rgba(34, 230, 255, 0.7);
+}
+input[type="range"].fader::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  background: #eef2f6;
+  border: 1px solid rgba(34, 230, 255, 0.9);
+  box-shadow: 0 0 12px rgba(34, 230, 255, 0.5);
+  cursor: pointer;
+}
+input[type="range"].fader:focus-visible {
+  outline: none;
+}
+input[type="range"].fader:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 3px #0a0b0d,
+    0 0 0 5px rgba(34, 230, 255, 0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

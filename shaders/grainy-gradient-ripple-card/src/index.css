@@ -1,0 +1,113 @@
+@import "./fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* shadcn neutral base tokens (light) mapped onto the foundry paper. */
+    --background: 40 33% 97%;
+    --foreground: 33 24% 10%;
+    --border: 38 26% 82%;
+    --input: 38 26% 82%;
+    --ring: 28 95% 55%;
+    --radius: 0.6rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: theme("colors.bone.100");
+    color: theme("colors.ink.800");
+    font-family: theme("fontFamily.sans");
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users. */
+  :focus-visible {
+    outline: 2px solid theme("colors.pigment.ember");
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Hairline rule that reads like a printed ledger line. */
+  .rule {
+    background: linear-gradient(
+      to right,
+      transparent,
+      theme("colors.line-strong"),
+      transparent
+    );
+  }
+
+  /* Paper grain overlaid on the whole console for a printed-lab feel. */
+  .paper-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* The native range input, restyled into a thin foundry fader. */
+  .fader {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    border-radius: 999px;
+    background: theme("colors.line-strong");
+    cursor: pointer;
+  }
+
+  .fader::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: theme("colors.bone.50");
+    border: 1.5px solid theme("colors.ink.700");
+    box-shadow: 0 1px 2px rgba(19, 16, 11, 0.25);
+    transition: transform 0.12s ease, border-color 0.12s ease;
+  }
+
+  .fader::-webkit-slider-thumb:hover {
+    transform: scale(1.12);
+    border-color: theme("colors.pigment.ember");
+  }
+
+  .fader::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: theme("colors.bone.50");
+    border: 1.5px solid theme("colors.ink.700");
+    box-shadow: 0 1px 2px rgba(19, 16, 11, 0.25);
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

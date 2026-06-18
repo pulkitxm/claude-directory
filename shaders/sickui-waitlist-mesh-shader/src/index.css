@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* The vendored Onest variable face (SIL OFL — see assets/fonts/Onest-OFL.txt) is
+ * registered at runtime via the JS FontFace API in main.tsx, not a CSS
+ * @font-face. See that file for why it's loaded in JS (headless-recorder
+ * font-ready hang on animating pages). */
+
+/* ------------------------------------------------------------------ *
+ * Theme tokens. The prompt's verbatim component leans on `font-sans`, so we
+ * point Tailwind's --font-sans at the vendored Onest stack. The shadcn palette
+ * tokens (bg-background, text-foreground, …) are mapped too, so the component
+ * resolves exactly as written and the project stays a faithful shadcn scaffold.
+ * ------------------------------------------------------------------ */
+@theme inline {
+	--font-sans: var(--font-onest);
+	--font-mono: var(--font-mono-stack);
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+
+	--radius: 0.75rem;
+}
+
+/*
+ * shadcn default theme tokens (dark-first, tuned to the deep-blue mesh). These
+ * exist so the copied component — and any future `npx shadcn add` primitive —
+ * gets bg-background / text-foreground / border / ring with no extra wiring.
+ */
+:root {
+	--background: oklch(0.16 0.04 264);
+	--foreground: oklch(0.98 0.01 250);
+	--card: oklch(1 0 0 / 0.08);
+	--card-foreground: oklch(0.98 0.01 250);
+	--popover: oklch(0.18 0.04 264);
+	--popover-foreground: oklch(0.98 0.01 250);
+	--primary: oklch(0.62 0.19 256);
+	--primary-foreground: oklch(0.99 0.01 250);
+	--secondary: oklch(1 0 0 / 0.1);
+	--secondary-foreground: oklch(0.98 0.01 250);
+	--muted: oklch(1 0 0 / 0.08);
+	--muted-foreground: oklch(0.72 0.02 256);
+	--accent: oklch(0.7 0.16 250);
+	--accent-foreground: oklch(0.15 0.03 264);
+	--destructive: oklch(0.63 0.22 17);
+	--border: oklch(1 0 0 / 0.16);
+	--input: oklch(1 0 0 / 0.16);
+	--ring: oklch(0.7 0.16 250 / 0.6);
+
+	--font-onest: "Onest", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+		Roboto, sans-serif;
+	--font-mono-stack: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo,
+		monospace;
+
+	color-scheme: dark;
+}
+
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	background: #040a1e;
+	font-family: var(--font-onest);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+/* Keyboard focus ring that reads on the dark glass. */
+:where(a, button, input):focus-visible {
+	outline: 2px solid color-mix(in oklch, white 70%, transparent);
+	outline-offset: 2px;
+	border-radius: 0.5rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Film grain overlay (CSS-only, no asset) for the backdrop.
+ * ------------------------------------------------------------------ */
+.grain {
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+	background-size: 160px 160px;
+}
+
+/* Honour reduced-motion: calm the ping + count-up driven flourishes. */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+	}
+}

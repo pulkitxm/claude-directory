@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Vendored fonts (self-hosted woff2, fully offline)                   */
+/* ------------------------------------------------------------------ */
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/inter-latin.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+/* ------------------------------------------------------------------ */
+/* Design tokens                                                       */
+/* ------------------------------------------------------------------ */
+@theme {
+	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+	/* Ink + surface palette (near-black "lab" canvas) */
+	--color-ink-950: #050507;
+	--color-ink-900: #0a0a0f;
+	--color-ink-850: #0e0e15;
+	--color-ink-800: #14141d;
+	--color-ink-700: #1d1d2a;
+	--color-ink-600: #2a2a3c;
+	--color-line: #23232f;
+
+	--color-fog-400: #8a8aa3;
+	--color-fog-300: #a9a9c0;
+	--color-fog-200: #d6d6e4;
+
+	/* Accent — a spectral cyan that nods to the dots' hue-cycling */
+	--color-accent: #7df9ff;
+	--color-accent-dim: #34d6df;
+}
+
+/*
+ * `--background` is the single most important token here: the verbatim
+ * GradientDots component defaults `backgroundColor` to `var(--background)`,
+ * and it paints that colour BOTH as the canvas fill and as the punch-out
+ * mask between dots. shadcn projects expose `--background` on :root, so we
+ * mirror that contract — the component drops in and "just works".
+ */
+:root {
+	--background: #050507;
+	--foreground: #ededf2;
+}
+
+@layer base {
+	* {
+		border-color: var(--color-line);
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		margin: 0;
+		background-color: var(--background);
+		color: var(--foreground);
+		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	::selection {
+		background: color-mix(in oklab, var(--color-accent) 35%, transparent);
+		color: #fff;
+	}
+
+	/* Thin, lab-grade scrollbar */
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: var(--color-ink-900);
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--color-ink-600);
+		border-radius: 999px;
+		border: 2px solid var(--color-ink-900);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--color-ink-700);
+	}
+}
+
+@layer utilities {
+	/* Hairline grid backdrop for instrument panels */
+	.bg-grid {
+		background-image: linear-gradient(
+				to right,
+				color-mix(in oklab, var(--color-line) 60%, transparent) 1px,
+				transparent 1px
+			),
+			linear-gradient(
+				to bottom,
+				color-mix(in oklab, var(--color-line) 60%, transparent) 1px,
+				transparent 1px
+			);
+		background-size: 28px 28px;
+	}
+
+	.text-balance {
+		text-wrap: balance;
+	}
+
+	/* Code highlight tokens (used by CodeBlock) */
+	.tok-kw {
+		color: #c792ea;
+	}
+	.tok-str {
+		color: #8ce0a8;
+	}
+	.tok-com {
+		color: #5a5a72;
+		font-style: italic;
+	}
+	.tok-fn {
+		color: var(--color-accent);
+	}
+	.tok-num {
+		color: #f7b267;
+	}
+
+	/* Subtle film grain used over the dark surfaces */
+	.grain::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		opacity: 0.05;
+		mix-blend-mode: overlay;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}

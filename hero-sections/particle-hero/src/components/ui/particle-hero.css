@@ -1,0 +1,199 @@
+/* ---------------------------------------------------------------------------
+ * particle-hero.css
+ *
+ * The source component shipped its rules inside a Next.js `<style jsx>` tag.
+ * styled-jsx is a Next-only compiler feature, so in a plain Vite + React app
+ * the equivalent is a co-located, component-scoped stylesheet imported from
+ * the .tsx file. Every selector is scoped under `.particle-hero` so the
+ * gold-mode filters and keyframes stay contained to this component.
+ * ------------------------------------------------------------------------- */
+
+/* The animated radial-reveal sweep variable used by the headline gradient. */
+@property --p {
+	syntax: "<percentage>";
+	inherits: false;
+	initial-value: 0%;
+}
+
+/* --- Gold mode: invert the whole night scene into a warm gold palette. --- */
+.particle-hero.gold-mode .header h2,
+.particle-hero.gold-mode p,
+.particle-hero.gold-mode > * > *:not(.contact-btn) {
+	filter: invert(1) brightness(4.7);
+}
+.particle-hero.gold-mode .header h2 a {
+	filter: hue-rotate(0deg);
+}
+.particle-hero.gold-mode canvas {
+	filter: drop-shadow(2em 4em 0px #d8bd10) drop-shadow(-8em -14em 0px #d8bd10);
+}
+.particle-hero.gold-mode .header .spotlight {
+	filter: invert(1) brightness(4.7) opacity(0.5);
+}
+.particle-hero.gold-mode .mountains > div {
+	box-shadow:
+		-1em -0.2em 0.4em -1.1em #c2ccff,
+		inset 0em 0em 0em 2px #d8a910,
+		inset 0.2em 0.3em 0.2em -0.2em #c2ccff,
+		inset 10.2em 10.3em 2em -10em #d4e6ff2f;
+}
+.particle-hero.gold-mode .content-section,
+.particle-hero.gold-mode .content-section ::before,
+.particle-hero.gold-mode .content-section ::after {
+	filter: invert(1) brightness(4.4) opacity(1);
+}
+.particle-hero.gold-mode .header > button.mid-spot {
+	box-shadow: 0 0 1em 0 #d8bd10;
+}
+.particle-hero.gold-mode .header > button.mid-spot:hover {
+	box-shadow: -0.3em 0.1em 0.2em 0 #98c0ef;
+}
+
+/* --- Keyframes --- */
+@keyframes load {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes up {
+	100% {
+		transform: translateY(0);
+	}
+}
+@keyframes load3 {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.7;
+	}
+}
+@keyframes pulse {
+	0% {
+		--p: 0%;
+	}
+	50% {
+		--p: 300%;
+	}
+	100% {
+		--p: 300%;
+	}
+}
+@keyframes colorize {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+	100% {
+		filter: hue-rotate(-380deg);
+	}
+}
+@keyframes spotlight {
+	0% {
+		transform: rotateZ(0deg) scale(1);
+		filter: blur(15px) opacity(0.5);
+	}
+	20% {
+		transform: rotateZ(-1deg) scale(1.2);
+		filter: blur(16px) opacity(0.6);
+	}
+	40% {
+		transform: rotateZ(2deg) scale(1.3);
+		filter: blur(14px) opacity(0.4);
+	}
+	60% {
+		transform: rotateZ(-2deg) scale(1.2);
+		filter: blur(15px) opacity(0.6);
+	}
+	80% {
+		transform: rotateZ(1deg) scale(1.1);
+		filter: blur(13px) opacity(0.4);
+	}
+	100% {
+		transform: rotateZ(0deg) scale(1);
+		filter: blur(15px) opacity(0.5);
+	}
+}
+@keyframes loadrot {
+	0% {
+		transform: rotate(0deg) scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes accentload {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+@keyframes accentload2 {
+	0% {
+		opacity: 0;
+		transform: scale(0) rotate(360deg);
+	}
+	50% {
+		transform: scale(0);
+	}
+	100% {
+		opacity: 0.12;
+		transform: scale(1) rotate(0deg);
+	}
+}
+@keyframes accentload3 {
+	0% {
+		opacity: 0;
+		transform: scale(0) rotate(-360deg);
+	}
+	50% {
+		transform: scale(0);
+	}
+	100% {
+		opacity: 0.12;
+		transform: scale(1) rotate(0deg);
+	}
+}
+@keyframes mountainload1 {
+	0% {
+		bottom: -240%;
+	}
+	100% {
+		bottom: -140%;
+	}
+}
+@keyframes mountainload2 {
+	0% {
+		bottom: -240%;
+	}
+	100% {
+		bottom: -108%;
+	}
+}
+@keyframes loop {
+	100% {
+		offset-distance: 100%;
+	}
+}
+
+/* Respect reduced-motion: hold the scene in its settled, visible state. */
+@media (prefers-reduced-motion: reduce) {
+	.particle-hero .header,
+	.particle-hero .heroT,
+	.particle-hero .heroP,
+	.particle-hero .accent-lines > div > div,
+	.particle-hero .spotlight > div {
+		animation: none !important;
+		opacity: 1 !important;
+		transform: none !important;
+	}
+	.particle-hero .heroT h2 {
+		animation: none !important;
+	}
+}

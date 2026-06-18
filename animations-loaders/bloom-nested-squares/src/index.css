@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Vendored fonts (woff2 in /public/fonts) ─────────────────────────────── */
+@font-face {
+	font-family: "Fraunces";
+	font-style: normal;
+	font-weight: 400 600;
+	font-display: swap;
+	src: url("/fonts/fraunces.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter Tight";
+	font-style: normal;
+	font-weight: 400 600;
+	font-display: swap;
+	src: url("/fonts/inter-tight.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400 500;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono.woff2") format("woff2");
+}
+
+@layer base {
+	:root {
+		/* shadcn tokens — bg-background / text-foreground resolve here */
+		--background: 255 35% 5%; /* deep near-black indigo */
+		--foreground: 260 30% 88%;
+		/* studio chrome */
+		--panel: 258 30% 8%;
+		--rule: 260 25% 22%;
+		--muted: 258 14% 50%;
+		--lilac: 264 45% 82%;
+		--violet: 271 81% 56%;
+		--bone: 42 38% 92%;
+		--grain: url("/textures/grain.png");
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html,
+	body,
+	#root {
+		height: 100%;
+	}
+
+	body {
+		margin: 0;
+		background: hsl(var(--background));
+		color: hsl(var(--foreground));
+		font-family: "Inter Tight", system-ui, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	::selection {
+		background: hsl(var(--violet) / 0.4);
+		color: hsl(var(--bone));
+	}
+}
+
+@layer components {
+	/* The viewing chamber backdrop: layered radial glow + faint plate vignette */
+	.studio-root {
+		position: relative;
+		min-height: 100dvh;
+		overflow: hidden;
+		background:
+			radial-gradient(
+				120% 90% at 38% 30%,
+				hsl(271 70% 14% / 0.55) 0%,
+				transparent 55%
+			),
+			radial-gradient(
+				90% 120% at 90% 100%,
+				hsl(266 60% 12% / 0.5) 0%,
+				transparent 60%
+			),
+			hsl(var(--background));
+	}
+
+	/* Hairline grid behind everything, like graph paper under the specimen */
+	.studio-grid {
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(hsl(var(--rule) / 0.16) 1px, transparent 1px),
+			linear-gradient(90deg, hsl(var(--rule) / 0.16) 1px, transparent 1px);
+		background-size: 56px 56px;
+		mask-image: radial-gradient(120% 100% at 50% 40%, black 30%, transparent 78%);
+		pointer-events: none;
+	}
+
+	/* Film grain + scanlines overlay — the "under glass" whisper */
+	.studio-grain {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		z-index: 50;
+		opacity: 0.5;
+		mix-blend-mode: soft-light;
+		background-image: var(--grain);
+	}
+	.studio-scanlines {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		z-index: 49;
+		opacity: 0.5;
+		background: repeating-linear-gradient(
+			0deg,
+			transparent 0 2px,
+			hsl(0 0% 0% / 0.18) 2px 3px
+		);
+	}
+
+	/* The specimen plate — circular vignette with a hairline graticule ring */
+	.specimen-plate {
+		position: relative;
+		display: grid;
+		place-items: center;
+		aspect-ratio: 1;
+	}
+	.specimen-glow {
+		position: absolute;
+		inset: 8%;
+		border-radius: 50%;
+		background: radial-gradient(
+			circle,
+			hsl(271 90% 60% / 0.55) 0%,
+			hsl(266 80% 45% / 0.22) 38%,
+			transparent 70%
+		);
+		filter: blur(34px);
+		z-index: 0;
+		animation: plate-breathe 7s ease-in-out infinite;
+	}
+	@keyframes plate-breathe {
+		0%,
+		100% {
+			transform: scale(1);
+			opacity: 0.85;
+		}
+		50% {
+			transform: scale(1.08);
+			opacity: 1;
+		}
+	}
+
+	/* Graticule: tick ring + crosshair, the microscope-plate signature */
+	.graticule {
+		position: absolute;
+		inset: 0;
+		z-index: 5;
+		pointer-events: none;
+		color: hsl(var(--lilac) / 0.5);
+	}
+
+	/* Right-rail instrument panel */
+	.instrument-rail {
+		background: linear-gradient(
+			180deg,
+			hsl(var(--panel) / 0.92),
+			hsl(258 32% 6% / 0.92)
+		);
+		border: 1px solid hsl(var(--rule) / 0.6);
+		backdrop-filter: blur(8px);
+	}
+
+	.eyebrow {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.66rem;
+		letter-spacing: 0.34em;
+		text-transform: uppercase;
+		color: hsl(var(--muted));
+	}
+
+	/* Range slider, restyled to read as a calibration dial track */
+	.dial {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 100%;
+		height: 2px;
+		border-radius: 999px;
+		background: hsl(var(--rule));
+		outline: none;
+		cursor: pointer;
+	}
+	.dial::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 13px;
+		height: 13px;
+		border-radius: 50%;
+		background: hsl(var(--bone));
+		border: 2px solid hsl(var(--violet));
+		box-shadow: 0 0 0 4px hsl(var(--violet) / 0.18);
+		transition: box-shadow 0.18s ease;
+	}
+	.dial::-webkit-slider-thumb:hover {
+		box-shadow: 0 0 0 6px hsl(var(--violet) / 0.28);
+	}
+	.dial::-moz-range-thumb {
+		width: 13px;
+		height: 13px;
+		border-radius: 50%;
+		background: hsl(var(--bone));
+		border: 2px solid hsl(var(--violet));
+	}
+	.dial:focus-visible::-webkit-slider-thumb {
+		box-shadow: 0 0 0 6px hsl(var(--violet) / 0.4);
+	}
+
+	.swatch {
+		position: relative;
+		height: 28px;
+		border-radius: 6px;
+		border: 1px solid hsl(var(--rule) / 0.7);
+		cursor: pointer;
+		transition:
+			transform 0.16s ease,
+			box-shadow 0.16s ease;
+	}
+	.swatch:hover {
+		transform: translateY(-1px);
+	}
+	.swatch[data-active="true"] {
+		box-shadow:
+			0 0 0 1.5px hsl(var(--bone)),
+			0 0 0 4px hsl(var(--violet) / 0.35);
+	}
+
+	.chip {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.6rem;
+		letter-spacing: 0.12em;
+		border: 1px solid hsl(var(--rule) / 0.7);
+		border-radius: 999px;
+		padding: 0.2rem 0.6rem;
+		color: hsl(var(--lilac));
+		background: hsl(var(--violet) / 0.08);
+	}
+
+	.ghost-btn {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.66rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		border: 1px solid hsl(var(--rule));
+		border-radius: 7px;
+		padding: 0.55rem 0.9rem;
+		color: hsl(var(--lilac));
+		background: transparent;
+		cursor: pointer;
+		transition:
+			border-color 0.18s ease,
+			color 0.18s ease,
+			background 0.18s ease;
+	}
+	.ghost-btn:hover {
+		border-color: hsl(var(--violet));
+		color: hsl(var(--bone));
+		background: hsl(var(--violet) / 0.1);
+	}
+	.ghost-btn:focus-visible,
+	.dial:focus-visible,
+	.swatch:focus-visible {
+		outline: 2px solid hsl(var(--violet));
+		outline-offset: 3px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.specimen-glow {
+		animation: none;
+	}
+}

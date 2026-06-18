@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Vendored fonts (self-hosted woff2, fully offline)                   */
+/* ------------------------------------------------------------------ */
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/inter-latin.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+/* ------------------------------------------------------------------ */
+/* Design tokens                                                       */
+/* ------------------------------------------------------------------ */
+@theme {
+	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+	/* Ink + surface palette — the equalizer "console" canvas */
+	--color-ink-950: #060403;
+	--color-ink-900: #0a0807;
+	--color-ink-850: #0f0c0a;
+	--color-ink-800: #15110e;
+	--color-ink-700: #201a16;
+	--color-ink-600: #2e251f;
+	--color-line: #2a221c;
+
+	--color-fog-400: #9b9088;
+	--color-fog-300: #c0b6ac;
+	--color-fog-200: #e6ddd4;
+
+	/* Accent — the component's signature ignition orange (rgb(255,60,0)) */
+	--color-flame: #ff3c00;
+	--color-flame-soft: #ff7a3c;
+	--color-ember: #ffb061;
+}
+
+/*
+ * The `Component` wrapper takes an explicit `backgroundColor` prop (defaulting
+ * to rgb(10,10,10)), so the gradient bars never depend on a CSS variable to
+ * paint. We still mirror the shadcn `--background` / `--foreground` contract on
+ * :root so the component drops into a real shadcn project unchanged.
+ */
+:root {
+	--background: #0a0807;
+	--foreground: #efe9e2;
+}
+
+@layer base {
+	* {
+		border-color: var(--color-line);
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		margin: 0;
+		background-color: var(--background);
+		color: var(--foreground);
+		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	::selection {
+		background: color-mix(in oklab, var(--color-flame) 35%, transparent);
+		color: #fff;
+	}
+
+	/* Thin, console-grade scrollbar */
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: var(--color-ink-900);
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--color-ink-600);
+		border-radius: 999px;
+		border: 2px solid var(--color-ink-900);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--color-ink-700);
+	}
+}
+
+@layer utilities {
+	/* Hairline grid backdrop for instrument panels */
+	.bg-grid {
+		background-image: linear-gradient(
+				to right,
+				color-mix(in oklab, var(--color-line) 60%, transparent) 1px,
+				transparent 1px
+			),
+			linear-gradient(
+				to bottom,
+				color-mix(in oklab, var(--color-line) 60%, transparent) 1px,
+				transparent 1px
+			);
+		background-size: 28px 28px;
+	}
+
+	.text-balance {
+		text-wrap: balance;
+	}
+
+	/* Code highlight tokens (used by CodeBlock) */
+	.tok-kw {
+		color: #ff9d6b;
+	}
+	.tok-str {
+		color: #e0c08c;
+	}
+	.tok-com {
+		color: #6b5d52;
+		font-style: italic;
+	}
+	.tok-fn {
+		color: var(--color-flame-soft);
+	}
+	.tok-num {
+		color: #f7b267;
+	}
+
+	/* Subtle film grain used over the dark surfaces */
+	.grain::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		opacity: 0.05;
+		mix-blend-mode: overlay;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	}
+
+	/* Range-input thumb styling for the lab faders */
+	.lab-fader::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 16px;
+		height: 16px;
+		border-radius: 999px;
+		background: #fff;
+		border: 3px solid var(--color-flame);
+		box-shadow: 0 0 0 3px rgba(255, 60, 0, 0.18);
+		cursor: pointer;
+		transition: transform 0.15s ease;
+	}
+	.lab-fader::-webkit-slider-thumb:hover {
+		transform: scale(1.18);
+	}
+	.lab-fader::-moz-range-thumb {
+		width: 16px;
+		height: 16px;
+		border-radius: 999px;
+		background: #fff;
+		border: 3px solid var(--color-flame);
+		cursor: pointer;
+	}
+
+	/* Animated marquee for the spec ticker */
+	@keyframes ticker {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+	.animate-ticker {
+		animation: ticker 30s linear infinite;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	.animate-ticker {
+		animation: none;
+	}
+}

@@ -1,0 +1,88 @@
+@import "./fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* shadcn slate-ish dark base, retuned toward deep ocean. */
+    --background: 213 60% 4%;
+    --foreground: 205 40% 94%;
+    --border: 213 35% 16%;
+    --input: 213 35% 16%;
+    --ring: 201 90% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-abyss-950 text-foam font-sans antialiased;
+  }
+
+  ::selection {
+    background: rgba(33, 150, 216, 0.35);
+    color: #fff;
+  }
+
+  /* Slim, on-brand scrollbar so the dark console reads as a single piece. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050b16;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #13243c;
+    border-radius: 999px;
+    border: 2px solid #050b16;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1d3a5e;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hairline noise grain laid over dark panels so they don't read as flat fills. */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  /* Engraved hairline divider tinted with the sea palette. */
+  .rule {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(33, 150, 216, 0.3),
+      transparent
+    );
+  }
+
+  /* Faint dotted blueprint grid for panel backdrops. */
+  .blueprint {
+    background-image: radial-gradient(
+      rgba(70, 179, 230, 0.1) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  .glass {
+    background: rgba(7, 15, 28, 0.62);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}

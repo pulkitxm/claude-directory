@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ── Vendored fonts (woff2, local) ─────────────────────────────────────── */
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/assets/fonts/jetbrains-mono-400.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/assets/fonts/jetbrains-mono-500.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/assets/fonts/jetbrains-mono-700.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Oswald";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/assets/fonts/oswald-500.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Oswald";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("/assets/fonts/oswald-600.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Oswald";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/assets/fonts/oswald-700.woff2") format("woff2");
+}
+
+/* ── Design tokens — cold avionics instrument palette ──────────────────── */
+:root {
+	--abyss: #060809;
+	--gunmetal: #0c1113;
+	--steel: #16201f;
+	--phosphor: #e8f4f2; /* the reticle's near-white "light" */
+	--phosphor-dim: #9fb6b2;
+	--cyan: #5fe6d6; /* scan tint */
+	--lock: #ffb43d; /* the one warm accent — reserved for target lock */
+	--lock-deep: #ff7a18;
+	--alarm: #ff4d4d;
+	--grid: rgba(120, 200, 190, 0.16);
+
+	--mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+	--display: "Oswald", "Arial Narrow", system-ui, sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	background: var(--abyss);
+	color: var(--phosphor);
+	font-family: var(--mono);
+	-webkit-font-smoothing: antialiased;
+	overflow: hidden;
+}
+
+/* Mono numerals never reflow as they tick */
+.tnum {
+	font-variant-numeric: tabular-nums;
+	font-feature-settings: "tnum" 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+}
