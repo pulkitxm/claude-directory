@@ -1,0 +1,238 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ---------------------------------------------------------------------------
+   HIVE — theme tokens (Tailwind v4 @theme inline).
+
+   A near-black instrument palette tuned to sit under the warm amber -> magenta
+   cosine-spectrum noise field the `hive` shader paints. These tokens flow into
+   Tailwind utilities (bg-background, text-foreground, border-border, text-amber,
+   text-magenta, ...). The type stack is system-only so the project runs fully
+   offline with no vendored web fonts.
+   --------------------------------------------------------------------------- */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-panel: var(--panel);
+  --color-border: var(--border);
+  --color-amber: var(--amber);
+  --color-magenta: var(--magenta);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", "JetBrains Mono",
+    Menlo, "Cascadia Code", Consolas, "Liberation Mono", monospace;
+
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
+}
+
+:root {
+  --background: #08060f;
+  --foreground: #f6efe6;
+  --muted: #0f0b18;
+  --muted-foreground: #a99fb5;
+  --panel: rgba(20, 15, 30, 0.55);
+  --border: rgba(210, 180, 230, 0.14);
+  --amber: #ffb24d;
+  --magenta: #e472ff;
+  --accent-foreground: #0a0612;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(228, 114, 255, 0.28);
+    color: #fff;
+  }
+
+  /* Thin instrument scrollbar for the docs column. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(210, 180, 230, 0.2);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Glass surfaces. The whole UI floats over the live shader, so panels are
+   frosted: translucent fill, fine top highlight, soft outer shadow.
+   --------------------------------------------------------------------------- */
+.glass {
+  background: linear-gradient(
+    180deg,
+    rgba(30, 22, 44, 0.64),
+    rgba(14, 10, 24, 0.56)
+  );
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  border: 1px solid rgba(228, 200, 255, 0.14);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.07) inset,
+    0 24px 70px -30px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.glass-soft {
+  background: rgba(18, 13, 28, 0.46);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgba(228, 200, 255, 0.1);
+}
+
+.hairline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 178, 77, 0.5),
+    rgba(228, 114, 255, 0.5),
+    transparent
+  );
+  height: 1px;
+  width: 100%;
+}
+
+/* Spectrum text — echoes the shader's warm -> magenta cosine palette. */
+.text-spectrum {
+  background: linear-gradient(100deg, #fff3df 0%, #ffb24d 34%, #e472ff 66%, #ffd9f7 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: sheen 8s linear infinite;
+}
+
+@keyframes sheen {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Film grain + vignette overlays for the optical-instrument feel. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.vignette {
+  background: radial-gradient(
+    120% 90% at 50% 38%,
+    transparent 0%,
+    transparent 50%,
+    rgba(6, 4, 12, 0.52) 84%,
+    rgba(6, 4, 12, 0.85) 100%
+  );
+}
+
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.035) 0px,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+.pulse-dot {
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(255, 178, 77, 0.55);
+  }
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 6px rgba(255, 178, 77, 0);
+  }
+}
+
+/* Entrance: blur + rise, staggered via inline delay. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+.animate-rise {
+  opacity: 0;
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Marquee strip for the integration ticker. */
+.marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 28s linear infinite;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Code surface — monospace blocks in the docs. */
+.code-surface {
+  background: rgba(8, 6, 15, 0.66);
+  border: 1px solid rgba(228, 200, 255, 0.12);
+  border-radius: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-spectrum,
+  .animate-rise,
+  .pulse-dot,
+  .marquee {
+    animation: none;
+  }
+  .animate-rise {
+    opacity: 1;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

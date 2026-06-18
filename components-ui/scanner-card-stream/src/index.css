@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+	--font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+	html,
+	body,
+	#root {
+		height: 100%;
+	}
+	body {
+		@apply font-sans text-white antialiased overflow-hidden;
+		background:
+			radial-gradient(
+				120% 120% at 50% 50%,
+				#0b0f1e 0%,
+				#070a14 55%,
+				#04060d 100%
+			);
+	}
+}
+
+/* Component animations (replace the original styled-jsx block, which is Next-only). */
+@keyframes glitch {
+	0%,
+	16%,
+	50%,
+	100% {
+		opacity: 1;
+	}
+	15%,
+	99% {
+		opacity: 0.9;
+	}
+	49% {
+		opacity: 0.8;
+	}
+}
+.animate-glitch {
+	animation: glitch 0.1s infinite linear alternate-reverse;
+}
+
+@keyframes scanPulse {
+	0% {
+		opacity: 0.75;
+		transform: scaleY(1);
+	}
+	100% {
+		opacity: 1;
+		transform: scaleY(1.03);
+	}
+}
+.animate-scan-pulse {
+	animation: scanPulse 1.5s infinite alternate ease-in-out;
+}

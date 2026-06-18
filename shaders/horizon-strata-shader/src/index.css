@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Vendored variable fonts (offline, no external requests) ---- */
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url("/fonts/space-grotesk.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/inter.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 100 800;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono.woff2") format("woff2");
+}
+
+@layer base {
+	:root {
+		--font-display: "Space Grotesk", system-ui, sans-serif;
+		--font-body: "Inter", system-ui, sans-serif;
+		--font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+		/* Deep-field scanner — pure void, hairline graphite, signal white */
+		--background: 0 0% 0%;
+		--foreground: 40 12% 96%;
+		--muted: 220 8% 7%;
+		--muted-foreground: 220 6% 48%;
+		--primary: 40 12% 96%;
+		--primary-foreground: 0 0% 4%;
+		--border: 220 8% 13%; /* hairline */
+		--radius: 0.5rem;
+
+		/* Accent channels keyed to the shader's own luminance bands.
+		   Strata = warm sodium line; Scan = cool cyan reticle line. */
+		--scan-cyan: 174 78% 60%; /* #43e6dc */
+		--strata-amber: 38 92% 62%; /* #f6ad44 */
+		--strata-violet: 268 70% 70%; /* #b083ef */
+	}
+
+	* {
+		@apply border-border;
+	}
+
+	html {
+		background: #000;
+	}
+
+	body {
+		@apply bg-background text-foreground antialiased;
+		font-family: var(--font-body);
+		overflow: hidden;
+	}
+
+	::selection {
+		background: hsl(var(--scan-cyan) / 0.9);
+		color: #000;
+	}
+}
+
+@layer components {
+	/* Instrument caption — the uppercase mono label used across every HUD strip */
+	.tele {
+		font-family: var(--font-mono);
+		font-weight: 500;
+		letter-spacing: 0.24em;
+		text-transform: uppercase;
+		font-size: 0.625rem;
+		line-height: 1;
+	}
+
+	/* Hairline panel surface — barely-there glass over the void */
+	.panel {
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+		border: 1px solid hsl(var(--border));
+		backdrop-filter: blur(7px);
+		-webkit-backdrop-filter: blur(7px);
+	}
+
+	/* Wordmark with the shader's own strata banding split into the type:
+	   two offset copies on a screen blend = additive light on black. */
+	.strata-split {
+		position: relative;
+		color: hsl(var(--foreground));
+		isolation: isolate;
+	}
+	.strata-split::before,
+	.strata-split::after {
+		content: attr(data-text);
+		position: absolute;
+		inset: 0;
+		mix-blend-mode: screen;
+		pointer-events: none;
+	}
+	.strata-split::before {
+		color: hsl(var(--scan-cyan));
+		transform: translate(-0.018em, 0.012em);
+	}
+	.strata-split::after {
+		color: hsl(var(--strata-amber));
+		transform: translate(0.018em, -0.012em);
+	}
+}
+
+@layer utilities {
+	.animate-reveal-up {
+		animation: reveal-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+	.animate-reveal-blur {
+		animation: reveal-blur 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+	.animate-gauge-in {
+		animation: gauge-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+	.animate-hud-in {
+		animation: hud-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+	.animate-signal-flicker {
+		animation: signal-flicker 6s ease-in-out infinite;
+	}
+	.animate-scan-sweep {
+		animation: scan-sweep 5.5s linear infinite;
+	}
+
+	@keyframes reveal-up {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	@keyframes reveal-blur {
+		from {
+			opacity: 0;
+			filter: blur(10px);
+		}
+		to {
+			opacity: 1;
+			filter: blur(0);
+		}
+	}
+	@keyframes gauge-in {
+		from {
+			opacity: 0;
+			transform: translateX(12px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+	@keyframes hud-in {
+		from {
+			opacity: 0;
+			transform: translateY(-8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	@keyframes signal-flicker {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		47% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.62;
+		}
+		53% {
+			opacity: 1;
+		}
+	}
+	@keyframes scan-sweep {
+		0% {
+			transform: translateY(-120%);
+			opacity: 0;
+		}
+		8% {
+			opacity: 0.85;
+		}
+		92% {
+			opacity: 0.85;
+		}
+		100% {
+			transform: translateY(120%);
+			opacity: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.animate-reveal-up,
+		.animate-reveal-blur,
+		.animate-gauge-in,
+		.animate-hud-in,
+		.animate-signal-flicker,
+		.animate-scan-sweep {
+			animation: none !important;
+		}
+	}
+}

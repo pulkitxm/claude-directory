@@ -1,11 +1,12 @@
 # Hero sections
 
-32 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+34 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aethera-cinematic-hero](./aethera-cinematic-hero/) | Cinematic hero for Aethera with video-driven visual treatment and headless verification | React, TypeScript, Vite, Tailwind CSS |
 | [ai-builder-dark-hero](./ai-builder-dark-hero/) | Dark-mode hero section for an AI website builder with animated reveals and HLS video streaming | React, TypeScript, Vite, Tailwind CSS, Motion, hls.js, Lucide |
+| [animated-text-rotate-hero](./animated-text-rotate-hero/) | shadcn/ui animated hero integration with spring word-rotation, hosted in a midnight-teal "Spektr" trade-desk shell with a live ticker | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
 | [bloom-liquid-glass-hero](./bloom-liquid-glass-hero/) | Bloom hero experiment with floral imagery, liquid-glass styling, and generated visual assets | React, TypeScript, Vite, Tailwind CSS |
 | [cinematic-stream-hero](./cinematic-stream-hero/) | LUMIERE full-viewport streaming hero with looping cinematic background video | React, TypeScript, Vite, Tailwind CSS |
 | [codenest-hero](./codenest-hero/) | Dark coding-education hero for "CodeNest" with an HLS (Mux) video background, grid lines, central glow, and a liquid-glass floating card | React, TypeScript, Vite, Tailwind CSS, hls.js, Lucide, Vitest |
@@ -24,6 +25,7 @@
 | [rivr-defi-hero](./rivr-defi-hero/) | DeFi dashboard hero for RIVR with glassmorphism, badge/cards, and verification script | React, TypeScript, Vite, Tailwind CSS |
 | [securify-data-hero](./securify-data-hero/) | Full-screen hero section for a fictional data-security SaaS called securify | React, TypeScript, Vite, Tailwind CSS |
 | [sentinel-ai-hero](./sentinel-ai-hero/) | Full-screen dark hero for security company "Sentinel AI" with an embedded Spline 3D scene background | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline |
+| [shape-landing-hero](./shape-landing-hero/) | shadcn integration of Kokonut UI's HeroGeometric — animated geometric shapes, gradient headline and a live props playground on a near-black canvas | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide, shadcn/ui |
 | [skyelite-jet-hero](./skyelite-jet-hero/) | Premium private jet hero section with full-viewport video background and luxury UI treatment | React, TypeScript, Vite, Tailwind CSS |
 | [smart-prosthetics-hero](./smart-prosthetics-hero/) | Single-page hero with a fullscreen video background and pill-style navbar for a smart-prosthetics concept | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [stellar-ai-landing-hero](./stellar-ai-landing-hero/) | "Stellar.ai" landing hero on a white background with staggered fade-in animations and Inter type | React, TypeScript, Vite, Tailwind CSS, Lucide |

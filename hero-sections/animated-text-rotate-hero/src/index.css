@@ -1,0 +1,170 @@
+@import "./styles/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * shadcn/ui design tokens, tuned to the "Spektr" identity — a midnight-teal
+ * trade terminal. Dark is the primary look; light is a clean cool-white so the
+ * theme toggle is a real choice, not an afterthought. Each value is an HSL
+ * channel triplet so Tailwind's `hsl(var(--token))` colors resolve correctly.
+ */
+@layer base {
+	:root {
+		--background: 200 30% 98%;
+		--foreground: 200 40% 9%;
+
+		--card: 0 0% 100%;
+		--card-foreground: 200 40% 9%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 200 40% 9%;
+
+		/* Primary = ink, so the solid CTA reads as a strong, confident button. */
+		--primary: 197 45% 12%;
+		--primary-foreground: 190 60% 96%;
+
+		--secondary: 195 30% 92%;
+		--secondary-foreground: 198 45% 16%;
+
+		--muted: 198 25% 94%;
+		--muted-foreground: 200 12% 40%;
+
+		--accent: 188 80% 92%;
+		--accent-foreground: 197 60% 18%;
+
+		--destructive: 0 72% 48%;
+		--destructive-foreground: 0 0% 100%;
+
+		--border: 200 20% 88%;
+		--input: 200 20% 85%;
+		--ring: 187 92% 38%;
+
+		/* Brand cyan for the headline's `text-spektr-cyan-50` class. */
+		--spektr-cyan: 192 60% 24%;
+
+		--radius: 0.65rem;
+	}
+
+	.dark {
+		--background: 197 50% 4%;
+		--foreground: 190 30% 94%;
+
+		--card: 198 42% 7%;
+		--card-foreground: 190 30% 94%;
+
+		--popover: 198 44% 6%;
+		--popover-foreground: 190 30% 94%;
+
+		/* In dark mode the solid CTA flips to brand cyan on ink — the loud moment. */
+		--primary: 187 92% 52%;
+		--primary-foreground: 198 80% 6%;
+
+		--secondary: 197 35% 13%;
+		--secondary-foreground: 188 50% 90%;
+
+		--muted: 197 30% 12%;
+		--muted-foreground: 195 16% 62%;
+
+		--accent: 189 80% 16%;
+		--accent-foreground: 187 90% 78%;
+
+		--destructive: 0 62% 45%;
+		--destructive-foreground: 0 0% 100%;
+
+		--border: 196 30% 15%;
+		--input: 196 30% 18%;
+		--ring: 187 92% 52%;
+
+		/* Bright cyan headline against the ink canvas. */
+		--spektr-cyan: 187 92% 66%;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply bg-background text-foreground font-sans antialiased;
+		font-feature-settings: "cv11", "ss01";
+		text-rendering: optimizeLegibility;
+	}
+
+	h1,
+	h2,
+	h3 {
+		@apply font-display;
+	}
+
+	/* The page's display headline (the rotating words live inside it). */
+	.font-display {
+		font-family: "Space Grotesk", "Inter", ui-sans-serif, sans-serif;
+	}
+
+	::selection {
+		background: hsl(var(--ring) / 0.28);
+		color: hsl(var(--foreground));
+	}
+}
+
+@layer components {
+	/* Faint engineered dot-grid behind the hero — the "terminal" substrate. */
+	.bg-dotgrid {
+		background-image: radial-gradient(
+			hsl(var(--foreground) / 0.05) 1px,
+			transparent 1px
+		);
+		background-size: 26px 26px;
+		background-position: -13px -13px;
+	}
+
+	/* Two slow-drifting cyan light blooms that give the dark canvas depth. */
+	.aurora {
+		position: absolute;
+		border-radius: 9999px;
+		filter: blur(90px);
+		opacity: 0.55;
+		will-change: transform;
+	}
+
+	/* Edge fade so the ticker text dissolves at both ends of the bar. */
+	.ticker-mask {
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 8%,
+			#000 92%,
+			transparent
+		);
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 8%,
+			#000 92%,
+			transparent
+		);
+	}
+
+	.eyebrow {
+		@apply font-mono text-[0.7rem] uppercase tracking-[0.32em] text-muted-foreground;
+	}
+}
+
+/* Respect users who prefer less motion: freeze ambient + rotation animations. */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}

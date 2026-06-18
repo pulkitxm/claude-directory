@@ -1,0 +1,165 @@
+@import "/fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* shadcn/ui design tokens — neutral base, dark-first (matches components.json). */
+@layer base {
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 0 0% 3.9%;
+		--card: 0 0% 100%;
+		--card-foreground: 0 0% 3.9%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 0 0% 3.9%;
+		--primary: 0 0% 9%;
+		--primary-foreground: 0 0% 98%;
+		--secondary: 0 0% 96.1%;
+		--secondary-foreground: 0 0% 9%;
+		--muted: 0 0% 96.1%;
+		--muted-foreground: 0 0% 45.1%;
+		--accent: 0 0% 96.1%;
+		--accent-foreground: 0 0% 9%;
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 0 0% 98%;
+		--border: 0 0% 89.8%;
+		--input: 0 0% 89.8%;
+		--ring: 0 0% 3.9%;
+		--radius: 0.75rem;
+	}
+
+	.dark {
+		--background: 0 0% 3.9%;
+		--foreground: 0 0% 98%;
+		--card: 0 0% 3.9%;
+		--card-foreground: 0 0% 98%;
+		--popover: 0 0% 3.9%;
+		--popover-foreground: 0 0% 98%;
+		--primary: 0 0% 98%;
+		--primary-foreground: 0 0% 9%;
+		--secondary: 0 0% 14.9%;
+		--secondary-foreground: 0 0% 98%;
+		--muted: 0 0% 14.9%;
+		--muted-foreground: 0 0% 63.9%;
+		--accent: 0 0% 14.9%;
+		--accent-foreground: 0 0% 98%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 98%;
+		--border: 0 0% 14.9%;
+		--input: 0 0% 14.9%;
+		--ring: 0 0% 83.1%;
+	}
+
+	* {
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-background text-foreground antialiased;
+		margin: 0;
+		font-family: "Geist", system-ui, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	::selection {
+		background: rgba(139, 92, 246, 0.35);
+		color: #fff;
+	}
+}
+
+/*
+ * `.loader` — referenced by the SplineScene Suspense fallback in the spec. A
+ * minimal dual-ring spinner so the fallback is never an empty box.
+ */
+.loader {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+	border: 3px solid;
+	border-color: rgba(167, 139, 250, 0.25) rgba(167, 139, 250, 0.25)
+		rgba(167, 139, 250, 0.9) rgba(167, 139, 250, 0.9);
+	box-sizing: border-box;
+	animation: loaderRotate 1s linear infinite;
+}
+.loader::after {
+	content: "";
+	box-sizing: border-box;
+	position: absolute;
+	inset: 0;
+	margin: auto;
+	border: 3px solid;
+	border-color: transparent transparent rgba(125, 211, 252, 0.9)
+		rgba(125, 211, 252, 0.9);
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	animation: loaderRotate 0.5s linear infinite reverse;
+}
+@keyframes loaderRotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Faint dotted backdrop for the whole page. */
+.bg-dotgrid {
+	background-image: radial-gradient(
+		rgba(255, 255, 255, 0.06) 1px,
+		transparent 1px
+	);
+	background-size: 22px 22px;
+	background-position: -11px -11px;
+}
+
+/* Animated conic ring used on the "copy" affordances + section badges. */
+@keyframes spinSlow {
+	to {
+		transform: rotate(360deg);
+	}
+}
+.animate-spin-slow {
+	animation: spinSlow 6s linear infinite;
+}
+
+/* Code block scrollbar — slim and dark. */
+.codescroll::-webkit-scrollbar {
+	height: 8px;
+	width: 8px;
+}
+.codescroll::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.12);
+	border-radius: 9999px;
+}
+.codescroll::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Marquee row pause on hover. */
+.marquee-row:hover .marquee-track {
+	animation-play-state: paused;
+}
+
+/* Tiny code-token palette (used by CodeBlock). */
+.tok-comment {
+	color: #6b7280;
+	font-style: italic;
+}
+.tok-str {
+	color: #a7f3d0;
+}
+.tok-kw {
+	color: #c4b5fd;
+}
+.tok-type {
+	color: #7dd3fc;
+}
+.tok-fn {
+	color: #fca5a5;
+}
+.tok-attr {
+	color: #fcd34d;
+}

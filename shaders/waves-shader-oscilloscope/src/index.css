@@ -1,0 +1,87 @@
+@import "./fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 200 22% 3%;
+    --foreground: 168 18% 92%;
+    --border: 199 28% 18%;
+    --input: 199 28% 18%;
+    --ring: 162 92% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-carbon-950 text-chalk font-sans antialiased;
+  }
+
+  ::selection {
+    background: rgba(34, 245, 176, 0.28);
+    color: #effff9;
+  }
+}
+
+@layer utilities {
+  /* Hairline noise grain laid across the chassis panels — keeps the dark
+     surfaces from reading as flat vector fills. */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+
+  /* CRT phosphor scanlines drawn over the observation window so the live field
+     reads as a screen under a tube, not a flat canvas. */
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0.22) 3px,
+      rgba(0, 0, 0, 0.22) 4px
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Fine engraved hairline dividers used between console sections. */
+  .rule {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(34, 245, 176, 0.32),
+      transparent
+    );
+  }
+
+  /* Vertical variant for the rail edges. */
+  .rule-y {
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(34, 245, 176, 0.26),
+      transparent
+    );
+  }
+
+  /* Phosphor glow used on the live trace numerals and the title. */
+  .glow-phosphor {
+    text-shadow: 0 0 14px rgba(34, 245, 176, 0.55),
+      0 0 2px rgba(34, 245, 176, 0.9);
+  }
+
+  .glow-amber {
+    text-shadow: 0 0 12px rgba(255, 180, 67, 0.5);
+  }
+}

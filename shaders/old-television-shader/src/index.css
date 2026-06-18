@@ -1,0 +1,222 @@
+@import "./fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* shadcn tokens, themed for the Cathode Vault broadcast lab. */
+    --background: 30 12% 5%;
+    --foreground: 40 30% 92%;
+
+    --card: 30 14% 8%;
+    --card-foreground: 40 30% 92%;
+
+    --primary: 140 86% 55%;
+    --primary-foreground: 140 60% 8%;
+
+    --secondary: 30 10% 14%;
+    --secondary-foreground: 40 22% 86%;
+
+    --muted: 30 8% 16%;
+    --muted-foreground: 38 14% 62%;
+
+    --accent: 32 100% 63%;
+    --accent-foreground: 30 60% 8%;
+
+    --border: 36 16% 20%;
+    --input: 36 16% 20%;
+    --ring: 140 86% 55%;
+
+    --radius: 0.4rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cabinet-950 text-foreground font-sans antialiased;
+    /* Warm cabinet vignette behind everything. */
+    background-image:
+      radial-gradient(
+        130% 90% at 50% -10%,
+        rgba(38, 240, 106, 0.07) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        100% 70% at 50% 120%,
+        rgba(255, 179, 71, 0.06) 0%,
+        transparent 60%
+      ),
+      linear-gradient(180deg, #0a0908 0%, #0c0a08 100%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(38, 240, 106, 0.28);
+    color: #f4fff6;
+  }
+
+  /* Slim phosphor scrollbar. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0908;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2e2820;
+    border-radius: 999px;
+    border: 2px solid #0a0908;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #11c44f;
+  }
+}
+
+@layer components {
+  /* Frosted cabinet panel — the recurring surface for control plates. */
+  .panel {
+    @apply border border-cabinet-700/70 bg-cabinet-900/70 backdrop-blur-md;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.03) inset,
+      0 20px 40px -28px rgba(0, 0, 0, 0.9);
+  }
+
+  /* A milled-metal control plate with a faint brushed sheen. */
+  .plate {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 40%),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.018) 0px,
+        rgba(255, 255, 255, 0.018) 1px,
+        transparent 1px,
+        transparent 3px
+      ),
+      #181613;
+    @apply border border-cabinet-700/80;
+  }
+
+  /* Engraved label etched into a cabinet plate. */
+  .etched {
+    text-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06),
+      0 -1px 0 rgba(0, 0, 0, 0.55);
+  }
+
+  /* Phosphor glow text for the live CRT readouts. */
+  .phosphor-text {
+    color: #9bffb6;
+    text-shadow:
+      0 0 2px rgba(38, 240, 106, 0.9),
+      0 0 10px rgba(38, 240, 106, 0.55),
+      0 0 24px rgba(38, 240, 106, 0.3);
+  }
+
+  .amber-text {
+    color: #ffd9a3;
+    text-shadow:
+      0 0 2px rgba(255, 179, 71, 0.9),
+      0 0 12px rgba(255, 179, 71, 0.45);
+  }
+}
+
+@layer utilities {
+  /* CRT scanline curtain — overlaid on the live picture tube. */
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0.32) 3px,
+      rgba(0, 0, 0, 0.32) 4px
+    );
+  }
+
+  /* RGB triad shadow-mask, very subtle, over the tube. */
+  .shadow-mask {
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.05) 0px,
+      rgba(0, 255, 0, 0.05) 1px,
+      rgba(0, 0, 255, 0.05) 2px,
+      transparent 3px
+    );
+  }
+
+  /* Curved-glass vignette that fakes a CRT's bulged corners. */
+  .tube-vignette {
+    background: radial-gradient(
+      118% 118% at 50% 50%,
+      transparent 56%,
+      rgba(0, 0, 0, 0.35) 78%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hide native range styling so we can paint our own broadcast faders. */
+  .fader {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .fader::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      rgba(38, 240, 106, 0.55) var(--fill, 50%),
+      rgba(120, 110, 90, 0.25) var(--fill, 50%)
+    );
+  }
+  .fader::-moz-range-track {
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(120, 110, 90, 0.25);
+  }
+  .fader::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -7px;
+    width: 16px;
+    height: 18px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #f7f3ea 0%, #bcab86 100%);
+    border: 1px solid #0a0908;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  .fader::-moz-range-thumb {
+    width: 16px;
+    height: 18px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #f7f3ea 0%, #bcab86 100%);
+    border: 1px solid #0a0908;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

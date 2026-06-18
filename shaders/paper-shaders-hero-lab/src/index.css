@@ -1,0 +1,336 @@
+@import "tailwindcss";
+
+/* The vendored Instrument Serif + Inter faces (SIL OFL — see assets/fonts/OFL.txt)
+ * are registered at runtime via the JS FontFace API in main.tsx, not CSS
+ * @font-face. See that file for the licensing note and why they load in JS. */
+
+/* ------------------------------------------------------------------ *
+ * Theme tokens. The verbatim component styles with bare Tailwind utilities
+ * (text-white, bg-white/5, …) so it needs no shadcn colour tokens — but we
+ * still map the standard shadcn palette through @theme so any shadcn primitive
+ * you `npx shadcn add` later resolves, and we define the lab's own dark
+ * instrument palette (carbon / ember to echo the hero's saddle-brown shader).
+ * ------------------------------------------------------------------ */
+@theme inline {
+	--font-sans: var(--font-inter);
+	--font-mono: var(--font-mono-stack);
+	--font-serif: var(--font-instrument);
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+
+	/* Lab chrome — carbon panels + warm ember signal (the hero's saddle-brown) */
+	--color-carbon: var(--carbon);
+	--color-carbon-2: var(--carbon-2);
+	--color-line: var(--line);
+	--color-ink: var(--ink);
+	--color-ink-dim: var(--ink-dim);
+	--color-ember: var(--ember);
+	--color-ember-deep: var(--ember-deep);
+	--color-mint: var(--mint);
+
+	--radius: 0.7rem;
+}
+
+:root {
+	/* shadcn dark palette (this lab is dark-only — the hero shader is near-black) */
+	--background: oklch(0.16 0.006 60);
+	--foreground: oklch(0.97 0.004 80);
+	--card: oklch(0.2 0.008 60 / 0.6);
+	--card-foreground: oklch(0.97 0.004 80);
+	--popover: oklch(0.18 0.008 60);
+	--popover-foreground: oklch(0.97 0.004 80);
+	--primary: oklch(0.97 0.004 80);
+	--primary-foreground: oklch(0.18 0.008 60);
+	--secondary: oklch(0.62 0.12 55);
+	--secondary-foreground: oklch(0.16 0.006 60);
+	--muted: oklch(0.26 0.008 60);
+	--muted-foreground: oklch(0.7 0.01 70);
+	--accent: oklch(0.66 0.13 50);
+	--accent-foreground: oklch(0.16 0.006 60);
+	--destructive: oklch(0.62 0.2 25);
+	--destructive-foreground: oklch(0.97 0.01 25);
+	--border: oklch(0.97 0.01 80 / 0.12);
+	--input: oklch(0.97 0.01 80 / 0.1);
+	--ring: oklch(0.66 0.13 50 / 0.5);
+
+	/* Lab chrome */
+	--carbon: #0c0a09; /* deepest console surface (≈ stone-950) */
+	--carbon-2: #1a1714; /* raised module                       */
+	--line: #ffffff1f; /* hairline divider                     */
+	--ink: #f5f1ea; /* near-white readouts                  */
+	--ink-dim: #9b938a; /* muted labels                        */
+	--ember: #d99054; /* warm saddle-brown signal (live)     */
+	--ember-deep: #a8632e; /* dim ember trace                     */
+	--mint: #6fcfba; /* cool accent (ok / live dot)         */
+
+	--font-inter: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+	--font-instrument: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+	--font-mono-stack: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+/* The `.instrument` class the verbatim hero uses for its display wordmark. */
+.instrument {
+	font-family: var(--font-instrument);
+	font-style: italic;
+}
+
+* {
+	border-color: var(--line);
+}
+
+html,
+body,
+#root {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	background: var(--carbon);
+	color: var(--ink);
+	font-family: var(--font-inter);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+/* ------------------------------------------------------------------ *
+ * Lab shell surfaces
+ * ------------------------------------------------------------------ */
+
+/* Console bench — a carbon gradient that frames the live hero plate. */
+.bench {
+	background:
+		radial-gradient(120% 90% at 85% -10%, color-mix(in oklab, var(--ember-deep), transparent 86%) 0%, transparent 55%),
+		radial-gradient(120% 100% at 8% 0%, color-mix(in oklab, var(--carbon-2), #fff 4%) 0%, var(--carbon) 52%, #060504 100%);
+}
+
+/* Frosted instrument module */
+.module {
+	background: color-mix(in oklab, var(--carbon-2), transparent 22%);
+	backdrop-filter: blur(14px) saturate(1.1);
+	-webkit-backdrop-filter: blur(14px) saturate(1.1);
+}
+
+/* Fine engraved grain on chrome panels */
+.grain {
+	background-image:
+		repeating-linear-gradient(0deg, transparent 0 3px, color-mix(in oklab, #fff, transparent 97%) 3px 4px);
+}
+
+/* Corner registration brackets on the live viewport (specimen plate framing) */
+.plate-bracket::before,
+.plate-bracket::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--ember);
+	pointer-events: none;
+	z-index: 40;
+	opacity: 0.85;
+}
+.plate-bracket::before {
+	top: 14px;
+	left: 14px;
+	border-right: none;
+	border-bottom: none;
+}
+.plate-bracket::after {
+	bottom: 14px;
+	right: 14px;
+	border-left: none;
+	border-top: none;
+}
+
+/* Inner vignette to seat the gradient into the plate housing */
+.plate-vignette::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 30;
+	box-shadow: inset 0 0 120px 10px rgba(0, 0, 0, 0.55);
+	border-radius: inherit;
+}
+
+/* ------------------------------------------------------------------ *
+ * Controls
+ * ------------------------------------------------------------------ */
+
+/* Range input styled as a console fader */
+.fader {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 4px;
+	background: linear-gradient(
+		to right,
+		var(--ember) var(--fill, 50%),
+		color-mix(in oklab, #fff, transparent 88%) var(--fill, 50%)
+	);
+	border-radius: 999px;
+	outline: none;
+	cursor: pointer;
+}
+.fader::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 14px;
+	height: 22px;
+	border-radius: 3px;
+	background: linear-gradient(180deg, #2a2521 0%, #14110e 100%);
+	border: 1px solid var(--line);
+	box-shadow:
+		0 1px 0 rgba(255, 255, 255, 0.12) inset,
+		0 2px 6px rgba(0, 0, 0, 0.5);
+	cursor: grab;
+}
+.fader::-webkit-slider-thumb:active {
+	cursor: grabbing;
+	border-color: var(--ember);
+}
+.fader::-moz-range-thumb {
+	width: 14px;
+	height: 22px;
+	border-radius: 3px;
+	background: linear-gradient(180deg, #2a2521 0%, #14110e 100%);
+	border: 1px solid var(--line);
+	cursor: grab;
+}
+.fader:focus-visible {
+	box-shadow: 0 0 0 2px var(--carbon), 0 0 0 4px var(--ember);
+}
+
+/* Native colour input → bare swatch chip */
+.swatch-input {
+	-webkit-appearance: none;
+	appearance: none;
+	border: none;
+	padding: 0;
+	background: none;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+}
+.swatch-input::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+.swatch-input::-webkit-color-swatch {
+	border: none;
+	border-radius: inherit;
+}
+.swatch-input::-moz-color-swatch {
+	border: none;
+	border-radius: inherit;
+}
+
+/* ------------------------------------------------------------------ *
+ * Signals + motion
+ * ------------------------------------------------------------------ */
+
+/* Soft pulsing "live" tally dot */
+@keyframes tally {
+	0%,
+	100% {
+		opacity: 1;
+		box-shadow: 0 0 10px 1px var(--mint);
+	}
+	50% {
+		opacity: 0.4;
+		box-shadow: 0 0 3px 0 var(--mint);
+	}
+}
+.tally {
+	animation: tally 1.7s ease-in-out infinite;
+}
+
+/* Travelling signal sweep on the bottom bus */
+@keyframes sweep {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(260%);
+	}
+}
+.sweep {
+	animation: sweep 3.4s linear infinite;
+}
+
+/* Faint scanline drift over the live plate, like a captured monitor */
+@keyframes scan {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 7px;
+	}
+}
+.scanlines::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 35;
+	opacity: 0.4;
+	background-image: repeating-linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0.18) 0 1px,
+		transparent 1px 3.5px
+	);
+	animation: scan 1.1s linear infinite;
+	mix-blend-mode: multiply;
+}
+
+.tab-ink {
+	transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+button:focus-visible,
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible {
+	outline: 2px solid var(--ember);
+	outline-offset: 2px;
+}
+
+::selection {
+	background: color-mix(in oklab, var(--ember), transparent 55%);
+	color: var(--ink);
+}
+
+/* Thin dark scrollbars inside docks */
+.thin-scroll::-webkit-scrollbar {
+	height: 6px;
+	width: 6px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+	background: var(--line);
+	border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tally,
+	.sweep,
+	.scanlines::before {
+		animation: none !important;
+	}
+}

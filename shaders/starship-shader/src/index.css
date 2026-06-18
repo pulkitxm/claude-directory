@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Vendored fonts (self-hosted, offline-safe) ---------------------- */
+@font-face {
+  font-family: "Orbitron";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Orbitron-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Orbitron";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/Orbitron-900.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/ChakraPetch-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/ChakraPetch-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/ChakraPetch-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/ChakraPetch-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/Inter-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/fonts/JetBrainsMono-latin.woff2") format("woff2");
+}
+
+@layer base {
+  :root {
+    --background: 222 60% 3%;
+    --foreground: 213 28% 93%;
+    --border: 222 36% 18%;
+    --input: 222 36% 18%;
+    --ring: 190 80% 56%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: #020308;
+    color: hsl(var(--foreground));
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(92, 220, 246, 0.28);
+    color: #e9fbff;
+  }
+}
+
+@layer components {
+  /* Etched hairline grid — the avionics substrate everything sits on. */
+  .panel-grid {
+    background-image:
+      linear-gradient(to right, rgba(92, 220, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(92, 220, 246, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Brushed instrument bezel. */
+  .bezel {
+    background:
+      linear-gradient(180deg, rgba(22, 28, 48, 0.9), rgba(7, 10, 22, 0.92));
+    border: 1px solid #1f2740;
+    box-shadow:
+      inset 0 1px 0 rgba(122, 162, 255, 0.08),
+      inset 0 0 24px rgba(2, 3, 8, 0.8),
+      0 18px 40px -28px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Phosphor text glow for live readouts. */
+  .glow-phosphor {
+    text-shadow: 0 0 12px rgba(52, 198, 232, 0.55);
+  }
+  .glow-caution {
+    text-shadow: 0 0 12px rgba(255, 191, 77, 0.5);
+  }
+
+  /* Thin uppercase data label. */
+  .eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 0.64rem;
+    color: #5b6682;
+  }
+}
+
+/* Custom range slider — used by the throttle / trim faders. */
+input[type="range"].helm-fader {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    #34c6e8 0%,
+    #34c6e8 var(--fill, 50%),
+    #1f2740 var(--fill, 50%),
+    #1f2740 100%
+  );
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"].helm-fader::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: #02060e;
+  border: 1.5px solid #5cdcf6;
+  box-shadow: 0 0 10px rgba(92, 220, 246, 0.6);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+input[type="range"].helm-fader::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+  box-shadow: 0 0 16px rgba(92, 220, 246, 0.85);
+}
+input[type="range"].helm-fader::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: #02060e;
+  border: 1.5px solid #5cdcf6;
+  box-shadow: 0 0 10px rgba(92, 220, 246, 0.6);
+}
+
+input[type="range"].helm-fader.caution {
+  background: linear-gradient(
+    to right,
+    #ffbf4d 0%,
+    #ffbf4d var(--fill, 50%),
+    #1f2740 var(--fill, 50%),
+    #1f2740 100%
+  );
+}
+input[type="range"].helm-fader.caution::-webkit-slider-thumb {
+  border-color: #ffd98a;
+  box-shadow: 0 0 10px rgba(255, 191, 77, 0.6);
+}
+input[type="range"].helm-fader.caution::-moz-range-thumb {
+  border-color: #ffd98a;
+  box-shadow: 0 0 10px rgba(255, 191, 77, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

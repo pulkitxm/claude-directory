@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------------------------------------------------------
+   Vendored fonts (self-contained, no network at runtime).
+   Display: Space Grotesk · Body: Inter · Utility/data: JetBrains Mono
+---------------------------------------------------------------------------- */
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/fonts/space-grotesk-500.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/fonts/space-grotesk-700.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/inter-400.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/fonts/inter-500.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("/fonts/inter-600.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-400.woff2") format("woff2");
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("/fonts/jetbrains-mono-600.woff2") format("woff2");
+}
+
+@layer base {
+	:root {
+		--ink: #0b0c10;
+		--ink-soft: #101218;
+		--ink-raised: #161922;
+		--hairline: rgba(255, 255, 255, 0.08);
+		--iris: #7c82ff;
+		--iris-bright: #9aa0ff;
+		--ember: #f0a35e;
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		background-color: var(--ink);
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	/* Do NOT set overflow-x: hidden on html/body — it promotes the document root
+	   to a scroll container and breaks useScroll/sticky measurements. Horizontal
+	   overflow is clipped on the app shell instead. */
+	body {
+		min-height: 100%;
+		background-color: var(--ink);
+		color: #e7e9f3;
+		font-family: "Inter", system-ui, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+	}
+
+	::selection {
+		background: rgba(124, 130, 255, 0.32);
+		color: #ffffff;
+	}
+
+	img {
+		-webkit-user-drag: none;
+		user-select: none;
+	}
+
+	/* Thin custom scrollbar so the dark canvas stays clean. */
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: #08090d;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #23262f;
+		border-radius: 999px;
+		border: 2px solid #08090d;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #2f333f;
+	}
+}
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+
+	/* Soft animated dot-grid used as ambient atmosphere behind sections. */
+	.bg-dotgrid {
+		background-image: radial-gradient(
+			rgba(124, 130, 255, 0.14) 1px,
+			transparent 1px
+		);
+		background-size: 26px 26px;
+	}
+
+	.bg-linegrid {
+		background-image: linear-gradient(var(--hairline) 1px, transparent 1px),
+			linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+		background-size: 48px 48px;
+	}
+
+	/* A subtle conic sheen used on the device chrome / badges. */
+	.iris-sheen {
+		background: conic-gradient(
+			from 180deg at 50% 50%,
+			rgba(124, 130, 255, 0) 0deg,
+			rgba(124, 130, 255, 0.5) 90deg,
+			rgba(124, 130, 255, 0) 180deg,
+			rgba(240, 163, 94, 0.45) 270deg,
+			rgba(124, 130, 255, 0) 360deg
+		);
+	}
+}
+
+/* Honour reduced-motion: kill ambient loops; the scroll-driven transform is the
+   content itself, so we keep it but the page's smooth-scroll easing is dropped. */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	.animate-grid-drift,
+	.animate-pulse-dot {
+		animation: none !important;
+	}
+}
