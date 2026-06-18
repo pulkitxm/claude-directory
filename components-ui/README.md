@@ -1,6 +1,6 @@
 # Components & UI
 
-9 **Components & UI** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+10 **Components & UI** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -12,4 +12,5 @@
 | [nexto-404-hero](./nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
 | [scanner-card-stream](./scanner-card-stream/) | Draggable Three.js card stream that decodes each photo into glitching, scrambling ASCII as it crosses a glowing violet scan line, with an ambient WebGL particle field and a 2D spark burst — packaged as a shadcn-style `@/components/ui` drop | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [sixsense-reference-finder](./sixsense-reference-finder/) | Pixel-faithful "Sixsense" AI reference-finder page with canvas pixel-grid glass backgrounds, an organic cursor hover blob, a layered folder/lights stack, three floating reference cards, and a glass typewriter prompt box with a spinning gradient send button | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
+| [spatial-product-showcase](./spatial-product-showcase/) | shadcn/ui integration of the verbatim `EarbudShowcase` component — a spatial-audio "Sonar Spatial" product stage that mirrors its whole layout when you flip between the Left and Right earbud, with a per-side blue/emerald glow, a rotating dashed ring and floating product shot, animated feature meters, live connection/battery telemetry, and a Dynamic-Island-style segmented switcher; earbud PNGs vendored locally, fully offline | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [terminal-cli-control-deck](./terminal-cli-control-deck/) | "ACME Control Deck" infrastructure panel built in a phosphor-green Terminal CLI design system — centralized tokens, composable windows/panes, ASCII art logo, typewriter headline, raw-data ASCII progress meters, a live syslog feed, an interactive zsh console, a box-less access form, and a subtle CRT scanline overlay | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
