@@ -70,10 +70,6 @@ export default {
 					from: { transform: "rotate(0deg)" },
 					to: { transform: "rotate(360deg)" },
 				},
-				"halo-pulse": {
-					"0%, 100%": { opacity: "0.4", transform: "scale(1)" },
-					"50%": { opacity: "0.85", transform: "scale(1.04)" },
-				},
 			},
 			animation: {
 				"reveal-up": "reveal-up 0.8s cubic-bezier(0.22,1,0.36,1) both",
@@ -81,8 +77,8 @@ export default {
 				"rail-in": "rail-in 0.7s cubic-bezier(0.22,1,0.36,1) both",
 				"rail-in-right": "rail-in-right 0.7s cubic-bezier(0.22,1,0.36,1) both",
 				"hud-in": "hud-in 0.7s cubic-bezier(0.22,1,0.36,1) both",
+				"candle-flicker": "candle-flicker 3.2s ease-in-out infinite",
 				"sweep-spin": "sweep-spin 16s linear infinite",
-				"halo-pulse": "halo-pulse 4.5s ease-in-out infinite",
 			},
 		},
 	},
