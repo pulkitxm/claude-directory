@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Vendored fonts (local woff2, fully offline). Geist Sans / Geist Mono
+ * are served from the variable files we vendored under assets/fonts.
+ * ------------------------------------------------------------------ */
+@font-face {
+	font-family: "Geist Sans";
+	src: url("../assets/fonts/Geist-Variable.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Geist Mono";
+	src: url("../assets/fonts/GeistMono-Variable.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* ------------------------------------------------------------------ *
+ * shadcn palette + lab console tokens. The default GrainGradient is
+ * warm (orange / amber / pink on black) so the chrome leans warm-ink
+ * on near-black, with an ember accent pulled from the shader itself.
+ * ------------------------------------------------------------------ */
+:root {
+	--background: hsl(0 0% 3.5%);
+	--foreground: hsl(40 18% 92%);
+	--card: hsl(0 0% 5.5%);
+	--card-foreground: hsl(40 18% 92%);
+	--popover: hsl(0 0% 5.5%);
+	--popover-foreground: hsl(40 18% 92%);
+	--primary: hsl(14 100% 57%);
+	--primary-foreground: hsl(0 0% 5%);
+	--secondary: hsl(0 0% 11%);
+	--secondary-foreground: hsl(40 18% 92%);
+	--muted: hsl(0 0% 9%);
+	--muted-foreground: hsl(40 6% 58%);
+	--accent: hsl(45 100% 51%);
+	--accent-foreground: hsl(0 0% 5%);
+	--destructive: hsl(340 82% 52%);
+	--destructive-foreground: hsl(0 0% 98%);
+	--border: hsl(36 10% 16%);
+	--input: hsl(36 10% 16%);
+	--ring: hsl(14 100% 57%);
+
+	/* console signal colours */
+	--signal: hsl(33 100% 62%);
+	--signal-dim: hsl(33 40% 40%);
+	--warn: hsl(340 82% 60%);
+	--rail: hsl(0 0% 7%);
+	--panel: hsl(0 0% 5.5%);
+	--panel-2: hsl(0 0% 8%);
+	--hairline: hsl(36 12% 15%);
+	--ink: hsl(40 18% 92%);
+	--ink-dim: hsl(40 6% 52%);
+	--grid: hsl(36 10% 14%);
+
+	--font-geist-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+	--font-geist-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+}
+
+@theme inline {
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+
+	--color-signal: var(--signal);
+	--color-signal-dim: var(--signal-dim);
+	--color-warn: var(--warn);
+	--color-rail: var(--rail);
+	--color-panel: var(--panel);
+	--color-panel-2: var(--panel-2);
+	--color-hairline: var(--hairline);
+	--color-ink: var(--ink);
+	--color-ink-dim: var(--ink-dim);
+	--color-grid: var(--grid);
+}
+
+* {
+	border-color: var(--border);
+}
+
+html,
+body,
+#root {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-geist-sans);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+/* Hairline grid backdrop for the chrome (the shader sits on a separate
+   layer; this is only the instrument panel texture). */
+.console-grid {
+	background-image:
+		linear-gradient(to right, var(--grid) 1px, transparent 1px),
+		linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+	background-size: 40px 40px;
+	mask-image: radial-gradient(ellipse 120% 90% at 50% 0%, black 30%, transparent 78%);
+}
+
+/* ------------------------------------------------------------------ *
+ * Instrument fader — a thin range styled as a console slider.
+ * ------------------------------------------------------------------ */
+input[type="range"].fader {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 3px;
+	border-radius: 999px;
+	background: linear-gradient(
+		to right,
+		var(--signal) 0%,
+		var(--signal) var(--fill, 50%),
+		hsl(0 0% 18%) var(--fill, 50%),
+		hsl(0 0% 18%) 100%
+	);
+	outline: none;
+	cursor: pointer;
+}
+input[type="range"].fader::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background: var(--ink);
+	border: 2px solid var(--signal);
+	box-shadow: 0 0 0 3px hsl(0 0% 4%), 0 0 12px -1px var(--signal);
+	transition: transform 0.12s ease;
+}
+input[type="range"].fader::-webkit-slider-thumb:hover {
+	transform: scale(1.18);
+}
+input[type="range"].fader::-moz-range-thumb {
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background: var(--ink);
+	border: 2px solid var(--signal);
+	box-shadow: 0 0 0 3px hsl(0 0% 4%), 0 0 12px -1px var(--signal);
+}
+
+@keyframes pulse-dot {
+	0%,
+	100% {
+		opacity: 1;
+		box-shadow: 0 0 8px 0 var(--signal);
+	}
+	50% {
+		opacity: 0.35;
+		box-shadow: 0 0 2px 0 var(--signal);
+	}
+}
+.live-dot {
+	animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes scan {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(100%);
+	}
+}
+.scanline {
+	animation: scan 5.5s linear infinite;
+}
+
+/* Custom thin scrollbar for the rails */
+.rail-scroll::-webkit-scrollbar {
+	width: 6px;
+}
+.rail-scroll::-webkit-scrollbar-track {
+	background: transparent;
+}
+.rail-scroll::-webkit-scrollbar-thumb {
+	background: var(--hairline);
+	border-radius: 999px;
+}
+.rail-scroll::-webkit-scrollbar-thumb:hover {
+	background: var(--signal-dim);
+}
+
+::selection {
+	background: var(--signal);
+	color: hsl(0 0% 4%);
+}
