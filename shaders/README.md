@@ -13,6 +13,7 @@
 | [aurora-borealis-shader](./aurora-borealis-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [blue-meshy-shader-lab](./blue-meshy-shader-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [blueprint-ascii-grid-shader](./blueprint-ascii-grid-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
+| [cathedral-raymarch-shader](./cathedral-raymarch-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [celestial-bloom-shader](./celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [celestial-ink-shader](./celestial-ink-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [celestial-matrix-shader](./celestial-matrix-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
