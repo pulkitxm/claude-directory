@@ -13,6 +13,7 @@
 | [aurora-borealis-shader](./aurora-borealis-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [blue-meshy-shader-lab](./blue-meshy-shader-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [blueprint-ascii-grid-shader](./blueprint-ascii-grid-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
+| [cathedral-raymarch-shader](./cathedral-raymarch-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [celestial-bloom-shader](./celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [celestial-ink-shader](./celestial-ink-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [celestial-matrix-shader](./celestial-matrix-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
@@ -57,6 +58,7 @@
 | [moving-circles-shader](./moving-circles-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, @react-three/fiber, Lucide |
 | [novatrix-gradient-mesh](./novatrix-gradient-mesh/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, ogl, WebGL, shadcn/ui, Lucide |
 | [old-television-shader](./old-television-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, @react-three/fiber, @react-three/drei, three, Lucide |
+| [paper-shader-resume-hero](./paper-shader-resume-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, shadcn/ui, Lucide |
 | [paper-shaders-control-deck](./paper-shaders-control-deck/) | Instrument-console "Control Deck" for driving live WebGL shaders — four selectable channels (paper-design Mesh Gradient / Dot Orbit / Combined plus the prompt's custom react-three-fiber GLSL Shader Plane + energy rings), a brushed-graphite scope housing with corner brackets/scanlines/vignette, live FPS·frame·uptime telemetry, and speed/intensity faders wired straight into the shader uniforms | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, @react-three/fiber, three, Lucide |
 | [paper-shaders-hero-lab](./paper-shaders-hero-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [phosphor-30-shader-hero](./phosphor-30-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, CVA, @radix-ui/react-slot, Lucide |
