@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (160)
+## Projects (161)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -132,11 +132,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (5)</b></summary>
+<summary><b>Components &amp; UI (6)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aurora-sign-up](./components-ui/aurora-sign-up/) | Two-column "Aurora" registration interface with a background-video hero, staggered Motion reveals, and a multi-step sign-up form | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
+| [background-paths-hero](./components-ui/background-paths-hero/) | Integration of the "Background Paths" shadcn/ui hero — 72 flowing animated SVG paths behind a per-letter spring headline and a glassy CTA, wrapped in a dark/light theme toggle and a preset-headline switcher | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
 | [core-features-gradient-cards](./components-ui/core-features-gradient-cards/) | Static "Core Features" marketing section with three gradient feature cards | Single-file HTML/CSS |
 | [nexto-404-hero](./components-ui/nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Pixel-faithful "Sixsense" AI reference-finder page with canvas pixel-grid glass backgrounds, an organic cursor hover blob, a layered folder/lights stack, three floating reference cards, and a glass typewriter prompt box with a spinning gradient send button | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
