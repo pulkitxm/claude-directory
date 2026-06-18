@@ -36,6 +36,7 @@
 | [generative-mountain-scene](./generative-mountain-scene/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [hero-button-expandable](./hero-button-expandable/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [hero-dithering-card](./hero-dithering-card/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
+| [horizon-strata-shader](./horizon-strata-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [interactive-flux-shader](./interactive-flux-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [liquid-crystal-shader](./liquid-crystal-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL, Lucide |
 | [living-nebula-shader](./living-nebula-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, shadcn/ui, Lucide |
