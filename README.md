@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (188)
+## Projects (189)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -175,7 +175,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (75)</b></summary>
+<summary><b>Shaders (76)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -188,6 +188,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [atc-tunnel-shader](./shaders/atc-tunnel-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, Lucide |
 | [aura-core-shader](./shaders/aura-core-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, WebGL2, Lucide |
 | [aurora-borealis-shader](./shaders/aurora-borealis-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
+| [blue-meshy-shader-lab](./shaders/blue-meshy-shader-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [blueprint-ascii-grid-shader](./shaders/blueprint-ascii-grid-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [celestial-ink-shader](./shaders/celestial-ink-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
