@@ -31,6 +31,7 @@
 | [endless-pursuit-shader-hero](./endless-pursuit-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
 | [exoplanet-survey-shader](./exoplanet-survey-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [flowing-waves-shader](./flowing-waves-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
+| [fluid-swirl-shader](./fluid-swirl-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
 | [galactic-spiral-shader](./galactic-spiral-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [gaming-vibe-shader](./gaming-vibe-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [generative-mountain-scene](./generative-mountain-scene/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
