@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (192)
+## Projects (193)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -117,7 +117,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (9)</b></summary>
+<summary><b>Components &amp; UI (10)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -129,6 +129,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [nexto-404-hero](./components-ui/nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
 | [scanner-card-stream](./components-ui/scanner-card-stream/) | Draggable Three.js card stream that decodes each photo into glitching, scrambling ASCII as it crosses a glowing violet scan line, with an ambient WebGL particle field and a 2D spark burst — packaged as a shadcn-style `@/components/ui` drop | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
+| [spatial-product-showcase](./components-ui/spatial-product-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [terminal-cli-control-deck](./components-ui/terminal-cli-control-deck/) | "ACME Control Deck" infrastructure panel built in a phosphor-green Terminal CLI design system — centralized tokens, composable windows/panes, ASCII art logo, typewriter headline, raw-data ASCII progress meters, a live syslog feed, an interactive zsh console, a box-less access form, and a subtle CRT scanline overlay | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
 
 </details>
