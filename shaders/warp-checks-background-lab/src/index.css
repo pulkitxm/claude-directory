@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Vendored fonts (local woff2, fully offline). Geist Sans is the UI
+ * typeface; Geist Mono drives every label / readout / code chip.
+ * ------------------------------------------------------------------ */
+@font-face {
+	font-family: "Geist Sans";
+	src: url("../assets/fonts/Geist-Variable.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Geist Mono";
+	src: url("../assets/fonts/GeistMono-Variable.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* ------------------------------------------------------------------ *
+ * Theme tokens. shadcn-style neutral surface so any `components/ui`
+ * piece resolves `bg-background` / `text-foreground`; the ring accent
+ * echoes the prompt's sky-blue Warp stop.
+ * ------------------------------------------------------------------ */
+@theme {
+	--font-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+	--color-background: #05070b;
+	--color-foreground: #eef2f7;
+	--color-card: #0a0d13;
+	--color-card-foreground: #eef2f7;
+	--color-muted: #11151c;
+	--color-muted-foreground: #8b95a4;
+	--color-border: #1c2330;
+	--color-input: #1c2330;
+	--color-ring: hsl(203, 100%, 62%);
+}
+
+@layer base {
+	html {
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	body {
+		margin: 0;
+		min-height: 100vh;
+		/* The shader paints the page; this is the fallback behind it. */
+		background: var(--color-background);
+		color: var(--color-foreground);
+		font-family: var(--font-sans);
+		overflow-x: hidden;
+	}
+
+	#root {
+		min-height: 100vh;
+	}
+
+	::selection {
+		background: color-mix(in srgb, hsl(203, 100%, 62%) 32%, transparent);
+		color: #04121d;
+	}
+
+	/* The Warp canvas fills its host box. */
+	canvas {
+		display: block;
+	}
+}
+
+@layer components {
+	/* The instrument fader used across the control deck. `--fill` is set
+	   inline (0–100%) so the filled track tracks the value precisely. */
+	.fader {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 100%;
+		height: 4px;
+		border-radius: 999px;
+		background: linear-gradient(
+			to right,
+			rgba(255, 255, 255, 0.9) 0%,
+			rgba(255, 255, 255, 0.9) var(--fill, 0%),
+			rgba(255, 255, 255, 0.16) var(--fill, 0%),
+			rgba(255, 255, 255, 0.16) 100%
+		);
+		cursor: pointer;
+		outline: none;
+	}
+	.fader::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 15px;
+		height: 15px;
+		border-radius: 999px;
+		background: #ffffff;
+		border: 2px solid hsl(203, 100%, 62%);
+		box-shadow:
+			0 0 0 4px color-mix(in srgb, hsl(203, 100%, 62%) 22%, transparent),
+			0 2px 6px rgba(0, 0, 0, 0.6);
+		transition: transform 0.12s ease;
+	}
+	.fader::-webkit-slider-thumb:hover {
+		transform: scale(1.14);
+	}
+	.fader::-moz-range-thumb {
+		width: 15px;
+		height: 15px;
+		border-radius: 999px;
+		background: #ffffff;
+		border: 2px solid hsl(203, 100%, 62%);
+	}
+	.fader:focus-visible::-webkit-slider-thumb {
+		box-shadow: 0 0 0 5px color-mix(in srgb, hsl(203, 100%, 62%) 42%, transparent);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-pulse {
+		animation: none !important;
+	}
+}
