@@ -1,11 +1,12 @@
 # Animations & loaders
 
-10 **Animations & loaders** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+11 **Animations & loaders** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [apex-scroll-hero](./apex-scroll-hero/) | Apple-product-page-style "Apex" hero whose 5-second F1 sunset film is scroll-scrubbed full-screen (scroll drives `video.currentTime`) with a synced speed/gear telemetry HUD | Next.js 16, React 19, TypeScript, Tailwind CSS v4 |
 | [bags-editorial-collage](./bags-editorial-collage/) | Three-section animated bags landing — a warm cream editorial sticker-collage hero, a scroll-driven unfolding-envelope collection stage, and an orbiting "perfect match" field, tied together by glowing serif accent words | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
+| [bloom-nested-squares](./bloom-nested-squares/) | The shadcn "Bloom" NestedSquares component (25 violet-gradient squares scaling and rotating forever via Framer Motion) staged in a dark motion-specimen studio — a graticule plate, ambient glow, and a calibration rail of dials that retune the live component's ring count, period, stagger, growth, spin and culture | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [container-scroll-animation](./container-scroll-animation/) | Integration of the Aceternity "Container Scroll Animation" into a shadcn-style codebase — the same `useScroll`/`useTransform` device card used as three stacked stages that tilt from 20° to flat and stand upright on scroll, with a live rotateX/scale telemetry HUD | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [dot-nokia-typing-hero](./dot-nokia-typing-hero/) | Single-screen "dot." calm-messaging hero with a full-bleed Nokia-phone background video, a live typing/deleting animation in a Nokia cellphone font overlaid on the phone screen, and a floating glass pill navbar | React 19, Vite, TypeScript, Tailwind CSS v4, Motion |
 | [linkflow-boomerang-hero](./linkflow-boomerang-hero/) | Linkflow hero concept with boomerang-style visual direction and CSS-only animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
