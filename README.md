@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (186)
+## Projects (187)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -175,7 +175,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (73)</b></summary>
+<summary><b>Shaders (74)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -240,6 +240,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [shader-flow-field-rings](./shaders/shader-flow-field-rings/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-lines-showcase](./shaders/shader-lines-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-plasma-grid-background](./shaders/shader-plasma-grid-background/) | "PLASMASIGNAL" showcase for a drop-in WebGL plasma-grid background (shadcn `components/ui`) — the brief's fragment shader ported to TS, wrapped in a "Signal Lab" page with an oscilloscope HUD reading live `iTime`/FPS/`iResolution`, and a control deck of faders that promote the shader's baked-in constants to live uniforms to re-tint/re-shape the whole field in real time | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
+| [shader-spectral-clock](./shaders/shader-spectral-clock/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
 | [sickui-waitlist-mesh-shader](./shaders/sickui-waitlist-mesh-shader/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
 | [simplex-dithering-shader](./shaders/simplex-dithering-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
 | [spooky-smoke-shader](./shaders/spooky-smoke-shader/) | "AETHER" séance instrument that integrates a WebGL2 fbm-noise smoke component — a live observation window tuned by a single `smokeColor` prop, an alchemical reagent tray of preset swatches plus a brass colour dial, and two documented specimen panes, all on a shadcn/ui project structure | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide, WebGL2 |
