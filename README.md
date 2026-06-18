@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (176)
+## Projects (177)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -173,7 +173,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (65)</b></summary>
+<summary><b>Shaders (66)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -225,6 +225,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [paper-shaders-hero-lab](./shaders/paper-shaders-hero-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [phosphor-30-shader-hero](./shaders/phosphor-30-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, CVA, @radix-ui/react-slot, Lucide |
 | [radial-aperture-shader](./shaders/radial-aperture-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
+| [radial-shader](./shaders/radial-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, Lucide |
 | [sdf-dreamscape-shader](./shaders/sdf-dreamscape-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
 | [shader-animation-integration](./shaders/shader-animation-integration/) | shadcn/ui integration of a zero-prop Three.js WebGL fragment-shader component (radiating RGB lines) — a full-bleed shader hero plus a docs page covering the `components/ui` path, the `three` dependency, copy-paste usage, and a props/state/assets/responsive/placement Q&A | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [shader-flow-field-rings](./shaders/shader-flow-field-rings/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
