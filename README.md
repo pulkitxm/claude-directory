@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (176)
+## Projects (177)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -173,7 +173,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (65)</b></summary>
+<summary><b>Shaders (66)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -210,6 +210,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [gaming-vibe-shader](./shaders/gaming-vibe-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
 | [generative-mountain-scene](./shaders/generative-mountain-scene/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
 | [glsl-hills-shader](./shaders/glsl-hills-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
+| [grainy-gradient-ripple-card](./shaders/grainy-gradient-ripple-card/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, framer-motion, Lucide |
 | [hero-button-expandable](./shaders/hero-button-expandable/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
 | [hero-dithering-card](./shaders/hero-dithering-card/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
 | [hive-noise-shader](./shaders/hive-noise-shader/) | "HIVE" — a faithful shadcn integration of the prompt's verbatim `hive.tsx` component, a single full-screen **WebGL2** fragment shader that raymarches a 20-step noise field and tints it with a flowing amber → magenta cosine spectrum; dropped **unedited** into `@/components/ui` (zero props, zero deps, zero assets) and mounted as a fixed full-viewport backdrop under a frosted shader lab: a hero, a spec HUD reading the shader's real shape (its `u_res`/`u_time` uniforms, raymarch steps, DPR clamp) instead of faked telemetry, an integration ticker, and a below-the-fold integration story (default paths, why `components/ui`, from-scratch setup, copyable source, a render-pipeline walkthrough, and a props/state/assets Q&A); CLI-verified with a headless screenshot light-check | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
