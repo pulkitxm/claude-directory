@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (192)
+## Projects (193)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -136,7 +136,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (9)</b></summary>
+<summary><b>Components &amp; UI (10)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -148,6 +148,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [nexto-404-hero](./components-ui/nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
 | [scanner-card-stream](./components-ui/scanner-card-stream/) | Draggable Three.js card stream that decodes each photo into glitching, scrambling ASCII as it crosses a glowing violet scan line, with an ambient WebGL particle field and a 2D spark burst — packaged as a shadcn-style `@/components/ui` drop | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Pixel-faithful "Sixsense" AI reference-finder page with canvas pixel-grid glass backgrounds, an organic cursor hover blob, a layered folder/lights stack, three floating reference cards, and a glass typewriter prompt box with a spinning gradient send button | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
+| [spatial-product-showcase](./components-ui/spatial-product-showcase/) | shadcn/ui integration of the verbatim `EarbudShowcase` component — a spatial-audio "Sonar Spatial" product stage that mirrors its whole layout when you flip between the Left and Right earbud, with a per-side blue/emerald glow, a rotating dashed ring and floating product shot, animated feature meters, live connection/battery telemetry, and a Dynamic-Island-style segmented switcher; earbud PNGs vendored locally, fully offline | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [terminal-cli-control-deck](./components-ui/terminal-cli-control-deck/) | "ACME Control Deck" infrastructure panel built in a phosphor-green Terminal CLI design system — centralized tokens, composable windows/panes, ASCII art logo, typewriter headline, raw-data ASCII progress meters, a live syslog feed, an interactive zsh console, a box-less access form, and a subtle CRT scanline overlay | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
 
 </details>
