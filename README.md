@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (188)
+## Projects (189)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -194,7 +194,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (75)</b></summary>
+<summary><b>Shaders (76)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -207,6 +207,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [atc-tunnel-shader](./shaders/atc-tunnel-shader/) | shadcn-style integration of the prompt's `ShaderDemo_ATC` "ATC one-liner" — a single WebGL2 fullscreen fragment shader ray-marching a cosine-folded chromatic warp tunnel — dropped into `@/components/ui` and framed as an "Aperture Transit Corridor" instrument: a vertical depth gauge whose reticle rides the shader's own marching clock, a chromatic-split wordmark, a hold/resume control wired to the shader's `paused` prop, and a telemetry rail reading real per-frame depth + FPS off the GPU loop; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, Lucide |
 | [aura-core-shader](./shaders/aura-core-shader/) | shadcn-style integration of the brief's verbatim `AuraCore` WebGL2 energy-core shader (inlined-OGL renderer, HSV core with ten rotating rays, fbm-distorted surface, cursor-reactive particle field) dropped into `@/components/ui`, framed as a plasma-containment console — the component's four sliders become reactor field controls, four named profiles snap the shader to regimes, and a telemetry deck reads containment integrity / excitation straight off the GPU clock with a freeze control; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn structure, WebGL2, Lucide |
 | [aurora-borealis-shader](./shaders/aurora-borealis-shader/) | "Aurora Watch" field-station console wrapping the brief's verbatim Three.js aurora-borealis shader (an FBM-noise green→violet curtain with a cursor-tracking flare) as a shadcn `@/components/ui` drop-in — a probe reticle tracks the flare as geomagnetic lat/long, and the signature Kp-index gauge (0–9) is driven by the aurora's brightness sampled straight off the GPU, with a CSS-aurora WebGL fallback and fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
+| [blue-meshy-shader-lab](./shaders/blue-meshy-shader-lab/) | Faithful shadcn integration of the verbatim WebGL2 "blue meshy" background — a procedural domain-warped fractal-noise (fBm) sea on a single full-screen quad, transparent-compositing through a 20-step blue palette — dropped into `@/components/ui` and framed as a component lab: the live shader as a full-bleed `min-h-screen` hero carrying the shipped "Turning Ideas Into Impact" lockup, then a setup guide, anatomy, a props + shader-constant reference, and a usage gallery; the only deltas to the verbatim file are a valid `join(", ")` and a `cancelAnimationFrame` cleanup for StrictMode safety, fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [blueprint-ascii-grid-shader](./shaders/blueprint-ascii-grid-shader/) | "GRIDLINE" shadcn-style integration of the brief's verbatim WebGL2 `asd.tsx` — a deep-navy four-point mesh-gradient blueprint grid with ASCII glyphs stamped on the major intersections, drift, vignette, value-noise grain and Bayer dithering — dropped into `@/components/ui` and framed as a live instrument: a telemetry HUD (iTime/FPS/iResolution/iMouse), a control deck promoting the shader's baked constants to live uniforms, a per-pixel anatomy walkthrough, and a full shadcn/Tailwind/TS integration story; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
 | [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Procedural GLSL "Celestial Bloom" fragment shader — a five-petalled nebula with a glowing star core and twinkling field, rendered full-viewport with Three.js and framed as an observatory specimen plate with reticle corners, a Fraunces hero lockup, and a live telemetry HUD (mission clock, render FPS, petals) driven by the shader's own per-frame state; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [celestial-ink-shader](./shaders/celestial-ink-shader/) | Verbatim Three.js "Celestial Ink" fragment shader (a rotating six-octave fBm ink field, plum→magenta→gold, that ripples around the cursor) dropped into shadcn `@/components/ui` and framed as an inkstone scrying instrument — a cursor-following astrolabe reticle sights the ripple, a telemetry column reads the shader's own per-frame state (ink time, rotation, ripple coords, fps), and freeze / drift / ripple controls drive the pass; Cormorant Garamond / Inter / JetBrains Mono vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
