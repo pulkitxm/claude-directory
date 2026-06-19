@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (216)
+## Projects (218)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -274,13 +274,14 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (12)</b></summary>
+<summary><b>Templates (14)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [flux-editorial-saas-landing](./templates/flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
+| [obsidian-elite-template](./templates/obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
 | [raw-form-design-system](./templates/raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
