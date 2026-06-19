@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (219)
+## Projects (221)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -274,11 +274,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (15)</b></summary>
+<summary><b>Templates (17)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aurum-neural-ai-landing](./templates/aurum-neural-ai-landing/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
+| [enterprise-admin-saas-landing](./templates/enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [flux-editorial-saas-landing](./templates/flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [forest-sage-organic-store](./templates/forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |

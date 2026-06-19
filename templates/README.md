@@ -3,6 +3,7 @@
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aurum-neural-ai-landing](./aurum-neural-ai-landing/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
+| [enterprise-admin-saas-landing](./enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [flux-editorial-saas-landing](./flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [forest-sage-organic-store](./forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [kinetic-orange-brutalist-agency](./kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
