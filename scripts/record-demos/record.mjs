@@ -25,6 +25,47 @@ import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
 
+// Resolve a Chromium executable. Prefer Playwright's own managed browser, but
+// fall back to a pre-installed Chromium under /opt/pw-browsers when the matching
+// build can't be downloaded (e.g. a sandboxed CI with no access to the
+// Playwright CDN). Returns undefined to let Playwright use its default.
+function resolveExecutable() {
+	const env = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;
+	if (env && fs.existsSync(env)) return env;
+	try {
+		const def = chromium.executablePath?.();
+		if (def && fs.existsSync(def)) return undefined; // default is present
+	} catch {
+		/* fall through to the on-disk fallback */
+	}
+	const root = "/opt/pw-browsers";
+	if (!fs.existsSync(root)) return undefined;
+	const dirs = fs.readdirSync(root);
+	const pick = (prefix, leaf) =>
+		dirs
+			.filter((d) => d.startsWith(prefix))
+			.sort()
+			.reverse()
+			.map((d) => `${root}/${d}/chrome-linux/${leaf}`)
+			.find((p) => fs.existsSync(p));
+	// Full chromium first (WebGL via SwiftShader); headless shell as a fallback.
+	return (
+		pick("chromium-", "chrome") ??
+		pick("chromium_headless_shell-", "headless_shell")
+	);
+}
+
+// Launch flags that force a software WebGL backend (SwiftShader via ANGLE) so
+// GPU-less / headless environments still composite shader <canvas> output into
+// the recording. On a real GPU these are inert. Without them, WebGL projects
+// (the bulk of this repo) would record as blank canvases.
+const GL_ARGS = [
+	"--use-gl=angle",
+	"--use-angle=swiftshader",
+	"--enable-unsafe-swiftshader",
+	"--ignore-gpu-blocklist",
+];
+
 const CONFIG = {
 	viewport: { width: 1280, height: 800 }, // capture size (also the page layout width)
 	fps: 30,
@@ -73,7 +114,21 @@ async function settleLoad(page) {
 		await page.waitForLoadState("networkidle", { timeout: 12000 });
 	} catch {}
 	try {
-		await page.evaluate(() => document.fonts && document.fonts.ready);
+		// Wait for web fonts to settle, but resolve to a serializable boolean —
+		// returning `document.fonts.ready` directly hands Playwright the
+		// non-serializable FontFaceSet, which can hang the evaluate indefinitely.
+		// A hard timeout guarantees warm-up can never block on a slow font.
+		await Promise.race([
+			page.evaluate(async () => {
+				try {
+					await document.fonts.ready;
+				} catch {
+					/* no FontFaceSet support → nothing to wait on */
+				}
+				return true;
+			}),
+			new Promise((resolve) => setTimeout(resolve, 6000)),
+		]);
 	} catch {}
 }
 
@@ -334,7 +389,11 @@ function encode(inputArgs) {
 
 async function main() {
 	fs.mkdirSync(path.dirname(OUT), { recursive: true });
-	const browser = await chromium.launch({ headless: true });
+	const browser = await chromium.launch({
+		headless: true,
+		executablePath: resolveExecutable(),
+		args: GL_ARGS,
+	});
 
 	// Warm-up + measure (no recording). The reload absorbs Vite's first-load
 	// dependency-optimization full reload so it never lands in the recording.
@@ -354,6 +413,10 @@ async function main() {
 	const distance = metrics.scrollHeight - metrics.innerHeight;
 	const scrollable =
 		distance > metrics.innerHeight * CONFIG.scrollableThreshold;
+	if (process.env.DEBUG_MEASURE)
+		console.error(
+			`[measure] scrollHeight=${metrics.scrollHeight} innerHeight=${metrics.innerHeight} distance=${distance} scrollable=${scrollable}`,
+		);
 
 	if (scrollable) await recordScrollable(browser);
 	else await recordStatic(browser);
