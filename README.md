@@ -282,5 +282,6 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [raw-form-design-system](./templates/raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [superdesign-technical-system](./templates/superdesign-technical-system/) | Interface experiment. | HTML, CSS, Space Grotesk, JetBrains Mono |
 
 </details>
