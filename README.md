@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (221)
+## Projects (223)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -274,7 +274,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (17)</b></summary>
+<summary><b>Templates (19)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -296,5 +296,6 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [superdesign-red-noir-landing](./templates/superdesign-red-noir-landing/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind, lucide-react |
 | [superdesign-studio-editorial](./templates/superdesign-studio-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
 | [superdesign-technical-system](./templates/superdesign-technical-system/) | Interface experiment. | HTML, CSS, Space Grotesk, JetBrains Mono |
+| [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
 
 </details>

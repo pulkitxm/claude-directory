@@ -20,3 +20,4 @@
 | [superdesign-red-noir-landing](./superdesign-red-noir-landing/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind, lucide-react |
 | [superdesign-studio-editorial](./superdesign-studio-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
 | [superdesign-technical-system](./superdesign-technical-system/) | Interface experiment. | HTML, CSS, Space Grotesk, JetBrains Mono |
+| [vertical-clip-text-slide](./vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
