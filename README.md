@@ -295,6 +295,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [superdesign-design-on-reality](./templates/superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
 | [superdesign-invite-waitlist](./templates/superdesign-invite-waitlist/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Grotesk, General Sans |
 | [superdesign-modern-atmospheric](./templates/superdesign-modern-atmospheric/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lora, Space Grotesk |
+| [superdesign-modern-obsidian](./templates/superdesign-modern-obsidian/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
 | [superdesign-obsidian-lime](./templates/superdesign-obsidian-lime/) | Interface experiment. | HTML, vanilla CSS, vanilla JS |
 | [superdesign-red-noir-landing](./templates/superdesign-red-noir-landing/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind, lucide-react |
 | [superdesign-studio-editorial](./templates/superdesign-studio-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
