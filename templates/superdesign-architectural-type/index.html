@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SUPERDESIGN — ARCHITECTURAL TYPE SYSTEM</title>
+<style>
+/* ============ FONTS (VENDORED LOCALLY) ============ */
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:900;font-display:swap;src:url('assets/fonts/InterTight-900.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url('assets/fonts/Inter-300.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/Inter-400.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/JetBrainsMono-500.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/JetBrainsMono-700.woff2') format('woff2');}
+
+/* ============ TOKENS ============ */
+:root{
+  --bg:#000; --fg:#fff; --accent:#6366f1;
+  --hair:rgba(255,255,255,0.15);
+  --mono:'JetBrains Mono',monospace;
+  --tight:'Inter Tight',sans-serif;
+  --body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;border-radius:0;}
+html,body{background:var(--bg);color:var(--fg);}
+body{font-family:var(--body);font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--accent);color:#fff;}
+input{font-family:inherit;}
+button{font-family:inherit;cursor:pointer;}
+
+/* ============ HAIRLINES ============ */
+.hair-b{border-bottom:.5px solid var(--hair);}
+.hair-r{border-right:.5px solid var(--hair);}
+.hair-t{border-top:.5px solid var(--hair);}
+.hair-l{border-left:.5px solid var(--hair);}
+
+/* ============ NOISE OVERLAY ============ */
+.noise{
+  position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:100;height:72px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 24px;
+  background:rgba(0,0,0,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand .name{font-family:var(--tight);font-weight:900;font-size:20px;letter-spacing:-0.04em;text-transform:uppercase;line-height:1;}
+.brand .dot{width:6px;height:6px;background:var(--fg);}
+.brand .ver{font-family:var(--mono);font-weight:500;font-size:10px;letter-spacing:.15em;opacity:.5;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.icon-btn{
+  width:40px;height:40px;border-radius:50%;border:.5px solid var(--hair);
+  display:flex;align-items:center;justify-content:center;background:transparent;
+  transition:background .3s ease,border-color .3s ease;
+}
+.icon-btn svg{width:15px;height:15px;fill:var(--fg);transition:fill .3s ease;}
+.icon-btn:hover{background:var(--fg);border-color:var(--fg);}
+.icon-btn:hover svg{fill:#000;}
+.pill{
+  border-radius:999px;border:.5px solid var(--hair);background:transparent;color:var(--fg);
+  font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  padding:11px 22px;transition:background .3s ease,color .3s ease,border-color .3s ease;
+}
+.pill:hover{background:var(--fg);color:#000;border-color:var(--fg);}
+
+/* ============ HERO 2x2 ============ */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+  height:calc(100vh - 72px - 96px);min-height:62vh;
+}
+.cell{position:relative;overflow:hidden;}
+.cell .idx{position:absolute;top:14px;left:16px;font-family:var(--mono);font-weight:500;font-size:9px;letter-spacing:.25em;opacity:.3;z-index:2;}
+.seg-mask{position:absolute;bottom:0;left:0;right:0;overflow:hidden;}
+.seg{
+  display:block;font-family:var(--tight);font-weight:900;text-transform:uppercase;
+  font-size:clamp(5rem,18vw,24vw);letter-spacing:-0.06em;line-height:.8;
+  margin-bottom:-0.12em;margin-left:-0.02em;
+  transform:translateY(110%);
+  transition:transform 900ms cubic-bezier(0.16,1,0.3,1);
+}
+body.loaded .seg{transform:translateY(0);}
+
+/* ============ COMMAND BAR ============ */
+.cmd{display:grid;grid-template-columns:1.4fr 0.8fr 1fr 0.85fr;height:96px;}
+.cmd > *{display:flex;align-items:center;}
+.cmd .c-email{padding:0 24px;}
+.cmd .c-email input{
+  width:100%;background:transparent;border:none;outline:none;color:var(--fg);
+  font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.1em;caret-color:var(--accent);
+}
+.cmd .c-email input::placeholder{color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.15em;}
+.cmd .c-join{padding:0;}
+.cmd .c-join button{
+  width:100%;height:100%;background:var(--fg);color:#000;border:none;
+  font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  transition:background .3s ease,color .3s ease;
+}
+.cmd .c-join button:hover{background:var(--accent);color:#fff;}
+.cmd .c-time{justify-content:center;}
+.countdown{font-family:var(--mono);font-weight:500;font-size:24px;color:var(--fg);font-variant-numeric:tabular-nums;display:flex;align-items:center;}
+.countdown .sep{opacity:.2;padding:0 6px;}
+.countdown .unit{display:inline-flex;}
+.countdown .unit b{display:inline-block;width:1ch;text-align:center;font-weight:500;}
+.cmd .c-labels{flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;padding:0 24px;}
+.sys-label{font-family:var(--mono);font-weight:500;font-size:8px;letter-spacing:.4em;text-transform:uppercase;opacity:.6;display:flex;align-items:center;gap:6px;}
+.sys-label .plus{color:var(--accent);opacity:1;}
+
+/* ============ BENTO ============ */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);}
+.card{position:relative;height:400px;padding:32px;overflow:hidden;transition:background .3s ease;}
+.card:hover{background:rgba(255,255,255,.02);}
+.card .tag{font-family:var(--mono);font-weight:500;font-size:10px;letter-spacing:.25em;text-transform:uppercase;opacity:.4;}
+.card .shape{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.2;transition:opacity .5s ease;}
+.card:hover .shape{opacity:1;}
+.card .meta{position:absolute;left:32px;bottom:32px;right:32px;}
+.card .meta h3{font-family:var(--tight);font-weight:900;font-size:24px;letter-spacing:-0.04em;text-transform:uppercase;line-height:1;}
+.card .meta p{font-family:var(--body);font-weight:400;font-size:14px;line-height:1.4;opacity:.4;margin-top:10px;}
+
+/* shape 1: rotating diamond */
+.geo{width:120px;height:120px;border:.5px solid var(--hair);display:flex;align-items:center;justify-content:center;}
+.geo .inner{width:84px;height:84px;border:.5px solid var(--hair);transform:rotate(45deg);transition:transform 700ms cubic-bezier(0.4,0,0.2,1);}
+.card:hover .geo .inner{transform:rotate(90deg);}
+/* shape 2: concentric squares */
+.geo2{position:relative;width:128px;height:128px;}
+.geo2 span{position:absolute;inset:0;border:.5px solid var(--hair);}
+.geo2 span:nth-child(2){inset:18px;}
+.geo2 span:nth-child(3){inset:36px;}
+.geo2 span:nth-child(4){inset:54px;transition:transform 700ms cubic-bezier(0.4,0,0.2,1);}
+.card:hover .geo2 span:nth-child(4){transform:rotate(45deg);}
+/* shape 3: dot matrix */
+.geo3{display:grid;grid-template-columns:repeat(5,12px);gap:14px;}
+.geo3 i{width:4px;height:4px;background:var(--fg);display:block;}
+
+/* ============ FOOTER ============ */
+.footer{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;font-family:var(--mono);font-weight:500;font-size:9px;letter-spacing:.25em;text-transform:uppercase;opacity:.4;}
+.footer .status{display:flex;align-items:center;gap:8px;opacity:1;}
+.footer .status .live{width:6px;height:6px;background:var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ============ ENTRANCE FOR NAV/CMD ============ */
+.nav,.cmd,.bento,.footer{opacity:0;transform:translateY(8px);transition:opacity .8s ease,transform .8s ease;}
+body.loaded .nav{transition-delay:.1s;}
+body.loaded .cmd{transition-delay:.9s;}
+body.loaded .bento{transition-delay:1.05s;}
+body.loaded .footer{transition-delay:1.15s;}
+body.loaded .nav,body.loaded .cmd,body.loaded .bento,body.loaded .footer{opacity:1;transform:translateY(0);}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;grid-template-rows:repeat(4,1fr);height:auto;min-height:0;}
+  .cell{height:38vw;min-height:160px;}
+  .cell.c1,.cell.c2,.cell.c3{border-right:none;}
+  .cmd{grid-template-columns:1fr;height:auto;}
+  .cmd > *{border-right:none!important;}
+  .cmd .c-email{padding:22px 24px;}
+  .cmd .c-join button{padding:22px 0;}
+  .cmd .c-time{padding:22px 0;}
+  .cmd .c-labels{padding:22px 24px;}
+  .bento{grid-template-columns:1fr;}
+  .card{height:auto;min-height:300px;border-right:none!important;}
+  .card:not(:last-child){border-bottom:.5px solid var(--hair);}
+  .footer{flex-direction:column;gap:10px;}
+  .nav .brand .ver{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<!-- NAV -->
+<nav class="nav hair-b">
+  <div class="brand">
+    <span class="name">Superdesign</span>
+    <span class="dot"></span>
+    <span class="ver">BETA_V.01</span>
+  </div>
+  <div class="nav-right">
+    <button class="icon-btn" aria-label="X">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.11-.76.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.42.36.79 1.08.79 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+    </button>
+    <button class="pill">Get Access</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="cell c1 hair-r hair-b"><span class="idx">01</span><div class="seg-mask"><span class="seg" style="transition-delay:.1s">SU</span></div></div>
+  <div class="cell c2 hair-b"><span class="idx">02</span><div class="seg-mask"><span class="seg" style="transition-delay:.22s">PER</span></div></div>
+  <div class="cell c3 hair-r"><span class="idx">03</span><div class="seg-mask"><span class="seg" style="transition-delay:.34s">DE</span></div></div>
+  <div class="cell c4"><span class="idx">04</span><div class="seg-mask"><span class="seg" style="transition-delay:.46s">SIGN</span></div></div>
+</section>
+
+<!-- COMMAND BAR -->
+<section class="cmd hair-t">
+  <div class="c-email hair-r"><input type="email" placeholder="Enter_your_email" /></div>
+  <div class="c-join hair-r"><button>Join</button></div>
+  <div class="c-time hair-r">
+    <div class="countdown" id="countdown">
+      <span class="unit"><b>0</b><b>0</b></span><span class="sep">:</span>
+      <span class="unit"><b>0</b><b>0</b></span><span class="sep">:</span>
+      <span class="unit"><b>0</b><b>0</b></span>
+    </div>
+  </div>
+  <div class="c-labels">
+    <span class="sys-label"><span class="plus">+</span>Free_access</span>
+    <span class="sys-label"><span class="plus">+</span>No_credit_card</span>
+    <span class="sys-label"><span class="plus">+</span>Cancel_anytime</span>
+  </div>
+</section>
+
+<!-- BENTO -->
+<section class="bento hair-t">
+  <div class="card hair-r">
+    <span class="tag">SYSTEM_01</span>
+    <div class="shape"><div class="geo"><div class="inner"></div></div></div>
+    <div class="meta"><h3>Instant_Deploy</h3><p>Ship production-ready interfaces in seconds, not sprints.</p></div>
+  </div>
+  <div class="card hair-r">
+    <span class="tag">SYSTEM_02</span>
+    <div class="shape"><div class="geo2"><span></span><span></span><span></span><span></span></div></div>
+    <div class="meta"><h3>Type_Engine</h3><p>A rigid typographic system that scales across every breakpoint.</p></div>
+  </div>
+  <div class="card">
+    <span class="tag">SYSTEM_03</span>
+    <div class="shape"><div class="geo3">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i>
+    </div></div>
+    <div class="meta"><h3>Zero_Config</h3><p>No setup. No boilerplate. Pure structure from the first keystroke.</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer hair-t">
+  <span>&copy; 2026_Superdesign_Systems</span>
+  <span>LAT_37.77 / LON_-122.41</span>
+  <span class="status"><span class="live"></span>Status: Operational</span>
+</footer>
+
+<script>
+// fixed target: 3 days from a fixed reference so the countdown is stable across reloads
+var target = new Date('2026-06-22T00:00:00Z').getTime();
+var b = document.querySelectorAll('#countdown .unit b');
+function pad(n){return String(n).padStart(2,'0');}
+function tick(){
+  var d = Math.max(0, target - Date.now());
+  var h = Math.floor(d/3600000);
+  var m = Math.floor(d/60000)%60;
+  var s = Math.floor(d/1000)%60;
+  var str = pad(Math.min(h,99)) + pad(m) + pad(s);
+  for (var i=0;i<6;i++){ b[i].textContent = str[i]; }
+}
+tick(); setInterval(tick,1000);
+
+window.addEventListener('load', function(){
+  requestAnimationFrame(function(){ document.body.classList.add('loaded'); });
+});
+// fallback in case load already fired
+setTimeout(function(){ document.body.classList.add('loaded'); }, 200);
+</script>
+</body>
+</html>
