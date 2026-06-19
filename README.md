@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (214)
+## Projects (215)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,10 +293,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (10)</b></summary>
+<summary><b>Templates (11)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [flux-editorial-saas-landing](./templates/flux-editorial-saas-landing/) | Pixel-faithful high-contrast editorial B2C SaaS landing page for "Flux" rebuilt same-to-same from a superdesign reference — brutalist-lite aesthetic with massive Anton display type, Satoshi body, a #FFE17C golden-yellow accent over white/charcoal, a 40px grid background, a 15-degree rotated yellow highlight bar behind the hero keyword, an abstract browser-UI mockup with a properties panel, a charcoal/dark-gray problem-vs-solution split, a bento feature grid with animated pulse blocks + code snippet + avatar stack, a sticky 1:2 how-it-works flow with giant numerals, alternating light/dark testimonial cards, and a yellow final CTA with a 26vw ghost wordmark; Anton + Satoshi vendored locally, fully offline | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | "Superdesign®" digital-brutalist agency landing page rebuilt same-to-same from a reference — strict electric-orange/black/white palette, vendored Archivo Black + Space Mono + Inter, a floating black pill nav, a 16vw SUPER/DESIGN typographic hero, a 12s rotating SVG scroll indicator, a skewed dual-row marquee band, a vertical hover-driven service list with rotating arrows, and a 14vw LET'S TALK CTA | HTML, CSS, vanilla JS |
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Pixel-faithful neo-brutalist SaaS landing page for "Lumina" with hard-offset black shadows, Cabinet Grotesk + Satoshi type, a browser-mockup dashboard, an infinite brand marquee, and press-down push buttons | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [raw-form-design-system](./templates/raw-form-design-system/) | "Studio/Raw" brutalist e-commerce design system rebuilt same-to-same from a reference — warm-palette Swiss brutalism (#E4E2DD base, #DB4A2B accent) with vendored Clash Display + Satoshi, animated multiply-blend gradient blobs, an 18vw RAW/FORM. typographic hero, slide-from-left fill CTA buttons, 12vw OUTERWEAR/OBJECTS category dividers, a borderless 3/4 product grid with a Full Archive tile, a Designed for Movement campaign block, and a dark footer with a 10% 2024 watermark | HTML, Tailwind, vanilla JS, Lucide |
