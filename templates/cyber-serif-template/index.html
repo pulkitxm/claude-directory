@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cyber Serif — Helix Compute</title>
+<style>
+/* ============ FONTS (vendored locally) ============ */
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 800;font-display:swap;src:url('./assets/fonts/newsreader.woff2') format('woff2');}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:200 800;font-display:swap;src:url('./assets/fonts/newsreader-italic.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('./assets/fonts/inter.woff2') format('woff2');}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('./assets/fonts/spacegrotesk.woff2') format('woff2');}
+
+/* ============ TOKENS ============ */
+:root{
+  --bg:#050505; --text:#EBEBEB; --emerald:#10b981;
+  --glass:rgba(255,255,255,0.02);
+  --glass-border:rgba(255,255,255,0.1);
+  --hairline:rgba(255,255,255,0.05);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --container:80rem;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;position:relative}
+.serif{font-family:'Newsreader',serif}
+.mono{font-family:'Space Grotesk',monospace}
+.mono-label{font-family:'Space Grotesk',monospace;text-transform:uppercase;letter-spacing:.2em;font-size:10px;color:rgba(235,235,235,.5)}
+.container{max-width:var(--container);margin-inline:auto;padding-inline:24px;position:relative;z-index:2}
+em{font-style:italic;color:var(--emerald)}
+a{color:inherit;text-decoration:none}
+
+/* fine grain overlay */
+body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ============ MORPHING GLOWS ============ */
+.glow{position:fixed;width:384px;height:384px;filter:blur(100px);background:rgba(16,185,129,.10);
+  z-index:0;pointer-events:none;animation:morph 8s var(--ease) infinite alternate}
+.glow.g1{top:-80px;left:-60px}
+.glow.g2{top:40%;right:-120px;animation-delay:-3s;background:rgba(16,185,129,.07)}
+.glow.g3{bottom:-100px;left:30%;animation-delay:-5s;background:rgba(16,185,129,.06)}
+@keyframes morph{
+  0%{border-radius:40% 60% 60% 40% / 70% 30% 70% 30%;transform:translate(0,0) scale(1)}
+  100%{border-radius:60% 40% 40% 60% / 30% 70% 30% 70%;transform:translate(40px,-30px) scale(1.12)}}
+
+/* ============ NAVBAR ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .5s var(--ease),backdrop-filter .5s var(--ease),border-color .5s var(--ease);
+  border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(5,5,5,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom-color:var(--hairline)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:#fff;color:#050505;display:grid;place-items:center;
+  transition:transform .6s var(--ease)}
+.logo:hover .logo-mark{transform:rotate(360deg)}
+.logo-text{font-family:'Space Grotesk';font-weight:500;letter-spacing:.04em;font-size:15px}
+.nav-links{display:flex;gap:36px}
+.ulink{position:relative;font-size:13px;color:rgba(235,235,235,.7);font-family:'Space Grotesk';letter-spacing:.02em;padding-bottom:2px;transition:color .3s var(--ease)}
+.ulink:hover{color:#fff}
+.ulink::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--emerald);transition:width .4s var(--ease)}
+.ulink:hover::after{width:100%}
+.cta-pill{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:9999px;background:#fff;color:#050505;
+  font-family:'Space Grotesk';font-weight:500;font-size:13px;border:none;cursor:pointer;animation:pulseGlow 3.2s var(--ease) infinite}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}50%{box-shadow:0 0 26px 3px rgba(16,185,129,.45)}}
+.menu-btn{display:none;background:none;border:none;color:#fff;cursor:pointer}
+
+/* ============ HERO ============ */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:48px;padding-top:120px;padding-bottom:80px}
+.tag-row{display:inline-flex;align-items:center;gap:10px;margin-bottom:32px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 10px var(--emerald);animation:dot 2s var(--ease) infinite}
+@keyframes dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+.hero h1{font-family:'Newsreader';font-weight:300;font-size:clamp(48px,8vw,100px);letter-spacing:-.04em;line-height:.9;margin-bottom:28px}
+.hero p.lead{font-weight:300;font-size:18px;line-height:1.6;color:rgba(235,235,235,.5);max-width:46ch;margin-bottom:40px}
+.btn-row{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:9999px;font-family:'Space Grotesk';font-weight:500;font-size:14px;cursor:pointer;transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .4s var(--ease)}
+.btn-solid{background:#fff;color:#050505;border:none}
+.btn-solid:hover{box-shadow:0 0 34px 2px rgba(16,185,129,.5);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#EBEBEB;border:1px solid rgba(255,255,255,.2)}
+.btn-ghost:hover{border-color:var(--emerald);color:#fff;transform:translateY(-2px)}
+
+/* hero mockup */
+.mockup{position:relative;height:520px;perspective:1200px}
+.glass-card{position:absolute;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border);border-radius:24px;padding:24px;will-change:transform}
+.mc-main{top:60px;left:30px;right:30px;height:300px;transform:rotate(-3deg)}
+.mc-badge{top:10px;right:10px;width:180px;height:120px;transform:rotate(4deg);z-index:3}
+.mc-mini{bottom:20px;left:0;width:200px;height:130px;transform:rotate(2deg);z-index:2}
+.bars{display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:18px}
+.bar{flex:1;background:linear-gradient(180deg,rgba(16,185,129,.6),rgba(16,185,129,.05));border-radius:6px 6px 0 0;animation:grow 3s var(--ease) infinite alternate}
+@keyframes grow{from{transform:scaleY(.55)}to{transform:scaleY(1)}}
+.bar{transform-origin:bottom}
+.spark{display:flex;gap:6px;margin-top:14px}
+.spark i{width:6px;height:6px;border-radius:50%;background:rgba(235,235,235,.25)}
+.spark i.on{background:var(--emerald);box-shadow:0 0 8px var(--emerald);animation:dot 1.6s var(--ease) infinite}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--hairline)}
+.kv:last-child{border-bottom:none}
+.kv .v{font-family:'Newsreader';font-size:22px}
+.kv .v.em{color:var(--emerald)}
+
+/* ============ SECTION HEADS ============ */
+.sec{padding:120px 0}
+.sec-head{margin-bottom:64px;max-width:640px}
+.sec-head h2{font-family:'Newsreader';font-weight:300;font-size:clamp(34px,5vw,56px);letter-spacing:-.03em;line-height:1.02;margin:18px 0 16px}
+.sec-head p{color:rgba(235,235,235,.45);font-weight:300;line-height:1.6;max-width:48ch}
+
+/* ============ FEATURE GRID ============ */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{position:relative;padding:40px;border-radius:24px;background:var(--glass);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-border);
+  overflow:hidden;isolation:isolate}
+.card::before{content:'';position:absolute;inset:0;border-radius:inherit;opacity:0;z-index:-1;
+  transition:opacity .4s var(--ease);pointer-events:none;
+  background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(16,185,129,.15),transparent 40%)}
+.card:hover::before{opacity:1}
+.card::after{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;
+  background:linear-gradient(120deg,transparent 30%,rgba(16,185,129,.45),transparent 70%);
+  background-size:200% 200%;animation:shimmer 4s linear infinite;pointer-events:none;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.icon-box{width:56px;height:56px;border-radius:16px;background:var(--glass);border:1px solid var(--glass-border);
+  display:grid;place-items:center;color:var(--emerald);margin-bottom:28px;transition:transform .5s var(--ease)}
+.card:hover .icon-box{transform:rotate(12deg) scale(1.06)}
+.card h3{font-family:'Newsreader';font-weight:400;font-size:24px;letter-spacing:-.01em;margin-bottom:12px}
+.card p{color:rgba(235,235,235,.4);font-weight:300;font-size:14.5px;line-height:1.6}
+.card .num{font-family:'Space Grotesk';font-size:11px;letter-spacing:.18em;color:rgba(235,235,235,.3);margin-bottom:18px;display:block}
+
+/* ============ BENCHMARK TABLE ============ */
+.table{border-top:1px solid var(--hairline)}
+.trow{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 60px;align-items:center;gap:16px;
+  padding:22px 8px;border-bottom:1px solid var(--hairline)}
+.thead{padding:14px 8px}
+.thead span{font-family:'Space Grotesk';text-transform:uppercase;letter-spacing:.2em;font-size:10px;color:rgba(235,235,235,.45)}
+.tmetric{font-family:'Newsreader';font-size:19px;font-weight:400}
+.tval{font-family:'Space Grotesk';font-size:18px;font-weight:500;color:rgba(235,235,235,.55)}
+.tval.em{color:var(--emerald)}
+.tval.gain{color:var(--emerald);font-size:15px}
+.tcheck{display:grid;place-items:center;color:var(--emerald);animation:dot 2.4s var(--ease) infinite}
+
+/* ============ CTA ============ */
+.cta-sec{padding:160px 0;text-align:center}
+.cta-sec h2{font-family:'Newsreader';font-weight:300;font-size:clamp(40px,7vw,84px);letter-spacing:-.04em;line-height:.98;max-width:14ch;margin:0 auto 36px}
+.gradient-text{background:linear-gradient(90deg,#EBEBEB 0%,#10b981 50%,#EBEBEB 100%);background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:gradientShift 6s linear infinite}
+@keyframes gradientShift{to{background-position:200% center}}
+.cta-sec .big-pill{padding:18px 40px;font-size:15px}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--hairline);padding:48px 0;margin-top:40px}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-inner .mono-label{color:rgba(235,235,235,.35)}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:140px}
+  .mockup{height:420px;margin-top:30px}
+  .grid3{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .menu-btn{display:block}
+  .trow{grid-template-columns:1.4fr 1fr 1fr;}
+  .trow .col-gain,.trow .col-check{display:none}
+}
+</style>
+</head>
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+<div class="glow g3"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg>
+      </span>
+      <span class="logo-text">HELIX</span>
+    </a>
+    <div class="nav-links">
+      <a class="ulink" href="#top">Home</a>
+      <a class="ulink" href="#features">Features</a>
+      <a class="ulink" href="#benchmarks">Benchmarks</a>
+      <a class="ulink" href="#pricing">Pricing</a>
+    </div>
+    <button class="cta-pill">Get Access
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <button class="menu-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="container hero">
+  <div>
+    <div class="tag-row reveal"><span class="dot"></span><span class="mono-label">Now in private beta</span></div>
+    <h1 class="reveal">Engineered for<br><em>precision</em> compute.</h1>
+    <p class="lead reveal">Helix is a next-generation inference platform that pairs editorial restraint with surgical performance — sub-millisecond latency, adaptive scaling, and a zero-trust core, all on hardware tuned to the edge.</p>
+    <div class="btn-row reveal">
+      <button class="btn btn-solid">Start building
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <button class="btn btn-ghost">View benchmarks</button>
+    </div>
+  </div>
+  <div class="mockup reveal" id="mockup">
+    <div class="glass-card mc-main" data-depth="0.4">
+      <div class="mono-label">Live throughput</div>
+      <div class="bars" id="bars"></div>
+      <div class="spark"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i></div>
+    </div>
+    <div class="glass-card mc-badge" data-depth="1">
+      <div class="mono-label">Latency</div>
+      <div class="kv"><span class="mono-label">p50</span><span class="v em">0.4ms</span></div>
+      <div class="kv"><span class="mono-label">p99</span><span class="v">1.2ms</span></div>
+    </div>
+    <div class="glass-card mc-mini" data-depth="0.7">
+      <div class="mono-label">Uptime</div>
+      <div class="kv"><span class="mono-label">SLA</span><span class="v em">99.99%</span></div>
+      <div class="kv"><span class="mono-label">Regions</span><span class="v">18</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- FEATURES -->
+<section id="features" class="container sec">
+  <div class="sec-head reveal">
+    <span class="mono-label">/ 01 — Capabilities</span>
+    <h2>A platform built<br>around <em>restraint</em>.</h2>
+    <p>Every layer is tuned for the moments that matter. No noise, no bloat — only the precision required to ship at the edge of what's possible.</p>
+  </div>
+  <div class="grid3">
+    <div class="card reveal">
+      <span class="num">01</span>
+      <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h3>Atomic latency</h3>
+      <p>Requests resolve in sub-millisecond windows through a kernel-bypass network path and pinned compute affinity.</p>
+    </div>
+    <div class="card reveal">
+      <span class="num">02</span>
+      <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M12 14v4M12 6V2M5 9l3 3M16 12l3-3"/><path d="M3 12a9 9 0 0 1 18 0"/></svg></div>
+      <h3>Adaptive scaling</h3>
+      <p>Capacity tracks demand in real time, provisioning and retiring nodes before a queue ever forms.</p>
+    </div>
+    <div class="card reveal">
+      <span class="num">03</span>
+      <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <h3>Zero-trust core</h3>
+      <p>Every workload runs in an attested enclave with per-request key rotation and end-to-end encryption.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENCHMARKS -->
+<section id="benchmarks" class="container sec">
+  <div class="sec-head reveal">
+    <span class="mono-label">/ 02 — Performance</span>
+    <h2>The numbers,<br>without the <em>theatre</em>.</h2>
+    <p>Measured against the leading baseline on identical hardware. Lower is better for latency; higher is better for throughput.</p>
+  </div>
+  <div class="table" id="table">
+    <div class="trow thead">
+      <span>Metric</span><span>Helix</span><span>Baseline</span><span class="col-gain">Gain</span><span class="col-check"></span>
+    </div>
+    <div class="trow reveal">
+      <div class="tmetric">P50 latency</div>
+      <div class="tval em" data-count="0.4" data-suffix="ms" data-dec="1">0ms</div>
+      <div class="tval" data-count="3.1" data-suffix="ms" data-dec="1">0ms</div>
+      <div class="tval gain col-gain">7.7× faster</div>
+      <div class="tcheck col-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></div>
+    </div>
+    <div class="trow reveal">
+      <div class="tmetric">Throughput</div>
+      <div class="tval em" data-count="184" data-suffix="K rps">0</div>
+      <div class="tval" data-count="42" data-suffix="K rps">0</div>
+      <div class="tval gain col-gain">4.4× higher</div>
+      <div class="tcheck col-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></div>
+    </div>
+    <div class="trow reveal">
+      <div class="tmetric">Cold start</div>
+      <div class="tval em" data-count="12" data-suffix="ms">0ms</div>
+      <div class="tval" data-count="340" data-suffix="ms">0ms</div>
+      <div class="tval gain col-gain">28× faster</div>
+      <div class="tcheck col-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></div>
+    </div>
+    <div class="trow reveal">
+      <div class="tmetric">Uptime SLA</div>
+      <div class="tval em" data-count="99.99" data-suffix="%" data-dec="2">0%</div>
+      <div class="tval" data-count="99.5" data-suffix="%" data-dec="1">0%</div>
+      <div class="tval gain col-gain">+0.49 pts</div>
+      <div class="tcheck col-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></div>
+    </div>
+    <div class="trow reveal">
+      <div class="tmetric">Cost / 1M req</div>
+      <div class="tval em" data-count="0.18" data-prefix="$" data-dec="2">$0</div>
+      <div class="tval" data-count="0.74" data-prefix="$" data-dec="2">$0</div>
+      <div class="tval gain col-gain">76% lower</div>
+      <div class="tcheck col-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="pricing" class="container cta-sec">
+  <span class="mono-label reveal">/ 03 — Get started</span>
+  <h2 class="reveal"><span class="gradient-text">Build on the edge of what's possible.</span></h2>
+  <div class="btn-row reveal" style="justify-content:center">
+    <button class="btn btn-solid big-pill" style="animation:pulseGlow 3.2s var(--ease) infinite">Start building
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot-inner">
+    <div class="logo"><span class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3Z"/></svg></span><span class="logo-text">HELIX</span></div>
+    <span class="mono-label">© 2026 Helix Compute · Engineered for precision</span>
+  </div>
+</footer>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24),{passive:true});
+
+// reveal observer (staggered for grid)
+const cards=[...document.querySelectorAll('.grid3 .card')];
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const i=cards.indexOf(e.target);
+      if(i>=0)e.target.style.transitionDelay=(i*0.1)+'s';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// spotlight cursor tracking on cards
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    card.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+});
+
+// hero parallax
+const mockup=document.getElementById('mockup');
+addEventListener('mousemove',e=>{
+  if(!mockup)return;
+  const px=(e.clientX/innerWidth-0.5)*2, py=(e.clientY/innerHeight-0.5)*2;
+  mockup.querySelectorAll('[data-depth]').forEach(el=>{
+    const d=parseFloat(el.dataset.depth);
+    const base=el.style.getPropertyValue('--base')||el.dataset.base||'';
+    el.style.transform=(getComputedRot(el))+` translate(${px*12*d}px, ${py*12*d}px)`;
+  });
+},{passive:true});
+function getComputedRot(el){
+  if(el.classList.contains('mc-main'))return 'rotate(-3deg)';
+  if(el.classList.contains('mc-badge'))return 'rotate(4deg)';
+  if(el.classList.contains('mc-mini'))return 'rotate(2deg)';
+  return '';
+}
+
+// animated bars
+const bars=document.getElementById('bars');
+if(bars){
+  const heights=[42,68,55,82,60,90,48,72];
+  heights.forEach((h,i)=>{
+    const b=document.createElement('div');
+    b.className='bar';b.style.height=h+'%';b.style.animationDelay=(i*0.18)+'s';
+    bars.appendChild(b);
+  });
+}
+
+// count-up
+function countUp(el){
+  const target=parseFloat(el.dataset.count);
+  const dec=parseInt(el.dataset.dec||'0',10);
+  const pre=el.dataset.prefix||'';const suf=el.dataset.suffix||'';
+  const dur=1400;const t0=performance.now();
+  function frame(t){
+    let p=Math.min((t-t0)/dur,1);
+    p=1-Math.pow(1-p,3); // ease-out cubic
+    const val=(target*p).toFixed(dec);
+    el.textContent=pre+val+suf;
+    if(p<1)requestAnimationFrame(frame);
+    else el.textContent=pre+target.toFixed(dec)+suf;
+  }
+  requestAnimationFrame(frame);
+}
+const cio=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target);}});
+},{threshold:0.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+/* ============================================================
+   Real Magic — Horizontal Ticker
+   A single continuous sentence, read sideways via GSAP scrub.
+   ============================================================ */
+
+@font-face {
+  font-family: "Anton";
+  src: url("../fonts/anton-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../fonts/instrumentserif-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../fonts/instrumentserif-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --red: #f40009;
+  --red-deep: #c2070d;
+  --cream: #fff7ef;
+  --ink: #1a0608;
+  --paper: #f40009; /* the stage is full Coca-Cola red */
+  --line-h: clamp(96px, 20vw, 280px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--red);
+}
+
+body {
+  background: var(--red);
+  color: var(--cream);
+  font-family: "Anton", "Arial Narrow", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ---------- overlays ---------- */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  pointer-events: none;
+  background: radial-gradient(120% 120% at 50% 50%, transparent 55%, rgba(60, 0, 2, 0.55) 100%);
+}
+
+/* ---------- fixed chrome ---------- */
+.chrome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(16px, 3vw, 34px) clamp(18px, 4vw, 48px);
+  pointer-events: none;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand__mark svg {
+  display: block;
+}
+.brand__name {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-size: clamp(18px, 2.4vw, 26px);
+  letter-spacing: 0.01em;
+  color: var(--cream);
+}
+.chrome__nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(12px, 1.4vw, 15px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 247, 239, 0.78);
+}
+.chrome__nav .dot {
+  opacity: 0.6;
+}
+
+/* ---------- progress bar ---------- */
+.progress {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: rgba(255, 247, 239, 0.16);
+  z-index: 50;
+}
+.progress__fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--cream);
+  transform-origin: left center;
+}
+
+/* ---------- the pinned stage ---------- */
+.stage {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* THE single, very long flex line — one continuous baseline. */
+.line {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  white-space: nowrap;
+  will-change: transform;
+  /* generous left/right runway so first & last items breathe at the edges */
+  padding: 0 14vw;
+  /* default gap; per-item margins below introduce VARIABLE gaps */
+  column-gap: clamp(20px, 3vw, 64px);
+}
+
+/* base word */
+.word {
+  font-family: "Anton", sans-serif;
+  font-size: var(--line-h);
+  line-height: 0.86;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  flex: 0 0 auto;
+}
+
+/* faint connective words (the / of / that / us) recede like grammar */
+.w-faint {
+  color: rgba(255, 247, 239, 0.42);
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  font-size: calc(var(--line-h) * 0.62);
+  /* tighter on both sides so they hug the surrounding nouns */
+  margin: 0 calc(var(--line-h) * -0.06);
+}
+.w-end {
+  color: rgba(255, 247, 239, 0.42);
+  margin-left: clamp(20px, 3vw, 64px);
+}
+
+/* accent words break the rhythm */
+.accent--script {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: calc(var(--line-h) * 1.08);
+  color: var(--cream);
+  /* a touch more air around the hero word */
+  margin: 0 clamp(8px, 1.5vw, 28px);
+}
+.accent--huge {
+  font-size: calc(var(--line-h) * 1.18);
+  -webkit-text-stroke: 2px var(--cream);
+  color: transparent;
+  letter-spacing: -0.02em;
+  margin-right: clamp(24px, 4vw, 80px);
+}
+
+/* ---------- inline glyphs (act like punctuation) ---------- */
+.glyph {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  color: var(--cream);
+}
+.glyph svg {
+  display: block;
+  overflow: visible;
+}
+/* variable gaps around glyphs so the line feels hand-set, not uniform */
+.glyph--bottle {
+  margin: 0 clamp(10px, 2vw, 40px);
+}
+.glyph--bubbles {
+  margin: 0 clamp(28px, 4.5vw, 96px) 0 clamp(6px, 1vw, 18px);
+  transform: translateY(-0.18em);
+}
+.glyph--ribbon {
+  margin: 0 clamp(20px, 3.5vw, 72px);
+  transform: translateY(-0.12em);
+}
+.glyph--drop {
+  margin: 0 clamp(18px, 3vw, 56px);
+}
+.glyph--cheers {
+  margin: 0 clamp(30px, 5vw, 110px);
+}
+.glyph--heart {
+  margin: 0 clamp(16px, 2.5vw, 48px);
+}
+
+/* glyph idle motion (the line is otherwise scroll-driven only) */
+.bub {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  opacity: 0.9;
+}
+.ribbon-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* ---------- caption ---------- */
+.caption {
+  position: absolute;
+  left: clamp(18px, 4vw, 48px);
+  bottom: clamp(28px, 5vw, 56px);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  z-index: 40;
+}
+.caption__idx {
+  font-family: "Anton", sans-serif;
+  font-size: clamp(20px, 2.6vw, 30px);
+  color: var(--cream);
+}
+.caption__txt {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-size: clamp(13px, 1.5vw, 17px);
+  letter-spacing: 0.04em;
+  color: rgba(255, 247, 239, 0.72);
+}
+
+/* ---------- outro ---------- */
+.outro {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 0 24px;
+  background: radial-gradient(120% 90% at 50% 30%, var(--red) 0%, var(--red-deep) 100%);
+}
+.outro__kicker {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: clamp(12px, 1.4vw, 15px);
+  color: rgba(255, 247, 239, 0.66);
+}
+.outro__head {
+  font-family: "Anton", sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(56px, 12vw, 200px);
+  line-height: 0.86;
+  color: var(--cream);
+}
+.outro__sub {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-size: clamp(16px, 2.2vw, 26px);
+  color: rgba(255, 247, 239, 0.8);
+  max-width: 40ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    will-change: auto;
+  }
+}
