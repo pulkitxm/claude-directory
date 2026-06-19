@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (206)
+## Projects (207)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,11 +293,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (2)</b></summary>
+<summary><b>Templates (3)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Pixel-faithful neo-brutalist SaaS landing page for "Lumina" with hard-offset black shadows, Cabinet Grotesk + Satoshi type, a browser-mockup dashboard, an infinite brand marquee, and press-down push buttons | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [raw-form-design-system](./templates/raw-form-design-system/) | "Studio/Raw" brutalist e-commerce design system rebuilt same-to-same from a reference — warm-palette Swiss brutalism (#E4E2DD base, #DB4A2B accent) with vendored Clash Display + Satoshi, animated multiply-blend gradient blobs, an 18vw RAW/FORM. typographic hero, slide-from-left fill CTA buttons, 12vw OUTERWEAR/OBJECTS category dividers, a borderless 3/4 product grid with a Full Archive tile, a Designed for Movement campaign block, and a dark footer with a 10% 2024 watermark | HTML, Tailwind, vanilla JS, Lucide |
+| [superdesign-cinematic-agency](./templates/superdesign-cinematic-agency/) | "Superdesign" dark cinematic creative-agency landing rebuilt same-to-same from a reference — near-black #050505 base, vendored Aspekta 300/500/700/900, a mix-blend-difference nav, a perspective:2000px 3D rolodex cube hero tumbling on the X-axis behind a giant SUPERDESIGN wordmark, a Case Studies bento grid (macOS traffic-light featured panel + grayscale-on-hover sub-projects), a #0B0216 three-tier pricing block with a #7C3AED blur(100px) glow and a white featured Growth card, a startups banner, a #1A0B2E glass price calculator with a live purple-filled range slider + monthly/yearly toggle, and a massive LET'S BUILD THE IMPOSSIBLE. editorial footer | HTML, CSS, vanilla JS, Aspekta |
 
 </details>

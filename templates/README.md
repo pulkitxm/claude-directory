@@ -1,8 +1,9 @@
 # Templates
 
-2 **Templates** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+3 **Templates** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [lumina-neobrutalist-saas-landing](./lumina-neobrutalist-saas-landing/) | Pixel-faithful neo-brutalist SaaS landing page for "Lumina" with hard-offset black shadows, Cabinet Grotesk + Satoshi type, a browser-mockup dashboard, an infinite brand marquee, and press-down push buttons | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [raw-form-design-system](./raw-form-design-system/) | "Studio/Raw" brutalist e-commerce design system rebuilt same-to-same from a reference — warm-palette Swiss brutalism (#E4E2DD base, #DB4A2B accent) with vendored Clash Display + Satoshi, animated multiply-blend gradient blobs, an 18vw RAW/FORM. typographic hero, slide-from-left fill CTA buttons, 12vw OUTERWEAR/OBJECTS category dividers, a borderless 3/4 product grid with a Full Archive tile, a Designed for Movement campaign block, and a dark footer with a 10% 2024 watermark | HTML, Tailwind, vanilla JS, Lucide |
+| [superdesign-cinematic-agency](./superdesign-cinematic-agency/) | "Superdesign" dark cinematic creative-agency landing rebuilt same-to-same from a reference — near-black #050505 base, vendored Aspekta 300/500/700/900, a mix-blend-difference nav, a perspective:2000px 3D rolodex cube hero tumbling on the X-axis behind a giant SUPERDESIGN wordmark, a Case Studies bento grid (macOS traffic-light featured panel + grayscale-on-hover sub-projects), a #0B0216 three-tier pricing block with a #7C3AED blur(100px) glow and a white featured Growth card, a startups banner, a #1A0B2E glass price calculator with a live purple-filled range slider + monthly/yearly toggle, and a massive LET'S BUILD THE IMPOSSIBLE. editorial footer | HTML, CSS, vanilla JS, Aspekta |
