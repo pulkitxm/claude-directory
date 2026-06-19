@@ -12,4 +12,5 @@
 | [superdesign-design-on-reality](./superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
 | [superdesign-obsidian-lime](./superdesign-obsidian-lime/) | Interface experiment. | HTML, vanilla CSS, vanilla JS |
 | [superdesign-red-noir-landing](./superdesign-red-noir-landing/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind, lucide-react |
+| [superdesign-studio-editorial](./superdesign-studio-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
 | [superdesign-technical-system](./superdesign-technical-system/) | Interface experiment. | HTML, CSS, Space Grotesk, JetBrains Mono |

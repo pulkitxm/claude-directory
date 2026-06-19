@@ -288,6 +288,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [superdesign-design-on-reality](./templates/superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
 | [superdesign-obsidian-lime](./templates/superdesign-obsidian-lime/) | Interface experiment. | HTML, vanilla CSS, vanilla JS |
 | [superdesign-red-noir-landing](./templates/superdesign-red-noir-landing/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind, lucide-react |
+| [superdesign-studio-editorial](./templates/superdesign-studio-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
 | [superdesign-technical-system](./templates/superdesign-technical-system/) | Interface experiment. | HTML, CSS, Space Grotesk, JetBrains Mono |
 
 </details>
