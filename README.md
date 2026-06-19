@@ -292,3 +292,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
 
 </details>
+
+<details>
+<summary><b>Templates (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [raw-form-design-system](./templates/raw-form-design-system/) | "Studio/Raw" brutalist e-commerce design system rebuilt same-to-same from a reference — warm-palette Swiss brutalism (#E4E2DD base, #DB4A2B accent) with vendored Clash Display + Satoshi, animated multiply-blend gradient blobs, an 18vw RAW/FORM. typographic hero, slide-from-left fill CTA buttons, 12vw OUTERWEAR/OBJECTS category dividers, a borderless 3/4 product grid with a Full Archive tile, a Designed for Movement campaign block, and a dark footer with a 10% 2024 watermark | HTML, Tailwind, vanilla JS, Lucide |
+
+</details>
