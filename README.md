@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (202)
+## Projects (203)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -200,7 +200,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (83)</b></summary>
+<summary><b>Shaders (84)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -285,6 +285,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [warp-drive-shader-bridge](./shaders/warp-drive-shader-bridge/) | "WARP DRIVE" starship-bridge integration of the prompt's verbatim WebGL warp-tunnel shader (an orthographic full-screen quad of RGB-split light filaments steered by `iMouse`) dropped into `@/components/ui` — the signature `NavReticle` gauge locks to the tunnel's vanishing point and reads warp factor / heading / FPS off the shader's own `onFrame` loop, a docked helm console surfaces the raw `iTime`/`iMouse`/`iResolution` uniforms with a `warpSpeed` throttle, and the page tells the shadcn/Tailwind/TypeScript install story; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [warp-shader-hero](./shaders/warp-shader-hero/) | shadcn-style integration of the prompt's verbatim `@paper-design/shaders-react` `<Warp>` hero dropped into `components/ui`, framed as the "Paper Warp // Shader Lab" — a brushed-graphite instrument deck where the same hero becomes a live specimen: a parameter bay of faders promotes every Warp uniform (swirl, distortion, scale, rotation…) to a live control, a shape selector and four mood presets re-work the field, an editable four-stop palette, and an FPS/frame/uptime telemetry strip; fonts vendored locally | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
 | [waves-shader-oscilloscope](./shaders/waves-shader-oscilloscope/) | "OSCILLON" observation deck integrating the prompt's verbatim zero-prop `ShaderComponent` (a black-and-white Three.js coswarp interference field on a single full-screen quad) dropped into `@/components/ui`, framed as a phosphor signal analyzer — corner reticles, scanlines and an edge vignette over the live trace, a live-trace HUD plus a channel legend and a scope deck with a phase-lock meter, all driven off the same `requestAnimationFrame` clock the shader animates on; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, Lucide |
+| [vhs-noise-distortion-hero](./shaders/vhs-noise-distortion-hero/) | shadcn/Tailwind/TypeScript integration of the prompt's verbatim `vhs-hero-section.tsx` — a corrupted VHS hero on React Three Fiber: a custom six-octave fbm domain-warp GLSL shader (edge-growing chromatic aberration, a sweeping tracking-error band, glitch sparks, scanlines, film grain, vignette) over 800 cursor-repelling red/white/cyan noise particles, a GSAP `GlitchText` headline (character scramble + RGB text-shadow pulse), and an aggressive GSAP entrance + looping hue-jitter timeline; dressed as a tape deck with a running `HH:MM:SS:FF` timecode and CRT chrome; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, GSAP, Lucide |
 | [webgl-flowing-gradient-shader](./shaders/webgl-flowing-gradient-shader/) | shadcn/Tailwind v4/TS integration of a raw-WebGL flowing-gradient fragment shader, framed as the "PRISMA Shader Lab" — a cursor-reactive fractal field with viewfinder chrome, a layers/glow/speed control rail, and a live FPS/time/resolution telemetry HUD | React, TypeScript, Vite, Tailwind CSS v4, WebGL, Lucide |
 | [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
 
