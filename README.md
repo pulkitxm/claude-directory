@@ -99,7 +99,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Animations &amp; loaders (11)</b></summary>
+<summary><b>Animations &amp; loaders (12)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -114,6 +114,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [moneta-key-preloader](./animations-loaders/moneta-key-preloader/) | Full-viewport cinematic "Moneta Key" preloader — color-dodge glowing sphere, masked dashed orbit line, wave-cut logo, and a curved canvas-based 0–100 number arc that idles forever | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Canvas 2D |
 | [pallet-ross-landing](./animations-loaders/pallet-ross-landing/) | Scroll-driven landing for fictional artist marketplace "Pallet Ross" where seven artwork cards perform a choreographed intro, then gather into a stack, descend, and fan into a diagonal cascade ladder locked across three full-height sections | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, Lucide |
 | [qclay-hexagon-loader](./animations-loaders/qclay-hexagon-loader/) | Full-screen recreation of the QClay loader — an animated honeycomb of real SVG hexagon tiles with a glowing blue active center, breathing rAF motion, crossfading icons, a shimmering label, and an organic looping progress bar | React, TypeScript, Vite, SVG |
+| [scroll-expansion-hero](./animations-loaders/scroll-expansion-hero/) | Integration of the ScrollExpandMedia hero into a shadcn-style codebase — a compact media card that hijacks the wheel/touch to unfurl into a full-bleed video or image as you scroll, with a splitting title, dissolving backdrop, and an editorial about-section that reveals on full expansion | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 
 </details>
 
