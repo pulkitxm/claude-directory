@@ -7,5 +7,6 @@
 | [raw-form-design-system](./raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [super-travel-luxury-landing](./super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [superdesign-design-on-reality](./superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
 | [superdesign-obsidian-lime](./superdesign-obsidian-lime/) | Interface experiment. | HTML, vanilla CSS, vanilla JS |
 | [superdesign-technical-system](./superdesign-technical-system/) | Interface experiment. | HTML, CSS, Space Grotesk, JetBrains Mono |
