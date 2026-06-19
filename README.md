@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (214)
+## Projects (215)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,10 +293,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (10)</b></summary>
+<summary><b>Templates (11)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [aurum-neural-ai-landing](./templates/aurum-neural-ai-landing/) | "Aurum" neural-network luxury AI landing page built same-to-same from a reference — a gold-on-black (#0a0a0a base, #a78b71/#c9b8a0/#e8d5b7 gold spectrum) glassmorphic single page on Playfair Display Italic + Inter, with a 32px radial dot grid, a breathing live-status pill, a 16:9 hero "Aurum Core" node ringed by four grayscale-to-color satellite media cards wired in by animated pulsing-branch + dashed-flow SVG bezier curves that redraw on pointer parallax, a 4-up glass features grid, a 3-tier pricing block with a highlighted Pro card and monthly/annual switch, a 2-up grayscale-to-color studio section, and a 5-column footer with a Join Digest field — all reveal-up on IntersectionObserver; fonts vendored and gold/black procedural SVG imagery generated locally, fully offline | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
 | [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | "Superdesign®" digital-brutalist agency landing page rebuilt same-to-same from a reference — strict electric-orange/black/white palette, vendored Archivo Black + Space Mono + Inter, a floating black pill nav, a 16vw SUPER/DESIGN typographic hero, a 12s rotating SVG scroll indicator, a skewed dual-row marquee band, a vertical hover-driven service list with rotating arrows, and a 14vw LET'S TALK CTA | HTML, CSS, vanilla JS |
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Pixel-faithful neo-brutalist SaaS landing page for "Lumina" with hard-offset black shadows, Cabinet Grotesk + Satoshi type, a browser-mockup dashboard, an infinite brand marquee, and press-down push buttons | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [raw-form-design-system](./templates/raw-form-design-system/) | "Studio/Raw" brutalist e-commerce design system rebuilt same-to-same from a reference — warm-palette Swiss brutalism (#E4E2DD base, #DB4A2B accent) with vendored Clash Display + Satoshi, animated multiply-blend gradient blobs, an 18vw RAW/FORM. typographic hero, slide-from-left fill CTA buttons, 12vw OUTERWEAR/OBJECTS category dividers, a borderless 3/4 product grid with a Full Archive tile, a Designed for Movement campaign block, and a dark footer with a 10% 2024 watermark | HTML, Tailwind, vanilla JS, Lucide |
