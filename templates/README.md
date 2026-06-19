@@ -17,6 +17,7 @@
 | [super-travel-luxury-landing](./super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [superdesign-cinematic-agency](./superdesign-cinematic-agency/) | Interface experiment. | HTML, CSS, vanilla JS, Aspekta |
 | [superdesign-design-on-reality](./superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
+| [superdesign-editorial-grid](./superdesign-editorial-grid/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Space Grotesk, Space Mono |
 | [superdesign-invite-waitlist](./superdesign-invite-waitlist/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Grotesk, General Sans |
 | [superdesign-modern-atmospheric](./superdesign-modern-atmospheric/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lora, Space Grotesk |
 | [superdesign-modern-obsidian](./superdesign-modern-obsidian/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
