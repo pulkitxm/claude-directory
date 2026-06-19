@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (204)
+## Projects (205)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -289,5 +289,14 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [vhs-noise-distortion-hero](./shaders/vhs-noise-distortion-hero/) | shadcn/Tailwind/TypeScript integration of the prompt's verbatim `vhs-hero-section.tsx` — a corrupted VHS hero on React Three Fiber: a custom six-octave fbm domain-warp GLSL shader (edge-growing chromatic aberration, a sweeping tracking-error band, glitch sparks, scanlines, film grain, vignette) over 800 cursor-repelling red/white/cyan noise particles, a GSAP `GlitchText` headline (character scramble + RGB text-shadow pulse), and an aggressive GSAP entrance + looping hue-jitter timeline; dressed as a tape deck with a running `HH:MM:SS:FF` timecode and CRT chrome; fonts vendored locally | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, GSAP, Lucide |
 | [webgl-flowing-gradient-shader](./shaders/webgl-flowing-gradient-shader/) | shadcn/Tailwind v4/TS integration of a raw-WebGL flowing-gradient fragment shader, framed as the "PRISMA Shader Lab" — a cursor-reactive fractal field with viewfinder chrome, a layers/glow/speed control rail, and a live FPS/time/resolution telemetry HUD | React, TypeScript, Vite, Tailwind CSS v4, WebGL, Lucide |
 | [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
+
+</details>
+
+<details>
+<summary><b>Templates (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [softly-wellness](./templates/softly-wellness/) | "Softly" — a warm, mobile-first digital-wellness landing page recreated same-to-same from a reference design: grain overlay, pastel blurred blobs, Outfit + Reenie Beanie type, float/reveal-on-scroll animations, three phone mockups, horizontal scenario scroll, and a FAQ accordion; fully self-contained with vendored Tailwind, fonts, and inline lucide icons | HTML, Tailwind CSS, Vanilla JS |
 
 </details>
