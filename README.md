@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (248)
+## Projects (249)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -274,7 +274,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (44)</b></summary>
+<summary><b>Templates (45)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -313,6 +313,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [superdesign-editorial-grid](./templates/superdesign-editorial-grid/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Space Grotesk, Space Mono |
 | [superdesign-editorial-manifesto](./templates/superdesign-editorial-manifesto/) | Interface experiment. | HTML, CSS, vanilla JS, Fraunces, Manrope |
 | [superdesign-invite-waitlist](./templates/superdesign-invite-waitlist/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Grotesk, General Sans |
+| [superdesign-midnight-editorial](./templates/superdesign-midnight-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lucide |
 | [superdesign-modern-atmospheric](./templates/superdesign-modern-atmospheric/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lora, Space Grotesk |
 | [superdesign-modern-obsidian](./templates/superdesign-modern-obsidian/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
 | [superdesign-obsidian-lime](./templates/superdesign-obsidian-lime/) | Interface experiment. | HTML, vanilla CSS, vanilla JS |
