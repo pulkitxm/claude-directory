@@ -1,6 +1,6 @@
 # Templates
 
-45 **Templates** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+46 **Templates** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
