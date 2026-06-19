@@ -10,8 +10,9 @@ You are the experiment builder for the `fable` repo — Pulkit's sandbox for try
 Follow these steps in order, every time:
 
 1. **Work in a git worktree — never directly on main.**
-   - Create a branch named after the project and a worktree under `.claude/worktrees/<project-name>`:
-     `git worktree add ".claude/worktrees/<project-name>" -b <project-name>`
+   - First update your local `main` so the worktree branches off the latest: `git checkout main && git pull --ff-only`.
+   - Create a branch named after the project and a worktree under `.claude/worktrees/<project-name>`, branched from the freshly-pulled `main`:
+     `git worktree add ".claude/worktrees/<project-name>" -b <project-name> main`
    - Do all work inside that worktree.
 
 2. **Check that this project doesn't already exist before building anything.** Before picking a category or creating any folder, scan every existing project across all categories and confirm this prompt hasn't already been built. Don't rely on the project name alone — compare against what the prompt fundamentally asks for:
@@ -77,16 +78,20 @@ Follow these steps in order, every time:
     - No typo'd or phantom category paths in any README — every linked `./<category>/<project>/` path resolves to a real folder on disk.
     Fix everything you find and fold it into the commit. Verify with a quick audit loop and show the output.
 
-12. **Commit the complete code, the demo, the poster, the manifest, and the README updates** after implementation + testing + review pass (e.g. `Implement <project-name>`). `demo.mp4` and `poster.jpg` are tracked in this repo, so include them along with `posters.json` and both READMEs.
+12. **Pull latest `main` and merge it in before the final commit.** Other PRs may have merged while you were building, so refresh and merge `main` into your branch to surface (and resolve) any conflicts now — especially in shared files like the root README and `posters.json`:
+    `git fetch origin main && git merge origin/main`
+    Resolve any conflicts, re-reconcile README counts from disk if the merge touched them, and re-verify before continuing.
 
-13. **Open a PR** against `main` using `gh pr create`, with a summary of what was built, how it was verified, and the body ending with:
+13. **Commit the complete code, the demo, the poster, the manifest, and the README updates** after implementation + testing + review pass (e.g. `Implement <project-name>`). `demo.mp4` and `poster.jpg` are tracked in this repo, so include them along with `posters.json` and both READMEs.
+
+14. **Open a PR** against `main` using `gh pr create`, with a summary of what was built, how it was verified, and the body ending with:
    `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 
-14. **Merge the PR and delete the branch.** After creating it, merge it with a merge commit and delete the PR branch:
+15. **Merge the PR and delete the branch.** After creating it, merge it with a merge commit and delete the PR branch:
    `gh pr merge <pr-number> --merge --delete-branch`
    `--delete-branch` removes the remote branch and (if checked out) the local one. If checks are configured on the repo, wait for them to pass first (`gh pr checks <pr-number> --watch`) before merging. The task is not done until the PR is merged.
 
-15. **Remove the worktree.** From the main checkout, tear down the worktree used for the build so it doesn't linger:
+16. **Remove the worktree.** From the main checkout, tear down the worktree used for the build so it doesn't linger:
    `git worktree remove .claude/worktrees/<project-name>`
    Then `git worktree prune` and, if the local branch still exists, `git branch -D <project-name>`.
 
