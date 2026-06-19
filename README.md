@@ -304,6 +304,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [sticky-content-switch](./templates/sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [super-design-industrial-system](./templates/super-design-industrial-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Playfair Display |
 | [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [superdesign-architectural-type](./templates/superdesign-architectural-type/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Tight, Inter, JetBrains Mono |
 | [superdesign-crimson-craft](./templates/superdesign-crimson-craft/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Poppins, Space Grotesk |
 | [superdesign-cinematic-agency](./templates/superdesign-cinematic-agency/) | Interface experiment. | HTML, CSS, vanilla JS, Aspekta |
 | [superdesign-design-on-reality](./templates/superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |

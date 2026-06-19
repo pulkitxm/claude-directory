@@ -28,6 +28,7 @@
 | [sticky-content-switch](./sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [super-design-industrial-system](./super-design-industrial-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Playfair Display |
 | [super-travel-luxury-landing](./super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [superdesign-architectural-type](./superdesign-architectural-type/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Tight, Inter, JetBrains Mono |
 | [superdesign-crimson-craft](./superdesign-crimson-craft/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Poppins, Space Grotesk |
 | [superdesign-cinematic-agency](./superdesign-cinematic-agency/) | Interface experiment. | HTML, CSS, vanilla JS, Aspekta |
 | [superdesign-design-on-reality](./superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
