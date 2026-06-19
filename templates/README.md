@@ -2,5 +2,7 @@
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [lumina-neobrutalist-saas-landing](./lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [raw-form-design-system](./raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
+| [super-travel-luxury-landing](./super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [superdesign-obsidian-lime](./superdesign-obsidian-lime/) | Interface experiment. | HTML, vanilla CSS, vanilla JS |
