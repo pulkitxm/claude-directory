@@ -1,0 +1,255 @@
+/* ============================================================
+   ATELIER ARCHIVE — Quiet Luxury Architectural Design System
+   ============================================================ */
+
+/* ---- Fonts (vendored locally) ---- */
+@font-face{font-family:"Zodiak";font-weight:300;font-style:normal;src:url(assets/fonts/cormorant-300.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"Zodiak";font-weight:400;font-style:normal;src:url(assets/fonts/cormorant-400.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"Zodiak";font-weight:300;font-style:italic;src:url(assets/fonts/cormorant-300i.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"Zodiak";font-weight:400;font-style:italic;src:url(assets/fonts/cormorant-400i.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"General Sans";font-weight:300;font-style:normal;src:url(assets/fonts/hanken-300.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"General Sans";font-weight:400;font-style:normal;src:url(assets/fonts/hanken-400.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"General Sans";font-weight:500;font-style:normal;src:url(assets/fonts/hanken-500.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"General Sans";font-weight:600;font-style:normal;src:url(assets/fonts/hanken-600.ttf) format("truetype");font-display:swap}
+
+/* ---- Tokens ---- */
+:root{
+  --paper:#fdfbf9;
+  --ink:#1a1a1a;
+  --ink-soft:#737373;
+  --ink-faint:#a3a3a3;
+  --line:#e5e5e5;
+  --white:#ffffff;
+  --max:1440px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"General Sans",system-ui,sans-serif;
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block;filter:grayscale(.15)}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;font-weight:400}
+
+/* ---- Page (border-grid container) ---- */
+.page{
+  max-width:var(--max);
+  margin-inline:auto;
+  background:var(--paper);
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+}
+
+/* ---- Type helpers ---- */
+.serif{font-family:"Zodiak",Georgia,serif;font-weight:300}
+.kicker{font-size:10px;text-transform:uppercase;letter-spacing:.22em;color:var(--ink-soft);font-weight:500;line-height:1}
+.kicker--ink{color:var(--ink)}
+.lead{color:var(--ink-soft);font-weight:300;font-size:15px;line-height:1.85}
+
+/* Text-only CTA with animated 1px underline */
+.cta{
+  display:inline-block;
+  font-family:"General Sans";font-weight:500;font-size:10px;line-height:1;
+  text-transform:uppercase;letter-spacing:.22em;color:var(--ink);
+  padding-bottom:3px;cursor:pointer;
+  background:linear-gradient(currentColor,currentColor) left 100% / 0% 1px no-repeat;
+  transition:background-size .55s var(--ease),opacity .3s ease;
+}
+.cta:hover{background-size:100% 1px}
+.cta .arrow{display:inline-block;transition:transform .55s var(--ease)}
+.cta:hover .arrow{transform:translateX(4px)}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(10px);transition:opacity 1.2s ease,transform 1.2s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* Image frame slow scale */
+.img-frame{overflow:hidden;position:relative;background:#dcd7cf}
+.img-frame img{width:100%;height:100%;object-fit:cover;transform:scale(1);transition:transform 2s var(--ease)}
+.img-frame:hover img{transform:scale(1.01)}
+.fig-label{
+  position:absolute;left:24px;bottom:24px;z-index:2;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:#fff;mix-blend-mode:difference;font-weight:500;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(253,251,249,.95);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.header__inner{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:20px 40px;gap:24px;
+}
+.brand{font-family:"Zodiak",serif;font-weight:400;font-size:20px;letter-spacing:.18em;text-transform:uppercase}
+.brand b{font-weight:400}
+.nav{display:flex;gap:34px;justify-content:center}
+.nav a{font-size:10px;text-transform:uppercase;letter-spacing:.2em;font-weight:500;color:var(--ink-soft);position:relative;padding-bottom:2px;
+  background:linear-gradient(var(--ink),var(--ink)) left 100% / 0% 1px no-repeat;transition:color .4s ease,background-size .5s var(--ease)}
+.nav a:hover{color:var(--ink);background-size:100% 1px}
+.util{display:flex;gap:26px;justify-content:flex-end}
+.util a{font-size:10px;text-transform:uppercase;letter-spacing:.2em;font-weight:500;color:var(--ink-soft);transition:color .4s ease}
+.util a:hover{color:var(--ink)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{display:grid;grid-template-columns:65% 35%;min-height:88vh;border-bottom:1px solid var(--line)}
+.hero__media{position:relative;border-right:1px solid var(--line)}
+.hero__media .img-frame{height:100%}
+.hero__text{display:flex;flex-direction:column;justify-content:center;padding:64px 56px;gap:34px}
+.hero__text h1{
+  font-family:"Zodiak",serif;font-weight:300;
+  font-size:clamp(40px,5vw,64px);line-height:1.04;letter-spacing:-.01em;
+}
+.hero__meta{display:flex;align-items:center;gap:14px}
+.hero__meta .rule{flex:1;height:1px;background:var(--line)}
+.hero__p{max-width:38ch;text-align:justify;color:var(--ink-soft);font-weight:300;font-size:14px;line-height:1.9;hyphens:auto}
+
+/* ============================================================
+   ROOM INDEX
+   ============================================================ */
+.index{display:grid;grid-template-columns:25% 75%;border-bottom:1px solid var(--line)}
+.index__label{padding:48px 40px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.index__list{display:flex;flex-direction:column}
+.index-row{
+  display:grid;grid-template-columns:64px 1fr auto;align-items:baseline;gap:28px;
+  padding:26px 40px;border-bottom:1px solid var(--line);cursor:pointer;
+  transition:background .5s ease,padding-left .5s var(--ease);
+}
+.index-row:last-child{border-bottom:0}
+.index-row:hover{background:var(--white);padding-left:52px}
+.index-row .num{font-size:10px;letter-spacing:.2em;color:var(--ink-soft);font-weight:500}
+.index-row .title{font-family:"Zodiak",serif;font-weight:300;font-size:clamp(26px,3vw,40px);color:var(--ink-faint);line-height:1;transition:color .55s ease}
+.index-row:hover .title{color:var(--ink);font-style:italic}
+.index-row .meta{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);transition:color .5s ease}
+.index-row:hover .meta{color:var(--ink-soft)}
+
+/* ============================================================
+   ROOM SECTIONS
+   ============================================================ */
+.room{display:grid;border-bottom:1px solid var(--line)}
+.room--a{grid-template-columns:70% 30%}
+.room--b{grid-template-columns:40% 60%}
+.room__media{position:relative}
+.room--a .room__media{border-right:1px solid var(--line)}
+.room--b .room__media{order:2}
+.room--b .room__panel{order:1;border-right:1px solid var(--line)}
+.room__media .img-frame{height:100%;min-height:560px}
+
+.room__panel{display:flex;flex-direction:column}
+.panel-head{padding:40px 36px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.panel-head h2{font-family:"Zodiak",serif;font-weight:300;font-size:clamp(28px,2.4vw,34px);line-height:1.05}
+.panel-head p{color:var(--ink-soft);font-weight:300;font-size:13px;line-height:1.8;max-width:42ch}
+.room--a .room__panel-sticky{position:sticky;top:80px}
+.product-list{display:flex;flex-direction:column}
+
+/* ---- Product detail card ---- */
+.product{
+  display:flex;gap:18px;padding:22px 36px;border-bottom:1px solid var(--line);
+  transition:background .45s ease;
+}
+.product:last-child{border-bottom:0}
+.product:hover{background:var(--white)}
+.product .thumb{width:64px;height:64px;flex:none;overflow:hidden;background:var(--line)}
+.product .thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.product:hover .thumb img{transform:scale(1.05)}
+.product .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px}
+.product .row1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.product .name{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.product .ref{font-size:11px;color:var(--ink-faint);letter-spacing:.05em;white-space:nowrap}
+.product .specs{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.product .spec{display:flex;flex-direction:column;gap:2px}
+.product .spec .k{font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-faint)}
+.product .spec .v{font-size:12px;color:var(--ink);font-weight:400}
+.product .view{align-self:flex-start;margin-top:2px}
+
+/* ============================================================
+   MATERIAL GRID — Close Inspection
+   ============================================================ */
+.materials{border-bottom:1px solid var(--line)}
+.materials__head{padding:64px 40px 40px;display:flex;flex-direction:column;gap:18px;max-width:720px}
+.materials__head h2{font-family:"Zodiak",serif;font-weight:300;font-size:clamp(32px,3.6vw,52px);line-height:1.05}
+.material-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.material{position:relative;overflow:hidden;aspect-ratio:4/5;border-right:1px solid var(--line)}
+.material:last-child{border-right:0}
+.material .img-frame{position:absolute;inset:0}
+.material .caption{position:absolute;left:20px;bottom:18px;z-index:2;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#fff;mix-blend-mode:difference;font-weight:500;transition:opacity .4s ease}
+.material:hover .caption{opacity:0}
+.material .overlay{
+  position:absolute;inset:0;z-index:3;background:var(--white);
+  transform:translateY(100%);transition:transform .7s var(--ease);
+  display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding:26px 22px;
+}
+.material:hover .overlay{transform:translateY(0)}
+.material .overlay .mname{font-family:"Zodiak",serif;font-weight:300;font-style:italic;font-size:26px;line-height:1}
+.material .overlay .mrow{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:10px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{padding:80px 40px 32px}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:48px}
+.footer__brand .serif{font-size:24px;letter-spacing:.16em;text-transform:uppercase}
+.footer__brand address{font-style:normal;color:var(--ink-soft);font-weight:300;font-size:13px;line-height:1.9;margin-top:20px}
+.fcol h4{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-faint);margin-bottom:20px;font-weight:600}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.fcol a{font-size:13px;color:var(--ink-soft);font-weight:300;transition:color .35s ease}
+.fcol a:hover{color:var(--ink)}
+.news p{font-size:13px;color:var(--ink-soft);font-weight:300;line-height:1.8;margin-bottom:22px}
+.news form{display:flex;align-items:center;border-bottom:1px solid var(--ink)}
+.news input{flex:1;border:0;background:transparent;padding:8px 0;font-family:inherit;font-size:13px;color:var(--ink);outline:none}
+.news input::placeholder{color:var(--ink-faint)}
+.news button{border:0;background:transparent;cursor:pointer;font-size:16px;color:var(--ink);padding:8px 4px}
+.legal{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  margin-top:72px;padding-top:24px;border-top:1px solid var(--line);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+}
+.legal nav{display:flex;gap:24px}
+.legal a:hover{color:var(--ink)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero__media{border-right:0;border-bottom:1px solid var(--line);min-height:60vh}
+  .index{grid-template-columns:1fr}
+  .index__label{border-right:0;border-bottom:1px solid var(--line)}
+  .room--a,.room--b{grid-template-columns:1fr}
+  .room--a .room__media{border-right:0;border-bottom:1px solid var(--line)}
+  .room--b .room__media{order:1;border-bottom:1px solid var(--line)}
+  .room--b .room__panel{order:2;border-right:0}
+  .room__media .img-frame{min-height:50vh}
+  .room--a .room__panel-sticky{position:static}
+  .material-grid{grid-template-columns:repeat(2,1fr)}
+  .material:nth-child(2n){border-right:0}
+  .material:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .footer__grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .header__inner{padding:16px 22px}
+  .nav{display:none}
+  .hero__text{padding:44px 24px}
+  .index-row{padding:20px 22px;gap:16px;grid-template-columns:40px 1fr}
+  .index-row .meta{display:none}
+  .panel-head,.product,.materials__head,.footer{padding-left:22px;padding-right:22px}
+  .material-grid{grid-template-columns:1fr}
+  .material{border-right:0;border-bottom:1px solid var(--line)}
+  .footer__grid{grid-template-columns:1fr;gap:40px}
+  .legal{flex-direction:column;align-items:flex-start;gap:14px}
+}
