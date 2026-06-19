@@ -3,6 +3,7 @@
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aurum-neural-ai-landing](./aurum-neural-ai-landing/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
+| [enterprise-admin-saas-landing](./enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [disruptor-brutalist-template](./disruptor-brutalist-template/) | Interface experiment. | Static HTML/CSS/JS, Ranchers, Space Mono, Plus Jakarta Sans, Archivo |
 | [editorial-naturalism-design-system](./editorial-naturalism-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Newsreader, Instrument Sans |
 | [flux-editorial-saas-landing](./flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
@@ -10,6 +11,7 @@
 | [kinetic-orange-brutalist-agency](./kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [lumina-neobrutalist-saas-landing](./lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [lumina-portfolio-template](./lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
+| [neon-velocity-style-guide](./neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
 | [obsidian-elite-template](./obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
 | [organic-intelligence-wave](./organic-intelligence-wave/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Inter, JetBrains Mono |
 | [raw-form-design-system](./raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
@@ -17,6 +19,7 @@
 | [season-04-brutalist-store](./season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [super-design-industrial-system](./super-design-industrial-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Playfair Display |
+| [stacking-cards-portfolio](./stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [super-travel-luxury-landing](./super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [superdesign-cinematic-agency](./superdesign-cinematic-agency/) | Interface experiment. | HTML, CSS, vanilla JS, Aspekta |
 | [superdesign-design-on-reality](./superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
