@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (206)
+## Projects (207)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,11 +293,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (2)</b></summary>
+<summary><b>Templates (3)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Pixel-faithful neo-brutalist SaaS landing page for "Lumina" with hard-offset black shadows, Cabinet Grotesk + Satoshi type, a browser-mockup dashboard, an infinite brand marquee, and press-down push buttons | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [raw-form-design-system](./templates/raw-form-design-system/) | "Studio/Raw" brutalist e-commerce design system rebuilt same-to-same from a reference — warm-palette Swiss brutalism (#E4E2DD base, #DB4A2B accent) with vendored Clash Display + Satoshi, animated multiply-blend gradient blobs, an 18vw RAW/FORM. typographic hero, slide-from-left fill CTA buttons, 12vw OUTERWEAR/OBJECTS category dividers, a borderless 3/4 product grid with a Full Archive tile, a Designed for Movement campaign block, and a dark footer with a 10% 2024 watermark | HTML, Tailwind, vanilla JS, Lucide |
+| [superdesign-design-on-reality](./templates/superdesign-design-on-reality/) | Pixel-faithful poster-modernist "Design on Reality. Not Mockups." landing page recreated same-to-same — cream #E3E2DE base with a single cobalt #1351AA accent, a framed 1600px center column, a strict 12-column grid with a sticky label sidebar down every section, hairline #C7C7C7 dividers, zero radius / zero shadows, oversized General Sans display type, and zero-radius poster buttons with linear color-swap hovers | HTML, CSS, General Sans |
 
 </details>
