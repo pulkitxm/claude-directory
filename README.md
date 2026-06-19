@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (221)
+## Projects (223)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,7 +293,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (17)</b></summary>
+<summary><b>Templates (19)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -315,5 +315,6 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [superdesign-red-noir-landing](./templates/superdesign-red-noir-landing/) | Pixel-faithful "Red Noir" Superdesign AI landing page recreated 1:1 from a reference — #ef233c-on-black palette with vendored Manrope + Inter, twin box-shadow parallax starfields, a faint masked grid, a conic-gradient shiny CTA and a spinning "Get Access" sweep, gradient-clipped hero headline with a hand-drawn underline, a 4-card bento feature grid, a full-bleed red testimonial banner, 3-tier pricing with a featured Pro card, a waitlist CTA, and a giant outlined SUPERDESIGN footer wordmark | React, TanStack Start, TypeScript, Tailwind, lucide-react |
 | [superdesign-studio-editorial](./templates/superdesign-studio-editorial/) | Typography-first black-and-white editorial creative-studio template recreated from a reference — pure #000/#FFF palette with #525252 metadata, vendored Inter + JetBrains Mono, a 32px mix-blend-difference custom cursor that lerp-follows and scales 2.5x on hover, a mix-blend-difference fixed nav with a rotating plus toggle and full-screen clip-path menu, a 12vw "Design Studio" hero with staggered per-letter slide-up reveals, a paused-on-hover asymmetrical-radius project marquee (5/7 grayscale-to-color cards), a centered intro statement, a staggered two-column 4:3 project grid with hover overlays + arrow-up-right badges and mono metadata rows, and a dark #0A0A0A footer with a giant ghosted "sd" watermark; cubic-bezier(0.16,1,0.3,1) easing throughout, fully self-contained offline | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
 | [superdesign-technical-system](./templates/superdesign-technical-system/) | Pixel-faithful "Superdesign — The AI Design Reviewer" template landing page built on a Technical-Minimalist blueprint design system: a Paper (#F7F7F5) / Forest (#1A3C2B) / Grid hairline palette, Space Grotesk + JetBrains Mono, a full-page mosaic grid background, fixed indexed nav, a luminosity-blended wireframe hero, a 1px-gap 2×2 bento feature grid, an animated SVG network-topology graph, monospaced testimonial cards, and an L-corner-marked "Tell your CTO" form CTA; zero shadows, fully square corners, fonts + hero image vendored locally | HTML, CSS, Space Grotesk, JetBrains Mono |
+| [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | A single-screen motion study of a vertical text-clip, letter-by-letter slide-down — each glyph of a giant Space Grotesk headline ("MOTION / IN EVERY / LETTER.") is wrapped in an overflow-hidden vertical clip column and pours down from above (translateY(-110%)→0) with an opacity + blur(6px)→0 settle, staggered 70ms per letter continuously across all lines on a cubic-bezier(.22,1,.36,1) expo-out, then auto-loops with a 2.2s hold and a Replay button; near-black #0b0b0c canvas with off-white #f4f2ec type, JetBrains Mono chrome, a warm #e8552d accent, a 4% fractal-noise grain overlay, and a reduced-motion fallback; fonts vendored, fully offline | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
 
 </details>
