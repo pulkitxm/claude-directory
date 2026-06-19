@@ -4,6 +4,7 @@
 |---------|-------------|-------|
 | [atelier-archive-quiet-luxury](./atelier-archive-quiet-luxury/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Hanken Grotesk |
 | [aurum-neural-ai-landing](./aurum-neural-ai-landing/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
+| [browser-core-devtools-template](./browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
 | [clinical-luxury-conversion](./clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
 | [cyber-serif-template](./cyber-serif-template/) | Interface experiment. | Static HTML/CSS/JS, Newsreader, Inter, Space Grotesk |
 | [enterprise-admin-saas-landing](./enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
