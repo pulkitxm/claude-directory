@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (199)
+## Projects (200)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -181,7 +181,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Shaders (80)</b></summary>
+<summary><b>Shaders (81)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -263,6 +263,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [warp-drive-shader-bridge](./shaders/warp-drive-shader-bridge/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
 | [warp-shader-hero](./shaders/warp-shader-hero/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
 | [waves-shader-oscilloscope](./shaders/waves-shader-oscilloscope/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, Lucide |
+| [vhs-noise-distortion-hero](./shaders/vhs-noise-distortion-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, GSAP, Lucide |
 | [webgl-flowing-gradient-shader](./shaders/webgl-flowing-gradient-shader/) | shadcn/Tailwind v4/TS integration of a raw-WebGL flowing-gradient fragment shader, framed as the "PRISMA Shader Lab" — a cursor-reactive fractal field with viewfinder chrome, a layers/glow/speed control rail, and a live FPS/time/resolution telemetry HUD | React, TypeScript, Vite, Tailwind CSS v4, WebGL, Lucide |
 | [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
 
