@@ -11,6 +11,7 @@
 | [raw-form-design-system](./raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
 | [season-04-brutalist-store](./season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
+| [sticky-content-switch](./sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [super-travel-luxury-landing](./super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [superdesign-cinematic-agency](./superdesign-cinematic-agency/) | Interface experiment. | HTML, CSS, vanilla JS, Aspekta |
 | [superdesign-design-on-reality](./superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
