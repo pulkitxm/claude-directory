@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (250)
+## Projects (251)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -274,7 +274,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (46)</b></summary>
+<summary><b>Templates (47)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -283,6 +283,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [browser-core-devtools-template](./templates/browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
 | [clinical-luxury-conversion](./templates/clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
 | [cyber-serif-template](./templates/cyber-serif-template/) | Interface experiment. | Static HTML/CSS/JS, Newsreader, Inter, Space Grotesk |
+| [emerald-glass-system](./templates/emerald-glass-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [enterprise-admin-saas-landing](./templates/enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [disruptor-brutalist-template](./templates/disruptor-brutalist-template/) | Interface experiment. | Static HTML/CSS/JS, Ranchers, Space Mono, Plus Jakarta Sans, Archivo |
 | [editorial-naturalism-design-system](./templates/editorial-naturalism-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Newsreader, Instrument Sans |

@@ -7,6 +7,7 @@
 | [browser-core-devtools-template](./browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
 | [clinical-luxury-conversion](./clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
 | [cyber-serif-template](./cyber-serif-template/) | Interface experiment. | Static HTML/CSS/JS, Newsreader, Inter, Space Grotesk |
+| [emerald-glass-system](./emerald-glass-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [enterprise-admin-saas-landing](./enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [disruptor-brutalist-template](./disruptor-brutalist-template/) | Interface experiment. | Static HTML/CSS/JS, Ranchers, Space Mono, Plus Jakarta Sans, Archivo |
 | [editorial-naturalism-design-system](./editorial-naturalism-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Newsreader, Instrument Sans |
