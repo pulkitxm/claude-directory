@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Magic — Horizontal Ticker</title>
+    <meta
+      name="description"
+      content="A continuous horizontal ticker-tape sentence about Real Magic, driven by GSAP ScrollTrigger. In every bottle, discover the undeniable Real Magic of sharing pure Refreshment that brings us Together."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23f40009'/%3E%3Cpath d='M5 19c4-4 8 4 11 0s7 2 11-1' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Grain / vignette overlays -->
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <!-- Fixed chrome -->
+    <header class="chrome">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="22" height="22">
+            <circle cx="20" cy="20" r="19" fill="#fff" />
+            <path
+              d="M5 24c5-6 10 5 15-1s9 4 15-2"
+              fill="none"
+              stroke="#f40009"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+        <span class="brand__name">real&nbsp;magic</span>
+      </div>
+      <nav class="chrome__nav" aria-hidden="true">
+        <span>est. 1886</span>
+        <span class="dot">•</span>
+        <span>scroll to read</span>
+      </nav>
+    </header>
+
+    <!-- Scroll progress bar -->
+    <div class="progress" aria-hidden="true"><span class="progress__fill"></span></div>
+
+    <!-- Pinned ticker stage -->
+    <section class="stage" id="stage" aria-label="Real Magic horizontal ticker">
+      <!-- The single, very long flex line. Every word, accent and inline glyph
+           is a direct child so they all flow on one continuous baseline with
+           variable gaps. JS measures this row and scrubs its x by scroll. -->
+      <div class="line" id="line">
+        <span class="word w-faint">In</span>
+        <span class="word">every</span>
+
+        <!-- inline glyph: a single contour bottle, sits like a noun -->
+        <span class="glyph glyph--bottle" aria-hidden="true">
+          <svg viewBox="0 0 60 150" height="1.5em">
+            <path
+              d="M22 6c0-2.5 16-2.5 16 0 0 8 .6 12 2.4 16.5C42.5 28 44 33 44 40c0 7-2 12-2 22s2.5 16 2.5 34v40c0 4-25 4-25 0V96c0-18 2.5-24 2.5-34s-2-15-2-22c0-7 1.5-12 3.6-17.5C25.4 18 26 14 26 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+            />
+            <path d="M30 6V0" stroke="currentColor" stroke-width="6" stroke-linecap="round" />
+          </svg>
+        </span>
+
+        <span class="word">bottle,</span>
+
+        <!-- inline glyph: rising bubbles, like an ellipsis -->
+        <span class="glyph glyph--bubbles" aria-hidden="true">
+          <svg viewBox="0 0 70 90" height="1.7em">
+            <circle class="bub" cx="20" cy="70" r="7" />
+            <circle class="bub" cx="40" cy="55" r="5" />
+            <circle class="bub" cx="26" cy="40" r="4" />
+            <circle class="bub" cx="48" cy="30" r="6" />
+            <circle class="bub" cx="34" cy="16" r="3.5" />
+          </svg>
+        </span>
+
+        <span class="word">discover</span>
+        <span class="word w-faint">the</span>
+        <span class="word">undeniable</span>
+
+        <!-- the hero accent pairing -->
+        <span class="word accent accent--script">Real</span>
+        <span class="word accent accent--huge">Magic</span>
+
+        <!-- inline glyph: the dynamic ribbon curve, Coca-Cola's signature swoosh -->
+        <span class="glyph glyph--ribbon" aria-hidden="true">
+          <svg viewBox="0 0 220 80" height="1.4em">
+            <path
+              class="ribbon-path"
+              d="M6 58 C 50 8, 80 8, 112 40 S 178 74, 214 22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+
+        <span class="word w-faint">of</span>
+        <span class="word">sharing</span>
+
+        <!-- inline glyph: a pour splash / droplet -->
+        <span class="glyph glyph--drop" aria-hidden="true">
+          <svg viewBox="0 0 60 90" height="1.5em">
+            <path
+              d="M30 4C30 4 8 40 8 58a22 22 0 0 0 44 0C52 40 30 4 30 4Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.6"
+            />
+            <path d="M22 52a8 8 0 0 0 4 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          </svg>
+        </span>
+
+        <span class="word">pure</span>
+        <span class="word accent accent--script">Refreshment</span>
+
+        <!-- inline glyph: two clinking bottles -->
+        <span class="glyph glyph--cheers" aria-hidden="true">
+          <svg viewBox="0 0 120 140" height="1.8em">
+            <g transform="rotate(-16 40 80)">
+              <path
+                d="M30 18c0-2 14-2 14 0 0 6 .5 9 2 12.5 1.6 3.5 2.5 7 2.5 12 0 6-1.6 9-1.6 17v44c0 3-20 3-20 0V71c0-8-1.6-11-1.6-17 0-5 .9-8.5 2.5-12C29.5 38.5 30 35 30 30"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+              />
+            </g>
+            <g transform="rotate(16 80 80)">
+              <path
+                d="M76 18c0-2 14-2 14 0 0 6 .5 9 2 12.5 1.6 3.5 2.5 7 2.5 12 0 6-1.6 9-1.6 17v44c0 3-20 3-20 0V71c0-8-1.6-11-1.6-17 0-5 .9-8.5 2.5-12C75.5 38.5 76 35 76 30"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+              />
+            </g>
+            <!-- spark of contact -->
+            <g class="spark">
+              <path d="M60 14v-9M60 14l7-6M60 14l-7-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+            </g>
+          </svg>
+        </span>
+
+        <span class="word w-faint">that</span>
+        <span class="word">brings</span>
+        <span class="word w-faint">us</span>
+        <span class="word accent accent--huge">Together</span>
+
+        <!-- closing heart, like a full stop -->
+        <span class="glyph glyph--heart" aria-hidden="true">
+          <svg viewBox="0 0 90 80" height="1.3em">
+            <path
+              d="M45 72S8 48 8 26C8 13 18 6 28 6c8 0 13 5 17 11 4-6 9-11 17-11 10 0 20 7 20 20 0 22-37 46-37 46Z"
+              fill="currentColor"
+              stroke="none"
+            />
+          </svg>
+        </span>
+
+        <span class="word w-faint w-end">·</span>
+      </div>
+
+      <!-- caption pinned bottom-left while reading -->
+      <div class="caption" aria-hidden="true">
+        <span class="caption__idx">01</span>
+        <span class="caption__txt">a single sentence, read sideways</span>
+      </div>
+    </section>
+
+    <!-- after the pin releases, a quiet outro -->
+    <section class="outro">
+      <p class="outro__kicker">the end of the line</p>
+      <h2 class="outro__head">Open happiness.</h2>
+      <p class="outro__sub">In every bottle, the same undeniable Real Magic.</p>
+    </section>
+
+    <script src="./assets/js/gsap.min.js"></script>
+    <script src="./assets/js/ScrollTrigger.min.js"></script>
+    <script src="./assets/js/ticker.js"></script>
+  </body>
+</html>
