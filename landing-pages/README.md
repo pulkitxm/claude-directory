@@ -1,6 +1,6 @@
 # Landing pages
 
-22 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+21 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -13,7 +13,6 @@
 | [dot-daily-calm-landing](./dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
 | [forma-video-landing](./forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [groundai-landing](./groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
-| [lumina-neobrutalist-saas-landing](./lumina-neobrutalist-saas-landing/) | Pixel-faithful neo-brutalist SaaS landing page for "Lumina" with hard-offset black shadows, Cabinet Grotesk + Satoshi type, a browser-mockup dashboard, an infinite brand marquee, and press-down push buttons | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [mentality-landing](./mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
 | [mindloop-mono-landing](./mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
 | [neuralyn-dark-landing](./neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |

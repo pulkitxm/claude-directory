@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (207)
+## Projects (211)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -70,7 +70,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (22)</b></summary>
+<summary><b>Landing pages (21)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -83,7 +83,6 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [dot-daily-calm-landing](./landing-pages/dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
 | [forma-video-landing](./landing-pages/forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [groundai-landing](./landing-pages/groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
-| [lumina-neobrutalist-saas-landing](./landing-pages/lumina-neobrutalist-saas-landing/) | Pixel-faithful neo-brutalist SaaS landing page for "Lumina" with hard-offset black shadows, Cabinet Grotesk + Satoshi type, a browser-mockup dashboard, an infinite brand marquee, and press-down push buttons | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [mentality-landing](./landing-pages/mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
 | [mindloop-mono-landing](./landing-pages/mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
 | [neuralyn-dark-landing](./landing-pages/neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
@@ -294,11 +293,16 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (2)</b></summary>
+<summary><b>Templates (7)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | "Superdesign®" digital-brutalist agency landing page rebuilt same-to-same from a reference — strict electric-orange/black/white palette, vendored Archivo Black + Space Mono + Inter, a floating black pill nav, a 16vw SUPER/DESIGN typographic hero, a 12s rotating SVG scroll indicator, a skewed dual-row marquee band, a vertical hover-driven service list with rotating arrows, and a 14vw LET'S TALK CTA | HTML, CSS, vanilla JS |
+| [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Pixel-faithful neo-brutalist SaaS landing page for "Lumina" with hard-offset black shadows, Cabinet Grotesk + Satoshi type, a browser-mockup dashboard, an infinite brand marquee, and press-down push buttons | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [raw-form-design-system](./templates/raw-form-design-system/) | "Studio/Raw" brutalist e-commerce design system rebuilt same-to-same from a reference — warm-palette Swiss brutalism (#E4E2DD base, #DB4A2B accent) with vendored Clash Display + Satoshi, animated multiply-blend gradient blobs, an 18vw RAW/FORM. typographic hero, slide-from-left fill CTA buttons, 12vw OUTERWEAR/OBJECTS category dividers, a borderless 3/4 product grid with a Full Archive tile, a Designed for Movement campaign block, and a dark footer with a 10% 2024 watermark | HTML, Tailwind, vanilla JS, Lucide |
+| [softly-wellness](./templates/softly-wellness/) | "Softly" — a warm, mobile-first digital-wellness landing page recreated same-to-same from a reference design: grain overlay, pastel blurred blobs, Outfit + Reenie Beanie type, float/reveal-on-scroll animations, three phone mockups, horizontal scenario scroll, and a FAQ accordion; fully self-contained with vendored Tailwind, fonts, and inline lucide icons | HTML, Tailwind CSS, Vanilla JS |
+| [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | "Super Travel" luxury editorial travel landing page — a warm off-white (#fdf8f3), dusty-rose-accented (#e4a4bd) single page on League Spartan, with a glassmorphic fixed nav, a ~15vw "LUXURY / journeys" hero pairing an italic accent word with a grayscale-to-color villa card and a 4s-bouncing circular "01" concierge badge, a 3-column bordered "Art of Service" grid that floods rose on hover, a staggered "Exquisite Portfolio" with offset cases and a 96px "View Case" hover disc, a by-invitation membership block, and a multi-column footer — all reveal-up on IntersectionObserver with weighted cubic-bezier motion; fonts + Unsplash imagery vendored, fully offline | HTML, CSS, vanilla JS |
 | [superdesign-red-noir-landing](./templates/superdesign-red-noir-landing/) | Pixel-faithful "Red Noir" Superdesign AI landing page recreated 1:1 from a reference — #ef233c-on-black palette with vendored Manrope + Inter, twin box-shadow parallax starfields, a faint masked grid, a conic-gradient shiny CTA and a spinning "Get Access" sweep, gradient-clipped hero headline with a hand-drawn underline, a 4-card bento feature grid, a full-bleed red testimonial banner, 3-tier pricing with a featured Pro card, a waitlist CTA, and a giant outlined SUPERDESIGN footer wordmark | React, TanStack Start, TypeScript, Tailwind, lucide-react |
+| [superdesign-technical-system](./templates/superdesign-technical-system/) | Pixel-faithful "Superdesign — The AI Design Reviewer" template landing page built on a Technical-Minimalist blueprint design system: a Paper (#F7F7F5) / Forest (#1A3C2B) / Grid hairline palette, Space Grotesk + JetBrains Mono, a full-page mosaic grid background, fixed indexed nav, a luminosity-blended wireframe hero, a 1px-gap 2×2 bento feature grid, an animated SVG network-topology graph, monospaced testimonial cards, and an L-corner-marked "Tell your CTO" form CTA; zero shadows, fully square corners, fonts + hero image vendored locally | HTML, CSS, Space Grotesk, JetBrains Mono |
 
 </details>
