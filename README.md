@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (213)
+## Projects (214)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,7 +293,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (9)</b></summary>
+<summary><b>Templates (10)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -306,5 +306,6 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [superdesign-design-on-reality](./templates/superdesign-design-on-reality/) | Pixel-faithful poster-modernist "Design on Reality. Not Mockups." landing page recreated same-to-same — cream #E3E2DE base with a single cobalt #1351AA accent, a framed 1600px center column, a strict 12-column grid with a sticky label sidebar down every section, hairline #C7C7C7 dividers, zero radius / zero shadows, oversized General Sans display type, and zero-radius poster buttons with linear color-swap hovers | HTML, CSS, General Sans |
 | [superdesign-obsidian-lime](./templates/superdesign-obsidian-lime/) | "Obsidian & Lime" futuristic glassmorphism landing for the fictional AI design tool Superdesign, rebuilt same-to-same from a reference — a max-w-[1800px] floating rounded-shell on #0a0a0a with a 60px grid + fractal-noise overlay and blurred lime/emerald glow spheres, a serif-italic lime-gradient "Speed" hero with underline squiggle and glass app-preview mockup, a Neural Engine 3.0 / Atomic Tokens / 10x / Global CDN bento grid, a light #e5e5e5 methodology section with a circular portrait + glass "Sarah Jenkins, CTO" testimonial, a SUPER-watermark footer, and a spring-smoothed scroll-progress bar; vendored Space Grotesk + JetBrains Mono | HTML, vanilla CSS, vanilla JS |
 | [superdesign-technical-system](./templates/superdesign-technical-system/) | Pixel-faithful "Superdesign — The AI Design Reviewer" template landing page built on a Technical-Minimalist blueprint design system: a Paper (#F7F7F5) / Forest (#1A3C2B) / Grid hairline palette, Space Grotesk + JetBrains Mono, a full-page mosaic grid background, fixed indexed nav, a luminosity-blended wireframe hero, a 1px-gap 2×2 bento feature grid, an animated SVG network-topology graph, monospaced testimonial cards, and an L-corner-marked "Tell your CTO" form CTA; zero shadows, fully square corners, fonts + hero image vendored locally | HTML, CSS, Space Grotesk, JetBrains Mono |
+| [synapse-design-system](./templates/synapse-design-system/) | "Synapse" futuristic vantablack (#030303) design-system landing built same-to-same from a spec — violet (#8B5CF6) + cyan (#06B6D4) neon accents, vendored Instrument Serif + Inter, three floating blurred ambient orbs, a 672px glass nav pill, a massive centered serif hero with a shimmering gradient last word and staggered load entrances, a Shiny Border Button with a 4s spinning conic-gradient border, a 40s infinite metrics ticker, a 6-card reveal-on-scroll feature grid with violet/cyan hover glows, a syntax-highlighted synapse.config.ts IDE block with a copy button, and an emerald "All Systems Operational" pulsing-dot footer; cubic-bezier(0.23,1,0.32,1) motion throughout, fully offline | HTML, CSS, vanilla JS, Instrument Serif, Inter |
 
 </details>
