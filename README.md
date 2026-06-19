@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (218)
+## Projects (219)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,7 +293,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (14)</b></summary>
+<summary><b>Templates (15)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -301,6 +301,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [flux-editorial-saas-landing](./templates/flux-editorial-saas-landing/) | Pixel-faithful high-contrast editorial B2C SaaS landing page for "Flux" rebuilt same-to-same from a superdesign reference — brutalist-lite aesthetic with massive Anton display type, Satoshi body, a #FFE17C golden-yellow accent over white/charcoal, a 40px grid background, a 15-degree rotated yellow highlight bar behind the hero keyword, an abstract browser-UI mockup with a properties panel, a charcoal/dark-gray problem-vs-solution split, a bento feature grid with animated pulse blocks + code snippet + avatar stack, a sticky 1:2 how-it-works flow with giant numerals, alternating light/dark testimonial cards, and a yellow final CTA with a 26vw ghost wordmark; Anton + Satoshi vendored locally, fully offline | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | "Superdesign®" digital-brutalist agency landing page rebuilt same-to-same from a reference — strict electric-orange/black/white palette, vendored Archivo Black + Space Mono + Inter, a floating black pill nav, a 16vw SUPER/DESIGN typographic hero, a 12s rotating SVG scroll indicator, a skewed dual-row marquee band, a vertical hover-driven service list with rotating arrows, and a 14vw LET'S TALK CTA | HTML, CSS, vanilla JS |
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Pixel-faithful neo-brutalist SaaS landing page for "Lumina" with hard-offset black shadows, Cabinet Grotesk + Satoshi type, a browser-mockup dashboard, an infinite brand marquee, and press-down push buttons | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
+| [lumina-portfolio-template](./templates/lumina-portfolio-template/) | Premium editorial portfolio template rebuilt same-to-same from a superdesign reference — a navy #171e19 / sage #b7c6c2 design system with cyan/taupe/charcoal supports, vendored Anton + Plus Jakarta Sans, a mix-blend-difference fixed nav, an 18vw Anton hero with a sage text-outline second line and floating 120px-blur ambient orbs, a white asymmetric 2-column masonry "Selected Works" grid with 96px hover-reveal "View" discs and image scale-1.1, a navy featured section with a cyan -48px offset square behind a grayscale image, a #fafafa 12-column capabilities list with hover-extending line prefixes, a charcoal testimonial carousel with a 30rem ghost quote mark, and a navy "Let's Create" footer; IntersectionObserver reveals, cubic-bezier(0.16,1,0.3,1) easing, fonts + procedural SVG imagery vendored, fully offline | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
 | [raw-form-design-system](./templates/raw-form-design-system/) | "Studio/Raw" brutalist e-commerce design system rebuilt same-to-same from a reference — warm-palette Swiss brutalism (#E4E2DD base, #DB4A2B accent) with vendored Clash Display + Satoshi, animated multiply-blend gradient blobs, an 18vw RAW/FORM. typographic hero, slide-from-left fill CTA buttons, 12vw OUTERWEAR/OBJECTS category dividers, a borderless 3/4 product grid with a Full Archive tile, a Designed for Movement campaign block, and a dark footer with a 10% 2024 watermark | HTML, Tailwind, vanilla JS, Lucide |
 | [softly-wellness](./templates/softly-wellness/) | "Softly" — a warm, mobile-first digital-wellness landing page recreated same-to-same from a reference design: grain overlay, pastel blurred blobs, Outfit + Reenie Beanie type, float/reveal-on-scroll animations, three phone mockups, horizontal scenario scroll, and a FAQ accordion; fully self-contained with vendored Tailwind, fonts, and inline lucide icons | HTML, Tailwind CSS, Vanilla JS |
 | [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | "Super Travel" luxury editorial travel landing page — a warm off-white (#fdf8f3), dusty-rose-accented (#e4a4bd) single page on League Spartan, with a glassmorphic fixed nav, a ~15vw "LUXURY / journeys" hero pairing an italic accent word with a grayscale-to-color villa card and a 4s-bouncing circular "01" concierge badge, a 3-column bordered "Art of Service" grid that floods rose on hover, a staggered "Exquisite Portfolio" with offset cases and a 96px "View Case" hover disc, a by-invitation membership block, and a multi-column footer — all reveal-up on IntersectionObserver with weighted cubic-bezier motion; fonts + Unsplash imagery vendored, fully offline | HTML, CSS, vanilla JS |
