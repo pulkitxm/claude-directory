@@ -2,7 +2,7 @@
 
 A directory of experimental landing pages, hero sections, and interactive prototypes generated with Claude Fable 5.
 
-Most project folders are self-contained and include the originating prompt as `prompt.md`, preserved alongside the generated code. Some prompts were inspired by or adapted from public prompt/design references, including [cnemri's gist](https://gist.github.com/cnemri/c917e11b3a6936823b509dcff53392aa), [motionsites.ai](https://motionsites.ai/), [lafys.com](https://lafys.com/), [designprompts.dev](https://www.designprompts.dev/), and [21st.dev](https://21st.dev).
+Most project folders are self-contained and include the originating prompt as `prompt.md`, preserved alongside the generated code. Some prompts were inspired by or adapted from public prompt/design references, including [cnemri's gist](https://gist.github.com/cnemri/c917e11b3a6936823b509dcff53392aa), [motionsites.ai](https://motionsites.ai/), [lafys.com](https://lafys.com/), [designprompts.dev](https://www.designprompts.dev/), [21st.dev](https://21st.dev), and [superdesign.dev](https://superdesign.dev/).
 
 The code in this repository was generated on my side with Claude Fable 5. This whole repo is vibe coded, so use it with precautions: review the code, check dependencies, verify accessibility/responsiveness, and run the local project checks before using anything in production.
 
