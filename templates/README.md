@@ -10,6 +10,7 @@
 | [super-travel-luxury-landing](./super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [superdesign-cinematic-agency](./superdesign-cinematic-agency/) | Interface experiment. | HTML, CSS, vanilla JS, Aspekta |
 | [superdesign-design-on-reality](./superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
+| [superdesign-modern-atmospheric](./superdesign-modern-atmospheric/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lora, Space Grotesk |
 | [superdesign-obsidian-lime](./superdesign-obsidian-lime/) | Interface experiment. | HTML, vanilla CSS, vanilla JS |
 | [superdesign-red-noir-landing](./superdesign-red-noir-landing/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind, lucide-react |
 | [superdesign-studio-editorial](./superdesign-studio-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
