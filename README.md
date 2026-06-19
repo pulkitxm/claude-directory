@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (212)
+## Projects (213)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,7 +293,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (8)</b></summary>
+<summary><b>Templates (9)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -304,6 +304,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | "Super Travel" luxury editorial travel landing page — a warm off-white (#fdf8f3), dusty-rose-accented (#e4a4bd) single page on League Spartan, with a glassmorphic fixed nav, a ~15vw "LUXURY / journeys" hero pairing an italic accent word with a grayscale-to-color villa card and a 4s-bouncing circular "01" concierge badge, a 3-column bordered "Art of Service" grid that floods rose on hover, a staggered "Exquisite Portfolio" with offset cases and a 96px "View Case" hover disc, a by-invitation membership block, and a multi-column footer — all reveal-up on IntersectionObserver with weighted cubic-bezier motion; fonts + Unsplash imagery vendored, fully offline | HTML, CSS, vanilla JS |
 | [superdesign-cinematic-agency](./templates/superdesign-cinematic-agency/) | "Superdesign" dark cinematic creative-agency landing rebuilt same-to-same from a reference — near-black #050505 base, vendored Aspekta 300/500/700/900, a mix-blend-difference nav, a perspective:2000px 3D rolodex cube hero tumbling on the X-axis behind a giant SUPERDESIGN wordmark, a Case Studies bento grid (macOS traffic-light featured panel + grayscale-on-hover sub-projects), a #0B0216 three-tier pricing block with a #7C3AED blur(100px) glow and a white featured Growth card, a startups banner, a #1A0B2E glass price calculator with a live purple-filled range slider + monthly/yearly toggle, and a massive LET'S BUILD THE IMPOSSIBLE. editorial footer | HTML, CSS, vanilla JS, Aspekta |
 | [superdesign-design-on-reality](./templates/superdesign-design-on-reality/) | Pixel-faithful poster-modernist "Design on Reality. Not Mockups." landing page recreated same-to-same — cream #E3E2DE base with a single cobalt #1351AA accent, a framed 1600px center column, a strict 12-column grid with a sticky label sidebar down every section, hairline #C7C7C7 dividers, zero radius / zero shadows, oversized General Sans display type, and zero-radius poster buttons with linear color-swap hovers | HTML, CSS, General Sans |
+| [superdesign-studio-editorial](./templates/superdesign-studio-editorial/) | Typography-first black-and-white editorial creative-studio template recreated from a reference — pure #000/#FFF palette with #525252 metadata, vendored Inter + JetBrains Mono, a 32px mix-blend-difference custom cursor that lerp-follows and scales 2.5x on hover, a mix-blend-difference fixed nav with a rotating plus toggle and full-screen clip-path menu, a 12vw "Design Studio" hero with staggered per-letter slide-up reveals, a paused-on-hover asymmetrical-radius project marquee (5/7 grayscale-to-color cards), a centered intro statement, a staggered two-column 4:3 project grid with hover overlays + arrow-up-right badges and mono metadata rows, and a dark #0A0A0A footer with a giant ghosted "sd" watermark; cubic-bezier(0.16,1,0.3,1) easing throughout, fully self-contained offline | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
 | [superdesign-technical-system](./templates/superdesign-technical-system/) | Pixel-faithful "Superdesign — The AI Design Reviewer" template landing page built on a Technical-Minimalist blueprint design system: a Paper (#F7F7F5) / Forest (#1A3C2B) / Grid hairline palette, Space Grotesk + JetBrains Mono, a full-page mosaic grid background, fixed indexed nav, a luminosity-blended wireframe hero, a 1px-gap 2×2 bento feature grid, an animated SVG network-topology graph, monospaced testimonial cards, and an L-corner-marked "Tell your CTO" form CTA; zero shadows, fully square corners, fonts + hero image vendored locally | HTML, CSS, Space Grotesk, JetBrains Mono |
 
 </details>
