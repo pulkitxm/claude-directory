@@ -273,3 +273,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
 
 </details>
+
+<details>
+<summary><b>Templates (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [raw-form-design-system](./templates/raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
+
+</details>
