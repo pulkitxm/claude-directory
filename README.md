@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (212)
+## Projects (213)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,7 +293,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (8)</b></summary>
+<summary><b>Templates (9)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -304,6 +304,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | "Super Travel" luxury editorial travel landing page — a warm off-white (#fdf8f3), dusty-rose-accented (#e4a4bd) single page on League Spartan, with a glassmorphic fixed nav, a ~15vw "LUXURY / journeys" hero pairing an italic accent word with a grayscale-to-color villa card and a 4s-bouncing circular "01" concierge badge, a 3-column bordered "Art of Service" grid that floods rose on hover, a staggered "Exquisite Portfolio" with offset cases and a 96px "View Case" hover disc, a by-invitation membership block, and a multi-column footer — all reveal-up on IntersectionObserver with weighted cubic-bezier motion; fonts + Unsplash imagery vendored, fully offline | HTML, CSS, vanilla JS |
 | [superdesign-cinematic-agency](./templates/superdesign-cinematic-agency/) | "Superdesign" dark cinematic creative-agency landing rebuilt same-to-same from a reference — near-black #050505 base, vendored Aspekta 300/500/700/900, a mix-blend-difference nav, a perspective:2000px 3D rolodex cube hero tumbling on the X-axis behind a giant SUPERDESIGN wordmark, a Case Studies bento grid (macOS traffic-light featured panel + grayscale-on-hover sub-projects), a #0B0216 three-tier pricing block with a #7C3AED blur(100px) glow and a white featured Growth card, a startups banner, a #1A0B2E glass price calculator with a live purple-filled range slider + monthly/yearly toggle, and a massive LET'S BUILD THE IMPOSSIBLE. editorial footer | HTML, CSS, vanilla JS, Aspekta |
 | [superdesign-design-on-reality](./templates/superdesign-design-on-reality/) | Pixel-faithful poster-modernist "Design on Reality. Not Mockups." landing page recreated same-to-same — cream #E3E2DE base with a single cobalt #1351AA accent, a framed 1600px center column, a strict 12-column grid with a sticky label sidebar down every section, hairline #C7C7C7 dividers, zero radius / zero shadows, oversized General Sans display type, and zero-radius poster buttons with linear color-swap hovers | HTML, CSS, General Sans |
+| [superdesign-obsidian-lime](./templates/superdesign-obsidian-lime/) | "Obsidian & Lime" futuristic glassmorphism landing for the fictional AI design tool Superdesign, rebuilt same-to-same from a reference — a max-w-[1800px] floating rounded-shell on #0a0a0a with a 60px grid + fractal-noise overlay and blurred lime/emerald glow spheres, a serif-italic lime-gradient "Speed" hero with underline squiggle and glass app-preview mockup, a Neural Engine 3.0 / Atomic Tokens / 10x / Global CDN bento grid, a light #e5e5e5 methodology section with a circular portrait + glass "Sarah Jenkins, CTO" testimonial, a SUPER-watermark footer, and a spring-smoothed scroll-progress bar; vendored Space Grotesk + JetBrains Mono | HTML, vanilla CSS, vanilla JS |
 | [superdesign-technical-system](./templates/superdesign-technical-system/) | Pixel-faithful "Superdesign — The AI Design Reviewer" template landing page built on a Technical-Minimalist blueprint design system: a Paper (#F7F7F5) / Forest (#1A3C2B) / Grid hairline palette, Space Grotesk + JetBrains Mono, a full-page mosaic grid background, fixed indexed nav, a luminosity-blended wireframe hero, a 1px-gap 2×2 bento feature grid, an animated SVG network-topology graph, monospaced testimonial cards, and an L-corner-marked "Tell your CTO" form CTA; zero shadows, fully square corners, fonts + hero image vendored locally | HTML, CSS, Space Grotesk, JetBrains Mono |
 
 </details>
