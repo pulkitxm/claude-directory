@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (240)
+## Projects (243)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -293,7 +293,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (36)</b></summary>
+<summary><b>Templates (39)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -334,6 +334,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [superdesign-studio-editorial](./templates/superdesign-studio-editorial/) | Typography-first black-and-white editorial creative-studio template recreated from a reference — pure #000/#FFF palette with #525252 metadata, vendored Inter + JetBrains Mono, a 32px mix-blend-difference custom cursor that lerp-follows and scales 2.5x on hover, a mix-blend-difference fixed nav with a rotating plus toggle and full-screen clip-path menu, a 12vw "Design Studio" hero with staggered per-letter slide-up reveals, a paused-on-hover asymmetrical-radius project marquee (5/7 grayscale-to-color cards), a centered intro statement, a staggered two-column 4:3 project grid with hover overlays + arrow-up-right badges and mono metadata rows, and a dark #0A0A0A footer with a giant ghosted "sd" watermark; cubic-bezier(0.16,1,0.3,1) easing throughout, fully self-contained offline | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
 | [superdesign-technical-system](./templates/superdesign-technical-system/) | Pixel-faithful "Superdesign — The AI Design Reviewer" template landing page built on a Technical-Minimalist blueprint design system: a Paper (#F7F7F5) / Forest (#1A3C2B) / Grid hairline palette, Space Grotesk + JetBrains Mono, a full-page mosaic grid background, fixed indexed nav, a luminosity-blended wireframe hero, a 1px-gap 2×2 bento feature grid, an animated SVG network-topology graph, monospaced testimonial cards, and an L-corner-marked "Tell your CTO" form CTA; zero shadows, fully square corners, fonts + hero image vendored locally | HTML, CSS, Space Grotesk, JetBrains Mono |
 | [synapse-design-system](./templates/synapse-design-system/) | "Synapse" futuristic vantablack (#030303) design-system landing built same-to-same from a spec — violet (#8B5CF6) + cyan (#06B6D4) neon accents, vendored Instrument Serif + Inter, three floating blurred ambient orbs, a 672px glass nav pill, a massive centered serif hero with a shimmering gradient last word and staggered load entrances, a Shiny Border Button with a 4s spinning conic-gradient border, a 40s infinite metrics ticker, a 6-card reveal-on-scroll feature grid with violet/cyan hover glows, a syntax-highlighted synapse.config.ts IDE block with a copy button, and an emerald "All Systems Operational" pulsing-dot footer; cubic-bezier(0.23,1,0.32,1) motion throughout, fully offline | HTML, CSS, vanilla JS, Instrument Serif, Inter |
+| [terroir-tasting-room](./templates/terroir-tasting-room/) | "Terroir" dark minimalist editorial luxury wine tasting-room landing page rebuilt from a superdesign reference — a #121212/#EDEAE4 palette with Sage/Sienna/Burgundy earth accents, a global baseFrequency-0.65 SVG grain overlay at 5%, vendored Cormorant Garamond + Manrope, a centered-logo blur header, an asymmetrical 96px serif hero with a 24px-indented sage italic and a bouncing arrow, a 4-column hover-reveal Flavor Wall (mix-blend-overlay images, 8px text slide), a 50/50 Staff-Pick spotlight, a live 4/6 sage capacity Case Builder with circular ± controls, a single-hairline Guest/Member split, a grayscale-to-color How It's Made grid, and a 4-column footer; all reveal-up on IntersectionObserver (800ms/20px), fonts + procedural imagery vendored, fully offline | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | A single-screen motion study of a vertical text-clip, letter-by-letter slide-down — each glyph of a giant Space Grotesk headline ("MOTION / IN EVERY / LETTER.") is wrapped in an overflow-hidden vertical clip column and pours down from above (translateY(-110%)→0) with an opacity + blur(6px)→0 settle, staggered 70ms per letter continuously across all lines on a cubic-bezier(.22,1,.36,1) expo-out, then auto-loops with a 2.2s hold and a Replay button; near-black #0b0b0c canvas with off-white #f4f2ec type, JetBrains Mono chrome, a warm #e8552d accent, a 4% fractal-noise grain overlay, and a reduced-motion fallback; fonts vendored, fully offline | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
 
 </details>
