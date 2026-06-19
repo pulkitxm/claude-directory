@@ -307,6 +307,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [superdesign-architectural-type](./templates/superdesign-architectural-type/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Tight, Inter, JetBrains Mono |
 | [superdesign-crimson-craft](./templates/superdesign-crimson-craft/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Poppins, Space Grotesk |
+| [superdesign-neo-brutalist-acid](./templates/superdesign-neo-brutalist-acid/) | Interface experiment. | HTML, CSS, vanilla JS, Dela Gothic One, Space Grotesk, Space Mono |
 | [superdesign-cinematic-agency](./templates/superdesign-cinematic-agency/) | Interface experiment. | HTML, CSS, vanilla JS, Aspekta |
 | [superdesign-design-on-reality](./templates/superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
 | [superdesign-editorial-grid](./templates/superdesign-editorial-grid/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Space Grotesk, Space Mono |
