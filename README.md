@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (299)
+## Projects (301)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -74,7 +74,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (55)</b></summary>
+<summary><b>Landing pages (57)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -86,6 +86,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [asme-liquid-glass-landing](./landing-pages/asme-liquid-glass-landing/) | Dark cinematic Asme single-page landing site with liquid-glass UI details | React, TypeScript, Vite, Tailwind CSS |
 | [astral-veil-h6](./landing-pages/astral-veil-h6/) | Cosmic-nocturne SaaS landing for "Novela" — near-black canvas, violet/cobalt nebula glows, frosted glass, Playfair Display headlines, CSS starfield, drifting UI fragments, trust marquee, and a floating constellation of integration capsules | HTML, CSS, Vanilla JS |
 | [atelier-noir-h7](./landing-pages/atelier-noir-h7/) | "Maison Éclisse" — a quiet, editorial haute-couture fashion-house lookbook (Atelier Noir aesthetic) on an ink-on-bone palette with Cormorant Garamond serif display, full-bleed hero, rotating seal badge, alternating diptychs, a staggered product grid, an editorial banner, journal, and slide-in menu/search overlays | HTML, CSS, JavaScript, IntersectionObserver, self-hosted fonts |
+| [atelier-press-h51](./landing-pages/atelier-press-h51/) | "Atelier Press" editorial paper-grid creative-workspace membership landing — warm cream (#FFFDF0) paper on near-black ink with a single vermilion (#E64E2A) accent, vendored Familjen Grotesk display + Arial body, a hairline modular grid with a 62/38 split hero (giant -0.06em headline + tall portrait photo over a full-bleed landscape band), a paused-on-hover keyword marquee, an indexed 2×2 spaces grid with nudging ↗ arrows, an underline-marked manifesto, a four-up stats band, three hairline membership plans, and an email-capture closer; IntersectionObserver reveal-ups, image hover scales, prefers-reduced-motion aware, fully offline | HTML, CSS, vanilla JS, Familjen Grotesk |
 | [aura-email-landing](./landing-pages/aura-email-landing/) | Dark, cinematic landing page for "Aura", an AI-native email client, with fullscreen video, a shiny gradient headline, a macOS-style menu bar, and a liquid-glass inbox mockup | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide, Supabase |
 | [auric-clinic-glow-h37](./landing-pages/auric-clinic-glow-h37/) | "Auric" precision dermaceutical-clinic landing (Clinical Warmth aesthetic) — clay-terracotta on ivory-cream with Archivo, a floating pill nav, full-bleed glowing-skin hero with staggered word reveal, an overlapping three-column action grid, a clay marquee, signature-treatment cards, a count-up science split, a quiet testimonial, and a deep-clay CTA band | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [auroracast-hls-landing](./landing-pages/auroracast-hls-landing/) | Modern landing page with a full-screen HLS video background, glassmorphic navigation header, and bottom-left hero content | React, Vite, hls.js |
@@ -130,6 +131,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [vellum-atelier-h33](./landing-pages/vellum-atelier-h33/) | "Vellum" luxury hair atelier landing ("Sculptural Serif Atelier" aesthetic) on a warm paper/ink/gold palette with Unbounded + Figtree + Sacramento, a character-by-character animated hero wordmark, extreme top-rounded image panels, a dark service menu with cursor-tracked hover previews, an offset 3-up portfolio grid, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [velvet-vellum-agency-h4](./landing-pages/velvet-vellum-agency-h4/) | "Velvet precision" marketing-agency landing page (Velvet Vellum) with an oxblood-maroon hero panel, giant Josefin Sans display type, a bento case-study grid, auto-rotating testimonials, and a faux-3D perspective floor-grid footer | HTML, CSS, Vanilla JS, IntersectionObserver |
 | [verdant-atelier-h40](./landing-pages/verdant-atelier-h40/) | "Forest & Gold" product-photography studio landing page (Verdant Atelier / Maya Kapoor) on deep forest-green with museum-gold + deep-orange accents, Playfair Display + Inter, signature arch-masked still-life imagery, a slow-spinning "View Projects" badge, a 12-column asymmetric editorial hero, dual infinite marquees, staggered work/services galleries, and a hamburger mobile overlay | HTML, CSS, Vanilla JS, IntersectionObserver, SVG, self-hosted fonts |
+| [verdant-pledge-bento-h49](./landing-pages/verdant-pledge-bento-h49/) | "Soft Editorial Bento" conservation-collective landing page (Verdant Pledge) on a white canvas of 40px rounded bento cards with a single electric-lime accent and Inter Tight, featuring a 5/7 lime+photo hero with floating glass map markers, an editorial missions table with rotated hover previews, image problem cards, a dark impact band with count-up stats, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
 | [viktor-oddy-landing](./landing-pages/viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [voltframe-dev-h29](./landing-pages/voltframe-dev-h29/) | "Bracketed Voltage" developer-portfolio landing on a near-black stage with one electric-yellow accent, a hairline framed hero box with glowing corner nodes, hover-yellow title words, floating particles, pulsing orbs, scroll-revealed skills/work/testimonials, and a mobile slide-in menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
