@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (338)
+## Projects (341)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -56,7 +56,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (90)</b></summary>
+<summary><b>Landing pages (93)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -81,8 +81,10 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [citron-atlas-h79](./landing-pages/citron-atlas-h79/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [claywell-solene-h5](./landing-pages/claywell-solene-h5/) | Warm-clay editorial landing page for "Solène", a terracotta-and-cream longevity & precision-movement clinic, with an asymmetric split hero, word-by-word heading reveals, zig-zag scroll sections, an infinite marquee, and a dark science band | HTML, CSS, JavaScript, Archivo |
 | [cobalt-repairworks-h78](./landing-pages/cobalt-repairworks-h78/) | "Workbench Editorial" electronics-repair landing for "RepairWorks" — warm paper-cream canvas with one confident cobalt accent, tight Host Grotesk display + IBM Plex Mono labels, square-glyph logo marks, a left-aligned hero with a "what we fix" device-card grid, a hover-pausing brand marquee, a 2-up services grid with mono spec ticks and prices, a 3×2 benefits grid, a tinted identity split, a 4-up image/quote testimonial grid, a 2-up FAQ, and a panelled final CTA; IntersectionObserver staggered scroll reveals, scroll-aware header, prefers-reduced-motion aware, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+| [concrete-bazaar-h87](./landing-pages/concrete-bazaar-h87/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [crimson-cut-studio-h72](./landing-pages/crimson-cut-studio-h72/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [design-rocket-email](./landing-pages/design-rocket-email/) | Email-style marketing landing page for a "Design Rocket Certificates" AI leadership course | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [dhara-heritage-edit-h88](./landing-pages/dhara-heritage-edit-h88/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [dot-daily-calm-landing](./landing-pages/dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
 | [ember-quietude-h26](./landing-pages/ember-quietude-h26/) | Warm paper-calm editorial landing page for focus-first productivity app "Lumo" (Ember Quietude aesthetic) — stone + single ember-orange accent, Instrument Serif display, floating pill nav with hover mega-menu, a fully hand-built HTML/CSS dashboard mockup (sidebar, dark focus timer, tasks, floating AI card), bento planning grid, organize cards, and a monthly/annual pricing toggle | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [fernhollow-pet-wellness-h68](./landing-pages/fernhollow-pet-wellness-h68/) | "Forest Apothecary" pet-wellness landing for "Fernhollow" — bone-cream canvas, fern-green ink, and a warm clay accent with Fraunces display type; centered hero with an auto-scrolling photo marquee, count-up stat band, ken-burns showreel panel, split service cards, dark process ritual with grayscale-to-color photos, botanical product grid, single-open FAQ accordion, and an ink-green newsletter CTA with a success state | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
@@ -120,6 +122,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [riso-rebel-fest-h20](./landing-pages/riso-rebel-fest-h20/) | Floating-pill neo-brutalist landing page for fictional design conference "Riso Rebel Fest" — warm off-white canvas, oversized riso-color bento cards with animated motifs, chunky Shrikhand display serif, grayscale-to-color speaker grid, tiered tickets, and scroll-reveal | HTML, CSS, Vanilla JS, vendored fonts |
+| [saaj-heritage-bazaar-h90](./landing-pages/saaj-heritage-bazaar-h90/) | "Heritage Bazaar Editorial" D2C landing for the Indian solid-wood furniture house Saaj Heritage — a warm cream/paper canvas with a burnt-sienna terracotta accent, Inter Tight display + Playfair Display italic, an oversized "Heritage Living" hero with an angled clip-path image cutout and an auto-rotating floating product card, a 5-up category row, an 8-product bestseller grid with slide-up View Product bars and INR pricing, a values strip, testimonials, a stroke-to-fill numbered craft journey, a sienna consultation CTA with a validated callback form, scroll-reveal, header shrink, and a slide-in mobile menu | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [sencha-atelier-h12](./landing-pages/sencha-atelier-h12/) | Wabi-editorial landing page for "Sencha Atelier", a ceremonial-matcha tea house — oversized Fraunces serif hero on warm paper, flush rounded showcase cards, editorial menu rows, count-up stats ribbon with marquee, and an asymmetric gallery | HTML, CSS, Vanilla JS, IntersectionObserver, Fraunces, Inter Tight |
 | [sentinel-meridian-h77](./landing-pages/sentinel-meridian-h77/) | "Cold War Dossier" sovereign-intelligence advisory landing for Sentinel Meridian — near-black ink with a steel-cyan accent and a single warning-amber signal color, a blueprint grid and grain overlay, a Forum serif display, a live classified dossier strip (ticking UTC clock + blinking LIVE dot), a Ken-Burns grayscale hero with mask-reveal headline and a scrolling mono intelligence-feed ticker, a numbered mandate column with a frosted pull-quote, hairline-split capability cards, a connected three-step method, count-up stats, and an encrypted final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [slate-stone-architectural-h73](./landing-pages/slate-stone-architectural-h73/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, Familjen Grotesk, Inter |
