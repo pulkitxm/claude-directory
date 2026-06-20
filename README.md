@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (285)
+## Projects (287)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -72,7 +72,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (48)</b></summary>
+<summary><b>Landing pages (49)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -158,12 +158,13 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Portfolios (7)</b></summary>
+<summary><b>Portfolios (8)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [circuit-ledger-h15](./portfolios/circuit-ledger-h15/) | Dark "quiet circuitry" developer portfolio with a live circuit-board canvas, champagne accents, bento stack and typewriter terminal | HTML, CSS, Vanilla JS, Canvas |
 | [crimson-press-kit-h25](./portfolios/crimson-press-kit-h25/) | Editorial spiral-bound magazine portfolio staged as a crimson brand press kit with print grain, collage cover, and scroll reveals | HTML, CSS, Vanilla JS |
+| [inkpress-atelier-h46](./portfolios/inkpress-atelier-h46/) | "Inkpress Atelier" risograph-print graphic-designer portfolio staged as a folded zine — cream paper frame, 4-color registration bar, Anton display type, diamond logo plate, services menu, colored works grid, and scroll reveals | HTML, CSS, Vanilla JS, Anton, Roboto Condensed |
 | [jack-3d-portfolio](./portfolios/jack-3d-portfolio/) | Dark-themed 3D creator portfolio landing page for Jack with gradient hero text | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [lumen-folio-h19](./portfolios/lumen-folio-h19/) | Soft editorial-minimalism personal portfolio with floating glass nav, drag carousel, typewriter hero, and scroll reveals | HTML, CSS, JavaScript |
 | [michael-smith-portfolio](./portfolios/michael-smith-portfolio/) | Dark single-page creator portfolio with GSAP / Framer Motion animations and HLS video | React, TypeScript, Vite, Tailwind CSS, GSAP, Framer Motion, hls.js, React Router |
