@@ -21,12 +21,12 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (274)
+## Projects (276)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
 <details>
-<summary><b>Hero sections (37)</b></summary>
+<summary><b>Hero sections (38)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -45,6 +45,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [ironclad-password-hero](./hero-sections/ironclad-password-hero/) | Password-manager hero section for Ironclad with animated product-style presentation | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [kubric-hero-landing](./hero-sections/kubric-hero-landing/) | Desktop-only dark hero for fictional studio "Kubric™" with a looping background video, an 8-layer progressive bottom blur, a self-drawing animated SVG logo, a character-by-character headline, and a video-ready reveal sequence | TanStack Start, React 19, Vite 7, Tailwind CSS v4 |
 | [mainframe-hero-landing](./hero-sections/mainframe-hero-landing/) | Full-screen hero landing page for a creative agency called "Mainframe" with custom Helvetica Now display fonts | React, TypeScript, Vite, Tailwind CSS |
+| [monocrit-studio-h27](./hero-sections/monocrit-studio-h27/) | Interactive near-monochrome Swiss-brutalist studio hero with a cursor-following image card, magnetic headline letters, and movement-driven image cycling | HTML, CSS, JavaScript, Bricolage Grotesque |
 | [nexora-automation-hero](./hero-sections/nexora-automation-hero/) | Single-viewport SaaS automation hero ("Nexora") with Instrument Serif / Inter type and Framer Motion | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [noctis-cinematic-hero](./hero-sections/noctis-cinematic-hero/) | NOCTIS full-screen dark cinematic hero with video background, nav, and timecode details | React, TypeScript, Vite, CSS |
 | [particle-hero](./hero-sections/particle-hero/) | Night-sky particle-canvas hero with a clickable gold-mode invert toggle, rotating spotlights, and a radial-reveal headline | React, TypeScript, Vite, Tailwind CSS, Canvas 2D, shadcn/ui, Lucide |
@@ -150,7 +151,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Portfolios (4)</b></summary>
+<summary><b>Portfolios (5)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
