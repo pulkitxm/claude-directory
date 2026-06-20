@@ -1,6 +1,6 @@
 # Landing pages
 
-42 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+43 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -11,6 +11,7 @@
 | [astral-veil-h6](./astral-veil-h6/) | Cosmic-nocturne SaaS landing for "Novela" — near-black canvas, violet/cobalt nebula glows, frosted glass, Playfair Display headlines, CSS starfield, drifting UI fragments, trust marquee, and a floating constellation of integration capsules | HTML, CSS, Vanilla JS |
 | [atelier-noir-h7](./atelier-noir-h7/) | "Maison Éclisse" — a quiet, editorial haute-couture fashion-house lookbook (Atelier Noir aesthetic) on an ink-on-bone palette with Cormorant Garamond serif display, full-bleed hero, rotating seal badge, alternating diptychs, a staggered product grid, an editorial banner, journal, and slide-in menu/search overlays | HTML, CSS, JavaScript, IntersectionObserver, self-hosted fonts |
 | [aura-email-landing](./aura-email-landing/) | Dark, cinematic landing page for "Aura", an AI-native email client, with fullscreen video, a shiny gradient headline, a macOS-style menu bar, and a liquid-glass inbox mockup | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide, Supabase |
+| [auric-clinic-glow-h37](./auric-clinic-glow-h37/) | "Auric" precision dermaceutical-clinic landing (Clinical Warmth aesthetic) — clay-terracotta on ivory-cream with Archivo, a floating pill nav, full-bleed glowing-skin hero with staggered word reveal, an overlapping three-column action grid, a clay marquee, signature-treatment cards, a count-up science split, a quiet testimonial, and a deep-clay CTA band | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [auroracast-hls-landing](./auroracast-hls-landing/) | Modern landing page with a full-screen HLS video background, glassmorphic navigation header, and bottom-left hero content | React, Vite, hls.js |
 | [axion-studio-landing](./axion-studio-landing/) | Design agency landing page for Axion Studio with shader-based hero background and multi-section layout | React, TypeScript, Vite, Tailwind CSS, shaders, Lucide |
 | [claywell-solene-h5](./claywell-solene-h5/) | Warm-clay editorial landing page for "Solène", a terracotta-and-cream longevity & precision-movement clinic, with an asymmetric split hero, word-by-word heading reveals, zig-zag scroll sections, an infinite marquee, and a dark science band | HTML, CSS, JavaScript, Archivo |
