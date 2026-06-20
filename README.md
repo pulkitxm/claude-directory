@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (296)
+## Projects (300)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -73,7 +73,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (54)</b></summary>
+<summary><b>Landing pages (57)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -107,6 +107,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [mentality-landing](./landing-pages/mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
 | [meridian-precision-clinic-h35](./landing-pages/meridian-precision-clinic-h35/) | "Architectural Clinical Editorial" landing page for bespoke precision-medicine clinic "Meridian" — meridian-navy and warm-bone with whisper-quiet brass, Fraunces serif display + Inter, split full-viewport hero with a sliding navy panel, infinite credential marquee, hairline-divided discipline grid that inverts on hover, numbered method, and an underline-only contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [mindloop-mono-landing](./landing-pages/mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
+| [monolith-grid-atelier-h59](./landing-pages/monolith-grid-atelier-h59/) | "Grid Monument" Swiss-modernist landing page for bespoke spatial-design studio "Monolith" — bone-white paper, near-black ink, warm sandstone accent, Space Grotesk + Playfair italic, a mix-blend-difference header, full-viewport grayscale hero ruled by a visible structural grid, modular ethos/stats grid with a rotating SVG seal, 3D flip-card portfolio, and floating-label contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [neuralyn-dark-landing](./landing-pages/neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./landing-pages/nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
 | [ochre-stone-studio-h11](./landing-pages/ochre-stone-studio-h11/) | Warm editorial landing page for a bespoke interior-architecture studio, with a diagonal cutout hero, auto-rotating curation card, bento work grid, and scattered freefall process cards | HTML, CSS, JavaScript |
