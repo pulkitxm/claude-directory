@@ -1,6 +1,6 @@
 # Hero sections
 
-37 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+38 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -19,6 +19,7 @@
 | [ironclad-password-hero](./ironclad-password-hero/) | Password-manager hero section for Ironclad with animated product-style presentation | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [kubric-hero-landing](./kubric-hero-landing/) | Desktop-only dark hero for fictional studio "Kubric™" with a looping background video, an 8-layer progressive bottom blur, a self-drawing animated SVG logo, a character-by-character headline, and a video-ready reveal sequence | TanStack Start, React 19, Vite 7, Tailwind CSS v4 |
 | [mainframe-hero-landing](./mainframe-hero-landing/) | Full-screen hero landing page for a creative agency called "Mainframe" with custom Helvetica Now display fonts | React, TypeScript, Vite, Tailwind CSS |
+| [monocrit-studio-h27](./monocrit-studio-h27/) | Interactive near-monochrome Swiss-brutalist studio hero with a cursor-following image card, magnetic headline letters, and movement-driven image cycling | HTML, CSS, JavaScript, Bricolage Grotesque |
 | [nexora-automation-hero](./nexora-automation-hero/) | Single-viewport SaaS automation hero ("Nexora") with Instrument Serif / Inter type and Framer Motion | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [noctis-cinematic-hero](./noctis-cinematic-hero/) | NOCTIS full-screen dark cinematic hero with video background, nav, and timecode details | React, TypeScript, Vite, CSS |
 | [particle-hero](./particle-hero/) | Night-sky particle-canvas hero with a clickable gold-mode invert toggle, rotating spotlights, and a radial-reveal headline | React, TypeScript, Vite, Tailwind CSS, Canvas 2D, shadcn/ui, Lucide |
