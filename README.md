@@ -153,11 +153,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Portfolios (5)</b></summary>
+<summary><b>Portfolios (6)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [circuit-ledger-h15](./portfolios/circuit-ledger-h15/) | Dark "quiet circuitry" developer portfolio with a live circuit-board canvas, champagne accents, bento stack and typewriter terminal | HTML, CSS, Vanilla JS, Canvas |
+| [crimson-press-kit-h25](./portfolios/crimson-press-kit-h25/) | Editorial spiral-bound magazine portfolio staged as a crimson brand press kit with print grain, collage cover, and scroll reveals | HTML, CSS, Vanilla JS |
 | [jack-3d-portfolio](./portfolios/jack-3d-portfolio/) | Dark-themed 3D creator portfolio landing page for Jack with gradient hero text | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [lumen-folio-h19](./portfolios/lumen-folio-h19/) | Soft editorial-minimalism personal portfolio with floating glass nav, drag carousel, typewriter hero, and scroll reveals | HTML, CSS, JavaScript |
 | [michael-smith-portfolio](./portfolios/michael-smith-portfolio/) | Dark single-page creator portfolio with GSAP / Framer Motion animations and HLS video | React, TypeScript, Vite, Tailwind CSS, GSAP, Framer Motion, hls.js, React Router |
