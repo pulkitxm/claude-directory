@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (331)
+## Projects (334)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (83)</b></summary>
+<summary><b>Landing pages (86)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -104,6 +104,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [design-rocket-email](./landing-pages/design-rocket-email/) | Email-style marketing landing page for a "Design Rocket Certificates" AI leadership course | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [dot-daily-calm-landing](./landing-pages/dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
 | [ember-quietude-h26](./landing-pages/ember-quietude-h26/) | Warm paper-calm editorial landing page for focus-first productivity app "Lumo" (Ember Quietude aesthetic) — stone + single ember-orange accent, Instrument Serif display, floating pill nav with hover mega-menu, a fully hand-built HTML/CSS dashboard mockup (sidebar, dark focus timer, tasks, floating AI card), bento planning grid, organize cards, and a monthly/annual pricing toggle | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+| [evergreen-ledger-h94](./landing-pages/evergreen-ledger-h94/) | "Evergreen Ledger" forward-thinking venture-capital landing for "Meridian Grove" — deep pine/teal ink and a luminous citron-lime accent on warm bone paper, Inter display + Space Mono labels, a full-viewport hero over a darkened cityscape with overlapping white/black/lime stat cards, a sticky-stacking 01–03 capital-services deck, tilted "ethos" cards flanking a lifted center photo, a grayscale "why partner" image band, a strategic-intelligence article grid, and a pine final-CTA + newsletter footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [fernhollow-pet-wellness-h68](./landing-pages/fernhollow-pet-wellness-h68/) | "Forest Apothecary" pet-wellness landing for "Fernhollow" — bone-cream canvas, fern-green ink, and a warm clay accent with Fraunces display type; centered hero with an auto-scrolling photo marquee, count-up stat band, ken-burns showreel panel, split service cards, dark process ritual with grayscale-to-color photos, botanical product grid, single-open FAQ accordion, and an ink-green newsletter CTA with a success state | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [forma-video-landing](./landing-pages/forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [freightleaf-clean-haul-h80](./landing-pages/freightleaf-clean-haul-h80/) | "Clean Haul" sustainable-freight landing for "FreightLeaf" — warm paper-gray canvas with charcoal night-highway panels and an electric lime accent; floating pill nav, cinematic ken-burns hero with a floating dashed-divider stat card, staggered mission tiles, sector card grid, dark AI-tech section with count-up metrics, infinite testimonial marquee, and a full-bleed final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |

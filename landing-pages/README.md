@@ -1,6 +1,6 @@
 # Landing pages
 
-83 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+86 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -29,6 +29,7 @@
 | [design-rocket-email](./design-rocket-email/) | Email-style marketing landing page for a "Design Rocket Certificates" AI leadership course | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [dot-daily-calm-landing](./dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
 | [ember-quietude-h26](./ember-quietude-h26/) | Warm paper-calm editorial landing page for focus-first productivity app "Lumo" (Ember Quietude aesthetic) — stone + single ember-orange accent, Instrument Serif display, floating pill nav with hover mega-menu, a fully hand-built HTML/CSS dashboard mockup (sidebar, dark focus timer, tasks, floating AI card), bento planning grid, organize cards, and a monthly/annual pricing toggle | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+| [evergreen-ledger-h94](./evergreen-ledger-h94/) | "Evergreen Ledger" forward-thinking venture-capital landing for "Meridian Grove" — deep pine/teal ink and a luminous citron-lime accent on warm bone paper, Inter display + Space Mono labels, a full-viewport hero over a darkened cityscape with overlapping white/black/lime stat cards, a sticky-stacking 01–03 capital-services deck, tilted "ethos" cards flanking a lifted center photo, a grayscale "why partner" image band, a strategic-intelligence article grid, and a pine final-CTA + newsletter footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [fernhollow-pet-wellness-h68](./fernhollow-pet-wellness-h68/) | "Forest Apothecary" pet-wellness landing for "Fernhollow" — bone-cream canvas, fern-green ink, and a warm clay accent with Fraunces display type; centered hero with an auto-scrolling photo marquee, count-up stat band, ken-burns showreel panel, split service cards, dark process ritual with grayscale-to-color photos, botanical product grid, single-open FAQ accordion, and an ink-green newsletter CTA with a success state | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [forma-video-landing](./forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [freightleaf-clean-haul-h80](./freightleaf-clean-haul-h80/) | "Clean Haul" sustainable-freight landing for "FreightLeaf" — warm paper-gray canvas with charcoal night-highway panels and an electric lime accent; floating pill nav, cinematic ken-burns hero with a floating dashed-divider stat card, staggered mission tiles, sector card grid, dark AI-tech section with count-up metrics, infinite testimonial marquee, and a full-bleed final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
