@@ -1,6 +1,6 @@
 # Hero sections
 
-40 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+41 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -17,6 +17,7 @@
 | [digital-epoch-hero](./digital-epoch-hero/) | Rounded-card hero with looping video background, floating glass bottom navbar, and seamless CSS marquee logo scroller | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [equilibrium-liquid-glass-hero](./equilibrium-liquid-glass-hero/) | Full-screen "Equilibrium" wellness hero with a liquid-glass UI over a looping background video | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [fearless-vision-hero](./fearless-vision-hero/) | Full-screen hero with a background video, deep-purple accent, and Inter typography | React, JavaScript, Vite, Tailwind CSS, Framer Motion, Lucide |
+| [helix-vault-h55](./helix-vault-h55/) | "Institutional Crypto Terminal" hero for Helix Vault — emerald blade of light, glass portfolio dashboard mockup with count-up balance, growing bar chart, live ticker and scan-line, all framework-free | HTML, CSS, JavaScript, DM Sans |
 | [ironclad-password-hero](./ironclad-password-hero/) | Password-manager hero section for Ironclad with animated product-style presentation | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [kubric-hero-landing](./kubric-hero-landing/) | Desktop-only dark hero for fictional studio "Kubric™" with a looping background video, an 8-layer progressive bottom blur, a self-drawing animated SVG logo, a character-by-character headline, and a video-ready reveal sequence | TanStack Start, React 19, Vite 7, Tailwind CSS v4 |
 | [mainframe-hero-landing](./mainframe-hero-landing/) | Full-screen hero landing page for a creative agency called "Mainframe" with custom Helvetica Now display fonts | React, TypeScript, Vite, Tailwind CSS |
