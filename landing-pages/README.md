@@ -1,6 +1,6 @@
 # Landing pages
 
-49 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+51 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -12,6 +12,7 @@
 | [astral-veil-h6](./astral-veil-h6/) | Cosmic-nocturne SaaS landing for "Novela" — near-black canvas, violet/cobalt nebula glows, frosted glass, Playfair Display headlines, CSS starfield, drifting UI fragments, trust marquee, and a floating constellation of integration capsules | HTML, CSS, Vanilla JS |
 | [atelier-noir-h7](./atelier-noir-h7/) | "Maison Éclisse" — a quiet, editorial haute-couture fashion-house lookbook (Atelier Noir aesthetic) on an ink-on-bone palette with Cormorant Garamond serif display, full-bleed hero, rotating seal badge, alternating diptychs, a staggered product grid, an editorial banner, journal, and slide-in menu/search overlays | HTML, CSS, JavaScript, IntersectionObserver, self-hosted fonts |
 | [aura-email-landing](./aura-email-landing/) | Dark, cinematic landing page for "Aura", an AI-native email client, with fullscreen video, a shiny gradient headline, a macOS-style menu bar, and a liquid-glass inbox mockup | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide, Supabase |
+| [auric-clinic-glow-h37](./auric-clinic-glow-h37/) | "Auric" precision dermaceutical-clinic landing (Clinical Warmth aesthetic) — clay-terracotta on ivory-cream with Archivo, a floating pill nav, full-bleed glowing-skin hero with staggered word reveal, an overlapping three-column action grid, a clay marquee, signature-treatment cards, a count-up science split, a quiet testimonial, and a deep-clay CTA band | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [auroracast-hls-landing](./auroracast-hls-landing/) | Modern landing page with a full-screen HLS video background, glassmorphic navigation header, and bottom-left hero content | React, Vite, hls.js |
 | [axion-studio-landing](./axion-studio-landing/) | Design agency landing page for Axion Studio with shader-based hero background and multi-section layout | React, TypeScript, Vite, Tailwind CSS, shaders, Lucide |
 | [axis-quotient-h30](./axis-quotient-h30/) | "Quant Brutalist Editorial" landing page for fictional quant-strategy firm Axis Quotient — ink-on-ivory with electric cobalt, animated point-grid hero canvas, colossal QUOTIENT wordmark, ticker marquee, capabilities accordion, count-up metrics, and toggleable engagement pricing | HTML, CSS, Vanilla JS, Canvas, SVG, vendored fonts |
@@ -27,6 +28,7 @@
 | [lantern-loft-tutoring-h1](./lantern-loft-tutoring-h1/) | Warm "paper studio" home-tutoring landing page for Lantern & Loft with a Fraunces/Jakarta editorial hero, offset cards, marquee, animated stat counters, tilted cards, and stacked program rows | HTML, CSS, JavaScript |
 | [lumina-maternite-h2](./lumina-maternite-h2/) | "Lumina Maternité" — a calm, editorial maternity & women's-health sanctuary landing page on a bone/moss/blush palette with Fraunces + Geist, drifting hero blobs, an auto-scrolling image marquee, sticky-stacking journey cards, an interactive packages selector, FAQ accordion, and a booking form | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [mentality-landing](./mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
+| [meridian-precision-clinic-h35](./meridian-precision-clinic-h35/) | "Architectural Clinical Editorial" landing page for bespoke precision-medicine clinic "Meridian" — meridian-navy and warm-bone with whisper-quiet brass, Fraunces serif display + Inter, split full-viewport hero with a sliding navy panel, infinite credential marquee, hairline-divided discipline grid that inverts on hover, numbered method, and an underline-only contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [mindloop-mono-landing](./mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
 | [neuralyn-dark-landing](./neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
