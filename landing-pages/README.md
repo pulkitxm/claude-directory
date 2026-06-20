@@ -1,6 +1,6 @@
 # Landing pages
 
-57 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+58 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -29,6 +29,7 @@
 | [kairos-academy-h0](./kairos-academy-h0/) | Warm editorial-ember landing page for "Kairos Academy", a competitive-exam coaching institute, with a split-tone hero, floating exam pill tags, count-up stats, program rows, subject cards, a four-phase method grid, auto-rotating testimonials, and an accordion FAQ | HTML, CSS, Vanilla JS |
 | [lantern-broth-midnight-ramen-h8](./lantern-broth-midnight-ramen-h8/) | Warm modular-bento landing page for a late-night Japanese ramen bar "Lantern Broth", with terracotta/mustard/teal tiles, Oswald + DM Sans, scroll-reveal animations, drifting steam, and a vanilla-JS testimonial carousel | HTML, CSS, vanilla JavaScript |
 | [lantern-loft-tutoring-h1](./lantern-loft-tutoring-h1/) | Warm "paper studio" home-tutoring landing page for Lantern & Loft with a Fraunces/Jakarta editorial hero, offset cards, marquee, animated stat counters, tilted cards, and stacked program rows | HTML, CSS, JavaScript |
+| [lumen-grove-h63](./lumen-grove-h63/) | "Verdant Apothecary" botanical-bathhouse & forest-spa landing page for "Lumen Grove" — warm bone canvas with deep pine ink and a single living-chartreuse accent, Fraunces serif + Inter, a rounded split hero card ("Steep. Soften. Return."), avatar social-proof, a seamless staggered photo marquee, an accordion-driven cross-fading rituals panel, a scrim testimonial, three-tier membership pricing, a forest newsletter panel, scroll-reveal, and a trailing chartreuse cursor | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [lumina-maternite-h2](./lumina-maternite-h2/) | "Lumina Maternité" — a calm, editorial maternity & women's-health sanctuary landing page on a bone/moss/blush palette with Fraunces + Geist, drifting hero blobs, an auto-scrolling image marquee, sticky-stacking journey cards, an interactive packages selector, FAQ accordion, and a booking form | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [lumen-launch-h44](./lumen-launch-h44/) | "Periwinkle Aurora" landing page for fictional AI product-launch SaaS "Lumen Launch" — lavender/periwinkle aurora-blur motif on crisp white with Outfit + DM Sans, a div-built browser/dashboard hero mockup, infinite logo & testimonial marquees, animated step illustrations, dark testimonial theatre, working monthly/yearly pricing toggle, and a FAQ accordion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [mentality-landing](./mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
