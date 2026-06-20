@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (315)
+## Projects (318)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -43,6 +43,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [digital-epoch-hero](./hero-sections/digital-epoch-hero/) | Rounded-card hero with looping video background, floating glass bottom navbar, and seamless CSS marquee logo scroller | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [equilibrium-liquid-glass-hero](./hero-sections/equilibrium-liquid-glass-hero/) | Full-screen "Equilibrium" wellness hero with a liquid-glass UI over a looping background video | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [fearless-vision-hero](./hero-sections/fearless-vision-hero/) | Full-screen hero with a background video, deep-purple accent, and Inter typography | React, JavaScript, Vite, Tailwind CSS, Framer Motion, Lucide |
+| [halcyon-mesh-h56](./landing-pages/halcyon-mesh-h56/) | "Obsidian Control Plane" autonomous-ops SaaS landing for "Halcyon Mesh" — near-black engineering canvas under a persistent dashed grid, an aurora teal→violet hero glow, Space Grotesk + Inter + JetBrains Mono, a hand-built "Control Mesh" dashboard mockup (sidebar, live appending execution log, count-up metrics, audit list), hover mega-menu, text-roll buttons, edge-masked logo marquee, animated SVG node-graph feature card, numbered workflow, stats band, three-tier pricing, and a gridded aurora CTA; cursor-reactive glow, scroll reveals, fully offline | HTML, CSS, Vanilla JS, SVG, IntersectionObserver, self-hosted fonts |
 | [helix-vault-h55](./hero-sections/helix-vault-h55/) | "Institutional Crypto Terminal" hero for Helix Vault — emerald blade of light, glass portfolio dashboard mockup with count-up balance, growing bar chart, live ticker and scan-line, all framework-free | HTML, CSS, JavaScript, DM Sans |
 | [ironclad-password-hero](./hero-sections/ironclad-password-hero/) | Password-manager hero section for Ironclad with animated product-style presentation | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [kubric-hero-landing](./hero-sections/kubric-hero-landing/) | Desktop-only dark hero for fictional studio "Kubric™" with a looping background video, an 8-layer progressive bottom blur, a self-drawing animated SVG logo, a character-by-character headline, and a video-ready reveal sequence | TanStack Start, React 19, Vite 7, Tailwind CSS v4 |
@@ -75,7 +76,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (67)</b></summary>
+<summary><b>Landing pages (70)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
