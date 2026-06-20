@@ -21,12 +21,12 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (300)
+## Projects (303)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
 <details>
-<summary><b>Hero sections (39)</b></summary>
+<summary><b>Hero sections (40)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -51,6 +51,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [noctis-cinematic-hero](./hero-sections/noctis-cinematic-hero/) | NOCTIS full-screen dark cinematic hero with video background, nav, and timecode details | React, TypeScript, Vite, CSS |
 | [particle-hero](./hero-sections/particle-hero/) | Night-sky particle-canvas hero with a clickable gold-mode invert toggle, rotating spotlights, and a radial-reveal headline | React, TypeScript, Vite, Tailwind CSS, Canvas 2D, shadcn/ui, Lucide |
 | [power-ai-hero](./hero-sections/power-ai-hero/) | Full-screen dark AI hero with a JS-controlled fade-loop background video, headline, CTA, and logo marquee | React, TypeScript, Vite, Tailwind CSS, Geist Sans, Lucide |
+| [prisma-noir-h52](./hero-sections/prisma-noir-h52/) | "Spectral darkroom" creative-director hero with drifting screen-blended color blobs, a clipped rotating-word headline, cursor parallax, and a fullscreen discover menu with hover image tickers | HTML, CSS, JavaScript, Manrope, Titillium Web |
 | [rivr-defi-hero](./hero-sections/rivr-defi-hero/) | DeFi dashboard hero for RIVR with glassmorphism, badge/cards, and verification script | React, TypeScript, Vite, Tailwind CSS |
 | [securify-data-hero](./hero-sections/securify-data-hero/) | Full-screen hero section for a fictional data-security SaaS called securify | React, TypeScript, Vite, Tailwind CSS |
 | [sentinel-ai-hero](./hero-sections/sentinel-ai-hero/) | Full-screen dark hero for security company "Sentinel AI" with an embedded Spline 3D scene background | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline |
@@ -73,7 +74,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (57)</b></summary>
+<summary><b>Landing pages (58)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -131,6 +132,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [vellum-atelier-h33](./landing-pages/vellum-atelier-h33/) | "Vellum" luxury hair atelier landing ("Sculptural Serif Atelier" aesthetic) on a warm paper/ink/gold palette with Unbounded + Figtree + Sacramento, a character-by-character animated hero wordmark, extreme top-rounded image panels, a dark service menu with cursor-tracked hover previews, an offset 3-up portfolio grid, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [velvet-vellum-agency-h4](./landing-pages/velvet-vellum-agency-h4/) | "Velvet precision" marketing-agency landing page (Velvet Vellum) with an oxblood-maroon hero panel, giant Josefin Sans display type, a bento case-study grid, auto-rotating testimonials, and a faux-3D perspective floor-grid footer | HTML, CSS, Vanilla JS, IntersectionObserver |
 | [verdant-atelier-h40](./landing-pages/verdant-atelier-h40/) | "Forest & Gold" product-photography studio landing page (Verdant Atelier / Maya Kapoor) on deep forest-green with museum-gold + deep-orange accents, Playfair Display + Inter, signature arch-masked still-life imagery, a slow-spinning "View Projects" badge, a 12-column asymmetric editorial hero, dual infinite marquees, staggered work/services galleries, and a hamburger mobile overlay | HTML, CSS, Vanilla JS, IntersectionObserver, SVG, self-hosted fonts |
+| [verdant-pledge-bento-h49](./landing-pages/verdant-pledge-bento-h49/) | "Soft Editorial Bento" conservation-collective landing page (Verdant Pledge) on a white canvas of 40px rounded bento cards with a single electric-lime accent and Inter Tight, featuring a 5/7 lime+photo hero with floating glass map markers, an editorial missions table with rotated hover previews, image problem cards, a dark impact band with count-up stats, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
 | [viktor-oddy-landing](./landing-pages/viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [voltframe-dev-h29](./landing-pages/voltframe-dev-h29/) | "Bracketed Voltage" developer-portfolio landing on a near-black stage with one electric-yellow accent, a hairline framed hero box with glowing corner nodes, hover-yellow title words, floating particles, pulsing orbs, scroll-revealed skills/work/testimonials, and a mobile slide-in menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
@@ -168,7 +170,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Portfolios (12)</b></summary>
+<summary><b>Portfolios (13)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -183,6 +185,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [monogram-terminal-h42](./portfolios/monogram-terminal-h42/) | "Monochrome Terminal Editorial" developer portfolio — strict greyscale void, JetBrains Mono headlines, Merriweather italic accents, terminal-card hero, cross-fading featured slider, work timeline, and paginated articles | HTML, CSS, Vanilla JS, JetBrains Mono, Inter, Merriweather |
 | [nocturne-bento-h28](./portfolios/nocturne-bento-h28/) | "Midnight Atelier" dark designer portfolio — animated perspective-grid floor, acid-lime accent, Fraunces serif + Inter Tight, bento-grid glass hero, pointer parallax, scroll reveals, and a validated contact form | HTML, CSS, vanilla JS, Fraunces, Inter Tight, JetBrains Mono |
 | [solstice-craft-studio-h41](./portfolios/solstice-craft-studio-h41/) | "Warm Editorial Craft" light-mode UX designer portfolio — paper canvas, tangerine accent, Space Grotesk + Caveat handwriting, floating design-tool micro-cards, 3D-perspective project ticker, animated process line, and a fullscreen menu | HTML, CSS, Vanilla JS, Space Grotesk, Caveat |
+| [voltline-resume-h53](./portfolios/voltline-resume-h53/) | "Voltline" neo-brutalist engineer résumé portfolio — warm cream paper with an orange dot-grid, dual-offset ink/orange borders, hard offset shadows, skewed experience & education bands, count-up hero stats, parallax wedge, and a printable PDF mode | HTML, CSS, Vanilla JS, Bebas Neue, Space Grotesk, Inter |
 | [voltmark-engineer-terminal-h24](./portfolios/voltmark-engineer-terminal-h24/) | Electric-yellow dark engineer portfolio with terminal typewriter, code-chip hero, marquee, and filterable project grid | HTML, CSS, Vanilla JS |
 
 </details>
