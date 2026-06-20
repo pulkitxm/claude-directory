@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (312)
+## Projects (315)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -56,11 +56,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (65)</b></summary>
+<summary><b>Landing pages (67)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aegis-console-h39](./landing-pages/aegis-console-h39/) | "Precision Grid" cybersecurity SaaS landing for "Aegis" — white/bone canvas with one electric-lime accent, a fading hairline grid hero, a live security-console product mockup (animated lime SVG chart that draws itself, counting threat stats, pulsing status nodes), feature grid, ink count-up metrics band, 01–03 how-it-works with alert-feed/risk-bar/playbook mockups, three-tier pricing, and a gridded final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+| [almond-hours-h65](./landing-pages/almond-hours-h65/) | "Warm Clinical Editorial" dignified-care senior-living landing for "Almond Hours" — near-white paper with almond-ink neutrals and a butter-cream tint, a floating rounded mega-menu nav with flip hovers, an infinite photo marquee, a dual-headline hero with text-wipe reveal, a horizontal width-morphing programs accordion with layered image stacks, a healthcare bento grid, a single-open FAQ, a wipe-fill CTA banner, and a cursor-reveal giant wordmark | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [amber-foundry-h9](./landing-pages/amber-foundry-h9/) | Warm editorial-intelligence landing page for fictional enterprise-AI consultancy "Amber Foundry" — cream/amber/roasted-brown palette, animated canvas neural-network hero, auto-advancing interactive solutions panel, bento method grid, and a dark pricing flip | HTML, CSS, Vanilla JS, Canvas, vendored fonts |
 | [amberhaus-pet-atelier-h31](./landing-pages/amberhaus-pet-atelier-h31/) | "Amberhaus" warm-amber luxury pet-boutique landing — crisp white paper with a single amber-gold accent and butter-cream tints, Bricolage Grotesque display + Playfair italic flourishes, a crossfading triptych hero with parallax center panel, services+boutique bento, a horizontal-scroll founder story, vertical marquee testimonials, a jumping-type footer canvas, paw cursor, and a slide-up booking overlay | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [archway-summit-h21](./landing-pages/archway-summit-h21/) | "Gallery Arch" tech-conference landing for "Archway Summit" — near-black editorial gallery framing headline speakers inside tall pastel museum arches (pink/blue/beige/yellow), grayscale-to-color portraits, mono schedule with Day 1/Day 2 toggle, FAQ accordion, and an inverted white final-CTA panel | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
@@ -83,6 +84,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [forma-video-landing](./landing-pages/forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [groundai-landing](./landing-pages/groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
 | [gridwright-h48](./landing-pages/gridwright-h48/) | "Gridwright" neo-structuralist coding-SaaS landing page on a ruled blueprint grid — paper canvas with diagonal hatch and full-height vertical column rules, structural green accent, Space Grotesk + Space Mono, hard offset shadows, a live-typing terminal hero, count-up stats, asymmetric feature/pricing grids, and a CSS envelope that opens to reveal a postcard | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
+| [harbour-hearth-h64](./landing-pages/harbour-hearth-h64/) | "Warm Sanctuary" compassionate senior-living landing page for fictional boutique care community "Harbour & Hearth" — sun-warmed oat-cream canvas with a single burnt-terracotta accent and cocoa-ink dark sections, Inter Tight, a floating glass pill navbar, a full-viewport scrim hero with a glass feature card, an overlapping about card with fanned polaroid thumbnails, alternating care/service rows, a count-up stats band, an infinite values marquee, a snap testimonial slider, a team grid, and a right-sliding mobile overlay | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [ink-vermilion-personal-brand-h23](./landing-pages/ink-vermilion-personal-brand-h23/) | "Ink & Vermilion" editorial personal-brand landing page for fictional marketing consultant "Marlowe Vane" — warm paper canvas, single vermillion accent, Playfair italic emphasis with hand-drawn SVG scribbles/stars/arrows, a rotated red marquee strip, scroll-reveal sections, a dark gallery band, grayscale-to-color imagery, and fake-submit contact + newsletter forms | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [kairos-academy-h0](./landing-pages/kairos-academy-h0/) | Warm editorial-ember landing page for "Kairos Academy", a competitive-exam coaching institute, with a split-tone hero, floating exam pill tags, count-up stats, program rows, subject cards, a four-phase method grid, auto-rotating testimonials, and an accordion FAQ | HTML, CSS, Vanilla JS |
 | [lantern-broth-midnight-ramen-h8](./landing-pages/lantern-broth-midnight-ramen-h8/) | Warm modular-bento landing page for a late-night Japanese ramen bar "Lantern Broth", with terracotta/mustard/teal tiles, Oswald + DM Sans, scroll-reveal animations, drifting steam, and a vanilla-JS testimonial carousel | HTML, CSS, vanilla JavaScript |
@@ -181,7 +183,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (13)</b></summary>
+<summary><b>Components &amp; UI (14)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -190,6 +192,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [aurora-sign-up](./components-ui/aurora-sign-up/) | Two-column "Aurora" registration interface with a background-video hero, staggered Motion reveals, and a multi-step sign-up form | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [background-paths-hero](./components-ui/background-paths-hero/) | Integration of the "Background Paths" shadcn/ui hero — 72 flowing animated SVG paths behind a per-letter spring headline and a glassy CTA, wrapped in a dark/light theme toggle and a preset-headline switcher | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
 | [core-features-gradient-cards](./components-ui/core-features-gradient-cards/) | Static "Core Features" marketing section with three gradient feature cards | Single-file HTML/CSS |
+| [crimson-mill-supply-card-h61](./components-ui/crimson-mill-supply-card-h61/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver |
 | [gradient-bars-background](./components-ui/gradient-bars-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Lucide |
 | [gradient-dots-background](./components-ui/gradient-dots-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, framer-motion, shadcn/ui, Lucide |
 | [interactive-3d-spline-scene](./components-ui/interactive-3d-spline-scene/) | shadcn/ui integration of a Spline 3D scene — the exact SplineScene + Card + Spotlight demo, a graceful animated WebGL fallback for when the remote scene is unreachable, a live props playground, and an on-page guide to the shadcn structure, default paths and why components/ui matters | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline, Framer Motion, Lucide, Canvas |
