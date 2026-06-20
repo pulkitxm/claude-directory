@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (252)
+## Projects (253)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -71,7 +71,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (21)</b></summary>
+<summary><b>Landing pages (22)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -91,6 +91,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [orbis-nft-landing](./landing-pages/orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Pixel-faithful "Pelmatech" health-companion landing with a full-bleed hero, a hover-driven team carousel, a custom-gridline benefits grid, uniform CSS-zoom responsive scaling, and blur-up / fade-up / clip-path animation primitives | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
+| [sencha-atelier-h12](./landing-pages/sencha-atelier-h12/) | Wabi-editorial landing page for "Sencha Atelier", a ceremonial-matcha tea house — oversized Fraunces serif hero on warm paper, flush rounded showcase cards, editorial menu rows, count-up stats ribbon with marquee, and an asymmetric gallery | HTML, CSS, Vanilla JS, IntersectionObserver, Fraunces, Inter Tight |
 | [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Pixel-faithful dark AI-fintech "Synergeus" landing with three scroll-revealed sections — an HLS video hero with a 3D-tilt story card, an analytics card with count-ups, and an AI-intelligence trio (NL queries, wipe-reveal chart, animated SVG node tree) | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
