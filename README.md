@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (269)
+## Projects (272)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -71,11 +71,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (37)</b></summary>
+<summary><b>Landing pages (40)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [amber-foundry-h9](./landing-pages/amber-foundry-h9/) | Warm editorial-intelligence landing page for fictional enterprise-AI consultancy "Amber Foundry" — cream/amber/roasted-brown palette, animated canvas neural-network hero, auto-advancing interactive solutions panel, bento method grid, and a dark pricing flip | HTML, CSS, Vanilla JS, Canvas, vendored fonts |
+| [amberhaus-pet-atelier-h31](./landing-pages/amberhaus-pet-atelier-h31/) | "Amberhaus" warm-amber luxury pet-boutique landing — crisp white paper with a single amber-gold accent and butter-cream tints, Bricolage Grotesque display + Playfair italic flourishes, a crossfading triptych hero with parallax center panel, services+boutique bento, a horizontal-scroll founder story, vertical marquee testimonials, a jumping-type footer canvas, paw cursor, and a slide-up booking overlay | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [archway-summit-h21](./landing-pages/archway-summit-h21/) | "Gallery Arch" tech-conference landing for "Archway Summit" — near-black editorial gallery framing headline speakers inside tall pastel museum arches (pink/blue/beige/yellow), grayscale-to-color portraits, mono schedule with Day 1/Day 2 toggle, FAQ accordion, and an inverted white final-CTA panel | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [asme-hero-landing](./landing-pages/asme-hero-landing/) | Full-screen dark Asme landing page with Mux/HLS-style video, liquid-glass navbar, and email-capture CTA | React, JavaScript, Vite, CSS |
 | [asme-liquid-glass-landing](./landing-pages/asme-liquid-glass-landing/) | Dark cinematic Asme single-page landing site with liquid-glass UI details | React, TypeScript, Vite, Tailwind CSS |
