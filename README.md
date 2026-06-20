@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (253)
+## Projects (256)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -71,7 +71,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (22)</b></summary>
+<summary><b>Landing pages (25)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -95,6 +95,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Pixel-faithful dark AI-fintech "Synergeus" landing with three scroll-revealed sections — an HLS video hero with a 3D-tilt story card, an analytics card with count-ups, and an AI-intelligence trio (NL queries, wipe-reveal chart, animated SVG node tree) | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
+| [terra-siena-atelier-h14](./landing-pages/terra-siena-atelier-h14/) | "Terra Siena" handcrafted-ceramics atelier landing ("Sun-Fired Earth" aesthetic) on a terracotta/ochre/bone palette with Fraunces serif + Inter Tight, a marquee hero, a scroll-triggered fanned card deck that spreads into collections, 3D flip cards, a testimonial grid, an accordion FAQ, and a marquee footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
 | [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
