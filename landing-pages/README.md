@@ -1,6 +1,6 @@
 # Landing pages
 
-58 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+59 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -19,6 +19,7 @@
 | [azimuth-realty-engine-h36](./azimuth-realty-engine-h36/) | "High-Altitude Precision" real-estate marketing-engine landing for "Azimuth" — deep-navy mission-control palette with a single electric-cobalt accent, Bricolage Grotesque display + JetBrains Mono labels, split grayscale-to-color hero, floating pill navbar with hover mega-menu, bento ecosystem grid, horizontal-scroll property portfolio, cobalt method bento, and a scroll-triggered fanning stacked-card CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [axion-studio-landing](./axion-studio-landing/) | Design agency landing page for Axion Studio with shader-based hero background and multi-section layout | React, TypeScript, Vite, Tailwind CSS, shaders, Lucide |
 | [axis-quotient-h30](./axis-quotient-h30/) | "Quant Brutalist Editorial" landing page for fictional quant-strategy firm Axis Quotient — ink-on-ivory with electric cobalt, animated point-grid hero canvas, colossal QUOTIENT wordmark, ticker marquee, capabilities accordion, count-up metrics, and toggleable engagement pricing | HTML, CSS, Vanilla JS, Canvas, SVG, vendored fonts |
+| [cartwright-relocation-h47](./cartwright-relocation-h47/) | "Warm Artisan Logistics" white-glove relocation landing for "Cartwright & Co" — terracotta-on-cream editorial palette with a Fraunces italic serif accent, dual opposite-scrolling hero image tickers, a mega-menu glass navbar, partner marquee, soft service cards, a dark count-up stats band, a staggered three-step process timeline, an auto-cycling stacked testimonial deck, and a split contact panel with a working quote form | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [claywell-solene-h5](./claywell-solene-h5/) | Warm-clay editorial landing page for "Solène", a terracotta-and-cream longevity & precision-movement clinic, with an asymmetric split hero, word-by-word heading reveals, zig-zag scroll sections, an infinite marquee, and a dark science band | HTML, CSS, JavaScript, Archivo |
 | [design-rocket-email](./design-rocket-email/) | Email-style marketing landing page for a "Design Rocket Certificates" AI leadership course | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [dot-daily-calm-landing](./dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
