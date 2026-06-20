@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (293)
+## Projects (295)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -164,7 +164,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Portfolios (9)</b></summary>
+<summary><b>Portfolios (11)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -177,6 +177,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [monogram-terminal-h42](./portfolios/monogram-terminal-h42/) | "Monochrome Terminal Editorial" developer portfolio — strict greyscale void, JetBrains Mono headlines, Merriweather italic accents, terminal-card hero, cross-fading featured slider, work timeline, and paginated articles | HTML, CSS, Vanilla JS, JetBrains Mono, Inter, Merriweather |
 | [nocturne-bento-h28](./portfolios/nocturne-bento-h28/) | "Midnight Atelier" dark designer portfolio — animated perspective-grid floor, acid-lime accent, Fraunces serif + Inter Tight, bento-grid glass hero, pointer parallax, scroll reveals, and a validated contact form | HTML, CSS, vanilla JS, Fraunces, Inter Tight, JetBrains Mono |
 | [solstice-craft-studio-h41](./portfolios/solstice-craft-studio-h41/) | "Warm Editorial Craft" light-mode UX designer portfolio — paper canvas, tangerine accent, Space Grotesk + Caveat handwriting, floating design-tool micro-cards, 3D-perspective project ticker, animated process line, and a fullscreen menu | HTML, CSS, Vanilla JS, Space Grotesk, Caveat |
+| [voltline-resume-h53](./portfolios/voltline-resume-h53/) | "Voltline" neo-brutalist engineer résumé portfolio — warm cream paper with an orange dot-grid, dual-offset ink/orange borders, hard offset shadows, skewed experience & education bands, count-up hero stats, parallax wedge, and a printable PDF mode | HTML, CSS, Vanilla JS, Bebas Neue, Space Grotesk, Inter |
 | [voltmark-engineer-terminal-h24](./portfolios/voltmark-engineer-terminal-h24/) | Electric-yellow dark engineer portfolio with terminal typewriter, code-chip hero, marquee, and filterable project grid | HTML, CSS, Vanilla JS |
 
 </details>
