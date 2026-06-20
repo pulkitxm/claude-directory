@@ -19,6 +19,7 @@
 | [neuralyn-dark-landing](./neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
 | [orbis-nft-landing](./orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [paper-circuit-agentic-saas-h16](./paper-circuit-agentic-saas-h16/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Bricolage Grotesque, Inter Tight, JetBrains Mono |
 | [pelmatech-health-companion](./pelmatech-health-companion/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [space-voyage-landing](./space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |

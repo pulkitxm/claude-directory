@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (253)
+## Projects (257)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -52,7 +52,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (22)</b></summary>
+<summary><b>Landing pages (26)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -73,6 +73,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [neuralyn-dark-landing](./landing-pages/neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./landing-pages/nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
 | [orbis-nft-landing](./landing-pages/orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [paper-circuit-agentic-saas-h16](./landing-pages/paper-circuit-agentic-saas-h16/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Bricolage Grotesque, Inter Tight, JetBrains Mono |
 | [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
