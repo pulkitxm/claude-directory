@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (309)
+## Projects (313)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (62)</b></summary>
+<summary><b>Landing pages (66)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -102,6 +102,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [forma-video-landing](./landing-pages/forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [groundai-landing](./landing-pages/groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
 | [gridwright-h48](./landing-pages/gridwright-h48/) | "Gridwright" neo-structuralist coding-SaaS landing page on a ruled blueprint grid — paper canvas with diagonal hatch and full-height vertical column rules, structural green accent, Space Grotesk + Space Mono, hard offset shadows, a live-typing terminal hero, count-up stats, asymmetric feature/pricing grids, and a CSS envelope that opens to reveal a postcard | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
+| [grove-kitchen-fresh-h70](./landing-pages/grove-kitchen-fresh-h70/) | "Forest Deli" fresh dog-food D2C landing for "Grove Kitchen" — warm cream paper with forest-green + terracotta accents and a faint kraft-paper grain, Fraunces display serif (italic emphasis) over DM Sans, a crossfading scrim hero with a popup menu card, a dashed-badge trust strip, a six-recipe catalog with add-to-box buttons, a serif marquee ticker, a 2×2 why-fresh bento with a 200°F stat chip, numbered how-it-works steps, monogram testimonials, an accordion FAQ, and a bouncing "FRESH." footer canvas with an overlapping contact card | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [ink-vermilion-personal-brand-h23](./landing-pages/ink-vermilion-personal-brand-h23/) | "Ink & Vermilion" editorial personal-brand landing page for fictional marketing consultant "Marlowe Vane" — warm paper canvas, single vermillion accent, Playfair italic emphasis with hand-drawn SVG scribbles/stars/arrows, a rotated red marquee strip, scroll-reveal sections, a dark gallery band, grayscale-to-color imagery, and fake-submit contact + newsletter forms | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [kairos-academy-h0](./landing-pages/kairos-academy-h0/) | Warm editorial-ember landing page for "Kairos Academy", a competitive-exam coaching institute, with a split-tone hero, floating exam pill tags, count-up stats, program rows, subject cards, a four-phase method grid, auto-rotating testimonials, and an accordion FAQ | HTML, CSS, Vanilla JS |
 | [lantern-broth-midnight-ramen-h8](./landing-pages/lantern-broth-midnight-ramen-h8/) | Warm modular-bento landing page for a late-night Japanese ramen bar "Lantern Broth", with terracotta/mustard/teal tiles, Oswald + DM Sans, scroll-reveal animations, drifting steam, and a vanilla-JS testimonial carousel | HTML, CSS, vanilla JavaScript |
