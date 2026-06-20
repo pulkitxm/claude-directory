@@ -1,6 +1,6 @@
 # Portfolios
 
-8 **Portfolios** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+9 **Portfolios** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
