@@ -1,6 +1,6 @@
 # Landing pages
 
-41 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+42 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -28,6 +28,7 @@
 | [neuralyn-dark-landing](./neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
 | [ochre-stone-studio-h11](./ochre-stone-studio-h11/) | Warm editorial landing page for a bespoke interior-architecture studio, with a diagonal cutout hero, auto-rotating curation card, bento work grid, and scattered freefall process cards | HTML, CSS, JavaScript |
+| [orbital-frequency-summit-h22](./orbital-frequency-summit-h22/) | "Deep Signal" landing page for a fictional deep-space signals & aerospace-software summit "Orbital Frequency" — observatory-dark void with amber-gold/signal-green accents, Oswald condensed display type, canvas starfield, rotating orbital rings + radar-sweep hero, telemetry strip, mission timeline, floating-beacon pricing passes, and a scroll-tracking signal bar | HTML, CSS, Vanilla JS, Canvas, self-hosted fonts |
 | [orbis-nft-landing](./orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [paper-circuit-agentic-saas-h16](./paper-circuit-agentic-saas-h16/) | "Paper Circuit" — a bright, blueprint-precise light-mode SaaS landing for autonomous-outbound product "Drift": cool off-white dot-grid canvas, Bricolage Grotesque display + Inter Tight + JetBrains Mono, indigo/magenta color-as-wiring, an auto-looping hero icon belt, a floating product mockup (sidebar, metrics, interactive node canvas with animated dashed wires + live email-draft panel) that does mouse-driven 3D parallax, bento features (enrichment flow, hover bar chart, dark agent library, hover-revealed code terminal), portrait testimonial cards, an enterprise governance/YAML block, an indigo CTA strip with a live flipping counter, and a footer with a cursor-spotlight wordmark; all fonts and images vendored, fully offline | HTML, CSS, vanilla JS, SVG, Bricolage Grotesque, Inter Tight, JetBrains Mono |
 | [pelmatech-health-companion](./pelmatech-health-companion/) | Pixel-faithful "Pelmatech" health-companion landing with a full-bleed hero, a hover-driven team carousel, a custom-gridline benefits grid, uniform CSS-zoom responsive scaling, and blur-up / fade-up / clip-path animation primitives | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
