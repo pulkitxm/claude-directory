@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (323)
+## Projects (324)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (75)</b></summary>
+<summary><b>Landing pages (76)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -117,6 +117,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [lumina-maternite-h2](./landing-pages/lumina-maternite-h2/) | "Lumina Maternité" — a calm, editorial maternity & women's-health sanctuary landing page on a bone/moss/blush palette with Fraunces + Geist, drifting hero blobs, an auto-scrolling image marquee, sticky-stacking journey cards, an interactive packages selector, FAQ accordion, and a booking form | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [lumen-launch-h44](./landing-pages/lumen-launch-h44/) | "Periwinkle Aurora" landing page for fictional AI product-launch SaaS "Lumen Launch" — lavender/periwinkle aurora-blur motif on crisp white with Outfit + DM Sans, a div-built browser/dashboard hero mockup, infinite logo & testimonial marquees, animated step illustrations, dark testimonial theatre, working monthly/yearly pricing toggle, and a FAQ accordion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [mentality-landing](./landing-pages/mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
+| [meridian-grid-systems-h81](./landing-pages/meridian-grid-systems-h81/) | "Warm Brutalist Grid" intelligent-automation consultancy landing for "Meridian®" — paper-cream canvas organised by hairline rules and flat color blocks (electric green + cobalt blue + ink), Space Grotesk + Inter, a split photo/headline hero with a frosted live-status panel, a ghosted logo marquee, a hairline about grid, count-up stats, a springy staggered 01–04 process row with blend-tinted photos, a working monthly/annual pricing toggle, and a hard-shadow contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [meridian-precision-clinic-h35](./landing-pages/meridian-precision-clinic-h35/) | "Architectural Clinical Editorial" landing page for bespoke precision-medicine clinic "Meridian" — meridian-navy and warm-bone with whisper-quiet brass, Fraunces serif display + Inter, split full-viewport hero with a sliding navy panel, infinite credential marquee, hairline-divided discipline grid that inverts on hover, numbered method, and an underline-only contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [mindloop-mono-landing](./landing-pages/mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
 | [monolith-grid-atelier-h59](./landing-pages/monolith-grid-atelier-h59/) | "Grid Monument" Swiss-modernist landing page for bespoke spatial-design studio "Monolith" — bone-white paper, near-black ink, warm sandstone accent, Space Grotesk + Playfair italic, a mix-blend-difference header, full-viewport grayscale hero ruled by a visible structural grid, modular ethos/stats grid with a rotating SVG seal, 3D flip-card portfolio, and floating-label contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
