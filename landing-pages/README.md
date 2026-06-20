@@ -1,9 +1,10 @@
 # Landing pages
 
-21 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+22 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [amber-foundry-h9](./amber-foundry-h9/) | Warm editorial-intelligence landing page for fictional enterprise-AI consultancy "Amber Foundry" — cream/amber/roasted-brown palette, animated canvas neural-network hero, auto-advancing interactive solutions panel, bento method grid, and a dark pricing flip | HTML, CSS, Vanilla JS, Canvas, vendored fonts |
 | [asme-hero-landing](./asme-hero-landing/) | Full-screen dark Asme landing page with Mux/HLS-style video, liquid-glass navbar, and email-capture CTA | React, JavaScript, Vite, CSS |
 | [asme-liquid-glass-landing](./asme-liquid-glass-landing/) | Dark cinematic Asme single-page landing site with liquid-glass UI details | React, TypeScript, Vite, Tailwind CSS |
 | [aura-email-landing](./aura-email-landing/) | Dark, cinematic landing page for "Aura", an AI-native email client, with fullscreen video, a shiny gradient headline, a macOS-style menu bar, and a liquid-glass inbox mockup | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide, Supabase |
