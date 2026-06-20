@@ -1,6 +1,6 @@
 # Landing pages
 
-54 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+57 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -36,6 +36,7 @@
 | [mindloop-mono-landing](./mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
 | [neuralyn-dark-landing](./neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
+| [obsidian-lacquer-h57](./obsidian-lacquer-h57/) | "Obsidian Lacquer" cinematic automotive detailing-studio landing — pure-black canvas with a scalpel of vermilion red, Bricolage Grotesque display + Playfair italic accents + Inter Tight, a full-viewport ken-burns/pointer-parallax hero with stats strip, an asymmetric 12-col services grid, hover-reveal 01–03 process cards, testimonials, a snap-scroll before/after gallery with arrow nav, a monthly/yearly pricing toggle, and IntersectionObserver scroll reveals | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [ochre-stone-studio-h11](./ochre-stone-studio-h11/) | Warm editorial landing page for a bespoke interior-architecture studio, with a diagonal cutout hero, auto-rotating curation card, bento work grid, and scattered freefall process cards | HTML, CSS, JavaScript |
 | [orbital-frequency-summit-h22](./orbital-frequency-summit-h22/) | "Deep Signal" landing page for a fictional deep-space signals & aerospace-software summit "Orbital Frequency" — observatory-dark void with amber-gold/signal-green accents, Oswald condensed display type, canvas starfield, rotating orbital rings + radar-sweep hero, telemetry strip, mission timeline, floating-beacon pricing passes, and a scroll-tracking signal bar | HTML, CSS, Vanilla JS, Canvas, self-hosted fonts |
 | [orbis-nft-landing](./orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
