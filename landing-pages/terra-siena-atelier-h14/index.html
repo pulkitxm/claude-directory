@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terra Siena — Handcrafted Ceramics Atelier</title>
+<meta name="description" content="Terra Siena — wood-fired stoneware, hand-thrown in Puglia. Dinnerware, vases, mugs and limited editions shaped by earth and flame." />
+
+<style>
+/* ============ FONTS ============ */
+@import url("./assets/fonts/fonts.css");
+
+/* ============ TOKENS ============ */
+:root{
+  --ink:#2A211B;
+  --bone:#F6EFE4;
+  --oat:#EFE4D3;
+  --terra:#C25E3A;
+  --ochre:#B07A2C;
+  --border:rgba(42,33,27,0.12);
+  --muted:rgba(42,33,27,0.62);
+  --cream-muted:rgba(246,239,228,0.62);
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter Tight',system-ui,sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bone);
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+/* paper grain */
+body::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+.serif{font-family:var(--serif)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.italic{font-style:italic}
+
+/* ============ HEADER ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(246,239,228,.78);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+header nav{
+  max-width:1240px;margin:0 auto;padding:0 28px;height:84px;
+  display:flex;align-items:center;justify-content:space-between;position:relative;
+}
+.menu-btn{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);transition:color .3s}
+.menu-btn:hover{color:var(--terra)}
+.menu-btn .bars{display:flex;flex-direction:column;gap:4px}
+.menu-btn .bars span{width:22px;height:1.5px;background:currentColor;transition:.3s}
+.brand{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px}
+.brand .glyph{color:var(--terra)}
+.brand .word{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:.34em;text-transform:uppercase;padding-left:.34em}
+.cta-pill{
+  display:inline-block;background:var(--ink);color:var(--bone);
+  padding:13px 26px;border-radius:999px;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;transition:.3s;
+}
+.cta-pill:hover{background:var(--terra);transform:translateY(-2px)}
+@media(max-width:720px){.cta-pill{display:none}}
+
+/* ============ MENU OVERLAY ============ */
+.overlay{
+  position:fixed;inset:0;z-index:60;background:var(--ink);color:var(--bone);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:46px;
+  opacity:0;visibility:hidden;transform:scale(1.04);
+  transition:opacity .5s ease,transform .5s ease,visibility .5s;
+}
+.overlay.open{opacity:1;visibility:visible;transform:scale(1)}
+.overlay .close{position:absolute;top:30px;left:28px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bone);opacity:.7;transition:.3s}
+.overlay .close:hover{opacity:1;color:var(--terra)}
+.overlay-links{display:flex;flex-direction:column;align-items:center;gap:18px}
+.overlay-links a{font-family:var(--serif);font-size:clamp(34px,7vw,60px);font-weight:500;line-height:1;transition:color .3s}
+.overlay-links a:hover{color:var(--terra);font-style:italic}
+.overlay-social{display:flex;gap:30px;margin-top:10px}
+.overlay-social a{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-muted);transition:.3s}
+.overlay-social a:hover{color:var(--terra)}
+
+/* ============ HERO ============ */
+main{padding-top:84px;position:relative;z-index:2}
+.hero{padding:72px 0 0;overflow:hidden}
+.hero-top{display:flex;flex-direction:column;gap:48px;align-items:flex-end}
+@media(min-width:1000px){.hero-top{flex-direction:row;justify-content:space-between}}
+.hero-left{width:100%}
+@media(min-width:1000px){.hero-left{width:64%}}
+.hero h1{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(52px,9vw,104px);line-height:.92;letter-spacing:-.02em;margin-bottom:28px;
+}
+.hero h1 em{font-style:italic;color:var(--terra)}
+.hero p.lede{font-size:clamp(18px,2.4vw,23px);color:var(--muted);max-width:560px;line-height:1.55}
+.hero-right{width:100%;display:flex;flex-direction:column;gap:22px}
+@media(min-width:1000px){.hero-right{width:31%}}
+.firing-card{background:var(--oat);border:1px solid var(--border);border-radius:18px;padding:30px}
+.firing-card .label{color:var(--terra);margin-bottom:10px;display:block}
+.firing-card p{font-size:17px;font-weight:500;line-height:1.45}
+.btn-solid{display:block;text-align:center;background:var(--ink);color:var(--bone);padding:20px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.3s}
+.btn-solid:hover{background:var(--terra)}
+
+/* hero marquee */
+.hero-marquee{width:100%;overflow:hidden;margin:64px 0 0;padding-bottom:8px}
+.hmq-track{display:flex;gap:22px;width:max-content;animation:scrollx 42s linear infinite}
+.hero-marquee:hover .hmq-track{animation-play-state:paused}
+.hmq-track img{width:440px;height:330px;object-fit:cover;border-radius:18px;box-shadow:0 14px 40px rgba(42,33,27,.10)}
+@media(max-width:700px){.hmq-track img{width:300px;height:230px}}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* ============ VALUES STRIP ============ */
+.values{background:var(--oat);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 0;margin-top:96px}
+.values-grid{display:grid;grid-template-columns:1fr;gap:40px;text-align:center}
+@media(min-width:760px){.values-grid{grid-template-columns:repeat(4,1fr);text-align:left}}
+.values-grid .fig{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--terra);margin-bottom:8px;line-height:1}
+.values-grid h3{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+
+/* ============ DECK ============ */
+.deck-sec{background:var(--ink);color:var(--bone);padding:128px 0;overflow:hidden}
+.deck-head{text-align:center;margin-bottom:56px}
+.deck-head .label{color:var(--terra);display:block;margin-bottom:16px}
+.deck-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(38px,6vw,76px);letter-spacing:-.02em;line-height:1}
+.deck-stage{position:relative;width:100%;max-width:1140px;margin:0 auto;height:660px;display:flex;align-items:center;justify-content:center;perspective:1400px}
+.deck-card{
+  position:absolute;left:50%;top:50%;width:280px;height:404px;border-radius:22px;overflow:hidden;
+  background:#1a1410;box-shadow:0 18px 50px rgba(0,0,0,.6);border:1px solid rgba(194,94,58,.18);
+  transform:translate(-50%,-50%) rotate(calc(var(--i) * 3deg));
+  z-index:calc(10 - var(--i));cursor:pointer;
+  transition:transform .9s cubic-bezier(.4,0,.2,1),box-shadow .6s,border-color .6s;
+}
+.deck-card img{width:100%;height:100%;object-fit:cover}
+.deck-card .ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;
+  background:linear-gradient(to top,rgba(20,16,12,.96),transparent 62%);opacity:0;transform:translateY(12px);transition:.45s}
+.deck-card .ov .label{color:var(--terra);margin-bottom:6px;display:block}
+.deck-card .ov h4{font-family:var(--serif);font-size:27px;font-weight:600}
+.deck-card .ov .more{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-muted);margin-top:8px}
+.deck-card:hover{z-index:50!important;transform:translate(-50%,-58%) scale(1.06) rotate(0)!important;box-shadow:0 44px 90px rgba(0,0,0,.85);border-color:var(--terra)}
+.deck-card:hover .ov{opacity:1;transform:translateY(0)}
+/* spread (desktop) */
+.spread .deck-card[style*="--i:0"]{transform:translate(-232%,-50%) rotate(-10deg)}
+.spread .deck-card[style*="--i:1"]{transform:translate(-121%,-50%) rotate(-4deg)}
+.spread .deck-card[style*="--i:2"]{transform:translate(-50%,-50%) rotate(0)}
+.spread .deck-card[style*="--i:3"]{transform:translate(21%,-50%) rotate(4deg)}
+.spread .deck-card[style*="--i:4"]{transform:translate(132%,-50%) rotate(10deg)}
+@media(max-width:1024px){
+  .deck-card{width:212px;height:308px}
+  .spread .deck-card[style*="--i:0"]{transform:translate(-180%,-50%) rotate(-8deg)}
+  .spread .deck-card[style*="--i:1"]{transform:translate(-100%,-50%) rotate(-3deg)}
+  .spread .deck-card[style*="--i:2"]{transform:translate(-50%,-50%) rotate(0)}
+  .spread .deck-card[style*="--i:3"]{transform:translate(0,-50%) rotate(3deg)}
+  .spread .deck-card[style*="--i:4"]{transform:translate(80%,-50%) rotate(8deg)}
+}
+@media(max-width:768px){
+  .deck-stage{height:860px}
+  .deck-card{width:184px;height:264px}
+  .spread .deck-card[style*="--i:0"]{transform:translate(-108%,-100%) rotate(-9deg)}
+  .spread .deck-card[style*="--i:1"]{transform:translate(8%,-100%) rotate(-2deg)}
+  .spread .deck-card[style*="--i:2"]{transform:translate(-50%,-50%) rotate(0)}
+  .spread .deck-card[style*="--i:3"]{transform:translate(-108%,8%) rotate(5deg)}
+  .spread .deck-card[style*="--i:4"]{transform:translate(8%,8%) rotate(9deg)}
+}
+
+/* ============ ATMOSPHERE / TESTIMONIAL ============ */
+.atmos{padding:120px 0;overflow:hidden}
+.atmos-head{display:flex;flex-direction:column;gap:20px;justify-content:space-between;align-items:flex-start;margin-bottom:48px}
+@media(min-width:760px){.atmos-head{flex-direction:row;align-items:flex-end}}
+.atmos-head .label{color:var(--terra);margin-bottom:12px;display:block}
+.atmos-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5vw,54px);letter-spacing:-.02em;line-height:1}
+.btn-ghost{border:1px solid var(--border);background:var(--bone);padding:13px 28px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.3s}
+.btn-ghost:hover{background:var(--oat)}
+.atmos-grid{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:900px){.atmos-grid{grid-template-columns:4fr 8fr}}
+.tcard{position:relative;overflow:hidden;background:var(--oat);border:1px solid var(--border);border-radius:36px;padding:40px;display:flex;flex-direction:column;justify-content:space-between}
+.tcard .who{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.tcard .who img{width:54px;height:54px;border-radius:999px;object-fit:cover;border:2px solid var(--bone)}
+.tcard .who h4{font-family:var(--serif);font-size:18px;font-weight:600}
+.tcard .who p{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.stars{color:var(--terra);letter-spacing:3px;margin-bottom:22px;font-size:14px}
+.tcard h5{font-family:var(--serif);font-size:24px;font-weight:600;margin-bottom:16px}
+.tcard blockquote{color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:28px}
+.tcard .read{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;gap:8px;align-items:center;transition:.3s}
+.tcard .read:hover{color:var(--terra)}
+.tcard .quote-glyph{position:absolute;right:-14px;bottom:-44px;font-family:var(--serif);font-size:230px;line-height:1;color:rgba(194,94,58,.07);pointer-events:none}
+.tiles{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:600px){.tiles{grid-template-columns:1fr 1fr}}
+.tile{position:relative;overflow:hidden;border-radius:36px;min-height:430px;box-shadow:0 18px 50px rgba(42,33,27,.10)}
+.tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform 1s ease}
+.tile:hover img{transform:scale(1.08)}
+.tile .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,33,27,.82),transparent 58%)}
+.tile .cap{position:absolute;left:0;bottom:0;padding:30px;color:var(--bone)}
+.tile .cap .label{color:var(--terra);display:block;margin-bottom:6px}
+.tile .cap h3{font-family:var(--serif);font-size:24px;font-weight:600}
+.play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2}
+.play .disc{width:78px;height:78px;border-radius:999px;background:rgba(246,239,228,.14);backdrop-filter:blur(8px);border:1px solid rgba(246,239,228,.4);display:flex;align-items:center;justify-content:center;transition:.4s}
+.play .disc:hover{background:var(--terra);border-color:var(--terra);transform:scale(1.1)}
+.play .disc svg{margin-left:4px}
+
+/* ============ WHY (FLIP) ============ */
+.why{position:relative;padding:120px 28px;background:var(--bone);overflow:hidden}
+.why .guides{position:absolute;inset:0;display:flex;justify-content:center;pointer-events:none}
+.why .guides .gg{width:100%;max-width:1300px;position:relative;height:100%}
+.why .guides .gg::before,.why .guides .gg::after{content:"";position:absolute;top:0;width:1px;height:100%;background:var(--border)}
+.why .guides .gg::before{left:48px}.why .guides .gg::after{right:48px}
+.why-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:52px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;background:var(--bone);border:1.5px solid var(--border);border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 4px 16px rgba(42,33,27,.04)}
+.badge .dot{color:var(--terra)}
+.why-head{text-align:center}
+.why-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(36px,5.5vw,58px);line-height:1.06;letter-spacing:-.02em;margin:18px 0 16px}
+.why-head p{font-size:18px;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.6}
+.flip-grid{display:grid;grid-template-columns:1fr;gap:26px;width:100%}
+@media(min-width:840px){.flip-grid{grid-template-columns:repeat(3,1fr)}}
+.flip{perspective:1200px;aspect-ratio:337/360}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.4,0,.2,1)}
+.flip:hover .flip-inner,.flip.flipped .flip-inner{transform:rotateY(180deg)}
+.flip .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center}
+.flip .front{background:var(--oat);border:1.5px solid var(--border)}
+.flip .front .ph{width:100%;height:66%;border-radius:14px;overflow:hidden;margin-bottom:22px}
+.flip .front .ph img{width:100%;height:100%;object-fit:cover}
+.flip .front h3{font-family:var(--serif);font-size:22px;font-weight:600}
+.flip .back{transform:rotateY(180deg);color:var(--bone)}
+.flip .back.t1{background:var(--terra)}
+.flip .back.t2{background:var(--ochre)}
+.flip .back.t3{background:var(--ink)}
+.flip .back h3{font-family:var(--serif);font-size:24px;font-weight:600;margin-bottom:14px}
+.flip .back.t1 h3,.flip .back.t3 h3{color:var(--bone)}
+.flip .back p{font-size:15px;line-height:1.55;opacity:.9}
+.flip .back .tag{margin-top:22px;padding:7px 16px;border:1px solid rgba(246,239,228,.35);border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+
+/* ============ FAQ ============ */
+.faq{padding:120px 0;background:var(--bone)}
+.faq-wrap{display:flex;flex-direction:column;gap:56px}
+@media(min-width:1000px){.faq-wrap{flex-direction:row;gap:80px}}
+.faq-left{flex:0 0 38%}
+.faq-left h2{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5vw,56px);line-height:1.08;letter-spacing:-.02em;margin:22px 0}
+.faq-left p{color:var(--muted);font-size:17px;max-width:340px;line-height:1.6}
+.contact-chip{margin-top:40px;display:flex;align-items:center;gap:14px}
+.contact-chip .ic{width:46px;height:46px;border-radius:999px;background:var(--oat);border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.contact-chip .label{color:var(--terra);display:block;margin-bottom:3px}
+.contact-chip a{font-size:14px;font-weight:500;transition:.3s}
+.contact-chip a:hover{color:var(--terra)}
+.faq-list{flex:1;display:flex;flex-direction:column;gap:14px}
+.faq-item{border:1px solid var(--border);border-radius:18px;background:rgba(239,228,211,.4);transition:background .3s}
+.faq-item.active{background:var(--oat)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:26px 30px;text-align:left}
+.faq-q span{font-family:var(--serif);font-size:19px;font-weight:600}
+.faq-ic{flex-shrink:0;width:32px;height:32px;border-radius:999px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:.35s}
+.faq-item.active .faq-ic{background:var(--ink);transform:rotate(45deg)}
+.faq-ic svg{transition:.3s}
+.faq-item.active .faq-ic svg{stroke:var(--bone)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.faq-a p{padding:0 30px 26px;color:var(--muted);line-height:1.65;max-width:620px}
+
+/* ============ FINAL CTA ============ */
+.final{padding:128px 0;background:var(--oat);border-top:1px solid var(--border)}
+.final .inner{max-width:760px;margin:0 auto;text-align:center}
+.final h2{font-family:var(--serif);font-weight:600;font-size:clamp(44px,7vw,82px);line-height:.98;letter-spacing:-.02em;margin-bottom:24px}
+.final h2 em{font-style:italic;color:var(--terra)}
+.final p{font-size:20px;color:var(--muted);margin-bottom:42px}
+.final .btns{display:flex;flex-direction:column;gap:16px;justify-content:center}
+@media(min-width:560px){.final .btns{flex-direction:row}}
+.btn-outline{border:1px solid rgba(42,33,27,.28);padding:19px 44px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.3s}
+.btn-outline:hover{background:var(--bone)}
+.final .btn-solid{display:inline-block;padding:19px 44px}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:var(--bone);overflow:hidden}
+.foot-top{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;padding:96px 0}
+@media(min-width:900px){.foot-top{grid-template-columns:1fr 1fr 1fr}}
+.foot-quote .q{font-family:var(--serif);font-size:50px;color:var(--terra);line-height:0}
+.foot-quote h3{font-family:var(--serif);font-size:clamp(26px,3.4vw,34px);line-height:1.25;margin-top:18px}
+.foot-quote .seal{margin-top:30px;display:inline-flex;background:var(--terra);color:var(--ink);padding:14px;border-radius:12px}
+.foot-portrait{display:flex;justify-content:center;position:relative}
+.foot-portrait .pic{width:240px;height:240px;border-radius:999px;overflow:hidden;border:4px solid rgba(246,239,228,.1)}
+.foot-portrait .pic img{width:100%;height:100%;object-fit:cover}
+.foot-portrait .play-badge{position:absolute;bottom:8px;right:18px;width:94px;height:94px;border-radius:999px;background:var(--terra);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transform:rotate(12deg);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.foot-manifesto{text-align:left}
+@media(min-width:900px){.foot-manifesto{text-align:right}}
+.foot-manifesto .ph{font-family:var(--serif);font-style:italic;color:var(--terra);font-size:18px;margin-bottom:14px}
+.foot-manifesto h3{font-size:23px;font-weight:300;line-height:1.45}
+.foot-manifesto a{display:inline-block;margin-top:30px;border:1px solid rgba(246,239,228,.3);padding:13px 26px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.3s}
+.foot-manifesto a:hover{background:var(--bone);color:var(--ink)}
+
+.foot-marquee{border-top:1px solid rgba(246,239,228,.1);border-bottom:1px solid rgba(246,239,228,.1);background:#1d1611;padding:22px 0;overflow:hidden}
+.fmq-track{display:flex;align-items:center;gap:30px;width:max-content;animation:scrollx 34s linear infinite;font-family:var(--serif);font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--cream-muted)}
+.fmq-track .sp{color:var(--terra);font-size:11px}
+
+.foot-links{padding:64px 28px}
+.foot-links .grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:46px;border-bottom:1px solid rgba(246,239,228,.1);padding-bottom:46px}
+@media(min-width:760px){.foot-links .grid{grid-template-columns:1fr 1fr 2fr}}
+.foot-links .label{color:var(--terra);margin-bottom:22px;display:block}
+.studios{display:flex;flex-wrap:wrap;gap:12px}
+.studios .pill{border:1px solid rgba(246,239,228,.22);border-radius:999px;padding:9px 16px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:.3s}
+.studios .pill:hover{background:rgba(246,239,228,.1)}
+.studios .pill.on{background:var(--terra);color:var(--ink);border-color:var(--terra)}
+.socials{display:flex;gap:12px}
+.socials a{width:42px;height:42px;border-radius:999px;border:1px solid rgba(246,239,228,.22);display:flex;align-items:center;justify-content:center;transition:.3s}
+.socials a:hover{background:rgba(246,239,228,.1)}
+.news{display:flex;border-bottom:1px solid rgba(246,239,228,.22);padding-bottom:10px}
+.news input{flex:1;background:none;border:none;outline:none;color:var(--bone);font-family:var(--sans);font-size:14px}
+.news input::placeholder{color:rgba(246,239,228,.4)}
+.news button{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.3s}
+.news button:hover{color:var(--terra)}
+.foot-bottom{max-width:1240px;margin:0 auto;padding-top:30px;display:flex;flex-direction:column;gap:14px;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,239,228,.4)}
+@media(min-width:560px){.foot-bottom{flex-direction:row}}
+.foot-bottom .name{display:flex;align-items:center;gap:8px;color:var(--bone);font-weight:700}
+
+/* ============ SCROLL REVEAL ============ */
+[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1.2s cubic-bezier(.2,0,.2,1),transform 1.2s cubic-bezier(.2,0,.2,1)}
+[data-reveal].in{opacity:1;transform:none}
+.word{display:inline-block;opacity:0;transform:translateX(-18px);transition:opacity .4s cubic-bezier(.2,0,.2,1),transform .4s cubic-bezier(.2,0,.2,1);white-space:pre}
+.word.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <button class="menu-btn" id="menuBtn">
+      <span class="bars"><span></span><span></span></span> Menu
+    </button>
+    <a href="#top" class="brand">
+      <svg class="glyph" width="26" height="22" viewBox="0 0 26 22" fill="none">
+        <path d="M2 9h22a11 11 0 0 1-22 0Z" fill="currentColor"/>
+        <path d="M5 9c0-3 3.6-5 8-5s8 2 8 5" stroke="currentColor" stroke-width="1.6" fill="none"/>
+        <path d="M13 4V1" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      <span class="word">Terra Siena</span>
+    </a>
+    <a href="#collections" class="cta-pill">Shop the Studio</a>
+  </nav>
+</header>
+
+<!-- MENU OVERLAY -->
+<div class="overlay" id="overlay">
+  <button class="close" id="closeBtn">✕ Close</button>
+  <div class="overlay-links">
+    <a href="#top" data-close>Home</a>
+    <a href="#collections" data-close>Collections</a>
+    <a href="#atmosphere" data-close>In Atmosphere</a>
+    <a href="#why" data-close>The Studio</a>
+    <a href="#faq" data-close>Journal</a>
+  </div>
+  <div class="overlay-social">
+    <a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">Substack</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="hero-left">
+          <h1 data-words>Fired by hand, <em>shaped</em> by earth.</h1>
+          <p class="lede" data-words>Wood-fired stoneware, thrown one piece at a time in our Puglia atelier. Honest clay, lead-free glaze, and the quiet imperfection that only a human hand can leave.</p>
+        </div>
+        <div class="hero-right" data-reveal>
+          <div class="firing-card">
+            <span class="label">New Firing</span>
+            <p>The Sienna dinner set returns in matte oxblood — a limited kiln of 120 pieces, glazed in our Porto studio.</p>
+          </div>
+          <a href="#collections" class="btn-solid">Shop the Collection</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-marquee">
+      <div class="hmq-track">
+        <img src="./assets/img/hero1.jpg" alt="Hands shaping clay on the wheel">
+        <img src="./assets/img/hero2.jpg" alt="Stacked ceramic bowls">
+        <img src="./assets/img/hero3.jpg" alt="Pottery drying on studio shelf">
+        <img src="./assets/img/hero4.jpg" alt="Hand-glazed ceramic cups">
+        <img src="./assets/img/hero5.jpg" alt="Clay studio atmosphere">
+        <img src="./assets/img/hero1.jpg" alt="" aria-hidden="true">
+        <img src="./assets/img/hero2.jpg" alt="" aria-hidden="true">
+        <img src="./assets/img/hero3.jpg" alt="" aria-hidden="true">
+        <img src="./assets/img/hero4.jpg" alt="" aria-hidden="true">
+        <img src="./assets/img/hero5.jpg" alt="" aria-hidden="true">
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values" id="about">
+    <div class="wrap">
+      <div class="values-grid">
+        <div data-reveal><div class="fig">Wood-Fired</div><h3>Anagama Kiln</h3></div>
+        <div data-reveal><div class="fig">100%</div><h3>Lead-Free Glaze</h3></div>
+        <div data-reveal><div class="fig">Made in</div><h3>Puglia, Italy</h3></div>
+        <div data-reveal><div class="fig">Free</div><h3>EU Shipping</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECK -->
+  <section class="deck-sec" id="collections">
+    <div class="wrap">
+      <div class="deck-head">
+        <span class="label" data-reveal>The Atelier Editions</span>
+        <h2 data-words>Browse the Kiln</h2>
+      </div>
+    </div>
+    <div class="deck-stage" id="deckStage">
+      <article class="deck-card" style="--i:0">
+        <img src="./assets/img/deck1.jpg" alt="Dinnerware collection">
+        <div class="ov"><span class="label">Series 01</span><h4>Dinnerware</h4><p class="more">Explore Collection</p></div>
+      </article>
+      <article class="deck-card" style="--i:1">
+        <img src="./assets/img/deck2.jpg" alt="Vases collection">
+        <div class="ov"><span class="label">Series 02</span><h4>Vases &amp; Vessels</h4><p class="more">Explore Collection</p></div>
+      </article>
+      <article class="deck-card" style="--i:2">
+        <img src="./assets/img/deck3.jpg" alt="Mugs collection">
+        <div class="ov"><span class="label">Series 03</span><h4>Mugs &amp; Cups</h4><p class="more">Explore Collection</p></div>
+      </article>
+      <article class="deck-card" style="--i:3">
+        <img src="./assets/img/deck4.jpg" alt="Planters collection">
+        <div class="ov"><span class="label">Series 04</span><h4>Planters</h4><p class="more">Explore Collection</p></div>
+      </article>
+      <article class="deck-card" style="--i:4">
+        <img src="./assets/img/deck5.jpg" alt="Limited editions collection">
+        <div class="ov"><span class="label">Series 05</span><h4>Limited Editions</h4><p class="more">Explore Collection</p></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ATMOSPHERE -->
+  <section class="atmos" id="atmosphere">
+    <div class="wrap">
+      <div class="atmos-head">
+        <div>
+          <span class="label" data-reveal>Community Stories</span>
+          <h2 data-words>Terra Siena in Atmosphere</h2>
+        </div>
+        <button class="btn-ghost" data-reveal>View All Projects</button>
+      </div>
+      <div class="atmos-grid">
+        <div class="tcard" data-reveal>
+          <div>
+            <div class="who">
+              <img src="./assets/img/avatar.jpg" alt="Greta Lindqvist">
+              <div><h4>Greta Lindqvist</h4><p>Studio Nord, Copenhagen</p></div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <h5>Warmth You Can Hold</h5>
+            <blockquote>"Terra Siena changed how we set a table. The weight of the stoneware, the slow matte glaze that catches the morning light — these are pieces that make a meal feel like a ritual rather than a routine."</blockquote>
+          </div>
+          <a href="#" class="read">Read full story →</a>
+          <div class="quote-glyph">”</div>
+        </div>
+        <div class="tiles">
+          <div class="tile" data-reveal>
+            <img src="./assets/img/proj1.jpg" alt="Terra Siena in a Copenhagen kitchen">
+            <div class="scrim"></div>
+            <div class="cap"><span class="label">Project 01</span><h3>The Nordic Kitchen</h3></div>
+          </div>
+          <div class="tile" data-reveal>
+            <img src="./assets/img/proj2.jpg" alt="Atelier film: the throwing process">
+            <div class="play"><button class="disc" aria-label="Play atelier film">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#F6EFE4"><path d="M8 5v14l11-7z"/></svg>
+            </button></div>
+            <div class="scrim"></div>
+            <div class="cap"><span class="label">Atelier Film</span><h3>The Throwing</h3></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY (FLIP) -->
+  <section class="why" id="why">
+    <div class="guides"><div class="gg"></div></div>
+    <div class="why-inner">
+      <div class="why-head">
+        <span class="badge" data-reveal><span class="dot">✦</span> Why Terra Siena</span>
+        <h2 data-words>Industrial precision, domestic soul</h2>
+        <p data-words>Collectors choose Terra Siena because we bridge the rigor of the kiln with the warmth of a table set for friends.</p>
+      </div>
+      <div class="flip-grid">
+        <div class="flip" data-reveal>
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="ph"><img src="./assets/img/flip1.jpg" alt="Local stoneware clay"></div>
+              <h3>Local Stoneware</h3>
+            </div>
+            <div class="face back t1">
+              <h3>Dug From the Hill</h3>
+              <p>Our clay comes from a single seam in the Itria valley — high-iron stoneware that fires to a deep, living terracotta.</p>
+              <span class="tag">Honest Materials</span>
+            </div>
+          </div>
+        </div>
+        <div class="flip" data-reveal>
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="ph"><img src="./assets/img/flip2.jpg" alt="Hand-mixed glaze"></div>
+              <h3>Hand-Mixed Glaze</h3>
+            </div>
+            <div class="face back t2">
+              <h3>Ash &amp; Oxide</h3>
+              <p>Each glaze is mixed by hand from wood ash and mineral oxide. Slight pooling and crawl are the signature of a piece touched by fire.</p>
+              <span class="tag">Atelier Craft</span>
+            </div>
+          </div>
+        </div>
+        <div class="flip" data-reveal>
+          <div class="flip-inner">
+            <div class="face front">
+              <div class="ph"><img src="./assets/img/flip3.jpg" alt="Built to last"></div>
+              <h3>Made to Be Used</h3>
+            </div>
+            <div class="face back t3">
+              <h3>Built to Last</h3>
+              <p>Fired to 1280°C, every piece is oven, microwave and dishwasher safe. Made not for the shelf, but for the daily table.</p>
+              <span class="tag">Everyday Heirloom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap faq-wrap">
+      <div class="faq-left" data-reveal>
+        <span class="label" style="color:var(--terra)">Support &amp; Care</span>
+        <h2 data-words>Frequently asked questions</h2>
+        <p data-words>Everything you need to know about our clay, glazes, shipping and the care of hand-fired stoneware.</p>
+        <div class="contact-chip">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A211B" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </div>
+          <div>
+            <span class="label">Still have questions?</span>
+            <a href="mailto:atelier@terrasiena.studio">atelier@terrasiena.studio</a>
+          </div>
+        </div>
+      </div>
+      <div class="faq-list" data-reveal>
+        <div class="faq-item">
+          <button class="faq-q"><span>What clay and glazes do you use?</span>
+            <span class="faq-ic"><svg width="14" height="14" viewBox="0 0 14 14" stroke="#2A211B" stroke-width="1.8"><path d="M7 1v12M1 7h12"/></svg></span></button>
+          <div class="faq-a"><p>We use a single high-iron stoneware dug from the Itria valley, glazed with hand-mixed wood-ash and mineral-oxide glazes. Every glaze is lead-free, food-safe and fired to full vitrification at 1280°C.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Is your stoneware dishwasher safe?</span>
+            <span class="faq-ic"><svg width="14" height="14" viewBox="0 0 14 14" stroke="#2A211B" stroke-width="1.8"><path d="M7 1v12M1 7h12"/></svg></span></button>
+          <div class="faq-a"><p>Yes. Because every piece is fired to a high temperature, our stoneware is oven, microwave and dishwasher safe. We simply ask that you avoid sudden thermal shock — no fridge straight to oven.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>What is the lead time for an order?</span>
+            <span class="faq-ic"><svg width="14" height="14" viewBox="0 0 14 14" stroke="#2A211B" stroke-width="1.8"><path d="M7 1v12M1 7h12"/></svg></span></button>
+          <div class="faq-a"><p>In-stock pieces ship within 2–3 business days. Hand-thrown commissions and limited firings take 4–6 weeks to throw, dry, bisque and glaze-fire. You'll receive a personal timeline at confirmation.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Why do pieces vary in colour and shape?</span>
+            <span class="faq-ic"><svg width="14" height="14" viewBox="0 0 14 14" stroke="#2A211B" stroke-width="1.8"><path d="M7 1v12M1 7h12"/></svg></span></button>
+          <div class="faq-a"><p>Wood firing is unpredictable by nature — flame, ash and placement in the kiln leave their own marks. Slight differences in tone, glaze pooling and form are intentional and celebrated, never flaws.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Do you offer a trade program?</span>
+            <span class="faq-ic"><svg width="14" height="14" viewBox="0 0 14 14" stroke="#2A211B" stroke-width="1.8"><path d="M7 1v12M1 7h12"/></svg></span></button>
+          <div class="faq-a"><p>Absolutely. We work with restaurants, stylists and interior studios worldwide. Trade members receive preferential pricing, priority firings and dedicated support for larger commissions.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="wrap">
+      <div class="inner" data-reveal>
+        <h2 data-words>Bring the <em>kiln</em> home.</h2>
+        <p>Stoneware that blends the discipline of the firing with the warmth of a shared table.</p>
+        <div class="btns">
+          <a href="#collections" class="btn-solid">Shop the Studio</a>
+          <a href="#" class="btn-outline">Request the Catalog</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-quote" data-reveal>
+        <div class="q">“</div>
+        <h3 data-words>Setting the table in its most honest light.</h3>
+        <span class="seal"><svg width="26" height="26" viewBox="0 0 24 24" fill="#2A211B"><path d="M12 2 4 7v10l8 5 8-5V7z" opacity=".25"/><path d="M12 6 8 8.5v5L12 16l4-2.5v-5z"/></svg></span>
+      </div>
+      <div class="foot-portrait" data-reveal>
+        <div class="pic"><img src="./assets/img/founder.jpg" alt="Founder and master potter"></div>
+        <div class="play-badge">View<svg width="14" height="14" viewBox="0 0 24 24" fill="#2A211B"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="foot-manifesto" data-reveal>
+        <p class="ph">Our Philosophy</p>
+        <h3 data-words>We dig the earth, learn the fire, and let the clay remember the hand.</h3>
+        <a href="#">Read the Journal</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot-marquee">
+    <div class="fmq-track">
+      <span>Wood Fired</span><span class="sp">✦</span><span>High-Iron Stoneware</span><span class="sp">✦</span><span>Lead-Free Glaze</span><span class="sp">✦</span><span>Thrown by Hand</span><span class="sp">✦</span><span>Made in Puglia</span><span class="sp">✦</span>
+      <span>Wood Fired</span><span class="sp">✦</span><span>High-Iron Stoneware</span><span class="sp">✦</span><span>Lead-Free Glaze</span><span class="sp">✦</span><span>Thrown by Hand</span><span class="sp">✦</span><span>Made in Puglia</span><span class="sp">✦</span>
+    </div>
+  </div>
+
+  <div class="foot-links">
+    <div class="grid">
+      <div>
+        <span class="label">Ateliers</span>
+        <div class="studios">
+          <span class="pill">Milan</span><span class="pill">Lisbon</span><span class="pill on">Puglia HQ</span>
+        </div>
+      </div>
+      <div>
+        <span class="label">Socials</span>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6EFE4" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="#F6EFE4" stroke="none"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6EFE4" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7c-2 0-3.5 1.4-3.5 3.3 0 .9.4 1.7 1 2M12 7c1.8 0 3 1.2 3 3 0 2.2-1.2 4-3 4-.7 0-1.4-.4-1.6-1M10.4 16l-.9 3.5"/></svg></a>
+          <a href="#" aria-label="Substack"><svg width="18" height="18" viewBox="0 0 24 24" fill="#F6EFE4"><path d="M4 4h16v2.5H4zM4 9h16v2.5H4zM4 14l8 4 8-4v6l-8 4-8-4z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <span class="label">Newsletter</span>
+        <form class="news" onsubmit="return false">
+          <input type="email" placeholder="Firing updates &amp; early access…" aria-label="Email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="name">
+        <svg width="16" height="14" viewBox="0 0 26 22" fill="#C25E3A"><path d="M2 9h22a11 11 0 0 1-22 0Z"/></svg>
+        Terra Siena Ceramics Atelier
+      </div>
+      <p>© 2024 Terra Siena. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  /* Word-by-word split */
+  document.querySelectorAll('[data-words]').forEach(el => {
+    const html = el.innerHTML;
+    // split preserving <em> tags
+    const parts = html.split(/(<em>.*?<\/em>|\s+)/g).filter(Boolean);
+    el.innerHTML = '';
+    let i = 0;
+    parts.forEach(part => {
+      if (/^\s+$/.test(part)) { el.appendChild(document.createTextNode(part)); return; }
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.innerHTML = part;
+      span.style.transitionDelay = (i++ * 0.04) + 's';
+      el.appendChild(span);
+    });
+  });
+
+  /* Intersection reveals */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.word').forEach(w => w.classList.add('in'));
+      if (e.target.classList.contains('word')) e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal], [data-words]').forEach(el => io.observe(el));
+
+  /* Deck spread */
+  const stage = document.getElementById('deckStage');
+  if (stage) {
+    const sio = new IntersectionObserver((ents) => {
+      ents.forEach(en => { if (en.isIntersecting) { stage.classList.add('spread'); sio.unobserve(en.target); } });
+    }, { threshold: 0.25 });
+    sio.observe(stage);
+  }
+
+  /* Menu overlay */
+  const overlay = document.getElementById('overlay');
+  const open = () => { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const close = () => { overlay.classList.remove('open'); document.body.style.overflow = ''; };
+  document.getElementById('menuBtn').addEventListener('click', open);
+  document.getElementById('closeBtn').addEventListener('click', close);
+  overlay.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', close));
+
+  /* Flip cards: tap to flip on touch */
+  if (window.matchMedia('(hover: none)').matches) {
+    document.querySelectorAll('.flip').forEach(card => {
+      card.addEventListener('click', () => card.classList.toggle('flipped'));
+    });
+  }
+
+  /* FAQ accordion */
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('active');
+      items.forEach(o => { o.classList.remove('active'); o.querySelector('.faq-a').style.maxHeight = '0'; });
+      if (!isOpen) { item.classList.add('active'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+  });
+});
+</script>
+</body>
+</html>
