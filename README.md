@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (322)
+## Projects (323)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (74)</b></summary>
+<summary><b>Landing pages (75)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -139,6 +139,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Pixel-faithful dark AI-fintech "Synergeus" landing with three scroll-revealed sections — an HLS video hero with a 3D-tilt story card, an analytics card with count-ups, and an AI-intelligence trio (NL queries, wipe-reveal chart, animated SVG node tree) | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
 | [terra-craft-editorial-h58](./landing-pages/terra-craft-editorial-h58/) | "Quiet Craft Editorial" landing page for the artisan furniture house Terra Studio — a warm cream paper canvas with IBM Plex Serif display type, a two-column hero whose charcoal panel holds three overlapping mat-board image cards with mouse-parallax + hover-lift, an infinite materials marquee, a framed product collection grid, an atelier philosophy split, a count-up stats band, and a swap-to-success newsletter CTA; self-hosted fonts, scroll-reveal, mobile menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [terra-siena-atelier-h14](./landing-pages/terra-siena-atelier-h14/) | "Terra Siena" handcrafted-ceramics atelier landing ("Sun-Fired Earth" aesthetic) on a terracotta/ochre/bone palette with Fraunces serif + Inter Tight, a marquee hero, a scroll-triggered fanned card deck that spreads into collections, 3D flip cards, a testimonial grid, an accordion FAQ, and a marquee footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+| [tide-table-h82](./landing-pages/tide-table-h82/) | "Tide to Table" coastal seafood &amp; oyster bar landing page (Tide &amp; Table) — a salt-washed cream canvas with deep-navy ink and a seafoam accent, Playfair Display serif + Inter Tight, five rhythmic multiply-blended hero image strips that rise on load, a slow Ken-Burns philosophy split, a dark "Seasonal Harvest" menu list with rotated image cards that pop and straighten on hover, an overlapping editorial atmosphere card, a glassy split reservation form with inline confirmation, a full-screen menu overlay, and a paper-grain overlay | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
 | [vantix-precision-medicine-h34](./landing-pages/vantix-precision-medicine-h34/) | "Clinical Obsidian" precision-medicine institute landing page (Vantix) — deep obsidian-navy canvas with electric cyan-blue accents, Bricolage Grotesque display type and JetBrains Mono telemetry labels, an asymmetric split hero with count-up metrics, grayscale-to-color clinical photography, a pulsing rapid-response strip, capabilities/platform/specialists sections, and a consultation form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
