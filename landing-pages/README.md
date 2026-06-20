@@ -1,6 +1,6 @@
 # Landing pages
 
-59 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+61 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -64,3 +64,4 @@
 | [vermillion-cram-h3](./vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
 | [viktor-oddy-landing](./viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [voltframe-dev-h29](./voltframe-dev-h29/) | "Bracketed Voltage" developer-portfolio landing on a near-black stage with one electric-yellow accent, a hairline framed hero box with glowing corner nodes, hover-yellow title words, floating particles, pulsing orbs, scroll-revealed skills/work/testimonials, and a mobile slide-in menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+| [voltline-automation-h60](./voltline-automation-h60/) | "Bone & Volt" industrial AI-automation landing on a warm off-white canvas with graphite ink and a single electric-lime accent, Space Grotesk + JetBrains Mono, a pure-CSS orbiting 3D cube rig with a glowing lime core, a randomized pixel-fill nav button, starfield-reveal CTAs, a count-up stats strip, a 3-card solutions grid, and a dark starfield mission band | HTML, CSS, Vanilla JS, IntersectionObserver, CSS 3D transforms, self-hosted fonts |
