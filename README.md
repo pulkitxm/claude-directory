@@ -166,7 +166,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Portfolios (11)</b></summary>
+<summary><b>Portfolios (12)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -174,6 +174,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [cobalt-bento-folio-h43](./portfolios/cobalt-bento-folio-h43/) | "Daylight Workbench" light-glass bento developer portfolio — cool pale-gray canvas with a colossal royal-cobalt PORTFOLIO hero tile, frosted-glass panels, pointer-parallax + specular hero, typewriter rotator, animated skill ring, count-up stats, and a validated contact form | HTML, CSS, Vanilla JS, IntersectionObserver, Plus Jakarta Sans, JetBrains Mono |
 | [crimson-press-kit-h25](./portfolios/crimson-press-kit-h25/) | Editorial spiral-bound magazine portfolio staged as a crimson brand press kit with print grain, collage cover, and scroll reveals | HTML, CSS, Vanilla JS |
 | [electric-volt-folio-h45](./portfolios/electric-volt-folio-h45/) | "Kinetic Brutalism" motion-designer portfolio — acid-green/hot-pink neo-brutalist poster grid, oversized Inter Black type, blocky shadows, marquee, scroll-in counters, and a full-screen overlay nav | HTML, CSS, Vanilla JS, Inter, Space Mono |
+| [inkpress-atelier-h46](./portfolios/inkpress-atelier-h46/) | "Inkpress Atelier" risograph-print graphic-designer portfolio staged as a folded zine — cream paper frame, 4-color registration bar, Anton display type, diamond logo plate, services menu, colored works grid, and scroll reveals | HTML, CSS, Vanilla JS, Anton, Roboto Condensed |
 | [jack-3d-portfolio](./portfolios/jack-3d-portfolio/) | Dark-themed 3D creator portfolio landing page for Jack with gradient hero text | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [lumen-folio-h19](./portfolios/lumen-folio-h19/) | Soft editorial-minimalism personal portfolio with floating glass nav, drag carousel, typewriter hero, and scroll reveals | HTML, CSS, JavaScript |
 | [michael-smith-portfolio](./portfolios/michael-smith-portfolio/) | Dark single-page creator portfolio with GSAP / Framer Motion animations and HLS video | React, TypeScript, Vite, Tailwind CSS, GSAP, Framer Motion, hls.js, React Router |
