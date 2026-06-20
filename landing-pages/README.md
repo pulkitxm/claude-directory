@@ -1,6 +1,6 @@
 # Landing pages
 
-37 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+38 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -41,3 +41,4 @@
 | [velvet-vellum-agency-h4](./velvet-vellum-agency-h4/) | "Velvet precision" marketing-agency landing page (Velvet Vellum) with an oxblood-maroon hero panel, giant Josefin Sans display type, a bento case-study grid, auto-rotating testimonials, and a faux-3D perspective floor-grid footer | HTML, CSS, Vanilla JS, IntersectionObserver |
 | [vermillion-cram-h3](./vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
 | [viktor-oddy-landing](./viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [voltframe-dev-h29](./voltframe-dev-h29/) | "Bracketed Voltage" developer-portfolio landing on a near-black stage with one electric-yellow accent, a hairline framed hero box with glowing corner nodes, hover-yellow title words, floating particles, pulsing orbs, scroll-revealed skills/work/testimonials, and a mobile slide-in menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
