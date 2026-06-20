@@ -25,6 +25,7 @@
 | [orbis-nft-landing](./orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [pelmatech-health-companion](./pelmatech-health-companion/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
+| [riso-rebel-fest-h20](./riso-rebel-fest-h20/) | Floating-pill neo-brutalist landing page for fictional design conference "Riso Rebel Fest" — warm off-white canvas, oversized riso-color bento cards with animated motifs, chunky Shrikhand display serif, grayscale-to-color speaker grid, tiered tickets, and scroll-reveal | HTML, CSS, Vanilla JS, vendored fonts |
 | [space-voyage-landing](./space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
 | [synergeus-landing](./synergeus-landing/) | Interface experiment. | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
 | [usd-halo-landing](./usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |

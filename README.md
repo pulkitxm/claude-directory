@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (258)
+## Projects (262)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -52,7 +52,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (27)</b></summary>
+<summary><b>Landing pages (31)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -79,6 +79,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [orbis-nft-landing](./landing-pages/orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
+| [riso-rebel-fest-h20](./landing-pages/riso-rebel-fest-h20/) | Floating-pill neo-brutalist landing page for fictional design conference "Riso Rebel Fest" — warm off-white canvas, oversized riso-color bento cards with animated motifs, chunky Shrikhand display serif, grayscale-to-color speaker grid, tiered tickets, and scroll-reveal | HTML, CSS, Vanilla JS, vendored fonts |
 | [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Interface experiment. | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
