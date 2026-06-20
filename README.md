@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (276)
+## Projects (277)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -53,7 +53,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (41)</b></summary>
+<summary><b>Landing pages (42)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -83,6 +83,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [ochre-stone-studio-h11](./landing-pages/ochre-stone-studio-h11/) | Warm editorial landing page for a bespoke interior-architecture studio, with a diagonal cutout hero, auto-rotating curation card, bento work grid, and scattered freefall process cards | HTML, CSS, JavaScript |
 | [orbital-frequency-summit-h22](./landing-pages/orbital-frequency-summit-h22/) | "Deep Signal" landing page for a fictional deep-space signals & aerospace-software summit "Orbital Frequency" — observatory-dark void with amber-gold/signal-green accents, Oswald condensed display type, canvas starfield, rotating orbital rings + radar-sweep hero, telemetry strip, mission timeline, floating-beacon pricing passes, and a scroll-tracking signal bar | HTML, CSS, Vanilla JS, Canvas, self-hosted fonts |
 | [orbis-nft-landing](./landing-pages/orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [paper-circuit-agentic-saas-h16](./landing-pages/paper-circuit-agentic-saas-h16/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Bricolage Grotesque, Inter Tight, JetBrains Mono |
 | [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [riso-rebel-fest-h20](./landing-pages/riso-rebel-fest-h20/) | Floating-pill neo-brutalist landing page for fictional design conference "Riso Rebel Fest" — warm off-white canvas, oversized riso-color bento cards with animated motifs, chunky Shrikhand display serif, grayscale-to-color speaker grid, tiered tickets, and scroll-reveal | HTML, CSS, Vanilla JS, vendored fonts |
