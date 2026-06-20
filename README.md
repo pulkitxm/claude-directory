@@ -21,12 +21,12 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (276)
+## Projects (278)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
 <details>
-<summary><b>Hero sections (37)</b></summary>
+<summary><b>Hero sections (38)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -45,6 +45,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [ironclad-password-hero](./hero-sections/ironclad-password-hero/) | Password-manager hero section for Ironclad with animated product-style presentation | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [kubric-hero-landing](./hero-sections/kubric-hero-landing/) | Desktop-only dark hero for fictional studio "Kubric™" with a looping background video, an 8-layer progressive bottom blur, a self-drawing animated SVG logo, a character-by-character headline, and a video-ready reveal sequence | TanStack Start, React 19, Vite 7, Tailwind CSS v4 |
 | [mainframe-hero-landing](./hero-sections/mainframe-hero-landing/) | Full-screen hero landing page for a creative agency called "Mainframe" with custom Helvetica Now display fonts | React, TypeScript, Vite, Tailwind CSS |
+| [monocrit-studio-h27](./hero-sections/monocrit-studio-h27/) | Interactive near-monochrome Swiss-brutalist studio hero with a cursor-following image card, magnetic headline letters, and movement-driven image cycling | HTML, CSS, JavaScript, Bricolage Grotesque |
 | [nexora-automation-hero](./hero-sections/nexora-automation-hero/) | Single-viewport SaaS automation hero ("Nexora") with Instrument Serif / Inter type and Framer Motion | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [noctis-cinematic-hero](./hero-sections/noctis-cinematic-hero/) | NOCTIS full-screen dark cinematic hero with video background, nav, and timecode details | React, TypeScript, Vite, CSS |
 | [particle-hero](./hero-sections/particle-hero/) | Night-sky particle-canvas hero with a clickable gold-mode invert toggle, rotating spotlights, and a radial-reveal headline | React, TypeScript, Vite, Tailwind CSS, Canvas 2D, shadcn/ui, Lucide |
@@ -71,7 +72,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (41)</b></summary>
+<summary><b>Landing pages (42)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -101,6 +102,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [ochre-stone-studio-h11](./landing-pages/ochre-stone-studio-h11/) | Warm editorial landing page for a bespoke interior-architecture studio, with a diagonal cutout hero, auto-rotating curation card, bento work grid, and scattered freefall process cards | HTML, CSS, JavaScript |
 | [orbital-frequency-summit-h22](./landing-pages/orbital-frequency-summit-h22/) | "Deep Signal" landing page for a fictional deep-space signals & aerospace-software summit "Orbital Frequency" — observatory-dark void with amber-gold/signal-green accents, Oswald condensed display type, canvas starfield, rotating orbital rings + radar-sweep hero, telemetry strip, mission timeline, floating-beacon pricing passes, and a scroll-tracking signal bar | HTML, CSS, Vanilla JS, Canvas, self-hosted fonts |
 | [orbis-nft-landing](./landing-pages/orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [paper-circuit-agentic-saas-h16](./landing-pages/paper-circuit-agentic-saas-h16/) | "Paper Circuit" — a bright, blueprint-precise light-mode SaaS landing for autonomous-outbound product "Drift": cool off-white dot-grid canvas, Bricolage Grotesque display + Inter Tight + JetBrains Mono, indigo/magenta color-as-wiring, an auto-looping hero icon belt, a floating product mockup (sidebar, metrics, interactive node canvas with animated dashed wires + live email-draft panel) that does mouse-driven 3D parallax, bento features (enrichment flow, hover bar chart, dark agent library, hover-revealed code terminal), portrait testimonial cards, an enterprise governance/YAML block, an indigo CTA strip with a live flipping counter, and a footer with a cursor-spotlight wordmark; all fonts and images vendored, fully offline | HTML, CSS, vanilla JS, SVG, Bricolage Grotesque, Inter Tight, JetBrains Mono |
 | [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Pixel-faithful "Pelmatech" health-companion landing with a full-bleed hero, a hover-driven team carousel, a custom-gridline benefits grid, uniform CSS-zoom responsive scaling, and blur-up / fade-up / clip-path animation primitives | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [riso-rebel-fest-h20](./landing-pages/riso-rebel-fest-h20/) | Floating-pill neo-brutalist landing page for fictional design conference "Riso Rebel Fest" — warm off-white canvas, oversized riso-color bento cards with animated motifs, chunky Shrikhand display serif, grayscale-to-color speaker grid, tiered tickets, and scroll-reveal | HTML, CSS, Vanilla JS, vendored fonts |
