@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (304)
+## Projects (307)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -74,11 +74,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (59)</b></summary>
+<summary><b>Landing pages (61)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aegis-console-h39](./landing-pages/aegis-console-h39/) | "Precision Grid" cybersecurity SaaS landing for "Aegis" — white/bone canvas with one electric-lime accent, a fading hairline grid hero, a live security-console product mockup (animated lime SVG chart that draws itself, counting threat stats, pulsing status nodes), feature grid, ink count-up metrics band, 01–03 how-it-works with alert-feed/risk-bar/playbook mockups, three-tier pricing, and a gridded final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+| [almond-hours-h65](./landing-pages/almond-hours-h65/) | "Warm Clinical Editorial" dignified-care senior-living landing for "Almond Hours" — near-white paper with almond-ink neutrals and a butter-cream tint, a floating rounded mega-menu nav with flip hovers, an infinite photo marquee, a dual-headline hero with text-wipe reveal, a horizontal width-morphing programs accordion with layered image stacks, a healthcare bento grid, a single-open FAQ, a wipe-fill CTA banner, and a cursor-reveal giant wordmark | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [amber-foundry-h9](./landing-pages/amber-foundry-h9/) | Warm editorial-intelligence landing page for fictional enterprise-AI consultancy "Amber Foundry" — cream/amber/roasted-brown palette, animated canvas neural-network hero, auto-advancing interactive solutions panel, bento method grid, and a dark pricing flip | HTML, CSS, Vanilla JS, Canvas, vendored fonts |
 | [amberhaus-pet-atelier-h31](./landing-pages/amberhaus-pet-atelier-h31/) | "Amberhaus" warm-amber luxury pet-boutique landing — crisp white paper with a single amber-gold accent and butter-cream tints, Bricolage Grotesque display + Playfair italic flourishes, a crossfading triptych hero with parallax center panel, services+boutique bento, a horizontal-scroll founder story, vertical marquee testimonials, a jumping-type footer canvas, paw cursor, and a slide-up booking overlay | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [archway-summit-h21](./landing-pages/archway-summit-h21/) | "Gallery Arch" tech-conference landing for "Archway Summit" — near-black editorial gallery framing headline speakers inside tall pastel museum arches (pink/blue/beige/yellow), grayscale-to-color portraits, mono schedule with Day 1/Day 2 toggle, FAQ accordion, and an inverted white final-CTA panel | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
