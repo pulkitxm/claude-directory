@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (336)
+## Projects (337)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -56,7 +56,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (88)</b></summary>
+<summary><b>Landing pages (89)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -122,6 +122,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [riso-rebel-fest-h20](./landing-pages/riso-rebel-fest-h20/) | Floating-pill neo-brutalist landing page for fictional design conference "Riso Rebel Fest" — warm off-white canvas, oversized riso-color bento cards with animated motifs, chunky Shrikhand display serif, grayscale-to-color speaker grid, tiered tickets, and scroll-reveal | HTML, CSS, Vanilla JS, vendored fonts |
+| [saaj-heritage-bazaar-h90](./landing-pages/saaj-heritage-bazaar-h90/) | "Heritage Bazaar Editorial" D2C landing for the Indian solid-wood furniture house Saaj Heritage — a warm cream/paper canvas with a burnt-sienna terracotta accent, Inter Tight display + Playfair Display italic, an oversized "Heritage Living" hero with an angled clip-path image cutout and an auto-rotating floating product card, a 5-up category row, an 8-product bestseller grid with slide-up View Product bars and INR pricing, a values strip, testimonials, a stroke-to-fill numbered craft journey, a sienna consultation CTA with a validated callback form, scroll-reveal, header shrink, and a slide-in mobile menu | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [sencha-atelier-h12](./landing-pages/sencha-atelier-h12/) | Wabi-editorial landing page for "Sencha Atelier", a ceremonial-matcha tea house — oversized Fraunces serif hero on warm paper, flush rounded showcase cards, editorial menu rows, count-up stats ribbon with marquee, and an asymmetric gallery | HTML, CSS, Vanilla JS, IntersectionObserver, Fraunces, Inter Tight |
 | [sentinel-meridian-h77](./landing-pages/sentinel-meridian-h77/) | "Cold War Dossier" sovereign-intelligence advisory landing for Sentinel Meridian — near-black ink with a steel-cyan accent and a single warning-amber signal color, a blueprint grid and grain overlay, a Forum serif display, a live classified dossier strip (ticking UTC clock + blinking LIVE dot), a Ken-Burns grayscale hero with mask-reveal headline and a scrolling mono intelligence-feed ticker, a numbered mandate column with a frosted pull-quote, hairline-split capability cards, a connected three-step method, count-up stats, and an encrypted final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [slate-stone-architectural-h73](./landing-pages/slate-stone-architectural-h73/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, Familjen Grotesk, Inter |
