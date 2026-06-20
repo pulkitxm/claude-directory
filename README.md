@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (253)
+## Projects (257)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -71,7 +71,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (22)</b></summary>
+<summary><b>Landing pages (26)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -92,6 +92,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [neuralyn-dark-landing](./landing-pages/neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./landing-pages/nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
 | [orbis-nft-landing](./landing-pages/orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [paper-circuit-agentic-saas-h16](./landing-pages/paper-circuit-agentic-saas-h16/) | "Paper Circuit" — a bright, blueprint-precise light-mode SaaS landing for autonomous-outbound product "Drift": cool off-white dot-grid canvas, Bricolage Grotesque display + Inter Tight + JetBrains Mono, indigo/magenta color-as-wiring, an auto-looping hero icon belt, a floating product mockup (sidebar, metrics, interactive node canvas with animated dashed wires + live email-draft panel) that does mouse-driven 3D parallax, bento features (enrichment flow, hover bar chart, dark agent library, hover-revealed code terminal), portrait testimonial cards, an enterprise governance/YAML block, an indigo CTA strip with a live flipping counter, and a footer with a cursor-spotlight wordmark; all fonts and images vendored, fully offline | HTML, CSS, vanilla JS, SVG, Bricolage Grotesque, Inter Tight, JetBrains Mono |
 | [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Pixel-faithful "Pelmatech" health-companion landing with a full-bleed hero, a hover-driven team carousel, a custom-gridline benefits grid, uniform CSS-zoom responsive scaling, and blur-up / fade-up / clip-path animation primitives | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |

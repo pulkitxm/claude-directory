@@ -1,6 +1,6 @@
 # Landing pages
 
-22 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+26 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -21,6 +21,7 @@
 | [neuralyn-dark-landing](./neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
 | [orbis-nft-landing](./orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [paper-circuit-agentic-saas-h16](./paper-circuit-agentic-saas-h16/) | "Paper Circuit" — a bright, blueprint-precise light-mode SaaS landing for autonomous-outbound product "Drift": cool off-white dot-grid canvas, Bricolage Grotesque display + Inter Tight + JetBrains Mono, indigo/magenta color-as-wiring, an auto-looping hero icon belt, a floating product mockup (sidebar, metrics, interactive node canvas with animated dashed wires + live email-draft panel) that does mouse-driven 3D parallax, bento features (enrichment flow, hover bar chart, dark agent library, hover-revealed code terminal), portrait testimonial cards, an enterprise governance/YAML block, an indigo CTA strip with a live flipping counter, and a footer with a cursor-spotlight wordmark; all fonts and images vendored, fully offline | HTML, CSS, vanilla JS, SVG, Bricolage Grotesque, Inter Tight, JetBrains Mono |
 | [pelmatech-health-companion](./pelmatech-health-companion/) | Pixel-faithful "Pelmatech" health-companion landing with a full-bleed hero, a hover-driven team carousel, a custom-gridline benefits grid, uniform CSS-zoom responsive scaling, and blur-up / fade-up / clip-path animation primitives | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [space-voyage-landing](./space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
