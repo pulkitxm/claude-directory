@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (336)
+## Projects (337)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (88)</b></summary>
+<summary><b>Landing pages (89)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -141,6 +141,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Pixel-faithful "Pelmatech" health-companion landing with a full-bleed hero, a hover-driven team carousel, a custom-gridline benefits grid, uniform CSS-zoom responsive scaling, and blur-up / fade-up / clip-path animation primitives | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
 | [prisma landing](./landing-pages/prisma%20landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [riso-rebel-fest-h20](./landing-pages/riso-rebel-fest-h20/) | Floating-pill neo-brutalist landing page for fictional design conference "Riso Rebel Fest" — warm off-white canvas, oversized riso-color bento cards with animated motifs, chunky Shrikhand display serif, grayscale-to-color speaker grid, tiered tickets, and scroll-reveal | HTML, CSS, Vanilla JS, vendored fonts |
+| [saaj-heritage-bazaar-h90](./landing-pages/saaj-heritage-bazaar-h90/) | "Heritage Bazaar Editorial" D2C landing for the Indian solid-wood furniture house Saaj Heritage — a warm cream/paper canvas with a burnt-sienna terracotta accent, Inter Tight display + Playfair Display italic, an oversized "Heritage Living" hero with an angled clip-path image cutout and an auto-rotating floating product card, a 5-up category row, an 8-product bestseller grid with slide-up View Product bars and INR pricing, a values strip, testimonials, a stroke-to-fill numbered craft journey, a sienna consultation CTA with a validated callback form, scroll-reveal, header shrink, and a slide-in mobile menu | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [sencha-atelier-h12](./landing-pages/sencha-atelier-h12/) | Wabi-editorial landing page for "Sencha Atelier", a ceremonial-matcha tea house — oversized Fraunces serif hero on warm paper, flush rounded showcase cards, editorial menu rows, count-up stats ribbon with marquee, and an asymmetric gallery | HTML, CSS, Vanilla JS, IntersectionObserver, Fraunces, Inter Tight |
 | [sentinel-meridian-h77](./landing-pages/sentinel-meridian-h77/) | "Cold War Dossier" sovereign-intelligence advisory landing for Sentinel Meridian — near-black ink with a steel-cyan accent and a single warning-amber signal color, a blueprint grid and grain overlay, a Forum serif display, a live classified dossier strip (ticking UTC clock + blinking LIVE dot), a Ken-Burns grayscale hero with mask-reveal headline and a scrolling mono intelligence-feed ticker, a numbered mandate column with a frosted pull-quote, hairline-split capability cards, a connected three-step method, count-up stats, and an encrypted final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [slate-stone-architectural-h73](./landing-pages/slate-stone-architectural-h73/) | "Gallery Minimalism" architectural real-estate advisory landing for Slate &amp; Stone (principal Elias Morand) — warm linen paper, near-black ink panels, a single oxide-rust accent, condensed uppercase Familjen Grotesk display on Inter, an asymmetric 62.7/37.3 hairline-ruled grid reused across hero, principal bio, residences and a dark advisory panel, with a clip-reveal hero intro, count-up stats, IntersectionObserver scroll reveals, image hover-scales, a full-screen mobile menu, and a reduced-motion fallback; fonts and architectural photography vendored locally, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, Familjen Grotesk, Inter |
