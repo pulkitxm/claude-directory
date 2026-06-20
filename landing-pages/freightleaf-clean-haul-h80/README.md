@@ -1,0 +1,17 @@
+# Freightleaf
+
+A full, multi-section landing page for a sustainable freight & logistics company named Freightleaf. The named aesthetic is **Clean Haul**: a modern, eco-forward editorial language pairing a warm paper-gray canvas with deep charcoal "night highway" panels and one electric, bio-luminescent lime-green accent. The discipline is Swiss-adjacent grids, oversized pill shapes, and large soft-rounded panels that feel like cargo modules — engineered and premium without looking greenwashed.
+
+Sections include a floating pill header (collapsing to a slide-down sheet on mobile), a cinematic charcoal hero with a Ken-Burns background and a continuously floating stat card, a mission band, a sectors grid, a dark technology section with count-up metrics, a hover-pausing testimonial ticker, a final CTA banner, and a footer. Motion is vanilla JS: directional IntersectionObserver reveals, the Ken-Burns scale, a separate inner-wrapper float so it doesn't fight the entry transform, the marquee, and count-up — all respecting `prefers-reduced-motion`.
+
+Typography pairs Instrument Sans (display) with Inter (body). Hand-authored CSS with palette custom properties; all assets vendored locally.
+
+## Run
+
+This is a static project — open `index.html` in a browser, or serve the folder:
+
+```sh
+python3 -m http.server 8000
+```
+
+See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
