@@ -1,6 +1,6 @@
 # Landing pages
 
-50 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+51 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -22,6 +22,7 @@
 | [ember-quietude-h26](./ember-quietude-h26/) | Warm paper-calm editorial landing page for focus-first productivity app "Lumo" (Ember Quietude aesthetic) — stone + single ember-orange accent, Instrument Serif display, floating pill nav with hover mega-menu, a fully hand-built HTML/CSS dashboard mockup (sidebar, dark focus timer, tasks, floating AI card), bento planning grid, organize cards, and a monthly/annual pricing toggle | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [forma-video-landing](./forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [groundai-landing](./groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
+| [gridwright-h48](./gridwright-h48/) | "Gridwright" neo-structuralist coding-SaaS landing page on a ruled blueprint grid — paper canvas with diagonal hatch and full-height vertical column rules, structural green accent, Space Grotesk + Space Mono, hard offset shadows, a live-typing terminal hero, count-up stats, asymmetric feature/pricing grids, and a CSS envelope that opens to reveal a postcard | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [ink-vermilion-personal-brand-h23](./ink-vermilion-personal-brand-h23/) | "Ink & Vermilion" editorial personal-brand landing page for fictional marketing consultant "Marlowe Vane" — warm paper canvas, single vermillion accent, Playfair italic emphasis with hand-drawn SVG scribbles/stars/arrows, a rotated red marquee strip, scroll-reveal sections, a dark gallery band, grayscale-to-color imagery, and fake-submit contact + newsletter forms | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [kairos-academy-h0](./kairos-academy-h0/) | Warm editorial-ember landing page for "Kairos Academy", a competitive-exam coaching institute, with a split-tone hero, floating exam pill tags, count-up stats, program rows, subject cards, a four-phase method grid, auto-rotating testimonials, and an accordion FAQ | HTML, CSS, Vanilla JS |
 | [lantern-broth-midnight-ramen-h8](./lantern-broth-midnight-ramen-h8/) | Warm modular-bento landing page for a late-night Japanese ramen bar "Lantern Broth", with terracotta/mustard/teal tiles, Oswald + DM Sans, scroll-reveal animations, drifting steam, and a vanilla-JS testimonial carousel | HTML, CSS, vanilla JavaScript |
