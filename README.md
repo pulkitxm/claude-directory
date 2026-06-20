@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (301)
+## Projects (303)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -190,7 +190,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (13)</b></summary>
+<summary><b>Components &amp; UI (14)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -199,6 +199,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [aurora-sign-up](./components-ui/aurora-sign-up/) | Two-column "Aurora" registration interface with a background-video hero, staggered Motion reveals, and a multi-step sign-up form | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [background-paths-hero](./components-ui/background-paths-hero/) | Integration of the "Background Paths" shadcn/ui hero — 72 flowing animated SVG paths behind a per-letter spring headline and a glassy CTA, wrapped in a dark/light theme toggle and a preset-headline switcher | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
 | [core-features-gradient-cards](./components-ui/core-features-gradient-cards/) | Static "Core Features" marketing section with three gradient feature cards | Single-file HTML/CSS |
+| [crimson-mill-supply-card-h61](./components-ui/crimson-mill-supply-card-h61/) | "Millstone Craft" digital visiting card for a fictional heritage stone-mill flour/grain/spice supplier — a vertical, mobile-first tap-to-contact page stacking a marquee-ticker brand hero, a sage WhatsApp + terracotta Call contact grid, a four-up product showcase, a split flagship-store location card, and an hours/footer strip, each as a soft-shadowed cream card revealed on scroll; warm paper canvas, crimson + wheat-gold accents, condensed Oswald display over Inter Tight, real tel/wa.me/mailto/maps links, fonts and product imagery vendored locally, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver |
 | [gradient-bars-background](./components-ui/gradient-bars-background/) | shadcn/ui integration of the verbatim `GradientBars` component — an equalizer-shaped wall of pulsing vertical CSS `linear-gradient` bars (U-shaped height curve, staggered `scaleY` `@keyframes`) — dropped into `@/components/ui` and framed as a component lab: a full-bleed live hero with a render-FPS/bars/assets/uptime telemetry strip and stack ticker, a control deck of faders wired to the real props (numBars/animationDuration + gradientFrom colour picker with named presets + backgroundColor) with a live-usage snippet, a shadcn-CLI integration story explaining the default paths and why `/components/ui` matters, and a props API with the prompt's data/state/assets/responsive/placement Q&A; zero image assets (pure CSS keyframes), fonts vendored locally, fully offline | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Lucide |
 | [gradient-dots-background](./components-ui/gradient-dots-background/) | shadcn/ui integration of the verbatim `GradientDots` component — a hue-cycling hexagonal CSS `radial-gradient` dot field looped with framer-motion — dropped into `@/components/ui` and framed as a component lab: a full-bleed live hero (the verbatim demo) with a render-FPS/uptime telemetry strip, a control deck of faders wired straight to the real props (dotSize/spacing/duration/colorCycleDuration + a background colour control) with named presets and a live-usage snippet, a four-step shadcn-CLI integration story explaining the default paths and why `/components/ui` matters, and a props API with the prompt's data/state/assets/responsive/placement Q&A; zero component assets (pure CSS), fonts vendored locally, fully offline | React, TypeScript, Vite, Tailwind CSS v4, framer-motion, shadcn/ui, Lucide |
 | [interactive-3d-spline-scene](./components-ui/interactive-3d-spline-scene/) | shadcn/ui integration of a Spline 3D scene — the exact SplineScene + Card + Spotlight demo, a graceful animated WebGL fallback for when the remote scene is unreachable, a live props playground, and an on-page guide to the shadcn structure, default paths and why components/ui matters | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline, Framer Motion, Lucide, Canvas |
