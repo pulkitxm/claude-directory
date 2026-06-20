@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (295)
+## Projects (296)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -73,7 +73,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (53)</b></summary>
+<summary><b>Landing pages (54)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -102,6 +102,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [lantern-broth-midnight-ramen-h8](./landing-pages/lantern-broth-midnight-ramen-h8/) | Warm modular-bento landing page for a late-night Japanese ramen bar "Lantern Broth", with terracotta/mustard/teal tiles, Oswald + DM Sans, scroll-reveal animations, drifting steam, and a vanilla-JS testimonial carousel | HTML, CSS, vanilla JavaScript |
 | [lantern-loft-tutoring-h1](./landing-pages/lantern-loft-tutoring-h1/) | Warm "paper studio" home-tutoring landing page for Lantern & Loft with a Fraunces/Jakarta editorial hero, offset cards, marquee, animated stat counters, tilted cards, and stacked program rows | HTML, CSS, JavaScript |
 | [lumina-maternite-h2](./landing-pages/lumina-maternite-h2/) | "Lumina Maternité" — a calm, editorial maternity & women's-health sanctuary landing page on a bone/moss/blush palette with Fraunces + Geist, drifting hero blobs, an auto-scrolling image marquee, sticky-stacking journey cards, an interactive packages selector, FAQ accordion, and a booking form | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
+| [lumen-launch-h44](./landing-pages/lumen-launch-h44/) | "Periwinkle Aurora" landing page for fictional AI product-launch SaaS "Lumen Launch" — lavender/periwinkle aurora-blur motif on crisp white with Outfit + DM Sans, a div-built browser/dashboard hero mockup, infinite logo & testimonial marquees, animated step illustrations, dark testimonial theatre, working monthly/yearly pricing toggle, and a FAQ accordion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [mentality-landing](./landing-pages/mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
 | [meridian-precision-clinic-h35](./landing-pages/meridian-precision-clinic-h35/) | "Architectural Clinical Editorial" landing page for bespoke precision-medicine clinic "Meridian" — meridian-navy and warm-bone with whisper-quiet brass, Fraunces serif display + Inter, split full-viewport hero with a sliding navy panel, infinite credential marquee, hairline-divided discipline grid that inverts on hover, numbered method, and an underline-only contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [mindloop-mono-landing](./landing-pages/mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
