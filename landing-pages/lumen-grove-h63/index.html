@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lumen Grove — Botanical Bathhouse & Forest-Spa</title>
+<meta name="description" content="Lumen Grove — a botanical bathhouse and forest-spa. Steep. Soften. Return." />
+<link rel="stylesheet" href="assets/fonts/fonts.css" />
+<link rel="preload" as="image" href="assets/img/hero.jpg" />
+<style>
+  :root {
+    --bone: #EDE7DA;
+    --ivory: #F7F3EA;
+    --pine: #1E2A20;
+    --forest: #28392C;
+    --txt2: #4A5247;
+    --muted: #8B8A7E;
+    --acid: #C6F03B;
+    --acid-deep: #B0DB1F;
+    --light: #F2EFE2;
+    --hair: rgba(30, 42, 32, 0.10);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --maxw: 1320px;
+    --pad: clamp(16px, 4vw, 40px);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bone);
+    color: var(--pine);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--pad); }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--txt2);
+  }
+  .eyebrow::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--acid); box-shadow: 0 0 0 4px rgba(198,240,59,0.22);
+  }
+  .eyebrow.on-dark { color: rgba(242,239,226,0.72); }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.02em; }
+  .dot { color: var(--acid); }
+  .ital { font-style: italic; font-weight: 500; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- custom cursor ---------- */
+  .cursor {
+    position: fixed; top: 0; left: 0; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--acid); pointer-events: none;
+    z-index: 9999; transform: translate(-50%, -50%);
+    transition: width .22s var(--ease), height .22s var(--ease), background .22s;
+    mix-blend-mode: multiply;
+  }
+  .cursor.big { width: 38px; height: 38px; background: rgba(198,240,59,0.55); }
+  @media (hover: none) { .cursor { display: none; } }
+
+  /* ---------- nav ---------- */
+  header.nav-shell {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+    display: flex; justify-content: center; padding: 22px var(--pad) 0;
+    pointer-events: none;
+  }
+  nav.pill {
+    pointer-events: auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    width: 100%; max-width: 1020px;
+    background: rgba(247,243,234,0.86);
+    backdrop-filter: blur(14px) saturate(1.4);
+    border: 1px solid var(--hair);
+    border-radius: 999px; padding: 9px 9px 9px 22px;
+    box-shadow: 0 14px 40px -22px rgba(30,42,32,0.55);
+  }
+  .brand { font-weight: 600; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; white-space: nowrap; }
+  .brand b { color: var(--acid-deep); }
+  .nav-links { display: flex; align-items: center; gap: 2px; }
+  .nav-links a {
+    position: relative; padding: 9px 15px; font-size: 13.5px; font-weight: 500;
+    border-radius: 999px; color: var(--txt2);
+    transition: color .25s, background .25s;
+  }
+  .nav-links a:hover { color: var(--pine); background: rgba(30,42,32,0.06); }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--pine); color: var(--light);
+    padding: 11px 19px; border-radius: 999px; font-size: 13.5px; font-weight: 500;
+    white-space: nowrap; transition: background .25s, transform .25s;
+  }
+  .nav-cta:hover { background: var(--forest); }
+  .nav-cta svg { transition: transform .3s var(--ease); }
+  .nav-cta:hover svg { transform: translateX(3px); }
+  .burger { display: none; background: none; border: 0; padding: 10px; cursor: pointer; color: var(--pine); }
+
+  /* ---------- mobile overlay ---------- */
+  .m-menu {
+    position: fixed; inset: 0; z-index: 1500; background: var(--bone);
+    display: flex; flex-direction: column;
+    transform: translateY(-100%); transition: transform .55s var(--ease);
+  }
+  .m-menu.open { transform: translateY(0); }
+  .m-menu .top { display: flex; align-items: center; justify-content: space-between; padding: 26px var(--pad); border-bottom: 1px solid var(--hair); }
+  .m-menu nav { display: flex; flex-direction: column; gap: 8px; padding: 40px var(--pad); }
+  .m-menu nav a { font-family: var(--serif); font-size: 38px; font-weight: 500; letter-spacing: -0.02em; }
+  .m-menu nav a:last-child { margin-top: 18px; background: var(--pine); color: var(--light); font-family: var(--sans); font-size: 17px; padding: 18px; border-radius: 16px; text-align: center; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 14px; font-weight: 500; padding: 13px 22px; border-radius: 999px;
+    transition: transform .25s var(--ease), background .25s, color .25s;
+    white-space: nowrap;
+  }
+  .btn svg { transition: transform .3s var(--ease); }
+  .btn:hover svg { transform: translate(3px, -3px); }
+  .btn-acid { background: var(--acid); color: var(--pine); }
+  .btn-acid:hover { background: var(--acid-deep); }
+  .btn-ivory { background: var(--ivory); color: var(--pine); }
+  .btn-ivory:hover { background: #fff; }
+  .btn-ink { background: var(--pine); color: var(--light); }
+  .btn-ink:hover { background: var(--forest); }
+
+  /* ---------- reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 96px var(--pad) 26px; }
+  .hero-card {
+    max-width: var(--maxw); margin: 0 auto;
+    background: var(--ivory); border: 1px solid var(--hair);
+    border-radius: 28px; overflow: hidden;
+    display: grid; grid-template-columns: 1.02fr 1fr;
+    min-height: min(78vh, 720px);
+    box-shadow: 0 40px 90px -60px rgba(30,42,32,0.6);
+  }
+  .hero-left { padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; justify-content: space-between; gap: 36px; }
+  .hero-head { font-size: clamp(48px, 8vw, 104px); line-height: 0.97; margin-top: 22px; }
+  .hero-head span { display: block; }
+  .hero-copy { font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: var(--txt2); max-width: 30ch; margin-top: 22px; }
+  .proof { display: flex; align-items: center; gap: 14px; }
+  .avatars { display: flex; }
+  .avatars img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ivory); margin-left: -12px; }
+  .avatars img:first-child { margin-left: 0; }
+  .proof-txt { font-size: 13px; line-height: 1.45; color: var(--txt2); }
+  .proof-txt b { color: var(--pine); font-weight: 600; }
+
+  .hero-right { position: relative; min-height: 320px; }
+  .hero-right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-right .scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,28,21,0.78) 0%, rgba(20,28,21,0.12) 48%, transparent 70%); }
+  .hero-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px,3vw,40px); color: var(--light); z-index: 2; }
+  .hero-overlay p { font-family: var(--serif); font-size: clamp(18px, 2vw, 27px); line-height: 1.25; max-width: 22ch; margin-bottom: 20px; font-weight: 400; }
+  .hero-overlay .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .scroll-cue {
+    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 3;
+    width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(242,239,226,0.5);
+    display: flex; align-items: center; justify-content: center; color: var(--light);
+    animation: bob 2.2s var(--ease) infinite;
+  }
+  @keyframes bob { 0%,100%{ transform: translate(-50%,0);} 50%{ transform: translate(-50%,6px);} }
+
+  /* ---------- section heads ---------- */
+  .sec { padding: clamp(64px, 9vw, 120px) 0; }
+  .sec-center { text-align: center; max-width: 760px; margin: 0 auto; }
+  .sec-center h2 { font-size: clamp(34px, 5vw, 60px); line-height: 1.04; margin: 18px 0 14px; }
+  .sec-center p { font-size: clamp(16px, 1.4vw, 20px); color: var(--txt2); }
+
+  /* ---------- marquee ---------- */
+  .marquee { overflow: hidden; padding: 14px 0 4px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+  .marquee-track { display: flex; gap: 18px; width: max-content; animation: scroll 46s linear infinite; align-items: center; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes scroll { from { transform: translateX(0);} to { transform: translateX(-50%);} }
+  .tile { flex-shrink: 0; border-radius: 20px; overflow: hidden; }
+  .tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s var(--ease); }
+  .tile:hover img { transform: scale(1.05); }
+
+  /* ---------- pathway ---------- */
+  .pathway-panel {
+    background: var(--ivory); border: 1px solid var(--hair); border-radius: 28px;
+    padding: clamp(28px, 4vw, 56px);
+    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: stretch;
+  }
+  .acc-head h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.05; margin-top: 18px; }
+  .acc-list { margin-top: 36px; }
+  .acc-item { border-top: 1px solid var(--hair); padding: 18px 0; cursor: pointer; }
+  .acc-item:last-child { border-bottom: 1px solid var(--hair); }
+  .acc-title {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    font-family: var(--serif); font-size: clamp(20px, 2.2vw, 27px); font-weight: 500;
+    color: var(--muted); transition: color .35s;
+  }
+  .acc-item.active .acc-title { color: var(--pine); }
+  .acc-num { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: var(--acid-deep); }
+  .acc-body { max-height: 0; overflow: hidden; transition: max-height .45s var(--ease); }
+  .acc-item.active .acc-body { max-height: 160px; }
+  .acc-body p { font-size: 15.5px; line-height: 1.6; color: var(--txt2); padding-top: 12px; max-width: 42ch; }
+  .acc-img-wrap { position: relative; border-radius: 22px; overflow: hidden; min-height: 420px; }
+  .acc-img { position: absolute; inset: 0; opacity: 0; transition: opacity .6s var(--ease); }
+  .acc-img.active { opacity: 1; }
+  .acc-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- testimonial ---------- */
+  .quote-panel {
+    position: relative; border-radius: 28px; overflow: hidden;
+    min-height: 540px; display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: clamp(36px, 6vw, 80px);
+  }
+  .quote-panel > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .quote-panel .scrim { position: absolute; inset: 0; background: rgba(20,28,21,0.5); }
+  .quote-inner { position: relative; z-index: 2; color: var(--light); max-width: 880px; }
+  .quote-inner blockquote { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(26px, 4vw, 50px); line-height: 1.18; margin: 26px 0 32px; }
+  .attrib { display: flex; align-items: center; justify-content: center; gap: 14px; }
+  .attrib img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--acid); }
+  .attrib .t { text-align: left; }
+  .attrib .t b { display: block; font-size: 16px; }
+  .attrib .t span { font-size: 13px; opacity: 0.72; }
+
+  /* ---------- pricing ---------- */
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
+  .price-card {
+    background: var(--ivory); border: 1px solid var(--hair); border-radius: 24px;
+    padding: 36px 32px; display: flex; flex-direction: column; gap: 26px;
+    transition: transform .35s var(--ease);
+  }
+  .price-card:hover { transform: translateY(-6px); }
+  .price-card.feat { background: var(--pine); color: var(--light); position: relative; }
+  .price-card.feat .p-tag, .price-card.feat .p-price small { color: rgba(242,239,226,0.6); }
+  .badge {
+    position: absolute; top: 24px; right: 24px; background: var(--acid); color: var(--pine);
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 6px 11px; border-radius: 999px;
+  }
+  .p-name { font-family: var(--serif); font-size: 24px; font-weight: 500; }
+  .p-price { display: flex; align-items: baseline; gap: 7px; }
+  .p-price b { font-size: 42px; font-family: var(--serif); font-weight: 500; }
+  .p-price small { font-size: 14px; color: var(--txt2); }
+  .p-tag { font-size: 14px; color: var(--txt2); line-height: 1.5; }
+  .p-feats { list-style: none; display: flex; flex-direction: column; gap: 14px; flex-grow: 1; }
+  .p-feats li { display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; line-height: 1.4; }
+  .p-feats li.off { opacity: 0.38; }
+  .p-feats svg { flex-shrink: 0; margin-top: 2px; color: var(--pine); }
+  .price-card.feat .p-feats svg { color: var(--acid); }
+  .price-card .btn { justify-content: center; }
+
+  /* ---------- newsletter ---------- */
+  .news-panel {
+    background: var(--pine); color: var(--light); border-radius: 28px;
+    padding: clamp(40px, 6vw, 72px);
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center;
+  }
+  .news-panel h2 { font-size: clamp(32px, 4.5vw, 54px); line-height: 1.02; }
+  .news-panel p { margin-top: 16px; font-size: 17px; color: rgba(242,239,226,0.72); max-width: 36ch; line-height: 1.55; }
+  .news-form { display: flex; flex-direction: column; gap: 14px; }
+  .news-form label { font-size: 12px; letter-spacing: 0.04em; color: rgba(242,239,226,0.55); }
+  .news-form input {
+    background: transparent; border: 1px solid rgba(242,239,226,0.22); border-radius: 14px;
+    padding: 16px 20px; color: var(--light); font-size: 15px; font-family: var(--sans);
+    transition: border-color .25s;
+  }
+  .news-form input::placeholder { color: rgba(242,239,226,0.4); }
+  .news-form input:focus { outline: none; border-color: var(--acid); box-shadow: 0 0 0 3px rgba(198,240,59,0.18); }
+  .news-form .btn { align-self: flex-start; }
+
+  /* ---------- footer ---------- */
+  footer { background: var(--forest); color: var(--light); padding: clamp(56px, 7vw, 88px) 0 40px; margin-top: clamp(40px,6vw,80px); }
+  .foot-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; }
+  .foot-brand .wm { font-family: var(--serif); font-size: clamp(38px, 5vw, 60px); font-weight: 500; }
+  .foot-brand h3 { font-family: var(--serif); font-size: 26px; font-weight: 400; margin: 22px 0; max-width: 18ch; line-height: 1.1; }
+  .foot-brand address { font-style: normal; opacity: 0.7; line-height: 1.7; font-size: 15px; }
+  .foot-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .foot-cols .col-title { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.5; margin-bottom: 16px; }
+  .foot-cols ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .foot-cols a { font-size: 15px; opacity: 0.82; transition: color .25s, opacity .25s; }
+  .foot-cols a:hover { color: var(--acid); opacity: 1; }
+  .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 48px; padding-top: 26px; border-top: 1px solid rgba(242,239,226,0.14); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 980px) {
+    .nav-links { display: none; }
+    .burger { display: block; }
+    .nav-cta { display: none; }
+    .hero-card { grid-template-columns: 1fr; min-height: 0; }
+    .hero-right { min-height: 380px; }
+    .pathway-panel { grid-template-columns: 1fr; }
+    .acc-img-wrap { min-height: 320px; order: -1; }
+    .price-grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
+    .news-panel { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 560px) {
+    .foot-cols { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+    .hero { padding-top: 84px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav-shell">
+  <nav class="pill">
+    <a href="#" class="brand">Lumen<b>·</b>Grove</a>
+    <div class="nav-links">
+      <a href="#rituals">Rituals</a>
+      <a href="#pathway">Spaces</a>
+      <a href="#membership">Membership</a>
+      <a href="#journal">Journal</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="#membership" class="nav-cta" data-cursor>Book a Soak
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M1 5.5h13M9 1l5 4.5L9 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="burger" id="burger" aria-label="Open menu">
+        <svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M1 1h20M1 7h20M1 13h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="m-menu" id="mMenu">
+  <div class="top">
+    <span class="brand">Lumen<b>·</b>Grove</span>
+    <button class="burger" id="mClose" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="#rituals">Rituals</a>
+    <a href="#pathway">Spaces</a>
+    <a href="#membership">Membership</a>
+    <a href="#journal">Journal</a>
+    <a href="#membership">Book a Soak</a>
+  </nav>
+</div>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-card">
+    <div class="hero-left">
+      <div>
+        <span class="eyebrow reveal">Botanical Bathhouse · Est. 2019</span>
+        <h1 class="hero-head reveal" style="transition-delay:.06s">
+          <span>Steep<span class="dot">.</span></span>
+          <span>Soften<span class="dot">.</span></span>
+          <span>Return<span class="dot">.</span></span>
+        </h1>
+        <p class="hero-copy reveal" style="transition-delay:.14s">
+          A forest-spa for the slow undoing. Mineral baths, aromatic steam, and herbal ceremony — woven into rituals that bring you back to your body.
+        </p>
+      </div>
+      <div class="proof reveal" style="transition-delay:.2s">
+        <div class="avatars">
+          <img src="assets/img/a1.jpg" alt="" />
+          <img src="assets/img/a2.jpg" alt="" />
+          <img src="assets/img/a3.jpg" alt="" />
+        </div>
+        <div class="proof-txt">
+          Join 3,200 members in stillness.<br />
+          <b>Next: Twilight Soak — 8PM tonight.</b>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="assets/img/hero.jpg" alt="A misted forest pool at the Lumen Grove bathhouse" />
+      <div class="scrim"></div>
+      <div class="hero-overlay">
+        <p>Bespoke water rituals, cedar steam, and expert-led breathwork — tuned to your season.</p>
+        <div class="row">
+          <a href="#membership" class="btn btn-acid" data-cursor>Reserve
+            <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M1 5.5h13M9 1l5 4.5L9 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#rituals" class="btn btn-ivory" data-cursor>Explore Rituals
+            <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M1 5.5h13M9 1l5 4.5L9 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="scroll-cue">
+        <svg width="13" height="13" viewBox="0 0 12 12" fill="none" style="transform:rotate(90deg)"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RITUALS INTRO -->
+<section class="sec" id="rituals">
+  <div class="wrap sec-center">
+    <span class="eyebrow reveal">The Practice</span>
+    <h2 class="reveal" style="transition-delay:.06s">Rituals that return you<br />to <span class="ital">yourself</span>.</h2>
+    <p class="reveal" style="transition-delay:.12s">Find your cadence. Steep slowly. Leave lighter than you came.</p>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="marquee" aria-label="Gallery">
+  <div class="marquee-track" id="mqTrack"></div>
+</section>
+
+<!-- PATHWAY -->
+<section class="sec" id="pathway">
+  <div class="wrap">
+    <div class="pathway-panel reveal">
+      <div class="acc-head">
+        <span class="eyebrow">Breathe · Steep · Release</span>
+        <h2>Define your pathway.<br />Soften your season.</h2>
+        <div class="acc-list" id="acc">
+          <div class="acc-item active" data-i="0">
+            <div class="acc-title"><span>Forest Hydrotherapy</span><span class="acc-num">01</span></div>
+            <div class="acc-body"><p>A circuit of mineral baths drawn from spring water, alternating warm and cool to wake circulation and quiet the mind.</p></div>
+          </div>
+          <div class="acc-item" data-i="1">
+            <div class="acc-title"><span>Aromatic Steam</span><span class="acc-num">02</span></div>
+            <div class="acc-body"><p>Cedar and eucalyptus steam, infused with hand-foraged botanicals, to open the lungs and release the week from your shoulders.</p></div>
+          </div>
+          <div class="acc-item" data-i="2">
+            <div class="acc-title"><span>Cold Plunge &amp; Breath</span><span class="acc-num">03</span></div>
+            <div class="acc-body"><p>Guided breathwork into a still cold pool — a clean reset for the nervous system, held by an attendant from start to finish.</p></div>
+          </div>
+          <div class="acc-item" data-i="3">
+            <div class="acc-title"><span>Herbal Tea Ceremony</span><span class="acc-num">04</span></div>
+            <div class="acc-body"><p>A slow close: seasonal tisanes poured in the conservatory, where the grove unwinds and conversation softens.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="acc-img-wrap">
+        <div class="acc-img active" data-i="0"><img src="assets/img/p0.jpg" alt="Mineral bath" /></div>
+        <div class="acc-img" data-i="1"><img src="assets/img/p1.jpg" alt="Aromatic steam room" /></div>
+        <div class="acc-img" data-i="2"><img src="assets/img/p2.jpg" alt="Cold plunge pool" /></div>
+        <div class="acc-img" data-i="3"><img src="assets/img/p3.jpg" alt="Herbal tea ceremony" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="quote-panel reveal">
+      <img src="assets/img/testimonial.jpg" alt="" />
+      <div class="scrim"></div>
+      <div class="quote-inner">
+        <span class="eyebrow on-dark" style="justify-content:center; display:inline-flex;">Member Voice</span>
+        <blockquote>"Lumen Grove rearranged my whole week. I arrive frayed and leave with a quiet I didn't know I'd lost."</blockquote>
+        <div class="attrib">
+          <img src="assets/img/quote-avatar.jpg" alt="" />
+          <div class="t"><b>Maren Aldhouse</b><span>Member · Twilight Soak Circle</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="sec" id="membership" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-center reveal">
+      <span class="eyebrow">Membership</span>
+      <h2>Choose your <span class="ital">depth</span>.</h2>
+      <p>Flexible memberships that bend to your season — pause anytime.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card reveal" style="transition-delay:.06s">
+        <div class="p-name">Day Steeper</div>
+        <div class="p-price"><b>$34</b><small>/ visit</small></div>
+        <p class="p-tag">Drop in. No commitment, no membership.</p>
+        <ul class="p-feats">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Full bathhouse circuit access</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>One aromatic steam session</li>
+          <li class="off"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Guided breathwork</li>
+        </ul>
+        <a href="#" class="btn btn-ink" data-cursor>Book a Visit</a>
+      </div>
+      <div class="price-card feat reveal" style="transition-delay:.12s">
+        <div class="badge">Most Chosen</div>
+        <div class="p-name">Grove Member</div>
+        <div class="p-price"><b>$89</b><small>/ month</small></div>
+        <p class="p-tag">The standing ritual for most who return.</p>
+        <ul class="p-feats">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited bathhouse access</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>All steam &amp; plunge circuits</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority twilight reservations</li>
+        </ul>
+        <a href="#" class="btn btn-acid" data-cursor>Become a Member</a>
+      </div>
+      <div class="price-card reveal" style="transition-delay:.18s">
+        <div class="p-name">Deep Forest</div>
+        <div class="p-price"><b>$175</b><small>/ month</small></div>
+        <p class="p-tag">For those who want the grove to themselves.</p>
+        <ul class="p-feats">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Grove Member</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Monthly private soak &amp; ceremony</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Bespoke seasonal protocol</li>
+        </ul>
+        <a href="#" class="btn btn-ink" data-cursor>Go Deep</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="sec" id="journal" style="padding-top:0">
+  <div class="wrap">
+    <div class="news-panel reveal">
+      <div>
+        <h2>Stay rooted.</h2>
+        <p>Seasonal rituals, foraging notes, and quiet early access to twilight soaks — once a month, never more.</p>
+      </div>
+      <form class="news-form" onsubmit="return false">
+        <label for="em">Email address</label>
+        <input id="em" type="email" placeholder="you@example.com" />
+        <button class="btn btn-acid" type="submit" data-cursor>Subscribe
+          <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M1 5.5h13M9 1l5 4.5L9 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="wm">Lumen Grove</div>
+        <h3>Find your water. Return to the grove.</h3>
+        <address>
+          14 Hollowmoor Lane, Conservatory Wing<br />
+          Asheville, NC 28801<br />
+          United States
+        </address>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <div class="col-title">Navigate</div>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#rituals">Rituals</a></li>
+            <li><a href="#pathway">Spaces</a></li>
+            <li><a href="#membership">Membership</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-title">Explore</div>
+          <ul>
+            <li><a href="#journal">Journal</a></li>
+            <li><a href="#">Foraging Notes</a></li>
+            <li><a href="#">Gift Soaks</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-title">Social</div>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Substack</a></li>
+            <li><a href="#">Spotify</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Lumen Grove Bathhouse · Steep slowly.</span>
+      <span>Built with patience &amp; a little chlorophyll.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // ---- marquee build (duplicated for seamless loop) ----
+  var tiles = [
+    { src: "assets/img/g1.jpg", w: 320, h: 380 },
+    { src: "assets/img/g2.jpg", w: 280, h: 360 },
+    { src: "assets/img/g3.jpg", w: 360, h: 280 },
+    { src: "assets/img/g4.jpg", w: 300, h: 400 },
+    { src: "assets/img/g5.jpg", w: 360, h: 300 }
+  ];
+  var track = document.getElementById("mqTrack");
+  function buildSet() {
+    tiles.forEach(function (t, i) {
+      var d = document.createElement("div");
+      d.className = "tile";
+      d.style.width = t.w + "px";
+      d.style.height = t.h + "px";
+      d.style.alignSelf = i % 2 === 0 ? "flex-start" : "flex-end";
+      var img = document.createElement("img");
+      img.src = t.src; img.alt = ""; img.loading = "lazy";
+      d.appendChild(img);
+      track.appendChild(d);
+    });
+  }
+  buildSet(); buildSet();
+
+  // ---- reveal observer ----
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+
+  // ---- accordion + image tabs ----
+  var items = document.querySelectorAll(".acc-item");
+  var imgs = document.querySelectorAll(".acc-img");
+  items.forEach(function (item) {
+    item.addEventListener("click", function () {
+      var i = item.getAttribute("data-i");
+      items.forEach(function (x) { x.classList.remove("active"); });
+      imgs.forEach(function (x) { x.classList.remove("active"); });
+      item.classList.add("active");
+      var target = document.querySelector('.acc-img[data-i="' + i + '"]');
+      if (target) target.classList.add("active");
+    });
+  });
+
+  // ---- mobile menu ----
+  var menu = document.getElementById("mMenu");
+  document.getElementById("burger").addEventListener("click", function () { menu.classList.add("open"); });
+  document.getElementById("mClose").addEventListener("click", function () { menu.classList.remove("open"); });
+  menu.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () { menu.classList.remove("open"); });
+  });
+
+  // ---- custom cursor ----
+  var cursor = document.getElementById("cursor");
+  var cx = window.innerWidth / 2, cy = window.innerHeight / 2, tx = cx, ty = cy;
+  window.addEventListener("mousemove", function (e) { tx = e.clientX; ty = e.clientY; });
+  (function raf() {
+    cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
+    cursor.style.transform = "translate(" + cx + "px," + cy + "px) translate(-50%,-50%)";
+    requestAnimationFrame(raf);
+  })();
+  document.querySelectorAll("[data-cursor], a, button").forEach(function (el) {
+    el.addEventListener("mouseenter", function () { cursor.classList.add("big"); });
+    el.addEventListener("mouseleave", function () { cursor.classList.remove("big"); });
+  });
+})();
+</script>
+</body>
+</html>
