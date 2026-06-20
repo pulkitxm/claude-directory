@@ -21,12 +21,12 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (252)
+## Projects (257)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
 <details>
-<summary><b>Hero sections (36)</b></summary>
+<summary><b>Hero sections (37)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -63,6 +63,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [vanguard hero landing](./hero-sections/vanguard%20hero%20landing/) | Fullscreen hero landing page for the creative agency VANGUARD with looping background video | React, TypeScript, Vite, Tailwind CSS |
 | [vaultshield-hero](./hero-sections/vaultshield-hero/) | VaultShield hero experiment with security-product positioning and CLI/headless verification | React, TypeScript, Vite, Tailwind CSS |
 | [velorah-hero-landing](./hero-sections/velorah-hero-landing/) | Velorah hero landing page built with a modern Tailwind/shadcn-style component approach | React, TypeScript, Vite, Tailwind CSS, shadcn/ui |
+| [verdant-advisory-h10](./hero-sections/verdant-advisory-h10/) | Quiet-luxury advisory hero — oversized forest-green card, Hedvig serif headline, floating glass stat chip, infinite trust marquee, count-up stats and approach cards on a white canvas | HTML, CSS, Vanilla JS |
 | [wanderful-cinematic-hero](./hero-sections/wanderful-cinematic-hero/) | Full-viewport cinematic hero for travel brand "Wanderful" with GSAP animation and a custom display font | React, TypeScript, Vite, Tailwind CSS, GSAP, Lucide |
 | [woven-light-hero](./hero-sections/woven-light-hero/) | Interactive hero with 50k cursor-reactive Three.js particles woven into a torus-knot tapestry, integrated as a shadcn-style component | React, TypeScript, Vite, Tailwind CSS, Three.js, Framer Motion |
 | [xero-encryption-hero](./hero-sections/xero-encryption-hero/) | Single-page encryption-product hero for "Xero" with an animated icon pipeline and a pink-magenta gradient arc on a black page, written in plain CSS | React, TypeScript, Vite, CSS |
@@ -70,20 +71,23 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (22)</b></summary>
+<summary><b>Landing pages (26)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [amber-foundry-h9](./landing-pages/amber-foundry-h9/) | Warm editorial-intelligence landing page for fictional enterprise-AI consultancy "Amber Foundry" — cream/amber/roasted-brown palette, animated canvas neural-network hero, auto-advancing interactive solutions panel, bento method grid, and a dark pricing flip | HTML, CSS, Vanilla JS, Canvas, vendored fonts |
 | [asme-hero-landing](./landing-pages/asme-hero-landing/) | Full-screen dark Asme landing page with Mux/HLS-style video, liquid-glass navbar, and email-capture CTA | React, JavaScript, Vite, CSS |
 | [asme-liquid-glass-landing](./landing-pages/asme-liquid-glass-landing/) | Dark cinematic Asme single-page landing site with liquid-glass UI details | React, TypeScript, Vite, Tailwind CSS |
+| [atelier-noir-h7](./landing-pages/atelier-noir-h7/) | "Maison Éclisse" — a quiet, editorial haute-couture fashion-house lookbook (Atelier Noir aesthetic) on an ink-on-bone palette with Cormorant Garamond serif display, full-bleed hero, rotating seal badge, alternating diptychs, a staggered product grid, an editorial banner, journal, and slide-in menu/search overlays | HTML, CSS, JavaScript, IntersectionObserver, self-hosted fonts |
 | [aura-email-landing](./landing-pages/aura-email-landing/) | Dark, cinematic landing page for "Aura", an AI-native email client, with fullscreen video, a shiny gradient headline, a macOS-style menu bar, and a liquid-glass inbox mockup | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide, Supabase |
 | [auroracast-hls-landing](./landing-pages/auroracast-hls-landing/) | Modern landing page with a full-screen HLS video background, glassmorphic navigation header, and bottom-left hero content | React, Vite, hls.js |
 | [axion-studio-landing](./landing-pages/axion-studio-landing/) | Design agency landing page for Axion Studio with shader-based hero background and multi-section layout | React, TypeScript, Vite, Tailwind CSS, shaders, Lucide |
+| [claywell-solene-h5](./landing-pages/claywell-solene-h5/) | Warm-clay editorial landing page for "Solène", a terracotta-and-cream longevity & precision-movement clinic, with an asymmetric split hero, word-by-word heading reveals, zig-zag scroll sections, an infinite marquee, and a dark science band | HTML, CSS, JavaScript, Archivo |
 | [design-rocket-email](./landing-pages/design-rocket-email/) | Email-style marketing landing page for a "Design Rocket Certificates" AI leadership course | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [dot-daily-calm-landing](./landing-pages/dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
 | [forma-video-landing](./landing-pages/forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [groundai-landing](./landing-pages/groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
+| [lantern-broth-midnight-ramen-h8](./landing-pages/lantern-broth-midnight-ramen-h8/) | Warm modular-bento landing page for a late-night Japanese ramen bar "Lantern Broth", with terracotta/mustard/teal tiles, Oswald + DM Sans, scroll-reveal animations, drifting steam, and a vanilla-JS testimonial carousel | HTML, CSS, vanilla JavaScript |
 | [mentality-landing](./landing-pages/mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
 | [mindloop-mono-landing](./landing-pages/mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
 | [neuralyn-dark-landing](./landing-pages/neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
@@ -95,6 +99,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Pixel-faithful dark AI-fintech "Synergeus" landing with three scroll-revealed sections — an HLS video hero with a 3D-tilt story card, an analytics card with count-ups, and an AI-intelligence trio (NL queries, wipe-reveal chart, animated SVG node tree) | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
+| [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
 | [viktor-oddy-landing](./landing-pages/viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
 
 </details>
