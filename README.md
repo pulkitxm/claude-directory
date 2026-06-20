@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (322)
+## Projects (323)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (74)</b></summary>
+<summary><b>Landing pages (75)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -150,6 +150,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [verdant-spine-clinic-h66](./landing-pages/verdant-spine-clinic-h66/) | "Clinical Calm" precision-chiropractic & movement-science clinic landing page (Verdant Spine) on a warm grey-green paper canvas with a single sage + deep-forest palette, Schibsted Grotesk + Inter, a split editorial hero with a frosted-glass appointment card floating over the clinic image, gradient stat cards, a deep-forest services panel with an infinite giant-type marquee and zoom-on-hover service cards, a sticky numbered "how it works" track, a glass-quote testimonial carousel, a 3-up journal grid, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [verdigris-trail-h50](./landing-pages/verdigris-trail-h50/) | "Architectural Trail" landing page for fictional architecture studio "Verdigris Archi." — fennel-pastel canvas with a single luminous mint accent, Playfair Display serif + Inter Tight, a fixed vertical hairline "trail" with a travelling mint comet, a circular Begin-Trail hero CTA, a pillar marquee, grayscale-to-color brutalist concrete photography, numbered principle columns, a staggered project gallery, an ink count-up stats band, and a pill CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
+| [vermillion-table-h83](./landing-pages/vermillion-table-h83/) | "Culinary Architecture" premium food-delivery landing page (Vermillion Table) on a pale-vanilla canvas with a sinopia red-orange + Caribbean-teal duotone, vendored Questrial type, oversized ultra-tight display headlines, rounded modular "island" cards, a full-bleed gourmet hero with a frosted Dish-of-the-Week card, zoom-on-hover category cards with a teal→red-orange tint shift, a four-phase "Logistics of Luxury" process grid, a floating phone app-download split, and IntersectionObserver scroll-reveal | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [viktor-oddy-landing](./landing-pages/viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [voltframe-dev-h29](./landing-pages/voltframe-dev-h29/) | "Bracketed Voltage" developer-portfolio landing on a near-black stage with one electric-yellow accent, a hairline framed hero box with glowing corner nodes, hover-yellow title words, floating particles, pulsing orbs, scroll-revealed skills/work/testimonials, and a mobile slide-in menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [voltline-automation-h60](./landing-pages/voltline-automation-h60/) | "Bone & Volt" industrial AI-automation landing on a warm off-white canvas with graphite ink and a single electric-lime accent, Space Grotesk + JetBrains Mono, a pure-CSS orbiting 3D cube rig with a glowing lime core, a randomized pixel-fill nav button, starfield-reveal CTAs, a count-up stats strip, a 3-card solutions grid, and a dark starfield mission band | HTML, CSS, Vanilla JS, IntersectionObserver, CSS 3D transforms, self-hosted fonts |
