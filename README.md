@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (322)
+## Projects (323)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (74)</b></summary>
+<summary><b>Landing pages (75)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -151,6 +151,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [verdigris-trail-h50](./landing-pages/verdigris-trail-h50/) | "Architectural Trail" landing page for fictional architecture studio "Verdigris Archi." — fennel-pastel canvas with a single luminous mint accent, Playfair Display serif + Inter Tight, a fixed vertical hairline "trail" with a travelling mint comet, a circular Begin-Trail hero CTA, a pillar marquee, grayscale-to-color brutalist concrete photography, numbered principle columns, a staggered project gallery, an ink count-up stats band, and a pill CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
 | [viktor-oddy-landing](./landing-pages/viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
+| [voltaic-grid-advisory-h75](./landing-pages/voltaic-grid-advisory-h75/) | "Putty & Voltage" strategic-advisory landing on a warm putty-grey canvas built from large rounded tiles, Host Grotesk + Inter, one electric-lime accent over soft pastel cards, a golden-hour photo hero with social-proof avatars, a 3-up stat grid, a sticky stacking services deck in lavender/yellow/pink/mint, a lavender testimonial panel, an expanding case-study list, an infinite masked insights ticker, a lime CTA, scroll-reveal motion and a mobile dropdown nav | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [voltframe-dev-h29](./landing-pages/voltframe-dev-h29/) | "Bracketed Voltage" developer-portfolio landing on a near-black stage with one electric-yellow accent, a hairline framed hero box with glowing corner nodes, hover-yellow title words, floating particles, pulsing orbs, scroll-revealed skills/work/testimonials, and a mobile slide-in menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [voltline-automation-h60](./landing-pages/voltline-automation-h60/) | "Bone & Volt" industrial AI-automation landing on a warm off-white canvas with graphite ink and a single electric-lime accent, Space Grotesk + JetBrains Mono, a pure-CSS orbiting 3D cube rig with a glowing lime core, a randomized pixel-fill nav button, starfield-reveal CTAs, a count-up stats strip, a 3-card solutions grid, and a dark starfield mission band | HTML, CSS, Vanilla JS, IntersectionObserver, CSS 3D transforms, self-hosted fonts |
 
