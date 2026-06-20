@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (346)
+## Projects (347)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -214,7 +214,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (14)</b></summary>
+<summary><b>Components &amp; UI (15)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -227,6 +227,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [gradient-bars-background](./components-ui/gradient-bars-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Lucide |
 | [gradient-dots-background](./components-ui/gradient-dots-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, framer-motion, shadcn/ui, Lucide |
 | [interactive-3d-spline-scene](./components-ui/interactive-3d-spline-scene/) | shadcn/ui integration of a Spline 3D scene — the exact SplineScene + Card + Spotlight demo, a graceful animated WebGL fallback for when the remote scene is unreachable, a live props playground, and an on-page guide to the shadcn structure, default paths and why components/ui matters | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline, Framer Motion, Lucide, Canvas |
+| [lumen-aurora-vcard-h62](./components-ui/lumen-aurora-vcard-h62/) | Interface experiment. | HTML, CSS, Vanilla JS, vCard, backdrop-filter |
 | [nexto-404-hero](./components-ui/nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
 | [scanner-card-stream](./components-ui/scanner-card-stream/) | Draggable Three.js card stream that decodes each photo into glitching, scrambling ASCII as it crosses a glowing violet scan line, with an ambient WebGL particle field and a 2D spark burst — packaged as a shadcn-style `@/components/ui` drop | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
