@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (308)
+## Projects (309)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -56,7 +56,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (61)</b></summary>
+<summary><b>Landing pages (62)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -109,6 +109,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
 | [spectral-orbit-novascale-h17](./landing-pages/spectral-orbit-novascale-h17/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, Instrument Serif |
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Interface experiment. | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
+| [terra-craft-editorial-h58](./landing-pages/terra-craft-editorial-h58/) | "Quiet Craft Editorial" landing page for the artisan furniture house Terra Studio — a warm cream paper canvas with IBM Plex Serif display type, a two-column hero whose charcoal panel holds three overlapping mat-board image cards with mouse-parallax + hover-lift, an infinite materials marquee, a framed product collection grid, an atelier philosophy split, a count-up stats band, and a swap-to-success newsletter CTA; self-hosted fonts, scroll-reveal, mobile menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [terra-siena-atelier-h14](./landing-pages/terra-siena-atelier-h14/) | "Terra Siena" handcrafted-ceramics atelier landing ("Sun-Fired Earth" aesthetic) on a terracotta/ochre/bone palette with Fraunces serif + Inter Tight, a marquee hero, a scroll-triggered fanned card deck that spreads into collections, 3D flip cards, a testimonial grid, an accordion FAQ, and a marquee footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
