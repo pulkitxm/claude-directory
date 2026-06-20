@@ -1,6 +1,6 @@
 # Hero sections
 
-40 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+41 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
