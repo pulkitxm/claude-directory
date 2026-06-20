@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (273)
+## Projects (275)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -52,7 +52,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (40)</b></summary>
+<summary><b>Landing pages (41)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -93,6 +93,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [terra-siena-atelier-h14](./landing-pages/terra-siena-atelier-h14/) | "Terra Siena" handcrafted-ceramics atelier landing ("Sun-Fired Earth" aesthetic) on a terracotta/ochre/bone palette with Fraunces serif + Inter Tight, a marquee hero, a scroll-triggered fanned card deck that spreads into collections, 3D flip cards, a testimonial grid, an accordion FAQ, and a marquee footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
+| [vantix-precision-medicine-h34](./landing-pages/vantix-precision-medicine-h34/) | "Clinical Obsidian" precision-medicine institute landing page (Vantix) — deep obsidian-navy canvas with electric cyan-blue accents, Bricolage Grotesque display type and JetBrains Mono telemetry labels, an asymmetric split hero with count-up metrics, grayscale-to-color clinical photography, a pulsing rapid-response strip, capabilities/platform/specialists sections, and a consultation form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [velvet-vellum-agency-h4](./landing-pages/velvet-vellum-agency-h4/) | "Velvet precision" marketing-agency landing page (Velvet Vellum) with an oxblood-maroon hero panel, giant Josefin Sans display type, a bento case-study grid, auto-rotating testimonials, and a faux-3D perspective floor-grid footer | HTML, CSS, Vanilla JS, IntersectionObserver |
 | [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
 | [viktor-oddy-landing](./landing-pages/viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
@@ -130,7 +131,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Portfolios (4)</b></summary>
+<summary><b>Portfolios (5)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
