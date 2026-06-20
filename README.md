@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (251)
+## Projects (252)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -51,7 +51,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (21)</b></summary>
+<summary><b>Landing pages (22)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -75,6 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Interface experiment. | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
+| [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
 | [viktor-oddy-landing](./landing-pages/viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
 
 </details>
