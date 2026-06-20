@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (331)
+## Projects (334)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (83)</b></summary>
+<summary><b>Landing pages (86)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -122,6 +122,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [lumen-grove-h63](./landing-pages/lumen-grove-h63/) | "Verdant Apothecary" botanical-bathhouse & forest-spa landing page for "Lumen Grove" — warm bone canvas with deep pine ink and a single living-chartreuse accent, Fraunces serif + Inter, a rounded split hero card ("Steep. Soften. Return."), avatar social-proof, a seamless staggered photo marquee, an accordion-driven cross-fading rituals panel, a scrim testimonial, three-tier membership pricing, a forest newsletter panel, scroll-reveal, and a trailing chartreuse cursor | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [lumina-maternite-h2](./landing-pages/lumina-maternite-h2/) | "Lumina Maternité" — a calm, editorial maternity & women's-health sanctuary landing page on a bone/moss/blush palette with Fraunces + Geist, drifting hero blobs, an auto-scrolling image marquee, sticky-stacking journey cards, an interactive packages selector, FAQ accordion, and a booking form | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [lumen-launch-h44](./landing-pages/lumen-launch-h44/) | "Periwinkle Aurora" landing page for fictional AI product-launch SaaS "Lumen Launch" — lavender/periwinkle aurora-blur motif on crisp white with Outfit + DM Sans, a div-built browser/dashboard hero mockup, infinite logo & testimonial marquees, animated step illustrations, dark testimonial theatre, working monthly/yearly pricing toggle, and a FAQ accordion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+| [lumen-vector-h92](./landing-pages/lumen-vector-h92/) | "Electric Brutalism" creative-agency landing for "Lumen Vector" — a midnight-indigo hero that explodes into candy-pastel panels, Anton poster type + Geist, floating glossy tag-pills with soft glows, a giant multi-color headline with a glass-ringed CTA, seamless logo marquee, six pastel service cards, a fan-out methodology card deck on scroll, scroll-linked testimonial parallax, two-tier pricing on a blue panel, and a FAQ accordion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [mentality-landing](./landing-pages/mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
 | [meridian-grid-systems-h81](./landing-pages/meridian-grid-systems-h81/) | "Warm Brutalist Grid" intelligent-automation consultancy landing for "Meridian®" — paper-cream canvas organised by hairline rules and flat color blocks (electric green + cobalt blue + ink), Space Grotesk + Inter, a split photo/headline hero with a frosted live-status panel, a ghosted logo marquee, a hairline about grid, count-up stats, a springy staggered 01–04 process row with blend-tinted photos, a working monthly/annual pricing toggle, and a hard-shadow contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [meridian-precision-clinic-h35](./landing-pages/meridian-precision-clinic-h35/) | "Architectural Clinical Editorial" landing page for bespoke precision-medicine clinic "Meridian" — meridian-navy and warm-bone with whisper-quiet brass, Fraunces serif display + Inter, split full-viewport hero with a sliding navy panel, infinite credential marquee, hairline-divided discipline grid that inverts on hover, numbered method, and an underline-only contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
