@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (296)
+## Projects (298)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -73,7 +73,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (54)</b></summary>
+<summary><b>Landing pages (56)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -97,6 +97,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [ember-quietude-h26](./landing-pages/ember-quietude-h26/) | Warm paper-calm editorial landing page for focus-first productivity app "Lumo" (Ember Quietude aesthetic) — stone + single ember-orange accent, Instrument Serif display, floating pill nav with hover mega-menu, a fully hand-built HTML/CSS dashboard mockup (sidebar, dark focus timer, tasks, floating AI card), bento planning grid, organize cards, and a monthly/annual pricing toggle | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [forma-video-landing](./landing-pages/forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [groundai-landing](./landing-pages/groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
+| [halcyon-mesh-h56](./landing-pages/halcyon-mesh-h56/) | "Obsidian Control Plane" autonomous-ops SaaS landing for "Halcyon Mesh" — near-black engineering canvas under a persistent dashed grid, an aurora teal→violet hero glow, Space Grotesk + Inter + JetBrains Mono, a hand-built "Control Mesh" dashboard mockup (sidebar, live appending execution log, count-up metrics, audit list), hover mega-menu, text-roll buttons, edge-masked logo marquee, animated SVG node-graph feature card, numbered workflow, stats band, three-tier pricing, and a gridded aurora CTA; cursor-reactive glow, scroll reveals, fully offline | HTML, CSS, Vanilla JS, SVG, IntersectionObserver, self-hosted fonts |
 | [ink-vermilion-personal-brand-h23](./landing-pages/ink-vermilion-personal-brand-h23/) | "Ink & Vermilion" editorial personal-brand landing page for fictional marketing consultant "Marlowe Vane" — warm paper canvas, single vermillion accent, Playfair italic emphasis with hand-drawn SVG scribbles/stars/arrows, a rotated red marquee strip, scroll-reveal sections, a dark gallery band, grayscale-to-color imagery, and fake-submit contact + newsletter forms | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
 | [kairos-academy-h0](./landing-pages/kairos-academy-h0/) | Warm editorial-ember landing page for "Kairos Academy", a competitive-exam coaching institute, with a split-tone hero, floating exam pill tags, count-up stats, program rows, subject cards, a four-phase method grid, auto-rotating testimonials, and an accordion FAQ | HTML, CSS, Vanilla JS |
 | [lantern-broth-midnight-ramen-h8](./landing-pages/lantern-broth-midnight-ramen-h8/) | Warm modular-bento landing page for a late-night Japanese ramen bar "Lantern Broth", with terracotta/mustard/teal tiles, Oswald + DM Sans, scroll-reveal animations, drifting steam, and a vanilla-JS testimonial carousel | HTML, CSS, vanilla JavaScript |
