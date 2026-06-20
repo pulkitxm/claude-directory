@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (265)
+## Projects (266)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -52,7 +52,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (34)</b></summary>
+<summary><b>Landing pages (35)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -84,6 +84,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [sencha-atelier-h12](./landing-pages/sencha-atelier-h12/) | Wabi-editorial landing page for "Sencha Atelier", a ceremonial-matcha tea house — oversized Fraunces serif hero on warm paper, flush rounded showcase cards, editorial menu rows, count-up stats ribbon with marquee, and an asymmetric gallery | HTML, CSS, Vanilla JS, IntersectionObserver, Fraunces, Inter Tight |
 | [solace-wellness-grid-h13](./landing-pages/solace-wellness-grid-h13/) | "Quiet luxury wellness" editorial landing page for the holistic studio Solace — an asymmetric bento color-block grid (oat/dusty-rose/lilac/sage panels) with oversized light Manrope display type, a desaturated→color image strip, looping keyword marquee, practices bento, sage stats band, guide portraits, and a reserve form; self-hosted fonts, scroll-reveal, slide-in mobile menu | HTML, CSS, JavaScript, IntersectionObserver, self-hosted fonts |
 | [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
+| [spectral-orbit-novascale-h17](./landing-pages/spectral-orbit-novascale-h17/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, Instrument Serif |
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Interface experiment. | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
