@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (346)
+## Projects (347)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -233,7 +233,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (14)</b></summary>
+<summary><b>Components &amp; UI (15)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -246,6 +246,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [gradient-bars-background](./components-ui/gradient-bars-background/) | shadcn/ui integration of the verbatim `GradientBars` component — an equalizer-shaped wall of pulsing vertical CSS `linear-gradient` bars (U-shaped height curve, staggered `scaleY` `@keyframes`) — dropped into `@/components/ui` and framed as a component lab: a full-bleed live hero with a render-FPS/bars/assets/uptime telemetry strip and stack ticker, a control deck of faders wired to the real props (numBars/animationDuration + gradientFrom colour picker with named presets + backgroundColor) with a live-usage snippet, a shadcn-CLI integration story explaining the default paths and why `/components/ui` matters, and a props API with the prompt's data/state/assets/responsive/placement Q&A; zero image assets (pure CSS keyframes), fonts vendored locally, fully offline | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Lucide |
 | [gradient-dots-background](./components-ui/gradient-dots-background/) | shadcn/ui integration of the verbatim `GradientDots` component — a hue-cycling hexagonal CSS `radial-gradient` dot field looped with framer-motion — dropped into `@/components/ui` and framed as a component lab: a full-bleed live hero (the verbatim demo) with a render-FPS/uptime telemetry strip, a control deck of faders wired straight to the real props (dotSize/spacing/duration/colorCycleDuration + a background colour control) with named presets and a live-usage snippet, a four-step shadcn-CLI integration story explaining the default paths and why `/components/ui` matters, and a props API with the prompt's data/state/assets/responsive/placement Q&A; zero component assets (pure CSS), fonts vendored locally, fully offline | React, TypeScript, Vite, Tailwind CSS v4, framer-motion, shadcn/ui, Lucide |
 | [interactive-3d-spline-scene](./components-ui/interactive-3d-spline-scene/) | shadcn/ui integration of a Spline 3D scene — the exact SplineScene + Card + Spotlight demo, a graceful animated WebGL fallback for when the remote scene is unreachable, a live props playground, and an on-page guide to the shadcn structure, default paths and why components/ui matters | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline, Framer Motion, Lucide, Canvas |
+| [lumen-aurora-vcard-h62](./components-ui/lumen-aurora-vcard-h62/) | "Lumen Aurora" personal digital visiting card for a fictional creative technologist — one frosted-glass card floating over a slow living aurora of drifting violet/teal/rose blobs with film-grain and vignette, stacking a meta bar with a live local clock, an avatar-ring hero with a pulsing emerald "available" status, a short first-person bio with mono tag chips, a three-up email/call/WhatsApp action grid, a five-up social row, and an amber "Save contact" button that generates a vCard 3.0 `.vcf` blob client-side plus a "Copy link" toast; cinematic near-black palette, Fraunces display serif over Geist + Geist Mono, pointer parallax with specular sheen, staggered reveal, real mailto/tel/wa.me links, all fonts and portrait vendored locally, fully offline | HTML, CSS, Vanilla JS, vCard, backdrop-filter |
 | [nexto-404-hero](./components-ui/nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
 | [scanner-card-stream](./components-ui/scanner-card-stream/) | Draggable Three.js card stream that decodes each photo into glitching, scrambling ASCII as it crosses a glowing violet scan line, with an ambient WebGL particle field and a 2D spark burst — packaged as a shadcn-style `@/components/ui` drop | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
 | [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Pixel-faithful "Sixsense" AI reference-finder page with canvas pixel-grid glass backgrounds, an organic cursor hover blob, a layered folder/lights stack, three floating reference cards, and a glass typewriter prompt box with a spinning gradient send button | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
