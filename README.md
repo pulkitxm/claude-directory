@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (332)
+## Projects (335)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -56,7 +56,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (84)</b></summary>
+<summary><b>Landing pages (87)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -76,6 +76,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [azimuth-realty-engine-h36](./landing-pages/azimuth-realty-engine-h36/) | "High-Altitude Precision" real-estate marketing-engine landing for "Azimuth" — deep-navy mission-control palette with a single electric-cobalt accent, Bricolage Grotesque display + JetBrains Mono labels, split grayscale-to-color hero, floating pill navbar with hover mega-menu, bento ecosystem grid, horizontal-scroll property portfolio, cobalt method bento, and a scroll-triggered fanning stacked-card CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [axion-studio-landing](./landing-pages/axion-studio-landing/) | Design agency landing page for Axion Studio with shader-based hero background and multi-section layout | React, TypeScript, Vite, Tailwind CSS, shaders, Lucide |
 | [axis-quotient-h30](./landing-pages/axis-quotient-h30/) | "Quant Brutalist Editorial" landing page for fictional quant-strategy firm Axis Quotient — ink-on-ivory with electric cobalt, animated point-grid hero canvas, colossal QUOTIENT wordmark, ticker marquee, capabilities accordion, count-up metrics, and toggleable engagement pricing | HTML, CSS, Vanilla JS, Canvas, SVG, vendored fonts |
+| [carbon-bloom-h95](./landing-pages/carbon-bloom-h95/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [cerulean-precision-collective-h67](./landing-pages/cerulean-precision-collective-h67/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [cartwright-relocation-h47](./landing-pages/cartwright-relocation-h47/) | "Warm Artisan Logistics" white-glove relocation landing for "Cartwright & Co" — terracotta-on-cream editorial palette with a Fraunces italic serif accent, dual opposite-scrolling hero image tickers, a mega-menu glass navbar, partner marquee, soft service cards, a dark count-up stats band, a staggered three-step process timeline, an auto-cycling stacked testimonial deck, and a split contact panel with a working quote form | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [citron-atlas-h79](./landing-pages/citron-atlas-h79/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
