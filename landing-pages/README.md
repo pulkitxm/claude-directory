@@ -1,10 +1,11 @@
 # Landing pages
 
-34 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+36 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [amber-foundry-h9](./amber-foundry-h9/) | Warm editorial-intelligence landing page for fictional enterprise-AI consultancy "Amber Foundry" — cream/amber/roasted-brown palette, animated canvas neural-network hero, auto-advancing interactive solutions panel, bento method grid, and a dark pricing flip | HTML, CSS, Vanilla JS, Canvas, vendored fonts |
+| [archway-summit-h21](./archway-summit-h21/) | "Gallery Arch" tech-conference landing for "Archway Summit" — near-black editorial gallery framing headline speakers inside tall pastel museum arches (pink/blue/beige/yellow), grayscale-to-color portraits, mono schedule with Day 1/Day 2 toggle, FAQ accordion, and an inverted white final-CTA panel | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [asme-hero-landing](./asme-hero-landing/) | Full-screen dark Asme landing page with Mux/HLS-style video, liquid-glass navbar, and email-capture CTA | React, JavaScript, Vite, CSS |
 | [asme-liquid-glass-landing](./asme-liquid-glass-landing/) | Dark cinematic Asme single-page landing site with liquid-glass UI details | React, TypeScript, Vite, Tailwind CSS |
 | [astral-veil-h6](./astral-veil-h6/) | Cosmic-nocturne SaaS landing for "Novela" — near-black canvas, violet/cobalt nebula glows, frosted glass, Playfair Display headlines, CSS starfield, drifting UI fragments, trust marquee, and a floating constellation of integration capsules | HTML, CSS, Vanilla JS |
