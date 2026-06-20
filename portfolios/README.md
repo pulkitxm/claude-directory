@@ -1,6 +1,6 @@
 # Portfolios
 
-7 **Portfolios** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+8 **Portfolios** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -10,4 +10,5 @@
 | [lumen-folio-h19](./lumen-folio-h19/) | Soft editorial-minimalism personal portfolio with floating glass nav, drag carousel, typewriter hero, and scroll reveals | HTML, CSS, JavaScript |
 | [michael-smith-portfolio](./michael-smith-portfolio/) | Dark single-page creator portfolio with GSAP / Framer Motion animations and HLS video | React, TypeScript, Vite, Tailwind CSS, GSAP, Framer Motion, hls.js, React Router |
 | [nocturne-bento-h28](./nocturne-bento-h28/) | "Midnight Atelier" dark designer portfolio — animated perspective-grid floor, acid-lime accent, Fraunces serif + Inter Tight, bento-grid glass hero, pointer parallax, scroll reveals, and a validated contact form | HTML, CSS, vanilla JS, Fraunces, Inter Tight, JetBrains Mono |
+| [solstice-craft-studio-h41](./solstice-craft-studio-h41/) | "Warm Editorial Craft" light-mode UX designer portfolio — paper canvas, tangerine accent, Space Grotesk + Caveat handwriting, floating design-tool micro-cards, 3D-perspective project ticker, animated process line, and a fullscreen menu | HTML, CSS, Vanilla JS, Space Grotesk, Caveat |
 | [voltmark-engineer-terminal-h24](./voltmark-engineer-terminal-h24/) | Electric-yellow dark engineer portfolio with terminal typewriter, code-chip hero, marquee, and filterable project grid | HTML, CSS, Vanilla JS |
