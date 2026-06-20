@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (283)
+## Projects (331)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (82)</b></summary>
+<summary><b>Landing pages (83)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -97,6 +97,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [axis-quotient-h30](./landing-pages/axis-quotient-h30/) | "Quant Brutalist Editorial" landing page for fictional quant-strategy firm Axis Quotient — ink-on-ivory with electric cobalt, animated point-grid hero canvas, colossal QUOTIENT wordmark, ticker marquee, capabilities accordion, count-up metrics, and toggleable engagement pricing | HTML, CSS, Vanilla JS, Canvas, SVG, vendored fonts |
 | [cerulean-precision-collective-h67](./landing-pages/cerulean-precision-collective-h67/) | "Clinical Serenity" precision-medicine landing for "Cerulean Collective" — cool medical-blue (#0F4490) + soft-teal (#4AA9C5) on near-white with vendored Instrument Sans + Inter Tight, an ellipse-clipped full-bleed hero with floating glass trust chips, a three-column methodology grid with slide-in columns and a rotated-plate portrait, a 12-col specialties bento with hover image-zoom, a float-looping metrics band, and a black-bordered marquee-headed "Request Invitation" intake form over animated pulsing grid lines; per-character heading reveals, IntersectionObserver scroll reveals, prefers-reduced-motion aware, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [cartwright-relocation-h47](./landing-pages/cartwright-relocation-h47/) | "Warm Artisan Logistics" white-glove relocation landing for "Cartwright & Co" — terracotta-on-cream editorial palette with a Fraunces italic serif accent, dual opposite-scrolling hero image tickers, a mega-menu glass navbar, partner marquee, soft service cards, a dark count-up stats band, a staggered three-step process timeline, an auto-cycling stacked testimonial deck, and a split contact panel with a working quote form | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
+| [citron-atlas-h79](./landing-pages/citron-atlas-h79/) | "Phosphor Olive" enterprise growth-advisory landing for "Meridian & Voss" — a near-black boardroom aesthetic lit by one pale citron-lime accent (#F3FFC9) on warm charcoal-olive, with a pill nav + mega-menu, a 700px photo hero over a seamless capability marquee, an infinite client-logo strip with edge fades, snap-scrolling industry + case-study sliders, a cross-fading services accordion, count-up statistics, and a staggered methodology stage with a decorative curve; IntersectionObserver scroll reveals, prefers-reduced-motion aware, vendored Inter + imagery, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [claywell-solene-h5](./landing-pages/claywell-solene-h5/) | Warm-clay editorial landing page for "Solène", a terracotta-and-cream longevity & precision-movement clinic, with an asymmetric split hero, word-by-word heading reveals, zig-zag scroll sections, an infinite marquee, and a dark science band | HTML, CSS, JavaScript, Archivo |
 | [cobalt-repairworks-h78](./landing-pages/cobalt-repairworks-h78/) | "Workbench Editorial" electronics-repair landing for "RepairWorks" — warm paper-cream canvas with one confident cobalt accent, tight Host Grotesk display + IBM Plex Mono labels, square-glyph logo marks, a left-aligned hero with a "what we fix" device-card grid, a hover-pausing brand marquee, a 2-up services grid with mono spec ticks and prices, a 3×2 benefits grid, a tinted identity split, a 4-up image/quote testimonial grid, a 2-up FAQ, and a panelled final CTA; IntersectionObserver staggered scroll reveals, scroll-aware header, prefers-reduced-motion aware, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [crimson-cut-studio-h72](./landing-pages/crimson-cut-studio-h72/) | "Warm-Paper Viral Studio" landing for "Crimson Cut", a short-form video-editing agency — warm off-white paper canvas, pine-ink panels and one loud crimson accent, a floating pill nav, a centered hero with an inline rotated editor-palette sticker, staggered grayscale-to-color 9:16 video cards, a 2×2 services grid with rotating decorative shape clusters, a dark bento stats band, two-up case studies, an exclusive FAQ accordion, three pricing tiers, a seamless CSS testimonial marquee, and a split final-CTA panel; IntersectionObserver scroll reveals, vendored Manrope + imagery, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
