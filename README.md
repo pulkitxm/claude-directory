@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (341)
+## Projects (342)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (93)</b></summary>
+<summary><b>Landing pages (94)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -95,6 +95,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [azimuth-realty-engine-h36](./landing-pages/azimuth-realty-engine-h36/) | "High-Altitude Precision" real-estate marketing-engine landing for "Azimuth" — deep-navy mission-control palette with a single electric-cobalt accent, Bricolage Grotesque display + JetBrains Mono labels, split grayscale-to-color hero, floating pill navbar with hover mega-menu, bento ecosystem grid, horizontal-scroll property portfolio, cobalt method bento, and a scroll-triggered fanning stacked-card CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [axion-studio-landing](./landing-pages/axion-studio-landing/) | Design agency landing page for Axion Studio with shader-based hero background and multi-section layout | React, TypeScript, Vite, Tailwind CSS, shaders, Lucide |
 | [axis-quotient-h30](./landing-pages/axis-quotient-h30/) | "Quant Brutalist Editorial" landing page for fictional quant-strategy firm Axis Quotient — ink-on-ivory with electric cobalt, animated point-grid hero canvas, colossal QUOTIENT wordmark, ticker marquee, capabilities accordion, count-up metrics, and toggleable engagement pricing | HTML, CSS, Vanilla JS, Canvas, SVG, vendored fonts |
+| [carbon-bloom-h95](./landing-pages/carbon-bloom-h95/) | "Molten Paper" creative-agency landing for "Carbon Bloom" — bone-beige paper, pure ink-black, and a single molten-orange (#F43C00) accent, with vendored Space Grotesk display + Inter Tight body; a frosted pill navbar, a sticky-stacking two-panel hero (giant uppercase MARKET/SCALE headline + a layered hero image with a floating showreel card), giant 22s/34s infinite marquees, a two-tone philosophy statement, sticky-stacking dark service cards, a single-open FAQ accordion, an offset masonry work grid, hover-darkening article rows, and an orange footer block — paper-stacking beige/black/white sections with rounded top edges, directional IntersectionObserver reveals, prefers-reduced-motion aware, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [cerulean-precision-collective-h67](./landing-pages/cerulean-precision-collective-h67/) | "Clinical Serenity" precision-medicine landing for "Cerulean Collective" — cool medical-blue (#0F4490) + soft-teal (#4AA9C5) on near-white with vendored Instrument Sans + Inter Tight, an ellipse-clipped full-bleed hero with floating glass trust chips, a three-column methodology grid with slide-in columns and a rotated-plate portrait, a 12-col specialties bento with hover image-zoom, a float-looping metrics band, and a black-bordered marquee-headed "Request Invitation" intake form over animated pulsing grid lines; per-character heading reveals, IntersectionObserver scroll reveals, prefers-reduced-motion aware, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [cartwright-relocation-h47](./landing-pages/cartwright-relocation-h47/) | "Warm Artisan Logistics" white-glove relocation landing for "Cartwright & Co" — terracotta-on-cream editorial palette with a Fraunces italic serif accent, dual opposite-scrolling hero image tickers, a mega-menu glass navbar, partner marquee, soft service cards, a dark count-up stats band, a staggered three-step process timeline, an auto-cycling stacked testimonial deck, and a split contact panel with a working quote form | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [citron-atlas-h79](./landing-pages/citron-atlas-h79/) | "Phosphor Olive" enterprise growth-advisory landing for "Meridian & Voss" — a near-black boardroom aesthetic lit by one pale citron-lime accent (#F3FFC9) on warm charcoal-olive, with a pill nav + mega-menu, a 700px photo hero over a seamless capability marquee, an infinite client-logo strip with edge fades, snap-scrolling industry + case-study sliders, a cross-fading services accordion, count-up statistics, and a staggered methodology stage with a decorative curve; IntersectionObserver scroll reveals, prefers-reduced-motion aware, vendored Inter + imagery, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
