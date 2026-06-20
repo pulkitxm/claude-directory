@@ -26,12 +26,13 @@ All PRs get reviewed and merged by Claude Opus, so don't be shy — if the promp
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
 <details>
-<summary><b>Hero sections (38)</b></summary>
+<summary><b>Hero sections (39)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aethera-cinematic-hero](./hero-sections/aethera-cinematic-hero/) | Cinematic hero for Aethera with video-driven visual treatment and headless verification | React, TypeScript, Vite, Tailwind CSS |
 | [ai-builder-dark-hero](./hero-sections/ai-builder-dark-hero/) | Dark-mode hero section for an AI website builder with animated reveals and HLS video streaming | React, TypeScript, Vite, Tailwind CSS, Motion, hls.js, Lucide |
+| [altitude-index-h38](./hero-sections/altitude-index-h38/) | Editorial expedition-outfitter bento hero ("Warm Cartography") on warm paper with an ember accent, parallax photo tiles, fullscreen menu, and a scrolling coordinate ticker | HTML, CSS, JavaScript, Space Grotesk |
 | [animated-text-rotate-hero](./hero-sections/animated-text-rotate-hero/) | shadcn/ui animated hero integration with spring word-rotation, hosted in a midnight-teal "Spektr" trade-desk shell with a live ticker | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
 | [bloom-liquid-glass-hero](./hero-sections/bloom-liquid-glass-hero/) | Bloom hero experiment with floral imagery, liquid-glass styling, and generated visual assets | React, TypeScript, Vite, Tailwind CSS |
 | [cinematic-stream-hero](./hero-sections/cinematic-stream-hero/) | LUMIERE full-viewport streaming hero with looping cinematic background video | React, TypeScript, Vite, Tailwind CSS |
@@ -72,7 +73,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (50)</b></summary>
+<summary><b>Landing pages (49)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
