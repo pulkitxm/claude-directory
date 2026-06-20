@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (322)
+## Projects (323)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -56,7 +56,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (74)</b></summary>
+<summary><b>Landing pages (75)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -78,6 +78,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [axis-quotient-h30](./landing-pages/axis-quotient-h30/) | "Quant Brutalist Editorial" landing page for fictional quant-strategy firm Axis Quotient — ink-on-ivory with electric cobalt, animated point-grid hero canvas, colossal QUOTIENT wordmark, ticker marquee, capabilities accordion, count-up metrics, and toggleable engagement pricing | HTML, CSS, Vanilla JS, Canvas, SVG, vendored fonts |
 | [cerulean-precision-collective-h67](./landing-pages/cerulean-precision-collective-h67/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [cartwright-relocation-h47](./landing-pages/cartwright-relocation-h47/) | "Warm Artisan Logistics" white-glove relocation landing for "Cartwright & Co" — terracotta-on-cream editorial palette with a Fraunces italic serif accent, dual opposite-scrolling hero image tickers, a mega-menu glass navbar, partner marquee, soft service cards, a dark count-up stats band, a staggered three-step process timeline, an auto-cycling stacked testimonial deck, and a split contact panel with a working quote form | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
+| [citron-atlas-h79](./landing-pages/citron-atlas-h79/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [claywell-solene-h5](./landing-pages/claywell-solene-h5/) | Warm-clay editorial landing page for "Solène", a terracotta-and-cream longevity & precision-movement clinic, with an asymmetric split hero, word-by-word heading reveals, zig-zag scroll sections, an infinite marquee, and a dark science band | HTML, CSS, JavaScript, Archivo |
 | [crimson-cut-studio-h72](./landing-pages/crimson-cut-studio-h72/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
 | [design-rocket-email](./landing-pages/design-rocket-email/) | Email-style marketing landing page for a "Design Rocket Certificates" AI leadership course | React, TypeScript, Vite, Tailwind CSS, Lucide |
