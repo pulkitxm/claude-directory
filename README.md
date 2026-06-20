@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (278)
+## Projects (280)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -154,7 +154,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Portfolios (6)</b></summary>
+<summary><b>Portfolios (7)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -163,6 +163,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [jack-3d-portfolio](./portfolios/jack-3d-portfolio/) | Dark-themed 3D creator portfolio landing page for Jack with gradient hero text | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
 | [lumen-folio-h19](./portfolios/lumen-folio-h19/) | Soft editorial-minimalism personal portfolio with floating glass nav, drag carousel, typewriter hero, and scroll reveals | HTML, CSS, JavaScript |
 | [michael-smith-portfolio](./portfolios/michael-smith-portfolio/) | Dark single-page creator portfolio with GSAP / Framer Motion animations and HLS video | React, TypeScript, Vite, Tailwind CSS, GSAP, Framer Motion, hls.js, React Router |
+| [nocturne-bento-h28](./portfolios/nocturne-bento-h28/) | "Midnight Atelier" dark designer portfolio — animated perspective-grid floor, acid-lime accent, Fraunces serif + Inter Tight, bento-grid glass hero, pointer parallax, scroll reveals, and a validated contact form | HTML, CSS, vanilla JS, Fraunces, Inter Tight, JetBrains Mono |
 | [voltmark-engineer-terminal-h24](./portfolios/voltmark-engineer-terminal-h24/) | Electric-yellow dark engineer portfolio with terminal typewriter, code-chip hero, marquee, and filterable project grid | HTML, CSS, Vanilla JS |
 
 </details>
