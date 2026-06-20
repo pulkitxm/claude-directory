@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (309)
+## Projects (313)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -56,7 +56,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (62)</b></summary>
+<summary><b>Landing pages (65)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -93,8 +93,10 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [mentality-landing](./landing-pages/mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
 | [meridian-precision-clinic-h35](./landing-pages/meridian-precision-clinic-h35/) | "Architectural Clinical Editorial" landing page for bespoke precision-medicine clinic "Meridian" — meridian-navy and warm-bone with whisper-quiet brass, Fraunces serif display + Inter, split full-viewport hero with a sliding navy panel, infinite credential marquee, hairline-divided discipline grid that inverts on hover, numbered method, and an underline-only contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [mindloop-mono-landing](./landing-pages/mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
+| [monolith-grid-atelier-h59](./landing-pages/monolith-grid-atelier-h59/) | "Grid Monument" Swiss-modernist landing page for bespoke spatial-design studio "Monolith" — bone-white paper, near-black ink, warm sandstone accent, Space Grotesk + Playfair italic, a mix-blend-difference header, full-viewport grayscale hero ruled by a visible structural grid, modular ethos/stats grid with a rotating SVG seal, 3D flip-card portfolio, and floating-label contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [neuralyn-dark-landing](./landing-pages/neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./landing-pages/nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
+| [obsidian-lacquer-h57](./landing-pages/obsidian-lacquer-h57/) | "Obsidian Lacquer" cinematic automotive detailing-studio landing — pure-black canvas with a scalpel of vermilion red, Bricolage Grotesque display + Playfair italic accents + Inter Tight, a full-viewport ken-burns/pointer-parallax hero with stats strip, an asymmetric 12-col services grid, hover-reveal 01–03 process cards, testimonials, a snap-scroll before/after gallery with arrow nav, a monthly/yearly pricing toggle, and IntersectionObserver scroll reveals | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [ochre-stone-studio-h11](./landing-pages/ochre-stone-studio-h11/) | Warm editorial landing page for a bespoke interior-architecture studio, with a diagonal cutout hero, auto-rotating curation card, bento work grid, and scattered freefall process cards | HTML, CSS, JavaScript |
 | [orbital-frequency-summit-h22](./landing-pages/orbital-frequency-summit-h22/) | "Deep Signal" landing page for a fictional deep-space signals & aerospace-software summit "Orbital Frequency" — observatory-dark void with amber-gold/signal-green accents, Oswald condensed display type, canvas starfield, rotating orbital rings + radar-sweep hero, telemetry strip, mission timeline, floating-beacon pricing passes, and a scroll-tracking signal bar | HTML, CSS, Vanilla JS, Canvas, self-hosted fonts |
 | [orbis-nft-landing](./landing-pages/orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
@@ -108,6 +110,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
 | [spectral-orbit-novascale-h17](./landing-pages/spectral-orbit-novascale-h17/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, Instrument Serif |
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Interface experiment. | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
+| [terra-craft-editorial-h58](./landing-pages/terra-craft-editorial-h58/) | "Quiet Craft Editorial" landing page for the artisan furniture house Terra Studio — a warm cream paper canvas with IBM Plex Serif display type, a two-column hero whose charcoal panel holds three overlapping mat-board image cards with mouse-parallax + hover-lift, an infinite materials marquee, a framed product collection grid, an atelier philosophy split, a count-up stats band, and a swap-to-success newsletter CTA; self-hosted fonts, scroll-reveal, mobile menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [terra-siena-atelier-h14](./landing-pages/terra-siena-atelier-h14/) | "Terra Siena" handcrafted-ceramics atelier landing ("Sun-Fired Earth" aesthetic) on a terracotta/ochre/bone palette with Fraunces serif + Inter Tight, a marquee hero, a scroll-triggered fanned card deck that spreads into collections, 3D flip cards, a testimonial grid, an accordion FAQ, and a marquee footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
@@ -178,7 +181,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Components &amp; UI (13)</b></summary>
+<summary><b>Components &amp; UI (14)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -187,6 +190,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [aurora-sign-up](./components-ui/aurora-sign-up/) | Two-column "Aurora" registration interface with a background-video hero, staggered Motion reveals, and a multi-step sign-up form | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [background-paths-hero](./components-ui/background-paths-hero/) | Integration of the "Background Paths" shadcn/ui hero — 72 flowing animated SVG paths behind a per-letter spring headline and a glassy CTA, wrapped in a dark/light theme toggle and a preset-headline switcher | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
 | [core-features-gradient-cards](./components-ui/core-features-gradient-cards/) | Static "Core Features" marketing section with three gradient feature cards | Single-file HTML/CSS |
+| [crimson-mill-supply-card-h61](./components-ui/crimson-mill-supply-card-h61/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver |
 | [gradient-bars-background](./components-ui/gradient-bars-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Lucide |
 | [gradient-dots-background](./components-ui/gradient-dots-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, framer-motion, shadcn/ui, Lucide |
 | [interactive-3d-spline-scene](./components-ui/interactive-3d-spline-scene/) | shadcn/ui integration of a Spline 3D scene — the exact SplineScene + Card + Spotlight demo, a graceful animated WebGL fallback for when the remote scene is unreachable, a live props playground, and an on-page guide to the shadcn structure, default paths and why components/ui matters | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline, Framer Motion, Lucide, Canvas |
