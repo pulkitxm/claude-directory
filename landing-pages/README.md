@@ -1,6 +1,6 @@
 # Landing pages
 
-51 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+53 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
