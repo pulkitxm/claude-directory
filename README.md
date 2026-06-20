@@ -105,6 +105,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
 | [spectral-orbit-novascale-h17](./landing-pages/spectral-orbit-novascale-h17/) | "Spectral Orbit" near-black cosmic paid-ads growth agency (NovaScale) landing page built around slowly rotating chromatic conic-gradient nebula orbs blooming behind crisp content, a single electric coral-red (#ff4838) accent over a monochrome void, and Instrument Serif italic emphasis on Inter; sections cover a full-viewport orb hero, opposite-direction trust marquees, an infinite pause-on-hover testimonials carousel with metric footers, a glowing about panel, a services grid with corner orbs plus a coral TikTok feature card, an Other-Agencies-vs-NovaScale comparison with a counter-rotating warm orb, a 3-step process with hover-glow cards, a results stat panel with hover-lift tiles and a performance-guarantee callout, a single-open FAQ accordion, an orb final CTA, and a newsletter footer; IntersectionObserver fade-up reveals, animated hamburger mobile nav, and a prefers-reduced-motion fallback; fonts and inline-SVG avatars vendored locally, fully offline | HTML, CSS, vanilla JS, SVG, Inter, Instrument Serif |
 | [synergeus-landing](./landing-pages/synergeus-landing/) | Pixel-faithful dark AI-fintech "Synergeus" landing with three scroll-revealed sections — an HLS video hero with a 3D-tilt story card, an analytics card with count-ups, and an AI-intelligence trio (NL queries, wipe-reveal chart, animated SVG node tree) | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
+| [terra-siena-atelier-h14](./landing-pages/terra-siena-atelier-h14/) | "Terra Siena" handcrafted-ceramics atelier landing ("Sun-Fired Earth" aesthetic) on a terracotta/ochre/bone palette with Fraunces serif + Inter Tight, a marquee hero, a scroll-triggered fanned card deck that spreads into collections, 3D flip cards, a testimonial grid, an accordion FAQ, and a marquee footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
 | [velvet-vellum-agency-h4](./landing-pages/velvet-vellum-agency-h4/) | "Velvet precision" marketing-agency landing page (Velvet Vellum) with an oxblood-maroon hero panel, giant Josefin Sans display type, a bento case-study grid, auto-rotating testimonials, and a faux-3D perspective floor-grid footer | HTML, CSS, Vanilla JS, IntersectionObserver |
@@ -144,11 +145,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Portfolios (2)</b></summary>
+<summary><b>Portfolios (3)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [jack-3d-portfolio](./portfolios/jack-3d-portfolio/) | Dark-themed 3D creator portfolio landing page for Jack with gradient hero text | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
+| [lumen-folio-h19](./portfolios/lumen-folio-h19/) | Soft editorial-minimalism personal portfolio with floating glass nav, drag carousel, typewriter hero, and scroll reveals | HTML, CSS, JavaScript |
 | [michael-smith-portfolio](./portfolios/michael-smith-portfolio/) | Dark single-page creator portfolio with GSAP / Framer Motion animations and HLS video | React, TypeScript, Vite, Tailwind CSS, GSAP, Framer Motion, hls.js, React Router |
 
 </details>
