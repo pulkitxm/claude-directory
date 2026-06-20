@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (251)
+## Projects (252)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -70,7 +70,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (21)</b></summary>
+<summary><b>Landing pages (22)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -83,6 +83,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [dot-daily-calm-landing](./landing-pages/dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
 | [forma-video-landing](./landing-pages/forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [groundai-landing](./landing-pages/groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
+| [lantern-broth-midnight-ramen-h8](./landing-pages/lantern-broth-midnight-ramen-h8/) | Warm modular-bento landing page for a late-night Japanese ramen bar "Lantern Broth", with terracotta/mustard/teal tiles, Oswald + DM Sans, scroll-reveal animations, drifting steam, and a vanilla-JS testimonial carousel | HTML, CSS, vanilla JavaScript |
 | [mentality-landing](./landing-pages/mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
 | [mindloop-mono-landing](./landing-pages/mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
 | [neuralyn-dark-landing](./landing-pages/neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
