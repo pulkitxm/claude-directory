@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (285)
+## Projects (286)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -72,7 +72,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (48)</b></summary>
+<summary><b>Landing pages (49)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -118,6 +118,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [terra-siena-atelier-h14](./landing-pages/terra-siena-atelier-h14/) | "Terra Siena" handcrafted-ceramics atelier landing ("Sun-Fired Earth" aesthetic) on a terracotta/ochre/bone palette with Fraunces serif + Inter Tight, a marquee hero, a scroll-triggered fanned card deck that spreads into collections, 3D flip cards, a testimonial grid, an accordion FAQ, and a marquee footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
+| [vantix-precision-medicine-h34](./landing-pages/vantix-precision-medicine-h34/) | "Clinical Obsidian" precision-medicine institute landing page (Vantix) — deep obsidian-navy canvas with electric cyan-blue accents, Bricolage Grotesque display type and JetBrains Mono telemetry labels, an asymmetric split hero with count-up metrics, grayscale-to-color clinical photography, a pulsing rapid-response strip, capabilities/platform/specialists sections, and a consultation form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [vellum-apothecary-archive-h32](./landing-pages/vellum-apothecary-archive-h32/) | "Archival Apothecary" wellness-sanctuary landing page (Vellum & Verdigris) on a vintage sepia vellum/paper palette with Playfair Display + Instrument Serif + Courier Prime, a paper-grain overlay, a load-time cream curtain reveal over a sepia hero photo, scroll fade-rise reveals, hairline catalogue rules, a numbered philosophy grid, a coded rituals gallery, an ink "Memoirs" testimonials band, and a custom hollow-ring cursor | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [vellum-atelier-h33](./landing-pages/vellum-atelier-h33/) | "Vellum" luxury hair atelier landing ("Sculptural Serif Atelier" aesthetic) on a warm paper/ink/gold palette with Unbounded + Figtree + Sacramento, a character-by-character animated hero wordmark, extreme top-rounded image panels, a dark service menu with cursor-tracked hover previews, an offset 3-up portfolio grid, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [velvet-vellum-agency-h4](./landing-pages/velvet-vellum-agency-h4/) | "Velvet precision" marketing-agency landing page (Velvet Vellum) with an oxblood-maroon hero panel, giant Josefin Sans display type, a bento case-study grid, auto-rotating testimonials, and a faux-3D perspective floor-grid footer | HTML, CSS, Vanilla JS, IntersectionObserver |
