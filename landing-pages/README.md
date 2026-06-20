@@ -1,6 +1,6 @@
 # Landing pages
 
-34 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+36 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -15,6 +15,7 @@
 | [claywell-solene-h5](./claywell-solene-h5/) | Warm-clay editorial landing page for "Solène", a terracotta-and-cream longevity & precision-movement clinic, with an asymmetric split hero, word-by-word heading reveals, zig-zag scroll sections, an infinite marquee, and a dark science band | HTML, CSS, JavaScript, Archivo |
 | [design-rocket-email](./design-rocket-email/) | Email-style marketing landing page for a "Design Rocket Certificates" AI leadership course | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [dot-daily-calm-landing](./dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
+| [ember-quietude-h26](./ember-quietude-h26/) | Warm paper-calm editorial landing page for focus-first productivity app "Lumo" (Ember Quietude aesthetic) — stone + single ember-orange accent, Instrument Serif display, floating pill nav with hover mega-menu, a fully hand-built HTML/CSS dashboard mockup (sidebar, dark focus timer, tasks, floating AI card), bento planning grid, organize cards, and a monthly/annual pricing toggle | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [forma-video-landing](./forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [groundai-landing](./groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
 | [kairos-academy-h0](./kairos-academy-h0/) | Warm editorial-ember landing page for "Kairos Academy", a competitive-exam coaching institute, with a split-tone hero, floating exam pill tags, count-up stats, program rows, subject cards, a four-phase method grid, auto-rotating testimonials, and an accordion FAQ | HTML, CSS, Vanilla JS |
