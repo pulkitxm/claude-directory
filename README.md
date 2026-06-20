@@ -21,7 +21,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (315)
+## Projects (318)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -75,7 +75,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Landing pages (67)</b></summary>
+<summary><b>Landing pages (70)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -119,6 +119,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [neuralyn-dark-landing](./landing-pages/neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
 | [nhm-paleontology-landing](./landing-pages/nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
 | [obsidian-lacquer-h57](./landing-pages/obsidian-lacquer-h57/) | "Obsidian Lacquer" cinematic automotive detailing-studio landing — pure-black canvas with a scalpel of vermilion red, Bricolage Grotesque display + Playfair italic accents + Inter Tight, a full-viewport ken-burns/pointer-parallax hero with stats strip, an asymmetric 12-col services grid, hover-reveal 01–03 process cards, testimonials, a snap-scroll before/after gallery with arrow nav, a monthly/yearly pricing toggle, and IntersectionObserver scroll reveals | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+| [obsidian-lime-h77](./landing-pages/obsidian-lime-h77/) | "Obsidian Lime" sovereign strategy-advisory landing for "Meridian" — pitch-black editorial canvas with one electric lime accent, Forum serif display + DM Sans, a full-viewport ken-burns/parallax grayscale hero with line-mask headline reveal and floating lime orbs, an Our-DNA expertise split with a frosted-glass pull-quote, a 3-up bespoke-disciplines card grid, a 01–03 methodology timeline, a count-up intelligence stats band, and a cinematic final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
 | [ochre-stone-studio-h11](./landing-pages/ochre-stone-studio-h11/) | Warm editorial landing page for a bespoke interior-architecture studio, with a diagonal cutout hero, auto-rotating curation card, bento work grid, and scattered freefall process cards | HTML, CSS, JavaScript |
 | [orbital-frequency-summit-h22](./landing-pages/orbital-frequency-summit-h22/) | "Deep Signal" landing page for a fictional deep-space signals & aerospace-software summit "Orbital Frequency" — observatory-dark void with amber-gold/signal-green accents, Oswald condensed display type, canvas starfield, rotating orbital rings + radar-sweep hero, telemetry strip, mission timeline, floating-beacon pricing passes, and a scroll-tracking signal bar | HTML, CSS, Vanilla JS, Canvas, self-hosted fonts |
 | [orbis-nft-landing](./landing-pages/orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
