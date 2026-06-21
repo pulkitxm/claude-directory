@@ -1,4 +1,4 @@
-# Sidi Bou Said — A Procedural 3D Walk Above the Gulf of Tunis
+# Sidi Bou Said — Procedural 3D Walkthrough Scene (Three.js + GLSL + HTML Canvas)
 
 A single-file Three.js scene that recreates the cliffside village of Sidi Bou Said, Tunisia, and lets you navigate its winding blue-and-white alleyway at eye level. Every texture and mesh is generated procedurally in-script — no external assets — so the whole thing runs from one copy-pasteable HTML file.
 
@@ -15,3 +15,6 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+

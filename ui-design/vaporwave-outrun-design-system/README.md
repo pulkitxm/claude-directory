@@ -1,11 +1,6 @@
-# NEONWAVE OS — Vaporwave / Outrun Design System
+# NEONWAVE OS — Vaporwave / Outrun Design System Landing Page (React + Vite + Tailwind CSS v4)
 
-A complete, polished landing page that fully expresses a **Vaporwave / Outrun
-design system**: digital nostalgia meets neon future. Hot magenta, electric cyan
-and a sunset gradient pierce an infinite perspective grid under CRT scanlines.
-Nothing is subtle — every element glows, skews, or pulses. The whole page reads
-like commanding a vintage terminal from the year 2088.
-
+A complete, polished landing page that fully expresses a **Vaporwave / Outrun design system**: digital nostalgia meets neon future. Hot magenta, electric cyan, and a sunset gradient pierce an infinite perspective grid under CRT scanlines — nothing is subtle, every element glows, skews, or pulses. The whole page reads like commanding a vintage terminal from the year 2088.
 
 ## What it demonstrates
 
@@ -70,3 +65,6 @@ npm run verify http://localhost:4173
 # Use a specific browser binary if needed:
 # CHROME_PATH=/path/to/chrome npm run verify http://localhost:4173
 ```
+
+---
+
