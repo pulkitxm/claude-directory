@@ -9,9 +9,9 @@ import {
 	TerminalSquare,
 	Wand2,
 } from "lucide-react";
-import { SplineSceneBasic } from "@/components/ui/demo";
-import { ScenePlayground } from "@/components/scene-playground";
 import { CodeBlock } from "@/components/code-block";
+import { ScenePlayground } from "@/components/scene-playground";
+import { SplineSceneBasic } from "@/components/ui/demo";
 
 /* ------------------------------------------------------------------ helpers */
 

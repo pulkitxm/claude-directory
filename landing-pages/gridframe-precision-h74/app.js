@@ -1,10 +1,8 @@
-(function () {
-	"use strict";
-
+(() => {
 	/* ---------- Scroll reveal ---------- */
 	var revealObs = new IntersectionObserver(
-		function (entries) {
-			entries.forEach(function (e) {
+		(entries) => {
+			entries.forEach((e) => {
 				if (e.isIntersecting) {
 					e.target.classList.add("in");
 					revealObs.unobserve(e.target);
@@ -13,7 +11,7 @@
 		},
 		{ threshold: 0.12 },
 	);
-	document.querySelectorAll("[data-reveal]").forEach(function (el) {
+	document.querySelectorAll("[data-reveal]").forEach((el) => {
 		revealObs.observe(el);
 	});
 
@@ -26,7 +24,7 @@
 		function step(t) {
 			if (!start) start = t;
 			var p = Math.min((t - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - p, 3);
+			var eased = 1 - (1 - p) ** 3;
 			el.textContent = (eased * target).toFixed(dec);
 			if (p < 1) requestAnimationFrame(step);
 			else el.textContent = target.toFixed(dec);
@@ -36,8 +34,8 @@
 	var impact = document.getElementById("impact");
 	if (impact) {
 		var statObs = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						impact.querySelectorAll("[data-count]").forEach(runCount);
 						statObs.unobserve(e.target);
@@ -120,21 +118,21 @@
 		if (!d) return;
 		mTitle.textContent = d.title;
 		mDesc.textContent = d.desc;
-		mImg.style.backgroundImage = "url('" + d.img + "')";
+		mImg.style.backgroundImage = `url('${d.img}')`;
 		c1t.textContent = d.c1t;
 		c2t.textContent = d.c2t;
 		fill(c1l, d.c1l);
 		fill(c2l, d.c2l);
 	}
 
-	document.querySelectorAll("[data-menu]").forEach(function (trig) {
-		trig.addEventListener("mouseenter", function () {
+	document.querySelectorAll("[data-menu]").forEach((trig) => {
+		trig.addEventListener("mouseenter", () => {
 			setMenu(trig.getAttribute("data-menu"));
 			mega.classList.add("open");
 		});
 	});
 	if (navWrap) {
-		navWrap.addEventListener("mouseleave", function () {
+		navWrap.addEventListener("mouseleave", () => {
 			mega.classList.remove("open");
 		});
 	}
@@ -144,32 +142,32 @@
 		mClose = document.getElementById("mClose"),
 		mobileMenu = document.getElementById("mobileMenu");
 	if (burger)
-		burger.addEventListener("click", function () {
+		burger.addEventListener("click", () => {
 			mobileMenu.classList.add("open");
 		});
 	if (mClose)
-		mClose.addEventListener("click", function () {
+		mClose.addEventListener("click", () => {
 			mobileMenu.classList.remove("open");
 		});
-	mobileMenu.querySelectorAll("a").forEach(function (a) {
-		a.addEventListener("click", function () {
+	mobileMenu.querySelectorAll("a").forEach((a) => {
+		a.addEventListener("click", () => {
 			mobileMenu.classList.remove("open");
 		});
 	});
 
 	/* ---------- FAQ accordion ---------- */
-	document.querySelectorAll(".acc-trig").forEach(function (trig) {
-		trig.addEventListener("click", function () {
+	document.querySelectorAll(".acc-trig").forEach((trig) => {
+		trig.addEventListener("click", () => {
 			var item = trig.parentElement;
 			var body = item.querySelector(".acc-body");
 			var isOpen = item.classList.contains("open");
-			document.querySelectorAll(".acc-item").forEach(function (it) {
+			document.querySelectorAll(".acc-item").forEach((it) => {
 				it.classList.remove("open");
 				it.querySelector(".acc-body").style.maxHeight = null;
 			});
 			if (!isOpen) {
 				item.classList.add("open");
-				body.style.maxHeight = body.scrollHeight + "px";
+				body.style.maxHeight = `${body.scrollHeight}px`;
 			}
 		});
 	});

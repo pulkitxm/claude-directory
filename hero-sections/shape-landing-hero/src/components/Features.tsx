@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Layers, Wand2, Smartphone, PackageOpen } from "lucide-react";
+import { Layers, PackageOpen, Smartphone, Wand2 } from "lucide-react";
 
 const FEATURES = [
 	{

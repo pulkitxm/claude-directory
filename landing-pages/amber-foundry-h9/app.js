@@ -1,19 +1,18 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---------- scroll reveal ---------- */
 	function initReveal() {
 		var els = document.querySelectorAll("[data-reveal]");
 		if (reduce || !("IntersectionObserver" in window)) {
-			els.forEach(function (e) {
+			els.forEach((e) => {
 				e.classList.add("show");
 			});
 			return;
 		}
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (en) {
+			(entries) => {
+				entries.forEach((en) => {
 					if (en.isIntersecting) {
 						en.target.classList.add("show");
 						io.unobserve(en.target);
@@ -22,7 +21,7 @@
 			},
 			{ threshold: 0.12 },
 		);
-		els.forEach(function (e) {
+		els.forEach((e) => {
 			io.observe(e);
 		});
 	}
@@ -38,10 +37,10 @@
 
 		function set(i) {
 			active = i;
-			steps.forEach(function (s, k) {
+			steps.forEach((s, k) => {
 				s.classList.toggle("active", k === i);
 			});
-			mocks.forEach(function (m, k) {
+			mocks.forEach((m, k) => {
 				m.classList.toggle("show", k === i);
 			});
 		}
@@ -59,7 +58,7 @@
 		function schedule() {
 			if (reduce) return;
 			clearTimeout(timer);
-			timer = setTimeout(function () {
+			timer = setTimeout(() => {
 				go((active + 1) % steps.length);
 			}, DURATION);
 		}
@@ -69,8 +68,8 @@
 			schedule();
 		}
 
-		steps.forEach(function (s, i) {
-			s.addEventListener("click", function () {
+		steps.forEach((s, i) => {
+			s.addEventListener("click", () => {
 				go(i);
 			});
 		});
@@ -81,12 +80,12 @@
 	/* ---------- faq accordion ---------- */
 	function initFaq() {
 		var items = Array.prototype.slice.call(document.querySelectorAll(".fitem"));
-		items.forEach(function (item) {
+		items.forEach((item) => {
 			var btn = item.querySelector(".fq");
 			var body = item.querySelector(".fa");
-			btn.addEventListener("click", function () {
+			btn.addEventListener("click", () => {
 				var open = item.classList.contains("open");
-				items.forEach(function (o) {
+				items.forEach((o) => {
 					o.classList.remove("open");
 					var b = o.querySelector(".fa");
 					b.style.maxHeight = "0px";
@@ -94,7 +93,7 @@
 				});
 				if (!open) {
 					item.classList.add("open");
-					body.style.maxHeight = body.scrollHeight + "px";
+					body.style.maxHeight = `${body.scrollHeight}px`;
 					body.style.opacity = "1";
 				}
 			});
@@ -153,9 +152,7 @@
 						dy = nodes[i].y - nodes[j].y;
 					dlist.push({ j: j, d: dx * dx + dy * dy });
 				}
-				dlist.sort(function (a, b) {
-					return a.d - b.d;
-				});
+				dlist.sort((a, b) => a.d - b.d);
 				var k = 2 + (Math.random() < 0.3 ? 1 : 0);
 				for (var m = 0; m < k && m < dlist.length; m++) {
 					var jj = dlist[m].j;
@@ -222,11 +219,11 @@
 			for (var n = 0; n < nodes.length; n++) {
 				var nd = nodes[n];
 				var pulse = 0.55 + 0.45 * Math.sin(t * nd.sp + nd.ph);
-				ctx.fillStyle = "rgba(218,182,151," + (0.25 + pulse * 0.55) + ")";
+				ctx.fillStyle = `rgba(218,182,151,${0.25 + pulse * 0.55})`;
 				ctx.beginPath();
 				ctx.arc(nd.x, nd.y, nd.r + pulse * 1.4, 0, Math.PI * 2);
 				ctx.fill();
-				ctx.fillStyle = "rgba(43,24,10," + (0.3 + pulse * 0.4) + ")";
+				ctx.fillStyle = `rgba(43,24,10,${0.3 + pulse * 0.4})`;
 				ctx.beginPath();
 				ctx.arc(nd.x, nd.y, nd.r * 0.45, 0, Math.PI * 2);
 				ctx.fill();
@@ -253,7 +250,7 @@
 		window.addEventListener("resize", resize);
 		if ("IntersectionObserver" in window) {
 			new IntersectionObserver(
-				function (e) {
+				(e) => {
 					e[0].isIntersecting ? start() : stop();
 				},
 				{ threshold: 0.05 },
@@ -265,14 +262,14 @@
 
 	/* ---------- dispatch demo ---------- */
 	function initDispatch() {
-		document.querySelectorAll("[data-no-submit]").forEach(function (f) {
-			f.addEventListener("submit", function (e) {
+		document.querySelectorAll("[data-no-submit]").forEach((f) => {
+			f.addEventListener("submit", (e) => {
 				e.preventDefault();
 			});
 		});
 	}
 
-	document.addEventListener("DOMContentLoaded", function () {
+	document.addEventListener("DOMContentLoaded", () => {
 		initReveal();
 		initSolutions();
 		initFaq();

@@ -1,4 +1,3 @@
-import { useCallback, useRef, useState } from "react";
 import {
 	ArrowUpRight,
 	Box,
@@ -10,12 +9,13 @@ import {
 	Terminal,
 	Waves,
 } from "lucide-react";
+import { useCallback, useRef, useState } from "react";
+import { ChannelScope } from "@/components/channel-scope";
+import { CodeBlock } from "@/components/code-block";
 import {
 	ShaderAnimation,
 	type ShaderFrame,
 } from "@/components/ui/shader-animation";
-import { ChannelScope } from "@/components/channel-scope";
-import { CodeBlock } from "@/components/code-block";
 import DemoOne from "@/demo";
 import {
 	DEMO_SOURCE,

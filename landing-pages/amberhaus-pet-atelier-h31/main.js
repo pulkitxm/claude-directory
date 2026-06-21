@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
 	/* ---------- menu ---------- */
-	const menuBtn = document.getElementById("menuBtn");
+	const _menuBtn = document.getElementById("menuBtn");
 	const navBox = document.getElementById("navBox");
 	const bar1 = document.getElementById("bar1"),
 		bar2 = document.getElementById("bar2");

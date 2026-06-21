@@ -1,6 +1,5 @@
 /* FreightLeaf — Clean Haul interactions */
-(function () {
-	"use strict";
+(() => {
 	const reduceMotion = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
 	).matches;
@@ -71,7 +70,7 @@
 		const start = performance.now();
 		function frame(now) {
 			const p = Math.min((now - start) / dur, 1);
-			const eased = 1 - Math.pow(1 - p, 3);
+			const eased = 1 - (1 - p) ** 3;
 			el.textContent = (target * eased).toFixed(decimals) + suffix;
 			if (p < 1) requestAnimationFrame(frame);
 			else el.textContent = target.toFixed(decimals) + suffix;

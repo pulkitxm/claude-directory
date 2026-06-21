@@ -1,6 +1,4 @@
-(function () {
-	"use strict";
-
+(() => {
 	// ---- Menu overlay ----
 	var burger = document.getElementById("burger");
 	var overlay = document.getElementById("overlay");
@@ -15,15 +13,15 @@
 		document.body.style.overflow = open ? "hidden" : "";
 	}
 
-	burger.addEventListener("click", function () {
+	burger.addEventListener("click", () => {
 		setMenu(!isOpen);
 	});
-	overlay.querySelectorAll("[data-close]").forEach(function (a) {
-		a.addEventListener("click", function () {
+	overlay.querySelectorAll("[data-close]").forEach((a) => {
+		a.addEventListener("click", () => {
 			setMenu(false);
 		});
 	});
-	document.addEventListener("keydown", function (e) {
+	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape" && isOpen) setMenu(false);
 	});
 
@@ -31,8 +29,8 @@
 	var reveals = document.querySelectorAll(".reveal");
 	if ("IntersectionObserver" in window) {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (entry) {
+			(entries) => {
+				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						entry.target.classList.add("in");
 						io.unobserve(entry.target);
@@ -41,11 +39,11 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			io.observe(el);
 		});
 	} else {
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			el.classList.add("in");
 		});
 	}
@@ -53,19 +51,19 @@
 	// ---- Form ----
 	var form = document.getElementById("enquiry");
 	if (form) {
-		form.addEventListener("submit", function (e) {
+		form.addEventListener("submit", (e) => {
 			e.preventDefault();
 			var btn = form.querySelector(".submit");
 			if (btn.classList.contains("done")) return;
 			var original = btn.textContent;
 			btn.textContent = "Sending…";
 			btn.disabled = true;
-			setTimeout(function () {
+			setTimeout(() => {
 				btn.textContent = "Enquiry Received →";
 				btn.classList.add("done");
 				btn.disabled = false;
 				form.reset();
-				setTimeout(function () {
+				setTimeout(() => {
 					btn.textContent = original;
 					btn.classList.remove("done");
 				}, 3200);

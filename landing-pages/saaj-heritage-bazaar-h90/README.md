@@ -1,4 +1,4 @@
-# Saaj Heritage — Handcrafted Indian Furniture
+# Saaj Heritage — Handcrafted Indian Furniture D2C Landing Page (Vanilla HTML/CSS/JS)
 
 A multi-section marketing and commerce landing page for Saaj Heritage, a fictional direct-to-consumer Indian solid-wood furniture house rooted in Rajasthan. The named aesthetic is "Heritage Bazaar Editorial" — a warm, artisanal storefront that reads like a printed heritage catalog crossed with a modern D2C site: cream paper canvas, sandstone hairlines, a deep burnt-sienna brand color, hard square corners, and confident editorial type (Inter Tight, Playfair Display).
 
@@ -13,3 +13,6 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+

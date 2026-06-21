@@ -1,6 +1,4 @@
-(function () {
-	"use strict";
-
+(() => {
 	/* ---------- Marquee ---------- */
 	var words = [
 		"Full Groom",
@@ -16,8 +14,8 @@
 	if (marquee) {
 		var line = "";
 		for (var i = 0; i < 2; i++) {
-			words.forEach(function (w) {
-				line += "<span>" + w + ' <span class="star">✦</span></span>';
+			words.forEach((w) => {
+				line += `<span>${w} <span class="star">✦</span></span>`;
 			});
 		}
 		marquee.innerHTML = line;
@@ -97,7 +95,7 @@
 	function rowHtml(list, dir) {
 		var inner = list.map(cardHtml).join("");
 		// duplicate for seamless loop
-		return '<div class="t-row ' + dir + '">' + inner + inner + "</div>";
+		return `<div class="t-row ${dir}">${inner}${inner}</div>`;
 	}
 
 	var rows = document.getElementById("t-rows");
@@ -109,13 +107,13 @@
 	var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	var revealEls = document.querySelectorAll("[data-reveal], [data-stagger]");
 	if (reduced || !("IntersectionObserver" in window)) {
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
 		var obs = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						obs.unobserve(e.target);
@@ -124,7 +122,7 @@
 			},
 			{ threshold: 0.12 },
 		);
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			obs.observe(el);
 		});
 	}
@@ -139,15 +137,15 @@
 		document.body.style.overflow = open ? "hidden" : "";
 	}
 	if (openBtn)
-		openBtn.addEventListener("click", function () {
+		openBtn.addEventListener("click", () => {
 			setMenu(true);
 		});
 	if (closeBtn)
-		closeBtn.addEventListener("click", function () {
+		closeBtn.addEventListener("click", () => {
 			setMenu(false);
 		});
-	document.querySelectorAll("[data-mnav]").forEach(function (a) {
-		a.addEventListener("click", function () {
+	document.querySelectorAll("[data-mnav]").forEach((a) => {
+		a.addEventListener("click", () => {
 			setMenu(false);
 		});
 	});
@@ -155,17 +153,17 @@
 	/* ---------- Booking form ---------- */
 	var form = document.getElementById("booking-form");
 	if (form) {
-		form.addEventListener("submit", function (e) {
+		form.addEventListener("submit", (e) => {
 			e.preventDefault();
 			var btn = form.querySelector(".submit");
 			var original = btn.textContent;
 			btn.textContent = "Sending Request…";
 			btn.disabled = true;
-			setTimeout(function () {
+			setTimeout(() => {
 				btn.textContent = "Request Sent!";
 				btn.classList.add("ok");
 				form.reset();
-				setTimeout(function () {
+				setTimeout(() => {
 					btn.textContent = original;
 					btn.classList.remove("ok");
 					btn.disabled = false;
@@ -177,15 +175,15 @@
 	/* ---------- Newsletter ---------- */
 	var news = document.getElementById("news-form");
 	if (news) {
-		news.addEventListener("submit", function (e) {
+		news.addEventListener("submit", (e) => {
 			e.preventDefault();
 			var btn = news.querySelector("button");
 			var original = btn.textContent;
 			btn.textContent = "Checking…";
-			setTimeout(function () {
+			setTimeout(() => {
 				btn.textContent = "You're In!";
 				news.reset();
-				setTimeout(function () {
+				setTimeout(() => {
 					btn.textContent = original;
 				}, 2600);
 			}, 900);

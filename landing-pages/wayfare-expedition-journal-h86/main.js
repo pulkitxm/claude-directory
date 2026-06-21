@@ -1,5 +1,4 @@
-(function () {
-	"use strict";
+(() => {
 	const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---------- Expedition data ---------- */
@@ -181,15 +180,14 @@
 	} else {
 		const io = new IntersectionObserver(
 			(entries, obs) => {
-				entries.forEach((en, i) => {
+				entries.forEach((en, _i) => {
 					if (en.isIntersecting) {
 						const sibs = [
 							...en.target.parentElement.querySelectorAll(
 								":scope > [data-reveal]",
 							),
 						];
-						en.target.style.transitionDelay =
-							Math.max(0, sibs.indexOf(en.target)) * 80 + "ms";
+						en.target.style.transitionDelay = `${Math.max(0, sibs.indexOf(en.target)) * 80}ms`;
 						en.target.classList.add("in");
 						obs.unobserve(en.target);
 					}
@@ -213,7 +211,7 @@
 			dur = 1500;
 		const step = (now) => {
 			const p = Math.min((now - start) / dur, 1);
-			const eased = 1 - Math.pow(1 - p, 3);
+			const eased = 1 - (1 - p) ** 3;
 			el.textContent = fmt(Math.round(target * eased));
 			if (p < 1) requestAnimationFrame(step);
 		};

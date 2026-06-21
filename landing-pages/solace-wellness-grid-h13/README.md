@@ -1,4 +1,4 @@
-# Solace — Holistic Wellness
+# Solace — Holistic Wellness Studio Landing Page (Vanilla HTML/CSS/JS + Bento Grid)
 
 A single-page marketing landing site for "Solace", a fictional modern holistic wellness studio. The named aesthetic is "Quiet Luxury Wellness" — a warm, sun-washed editorial-magazine feel built on an asymmetric bento color-block grid: flat matte panels in an earthy palette butting against each other with hairline gutters, oversized light-weight display type, and generous negative space.
 
@@ -13,3 +13,6 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+

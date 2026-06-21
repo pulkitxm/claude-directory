@@ -1,10 +1,8 @@
-(function () {
-	"use strict";
-
+(() => {
 	// ---- Scroll reveal ----
 	var observer = new IntersectionObserver(
-		function (entries) {
-			entries.forEach(function (entry) {
+		(entries) => {
+			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					entry.target.classList.add("visible");
 					observer.unobserve(entry.target);
@@ -14,7 +12,7 @@
 		{ threshold: 0.05, rootMargin: "0px 0px -40px 0px" },
 	);
 
-	document.querySelectorAll(".reveal").forEach(function (el) {
+	document.querySelectorAll(".reveal").forEach((el) => {
 		observer.observe(el);
 	});
 
@@ -38,16 +36,16 @@
 		void on.offsetWidth;
 		on.classList.add("fade-in");
 		// ensure rows are visible (they may not have intersected yet)
-		on.querySelectorAll(".reveal").forEach(function (el) {
+		on.querySelectorAll(".reveal").forEach((el) => {
 			el.classList.add("visible");
 		});
 	}
 
 	if (btn1 && btn2) {
-		btn1.addEventListener("click", function () {
+		btn1.addEventListener("click", () => {
 			showDay(1);
 		});
-		btn2.addEventListener("click", function () {
+		btn2.addEventListener("click", () => {
 			showDay(2);
 		});
 	}
@@ -56,11 +54,11 @@
 	var ham = document.getElementById("hamburger");
 	var menu = document.getElementById("mobileMenu");
 	if (ham && menu) {
-		ham.addEventListener("click", function () {
+		ham.addEventListener("click", () => {
 			menu.style.display = menu.style.display === "block" ? "none" : "block";
 		});
-		menu.querySelectorAll("a").forEach(function (a) {
-			a.addEventListener("click", function () {
+		menu.querySelectorAll("a").forEach((a) => {
+			a.addEventListener("click", () => {
 				menu.style.display = "none";
 			});
 		});

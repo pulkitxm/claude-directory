@@ -1,5 +1,5 @@
 // ---------- scroll reveal ----------
-(function () {
+(() => {
 	const els = document.querySelectorAll(".reveal");
 	if (!("IntersectionObserver" in window)) {
 		els.forEach((e) => e.classList.add("in"));
@@ -20,7 +20,7 @@
 })();
 
 // ---------- testimonials carousel ----------
-(function () {
+(() => {
 	const data = [
 		{
 			img: "avatar1.jpg",

@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (348)
+## Projects (349)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -425,12 +425,13 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Studies (1)</b></summary>
+<summary><b>Studies (2)</b></summary>
 
 Faithful, same-to-same clones of existing UI templates, rebuilt from recon as self-contained plain HTML/CSS/JS for study. Each credits its original designer.
 
 | Project | Description | Stack |
-| --- | --- | --- |
+|---------|-------------|-------|
+| [finorio-saas-landing](./studies/finorio-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Stack Sans Text |
 | [productized-agency-aceternity](./studies/productized-agency-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 
 </details>

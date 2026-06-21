@@ -1,10 +1,10 @@
 import { Check } from "lucide-react";
-import { Reveal } from "./Reveal";
+import { useReducedMotion } from "../hooks/useReducedMotion";
+import { benefits } from "../lib/content";
+import { SteamingCup } from "./Botanical";
 import { Button } from "./Button";
 import { Eyebrow } from "./Eyebrow";
-import { SteamingCup } from "./Botanical";
-import { benefits } from "../lib/content";
-import { useReducedMotion } from "../hooks/useReducedMotion";
+import { Reveal } from "./Reveal";
 
 /**
  * A reasons-to-believe section on a deep moss field — one of the design

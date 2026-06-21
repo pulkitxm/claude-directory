@@ -1,6 +1,4 @@
 (() => {
-	"use strict";
-
 	/* ---------- Systems grid ---------- */
 	const systems = [
 		{
@@ -139,14 +137,14 @@
 			start = performance.now();
 		function step(now) {
 			const p = Math.min((now - start) / dur, 1);
-			const e = 1 - Math.pow(1 - p, 3);
+			const e = 1 - (1 - p) ** 3;
 			const cur = Math.floor(e * target);
 			el.textContent =
-				(kfmt ? Math.round(cur / 1000) + "k" : cur.toLocaleString()) + suffix;
+				(kfmt ? `${Math.round(cur / 1000)}k` : cur.toLocaleString()) + suffix;
 			if (p < 1) requestAnimationFrame(step);
 			else
 				el.textContent =
-					(kfmt ? Math.round(target / 1000) + "k" : target.toLocaleString()) +
+					(kfmt ? `${Math.round(target / 1000)}k` : target.toLocaleString()) +
 					suffix;
 		}
 		requestAnimationFrame(step);

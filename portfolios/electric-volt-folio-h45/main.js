@@ -1,5 +1,4 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	// ---- nav scroll state ----
@@ -21,11 +20,11 @@
 		btn.textContent = open ? "Close" : "Menu";
 		document.body.style.overflow = open ? "hidden" : "";
 	}
-	btn.addEventListener("click", function () {
+	btn.addEventListener("click", () => {
 		setMenu(!overlay.classList.contains("open"));
 	});
-	overlay.querySelectorAll(".overlay__link").forEach(function (a) {
-		a.addEventListener("click", function () {
+	overlay.querySelectorAll(".overlay__link").forEach((a) => {
+		a.addEventListener("click", () => {
 			setMenu(false);
 		});
 	});
@@ -33,13 +32,13 @@
 	// ---- reveal on scroll ----
 	var revs = document.querySelectorAll(".reveal");
 	if (reduce || !("IntersectionObserver" in window)) {
-		revs.forEach(function (r) {
+		revs.forEach((r) => {
 			r.classList.add("in");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						io.unobserve(e.target);
@@ -48,7 +47,7 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
-		revs.forEach(function (r) {
+		revs.forEach((r) => {
 			io.observe(r);
 		});
 	}
@@ -65,7 +64,7 @@
 			dur = 1400;
 		function tick(now) {
 			var p = Math.min((now - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - p, 3);
+			var eased = 1 - (1 - p) ** 3;
 			el.textContent = Math.round(target * eased);
 			if (p < 1) requestAnimationFrame(tick);
 			else el.textContent = target;
@@ -76,8 +75,8 @@
 		nums.forEach(animateNum);
 	} else {
 		var sio = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						animateNum(e.target);
 						sio.unobserve(e.target);
@@ -86,7 +85,7 @@
 			},
 			{ threshold: 0.5 },
 		);
-		nums.forEach(function (n) {
+		nums.forEach((n) => {
 			sio.observe(n);
 		});
 	}

@@ -1,10 +1,10 @@
 "use client";
 
 import {
-	Suspense,
-	lazy,
 	Component,
+	lazy,
 	type ReactNode,
+	Suspense,
 	useEffect,
 	useState,
 } from "react";
@@ -75,7 +75,7 @@ export function SplineScene({ scene, className, fallback }: SplineSceneProps) {
 			void probe;
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [scene]);
+	}, [scene, reachable]);
 
 	// Safety net: even when reachable, if the scene never finishes loading, fall
 	// back rather than hang on the spinner.

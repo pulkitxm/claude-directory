@@ -1,5 +1,4 @@
-"use strict";
-(function () {
+(() => {
 	const reduceMotion = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
 	).matches;
@@ -114,7 +113,7 @@
 			start = performance.now();
 		function step(now) {
 			const p = Math.min((now - start) / dur, 1);
-			const eased = 1 - Math.pow(1 - p, 3);
+			const eased = 1 - (1 - p) ** 3;
 			el.textContent = format(to * eased, dec, suffix);
 			if (p < 1) requestAnimationFrame(step);
 			else el.textContent = format(to, dec, suffix);
@@ -179,7 +178,7 @@
 				edgesG.appendChild(l);
 			});
 		});
-		nodes.forEach((n, i) => {
+		nodes.forEach((n, _i) => {
 			const c = document.createElementNS(NS, "circle");
 			c.setAttribute("cx", n.x);
 			c.setAttribute("cy", n.y);
@@ -188,9 +187,9 @@
 				const a = document.createElementNS(NS, "animate");
 				a.setAttribute("attributeName", "r");
 				a.setAttribute("values", "2.4;3.6;2.4");
-				a.setAttribute("dur", (1.8 + Math.random() * 1.4).toFixed(2) + "s");
+				a.setAttribute("dur", `${(1.8 + Math.random() * 1.4).toFixed(2)}s`);
 				a.setAttribute("repeatCount", "indefinite");
-				a.setAttribute("begin", Math.random().toFixed(2) + "s");
+				a.setAttribute("begin", `${Math.random().toFixed(2)}s`);
 				c.appendChild(a);
 			}
 			nodesG.appendChild(c);

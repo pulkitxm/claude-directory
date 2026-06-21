@@ -1,5 +1,4 @@
-(function () {
-	"use strict";
+(() => {
 	var reduceMotion = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
 	).matches;
@@ -7,13 +6,13 @@
 	// ---- Scroll reveal ----
 	var reveals = document.querySelectorAll(".reveal");
 	if (reduceMotion || !("IntersectionObserver" in window)) {
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						io.unobserve(e.target);
@@ -22,7 +21,7 @@
 			},
 			{ threshold: 0.12 },
 		);
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -41,7 +40,7 @@
 		function step(ts) {
 			if (start === null) start = ts;
 			var p = Math.min((ts - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - p, 3);
+			var eased = 1 - (1 - p) ** 3;
 			el.textContent = Math.round(eased * target) + suffix;
 			if (p < 1) requestAnimationFrame(step);
 		}
@@ -49,8 +48,8 @@
 	}
 	if ("IntersectionObserver" in window) {
 		var cio = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						animateCount(e.target);
 						cio.unobserve(e.target);
@@ -59,7 +58,7 @@
 			},
 			{ threshold: 0.6 },
 		);
-		counters.forEach(function (el) {
+		counters.forEach((el) => {
 			cio.observe(el);
 		});
 	} else {
@@ -67,7 +66,7 @@
 	}
 
 	// ---- Smooth anchor scroll with header offset ----
-	document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+	document.querySelectorAll('a[href^="#"]').forEach((a) => {
 		a.addEventListener("click", function (e) {
 			var id = this.getAttribute("href");
 			if (id === "#" || id.length < 2) return;
@@ -85,12 +84,12 @@
 		var ticking = false;
 		window.addEventListener(
 			"scroll",
-			function () {
+			() => {
 				if (ticking) return;
 				ticking = true;
-				requestAnimationFrame(function () {
+				requestAnimationFrame(() => {
 					var y = window.pageYOffset * 0.08;
-					wedge.style.transform = "rotate(15deg) translateY(" + y + "px)";
+					wedge.style.transform = `rotate(15deg) translateY(${y}px)`;
 					ticking = false;
 				});
 			},

@@ -218,22 +218,22 @@
 
 <script>
   // Scroll reveal
-  (function(){
+  (()=> {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var els = document.querySelectorAll('.reveal');
-    if(reduce || !('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    if(reduce || !('IntersectionObserver' in window)){ els.forEach((e)=> {e.classList.add('in');}); return; }
+    var io = new IntersectionObserver((entries)=> {
+      entries.forEach((en)=> { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { threshold: 0.12 });
-    els.forEach(function(e){ io.observe(e); });
+    els.forEach((e)=> { io.observe(e); });
   })();
 
   // Mobile menu (simple anchor reveal)
-  (function(){
+  (()=> {
     var btn = document.getElementById('menuBtn');
     if(!btn) return;
     var links = document.querySelector('.nav-links');
-    btn.addEventListener('click', function(){
+    btn.addEventListener('click', ()=> {
       var open = links.style.display === 'flex';
       links.style.display = open ? '' : 'flex';
       if(!open){ links.style.position='absolute'; links.style.flexDirection='column'; links.style.top='64px'; links.style.left='0'; links.style.right='0'; links.style.background='var(--paper)'; links.style.borderBottom='1px solid var(--line)'; links.style.padding='18px 24px'; links.style.gap='14px'; }

@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 			if (!isOpen) {
 				item.classList.add("open");
-				a.style.maxHeight = a.scrollHeight + "px";
+				a.style.maxHeight = `${a.scrollHeight}px`;
 			}
 		});
 	});
@@ -136,8 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (wm && mask && reveal) {
 		wm.addEventListener("mousemove", (e) => {
 			const r = wm.getBoundingClientRect();
-			mask.style.setProperty("--x", e.clientX - r.left + "px");
-			mask.style.setProperty("--y", e.clientY - r.top + "px");
+			mask.style.setProperty("--x", `${e.clientX - r.left}px`);
+			mask.style.setProperty("--y", `${e.clientY - r.top}px`);
 		});
 		wm.addEventListener("mouseenter", () => {
 			ci = (ci + 1) % palette.length;

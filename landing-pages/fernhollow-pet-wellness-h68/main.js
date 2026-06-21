@@ -1,17 +1,16 @@
-(function () {
-	"use strict";
+(() => {
 	var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- scroll reveals ---- */
 	var revealEls = document.querySelectorAll(".reveal");
 	if (reduced) {
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			el.classList.add("is-visible");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("is-visible");
 						io.unobserve(e.target);
@@ -20,7 +19,7 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -38,7 +37,7 @@
 		function step(ts) {
 			if (start === null) start = ts;
 			var p = Math.min((ts - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - p, 3);
+			var eased = 1 - (1 - p) ** 3;
 			el.textContent = Math.round(target * eased);
 			if (p < 1) requestAnimationFrame(step);
 			else el.textContent = target;
@@ -46,8 +45,8 @@
 		requestAnimationFrame(step);
 	}
 	var cio = new IntersectionObserver(
-		function (entries) {
-			entries.forEach(function (e) {
+		(entries) => {
+			entries.forEach((e) => {
 				if (e.isIntersecting) {
 					runCounter(e.target);
 					cio.unobserve(e.target);
@@ -56,7 +55,7 @@
 		},
 		{ threshold: 0.6 },
 	);
-	counters.forEach(function (el) {
+	counters.forEach((el) => {
 		cio.observe(el);
 	});
 
@@ -78,11 +77,10 @@
 	}
 	if (burger) burger.addEventListener("click", openMenu);
 	if (close) close.addEventListener("click", closeMenu);
-	menu &&
-		menu.querySelectorAll("a").forEach(function (a) {
-			a.addEventListener("click", closeMenu);
-		});
-	document.addEventListener("keydown", function (e) {
+	menu?.querySelectorAll("a").forEach((a) => {
+		a.addEventListener("click", closeMenu);
+	});
+	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape") closeMenu();
 	});
 
@@ -91,20 +89,18 @@
 		document.querySelectorAll(".nav__pills .pill"),
 	);
 	var sectionMap = pills
-		.map(function (p) {
+		.map((p) => {
 			var id = p.getAttribute("href").replace("#", "");
 			return { pill: p, el: document.getElementById(id) };
 		})
-		.filter(function (m) {
-			return m.el;
-		});
+		.filter((m) => m.el);
 	function syncPills() {
 		var y = window.scrollY + 140;
 		var current = sectionMap[0];
-		sectionMap.forEach(function (m) {
+		sectionMap.forEach((m) => {
 			if (m.el.offsetTop <= y) current = m;
 		});
-		pills.forEach(function (p) {
+		pills.forEach((p) => {
 			p.classList.remove("is-active");
 		});
 		if (current) current.pill.classList.add("is-active");
@@ -117,15 +113,15 @@
 	function setHeight(acc) {
 		var body = acc.querySelector(".acc__a");
 		body.style.maxHeight = acc.classList.contains("is-open")
-			? body.scrollHeight + "px"
+			? `${body.scrollHeight}px`
 			: "0px";
 	}
-	accs.forEach(function (acc) {
+	accs.forEach((acc) => {
 		var btn = acc.querySelector(".acc__q");
 		setHeight(acc);
-		btn.addEventListener("click", function () {
+		btn.addEventListener("click", () => {
 			var willOpen = !acc.classList.contains("is-open");
-			accs.forEach(function (a) {
+			accs.forEach((a) => {
 				a.classList.remove("is-open");
 				a.querySelector(".acc__q").setAttribute("aria-expanded", "false");
 				setHeight(a);
@@ -137,8 +133,8 @@
 			}
 		});
 	});
-	window.addEventListener("resize", function () {
-		accs.forEach(function (a) {
+	window.addEventListener("resize", () => {
+		accs.forEach((a) => {
 			if (a.classList.contains("is-open")) setHeight(a);
 		});
 	});
@@ -146,7 +142,7 @@
 	/* ---- newsletter ---- */
 	var form = document.getElementById("newsletter");
 	if (form) {
-		form.addEventListener("submit", function (e) {
+		form.addEventListener("submit", (e) => {
 			e.preventDefault();
 			var input = form.querySelector("input");
 			if (!input.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {

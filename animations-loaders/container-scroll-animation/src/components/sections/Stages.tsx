@@ -1,9 +1,9 @@
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import {
 	DashboardMockup,
 	EditorMockup,
 	KanbanMockup,
 } from "@/components/mockups";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 type Stage = {
 	id: string;

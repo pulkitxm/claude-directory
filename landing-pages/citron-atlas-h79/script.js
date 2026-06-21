@@ -1,10 +1,9 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- Seamless marquee: duplicate track content so the -50% loop is gapless ---- */
 	if (!reduce) {
-		document.querySelectorAll("[data-marquee]").forEach(function (m) {
+		document.querySelectorAll("[data-marquee]").forEach((m) => {
 			var track = m.querySelector(".marquee-track");
 			if (track) track.innerHTML += track.innerHTML;
 		});
@@ -21,32 +20,32 @@
 		document.body.style.overflow = open ? "hidden" : "";
 	}
 	if (openBtn)
-		openBtn.addEventListener("click", function () {
+		openBtn.addEventListener("click", () => {
 			setMenu(true);
 		});
 	if (closeBtn)
-		closeBtn.addEventListener("click", function () {
+		closeBtn.addEventListener("click", () => {
 			setMenu(false);
 		});
-	document.querySelectorAll(".mm-link, .mm-cta").forEach(function (l) {
-		l.addEventListener("click", function () {
+	document.querySelectorAll(".mm-link, .mm-cta").forEach((l) => {
+		l.addEventListener("click", () => {
 			setMenu(false);
 		});
 	});
-	document.addEventListener("keydown", function (e) {
+	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape") setMenu(false);
 	});
 
 	/* ---- Scroll reveal ---- */
 	var revealEls = document.querySelectorAll(".reveal");
 	if (reduce || !("IntersectionObserver" in window)) {
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (en) {
+			(entries) => {
+				entries.forEach((en) => {
 					if (en.isIntersecting) {
 						en.target.classList.add("in");
 						io.unobserve(en.target);
@@ -55,7 +54,7 @@
 			},
 			{ threshold: 0.12 },
 		);
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -66,43 +65,40 @@
 		var prev = document.getElementById(prevId);
 		var next = document.getElementById(nextId);
 		if (!track) return;
-		var amount =
-			step ||
-			function () {
-				return track.clientWidth;
-			};
+		var amount = step || (() => track.clientWidth);
 		if (prev)
-			prev.addEventListener("click", function () {
+			prev.addEventListener("click", () => {
 				track.scrollBy({
 					left: -(typeof amount === "function" ? amount() : amount),
 					behavior: "smooth",
 				});
 			});
 		if (next)
-			next.addEventListener("click", function () {
+			next.addEventListener("click", () => {
 				track.scrollBy({
 					left: typeof amount === "function" ? amount() : amount,
 					behavior: "smooth",
 				});
 			});
 	}
-	wireSlider("indTrack", "indPrev", "indNext", function () {
-		return 420;
-	});
-	wireSlider("caseTrack", "casePrev", "caseNext", function () {
-		return document.getElementById("caseTrack").clientWidth;
-	});
+	wireSlider("indTrack", "indPrev", "indNext", () => 420);
+	wireSlider(
+		"caseTrack",
+		"casePrev",
+		"caseNext",
+		() => document.getElementById("caseTrack").clientWidth,
+	);
 
 	/* ---- Services accordion + pane swap ---- */
 	var tabs = document.querySelectorAll(".svc-tab");
 	var panes = document.querySelectorAll(".svc-pane");
-	tabs.forEach(function (tab) {
-		tab.addEventListener("click", function () {
+	tabs.forEach((tab) => {
+		tab.addEventListener("click", () => {
 			var target = tab.getAttribute("data-target");
-			tabs.forEach(function (t) {
+			tabs.forEach((t) => {
 				t.classList.toggle("is-open", t === tab);
 			});
-			panes.forEach(function (p) {
+			panes.forEach((p) => {
 				p.classList.toggle("is-active", p.getAttribute("data-pane") === target);
 			});
 		});
@@ -122,7 +118,7 @@
 		function frame(ts) {
 			if (!start) start = ts;
 			var p = Math.min((ts - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - p, 3);
+			var eased = 1 - (1 - p) ** 3;
 			el.textContent = Math.round(eased * target) + suffix;
 			if (p < 1) requestAnimationFrame(frame);
 		}
@@ -132,8 +128,8 @@
 		stats.forEach(countUp);
 	} else {
 		var sio = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (en) {
+			(entries) => {
+				entries.forEach((en) => {
 					if (en.isIntersecting) {
 						countUp(en.target);
 						sio.unobserve(en.target);
@@ -142,7 +138,7 @@
 			},
 			{ threshold: 0.6 },
 		);
-		stats.forEach(function (s) {
+		stats.forEach((s) => {
 			sio.observe(s);
 		});
 	}
@@ -151,10 +147,10 @@
 	var trigger = document.querySelector(".ncap-trigger");
 	var dd = document.querySelector(".ncap-dd");
 	if (trigger && dd) {
-		dd.addEventListener("mouseenter", function () {
+		dd.addEventListener("mouseenter", () => {
 			trigger.setAttribute("aria-expanded", "true");
 		});
-		dd.addEventListener("mouseleave", function () {
+		dd.addEventListener("mouseleave", () => {
 			trigger.setAttribute("aria-expanded", "false");
 		});
 	}
