@@ -127,10 +127,7 @@ export function Badge({
    ========================================================================== */
 export function Vents({ className }: { className?: string }) {
 	return (
-		<div
-			className={cx("flex gap-1", className)}
-			aria-hidden="true"
-		>
+		<div className={cx("flex gap-1", className)} aria-hidden="true">
 			{[0, 1, 2].map((i) => (
 				<span
 					key={i}
@@ -175,9 +172,7 @@ export function Panel({
 				className,
 			)}
 			style={{
-				boxShadow: elevated
-					? "var(--shadow-floating)"
-					: "var(--shadow-card)",
+				boxShadow: elevated ? "var(--shadow-floating)" : "var(--shadow-card)",
 				...style,
 			}}
 			{...(rest as HTMLAttributes<HTMLElement>)}
@@ -290,15 +285,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				}}
 				onPointerUp={(e) => {
 					if (variant !== "ghost") {
-						(e.currentTarget as HTMLButtonElement).style.boxShadow =
-							restShadow;
+						(e.currentTarget as HTMLButtonElement).style.boxShadow = restShadow;
 					}
 					rest.onPointerUp?.(e);
 				}}
 				onPointerLeave={(e) => {
 					if (variant !== "ghost") {
-						(e.currentTarget as HTMLButtonElement).style.boxShadow =
-							restShadow;
+						(e.currentTarget as HTMLButtonElement).style.boxShadow = restShadow;
 					}
 					rest.onPointerLeave?.(e);
 				}}

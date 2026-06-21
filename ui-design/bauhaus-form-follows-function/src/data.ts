@@ -112,7 +112,11 @@ export const PLANS: {
 		price: "€0",
 		cadence: "forever",
 		blurb: "For tinkering and small constructions.",
-		features: ["Core primitives", "Light + colour-block sections", "Community grid"],
+		features: [
+			"Core primitives",
+			"Light + colour-block sections",
+			"Community grid",
+		],
 		accent: "blue",
 	},
 	{

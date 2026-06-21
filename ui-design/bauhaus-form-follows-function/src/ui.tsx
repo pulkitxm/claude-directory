@@ -150,7 +150,8 @@ const BTN_VARIANT: Record<BtnVariant, string> = {
 		"bg-bauhaus-yellow text-ink border-2 border-ink shadow-hard-sm hover:bg-bauhaus-yellow/90",
 	outline:
 		"bg-white text-ink border-2 border-ink shadow-hard-sm hover:bg-muted",
-	ghost: "bg-transparent text-ink border-2 border-transparent hover:bg-black/10",
+	ghost:
+		"bg-transparent text-ink border-2 border-transparent hover:bg-black/10",
 	ondark:
 		"bg-white text-ink border-2 border-white shadow-[4px_4px_0px_0px_#000] hover:bg-white/90",
 };
@@ -253,10 +254,7 @@ export function Section({
 	return (
 		<section
 			id={id}
-			className={cx(
-				divide && "border-b-2 border-ink sm:border-b-4",
-				className,
-			)}
+			className={cx(divide && "border-b-2 border-ink sm:border-b-4", className)}
 		>
 			{children}
 		</section>

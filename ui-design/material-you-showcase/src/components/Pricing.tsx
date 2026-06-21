@@ -55,7 +55,13 @@ const TIERS: Tier[] = [
 	},
 ];
 
-function FeatureRow({ children, onColor }: { children: string; onColor?: boolean }) {
+function FeatureRow({
+	children,
+	onColor,
+}: {
+	children: string;
+	onColor?: boolean;
+}) {
 	return (
 		<li className="group/feat flex items-start gap-3 transition-transform duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:translate-x-1">
 			<span
@@ -68,9 +74,7 @@ function FeatureRow({ children, onColor }: { children: string; onColor?: boolean
 				<Check size={13} />
 			</span>
 			<span
-				className={
-					onColor ? "text-white/90" : "text-[var(--color-md-on-bg)]"
-				}
+				className={onColor ? "text-white/90" : "text-[var(--color-md-on-bg)]"}
 			>
 				{children}
 			</span>
@@ -112,14 +116,14 @@ export function Pricing() {
 										</span>
 									)}
 
-									<h3
-										className={`t-title ${featured ? "text-white" : ""}`}
-									>
+									<h3 className={`t-title ${featured ? "text-white" : ""}`}>
 										{t.name}
 									</h3>
 									<p
 										className={`mt-1 text-sm ${
-											featured ? "text-white/80" : "text-[var(--color-md-on-variant)]"
+											featured
+												? "text-white/80"
+												: "text-[var(--color-md-on-variant)]"
 										}`}
 									>
 										{t.blurb}
@@ -151,7 +155,9 @@ export function Pricing() {
 
 									<div
 										className={`my-6 h-px ${
-											featured ? "bg-white/20" : "bg-[var(--color-md-outline-variant)]"
+											featured
+												? "bg-white/20"
+												: "bg-[var(--color-md-outline-variant)]"
 										}`}
 										aria-hidden
 									/>

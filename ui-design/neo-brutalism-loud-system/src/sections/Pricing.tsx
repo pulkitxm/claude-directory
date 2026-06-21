@@ -66,9 +66,15 @@ export function Pricing() {
 
 									<ul className="mt-6 space-y-3 border-t-4 border-neo-ink pt-5">
 										{plan.features.map((f) => (
-											<li key={f} className="flex items-start gap-2 text-sm font-bold text-neo-ink">
+											<li
+												key={f}
+												className="flex items-start gap-2 text-sm font-bold text-neo-ink"
+											>
 												<span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center border-2 border-neo-ink bg-neo-bg">
-													<Check className="h-3.5 w-3.5 stroke-neo-ink" strokeWidth={4} />
+													<Check
+														className="h-3.5 w-3.5 stroke-neo-ink"
+														strokeWidth={4}
+													/>
 												</span>
 												{f}
 											</li>

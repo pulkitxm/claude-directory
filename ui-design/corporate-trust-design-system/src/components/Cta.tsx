@@ -28,7 +28,10 @@ export function Cta() {
 					className="on-dark relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-indigo-900 to-indigo-950 px-6 py-16 text-center shadow-lift sm:px-12 sm:py-20"
 				>
 					<Blob className="-left-20 -top-24 h-80 w-80 !from-indigo-500/40 !to-violet-500/20 opacity-80" />
-					<Blob slow className="-bottom-24 -right-16 h-80 w-80 !from-violet-500/40 !to-fuchsia-500/10 opacity-70" />
+					<Blob
+						slow
+						className="-bottom-24 -right-16 h-80 w-80 !from-violet-500/40 !to-fuchsia-500/10 opacity-70"
+					/>
 					<div
 						aria-hidden="true"
 						className="dot-grid absolute inset-0 opacity-[0.15] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"
@@ -39,7 +42,10 @@ export function Cta() {
 							variants={fadeUp}
 							className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-indigo-100 ring-1 ring-white/15 backdrop-blur"
 						>
-							<Sparkles className="h-4 w-4 text-violet-300" aria-hidden="true" />
+							<Sparkles
+								className="h-4 w-4 text-violet-300"
+								aria-hidden="true"
+							/>
 							Join 12,000+ teams
 						</motion.span>
 
@@ -57,8 +63,8 @@ export function Cta() {
 							variants={fadeUp}
 							className="mx-auto mt-5 max-w-xl text-lg text-indigo-100/80"
 						>
-							Start free in minutes. No credit card, no sales call — just your first
-							workflow running before your coffee's cold.
+							Start free in minutes. No credit card, no sales call — just your
+							first workflow running before your coffee's cold.
 						</motion.p>
 
 						{/* Email capture */}
@@ -93,7 +99,10 @@ export function Cta() {
 										className="field !border-white/20 !bg-white/10 !text-white placeholder:!text-indigo-200/70 focus:!bg-white/15 focus:!shadow-none sm:flex-1"
 										autoComplete="email"
 									/>
-									<button type="submit" className="btn btn-on-dark group shrink-0">
+									<button
+										type="submit"
+										className="btn btn-on-dark group shrink-0"
+									>
 										Get started
 										<ArrowRight
 											className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"

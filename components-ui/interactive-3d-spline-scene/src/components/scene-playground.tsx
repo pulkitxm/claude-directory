@@ -159,9 +159,11 @@ export function ScenePlayground() {
 				</div>
 
 				<p className="mt-1 text-[11px] leading-relaxed text-neutral-500">
-					Edits here re-render the exact <code className="text-neutral-300">Card
-					+ Spotlight + SplineScene</code> tree — the same props you'd pass in
-					your app.
+					Edits here re-render the exact{" "}
+					<code className="text-neutral-300">
+						Card + Spotlight + SplineScene
+					</code>{" "}
+					tree — the same props you'd pass in your app.
 				</p>
 			</div>
 		</div>

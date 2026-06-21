@@ -25,11 +25,12 @@ export function Pricing() {
 				<Reveal className="mx-auto max-w-2xl text-center">
 					<Eyebrow icon={Sparkles}>Simple, scalable pricing</Eyebrow>
 					<h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl">
-						Pricing that grows <span className="text-gradient">with your team</span>
+						Pricing that grows{" "}
+						<span className="text-gradient">with your team</span>
 					</h2>
 					<p className="mx-auto mt-5 max-w-xl text-lg text-slate-500">
-						Start free, upgrade when you're ready. Every plan includes the polish,
-						security, and support that make Northwind worth trusting.
+						Start free, upgrade when you're ready. Every plan includes the
+						polish, security, and support that make Northwind worth trusting.
 					</p>
 				</Reveal>
 

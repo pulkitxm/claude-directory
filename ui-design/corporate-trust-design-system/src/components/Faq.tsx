@@ -15,11 +15,12 @@ export function Faq() {
 					<Reveal>
 						<Eyebrow icon={HelpCircle}>Questions, answered</Eyebrow>
 						<h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-							Everything you need to <span className="text-gradient">feel sure</span>
+							Everything you need to{" "}
+							<span className="text-gradient">feel sure</span>
 						</h2>
 						<p className="mt-5 max-w-md text-lg text-slate-500">
-							Can't find what you're looking for? Our team replies in under an hour,
-							every business day.
+							Can't find what you're looking for? Our team replies in under an
+							hour, every business day.
 						</p>
 						<a href="#cta" className="btn btn-secondary mt-7">
 							Contact support

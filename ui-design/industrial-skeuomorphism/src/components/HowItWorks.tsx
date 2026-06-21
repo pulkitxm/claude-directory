@@ -1,5 +1,11 @@
 import { motion } from "motion/react";
-import { PlugZap, ScanLine, SlidersHorizontal, Rocket, type LucideIcon } from "lucide-react";
+import {
+	PlugZap,
+	ScanLine,
+	SlidersHorizontal,
+	Rocket,
+	type LucideIcon,
+} from "lucide-react";
 import {
 	Container,
 	IconHousing,
@@ -114,9 +120,7 @@ export function HowItWorks() {
 				</div>
 
 				<div className="mt-10 flex justify-center">
-					<MonoLabel tone="online">
-						AVG. TIME-TO-FIRST-SIGNAL: 3H 41M
-					</MonoLabel>
+					<MonoLabel tone="online">AVG. TIME-TO-FIRST-SIGNAL: 3H 41M</MonoLabel>
 				</div>
 			</Container>
 		</section>

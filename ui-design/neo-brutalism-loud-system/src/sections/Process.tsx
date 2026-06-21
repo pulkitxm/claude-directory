@@ -17,7 +17,9 @@ export function Process() {
 					<h2 className="mt-5 text-5xl font-bold uppercase leading-[0.9] tracking-tighter text-neo-ink sm:text-7xl">
 						Drop It In,
 						<br />
-						<span className="w-fit rotate-1 bg-neo-accent px-2">Ship It Loud</span>
+						<span className="w-fit rotate-1 bg-neo-accent px-2">
+							Ship It Loud
+						</span>
 					</h2>
 				</div>
 

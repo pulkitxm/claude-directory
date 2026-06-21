@@ -6,8 +6,14 @@ import { Shell, Blob } from "./primitives";
 /* FOOTER — dark gray (Gray 900) color block to close the page. Flat link
    columns, geometric accents, no shadow. */
 const COLUMNS: { title: string; links: string[] }[] = [
-	{ title: "Product", links: ["Features", "Pricing", "Components", "Tokens", "Changelog"] },
-	{ title: "Resources", links: ["Docs", "Guides", "Figma kit", "Showcase", "Status"] },
+	{
+		title: "Product",
+		links: ["Features", "Pricing", "Components", "Tokens", "Changelog"],
+	},
+	{
+		title: "Resources",
+		links: ["Docs", "Guides", "Figma kit", "Showcase", "Status"],
+	},
 	{ title: "Company", links: ["About", "Blog", "Careers", "Contact"] },
 ];
 
@@ -72,13 +78,22 @@ export function Footer() {
 						experiment.
 					</p>
 					<div className="flex gap-6 text-sm text-gray-400">
-						<a href="#" className="transition-colors duration-200 hover:text-white">
+						<a
+							href="#"
+							className="transition-colors duration-200 hover:text-white"
+						>
 							Privacy
 						</a>
-						<a href="#" className="transition-colors duration-200 hover:text-white">
+						<a
+							href="#"
+							className="transition-colors duration-200 hover:text-white"
+						>
 							Terms
 						</a>
-						<a href="#" className="transition-colors duration-200 hover:text-white">
+						<a
+							href="#"
+							className="transition-colors duration-200 hover:text-white"
+						>
 							Cookies
 						</a>
 					</div>

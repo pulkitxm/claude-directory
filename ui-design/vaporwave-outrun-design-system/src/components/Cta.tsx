@@ -29,8 +29,8 @@ export function Cta() {
 							</h2>
 
 							<p className="mx-auto mt-5 max-w-xl font-mono text-lg text-[var(--color-chrome)]/75">
-								Drop your transmission address. We'll beam you the boot disk and a
-								key to the synthetic reality.
+								Drop your transmission address. We'll beam you the boot disk and
+								a key to the synthetic reality.
 							</p>
 
 							{sent ? (
@@ -61,7 +61,11 @@ export function Cta() {
 										onChange={(e) => setEmail(e.target.value)}
 										className="flex-1"
 									/>
-									<Button type="submit" variant="secondary" className="shrink-0">
+									<Button
+										type="submit"
+										variant="secondary"
+										className="shrink-0"
+									>
 										Send it
 									</Button>
 								</form>

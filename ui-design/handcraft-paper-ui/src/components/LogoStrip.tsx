@@ -11,7 +11,14 @@ const BRANDS = [
 	"Margins",
 ];
 
-const TILTS = ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2", "-rotate-1", "rotate-2"];
+const TILTS = [
+	"-rotate-2",
+	"rotate-1",
+	"-rotate-1",
+	"rotate-2",
+	"-rotate-1",
+	"rotate-2",
+];
 
 export function LogoStrip() {
 	return (

@@ -1,11 +1,4 @@
-import {
-	ArrowRight,
-	Sparkles,
-	Heart,
-	Star,
-	Layers,
-	Play,
-} from "lucide-react";
+import { ArrowRight, Sparkles, Heart, Star, Layers, Play } from "lucide-react";
 import { ButtonLink, Shell, Badge, ClayShape, display } from "./primitives";
 
 /* The hero. A big glass-clay "tray" container (rounded-[48px]+) cradled in a
@@ -109,7 +102,11 @@ export function Hero() {
 									style={display}
 									className="flex items-center gap-1 text-sm font-extrabold text-clay-foreground"
 								>
-									<Star size={14} className="text-clay-amber" fill="currentColor" />
+									<Star
+										size={14}
+										className="text-clay-amber"
+										fill="currentColor"
+									/>
 									4.9/5 — loved by 12,000+ makers
 								</div>
 								<div className="text-xs font-medium text-clay-muted">

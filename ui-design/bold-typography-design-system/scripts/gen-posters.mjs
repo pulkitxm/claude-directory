@@ -30,17 +30,17 @@ const grain = (id) => `
   </filter>`;
 
 function poster({ id, kicker, line1, line2, numeral, mode }) {
-  // mode: "ground" = type on black, "accent" = type on vermillion, "outline" = outlined display type
-  const ground = mode === "accent" ? ACCENT : BG;
-  const ink = mode === "accent" ? BG : FG;
-  const sub = mode === "accent" ? "rgba(10,10,10,0.7)" : "#737373";
-  const rule = mode === "accent" ? "rgba(10,10,10,0.25)" : BORDER;
+	// mode: "ground" = type on black, "accent" = type on vermillion, "outline" = outlined display type
+	const ground = mode === "accent" ? ACCENT : BG;
+	const ink = mode === "accent" ? BG : FG;
+	const sub = mode === "accent" ? "rgba(10,10,10,0.7)" : "#737373";
+	const rule = mode === "accent" ? "rgba(10,10,10,0.25)" : BORDER;
 
-  const displayFill = mode === "outline" ? "none" : ink;
-  const displayStroke = mode === "outline" ? ink : "none";
-  const displayStrokeW = mode === "outline" ? 2 : 0;
+	const displayFill = mode === "outline" ? "none" : ink;
+	const displayStroke = mode === "outline" ? ink : "none";
+	const displayStrokeW = mode === "outline" ? 2 : 0;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img">
+	return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img">
   <defs>${grain(id)}</defs>
   <rect width="${W}" height="${H}" fill="${ground}"/>
 
@@ -75,38 +75,38 @@ function poster({ id, kicker, line1, line2, numeral, mode }) {
 }
 
 const posters = [
-  {
-    file: "journal-01.svg",
-    id: "1",
-    kicker: "ESSAY / 01",
-    line1: "SCALE IS",
-    line2: "MEANING",
-    numeral: "1",
-    mode: "ground",
-  },
-  {
-    file: "journal-02.svg",
-    id: "2",
-    kicker: "FIELD NOTES / 02",
-    line1: "KERN",
-    line2: "EVERYTHING",
-    numeral: "2",
-    mode: "accent",
-  },
-  {
-    file: "journal-03.svg",
-    id: "3",
-    kicker: "INTERVIEW / 03",
-    line1: "WHITE",
-    line2: "SPACE",
-    numeral: "3",
-    mode: "outline",
-  },
+	{
+		file: "journal-01.svg",
+		id: "1",
+		kicker: "ESSAY / 01",
+		line1: "SCALE IS",
+		line2: "MEANING",
+		numeral: "1",
+		mode: "ground",
+	},
+	{
+		file: "journal-02.svg",
+		id: "2",
+		kicker: "FIELD NOTES / 02",
+		line1: "KERN",
+		line2: "EVERYTHING",
+		numeral: "2",
+		mode: "accent",
+	},
+	{
+		file: "journal-03.svg",
+		id: "3",
+		kicker: "INTERVIEW / 03",
+		line1: "WHITE",
+		line2: "SPACE",
+		numeral: "3",
+		mode: "outline",
+	},
 ];
 
 for (const p of posters) {
-  fs.writeFileSync(path.join(OUT, p.file), poster(p));
-  console.log("wrote", p.file);
+	fs.writeFileSync(path.join(OUT, p.file), poster(p));
+	console.log("wrote", p.file);
 }
 
 // A wide editorial "type specimen" plate used in the Product Detail / benefits area.

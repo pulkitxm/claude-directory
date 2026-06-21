@@ -101,7 +101,9 @@ try {
 			"--ignore-gpu-blocklist",
 		],
 	});
-	const ctx = await browser.newContext({ viewport: { width: 1366, height: 900 } });
+	const ctx = await browser.newContext({
+		viewport: { width: 1366, height: 900 },
+	});
 	const page = await ctx.newPage();
 
 	const pageErrors = [];
@@ -115,20 +117,23 @@ try {
 	await sleep(1200);
 
 	// Lab header / wordmark renders
-	const header = (await page.locator("header").first().textContent())?.trim() ?? "";
-	if (/Warp\s*Checks/i.test(header)) ok("lab wordmark renders (\"Warp Checks\")");
+	const header =
+		(await page.locator("header").first().textContent())?.trim() ?? "";
+	if (/Warp\s*Checks/i.test(header)) ok('lab wordmark renders ("Warp Checks")');
 	else bad(`lab wordmark missing (got "${header.slice(0, 60)}")`);
 
 	// Hero headline renders
 	const h1 = (await page.locator("h1").first().textContent())?.trim() ?? "";
-	if (/checks-warp/i.test(h1)) ok(`hero headline renders ("${h1.replace(/\s+/g, " ")}")`);
+	if (/checks-warp/i.test(h1))
+		ok(`hero headline renders ("${h1.replace(/\s+/g, " ")}")`);
 	else bad(`hero headline missing (got "${h1}")`);
 
 	// The prompt's exact config is surfaced in the props panel
-	const body = async () => (await page.evaluate(() => document.body.textContent ?? "")) || "";
+	const body = async () =>
+		(await page.evaluate(() => document.body.textContent ?? "")) || "";
 	const initial = await body();
 	if (/"checks"/.test(initial)) ok('props panel reports shape "checks"');
-	else bad("shape \"checks\" not surfaced");
+	else bad('shape "checks" not surfaced');
 	if (/0\.45/.test(initial)) ok("prompt proportion 0.45 on first paint");
 	else bad("proportion 0.45 not surfaced");
 
@@ -148,14 +153,18 @@ try {
 	if (canvasBox && canvasBox.w > 800 && canvasBox.h > 500) {
 		ok(`Warp canvas fills viewport ${canvasBox.w}x${canvasBox.h}`);
 	} else {
-		bad(`Warp canvas has no full-viewport surface (${JSON.stringify(canvasBox)})`);
+		bad(
+			`Warp canvas has no full-viewport surface (${JSON.stringify(canvasBox)})`,
+		);
 	}
 
 	const hasGL = await page.evaluate(() => {
 		const c = document.querySelector("canvas");
 		if (!c) return false;
 		const gl =
-			c.getContext("webgl2") || c.getContext("webgl") || c.getContext("experimental-webgl");
+			c.getContext("webgl2") ||
+			c.getContext("webgl") ||
+			c.getContext("experimental-webgl");
 		return !!gl;
 	});
 	if (hasGL) ok("WebGL context is live on the canvas");
@@ -170,14 +179,16 @@ try {
 	await speed.press("End");
 	await sleep(250);
 	const maxVal = await speed.inputValue();
-	if (Number(minVal) === 0 && Number(maxVal) === 3) ok("speed fader sweeps 0 → 3");
+	if (Number(minVal) === 0 && Number(maxVal) === 3)
+		ok("speed fader sweeps 0 → 3");
 	else bad(`speed fader did not sweep (min="${minVal}" max="${maxVal}")`);
 
 	// Switching to the Tide preset re-labels the deck + changes a colour stop
 	await page.getByRole("button", { name: /^Tide$/ }).click();
 	await sleep(500);
 	const afterPreset = await body();
-	if (/190 95 22/.test(afterPreset)) ok("preset switch (Tide) re-tints the palette");
+	if (/190 95 22/.test(afterPreset))
+		ok("preset switch (Tide) re-tints the palette");
 	else bad("preset switch had no visible effect");
 
 	// Reset returns to the prompt's verbatim configuration

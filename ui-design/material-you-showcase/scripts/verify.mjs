@@ -25,7 +25,9 @@ const CHROME_PATH = process.env.CHROME_PATH || undefined;
 
 let failures = 0;
 const check = (name, ok, detail = "") => {
-	console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`);
+	console.log(
+		`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`,
+	);
 	if (!ok) failures += 1;
 };
 
@@ -43,11 +45,20 @@ await page.goto(BASE_URL, { waitUntil: "networkidle" });
 await page.waitForTimeout(1200); // let reveal animations settle
 
 // ── Title & brand ───────────────────────────────────────────────────────────
-check("page title mentions Material You", /Material You/i.test(await page.title()), await page.title());
-check("Lumi wordmark present", (await page.getByText("Lumi", { exact: true }).count()) >= 1);
+check(
+	"page title mentions Material You",
+	/Material You/i.test(await page.title()),
+	await page.title(),
+);
+check(
+	"Lumi wordmark present",
+	(await page.getByText("Lumi", { exact: true }).count()) >= 1,
+);
 
 // ── Roboto (self-hosted) actually renders ───────────────────────────────────
-const bodyFont = await page.evaluate(() => getComputedStyle(document.body).fontFamily);
+const bodyFont = await page.evaluate(
+	() => getComputedStyle(document.body).fontFamily,
+);
 check("Roboto font family on body", /Roboto/i.test(bodyFont), bodyFont);
 const fontLoaded = await page.evaluate(async () => {
 	await document.fonts.ready;
@@ -71,23 +82,55 @@ const tokens = await page.evaluate(() => {
 		ease: g("--ease-md-standard"),
 	};
 });
-check("--color-md-bg = #fffbfe (not pure white)", tokens.bg === "#fffbfe", tokens.bg);
-check("--color-md-primary = #6750a4 (seed)", tokens.primary === "#6750a4", tokens.primary);
-check("--color-md-tertiary = #7d5260", tokens.tertiary === "#7d5260", tokens.tertiary);
-check("--color-md-container = #f3edf7", tokens.container === "#f3edf7", tokens.container);
+check(
+	"--color-md-bg = #fffbfe (not pure white)",
+	tokens.bg === "#fffbfe",
+	tokens.bg,
+);
+check(
+	"--color-md-primary = #6750a4 (seed)",
+	tokens.primary === "#6750a4",
+	tokens.primary,
+);
+check(
+	"--color-md-tertiary = #7d5260",
+	tokens.tertiary === "#7d5260",
+	tokens.tertiary,
+);
+check(
+	"--color-md-container = #f3edf7",
+	tokens.container === "#f3edf7",
+	tokens.container,
+);
 check(
 	"signature easing = cubic-bezier(0.2, 0, 0, 1)",
 	// browsers serialize 0.2 as .2 — normalize the leading zero before comparing
-	tokens.ease.replace(/\s/g, "").replace(/\b0\./g, ".") === "cubic-bezier(.2,0,0,1)",
+	tokens.ease.replace(/\s/g, "").replace(/\b0\./g, ".") ===
+		"cubic-bezier(.2,0,0,1)",
 	tokens.ease,
 );
 
 // ── NEVER pure white: body background is the tinted Surface ─────────────────
-const bodyBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-check("body bg is tinted surface, not pure white", bodyBg === "rgb(255, 251, 254)", bodyBg);
+const bodyBg = await page.evaluate(
+	() => getComputedStyle(document.body).backgroundColor,
+);
+check(
+	"body bg is tinted surface, not pure white",
+	bodyBg === "rgb(255, 251, 254)",
+	bodyBg,
+);
 
 // ── All sections / anchors present ──────────────────────────────────────────
-for (const id of ["top", "benefits", "how", "product", "pricing", "journal", "faq", "cta"]) {
+for (const id of [
+	"top",
+	"benefits",
+	"how",
+	"product",
+	"pricing",
+	"journal",
+	"faq",
+	"cta",
+]) {
 	check(`section #${id} present`, (await page.locator(`#${id}`).count()) === 1);
 }
 
@@ -95,9 +138,17 @@ for (const id of ["top", "benefits", "how", "product", "pricing", "journal", "fa
 const heroCta = page.getByRole("link", { name: /Start theming/ }).first();
 const heroBtn = await heroCta.evaluate((el) => {
 	const s = getComputedStyle(el);
-	return { radius: parseFloat(s.borderTopLeftRadius), shadow: s.boxShadow, h: parseFloat(s.height) };
+	return {
+		radius: parseFloat(s.borderTopLeftRadius),
+		shadow: s.boxShadow,
+		h: parseFloat(s.height),
+	};
 });
-check("hero CTA is pill (radius >= 22px)", heroBtn.radius >= 22, `${heroBtn.radius}px`);
+check(
+	"hero CTA is pill (radius >= 22px)",
+	heroBtn.radius >= 22,
+	`${heroBtn.radius}px`,
+);
 check("hero CTA (lg) is >= 48px tall", heroBtn.h >= 47, `${heroBtn.h}px`);
 
 // ── EVERY button is pill-shaped (radius 9999px ⇒ huge after clamping) ────────
@@ -111,37 +162,74 @@ const btnRadii = await page.evaluate(() => {
 	}
 	return { total: els.length, bad };
 });
-check(`all ${btnRadii.total} .btn elements are pills`, btnRadii.bad.length === 0, btnRadii.bad.slice(0, 4).join(" | "));
+check(
+	`all ${btnRadii.total} .btn elements are pills`,
+	btnRadii.bad.length === 0,
+	btnRadii.bad.slice(0, 4).join(" | "),
+);
 
 // ── Cards use a tonal container surface, large radius, soft shadow ──────────
 const firstCard = page.locator("#how article").first();
 const cardStyle = await firstCard.evaluate((el) => {
 	const s = getComputedStyle(el);
-	return { radius: parseFloat(s.borderTopLeftRadius), bg: s.backgroundColor, shadow: s.boxShadow };
+	return {
+		radius: parseFloat(s.borderTopLeftRadius),
+		bg: s.backgroundColor,
+		shadow: s.boxShadow,
+	};
 });
-check("how-it-works card radius >= 24px", cardStyle.radius >= 24, `${cardStyle.radius}px`);
-check("how-it-works card is tonal container (#f3edf7)", cardStyle.bg === "rgb(243, 237, 247)", cardStyle.bg);
-check("how-it-works card has a (soft) shadow at rest", cardStyle.shadow !== "none");
+check(
+	"how-it-works card radius >= 24px",
+	cardStyle.radius >= 24,
+	`${cardStyle.radius}px`,
+);
+check(
+	"how-it-works card is tonal container (#f3edf7)",
+	cardStyle.bg === "rgb(243, 237, 247)",
+	cardStyle.bg,
+);
+check(
+	"how-it-works card has a (soft) shadow at rest",
+	cardStyle.shadow !== "none",
+);
 
 // ── Organic blur shapes (blur-3xl) present ──────────────────────────────────
 const blurShapes = await page.evaluate(() => {
 	return Array.from(document.querySelectorAll("*")).filter((el) => {
 		const f = getComputedStyle(el).filter;
-		return f && f.includes("blur(") && parseFloat(f.match(/blur\(([\d.]+)px\)/)?.[1] || "0") >= 40;
+		return (
+			f &&
+			f.includes("blur(") &&
+			parseFloat(f.match(/blur\(([\d.]+)px\)/)?.[1] || "0") >= 40
+		);
 	}).length;
 });
-check("organic blur-3xl shapes present (>= 4)", blurShapes >= 4, `${blurShapes} found`);
+check(
+	"organic blur-3xl shapes present (>= 4)",
+	blurShapes >= 4,
+	`${blurShapes} found`,
+);
 
 // ── Benefits is a full-width PRIMARY color block ────────────────────────────
-const benefitsBg = await page.evaluate(() => getComputedStyle(document.querySelector("#benefits")).backgroundColor);
-check("Benefits is a primary (#6750a4) block", benefitsBg === "rgb(103, 80, 164)", benefitsBg);
+const benefitsBg = await page.evaluate(
+	() => getComputedStyle(document.querySelector("#benefits")).backgroundColor,
+);
+check(
+	"Benefits is a primary (#6750a4) block",
+	benefitsBg === "rgb(103, 80, 164)",
+	benefitsBg,
+);
 
 // ── CTA is a full-width TERTIARY color block ────────────────────────────────
 const ctaInner = await page.evaluate(() => {
 	const el = document.querySelector("#cta > div");
 	return el ? getComputedStyle(el).backgroundColor : "";
 });
-check("Final CTA is a tertiary (#7d5260) block", ctaInner === "rgb(125, 82, 96)", ctaInner);
+check(
+	"Final CTA is a tertiary (#7d5260) block",
+	ctaInner === "rgb(125, 82, 96)",
+	ctaInner,
+);
 
 // ── Filled text field: rounded TOP, SQUARE bottom, 2px bottom border ────────
 const field = page.locator("#cta-email");
@@ -156,15 +244,37 @@ const fieldRest = await field.evaluate((el) => {
 		h: parseFloat(s.height),
 	};
 });
-check("input top corners rounded (>= 10px)", fieldRest.topL >= 10 && fieldRest.topR >= 10, `${fieldRest.topL}/${fieldRest.topR}`);
-check("input bottom corners square (0px)", fieldRest.botL === 0, `${fieldRest.botL}px`);
+check(
+	"input top corners rounded (>= 10px)",
+	fieldRest.topL >= 10 && fieldRest.topR >= 10,
+	`${fieldRest.topL}/${fieldRest.topR}`,
+);
+check(
+	"input bottom corners square (0px)",
+	fieldRest.botL === 0,
+	`${fieldRest.botL}px`,
+);
 check("input has 2px bottom border", fieldRest.bw === 2, `${fieldRest.bw}px`);
-check("input is 56px tall (filled field)", fieldRest.h === 56, `${fieldRest.h}px`);
-check("input bottom border = outline at rest", fieldRest.bc === "rgb(121, 116, 126)", fieldRest.bc);
+check(
+	"input is 56px tall (filled field)",
+	fieldRest.h === 56,
+	`${fieldRest.h}px`,
+);
+check(
+	"input bottom border = outline at rest",
+	fieldRest.bc === "rgb(121, 116, 126)",
+	fieldRest.bc,
+);
 await field.focus();
 await page.waitForTimeout(250);
-const fieldFocus = await field.evaluate((el) => getComputedStyle(el).borderBottomColor);
-check("input bottom border -> primary on focus", fieldFocus === "rgb(103, 80, 164)", fieldFocus);
+const fieldFocus = await field.evaluate(
+	(el) => getComputedStyle(el).borderBottomColor,
+);
+check(
+	"input bottom border -> primary on focus",
+	fieldFocus === "rgb(103, 80, 164)",
+	fieldFocus,
+);
 
 // ── FAB: appears on scroll, 56x56, rounded-2xl(28px), tertiary ──────────────
 await page.evaluate(() => window.scrollTo(0, 1400));
@@ -173,11 +283,24 @@ const fab = page.getByRole("link", { name: "Seed a new theme" });
 check("FAB visible after scroll", await fab.isVisible());
 const fabStyle = await fab.evaluate((el) => {
 	const s = getComputedStyle(el);
-	return { w: parseFloat(s.width), h: parseFloat(s.height), r: parseFloat(s.borderTopLeftRadius), bg: s.backgroundColor };
+	return {
+		w: parseFloat(s.width),
+		h: parseFloat(s.height),
+		r: parseFloat(s.borderTopLeftRadius),
+		bg: s.backgroundColor,
+	};
 });
-check("FAB is 56x56", fabStyle.w === 56 && fabStyle.h === 56, `${fabStyle.w}x${fabStyle.h}`);
+check(
+	"FAB is 56x56",
+	fabStyle.w === 56 && fabStyle.h === 56,
+	`${fabStyle.w}x${fabStyle.h}`,
+);
 check("FAB radius is 28px (rounded-2xl)", fabStyle.r === 28, `${fabStyle.r}px`);
-check("FAB is tertiary (#7d5260)", fabStyle.bg === "rgb(125, 82, 96)", fabStyle.bg);
+check(
+	"FAB is tertiary (#7d5260)",
+	fabStyle.bg === "rgb(125, 82, 96)",
+	fabStyle.bg,
+);
 await page.evaluate(() => window.scrollTo(0, 0));
 await page.waitForTimeout(300);
 
@@ -197,12 +320,22 @@ const lift = await page.evaluate(() => {
 	}
 	return new DOMMatrixReadOnly(s.transform).m42;
 });
-check("featured pricing tier is lifted (translateY < 0)", lift !== null && lift < -8, `${lift}px`);
+check(
+	"featured pricing tier is lifted (translateY < 0)",
+	lift !== null && lift < -8,
+	`${lift}px`,
+);
 const featuredBg = await page.evaluate(() => {
-	const badge = Array.from(document.querySelectorAll("#pricing *")).find((e) => e.textContent?.trim() === "Most popular");
+	const badge = Array.from(document.querySelectorAll("#pricing *")).find(
+		(e) => e.textContent?.trim() === "Most popular",
+	);
 	return getComputedStyle(badge.closest("article")).backgroundColor;
 });
-check("featured tier filled with primary", featuredBg === "rgb(103, 80, 164)", featuredBg);
+check(
+	"featured tier filled with primary",
+	featuredBg === "rgb(103, 80, 164)",
+	featuredBg,
+);
 
 // ── How-It-Works hover glow halo exists (hidden until hover) ────────────────
 const glowExists = await page.evaluate(() => {
@@ -216,7 +349,9 @@ check("how-it-works hidden glow halo present", glowExists);
 // ── FAQ accordion toggles + the plus rotates 45° when open ──────────────────
 // The panel collapses via grid-template-rows 0fr->1fr inside overflow-hidden, so
 // assert on the panel's collapsed/expanded rows (text stays in the DOM either way).
-const faqBtn = page.getByRole("button", { name: /Does it follow the real Material Design 3 spec/ });
+const faqBtn = page.getByRole("button", {
+	name: /Does it follow the real Material Design 3 spec/,
+});
 const faqPanelRows = async () =>
 	page.evaluate(() => {
 		const p = Array.from(document.querySelectorAll("#faq p")).find((e) =>
@@ -224,16 +359,31 @@ const faqPanelRows = async () =>
 		);
 		return getComputedStyle(p.closest('[role="region"]')).gridTemplateRows;
 	});
-check("FAQ answer collapsed before click (rows 0px)", (await faqPanelRows()) === "0px");
-check("FAQ button reports aria-expanded=false", (await faqBtn.getAttribute("aria-expanded")) === "false");
+check(
+	"FAQ answer collapsed before click (rows 0px)",
+	(await faqPanelRows()) === "0px",
+);
+check(
+	"FAQ button reports aria-expanded=false",
+	(await faqBtn.getAttribute("aria-expanded")) === "false",
+);
 await faqBtn.click();
 await page.waitForTimeout(450);
-check("FAQ answer expands on click (rows > 0)", parseFloat(await faqPanelRows()) > 0);
+check(
+	"FAQ answer expands on click (rows > 0)",
+	parseFloat(await faqPanelRows()) > 0,
+);
 check(
 	"FAQ answer readable on click",
-	await page.getByText(/tonal algorithm mirrors Material You/).first().isVisible(),
+	await page
+		.getByText(/tonal algorithm mirrors Material You/)
+		.first()
+		.isVisible(),
 );
-check("FAQ button reports aria-expanded=true", (await faqBtn.getAttribute("aria-expanded")) === "true");
+check(
+	"FAQ button reports aria-expanded=true",
+	(await faqBtn.getAttribute("aria-expanded")) === "true",
+);
 
 // ── CTA form: typing + submit shows inline confirmation ─────────────────────
 await page.locator("#cta-email").fill("designer@studio.com");
@@ -248,17 +398,26 @@ check(
 const decorAria = await page.evaluate(() => {
 	// every animated blob carries aria-hidden
 	const blobs = Array.from(document.querySelectorAll('[class*="blob-"]'));
-	return blobs.length > 0 && blobs.every((b) => b.getAttribute("aria-hidden") === "true");
+	return (
+		blobs.length > 0 &&
+		blobs.every((b) => b.getAttribute("aria-hidden") === "true")
+	);
 });
 check("decorative blur shapes are aria-hidden", decorAria);
 
 // ── Skip link present for keyboard users ────────────────────────────────────
-check("skip-to-content link present", (await page.getByRole("link", { name: "Skip to content" }).count()) === 1);
+check(
+	"skip-to-content link present",
+	(await page.getByRole("link", { name: "Skip to content" }).count()) === 1,
+);
 
 // ── Responsive: desktop nav hidden on mobile, drawer toggles ────────────────
 await page.setViewportSize({ width: 390, height: 844 });
 await page.waitForTimeout(300);
-check("desktop nav hidden on mobile", !(await page.locator('nav[aria-label="Primary"]').first().isVisible()));
+check(
+	"desktop nav hidden on mobile",
+	!(await page.locator('nav[aria-label="Primary"]').first().isVisible()),
+);
 const burger = page.getByRole("button", { name: "Open menu" });
 check("mobile menu button visible", await burger.isVisible());
 await burger.click();
@@ -269,8 +428,14 @@ check(
 );
 
 // ── No console / page errors ────────────────────────────────────────────────
-check("no console/page errors", consoleErrors.length === 0, consoleErrors.join(" | ").slice(0, 300));
+check(
+	"no console/page errors",
+	consoleErrors.length === 0,
+	consoleErrors.join(" | ").slice(0, 300),
+);
 
 await browser.close();
-console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
+console.log(
+	failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`,
+);
 process.exit(failures === 0 ? 0 : 1);

@@ -22,7 +22,10 @@ export function Cta() {
 				{/* doodle decorations */}
 				<span
 					className="anim-bob absolute -left-3 top-8 hidden h-12 w-12 border-2 border-ink bg-accent md:block"
-					style={{ borderRadius: radius.blob, ["--bob-rot" as string]: "12deg" }}
+					style={{
+						borderRadius: radius.blob,
+						["--bob-rot" as string]: "12deg",
+					}}
 					aria-hidden
 				/>
 				<span
@@ -35,8 +38,8 @@ export function Cta() {
 					Got a blank wall and a head full of ideas?
 				</h2>
 				<p className="mx-auto mt-5 max-w-xl text-lg text-ink/75 md:text-xl">
-					Start a board in seconds — no card, no tour, no rules. Just type
-					your email and we'll hand you a marker.
+					Start a board in seconds — no card, no tour, no rules. Just type your
+					email and we'll hand you a marker.
 				</p>
 
 				{sent ? (

@@ -11,21 +11,21 @@ import { CTA } from "@/components/ui/CTA";
 import { Footer } from "@/components/ui/Footer";
 
 function App() {
-  return (
-    <main className="relative min-h-screen flex flex-col">
-      <Navbar />
-      <Hero />
-      <LogoStrip />
-      <Features />
-      <Stats />
-      <Workflow />
-      <Showcase />
-      <Testimonials />
-      <Pricing />
-      <CTA />
-      <Footer />
-    </main>
-  );
+	return (
+		<main className="relative min-h-screen flex flex-col">
+			<Navbar />
+			<Hero />
+			<LogoStrip />
+			<Features />
+			<Stats />
+			<Workflow />
+			<Showcase />
+			<Testimonials />
+			<Pricing />
+			<CTA />
+			<Footer />
+		</main>
+	);
 }
 
 export default App;

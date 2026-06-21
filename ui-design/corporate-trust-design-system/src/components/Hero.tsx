@@ -74,13 +74,19 @@ export function Hero() {
 						animate="show"
 						className="relative z-10 text-center lg:text-left"
 					>
-						<motion.div variants={fadeUp} className="flex justify-center lg:justify-start">
+						<motion.div
+							variants={fadeUp}
+							className="flex justify-center lg:justify-start"
+						>
 							<Pill>
 								<span className="inline-flex items-center gap-1.5">
 									<span className="inline-flex h-5 items-center rounded-full bg-indigo-600 px-2 text-[0.6875rem] font-bold uppercase tracking-wide text-white">
 										New
 									</span>
-									<Sparkles className="h-4 w-4 text-violet-600" aria-hidden="true" />
+									<Sparkles
+										className="h-4 w-4 text-violet-600"
+										aria-hidden="true"
+									/>
 									Northwind AI now writes your workflows
 								</span>
 							</Pill>
@@ -99,15 +105,18 @@ export function Hero() {
 							className="mx-auto mt-6 max-w-xl text-lg text-slate-500 lg:mx-0"
 						>
 							Northwind unifies your tools, automates the busywork, and turns
-							operational data into decisions — with the security and polish your
-							enterprise expects.
+							operational data into decisions — with the security and polish
+							your enterprise expects.
 						</motion.p>
 
 						<motion.div
 							variants={fadeUp}
 							className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start"
 						>
-							<a href="#cta" className="btn btn-primary btn-lg group w-full sm:w-auto">
+							<a
+								href="#cta"
+								className="btn btn-primary btn-lg group w-full sm:w-auto"
+							>
 								Start building free
 								<ArrowRight
 									className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
@@ -130,12 +139,17 @@ export function Hero() {
 							variants={fadeUp}
 							className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-500 lg:justify-start"
 						>
-							{["Free forever plan", "No credit card", "SOC 2 Type II"].map((t) => (
-								<li key={t} className="inline-flex items-center gap-2">
-									<Check className="h-4 w-4 text-emerald-500" aria-hidden="true" />
-									{t}
-								</li>
-							))}
+							{["Free forever plan", "No credit card", "SOC 2 Type II"].map(
+								(t) => (
+									<li key={t} className="inline-flex items-center gap-2">
+										<Check
+											className="h-4 w-4 text-emerald-500"
+											aria-hidden="true"
+										/>
+										{t}
+									</li>
+								),
+							)}
 						</motion.ul>
 					</motion.div>
 
@@ -191,7 +205,10 @@ export function Hero() {
 														{kpi.value}
 													</p>
 													<p className="mt-0.5 inline-flex items-center gap-1 text-[0.6875rem] font-semibold text-emerald-600">
-														<TrendingUp className="h-3 w-3" aria-hidden="true" />
+														<TrendingUp
+															className="h-3 w-3"
+															aria-hidden="true"
+														/>
 														{kpi.delta}
 													</p>
 												</div>
@@ -252,7 +269,11 @@ export function Hero() {
 							transition={{ delay: 0.8, duration: 0.6, ease: EASE_REFINED }}
 							className="absolute -bottom-5 right-0 hidden animate-float-delayed sm:block lg:-right-8"
 						>
-							<FloatCard icon={Activity} title="99.99% uptime" sub="30-day SLA" />
+							<FloatCard
+								icon={Activity}
+								title="99.99% uptime"
+								sub="30-day SLA"
+							/>
 						</motion.div>
 					</motion.div>
 				</div>

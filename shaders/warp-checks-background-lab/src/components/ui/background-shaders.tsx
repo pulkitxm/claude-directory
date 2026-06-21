@@ -38,11 +38,16 @@ export default function Wrapper({
 		<div className="relative min-h-screen">
 			{/* Fixed, full-viewport shader background — verbatim from the prompt. */}
 			<div className="fixed inset-0 -z-10">
-				<Warp style={{ width: "100%", height: "100%" }} {...warpProps(config)} />
+				<Warp
+					style={{ width: "100%", height: "100%" }}
+					{...warpProps(config)}
+				/>
 			</div>
 
 			{/* Left side rail (the prompt's empty `left-8 top-1/2` slot). */}
-			<div className="absolute left-8 top-1/2 -translate-y-1/2 z-10">{rail}</div>
+			<div className="absolute left-8 top-1/2 -translate-y-1/2 z-10">
+				{rail}
+			</div>
 
 			{/* Foreground content (the prompt's empty `relative z-10 p-8` slot). */}
 			<div className="relative z-10 p-8">{children}</div>

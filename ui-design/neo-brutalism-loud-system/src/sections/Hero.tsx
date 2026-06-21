@@ -37,7 +37,9 @@ export function Hero() {
 				{/* LEFT — 3/5 */}
 				<div className="lg:col-span-3">
 					<div className="-rotate-1">
-						<SectionLabel bg="bg-neo-muted">A Design System That Screams</SectionLabel>
+						<SectionLabel bg="bg-neo-muted">
+							A Design System That Screams
+						</SectionLabel>
 					</div>
 
 					<h1 className="mt-6 text-[16vw] font-bold uppercase leading-[0.82] tracking-tighter text-neo-ink sm:text-8xl lg:text-[7.5rem]">
@@ -56,7 +58,11 @@ export function Hero() {
 					</p>
 
 					<div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-						<Button size="lg" className="w-full sm:w-auto" onClick={() => scrollToId("components")}>
+						<Button
+							size="lg"
+							className="w-full sm:w-auto"
+							onClick={() => scrollToId("components")}
+						>
 							Explore Components
 							<ArrowRight className="h-5 w-5" strokeWidth={3} />
 						</Button>
@@ -73,7 +79,10 @@ export function Hero() {
 					{/* Inline trust row */}
 					<div className="mt-10 flex flex-wrap items-center gap-3">
 						<Badge bg="bg-neo-secondary" spinOnHover>
-							<Star className="h-3.5 w-3.5 fill-neo-ink stroke-neo-ink" strokeWidth={3} />
+							<Star
+								className="h-3.5 w-3.5 fill-neo-ink stroke-neo-ink"
+								strokeWidth={3}
+							/>
 							No Blur
 						</Badge>
 						<Badge bg="bg-neo-white" spinOnHover>
@@ -104,7 +113,10 @@ export function Hero() {
 								Spec Sheet
 							</span>
 							<span className="flex h-9 w-9 items-center justify-center border-4 border-neo-ink bg-neo-accent">
-								<Zap className="h-4 w-4 fill-neo-ink stroke-neo-ink" strokeWidth={3} />
+								<Zap
+									className="h-4 w-4 fill-neo-ink stroke-neo-ink"
+									strokeWidth={3}
+								/>
 							</span>
 						</div>
 						<dl className="mt-5 space-y-3 text-sm font-bold">
@@ -119,7 +131,9 @@ export function Hero() {
 									key={k}
 									className="flex items-center justify-between gap-3 border-b-2 border-dashed border-neo-ink/30 pb-2 last:border-0"
 								>
-									<dt className="uppercase tracking-wide text-neo-ink/70">{k}</dt>
+									<dt className="uppercase tracking-wide text-neo-ink/70">
+										{k}
+									</dt>
 									<dd className="text-right text-neo-ink">{v}</dd>
 								</div>
 							))}

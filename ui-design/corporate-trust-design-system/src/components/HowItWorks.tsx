@@ -13,11 +13,12 @@ export function HowItWorks() {
 				<Reveal className="mx-auto max-w-2xl text-center">
 					<Eyebrow icon={Route}>From zero to shipped</Eyebrow>
 					<h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl">
-						Live in an afternoon, <span className="text-gradient">not a quarter</span>
+						Live in an afternoon,{" "}
+						<span className="text-gradient">not a quarter</span>
 					</h2>
 					<p className="mx-auto mt-5 max-w-xl text-lg text-slate-500">
-						No implementation project, no services contract. Three steps and your
-						first workflow is running against real data.
+						No implementation project, no services contract. Three steps and
+						your first workflow is running against real data.
 					</p>
 				</Reveal>
 
@@ -27,7 +28,10 @@ export function HowItWorks() {
 						aria-hidden="true"
 						className="absolute left-0 right-0 top-7 hidden border-t-2 border-dashed border-indigo-200 md:block"
 					/>
-					<RevealGroup className="grid gap-10 md:grid-cols-3 md:gap-8" stag={0.14}>
+					<RevealGroup
+						className="grid gap-10 md:grid-cols-3 md:gap-8"
+						stag={0.14}
+					>
 						{STEPS.map((step, i) => (
 							<motion.div
 								key={step.title}

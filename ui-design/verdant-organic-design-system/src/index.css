@@ -8,159 +8,162 @@
    shapes for body copy. Both are loaded as variable TTFs from /assets.
    ─────────────────────────────────────────────────────────────────────────── */
 @font-face {
-  font-family: "Fraunces";
-  src: url("/assets/Fraunces.ttf") format("truetype");
-  font-weight: 100 900;
-  font-stretch: 100%;
-  font-style: normal;
-  font-display: swap;
+	font-family: "Fraunces";
+	src: url("/assets/Fraunces.ttf") format("truetype");
+	font-weight: 100 900;
+	font-stretch: 100%;
+	font-style: normal;
+	font-display: swap;
 }
 @font-face {
-  font-family: "Fraunces";
-  src: url("/assets/Fraunces-Italic.ttf") format("truetype");
-  font-weight: 100 900;
-  font-stretch: 100%;
-  font-style: italic;
-  font-display: swap;
+	font-family: "Fraunces";
+	src: url("/assets/Fraunces-Italic.ttf") format("truetype");
+	font-weight: 100 900;
+	font-stretch: 100%;
+	font-style: italic;
+	font-display: swap;
 }
 @font-face {
-  font-family: "Nunito";
-  src: url("/assets/Nunito.ttf") format("truetype");
-  font-weight: 200 900;
-  font-style: normal;
-  font-display: swap;
+	font-family: "Nunito";
+	src: url("/assets/Nunito.ttf") format("truetype");
+	font-weight: 200 900;
+	font-style: normal;
+	font-display: swap;
 }
 @font-face {
-  font-family: "Nunito";
-  src: url("/assets/Nunito-Italic.ttf") format("truetype");
-  font-weight: 200 900;
-  font-style: italic;
-  font-display: swap;
+	font-family: "Nunito";
+	src: url("/assets/Nunito-Italic.ttf") format("truetype");
+	font-weight: 200 900;
+	font-style: italic;
+	font-display: swap;
 }
 
 @layer base {
-  :root {
-    color-scheme: light;
-  }
+	:root {
+		color-scheme: light;
+	}
 
-  html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-  }
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
 
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    /* slightly looser tracking + heavier default weight reads warmer */
-    font-weight: 500;
-    letter-spacing: 0.005em;
-    text-rendering: optimizeLegibility;
-  }
+	body {
+		@apply bg-background text-foreground font-sans antialiased;
+		/* slightly looser tracking + heavier default weight reads warmer */
+		font-weight: 500;
+		letter-spacing: 0.005em;
+		text-rendering: optimizeLegibility;
+	}
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-serif;
-    /* nudge Fraunces toward its softer, more humanist optical setting */
-    font-variation-settings: "SOFT" 40, "WONK" 0, "opsz" 90;
-    letter-spacing: -0.015em;
-  }
+	h1,
+	h2,
+	h3,
+	h4 {
+		@apply font-serif;
+		/* nudge Fraunces toward its softer, more humanist optical setting */
+		font-variation-settings:
+			"SOFT" 40,
+			"WONK" 0,
+			"opsz" 90;
+		letter-spacing: -0.015em;
+	}
 
-  ::selection {
-    background-color: rgba(93, 112, 82, 0.22);
-    color: #2c2c24;
-  }
+	::selection {
+		background-color: rgba(93, 112, 82, 0.22);
+		color: #2c2c24;
+	}
 
-  /* Soft, natural focus ring — never a sharp outline. */
-  :focus-visible {
-    outline: none;
-    box-shadow:
-      0 0 0 2px #fdfcf8,
-      0 0 0 4px rgba(93, 112, 82, 0.55);
-    border-radius: 9999px;
-  }
+	/* Soft, natural focus ring — never a sharp outline. */
+	:focus-visible {
+		outline: none;
+		box-shadow:
+			0 0 0 2px #fdfcf8,
+			0 0 0 4px rgba(93, 112, 82, 0.55);
+		border-radius: 9999px;
+	}
 
-  /* Thin, organic scrollbar in palette colours. */
-  ::-webkit-scrollbar {
-    width: 11px;
-    height: 11px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #f0ebe5;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #c9bca7;
-    border: 3px solid #f0ebe5;
-    border-radius: 9999px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #5d7052;
-  }
+	/* Thin, organic scrollbar in palette colours. */
+	::-webkit-scrollbar {
+		width: 11px;
+		height: 11px;
+	}
+	::-webkit-scrollbar-track {
+		background: #f0ebe5;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #c9bca7;
+		border: 3px solid #f0ebe5;
+		border-radius: 9999px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #5d7052;
+	}
 }
 
 @layer components {
-  /* ── Global paper-grain texture ───────────────────────────────────────────
+	/* ── Global paper-grain texture ───────────────────────────────────────────
      CRITICAL signature element. A fixed full-viewport layer tiling the
      vendored noise PNG at very low opacity with multiply blend, giving the
      whole interface an unbleached-paper quality. Sits above the page but
      below interactive content and ignores pointer events. */
-  .grain-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    background-image: url("/assets/noise.png");
-    background-repeat: repeat;
-    background-size: 120px 120px;
-    mix-blend-mode: multiply;
-    opacity: 0.035;
-  }
+	.grain-overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 60;
+		pointer-events: none;
+		background-image: url("/assets/noise.png");
+		background-repeat: repeat;
+		background-size: 120px 120px;
+		mix-blend-mode: multiply;
+		opacity: 0.035;
+	}
 
-  /* A second, denser grain scoped to dark sections so the texture survives
+	/* A second, denser grain scoped to dark sections so the texture survives
      against moss/terracotta fills (multiply alone washes out on dark). */
-  .grain-soft {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: url("/assets/noise.png");
-    background-size: 120px 120px;
-    mix-blend-mode: overlay;
-    opacity: 0.06;
-  }
+	.grain-soft {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background-image: url("/assets/noise.png");
+		background-size: 120px 120px;
+		mix-blend-mode: overlay;
+		opacity: 0.06;
+	}
 }
 
 @layer utilities {
-  /* Organic blob radii — used inline-or-via-class for amorphous shapes. */
-  .blob-1 {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-  .blob-2 {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  }
-  .blob-3 {
-    border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
-  }
-  .blob-4 {
-    border-radius: 40% 60% 65% 35% / 55% 40% 60% 45%;
-  }
+	/* Organic blob radii — used inline-or-via-class for amorphous shapes. */
+	.blob-1 {
+		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+	}
+	.blob-2 {
+		border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+	}
+	.blob-3 {
+		border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
+	}
+	.blob-4 {
+		border-radius: 40% 60% 65% 35% / 55% 40% 60% 45%;
+	}
 
-  /* Hanging serif quote mark used in testimonials. */
-  .font-feature-quote {
-    font-feature-settings: "ss01" 1;
-  }
+	/* Hanging serif quote mark used in testimonials. */
+	.font-feature-quote {
+		font-feature-settings: "ss01" 1;
+	}
 }
 
 /* Honour reduced-motion: freeze ambient drifts and disable the page's smooth
    scroll so the experience is calm and static for those who ask for it. */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
 }

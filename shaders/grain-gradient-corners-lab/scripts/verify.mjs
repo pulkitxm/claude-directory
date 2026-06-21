@@ -98,7 +98,8 @@ try {
 
 	// Hero headline renders (the prompt's preserved copy)
 	const h1 = (await page.locator("h1").first().textContent())?.trim() ?? "";
-	if (/Backgrounds are awesome/i.test(h1)) ok(`hero headline renders ("${h1}")`);
+	if (/Backgrounds are awesome/i.test(h1))
+		ok(`hero headline renders ("${h1}")`);
 	else bad(`hero headline missing (got "${h1}")`);
 
 	// Wordmark
@@ -125,19 +126,25 @@ try {
 	else bad("no WebGL context on canvas");
 
 	// Switch shape corners -> blob
-	const blobBtn = page.locator('aside button[aria-pressed]', { hasText: "Blob" }).first();
+	const blobBtn = page
+		.locator("aside button[aria-pressed]", { hasText: "Blob" })
+		.first();
 	await blobBtn.click();
 	await sleep(700);
 	const box1 = await canvasBox(page);
-	if (box1 && box1.w > 200 && box1.h > 200) ok("shape switch (Blob) keeps live canvas");
+	if (box1 && box1.w > 200 && box1.h > 200)
+		ok("shape switch (Blob) keeps live canvas");
 	else bad(`shape switch lost canvas (${JSON.stringify(box1)})`);
 
 	// Switch palette to Abyss
-	const abyssBtn = page.locator('aside button[aria-pressed]', { hasText: "Abyss" }).first();
+	const abyssBtn = page
+		.locator("aside button[aria-pressed]", { hasText: "Abyss" })
+		.first();
 	await abyssBtn.click();
 	await sleep(600);
 	const box2 = await canvasBox(page);
-	if (box2 && box2.w > 200 && box2.h > 200) ok("palette switch (Abyss) keeps live canvas");
+	if (box2 && box2.w > 200 && box2.h > 200)
+		ok("palette switch (Abyss) keeps live canvas");
 	else bad(`palette switch lost canvas (${JSON.stringify(box2)})`);
 
 	// Speed fader sweeps 0.00 -> 3.00
@@ -162,7 +169,9 @@ try {
 	else bad(`speed fader did not sweep (min="${minTxt}" max="${maxTxt}")`);
 
 	// Freeze toggles the live/frozen telemetry flag
-	const freeze = page.locator("header button", { hasText: /Freeze|Resume/ }).first();
+	const freeze = page
+		.locator("header button", { hasText: /Freeze|Resume/ })
+		.first();
 	await freeze.click();
 	await sleep(500);
 	const frozen = await page.evaluate(() =>

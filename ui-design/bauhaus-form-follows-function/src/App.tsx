@@ -139,8 +139,10 @@ function Hero() {
 						<Eyebrow accent="red">Bauhaus Design System · Est. 1919</Eyebrow>
 					</div>
 
-					<h1 className="animate-rise text-5xl font-black uppercase leading-[0.86] tracking-tighter sm:text-7xl lg:text-8xl"
-						style={{ animationDelay: "140ms" }}>
+					<h1
+						className="animate-rise text-5xl font-black uppercase leading-[0.86] tracking-tighter sm:text-7xl lg:text-8xl"
+						style={{ animationDelay: "140ms" }}
+					>
 						Form
 						<br />
 						Follows
@@ -154,16 +156,20 @@ function Hero() {
 						</span>
 					</h1>
 
-					<p className="animate-rise max-w-md text-lg font-medium leading-relaxed text-ink/80"
-						style={{ animationDelay: "220ms" }}>
+					<p
+						className="animate-rise max-w-md text-lg font-medium leading-relaxed text-ink/80"
+						style={{ animationDelay: "220ms" }}
+					>
 						A design system built like a 1920s poster. Three primary colours,
 						thick black borders, hard offset shadows — every screen{" "}
 						<span className="font-bold">constructed</span>, never merely
 						decorated.
 					</p>
 
-					<div className="animate-rise flex flex-wrap items-center gap-4"
-						style={{ animationDelay: "300ms" }}>
+					<div
+						className="animate-rise flex flex-wrap items-center gap-4"
+						style={{ animationDelay: "300ms" }}
+					>
 						<Btn variant="red">
 							Start Building
 							<ArrowRight className="size-4" strokeWidth={3} />
@@ -171,8 +177,10 @@ function Hero() {
 						<Btn variant="outline">View the Grid</Btn>
 					</div>
 
-					<div className="animate-rise flex items-center gap-6 pt-2"
-						style={{ animationDelay: "380ms" }}>
+					<div
+						className="animate-rise flex items-center gap-6 pt-2"
+						style={{ animationDelay: "380ms" }}
+					>
 						<div className="flex -space-x-2">
 							{TESTIMONIALS.map((t) => (
 								<img
@@ -256,7 +264,9 @@ function Marquee() {
 							{w}
 						</span>
 						<Shape
-							kind={i % 3 === 0 ? "circle" : i % 3 === 1 ? "square" : "triangle"}
+							kind={
+								i % 3 === 0 ? "circle" : i % 3 === 1 ? "square" : "triangle"
+							}
 							className={cx(
 								"size-4",
 								i % 3 === 0
@@ -365,10 +375,7 @@ function Features() {
 									)}
 								>
 									<Icon
-										className={cx(
-											"size-7",
-											ACCENT_TEXT_ON[f.accent],
-										)}
+										className={cx("size-7", ACCENT_TEXT_ON[f.accent])}
 										strokeWidth={2.5}
 									/>
 								</span>
@@ -411,7 +418,10 @@ function Process() {
 						className="absolute left-0 right-0 top-10 hidden h-1 bg-white/40 md:block"
 					/>
 					{STEPS.map((s, i) => (
-						<div key={s.title} className="relative flex flex-col items-center gap-5 text-center">
+						<div
+							key={s.title}
+							className="relative flex flex-col items-center gap-5 text-center"
+						>
 							<div
 								className={cx(
 									"relative z-10 grid size-20 place-items-center border-4 border-ink bg-white shadow-hard-md",
@@ -458,8 +468,8 @@ function Benefits() {
 					</h2>
 					<p className="max-w-md text-lg font-medium leading-relaxed text-white/90">
 						A rigid system is a creative engine, not a cage. When the palette,
-						borders and shadows are fixed, you spend your energy on
-						composition — where it counts.
+						borders and shadows are fixed, you spend your energy on composition
+						— where it counts.
 					</p>
 					<div className="pt-2">
 						<Btn variant="ondark">
@@ -538,9 +548,7 @@ function Pricing() {
 									<p
 										className={cx(
 											"text-sm font-bold",
-											p.accent === "yellow"
-												? "text-ink/70"
-												: "text-white/80",
+											p.accent === "yellow" ? "text-ink/70" : "text-white/80",
 										)}
 									>
 										{p.blurb}
@@ -581,10 +589,7 @@ function Pricing() {
 												)}
 											>
 												<Check
-													className={cx(
-														"size-3",
-														ACCENT_TEXT_ON[p.accent],
-													)}
+													className={cx("size-3", ACCENT_TEXT_ON[p.accent])}
 													strokeWidth={4}
 												/>
 											</span>
@@ -762,12 +767,15 @@ function Faq() {
 					<p className="max-w-sm text-lg font-medium leading-relaxed text-ink/75">
 						Everything you might ask before laying the first shape on the grid.
 					</p>
-					<div
-						aria-hidden
-						className="mt-4 hidden items-center gap-3 lg:flex"
-					>
-						<Shape kind="circle" className="size-8 border-2 border-ink bg-bauhaus-red" />
-						<Shape kind="square" className="size-8 border-2 border-ink bg-bauhaus-blue" />
+					<div aria-hidden className="mt-4 hidden items-center gap-3 lg:flex">
+						<Shape
+							kind="circle"
+							className="size-8 border-2 border-ink bg-bauhaus-red"
+						/>
+						<Shape
+							kind="square"
+							className="size-8 border-2 border-ink bg-bauhaus-blue"
+						/>
 						<Shape kind="triangle" className="size-9 bg-bauhaus-yellow" />
 					</div>
 				</div>
@@ -843,8 +851,14 @@ function FinalCta() {
 			/>
 			<Container className="relative z-10 flex flex-col items-center gap-8 text-center">
 				<div className="flex items-center gap-3">
-					<Shape kind="circle" className="size-6 border-2 border-ink bg-bauhaus-red" />
-					<Shape kind="square" className="size-6 border-2 border-ink bg-bauhaus-blue" />
+					<Shape
+						kind="circle"
+						className="size-6 border-2 border-ink bg-bauhaus-red"
+					/>
+					<Shape
+						kind="square"
+						className="size-6 border-2 border-ink bg-bauhaus-blue"
+					/>
 					<Shape kind="triangle" className="size-7 bg-ink" />
 				</div>
 				<h2 className="max-w-4xl text-4xl font-black uppercase leading-[0.86] tracking-tighter sm:text-6xl lg:text-7xl">

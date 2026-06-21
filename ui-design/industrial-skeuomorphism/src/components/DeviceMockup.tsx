@@ -43,8 +43,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 			<div
 				className="relative rounded-[24px] p-3 transition-transform duration-500 ease-mech group-hover/device:scale-[1.02]"
 				style={{
-					background:
-						"linear-gradient(145deg, #353d44, #1c2227)",
+					background: "linear-gradient(145deg, #353d44, #1c2227)",
 					boxShadow:
 						"18px 18px 40px rgba(108,118,134,0.55), -10px -10px 28px rgba(255,255,255,0.65), inset 1px 1px 1px rgba(255,255,255,0.12)",
 				}}
@@ -57,9 +56,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 						SX-1&nbsp;//&nbsp;CTRL
 					</span>
 					<div className="flex items-center gap-2">
-						<span className="stamp text-[0.5rem] text-slate-soft/60">
-							PWR
-						</span>
+						<span className="stamp text-[0.5rem] text-slate-soft/60">PWR</span>
 						<span
 							className="h-2 w-2 animate-pulse rounded-full bg-accent"
 							style={{ boxShadow: "var(--shadow-glow)" }}
@@ -101,10 +98,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 				<div className="mt-2.5 flex items-center justify-between px-1.5">
 					<div className="flex gap-[3px]">
 						{Array.from({ length: 7 }).map((_, i) => (
-							<span
-								key={i}
-								className="h-1.5 w-1.5 rounded-full bg-black/35"
-							/>
+							<span key={i} className="h-1.5 w-1.5 rounded-full bg-black/35" />
 						))}
 					</div>
 					<div className="flex items-center gap-2">

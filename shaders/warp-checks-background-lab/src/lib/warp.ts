@@ -80,15 +80,78 @@ export interface WarpControl {
  * every continuous uniform is exposed so the integration is fully drivable.
  */
 export const WARP_CONTROLS: WarpControl[] = [
-	{ key: "speed", label: "Speed", min: 0, max: 3, step: 0.01, hint: "Clock rate of the warp animation" },
-	{ key: "swirl", label: "Swirl", min: 0, max: 1.5, step: 0.01, hint: "Strength of the rotational push" },
-	{ key: "distortion", label: "Distortion", min: 0, max: 1, step: 0.01, hint: "Domain warp applied to the checks" },
-	{ key: "swirlIterations", label: "Swirl Iter", min: 1, max: 20, step: 1, hint: "How many times the swirl folds back" },
-	{ key: "proportion", label: "Proportion", min: 0, max: 1, step: 0.01, hint: "Balance between the colour bands" },
-	{ key: "softness", label: "Softness", min: 0, max: 1, step: 0.01, hint: "Edge feathering of the checks" },
-	{ key: "shapeScale", label: "Shape Scale", min: 0.02, max: 0.6, step: 0.01, hint: "Size of the repeating motif" },
-	{ key: "scale", label: "Scale", min: 0.3, max: 2.5, step: 0.01, hint: "Overall zoom of the field" },
-	{ key: "rotation", label: "Rotation", min: 0, max: 360, step: 1, hint: "Static rotation of the whole field (deg)" },
+	{
+		key: "speed",
+		label: "Speed",
+		min: 0,
+		max: 3,
+		step: 0.01,
+		hint: "Clock rate of the warp animation",
+	},
+	{
+		key: "swirl",
+		label: "Swirl",
+		min: 0,
+		max: 1.5,
+		step: 0.01,
+		hint: "Strength of the rotational push",
+	},
+	{
+		key: "distortion",
+		label: "Distortion",
+		min: 0,
+		max: 1,
+		step: 0.01,
+		hint: "Domain warp applied to the checks",
+	},
+	{
+		key: "swirlIterations",
+		label: "Swirl Iter",
+		min: 1,
+		max: 20,
+		step: 1,
+		hint: "How many times the swirl folds back",
+	},
+	{
+		key: "proportion",
+		label: "Proportion",
+		min: 0,
+		max: 1,
+		step: 0.01,
+		hint: "Balance between the colour bands",
+	},
+	{
+		key: "softness",
+		label: "Softness",
+		min: 0,
+		max: 1,
+		step: 0.01,
+		hint: "Edge feathering of the checks",
+	},
+	{
+		key: "shapeScale",
+		label: "Shape Scale",
+		min: 0.02,
+		max: 0.6,
+		step: 0.01,
+		hint: "Size of the repeating motif",
+	},
+	{
+		key: "scale",
+		label: "Scale",
+		min: 0.3,
+		max: 2.5,
+		step: 0.01,
+		hint: "Overall zoom of the field",
+	},
+	{
+		key: "rotation",
+		label: "Rotation",
+		min: 0,
+		max: 360,
+		step: 1,
+		hint: "Static rotation of the whole field (deg)",
+	},
 ];
 
 export interface WarpPreset {
@@ -195,7 +258,9 @@ export function warpProps(config: WarpConfig) {
  * Parse an `hsl(h, s%, l%)` string into its numeric channels. Used by the
  * palette swatches and the colour readout so the deck can show the exact stops.
  */
-export function parseHsl(s: string): { h: number; s: number; l: number } | null {
+export function parseHsl(
+	s: string,
+): { h: number; s: number; l: number } | null {
 	const m = s.match(/hsl\(\s*([\d.]+)\s*,\s*([\d.]+)%\s*,\s*([\d.]+)%\s*\)/i);
 	if (!m) return null;
 	return { h: Number(m[1]), s: Number(m[2]), l: Number(m[3]) };
