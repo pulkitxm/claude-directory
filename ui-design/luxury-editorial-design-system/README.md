@@ -1,5 +1,7 @@
 # MAISON — Luxury / Editorial Design System Showcase (React, Tailwind CSS v3, Playfair Display)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A standalone showcase page that fully expresses a Luxury / Editorial design system built around the fictional design house MAISON: elegance through restraint, exquisite Playfair Display typography hierarchy, generous negative space, slow cinematic motion at 500–2000ms, intentional asymmetry, grayscale-to-color image reveals, and layered depth through subtle shadows — evoking high-end fashion magazines and luxury brand websites. Generated with Claude Fable 5.
 
 ## Sections

@@ -1,5 +1,7 @@
 # WERKBUND — Bauhaus Design System Landing Page (React + Vite + TypeScript + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full landing page that puts a complete **Bauhaus design system** to work: three primary colours (red, blue, yellow) on stark black, thick borders, hard offset shadows, binary radii, and massive uppercase Outfit type — every section treated as a constructed poster panel rather than a generic web layout. Built with React 18, TypeScript, Vite 6, and Tailwind CSS v4, with composable primitives and design tokens declared once. Generated with Claude Fable 5.
 
 A full landing page that puts a complete **Bauhaus design system** to work. Built

@@ -1,5 +1,7 @@
 # Sidi Bou Said — Procedural 3D Walkthrough Scene (Three.js + GLSL + HTML Canvas)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A single-file Three.js scene that recreates the cliffside village of Sidi Bou Said, Tunisia, and lets you navigate its winding blue-and-white alleyway at eye level. Every texture and mesh is generated procedurally in-script — no external assets — so the whole thing runs from one copy-pasteable HTML file. Generated with Claude Fable 5.
 
 The scene leans on the village's signature look: white-washed plaster walls (procedural stucco bump maps on a matte-white material), flat roofs with traditional domes (*koubba*), and vibrant Sidi Bou Said blue on arched doors, window grates, and *mushrabiya* screens. A sloped cobblestone street (canvas-generated displacement/roughness) climbs to a cliff-edge overlook above the Gulf of Tunis, where a shader-driven sea glitters under a warm Mediterranean sky. Instanced bougainvillea petals drape the walls and terracotta pots line the alley.
