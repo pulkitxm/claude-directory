@@ -1,17 +1,6 @@
-# WEBMASTER 95 — A Retro / 90s Nostalgia Design System
+# WEBMASTER 95 — Retro / 90s Nostalgia Design System Showcase (HTML + CSS + Vanilla JS)
 
-A self-contained showcase of the **Retro / 90s Nostalgia** aesthetic — built as
-living documentation for a design system rendered the way it would have looked on
-a **Windows 95** machine in 1997. Silver (`#C0C0C0`) button-face gray, pure-saturation
-system colors, beveled everything, and **zero border-radius, anywhere**.
-
-The page reads as a faux Windows 95 desktop / GeoCities homepage that documents its
-own DNA: a navy desktop bar with a live clock, a colorful scrolling marquee, a
-windowed hero with rainbow text and an "OK" dialog, the color-token gallery, a type
-specimen, a 2×2 component kit (buttons, inputs, tabs, badges + progress meter), bright
-2px-stroke feature boxes, a clickable "color organ", a glowing green hit counter that
-counts up, a 4-step alternating-row checklist, shareware pricing windows, a working
-guestbook, and a yellow/black construction-stripe CTA — over a Start menu + taskbar.
+A self-contained living documentation page for the **Retro / 90s Nostalgia** design system, rendered as it would have looked on a **Windows 95** machine in 1997 — silver button-face gray, pure-saturation system colors, beveled everything, and zero border-radius anywhere. The page presents as a faux Windows 95 desktop / GeoCities homepage that documents its own design DNA through a colorful scrolling marquee, windowed UI cards, a live hit counter, and a fully working guestbook. Generated with Claude Fable 5.
 
 ## What it demonstrates
 
@@ -80,3 +69,7 @@ no console errors. 67 assertions.
 | `assets/fonts/*` | MS Sans Serif, Anton, VT323, Pixelify Sans — vendored locally |
 | `verify.mjs` | Headless verification script (checklist + interactivity + a11y) |
 | `prompt.md` | The originating prompt (verbatim) |
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

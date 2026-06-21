@@ -1,16 +1,6 @@
-# Lumi — Material You (Material Design 3) Showcase
+# Lumi — Material You (Material Design 3) Showcase (React, Tailwind CSS v4, Roboto)
 
-A complete, polished landing page that showcases an entire **Material You (Material
-Design 3)** design system: personal, adaptive and spirited. Depth comes from a
-**tonal surface system** (never stark white), buttons are **pills**, containers get
-**architectural 24–48px radii**, and every interaction rides Material's signature
-"emphasized decelerate" easing — `cubic-bezier(0.2, 0, 0, 1)` — with state-layer
-hover/press feedback and organic, blurred background shapes that feel alive.
-
-The page presents a fictional theming toolkit, **Lumi**, whose product *is* the
-design system: seed one color and a whole tonal palette blooms.
-
-Generated with Claude Fable 5 for the [claude-directory](../../README.md).
+A complete, polished landing page that showcases an entire Material You (Material Design 3) design system for a fictional theming toolkit ("Lumi"): personal, adaptive and spirited with a tonal surface system, pill-shaped buttons, 24–48px architectural border radii, organic blurred background shapes, state-layer hover feedback, and Material's signature "emphasized decelerate" easing (`cubic-bezier(0.2, 0, 0, 1)`) throughout. Generated with Claude Fable 5.
 
 ## What it demonstrates
 
@@ -75,3 +65,7 @@ npm run verify http://localhost:4173
 # Use a specific browser binary if needed:
 # CHROME_PATH=/path/to/chrome npm run verify http://localhost:4173
 ```
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

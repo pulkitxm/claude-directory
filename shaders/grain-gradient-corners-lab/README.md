@@ -1,17 +1,6 @@
-# Grainfield // GrainGradient Lab
+# Grainfield — GrainGradient Corners Shader Lab (@paper-design/shaders-react + React + Tailwind CSS)
 
-> Integration of the **paper-design shader background** prompt — the verbatim
-> `GradientBackground` (a `@paper-design/shaders-react` **GrainGradient** painting
-> the `corners` shape) dropped into a shadcn `components/ui` folder and wrapped in
-> a live instrument console.
-
-A faithful copy-paste of the supplied component, then a lab built around it so the
-shader's whole uniform surface is drivable: shape, palette, softness, intensity,
-grain, scale, rotation and speed — all live, with a telemetry strip reading real
-FPS / clock / frames back out of the render loop. The prompt's
-**"Backgrounds are awesome :)"** hero is preserved verbatim and floats over the field.
-
-![demo](./demo.mp4)
+A shadcn/ui integration of the `@paper-design/shaders-react` **GrainGradient** shader painting the `corners` shape, built into a live instrument console called Grainfield. The verbatim `GradientBackground` component is preserved as a full-bleed WebGL background with all shader uniforms — shape, palette, softness, intensity, grain, scale, rotation, and speed — exposed as drivable faders, with a telemetry strip reading real FPS, clock, and frame count from the render loop. Generated with Claude Fable 5.
 
 ---
 
@@ -175,4 +164,6 @@ All ten checks pass. The walkthrough in `demo.mp4` was recorded with the repo's
 React 19 · TypeScript · Vite · Tailwind CSS v4 · `@paper-design/shaders-react`
 (GrainGradient) · shadcn structure · lucide-react. Geist fonts vendored locally.
 
-Part of the [claude-directory](../README.md).
+---
+
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

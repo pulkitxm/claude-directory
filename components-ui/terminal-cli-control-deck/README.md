@@ -1,15 +1,6 @@
-# Terminal CLI Control Deck
+# Terminal CLI Control Deck — Phosphor-Green Infrastructure Dashboard (React + Vite + Tailwind CSS)
 
-`ACME CONTROL DECK // TERMINAL OS` — a single-pane infrastructure control panel
-rendered entirely in the **Terminal CLI** design system: phosphor-green on
-near-black, monospace everywhere, zero rounded corners, and a subtle CRT
-scanline overlay. It's the kind of surface that feels like configuring a
-mainframe rather than clicking through a dashboard.
-
-This experiment is structured as a **design-system integration**: the system
-itself is centralized (tokens in `@theme` + composable primitives under
-`src/design-system/`), and a real product surface is composed from those
-primitives — no one-off styles, no hand-coded hex values in components.
+`ACME CONTROL DECK // TERMINAL OS` — a single-pane infrastructure control panel rendered entirely in the Terminal CLI design system: phosphor-green on near-black, monospace everywhere, zero rounded corners, and a subtle CRT scanline overlay. The design system is centralized (tokens in `@theme` + composable primitives under `src/design-system/`) and a real product surface is composed from those primitives. Features an interactive zsh console, real-time ASCII meters, a self-driving syslog feed, and a box-less access form — ideal for developer tools, admin dashboards, and retro-hacker UI showcases. Generated with Claude Fable 5.
 
 ## What's in it
 
@@ -59,3 +50,7 @@ npm run verify    # headless Playwright checks against the preview server
 
 `npm run verify` boots nothing itself — start `npm run preview` first, then run
 `node scripts/verify.mjs http://localhost:4173`.
+
+---
+
+Part of the [Components & UI](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

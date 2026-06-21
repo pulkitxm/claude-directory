@@ -1,6 +1,6 @@
 # Animations & loaders
 
-12 **Animations & loaders** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+**12 animation & loader experiments generated with Claude Fable 5** — scroll-driven animations, loading screens, page transitions, and micro-interactions built with Framer Motion, GSAP, CSS, and framework-free JavaScript. A reference set of AI-generated web animations and loaders. Part of the [claude-directory](../README.md) ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|

@@ -1,16 +1,6 @@
-# Neo-Brutalism — LOUDHOUSE
+# LOUDHOUSE — Neo-Brutalism Design System Showcase (React + TypeScript + Tailwind CSS v4)
 
-A single-page design-system showcase for a fictional component kit
-("**LOUDHOUSE**"), built to express the **Neo-brutalism** design system end to
-end: the digital-punk rebellion against clean SaaS — thick black strokes, hard
-offset shadows, highlighter color blocks, sticker rotations, and mechanical
-click-down interactions. _If it doesn't have a border, it doesn't exist._
-
-It is a full landing page — sticky nav with a mobile drawer, a chaos-zone hero,
-a live token gallery, a six-card feature grid, a count-up stats band, an
-interactive component playground, a four-step process, scaled pricing tiers, a
-testimonials marquee, a keyboard-operable FAQ, a CTA form, and a five-column
-footer — color-blocked top to bottom for high-contrast rhythm.
+A single-page design-system showcase for a fictional component kit called **LOUDHOUSE**, built to express the Neo-Brutalism aesthetic end to end: thick black borders on every element, hard zero-blur offset shadows, highlighter color-blocked sections, sticker rotations, and mechanical click-down button interactions. The page documents its own design DNA — from the centralized `@theme` token block to a live component playground — making it both a reference implementation and a living style guide. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")
 
@@ -103,3 +93,7 @@ content. **60 checks, all green.**
 
 Stack: React 18, TypeScript, Vite, Tailwind CSS v4, react-fast-marquee, Lucide,
 Space Grotesk (vendored).
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

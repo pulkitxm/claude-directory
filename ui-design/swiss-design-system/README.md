@@ -1,14 +1,6 @@
-# SCHRIFT — A Swiss International Design System
+# SCHRIFT — Swiss International Typographic Style Design System (HTML + CSS + Vanilla JS)
 
-A self-contained showcase of the **International Typographic Style (Swiss Style)** —
-built as living documentation for a design system named **SCHRIFT**. Black, white, and a
-single Swiss Red (`#FF3000`); the grid is law, typography is the interface, and depth comes
-from pattern, never shadow.
-
-The page reads as a museum-style exhibition of its own DNA: a Bauhaus hero composition, a
-principles ticker, the color-token swatches, a mathematical type-scale specimen, animated
-system metrics, a 2×2 component gallery (each cell on a different CSS texture), the four-step
-integration method, color-inverting feature cards, testimonials, an accordion FAQ, and a CTA.
+A full-page living documentation showcase for **SCHRIFT**, a strict implementation of the **International Typographic Style (Swiss Style)** — black, white, and a single Swiss Red (`#FF3000`), with the grid as law and typography as the interface. The page reads as a museum-style exhibition of its own DNA: a Bauhaus hero composition, a principles ticker, color-token swatches, a mathematical type-scale specimen, animated system metrics, a 2×2 component gallery on CSS texture backgrounds, a four-step integration method, color-inverting feature cards, testimonials, an accordion FAQ, and a CTA. No framework, no build step, fully offline. Generated with Claude Fable 5.
 
 ## What it demonstrates
 
@@ -56,3 +48,7 @@ node verify.mjs   # headless Chromium checks (desktop 1280 + mobile 390): tokens
 | `assets/noise.svg` | Fractal-noise paper-grain texture |
 | `assets/fonts/*.woff2` | Inter, vendored locally |
 | `verify.mjs` | Headless verification script |
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

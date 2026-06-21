@@ -1,10 +1,6 @@
-# Kinetic Typography Poster
+# Kinetic Typography Poster — Brutalist Motion Design Festival Page (React, Framer Motion, Tailwind CSS v4)
 
-A kinetic, poster-style page for a fictional design festival ("MotionType"),
-built to express the **Kinetic Typography** design system end to end:
-high-energy brutalism meets kinetic poster design — typography *is* the
-structure, motion is the rhythm, and one acid-yellow accent does all the heavy
-lifting against near-black and off-white.
+A kinetic, poster-style landing page for a fictional design festival ("MotionType"), built end to end as a reference implementation of the Kinetic Typography design system: high-energy brutalism meets kinetic poster design, with viewport-width headlines, infinite marquees, hard color inversions, and scroll-triggered transforms. Typography is the entire visual structure — motion is the rhythm, and a single acid-yellow accent does all the heavy lifting against near-black and off-white. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")
 
@@ -73,3 +69,7 @@ all motion while keeping the content. 40 checks, all green.
 
 Stack: React 18, TypeScript, Vite, Tailwind CSS v4, Framer Motion,
 react-fast-marquee, Space Grotesk (vendored).
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
