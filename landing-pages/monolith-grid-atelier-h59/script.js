@@ -1,64 +1,75 @@
 (function () {
-  'use strict';
+	"use strict";
 
-  // ---- Menu overlay ----
-  var burger = document.getElementById('burger');
-  var overlay = document.getElementById('overlay');
-  var isOpen = false;
+	// ---- Menu overlay ----
+	var burger = document.getElementById("burger");
+	var overlay = document.getElementById("overlay");
+	var isOpen = false;
 
-  function setMenu(open) {
-    isOpen = open;
-    burger.classList.toggle('open', open);
-    overlay.classList.toggle('open', open);
-    burger.setAttribute('aria-expanded', String(open));
-    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
+	function setMenu(open) {
+		isOpen = open;
+		burger.classList.toggle("open", open);
+		overlay.classList.toggle("open", open);
+		burger.setAttribute("aria-expanded", String(open));
+		burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+		document.body.style.overflow = open ? "hidden" : "";
+	}
 
-  burger.addEventListener('click', function () { setMenu(!isOpen); });
-  overlay.querySelectorAll('[data-close]').forEach(function (a) {
-    a.addEventListener('click', function () { setMenu(false); });
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && isOpen) setMenu(false);
-  });
+	burger.addEventListener("click", function () {
+		setMenu(!isOpen);
+	});
+	overlay.querySelectorAll("[data-close]").forEach(function (a) {
+		a.addEventListener("click", function () {
+			setMenu(false);
+		});
+	});
+	document.addEventListener("keydown", function (e) {
+		if (e.key === "Escape" && isOpen) setMenu(false);
+	});
 
-  // ---- Scroll reveal ----
-  var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    reveals.forEach(function (el) { io.observe(el); });
-  } else {
-    reveals.forEach(function (el) { el.classList.add('in'); });
-  }
+	// ---- Scroll reveal ----
+	var reveals = document.querySelectorAll(".reveal");
+	if ("IntersectionObserver" in window) {
+		var io = new IntersectionObserver(
+			function (entries) {
+				entries.forEach(function (entry) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("in");
+						io.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+		);
+		reveals.forEach(function (el) {
+			io.observe(el);
+		});
+	} else {
+		reveals.forEach(function (el) {
+			el.classList.add("in");
+		});
+	}
 
-  // ---- Form ----
-  var form = document.getElementById('enquiry');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var btn = form.querySelector('.submit');
-      if (btn.classList.contains('done')) return;
-      var original = btn.textContent;
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      setTimeout(function () {
-        btn.textContent = 'Enquiry Received →';
-        btn.classList.add('done');
-        btn.disabled = false;
-        form.reset();
-        setTimeout(function () {
-          btn.textContent = original;
-          btn.classList.remove('done');
-        }, 3200);
-      }, 1300);
-    });
-  }
+	// ---- Form ----
+	var form = document.getElementById("enquiry");
+	if (form) {
+		form.addEventListener("submit", function (e) {
+			e.preventDefault();
+			var btn = form.querySelector(".submit");
+			if (btn.classList.contains("done")) return;
+			var original = btn.textContent;
+			btn.textContent = "Sending…";
+			btn.disabled = true;
+			setTimeout(function () {
+				btn.textContent = "Enquiry Received →";
+				btn.classList.add("done");
+				btn.disabled = false;
+				form.reset();
+				setTimeout(function () {
+					btn.textContent = original;
+					btn.classList.remove("done");
+				}, 3200);
+			}, 1300);
+		});
+	}
 })();

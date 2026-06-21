@@ -6,7 +6,10 @@ import { TRUST_LOGOS } from "../lib/content";
 export function LogoStrip() {
 	const row = [...TRUST_LOGOS, ...TRUST_LOGOS];
 	return (
-		<section aria-label="Trusted by leading teams" className="border-y border-slate-200/70 bg-white/60 py-10">
+		<section
+			aria-label="Trusted by leading teams"
+			className="border-y border-slate-200/70 bg-white/60 py-10"
+		>
 			<Shell>
 				<p className="text-center text-sm font-medium text-slate-400">
 					Trusted by operations teams at 12,000+ companies

@@ -29,10 +29,7 @@ export function Testimonials() {
 					{TESTIMONIALS.map((t) => (
 						<motion.div key={t.name} variants={fadeUp}>
 							<Card className="flex h-full flex-col p-7">
-								<Quote
-									className="h-8 w-8 text-indigo-200"
-									aria-hidden="true"
-								/>
+								<Quote className="h-8 w-8 text-indigo-200" aria-hidden="true" />
 								<div
 									className="mt-4 flex gap-0.5 text-amber-400"
 									aria-label="Rated 5 out of 5"
@@ -56,7 +53,9 @@ export function Testimonials() {
 										<span className="block text-sm font-bold text-slate-900">
 											{t.name}
 										</span>
-										<span className="block text-xs text-slate-500">{t.role}</span>
+										<span className="block text-xs text-slate-500">
+											{t.role}
+										</span>
 									</span>
 								</figcaption>
 							</Card>

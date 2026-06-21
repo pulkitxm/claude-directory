@@ -58,7 +58,10 @@ export function StarSticker({
 			aria-hidden="true"
 			className={`flex items-center justify-center rounded-full border-4 border-neo-ink ${bg} neo-shadow ${spin ? "animate-spin-slow" : ""} ${className}`}
 		>
-			<Star className="h-1/2 w-1/2 fill-neo-ink stroke-neo-ink" strokeWidth={3} />
+			<Star
+				className="h-1/2 w-1/2 fill-neo-ink stroke-neo-ink"
+				strokeWidth={3}
+			/>
 		</div>
 	);
 }

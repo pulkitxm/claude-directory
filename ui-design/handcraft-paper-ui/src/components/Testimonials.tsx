@@ -43,7 +43,14 @@ function Avatar({ tone, name }: { tone: string; name: string }) {
 			aria-hidden
 			title={name}
 		>
-			<svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="#2d2d2d" strokeWidth="1.8" strokeLinecap="round">
+			<svg
+				viewBox="0 0 24 24"
+				className="h-8 w-8"
+				fill="none"
+				stroke="#2d2d2d"
+				strokeWidth="1.8"
+				strokeLinecap="round"
+			>
 				<circle cx="12" cy="9" r="4" />
 				<path d="M5 21 Q12 14 19 21" />
 			</svg>
@@ -82,9 +89,17 @@ export function Testimonials() {
 								className="relative border-2 border-ink bg-card p-6 shadow-[var(--shadow-hard)]"
 								style={{ borderRadius: radius.wobblyLg }}
 							>
-								<div className="mb-3 flex gap-0.5 text-accent" aria-label="5 out of 5 stars">
+								<div
+									className="mb-3 flex gap-0.5 text-accent"
+									aria-label="5 out of 5 stars"
+								>
 									{Array.from({ length: 5 }).map((_, s) => (
-										<Star key={s} size={18} strokeWidth={2.5} fill="currentColor" />
+										<Star
+											key={s}
+											size={18}
+											strokeWidth={2.5}
+											fill="currentColor"
+										/>
 									))}
 								</div>
 								<blockquote className="text-lg text-ink md:text-xl">

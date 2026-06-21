@@ -72,9 +72,10 @@ export function Stages() {
 				<p className="mt-3 text-pretty text-[15px] leading-relaxed text-white/55">
 					Each card below is the same{" "}
 					<code className="font-mono text-iris-bright">ContainerScroll</code>{" "}
-					component — only its <code className="font-mono text-white/70">children</code> change.
-					Keep scrolling and watch every device tilt upright in sync with the
-					live readout on the right.
+					component — only its{" "}
+					<code className="font-mono text-white/70">children</code> change. Keep
+					scrolling and watch every device tilt upright in sync with the live
+					readout on the right.
 				</p>
 			</div>
 

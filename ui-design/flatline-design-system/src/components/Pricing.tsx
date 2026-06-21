@@ -20,7 +20,12 @@ const PLANS: Plan[] = [
 		price: "$0",
 		cadence: "forever",
 		blurb: "For one designer testing the waters.",
-		features: ["The full token file", "12 flat components", "Community support", "1 project"],
+		features: [
+			"The full token file",
+			"12 flat components",
+			"Community support",
+			"1 project",
+		],
 		cta: "Start free",
 	},
 	{
@@ -54,17 +59,27 @@ const PLANS: Plan[] = [
 	},
 ];
 
-function FeatureRow({ children, light }: { children: string; light?: boolean }) {
+function FeatureRow({
+	children,
+	light,
+}: {
+	children: string;
+	light?: boolean;
+}) {
 	return (
 		<li className="flex items-start gap-3">
 			<span
 				className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-					light ? "bg-white text-[var(--color-brand)]" : "bg-[var(--color-brand)] text-white"
+					light
+						? "bg-white text-[var(--color-brand)]"
+						: "bg-[var(--color-brand)] text-white"
 				}`}
 			>
 				<Check size={13} strokeWidth={3} />
 			</span>
-			<span className={light ? "text-blue-50" : "text-gray-600"}>{children}</span>
+			<span className={light ? "text-blue-50" : "text-gray-600"}>
+				{children}
+			</span>
 		</li>
 	);
 }

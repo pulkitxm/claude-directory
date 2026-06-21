@@ -60,7 +60,10 @@ function ThemePreview() {
 						<span
 							key={i}
 							className="flex-1 rounded-full bg-[var(--color-md-primary)]"
-							style={{ height: `${h * 1.4}px`, opacity: 0.35 + (h / 26) * 0.65 }}
+							style={{
+								height: `${h * 1.4}px`,
+								opacity: 0.35 + (h / 26) * 0.65,
+							}}
 						/>
 					))}
 				</div>

@@ -24,7 +24,12 @@ const TIERS: Tier[] = [
 		price: "$0",
 		period: "/forever",
 		blurb: "Boot the OS and ship a single neon surface.",
-		features: ["Core token sheet", "5 primitives", "CRT scanline overlay", "Community relay"],
+		features: [
+			"Core token sheet",
+			"5 primitives",
+			"CRT scanline overlay",
+			"Community relay",
+		],
 		cta: "Download",
 	},
 	{
@@ -99,7 +104,9 @@ export function Pricing() {
 								<div className="mt-6 flex items-end gap-1">
 									<span
 										className={`font-heading text-5xl font-black ${
-											tier.popular ? "text-sunset" : "text-[var(--color-cyan)] drop-shadow-[0_0_8px_rgba(0,255,255,0.6)]"
+											tier.popular
+												? "text-sunset"
+												: "text-[var(--color-cyan)] drop-shadow-[0_0_8px_rgba(0,255,255,0.6)]"
 										}`}
 									>
 										{tier.price}
@@ -111,7 +118,10 @@ export function Pricing() {
 
 								<ul className="mt-7 flex-1 space-y-3">
 									{tier.features.map((feat) => (
-										<li key={feat} className="flex items-start gap-3 font-mono text-sm text-[var(--color-chrome)]/80">
+										<li
+											key={feat}
+											className="flex items-start gap-3 font-mono text-sm text-[var(--color-chrome)]/80"
+										>
 											<Check
 												size={16}
 												className="mt-0.5 shrink-0 text-[var(--color-magenta)]"

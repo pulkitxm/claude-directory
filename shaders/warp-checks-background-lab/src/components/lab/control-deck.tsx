@@ -105,7 +105,11 @@ export function ControlDeck({
 				<div className="mb-2">
 					<Kicker>Shape</Kicker>
 				</div>
-				<div className="grid grid-cols-3 gap-2" role="group" aria-label="Warp shape">
+				<div
+					className="grid grid-cols-3 gap-2"
+					role="group"
+					aria-label="Warp shape"
+				>
 					{WARP_SHAPES.map((s) => {
 						const on = config.shape === s;
 						return (
@@ -155,7 +159,9 @@ export function ControlDeck({
 								aria-label={ctrl.label}
 								data-fader={ctrl.key}
 								onChange={(e) =>
-									onChange({ [ctrl.key]: Number(e.target.value) } as Partial<WarpConfig>)
+									onChange({
+										[ctrl.key]: Number(e.target.value),
+									} as Partial<WarpConfig>)
 								}
 							/>
 						</label>

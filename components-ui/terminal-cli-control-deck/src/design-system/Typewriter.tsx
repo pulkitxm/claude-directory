@@ -61,7 +61,10 @@ export function Typewriter({
 			{/* visible, progressively revealed */}
 			<span aria-hidden="true">{text.slice(0, count)}</span>
 			{cursor && (
-				<Cursor char="_" className={done ? "" : "[animation:none] opacity-100"} />
+				<Cursor
+					char="_"
+					className={done ? "" : "[animation:none] opacity-100"}
+				/>
 			)}
 			{/* full text for AT + headless tests */}
 			<span className="sr-only">{text}</span>

@@ -19,7 +19,12 @@ const TIERS: Tier[] = [
 		price: "$0",
 		cadence: "free, forever",
 		blurb: "For solo scribblers and the occasional napkin sketch.",
-		features: ["3 active boards", "Unlimited sticky notes", "Basic pen & shapes", "7-day history"],
+		features: [
+			"3 active boards",
+			"Unlimited sticky notes",
+			"Basic pen & shapes",
+			"7-day history",
+		],
 		cta: "Grab a marker",
 	},
 	{
@@ -42,7 +47,12 @@ const TIERS: Tier[] = [
 		price: "$24",
 		cadence: "per person / mo",
 		blurb: "For big rooms with bigger walls and tighter rules.",
-		features: ["Everything in Studio", "SSO & admin controls", "Shared template drawer", "Priority pencil support"],
+		features: [
+			"Everything in Studio",
+			"SSO & admin controls",
+			"Shared template drawer",
+			"Priority pencil support",
+		],
 		cta: "Talk to us",
 	},
 ];
@@ -60,8 +70,8 @@ export function Pricing() {
 						Pick a marker, start scribbling
 					</h2>
 					<p className="mx-auto mt-5 max-w-xl text-lg text-ink/70 md:text-xl">
-						No seats you forgot you bought, no surprise overage emails.
-						Cancel by just… closing the lid.
+						No seats you forgot you bought, no surprise overage emails. Cancel
+						by just… closing the lid.
 					</p>
 				</div>
 
@@ -122,7 +132,9 @@ export function Pricing() {
 									<span className="font-[var(--font-marker)] text-5xl font-bold text-ink">
 										{t.price}
 									</span>
-									<span className="pb-1.5 text-base text-ink/60">{t.cadence}</span>
+									<span className="pb-1.5 text-base text-ink/60">
+										{t.cadence}
+									</span>
 								</div>
 								<p className="mt-3 text-lg text-ink/75">{t.blurb}</p>
 

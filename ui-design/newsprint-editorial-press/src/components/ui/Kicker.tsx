@@ -6,28 +6,25 @@ import { cn } from "@/lib/utils";
  * tag that gives every block its newspaper rubric.
  */
 export function Kicker({
-  children,
-  className,
-  marker = true,
+	children,
+	className,
+	marker = true,
 }: {
-  children: ReactNode;
-  className?: string;
-  marker?: boolean;
+	children: ReactNode;
+	className?: string;
+	marker?: boolean;
 }) {
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.25em]",
-        className,
-      )}
-    >
-      {marker && (
-        <span
-          aria-hidden
-          className="inline-block h-2 w-2 bg-editorial"
-        />
-      )}
-      {children}
-    </span>
-  );
+	return (
+		<span
+			className={cn(
+				"inline-flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.25em]",
+				className,
+			)}
+		>
+			{marker && (
+				<span aria-hidden className="inline-block h-2 w-2 bg-editorial" />
+			)}
+			{children}
+		</span>
+	);
 }

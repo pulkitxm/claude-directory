@@ -23,10 +23,7 @@ export function StatsMarquee() {
 								{stat.label}
 							</span>
 						</div>
-						<span
-							aria-hidden="true"
-							className="text-2xl font-bold md:text-4xl"
-						>
+						<span aria-hidden="true" className="text-2xl font-bold md:text-4xl">
 							✳
 						</span>
 					</div>

@@ -26,7 +26,10 @@ const STEPS = [
 
 export function HowItWorks() {
 	return (
-		<section id="how" className="relative overflow-hidden bg-muted py-28 md:py-36">
+		<section
+			id="how"
+			className="relative overflow-hidden bg-muted py-28 md:py-36"
+		>
 			<div
 				aria-hidden
 				className="pointer-events-none absolute right-0 top-0 h-80 w-80 rounded-full bg-accent/[0.05] blur-[150px]"

@@ -122,9 +122,9 @@ export function ProductDetail() {
 					</Reveal>
 					<Reveal delay={140}>
 						<p className="t-body-l text-[var(--color-md-on-variant)]">
-							Under the hood, Lumi runs the same tonal math as Material You. Drag
-							the seed and watch thirteen carefully spaced tones redraw — then
-							get mapped to roles your components already understand.
+							Under the hood, Lumi runs the same tonal math as Material You.
+							Drag the seed and watch thirteen carefully spaced tones redraw —
+							then get mapped to roles your components already understand.
 						</p>
 					</Reveal>
 					<Reveal delay={200}>

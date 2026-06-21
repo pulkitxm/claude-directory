@@ -53,12 +53,15 @@ export function Cta() {
 							<span className="clay-text-gradient">squish.</span>
 						</h2>
 						<p className="mt-5 max-w-xl text-lg leading-relaxed text-clay-muted">
-							Join 12,000+ makers building warmer, more tactile products. Free to
-							start — no card, no clay under your fingernails.
+							Join 12,000+ makers building warmer, more tactile products. Free
+							to start — no card, no clay under your fingernails.
 						</p>
 
 						{done ? (
-							<div className="clay-pop mt-9 flex items-center gap-3 rounded-2xl bg-white px-7 py-5 shadow-clay-button-soft" data-shown="true">
+							<div
+								className="clay-pop mt-9 flex items-center gap-3 rounded-2xl bg-white px-7 py-5 shadow-clay-button-soft"
+								data-shown="true"
+							>
 								<span className="grid h-11 w-11 place-items-center rounded-full bg-clay-emerald/15 text-clay-emerald">
 									<Check size={22} strokeWidth={3} />
 								</span>

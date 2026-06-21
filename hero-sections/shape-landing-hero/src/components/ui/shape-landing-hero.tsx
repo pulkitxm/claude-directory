@@ -153,9 +153,7 @@ function HeroGeometric({
 						className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
 					>
 						<Circle className="h-2 w-2 fill-rose-500/80" />
-						<span className="text-sm text-white/60 tracking-wide">
-							{badge}
-						</span>
+						<span className="text-sm text-white/60 tracking-wide">{badge}</span>
 					</motion.div>
 
 					<motion.div
@@ -186,8 +184,8 @@ function HeroGeometric({
 						animate="visible"
 					>
 						<p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
-							Crafting exceptional digital experiences through
-							innovative design and cutting-edge technology.
+							Crafting exceptional digital experiences through innovative design
+							and cutting-edge technology.
 						</p>
 					</motion.div>
 				</div>

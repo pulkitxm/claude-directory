@@ -46,7 +46,8 @@ function highlight(code: string, lang: string): string {
 
 		if (m[1]) out += `<span class="tok-comment">${esc(tok)}</span>`;
 		else if (m[2]) out += `<span class="tok-str">${esc(tok)}</span>`;
-		else if (m[3] && KW.test(tok)) out += `<span class="tok-kw">${esc(tok)}</span>`;
+		else if (m[3] && KW.test(tok))
+			out += `<span class="tok-kw">${esc(tok)}</span>`;
 		else if (m[3] && TYPE.test(tok))
 			out += `<span class="tok-type">${esc(tok)}</span>`;
 		else out += esc(tok);

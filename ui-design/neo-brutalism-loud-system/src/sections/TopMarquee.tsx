@@ -7,11 +7,7 @@ import { MARQUEE_TOP } from "../content";
 export function TopMarquee() {
 	return (
 		<div className="border-b-4 border-neo-ink bg-neo-ink">
-			<Marquee
-				speed={45}
-				ariaLabel="Design system principles"
-				className="py-3"
-			>
+			<Marquee speed={45} ariaLabel="Design system principles" className="py-3">
 				{MARQUEE_TOP.map((word) => (
 					<span key={word} className="flex items-center">
 						<span className="px-6 text-base font-bold uppercase tracking-widest text-neo-white">

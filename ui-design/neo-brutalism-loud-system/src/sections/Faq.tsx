@@ -54,7 +54,10 @@ export function Faq() {
 											}`}
 											aria-hidden="true"
 										>
-											<Plus className="h-5 w-5 stroke-neo-ink" strokeWidth={4} />
+											<Plus
+												className="h-5 w-5 stroke-neo-ink"
+												strokeWidth={4}
+											/>
 										</span>
 									</button>
 								</h3>

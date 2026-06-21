@@ -148,7 +148,11 @@ const ALLOYS: Alloy[] = [
 	},
 ];
 
-const SHAPES: Array<{ id: LiquidMetalShape; label: string; icon: typeof Circle }> = [
+const SHAPES: Array<{
+	id: LiquidMetalShape;
+	label: string;
+	icon: typeof Circle;
+}> = [
 	{ id: "circle", label: "Circle", icon: Circle },
 	{ id: "metaballs", label: "Metaballs", icon: Droplet },
 	{ id: "daisy", label: "Daisy", icon: Sparkles },
@@ -160,10 +164,20 @@ const SHAPES: Array<{ id: LiquidMetalShape; label: string; icon: typeof Circle }
  * Small presentational atoms
  * ------------------------------------------------------------------ */
 
-function Stat({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
+function Stat({
+	label,
+	value,
+	accent,
+}: {
+	label: string;
+	value: string;
+	accent?: boolean;
+}) {
 	return (
 		<div className="flex flex-col leading-none">
-			<span className="text-[9px] uppercase tracking-[0.18em] text-ink-dim">{label}</span>
+			<span className="text-[9px] uppercase tracking-[0.18em] text-ink-dim">
+				{label}
+			</span>
 			<span
 				className={cn(
 					"mt-1 font-mono text-[13px] tabular-nums",
@@ -270,7 +284,11 @@ function CodeBlock({
 				className="absolute right-2 top-2 z-10 flex items-center gap-1 rounded-md border border-hairline bg-steel-2/90 px-2 py-1 text-[10px] uppercase tracking-wide text-ink-dim transition-colors hover:text-ink"
 				aria-label="Copy code"
 			>
-				{copied ? <Check className="size-3 text-molten" /> : <Copy className="size-3" />}
+				{copied ? (
+					<Check className="size-3 text-molten" />
+				) : (
+					<Copy className="size-3" />
+				)}
 				{copied ? "Copied" : "Copy"}
 			</button>
 			<pre className="overflow-x-auto px-4 py-3 font-mono text-[12px] leading-relaxed text-ink">
@@ -292,21 +310,91 @@ cd my-app
 npx shadcn@latest init        # writes components.json + the @/ alias
 npm i tailwindcss @tailwindcss/vite`;
 
-const PROPS_API: Array<{ name: string; type: string; def: string; note: string }> = [
-	{ name: "colorBack", type: "string", def: '"hsl(0,0%,0%,0)"', note: "Backdrop color (RGBA-aware → transparent)" },
-	{ name: "colorTint", type: "string", def: '"hsl(29,77%,49%)"', note: "Color-burn tint over the metal" },
-	{ name: "repetition", type: "number", def: "4", note: "Stripe-pattern density (1–10)" },
-	{ name: "softness", type: "number", def: "0.6", note: "Edge softness: 0 hard … 1 smooth (0–1)" },
-	{ name: "shiftRed", type: "number", def: "0.25", note: "R-channel dispersion (−1…1)" },
-	{ name: "shiftBlue", type: "number", def: "0.25", note: "B-channel dispersion (−1…1)" },
-	{ name: "distortion", type: "number", def: "0.12", note: "Noise distortion on stripes (0–1)" },
-	{ name: "contour", type: "number", def: "1", note: "Edge-distortion strength (0–1)" },
-	{ name: "shape", type: "LiquidMetalShape", def: '"circle"', note: "none | circle | daisy | diamond | metaballs" },
-	{ name: "rotation", type: "number", def: "25", note: "Overall rotation in degrees (0–360)" },
+const PROPS_API: Array<{
+	name: string;
+	type: string;
+	def: string;
+	note: string;
+}> = [
+	{
+		name: "colorBack",
+		type: "string",
+		def: '"hsl(0,0%,0%,0)"',
+		note: "Backdrop color (RGBA-aware → transparent)",
+	},
+	{
+		name: "colorTint",
+		type: "string",
+		def: '"hsl(29,77%,49%)"',
+		note: "Color-burn tint over the metal",
+	},
+	{
+		name: "repetition",
+		type: "number",
+		def: "4",
+		note: "Stripe-pattern density (1–10)",
+	},
+	{
+		name: "softness",
+		type: "number",
+		def: "0.6",
+		note: "Edge softness: 0 hard … 1 smooth (0–1)",
+	},
+	{
+		name: "shiftRed",
+		type: "number",
+		def: "0.25",
+		note: "R-channel dispersion (−1…1)",
+	},
+	{
+		name: "shiftBlue",
+		type: "number",
+		def: "0.25",
+		note: "B-channel dispersion (−1…1)",
+	},
+	{
+		name: "distortion",
+		type: "number",
+		def: "0.12",
+		note: "Noise distortion on stripes (0–1)",
+	},
+	{
+		name: "contour",
+		type: "number",
+		def: "1",
+		note: "Edge-distortion strength (0–1)",
+	},
+	{
+		name: "shape",
+		type: "LiquidMetalShape",
+		def: '"circle"',
+		note: "none | circle | daisy | diamond | metaballs",
+	},
+	{
+		name: "rotation",
+		type: "number",
+		def: "25",
+		note: "Overall rotation in degrees (0–360)",
+	},
 	{ name: "scale", type: "number", def: "1", note: "Overall zoom (0.01–4)" },
-	{ name: "offsetX / Y", type: "number", def: "0", note: "Center offset (−1…1)" },
-	{ name: "speed", type: "number", def: "2", note: "Animation time multiplier" },
-	{ name: "style", type: "CSSProperties", def: "filter: blur(10px)", note: "Canvas style — the verbatim soft-focus blur" },
+	{
+		name: "offsetX / Y",
+		type: "number",
+		def: "0",
+		note: "Center offset (−1…1)",
+	},
+	{
+		name: "speed",
+		type: "number",
+		def: "2",
+		note: "Animation time multiplier",
+	},
+	{
+		name: "style",
+		type: "CSSProperties",
+		def: "filter: blur(10px)",
+		note: "Canvas style — the verbatim soft-focus blur",
+	},
 ];
 
 function usageSnippet(p: {
@@ -375,7 +463,9 @@ function Dock({
 						onClick={() => setTab(t.id)}
 						className={cn(
 							"tab-ink rounded-md px-3 py-1.5 text-[12px] font-medium",
-							tab === t.id ? "bg-molten/15 text-molten" : "text-ink-dim hover:text-ink",
+							tab === t.id
+								? "bg-molten/15 text-molten"
+								: "text-ink-dim hover:text-ink",
 						)}
 					>
 						{t.label}
@@ -388,9 +478,10 @@ function Dock({
 					<div className="space-y-3">
 						<p className="text-[13px] leading-relaxed text-ink-dim">
 							The background needs two runtime deps — the shader and{" "}
-							<code className="text-ink">framer-motion</code> for the breathing wrapper — plus the
-							icon set used by this console. Then drop the component into{" "}
-							<code className="text-ink">src/components/ui</code>.
+							<code className="text-ink">framer-motion</code> for the breathing
+							wrapper — plus the icon set used by this console. Then drop the
+							component into <code className="text-ink">src/components/ui</code>
+							.
 						</p>
 						<CodeBlock
 							code={INSTALL_CMD}
@@ -419,9 +510,15 @@ function Dock({
 							<tbody className="align-top">
 								{PROPS_API.map((p) => (
 									<tr key={p.name} className="border-t border-hairline">
-										<td className="whitespace-nowrap py-1.5 pr-4 font-mono text-molten">{p.name}</td>
-										<td className="whitespace-nowrap py-1.5 pr-4 font-mono text-ink">{p.type}</td>
-										<td className="whitespace-nowrap py-1.5 pr-4 font-mono text-ink-dim">{p.def}</td>
+										<td className="whitespace-nowrap py-1.5 pr-4 font-mono text-molten">
+											{p.name}
+										</td>
+										<td className="whitespace-nowrap py-1.5 pr-4 font-mono text-ink">
+											{p.type}
+										</td>
+										<td className="whitespace-nowrap py-1.5 pr-4 font-mono text-ink-dim">
+											{p.def}
+										</td>
 										<td className="py-1.5 text-ink-dim">{p.note}</td>
 									</tr>
 								))}
@@ -433,39 +530,57 @@ function Dock({
 				{tab === "source" && (
 					<div className="space-y-3">
 						<p className="text-[13px] leading-relaxed text-ink-dim">
-							This snippet reflects the <strong className="text-ink">live</strong> crucible above —
-							pick an alloy or drag a fader, then copy a ready-to-paste call.
+							This snippet reflects the{" "}
+							<strong className="text-ink">live</strong> crucible above — pick
+							an alloy or drag a fader, then copy a ready-to-paste call.
 						</p>
-						<CodeBlock code={snippet} onCopy={() => onCopy(snippet, "source")} copied={copied === "source"} />
+						<CodeBlock
+							code={snippet}
+							onCopy={() => onCopy(snippet, "source")}
+							copied={copied === "source"}
+						/>
 					</div>
 				)}
 
 				{tab === "notes" && (
 					<div className="space-y-3 text-[13px] leading-relaxed text-ink-dim">
 						<p>
-							The prompt's component is pasted <strong className="text-ink">verbatim</strong> at{" "}
-							<code className="text-ink">src/components/ui/background-shades.tsx</code>. Auditing it
-							against <code className="text-ink">@paper-design/shaders-react@0.0.76</code> surfaced two
-							API mismatches, reconciled in the production wrapper this console renders:
+							The prompt's component is pasted{" "}
+							<strong className="text-ink">verbatim</strong> at{" "}
+							<code className="text-ink">
+								src/components/ui/background-shades.tsx
+							</code>
+							. Auditing it against{" "}
+							<code className="text-ink">
+								@paper-design/shaders-react@0.0.76
+							</code>{" "}
+							surfaced two API mismatches, reconciled in the production wrapper
+							this console renders:
 						</p>
 						<ul className="list-disc space-y-1.5 pl-5">
 							<li>
-								<code className="text-ink">PulsingBorder</code> is imported but never rendered — it's a
-								single liquid-metal plane, so the import is dropped in the wrapper.
+								<code className="text-ink">PulsingBorder</code> is imported but
+								never rendered — it's a single liquid-metal plane, so the import
+								is dropped in the wrapper.
 							</li>
 							<li>
 								<code className="text-ink">shape="plane"</code> is not a{" "}
 								<code className="text-ink">LiquidMetalShape</code> (valid:{" "}
-								<code className="text-ink">none · circle · daisy · diamond · metaballs</code>). With no{" "}
-								<code className="text-ink">image</code>, an invalid shape paints an empty mask, so the
-								wrapper defaults to <code className="text-ink">circle</code> and exposes the shape picker.
+								<code className="text-ink">
+									none · circle · daisy · diamond · metaballs
+								</code>
+								). With no <code className="text-ink">image</code>, an invalid
+								shape paints an empty mask, so the wrapper defaults to{" "}
+								<code className="text-ink">circle</code> and exposes the shape
+								picker.
 							</li>
 						</ul>
 						<p>
-							Everything else is faithful: a fixed, <code className="text-ink">pointer-events-none</code>,{" "}
+							Everything else is faithful: a fixed,{" "}
+							<code className="text-ink">pointer-events-none</code>,{" "}
 							<code className="text-ink">-z-10</code> full-bleed layer; the{" "}
-							<code className="text-ink">filter: blur(10px)</code> soft-focus; and the 8s framer-motion
-							opacity/scale/rotate breathing loop.
+							<code className="text-ink">filter: blur(10px)</code> soft-focus;
+							and the 8s framer-motion opacity/scale/rotate breathing loop.
 						</p>
 					</div>
 				)}
@@ -473,30 +588,41 @@ function Dock({
 				{tab === "shadcn" && (
 					<div className="space-y-3 text-[13px] leading-relaxed text-ink-dim">
 						<p>
-							shadcn/ui isn't a dependency you import — it copies source straight into your repo. The
-							convention is <code className="text-ink">@/components/ui</code>, wired through a{" "}
+							shadcn/ui isn't a dependency you import — it copies source
+							straight into your repo. The convention is{" "}
+							<code className="text-ink">@/components/ui</code>, wired through a{" "}
 							<code className="text-ink">@/*</code> path alias (in{" "}
-							<code className="text-ink">tsconfig</code> + <code className="text-ink">vite.config</code>).
+							<code className="text-ink">tsconfig</code> +{" "}
+							<code className="text-ink">vite.config</code>).
 						</p>
 						<ul className="list-disc space-y-1.5 pl-5">
 							<li>
 								The CLI writes here by default, so{" "}
-								<code className="text-ink">npx shadcn@latest add …</code> drops files in the same place.
+								<code className="text-ink">npx shadcn@latest add …</code> drops
+								files in the same place.
 							</li>
 							<li>
-								The import <code className="text-ink">@/components/ui/background-shades</code> resolves
-								regardless of how deeply the importing file is nested.
+								The import{" "}
+								<code className="text-ink">
+									@/components/ui/background-shades
+								</code>{" "}
+								resolves regardless of how deeply the importing file is nested.
 							</li>
 							<li>
-								It keeps owned primitives separate from app/feature components — predictable to find and
-								to theme.
+								It keeps owned primitives separate from app/feature components —
+								predictable to find and to theme.
 							</li>
 						</ul>
 						<p>
 							This project mirrors that exactly: the verbatim component lives at{" "}
-							<code className="text-ink">src/components/ui/background-shades.tsx</code>, the reconciled
-							wrapper at <code className="text-ink">src/components/ui/liquid-metal-foundry.tsx</code>, and
-							the alias is configured in both configs.
+							<code className="text-ink">
+								src/components/ui/background-shades.tsx
+							</code>
+							, the reconciled wrapper at{" "}
+							<code className="text-ink">
+								src/components/ui/liquid-metal-foundry.tsx
+							</code>
+							, and the alias is configured in both configs.
 						</p>
 					</div>
 				)}
@@ -604,8 +730,30 @@ export default function App() {
 
 	const snippet = useMemo(
 		() =>
-			usageSnippet({ tint, repetition, softness, distortion, contour, shape, rotation, scale, speed, blur }),
-		[tint, repetition, softness, distortion, contour, shape, rotation, scale, speed, blur],
+			usageSnippet({
+				tint,
+				repetition,
+				softness,
+				distortion,
+				contour,
+				shape,
+				rotation,
+				scale,
+				speed,
+				blur,
+			}),
+		[
+			tint,
+			repetition,
+			softness,
+			distortion,
+			contour,
+			shape,
+			rotation,
+			scale,
+			speed,
+			blur,
+		],
 	);
 
 	const tintHex = useMemo(() => hslToHex(tint), [tint]);
@@ -643,7 +791,9 @@ export default function App() {
 					</span>
 					<div className="leading-none">
 						<div className="flex items-center gap-2">
-							<h1 className="text-[13px] font-semibold tracking-tight text-ink">LiquidMetal Foundry</h1>
+							<h1 className="text-[13px] font-semibold tracking-tight text-ink">
+								LiquidMetal Foundry
+							</h1>
 							<span className="rounded-full border border-hairline px-1.5 py-0.5 font-mono text-[9px] text-ink-dim">
 								shaders-react · 0.0.76
 							</span>
@@ -658,7 +808,9 @@ export default function App() {
 					<div className="hidden items-center gap-4 rounded-lg border border-hairline bg-steel-2/70 px-3 py-1.5 sm:flex">
 						<span className="flex items-center gap-1.5">
 							<span className="tally inline-block size-1.5 rounded-full bg-molten" />
-							<span className="text-[9px] uppercase tracking-[0.18em] text-ink-dim">Molten</span>
+							<span className="text-[9px] uppercase tracking-[0.18em] text-ink-dim">
+								Molten
+							</span>
 						</span>
 						<Stat label="FPS" value={String(tel.fps)} accent />
 						<Stat label="Frame" value={String(tel.frame)} />
@@ -670,8 +822,14 @@ export default function App() {
 						className="flex items-center gap-1.5 rounded-lg border border-hairline bg-steel-2/80 px-2.5 py-1.5 text-[11px] text-ink transition-colors hover:border-molten"
 						aria-label="Toggle theme"
 					>
-						{theme === "dark" ? <Sun className="size-3.5" /> : <Moon className="size-3.5" />}
-						<span className="hidden sm:inline">{theme === "dark" ? "Anneal" : "Forge"}</span>
+						{theme === "dark" ? (
+							<Sun className="size-3.5" />
+						) : (
+							<Moon className="size-3.5" />
+						)}
+						<span className="hidden sm:inline">
+							{theme === "dark" ? "Anneal" : "Forge"}
+						</span>
 					</button>
 				</div>
 			</header>
@@ -683,7 +841,10 @@ export default function App() {
 					<div className="absolute left-0 top-0 flex items-center gap-2 rounded-full border border-hairline bg-steel/55 px-3 py-1.5 backdrop-blur-md">
 						<Flame className="size-3.5 text-molten" strokeWidth={2} />
 						<span className="text-[11px] text-ink">
-							Live pour · <span className="font-mono">{activeAlloy?.name ?? "Custom alloy"}</span>
+							Live pour ·{" "}
+							<span className="font-mono">
+								{activeAlloy?.name ?? "Custom alloy"}
+							</span>
 						</span>
 					</div>
 					<div className="absolute bottom-0 left-0 flex items-center gap-2 rounded-full border border-hairline bg-steel/55 px-3 py-1.5 font-mono text-[11px] text-ink-dim backdrop-blur-md">
@@ -717,7 +878,9 @@ export default function App() {
 										aria-pressed={active}
 										className={cn(
 											"group flex items-center gap-3 rounded-lg border px-2.5 py-2 text-left transition-colors",
-											active ? "border-molten bg-molten/10" : "border-hairline bg-steel hover:border-molten/60",
+											active
+												? "border-molten bg-molten/10"
+												: "border-hairline bg-steel hover:border-molten/60",
 										)}
 									>
 										<span
@@ -725,12 +888,20 @@ export default function App() {
 											style={{ background: hslToCss(a.tint) }}
 										/>
 										<span className="flex-1">
-											<span className="block text-[12px] font-medium text-ink">{a.name}</span>
+											<span className="block text-[12px] font-medium text-ink">
+												{a.name}
+											</span>
 											<span className="block font-mono text-[9px] text-ink-dim">
-												{a.shape} · rep {a.repetition} · {Math.round(a.rotation)}°
+												{a.shape} · rep {a.repetition} ·{" "}
+												{Math.round(a.rotation)}°
 											</span>
 										</span>
-										<span className={cn("font-mono text-[9px] tracking-wide", active ? "text-molten" : "text-ink-dim")}>
+										<span
+											className={cn(
+												"font-mono text-[9px] tracking-wide",
+												active ? "text-molten" : "text-ink-dim",
+											)}
+										>
 											{a.tag}
 										</span>
 									</button>
@@ -744,7 +915,9 @@ export default function App() {
 								<span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-ink-dim">
 									<Droplet className="size-3" strokeWidth={1.75} /> Tint
 								</span>
-								<span className="font-mono text-[11px] text-ink">{hslToCss(tint)}</span>
+								<span className="font-mono text-[11px] text-ink">
+									{hslToCss(tint)}
+								</span>
 							</div>
 							<div className="flex items-center gap-3">
 								<label
@@ -801,7 +974,9 @@ export default function App() {
 										title={s.label}
 										className={cn(
 											"flex flex-col items-center gap-1 rounded-lg border px-1 py-2 transition-colors",
-											active ? "border-molten bg-molten/10 text-molten" : "border-hairline bg-steel text-ink-dim hover:text-ink",
+											active
+												? "border-molten bg-molten/10 text-molten"
+												: "border-hairline bg-steel text-ink-dim hover:text-ink",
 										)}
 									>
 										<Icon className="size-4" strokeWidth={1.75} />
@@ -964,7 +1139,11 @@ export default function App() {
 								onClick={() => copy(snippet, "deck-source")}
 								className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-molten bg-molten/15 px-3 py-2 text-[11px] font-medium text-molten transition-colors hover:bg-molten/25"
 							>
-								{copied === "deck-source" ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
+								{copied === "deck-source" ? (
+									<Check className="size-3.5" />
+								) : (
+									<Copy className="size-3.5" />
+								)}
 								{copied === "deck-source" ? "Copied" : "Copy JSX"}
 							</button>
 						</div>
@@ -974,7 +1153,13 @@ export default function App() {
 
 			{/* ---- Documentation dock ---- */}
 			<section className="relative z-10 px-4 pb-4 sm:px-6">
-				<Dock tab={tab} setTab={setTab} snippet={snippet} onCopy={copy} copied={copied} />
+				<Dock
+					tab={tab}
+					setTab={setTab}
+					snippet={snippet}
+					onCopy={copy}
+					copied={copied}
+				/>
 			</section>
 
 			{/* ---- Bottom signal bus ---- */}
@@ -983,16 +1168,22 @@ export default function App() {
 					<span className="flex items-center gap-2">
 						<Flame className="size-3 text-molten" />
 						LiquidMetal · @paper-design/shaders-react · framer-motion ·{" "}
-						<span className="text-molten-deep">vendored Space Grotesk / JetBrains Mono</span>
+						<span className="text-molten-deep">
+							vendored Space Grotesk / JetBrains Mono
+						</span>
 					</span>
 					<span className="hidden items-center gap-3 sm:flex">
 						{reducedMotion && (
-							<span className="flex items-center gap-1 text-coolant" title="prefers-reduced-motion: breathing loop paused">
+							<span
+								className="flex items-center gap-1 text-coolant"
+								title="prefers-reduced-motion: breathing loop paused"
+							>
 								<Snowflake className="size-3" strokeWidth={2} /> quenched
 							</span>
 						)}
 						<span>
-							rep {repetition.toFixed(1)} · dist {distortion.toFixed(2)} · {Math.round(rotation)}° · {speed.toFixed(2)}×
+							rep {repetition.toFixed(1)} · dist {distortion.toFixed(2)} ·{" "}
+							{Math.round(rotation)}° · {speed.toFixed(2)}×
 						</span>
 					</span>
 				</div>

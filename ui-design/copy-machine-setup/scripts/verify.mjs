@@ -32,151 +32,188 @@ const PORT = 5219;
 let pass = 0;
 let fail = 0;
 function check(label, ok, detail = "") {
-  const mark = ok ? "PASS" : "FAIL";
-  console.log(`  [${mark}] ${label}${detail ? "  — " + detail : ""}`);
-  ok ? pass++ : fail++;
+	const mark = ok ? "PASS" : "FAIL";
+	console.log(`  [${mark}] ${label}${detail ? "  — " + detail : ""}`);
+	ok ? pass++ : fail++;
 }
 
 async function waitForServer(url, tries = 80) {
-  for (let i = 0; i < tries; i++) {
-    try {
-      const res = await fetch(url);
-      if (res.ok) return true;
-    } catch {}
-    await sleep(500);
-  }
-  return false;
+	for (let i = 0; i < tries; i++) {
+		try {
+			const res = await fetch(url);
+			if (res.ok) return true;
+		} catch {}
+		await sleep(500);
+	}
+	return false;
 }
 
 async function main() {
-  const externalUrl = process.argv[2];
-  const url = externalUrl || `http://localhost:${PORT}/`;
-  let dev = null;
+	const externalUrl = process.argv[2];
+	const url = externalUrl || `http://localhost:${PORT}/`;
+	let dev = null;
 
-  if (!externalUrl) {
-    console.log("→ starting vite dev server...");
-    dev = spawn(
-      "npm",
-      ["run", "dev", "--", "--port", String(PORT), "--strictPort"],
-      { cwd: projectDir, stdio: "ignore" }
-    );
-    const up = await waitForServer(url);
-    if (!up) {
-      console.error("dev server never came up");
-      dev.kill("SIGKILL");
-      process.exit(1);
-    }
-  }
+	if (!externalUrl) {
+		console.log("→ starting vite dev server...");
+		dev = spawn(
+			"npm",
+			["run", "dev", "--", "--port", String(PORT), "--strictPort"],
+			{ cwd: projectDir, stdio: "ignore" },
+		);
+		const up = await waitForServer(url);
+		if (!up) {
+			console.error("dev server never came up");
+			dev.kill("SIGKILL");
+			process.exit(1);
+		}
+	}
 
-  const consoleErrors = [];
-  const failedRequests = [];
+	const consoleErrors = [];
+	const failedRequests = [];
 
-  const browser = await chromium.launch({ headless: true });
-  const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 } });
-  const page = await ctx.newPage();
+	const browser = await chromium.launch({ headless: true });
+	const ctx = await browser.newContext({
+		viewport: { width: 1280, height: 800 },
+	});
+	const page = await ctx.newPage();
 
-  page.on("console", (m) => {
-    if (m.type() === "error") consoleErrors.push(m.text());
-  });
-  page.on("pageerror", (e) => consoleErrors.push("pageerror: " + e.message));
-  page.on("requestfailed", (r) =>
-    failedRequests.push(`${r.url()} (${r.failure()?.errorText || "failed"})`)
-  );
-  page.on("response", (r) => {
-    if (r.status() >= 400)
-      failedRequests.push(`${r.url()} -> HTTP ${r.status()}`);
-  });
+	page.on("console", (m) => {
+		if (m.type() === "error") consoleErrors.push(m.text());
+	});
+	page.on("pageerror", (e) => consoleErrors.push("pageerror: " + e.message));
+	page.on("requestfailed", (r) =>
+		failedRequests.push(`${r.url()} (${r.failure()?.errorText || "failed"})`),
+	);
+	page.on("response", (r) => {
+		if (r.status() >= 400)
+			failedRequests.push(`${r.url()} -> HTTP ${r.status()}`);
+	});
 
-  console.log(`→ loading ${url}`);
-  await page.goto(url, { waitUntil: "networkidle", timeout: 60000 });
-  try {
-    await page.evaluate(() => document.fonts && document.fonts.ready);
-  } catch {}
-  await sleep(1500); // let count-ups / reveal cascade run
+	console.log(`→ loading ${url}`);
+	await page.goto(url, { waitUntil: "networkidle", timeout: 60000 });
+	try {
+		await page.evaluate(() => document.fonts && document.fonts.ready);
+	} catch {}
+	await sleep(1500); // let count-ups / reveal cascade run
 
-  console.log("\nAssertions:");
+	console.log("\nAssertions:");
 
-  // 1. App.tsx mounted its empty <main> with the exact spec'd classNames.
-  const mainInfo = await page.evaluate(() => {
-    const m = document.querySelector("#root main");
-    if (!m) return null;
-    return { cls: m.className, childCount: m.children.length, html: m.innerHTML.trim() };
-  });
-  check("App.tsx <main> mounted inside #root", !!mainInfo);
-  if (mainInfo) {
-    check(
-      "<main> has exact spec className",
-      mainInfo.cls === "relative min-h-screen flex flex-col",
-      `got "${mainInfo.cls}"`
-    );
-    check(
-      "<main> is empty (scaffold awaiting first component)",
-      mainInfo.childCount === 0 && mainInfo.html === "",
-      `children=${mainInfo.childCount}`
-    );
-  }
+	// 1. App.tsx mounted its empty <main> with the exact spec'd classNames.
+	const mainInfo = await page.evaluate(() => {
+		const m = document.querySelector("#root main");
+		if (!m) return null;
+		return {
+			cls: m.className,
+			childCount: m.children.length,
+			html: m.innerHTML.trim(),
+		};
+	});
+	check("App.tsx <main> mounted inside #root", !!mainInfo);
+	if (mainInfo) {
+		check(
+			"<main> has exact spec className",
+			mainInfo.cls === "relative min-h-screen flex flex-col",
+			`got "${mainInfo.cls}"`,
+		);
+		check(
+			"<main> is empty (scaffold awaiting first component)",
+			mainInfo.childCount === 0 && mainInfo.html === "",
+			`children=${mainInfo.childCount}`,
+		);
+	}
 
-  // 2. Setup overlay renders required confirmation content.
-  const overlay = await page.evaluate(() => {
-    const el = document.getElementById("setup-screen");
-    if (!el) return null;
-    const txt = el.innerText;
-    return {
-      present: true,
-      hasComplete: /PROJECT SETUP COMPLETE/.test(txt),
-      hasUtils: /utils\.ts/.test(txt),
-      hasApp: /App\.tsx/.test(txt),
-      hasMain: /main\.tsx/.test(txt),
-      hasIndexCss: /index\.css/.test(txt),
-      hasViteCfg: /vite\.config\.ts/.test(txt),
-      hasTsCfg: /tsconfig\.json/.test(txt),
-      hasCopyMachine: /copy machine/i.test(txt),
-      hasExactCode: /className="relative min-h-screen flex flex-col"/.test(txt),
-      hasComment: /Components will be stacked here/.test(txt),
-      chips: Array.from(el.querySelectorAll(".chip")).map((c) => c.textContent),
-    };
-  });
-  check("setup overlay present", !!overlay?.present);
-  if (overlay) {
-    check('shows "PROJECT SETUP COMPLETE"', overlay.hasComplete);
-    check("lists all 6 created files", overlay.hasUtils && overlay.hasApp && overlay.hasMain && overlay.hasIndexCss && overlay.hasViteCfg && overlay.hasTsCfg);
-    check("renders verbatim App.tsx code", overlay.hasExactCode && overlay.hasComment);
-    check('expresses the "copy machine" identity', overlay.hasCopyMachine);
-    const stack = ["Vite + React", "TypeScript", "Tailwind CSS", "tailwind-merge", "clsx", "Framer Motion", "Lucide React"];
-    const allChips = stack.every((s) => overlay.chips.includes(s));
-    check("shows full mandated tech stack", allChips, overlay.chips.join(", "));
-  }
+	// 2. Setup overlay renders required confirmation content.
+	const overlay = await page.evaluate(() => {
+		const el = document.getElementById("setup-screen");
+		if (!el) return null;
+		const txt = el.innerText;
+		return {
+			present: true,
+			hasComplete: /PROJECT SETUP COMPLETE/.test(txt),
+			hasUtils: /utils\.ts/.test(txt),
+			hasApp: /App\.tsx/.test(txt),
+			hasMain: /main\.tsx/.test(txt),
+			hasIndexCss: /index\.css/.test(txt),
+			hasViteCfg: /vite\.config\.ts/.test(txt),
+			hasTsCfg: /tsconfig\.json/.test(txt),
+			hasCopyMachine: /copy machine/i.test(txt),
+			hasExactCode: /className="relative min-h-screen flex flex-col"/.test(txt),
+			hasComment: /Components will be stacked here/.test(txt),
+			chips: Array.from(el.querySelectorAll(".chip")).map((c) => c.textContent),
+		};
+	});
+	check("setup overlay present", !!overlay?.present);
+	if (overlay) {
+		check('shows "PROJECT SETUP COMPLETE"', overlay.hasComplete);
+		check(
+			"lists all 6 created files",
+			overlay.hasUtils &&
+				overlay.hasApp &&
+				overlay.hasMain &&
+				overlay.hasIndexCss &&
+				overlay.hasViteCfg &&
+				overlay.hasTsCfg,
+		);
+		check(
+			"renders verbatim App.tsx code",
+			overlay.hasExactCode && overlay.hasComment,
+		);
+		check('expresses the "copy machine" identity', overlay.hasCopyMachine);
+		const stack = [
+			"Vite + React",
+			"TypeScript",
+			"Tailwind CSS",
+			"tailwind-merge",
+			"clsx",
+			"Framer Motion",
+			"Lucide React",
+		];
+		const allChips = stack.every((s) => overlay.chips.includes(s));
+		check("shows full mandated tech stack", allChips, overlay.chips.join(", "));
+	}
 
-  // 3. Vendored fonts loaded.
-  const fonts = await page.evaluate(() => {
-    const loaded = new Set();
-    document.fonts.forEach((f) => {
-      if (f.status === "loaded") loaded.add(f.family);
-    });
-    return Array.from(loaded);
-  });
-  check("vendored fonts loaded", fonts.includes("Inter") && fonts.includes("JetBrains Mono"), fonts.join(", "));
+	// 3. Vendored fonts loaded.
+	const fonts = await page.evaluate(() => {
+		const loaded = new Set();
+		document.fonts.forEach((f) => {
+			if (f.status === "loaded") loaded.add(f.family);
+		});
+		return Array.from(loaded);
+	});
+	check(
+		"vendored fonts loaded",
+		fonts.includes("Inter") && fonts.includes("JetBrains Mono"),
+		fonts.join(", "),
+	);
 
-  // 4. No errors / no failed requests.
-  check("no console errors", consoleErrors.length === 0, consoleErrors.slice(0, 3).join(" | "));
-  check("no failed/4xx requests", failedRequests.length === 0, failedRequests.slice(0, 3).join(" | "));
+	// 4. No errors / no failed requests.
+	check(
+		"no console errors",
+		consoleErrors.length === 0,
+		consoleErrors.slice(0, 3).join(" | "),
+	);
+	check(
+		"no failed/4xx requests",
+		failedRequests.length === 0,
+		failedRequests.slice(0, 3).join(" | "),
+	);
 
-  // Screenshot for the record.
-  const shot = path.join(projectDir, "scripts", "verify-screenshot.png");
-  await page.screenshot({ path: shot });
-  console.log(`\n→ screenshot: ${shot}`);
+	// Screenshot for the record.
+	const shot = path.join(projectDir, "scripts", "verify-screenshot.png");
+	await page.screenshot({ path: shot });
+	console.log(`\n→ screenshot: ${shot}`);
 
-  await ctx.close();
-  await browser.close();
-  if (dev) {
-    dev.kill("SIGKILL");
-  }
+	await ctx.close();
+	await browser.close();
+	if (dev) {
+		dev.kill("SIGKILL");
+	}
 
-  console.log(`\nResult: ${pass} passed, ${fail} failed`);
-  process.exit(fail === 0 ? 0 : 1);
+	console.log(`\nResult: ${pass} passed, ${fail} failed`);
+	process.exit(fail === 0 ? 0 : 1);
 }
 
 main().catch((e) => {
-  console.error(e);
-  process.exit(1);
+	console.error(e);
+	process.exit(1);
 });

@@ -1,12 +1,6 @@
 import { motion } from "motion/react";
 import { Quote } from "lucide-react";
-import {
-	Container,
-	MonoLabel,
-	Panel,
-	SectionHeading,
-	cx,
-} from "./primitives";
+import { Container, MonoLabel, Panel, SectionHeading, cx } from "./primitives";
 import { inView, slideUp, stagger } from "../lib/motion";
 
 type Note = {
@@ -79,8 +73,7 @@ export function Testimonials() {
 								style={{
 									background:
 										"radial-gradient(circle at 35% 30%, #ff8a93, #ff4757 55%, #c4303c)",
-									boxShadow:
-										"0 4px 6px rgba(0,0,0,0.3), var(--shadow-glow)",
+									boxShadow: "0 4px 6px rgba(0,0,0,0.3), var(--shadow-glow)",
 								}}
 							>
 								<span className="absolute left-[30%] top-[24%] h-1.5 w-1.5 rounded-full bg-white/80" />
@@ -97,8 +90,7 @@ export function Testimonials() {
 									className="absolute -right-2 top-5 -skew-x-12 px-3 py-1 backdrop-blur-sm"
 									style={{
 										background: "rgba(255,230,0,0.28)",
-										boxShadow:
-											"0 1px 2px rgba(0,0,0,0.12)",
+										boxShadow: "0 1px 2px rgba(0,0,0,0.12)",
 									}}
 								>
 									<span className="stamp text-[0.55rem] text-ink/70">
@@ -106,11 +98,7 @@ export function Testimonials() {
 									</span>
 								</span>
 
-								<Quote
-									size={26}
-									strokeWidth={1.5}
-									className="text-accent/60"
-								/>
+								<Quote size={26} strokeWidth={1.5} className="text-accent/60" />
 								<p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-ink">
 									{n.quote}
 								</p>
@@ -119,8 +107,7 @@ export function Testimonials() {
 									<span
 										className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-full bg-recessed"
 										style={{
-											boxShadow:
-												"var(--shadow-recessed-soft)",
+											boxShadow: "var(--shadow-recessed-soft)",
 										}}
 									>
 										<img
@@ -133,9 +120,7 @@ export function Testimonials() {
 										/>
 									</span>
 									<span className="flex flex-col">
-										<span className="text-sm font-bold text-ink">
-											{n.name}
-										</span>
+										<span className="text-sm font-bold text-ink">{n.name}</span>
 										<span className="stamp text-[0.55rem] text-label">
 											{n.role}
 										</span>

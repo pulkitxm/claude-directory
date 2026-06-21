@@ -205,8 +205,7 @@ export function IconHalo({
 			: tone === "terracotta"
 				? "bg-terracotta/15"
 				: "bg-sage/15";
-	const stroke =
-		tone === "terracotta" ? "text-terracotta" : "text-forest";
+	const stroke = tone === "terracotta" ? "text-terracotta" : "text-forest";
 	return (
 		<span
 			className={`inline-flex shrink-0 items-center justify-center rounded-full ${bg}`}
@@ -322,10 +321,7 @@ export function VineDivider({ className = "" }: { className?: string }) {
 								opacity: grow ? 0.85 : 0,
 							}}
 						>
-							<path
-								d="M0 0 Q 9 -7 20 0 Q 9 7 0 0 Z"
-								fill="currentColor"
-							/>
+							<path d="M0 0 Q 9 -7 20 0 Q 9 7 0 0 Z" fill="currentColor" />
 						</g>
 					);
 				})}

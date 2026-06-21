@@ -49,10 +49,9 @@ export function Hero() {
 					</h1>
 
 					<p className="mt-7 max-w-md text-lg text-ink/75 md:text-xl">
-						Scribbly is the messy-on-purpose whiteboard for teams who
-						think with their hands. Sticky notes, doodles, and half-baked
-						arrows — exactly like the wall behind your desk, but it never
-						runs out of space.
+						Scribbly is the messy-on-purpose whiteboard for teams who think with
+						their hands. Sticky notes, doodles, and half-baked arrows — exactly
+						like the wall behind your desk, but it never runs out of space.
 					</p>
 
 					<div className="relative mt-9 flex flex-wrap items-center gap-4">
@@ -60,7 +59,11 @@ export function Hero() {
 							Start scribbling
 							<ArrowRight size={22} strokeWidth={2.75} />
 						</LinkButton>
-						<LinkButton href="#how" variant="secondary" className="text-lg md:text-2xl">
+						<LinkButton
+							href="#how"
+							variant="secondary"
+							className="text-lg md:text-2xl"
+						>
 							See how it works
 						</LinkButton>
 
@@ -75,7 +78,9 @@ export function Hero() {
 					<div className="mt-10 flex items-center gap-4">
 						<AvatarStack count={5} />
 						<p className="text-base text-ink/70 md:text-lg">
-							<span className="font-[var(--font-marker)] text-ink">12,400+</span>{" "}
+							<span className="font-[var(--font-marker)] text-ink">
+								12,400+
+							</span>{" "}
 							messy thinkers already on board
 						</p>
 					</div>
@@ -86,7 +91,10 @@ export function Hero() {
 					{/* bouncing decorative circle (desktop only) */}
 					<span
 						className="anim-bob absolute -left-8 -top-10 hidden h-20 w-20 border-[3px] border-ink bg-postit shadow-[var(--shadow-hard-sm)] md:grid md:place-items-center"
-						style={{ borderRadius: radius.blob, ["--bob-rot" as string]: "-8deg" }}
+						style={{
+							borderRadius: radius.blob,
+							["--bob-rot" as string]: "-8deg",
+						}}
 						aria-hidden
 					>
 						<span className="font-[var(--font-marker)] text-3xl">?</span>

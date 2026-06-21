@@ -20,8 +20,14 @@ export function Cta() {
 		<section className="on-color relative overflow-hidden bg-[var(--color-sun)] py-24 text-[var(--color-ink)] lg:py-32">
 			<Blob className="-left-28 -top-28 h-96 w-96 bg-white/20" />
 			<Blob className="-bottom-32 -right-24 h-[26rem] w-[26rem] bg-[var(--color-sun-deep)]/40" />
-			<Square rotate={14} className="right-[10%] top-12 h-28 w-28 bg-white/20" />
-			<Square rotate={-10} className="left-[12%] bottom-12 h-20 w-20 bg-[var(--color-ink)]/10" />
+			<Square
+				rotate={14}
+				className="right-[10%] top-12 h-28 w-28 bg-white/20"
+			/>
+			<Square
+				rotate={-10}
+				className="left-[12%] bottom-12 h-20 w-20 bg-[var(--color-ink)]/10"
+			/>
 
 			<Shell className="relative">
 				<motion.div
@@ -29,10 +35,7 @@ export function Cta() {
 					{...reveal}
 					className="mx-auto max-w-3xl text-center"
 				>
-					<motion.span
-						variants={fadeUp}
-						className="eyebrow text-amber-900"
-					>
+					<motion.span variants={fadeUp} className="eyebrow text-amber-900">
 						Start today
 					</motion.span>
 					<motion.h2
@@ -47,8 +50,8 @@ export function Cta() {
 						variants={fadeUp}
 						className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-amber-950/80"
 					>
-						Get the token file, the component kit, and the occasional note on flat
-						design. No spam, unsubscribe in one click.
+						Get the token file, the component kit, and the occasional note on
+						flat design. No spam, unsubscribe in one click.
 					</motion.p>
 
 					<motion.div variants={fadeUp} className="mx-auto mt-9 max-w-lg">

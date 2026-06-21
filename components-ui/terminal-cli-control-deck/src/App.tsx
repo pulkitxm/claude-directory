@@ -107,8 +107,8 @@ function Hero() {
 			>
 				ACME Control Deck is a single-pane command surface for fleets that hate
 				dashboards. No charts, no chrome — just{" "}
-				<span className="text-primary">phosphor-green truth</span>, ASCII meters,
-				and a prompt that does exactly what you type.
+				<span className="text-primary">phosphor-green truth</span>, ASCII
+				meters, and a prompt that does exactly what you type.
 			</p>
 
 			<div
@@ -162,8 +162,7 @@ function Telemetry() {
 			))}
 			<Divider label="threshold" className="mt-1" />
 			<p className="text-2xs leading-relaxed text-dim">
-				meters auto-escalate:{" "}
-				<span className="text-primary">|nominal|</span>{" "}
+				meters auto-escalate: <span className="text-primary">|nominal|</span>{" "}
 				<span className="text-secondary">|warn ≥75|</span>{" "}
 				<span className="text-error">|crit ≥90|</span>
 			</p>
@@ -393,9 +392,7 @@ function Console() {
 					>
 						{l.type === "in" ? (
 							<>
-								<span className="text-secondary glow-amber">
-									root@acme:~$
-								</span>{" "}
+								<span className="text-secondary glow-amber">root@acme:~$</span>{" "}
 								<span className="text-primary">{l.text}</span>
 							</>
 						) : (

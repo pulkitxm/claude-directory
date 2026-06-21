@@ -73,7 +73,10 @@ export function Footer() {
 					<span className="px-8 text-xl font-bold uppercase tracking-tighter md:text-3xl">
 						Make Type Move
 					</span>
-					<span aria-hidden="true" className="px-8 text-xl text-acid md:text-3xl">
+					<span
+						aria-hidden="true"
+						className="px-8 text-xl text-acid md:text-3xl"
+					>
 						✳
 					</span>
 				</KineticMarquee>

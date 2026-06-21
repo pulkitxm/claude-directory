@@ -16,7 +16,13 @@ const STATS: Stat[] = [
 ];
 
 /* Count-up that only fires once the band scrolls into view. */
-function CountUp({ value, decimals = 0 }: { value: number; decimals?: number }) {
+function CountUp({
+	value,
+	decimals = 0,
+}: {
+	value: number;
+	decimals?: number;
+}) {
 	const [n, setN] = useState(0);
 	const ref = useRef<HTMLSpanElement>(null);
 	const started = useRef(false);

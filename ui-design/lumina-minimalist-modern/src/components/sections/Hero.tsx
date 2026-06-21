@@ -50,8 +50,8 @@ export function Hero() {
 							className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground"
 						>
 							Lumina turns raw product events into a single, calm overview.
-							Track the metrics that matter, surface insights automatically,
-							and ship with confidence — without drowning in dashboards.
+							Track the metrics that matter, surface insights automatically, and
+							ship with confidence — without drowning in dashboards.
 						</motion.p>
 
 						<motion.div

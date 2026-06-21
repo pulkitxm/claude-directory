@@ -62,7 +62,10 @@ function BootLog() {
 
 export function Hero() {
 	return (
-		<section id="top" className="relative overflow-hidden pb-20 pt-32 sm:pb-28 sm:pt-40">
+		<section
+			id="top"
+			className="relative overflow-hidden pb-20 pt-32 sm:pb-28 sm:pt-40"
+		>
 			<Shell className="relative z-10">
 				<div className="mx-auto grid max-w-5xl items-center gap-12 lg:max-w-7xl lg:grid-cols-[1.05fr_0.95fr]">
 					{/* Left: copy */}
@@ -95,10 +98,10 @@ export function Hero() {
 							transition={{ duration: 0.45, ease: "linear", delay: 0.16 }}
 							className="mt-7 max-w-xl font-mono text-lg leading-relaxed text-[var(--color-chrome)]/80 sm:text-xl"
 						>
-							NEONWAVE OS is a retro-futuristic interface kit drenched in neon. Hot
-							magenta, electric cyan, and a sunset gradient pierce an infinite grid
-							under CRT scanlines. Boot it up and command reality like a vintage
-							terminal.
+							NEONWAVE OS is a retro-futuristic interface kit drenched in neon.
+							Hot magenta, electric cyan, and a sunset gradient pierce an
+							infinite grid under CRT scanlines. Boot it up and command reality
+							like a vintage terminal.
 						</motion.p>
 
 						<motion.div
@@ -108,10 +111,20 @@ export function Hero() {
 							transition={{ duration: 0.45, ease: "linear", delay: 0.24 }}
 							className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center"
 						>
-							<ButtonLink href="#cta" variant="secondary" size="lg" className="w-full sm:w-auto">
+							<ButtonLink
+								href="#cta"
+								variant="secondary"
+								size="lg"
+								className="w-full sm:w-auto"
+							>
 								<Zap size={18} /> Boot the OS
 							</ButtonLink>
-							<ButtonLink href="#features" variant="primary" size="lg" className="w-full sm:w-auto">
+							<ButtonLink
+								href="#features"
+								variant="primary"
+								size="lg"
+								className="w-full sm:w-auto"
+							>
 								Explore modules <ArrowRight size={18} />
 							</ButtonLink>
 						</motion.div>

@@ -118,7 +118,11 @@ export function Pricing() {
 				<div className="mt-16 grid items-stretch gap-8 md:grid-cols-3 md:gap-6">
 					{TIERS.map((tier, i) => (
 						<Reveal key={tier.name} delay={i * 100} className="flex">
-							<PricingCard tier={tier} price={price(tier.monthly)} annual={annual} />
+							<PricingCard
+								tier={tier}
+								price={price(tier.monthly)}
+								annual={annual}
+							/>
 						</Reveal>
 					))}
 				</div>
@@ -199,7 +203,11 @@ function PricingCard({
 						>
 							<Check size={12} strokeWidth={3} />
 						</span>
-						<span className={tier.popular ? "text-white/95" : "text-clay-foreground"}>
+						<span
+							className={
+								tier.popular ? "text-white/95" : "text-clay-foreground"
+							}
+						>
 							{f}
 						</span>
 					</li>

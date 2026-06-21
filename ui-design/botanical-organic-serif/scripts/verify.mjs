@@ -52,7 +52,9 @@ function launchOpts() {
 const checks = [];
 function check(name, ok, detail = "") {
 	checks.push({ name, ok: !!ok, detail });
-	console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`);
+	console.log(
+		`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`,
+	);
 }
 
 console.log("· building…");

@@ -65,7 +65,8 @@ export function Install() {
 				</h2>
 				<p className="mx-auto mt-3 max-w-xl text-pretty text-[15px] leading-relaxed text-white/55">
 					Built for a shadcn project structure: TypeScript, Tailwind CSS, and
-					components resolved through the <code className="font-mono text-iris-bright">@/</code> alias.
+					components resolved through the{" "}
+					<code className="font-mono text-iris-bright">@/</code> alias.
 				</p>
 			</div>
 
@@ -105,18 +106,21 @@ export function Install() {
 						</h3>
 					</div>
 					<p className="mt-2 text-[13px] leading-relaxed text-white/60">
-						shadcn’s <code className="font-mono text-white/80">components.json</code>{" "}
+						shadcn’s{" "}
+						<code className="font-mono text-white/80">components.json</code>{" "}
 						pins a <span className="text-white/80">ui</span> alias to{" "}
-						<code className="font-mono text-white/80">@/components/ui</code>. Every
-						generated primitive, and the import in the snippet above, resolves
-						against that exact path. If the file lands anywhere else the{" "}
+						<code className="font-mono text-white/80">@/components/ui</code>.
+						Every generated primitive, and the import in the snippet above,
+						resolves against that exact path. If the file lands anywhere else
+						the{" "}
 						<code className="font-mono text-iris-bright">
 							@/components/ui/container-scroll-animation
 						</code>{" "}
-						import breaks and future <code className="font-mono text-white/80">shadcn add</code>{" "}
-						commands write to a directory yours doesn’t match. Create{" "}
-						<code className="font-mono text-white/80">/components/ui</code> first so
-						the alias, the CLI, and the import all agree.
+						import breaks and future{" "}
+						<code className="font-mono text-white/80">shadcn add</code> commands
+						write to a directory yours doesn’t match. Create{" "}
+						<code className="font-mono text-white/80">/components/ui</code>{" "}
+						first so the alias, the CLI, and the import all agree.
 					</p>
 				</div>
 
@@ -145,12 +149,13 @@ export function Install() {
 				<p className="text-[13px] leading-relaxed text-white/55">
 					<span className="font-medium text-white/80">Assets note.</span> The
 					original demo nested a single hosted screenshot via{" "}
-					<code className="font-mono text-white/75">next/image</code>. This build
-					keeps the integration fully offline by rendering three real,
+					<code className="font-mono text-white/75">next/image</code>. This
+					build keeps the integration fully offline by rendering three real,
 					self-contained product UIs as the card{" "}
 					<code className="font-mono text-white/75">children</code> instead —
-					but you can pass any node: an <code className="font-mono text-white/75">{"<img>"}</code>,
-					a video, or a live component.
+					but you can pass any node: an{" "}
+					<code className="font-mono text-white/75">{"<img>"}</code>, a video,
+					or a live component.
 				</p>
 			</div>
 		</section>

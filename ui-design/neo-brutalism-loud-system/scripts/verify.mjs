@@ -35,7 +35,9 @@ const TOKENS = {
 
 let failures = 0;
 const check = (name, ok, detail = "") => {
-	console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`);
+	console.log(
+		`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`,
+	);
 	if (!ok) failures += 1;
 };
 
@@ -76,7 +78,8 @@ function shadowBlurIsZero(boxShadow) {
 	if (lengths.length < 3) return false;
 	const blur = parseFloat(lengths[2]);
 	// must also have a real offset (not a 0 0 transparent placeholder)
-	const offset = Math.abs(parseFloat(lengths[0])) + Math.abs(parseFloat(lengths[1]));
+	const offset =
+		Math.abs(parseFloat(lengths[0])) + Math.abs(parseFloat(lengths[1]));
 	return blur === 0 && offset > 0;
 }
 /* True when the shadow is effectively absent — every layer is transparent
@@ -118,14 +121,19 @@ check(
 	(await page.getByRole("link", { name: "Skip to content" }).count()) === 1,
 );
 check("single <main> landmark", (await page.locator("main").count()) === 1);
-check("single <header> nav landmark", (await page.locator("header").count()) === 1);
+check(
+	"single <header> nav landmark",
+	(await page.locator("header").count()) === 1,
+);
 
 // ── Tokens resolve on real elements ──────────────────────────────────────────
 const bodyBg = await page.evaluate(
 	() => getComputedStyle(document.body).backgroundColor,
 );
 check("token: cream canvas on body", bodyBg === TOKENS.bg, bodyBg);
-const bodyColor = await page.evaluate(() => getComputedStyle(document.body).color);
+const bodyColor = await page.evaluate(
+	() => getComputedStyle(document.body).color,
+);
 check("token: ink foreground on body", bodyColor === TOKENS.ink, bodyColor);
 
 // All four highlighter + structural colors actually painted somewhere.
@@ -176,21 +184,35 @@ check("hero is uppercase", heroTransform === "uppercase", heroTransform);
 const heroTracking = await heroH1.evaluate(
 	(el) => getComputedStyle(el).letterSpacing,
 );
-check("hero has tight (negative) tracking", parseFloat(heroTracking) < 0, heroTracking);
-const heroWeight = await heroH1.evaluate((el) => getComputedStyle(el).fontWeight);
+check(
+	"hero has tight (negative) tracking",
+	parseFloat(heroTracking) < 0,
+	heroTracking,
+);
+const heroWeight = await heroH1.evaluate(
+	(el) => getComputedStyle(el).fontWeight,
+);
 check("hero is heavy (>=700)", parseInt(heroWeight, 10) >= 700, heroWeight);
 
 // Hollow text-stroke display text exists (transparent fill + webkit stroke).
 const strokeCount = await page.evaluate(() => {
 	let n = 0;
-	for (const el of document.querySelectorAll(".neo-text-stroke, .neo-text-stroke-white")) {
+	for (const el of document.querySelectorAll(
+		".neo-text-stroke, .neo-text-stroke-white",
+	)) {
 		const cs = getComputedStyle(el);
-		const stroke = cs.webkitTextStrokeWidth || cs.getPropertyValue("-webkit-text-stroke-width");
+		const stroke =
+			cs.webkitTextStrokeWidth ||
+			cs.getPropertyValue("-webkit-text-stroke-width");
 		if (parseFloat(stroke) > 0) n += 1;
 	}
 	return n;
 });
-check("hollow text-stroke display type present", strokeCount >= 2, `count=${strokeCount}`);
+check(
+	"hollow text-stroke display type present",
+	strokeCount >= 2,
+	`count=${strokeCount}`,
+);
 
 // ── Structure: thick black borders are mandatory ────────────────────────────
 const borderStats = await page.evaluate(() => {
@@ -236,13 +258,29 @@ const shadowAudit = await page.evaluate(() => {
 	}
 	return out;
 });
-check("many hard offset shadows present", shadowAudit.hard >= 20, JSON.stringify(shadowAudit));
-check("zero soft (blurred) box-shadows", shadowAudit.soft === 0, `soft=${shadowAudit.soft}`);
+check(
+	"many hard offset shadows present",
+	shadowAudit.hard >= 20,
+	JSON.stringify(shadowAudit),
+);
+check(
+	"zero soft (blurred) box-shadows",
+	shadowAudit.soft === 0,
+	`soft=${shadowAudit.soft}`,
+);
 
 // Spot-check a primary button's resting shadow is hard.
-const primaryBtn = page.getByRole("button", { name: "Explore Components" }).first();
-const btnShadow = await primaryBtn.evaluate((el) => getComputedStyle(el).boxShadow);
-check("primary button shadow is hard (0 blur)", shadowBlurIsZero(btnShadow), btnShadow);
+const primaryBtn = page
+	.getByRole("button", { name: "Explore Components" })
+	.first();
+const btnShadow = await primaryBtn.evaluate(
+	(el) => getComputedStyle(el).boxShadow,
+);
+check(
+	"primary button shadow is hard (0 blur)",
+	shadowBlurIsZero(btnShadow),
+	btnShadow,
+);
 
 // ── Geometry: sharp corners by default ───────────────────────────────────────
 const btnRadius = await primaryBtn.evaluate(
@@ -285,7 +323,11 @@ const rotated = await page.evaluate(() => {
 	}
 	return n;
 });
-check("sticker rotations applied to >=5 elements", rotated >= 5, `count=${rotated}`);
+check(
+	"sticker rotations applied to >=5 elements",
+	rotated >= 5,
+	`count=${rotated}`,
+);
 
 // ── Buttons CLICK DOWN on :active ────────────────────────────────────────────
 // Tailwind v4 sets the modern `translate` CSS property (e.g. "6px 6px"); idle
@@ -303,7 +345,9 @@ await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
 await page.mouse.down();
 await page.waitForTimeout(120);
 const activeT = await playBtn.evaluate(motionOf);
-const activeShadow = await playBtn.evaluate((el) => getComputedStyle(el).boxShadow);
+const activeShadow = await playBtn.evaluate(
+	(el) => getComputedStyle(el).boxShadow,
+);
 await page.mouse.up();
 check(
 	"button translates (clicks down) on :active",
@@ -373,17 +417,33 @@ check(
 const nameInput = page.getByLabel("Your Name").first();
 await nameInput.scrollIntoViewIfNeeded();
 const inputBox = await nameInput.boundingBox();
-check("input is oversized (>=56px tall)", inputBox.height >= 56, `${Math.round(inputBox.height)}px`);
-const inputBorder = await nameInput.evaluate((el) => getComputedStyle(el).borderTopWidth);
+check(
+	"input is oversized (>=56px tall)",
+	inputBox.height >= 56,
+	`${Math.round(inputBox.height)}px`,
+);
+const inputBorder = await nameInput.evaluate(
+	(el) => getComputedStyle(el).borderTopWidth,
+);
 check("input has 4px border", inputBorder === "4px", inputBorder);
-const bgBefore = await nameInput.evaluate((el) => getComputedStyle(el).backgroundColor);
+const bgBefore = await nameInput.evaluate(
+	(el) => getComputedStyle(el).backgroundColor,
+);
 await nameInput.focus();
 await page.waitForTimeout(150);
-const bgAfter = await nameInput.evaluate((el) => getComputedStyle(el).backgroundColor);
-const focusShadow = await nameInput.evaluate((el) => getComputedStyle(el).boxShadow);
+const bgAfter = await nameInput.evaluate(
+	(el) => getComputedStyle(el).backgroundColor,
+);
+const focusShadow = await nameInput.evaluate(
+	(el) => getComputedStyle(el).boxShadow,
+);
 check("input is white before focus", bgBefore === TOKENS.white, bgBefore);
 check("input floods YELLOW on focus", bgAfter === TOKENS.secondary, bgAfter);
-check("focused input gains a hard shadow", shadowBlurIsZero(focusShadow), focusShadow);
+check(
+	"focused input gains a hard shadow",
+	shadowBlurIsZero(focusShadow),
+	focusShadow,
+);
 await nameInput.blur();
 
 // ── Stat counters count up ───────────────────────────────────────────────────
@@ -398,7 +458,7 @@ const hundred = await page.getByText("100%", { exact: false }).count();
 check("stat count-up reaches 100%", hundred >= 1, `matches=${hundred}`);
 
 // ── FAQ accordion: single-open + keyboard + ARIA ─────────────────────────────
-const faqButtons = page.locator('#faq button[aria-expanded]');
+const faqButtons = page.locator("#faq button[aria-expanded]");
 check("FAQ has aria-expanded buttons", (await faqButtons.count()) >= 5);
 const ariaControls = await page.evaluate(() => {
 	const btns = [...document.querySelectorAll("#faq button[aria-controls]")];
@@ -415,8 +475,14 @@ check(
 const firstFaq = faqButtons.first();
 const secondFaq = faqButtons.nth(1);
 await firstFaq.scrollIntoViewIfNeeded();
-check("first FAQ open by default", (await firstFaq.getAttribute("aria-expanded")) === "true");
-check("second FAQ collapsed by default", (await secondFaq.getAttribute("aria-expanded")) === "false");
+check(
+	"first FAQ open by default",
+	(await firstFaq.getAttribute("aria-expanded")) === "true",
+);
+check(
+	"second FAQ collapsed by default",
+	(await secondFaq.getAttribute("aria-expanded")) === "false",
+);
 await secondFaq.focus();
 await page.keyboard.press("Enter");
 await page.waitForTimeout(300);
@@ -430,7 +496,9 @@ check(
 );
 
 // ── Mobile nav: hamburger toggles a drawer ───────────────────────────────────
-const mobilePage = await browser.newPage({ viewport: { width: 390, height: 800 } });
+const mobilePage = await browser.newPage({
+	viewport: { width: 390, height: 800 },
+});
 await mobilePage.goto(BASE_URL, { waitUntil: "networkidle" });
 const burger = mobilePage.getByRole("button", { name: "Open menu" });
 check("hamburger visible on mobile", await burger.isVisible());
@@ -438,38 +506,71 @@ await burger.click();
 await mobilePage.waitForTimeout(200);
 check(
 	"mobile drawer opens (aria-expanded true)",
-	(await mobilePage.locator('button[aria-controls="mobile-drawer"]').getAttribute("aria-expanded")) === "true",
+	(await mobilePage
+		.locator('button[aria-controls="mobile-drawer"]')
+		.getAttribute("aria-expanded")) === "true",
 );
-check("mobile drawer content present", (await mobilePage.locator("#mobile-drawer").count()) === 1);
+check(
+	"mobile drawer content present",
+	(await mobilePage.locator("#mobile-drawer").count()) === 1,
+);
 await mobilePage.close();
 
 // ── Contrast: core combinations pass WCAG AA ─────────────────────────────────
 const inkOnCream = contrastRatio(TOKENS.ink, TOKENS.bg);
-check("contrast: ink on cream >= 4.5", inkOnCream >= 4.5, inkOnCream.toFixed(2));
+check(
+	"contrast: ink on cream >= 4.5",
+	inkOnCream >= 4.5,
+	inkOnCream.toFixed(2),
+);
 const inkOnYellow = contrastRatio(TOKENS.ink, TOKENS.secondary);
-check("contrast: ink on yellow >= 4.5", inkOnYellow >= 4.5, inkOnYellow.toFixed(2));
+check(
+	"contrast: ink on yellow >= 4.5",
+	inkOnYellow >= 4.5,
+	inkOnYellow.toFixed(2),
+);
 const inkOnViolet = contrastRatio(TOKENS.ink, TOKENS.muted);
-check("contrast: ink on violet >= 4.5", inkOnViolet >= 4.5, inkOnViolet.toFixed(2));
+check(
+	"contrast: ink on violet >= 4.5",
+	inkOnViolet >= 4.5,
+	inkOnViolet.toFixed(2),
+);
 const inkOnAccent = contrastRatio(TOKENS.ink, TOKENS.accent);
-check("contrast: ink on accent red >= 4.5", inkOnAccent >= 4.5, inkOnAccent.toFixed(2));
+check(
+	"contrast: ink on accent red >= 4.5",
+	inkOnAccent >= 4.5,
+	inkOnAccent.toFixed(2),
+);
 const whiteOnInk = contrastRatio(TOKENS.white, TOKENS.ink);
-check("contrast: white on ink >= 4.5", whiteOnInk >= 4.5, whiteOnInk.toFixed(2));
+check(
+	"contrast: white on ink >= 4.5",
+	whiteOnInk >= 4.5,
+	whiteOnInk.toFixed(2),
+);
 
 // ── Texture overlays present ─────────────────────────────────────────────────
 check(
 	"halftone/dots/grid texture utilities used",
-	(await page.locator(".neo-halftone, .neo-dots, .neo-grid, .neo-grid-inverted").count()) >= 4,
+	(await page
+		.locator(".neo-halftone, .neo-dots, .neo-grid, .neo-grid-inverted")
+		.count()) >= 4,
 );
 check(
 	"noise feTurbulence overlay present (in CSS, via .neo-noise)",
 	(await page.locator(".neo-noise").count()) >= 4,
 );
 
-check("no console/page errors", consoleErrors.length === 0, consoleErrors.join(" | ").slice(0, 300));
+check(
+	"no console/page errors",
+	consoleErrors.length === 0,
+	consoleErrors.join(" | ").slice(0, 300),
+);
 await page.close();
 
 /* ───────────── Reduced-motion pass (motion must switch OFF) ─────────────── */
-const rmPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+const rmPage = await browser.newPage({
+	viewport: { width: 1280, height: 900 },
+});
 await rmPage.emulateMedia({ reducedMotion: "reduce" });
 await rmPage.goto(BASE_URL, { waitUntil: "networkidle" });
 await rmPage.waitForTimeout(600);
@@ -502,5 +603,7 @@ check(
 await rmPage.close();
 
 await browser.close();
-console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
+console.log(
+	failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`,
+);
 process.exit(failures === 0 ? 0 : 1);

@@ -27,10 +27,14 @@ const PORT = process.env.PORT || 5343;
 const URL = `http://localhost:${PORT}/`;
 
 function startDev() {
-	const dev = spawn("npm", ["run", "dev", "--", "--port", String(PORT), "--strictPort"], {
-		stdio: ["ignore", "pipe", "pipe"],
-		env: { ...process.env },
-	});
+	const dev = spawn(
+		"npm",
+		["run", "dev", "--", "--port", String(PORT), "--strictPort"],
+		{
+			stdio: ["ignore", "pipe", "pipe"],
+			env: { ...process.env },
+		},
+	);
 	dev.stdout.on("data", () => {});
 	dev.stderr.on("data", (d) => process.stderr.write(`[vite] ${d}`));
 	return dev;
@@ -129,7 +133,9 @@ try {
 			"--ignore-gpu-blocklist",
 		],
 	});
-	const ctx = await browser.newContext({ viewport: { width: 1366, height: 900 } });
+	const ctx = await browser.newContext({
+		viewport: { width: 1366, height: 900 },
+	});
 	const page = await ctx.newPage();
 
 	const pageErrors = [];
@@ -143,7 +149,8 @@ try {
 	await sleep(1600);
 
 	// Header renders
-	const h1 = (await page.locator("header h1").first().textContent())?.trim() ?? "";
+	const h1 =
+		(await page.locator("header h1").first().textContent())?.trim() ?? "";
 	if (/LiquidMetal Foundry/i.test(h1)) ok(`header renders ("${h1}")`);
 	else bad(`header missing (got "${h1}")`);
 
@@ -152,7 +159,8 @@ try {
 		const h = document.querySelector("header h1");
 		return h ? getComputedStyle(h).fontFamily : "";
 	});
-	if (/space grotesk/i.test(headFont)) ok(`chrome uses vendored font ("${headFont}")`);
+	if (/space grotesk/i.test(headFont))
+		ok(`chrome uses vendored font ("${headFont}")`);
 	else bad(`display font family unexpected ("${headFont}")`);
 
 	// Canvas present, non-empty
@@ -162,14 +170,18 @@ try {
 		const r = c.getBoundingClientRect();
 		return { w: Math.round(r.width), h: Math.round(r.height) };
 	});
-	if (box && box.w > 300 && box.h > 300) ok(`LiquidMetal canvas mounts ${box.w}x${box.h}`);
+	if (box && box.w > 300 && box.h > 300)
+		ok(`LiquidMetal canvas mounts ${box.w}x${box.h}`);
 	else bad(`no live canvas (${JSON.stringify(box)})`);
 
 	// Real WebGL context
 	const hasGL = await page.evaluate(() => {
 		const c = document.querySelector("canvas");
 		if (!c) return false;
-		const gl = c.getContext("webgl2") || c.getContext("webgl") || c.getContext("experimental-webgl");
+		const gl =
+			c.getContext("webgl2") ||
+			c.getContext("webgl") ||
+			c.getContext("experimental-webgl");
 		return !!gl;
 	});
 	if (hasGL) ok("WebGL context is live");
@@ -185,8 +197,14 @@ try {
 			Math.abs(beforeAlloy[0] - afterAlloy[0]) +
 			Math.abs(beforeAlloy[1] - afterAlloy[1]) +
 			Math.abs(beforeAlloy[2] - afterAlloy[2]);
-		if (delta > 10) ok(`alloy preset re-tints shader (Δrgb=${delta}, ${beforeAlloy} → ${afterAlloy})`);
-		else bad(`alloy did not change shader pixels (Δrgb=${delta}, ${beforeAlloy} → ${afterAlloy})`);
+		if (delta > 10)
+			ok(
+				`alloy preset re-tints shader (Δrgb=${delta}, ${beforeAlloy} → ${afterAlloy})`,
+			);
+		else
+			bad(
+				`alloy did not change shader pixels (Δrgb=${delta}, ${beforeAlloy} → ${afterAlloy})`,
+			);
 	} else {
 		bad(`could not sample canvas (before=${beforeAlloy}, after=${afterAlloy})`);
 	}
@@ -213,21 +231,31 @@ try {
 	await speed.press("Home");
 	await sleep(250);
 	const minTxt = await page.evaluate(
-		() => document.querySelector("#fader-speed")?.closest(".group")?.textContent ?? "",
+		() =>
+			document.querySelector("#fader-speed")?.closest(".group")?.textContent ??
+			"",
 	);
 	await speed.press("End");
 	await sleep(250);
 	const maxTxt = await page.evaluate(
-		() => document.querySelector("#fader-speed")?.closest(".group")?.textContent ?? "",
+		() =>
+			document.querySelector("#fader-speed")?.closest(".group")?.textContent ??
+			"",
 	);
-	if (/0\.00/.test(minTxt) && /5\.00/.test(maxTxt)) ok("speed fader sweeps 0.00 → 5.00");
-	else bad(`speed fader did not sweep (min="${minTxt.trim()}" max="${maxTxt.trim()}")`);
+	if (/0\.00/.test(minTxt) && /5\.00/.test(maxTxt))
+		ok("speed fader sweeps 0.00 → 5.00");
+	else
+		bad(
+			`speed fader did not sweep (min="${minTxt.trim()}" max="${maxTxt.trim()}")`,
+		);
 
 	// Documentation dock: Props API table renders.
 	await page.getByRole("tab", { name: /Props API/ }).click();
 	await sleep(300);
 	const hasPropsRow = await page.evaluate(() =>
-		Array.from(document.querySelectorAll("td")).some((td) => td.textContent?.trim() === "distortion"),
+		Array.from(document.querySelectorAll("td")).some(
+			(td) => td.textContent?.trim() === "distortion",
+		),
 	);
 	if (hasPropsRow) ok("docs dock renders the Props API table");
 	else bad("Props API table did not render");

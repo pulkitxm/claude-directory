@@ -62,7 +62,8 @@ server.on("exit", (code) => {
 // Network/console errors that are expected because the remote scene host is
 // blocked in this environment. Anything matching is ignored; everything else
 // is a real failure.
-const EXPECTED_ERROR = /prod\.spline\.design|ERR_CERT_AUTHORITY_INVALID|Failed to load resource|Failed to fetch/i;
+const EXPECTED_ERROR =
+	/prod\.spline\.design|ERR_CERT_AUTHORITY_INVALID|Failed to load resource|Failed to fetch/i;
 
 try {
 	await waitForServer(URL);
@@ -94,8 +95,9 @@ try {
 
 	console.log("Section 1 — Hero (SplineSceneBasic)");
 	check(
-		(await page.getByRole("heading", { level: 1 }).first().textContent())
-			?.includes("Interactive 3D"),
+		(
+			await page.getByRole("heading", { level: 1 }).first().textContent()
+		)?.includes("Interactive 3D"),
 		"hero headline renders",
 	);
 	// The exact demo Card: black bg, h-[500px], overflow-hidden.

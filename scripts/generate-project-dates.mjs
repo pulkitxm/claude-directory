@@ -38,45 +38,60 @@ const outFile = join(repoRoot, "project-dates.json");
 const IGNORED = new Set(["scripts", "extras", "node_modules"]);
 
 function isVisibleDir(name) {
-  if (name.startsWith(".")) return false; // .git, .github, .claude, etc.
-  return !IGNORED.has(name);
+	if (name.startsWith(".")) return false; // .git, .github, .claude, etc.
+	return !IGNORED.has(name);
 }
 
 function git(args) {
-  return execFileSync("git", args, { cwd: repoRoot, encoding: "utf8" }).trim();
+	return execFileSync("git", args, { cwd: repoRoot, encoding: "utf8" }).trim();
 }
 
 // Last commit that changed the project's content, following the category move.
 // `currentPath` is <category>/<slug>; `rootPath` is the historical <slug>.
 function lastContentDate(currentPath, rootPath) {
-  // %cI => committer date, strict ISO 8601. -M finds renames so the reorg is
-  // classified as R and dropped by --diff-filter=AMD; the two pathspecs cover
-  // history both before (rootPath) and after (currentPath) the move.
-  const out = git(["log", "-1", "-M", "--diff-filter=AMD", "--format=%cI", "--", currentPath, rootPath]);
-  if (out) return out;
-  // Safety net: a project whose only history is a rename/copy (no A/M/D yet).
-  return git(["log", "-1", "--format=%cI", "--", currentPath, rootPath]) || null;
+	// %cI => committer date, strict ISO 8601. -M finds renames so the reorg is
+	// classified as R and dropped by --diff-filter=AMD; the two pathspecs cover
+	// history both before (rootPath) and after (currentPath) the move.
+	const out = git([
+		"log",
+		"-1",
+		"-M",
+		"--diff-filter=AMD",
+		"--format=%cI",
+		"--",
+		currentPath,
+		rootPath,
+	]);
+	if (out) return out;
+	// Safety net: a project whose only history is a rename/copy (no A/M/D yet).
+	return (
+		git(["log", "-1", "--format=%cI", "--", currentPath, rootPath]) || null
+	);
 }
 
 const projects = [];
 for (const category of readdirSync(repoRoot, { withFileTypes: true })) {
-  if (!category.isDirectory() || !isVisibleDir(category.name)) continue;
-  for (const entry of readdirSync(join(repoRoot, category.name), { withFileTypes: true })) {
-    if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
-    const slug = entry.name;
-    projects.push({
-      project: slug,
-      lastUpdated: lastContentDate(`${category.name}/${slug}`, slug),
-    });
-  }
+	if (!category.isDirectory() || !isVisibleDir(category.name)) continue;
+	for (const entry of readdirSync(join(repoRoot, category.name), {
+		withFileTypes: true,
+	})) {
+		if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+		const slug = entry.name;
+		projects.push({
+			project: slug,
+			lastUpdated: lastContentDate(`${category.name}/${slug}`, slug),
+		});
+	}
 }
 
-projects.sort((a, b) => (b.lastUpdated ?? "").localeCompare(a.lastUpdated ?? ""));
+projects.sort((a, b) =>
+	(b.lastUpdated ?? "").localeCompare(a.lastUpdated ?? ""),
+);
 
 writeFileSync(outFile, `${JSON.stringify(projects, null, 2)}\n`);
 
 console.log(`Wrote ${projects.length} projects to ${outFile}\n`);
 console.log("Last 5 edited projects:");
 for (const p of projects.slice(0, 5)) {
-  console.log(`  ${p.lastUpdated}  ${p.project}`);
+	console.log(`  ${p.lastUpdated}  ${p.project}`);
 }

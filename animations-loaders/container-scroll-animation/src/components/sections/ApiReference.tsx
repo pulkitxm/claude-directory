@@ -17,8 +17,18 @@ const props = [
 
 const transforms = [
 	{ k: "rotateX", from: "20°", to: "0°", note: "card tilts upright" },
-	{ k: "scale (desktop)", from: "1.05", to: "1.00", note: "settles to true size" },
-	{ k: "scale (mobile)", from: "0.70", to: "0.90", note: "fits small viewports" },
+	{
+		k: "scale (desktop)",
+		from: "1.05",
+		to: "1.00",
+		note: "settles to true size",
+	},
+	{
+		k: "scale (mobile)",
+		from: "0.70",
+		to: "0.90",
+		note: "fits small viewports",
+	},
 	{ k: "translateY (title)", from: "0", to: "−100", note: "heading rises" },
 ];
 
@@ -90,8 +100,7 @@ export function ApiReference() {
 							>
 								<code className="font-mono text-white/80">{t.k}</code>
 								<span className="font-mono text-iris-bright">
-									{t.from}{" "}
-									<span className="text-white/30">→</span> {t.to}
+									{t.from} <span className="text-white/30">→</span> {t.to}
 								</span>
 								<span className="text-white/45">{t.note}</span>
 							</div>
@@ -112,9 +121,9 @@ export function ApiReference() {
 						</h3>
 						<p className="mt-1 text-[13px] leading-relaxed text-white/50">
 							Just one local boolean,{" "}
-							<code className="font-mono text-white/75">isMobile</code>, set from a
-							resize listener to pick the scale range. No context or store
-							needed — scroll position is read directly via{" "}
+							<code className="font-mono text-white/75">isMobile</code>, set
+							from a resize listener to pick the scale range. No context or
+							store needed — scroll position is read directly via{" "}
 							<code className="font-mono text-white/75">useScroll</code>.
 						</p>
 					</div>
@@ -131,9 +140,9 @@ export function ApiReference() {
 						<p className="mt-1 text-[13px] leading-relaxed text-white/50">
 							Section height drops from{" "}
 							<code className="font-mono text-white/75">80rem</code> to{" "}
-							<code className="font-mono text-white/75">60rem</code> under 768px and
-							the card scales up (0.70 → 0.90) so it never overflows a phone.
-							Best used once near the top of a marketing or docs page.
+							<code className="font-mono text-white/75">60rem</code> under 768px
+							and the card scales up (0.70 → 0.90) so it never overflows a
+							phone. Best used once near the top of a marketing or docs page.
 						</p>
 					</div>
 				</div>

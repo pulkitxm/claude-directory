@@ -21,12 +21,14 @@ export function Features() {
 						<h2 className="mt-5 max-w-2xl text-5xl font-bold uppercase leading-[0.9] tracking-tighter text-neo-ink sm:text-7xl">
 							Six Loud
 							<br />
-							<span className="w-fit -rotate-1 bg-neo-secondary px-2">Principles</span>
+							<span className="w-fit -rotate-1 bg-neo-secondary px-2">
+								Principles
+							</span>
 						</h2>
 					</div>
 					<p className="max-w-xs text-lg font-bold leading-snug text-neo-ink">
-						No subtle anything. Each rule is exaggerated on purpose — that&apos;s
-						the whole point.
+						No subtle anything. Each rule is exaggerated on purpose —
+						that&apos;s the whole point.
 					</p>
 				</div>
 

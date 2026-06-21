@@ -74,7 +74,8 @@ export const BENEFITS = [
 
 export const TESTIMONIALS = [
 	{
-		quote: "It stopped whispering and started shouting. Conversions followed the volume.",
+		quote:
+			"It stopped whispering and started shouting. Conversions followed the volume.",
 		name: "Dana Okonkwo",
 		role: "Creative Director, FORMAT",
 	},
@@ -84,12 +85,14 @@ export const TESTIMONIALS = [
 		role: "Founder, RIOT STUDIO",
 	},
 	{
-		quote: "Swiss precision with the volume turned all the way up. Exactly what the brand needed.",
+		quote:
+			"Swiss precision with the volume turned all the way up. Exactly what the brand needed.",
 		name: "Priya Nair",
 		role: "Head of Brand, AXIS",
 	},
 	{
-		quote: "We replaced six gradients with one acid yellow and the page finally had a spine.",
+		quote:
+			"We replaced six gradients with one acid yellow and the page finally had a spine.",
 		name: "Tomas Vega",
 		role: "Design Lead, PULSE",
 	},
@@ -120,7 +123,12 @@ export const PRICING = [
 		name: "Studio",
 		price: "900",
 		cadence: "/ team",
-		features: ["Six seats", "Private session", "Brand teardown", "On-site critique"],
+		features: [
+			"Six seats",
+			"Private session",
+			"Brand teardown",
+			"On-site critique",
+		],
 		featured: false,
 	},
 ] as const;

@@ -36,7 +36,10 @@ export function HowItWorks() {
 			className="on-dark relative overflow-hidden bg-[var(--color-ink)] py-20 text-white lg:py-28"
 		>
 			<Blob className="right-[-8rem] top-[-6rem] h-80 w-80 bg-white/[0.04]" />
-			<Square rotate={16} className="left-[-3rem] bottom-10 h-44 w-44 bg-white/[0.03]" />
+			<Square
+				rotate={16}
+				className="left-[-3rem] bottom-10 h-44 w-44 bg-white/[0.03]"
+			/>
 
 			<Shell className="relative">
 				<Reveal className="max-w-2xl">

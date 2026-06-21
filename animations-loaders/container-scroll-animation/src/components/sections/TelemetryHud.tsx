@@ -1,4 +1,9 @@
-import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import {
+	motion,
+	useMotionValueEvent,
+	useScroll,
+	useTransform,
+} from "framer-motion";
 import { useRef, useState } from "react";
 
 /**

@@ -20,7 +20,8 @@ export function Badge({
 	spinOnHover = false,
 	className = "",
 }: BadgeProps) {
-	const shapeClass = shape === "pill" ? "rounded-full px-4 py-1.5" : "rounded-none px-3 py-1.5";
+	const shapeClass =
+		shape === "pill" ? "rounded-full px-4 py-1.5" : "rounded-none px-3 py-1.5";
 	const spin = spinOnHover
 		? "transition-transform duration-200 ease-out hover:rotate-12"
 		: "";

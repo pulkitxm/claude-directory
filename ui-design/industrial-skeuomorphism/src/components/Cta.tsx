@@ -56,8 +56,8 @@ export function Cta() {
 							on every machine.
 						</h2>
 						<p className="mx-auto mt-4 max-w-[52ch] text-base text-slate-soft md:text-lg">
-							Start free on the bench, or have an engineer wire up your
-							floor. Either way you're driving real hardware today.
+							Start free on the bench, or have an engineer wire up your floor.
+							Either way you're driving real hardware today.
 						</p>
 
 						{sent ? (
