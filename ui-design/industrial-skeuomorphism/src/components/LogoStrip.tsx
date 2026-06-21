@@ -19,9 +19,7 @@ export function LogoStrip() {
 					style={{ boxShadow: "var(--shadow-recessed-soft)" }}
 				>
 					<p className="mb-5 text-center">
-						<MonoLabel>
-							FIELDED ON 4,200+ MACHINES ACROSS 38 PLANTS
-						</MonoLabel>
+						<MonoLabel>FIELDED ON 4,200+ MACHINES ACROSS 38 PLANTS</MonoLabel>
 					</p>
 					<ul className="grid grid-cols-2 items-center justify-items-center gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-6">
 						{PARTNERS.map((p) => (

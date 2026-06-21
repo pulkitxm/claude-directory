@@ -38,8 +38,10 @@ const buttonBase =
 	"focus-visible:outline-3 focus-visible:outline-dashed focus-visible:outline-offset-2";
 
 const buttonVariant: Record<ButtonVariant, string> = {
-	primary: "bg-card text-ink hover:bg-accent hover:text-white focus-visible:outline-accent",
-	secondary: "bg-muted text-ink hover:bg-pen hover:text-white focus-visible:outline-pen",
+	primary:
+		"bg-card text-ink hover:bg-accent hover:text-white focus-visible:outline-accent",
+	secondary:
+		"bg-muted text-ink hover:bg-pen hover:text-white focus-visible:outline-pen",
 };
 
 export function Button({
@@ -282,10 +284,7 @@ export function ScribbleArrow({ className }: { className?: string }) {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 		>
-			<path
-				d="M10 12 C 38 6, 74 14, 96 52"
-				strokeDasharray="2 9"
-			/>
+			<path d="M10 12 C 38 6, 74 14, 96 52" strokeDasharray="2 9" />
 			<path d="M86 40 L98 56 L80 60" />
 		</svg>
 	);
@@ -373,7 +372,14 @@ export function AvatarStack({ count = 5 }: { count?: number }) {
 						zIndex: count - i,
 					}}
 				>
-					<svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="var(--color-ink)" strokeWidth="1.8" strokeLinecap="round">
+					<svg
+						viewBox="0 0 24 24"
+						className="h-7 w-7"
+						fill="none"
+						stroke="var(--color-ink)"
+						strokeWidth="1.8"
+						strokeLinecap="round"
+					>
 						<circle cx="12" cy="9" r="4" />
 						<path d="M5 21 Q12 14 19 21" />
 					</svg>

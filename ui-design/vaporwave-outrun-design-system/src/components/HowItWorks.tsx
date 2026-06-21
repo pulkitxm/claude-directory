@@ -1,10 +1,4 @@
-import {
-	Eyebrow,
-	Reveal,
-	Section,
-	SectionHeading,
-	Shell,
-} from "./primitives";
+import { Eyebrow, Reveal, Section, SectionHeading, Shell } from "./primitives";
 
 type Step = {
 	n: string;

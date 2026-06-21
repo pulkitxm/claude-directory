@@ -1,4 +1,6 @@
-export function cn(...classes: Array<string | false | null | undefined>): string {
+export function cn(
+	...classes: Array<string | false | null | undefined>
+): string {
 	return classes.filter(Boolean).join(" ");
 }
 
@@ -33,7 +35,8 @@ export function luminance(hex: string): number {
 	const r = parseInt(h.slice(0, 2), 16) / 255;
 	const g = parseInt(h.slice(2, 4), 16) / 255;
 	const b = parseInt(h.slice(4, 6), 16) / 255;
-	const lin = (c: number) => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+	const lin = (c: number) =>
+		c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
 	return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
 }
 
@@ -59,7 +62,8 @@ export function hslToHex({ h, s, l }: Hsl): string {
 	const lN = l / 100;
 	const k = (n: number) => (n + h / 30) % 12;
 	const a = sN * Math.min(lN, 1 - lN);
-	const f = (n: number) => lN - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+	const f = (n: number) =>
+		lN - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
 	const toHex = (x: number) =>
 		Math.round(255 * x)
 			.toString(16)

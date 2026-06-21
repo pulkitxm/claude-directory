@@ -6,5 +6,5 @@ import { twMerge } from "tailwind-merge";
  * utility wins (e.g. `cn("px-2", condition && "px-4")`).
  */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+	return twMerge(clsx(inputs));
 }

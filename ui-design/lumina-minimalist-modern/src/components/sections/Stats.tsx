@@ -13,13 +13,28 @@ interface Stat {
 
 const STATS: Stat[] = [
 	{ value: 4200, suffix: "+", label: "Teams shipping with Lumina" },
-	{ value: 99.98, suffix: "%", label: "Pipeline uptime, last 12 months", decimals: 2 },
+	{
+		value: 99.98,
+		suffix: "%",
+		label: "Pipeline uptime, last 12 months",
+		decimals: 2,
+	},
 	{ value: 38, suffix: "M", label: "Events processed every minute" },
-	{ value: 6.5, suffix: "x", label: "Faster time to first insight", decimals: 1 },
+	{
+		value: 6.5,
+		suffix: "x",
+		label: "Faster time to first insight",
+		decimals: 1,
+	},
 ];
 
 /** Counts a number up from 0 once it scrolls into view. */
-function useCountUp(target: number, run: boolean, decimals = 0, duration = 1400) {
+function useCountUp(
+	target: number,
+	run: boolean,
+	decimals = 0,
+	duration = 1400,
+) {
 	const [value, setValue] = useState(0);
 	useEffect(() => {
 		if (!run) return;
@@ -43,7 +58,9 @@ function useCountUp(target: number, run: boolean, decimals = 0, duration = 1400)
 		raf = requestAnimationFrame(tick);
 		return () => cancelAnimationFrame(raf);
 	}, [target, run, duration]);
-	return decimals > 0 ? value.toFixed(decimals) : Math.round(value).toLocaleString();
+	return decimals > 0
+		? value.toFixed(decimals)
+		: Math.round(value).toLocaleString();
 }
 
 function StatItem({ stat, run }: { stat: Stat; run: boolean }) {

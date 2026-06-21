@@ -128,8 +128,8 @@ export function IntegrationNotes() {
 							components land beside it and compose cleanly;
 						</li>
 						<li>
-							UI primitives stay separate from app/feature code — the
-							convention every shadcn project shares.
+							UI primitives stay separate from app/feature code — the convention
+							every shadcn project shares.
 						</li>
 					</ul>
 				</Section>

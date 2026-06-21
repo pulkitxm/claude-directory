@@ -70,10 +70,7 @@ export function Features() {
 				<div className="mt-14 grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 					{/* HERO FEATURE CARD — spans 2x2 on desktop, with a peeking panel */}
 					<Reveal className="md:col-span-2 md:row-span-2" delay={0}>
-						<Card
-							as="article"
-							className="h-full hover:scale-[1.02] sm:p-10"
-						>
+						<Card as="article" className="h-full hover:scale-[1.02] sm:p-10">
 							<IconOrb hue="violet" size="lg" round>
 								<Layers size={36} strokeWidth={1.8} />
 							</IconOrb>
@@ -144,8 +141,8 @@ export function Features() {
 							title="Zero-gravity float"
 							className="h-full"
 						>
-							Cards lift toward you on hover; background blobs drift on two axes.
-							Nothing is statically stuck to the grid — it all breathes.
+							Cards lift toward you on hover; background blobs drift on two
+							axes. Nothing is statically stuck to the grid — it all breathes.
 						</FeatureCard>
 					</Reveal>
 
@@ -188,8 +185,9 @@ export function Features() {
 										Accessible by construction
 									</h3>
 									<p className="mt-2.5 max-w-md text-base leading-relaxed text-clay-muted">
-										WCAG-AA contrast, 44px+ tap targets, visible focus rings, and
-										a full <span className="font-bold">prefers-reduced-motion</span>{" "}
+										WCAG-AA contrast, 44px+ tap targets, visible focus rings,
+										and a full{" "}
+										<span className="font-bold">prefers-reduced-motion</span>{" "}
 										fallback that stills the entire world.
 									</p>
 								</div>

@@ -1,4 +1,8 @@
-import type { ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
+import type {
+	ReactNode,
+	ButtonHTMLAttributes,
+	AnchorHTMLAttributes,
+} from "react";
 import { motion } from "motion/react";
 import { fadeUp, reveal } from "../lib/motion";
 

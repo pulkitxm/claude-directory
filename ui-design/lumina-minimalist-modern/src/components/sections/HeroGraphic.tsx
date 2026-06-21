@@ -42,10 +42,7 @@ export function HeroGraphic() {
 			{/* 3x3 decorative dot grid */}
 			<div className="absolute bottom-10 left-8 grid grid-cols-3 gap-2.5">
 				{Array.from({ length: 9 }).map((_, i) => (
-					<span
-						key={i}
-						className="h-1.5 w-1.5 rounded-full bg-foreground/15"
-					/>
+					<span key={i} className="h-1.5 w-1.5 rounded-full bg-foreground/15" />
 				))}
 			</div>
 
@@ -69,9 +66,7 @@ export function HeroGraphic() {
 						<Activity className="h-3.5 w-3.5" />
 					</span>
 				</div>
-				<div className="mt-2 text-3xl font-semibold tracking-tight">
-					48,920
-				</div>
+				<div className="mt-2 text-3xl font-semibold tracking-tight">48,920</div>
 				<div className="mt-2 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-accent to-accent-secondary px-2 py-0.5 text-[11px] font-medium text-accent-foreground">
 					<ArrowUpRight className="h-3 w-3" />
 					+12.4%

@@ -1,6 +1,9 @@
 "use client";
 
-import { LiquidMetal, type LiquidMetalParams } from "@paper-design/shaders-react";
+import {
+	LiquidMetal,
+	type LiquidMetalParams,
+} from "@paper-design/shaders-react";
 import { motion } from "framer-motion";
 import type { CSSProperties } from "react";
 
@@ -101,7 +104,9 @@ export default function LiquidMetalBackground({
 		<motion.div
 			className={`w-full h-full ${className}`}
 			initial={animate ? { opacity: 0.5, scale: 1 } : false}
-			animate={animate ? { opacity: 0.7, scale: 1.02, rotate: 2 } : { opacity: 0.7 }}
+			animate={
+				animate ? { opacity: 0.7, scale: 1.02, rotate: 2 } : { opacity: 0.7 }
+			}
 			transition={
 				animate
 					? { duration: 8, repeat: Infinity, repeatType: "mirror" }
@@ -129,7 +134,9 @@ export default function LiquidMetalBackground({
 	);
 
 	if (!asBackground) {
-		return <div className="relative h-full w-full overflow-hidden">{field}</div>;
+		return (
+			<div className="relative h-full w-full overflow-hidden">{field}</div>
+		);
 	}
 
 	return (

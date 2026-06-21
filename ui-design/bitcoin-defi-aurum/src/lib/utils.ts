@@ -3,5 +3,5 @@ import { twMerge } from "tailwind-merge";
 
 /** Merge Tailwind class names, resolving conflicts deterministically. */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+	return twMerge(clsx(inputs));
 }

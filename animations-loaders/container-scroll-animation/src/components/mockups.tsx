@@ -186,31 +186,66 @@ const columns: { name: string; accent: string; cards: Card[] }[] = [
 		name: "Backlog",
 		accent: "bg-white/30",
 		cards: [
-			{ title: "Audit onboarding funnel", tag: "Growth", tagColor: "text-iris-bright bg-iris/15", who: "AL" },
-			{ title: "Spike: edge caching", tag: "Infra", tagColor: "text-emerald-300 bg-emerald-400/10", who: "JP" },
+			{
+				title: "Audit onboarding funnel",
+				tag: "Growth",
+				tagColor: "text-iris-bright bg-iris/15",
+				who: "AL",
+			},
+			{
+				title: "Spike: edge caching",
+				tag: "Infra",
+				tagColor: "text-emerald-300 bg-emerald-400/10",
+				who: "JP",
+			},
 		],
 	},
 	{
 		name: "In progress",
 		accent: "bg-iris",
 		cards: [
-			{ title: "Scroll telemetry HUD", tag: "Design", tagColor: "text-ember bg-ember/10", who: "MR" },
-			{ title: "Billing webhooks v2", tag: "Backend", tagColor: "text-sky-300 bg-sky-400/10", who: "DK" },
+			{
+				title: "Scroll telemetry HUD",
+				tag: "Design",
+				tagColor: "text-ember bg-ember/10",
+				who: "MR",
+			},
+			{
+				title: "Billing webhooks v2",
+				tag: "Backend",
+				tagColor: "text-sky-300 bg-sky-400/10",
+				who: "DK",
+			},
 		],
 	},
 	{
 		name: "Review",
 		accent: "bg-ember",
 		cards: [
-			{ title: "Dark-mode tokens", tag: "Design", tagColor: "text-ember bg-ember/10", who: "MR" },
+			{
+				title: "Dark-mode tokens",
+				tag: "Design",
+				tagColor: "text-ember bg-ember/10",
+				who: "MR",
+			},
 		],
 	},
 	{
 		name: "Shipped",
 		accent: "bg-emerald-400",
 		cards: [
-			{ title: "Org switcher", tag: "Frontend", tagColor: "text-sky-300 bg-sky-400/10", who: "AL" },
-			{ title: "SSO via SAML", tag: "Security", tagColor: "text-rose-300 bg-rose-400/10", who: "JP" },
+			{
+				title: "Org switcher",
+				tag: "Frontend",
+				tagColor: "text-sky-300 bg-sky-400/10",
+				who: "AL",
+			},
+			{
+				title: "SSO via SAML",
+				tag: "Security",
+				tagColor: "text-rose-300 bg-rose-400/10",
+				who: "JP",
+			},
 		],
 	},
 ];
@@ -286,15 +321,59 @@ export function KanbanMockup() {
 }
 
 /* ── Mockup 3 — Code editor / PR review ──────────────────────────────────── */
-const codeLines: { n: number; tokens: { t: string; c: string }[]; add?: boolean }[] = [
-	{ n: 18, tokens: [{ t: "const ", c: "text-iris-bright" }, { t: "rotate ", c: "text-white/90" }, { t: "= ", c: "text-white/40" }, { t: "useTransform", c: "text-ember" }, { t: "(", c: "text-white/40" }] },
+const codeLines: {
+	n: number;
+	tokens: { t: string; c: string }[];
+	add?: boolean;
+}[] = [
+	{
+		n: 18,
+		tokens: [
+			{ t: "const ", c: "text-iris-bright" },
+			{ t: "rotate ", c: "text-white/90" },
+			{ t: "= ", c: "text-white/40" },
+			{ t: "useTransform", c: "text-ember" },
+			{ t: "(", c: "text-white/40" },
+		],
+	},
 	{ n: 19, tokens: [{ t: "  scrollYProgress,", c: "text-sky-300" }] },
-	{ n: 20, tokens: [{ t: "  [", c: "text-white/40" }, { t: "0, 1", c: "text-emerald-300" }, { t: "],", c: "text-white/40" }] },
-	{ n: 21, tokens: [{ t: "  [", c: "text-white/40" }, { t: "20, 0", c: "text-emerald-300" }, { t: "]", c: "text-white/40" }], add: true },
+	{
+		n: 20,
+		tokens: [
+			{ t: "  [", c: "text-white/40" },
+			{ t: "0, 1", c: "text-emerald-300" },
+			{ t: "],", c: "text-white/40" },
+		],
+	},
+	{
+		n: 21,
+		tokens: [
+			{ t: "  [", c: "text-white/40" },
+			{ t: "20, 0", c: "text-emerald-300" },
+			{ t: "]", c: "text-white/40" },
+		],
+		add: true,
+	},
 	{ n: 22, tokens: [{ t: ");", c: "text-white/40" }] },
 	{ n: 23, tokens: [{ t: "", c: "" }] },
-	{ n: 24, tokens: [{ t: "return ", c: "text-iris-bright" }, { t: "<", c: "text-white/40" }, { t: "motion.div", c: "text-ember" }] },
-	{ n: 25, tokens: [{ t: "  style", c: "text-sky-300" }, { t: "={{ ", c: "text-white/40" }, { t: "rotateX", c: "text-sky-300" }, { t: ": rotate }}", c: "text-white/40" }], add: true },
+	{
+		n: 24,
+		tokens: [
+			{ t: "return ", c: "text-iris-bright" },
+			{ t: "<", c: "text-white/40" },
+			{ t: "motion.div", c: "text-ember" },
+		],
+	},
+	{
+		n: 25,
+		tokens: [
+			{ t: "  style", c: "text-sky-300" },
+			{ t: "={{ ", c: "text-white/40" },
+			{ t: "rotateX", c: "text-sky-300" },
+			{ t: ": rotate }}", c: "text-white/40" },
+		],
+		add: true,
+	},
 	{ n: 26, tokens: [{ t: "/>;", c: "text-white/40" }] },
 ];
 
@@ -313,19 +392,26 @@ export function EditorMockup() {
 				{/* file tree */}
 				<aside className="hidden w-40 shrink-0 flex-col gap-0.5 border-r border-white/[0.06] p-3 font-mono text-[11px] md:flex">
 					<p className="mb-1 text-white/30">EXPLORER</p>
-					{["components/", "  ui/", "    container-scroll…tsx", "  mockups.tsx", "lib/utils.ts", "App.tsx"].map(
-						(f, i) => (
-							<span
-								key={f}
-								className={
-									i === 2 ? "rounded bg-iris/15 px-1 text-iris-bright" : "text-white/45"
-								}
-							>
-								{f.includes(".") && i !== 2 ? "📄 " : ""}
-								{f}
-							</span>
-						),
-					)}
+					{[
+						"components/",
+						"  ui/",
+						"    container-scroll…tsx",
+						"  mockups.tsx",
+						"lib/utils.ts",
+						"App.tsx",
+					].map((f, i) => (
+						<span
+							key={f}
+							className={
+								i === 2
+									? "rounded bg-iris/15 px-1 text-iris-bright"
+									: "text-white/45"
+							}
+						>
+							{f.includes(".") && i !== 2 ? "📄 " : ""}
+							{f}
+						</span>
+					))}
 				</aside>
 
 				{/* code */}
@@ -357,7 +443,9 @@ export function EditorMockup() {
 							<div className="grid h-5 w-5 place-items-center rounded-full bg-iris text-[9px] font-semibold text-[#0b0c10]">
 								MR
 							</div>
-							<span className="text-[12px] font-medium text-white/80">Mara R.</span>
+							<span className="text-[12px] font-medium text-white/80">
+								Mara R.
+							</span>
 							<span className="text-[11px] text-white/35">commented</span>
 							<span className="ml-auto flex items-center gap-1 rounded bg-emerald-400/10 px-1.5 py-0.5 text-[10px] text-emerald-300">
 								<Check className="h-3 w-3" /> Approved
@@ -376,7 +464,8 @@ export function EditorMockup() {
 					<TerminalSquare className="h-3 w-3" /> tsc — 0 errors
 				</span>
 				<span className="flex items-center gap-1">
-					<Circle className="h-2 w-2 fill-emerald-400 text-emerald-400" /> Prettier
+					<Circle className="h-2 w-2 fill-emerald-400 text-emerald-400" />{" "}
+					Prettier
 				</span>
 				<span className="ml-auto flex items-center gap-1">
 					<Command className="h-3 w-3" /> Ln 21, Col 8

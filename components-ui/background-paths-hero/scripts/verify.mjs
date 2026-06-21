@@ -100,31 +100,49 @@ try {
 		`both FloatingPaths SVGs present (position 1 and -1) [${await bgSvgs.count()}]`,
 	);
 	const pathCount = await bgSvgs.locator("path").count();
-	check(pathCount === 72, `72 floating paths rendered (2 × 36) [found ${pathCount}]`);
+	check(
+		pathCount === 72,
+		`72 floating paths rendered (2 × 36) [found ${pathCount}]`,
+	);
 	// Framer Motion animates `pathLength` by writing inline stroke-dashoffset on
 	// every frame; sample the same path twice and confirm it moved.
 	const firstPath = bgSvgs.locator("path").first();
 	const readOffset = () =>
-		firstPath.evaluate((el) => el.style.strokeDashoffset || getComputedStyle(el).strokeDashoffset);
+		firstPath.evaluate(
+			(el) =>
+				el.style.strokeDashoffset || getComputedStyle(el).strokeDashoffset,
+		);
 	const off1 = await readOffset();
 	await page.waitForTimeout(900);
 	const off2 = await readOffset();
-	check(off1 !== off2, `paths animate (stroke-dashoffset changes) [${off1} -> ${off2}]`);
+	check(
+		off1 !== off2,
+		`paths animate (stroke-dashoffset changes) [${off1} -> ${off2}]`,
+	);
 	const len1 = await firstPath.evaluate((el) => el.getTotalLength());
-	check(Number.isFinite(len1) && len1 > 0, `path geometry is valid (length ${len1.toFixed(0)})`);
+	check(
+		Number.isFinite(len1) && len1 > 0,
+		`path geometry is valid (length ${len1.toFixed(0)})`,
+	);
 
 	console.log("\nSection 2 — Per-letter spring headline");
 	const h1 = page.locator("h1").first();
 	check(await h1.isVisible(), "headline <h1> rendered");
 	// Each visible letter is its own motion.span; "Background Paths" has 15 glyphs.
 	const letterSpans = await page.locator("h1 span span").count();
-	check(letterSpans >= 15, `headline split into per-letter spans [${letterSpans}]`);
+	check(
+		letterSpans >= 15,
+		`headline split into per-letter spans [${letterSpans}]`,
+	);
 	await page.waitForTimeout(1600); // let the spring settle
 	const letterOpacity = await page
 		.locator("h1 span span")
 		.first()
 		.evaluate((el) => getComputedStyle(el).opacity);
-	check(letterOpacity === "1", `letter entrance settled (opacity ${letterOpacity})`);
+	check(
+		letterOpacity === "1",
+		`letter entrance settled (opacity ${letterOpacity})`,
+	);
 	// Words are separated by CSS margins (not whitespace text nodes), so the
 	// glyphs concatenate; compare on the whitespace-stripped form.
 	const squash = (s) => s.replace(/\s+/g, "").toLowerCase();
@@ -168,11 +186,20 @@ try {
 	await page.waitForTimeout(650);
 	const nowDark = await htmlIsDark();
 	const bgAfter = await bodyBg();
-	check(nowDark !== startedDark, `toggling flips the 'dark' class [${startedDark} -> ${nowDark}]`);
-	check(bgBefore !== bgAfter, `background repaints on theme change [${bgBefore} -> ${bgAfter}]`);
+	check(
+		nowDark !== startedDark,
+		`toggling flips the 'dark' class [${startedDark} -> ${nowDark}]`,
+	);
+	check(
+		bgBefore !== bgAfter,
+		`background repaints on theme change [${bgBefore} -> ${bgAfter}]`,
+	);
 
 	console.log("\nSection 6 — Vendored fonts");
-	check(fontRequests.length > 0, `at least one font loaded [${fontRequests.length}]`);
+	check(
+		fontRequests.length > 0,
+		`at least one font loaded [${fontRequests.length}]`,
+	);
 	const remoteFonts = fontRequests.filter(
 		(u) => !u.includes(`localhost:${PORT}`) && !u.startsWith("data:"),
 	);
@@ -191,9 +218,14 @@ try {
 		/\.(woff2|js|css|svg|png)/.test(u),
 	);
 	check(brokenAssets.length === 0, `no broken assets [${brokenAssets.length}]`);
-	if (brokenAssets.length) brokenAssets.forEach((u) => console.error(`    ${u}`));
-	check(consoleErrors.length === 0, `no console/page errors [${consoleErrors.length}]`);
-	if (consoleErrors.length) consoleErrors.forEach((e) => console.error(`    ${e}`));
+	if (brokenAssets.length)
+		brokenAssets.forEach((u) => console.error(`    ${u}`));
+	check(
+		consoleErrors.length === 0,
+		`no console/page errors [${consoleErrors.length}]`,
+	);
+	if (consoleErrors.length)
+		consoleErrors.forEach((e) => console.error(`    ${e}`));
 
 	await browser.close();
 } finally {

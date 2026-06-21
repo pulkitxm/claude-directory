@@ -45,9 +45,12 @@ export function Hero() {
 				transition={{ duration: 0.7, ease, delay: 0.12 }}
 				className="relative z-10 mt-6 max-w-xl text-pretty text-[15px] leading-relaxed text-white/55 md:text-base"
 			>
-				A drop-in <code className="rounded bg-white/[0.07] px-1.5 py-0.5 font-mono text-[13px] text-iris-bright">{"<ContainerScroll>"}</code>{" "}
-				primitive. Scroll progress drives a perspective tilt from 20° to flat,
-				a gentle scale, and a rising heading — so any screenshot, dashboard, or
+				A drop-in{" "}
+				<code className="rounded bg-white/[0.07] px-1.5 py-0.5 font-mono text-[13px] text-iris-bright">
+					{"<ContainerScroll>"}
+				</code>{" "}
+				primitive. Scroll progress drives a perspective tilt from 20° to flat, a
+				gentle scale, and a rising heading — so any screenshot, dashboard, or
 				live UI you nest inside rises to meet the reader.
 			</motion.p>
 

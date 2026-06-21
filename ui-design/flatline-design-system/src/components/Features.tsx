@@ -88,7 +88,9 @@ export function Features() {
 
 			<Shell className="relative">
 				<Reveal className="max-w-2xl">
-					<Eyebrow className="text-[var(--color-brand)]">The principles</Eyebrow>
+					<Eyebrow className="text-[var(--color-brand)]">
+						The principles
+					</Eyebrow>
 					<h2 className="mt-3 text-4xl font-extrabold tracking-tight sm:text-5xl">
 						Six rules. One coherent system.
 					</h2>

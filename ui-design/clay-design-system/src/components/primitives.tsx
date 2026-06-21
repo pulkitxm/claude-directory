@@ -102,7 +102,12 @@ export const Button = forwardRef<
 		<button
 			ref={ref}
 			style={display}
-			className={cx(buttonBase, sizeClass[size], variantClass[variant], className)}
+			className={cx(
+				buttonBase,
+				sizeClass[size],
+				variantClass[variant],
+				className,
+			)}
 			{...rest}
 		>
 			{children}
@@ -123,7 +128,12 @@ export function ButtonLink({
 	return (
 		<a
 			style={display}
-			className={cx(buttonBase, sizeClass[size], variantClass[variant], className)}
+			className={cx(
+				buttonBase,
+				sizeClass[size],
+				variantClass[variant],
+				className,
+			)}
 			{...rest}
 		>
 			{children}
@@ -158,13 +168,7 @@ export const Input = forwardRef<
    shadow is tinted to the orb's own hue via the --orb custom property so the
    colored light reads correctly. Square (rounded-2xl) or circular.
    ------------------------------------------------------------------------- */
-export type OrbHue =
-	| "violet"
-	| "pink"
-	| "sky"
-	| "emerald"
-	| "amber"
-	| "indigo";
+export type OrbHue = "violet" | "pink" | "sky" | "emerald" | "amber" | "indigo";
 
 const orbGradient: Record<OrbHue, string> = {
 	violet: "linear-gradient(135deg, #c4b5fd, #7c3aed)",
@@ -313,7 +317,9 @@ export function SectionHeading({
 			data-shown={reveal.shown}
 			className={cx(
 				"clay-reveal flex flex-col gap-4",
-				align === "center" ? "items-center text-center" : "items-start text-left",
+				align === "center"
+					? "items-center text-center"
+					: "items-start text-left",
 				className,
 			)}
 		>

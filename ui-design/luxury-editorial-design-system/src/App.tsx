@@ -8,24 +8,24 @@ import { Blog } from "./components/Blog";
 import { FooterCta } from "./components/FooterCta";
 
 export default function App() {
-  return (
-    <div className="relative min-h-screen bg-background text-foreground antialiased">
-      {/* Signature bold-factor structural layers */}
-      <GridLines />
-      <GrainOverlay />
+	return (
+		<div className="relative min-h-screen bg-background text-foreground antialiased">
+			{/* Signature bold-factor structural layers */}
+			<GridLines />
+			<GrainOverlay />
 
-      <Navbar />
+			<Navbar />
 
-      <main className="relative z-10">
-        <Hero />
-        <Features />
-        <Stats />
-        <Testimonials />
-        <Faq />
-        <Blog />
-      </main>
+			<main className="relative z-10">
+				<Hero />
+				<Features />
+				<Stats />
+				<Testimonials />
+				<Faq />
+				<Blog />
+			</main>
 
-      <FooterCta />
-    </div>
-  );
+			<FooterCta />
+		</div>
+	);
 }

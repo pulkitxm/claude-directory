@@ -128,7 +128,8 @@ export const PLANS: Plan[] = [
 		name: "Sprig",
 		price: "$24",
 		cadence: "/ season",
-		blurb: "A single hand-chosen plant and its vessel, delivered as the season turns.",
+		blurb:
+			"A single hand-chosen plant and its vessel, delivered as the season turns.",
 		features: [
 			"One potted plant each season",
 			"Hand-thrown terracotta vessel",
@@ -142,7 +143,8 @@ export const PLANS: Plan[] = [
 		name: "Grove",
 		price: "$58",
 		cadence: "/ season",
-		blurb: "Our most-loved ritual — a curated trio with a studio glaze of your choosing.",
+		blurb:
+			"Our most-loved ritual — a curated trio with a studio glaze of your choosing.",
 		features: [
 			"Three plants, styled to pair",
 			"Glaze chosen from the studio palette",
@@ -157,7 +159,8 @@ export const PLANS: Plan[] = [
 		name: "Glasshouse",
 		price: "$140",
 		cadence: "/ season",
-		blurb: "For the devoted — a full arrangement, bespoke vessels, and a tending visit.",
+		blurb:
+			"For the devoted — a full arrangement, bespoke vessels, and a tending visit.",
 		features: [
 			"A full seasonal arrangement",
 			"Bespoke wheel-thrown vessels",

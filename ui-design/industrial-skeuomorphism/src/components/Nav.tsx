@@ -49,11 +49,7 @@ export function Nav() {
 							: "var(--shadow-card)",
 					}}
 				>
-					<a
-						href="#top"
-						aria-label="SCHEMATIC home"
-						className="rounded-lg"
-					>
+					<a href="#top" aria-label="SCHEMATIC home" className="rounded-lg">
 						<Logo />
 					</a>
 
@@ -77,9 +73,7 @@ export function Nav() {
 							style={{ boxShadow: "var(--shadow-recessed-soft)" }}
 						>
 							<Led tone="online" size={8} label="systems online" />
-							<span className="stamp text-[0.6rem] text-label">
-								ONLINE
-							</span>
+							<span className="stamp text-[0.6rem] text-label">ONLINE</span>
 						</span>
 
 						<Button
@@ -104,7 +98,11 @@ export function Nav() {
 							className="grid h-11 w-11 place-items-center rounded-lg bg-chassis text-ink transition-[box-shadow,transform] duration-150 active:translate-y-[1px] lg:hidden"
 							style={{ boxShadow: "var(--shadow-card)" }}
 						>
-							{open ? <X size={20} strokeWidth={2} /> : <Menu size={20} strokeWidth={2} />}
+							{open ? (
+								<X size={20} strokeWidth={2} />
+							) : (
+								<Menu size={20} strokeWidth={2} />
+							)}
 						</button>
 					</div>
 				</nav>
@@ -133,8 +131,7 @@ export function Nav() {
 											onClick={() => setOpen(false)}
 											className="stamp flex min-h-[48px] items-center rounded-lg px-4 text-xs text-label transition-colors hover:text-ink"
 											style={{
-												boxShadow:
-													"var(--shadow-recessed-soft)",
+												boxShadow: "var(--shadow-recessed-soft)",
 											}}
 										>
 											{l.label}
@@ -147,11 +144,9 @@ export function Nav() {
 										size="md"
 										onClick={() => {
 											setOpen(false);
-											document
-												.querySelector("#cta")
-												?.scrollIntoView({
-													behavior: "smooth",
-												});
+											document.querySelector("#cta")?.scrollIntoView({
+												behavior: "smooth",
+											});
 										}}
 									>
 										Deploy Unit

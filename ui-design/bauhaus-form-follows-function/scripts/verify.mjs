@@ -23,7 +23,9 @@ const URL = `http://localhost:${PORT}/`;
 const checks = [];
 function check(name, ok, detail = "") {
 	checks.push({ name, ok: !!ok, detail });
-	console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`);
+	console.log(
+		`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`,
+	);
 }
 
 // Build first so preview serves real output.
@@ -60,7 +62,9 @@ try {
 	if (!up) throw new Error("preview server never came up");
 
 	browser = await chromium.launch();
-	const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+	const page = await browser.newPage({
+		viewport: { width: 1280, height: 800 },
+	});
 
 	const consoleErrors = [];
 	page.on("console", (m) => {
@@ -73,7 +77,11 @@ try {
 	await page.waitForSelector('[data-ready="true"]', { timeout: 5000 });
 
 	check("no page errors", pageErrors.length === 0, pageErrors.join(" | "));
-	check("no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+	check(
+		"no console errors",
+		consoleErrors.length === 0,
+		consoleErrors.join(" | "),
+	);
 
 	// Brand present (twice: nav + footer).
 	const brandCount = await page.locator("text=Werkbund").count();

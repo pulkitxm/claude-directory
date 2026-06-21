@@ -126,7 +126,10 @@ export default function App() {
 				className="fixed inset-x-0 bottom-0 z-20 flex flex-col items-center gap-3 px-5 pb-6 sm:pb-8"
 			>
 				<div className="flex items-center gap-2.5">
-					<PillButton onClick={nextPreset} label="Replay with the next headline">
+					<PillButton
+						onClick={nextPreset}
+						label="Replay with the next headline"
+					>
 						<Shuffle className="h-4 w-4 transition-transform duration-300 group-hover:rotate-12" />
 						<span className="hidden sm:inline">Next headline</span>
 						<span className="sm:hidden">Next</span>
@@ -134,7 +137,11 @@ export default function App() {
 
 					<PillButton
 						onClick={toggleTheme}
-						label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+						label={
+							theme === "dark"
+								? "Switch to light theme"
+								: "Switch to dark theme"
+						}
 					>
 						<AnimatePresence mode="wait" initial={false}>
 							<motion.span

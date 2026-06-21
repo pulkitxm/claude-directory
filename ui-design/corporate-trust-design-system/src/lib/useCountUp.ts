@@ -42,7 +42,9 @@ export function useCountUp<T extends HTMLElement = HTMLElement>(
 	const parsed = parse(display);
 	const ref = useRef<T | null>(null);
 	const [text, setText] = useState(
-		parsed ? `${parsed.prefix}${fmt(0, parsed.decimals, parsed.grouped)}${parsed.suffix}` : display,
+		parsed
+			? `${parsed.prefix}${fmt(0, parsed.decimals, parsed.grouped)}${parsed.suffix}`
+			: display,
 	);
 	const done = useRef(false);
 

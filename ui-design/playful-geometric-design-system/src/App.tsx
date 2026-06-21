@@ -163,15 +163,43 @@ function Nav() {
    =========================================================================== */
 function Hero() {
 	return (
-		<section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-36 lg:pt-40">
+		<section
+			id="top"
+			className="relative overflow-hidden pt-32 pb-20 sm:pt-36 lg:pt-40"
+		>
 			{/* Background pattern wash */}
-			<div className="pointer-events-none absolute inset-0 -z-10 grid-lines opacity-60" aria-hidden="true" />
+			<div
+				className="pointer-events-none absolute inset-0 -z-10 grid-lines opacity-60"
+				aria-hidden="true"
+			/>
 
 			{/* Floating confetti — hidden on small screens to avoid text overlap */}
-			<Triangle className="left-[4%] top-[22%] hidden lg:block" rotate={-18} float="float" size={50} color={palette.quaternary} />
-			<Ring className="right-[3%] top-[16%] hidden lg:block" float="slow" size={56} color={palette.secondary} />
-			<Plus className="left-[46%] top-[10%] hidden lg:block" rotate={12} float="float" size={38} color={palette.tertiary} />
-			<Square className="bottom-[8%] left-[8%] hidden size-7 lg:block" rotate={18} float="slow" color={palette.secondary} />
+			<Triangle
+				className="left-[4%] top-[22%] hidden lg:block"
+				rotate={-18}
+				float="float"
+				size={50}
+				color={palette.quaternary}
+			/>
+			<Ring
+				className="right-[3%] top-[16%] hidden lg:block"
+				float="slow"
+				size={56}
+				color={palette.secondary}
+			/>
+			<Plus
+				className="left-[46%] top-[10%] hidden lg:block"
+				rotate={12}
+				float="float"
+				size={38}
+				color={palette.tertiary}
+			/>
+			<Square
+				className="bottom-[8%] left-[8%] hidden size-7 lg:block"
+				rotate={18}
+				float="slow"
+				color={palette.secondary}
+			/>
 
 			<div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-12 lg:gap-8">
 				{/* Copy */}
@@ -228,17 +256,20 @@ function Hero() {
 					<Reveal delay={280}>
 						<div className="mt-8 flex items-center gap-3 text-step--1 font-medium text-muted-foreground">
 							<span className="flex -space-x-2" aria-hidden="true">
-								{[palette.accent, palette.secondary, palette.tertiary, palette.quaternary].map(
-									(c, i) => (
-										<span
-											key={i}
-											className="grid size-8 place-items-center rounded-full border-2 border-foreground text-[0.7rem] font-bold text-white"
-											style={{ background: c }}
-										>
-											★
-										</span>
-									),
-								)}
+								{[
+									palette.accent,
+									palette.secondary,
+									palette.tertiary,
+									palette.quaternary,
+								].map((c, i) => (
+									<span
+										key={i}
+										className="grid size-8 place-items-center rounded-full border-2 border-foreground text-[0.7rem] font-bold text-white"
+										style={{ background: c }}
+									>
+										★
+									</span>
+								))}
 							</span>
 							Loved by 9,000+ tinkerers building happier pages.
 						</div>
@@ -257,12 +288,20 @@ function Hero() {
 							<HeroScene />
 							{/* Floating sticker callout */}
 							<div className="absolute -bottom-4 -left-2 sm:-left-6">
-								<StickerCard pop="pink" interactive={false} className="px-4 py-3">
+								<StickerCard
+									pop="pink"
+									interactive={false}
+									className="px-4 py-3"
+								>
 									<div className="flex items-center gap-3">
 										<IconBadge icon={Star} tone="amber" size={40} />
 										<div className="leading-tight">
-											<p className="font-heading text-step-0 font-extrabold">No-blur shadows</p>
-											<p className="text-[0.78rem] text-muted-foreground">Pure sticker energy</p>
+											<p className="font-heading text-step-0 font-extrabold">
+												No-blur shadows
+											</p>
+											<p className="text-[0.78rem] text-muted-foreground">
+												Pure sticker energy
+											</p>
 										</div>
 									</div>
 								</StickerCard>
@@ -289,7 +328,12 @@ function MarqueeBand() {
 							<span className="px-6 font-heading text-step-1 font-extrabold uppercase tracking-tight text-white">
 								{w}
 							</span>
-							<Star size={16} className="text-tertiary" fill={palette.tertiary} {...ICON} />
+							<Star
+								size={16}
+								className="text-tertiary"
+								fill={palette.tertiary}
+								{...ICON}
+							/>
 						</span>
 					))}
 				</Marquee>
@@ -302,9 +346,14 @@ function MarqueeBand() {
 				</p>
 				<Marquee reverse>
 					{logos.map((l, i) => (
-						<div key={`${l.name}-${i}`} className="mx-3 flex items-center gap-2.5 rounded-full border-2 border-foreground bg-card px-5 py-2.5">
+						<div
+							key={`${l.name}-${i}`}
+							className="mx-3 flex items-center gap-2.5 rounded-full border-2 border-foreground bg-card px-5 py-2.5"
+						>
 							<l.icon size={20} className="text-accent" {...ICON} />
-							<span className="font-heading text-step-0 font-bold whitespace-nowrap">{l.name}</span>
+							<span className="font-heading text-step-0 font-bold whitespace-nowrap">
+								{l.name}
+							</span>
 						</div>
 					))}
 				</Marquee>
@@ -332,8 +381,8 @@ function Features() {
 					</Reveal>
 					<Reveal delay={140}>
 						<p className="mx-auto mt-4 max-w-xl text-step-1 text-muted-foreground">
-							Three building blocks carry the whole personality. Drop them in and
-							the system keeps the energy tidy.
+							Three building blocks carry the whole personality. Drop them in
+							and the system keeps the energy tidy.
 						</p>
 					</Reveal>
 					<Reveal delay={200} className="mt-6 flex justify-center">
@@ -357,15 +406,40 @@ function Features() {
 							strokeLinecap="round"
 							strokeDasharray="2 12"
 						/>
-						<circle cx="170" cy="20" r="6" fill={palette.tertiary} stroke={palette.foreground} strokeWidth="3" />
-						<circle cx="500" cy="20" r="6" fill={palette.secondary} stroke={palette.foreground} strokeWidth="3" />
-						<circle cx="830" cy="20" r="6" fill={palette.quaternary} stroke={palette.foreground} strokeWidth="3" />
+						<circle
+							cx="170"
+							cy="20"
+							r="6"
+							fill={palette.tertiary}
+							stroke={palette.foreground}
+							strokeWidth="3"
+						/>
+						<circle
+							cx="500"
+							cy="20"
+							r="6"
+							fill={palette.secondary}
+							stroke={palette.foreground}
+							strokeWidth="3"
+						/>
+						<circle
+							cx="830"
+							cy="20"
+							r="6"
+							fill={palette.quaternary}
+							stroke={palette.foreground}
+							strokeWidth="3"
+						/>
 					</svg>
 
 					<div className="grid gap-10 sm:gap-8 lg:grid-cols-3">
 						{features.map((f, i) => (
 							<Reveal key={f.title} delay={i * 110}>
-								<StickerCard pop={f.tone} large className="group h-full px-7 pb-7 pt-12">
+								<StickerCard
+									pop={f.tone}
+									large
+									className="group h-full px-7 pb-7 pt-12"
+								>
 									{/* Floating icon, half-out of the top border */}
 									<div className="absolute -top-7 left-7">
 										<IconBadge
@@ -397,9 +471,24 @@ function Features() {
 function HowItWorks() {
 	return (
 		<section id="how" className="relative overflow-hidden py-24">
-			<div className="pointer-events-none absolute inset-0 -z-10 dot-grid opacity-60" aria-hidden="true" />
-			<Pill className="left-[-40px] top-[12%] hidden h-16 w-40 lg:block" rotate={-16} float="slow" color={palette.accent} style={{ opacity: 0.9 }} />
-			<Triangle className="right-[2%] bottom-[8%] hidden lg:block" rotate={20} float="float" size={56} color={palette.tertiary} />
+			<div
+				className="pointer-events-none absolute inset-0 -z-10 dot-grid opacity-60"
+				aria-hidden="true"
+			/>
+			<Pill
+				className="left-[-40px] top-[12%] hidden h-16 w-40 lg:block"
+				rotate={-16}
+				float="slow"
+				color={palette.accent}
+				style={{ opacity: 0.9 }}
+			/>
+			<Triangle
+				className="right-[2%] bottom-[8%] hidden lg:block"
+				rotate={20}
+				float="float"
+				size={56}
+				color={palette.tertiary}
+			/>
 
 			<div className="mx-auto max-w-6xl px-5">
 				<div className="max-w-2xl">
@@ -407,7 +496,9 @@ function HowItWorks() {
 						<Eyebrow tone="amber">Four happy moves</Eyebrow>
 					</Reveal>
 					<Reveal delay={70}>
-						<h2 className="mt-5 text-step-4 sm:text-step-5">From blank to bouncy in minutes</h2>
+						<h2 className="mt-5 text-step-4 sm:text-step-5">
+							From blank to bouncy in minutes
+						</h2>
 					</Reveal>
 				</div>
 
@@ -417,7 +508,12 @@ function HowItWorks() {
 							{/* Vertical rule between items on mobile; squiggle handles desktop */}
 							<div className="flex flex-col gap-4">
 								<div className="flex items-center gap-3">
-									<IconBadge icon={s.icon} tone={s.tone} size={52} shape="squircle" />
+									<IconBadge
+										icon={s.icon}
+										tone={s.tone}
+										size={52}
+										shape="squircle"
+									/>
 									<span className="font-heading text-step-4 font-extrabold text-foreground/15">
 										{String(i + 1).padStart(2, "0")}
 									</span>
@@ -426,7 +522,9 @@ function HowItWorks() {
 									{s.kicker}
 								</span>
 								<h3 className="-mt-2 text-step-2 font-extrabold">{s.title}</h3>
-								<p className="text-step-0 leading-relaxed text-muted-foreground">{s.body}</p>
+								<p className="text-step-0 leading-relaxed text-muted-foreground">
+									{s.body}
+								</p>
 							</div>
 							{i < steps.length - 1 && (
 								<Squig
@@ -459,7 +557,9 @@ function Stats() {
 							>
 								{s.value}
 							</div>
-							<div className="mt-2 text-step-0 font-medium text-white/70">{s.label}</div>
+							<div className="mt-2 text-step-0 font-medium text-white/70">
+								{s.label}
+							</div>
 						</Reveal>
 					))}
 				</div>
@@ -498,8 +598,19 @@ function StarBadge() {
 function Pricing() {
 	return (
 		<section id="pricing" className="relative overflow-hidden py-24">
-			<Plus className="left-[5%] top-[14%] hidden lg:block" rotate={18} float="slow" size={36} color={palette.secondary} />
-			<Ring className="right-[6%] top-[20%] hidden lg:block" float="float" size={48} color={palette.quaternary} />
+			<Plus
+				className="left-[5%] top-[14%] hidden lg:block"
+				rotate={18}
+				float="slow"
+				size={36}
+				color={palette.secondary}
+			/>
+			<Ring
+				className="right-[6%] top-[20%] hidden lg:block"
+				float="float"
+				size={48}
+				color={palette.quaternary}
+			/>
 
 			<div className="mx-auto max-w-6xl px-5">
 				<div className="mx-auto max-w-2xl text-center">
@@ -507,7 +618,9 @@ function Pricing() {
 						<Eyebrow tone="mint">Pick a sticker pack</Eyebrow>
 					</Reveal>
 					<Reveal delay={70}>
-						<h2 className="mt-5 text-step-4 sm:text-step-5">Plans as cheerful as the pages</h2>
+						<h2 className="mt-5 text-step-4 sm:text-step-5">
+							Plans as cheerful as the pages
+						</h2>
 					</Reveal>
 					<Reveal delay={140}>
 						<p className="mx-auto mt-4 max-w-xl text-step-1 text-muted-foreground">
@@ -520,7 +633,11 @@ function Pricing() {
 				<div className="mt-16 grid items-center gap-12 sm:gap-7 lg:grid-cols-3">
 					{pricing.map((p, i) => {
 						return (
-							<Reveal key={p.name} delay={i * 110} className={p.featured ? "lg:z-10" : ""}>
+							<Reveal
+								key={p.name}
+								delay={i * 110}
+								className={p.featured ? "lg:z-10" : ""}
+							>
 								<StickerCard
 									pop={p.featured ? "pink" : "soft"}
 									large={p.featured}
@@ -537,7 +654,9 @@ function Pricing() {
 											style={{ background: TONE_HEX[p.tone] }}
 											aria-hidden="true"
 										/>
-										<h3 className="font-heading text-step-2 font-extrabold">{p.name}</h3>
+										<h3 className="font-heading text-step-2 font-extrabold">
+											{p.name}
+										</h3>
 									</div>
 									<p className="mt-3 min-h-[3rem] text-step-0 text-muted-foreground">
 										{p.blurb}
@@ -551,7 +670,11 @@ function Pricing() {
 										</span>
 									</div>
 
-									<div className="my-6 h-0.5 w-full" style={{ background: palette.border }} aria-hidden="true" />
+									<div
+										className="my-6 h-0.5 w-full"
+										style={{ background: palette.border }}
+										aria-hidden="true"
+									/>
 
 									<ul className="flex flex-col gap-3">
 										{p.includes.map((inc) => (
@@ -596,11 +719,19 @@ function Testimonials() {
 							<Eyebrow tone="pink">Smiles all round</Eyebrow>
 						</Reveal>
 						<Reveal delay={70}>
-							<h2 className="mt-5 text-step-4 sm:text-step-5">People grin when it loads</h2>
+							<h2 className="mt-5 text-step-4 sm:text-step-5">
+								People grin when it loads
+							</h2>
 						</Reveal>
 					</div>
 					<Reveal delay={140}>
-						<div className="flex items-center gap-2 rounded-full border-2 border-foreground bg-tertiary px-4 py-2 font-heading text-step-0 font-bold pop" style={{ ["--pop-x" as string]: "3px", ["--pop-y" as string]: "3px" }}>
+						<div
+							className="flex items-center gap-2 rounded-full border-2 border-foreground bg-tertiary px-4 py-2 font-heading text-step-0 font-bold pop"
+							style={{
+								["--pop-x" as string]: "3px",
+								["--pop-y" as string]: "3px",
+							}}
+						>
 							<Star size={18} {...ICON} fill={palette.foreground} />
 							4.9 / 5 average
 						</div>
@@ -610,8 +741,15 @@ function Testimonials() {
 				<div className="mt-14 grid gap-8 lg:grid-cols-3">
 					{testimonials.map((t, i) => (
 						<Reveal key={t.name} delay={i * 110}>
-							<StickerCard pop={t.tone} className="group flex h-full flex-col p-7">
-								<Quote size={34} className="text-foreground/20 wiggle-hover" {...ICON} />
+							<StickerCard
+								pop={t.tone}
+								className="group flex h-full flex-col p-7"
+							>
+								<Quote
+									size={34}
+									className="text-foreground/20 wiggle-hover"
+									{...ICON}
+								/>
 								<p className="mt-3 grow text-step-1 font-medium leading-relaxed text-foreground">
 									“{t.quote}”
 								</p>
@@ -630,8 +768,12 @@ function Testimonials() {
 										{t.initials}
 									</span>
 									<div className="leading-tight">
-										<p className="font-heading text-step-0 font-bold">{t.name}</p>
-										<p className="text-[0.82rem] text-muted-foreground">{t.role}</p>
+										<p className="font-heading text-step-0 font-bold">
+											{t.name}
+										</p>
+										<p className="text-[0.82rem] text-muted-foreground">
+											{t.role}
+										</p>
 									</div>
 								</div>
 							</StickerCard>
@@ -650,20 +792,25 @@ function Testimonials() {
 function TokenGallery() {
 	return (
 		<section id="tokens" className="relative overflow-hidden py-24">
-			<div className="pointer-events-none absolute inset-0 -z-10 grid-lines opacity-50" aria-hidden="true" />
+			<div
+				className="pointer-events-none absolute inset-0 -z-10 grid-lines opacity-50"
+				aria-hidden="true"
+			/>
 			<div className="mx-auto max-w-6xl px-5">
 				<div className="max-w-2xl">
 					<Reveal>
 						<Eyebrow tone="violet">Under the hood</Eyebrow>
 					</Reveal>
 					<Reveal delay={70}>
-						<h2 className="mt-5 text-step-4 sm:text-step-5">One token set, endless stickers</h2>
+						<h2 className="mt-5 text-step-4 sm:text-step-5">
+							One token set, endless stickers
+						</h2>
 					</Reveal>
 					<Reveal delay={140}>
 						<p className="mt-4 max-w-xl text-step-1 text-muted-foreground">
 							Every shape on this page reads from the same place: a warm paper
-							base, a slate foreground, four pop colors, varied radii and a single
-							hard shadow. Centralized, so a tweak ripples everywhere.
+							base, a slate foreground, four pop colors, varied radii and a
+							single hard shadow. Centralized, so a tweak ripples everywhere.
 						</p>
 					</Reveal>
 				</div>
@@ -680,8 +827,12 @@ function TokenGallery() {
 											className="aspect-square w-full rounded-[var(--radius-md)] border-2 border-foreground transition-transform duration-300 ease-bounce group-hover:-rotate-2 group-hover:scale-105"
 											style={{ background: s.value }}
 										/>
-										<p className="mt-2 font-heading text-[0.82rem] font-bold">{s.name}</p>
-										<p className="font-mono text-[0.68rem] uppercase text-muted-foreground">{s.value}</p>
+										<p className="mt-2 font-heading text-[0.82rem] font-bold">
+											{s.name}
+										</p>
+										<p className="font-mono text-[0.68rem] uppercase text-muted-foreground">
+											{s.value}
+										</p>
 									</div>
 								))}
 							</div>
@@ -698,10 +849,16 @@ function TokenGallery() {
 										<div key={r.name} className="text-center">
 											<div
 												className="size-14 border-2 border-foreground bg-accent"
-												style={{ borderRadius: r.px > 100 ? "9999px" : r.value }}
+												style={{
+													borderRadius: r.px > 100 ? "9999px" : r.value,
+												}}
 											/>
-											<p className="mt-2 font-heading text-[0.78rem] font-bold">{r.name}</p>
-											<p className="text-[0.66rem] text-muted-foreground">{r.value}</p>
+											<p className="mt-2 font-heading text-[0.78rem] font-bold">
+												{r.name}
+											</p>
+											<p className="text-[0.66rem] text-muted-foreground">
+												{r.value}
+											</p>
 										</div>
 									))}
 								</div>
@@ -709,17 +866,24 @@ function TokenGallery() {
 						</Reveal>
 						<Reveal delay={150}>
 							<StickerCard interactive={false} className="p-7">
-								<h3 className="text-step-1 font-extrabold">Type scale · 1.25</h3>
+								<h3 className="text-step-1 font-extrabold">
+									Type scale · 1.25
+								</h3>
 								<div className="mt-4 flex flex-col gap-2">
 									{typeScale.map((t) => (
-										<div key={t.step} className="flex items-baseline justify-between gap-3 border-b border-dashed border-border pb-1.5">
+										<div
+											key={t.step}
+											className="flex items-baseline justify-between gap-3 border-b border-dashed border-border pb-1.5"
+										>
 											<span
 												className="font-heading font-extrabold leading-none"
 												style={{ fontSize: `min(${t.size}, 7vw)` }}
 											>
 												{t.sample}
 											</span>
-											<span className="shrink-0 font-mono text-[0.66rem] text-muted-foreground">{t.size}</span>
+											<span className="shrink-0 font-mono text-[0.66rem] text-muted-foreground">
+												{t.size}
+											</span>
 										</div>
 									))}
 								</div>
@@ -736,16 +900,33 @@ function TokenGallery() {
 								<Button variant="secondary">Outline</Button>
 								<Button icon>With chip</Button>
 								<span className="relative inline-flex h-12 w-32">
-									<Pill className="left-0 top-1 h-10 w-32" rotate={0} color={palette.accent} style={{ position: "relative" }} />
+									<Pill
+										className="left-0 top-1 h-10 w-32"
+										rotate={0}
+										color={palette.accent}
+										style={{ position: "relative" }}
+									/>
 								</span>
-								<span className="relative inline-grid size-12 place-items-center rounded-full border-2 border-foreground" style={{ background: palette.tertiary }}>
+								<span
+									className="relative inline-grid size-12 place-items-center rounded-full border-2 border-foreground"
+									style={{ background: palette.tertiary }}
+								>
 									<Star size={20} {...ICON} />
 								</span>
 								<span className="relative inline-block">
-									<Squiggle width={120} color={palette.secondary} className="block" />
+									<Squiggle
+										width={120}
+										color={palette.secondary}
+										className="block"
+									/>
 								</span>
 								<span className="relative inline-block size-12">
-									<Triangle rotate={0} size={48} color={palette.quaternary} style={{ position: "relative" }} />
+									<Triangle
+										rotate={0}
+										size={48}
+										color={palette.quaternary}
+										style={{ position: "relative" }}
+									/>
 								</span>
 							</div>
 						</StickerCard>
@@ -770,7 +951,9 @@ function Faq() {
 						<Eyebrow tone="amber">Good questions</Eyebrow>
 					</Reveal>
 					<Reveal delay={70}>
-						<h2 className="mt-5 text-step-4 sm:text-step-5">The things people ask</h2>
+						<h2 className="mt-5 text-step-4 sm:text-step-5">
+							The things people ask
+						</h2>
 					</Reveal>
 				</div>
 
@@ -786,7 +969,9 @@ function Faq() {
 									style={{
 										["--pop-x" as string]: "4px",
 										["--pop-y" as string]: "4px",
-										["--pop-color" as string]: isOpen ? palette.accent : palette.border,
+										["--pop-color" as string]: isOpen
+											? palette.accent
+											: palette.border,
 									}}
 								>
 									<h3>
@@ -797,15 +982,23 @@ function Faq() {
 											onClick={() => setOpen(isOpen ? -1 : i)}
 											className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
 										>
-											<span className="font-heading text-step-1 font-extrabold">{f.q}</span>
+											<span className="font-heading text-step-1 font-extrabold">
+												{f.q}
+											</span>
 											<span
 												className={
 													"grid size-9 shrink-0 place-items-center rounded-full border-2 border-foreground transition-all duration-300 ease-bounce " +
-													(isOpen ? "rotate-180 bg-accent text-white" : "bg-tertiary text-foreground")
+													(isOpen
+														? "rotate-180 bg-accent text-white"
+														: "bg-tertiary text-foreground")
 												}
 												aria-hidden="true"
 											>
-												{isOpen ? <Minus size={18} {...ICON} /> : <PlusIcon size={18} {...ICON} />}
+												{isOpen ? (
+													<Minus size={18} {...ICON} />
+												) : (
+													<PlusIcon size={18} {...ICON} />
+												)}
 											</span>
 										</button>
 									</h3>
@@ -816,7 +1009,9 @@ function Faq() {
 										hidden={!isOpen}
 										className="px-6 pb-5"
 									>
-										<p className="text-step-0 leading-relaxed text-muted-foreground">{f.a}</p>
+										<p className="text-step-0 leading-relaxed text-muted-foreground">
+											{f.a}
+										</p>
 									</div>
 								</div>
 							</Reveal>
@@ -837,34 +1032,65 @@ function Cta() {
 	const formRef = useRef<HTMLFormElement>(null);
 	return (
 		<section id="cta" className="px-4 py-20">
-			<div className="relative mx-auto max-w-6xl overflow-hidden rounded-[var(--radius-lg)] border-2 border-foreground bg-accent p-8 pop-lg sm:p-12 lg:p-16" style={{ ["--pop-color" as string]: palette.foreground, boxShadow: "10px 10px 0 0 " + palette.foreground }}>
+			<div
+				className="relative mx-auto max-w-6xl overflow-hidden rounded-[var(--radius-lg)] border-2 border-foreground bg-accent p-8 pop-lg sm:p-12 lg:p-16"
+				style={{
+					["--pop-color" as string]: palette.foreground,
+					boxShadow: "10px 10px 0 0 " + palette.foreground,
+				}}
+			>
 				{/* Decorative shapes inside the block (desktop) */}
-				<div className="pointer-events-none absolute inset-0 dot-grid-accent opacity-30" aria-hidden="true" />
-				<Triangle className="right-6 top-6 hidden sm:block" rotate={20} float="float" size={48} color={palette.tertiary} />
-				<Circle className="bottom-6 left-8 hidden size-10 sm:block" float="slow" color={palette.secondary} />
+				<div
+					className="pointer-events-none absolute inset-0 dot-grid-accent opacity-30"
+					aria-hidden="true"
+				/>
+				<Triangle
+					className="right-6 top-6 hidden sm:block"
+					rotate={20}
+					float="float"
+					size={48}
+					color={palette.tertiary}
+				/>
+				<Circle
+					className="bottom-6 left-8 hidden size-10 sm:block"
+					float="slow"
+					color={palette.secondary}
+				/>
 
 				<div className="relative grid items-center gap-10 lg:grid-cols-2">
 					<div className="text-white">
 						<Reveal>
 							<span className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-card px-3.5 py-1.5 text-step--1 font-bold uppercase tracking-[0.14em] text-foreground">
-								<span className="size-2.5 rounded-full border-2 border-foreground bg-quaternary" aria-hidden="true" />
+								<span
+									className="size-2.5 rounded-full border-2 border-foreground bg-quaternary"
+									aria-hidden="true"
+								/>
 								Free forever plan
 							</span>
 						</Reveal>
 						<Reveal delay={70}>
-							<h2 className="mt-5 text-step-4 text-white sm:text-step-5">Ready to make the web grin?</h2>
+							<h2 className="mt-5 text-step-4 text-white sm:text-step-5">
+								Ready to make the web grin?
+							</h2>
 						</Reveal>
 						<Reveal delay={140}>
 							<p className="mt-4 max-w-md text-step-1 text-white/85">
-								Drop your email and we’ll send a starter sticker book. No card, no
-								blur, just bouncy little pages.
+								Drop your email and we’ll send a starter sticker book. No card,
+								no blur, just bouncy little pages.
 							</p>
 						</Reveal>
 						<Reveal delay={210}>
 							<ul className="mt-6 flex flex-col gap-3 text-white">
-								{["No credit card", "Cancel anytime", "AAA accessible by default"].map((t) => (
+								{[
+									"No credit card",
+									"Cancel anytime",
+									"AAA accessible by default",
+								].map((t) => (
 									<li key={t} className="flex items-center gap-3">
-										<span className="grid size-6 shrink-0 place-items-center rounded-full border-2 border-foreground bg-quaternary text-foreground" aria-hidden="true">
+										<span
+											className="grid size-6 shrink-0 place-items-center rounded-full border-2 border-foreground bg-quaternary text-foreground"
+											aria-hidden="true"
+										>
 											<Check size={14} strokeWidth={3.5} />
 										</span>
 										<span className="text-step-0 font-medium">{t}</span>
@@ -877,12 +1103,18 @@ function Cta() {
 					<Reveal delay={160}>
 						<StickerCard interactive={false} large className="p-7 sm:p-8">
 							{sent ? (
-								<div className="flex flex-col items-center gap-4 py-8 text-center" role="status" aria-live="polite">
+								<div
+									className="flex flex-col items-center gap-4 py-8 text-center"
+									role="status"
+									aria-live="polite"
+								>
 									<IconBadge icon={Check} tone="mint" size={64} shape="blob" />
-									<h3 className="text-step-2 font-extrabold">You’re on the list!</h3>
+									<h3 className="text-step-2 font-extrabold">
+										You’re on the list!
+									</h3>
 									<p className="max-w-xs text-step-0 text-muted-foreground">
-										Check your inbox — your starter sticker book is bouncing your
-										way.
+										Check your inbox — your starter sticker book is bouncing
+										your way.
 									</p>
 									<Button variant="secondary" onClick={() => setSent(false)}>
 										Send another
@@ -899,15 +1131,39 @@ function Cta() {
 									}}
 									className="flex flex-col gap-5"
 								>
-									<h3 className="font-heading text-step-2 font-extrabold">Grab your kit</h3>
+									<h3 className="font-heading text-step-2 font-extrabold">
+										Grab your kit
+									</h3>
 									<Field label="Your name" htmlFor="cta-name">
-										<Input id="cta-name" name="name" required placeholder="Ada Doodle" autoComplete="name" />
+										<Input
+											id="cta-name"
+											name="name"
+											required
+											placeholder="Ada Doodle"
+											autoComplete="name"
+										/>
 									</Field>
-									<Field label="Email" htmlFor="cta-email" hint="we'll never spam">
-										<Input id="cta-email" name="email" type="email" required placeholder="you@studio.com" autoComplete="email" />
+									<Field
+										label="Email"
+										htmlFor="cta-email"
+										hint="we'll never spam"
+									>
+										<Input
+											id="cta-email"
+											name="email"
+											type="email"
+											required
+											placeholder="you@studio.com"
+											autoComplete="email"
+										/>
 									</Field>
 									<Field label="What are you building?" htmlFor="cta-note">
-										<Textarea id="cta-note" name="note" rows={3} placeholder="A bouncy little portfolio…" />
+										<Textarea
+											id="cta-note"
+											name="note"
+											rows={3}
+											placeholder="A bouncy little portfolio…"
+										/>
 									</Field>
 									<Button type="submit" size="lg" icon className="w-full">
 										Send me the kit
@@ -938,27 +1194,47 @@ function Footer() {
 							<span className="grid size-9 place-items-center rounded-tl-2xl rounded-tr-2xl rounded-br-2xl rounded-bl-none border-2 border-foreground bg-accent text-white">
 								<Heart size={18} {...ICON} fill="currentColor" />
 							</span>
-							<span className="font-heading text-step-1 font-extrabold">Blobby</span>
+							<span className="font-heading text-step-1 font-extrabold">
+								Blobby
+							</span>
 						</a>
 						<p className="mt-4 max-w-xs text-step-0 text-muted-foreground">
 							The playful geometric kit for sites that smile. Stable grid, wild
 							decoration.
 						</p>
 						<div className="mt-5 flex gap-3" aria-hidden="true">
-							{[palette.accent, palette.secondary, palette.tertiary, palette.quaternary].map((c, i) => (
-								<span key={i} className="size-6 rounded-full border-2 border-foreground" style={{ background: c }} />
+							{[
+								palette.accent,
+								palette.secondary,
+								palette.tertiary,
+								palette.quaternary,
+							].map((c, i) => (
+								<span
+									key={i}
+									className="size-6 rounded-full border-2 border-foreground"
+									style={{ background: c }}
+								/>
 							))}
 						</div>
 					</div>
 					{footerCols.map((col) => (
 						<div key={col.title}>
-							<h3 className="text-step--1 font-bold uppercase tracking-[0.14em] text-foreground">{col.title}</h3>
+							<h3 className="text-step--1 font-bold uppercase tracking-[0.14em] text-foreground">
+								{col.title}
+							</h3>
 							<ul className="mt-4 flex flex-col gap-2.5">
 								{col.links.map((l) => (
 									<li key={l}>
-										<a href="#top" className="group inline-flex items-center gap-1 text-step-0 text-muted-foreground transition-colors hover:text-foreground">
+										<a
+											href="#top"
+											className="group inline-flex items-center gap-1 text-step-0 text-muted-foreground transition-colors hover:text-foreground"
+										>
 											{l}
-											<ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" {...ICON} />
+											<ArrowUpRight
+												size={14}
+												className="opacity-0 transition-opacity group-hover:opacity-100"
+												{...ICON}
+											/>
 										</a>
 									</li>
 								))}
@@ -972,10 +1248,17 @@ function Footer() {
 				</div>
 
 				<div className="mt-8 flex flex-col items-center justify-between gap-4 border-t-2 border-dashed border-border pt-8 text-step--1 text-muted-foreground sm:flex-row">
-					<p>© {new Date().getFullYear()} Blobby. A Playful Geometric showcase.</p>
+					<p>
+						© {new Date().getFullYear()} Blobby. A Playful Geometric showcase.
+					</p>
 					<p className="flex items-center gap-1.5">
 						Made with
-						<Heart size={14} className="text-secondary" fill={palette.secondary} {...ICON} />
+						<Heart
+							size={14}
+							className="text-secondary"
+							fill={palette.secondary}
+							{...ICON}
+						/>
 						and a lot of hard shadows.
 					</p>
 				</div>

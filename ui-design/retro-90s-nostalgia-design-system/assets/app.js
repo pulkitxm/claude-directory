@@ -243,7 +243,10 @@
 			d.textContent = s[i];
 			hitEl.appendChild(d);
 		}
-		hitEl.setAttribute("aria-label", "Visitor number " + value.toLocaleString());
+		hitEl.setAttribute(
+			"aria-label",
+			"Visitor number " + value.toLocaleString(),
+		);
 	}
 	renderHit(0);
 
@@ -257,7 +260,8 @@
 		if (reduceMotion) {
 			meterBar.style.width = target + "%";
 			if (meter1) meter1.setAttribute("aria-valuenow", String(target));
-			if (meterPct) meterPct.textContent = "Downloading webmaster95.zip — " + target + "%";
+			if (meterPct)
+				meterPct.textContent = "Downloading webmaster95.zip — " + target + "%";
 			return;
 		}
 		// step the percentage label in time with the CSS width transition
@@ -270,7 +274,8 @@
 				clearInterval(iv);
 			}
 			if (meter1) meter1.setAttribute("aria-valuenow", String(cur));
-			if (meterPct) meterPct.textContent = "Downloading webmaster95.zip — " + cur + "%";
+			if (meterPct)
+				meterPct.textContent = "Downloading webmaster95.zip — " + cur + "%";
 		}, 30);
 	}
 
@@ -290,7 +295,7 @@
 					}
 				});
 			},
-			{ threshold: 0.35 }
+			{ threshold: 0.35 },
 		);
 		io.observe(el);
 	}
@@ -366,7 +371,11 @@
 			});
 		});
 		document.addEventListener("click", function (e) {
-			if (!startMenu.hidden && !startMenu.contains(e.target) && e.target !== startBtn) {
+			if (
+				!startMenu.hidden &&
+				!startMenu.contains(e.target) &&
+				e.target !== startBtn
+			) {
 				setStart(false);
 			}
 		});
@@ -384,7 +393,9 @@
 		var playing = false;
 		midiBtn.addEventListener("click", function () {
 			playing = !playing;
-			midiBtn.lastChild.textContent = playing ? " MIDI Playing ♪" : " Click for MIDI";
+			midiBtn.lastChild.textContent = playing
+				? " MIDI Playing ♪"
+				: " Click for MIDI";
 			if (playing) beep();
 		});
 	}
@@ -454,9 +465,7 @@
 			gbForm.reset();
 			note(gbNote, "ok", "✓ Thanks " + name + "! Your entry is at the top. ★");
 			// bump the visible entry count in the title bar
-			var bar = gbList
-				.closest(".window")
-				.querySelector(".window__title");
+			var bar = gbList.closest(".window").querySelector(".window__title");
 			var count = $$(".gb-entry", gbList).length;
 			if (bar) bar.textContent = "guestbook.dat — " + count + " entries";
 		});
@@ -477,7 +486,11 @@
 				note(ctaNote, "err", "✗ That doesn't look like a valid email address!");
 				return;
 			}
-			note(ctaNote, "ok", "✓ You're in! Check your inbox for a beveled banner. ★");
+			note(
+				ctaNote,
+				"ok",
+				"✓ You're in! Check your inbox for a beveled banner. ★",
+			);
 			ctaForm.reset();
 		});
 	}

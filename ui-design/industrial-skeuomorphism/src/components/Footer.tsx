@@ -1,4 +1,10 @@
-import { Github, Twitter, Linkedin, Youtube, type LucideIcon } from "lucide-react";
+import {
+	Github,
+	Twitter,
+	Linkedin,
+	Youtube,
+	type LucideIcon,
+} from "lucide-react";
 import { Logo } from "./Logo";
 import { Container, Led, cx } from "./primitives";
 
@@ -37,8 +43,8 @@ export function Footer() {
 						<div className="flex flex-col items-start gap-4">
 							<Logo />
 							<p className="max-w-[34ch] text-sm leading-relaxed text-label">
-								The machined control plane for hardware fleets.
-								Built to feel as solid as the machines it runs.
+								The machined control plane for hardware fleets. Built to feel as
+								solid as the machines it runs.
 							</p>
 							<span
 								className="inline-flex items-center gap-2 rounded-full bg-chassis px-3 py-1.5"
@@ -79,7 +85,8 @@ export function Footer() {
 
 					<div className="flex flex-col items-center justify-between gap-5 sm:flex-row">
 						<p className="stamp text-[0.6rem] text-label/70">
-							© {new Date().getFullYear()} SCHEMATIC CONTROL SYSTEMS · DWG 0xA417
+							© {new Date().getFullYear()} SCHEMATIC CONTROL SYSTEMS · DWG
+							0xA417
 						</p>
 						<div className="flex items-center gap-3">
 							{SOCIAL.map(({ icon: Icon, label }) => (

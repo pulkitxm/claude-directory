@@ -103,7 +103,9 @@ export function Benefits() {
 													}
 												/>
 												<span className="flex-1 truncate">{f.name}</span>
-												<span className="text-[var(--color-chrome)]/40">{f.size}</span>
+												<span className="text-[var(--color-chrome)]/40">
+													{f.size}
+												</span>
 											</button>
 										</li>
 									);

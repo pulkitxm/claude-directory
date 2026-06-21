@@ -1,6 +1,12 @@
 import type { ReactNode, CSSProperties } from "react";
 import { Download, Combine, Rocket } from "lucide-react";
-import { Shell, SectionHeading, Reveal, display, type OrbHue } from "./primitives";
+import {
+	Shell,
+	SectionHeading,
+	Reveal,
+	display,
+	type OrbHue,
+} from "./primitives";
 
 /* Three big numbered steps. Each number lives in a convex clay circle that
    scales up on group-hover. A dashed connector threads them on desktop. */

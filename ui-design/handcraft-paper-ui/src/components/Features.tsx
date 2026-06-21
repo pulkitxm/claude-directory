@@ -1,11 +1,4 @@
-import {
-	StickyNote,
-	PenTool,
-	Users,
-	Wand2,
-	Undo2,
-	Share2,
-} from "lucide-react";
+import { StickyNote, PenTool, Users, Wand2, Undo2, Share2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Card, StickyTag, IconCircle } from "./primitives";
 import { useReveal } from "../lib/reveal";
@@ -84,8 +77,8 @@ export function Features() {
 						<br className="hidden md:block" /> supply closet
 					</h2>
 					<p className="mx-auto mt-5 max-w-xl text-lg text-ink/70 md:text-xl">
-						Six tools that feel like physical stationery, minus the
-						drawer that's permanently jammed shut.
+						Six tools that feel like physical stationery, minus the drawer
+						that's permanently jammed shut.
 					</p>
 				</div>
 
@@ -107,7 +100,9 @@ export function Features() {
 								className="h-full p-7"
 							>
 								<IconCircle icon={f.icon} tone={f.tone} className="mb-5" />
-								<h3 className="text-2xl text-ink md:text-[1.6rem]">{f.title}</h3>
+								<h3 className="text-2xl text-ink md:text-[1.6rem]">
+									{f.title}
+								</h3>
 								<p className="mt-3 text-lg text-ink/75">{f.body}</p>
 							</Card>
 						</div>

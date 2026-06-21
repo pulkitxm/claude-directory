@@ -14,7 +14,13 @@ const STATS: Stat[] = [
 	{ value: 12, suffix: "k+", label: "boards started", tone: "card" },
 	{ value: 480, suffix: "k", label: "sticky notes stuck", tone: "postit" },
 	{ value: 98, suffix: "%", label: "felt more creative", tone: "pen" },
-	{ value: 0, prefix: "", suffix: " rules", label: "to learn first", tone: "accent" },
+	{
+		value: 0,
+		prefix: "",
+		suffix: " rules",
+		label: "to learn first",
+		tone: "accent",
+	},
 ];
 
 /* Count-up that runs once the band scrolls into view. */
@@ -28,7 +34,9 @@ function useCountUp(target: number, run: boolean, ms = 1100) {
 			setN(0);
 			return;
 		}
-		const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+		const reduce = window.matchMedia?.(
+			"(prefers-reduced-motion: reduce)",
+		).matches;
 		if (reduce) {
 			setN(target);
 			return;
@@ -54,7 +62,15 @@ const toneClasses: Record<Stat["tone"], string> = {
 	accent: "bg-accent text-white",
 };
 
-function StatBlob({ stat, run, index }: { stat: Stat; run: boolean; index: number }) {
+function StatBlob({
+	stat,
+	run,
+	index,
+}: {
+	stat: Stat;
+	run: boolean;
+	index: number;
+}) {
 	const n = useCountUp(stat.value, run);
 	const tilt = index % 2 === 0 ? "-rotate-2" : "rotate-2";
 	return (

@@ -49,9 +49,7 @@ function Item({
 					onClick={onToggle}
 					className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
 				>
-					<span className="text-[1.02rem] font-semibold text-ink">
-						{q}
-					</span>
+					<span className="text-[1.02rem] font-semibold text-ink">{q}</span>
 					<span
 						className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-chassis text-accent"
 						style={{

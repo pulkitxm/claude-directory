@@ -10,10 +10,7 @@ import { fmt } from "@/lib/utils";
  */
 export function SideRail({ config }: { config: WarpConfig }) {
 	return (
-		<div
-			className="hidden flex-col items-center gap-5 xl:flex"
-			aria-hidden
-		>
+		<div className="hidden flex-col items-center gap-5 xl:flex" aria-hidden>
 			<span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-black/40 backdrop-blur-md">
 				<Grid3x3 className="h-4 w-4 text-white/75" />
 			</span>

@@ -37,7 +37,10 @@ export function Footer() {
 					<div className="lg:col-span-4">
 						<a href="#top" className="flex items-center gap-2">
 							<span className="flex h-11 w-11 items-center justify-center border-4 border-neo-ink bg-neo-accent neo-shadow-sm">
-								<Star className="h-5 w-5 fill-neo-ink stroke-neo-ink" strokeWidth={3} />
+								<Star
+									className="h-5 w-5 fill-neo-ink stroke-neo-ink"
+									strokeWidth={3}
+								/>
 							</span>
 							<span className="text-2xl font-bold uppercase tracking-tighter text-neo-ink">
 								Loudhouse
@@ -53,7 +56,10 @@ export function Footer() {
 								aria-label="Twitter"
 								className="flex h-12 w-12 items-center justify-center border-4 border-neo-ink bg-neo-bg neo-shadow-sm transition-all duration-100 ease-out hover:-translate-x-[2px] hover:-translate-y-[2px] hover:bg-neo-accent active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
 							>
-								<Twitter className="h-5 w-5 fill-neo-ink stroke-neo-ink" strokeWidth={2} />
+								<Twitter
+									className="h-5 w-5 fill-neo-ink stroke-neo-ink"
+									strokeWidth={2}
+								/>
 							</a>
 							<a
 								href="#top"

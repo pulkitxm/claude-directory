@@ -11,7 +11,10 @@ type BackgroundNumberProps = {
  * accessibility tree or hijack a pointer. Callers pass position/size/color via
  * `className` (e.g. `text-[34vw] text-muted/50 absolute -left-[3vw] bottom-0`).
  */
-export function BackgroundNumber({ children, className = "" }: BackgroundNumberProps) {
+export function BackgroundNumber({
+	children,
+	className = "",
+}: BackgroundNumberProps) {
 	return (
 		<span
 			aria-hidden="true"

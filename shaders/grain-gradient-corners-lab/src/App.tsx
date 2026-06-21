@@ -48,13 +48,55 @@ interface ShapeDef {
 }
 
 const SHAPES: ShapeDef[] = [
-	{ id: "corners", code: "S4", label: "Corners", icon: LayoutGrid, note: "Two rounded rectangles — the prompt default." },
-	{ id: "wave", code: "S1", label: "Wave", icon: Waves, note: "A single travelling sine band." },
-	{ id: "dots", code: "S2", label: "Dots", icon: Grid2x2, note: "Soft dot lattice over the ramp." },
-	{ id: "truchet", code: "S3", label: "Truchet", icon: Blend, note: "Interlocking truchet arcs." },
-	{ id: "ripple", code: "S5", label: "Ripple", icon: CircleDot, note: "Concentric ripple from centre." },
-	{ id: "blob", code: "S6", label: "Blob", icon: Droplet, note: "Fused metaball blobs." },
-	{ id: "sphere", code: "S7", label: "Sphere", icon: Circle, note: "Circle faking a 3D sphere." },
+	{
+		id: "corners",
+		code: "S4",
+		label: "Corners",
+		icon: LayoutGrid,
+		note: "Two rounded rectangles — the prompt default.",
+	},
+	{
+		id: "wave",
+		code: "S1",
+		label: "Wave",
+		icon: Waves,
+		note: "A single travelling sine band.",
+	},
+	{
+		id: "dots",
+		code: "S2",
+		label: "Dots",
+		icon: Grid2x2,
+		note: "Soft dot lattice over the ramp.",
+	},
+	{
+		id: "truchet",
+		code: "S3",
+		label: "Truchet",
+		icon: Blend,
+		note: "Interlocking truchet arcs.",
+	},
+	{
+		id: "ripple",
+		code: "S5",
+		label: "Ripple",
+		icon: CircleDot,
+		note: "Concentric ripple from centre.",
+	},
+	{
+		id: "blob",
+		code: "S6",
+		label: "Blob",
+		icon: Droplet,
+		note: "Fused metaball blobs.",
+	},
+	{
+		id: "sphere",
+		code: "S7",
+		label: "Sphere",
+		icon: Circle,
+		note: "Circle faking a 3D sphere.",
+	},
 ];
 
 /* ================================================================== *
@@ -166,7 +208,9 @@ function Fader({
 				</div>
 				<span className="font-mono text-[12.5px] tabular-nums text-[var(--signal)]">
 					{format ? format(value) : value.toFixed(2)}
-					<span className="ml-0.5 text-[9px] text-[var(--ink-dim)]">{unit}</span>
+					<span className="ml-0.5 text-[9px] text-[var(--ink-dim)]">
+						{unit}
+					</span>
 				</span>
 			</div>
 			<input
@@ -295,12 +339,15 @@ export default function App() {
 						paper-design · GrainGradient
 					</span>
 					<h1 className="max-w-[20ch] text-balance font-light tracking-tight text-white text-4xl leading-[1.05] sm:text-5xl md:text-6xl">
-						Backgrounds are awesome <span className="text-[var(--signal)]">:)</span>
+						Backgrounds are awesome{" "}
+						<span className="text-[var(--signal)]">:)</span>
 					</h1>
 					<p className="max-w-[46ch] text-balance text-[13px] font-light leading-relaxed text-white/65 sm:text-sm">
-						The verbatim <code className="font-mono text-white/85">GradientBackground</code> drop-in,
-						wired into a shadcn <code className="font-mono text-white/85">components/ui</code> lab so
-						every uniform is live.
+						The verbatim{" "}
+						<code className="font-mono text-white/85">GradientBackground</code>{" "}
+						drop-in, wired into a shadcn{" "}
+						<code className="font-mono text-white/85">components/ui</code> lab
+						so every uniform is live.
 					</p>
 				</div>
 			</section>
@@ -311,7 +358,11 @@ export default function App() {
 			<header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between gap-3 border-b border-white/10 bg-black/30 px-4 py-3 backdrop-blur-md sm:px-6">
 				<div className="flex items-center gap-3">
 					<div className="grid h-8 w-8 place-items-center rounded-md border border-[var(--signal)]/40 bg-black/40">
-						<Sparkles size={15} className="text-[var(--signal)]" strokeWidth={1.75} />
+						<Sparkles
+							size={15}
+							className="text-[var(--signal)]"
+							strokeWidth={1.75}
+						/>
 					</div>
 					<div className="leading-tight">
 						<div className="flex items-baseline gap-2">
@@ -344,7 +395,11 @@ export default function App() {
 						onClick={() => setPaused((v) => !v)}
 						className="inline-flex items-center gap-1.5 rounded-md border border-[var(--signal)]/40 bg-[var(--signal)]/10 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--signal)] transition hover:bg-[var(--signal)]/20"
 					>
-						{paused ? <Play size={12} strokeWidth={2} /> : <Pause size={12} strokeWidth={2} />}
+						{paused ? (
+							<Play size={12} strokeWidth={2} />
+						) : (
+							<Pause size={12} strokeWidth={2} />
+						)}
 						{paused ? "Resume" : "Freeze"}
 					</button>
 				</div>
@@ -356,7 +411,9 @@ export default function App() {
 			<aside
 				className={cn(
 					"rail-scroll absolute left-3 top-1/2 z-20 hidden max-h-[78vh] w-[210px] -translate-y-1/2 flex-col gap-3 overflow-y-auto pr-1 transition-all duration-300 lg:flex",
-					showChrome ? "opacity-100" : "pointer-events-none -translate-x-6 opacity-0",
+					showChrome
+						? "opacity-100"
+						: "pointer-events-none -translate-x-6 opacity-0",
 				)}
 			>
 				{/* Shape selector */}
@@ -387,7 +444,11 @@ export default function App() {
 											: "border-white/10 bg-white/[0.02] text-white/55 hover:border-white/25 hover:text-white/85",
 									)}
 								>
-									<Icon size={13} strokeWidth={1.75} className={active ? "text-[var(--signal)]" : ""} />
+									<Icon
+										size={13}
+										strokeWidth={1.75}
+										className={active ? "text-[var(--signal)]" : ""}
+									/>
 									{sh.label}
 								</button>
 							);
@@ -426,7 +487,11 @@ export default function App() {
 								>
 									<span className="flex h-4 w-12 overflow-hidden rounded-sm ring-1 ring-white/10">
 										{p.colors.map((c, i) => (
-											<span key={i} className="flex-1" style={{ background: c }} />
+											<span
+												key={i}
+												className="flex-1"
+												style={{ background: c }}
+											/>
 										))}
 									</span>
 									<span
@@ -450,7 +515,9 @@ export default function App() {
 			<aside
 				className={cn(
 					"rail-scroll absolute right-3 top-1/2 z-20 hidden max-h-[80vh] w-[320px] -translate-y-1/2 flex-col gap-3 overflow-y-auto pl-1 transition-all duration-300 md:flex",
-					showChrome ? "opacity-100" : "pointer-events-none translate-x-6 opacity-0",
+					showChrome
+						? "opacity-100"
+						: "pointer-events-none translate-x-6 opacity-0",
 				)}
 			>
 				{/* Faders */}
@@ -468,19 +535,87 @@ export default function App() {
 						</button>
 					</div>
 					<div className="divide-y divide-white/[0.06]">
-						<Fader id="fader-softness" label="Softness" unit="" value={s.softness} min={0} max={1} step={0.01} onChange={(v) => set("softness", v)} icon={Blend} format={pct} />
-						<Fader id="fader-intensity" label="Intensity" unit="" value={s.intensity} min={0} max={1} step={0.01} onChange={(v) => set("intensity", v)} icon={Zap} format={pct} />
-						<Fader id="fader-noise" label="Grain" unit="" value={s.noise} min={0} max={1} step={0.01} onChange={(v) => set("noise", v)} icon={SunMedium} format={pct} />
-						<Fader id="fader-scale" label="Scale" unit="×" value={s.scale} min={0.3} max={2.5} step={0.01} onChange={(v) => set("scale", v)} icon={Maximize2} />
-						<Fader id="fader-rotation" label="Rotation" unit="°" value={s.rotation} min={0} max={360} step={1} onChange={(v) => set("rotation", v)} icon={RotateCw} format={(v) => v.toFixed(0)} />
-						<Fader id="fader-speed" label="Speed" unit="×" value={s.speed} min={0} max={3} step={0.01} onChange={(v) => set("speed", v)} icon={Gauge} />
+						<Fader
+							id="fader-softness"
+							label="Softness"
+							unit=""
+							value={s.softness}
+							min={0}
+							max={1}
+							step={0.01}
+							onChange={(v) => set("softness", v)}
+							icon={Blend}
+							format={pct}
+						/>
+						<Fader
+							id="fader-intensity"
+							label="Intensity"
+							unit=""
+							value={s.intensity}
+							min={0}
+							max={1}
+							step={0.01}
+							onChange={(v) => set("intensity", v)}
+							icon={Zap}
+							format={pct}
+						/>
+						<Fader
+							id="fader-noise"
+							label="Grain"
+							unit=""
+							value={s.noise}
+							min={0}
+							max={1}
+							step={0.01}
+							onChange={(v) => set("noise", v)}
+							icon={SunMedium}
+							format={pct}
+						/>
+						<Fader
+							id="fader-scale"
+							label="Scale"
+							unit="×"
+							value={s.scale}
+							min={0.3}
+							max={2.5}
+							step={0.01}
+							onChange={(v) => set("scale", v)}
+							icon={Maximize2}
+						/>
+						<Fader
+							id="fader-rotation"
+							label="Rotation"
+							unit="°"
+							value={s.rotation}
+							min={0}
+							max={360}
+							step={1}
+							onChange={(v) => set("rotation", v)}
+							icon={RotateCw}
+							format={(v) => v.toFixed(0)}
+						/>
+						<Fader
+							id="fader-speed"
+							label="Speed"
+							unit="×"
+							value={s.speed}
+							min={0}
+							max={3}
+							step={0.01}
+							onChange={(v) => set("speed", v)}
+							icon={Gauge}
+						/>
 					</div>
 				</div>
 
 				{/* Integration tabs */}
 				<div className="overflow-hidden rounded-lg border border-white/10 bg-black/45 backdrop-blur-md">
 					<div className="flex items-center gap-2 border-b border-white/10 px-3 py-2">
-						<Terminal size={12} className="text-[var(--signal)]" strokeWidth={1.75} />
+						<Terminal
+							size={12}
+							className="text-[var(--signal)]"
+							strokeWidth={1.75}
+						/>
 						<span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/55">
 							Integration
 						</span>
@@ -509,7 +644,11 @@ export default function App() {
 							onClick={() => copy(tab, activeSrc)}
 							className="absolute right-2 top-2 z-10 inline-flex items-center gap-1 rounded border border-white/15 bg-black/60 px-1.5 py-1 font-mono text-[9.5px] uppercase tracking-[0.14em] text-white/60 transition hover:text-white"
 						>
-							{copied === tab ? <Check size={11} className="text-[var(--signal)]" /> : <Copy size={11} />}
+							{copied === tab ? (
+								<Check size={11} className="text-[var(--signal)]" />
+							) : (
+								<Copy size={11} />
+							)}
 							{copied === tab ? "ok" : "copy"}
 						</button>
 						<pre className="rail-scroll max-h-[210px] overflow-auto p-3 pr-12 font-mono text-[10.5px] leading-relaxed text-white/75">
@@ -518,14 +657,20 @@ export default function App() {
 					</div>
 					<div className="border-t border-white/10 px-3 py-2.5">
 						<div className="flex items-center justify-between gap-2 rounded-md border border-white/10 bg-black/50 px-2.5 py-1.5">
-							<code className="truncate font-mono text-[10.5px] text-[var(--signal)]">{INSTALL_CMD}</code>
+							<code className="truncate font-mono text-[10.5px] text-[var(--signal)]">
+								{INSTALL_CMD}
+							</code>
 							<button
 								type="button"
 								onClick={() => copy("install", INSTALL_CMD)}
 								className="shrink-0 text-white/55 transition hover:text-white"
 								title="Copy install command"
 							>
-								{copied === "install" ? <Check size={13} className="text-[var(--signal)]" /> : <Copy size={13} />}
+								{copied === "install" ? (
+									<Check size={13} className="text-[var(--signal)]" />
+								) : (
+									<Copy size={13} />
+								)}
 							</button>
 						</div>
 					</div>
@@ -549,14 +694,21 @@ export default function App() {
 								{paused ? "FROZEN" : "LIVE"}
 							</span>
 						</div>
-						<Stat label="FPS" value={String(telemetry.fps).padStart(2, "0")} accent />
+						<Stat
+							label="FPS"
+							value={String(telemetry.fps).padStart(2, "0")}
+							accent
+						/>
 						<Stat label="Clock" value={`${telemetry.clock.toFixed(1)}s`} />
 						<Stat label="Shape" value={shapeDef.label} />
 						<div className="hidden sm:block">
 							<Stat label="Palette" value={palette.label} />
 						</div>
 						<div className="hidden md:block">
-							<Stat label="Soft·Int" value={`${pct(s.softness)} · ${pct(s.intensity)}`} />
+							<Stat
+								label="Soft·Int"
+								value={`${pct(s.softness)} · ${pct(s.intensity)}`}
+							/>
 						</div>
 						<div className="hidden lg:block">
 							<Stat label="Grain" value={pct(s.noise)} />

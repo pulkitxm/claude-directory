@@ -1,11 +1,11 @@
-import { Hero } from "@/components/ui/animated-hero"
+import { Hero } from "@/components/ui/animated-hero";
 
 function HeroDemo() {
-  return (
-    <div className="block">
-      <Hero />
-    </div>
-  );
+	return (
+		<div className="block">
+			<Hero />
+		</div>
+	);
 }
 
 export { HeroDemo };

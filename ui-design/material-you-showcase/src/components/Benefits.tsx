@@ -67,12 +67,12 @@ export function Benefits() {
 			<Shell className="relative">
 				<div className="mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
 					<Reveal>
-						<Eyebrow className="!bg-white/15 !text-white">
-							Why Lumi
-						</Eyebrow>
+						<Eyebrow className="!bg-white/15 !text-white">Why Lumi</Eyebrow>
 					</Reveal>
 					<Reveal delay={80}>
-						<h2 className="t-headline">A design system that adapts to people</h2>
+						<h2 className="t-headline">
+							A design system that adapts to people
+						</h2>
 					</Reveal>
 					<Reveal delay={140}>
 						<p className="t-body-l text-white/80">

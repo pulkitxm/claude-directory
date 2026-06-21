@@ -69,7 +69,9 @@ const server = http.createServer((req, res) => {
 const results = [];
 const check = (name, cond, detail = "") => {
 	results.push({ name, ok: !!cond, detail });
-	console.log(`${cond ? "PASS" : "FAIL"}  ${name}${detail ? "  — " + detail : ""}`);
+	console.log(
+		`${cond ? "PASS" : "FAIL"}  ${name}${detail ? "  — " + detail : ""}`,
+	);
 };
 
 await new Promise((r) => server.listen(PORT, "127.0.0.1", r));
@@ -77,7 +79,9 @@ const URL = `http://127.0.0.1:${PORT}/index.html`;
 
 const browser = await chromium.launch({ headless: true });
 try {
-	const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+	const ctx = await browser.newContext({
+		viewport: { width: 1280, height: 900 },
+	});
 	const page = await ctx.newPage();
 	const consoleErrs = [];
 	const pageErrs = [];
@@ -116,7 +120,9 @@ try {
 	// count-up
 	await page.evaluate(() => document.getElementById("stats").scrollIntoView());
 	await page.waitForTimeout(1800);
-	const stats = await page.$$eval(".stat-num", (els) => els.map((e) => e.textContent));
+	const stats = await page.$$eval(".stat-num", (els) =>
+		els.map((e) => e.textContent),
+	);
 	check(
 		"stat count-up reaches targets",
 		stats[0] === "5" && stats[1] === "100%" && stats[2] === "24+",
@@ -208,8 +214,9 @@ try {
 			'.deco[aria-hidden="true"], .deco-emoji[aria-hidden="true"]',
 		).length,
 		pat: document.querySelectorAll('[class*="pattern-"]').length,
-		patHidden: document.querySelectorAll('[class*="pattern-"][aria-hidden="true"]')
-			.length,
+		patHidden: document.querySelectorAll(
+			'[class*="pattern-"][aria-hidden="true"]',
+		).length,
 	}));
 	check(
 		"decorations + patterns aria-hidden",
@@ -217,8 +224,16 @@ try {
 		`deco ${aria.decoHidden}/${aria.deco}, patterns ${aria.patHidden}/${aria.pat}`,
 	);
 
-	check("no console errors", consoleErrs.length === 0, consoleErrs.slice(0, 3).join(" | "));
-	check("no page errors", pageErrs.length === 0, pageErrs.slice(0, 3).join(" | "));
+	check(
+		"no console errors",
+		consoleErrs.length === 0,
+		consoleErrs.slice(0, 3).join(" | "),
+	);
+	check(
+		"no page errors",
+		pageErrs.length === 0,
+		pageErrs.slice(0, 3).join(" | "),
+	);
 
 	// mobile drawer
 	await page.setViewportSize({ width: 390, height: 844 });
@@ -226,7 +241,9 @@ try {
 	await page.evaluate(() => window.scrollTo(0, 0));
 	await page.$eval("#navToggle", (b) => b.click());
 	await page.waitForTimeout(350);
-	const drawer = await page.$eval("#drawer", (d) => d.getAttribute("data-open"));
+	const drawer = await page.$eval("#drawer", (d) =>
+		d.getAttribute("data-open"),
+	);
 	check("mobile drawer opens", drawer === "true");
 
 	// reduced motion: content visible, continuous motion off

@@ -49,10 +49,7 @@ export function Window({
 						+──
 					</span>
 					<span className="text-primary glow">{title}</span>
-					<span
-						aria-hidden
-						className="min-w-0 flex-1 overflow-hidden text-dim"
-					>
+					<span aria-hidden className="min-w-0 flex-1 overflow-hidden text-dim">
 						──────────────────────────────────────────────
 					</span>
 					{flags && <span className="shrink-0 text-secondary">{flags}</span>}

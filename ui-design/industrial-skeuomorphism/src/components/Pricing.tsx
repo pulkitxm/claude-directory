@@ -92,10 +92,7 @@ export function Pricing() {
 						<motion.div
 							key={t.id}
 							variants={slideUp}
-							className={cx(
-								"relative",
-								t.featured && "lg:-mt-4 lg:mb-4",
-							)}
+							className={cx("relative", t.featured && "lg:-mt-4 lg:mb-4")}
 						>
 							{/* hanging hole — punched price-tag detail */}
 							<span
@@ -133,12 +130,8 @@ export function Pricing() {
 								)}
 
 								<div className="flex items-center justify-between">
-									<h3 className="text-lg font-bold text-ink">
-										{t.name}
-									</h3>
-									<MonoLabel className="!text-[0.6rem]">
-										TIER
-									</MonoLabel>
+									<h3 className="text-lg font-bold text-ink">{t.name}</h3>
+									<MonoLabel className="!text-[0.6rem]">TIER</MonoLabel>
 								</div>
 
 								<div className="mt-4 flex items-end gap-1.5">
@@ -165,9 +158,7 @@ export function Pricing() {
 											<span
 												className={cx(
 													"mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full",
-													t.featured
-														? "bg-accent"
-														: "bg-chassis",
+													t.featured ? "bg-accent" : "bg-chassis",
 												)}
 												style={{
 													boxShadow: t.featured
@@ -178,16 +169,10 @@ export function Pricing() {
 												<Check
 													size={12}
 													strokeWidth={3}
-													className={
-														t.featured
-															? "text-white"
-															: "text-accent"
-													}
+													className={t.featured ? "text-white" : "text-accent"}
 												/>
 											</span>
-											<span className="leading-snug">
-												{f}
-											</span>
+											<span className="leading-snug">{f}</span>
 										</li>
 									))}
 								</ul>
@@ -198,11 +183,9 @@ export function Pricing() {
 									size="md"
 									className="mt-8"
 									onClick={() =>
-										document
-											.querySelector("#cta")
-											?.scrollIntoView({
-												behavior: "smooth",
-											})
+										document.querySelector("#cta")?.scrollIntoView({
+											behavior: "smooth",
+										})
 									}
 								>
 									{t.cta}

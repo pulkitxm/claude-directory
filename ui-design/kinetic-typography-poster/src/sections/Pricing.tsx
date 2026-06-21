@@ -21,8 +21,8 @@ export function Pricing() {
 						</SectionHeading>
 					</div>
 					<p className="max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-						No hidden fees, no gradient buttons. One acid accent and three honest
-						options.
+						No hidden fees, no gradient buttons. One acid accent and three
+						honest options.
 					</p>
 				</div>
 

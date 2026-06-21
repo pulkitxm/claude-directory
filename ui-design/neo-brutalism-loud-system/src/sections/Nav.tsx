@@ -28,7 +28,10 @@ export function Nav() {
 					className="group flex items-center gap-2 rounded-none focus-visible:outline-none"
 				>
 					<span className="flex h-10 w-10 items-center justify-center border-4 border-neo-ink bg-neo-accent neo-shadow-sm transition-transform duration-200 ease-out group-hover:rotate-12">
-						<Star className="h-5 w-5 fill-neo-ink stroke-neo-ink" strokeWidth={3} />
+						<Star
+							className="h-5 w-5 fill-neo-ink stroke-neo-ink"
+							strokeWidth={3}
+						/>
 					</span>
 					<span className="text-xl font-bold uppercase tracking-tighter text-neo-ink">
 						Loudhouse

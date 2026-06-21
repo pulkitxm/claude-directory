@@ -12,7 +12,10 @@ const CHIPS = [
 
 export function Hero() {
 	return (
-		<section id="top" className="relative overflow-hidden pt-14 pb-20 md:pt-24 md:pb-28">
+		<section
+			id="top"
+			className="relative overflow-hidden pt-14 pb-20 md:pt-24 md:pb-28"
+		>
 			{/* lighting hotspot, top-left, reinforcing the light source */}
 			<div
 				aria-hidden="true"
@@ -68,10 +71,10 @@ export function Hero() {
 							variants={slideUp}
 							className="max-w-[56ch] text-lg leading-relaxed text-label"
 						>
-							SCHEMATIC is the machined control plane for hardware
-							fleets. Provision actuators, stream telemetry, and ship
-							firmware from one tactile deck — engineered to feel as
-							solid as the machines it runs.
+							SCHEMATIC is the machined control plane for hardware fleets.
+							Provision actuators, stream telemetry, and ship firmware from one
+							tactile deck — engineered to feel as solid as the machines it
+							runs.
 						</motion.p>
 
 						<motion.div
@@ -123,9 +126,7 @@ export function Hero() {
 									<dd className="font-mono text-lg font-bold text-ink">
 										{c.value}
 									</dd>
-									<dt className="stamp text-[0.55rem] text-label">
-										{c.label}
-									</dt>
+									<dt className="stamp text-[0.55rem] text-label">{c.label}</dt>
 								</div>
 							))}
 						</motion.dl>

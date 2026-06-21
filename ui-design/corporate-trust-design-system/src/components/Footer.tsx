@@ -1,4 +1,10 @@
-import { Twitter, Github, Linkedin, Youtube, type LucideIcon } from "lucide-react";
+import {
+	Twitter,
+	Github,
+	Linkedin,
+	Youtube,
+	type LucideIcon,
+} from "lucide-react";
 import { Shell } from "./primitives";
 import { Logo } from "./Logo";
 import { FOOTER_COLUMNS } from "../lib/content";
@@ -25,8 +31,8 @@ export function Footer() {
 					<div>
 						<Logo tone="dark" />
 						<p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
-							The operations platform teams actually trust. Automate the busywork,
-							unify your tools, and decide with confidence.
+							The operations platform teams actually trust. Automate the
+							busywork, unify your tools, and decide with confidence.
 						</p>
 						<form
 							className="mt-6 flex max-w-xs gap-2"

@@ -41,11 +41,7 @@ export function Nav() {
 						className="flex h-16 items-center justify-between lg:h-[4.5rem]"
 						aria-label="Primary"
 					>
-						<a
-							href="#top"
-							className="rounded-lg"
-							aria-label="Northwind — home"
-						>
+						<a href="#top" className="rounded-lg" aria-label="Northwind — home">
 							<Logo />
 						</a>
 

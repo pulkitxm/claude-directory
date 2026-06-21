@@ -20,26 +20,26 @@ import { Footer } from "./components/Footer";
  * create the design system's varied, breathing rhythm.
  */
 export default function App() {
-  return (
-    <div className="relative min-h-screen bg-background">
-      {/* CRITICAL global texture layer */}
-      <div className="grain-overlay" aria-hidden />
+	return (
+		<div className="relative min-h-screen bg-background">
+			{/* CRITICAL global texture layer */}
+			<div className="grain-overlay" aria-hidden />
 
-      <Navbar />
-      <main>
-        <Hero />
-        <Stats />
-        <Features />
-        <HowItWorks />
-        <ProductDetail />
-        <Benefits />
-        <Testimonials />
-        <Pricing />
-        <Journal />
-        <Faq />
-        <FinalCta />
-      </main>
-      <Footer />
-    </div>
-  );
+			<Navbar />
+			<main>
+				<Hero />
+				<Stats />
+				<Features />
+				<HowItWorks />
+				<ProductDetail />
+				<Benefits />
+				<Testimonials />
+				<Pricing />
+				<Journal />
+				<Faq />
+				<FinalCta />
+			</main>
+			<Footer />
+		</div>
+	);
 }

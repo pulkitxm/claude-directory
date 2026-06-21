@@ -42,16 +42,15 @@ export function ProductDetail() {
 						>
 							S
 						</span>
-						cribbly keeps the good parts of a physical whiteboard — the
-						speed, the mess, the permission to be wrong — and quietly
-						removes the bad ones. Notes don't fall off. Markers don't dry
-						out. And when the wall fills up, it just gets bigger. Pan out
-						and your whole quarter of thinking is still right there,
-						exactly where you left it.
+						cribbly keeps the good parts of a physical whiteboard — the speed,
+						the mess, the permission to be wrong — and quietly removes the bad
+						ones. Notes don't fall off. Markers don't dry out. And when the wall
+						fills up, it just gets bigger. Pan out and your whole quarter of
+						thinking is still right there, exactly where you left it.
 					</p>
 					<p className="mt-4 text-lg text-ink/70">
-						No accounts to wrangle, no onboarding tour. Open a board,
-						hand out the link, and start making a beautiful mess together.
+						No accounts to wrangle, no onboarding tour. Open a board, hand out
+						the link, and start making a beautiful mess together.
 					</p>
 				</div>
 

@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
-import {
-	Eyebrow,
-	Reveal,
-	Section,
-	SectionHeading,
-	Shell,
-} from "./primitives";
+import { Eyebrow, Reveal, Section, SectionHeading, Shell } from "./primitives";
 
 type QA = { q: string; a: string };
 
@@ -33,7 +27,15 @@ const ITEMS: QA[] = [
 	},
 ];
 
-function Item({ qa, open, onToggle }: { qa: QA; open: boolean; onToggle: () => void }) {
+function Item({
+	qa,
+	open,
+	onToggle,
+}: {
+	qa: QA;
+	open: boolean;
+	onToggle: () => void;
+}) {
 	return (
 		<div className="border-2 border-[var(--color-edge)] transition-colors duration-200 ease-linear hover:border-[var(--color-magenta)]/60">
 			<h3>

@@ -3,9 +3,9 @@
 import { useEffect, useRef } from "react";
 
 declare global {
-  interface Window {
-    THREE: any;
-  }
+	interface Window {
+		THREE: any;
+	}
 }
 
 /**
@@ -25,127 +25,132 @@ const THREE_SRC = "/vendor/three.min.js";
  */
 let threePromise: Promise<void> | null = null;
 function loadThree(): Promise<void> {
-  if (typeof window === "undefined") return Promise.resolve();
-  if (window.THREE) return Promise.resolve();
-  if (threePromise) return threePromise;
+	if (typeof window === "undefined") return Promise.resolve();
+	if (window.THREE) return Promise.resolve();
+	if (threePromise) return threePromise;
 
-  threePromise = new Promise<void>((resolve, reject) => {
-    const existing = document.querySelector<HTMLScriptElement>(
-      `script[data-three-loader="true"]`
-    );
-    if (existing) {
-      existing.addEventListener("load", () => resolve());
-      existing.addEventListener("error", () => reject(new Error("three load failed")));
-      return;
-    }
-    const script = document.createElement("script");
-    script.src = THREE_SRC;
-    script.async = true;
-    script.dataset.threeLoader = "true";
-    script.onload = () => resolve();
-    script.onerror = () => {
-      threePromise = null;
-      reject(new Error("three load failed"));
-    };
-    document.head.appendChild(script);
-  });
+	threePromise = new Promise<void>((resolve, reject) => {
+		const existing = document.querySelector<HTMLScriptElement>(
+			`script[data-three-loader="true"]`,
+		);
+		if (existing) {
+			existing.addEventListener("load", () => resolve());
+			existing.addEventListener("error", () =>
+				reject(new Error("three load failed")),
+			);
+			return;
+		}
+		const script = document.createElement("script");
+		script.src = THREE_SRC;
+		script.async = true;
+		script.dataset.threeLoader = "true";
+		script.onload = () => resolve();
+		script.onerror = () => {
+			threePromise = null;
+			reject(new Error("three load failed"));
+		};
+		document.head.appendChild(script);
+	});
 
-  return threePromise;
+	return threePromise;
 }
 
 export interface ShaderAnimationProps {
-  /** Extra classes for the canvas host. Defaults to filling its sized parent. */
-  className?: string;
-  /**
-   * Animation speed multiplier applied to the shader clock each frame.
-   * 1 matches the original snippet; lower is calmer, higher is more frantic.
-   */
-  speed?: number;
+	/** Extra classes for the canvas host. Defaults to filling its sized parent. */
+	className?: string;
+	/**
+	 * Animation speed multiplier applied to the shader clock each frame.
+	 * 1 matches the original snippet; lower is calmer, higher is more frantic.
+	 */
+	speed?: number;
 }
 
-export function ShaderAnimation({ className, speed = 1 }: ShaderAnimationProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const speedRef = useRef(speed);
-  speedRef.current = speed;
+export function ShaderAnimation({
+	className,
+	speed = 1,
+}: ShaderAnimationProps) {
+	const containerRef = useRef<HTMLDivElement>(null);
+	const speedRef = useRef(speed);
+	speedRef.current = speed;
 
-  const sceneRef = useRef<{
-    scene: any;
-    camera: any;
-    renderer: any;
-    uniforms: any;
-    animationId: number | null;
-    resizeObserver: ResizeObserver | null;
-    disposed: boolean;
-  }>({
-    scene: null,
-    camera: null,
-    renderer: null,
-    uniforms: null,
-    animationId: null,
-    resizeObserver: null,
-    disposed: false,
-  });
+	const sceneRef = useRef<{
+		scene: any;
+		camera: any;
+		renderer: any;
+		uniforms: any;
+		animationId: number | null;
+		resizeObserver: ResizeObserver | null;
+		disposed: boolean;
+	}>({
+		scene: null,
+		camera: null,
+		renderer: null,
+		uniforms: null,
+		animationId: null,
+		resizeObserver: null,
+		disposed: false,
+	});
 
-  useEffect(() => {
-    const state = sceneRef.current;
-    state.disposed = false;
+	useEffect(() => {
+		const state = sceneRef.current;
+		state.disposed = false;
 
-    loadThree()
-      .then(() => {
-        if (state.disposed || !containerRef.current || !window.THREE) return;
-        initThreeJS();
-      })
-      .catch((err) => {
-        console.error("[ShaderAnimation] failed to load Three.js:", err);
-      });
+		loadThree()
+			.then(() => {
+				if (state.disposed || !containerRef.current || !window.THREE) return;
+				initThreeJS();
+			})
+			.catch((err) => {
+				console.error("[ShaderAnimation] failed to load Three.js:", err);
+			});
 
-    return () => {
-      state.disposed = true;
-      if (state.animationId !== null) cancelAnimationFrame(state.animationId);
-      if (state.resizeObserver) state.resizeObserver.disconnect();
-      if (state.renderer) {
-        state.renderer.dispose();
-        state.renderer.forceContextLoss?.();
-        const canvas = state.renderer.domElement;
-        canvas?.parentNode?.removeChild(canvas);
-      }
-      state.scene = null;
-      state.camera = null;
-      state.renderer = null;
-      state.uniforms = null;
-      state.animationId = null;
-      state.resizeObserver = null;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+		return () => {
+			state.disposed = true;
+			if (state.animationId !== null) cancelAnimationFrame(state.animationId);
+			if (state.resizeObserver) state.resizeObserver.disconnect();
+			if (state.renderer) {
+				state.renderer.dispose();
+				state.renderer.forceContextLoss?.();
+				const canvas = state.renderer.domElement;
+				canvas?.parentNode?.removeChild(canvas);
+			}
+			state.scene = null;
+			state.camera = null;
+			state.renderer = null;
+			state.uniforms = null;
+			state.animationId = null;
+			state.resizeObserver = null;
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-  const initThreeJS = () => {
-    const container = containerRef.current;
-    if (!container || !window.THREE) return;
+	const initThreeJS = () => {
+		const container = containerRef.current;
+		if (!container || !window.THREE) return;
 
-    const THREE = window.THREE;
-    const state = sceneRef.current;
+		const THREE = window.THREE;
+		const state = sceneRef.current;
 
-    container.innerHTML = "";
+		container.innerHTML = "";
 
-    const camera = new THREE.Camera();
-    camera.position.z = 1;
+		const camera = new THREE.Camera();
+		camera.position.z = 1;
 
-    const scene = new THREE.Scene();
-    const geometry = new THREE.PlaneBufferGeometry(2, 2);
+		const scene = new THREE.Scene();
+		const geometry = new THREE.PlaneBufferGeometry(2, 2);
 
-    const uniforms = {
-      time: { type: "f", value: 1.0 },
-      resolution: { type: "v2", value: new THREE.Vector2() },
-    };
+		const uniforms = {
+			time: { type: "f", value: 1.0 },
+			resolution: { type: "v2", value: new THREE.Vector2() },
+		};
 
-    const vertexShader = `
+		const vertexShader = `
       void main() {
         gl_Position = vec4( position, 1.0 );
       }
     `;
 
-    const fragmentShader = `
+		const fragmentShader = `
       #define TWO_PI 6.2831853072
       #define PI 3.14159265359
 
@@ -186,57 +191,57 @@ export function ShaderAnimation({ className, speed = 1 }: ShaderAnimationProps) 
       }
     `;
 
-    const material = new THREE.ShaderMaterial({
-      uniforms,
-      vertexShader,
-      fragmentShader,
-    });
+		const material = new THREE.ShaderMaterial({
+			uniforms,
+			vertexShader,
+			fragmentShader,
+		});
 
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+		const mesh = new THREE.Mesh(geometry, material);
+		scene.add(mesh);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
-    renderer.domElement.style.display = "block";
-    renderer.domElement.style.width = "100%";
-    renderer.domElement.style.height = "100%";
+		const renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+		container.appendChild(renderer.domElement);
+		renderer.domElement.style.display = "block";
+		renderer.domElement.style.width = "100%";
+		renderer.domElement.style.height = "100%";
 
-    state.scene = scene;
-    state.camera = camera;
-    state.renderer = renderer;
-    state.uniforms = uniforms;
+		state.scene = scene;
+		state.camera = camera;
+		state.renderer = renderer;
+		state.uniforms = uniforms;
 
-    const resize = () => {
-      const rect = container.getBoundingClientRect();
-      const w = Math.max(1, Math.floor(rect.width));
-      const h = Math.max(1, Math.floor(rect.height));
-      renderer.setSize(w, h, false);
-      uniforms.resolution.value.x = renderer.domElement.width;
-      uniforms.resolution.value.y = renderer.domElement.height;
-    };
+		const resize = () => {
+			const rect = container.getBoundingClientRect();
+			const w = Math.max(1, Math.floor(rect.width));
+			const h = Math.max(1, Math.floor(rect.height));
+			renderer.setSize(w, h, false);
+			uniforms.resolution.value.x = renderer.domElement.width;
+			uniforms.resolution.value.y = renderer.domElement.height;
+		};
 
-    resize();
+		resize();
 
-    // Track the *parent box*, not just window resizes, so the field stays sharp
-    // inside flex/grid layouts that change size without a window event.
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(container);
-    state.resizeObserver = resizeObserver;
+		// Track the *parent box*, not just window resizes, so the field stays sharp
+		// inside flex/grid layouts that change size without a window event.
+		const resizeObserver = new ResizeObserver(resize);
+		resizeObserver.observe(container);
+		state.resizeObserver = resizeObserver;
 
-    const animate = () => {
-      state.animationId = requestAnimationFrame(animate);
-      uniforms.time.value += 0.05 * speedRef.current;
-      renderer.render(scene, camera);
-    };
-    animate();
-  };
+		const animate = () => {
+			state.animationId = requestAnimationFrame(animate);
+			uniforms.time.value += 0.05 * speedRef.current;
+			renderer.render(scene, camera);
+		};
+		animate();
+	};
 
-  return (
-    <div
-      ref={containerRef}
-      aria-hidden="true"
-      className={className ?? "absolute inset-0 h-full w-full"}
-    />
-  );
+	return (
+		<div
+			ref={containerRef}
+			aria-hidden="true"
+			className={className ?? "absolute inset-0 h-full w-full"}
+		/>
+	);
 }

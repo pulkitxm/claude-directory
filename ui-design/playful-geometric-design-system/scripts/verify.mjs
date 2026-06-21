@@ -27,7 +27,9 @@ const URL = `http://localhost:${PORT}/`;
 const checks = [];
 function check(name, ok, detail = "") {
 	checks.push({ name, ok: !!ok, detail });
-	console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`);
+	console.log(
+		`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`,
+	);
 }
 
 console.log("· building…");
@@ -62,7 +64,9 @@ try {
 	if (!up) throw new Error("preview server never came up");
 
 	browser = await chromium.launch();
-	const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+	const page = await browser.newPage({
+		viewport: { width: 1280, height: 900 },
+	});
 
 	const consoleErrors = [];
 	page.on("console", (m) => {
@@ -75,7 +79,11 @@ try {
 	await page.waitForSelector('[data-ready="true"]', { timeout: 5000 });
 
 	check("no page errors", pageErrors.length === 0, pageErrors.join(" | "));
-	check("no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
+	check(
+		"no console errors",
+		consoleErrors.length === 0,
+		consoleErrors.join(" | "),
+	);
 
 	// Brand present (nav + footer).
 	const brandCount = await page.locator("text=Blobby").count();
@@ -153,7 +161,9 @@ try {
 	);
 
 	// Marquee tracks duplicate their content (seamless loop).
-	const marqueeTracks = await page.locator(".animate-marquee, .animate-marquee-reverse").count();
+	const marqueeTracks = await page
+		.locator(".animate-marquee, .animate-marquee-reverse")
+		.count();
 	check("marquee tracks present", marqueeTracks >= 2, `count=${marqueeTracks}`);
 
 	// Pricing featured tier: star badge text + a scaled card.
@@ -235,12 +245,18 @@ try {
 		Number(rm.revealOpacity) === 1,
 		`opacity=${rm.revealOpacity}`,
 	);
-	check("reduced-motion disables marquee", rm.anim === "none", `anim=${rm.anim}`);
+	check(
+		"reduced-motion disables marquee",
+		rm.anim === "none",
+		`anim=${rm.anim}`,
+	);
 	await browser.close();
 	browser = null;
 
 	const failed = checks.filter((c) => !c.ok);
-	console.log(`\n${checks.length - failed.length}/${checks.length} checks passed.`);
+	console.log(
+		`\n${checks.length - failed.length}/${checks.length} checks passed.`,
+	);
 	if (failed.length) process.exit(1);
 	console.log("ALL CHECKS PASSED");
 } catch (err) {
