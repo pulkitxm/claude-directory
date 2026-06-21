@@ -1,4 +1,4 @@
-# Sentinel Meridian — Intelligence & Strategy Advisory
+# Sentinel Meridian — Intelligence & Strategy Advisory Landing Page (Vanilla HTML/CSS/JS)
 
 A single-page marketing site for Sentinel Meridian, a fictional elite private-intelligence and strategic-advisory firm. The named aesthetic is "Cold War Dossier" — a hushed, classified, architectural dark theme that reads like a declassified intelligence brief crossed with a luxury private bank: near-black ink, a cold ice/steel cyan accent, and a single warm signal-amber used only for "classified / live" labels and the primary CTA glow.
 
@@ -13,3 +13,6 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+

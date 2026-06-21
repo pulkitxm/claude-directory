@@ -1,4 +1,4 @@
-# Sencha Atelier — Ceremonial Tea House
+# Sencha Atelier — Ceremonial Japanese Tea House Landing Page (Vanilla HTML/CSS/JS)
 
 A multi-section landing page for Sencha Atelier, a fictional artisanal Japanese tea atelier. The named design language is "Wabi Editorial" — a quiet, gallery-like composition that reads like a printed monograph about tea: warm paper backgrounds, deep pine/moss green as the structural color, and a single warm saffron-amber accent used sparingly, with generous negative space and oversized editorial serif type.
 
@@ -13,3 +13,6 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+

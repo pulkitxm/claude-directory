@@ -1,4 +1,4 @@
-# Slow Roast Atelier — Artisan Coffee & Bakery
+# Slow Roast Atelier — Artisan Coffee & Bakery Landing Page (Vanilla HTML/CSS/JS)
 
 A multi-section landing page for Slow Roast Atelier, a fictional artisan coffee roastery and micro-bakery. The named design language is "Quiet Pastel Block-Grid" — a calm, gallery-like editorial aesthetic built entirely from edge-to-edge rectangular panels of muted dusty pastel color, like a Swiss magazine spread reassembled into a Mondrian of warm neutrals, grounded by one deep pine green used sparingly.
 
@@ -13,3 +13,6 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
