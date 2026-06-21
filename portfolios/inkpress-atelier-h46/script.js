@@ -1,7 +1,5 @@
 // Inkpress Atelier — scroll reveal + language toggle
-(function () {
-	"use strict";
-
+(() => {
 	const reveals = document.querySelectorAll(".reveal");
 	if ("IntersectionObserver" in window) {
 		const io = new IntersectionObserver(

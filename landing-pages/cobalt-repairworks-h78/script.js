@@ -1,7 +1,5 @@
 // RepairWorks — scroll reveal + header state
-(function () {
-	"use strict";
-
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	// ---- Scroll reveal with staggered grid children ----
@@ -10,7 +8,7 @@
 	);
 
 	if (reduce || !("IntersectionObserver" in window)) {
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
@@ -19,16 +17,16 @@
 			.querySelectorAll(
 				".card-grid-3, .services-grid, .benefits-grid, .testi-grid",
 			)
-			.forEach(function (grid) {
+			.forEach((grid) => {
 				var kids = grid.querySelectorAll(".reveal");
-				kids.forEach(function (el, i) {
-					el.style.transitionDelay = i * 90 + "ms";
+				kids.forEach((el, i) => {
+					el.style.transitionDelay = `${i * 90}ms`;
 				});
 			});
 
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (entry) {
+			(entries) => {
+				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						entry.target.classList.add("in");
 						io.unobserve(entry.target);
@@ -38,7 +36,7 @@
 			{ threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
 		);
 
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -48,7 +46,7 @@
 	var ticking = false;
 	function onScroll() {
 		if (!ticking) {
-			window.requestAnimationFrame(function () {
+			window.requestAnimationFrame(() => {
 				header.classList.toggle("scrolled", window.scrollY > 40);
 				ticking = false;
 			});

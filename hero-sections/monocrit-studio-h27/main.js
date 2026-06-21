@@ -1,6 +1,4 @@
-(function () {
-	"use strict";
-
+(() => {
 	var app = document.getElementById("app");
 	var hero = document.getElementById("hero");
 	var headline = document.getElementById("headline");
@@ -26,7 +24,7 @@
 
 	/* ---- split headline into chars ---- */
 	var chars = [];
-	headline.querySelectorAll(".line").forEach(function (line) {
+	headline.querySelectorAll(".line").forEach((line) => {
 		var text = line.textContent;
 		line.textContent = "";
 		for (var i = 0; i < text.length; i++) {
@@ -39,7 +37,7 @@
 	});
 
 	/* ---- footer dots ---- */
-	imgs.forEach(function (_, i) {
+	imgs.forEach((_, i) => {
 		var d = document.createElement("i");
 		if (i === 0) d.className = "is-on";
 		dotsWrap.appendChild(d);
@@ -47,11 +45,11 @@
 	var dots = Array.prototype.slice.call(dotsWrap.children);
 
 	/* ---- entrance ---- */
-	chars.forEach(function (c, i) {
-		c.style.transitionDelay = 0.18 + i * 0.035 + "s";
+	chars.forEach((c, i) => {
+		c.style.transitionDelay = `${0.18 + i * 0.035}s`;
 	});
-	requestAnimationFrame(function () {
-		requestAnimationFrame(function () {
+	requestAnimationFrame(() => {
+		requestAnimationFrame(() => {
 			app.classList.add("is-in");
 		});
 	});
@@ -61,10 +59,9 @@
 	function tick() {
 		var d = new Date();
 		function p(n) {
-			return n < 10 ? "0" + n : "" + n;
+			return n < 10 ? `0${n}` : `${n}`;
 		}
-		clock.textContent =
-			p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
+		clock.textContent = `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
 	}
 	tick();
 	setInterval(tick, 1000);
@@ -78,13 +75,12 @@
 		imgs[current].classList.add("is-active");
 		dots[current].classList.add("is-on");
 		capName.textContent = CAPTIONS[current];
-		capNum.textContent =
-			(current + 1 < 10 ? "0" : "") + (current + 1) + " / 06";
+		capNum.textContent = `${(current + 1 < 10 ? "0" : "") + (current + 1)} / 06`;
 	}
 
 	/* ============ TOUCH / REDUCED-MOTION: auto cycle ============ */
 	if (coarse || reduce) {
-		var auto = setInterval(function () {
+		var _auto = setInterval(() => {
 			setImage(current + 1);
 		}, 1800);
 		if (reduce && !coarse) {
@@ -105,7 +101,7 @@
 	var THRESHOLD = 70;
 	var overInteractive = false;
 
-	document.addEventListener("mousemove", function (e) {
+	document.addEventListener("mousemove", (e) => {
 		pointer.x = e.clientX;
 		pointer.y = e.clientY;
 
@@ -151,8 +147,8 @@
 		}
 	});
 
-	hero.addEventListener("mouseleave", function () {
-		chars.forEach(function (c) {
+	hero.addEventListener("mouseleave", () => {
+		chars.forEach((c) => {
 			c.style.transform = "translate(0,0)";
 		});
 	});
@@ -166,8 +162,8 @@
 
 	/* ---- ring follows instantly ---- */
 	function moveRing() {
-		ring.style.left = pointer.x + "px";
-		ring.style.top = pointer.y + "px";
+		ring.style.left = `${pointer.x}px`;
+		ring.style.top = `${pointer.y}px`;
 	}
 
 	/* ---- card lerps with inertia + velocity skew ---- */

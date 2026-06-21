@@ -1,18 +1,17 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- mobile menu ---- */
 	var burger = document.getElementById("hamburger");
 	var sheet = document.getElementById("mobileSheet");
 	if (burger && sheet) {
-		burger.addEventListener("click", function () {
+		burger.addEventListener("click", () => {
 			var open = sheet.classList.toggle("open");
 			burger.classList.toggle("open", open);
 			burger.setAttribute("aria-expanded", open);
 		});
-		sheet.querySelectorAll("a").forEach(function (a) {
-			a.addEventListener("click", function () {
+		sheet.querySelectorAll("a").forEach((a) => {
+			a.addEventListener("click", () => {
 				sheet.classList.remove("open");
 				burger.classList.remove("open");
 				burger.setAttribute("aria-expanded", "false");
@@ -23,13 +22,13 @@
 	/* ---- reveal on scroll ---- */
 	var revealEls = document.querySelectorAll(".reveal, .reveal-s");
 	if (reduce) {
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						io.unobserve(e.target);
@@ -38,7 +37,7 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
 		);
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -61,7 +60,7 @@
 		function step(ts) {
 			if (!start) start = ts;
 			var p = Math.min((ts - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - p, 3);
+			var eased = 1 - (1 - p) ** 3;
 			el.textContent = fmt(target * eased);
 			if (p < 1) requestAnimationFrame(step);
 			else el.textContent = fmt(target);
@@ -71,8 +70,8 @@
 
 	var counters = document.querySelectorAll(".counter");
 	var cio = new IntersectionObserver(
-		function (entries) {
-			entries.forEach(function (e) {
+		(entries) => {
+			entries.forEach((e) => {
 				if (e.isIntersecting) {
 					animateCount(e.target);
 					cio.unobserve(e.target);
@@ -81,7 +80,7 @@
 		},
 		{ threshold: 0.4 },
 	);
-	counters.forEach(function (c) {
+	counters.forEach((c) => {
 		cio.observe(c);
 	});
 
@@ -95,14 +94,14 @@
 	}
 	if (console_) {
 		var conIo = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						console_.classList.add("in");
 						if (chartLine && !reduce) {
 							chartLine.style.transition =
 								"stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1) .3s";
-							requestAnimationFrame(function () {
+							requestAnimationFrame(() => {
 								chartLine.style.strokeDashoffset = 0;
 							});
 						}

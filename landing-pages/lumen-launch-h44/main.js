@@ -1,7 +1,5 @@
 /* ===== LUMEN LAUNCH — interactions ===== */
-(function () {
-	"use strict";
-
+(() => {
 	/* ---- brand logos (inline SVG, duplicated for seamless marquee) ---- */
 	var LOGOS = [
 		[
@@ -35,7 +33,7 @@
 	];
 
 	function logoItem(l) {
-		return '<div class="item">' + l[1] + "<span>" + l[0] + "</span></div>";
+		return `<div class="item">${l[1]}<span>${l[0]}</span></div>`;
 	}
 	var marquee = document.getElementById("logoMarquee");
 	if (marquee) {
@@ -104,13 +102,13 @@
 	var burger = document.getElementById("burger");
 	var menu = document.getElementById("mobileMenu");
 	if (burger && menu) {
-		burger.addEventListener("click", function () {
+		burger.addEventListener("click", () => {
 			var open = burger.classList.toggle("open");
 			menu.classList.toggle("open", open);
 			burger.setAttribute("aria-expanded", open ? "true" : "false");
 		});
-		menu.querySelectorAll("a").forEach(function (a) {
-			a.addEventListener("click", function () {
+		menu.querySelectorAll("a").forEach((a) => {
+			a.addEventListener("click", () => {
 				burger.classList.remove("open");
 				menu.classList.remove("open");
 				burger.setAttribute("aria-expanded", "false");
@@ -119,12 +117,12 @@
 	}
 
 	/* ---- FAQ accordion ---- */
-	document.querySelectorAll(".faq-item").forEach(function (item) {
+	document.querySelectorAll(".faq-item").forEach((item) => {
 		var q = item.querySelector(".faq-q");
 		var a = item.querySelector(".faq-a");
-		q.addEventListener("click", function () {
+		q.addEventListener("click", () => {
 			var open = item.classList.toggle("open");
-			a.style.maxHeight = open ? a.scrollHeight + "px" : "0px";
+			a.style.maxHeight = open ? `${a.scrollHeight}px` : "0px";
 		});
 	});
 
@@ -133,11 +131,11 @@
 	var labM = document.getElementById("labM");
 	var labY = document.getElementById("labY");
 	if (sw) {
-		sw.addEventListener("click", function () {
+		sw.addEventListener("click", () => {
 			var year = sw.classList.toggle("year");
 			labM.classList.toggle("on", !year);
 			labY.classList.toggle("on", year);
-			document.querySelectorAll(".price span[data-m]").forEach(function (el) {
+			document.querySelectorAll(".price span[data-m]").forEach((el) => {
 				el.textContent = year
 					? el.getAttribute("data-y")
 					: el.getAttribute("data-m");
@@ -149,17 +147,17 @@
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	var reveals = document.querySelectorAll(".reveal");
 	if (reduce || !("IntersectionObserver" in window)) {
-		reveals.forEach(function (r) {
+		reveals.forEach((r) => {
 			r.classList.add("show");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e, i) {
+			(entries) => {
+				entries.forEach((e, i) => {
 					if (e.isIntersecting) {
 						var el = e.target;
 						setTimeout(
-							function () {
+							() => {
 								el.classList.add("show");
 							},
 							Math.min(i * 70, 240),
@@ -170,7 +168,7 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
-		reveals.forEach(function (r) {
+		reveals.forEach((r) => {
 			io.observe(r);
 		});
 	}

@@ -1,8 +1,7 @@
 /* ============================================================
    COBALT BENTO FOLIO — interactions
    ============================================================ */
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- Staggered panel reveal ---- */
@@ -11,11 +10,11 @@
 	);
 	if ("IntersectionObserver" in window && !reduce) {
 		var revObs = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						var i = reveals.indexOf(e.target);
-						e.target.style.transitionDelay = Math.min((i % 4) * 80, 240) + "ms";
+						e.target.style.transitionDelay = `${Math.min((i % 4) * 80, 240)}ms`;
 						e.target.classList.add("in");
 						revObs.unobserve(e.target);
 					}
@@ -23,11 +22,11 @@
 			},
 			{ threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
 		);
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			revObs.observe(el);
 		});
 	} else {
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			el.classList.add("in");
 		});
 	}
@@ -37,20 +36,19 @@
 	var ring = hero ? hero.querySelector(".hero-ring") : null;
 	var spec = document.getElementById("spec");
 	if (hero && !reduce) {
-		hero.addEventListener("pointermove", function (ev) {
+		hero.addEventListener("pointermove", (ev) => {
 			var r = hero.getBoundingClientRect();
 			var px = (ev.clientX - r.left) / r.width;
 			var py = (ev.clientY - r.top) / r.height;
 			if (spec) {
-				spec.style.setProperty("--mx", px * 100 + "%");
-				spec.style.setProperty("--my", py * 100 + "%");
+				spec.style.setProperty("--mx", `${px * 100}%`);
+				spec.style.setProperty("--my", `${py * 100}%`);
 			}
 			if (ring) {
-				ring.style.transform =
-					"translate(" + (px - 0.5) * 22 + "px," + (py - 0.5) * 22 + "px)";
+				ring.style.transform = `translate(${(px - 0.5) * 22}px,${(py - 0.5) * 22}px)`;
 			}
 		});
-		hero.addEventListener("pointerleave", function () {
+		hero.addEventListener("pointerleave", () => {
 			if (ring) ring.style.transform = "";
 		});
 	}
@@ -115,15 +113,15 @@
 				(function step(t) {
 					if (s === null) s = t;
 					var p = Math.min((t - s) / 1400, 1);
-					ringNum.textContent = Math.round(p * 92) + "%";
+					ringNum.textContent = `${Math.round(p * 92)}%`;
 					if (p < 1) requestAnimationFrame(step);
 				})(performance.now());
 			}
 		}
 		if ("IntersectionObserver" in window && ringPanel) {
 			var ro = new IntersectionObserver(
-				function (es) {
-					es.forEach(function (e) {
+				(es) => {
+					es.forEach((e) => {
 						if (e.isIntersecting) {
 							fillRing();
 							ro.disconnect();
@@ -143,7 +141,7 @@
 	if (stats) {
 		var nums = Array.prototype.slice.call(stats.querySelectorAll("[data-to]"));
 		function runCounts() {
-			nums.forEach(function (n) {
+			nums.forEach((n) => {
 				var to = parseInt(n.getAttribute("data-to"), 10);
 				if (reduce) {
 					n.textContent = to;
@@ -154,7 +152,7 @@
 				(function step(t) {
 					if (s === null) s = t;
 					var p = Math.min((t - s) / dur, 1);
-					var eased = 1 - Math.pow(1 - p, 3);
+					var eased = 1 - (1 - p) ** 3;
 					n.textContent = Math.round(eased * to);
 					if (p < 1) requestAnimationFrame(step);
 				})(performance.now());
@@ -162,8 +160,8 @@
 		}
 		if ("IntersectionObserver" in window) {
 			var so = new IntersectionObserver(
-				function (es) {
-					es.forEach(function (e) {
+				(es) => {
+					es.forEach((e) => {
 						if (e.isIntersecting) {
 							runCounts();
 							so.disconnect();
@@ -182,18 +180,18 @@
 	var navLinks = Array.prototype.slice.call(
 		document.querySelectorAll(".nav-pill a"),
 	);
-	var sections = ["work", "about", "stack", "contact"].map(function (id) {
-		return document.getElementById(id);
-	});
+	var sections = ["work", "about", "stack", "contact"].map((id) =>
+		document.getElementById(id),
+	);
 	if ("IntersectionObserver" in window) {
 		var spy = new IntersectionObserver(
-			function (es) {
-				es.forEach(function (e) {
+			(es) => {
+				es.forEach((e) => {
 					if (e.isIntersecting) {
-						navLinks.forEach(function (a) {
+						navLinks.forEach((a) => {
 							a.classList.toggle(
 								"active",
-								a.getAttribute("href") === "#" + e.target.id,
+								a.getAttribute("href") === `#${e.target.id}`,
 							);
 						});
 					}
@@ -201,7 +199,7 @@
 			},
 			{ threshold: 0.4, rootMargin: "-20% 0px -50% 0px" },
 		);
-		sections.forEach(function (s) {
+		sections.forEach((s) => {
 			if (s) spy.observe(s);
 		});
 	}
@@ -211,15 +209,15 @@
 	var open = document.getElementById("open-sheet");
 	var close = document.getElementById("close-sheet");
 	if (open)
-		open.addEventListener("click", function () {
+		open.addEventListener("click", () => {
 			sheet.classList.add("open");
 		});
 	if (close)
-		close.addEventListener("click", function () {
+		close.addEventListener("click", () => {
 			sheet.classList.remove("open");
 		});
-	document.querySelectorAll("[data-sheet]").forEach(function (a) {
-		a.addEventListener("click", function () {
+	document.querySelectorAll("[data-sheet]").forEach((a) => {
+		a.addEventListener("click", () => {
 			sheet.classList.remove("open");
 		});
 	});
@@ -227,7 +225,7 @@
 	/* ---- FAB ---- */
 	var fab = document.getElementById("fab");
 	if (fab)
-		fab.addEventListener("click", function () {
+		fab.addEventListener("click", () => {
 			var c = document.getElementById("contact");
 			if (c) c.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
 		});
@@ -241,13 +239,13 @@
 		function clearErr(id) {
 			document.getElementById(id).classList.remove("err");
 		}
-		["name", "email", "message"].forEach(function (id) {
+		["name", "email", "message"].forEach((id) => {
 			var input = document.getElementById(id);
-			input.addEventListener("input", function () {
-				clearErr("f-" + id);
+			input.addEventListener("input", () => {
+				clearErr(`f-${id}`);
 			});
 		});
-		form.addEventListener("submit", function (e) {
+		form.addEventListener("submit", (e) => {
 			e.preventDefault();
 			var ok = true;
 			var name = document.getElementById("name").value.trim();

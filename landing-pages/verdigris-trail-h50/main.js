@@ -1,7 +1,5 @@
 // Verdigris Trail — scroll reveals + animated stat counters
-(function () {
-	"use strict";
-
+(() => {
 	var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	// ---- Scroll reveal ----
@@ -10,13 +8,13 @@
 	);
 
 	if (reduced || !("IntersectionObserver" in window)) {
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			el.classList.add("is-visible");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (entry) {
+			(entries) => {
+				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						entry.target.classList.add("is-visible");
 						io.unobserve(entry.target);
@@ -27,19 +25,18 @@
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
 
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			io.observe(el);
 		});
 	}
 
 	// ---- Animated number counters ----
 	function maybeCount(scope) {
-		var nums =
-			scope.matches && scope.matches(".stat")
-				? [scope.querySelector("[data-count]")].filter(Boolean)
-				: scope.querySelectorAll
-					? Array.prototype.slice.call(scope.querySelectorAll("[data-count]"))
-					: [];
+		var nums = scope.matches?.(".stat")
+			? [scope.querySelector("[data-count]")].filter(Boolean)
+			: scope.querySelectorAll
+				? Array.prototype.slice.call(scope.querySelectorAll("[data-count]"))
+				: [];
 		nums.forEach(animateCount);
 	}
 
@@ -55,7 +52,7 @@
 		var dur = 1400;
 		function step(now) {
 			var t = Math.min((now - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - t, 3);
+			var eased = 1 - (1 - t) ** 3;
 			el.textContent = Math.round(target * eased);
 			if (t < 1) requestAnimationFrame(step);
 		}
@@ -74,7 +71,7 @@
 	var lastShadow = false;
 	window.addEventListener(
 		"scroll",
-		function () {
+		() => {
 			var on = window.scrollY > 24;
 			if (on !== lastShadow) {
 				header.style.background = on ? "rgba(236,243,229,0.86)" : "transparent";

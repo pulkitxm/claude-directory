@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			const d = Math.max(r.width, r.height);
 			const s = document.createElement("span");
 			s.className = "ripple";
-			s.style.width = s.style.height = d + "px";
-			s.style.left = e.clientX - r.left - d / 2 + "px";
-			s.style.top = e.clientY - r.top - d / 2 + "px";
+			s.style.width = s.style.height = `${d}px`;
+			s.style.left = `${e.clientX - r.left - d / 2}px`;
+			s.style.top = `${e.clientY - r.top - d / 2}px`;
 			const old = btn.querySelector(".ripple");
 			if (old) old.remove();
 			btn.appendChild(s);
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		aiNode.addEventListener("click", () => {
 			aiBar.style.width = "0%";
 			setTimeout(() => {
-				aiBar.style.width = 60 + Math.floor(Math.random() * 40) + "%";
+				aiBar.style.width = `${60 + Math.floor(Math.random() * 40)}%`;
 			}, 120);
 		});
 	}

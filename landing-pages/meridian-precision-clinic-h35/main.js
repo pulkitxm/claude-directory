@@ -1,7 +1,5 @@
 /* ===== MERIDIAN — interactions ===== */
-(function () {
-	"use strict";
-
+(() => {
 	var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- Header: solid + over-dark state ---- */
@@ -35,10 +33,10 @@
 		var one = document.createElement("span");
 		one.className = "marquee__set";
 		one.style.display = "flex";
-		phrases.forEach(function (p) {
+		phrases.forEach((p) => {
 			var item = document.createElement("span");
 			item.className = "marquee__item";
-			item.innerHTML = p + '<span class="diamond"></span>';
+			item.innerHTML = `${p}<span class="diamond"></span>`;
 			one.appendChild(item);
 		});
 		track.appendChild(one);
@@ -50,13 +48,13 @@
 		document.querySelectorAll("[data-reveal]"),
 	);
 	if (reduced || !("IntersectionObserver" in window)) {
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						io.unobserve(e.target);
@@ -65,14 +63,14 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
 		);
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			io.observe(el);
 		});
 	}
 
 	/* ---- Smooth anchor scrolling ---- */
-	document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-		a.addEventListener("click", function (ev) {
+	document.querySelectorAll('a[href^="#"]').forEach((a) => {
+		a.addEventListener("click", (ev) => {
 			var id = a.getAttribute("href");
 			if (id === "#" || id.length < 2) return;
 			var target = document.querySelector(id);
@@ -87,7 +85,7 @@
 	var form = document.getElementById("form");
 	var ok = document.getElementById("formOk");
 	if (form) {
-		form.addEventListener("submit", function (ev) {
+		form.addEventListener("submit", (ev) => {
 			ev.preventDefault();
 			var name = form.querySelector('[name="name"]').value.trim();
 			var email = form.querySelector('[name="email"]').value.trim();

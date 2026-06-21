@@ -1,7 +1,5 @@
 /* MONOGRAM TERMINAL — interactions */
-(function () {
-	"use strict";
-
+(() => {
 	const reducedMotion = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
 	).matches;
@@ -82,16 +80,14 @@
 			timer = null;
 		}
 
-		prev &&
-			prev.addEventListener("click", () => {
-				show(idx - 1);
-				start();
-			});
-		next &&
-			next.addEventListener("click", () => {
-				show(idx + 1);
-				start();
-			});
+		prev?.addEventListener("click", () => {
+			show(idx - 1);
+			start();
+		});
+		next?.addEventListener("click", () => {
+			show(idx + 1);
+			start();
+		});
 		dots.forEach((d) =>
 			d.addEventListener("click", () => {
 				show(parseInt(d.dataset.index, 10));

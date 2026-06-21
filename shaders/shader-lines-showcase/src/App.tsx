@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
 	ArrowUpRight,
 	Box,
@@ -9,8 +8,9 @@ import {
 	Terminal,
 	Waypoints,
 } from "lucide-react";
-import { ShaderAnimation } from "@/components/ui/shader-lines";
+import { useEffect, useState } from "react";
 import { CodeBlock } from "@/components/code-block";
+import { ShaderAnimation } from "@/components/ui/shader-lines";
 import {
 	COMPONENT_TSX,
 	FRAGMENT_GLSL,

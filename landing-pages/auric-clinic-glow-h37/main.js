@@ -1,6 +1,5 @@
 // ===== Auric — interactions =====
-(function () {
-	"use strict";
+(() => {
 	const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	// Hero word stagger + reveal trigger on load
@@ -8,7 +7,7 @@
 		document.body.classList.add("loaded");
 		const words = document.querySelectorAll(".hero__title .w");
 		words.forEach((w, i) => {
-			w.style.transitionDelay = 0.12 + i * 0.06 + "s";
+			w.style.transitionDelay = `${0.12 + i * 0.06}s`;
 		});
 		// Stagger the hero reveal items
 		document.querySelectorAll(".hero .reveal").forEach((el, i) => {
@@ -72,7 +71,7 @@
 			t0 = performance.now();
 		function tick(now) {
 			const p = Math.min(1, (now - t0) / dur);
-			const eased = 1 - Math.pow(1 - p, 3);
+			const eased = 1 - (1 - p) ** 3;
 			el.textContent = Math.round(to * eased);
 			if (p < 1) requestAnimationFrame(tick);
 		}

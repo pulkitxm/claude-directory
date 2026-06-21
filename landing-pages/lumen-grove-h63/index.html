@@ -581,7 +581,7 @@
 </footer>
 
 <script>
-(function () {
+(() => {
   // ---- marquee build (duplicated for seamless loop) ----
   var tiles = [
     { src: "assets/img/g1.jpg", w: 320, h: 380 },
@@ -592,11 +592,11 @@
   ];
   var track = document.getElementById("mqTrack");
   function buildSet() {
-    tiles.forEach(function (t, i) {
+    tiles.forEach((t, i) => {
       var d = document.createElement("div");
       d.className = "tile";
-      d.style.width = t.w + "px";
-      d.style.height = t.h + "px";
+      d.style.width = `${t.w}px`;
+      d.style.height = `${t.h}px`;
       d.style.alignSelf = i % 2 === 0 ? "flex-start" : "flex-end";
       var img = document.createElement("img");
       img.src = t.src; img.alt = ""; img.loading = "lazy";
@@ -607,47 +607,47 @@
   buildSet(); buildSet();
 
   // ---- reveal observer ----
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
+  var io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
       if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  document.querySelectorAll(".reveal").forEach((el) => { io.observe(el); });
 
   // ---- accordion + image tabs ----
   var items = document.querySelectorAll(".acc-item");
   var imgs = document.querySelectorAll(".acc-img");
-  items.forEach(function (item) {
-    item.addEventListener("click", function () {
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
       var i = item.getAttribute("data-i");
-      items.forEach(function (x) { x.classList.remove("active"); });
-      imgs.forEach(function (x) { x.classList.remove("active"); });
+      items.forEach((x) => { x.classList.remove("active"); });
+      imgs.forEach((x) => { x.classList.remove("active"); });
       item.classList.add("active");
-      var target = document.querySelector('.acc-img[data-i="' + i + '"]');
+      var target = document.querySelector(`.acc-img[data-i="${i}"]`);
       if (target) target.classList.add("active");
     });
   });
 
   // ---- mobile menu ----
   var menu = document.getElementById("mMenu");
-  document.getElementById("burger").addEventListener("click", function () { menu.classList.add("open"); });
-  document.getElementById("mClose").addEventListener("click", function () { menu.classList.remove("open"); });
-  menu.querySelectorAll("a").forEach(function (a) {
-    a.addEventListener("click", function () { menu.classList.remove("open"); });
+  document.getElementById("burger").addEventListener("click", () => { menu.classList.add("open"); });
+  document.getElementById("mClose").addEventListener("click", () => { menu.classList.remove("open"); });
+  menu.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => { menu.classList.remove("open"); });
   });
 
   // ---- custom cursor ----
   var cursor = document.getElementById("cursor");
   var cx = window.innerWidth / 2, cy = window.innerHeight / 2, tx = cx, ty = cy;
-  window.addEventListener("mousemove", function (e) { tx = e.clientX; ty = e.clientY; });
+  window.addEventListener("mousemove", (e) => { tx = e.clientX; ty = e.clientY; });
   (function raf() {
     cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
-    cursor.style.transform = "translate(" + cx + "px," + cy + "px) translate(-50%,-50%)";
+    cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
     requestAnimationFrame(raf);
   })();
-  document.querySelectorAll("[data-cursor], a, button").forEach(function (el) {
-    el.addEventListener("mouseenter", function () { cursor.classList.add("big"); });
-    el.addEventListener("mouseleave", function () { cursor.classList.remove("big"); });
+  document.querySelectorAll("[data-cursor], a, button").forEach((el) => {
+    el.addEventListener("mouseenter", () => { cursor.classList.add("big"); });
+    el.addEventListener("mouseleave", () => { cursor.classList.remove("big"); });
   });
 })();
 </script>

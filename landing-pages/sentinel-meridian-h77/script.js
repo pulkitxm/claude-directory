@@ -1,5 +1,4 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- Nav scroll state ---- */
@@ -14,12 +13,12 @@
 	/* ---- Mobile drawer ---- */
 	var menuBtn = document.getElementById("navMenu");
 	var drawer = document.getElementById("navDrawer");
-	menuBtn.addEventListener("click", function () {
+	menuBtn.addEventListener("click", () => {
 		var open = drawer.classList.toggle("open");
 		menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
 	});
-	drawer.querySelectorAll("a").forEach(function (a) {
-		a.addEventListener("click", function () {
+	drawer.querySelectorAll("a").forEach((a) => {
+		a.addEventListener("click", () => {
 			drawer.classList.remove("open");
 			menuBtn.setAttribute("aria-expanded", "false");
 		});
@@ -28,7 +27,7 @@
 	/* ---- Live UTC clock ---- */
 	var utcEl = document.getElementById("utc");
 	function pad(n) {
-		return n < 10 ? "0" + n : "" + n;
+		return n < 10 ? `0${n}` : `${n}`;
 	}
 	function tick() {
 		var d = new Date();
@@ -47,13 +46,12 @@
 	var heroImg = document.getElementById("heroImg");
 	var hero = document.getElementById("hero");
 	if (!reduce && heroImg && hero) {
-		hero.addEventListener("mousemove", function (e) {
+		hero.addEventListener("mousemove", (e) => {
 			var mx = (e.clientX / window.innerWidth - 0.5) * 16;
 			var my = (e.clientY / window.innerHeight - 0.5) * 16;
-			heroImg.style.transform =
-				"scale(1.06) translate(" + mx + "px," + my + "px)";
+			heroImg.style.transform = `scale(1.06) translate(${mx}px,${my}px)`;
 		});
-		hero.addEventListener("mouseleave", function () {
+		hero.addEventListener("mouseleave", () => {
 			heroImg.style.transform = "scale(1)";
 		});
 	}
@@ -90,14 +88,14 @@
 
 	/* ---- Scroll reveal ---- */
 	var io = new IntersectionObserver(
-		function (entries) {
-			entries.forEach(function (en) {
+		(entries) => {
+			entries.forEach((en) => {
 				if (!en.isIntersecting) return;
 				var el = en.target;
 				if (el.classList.contains("stagger")) {
 					var kids = el.children;
 					for (var i = 0; i < kids.length; i++) {
-						kids[i].style.transitionDelay = i * 0.12 + "s";
+						kids[i].style.transitionDelay = `${i * 0.12}s`;
 					}
 				}
 				el.classList.add("in");
@@ -107,7 +105,7 @@
 		{ threshold: 0.16, rootMargin: "0px 0px -40px 0px" },
 	);
 
-	document.querySelectorAll(".reveal, .stagger").forEach(function (el) {
+	document.querySelectorAll(".reveal, .stagger").forEach((el) => {
 		io.observe(el);
 	});
 
@@ -125,15 +123,15 @@
 		function frame(t) {
 			if (!start) start = t;
 			var p = Math.min((t - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - p, 3);
+			var eased = 1 - (1 - p) ** 3;
 			el.textContent = prefix + Math.round(target * eased) + suffix;
 			if (p < 1) requestAnimationFrame(frame);
 		}
 		requestAnimationFrame(frame);
 	}
 	var statIO = new IntersectionObserver(
-		function (entries) {
-			entries.forEach(function (en) {
+		(entries) => {
+			entries.forEach((en) => {
 				if (!en.isIntersecting) return;
 				animateStat(en.target);
 				statIO.unobserve(en.target);
@@ -141,7 +139,7 @@
 		},
 		{ threshold: 0.6 },
 	);
-	document.querySelectorAll(".stat__num[data-count]").forEach(function (el) {
+	document.querySelectorAll(".stat__num[data-count]").forEach((el) => {
 		statIO.observe(el);
 	});
 })();

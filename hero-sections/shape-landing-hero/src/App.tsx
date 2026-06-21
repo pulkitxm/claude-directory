@@ -1,9 +1,9 @@
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import Playground from "@/components/Playground";
 import Features from "@/components/Features";
-import InstallBand from "@/components/InstallBand";
 import Footer from "@/components/Footer";
+import HeroSection from "@/components/HeroSection";
+import InstallBand from "@/components/InstallBand";
+import Navbar from "@/components/Navbar";
+import Playground from "@/components/Playground";
 
 export default function App() {
 	return (

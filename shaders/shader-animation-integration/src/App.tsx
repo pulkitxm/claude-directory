@@ -1,7 +1,7 @@
 import {
 	ArrowRight,
-	Boxes,
 	Box,
+	Boxes,
 	Cpu,
 	FileCode2,
 	FolderTree,
@@ -15,12 +15,11 @@ import {
 	TerminalSquare,
 	Waypoints,
 } from "lucide-react";
-
+import { CodeBlock } from "@/components/code-block";
+import DemoOne from "@/components/demo";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ShaderAnimation } from "@/components/ui/shader-animation";
-import { CodeBlock } from "@/components/code-block";
-import DemoOne from "@/components/demo";
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
