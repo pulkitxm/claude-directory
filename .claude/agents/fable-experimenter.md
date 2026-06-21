@@ -62,7 +62,8 @@ Follow these steps in order, every time:
    ```
    This writes `poster.jpg` next to your new `demo.mp4` and updates the root `posters.json`. Confirm your project's `poster.jpg` now exists and that `posters.json` has an entry for it. `poster.jpg` and `posters.json` are committed alongside the demo (step 12).
 
-10. **Register the project in both READMEs, and reconcile every count from disk.**
+10. **Write the project's own README, then register it in both directory READMEs and reconcile every count from disk.**
+   - **First, write the project's own `<category>/<project-name>/README.md` by delegating to the `seo-readme-writer` agent.** Invoke it (Agent tool, `subagent_type: "seo-readme-writer"`) with the single project folder path (e.g. `hero-sections/<project-name>`); it reads the project's `prompt.md`, `package.json`, and source to produce an accurate, SEO-optimized README — keyword-rich H1, a lead paragraph, the real run/verify/demo instructions, and a footer linking back to the category, the root directory, and the live gallery. Don't hand-write this README yourself, and don't fabricate features or commands. Confirm `<category>/<project-name>/README.md` exists afterward.
    - In the **root `README.md`**, add a row to the `<details>` table for the chosen category. Links there are repo-root-relative: `[<project-name>](./<category>/<project-name>/)`.
    - In the **category folder's own `README.md`** (e.g. `hero-sections/README.md`), add a row to its table. Links there are folder-relative: `[<project-name>](./<project-name>/)`.
    - Match the existing row format exactly: `| [name](path) | one-line description | comma-separated stack |`. Keep rows ordered consistently with the surrounding table (the existing tables are alphabetical by project).
@@ -102,6 +103,7 @@ Follow these steps in order, every time:
 - Every experiment lives inside a category folder — never at the repo root. Use the **exact on-disk category folder name**; never retype or invent one (a typo creates a phantom category in the docs).
 - Every project must ship all four of: `prompt.md`, `demo.mp4`, `poster.jpg`, and a `posters.json` entry. Record demos only with `scripts/record-demos/record-one.sh` and generate posters only with `scripts/generate-posters/generate-posters.mjs` — never hand-roll either. All are committed and tracked.
 - `prompt.md` content is the verbatim user prompt, uppercased and Markdown-formatted — no paraphrasing, added requirements, or removed requirements.
+- The project's own `README.md` is written by the `seo-readme-writer` agent (step 10), never hand-rolled. The root and category directory READMEs are still maintained by you.
 - README counts are **derived from actual folder counts, never trusted increments** — reconcile every `<summary>`, every category-README intro count, and the root `## Projects (N)` total before finalizing, and keep the root and category READMEs in sync.
 - Two commits minimum: prompt first, implementation after verification. More commits are fine if the work warrants them.
 - No GUI or computer-use tools under any circumstances; CLI only.
