@@ -422,6 +422,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [synapse-design-system](./templates/synapse-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Inter |
 | [terroir-tasting-room](./templates/terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
+| [sidefolio-portfolio-template](./templates/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
 
 </details>
 
@@ -433,6 +434,5 @@ Same-to-same clones of existing UI templates and real-world website designs, reb
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [productized-agency-aceternity](./studies/productized-agency-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
-| [sidefolio-portfolio-template](./studies/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
 
 </details>
