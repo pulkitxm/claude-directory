@@ -1,17 +1,16 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- Scroll reveal ---- */
 	var revealEls = document.querySelectorAll(".reveal");
 	if (reduce) {
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						io.unobserve(e.target);
@@ -20,16 +19,16 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			io.observe(el);
 		});
 	}
 
 	/* ---- Hero load-in (reveals fire immediately at top) ---- */
-	window.addEventListener("load", function () {
+	window.addEventListener("load", () => {
 		document
 			.querySelectorAll(".hero .reveal, .hero-panel.reveal")
-			.forEach(function (el) {
+			.forEach((el) => {
 				el.classList.add("in");
 			});
 	});
@@ -49,7 +48,7 @@
 			sy = 0,
 			raf = null;
 		function apply() {
-			cards.forEach(function (c) {
+			cards.forEach((c) => {
 				var d = parseFloat(c.getAttribute("data-depth")) || 12;
 				var f = d / 40;
 				c.style.transform =
@@ -64,20 +63,20 @@
 		function schedule() {
 			if (!raf) raf = requestAnimationFrame(apply);
 		}
-		panel.addEventListener("mousemove", function (ev) {
+		panel.addEventListener("mousemove", (ev) => {
 			var r = panel.getBoundingClientRect();
 			mx = ((ev.clientX - r.left) / r.width - 0.5) * 24;
 			my = ((ev.clientY - r.top) / r.height - 0.5) * 24;
 			schedule();
 		});
-		panel.addEventListener("mouseleave", function () {
+		panel.addEventListener("mouseleave", () => {
 			mx = 0;
 			my = 0;
 			schedule();
 		});
 		window.addEventListener(
 			"scroll",
-			function () {
+			() => {
 				var r = panel.getBoundingClientRect();
 				sy = (r.top + r.height / 2 - window.innerHeight / 2) / -20;
 				schedule();
@@ -86,8 +85,8 @@
 		);
 
 		/* hover lift via inline style flag */
-		cards.forEach(function (c) {
-			c.addEventListener("mouseenter", function () {
+		cards.forEach((c) => {
+			c.addEventListener("mouseenter", () => {
 				c.style.zIndex = 5;
 			});
 		});
@@ -107,7 +106,7 @@
 			dur = 1500;
 		function step(now) {
 			var p = Math.min((now - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - p, 3);
+			var eased = 1 - (1 - p) ** 3;
 			var v = Math.round(eased * target);
 			el.innerHTML = prefix + v.toLocaleString();
 			if (p < 1) requestAnimationFrame(step);
@@ -116,8 +115,8 @@
 	}
 	if (stats.length) {
 		var sio = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						animateCount(e.target);
 						sio.unobserve(e.target);
@@ -126,7 +125,7 @@
 			},
 			{ threshold: 0.5 },
 		);
-		stats.forEach(function (s) {
+		stats.forEach((s) => {
 			sio.observe(s);
 		});
 	}
@@ -140,19 +139,19 @@
 		document.body.style.overflow = "";
 	}
 	if (menuBtn)
-		menuBtn.addEventListener("click", function () {
+		menuBtn.addEventListener("click", () => {
 			menu.classList.add("open");
 			document.body.style.overflow = "hidden";
 		});
 	if (closeBtn) closeBtn.addEventListener("click", closeMenu);
-	menu.querySelectorAll("a").forEach(function (a) {
+	menu.querySelectorAll("a").forEach((a) => {
 		a.addEventListener("click", closeMenu);
 	});
 
 	/* ---- CTA form ---- */
 	var form = document.getElementById("ctaForm");
 	if (form) {
-		form.addEventListener("submit", function (ev) {
+		form.addEventListener("submit", (ev) => {
 			ev.preventDefault();
 			var email = document.getElementById("ctaEmail").value.trim();
 			if (!email) return;

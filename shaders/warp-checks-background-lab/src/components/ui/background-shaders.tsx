@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
 import { Warp } from "@paper-design/shaders-react";
-import { PROMPT_WARP, warpProps, type WarpConfig } from "@/lib/warp";
+import type { ReactNode } from "react";
+import { PROMPT_WARP, type WarpConfig, warpProps } from "@/lib/warp";
 
 /**
  * background-shaders.tsx — the brief's component, dropped into `@/components/ui`.

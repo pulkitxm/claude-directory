@@ -1,9 +1,7 @@
 /* ===========================================================
    Crimson Press Kit — interactions
    =========================================================== */
-(function () {
-	"use strict";
-
+(() => {
 	/* ---- generated noise texture (data URI) ---- */
 	function makeNoise(size, alpha) {
 		var c = document.createElement("canvas");
@@ -20,7 +18,7 @@
 	}
 
 	var root = document.documentElement;
-	root.style.setProperty("--noise", "url(" + makeNoise(140, 22) + ")");
+	root.style.setProperty("--noise", `url(${makeNoise(140, 22)})`);
 
 	/* ---- spiral binding coil (inline SVG data URI) ---- */
 	var coil =
@@ -31,7 +29,7 @@
 				'<ellipse cx="22" cy="20" rx="6" ry="5" fill="#000" opacity="0.55"/>' +
 				"</svg>",
 		);
-	root.style.setProperty("--coil", "url('" + coil + "')");
+	root.style.setProperty("--coil", `url('${coil}')`);
 
 	/* ---- collage grid ---- */
 	var collage = document.getElementById("collage");
@@ -40,11 +38,11 @@
 			var fig = document.createElement("div");
 			fig.className = "fig";
 			var img = document.createElement("img");
-			img.src = "./assets/img/fig-" + n + ".jpg";
-			img.alt = "Editorial figure " + n;
+			img.src = `./assets/img/fig-${n}.jpg`;
+			img.alt = `Editorial figure ${n}`;
 			img.loading = "lazy";
 			var tag = document.createElement("span");
-			tag.textContent = "FIG." + n;
+			tag.textContent = `FIG.${n}`;
 			fig.appendChild(img);
 			fig.appendChild(tag);
 			collage.appendChild(fig);
@@ -55,8 +53,8 @@
 	var pages = document.querySelectorAll(".page");
 	if ("IntersectionObserver" in window) {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in-view");
 						io.unobserve(e.target);
@@ -65,11 +63,11 @@
 			},
 			{ threshold: 0.12 },
 		);
-		pages.forEach(function (p) {
+		pages.forEach((p) => {
 			io.observe(p);
 		});
 	} else {
-		pages.forEach(function (p) {
+		pages.forEach((p) => {
 			p.classList.add("in-view");
 		});
 	}
@@ -78,8 +76,8 @@
 	if (cover) cover.classList.add("in-view");
 
 	/* ---- TOC smooth scroll ---- */
-	document.querySelectorAll(".toc-row").forEach(function (row) {
-		row.addEventListener("click", function () {
+	document.querySelectorAll(".toc-row").forEach((row) => {
+		row.addEventListener("click", () => {
 			var id = row.getAttribute("data-target");
 			var el = document.getElementById(id);
 			if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -90,13 +88,13 @@
 	var fab = document.getElementById("fab");
 	var contents = document.getElementById("contents");
 	if (fab) {
-		fab.addEventListener("click", function () {
+		fab.addEventListener("click", () => {
 			var target = contents || cover;
 			if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
 		});
 		window.addEventListener(
 			"scroll",
-			function () {
+			() => {
 				if (window.scrollY > 600) fab.classList.add("show");
 				else fab.classList.remove("show");
 			},
@@ -108,7 +106,7 @@
 	var form = document.getElementById("query-form");
 	var note = document.getElementById("q-note");
 	if (form) {
-		form.addEventListener("submit", function (e) {
+		form.addEventListener("submit", (e) => {
 			e.preventDefault();
 			var name = form.name.value.trim();
 			var email = form.email.value.trim();
@@ -120,7 +118,7 @@
 				note.textContent = "That email looks off.";
 				return;
 			}
-			note.textContent = "Sent — I'll be in touch, " + name + ".";
+			note.textContent = `Sent — I'll be in touch, ${name}.`;
 			form.reset();
 		});
 	}

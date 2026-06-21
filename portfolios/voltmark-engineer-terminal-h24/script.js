@@ -1,5 +1,4 @@
 (() => {
-	"use strict";
 	const reduceMotion = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
 	).matches;
@@ -64,11 +63,11 @@
 				const item = t.closest(".acc");
 				const content = t.nextElementSibling;
 				const isOpen = item.classList.toggle("open");
-				content.style.maxHeight = isOpen ? content.scrollHeight + "px" : null;
+				content.style.maxHeight = isOpen ? `${content.scrollHeight}px` : null;
 				if (isOpen) {
 					item
 						.querySelectorAll(".bar i")
-						.forEach((bar) => (bar.style.width = bar.dataset.w + "%"));
+						.forEach((bar) => (bar.style.width = `${bar.dataset.w}%`));
 				}
 			});
 		});
@@ -77,7 +76,7 @@
 				const item = t.closest(".faq-item");
 				const content = t.nextElementSibling;
 				const isOpen = item.classList.toggle("open");
-				content.style.maxHeight = isOpen ? content.scrollHeight + "px" : null;
+				content.style.maxHeight = isOpen ? `${content.scrollHeight}px` : null;
 			});
 		});
 
@@ -112,7 +111,7 @@
 					const start = performance.now();
 					const step = (now) => {
 						const p = Math.min((now - start) / dur, 1);
-						const eased = 1 - Math.pow(1 - p, 3);
+						const eased = 1 - (1 - p) ** 3;
 						el.textContent = Math.round(target * eased) + suffix;
 						if (p < 1) requestAnimationFrame(step);
 					};

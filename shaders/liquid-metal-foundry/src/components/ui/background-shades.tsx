@@ -1,6 +1,6 @@
 "use client";
 
-import { PulsingBorder, LiquidMetal } from "@paper-design/shaders-react";
+import { LiquidMetal } from "@paper-design/shaders-react";
 import { motion } from "framer-motion";
 
 export default function ShadersBackground() {

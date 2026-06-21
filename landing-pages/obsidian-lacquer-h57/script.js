@@ -1,6 +1,4 @@
 (() => {
-	"use strict";
-
 	document.addEventListener("DOMContentLoaded", () => {
 		/* ---------- Navbar scroll state ---------- */
 		const nav = document.getElementById("nav");
@@ -80,7 +78,7 @@
 			btnY.setAttribute("aria-pressed", yearly);
 			btnM.setAttribute("aria-pressed", !yearly);
 			vals.forEach((v) => {
-				v.textContent = "$" + (yearly ? v.dataset.yearly : v.dataset.monthly);
+				v.textContent = `$${yearly ? v.dataset.yearly : v.dataset.monthly}`;
 			});
 			pers.forEach((p) => (p.textContent = yearly ? "/yr" : "/mo"));
 			saves.forEach(

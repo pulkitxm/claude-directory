@@ -1,7 +1,5 @@
-(function () {
-	"use strict";
-
-	document.addEventListener("DOMContentLoaded", function () {
+(() => {
+	document.addEventListener("DOMContentLoaded", () => {
 		/* ---- Mobile menu ---- */
 		var menu = document.getElementById("mobileMenu");
 		var openBtn = document.getElementById("menuOpen");
@@ -12,15 +10,15 @@
 			document.body.style.overflow = open ? "hidden" : "";
 		}
 		if (openBtn)
-			openBtn.addEventListener("click", function () {
+			openBtn.addEventListener("click", () => {
 				setMenu(true);
 			});
 		if (closeBtn)
-			closeBtn.addEventListener("click", function () {
+			closeBtn.addEventListener("click", () => {
 				setMenu(false);
 			});
-		menu.querySelectorAll(".mm-nav a").forEach(function (a) {
-			a.addEventListener("click", function () {
+		menu.querySelectorAll(".mm-nav a").forEach((a) => {
+			a.addEventListener("click", () => {
 				setMenu(false);
 			});
 		});
@@ -29,13 +27,13 @@
 		var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 		var targets = document.querySelectorAll(".reveal, .reveal-text");
 		if (reduce || !("IntersectionObserver" in window)) {
-			targets.forEach(function (t) {
+			targets.forEach((t) => {
 				t.classList.add("is-in");
 			});
 		} else {
 			var io = new IntersectionObserver(
-				function (entries) {
-					entries.forEach(function (e) {
+				(entries) => {
+					entries.forEach((e) => {
 						if (e.isIntersecting) {
 							e.target.classList.add("is-in");
 							io.unobserve(e.target);
@@ -44,7 +42,7 @@
 				},
 				{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 			);
-			targets.forEach(function (t) {
+			targets.forEach((t) => {
 				io.observe(t);
 			});
 		}
@@ -58,10 +56,10 @@
 			return card ? card.getBoundingClientRect().width + 28 : 428;
 		}
 		if (track && prev && next) {
-			prev.addEventListener("click", function () {
+			prev.addEventListener("click", () => {
 				track.scrollBy({ left: -step(), behavior: "smooth" });
 			});
-			next.addEventListener("click", function () {
+			next.addEventListener("click", () => {
 				track.scrollBy({ left: step(), behavior: "smooth" });
 			});
 		}
@@ -73,8 +71,8 @@
 				stack.classList.add("fan");
 			} else {
 				var io2 = new IntersectionObserver(
-					function (entries) {
-						entries.forEach(function (e) {
+					(entries) => {
+						entries.forEach((e) => {
 							if (e.isIntersecting) {
 								stack.classList.add("fan");
 								io2.unobserve(e.target);

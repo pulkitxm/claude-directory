@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { spawn } from "node:child_process";
+import { setTimeout as sleep } from "node:timers/promises";
 /**
  * Headless verification for the LiquidMetal Foundry.
  *
@@ -20,8 +22,6 @@
  * Exits non-zero on any failure so it can gate CI / pre-commit.
  */
 import { chromium } from "playwright";
-import { spawn } from "node:child_process";
-import { setTimeout as sleep } from "node:timers/promises";
 
 const PORT = process.env.PORT || 5343;
 const URL = `http://localhost:${PORT}/`;
@@ -114,7 +114,7 @@ async function canvasSignature(page) {
 					resolve([Math.round(r / n), Math.round(g / n), Math.round(b / n)]);
 				};
 				img.onerror = () => resolve(null);
-				img.src = "data:image/png;base64," + data;
+				img.src = `data:image/png;base64,${data}`;
 			}),
 		b64,
 	);

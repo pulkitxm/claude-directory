@@ -1,13 +1,11 @@
 /* ============ OCHRE & STONE — interactions ============ */
-(function () {
-	"use strict";
-
+(() => {
 	/* ---- Scroll reveal ---- */
 	var revealEls = document.querySelectorAll("[data-reveal]");
 	if ("IntersectionObserver" in window) {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("is-in");
 						io.unobserve(e.target);
@@ -16,11 +14,11 @@
 			},
 			{ threshold: 0.12 },
 		);
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			io.observe(el);
 		});
 	} else {
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			el.classList.add("is-in");
 		});
 	}
@@ -54,12 +52,12 @@
 	var hcDesc = document.getElementById("hcDesc");
 
 	if (fade && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-		setInterval(function () {
+		setInterval(() => {
 			idx = (idx + 1) % slides.length;
 			var s = slides[idx];
 			fade.classList.add("out");
 			hcImg.style.opacity = "0";
-			setTimeout(function () {
+			setTimeout(() => {
 				hcTag.textContent = s.tag;
 				hcTitle.textContent = s.title;
 				hcDesc.textContent = s.desc;
@@ -75,19 +73,19 @@
 	var cards = document.querySelectorAll(".pcard");
 	if (stage && cards.length) {
 		var dropped = false;
-		var drop = function () {
+		var drop = () => {
 			if (dropped) return;
 			dropped = true;
-			cards.forEach(function (card, i) {
-				setTimeout(function () {
+			cards.forEach((card, i) => {
+				setTimeout(() => {
 					card.classList.add("dropped");
 				}, i * 150);
 			});
 		};
 		if ("IntersectionObserver" in window) {
 			var so = new IntersectionObserver(
-				function (entries) {
-					entries.forEach(function (e) {
+				(entries) => {
+					entries.forEach((e) => {
 						if (e.isIntersecting) {
 							drop();
 							so.unobserve(e.target);
@@ -106,18 +104,18 @@
 	var burger = document.getElementById("burger");
 	var menu = document.getElementById("mobileMenu");
 	var close = document.getElementById("mmClose");
-	var open = function () {
+	var open = () => {
 		menu.classList.add("open");
 		document.body.style.overflow = "hidden";
 	};
-	var shut = function () {
+	var shut = () => {
 		menu.classList.remove("open");
 		document.body.style.overflow = "";
 	};
 	if (burger) burger.addEventListener("click", open);
 	if (close) close.addEventListener("click", shut);
 	if (menu)
-		menu.querySelectorAll("a").forEach(function (a) {
+		menu.querySelectorAll("a").forEach((a) => {
 			a.addEventListener("click", shut);
 		});
 })();

@@ -1,8 +1,8 @@
 import { Braces } from "lucide-react";
+import { Glass, Kicker } from "@/components/lab/primitives";
+import { cn, fmt } from "@/lib/utils";
 import type { WarpConfig } from "@/lib/warp";
 import { PROMPT_WARP, parseHsl } from "@/lib/warp";
-import { cn, fmt } from "@/lib/utils";
-import { Glass, Kicker } from "@/components/lab/primitives";
 
 /** One row of the Warp prop reference. */
 interface PropRow {

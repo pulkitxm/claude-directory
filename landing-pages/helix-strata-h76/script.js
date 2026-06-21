@@ -1,16 +1,14 @@
-(function () {
-	"use strict";
-
+(() => {
 	/* ---- Mobile nav ---- */
 	var nav = document.getElementById("nav");
 	var toggle = document.getElementById("navToggle");
 	if (toggle) {
-		toggle.addEventListener("click", function () {
+		toggle.addEventListener("click", () => {
 			var open = nav.classList.toggle("open");
 			toggle.setAttribute("aria-expanded", open ? "true" : "false");
 		});
-		document.querySelectorAll("#mobilePanel a").forEach(function (a) {
-			a.addEventListener("click", function () {
+		document.querySelectorAll("#mobilePanel a").forEach((a) => {
+			a.addEventListener("click", () => {
 				nav.classList.remove("open");
 				toggle.setAttribute("aria-expanded", "false");
 			});
@@ -21,8 +19,8 @@
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	if (!reduce && "IntersectionObserver" in window) {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						io.unobserve(e.target);
@@ -31,11 +29,11 @@
 			},
 			{ threshold: 0.12 },
 		);
-		document.querySelectorAll(".reveal").forEach(function (el) {
+		document.querySelectorAll(".reveal").forEach((el) => {
 			io.observe(el);
 		});
 	} else {
-		document.querySelectorAll(".reveal").forEach(function (el) {
+		document.querySelectorAll(".reveal").forEach((el) => {
 			el.classList.add("in");
 		});
 	}
@@ -65,14 +63,14 @@
 	function activate(item) {
 		var key = item.getAttribute("data-svc");
 		if (!content[key] || item.classList.contains("active")) return;
-		items.forEach(function (i) {
+		items.forEach((i) => {
 			i.classList.remove("active");
 		});
 		item.classList.add("active");
 		svcImg.style.opacity = "0";
 		svcDesc.style.opacity = "0";
 		svcDesc.style.transform = "translateY(10px)";
-		setTimeout(function () {
+		setTimeout(() => {
 			svcImg.src = content[key].img;
 			svcDesc.textContent = content[key].desc;
 			svcImg.style.opacity = "1";
@@ -80,11 +78,11 @@
 			svcDesc.style.transform = "translateY(0)";
 		}, 280);
 	}
-	items.forEach(function (item) {
-		item.addEventListener("mouseenter", function () {
+	items.forEach((item) => {
+		item.addEventListener("mouseenter", () => {
 			activate(item);
 		});
-		item.addEventListener("click", function () {
+		item.addEventListener("click", () => {
 			activate(item);
 		});
 	});
@@ -118,15 +116,15 @@
 	var els = [tImg, tQuote, tName, tRole];
 	function render(i) {
 		var p = people[i];
-		els.forEach(function (el) {
+		els.forEach((el) => {
 			el.style.opacity = "0";
 		});
-		setTimeout(function () {
+		setTimeout(() => {
 			tImg.src = p.img;
 			tQuote.textContent = p.q;
 			tName.textContent = p.name;
 			tRole.textContent = p.role;
-			els.forEach(function (el) {
+			els.forEach((el) => {
 				el.style.opacity = "1";
 			});
 		}, 300);
@@ -134,11 +132,11 @@
 	var prev = document.getElementById("tPrev");
 	var next = document.getElementById("tNext");
 	if (prev && next) {
-		prev.addEventListener("click", function () {
+		prev.addEventListener("click", () => {
 			idx = (idx - 1 + people.length) % people.length;
 			render(idx);
 		});
-		next.addEventListener("click", function () {
+		next.addEventListener("click", () => {
 			idx = (idx + 1) % people.length;
 			render(idx);
 		});

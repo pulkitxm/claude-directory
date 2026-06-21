@@ -1,6 +1,4 @@
-(function () {
-	"use strict";
-
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---------- hero reveal on load ---------- */
@@ -20,8 +18,8 @@
 	var reveals = document.querySelectorAll(".reveal");
 	if ("IntersectionObserver" in window && !reduce) {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						io.unobserve(e.target);
@@ -30,11 +28,11 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			io.observe(el);
 		});
 	} else {
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			el.classList.add("in");
 		});
 	}
@@ -55,19 +53,19 @@
 		}
 	}
 	if (burger)
-		burger.addEventListener("click", function () {
+		burger.addEventListener("click", () => {
 			setMenu(true);
 		});
 	if (close)
-		close.addEventListener("click", function () {
+		close.addEventListener("click", () => {
 			setMenu(false);
 		});
-	menu.querySelectorAll("a").forEach(function (a) {
-		a.addEventListener("click", function () {
+	menu.querySelectorAll("a").forEach((a) => {
+		a.addEventListener("click", () => {
 			setMenu(false);
 		});
 	});
-	document.addEventListener("keydown", function (e) {
+	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape" && menu.classList.contains("open")) setMenu(false);
 	});
 
@@ -81,7 +79,7 @@
 			ty = cy,
 			shown = false;
 
-		window.addEventListener("mousemove", function (e) {
+		window.addEventListener("mousemove", (e) => {
 			tx = e.clientX;
 			ty = e.clientY;
 			if (!shown) {
@@ -89,7 +87,7 @@
 				cursor.style.opacity = "1";
 			}
 		});
-		window.addEventListener("mouseleave", function () {
+		window.addEventListener("mouseleave", () => {
 			cursor.style.opacity = "0";
 			shown = false;
 		});
@@ -97,17 +95,16 @@
 		function loop() {
 			cx += (tx - cx) * 0.2;
 			cy += (ty - cy) * 0.2;
-			cursor.style.transform =
-				"translate(" + cx + "px," + cy + "px) translate(-50%,-50%)";
+			cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
 			requestAnimationFrame(loop);
 		}
 		requestAnimationFrame(loop);
 
 		var hot = "a, button, input, select, .ritual";
-		document.addEventListener("mouseover", function (e) {
+		document.addEventListener("mouseover", (e) => {
 			if (e.target.closest(hot)) cursor.classList.add("active");
 		});
-		document.addEventListener("mouseout", function (e) {
+		document.addEventListener("mouseout", (e) => {
 			if (e.target.closest(hot)) cursor.classList.remove("active");
 		});
 	}

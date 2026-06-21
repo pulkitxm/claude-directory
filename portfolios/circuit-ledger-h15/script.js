@@ -1,13 +1,12 @@
-"use strict";
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ===== CIRCUIT CANVAS ===== */
-(function () {
+(() => {
 	const canvas = document.getElementById("circuit");
 	if (!canvas) return;
 	const ctx = canvas.getContext("2d");
-	let w,
-		h,
+	let _w,
+		_h,
 		runners = [],
 		bits = [],
 		dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -21,10 +20,10 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	];
 
 	function resize() {
-		w = canvas.width = Math.floor(innerWidth * dpr);
-		h = canvas.height = Math.floor(innerHeight * dpr);
-		canvas.style.width = innerWidth + "px";
-		canvas.style.height = innerHeight + "px";
+		_w = canvas.width = Math.floor(innerWidth * dpr);
+		_h = canvas.height = Math.floor(innerHeight * dpr);
+		canvas.style.width = `${innerWidth}px`;
+		canvas.style.height = `${innerHeight}px`;
 		ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 	}
 	const VW = () => innerWidth,
@@ -109,7 +108,7 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 			if (Math.random() < 0.01) this.v = this.v === "1" ? "0" : "1";
 		}
 		draw() {
-			ctx.fillStyle = "rgba(255,255,255," + this.o + ")";
+			ctx.fillStyle = `rgba(255,255,255,${this.o})`;
 			ctx.font = "10px monospace";
 			ctx.fillText(this.v, this.x, this.y);
 		}
@@ -200,7 +199,7 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 })();
 
 /* ===== REVEAL + BARS ===== */
-(function () {
+(() => {
 	const io = new IntersectionObserver(
 		(es) => {
 			es.forEach((e) => {
@@ -232,7 +231,7 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 })();
 
 /* ===== SCROLL-SPY ===== */
-(function () {
+(() => {
 	const links = [...document.querySelectorAll(".nav-links .lnk")];
 	const map = links
 		.map((l) => ({ l, sec: document.querySelector(l.getAttribute("href")) }))
@@ -253,7 +252,7 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 })();
 
 /* ===== MOBILE MENU ===== */
-(function () {
+(() => {
 	const btn = document.getElementById("hamb"),
 		menu = document.getElementById("mobileMenu");
 	if (!btn || !menu) return;
@@ -268,7 +267,7 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 })();
 
 /* ===== TERMINAL TYPEWRITER ===== */
-(function () {
+(() => {
 	const term = document.getElementById("term");
 	if (!term) return;
 	const lines = [

@@ -1,6 +1,5 @@
 /* NOCTURNE BENTO — main.js */
-(function () {
-	"use strict";
+(() => {
 	const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	const touch = window.matchMedia("(pointer: coarse)").matches;
 
@@ -49,7 +48,7 @@
 	/* ---------- Hero entrance stagger ---------- */
 	const heroPanels = document.querySelectorAll(".bento [data-reveal]");
 	heroPanels.forEach((el, i) => {
-		el.style.transitionDelay = reduce ? "0ms" : i * 90 + 90 + "ms";
+		el.style.transitionDelay = reduce ? "0ms" : `${i * 90 + 90}ms`;
 	});
 
 	/* ---------- Pointer parallax ---------- */

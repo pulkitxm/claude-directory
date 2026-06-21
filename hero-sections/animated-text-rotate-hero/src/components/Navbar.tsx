@@ -1,6 +1,6 @@
 import { Hexagon, MoveRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Button } from "@/components/ui/button";
 
 const LINKS = [
 	{ label: "Product", href: "#product" },

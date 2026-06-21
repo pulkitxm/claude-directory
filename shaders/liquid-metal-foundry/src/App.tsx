@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
 	Activity,
 	Check,
@@ -22,18 +21,19 @@ import {
 	Wind,
 	Zap,
 } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import LiquidMetalBackground, {
 	type LiquidMetalShape,
 } from "@/components/ui/liquid-metal-foundry";
 import { useTelemetry } from "@/lib/useTelemetry";
 import {
-	cn,
 	clamp,
+	cn,
+	type Hsl,
 	hexToHsl,
 	hslToCss,
 	hslToHex,
 	round,
-	type Hsl,
 } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ *

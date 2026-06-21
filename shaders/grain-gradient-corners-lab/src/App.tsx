@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import {
 	Blend,
 	Check,
@@ -22,6 +21,7 @@ import {
 	Waves,
 	Zap,
 } from "lucide-react";
+import { useMemo, useState } from "react";
 import {
 	GrainGradientStage,
 	type GrainShape,

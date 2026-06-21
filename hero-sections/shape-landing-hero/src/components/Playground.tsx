@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import { useState } from "react";
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 
 type Field = {
