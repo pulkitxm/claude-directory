@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+import { spawn } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
+import { setTimeout as sleep } from "node:timers/promises";
 /**
  * Headless verification for Warp Checks // Background Lab.
  *
@@ -16,10 +20,6 @@
  * Exits non-zero on any failure so it can gate CI / pre-commit.
  */
 import { chromium } from "playwright";
-import { spawn } from "node:child_process";
-import { setTimeout as sleep } from "node:timers/promises";
-import fs from "node:fs";
-import path from "node:path";
 
 /**
  * Resolve a Chromium binary. CI images often bake a single Playwright browser

@@ -1,5 +1,4 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- Mobile menu ---- */
@@ -16,7 +15,7 @@
 	}
 	if (burger) burger.addEventListener("click", openMenu);
 	if (close) close.addEventListener("click", closeMenu);
-	document.querySelectorAll("[data-mlink]").forEach(function (a) {
+	document.querySelectorAll("[data-mlink]").forEach((a) => {
 		a.addEventListener("click", closeMenu);
 	});
 
@@ -25,16 +24,16 @@
 		document.querySelectorAll(".reveal"),
 	);
 	if (reduce || !("IntersectionObserver" in window)) {
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			el.classList.add("visible");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (!e.isIntersecting) return;
 					var d = parseInt(e.target.getAttribute("data-delay") || "0", 10);
-					setTimeout(function () {
+					setTimeout(() => {
 						e.target.classList.add("visible");
 					}, d);
 					io.unobserve(e.target);
@@ -42,7 +41,7 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
 		);
-		revealEls.forEach(function (el) {
+		revealEls.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -66,7 +65,7 @@
 		function step(ts) {
 			if (start === null) start = ts;
 			var p = Math.min((ts - start) / dur, 1);
-			var eased = 1 - Math.pow(1 - p, 3);
+			var eased = 1 - (1 - p) ** 3;
 			el.textContent = (target * eased).toFixed(dec) + suffix;
 			if (p < 1) requestAnimationFrame(step);
 			else el.textContent = target.toFixed(dec) + suffix;
@@ -76,8 +75,8 @@
 	var counters = document.querySelectorAll("[data-count],[data-text]");
 	if ("IntersectionObserver" in window && !reduce) {
 		var cio = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						runCount(e.target);
 						cio.unobserve(e.target);
@@ -86,7 +85,7 @@
 			},
 			{ threshold: 0.5 },
 		);
-		counters.forEach(function (c) {
+		counters.forEach((c) => {
 			cio.observe(c);
 		});
 	} else {
@@ -96,7 +95,7 @@
 	/* ---- Form ---- */
 	var form = document.getElementById("consultForm");
 	if (form) {
-		form.addEventListener("submit", function (e) {
+		form.addEventListener("submit", (e) => {
 			e.preventDefault();
 			var name = document.getElementById("name");
 			var email = document.getElementById("email");
@@ -106,7 +105,7 @@
 			}
 			document.getElementById("formSuccess").classList.add("show");
 			form.querySelector(".submit-btn").textContent = "Brief Transmitted ✓";
-			setTimeout(function () {
+			setTimeout(() => {
 				form.reset();
 				document.getElementById("formSuccess").classList.remove("show");
 				form.querySelector(".submit-btn").textContent = "Submit Clinical Brief";

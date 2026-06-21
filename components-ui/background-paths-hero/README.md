@@ -1,14 +1,6 @@
-# Background Paths — animated shadcn/ui hero
+# Background Paths — Animated SVG Hero Component (React + shadcn/ui + Framer Motion)
 
-An integration of the **Background Paths** hero component into a real
-shadcn/ui-structured project. Seventy-two flowing SVG paths drift across a
-full-bleed canvas behind a headline that springs in **one letter at a time**,
-topped with a glassy, dark-mode-aware call-to-action.
-
-Built on **React + TypeScript + Vite + Tailwind CSS** with **Framer Motion**,
-the **shadcn/ui Button** primitive, and **lucide-react** icons. The dropped-in
-component lives — per the shadcn convention — at
-`src/components/ui/background-paths.tsx`.
+A full-screen landing hero built around the shadcn/ui Background Paths component: 72 flowing SVG paths drift across the canvas behind a per-letter spring-animated headline, topped by a glassmorphic call-to-action button. The showcase adds a dark/light theme toggle, a headline preset switcher, and a floating top bar — all written against Tailwind CSS dark-mode variants. Both Geist and Geist Mono fonts are vendored locally; the component ships zero runtime assets beyond inline SVG. A perfect drop-in hero section for marketing pages or app splash screens built on a shadcn/ui + Tailwind CSS + TypeScript stack. Generated with Claude Fable 5.
 
 ## What's in it
 
@@ -103,3 +95,7 @@ npm run verify    # headless Playwright checks against the preview build
 and animate, the per-letter headline settles, the CTA cycles the title, the
 theme toggle flips `dark` and repaints, and the fonts load locally with no
 remote font requests and no console errors.
+
+---
+
+Part of the [Components & UI](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

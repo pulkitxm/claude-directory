@@ -1,15 +1,6 @@
-# Verdant — Organic / Natural design system showcase
+# Verdant — Organic / Natural Design System Landing Page (React + Vite + Tailwind CSS)
 
-A full landing page that expresses the **Organic / Natural** design system —
-wabi-sabi warmth over digital precision. Soft amorphous blob shapes, a global
-paper-grain texture, an earth-drawn palette (moss, clay, sand, rice paper), the
-Fraunces serif paired with rounded Nunito, colour-tinted soft shadows, and
-gentle, tactile motion with no harsh snaps.
-
-Built as a fictional small-batch botanical apothecary ("Verdant") so the
-language has a real context to live in — a hero, a stats band, a feature grid,
-a field-to-cup "ritual", a featured-blend spotlight, a benefits section, social
-proof, pricing, a journal, an FAQ, and a closing CTA.
+A full-page landing page and design system showcase built around an **Organic / Natural** aesthetic — wabi-sabi warmth over digital precision, featuring soft amorphous blob shapes, a global paper-grain texture, an earth-drawn palette (moss, clay, sand, rice paper), the Fraunces serif paired with rounded Nunito, colour-tinted soft shadows, and gentle, tactile motion with no harsh snaps. The page presents a fictional small-batch botanical apothecary called Verdant, covering a hero, stats band, feature grid, field-to-cup ritual section, product spotlight, benefits, social proof, pricing, journal, FAQ, and closing CTA. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")
 
@@ -84,3 +75,7 @@ npm install
 npm run dev      # http://localhost:5173
 npm run build    # type-check + production build
 ```
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

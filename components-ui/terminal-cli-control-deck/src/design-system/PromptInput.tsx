@@ -1,4 +1,4 @@
-import { useId, useState, type InputHTMLAttributes } from "react";
+import { type InputHTMLAttributes, useId, useState } from "react";
 
 /**
  * A box-less terminal input: `user@acme:~$ ` prompt, then the field. The native

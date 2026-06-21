@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, ShoppingBag } from "lucide-react";
-import { Logo } from "./Logo";
-import { Button } from "./Button";
-import { nav } from "../lib/content";
+import { Menu, ShoppingBag, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { nav } from "../lib/content";
+import { Button } from "./Button";
+import { Logo } from "./Logo";
 
 /**
  * Sticky floating pill navigation with glassmorphism. The bar detaches slightly

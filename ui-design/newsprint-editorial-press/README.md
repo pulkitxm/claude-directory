@@ -1,15 +1,6 @@
-# The Newsprint — Editorial Press
+# The Newsprint — Editorial Press Design System Landing Page (React + TypeScript + Tailwind CSS)
 
-A full, multi-section editorial landing page that implements the **Newsprint**
-design system end to end: *"All the signal that's fit to print."* It styles a
-fictional publication of record for the age of machine intelligence, set in cold
-metal type — no rounded corners, no soft shadows, no infinite scroll.
-
-The whole design system in [`prompt.md`](./prompt.md) is encoded as centralized
-design tokens in `tailwind.config.ts` (paper / ink / divider / editorial-red,
-the four-font stack, hard-offset shadows, zero radius across the entire scale)
-and a small set of reusable primitives, so no component reaches for one-off hex
-values or radii.
+A full multi-section editorial landing page implementing the **Newsprint** design system end to end — a fictional publication of record for the age of machine intelligence, set in cold metal type. Zero rounded corners, no soft shadows, no infinite scroll: the page reads as a broadsheet newspaper translated faithfully to the web, with hard-offset ink shadows, a four-font typographic stack (Playfair Display, Lora, Inter, JetBrains Mono), and centralized design tokens in `tailwind.config.ts`. Generated with Claude Fable 5.
 
 ## Stack
 
@@ -65,3 +56,7 @@ default, the ticker and accordion work, the subscribe form reaches its
 confirmation state, there is no horizontal overflow on mobile, and the mobile
 menu toggles. `demo.mp4` is a headless scroll-through recorded with the repo's
 `scripts/record-demos` recorder.
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

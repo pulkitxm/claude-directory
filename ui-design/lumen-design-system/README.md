@@ -1,13 +1,6 @@
-# Lumen — Linear / Modern design system showcase
+# Lumen — Linear / Modern Design System Showcase (React, Framer Motion, Tailwind CSS)
 
-A polished, single-page showcase that fully expresses the **Linear / Modern**
-design language: deep near-black canvas, layered ambient lighting, cursor-aware
-surfaces, gradient typography, multi-layer shadows, an asymmetric bento grid,
-and precision micro-interactions.
-
-Built as a fictional developer-tools product ("Lumen") so the language has a
-real context to live in — hero, trusted-by marquee, signature-features bento,
-a design-token gallery, a live component playground, pricing, and a glowing CTA.
+A polished, single-page showcase that fully expresses the Linear / Modern design language for a fictional developer-tools product ("Lumen"): deep near-black canvas, layered ambient lighting, cursor-aware spotlight cards, gradient typography, multi-layer shadows, an asymmetric bento grid, and precision 200–300ms expo-out micro-interactions across hero, features, pricing, and CTA sections. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")
 
@@ -60,3 +53,7 @@ npm install
 npm run dev      # http://localhost:5173
 npm run build    # type-check + production build
 ```
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

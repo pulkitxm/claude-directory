@@ -1,5 +1,4 @@
 (() => {
-	"use strict";
 	const reduceMotion = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
 	).matches;
@@ -10,7 +9,7 @@
 		nav.classList.toggle("scrolled", window.scrollY > 60);
 		const sig = document.getElementById("scrollSignal");
 		const h = document.documentElement.scrollHeight - window.innerHeight;
-		sig.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
+		sig.style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
 	};
 	window.addEventListener("scroll", onScroll, { passive: true });
 	onScroll();
@@ -37,15 +36,14 @@
 	} else {
 		const io = new IntersectionObserver(
 			(entries) => {
-				entries.forEach((e, i) => {
+				entries.forEach((e, _i) => {
 					if (e.isIntersecting) {
 						// stagger within grids
 						const sibs = Array.from(e.target.parentElement.children).filter(
 							(c) => c.classList.contains("reveal-up"),
 						);
 						const idx = sibs.indexOf(e.target);
-						e.target.style.transitionDelay =
-							(idx > 0 ? Math.min(idx, 4) * 0.08 : 0) + "s";
+						e.target.style.transitionDelay = `${idx > 0 ? Math.min(idx, 4) * 0.08 : 0}s`;
 						e.target.classList.add("in");
 						io.unobserve(e.target);
 					}
@@ -69,7 +67,7 @@
 			start = performance.now();
 		const step = (t) => {
 			const p = Math.min((t - start) / dur, 1);
-			const eased = 1 - Math.pow(1 - p, 3);
+			const eased = 1 - (1 - p) ** 3;
 			el.textContent = prefix + Math.round(eased * target);
 			if (p < 1) requestAnimationFrame(step);
 		};
@@ -94,7 +92,7 @@
 	let stars = [],
 		w = 0,
 		h = 0,
-		raf = null;
+		_raf = null;
 
 	const resize = () => {
 		const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -131,7 +129,7 @@
 			ctx.fillStyle = `rgba(220,228,245,${alpha})`;
 			ctx.fill();
 		}
-		raf = requestAnimationFrame(draw);
+		_raf = requestAnimationFrame(draw);
 	};
 
 	resize();
@@ -139,7 +137,7 @@
 		resize();
 	});
 	if (!reduceMotion) {
-		raf = requestAnimationFrame(draw);
+		_raf = requestAnimationFrame(draw);
 	} else {
 		// static draw
 		ctx.clearRect(0, 0, w, h);

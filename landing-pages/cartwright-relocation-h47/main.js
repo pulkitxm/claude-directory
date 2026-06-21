@@ -1,5 +1,4 @@
-(function () {
-	"use strict";
+(() => {
 	const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- Partner marquee (inline SVG wordmarks, rendered twice) ---- */
@@ -56,7 +55,7 @@
 			start = performance.now();
 		const tick = (now) => {
 			const p = Math.min((now - start) / dur, 1);
-			const ease = 1 - Math.pow(1 - p, 4);
+			const ease = 1 - (1 - p) ** 4;
 			el.textContent = Math.floor(target * ease) + suffix;
 			if (p < 1) requestAnimationFrame(tick);
 			else el.textContent = target + suffix;
@@ -109,7 +108,7 @@
 	/* ---- Testimonial deck ---- */
 	const deck = document.getElementById("deck");
 	if (deck) {
-		let cards = Array.from(deck.querySelectorAll("[data-card]"));
+		const cards = Array.from(deck.querySelectorAll("[data-card]"));
 		let animating = false,
 			timer = null;
 

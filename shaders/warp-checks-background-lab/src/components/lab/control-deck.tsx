@@ -1,13 +1,13 @@
 import { Palette, RotateCcw, Sliders, Sparkles } from "lucide-react";
+import { Glass, Kicker } from "@/components/lab/primitives";
+import { cn, fmt } from "@/lib/utils";
 import {
+	parseHsl,
 	WARP_CONTROLS,
 	WARP_PRESETS,
 	WARP_SHAPES,
-	parseHsl,
 	type WarpConfig,
 } from "@/lib/warp";
-import { cn, fmt } from "@/lib/utils";
-import { Glass, Kicker } from "@/components/lab/primitives";
 
 interface DeckProps {
 	config: WarpConfig;

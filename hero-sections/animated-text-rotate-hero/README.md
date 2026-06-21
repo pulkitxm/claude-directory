@@ -1,12 +1,6 @@
-# animated-text-rotate-hero
+# Animated Text Rotate Hero — shadcn/ui Rotating Headline Component (React + Tailwind + TypeScript + Framer Motion)
 
-Integration of the **shadcn/ui animated hero** — a centered hero whose headline
-swaps a word every two seconds with a `framer-motion` spring (`amazing → new →
-wonderful → beautiful → smart`). The component is dropped into a real, runnable
-shadcn project (React + Tailwind + TypeScript) and hosted inside a branded
-**"Spektr" trade-desk** shell so you can see the best context to use it in.
-
-Built with Claude Fable 5 — part of the [claude-directory](../../README.md).
+A centered marketing hero section that integrates the **shadcn/ui animated hero** — a headline that swaps a rotating word every two seconds using a `framer-motion` spring (`amazing → new → wonderful → beautiful → smart`). The component is embedded inside a branded **"Spektr" trade-desk** shell (midnight-teal identity, self-hosted fonts, live ticker tape) so you can see it in realistic landing-page context. Fully accessible: ambient motion freezes under `prefers-reduced-motion`, focus rings are visible, and zero remote assets are fetched at runtime. Generated with Claude Fable 5.
 
 ![Animated hero, dark mode](./screenshots/hero-dark.png)
 
@@ -164,3 +158,7 @@ requests and no console errors**.
 | `src/components/*` | Shell: navbar, ticker, background, trust strip, footer |
 | `tailwind.config.ts` · `src/index.css` | shadcn token theme (light + dark) |
 | `components.json` | shadcn CLI config |
+
+---
+
+Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

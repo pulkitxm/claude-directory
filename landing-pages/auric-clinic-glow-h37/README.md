@@ -1,8 +1,6 @@
-# Auric
+# Auric — High-End Dermaceutical Clinic Landing Page (Vanilla HTML + CSS + JS)
 
-A multi-section landing page for **Auric**, a fictional high-end skincare and dermaceutical clinic, built in a "Clinical Warmth" aesthetic — the collision of medical precision with sun-warmed skin. The mood is calm, expensive, and trustworthy: Aesop-meets-dermatology, where every edge is rounded and one warm terracotta-clay accent (`#9F5434`) carries the entire brand against cream and white surfaces.
-
-Type is a single Archivo family across the page. Sections include a floating pill nav, a full-bleed editorial hero, an overlapping three-column action-block grid, a value-prop marquee strip, a signature-treatments card grid, a split "Our Science" block with count-up stats, a quiet pull-quote testimonial, and a deep-clay CTA band. Motion covers on-load staggered hero reveals, scroll-reveal fade-ups, count-up stats, image hover scales, and card lifts — all respecting `prefers-reduced-motion`.
+A multi-section marketing landing page for **Auric**, a fictional luxury skincare and dermaceutical clinic, built in a "Clinical Warmth" aesthetic — the collision of medical precision with sun-warmed skin. The mood is calm, expensive, and trustworthy — Aesop-meets-dermatology — with warm terracotta-clay accents (`#9F5434`) on cream and white surfaces, a floating pill navbar, a full-bleed editorial hero, an overlapping three-column action-block grid, a value-prop marquee strip, a signature-treatments card grid, a split "Our Science" stats block with count-up animation, a pull-quote testimonial, and a deep-clay CTA band. Generated with Claude Fable 5.
 
 ## Run
 
@@ -13,3 +11,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Landing pages](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Sprout } from "lucide-react";
-import { Button } from "./Button";
-import { Blob } from "./Blob";
-import { Eyebrow } from "./Eyebrow";
-import { HeroBotanical } from "./Botanical";
+import { ArrowRight, Sprout, Star } from "lucide-react";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { Blob } from "./Blob";
+import { HeroBotanical } from "./Botanical";
+import { Button } from "./Button";
+import { Eyebrow } from "./Eyebrow";
 
 /**
  * Above-the-fold hero. Two drifting blurred blobs wash the page in moss and

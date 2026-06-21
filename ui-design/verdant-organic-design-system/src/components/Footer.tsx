@@ -1,6 +1,6 @@
-import { Instagram, Twitter, Youtube, Sprout } from "lucide-react";
-import { Logo } from "./Logo";
+import { Instagram, Sprout, Twitter, Youtube } from "lucide-react";
 import { brand } from "../lib/content";
+import { Logo } from "./Logo";
 
 const columns = [
 	{

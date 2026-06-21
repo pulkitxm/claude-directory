@@ -1,5 +1,4 @@
 (() => {
-	"use strict";
 	const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- Scroll reveals ---- */
@@ -32,10 +31,10 @@
 		for (let i = 0; i < count; i++) {
 			const d = document.createElement("div");
 			d.className = "blink-cell";
-			d.style.left = Math.floor(Math.random() * cols) * cell + 1 + "px";
-			d.style.top = Math.floor(Math.random() * rows) * cell + 1 + "px";
-			d.style.animationDelay = Math.random() * 2 + "s";
-			d.style.animationDuration = 0.5 + Math.random() * 2 + "s";
+			d.style.left = `${Math.floor(Math.random() * cols) * cell + 1}px`;
+			d.style.top = `${Math.floor(Math.random() * rows) * cell + 1}px`;
+			d.style.animationDelay = `${Math.random() * 2}s`;
+			d.style.animationDuration = `${0.5 + Math.random() * 2}s`;
 			frag.appendChild(d);
 		}
 		layer.appendChild(frag);
@@ -118,7 +117,7 @@
 			start = performance.now();
 		function step(now) {
 			const t = Math.min((now - start) / dur, 1);
-			const eased = 1 - Math.pow(1 - t, 3);
+			const eased = 1 - (1 - t) ** 3;
 			el.textContent = (target * eased).toFixed(decimals) + suffix;
 			if (t < 1) requestAnimationFrame(step);
 			else el.textContent = el.dataset.count + suffix;

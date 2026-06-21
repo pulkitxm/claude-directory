@@ -1,7 +1,7 @@
 import { ChevronDown } from "lucide-react";
+import { faqs } from "../lib/content";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { faqs } from "../lib/content";
 
 /**
  * FAQ built on native <details>/<summary> for free keyboard accessibility and

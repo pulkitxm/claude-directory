@@ -1,17 +1,16 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-	document.addEventListener("DOMContentLoaded", function () {
+	document.addEventListener("DOMContentLoaded", () => {
 		/* ---- hero word reveal ---- */
 		var h1 = document.querySelector(".hero h1");
 		if (h1) {
 			var words = h1.querySelectorAll(".word");
-			words.forEach(function (w, i) {
-				w.style.transitionDelay = i * 65 + "ms";
+			words.forEach((w, i) => {
+				w.style.transitionDelay = `${i * 65}ms`;
 			});
-			requestAnimationFrame(function () {
-				requestAnimationFrame(function () {
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => {
 					h1.classList.add("in");
 				});
 			});
@@ -30,13 +29,13 @@
 		var burger = document.querySelector(".burger");
 		var sheet = document.querySelector(".mobile-sheet");
 		if (burger) {
-			burger.addEventListener("click", function () {
+			burger.addEventListener("click", () => {
 				document.body.classList.toggle("menu-open");
 				var open = document.body.classList.contains("menu-open");
 				burger.setAttribute("aria-expanded", open ? "true" : "false");
 			});
-			sheet.querySelectorAll("a").forEach(function (a) {
-				a.addEventListener("click", function () {
+			sheet.querySelectorAll("a").forEach((a) => {
+				a.addEventListener("click", () => {
 					document.body.classList.remove("menu-open");
 				});
 			});
@@ -44,8 +43,8 @@
 
 		/* ---- scroll reveal ---- */
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("show");
 						io.unobserve(e.target);
@@ -54,14 +53,14 @@
 			},
 			{ threshold: 0.12 },
 		);
-		document.querySelectorAll(".reveal").forEach(function (el) {
+		document.querySelectorAll(".reveal").forEach((el) => {
 			io.observe(el);
 		});
 
 		/* ---- count-up stats ---- */
 		var cio = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (!e.isIntersecting) return;
 					var el = e.target;
 					var target = parseFloat(el.getAttribute("data-target"));
@@ -76,7 +75,7 @@
 						start = performance.now();
 					function tick(now) {
 						var p = Math.min((now - start) / dur, 1);
-						var eased = 1 - Math.pow(1 - p, 3);
+						var eased = 1 - (1 - p) ** 3;
 						var val = target * eased;
 						el.textContent = Math.round(val) + suffix;
 						if (p < 1) requestAnimationFrame(tick);
@@ -88,18 +87,18 @@
 			},
 			{ threshold: 0.5 },
 		);
-		document.querySelectorAll("[data-target]").forEach(function (el) {
+		document.querySelectorAll("[data-target]").forEach((el) => {
 			cio.observe(el);
 		});
 
 		/* ---- FAQ accordion ---- */
 		var items = document.querySelectorAll(".faq-item");
-		items.forEach(function (item) {
+		items.forEach((item) => {
 			var q = item.querySelector(".faq-q");
 			var a = item.querySelector(".faq-a");
-			q.addEventListener("click", function () {
+			q.addEventListener("click", () => {
 				var isOpen = item.classList.contains("open");
-				items.forEach(function (other) {
+				items.forEach((other) => {
 					other.classList.remove("open");
 					other.querySelector(".faq-q").setAttribute("aria-expanded", "false");
 					other.querySelector(".faq-a").style.maxHeight = null;
@@ -107,7 +106,7 @@
 				if (!isOpen) {
 					item.classList.add("open");
 					q.setAttribute("aria-expanded", "true");
-					a.style.maxHeight = a.scrollHeight + "px";
+					a.style.maxHeight = `${a.scrollHeight}px`;
 				}
 			});
 		});
@@ -148,8 +147,8 @@
 				var foot = slot.querySelector(".tcard-foot");
 				quote.classList.add("fade-out");
 				foot.classList.add("fade-out");
-				setTimeout(function () {
-					quote.textContent = "“" + d.q + "”";
+				setTimeout(() => {
+					quote.textContent = `“${d.q}”`;
 					foot.querySelector("img").src = d.img;
 					foot.querySelector("img").alt = d.n;
 					foot.querySelector(".nm").textContent = d.n;
@@ -161,7 +160,7 @@
 			paint(slots[0], pool[0]);
 			paint(slots[1], pool[1]);
 			if (!reduce) {
-				setInterval(function () {
+				setInterval(() => {
 					i1 = (i1 + 2) % pool.length;
 					i2 = (i2 + 2) % pool.length;
 					if (i1 === i2) i2 = (i2 + 1) % pool.length;
@@ -174,7 +173,7 @@
 		/* ---- newsletter (demo) ---- */
 		var nf = document.querySelector(".news");
 		if (nf)
-			nf.addEventListener("submit", function (e) {
+			nf.addEventListener("submit", (e) => {
 				e.preventDefault();
 				var btn = nf.querySelector("button");
 				btn.textContent = "Joined";

@@ -1,10 +1,6 @@
-# Monogram Terminal
+# Monogram Terminal — Monochrome Editorial Developer Portfolio (Vanilla HTML/CSS/JS, Static)
 
-A single-page, forced-dark personal portfolio for a fictional full-stack / systems developer (Ren Okada) in a "Monochrome Terminal Editorial" design language — a strictly greyscale, near-black canvas that reads like a code editor and a finely-set print magazine fused together. There is no hue anywhere: the palette is black, white, and grey, with white itself as the only accent, so typography and spacing do all the talking. A narrow centered column is framed by hairline vertical borders, with monospace section labels formatted like file paths (`~/work`, `cd projects/`) and a faint film-grain / scanline overlay.
-
-Type is JetBrains Mono for display and labels, Inter for body, and Merriweather italic for pull-quote emphasis. Sections run a sticky blurred header, a mono hero with social chips, an auto-advancing cross-fading featured slider, about, four-up stack cards, a work timeline, projects, a paginated articles grid, and a contact footer. Vanilla JS drives the fade-rise reveals, the slider (auto-advance, pause-on-hover, animating dots), grayscale→color hovers, and a slide-in mobile menu — respecting `prefers-reduced-motion`.
-
-Self-contained static build, all fonts and imagery vendored locally, runs fully offline.
+A single-page, forced-dark personal portfolio for a fictional full-stack and systems developer (Ren Okada) in a "Monochrome Terminal Editorial" design language: a strictly greyscale near-black canvas that fuses the discipline of a code editor with the typographic precision of a high-end print magazine. The entire palette is black, white, and grey — no hue anywhere — with JetBrains Mono for display type and section labels formatted as file-path terminal breadcrumbs (`~/work`, `cd projects/`), Inter for body copy, and Merriweather italic for pull-quote emphasis. A narrow centered column is framed by hairline vertical borders with a faint film-grain and scanline overlay for CRT depth. Sections run a sticky blurred header, a mono hero with social chips, an auto-advancing cross-fading featured slider, an about column, four-up technology stack cards, a vertical work timeline, a projects grid, a paginated articles grid, and a contact footer. Vanilla JS drives fade-rise IntersectionObserver reveals, the auto-advance slider with animated pill dots, grayscale-to-color image hovers, and a slide-in mobile menu — all respecting `prefers-reduced-motion`. Self-contained static build, all fonts and imagery vendored locally, runs fully offline. Generated with Claude Fable 5.
 
 ## Run
 
@@ -15,3 +11,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Portfolios](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

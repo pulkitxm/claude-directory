@@ -1,6 +1,4 @@
-(function () {
-	"use strict";
-
+(() => {
 	var star =
 		'<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>';
 
@@ -120,16 +118,14 @@
 
 	// Products
 	var grid = document.getElementById("grid");
-	products.forEach(function (p) {
+	products.forEach((p) => {
 		var tagsHtml = p.tags
-			.map(function (t) {
-				return '<span class="tag ' + t[0] + '">' + t[1] + "</span>";
-			})
+			.map((t) => `<span class="tag ${t[0]}">${t[1]}</span>`)
 			.join("");
 		var card = el(
 			'<article class="card reveal">' +
 				'<div class="ph">' +
-				(tagsHtml ? '<div class="tags">' + tagsHtml + "</div>" : "") +
+				(tagsHtml ? `<div class="tags">${tagsHtml}</div>` : "") +
 				'<img src="assets/img/' +
 				p.img +
 				'" alt="' +
@@ -160,7 +156,7 @@
 
 	// Reviews
 	var rg = document.getElementById("rev-grid");
-	reviews.forEach(function (r) {
+	reviews.forEach((r) => {
 		rg.appendChild(
 			el(
 				'<article class="rev reveal">' +
@@ -191,9 +187,7 @@
 	var catMq = document.getElementById("cat-mq");
 	var catItems = cats
 		.concat(cats)
-		.map(function (c) {
-			return '<a href="#bestsellers">' + c + "</a>";
-		})
+		.map((c) => `<a href="#bestsellers">${c}</a>`)
 		.join("");
 	catMq.innerHTML = catItems;
 
@@ -201,11 +195,11 @@
 	var statLine =
 		"Established 2024 • 50,000+ Happy Customers • Global Shipping • Archival Precision&nbsp;&nbsp;•&nbsp;&nbsp;";
 	document.getElementById("stats-mq").innerHTML =
-		"<p>" + statLine + "</p><p>" + statLine + "</p>";
+		`<p>${statLine}</p><p>${statLine}</p>`;
 
 	// Add to cart
 	var cartCount = document.getElementById("cart-count");
-	document.addEventListener("click", function (e) {
+	document.addEventListener("click", (e) => {
 		var btn = e.target.closest(".qadd");
 		if (!btn || btn.classList.contains("added")) return;
 		var n = parseInt(cartCount.textContent, 10) || 0;
@@ -213,7 +207,7 @@
 		var orig = btn.textContent;
 		btn.classList.add("added");
 		btn.textContent = "Added ✓";
-		setTimeout(function () {
+		setTimeout(() => {
 			btn.classList.remove("added");
 			btn.textContent = orig;
 		}, 1400);
@@ -225,14 +219,14 @@
 		mmenu.classList.toggle("open", open);
 		document.body.style.overflow = open ? "hidden" : "";
 	}
-	document.getElementById("burger").addEventListener("click", function () {
+	document.getElementById("burger").addEventListener("click", () => {
 		setMenu(true);
 	});
-	document.getElementById("mclose").addEventListener("click", function () {
+	document.getElementById("mclose").addEventListener("click", () => {
 		setMenu(false);
 	});
-	mmenu.querySelectorAll("a").forEach(function (a) {
-		a.addEventListener("click", function () {
+	mmenu.querySelectorAll("a").forEach((a) => {
+		a.addEventListener("click", () => {
 			setMenu(false);
 		});
 	});
@@ -244,7 +238,7 @@
 	function checkPin() {
 		var v = (pinInput.value || "").trim();
 		if (/^\d{6}$/.test(v)) {
-			pinMsg.textContent = "Delivery available in 2–3 days for " + v;
+			pinMsg.textContent = `Delivery available in 2–3 days for ${v}`;
 			pinMsg.className = "pin-msg ok";
 		} else {
 			pinMsg.textContent = "Please enter a valid 6-digit pincode";
@@ -252,10 +246,10 @@
 		}
 	}
 	pinBtn.addEventListener("click", checkPin);
-	pinInput.addEventListener("keydown", function (e) {
+	pinInput.addEventListener("keydown", (e) => {
 		if (e.key === "Enter") checkPin();
 	});
-	pinInput.addEventListener("input", function () {
+	pinInput.addEventListener("input", () => {
 		pinInput.value = pinInput.value.replace(/\D/g, "");
 	});
 
@@ -269,8 +263,8 @@
 
 	// Scroll reveal
 	var io = new IntersectionObserver(
-		function (entries) {
-			entries.forEach(function (en) {
+		(entries) => {
+			entries.forEach((en) => {
 				if (en.isIntersecting) {
 					en.target.classList.add("in");
 					io.unobserve(en.target);
@@ -279,7 +273,7 @@
 		},
 		{ threshold: 0.06 },
 	);
-	document.querySelectorAll(".reveal").forEach(function (n) {
+	document.querySelectorAll(".reveal").forEach((n) => {
 		io.observe(n);
 	});
 })();

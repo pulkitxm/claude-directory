@@ -1,11 +1,11 @@
-import type {
-	ReactNode,
-	ButtonHTMLAttributes,
-	AnchorHTMLAttributes,
-	InputHTMLAttributes,
-} from "react";
 import { motion } from "motion/react";
-import { fadeUp, reveal, REVEAL_TRANSITION } from "../lib/motion";
+import type {
+	AnchorHTMLAttributes,
+	ButtonHTMLAttributes,
+	InputHTMLAttributes,
+	ReactNode,
+} from "react";
+import { fadeUp, REVEAL_TRANSITION, reveal } from "../lib/motion";
 
 /* ============================================================================
    PRIMITIVES — the composable atoms of the Vaporwave / Outrun system.

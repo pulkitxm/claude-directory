@@ -1,6 +1,6 @@
 # Portfolios
 
-14 **Portfolios** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+**14 portfolio website experiments generated with Claude Fable 5** — personal, developer, designer, and studio portfolio designs with animated, editorial, and interactive layouts built in React, TypeScript, Tailwind CSS, and framework-free HTML/CSS/JS. A gallery of AI-generated portfolio templates. Part of the [claude-directory](../README.md) ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|

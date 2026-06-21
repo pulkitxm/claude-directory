@@ -241,14 +241,14 @@
 </footer>
 
 <script>
-(function(){
+(()=> {
   // Scroll reveal
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
+  var io = new IntersectionObserver((entries)=> {
+    entries.forEach((e)=> {
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
   },{threshold:0.1, rootMargin:'0px 0px -50px 0px'});
-  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('[data-reveal]').forEach((el)=> { io.observe(el); });
 
   // Testimonial rotator
   var data=[
@@ -262,14 +262,14 @@
       dots=document.querySelectorAll('.dot');
   function render(idx){
     slider.style.opacity='0'; slider.style.transform='translateY(10px)';
-    setTimeout(function(){
+    setTimeout(()=> {
       var d=data[idx];
       q.textContent=d.q; n.textContent=d.n; t.textContent=d.t; img.src=d.img;
-      dots.forEach(function(dot,j){ dot.classList.toggle('on', j===idx); });
+      dots.forEach((dot,j)=> { dot.classList.toggle('on', j===idx); });
       slider.style.opacity='1'; slider.style.transform='none';
     },450);
   }
-  dots.forEach(function(dot,j){ dot.addEventListener('click',function(){ i=j; render(i); reset(); }); });
+  dots.forEach((dot,j)=> { dot.addEventListener('click',()=> { i=j; render(i); reset(); }); });
   var timer;
   function reset(){ clearInterval(timer); timer=setInterval(tick,5000); }
   function tick(){ i=(i+1)%data.length; render(i); }

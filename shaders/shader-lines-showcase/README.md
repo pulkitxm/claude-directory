@@ -1,18 +1,6 @@
-# Shader Lines — showcase
+# Shader Lines Showcase — GLSL Line-Field Component Integration for shadcn (Three.js + React + TypeScript)
 
-An integration of the **Shader Lines** component (a generative GLSL line field
-rendered with Three.js) into a shadcn-style project, wrapped in a small
-component-library docs page that presents it live, documents how to drop it in,
-and explains its anatomy and API.
-
-The component is `ShaderAnimation`: a single React file that loads Three.js,
-builds one full-screen quad, and runs a fragment shader that accumulates five
-offset lines per colour channel into the warm chromatic streaks you see. It is
-**not** a placeholder — it is the actual shader from the integration brief,
-unchanged in behaviour.
-
-Built with **Vite + React 18 + TypeScript + Tailwind CSS**, in a shadcn project
-layout (`components.json`, the `@/*` path alias, and `src/components/ui`).
+A shadcn-style component library documentation page that integrates the **Shader Lines** GLSL fragment shader — a generative full-screen line field rendered with Three.js inside a single React component (`ShaderAnimation`). The shader accumulates five offset lines per colour channel, producing warm chromatic streaks at 60 fps. The docs page presents it live, documents the drop-in API, and explains its anatomy for teams adopting it in their own shadcn + Tailwind + TypeScript apps. Generated with Claude Fable 5.
 
 ## Run
 
@@ -122,3 +110,7 @@ The behaviour and shader are identical; the integration hardens it for real use:
   browser compositor renders the colourful line field; fonts load locally; the
   tabbed code panel, copy buttons, and speed dial all work; **zero** console
   errors and **zero** failed network requests (all assets served same-origin).
+
+---
+
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

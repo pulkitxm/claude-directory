@@ -1,6 +1,6 @@
 # Components & UI
 
-15 **Components & UI** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+**15 UI component experiments generated with Claude Fable 5** — reusable interface building blocks (navbars, cards, carousels, menus, interactive widgets) built with React, TypeScript, Tailwind CSS, and framework-free HTML/CSS/JS. A collection of AI-generated, copy-pasteable front-end components. Part of the [claude-directory](../README.md) ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|

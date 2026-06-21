@@ -1,10 +1,6 @@
-# Ink & Vermilion
+# Ink & Vermilion — Editorial Personal-Brand Landing Page for a Marketing Consultant (Vanilla HTML/CSS/JS)
 
-A single-page, responsive personal-brand landing page for a fictional independent marketing consultant named Marlowe Vane. The named design language is **Ink & Vermilion Editorial** — a warm, paper-stock editorial aesthetic like an art-directed print magazine spread crossed with a hand-annotated notebook. Everything sits on a warm paper-white canvas, anchored by ink-black type, and punctuated by a single decisive vermilion-red accent, with hand-drawn SVG scribbles, underlines, stars, and arrows that make the page feel personally annotated.
-
-Sections span a sticky nav, a two-column hero with an inline contact card and a portrait paste-up frame, a rotated full-bleed vermilion marquee strip, a three-column services row, a dark gallery strip, a "words work" editorial row with hand-drawn node-graph SVGs, a "missing piece" CTA band, a speaking section, a four-up journal grid, a newsletter CTA, and a footer. Motion is vanilla JS: IntersectionObserver reveals, the seamless marquee, a 6s float on a decorative element, grayscale-to-color and invert hovers, and animated focus states — respecting `prefers-reduced-motion`.
-
-Typography pairs Playfair Display (italic emphasis) with Inter Tight (everything else), vendored locally. Hand-drawn decorations are inline SVG; all assets local.
+A single-page, fully responsive personal-brand landing page for a fictional independent marketing consultant (Marlowe Vane) built in an "Ink & Vermilion Editorial" design language: warm paper-white canvas, ink-black type, a single decisive vermilion-red accent, and hand-drawn SVG scribbles, underlines, stars, and arrows that give the page a personally-annotated editorial print feel. Eleven sections span a sticky nav, a two-column hero with an inline contact card and portrait paste-up, a seamless marquee strip, a three-column services row, a dark gallery strip, editorial copy rows with hand-drawn node-graph SVGs, a CTA band, a speaking section, a four-up journal grid, a newsletter CTA, and a footer. Vanilla JS drives IntersectionObserver scroll reveals, a CSS-keyframe marquee, a float animation, and grayscale-to-color hover transitions — all respecting `prefers-reduced-motion`. Generated with Claude Fable 5.
 
 ## Run
 
@@ -15,3 +11,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Landing pages](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

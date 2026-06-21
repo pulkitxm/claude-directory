@@ -1,22 +1,20 @@
-(function () {
-	"use strict";
-
+(() => {
 	// ---- Mobile menu ----
 	var burger = document.getElementById("hamburger");
 	var sheet = document.getElementById("mobileSheet");
 	if (burger && sheet) {
-		burger.addEventListener("click", function (e) {
+		burger.addEventListener("click", (e) => {
 			e.stopPropagation();
 			var open = sheet.classList.toggle("open");
 			burger.setAttribute("aria-expanded", open ? "true" : "false");
 		});
-		sheet.querySelectorAll("a").forEach(function (a) {
-			a.addEventListener("click", function () {
+		sheet.querySelectorAll("a").forEach((a) => {
+			a.addEventListener("click", () => {
 				sheet.classList.remove("open");
 				burger.setAttribute("aria-expanded", "false");
 			});
 		});
-		document.addEventListener("click", function (e) {
+		document.addEventListener("click", (e) => {
 			if (!sheet.contains(e.target) && !burger.contains(e.target)) {
 				sheet.classList.remove("open");
 				burger.setAttribute("aria-expanded", "false");
@@ -28,8 +26,8 @@
 
 	// ---- Scroll reveals (staggered within a section) ----
 	var revealObserver = new IntersectionObserver(
-		function (entries, obs) {
-			entries.forEach(function (entry) {
+		(entries, obs) => {
+			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					entry.target.classList.add("in");
 					obs.unobserve(entry.target);
@@ -40,11 +38,11 @@
 	);
 
 	var seenParents = new Map();
-	document.querySelectorAll(".reveal").forEach(function (el) {
+	document.querySelectorAll(".reveal").forEach((el) => {
 		if (!reduce) {
 			var parent = el.parentElement;
 			var idx = seenParents.get(parent) || 0;
-			el.style.transitionDelay = idx * 0.09 + "s";
+			el.style.transitionDelay = `${idx * 0.09}s`;
 			seenParents.set(parent, idx + 1);
 			revealObserver.observe(el);
 		} else {
@@ -54,7 +52,7 @@
 
 	// ---- Animated stat counters ----
 	function runCounters() {
-		document.querySelectorAll(".counter").forEach(function (el) {
+		document.querySelectorAll(".counter").forEach((el) => {
 			var target = +el.getAttribute("data-target");
 			if (reduce) {
 				el.textContent = target;
@@ -65,7 +63,7 @@
 			function step(ts) {
 				if (!start) start = ts;
 				var p = Math.min((ts - start) / duration, 1);
-				var eased = 1 - Math.pow(1 - p, 3);
+				var eased = 1 - (1 - p) ** 3;
 				el.textContent = Math.round(target * eased);
 				if (p < 1) requestAnimationFrame(step);
 				else el.textContent = target;
@@ -77,8 +75,8 @@
 	var stats = document.getElementById("stats");
 	if (stats) {
 		var statObserver = new IntersectionObserver(
-			function (entries, obs) {
-				entries.forEach(function (entry) {
+			(entries, obs) => {
+				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						runCounters();
 						obs.unobserve(entry.target);
