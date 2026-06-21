@@ -52,6 +52,15 @@ Clones live in the **`studies/`** category at the repo root (the older `template
 9. **Record the demo, poster, and registration — same as fable-experimenter.**
    - `cd scripts/record-demos && ./record-one.sh ../../studies/<project-name>` → confirm a non-empty `demo.mp4` (`ffprobe`); fix and re-run on failure. If the clone is multi-page, the demo records the entry page — that's expected.
    - `node scripts/generate-posters/generate-posters.mjs` → confirm `poster.jpg` and a `posters.json` entry exist.
+   - **Write the project's own `studies/<project-name>/README.md` by delegating to the `seo-readme-writer` agent — and have it credit the original source.** Invoke that agent (Agent tool, `subagent_type: "seo-readme-writer"`) with the project folder path (`studies/<project-name>`); it produces the SEO-optimized README (keyword-rich H1, lead paragraph, real run/verify instructions, footer linking back to the category, root, and live gallery). Don't hand-write this README yourself. **Because this is a clone, also instruct the agent to add an explicit `## Credits` section** that names the source and links the verbatim reference URL, plus a one-line note that it's a study/clone of someone else's design built for learning — pass it the exact text to include:
+     ```markdown
+     ## Credits
+
+     Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
+
+     **Original:** <Source name if known> — <https://verbatim-source-url>
+     ```
+     Use the same `<https://verbatim-source-url>` that is stored as `REFERENCE:` in `prompt.md`. Name the source (e.g. Aceternity, the studio/author) when it's identifiable from the URL or page; otherwise just link the URL. Confirm `studies/<project-name>/README.md` exists (with the Credits section) afterward.
    - Register the project in the **root `README.md`** `studies` `<details>` table (`[<name>](./studies/<name>/)`) and in **`studies/README.md`** (`[<name>](./<name>/)`), matching the existing row format and alphabetical order. Create the `studies` `<details>` section and `studies/README.md` if this is the first study. **Reconcile counts from actual folder counts** — set the `studies` `<summary>` count, the `studies/README.md` intro count, and the root `## Projects (N)` total to the real on-disk counts; never trust a blind `+1`.
 
 10. **Consistency sweep, merge main, finalize.** Fill any repo-wide gaps (every project has `prompt.md`/`demo.mp4`/`poster.jpg` + `posters.json` entry; all counts equal folder counts; no phantom category paths). Then `git fetch origin main && git merge origin/main`, resolve conflicts (re-reconcile counts if README/posters.json changed), re-verify.
@@ -65,6 +74,7 @@ Clones live in the **`studies/`** category at the repo root (the older `template
 - New clones go in `studies/` only, never the repo root or the legacy `templates/`. Use the exact on-disk category name.
 - Capture reference artifacts only with `scrape-ref.mjs`; record demos only with `record-one.sh`; generate posters only with `generate-posters.mjs`. Never hand-roll these.
 - `prompt.md` is uppercase, Markdown, and preserves the verbatim source URL as `REFERENCE:`.
+- The project's own `README.md` is written by the `seo-readme-writer` agent (step 9), never hand-rolled — and because every clone is a study, you must instruct that agent to include the `## Credits` section linking the verbatim `REFERENCE:` URL. The root and `studies/` directory READMEs are still maintained by you.
 - Self-contained output: plain HTML/CSS/JS, assets vendored locally, runnable offline, no build step. Third-party runtime libs (GSAP, Lenis, etc.) are fine, loaded via CDN or vendored.
 - README counts derived from folder counts, never trusted increments; root and category READMEs kept in sync.
 - CLI/headless only — no GUI or computer-use. Show evidence from actual command output, not "it should work".
