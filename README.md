@@ -4,7 +4,7 @@
 
 Built mostly with **React, TypeScript, Vite, Tailwind CSS, Three.js, Framer Motion, and GSAP** (plus plenty of framework-free HTML/CSS/JS) — a reference collection of copy-pasteable, AI-generated front-end components and templates for anyone exploring what Claude can build on the web.
 
-**Categories:** [Hero sections](./hero-sections/) · [Landing pages](./landing-pages/) · [Shaders](./shaders/) · [UI design systems](./ui-design/) · [Components & UI](./components-ui/) · [Portfolios](./portfolios/) · [Animations & loaders](./animations-loaders/) · [3D & games](./3d-games/) · [Templates](./templates/)
+**Categories:** [Hero sections](./hero-sections/) · [Landing pages](./landing-pages/) · [Shaders](./shaders/) · [UI design systems](./ui-design/) · [Components & UI](./components-ui/) · [Portfolios](./portfolios/) · [Animations & loaders](./animations-loaders/) · [3D & games](./3d-games/) · [Templates](./templates/) · [Studies](./studies/)
 
 Each project folder includes the originating prompt as `prompt.md`, preserved alongside the generated code. Some prompts were inspired by or adapted from public prompt/design references, including [cnemri's gist](https://gist.github.com/cnemri/c917e11b3a6936823b509dcff53392aa), [motionsites.ai](https://motionsites.ai/), [lafys.com](https://lafys.com/), [designprompts.dev](https://www.designprompts.dev/), [21st.dev](https://21st.dev), [superdesign.dev](https://superdesign.dev/), and [landinghero.ai](https://landinghero.ai/).
 
@@ -25,7 +25,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (349)
+## Projects (350)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -448,13 +448,14 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Studies (2)</b></summary>
+<summary><b>Studies (3)</b></summary>
 
-Faithful, same-to-same clones of existing UI templates, rebuilt from recon as self-contained plain HTML/CSS/JS for study. Each credits its original designer.
+Same-to-same clones of existing UI templates and real-world website designs, rebuilt from recon as self-contained plain HTML/CSS/JS for study and learning. Every study credits its original creators in its own README.
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [finorio-saas-landing](./studies/finorio-saas-landing/) | Pixel-faithful clone of the "Finorio" finance / money-management SaaS template (7 pages: home, features, pricing, contact, login, register, forget-password) — a light lavender (#c6bdfa/#8c71f6) / off-white (#f9f8fb) palette on the vendored "Stack Sans Text" rounded geometric font, a fixed floating white pill navbar, a phone-mockup hero with App Store / Google Play badges and a 500k+/4.5 stats bar, a 2×2 soft-gradient feature-card grid (balance card + CSS bar chart), alternating image/text experience rows, a Monthly/Annually pricing toggle (Annually $0.00/$5.59/$9.59 ↔ Monthly $0.00/$6.99/$11.99) with three plan cards and a featured-column comparison table, a testimonial grid with avatars + amber stars, a +/- FAQ accordion, a lavender CTA panel with angled phone mockups, a four-column footer, plus a password eye toggle on the auth pages, a mobile hamburger menu, and IntersectionObserver fade-and-rise scroll reveals; font, webp imagery, and inline logo/badge SVGs vendored locally, no build step, fully offline | HTML, CSS, vanilla JS, Stack Sans Text |
 | [productized-agency-aceternity](./studies/productized-agency-aceternity/) | Pixel-faithful clone of Aceternity's "Productized Agency" template — an 11-page marketing site (long home, work, products, pricing, blog index + 6 articles) for a fictional design/dev studio, on a warm bone (#F0EFEC) palette with a signature yellow (#FFCC00) accent, dusty-green checks, Inter + DM Mono, and a dark glowing-arc "Aceternity" hero; sticky "Chat with Alex" nav and a dark "Make Your Website a Sales Machine" footer with a giant Aceternity watermark are shared across every page; a logo marquee, bento feature grids, an "Aceternity VS Traditional Service Providers" comparison table, testimonial carousels, tabbed pricing cards, and a CSS-keyframe FAQ accordion are reproduced from the original Tailwind v4 markup, with Framer-Motion entrances replaced by IntersectionObserver reveals; fonts + images vendored locally, fully offline | HTML, CSS, vanilla JS, Inter, DM Mono |
+| [sidefolio-portfolio-template](./studies/sidefolio-portfolio-template/) | Faithful 14-page clone of Aceternity UI's "Sidefolio" developer-portfolio template — a light-theme app with a fixed left sidebar (avatar, Tabler-style outline-icon nav, socials, and a dark "Read Resume" pill with an animated sky-glow + emerald-underline hover), a white rounded content panel on a gray page, Cal Sans gradient-clipped headings + Inter body, and the full route set: home, about, projects + 4 project details, articles/blog + 4 articles (with dark code-snippet blocks + copy buttons), contact form, and a two-column work-history resume timeline; staggered IntersectionObserver card entrance, gray-50 card-hover surfaces, polaroid-tilt about gallery, and a mobile sidebar overlay toggle; fonts, logos, project thumbnails, and photos vendored locally, fully offline | HTML, CSS, vanilla JS, Cal Sans, Inter |
 
 </details>
