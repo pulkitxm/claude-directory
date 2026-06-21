@@ -1,5 +1,7 @@
 # DOPAMINE — Maximalism / Dopamine Design System Showcase (HTML + CSS + Vanilla JS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A self-contained, living documentation page for a fictional component kit called **DOPAMINE**, demonstrating the Maximalism / Dopamine visual style end to end: five clashing accent colors, pattern-on-pattern layering, multi-layered stacked shadows, massive bleeding typography, and over twenty floating decorative shapes — all stitched together by scrolling marquees. The design principle is unapologetic excess: every pixel sparks joy, empty space is wasted space. Generated with Claude Fable 5.
 
 ## What it demonstrates (every "Bold Factor" signature)
