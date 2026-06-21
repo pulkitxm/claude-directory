@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (48)</b></summary>
+<summary><b>Templates (50)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -395,6 +395,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [neon-velocity-style-guide](./templates/neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
 | [obsidian-elite-template](./templates/obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
 | [organic-intelligence-wave](./templates/organic-intelligence-wave/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Inter, JetBrains Mono |
+| [productized-agency-template](./templates/premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [raw-form-design-system](./templates/raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
 | [realmagic-ticker-scroll](./templates/realmagic-ticker-scroll/) | Interface experiment. | HTML, CSS, vanilla JS, GSAP, ScrollTrigger, Anton, Instrument Serif |
 | [red-sun-editorial-template](./templates/red-sun-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Manrope |
@@ -423,16 +424,5 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [terroir-tasting-room](./templates/terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
 | [sidefolio-portfolio-template](./templates/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
-
-</details>
-
-<details>
-<summary><b>Studies (2)</b></summary>
-
-Same-to-same clones of existing UI templates and real-world website designs, rebuilt from recon as self-contained plain HTML/CSS/JS for study and learning. Every study credits its original creators in its own README.
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [productized-agency-aceternity](./studies/productized-agency-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 
 </details>
