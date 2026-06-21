@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (347)
+## Projects (348)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -421,5 +421,16 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [synapse-design-system](./templates/synapse-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Inter |
 | [terroir-tasting-room](./templates/terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
+
+</details>
+
+<details>
+<summary><b>Studies (1)</b></summary>
+
+Faithful, same-to-same clones of existing UI templates, rebuilt from recon as self-contained plain HTML/CSS/JS for study. Each credits its original designer.
+
+| Project | Description | Stack |
+| --- | --- | --- |
+| [productized-agency-aceternity](./studies/productized-agency-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 
 </details>
