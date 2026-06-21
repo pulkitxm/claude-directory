@@ -21,6 +21,7 @@
 | [lumina-portfolio-template](./lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
 | [midnight-editorial-template](./midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
 | [neon-velocity-style-guide](./neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
+| [nextmerce-saas-ecommerce](./premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [oatmeal-saas-kit](./premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [obsidian-elite-template](./obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
 | [organic-intelligence-wave](./organic-intelligence-wave/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Inter, JetBrains Mono |
