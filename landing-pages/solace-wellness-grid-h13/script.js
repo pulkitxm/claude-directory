@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Scroll reveal with stagger
 	const io = new IntersectionObserver(
 		(entries) => {
-			entries.forEach((entry, i) => {
+			entries.forEach((entry, _i) => {
 				if (entry.isIntersecting) {
 					const el = entry.target;
 					setTimeout(

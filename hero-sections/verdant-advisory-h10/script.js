@@ -1,18 +1,17 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-	document.addEventListener("DOMContentLoaded", function () {
+	document.addEventListener("DOMContentLoaded", () => {
 		/* Scroll reveal */
 		var revealEls = document.querySelectorAll("[data-reveal]");
 		if (reduce || !("IntersectionObserver" in window)) {
-			revealEls.forEach(function (el) {
+			revealEls.forEach((el) => {
 				el.classList.add("is-visible");
 			});
 		} else {
 			var io = new IntersectionObserver(
-				function (entries) {
-					entries.forEach(function (e) {
+				(entries) => {
+					entries.forEach((e) => {
 						if (e.isIntersecting) {
 							e.target.classList.add("is-visible");
 							io.unobserve(e.target);
@@ -21,14 +20,14 @@
 				},
 				{ threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
 			);
-			revealEls.forEach(function (el) {
+			revealEls.forEach((el) => {
 				io.observe(el);
 			});
 		}
 
 		/* Navbar shadow on scroll */
 		var nav = document.getElementById("nav");
-		var onScroll = function () {
+		var onScroll = () => {
 			nav.classList.toggle("scrolled", window.scrollY > 12);
 		};
 		onScroll();
@@ -37,12 +36,12 @@
 		/* Mobile menu */
 		var burger = document.getElementById("burger");
 		var menu = document.getElementById("mobile-menu");
-		burger.addEventListener("click", function () {
+		burger.addEventListener("click", () => {
 			var open = menu.classList.toggle("open");
 			burger.setAttribute("aria-expanded", String(open));
 		});
-		menu.querySelectorAll("a").forEach(function (a) {
-			a.addEventListener("click", function () {
+		menu.querySelectorAll("a").forEach((a) => {
+			a.addEventListener("click", () => {
 				menu.classList.remove("open");
 				burger.setAttribute("aria-expanded", "false");
 			});
@@ -62,7 +61,7 @@
 			function step(ts) {
 				if (start === null) start = ts;
 				var p = Math.min((ts - start) / dur, 1);
-				var eased = 1 - Math.pow(1 - p, 3);
+				var eased = 1 - (1 - p) ** 3;
 				el.textContent = Math.round(target * eased) + suffix;
 				if (p < 1) requestAnimationFrame(step);
 			}
@@ -72,8 +71,8 @@
 			counters.forEach(runCount);
 		} else {
 			var co = new IntersectionObserver(
-				function (entries) {
-					entries.forEach(function (e) {
+				(entries) => {
+					entries.forEach((e) => {
 						if (e.isIntersecting) {
 							runCount(e.target);
 							co.unobserve(e.target);
@@ -82,7 +81,7 @@
 				},
 				{ threshold: 0.6 },
 			);
-			counters.forEach(function (el) {
+			counters.forEach((el) => {
 				co.observe(el);
 			});
 		}

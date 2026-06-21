@@ -1,5 +1,5 @@
-import { Reveal } from "./Reveal";
 import { stats } from "../lib/content";
+import { Reveal } from "./Reveal";
 
 /**
  * A quiet stats band on a stone tint. Numbers scale up gently on group-hover,

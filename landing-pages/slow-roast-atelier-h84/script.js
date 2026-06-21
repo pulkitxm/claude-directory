@@ -1,18 +1,16 @@
-(function () {
-	"use strict";
-
+(() => {
 	/* ---- Scroll reveal ---- */
 	var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	var reveals = document.querySelectorAll(".reveal");
 
 	if (reduced || !("IntersectionObserver" in window)) {
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			el.classList.add("visible");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (entry) {
+			(entries) => {
+				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						entry.target.classList.add("visible");
 						io.unobserve(entry.target);
@@ -21,7 +19,7 @@
 			},
 			{ threshold: 0.1 },
 		);
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -47,10 +45,10 @@
 
 	if (openBtn) openBtn.addEventListener("click", openMenu);
 	if (closeBtn) closeBtn.addEventListener("click", closeMenu);
-	links.forEach(function (l) {
+	links.forEach((l) => {
 		l.addEventListener("click", closeMenu);
 	});
-	document.addEventListener("keydown", function (e) {
+	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape" && menu.classList.contains("open")) closeMenu();
 	});
 
@@ -58,10 +56,10 @@
 	var form = document.getElementById("subscribeForm");
 	var note = document.getElementById("subNote");
 	if (form) {
-		form.addEventListener("submit", function (e) {
+		form.addEventListener("submit", (e) => {
 			e.preventDefault();
 			var input = form.querySelector("input");
-			if (input && input.value && input.checkValidity()) {
+			if (input?.value && input.checkValidity()) {
 				note.hidden = false;
 				form.reset();
 			} else {

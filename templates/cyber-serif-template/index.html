@@ -333,7 +333,7 @@ const io=new IntersectionObserver((es)=>{
   es.forEach(e=>{
     if(e.isIntersecting){
       const i=cards.indexOf(e.target);
-      if(i>=0)e.target.style.transitionDelay=(i*0.1)+'s';
+      if(i>=0)e.target.style.transitionDelay=`${i*0.1}s`;
       e.target.classList.add('in');
       io.unobserve(e.target);
     }
@@ -345,8 +345,8 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const r=card.getBoundingClientRect();
-    card.style.setProperty('--mx',(e.clientX-r.left)+'px');
-    card.style.setProperty('--my',(e.clientY-r.top)+'px');
+    card.style.setProperty('--mx',`${e.clientX-r.left}px`);
+    card.style.setProperty('--my',`${e.clientY-r.top}px`);
   });
 });
 
@@ -357,8 +357,8 @@ addEventListener('mousemove',e=>{
   const px=(e.clientX/innerWidth-0.5)*2, py=(e.clientY/innerHeight-0.5)*2;
   mockup.querySelectorAll('[data-depth]').forEach(el=>{
     const d=parseFloat(el.dataset.depth);
-    const base=el.style.getPropertyValue('--base')||el.dataset.base||'';
-    el.style.transform=(getComputedRot(el))+` translate(${px*12*d}px, ${py*12*d}px)`;
+    const _base=el.style.getPropertyValue('--base')||el.dataset.base||'';
+    el.style.transform=`${getComputedRot(el)} translate(${px*12*d}px, ${py*12*d}px)`;
   });
 },{passive:true});
 function getComputedRot(el){
@@ -374,7 +374,7 @@ if(bars){
   const heights=[42,68,55,82,60,90,48,72];
   heights.forEach((h,i)=>{
     const b=document.createElement('div');
-    b.className='bar';b.style.height=h+'%';b.style.animationDelay=(i*0.18)+'s';
+    b.className='bar';b.style.height=`${h}%`;b.style.animationDelay=`${i*0.18}s`;
     bars.appendChild(b);
   });
 }
@@ -387,7 +387,7 @@ function countUp(el){
   const dur=1400;const t0=performance.now();
   function frame(t){
     let p=Math.min((t-t0)/dur,1);
-    p=1-Math.pow(1-p,3); // ease-out cubic
+    p=1-(1-p) ** 3; // ease-out cubic
     const val=(target*p).toFixed(dec);
     el.textContent=pre+val+suf;
     if(p<1)requestAnimationFrame(frame);

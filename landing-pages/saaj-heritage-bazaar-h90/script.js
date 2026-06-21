@@ -1,6 +1,4 @@
-(function () {
-	"use strict";
-
+(() => {
 	/* ---------- Products ---------- */
 	var products = [
 		{
@@ -66,7 +64,7 @@
 	var grid = document.getElementById("prod-grid");
 	if (grid) {
 		grid.innerHTML = products
-			.map(function (p) {
+			.map((p) => {
 				var badge = p.badge
 					? '<div class="badge ' +
 						p.badge +
@@ -74,7 +72,7 @@
 						(p.badge === "new" ? "New" : "Popular") +
 						"</div>"
 					: "";
-				var was = p.was ? '<span class="was">' + p.was + "</span>" : "";
+				var was = p.was ? `<span class="was">${p.was}</span>` : "";
 				return (
 					"" +
 					'<article class="prod">' +
@@ -130,8 +128,8 @@
 	var tg = document.getElementById("test-grid");
 	if (tg) {
 		tg.innerHTML = testimonials
-			.map(function (t, i) {
-				return (
+			.map(
+				(t, _i) =>
 					"" +
 					'<div class="test" data-reveal>' +
 					'<div class="stars">' +
@@ -152,16 +150,15 @@
 					t.l +
 					"</p></div>" +
 					"</div>" +
-					"</div>"
-				);
-			})
+					"</div>",
+			)
 			.join("");
 	}
 
 	/* ---------- Scroll reveal ---------- */
 	var io = new IntersectionObserver(
-		function (entries) {
-			entries.forEach(function (e) {
+		(entries) => {
+			entries.forEach((e) => {
 				if (e.isIntersecting) {
 					e.target.classList.add("visible");
 					io.unobserve(e.target);
@@ -170,7 +167,7 @@
 		},
 		{ threshold: 0.1 },
 	);
-	document.querySelectorAll("[data-reveal]").forEach(function (el) {
+	document.querySelectorAll("[data-reveal]").forEach((el) => {
 		io.observe(el);
 	});
 
@@ -178,7 +175,7 @@
 	var header = document.getElementById("site-header");
 	window.addEventListener(
 		"scroll",
-		function () {
+		() => {
 			header.classList.toggle("shrink", window.scrollY > 50);
 		},
 		{ passive: true },
@@ -193,15 +190,15 @@
 		document.body.style.overflow = on ? "hidden" : "";
 	}
 	if (open)
-		open.addEventListener("click", function () {
+		open.addEventListener("click", () => {
 			setMenu(true);
 		});
 	if (close)
-		close.addEventListener("click", function () {
+		close.addEventListener("click", () => {
 			setMenu(false);
 		});
-	menu.querySelectorAll("a").forEach(function (a) {
-		a.addEventListener("click", function () {
+	menu.querySelectorAll("a").forEach((a) => {
+		a.addEventListener("click", () => {
 			setMenu(false);
 		});
 	});
@@ -234,13 +231,13 @@
 	var cTitle = document.getElementById("card-title");
 	var cDesc = document.getElementById("card-desc");
 	if (cContent && cImg) {
-		setInterval(function () {
+		setInterval(() => {
 			idx = (idx + 1) % collections.length;
 			var d = collections[idx];
 			cContent.classList.add("fade");
 			cImg.style.opacity = "0";
-			setTimeout(function () {
-				cImg.src = "./assets/img/" + d.img;
+			setTimeout(() => {
+				cImg.src = `./assets/img/${d.img}`;
 				cTag.textContent = d.tag;
 				cTitle.textContent = d.title;
 				cDesc.textContent = d.desc;
@@ -254,12 +251,12 @@
 	var form = document.getElementById("callback-form");
 	var msg = document.getElementById("form-msg");
 	if (form) {
-		form.addEventListener("submit", function (e) {
+		form.addEventListener("submit", (e) => {
 			e.preventDefault();
 			var name = form.name;
 			var phone = form.phone;
 			var ok = true;
-			[name, phone].forEach(function (f) {
+			[name, phone].forEach((f) => {
 				var bad = !f.value.trim();
 				f.closest(".field").classList.toggle("invalid", bad);
 				if (bad) ok = false;

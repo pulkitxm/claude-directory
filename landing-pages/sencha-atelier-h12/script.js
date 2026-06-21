@@ -1,7 +1,5 @@
 // Sencha Atelier — interactions
-(function () {
-	"use strict";
-
+(() => {
 	const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	// Header scroll state
@@ -45,7 +43,7 @@
 		const start = performance.now();
 		const tick = (now) => {
 			const p = Math.min((now - start) / dur, 1);
-			const eased = 1 - Math.pow(1 - p, 3);
+			const eased = 1 - (1 - p) ** 3;
 			el.textContent = Math.round(eased * target);
 			if (p < 1) requestAnimationFrame(tick);
 		};

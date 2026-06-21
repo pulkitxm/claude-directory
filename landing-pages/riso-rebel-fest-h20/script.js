@@ -1,16 +1,14 @@
-(function () {
-	"use strict";
-
+(() => {
 	// ---- Mobile menu toggle ----
 	var burger = document.getElementById("burger");
 	var menu = document.getElementById("mobileMenu");
 	if (burger && menu) {
-		burger.addEventListener("click", function () {
+		burger.addEventListener("click", () => {
 			var open = menu.classList.toggle("open");
 			burger.setAttribute("aria-expanded", open ? "true" : "false");
 		});
-		menu.querySelectorAll("a").forEach(function (a) {
-			a.addEventListener("click", function () {
+		menu.querySelectorAll("a").forEach((a) => {
+			a.addEventListener("click", () => {
 				menu.classList.remove("open");
 				burger.setAttribute("aria-expanded", "false");
 			});
@@ -20,7 +18,7 @@
 	// ---- Sticky header shadow ----
 	var header = document.getElementById("header");
 	if (header) {
-		var onScroll = function () {
+		var onScroll = () => {
 			header.classList.toggle("scrolled", window.scrollY > 40);
 		};
 		window.addEventListener("scroll", onScroll, { passive: true });
@@ -31,13 +29,13 @@
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	var els = document.querySelectorAll(".reveal");
 	if (reduce || !("IntersectionObserver" in window)) {
-		els.forEach(function (el) {
+		els.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						io.unobserve(e.target);
@@ -46,7 +44,7 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
-		els.forEach(function (el) {
+		els.forEach((el) => {
 			io.observe(el);
 		});
 	}

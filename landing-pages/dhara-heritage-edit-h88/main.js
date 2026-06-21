@@ -1,7 +1,5 @@
 /* ===== DHARA — interactions ===== */
-(function () {
-	"use strict";
-
+(() => {
 	// ---- Product data (rendered client-side) ----
 	var PRODUCTS = [
 		{
@@ -57,8 +55,8 @@
 	function renderProducts() {
 		var grid = document.getElementById("prodGrid");
 		if (!grid) return;
-		grid.innerHTML = PRODUCTS.map(function (p) {
-			return (
+		grid.innerHTML = PRODUCTS.map(
+			(p) =>
 				'<article class="prod">' +
 				'<div class="prod-img">' +
 				'<img src="./assets/img/' +
@@ -76,9 +74,8 @@
 				'<p class="mat">' +
 				p.mat +
 				"</p>" +
-				"</article>"
-			);
-		}).join("");
+				"</article>",
+		).join("");
 	}
 
 	// ---- Hero slideshow ----
@@ -86,7 +83,7 @@
 		var slides = document.querySelectorAll("#heroSlider img");
 		if (slides.length < 2) return;
 		var i = 0;
-		setInterval(function () {
+		setInterval(() => {
 			slides[i].classList.remove("active");
 			i = (i + 1) % slides.length;
 			slides[i].classList.add("active");
@@ -97,14 +94,14 @@
 	function initReveal() {
 		var els = document.querySelectorAll(".reveal");
 		if (!("IntersectionObserver" in window)) {
-			els.forEach(function (el) {
+			els.forEach((el) => {
 				el.classList.add("in");
 			});
 			return;
 		}
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("in");
 						io.unobserve(e.target);
@@ -113,7 +110,7 @@
 			},
 			{ threshold: 0.12 },
 		);
-		els.forEach(function (el) {
+		els.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -135,15 +132,15 @@
 		}
 		burger.addEventListener("click", open);
 		if (close) close.addEventListener("click", shut);
-		links.forEach(function (l) {
+		links.forEach((l) => {
 			l.addEventListener("click", shut);
 		});
-		document.addEventListener("keydown", function (e) {
+		document.addEventListener("keydown", (e) => {
 			if (e.key === "Escape") shut();
 		});
 	}
 
-	document.addEventListener("DOMContentLoaded", function () {
+	document.addEventListener("DOMContentLoaded", () => {
 		renderProducts();
 		initSlider();
 		initReveal();

@@ -1,9 +1,7 @@
 /* ============================================================
    PRISMA NOIR — interactions
    ============================================================ */
-(function () {
-	"use strict";
-
+(() => {
 	const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---------- entrance ---------- */
@@ -66,8 +64,8 @@
 		document.body.style.overflow = "";
 	};
 
-	trigger && trigger.addEventListener("click", open);
-	close && close.addEventListener("click", shut);
+	trigger?.addEventListener("click", open);
+	close?.addEventListener("click", shut);
 	window.addEventListener("keydown", (e) => {
 		if (e.key === "Escape") shut();
 	});
@@ -92,8 +90,8 @@
 			cx += (tx - cx) * 0.06;
 			cy += (ty - cy) * 0.06;
 			if (drift) {
-				drift.style.setProperty("--px", cx.toFixed(2) + "px");
-				drift.style.setProperty("--py", cy.toFixed(2) + "px");
+				drift.style.setProperty("--px", `${cx.toFixed(2)}px`);
+				drift.style.setProperty("--py", `${cy.toFixed(2)}px`);
 			}
 			// only drive the star once the cursor has actually moved, so the
 			// entrance transition (data-rise) isn't overridden on load

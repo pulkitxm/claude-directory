@@ -1,7 +1,5 @@
 /* ============ ASTRAL VEIL — interactions ============ */
-(function () {
-	"use strict";
-
+(() => {
 	const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- navbar scroll state ---- */
@@ -111,8 +109,8 @@
 		el.style.borderColor = d.b;
 		el.style.color = d.t;
 		if (!reduced) {
-			el.style.animationDelay = ((i * 0.32) % 3).toFixed(2) + "s";
-			el.style.animationDuration = (5.5 + (i % 5) * 0.7).toFixed(1) + "s";
+			el.style.animationDelay = `${((i * 0.32) % 3).toFixed(2)}s`;
+			el.style.animationDuration = `${(5.5 + (i % 5) * 0.7).toFixed(1)}s`;
 		} else {
 			el.style.animation = "none";
 		}

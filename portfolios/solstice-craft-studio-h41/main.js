@@ -1,6 +1,5 @@
 /* SOLSTICE STUDIO — interactions */
-(function () {
-	"use strict";
+(() => {
 	const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---------- Fullscreen menu ---------- */

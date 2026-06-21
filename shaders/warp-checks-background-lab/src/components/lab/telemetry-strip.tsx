@@ -1,8 +1,8 @@
 import { Activity, Clock, Layers, Zap } from "lucide-react";
-import type { Telemetry } from "@/lib/useTelemetry";
-import type { WarpConfig } from "@/lib/warp";
-import { fmt } from "@/lib/utils";
 import { Glass } from "@/components/lab/primitives";
+import type { Telemetry } from "@/lib/useTelemetry";
+import { fmt } from "@/lib/utils";
+import type { WarpConfig } from "@/lib/warp";
 
 function Cell({
 	icon,

@@ -560,7 +560,7 @@ const grid=document.getElementById('recipeGrid');
 recipes.forEach((r,i)=>{
   const el=document.createElement('div');
   el.className='rcard reveal';
-  el.style.transitionDelay=(i%3*0.08)+'s';
+  el.style.transitionDelay=`${i%3*0.08}s`;
   el.innerHTML=`
     <div class="pic"><span class="tag">${r.tag}</span><img src="assets/img/${r.img}" alt="${r.name}"></div>
     <div class="rbody">
@@ -591,7 +591,7 @@ const qg=document.getElementById('quoteGrid');
 const star='<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>';
 quotes.forEach((q,i)=>{
   const el=document.createElement('div');
-  el.className='quote reveal';el.style.transitionDelay=(i*0.08)+'s';
+  el.className='quote reveal';el.style.transitionDelay=`${i*0.08}s`;
   el.innerHTML=`<div class="stars">${star.repeat(5)}</div><p>"${q.t}"</p>
     <div class="who"><div class="mono">${q.m}</div><div><b>${q.n}</b><small>${q.d}</small></div></div>`;
   qg.appendChild(el);
@@ -611,12 +611,12 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     const ans=item.querySelector('.faq-a');
     const open=item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(o=>{o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null;});
-    if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+    if(!open){item.classList.add('open');ans.style.maxHeight=`${ans.scrollHeight}px`;}
   });
 });
 
 /* ---------- HERO SLIDER ---------- */
-(function(){
+(()=> {
   const imgs=document.querySelectorAll('#heroBg img');
   let i=0;
   setInterval(()=>{imgs[i].classList.remove('active');i=(i+1)%imgs.length;imgs[i].classList.add('active');},5000);

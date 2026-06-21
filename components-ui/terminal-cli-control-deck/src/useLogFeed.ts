@@ -41,7 +41,7 @@ export function useLogFeed({
 	useEffect(() => {
 		for (let i = 0; i < 4; i += 1) push();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [push]);
 
 	useEffect(() => {
 		if (!running) return;
@@ -52,7 +52,7 @@ export function useLogFeed({
 		timer = window.setInterval(tick, interval);
 		return () => window.clearInterval(timer);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [interval, max, running]);
+	}, [interval, running, push]);
 
 	return lines;
 }

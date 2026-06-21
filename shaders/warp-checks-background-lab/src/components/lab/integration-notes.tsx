@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import {
 	FolderTree,
 	HelpCircle,
@@ -6,6 +5,7 @@ import {
 	Package,
 	Terminal,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { Glass, Kicker } from "@/components/lab/primitives";
 
 /** A copy-friendly command line styled as a terminal row. */

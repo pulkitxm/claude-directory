@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 			if (!isOpen) {
 				item.classList.add("open");
-				a.style.maxHeight = a.scrollHeight + "px";
+				a.style.maxHeight = `${a.scrollHeight}px`;
 			}
 		});
 	});
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const reveals = document.querySelectorAll(".reveal");
 	const io = new IntersectionObserver(
 		(entries) => {
-			entries.forEach((entry, i) => {
+			entries.forEach((entry, _i) => {
 				if (entry.isIntersecting) {
 					const sib = [
 						...entry.target.parentElement.querySelectorAll(".reveal"),

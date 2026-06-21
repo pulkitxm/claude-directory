@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
-import spaceGrotesk from "../assets/fonts/SpaceGrotesk-Variable.woff2?url";
 import jetbrainsMono from "../assets/fonts/JetBrainsMono-Variable.woff2?url";
+import spaceGrotesk from "../assets/fonts/SpaceGrotesk-Variable.woff2?url";
+import App from "./App.tsx";
 
 /*
  * Load the vendored variable faces (Space Grotesk + JetBrains Mono, both SIL OFL

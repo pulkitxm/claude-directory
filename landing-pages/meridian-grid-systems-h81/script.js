@@ -1,8 +1,7 @@
-(function () {
-	"use strict";
+(() => {
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-	document.addEventListener("DOMContentLoaded", function () {
+	document.addEventListener("DOMContentLoaded", () => {
 		// ---- Live clock ----
 		var clock = document.getElementById("clock");
 		function tick() {
@@ -18,8 +17,8 @@
 
 		// ---- Scroll reveal ----
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("vis");
 						io.unobserve(e.target);
@@ -28,7 +27,7 @@
 			},
 			{ threshold: 0.12 },
 		);
-		document.querySelectorAll(".reveal").forEach(function (el) {
+		document.querySelectorAll(".reveal").forEach((el) => {
 			io.observe(el);
 		});
 
@@ -36,16 +35,16 @@
 		var cardsWrap = document.getElementById("cards");
 		if (cardsWrap) {
 			var cardIO = new IntersectionObserver(
-				function (entries) {
-					entries.forEach(function (e) {
+				(entries) => {
+					entries.forEach((e) => {
 						if (e.isIntersecting) {
 							var cards = cardsWrap.querySelectorAll(".card");
-							cards.forEach(function (c, i) {
+							cards.forEach((c, i) => {
 								if (reduce) {
 									c.classList.add("go");
 									return;
 								}
-								c.style.animationDelay = i * 0.12 + "s";
+								c.style.animationDelay = `${i * 0.12}s`;
 								c.classList.add("go");
 							});
 							cardIO.disconnect();
@@ -70,7 +69,7 @@
 				dur = 1400;
 			function frame(now) {
 				var p = Math.min((now - start) / dur, 1);
-				var eased = 1 - Math.pow(1 - p, 3);
+				var eased = 1 - (1 - p) ** 3;
 				el.textContent = (to * eased).toFixed(dec) + suf;
 				if (p < 1) requestAnimationFrame(frame);
 				else el.textContent = to.toFixed(dec) + suf;
@@ -78,8 +77,8 @@
 			requestAnimationFrame(frame);
 		}
 		var statIO = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						animateCount(e.target);
 						statIO.unobserve(e.target);
@@ -88,7 +87,7 @@
 			},
 			{ threshold: 0.6 },
 		);
-		document.querySelectorAll(".count").forEach(function (el) {
+		document.querySelectorAll(".count").forEach((el) => {
 			statIO.observe(el);
 		});
 
@@ -102,7 +101,7 @@
 			toggle.classList.toggle("annual", annual);
 			labM.classList.toggle("off", annual);
 			labA.classList.toggle("off", !annual);
-			amts.forEach(function (a) {
+			amts.forEach((a) => {
 				a.textContent = annual
 					? a.getAttribute("data-a")
 					: a.getAttribute("data-m");
@@ -110,7 +109,7 @@
 		}
 		if (toggle) {
 			applyPricing();
-			toggle.addEventListener("click", function () {
+			toggle.addEventListener("click", () => {
 				annual = !annual;
 				applyPricing();
 			});
@@ -120,12 +119,12 @@
 		var form = document.getElementById("form");
 		var btn = document.getElementById("submit");
 		if (form) {
-			form.addEventListener("submit", function (ev) {
+			form.addEventListener("submit", (ev) => {
 				ev.preventDefault();
 				var orig = btn.textContent;
 				btn.textContent = "Received.";
 				btn.classList.add("done");
-				setTimeout(function () {
+				setTimeout(() => {
 					btn.textContent = orig;
 					btn.classList.remove("done");
 					form.reset();

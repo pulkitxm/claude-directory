@@ -1,7 +1,7 @@
 import { Quote } from "lucide-react";
+import { testimonials } from "../lib/content";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { testimonials } from "../lib/content";
 
 // Alternating avatar tints so the row doesn't read uniform.
 const tints = ["#5D7052", "#C18C5D", "#A8743F"];

@@ -58,7 +58,7 @@ export function ChannelScope() {
 		return () =>
 			window.removeEventListener("shader:frame", handler as EventListener);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [valueRefs, sparkRefs, barRefs]);
 
 	return (
 		<div className="grid gap-3 sm:gap-4">

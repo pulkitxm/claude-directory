@@ -1,11 +1,11 @@
-import { ArrowRight, Star, Sun, Moon } from "lucide-react";
-import { Button } from "./Button";
-import { Blob } from "./Blob";
-import { Reveal } from "./Reveal";
-import { Eyebrow } from "./Eyebrow";
-import { ProductTin } from "./Botanical";
-import { featuredProduct } from "../lib/content";
+import { ArrowRight, Moon, Star, Sun } from "lucide-react";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { featuredProduct } from "../lib/content";
+import { Blob } from "./Blob";
+import { ProductTin } from "./Botanical";
+import { Button } from "./Button";
+import { Eyebrow } from "./Eyebrow";
+import { Reveal } from "./Reveal";
 
 /**
  * Featured-blend spotlight. The product illustration sits rotated -2deg inside a
