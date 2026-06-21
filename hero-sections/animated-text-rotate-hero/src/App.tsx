@@ -1,9 +1,9 @@
-import { Hero } from "@/components/ui/animated-hero";
+import { AmbientBackground } from "@/components/AmbientBackground";
+import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { TradeTicker } from "@/components/TradeTicker";
-import { AmbientBackground } from "@/components/AmbientBackground";
 import { TrustStrip } from "@/components/TrustStrip";
-import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/ui/animated-hero";
 
 /**
  * Demo host for the integrated <Hero /> (the copied shadcn component).

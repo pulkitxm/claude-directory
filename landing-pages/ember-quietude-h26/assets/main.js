@@ -1,20 +1,18 @@
-(function () {
-	"use strict";
-
+(() => {
 	// ---- scroll reveal ----
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	var reveals = document.querySelectorAll(".reveal");
 	if (reduce || !("IntersectionObserver" in window)) {
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						var d = e.target.getAttribute("data-delay") || 0;
-						setTimeout(function () {
+						setTimeout(() => {
 							e.target.classList.add("in");
 						}, d * 90);
 						io.unobserve(e.target);
@@ -23,7 +21,7 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -39,7 +37,7 @@
 	window.addEventListener("scroll", onScroll, { passive: true });
 	onScroll();
 	if (totop)
-		totop.addEventListener("click", function () {
+		totop.addEventListener("click", () => {
 			window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
 		});
 
@@ -53,20 +51,20 @@
 		document.body.style.overflow = open ? "hidden" : "";
 	}
 	if (burger)
-		burger.addEventListener("click", function () {
+		burger.addEventListener("click", () => {
 			setMenu(true);
 		});
 	if (closeBtn)
-		closeBtn.addEventListener("click", function () {
+		closeBtn.addEventListener("click", () => {
 			setMenu(false);
 		});
 	if (overlay)
-		overlay.querySelectorAll("a").forEach(function (a) {
-			a.addEventListener("click", function () {
+		overlay.querySelectorAll("a").forEach((a) => {
+			a.addEventListener("click", () => {
 				setMenu(false);
 			});
 		});
-	document.addEventListener("keydown", function (e) {
+	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape") setMenu(false);
 	});
 
@@ -75,19 +73,19 @@
 	if (toggle) {
 		var btns = toggle.querySelectorAll("button");
 		var amts = document.querySelectorAll(".amt[data-monthly]");
-		btns.forEach(function (b) {
-			b.addEventListener("click", function () {
-				btns.forEach(function (x) {
+		btns.forEach((b) => {
+			b.addEventListener("click", () => {
+				btns.forEach((x) => {
 					x.classList.remove("on");
 				});
 				b.classList.add("on");
 				var annual = b.getAttribute("data-period") === "annual";
-				amts.forEach(function (a) {
+				amts.forEach((a) => {
 					a.textContent = annual
 						? a.getAttribute("data-annual")
 						: a.getAttribute("data-monthly");
 				});
-				document.querySelectorAll(".per").forEach(function (p) {
+				document.querySelectorAll(".per").forEach((p) => {
 					if (p.getAttribute("data-per"))
 						p.textContent = annual
 							? "/ mo, billed yearly"
@@ -101,11 +99,11 @@
 	var timeEl = document.querySelector(".timer .time");
 	if (timeEl && !reduce) {
 		var secs = 24 * 60 + 59;
-		setInterval(function () {
+		setInterval(() => {
 			secs = secs > 0 ? secs - 1 : 24 * 60 + 59;
 			var m = Math.floor(secs / 60),
 				s = secs % 60;
-			timeEl.textContent = m + ":" + (s < 10 ? "0" + s : s);
+			timeEl.textContent = `${m}:${s < 10 ? `0${s}` : s}`;
 		}, 1000);
 	}
 })();

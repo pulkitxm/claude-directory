@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Copy, Terminal } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const STEPS = [

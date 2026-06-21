@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Moon, Shuffle, Sun, Github, Sparkles } from "lucide-react";
+import { Github, Moon, Shuffle, Sparkles, Sun } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 
 /** Titles cycled by the preset switcher to replay the letter-stagger entrance. */

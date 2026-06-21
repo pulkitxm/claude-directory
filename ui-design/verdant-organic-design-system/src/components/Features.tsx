@@ -1,17 +1,17 @@
 import {
+	Droplets,
+	HeartHandshake,
+	Leaf,
+	type LucideIcon,
+	Recycle,
 	Sprout,
 	Sun,
-	Droplets,
-	Leaf,
-	Recycle,
-	HeartHandshake,
-	type LucideIcon,
 } from "lucide-react";
+import { useReducedMotion } from "../hooks/useReducedMotion";
+import { features } from "../lib/content";
 import { Blob } from "./Blob";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { features } from "../lib/content";
-import { useReducedMotion } from "../hooks/useReducedMotion";
 
 const icons: Record<string, LucideIcon> = {
 	Sprout,

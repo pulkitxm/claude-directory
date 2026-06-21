@@ -1,6 +1,6 @@
 import { Grid3x3 } from "lucide-react";
-import type { WarpConfig } from "@/lib/warp";
 import { fmt } from "@/lib/utils";
+import type { WarpConfig } from "@/lib/warp";
 
 /**
  * Content for the prompt's `left-8 top-1/2 -translate-y-1/2 z-10` side rail —

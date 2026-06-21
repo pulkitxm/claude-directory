@@ -1,5 +1,4 @@
-(function () {
-	"use strict";
+(() => {
 	var reduceMotion = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
 	).matches;
@@ -60,7 +59,7 @@
 
 	var grid = document.getElementById("prod-grid");
 	if (grid) {
-		products.forEach(function (p) {
+		products.forEach((p) => {
 			var card = document.createElement("article");
 			card.className = "card reveal";
 			card.innerHTML =
@@ -92,14 +91,14 @@
 	/* ---------- Quick-add simulation ---------- */
 	var count = 0;
 	var counter = document.getElementById("cart-count");
-	document.addEventListener("click", function (e) {
+	document.addEventListener("click", (e) => {
 		var btn = e.target.closest(".qadd");
 		if (!btn || btn.classList.contains("done")) return;
 		btn.classList.add("done");
 		btn.innerHTML = checkSvg;
 		count += 1;
 		if (counter) counter.textContent = String(count);
-		setTimeout(function () {
+		setTimeout(() => {
 			btn.classList.remove("done");
 			btn.textContent = "+";
 		}, 1600);
@@ -108,16 +107,16 @@
 	/* ---------- Scroll reveals ---------- */
 	var reveals = document.querySelectorAll(".reveal");
 	if (reduceMotion || !("IntersectionObserver" in window)) {
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			el.classList.add("in");
 		});
 	} else {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (entry, i) {
+			(entries) => {
+				entries.forEach((entry, i) => {
 					if (entry.isIntersecting) {
 						setTimeout(
-							function () {
+							() => {
 								entry.target.classList.add("in");
 							},
 							(i % 4) * 90,
@@ -128,7 +127,7 @@
 			},
 			{ threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
 		);
-		reveals.forEach(function (el) {
+		reveals.forEach((el) => {
 			io.observe(el);
 		});
 	}
@@ -144,12 +143,12 @@
 	];
 	if (slides.length && !reduceMotion) {
 		var idx = 0;
-		setInterval(function () {
+		setInterval(() => {
 			slides[idx].classList.remove("active");
-			pips[idx] && pips[idx].classList.remove("on");
+			pips[idx]?.classList.remove("on");
 			idx = (idx + 1) % slides.length;
 			slides[idx].classList.add("active");
-			pips[idx] && pips[idx].classList.add("on");
+			pips[idx]?.classList.add("on");
 			if (fcName) fcName.textContent = names[idx];
 		}, 5000);
 	}
@@ -176,10 +175,10 @@
 		drawer.classList.remove("open");
 		document.body.style.overflow = "";
 	}
-	open && open.addEventListener("click", openDrawer);
-	close && close.addEventListener("click", closeDrawer);
-	back && back.addEventListener("click", closeDrawer);
-	document.querySelectorAll("[data-close]").forEach(function (a) {
+	open?.addEventListener("click", openDrawer);
+	close?.addEventListener("click", closeDrawer);
+	back?.addEventListener("click", closeDrawer);
+	document.querySelectorAll("[data-close]").forEach((a) => {
 		a.addEventListener("click", closeDrawer);
 	});
 })();

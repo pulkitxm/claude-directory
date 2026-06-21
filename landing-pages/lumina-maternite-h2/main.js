@@ -1,6 +1,4 @@
-(function () {
-	"use strict";
-
+(() => {
 	/* ---------- Header scroll state ---------- */
 	var header = document.getElementById("header");
 	function onScroll() {
@@ -13,13 +11,13 @@
 	/* ---------- Mobile drawer ---------- */
 	var burger = document.getElementById("burger");
 	var drawer = document.getElementById("drawer");
-	burger.addEventListener("click", function () {
+	burger.addEventListener("click", () => {
 		var open = drawer.classList.toggle("open");
 		burger.classList.toggle("open", open);
 		document.body.style.overflow = open ? "hidden" : "";
 	});
-	drawer.querySelectorAll("a").forEach(function (a) {
-		a.addEventListener("click", function () {
+	drawer.querySelectorAll("a").forEach((a) => {
+		a.addEventListener("click", () => {
 			drawer.classList.remove("open");
 			burger.classList.remove("open");
 			document.body.style.overflow = "";
@@ -30,8 +28,8 @@
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	if (!reduce && "IntersectionObserver" in window) {
 		var io = new IntersectionObserver(
-			function (entries) {
-				entries.forEach(function (e) {
+			(entries) => {
+				entries.forEach((e) => {
 					if (e.isIntersecting) {
 						e.target.classList.add("is-visible");
 						io.unobserve(e.target);
@@ -40,17 +38,13 @@
 			},
 			{ threshold: 0.12 },
 		);
-		document
-			.querySelectorAll(".reveal, .reveal-l, .reveal-r")
-			.forEach(function (el) {
-				io.observe(el);
-			});
+		document.querySelectorAll(".reveal, .reveal-l, .reveal-r").forEach((el) => {
+			io.observe(el);
+		});
 	} else {
-		document
-			.querySelectorAll(".reveal, .reveal-l, .reveal-r")
-			.forEach(function (el) {
-				el.classList.add("is-visible");
-			});
+		document.querySelectorAll(".reveal, .reveal-l, .reveal-r").forEach((el) => {
+			el.classList.add("is-visible");
+		});
 	}
 
 	/* ---------- Interactive packages ---------- */
@@ -104,23 +98,22 @@
 		var p = plans[key];
 		if (!p) return;
 		pkgTitle.textContent = p.title;
-		pkgCta.childNodes[0].nodeValue = p.cta + " ";
+		pkgCta.childNodes[0].nodeValue = `${p.cta} `;
 		pkgFeatures.innerHTML = p.features
-			.map(function (f) {
-				return (
+			.map(
+				(f) =>
 					'<div class="pkg__feature">' +
 					checkSvg +
 					"<span>" +
 					f +
-					"</span></div>"
-				);
-			})
+					"</span></div>",
+			)
 			.join("");
 	}
 
-	planCards.forEach(function (card) {
-		card.addEventListener("click", function () {
-			planCards.forEach(function (c) {
+	planCards.forEach((card) => {
+		card.addEventListener("click", () => {
+			planCards.forEach((c) => {
 				c.classList.remove("active");
 			});
 			card.classList.add("active");
@@ -131,18 +124,18 @@
 
 	/* ---------- FAQ accordion ---------- */
 	var faqItems = document.querySelectorAll(".faq-item");
-	faqItems.forEach(function (item) {
+	faqItems.forEach((item) => {
 		var q = item.querySelector(".faq-item__q");
 		var a = item.querySelector(".faq-item__a");
-		q.addEventListener("click", function () {
+		q.addEventListener("click", () => {
 			var isOpen = item.classList.contains("open");
-			faqItems.forEach(function (other) {
+			faqItems.forEach((other) => {
 				other.classList.remove("open");
 				other.querySelector(".faq-item__a").style.maxHeight = null;
 			});
 			if (!isOpen) {
 				item.classList.add("open");
-				a.style.maxHeight = a.scrollHeight + "px";
+				a.style.maxHeight = `${a.scrollHeight}px`;
 			}
 		});
 	});
@@ -150,7 +143,7 @@
 	/* ---------- Booking form ---------- */
 	var form = document.getElementById("bookForm");
 	var success = document.getElementById("formSuccess");
-	form.addEventListener("submit", function (e) {
+	form.addEventListener("submit", (e) => {
 		e.preventDefault();
 		var name = document.getElementById("name");
 		var phone = document.getElementById("phone");

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
-import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 import { Button } from "@/components/ui/button";
+import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 
 /**
  * Wraps the verbatim `HeroGeometric` component (the integrated shadcn piece)

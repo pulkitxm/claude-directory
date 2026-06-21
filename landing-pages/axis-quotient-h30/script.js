@@ -1,6 +1,5 @@
 /* AXIS QUOTIENT — interactions */
-(function () {
-	"use strict";
+(() => {
 	const reduceMotion = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
 	).matches;
@@ -25,7 +24,7 @@
 				second: "2-digit",
 				hour12: false,
 			}).format(new Date());
-		} catch (e) {
+		} catch (_e) {
 			clockEl.textContent = new Date().toTimeString().slice(0, 8);
 		}
 	}
@@ -89,7 +88,7 @@
 					t0 = performance.now();
 				function step(now) {
 					const p = Math.min((now - t0) / dur, 1);
-					const eased = 1 - Math.pow(1 - p, 3);
+					const eased = 1 - (1 - p) ** 3;
 					el.textContent = (target * eased).toFixed(dec);
 					if (p < 1) requestAnimationFrame(step);
 					else el.textContent = target.toFixed(dec);
@@ -115,7 +114,7 @@
 				});
 				if (!isOpen) {
 					item.classList.add("open");
-					content.style.maxHeight = content.scrollHeight + "px";
+					content.style.maxHeight = `${content.scrollHeight}px`;
 				}
 			});
 		});
@@ -148,15 +147,15 @@
 			cfg.off = !cfg.off;
 			knob.classList.toggle("on", cfg.off);
 			const data = cfg.off ? cfg.alt : cfg.on;
-			const amtEl = $("#" + key + "-amt");
+			const amtEl = $(`#${key}-amt`);
 			if (amtEl) amtEl.textContent = data.amt;
-			const perEl = $("#" + key + "-per");
+			const perEl = $(`#${key}-per`);
 			if (perEl && data.per) perEl.textContent = data.per;
-			const capEl = $("#" + key + "-cap");
+			const capEl = $(`#${key}-cap`);
 			if (capEl && data.cap) capEl.textContent = data.cap;
 			// emphasize active label
-			const onLbl = $('[data-on="' + key + '"]'),
-				offLbl = $('[data-off="' + key + '"]');
+			const onLbl = $(`[data-on="${key}"]`),
+				offLbl = $(`[data-off="${key}"]`);
 			if (onLbl && offLbl) {
 				onLbl.classList.toggle("t-off", cfg.off);
 				onLbl.classList.toggle("t-on", !cfg.off);
@@ -212,9 +211,9 @@
 			n = 30;
 		const pts = genPath(w, h, n, 9);
 		const line = pts
-			.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1))
+			.map((p, i) => `${(i ? "L" : "M") + p[0].toFixed(1)} ${p[1].toFixed(1)}`)
 			.join(" ");
-		const area = line + ` L${w} ${h} L0 ${h} Z`;
+		const area = `${line} L${w} ${h} L0 ${h} Z`;
 		spark.innerHTML =
 			`<path d="${area}" fill="rgba(31,68,255,0.08)"/>` +
 			`<path d="${line}" fill="none" stroke="#1f44ff" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>` +
@@ -252,7 +251,7 @@
 
 	/* ---------- Case-file data-viz (SVG) ---------- */
 	function drawViz(id, seed) {
-		const svg = $("#" + id);
+		const svg = $(`#${id}`);
 		if (!svg) return;
 		const W = 400,
 			H = 250,
@@ -275,7 +274,7 @@
 		for (let i = 0; i < cols; i++) {
 			const x = 16 + i * ((W - 32) / cols) + (W - 32) / cols / 2;
 			const y = 40 + rand() * 120;
-			lp += (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1) + " ";
+			lp += `${(i ? "L" : "M") + x.toFixed(1)} ${y.toFixed(1)} `;
 		}
 		svg.innerHTML = `<rect width="${W}" height="${H}" fill="#fbfaf6"/>${bars}<path d="${lp}" fill="none" stroke="#111114" stroke-width="1.5" stroke-dasharray="3 3"/>`;
 	}
@@ -290,7 +289,7 @@
 			H,
 			dpr,
 			pts = [],
-			raf;
+			_raf;
 		function resize() {
 			dpr = Math.min(window.devicePixelRatio || 1, 2);
 			W = canvas.clientWidth;
@@ -354,7 +353,7 @@
 				ctx.arc(p.x, p.y, p.c ? 1.8 : 1.2, 0, Math.PI * 2);
 				ctx.fill();
 			}
-			raf = requestAnimationFrame(frame);
+			_raf = requestAnimationFrame(frame);
 		}
 		resize();
 		frame();

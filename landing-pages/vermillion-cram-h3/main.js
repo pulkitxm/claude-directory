@@ -1,5 +1,4 @@
 (() => {
-	"use strict";
 	const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---- Mobile menu ---- */
@@ -130,7 +129,7 @@
 			start = performance.now();
 		const tick = (now) => {
 			const p = Math.min((now - start) / dur, 1);
-			const eased = 1 - Math.pow(1 - p, 3);
+			const eased = 1 - (1 - p) ** 3;
 			el.textContent = fmt(target * eased, dec);
 			if (p < 1) requestAnimationFrame(tick);
 			else el.textContent = fmt(target, dec);

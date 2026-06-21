@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { RotateCcw, Sparkles } from "lucide-react";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Spotlight } from "@/components/ui/spotlight";
 import { SplineScene } from "@/components/ui/splite";
+import { Spotlight } from "@/components/ui/spotlight";
 import { cn } from "@/lib/utils";
 
 const DEFAULTS = {

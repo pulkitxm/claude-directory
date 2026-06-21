@@ -98,7 +98,7 @@ export function OrbitalFallback({ className }: { className?: string }) {
 			type P = { sx: number; sy: number; depth: number; scale: number };
 			const projected: P[] = nodes.map((n) => {
 				// rotate Y
-				let x = n.x * cosY - n.z * sinY;
+				const x = n.x * cosY - n.z * sinY;
 				let z = n.x * sinY + n.z * cosY;
 				let y = n.y;
 				// rotate X
@@ -192,7 +192,6 @@ export function OrbitalFallback({ className }: { className?: string }) {
 		<canvas
 			ref={canvasRef}
 			className={className}
-			aria-hidden="true"
 			data-testid="orbital-fallback"
 		/>
 	);

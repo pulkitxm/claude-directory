@@ -1,4 +1,4 @@
-import { status, type StatusKind } from "./tokens";
+import { type StatusKind, status } from "./tokens";
 
 const tone = {
 	primary: "text-primary glow",

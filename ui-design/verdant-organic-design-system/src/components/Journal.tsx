@@ -1,8 +1,8 @@
 import { ArrowUpRight, Clock } from "lucide-react";
+import { posts } from "../lib/content";
+import { PostArt } from "./Botanical";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { PostArt } from "./Botanical";
-import { posts } from "../lib/content";
 
 /**
  * The Journal — three field notes. Each card crops a botanical illustration

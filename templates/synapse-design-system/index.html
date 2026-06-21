@@ -180,7 +180,7 @@
 </footer>
 
 <script>
-(function(){
+(()=> {
   /* ----- Ticker ----- */
   var pairs=[
     ['Components','248','white'],['Uptime','99.99%','emerald'],
@@ -192,10 +192,10 @@
   var track=document.getElementById('ticker');
   function buildSet(){
     var f=document.createDocumentFragment();
-    pairs.forEach(function(p){
+    pairs.forEach((p)=> {
       var t=document.createElement('span'); t.className='tick';
       var l=document.createElement('span'); l.className='lbl'; l.textContent=p[0];
-      var v=document.createElement('span'); v.className='val v-'+p[2]; v.textContent=p[1];
+      var v=document.createElement('span'); v.className=`val v-${p[2]}`; v.textContent=p[1];
       t.appendChild(l); t.appendChild(v); f.appendChild(t);
     });
     return f;
@@ -206,38 +206,38 @@
   /* ----- Hero staggered entrance on load ----- */
   var heroReveals=document.querySelectorAll('.hero .reveal');
   var delays={0:100,1:300,2:500,4:1000};
-  requestAnimationFrame(function(){
-    heroReveals.forEach(function(el){
+  requestAnimationFrame(()=> {
+    heroReveals.forEach((el)=> {
       var d=delays[el.getAttribute('data-d')]||0;
-      setTimeout(function(){el.classList.add('in');}, d);
+      setTimeout(()=> {el.classList.add('in');}, d);
     });
   });
 
   /* ----- Scroll reveal for sections ----- */
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
+  var io=new IntersectionObserver((entries)=> {
+    entries.forEach((e)=> {
       if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
     });
   },{threshold:0.15});
-  document.querySelectorAll('.section .reveal, .card.reveal').forEach(function(el,i){
-    el.style.transitionDelay=(Math.min(i,5)*0.08)+'s';
+  document.querySelectorAll('.section .reveal, .card.reveal').forEach((el,i)=> {
+    el.style.transitionDelay=`${Math.min(i,5)*0.08}s`;
     io.observe(el);
   });
 
   /* ----- Copy button ----- */
   var btn=document.getElementById('copyBtn');
   var code=document.getElementById('codeBlock');
-  btn.addEventListener('click',function(){
+  btn.addEventListener('click',()=> {
     var txt=code.innerText;
-    var done=function(){
+    var done=()=> {
       btn.classList.add('done');
       btn.querySelector('.copy-txt').textContent='Copied';
-      setTimeout(function(){
+      setTimeout(()=> {
         btn.classList.remove('done');
         btn.querySelector('.copy-txt').textContent='Copy';
       },1800);
     };
-    if(navigator.clipboard&&navigator.clipboard.writeText){
+    if(navigator.clipboard?.writeText){
       navigator.clipboard.writeText(txt).then(done).catch(done);
     }else{done();}
   });

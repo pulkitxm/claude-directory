@@ -1,9 +1,7 @@
 /* ============================================================
    STACKING CARDS — scroll-linked deck scrub
    ============================================================ */
-(function () {
-	"use strict";
-
+(() => {
 	const prefersReduced = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
 	).matches;
@@ -30,11 +28,11 @@
 	function layout() {
 		const step = stackStep();
 		cards.forEach((card, i) => {
-			card.style.top = NAV + i * step + "px";
+			card.style.top = `${NAV + i * step}px`;
 		});
 	}
 
-	const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+	const easeOutCubic = (t) => 1 - (1 - t) ** 3;
 	const clamp01 = (n) => Math.min(1, Math.max(0, n));
 
 	/* ---- main scroll-linked frame ---- */
@@ -67,8 +65,8 @@
 
 			const scale = 1 - 0.06 * p; // shrink slightly
 			const bright = 1 - 0.18 * p; // dim slightly
-			card.style.transform = "scale(" + scale.toFixed(4) + ")";
-			card.style.filter = "brightness(" + bright.toFixed(3) + ")";
+			card.style.transform = `scale(${scale.toFixed(4)})`;
+			card.style.filter = `brightness(${bright.toFixed(3)})`;
 			if (covers[i]) covers[i].style.opacity = (0.5 * p).toFixed(3);
 		});
 	}
@@ -89,9 +87,8 @@
 		for (let i = 0; i < CELLS; i++) {
 			const cell = document.createElement("b");
 			// randomised but deterministic-feeling stagger
-			cell.style.animationDelay = (Math.random() * 3.2).toFixed(2) + "s";
-			cell.style.animationDuration =
-				(2.4 + Math.random() * 1.6).toFixed(2) + "s";
+			cell.style.animationDelay = `${(Math.random() * 3.2).toFixed(2)}s`;
+			cell.style.animationDuration = `${(2.4 + Math.random() * 1.6).toFixed(2)}s`;
 			grid.appendChild(cell);
 		}
 	}
@@ -115,7 +112,7 @@
 	frame();
 
 	window.addEventListener("scroll", onScroll, { passive: true });
-	window.addEventListener("resize", function () {
+	window.addEventListener("resize", () => {
 		layout();
 		frame();
 	});

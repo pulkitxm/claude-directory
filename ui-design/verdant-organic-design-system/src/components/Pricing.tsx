@@ -1,11 +1,11 @@
 import { Check, Sparkles } from "lucide-react";
+import { useReducedMotion } from "../hooks/useReducedMotion";
+import { cn } from "../lib/cn";
+import { plans } from "../lib/content";
 import { Blob } from "./Blob";
 import { Button } from "./Button";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { plans } from "../lib/content";
-import { cn } from "../lib/cn";
-import { useReducedMotion } from "../hooks/useReducedMotion";
 
 /**
  * Three subscription tiers. The middle "Ritual" plan is the highlighted /

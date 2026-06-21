@@ -1,16 +1,16 @@
-import { Navbar } from "./components/Navbar";
-import { Hero } from "./components/Hero";
-import { Stats } from "./components/Stats";
-import { Features } from "./components/Features";
-import { HowItWorks } from "./components/HowItWorks";
-import { ProductDetail } from "./components/ProductDetail";
 import { Benefits } from "./components/Benefits";
-import { Testimonials } from "./components/Testimonials";
-import { Pricing } from "./components/Pricing";
-import { Journal } from "./components/Journal";
 import { Faq } from "./components/Faq";
+import { Features } from "./components/Features";
 import { FinalCta } from "./components/FinalCta";
 import { Footer } from "./components/Footer";
+import { Hero } from "./components/Hero";
+import { HowItWorks } from "./components/HowItWorks";
+import { Journal } from "./components/Journal";
+import { Navbar } from "./components/Navbar";
+import { Pricing } from "./components/Pricing";
+import { ProductDetail } from "./components/ProductDetail";
+import { Stats } from "./components/Stats";
+import { Testimonials } from "./components/Testimonials";
 
 /**
  * Verdant — a full landing page expressing the Organic / Natural design system.

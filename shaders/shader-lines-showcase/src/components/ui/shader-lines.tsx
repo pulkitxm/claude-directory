@@ -122,7 +122,7 @@ export function ShaderAnimation({
 			state.resizeObserver = null;
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [initThreeJS]);
 
 	const initThreeJS = () => {
 		const container = containerRef.current;

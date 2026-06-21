@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				const start = performance.now();
 				const step = (now) => {
 					const p = Math.min((now - start) / dur, 1);
-					const eased = 1 - Math.pow(1 - p, 3);
+					const eased = 1 - (1 - p) ** 3;
 					el.textContent = Math.round(target * eased) + suffix;
 					if (p < 1) requestAnimationFrame(step);
 				};

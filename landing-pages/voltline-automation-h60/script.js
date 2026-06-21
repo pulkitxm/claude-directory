@@ -1,5 +1,4 @@
 (() => {
-	"use strict";
 	const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	/* ---------- nav scrolled state ---------- */
@@ -51,17 +50,17 @@
 	}
 
 	/* ---------- starfields ---------- */
-	function seedStars(container, count, area) {
+	function seedStars(container, count, _area) {
 		const frag = document.createDocumentFragment();
 		for (let i = 0; i < count; i++) {
 			const s = document.createElement("span");
 			s.className = "star";
 			const sz = (Math.random() * 1.6 + 0.5).toFixed(2);
-			s.style.width = s.style.height = sz + "px";
-			s.style.top = (Math.random() * 100).toFixed(1) + "%";
-			s.style.left = (Math.random() * 100).toFixed(1) + "%";
-			s.style.setProperty("--dur", (Math.random() * 3 + 1.5).toFixed(2) + "s");
-			s.style.animationDelay = (Math.random() * 3).toFixed(2) + "s";
+			s.style.width = s.style.height = `${sz}px`;
+			s.style.top = `${(Math.random() * 100).toFixed(1)}%`;
+			s.style.left = `${(Math.random() * 100).toFixed(1)}%`;
+			s.style.setProperty("--dur", `${(Math.random() * 3 + 1.5).toFixed(2)}s`);
+			s.style.animationDelay = `${(Math.random() * 3).toFixed(2)}s`;
 			frag.appendChild(s);
 		}
 		container.appendChild(frag);
@@ -112,9 +111,9 @@
 		const start = performance.now();
 		const tick = (now) => {
 			const p = Math.min((now - start) / dur, 1);
-			const eased = 1 - Math.pow(1 - p, 3);
+			const eased = 1 - (1 - p) ** 3;
 			const val = (target * eased).toFixed(decimals);
-			el.innerHTML = val + '<span class="u">' + suffix + "</span>";
+			el.innerHTML = `${val}<span class="u">${suffix}</span>`;
 			if (p < 1) requestAnimationFrame(tick);
 		};
 		requestAnimationFrame(tick);

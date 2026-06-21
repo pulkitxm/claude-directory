@@ -1,19 +1,17 @@
-(function () {
-	"use strict";
-
+(() => {
 	var stage = document.getElementById("stage");
 	var lines = stage.querySelectorAll(".line");
-	var subline = stage.querySelector(".subline");
+	var _subline = stage.querySelector(".subline");
 	var BASE_MS = 200; // var(--base) in CSS, kept in sync here
 	var STAGGER_MS = 70;
 	var DUR_MS = 620;
 
 	// ---- split each line into clipped letter columns ----
 	var gi = 0; // continuous global stagger index across all lines
-	lines.forEach(function (line) {
+	lines.forEach((line) => {
 		var text = line.textContent;
 		line.textContent = "";
-		Array.prototype.forEach.call(text, function (ch) {
+		Array.prototype.forEach.call(text, (ch) => {
 			if (ch === " ") {
 				var sp = document.createElement("span");
 				sp.className = "space";
@@ -36,11 +34,9 @@
 	// ms from cascade start until the last letter has fully settled
 	var settleMs = BASE_MS + (TOTAL - 1) * STAGGER_MS + DUR_MS;
 	// subline starts just before the cascade finishes
-	stage.style.setProperty("--subline-delay", settleMs - 250 + "ms");
+	stage.style.setProperty("--subline-delay", `${settleMs - 250}ms`);
 
-	var reduce =
-		window.matchMedia &&
-		window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	var reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 	var loopTimer = null;
 	var HOLD_MS = 2200;
@@ -66,7 +62,7 @@
 
 	var replay = document.querySelector(".replay");
 	if (replay) {
-		replay.addEventListener("click", function () {
+		replay.addEventListener("click", () => {
 			if (reduce) return;
 			loop(); // restart cascade + reset the loop timer
 		});
