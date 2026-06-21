@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (47)</b></summary>
+<summary><b>Templates (48)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -383,6 +383,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [enterprise-admin-saas-landing](./templates/enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [disruptor-brutalist-template](./templates/disruptor-brutalist-template/) | Interface experiment. | Static HTML/CSS/JS, Ranchers, Space Mono, Plus Jakarta Sans, Archivo |
 | [editorial-naturalism-design-system](./templates/editorial-naturalism-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Newsreader, Instrument Sans |
+| [finorio-saas-landing](./templates/nextjstemplates/finorio-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Stack Sans Text |
 | [flux-editorial-saas-landing](./templates/flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [forest-sage-organic-store](./templates/forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [gen-z-neobrutalist-landing](./templates/gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
@@ -425,13 +426,12 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Studies (3)</b></summary>
+<summary><b>Studies (2)</b></summary>
 
 Same-to-same clones of existing UI templates and real-world website designs, rebuilt from recon as self-contained plain HTML/CSS/JS for study and learning. Every study credits its original creators in its own README.
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| [finorio-saas-landing](./studies/finorio-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Stack Sans Text |
 | [productized-agency-aceternity](./studies/productized-agency-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [sidefolio-portfolio-template](./studies/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
 
