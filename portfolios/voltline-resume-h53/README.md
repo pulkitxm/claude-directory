@@ -1,10 +1,6 @@
-# Voltline
+# Voltline — Neo-Brutalist Engineer Resume Portfolio (HTML + CSS + Vanilla JS)
 
-A single-page, multi-section personal portfolio / digital resume for a senior software engineer, staged as a loud, printable neo-brutalist broadsheet on warm cream "paper" with a faint orange dot-grid. Everything is defined by thick ink-black outlines, hard no-blur offset drop shadows, high-contrast orange-on-ink blocks, and a few deliberately skewed bands that tilt the layout just enough to feel hand-set — no soft gradients, no pillowy rounded cards, no shadow blur.
-
-Display type is Bebas Neue (the giant hero name, section titles, big stat numbers), with Space Grotesk for labels/buttons and Inter for body (all self-hosted). The sticky header's "DOWNLOAD" button triggers `window.print()`, and the resume scrolls through a full-viewport hero and the engineer's work, stack, and education sections in printable broadsheet order.
-
-Plain static build (HTML + CSS + a small vanilla JS file), all assets vendored locally, runs fully offline.
+Voltline is a single-page, multi-section personal portfolio and printable digital resume for a senior software engineer, designed as a loud neo-brutalist broadsheet on warm cream "paper" with a faint orange dot-grid. The layout is defined by thick ink-black outlines, hard no-blur offset drop shadows, high-contrast orange-on-ink blocks, and deliberately skewed bands that tilt sections just enough to feel hand-set — no gradients, no rounded cards, no shadow blur. Display type is Bebas Neue for the giant hero name and section titles, Space Grotesk for labels and buttons, and Inter for body copy — all self-hosted. A sticky header "DOWNLOAD" button triggers `window.print()` to produce a clean printable PDF, with scroll-reveal animations, count-up stat numbers, and parallax on the hero diagonal wedge. Generated with Claude Fable 5.
 
 ## Run
 
@@ -15,3 +11,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Portfolios](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

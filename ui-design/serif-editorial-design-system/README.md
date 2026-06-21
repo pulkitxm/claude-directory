@@ -1,13 +1,6 @@
-# Serif Design System — Roman & Quill
+# Roman & Quill — Serif Editorial Design System Showcase (React + TypeScript + Tailwind CSS)
 
-A standalone, fully self-contained showcase page that expresses the **Serif**
-design system: *typographic elegance through classical restraint*. Editorial,
-timeless, warm, refined — the feeling of opening a beautifully designed hardcover
-book. Built around a fictional private publishing house, **Roman & Quill**.
-
-> Design language: the finest editorial publications and literary magazines
-> meets luxury brand identities — illuminated-manuscript gold leaf, fine binding,
-> and a page that breathes.
+A standalone, fully self-contained showcase page expressing the **Serif** design system — typographic elegance through classical restraint. Built around a fictional private publishing house, **Roman & Quill**, the page evokes the feeling of opening a beautifully designed hardcover book: editorial, timeless, warm, and refined, combining the finest literary magazine conventions with luxury brand identity details — illuminated-manuscript gold leaf (`#B8860B`), fine binding aesthetics, and generous whitespace. Generated with Claude Fable 5.
 
 ## Sections
 
@@ -128,3 +121,7 @@ signature elements exist (small-caps, rules, gold, large numbers, paper grain,
 ambient glow), the FAQ accordion + mobile menu work, opacity-modifier utilities
 emit real colour (regression guard), touch targets are ≥ 44px, there is no
 horizontal overflow at 375px or 1366px, and the console is error-free.
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

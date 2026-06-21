@@ -1,16 +1,6 @@
-# Apex — Scroll-Scrubbed Hero Video
+# Apex — Scroll-Scrubbed Hero Video (Next.js 16 + React 19 + Tailwind CSS v4)
 
-An Apple-product-page-style hero for the fictional brand **Apex**: a five-second
-film of a Formula 1 launch that you *scrub by scrolling*. The `<video>` is pinned
-full-screen while the page's scroll position drives `video.currentTime`, so the
-shot plays forward (and rewinds) exactly as fast as you scroll — zero to 200 km/h,
-through the rear wing, up over the circuit, and into an orange sunset.
-
-A synced telemetry HUD (speed / gear / progress rail) is written straight to the
-DOM on each frame, and a polished standalone page wraps the hero with a
-corner-by-corner chapter breakdown, a marquee divider, a spec sheet, and a footer.
-
-Built from the verbatim prompt in [`prompt.md`](./prompt.md).
+An Apple-product-page-style scroll-scrubbed hero for the fictional brand **Apex**: a five-second Formula 1 launch film that you scrub by scrolling, with a synced telemetry HUD, a marquee divider, a spec sheet, and a full polished standalone site around it. The `<video>` is pinned full-screen while scroll position drives `video.currentTime` via a single `requestAnimationFrame` loop — no animation library. Generated with Claude Fable 5.
 
 ## Stack
 
@@ -76,3 +66,7 @@ ffmpeg -i downloaded.mp4 -c:v libx264 -g 1 -crf 18 -pix_fmt yuv420p \
 
 No code changes are needed — `ScrollHero` reads the duration from the file's
 metadata, so the new clip just drops in.
+
+---
+
+Part of the [Animations & loaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

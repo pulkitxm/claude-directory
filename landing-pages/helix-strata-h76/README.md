@@ -1,10 +1,6 @@
-# Helix Strata
+# Helix Strata — Business Architecture & Infrastructure Consultancy Landing Page (HTML, CSS, Vanilla JS)
 
-A full, multi-section, responsive landing page for a fictional enterprise business-architecture & infrastructure consultancy named Helix Strata — "architecting the future of business." The named design language is **Deep-Teal Architectural**: a quiet, engineering-forward aesthetic like the annual report of a firm that builds the invisible foundations of modern enterprises — a deep nocturnal teal canvas, a single soft periwinkle-lavender accent, and crisp bone-cream sections breaking the darkness like monograph pages.
-
-Sections alternate dark teal and bone cream: a fixed glass navbar, a hero with two gently floating widget cards over a rounded-top image, an ethos/about stats row, an expertise split, an interactive solutions section where hovering a service row cross-fades the paired image and description, an intelligence testimonial carousel, a market-intelligence blog grid, and a final CTA with a giant faint wordmark that brightens on hover. Motion is vanilla JS: IntersectionObserver reveals, the 6s widget bob, service-row swaps, the carousel, and hovers — respecting `prefers-reduced-motion`.
-
-One typeface throughout — Inter, vendored as WOFF2. Single `index.html` + local CSS/JS; all images local.
+A full, multi-section, responsive marketing landing page for a fictional enterprise business-architecture and infrastructure consultancy — "architecting the future of business" — built with the **Deep-Teal Architectural** design language: alternating deep nocturnal teal and bone-cream sections evoking a premium annual report, with a single periwinkle-lavender accent and editorial Inter typography. Signature features include a hero with two gently floating widget cards that bob on a 6-second animation, an interactive solutions section where hovering a service row cross-fades both the paired image and description text, a testimonial carousel with prev/next fade transitions, and a giant faint wordmark in the footer that brightens to full opacity on hover — all in pure HTML, CSS, and vanilla JS with Inter vendored as WOFF2 and all assets local. Generated with Claude Fable 5.
 
 ## Run
 
@@ -15,3 +11,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Landing pages](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

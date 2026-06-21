@@ -99,4 +99,79 @@ const data = await target.evaluate(() => {
 fs.writeFileSync(path.join(OUT, "outline.json"), JSON.stringify(data, null, 2));
 console.log("fonts:", data.fonts);
 console.log("nodes:", data.nodes.length, "imgs:", data.imgs.length);
+
+// Source CSS (the :hover / @keyframes / @media rules getComputedStyle can't see)
+// + linked CSS/JS URLs so the cloner can fetch and read the originals.
+const sources = await target.evaluate(() => {
+	const css = [];
+	for (const sheet of document.styleSheets) {
+		try {
+			for (const rule of sheet.cssRules) css.push(rule.cssText);
+		} catch {
+			// cross-origin sheet — rules unreadable here; href captured below for fetching
+		}
+	}
+	const abs = (u) => {
+		try {
+			return new URL(u, location.href).href;
+		} catch {
+			return u;
+		}
+	};
+	return {
+		css: css.join("\n"),
+		styles: [...document.querySelectorAll('link[rel~="stylesheet"][href]')].map(
+			(l) => abs(l.getAttribute("href")),
+		),
+		scripts: [...document.querySelectorAll("script[src]")].map((s) =>
+			abs(s.getAttribute("src")),
+		),
+	};
+});
+fs.writeFileSync(path.join(OUT, "source.css"), sources.css);
+fs.writeFileSync(
+	path.join(OUT, "sources.json"),
+	JSON.stringify({ styles: sources.styles, scripts: sources.scripts }, null, 2),
+);
+console.log(
+	"css bytes:",
+	sources.css.length,
+	"linked css:",
+	sources.styles.length,
+	"scripts:",
+	sources.scripts.length,
+);
+
+// Interaction states: rest vs :hover element screenshots for cards/buttons/links,
+// so the vision-judge can verify hover effects (which the full-page shot misses).
+// Modals/dropdowns are template-specific — the cloner opens those by reading source JS.
+try {
+	const statesDir = path.join(OUT, "states");
+	fs.mkdirSync(statesDir, { recursive: true });
+	const loc = target.locator(
+		'button, a, [role="button"], [class*="card" i], [class*="btn" i]',
+	);
+	const n = Math.min(await loc.count(), 10);
+	const index = [];
+	for (let i = 0; i < n; i++) {
+		const el = loc.nth(i);
+		try {
+			if (!(await el.isVisible())) continue;
+			const label = (await el.innerText().catch(() => "")).trim().slice(0, 40);
+			await el.screenshot({ path: path.join(statesDir, `el-${i}-rest.png`) });
+			await el.hover({ timeout: 2000 });
+			await page.waitForTimeout(400); // let the transition settle
+			await el.screenshot({ path: path.join(statesDir, `el-${i}-hover.png`) });
+			index.push({ i, label });
+		} catch {}
+	}
+	fs.writeFileSync(
+		path.join(statesDir, "index.json"),
+		JSON.stringify(index, null, 2),
+	);
+	console.log("hover states captured:", index.length);
+} catch (e) {
+	console.log("states capture skipped:", e.message);
+}
+
 await browser.close();

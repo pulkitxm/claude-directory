@@ -1,10 +1,6 @@
-# Lumen Launch
+# Lumen Launch — AI SaaS Product Launch Landing Page (Vanilla HTML + CSS + JS)
 
-A full, multi-section, responsive landing page for a fictional AI SaaS product named Lumen Launch — "turn one screen recording into a full product launch." The named design language is **Periwinkle Aurora**: a bright, optimistic modern-SaaS aesthetic — crisp white paper washed with soft lavender-and-periwinkle aurora gradients, oversized display type, and a single dark "product theatre" section for dramatic contrast. The recurring motif is a large, soft, blurred aurora blob sitting behind the hero product mockup.
-
-Sections span a frosted fixed header, a centered hero with a CSS/SVG browser-chrome dashboard mockup (video preview card, AI-processing pulse badge, progress bar, language chips, and a 3-step pipeline timeline) floating above the aurora blob, a logo marquee of inline-SVG brand marks, a three-step "how it works" row with animated div/SVG illustrations, alternating feature rows, a dark testimonial "product theatre" with infinite-scrolling quote cards, pricing with a working monthly/yearly toggle, an FAQ accordion, and a CTA band + footer. Motion is vanilla JS respecting `prefers-reduced-motion`.
-
-Typography pairs Outfit (display) with DM Sans (body) and a mono stack for chrome labels. All device/dashboard/illustration visuals are built from HTML + CSS + inline SVG; fonts and brand logos vendored locally.
+A full, multi-section, responsive landing page for Lumen Launch, a fictional AI SaaS product that turns one screen recording into a full product launch. The page uses the "Periwinkle Aurora" design language — a bright, optimistic modern-SaaS aesthetic built on crisp white paper washed with soft lavender-and-periwinkle aurora gradients, oversized display type, and a single dark "product theatre" section for dramatic contrast. The recurring motif is a large, soft, blurred aurora blob floating behind the hero product mockup — a CSS/SVG browser-chrome dashboard with a video preview card, AI-processing pulse badge, progress bar, language chips, and a 3-step pipeline timeline, all built from HTML + CSS + inline SVG. Sections continue through a logo marquee, a three-step "how it works" row with animated illustrated step cards, alternating feature rows, a dark infinite-scrolling testimonial theatre, a pricing section with a working monthly/yearly toggle, an FAQ accordion, and a CTA band + footer. Motion is vanilla JS respecting `prefers-reduced-motion`. Typography pairs Outfit (display) with DM Sans (body), both vendored locally. Generated with Claude Fable 5.
 
 ## Run
 
@@ -15,3 +11,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Landing pages](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

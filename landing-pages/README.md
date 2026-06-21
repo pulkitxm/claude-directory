@@ -1,6 +1,6 @@
 # Landing pages
 
-98 **Landing pages** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+**98 landing page experiments generated with Claude Fable 5** — SaaS, agency, product, e-commerce, and marketing landing page designs built with React, TypeScript, Vite, Tailwind CSS, Framer Motion, GSAP, and framework-free HTML/CSS/JS. A reference library of AI-generated, copy-pasteable landing page templates. Part of the [claude-directory](../README.md) ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|

@@ -1,32 +1,6 @@
-# Flatline — Flat Design System
+# Flatline — Flat Design System Marketing Page (React, TypeScript, Tailwind CSS v4, Vite)
 
-A complete, polished marketing page that showcases an entire **flat design system**:
-confident reduction, bold color blocking, geometric purity, and typography that
-carries the whole hierarchy. **Zero box-shadows, anywhere.** No fake depth, no
-vibrant gradients — interest comes from solid color, scale, and the layering of
-flat shapes (the "poster" look).
-
-Generated with Claude Fable 5 for the [claude-directory](../../README.md).
-
-## What it demonstrates
-
-- **Centralized design tokens** — the entire palette, the Outfit typeface, and the
-  radii live in one Tailwind v4 `@theme` block (`src/index.css`). Buttons, cards,
-  inputs and focus rings all compose those tokens; no hard-coded one-offs.
-- **Color as structure** — sharp full-section color blocks rotate White → Blue
-  hero → Fog features → **Emerald** benefits → **dark** how-it-works → Pricing →
-  FAQ → **Amber** CTA → **dark** footer. Color separates sections, never lines.
-- **Component kit** — every spec'd component: primary / secondary / outline buttons
-  (thick `border-4` outlines that fill on hover), tinted color-block cards with
-  icons in solid circles, the gray→hard-blue-border input, pill tags, and a
-  dedicated "swatches & specimens" showcase section.
-- **The bold factor** — large decorative geometry behind the hero, abstract
-  overlapping-shape compositions, multi-color stat count-ups, a pricing tier that
-  **rests larger** and scales more on hover, big multi-color numbered steps, and a
-  FAQ that uses thick `border-2` rules (the one allowed divider).
-- **Snappy, accessible motion** — 200ms transitions, scale + color-fill hover
-  feedback, scroll reveals, and high-contrast **solid** focus rings (no glow,
-  since there are no shadows to lean on). Respects `prefers-reduced-motion`.
+A complete marketing page that showcases the Flatline flat design system: confident reduction, bold color blocking, geometric purity, and typography that carries the full visual hierarchy — with zero box-shadows anywhere. Solid color sections rotate White → Blue hero → Fog features → Emerald benefits → dark how-it-works → Pricing → FAQ → Amber CTA → dark footer, using color as structure rather than dividing lines. The Outfit typeface is self-hosted in `public/fonts/*.woff2` for fully offline use, and all design tokens — palette, radii, the Outfit font stack — live in a single Tailwind v4 `@theme` block in `src/index.css`. Every specified component is present: primary / secondary / outline buttons with thick `border-4` outlines that fill on hover, tinted color-block cards with icons in solid circles, a gray-to-hard-blue-border input, pill tags, multi-color stat count-ups, a scaled popular pricing tier, and a bold FAQ with thick `border-2` rules. Generated with Claude Fable 5.
 
 ## Stack
 
@@ -57,3 +31,7 @@ npm run verify http://localhost:4173
 # Use a specific browser binary if needed:
 # CHROME_PATH=/path/to/chrome npm run verify http://localhost:4173
 ```
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

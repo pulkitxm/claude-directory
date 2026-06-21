@@ -1,6 +1,6 @@
 # Hero sections
 
-41 **Hero sections** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+**41 hero section experiments generated with Claude Fable 5** — full-viewport, video-background, animated, and glassmorphism landing-page hero components built with React, TypeScript, Tailwind CSS, Framer Motion, Three.js, and framework-free HTML/CSS/JS. Part of the [claude-directory](../README.md) collection of AI-generated UI ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|

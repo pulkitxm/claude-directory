@@ -1,18 +1,6 @@
-# Blobby — Playful Geometric Design System
+# Blobby — Playful Geometric Design System Landing Page (React + TypeScript + Tailwind CSS v4)
 
-A full landing page that puts a complete **Playful Geometric** design system to
-work. Built for a fictional no-code kit ("Blobby") for sticker-book brand sites,
-the page follows the system's core idea — **"stable grid, wild decoration"**:
-content lives in clean, readable areas while the world around it is alive with
-shape and motion. It references the Memphis Group (80s) cleaned up for modern
-screens — the energy without the chaos.
-
-Anchored by a warm paper background (`#FFFDF5`) and softer-than-black slate
-foreground (`#1E293B`), with four punchy pop colors used rotationally for a
-"confetti" effect: violet `#8B5CF6`, hot pink `#F472B6`, amber `#FBBF24` and mint
-`#34D399`. Chunky 2px borders, hard offset "pop" shadows (zero blur), varied
-radii (mixing pills with sharp corners for leaf/blob shapes), and bouncy elastic
-motion throughout.
+A full landing page that puts a complete **Playful Geometric** design system to work, built for a fictional no-code kit ("Blobby") for sticker-book brand sites. The design principle is **stable grid, wild decoration**: content lives in clean, readable areas while the world around it is alive with shape and motion — referencing the Memphis Group (80s) cleaned up for modern screens. A warm paper background (`#FFFDF5`) and four punchy pop colors (violet, hot pink, amber, mint) create a confetti-effect rotating palette, paired with chunky 2px borders, hard zero-blur offset shadows, and bouncy elastic animations throughout. Generated with Claude Fable 5.
 
 ## Sections
 
@@ -81,3 +69,7 @@ loop, the pricing "MOST POPULAR" badge + scaled featured tier are present, the
 FAQ accordion toggles with correct ARIA, the CTA form validates and shows its
 success state, the mobile nav opens, and `prefers-reduced-motion` reveals all
 content while disabling the marquee.
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

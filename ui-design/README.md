@@ -1,6 +1,6 @@
 # UI design
 
-34 **UI design** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+**34 UI design system experiments generated with Claude Fable 5** — Bauhaus, brutalism, neumorphism, Swiss, glassmorphism, maximalism, cyberpunk, and editorial design systems exploring typography, color, and layout. A showcase of AI-generated design-language and style-system explorations. Part of the [claude-directory](../README.md) ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|

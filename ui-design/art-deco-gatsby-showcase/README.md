@@ -1,8 +1,6 @@
-# The Gilded Hour — An Art Deco Design System
+# The Gilded Hour — Art Deco / Gatsby Design System Showcase (HTML + CSS + Vanilla JS)
 
-A self-contained showcase landing experience that fully expresses an Art Deco
-("Gatsby") design system: obsidian-and-gold, mathematical ornament, and the
-architectural grandeur of a 1920s skyscraper ballroom.
+A self-contained showcase landing page that fully expresses an Art Deco ("Gatsby") design system: obsidian-and-gold, mathematical ornament, and the architectural grandeur of a 1920s skyscraper ballroom. This dependency-free static page demonstrates a complete Art Deco UI design system with rotated-diamond containers, gold-on-obsidian palette, Roman numerals, double borders, diagonal crosshatch overlays, and Marcellus serif display type — all composed from CSS custom-property tokens. Generated with Claude Fable 5.
 
 It demonstrates the complete system across nine sections:
 
@@ -59,3 +57,7 @@ Skip-to-content link, decorative elements marked `aria-hidden`, labelled form
 controls, `aria-expanded`/`aria-controls` on the accordion and mobile toggle,
 visible gold focus states, 48px+ touch targets, and a reduced-motion fallback
 that reveals all content immediately.
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
