@@ -1,5 +1,7 @@
 # The Athenæum — Academia / Classical Design System Showcase (HTML + CSS + Vanilla JS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A self-contained showcase landing page that fully expresses the **Academia / Classical** design system: a scholarly, library-at-night experience for a fictional private members' library and manuscript society. This dependency-free static page demonstrates a complete classical UI design system with brass-and-mahogany tokens, arch-topped images, sepia-to-colour hover reveals, wax-seal badges, Roman-numeral section volumes, and ornate dividers — built entirely from CSS custom-property tokens. Generated with Claude Fable 5.
 
 It is not a dark theme with serifs tacked on — it is a physical library

@@ -1,5 +1,7 @@
 # Animated Text Rotate Hero — shadcn/ui Rotating Headline Component (React + Tailwind + TypeScript + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A centered marketing hero section that integrates the **shadcn/ui animated hero** — a headline that swaps a rotating word every two seconds using a `framer-motion` spring (`amazing → new → wonderful → beautiful → smart`). The component is embedded inside a branded **"Spektr" trade-desk** shell (midnight-teal identity, self-hosted fonts, live ticker tape) so you can see it in realistic landing-page context. Fully accessible: ambient motion freezes under `prefers-reduced-motion`, focus rings are visible, and zero remote assets are fetched at runtime. Generated with Claude Fable 5.
 
 ![Animated hero, dark mode](./screenshots/hero-dark.png)

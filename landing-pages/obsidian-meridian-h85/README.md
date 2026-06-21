@@ -1,5 +1,7 @@
 # Obsidian Meridian — Luxury Real-Estate & Architecture Landing Page (HTML + CSS + Vanilla JS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A single-page marketing landing page for Obsidian Meridian, a fictional elite architecture studio and luxury real-estate developer. The design language is "Cinematic Brutalist Noir" — the hushed restraint of a printed architecture monograph fused with the graded darkness of a film still — on a true-black canvas with warm brass accents and razor hairlines. Features include a per-letter wordmark reveal, an infinite Ken-Burns cinematic hero, a staggered selected-works grid, count-up stats, and a minimal inquiry form — all built with pure HTML, CSS, and vanilla JS. Generated with Claude Fable 5.
 
 ## Run
