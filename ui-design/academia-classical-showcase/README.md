@@ -1,8 +1,6 @@
-# The Athenæum — An Academia / Classical Design System
+# The Athenæum — Academia / Classical Design System Showcase (HTML + CSS + Vanilla JS)
 
-A self-contained showcase landing page that fully expresses the **Academia /
-Classical** design system: a scholarly, *library-at-night* experience for a
-fictional private members' library and manuscript society, **The Athenæum**.
+A self-contained showcase landing page that fully expresses the **Academia / Classical** design system: a scholarly, library-at-night experience for a fictional private members' library and manuscript society. This dependency-free static page demonstrates a complete classical UI design system with brass-and-mahogany tokens, arch-topped images, sepia-to-colour hover reveals, wax-seal badges, Roman-numeral section volumes, and ornate dividers — built entirely from CSS custom-property tokens. Generated with Claude Fable 5.
 
 It is not a dark theme with serifs tacked on — it is a physical library
 rendered in the browser, built entirely from CSS custom-property tokens
@@ -109,3 +107,7 @@ Skip-to-content link, semantic landmarks (`<header>`, `<nav>`, `<main>`,
 mobile toggle, an `aria-live` form status, visible 2px brass focus rings,
 48px+ touch targets, and a reduced-motion fallback that reveals all content
 immediately.
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

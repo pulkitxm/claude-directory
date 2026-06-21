@@ -1,10 +1,14 @@
-# claude-directory
+# claude-directory — AI-generated UI experiments built with Claude
 
-A directory of experimental landing pages, hero sections, and interactive prototypes generated with Claude Fable 5.
+**An open-source gallery of web UI experiments generated with [Claude](https://claude.com/) (Fable 5)** — landing pages, hero sections, GLSL shaders, design systems, animations, portfolios, and 3D/WebGL scenes. Every project is self-contained, ships its prompt, and includes a recorded demo. Browse the live directory at **[pulkitxm.com/claude-directory](https://pulkitxm.com/claude-directory)**.
 
-Most project folders are self-contained and include the originating prompt as `prompt.md`, preserved alongside the generated code. Some prompts were inspired by or adapted from public prompt/design references, including [cnemri's gist](https://gist.github.com/cnemri/c917e11b3a6936823b509dcff53392aa), [motionsites.ai](https://motionsites.ai/), [lafys.com](https://lafys.com/), [designprompts.dev](https://www.designprompts.dev/), [21st.dev](https://21st.dev), [superdesign.dev](https://superdesign.dev/), and [landinghero.ai](https://landinghero.ai/).
+Built mostly with **React, TypeScript, Vite, Tailwind CSS, Three.js, Framer Motion, and GSAP** (plus plenty of framework-free HTML/CSS/JS) — a reference collection of copy-pasteable, AI-generated front-end components and templates for anyone exploring what Claude can build on the web.
 
-The code in this repository was generated on my side with Claude Fable 5. This whole repo is vibe coded, so use it with precautions: review the code, check dependencies, verify accessibility/responsiveness, and run the local project checks before using anything in production.
+**Categories:** [Hero sections](./hero-sections/) · [Landing pages](./landing-pages/) · [Shaders](./shaders/) · [UI design systems](./ui-design/) · [Components & UI](./components-ui/) · [Portfolios](./portfolios/) · [Animations & loaders](./animations-loaders/) · [3D & games](./3d-games/) · [Templates](./templates/)
+
+Each project folder includes the originating prompt as `prompt.md`, preserved alongside the generated code. Some prompts were inspired by or adapted from public prompt/design references, including [cnemri's gist](https://gist.github.com/cnemri/c917e11b3a6936823b509dcff53392aa), [motionsites.ai](https://motionsites.ai/), [lafys.com](https://lafys.com/), [designprompts.dev](https://www.designprompts.dev/), [21st.dev](https://21st.dev), [superdesign.dev](https://superdesign.dev/), and [landinghero.ai](https://landinghero.ai/).
+
+> **Heads up:** every project here was generated with Claude Fable 5 — this whole repo is vibe coded. Use it with care: review the code, check dependencies, verify accessibility/responsiveness, and run the local project checks before shipping anything to production.
 
 ## Contributing
 

@@ -1,19 +1,6 @@
-# Warp Checks // Background Lab
+# Warp Checks Background Lab — Animated Checks-Warp GLSL Background with Live Console (React + @paper-design/shaders-react + Tailwind CSS v4)
 
-A shadcn-style integration of the brief's `@paper-design/shaders-react`
-**`<Warp shape="checks" />`** background. The supplied component is dropped into
-`components/ui` exactly as a shadcn drop-in would be — and then built out into a
-polished, full-viewport **animated checks-warp background** with real, legible
-product UI floated on top of it and a live console driving every shader prop.
-
-The prompt's snippet shipped with a few JSX typos that wouldn't compile (a
-malformed `className= "…"`, stray spaces in `< div>` / `< /div>` tags, and
-`proportion = { 0.45}`-style prop braces). The component at
-`src/components/ui/background-shaders.tsx` is the **same** component — same
-layered structure, same `<Warp>` props, the same four HSL stops — corrected into
-clean, valid TypeScript, and opened up just enough (a typed `config` plus `rail`
-/ `children` slots) to be driven live by the lab. With no props it renders the
-prompt's literal configuration.
+A full-viewport animated checks-warp shader background using `@paper-design/shaders-react`'s `<Warp shape="checks" />` component, integrated in a shadcn/Tailwind/TypeScript project and wrapped in a live instrument console. The `<Warp>` element runs fixed in a `fixed inset-0 -z-10` layer behind glassy, backdrop-blurred content; a live console lets you dial every shader prop in real time, switch between three Warp shapes, apply mood presets, and reset to the prompt's exact verbatim configuration. A telemetry strip reads live FPS and frame count off `requestAnimationFrame`. Generated with Claude Fable 5.
 
 ## What it does
 
@@ -91,3 +78,7 @@ surfaced (shape `"checks"`, proportion `0.45`, all four HSL stops), the `<Warp>`
 shader paints a live full-viewport WebGL canvas, the speed fader sweeps
 `0 → 3`, switching a preset re-tints the palette, reset restores the prompt
 palette, and no page/console errors fire.
+
+---
+
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

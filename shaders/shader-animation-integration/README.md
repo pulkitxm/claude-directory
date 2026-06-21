@@ -1,14 +1,6 @@
-# Shader Animation — shadcn/ui + Three.js component integration
+# Shader Animation — Three.js GPU Fragment Shader Hero Integration (React + Vite + Tailwind CSS + Three.js)
 
-A self-contained reference for dropping the **`ShaderAnimation`** component into a
-shadcn/ui project. It is a GPU-driven WebGL fragment shader (radiating RGB lines)
-wrapped as a zero-prop React component — and this app both **uses it** as a
-full-bleed hero and **documents the integration** end to end.
-
-The page answers every question in the integration brief: prerequisites, the
-default `components/ui` path and why it matters, the single `three` dependency,
-copy-paste usage, and a Q&A on props, state, assets, responsiveness, and where
-to mount it.
+A self-contained reference for integrating the `ShaderAnimation` component — a GPU-driven WebGL fragment shader rendering radiating RGB lines on a full-screen Three.js plane — into a shadcn/ui project. The component is zero-prop and self-driving, and this app both uses it as a full-bleed hero and documents the integration end to end: prerequisites, the default `components/ui` path and why it matters, the single `three` runtime dependency, copy-paste usage, and a Q&A on props, state, assets, responsiveness, and mount placement. Built with React + TypeScript + Vite + Tailwind CSS. Generated with Claude Fable 5.
 
 ## What's in the box
 
@@ -96,3 +88,7 @@ npm install
 npm run dev      # http://localhost:5173
 npm run build    # type-check + production build
 ```
+
+---
+
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,16 +1,6 @@
-# shader-flow-field-rings
+# Shader Flow Field Rings — Three.js Additive RGB Interference Ring Showcase (React + Vite + Tailwind CSS + Three.js)
 
-A self-contained, runnable showcase that integrates the prompt's **`ShaderAnimation`**
-component into a shadcn + Tailwind + TypeScript project. The component is a Three.js
-fragment shader that draws **additive R/G/B interference rings** on a single full-screen
-GLSL quad: three loops (one per colour channel), each accumulating five thin concentric
-rings whose radii drift over time. Where the channels overlap they sum to white, blooming
-at the centre.
-
-The brief asks to "integrate this React component into a shadcn/Tailwind/TS codebase,"
-determine the default component path, and explain why `components/ui` matters. This build
-answers all of that with a working app: the shader runs live above the fold, and the page
-around it is the integration story.
+A full-viewport signal/oscilloscope laboratory showcasing the `ShaderAnimation` Three.js component — a GLSL fragment shader drawing additive R/G/B interference rings on a single full-screen quad: three loops (one per colour channel), each accumulating five thin concentric rings whose radii drift over time, summing to white at the centre bloom. The page's palette is pulled directly from the shader's own three channels — vermilion `#FF2D55` (R), phosphor-green `#39FF7A` (G), signal-blue `#2D7BFF` (B) — over phosphor-black instrument panels. The signature element is a live channel decomposition that draws each colour accumulator as its own rolling sparkline sampled from the running shader. Integrated as a shadcn `@/components/ui` drop-in with TypeScript. Generated with Claude Fable 5.
 
 ## Design
 
@@ -108,3 +98,7 @@ npm install three && npm install -D @types/three
 # 5. Drop the file into the path shadcn manages
 #    -> src/components/ui/shader-animation.tsx
 ```
+
+---
+
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

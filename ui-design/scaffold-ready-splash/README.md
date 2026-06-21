@@ -1,16 +1,6 @@
-# Scaffold Ready Splash
+# Scaffold Ready Splash — React + Vite + TypeScript + Tailwind CSS Starter (Framer Motion + Lucide)
 
-A from-scratch **single-page landing page** scaffold, built to an exact
-specification (see `prompt.md`): **Vite + React + TypeScript + Tailwind CSS**
-with **tailwind-merge / clsx**, **Framer Motion**, and **Lucide React**,
-pre-wired with the `@/` path alias and a `cn()` utility — then handed off as a
-clean foundation that components stack into via `App.tsx`. The App shell ships
-a polished, self-contained **"Scaffold ready"** splash that proves the wiring.
-
-> This experiment is the **setup half** of a "be a copy machine, not a designer"
-> brief: the project is configured precisely as asked (STEP 1–6), and the app
-> shell renders a self-contained **"Scaffold ready"** splash so the wiring is
-> visibly, demonstrably working before the first real component arrives.
+A from-scratch single-page landing page scaffold built to an exact specification: **Vite + React + TypeScript + Tailwind CSS** pre-wired with `tailwind-merge` / `clsx`, **Framer Motion**, and **Lucide React**, with the `@/` path alias and a `cn()` utility. The app shell ships a polished, self-contained **"Scaffold ready"** splash screen that proves all the wiring is working before the first real component arrives. Generated with Claude Fable 5.
 
 ## What's wired (exactly to spec)
 
@@ -81,3 +71,7 @@ clsx, tailwind-merge.
 - `demo.mp4` — recorded with the repo's `scripts/record-demos/record-one.sh`.
 
 Fully self-contained and offline: no remote assets, fonts, or CDNs.
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

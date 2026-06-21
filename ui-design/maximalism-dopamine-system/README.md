@@ -1,17 +1,6 @@
-# DOPAMINE — A Maximalism / Dopamine Design System
+# DOPAMINE — Maximalism / Dopamine Design System Showcase (HTML + CSS + Vanilla JS)
 
-A self-contained showcase of the **Maximalism / Dopamine** visual style — built as
-living documentation for a design system named **DOPAMINE**. The core principle is
-**MORE IS MORE**: five clashing accents, layered clashing patterns, multi-layered
-shadows, stacked text-shadows, floating decorative shapes and massive bleeding
-typography. Empty space is wasted space; restraint is not welcome here.
-
-The page reads as one long, joyfully overwhelming exhibition of its own DNA: a
-gradient-screaming hero, a stats band, a broken-grid feature grid, a live token
-gallery (the five accent swatches plus shadow / glow / text-shadow demos), a pricing
-table with a scaled "most loud" tier, a live component playground (4 button variants
-+ focus-ring inputs), testimonials, an ARIA accordion FAQ, a pulse-glow newsletter
-CTA, and a four-column footer — stitched together by two rotated scrolling marquees.
+A self-contained, living documentation page for a fictional component kit called **DOPAMINE**, demonstrating the Maximalism / Dopamine visual style end to end: five clashing accent colors, pattern-on-pattern layering, multi-layered stacked shadows, massive bleeding typography, and over twenty floating decorative shapes — all stitched together by scrolling marquees. The design principle is unapologetic excess: every pixel sparks joy, empty space is wasted space. Generated with Claude Fable 5.
 
 ## What it demonstrates (every "Bold Factor" signature)
 
@@ -82,3 +71,7 @@ node verify.mjs   # headless Chromium checks (desktop 1280 + mobile 390):
 | `assets/fonts/*.woff2` | Outfit, Unbounded, DM Sans, Bangers, Bungee — vendored locally |
 | `verify.mjs` | Headless verification script |
 | `demo.mp4` | Recorded walkthrough |
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

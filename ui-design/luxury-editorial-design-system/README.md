@@ -1,12 +1,6 @@
-# Luxury / Editorial Design System — MAISON
+# MAISON — Luxury / Editorial Design System Showcase (React, Tailwind CSS v3, Playfair Display)
 
-A standalone showcase page that fully expresses a **Luxury / Editorial** design
-system: elegance through restraint, exquisite typography hierarchy, generous
-negative space, slow cinematic motion, intentional asymmetry, and layered depth
-through subtle shadows. Built around a fictional design house, **MAISON**.
-
-> Design language: high-end fashion magazines (Vogue, Harper's Bazaar, Kinfolk)
-> meets luxury brand sites (Chanel, Hermès, Aesop).
+A standalone showcase page that fully expresses a Luxury / Editorial design system built around the fictional design house MAISON: elegance through restraint, exquisite Playfair Display typography hierarchy, generous negative space, slow cinematic motion at 500–2000ms, intentional asymmetry, grayscale-to-color image reveals, and layered depth through subtle shadows — evoking high-end fashion magazines and luxury brand websites. Generated with Claude Fable 5.
 
 ## Sections
 
@@ -95,3 +89,7 @@ node scripts/verify.mjs                        # in another
 and asserts: all sections render, zero console/page errors, the FAQ accordion
 toggles with correct ARIA, the gold-button overlay transform changes on hover,
 images are grayscale-by-default, and the core design tokens resolve correctly.
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

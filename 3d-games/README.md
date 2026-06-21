@@ -1,6 +1,6 @@
 # 3D & games
 
-2 **3D & games** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+**2 3D & browser game experiments generated with Claude Fable 5** — interactive 3D scenes and playable WebGL games built with Three.js / React Three Fiber and WebGL. A small gallery of AI-generated 3D web experiences. Part of the [claude-directory](../README.md) ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|

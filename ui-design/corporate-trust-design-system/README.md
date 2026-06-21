@@ -1,16 +1,6 @@
-# Northwind — Corporate Trust Design System
+# Northwind — Corporate Trust Design System (React + Vite + Tailwind CSS v4)
 
-A complete, production-quality landing experience that fully expresses the
-**"Corporate Trust"** design system: the modern enterprise-SaaS aesthetic —
-professional yet approachable, sophisticated yet friendly. It rejects the cold
-formality of traditional corporate sites for a warm, confident presence built on
-**indigo → violet gradients, colored (blue/violet-tinted) shadows, isometric 3D
-depth, and refined motion**.
-
-Northwind is a fictional operations / workflow platform — the brand exists purely
-to give the system a real personality to dress.
-
-Generated with Claude Fable 5 for the [claude-directory](../../README.md).
+A complete, production-quality enterprise SaaS landing page that fully expresses the **Corporate Trust** design system: the modern enterprise aesthetic — professional yet approachable, sophisticated yet friendly. It rejects cold corporate formality for a warm, confident presence built on **indigo → violet gradients, colored (blue/violet-tinted) shadows, isometric 3D depth, and refined motion** — showcasing the fictional operations/workflow platform Northwind. Generated with Claude Fable 5.
 
 ## What it demonstrates
 
@@ -71,3 +61,7 @@ npm run verify http://localhost:4173
 # Use a specific browser binary if needed:
 # CHROME_PATH=/path/to/chrome npm run verify http://localhost:4173
 ```
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,10 +1,6 @@
-# Electric Volt Folio
+# Electric Volt Folio — Neo-Brutalist Motion Designer Portfolio (HTML + CSS + Vanilla JS)
 
-A fully responsive, multi-section portfolio for a fictional motion designer (Nova Reyes) in a "Kinetic Brutalism" design language — a loud, unapologetically typographic neo-brutalist poster aesthetic, like a risograph zine crossed with a 3D motion reel. Everything is hard-edged and high-contrast: black ink on acid-green paper punched through with hot-pink accents, thick borders, and blocky no-blur offset drop-shadows, with a visible grid overlay.
-
-Display headlines are oversized Inter Black, paired with a monospace for meta labels. Sections run fixed nav (transparent → solid-black on scroll), a 12-column hero with a rotated portrait and an infinite marquee, about, a count-up stats band, a staggered masonry work grid, a pull-quote, contact, and an outlined-wordmark footer. Vanilla JS drives the scroll-aware nav flip, tactile press-down button shadows, the pausing marquee, IntersectionObserver counters and reveals — all respecting `prefers-reduced-motion`.
-
-Vanilla HTML + CSS + a little JS, all assets vendored locally, runs fully offline.
+Electric Volt Folio is a fully responsive, multi-section portfolio for a fictional motion designer (Nova Reyes) in a "Kinetic Brutalism" design language — a loud, unapologetically typographic neo-brutalist poster aesthetic like a risograph zine crossed with a 3D motion reel. The design is hard-edged and high-contrast: black ink on acid-green paper punched through with hot-pink accents, thick borders, blocky no-blur offset drop-shadows, and a visible grid overlay. Oversized Inter Black display headlines pair with a monospace for meta labels across a fixed nav, a 12-column hero with rotated portrait and infinite marquee, about, count-up stats, staggered masonry work grid, pull-quote, contact, and an outlined-wordmark footer. Vanilla JS drives the scroll-aware nav state flip, tactile press-down button shadows, the pausing marquee, and IntersectionObserver counters and reveals — all respecting `prefers-reduced-motion`. Generated with Claude Fable 5.
 
 ## Run
 
@@ -15,3 +11,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Portfolios](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

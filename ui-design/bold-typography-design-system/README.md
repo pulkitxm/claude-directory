@@ -1,13 +1,6 @@
-# Bold Typography Design System — OBELISK
+# OBELISK — Bold Typography Design System Showcase (React + Vite + Tailwind CSS + Framer Motion)
 
-A standalone, single-page showcase that fully expresses a **Bold Typography**
-design system: poster design translated to the web, where **type is the entire
-visual language**. Color exists only to create contrast, space exists only to
-frame letterforms, and interaction exists only to reveal a typographic detail.
-Built around a fictional type-first design system, **OBELISK**.
-
-> Design language: a gallery exhibition or luxury magazine spread — confident,
-> editorial, deliberate. A design manifesto, not friendly SaaS.
+A single-page editorial showcase built around **OBELISK**, a fictional type-first design system where typography is the entire visual language — a poster design translated to web, with a 13-step type scale, near-black dark palette with vermillion accent (`#FF3D00`), zero border-radius everywhere, and Framer Motion scroll reveals. The page reads like a gallery exhibition or luxury magazine spread, covering hero, marquee, manifesto, stats, feature grid, how-it-works, product detail, pricing, testimonials, FAQ accordion, blog, final CTA, and footer — all driven by centralized CSS-variable design tokens and a token-inversion technique for the inverted CTA section. Generated with Claude Fable 5.
 
 ## Sections
 
@@ -127,3 +120,7 @@ hero headline is ≥ 80px, there is zero border-radius anywhere, the grain overl
 is present, the primary underline is ≥ 2px, the FAQ accordion toggles with correct
 ARIA, the Final CTA inverts to the warm-white ground, there is no horizontal
 overflow at 1280px or 375px, and there are no console/page errors.
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

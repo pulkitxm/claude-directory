@@ -1,4 +1,6 @@
-# Tide — a deep-work ritual
+# Tide — Deep-Work Focus App Landing Page (React + Vite + TypeScript + Tailwind CSS + Framer Motion)
+
+A single-page landing page for **Tide**, a fictional deep-work / focus app with a deep oceanic twilight aesthetic — ink navy and abyssal blue lit by bioluminescent teal and coral bloom. Features a canvas-rendered animated tide-of-light hero with a live 50:00 session dial, soundscape bento grid, count-up stats, and ARIA-compliant FAQ accordion. Built with React, TypeScript, Vite, Tailwind CSS, and Framer Motion, with Fraunces display serif and locally vendored fonts. Generated with Claude Fable 5.
 
 A single-page landing page for **Tide**, a fictional deep-work / focus app that
 turns concentration into a ritual: set one intention, drift into a living
@@ -41,3 +43,7 @@ npm run build    # tsc -b && vite build
 
 Fonts (Fraunces, Inter, JetBrains Mono) and the favicon / grain overlay are all
 vendored under `public/` — no runtime network calls, fully offline.
+
+---
+
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

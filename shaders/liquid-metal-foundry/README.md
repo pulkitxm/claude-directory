@@ -1,15 +1,6 @@
-# LiquidMetal Foundry
+# LiquidMetal Foundry — Animated Molten-Metal Background Shader Console (@paper-design/shaders-react + Framer Motion)
 
-A runnable, self-contained integration of the prompt's `background-shades.tsx` —
-a full-bleed, `framer-motion`–animated `@paper-design/shaders-react`
-**`LiquidMetal`** field that lives behind the page. Instead of dropping it on a
-blank screen, it's framed as a **molten-metal foundry console**: the live shader
-pours into a registration-bracketed crucible plate while a right-hand **casting
-deck** drives the shader's *actual* props — tint, shape, repetition, softness,
-distortion, contour, chromatic shift, rotation, scale, speed and the soft-focus
-blur — in real time, with a tabbed dock that documents the install, the full
-props API, a live copy-paste usage snippet, the **integration notes**, and the
-shadcn `components/ui` story.
+A runnable shadcn component integration of `@paper-design/shaders-react`'s `LiquidMetal` field animated by Framer Motion — framed as a molten-metal foundry console where the live shader pours into a registration-bracketed crucible plate and a right-hand casting deck drives all shader props in real time. Five alloy presets, a full props API dock, and a live copy-paste usage snippet make this a complete interactive showcase for the `LiquidMetal` generative background. Built with React 19, TypeScript, Vite 7, and Tailwind CSS v4. Generated with Claude Fable 5.
 
 The prompt's component is pasted **verbatim** at
 `src/components/ui/background-shades.tsx` (the shadcn path), exactly as given.
@@ -167,3 +158,7 @@ real WebGL context, the chrome uses the vendored font, an alloy preset re-tints
 the live shader (canvas pixels change), switching the generative shape
 re-renders it, the speed fader sweeps `0.00 → 5.00`, the docs dock renders the
 Props API table and the integration-notes panel, and no page/console errors fire.
+
+---
+
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,6 +1,6 @@
 # Shaders
 
-84 **Shaders** experiments generated with Claude Fable 5 — part of the [claude-directory](../README.md).
+**84 GLSL shader experiments generated with Claude Fable 5** — WebGL and WebGPU fragment shaders, generative gradients, dithering, fluid and noise effects, rendered with React Three Fiber / Three.js and raw GLSL. A gallery of AI-generated shader backgrounds and hero effects. Part of the [claude-directory](../README.md) ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|

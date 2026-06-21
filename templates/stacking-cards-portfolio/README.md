@@ -1,8 +1,6 @@
-# Stacking Cards Portfolio
+# Stacking Cards Portfolio — Scroll-Driven Sticky Card Deck Template (HTML, CSS, Vanilla JS, Inter, Instrument Serif)
 
-A single-page, self-contained portfolio template whose core experiment is the "stacking cards" scroll effect: as you scroll, each project card pins to the top of the viewport while the next card slides up and over it — like dealing a deck of cards. The page runs a fixed pill navbar, a full-height hero, a section header, a five-card deck, and a dark contact footer.
-
-The aesthetic is calm and editorial — warm off-white paper (`#ECE9E2`), near-black ink, and a single terracotta accent (`#C8553D`), with fluid `clamp()` typography pairing Inter (UI/body) and Instrument Serif (display + italic accents), both vendored locally, plus a subtle SVG fractal-noise grain. The signature mechanic combines pure-CSS sticky pinning (each card `position: sticky` at an increasing `top` offset so the deck fans downward) with a scroll-linked JS scrub: a single `requestAnimationFrame` loop computes how far the next card has covered each card and applies `scale`, `brightness`, and a darkening overlay (eased with `easeOutCubic`) so buried cards shrink and dim into depth. Each of the five cards (Lumen, Atlas Type, Harbor, Solène, Field Notes) carries its own tinted surface and unique CSS/SVG art panel. All fonts are local and all imagery is CSS/SVG, so it opens offline with zero network requests and honors `prefers-reduced-motion`.
+A single-page, self-contained portfolio template whose core experiment is the "stacking cards" scroll effect: as you scroll, each project card pins to the top of the viewport while the next card slides up and over it — like dealing a deck of cards — with scroll-linked JS applying scale, brightness, and a darkening overlay so buried cards shrink and dim into depth. The calm editorial aesthetic uses a warm off-white paper canvas (`#ECE9E2`), near-black ink, and a single terracotta accent (`#C8553D`), with fluid `clamp()` typography pairing locally vendored Inter and Instrument Serif, plus a subtle SVG fractal-noise grain; five project cards (Lumen, Atlas Type, Harbor, Solène, Field Notes) each carry unique tinted surfaces and CSS/SVG art panels, and the whole page opens offline with zero network requests while honoring `prefers-reduced-motion`. Generated with Claude Fable 5.
 
 ## Run
 
@@ -13,3 +11,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,8 +1,6 @@
-# Obsidian Meridian — Luxury Real-Estate & Architecture
+# Obsidian Meridian — Luxury Real-Estate & Architecture Landing Page (HTML + CSS + Vanilla JS)
 
-A single-page landing site for Obsidian Meridian, a fictional elite architecture studio and luxury real-estate developer. The named design language is "Cinematic Brutalist Noir": the hushed restraint of a printed architecture monograph fused with the graded darkness of a film still — a true-black canvas built from white and cool grays, with a single whisper of warm brass.
-
-Sections include a giant letter-by-letter wordmark header, a sticky glass pill nav, a manifesto intro, a full-bleed cinematic hero with an infinite Ken-Burns pan, a staggered selected-works grid, "The Meridian Protocol" band, a count-up stats strip, a minimal inquiry form, and footer. Pure HTML/CSS/vanilla JS with per-letter wordmark reveal, IntersectionObserver scroll reveals, count-up stats, slow cinematic transitions, a custom thin scrollbar, and `prefers-reduced-motion` support. Self-contained and offline-runnable.
+A single-page marketing landing page for Obsidian Meridian, a fictional elite architecture studio and luxury real-estate developer. The design language is "Cinematic Brutalist Noir" — the hushed restraint of a printed architecture monograph fused with the graded darkness of a film still — on a true-black canvas with warm brass accents and razor hairlines. Features include a per-letter wordmark reveal, an infinite Ken-Burns cinematic hero, a staggered selected-works grid, count-up stats, and a minimal inquiry form — all built with pure HTML, CSS, and vanilla JS. Generated with Claude Fable 5.
 
 ## Run
 
@@ -13,3 +11,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Landing pages](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

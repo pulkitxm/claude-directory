@@ -1,12 +1,6 @@
-# Shape Landing Hero
+# Shape Landing Hero — Animated Geometric Shapes Hero Component (React + Vite + Framer Motion + Tailwind CSS v4 + shadcn/ui)
 
-An integration of the **`HeroGeometric`** (a.k.a. _Shape Landing Hero_) component
-from Kokonut UI — five blurred, gradient-filled shapes drift behind a
-gradient-clipped headline on a near-black `#030303` canvas, all driven by Framer
-Motion. The component is dropped into a proper **shadcn/ui** project structure and
-wrapped in a small landing experience (floating navbar, CTAs, a live props
-playground, feature grid, install band) that demonstrates the best place to use
-it: above the fold.
+An integration of the `HeroGeometric` component from Kokonut UI — five blurred, gradient-filled shapes drift behind a gradient-clipped headline on a near-black `#030303` canvas, all driven by Framer Motion. The component is dropped into a proper shadcn/ui project structure and wrapped in a landing experience (floating navbar, CTAs, a live props playground, feature grid, install band) that showcases it above the fold. This animated hero section is an ideal starting point for dark-themed SaaS, design tool, or portfolio landing pages. Generated with Claude Fable 5.
 
 ## Stack
 
@@ -124,3 +118,7 @@ fully offline-runnable.
 Mobile-first. Headline scales `text-4xl → text-6xl → text-8xl` (36 → 60 → 96 px),
 shapes reposition at the `md:` breakpoint, and the navbar collapses to a
 hamburger menu under `md`. Verified at 1440×900 and 390×844.
+
+---
+
+Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,6 +1,6 @@
-# Voltline Automation — Industrial AI Landing Page
+# Voltline Automation — "Bone & Volt" Industrial AI Landing Page (HTML + CSS + Vanilla JS)
 
-A single-page marketing site for **Voltline**, a fictional AI-automation company. The named aesthetic is **"Bone & Volt"** — a clean, Swiss-industrial system on a warm off-white (bone) canvas, punctuated by hard graphite black and a single electric-lime accent. The mood is engineering-forward and slightly retro-futurist: monospace slash-prefixed labels, tight geometric-sans headlines, orbiting 3D primitives, and tiny "space / starfield" reveals on hover. It is meant to feel like a precision instrument, not generic SaaS.
+A single-page marketing site for **Voltline**, a fictional AI-automation company. The aesthetic identity is "Bone & Volt" — a clean, Swiss-industrial system on a warm off-white (bone) canvas, punctuated by hard graphite black and a single electric-lime accent (`rgb(152, 254, 0)`). The mood is engineering-forward and slightly retro-futurist: monospace slash-prefixed labels, tight geometric-sans headlines, orbiting 3D primitives, and tiny "space / starfield" reveals on hover. It feels like a precision instrument, not generic SaaS. Built with plain HTML, CSS, and Vanilla JS. Generated with Claude Fable 5.
 
 Within a centered ~1240px frame, the page runs through a fixed navbar, a left-weighted hero ("Automate excellence with custom AI.") paired with a live 3D composition, a hairline-divided stats strip, a three-card solutions grid, a deep-space "The Mission" CTA band, and a bone footer with a "systems nominal" status dot. The hero centerpiece is a **pure-CSS 3D rig** (preserve-3d, ~2000px perspective): a graphite cube with a glowing lime core orb, an orbiting lime satellite cube, and a tilted white "data node" with a scanning line and `SYNC_ACTIVE` readout, the whole rig slowly rotating on Y at a fixed -20° X tilt.
 
@@ -15,3 +15,7 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+
+Part of the [Landing pages](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
