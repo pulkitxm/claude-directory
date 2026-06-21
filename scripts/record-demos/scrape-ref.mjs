@@ -2,6 +2,36 @@ import fs from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright";
 
+// Resolve a Chromium executable. Prefer Playwright's own managed browser, but
+// fall back to a pre-installed Chromium under /opt/pw-browsers when the matching
+// build can't be downloaded (e.g. a sandboxed environment with no access to the
+// Playwright CDN). Returns undefined to let Playwright use its default. Mirrors
+// the resolver in record.mjs so recon works in the same environments as recording.
+function resolveExecutable() {
+	const env = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;
+	if (env && fs.existsSync(env)) return env;
+	try {
+		const def = chromium.executablePath?.();
+		if (def && fs.existsSync(def)) return undefined; // default is present
+	} catch {
+		/* fall through to the on-disk fallback */
+	}
+	const root = "/opt/pw-browsers";
+	if (!fs.existsSync(root)) return undefined;
+	const dirs = fs.readdirSync(root);
+	const pick = (prefix, leaf) =>
+		dirs
+			.filter((d) => d.startsWith(prefix))
+			.sort()
+			.reverse()
+			.map((d) => `${root}/${d}/chrome-linux/${leaf}`)
+			.find((p) => fs.existsSync(p));
+	return (
+		pick("chromium-", "chrome") ??
+		pick("chromium_headless_shell-", "headless_shell")
+	);
+}
+
 // Usage: node scrape-ref.mjs <url> [outDir]   (or URL=... OUT=... node scrape-ref.mjs)
 const URL = process.argv[2] || process.env.URL;
 const OUT = process.argv[3] || process.env.OUT || "/tmp/scrape-ref";
@@ -11,8 +41,11 @@ if (!URL) {
 }
 fs.mkdirSync(OUT, { recursive: true });
 
-const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+const browser = await chromium.launch({ executablePath: resolveExecutable() });
+const page = await browser.newPage({
+	viewport: { width: 1440, height: 900 },
+	ignoreHTTPSErrors: true,
+});
 await page.goto(URL, { waitUntil: "networkidle", timeout: 60000 });
 await page.waitForTimeout(3000);
 
