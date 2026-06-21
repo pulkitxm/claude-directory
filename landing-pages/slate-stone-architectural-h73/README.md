@@ -1,4 +1,4 @@
-# Slate & Stone — Architectural Real-Estate Advisory
+# Slate & Stone — Architectural Real-Estate Advisory Landing Page (Vanilla HTML/CSS/JS)
 
 A single-page marketing landing site for "Slate & Stone", a fictional ultra-high-net-worth architectural real-estate advisory led by principal agent Elias Morand. The named aesthetic is "Gallery Minimalism" — a quiet, editorial, fine-art-auction-house feel where architecture is treated like a collectible object: hairline rules, generous whitespace, oversized condensed uppercase display type, a warm paper ground, and a single sparing rust/terracotta "oxide" accent.
 
@@ -13,3 +13,6 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+

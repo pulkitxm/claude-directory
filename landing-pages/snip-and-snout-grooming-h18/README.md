@@ -1,4 +1,4 @@
-# Snip & Snout — Pet Grooming Studio
+# Snip & Snout — Neo-Brutalist Pet Grooming Studio Landing Page (Vanilla HTML/CSS/JS)
 
 A multi-section landing page for Snip & Snout, a fictional premium pet-grooming studio. The named design language is "Brutalist Kennel Club" — a loud, confident neo-brutalist poster aesthetic crossed with a high-end barbershop: thick ink-black outlines, hard zero-blur offset "brutal" shadows, and crisp 90-degree corners, with one signature playful twist — an oversized rounded "quarter-pipe" corner on the hero photo panel.
 
@@ -13,3 +13,6 @@ python3 -m http.server 8000
 ```
 
 See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
+
+---
+

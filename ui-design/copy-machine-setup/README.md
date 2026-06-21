@@ -1,11 +1,6 @@
-# Copy Machine — Project Setup
+# Copy Machine — Project Setup (Vite + React + TypeScript + Tailwind CSS Scaffold)
 
-A landing-page **scaffold** built to one client's exact, non-negotiable
-specification. The brief was a setup-phase prompt: stand up a single-page
-landing site on a fixed stack with a fixed folder structure and fixed config
-files, then **stop and wait** for components — which must later be copied in
-*character-for-character*, with their own colours, their own values, no theme
-adaptation, no "improvements". The motto: **be a copy machine, not a designer.**
+A landing-page **scaffold** built to one client's exact, non-negotiable specification — a setup-phase prompt to stand up a single-page landing site on a fixed stack with a fixed folder structure and fixed config files, then **stop and wait** for components that must be copied in *character-for-character*, with their own colours, their own values, no theme adaptation, no "improvements". The motto: **be a copy machine, not a designer.**
 
 So this project is exactly that — the wired-up starting point. Every
 spec-pinned file (`App.tsx`, `main.tsx`, `index.css`, `lib/utils.ts`,
@@ -77,3 +72,6 @@ node scripts/verify.mjs http://localhost:4173
 
 React 18 · TypeScript · Vite 5 · Tailwind CSS 3 · tailwind-merge · clsx ·
 Framer Motion · lucide-react.
+
+---
+
