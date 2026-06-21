@@ -1,11 +1,11 @@
 "use client";
-import { useRef, useState, useCallback, useEffect } from "react";
 import {
 	motion,
+	type SpringOptions,
 	useSpring,
 	useTransform,
-	type SpringOptions,
 } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 type SpotlightProps = {

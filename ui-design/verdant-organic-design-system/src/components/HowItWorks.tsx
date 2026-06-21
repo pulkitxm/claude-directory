@@ -1,13 +1,13 @@
 import {
-	Footprints,
-	Wind,
-	FlaskConical,
 	CupSoda,
+	FlaskConical,
+	Footprints,
 	type LucideIcon,
+	Wind,
 } from "lucide-react";
+import { steps } from "../lib/content";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { steps } from "../lib/content";
 
 const icons: Record<string, LucideIcon> = {
 	Footprints,
