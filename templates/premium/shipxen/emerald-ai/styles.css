@@ -1,0 +1,87 @@
+/* ============================================================
+   Emerald AI — clone-local overrides & fonts
+   Layered on top of assets/css/shipixen-compiled.css (the
+   original Tailwind build) which provides all utility classes.
+   ============================================================ */
+
+/* Vendored body font (Inter) — matches the Next.js bundled face */
+@font-face {
+	font-family: "Inter Local";
+	src: url("./assets/fonts/inter.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--font-inter-local: "Inter Local";
+}
+
+/* Ensure the page uses the dark theme background even before classes resolve */
+html,
+body {
+	background-color: #030712;
+	color: #fff;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+}
+
+/* The original `.preview` theme sets the default display font to Roboto Serif
+   (--font-space-default) and the brand/display font to Rubik
+   (--font-space-display). We provide a robust local fallback chain. The body,
+   headings and section copy all inherit `.font-sans` -> Roboto Serif, exactly
+   like the source. Inter is kept only as a vendored fallback. */
+:root,
+#preview,
+.preview {
+	--font-space-default: "Roboto Serif";
+	--font-space-display: "Rubik";
+}
+
+.font-sans {
+	font-family: "Roboto Serif", "Inter Local", ui-serif, Georgia, serif;
+}
+
+/* Explicit display class (brand wordmark etc.) uses Rubik per --font-space-display */
+.font-display {
+	font-family: "Rubik", "Inter Local", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Smooth scrolling like the source (.scroll-smooth) */
+html {
+	scroll-behavior: smooth;
+}
+
+/* --- Scroll entrance reveal (driven by script.js) --- */
+.reveal-on-scroll {
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+	will-change: opacity, transform;
+}
+.reveal-on-scroll.is-visible {
+	opacity: 1;
+	transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+	.reveal-on-scroll {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
+
+/* --- Mobile slide-in nav panel toggle --- */
+.mobile-nav-panel {
+	transition: transform 0.3s ease-in-out;
+}
+.mobile-nav-panel.is-open {
+	transform: translateX(0) !important;
+}
+
+/* Make decorative header buttons / disabled chrome non-interactive cursor */
+button[disabled] {
+	cursor: default;
+}

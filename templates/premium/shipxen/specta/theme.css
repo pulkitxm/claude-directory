@@ -1,0 +1,95 @@
+/* ===== Specta theme overrides: fonts + design tokens (vendored, offline) ===== */
+
+/* --- Inter (body / UI) --- */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/inter-400.ttf") format("truetype"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("assets/fonts/inter-500.ttf") format("truetype"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("assets/fonts/inter-600.ttf") format("truetype"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("assets/fonts/inter-600.ttf") format("truetype"); }
+
+/* --- Syne (display / headings / wordmark) --- */
+@font-face { font-family: "Syne"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/syne-400.ttf") format("truetype"); }
+@font-face { font-family: "Syne"; font-style: normal; font-weight: 500; font-display: swap; src: url("assets/fonts/syne-500.ttf") format("truetype"); }
+@font-face { font-family: "Syne"; font-style: normal; font-weight: 600; font-display: swap; src: url("assets/fonts/syne-600.ttf") format("truetype"); }
+@font-face { font-family: "Syne"; font-style: normal; font-weight: 700; font-display: swap; src: url("assets/fonts/syne-600.ttf") format("truetype"); }
+
+:root {
+  /* font family vars referenced by the compiled app.css */
+  --font-space-default: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-space-display: "Syne", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Specta brand ramp — primary = fuchsia */
+  --primary-lighter-hex: #f0abfc; --primary-lighter: 240, 171, 252;
+  --primary-light-hex:  #e879f9; --primary-light:  232, 121, 249;
+  --primary-main-hex:   #d946ef; --primary-main:   217, 70, 239;
+  --primary-dark-hex:   #c026d3; --primary-dark:   192, 38, 211;
+  --primary-darker-hex: #701a75; --primary-darker: 112, 26, 117;
+
+  /* Specta brand ramp — secondary = indigo */
+  --secondary-lighter-hex: #a5b4fc; --secondary-lighter: 165, 180, 252;
+  --secondary-light-hex:  #818cf8; --secondary-light:  129, 140, 248;
+  --secondary-main-hex:   #6366f1; --secondary-main:   99, 102, 241;
+  --secondary-dark-hex:   #4f46e5; --secondary-dark:   79, 70, 229;
+  --secondary-darker-hex: #4338ca; --secondary-darker: 67, 56, 202;
+
+  /* shadcn HSL tokens — light defaults */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%; --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%; --popover-foreground: 240 10% 3.9%;
+  --primary: 292 84% 61%; --primary-foreground: 355.7 100% 97.3%;
+  --secondary: 240 4.8% 95.9%; --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%; --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%; --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%; --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%; --input: 240 5.9% 90%; --ring: 292 84% 61%;
+  --radius: 0.5rem;
+}
+
+html.dark, .dark {
+  --background: 20 14.3% 4.1%;
+  --foreground: 0 0% 95%;
+  --card: 24 9.8% 10%; --card-foreground: 0 0% 95%;
+  --popover: 0 0% 9%; --popover-foreground: 0 0% 95%;
+  --primary: 292 84% 61%; --primary-foreground: 144.9 80.4% 10%;
+  --secondary: 240 3.7% 15.9%; --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 15%; --muted-foreground: 240 5% 64.9%;
+  --accent: 12 6.5% 15.1%; --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%; --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%; --input: 240 3.7% 15.9%; --ring: 292 84% 61%;
+}
+
+body { font-family: var(--font-space-default); }
+
+/* Display font for headings / wordmark — Page UI applies font-display via .text-display / headings */
+h1, h2, h3, .font-display, [class*="text-display"] { font-family: var(--font-space-display); }
+
+/* ---- Marquee track: duplicate content scrolls infinitely ---- */
+.specta-marquee { overflow: hidden; width: 100%; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+.specta-marquee__track { display: flex; width: max-content; gap: 3rem; align-items: center; animation: specta-scroll 30s linear infinite; }
+.specta-marquee:hover .specta-marquee__track { animation-play-state: paused; }
+@keyframes specta-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---- Scroll entrance: fade + rise ---- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); will-change: opacity, transform; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .specta-marquee__track { animation: none; } }
+
+/* ---- Fuchsia/indigo ambient glow decor ---- */
+.specta-glow { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.specta-glow::before, .specta-glow::after { content: ""; position: absolute; width: 42rem; height: 42rem; border-radius: 9999px; filter: blur(110px); opacity: 0.32; }
+.specta-glow::before { background: var(--primary-main-hex); top: -12rem; left: 50%; transform: translateX(-60%); }
+.specta-glow::after { background: var(--secondary-main-hex); bottom: -16rem; right: 8%; opacity: 0.26; }
+
+/* Ensure page background matches reference slate-950 in dark */
+html.dark body { background-color: #030712; color: #fff; }
+
+/* ---- Showcase marquee tiles: constrain image height so the strip reads as a
+        single row of cards (matches reference). Without this, `w-full h-full
+        object-cover` lets each tile grow to its natural ~1280px height. ---- */
+.animate-marquee > div.flex-shrink-0 { width: 18rem; height: 16rem; }
+.animate-marquee > div.flex-shrink-0 > img { width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; }
+@media (max-width: 768px) {
+  .animate-marquee > div.flex-shrink-0 { width: 13rem; height: 11rem; }
+}
+/* Brand-icon marquee (logo cloud) tiles size to their svg, not the card box */
+.animate-marquee > div.flex-shrink-0:has(> svg) { width: auto; height: auto; }
