@@ -14,15 +14,20 @@ Clones live in the **`studies/`** category at the repo root (the older `template
      `git worktree add ".claude/worktrees/<project-name>" -b <project-name> main`
    - Do all work inside that worktree. `<project-name>` is a short kebab-case name for the template (e.g. `productized-agency-aceternity`).
 
-2. **Reconnoiter the source — discover ALL pages, then capture each.**
-   - **Discover every page.** Load the URL headlessly and collect all in-template navigation: same-origin anchor hrefs, nav menus, footer links, and obvious route links. Follow them transitively to build the complete page list — **do not cap the count**; the goal is the entire site. Stay on the same origin and template path; exclude external links, mailto/tel, and asset URLs. Many previews are embedded in an iframe — `scrape-ref.mjs` already picks the largest content frame; discover links from that frame.
-   - **Capture each page** with the repo recon tool (it writes `screenshot.png` (full page), `outline.json` (per-node computed styles: fonts, color, bg, font-size/weight, letter/line spacing, border, radius, padding, sizes), and `page.html`):
+2. **Reconnoiter the source — discover ALL pages, then capture each (in parallel).**
+   - **Discover every page.** Load the URL headlessly and collect all in-template navigation: same-origin anchor hrefs, nav menus, footer links, and obvious route links. Follow them transitively to build the complete page list — **do not cap the count**; the goal is the entire site. Stay on the same origin and template path; exclude external links, mailto/tel, and asset URLs. Many previews are embedded in an iframe — `scrape-ref.mjs` already picks the largest content frame; discover links from that frame. (`outline.json`'s `links` array is a good seed for discovery.)
+   - **Capture every page in parallel via a Workflow** — one recon agent per discovered page (these are independent, so fan them all out at once). Each runs the repo recon tool, which writes into `.reference/<page-slug>/`:
+     - `screenshot.png` — full-page render · `page.html` — rendered DOM · `outline.json` — per-node computed styles (fonts, color, bg, font-size/weight, letter/line spacing, border, radius, padding, sizes)
+     - `source.css` — **every CSS rule from the page's stylesheets, including `:hover`, `@keyframes`, transitions, and `@media`** (this is what `getComputedStyle`/`outline.json` can't see — it's how you reproduce hover and entrance animations exactly)
+     - `sources.json` — the linked stylesheet and `<script src>` URLs · `states/` — rest-vs-`:hover` screenshots (`el-N-rest.png`/`el-N-hover.png` + `index.json`) of cards/buttons/links, so hover effects can be verified
      ```bash
      cd scripts/record-demos && npm install   # first run only — installs Playwright + Chromium
      node scrape-ref.mjs "<page-url>" "../../studies/<project-name>/.reference/<page-slug>"
      ```
-     Use `home` (or `index`) as the slug for the entry page. Vendor the referenced images/fonts from `outline.json`/`page.html` locally during the build.
-   - Skim each `outline.json` and screenshot to understand the design before building.
+     Use `home` (or `index`) as the slug for the entry page.
+   - **Fetch the raw source CSS/JS** listed in each `sources.json` (`curl -sL <url> -o ...`) into the reference folder. The original stylesheet and JS are the ground truth for interaction behavior — read them, don't guess. Where `source.css` is empty for a sheet (cross-origin), the fetched file fills the gap.
+   - **Vendor** the referenced images/fonts (from `outline.json`/`page.html`/`sources.json`) locally during the build.
+   - Skim each `outline.json`, `source.css`, the fetched JS, the `screenshot.png`, and the `states/` hovers to understand the design — including its interactions — before building.
 
 3. **Duplicate check — don't re-clone.** Compare the reference URL (and the template's visual identity) against the `REFERENCE:` line in every existing `prompt.md` across **both** the new `studies/` and the legacy `templates/` categories:
    ```bash
@@ -37,15 +42,16 @@ Clones live in the **`studies/`** category at the repo root (the older `template
 
 5. **Extract shared design tokens once, build the shared base.** From the recon outlines, derive one set of tokens (colors, fonts, spacing scale, radii, shadows, easings) into a shared `styles.css`/`tokens.css`, and build shared chrome (header/nav, footer) once so every page is consistent. **Vendor all assets locally** — download fonts, images, icons, video into `assets/` with `curl`/`wget` and reference them by relative path; only hotlink when an asset genuinely can't be downloaded, and note it in the PR.
 
-6. **Fan out one builder per page via a Workflow.** After discovery + shared base, spawn one builder sub-agent per page (use `isolation: 'worktree'` only if pages would write the same files concurrently — usually each page is its own `.html`, so plain parallel is fine). Each builder rebuilds its page as plain HTML/CSS/JS against that page's `.reference/<slug>/` artifacts, reusing the shared tokens and chrome. Match layout, spacing, type, colors, hover states, and scroll/entrance animations.
+6. **Fan out one builder per page via a Workflow.** After discovery + shared base, spawn one builder sub-agent per page (use `isolation: 'worktree'` only if pages would write the same files concurrently — usually each page is its own `.html`, so plain parallel is fine). Each builder rebuilds its page as plain HTML/CSS/JS against that page's `.reference/<slug>/` artifacts, reusing the shared tokens and chrome. Match layout, spacing, type, and colors.
+   - **Reproduce interactions from the source, not from guesses.** Read `source.css` (and the fetched stylesheets) for the exact `:hover`/`:focus` rules, `transition`s, and `@keyframes`, and the fetched JS for the behavior of **modals/dialogs, dropdowns, accordions, tabs, carousels, menus, and scroll-triggered reveals** (IntersectionObserver / GSAP ScrollTrigger / Lenis). Port that behavior — same easings, durations, transforms, and triggers. Cross-check hover effects against the `states/` rest-vs-hover screenshots. Third-party libs the source uses (GSAP, Lenis, Swiper, etc.) are fine to pull in.
 
-7. **Self-correcting vision loop per page (parallel, cap 5 iterations).** For each page:
+7. **Self-correcting vision loop — all pages in parallel, cap 5 iterations each.** Run the loop for every page concurrently via a Workflow (one loop per page; pages are independent). For each page, each iteration:
    1. Boot the clone locally (static server / `record-one.sh`'s server, or `python3 -m http.server`).
-   2. Re-run the **same** recon tool against the local page:
+   2. Re-run the **same** recon tool against the local page — this regenerates the clone's `screenshot.png`, `outline.json`, `source.css`, and `states/` hover shots apples-to-apples with the reference:
       `node scrape-ref.mjs "http://localhost:<port>/<page>.html" "/tmp/clone-<slug>"`
-   3. Dispatch a **vision-judge sub-agent** that reads `studies/<project-name>/.reference/<slug>/screenshot.png` + `outline.json` (reference) and `/tmp/clone-<slug>/screenshot.png` + `outline.json` (clone) and returns a structured verdict: an overall faithful/not-faithful call plus a concrete, ordered fix list (spacing off by X, wrong color/hex, wrong font/weight, missing or wrong animation, missing section, layout break).
-   4. Apply the fixes, then repeat from (1). Stop when the judge calls it faithful or after 5 iterations; if capped, record the residual diffs in the final report. Verify animations by checking the relevant JS/CSS exists and runs — the screenshot won't show motion, so confirm scroll/entrance/hover code is present and correct.
-   - You are CLI-only: no GUI, no computer-use, no clicking. All capture and verification is headless Playwright / curl / node driven from Bash.
+   3. Dispatch a **vision-judge sub-agent** that reads, for reference vs clone: `screenshot.png` + `outline.json` (resting layout/type/color), the `states/el-*-rest.png` vs `states/el-*-hover.png` pairs (**hover effects**), and `source.css` (presence of the expected `:hover`/`@keyframes`/transitions). It returns a structured verdict: overall faithful/not-faithful plus a concrete, ordered fix list (spacing off by X, wrong color/hex, wrong font/weight, missing/wrong hover or entrance animation, missing section, layout break). For pages with **modals/dropdowns/accordions/tabs**, also drive Playwright to open each one (click the trigger) on both reference and clone, screenshot the opened state, and have the judge compare those too — these never appear in the resting full-page shot.
+   4. Apply the fixes, then repeat from (1). Stop when the judge calls it faithful or after 5 iterations; if capped, record the residual diffs in the final report. Motion that a still can't show (scroll/entrance timing) is verified by confirming the ported JS/CSS matches the source's keyframes/triggers.
+   - You are CLI-only: no GUI, no computer-use, no clicking by hand. All capture, hovering, and clicking is headless Playwright / curl / node driven from Bash.
 
 8. **Review** the whole clone against the prompt: every discovered page present, every section reproduced, assets vendored, no dead code or obvious bugs. Fix and re-verify.
 
@@ -70,6 +76,8 @@ Clones live in the **`studies/`** category at the repo root (the older `template
 # Hard rules
 
 - **Reproduce EVERY page** the crawl discovers — never silently clone only the landing page. If a page genuinely can't be reached/rendered, say so explicitly in the final report.
+- **Reproduce interactions from the source, not guesses** — read the captured `source.css` (`:hover`/`@keyframes`/transitions) and fetched JS (modals, dropdowns, accordions, tabs, scroll reveals) and port that behavior; the vision-judge must verify hover and opened-overlay states, not just the resting page.
+- **Parallelize via Workflows** — recon (one agent per page), per-page builds, and per-page vision loops all fan out concurrently; pages are independent.
 - **Never re-clone** a template already under `studies/` or the legacy `templates/` (check the `REFERENCE:` URLs across both). Stop and report the match instead of building.
 - New clones go in `studies/` only, never the repo root or the legacy `templates/`. Use the exact on-disk category name.
 - Capture reference artifacts only with `scrape-ref.mjs`; record demos only with `record-one.sh`; generate posters only with `generate-posters.mjs`. Never hand-roll these.
