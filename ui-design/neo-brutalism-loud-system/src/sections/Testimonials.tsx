@@ -18,17 +18,15 @@ export function Testimonials() {
 					<h2 className="mt-5 text-5xl font-bold uppercase leading-[0.9] tracking-tighter text-neo-ink sm:text-7xl">
 						People Who
 						<br />
-						<span className="w-fit -rotate-1 bg-neo-secondary px-2">Stopped Whispering</span>
+						<span className="w-fit -rotate-1 bg-neo-secondary px-2">
+							Stopped Whispering
+						</span>
 					</h2>
 				</div>
 			</div>
 
 			<div className="relative mt-14 pb-24">
-				<Marquee
-					direction="right"
-					speed={40}
-					ariaLabel="Customer testimonials"
-				>
+				<Marquee direction="right" speed={40} ariaLabel="Customer testimonials">
 					{TESTIMONIALS.map((t, i) => (
 						<figure
 							key={t.name}

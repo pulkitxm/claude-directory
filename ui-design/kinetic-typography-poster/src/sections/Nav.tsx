@@ -14,7 +14,10 @@ export function Nav() {
 					href="#top"
 					className="flex items-center gap-2 text-lg font-bold uppercase tracking-tighter md:text-2xl"
 				>
-					<span className="inline-block h-5 w-5 bg-acid md:h-6 md:w-6" aria-hidden="true" />
+					<span
+						className="inline-block h-5 w-5 bg-acid md:h-6 md:w-6"
+						aria-hidden="true"
+					/>
 					Motion<span className="text-acid">Type</span>
 				</a>
 

@@ -31,6 +31,16 @@ export const colors = {
 /* A small deterministic set of "hand-placed" rotations so repeated elements
    (cards in a grid) each sit at a slightly different casual angle without
    relying on Math.random (which would change on every render). */
-export const tilts = ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2"] as const;
+export const tilts = [
+	"-rotate-2",
+	"rotate-1",
+	"-rotate-1",
+	"rotate-2",
+] as const;
 
-export const blobRadii = [radius.blob, radius.blob2, radius.blob3, radius.blob4];
+export const blobRadii = [
+	radius.blob,
+	radius.blob2,
+	radius.blob3,
+	radius.blob4,
+];

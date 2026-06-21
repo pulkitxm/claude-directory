@@ -17,7 +17,8 @@ const POSTS: Post[] = [
 	{
 		tag: "Field notes",
 		title: "Why your best ideas are ugly first",
-		excerpt: "A short defense of the bad sketch, the wrong arrow, and the note you almost didn't write.",
+		excerpt:
+			"A short defense of the bad sketch, the wrong arrow, and the note you almost didn't write.",
 		emoji: "💡",
 		bg: "#fff9c4",
 		readTime: "4 min",
@@ -26,7 +27,8 @@ const POSTS: Post[] = [
 	{
 		tag: "How we work",
 		title: "Running a workshop with zero slides",
-		excerpt: "Swap the deck for a wall. A playbook for facilitating a room that actually wants to draw.",
+		excerpt:
+			"Swap the deck for a wall. A playbook for facilitating a room that actually wants to draw.",
 		emoji: "🧠",
 		bg: "#cfe0f5",
 		readTime: "6 min",
@@ -35,7 +37,8 @@ const POSTS: Post[] = [
 	{
 		tag: "Product",
 		title: "Building a pencil cursor that feels real",
-		excerpt: "The tiny rendering tricks behind a cursor that looks like it's actually leaving graphite.",
+		excerpt:
+			"The tiny rendering tricks behind a cursor that looks like it's actually leaving graphite.",
 		emoji: "✏️",
 		bg: "#ffd9d9",
 		readTime: "5 min",
@@ -61,7 +64,8 @@ export function Blog() {
 						href="#notes"
 						className="inline-flex items-center gap-1 text-lg text-ink/70 transition-colors hover:text-ink hover:underline-wavy"
 					>
-						Read the whole notebook <ArrowUpRight size={18} strokeWidth={2.75} />
+						Read the whole notebook{" "}
+						<ArrowUpRight size={18} strokeWidth={2.75} />
 					</a>
 				</div>
 
@@ -88,7 +92,10 @@ export function Blog() {
 								className="m-3 grid h-36 place-items-center border-2 border-dashed border-ink/40"
 								style={{ background: p.bg, borderRadius: radius.wobblyMd }}
 							>
-								<span className="text-5xl transition-transform duration-200 group-hover:scale-110" aria-hidden>
+								<span
+									className="text-5xl transition-transform duration-200 group-hover:scale-110"
+									aria-hidden
+								>
 									{p.emoji}
 								</span>
 							</div>

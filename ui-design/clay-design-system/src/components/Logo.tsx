@@ -27,7 +27,14 @@ export function Logo({ className = "" }: { className?: string }) {
 						fill="url(#logo-orb)"
 						className="origin-center transition-transform duration-300 group-hover:scale-110"
 					/>
-					<ellipse cx="15" cy="14.5" rx="4.4" ry="3" fill="#fff" opacity="0.55" />
+					<ellipse
+						cx="15"
+						cy="14.5"
+						rx="4.4"
+						ry="3"
+						fill="#fff"
+						opacity="0.55"
+					/>
 				</svg>
 			</span>
 			<span

@@ -87,16 +87,8 @@ try {
 	check("headline h1 present", (await h1.count()) === 1);
 	const line1 = (await h1.locator("span").first().textContent())?.trim();
 	const line2 = (await h1.locator("span").last().textContent())?.trim();
-	check(
-		'title1 line = "Elevate Your"',
-		line1 === "Elevate Your",
-		line1,
-	);
-	check(
-		'title2 line = "Digital Vision"',
-		line2 === "Digital Vision",
-		line2,
-	);
+	check('title1 line = "Elevate Your"', line1 === "Elevate Your", line1);
+	check('title2 line = "Digital Vision"', line2 === "Digital Vision", line2);
 
 	// The second line is gradient text (bg-clip-text => transparent fill + gradient bg)
 	const gradientSpan = h1.locator("span").last();
@@ -117,7 +109,9 @@ try {
 	);
 
 	// Headline scales to 8xl (96px) at the lg/desktop viewport
-	const h1Size = await h1.first().evaluate((el) => getComputedStyle(el).fontSize);
+	const h1Size = await h1
+		.first()
+		.evaluate((el) => getComputedStyle(el).fontSize);
 	check("headline 96px (text-8xl) on desktop", h1Size === "96px", h1Size);
 
 	// Subheadline copy baked into the component
@@ -133,7 +127,11 @@ try {
 	const shapeCount = await hero
 		.locator("div.rounded-full.backdrop-blur-\\[2px\\]")
 		.count();
-	check("five animated geometric shapes rendered", shapeCount === 5, `${shapeCount}`);
+	check(
+		"five animated geometric shapes rendered",
+		shapeCount === 5,
+		`${shapeCount}`,
+	);
 
 	// Shapes have settled (entrance opacity -> 1) after the wait.
 	const firstShapeWrapperOpacity = await hero
@@ -142,7 +140,8 @@ try {
 		.evaluate((el) => {
 			// climb to the animated motion wrapper that controls opacity
 			let node = el;
-			for (let i = 0; i < 3 && node.parentElement; i++) node = node.parentElement;
+			for (let i = 0; i < 3 && node.parentElement; i++)
+				node = node.parentElement;
 			return getComputedStyle(node).opacity;
 		});
 	check(
@@ -184,13 +183,18 @@ try {
 	);
 
 	// ---- Other sections ----
-	check("features section present", (await page.locator("#features").count()) === 1);
-	check("docs/install section present", (await page.locator("#docs").count()) === 1);
+	check(
+		"features section present",
+		(await page.locator("#features").count()) === 1,
+	);
+	check(
+		"docs/install section present",
+		(await page.locator("#docs").count()) === 1,
+	);
 	check(
 		"install command lists framer-motion + lucide-react",
-		(await page
-			.getByText(/npm install framer-motion lucide-react/)
-			.count()) === 1,
+		(await page.getByText(/npm install framer-motion lucide-react/).count()) ===
+			1,
 	);
 
 	// ---- Fonts loaded ----
@@ -207,7 +211,9 @@ try {
 	);
 
 	// ---- Responsive: mobile headline shrinks ----
-	const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
+	const mobile = await browser.newPage({
+		viewport: { width: 390, height: 844 },
+	});
 	await mobile.goto(URL_BASE, { waitUntil: "networkidle" });
 	await mobile.waitForTimeout(2600);
 	const mobileH1Size = await mobile

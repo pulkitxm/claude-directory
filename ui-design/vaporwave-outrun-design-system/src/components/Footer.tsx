@@ -5,7 +5,10 @@ import { Shell } from "./primitives";
 const COLS: { title: string; links: string[] }[] = [
 	{ title: "System", links: ["Modules", "Boot Seq", "Filesystem", "Licenses"] },
 	{ title: "Relay", links: ["Documentation", "Changelog", "Status", "Readme"] },
-	{ title: "Operators", links: ["Discord", "Community", "Showcase", "Careers"] },
+	{
+		title: "Operators",
+		links: ["Discord", "Community", "Showcase", "Careers"],
+	},
 ];
 
 export function Footer() {

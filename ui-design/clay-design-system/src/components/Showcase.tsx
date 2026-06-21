@@ -75,17 +75,27 @@ export function Showcase() {
 								>
 									Secondary
 								</Button>
-								<Button variant="outline" onClick={() => setPressed((n) => n + 1)}>
+								<Button
+									variant="outline"
+									onClick={() => setPressed((n) => n + 1)}
+								>
 									Outline
 								</Button>
-								<Button variant="ghost" onClick={() => setPressed((n) => n + 1)}>
+								<Button
+									variant="ghost"
+									onClick={() => setPressed((n) => n + 1)}
+								>
 									Ghost
 								</Button>
 							</div>
 
 							<div className="mt-5 flex items-center gap-3">
 								<span className="inline-flex h-11 items-center gap-2 rounded-2xl bg-clay-recess px-4 shadow-clay-pressed-sm">
-									<Heart size={16} className="text-clay-accent-alt" fill="currentColor" />
+									<Heart
+										size={16}
+										className="text-clay-accent-alt"
+										fill="currentColor"
+									/>
 									<span
 										style={display}
 										className="text-sm font-bold text-clay-foreground"
@@ -112,8 +122,8 @@ export function Showcase() {
 								Pressed in, until you touch it
 							</h3>
 							<p className="mt-2 text-base leading-relaxed text-clay-muted">
-								The field rests recessed into the surface. On focus it rises to a
-								clean white card with a soft focus ring.
+								The field rests recessed into the surface. On focus it rises to
+								a clean white card with a soft focus ring.
 							</p>
 
 							<form
@@ -181,7 +191,10 @@ export function Showcase() {
 							</h3>
 							<div className="mt-6 flex flex-wrap items-end gap-4">
 								{RADII.map((r) => (
-									<div key={r.label} className="flex flex-col items-center gap-2">
+									<div
+										key={r.label}
+										className="flex flex-col items-center gap-2"
+									>
 										<div
 											className="h-16 w-16 bg-gradient-to-br from-clay-accent-light to-clay-accent shadow-clay-button"
 											style={{ borderRadius: r.px } as CSSProperties}
@@ -198,12 +211,18 @@ export function Showcase() {
 
 							<div className="mt-6 grid grid-cols-2 gap-3">
 								<div className="flex h-20 items-center justify-center rounded-2xl bg-clay-cardBg shadow-clay-card backdrop-blur-xl">
-									<span style={display} className="text-sm font-bold text-clay-muted">
+									<span
+										style={display}
+										className="text-sm font-bold text-clay-muted"
+									>
 										Convex
 									</span>
 								</div>
 								<div className="flex h-20 items-center justify-center rounded-2xl bg-clay-recess shadow-clay-pressed">
-									<span style={display} className="text-sm font-bold text-clay-muted">
+									<span
+										style={display}
+										className="text-sm font-bold text-clay-muted"
+									>
 										Concave
 									</span>
 								</div>

@@ -12,14 +12,14 @@ import avatar02 from "../assets/images/avatar-02.jpg";
 import avatar03 from "../assets/images/avatar-03.jpg";
 
 export const images = {
-  heroPortrait,
-  featureAtelier,
-  featureArchitecture,
-  featureStillLife,
-  blog01,
-  blog02,
-  blog03,
-  avatar01,
-  avatar02,
-  avatar03,
+	heroPortrait,
+	featureAtelier,
+	featureArchitecture,
+	featureStillLife,
+	blog01,
+	blog02,
+	blog03,
+	avatar01,
+	avatar02,
+	avatar03,
 };

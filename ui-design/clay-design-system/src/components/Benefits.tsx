@@ -117,15 +117,24 @@ function BenefitComposition() {
 			{/* a fanned stack of convex clay tablets */}
 			<div
 				className="absolute left-[14%] top-[18%] h-[36%] w-[58%] -rotate-6 rounded-[28px] shadow-clay-orb"
-				style={tablet("linear-gradient(135deg,#7dd3fc,#0284c7)", "rgba(2,132,199,0.35)")}
+				style={tablet(
+					"linear-gradient(135deg,#7dd3fc,#0284c7)",
+					"rgba(2,132,199,0.35)",
+				)}
 			/>
 			<div
 				className="absolute left-[24%] top-[30%] h-[36%] w-[58%] rotate-3 rounded-[28px] shadow-clay-orb"
-				style={tablet("linear-gradient(135deg,#f9a8d4,#db2777)", "rgba(219,39,119,0.35)")}
+				style={tablet(
+					"linear-gradient(135deg,#f9a8d4,#db2777)",
+					"rgba(219,39,119,0.35)",
+				)}
 			/>
 			<div
 				className="absolute left-[19%] top-[42%] h-[36%] w-[58%] -rotate-2 rounded-[28px] shadow-clay-orb"
-				style={tablet("linear-gradient(135deg,#c4b5fd,#7c3aed)", "rgba(124,58,237,0.38)")}
+				style={tablet(
+					"linear-gradient(135deg,#c4b5fd,#7c3aed)",
+					"rgba(124,58,237,0.38)",
+				)}
 			>
 				<div className="flex h-full items-center justify-between px-6 text-white">
 					<span style={display} className="text-lg font-black">
@@ -140,11 +149,17 @@ function BenefitComposition() {
 			{/* floating satellite orbs */}
 			<div
 				className="absolute -right-3 top-6 h-16 w-16 animate-clay-float rounded-full shadow-clay-orb"
-				style={tablet("linear-gradient(135deg,#fcd34d,#d97706)", "rgba(217,119,6,0.4)")}
+				style={tablet(
+					"linear-gradient(135deg,#fcd34d,#d97706)",
+					"rgba(217,119,6,0.4)",
+				)}
 			/>
 			<div
 				className="animation-delay-2000 absolute -bottom-3 left-8 h-12 w-12 animate-clay-float-delayed rounded-full shadow-clay-orb"
-				style={tablet("linear-gradient(135deg,#6ee7b7,#059669)", "rgba(5,150,105,0.4)")}
+				style={tablet(
+					"linear-gradient(135deg,#6ee7b7,#059669)",
+					"rgba(5,150,105,0.4)",
+				)}
 			/>
 		</div>
 	);

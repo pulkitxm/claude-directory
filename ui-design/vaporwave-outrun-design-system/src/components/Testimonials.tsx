@@ -1,10 +1,4 @@
-import {
-	Eyebrow,
-	Reveal,
-	Section,
-	SectionHeading,
-	Shell,
-} from "./primitives";
+import { Eyebrow, Reveal, Section, SectionHeading, Shell } from "./primitives";
 
 type Msg = {
 	user: string;
@@ -79,11 +73,15 @@ export function Testimonials() {
 									delay={i * 0.05}
 									className="group flex flex-wrap items-baseline gap-x-2 gap-y-1 border-l-2 border-transparent py-1.5 pl-3 transition-colors duration-200 ease-linear hover:border-[var(--color-cyan)] hover:bg-[var(--color-cyan)]/5"
 								>
-									<span className="text-[var(--color-chrome)]/40">[{m.time}]</span>
+									<span className="text-[var(--color-chrome)]/40">
+										[{m.time}]
+									</span>
 									<span style={{ color: m.color }} className="font-bold">
 										&lt;{m.user}&gt;
 									</span>
-									<span className="flex-1 text-[var(--color-chrome)]/85">{m.text}</span>
+									<span className="flex-1 text-[var(--color-chrome)]/85">
+										{m.text}
+									</span>
 								</Reveal>
 							))}
 							{/* live input line */}

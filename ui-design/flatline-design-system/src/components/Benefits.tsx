@@ -17,11 +17,18 @@ export function Benefits() {
 		<section className="on-color relative overflow-hidden bg-[var(--color-grass)] py-20 text-white lg:py-28">
 			<Blob className="-left-32 -top-32 h-96 w-96 bg-white/10" />
 			<Blob className="-bottom-40 right-[-6rem] h-[28rem] w-[28rem] bg-[var(--color-grass-deep)]/60" />
-			<Square rotate={-12} className="left-[6%] bottom-16 h-24 w-24 bg-white/10" />
+			<Square
+				rotate={-12}
+				className="left-[6%] bottom-16 h-24 w-24 bg-white/10"
+			/>
 
 			<Shell className="relative grid items-center gap-16 lg:grid-cols-2">
 				{/* Abstract overlapping composition */}
-				<motion.div variants={fadeUp} {...reveal} className="order-2 lg:order-1">
+				<motion.div
+					variants={fadeUp}
+					{...reveal}
+					className="order-2 lg:order-1"
+				>
 					<AbstractStack />
 				</motion.div>
 
@@ -31,10 +38,7 @@ export function Benefits() {
 					{...reveal}
 					className="order-1 lg:order-2"
 				>
-					<motion.span
-						variants={fadeUp}
-						className="eyebrow text-emerald-100"
-					>
+					<motion.span variants={fadeUp} className="eyebrow text-emerald-100">
 						Why flat wins
 					</motion.span>
 					<motion.h2

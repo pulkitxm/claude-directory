@@ -127,10 +127,7 @@ function Navbar() {
 			>
 				<Wordmark />
 
-				<nav
-					className="hidden items-center gap-9 md:flex"
-					aria-label="Primary"
-				>
+				<nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
 					{NAV_LINKS.map((l) => (
 						<a
 							key={l.href}
@@ -179,9 +176,7 @@ function Navbar() {
 				/>
 				<div
 					className={`absolute inset-x-0 top-0 origin-top rounded-b-[2.5rem] border-b border-stone bg-paper px-6 pb-10 pt-6 shadow-bloom transition-all duration-500 ease-organic ${
-						open
-							? "translate-y-0 opacity-100"
-							: "-translate-y-6 opacity-0"
+						open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0"
 					}`}
 				>
 					<div className="flex items-center justify-between">
@@ -375,7 +370,12 @@ function Marquee() {
 						className="flex items-center gap-12 text-sm font-medium uppercase tracking-[0.22em] text-forest/55"
 					>
 						{t}
-						<Leaf size={14} strokeWidth={1.5} className="text-sage" aria-hidden />
+						<Leaf
+							size={14}
+							strokeWidth={1.5}
+							className="text-sage"
+							aria-hidden
+						/>
 					</li>
 				))}
 			</ul>
@@ -522,7 +522,9 @@ function StatItem({
 				<span ref={ref}>{shown}</span>
 				<span className="text-terracotta">{suffix}</span>
 			</div>
-			<p className="mx-auto mt-3 max-w-[14rem] text-sm text-forest/65">{label}</p>
+			<p className="mx-auto mt-3 max-w-[14rem] text-sm text-forest/65">
+				{label}
+			</p>
 		</div>
 	);
 }
@@ -716,9 +718,7 @@ function Pricing() {
 													<Check
 														size={12}
 														strokeWidth={2.5}
-														className={
-															featured ? "text-paper" : "text-sage"
-														}
+														className={featured ? "text-paper" : "text-sage"}
 													/>
 												</span>
 												<span
@@ -770,7 +770,8 @@ function Testimonials() {
 					eyebrow="Kind Words"
 					title={
 						<>
-							Homes that finally <span className="em text-terracotta">exhale</span>.
+							Homes that finally{" "}
+							<span className="em text-terracotta">exhale</span>.
 						</>
 					}
 				/>
@@ -825,7 +826,8 @@ function Journal() {
 						eyebrow="The Journal"
 						title={
 							<>
-								Notes from the <span className="em text-terracotta">glasshouse</span>.
+								Notes from the{" "}
+								<span className="em text-terracotta">glasshouse</span>.
 							</>
 						}
 						className="md:max-w-xl"
@@ -856,7 +858,10 @@ function Journal() {
 								<div className="flex flex-1 flex-col p-7">
 									<div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sage">
 										{post.category}
-										<span className="h-1 w-1 rounded-full bg-clay" aria-hidden />
+										<span
+											className="h-1 w-1 rounded-full bg-clay"
+											aria-hidden
+										/>
 										<span className="text-forest/45">{post.read} read</span>
 									</div>
 									<h3 className="mt-4 text-2xl leading-snug">{post.title}</h3>
@@ -925,7 +930,9 @@ function FaqItem({
 					{q}
 					<span
 						className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-500 ease-organic ${
-							open ? "rotate-45 bg-terracotta text-paper" : "bg-sage/15 text-forest"
+							open
+								? "rotate-45 bg-terracotta text-paper"
+								: "bg-sage/15 text-forest"
 						}`}
 					>
 						<Plus size={18} strokeWidth={2} aria-hidden />
@@ -1074,10 +1081,7 @@ function CtaNewsletter() {
 								)}
 							</Button>
 						</form>
-						<p
-							className="mt-4 text-sm text-paper/50"
-							aria-live="polite"
-						>
+						<p className="mt-4 text-sm text-paper/50" aria-live="polite">
 							{sent
 								? "You're on the list — watch for a little green hello."
 								: "Seasonal letters only. Unsubscribe with one tap."}

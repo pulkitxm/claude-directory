@@ -24,7 +24,8 @@ export const ICON = {
 	strokeLinejoin: "round" as const,
 };
 
-const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(" ");
+const cx = (...c: (string | false | undefined)[]) =>
+	c.filter(Boolean).join(" ");
 
 export type Pop = "violet" | "pink" | "amber" | "mint" | "dark" | "soft";
 
@@ -241,7 +242,10 @@ export function Textarea({
 	...rest
 }: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 	return (
-		<textarea className={cx(fieldBase, "py-3 resize-none", className)} {...rest} />
+		<textarea
+			className={cx(fieldBase, "py-3 resize-none", className)}
+			{...rest}
+		/>
 	);
 }
 
@@ -266,7 +270,10 @@ export function Eyebrow({
 			)}
 		>
 			<span
-				className={cx("size-2.5 rounded-full border-2 border-foreground", TONE_BG[tone])}
+				className={cx(
+					"size-2.5 rounded-full border-2 border-foreground",
+					TONE_BG[tone],
+				)}
 				aria-hidden="true"
 			/>
 			{children}
@@ -428,7 +435,9 @@ export function CheckRow({
 					/>
 				</svg>
 			</span>
-			<span className="text-step-0 leading-snug text-foreground">{children}</span>
+			<span className="text-step-0 leading-snug text-foreground">
+				{children}
+			</span>
 		</li>
 	);
 }

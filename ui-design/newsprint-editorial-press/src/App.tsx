@@ -10,21 +10,21 @@ import { Colophon } from "@/components/sections/Colophon";
 import { OrnamentDivider } from "@/components/ui/OrnamentDivider";
 
 export default function App() {
-  return (
-    <div id="top" className="min-h-screen bg-paper text-ink">
-      <Masthead />
-      <main>
-        <FrontPage />
-        <TheBrief />
-        <Desks />
-        <OrnamentDivider label="Continued on the next page" />
-        <HowItsFiled />
-        <Dispatches />
-        <OrnamentDivider label="The business of the paper" />
-        <Subscribe />
-        <Questions />
-      </main>
-      <Colophon />
-    </div>
-  );
+	return (
+		<div id="top" className="min-h-screen bg-paper text-ink">
+			<Masthead />
+			<main>
+				<FrontPage />
+				<TheBrief />
+				<Desks />
+				<OrnamentDivider label="Continued on the next page" />
+				<HowItsFiled />
+				<Dispatches />
+				<OrnamentDivider label="The business of the paper" />
+				<Subscribe />
+				<Questions />
+			</main>
+			<Colophon />
+		</div>
+	);
 }

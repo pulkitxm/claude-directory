@@ -59,7 +59,11 @@ export function Nav() {
 					aria-expanded={open}
 					onClick={() => setOpen((v) => !v)}
 				>
-					{open ? <X size={22} strokeWidth={2.5} /> : <Menu size={22} strokeWidth={2.5} />}
+					{open ? (
+						<X size={22} strokeWidth={2.5} />
+					) : (
+						<Menu size={22} strokeWidth={2.5} />
+					)}
 				</button>
 			</Shell>
 

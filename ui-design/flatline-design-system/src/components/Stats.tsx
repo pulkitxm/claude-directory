@@ -5,10 +5,35 @@ import { Shell, Reveal, Eyebrow } from "./primitives";
 /* STATS — multi-color numbers, each stat a different accent. White section so
    the colored numerals pop as pure graphic marks. */
 const STATS = [
-	{ value: 0, target: 100, suffix: "%", label: "Flat. Zero box-shadows.", color: "var(--color-brand)" },
-	{ value: 0, target: 7, suffix: "", label: "Design tokens, one source", color: "var(--color-grass)" },
-	{ value: 0, target: 60, suffix: "fps", label: "Snappy 200ms interactions", color: "var(--color-sun)" },
-	{ value: 0, target: 4.9, suffix: "/5", label: "Loved by designers", color: "var(--color-ink)", decimals: 1 },
+	{
+		value: 0,
+		target: 100,
+		suffix: "%",
+		label: "Flat. Zero box-shadows.",
+		color: "var(--color-brand)",
+	},
+	{
+		value: 0,
+		target: 7,
+		suffix: "",
+		label: "Design tokens, one source",
+		color: "var(--color-grass)",
+	},
+	{
+		value: 0,
+		target: 60,
+		suffix: "fps",
+		label: "Snappy 200ms interactions",
+		color: "var(--color-sun)",
+	},
+	{
+		value: 0,
+		target: 4.9,
+		suffix: "/5",
+		label: "Loved by designers",
+		color: "var(--color-ink)",
+		decimals: 1,
+	},
 ];
 
 function CountUp({
@@ -55,7 +80,9 @@ export function Stats() {
 		<section className="bg-[var(--color-canvas)] py-20 lg:py-24">
 			<Shell>
 				<Reveal className="mx-auto max-w-2xl text-center">
-					<Eyebrow className="text-[var(--color-brand)]">By the numbers</Eyebrow>
+					<Eyebrow className="text-[var(--color-brand)]">
+						By the numbers
+					</Eyebrow>
 					<h2 className="mt-3 text-4xl font-extrabold tracking-tight sm:text-5xl">
 						Reduction you can measure.
 					</h2>
@@ -74,7 +101,9 @@ export function Stats() {
 									decimals={s.decimals ?? 0}
 								/>
 							</div>
-							<p className="mt-3 text-sm font-medium text-gray-500">{s.label}</p>
+							<p className="mt-3 text-sm font-medium text-gray-500">
+								{s.label}
+							</p>
 						</Reveal>
 					))}
 				</div>

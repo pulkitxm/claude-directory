@@ -14,7 +14,9 @@ const BASE_URL = process.argv[2] ?? "http://localhost:4173";
 
 let failures = 0;
 const check = (name, ok, detail = "") => {
-	console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`);
+	console.log(
+		`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`,
+	);
 	if (!ok) failures += 1;
 };
 
@@ -62,13 +64,21 @@ const h1Color = await page
 	.locator("h1")
 	.first()
 	.evaluate((el) => getComputedStyle(el).color);
-check("headline is terminal green #33ff00", h1Color === "rgb(51, 255, 0)", h1Color);
+check(
+	"headline is terminal green #33ff00",
+	h1Color === "rgb(51, 255, 0)",
+	h1Color,
+);
 
 const h1Shadow = await page
 	.locator("h1")
 	.first()
 	.evaluate((el) => getComputedStyle(el).textShadow);
-check("headline has phosphor glow (text-shadow)", /rgb/.test(h1Shadow), h1Shadow);
+check(
+	"headline has phosphor glow (text-shadow)",
+	/rgb/.test(h1Shadow),
+	h1Shadow,
+);
 
 // ── CRT scanline overlay present + non-interactive ──────────────────────────
 const overlayPE = await page
@@ -78,7 +88,10 @@ const overlayPE = await page
 check("CRT overlay is pointer-events:none", overlayPE === "none", overlayPE);
 
 // ── Typewriter headline resolved to full accessible text ────────────────────
-const h1Text = (await page.locator("h1").first().innerText()).replace(/\s+/g, " ");
+const h1Text = (await page.locator("h1").first().innerText()).replace(
+	/\s+/g,
+	" ",
+);
 check(
 	"typewriter headline reads full copy",
 	/INFRASTRUCTURE/.test(h1Text) && /STRIPPED TO THE SHELL/.test(h1Text),
@@ -86,12 +99,19 @@ check(
 );
 
 // ── ASCII art logo present ──────────────────────────────────────────────────
-check("ASCII art logo rendered in <pre>", (await page.locator("pre").count()) >= 1);
+check(
+	"ASCII art logo rendered in <pre>",
+	(await page.locator("pre").count()) >= 1,
+);
 
 // ── Raw-data ASCII meters: role=meter with valuenow ─────────────────────────
 const meters = page.locator('[role="meter"]');
 const meterCount = await meters.count();
-check("ASCII meters present (role=meter)", meterCount >= 5, `count=${meterCount}`);
+check(
+	"ASCII meters present (role=meter)",
+	meterCount >= 5,
+	`count=${meterCount}`,
+);
 const firstMeterText = await meters.first().innerText();
 check(
 	"meter draws [|||....] bar",
@@ -101,7 +121,10 @@ check(
 
 // ── Bracketed status badges exist ───────────────────────────────────────────
 const bodyText = await page.locator("body").innerText();
-check("bracketed status codes ([OK]/[ERR]) present", /\[(OK|ERR|WARN|RUN)\]/.test(bodyText));
+check(
+	"bracketed status codes ([OK]/[ERR]) present",
+	/\[(OK|ERR|WARN|RUN)\]/.test(bodyText),
+);
 
 // ── Interactive console: run `status`, expect fleet output ──────────────────
 const consoleInput = page.getByLabel("command input");
@@ -110,7 +133,11 @@ await consoleInput.fill("status");
 await consoleInput.press("Enter");
 await page.waitForTimeout(300);
 const consoleText = await page.locator("#console").innerText();
-check("console executes `status`", /FLEET STATUS/.test(consoleText), "fleet status printed");
+check(
+	"console executes `status`",
+	/FLEET STATUS/.test(consoleText),
+	"fleet status printed",
+);
 
 await consoleInput.fill("boguscmd");
 await consoleInput.press("Enter");
@@ -130,7 +157,9 @@ await accessKey.fill("bad");
 await page.waitForTimeout(150);
 check(
 	"access form rejects malformed key",
-	/\[ERR\] bad key/.test(await page.locator('section[aria-label="access.request"]').innerText()),
+	/\[ERR\] bad key/.test(
+		await page.locator('section[aria-label="access.request"]').innerText(),
+	),
 	"shows [ERR] bad key",
 );
 await accessKey.fill("acme-1337");

@@ -28,8 +28,8 @@ export function Footer() {
 					<div>
 						<Logo />
 						<p className="mt-4 max-w-xs text-lg text-ink/70">
-							The messy-on-purpose whiteboard for teams who think with
-							their hands.
+							The messy-on-purpose whiteboard for teams who think with their
+							hands.
 						</p>
 						<div className="mt-5 flex gap-2">
 							{["✏️", "📌", "🗒️", "🖍️"].map((e, i) => (
@@ -73,17 +73,31 @@ export function Footer() {
 				<div className="mt-12 flex flex-col items-center justify-between gap-4 border-t-2 border-dashed border-ink/40 pt-7 text-base text-ink/60 md:flex-row">
 					<p className="inline-flex items-center gap-1.5">
 						Drawn with{" "}
-						<Heart size={16} strokeWidth={2.75} className="text-accent" fill="currentColor" />{" "}
+						<Heart
+							size={16}
+							strokeWidth={2.75}
+							className="text-accent"
+							fill="currentColor"
+						/>{" "}
 						by the Scribbly crew · © {new Date().getFullYear()}
 					</p>
 					<div className="flex gap-5">
-						<a href="#top" className="transition-colors hover:text-ink hover:line-through hover:decoration-accent hover:decoration-2">
+						<a
+							href="#top"
+							className="transition-colors hover:text-ink hover:line-through hover:decoration-accent hover:decoration-2"
+						>
 							Privacy
 						</a>
-						<a href="#top" className="transition-colors hover:text-ink hover:line-through hover:decoration-accent hover:decoration-2">
+						<a
+							href="#top"
+							className="transition-colors hover:text-ink hover:line-through hover:decoration-accent hover:decoration-2"
+						>
 							Terms
 						</a>
-						<a href="#top" className="transition-colors hover:text-ink hover:line-through hover:decoration-accent hover:decoration-2">
+						<a
+							href="#top"
+							className="transition-colors hover:text-ink hover:line-through hover:decoration-accent hover:decoration-2"
+						>
 							Cookies
 						</a>
 					</div>

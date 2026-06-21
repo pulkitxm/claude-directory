@@ -12,7 +12,7 @@ const fail = (msg) => {
 const ok = (msg) => console.log("PASS:", msg);
 
 const browser = await chromium.launch(
-	process.env.CHROME_BIN ? { executablePath: process.env.CHROME_BIN } : {}
+	process.env.CHROME_BIN ? { executablePath: process.env.CHROME_BIN } : {},
 );
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 
@@ -50,9 +50,9 @@ const visibleWord = async () => {
 	const spans = page.locator("h1 .absolute");
 	const count = await spans.count();
 	for (let i = 0; i < count; i++) {
-		const op = await spans.nth(i).evaluate((el) =>
-			parseFloat(getComputedStyle(el).opacity)
-		);
+		const op = await spans
+			.nth(i)
+			.evaluate((el) => parseFloat(getComputedStyle(el).opacity));
 		if (op > 0.6) return (await spans.nth(i).innerText()).trim();
 	}
 	return null;
@@ -67,7 +67,9 @@ else fail(`word did not rotate (first=${first}, second=${second})`);
 // 4) The four CTA buttons from the component + nav CTAs are present.
 const btnLabels = ["Read our launch article", "Jump on a call", "Sign up here"];
 for (const label of btnLabels) {
-	const n = await page.getByRole("button", { name: new RegExp(label, "i") }).count();
+	const n = await page
+		.getByRole("button", { name: new RegExp(label, "i") })
+		.count();
 	if (n >= 1) ok(`button present: ${label}`);
 	else fail(`button missing: ${label}`);
 }
@@ -95,7 +97,7 @@ if (afterOne === !before && afterTwo === before)
 	ok(`theme toggle flips both ways (start dark=${before})`);
 else
 	fail(
-		`theme toggle broken (start=${before}, click1=${afterOne}, click2=${afterTwo})`
+		`theme toggle broken (start=${before}, click1=${afterOne}, click2=${afterTwo})`,
 	);
 
 // 7) Ticker marquee present.
@@ -111,4 +113,8 @@ if (consoleErrors.length === 0) ok("no console/page errors");
 else fail(`console errors:\n  ${consoleErrors.join("\n  ")}`);
 
 await browser.close();
-console.log(process.exitCode ? "\n=== VERIFICATION FAILED ===" : "\n=== ALL CHECKS PASSED ===");
+console.log(
+	process.exitCode
+		? "\n=== VERIFICATION FAILED ==="
+		: "\n=== ALL CHECKS PASSED ===",
+);

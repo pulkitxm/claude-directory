@@ -12,7 +12,10 @@ type SectionHeadingProps = {
  * means the ramp can be retuned in one place. Compose with `text-acid` spans
  * inside `children` for the accent words.
  */
-export function SectionHeading({ children, className = "" }: SectionHeadingProps) {
+export function SectionHeading({
+	children,
+	className = "",
+}: SectionHeadingProps) {
 	return (
 		<h2
 			className={`font-bold uppercase leading-[0.85] tracking-tighter text-5xl md:text-7xl lg:text-8xl ${className}`}

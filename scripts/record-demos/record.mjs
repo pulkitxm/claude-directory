@@ -231,7 +231,11 @@ async function recordScrollable(browser) {
 		};
 		w.setTimeout = (cb, delay, ...a) => {
 			const i = id++;
-			timers.push({ i, due: vnow + Math.max(0, +delay || 0), cb: () => cb(...a) });
+			timers.push({
+				i,
+				due: vnow + Math.max(0, +delay || 0),
+				cb: () => cb(...a),
+			});
 			return i;
 		};
 		w.setInterval = (cb, delay, ...a) => {

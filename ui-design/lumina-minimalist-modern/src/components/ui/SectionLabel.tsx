@@ -21,9 +21,7 @@ export function SectionLabel({
 		<div
 			className={cn(
 				"inline-flex items-center gap-3 rounded-full border px-5 py-2",
-				dark
-					? "border-white/15 bg-white/5"
-					: "border-accent/30 bg-accent/5",
+				dark ? "border-white/15 bg-white/5" : "border-accent/30 bg-accent/5",
 				className,
 			)}
 		>

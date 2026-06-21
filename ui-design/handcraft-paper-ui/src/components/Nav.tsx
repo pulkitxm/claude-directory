@@ -62,7 +62,11 @@ export function Nav() {
 					className="grid h-11 w-11 place-items-center border-2 border-ink bg-card shadow-[var(--shadow-hard-sm)] transition-transform duration-100 active:translate-x-[2px] active:translate-y-[2px] md:hidden"
 					style={{ borderRadius: radius.wobblyMd }}
 				>
-					{open ? <X size={24} strokeWidth={2.75} /> : <Menu size={24} strokeWidth={2.75} />}
+					{open ? (
+						<X size={24} strokeWidth={2.75} />
+					) : (
+						<Menu size={24} strokeWidth={2.75} />
+					)}
 				</button>
 			</nav>
 

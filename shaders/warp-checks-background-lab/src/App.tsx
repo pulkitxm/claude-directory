@@ -1,11 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { ArrowUpRight, Code, Grid3x3, Layers } from "lucide-react";
 import Wrapper from "@/components/ui/background-shaders";
-import {
-	PROMPT_WARP,
-	WARP_PRESETS,
-	type WarpConfig,
-} from "@/lib/warp";
+import { PROMPT_WARP, WARP_PRESETS, type WarpConfig } from "@/lib/warp";
 import { useTelemetry } from "@/lib/useTelemetry";
 import { Chip, Glass, Kicker } from "@/components/lab/primitives";
 import { ControlDeck } from "@/components/lab/control-deck";
@@ -190,7 +186,10 @@ export default function App() {
 				</div>
 				<div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
 					<PropsApi config={config} />
-					<Glass as="section" className="flex flex-col justify-between gap-6 p-6">
+					<Glass
+						as="section"
+						className="flex flex-col justify-between gap-6 p-6"
+					>
 						<div className="flex flex-col gap-3">
 							<Kicker>The drop-in</Kicker>
 							<h3 className="text-xl font-medium text-white">

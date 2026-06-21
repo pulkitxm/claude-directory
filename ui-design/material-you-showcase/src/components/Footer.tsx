@@ -8,7 +8,13 @@ const COLUMNS: { title: string; links: string[] }[] = [
 	},
 	{
 		title: "Developers",
-		links: ["Documentation", "Token API", "Figma plugin", "Native SDKs", "Status"],
+		links: [
+			"Documentation",
+			"Token API",
+			"Figma plugin",
+			"Native SDKs",
+			"Status",
+		],
 	},
 	{
 		title: "Company",
@@ -67,13 +73,22 @@ export function Footer() {
 						© {new Date().getFullYear()} Lumi Labs. Crafted with Material You.
 					</p>
 					<div className="flex gap-5 text-sm text-[var(--color-md-on-variant)]">
-						<a href="#" className="focus-ring rounded-md hover:text-[var(--color-md-on-bg)]">
+						<a
+							href="#"
+							className="focus-ring rounded-md hover:text-[var(--color-md-on-bg)]"
+						>
 							Privacy
 						</a>
-						<a href="#" className="focus-ring rounded-md hover:text-[var(--color-md-on-bg)]">
+						<a
+							href="#"
+							className="focus-ring rounded-md hover:text-[var(--color-md-on-bg)]"
+						>
 							Terms
 						</a>
-						<a href="#" className="focus-ring rounded-md hover:text-[var(--color-md-on-bg)]">
+						<a
+							href="#"
+							className="focus-ring rounded-md hover:text-[var(--color-md-on-bg)]"
+						>
 							Cookies
 						</a>
 					</div>

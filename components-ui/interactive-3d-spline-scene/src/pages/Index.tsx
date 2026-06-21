@@ -243,8 +243,8 @@ export default function Index() {
 					<SplineSceneBasic />
 					<p className="mt-3 flex items-center justify-center gap-2 text-center text-xs text-neutral-500">
 						<ShieldCheck className="h-3.5 w-3.5 text-emerald-400/80" />
-						Live scene streams from Spline when reachable; otherwise the built-in
-						animated orb renders so the hero always works offline.
+						Live scene streams from Spline when reachable; otherwise the
+						built-in animated orb renders so the hero always works offline.
 					</p>
 				</section>
 
@@ -255,14 +255,17 @@ export default function Index() {
 						Does your codebase support this?
 					</h2>
 					<p className="mt-2 max-w-2xl text-sm text-neutral-400">
-						The component needs a <strong className="text-neutral-200">shadcn
-						project structure</strong>, <strong className="text-neutral-200">
-						Tailwind CSS</strong> and <strong className="text-neutral-200">
-						TypeScript</strong>. If you don&apos;t have them yet, this is the
-						whole setup — running <code className="text-neutral-200">shadcn
-						init</code> is what writes both <code className="text-neutral-200">
-						components.json</code> and the <code className="text-neutral-200">
-						@/</code> import alias the component relies on.
+						The component needs a{" "}
+						<strong className="text-neutral-200">
+							shadcn project structure
+						</strong>
+						, <strong className="text-neutral-200">Tailwind CSS</strong> and{" "}
+						<strong className="text-neutral-200">TypeScript</strong>. If you
+						don&apos;t have them yet, this is the whole setup — running{" "}
+						<code className="text-neutral-200">shadcn init</code> is what writes
+						both <code className="text-neutral-200">components.json</code> and
+						the <code className="text-neutral-200">@/</code> import alias the
+						component relies on.
 					</p>
 					<div className="mt-6 grid gap-5 lg:grid-cols-2">
 						<CodeBlock code={setupCode} lang="bash" filename="terminal" />
@@ -292,7 +295,11 @@ export default function Index() {
 							</div>
 							<div className="leading-relaxed">
 								<FileNode name="my-app/" kind="root" />
-								<FileNode name="components.json" depth={1} note="alias config" />
+								<FileNode
+									name="components.json"
+									depth={1}
+									note="alias config"
+								/>
 								<FileNode name="tailwind.config.ts" depth={1} />
 								<FileNode name="src/" kind="dir" depth={1} />
 								<FileNode name="index.css" depth={2} note="style entry" />
@@ -315,12 +322,15 @@ export default function Index() {
 								<li className="flex gap-2.5">
 									<span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
 									<span>
-										It&apos;s the <strong className="text-neutral-100">
-										convention shadcn&apos;s CLI targets</strong> — the{" "}
-										<code className="text-neutral-200">ui</code> alias in{" "}
+										It&apos;s the{" "}
+										<strong className="text-neutral-100">
+											convention shadcn&apos;s CLI targets
+										</strong>{" "}
+										— the <code className="text-neutral-200">ui</code> alias in{" "}
 										<code className="text-neutral-200">components.json</code>{" "}
-										points here, so <code className="text-neutral-200">add</code>{" "}
-										drops files in the right place and the{" "}
+										points here, so{" "}
+										<code className="text-neutral-200">add</code> drops files in
+										the right place and the{" "}
 										<code className="text-neutral-200">@/components/ui/*</code>{" "}
 										imports resolve.
 									</span>
@@ -328,29 +338,33 @@ export default function Index() {
 								<li className="flex gap-2.5">
 									<span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
 									<span>
-										It <strong className="text-neutral-100">separates
-										generated primitives</strong> (owned, copy-pasted, freely
-										edited) from your hand-written feature components — keeping
-										ownership obvious.
+										It{" "}
+										<strong className="text-neutral-100">
+											separates generated primitives
+										</strong>{" "}
+										(owned, copy-pasted, freely edited) from your hand-written
+										feature components — keeping ownership obvious.
 									</span>
 								</li>
 								<li className="flex gap-2.5">
 									<span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
 									<span>
-										It keeps imports <strong className="text-neutral-100">
-										predictable and portable</strong>: every snippet in the
-										ecosystem assumes <code className="text-neutral-200">
-										@/components/ui</code>, so paste-in components work with zero
-										rewiring.
+										It keeps imports{" "}
+										<strong className="text-neutral-100">
+											predictable and portable
+										</strong>
+										: every snippet in the ecosystem assumes{" "}
+										<code className="text-neutral-200">@/components/ui</code>,
+										so paste-in components work with zero rewiring.
 									</span>
 								</li>
 							</ul>
 							<p className="mt-4 rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-xs text-neutral-400">
 								If your components path isn&apos;t already{" "}
 								<code className="text-neutral-200">/components/ui</code>, create
-								it and set <code className="text-neutral-200">aliases.ui</code> in{" "}
-								<code className="text-neutral-200">components.json</code> before
-								pasting these files.
+								it and set <code className="text-neutral-200">aliases.ui</code>{" "}
+								in <code className="text-neutral-200">components.json</code>{" "}
+								before pasting these files.
 							</p>
 						</div>
 					</div>
@@ -414,7 +428,10 @@ export default function Index() {
 								n: "@splinetool/runtime",
 								d: "The engine that renders .splinecode",
 							},
-							{ n: "framer-motion", d: "Animation primitives (Spotlight variant)" },
+							{
+								n: "framer-motion",
+								d: "Animation primitives (Spotlight variant)",
+							},
 							{ n: "lucide-react", d: "Icons for surrounding UI" },
 						].map((dep) => (
 							<div
@@ -463,9 +480,12 @@ export default function Index() {
 						Drive the props
 					</h2>
 					<p className="mt-2 max-w-2xl text-sm text-neutral-400">
-						The same <code className="text-neutral-200">Card + Spotlight +
-						SplineScene</code> tree, wired to live controls — edit the copy,
-						toggle the spotlight, recolour its fill.
+						The same{" "}
+						<code className="text-neutral-200">
+							Card + Spotlight + SplineScene
+						</code>{" "}
+						tree, wired to live controls — edit the copy, toggle the spotlight,
+						recolour its fill.
 					</p>
 					<div className="mt-6">
 						<ScenePlayground />

@@ -28,8 +28,8 @@ export function Components() {
 						<span className="neo-text-stroke">Playground</span>
 					</h2>
 					<p className="mt-6 max-w-xl text-lg font-bold text-neo-ink">
-						Every primitive is live. Click the buttons (they press down),
-						focus the field (it floods yellow), hover the badges (they spin).
+						Every primitive is live. Click the buttons (they press down), focus
+						the field (it floods yellow), hover the badges (they spin).
 					</p>
 				</div>
 
@@ -68,7 +68,10 @@ export function Components() {
 						</p>
 						<div className="flex flex-wrap items-center gap-3">
 							<Badge bg="bg-neo-accent" spinOnHover>
-								<Star className="h-3.5 w-3.5 fill-neo-ink stroke-neo-ink" strokeWidth={3} />
+								<Star
+									className="h-3.5 w-3.5 fill-neo-ink stroke-neo-ink"
+									strokeWidth={3}
+								/>
 								Featured
 							</Badge>
 							<Badge bg="bg-neo-secondary" spinOnHover>
@@ -94,7 +97,10 @@ export function Components() {
 									key={i}
 									className={`inline-flex h-14 w-14 items-center justify-center border-4 border-neo-ink ${bg} neo-shadow-sm`}
 								>
-									<Icon className="h-6 w-6 fill-neo-ink stroke-neo-ink" strokeWidth={3} />
+									<Icon
+										className="h-6 w-6 fill-neo-ink stroke-neo-ink"
+										strokeWidth={3}
+									/>
 								</span>
 							))}
 						</div>
@@ -106,7 +112,11 @@ export function Components() {
 							Inputs · focus floods yellow
 						</p>
 						<div className="space-y-5">
-							<Input label="Your Name" placeholder="DESH PATEL" autoComplete="off" />
+							<Input
+								label="Your Name"
+								placeholder="DESH PATEL"
+								autoComplete="off"
+							/>
 							<Input
 								label="Email"
 								type="email"
@@ -126,7 +136,10 @@ export function Components() {
 								<span className="text-sm font-bold uppercase tracking-widest">
 									Sticker Card
 								</span>
-								<Star className="h-5 w-5 fill-neo-ink stroke-neo-ink" strokeWidth={3} />
+								<Star
+									className="h-5 w-5 fill-neo-ink stroke-neo-ink"
+									strokeWidth={3}
+								/>
 							</div>
 							<p className="mt-3 text-base font-bold leading-snug text-neo-ink">
 								Hover me. I lift off the page and my shadow grows — physical,

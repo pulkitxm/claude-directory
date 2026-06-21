@@ -1,11 +1,6 @@
 import { motion } from "motion/react";
 import { Check } from "lucide-react";
-import {
-	Container,
-	MonoLabel,
-	Panel,
-	SectionHeading,
-} from "./primitives";
+import { Container, MonoLabel, Panel, SectionHeading } from "./primitives";
 import { inView, slideIn, slideUp } from "../lib/motion";
 
 const SPECS = [
@@ -78,22 +73,16 @@ export function Showcase() {
 										key={s}
 										className="flex items-start gap-3 rounded-md bg-chassis p-3"
 										style={{
-											boxShadow:
-												"var(--shadow-recessed-soft)",
+											boxShadow: "var(--shadow-recessed-soft)",
 										}}
 									>
 										<span
 											className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent"
 											style={{
-												boxShadow:
-													"var(--shadow-glow)",
+												boxShadow: "var(--shadow-glow)",
 											}}
 										>
-											<Check
-												size={13}
-												strokeWidth={3}
-												className="text-white"
-											/>
+											<Check size={13} strokeWidth={3} className="text-white" />
 										</span>
 										<span className="text-[0.95rem] leading-snug text-ink">
 											{s}

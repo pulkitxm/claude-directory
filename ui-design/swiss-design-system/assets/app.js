@@ -6,7 +6,9 @@
 (function () {
 	"use strict";
 
-	const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	const reduceMotion = window.matchMedia(
+		"(prefers-reduced-motion: reduce)",
+	).matches;
 
 	/* ---------------------------------------------------------------- 1 · MENU */
 	const burger = document.getElementById("burger");
@@ -20,7 +22,9 @@
 			setMenu(!document.body.classList.contains("menu-open"));
 		});
 		// Close when a drawer link is chosen or Escape is pressed.
-		drawer.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+		drawer
+			.querySelectorAll("a")
+			.forEach((a) => a.addEventListener("click", () => setMenu(false)));
 		document.addEventListener("keydown", (e) => {
 			if (e.key === "Escape") setMenu(false);
 		});

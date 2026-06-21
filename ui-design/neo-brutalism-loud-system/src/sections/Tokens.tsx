@@ -57,7 +57,9 @@ export function Tokens() {
 									<p className="text-sm font-bold uppercase tracking-wide text-neo-ink">
 										{token.name}
 									</p>
-									<p className="text-xs font-bold text-neo-ink/60">{token.note}</p>
+									<p className="text-xs font-bold text-neo-ink/60">
+										{token.note}
+									</p>
 								</div>
 							</Card>
 						</Reveal>
@@ -108,7 +110,9 @@ export function Tokens() {
 									key={k}
 									className="flex items-center justify-between border-b-2 border-neo-ink/30 pb-2"
 								>
-									<dt className="uppercase tracking-wide text-neo-ink/70">{k}</dt>
+									<dt className="uppercase tracking-wide text-neo-ink/70">
+										{k}
+									</dt>
 									<dd className="text-neo-ink">{v}</dd>
 								</div>
 							))}

@@ -29,7 +29,9 @@ export function ZigZag() {
 										{item.title}{" "}
 										<span className="text-gradient">{item.titleAccent}</span>
 									</h2>
-									<p className="mt-5 max-w-xl text-lg text-slate-500">{item.body}</p>
+									<p className="mt-5 max-w-xl text-lg text-slate-500">
+										{item.body}
+									</p>
 									<motion.ul
 										variants={stagger(0.08)}
 										initial="hidden"
@@ -124,7 +126,12 @@ function AutomationUI() {
 				{nodes.map((n, i) => (
 					<div key={n.label} className="relative">
 						<div className="flex items-center gap-3 rounded-xl border border-slate-100 bg-white p-3">
-							<span className={cx("rounded-lg px-2.5 py-1 text-xs font-semibold", n.tone)}>
+							<span
+								className={cx(
+									"rounded-lg px-2.5 py-1 text-xs font-semibold",
+									n.tone,
+								)}
+							>
 								{n.label}
 							</span>
 							<div className="h-2 flex-1 rounded-full bg-slate-100">
@@ -205,7 +212,9 @@ function CollaborationUI() {
 				))}
 			</div>
 			<div className="mt-4 rounded-xl bg-violet-50/70 px-4 py-2.5 text-sm">
-				<span className="font-medium text-slate-600">All actions logged · </span>
+				<span className="font-medium text-slate-600">
+					All actions logged ·{" "}
+				</span>
 				<span className="font-extrabold text-violet-700">audit-ready</span>
 			</div>
 		</div>

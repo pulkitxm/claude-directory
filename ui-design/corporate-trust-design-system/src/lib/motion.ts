@@ -17,7 +17,10 @@ export const fadeUp: Variants = {
 };
 
 /* Stagger container — children animate in sequence. */
-export const stagger = (staggerChildren = 0.09, delayChildren = 0): Variants => ({
+export const stagger = (
+	staggerChildren = 0.09,
+	delayChildren = 0,
+): Variants => ({
 	hidden: {},
 	show: {
 		transition: { staggerChildren, delayChildren },

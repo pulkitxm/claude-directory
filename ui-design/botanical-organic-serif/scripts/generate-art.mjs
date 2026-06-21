@@ -97,17 +97,23 @@ function frond(x, y, height, lean, rand, opts = {}) {
 	for (let i = 1; i <= leaves; i++) {
 		const t = i / (leaves + 1);
 		// point on the quadratic bezier
-		const bx =
-			(1 - t) * (1 - t) * x + 2 * (1 - t) * t * ctrlX + t * t * topX;
-		const by =
-			(1 - t) * (1 - t) * y + 2 * (1 - t) * t * ctrlY + t * t * topY;
+		const bx = (1 - t) * (1 - t) * x + 2 * (1 - t) * t * ctrlX + t * t * topX;
+		const by = (1 - t) * (1 - t) * y + 2 * (1 - t) * t * ctrlY + t * t * topY;
 		const ll = leafLen * (1 - t * 0.45) * (0.85 + rand() * 0.3);
 		const base = -90 + lean * 0.4;
 		s += leaf(bx, by, ll, ll * 0.32, base - 42 * flip, leafFill, leafVein);
 		s += leaf(bx, by, ll, ll * 0.32, base + 42 * flip, leafFill, leafVein);
 	}
 	// crown leaf
-	s += leaf(topX, topY, leafLen * 0.7, leafLen * 0.22, -90 + lean * 0.4, leafFill, leafVein);
+	s += leaf(
+		topX,
+		topY,
+		leafLen * 0.7,
+		leafLen * 0.22,
+		-90 + lean * 0.4,
+		leafFill,
+		leafVein,
+	);
 	return s;
 }
 
@@ -196,8 +202,24 @@ function buildHero() {
 			const nx = x + Math.sin((s + i) * 1.1) * 26;
 			d += `Q ${r2((cx + nx) / 2 + (rand() - 0.5) * 18)} ${r2((cy + ny) / 2)} ${r2(nx)} ${r2(ny)} `;
 			// little leaves along the vine
-			body += leaf(nx, ny, 18 + rand() * 8, 7, 200 + rand() * 50, C.sage, C.forestDeep);
-			body += leaf(nx, ny, 16 + rand() * 8, 6, -20 + rand() * 50, C.sageLt, C.forestDeep);
+			body += leaf(
+				nx,
+				ny,
+				18 + rand() * 8,
+				7,
+				200 + rand() * 50,
+				C.sage,
+				C.forestDeep,
+			);
+			body += leaf(
+				nx,
+				ny,
+				16 + rand() * 8,
+				6,
+				-20 + rand() * 50,
+				C.sageLt,
+				C.forestDeep,
+			);
 			cx = nx;
 			cy = ny;
 		}
@@ -208,16 +230,67 @@ function buildHero() {
 	const potBaseY = H - 70;
 	body += `<ellipse cx="${W / 2}" cy="${potBaseY + 8}" rx="230" ry="34" fill="${C.forestDeep}" opacity="0.10"/>`;
 	// big fronds behind the pot
-	body += frond(W * 0.5 - 40, potBaseY - 150, 430, -150, rand, { leafFill: C.sageDk, leafVein: C.forestDeep, leaves: 6, leafLen: 64, flip: 1 });
-	body += frond(W * 0.5 + 40, potBaseY - 150, 470, 150, rand, { leafFill: C.moss, leafVein: C.forestDeep, leaves: 6, leafLen: 70, flip: -1 });
-	body += frond(W * 0.5, potBaseY - 160, 520, 10, rand, { leafFill: C.sage, leafVein: C.forestDeep, leaves: 7, leafLen: 72, flip: 1 });
-	body += frond(W * 0.5 - 110, potBaseY - 150, 360, -250, rand, { leafFill: C.sageLt, leafVein: C.forestDeep, leaves: 5, leafLen: 56, flip: 1 });
-	body += frond(W * 0.5 + 110, potBaseY - 150, 380, 250, rand, { leafFill: C.sage, leafVein: C.forestDeep, leaves: 5, leafLen: 58, flip: -1 });
-	body += pot(W / 2, potBaseY, 260, 200, 190, C.terracotta, C.terracottaDk, C.terracottaDk);
+	body += frond(W * 0.5 - 40, potBaseY - 150, 430, -150, rand, {
+		leafFill: C.sageDk,
+		leafVein: C.forestDeep,
+		leaves: 6,
+		leafLen: 64,
+		flip: 1,
+	});
+	body += frond(W * 0.5 + 40, potBaseY - 150, 470, 150, rand, {
+		leafFill: C.moss,
+		leafVein: C.forestDeep,
+		leaves: 6,
+		leafLen: 70,
+		flip: -1,
+	});
+	body += frond(W * 0.5, potBaseY - 160, 520, 10, rand, {
+		leafFill: C.sage,
+		leafVein: C.forestDeep,
+		leaves: 7,
+		leafLen: 72,
+		flip: 1,
+	});
+	body += frond(W * 0.5 - 110, potBaseY - 150, 360, -250, rand, {
+		leafFill: C.sageLt,
+		leafVein: C.forestDeep,
+		leaves: 5,
+		leafLen: 56,
+		flip: 1,
+	});
+	body += frond(W * 0.5 + 110, potBaseY - 150, 380, 250, rand, {
+		leafFill: C.sage,
+		leafVein: C.forestDeep,
+		leaves: 5,
+		leafLen: 58,
+		flip: -1,
+	});
+	body += pot(
+		W / 2,
+		potBaseY,
+		260,
+		200,
+		190,
+		C.terracotta,
+		C.terracottaDk,
+		C.terracottaDk,
+	);
 
 	// Side foliage creeping in
-	body += frond(40, H - 30, 360, 60, rand, { leafFill: C.sageDk, leafVein: C.forestDeep, leaves: 6, leafLen: 50, flip: -1 });
-	body += frond(W - 40, H - 30, 360, -60, rand, { leafFill: C.moss, leafVein: C.forestDeep, leaves: 6, leafLen: 50, flip: 1 });
+	body += frond(40, H - 30, 360, 60, rand, {
+		leafFill: C.sageDk,
+		leafVein: C.forestDeep,
+		leaves: 6,
+		leafLen: 50,
+		flip: -1,
+	});
+	body += frond(W - 40, H - 30, 360, -60, rand, {
+		leafFill: C.moss,
+		leafVein: C.forestDeep,
+		leaves: 6,
+		leafLen: 50,
+		flip: 1,
+	});
 
 	body += grainRect("hero", W, H, 0.05);
 	body += `</g>`;
@@ -265,18 +338,34 @@ function buildFeature(seed, scheme) {
 				leafLen: 42 + i * 6,
 				flip: i % 2 === 0 ? 1 : -1,
 			});
-			body += pot(x, by, 96 - i * 6, 74 - i * 6, 86 - i * 4, scheme.potA, scheme.potB, C.terracottaDk);
+			body += pot(
+				x,
+				by,
+				96 - i * 6,
+				74 - i * 6,
+				86 - i * 4,
+				scheme.potA,
+				scheme.potB,
+				C.terracottaDk,
+			);
 		});
 		// hanging plant top-left
 		body += `<path d="M 90 0 L 90 70" stroke="${C.moss}" stroke-width="2" fill="none"/>`;
-		body += frond(90, 150, 120, 0, rand, { leafFill: scheme.leafA, leafVein: C.forestDeep, leaves: 5, leafLen: 30, flip: 1 });
+		body += frond(90, 150, 120, 0, rand, {
+			leafFill: scheme.leafA,
+			leafVein: C.forestDeep,
+			leaves: 5,
+			leafLen: 30,
+			flip: 1,
+		});
 	} else if (scheme.kind === "garden") {
 		// A meadow of mixed fronds — botanical garden feeling
 		for (let i = 0; i < 9; i++) {
 			const x = 60 + i * ((W - 120) / 8) + (rand() - 0.5) * 30;
 			const h = 230 + rand() * 320;
 			body += frond(x, H - 130, h, (rand() - 0.5) * 120, rand, {
-				leafFill: i % 3 === 0 ? scheme.leafA : i % 3 === 1 ? scheme.leafB : C.sageDk,
+				leafFill:
+					i % 3 === 0 ? scheme.leafA : i % 3 === 1 ? scheme.leafB : C.sageDk,
 				leafVein: C.forestDeep,
 				leaves: 5 + Math.floor(rand() * 4),
 				leafLen: 34 + rand() * 26,
@@ -297,11 +386,19 @@ function buildFeature(seed, scheme) {
 			const y = -20 + rand() * (H * 0.7);
 			const len = 90 + rand() * 150;
 			const ang = -200 + rand() * 220;
-			const fill = [scheme.leafA, scheme.leafB, C.sageDk, C.moss][Math.floor(rand() * 4)];
+			const fill = [scheme.leafA, scheme.leafB, C.sageDk, C.moss][
+				Math.floor(rand() * 4)
+			];
 			body += leaf(x, y, len, len * 0.34, ang, fill, C.forestDeep, 1.4);
 		}
 		// a single bold stem rising from the ground
-		body += frond(W * 0.4, H - 130, 360, 60, rand, { leafFill: scheme.leafA, leafVein: C.forestDeep, leaves: 6, leafLen: 56, flip: 1 });
+		body += frond(W * 0.4, H - 130, 360, 60, rand, {
+			leafFill: scheme.leafA,
+			leafVein: C.forestDeep,
+			leaves: 6,
+			leafLen: 56,
+			flip: 1,
+		});
 	}
 
 	body += grainRect(id, W, H, 0.045);
@@ -343,11 +440,61 @@ function buildStory() {
 
 	// row of pots & vases on the shelf
 	const items = [
-		{ x: 170, tw: 120, bw: 92, h: 150, fill: C.terracotta, rim: C.terracottaDk, leaf: C.sageDk, n: 6, ll: 56 },
-		{ x: 360, tw: 90, bw: 110, h: 200, fill: C.clay, rim: C.stone, leaf: C.moss, n: 5, ll: 64 },
-		{ x: 540, tw: 70, bw: 70, h: 120, fill: C.sage, rim: C.sageDk, leaf: C.sageLt, n: 7, ll: 40 },
-		{ x: 720, tw: 130, bw: 96, h: 170, fill: C.terracotta, rim: C.terracottaDk, leaf: C.sage, n: 6, ll: 60 },
-		{ x: 880, tw: 80, bw: 64, h: 110, fill: C.clay, rim: C.stone, leaf: C.sageDk, n: 5, ll: 38 },
+		{
+			x: 170,
+			tw: 120,
+			bw: 92,
+			h: 150,
+			fill: C.terracotta,
+			rim: C.terracottaDk,
+			leaf: C.sageDk,
+			n: 6,
+			ll: 56,
+		},
+		{
+			x: 360,
+			tw: 90,
+			bw: 110,
+			h: 200,
+			fill: C.clay,
+			rim: C.stone,
+			leaf: C.moss,
+			n: 5,
+			ll: 64,
+		},
+		{
+			x: 540,
+			tw: 70,
+			bw: 70,
+			h: 120,
+			fill: C.sage,
+			rim: C.sageDk,
+			leaf: C.sageLt,
+			n: 7,
+			ll: 40,
+		},
+		{
+			x: 720,
+			tw: 130,
+			bw: 96,
+			h: 170,
+			fill: C.terracotta,
+			rim: C.terracottaDk,
+			leaf: C.sage,
+			n: 6,
+			ll: 60,
+		},
+		{
+			x: 880,
+			tw: 80,
+			bw: 64,
+			h: 110,
+			fill: C.clay,
+			rim: C.stone,
+			leaf: C.sageDk,
+			n: 5,
+			ll: 38,
+		},
 	];
 	items.forEach((it, i) => {
 		const by = shelfY + 2;
@@ -379,8 +526,20 @@ function buildJournal(seed, scheme) {
 
 	if (scheme.kind === "sprig") {
 		// single elegant sprig across the frame
-		body += frond(W * 0.2, H - 40, 360, 220, rand, { leafFill: scheme.leaf, leafVein: C.forestDeep, leaves: 8, leafLen: 50, flip: 1 });
-		body += frond(W * 0.85, 40, 280, -160, rand, { leafFill: scheme.leaf2, leafVein: C.forestDeep, leaves: 6, leafLen: 42, flip: -1 });
+		body += frond(W * 0.2, H - 40, 360, 220, rand, {
+			leafFill: scheme.leaf,
+			leafVein: C.forestDeep,
+			leaves: 8,
+			leafLen: 50,
+			flip: 1,
+		});
+		body += frond(W * 0.85, 40, 280, -160, rand, {
+			leafFill: scheme.leaf2,
+			leafVein: C.forestDeep,
+			leaves: 6,
+			leafLen: 42,
+			flip: -1,
+		});
 	} else if (scheme.kind === "blooms") {
 		// scattered dried flowers
 		for (let i = 0; i < 7; i++) {
@@ -390,7 +549,15 @@ function buildJournal(seed, scheme) {
 			body += `<line x1="${r2(x)}" y1="${r2(y)}" x2="${r2(x + (rand() - 0.5) * 40)}" y2="${r2(H - 20)}" stroke="${C.moss}" stroke-width="1.6" opacity="0.7"/>`;
 			for (let p = 0; p < 6; p++) {
 				const a = (p / 6) * Math.PI * 2;
-				body += leaf(x, y, pr, pr * 0.4, (a * 180) / Math.PI, p % 2 ? scheme.leaf : scheme.leaf2, C.forestDeep);
+				body += leaf(
+					x,
+					y,
+					pr,
+					pr * 0.4,
+					(a * 180) / Math.PI,
+					p % 2 ? scheme.leaf : scheme.leaf2,
+					C.forestDeep,
+				);
 			}
 			body += `<circle cx="${r2(x)}" cy="${r2(y)}" r="${r2(pr * 0.32)}" fill="${scheme.center}"/>`;
 		}
@@ -398,7 +565,13 @@ function buildJournal(seed, scheme) {
 		// "stack": pot with overflowing trailing plant
 		const by = H - 50;
 		body += `<ellipse cx="${W * 0.5}" cy="${by + 4}" rx="120" ry="16" fill="${C.forestDeep}" opacity="0.10"/>`;
-		body += frond(W * 0.5, by - 60, 220, 0, rand, { leafFill: scheme.leaf, leafVein: C.forestDeep, leaves: 6, leafLen: 50, flip: 1 });
+		body += frond(W * 0.5, by - 60, 220, 0, rand, {
+			leafFill: scheme.leaf,
+			leafVein: C.forestDeep,
+			leaves: 6,
+			leafLen: 50,
+			flip: 1,
+		});
 		// trailing vines spilling left & right
 		for (const dir of [-1, 1]) {
 			let d = `M ${W * 0.5 + dir * 60} ${by - 80} `;
@@ -408,13 +581,30 @@ function buildJournal(seed, scheme) {
 				const nx = cx + dir * (40 + rand() * 20);
 				const ny = cy + 50 + rand() * 20;
 				d += `Q ${r2(cx + dir * 30)} ${r2((cy + ny) / 2)} ${r2(nx)} ${r2(ny)} `;
-				body += leaf(nx, ny, 22, 8, dir > 0 ? 20 : 160, scheme.leaf2, C.forestDeep);
+				body += leaf(
+					nx,
+					ny,
+					22,
+					8,
+					dir > 0 ? 20 : 160,
+					scheme.leaf2,
+					C.forestDeep,
+				);
 				cx = nx;
 				cy = ny;
 			}
 			body += `<path d="${d}" stroke="${C.moss}" stroke-width="2" fill="none"/>`;
 		}
-		body += pot(W * 0.5, by, 150, 110, 110, C.terracotta, C.terracottaDk, C.terracottaDk);
+		body += pot(
+			W * 0.5,
+			by,
+			150,
+			110,
+			110,
+			C.terracotta,
+			C.terracottaDk,
+			C.terracottaDk,
+		);
 	}
 
 	body += grainRect(id, W, H, 0.045);
@@ -484,12 +674,49 @@ const files = {
 		leafB: C.sageDk,
 	}),
 	"story.svg": buildStory(),
-	"journal-01.svg": buildJournal(401, { kind: "sprig", a: C.clayLt, b: C.cream, leaf: C.sageDk, leaf2: C.sage }),
-	"journal-02.svg": buildJournal(402, { kind: "blooms", a: "#EAE6DD", b: C.cream, leaf: C.terracotta, leaf2: C.wheat, center: C.terracottaDk }),
-	"journal-03.svg": buildJournal(403, { kind: "stack", a: "#E6EAE0", b: C.cream, leaf: C.sageDk, leaf2: C.moss }),
-	"avatar-01.svg": buildAvatar(501, { bg: C.clayLt, cloth: C.sage, clothDk: C.sageDk, skin: "#E8C9A8", hair: "#5C4A38" }),
-	"avatar-02.svg": buildAvatar(502, { bg: "#E7E3DA", cloth: C.terracotta, clothDk: C.terracottaDk, skin: "#D8A87E", hair: "#2D2620" }),
-	"avatar-03.svg": buildAvatar(503, { bg: "#E4E8DD", cloth: C.clay, clothDk: C.stone, skin: "#EBD0B4", hair: "#7A6A52" }),
+	"journal-01.svg": buildJournal(401, {
+		kind: "sprig",
+		a: C.clayLt,
+		b: C.cream,
+		leaf: C.sageDk,
+		leaf2: C.sage,
+	}),
+	"journal-02.svg": buildJournal(402, {
+		kind: "blooms",
+		a: "#EAE6DD",
+		b: C.cream,
+		leaf: C.terracotta,
+		leaf2: C.wheat,
+		center: C.terracottaDk,
+	}),
+	"journal-03.svg": buildJournal(403, {
+		kind: "stack",
+		a: "#E6EAE0",
+		b: C.cream,
+		leaf: C.sageDk,
+		leaf2: C.moss,
+	}),
+	"avatar-01.svg": buildAvatar(501, {
+		bg: C.clayLt,
+		cloth: C.sage,
+		clothDk: C.sageDk,
+		skin: "#E8C9A8",
+		hair: "#5C4A38",
+	}),
+	"avatar-02.svg": buildAvatar(502, {
+		bg: "#E7E3DA",
+		cloth: C.terracotta,
+		clothDk: C.terracottaDk,
+		skin: "#D8A87E",
+		hair: "#2D2620",
+	}),
+	"avatar-03.svg": buildAvatar(503, {
+		bg: "#E4E8DD",
+		cloth: C.clay,
+		clothDk: C.stone,
+		skin: "#EBD0B4",
+		hair: "#7A6A52",
+	}),
 };
 
 for (const [name, content] of Object.entries(files)) {

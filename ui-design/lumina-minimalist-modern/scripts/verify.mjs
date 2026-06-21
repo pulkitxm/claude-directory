@@ -42,7 +42,9 @@ async function waitForServer(url, timeoutMs = 30000) {
 const results = [];
 function check(name, ok, detail = "") {
 	results.push({ name, ok });
-	console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`);
+	console.log(
+		`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`,
+	);
 }
 
 let preview;
@@ -52,7 +54,9 @@ try {
 	await waitForServer(URL);
 
 	browser = await chromium.launch();
-	const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+	const page = await browser.newPage({
+		viewport: { width: 1280, height: 900 },
+	});
 
 	const errors = [];
 	page.on("console", (msg) => {
@@ -63,7 +67,11 @@ try {
 	await page.goto(URL, { waitUntil: "networkidle" });
 	await page.waitForTimeout(800);
 
-	check("page has no console/page errors", errors.length === 0, errors.join(" | "));
+	check(
+		"page has no console/page errors",
+		errors.length === 0,
+		errors.join(" | "),
+	);
 
 	// Title
 	const title = await page.title();
@@ -77,10 +85,18 @@ try {
 
 	// Hero headline + gradient highlight
 	const h1 = await page.locator("h1").first().innerText();
-	check("hero headline renders", /effortless/i.test(h1), h1.replace(/\n/g, " "));
+	check(
+		"hero headline renders",
+		/effortless/i.test(h1),
+		h1.replace(/\n/g, " "),
+	);
 
 	const gradientCount = await page.locator(".gradient-text").count();
-	check("gradient text highlights present", gradientCount >= 3, `count=${gradientCount}`);
+	check(
+		"gradient text highlights present",
+		gradientCount >= 3,
+		`count=${gradientCount}`,
+	);
 
 	// Calistoga display font actually loaded
 	const fontsOk = await page.evaluate(async () => {
@@ -104,7 +120,9 @@ try {
 	check("inverted dark section present", invertedOk);
 
 	// Primary CTA buttons exist
-	const ctaButtons = await page.getByRole("button", { name: /start free/i }).count();
+	const ctaButtons = await page
+		.getByRole("button", { name: /start free/i })
+		.count();
 	check("primary CTA buttons present", ctaButtons >= 1, `count=${ctaButtons}`);
 
 	// Pricing tiers (3)
@@ -112,7 +130,11 @@ try {
 		.locator("#pricing")
 		.getByRole("heading", { level: 3 })
 		.count();
-	check("three pricing tiers render", tierHeadings === 3, `count=${tierHeadings}`);
+	check(
+		"three pricing tiers render",
+		tierHeadings === 3,
+		`count=${tierHeadings}`,
+	);
 
 	// Final CTA email form interaction
 	const emailInput = page.locator("#cta-email");
@@ -127,9 +149,13 @@ try {
 	check("CTA form submission confirms", confirmed >= 1);
 
 	// Mobile viewport: nav menu button appears, desktop links hidden
-	const mobile = await browser.newPage({ viewport: { width: 390, height: 800 } });
+	const mobile = await browser.newPage({
+		viewport: { width: 390, height: 800 },
+	});
 	await mobile.goto(URL, { waitUntil: "networkidle" });
-	const menuBtn = await mobile.getByRole("button", { name: /open menu/i }).count();
+	const menuBtn = await mobile
+		.getByRole("button", { name: /open menu/i })
+		.count();
 	check("mobile menu button present", menuBtn >= 1);
 	await mobile.close();
 
@@ -144,5 +170,7 @@ try {
 }
 
 const failed = results.filter((r) => !r.ok);
-console.log(`\n${results.length - failed.length}/${results.length} checks passed.`);
+console.log(
+	`\n${results.length - failed.length}/${results.length} checks passed.`,
+);
 process.exit(failed.length === 0 ? 0 : 1);

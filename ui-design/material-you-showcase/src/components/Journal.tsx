@@ -131,10 +131,7 @@ export function Journal() {
 						lead="Field notes on color, motion and shipping design systems people actually feel."
 					/>
 					<Reveal delay={120}>
-						<a
-							href="#"
-							className="btn btn-outlined focus-ring shrink-0"
-						>
+						<a href="#" className="btn btn-outlined focus-ring shrink-0">
 							All articles
 							<ArrowRight size={18} />
 						</a>

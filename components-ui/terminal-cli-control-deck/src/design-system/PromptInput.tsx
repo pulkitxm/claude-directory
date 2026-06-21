@@ -45,13 +45,13 @@ export function PromptInput({
 					className="pointer-events-none flex min-w-0 items-center overflow-hidden whitespace-pre"
 				>
 					<span className="truncate text-primary">
-						{value || (
-							<span className="text-muted">{placeholder}</span>
-						)}
+						{value || <span className="text-muted">{placeholder}</span>}
 					</span>
 					<span
 						className={`ml-px inline-block translate-y-px text-primary ${
-							focused ? "[animation:none] opacity-100" : "[animation:var(--animate-blink)]"
+							focused
+								? "[animation:none] opacity-100"
+								: "[animation:var(--animate-blink)]"
 						}`}
 					>
 						█

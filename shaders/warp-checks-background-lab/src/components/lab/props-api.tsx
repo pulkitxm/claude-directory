@@ -16,7 +16,11 @@ const ROWS: PropRow[] = [
 	{ name: "softness", type: "number", get: (c) => fmt(c.softness) },
 	{ name: "distortion", type: "number", get: (c) => fmt(c.distortion) },
 	{ name: "swirl", type: "number", get: (c) => fmt(c.swirl) },
-	{ name: "swirlIterations", type: "number", get: (c) => String(c.swirlIterations) },
+	{
+		name: "swirlIterations",
+		type: "number",
+		get: (c) => String(c.swirlIterations),
+	},
 	{ name: "shape", type: '"checks"…', get: (c) => `"${c.shape}"` },
 	{ name: "shapeScale", type: "number", get: (c) => fmt(c.shapeScale) },
 	{ name: "scale", type: "number", get: (c) => fmt(c.scale) },
@@ -27,8 +31,7 @@ const ROWS: PropRow[] = [
 		type: "string[4]",
 		// Compact hue signature of the four stops, so a palette change is actually
 		// detected (length is always 4 and would never flag divergence).
-		get: (c) =>
-			c.colors.map((s) => parseHsl(s)?.h ?? "·").join(","),
+		get: (c) => c.colors.map((s) => parseHsl(s)?.h ?? "·").join(","),
 	},
 ];
 

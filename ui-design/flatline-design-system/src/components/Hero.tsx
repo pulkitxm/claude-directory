@@ -134,7 +134,12 @@ function FlatComposition() {
 			/>
 			<motion.div
 				animate={{ y: [0, 12, 0] }}
-				transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+				transition={{
+					duration: 6,
+					repeat: Infinity,
+					ease: "easeInOut",
+					delay: 0.4,
+				}}
 				className="absolute right-6 top-20 h-[4.5rem] w-[4.5rem] rounded-full bg-[var(--color-sun)]"
 			/>
 			<div className="absolute right-6 top-44 h-[4.5rem] w-[10.5rem] rounded-lg bg-[var(--color-grass)]" />

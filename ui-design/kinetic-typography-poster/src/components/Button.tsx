@@ -26,7 +26,8 @@ const variants: Record<Variant, string> = {
 	outline:
 		"border-2 border-line bg-transparent text-bone transition-colors duration-200 hover:bg-bone hover:text-acid-foreground",
 	// No chrome; text just shifts to acid on hover.
-	ghost: "bg-transparent text-bone transition-colors duration-200 hover:text-acid",
+	ghost:
+		"bg-transparent text-bone transition-colors duration-200 hover:text-acid",
 };
 
 export function Button({

@@ -20,37 +20,37 @@ import { Footer } from "./components/Footer";
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  return (
-    <>
-      {/* Skip link for keyboard users */}
-      <a
-        href="#manifesto"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[10000] focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-wider focus:text-accent-foreground"
-      >
-        Skip to content
-      </a>
+	return (
+		<>
+			{/* Skip link for keyboard users */}
+			<a
+				href="#manifesto"
+				className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[10000] focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-wider focus:text-accent-foreground"
+			>
+				Skip to content
+			</a>
 
-      <Header />
+			<Header />
 
-      <main>
-        <Hero />
-        <Marquee />
-        <Manifesto />
-        <Stats />
-        <Features />
-        <Process />
-        <Specimen />
-        <Pricing />
-        <Testimonials />
-        <Faq />
-        <Journal />
-        <FinalCta />
-      </main>
+			<main>
+				<Hero />
+				<Marquee />
+				<Manifesto />
+				<Stats />
+				<Features />
+				<Process />
+				<Specimen />
+				<Pricing />
+				<Testimonials />
+				<Faq />
+				<Journal />
+				<FinalCta />
+			</main>
 
-      <Footer />
+			<Footer />
 
-      {/* Full-page noise grain at ~1.5% opacity */}
-      <div className="grain-overlay" aria-hidden />
-    </>
-  );
+			{/* Full-page noise grain at ~1.5% opacity */}
+			<div className="grain-overlay" aria-hidden />
+		</>
+	);
 }

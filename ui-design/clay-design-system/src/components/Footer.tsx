@@ -79,11 +79,16 @@ export function Footer() {
 
 						<div className="mt-10 flex flex-col items-center justify-between gap-4 border-t-2 border-clay-foreground/8 pt-7 sm:flex-row">
 							<p className="text-sm font-medium text-clay-muted">
-								© {new Date().getFullYear()} Claymakers. A design-system showcase.
+								© {new Date().getFullYear()} Claymakers. A design-system
+								showcase.
 							</p>
 							<p className="inline-flex items-center gap-1.5 text-sm font-medium text-clay-muted">
 								Molded with
-								<Heart size={14} className="text-clay-accent-alt" fill="currentColor" />
+								<Heart
+									size={14}
+									className="text-clay-accent-alt"
+									fill="currentColor"
+								/>
 								and four shadow layers.
 							</p>
 						</div>

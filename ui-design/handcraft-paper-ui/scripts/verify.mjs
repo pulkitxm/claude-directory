@@ -25,7 +25,9 @@ const CHROME_PATH = process.env.CHROME_PATH || undefined;
 
 let failures = 0;
 const check = (name, ok, detail = "") => {
-	console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`);
+	console.log(
+		`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`,
+	);
 	if (!ok) failures += 1;
 };
 
@@ -43,8 +45,15 @@ await page.goto(BASE_URL, { waitUntil: "networkidle" });
 await page.waitForTimeout(1600); // let reveal animations settle
 
 // ── Title & shell ──────────────────────────────────────────────────────────
-check("page title mentions Scribbly", (await page.title()).includes("Scribbly"), await page.title());
-check("brand wordmark present", (await page.getByText("Scribbly").count()) >= 1);
+check(
+	"page title mentions Scribbly",
+	(await page.title()).includes("Scribbly"),
+	await page.title(),
+);
+check(
+	"brand wordmark present",
+	(await page.getByText("Scribbly").count()) >= 1,
+);
 
 // ── Token palette resolves to the exact pencil/paper/marker colors ─────────
 const tokens = await page.evaluate(() => {
@@ -70,9 +79,21 @@ const bodyColors = await page.evaluate(() => {
 	const s = getComputedStyle(document.body);
 	return { color: s.color, bg: s.backgroundColor, bgImage: s.backgroundImage };
 });
-check("body text is soft pencil black rgb(45,45,45)", bodyColors.color === "rgb(45, 45, 45)", bodyColors.color);
-check("body bg is warm paper rgb(253,251,247)", bodyColors.bg === "rgb(253, 251, 247)", bodyColors.bg);
-check("paper-grain radial-gradient dots on body", bodyColors.bgImage.includes("radial-gradient"), bodyColors.bgImage.slice(0, 40));
+check(
+	"body text is soft pencil black rgb(45,45,45)",
+	bodyColors.color === "rgb(45, 45, 45)",
+	bodyColors.color,
+);
+check(
+	"body bg is warm paper rgb(253,251,247)",
+	bodyColors.bg === "rgb(253, 251, 247)",
+	bodyColors.bg,
+);
+check(
+	"paper-grain radial-gradient dots on body",
+	bodyColors.bgImage.includes("radial-gradient"),
+	bodyColors.bgImage.slice(0, 40),
+);
 
 // ── Self-hosted handwritten fonts render + actually load ───────────────────
 const fonts = await page.evaluate(async () => {
@@ -86,8 +107,16 @@ const fonts = await page.evaluate(async () => {
 		patrick: document.fonts.check('400 16px "Patrick Hand"'),
 	};
 });
-check("headings use Kalam", fonts.headingFamily.includes("Kalam"), fonts.headingFamily);
-check("body uses Patrick Hand", fonts.bodyFamily.includes("Patrick Hand"), fonts.bodyFamily);
+check(
+	"headings use Kalam",
+	fonts.headingFamily.includes("Kalam"),
+	fonts.headingFamily,
+);
+check(
+	"body uses Patrick Hand",
+	fonts.bodyFamily.includes("Patrick Hand"),
+	fonts.bodyFamily,
+);
 check("Kalam 700 face loaded", fonts.kalam700 === true);
 check("Patrick Hand 400 face loaded", fonts.patrick === true);
 
@@ -107,7 +136,9 @@ const shadowReport = await page.evaluate(() => {
 			// lens = [offsetX, offsetY, blur?, spread?]
 			const blur = lens.length >= 3 ? lens[2] : 0;
 			if (blur > 0.01) {
-				offenders.push(`${el.tagName}.${(el.className || "").toString().slice(0, 30)} blur=${blur}`);
+				offenders.push(
+					`${el.tagName}.${(el.className || "").toString().slice(0, 30)} blur=${blur}`,
+				);
 			} else {
 				hardShadowCount += 1;
 			}
@@ -115,8 +146,16 @@ const shadowReport = await page.evaluate(() => {
 	}
 	return { offenders, hardShadowCount };
 });
-check("zero soft/blurred shadows anywhere", shadowReport.offenders.length === 0, shadowReport.offenders.slice(0, 4).join(" | "));
-check("hard offset shadows are actually used", shadowReport.hardShadowCount >= 10, `count=${shadowReport.hardShadowCount}`);
+check(
+	"zero soft/blurred shadows anywhere",
+	shadowReport.offenders.length === 0,
+	shadowReport.offenders.slice(0, 4).join(" | "),
+);
+check(
+	"hard offset shadows are actually used",
+	shadowReport.hardShadowCount >= 10,
+	`count=${shadowReport.hardShadowCount}`,
+);
 
 // Text shadows are forbidden too.
 const textShadows = await page.evaluate(() => {
@@ -149,38 +188,65 @@ check(
 	!!btnRadius && btnRadius.tl.includes(" ") && btnRadius.tl !== btnRadius.tr,
 	btnRadius ? `tl="${btnRadius.tl}" tr="${btnRadius.tr}"` : "",
 );
-check("button uses thick border-[3px]", !!btnRadius && btnRadius.w === "3px", btnRadius?.w);
+check(
+	"button uses thick border-[3px]",
+	!!btnRadius && btnRadius.w === "3px",
+	btnRadius?.w,
+);
 
 // Cards use a 2px+ border too.
 const cardBorder = await page.evaluate(() => {
-	const card = document.querySelector("#features article, #features .grid > div > div");
+	const card = document.querySelector(
+		"#features article, #features .grid > div > div",
+	);
 	// fall back to any bordered card inside features
-	const el = card || document.querySelector("#features [style*='border-radius']");
+	const el =
+		card || document.querySelector("#features [style*='border-radius']");
 	return el ? getComputedStyle(el).borderTopWidth : "";
 });
-check("feature cards have a thick border (>=2px)", parseFloat(cardBorder) >= 2, cardBorder);
+check(
+	"feature cards have a thick border (>=2px)",
+	parseFloat(cardBorder) >= 2,
+	cardBorder,
+);
 
 // ── All major sections / anchors present ───────────────────────────────────
-for (const id of ["top", "features", "how", "product", "pricing", "notes", "get-started"]) {
+for (const id of [
+	"top",
+	"features",
+	"how",
+	"product",
+	"pricing",
+	"notes",
+	"get-started",
+]) {
 	check(`section #${id} present`, (await page.locator(`#${id}`).count()) >= 1);
 }
 
 // ── Signature decorations exist (SVG scribbles) ────────────────────────────
 const svgCount = await page.locator("svg").count();
-check("hand-drawn SVG decorations present", svgCount >= 12, `svg count=${svgCount}`);
+check(
+	"hand-drawn SVG decorations present",
+	svgCount >= 12,
+	`svg count=${svgCount}`,
+);
 
 // ── Button interaction: hover fills red + active presses flat ──────────────
 const primary = page.locator("a", { hasText: "Start scribbling" }).first();
 await primary.scrollIntoViewIfNeeded();
 await primary.hover();
 await page.waitForTimeout(150);
-const hoverBg = await primary.evaluate((el) => getComputedStyle(el).backgroundColor);
+const hoverBg = await primary.evaluate(
+	(el) => getComputedStyle(el).backgroundColor,
+);
 check("button hover fills accent red", hoverBg === "rgb(255, 77, 77)", hoverBg);
 
 // ── Input focus: border turns blue + ring appears ──────────────────────────
 const field = page.locator("#cta-email");
 await field.scrollIntoViewIfNeeded();
-const restBorder = await field.evaluate((el) => getComputedStyle(el).borderTopColor);
+const restBorder = await field.evaluate(
+	(el) => getComputedStyle(el).borderTopColor,
+);
 await field.focus();
 await page.waitForTimeout(200);
 const focusState = await field.evaluate((el) => {
@@ -188,8 +254,16 @@ const focusState = await field.evaluate((el) => {
 	return { border: s.borderTopColor, shadow: s.boxShadow };
 });
 check("input border ink at rest", restBorder === "rgb(45, 45, 45)", restBorder);
-check("input focus border turns blue pen", focusState.border === "rgb(45, 93, 161)", focusState.border);
-check("input focus shows a ring", focusState.shadow !== "none", focusState.shadow.slice(0, 40));
+check(
+	"input focus border turns blue pen",
+	focusState.border === "rgb(45, 93, 161)",
+	focusState.border,
+);
+check(
+	"input focus shows a ring",
+	focusState.shadow !== "none",
+	focusState.shadow.slice(0, 40),
+);
 
 // ── CTA form submit shows confirmation ─────────────────────────────────────
 await field.fill("doodler@studio.com");
@@ -201,7 +275,10 @@ check(
 );
 
 // ── Pricing popular tier rests larger (scaled) on desktop ──────────────────
-check("pricing 'most loved' badge present", (await page.getByText("most loved").count()) >= 1);
+check(
+	"pricing 'most loved' badge present",
+	(await page.getByText("most loved").count()) >= 1,
+);
 const popularScale = await page.evaluate(() => {
 	const badge = Array.from(document.querySelectorAll("#pricing *")).find(
 		(e) => e.textContent?.trim() === "most loved",
@@ -216,9 +293,17 @@ const popularScale = await page.evaluate(() => {
 });
 const restsLarger =
 	!!popularScale &&
-	((popularScale.scale && popularScale.scale !== "none" && parseFloat(popularScale.scale) > 1) ||
-		(popularScale.transform && popularScale.transform !== "none" && popularScale.transform !== ""));
-check("popular pricing card rests larger (scale > 1)", restsLarger, JSON.stringify(popularScale));
+	((popularScale.scale &&
+		popularScale.scale !== "none" &&
+		parseFloat(popularScale.scale) > 1) ||
+		(popularScale.transform &&
+			popularScale.transform !== "none" &&
+			popularScale.transform !== ""));
+check(
+	"popular pricing card rests larger (scale > 1)",
+	restsLarger,
+	JSON.stringify(popularScale),
+);
 
 // ── Stat count-ups reached targets ─────────────────────────────────────────
 // Ensure the stats band has been on screen so its count-up fired, then assert.
@@ -232,16 +317,26 @@ const statText = await page.evaluate(() => {
 	);
 	return lis.join(" || ");
 });
-check("stat 12k+ counted up", /12k\+\s*boards started/.test(statText), statText.slice(0, 60));
+check(
+	"stat 12k+ counted up",
+	/12k\+\s*boards started/.test(statText),
+	statText.slice(0, 60),
+);
 check("stat 98% counted up", /98%\s*felt more creative/.test(statText));
 
 // ── Testimonials: speech bubbles present ───────────────────────────────────
-check("testimonial quotes present", (await page.locator("#notes blockquote").count()) === 3);
+check(
+	"testimonial quotes present",
+	(await page.locator("#notes blockquote").count()) === 3,
+);
 
 // ── Responsive: desktop nav hidden on mobile, hamburger toggles the sheet ──
 await page.setViewportSize({ width: 390, height: 844 });
 await page.waitForTimeout(300);
-check("desktop nav links hidden on mobile", !(await page.locator("header nav ul").first().isVisible()));
+check(
+	"desktop nav links hidden on mobile",
+	!(await page.locator("header nav ul").first().isVisible()),
+);
 const burger = page.getByRole("button", { name: "Open menu" });
 check("mobile menu button visible", await burger.isVisible());
 await burger.click();
@@ -252,8 +347,14 @@ check(
 );
 
 // ── No console / page errors ───────────────────────────────────────────────
-check("no console/page errors", consoleErrors.length === 0, consoleErrors.join(" | ").slice(0, 300));
+check(
+	"no console/page errors",
+	consoleErrors.length === 0,
+	consoleErrors.join(" | ").slice(0, 300),
+);
 
 await browser.close();
-console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
+console.log(
+	failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`,
+);
 process.exit(failures === 0 ? 0 : 1);

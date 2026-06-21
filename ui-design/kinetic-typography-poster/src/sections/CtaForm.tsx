@@ -24,7 +24,10 @@ export function CtaForm() {
 	};
 
 	return (
-		<section id="tickets" className="relative overflow-hidden border-b-2 border-line py-24 md:py-32">
+		<section
+			id="tickets"
+			className="relative overflow-hidden border-b-2 border-line py-24 md:py-32"
+		>
 			<BackgroundNumber className="absolute -right-[4vw] -top-10 leading-none text-muted/40 text-[34vw]">
 				24
 			</BackgroundNumber>

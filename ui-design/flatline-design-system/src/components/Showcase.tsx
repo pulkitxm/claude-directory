@@ -7,9 +7,24 @@ import { Shell, Reveal, Eyebrow, Button } from "./primitives";
 
 const SWATCHES = [
 	{ name: "Primary", sub: "Blue 500", value: "var(--color-brand)", on: "#fff" },
-	{ name: "Secondary", sub: "Emerald 500", value: "var(--color-grass)", on: "#fff" },
-	{ name: "Accent", sub: "Amber 500", value: "var(--color-sun)", on: "#111827" },
-	{ name: "Foreground", sub: "Gray 900", value: "var(--color-ink)", on: "#fff" },
+	{
+		name: "Secondary",
+		sub: "Emerald 500",
+		value: "var(--color-grass)",
+		on: "#fff",
+	},
+	{
+		name: "Accent",
+		sub: "Amber 500",
+		value: "var(--color-sun)",
+		on: "#111827",
+	},
+	{
+		name: "Foreground",
+		sub: "Gray 900",
+		value: "var(--color-ink)",
+		on: "#fff",
+	},
 	{ name: "Muted", sub: "Gray 100", value: "var(--color-fog)", on: "#111827" },
 	{ name: "Canvas", sub: "White", value: "var(--color-canvas)", on: "#111827" },
 ];
@@ -41,8 +56,8 @@ export function Showcase() {
 						Every part, on the table.
 					</h2>
 					<p className="mt-5 text-lg leading-relaxed text-gray-600">
-						The palette, the buttons, the inputs, the tags — laid out flat so you
-						can see exactly what you're composing with.
+						The palette, the buttons, the inputs, the tags — laid out flat so
+						you can see exactly what you're composing with.
 					</p>
 				</Reveal>
 
@@ -59,7 +74,9 @@ export function Showcase() {
 								}`}
 								style={{ backgroundColor: s.value, color: s.on }}
 							>
-								<span className="text-sm font-bold tracking-tight">{s.name}</span>
+								<span className="text-sm font-bold tracking-tight">
+									{s.name}
+								</span>
 								<span className="text-xs opacity-70">{s.sub}</span>
 							</div>
 						))}
@@ -78,10 +95,7 @@ export function Showcase() {
 								<Button variant="outline" className="!h-12 !px-5">
 									Outline
 								</Button>
-								<Button
-									variant="outline-ink"
-									className="!h-12 !px-5"
-								>
+								<Button variant="outline-ink" className="!h-12 !px-5">
 									Outline ink
 								</Button>
 							</div>
@@ -97,8 +111,8 @@ export function Showcase() {
 								aria-label="Demo input field"
 							/>
 							<p className="mt-3 text-sm text-gray-500">
-								Gray block at rest, snaps to a solid 2px primary border on focus.
-								No glow.
+								Gray block at rest, snaps to a solid 2px primary border on
+								focus. No glow.
 							</p>
 						</Panel>
 					</Reveal>

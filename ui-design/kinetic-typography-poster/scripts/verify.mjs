@@ -23,7 +23,9 @@ const TOKENS = {
 
 let failures = 0;
 const check = (name, ok, detail = "") => {
-	console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`);
+	console.log(
+		`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`,
+	);
 	if (!ok) failures += 1;
 };
 
@@ -80,7 +82,11 @@ const sel = await page.evaluate(() => {
 	probe.remove();
 	return out;
 });
-check("selection highlight is acid", sel === TOKENS.acid || sel === "rgba(223, 225, 4, 1)", sel);
+check(
+	"selection highlight is acid",
+	sel === TOKENS.acid || sel === "rgba(223, 225, 4, 1)",
+	sel,
+);
 
 // ── Typography: Space Grotesk + clamp viewport-width hero ───────────────────
 const heroFont = await page
@@ -129,7 +135,11 @@ const heroTracking = await page
 	.locator("h1")
 	.first()
 	.evaluate((el) => getComputedStyle(el).letterSpacing);
-check("hero has tight (negative) tracking", parseFloat(heroTracking) < 0, heroTracking);
+check(
+	"hero has tight (negative) tracking",
+	parseFloat(heroTracking) < 0,
+	heroTracking,
+);
 
 // ── Marquees: both present, both animating ──────────────────────────────────
 const rails = page.locator(".rfm-marquee");
@@ -205,7 +215,9 @@ check(
 
 // ── Hard color inversion on hover ───────────────────────────────────────────
 const card = page.locator("article.sticky").first();
-const before = await card.evaluate((el) => getComputedStyle(el).backgroundColor);
+const before = await card.evaluate(
+	(el) => getComputedStyle(el).backgroundColor,
+);
 await card.hover();
 await page.waitForTimeout(450); // let the 300ms colour transition finish
 const after = await card.evaluate((el) => getComputedStyle(el).backgroundColor);
@@ -215,13 +227,21 @@ check("card floods acid on hover", after === TOKENS.acid, after);
 const titleColor = await card
 	.locator("h3")
 	.evaluate((el) => getComputedStyle(el).color);
-check("card title inverts to black on hover", titleColor === "rgb(0, 0, 0)", titleColor);
+check(
+	"card title inverts to black on hover",
+	titleColor === "rgb(0, 0, 0)",
+	titleColor,
+);
 await page.mouse.move(0, 0);
 
 // ── Oversized form inputs ───────────────────────────────────────────────────
 const nameInput = page.getByLabel("Your Name");
 const inputBox = await nameInput.boundingBox();
-check("input is oversized (≥80px tall)", inputBox.height >= 80, `${Math.round(inputBox.height)}px`);
+check(
+	"input is oversized (≥80px tall)",
+	inputBox.height >= 80,
+	`${Math.round(inputBox.height)}px`,
+);
 const inputBorders = await nameInput.evaluate((el) => {
 	const s = getComputedStyle(el);
 	return { top: s.borderTopWidth, bottom: s.borderBottomWidth };
@@ -236,10 +256,14 @@ await nameInput.focus();
 const focusBorder = await nameInput.evaluate(
 	(el) => getComputedStyle(el).borderBottomColor,
 );
-check("input underline flips acid on focus", focusBorder === TOKENS.acid, focusBorder);
+check(
+	"input underline flips acid on focus",
+	focusBorder === TOKENS.acid,
+	focusBorder,
+);
 
 // ── FAQ accordion: keyboard + aria ──────────────────────────────────────────
-const faqButtons = page.locator('button[aria-expanded]');
+const faqButtons = page.locator("button[aria-expanded]");
 check("FAQ has aria-expanded buttons", (await faqButtons.count()) >= 4);
 
 // Every aria-controls must resolve to a real element — including collapsed rows
@@ -285,7 +309,9 @@ check(
 const heroInner = page.locator("section#top > div").first();
 await page.evaluate(() => window.scrollTo(0, 0));
 await page.waitForTimeout(400);
-const tBefore = await heroInner.evaluate((el) => getComputedStyle(el).transform);
+const tBefore = await heroInner.evaluate(
+	(el) => getComputedStyle(el).transform,
+);
 await page.evaluate(() => window.scrollTo(0, window.innerHeight * 0.35));
 await page.waitForTimeout(400);
 const tAfter = await heroInner.evaluate((el) => getComputedStyle(el).transform);
@@ -302,7 +328,11 @@ check(
 	(await page.locator("svg feTurbulence").count()) >= 1,
 );
 
-check("no console/page errors", consoleErrors.length === 0, consoleErrors.join(" | ").slice(0, 300));
+check(
+	"no console/page errors",
+	consoleErrors.length === 0,
+	consoleErrors.join(" | ").slice(0, 300),
+);
 await page.close();
 
 /* ───────────── Reduced-motion pass (motion must switch OFF) ─────────────── */

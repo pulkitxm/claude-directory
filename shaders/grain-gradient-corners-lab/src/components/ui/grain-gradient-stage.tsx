@@ -52,11 +52,7 @@ export interface GrainGradientStageProps {
 export function GrainGradientStage({
 	className,
 	colorBack = "hsl(0, 0%, 0%)",
-	colors = [
-		"hsl(14, 100%, 57%)",
-		"hsl(45, 100%, 51%)",
-		"hsl(340, 82%, 52%)",
-	],
+	colors = ["hsl(14, 100%, 57%)", "hsl(45, 100%, 51%)", "hsl(340, 82%, 52%)"],
 	softness = 0.76,
 	intensity = 0.45,
 	noise = 0,

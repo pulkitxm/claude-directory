@@ -8,9 +8,10 @@ import { useEffect, useRef, useState } from "react";
  * Centralized so every section animates in with one consistent motion instead
  * of each component re-implementing an IntersectionObserver.
  */
-export function useReveal<T extends HTMLElement = HTMLDivElement>(
-	options?: { threshold?: number; rootMargin?: string },
-) {
+export function useReveal<T extends HTMLElement = HTMLDivElement>(options?: {
+	threshold?: number;
+	rootMargin?: string;
+}) {
 	const ref = useRef<T | null>(null);
 	const [shown, setShown] = useState(false);
 

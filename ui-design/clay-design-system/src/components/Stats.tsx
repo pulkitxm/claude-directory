@@ -16,7 +16,13 @@ type Stat = {
 const STATS: Stat[] = [
 	{ value: 120, suffix: "+", label: "Clay components", hue: "violet" },
 	{ value: 4, suffix: " layers", label: "Per shadow stack", hue: "pink" },
-	{ value: 99.9, suffix: "%", decimals: 1, label: "Tactile satisfaction", hue: "sky" },
+	{
+		value: 99.9,
+		suffix: "%",
+		decimals: 1,
+		label: "Tactile satisfaction",
+		hue: "sky",
+	},
 	{ value: 12, suffix: "k+", label: "Happy makers", hue: "emerald" },
 ];
 
@@ -55,9 +61,15 @@ function StatOrb({ stat, delay }: { stat: Stat; delay: number }) {
 				}
 				className="grid aspect-square w-32 animate-clay-breathe place-items-center rounded-full text-white shadow-clay-orb transition-transform duration-300 hover:scale-110 sm:w-36"
 			>
-				<span ref={ref} style={display} className="text-3xl font-black sm:text-4xl">
+				<span
+					ref={ref}
+					style={display}
+					className="text-3xl font-black sm:text-4xl"
+				>
 					{display_value}
-					<span className="text-xl font-extrabold sm:text-2xl">{stat.suffix}</span>
+					<span className="text-xl font-extrabold sm:text-2xl">
+						{stat.suffix}
+					</span>
 				</span>
 			</div>
 			<p
