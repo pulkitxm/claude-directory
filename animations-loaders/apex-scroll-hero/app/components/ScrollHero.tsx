@@ -89,7 +89,7 @@ export default function ScrollHero({ src = "/hero.mp4" }: ScrollHeroProps) {
 			}
 
 			// Telemetry: fast launch that tapers as it climbs, like a real pull.
-			const speed = Math.round(TOP_SPEED * (1 - Math.pow(1 - p, 1.8)));
+			const speed = Math.round(TOP_SPEED * (1 - (1 - p) ** 1.8));
 			if (speedRef.current) {
 				speedRef.current.textContent = String(speed).padStart(3, "0");
 			}

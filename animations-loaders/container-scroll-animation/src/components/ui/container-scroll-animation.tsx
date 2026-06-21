@@ -1,12 +1,12 @@
 "use client";
-import React, { useRef } from "react";
 import {
+	type MotionValue,
+	motion,
+	type UseScrollOptions,
 	useScroll,
 	useTransform,
-	motion,
-	MotionValue,
-	type UseScrollOptions,
 } from "framer-motion";
+import React, { useRef } from "react";
 
 /**
  * ContainerScroll — the Aceternity "Container Scroll Animation" primitive.

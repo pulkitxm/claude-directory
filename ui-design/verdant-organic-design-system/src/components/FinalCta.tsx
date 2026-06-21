@@ -1,9 +1,9 @@
-import { useState, type FormEvent } from "react";
 import { ArrowRight, Check, Leaf } from "lucide-react";
-import { Button } from "./Button";
-import { Reveal } from "./Reveal";
-import { Eyebrow } from "./Eyebrow";
+import { type FormEvent, useState } from "react";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { Button } from "./Button";
+import { Eyebrow } from "./Eyebrow";
+import { Reveal } from "./Reveal";
 
 /**
  * Closing call-to-action on a warm terracotta field (the design system's

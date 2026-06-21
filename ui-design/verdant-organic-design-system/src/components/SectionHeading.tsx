@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "../lib/cn";
-import { Reveal } from "./Reveal";
 import { Eyebrow } from "./Eyebrow";
+import { Reveal } from "./Reveal";
 
 type SectionHeadingProps = {
 	eyebrow: string;

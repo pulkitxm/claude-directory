@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 
 /**
  * Wraps text and fires a one-shot RGB-split glitch on hover/focus. The offset
