@@ -12,9 +12,9 @@ if (!URL) {
 fs.mkdirSync(OUT, { recursive: true });
 
 const browser = await chromium.launch({ ignoreHTTPSErrors: true });
-const page = await browser.newPage({ 
-  viewport: { width: 1440, height: 900 },
-  ignoreHTTPSErrors: true
+const page = await browser.newPage({
+	viewport: { width: 1440, height: 900 },
+	ignoreHTTPSErrors: true,
 });
 await page.goto(URL, { waitUntil: "networkidle", timeout: 60000 });
 await page.waitForTimeout(3000);
