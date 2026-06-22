@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (375)
+## Projects (376)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (75)</b></summary>
+<summary><b>Templates (76)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -380,6 +380,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [bastion](./templates/premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
 | [blog](./templates/premium/magic-ui/blog/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [carrington](./templates/premium/lexingtonthemes/carrington/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Newsreader, Fuse.js |
+| [premium/shadcnblocks/hatch](./templates/premium/shadcnblocks/hatch/) | Interface experiment. | HTML, CSS, vanilla JS, Castoro, Inter, IBM Plex Mono, Caveat |
 | [premium/tailwindcss/catalyst](./templates/premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [browser-core-devtools-template](./templates/browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
 | [premium/magic-ui/changelog](./templates/premium/magic-ui/changelog/) | Interface experiment. | HTML, CSS, vanilla JS, GeistSans |

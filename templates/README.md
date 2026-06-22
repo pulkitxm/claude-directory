@@ -26,6 +26,7 @@
 | [flux-editorial-saas-landing](./flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [forest-sage-organic-store](./forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [gen-z-neobrutalist-landing](./gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
+| [hatch](./premium/shadcnblocks/hatch/) | Interface experiment. | HTML, CSS, vanilla JS, Castoro, Inter, IBM Plex Mono, Caveat |
 | [heavyweight-brutalist-store](./heavyweight-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Space Grotesk |
 | [keynote](./premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [kinetic-orange-brutalist-agency](./kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
