@@ -59,6 +59,7 @@
 | [superdesign-studio-editorial](./superdesign-studio-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
 | [superdesign-technical-system](./superdesign-technical-system/) | Interface experiment. | HTML, CSS, Space Grotesk, JetBrains Mono |
 | [synapse-design-system](./synapse-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Inter |
+| [syntax](./premium/tailwindcss/syntax/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
 | [terroir-tasting-room](./terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [vertical-clip-text-slide](./vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
 | [sidefolio-portfolio-template](./premium/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
