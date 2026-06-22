@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (373)
+## Projects (374)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (73)</b></summary>
+<summary><b>Templates (74)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -443,6 +443,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [superdesign-studio-editorial](./templates/superdesign-studio-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
 | [superdesign-technical-system](./templates/superdesign-technical-system/) | Interface experiment. | HTML, CSS, Space Grotesk, JetBrains Mono |
 | [synapse-design-system](./templates/synapse-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Inter |
+| [premium/tailwindcss/syntax](./templates/premium/tailwindcss/syntax/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
 | [terroir-tasting-room](./templates/terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [transmit](./templates/premium/tailwindcss/transmit/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
