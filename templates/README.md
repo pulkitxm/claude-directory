@@ -54,6 +54,7 @@
 | [stacking-cards-portfolio](./stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [startup](./premium/magic-ui/startup/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [sticky-content-switch](./sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
+| [streamline](./premium/shadcnblocks/streamline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
 | [studio](./premium/tailwindcss/studio/) | Interface experiment. | HTML, CSS, vanilla JS, Mona Sans |
 | [super-design-industrial-system](./super-design-industrial-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Playfair Display |
 | [super-travel-luxury-landing](./super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
