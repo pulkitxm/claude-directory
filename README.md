@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (383)
+## Projects (387)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (83)</b></summary>
+<summary><b>Templates (87)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -419,6 +419,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [organic-intelligence-wave](./templates/organic-intelligence-wave/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Inter, JetBrains Mono |
 | [pocket](./templates/premium/tailwindcss/pocket/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/magic-ui/portfolio](./templates/premium/magic-ui/portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
+| [plasma](./templates/premium/shadcnblocks/plasma/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [primer](./templates/premium/tailwindcss/primer/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Inter |
 | [productized-agency-template](./templates/premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [protocol](./templates/premium/tailwindcss/protocol/) | Interface experiment. | HTML, CSS, vanilla JS |
