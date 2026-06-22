@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (389)
+## Projects (390)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (89)</b></summary>
+<summary><b>Templates (90)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -408,6 +408,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [premium/shadcnblocks/kinto](./templates/premium/shadcnblocks/kinto/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans, JetBrains Mono |
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [lumina-portfolio-template](./templates/lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
+| [premium/shadcnblocks/lumen](./templates/premium/shadcnblocks/lumen/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
 | [premium/shadcnblocks/metafi](./templates/premium/shadcnblocks/metafi/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/shadcnblocks/mainline](./templates/premium/shadcnblocks/mainline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [midnight-editorial-template](./templates/midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |

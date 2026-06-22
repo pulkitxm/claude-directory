@@ -35,6 +35,7 @@
 | [keynote](./premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [kinetic-orange-brutalist-agency](./kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [kinto](./premium/shadcnblocks/kinto/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans, JetBrains Mono |
+| [lumen](./premium/shadcnblocks/lumen/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
 | [lumina-neobrutalist-saas-landing](./lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [lumina-portfolio-template](./lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
 | [metafi](./premium/shadcnblocks/metafi/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
