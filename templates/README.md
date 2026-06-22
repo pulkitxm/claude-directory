@@ -2,6 +2,7 @@
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [agent](./premium/magic-ui/agent/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [atelier-archive-quiet-luxury](./atelier-archive-quiet-luxury/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Hanken Grotesk |
 | [aurum-neural-ai-landing](./aurum-neural-ai-landing/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
 | [bastion](./premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
