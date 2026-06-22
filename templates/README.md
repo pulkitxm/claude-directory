@@ -30,6 +30,7 @@
 | [organic-intelligence-wave](./organic-intelligence-wave/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Inter, JetBrains Mono |
 | [productized-agency-template](./premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [protocol](./premium/tailwindcss/protocol/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [radiant](./premium/tailwindcss/radiant/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer |
 | [raw-form-design-system](./raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
 | [realmagic-ticker-scroll](./realmagic-ticker-scroll/) | Interface experiment. | HTML, CSS, vanilla JS, GSAP, ScrollTrigger, Anton, Instrument Serif |
 | [red-sun-editorial-template](./red-sun-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Manrope |
@@ -37,6 +38,7 @@
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [stacking-cards-portfolio](./stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [sticky-content-switch](./sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
+| [studio](./premium/tailwindcss/studio/) | Interface experiment. | HTML, CSS, vanilla JS, Mona Sans |
 | [super-design-industrial-system](./super-design-industrial-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Playfair Display |
 | [super-travel-luxury-landing](./super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [superdesign-architectural-type](./superdesign-architectural-type/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Tight, Inter, JetBrains Mono |
