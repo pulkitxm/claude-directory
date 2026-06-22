@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (371)
+## Projects (372)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (71)</b></summary>
+<summary><b>Templates (72)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -380,6 +380,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [bastion](./templates/premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
 | [blog](./templates/premium/magic-ui/blog/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [carrington](./templates/premium/lexingtonthemes/carrington/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Newsreader, Fuse.js |
+| [premium/tailwindcss/catalyst](./templates/premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [browser-core-devtools-template](./templates/browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
 | [premium/magic-ui/changelog](./templates/premium/magic-ui/changelog/) | Interface experiment. | HTML, CSS, vanilla JS, GeistSans |
 | [clinical-luxury-conversion](./templates/clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
