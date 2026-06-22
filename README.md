@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (375)
+## Projects (376)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (75)</b></summary>
+<summary><b>Templates (76)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -420,6 +420,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [red-sun-editorial-template](./templates/red-sun-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Manrope |
 | [saas](./templates/premium/magic-ui/saas/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [salient](./templates/premium/tailwindcss/salient/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
+| [scalar](./templates/premium/shadcnblocks/scalar/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
 | [season-04-brutalist-store](./templates/season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [stacking-cards-portfolio](./templates/stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |

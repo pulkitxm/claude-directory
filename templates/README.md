@@ -49,6 +49,7 @@
 | [red-sun-editorial-template](./red-sun-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Manrope |
 | [saas](./premium/magic-ui/saas/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [salient](./premium/tailwindcss/salient/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
+| [scalar](./premium/shadcnblocks/scalar/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
 | [season-04-brutalist-store](./season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [stacking-cards-portfolio](./stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
