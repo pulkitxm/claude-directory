@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (366)
+## Projects (368)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (66)</b></summary>
+<summary><b>Templates (68)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -383,6 +383,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [browser-core-devtools-template](./templates/browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
 | [premium/magic-ui/changelog](./templates/premium/magic-ui/changelog/) | Interface experiment. | HTML, CSS, vanilla JS, GeistSans |
 | [clinical-luxury-conversion](./templates/clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
+| [codeforge](./templates/premium/magic-ui/codeforge/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
 | [compass](./templates/premium/tailwindcss/compass/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Geist Mono |
 | [cyber-serif-template](./templates/cyber-serif-template/) | Interface experiment. | Static HTML/CSS/JS, Newsreader, Inter, Space Grotesk |
 | [emerald-glass-system](./templates/emerald-glass-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
@@ -411,6 +412,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [raw-form-design-system](./templates/raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
 | [realmagic-ticker-scroll](./templates/realmagic-ticker-scroll/) | Interface experiment. | HTML, CSS, vanilla JS, GSAP, ScrollTrigger, Anton, Instrument Serif |
 | [red-sun-editorial-template](./templates/red-sun-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Manrope |
+| [saas](./templates/premium/magic-ui/saas/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [salient](./templates/premium/tailwindcss/salient/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
 | [season-04-brutalist-store](./templates/season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
