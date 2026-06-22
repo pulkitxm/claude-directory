@@ -28,6 +28,7 @@
 | [oatmeal-saas-kit](./premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [obsidian-elite-template](./obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
 | [organic-intelligence-wave](./organic-intelligence-wave/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Inter, JetBrains Mono |
+| [portfolio](./premium/magic-ui/portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [primer](./premium/tailwindcss/primer/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Inter |
 | [productized-agency-template](./premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [protocol](./premium/tailwindcss/protocol/) | Interface experiment. | HTML, CSS, vanilla JS |
