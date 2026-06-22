@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (356)
+## Projects (358)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (56)</b></summary>
+<summary><b>Templates (58)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -402,6 +402,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [organic-intelligence-wave](./templates/organic-intelligence-wave/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Inter, JetBrains Mono |
 | [primer](./templates/premium/tailwindcss/primer/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Inter |
 | [productized-agency-template](./templates/premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
+| [premium/tailwindcss/radiant](./templates/premium/tailwindcss/radiant/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer |
 | [raw-form-design-system](./templates/raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
 | [realmagic-ticker-scroll](./templates/realmagic-ticker-scroll/) | Interface experiment. | HTML, CSS, vanilla JS, GSAP, ScrollTrigger, Anton, Instrument Serif |
 | [red-sun-editorial-template](./templates/red-sun-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Manrope |
@@ -409,6 +410,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [stacking-cards-portfolio](./templates/stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [sticky-content-switch](./templates/sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
+| [studio](./templates/premium/tailwindcss/studio/) | Interface experiment. | HTML, CSS, vanilla JS, Mona Sans |
 | [super-design-industrial-system](./templates/super-design-industrial-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Playfair Display |
 | [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [superdesign-architectural-type](./templates/superdesign-architectural-type/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Tight, Inter, JetBrains Mono |
