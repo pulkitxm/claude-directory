@@ -1,6 +1,6 @@
 # Templates
 
-**61 website template experiments generated with Claude Fable 5** — multi-page site templates and same-to-same clones of real-world designs, rebuilt as self-contained HTML/CSS/JS and React/Tailwind projects. A reference collection of AI-generated, full website templates. Part of the [claude-directory](../README.md) ([live gallery](https://pulkitxm.com/claude-directory)).
+**63 website template experiments generated with Claude Fable 5** — multi-page site templates and same-to-same clones of real-world designs, rebuilt as self-contained HTML/CSS/JS and React/Tailwind projects. A reference collection of AI-generated, full website templates. Part of the [claude-directory](../README.md) ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
