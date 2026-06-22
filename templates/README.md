@@ -59,6 +59,7 @@
 | [relative](./premium/shadcnblocks/relative/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [saas](./premium/magic-ui/saas/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [salient](./premium/tailwindcss/salient/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
+| [scalar](./premium/shadcnblocks/scalar/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
 | [season-04-brutalist-store](./season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |

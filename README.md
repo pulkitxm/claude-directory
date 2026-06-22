@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (387)
+## Projects (389)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (87)</b></summary>
+<summary><b>Templates (89)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -430,6 +430,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [relative](./templates/premium/shadcnblocks/relative/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [saas](./templates/premium/magic-ui/saas/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [salient](./templates/premium/tailwindcss/salient/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
+| [scalar](./templates/premium/shadcnblocks/scalar/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
 | [season-04-brutalist-store](./templates/season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [premium/shadcnblocks/sonic](./templates/premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
