@@ -13,7 +13,7 @@ fs.mkdirSync(OUT, { recursive: true });
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-await page.goto(URL, { waitUntil: "networkidle", timeout: 60000 });
+await page.goto(URL, { waitUntil: process.env.WAIT_UNTIL || "networkidle", timeout: 60000 });
 await page.waitForTimeout(3000);
 
 // pick largest frame
