@@ -1,286 +1,746 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Studio Index — Sticky Content Switch</title>
-<style>
-  /* ---------- Fonts ---------- */
-  @font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;
-    src:url('./assets/anton-latin.woff2') format('woff2');}
-  @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
-    src:url('./assets/inter-400-latin.woff2') format('woff2');}
-  @font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;
-    src:url('./assets/inter-500-latin.woff2') format('woff2');}
-  @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;
-    src:url('./assets/inter-600-latin.woff2') format('woff2');}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Studio Index — Sticky Content Switch</title>
+		<style>
+		/* ---------- Fonts ---------- */
+		@font-face {
+			font-family: "Anton";
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: url("./assets/anton-latin.woff2") format("woff2");
+		}
+		@font-face {
+			font-family: "Inter";
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: url("./assets/inter-400-latin.woff2") format("woff2");
+		}
+		@font-face {
+			font-family: "Inter";
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: url("./assets/inter-500-latin.woff2") format("woff2");
+		}
+		@font-face {
+			font-family: "Inter";
+			font-style: normal;
+			font-weight: 600;
+			font-display: swap;
+			src: url("./assets/inter-600-latin.woff2") format("woff2");
+		}
 
-  :root{
-    --ink:#0e0e0c; --paper:#f4f1ea; --graphite:#6b6862; --accent:#c4622d;
-    --ease:cubic-bezier(0.16,1,0.3,1);
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+		:root {
+			--ink: #0e0e0c;
+			--paper: #f4f1ea;
+			--graphite: #6b6862;
+			--accent: #c4622d;
+			--ease: cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		html {
+			scroll-behavior: smooth;
+		}
+		body {
+			font-family: "Inter", system-ui, sans-serif;
+			background: var(--paper);
+			color: var(--ink);
+			-webkit-font-smoothing: antialiased;
+			overflow-x: hidden;
+		}
 
-  /* ---------- Grain overlay ---------- */
-  .grain{position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.045;mix-blend-mode:multiply;}
-  .grain svg{width:100%;height:100%;}
+		/* ---------- Grain overlay ---------- */
+		.grain {
+			position: fixed;
+			inset: 0;
+			z-index: 200;
+			pointer-events: none;
+			opacity: 0.045;
+			mix-blend-mode: multiply;
+		}
+		.grain svg {
+			width: 100%;
+			height: 100%;
+		}
 
-  /* ---------- Nav ---------- */
-  nav{position:fixed;top:0;left:0;width:100%;z-index:150;display:flex;align-items:center;
-    justify-content:space-between;padding:22px 38px;mix-blend-mode:difference;color:#fff;
-    font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
-    opacity:0;transform:translateY(-12px);transition:opacity .9s var(--ease) .3s,transform .9s var(--ease) .3s;}
-  nav.in{opacity:1;transform:none;}
-  nav .wm{font-weight:600;letter-spacing:.18em;}
-  nav .center{opacity:.7;}
-  nav .menu{border:1px solid rgba(255,255,255,.45);padding:8px 18px;border-radius:999px;}
+		/* ---------- Nav ---------- */
+		nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 150;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 22px 38px;
+			mix-blend-mode: difference;
+			color: #fff;
+			font-size: 12px;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			font-weight: 500;
+			opacity: 0;
+			transform: translateY(-12px);
+			transition:
+				opacity 0.9s var(--ease) 0.3s,
+				transform 0.9s var(--ease) 0.3s;
+		}
+		nav.in {
+			opacity: 1;
+			transform: none;
+		}
+		nav .wm {
+			font-weight: 600;
+			letter-spacing: 0.18em;
+		}
+		nav .center {
+			opacity: 0.7;
+		}
+		nav .menu {
+			border: 1px solid rgba(255, 255, 255, 0.45);
+			padding: 8px 18px;
+			border-radius: 999px;
+		}
 
-  /* ---------- Hero ---------- */
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-    padding:0 38px;position:relative;}
-  .hero .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--graphite);
-    margin-bottom:26px;opacity:0;transform:translateY(14px);transition:.9s var(--ease) .2s;}
-  .hero.in .eyebrow{opacity:1;transform:none;}
-  .hero h1{font-family:'Anton';font-weight:400;text-transform:uppercase;line-height:.9;
-    font-size:clamp(56px,13vw,200px);letter-spacing:-.02em;}
-  .hero h1 .line{display:block;overflow:hidden;}
-  .hero h1 .line:nth-child(2){padding-left:.12em;color:var(--accent);}
-  .hero h1 .ch{display:inline-block;transform:translateY(110%);transition:transform .9s var(--ease);}
-  .hero.in h1 .ch{transform:none;}
-  .hero .sub{margin-top:34px;max-width:520px;font-size:16px;line-height:1.6;color:var(--graphite);
-    opacity:0;transform:translateY(14px);transition:.9s var(--ease) .7s;}
-  .hero.in .sub{opacity:1;transform:none;}
-  .scrollpill{position:absolute;bottom:38px;left:38px;display:flex;align-items:center;gap:12px;
-    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--graphite);
-    opacity:0;transition:opacity .9s var(--ease) .9s;}
-  .hero.in .scrollpill{opacity:1;}
-  .scrollpill .dot{width:34px;height:34px;border:1px solid var(--ink);border-radius:999px;
-    display:grid;place-items:center;animation:bob 1.8s var(--ease) infinite;}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+		/* ---------- Hero ---------- */
+		.hero {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 0 38px;
+			position: relative;
+		}
+		.hero .eyebrow {
+			font-size: 12px;
+			letter-spacing: 0.28em;
+			text-transform: uppercase;
+			color: var(--graphite);
+			margin-bottom: 26px;
+			opacity: 0;
+			transform: translateY(14px);
+			transition: 0.9s var(--ease) 0.2s;
+		}
+		.hero.in .eyebrow {
+			opacity: 1;
+			transform: none;
+		}
+		.hero h1 {
+			font-family: "Anton";
+			font-weight: 400;
+			text-transform: uppercase;
+			line-height: 0.9;
+			font-size: clamp(56px, 13vw, 200px);
+			letter-spacing: -0.02em;
+		}
+		.hero h1 .line {
+			display: block;
+			overflow: hidden;
+		}
+		.hero h1 .line:nth-child(2) {
+			padding-left: 0.12em;
+			color: var(--accent);
+		}
+		.hero h1 .ch {
+			display: inline-block;
+			transform: translateY(110%);
+			transition: transform 0.9s var(--ease);
+		}
+		.hero.in h1 .ch {
+			transform: none;
+		}
+		.hero .sub {
+			margin-top: 34px;
+			max-width: 520px;
+			font-size: 16px;
+			line-height: 1.6;
+			color: var(--graphite);
+			opacity: 0;
+			transform: translateY(14px);
+			transition: 0.9s var(--ease) 0.7s;
+		}
+		.hero.in .sub {
+			opacity: 1;
+			transform: none;
+		}
+		.scrollpill {
+			position: absolute;
+			bottom: 38px;
+			left: 38px;
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			font-size: 11px;
+			letter-spacing: 0.22em;
+			text-transform: uppercase;
+			color: var(--graphite);
+			opacity: 0;
+			transition: opacity 0.9s var(--ease) 0.9s;
+		}
+		.hero.in .scrollpill {
+			opacity: 1;
+		}
+		.scrollpill .dot {
+			width: 34px;
+			height: 34px;
+			border: 1px solid var(--ink);
+			border-radius: 999px;
+			display: grid;
+			place-items: center;
+			animation: bob 1.8s var(--ease) infinite;
+		}
+		@keyframes bob {
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+			50% {
+				transform: translateY(6px);
+			}
+		}
 
-  /* ---------- Switch section ---------- */
-  .switch{position:relative;display:flex;align-items:flex-start;
-    padding-left:96px;}
-  /* progress rail */
-  .rail{position:fixed;top:0;left:38px;height:100vh;width:2px;z-index:140;
-    display:flex;align-items:center;opacity:0;transition:opacity .6s var(--ease);}
-  .rail.show{opacity:1;}
-  .rail-track{position:relative;width:2px;height:46vh;background:rgba(14,14,12,.16);}
-  .rail-fill{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--accent);
-    transform:scaleY(0);transform-origin:top;transition:transform .6s var(--ease);}
-  .rail-ticks{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;}
-  .rail-tick{width:9px;height:1px;background:var(--ink);transform:translateX(-3px) scaleX(.7);
-    transition:.5s var(--ease);}
-  .rail-tick.is-active{background:var(--accent);transform:translateX(-5px) scaleX(1.6);}
+		/* ---------- Switch section ---------- */
+		.switch {
+			position: relative;
+			display: flex;
+			align-items: flex-start;
+			padding-left: 96px;
+		}
+		/* progress rail */
+		.rail {
+			position: fixed;
+			top: 0;
+			left: 38px;
+			height: 100vh;
+			width: 2px;
+			z-index: 140;
+			display: flex;
+			align-items: center;
+			opacity: 0;
+			transition: opacity 0.6s var(--ease);
+		}
+		.rail.show {
+			opacity: 1;
+		}
+		.rail-track {
+			position: relative;
+			width: 2px;
+			height: 46vh;
+			background: rgba(14, 14, 12, 0.16);
+		}
+		.rail-fill {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: var(--accent);
+			transform: scaleY(0);
+			transform-origin: top;
+			transition: transform 0.6s var(--ease);
+		}
+		.rail-ticks {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		.rail-tick {
+			width: 9px;
+			height: 1px;
+			background: var(--ink);
+			transform: translateX(-3px) scaleX(0.7);
+			transition: 0.5s var(--ease);
+		}
+		.rail-tick.is-active {
+			background: var(--accent);
+			transform: translateX(-5px) scaleX(1.6);
+		}
 
-  /* sticky left */
-  .switch-left{position:sticky;top:0;height:100vh;width:42%;display:flex;align-items:center;
-    flex-shrink:0;}
-  .switch-stage{position:relative;width:100%;height:330px;}
-  .switch-item{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
-    opacity:0;pointer-events:none;}
-  .switch-item.is-active{opacity:1;pointer-events:auto;}
-  .switch-item .idx{font-size:13px;letter-spacing:.2em;color:var(--graphite);font-weight:500;
-    transform:translateY(24px);opacity:0;transition:.6s var(--ease);}
-  .switch-item .kick{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
-    margin-top:18px;font-weight:600;transform:translateY(24px);opacity:0;transition:.6s var(--ease) .06s;}
-  .switch-item h2{font-family:'Anton';font-weight:400;text-transform:uppercase;
-    font-size:clamp(48px,6.5vw,108px);line-height:.92;letter-spacing:-.02em;margin-top:10px;
-    transform:translateY(28px);opacity:0;transition:.7s var(--ease) .1s;}
-  .switch-item p{margin-top:20px;max-width:380px;font-size:16px;line-height:1.6;color:var(--graphite);
-    transform:translateY(24px);opacity:0;transition:.6s var(--ease) .16s;}
-  .switch-item .meta{margin-top:26px;display:flex;gap:26px;font-size:12px;letter-spacing:.1em;
-    text-transform:uppercase;color:var(--graphite);transform:translateY(24px);opacity:0;
-    transition:.6s var(--ease) .22s;}
-  .switch-item.is-active .idx,.switch-item.is-active .kick,.switch-item.is-active h2,
-  .switch-item.is-active p,.switch-item.is-active .meta{transform:none;opacity:1;}
+		/* sticky left */
+		.switch-left {
+			position: sticky;
+			top: 0;
+			height: 100vh;
+			width: 42%;
+			display: flex;
+			align-items: center;
+			flex-shrink: 0;
+		}
+		.switch-stage {
+			position: relative;
+			width: 100%;
+			height: 330px;
+		}
+		.switch-item {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			opacity: 0;
+			pointer-events: none;
+		}
+		.switch-item.is-active {
+			opacity: 1;
+			pointer-events: auto;
+		}
+		.switch-item .idx {
+			font-size: 13px;
+			letter-spacing: 0.2em;
+			color: var(--graphite);
+			font-weight: 500;
+			transform: translateY(24px);
+			opacity: 0;
+			transition: 0.6s var(--ease);
+		}
+		.switch-item .kick {
+			font-size: 12px;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			color: var(--accent);
+			margin-top: 18px;
+			font-weight: 600;
+			transform: translateY(24px);
+			opacity: 0;
+			transition: 0.6s var(--ease) 0.06s;
+		}
+		.switch-item h2 {
+			font-family: "Anton";
+			font-weight: 400;
+			text-transform: uppercase;
+			font-size: clamp(48px, 6.5vw, 108px);
+			line-height: 0.92;
+			letter-spacing: -0.02em;
+			margin-top: 10px;
+			transform: translateY(28px);
+			opacity: 0;
+			transition: 0.7s var(--ease) 0.1s;
+		}
+		.switch-item p {
+			margin-top: 20px;
+			max-width: 380px;
+			font-size: 16px;
+			line-height: 1.6;
+			color: var(--graphite);
+			transform: translateY(24px);
+			opacity: 0;
+			transition: 0.6s var(--ease) 0.16s;
+		}
+		.switch-item .meta {
+			margin-top: 26px;
+			display: flex;
+			gap: 26px;
+			font-size: 12px;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--graphite);
+			transform: translateY(24px);
+			opacity: 0;
+			transition: 0.6s var(--ease) 0.22s;
+		}
+		.switch-item.is-active .idx,
+		.switch-item.is-active .kick,
+		.switch-item.is-active h2,
+		.switch-item.is-active p,
+		.switch-item.is-active .meta {
+			transform: none;
+			opacity: 1;
+		}
 
-  /* right images */
-  .switch-right{width:58%;padding:0 38px 0 60px;}
-  .panel{height:100vh;display:flex;align-items:center;}
-  .panel .frame{width:100%;height:78vh;border-radius:28px;overflow:hidden;position:relative;
-    background:#ddd6c8;box-shadow:0 30px 80px -40px rgba(14,14,12,.5);}
-  .panel .frame img{width:100%;height:100%;object-fit:cover;display:block;
-    filter:grayscale(.55) brightness(.86);transform:scale(1.04);
-    transition:filter .7s var(--ease);will-change:transform,filter;}
-  .panel.is-active .frame img{filter:grayscale(0) brightness(1);}
-  .panel .tag{position:absolute;left:22px;bottom:22px;z-index:2;color:#fff;
-    font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
-    mix-blend-mode:difference;}
+		/* right images */
+		.switch-right {
+			width: 58%;
+			padding: 0 38px 0 60px;
+		}
+		.panel {
+			height: 100vh;
+			display: flex;
+			align-items: center;
+		}
+		.panel .frame {
+			width: 100%;
+			height: 78vh;
+			border-radius: 28px;
+			overflow: hidden;
+			position: relative;
+			background: #ddd6c8;
+			box-shadow: 0 30px 80px -40px rgba(14, 14, 12, 0.5);
+		}
+		.panel .frame img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			filter: grayscale(0.55) brightness(0.86);
+			transform: scale(1.04);
+			transition: filter 0.7s var(--ease);
+			will-change: transform, filter;
+		}
+		.panel.is-active .frame img {
+			filter: grayscale(0) brightness(1);
+		}
+		.panel .tag {
+			position: absolute;
+			left: 22px;
+			bottom: 22px;
+			z-index: 2;
+			color: #fff;
+			font-size: 11px;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			font-weight: 600;
+			mix-blend-mode: difference;
+		}
 
-  /* ---------- Outro ---------- */
-  .outro{min-height:90vh;display:flex;flex-direction:column;justify-content:center;
-    align-items:center;text-align:center;padding:120px 38px;position:relative;overflow:hidden;}
-  .outro .label{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--graphite);}
-  .outro h3{font-family:'Anton';font-weight:400;text-transform:uppercase;
-    font-size:clamp(40px,8vw,140px);line-height:.92;letter-spacing:-.02em;margin:18px 0 30px;}
-  .outro .cta{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--ink);
-    border-radius:999px;padding:16px 30px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
-    font-weight:600;cursor:pointer;transition:.5s var(--ease);background:transparent;color:var(--ink);}
-  .outro .cta:hover{background:var(--ink);color:var(--paper);}
-  .ghost{position:absolute;bottom:-4vw;left:50%;transform:translateX(-50%);
-    font-family:'Anton';font-size:26vw;color:rgba(14,14,12,.05);white-space:nowrap;
-    text-transform:uppercase;line-height:1;pointer-events:none;}
+		/* ---------- Outro ---------- */
+		.outro {
+			min-height: 90vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			padding: 120px 38px;
+			position: relative;
+			overflow: hidden;
+		}
+		.outro .label {
+			font-size: 12px;
+			letter-spacing: 0.28em;
+			text-transform: uppercase;
+			color: var(--graphite);
+		}
+		.outro h3 {
+			font-family: "Anton";
+			font-weight: 400;
+			text-transform: uppercase;
+			font-size: clamp(40px, 8vw, 140px);
+			line-height: 0.92;
+			letter-spacing: -0.02em;
+			margin: 18px 0 30px;
+		}
+		.outro .cta {
+			display: inline-flex;
+			align-items: center;
+			gap: 12px;
+			border: 1px solid var(--ink);
+			border-radius: 999px;
+			padding: 16px 30px;
+			font-size: 13px;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			font-weight: 600;
+			cursor: pointer;
+			transition: 0.5s var(--ease);
+			background: transparent;
+			color: var(--ink);
+		}
+		.outro .cta:hover {
+			background: var(--ink);
+			color: var(--paper);
+		}
+		.ghost {
+			position: absolute;
+			bottom: -4vw;
+			left: 50%;
+			transform: translateX(-50%);
+			font-family: "Anton";
+			font-size: 26vw;
+			color: rgba(14, 14, 12, 0.05);
+			white-space: nowrap;
+			text-transform: uppercase;
+			line-height: 1;
+			pointer-events: none;
+		}
 
-  /* ---------- Responsive ---------- */
-  @media (max-width:900px){
-    .rail{display:none;}
-    .switch{flex-direction:column;padding-left:0;}
-    .switch-left{position:static;height:auto;width:100%;padding:60px 24px 10px;}
-    .switch-stage{height:auto;}
-    .switch-item{position:relative;opacity:1;pointer-events:auto;display:none;}
-    .switch-item.is-active{display:flex;}
-    .switch-right{width:100%;padding:0 24px;}
-    .panel{height:auto;padding:18px 0;}
-    .panel .frame{height:62vh;}
-    nav .center{display:none;}
-    .hero,.outro{padding-left:24px;padding-right:24px;}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *{transition-duration:.001s;animation:none;}
-    .hero h1 .ch{transform:none;}
-  }
-</style>
-</head>
-<body>
-  <div class="grain">
-    <svg xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
-  </div>
+		/* ---------- Responsive ---------- */
+		@media (max-width: 900px) {
+			.rail {
+				display: none;
+			}
+			.switch {
+				flex-direction: column;
+				padding-left: 0;
+			}
+			.switch-left {
+				position: static;
+				height: auto;
+				width: 100%;
+				padding: 60px 24px 10px;
+			}
+			.switch-stage {
+				height: auto;
+			}
+			.switch-item {
+				position: relative;
+				opacity: 1;
+				pointer-events: auto;
+				display: none;
+			}
+			.switch-item.is-active {
+				display: flex;
+			}
+			.switch-right {
+				width: 100%;
+				padding: 0 24px;
+			}
+			.panel {
+				height: auto;
+				padding: 18px 0;
+			}
+			.panel .frame {
+				height: 62vh;
+			}
+			nav .center {
+				display: none;
+			}
+			.hero,
+			.outro {
+				padding-left: 24px;
+				padding-right: 24px;
+			}
+		}
+		@media (prefers-reduced-motion: reduce) {
+			* {
+				transition-duration: 0.001s;
+				animation: none;
+			}
+			.hero h1 .ch {
+				transform: none;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="grain">
+			<svg xmlns="http://www.w3.org/2000/svg">
+				<filter id="n">
+					<feTurbulence
+						type="fractalNoise"
+						baseFrequency="0.8"
+						numOctaves="3"
+						stitchTiles="stitch"
+					/>
+				</filter>
+				<rect width="100%" height="100%" filter="url(#n)" />
+			</svg>
+		</div>
 
-  <nav id="nav">
-    <span class="wm">Studio Index</span>
-    <span class="center">Selected Work — 2026</span>
-    <span class="menu">Menu</span>
-  </nav>
+		<nav id="nav">
+			<span class="wm">Studio Index</span>
+			<span class="center">Selected Work — 2026</span>
+			<span class="menu">Menu</span>
+		</nav>
 
-  <header class="hero" id="hero">
-    <div class="eyebrow">A scroll study · 01 — 06</div>
-    <h1>
-      <span class="line" data-text="Sticky"></span>
-      <span class="line" data-text="Content Switch"></span>
-    </h1>
-    <p class="sub">The heading stays pinned. The images move. As each frame reaches the center of the screen, the words on the left rewrite themselves to match what you're looking at.</p>
-    <div class="scrollpill"><span class="dot">↓</span> Scroll to begin</div>
-  </header>
+		<header class="hero" id="hero">
+			<div class="eyebrow">A scroll study · 01 — 06</div>
+			<h1>
+				<span class="line" data-text="Sticky"></span>
+				<span class="line" data-text="Content Switch"></span>
+			</h1>
+			<p class="sub">
+				The heading stays pinned. The images move. As each frame reaches the
+				center of the screen, the words on the left rewrite themselves to match
+				what you're looking at.
+			</p>
+			<div class="scrollpill"><span class="dot">↓</span> Scroll to begin</div>
+		</header>
 
-  <!-- progress rail -->
-  <div class="rail" id="rail">
-    <div class="rail-track">
-      <div class="rail-fill" id="railFill"></div>
-      <div class="rail-ticks" id="railTicks"></div>
-    </div>
-  </div>
+		<!-- progress rail -->
+		<div class="rail" id="rail">
+			<div class="rail-track">
+				<div class="rail-fill" id="railFill"></div>
+				<div class="rail-ticks" id="railTicks"></div>
+			</div>
+		</div>
 
-  <section class="switch" id="switch">
-    <div class="switch-left">
-      <div class="switch-stage" id="stage"></div>
-    </div>
-    <div class="switch-right" id="right"></div>
-  </section>
+		<section class="switch" id="switch">
+			<div class="switch-left">
+				<div class="switch-stage" id="stage"></div>
+			</div>
+			<div class="switch-right" id="right"></div>
+		</section>
 
-  <footer class="outro">
-    <span class="label">Index complete · 06 / 06</span>
-    <h3>Let's make<br/>the next one.</h3>
-    <button class="cta">Start a project →</button>
-    <div class="ghost">Studio</div>
-  </footer>
+		<footer class="outro">
+			<span class="label">Index complete · 06 / 06</span>
+			<h3>Let's make<br>the next one.</h3>
+			<button class="cta">Start a project →</button>
+			<div class="ghost">Studio</div>
+		</footer>
 
-<script>
-  const DATA = [
-    {n:'01',title:'Monument', kick:'Architecture / Concrete', body:'Brutalist forms cast in raw light — mass, shadow, and the weight of stacked grey.', meta:['Form','Stone','2026'], img:'01-monument.svg'},
-    {n:'02',title:'Terrain',  kick:'Landscape / Earth',       body:'Wide ground and slow horizon lines, where ridges fold one behind the next.',      meta:['Land','Scale','2025'], img:'02-terrain.svg'},
-    {n:'03',title:'Chroma',   kick:'Studio / Color',          body:'Pigment fields and hard shadow — pure circles laid over warm paper.',           meta:['Pigment','Light','2026'], img:'03-chroma.svg'},
-    {n:'04',title:'Circuit',  kick:'Motion / Machine',        body:'Systems that move in sequence; nodes firing along a quiet grid of paths.',       meta:['System','Signal','2025'], img:'04-circuit.svg'},
-    {n:'05',title:'Quiet',    kick:'Portrait / Stillness',    body:'A held breath between frames — a single figure under one soft light.',           meta:['Figure','Calm','2026'], img:'05-quiet.svg'},
-    {n:'06',title:'Horizon',  kick:'Atmosphere / Light',      body:'Where surface meets sky and the line between them softens to nothing.',          meta:['Sky','Sea','2026'], img:'06-horizon.svg'},
-  ];
-  const TOTAL = DATA.length;
-  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+		<script>
+		const DATA = [
+			{
+				n: "01",
+				title: "Monument",
+				kick: "Architecture / Concrete",
+				body: "Brutalist forms cast in raw light — mass, shadow, and the weight of stacked grey.",
+				meta: ["Form", "Stone", "2026"],
+				img: "01-monument.svg",
+			},
+			{
+				n: "02",
+				title: "Terrain",
+				kick: "Landscape / Earth",
+				body: "Wide ground and slow horizon lines, where ridges fold one behind the next.",
+				meta: ["Land", "Scale", "2025"],
+				img: "02-terrain.svg",
+			},
+			{
+				n: "03",
+				title: "Chroma",
+				kick: "Studio / Color",
+				body: "Pigment fields and hard shadow — pure circles laid over warm paper.",
+				meta: ["Pigment", "Light", "2026"],
+				img: "03-chroma.svg",
+			},
+			{
+				n: "04",
+				title: "Circuit",
+				kick: "Motion / Machine",
+				body: "Systems that move in sequence; nodes firing along a quiet grid of paths.",
+				meta: ["System", "Signal", "2025"],
+				img: "04-circuit.svg",
+			},
+			{
+				n: "05",
+				title: "Quiet",
+				kick: "Portrait / Stillness",
+				body: "A held breath between frames — a single figure under one soft light.",
+				meta: ["Figure", "Calm", "2026"],
+				img: "05-quiet.svg",
+			},
+			{
+				n: "06",
+				title: "Horizon",
+				kick: "Atmosphere / Light",
+				body: "Where surface meets sky and the line between them softens to nothing.",
+				meta: ["Sky", "Sea", "2026"],
+				img: "06-horizon.svg",
+			},
+		];
+		const TOTAL = DATA.length;
+		const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
 
-  // Build sticky text items
-  const stage = document.getElementById('stage');
-  stage.innerHTML = DATA.map(d=>`
+		// Build sticky text items
+		const stage = document.getElementById("stage");
+		stage.innerHTML = DATA.map(
+			(d) => `
     <article class="switch-item">
       <span class="idx">${d.n} / 0${TOTAL}</span>
       <span class="kick">${d.kick}</span>
       <h2>${d.title}</h2>
       <p>${d.body}</p>
-      <div class="meta">${d.meta.map(m=>`<span>${m}</span>`).join('')}</div>
-    </article>`).join('');
+      <div class="meta">${d.meta.map((m) => `<span>${m}</span>`).join("")}</div>
+    </article>`,
+		).join("");
 
-  // Build right panels
-  document.getElementById('right').innerHTML = DATA.map(d=>`
+		// Build right panels
+		document.getElementById("right").innerHTML = DATA.map(
+			(d) => `
     <div class="panel">
       <div class="frame"><img src="./assets/${d.img}" alt="${d.title}"/><span class="tag">${d.n} · ${d.title}</span></div>
-    </div>`).join('');
+    </div>`,
+		).join("");
 
-  // Build rail ticks
-  document.getElementById('railTicks').innerHTML =
-    DATA.map(()=>`<span class="rail-tick"></span>`).join('');
+		// Build rail ticks
+		document.getElementById("railTicks").innerHTML = DATA.map(
+			() => `<span class="rail-tick"></span>`,
+		).join("");
 
-  const panels = [...document.querySelectorAll('.panel')];
-  const items  = [...document.querySelectorAll('.switch-item')];
-  const ticks  = [...document.querySelectorAll('.rail-tick')];
-  const railFill = document.getElementById('railFill');
-  const rail = document.getElementById('rail');
-  let active = -1;
+		const panels = [...document.querySelectorAll(".panel")];
+		const items = [...document.querySelectorAll(".switch-item")];
+		const ticks = [...document.querySelectorAll(".rail-tick")];
+		const railFill = document.getElementById("railFill");
+		const rail = document.getElementById("rail");
+		let active = -1;
 
-  function setActive(i){
-    if(i===active||i<0) return;
-    active = i;
-    items.forEach((el,n)=> el.classList.toggle('is-active', n===i));
-    panels.forEach((el,n)=> el.classList.toggle('is-active', n===i));
-    ticks.forEach((el,n)=> el.classList.toggle('is-active', n<=i));
-    railFill.style.transform = `scaleY(${(i+1)/TOTAL})`;
-  }
+		function setActive(i) {
+			if (i === active || i < 0) return;
+			active = i;
+			items.forEach((el, n) => el.classList.toggle("is-active", n === i));
+			panels.forEach((el, n) => el.classList.toggle("is-active", n === i));
+			ticks.forEach((el, n) => el.classList.toggle("is-active", n <= i));
+			railFill.style.transform = `scaleY(${(i + 1) / TOTAL})`;
+		}
 
-  // Activate exactly when a panel's midpoint crosses screen center
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{ if(e.isIntersecting) setActive(panels.indexOf(e.target)); });
-  }, { rootMargin:'-50% 0px -50% 0px', threshold:0 });
-  panels.forEach(p=> io.observe(p));
+		// Activate exactly when a panel's midpoint crosses screen center
+		const io = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((e) => {
+					if (e.isIntersecting) setActive(panels.indexOf(e.target));
+				});
+			},
+			{ rootMargin: "-50% 0px -50% 0px", threshold: 0 },
+		);
+		panels.forEach((p) => io.observe(p));
 
-  // Show rail only while the switch section is in view
-  new IntersectionObserver(es=> es.forEach(e=> rail.classList.toggle('show', e.isIntersecting)),
-    {threshold:0.05}).observe(document.getElementById('switch'));
+		// Show rail only while the switch section is in view
+		new IntersectionObserver(
+			(es) =>
+				es.forEach((e) => rail.classList.toggle("show", e.isIntersecting)),
+			{ threshold: 0.05 },
+		).observe(document.getElementById("switch"));
 
-  // rAF parallax: each image scales 1.08 -> 1.0 as it nears center
-  let ticking=false;
-  function frame(){
-    ticking=false;
-    if(reduce) return;
-    const vh = innerHeight, cy = vh/2;
-    panels.forEach(p=>{
-      const r = p.getBoundingClientRect();
-      const mid = r.top + r.height/2;
-      const dist = Math.min(1, Math.abs(mid-cy)/vh);   // 0 at center, 1 far
-      const img = p.querySelector('img');
-      img.style.transform = `scale(${1 + dist*0.08})`;
-    });
-  }
-  addEventListener('scroll', ()=>{ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }, {passive:true});
-  addEventListener('resize', frame);
+		// rAF parallax: each image scales 1.08 -> 1.0 as it nears center
+		let ticking = false;
+		function frame() {
+			ticking = false;
+			if (reduce) return;
+			const vh = innerHeight,
+				cy = vh / 2;
+			panels.forEach((p) => {
+				const r = p.getBoundingClientRect();
+				const mid = r.top + r.height / 2;
+				const dist = Math.min(1, Math.abs(mid - cy) / vh); // 0 at center, 1 far
+				const img = p.querySelector("img");
+				img.style.transform = `scale(${1 + dist * 0.08})`;
+			});
+		}
+		addEventListener(
+			"scroll",
+			() => {
+				if (!ticking) {
+					ticking = true;
+					requestAnimationFrame(frame);
+				}
+			},
+			{ passive: true },
+		);
+		addEventListener("resize", frame);
 
-  // Hero per-letter reveal
-  document.querySelectorAll('.hero h1 .line').forEach((line,li)=>{
-    const text = line.dataset.text;
-    line.innerHTML = [...text].map((c,ci)=>{
-      const delay = (li*text.length*0 + ci)*0.03 + li*0.12 + 0.15;
-      return c===' ' ? '<span class="ch">&nbsp;</span>'
-        : `<span class="ch" style="transition-delay:${delay}s">${c}</span>`;
-    }).join('');
-  });
+		// Hero per-letter reveal
+		document.querySelectorAll(".hero h1 .line").forEach((line, li) => {
+			const text = line.dataset.text;
+			line.innerHTML = [...text]
+				.map((c, ci) => {
+					const delay = (li * text.length * 0 + ci) * 0.03 + li * 0.12 + 0.15;
+					return c === " "
+						? '<span class="ch">&nbsp;</span>'
+						: `<span class="ch" style="transition-delay:${delay}s">${c}</span>`;
+				})
+				.join("");
+		});
 
-  // Load-in
-  requestAnimationFrame(()=>{
-    document.getElementById('hero').classList.add('in');
-    document.getElementById('nav').classList.add('in');
-    setActive(0);
-    frame();
-  });
-</script>
-</body>
+		// Load-in
+		requestAnimationFrame(() => {
+			document.getElementById("hero").classList.add("in");
+			document.getElementById("nav").classList.add("in");
+			setActive(0);
+			frame();
+		});
+		</script>
+	</body>
 </html>
