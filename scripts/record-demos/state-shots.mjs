@@ -1,0 +1,13 @@
+import { chromium } from "playwright";
+const b = await chromium.launch({ ignoreHTTPSErrors: true });
+const p = await b.newPage({ viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true });
+await p.goto("http://localhost:8753/index.html", { waitUntil: "networkidle" });
+await p.waitForTimeout(500);
+await p.locator('button:has-text("Account")').first().click();
+await p.waitForTimeout(300);
+await p.screenshot({ path: "/tmp/clone-account-open.png", clip: {x: 980, y: 0, width: 460, height: 220} });
+await p.keyboard.press("Escape");
+await p.locator('nav[aria-label="Course"] button').first().click();
+await p.waitForTimeout(400);
+await p.screenshot({ path: "/tmp/clone-sidebar-collapsed.png", clip: {x:0,y:0,width:700,height:400} });
+await b.close();
