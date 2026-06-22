@@ -51,6 +51,7 @@
 | [salient](./premium/tailwindcss/salient/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
 | [season-04-brutalist-store](./season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
+| [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
 | [stacking-cards-portfolio](./stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [startup](./premium/magic-ui/startup/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [sticky-content-switch](./sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
