@@ -2,7 +2,10 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (380)
+## Projects (382)
+=======
+## Projects (379)
+>>>>>>> origin/main
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +373,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (80)</b></summary>
+<<<<<<< HEAD
+<summary><b>Templates (82)</b></summary>
+=======
+<summary><b>Templates (79)</b></summary>
+>>>>>>> origin/main
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -381,6 +388,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [blog](./templates/premium/magic-ui/blog/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [carrington](./templates/premium/lexingtonthemes/carrington/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Newsreader, Fuse.js |
 | [premium/tailwindcss/catalyst](./templates/premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/shadcnblocks/charter](./templates/premium/shadcnblocks/charter/) | Interface experiment. | HTML, CSS, vanilla JS, Hubot Sans, Inter, IBM Plex Mono |
 | [browser-core-devtools-template](./templates/browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
 | [premium/magic-ui/changelog](./templates/premium/magic-ui/changelog/) | Interface experiment. | HTML, CSS, vanilla JS, GeistSans |
 | [clinical-luxury-conversion](./templates/clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
@@ -406,6 +414,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [lumina-portfolio-template](./templates/lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
 | [premium/shadcnblocks/metafi](./templates/premium/shadcnblocks/metafi/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/shadcnblocks/mainline](./templates/premium/shadcnblocks/mainline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [midnight-editorial-template](./templates/midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
 | [mobile](./templates/premium/magic-ui/mobile/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [neon-velocity-style-guide](./templates/neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
