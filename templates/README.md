@@ -11,6 +11,7 @@
 | [carrington](./premium/lexingtonthemes/carrington/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Newsreader, Fuse.js |
 | [catalyst](./premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [changelog](./premium/magic-ui/changelog/) | Interface experiment. | HTML, CSS, vanilla JS, GeistSans |
+| [charter](./premium/shadcnblocks/charter/) | Interface experiment. | HTML, CSS, vanilla JS, Hubot Sans, Inter, IBM Plex Mono |
 
 | [clinical-luxury-conversion](./clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
 | [codeforge](./premium/magic-ui/codeforge/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
@@ -29,12 +30,14 @@
 | [forest-sage-organic-store](./forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [gen-z-neobrutalist-landing](./gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
 | [heavyweight-brutalist-store](./heavyweight-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Space Grotesk |
+| [hive](./premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [keynote](./premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [kinetic-orange-brutalist-agency](./kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [kinto](./premium/shadcnblocks/kinto/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans, JetBrains Mono |
 | [lumina-neobrutalist-saas-landing](./lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [lumina-portfolio-template](./lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
 | [metafi](./premium/shadcnblocks/metafi/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [mainline](./premium/shadcnblocks/mainline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [midnight-editorial-template](./midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
 | [mobile](./premium/magic-ui/mobile/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [neon-velocity-style-guide](./neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
