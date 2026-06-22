@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (375)
+## Projects (376)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (75)</b></summary>
+<summary><b>Templates (76)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -402,6 +402,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [lumina-portfolio-template](./templates/lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
+| [premium/shadcnblocks/mainline](./templates/premium/shadcnblocks/mainline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [midnight-editorial-template](./templates/midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
 | [mobile](./templates/premium/magic-ui/mobile/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [neon-velocity-style-guide](./templates/neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
