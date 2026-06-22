@@ -34,6 +34,9 @@
     buttons.forEach((btn) => {
       const svg = btn.querySelector('svg[viewBox="0 0 16 14"]');
       if (!svg) return;
+      // The top-bar button (xl:hidden) opens the mobile drawer instead of toggling
+      // the desktop collapse state — handled by wireMobileDrawer().
+      if (btn.classList.contains("xl:hidden")) return;
       btn.addEventListener("click", () => {
         if (group.hasAttribute("data-sidebar-collapsed")) {
           group.removeAttribute("data-sidebar-collapsed");
@@ -176,9 +179,47 @@
     targets.forEach((t) => io.observe(t));
   }
 
+  /* ---------- Mobile sidebar drawer (below xl) ---------- */
+  // Below the xl breakpoint the course nav <aside> is hidden (max-xl:hidden) and the
+  // top-bar button is the only way to reach it. Open the aside as an overlay drawer.
+  function wireMobileDrawer() {
+    const aside = document.querySelector("aside");
+    if (!aside) return;
+    const btn = document.querySelector("button.xl\\:hidden svg[viewBox='0 0 16 14']")
+      ?.closest("button");
+    if (!btn) return;
+
+    const style = document.createElement("style");
+    style.textContent = `
+      body.nav-open aside { display:block !important; z-index:50;
+        background:#fff; box-shadow:0 10px 40px rgba(0,0,0,.18); }
+      body.nav-open aside .max-xl\\:hidden { display:block !important; }
+      @media (prefers-color-scheme:dark){ body.nav-open aside{ background:#030712; } }
+      .nav-backdrop{ position:fixed; inset:0; z-index:40; background:rgba(0,0,0,.4);
+        opacity:0; transition:opacity .2s ease; }
+      body.nav-open .nav-backdrop{ opacity:1; }`;
+    document.head.appendChild(style);
+
+    const backdrop = document.createElement("div");
+    backdrop.className = "nav-backdrop";
+    backdrop.hidden = true;
+    document.body.appendChild(backdrop);
+
+    const open = () => { backdrop.hidden = false; document.body.classList.add("nav-open"); };
+    const close = () => { document.body.classList.remove("nav-open"); backdrop.hidden = true; };
+
+    btn.addEventListener("click", (e) => { e.stopPropagation(); open(); });
+    backdrop.addEventListener("click", close);
+    aside.addEventListener("click", (e) => { if (e.target.closest("a")) close(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+    // If the viewport grows past xl, the aside is shown normally again — drop drawer state.
+    window.addEventListener("resize", () => { if (window.innerWidth >= 1280) close(); });
+  }
+
   function init() {
     wireInteractiveStates();
     wireSidebar();
+    wireMobileDrawer();
     wireMenus();
     wireTOC();
     wireVideo();
