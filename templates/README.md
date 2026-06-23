@@ -48,6 +48,7 @@
 | [midnight-editorial-template](./midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
 | [minimum-via](./premium/shipxen/minimum-via/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto Slab, Inter |
 | [mobile](./premium/magic-ui/mobile/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
+| [matterhaus](./premium/lexingtonthemes/matterhaus/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Switzer, Fuse.js |
 | [mulberry](./premium/lexingtonthemes/mulberry/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter, Fuse.js |
 | [neon-velocity-style-guide](./neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
 | [westend](./premium/lexingtonthemes/westend/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
