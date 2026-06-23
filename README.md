@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (109)</b></summary>
+<summary><b>Templates (110)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -423,6 +423,7 @@ Responsive interfaces, motion studies and developer tools.
 | [navy](./templates/premium/lexingtonthemes/navy/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, JetBrains Mono |
 | [newport](./templates/premium/lexingtonthemes/newport/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer, Gambarino, Fuse.js |
 | [trendspotter](./templates/premium/lexingtonthemes/trendspotter/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/lexingtonthemes/profoliox](./templates/premium/lexingtonthemes/profoliox/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, AOS, Fuse.js |
 | [northbound](./templates/premium/lexingtonthemes/northbound/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Noto Serif Display, Noto Serif, Inter, Keen Slider |
 | [nextmerce-saas-ecommerce](./templates/premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [oatmeal-saas-kit](./templates/premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
