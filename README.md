@@ -2,13 +2,6 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (403)
-
-Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
-
-<details>
-<summary><b>Hero sections (41)</b></summary>
-
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [aethera-cinematic-hero](./hero-sections/aethera-cinematic-hero/) | Cinematic hero for Aethera with video-driven visual treatment and headless verification | React, TypeScript, Vite, Tailwind CSS |
@@ -370,7 +363,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (102)</b></summary>
+<summary><b>Templates (104)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -423,6 +416,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [mulberry](./templates/premium/lexingtonthemes/mulberry/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter, Fuse.js |
 | [neon-velocity-style-guide](./templates/neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
 | [westend](./templates/premium/lexingtonthemes/westend/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
+| [rosewood](./templates/premium/lexingtonthemes/rosewood/) | Interface experiment. | HTML, CSS, vanilla JS, EB Garamond, Switzer, Keen Slider, Fuse.js |
 | [newport](./templates/premium/lexingtonthemes/newport/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer, Gambarino, Fuse.js |
 | [northbound](./templates/premium/lexingtonthemes/northbound/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Noto Serif Display, Noto Serif, Inter, Keen Slider |
 | [nextmerce-saas-ecommerce](./templates/premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
