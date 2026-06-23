@@ -2,7 +2,7 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-## Projects (397)
+## Projects (398)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -370,7 +370,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (97)</b></summary>
+<summary><b>Templates (98)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -418,6 +418,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [midnight-editorial-template](./templates/midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
 | [premium/shipxen/minimum-via](./templates/premium/shipxen/minimum-via/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto Slab, Inter |
 | [mobile](./templates/premium/magic-ui/mobile/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
+| [mulberry](./templates/premium/lexingtonthemes/mulberry/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter, Fuse.js |
 | [neon-velocity-style-guide](./templates/neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
 | [nextmerce-saas-ecommerce](./templates/premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [oatmeal-saas-kit](./templates/premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
