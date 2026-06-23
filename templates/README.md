@@ -42,6 +42,7 @@
 | [metafi](./premium/shadcnblocks/metafi/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [mainline](./premium/shadcnblocks/mainline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [midnight-editorial-template](./midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
+| [minimum-via](./premium/shipxen/minimum-via/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto Slab, Inter |
 | [mobile](./premium/magic-ui/mobile/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [neon-velocity-style-guide](./neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
 | [nextmerce-saas-ecommerce](./premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
