@@ -4,7 +4,7 @@
 
 Built mostly with **React, TypeScript, Vite, Tailwind CSS, Three.js, Framer Motion, and GSAP** (plus plenty of framework-free HTML/CSS/JS) — a reference collection of copy-pasteable, AI-generated front-end components and templates for anyone exploring what Claude can build on the web.
 
-**Categories:** [Hero sections](./hero-sections/) · [Landing pages](./landing-pages/) · [Shaders](./shaders/) · [UI design systems](./ui-design/) · [Components & UI](./components-ui/) · [Portfolios](./portfolios/) · [Animations & loaders](./animations-loaders/) · [3D & games](./3d-games/) · [Templates](./templates/) · [Studies](./studies/)
+**Categories:** [Hero sections](./hero-sections/) · [Landing pages](./landing-pages/) · [Shaders](./shaders/) · [UI design systems](./ui-design/) · [Components & UI](./components-ui/) · [Portfolios](./portfolios/) · [Animations & loaders](./animations-loaders/) · [3D & games](./3d-games/) · [Templates](./templates/)
 
 Each project folder includes the originating prompt as `prompt.md`, preserved alongside the generated code. Some prompts were inspired by or adapted from public prompt/design references, including [cnemri's gist](https://gist.github.com/cnemri/c917e11b3a6936823b509dcff53392aa), [motionsites.ai](https://motionsites.ai/), [lafys.com](https://lafys.com/), [designprompts.dev](https://www.designprompts.dev/), [21st.dev](https://21st.dev), [superdesign.dev](https://superdesign.dev/), and [landinghero.ai](https://landinghero.ai/).
 
