@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (106)</b></summary>
+<summary><b>Templates (107)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -416,6 +416,7 @@ Responsive interfaces, motion studies and developer tools.
 | [mulberry](./templates/premium/lexingtonthemes/mulberry/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter, Fuse.js |
 | [neon-velocity-style-guide](./templates/neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
 | [westend](./templates/premium/lexingtonthemes/westend/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
+| [sandstone](./templates/premium/lexingtonthemes/sandstone/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable, Keen Slider |
 | [spaziobianco](./templates/premium/lexingtonthemes/spaziobianco/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Geist, Geist Mono, AOS, Fuse.js |
 | [rosewood](./templates/premium/lexingtonthemes/rosewood/) | Interface experiment. | HTML, CSS, vanilla JS, EB Garamond, Switzer, Keen Slider, Fuse.js |
 | [newport](./templates/premium/lexingtonthemes/newport/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer, Gambarino, Fuse.js |

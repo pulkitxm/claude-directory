@@ -51,6 +51,7 @@
 | [matterhaus](./premium/lexingtonthemes/matterhaus/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Switzer, Fuse.js |
 | [mulberry](./premium/lexingtonthemes/mulberry/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter, Fuse.js |
 | [neon-velocity-style-guide](./neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
+| [sandstone](./premium/lexingtonthemes/sandstone/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable, Keen Slider |
 | [spaziobianco](./premium/lexingtonthemes/spaziobianco/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Geist, Geist Mono, AOS, Fuse.js |
 | [rosewood](./premium/lexingtonthemes/rosewood/) | Interface experiment. | HTML, CSS, vanilla JS, EB Garamond, Switzer, Keen Slider, Fuse.js |
 | [westend](./premium/lexingtonthemes/westend/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
