@@ -363,13 +363,14 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (111)</b></summary>
+<summary><b>Templates (113)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [premium/magic-ui/agent](./templates/premium/magic-ui/agent/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [premium/shadcnblocks/aspect](./templates/premium/shadcnblocks/aspect/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
 | [premium/lexingtonthemes/astromaxsp](./templates/premium/lexingtonthemes/astromaxsp/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, FuseJS, Geist |
+| [premium/lexingtonthemes/author](./templates/premium/lexingtonthemes/author/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter |
 | [atelier-archive-quiet-luxury](./templates/atelier-archive-quiet-luxury/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Hanken Grotesk |
 | [aurum-neural-ai-landing](./templates/aurum-neural-ai-landing/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
 | [bastion](./templates/premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
@@ -389,6 +390,7 @@ Responsive interfaces, motion studies and developer tools.
 | [devtool](./templates/premium/magic-ui/devtool/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [dusk](./templates/premium/lexingtonthemes/dusk/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Display, General Sans, Fuse.js |
 | [echo](./templates/premium/shadcnblocks/echo/) | Interface experiment. | HTML, CSS, vanilla JS, Funnel Sans |
+| [ellamae](./templates/premium/lexingtonthemes/ellamae/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
 | [premium/shadcnblocks/hatch](./templates/premium/shadcnblocks/hatch/) | Interface experiment. | HTML, CSS, vanilla JS, Castoro, Inter, IBM Plex Mono, Caveat |
 | [emerald-ai](./templates/premium/shipxen/emerald-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Rubik, Roboto Serif |
 | [premium/shipxen/gnomie-ai](./templates/premium/shipxen/gnomie-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat, Hind |
