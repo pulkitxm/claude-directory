@@ -402,6 +402,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [finorio-saas-landing](./templates/premium/nextjstemplates/finorio-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Stack Sans Text |
 | [flux-editorial-saas-landing](./templates/flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [forest-sage-organic-store](./templates/forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
+| [front-centre](./templates/premium/shipxen/front-centre/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto, Roboto Mono |
 | [gen-z-neobrutalist-landing](./templates/gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
 | [heavyweight-brutalist-store](./templates/heavyweight-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Space Grotesk |
 | [hive](./templates/premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
