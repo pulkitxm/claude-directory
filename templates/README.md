@@ -20,6 +20,7 @@
 | [commit](./premium/tailwindcss/commit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Mona Sans |
 | [compass](./premium/tailwindcss/compass/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Geist Mono |
 | [cyber-serif-template](./cyber-serif-template/) | Interface experiment. | Static HTML/CSS/JS, Newsreader, Inter, Space Grotesk |
+| [flabbergasted](./premium/lexingtonthemes/flabbergasted/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter, Geist Mono |
 | [dusk](./premium/lexingtonthemes/dusk/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Display, General Sans, Fuse.js |
 | [emerald-glass-system](./emerald-glass-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [enterprise-admin-saas-landing](./enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |

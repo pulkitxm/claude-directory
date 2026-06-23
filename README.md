@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (107)</b></summary>
+<summary><b>Templates (108)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -385,6 +385,7 @@ Responsive interfaces, motion studies and developer tools.
 | [compass](./templates/premium/tailwindcss/compass/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Geist Mono |
 | [cyber-serif-template](./templates/cyber-serif-template/) | Interface experiment. | Static HTML/CSS/JS, Newsreader, Inter, Space Grotesk |
 | [devtool](./templates/premium/magic-ui/devtool/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
+| [flabbergasted](./templates/premium/lexingtonthemes/flabbergasted/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter, Geist Mono |
 | [dusk](./templates/premium/lexingtonthemes/dusk/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Display, General Sans, Fuse.js |
 | [echo](./templates/premium/shadcnblocks/echo/) | Interface experiment. | HTML, CSS, vanilla JS, Funnel Sans |
 | [premium/shadcnblocks/hatch](./templates/premium/shadcnblocks/hatch/) | Interface experiment. | HTML, CSS, vanilla JS, Castoro, Inter, IBM Plex Mono, Caveat |
