@@ -429,6 +429,7 @@ Responsive interfaces, motion studies and developer tools.
 | [rosewood](./templates/premium/lexingtonthemes/rosewood/) | Interface experiment. | HTML, CSS, vanilla JS, EB Garamond, Switzer, Keen Slider, Fuse.js |
 | [navy](./templates/premium/lexingtonthemes/navy/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, JetBrains Mono |
 | [newport](./templates/premium/lexingtonthemes/newport/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer, Gambarino, Fuse.js |
+| [premium/lexingtonthemes/phanatik](./templates/premium/lexingtonthemes/phanatik/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, STIX Two Text, Fuse.js |
 | [trendspotter](./templates/premium/lexingtonthemes/trendspotter/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/primapersona](./templates/premium/lexingtonthemes/primapersona/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/profoliox](./templates/premium/lexingtonthemes/profoliox/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, AOS, Fuse.js |
