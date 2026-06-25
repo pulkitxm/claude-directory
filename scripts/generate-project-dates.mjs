@@ -90,6 +90,13 @@ projects.sort((a, b) =>
 
 writeFileSync(outFile, `${JSON.stringify(projects, null, 2)}\n`);
 
+// Match the formatting the repo's `make format` would apply, so the generated
+// file doesn't show up as a diff after a separate format pass.
+execFileSync("npx", ["@biomejs/biome@2", "format", "--write", outFile], {
+	cwd: repoRoot,
+	stdio: "inherit",
+});
+
 console.log(`Wrote ${projects.length} projects to ${outFile}\n`);
 console.log("Last 5 edited projects:");
 for (const p of projects.slice(0, 5)) {
