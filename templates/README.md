@@ -67,6 +67,7 @@
 | [trendspotter](./premium/lexingtonthemes/trendspotter/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [profoliox](./premium/lexingtonthemes/profoliox/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, AOS, Fuse.js |
 | [northbound](./premium/lexingtonthemes/northbound/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Noto Serif Display, Noto Serif, Inter, Keen Slider |
+| [outkast](./premium/lexingtonthemes/outkast/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [nextmerce-saas-ecommerce](./premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [oatmeal-saas-kit](./premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [obsidian-elite-template](./obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
