@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (134)</b></summary>
+<summary><b>Templates (135)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -475,6 +475,7 @@ Responsive interfaces, motion studies and developer tools.
 | [stacking-cards-portfolio](./templates/stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [startup](./templates/premium/magic-ui/startup/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [sticky-content-switch](./templates/sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
+| [premium/lexingtonthemes/streamer](./templates/premium/lexingtonthemes/streamer/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Fuse.js, Keen Slider |
 | [premium/shadcnblocks/streamline](./templates/premium/shadcnblocks/streamline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
 | [studio](./templates/premium/tailwindcss/studio/) | Interface experiment. | HTML, CSS, vanilla JS, Mona Sans |
 | [super-design-industrial-system](./templates/super-design-industrial-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Playfair Display |

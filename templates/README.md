@@ -111,6 +111,7 @@
 | [stacking-cards-portfolio](./stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [startup](./premium/magic-ui/startup/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [sticky-content-switch](./sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
+| [streamer](./premium/lexingtonthemes/streamer/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Fuse.js, Keen Slider |
 | [streamline](./premium/shadcnblocks/streamline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
 | [studio](./premium/tailwindcss/studio/) | Interface experiment. | HTML, CSS, vanilla JS, Mona Sans |
 | [super-design-industrial-system](./super-design-industrial-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Playfair Display |
