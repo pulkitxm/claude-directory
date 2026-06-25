@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (125)</b></summary>
+<summary><b>Templates (126)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -436,10 +436,12 @@ Responsive interfaces, motion studies and developer tools.
 | [newport](./templates/premium/lexingtonthemes/newport/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer, Gambarino, Fuse.js |
 | [premium/lexingtonthemes/phanatik](./templates/premium/lexingtonthemes/phanatik/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, STIX Two Text, Fuse.js |
 | [trendspotter](./templates/premium/lexingtonthemes/trendspotter/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/lexingtonthemes/vanta](./templates/premium/lexingtonthemes/vanta/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Keen Slider, Geist, Newsreader |
 | [premium/lexingtonthemes/primapersona](./templates/premium/lexingtonthemes/primapersona/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/profoliox](./templates/premium/lexingtonthemes/profoliox/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, AOS, Fuse.js |
 | [northbound](./templates/premium/lexingtonthemes/northbound/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Noto Serif Display, Noto Serif, Inter, Keen Slider |
 | [williamsburg](./templates/premium/lexingtonthemes/williamsburg/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Instrument Serif, Keen Slider, Fuse.js |
+| [premium/lexingtonthemes/zeroindex](./templates/premium/lexingtonthemes/zeroindex/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
 | [nextmerce-saas-ecommerce](./templates/premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [oatmeal-saas-kit](./templates/premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [obsidian-elite-template](./templates/obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
