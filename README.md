@@ -404,6 +404,7 @@ Responsive interfaces, motion studies and developer tools.
 | [front-centre](./templates/premium/shipxen/front-centre/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto, Roboto Mono |
 | [gen-z-neobrutalist-landing](./templates/gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
 | [heavyweight-brutalist-store](./templates/heavyweight-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Space Grotesk |
+| [premium/lexingtonthemes/hemingway](./templates/premium/lexingtonthemes/hemingway/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter |
 | [hive](./templates/premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [premium/tailwindcss/keynote](./templates/premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
