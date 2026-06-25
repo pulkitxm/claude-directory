@@ -30,6 +30,7 @@
 | [enlightr](./premium/lexingtonthemes/enlightr/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Inter, Instrument Serif, Clash Grotesk |
 | [ellamae](./premium/lexingtonthemes/ellamae/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
 | [hemingway](./premium/lexingtonthemes/hemingway/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter |
+| [hirewise](./premium/lexingtonthemes/hirewise/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Geist |
 | [emerald-glass-system](./emerald-glass-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [enterprise-admin-saas-landing](./enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [devtool](./premium/magic-ui/devtool/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
