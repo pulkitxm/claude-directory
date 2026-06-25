@@ -443,6 +443,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/lexingtonthemes/vanta](./templates/premium/lexingtonthemes/vanta/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Keen Slider, Geist, Newsreader |
 | [premium/lexingtonthemes/primapersona](./templates/premium/lexingtonthemes/primapersona/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/profoliox](./templates/premium/lexingtonthemes/profoliox/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, AOS, Fuse.js |
+| [premium/lexingtonthemes/quartiere](./templates/premium/lexingtonthemes/quartiere/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, AOS, Fuse.js |
 | [northbound](./templates/premium/lexingtonthemes/northbound/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Noto Serif Display, Noto Serif, Inter, Keen Slider |
 | [premium/lexingtonthemes/outkast](./templates/premium/lexingtonthemes/outkast/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [williamsburg](./templates/premium/lexingtonthemes/williamsburg/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Instrument Serif, Keen Slider, Fuse.js |

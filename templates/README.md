@@ -78,6 +78,7 @@
 | [trendspotter](./premium/lexingtonthemes/trendspotter/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [primapersona](./premium/lexingtonthemes/primapersona/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [profoliox](./premium/lexingtonthemes/profoliox/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, AOS, Fuse.js |
+| [quartiere](./premium/lexingtonthemes/quartiere/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, AOS, Fuse.js |
 | [northbound](./premium/lexingtonthemes/northbound/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Noto Serif Display, Noto Serif, Inter, Keen Slider |
 | [outkast](./premium/lexingtonthemes/outkast/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [williamsburg](./premium/lexingtonthemes/williamsburg/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Instrument Serif, Keen Slider, Fuse.js |
