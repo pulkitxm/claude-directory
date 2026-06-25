@@ -48,6 +48,7 @@
 | [keynote](./premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [kinetic-orange-brutalist-agency](./kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [kinto](./premium/shadcnblocks/kinto/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans, JetBrains Mono |
+| [kotei](./premium/lexingtonthemes/kotei/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, AOS, Fuse.js |
 | [lumen](./premium/shadcnblocks/lumen/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
 | [lumina-neobrutalist-saas-landing](./lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [lumina-portfolio-template](./lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
@@ -75,6 +76,8 @@
 | [profoliox](./premium/lexingtonthemes/profoliox/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, AOS, Fuse.js |
 | [northbound](./premium/lexingtonthemes/northbound/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Noto Serif Display, Noto Serif, Inter, Keen Slider |
 | [williamsburg](./premium/lexingtonthemes/williamsburg/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Instrument Serif, Keen Slider, Fuse.js |
+| [vanta](./premium/lexingtonthemes/vanta/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Newsreader, Keen Slider, Fuse.js |
+| [zeroindex](./premium/lexingtonthemes/zeroindex/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
 | [nextmerce-saas-ecommerce](./premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [oatmeal-saas-kit](./premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [obsidian-elite-template](./obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
