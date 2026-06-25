@@ -363,10 +363,11 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (122)</b></summary>
+<summary><b>Templates (123)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [premium/lexingtonthemes/aelen](./templates/premium/lexingtonthemes/aelen/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
 | [premium/magic-ui/agent](./templates/premium/magic-ui/agent/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [premium/shadcnblocks/aspect](./templates/premium/shadcnblocks/aspect/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
 | [premium/lexingtonthemes/astromaxsp](./templates/premium/lexingtonthemes/astromaxsp/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, FuseJS, Geist |
