@@ -2,6 +2,7 @@
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [aelen](./premium/lexingtonthemes/aelen/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
 | [agent](./premium/magic-ui/agent/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [aspect](./premium/shadcnblocks/aspect/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
 | [astromaxsp](./premium/lexingtonthemes/astromaxsp/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, FuseJS, Geist |
@@ -13,6 +14,7 @@
 | [buio](./premium/lexingtonthemes/buio/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Geist, EB Garamond |
 | [browser-core-devtools-template](./browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
 | [carbon](./premium/lexingtonthemes/carbon/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Hedvig Letters Serif |
+| [carriera](./premium/lexingtonthemes/carriera/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Geist, Geist Mono |
 | [carrington](./premium/lexingtonthemes/carrington/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Newsreader, Fuse.js |
 | [copperlane](./premium/lexingtonthemes/copperlane/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Stack Sans Notch, Inter |
 | [catalyst](./premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
@@ -61,7 +63,9 @@
 | [neon-velocity-style-guide](./neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
 | [sandstone](./premium/lexingtonthemes/sandstone/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable, Keen Slider |
 | [semplice](./premium/lexingtonthemes/semplice/) | Interface experiment. | HTML, CSS, Inter, Newsreader |
+| [simplexity](./premium/lexingtonthemes/simplexity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
 | [spaziobianco](./premium/lexingtonthemes/spaziobianco/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Geist, Geist Mono, AOS, Fuse.js |
+| [riflesso](./premium/lexingtonthemes/riflesso/) | Interface experiment. | HTML, CSS, vanilla JS, Hanken Grotesk, Fuse.js |
 | [rosewood](./premium/lexingtonthemes/rosewood/) | Interface experiment. | HTML, CSS, vanilla JS, EB Garamond, Switzer, Keen Slider, Fuse.js |
 | [westend](./premium/lexingtonthemes/westend/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
 | [newport](./premium/lexingtonthemes/newport/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer, Gambarino, Fuse.js |
