@@ -391,6 +391,7 @@ Responsive interfaces, motion studies and developer tools.
 | [devtool](./templates/premium/magic-ui/devtool/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [dusk](./templates/premium/lexingtonthemes/dusk/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Display, General Sans, Fuse.js |
 | [echo](./templates/premium/shadcnblocks/echo/) | Interface experiment. | HTML, CSS, vanilla JS, Funnel Sans |
+| [premium/lexingtonthemes/enlightr](./templates/premium/lexingtonthemes/enlightr/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Inter, Instrument Serif, Clash Grotesk |
 | [ellamae](./templates/premium/lexingtonthemes/ellamae/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
 | [premium/shadcnblocks/hatch](./templates/premium/shadcnblocks/hatch/) | Interface experiment. | HTML, CSS, vanilla JS, Castoro, Inter, IBM Plex Mono, Caveat |
 | [emerald-ai](./templates/premium/shipxen/emerald-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Rubik, Roboto Serif |
