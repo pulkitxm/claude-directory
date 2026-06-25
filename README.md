@@ -363,10 +363,11 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (115)</b></summary>
+<summary><b>Templates (132)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [premium/lexingtonthemes/aelen](./templates/premium/lexingtonthemes/aelen/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
 | [premium/magic-ui/agent](./templates/premium/magic-ui/agent/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [premium/shadcnblocks/aspect](./templates/premium/shadcnblocks/aspect/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
 | [premium/lexingtonthemes/astromaxsp](./templates/premium/lexingtonthemes/astromaxsp/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, FuseJS, Geist |
@@ -376,6 +377,7 @@ Responsive interfaces, motion studies and developer tools.
 | [bastion](./templates/premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
 | [blog](./templates/premium/magic-ui/blog/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [premium/lexingtonthemes/carbon](./templates/premium/lexingtonthemes/carbon/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Hedvig Letters Serif |
+| [premium/lexingtonthemes/carriera](./templates/premium/lexingtonthemes/carriera/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Geist, Geist Mono |
 | [carrington](./templates/premium/lexingtonthemes/carrington/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Newsreader, Fuse.js |
 | [premium/lexingtonthemes/copperlane](./templates/premium/lexingtonthemes/copperlane/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Stack Sans Notch, Inter |
 | [premium/tailwindcss/catalyst](./templates/premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
@@ -391,7 +393,9 @@ Responsive interfaces, motion studies and developer tools.
 | [devtool](./templates/premium/magic-ui/devtool/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [dusk](./templates/premium/lexingtonthemes/dusk/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Display, General Sans, Fuse.js |
 | [echo](./templates/premium/shadcnblocks/echo/) | Interface experiment. | HTML, CSS, vanilla JS, Funnel Sans |
+| [premium/lexingtonthemes/enlightr](./templates/premium/lexingtonthemes/enlightr/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Inter, Instrument Serif, Clash Grotesk |
 | [ellamae](./templates/premium/lexingtonthemes/ellamae/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
+| [premium/lexingtonthemes/flaco](./templates/premium/lexingtonthemes/flaco/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, Fuse.js |
 | [premium/shadcnblocks/hatch](./templates/premium/shadcnblocks/hatch/) | Interface experiment. | HTML, CSS, vanilla JS, Castoro, Inter, IBM Plex Mono, Caveat |
 | [emerald-ai](./templates/premium/shipxen/emerald-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Rubik, Roboto Serif |
 | [premium/shipxen/gnomie-ai](./templates/premium/shipxen/gnomie-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat, Hind |
@@ -406,10 +410,12 @@ Responsive interfaces, motion studies and developer tools.
 | [gen-z-neobrutalist-landing](./templates/gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
 | [heavyweight-brutalist-store](./templates/heavyweight-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Space Grotesk |
 | [premium/lexingtonthemes/hemingway](./templates/premium/lexingtonthemes/hemingway/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter |
+| [premium/lexingtonthemes/hirewise](./templates/premium/lexingtonthemes/hirewise/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Geist |
 | [hive](./templates/premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [premium/tailwindcss/keynote](./templates/premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/shadcnblocks/kinto](./templates/premium/shadcnblocks/kinto/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans, JetBrains Mono |
+| [premium/lexingtonthemes/kotei](./templates/premium/lexingtonthemes/kotei/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, AOS, Fuse.js |
 | [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
 | [lumina-portfolio-template](./templates/lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
 | [premium/shadcnblocks/lumen](./templates/premium/shadcnblocks/lumen/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
@@ -424,14 +430,23 @@ Responsive interfaces, motion studies and developer tools.
 | [neon-velocity-style-guide](./templates/neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
 | [westend](./templates/premium/lexingtonthemes/westend/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
 | [sandstone](./templates/premium/lexingtonthemes/sandstone/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable, Keen Slider |
+| [semplice](./templates/premium/lexingtonthemes/semplice/) | Interface experiment. | HTML, CSS, Inter, Newsreader |
+| [simplexity](./templates/premium/lexingtonthemes/simplexity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
+| [snowpeak](./templates/premium/lexingtonthemes/snowpeak/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable, Stack Sans Notch, Fuse.js |
 | [spaziobianco](./templates/premium/lexingtonthemes/spaziobianco/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Geist, Geist Mono, AOS, Fuse.js |
+| [riflesso](./templates/premium/lexingtonthemes/riflesso/) | Interface experiment. | HTML, CSS, vanilla JS, Hanken Grotesk, Fuse.js |
 | [rosewood](./templates/premium/lexingtonthemes/rosewood/) | Interface experiment. | HTML, CSS, vanilla JS, EB Garamond, Switzer, Keen Slider, Fuse.js |
 | [navy](./templates/premium/lexingtonthemes/navy/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, JetBrains Mono |
 | [newport](./templates/premium/lexingtonthemes/newport/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer, Gambarino, Fuse.js |
+| [premium/lexingtonthemes/phanatik](./templates/premium/lexingtonthemes/phanatik/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, STIX Two Text, Fuse.js |
 | [trendspotter](./templates/premium/lexingtonthemes/trendspotter/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/lexingtonthemes/vanta](./templates/premium/lexingtonthemes/vanta/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Keen Slider, Geist, Newsreader |
+| [premium/lexingtonthemes/primapersona](./templates/premium/lexingtonthemes/primapersona/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/profoliox](./templates/premium/lexingtonthemes/profoliox/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, AOS, Fuse.js |
 | [northbound](./templates/premium/lexingtonthemes/northbound/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Noto Serif Display, Noto Serif, Inter, Keen Slider |
 | [premium/lexingtonthemes/outkast](./templates/premium/lexingtonthemes/outkast/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
+| [williamsburg](./templates/premium/lexingtonthemes/williamsburg/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Instrument Serif, Keen Slider, Fuse.js |
+| [premium/lexingtonthemes/zeroindex](./templates/premium/lexingtonthemes/zeroindex/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
 | [nextmerce-saas-ecommerce](./templates/premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [oatmeal-saas-kit](./templates/premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [obsidian-elite-template](./templates/obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
