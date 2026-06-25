@@ -68,6 +68,7 @@
 | [sandstone](./premium/lexingtonthemes/sandstone/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable, Keen Slider |
 | [semplice](./premium/lexingtonthemes/semplice/) | Interface experiment. | HTML, CSS, Inter, Newsreader |
 | [simplexity](./premium/lexingtonthemes/simplexity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
+| [snowpeak](./premium/lexingtonthemes/snowpeak/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable, Stack Sans Notch, Fuse.js |
 | [spaziobianco](./premium/lexingtonthemes/spaziobianco/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Geist, Geist Mono, AOS, Fuse.js |
 | [riflesso](./premium/lexingtonthemes/riflesso/) | Interface experiment. | HTML, CSS, vanilla JS, Hanken Grotesk, Fuse.js |
 | [rosewood](./premium/lexingtonthemes/rosewood/) | Interface experiment. | HTML, CSS, vanilla JS, EB Garamond, Switzer, Keen Slider, Fuse.js |
