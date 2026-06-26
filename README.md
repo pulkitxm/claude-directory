@@ -390,7 +390,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/aceternity/agenforce-marketing-template](./templates/premium/aceternity/agenforce-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Manrope, Inter |
 | [premium/aceternity/agenlabs-agency-template](./templates/premium/aceternity/agenlabs-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/aceternity/ai-saas-template](./templates/premium/aceternity/ai-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
-| [premium/aceternity/foxtrot-marketing-template](./templates/premium/aceternity/foxtrot-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [devpro-portfolio-template](./templates/premium/aceternity/devpro-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/aceternity/minimal-portfolio-template](./templates/premium/aceternity/minimal-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/aceternity/minimalist-portfolio-template](./templates/premium/aceternity/minimalist-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Schibsted Grotesk |
 | [nodus-agent-template](./templates/premium/aceternity/nodus-agent-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
@@ -474,7 +474,6 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/shipxen/minimum-via](./templates/premium/shipxen/minimum-via/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto Slab, Inter |
 | [screenshot-two](./templates/premium/shipxen/screenshot-two/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans |
 | [premium/shipxen/specta](./templates/premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
-| [premium/tailgrids/fincash](./templates/premium/tailgrids/fincash/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper.js |
 | [premium/tailgrids/writemate](./templates/premium/tailgrids/writemate/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailwindcss/catalyst](./templates/premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [commit](./templates/premium/tailwindcss/commit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Mona Sans |
@@ -516,10 +515,6 @@ Responsive interfaces, motion studies and developer tools.
 | [synapse-design-system](./templates/synapse-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Inter |
 | [terroir-tasting-room](./templates/terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
-
-
-
-
 
 
 </details>
