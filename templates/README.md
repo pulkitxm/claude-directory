@@ -1,4 +1,4 @@
-# Templates (141)
+# Templates (142)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -98,6 +98,7 @@
 | [plasma](./premium/shadcnblocks/plasma/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [primer](./premium/tailwindcss/primer/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Inter |
 | [nodus-agent-template](./premium/aceternity/nodus-agent-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
+| [playful-marketing-aceternity](./premium/aceternity/playful-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [productized-agency-template](./premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [protocol](./premium/tailwindcss/protocol/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [radiant](./premium/tailwindcss/radiant/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer |
