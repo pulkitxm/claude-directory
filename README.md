@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (148)</b></summary>
+<summary><b>Templates (149)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -408,6 +408,7 @@ Responsive interfaces, motion studies and developer tools.
 | [disruptor-brutalist-template](./templates/disruptor-brutalist-template/) | Interface experiment. | Static HTML/CSS/JS, Ranchers, Space Mono, Plus Jakarta Sans, Archivo |
 | [editorial-naturalism-design-system](./templates/editorial-naturalism-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Newsreader, Instrument Sans |
 | [finorio-saas-landing](./templates/premium/nextjstemplates/finorio-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Stack Sans Text |
+| [premium/aceternity/foxtrot-marketing-template](./templates/premium/aceternity/foxtrot-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [flux-editorial-saas-landing](./templates/flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [forest-sage-organic-store](./templates/forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [front-centre](./templates/premium/shipxen/front-centre/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto, Roboto Mono |

@@ -1,4 +1,4 @@
-# Templates (148)
+# Templates (149)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -45,6 +45,7 @@
 | [emerald-ai](./premium/shipxen/emerald-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Rubik, Roboto Serif |
 | [editorial-naturalism-design-system](./editorial-naturalism-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Newsreader, Instrument Sans |
 | [finorio-saas-landing](./premium/nextjstemplates/finorio-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Stack Sans Text |
+| [foxtrot-marketing-template](./premium/aceternity/foxtrot-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [flux-editorial-saas-landing](./flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [forest-sage-organic-store](./forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
 | [front-centre](./premium/shipxen/front-centre/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto, Roboto Mono |
