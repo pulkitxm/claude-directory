@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (139)</b></summary>
+<summary><b>Templates (141)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -424,6 +424,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/shadcnblocks/lumen](./templates/premium/shadcnblocks/lumen/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
 | [premium/shadcnblocks/metafi](./templates/premium/shadcnblocks/metafi/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/shadcnblocks/mainline](./templates/premium/shadcnblocks/mainline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
+| [premium/aceternity/minimal-portfolio-template](./templates/premium/aceternity/minimal-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [midnight-editorial-template](./templates/midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
 | [premium/shipxen/minimum-via](./templates/premium/shipxen/minimum-via/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto Slab, Inter |
 | [mobile](./templates/premium/magic-ui/mobile/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
@@ -506,6 +507,7 @@ Responsive interfaces, motion studies and developer tools.
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
 | [sidefolio-portfolio-template](./templates/premium/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
 | [simplistic-saas-template](./templates/premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
+| [startup-landing-page-template](./templates/premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/shadcnblocks/zippay](./templates/premium/shadcnblocks/zippay/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 
 </details>

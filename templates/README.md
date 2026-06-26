@@ -1,4 +1,4 @@
-# Templates
+# Templates (141)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -60,6 +60,7 @@
 | [lumina-portfolio-template](./lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
 | [metafi](./premium/shadcnblocks/metafi/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [mainline](./premium/shadcnblocks/mainline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
+| [minimal-portfolio-template](./premium/aceternity/minimal-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [midnight-editorial-template](./midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
 | [minimum-via](./premium/shipxen/minimum-via/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto Slab, Inter |
 | [mobile](./premium/magic-ui/mobile/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
@@ -142,4 +143,5 @@
 | [vertical-clip-text-slide](./vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
 | [sidefolio-portfolio-template](./premium/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
 | [simplistic-saas-template](./premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
+| [startup-landing-page-template](./premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [zippay](./premium/shadcnblocks/zippay/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
