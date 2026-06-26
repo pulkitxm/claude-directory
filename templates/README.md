@@ -1,4 +1,4 @@
-# Templates (149)
+# Templates (150)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -110,6 +110,7 @@
 | [screenshot-two](./premium/shipxen/screenshot-two/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans |
 | [specta](./premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
 | [fincash](./premium/tailgrids/fincash/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper.js |
+| [writemate](./premium/tailgrids/writemate/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [catalyst](./premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [commit](./premium/tailwindcss/commit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Mona Sans |
 | [compass](./premium/tailwindcss/compass/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Geist Mono |
