@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (143)</b></summary>
+<summary><b>Templates (144)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -477,6 +477,7 @@ Responsive interfaces, motion studies and developer tools.
 | [oatmeal-saas-kit](./templates/premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [pocket](./templates/premium/tailwindcss/pocket/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [primer](./templates/premium/tailwindcss/primer/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Inter |
+| [premium/aceternity/playful-marketing-aceternity](./templates/premium/aceternity/playful-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [protocol](./templates/premium/tailwindcss/protocol/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailwindcss/radiant](./templates/premium/tailwindcss/radiant/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer |
 | [salient](./templates/premium/tailwindcss/salient/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
