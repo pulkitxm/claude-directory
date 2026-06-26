@@ -371,6 +371,7 @@ Responsive interfaces, motion studies and developer tools.
 | [aurum-neural-ai-landing](./templates/aurum-neural-ai-landing/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
 | [browser-core-devtools-template](./templates/browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
 | [clinical-luxury-conversion](./templates/clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
+| [cryptgen-marketing-aceternity](./templates/premium/aceternity/cryptgen-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [cyber-serif-template](./templates/cyber-serif-template/) | Interface experiment. | Static HTML/CSS/JS, Newsreader, Inter, Space Grotesk |
 | [disruptor-brutalist-template](./templates/disruptor-brutalist-template/) | Interface experiment. | Static HTML/CSS/JS, Ranchers, Space Mono, Plus Jakarta Sans, Archivo |
 | [editorial-naturalism-design-system](./templates/editorial-naturalism-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Newsreader, Instrument Sans |
