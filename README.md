@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (136)</b></summary>
+<summary><b>Templates (137)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -458,6 +458,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/magic-ui/portfolio](./templates/premium/magic-ui/portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [plasma](./templates/premium/shadcnblocks/plasma/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [primer](./templates/premium/tailwindcss/primer/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Inter |
+| [nodus-agent-template](./templates/premium/aceternity/nodus-agent-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [productized-agency-template](./templates/premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [protocol](./templates/premium/tailwindcss/protocol/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailwindcss/radiant](./templates/premium/tailwindcss/radiant/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer |

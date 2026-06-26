@@ -94,6 +94,7 @@
 | [portfolio](./premium/magic-ui/portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [plasma](./premium/shadcnblocks/plasma/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [primer](./premium/tailwindcss/primer/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Inter |
+| [nodus-agent-template](./premium/aceternity/nodus-agent-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [productized-agency-template](./premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [protocol](./premium/tailwindcss/protocol/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [radiant](./premium/tailwindcss/radiant/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer |
