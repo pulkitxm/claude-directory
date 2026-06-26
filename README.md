@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (146)</b></summary>
+<summary><b>Templates (147)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -507,6 +507,7 @@ Responsive interfaces, motion studies and developer tools.
 | [terroir-tasting-room](./templates/terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [transmit](./templates/premium/tailwindcss/transmit/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
+| [premium/aceternity/schedule-marketing-template](./templates/premium/aceternity/schedule-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [sidefolio-portfolio-template](./templates/premium/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
 | [simplistic-saas-template](./templates/premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [startup-landing-page-template](./templates/premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
