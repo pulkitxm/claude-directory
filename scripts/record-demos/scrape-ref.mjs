@@ -11,42 +11,22 @@ if (!URL) {
 }
 fs.mkdirSync(OUT, { recursive: true });
 
+console.log("Launching chromium...");
 const browser = await chromium.launch();
+console.log("Chromium launched. Opening page...");
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+console.log("Page opened. Navigating to:", URL);
 await page.goto(URL, {
 	waitUntil: process.env.WAIT_UNTIL || "networkidle",
 	timeout: 60000,
 });
+console.log("Navigation complete. Waiting 3s...");
 await page.waitForTimeout(3000);
+console.log("Wait complete.");
 
-// pick largest frame
 let target = page;
-const frames = page.frames();
-let best = null,
-	bestArea = 0;
-for (const f of frames) {
-	try {
-		const dim = await f.evaluate(() => ({
-			w: document.body.scrollWidth,
-			h: document.body.scrollHeight,
-			html: document.body.innerHTML.length,
-		}));
-		const area = dim.w * dim.h;
-		if (dim.html > 200 && area > bestArea) {
-			bestArea = area;
-			best = f;
-		}
-	} catch {}
-}
-if (best && best !== page.mainFrame()) target = best;
-console.log(
-	"frames:",
-	frames.length,
-	"chosen area:",
-	bestArea,
-	"url:",
-	target.url(),
-);
+console.log("Using main frame directly");
+console.log("url:", target.url());
 
 await page.screenshot({
 	path: path.join(OUT, "screenshot.png"),
