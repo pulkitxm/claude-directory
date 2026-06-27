@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (112)</b></summary>
+<summary><b>Templates (114)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -475,6 +475,8 @@ Responsive interfaces, motion studies and developer tools.
 | [screenshot-two](./templates/premium/shipxen/screenshot-two/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans |
 | [premium/shipxen/specta](./templates/premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
 | [premium/tailgrids/aispace](./templates/premium/tailgrids/aispace/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/tailgrids/appspace](./templates/premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/tailgrids/bizspace](./templates/premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/fundex](./templates/premium/tailgrids/fundex/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/neoxa](./templates/premium/tailgrids/neoxa/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/originx](./templates/premium/tailgrids/originx/) | Interface experiment. | HTML, CSS, vanilla JS |
@@ -521,6 +523,8 @@ Responsive interfaces, motion studies and developer tools.
 | [synapse-design-system](./templates/synapse-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Inter |
 | [terroir-tasting-room](./templates/terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
+
+
 
 
 

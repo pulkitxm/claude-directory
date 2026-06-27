@@ -1,4 +1,4 @@
-# Templates (112)
+# Templates (114)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -24,6 +24,8 @@
 | [aspect](./premium/shadcnblocks/aspect/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
 | [charter](./premium/shadcnblocks/charter/) | Interface experiment. | HTML, CSS, vanilla JS, Hubot Sans, Inter, IBM Plex Mono |
 | [aispace](./premium/tailgrids/aispace/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [appspace](./premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [bizspace](./premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [fundex](./premium/tailgrids/fundex/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [neoxa](./premium/tailgrids/neoxa/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [originx](./premium/tailgrids/originx/) | Interface experiment. | HTML, CSS, vanilla JS |
