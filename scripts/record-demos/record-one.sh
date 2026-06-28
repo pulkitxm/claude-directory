@@ -55,14 +55,26 @@ free_port() {
 }
 free_port "$PORT"
 
+# Vite (and the vite-preview-based dev.mjs wrapper) take --port --strictPort.
+# Next.js (`next dev`) rejects --strictPort, so it gets --port only — the port is
+# freed just above, so it always binds the one we asked for.
+DEV_FLAGS="--port $PORT --strictPort"
+if grep -qE '"dev"[[:space:]]*:[[:space:]]*"[^"]*next' "$PROJ/package.json" 2>/dev/null; then
+  DEV_FLAGS="--port $PORT"
+fi
+
 LOG="${TMPROOT%/}/demo-dev-${SAFE}.log"
 if [ "$MODE" = vite ]; then
-  ( cd "$PROJ" && npm run dev -- --port "$PORT" --strictPort >"$LOG" 2>&1 ) &
+  ( cd "$PROJ" && npm run dev -- $DEV_FLAGS >"$LOG" 2>&1 ) &
 else
   ( cd "$PROJ" && python3 -m http.server "$PORT" --bind 127.0.0.1 >"$LOG" 2>&1 ) &
 fi
 DEV_PID=$!
+# Free the port and kill the dev server on ANY exit, including Ctrl-C/SIGTERM
+# (the signal traps exit, which fires the EXIT trap below — so no orphaned
+# dev server or headless Chromium is left holding the port).
 trap 'kill "$DEV_PID" 2>/dev/null; pkill -P "$DEV_PID" 2>/dev/null; free_port "$PORT"' EXIT
+trap 'exit 130' INT TERM
 
 echo "[$NAME] waiting for dev server on $PORT..."
 UP=0
