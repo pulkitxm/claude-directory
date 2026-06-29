@@ -1,4 +1,4 @@
-# Templates (114)
+# Templates (115)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -30,6 +30,8 @@
 | [neoxa](./premium/tailgrids/neoxa/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [originx](./premium/tailgrids/originx/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [saasly](./premium/tailgrids/saasly/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [saasspace](./premium/tailgrids/saasspace/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [synthai](./premium/tailgrids/synthai/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [techself](./premium/tailgrids/techself/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [writemate](./premium/tailgrids/writemate/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [catalyst](./premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
