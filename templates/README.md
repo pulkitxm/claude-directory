@@ -1,4 +1,4 @@
-# Templates (171)
+# Templates (172)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -136,6 +136,7 @@
 | [season-04-brutalist-store](./season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [mosaic](./premium/cruip/mosaic/) | Interface experiment. | HTML, Tailwind CSS, Alpine.js, Chart.js, Moment.js, Flatpickr |
 | [shadcnblocks-admin](./premium/cruip/shadcnblocks-admin/) | Interface experiment. | HTML, CSS, vanilla JS, Chart.js 4, Inter |
+| [simple](./premium/cruip/simple/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
 | [specta](./premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
