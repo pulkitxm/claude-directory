@@ -1,4 +1,4 @@
-# Templates (182)
+# Templates (183)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -10,6 +10,7 @@
 | [agenforce-marketing-template](./premium/aceternity/agenforce-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Manrope, Inter |
 | [agenlabs-agency-template](./premium/aceternity/agenlabs-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [ai-saas-template](./premium/aceternity/ai-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
+| [cryptgen-marketing-aceternity](./premium/aceternity/cryptgen-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [astromaxsp](./premium/lexingtonthemes/astromaxsp/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, FuseJS, Geist |
 | [aubergine](./premium/lexingtonthemes/aubergine/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Vanilla Tilt, Fuse.js, Clash Display, Figtree |
 | [author](./premium/lexingtonthemes/author/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter |
@@ -30,6 +31,7 @@
 | [appspace](./premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [bizspace](./premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [dashspace](./premium/tailgrids/dashspace/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [fincash](./premium/tailgrids/fincash/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [fundex](./premium/tailgrids/fundex/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [lytic](./premium/tailgrids/lytic/) | Interface experiment. | HTML, CSS, vanilla JS, ApexCharts |
 | [neoxa](./premium/tailgrids/neoxa/) | Interface experiment. | HTML, CSS, vanilla JS |
@@ -59,12 +61,14 @@
 | [emerald-glass-system](./emerald-glass-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [enterprise-admin-saas-landing](./enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
 | [devpro-portfolio-template](./premium/aceternity/devpro-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [foxtrot-marketing-template](./premium/aceternity/foxtrot-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [devtool](./premium/magic-ui/devtool/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
 | [disruptor-brutalist-template](./disruptor-brutalist-template/) | Interface experiment. | Static HTML/CSS/JS, Ranchers, Space Mono, Plus Jakarta Sans, Archivo |
 | [echo](./premium/shadcnblocks/echo/) | Interface experiment. | HTML, CSS, vanilla JS, Funnel Sans |
 | [hatch](./premium/shadcnblocks/hatch/) | Interface experiment. | HTML, CSS, vanilla JS, Castoro, Inter, IBM Plex Mono, Caveat |
 | [emerald-ai](./premium/shipxen/emerald-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Rubik, Roboto Serif |
 | [editorial-naturalism-design-system](./editorial-naturalism-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Newsreader, Instrument Sans |
+| [ai-starter-kit](./premium/nextjstemplates/ai-starter-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Onest |
 | [finorio-saas-landing](./premium/nextjstemplates/finorio-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Stack Sans Text |
 | [flux-editorial-saas-landing](./flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
 | [forest-sage-organic-store](./forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
@@ -121,6 +125,7 @@
 | [plasma](./premium/shadcnblocks/plasma/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [primer](./premium/tailwindcss/primer/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Inter |
 | [nodus-agent-template](./premium/aceternity/nodus-agent-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
+| [playful-marketing-aceternity](./premium/aceternity/playful-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [proactiv-marketing-template](./premium/aceternity/proactiv-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [productized-agency-template](./premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [protocol](./premium/tailwindcss/protocol/) | Interface experiment. | HTML, CSS, vanilla JS |
@@ -181,7 +186,3 @@
 | [zippay](./premium/shadcnblocks/zippay/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [agency](./premium/nextjstemplates/agency/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [base](./premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
-| [cryptgen-marketing-aceternity](./premium/aceternity/cryptgen-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [foxtrot-marketing-template](./premium/aceternity/foxtrot-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [playful-marketing-aceternity](./premium/aceternity/playful-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [fincash](./premium/tailgrids/fincash/) | Interface experiment. | HTML, CSS, vanilla JS |
