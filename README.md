@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (175)</b></summary>
+<summary><b>Templates (177)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -391,7 +391,6 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/aceternity/agenlabs-agency-template](./templates/premium/aceternity/agenlabs-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/aceternity/ai-saas-template](./templates/premium/aceternity/ai-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [devpro-portfolio-template](./templates/premium/aceternity/devpro-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/aceternity/minimal-portfolio-template](./templates/premium/aceternity/minimal-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/aceternity/minimalist-portfolio-template](./templates/premium/aceternity/minimalist-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Schibsted Grotesk |
 | [nodus-agent-template](./templates/premium/aceternity/nodus-agent-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [proactiv-marketing-template](./templates/premium/aceternity/proactiv-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
@@ -552,4 +551,9 @@ Responsive interfaces, motion studies and developer tools.
 
 
 
+| [premium/aceternity/cryptgen-marketing-aceternity](./templates/premium/aceternity/cryptgen-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/aceternity/foxtrot-marketing-template](./templates/premium/aceternity/foxtrot-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/aceternity/playful-marketing-aceternity](./templates/premium/aceternity/playful-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/tailgrids/fincash](./templates/premium/tailgrids/fincash/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/nextjstemplates/base](./templates/premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
 </details>

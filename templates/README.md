@@ -1,4 +1,4 @@
-# Templates (175)
+# Templates (177)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -82,7 +82,6 @@
 | [lumina-portfolio-template](./lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
 | [metafi](./premium/shadcnblocks/metafi/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [mainline](./premium/shadcnblocks/mainline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
-| [minimal-portfolio-template](./premium/aceternity/minimal-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [minimalist-portfolio-template](./premium/aceternity/minimalist-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Schibsted Grotesk |
 | [midnight-editorial-template](./midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
 | [minimum-via](./premium/shipxen/minimum-via/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto Slab, Inter |
@@ -176,3 +175,8 @@
 | [simplistic-saas-template](./premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [startup-landing-page-template](./premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [zippay](./premium/shadcnblocks/zippay/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [base](./premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
+| [cryptgen-marketing-aceternity](./premium/aceternity/cryptgen-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [foxtrot-marketing-template](./premium/aceternity/foxtrot-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [playful-marketing-aceternity](./premium/aceternity/playful-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [fincash](./premium/tailgrids/fincash/) | Interface experiment. | HTML, CSS, vanilla JS |
