@@ -1,4 +1,4 @@
-# Templates (183)
+# Templates (185)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -76,6 +76,7 @@
 | [gen-z-neobrutalist-landing](./gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
 | [gnomie-ai](./premium/shipxen/gnomie-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat, Hind |
 | [heavyweight-brutalist-store](./heavyweight-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Space Grotesk |
+| [appy](./premium/cruip/appy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [jobboard](./premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [hive](./premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [keynote](./premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
@@ -149,6 +150,7 @@
 | [devfolio](./premium/cruip/devfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
 | [cube](./premium/cruip/cube/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper.js, AOS |
 | [tidy](./premium/cruip/tidy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
+| [devspace](./premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
 | [specta](./premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
@@ -185,4 +187,5 @@
 | [simplistic-saas-template](./premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [startup-landing-page-template](./premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [zippay](./premium/shadcnblocks/zippay/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [agency](./premium/nextjstemplates/agency/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [base](./premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
