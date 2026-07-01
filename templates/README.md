@@ -37,6 +37,7 @@
 | [synthai](./premium/tailgrids/synthai/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [techself](./premium/tailgrids/techself/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [writemate](./premium/tailgrids/writemate/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [cms](./premium/tailgrids/cms/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [catalyst](./premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 
 | [clinical-luxury-conversion](./clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
