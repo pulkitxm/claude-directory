@@ -549,17 +549,6 @@ Responsive interfaces, motion studies and developer tools.
 | [synapse-design-system](./templates/synapse-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Inter |
 | [terroir-tasting-room](./templates/terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
-
-
-
-
-
-
-
-
-
-
-
-
+| [premium/nextjstemplates/agency](./templates/premium/nextjstemplates/agency/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/nextjstemplates/base](./templates/premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
 </details>

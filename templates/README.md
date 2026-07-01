@@ -185,4 +185,5 @@
 | [simplistic-saas-template](./premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [startup-landing-page-template](./premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [zippay](./premium/shadcnblocks/zippay/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [agency](./premium/nextjstemplates/agency/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [base](./premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
