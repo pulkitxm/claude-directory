@@ -1,4 +1,4 @@
-# Templates (180)
+# Templates (182)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -76,6 +76,7 @@
 | [gen-z-neobrutalist-landing](./gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
 | [gnomie-ai](./premium/shipxen/gnomie-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat, Hind |
 | [heavyweight-brutalist-store](./heavyweight-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Space Grotesk |
+| [jobboard](./premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [hive](./premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [keynote](./premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [kinetic-orange-brutalist-agency](./kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
@@ -183,3 +184,4 @@
 | [simplistic-saas-template](./premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [startup-landing-page-template](./premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [zippay](./premium/shadcnblocks/zippay/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [base](./premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
