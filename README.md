@@ -550,4 +550,5 @@ Responsive interfaces, motion studies and developer tools.
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
 | [premium/nextjstemplates/agency](./templates/premium/nextjstemplates/agency/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/nextjstemplates/base](./templates/premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
+| [premium/nextjstemplates/crypto](./templates/premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 </details>
