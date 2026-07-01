@@ -392,7 +392,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (174)</b></summary>
+<summary><b>Templates (175)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
