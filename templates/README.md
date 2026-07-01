@@ -1,4 +1,4 @@
-# Templates (165)
+# Templates (167)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -25,12 +25,14 @@
 | [changelog](./premium/magic-ui/changelog/) | Interface experiment. | HTML, CSS, vanilla JS, GeistSans |
 | [aspect](./premium/shadcnblocks/aspect/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
 | [charter](./premium/shadcnblocks/charter/) | Interface experiment. | HTML, CSS, vanilla JS, Hubot Sans, Inter, IBM Plex Mono |
+| [aichat](./premium/tailgrids/aichat/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [aispace](./premium/tailgrids/aispace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [appspace](./premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [bizspace](./premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [dashspace](./premium/tailgrids/dashspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [fundex](./premium/tailgrids/fundex/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [neoxa](./premium/tailgrids/neoxa/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [nexstudio](./premium/tailgrids/nexstudio/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [originx](./premium/tailgrids/originx/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [saasly](./premium/tailgrids/saasly/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [saasspace](./premium/tailgrids/saasspace/) | Interface experiment. | HTML, CSS, vanilla JS |
