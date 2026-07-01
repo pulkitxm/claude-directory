@@ -1,4 +1,4 @@
-# Templates (171)
+# Templates (172)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -134,6 +134,7 @@
 | [scalar](./premium/shadcnblocks/scalar/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
 | [screenshot-two](./premium/shipxen/screenshot-two/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans |
 | [season-04-brutalist-store](./season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [stellar](./premium/cruip/stellar/) | Interface experiment. | HTML, CSS, vanilla JS, Alpine.js, Swiper.js, AOS |
 | [mosaic](./premium/cruip/mosaic/) | Interface experiment. | HTML, Tailwind CSS, Alpine.js, Chart.js, Moment.js, Flatpickr |
 | [shadcnblocks-admin](./premium/cruip/shadcnblocks-admin/) | Interface experiment. | HTML, CSS, vanilla JS, Chart.js 4, Inter |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
