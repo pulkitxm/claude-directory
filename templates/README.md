@@ -1,4 +1,4 @@
-# Templates (174)
+# Templates (176)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -137,8 +137,10 @@
 | [stellar](./premium/cruip/stellar/) | Interface experiment. | HTML, CSS, vanilla JS, Alpine.js, Swiper.js, AOS |
 | [mosaic](./premium/cruip/mosaic/) | Interface experiment. | HTML, Tailwind CSS, Alpine.js, Chart.js, Moment.js, Flatpickr |
 | [shadcnblocks-admin](./premium/cruip/shadcnblocks-admin/) | Interface experiment. | HTML, CSS, vanilla JS, Chart.js 4, Inter |
+| [waitlist](./premium/cruip/waitlist/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
 | [simple](./premium/cruip/simple/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [gray](./premium/cruip/gray/) | Interface experiment. | HTML, CSS, Alpine.js |
+| [open-pro](./premium/cruip/open-pro/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
 | [specta](./premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
