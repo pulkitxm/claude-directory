@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (175)</b></summary>
+<summary><b>Templates (177)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -390,10 +390,12 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/aceternity/agenforce-marketing-template](./templates/premium/aceternity/agenforce-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Manrope, Inter |
 | [premium/aceternity/agenlabs-agency-template](./templates/premium/aceternity/agenlabs-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/aceternity/ai-saas-template](./templates/premium/aceternity/ai-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
+| [cryptgen-marketing-aceternity](./templates/premium/aceternity/cryptgen-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [devpro-portfolio-template](./templates/premium/aceternity/devpro-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/aceternity/minimal-portfolio-template](./templates/premium/aceternity/minimal-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [foxtrot-marketing-template](./templates/premium/aceternity/foxtrot-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/aceternity/minimalist-portfolio-template](./templates/premium/aceternity/minimalist-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Schibsted Grotesk |
 | [nodus-agent-template](./templates/premium/aceternity/nodus-agent-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
+| [playful-marketing-aceternity](./templates/premium/aceternity/playful-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [proactiv-marketing-template](./templates/premium/aceternity/proactiv-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [productized-agency-template](./templates/premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [premium/aceternity/schedule-marketing-template](./templates/premium/aceternity/schedule-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
@@ -454,6 +456,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/magic-ui/portfolio](./templates/premium/magic-ui/portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [saas](./templates/premium/magic-ui/saas/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [startup](./templates/premium/magic-ui/startup/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [ai-starter-kit](./templates/premium/nextjstemplates/ai-starter-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Onest |
 | [finorio-saas-landing](./templates/premium/nextjstemplates/finorio-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Stack Sans Text |
 | [nextmerce-saas-ecommerce](./templates/premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [premium/shadcnblocks/aspect](./templates/premium/shadcnblocks/aspect/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
@@ -482,6 +485,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/tailgrids/appspace](./templates/premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/bizspace](./templates/premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/dashspace](./templates/premium/tailgrids/dashspace/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [fincash](./templates/premium/tailgrids/fincash/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
 | [premium/tailgrids/fundex](./templates/premium/tailgrids/fundex/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/lytic](./templates/premium/tailgrids/lytic/) | Interface experiment. | HTML, CSS, vanilla JS, ApexCharts |
 | [premium/tailgrids/neoxa](./templates/premium/tailgrids/neoxa/) | Interface experiment. | HTML, CSS, vanilla JS |
