@@ -151,6 +151,7 @@
 | [cube](./premium/cruip/cube/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper.js, AOS |
 | [tidy](./premium/cruip/tidy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [devspace](./premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
+| [talent](./premium/cruip/talent/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper.js |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
 | [specta](./premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
