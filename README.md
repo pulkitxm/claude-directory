@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (164)</b></summary>
+<summary><b>Templates (165)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -477,6 +477,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/shipxen/minimum-via](./templates/premium/shipxen/minimum-via/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto Slab, Inter |
 | [screenshot-two](./templates/premium/shipxen/screenshot-two/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans |
 | [premium/shipxen/specta](./templates/premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
+| [premium/tailgrids/aichat](./templates/premium/tailgrids/aichat/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/aispace](./templates/premium/tailgrids/aispace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/appspace](./templates/premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/bizspace](./templates/premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |

@@ -1,4 +1,4 @@
-# Templates (164)
+# Templates (165)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -25,6 +25,7 @@
 | [changelog](./premium/magic-ui/changelog/) | Interface experiment. | HTML, CSS, vanilla JS, GeistSans |
 | [aspect](./premium/shadcnblocks/aspect/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
 | [charter](./premium/shadcnblocks/charter/) | Interface experiment. | HTML, CSS, vanilla JS, Hubot Sans, Inter, IBM Plex Mono |
+| [aichat](./premium/tailgrids/aichat/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [aispace](./premium/tailgrids/aispace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [appspace](./premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [bizspace](./premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |
