@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (171)</b></summary>
+<summary><b>Templates (172)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -512,6 +512,7 @@ Responsive interfaces, motion studies and developer tools.
 | [red-sun-editorial-template](./templates/red-sun-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Manrope |
 | [season-04-brutalist-store](./templates/season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [stellar](./templates/premium/cruip/stellar/) | Interface experiment. | HTML, CSS, vanilla JS, Alpine.js, Swiper.js, AOS |
+| [mosaic](./templates/premium/cruip/mosaic/) | Interface experiment. | HTML, Tailwind CSS, Alpine.js, Chart.js, Moment.js, Flatpickr |
 | [shadcnblocks-admin](./templates/premium/cruip/shadcnblocks-admin/) | Interface experiment. | HTML, CSS, vanilla JS, Chart.js 4, Inter |
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [stacking-cards-portfolio](./templates/stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
