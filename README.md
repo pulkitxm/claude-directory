@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (188)</b></summary>
+<summary><b>Templates (192)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -531,6 +531,7 @@ Responsive interfaces, motion studies and developer tools.
 | [tidy](./templates/premium/cruip/tidy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [devspace](./templates/premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [talent](./templates/premium/cruip/talent/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper.js |
+| [podcast](./templates/premium/cruip/podcast/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [stacking-cards-portfolio](./templates/stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [sticky-content-switch](./templates/sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
