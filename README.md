@@ -415,6 +415,7 @@ Responsive interfaces, motion studies and developer tools.
 | [ellamae](./templates/premium/lexingtonthemes/ellamae/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
 | [premium/lexingtonthemes/enlightr](./templates/premium/lexingtonthemes/enlightr/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Inter, Instrument Serif, Clash Grotesk |
 | [premium/lexingtonthemes/flaco](./templates/premium/lexingtonthemes/flaco/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, Fuse.js |
+| [premium/lexingtonthemes/flabbergasted](./templates/premium/lexingtonthemes/flabbergasted/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Inter Variable, InterDisplay, Geist Mono |
 | [premium/lexingtonthemes/hemingway](./templates/premium/lexingtonthemes/hemingway/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter |
 | [premium/lexingtonthemes/hirewise](./templates/premium/lexingtonthemes/hirewise/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Geist |
 | [premium/lexingtonthemes/kotei](./templates/premium/lexingtonthemes/kotei/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, AOS, Fuse.js |
