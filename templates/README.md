@@ -1,4 +1,4 @@
-# Templates (187)
+# Templates (188)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -149,6 +149,7 @@
 | [open-pro](./premium/cruip/open-pro/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [devfolio](./premium/cruip/devfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
 | [cube](./premium/cruip/cube/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper.js, AOS |
+| [fintech](./premium/cruip/fintech/) | Interface experiment. | HTML, CSS, vanilla JS, Alpine.js, AOS, Swiper |
 | [tidy](./premium/cruip/tidy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [devspace](./premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [talent](./premium/cruip/talent/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper.js |
