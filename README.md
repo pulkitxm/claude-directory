@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (187)</b></summary>
+<summary><b>Templates (188)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -402,6 +402,7 @@ Responsive interfaces, motion studies and developer tools.
 | [sidefolio-portfolio-template](./templates/premium/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
 | [simplistic-saas-template](./templates/premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [startup-landing-page-template](./templates/premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/cruip/docs](./templates/premium/cruip/docs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/cruip/appy](./templates/premium/cruip/appy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [premium/cruip/jobboard](./templates/premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/alfred](./templates/premium/lexingtonthemes/alfred/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
@@ -529,6 +530,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/cruip/fintech](./templates/premium/cruip/fintech/) | Interface experiment. | HTML, CSS, vanilla JS, Alpine.js, AOS, Swiper |
 | [tidy](./templates/premium/cruip/tidy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [devspace](./templates/premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
+| [talent](./templates/premium/cruip/talent/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper.js |
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [stacking-cards-portfolio](./templates/stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [sticky-content-switch](./templates/sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |

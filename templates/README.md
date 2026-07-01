@@ -1,4 +1,4 @@
-# Templates (187)
+# Templates (188)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -76,6 +76,7 @@
 | [gen-z-neobrutalist-landing](./gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
 | [gnomie-ai](./premium/shipxen/gnomie-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat, Hind |
 | [heavyweight-brutalist-store](./heavyweight-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Space Grotesk |
+| [docs](./premium/cruip/docs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [appy](./premium/cruip/appy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [jobboard](./premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [hive](./premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
@@ -152,6 +153,7 @@
 | [fintech](./premium/cruip/fintech/) | Interface experiment. | HTML, CSS, vanilla JS, Alpine.js, AOS, Swiper |
 | [tidy](./premium/cruip/tidy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [devspace](./premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
+| [talent](./premium/cruip/talent/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper.js |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
 | [specta](./premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
