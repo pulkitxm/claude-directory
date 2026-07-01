@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (164)</b></summary>
+<summary><b>Templates (165)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -480,6 +480,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/tailgrids/aispace](./templates/premium/tailgrids/aispace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/appspace](./templates/premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/bizspace](./templates/premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/tailgrids/dashspace](./templates/premium/tailgrids/dashspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/fundex](./templates/premium/tailgrids/fundex/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/neoxa](./templates/premium/tailgrids/neoxa/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/originx](./templates/premium/tailgrids/originx/) | Interface experiment. | HTML, CSS, vanilla JS |

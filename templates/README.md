@@ -1,4 +1,4 @@
-# Templates (164)
+# Templates (165)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -28,6 +28,7 @@
 | [aispace](./premium/tailgrids/aispace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [appspace](./premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [bizspace](./premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [dashspace](./premium/tailgrids/dashspace/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [fundex](./premium/tailgrids/fundex/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [neoxa](./premium/tailgrids/neoxa/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [originx](./premium/tailgrids/originx/) | Interface experiment. | HTML, CSS, vanilla JS |
