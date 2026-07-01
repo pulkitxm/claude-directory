@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (174)</b></summary>
+<summary><b>Templates (175)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
