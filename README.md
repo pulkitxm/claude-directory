@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (183)</b></summary>
+<summary><b>Templates (187)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -402,6 +402,7 @@ Responsive interfaces, motion studies and developer tools.
 | [sidefolio-portfolio-template](./templates/premium/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
 | [simplistic-saas-template](./templates/premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [startup-landing-page-template](./templates/premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/cruip/appy](./templates/premium/cruip/appy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [premium/cruip/jobboard](./templates/premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/alfred](./templates/premium/lexingtonthemes/alfred/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/aelen](./templates/premium/lexingtonthemes/aelen/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
@@ -524,7 +525,9 @@ Responsive interfaces, motion studies and developer tools.
 | [gray](./templates/premium/cruip/gray/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [open-pro](./templates/premium/cruip/open-pro/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
 | [devfolio](./templates/premium/cruip/devfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
+| [cube](./templates/premium/cruip/cube/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper.js, AOS |
 | [tidy](./templates/premium/cruip/tidy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
+| [devspace](./templates/premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [stacking-cards-portfolio](./templates/stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
 | [sticky-content-switch](./templates/sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
@@ -550,5 +553,6 @@ Responsive interfaces, motion studies and developer tools.
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
 | [premium/nextjstemplates/agency](./templates/premium/nextjstemplates/agency/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/nextjstemplates/base](./templates/premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
+| [premium/nextjstemplates/appline](./templates/premium/nextjstemplates/appline/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter |
 | [premium/nextjstemplates/crypto](./templates/premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 </details>
