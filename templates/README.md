@@ -1,4 +1,4 @@
-# Templates (162)
+# Templates (164)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -13,6 +13,7 @@
 | [aubergine](./premium/lexingtonthemes/aubergine/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Vanilla Tilt, Fuse.js, Clash Display, Figtree |
 | [author](./premium/lexingtonthemes/author/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter |
 | [bastion](./premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
+| [brightlight](./premium/lexingtonthemes/brightlight/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Noto Serif |
 | [buio](./premium/lexingtonthemes/buio/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Geist, EB Garamond |
 | [carbon](./premium/lexingtonthemes/carbon/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Hedvig Letters Serif |
 | [carriera](./premium/lexingtonthemes/carriera/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Geist, Geist Mono |
