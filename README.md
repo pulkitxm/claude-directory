@@ -402,6 +402,7 @@ Responsive interfaces, motion studies and developer tools.
 | [sidefolio-portfolio-template](./templates/premium/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
 | [simplistic-saas-template](./templates/premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
 | [startup-landing-page-template](./templates/premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/cruip/docs](./templates/premium/cruip/docs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/cruip/appy](./templates/premium/cruip/appy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [premium/cruip/jobboard](./templates/premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/alfred](./templates/premium/lexingtonthemes/alfred/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
