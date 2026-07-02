@@ -33,10 +33,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Strip recon-only content from deploy
+        # .reference/ dirs hold scrape recon (screenshots, raw HTML/CSS) used
+        # only while building/auditing clones — never linked from the live
+        # site. They stay in git; just don't ship them to Pages.
+        run: find . -type d -name '.reference' -prune -exec rm -rf {} +
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # Upload entire repository (minus .reference/, stripped above)
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
