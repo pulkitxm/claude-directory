@@ -18,7 +18,10 @@ console.log("Launching chromium...");
 // /opt/pw-browsers/chromium-1194 still honors --ssl-version-max=tls1.2 (removed in
 // newer Chrome for Testing builds) and negotiates TLS 1.2 fine through the proxy.
 // Only remote targets need this — localhost captures (dev servers, vision-loop
-// re-scrapes) bypass the proxy entirely.
+// re-scrapes) bypass the proxy entirely. (An alternative PW_PROXY-based relay was
+// tried upstream but a plain --proxy-server flag doesn't fix the underlying TLS 1.3
+// handshake failure by itself — this TLS-1.2 pin is the version verified working
+// end-to-end against a live remote reference site.)
 const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(URL);
 const legacyChromePath = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
 const launchOpts = { args: ["--ignore-certificate-errors"] };
@@ -26,6 +29,9 @@ if (!isLocal) {
 	launchOpts.args.push("--ssl-version-max=tls1.2");
 	if (fs.existsSync(legacyChromePath)) {
 		launchOpts.executablePath = legacyChromePath;
+	}
+	if (process.env.PW_PROXY) {
+		launchOpts.args.push(`--proxy-server=${process.env.PW_PROXY}`);
 	}
 }
 const browser = await chromium.launch(isLocal ? {} : launchOpts);
