@@ -68,6 +68,24 @@ let target = page;
 console.log("Using main frame directly");
 console.log("url:", target.url());
 
+// Scroll through the full page first so any IntersectionObserver / scroll-triggered
+// reveal animations (fade-in, slide-up sections, etc.) have already fired before the
+// full-page screenshot is taken. Without this, sections below the fold can render
+// blank (opacity:0 / translated off-screen) in the captured screenshot.
+await page.evaluate(async () => {
+	const distance = 400;
+	const delay = 120;
+	const scrollHeight = () => document.body.scrollHeight;
+	let total = 0;
+	while (total < scrollHeight()) {
+		window.scrollBy(0, distance);
+		total += distance;
+		await new Promise((r) => setTimeout(r, delay));
+	}
+	window.scrollTo(0, 0);
+	await new Promise((r) => setTimeout(r, 400));
+});
+
 await page.screenshot({
 	path: path.join(OUT, "screenshot.png"),
 	fullPage: true,

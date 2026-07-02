@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Page - Solid SaaS Boilerplate</title>
+  <meta name="description" content="This is Login page for Startup Pro">
+  <link rel="icon" href="./assets/favicon.ico" sizes="48x48" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('color-theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.className = theme;
+      } catch(e) {}
+    })();
+  </script>
+  <style>
+    /* ── HEADER STYLES ── */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background: transparent;
+      padding: 1.75rem 0;
+      transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+    }
+    .site-header.scrolled {
+      background: #fff;
+      padding: 1.125rem 0;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.08);
+    }
+    .dark .site-header.scrolled { background: #181c31; }
+    .site-header .header-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    }
+    .header-logo-wrap { display: flex; align-items: center; flex-shrink: 0; }
+    .logo-link { display: block; }
+    .logo.logo-light { display: block; }
+    .logo.logo-dark { display: none; }
+    .dark .logo.logo-light { display: none; }
+    .dark .logo.logo-dark { display: block; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; margin-left: 1rem; background: none; border: none; cursor: pointer; }
+    .ham-bar { display: block; width: 24px; height: 2px; background: #181c31; border-radius: 2px; transition: all 0.3s; }
+    .dark .ham-bar { background: #fff; }
+    .header-nav-wrap {
+      flex: 1; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+    }
+    .main-nav { flex: 1; display: flex; justify-content: center; }
+    .nav-list { display: flex; align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+    .nav-list li { position: relative; }
+    .nav-link, .nav-dropdown-btn {
+      display: flex; align-items: center; gap: 0.375rem;
+      padding: 0.5rem 0.875rem;
+      font-size: 0.9375rem; font-weight: 500; color: #757693;
+      border-radius: 0.5rem; text-decoration: none;
+      transition: color 0.2s, background-color 0.2s;
+      background: none; border: none; cursor: pointer; font-family: inherit;
+    }
+    .dark .nav-link, .dark .nav-dropdown-btn { color: #b8c0d9; }
+    .nav-link:hover, .nav-dropdown-btn:hover { color: #006bff; background: #edf5ff; }
+    .dark .nav-link:hover, .dark .nav-dropdown-btn:hover { color: #94b8ff; background: #46495a; }
+    .dropdown-arrow { transition: transform 0.2s; }
+    .nav-item-dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+    .dropdown-menu {
+      display: none; position: absolute; top: calc(100% + 0.5rem); left: 50%;
+      transform: translateX(-50%); min-width: 11rem;
+      background: #fff; border: 1px solid #eee; border-radius: 0.75rem;
+      padding: 0.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.12); list-style: none; z-index: 100;
+    }
+    .dark .dropdown-menu { background: #292e45; border-color: #2d2f40; }
+    .nav-item-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a {
+      display: block; padding: 0.5rem 0.875rem; font-size: 0.9375rem; font-weight: 500;
+      color: #757693; border-radius: 0.5rem; text-decoration: none; transition: color 0.2s, background 0.2s;
+    }
+    .dark .dropdown-menu li a { color: #b8c0d9; }
+    .dropdown-menu li a:hover { color: #006bff; background: #edf5ff; }
+    .site-header .header-actions { display: flex; align-items: center; gap: 0.875rem; flex-shrink: 0; }
+    .theme-toggle {
+      width: 2.25rem; height: 2.25rem; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: #edf5ff; border: none; cursor: pointer; transition: background 0.2s;
+    }
+    .dark .theme-toggle { background: #292e45; }
+    .theme-toggle .icon-moon { display: block; }
+    .theme-toggle .icon-sun { display: none; }
+    .dark .theme-toggle .icon-moon { display: none; }
+    .dark .theme-toggle .icon-sun { display: block; }
+    .github-link {
+      font-size: 1rem; font-weight: 500; color: #757693;
+      text-decoration: none; transition: color 0.2s; white-space: nowrap;
+    }
+    .github-link:hover { color: #006bff; }
+    .btn-get-pro {
+      display: inline-flex; align-items: center; padding: 0.75rem 1.75rem;
+      background: #006bff; color: #fff; border-radius: 9999px; font-size: 1rem;
+      font-weight: 500; text-decoration: none; transition: background 0.2s; white-space: nowrap;
+    }
+    .btn-get-pro:hover { background: #0063ec; }
+    @media (max-width: 1279px) {
+      .hamburger { display: flex; }
+      .header-nav-wrap {
+        position: fixed; top: 0; right: -100%; width: min(20rem, 90vw); height: 100vh;
+        background: #fff; z-index: 99999; padding: 5rem 1.5rem 2rem;
+        flex-direction: column; align-items: flex-start; justify-content: flex-start;
+        transition: right 0.35s; box-shadow: -4px 0 20px rgba(0,0,0,0.12); overflow-y: auto;
+      }
+      .dark .header-nav-wrap { background: #292e45; }
+      .header-nav-wrap.open { right: 0; }
+      .main-nav { width: 100%; }
+      .nav-list { flex-direction: column; align-items: flex-start; width: 100%; }
+      .nav-list li { width: 100%; }
+      .nav-link, .nav-dropdown-btn { width: 100%; padding: 0.75rem 1rem; justify-content: space-between; }
+      .dropdown-menu { display: none; position: static; transform: none; box-shadow: none; background: #f9f9f9; border: none; border-radius: 0.5rem; margin-top: 0.25rem; }
+      .dark .dropdown-menu { background: #252a42; }
+      .nav-item-dropdown.open .dropdown-menu { display: block; }
+    }
+
+    /* ── AUTH PAGE STYLES ── */
+    main { padding-top: 0; }
+    .auth-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 1.5rem 5rem; }
+    .auth-container { position: relative; width: 100%; max-width: 780px; }
+    .auth-bg-gradient { position: absolute; inset: -20px; background: linear-gradient(135deg, #f0f5ff 0%, #e8f0fe 100%); border-radius: 1.5rem; z-index: 0; }
+    .dark .auth-bg-gradient { background: linear-gradient(135deg, #1c2136 0%, #252a42 100%); }
+    .auth-dotted-shape { position: absolute; bottom: -2rem; right: -2rem; z-index: 0; opacity: 0.5; }
+    .dotted-light { display: block; }
+    .dotted-dark { display: none; }
+    .dark .dotted-light { display: none; }
+    .dark .dotted-dark { display: block; }
+    .auth-card {
+      position: relative; z-index: 1; background: #fff; border-radius: 1rem;
+      padding: 3rem 3.5rem; box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      max-width: 600px; margin: 0 auto;
+    }
+    .dark .auth-card { background: #1c2136; }
+    .auth-title { font-size: 1.5rem; font-weight: 700; color: #181c31; text-align: center; margin-bottom: 2rem; }
+    .dark .auth-title { color: #fff; }
+    .social-auth-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .social-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      padding: 0.875rem 1rem; border: 1.5px solid #eee; border-radius: 0.5rem;
+      font-size: 0.9375rem; font-weight: 500; color: #181c31; background: #fff;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    }
+    .dark .social-btn { background: #292e45; border-color: #2d2f40; color: #fff; }
+    .social-btn:hover { border-color: #006bff; }
+    .auth-divider { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .divider-line { flex: 1; height: 1px; background: #eee; }
+    .dark .divider-line { background: #2d2f40; }
+    .divider-text { font-size: 0.875rem; color: #999aa1; white-space: nowrap; }
+    .auth-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+    .form-input {
+      width: 100%; height: 3rem; padding: 0 1rem; border: none; border-bottom: 1.5px solid #eee;
+      font-size: 0.9375rem; color: #181c31; background: transparent; outline: none; font-family: inherit;
+    }
+    .dark .form-input { border-bottom-color: #2d2f40; color: #fff; }
+    .form-input::placeholder { color: #999aa1; }
+    .form-input:focus { border-bottom-color: #006bff; }
+    .form-actions-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .form-left-actions { display: flex; align-items: center; gap: 1.5rem; }
+    .checkbox-label { display: flex; align-items: center; gap: 0.625rem; cursor: pointer; font-size: 0.875rem; color: #757693; }
+    .checkbox-input { position: absolute; opacity: 0; pointer-events: none; }
+    .checkbox-custom { width: 1.125rem; height: 1.125rem; border: 1.5px solid #eee; border-radius: 0.25rem; display: flex; align-items: center; justify-content: center; background: transparent; flex-shrink: 0; transition: all 0.2s; }
+    .checkbox-input:checked + .checkbox-custom { background: #006bff; border-color: #006bff; }
+    .checkbox-text { font-size: 0.875rem; color: #757693; }
+    .forgot-link { font-size: 0.875rem; color: #757693; text-decoration: none; transition: color 0.2s; }
+    .forgot-link:hover { color: #006bff; }
+    .btn-dark-pill {
+      display: inline-flex; align-items: center; gap: 0.625rem; padding: 0.875rem 2rem;
+      background: #181c31; color: #fff; border: none; border-radius: 9999px;
+      font-size: 1rem; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: inherit;
+    }
+    .btn-dark-pill:hover { background: #2c3149; }
+    .auth-footer-text { text-align: center; padding-top: 1.5rem; border-top: 1px solid #eee; font-size: 0.9375rem; color: #757693; }
+    .dark .auth-footer-text { border-top-color: #2d2f40; }
+    .auth-link { color: #006bff; font-weight: 600; text-decoration: none; }
+    .auth-link:hover { text-decoration: underline; }
+
+    /* ── FOOTER STYLES ── */
+    .site-footer { border-top: 1px solid #eee; background: #fff; }
+    .dark .site-footer { border-top-color: #2d2f40; background: #181c31; }
+    .footer-top {
+      padding: 80px 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 32px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .footer-brand {
+      width: 250px;
+      flex: 0 0 250px;
+    }
+    .footer-cols-right {
+      display: flex;
+      flex: 1;
+      gap: 40px;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+    .footer-cols-right .footer-col { flex: 1; min-width: 120px; }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-top: 1px solid #eee;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .dark .footer-bottom { border-top-color: #2d2f40; }
+    .footer-bottom-links, .footer-social { display: flex; gap: 20px; list-style: none; }
+    .footer-copyright { font-size: 14px; color: #757693; }
+  </style>
+</head>
+<body>
+
+  <!-- Background decorative lines -->
+  <div class="bg-lines" aria-hidden="true">
+    <span class="bg-line"></span>
+    <span class="bg-line"></span>
+    <span class="bg-line"></span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-logo-wrap">
+        <a href="./index.html" class="logo-link">
+          <img alt="Solid" class="logo logo-light" src="./assets/images/logo/logo-light.svg" width="119" height="30">
+          <img alt="Solid" class="logo logo-dark" src="./assets/images/logo/logo-dark.svg" width="119" height="30">
+        </a>
+        <button class="hamburger" aria-label="Toggle menu" id="hamburgerBtn">
+          <span class="hamburger-icon">
+            <span class="ham-bar"></span>
+            <span class="ham-bar"></span>
+            <span class="ham-bar"></span>
+          </span>
+        </button>
+      </div>
+
+      <div class="header-nav-wrap" id="navWrap">
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="./index.html">Home</a></li>
+            <li><a class="nav-link" href="./index.html#features">Features</a></li>
+            <li><a class="nav-link" href="./blog.html">Blog</a></li>
+            <li><a class="nav-link" href="./docs.html">Docs</a></li>
+            <li class="nav-item-dropdown">
+              <button class="nav-dropdown-btn">
+                Pages
+                <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="12" height="12"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="./blog.html">Blog Grid</a></li>
+                <li><a href="./auth-signin.html">Sign In</a></li>
+                <li><a href="./auth-signup.html">Sign Up</a></li>
+                <li><a href="./docs.html">Docs</a></li>
+                <li><a href="./support.html">Support</a></li>
+                <li><a href="./error.html">404</a></li>
+              </ul>
+            </li>
+            <li><a class="nav-link" href="./support.html">Support</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle">
+            <img alt="Moon" class="icon-moon" src="./assets/images/icon/icon-moon.svg" width="21" height="21">
+            <img alt="Sun" class="icon-sun" src="./assets/images/icon/icon-sun.svg" width="22" height="22">
+          </button>
+          <a class="github-link" href="https://github.com/NextJSTemplates/solid-nextjs" target="_blank" rel="noopener">GitHub Repo &#x1F31F;</a>
+          <a class="btn-get-pro" href="https://nextjstemplates.com/templates/solid" target="_blank" rel="noopener">Get Pro &#x1F525;</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="auth-section">
+      <div class="auth-container">
+        <!-- Background gradient -->
+        <div class="auth-bg-gradient" aria-hidden="true"></div>
+        <!-- Dotted shape decoration -->
+        <div class="auth-dotted-shape" aria-hidden="true">
+          <img alt="" class="dotted-light" src="./assets/images/shape/shape-dotted-light.svg">
+          <img alt="" class="dotted-dark" src="./assets/images/shape/shape-dotted-dark.svg">
+        </div>
+
+        <!-- Auth card -->
+        <div class="auth-card">
+          <h2 class="auth-title">Login to Your Account</h2>
+
+          <!-- Social auth buttons -->
+          <div class="social-auth-row">
+            <button class="social-btn" aria-label="Signup with Google">
+              <span class="social-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#google-clip)">
+                    <path d="M20.0001 10.2216C20.0122 9.53416 19.9397 8.84776 19.7844 8.17725H10.2042V11.8883H15.8277C15.7211 12.539 15.4814 13.1618 15.1229 13.7194C14.7644 14.2769 14.2946 14.7577 13.7416 15.1327L13.722 15.257L16.7512 17.5567L16.961 17.5772C18.8883 15.8328 19.9997 13.266 19.9997 10.2216" fill="#4285F4"/>
+                    <path d="M10.2042 20.0001C12.9592 20.0001 15.2721 19.1111 16.9616 17.5778L13.7416 15.1332C12.88 15.7223 11.7235 16.1334 10.2042 16.1334C8.91385 16.126 7.65863 15.7206 6.61663 14.9747C5.57464 14.2287 4.79879 13.1802 4.39915 11.9778L4.27957 11.9878L1.12973 14.3766L1.08856 14.4888C1.93689 16.1457 3.23879 17.5387 4.84869 18.512C6.45859 19.4852 8.31301 20.0005 10.2046 20.0001" fill="#34A853"/>
+                    <path d="M4.39911 11.9777C4.17592 11.3411 4.06075 10.673 4.05819 9.99996C4.0623 9.32799 4.17322 8.66075 4.38696 8.02225L4.38127 7.88968L1.19282 5.4624L1.08852 5.51101C0.372885 6.90343 0.00012207 8.4408 0.00012207 9.99987C0.00012207 11.5589 0.372885 13.0963 1.08852 14.4887L4.39911 11.9777Z" fill="#FBBC05"/>
+                    <path d="M10.2042 3.86663C11.6663 3.84438 13.0804 4.37803 14.1498 5.35558L17.0296 2.59996C15.1826 0.901848 12.7366 -0.0298855 10.2042 -3.6784e-05C8.3126 -0.000477834 6.45819 0.514732 4.8483 1.48798C3.2384 2.46124 1.93649 3.85416 1.08813 5.51101L4.38775 8.02225C4.79132 6.82005 5.56974 5.77231 6.61327 5.02675C7.6568 4.28118 8.91279 3.87541 10.2042 3.86663Z" fill="#EB4335"/>
+                  </g>
+                  <defs><clipPath id="google-clip"><rect width="20" height="20" fill="white"/></clipPath></defs>
+                </svg>
+              </span>
+              Signup with Google
+            </button>
+            <button class="social-btn" aria-label="Signup with Github">
+              <span class="social-icon">
+                <svg fill="currentColor" width="22" height="22" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M32 1.7998C15 1.7998 1 15.5998 1 32.7998C1 46.3998 9.9 57.9998 22.3 62.1998C23.9 62.4998 24.4 61.4998 24.4 60.7998C24.4 60.0998 24.4 58.0998 24.3 55.3998C15.7 57.3998 13.9 51.1998 13.9 51.1998C12.5 47.6998 10.4 46.6998 10.4 46.6998C7.6 44.6998 10.5 44.6998 10.5 44.6998C13.6 44.7998 15.3 47.8998 15.3 47.8998C18 52.6998 22.6 51.2998 24.3 50.3998C24.6 48.3998 25.4 46.9998 26.3 46.1998C19.5 45.4998 12.2 42.7998 12.2 30.9998C12.2 27.5998 13.5 24.8998 15.4 22.7998C15.1 22.0998 14 18.8998 15.7 14.5998C15.7 14.5998 18.4 13.7998 24.3 17.7998C26.8 17.0998 29.4 16.6998 32.1 16.6998C34.8 16.6998 37.5 16.9998 39.9 17.7998C45.8 13.8998 48.4 14.5998 48.4 14.5998C50.1 18.7998 49.1 22.0998 48.7 22.7998C50.7 24.8998 51.9 27.6998 51.9 30.9998C51.9 42.7998 44.6 45.4998 37.8 46.1998C38.9 47.1998 39.9 49.1998 39.9 51.9998C39.9 56.1998 39.8 59.4998 39.8 60.4998C39.8 61.2998 40.4 62.1998 41.9 61.8998C54.1 57.7998 63 46.2998 63 32.5998C62.9 15.5998 49 1.7998 32 1.7998Z"/>
+                </svg>
+              </span>
+              Signup with Github
+            </button>
+          </div>
+
+          <!-- Divider -->
+          <div class="auth-divider">
+            <span class="divider-line"></span>
+            <p class="divider-text">Or, login with your email</p>
+            <span class="divider-line"></span>
+          </div>
+
+          <!-- Login form -->
+          <form class="auth-form" action="#" method="post">
+            <div class="form-row">
+              <input type="email" name="email" placeholder="Email" class="form-input" autocomplete="email">
+              <input type="password" name="password" placeholder="Password" class="form-input" autocomplete="current-password">
+            </div>
+
+            <div class="form-actions-row">
+              <div class="form-left-actions">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="remember" class="checkbox-input" id="keepSignedIn">
+                  <span class="checkbox-custom">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70704 0.792787C9.89451 0.980314 9.99983 1.23462 9.99983 1.49979C9.99983 1.76495 9.89451 2.01926 9.70704 2.20679L4.70704 7.20679C4.51951 7.39426 4.26521 7.49957 4.00004 7.49957C3.73488 7.49957 3.48057 7.39426 3.29304 7.20679L0.293041 4.20679C0.110883 4.01818 0.0100885 3.76558 0.0123669 3.50339C0.0146453 3.24119 0.119814 2.99038 0.305222 2.80497C0.490631 2.61956 0.741443 2.51439 1.00364 2.51211C1.26584 2.50983 1.51844 2.61063 1.70704 2.79279L4.00004 5.08579L8.29304 0.792787C8.48057 0.605316 8.73488 0.5 9.00004 0.5C9.26521 0.5 9.51951 0.605316 9.70704 0.792787Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <span class="checkbox-text">Keep me signed in</span>
+                </label>
+                <a href="#" class="forgot-link">Forgot Password?</a>
+              </div>
+              <button type="submit" class="btn-dark-pill" aria-label="Log in">
+                Log in
+                <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.4767 6.16664L6.00668 1.69664L7.18501 0.518311L13.6667 6.99998L7.18501 13.4816L6.00668 12.3033L10.4767 7.83331H0.333344V6.16664H10.4767Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="auth-footer-text">
+              <p>Don't have an account? <a href="./auth-signup.html" class="auth-link">Sign Up</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-col footer-brand">
+          <a href="./index.html" class="footer-logo-link">
+            <img alt="Solid Logo" class="logo logo-light" src="./assets/images/logo/logo-light.svg" width="110" height="36">
+            <img alt="Solid Logo" class="logo logo-dark" src="./assets/images/logo/logo-dark.svg" width="110" height="36">
+          </a>
+          <p class="footer-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p class="footer-contact-label">contact</p>
+          <a href="mailto:hello@solid.com" class="footer-email">hello@solid.com</a>
+        </div>
+        <div class="footer-cols-right">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Home</a></li>
+              <li><a href="#" class="footer-link">Product</a></li>
+              <li><a href="#" class="footer-link">Careers</a></li>
+              <li><a href="#" class="footer-link">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Support</h4>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Company</a></li>
+              <li><a href="#" class="footer-link">Press media</a></li>
+              <li><a href="#" class="footer-link">Our Blog</a></li>
+              <li><a href="#" class="footer-link">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Newsletter</h4>
+            <p class="footer-newsletter-text">Subscribe to receive future updates</p>
+            <form class="newsletter-form" action="#">
+              <div class="newsletter-input-wrap">
+                <input type="email" placeholder="Email address" class="newsletter-input">
+                <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#nl-clip)">
+                      <path d="M3.1175 1.17318L18.5025 9.63484C18.5678 9.67081 18.6223 9.72365 18.6602 9.78786C18.6982 9.85206 18.7182 9.92527 18.7182 9.99984C18.7182 10.0744 18.6982 10.1476 18.6602 10.2118C18.6223 10.276 18.5678 10.3289 18.5025 10.3648L3.1175 18.8265C3.05406 18.8614 2.98262 18.8792 2.91023 18.8781C2.83783 18.8769 2.76698 18.857 2.70465 18.8201C2.64232 18.7833 2.59066 18.7308 2.55478 18.6679C2.51889 18.6051 2.50001 18.5339 2.5 18.4615V1.53818C2.50001 1.46577 2.51889 1.39462 2.55478 1.33174C2.59066 1.26885 2.64232 1.2164 2.70465 1.17956C2.76698 1.14272 2.83783 1.12275 2.91023 1.12163C2.98262 1.12051 3.05406 1.13828 3.1175 1.17318ZM4.16667 10.8332V16.3473L15.7083 9.99984L4.16667 3.65234V9.16651H8.33333V10.8332H4.16667Z" fill="currentColor"/>
+                    </g>
+                    <defs><clipPath id="nl-clip"><rect width="20" height="20" fill="white"/></clipPath></defs>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <ul class="footer-bottom-links">
+          <li><a href="#" class="footer-bottom-link">English</a></li>
+          <li><a href="#" class="footer-bottom-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-bottom-link">Support</a></li>
+        </ul>
+        <p class="footer-copyright">&copy; 2026 Solid. All rights reserved</p>
+        <ul class="footer-social">
+          <li>
+            <a href="#" aria-label="Facebook">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#fb)"><path d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z"/></g><defs><clipPath id="fb"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="Twitter">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#tw)"><path d="M22.162 5.65593C21.3985 5.99362 20.589 6.2154 19.76 6.31393C20.6337 5.79136 21.2877 4.96894 21.6 3.99993C20.78 4.48793 19.881 4.82993 18.944 5.01493C18.3146 4.34151 17.4803 3.89489 16.5709 3.74451C15.6615 3.59413 14.7279 3.74842 13.9153 4.18338C13.1026 4.61834 12.4564 5.30961 12.0771 6.14972C11.6978 6.98983 11.6067 7.93171 11.818 8.82893C10.1551 8.74558 8.52832 8.31345 7.04328 7.56059C5.55823 6.80773 4.24812 5.75098 3.19799 4.45893C2.82628 5.09738 2.63095 5.82315 2.63199 6.56193C2.63199 8.01193 3.36999 9.29293 4.49199 10.0429C3.828 10.022 3.17862 9.84271 2.59799 9.51993V9.57193C2.59819 10.5376 2.93236 11.4735 3.54384 12.221C4.15532 12.9684 5.00647 13.4814 5.95299 13.6729C5.33661 13.84 4.6903 13.8646 4.06299 13.7449C4.32986 14.5762 4.85 15.3031 5.55058 15.824C6.25117 16.345 7.09712 16.6337 7.96999 16.6499C7.10247 17.3313 6.10917 17.8349 5.04687 18.1321C3.98458 18.4293 2.87412 18.5142 1.77899 18.3819C3.69069 19.6114 5.91609 20.2641 8.18899 20.2619C15.882 20.2619 20.089 13.8889 20.089 8.36193C20.089 8.18193 20.084 7.99993 20.076 7.82193C20.8949 7.2301 21.6016 6.49695 22.163 5.65693L22.162 5.65593Z"/></g><defs><clipPath id="tw"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#li)"><path d="M6.94 5.00002C6.93974 5.53046 6.72877 6.03906 6.35351 6.41394C5.97825 6.78883 5.46944 6.99929 4.939 6.99902C4.40857 6.99876 3.89997 6.78779 3.52508 6.41253C3.1502 6.03727 2.93974 5.52846 2.94 4.99802C2.94027 4.46759 3.15124 3.95899 3.5265 3.5841C3.90176 3.20922 4.41057 2.99876 4.941 2.99902C5.47144 2.99929 5.98004 3.21026 6.35492 3.58552C6.72981 3.96078 6.94027 4.46959 6.94 5.00002ZM7 8.48002H3V21H7V8.48002ZM13.32 8.48002H9.34V21H13.28V14.43C13.28 10.77 18.05 10.43 18.05 14.43V21H22V13.07C22 6.90002 14.94 7.13002 13.28 10.16L13.32 8.48002Z"/></g><defs><clipPath id="li"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky header
+    var siteHeader = document.querySelector('.site-header');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 10) {
+        siteHeader.classList.add('scrolled');
+      } else {
+        siteHeader.classList.remove('scrolled');
+      }
+    });
+
+    // Dark mode toggle
+    var themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', function() {
+      var html = document.documentElement;
+      var current = html.classList.contains('dark') ? 'dark' : 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.className = next;
+      localStorage.setItem('color-theme', next);
+    });
+
+    // Mobile hamburger
+    var hamburgerBtn = document.getElementById('hamburgerBtn');
+    var navWrap = document.getElementById('navWrap');
+    hamburgerBtn.addEventListener('click', function() {
+      navWrap.classList.toggle('open');
+    });
+
+    // Dropdown menu (mobile tap)
+    var dropdownItem = document.querySelector('.nav-item-dropdown');
+    var dropdownBtn = document.querySelector('.nav-dropdown-btn');
+    if (dropdownBtn && dropdownItem) {
+      dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdownItem.classList.toggle('open');
+      });
+      document.addEventListener('click', function() {
+        dropdownItem.classList.remove('open');
+      });
+    }
+  </script>
+</body>
+</html>

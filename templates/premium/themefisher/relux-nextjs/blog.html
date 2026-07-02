@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Relux Hotel</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-banner {
+      background-image: url('assets/images/blog/banner.png');
+    }
+
+    /* Blog listing */
+    .blog-listing {
+      padding: var(--section-pad) 0;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .blog-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .blog-card {
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+
+    .blog-card-img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .blog-card-img-wrap img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .blog-card:hover .blog-card-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .blog-card-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+    }
+
+    .blog-card-body {
+      padding: 1.75rem;
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--color-text);
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-card-meta .meta-date {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .blog-card-meta svg {
+      width: 14px;
+      height: 14px;
+      color: var(--color-primary);
+    }
+
+    .blog-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--color-dark);
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+      transition: color 0.3s;
+    }
+
+    .blog-card-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .blog-card:hover .blog-card-title {
+      color: var(--color-primary);
+    }
+
+    .blog-card-excerpt {
+      color: var(--color-text);
+      font-size: 0.875rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: gap 0.3s;
+    }
+
+    .blog-card-link:hover {
+      gap: 0.75rem;
+    }
+
+    .blog-card-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Featured post (first card) */
+    .blog-card.featured {
+      grid-column: 1;
+    }
+
+    @media (min-width: 1200px) {
+      .blog-card.featured {
+        grid-column: span 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .blog-card.featured .blog-card-img-wrap img {
+        height: 100%;
+        min-height: 340px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile nav overlay -->
+<input type="checkbox" id="nav-toggle" hidden />
+<label for="nav-toggle" class="nav-overlay"></label>
+<nav class="mobile-nav">
+  <label for="nav-toggle" class="mobile-nav-close" aria-label="Close menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </label>
+  <a href="index.html" class="nav-logo-mobile">
+    <img src="assets/images/logo.svg" alt="Relux" height="32" />
+  </a>
+  <a href="index.html">Home</a>
+  <a href="rooms.html">Rooms</a>
+  <a href="about.html">About</a>
+  <a href="cafe-juice.html">Cafe &amp; Juice</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary mt-auto">Book Here</a>
+</nav>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <label for="nav-toggle" class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </label>
+    <nav class="desktop-nav desktop-nav-left">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="rooms.html" class="nav-link">Rooms</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/logo.svg" alt="Relux" height="40" />
+    </a>
+    <nav class="desktop-nav desktop-nav-right">
+      <a href="cafe-juice.html" class="nav-link">Cafe &amp; Juice</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Book Here</a>
+  </div>
+</header>
+
+<!-- Page Banner -->
+<section class="page-banner">
+  <div class="page-banner-content container">
+    <p class="page-banner-label">Stories &amp; News</p>
+    <h1 class="page-banner-title">Blog &amp; Events</h1>
+    <div class="page-banner-breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>Blog</span>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Listing -->
+<section class="blog-listing">
+  <div class="container">
+    <div class="blog-grid">
+
+      <!-- Post 1 — Featured -->
+      <article class="blog-card featured" data-reveal="fade-up">
+        <div class="blog-card-img-wrap">
+          <img src="assets/images/blog/1.png" alt="Guest Stories" />
+          <span class="blog-card-category">Guest Stories</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="meta-date">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              June 10, 2024
+            </span>
+            <span>By Admin</span>
+          </div>
+          <h2 class="blog-card-title"><a href="blog-guest-stories.html">A Week in Paradise: Our Guest's Unforgettable Stay at Relux</a></h2>
+          <p class="blog-card-excerpt">Every guest carries away a piece of Relux with them — a memory of morning light through sheer curtains, of flavors that linger long after the meal, of service that felt less like service and more like friendship.</p>
+          <a href="blog-guest-stories.html" class="blog-card-link">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="blog-card" data-reveal="fade-up">
+        <div class="blog-card-img-wrap">
+          <img src="assets/images/blog/2.png" alt="Luxury Lifestyle" />
+          <span class="blog-card-category">Luxury Lifestyle</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="meta-date">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              May 28, 2024
+            </span>
+            <span>By Admin</span>
+          </div>
+          <h2 class="blog-card-title"><a href="blog-luxury-lifestyle.html">The Art of Slow Travel: Embracing Luxury Without Rush</a></h2>
+          <p class="blog-card-excerpt">In a world that prizes speed, true luxury is the freedom to slow down. Discover how Relux is redefining the travel experience for the modern wanderer.</p>
+          <a href="blog-luxury-lifestyle.html" class="blog-card-link">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="blog-card" data-reveal="fade-up">
+        <div class="blog-card-img-wrap">
+          <img src="assets/images/blog/3.png" alt="Suites &amp; Stays" />
+          <span class="blog-card-category">Suites &amp; Stays</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="meta-date">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              May 14, 2024
+            </span>
+            <span>By Admin</span>
+          </div>
+          <h2 class="blog-card-title"><a href="blog-suites-stays.html">Inside the Presidential Suite: An Exclusive Look</a></h2>
+          <p class="blog-card-excerpt">Step inside our most coveted accommodation — a 120 m² sanctuary of hand-selected materials, private terrace, and butler service available around the clock.</p>
+          <a href="blog-suites-stays.html" class="blog-card-link">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Post 4 -->
+      <article class="blog-card" data-reveal="fade-up">
+        <div class="blog-card-img-wrap">
+          <img src="assets/images/blog/4.png" alt="Travel Inspiration" />
+          <span class="blog-card-category">Travel Inspiration</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="meta-date">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              April 30, 2024
+            </span>
+            <span>By Admin</span>
+          </div>
+          <h2 class="blog-card-title"><a href="blog-travel-inspiration.html">10 Hidden Gems Near Relux You Must Explore</a></h2>
+          <p class="blog-card-excerpt">Beyond our walls, adventure awaits. From secluded beaches to historic old towns, our concierge reveals the destination's best-kept secrets.</p>
+          <a href="blog-travel-inspiration.html" class="blog-card-link">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Post 5 -->
+      <article class="blog-card" data-reveal="fade-up">
+        <div class="blog-card-img-wrap">
+          <img src="assets/images/blog/5.png" alt="Wellness &amp; Spa" />
+          <span class="blog-card-category">Wellness &amp; Spa</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="meta-date">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              April 15, 2024
+            </span>
+            <span>By Admin</span>
+          </div>
+          <h2 class="blog-card-title"><a href="blog-wellness-spa.html">The Relux Wellness Ritual: A Journey of Mind &amp; Body</a></h2>
+          <p class="blog-card-excerpt">Our spa philosophy goes beyond treatments — it's a holistic journey designed to restore balance, renew energy, and reconnect you with your deepest sense of calm.</p>
+          <a href="blog-wellness-spa.html" class="blog-card-link">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h2 class="footer-heading">Begin Your<br>Luxury Journey</h2>
+        <a href="contact.html" class="btn btn-primary btn-arrow">
+          <span>BOOK HERE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="rooms.html">Rooms</a>
+          <a href="about.html">About</a>
+          <a href="cafe-juice.html">Cafe &amp; Juice</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Explore</h4>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Contact</h4>
+          <p>123 Luxury Lane,<br>Paradise City, PC 10001</p>
+          <p>+1 (800) 123-4567</p>
+          <p>hello@reluxhotel.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Relux Hotel. All rights reserved.</p>
+      <p>Designed by <a href="https://themefisher.com" target="_blank">Themefisher</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

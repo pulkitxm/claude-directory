@@ -1,0 +1,138 @@
+/* NextAdmin clone — small hand-written additions on top of the vendored
+   Tailwind build (global-1.css / global-2.css). Everything else is the
+   site's real compiled utility classes, reused verbatim. */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans, "Satoshi", ui-sans-serif, system-ui, sans-serif);
+}
+
+/* dropdown panels (notifications / user menu) */
+.dropdown-panel {
+  animation: dropdown-in 0.15s ease-out;
+}
+.dropdown-panel.hidden {
+  display: none;
+}
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* sidebar mobile off-canvas */
+@media (max-width: 1023.98px) {
+  #app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease-linear;
+  }
+  #app-sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+}
+
+#sidebar-overlay.overlay-open {
+  display: block;
+}
+
+/* custom scrollbar (thin) to match the original */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+/* active sidebar link state applied via JS */
+.nav-toplink.is-active,
+.nav-sublink.is-active {
+  background: rgba(87, 80, 241, 0.07);
+  color: #5750f1;
+}
+html.dark .nav-toplink.is-active,
+html.dark .nav-sublink.is-active {
+  background: #ffffff1a;
+  color: #fff;
+}
+.nav-group-btn.is-active {
+  background: rgba(87, 80, 241, 0.07);
+  color: #5750f1;
+}
+html.dark .nav-group-btn.is-active {
+  background: #ffffff1a;
+  color: #fff;
+}
+.nav-group-btn[aria-expanded="true"] svg:last-child,
+.nav-group-btn.is-active svg:last-child {
+  transform: rotate(180deg);
+}
+
+/* simple accordion / tabs / modal / popover / tooltip helpers used on the
+   ui-elements showcase pages */
+[data-accordion-panel].is-collapsed {
+  display: none;
+}
+[data-tab-panel].is-hidden {
+  display: none;
+}
+[data-modal-backdrop] {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-modal-backdrop].is-open {
+  display: flex;
+}
+[data-tooltip-el] {
+  position: relative;
+}
+[data-tooltip-el] [data-tooltip-bubble] {
+  position: absolute;
+  z-index: 40;
+  display: none;
+  white-space: nowrap;
+}
+[data-tooltip-el]:hover [data-tooltip-bubble] {
+  display: block;
+}
+[data-popover-panel] {
+  display: none;
+}
+[data-popover-panel].is-open {
+  display: block;
+}
+
+/* carousel */
+[data-carousel] {
+  position: relative;
+  overflow: hidden;
+}
+[data-carousel-track] {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+[data-carousel-slide] {
+  flex: 0 0 100%;
+}
+
+/* progress bar animate-in */
+[data-progress-bar] {
+  transition: width 1s ease;
+}

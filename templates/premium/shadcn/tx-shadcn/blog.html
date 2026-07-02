@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Taxonomy</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Marketing Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-left">
+        <a href="index.html" class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+          </svg>
+          <span class="logo-text">Taxonomy</span>
+        </a>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html#features">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="blog.html">Blog</a>
+        <a href="docs.html">Documentation</a>
+      </nav>
+      <div class="header-right">
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMobileMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html#features">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="docs.html">Documentation</a>
+    </div>
+  </header>
+
+  <!-- Blog Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">Blog</h1>
+      <p class="page-desc">A blog built using Contentlayer. Posts are written in MDX.</p>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="blog-posts">
+    <div class="container">
+      <div class="posts-grid">
+        <article class="post-card">
+          <time class="post-date">January 01, 2023</time>
+          <h2 class="post-title"><a href="blog-server-client-components.html">Server and Client Components</a></h2>
+          <p class="post-excerpt">How to use server and client components in Next.js 13.</p>
+          <span class="post-author">shadcn</span>
+        </article>
+        <article class="post-card">
+          <time class="post-date">January 01, 2023</time>
+          <h2 class="post-title"><a href="#">Using Analytics with Next.js</a></h2>
+          <p class="post-excerpt">How to use analytics with Next.js 13.</p>
+          <span class="post-author">shadcn</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-text">Built by <a href="#">shadcn</a>. Hosted on <a href="#">Vercel</a>. The source code is available on <a href="https://github.com/shadcn-ui/taxonomy">GitHub</a>.</p>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span id="theme-icon"></span>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeIcon(next);
+    }
+
+    function updateThemeIcon(theme) {
+      var icon = document.getElementById('theme-icon');
+      if (!icon) return;
+      if (theme === 'dark') {
+        icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+      } else {
+        icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+    }
+
+    function toggleMobileMenu() {
+      var menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('open');
+    }
+
+    (function() {
+      var t = document.documentElement.getAttribute('data-theme') || 'light';
+      updateThemeIcon(t);
+    })();
+  </script>
+</body>
+</html>

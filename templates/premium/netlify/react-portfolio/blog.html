@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html data-theme="light" style="color-scheme: light;">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Blog</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ---- BLOG-PAGE ENTRANCE ANIMATION ---- */
+    @keyframes blogHeadingIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .blog-heading {
+      animation: blogHeadingIn 0.6s cubic-bezier(0, 0, 0.2, 1) both;
+    }
+
+    /* ---- BLOG HEADING 1440px+ ---- */
+    @media (min-width: 1440px) {
+      .blog-heading { font-size: 6rem; }
+    }
+
+    /* ---- CURSOR SVG FILL (dark mode) ---- */
+    [data-theme="dark"] .cursor-tracker circle {
+      fill: #fff;
+      stroke: #fff;
+    }
+
+    /* ---- DARK MODE: mobile popover border ---- */
+    [data-theme="dark"] .mobile-popover {
+      border-color: rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- THEME INIT (runs before paint to avoid flash) -->
+  <script>
+    !function(){
+      try {
+        var d = document.documentElement, n = 'data-theme', s = 'setAttribute';
+        var e = localStorage.getItem('theme');
+        if ('system' === e || (!e && true)) {
+          var t = '(prefers-color-scheme: dark)', m = window.matchMedia(t);
+          if (m.media !== t || m.matches) {
+            d.style.colorScheme = 'dark'; d[s](n, 'dark');
+          } else {
+            d.style.colorScheme = 'light'; d[s](n, 'light');
+          }
+        } else if (e) {
+          d[s](n, e || '');
+        }
+        if (e === 'light' || e === 'dark') d.style.colorScheme = e;
+      } catch(e) {}
+    }();
+  </script>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-tracker" id="cursor-tracker">
+    <svg height="30" width="30" viewBox="0 0 30 30">
+      <circle class="cursor-circle" cx="15" cy="15" r="7.5" fill="#000" stroke="#000" stroke-width="0"></circle>
+    </svg>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="container mx-auto mb-10">
+
+      <!-- MOBILE NAV (hidden tablet+) -->
+      <div class="nav-mobile">
+        <h1 class="nav-logo">Chetan.</h1>
+        <div class="flex items-center">
+          <!-- Sun / theme toggle -->
+          <button class="btn btn-icon" id="theme-toggle-mobile" aria-label="Toggle theme">
+            <img src="assets/images/sun.svg" alt="Toggle theme">
+          </button>
+          <!-- Hamburger -->
+          <div class="mobile-nav-wrapper">
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+              <img src="assets/images/menu.svg" alt="Menu">
+            </button>
+            <div class="mobile-popover" id="mobile-popover" role="menu">
+              <a href="index.html" class="btn" role="menuitem">Home</a>
+              <a href="blog.html" class="btn" role="menuitem">Blog</a>
+              <a href="resume.html" class="btn" role="menuitem">Resume</a>
+              <a href="index.html#contact" class="btn" role="menuitem">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESKTOP NAV (sticky, hidden mobile) -->
+      <nav class="nav-desktop">
+        <h1 class="nav-logo">Chetan.</h1>
+        <div class="nav-links">
+          <a href="index.html" class="btn">Home</a>
+          <a href="blog.html" class="btn">Blog</a>
+          <a href="resume.html" class="btn">Resume</a>
+          <a href="index.html#contact" class="btn">Contact</a>
+          <button class="btn btn-icon" id="theme-toggle-desktop" aria-label="Toggle theme">
+            <img src="assets/images/sun.svg" alt="Toggle theme">
+          </button>
+        </div>
+      </nav>
+
+      <!-- MAIN CONTENT -->
+      <div class="mt-10">
+
+        <!-- BLOG HEADING -->
+        <h1 class="blog-heading">Blog.</h1>
+
+        <!-- BLOG GRID -->
+        <div class="blog-grid">
+
+          <!-- Card 1 -->
+          <a href="blog/firstblog.html" class="blog-card" aria-label="Read Amazing Blog">
+            <img
+              class="blog-card-img"
+              src="assets/images/blog1.jpg"
+              alt="Amazing Blog"
+            >
+            <h2 class="blog-card-title">Amazing Blog</h2>
+            <p class="blog-card-preview">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <span class="blog-card-date">2022-7-15</span>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="blog/secondblog.html" class="blog-card" aria-label="Read Second Blog">
+            <img
+              class="blog-card-img"
+              src="assets/images/blog2.jpg"
+              alt="Second Blog"
+            >
+            <h2 class="blog-card-title">Second Blog</h2>
+            <p class="blog-card-preview">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <span class="blog-card-date">2022-7-8</span>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="blog/threeblog.html" class="blog-card" aria-label="Read Three Blog">
+            <img
+              class="blog-card-img"
+              src="assets/images/blog3.jpg"
+              alt="Three Blog"
+            >
+            <h2 class="blog-card-title">Three Blog</h2>
+            <p class="blog-card-preview">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <span class="blog-card-date">2022-7-8</span>
+          </a>
+
+        </div><!-- /blog-grid -->
+      </div><!-- /main content -->
+
+    </div><!-- /container -->
+  </div><!-- /page-wrapper -->
+
+  <script>
+    // ---- CUSTOM CURSOR ----
+    (function () {
+      var tracker = document.getElementById('cursor-tracker');
+      if (!tracker) return;
+      document.addEventListener('mousemove', function (e) {
+        tracker.style.left = e.clientX + 'px';
+        tracker.style.top  = e.clientY + 'px';
+      });
+    })();
+
+    // ---- DARK MODE: keep cursor fill in sync ----
+    (function () {
+      var circle = document.querySelector('.cursor-tracker circle');
+      if (!circle) return;
+      function updateCursorColor() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        circle.setAttribute('fill', isDark ? '#fff' : '#000');
+        circle.setAttribute('stroke', isDark ? '#fff' : '#000');
+      }
+      updateCursorColor();
+      new MutationObserver(updateCursorColor).observe(
+        document.documentElement,
+        { attributes: true, attributeFilter: ['data-theme'] }
+      );
+    })();
+
+    // ---- THEME TOGGLE ----
+    (function () {
+      function getTheme() {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark' || stored === 'light') return stored;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+        localStorage.setItem('theme', theme);
+      }
+      function toggle() {
+        applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
+      }
+      var btnDesktop = document.getElementById('theme-toggle-desktop');
+      var btnMobile  = document.getElementById('theme-toggle-mobile');
+      if (btnDesktop) btnDesktop.addEventListener('click', toggle);
+      if (btnMobile)  btnMobile.addEventListener('click', toggle);
+    })();
+
+    // ---- MOBILE MENU POPOVER ----
+    (function () {
+      var btn      = document.getElementById('mobile-menu-btn');
+      var popover  = document.getElementById('mobile-popover');
+      if (!btn || !popover) return;
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = popover.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!popover.contains(e.target) && e.target !== btn) {
+          popover.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close when a menu link is clicked
+      popover.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          popover.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

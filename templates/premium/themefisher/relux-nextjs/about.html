@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Relux Hotel</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-banner {
+      background-image: url('assets/images/about/banner.png');
+    }
+
+    /* About intro section */
+    .about-intro {
+      padding: var(--section-pad) 0;
+    }
+
+    .about-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .about-intro-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+    }
+
+    .about-images-stack {
+      position: relative;
+    }
+
+    .about-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border: 3px solid var(--color-primary);
+      padding: 8px;
+    }
+
+    .about-img-inset {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .about-img-inset {
+        display: block;
+        position: absolute;
+        bottom: -2rem;
+        right: -1.5rem;
+        width: 42%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        border: 3px solid var(--color-primary);
+        padding: 6px;
+        background: #fff;
+      }
+    }
+
+    .about-intro-text .section-label {
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-intro-text h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-intro-text p {
+      color: var(--color-text);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-intro-text .btn {
+      margin-top: 1rem;
+    }
+
+    /* Stats row */
+    .about-stats {
+      background: var(--color-secondary);
+      padding: 4rem 0;
+      color: #fff;
+    }
+
+    .about-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .about-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .about-stat-num {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+      display: block;
+    }
+
+    .about-stat-label {
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.5rem;
+    }
+
+    /* Team section */
+    .team-section {
+      padding: var(--section-pad) 0;
+      background: var(--color-light);
+    }
+
+    .team-section .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .team-card {
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .team-card img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .team-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .team-card-info {
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+
+    .team-card-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--color-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .team-card-info p {
+      font-size: 0.875rem;
+      color: var(--color-primary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Values */
+    .about-values {
+      padding: var(--section-pad) 0;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .value-card {
+      padding: 2.5rem;
+      border: 1px solid var(--color-border);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .value-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 24px rgba(229,166,63,0.12);
+    }
+
+    .value-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      color: #fff;
+    }
+
+    .value-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      color: var(--color-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .value-card p {
+      color: var(--color-text);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile nav overlay -->
+<input type="checkbox" id="nav-toggle" hidden />
+<label for="nav-toggle" class="nav-overlay"></label>
+<nav class="mobile-nav">
+  <label for="nav-toggle" class="mobile-nav-close" aria-label="Close menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </label>
+  <a href="index.html" class="nav-logo-mobile">
+    <img src="assets/images/logo.svg" alt="Relux" height="32" />
+  </a>
+  <a href="index.html">Home</a>
+  <a href="rooms.html">Rooms</a>
+  <a href="about.html">About</a>
+  <a href="cafe-juice.html">Cafe &amp; Juice</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary mt-auto">Book Here</a>
+</nav>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <label for="nav-toggle" class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </label>
+    <nav class="desktop-nav desktop-nav-left">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="rooms.html" class="nav-link">Rooms</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/logo.svg" alt="Relux" height="40" />
+    </a>
+    <nav class="desktop-nav desktop-nav-right">
+      <a href="cafe-juice.html" class="nav-link">Cafe &amp; Juice</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Book Here</a>
+  </div>
+</header>
+
+<!-- Page Banner -->
+<section class="page-banner">
+  <div class="page-banner-content container">
+    <p class="page-banner-label">Our Story</p>
+    <h1 class="page-banner-title">About Relux</h1>
+    <div class="page-banner-breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>About</span>
+    </div>
+  </div>
+</section>
+
+<!-- About Intro -->
+<section class="about-intro">
+  <div class="container">
+    <div class="about-intro-grid">
+      <div class="about-images-stack" data-reveal="fade-right">
+        <img class="about-img-main" src="assets/images/about/about-image-1.png" alt="Relux Hotel Interior" />
+        <img class="about-img-inset" src="assets/images/about/about-image-2.png" alt="Relux Hotel Lounge" />
+      </div>
+      <div class="about-intro-text" data-reveal="fade-left">
+        <span class="section-label">Who We Are</span>
+        <h2>A Legacy of Luxury &amp; Hospitality</h2>
+        <p>Welcome to Relux, where elegance meets comfort and every detail is curated for the discerning traveler. Nestled in the heart of paradise, our hotel has been a beacon of luxury hospitality for over 12 years.</p>
+        <p>Our philosophy is simple: to create an environment where guests feel not just welcomed, but truly at home — surrounded by beauty, enveloped in comfort, and attended to with genuine care. We believe that luxury is not just about opulence; it is about crafting experiences that resonate deeply.</p>
+        <p>From our award-winning restaurant to our world-class spa, from the pristine indoor pool to the thoughtfully appointed rooms — every touchpoint of the Relux experience is designed to exceed expectations.</p>
+        <a href="contact.html" class="btn btn-primary btn-arrow">
+          <span>Book Your Stay</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="about-stats">
+  <div class="container">
+    <div class="about-stats-grid">
+      <div data-reveal="fade-up">
+        <span class="about-stat-num">12+</span>
+        <p class="about-stat-label">Years of Excellence</p>
+      </div>
+      <div data-reveal="fade-up">
+        <span class="about-stat-num">30+</span>
+        <p class="about-stat-label">Countries Served</p>
+      </div>
+      <div data-reveal="fade-up">
+        <span class="about-stat-num">80+</span>
+        <p class="about-stat-label">Luxury Rooms</p>
+      </div>
+      <div data-reveal="fade-up">
+        <span class="about-stat-num">4.9</span>
+        <p class="about-stat-label">Guest Rating</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="about-values">
+  <div class="container">
+    <div class="section-header" style="text-align:center; margin-bottom:3rem;" data-reveal="fade-up">
+      <span class="section-label">Our Philosophy</span>
+      <h2>What Sets Us Apart</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card" data-reveal="fade-up">
+        <div class="value-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Privacy &amp; Security</h3>
+        <p>Every guest's privacy is sacred. Our discreet service ensures that your stay is both secure and confidential, with the highest standard of data protection and personal boundaries.</p>
+      </div>
+      <div class="value-card" data-reveal="fade-up">
+        <div class="value-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Genuine Care</h3>
+        <p>Our staff are not just employees — they are passionate hosts who genuinely care about your wellbeing. Every interaction is infused with warmth, attentiveness, and authentic hospitality.</p>
+      </div>
+      <div class="value-card" data-reveal="fade-up">
+        <div class="value-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Timeless Excellence</h3>
+        <p>We do not follow trends — we set standards. Our commitment to quality is unwavering, ensuring that every aspect of your stay meets the highest benchmark of luxury and refinement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="team-section">
+  <div class="container">
+    <div class="section-header" data-reveal="fade-up">
+      <span class="section-label">Meet The Team</span>
+      <h2>The People Behind Relux</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card" data-reveal="fade-up">
+        <img src="assets/images/team/team-image-1.png" alt="General Manager" />
+        <div class="team-card-info">
+          <h3>Alexandra Voss</h3>
+          <p>General Manager</p>
+        </div>
+      </div>
+      <div class="team-card" data-reveal="fade-up">
+        <img src="assets/images/team/team-image-2.png" alt="Head Chef" />
+        <div class="team-card-info">
+          <h3>Marco Delacroix</h3>
+          <p>Head Chef</p>
+        </div>
+      </div>
+      <div class="team-card" data-reveal="fade-up">
+        <img src="assets/images/team/team-image-3.png" alt="Spa Director" />
+        <div class="team-card-info">
+          <h3>Serena Tanaka</h3>
+          <p>Spa Director</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h2 class="footer-heading">Begin Your<br>Luxury Journey</h2>
+        <a href="contact.html" class="btn btn-primary btn-arrow">
+          <span>BOOK HERE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="rooms.html">Rooms</a>
+          <a href="about.html">About</a>
+          <a href="cafe-juice.html">Cafe &amp; Juice</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Explore</h4>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Contact</h4>
+          <p>123 Luxury Lane,<br>Paradise City, PC 10001</p>
+          <p>+1 (800) 123-4567</p>
+          <p>hello@reluxhotel.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Relux Hotel. All rights reserved.</p>
+      <p>Designed by <a href="https://themefisher.com" target="_blank">Themefisher</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

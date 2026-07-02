@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Contact Us - Cleaner</title>
+<link rel="shortcut icon" href="assets/images/favicon.png">
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-300.ttf") format("truetype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-500.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-600.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-700.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+
+/* ------ contact.html page-specific styles ------ */
+.contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: start; }
+.contact-form-card { padding: clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem); background: var(--bg-surface); border-radius: var(--radius-xl); }
+.contact-form-card .name-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.contact-form-card .btn { width: 100%; justify-content: center; }
+
+.contact-info-list { display: grid; gap: 1.25rem; margin-bottom: 2rem; }
+.contact-info-card {
+  display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem;
+  background: var(--bg-surface); border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  transition: border-color var(--transition-fast) var(--ease-in-out), box-shadow var(--transition-fast) var(--ease-in-out);
+}
+.contact-info-card:hover { border-color: var(--color-primary); box-shadow: 0 20px 40px rgba(14,13,57,0.08); }
+.contact-info-card .icon-circle {
+  flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+}
+.contact-info-card .icon-circle svg { width: 20px; height: 20px; }
+.contact-info-card h6 { margin-bottom: 0.35rem; }
+.contact-info-card p, .contact-info-card a { color: var(--text-color-dark); font-size: var(--text-sm); margin: 0; }
+.contact-info-card a:hover { color: var(--color-primary); }
+
+.map-placeholder {
+  position: relative; overflow: hidden; border-radius: var(--radius-xl);
+  min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.75rem; text-align: center; padding: 2rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 10%, transparent), var(--bg-surface));
+  border: 1px dashed var(--border-color);
+}
+.map-placeholder svg { width: 40px; height: 40px; color: var(--color-primary); }
+.map-placeholder a { color: var(--color-primary); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-form-card .name-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar">
+  <div class="container">
+    <p>Need quick cleaning help?</p>
+    <a href="tel:+1-394-495-5993">
+      <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L184.6 167c13.7-11.1 18.4-30 11.6-46.3l-40-96z"/></svg>
+      Call Us: +1 071 281 9795
+    </a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">
+      <img class="logo-dark" src="assets/images/logo-dark.svg" alt="Cleaner logo" width="142" height="40">
+      <img class="logo-light" src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+    </a>
+    <div class="nav-scrim" id="nav-scrim"></div>
+    <ul class="nav" id="nav-menu">
+      <li><a href="about.html" class="nav-item">About Us</a></li>
+      <li><a href="services.html" class="nav-item">Services</a></li>
+      <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+      <li><a href="blog.html" class="nav-item">Blog</a></li>
+      <li><a href="contact.html" class="nav-item active">Contact</a></li>
+    </ul>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a href="appointment.html" class="btn btn-primary btn-sm desktop-only">Make An Appointment</a>
+      <button class="nav-toggle-btn" id="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Page header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 data-aos="fade-up-sm">Get in <span class="text-accent-underline">touch</span></h1>
+      <nav class="breadcrumb" data-aos="fade-up-sm" data-aos-delay="100" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Contact</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Contact form + info -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="contact-form-card" data-aos="fade-up-sm" data-aos-delay="100">
+          <form action="#" method="POST" onsubmit="return false;">
+            <div class="name-row">
+              <div class="form-group" data-aos="fade-up-sm" data-aos-delay="120">
+                <label for="f-name" class="form-label">First Name</label>
+                <input id="f-name" class="form-input" placeholder="Your First Name" type="text" name="f-name" required>
+              </div>
+              <div class="form-group" data-aos="fade-up-sm" data-aos-delay="140">
+                <label for="l-name" class="form-label">Last Name</label>
+                <input id="l-name" class="form-input" placeholder="Your Last Name" type="text" name="l-name" required>
+              </div>
+            </div>
+            <div class="form-group" data-aos="fade-up-sm" data-aos-delay="160">
+              <label for="email" class="form-label">Email Address</label>
+              <input id="email" class="form-input" placeholder="Your Email Address" type="email" name="email" required>
+            </div>
+            <div class="form-group" data-aos="fade-up-sm" data-aos-delay="180">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-input form-textarea" placeholder="How can we help you?" rows="9" required></textarea>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary">Send A Message</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="contact-info" data-aos="fade-up-sm" data-aos-delay="120">
+          <div class="contact-info-list">
+
+            <div class="contact-info-card">
+              <span class="icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div>
+                <h6>Address</h6>
+                <p>123 Auburn Street, Auburn, WA 98001</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <span class="icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <div>
+                <h6>Phone</h6>
+                <p><a href="tel:+1-394-495-5993">+1-394-495-5993</a></p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <span class="icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg>
+              </span>
+              <div>
+                <h6>Email</h6>
+                <p><a href="mailto:hello@cleaner.com">hello@cleaner.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <span class="icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </span>
+              <div>
+                <h6>Office Hours</h6>
+                <p>Mon &ndash; Fri: 8am &ndash; 6pm</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="map-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>123 Auburn Street, Auburn, WA 98001</p>
+            <a href="https://www.google.com/maps" target="_blank" rel="noopener">View on Google Maps</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner" data-aos="zoom-in">
+        <img class="cta-bg" src="assets/images/cta.png" alt="" aria-hidden="true">
+        <h2>Ready for a spotless space?</h2>
+        <p>Book your first cleaning today and see why Auburn trusts us most.</p>
+        <a href="appointment.html" class="btn btn-secondary">Make An Appointment</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+        <p>Professional cleaning services<br>using innovative technology.</p>
+      </div>
+      <div class="footer-col">
+        <h6>Company</h6>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="elements.html">Elements</a></li>
+          <li><a href="contact.html">Contacts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Services</h6>
+        <ul>
+          <li><a href="service-home-cleaning.html">Home Cleaning</a></li>
+          <li><a href="service-window-cleaning.html">Window Cleaning</a></li>
+          <li><a href="service-pest-control.html">Pest Control</a></li>
+          <li><a href="service-floor-cleaning.html">Floor Cleaning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Social</h6>
+        <ul>
+          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.github.com/" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><a href="https://themefisher.com/" target="_blank" rel="noopener">Themefisher</a> &copy; 2025 All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js" defer></script>
+</body>
+</html>

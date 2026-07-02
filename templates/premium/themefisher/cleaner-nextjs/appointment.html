@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book An Appointment - Cleaner</title>
+<link rel="icon" href="assets/images/favicon.png" type="image/png">
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  /* ---- appointment.html page-specific styles ---- */
+  .appointment-section .row-split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 2vw, 3.5rem); align-items: start; }
+  @media (max-width: 991px) { .appointment-section .row-split { grid-template-columns: 1fr; } }
+  .appointment-form-panel { padding: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem); background: var(--bg-surface); border-radius: var(--radius-lg, 16px); border: 1px solid var(--border-color); }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  @media (max-width: 560px) { .form-row-2 { grid-template-columns: 1fr; } }
+  .appointment-info h2 { margin-bottom: 1.5rem; }
+  .info-list { list-style: none; padding: 0; margin: 0 0 2.25rem; }
+  .info-list li { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+  .info-list li:last-child { margin-bottom: 0; }
+  .info-list .icon-badge { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: var(--radius-md, 12px); background: color-mix(in srgb, var(--color-primary) 12%, transparent); color: var(--color-primary); }
+  .info-list .icon-badge svg { width: 22px; height: 22px; }
+  .info-list h6 { margin-bottom: 0.35rem; }
+  .info-list p { margin-bottom: 0; font-size: var(--text-sm); color: var(--text-color-dark); }
+  .contact-direct { padding: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem); border: 1px solid var(--border-color); border-radius: var(--radius-lg, 16px); }
+  .contact-direct h6 { margin-bottom: 1.25rem; }
+  .contact-direct .contact-row { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem; }
+  .contact-direct .contact-row:last-child { margin-bottom: 0; }
+  .contact-direct .contact-row svg { width: 20px; height: 20px; color: var(--color-primary); flex-shrink: 0; }
+  .contact-direct .contact-row p { margin-bottom: 0; }
+  .cta-banner-split { display: flex; align-items: center; gap: clamp(1.5rem, 2vw, 3rem); flex-wrap: wrap; text-align: left; }
+  .cta-banner-split .cta-copy { flex: 1 1 420px; }
+  .cta-banner-split .cta-copy p { color: rgba(255,255,255,0.85); }
+  .cta-banner-split .cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+  .cta-banner-split .cta-media { flex: 1 1 320px; }
+  .cta-banner-split .cta-media img { border-radius: var(--radius-lg, 16px); width: 100%; height: auto; object-fit: cover; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar">
+  <div class="container">
+    <p>Need quick cleaning help?</p>
+    <a href="tel:+1-394-495-5993">
+      <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L184.6 167c13.7-11.1 18.4-30 11.6-46.3l-40-96z"/></svg>
+      Call Us: +1 071 281 9795
+    </a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">
+      <img class="logo-dark" src="assets/images/logo-dark.svg" alt="Cleaner logo" width="142" height="40">
+      <img class="logo-light" src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+    </a>
+    <div class="nav-scrim" id="nav-scrim"></div>
+    <ul class="nav" id="nav-menu">
+      <li><a href="about.html" class="nav-item">About Us</a></li>
+      <li><a href="services.html" class="nav-item">Services</a></li>
+      <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+      <li><a href="blog.html" class="nav-item">Blog</a></li>
+      <li><a href="contact.html" class="nav-item">Contact</a></li>
+    </ul>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a href="appointment.html" class="btn btn-primary btn-sm desktop-only" aria-current="page">Make An Appointment</a>
+      <button class="nav-toggle-btn" id="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section appointment-section">
+    <div class="container">
+      <p class="eyebrow" data-aos="fade-up-sm">Book A Service</p>
+      <h1 style="max-width:640px;" data-aos="fade-up-sm" data-aos-delay="50">Schedule an <span class="text-accent-underline">appointment</span></h1>
+
+      <div class="row-split" style="margin-top:2.5rem;">
+        <div class="appointment-form-panel" data-aos="fade-up-sm" data-aos-delay="100">
+          <form action="#" onsubmit="return false;">
+            <div class="form-row-2">
+              <div class="form-group" data-aos="fade-up-sm" data-aos-delay="120">
+                <label for="f-name" class="form-label">First Name</label>
+                <input id="f-name" class="form-input" placeholder="Your First Name" type="text" name="f-name" required>
+              </div>
+              <div class="form-group" data-aos="fade-up-sm" data-aos-delay="140">
+                <label for="l-name" class="form-label">Last Name</label>
+                <input id="l-name" class="form-input" placeholder="Your Last Name" type="text" name="l-name" required>
+              </div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up-sm" data-aos-delay="160">
+              <label for="email" class="form-label">Email Address</label>
+              <input id="email" class="form-input" placeholder="Your Email Address" type="email" name="email" required>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group" data-aos="fade-up-sm" data-aos-delay="180">
+                <label for="service-type" class="form-label">Service Type</label>
+                <select id="service-type" class="form-select" name="service-type" required>
+                  <option value="" disabled selected>Select a service</option>
+                  <option value="floor-cleaning">Floor Cleaning</option>
+                  <option value="home-cleaning">Home Cleaning</option>
+                  <option value="pest-control">Pest Control</option>
+                  <option value="window-cleaning">Window Cleaning</option>
+                </select>
+              </div>
+              <div class="form-group" data-aos="fade-up-sm" data-aos-delay="190">
+                <label for="preferred-date" class="form-label">Preferred Date</label>
+                <input id="preferred-date" class="form-input" type="date" name="preferred-date" required>
+              </div>
+            </div>
+
+            <div class="form-group" data-aos="fade-up-sm" data-aos-delay="200">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="How can we help you?" rows="9" required></textarea>
+            </div>
+
+            <div data-aos="fade-up-sm" data-aos-delay="220">
+              <button type="submit" class="btn btn-primary">Make An Appointment</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="appointment-info" data-aos="fade-up-sm" data-aos-delay="100">
+          <h2 class="h4">Why book with us</h2>
+          <ul class="info-list">
+            <li data-aos="fade-up-sm" data-aos-delay="120">
+              <span class="icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </span>
+              <div>
+                <h6>Same-day availability</h6>
+                <p>Book today and get a crew on-site as soon as the same afternoon in most areas.</p>
+              </div>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="140">
+              <span class="icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5.5 3.4 9.7 8 10 4.6-.3 8-4.5 8-10V6l-8-4z"/></svg>
+              </span>
+              <div>
+                <h6>Licensed &amp; insured</h6>
+                <p>Every cleaner is background-checked, trained, and fully covered for your peace of mind.</p>
+              </div>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="160">
+              <span class="icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <div>
+                <h6>Satisfaction guarantee</h6>
+                <p>Not happy with a spot? We'll come back and re-clean it free of charge.</p>
+              </div>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="180">
+              <span class="icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              </span>
+              <div>
+                <h6>Flexible rescheduling</h6>
+                <p>Plans change — move or cancel your appointment any time up to 24 hours ahead.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="contact-direct" data-aos="fade-up-sm" data-aos-delay="200">
+            <h6>Contact us directly</h6>
+            <div class="contact-row">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" aria-hidden="true"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+              <p>+1 840 841 25 69</p>
+            </div>
+            <div class="contact-row">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" aria-hidden="true"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+              <p>785 15h Street, Office 478 <br> New York, USA 70004</p>
+            </div>
+            <div class="contact-row">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" aria-hidden="true"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
+              <p>Mon-Fri: 9 AM &ndash; 6 PM <br> Sat-Sun: 9 AM &ndash; 4 PM</p>
+            </div>
+            <div class="contact-row">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" aria-hidden="true"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+              <p><a href="mailto:info@email.com">info@email.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner" data-aos="zoom-in">
+        <div class="cta-banner-split">
+          <div class="cta-copy">
+            <h2>Discuss our services or make an <span class="text-accent-underline">appointment</span></h2>
+            <p>We know what a sore tooth is, so do not hesitate to reach us via the phone or to make an appointment online! We know what a sore.</p>
+            <div class="cta-actions">
+              <a href="tel:+1-394-495-5993" class="btn btn-secondary">Call: +1-394-495-5993</a>
+              <a href="appointment.html" class="btn btn-light">Make An Appointment</a>
+            </div>
+          </div>
+          <div class="cta-media">
+            <img src="assets/images/cta.png" alt="Call to action" width="750" height="608" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+        <p>Professional cleaning services<br>using innovative technology.</p>
+      </div>
+      <div class="footer-col">
+        <h6>Company</h6>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="elements.html">Elements</a></li>
+          <li><a href="contact.html">Contacts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Services</h6>
+        <ul>
+          <li><a href="service-home-cleaning.html">Home Cleaning</a></li>
+          <li><a href="service-window-cleaning.html">Window Cleaning</a></li>
+          <li><a href="service-pest-control.html">Pest Control</a></li>
+          <li><a href="service-floor-cleaning.html">Floor Cleaning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Social</h6>
+        <ul>
+          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.github.com/" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><a href="https://themefisher.com/" target="_blank" rel="noopener">Themefisher</a> &copy; 2025 All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <title>Andromeda — The Most Intuitive Way to Prototype Designs</title>
+  <meta name="description" content="Andromeda is the most intuitive way to prototype designs. A modern SaaS landing page template.">
+  <link rel="shortcut icon" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: rgba(254, 96, 25, 0.05);
+      padding: 5rem 0 0;
+    }
+    .hero-text { position: relative; z-index: 10; text-align: center; padding-bottom: 2.5rem; }
+    .hero-text h1 {
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      font-weight: 600;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: var(--heading-color);
+    }
+    .hero-image { position: relative; z-index: 40; text-align: center; }
+    .hero-image img { width: 85%; max-width: 1000px; height: auto; border-radius: 0.75rem 0.75rem 0 0; }
+
+    /* Decorative dashed curve */
+    .hero-curve {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-curve svg { position: absolute; }
+    .hero-curve .curve-main { bottom: 0; left: 0; width: 100%; opacity: 0.14; color: var(--primary); }
+    .hero-curve .curve-top-right { top: 0; right: 0; opacity: 0.14; color: var(--primary); }
+
+    /* ── Brands ── */
+    .brands-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0; overflow: hidden; }
+    .brands-overflow { overflow: hidden; padding: 0; }
+
+    /* ── Features ── */
+    .features-section .swiper-container {
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 3rem;
+    }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 768px) { .features-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 992px) { .features-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* Feature detail blocks */
+    .feature-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
+    .feature-detail.reverse { direction: rtl; }
+    .feature-detail.reverse > * { direction: ltr; }
+    @media (max-width: 768px) { .feature-detail { grid-template-columns: 1fr; gap: 2rem; } .feature-detail.reverse { direction: ltr; } }
+    .feature-detail img { width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); }
+    .feature-detail-text .service-title { font-size: 1.8rem; }
+    .feature-detail-text p { margin-bottom: 1.5rem; }
+
+    /* ── Video Section ── */
+    .video-section {
+      background: #fff;
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .video-centered { max-width: 600px; margin: 0 auto; }
+    .video-play-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 5.5rem;
+      height: 5.5rem;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 0 0 15px rgba(254,96,25,0.15);
+      transition: transform 0.3s ease;
+    }
+    .video-play-circle:hover { transform: scale(1.1); }
+
+    /* ── Testimonials ── */
+    .testimonials-section {
+      background: var(--primary);
+      padding: 5rem 0;
+      overflow: hidden;
+    }
+    .testimonials-section .section-title .subtitle { color: rgba(255,255,255,0.7); }
+    .testimonials-section .section-title .title { color: #fff; }
+    .testimonials-section .section-title .title::after { background: rgba(255,255,255,0.5); }
+    .testimonials-section .section-title p { color: rgba(255,255,255,0.8); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 992px) { .testimonials-grid { grid-template-columns: 1fr 1fr; } }
+    .testimonial-quote-card {
+      text-align: center;
+      color: rgba(255,255,255,0.9);
+    }
+    .testimonial-quote-card .qt-icon {
+      display: inline-block;
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1rem;
+    }
+    .testimonial-quote-card p { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
+    .testimonial-author-card {
+      display: inline-block;
+      background: #fff;
+      border-radius: var(--radius-sm);
+      padding: 1.5rem 2rem;
+      box-shadow: var(--shadow-md);
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .testimonial-author-card img { width: 3.5rem; height: 3.5rem; border-radius: 50%; object-fit: cover; margin: 0 auto 0.75rem; display: block; }
+    .testimonial-author-card .name { font-weight: 700; font-size: 0.95rem; color: var(--heading-color); }
+    .testimonial-author-card .role { font-size: 0.8rem; color: var(--body-color); }
+
+    /* ── CTA ── */
+    .cta-bg {
+      background: var(--primary-5);
+      text-align: center;
+      padding: 5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- ── HEADER ── -->
+  <header class="header" id="header">
+    <nav class="navbar container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logo.png" alt="Andromeda" style="height:36px;width:auto">
+      </a>
+      <button class="hamburger-btn" id="hamburger" aria-label="Toggle menu">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="how-it-works.html">How It Works</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+        <li class="nav-item nav-dropdown" id="pages-dropdown">
+          <span>Pages <svg viewBox="0 0 20 20" style="width:1rem;height:1rem;fill:currentColor;vertical-align:middle"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></span>
+          <ul class="nav-dropdown-list">
+            <li class="nav-dropdown-item"><a href="careers.html">Careers</a></li>
+            <li class="nav-dropdown-item"><a href="case-studies.html">Case Studies</a></li>
+            <li class="nav-dropdown-item"><a href="pricing.html">Pricing</a></li>
+            <li class="nav-dropdown-item"><a href="signin.html">Sign In</a></li>
+            <li class="nav-dropdown-item"><a href="elements.html">Elements</a></li>
+            <li class="nav-dropdown-item"><a href="changelog.html">Changelog</a></li>
+            <li class="nav-dropdown-item"><a href="terms-and-conditions.html">Terms And Conditions</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-cta-mobile"><a class="btn btn-primary" href="signup.html">Sign Up Now</a></li>
+      </ul>
+      <div class="nav-cta-desktop">
+        <a class="btn btn-primary" href="signup.html">Sign Up Now</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ── HERO ── -->
+    <section class="hero">
+      <!-- Decorative circles -->
+      <span class="has-circle">
+        <span style="position:absolute;top:50px;left:11%;width:32px;height:32px;border-radius:50%;background:rgba(254,96,25,0.2)"></span>
+        <span style="position:absolute;top:29%;left:3%;width:85px;height:85px;border-radius:50%;background:rgba(254,96,25,0.9)"></span>
+        <span style="position:absolute;top:45%;left:22%;width:20px;height:20px;border-radius:50%;background:rgba(254,96,25,0.9)"></span>
+        <span style="position:absolute;bottom:35%;left:15%;width:47px;height:47px;border-radius:50%;background:rgba(254,96,25,0.2)"></span>
+        <span style="position:absolute;bottom:8%;left:6%;width:62px;height:62px;border-radius:50%;background:rgba(254,96,25,0.2)"></span>
+        <span style="position:absolute;top:100px;right:12%;width:20px;height:20px;border-radius:50%;background:rgba(254,96,25,0.9)"></span>
+        <span style="position:absolute;top:30%;right:2%;width:73px;height:73px;border-radius:50%;background:rgba(254,96,25,0.2)"></span>
+        <span style="position:absolute;top:52%;right:19%;width:37px;height:37px;border-radius:50%;background:rgba(254,96,25,0.2)"></span>
+        <span style="position:absolute;top:55%;right:33%;width:20px;height:20px;border-radius:50%;background:rgba(254,96,25,0.9)"></span>
+        <span style="position:absolute;bottom:20%;right:5%;width:65px;height:65px;border-radius:50%;background:rgba(254,96,25,0.9)"></span>
+      </span>
+      <!-- Dashed SVG curves -->
+      <div class="hero-curve">
+        <svg class="curve-main" style="position:absolute;bottom:0;left:0;width:100%;opacity:0.14;color:#FE6019" viewBox="0 0 1397 502" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 501C35.0836 398.787 165.889 212.869 424.439 286.903c323.189 92.542 463.337-26.012 519.197-131.059C999.496 50.796 1146.13-47.2484 1396 29.2863" stroke="currentcolor" stroke-opacity=".85" stroke-width="4" stroke-dasharray="10 10"/>
+        </svg>
+      </div>
+      <div class="container position-relative" style="z-index:10">
+        <div class="hero-text" data-aos="fade-up">
+          <h1 data-aos="fade-up">Andromeda is the most intuitive way to prototype Designs</h1>
+          <a class="btn btn-primary btn-lg" href="https://themefisher.com/products/andromeda-nextjs" target="_blank" rel="noopener" data-aos="fade-up" data-aos-delay="200">Buy This Theme</a>
+        </div>
+        <div class="hero-image" data-aos="fade-up" data-aos-delay="300">
+          <img src="assets/images/bannerimage.webp" alt="Andromeda Dashboard" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BRANDS CAROUSEL ── -->
+    <section class="brands-section mt-4">
+      <div class="brands-overflow">
+        <div class="brands-track" id="brands-track">
+          <!-- 6 brands duplicated for seamless loop -->
+          <div class="brand-item"><img src="assets/images/brands/01-colored.png" alt="Brand 1"></div>
+          <div class="brand-item"><img src="assets/images/brands/02-colored.png" alt="Brand 2"></div>
+          <div class="brand-item"><img src="assets/images/brands/03-colored.png" alt="Brand 3"></div>
+          <div class="brand-item"><img src="assets/images/brands/04-colored.png" alt="Brand 4"></div>
+          <div class="brand-item"><img src="assets/images/brands/05-colored.png" alt="Brand 5"></div>
+          <div class="brand-item"><img src="assets/images/brands/06-colored.png" alt="Brand 6"></div>
+          <!-- Duplicate for seamless scroll -->
+          <div class="brand-item"><img src="assets/images/brands/01-colored.png" alt="Brand 1"></div>
+          <div class="brand-item"><img src="assets/images/brands/02-colored.png" alt="Brand 2"></div>
+          <div class="brand-item"><img src="assets/images/brands/03-colored.png" alt="Brand 3"></div>
+          <div class="brand-item"><img src="assets/images/brands/04-colored.png" alt="Brand 4"></div>
+          <div class="brand-item"><img src="assets/images/brands/05-colored.png" alt="Brand 5"></div>
+          <div class="brand-item"><img src="assets/images/brands/06-colored.png" alt="Brand 6"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURES SECTION ── -->
+    <section class="section features-section">
+      <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+          <span class="subtitle">Special Features</span>
+          <h2 class="title">Elements To <br>Get You Started</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas<br>Werat viverra id et aliquet. vulputate egestas sollicitudin.</p>
+        </div>
+
+        <div class="features-grid" data-aos="fade-up" data-aos-delay="100">
+          <!-- Feature Card 1 -->
+          <div class="features-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="currentColor"><path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg>
+            </div>
+            <h3>Updated Security</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque enim id diam ornare adipiscing elit. vulputam in sagittis.</p>
+          </div>
+          <!-- Feature Card 2 -->
+          <div class="features-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" fill="currentColor"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm281.2-93.6c-12.4-6.8-27.6-6.8-40 0L96.8 252.4c-12.4 6.8-20.1 19.7-20.1 33.6v100c0 13.9 7.7 26.8 20.1 33.6l144.4 90c12.4 6.8 27.6 6.8 40 0l144.4-90c12.4-6.8 20.1-19.7 20.1-33.6V286c0-13.9-7.7-26.8-20.1-33.6L281.2 162.4z"/></svg>
+            </div>
+            <h3>Magnetic Turning</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque enim id diam ornare adipiscing elit. vulputam in sagittis.</p>
+          </div>
+          <!-- Feature Card 3 -->
+          <div class="features-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="28" height="28" fill="currentColor"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0z"/></svg>
+            </div>
+            <h3>Secured &amp; up-to-date</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque enim id diam ornare adipiscing elit. vulputam in sagittis.</p>
+          </div>
+        </div>
+
+        <!-- Feature detail blocks -->
+        <div class="feature-detail mt-5" data-aos="fade-up">
+          <div>
+            <img src="assets/images/features-01.webp" alt="Feature 1">
+          </div>
+          <div class="feature-detail-text">
+            <div class="section-title text-left" style="margin-bottom:0">
+              <span class="subtitle">Short Intro Video</span>
+            </div>
+            <h3 class="service-title mt-2">Built Exclusively For You</h3>
+            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas Werat viverra id et aliquet, vulputate egestas sollicitudin.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.</p>
+          </div>
+        </div>
+
+        <div class="feature-detail reverse" data-aos="fade-up">
+          <div>
+            <img src="assets/images/features-02.webp" alt="Feature 2">
+          </div>
+          <div class="feature-detail-text">
+            <div class="section-title text-left" style="margin-bottom:0">
+              <span class="subtitle">Special Features</span>
+            </div>
+            <h3 class="service-title mt-2">Everything You Need</h3>
+            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas Werat viverra id et aliquet, vulputate egestas sollicitudin.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── VIDEO SECTION ── -->
+    <section class="video-section">
+      <div class="container">
+        <div class="video-centered text-center" data-aos="fade-up">
+          <div class="video-play-circle" id="play-video" role="button" tabindex="0" aria-label="Play video">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="28" height="28" fill="currentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="video-modal">
+      <div class="modal-inner">
+        <button class="close-btn" id="close-video" aria-label="Close video">&times;</button>
+        <iframe id="video-iframe" src="" title="Product Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+          <span class="subtitle">Don't Take Our Word For It</span>
+          <h2 class="title">OUR TESTIMONIALS</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.</p>
+        </div>
+
+        <div class="testimonials-grid" data-aos="fade-up" data-aos-delay="100">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-quote-card">
+            <div class="qt-icon">&ldquo;</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas Werat viverra id et aliquet, vulputate egestas sollicitudin.</p>
+            <div class="testimonial-author-card">
+              <img src="assets/images/user-img/07-i.jpg" alt="David Cameron">
+              <div class="name">David Cameron</div>
+              <div class="role">CEO, Themefisher</div>
+            </div>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="testimonial-quote-card">
+            <div class="qt-icon">&ldquo;</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas Werat viverra id et aliquet, vulputate egestas sollicitudin.</p>
+            <div class="testimonial-author-card">
+              <img src="assets/images/user-img/07-i.jpg" alt="Sarah Johnson">
+              <div class="name">Sarah Johnson</div>
+              <div class="role">Marketing Lead</div>
+            </div>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="testimonial-quote-card">
+            <div class="qt-icon">&ldquo;</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas Werat viverra id et aliquet, vulputate egestas sollicitudin.</p>
+            <div class="testimonial-author-card">
+              <img src="assets/images/user-img/07-i.jpg" alt="Mark Wilson">
+              <div class="name">Mark Wilson</div>
+              <div class="role">Product Manager</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA SECTION ── -->
+    <section class="cta-bg">
+      <div class="container" data-aos="fade-up">
+        <a class="btn btn-primary btn-lg" href="https://themefisher.com/products/andromeda-nextjs" target="_blank" rel="noopener">Download Now</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html"><img src="assets/images/logo.png" alt="Andromeda"></a>
+          <p class="mt-2">Lorem ipsum dolor sit sed dmi amet, consectetur adipiscing. Cdo tellus, sed condimentum volutpat.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Socials</h5>
+          <p class="footer-email">Info@andromeda.io</p>
+          <ul class="social-icons">
+            <li><a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms-and-conditions.html">Terms And Conditions</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Location &amp; Contact</h5>
+          <p style="font-size:0.9rem;color:var(--body-color);margin-bottom:0.75rem">2118 Thornridge Cir. Syracuse,<br>Connecticut 35624</p>
+          <p style="font-size:0.9rem;color:var(--body-color)">+704-555-0127</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        Designed &amp; Developed By <a href="https://themefisher.com" target="_blank" rel="noopener">Themefisher</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Sticky Header ──
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // ── Mobile Nav ──
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+      const isOpen = navMenu.classList.contains('open');
+      hamburger.innerHTML = isOpen
+        ? '<svg viewBox="0 0 20 20" fill="currentColor"><polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"/></svg>'
+        : '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>';
+    });
+
+    // Dropdown toggle on mobile
+    document.getElementById('pages-dropdown').addEventListener('click', (e) => {
+      if (window.innerWidth < 992) {
+        e.currentTarget.classList.toggle('open');
+        e.stopPropagation();
+      }
+    });
+
+    // ── AOS Scroll Animations ──
+    const aosElements = document.querySelectorAll('[data-aos]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseInt(entry.target.dataset.aosDelay || '0');
+          setTimeout(() => entry.target.classList.add('aos-animate'), delay);
+        }
+      });
+    }, { threshold: 0, rootMargin: '9999px 0px 9999px 0px' });
+    aosElements.forEach(el => observer.observe(el));
+
+    // ── Video Modal ──
+    const playBtn = document.getElementById('play-video');
+    const videoModal = document.getElementById('video-modal');
+    const closeVideo = document.getElementById('close-video');
+    const videoIframe = document.getElementById('video-iframe');
+
+    function openVideo() {
+      videoModal.classList.add('open');
+      videoIframe.src = 'https://www.youtube.com/embed/ResipmZmpDU?autoplay=1';
+    }
+    function closeVideoFn() {
+      videoModal.classList.remove('open');
+      videoIframe.src = '';
+    }
+    playBtn.addEventListener('click', openVideo);
+    playBtn.addEventListener('keydown', e => { if (e.key === 'Enter') openVideo(); });
+    closeVideo.addEventListener('click', closeVideoFn);
+    videoModal.addEventListener('click', e => { if (e.target === videoModal) closeVideoFn(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoFn(); });
+  </script>
+</body>
+</html>

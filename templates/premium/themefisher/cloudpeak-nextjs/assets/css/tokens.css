@@ -1,0 +1,150 @@
+/*
+  tokens.css — Design tokens (CSS custom properties) for the CloudPeak clone.
+
+  Theme model:
+  - The site is DARK-FIRST (source template ships no light mode). `:root`
+    carries the dark palette as the default so pages render correctly even
+    before common.js's boot script runs.
+  - `[data-theme="dark"]` repeats the same values explicitly (belt & braces).
+  - `[data-theme="light"]` overrides surface/text tokens for the light mode
+    added for this clone. Brand accents (--color-primary / --color-secondary)
+    stay constant across both themes.
+  - Theme is chosen by (in order): stored `localStorage.theme` choice ->
+    `prefers-color-scheme` media query -> dark default. See common.js's
+    boot script for the actual resolution logic (must run pre-paint).
+*/
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Core palette (source CloudPeak dark theme, extracted from source.css) */
+  --color-black: #000000;
+  --color-body: #05071a;
+  --color-primary-surface: #101636; /* "--color-light" in source: card/section surface */
+  --color-border: #1c244c;
+  --color-shadow: #1a2248;
+  --color-tertiary: #334679;
+  --color-primary: #376aed;   /* brand blue accent */
+  --color-secondary: #47cc88; /* brand green accent */
+  --color-text: #9ea3bf;
+  --color-text-dark: #040404;
+  --color-white: #ffffff;
+
+  /* Semantic aliases used throughout base.css / pages */
+  --bg-body: var(--color-body);
+  --bg-surface: var(--color-primary-surface);
+  --bg-surface-alt: color-mix(in oklab, var(--color-primary-surface) 70%, var(--color-body));
+  --border-color: var(--color-border);
+  --text-color: var(--color-text);
+  --text-color-light: color-mix(in oklab, var(--color-text) 130%, white);
+  --text-color-muted: color-mix(in oklab, var(--color-text) 70%, transparent);
+  --heading-color: var(--color-white);
+  --accent: var(--color-primary);
+  --accent-2: var(--color-secondary);
+  --on-accent: var(--color-white);
+
+  /* Decorative gradient stops (hero / CTA glow art) */
+  --glow-blue: #376aed;
+  --glow-green: #47cc88;
+
+  /* Radii (matches source's Tailwind radius scale) */
+  --radius-pill: 9999px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
+
+  /* Spacing scale (rem) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-14: 3.5rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Type scale (matches outline.json computed sizes) */
+  --text-base: 16px;
+  --text-h6: 1.25rem;
+  --text-h5: 1.5rem;
+  --text-h4: 2rem;
+  --text-h3: 2.5rem;
+  --text-h2: 3rem;
+  --text-h1: 4.5rem;
+  --text-h6-sm: 1.125rem;
+  --text-h5-sm: 1.25rem;
+  --text-h4-sm: 1.5rem;
+  --text-h3-sm: 1.875rem;
+  --text-h2-sm: 2.25rem;
+  --text-h1-sm: 2.75rem;
+
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+
+  --font-primary: "Sora", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s;
+  --transition-base: 0.3s;
+  --transition-slow: 0.5s;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --color-black: #111114;
+  --color-body: #f5f7ff;
+  --color-primary-surface: #ffffff;
+  --color-border: #e2e6f5;
+  --color-shadow: #ccd4f2;
+  --color-tertiary: #c3cdec;
+  --color-primary: #376aed;
+  --color-secondary: #1fa968;
+  --color-text: #4b5171;
+  --color-text-dark: #1c2340;
+  --color-white: #101636; /* "on-dark" white text becomes ink in light mode */
+
+  --bg-body: var(--color-body);
+  --bg-surface: var(--color-primary-surface);
+  --bg-surface-alt: #eef1fc;
+  --border-color: var(--color-border);
+  --text-color: var(--color-text);
+  --text-color-light: color-mix(in oklab, var(--color-text) 130%, black);
+  --text-color-muted: color-mix(in oklab, var(--color-text) 70%, transparent);
+  --heading-color: #101636;
+  --accent: var(--color-primary);
+  --accent-2: var(--color-secondary);
+  --on-accent: #ffffff;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --color-black: #111114;
+    --color-body: #f5f7ff;
+    --color-primary-surface: #ffffff;
+    --color-border: #e2e6f5;
+    --color-shadow: #ccd4f2;
+    --color-tertiary: #c3cdec;
+    --color-primary: #376aed;
+    --color-secondary: #1fa968;
+    --color-text: #4b5171;
+    --color-text-dark: #1c2340;
+    --color-white: #101636;
+    --bg-body: var(--color-body);
+    --bg-surface: var(--color-primary-surface);
+    --bg-surface-alt: #eef1fc;
+    --border-color: var(--color-border);
+    --text-color: var(--color-text);
+    --heading-color: #101636;
+  }
+}

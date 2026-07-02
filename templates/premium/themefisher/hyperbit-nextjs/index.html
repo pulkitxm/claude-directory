@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hyperbit — Digital Agency Template</title>
+  <link rel="icon" href="assets/images/favicon.png">  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      padding-top: 10rem;
+      padding-bottom: 0;
+      border-radius: 0 0 60px 60px;
+      overflow: hidden;
+      min-height: 90vh;
+      background: linear-gradient(135deg, rgba(138,64,249,0.05) 0%, var(--color-body) 50%);
+    }
+    .hero .blob { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+    .blob-l { width: 50rem; height: 50rem; bottom: -8rem; left: -25rem; background: rgba(138,64,249,0.12); mix-blend-mode: multiply; }
+    .blob-r { width: 50rem; height: 50rem; bottom: -8rem; right: -25rem; background: rgba(255,167,91,0.12); mix-blend-mode: multiply; }
+    .blob-t { width: 55rem; height: 55rem; top: -27rem; left: 50%; transform: translateX(-50%); background: rgba(252,252,25,0.12); mix-blend-mode: hue; opacity: 0.6; }
+    .hero-content { position: relative; z-index: 4; display: flex; flex-direction: column; align-items: center; text-align: center; padding-bottom: 5rem; }
+    .hero-title { font-size: clamp(2.5rem, 6vw, var(--text-h1)); margin: 3.5rem 0 2.5rem; max-width: 14ch; }
+    .hero-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-bottom: 3rem; }
+    .hero-tag {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(47,47,47,0.15);
+      font-size: 0.875rem;
+      color: var(--color-text-dark);
+      background: white;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 5rem; }
+    .hero-work-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; width: 100%; }
+    .hero-work-preview img { border-radius: 1rem; width: 100%; height: auto; }
+    /* Services */
+    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+    @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(4,1fr); } }
+    @media (max-width: 640px) { .services-grid { grid-template-columns: 1fr; } }
+    /* Value props */
+    .value-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 768px) { .value-grid { grid-template-columns: repeat(3,1fr); } }
+    /* Work grid */
+    .work-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 768px) { .work-grid { grid-template-columns: 1fr 1fr; } }
+    /* Process */
+    .process-section { background: var(--color-dark); border-radius: 2rem; padding: 5rem 3rem; }
+    .process-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: 3rem; }
+    @media (min-width: 768px) { .process-grid { grid-template-columns: repeat(3,1fr); } }
+    /* Offerings */
+    .offerings-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 768px) { .offerings-grid { grid-template-columns: repeat(3,1fr); } }
+    .offering-card { border: 1px solid rgba(47,47,47,0.1); border-radius: var(--radius-2xl); padding: 2rem; background: white; }
+    /* Testimonials */
+    .testimonials-outer { position: relative; overflow: hidden; }
+    .testimonials-track { display: flex; gap: 1.5rem; transition: transform 0.5s ease; }
+    /* Pricing */
+    .pricing-section { position: relative; overflow: hidden; padding: 5rem 0; }
+    .pricing-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.05; z-index: 0; }
+    .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; position: relative; z-index: 1; }
+    @media (min-width: 768px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
+    /* CTA */
+    .cta-wrapper { position: relative; border-radius: 2rem; overflow: hidden; background: var(--color-dark); padding: 5rem 2rem; text-align: center; }
+    .cta-wrapper h2, .cta-wrapper p { color: white; }
+    .cta-avatar-row { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
+    .cta-avatar { width: 4rem; height: 4rem; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.2); }
+    /* FAQ */
+    .faq-section { max-width: 800px; margin: 0 auto; }
+    /* Book-call section */
+    .book-section { background: var(--color-dark); border-radius: 2rem; overflow: hidden; position: relative; }
+    .book-section-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.06; }
+    .book-inner { position: relative; z-index: 1; padding: 5rem 3rem; text-align: center; }
+    .book-inner h2, .book-inner p { color: white; }
+    .book-contact { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin: 1.5rem 0; }
+    .book-contact a { color: white; margin: 0 1rem; }
+    /* Mobile menu */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 1rem;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 1rem;
+      right: 1rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      z-index: 50;
+    }
+    .mobile-nav.open { display: flex; }
+    @media (min-width: 768px) { .mobile-nav { display: none !important; } }
+    .mobile-nav a { padding: 0.625rem 1rem; border-radius: 0.5rem; color: var(--color-text-dark); font-weight: 500; }
+    .mobile-nav a:hover { background: #f5f5f5; }
+    /* Marquee logos */
+    .logos-marquee { display: flex; align-items: center; }
+    .logos-track { display: flex; gap: 3rem; align-items: center; animation: marquee 25s linear infinite; }
+    .logos-track img { height: 2rem; width: auto; object-fit: contain; opacity: 0.5; filter: grayscale(1); }
+    /* Nav hamburger button */
+    .hamburger-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--color-text-dark);
+    }
+    @media (max-width: 767px) { .hamburger-btn { display: flex; } }
+  </style>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+</head>
+<body>
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header class="header" role="banner">
+  <nav class="navbar container" aria-label="Main navigation">
+    <a href="index.html" class="navbar-brand" aria-label="Hyperbit Home">
+      <img src="assets/images/logo.svg" alt="Hyperbit" width="98" height="37">
+    </a>
+
+    <ul class="navbar-nav" id="desktop-nav" role="list">
+      <li class="nav-item">
+        <span class="nav-link active" tabindex="0">
+          All Pages
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </span>
+        <ul class="nav-dropdown-list" role="menu">
+          <li><a href="index.html" class="nav-dropdown-link" role="menuitem">Home</a></li>
+          <li><a href="work.html" class="nav-dropdown-link" role="menuitem">Work</a></li>
+          <li><a href="work/spark-layer.html" class="nav-dropdown-link" role="menuitem">Work Details</a></li>
+          <li><a href="about.html" class="nav-dropdown-link" role="menuitem">About</a></li>
+          <li><a href="services.html" class="nav-dropdown-link" role="menuitem">Services</a></li>
+          <li><a href="contact.html" class="nav-dropdown-link" role="menuitem">Contact</a></li>
+          <li><a href="blog.html" class="nav-dropdown-link" role="menuitem">Blog</a></li>
+          <li><a href="blog/emerging-trends.html" class="nav-dropdown-link" role="menuitem">Blog Details</a></li>
+        </ul>
+      </li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="work.html" class="nav-link">Work</a></li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <a href="contact.html" class="btn btn-dark" style="display:none;" id="nav-cta-desktop">
+      <div class="btn-inner">
+        <div class="btn-text-1">
+          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+          Book a Call
+        </div>
+        <div class="btn-text-2">
+          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+          Book a Call
+        </div>
+      </div>
+    </a>
+
+    <button class="hamburger-btn" id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+      <svg id="ham-open" width="24" height="24" viewBox="0 0 20 20" fill="currentColor"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      <svg id="ham-close" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" style="display:none;"><polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"/></svg>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" style="background:var(--color-dark);color:white;margin-top:0.5rem;text-align:center;">Book a Call</a>
+  </div>
+</header>
+
+<!-- ════════════════ MAIN ════════════════ -->
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="blob blob-l" aria-hidden="true"></div>
+    <div class="blob blob-r" aria-hidden="true"></div>
+    <div class="blob blob-t" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-content reveal">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          On Deck
+        </div>
+
+        <h1 class="hero-title">
+          Design That Builds <em>Brands</em>
+        </h1>
+
+        <div class="hero-tags">
+          <span class="hero-tag">Branding</span>
+          <span class="hero-tag">Design</span>
+          <span class="hero-tag">Development</span>
+          <span class="hero-tag">Social Ads</span>
+          <span class="hero-tag">Slide Decks</span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="work.html" class="btn btn-dark">
+            <div class="btn-inner">
+              <div class="btn-text-1">View Our Work</div>
+              <div class="btn-text-2">View Our Work</div>
+            </div>
+          </a>
+          <a href="contact.html" class="btn btn-outline">Book a Call</a>
+        </div>
+
+        <div class="hero-work-preview">
+          <img src="assets/images/work/spark-layer/1.png" alt="Spark Layer project" loading="lazy">
+          <img src="assets/images/work/ignite-flow/1.png" alt="Ignite Flow project" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-heading reveal">
+        <h2>Our Core <em>Services</em></h2>
+        <p>We craft exceptional digital experiences tailored to drive growth.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><img src="assets/images/icons/branding-design.png" alt="Branding Design"></div>
+          <h3 class="service-title">Branding Design</h3>
+          <p class="service-desc">We build cohesive brand identities that communicate your vision and resonate deeply with your audience.</p>
+          <a href="services.html" class="service-link">
+            Learn more
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.1s">
+          <div class="service-icon"><img src="assets/images/icons/product-design.png" alt="Product Design"></div>
+          <h3 class="service-title">Product Design</h3>
+          <p class="service-desc">From wireframes to pixel-perfect interfaces, we design products that users love to engage with.</p>
+          <a href="services.html" class="service-link">
+            Learn more
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.2s">
+          <div class="service-icon"><img src="assets/images/icons/social-ads-design.png" alt="Social Ads Design"></div>
+          <h3 class="service-title">Social Ads Design</h3>
+          <p class="service-desc">High-converting ad creatives designed to capture attention and drive measurable results on every platform.</p>
+          <a href="services.html" class="service-link">
+            Learn more
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.3s">
+          <div class="service-icon"><img src="assets/images/icons/slide-decks-design.png" alt="Slide Decks Design"></div>
+          <h3 class="service-title">Slide Decks Design</h3>
+          <p class="service-desc">Compelling pitch decks and presentations that tell your story and close the deals that matter.</p>
+          <a href="services.html" class="service-link">
+            Learn more
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Client logos marquee -->
+      <div class="marquee-wrapper" style="margin-top:4rem;overflow:hidden;" aria-label="Our clients">
+        <div class="logos-track">
+          <img src="assets/images/company/logo-1.svg" alt="Client logo 1">
+          <img src="assets/images/company/logo-2.svg" alt="Client logo 2">
+          <img src="assets/images/company/logo-3.svg" alt="Client logo 3">
+          <img src="assets/images/company/logo-4.svg" alt="Client logo 4">
+          <img src="assets/images/company/logo-5.svg" alt="Client logo 5">
+          <img src="assets/images/company/logo-6.svg" alt="Client logo 6">
+          <!-- Duplicate for seamless loop -->
+          <img src="assets/images/company/logo-1.svg" alt="" aria-hidden="true">
+          <img src="assets/images/company/logo-2.svg" alt="" aria-hidden="true">
+          <img src="assets/images/company/logo-3.svg" alt="" aria-hidden="true">
+          <img src="assets/images/company/logo-4.svg" alt="" aria-hidden="true">
+          <img src="assets/images/company/logo-5.svg" alt="" aria-hidden="true">
+          <img src="assets/images/company/logo-6.svg" alt="" aria-hidden="true">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE PROPS -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-heading reveal">
+        <h2>Why Choose <em>Us</em></h2>
+        <p>Three reasons our clients stay, grow, and refer.</p>
+      </div>
+      <div class="value-grid">
+        <div class="card reveal">
+          <div class="card-icon"><img src="assets/images/icons/convert-designs.png" alt="Convert Designs"></div>
+          <h3 style="font-size:1.25rem;margin-bottom:0.75rem;">Designs Built to Convert</h3>
+          <p style="color:var(--color-text-dark);line-height:1.7;font-size:0.9rem;">Every pixel is placed with purpose. Our designs don't just look good — they work hard to turn visitors into customers.</p>
+        </div>
+        <div class="card reveal" style="transition-delay:.1s">
+          <div class="card-icon"><img src="assets/images/icons/expertise-creativity.png" alt="Senior Pro Work"></div>
+          <h3 style="font-size:1.25rem;margin-bottom:0.75rem;">Senior Pro Work</h3>
+          <p style="color:var(--color-text-dark);line-height:1.7;font-size:0.9rem;">No juniors here. Your projects are handled by senior designers with years of industry experience across dozens of verticals.</p>
+        </div>
+        <div class="card reveal" style="transition-delay:.2s">
+          <div class="card-icon"><img src="assets/images/icons/stronger-branding.png" alt="Stronger Branding"></div>
+          <h3 style="font-size:1.25rem;margin-bottom:0.75rem;">Stronger Branding</h3>
+          <p style="color:var(--color-text-dark);line-height:1.7;font-size:0.9rem;">We don't just design; we build lasting brand equity that compounds over time and differentiates you in crowded markets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT WORK -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2rem;" class="reveal">
+        <h2>Recent <em>Work</em></h2>
+        <a href="work.html" style="font-size:0.9rem;font-weight:600;display:inline-flex;align-items:center;gap:0.375rem;">
+          View All
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <div class="work-grid">
+        <a href="work/spark-layer.html" class="work-card reveal">
+          <img src="assets/images/work/spark-layer/1.png" alt="Spark Layer" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-info">
+            <h3 style="font-size:1.25rem;color:white;font-weight:600;">Spark Layer</h3>
+            <div class="work-card-tags">
+              <span class="work-tag">Branding</span>
+              <span class="work-tag">UI/UX Design</span>
+            </div>
+          </div>
+        </a>
+        <a href="work/spark-layer.html" class="work-card reveal" style="transition-delay:.1s">
+          <img src="assets/images/work/ignite-flow/1.png" alt="Ignite Flow" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-info">
+            <h3 style="font-size:1.25rem;color:white;font-weight:600;">Ignite Flow</h3>
+            <div class="work-card-tags">
+              <span class="work-tag">Branding</span>
+              <span class="work-tag">UI/UX Design</span>
+            </div>
+          </div>
+        </a>
+        <a href="work/spark-layer.html" class="work-card reveal" style="transition-delay:.2s">
+          <img src="assets/images/work/fluxus-branding/1.png" alt="Fluxus Branding" loading="lazy" onerror="this.src='assets/images/work/spark-layer/2.png'">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-info">
+            <h3 style="font-size:1.25rem;color:white;font-weight:600;">Fluxus Branding</h3>
+            <div class="work-card-tags">
+              <span class="work-tag">Branding</span>
+              <span class="work-tag">UI/UX Design</span>
+            </div>
+          </div>
+        </a>
+        <a href="work/spark-layer.html" class="work-card reveal" style="transition-delay:.3s">
+          <img src="assets/images/work/user-interface-by-mila/1.png" alt="User Interface By Mila" loading="lazy" onerror="this.src='assets/images/work/spark-layer/4.png'">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-info">
+            <h3 style="font-size:1.25rem;color:white;font-weight:600;">User Interface By Mila</h3>
+            <div class="work-card-tags">
+              <span class="work-tag">Branding</span>
+              <span class="work-tag">UI/UX Design</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="container">
+      <div class="process-section">
+        <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto;">
+          <h2 style="color:white;">Our Simple <em>Process</em></h2>
+          <p style="color:rgba(255,255,255,0.6);margin-top:1rem;">A transparent, three-step workflow designed to deliver remarkable results every time.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="reveal">
+            <div class="process-number">01</div>
+            <div style="width:2.5rem;height:2.5rem;margin-bottom:1rem;">
+              <img src="assets/images/icons/plan-icon.png" alt="Plan" style="width:100%;height:100%;object-fit:contain;filter:invert(1);">
+            </div>
+            <div class="process-title">Plan</div>
+            <p class="process-desc">We kick off with a deep-dive discovery session to understand your brand, goals, and audience.</p>
+          </div>
+          <div class="reveal" style="transition-delay:.15s">
+            <div class="process-number">02</div>
+            <div style="width:2.5rem;height:2.5rem;margin-bottom:1rem;">
+              <img src="assets/images/icons/strategic-impact.png" alt="Design" style="width:100%;height:100%;object-fit:contain;filter:invert(1);">
+            </div>
+            <div class="process-title">Design</div>
+            <p class="process-desc">Our senior designers craft pixel-perfect visuals aligned with your brand strategy and objectives.</p>
+          </div>
+          <div class="reveal" style="transition-delay:.3s">
+            <div class="process-number">03</div>
+            <div style="width:2.5rem;height:2.5rem;margin-bottom:1rem;">
+              <img src="assets/images/icons/driving-efficiency.png" alt="Deliver" style="width:100%;height:100%;object-fit:contain;filter:invert(1);">
+            </div>
+            <div class="process-title">Deliver</div>
+            <p class="process-desc">We deliver print-ready and screen-optimized assets with unlimited revisions until you're thrilled.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERINGS -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-heading reveal">
+        <h2>What We <em>Offer</em></h2>
+        <p>A full-circle suite of creative services to grow your brand at every stage.</p>
+      </div>
+      <div class="offerings-grid">
+        <div class="offering-card reveal">
+          <div style="width:2.5rem;height:2.5rem;margin-bottom:1.25rem;">
+            <img src="assets/images/company/icon-1.svg" alt="" style="width:100%;height:100%;object-fit:contain;">
+          </div>
+          <h3 style="font-size:1.2rem;margin-bottom:0.75rem;">Design &amp; Development</h3>
+          <p style="color:var(--color-text-dark);line-height:1.7;font-size:0.9rem;">From concept to code, we handle the full creative stack — brand identity, product UI, and frontend development.</p>
+        </div>
+        <div class="offering-card reveal" style="transition-delay:.1s">
+          <div style="width:2.5rem;height:2.5rem;margin-bottom:1.25rem;">
+            <img src="assets/images/company/icon-2.svg" alt="" style="width:100%;height:100%;object-fit:contain;">
+          </div>
+          <h3 style="font-size:1.2rem;margin-bottom:0.75rem;">All-in-One Solutions</h3>
+          <p style="color:var(--color-text-dark);line-height:1.7;font-size:0.9rem;">One subscription gives you access to unlimited design requests across all services — no agency bloat or hidden fees.</p>
+        </div>
+        <div class="offering-card reveal" style="transition-delay:.2s">
+          <div style="width:2.5rem;height:2.5rem;margin-bottom:1.25rem;">
+            <img src="assets/images/company/icon-3.svg" alt="" style="width:100%;height:100%;object-fit:contain;">
+          </div>
+          <h3 style="font-size:1.2rem;margin-bottom:0.75rem;">Collaboration</h3>
+          <p style="color:var(--color-text-dark);line-height:1.7;font-size:0.9rem;">We integrate directly into your workflow via Slack, Notion, or Figma — working as a seamless extension of your team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-heading reveal">
+        <h2>Client Wins That <em>Speak for Us</em></h2>
+      </div>
+
+      <div class="testimonials-outer reveal">
+        <div class="testimonials-track" id="testimonials-track">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"The team delivered polished, timeless design under incredibly tight deadlines. Our rebrand exceeded every expectation."</p>
+            <div class="testimonial-author">
+              <img src="assets/images/avatar/Jhonatan Smith.png" alt="Jhonatan Smith" class="testimonial-avatar">
+              <div>
+                <div class="testimonial-name">Jhonatan Smith</div>
+                <div class="testimonial-role">Co-founder, Webflow</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Working with Hyperbit felt like having a world-class design team embedded in ours. The quality and speed were unmatched."</p>
+            <div class="testimonial-author">
+              <img src="assets/images/avatar/Lorene Grant.png" alt="Lorene Grant" class="testimonial-avatar">
+              <div>
+                <div class="testimonial-name">Lorene Grant</div>
+                <div class="testimonial-role">Co-founder, Framer</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Our social ad performance increased by 40% after switching to Hyperbit's creative team. Exceptional ROI on design investment."</p>
+            <div class="testimonial-author">
+              <img src="assets/images/avatar/Salvador Ratke.png" alt="Salvador Ratke" class="testimonial-avatar">
+              <div>
+                <div class="testimonial-name">Salvador Ratke</div>
+                <div class="testimonial-role">Marketing Director, Notion</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"The slide deck they built for our Series A was instrumental in closing our round. Design that tells a story and converts."</p>
+            <div class="testimonial-author">
+              <img src="assets/images/avatar/Lorene.png" alt="Lorene" class="testimonial-avatar">
+              <div>
+                <div class="testimonial-name">Lorene</div>
+                <div class="testimonial-role">CEO, Linear</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:2rem;">
+          <button class="testimonial-prev" style="padding:0.75rem 1.5rem;border-radius:9999px;border:1px solid var(--color-border);background:white;cursor:pointer;font-weight:600;" aria-label="Previous">←</button>
+          <button class="testimonial-next" style="padding:0.75rem 1.5rem;border-radius:9999px;border:1px solid var(--color-border);background:white;cursor:pointer;font-weight:600;" aria-label="Next">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing-section">
+    <img src="assets/images/shapes/pricing-shape.png" alt="" class="pricing-bg" aria-hidden="true">
+    <div class="container">
+      <div class="section-heading reveal" style="text-align:center;">
+        <h2>Simple, Transparent <em>Pricing</em></h2>
+        <p>One subscription, unlimited design. No contracts, cancel anytime.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <div style="margin-bottom:1.5rem;">
+            <p style="font-size:0.875rem;color:var(--color-text-dark);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">Team / Startup</p>
+            <div style="display:flex;align-items:baseline;gap:0.25rem;">
+              <span class="pricing-amount">$2,499</span>
+              <span class="pricing-period">/mo</span>
+            </div>
+            <p style="font-size:0.875rem;color:var(--color-text-dark);margin-top:0.5rem;">Ideal for growing teams and startups</p>
+          </div>
+          <ul class="pricing-features">
+            <li>Unlimited design requests</li>
+            <li>Branding &amp; visual identity</li>
+            <li>Product UI/UX design</li>
+            <li>Social media ad creatives</li>
+            <li>48-hour turnaround</li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline" style="display:block;text-align:center;">Get Started</a>
+        </div>
+        <div class="pricing-card featured reveal" style="transition-delay:.1s;border-color:var(--color-dark);">
+          <div style="margin-bottom:1.5rem;">
+            <p style="font-size:0.875rem;color:var(--color-text-dark);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">Enterprise</p>
+            <div style="display:flex;align-items:baseline;gap:0.25rem;">
+              <span class="pricing-amount">Custom</span>
+            </div>
+            <p style="font-size:0.875rem;color:var(--color-text-dark);margin-top:0.5rem;">For large teams needing full-scale creative support</p>
+          </div>
+          <ul class="pricing-features">
+            <li>Everything in Team</li>
+            <li>Dedicated design team</li>
+            <li>Custom SLA &amp; priority support</li>
+            <li>Slide decks &amp; presentations</li>
+            <li>Brand strategy consulting</li>
+            <li>24-hour turnaround</li>
+            <li>Slack &amp; Figma integration</li>
+            <li>Quarterly brand audits</li>
+          </ul>
+          <a href="contact.html" class="btn btn-dark" style="display:block;text-align:center;">
+            <div class="btn-inner">
+              <div class="btn-text-1">Contact Sales</div>
+              <div class="btn-text-2">Contact Sales</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK A CALL CTA -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="book-section">
+        <img src="assets/images/shapes/book-call-shape.png" alt="" class="book-section-bg" aria-hidden="true">
+        <div class="book-inner">
+          <h2>Book an Intro <em>Call</em></h2>
+          <p style="margin-top:1rem;">Start with a free 15-minute call. No pitch, just a conversation about your goals.</p>
+          <div class="cta-avatar-row">
+            <img src="assets/images/avatar.png" alt="Team avatar" class="cta-avatar">
+          </div>
+          <div class="book-contact">
+            <a href="mailto:hello@workmail.com">hello@workmail.com</a>
+            <a href="tel:00987765543">(00) 987 765 543</a>
+          </div>
+          <a href="contact.html" class="btn btn-dark" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);">
+            <div class="btn-inner">
+              <div class="btn-text-1">
+                <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+                Book a Call
+              </div>
+              <div class="btn-text-2">
+                <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+                Book a Call
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-heading reveal" style="text-align:center;">
+        <h2>Frequently Asked <em>Questions</em></h2>
+      </div>
+      <div class="faq-section">
+        <div class="accordion open reveal">
+          <button class="accordion-header">
+            What services does Hyperbit offer?
+            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>Hyperbit offers branding design, product UI/UX design, social media ad creatives, presentation and slide deck design, and front-end development. We work as a subscription-based design partner for startups and growing businesses.</p>
+          </div>
+        </div>
+        <div class="accordion reveal">
+          <button class="accordion-header">
+            How fast do you deliver designs?
+            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>Most design requests are completed within 48 hours. Complex projects like full brand identities or product redesigns may take longer, but we'll always give you a clear timeline upfront.</p>
+          </div>
+        </div>
+        <div class="accordion reveal">
+          <button class="accordion-header">
+            What tools do you use for collaboration?
+            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>We primarily work in Figma for design, and we integrate with your existing workflow tools — Slack for communication, Notion for project management, and Loom for async video feedback.</p>
+          </div>
+        </div>
+        <div class="accordion reveal">
+          <button class="accordion-header">
+            Is there a contract or minimum commitment?
+            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>No contracts, no lock-ins. Our subscriptions are month-to-month and you can pause or cancel anytime. We believe the quality of our work is what keeps clients around.</p>
+          </div>
+        </div>
+        <div class="accordion reveal">
+          <button class="accordion-header">
+            How do I request a design?
+            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p>Once you're a subscriber, you'll get access to our client portal where you can submit design requests, leave feedback, and track progress in real time. It's simple and streamlined.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer style="padding-bottom:2rem;">
+  <div class="container">
+    <div class="footer">
+      <a href="index.html" class="footer-logo"><img src="assets/images/logo.svg" alt="Hyperbit" height="30"></a>
+      <p class="footer-copyright">© 2026 Hyperbit. All rights reserved. Powered by <a href="https://themefisher.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Themefisher</a></p>
+      <ul class="social-icons" aria-label="Social media links">
+        <li><a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script>
+  // Header scroll
+  const header = document.querySelector('.header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // Mobile nav
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamOpen = document.getElementById('ham-open');
+  const hamClose = document.getElementById('ham-close');
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      hamOpen.style.display = isOpen ? 'none' : '';
+      hamClose.style.display = isOpen ? '' : 'none';
+    });
+  }
+
+  // Scroll reveal
+  const _revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); _revObs.unobserve(e.target); } });
+  }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => _revObs.observe(el));
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight + 200) el.classList.add('visible');
+    });
+  }, 300);
+
+  // FAQ accordion
+  document.querySelectorAll('.accordion-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const acc = btn.closest('.accordion');
+      const isOpen = acc.classList.contains('open');
+      document.querySelectorAll('.accordion').forEach(a => a.classList.remove('open'));
+      if (!isOpen) acc.classList.add('open');
+    });
+  });
+
+  // Testimonials carousel
+  (function() {
+    const track = document.getElementById('testimonials-track');
+    if (!track) return;
+    const cards = track.querySelectorAll('.testimonial-card');
+    let current = 0, timer;
+    function goto(n) {
+      current = (n + cards.length) % cards.length;
+      const w = cards[0].offsetWidth + 24;
+      track.style.transform = 'translateX(-' + (current * w) + 'px)';
+      track.style.transition = 'transform 0.5s ease';
+    }
+    function start() { timer = setInterval(() => goto(current + 1), 4000); }
+    function stop() { clearInterval(timer); }
+    document.querySelector('.testimonial-prev')?.addEventListener('click', () => { stop(); goto(current - 1); start(); });
+    document.querySelector('.testimonial-next')?.addEventListener('click', () => { stop(); goto(current + 1); start(); });
+    start();
+    // Show desktop CTA
+    const desktopCta = document.getElementById('nav-cta-desktop');
+    if (desktopCta) { desktopCta.style.display = window.innerWidth >= 768 ? '' : 'none'; }
+    window.addEventListener('resize', () => {
+      if (desktopCta) desktopCta.style.display = window.innerWidth >= 768 ? '' : 'none';
+    });
+  })();
+
+  // Init Lenis after load
+  window.addEventListener('load', () => {
+    if (typeof Lenis !== 'undefined') {
+      const lenis = new Lenis({ lerp: 0.08 });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    }
+  });
+
+  // Show desktop CTA button
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('nav-cta-desktop');
+    if (btn) btn.style.display = '';
+  });
+</script>
+</body>
+</html>
