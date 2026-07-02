@@ -1,5 +1,7 @@
 # SCHRIFT — Swiss International Typographic Style Design System (HTML + CSS + Vanilla JS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-page living documentation showcase for **SCHRIFT**, a strict implementation of the **International Typographic Style (Swiss Style)** — black, white, and a single Swiss Red (`#FF3000`), with the grid as law and typography as the interface. The page reads as a museum-style exhibition of its own DNA: a Bauhaus hero composition, a principles ticker, color-token swatches, a mathematical type-scale specimen, animated system metrics, a 2×2 component gallery on CSS texture backgrounds, a four-step integration method, color-inverting feature cards, testimonials, an accordion FAQ, and a CTA. No framework, no build step, fully offline. Generated with Claude Fable 5.
 
 ## What it demonstrates

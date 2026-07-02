@@ -1,5 +1,7 @@
 # Kinetic Typography Poster — Brutalist Motion Design Festival Page (React, Framer Motion, Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A kinetic, poster-style landing page for a fictional design festival ("MotionType"), built end to end as a reference implementation of the Kinetic Typography design system: high-energy brutalism meets kinetic poster design, with viewport-width headlines, infinite marquees, hard color inversions, and scroll-triggered transforms. Typography is the entire visual structure — motion is the rhythm, and a single acid-yellow accent does all the heavy lifting against near-black and off-white. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")

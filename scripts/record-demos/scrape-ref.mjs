@@ -11,58 +11,44 @@ if (!URL) {
 }
 fs.mkdirSync(OUT, { recursive: true });
 
-// In this sandbox, outbound HTTPS to non-localhost hosts must go through the
-// agent proxy, and Chromium's TLS 1.3 ClientHello (post-quantum key share)
-// gets dropped by the intercepting relay — capping TLS at 1.2 fixes it.
-const proxyUrl = process.env.HTTPS_PROXY || process.env.https_proxy;
-const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1)/i.test(URL);
-// The default headless-shell binary's TLS stack gets dropped by the relay
-// even at TLS 1.2 — the full chromium binary works, so force it when proxying.
-const fullChromiumPath =
-	"/opt/pw-browsers/chromium-1223/chrome-linux64/chrome";
-const launchOpts =
-	proxyUrl && !isLocal
-		? {
-				proxy: { server: proxyUrl },
-				args: ["--ssl-version-max=tls1.2"],
-				...(fs.existsSync(fullChromiumPath)
-					? { executablePath: fullChromiumPath }
-					: {}),
-			}
-		: {};
-const browser = await chromium.launch(launchOpts);
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-await page.goto(URL, { waitUntil: "networkidle", timeout: 60000 });
-await page.waitForTimeout(3000);
-
-// pick largest frame
-let target = page;
-const frames = page.frames();
-let best = null,
-	bestArea = 0;
-for (const f of frames) {
-	try {
-		const dim = await f.evaluate(() => ({
-			w: document.body.scrollWidth,
-			h: document.body.scrollHeight,
-			html: document.body.innerHTML.length,
-		}));
-		const area = dim.w * dim.h;
-		if (dim.html > 200 && area > bestArea) {
-			bestArea = area;
-			best = f;
-		}
-	} catch {}
+console.log("Launching chromium...");
+// Remote HTTPS traffic in this sandbox is re-terminated by an egress proxy whose
+// TLS stack mishandles the default Chromium build's TLS 1.3 ClientHello (GREASE),
+// producing ERR_SSL_PROTOCOL_ERROR. The older prebuilt Chromium at
+// /opt/pw-browsers/chromium-1194 still honors --ssl-version-max=tls1.2 (removed in
+// newer Chrome for Testing builds) and negotiates TLS 1.2 fine through the proxy.
+// Only remote targets need this — localhost captures (dev servers, vision-loop
+// re-scrapes) bypass the proxy entirely. (An alternative PW_PROXY-based relay was
+// tried upstream but a plain --proxy-server flag doesn't fix the underlying TLS 1.3
+// handshake failure by itself — this TLS-1.2 pin is the version verified working
+// end-to-end against a live remote reference site.)
+const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(URL);
+const legacyChromePath = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
+const launchOpts = { args: ["--ignore-certificate-errors"] };
+if (!isLocal) {
+	launchOpts.args.push("--ssl-version-max=tls1.2");
+	if (fs.existsSync(legacyChromePath)) {
+		launchOpts.executablePath = legacyChromePath;
+	}
+	if (process.env.PW_PROXY) {
+		launchOpts.args.push(`--proxy-server=${process.env.PW_PROXY}`);
+	}
 }
-if (best && best !== page.mainFrame()) target = best;
-console.log(
-	"frames:",
-	frames.length,
-	"chosen area:",
-	bestArea,
-	"url:",
-	target.url(),
-);
+const browser = await chromium.launch(isLocal ? {} : launchOpts);
+console.log("Chromium launched. Opening page...");
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+console.log("Page opened. Navigating to:", URL);
+await page.goto(URL, {
+	waitUntil: process.env.WAIT_UNTIL || "networkidle",
+	timeout: 60000,
+});
+console.log("Navigation complete. Waiting 3s...");
+await page.waitForTimeout(3000);
+console.log("Wait complete.");
+
+let target = page;
+console.log("Using main frame directly");
+console.log("url:", target.url());
 
 await page.screenshot({
 	path: path.join(OUT, "screenshot.png"),

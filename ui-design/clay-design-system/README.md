@@ -1,5 +1,7 @@
 # Claymakers — High-Fidelity Claymorphism Design System (React + Vite + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A complete, polished showcase landing page that fully expresses the **High-Fidelity Claymorphism** design system: a tangible world built from _premium digital clay_. Every surface is lit by a soft top-left light and stacks **four shadow layers**, so elements feel dense and physical rather than like flat vector art. Candy-shop color, super-rounded corners, zero-gravity float, and exaggerated **squish-on-press** physics make this a standout claymorphism UI reference built with React 18, TypeScript, Vite 6, and Tailwind CSS v4. Generated with Claude Fable 5.
 
 ## What it demonstrates

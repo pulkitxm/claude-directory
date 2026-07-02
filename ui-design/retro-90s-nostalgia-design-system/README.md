@@ -1,5 +1,7 @@
 # WEBMASTER 95 — Retro / 90s Nostalgia Design System Showcase (HTML + CSS + Vanilla JS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A self-contained living documentation page for the **Retro / 90s Nostalgia** design system, rendered as it would have looked on a **Windows 95** machine in 1997 — silver button-face gray, pure-saturation system colors, beveled everything, and zero border-radius anywhere. The page presents as a faux Windows 95 desktop / GeoCities homepage that documents its own design DNA through a colorful scrolling marquee, windowed UI cards, a live hit counter, and a fully working guestbook. Generated with Claude Fable 5.
 
 ## What it demonstrates

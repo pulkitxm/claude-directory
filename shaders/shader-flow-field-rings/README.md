@@ -1,5 +1,7 @@
 # Shader Flow Field Rings — Three.js Additive RGB Interference Ring Showcase (React + Vite + Tailwind CSS + Three.js)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport signal/oscilloscope laboratory showcasing the `ShaderAnimation` Three.js component — a GLSL fragment shader drawing additive R/G/B interference rings on a single full-screen quad: three loops (one per colour channel), each accumulating five thin concentric rings whose radii drift over time, summing to white at the centre bloom. The page's palette is pulled directly from the shader's own three channels — vermilion `#FF2D55` (R), phosphor-green `#39FF7A` (G), signal-blue `#2D7BFF` (B) — over phosphor-black instrument panels. The signature element is a live channel decomposition that draws each colour accumulator as its own rolling sparkline sampled from the running shader. Integrated as a shadcn `@/components/ui` drop-in with TypeScript. Generated with Claude Fable 5.
 
 ## Design

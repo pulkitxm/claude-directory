@@ -1,5 +1,7 @@
 # Shape Landing Hero — Animated Geometric Shapes Hero Component (React + Vite + Framer Motion + Tailwind CSS v4 + shadcn/ui)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An integration of the `HeroGeometric` component from Kokonut UI — five blurred, gradient-filled shapes drift behind a gradient-clipped headline on a near-black `#030303` canvas, all driven by Framer Motion. The component is dropped into a proper shadcn/ui project structure and wrapped in a landing experience (floating navbar, CTAs, a live props playground, feature grid, install band) that showcases it above the fold. This animated hero section is an ideal starting point for dark-themed SaaS, design tool, or portfolio landing pages. Generated with Claude Fable 5.
 
 ## Stack

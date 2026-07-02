@@ -1,5 +1,7 @@
 # Apex — Scroll-Scrubbed Hero Video (Next.js 16 + React 19 + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An Apple-product-page-style scroll-scrubbed hero for the fictional brand **Apex**: a five-second Formula 1 launch film that you scrub by scrolling, with a synced telemetry HUD, a marquee divider, a spec sheet, and a full polished standalone site around it. The `<video>` is pinned full-screen while scroll position drives `video.currentTime` via a single `requestAnimationFrame` loop — no animation library. Generated with Claude Fable 5.
 
 ## Stack

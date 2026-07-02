@@ -75,6 +75,7 @@ Follow these steps in order, every time:
 
 11. **Consistency sweep — fill any repo-wide gaps before opening the PR.** Don't limit this to your own project; quietly fix whatever is off across the repo (it's fast when nothing's missing):
     - **Every** project folder has `prompt.md`, `demo.mp4`, AND `poster.jpg`, and a matching `posters.json` entry. Record any missing demo with `scripts/record-demos/record-one.sh` and (re)generate posters with `scripts/generate-posters/generate-posters.mjs`.
+    - **Every** project `README.md` embeds the clickable demo thumbnail `[![Watch Demo](./poster.jpg)](./demo.mp4)` (normally right after the H1). If a project that has both `demo.mp4` and `poster.jpg` is missing this line, add it.
     - Every `<summary>` count (root) and category-README intro count equals that category's actual folder count, and the root `## Projects (N)` equals the total.
     - No typo'd or phantom category paths in any README — every linked `./<category>/<project>/` path resolves to a real folder on disk.
     Fix everything you find and fold it into the commit. Verify with a quick audit loop and show the output.

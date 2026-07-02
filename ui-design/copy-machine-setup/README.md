@@ -1,5 +1,7 @@
 # Copy Machine — Project Setup (Vite + React + TypeScript + Tailwind CSS Scaffold)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A landing-page **scaffold** built to one client's exact, non-negotiable specification — a setup-phase prompt to stand up a single-page landing site on a fixed stack with a fixed folder structure and fixed config files, then **stop and wait** for components that must be copied in *character-for-character*, with their own colours, their own values, no theme adaptation, no "improvements". The motto: **be a copy machine, not a designer.** Generated with Claude Fable 5.
 
 So this project is exactly that — the wired-up starting point. Every

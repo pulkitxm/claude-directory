@@ -1,5 +1,7 @@
 # Lumen — Linear / Modern Design System Showcase (React, Framer Motion, Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A polished, single-page showcase that fully expresses the Linear / Modern design language for a fictional developer-tools product ("Lumen"): deep near-black canvas, layered ambient lighting, cursor-aware spotlight cards, gradient typography, multi-layer shadows, an asymmetric bento grid, and precision 200–300ms expo-out micro-interactions across hero, features, pricing, and CTA sections. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")

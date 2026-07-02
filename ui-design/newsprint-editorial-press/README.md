@@ -1,5 +1,7 @@
 # The Newsprint — Editorial Press Design System Landing Page (React + TypeScript + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full multi-section editorial landing page implementing the **Newsprint** design system end to end — a fictional publication of record for the age of machine intelligence, set in cold metal type. Zero rounded corners, no soft shadows, no infinite scroll: the page reads as a broadsheet newspaper translated faithfully to the web, with hard-offset ink shadows, a four-font typographic stack (Playfair Display, Lora, Inter, JetBrains Mono), and centralized design tokens in `tailwind.config.ts`. Generated with Claude Fable 5.
 
 ## Stack

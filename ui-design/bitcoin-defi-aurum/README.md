@@ -1,5 +1,7 @@
 # AURUM — Bitcoin DeFi Design System Landing Page (React + Vite + TypeScript + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A premium single-page DeFi landing experience that fully expresses the **Bitcoin DeFi** aesthetic: a deep cosmic void lit by Bitcoin Fire orange and Digital Gold, with spinning orbital orbs, glass morphism over grid patterns, colored glow shadows, a blockchain timeline, and a `cva` component kit — all tokens centralized in one Tailwind config. Built with React 18, TypeScript, Vite 5, Tailwind CSS v3, and class-variance-authority, running fully offline with self-hosted fonts. Generated with Claude Fable 5.
 
 A premium, single-page DeFi landing experience that fully expresses the

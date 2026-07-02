@@ -1,5 +1,7 @@
 # Container Scroll Animation — Perspective Tilt Component Showcase (React + Vite + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A component-integration showcase built around the Aceternity Container Scroll Animation: a perspective device card that tilts from `rotateX: 20°` to flat as the section scrolls through the viewport, driven by Framer Motion's `useScroll` + `useTransform`. The codebase integrates the component into a full dark dev-tooling site with three live product mockups, an install guide, and a live scroll-telemetry HUD. Built with React, Vite, TypeScript, Tailwind CSS, and Framer Motion. Generated with Claude Fable 5.
 
 The component (`src/components/ui/container-scroll-animation.tsx`) is the exact

@@ -1,5 +1,7 @@
 # Scaffold Ready Splash — React + Vite + TypeScript + Tailwind CSS Starter (Framer Motion + Lucide)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A from-scratch single-page landing page scaffold built to an exact specification: **Vite + React + TypeScript + Tailwind CSS** pre-wired with `tailwind-merge` / `clsx`, **Framer Motion**, and **Lucide React**, with the `@/` path alias and a `cn()` utility. The app shell ships a polished, self-contained **"Scaffold ready"** splash screen that proves all the wiring is working before the first real component arrives. Generated with Claude Fable 5.
 
 ## What's wired (exactly to spec)

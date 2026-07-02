@@ -1,5 +1,7 @@
 # Northwind — Corporate Trust Design System (React + Vite + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A complete, production-quality enterprise SaaS landing page that fully expresses the **Corporate Trust** design system: the modern enterprise aesthetic — professional yet approachable, sophisticated yet friendly. It rejects cold corporate formality for a warm, confident presence built on **indigo → violet gradients, colored (blue/violet-tinted) shadows, isometric 3D depth, and refined motion** — showcasing the fictional operations/workflow platform Northwind. Generated with Claude Fable 5.
 
 ## What it demonstrates
