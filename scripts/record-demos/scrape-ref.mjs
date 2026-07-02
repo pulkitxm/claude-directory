@@ -19,9 +19,16 @@ console.log("Launching chromium...");
 // relay; unset (the default) launches with no proxy, unchanged from before.
 const launchOpts = process.env.PW_PROXY
 	? {
-			args: [`--proxy-server=${process.env.PW_PROXY}`, "--ignore-certificate-errors"],
+			...(process.env.PW_CHROME_PATH ? { executablePath: process.env.PW_CHROME_PATH } : {}),
+			args: [
+				`--proxy-server=${process.env.PW_PROXY}`,
+				"--ignore-certificate-errors",
+				"--ssl-version-max=tls1.2",
+			],
 		}
-	: {};
+	: process.env.PW_CHROME_PATH
+		? { executablePath: process.env.PW_CHROME_PATH }
+		: {};
 const browser = await chromium.launch(launchOpts);
 console.log("Chromium launched. Opening page...");
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
