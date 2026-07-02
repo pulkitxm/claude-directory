@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (236)</b></summary>
+<summary><b>Templates (240)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -405,6 +405,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/cruip/docs](./templates/premium/cruip/docs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/cruip/appy](./templates/premium/cruip/appy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [premium/cruip/jobboard](./templates/premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/cruip/community](./templates/premium/cruip/community/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [premium/lexingtonthemes/alfred](./templates/premium/lexingtonthemes/alfred/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/lexingtonthemes/aelen](./templates/premium/lexingtonthemes/aelen/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
 | [premium/lexingtonthemes/astromaxsp](./templates/premium/lexingtonthemes/astromaxsp/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, FuseJS, Geist |
