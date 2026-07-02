@@ -1,4 +1,4 @@
-# Templates (248)
+# Templates (249)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -210,6 +210,7 @@
 | [finprox-nextjs](./premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
 | [atemp-nextjs](./premium/themefisher/atemp-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat |
 | [devgent-nextjs](./premium/themefisher/devgent-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
+| [visionex-nextjs](./premium/themefisher/visionex-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Raleway, Lato |
 | [seoptic-nextjs](./premium/themefisher/seoptic-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
 | [spydea-nextjs](./premium/themefisher/spydea-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Maven Pro, Merriweather |
 | [novai-nextjs](./premium/themefisher/novai-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Open Sans, Kanit |
