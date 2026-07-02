@@ -1,4 +1,4 @@
-# Templates (247)
+# Templates (248)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
