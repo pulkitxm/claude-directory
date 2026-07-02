@@ -1,4 +1,4 @@
-# Templates (245)
+# Templates (246)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -203,6 +203,7 @@
 | [crypto](./premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [nextblog](./premium/nextjstemplates/nextblog/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [fortify-nextjs](./premium/themefisher/fortify-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi, Clash Grotesk |
+| [nextspace-nextjs](./premium/themefisher/nextspace-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, DM Sans |
 | [quickdir-nextjs](./premium/themefisher/quickdir-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [finprox-nextjs](./premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
 | [atemp-nextjs](./premium/themefisher/atemp-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat |
