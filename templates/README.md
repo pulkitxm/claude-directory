@@ -1,4 +1,4 @@
-# Templates (233)
+# Templates (236)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -156,6 +156,7 @@
 | [devspace](./premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [talent](./premium/cruip/talent/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper.js |
 | [podcast](./premium/cruip/podcast/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
+| [quoty](./premium/cruip/quoty/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
 | [specta](./premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
