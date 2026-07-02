@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (204)</b></summary>
+<summary><b>Templates (205)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -567,6 +567,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/nextjstemplates/crypto](./templates/premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/nextjstemplates/nextblog](./templates/premium/nextjstemplates/nextblog/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/themefisher/fortify-nextjs](./templates/premium/themefisher/fortify-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi, Clash Grotesk |
+| [premium/themefisher/quickdir-nextjs](./templates/premium/themefisher/quickdir-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/themefisher/finprox-nextjs](./templates/premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
 | [premium/themefisher/novai-nextjs](./templates/premium/themefisher/novai-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Open Sans, Kanit |
 | [premium/nextjstemplates/nextly](./templates/premium/nextjstemplates/nextly/) | Interface experiment. | HTML, CSS, vanilla JS |
