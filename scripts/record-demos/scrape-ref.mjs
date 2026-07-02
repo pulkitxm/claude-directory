@@ -12,7 +12,17 @@ if (!URL) {
 fs.mkdirSync(OUT, { recursive: true });
 
 console.log("Launching chromium...");
-const browser = await chromium.launch();
+// Optional local proxy relay for sandboxed environments where headless Chromium
+// can't complete a TLS handshake through the org's TLS-terminating egress proxy
+// (works fine for tools like curl/node-fetch, but Chromium's TLS stack chokes on
+// the re-terminated connection). Set PW_PROXY=host:port to route through a local
+// relay; unset (the default) launches with no proxy, unchanged from before.
+const launchOpts = process.env.PW_PROXY
+	? {
+			args: [`--proxy-server=${process.env.PW_PROXY}`, "--ignore-certificate-errors"],
+		}
+	: {};
+const browser = await chromium.launch(launchOpts);
 console.log("Chromium launched. Opening page...");
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 console.log("Page opened. Navigating to:", URL);
