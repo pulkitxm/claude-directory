@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (192)</b></summary>
+<summary><b>Templates (205)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -501,6 +501,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/tailgrids/writemate](./templates/premium/tailgrids/writemate/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/cms](./templates/premium/tailgrids/cms/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/filemanager](./templates/premium/tailgrids/filemanager/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/tailadmin/nextjs-dashboard](./templates/premium/tailadmin/nextjs-dashboard/) | Interface experiment. | HTML, CSS, vanilla JS, Outfit |
 | [premium/tailwindcss/catalyst](./templates/premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [commit](./templates/premium/tailwindcss/commit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Mona Sans |
 | [compass](./templates/premium/tailwindcss/compass/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Geist Mono |
@@ -559,6 +560,8 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/nextjstemplates/base](./templates/premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
 | [premium/nextjstemplates/appline](./templates/premium/nextjstemplates/appline/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter |
 | [premium/nextjstemplates/crypto](./templates/premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/nextjstemplates/nextblog](./templates/premium/nextjstemplates/nextblog/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/themefisher/finprox-nextjs](./templates/premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
 </details>
 
 <details>

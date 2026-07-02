@@ -1,4 +1,4 @@
-# Templates (192)
+# Templates (205)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -195,3 +195,5 @@
 | [base](./premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
 | [appline](./premium/nextjstemplates/appline/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter |
 | [crypto](./premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [nextblog](./premium/nextjstemplates/nextblog/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [finprox-nextjs](./premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
