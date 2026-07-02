@@ -11,7 +11,26 @@ if (!URL) {
 }
 fs.mkdirSync(OUT, { recursive: true });
 
-const browser = await chromium.launch();
+// In this sandbox, outbound HTTPS to non-localhost hosts must go through the
+// agent proxy, and Chromium's TLS 1.3 ClientHello (post-quantum key share)
+// gets dropped by the intercepting relay — capping TLS at 1.2 fixes it.
+const proxyUrl = process.env.HTTPS_PROXY || process.env.https_proxy;
+const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1)/i.test(URL);
+// The default headless-shell binary's TLS stack gets dropped by the relay
+// even at TLS 1.2 — the full chromium binary works, so force it when proxying.
+const fullChromiumPath =
+	"/opt/pw-browsers/chromium-1223/chrome-linux64/chrome";
+const launchOpts =
+	proxyUrl && !isLocal
+		? {
+				proxy: { server: proxyUrl },
+				args: ["--ssl-version-max=tls1.2"],
+				...(fs.existsSync(fullChromiumPath)
+					? { executablePath: fullChromiumPath }
+					: {}),
+			}
+		: {};
+const browser = await chromium.launch(launchOpts);
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 await page.goto(URL, { waitUntil: "networkidle", timeout: 60000 });
 await page.waitForTimeout(3000);
