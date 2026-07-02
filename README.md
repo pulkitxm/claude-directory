@@ -412,6 +412,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/lexingtonthemes/aubergine](./templates/premium/lexingtonthemes/aubergine/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Vanilla Tilt, Fuse.js, Clash Display, Figtree |
 | [premium/lexingtonthemes/author](./templates/premium/lexingtonthemes/author/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter |
 | [bastion](./templates/premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
+| [premium/themefisher/bigspring-light-nextjs](./templates/premium/themefisher/bigspring-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Lato |
 | [premium/lexingtonthemes/brightlight](./templates/premium/lexingtonthemes/brightlight/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Noto Serif |
 | [premium/lexingtonthemes/buio](./templates/premium/lexingtonthemes/buio/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Geist, EB Garamond |
 | [premium/lexingtonthemes/carbon](./templates/premium/lexingtonthemes/carbon/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Hedvig Letters Serif |

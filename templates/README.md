@@ -17,6 +17,7 @@
 | [aubergine](./premium/lexingtonthemes/aubergine/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Vanilla Tilt, Fuse.js, Clash Display, Figtree |
 | [author](./premium/lexingtonthemes/author/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter |
 | [bastion](./premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
+| [bigspring-light-nextjs](./premium/themefisher/bigspring-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Lato |
 | [brightlight](./premium/lexingtonthemes/brightlight/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Noto Serif |
 | [buio](./premium/lexingtonthemes/buio/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Geist, EB Garamond |
 | [carbon](./premium/lexingtonthemes/carbon/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Hedvig Letters Serif |
