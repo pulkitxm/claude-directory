@@ -501,7 +501,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/tailgrids/writemate](./templates/premium/tailgrids/writemate/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/cms](./templates/premium/tailgrids/cms/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/filemanager](./templates/premium/tailgrids/filemanager/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailadmin/nextjs-dashboard](./templates/premium/tailadmin/nextjs-dashboard/) | Interface experiment. | HTML, CSS, vanilla JS, Outfit |
+| [premium/nextjstemplates/nextjs-demo-tailadmin](./templates/premium/nextjstemplates/nextjs-demo-tailadmin/) | Interface experiment. | HTML, CSS, vanilla JS, Outfit |
 | [premium/tailwindcss/catalyst](./templates/premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [commit](./templates/premium/tailwindcss/commit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Mona Sans |
 | [compass](./templates/premium/tailwindcss/compass/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Geist Mono |
@@ -563,14 +563,6 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/nextjstemplates/nextblog](./templates/premium/nextjstemplates/nextblog/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/themefisher/fortify-nextjs](./templates/premium/themefisher/fortify-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi, Clash Grotesk |
 | [premium/themefisher/finprox-nextjs](./templates/premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
-</details>
-
-<details>
-<summary><b>Studies (2)</b></summary>
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [nextly-landing-page](./studies/nextly-landing-page/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [nextra-docs-template](./studies/nextra-docs-template/) | Interface experiment. | HTML, CSS, vanilla JS |
-
+| [premium/nextjstemplates/nextly](./templates/premium/nextjstemplates/nextly/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/nextjstemplates/nextra-docs-template](./templates/premium/nextjstemplates/nextra-docs-template/) | Interface experiment. | HTML, CSS, vanilla JS |
 </details>
