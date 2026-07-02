@@ -1,4 +1,4 @@
-# Templates (233)
+# Templates (237)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -80,6 +80,7 @@
 | [docs](./premium/cruip/docs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [appy](./premium/cruip/appy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [jobboard](./premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [community](./premium/cruip/community/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [hive](./premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [keynote](./premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [kinetic-orange-brutalist-agency](./kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
