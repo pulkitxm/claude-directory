@@ -35,15 +35,21 @@ try {
 } catch {
 	defaultExecutableMissing = true;
 }
-const useLegacyChrome = defaultExecutableMissing && fs.existsSync(legacyChromePath);
+// For remote URLs: prefer legacy Chromium (supports --ssl-version-max=tls1.2) over
+// the default managed build, which dropped that flag and fails TLS negotiation through
+// the egress proxy. For local URLs: use default unless it's missing.
+const legacyExists = fs.existsSync(legacyChromePath);
+const useLegacyChrome =
+	(defaultExecutableMissing || (!isLocal && legacyExists)) && legacyExists;
 const launchOpts = { args: ["--ignore-certificate-errors"] };
 if (useLegacyChrome) {
 	launchOpts.executablePath = legacyChromePath;
 }
 if (!isLocal) {
 	launchOpts.args.push("--ssl-version-max=tls1.2");
-	if (process.env.PW_PROXY) {
-		launchOpts.args.push(`--proxy-server=${process.env.PW_PROXY}`);
+	const proxyUrl = process.env.PW_PROXY || process.env.HTTPS_PROXY;
+	if (proxyUrl) {
+		launchOpts.args.push(`--proxy-server=${proxyUrl}`);
 	}
 }
 const browser = await chromium.launch(isLocal && !useLegacyChrome ? {} : launchOpts);
