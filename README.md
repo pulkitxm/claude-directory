@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (244)</b></summary>
+<summary><b>Templates (250)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -413,6 +413,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/lexingtonthemes/aubergine](./templates/premium/lexingtonthemes/aubergine/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Vanilla Tilt, Fuse.js, Clash Display, Figtree |
 | [premium/lexingtonthemes/author](./templates/premium/lexingtonthemes/author/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter |
 | [bastion](./templates/premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
+| [premium/themefisher/bigspring-light-nextjs](./templates/premium/themefisher/bigspring-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Lato |
 | [premium/lexingtonthemes/brightlight](./templates/premium/lexingtonthemes/brightlight/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Noto Serif |
 | [premium/lexingtonthemes/buio](./templates/premium/lexingtonthemes/buio/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Geist, EB Garamond |
 | [premium/lexingtonthemes/carbon](./templates/premium/lexingtonthemes/carbon/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Hedvig Letters Serif |
@@ -567,11 +568,16 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/nextjstemplates/crypto](./templates/premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/nextjstemplates/nextblog](./templates/premium/nextjstemplates/nextblog/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/themefisher/fortify-nextjs](./templates/premium/themefisher/fortify-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi, Clash Grotesk |
+| [premium/themefisher/nextspace-nextjs](./templates/premium/themefisher/nextspace-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, DM Sans |
 | [premium/themefisher/quickdir-nextjs](./templates/premium/themefisher/quickdir-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/themefisher/finprox-nextjs](./templates/premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
+| [premium/themefisher/atemp-nextjs](./templates/premium/themefisher/atemp-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat |
 | [premium/themefisher/novai-nextjs](./templates/premium/themefisher/novai-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Open Sans, Kanit |
+| [premium/themefisher/optivus-nextjs](./templates/premium/themefisher/optivus-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Rethink Sans |
 | [premium/nextjstemplates/nextly](./templates/premium/nextjstemplates/nextly/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/nextjstemplates/nextra-docs-template](./templates/premium/nextjstemplates/nextra-docs-template/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/themefisher/bookworm-light-nextjs](./templates/premium/themefisher/bookworm-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Mulish |
 | [premium/themefisher/devgent-nextjs](./templates/premium/themefisher/devgent-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [premium/themefisher/dexler-nextjs](./templates/premium/themefisher/dexler-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Libre Baskerville |
+| [premium/themefisher/visionex-nextjs](./templates/premium/themefisher/visionex-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Raleway, Lato |
 </details>

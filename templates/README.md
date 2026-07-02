@@ -1,9 +1,10 @@
-# Templates (244)
+# Templates (250)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [alfred](./premium/lexingtonthemes/alfred/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [andromeda-light-nextjs](./premium/themefisher/andromeda-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Poppins |
+| [bookworm-light-nextjs](./premium/themefisher/bookworm-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Mulish |
 | [aelen](./premium/lexingtonthemes/aelen/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
 | [atelier-archive-quiet-luxury](./atelier-archive-quiet-luxury/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Hanken Grotesk |
 | [aurum-neural-ai-landing](./aurum-neural-ai-landing/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
@@ -16,6 +17,7 @@
 | [aubergine](./premium/lexingtonthemes/aubergine/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Vanilla Tilt, Fuse.js, Clash Display, Figtree |
 | [author](./premium/lexingtonthemes/author/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter |
 | [bastion](./premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
+| [bigspring-light-nextjs](./premium/themefisher/bigspring-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Lato |
 | [brightlight](./premium/lexingtonthemes/brightlight/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Noto Serif |
 | [buio](./premium/lexingtonthemes/buio/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Geist, EB Garamond |
 | [carbon](./premium/lexingtonthemes/carbon/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Hedvig Letters Serif |
@@ -203,10 +205,14 @@
 | [crypto](./premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [nextblog](./premium/nextjstemplates/nextblog/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [fortify-nextjs](./premium/themefisher/fortify-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi, Clash Grotesk |
+| [nextspace-nextjs](./premium/themefisher/nextspace-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, DM Sans |
 | [quickdir-nextjs](./premium/themefisher/quickdir-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [finprox-nextjs](./premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
+| [atemp-nextjs](./premium/themefisher/atemp-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat |
 | [devgent-nextjs](./premium/themefisher/devgent-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [dexler-nextjs](./premium/themefisher/dexler-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Libre Baskerville |
+| [visionex-nextjs](./premium/themefisher/visionex-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Raleway, Lato |
 | [seoptic-nextjs](./premium/themefisher/seoptic-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
 | [spydea-nextjs](./premium/themefisher/spydea-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Maven Pro, Merriweather |
 | [novai-nextjs](./premium/themefisher/novai-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Open Sans, Kanit |
+| [optivus-nextjs](./premium/themefisher/optivus-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Rethink Sans |
