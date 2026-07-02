@@ -1,4 +1,4 @@
-# Templates (199)
+# Templates (204)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -80,6 +80,7 @@
 | [docs](./premium/cruip/docs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [appy](./premium/cruip/appy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [jobboard](./premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [community](./premium/cruip/community/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [hive](./premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
 | [keynote](./premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
 | [kinetic-orange-brutalist-agency](./kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
@@ -156,6 +157,10 @@
 | [devspace](./premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
 | [talent](./premium/cruip/talent/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper.js |
 | [podcast](./premium/cruip/podcast/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
+| [quoty](./premium/cruip/quoty/) | Interface experiment. | HTML, CSS, Alpine.js |
+| [neon](./premium/cruip/neon/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [creative](./premium/cruip/creative/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
+| [minimal-portfolio-template](./premium/aceternity/minimal-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
 | [specta](./premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
