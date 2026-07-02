@@ -158,6 +158,9 @@
 | [talent](./premium/cruip/talent/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper.js |
 | [podcast](./premium/cruip/podcast/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
 | [quoty](./premium/cruip/quoty/) | Interface experiment. | HTML, CSS, Alpine.js |
+| [neon](./premium/cruip/neon/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [creative](./premium/cruip/creative/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
+| [minimal-portfolio-template](./premium/aceternity/minimal-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [softly-wellness](./softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
 | [sonic](./premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
 | [specta](./premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
