@@ -560,3 +560,12 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/nextjstemplates/appline](./templates/premium/nextjstemplates/appline/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter |
 | [premium/nextjstemplates/crypto](./templates/premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 </details>
+
+<details>
+<summary><b>Studies (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [nextra-docs-template](./studies/nextra-docs-template/) | Interface experiment. | HTML, CSS, vanilla JS |
+
+</details>
