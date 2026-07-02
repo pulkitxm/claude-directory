@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Spydea Pricing — Simple, transparent pricing plans for small teams to large enterprises." />
+  <title>Pricing — Spydea</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       Design Tokens
+    ============================================================ */
+    :root {
+      --color-primary:      #000;
+      --color-secondary:    #73CFA8;
+      --color-tertiary:     #FB9289;
+      --color-quaternary:   #FDE077;
+      --color-quinary:      #73B1FF;
+      --color-theme-light:  #F3F0F0;
+      --font-heading: 'Maven Pro', sans-serif;
+      --font-body:    'Merriweather', serif;
+    }
+
+    /* ============================================================
+       Pricing Cards
+    ============================================================ */
+    .pricing-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 2px solid transparent;
+      transition: all 0.3s;
+      height: 100%;
+    }
+    .pricing-card:hover { transform: translateY(-4px); }
+    .pricing-card.featured { border-color: #000; position: relative; }
+
+    .pricing-badge {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-family: var(--font-heading);
+    }
+
+    .pricing-price {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 800;
+      color: #000;
+      line-height: 1;
+      margin: 1rem 0;
+    }
+    .pricing-price sup { font-size: 1.5rem; }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.4rem 0;
+      font-size: 14px;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .pricing-features li::before {
+      content: '✓';
+      color: #73CFA8;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       Billing Toggle
+    ============================================================ */
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+    }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 26px;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #ccc;
+      border-radius: 999px;
+      transition: .3s;
+    }
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 4px;
+      bottom: 4px;
+      background: #fff;
+      border-radius: 50%;
+      transition: .3s;
+    }
+    .toggle-switch input:checked + .toggle-slider { background: #000; }
+    .toggle-switch input:checked + .toggle-slider::before { transform: translateX(22px); }
+
+    .save-badge {
+      display: inline-block;
+      background: var(--color-secondary);
+      color: #000;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-family: var(--font-heading);
+      margin-left: 0.25rem;
+    }
+
+    /* ============================================================
+       Feature Comparison Table
+    ============================================================ */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 14px;
+    }
+    .comparison-table th {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      background: #f9fafb;
+    }
+    .comparison-table td:first-child { font-weight: 600; color: #374151; }
+    .comparison-table .check { color: #73CFA8; font-weight: 700; }
+    .comparison-table .cross { color: #d1d5db; }
+    .comparison-table tr:hover td { background: #fafafa; }
+    .comparison-table th:not(:first-child),
+    .comparison-table td:not(:first-child) { text-align: center; }
+
+    /* ============================================================
+       FAQ Accordion
+    ============================================================ */
+    .accordion-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      background: #fff;
+      user-select: none;
+    }
+    .accordion-header:hover { background: #fafafa; }
+    .accordion-icon { transition: transform 0.3s; font-size: 1.2rem; }
+    .accordion-item.open .accordion-icon { transform: rotate(45deg); }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      padding: 0 1.5rem;
+      color: #4b5563;
+      font-size: 15px;
+    }
+    .accordion-item.open .accordion-body {
+      max-height: 200px;
+      padding: 0 1.5rem 1.25rem;
+    }
+
+    /* ============================================================
+       Testimonial Cards
+    ============================================================ */
+    .testimonial-pricing-card {
+      border-radius: 16px;
+      padding: 2.5rem;
+      height: 100%;
+    }
+    .testimonial-pricing-card.green-card  { background: var(--color-secondary); }
+    .testimonial-pricing-card.salmon-card { background: var(--color-tertiary); }
+
+    .testimonial-pricing-card blockquote {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: #000;
+      margin: 0 0 1.5rem;
+      padding: 0;
+    }
+    .testimonial-pricing-card .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #000;
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #000;
+      margin-bottom: 2px;
+    }
+    .author-role {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: rgba(0,0,0,0.6);
+    }
+
+    /* ============================================================
+       Page Hero
+    ============================================================ */
+    .page-hero {
+      background: var(--color-theme-light);
+      padding: 5rem 0 4rem;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+    .breadcrumb a { color: #000; text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: #9ca3af; }
+
+    /* ============================================================
+       Layout Utilities
+    ============================================================ */
+    .section     { padding: 5rem 0; }
+    .section-alt { background: #fafafa; }
+    .text-center { text-align: center; }
+
+    .section-label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      color: #000;
+      margin-bottom: 0.75rem;
+    }
+    .section-subtitle {
+      font-family: var(--font-body);
+      color: #4b5563;
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .price-annual   { display: none; }
+    .period-label   { font-family: var(--font-heading); font-size: 0.9rem; color: #6b7280; font-weight: 500; }
+    .pricing-plan-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem; color: #000; margin-bottom: 0.25rem; }
+    .pricing-plan-desc { font-family: var(--font-body); font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem; }
+    .custom-price-note { font-family: var(--font-body); font-size: 0.82rem; color: #9ca3af; margin-top: 0.25rem; }
+
+    /* Simple flex-based 3- and 2-column grids */
+    .pg-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .pg-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .pg-grid-3 { grid-template-columns: 1fr; }
+      .pg-grid-2 { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 600px) and (max-width: 900px) {
+      .pg-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .d-flex-col { display: flex; flex-direction: column; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Announcement Bar
+  ============================================================ -->
+  <div class="announcement">
+    <div class="container-fluid">
+      <span class="ann-text">🎉 Special offer: Get 30% off on annual plans — <a href="pricing.html">Grab the deal →</a></span>
+      <button class="notice-close-btn" onclick="this.parentElement.parentElement.style.display='none'" aria-label="Close">✕</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       Header
+  ============================================================ -->
+  <header class="header" id="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/images/logo-dark.png" alt="Spydea" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span style="display:none; font-family:var(--font-heading); font-weight:800; font-size:1.5rem; color:#000;">Spydea</span>
+        </a>
+        <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle menu">
+          <div class="navbar-toggler-icon"><span></span><span></span><span></span></div>
+          <div class="navbar-toggler-x"></div>
+        </button>
+        <div class="navbar-wrapper" id="navbar-wrapper">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link" href="#">Pages ▾</a>
+              <ul class="nav-dropdown-list">
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="about.html">About</a></li>
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="pricing.html">Pricing</a></li>
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="blog.html">Blog</a></li>
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="contact.html">Contact</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="navbar-cta">
+            <a href="#" class="nav-link">Login</a>
+            <a href="pricing.html" class="btn btn-primary btn-sm">Get Started</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       1. Page Hero
+  ============================================================ -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-label" style="color: var(--color-secondary);" data-aos="fade-up">Plans &amp; Pricing</p>
+      <h1 data-aos="fade-up" data-aos-delay="50">Simple, Transparent Pricing</h1>
+      <p style="font-family: var(--font-body); color: #4b5563; max-width: 520px; margin: 0 auto 1.5rem; font-size: 1.05rem; line-height: 1.7;" data-aos="fade-up" data-aos-delay="100">
+        No hidden fees. No surprises. Choose the plan that fits your team and scale as you grow.
+      </p>
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-aos="fade-up" data-aos-delay="150">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Pricing</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. Pricing Cards
+  ============================================================ -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Billing Toggle -->
+      <div class="pricing-toggle" data-aos="fade-up">
+        <span>Monthly</span>
+        <label class="toggle-switch" aria-label="Switch to annual billing">
+          <input type="checkbox" id="billing-toggle" />
+          <span class="toggle-slider"></span>
+        </label>
+        <span>Annual <span class="save-badge">Save 20%</span></span>
+      </div>
+
+      <!-- Cards Row -->
+      <div class="pg-grid-3">
+
+        <!-- Starter -->
+        <div class="d-flex-col" data-aos="fade-up" data-aos-delay="0">
+          <div class="pricing-card">
+            <div class="pricing-plan-name">Starter</div>
+            <div class="pricing-plan-desc">For small teams getting started</div>
+            <div class="pricing-price">
+              <span class="price-monthly"><sup>$</sup>29<span class="period-label">/mo</span></span>
+              <span class="price-annual"><sup>$</sup>24<span class="period-label">/mo</span></span>
+            </div>
+            <p class="custom-price-note">
+              Billed
+              <span class="price-monthly-label">monthly</span>
+              <span class="price-annual-label" style="display:none;">annually ($288/yr)</span>
+            </p>
+            <ul class="pricing-features">
+              <li>Up to 5 users</li>
+              <li>10GB Storage</li>
+              <li>Basic Analytics</li>
+              <li>Email Support</li>
+              <li>5 Integrations</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary" style="display:block; text-align:center; margin-top:auto;">Get Started</a>
+          </div>
+        </div>
+
+        <!-- Pro (Featured) -->
+        <div class="d-flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-card featured">
+            <span class="pricing-badge">Most Popular</span>
+            <div class="pricing-plan-name">Pro</div>
+            <div class="pricing-plan-desc">For growing teams</div>
+            <div class="pricing-price">
+              <span class="price-monthly"><sup>$</sup>79<span class="period-label">/mo</span></span>
+              <span class="price-annual"><sup>$</sup>64<span class="period-label">/mo</span></span>
+            </div>
+            <p class="custom-price-note">
+              Billed
+              <span class="price-monthly-label">monthly</span>
+              <span class="price-annual-label" style="display:none;">annually ($768/yr)</span>
+            </p>
+            <ul class="pricing-features">
+              <li>Up to 25 users</li>
+              <li>100GB Storage</li>
+              <li>Advanced Analytics</li>
+              <li>Priority Support</li>
+              <li>50 Integrations</li>
+              <li>Custom Domains</li>
+              <li>API Access</li>
+            </ul>
+            <a href="#" class="btn btn-primary" style="display:block; text-align:center; margin-top:auto;">Get Started</a>
+          </div>
+        </div>
+
+        <!-- Business -->
+        <div class="d-flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-card">
+            <div class="pricing-plan-name">Business</div>
+            <div class="pricing-plan-desc">For large enterprises</div>
+            <div class="pricing-price" style="font-size:2rem;">Custom</div>
+            <p class="custom-price-note">Tailored to your needs — contact us for a quote</p>
+            <ul class="pricing-features">
+              <li>Unlimited users</li>
+              <li>1TB Storage</li>
+              <li>Enterprise Analytics</li>
+              <li>24/7 Dedicated Support</li>
+              <li>Unlimited Integrations</li>
+              <li>Custom Domains</li>
+              <li>Full API Access</li>
+              <li>SSO / SAML</li>
+              <li>SLA Guarantee</li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline-primary" style="display:block; text-align:center; margin-top:auto;">Contact Sales</a>
+          </div>
+        </div>
+
+      </div><!-- /.pg-grid-3 -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. Feature Comparison Table
+  ============================================================ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 2rem;">
+        <p class="section-label" style="color: var(--color-quinary);" data-aos="fade-up">Compare Plans</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Everything You Need to Know</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+          A side-by-side breakdown of every feature across all three plans.
+        </p>
+      </div>
+
+      <div style="overflow-x: auto;" data-aos="fade-up" data-aos-delay="150">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th style="min-width: 200px;">Feature</th>
+              <th>Starter</th>
+              <th>Pro</th>
+              <th>Business</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Team Members</td>
+              <td>5</td>
+              <td>25</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Storage</td>
+              <td>10 GB</td>
+              <td>100 GB</td>
+              <td>1 TB</td>
+            </tr>
+            <tr>
+              <td>Analytics</td>
+              <td>Basic</td>
+              <td>Advanced</td>
+              <td>Enterprise</td>
+            </tr>
+            <tr>
+              <td>Support</td>
+              <td>Email</td>
+              <td>Priority</td>
+              <td>24/7 Dedicated</td>
+            </tr>
+            <tr>
+              <td>Integrations</td>
+              <td>5</td>
+              <td>50</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>API Access</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Custom Domains</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>SSO / SAML</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. FAQ Accordion
+  ============================================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <p class="section-label" style="color: var(--color-tertiary);" data-aos="fade-up">Got Questions?</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Frequently Asked Questions</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+          Everything you need to know about our pricing and plans. Can't find an answer?
+          <a href="contact.html" style="color:#000; font-weight:600;">Contact us</a>.
+        </p>
+      </div>
+
+      <div style="max-width: 760px; margin: 0 auto;" data-aos="fade-up" data-aos-delay="150">
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Can I change plans later?</span>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            Yes, you can upgrade or downgrade your plan at any time from your account settings. Upgrades take effect immediately and you'll only be charged the prorated difference. Downgrades apply at the start of your next billing cycle.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Is there a free trial?</span>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            Yes, we offer a 14-day free trial with full access to Pro features. No credit card required to get started. At the end of your trial, simply choose the plan that works best for your team.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>What payment methods do you accept?</span>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            We accept all major credit cards (Visa, Mastercard, AmEx), PayPal, and bank transfers for annual plans. All payments are processed securely and your financial data is never stored on our servers.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Can I cancel anytime?</span>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            Absolutely. You can cancel your subscription at any time with no cancellation fees. Your account remains active until the end of your current billing period, and your data will be available for export for 30 days after cancellation.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Do you offer refunds?</span>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            We offer a 30-day money-back guarantee on all plans. If you're not satisfied for any reason within the first 30 days, contact our support team and we'll issue a full refund — no questions asked.
+          </div>
+        </div>
+
+      </div><!-- /accordion wrapper -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. Testimonials
+  ============================================================ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <p class="section-label" style="color: var(--color-secondary);" data-aos="fade-up">What Our Customers Say</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Loved by Teams Worldwide</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+          Don't just take our word for it — hear from the people who use Spydea every day.
+        </p>
+      </div>
+
+      <div class="pg-grid-2">
+
+        <!-- Testimonial 1 — Green -->
+        <div data-aos="fade-up" data-aos-delay="0">
+          <div class="testimonial-pricing-card green-card">
+            <blockquote>
+              "Moving to Spydea's Pro plan was the best decision for our team. The advanced analytics alone are worth it — we've been able to identify growth opportunities we never even knew existed."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar">JW</div>
+              <div>
+                <div class="author-name">James Wilson</div>
+                <div class="author-role">Head of Sales, DataPro</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 — Salmon -->
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-pricing-card salmon-card">
+            <blockquote>
+              "The Business plan pricing is very competitive. For what you get — unlimited users, SSO, dedicated support, and a genuine SLA — it's an incredible value for enterprise teams of any size."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar">LT</div>
+              <div>
+                <div class="author-name">Lisa Thompson</div>
+                <div class="author-role">Head of Marketing, PixelHub</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.pg-grid-2 -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA Section
+  ============================================================ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="row items-center">
+        <div class="col-12 lg:col-7">
+          <p class="label" style="color: var(--color-quaternary);" data-aos="fade-up">Sign Up Today</p>
+          <h2 data-aos="fade-up" data-aos-delay="50">Sign up and Create Your Online Store Today!</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Join thousands of teams using Spydea to collaborate, automate, and scale their business.</p>
+          <form class="cta-form" onsubmit="return false;" data-aos="fade-up" data-aos-delay="200">
+            <input type="email" placeholder="Enter your email address">
+            <button type="submit">Start Free Trial</button>
+          </form>
+        </div>
+        <div class="col-12 lg:col-5" style="position:relative; text-align:center;">
+          <img src="assets/images/cta-image.png" alt="" style="max-width:80%; margin:auto;" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Footer
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-brand">
+            <img src="assets/images/logo-light.png" alt="Spydea" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+            <span style="display:none; font-family:var(--font-heading); font-weight:800; font-size:1.5rem; color:#fff;">Spydea</span>
+          </a>
+          <p class="footer-desc">The all-in-one SaaS platform that helps modern teams collaborate, automate workflows, and grow faster.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-link" aria-label="GitHub">⌥</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-link-group">
+            <h6 class="footer-link-title">Product</h6>
+            <ul>
+              <li><a href="index.html">Features</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="#">Changelog</a></li>
+              <li><a href="#">Roadmap</a></li>
+            </ul>
+          </div>
+          <div class="footer-link-group">
+            <h6 class="footer-link-title">Company</h6>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div class="footer-link-group">
+            <h6 class="footer-link-title">Resources</h6>
+            <ul>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">API Reference</a></li>
+              <li><a href="#">Status</a></li>
+              <li><a href="#">Help Center</a></li>
+            </ul>
+          </div>
+          <div class="footer-link-group">
+            <h6 class="footer-link-title">Legal</h6>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+              <li><a href="#">GDPR</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Spydea. All rights reserved. Designed by <a href="https://themefisher.com" target="_blank" rel="noopener">Themefisher</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       Scripts
+  ============================================================ -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Init AOS
+    AOS.init({ duration: 600, once: true, offset: 60 });
+
+    // Mobile nav toggle
+    const navToggler = document.getElementById('navbar-toggler');
+    const navWrapper  = document.getElementById('navbar-wrapper');
+    if (navToggler && navWrapper) {
+      navToggler.addEventListener('click', () => {
+        navToggler.classList.toggle('active');
+        navWrapper.classList.toggle('active');
+      });
+    }
+
+    // Sticky header shadow on scroll
+    const siteHeader = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      if (siteHeader) siteHeader.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Accordion
+    document.querySelectorAll('.accordion-header').forEach(h => {
+      h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
+    });
+
+    // Billing Toggle — swap monthly / annual prices
+    const billingToggle = document.getElementById('billing-toggle');
+    if (billingToggle) {
+      billingToggle.addEventListener('change', () => {
+        const isAnnual = billingToggle.checked;
+
+        document.querySelectorAll('.price-monthly').forEach(el => {
+          el.style.display = isAnnual ? 'none' : 'inline';
+        });
+        document.querySelectorAll('.price-annual').forEach(el => {
+          el.style.display = isAnnual ? 'inline' : 'none';
+        });
+        document.querySelectorAll('.price-monthly-label').forEach(el => {
+          el.style.display = isAnnual ? 'none' : 'inline';
+        });
+        document.querySelectorAll('.price-annual-label').forEach(el => {
+          el.style.display = isAnnual ? 'inline' : 'none';
+        });
+      });
+    }
+
+    // Nav dropdown keyboard accessibility
+    document.querySelectorAll('.nav-dropdown > .nav-link').forEach(link => {
+      link.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          link.parentElement.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

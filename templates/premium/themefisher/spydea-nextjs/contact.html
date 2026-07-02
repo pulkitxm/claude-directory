@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Spydea — We'd love to hear from you. Reach out to our team for support, sales, partnerships, or general inquiries.">
+  <title>Contact Us — Spydea</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ── Page-specific styles ── */
+    .contact-info-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      height: 100%;
+      transition: transform 0.3s;
+    }
+    .contact-info-card:hover { transform: translateY(-4px); }
+
+    .contact-info-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin: 0 auto 1.25rem;
+    }
+
+    .map-placeholder {
+      background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
+      border-radius: 12px;
+      height: 100%;
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      border: 2px dashed #d1d5db;
+    }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 14px;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: var(--font-body);
+      color: #111;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .form-control:focus { border-color: #000; }
+
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .contact-form-wrap {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+
+    .faq-mini-card {
+      background: var(--color-theme-light);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .faq-mini-card h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .faq-mini-card p { font-size: 14px; color: #4b5563; margin: 0; }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #f3f4f6;
+      color: #374151;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .social-link:hover { background: #000; color: #fff; }
+
+    /* ── Page Hero ── */
+    .page-hero {
+      background: var(--color-theme-light);
+      padding: 5rem 0 4rem;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      color: #000;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .page-hero .hero-sub {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      color: #4b5563;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 14px;
+      font-family: var(--font-heading);
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+      list-style: none;
+      padding: 0;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: #000; }
+    .breadcrumb .sep { color: #d1d5db; }
+    .breadcrumb .current { color: #000; font-weight: 600; }
+
+    /* ── Contact Info Section ── */
+    .contact-info-section { padding: 5rem 0 3rem; }
+    .contact-info-card .card-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #111;
+      margin-bottom: 0.75rem;
+    }
+    .contact-info-card p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .contact-info-card a { color: #111; text-decoration: none; font-weight: 600; }
+    .contact-info-card a:hover { text-decoration: underline; }
+
+    /* ── Contact Form Section ── */
+    .contact-form-section { padding: 3rem 0 5rem; }
+    .contact-form-wrap h2 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.75rem;
+      color: #000;
+      margin-bottom: 0.5rem;
+    }
+    .contact-form-wrap .form-intro {
+      font-size: 14px;
+      color: #6b7280;
+      font-family: var(--font-body);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Map Placeholder ── */
+    .map-placeholder .map-emoji { font-size: 3.5rem; line-height: 1; }
+    .map-placeholder h3 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #374151;
+      margin: 0;
+    }
+    .map-placeholder .map-city {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: #4b5563;
+      margin: 0;
+    }
+    .map-placeholder .map-coords {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      color: #9ca3af;
+      background: rgba(255,255,255,0.75);
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Submit full-width ── */
+    .submit-full { width: 100%; justify-content: center; }
+
+    /* ── Textarea ── */
+    textarea.form-control { resize: vertical; min-height: 120px; }
+
+    /* ── Form two-column inner ── */
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.25rem; }
+    @media (max-width: 600px) { .form-row-2 { grid-template-columns: 1fr; } }
+
+    /* ── FAQ Section ── */
+    .faq-mini-section { background: #fafafa; padding: 5rem 0; }
+    .faq-mini-section .section-top { text-align: center; margin-bottom: 3rem; }
+    .faq-mini-section .section-top h2 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      color: #000;
+      margin-bottom: 0.75rem;
+    }
+    .faq-mini-section .section-top p {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: #6b7280;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 640px) { .faq-grid { grid-template-columns: 1fr; } }
+    .faq-mini-card .faq-q-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 0.75rem;
+      flex-shrink: 0;
+    }
+    .faq-link {
+      display: inline-block;
+      margin-top: 2.5rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 15px;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 2px solid #000;
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .faq-link:hover { opacity: 0.6; }
+
+    /* ── Social Section ── */
+    .social-section { padding: 4.5rem 0; text-align: center; }
+    .social-section h2 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.875rem;
+      color: #000;
+      margin-bottom: 0.5rem;
+    }
+    .social-section > .container > p {
+      font-family: var(--font-body);
+      color: #6b7280;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .social-links-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.875rem;
+      flex-wrap: wrap;
+    }
+    .social-link-labeled {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.375rem;
+      border-radius: 30px;
+      background: #f3f4f6;
+      color: #374151;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    .social-link-labeled:hover { background: #000; color: #fff; }
+    .social-link-labeled .s-icon { font-size: 1rem; }
+
+    /* ── Utility ── */
+    .label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement">
+    <div class="container-fluid">
+      <span class="ann-text">🎉 Special offer: Get 30% off on annual plans — <a href="pricing.html">Grab the deal →</a></span>
+      <button class="notice-close-btn" onclick="this.parentElement.parentElement.style.display='none'" aria-label="Close">✕</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/images/logo-dark.png" alt="Spydea" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span style="display:none; font-family:var(--font-heading); font-weight:800; font-size:1.5rem; color:#000;">Spydea</span>
+        </a>
+        <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle menu">
+          <div class="navbar-toggler-icon"><span></span><span></span><span></span></div>
+          <div class="navbar-toggler-x"></div>
+        </button>
+        <div class="navbar-wrapper" id="navbar-wrapper">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link" href="#">Pages ▾</a>
+              <ul class="nav-dropdown-list">
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="about.html">About</a></li>
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="pricing.html">Pricing</a></li>
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="blog.html">Blog</a></li>
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="contact.html">Contact</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="navbar-cta">
+            <a href="#" class="nav-link">Login</a>
+            <a href="pricing.html" class="btn btn-primary btn-sm">Get Started</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ① Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li><span class="sep">›</span></li>
+          <li><span class="current">Contact</span></li>
+        </ol>
+      </nav>
+      <h1 data-aos="fade-up">Get in Touch</h1>
+      <p class="hero-sub" data-aos="fade-up" data-aos-delay="80">
+        We'd love to hear from you. Our team is always here to help.
+      </p>
+    </div>
+  </section>
+
+  <!-- ② Contact Info Cards -->
+  <section class="contact-info-section">
+    <div class="container">
+      <div class="row gy-4">
+
+        <div class="col-12 md:col-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="contact-info-card">
+            <div class="contact-info-icon" style="background: var(--color-secondary);">📍</div>
+            <p class="card-title">Our Office</p>
+            <p>
+              123 Innovation Drive<br>
+              San Francisco, CA 94105<br>
+              United States
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="contact-info-card">
+            <div class="contact-info-icon" style="background: var(--color-tertiary);">📞</div>
+            <p class="card-title">Phone Number</p>
+            <p>
+              <a href="tel:+15551234567">+1 (555) 123-4567</a><br>
+              Mon–Fri, 9am–6pm PST
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="contact-info-card">
+            <div class="contact-info-icon" style="background: var(--color-quaternary);">✉️</div>
+            <p class="card-title">Email Address</p>
+            <p>
+              <a href="mailto:hello@spydea.com">hello@spydea.com</a><br>
+              We reply within 24 hours
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ Contact Form + Map -->
+  <section class="contact-form-section">
+    <div class="container">
+      <div class="row gy-5" style="align-items: stretch;">
+
+        <!-- Left: Contact Form -->
+        <div class="col-12 lg:col-7" data-aos="fade-right">
+          <div class="contact-form-wrap">
+            <h2>Send us a Message</h2>
+            <p class="form-intro">Fill out the form below and we'll get back to you as soon as possible.</p>
+
+            <form onsubmit="return false;" novalidate>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="contact-name">Full Name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    placeholder="Jane Smith"
+                    autocomplete="name"
+                    required
+                  >
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-email">Email Address</label>
+                  <input
+                    class="form-control"
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    placeholder="jane@company.com"
+                    autocomplete="email"
+                    required
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-subject">Subject</label>
+                <select
+                  class="form-control form-select"
+                  id="contact-subject"
+                  name="subject"
+                  required
+                >
+                  <option value="" disabled selected>Select a topic…</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="support">Technical Support</option>
+                  <option value="sales">Sales</option>
+                  <option value="billing">Billing</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-message">Message</label>
+                <textarea
+                  class="form-control"
+                  id="contact-message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell us how we can help you…"
+                  required
+                ></textarea>
+              </div>
+
+              <div style="display:flex; align-items:flex-start; gap:0.75rem; margin-bottom:1.5rem;">
+                <input
+                  type="checkbox"
+                  id="contact-consent"
+                  name="consent"
+                  style="width:16px; height:16px; margin-top:2px; accent-color:#000; cursor:pointer; flex-shrink:0;"
+                >
+                <label for="contact-consent" style="font-family:var(--font-body); font-size:13px; color:#6b7280; cursor:pointer; line-height:1.6;">
+                  I agree to the <a href="#" style="color:#000; font-weight:600;">Privacy Policy</a> and consent to being contacted by the Spydea team.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-md submit-full">
+                Send Message &nbsp;→
+              </button>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- Right: Map Placeholder -->
+        <div class="col-12 lg:col-5" data-aos="fade-left" data-aos-delay="100">
+          <div class="map-placeholder">
+            <div class="map-emoji">🗺️</div>
+            <h3>Our Location</h3>
+            <p class="map-city">San Francisco, CA</p>
+            <span class="map-coords">37.7749° N, 122.4194° W</span>
+            <a
+              href="https://maps.google.com/?q=San+Francisco+CA"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-sm"
+              style="background:#fff; color:#000; border:2px solid #000; margin-top:0.25rem;"
+            >
+              Open in Maps →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ FAQ Teaser -->
+  <section class="faq-mini-section">
+    <div class="container">
+
+      <div class="section-top" data-aos="fade-up">
+        <span class="label" style="color: var(--color-quinary);">Support</span>
+        <h2>Common Questions</h2>
+        <p>Quick answers to things we hear most often. Still need help? We're standing by.</p>
+      </div>
+
+      <div class="faq-grid" data-aos="fade-up" data-aos-delay="80">
+
+        <div class="faq-mini-card">
+          <span class="faq-q-icon">Q</span>
+          <h4>What is your response time?</h4>
+          <p>Typical response within 2–4 business hours. Priority support available on Pro and Business plans.</p>
+        </div>
+
+        <div class="faq-mini-card">
+          <span class="faq-q-icon">Q</span>
+          <h4>Do you offer phone support?</h4>
+          <p>Phone support is available on Business plans. All other plans receive email and chat support.</p>
+        </div>
+
+        <div class="faq-mini-card">
+          <span class="faq-q-icon">Q</span>
+          <h4>Can I schedule a demo?</h4>
+          <p>Yes! Book a personalized demo with our team to see Spydea in action — no commitment required.</p>
+        </div>
+
+        <div class="faq-mini-card">
+          <span class="faq-q-icon">Q</span>
+          <h4>Where is your data stored?</h4>
+          <p>Your data is stored in ISO 27001-certified data centers across the US and EU.</p>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;" data-aos="fade-up" data-aos-delay="160">
+        <a href="#" class="faq-link">Browse all FAQ articles →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ⑤ Social Links Row -->
+  <section class="social-section">
+    <div class="container">
+      <h2 data-aos="fade-up">Connect with Us</h2>
+      <p data-aos="fade-up" data-aos-delay="60">
+        Follow along for product updates, team stories, and behind-the-scenes content.
+      </p>
+      <div class="social-links-row" data-aos="fade-up" data-aos-delay="120">
+        <a href="#" class="social-link-labeled" aria-label="Twitter / X">
+          <span class="s-icon">𝕏</span> Twitter
+        </a>
+        <a href="#" class="social-link-labeled" aria-label="LinkedIn">
+          <span class="s-icon">in</span> LinkedIn
+        </a>
+        <a href="#" class="social-link-labeled" aria-label="GitHub">
+          <span class="s-icon">⌨</span> GitHub
+        </a>
+        <a href="#" class="social-link-labeled" aria-label="YouTube">
+          <span class="s-icon">▶</span> YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="row items-center">
+        <div class="col-12 lg:col-7">
+          <p class="label" style="color: var(--color-quaternary);" data-aos="fade-up">Sign Up Today</p>
+          <h2 data-aos="fade-up" data-aos-delay="50">Sign up and Create Your Online Store Today!</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Join thousands of teams using Spydea to collaborate, automate, and scale their business.</p>
+          <form class="cta-form" onsubmit="return false;" data-aos="fade-up" data-aos-delay="200">
+            <input type="email" placeholder="Enter your email address">
+            <button type="submit">Start Free Trial</button>
+          </form>
+        </div>
+        <div class="col-12 lg:col-5" style="position:relative; text-align:center;">
+          <img src="assets/images/cta-image.png" alt="" style="max-width:80%; margin:auto;" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-12 md:col-6 lg:col-4">
+          <div class="footer-brand"><a href="index.html">
+            <img src="assets/images/logo-light.png" alt="Spydea" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+            <span style="display:none; font-family:var(--font-heading); font-weight:800; font-size:1.5rem; color:#fff;">Spydea</span>
+          </a></div>
+          <p>Spydea is the all-in-one SaaS platform for modern teams. Collaborate smarter, ship faster, and scale with confidence.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="GitHub">⌨</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="col-6 md:col-3 lg:col-2">
+          <h4 class="footer-title">Product</h4>
+          <div class="footer-links"><a href="index.html">Features</a><a href="pricing.html">Pricing</a><a href="#">Changelog</a><a href="#">Roadmap</a></div>
+        </div>
+        <div class="col-6 md:col-3 lg:col-2">
+          <h4 class="footer-title">Company</h4>
+          <div class="footer-links"><a href="about.html">About</a><a href="blog.html">Blog</a><a href="#">Careers</a><a href="contact.html">Contact</a></div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-4">
+          <h4 class="footer-title">Stay Updated</h4>
+          <p>Get the latest news and product updates delivered to your inbox.</p>
+          <div class="footer-newsletter"><input type="email" placeholder="your@email.com"><button type="button">Subscribe</button></div>
+          <div class="footer-links" style="flex-direction:row; gap:1rem; margin-top:1rem;"><a href="#">Resources</a><a href="#">Docs</a><a href="#">Support</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Spydea. All rights reserved.</p>
+        <div style="display:flex; gap:1.5rem;">
+          <a href="#" style="font-size:13px; color:#6b7280;">Privacy Policy</a>
+          <a href="#" style="font-size:13px; color:#6b7280;">Terms of Service</a>
+          <a href="#" style="font-size:13px; color:#6b7280;">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease', once: true, offset: 80 });
+    const siteHeader = document.getElementById('site-header');
+    window.addEventListener('scroll', () => { siteHeader.classList.toggle('header-fixed-top', window.scrollY > 50); });
+    const toggler = document.getElementById('navbar-toggler');
+    const navWrapper = document.getElementById('navbar-wrapper');
+    if (toggler) { toggler.addEventListener('click', () => { toggler.classList.toggle('active'); navWrapper.classList.toggle('open'); }); }
+    document.querySelectorAll('.nav-dropdown > .nav-link').forEach(link => {
+      link.addEventListener('click', function(e) { if (window.innerWidth < 1024) { e.preventDefault(); this.nextElementSibling?.classList.toggle('open'); } });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Insights, tutorials, and news from the Spydea team. Stay up to date with the latest in document collaboration, engineering, and product design.">
+  <title>Blog — Spydea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Page-specific styles ── */
+    .blog-featured {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      margin-bottom: 3rem;
+    }
+    .blog-featured-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-featured-body {
+      padding: 2.5rem;
+      background: #fff;
+    }
+    .blog-featured-tag {
+      display: inline-block;
+      background: var(--color-secondary);
+      color: #000;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .blog-featured-title {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .blog-featured-excerpt {
+      color: #4b5563;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .blog-featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .blog-featured-author {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .blog-featured-author img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 3rem;
+    }
+    .pagination-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 14px;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .pagination-btn.wide {
+      width: auto;
+      padding: 0 16px;
+    }
+    .pagination-btn.active,
+    .pagination-btn:hover {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+    .newsletter-inline {
+      background: #111;
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    .newsletter-inline h3 {
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .newsletter-inline p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 18px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 15px;
+      font-family: var(--font-body);
+      outline: none;
+    }
+    .newsletter-form input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    .newsletter-form input:focus {
+      border-color: var(--color-secondary);
+    }
+    .newsletter-form button {
+      padding: 12px 24px;
+      background: var(--color-secondary);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover {
+      opacity: 0.9;
+    }
+    .category-filter {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .category-btn {
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      background: #fff;
+      transition: all 0.2s;
+    }
+    .category-btn.active,
+    .category-btn:hover {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+
+    /* ── Blog grid ── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* ── Supplementary meta helpers ── */
+    .meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #9ca3af;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .meta-text {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      color: #6b7280;
+    }
+    .featured-read-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 15px;
+      color: #000;
+      text-decoration: none;
+      border-bottom: 2px solid #000;
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+      margin-left: auto;
+    }
+    .featured-read-link:hover {
+      opacity: 0.65;
+    }
+
+    /* ── Responsive overrides ── */
+    @media (max-width: 640px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      .newsletter-form {
+        flex-direction: column;
+      }
+      .blog-featured-img {
+        height: 240px;
+      }
+      .blog-featured-body {
+        padding: 1.5rem;
+      }
+      .featured-read-link {
+        margin-left: 0;
+        margin-top: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Announcement Bar ── -->
+  <div class="announcement">
+    <div class="container-fluid">
+      <span class="ann-text">🎉 Special offer: Get 30% off on annual plans — <a href="pricing.html">Grab the deal →</a></span>
+      <button class="notice-close-btn" onclick="this.parentElement.parentElement.style.display='none'" aria-label="Close">✕</button>
+    </div>
+  </div>
+
+  <!-- ── Header ── -->
+  <header class="header" id="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/images/logo-dark.png" alt="Spydea" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span style="display:none; font-family:var(--font-heading); font-weight:800; font-size:1.5rem; color:#000;">Spydea</span>
+        </a>
+        <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle menu">
+          <div class="navbar-toggler-icon"><span></span><span></span><span></span></div>
+          <div class="navbar-toggler-x"></div>
+        </button>
+        <div class="navbar-wrapper" id="navbar-wrapper">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link" href="#">Pages ▾</a>
+              <ul class="nav-dropdown-list">
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="about.html">About</a></li>
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="pricing.html">Pricing</a></li>
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="blog.html">Blog</a></li>
+                <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="contact.html">Contact</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="navbar-cta">
+            <a href="#" class="nav-link">Login</a>
+            <a href="pricing.html" class="btn btn-primary btn-sm">Get Started</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══════════════════════════════════════
+         1. PAGE HERO
+    ══════════════════════════════════════ -->
+    <section class="page-hero">
+      <div class="container">
+        <div style="text-align: center; padding: 5rem 0 3.5rem;">
+          <!-- Breadcrumb -->
+          <nav aria-label="Breadcrumb" style="margin-bottom: 1.25rem;">
+            <ol style="list-style:none; display:inline-flex; align-items:center; gap:0.5rem; padding:0; margin:0; font-family:var(--font-heading); font-size:13px; color:#6b7280;">
+              <li>
+                <a href="index.html" style="color:#6b7280; text-decoration:none; transition:color 0.2s;"
+                   onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6b7280'">Home</a>
+              </li>
+              <li style="color:#d1d5db; user-select:none;">›</li>
+              <li style="color:#000; font-weight:600;">Blog</li>
+            </ol>
+          </nav>
+          <!-- Heading -->
+          <h1 data-aos="fade-up"
+              style="font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.15; margin-bottom: 1rem; font-family: var(--font-heading); font-weight: 800;">
+            Our Blog
+          </h1>
+          <p data-aos="fade-up" data-aos-delay="80"
+             style="font-size: 1.15rem; color: #4b5563; max-width: 520px; margin: 0 auto; font-family: var(--font-body); line-height: 1.7;">
+            Insights, tutorials, and news from the Spydea team.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         2. FEATURED POST
+    ══════════════════════════════════════ -->
+    <section style="padding: 1rem 0 2rem;">
+      <div class="container">
+        <div class="blog-featured" data-aos="fade-up">
+          <!-- Featured image -->
+          <img
+            src="assets/images/articles/1.jpg"
+            alt="The Future of Document Collaboration in the Age of AI"
+            class="blog-featured-img"
+            onerror="this.style.background='linear-gradient(135deg,#73CFA8 0%,#73B1FF 100%)'; this.removeAttribute('onerror')"
+          >
+          <!-- Featured body -->
+          <div class="blog-featured-body">
+            <span class="blog-featured-tag">Featured</span>
+            <h2 class="blog-featured-title" style="font-family: var(--font-heading);">
+              The Future of Document Collaboration in the Age of AI
+            </h2>
+            <p class="blog-featured-excerpt">
+              Artificial intelligence is reshaping how teams create, review, and manage documents. We explore what the next wave of AI-powered collaboration looks like and how Spydea is preparing for this exciting shift.
+            </p>
+            <!-- Meta row -->
+            <div class="blog-featured-meta">
+              <div class="blog-featured-author">
+                <img
+                  src="assets/images/authors/1.jpg"
+                  alt="Alex Turner"
+                  onerror="this.style.background='#ddd'; this.removeAttribute('onerror')"
+                >
+                <span style="font-family: var(--font-heading); font-weight: 600; font-size: 14px; color: #111;">By Alex Turner</span>
+              </div>
+              <span class="meta-dot"></span>
+              <span class="meta-text">Jan 5, 2025</span>
+              <span class="meta-dot"></span>
+              <span class="meta-text">10 min read</span>
+              <a href="#" class="featured-read-link">Read Article →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         3. CATEGORY FILTER
+    ══════════════════════════════════════ -->
+    <section style="padding: 0 0 0.5rem;">
+      <div class="container">
+        <div class="category-filter" data-aos="fade-up">
+          <button class="category-btn active" type="button">All</button>
+          <button class="category-btn" type="button">Product</button>
+          <button class="category-btn" type="button">Engineering</button>
+          <button class="category-btn" type="button">Design</button>
+          <button class="category-btn" type="button">Business</button>
+          <button class="category-btn" type="button">Tutorial</button>
+          <button class="category-btn" type="button">News</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         4. BLOG GRID — 6 posts
+    ══════════════════════════════════════ -->
+    <section style="padding: 1rem 0 2rem;">
+      <div class="container">
+        <div class="blog-grid">
+
+          <!-- ── Post 1 · Product (mint) ── -->
+          <div class="article-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="article-card-img">
+              <img
+                src="assets/images/articles/1.jpg"
+                alt="How Spydea's Real-Time Sync Works"
+                onerror="this.style.background='linear-gradient(135deg,#73CFA8 0%,#b2f0d8 100%)'; this.removeAttribute('onerror')"
+              >
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta">
+                <span class="article-tag" style="background: var(--color-secondary);">Product</span>
+                <span class="article-date">Dec 15, 2024</span>
+              </div>
+              <h3>How Spydea's Real-Time Sync Works</h3>
+              <p class="article-excerpt">A deep dive into the technology powering live collaboration across distributed teams without missing a beat.</p>
+              <div class="article-author">
+                <img
+                  src="assets/images/authors/1.jpg"
+                  alt="Alex Turner"
+                  onerror="this.style.background='#ddd'; this.removeAttribute('onerror')"
+                >
+                <span>By Alex Turner · 5 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Post 2 · Engineering (salmon) ── -->
+          <div class="article-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="article-card-img">
+              <img
+                src="assets/images/articles/2.jpg"
+                alt="Building Scalable Document Storage"
+                onerror="this.style.background='linear-gradient(135deg,#FB9289 0%,#ffd6d3 100%)'; this.removeAttribute('onerror')"
+              >
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta">
+                <span class="article-tag" style="background: var(--color-tertiary);">Engineering</span>
+                <span class="article-date">Dec 10, 2024</span>
+              </div>
+              <h3>Building Scalable Document Storage</h3>
+              <p class="article-excerpt">How we architected Spydea's storage layer to handle millions of documents with reliability and speed at scale.</p>
+              <div class="article-author">
+                <img
+                  src="assets/images/authors/2.jpg"
+                  alt="Sarah Chen"
+                  onerror="this.style.background='#ddd'; this.removeAttribute('onerror')"
+                >
+                <span>By Sarah Chen · 8 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Post 3 · Design (gold) ── -->
+          <div class="article-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="article-card-img">
+              <img
+                src="assets/images/articles/3.jpg"
+                alt="The Psychology of Great UX"
+                onerror="this.style.background='linear-gradient(135deg,#FDE077 0%,#fff3b0 100%)'; this.removeAttribute('onerror')"
+              >
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta">
+                <span class="article-tag" style="background: var(--color-quaternary);">Design</span>
+                <span class="article-date">Dec 5, 2024</span>
+              </div>
+              <h3>The Psychology of Great UX</h3>
+              <p class="article-excerpt">Why great design is invisible — and how our team obsesses over the details that make Spydea delightful to use.</p>
+              <div class="article-author">
+                <img
+                  src="assets/images/authors/3.jpg"
+                  alt="Marcus Williams"
+                  onerror="this.style.background='#ddd'; this.removeAttribute('onerror')"
+                >
+                <span>By Marcus Williams · 6 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Post 4 · Business (blue) ── -->
+          <div class="article-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="article-card-img">
+              <img
+                src="assets/images/articles/1.jpg"
+                alt="10 Ways to Improve Team Collaboration"
+                onerror="this.style.background='linear-gradient(135deg,#73B1FF 0%,#c0d9ff 100%)'; this.removeAttribute('onerror')"
+              >
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta">
+                <span class="article-tag" style="background: var(--color-quinary);">Business</span>
+                <span class="article-date">Nov 28, 2024</span>
+              </div>
+              <h3>10 Ways to Improve Team Collaboration</h3>
+              <p class="article-excerpt">Practical strategies that high-performing teams use to work smarter, stay aligned, and move faster together.</p>
+              <div class="article-author">
+                <img
+                  src="assets/images/authors/4.jpg"
+                  alt="Emma Rodriguez"
+                  onerror="this.style.background='#ddd'; this.removeAttribute('onerror')"
+                >
+                <span>By Emma Rodriguez · 7 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Post 5 · Tutorial (mint) ── -->
+          <div class="article-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="article-card-img">
+              <img
+                src="assets/images/articles/2.jpg"
+                alt="Getting Started with Spydea API"
+                onerror="this.style.background='linear-gradient(135deg,#73CFA8 0%,#b2f0d8 100%)'; this.removeAttribute('onerror')"
+              >
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta">
+                <span class="article-tag" style="background: var(--color-secondary);">Tutorial</span>
+                <span class="article-date">Nov 20, 2024</span>
+              </div>
+              <h3>Getting Started with Spydea API</h3>
+              <p class="article-excerpt">A step-by-step guide to integrating Spydea into your existing workflow using our REST API and developer tools.</p>
+              <div class="article-author">
+                <img
+                  src="assets/images/authors/5.jpg"
+                  alt="David Kim"
+                  onerror="this.style.background='#ddd'; this.removeAttribute('onerror')"
+                >
+                <span>By David Kim · 12 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Post 6 · News (salmon) ── -->
+          <div class="article-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="article-card-img">
+              <img
+                src="assets/images/articles/3.jpg"
+                alt="Spydea Raises $10M Series A"
+                onerror="this.style.background='linear-gradient(135deg,#FB9289 0%,#ffd6d3 100%)'; this.removeAttribute('onerror')"
+              >
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta">
+                <span class="article-tag" style="background: var(--color-tertiary);">News</span>
+                <span class="article-date">Nov 15, 2024</span>
+              </div>
+              <h3>Spydea Raises $10M Series A</h3>
+              <p class="article-excerpt">We're thrilled to announce our Series A funding round to accelerate product development and grow our team worldwide.</p>
+              <div class="article-author">
+                <img
+                  src="assets/images/authors/6.jpg"
+                  alt="Lisa Thompson"
+                  onerror="this.style.background='#ddd'; this.removeAttribute('onerror')"
+                >
+                <span>By Lisa Thompson · 3 min read</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.blog-grid -->
+
+        <!-- ══════════════════════════════════════
+             5. NEWSLETTER INLINE SIGNUP
+        ══════════════════════════════════════ -->
+        <div class="newsletter-inline" data-aos="fade-up">
+          <h3>Never Miss an Update</h3>
+          <p>Join over 12,000 readers and get the best Spydea articles delivered straight to your inbox.</p>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Enter your email address" aria-label="Email address">
+            <button type="submit">Subscribe Free</button>
+          </form>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             6. PAGINATION
+        ══════════════════════════════════════ -->
+        <nav class="pagination" aria-label="Blog pagination" data-aos="fade-up">
+          <a href="#" class="pagination-btn wide" aria-label="Previous page">← Prev</a>
+          <a href="#" class="pagination-btn active" aria-current="page">1</a>
+          <a href="#" class="pagination-btn">2</a>
+          <a href="#" class="pagination-btn">3</a>
+          <a href="#" class="pagination-btn wide" aria-label="Next page">Next →</a>
+        </nav>
+
+      </div><!-- /.container -->
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CTA SECTION
+    ══════════════════════════════════════ -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="row items-center">
+          <div class="col-12 lg:col-7">
+            <p class="label" style="color: var(--color-quaternary);" data-aos="fade-up">Sign Up Today</p>
+            <h2 data-aos="fade-up" data-aos-delay="50">Sign up and Create Your Online Store Today!</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Join thousands of teams using Spydea to collaborate, automate, and scale their business.</p>
+            <form class="cta-form" onsubmit="return false;" data-aos="fade-up" data-aos-delay="200">
+              <input type="email" placeholder="Enter your email address">
+              <button type="submit">Start Free Trial</button>
+            </form>
+          </div>
+          <div class="col-12 lg:col-5" style="position:relative; text-align:center;">
+            <img src="assets/images/cta-image.png" alt="" style="max-width:80%; margin:auto;" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-12 md:col-6 lg:col-4">
+          <div class="footer-brand">
+            <a href="index.html">
+              <img src="assets/images/logo-light.png" alt="Spydea" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+              <span style="display:none; font-family:var(--font-heading); font-weight:800; font-size:1.5rem; color:#fff;">Spydea</span>
+            </a>
+          </div>
+          <p>Spydea is the all-in-one SaaS platform for modern teams. Collaborate smarter, ship faster, and scale with confidence.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="GitHub">⌨</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="col-6 md:col-3 lg:col-2">
+          <h4 class="footer-title">Product</h4>
+          <div class="footer-links">
+            <a href="index.html">Features</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="#">Changelog</a>
+            <a href="#">Roadmap</a>
+          </div>
+        </div>
+        <div class="col-6 md:col-3 lg:col-2">
+          <h4 class="footer-title">Company</h4>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="#">Careers</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-4">
+          <h4 class="footer-title">Stay Updated</h4>
+          <p>Get the latest news and product updates delivered to your inbox.</p>
+          <div class="footer-newsletter">
+            <input type="email" placeholder="your@email.com">
+            <button type="button">Subscribe</button>
+          </div>
+          <div class="footer-links" style="flex-direction:row; gap:1rem; margin-top:1rem;">
+            <a href="#">Resources</a>
+            <a href="#">Docs</a>
+            <a href="#">Support</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Spydea. All rights reserved.</p>
+        <div style="display:flex; gap:1.5rem;">
+          <a href="#" style="font-size:13px; color:#6b7280;">Privacy Policy</a>
+          <a href="#" style="font-size:13px; color:#6b7280;">Terms of Service</a>
+          <a href="#" style="font-size:13px; color:#6b7280;">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ── -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease', once: true, offset: 80 });
+
+    // Sticky header
+    const siteHeader = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      siteHeader.classList.toggle('header-fixed-top', window.scrollY > 50);
+    });
+
+    // Mobile nav toggler
+    const toggler = document.getElementById('navbar-toggler');
+    const navWrapper = document.getElementById('navbar-wrapper');
+    if (toggler) {
+      toggler.addEventListener('click', () => {
+        toggler.classList.toggle('active');
+        navWrapper.classList.toggle('open');
+      });
+    }
+
+    // Mobile dropdown
+    document.querySelectorAll('.nav-dropdown > .nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth < 1024) {
+          e.preventDefault();
+          this.nextElementSibling?.classList.toggle('open');
+        }
+      });
+    });
+
+    // Category filter — toggle active state
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
