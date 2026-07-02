@@ -501,7 +501,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/tailgrids/writemate](./templates/premium/tailgrids/writemate/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/cms](./templates/premium/tailgrids/cms/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/tailgrids/filemanager](./templates/premium/tailgrids/filemanager/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailadmin/nextjs-dashboard](./templates/premium/tailadmin/nextjs-dashboard/) | Interface experiment. | HTML, CSS, vanilla JS, Outfit |
+| [premium/nextjstemplates/nextjs-demo-tailadmin](./templates/premium/nextjstemplates/nextjs-demo-tailadmin/) | Interface experiment. | HTML, CSS, vanilla JS, Outfit |
 | [premium/tailwindcss/catalyst](./templates/premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [commit](./templates/premium/tailwindcss/commit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Mona Sans |
 | [compass](./templates/premium/tailwindcss/compass/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Geist Mono |
