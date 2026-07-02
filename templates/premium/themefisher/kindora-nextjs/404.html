@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Kindora</title>
+  <meta name="description" content="Oops! The page you're looking for doesn't exist. Return to Kindora's homepage.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ══ HEADER ══════════════════════════════════════════════ -->
+  <header class="header header-reveal" id="header">
+    <nav class="navbar">
+      <div class="flex items-center">
+        <a href="index.html" class="navbar-brand">
+          <img src="assets/images/logo.svg" alt="Kindora" height="25">
+        </a>
+      </div>
+      <ul class="navbar-nav" id="navbar-nav">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item nav-dropdown" id="dd-pages">
+          <button class="nav-link nav-dropdown-toggle">Pages</button>
+          <ul class="nav-dropdown-list">
+            <li><a href="about.html" class="nav-dropdown-link">About Us</a></li>
+            <li><a href="teams.html" class="nav-dropdown-link">Teams</a></li>
+            <li><a href="reviews.html" class="nav-dropdown-link">Reviews</a></li>
+            <li><a href="donation.html" class="nav-dropdown-link">Donation</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="programs.html" class="nav-link">Programs</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+      </ul>
+      <div class="navbar-right">
+        <a href="donation.html" class="btn btn-primary" style="font-size:0.875rem;padding:0.625rem 1.5rem;">Donate Now</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section style="min-height:calc(100vh - 104px);display:flex;align-items:center;justify-content:center;padding:4rem 1rem;text-align:center;">
+      <div>
+        <div style="font-size:clamp(6rem,20vw,12rem);font-weight:var(--fw-bold);line-height:1;color:var(--color-primary);margin-bottom:1rem;letter-spacing:-0.04em;">404</div>
+        <h1 style="font-size:clamp(1.75rem,4vw,2.5rem);margin-bottom:1.5rem;">Page Not Found</h1>
+        <p style="font-size:var(--text-lg);max-width:30rem;margin:0 auto 2.5rem;">Oops! The page you're looking for seems to have wandered off. Let's get you back on track.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="index.html" class="btn btn-primary">Go Home</a>
+          <a href="contact.html" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => { header.classList.toggle('header-reveal', window.scrollY > 80); });
+    const hamburger = document.getElementById('hamburger');
+    const navbarNav = document.getElementById('navbar-nav');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navbarNav.classList.toggle('show'); });
+    document.querySelectorAll('.nav-dropdown').forEach(dd => {
+      dd.querySelector('.nav-dropdown-toggle').addEventListener('click', e => { e.stopPropagation(); dd.classList.toggle('open'); });
+    });
+    document.addEventListener('click', () => { document.querySelectorAll('.nav-dropdown.open').forEach(dd => dd.classList.remove('open')); });
+  </script>
+</body>
+</html>
