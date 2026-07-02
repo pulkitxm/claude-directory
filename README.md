@@ -590,10 +590,11 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Studies (1)</b></summary>
+<summary><b>Studies (2)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [nextly-landing-page](./studies/nextly-landing-page/) | Pixel-faithful clone of "Nextly", Web3Templates' free Next.js + TailwindCSS startup landing page template — a navbar with a persisted dark/light mode toggle, a hero with a line-art illustration, a "Trusted by" logo cloud of inline-SVG brand marks, two alternating benefit sections, a decorative video-promo card, a testimonials grid, an independently-toggling FAQ accordion, a CTA banner, a full footer, a mobile hamburger menu, and a floating "Contact form" widget with its own animated panel; single fully responsive scrolling page, fully offline | HTML, CSS, vanilla JS |
 | [nextra-docs-template](./studies/nextra-docs-template/) | Pixel-faithful clone of the official Nextra "Docs Template" starter theme — a sticky blurred navbar (logo, About/Contact links, CTRL-K search box, GitHub/Discord icons), a left tree sidebar with a collapsible "Advanced" folder and active-item highlighting, a centered MDX-style prose column with breadcrumb, headings, syntax-highlighted code blocks and prev/next pagination, a right "On This Page" TOC rail, and a footer with a System/Light/Dark theme switcher; all 5 discovered pages (Introduction, About, Another Page, Advanced, Satori) reproduced with working search modal, folder toggle, theme switcher, interactive click counters, and a mobile hamburger nav overlay, fully offline | HTML, CSS, vanilla JS |
 
 </details>
