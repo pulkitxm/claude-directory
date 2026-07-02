@@ -1,5 +1,7 @@
 # Aurora Sign Up — Two-Column Registration UI with Video Hero (React + Tailwind CSS v4 + Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A modern two-column sign-up page featuring a full-bleed background video hero on the left and a polished registration form on the right. The left panel plays a looping muted video beneath a staggered entrance animation that reveals the brand, headline, and a three-step onboarding progress list; the right panel provides social auth buttons (Google, GitHub), an email/password form, and a password visibility toggle. Built for SaaS and creative-platform landing pages where first impressions matter. Generated with Claude Fable 5.
 
 ## Run

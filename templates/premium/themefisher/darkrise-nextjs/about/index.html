@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || 'dark'; // Darkrise has no native light mode; default stays dark unless the user explicitly toggles (see common.js).
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/about.css">
+<title>About | Darkrise — Analytics &amp; Dashboard Template</title>
+<meta name="description" content="Learn the story behind Darkrise, our core values, and the team building the analytics and dashboard platform that helps you close more deals.">
+<link rel="shortcut icon" href="/assets/images/favicon.png">
+</head>
+<body>
+<header class="header sticky top-0 z-30">
+  <nav class="navbar container relative z-10">
+    <div class="order-0">
+      <a class="navbar-brand inline-block" href="/" aria-label="Darkrise home">
+        <img alt="Darkrise" loading="lazy" width="248" height="52" class="inline-block" src="/assets/images/logo.svg">
+      </a>
+    </div>
+
+    <input id="nav-toggle" type="checkbox" class="hidden">
+    <label for="nav-toggle" class="order-3 flex cursor-pointer items-center text-text lg:order-1 lg:hidden">
+      <svg id="show-button" class="block h-6 fill-current" viewBox="0 0 20 20">
+        <title>Menu Open</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="hidden h-6 fill-current" viewBox="0 0 20 20">
+        <title>Menu Close</title>
+        <polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+
+    <ul id="nav-menu" class="navbar-nav order-3 hidden pb-6 lg:order-1 lg:flex lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-4">
+      <li class="nav-item nav-dropdown group">
+        <span class="nav-link inline-flex items-center cursor-pointer">
+          All Pages
+          <span class="arrow-icon">
+            <svg class="h-4 w-4 fill-current transition-transform" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+            </svg>
+          </span>
+        </span>
+        <div class="mega-menu-wrapper">
+          <div class="nav-dropdown-group">
+            <p class="nav-dropdown-eyebrow">Landing</p>
+            <ul class="nav-dropdown-list" style="width:150px;">
+              <li class="nav-dropdown-item">
+                <a aria-label="Home" class="nav-dropdown-link" href="/">Home</a>
+                <p class="nav-dropdown-desc">A Colorful Dark World</p>
+              </li>
+              <li class="nav-dropdown-item">
+                <a aria-label="Elements" class="nav-dropdown-link" href="/elements/">Elements</a>
+                <p class="nav-dropdown-desc">A collection of UI elements</p>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-dropdown-group">
+            <p class="nav-dropdown-eyebrow">Essentials</p>
+            <ul class="nav-dropdown-list">
+              <li class="nav-dropdown-item"><a aria-label="About" class="nav-dropdown-link active" href="/about/">About</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Pricing" class="nav-dropdown-link" href="/pricing/">Pricing</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Integrations" class="nav-dropdown-link" href="/integration/">Integrations</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Blog Details" class="nav-dropdown-link" href="/blog/post-1/">Blog Details</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Feature" class="nav-dropdown-link" href="/feature/">Feature</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Blog" class="nav-dropdown-link" href="/blog/">Blog</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Integrations Details" class="nav-dropdown-link" href="/integration/intercom/">Integrations Details</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Changelog" class="nav-dropdown-link" href="/changelog/">Changelog</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Contact" class="nav-dropdown-link" href="/contact/">Contact</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Terms" class="nav-dropdown-link" href="/terms-conditions/">Terms</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Privacy" class="nav-dropdown-link" href="/privacy-policy/">Privacy</a></li>
+              <li class="nav-dropdown-item"><a aria-label="404" class="nav-dropdown-link" href="/404/">404</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item"><a aria-label="Integrations" class="nav-link block" href="/integration/">Integrations</a></li>
+      <li class="nav-item"><a aria-label="Pricing" class="nav-link block" href="/pricing/">Pricing</a></li>
+      <li class="nav-item"><a aria-label="Contact" class="nav-link block" href="/contact/">Contact</a></li>
+
+      <a class="btn btn-primary bg-transparent mt-2 lg:hidden bg-none has-icon" href="https://themefisher.com/products/darkrise-nextjs" target="_blank" rel="noopener">
+        <span class="value"><span data-content="Get This Template">Get This Template</span></span>
+        <span class="icon">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+        </span>
+      </a>
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+      <a class="btn btn-primary bg-transparent hidden lg:flex bg-none has-icon" href="https://themefisher.com/products/darkrise-nextjs" target="_blank" rel="noopener">
+        <span class="value"><span data-content="Get This Template">Get This Template</span></span>
+        <span class="icon">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+        </span>
+      </a>
+
+      <!-- Theme toggle: added for this clone (source template has no
+           toggle). Icon-button styled to match the header. -->
+      <button type="button" data-theme-toggle aria-label="Toggle light and dark theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="about-hero-glow" aria-hidden="true"></div>
+
+<main>
+  <!-- Our Story -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <h1 class="has-gradient mb-6">Our Story</h1>
+        </div>
+        <div class="lg:col-6 about-story-copy" data-aos="fade-up-sm" data-aos-delay="100">
+          <div class="content">
+            <p>Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven decisions and close deals more effectively looking.</p>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+          </div>
+        </div>
+        <div class="col-12 about-story-media" data-aos="fade-up-sm" data-aos-delay="200">
+          <img alt="image related to Our Story" loading="lazy" width="1920" height="700" src="/assets/images/about/about-banner.png">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our core values -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto text-center lg:col-6" data-aos="fade-up-sm">
+          <h2 class="has-gradient mb-6">Our core values</h2>
+          <p class="about-lead">Gain invaluable predictive analytics and actionable insights, empowering your team to make data-driven decisions and close.</p>
+        </div>
+        <div class="col-12 about-values-row">
+          <div class="row g-4 justify-center">
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay="0">
+              <div class="about-value-card">
+                <div class="about-value-icon">
+                  <div class="about-value-icon-inner">
+                    <div class="about-value-icon-slot"><img alt="icon related to Innovation" loading="lazy" width="28" height="28" src="/assets/images/about/icons/grow.svg"></div>
+                    <div class="about-value-icon-slot" aria-hidden="true"><img alt="icon related to Innovation" loading="lazy" width="28" height="28" src="/assets/images/about/icons/grow.svg"></div>
+                  </div>
+                </div>
+                <h3>Innovation</h3>
+                <p>Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven decisions.</p>
+                <div class="about-value-glow" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay="100">
+              <div class="about-value-card">
+                <div class="about-value-icon">
+                  <div class="about-value-icon-inner">
+                    <div class="about-value-icon-slot"><img alt="icon related to Collaboration" loading="lazy" width="28" height="28" src="/assets/images/about/icons/collaboration.svg"></div>
+                    <div class="about-value-icon-slot" aria-hidden="true"><img alt="icon related to Collaboration" loading="lazy" width="28" height="28" src="/assets/images/about/icons/collaboration.svg"></div>
+                  </div>
+                </div>
+                <h3>Collaboration</h3>
+                <p>Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven decisions.</p>
+                <div class="about-value-glow" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay="200">
+              <div class="about-value-card">
+                <div class="about-value-icon">
+                  <div class="about-value-icon-inner">
+                    <div class="about-value-icon-slot"><img alt="icon related to Diversity" loading="lazy" width="28" height="28" src="/assets/images/about/icons/tools.svg"></div>
+                    <div class="about-value-icon-slot" aria-hidden="true"><img alt="icon related to Diversity" loading="lazy" width="28" height="28" src="/assets/images/about/icons/tools.svg"></div>
+                  </div>
+                </div>
+                <h3>Diversity</h3>
+                <p>Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven decisions.</p>
+                <div class="about-value-glow" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our team -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="has-gradient mb-4">Our team</h2>
+          <p class="about-lead">Gain invaluable predictive analytics and actionable insights.</p>
+        </div>
+        <div class="col-12 about-team-row" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="row gx-4 gy-5">
+            <div class="lg:col-4">
+              <div class="about-team-member">
+                <div class="about-team-avatar"><img alt="Brooklyn Simmons" loading="lazy" width="80" height="80" src="/assets/images/about/team/1.png"></div>
+                <h3>Brooklyn Simmons</h3>
+                <p class="about-team-role">President of Sales</p>
+                <p class="about-team-bio">Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven.</p>
+                <ul class="about-team-social">
+                  <li><a aria-label="facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">facebook</span><span class="about-team-social-icon"><img alt="icon related to facebook" loading="lazy" width="16" height="16" src="/assets/images/about/icons/facebook.svg"></span></a></li>
+                  <li><a aria-label="twitter" href="https://twitter.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">twitter</span><span class="about-team-social-icon"><img alt="icon related to twitter" loading="lazy" width="16" height="16" src="/assets/images/about/icons/twitter.svg"></span></a></li>
+                  <li><a aria-label="linkedin" href="https://linkedin.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">linkedin</span><span class="about-team-social-icon"><img alt="icon related to linkedin" loading="lazy" width="16" height="16" src="/assets/images/about/icons/linkedin.svg"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="lg:col-4">
+              <div class="about-team-member">
+                <div class="about-team-avatar"><img alt="Annette Black" loading="lazy" width="80" height="80" src="/assets/images/about/team/2.png"></div>
+                <h3>Annette Black</h3>
+                <p class="about-team-role">President of Sales</p>
+                <p class="about-team-bio">Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven.</p>
+                <ul class="about-team-social">
+                  <li><a aria-label="facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">facebook</span><span class="about-team-social-icon"><img alt="icon related to facebook" loading="lazy" width="16" height="16" src="/assets/images/about/icons/facebook.svg"></span></a></li>
+                  <li><a aria-label="twitter" href="https://twitter.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">twitter</span><span class="about-team-social-icon"><img alt="icon related to twitter" loading="lazy" width="16" height="16" src="/assets/images/about/icons/twitter.svg"></span></a></li>
+                  <li><a aria-label="linkedin" href="https://linkedin.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">linkedin</span><span class="about-team-social-icon"><img alt="icon related to linkedin" loading="lazy" width="16" height="16" src="/assets/images/about/icons/linkedin.svg"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="lg:col-4">
+              <div class="about-team-member">
+                <div class="about-team-avatar"><img alt="Darrell Steward" loading="lazy" width="80" height="80" src="/assets/images/about/team/3.png"></div>
+                <h3>Darrell Steward</h3>
+                <p class="about-team-role">President of Sales</p>
+                <p class="about-team-bio">Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven.</p>
+                <ul class="about-team-social">
+                  <li><a aria-label="facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">facebook</span><span class="about-team-social-icon"><img alt="icon related to facebook" loading="lazy" width="16" height="16" src="/assets/images/about/icons/facebook.svg"></span></a></li>
+                  <li><a aria-label="twitter" href="https://twitter.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">twitter</span><span class="about-team-social-icon"><img alt="icon related to twitter" loading="lazy" width="16" height="16" src="/assets/images/about/icons/twitter.svg"></span></a></li>
+                  <li><a aria-label="linkedin" href="https://linkedin.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">linkedin</span><span class="about-team-social-icon"><img alt="icon related to linkedin" loading="lazy" width="16" height="16" src="/assets/images/about/icons/linkedin.svg"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="lg:col-4">
+              <div class="about-team-member">
+                <div class="about-team-avatar"><img alt="Devon Lane" loading="lazy" width="80" height="80" src="/assets/images/about/team/4.png"></div>
+                <h3>Devon Lane</h3>
+                <p class="about-team-role">President of Sales</p>
+                <p class="about-team-bio">Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven.</p>
+                <ul class="about-team-social">
+                  <li><a aria-label="facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">facebook</span><span class="about-team-social-icon"><img alt="icon related to facebook" loading="lazy" width="16" height="16" src="/assets/images/about/icons/facebook.svg"></span></a></li>
+                  <li><a aria-label="twitter" href="https://twitter.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">twitter</span><span class="about-team-social-icon"><img alt="icon related to twitter" loading="lazy" width="16" height="16" src="/assets/images/about/icons/twitter.svg"></span></a></li>
+                  <li><a aria-label="linkedin" href="https://linkedin.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">linkedin</span><span class="about-team-social-icon"><img alt="icon related to linkedin" loading="lazy" width="16" height="16" src="/assets/images/about/icons/linkedin.svg"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="lg:col-4">
+              <div class="about-team-member">
+                <div class="about-team-avatar"><img alt="Brooklyn Simmons" loading="lazy" width="80" height="80" src="/assets/images/about/team/1.png"></div>
+                <h3>Brooklyn Simmons</h3>
+                <p class="about-team-role">President of Sales</p>
+                <p class="about-team-bio">Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven.</p>
+                <ul class="about-team-social">
+                  <li><a aria-label="facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">facebook</span><span class="about-team-social-icon"><img alt="icon related to facebook" loading="lazy" width="16" height="16" src="/assets/images/about/icons/facebook.svg"></span></a></li>
+                  <li><a aria-label="twitter" href="https://twitter.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">twitter</span><span class="about-team-social-icon"><img alt="icon related to twitter" loading="lazy" width="16" height="16" src="/assets/images/about/icons/twitter.svg"></span></a></li>
+                  <li><a aria-label="linkedin" href="https://linkedin.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">linkedin</span><span class="about-team-social-icon"><img alt="icon related to linkedin" loading="lazy" width="16" height="16" src="/assets/images/about/icons/linkedin.svg"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="lg:col-4">
+              <div class="about-team-member">
+                <div class="about-team-avatar"><img alt="Muhammad Murad" loading="lazy" width="80" height="80" src="/assets/images/about/team/2.png"></div>
+                <h3>Muhammad Murad</h3>
+                <p class="about-team-role">President of Sales</p>
+                <p class="about-team-bio">Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven.</p>
+                <ul class="about-team-social">
+                  <li><a aria-label="facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">facebook</span><span class="about-team-social-icon"><img alt="icon related to facebook" loading="lazy" width="16" height="16" src="/assets/images/about/icons/facebook.svg"></span></a></li>
+                  <li><a aria-label="twitter" href="https://twitter.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">twitter</span><span class="about-team-social-icon"><img alt="icon related to twitter" loading="lazy" width="16" height="16" src="/assets/images/about/icons/twitter.svg"></span></a></li>
+                  <li><a aria-label="linkedin" href="https://linkedin.com" target="_blank" rel="noopener noreferrer nofollow"><span class="sr-only">linkedin</span><span class="about-team-social-icon"><img alt="icon related to linkedin" loading="lazy" width="16" height="16" src="/assets/images/about/icons/linkedin.svg"></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- We are hiring -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto text-center lg:col-6" data-aos="fade-up-sm">
+          <h2 class="has-gradient mb-6">We are hiring!</h2>
+          <p class="about-lead">Gain invaluable predictive analytics and actionable insights.</p>
+          <a class="btn btn-primary mt-6 has-icon" href="/contact/">
+            <span class="value"><span data-content="See Open Positions">See Open Positions</span></span>
+            <span class="icon">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grow your sales CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="about-cta">
+        <img class="about-cta-bg" src="/assets/images/about/call-to-action-bg.png" alt="" aria-hidden="true" loading="lazy">
+        <div class="row about-cta-row">
+          <div class="lg:col-5">
+            <div class="about-cta-body">
+              <h2 class="has-gradient mb-6" data-aos="fade-up-sm">Grow your sales now</h2>
+              <p data-aos="fade-up-sm" data-aos-delay="50">Gain invaluable predictive analytics and actionable insights empowering your to make data-driven decisions.</p>
+              <a class="btn btn-primary mt-8 has-icon" href="/contact/" data-aos="fade-up-sm" data-aos-delay="100">
+                <span class="value"><span data-content="Explore All Tools">Explore All Tools</span></span>
+                <span class="icon">
+                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-7 about-cta-media" data-aos="fade-right-sm" data-aos-delay="150">
+            <img alt="sales report" loading="lazy" width="2048" height="1000" src="/assets/images/about/call-to-action.png">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-aos="fade-up-sm">
+  <div class="container">
+    <div class="row gy-6 justify-between">
+      <div class="col-12" style="padding-bottom: 3.5rem;">
+        <a class="navbar-brand inline-block" href="/" aria-label="Darkrise home">
+          <img alt="Darkrise" loading="lazy" width="450" height="96" class="inline-block" src="/assets/images/logo.svg">
+        </a>
+      </div>
+
+      <div class="sm:col-6 md:col-auto">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/feature/">Product Features</a></li>
+          <li><a href="/changelog/">Changelog</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="sm:col-6 md:col-auto">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="/pricing/">Pricing &amp; Plans</a></li>
+          <li><a href="/feature/">Product Features</a></li>
+          <li><a href="/integration/">Integration</a></li>
+          <li><a href="/integration/kickstarter/">Integration Details</a></li>
+        </ul>
+      </div>
+
+      <div class="sm:col-6 md:col-auto">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/post-1/">Blog Details</a></li>
+          <li><a href="/changelog/">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="sm:col-6 md:col-auto">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/elements/">Elements</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/404/">404</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12" style="padding-top: 1.25rem;">
+        <div class="footer-bottom">
+          <p>Copyright &copy; 2025 Darkrise. All Rights Reserved</p>
+          <ul class="footer-legal">
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/terms-conditions/">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/common.js" defer></script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 # Warp Dither Lab — 1-Bit WebGL2 Dithering Shader with Live Console (React + WebGL2 + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen 1-bit dithering shader rendered via a raw WebGL2 fragment shader, integrated as a shadcn/Tailwind/TypeScript drop-in component and presented as a live CRT console. The shader renders seven procedural shape fields (simplex noise, warp, dots, sine wave, ripple, swirl, sphere) and thresholds them to one bit through random or Bayer 2×2/4×4/8×8 ordered dithering; the demo configuration features the Warp field (orange `#ff6600` over navy `#000033`, 4×4 dither). Every shader prop is wired live via an on-screen console, a click-to-apply shape library mounts live WebGL2 canvases, and Bayer-matrix explainers animate inline. Generated with Claude Fable 5.
 
 ## Highlights

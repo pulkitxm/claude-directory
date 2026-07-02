@@ -1,5 +1,7 @@
 # USD Halo — Reward-Earning Stablecoin Landing Page (React + TypeScript + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 **USD Halo** is a premium fintech-style landing page for a reward-earning stablecoin product. The design is dark and editorial, with a full-viewport video hero, animated brand marquees, and a structured feature grid — a polished crypto/DeFi marketing landing page suitable for stablecoin launches, Web3 wallets, and fintech products. Generated with Claude Fable 5.
 
 ## Sections

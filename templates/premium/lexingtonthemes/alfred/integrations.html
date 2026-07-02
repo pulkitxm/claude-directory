@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Integrations — Alfred</title>
+		<meta
+			name="description"
+			content="Connect Alfred with your favorite tools and services."
+		>
+		<link rel="stylesheet" href="./assets/styles.css">
+		<style>
+		.page-hero {
+			padding-top: 12rem;
+			padding-bottom: 2rem;
+		}
+		@media (min-width: 1024px) {
+			.page-hero {
+				padding-top: 20.5rem;
+			}
+		}
+
+		.search-bar {
+			position: sticky;
+			top: 3.8rem;
+			z-index: 40;
+			background: var(--base-50);
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: 3rem;
+			padding: 0 1rem;
+			gap: 0.5rem;
+			border: none;
+			outline: none;
+			font-size: 1.125rem;
+			color: var(--base-700);
+			cursor: pointer;
+		}
+		.search-bar:focus {
+			outline: 2px solid var(--base-800);
+		}
+
+		.int-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 0.25rem;
+			margin-top: 2rem;
+		}
+		@media (min-width: 640px) {
+			.int-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+		@media (min-width: 1024px) {
+			.int-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		.int-card {
+			padding: 2rem;
+			background: var(--base-50);
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+		.int-logo {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 1.5rem;
+			background: #fff;
+		}
+		.int-logo img {
+			width: 4rem;
+			height: 4rem;
+			object-fit: contain;
+		}
+
+		/* Search modal */
+		.search-modal {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 50;
+			background: rgba(0, 0, 0, 0.3);
+		}
+		.search-modal.open {
+			display: block;
+		}
+		.search-modal-inner {
+			background: #fff;
+			margin: 6rem auto 0;
+			max-width: 600px;
+			padding: 1rem;
+		}
+		.search-input {
+			width: 100%;
+			height: 3.5rem;
+			padding: 0 1rem;
+			font-size: 1.125rem;
+			background: var(--base-50);
+			border: none;
+			outline: none;
+			color: var(--base-700);
+		}
+		.search-result {
+			padding: 0.75rem 1rem;
+			display: flex;
+			gap: 1rem;
+			align-items: flex-start;
+			cursor: pointer;
+			border-top: 1px solid var(--base-100);
+		}
+		.search-result:hover {
+			background: var(--base-50);
+		}
+		</style>
+	</head>
+	<body>
+		<div id="nav-placeholder"></div>
+
+		<main style="flex:1">
+			<section>
+				<div class="container page-hero">
+					<!-- Search bar -->
+					<div style="position:sticky;top:3.8rem;z-index:40">
+						<button
+							id="searchButton"
+							aria-label="Search integrations"
+							style="display:flex;align-items:center;width:100%;height:3rem;padding:0 1rem;gap:0.5rem;background:var(--base-50);border:none;outline:none;font-size:1.125rem;color:var(--base-700);cursor:pointer"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								style="width:1rem;height:1rem"
+								fill="currentColor"
+								viewBox="0 0 256 256"
+							>
+								<path
+									d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+								></path>
+							</svg>
+							Search integrations
+						</button>
+					</div>
+
+					<!-- Search modal -->
+					<div
+						id="searchModal"
+						class="search-modal"
+						role="dialog"
+						aria-modal="true"
+					>
+						<div class="search-modal-inner">
+							<input
+								type="text"
+								id="searchInput"
+								placeholder="Search integrations..."
+								class="search-input"
+								autocomplete="off"
+							>
+							<div
+								id="searchResults"
+								style="max-height:24rem;overflow-y:auto"
+							></div>
+						</div>
+					</div>
+
+					<!-- Integration cards -->
+					<div class="int-grid" id="intGrid">
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-1.svg" alt="Chrome">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Chrome
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Google Chrome is a fast, secure, and widely used web browser.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-2.svg" alt="Gmail">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Gmail
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Gmail is a secure, smart, and easy-to-use email service by
+									Google.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-3.svg" alt="Behance">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Behance
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Behance is an online platform for showcasing creative work.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-4.svg" alt="PostGraphile">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									PostGraphile
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Build a secure, high-performance GraphQL API from PostgreSQL.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-5.svg" alt="Discord">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Discord
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Discord is a communication platform designed for creating
+									communities.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-6.svg" alt="GIPHY">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									GIPHY
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									GIPHY is the world's largest library of animated GIFs and
+									stickers.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-7.svg" alt="Notion">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Notion
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Notion is an all-in-one workspace for note-taking and project
+									management.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-8.svg" alt="YouTube">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									YouTube
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									YouTube is the world's largest video-sharing platform.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-9.svg" alt="Terser">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Terser
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Terser is a fast JS parser, mangler, and compressor.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-10.svg" alt="Meta">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Meta
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Meta builds social connections through Facebook, Instagram,
+									and WhatsApp.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-11.svg" alt="Sketch">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Sketch
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Sketch is a popular digital design platform for UI and
+									prototyping.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-12.svg" alt="Facebook">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Facebook
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Facebook enables people to connect and share content
+									worldwide.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-13.svg" alt="Medium">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Medium
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Medium is an open platform where readers find dynamic
+									thinking.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-14.svg" alt="Realm Browser">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Realm Browser
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Visualize and debug Realm database files quickly and easily.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-15.svg" alt="Firebase">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Firebase
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Firebase helps developers build and grow apps with backend
+									services.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-16.svg" alt="Snapchat">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Snapchat
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Snapchat lets users share moments through photos, videos, and
+									stories.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-17.svg" alt="GitHub">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									GitHub
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									GitHub is the world's leading platform for software
+									development.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-18.svg" alt="GitLab">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									GitLab
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									GitLab is a complete DevOps platform for collaborative
+									development.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-19.svg" alt="VS Code">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									VS Code
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Visual Studio Code is a lightweight but powerful code editor
+									by Microsoft.
+								</p>
+							</div>
+						</div>
+						<div class="int-card">
+							<div class="int-logo">
+								<img src="./assets/images/brand-20.svg" alt="Reddit">
+							</div>
+							<div>
+								<h3
+									style="font-size:0.875rem;font-weight:500;color:var(--base-800)"
+								>
+									Reddit
+								</h3>
+								<p
+									style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem"
+								>
+									Reddit is a social platform built around communities and
+									discussions.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<div id="footer-placeholder"></div>
+		<script src="./assets/shared.js"></script>
+		<script>
+		// Search functionality
+		const integrations = [
+			{ name: "Chrome", desc: "Google Chrome is a fast, secure web browser." },
+			{ name: "Gmail", desc: "Gmail is a secure email service by Google." },
+			{
+				name: "Behance",
+				desc: "Behance is an online platform for creative work.",
+			},
+			{ name: "PostGraphile", desc: "Build GraphQL API from PostgreSQL." },
+			{ name: "Discord", desc: "Communication platform for communities." },
+			{ name: "GIPHY", desc: "World's largest library of animated GIFs." },
+			{ name: "Notion", desc: "All-in-one workspace for productivity." },
+			{ name: "YouTube", desc: "World's largest video sharing platform." },
+			{ name: "Terser", desc: "Fast JS parser and compressor." },
+			{ name: "Meta", desc: "Social connections via Facebook and Instagram." },
+			{ name: "Sketch", desc: "Digital design platform for UI." },
+			{ name: "Facebook", desc: "Connect and share content worldwide." },
+			{ name: "Medium", desc: "Open platform for bold ideas." },
+			{ name: "Realm Browser", desc: "Visualize Realm database files." },
+			{ name: "Firebase", desc: "Backend services for apps by Google." },
+			{ name: "Snapchat", desc: "Share moments through photos and videos." },
+			{
+				name: "GitHub",
+				desc: "World's leading software development platform.",
+			},
+			{ name: "GitLab", desc: "Complete DevOps platform." },
+			{ name: "VS Code", desc: "Powerful code editor by Microsoft." },
+			{ name: "Reddit", desc: "Social platform built around communities." },
+		];
+
+		const searchBtn = document.getElementById("searchButton");
+		const searchModal = document.getElementById("searchModal");
+		const searchInput = document.getElementById("searchInput");
+		const searchResults = document.getElementById("searchResults");
+
+		searchBtn.addEventListener("click", (e) => {
+			e.preventDefault();
+			searchModal.classList.add("open");
+			document.body.style.overflow = "hidden";
+			setTimeout(() => searchInput.focus(), 100);
+		});
+
+		searchModal.addEventListener("click", (e) => {
+			if (e.target === searchModal) {
+				closeSearch();
+			}
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") closeSearch();
+		});
+
+		function closeSearch() {
+			searchModal.classList.remove("open");
+			document.body.style.overflow = "";
+			searchInput.value = "";
+			searchResults.innerHTML = "";
+		}
+
+		searchInput.addEventListener("input", () => {
+			const query = searchInput.value.toLowerCase().trim();
+			if (!query) {
+				searchResults.innerHTML = "";
+				return;
+			}
+
+			const results = integrations.filter(
+				(i) =>
+					i.name.toLowerCase().includes(query) ||
+					i.desc.toLowerCase().includes(query),
+			);
+
+			if (!results.length) {
+				searchResults.innerHTML = `<div style="padding:0.75rem 1rem;font-size:0.875rem;color:var(--base-500)">No results found</div>`;
+				return;
+			}
+
+			searchResults.innerHTML = results
+				.map(
+					(r) => `
+          <div class="search-result">
+            <div>
+              <p style="font-size:0.875rem;font-weight:500;color:var(--base-800)">${r.name}</p>
+              <p style="font-size:0.75rem;color:var(--base-500);margin-top:0.25rem">${r.desc}</p>
+            </div>
+          </div>
+        `,
+				)
+				.join("");
+		});
+		</script>
+	</body>
+</html>

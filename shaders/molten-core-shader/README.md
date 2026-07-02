@@ -1,5 +1,7 @@
 # Molten Core Shader — Procedural FBM Lava Background with Telemetry HUD (React + Three.js + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport procedural lava GLSL fragment shader rendered via Three.js, wrapped in a *foundry core monitor* showcase. The shader is the fixed background; a charred instrument frame, scanning reticle, live **core-temperature telemetry** panel, base-color toggle, and melt-intensity dial compose a calm metallurgical HUD that reads real GPU state and steers the shader's `theme` and `intensity` uniforms. Built with React + TypeScript + Vite + Tailwind CSS on a shadcn project structure. Generated with Claude Fable 5.
 
 ```bash

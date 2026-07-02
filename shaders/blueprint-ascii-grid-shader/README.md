@@ -1,5 +1,7 @@
 # Blueprint ASCII Grid Shader — Full-Screen WebGL2 Blueprint Background with ASCII Glyphs (React + Vite + Tailwind + shadcn/ui)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen WebGL2 GLSL ES 3.00 fragment shader that renders a drifting deep-navy blueprint grid with ASCII glyphs stamped at major intersections — integrated as a drop-in shadcn/ui component (`asd.tsx`) with a live control deck, telemetry HUD, and anatomy walkthrough. The single-draw-call shader combines a four-point mesh gradient, Bayer 4×4 ordered dithering, value-noise grain, and tanh tone-mapping to produce a technical, cyberpunk-blueprint aesthetic ideal as a hero or landing-page background. Generated with Claude Fable 5.
 
 ## What's in `components/ui`

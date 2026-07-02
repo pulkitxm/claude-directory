@@ -2,7 +2,7 @@
 
 A darkroom-bench integration of the drop-in `DitheringShader` — a WebGL2 / GLSL ES 3.00 fragment shader that pixelises an animated field and resolves it to two inks through an ordered (Bayer) or white-noise dithering matrix — framed as a live print instrument with seven shape modes (wave, simplex, warp, dots, ripple, swirl, sphere), four matrix types (random, 2×2, 4×4, 8×8), real-time ink pickers, pixel-size and speed faders, freeze/resume transport, five curated presets, and a telemetry HUD reading FPS, shader clock, resolution, and pixel-cell grid directly from the GPU each frame. Generated with Claude Fable 5.
 
-![DITHER LAB demo](./demo.mp4)
+[![Watch Demo](./poster.jpg)](./demo.mp4)
 
 Part of the [claude-directory](../../README.md) · category [shaders](../README.md).
 

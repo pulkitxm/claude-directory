@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Configuration — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../../styles.css">
+		<link rel="icon" href="../../assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="../../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav
+						class="docs-sidebar-nav"
+						data-current="docs/getting-started/configuration.html"
+					></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span
+						><span>Getting Started</span><span class="sep">/</span
+						><span>Configuration</span>
+					</div>
+					<h1 class="docs-title">Configuration</h1>
+					<p class="docs-lead">
+						Tune Scalar CMS to your project — define options, connect a
+						database, and load plugins.
+					</p>
+
+					<h2 id="config-file">Configuration file</h2>
+					<p>
+						Scalar reads its settings from a <code>scalar.config.ts</code> file
+						at the root of your project. The file exports a typed config object:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)"
+								>scalar.config.ts</span
+							>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">import</span>
+							{ <span class="tok-fn">defineConfig</span> }
+							<span class="tok-kw">from</span>
+							<span class="tok-str">"@scalar/core"</span>
+
+							<span class="tok-kw">export default</span>
+							<span class="tok-fn">defineConfig</span>( {
+							<span class="tok-fn">project</span>:
+							<span class="tok-str">"my-cms"</span>,
+							<span class="tok-fn">admin</span>: {
+							<span class="tok-fn">path</span>:
+							<span class="tok-str">"/admin"</span>
+							} ,
+							<span class="tok-fn">database</span>: {
+							<span class="tok-fn">provider</span>:
+							<span class="tok-str">"postgres"</span>
+							} , })
+						</div>
+					</div>
+					<p>
+						Run <code>npx scalar check</code> to validate the file against the
+						schema before booting.
+					</p>
+
+					<h2 id="database">Database connection</h2>
+					<p>
+						Scalar connects to your database through a single connection string
+						supplied via the <code>DATABASE_URL</code> environment variable:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">.env</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"># PostgreSQL connection string</span>
+							DATABASE_URL=postgres://user:pass@localhost:5432/scalar
+
+							<span class="tok-com"># or SQLite for local development</span>
+							DATABASE_URL=file:./scalar.db
+						</div>
+					</div>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							Never commit your <code>.env</code> file. Add it to
+							<code>.gitignore</code>
+							and use your host's secret manager for production credentials.
+						</div>
+					</div>
+
+					<h2 id="env-vars">Environment variables</h2>
+					<p>
+						The following variables control how Scalar authenticates and runs.
+						Defaults are applied when a value is omitted:
+					</p>
+					<table class="docs-table">
+						<thead>
+							<tr>
+								<th>Variable</th>
+								<th>Description</th>
+								<th>Default</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>SCALAR_API_KEY</code></td>
+								<td>Secret key used to sign and verify admin API requests.</td>
+								<td><em>required</em></td>
+							</tr>
+							<tr>
+								<td><code>SCALAR_PROJECT_ID</code></td>
+								<td>
+									Unique identifier linking this instance to your Scalar
+									workspace.
+								</td>
+								<td><em>required</em></td>
+							</tr>
+							<tr>
+								<td><code>PORT</code></td>
+								<td>Port the development and production server listens on.</td>
+								<td><code>3000</code></td>
+							</tr>
+							<tr>
+								<td><code>NODE_ENV</code></td>
+								<td>
+									Runtime mode that toggles caching, logging, and error detail.
+								</td>
+								<td><code>development</code></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2 id="plugins">Plugins</h2>
+					<p>
+						Extend Scalar by registering plugins in the
+						<code>plugins</code>
+						array. Each plugin can hook into the admin UI, content lifecycle, or
+						build pipeline:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)"
+								>scalar.config.ts</span
+							>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">import</span>
+							{ <span class="tok-fn">defineConfig</span> }
+							<span class="tok-kw">from</span>
+							<span class="tok-str">"@scalar/core"</span>
+							<span class="tok-kw">import</span>
+							{ <span class="tok-fn">seo</span>,
+							<span class="tok-fn">media</span>
+							}
+							<span class="tok-kw">from</span>
+							<span class="tok-str">"@scalar/plugins"</span>
+
+							<span class="tok-kw">export default</span>
+							<span class="tok-fn">defineConfig</span>( {
+							<span class="tok-fn">plugins</span>: [
+							<span class="tok-fn">seo</span>( {
+							<span class="tok-fn">sitemap</span>:
+							<span class="tok-kw">true</span>
+							} ),
+							<span class="tok-fn">media</span>( {
+							<span class="tok-fn">provider</span>:
+							<span class="tok-str">"s3"</span>
+							} ), ], })
+						</div>
+					</div>
+
+					<h2 id="advanced">Advanced options</h2>
+					<p>
+						For larger deployments, Scalar exposes lower-level options to
+						control caching, request limits, and logging:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)"
+								>scalar.config.ts</span
+							>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">export default</span>
+							<span class="tok-fn">defineConfig</span>( {
+							<span class="tok-fn">cache</span>: {
+							<span class="tok-fn">ttl</span>:
+							<span class="tok-str">"5m"</span>,
+							<span class="tok-fn">strategy</span>:
+							<span class="tok-str">"swr"</span>
+							} ,
+							<span class="tok-fn">server</span>: {
+							<span class="tok-fn">maxBodySize</span>:
+							<span class="tok-str">"10mb"</span>
+							} ,
+							<span class="tok-fn">logging</span>: {
+							<span class="tok-fn">level</span>:
+							<span class="tok-str">"info"</span>
+							} , })
+						</div>
+					</div>
+					<p>
+						See the guides for production-ready recipes covering deployment,
+						scaling, and observability.
+					</p>
+
+					<nav class="docs-pager">
+						<a
+							class="pg-prev"
+							href="../../docs/getting-started/installation.html"
+							><div class="pg-dir">← Previous</div>
+							<div class="pg-title">Installation</div></a
+						>
+						<a class="pg-next" href="../../docs/guides/guides.html"
+							><div class="pg-dir">Next →</div>
+							<div class="pg-title">Guides</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#config-file">Configuration file</a>
+					<a href="#database">Database connection</a>
+					<a href="#env-vars">Environment variables</a>
+					<a href="#plugins">Plugins</a>
+					<a href="#advanced">Advanced options</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="../../shared.js"></script>
+	</body>
+</html>

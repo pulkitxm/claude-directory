@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Guides — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../../styles.css">
+		<link rel="icon" href="../../assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="../../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav
+						class="docs-sidebar-nav"
+						data-current="docs/guides/guides.html"
+					></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span><span>Guides</span
+						><span class="sep">/</span><span>Guides</span>
+					</div>
+					<h1 class="docs-title">Guides</h1>
+					<p class="docs-lead">
+						A practical tour of working with Scalar CMS — from modeling content
+						to querying, mutating, and shipping localized, production-ready
+						data.
+					</p>
+
+					<h2 id="modeling-content">Modeling content</h2>
+					<p>
+						Everything in Scalar starts with a schema. A schema describes the
+						shape of your content as a set of collections, each with typed
+						fields. Define collections in <code>scalar.config.ts</code> and
+						Scalar generates the database tables, the admin UI, and a fully
+						typed client for you.
+					</p>
+					<ul>
+						<li>
+							Use singular field names and plural collection names for
+							consistency.
+						</li>
+						<li>
+							Mark fields <code>required</code> only when an empty value would
+							break rendering.
+						</li>
+						<li>
+							Prefer references over duplicated data to keep content in sync.
+						</li>
+					</ul>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							Schema changes are tracked as migrations. Run
+							<code>npx scalar migrate</code>
+							after editing a collection so your database stays in lockstep with
+							the config.
+						</div>
+					</div>
+
+					<h2 id="querying-data">Querying data</h2>
+					<p>
+						The generated client gives you a single <code>query</code> method
+						that is fully typed against your schema. Select only the fields you
+						need to keep payloads small:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">app/page.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">import</span>
+							{ client } <span class="tok-kw">from</span>
+							<span class="tok-str">"@scalar/sdk"</span>;
+
+							<span class="tok-com">// fetch the latest published posts</span>
+							<span class="tok-kw">const</span>
+							posts = <span class="tok-kw">await</span> client.query(<span
+								class="tok-str"
+								>"posts"</span
+							>, { where: { status: <span class="tok-str">"published"</span> } ,
+							select: [<span class="tok-str">"title"</span>,
+							<span class="tok-str">"slug"</span>,
+							<span class="tok-str">"publishedAt"</span>], orderBy: {
+							publishedAt: <span class="tok-str">"desc"</span> } , limit:
+							<span class="tok-num">10</span>, });
+						</div>
+					</div>
+					<p>
+						Queries are resolved at the edge and cached automatically. Pass
+						<code>{ cache: "no-store" }</code>
+						when you need always-fresh data.
+					</p>
+
+					<h2 id="mutations">Mutations</h2>
+					<p>
+						Create, update, and delete content with the matching client methods.
+						Every mutation is validated against your schema before it touches
+						the database:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">app/actions.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">import</span>
+							{ client } <span class="tok-kw">from</span>
+							<span class="tok-str">"@scalar/sdk"</span>;
+
+							<span class="tok-com">// create a draft post</span>
+							<span class="tok-kw">const</span>
+							post = <span class="tok-kw">await</span> client.create(<span
+								class="tok-str"
+								>"posts"</span
+							>, { title: <span class="tok-str">"Hello, Scalar"</span>, status:
+							<span class="tok-str">"draft"</span>, });
+
+							<span class="tok-com">// publish it later</span>
+							<span class="tok-kw">await</span>
+							client.update(<span class="tok-str">"posts"</span>, post.id, {
+							status: <span class="tok-str">"published"</span> } );
+						</div>
+					</div>
+					<p>
+						Wrap related writes in <code>client.transaction(...)</code> to keep
+						them atomic.
+					</p>
+
+					<h2 id="localization">Localization</h2>
+					<p>
+						Mark any field as <code>localized: true</code> and Scalar stores a
+						value per locale. The client resolves the right translation based on
+						the <code>locale</code> you pass:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">app/page.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"
+								>// fetch French content with an English fallback</span
+							>
+							<span class="tok-kw">const</span>
+							page = <span class="tok-kw">await</span> client.query(<span
+								class="tok-str"
+								>"pages"</span
+							>, { locale: <span class="tok-str">"fr"</span>, fallbackLocale:
+							<span class="tok-str">"en"</span>, });
+						</div>
+					</div>
+					<p>
+						Locales are configured once in <code>scalar.config.ts</code> and
+						surfaced as a language switcher in the admin panel automatically.
+					</p>
+
+					<h2 id="best-practices">Best practices</h2>
+					<p>
+						A few habits keep Scalar projects fast and maintainable as they
+						grow:
+					</p>
+					<ul>
+						<li>Select explicit fields instead of fetching whole documents.</li>
+						<li>Co-locate queries with the components that render them.</li>
+						<li>
+							Use references and relations rather than copying content between
+							collections.
+						</li>
+						<li>
+							Run migrations in CI so schema and database never drift apart.
+						</li>
+						<li>
+							Lean on edge caching, and reach for <code>no-store</code> only
+							when freshness truly matters.
+						</li>
+					</ul>
+
+					<nav class="docs-pager">
+						<a
+							class="pg-prev"
+							href="../../docs/getting-started/configuration.html"
+							><div class="pg-dir">← Previous</div>
+							<div class="pg-title">Configuration</div></a
+						>
+						<a class="pg-next" href="../../docs/guides/tutorials.html"
+							><div class="pg-dir">Next →</div>
+							<div class="pg-title">Tutorials</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#modeling-content">Modeling content</a>
+					<a href="#querying-data">Querying data</a>
+					<a href="#mutations">Mutations</a>
+					<a href="#localization">Localization</a>
+					<a href="#best-practices">Best practices</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="../../shared.js"></script>
+	</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sign Up — Ælen CRM</title>
+		<meta
+			name="description"
+			content="Create your Ælen CRM account. Start your free trial, no credit card required."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		>
+		<style>
+		:root {
+			--white: oklch(95% 0.0187 80.72);
+			--black: oklch(29% 0 0);
+			--orange: oklch(60% 0.1499 37.55);
+			--cyan: oklch(80% 0.0456 250.63);
+			--yellow: oklch(75% 0.1081 64.85);
+			--gray: oklch(83% 0.0018 325.59);
+			--font-sans: "Geist", sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			font-family: var(--font-sans);
+			color: var(--black);
+			background: var(--white);
+		}
+
+		body {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+
+		main {
+			flex: 1;
+		}
+
+		/* Hero */
+		.hero {
+			padding: 8rem 1rem 0;
+		}
+
+		.hero-title {
+			font-size: clamp(5rem, 15vw, 12rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 0.9;
+			color: var(--black);
+			margin-bottom: 3rem;
+		}
+
+		.stacked-bars {
+			display: flex;
+			flex-direction: column;
+			gap: 0.35rem;
+			margin-top: 2rem;
+		}
+
+		.bar-2 {
+			height: 2px;
+			background: var(--black);
+		}
+		.bar-4 {
+			height: 4px;
+			background: var(--black);
+		}
+		.bar-8 {
+			height: 8px;
+			background: var(--black);
+		}
+		.bar-12 {
+			height: 12px;
+			background: var(--black);
+		}
+
+		.bar-band {
+			display: flex;
+			align-items: center;
+			padding: 2rem 1rem;
+			background: var(--black);
+		}
+		.bar-band span {
+			font-size: clamp(1rem, 2.5vw, 2rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			color: white;
+		}
+
+		/* Form panel */
+		.form-section {
+			padding: 0.5rem 1rem;
+		}
+
+		.form-panel {
+			background: var(--orange);
+			padding: 3rem 2rem;
+		}
+
+		.auth-form {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			width: 100%;
+		}
+
+		.form-group {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+		}
+
+		.form-group label {
+			display: block;
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: white;
+		}
+
+		.form-group input[type="text"],
+		.form-group input[type="email"],
+		.form-group input[type="password"] {
+			display: block;
+			width: 100%;
+			height: 3.5rem;
+			padding: 0 1rem;
+			background: rgba(0, 0, 0, 0.2);
+			border: 1px solid transparent;
+			color: white;
+			font-family: var(--font-sans);
+			font-size: 1rem;
+			outline: none;
+		}
+
+		.form-group input::placeholder {
+			color: rgba(255, 255, 255, 0.8);
+		}
+
+		.form-group input:focus {
+			box-shadow: 0 0 0 2px white;
+		}
+
+		.btn-row {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			margin-top: 0.5rem;
+			gap: 0.25rem;
+		}
+
+		@media (min-width: 1024px) {
+			.btn-row {
+				flex-wrap: nowrap;
+			}
+		}
+
+		.btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 3.5rem;
+			padding: 0.75rem 1.5rem;
+			font-family: var(--font-sans);
+			font-size: 1.25rem;
+			font-weight: 500;
+			border: none;
+			border-radius: 0.25rem;
+			text-decoration: none;
+			cursor: pointer;
+			transition: background 0.3s ease;
+		}
+
+		.btn-black {
+			color: white;
+			background: var(--black);
+		}
+		.btn-black:hover {
+			background: rgba(0, 0, 0, 0.8);
+		}
+
+		.btn-white {
+			color: var(--black);
+			background: white;
+		}
+		.btn-white:hover {
+			background: rgba(255, 255, 255, 0.8);
+		}
+
+		.agree-row {
+			display: flex;
+			align-items: center;
+			margin-top: 1rem;
+			gap: 0.25rem;
+		}
+
+		.agree-row input[type="checkbox"] {
+			accent-color: var(--black);
+			border: 1px solid rgba(0, 0, 0, 0.5);
+		}
+
+		.agree-row label {
+			font-size: 0.75rem;
+			color: white;
+		}
+
+		.agree-row label a {
+			font-weight: 500;
+			color: var(--black);
+			text-decoration: none;
+		}
+		.agree-row label a:hover {
+			color: var(--cyan);
+		}
+
+		.auth-switch {
+			font-size: clamp(2.25rem, 6vw, 3.75rem);
+			margin-top: 6rem;
+			font-weight: 700;
+			color: white;
+			letter-spacing: -0.01em;
+		}
+
+		.auth-switch a {
+			font-weight: 700;
+			color: white;
+			border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+		.auth-switch a:hover {
+			color: var(--black);
+		}
+
+		/* Footer */
+		.footer-links a:hover {
+			color: var(--black);
+		}
+		</style>
+	</head>
+	<body>
+		<!-- HEADER -->
+		<header>
+			<div
+				style="max-width:100%;padding:0 1rem;width:100%;background:var(--white);"
+			>
+				<div style="padding:0.5rem 0;border-bottom:1px dashed rgba(0,0,0,0.2);">
+					<div
+						style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;width:100%;"
+					>
+						<a
+							href="index.html"
+							style="color:var(--black);text-decoration:none;"
+						>
+							<svg
+								style="height:2rem;"
+								viewBox="0 0 1051 289"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+									fill="currentColor"
+								/>
+							</svg>
+						</a>
+						<div
+							style="display:flex;align-items:center;margin-left:auto;gap:0.5rem;"
+						>
+							<a
+								href="system-overview.html"
+								style="font-weight:600;color:var(--black);text-decoration:none;"
+								>Overview</a
+							>
+							<a
+								href="sign-in.html"
+								style="font-weight:600;color:white;background:var(--black);padding:0.4rem 1rem;border-radius:0.25rem;text-decoration:none;"
+								>Sign in</a
+							>
+							<button
+								id="menuToggle"
+								style="background:var(--black);color:white;border:none;padding:0.4rem;border-radius:0.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;width:2rem;height:2rem;"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									style="width:1.25rem;height:1.25rem;"
+								>
+									<path d="M4 6h16M7 12h13M10 18h10" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Mobile mega menu overlay (yellow background) -->
+			<div
+				id="megaMenu"
+				style="display:none;position:fixed;inset:0;background:var(--yellow);z-index:9998;padding:1rem;"
+			>
+				<button
+					id="megaMenuClose"
+					style="display:flex;align-items:center;justify-content:center;padding:0.5rem;margin-left:auto;background:white;border:none;border-radius:0.25rem;cursor:pointer;"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						style="width:1.5rem;height:1.5rem;"
+					>
+						<path d="M18 6l-12 12M6 6l12 12" />
+					</svg>
+				</button>
+				<nav
+					style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem;"
+				>
+					<a
+						href="system-overview.html"
+						style="font-size:clamp(2rem,8vw,4rem);font-weight:700;color:white;border-bottom:1px dashed rgba(0,0,0,0.2);padding-bottom:0.5rem;text-decoration:none;"
+						>Overview</a
+					>
+					<a
+						href="blog.html"
+						style="font-size:clamp(2rem,8vw,4rem);font-weight:700;color:white;border-bottom:1px dashed rgba(0,0,0,0.2);padding-bottom:0.5rem;text-decoration:none;"
+						>Blog</a
+					>
+					<a
+						href="changelog.html"
+						style="font-size:clamp(2rem,8vw,4rem);font-weight:700;color:white;border-bottom:1px dashed rgba(0,0,0,0.2);padding-bottom:0.5rem;text-decoration:none;"
+						>Changelog</a
+					>
+					<a
+						href="pricing.html"
+						style="font-size:clamp(2rem,8vw,4rem);font-weight:700;color:white;border-bottom:1px dashed rgba(0,0,0,0.2);padding-bottom:0.5rem;text-decoration:none;"
+						>Pricing</a
+					>
+				</nav>
+				<div
+					style="display:flex;flex-direction:column;gap:0.5rem;margin-top:3rem;"
+				>
+					<div style="height:2px;background:var(--black);"></div>
+					<div style="height:4px;background:var(--black);"></div>
+					<div style="height:8px;background:var(--black);"></div>
+					<div style="height:12px;background:var(--black);"></div>
+					<div
+						style="display:flex;align-items:center;padding:2rem;background:var(--black);"
+					>
+						<span
+							style="font-size:clamp(1.5rem,4vw,3rem);font-weight:700;letter-spacing:-0.02em;color:white;"
+							>Ælen CRM — Copyright Lexington Themes 2026</span
+						>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<!-- HERO -->
+			<section class="hero">
+				<h1 class="hero-title">Sign up</h1>
+				<div class="stacked-bars">
+					<div class="bar-2"></div>
+					<div class="bar-4"></div>
+					<div class="bar-8"></div>
+					<div class="bar-12"></div>
+					<div class="bar-band">
+						<span>Welcome back</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- FORM -->
+			<section class="form-section">
+				<div class="form-panel">
+					<form action="#" method="POST" class="auth-form">
+						<div class="form-group">
+							<label for="name">Full Name</label>
+							<input type="text" id="name" name="name" required>
+						</div>
+						<div class="form-group">
+							<label for="email">Email Address</label>
+							<input type="email" id="email" name="email" required>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" id="password" name="password" required>
+						</div>
+						<div class="form-group">
+							<label for="confirmPassword">Confirm Password</label>
+							<input
+								type="password"
+								id="confirmPassword"
+								name="confirmPassword"
+								required
+							>
+						</div>
+						<div class="btn-row">
+							<button type="submit" class="btn btn-black">Sign in</button>
+							<a href="#_" class="btn btn-white">Google</a>
+							<a href="#_" class="btn btn-white">Apple</a>
+						</div>
+					</form>
+					<div class="agree-row">
+						<input type="checkbox" id="agree" name="agree" required>
+						<label for="agree"
+							>I agree to the
+							<a href="#_">terms and conditions</a></label
+						>
+					</div>
+					<p class="auth-switch">
+						Go an acccount
+						<a href="sign-in.html">Sign in</a>
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<!-- FOOTER -->
+		<footer style="overflow:hidden;">
+			<div
+				style="max-width:100%;padding:0 1rem;width:100%;padding-top:12rem;padding-bottom:1rem;"
+			>
+				<svg
+					style="color:var(--black);width:100%;"
+					viewBox="0 0 1051 289"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+						fill="currentColor"
+					/>
+				</svg>
+				<div
+					style="display:flex;flex-direction:column;gap:0.5rem;width:100%;margin-top:0.25rem;"
+				>
+					<div style="height:2px;background:var(--black);"></div>
+					<div style="height:4px;background:var(--black);"></div>
+					<div style="height:8px;background:var(--black);"></div>
+					<div style="height:12px;background:var(--black);"></div>
+					<div
+						style="display:flex;align-items:center;padding:2rem;background:var(--black);"
+					>
+						<span
+							style="font-size:clamp(1.2rem,3vw,3rem);font-weight:700;letter-spacing:-0.02em;color:white;"
+							>ⓒ Copyright Lexington Themes 2026</span
+						>
+					</div>
+				</div>
+				<div
+					class="footer-links"
+					style="display:flex;flex-wrap:wrap;margin-top:1rem;gap:1rem;"
+				>
+					<a
+						href="system-overview.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Overview</a
+					>
+					<a
+						href="about.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>About</a
+					>
+					<a
+						href="about.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Careers</a
+					>
+					<a
+						href="contact.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Contact</a
+					>
+					<a
+						href="#_"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>X</a
+					>
+					<a
+						href="#_"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Linkedin</a
+					>
+					<a
+						href="#_"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Youtube</a
+					>
+					<a
+						href="#_"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Instagram</a
+					>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		const menuToggle = document.getElementById("menuToggle");
+		const megaMenu = document.getElementById("megaMenu");
+		const megaMenuClose = document.getElementById("megaMenuClose");
+
+		menuToggle.addEventListener("click", () => {
+			megaMenu.style.display = "block";
+			document.body.style.overflow = "hidden";
+		});
+
+		megaMenuClose.addEventListener("click", () => {
+			megaMenu.style.display = "none";
+			document.body.style.overflow = "";
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && megaMenu.style.display === "block") {
+				megaMenu.style.display = "none";
+				document.body.style.overflow = "";
+			}
+		});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,218 @@
+/* Sandstone — Design Tokens */
+:root {
+	/* oklch grayscale palette */
+	--color-base-50: oklch(98.5% 0 0);
+	--color-base-100: oklch(97% 0 0);
+	--color-base-200: oklch(92.2% 0 0);
+	--color-base-300: oklch(87% 0 0);
+	--color-base-400: oklch(70.8% 0 0);
+	--color-base-500: oklch(55.6% 0 0);
+	--color-base-600: oklch(43.9% 0 0);
+	--color-base-700: oklch(37.1% 0 0);
+	--color-base-800: oklch(26.9% 0 0);
+	--color-base-900: oklch(20.5% 0 0);
+	--color-base-950: oklch(14.5% 0 0);
+	--color-black: #000;
+	--color-white: #fff;
+
+	/* semantic tokens */
+	--bg: var(--color-base-100);
+	--text: var(--color-base-900);
+	--text-muted: var(--color-base-600);
+	--text-subtle: var(--color-base-500);
+	--text-faint: var(--color-base-400);
+	--border: var(--color-base-200);
+	--surface: var(--color-white);
+
+	/* spacing */
+	--sp: 0.25rem;
+
+	/* radii */
+	--radius-xl: 0.75rem;
+	--radius-2xl: 1rem;
+	--radius-3xl: 1.5rem;
+
+	/* type */
+	--font-sans: "Inter", "InterVariable", sans-serif;
+	--font-display: "Times New Roman", "Times", serif;
+
+	/* animation */
+	--ease-out: cubic-bezier(0, 0, 0.2, 1);
+	--ease-menu: cubic-bezier(0.22, 1, 0.36, 1);
+	--dur-fast: 0.15s;
+	--dur-md: 0.3s;
+	--dur-slow: 0.5s;
+
+	/* marquee */
+	--animate-marquee: marquee 92s linear infinite;
+}
+
+/* Dark mode */
+:root.dark,
+[data-theme="dark"] {
+	--bg: var(--color-base-950);
+	--text: var(--color-base-50);
+	--text-muted: var(--color-base-400);
+	--text-subtle: var(--color-base-500);
+	--border: var(--color-base-800);
+	--surface: var(--color-base-900);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not(.light):not([data-theme="light"]) {
+		--bg: var(--color-base-950);
+		--text: var(--color-base-50);
+		--text-muted: var(--color-base-400);
+		--text-subtle: var(--color-base-500);
+		--border: var(--color-base-800);
+		--surface: var(--color-base-900);
+	}
+}
+
+/* Marquee keyframe */
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* Base reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+	scroll-behavior: smooth;
+	font-size: 16px;
+}
+body {
+	font-family: var(--font-sans);
+	background-color: var(--color-base-100);
+	color: var(--color-base-900);
+	min-height: 100svh;
+	display: flex;
+	flex-direction: column;
+	line-height: 1.5;
+}
+img,
+video {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+button {
+	cursor: pointer;
+	font-family: inherit;
+}
+
+/* Container */
+.container {
+	max-width: 100%;
+	margin-inline: auto;
+	padding-inline: 1rem;
+	width: 100%;
+}
+.container-wide {
+	max-width: 100%;
+	margin-inline: auto;
+	padding-inline: 2rem;
+	width: 100%;
+}
+
+/* Hover link (slide-up animation) */
+.hover-link {
+	position: relative;
+	display: inline-flex;
+	height: 2rem;
+	overflow: hidden;
+	font-weight: 500;
+	color: var(--color-base-950);
+}
+.hover-link:hover {
+	color: var(--color-base-500);
+}
+.hover-link .label-default {
+	transform: translateY(0);
+	transition: transform var(--dur-slow) var(--ease-out);
+	display: inline-block;
+	white-space: nowrap;
+}
+.hover-link:hover .label-default {
+	transform: translateY(-150%);
+}
+.hover-link .label-hover {
+	position: absolute;
+	transform: translateY(150%);
+	transition: transform var(--dur-slow) var(--ease-out);
+	display: inline-block;
+	white-space: nowrap;
+}
+.hover-link:hover .label-hover {
+	transform: translateY(0);
+}
+
+/* Prose styles */
+.prose {
+	line-height: 1.75;
+}
+.prose h2 {
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: var(--color-base-900);
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+.prose h3 {
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--color-base-900);
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+.prose p {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	color: var(--color-base-600);
+}
+.prose ul {
+	margin-top: 1em;
+	padding-left: 1.5em;
+	list-style: disc;
+}
+.prose li {
+	margin-top: 0.5em;
+	color: var(--color-base-600);
+}
+.prose strong {
+	color: var(--color-base-900);
+	font-weight: 600;
+}
+
+/* Utility classes */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+.grow {
+	flex: 1;
+}
+.hidden {
+	display: none;
+}

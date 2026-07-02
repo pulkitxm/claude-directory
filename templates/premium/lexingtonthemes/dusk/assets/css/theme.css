@@ -1,0 +1,87 @@
+/* ------------------------------------------------------------------
+   Dusk — theme layer
+   The source template is light-only. This layer keeps the original
+   light palette as the default and adds a faithful dark counterpart by
+   re-pointing the SAME `--color-*` tokens that base.css (compiled
+   Tailwind) already drives every utility through. Toggling `.dark` on
+   <html> recolors the entire clone; we also honor prefers-color-scheme.
+   ------------------------------------------------------------------ */
+
+/* Smooth recolor when toggling (not on first paint to avoid flashes). */
+html.theme-ready,
+html.theme-ready body,
+html.theme-ready * {
+	transition:
+		background-color 0.3s ease,
+		border-color 0.3s ease,
+		color 0.3s ease;
+}
+
+/* Dark overrides: warm cream neutrals -> deep neutral, blacks -> light.
+   Accent stays the electric blue but we lift its mid for contrast on dark. */
+html.dark {
+	/* base neutral scale inverted */
+	--color-base-50: oklch(17.7% 0.002 106.5);
+	--color-base-100: oklch(20.5% 0.002 106.5); /* page background (dark) */
+	--color-base-200: oklch(26% 0.003 106.5);
+	--color-base-300: oklch(33% 0.004 106.5);
+	--color-base-400: oklch(45% 0.004 106.5);
+	--color-base-500: oklch(68% 0.006 117.8); /* body / subtext */
+	--color-base-600: oklch(76.8% 0.007 115.59);
+	--color-base-700: oklch(85.2% 0.007 115.54);
+	--color-base-800: oklch(90% 0.007 115.54);
+	--color-base-900: oklch(94.7% 0.008 114.05); /* big numerals / headings */
+	--color-base-950: oklch(97.4% 0.005 117.64);
+
+	/* black/white swap so black-on-light text becomes light-on-dark */
+	--color-black: oklch(97% 0 0);
+	--color-white: oklch(17.7% 0.002 106.5);
+
+	/* accent lifted a step for legibility on the dark canvas */
+	--color-accent-500: oklch(65.4% 0.148 271.8);
+	--color-accent-600: oklch(54.1% 0.201 268.81);
+	--color-accent-950: oklch(13.3% 0.035 265.41);
+}
+
+/* When the user has not chosen, follow the OS preference. */
+@media (prefers-color-scheme: dark) {
+	html:not(.light):not(.dark) {
+		--color-base-50: oklch(17.7% 0.002 106.5);
+		--color-base-100: oklch(20.5% 0.002 106.5);
+		--color-base-200: oklch(26% 0.003 106.5);
+		--color-base-300: oklch(33% 0.004 106.5);
+		--color-base-400: oklch(45% 0.004 106.5);
+		--color-base-500: oklch(68% 0.006 117.8);
+		--color-base-600: oklch(76.8% 0.007 115.59);
+		--color-base-700: oklch(85.2% 0.007 115.54);
+		--color-base-800: oklch(90% 0.007 115.54);
+		--color-base-900: oklch(94.7% 0.008 114.05);
+		--color-base-950: oklch(97.4% 0.005 117.64);
+		--color-black: oklch(97% 0 0);
+		--color-white: oklch(17.7% 0.002 106.5);
+		--color-accent-500: oklch(65.4% 0.148 271.8);
+		--color-accent-600: oklch(54.1% 0.201 268.81);
+	}
+}
+
+/* Theme toggle button (injected into the nav). Inherits the nav cell look. */
+#theme-toggle {
+	cursor: pointer;
+}
+#theme-toggle .icon-sun {
+	display: none;
+}
+html.dark #theme-toggle .icon-sun {
+	display: inline;
+}
+html.dark #theme-toggle .icon-moon {
+	display: none;
+}
+@media (prefers-color-scheme: dark) {
+	html:not(.light):not(.dark) #theme-toggle .icon-sun {
+		display: inline;
+	}
+	html:not(.light):not(.dark) #theme-toggle .icon-moon {
+		display: none;
+	}
+}

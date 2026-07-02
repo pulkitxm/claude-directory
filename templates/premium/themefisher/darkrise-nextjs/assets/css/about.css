@@ -1,0 +1,399 @@
+/*
+  about.css — page-specific styles for /about/ (company story / values /
+  team page).
+  Load order: tokens.css -> base.css -> about.css.
+  Only CSS custom properties from tokens.css are used for color (no raw
+  hex/rgb), so the page renders correctly in both [data-theme="light"] and
+  [data-theme="dark"].
+*/
+
+/* base.css's header section styles the semantic classes (.navbar,
+   .navbar-brand, .navbar-nav, .nav-item, .nav-link, .mega-menu-wrapper, ...)
+   but doesn't yet define the small set of generic Tailwind-style utility
+   classes verbatim-copied from partials/header.html (order-*, ml-auto,
+   flex/items-center, hidden/lg:hidden, etc.), nor the row/col + spacing
+   utilities used by this page's body copy. Patched locally here (no
+   !important), same pattern as feature.css. */
+.hidden { display: none; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.items-center { align-items: center; }
+.cursor-pointer { cursor: pointer; }
+.block { display: block; }
+.order-0 { order: 0; }
+.order-1 { order: 1; }
+.order-3 { order: 3; }
+.ml-auto { margin-left: auto; }
+.mx-auto { margin-inline: auto; }
+.pb-6 { padding-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+.pt-20 { padding-top: 5rem; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 48rem) {
+  .md\:order-2 { order: 2; }
+}
+
+@media (min-width: 64rem) {
+  .lg\:hidden { display: none; }
+  .lg\:flex { display: flex; }
+  .lg\:order-1 { order: 1; }
+  .lg\:ml-0 { margin-left: 0; }
+  .lg\:w-auto { width: auto; }
+  .lg\:pb-0 { padding-bottom: 0; }
+  .lg\:space-x-2 > * + * { margin-left: var(--space-2); }
+  .lg\:col-5 { width: 41.6667%; }
+  .lg\:col-7 { width: 58.3333%; }
+  .lg\:col-10 { width: 83.3333%; }
+}
+
+@media (min-width: 80rem) {
+  .xl\:space-x-4 > * + * { margin-left: var(--space-4); }
+}
+
+/* Grid gutter helpers used on this page (base.css only ships .row / .gy-6) */
+.g-4 > *,
+.gx-4 > * {
+  padding-inline: 0.75rem;
+}
+
+.g-4 {
+  row-gap: 1.5rem;
+}
+
+.gy-5 {
+  row-gap: 2rem;
+}
+
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/* ---------------------------------------------------------------- */
+/* Hero glow (shared visual language with home/feature pages)        */
+/* ---------------------------------------------------------------- */
+
+.about-hero-glow {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: -82px;
+  z-index: -1;
+  height: 424px;
+  width: 100%;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: linear-gradient(to right, var(--glow-blue), var(--glow-pink) 90%);
+  opacity: 0.5;
+  filter: blur(100px);
+}
+
+@media (min-width: 64rem) {
+  .about-hero-glow {
+    width: 884px;
+    transform: translateX(-50%) rotate(-19deg);
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Our Story                                                         */
+/* ---------------------------------------------------------------- */
+
+.about-story-copy {
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 64rem) {
+  .about-story-copy {
+    margin-top: 0;
+    padding-left: 5rem;
+  }
+}
+
+.about-story-copy .content p {
+  opacity: 0.8;
+  margin: 0 0 1rem;
+}
+
+.about-story-copy .content p:last-child {
+  margin-bottom: 0;
+}
+
+.about-story-media {
+  margin-top: 3rem;
+}
+
+@media (min-width: 48rem) {
+  .about-story-media { margin-top: 5rem; }
+}
+
+.about-story-media img {
+  width: 100%;
+  height: 300px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+@media (min-width: 48rem) {
+  .about-story-media img {
+    height: 700px;
+    border-radius: var(--radius-3xl);
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Shared lead paragraph (section subheads)                          */
+/* ---------------------------------------------------------------- */
+
+.about-lead {
+  font-size: 1.125rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------- */
+/* Our core values                                                   */
+/* ---------------------------------------------------------------- */
+
+.about-values-row {
+  padding-top: 5rem;
+}
+
+.about-value-card {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in oklab, var(--color-white) 5%, transparent);
+  background-color: var(--bg-surface-alt);
+  padding: 2.25rem;
+  transition: border-color var(--transition-base) var(--ease-in-out);
+}
+
+.about-value-card:hover {
+  border-color: color-mix(in oklab, var(--color-secondary) 40%, var(--border-color));
+}
+
+.about-value-icon {
+  display: flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  overflow: hidden;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: var(--radius-md);
+  background-image: linear-gradient(to bottom, color-mix(in oklab, var(--color-white) 10%, transparent), color-mix(in oklab, var(--bg-surface) 25%, transparent));
+  margin-bottom: 3rem;
+}
+
+.about-value-icon-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 3.5rem;
+  width: 3.5rem;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.about-value-card:hover .about-value-icon-inner {
+  transform: translateY(-100%);
+}
+
+.about-value-icon-slot {
+  display: flex;
+  min-height: 3.5rem;
+  min-width: 3.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-value-card h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: normal;
+  margin-bottom: 1rem;
+}
+
+.about-value-card p {
+  opacity: 0.6;
+  margin: 0;
+}
+
+.about-value-glow {
+  pointer-events: none;
+  position: absolute;
+  bottom: -22%;
+  right: -40%;
+  z-index: 0;
+  height: 180px;
+  width: 335px;
+  transform: rotate(-20deg);
+  background: linear-gradient(to left, transparent, var(--bg-surface-alt) 60%, var(--color-secondary));
+  opacity: 0;
+  filter: blur(83px);
+  transition: opacity var(--transition-base) var(--ease-in-out);
+}
+
+.about-value-card:hover .about-value-glow {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------- */
+/* Our team                                                           */
+/* ---------------------------------------------------------------- */
+
+.about-team-row {
+  padding-top: 5rem;
+}
+
+.about-team-avatar {
+  height: 5rem;
+  width: 5rem;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.about-team-avatar img { border-radius: 50%; }
+
+.about-team-member h3 {
+  font-size: 1.125rem;
+  letter-spacing: normal;
+  margin: 1rem 0 0;
+}
+
+@media (min-width: 48rem) {
+  .about-team-member h3 { font-size: 1.25rem; }
+}
+
+.about-team-role {
+  opacity: 0.7;
+  margin: 0.25rem 0 0;
+}
+
+.about-team-bio {
+  opacity: 0.8;
+  margin: 1rem 0 0;
+}
+
+.about-team-social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.about-team-social-icon {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+}
+
+.about-team-social-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: var(--radius-md);
+  background-image: linear-gradient(to bottom, color-mix(in oklab, var(--color-white) 10%, transparent), color-mix(in oklab, var(--bg-surface) 25%, transparent));
+  transition: transform var(--transition-base) var(--ease-in-out);
+}
+
+.about-team-social-icon img {
+  position: relative;
+  z-index: 1;
+}
+
+.about-team-social a:hover .about-team-social-icon::after {
+  transform: scaleY(-1);
+}
+
+/* ---------------------------------------------------------------- */
+/* CTA band ("Grow your sales now")                                  */
+/* ---------------------------------------------------------------- */
+
+.about-cta {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  border: 1px solid color-mix(in oklab, var(--color-white) 5%, transparent);
+  background-color: color-mix(in oklab, var(--bg-surface-alt) 60%, transparent);
+  padding: 1.75rem 1.75rem 0;
+}
+
+@media (min-width: 48rem) {
+  .about-cta { padding: 2.5rem 2.5rem 0; }
+}
+
+@media (min-width: 64rem) {
+  .about-cta { padding: 4rem 0 4rem 4rem; }
+}
+
+.about-cta-bg {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left bottom;
+}
+
+.about-cta-row {
+  position: relative;
+  z-index: 1;
+  align-items: center;
+}
+
+.about-cta-body {
+  padding-bottom: 4rem;
+}
+
+.about-cta-body h2 { margin-bottom: 1.5rem; }
+
+.about-cta-body p {
+  font-size: 1.125rem;
+  opacity: 0.5;
+  margin: 0;
+}
+
+.about-cta-media {
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 64rem) {
+  .about-cta-media { margin-top: 0; margin-left: 7rem; }
+}
+
+.about-cta-media img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  object-position: left top;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-body);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  margin-bottom: -1px;
+}
+
+@media (min-width: 64rem) {
+  .about-cta-media img {
+    border-radius: var(--radius-3xl) var(--radius-3xl) 0 0;
+  }
+}

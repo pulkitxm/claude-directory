@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" class="selection:bg-blue selection:text-white scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Jobs — Hirewise</title>
+		<meta
+			name="description"
+			content="Browse all open job listings on Hirewise."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"
+		></script>
+		<script>
+		(function () {
+			const t =
+				localStorage.getItem("theme") ||
+				(window.matchMedia("(prefers-color-scheme: dark)").matches
+					? "dark"
+					: "light");
+			document.documentElement.classList.toggle("dark", t === "dark");
+		})();
+		</script>
+	</head>
+	<body class="bg-white dark:bg-base-800 flex flex-col min-h-dvh">
+		<section id="navigation" class="overflow-hidden">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="bg-white dark:bg-base-800 py-4">
+					<div class="grid grid-cols-2 gap-4 items-center">
+						<a
+							href="index.html"
+							class="font-medium lowercase text-base-900 dark:text-white text-lg"
+							>hirewise®</a
+						>
+						<div class="flex items-center gap-2 text-sm justify-end">
+							<button
+								class="btn-secondary size-8 rounded"
+								id="jobSearchButton"
+								type="button"
+								aria-label="Search"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+									<path d="M21 21l-6 -6"></path>
+								</svg>
+							</button>
+							<button
+								class="btn-secondary size-8 rounded"
+								id="theme-toggle"
+								type="button"
+								aria-label="Toggle theme"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+									<path
+										d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
+									></path>
+								</svg>
+							</button>
+							<a
+								class="btn-secondary h-8 px-3 py-2 text-xs rounded whitespace-nowrap"
+								href="sign-in.html"
+								>Sign in</a
+							>
+							<a
+								class="btn-primary h-8 px-3 py-2 text-xs rounded whitespace-nowrap"
+								href="sign-up.html"
+								>Sign up</a
+							>
+							<button
+								class="btn-secondary size-8 rounded shrink-0"
+								id="menubutton"
+								type="button"
+								aria-controls="menu"
+								aria-label="Toggle menu"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M4 4h6v6h-6zm10 0h6v6h-6zm-10 10h6v6h-6zm10 0h6v6h-6z"
+									></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<nav
+						id="menu"
+						class="overflow-hidden relative outline outline-base-200 dark:outline-white/10 shadow dark:shadow-base-900 rounded-3xl bg-base-50 dark:bg-base-700 mt-4"
+						style="max-height:0;opacity:0;transition:max-height 0.5s ease-out, opacity 0.5s ease-out;"
+					>
+						<div class="p-8 grid grid-cols-1 lg:grid-cols-3 gap-y-8">
+							<div>
+								<h3 class="text-base text-base-900 dark:text-white font-medium">
+									Quick Links
+								</h3>
+								<nav class="mt-8">
+									<ul class="grid grid-cols-2 gap-y-1">
+										<li>
+											<a
+												href="index.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Browse Jobs</a
+											>
+										</li>
+										<li>
+											<a
+												href="companies.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Explore Companies</a
+											>
+										</li>
+										<li>
+											<a
+												href="candidates.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Find Candidates</a
+											>
+										</li>
+										<li>
+											<a
+												href="submit-job.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Post a Job</a
+											>
+										</li>
+										<li>
+											<a
+												href="blog.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>News</a
+											>
+										</li>
+										<li>
+											<a
+												href="sign-in.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Sign In</a
+											>
+										</li>
+										<li>
+											<a
+												href="sign-up.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Create an account</a
+											>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div
+								class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:col-span-2 gap-4"
+							>
+								<div
+									class="bg-orange p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a href="jobs.html" class="absolute inset-0 z-10"></a>Jobs
+								</div>
+								<div
+									class="bg-blue p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a
+										href="companies.html"
+										class="absolute inset-0 z-10"
+									></a>Companies
+								</div>
+								<div
+									class="bg-yellow-light p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-base-900 font-semibold"
+								>
+									<a
+										href="candidates.html"
+										class="absolute inset-0 z-10"
+									></a>Candidates
+								</div>
+								<div
+									class="bg-green p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a href="blog.html" class="absolute inset-0 z-10"></a>News
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<main class="flex-1">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24 py-12">
+				<div class="mb-8">
+					<h1 class="text-3xl font-semibold text-base-900 dark:text-white">
+						All Jobs
+					</h1>
+					<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+						20 opportunities available
+					</p>
+				</div>
+				<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+					<!-- Sidebar Filters -->
+					<aside class="lg:col-span-1">
+						<div class="card p-6">
+							<h2 class="font-medium text-base-900 dark:text-white mb-4">
+								Filters
+							</h2>
+							<div class="mb-6">
+								<label
+									class="text-xs font-medium text-base-500 dark:text-base-400 uppercase tracking-wide"
+									>Category</label
+								>
+								<div class="mt-2 space-y-2">
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Engineering (8)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Marketing (4)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Design (3)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Analytics (2)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Writing (2)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										AI (1)</label
+									>
+								</div>
+							</div>
+							<div class="mb-6">
+								<label
+									class="text-xs font-medium text-base-500 dark:text-base-400 uppercase tracking-wide"
+									>Type</label
+								>
+								<div class="mt-2 space-y-2">
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Remote (8)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Hybrid (6)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										On-site (6)</label
+									>
+								</div>
+							</div>
+							<div>
+								<label
+									class="text-xs font-medium text-base-500 dark:text-base-400 uppercase tracking-wide"
+									>Company</label
+								>
+								<div class="mt-2 space-y-2">
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Polar (5)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Apple (4)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										GitHub (3)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Supabase (3)</label
+									>
+									<label
+										class="flex items-center gap-2 text-sm text-base-600 dark:text-base-400"
+										><input type="checkbox" class="rounded">
+										Figma (1)</label
+									>
+								</div>
+							</div>
+						</div>
+					</aside>
+					<!-- Jobs List -->
+					<div class="lg:col-span-3 space-y-4">
+						<!-- Jobs data -->
+						<script>
+						const jobs = [
+							{
+								id: 1,
+								title: "Product Designer",
+								company: "Polar",
+								logo: "PL",
+								bg: "#2D2D2D",
+								color: "white",
+								location: "Remote (US only)",
+								category: "Design",
+								salary: "$90k–$120k",
+								type: "Full-time",
+								mode: "Remote",
+							},
+							{
+								id: 2,
+								title: "DevOps Engineer",
+								company: "Polar",
+								logo: "PL",
+								bg: "#2D2D2D",
+								color: "white",
+								location: "Berlin, Germany",
+								category: "Engineering",
+								salary: "$110k–$140k",
+								type: "Full-time",
+								mode: "On-site",
+							},
+							{
+								id: 3,
+								title: "Head of Growth",
+								company: "Polar",
+								logo: "PL",
+								bg: "#2D2D2D",
+								color: "white",
+								location: "New York, NY",
+								category: "Marketing",
+								salary: "$130k–$160k",
+								type: "Full-time",
+								mode: "Hybrid",
+							},
+							{
+								id: 4,
+								title: "Backend Developer",
+								company: "Polar",
+								logo: "PL",
+								bg: "#2D2D2D",
+								color: "white",
+								location: "New York, NY",
+								category: "Engineering",
+								salary: "$100k–$130k",
+								type: "Full-time",
+								mode: "Hybrid",
+							},
+							{
+								id: 5,
+								title: "Data Analyst",
+								company: "Polar",
+								logo: "PL",
+								bg: "#2D2D2D",
+								color: "white",
+								location: "Toronto, Canada",
+								category: "Analytics",
+								salary: "$80k–$110k",
+								type: "Full-time",
+								mode: "Remote",
+							},
+							{
+								id: 6,
+								title: "Technical Writer",
+								company: "Supabase",
+								logo: "SB",
+								bg: "#3ECF8E",
+								color: "#111",
+								location: "London, UK",
+								category: "Writing",
+								salary: "$70k–$90k",
+								type: "Full-time",
+								mode: "Remote",
+							},
+							{
+								id: 7,
+								title: "Technical Writer",
+								company: "Netlify",
+								logo: "N",
+								bg: "#32E6E2",
+								color: "#111",
+								location: "Amsterdam, Netherlands",
+								category: "Writing",
+								salary: "$65k–$85k",
+								type: "Full-time",
+								mode: "Hybrid",
+							},
+							{
+								id: 8,
+								title: "Frontend Engineer",
+								company: "Supabase",
+								logo: "SB",
+								bg: "#3ECF8E",
+								color: "#111",
+								location: "Remote (Global)",
+								category: "Engineering",
+								salary: "$100k–$130k",
+								type: "Full-time",
+								mode: "Remote",
+							},
+							{
+								id: 9,
+								title: "Recruiting Coordinator",
+								company: "Supabase",
+								logo: "SB",
+								bg: "#3ECF8E",
+								color: "#111",
+								location: "Sydney, Australia",
+								category: "HR",
+								salary: "$75k–$95k",
+								type: "Full-time",
+								mode: "On-site",
+							},
+							{
+								id: 10,
+								title: "Sales Development Rep",
+								company: "Stripe",
+								logo: "S",
+								bg: "#635BFF",
+								color: "white",
+								location: "San Francisco, CA",
+								category: "Sales",
+								salary: "$80k–$100k",
+								type: "Full-time",
+								mode: "On-site",
+							},
+							{
+								id: 11,
+								title: "Engineering Manager",
+								company: "Figma",
+								logo: "F",
+								bg: "#F24E1E",
+								color: "white",
+								location: "Remote (North America)",
+								category: "Engineering",
+								salary: "$140k–$170k",
+								type: "Full-time",
+								mode: "Remote",
+							},
+							{
+								id: 12,
+								title: "Senior Frontend Engineer",
+								company: "GitHub",
+								logo: "G",
+								bg: "#24292F",
+								color: "white",
+								location: "Barcelona, Spain",
+								category: "Engineering",
+								salary: "$120k–$150k",
+								type: "Full-time",
+								mode: "Hybrid",
+							},
+							{
+								id: 13,
+								title: "Head of Marketing",
+								company: "GitHub",
+								logo: "G",
+								bg: "#24292F",
+								color: "white",
+								location: "Paris, France",
+								category: "Marketing",
+								salary: "$120k–$160k",
+								type: "Full-time",
+								mode: "On-site",
+							},
+							{
+								id: 14,
+								title: "AI Research Engineer",
+								company: "Polar",
+								logo: "PL",
+								bg: "#2D2D2D",
+								color: "white",
+								location: "Dublin, Ireland",
+								category: "AI",
+								salary: "$150k–$200k",
+								type: "Full-time",
+								mode: "Hybrid",
+							},
+							{
+								id: 15,
+								title: "Product Marketing Manager",
+								company: "GitHub",
+								logo: "G",
+								bg: "#24292F",
+								color: "white",
+								location: "Munich, Germany",
+								category: "Marketing",
+								salary: "$100k–$130k",
+								type: "Full-time",
+								mode: "On-site",
+							},
+							{
+								id: 16,
+								title: "UX Researcher",
+								company: "Apple",
+								logo: "A",
+								bg: "#A2AAAD",
+								color: "white",
+								location: "Austin, TX",
+								category: "Design",
+								salary: "$110k–$140k",
+								type: "Full-time",
+								mode: "On-site",
+							},
+							{
+								id: 17,
+								title: "DevOps Engineer",
+								company: "Apple",
+								logo: "A",
+								bg: "#A2AAAD",
+								color: "white",
+								location: "Remote",
+								category: "Engineering",
+								salary: "$130k–$160k",
+								type: "Full-time",
+								mode: "Remote",
+							},
+							{
+								id: 18,
+								title: "Community Manager",
+								company: "Apple",
+								logo: "A",
+								bg: "#A2AAAD",
+								color: "white",
+								location: "Copenhagen, Denmark",
+								category: "Marketing",
+								salary: "$70k–$90k",
+								type: "Full-time",
+								mode: "On-site",
+							},
+							{
+								id: 19,
+								title: "Junior Product Designer",
+								company: "Penpot",
+								logo: "P",
+								bg: "#7238C0",
+								color: "white",
+								location: "Boston, MA",
+								category: "Design",
+								salary: "$70k–$90k",
+								type: "Full-time",
+								mode: "Hybrid",
+							},
+							{
+								id: 20,
+								title: "Data Analyst",
+								company: "Apple",
+								logo: "A",
+								bg: "#A2AAAD",
+								color: "white",
+								location: "Remote",
+								category: "Analytics",
+								salary: "$90k–$120k",
+								type: "Full-time",
+								mode: "Remote",
+							},
+						];
+						const container = document.currentScript.parentElement;
+						jobs.forEach((j) => {
+							const div = document.createElement("a");
+							div.href = "job-detail.html";
+							div.className =
+								"card p-5 flex items-center gap-4 hover:shadow-2xl transition-all duration-300 group block";
+							div.innerHTML = `
+            <div class="company-logo shrink-0" style="background:${j.bg};color:${j.color};">${j.logo}</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <h2 class="font-medium text-base-900 dark:text-white group-hover:text-blue transition-colors">${j.title}</h2>
+                  <p class="text-sm text-base-500 dark:text-base-400">${j.company} · ${j.location}</p>
+                </div>
+                <span class="text-sm font-medium text-base-900 dark:text-white whitespace-nowrap shrink-0">${j.salary}</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-2">
+                <span class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded">${j.category}</span>
+                <span class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded">${j.mode}</span>
+                <span class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded">${j.type}</span>
+              </div>
+            </div>`;
+							container.parentElement.appendChild(div);
+						});
+						</script>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer class="mt-auto">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="py-12 border-t border-base-200 dark:border-base-700">
+					<div
+						class="flex flex-col sm:flex-row items-center justify-between gap-4"
+					>
+						<a
+							href="index.html"
+							class="font-medium lowercase text-base-900 dark:text-white text-lg"
+							>hirewise®</a
+						>
+						<p class="text-sm text-base-500 dark:text-base-400">
+							© 2025 Hirewise. All rights reserved.
+						</p>
+						<button
+							class="btn-secondary h-8 px-3 py-2 text-xs rounded"
+							id="footer-theme-toggle"
+							type="button"
+						>
+							Toggle theme
+						</button>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<button
+			id="chat-toggle"
+			class="btn-primary fixed bottom-5 right-5 z-50 size-11 rounded-full"
+			aria-label="Chat"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="size-5"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M8 9h8"></path>
+				<path d="M8 13h6"></path>
+				<path
+					d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"
+				></path>
+			</svg>
+		</button>
+		<div
+			id="chat-bubble"
+			class="fixed bottom-20 right-5 z-50 opacity-0 pointer-events-none transition-opacity"
+		>
+			<div class="bg-white dark:bg-base-700 card p-4 w-72 rounded-2xl">
+				<p class="font-medium text-base-900 dark:text-white">Chat with us</p>
+				<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+					We typically reply in a few minutes.
+				</p>
+				<button class="btn-primary w-full mt-4 h-9 px-4 rounded text-sm">
+					Start conversation
+				</button>
+			</div>
+		</div>
+
+		<script>
+		const searchItems = [
+			{
+				title: "Product Designer",
+				subtitle: "polar • Remote (US only)",
+				href: "job-detail.html",
+				type: "Job",
+			},
+			{
+				title: "Engineering Manager",
+				subtitle: "figma • Remote (North America)",
+				href: "job-detail.html",
+				type: "Job",
+			},
+			{
+				title: "Frontend Engineer",
+				subtitle: "supabase • Remote (Global)",
+				href: "job-detail.html",
+				type: "Job",
+			},
+			{
+				title: "Apple",
+				subtitle: "United States",
+				href: "company-detail.html",
+				type: "Company",
+			},
+			{
+				title: "Figma",
+				subtitle: "United States",
+				href: "company-detail.html",
+				type: "Company",
+			},
+		];
+		const themeToggle = document.getElementById("theme-toggle"),
+			footerToggle = document.getElementById("footer-theme-toggle");
+		function toggleTheme() {
+			const d = document.documentElement.classList.toggle("dark");
+			localStorage.setItem("theme", d ? "dark" : "light");
+		}
+		if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+		if (footerToggle) footerToggle.addEventListener("click", toggleTheme);
+		const menuBtn = document.getElementById("menubutton"),
+			menu = document.getElementById("menu");
+		let menuOpen = false;
+		if (menuBtn && menu) {
+			menuBtn.addEventListener("click", () => {
+				menuOpen = !menuOpen;
+				if (menuOpen) {
+					menu.style.maxHeight = "1000px";
+					menu.style.opacity = "1";
+				} else {
+					menu.style.maxHeight = "0";
+					menu.style.opacity = "0";
+				}
+			});
+		}
+		const searchBtn = document.getElementById("jobSearchButton");
+		let searchModalEl = null;
+		function buildSearchModal() {
+			if (searchModalEl) return;
+			const modal = document.createElement("div");
+			modal.id = "jobSearchModal";
+			modal.className = "fixed inset-0 z-[9998] overflow-y-auto hidden";
+			modal.innerHTML = `<div class="min-h-screen px-4 text-center relative"><div class="fixed inset-0 bg-base-950/50 backdrop-blur z-[9998]" id="jobModalOverlay"></div><div class="inline-block w-full max-w-xl mb-8 mt-12 rounded-2xl overflow-hidden lg:mt-48 px-1.5 text-left align-middle relative z-[9999]"><div class="bg-white dark:bg-base-700 p-4 pb-2 w-full rounded-2xl"><div class="p-1"><input type="text" id="jobSearchInput" placeholder="Search everything..." class="block w-full h-10 px-4 py-2 text-sm text-base-900 dark:text-white border border-transparent rounded-lg bg-white dark:bg-base-800 placeholder-base-400"></div><div id="jobSearchResults" class="max-h-[50vh] overflow-y-auto flex flex-col gap-1 p-1"></div></div></div></div>`;
+			document.body.appendChild(modal);
+			searchModalEl = modal;
+			document
+				.getElementById("jobModalOverlay")
+				.addEventListener("click", closeSearch);
+			const fuse = new Fuse(searchItems, {
+				keys: ["title", "subtitle", "type"],
+				threshold: 0.3,
+			});
+			document
+				.getElementById("jobSearchInput")
+				.addEventListener("input", (e) => {
+					const val = e.target.value;
+					const results = val.trim() ? fuse.search(val) : [];
+					const el = document.getElementById("jobSearchResults");
+					if (!val.trim()) {
+						el.innerHTML = "";
+						return;
+					}
+					if (!results.length) {
+						el.innerHTML =
+							'<p class="text-sm text-base-500 p-2">No results found.</p>';
+						return;
+					}
+					el.innerHTML = results
+						.slice(0, 10)
+						.map(
+							(r) =>
+								`<a href="${r.item.href}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-base-50 dark:hover:bg-base-600 transition"><div><p class="text-sm font-medium text-base-900 dark:text-white">${r.item.title}</p><p class="text-xs text-base-500 dark:text-base-400">${r.item.subtitle}</p></div><span class="ml-auto text-xs text-base-400 bg-base-100 dark:bg-base-700 px-2 py-0.5 rounded">${r.item.type}</span></a>`,
+						)
+						.join("");
+				});
+		}
+		function openSearch(e) {
+			e.preventDefault();
+			buildSearchModal();
+			searchModalEl.classList.remove("hidden");
+			document.body.style.overflow = "hidden";
+			setTimeout(() => document.getElementById("jobSearchInput")?.focus(), 100);
+		}
+		function closeSearch() {
+			if (searchModalEl) {
+				searchModalEl.classList.add("hidden");
+				document.body.style.overflow = "";
+			}
+		}
+		if (searchBtn) searchBtn.addEventListener("click", openSearch);
+		const chatToggle = document.getElementById("chat-toggle"),
+			chatBubble = document.getElementById("chat-bubble");
+		if (chatToggle && chatBubble) {
+			chatToggle.addEventListener("click", () => {
+				chatBubble.classList.toggle("opacity-0");
+				chatBubble.classList.toggle("pointer-events-none");
+			});
+			document.addEventListener("click", (e) => {
+				if (!chatBubble.contains(e.target) && !chatToggle.contains(e.target)) {
+					chatBubble.classList.add("opacity-0", "pointer-events-none");
+				}
+			});
+		}
+		</script>
+	</body>
+</html>

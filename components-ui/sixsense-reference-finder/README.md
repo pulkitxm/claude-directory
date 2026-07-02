@@ -1,5 +1,7 @@
 # Sixsense Reference Finder — Glassy AI Reference-Finder UI (React + Vite + Framer Motion + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A pixel-faithful recreation of the Sixsense "Let's find the right references for your work" page — a glassy AI reference-finder interface built on React + Vite + TypeScript + Tailwind CSS (shadcn-ui base) with Framer Motion and lucide-react. The design pairs animated canvas pixel-grid backgrounds, layered SVG folder/light stacks, floating reference cards with spring physics, and a glass prompt box with an infinite typewriter and a spinning conic-gradient send button. Use case: AI-powered creative research tools and prompt-input landing pages. Generated with Claude Fable 5.
 
 ## What's in it

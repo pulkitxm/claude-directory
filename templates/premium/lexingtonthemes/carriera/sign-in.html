@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sign In — Carriera</title>
+		<meta name="description" content="Sign in to your Carriera account.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		var e = localStorage.getItem("theme");
+		if (e) document.documentElement.setAttribute("data-theme", e);
+		</script>
+	</head>
+	<body class="flex flex-col bg-secondary min-h-svh">
+		<!-- Navigation -->
+		<section>
+			<div class="max-w-screen 2xl:max-w-[1400px] mx-auto px-8">
+				<div class="grid grid-cols-2 lg:grid-cols-5 gap-4 py-2">
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+					<div
+						class="hidden items-center gap-4 text-primary lg:flex justify-center lg:col-span-3"
+					>
+						<a
+							href="index.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Home</a
+						>
+						<a
+							href="blog.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Blog</a
+						>
+						<a
+							href="helpcenter.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Help Center</a
+						>
+						<a
+							href="pricing.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Pricing</a
+						>
+						<a
+							href="sign-in.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Sign In</a
+						>
+						<a
+							href="system-overview.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Overview</a
+						>
+					</div>
+					<div class="items-center gap-2 flex ml-auto">
+						<!-- Search button -->
+						<div class="relative">
+							<button
+								type="button"
+								id="searchButton"
+								aria-label="Search content"
+								class="hover:text-primary/40 duration-300 text-primary text-sm"
+							>
+								Search
+							</button>
+							<!-- Search modal -->
+							<div
+								id="searchModal"
+								class="fixed inset-0 z-80 hidden overflow-y-auto"
+								role="dialog"
+								aria-modal="true"
+							>
+								<div class="min-h-screen px-4 text-center">
+									<div
+										class="bg-secondary/50 fixed inset-0 backdrop-blur transition-opacity"
+										id="modalOverlay"
+									></div>
+									<div
+										class="relative mt-12 mb-8 inline-block w-full max-w-xl transform rounded px-1.5 text-left align-middle transition-all lg:mt-24"
+									>
+										<div
+											class="bg-secondary outline-2 outline-primary/10 w-full rounded p-4 pb-2"
+										>
+											<div class="hidden">
+												<button
+													type="button"
+													id="closeSearch"
+													class="text-primary/60 hover:text-primary/60 ml-auto cursor-pointer"
+													aria-label="Close search"
+												>
+													Close
+												</button>
+											</div>
+											<div class="p-1">
+												<label
+													for="searchInput"
+													class="text-primary block text-sm font-medium"
+													>Search content</label
+												>
+												<input
+													type="text"
+													id="searchInput"
+													class="border-primary/10 focus:border-primary text-primary w-full border-0 border-b bg-transparent px-0 text-xs focus:ring-0 focus:outline-none"
+												>
+											</div>
+											<div
+												id="searchResults"
+												class="scrollbar-hide flex max-h-200 flex-col gap-1 overflow-y-auto p-1"
+											></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Desktop CTA buttons -->
+						<div class="hidden items-center gap-2 lg:flex">
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary/10 hover:bg-primary/20 h-9 px-4 py-3 text-sm"
+								href="sign-in.html"
+								>Sign in</a
+							>
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-secondary bg-accent hover:bg-accent/80 h-9 px-4 py-3 text-sm"
+								href="sign-up.html"
+								>Sign up</a
+							>
+						</div>
+						<!-- Mobile menu toggle -->
+						<button
+							id="navToggle"
+							class="hover:text-primary/40 duration-300 text-primary text-sm lg:hidden"
+							aria-expanded="false"
+							aria-controls="mobileMenu"
+						>
+							Menu
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Mobile Menu -->
+		<div
+			id="mobileMenu"
+			class="lg:hidden fixed inset-0 z-40 hidden"
+			aria-hidden="true"
+		>
+			<div
+				class="relative z-10 m-4 rounded-lg outline-2 outline-primary/10 bg-secondary p-4 shadow-2xl"
+			>
+				<div class="flex items-center justify-between">
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+					<button
+						class="hover:text-primary text-primary duration-300 text-sm"
+						data-close-nav
+					>
+						Close
+					</button>
+				</div>
+				<nav class="mt-12 flex flex-col gap-3">
+					<a
+						href="index.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Home</a
+					>
+					<a
+						href="blog.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Blog</a
+					>
+					<a
+						href="helpcenter.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Help Center</a
+					>
+					<a
+						href="pricing.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Pricing</a
+					>
+					<a
+						href="sign-in.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Sign In</a
+					>
+					<a
+						href="system-overview.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Overview</a
+					>
+				</nav>
+				<div class="mt-12 flex items-center gap-2">
+					<a
+						href="sign-in.html"
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary/10 hover:bg-primary/20 h-8 px-4 py-3 text-xs"
+						>Sign in</a
+					>
+					<a
+						href="sign-up.html"
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-secondary bg-accent hover:bg-accent/80 h-8 px-4 py-3 text-xs"
+						>Sign up</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<main class="grow">
+			<section>
+				<div class="max-w-screen 2xl:max-w-[1400px] mx-auto px-8 py-24">
+					<h1
+						class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary font-semibold tracking-tighter text-balance capitalize"
+					>
+						Sign In. Pretend You Know What You're Doing
+					</h1>
+
+					<div class="lg:w-1/4">
+						<form
+							action="#"
+							method="POST"
+							class="mt-12 flex w-full flex-col gap-2"
+						>
+							<div class="flex flex-col gap-1">
+								<label
+									for="email"
+									class="text-primary block text-sm font-medium"
+									>Email Address</label
+								>
+								<input
+									type="email"
+									id="email"
+									name="email"
+									required
+									class="border-primary/10 focus:border-primary text-primary w-full border-0 border-b bg-transparent px-0 text-xs focus:ring-0 focus:outline-none"
+								>
+							</div>
+							<div class="flex flex-col gap-1">
+								<label
+									for="password"
+									class="text-primary block text-sm font-medium"
+									>Password</label
+								>
+								<input
+									type="password"
+									id="password"
+									name="password"
+									required
+									class="border-primary/10 focus:border-primary text-primary w-full border-0 border-b bg-transparent px-0 text-xs focus:ring-0 focus:outline-none"
+								>
+							</div>
+							<div
+								class="mt-2 flex flex-wrap items-center gap-1 lg:flex-nowrap"
+							>
+								<button
+									class="flex items-center font-medium justify-center transition-all rounded-full duration-300 bg-primary text-secondary hover:bg-primary/80 h-8 px-4 py-3 text-xs w-full"
+									type="submit"
+								>
+									Sign in
+								</button>
+								<a
+									class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary/10 hover:bg-primary/20 h-8 px-4 py-3 text-xs gap-2 w-full"
+									href="#_"
+								>
+									Google
+								</a>
+								<a
+									class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary/10 hover:bg-primary/20 h-8 px-4 py-3 text-xs gap-2 w-full"
+									href="#_"
+								>
+									Apple
+								</a>
+							</div>
+						</form>
+
+						<div class="mt-4 flex items-center justify-between gap-2">
+							<div class="flex items-center gap-1">
+								<input
+									type="checkbox"
+									id="remember"
+									name="remember"
+									class="text-primary border-primary/20 rounded-full"
+								>
+								<label for="remember" class="text-primary/60 text-xs"
+									>Remember me</label
+								>
+							</div>
+							<a
+								href="#"
+								class="text-primary hover:text-primary/60 text-xs font-medium"
+								>Forgot password?</a
+							>
+						</div>
+
+						<p class="text-xs text-primary/60 mt-4">
+							Accountless?
+							<a
+								class="text-primary hover:text-primary/60 font-medium"
+								href="sign-up.html"
+								>Sign up</a
+							>
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div class="max-w-screen 2xl:max-w-[1400px] mx-auto px-8 py-12">
+				<div class="mt-12 flex flex-wrap items-center justify-between gap-2">
+					<p class="text-xs text-primary/60">
+						© Copyright Lexington Themes <span id="year">2026</span>
+					</p>
+					<ul role="list" class="mt-2 flex flex-wrap gap-2">
+						<li>
+							<a
+								class="text-sm text-primary/60 hover:text-primary transition duration-300 ease-in-out"
+								href="#_"
+								>X</a
+							>
+						</li>
+						<li>
+							<a
+								class="text-sm text-primary/60 hover:text-primary transition duration-300 ease-in-out"
+								href="#_"
+								>LinkedIn</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Year script -->
+		<script>
+		document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+
+		<!-- Theme switcher script -->
+		<script>
+		(function () {
+			var dots = Array.from(document.querySelectorAll('[id^="theme-dot"]'));
+			var saved = localStorage.getItem("theme") || "default";
+			var timer;
+			function applyTheme(t) {
+				document.documentElement.classList.add("theme-animating");
+				clearTimeout(timer);
+				timer = setTimeout(function () {
+					document.documentElement.classList.remove("theme-animating");
+				}, 400);
+				if (t === "default") {
+					document.documentElement.removeAttribute("data-theme");
+					localStorage.removeItem("theme");
+				} else {
+					document.documentElement.setAttribute("data-theme", t);
+					localStorage.setItem("theme", t);
+				}
+				dots.forEach(function (d) {
+					var active = d.dataset.theme === t;
+					d.classList.toggle("ring-offset-2", active);
+					d.classList.toggle("ring-current", active);
+				});
+			}
+			applyTheme(saved);
+			dots.forEach(function (d) {
+				d.addEventListener("click", function () {
+					applyTheme(d.dataset.theme);
+				});
+			});
+		})();
+		</script>
+
+		<!-- Mobile menu script -->
+		<script>
+		var navToggle = document.getElementById("navToggle");
+		var mobileMenu = document.getElementById("mobileMenu");
+		var closeTargets = mobileMenu
+			? mobileMenu.querySelectorAll("[data-close-nav]")
+			: [];
+		function openNav() {
+			mobileMenu.classList.remove("hidden");
+			navToggle && navToggle.setAttribute("aria-expanded", "true");
+			document.body.style.overflow = "hidden";
+		}
+		function closeNav() {
+			mobileMenu.classList.add("hidden");
+			navToggle && navToggle.setAttribute("aria-expanded", "false");
+			document.body.style.overflow = "";
+		}
+		navToggle &&
+			navToggle.addEventListener("click", function () {
+				var isOpen = navToggle.getAttribute("aria-expanded") === "true";
+				if (isOpen) closeNav();
+				else openNav();
+			});
+		closeTargets.forEach(function (btn) {
+			btn.addEventListener("click", closeNav);
+		});
+		window.addEventListener("resize", function () {
+			if (window.innerWidth >= 1024) closeNav();
+		});
+		</script>
+
+		<!-- Search modal script -->
+		<script>
+		(function () {
+			var searchButton = document.getElementById("searchButton");
+			var searchModal = document.getElementById("searchModal");
+			var modalOverlay = document.getElementById("modalOverlay");
+			var searchInput = document.getElementById("searchInput");
+			var searchResults = document.getElementById("searchResults");
+			var closeSearch = document.getElementById("closeSearch");
+			function openSearch(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				searchModal.classList.remove("hidden");
+				document.body.style.overflow = "hidden";
+				setTimeout(function () {
+					searchInput.focus();
+				}, 100);
+			}
+			function closeSearchModal() {
+				searchModal.classList.add("hidden");
+				document.body.style.overflow = "";
+				searchInput.value = "";
+				searchResults.innerHTML = "";
+			}
+			searchButton && searchButton.addEventListener("click", openSearch);
+			closeSearch && closeSearch.addEventListener("click", closeSearchModal);
+			modalOverlay && modalOverlay.addEventListener("click", closeSearchModal);
+			document.addEventListener("keydown", function (e) {
+				if (e.key === "Escape" && !searchModal.classList.contains("hidden"))
+					closeSearchModal();
+			});
+		})();
+		</script>
+
+		<!-- Theme switcher widget -->
+		<div class="fixed bottom-4 right-4 z-50">
+			<div class="flex items-center gap-2">
+				<button
+					id="theme-dot-default"
+					data-theme="default"
+					class="ring-primary/10 size-4 rounded-full bg-[#ffffff] outline-2 transition-colors ring-offset-2 ring-current"
+					title="Light"
+				></button>
+				<button
+					id="theme-dot-accent"
+					data-theme="accent"
+					class="outline-primary size-4 rounded-full bg-[#101319] outline-2 transition-colors"
+					title="Dark"
+				></button>
+				<button
+					id="theme-dot-dark"
+					data-theme="dark"
+					class="outline-primary size-4 rounded-full bg-[#245230] outline-2 transition-colors"
+					title="Green"
+				></button>
+			</div>
+		</div>
+	</body>
+</html>

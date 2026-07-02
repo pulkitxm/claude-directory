@@ -1,5 +1,7 @@
 # Celestial Bloom Shader — Procedural Nebula & Star Field GLSL Background (React + Three.js + Tailwind)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A procedural GLSL fragment shader rendering a slowly rotating five-petalled nebula with a glowing star core and twinkling star field — rendered full-viewport via Three.js and framed as an observatory specimen plate UI with live telemetry HUD. The component is integrated verbatim at the shadcn `@/components/ui` path, wrapped in an engraved hero lockup, surveyor reticle, and a bottom telemetry bar reporting shader time, FPS, petal count, and pipeline state — ideal as a dark hero section background or standalone interactive animation. Generated with Claude Fable 5.
 
 The shader component from the prompt is integrated verbatim (shader code,

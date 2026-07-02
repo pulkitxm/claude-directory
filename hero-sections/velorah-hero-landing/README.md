@@ -1,5 +1,7 @@
 # Velorah — Cinematic Hero Landing Section (React + Vite + Tailwind CSS + shadcn/ui)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A cinematic single-page hero section for a fictional creative brand, **Velorah**, featuring a fullscreen looping background video, a liquid-glass navigation bar and CTA buttons built with a custom `.liquid-glass` glassmorphism effect, and Instrument Serif display typography over a deep navy theme. CSS keyframe fade-and-rise entrance animations with staggered delays create a refined on-load reveal, making this a compelling template for creative agencies, portfolio sites, and editorial landing pages. Generated with Claude Fable 5.
 
 ## Run

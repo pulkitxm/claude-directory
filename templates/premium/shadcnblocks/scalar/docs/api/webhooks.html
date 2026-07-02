@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Webhooks — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../../styles.css">
+		<link rel="icon" href="../../assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="../../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav
+						class="docs-sidebar-nav"
+						data-current="docs/api/webhooks.html"
+					></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span><span>API</span
+						><span class="sep">/</span><span>Webhooks</span>
+					</div>
+					<h1 class="docs-title">Webhooks</h1>
+					<p class="docs-lead">
+						Subscribe to content events and receive real-time HTTP callbacks
+						whenever entries change in your Scalar project.
+					</p>
+
+					<h2 id="overview">Overview</h2>
+					<p>
+						Webhooks let Scalar push events to your own services the moment they
+						happen, so you can rebuild a static site, invalidate a cache, or
+						notify a Slack channel without polling the API. Each webhook is a
+						URL that Scalar sends a signed <code>POST</code> request to whenever
+						a subscribed event fires.
+					</p>
+					<p>
+						Every delivery includes a JSON payload describing the event and an
+						<code>X-Scalar-Signature</code>
+						header you can use to verify authenticity. Failed deliveries are
+						retried with exponential backoff for up to 24 hours.
+					</p>
+
+					<h2 id="registering-a-webhook">Registering a webhook</h2>
+					<p>
+						Create a webhook by sending a <code>POST</code> request to the
+						webhooks endpoint with the target URL and the events you want to
+						subscribe to:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"># register a webhook</span>
+							curl -X POST https://api.scalar.dev/v1/webhooks \ -H
+							<span class="tok-str"
+								>"Authorization: Bearer $SCALAR_API_KEY"</span
+							>
+							\ -H
+							<span class="tok-str">"Content-Type: application/json"</span>
+							\ -d
+							<span class="tok-str"
+								>' { "url": "https://example.com/hooks/scalar", "events":
+								["entry.published", "entry.deleted"] }'</span
+							>
+						</div>
+					</div>
+					<p>
+						The response returns the webhook <code>id</code> and a generated
+						<code>secret</code>
+						used to sign every delivery. Store the secret securely — it is only
+						shown once.
+					</p>
+
+					<h2 id="event-types">Event types</h2>
+					<p>
+						Subscribe to any combination of the following events when
+						registering a webhook:
+					</p>
+					<table class="docs-table">
+						<thead>
+							<tr>
+								<th>Event</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>entry.created</code></td>
+								<td>A new entry was created in any model.</td>
+							</tr>
+							<tr>
+								<td><code>entry.updated</code></td>
+								<td>An existing entry's fields were changed and saved.</td>
+							</tr>
+							<tr>
+								<td><code>entry.published</code></td>
+								<td>A draft entry transitioned to the published state.</td>
+							</tr>
+							<tr>
+								<td><code>entry.deleted</code></td>
+								<td>An entry was permanently removed from a model.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2 id="payload-example">Payload example</h2>
+					<p>
+						Every delivery sends a JSON body with the event name, the affected
+						model, and the entry data at the time of the event:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)"
+								>application/json</span
+							>
+						</div>
+						<div class="code-body">
+							{
+							<span class="tok-str">"event"</span>:
+							<span class="tok-str">"entry.published"</span>,
+							<span class="tok-str">"model"</span>:
+							<span class="tok-str">"blog_post"</span>,
+							<span class="tok-str">"data"</span>: {
+							<span class="tok-str">"id"</span>:
+							<span class="tok-str">"ent_8f3a21"</span>,
+							<span class="tok-str">"title"</span>:
+							<span class="tok-str">"Introducing Webhooks"</span>,
+							<span class="tok-str">"slug"</span>:
+							<span class="tok-str">"introducing-webhooks"</span>,
+							<span class="tok-str">"status"</span>:
+							<span class="tok-str">"published"</span>,
+							<span class="tok-str">"publishedAt"</span>:
+							<span class="tok-str">"2026-06-23T10:14:00Z"</span>
+							} }
+						</div>
+					</div>
+
+					<h2 id="verifying-signatures">Verifying signatures</h2>
+					<p>
+						Scalar signs each request with an HMAC SHA-256 digest of the raw
+						request body using your webhook secret. Compute the same digest on
+						your end and compare it with the
+						<code>X-Scalar-Signature</code>
+						header before trusting the payload:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">verify.js</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">import</span>
+							crypto <span class="tok-kw">from</span>
+							<span class="tok-str">"node:crypto"</span>;
+
+							<span class="tok-kw">function</span>
+							<span class="tok-fn">verify</span>(rawBody, signature, secret) {
+							<span class="tok-kw">const</span>
+							expected = crypto .createHmac(<span class="tok-str"
+								>"sha256"</span
+							>, secret) .update(rawBody) .digest(<span class="tok-str"
+								>"hex"</span
+							>);
+							<span class="tok-kw">return</span>
+							crypto.timingSafeEqual( Buffer.from(expected),
+							Buffer.from(signature) ); }
+						</div>
+					</div>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							Always verify against the <strong>raw</strong> request body before
+							parsing it as JSON. Re-serializing the parsed object can change
+							byte order and produce a mismatched signature.
+						</div>
+					</div>
+
+					<nav class="docs-pager">
+						<a class="pg-prev" href="../../docs/api/authentication.html"
+							><div class="pg-dir">← Previous</div>
+							<div class="pg-title">Authentication</div></a
+						>
+						<a class="pg-next" href="../../docs/advanced/deployment.html"
+							><div class="pg-dir">Next →</div>
+							<div class="pg-title">Deployment</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#overview">Overview</a>
+					<a href="#registering-a-webhook">Registering a webhook</a>
+					<a href="#event-types">Event types</a>
+					<a href="#payload-example">Payload example</a>
+					<a href="#verifying-signatures">Verifying signatures</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="../../shared.js"></script>
+	</body>
+</html>

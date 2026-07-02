@@ -1,5 +1,7 @@
 # Blue Meshy Lab — WebGL2 Domain-Warped fBm Sea Shader Background (React + TypeScript + WebGL2 + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A procedural WebGL2 background component (`WavyBackground`) rendering a domain-warped fractal-noise (fBm) sea using a 20-step blue palette, from deep-abyss transparency to bright sea-blue, on a single full-screen quad. The shader applies sine-based domain warping and swirl distortion over 10 fBm octaves, with the darkest noise values rendered transparent for compositing flexibility. Framed as a shadcn integration lab with a live hero preview, setup guide, component anatomy, props and shader-parameter reference, and a usage gallery. Generated with Claude Fable 5.
 
 Built with **React + TypeScript + Vite + Tailwind CSS** on the **shadcn**

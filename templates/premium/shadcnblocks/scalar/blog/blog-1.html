@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Code-first content modeling — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../styles.css">
+		<link rel="icon" href="../assets/layout/logo-icon.svg">
+		<style>
+		.article-wrap {
+			max-width: 760px;
+			margin: 0 auto;
+		}
+		.back-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 14px;
+			color: var(--muted-foreground);
+			text-decoration: none;
+		}
+		.back-link:hover {
+			color: var(--foreground);
+		}
+		.article-meta {
+			font-size: 13px;
+			color: var(--muted-foreground);
+			margin: 28px 0 14px;
+			display: flex;
+			gap: 10px;
+		}
+		.article-meta .cat {
+			color: var(--secondary);
+			font-weight: 600;
+		}
+		.article-title {
+			font-size: clamp(1.9rem, 4vw, 2.6rem);
+			font-weight: 700;
+			line-height: 1.15;
+		}
+		.author-row {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 24px 0 8px;
+		}
+		.author-row .name {
+			font-size: 14px;
+			font-weight: 500;
+			color: var(--foreground);
+		}
+		.hero-img {
+			width: 100%;
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			margin: 36px 0 8px;
+			overflow: hidden;
+		}
+		.hero-img img {
+			width: 100%;
+			display: block;
+		}
+		</style>
+	</head>
+	<body data-active="Blog" data-prefix="../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<article class="frame-pad" style="padding:48px 32px 64px">
+				<div class="article-wrap reveal">
+					<a class="back-link" href="../blog.html"
+						><svg
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<path d="m12 19-7-7 7-7M19 12H5" />
+						</svg>
+						Back</a
+					>
+					<div class="article-meta">
+						<span class="cat">Product</span><span>·</span
+						><span>Apr 11, 2025</span>
+					</div>
+					<h1 class="article-title">Code-first content modeling</h1>
+					<p class="muted" style="font-size:16px;margin-top:14px">
+						Explore the advantages of code-first schemas and how Scalar brings
+						structure and flexibility to your stack.
+					</p>
+					<div class="author-row">
+						<img
+							class="avatar"
+							src="../assets/images/blog/authors/robert-austin.webp"
+							width="40"
+							height="40"
+							alt=""
+						>
+						<span class="name">Rob Austin</span>
+						<span class="muted" style="font-size:13px">· 6 min read</span>
+					</div>
+					<div class="hero-img">
+						<img
+							src="../assets/images/blog/blog-1.webp"
+							alt="Code-first content modeling"
+						>
+					</div>
+					<div class="prose">
+						<p>
+							Content modeling is the foundation of every great CMS. Get it
+							right and your editors move fast, your developers ship
+							confidently, and your content scales across channels. Get it wrong
+							and you spend months untangling fields that never quite fit.
+							Scalar takes a <strong>code-first</strong> approach to modeling —
+							and in this post we'll explore why that matters.
+						</p>
+
+						<h2>What is code-first content modeling?</h2>
+						<p>
+							Code-first means your content schema lives in version-controlled
+							code rather than being clicked together in a UI and stored in a
+							database you can't diff. You define a model like
+							<code>blogPost</code>
+							in a TypeScript file, commit it, and your schema travels with your
+							codebase through every branch, PR, and deployment.
+						</p>
+						<ul>
+							<li>
+								<strong>Versioned schemas</strong>
+								— every model change is a reviewable commit.
+							</li>
+							<li>
+								<strong>Type safety</strong>
+								— generated types catch field mismatches at build time.
+							</li>
+							<li>
+								<strong>Reproducible environments</strong>
+								— staging and production never drift apart.
+							</li>
+						</ul>
+
+						<h2>Defining your first model</h2>
+						<p>
+							A model is just a typed object. Here is a minimal blog post schema
+							with a reference to an author model:
+						</p>
+						<div class="code-block" style="margin:24px 0">
+							<div class="code-head">
+								<span style="margin-left:auto;color:var(--muted-foreground)"
+									>models/blogPost.ts</span
+								>
+							</div>
+							<div class="code-body">
+								<span class="tok-kw">import</span>
+								{ defineModel, fields } <span class="tok-kw">from</span>
+								<span class="tok-str">"@scalar/sdk"</span>;
+
+								<span class="tok-kw">export const</span>
+								blogPost = <span class="tok-fn">defineModel</span>( { name:
+								<span class="tok-str">"blogPost"</span>, fields: { title:
+								fields.<span class="tok-fn">string</span>( { required:
+								<span class="tok-kw">true</span>
+								} ), body: fields.<span class="tok-fn">richText</span>(),
+								author: fields.<span class="tok-fn">reference</span>(<span
+									class="tok-str"
+									>"author"</span
+								>), }, } );
+							</div>
+						</div>
+						<p>
+							Run <code>scalar push</code> and the model is live — API, GraphQL
+							schema, and editor UI all generated automatically.
+						</p>
+
+						<h2>How Scalar implements the code-first approach</h2>
+						<p>
+							Under the hood, Scalar treats your model files as the single
+							source of truth. A migration engine diffs the committed schema
+							against the live project and applies only the changes — no
+							destructive resets, no manual SQL.
+						</p>
+						<div class="callout">
+							<svg
+								width="18"
+								height="18"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+							>
+								<circle cx="12" cy="12" r="10" />
+								<path d="M12 16v-4M12 8h.01" />
+							</svg>
+							<div>
+								Schema changes are always additive by default. Renaming or
+								deleting a field requires an explicit migration so you never
+								lose content by accident.
+							</div>
+						</div>
+
+						<h2>Benefits for different teams</h2>
+						<h3>For developers</h3>
+						<p>
+							Auto-generated types mean your editor autocompletes every field.
+							Schema review happens in the same PR as the feature that needs it.
+						</p>
+						<h3>For content teams</h3>
+						<p>
+							A clean, structured editing UI is generated from the same models —
+							no orphaned fields, no confusing legacy options.
+						</p>
+
+						<img
+							src="../assets/images/blog/blog-1.webp"
+							alt="Scalar schema editor"
+						>
+
+						<h2>Getting started with code-first modeling</h2>
+						<p>
+							Install the CLI, scaffold a project, and define your first model
+							in minutes. The same workflow scales from a personal blog to a
+							multi-team content platform.
+						</p>
+
+						<h2>Wrap-up</h2>
+						<p>
+							Code-first modeling brings the rigor of software engineering to
+							content. Versioned, type-safe, and reproducible — it's how modern
+							teams keep content infrastructure under control as they grow.
+						</p>
+					</div>
+				</div>
+			</article>
+		</main>
+
+		<div id="site-cta"></div>
+		<div id="site-footer"></div>
+		<script src="../shared.js"></script>
+	</body>
+</html>

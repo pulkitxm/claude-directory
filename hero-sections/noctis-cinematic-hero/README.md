@@ -1,5 +1,7 @@
 # NOCTIS — Cinematic Film-Grade Video Hero Section (React + TypeScript + Vite + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen dark hero section built for an imagined independent picture house, featuring a Cloudinary background video framed in a letterboxed, film-graded cinematic treatment: animated film grain, vignette, viewfinder corner ticks, vertical credit rails, a live 24fps SMPTE timecode, and a staggered title-card entrance. Typography is Italiana (display), Cormorant italic (accent/body), and IBM Plex Mono (credit micro-labels) in champagne gold on near-black — a premium landing page aesthetic for cinematic brands. Generated with Claude Fable 5.
 
 **Type**: Italiana (display) · Cormorant italic (accent/body) · IBM Plex Mono

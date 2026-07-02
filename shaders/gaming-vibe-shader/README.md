@@ -1,5 +1,7 @@
 # Gaming Vibe Shader — Neon Ring Field GLSL Background (React + Three.js + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-bleed neon ring shader component integrated as a shadcn `@/components/ui` primitive and framed as a live arcade boot diagnostic called the *NENO RIG // NR-7*. The GLSL fragment shader produces a warping, breathing, slowly-rotating ring field with electric blue (`#1d8bff`) bleeding into magenta (`#ff2e88`) and a grain pass on top — making it ideal as a gaming, esports, or music-visualiser hero background. Generated with Claude Fable 5.
 
 ## Stack

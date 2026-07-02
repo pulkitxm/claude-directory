@@ -1,373 +1,1041 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>STUDIO/NORD — Editorial Naturalism Design System</title>
-<link rel="stylesheet" href="assets/fonts/local.css" />
-<style>
-:root{
-  --stone-black:#0C0A09; --charcoal:#1C1917; --card:#292524;
-  --lime:#D4F268; --stone:#E7E5E4; --muted:rgba(231,229,228,.6);
-  --border:rgba(255,255,255,.1); --radius-lg:24px;
-  --ease:cubic-bezier(.4,0,.2,1); --t:300ms;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:var(--stone-black); color:var(--stone);
-  font-family:'Instrument Sans',system-ui,sans-serif; font-size:18px; line-height:1.6;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
-}
-h1,h2,h3{font-family:'Newsreader',Georgia,serif; font-weight:300; letter-spacing:-.02em; line-height:1.04}
-em{font-style:italic}
-a{color:inherit; text-decoration:none}
-img{display:block; max-width:100%}
-.wrap{max-width:1280px; margin:0 auto; padding:0 48px}
-.eyebrow{font-size:14px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:10px}
-.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase}
-.dot{width:8px; height:8px; border-radius:50%; background:var(--lime); box-shadow:0 0 8px var(--lime); flex:none}
-.icn{width:18px;height:18px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>STUDIO/NORD — Editorial Naturalism Design System</title>
+		<link rel="stylesheet" href="assets/fonts/local.css">
+		<style>
+		:root {
+			--stone-black: #0c0a09;
+			--charcoal: #1c1917;
+			--card: #292524;
+			--lime: #d4f268;
+			--stone: #e7e5e4;
+			--muted: rgba(231, 229, 228, 0.6);
+			--border: rgba(255, 255, 255, 0.1);
+			--radius-lg: 24px;
+			--ease: cubic-bezier(0.4, 0, 0.2, 1);
+			--t: 300ms;
+		}
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		html {
+			scroll-behavior: smooth;
+		}
+		body {
+			background: var(--stone-black);
+			color: var(--stone);
+			font-family: "Instrument Sans", system-ui, sans-serif;
+			font-size: 18px;
+			line-height: 1.6;
+			-webkit-font-smoothing: antialiased;
+			overflow-x: hidden;
+		}
+		h1,
+		h2,
+		h3 {
+			font-family: "Newsreader", Georgia, serif;
+			font-weight: 300;
+			letter-spacing: -0.02em;
+			line-height: 1.04;
+		}
+		em {
+			font-style: italic;
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+		img {
+			display: block;
+			max-width: 100%;
+		}
+		.wrap {
+			max-width: 1280px;
+			margin: 0 auto;
+			padding: 0 48px;
+		}
+		.eyebrow {
+			font-size: 14px;
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+			color: var(--muted);
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		.mono {
+			font-family: ui-monospace, "SF Mono", Menlo, monospace;
+			font-size: 10px;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+		}
+		.dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--lime);
+			box-shadow: 0 0 8px var(--lime);
+			flex: none;
+		}
+		.icn {
+			width: 18px;
+			height: 18px;
+			stroke: currentColor;
+			stroke-width: 1.6;
+			fill: none;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
 
-/* noise overlay */
-.noise{position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:.04; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+		/* noise overlay */
+		.noise {
+			position: fixed;
+			inset: 0;
+			z-index: 9999;
+			pointer-events: none;
+			opacity: 0.04;
+			mix-blend-mode: overlay;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+		}
 
-/* nav */
-nav{position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between;
-  padding:20px 48px; transition:padding var(--t) var(--ease);}
-nav.scrolled{padding:14px 48px; background:rgba(12,10,9,.55); backdrop-filter:blur(14px); border-bottom:1px solid var(--border)}
-.brand{display:flex; align-items:center; gap:12px; font-weight:600}
-.brand .disc{width:36px; height:36px; border-radius:50%; background:var(--lime); display:grid; place-items:center; color:var(--stone-black)}
-.brand .disc svg{width:18px;height:18px}
-.pill{display:flex; gap:4px; background:rgba(231,229,228,.05); backdrop-filter:blur(8px); border:1px solid var(--border);
-  border-radius:9999px; padding:6px;}
-.pill a{padding:8px 18px; border-radius:9999px; font-size:14px; transition:all var(--t) var(--ease)}
-.pill a:hover{background:var(--stone); color:var(--stone-black)}
-.cta-btn{background:var(--lime); color:var(--stone-black); border-radius:9999px; padding:10px 22px; font-weight:600; font-size:15px;
-  display:inline-flex; align-items:center; gap:8px; transition:transform var(--t) var(--ease); border:none; cursor:pointer}
-.cta-btn:hover{transform:scale(1.04)}
+		/* nav */
+		nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 100;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 20px 48px;
+			transition: padding var(--t) var(--ease);
+		}
+		nav.scrolled {
+			padding: 14px 48px;
+			background: rgba(12, 10, 9, 0.55);
+			backdrop-filter: blur(14px);
+			border-bottom: 1px solid var(--border);
+		}
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			font-weight: 600;
+		}
+		.brand .disc {
+			width: 36px;
+			height: 36px;
+			border-radius: 50%;
+			background: var(--lime);
+			display: grid;
+			place-items: center;
+			color: var(--stone-black);
+		}
+		.brand .disc svg {
+			width: 18px;
+			height: 18px;
+		}
+		.pill {
+			display: flex;
+			gap: 4px;
+			background: rgba(231, 229, 228, 0.05);
+			backdrop-filter: blur(8px);
+			border: 1px solid var(--border);
+			border-radius: 9999px;
+			padding: 6px;
+		}
+		.pill a {
+			padding: 8px 18px;
+			border-radius: 9999px;
+			font-size: 14px;
+			transition: all var(--t) var(--ease);
+		}
+		.pill a:hover {
+			background: var(--stone);
+			color: var(--stone-black);
+		}
+		.cta-btn {
+			background: var(--lime);
+			color: var(--stone-black);
+			border-radius: 9999px;
+			padding: 10px 22px;
+			font-weight: 600;
+			font-size: 15px;
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			transition: transform var(--t) var(--ease);
+			border: none;
+			cursor: pointer;
+		}
+		.cta-btn:hover {
+			transform: scale(1.04);
+		}
 
-/* hero */
-.hero{display:grid; grid-template-columns:5fr 7fr; gap:64px; align-items:center;
-  padding:170px 48px 110px; max-width:1280px; margin:0 auto; min-height:92vh}
-.hero h1{font-size:clamp(46px,6vw,82px); margin:26px 0 24px}
-.hero h1 em{color:var(--lime)}
-.hero .sub{color:var(--muted); max-width:46ch; font-size:19px}
-.hero .actions{display:flex; align-items:center; gap:24px; margin:34px 0 44px}
-.ghost{font-size:15px; color:var(--muted); border-bottom:1px solid transparent; transition:all var(--t) var(--ease)}
-.ghost:hover{color:var(--stone); border-color:var(--stone)}
-.proof{display:flex; align-items:center; gap:16px}
-.avatars{display:flex}
-.avatars img{width:40px; height:40px; border-radius:50%; object-fit:cover; filter:grayscale(1); opacity:.7;
-  border:2px solid var(--stone-black); margin-left:-10px}
-.avatars img:first-child{margin-left:0}
-.proof span{font-size:14px; color:var(--muted)}
+		/* hero */
+		.hero {
+			display: grid;
+			grid-template-columns: 5fr 7fr;
+			gap: 64px;
+			align-items: center;
+			padding: 170px 48px 110px;
+			max-width: 1280px;
+			margin: 0 auto;
+			min-height: 92vh;
+		}
+		.hero h1 {
+			font-size: clamp(46px, 6vw, 82px);
+			margin: 26px 0 24px;
+		}
+		.hero h1 em {
+			color: var(--lime);
+		}
+		.hero .sub {
+			color: var(--muted);
+			max-width: 46ch;
+			font-size: 19px;
+		}
+		.hero .actions {
+			display: flex;
+			align-items: center;
+			gap: 24px;
+			margin: 34px 0 44px;
+		}
+		.ghost {
+			font-size: 15px;
+			color: var(--muted);
+			border-bottom: 1px solid transparent;
+			transition: all var(--t) var(--ease);
+		}
+		.ghost:hover {
+			color: var(--stone);
+			border-color: var(--stone);
+		}
+		.proof {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+		.avatars {
+			display: flex;
+		}
+		.avatars img {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			object-fit: cover;
+			filter: grayscale(1);
+			opacity: 0.7;
+			border: 2px solid var(--stone-black);
+			margin-left: -10px;
+		}
+		.avatars img:first-child {
+			margin-left: 0;
+		}
+		.proof span {
+			font-size: 14px;
+			color: var(--muted);
+		}
 
-.hero-media{position:relative}
-.arch{position:relative; border-radius:10rem 10rem 24px 24px; overflow:hidden; aspect-ratio:4/5; border:1px solid var(--border)}
-.arch img{width:100%; height:100%; object-fit:cover}
-.note{position:absolute; top:24px; left:-18px; background:var(--lime); color:var(--stone-black);
-  transform:rotate(6deg); padding:14px 20px; border-radius:14px; font-family:'Newsreader'; font-style:italic; font-size:19px;
-  box-shadow:0 18px 40px rgba(0,0,0,.4); animation:float 6s var(--ease) infinite}
-@keyframes float{0%,100%{transform:rotate(6deg) translateY(0)}50%{transform:rotate(6deg) translateY(-10px)}}
+		.hero-media {
+			position: relative;
+		}
+		.arch {
+			position: relative;
+			border-radius: 10rem 10rem 24px 24px;
+			overflow: hidden;
+			aspect-ratio: 4 / 5;
+			border: 1px solid var(--border);
+		}
+		.arch img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.note {
+			position: absolute;
+			top: 24px;
+			left: -18px;
+			background: var(--lime);
+			color: var(--stone-black);
+			transform: rotate(6deg);
+			padding: 14px 20px;
+			border-radius: 14px;
+			font-family: "Newsreader";
+			font-style: italic;
+			font-size: 19px;
+			box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+			animation: float 6s var(--ease) infinite;
+		}
+		@keyframes float {
+			0%,
+			100% {
+				transform: rotate(6deg) translateY(0);
+			}
+			50% {
+				transform: rotate(6deg) translateY(-10px);
+			}
+		}
 
-/* catalog label */
-.catalog{position:absolute; background:rgba(0,0,0,.4); backdrop-filter:blur(10px); border:1px solid var(--border);
-  border-radius:12px; padding:10px 14px; min-width:170px}
-.catalog .row1{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; color:var(--muted)}
-.catalog .cap{font-family:'Newsreader'; font-style:italic; font-size:15px}
+		/* catalog label */
+		.catalog {
+			position: absolute;
+			background: rgba(0, 0, 0, 0.4);
+			backdrop-filter: blur(10px);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			padding: 10px 14px;
+			min-width: 170px;
+		}
+		.catalog .row1 {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 6px;
+			color: var(--muted);
+		}
+		.catalog .cap {
+			font-family: "Newsreader";
+			font-style: italic;
+			font-size: 15px;
+		}
 
-/* serrated divider */
-.serrated{height:16px; background:var(--charcoal); position:relative; z-index:1;
-  -webkit-mask-image:radial-gradient(circle at 10px 0,transparent 0,transparent 5px,black 5px);
-  mask-image:radial-gradient(circle at 10px 0,transparent 0,transparent 5px,black 5px);
-  -webkit-mask-size:20px 10px; mask-size:20px 10px;
-  -webkit-mask-repeat:repeat-x; mask-repeat:repeat-x;}
+		/* serrated divider */
+		.serrated {
+			height: 16px;
+			background: var(--charcoal);
+			position: relative;
+			z-index: 1;
+			-webkit-mask-image: radial-gradient(
+				circle at 10px 0,
+				transparent 0,
+				transparent 5px,
+				black 5px
+			);
+			mask-image: radial-gradient(
+				circle at 10px 0,
+				transparent 0,
+				transparent 5px,
+				black 5px
+			);
+			-webkit-mask-size: 20px 10px;
+			mask-size: 20px 10px;
+			-webkit-mask-repeat: repeat-x;
+			mask-repeat: repeat-x;
+		}
 
-/* tabbed content */
-.tabsec{background:var(--charcoal); position:relative; padding:0 0 110px;
-  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-  background-size:40px 40px;}
-.tabsec .inner{max-width:1280px; margin:0 auto; padding:0 48px}
-.tabsec .head{padding:74px 0 0}
-.tabsec h2{font-size:clamp(32px,4vw,52px); margin:18px 0 0}
-.tabsec h2 em{color:var(--lime)}
-.folders{display:flex; gap:10px; margin:46px 0 -10px; position:relative; z-index:2}
-.folder{background:var(--card); border:1px solid var(--border); border-bottom:none; border-radius:14px 14px 0 0;
-  padding:12px 24px; font-size:14px; font-weight:500; cursor:pointer; color:var(--muted);
-  transition:all var(--t) var(--ease); transform-origin:bottom center}
-.folder:nth-child(odd){transform:rotate(-2deg)}
-.folder:nth-child(even){transform:rotate(-1deg)}
-.folder.active{background:var(--lime); color:var(--stone-black); transform:scale(1.06) rotate(0); z-index:3; font-weight:600}
-.panel{background:var(--card); border:1px solid var(--border); border-radius:0 24px 24px 24px; padding:42px;
-  position:relative; z-index:1; transition:opacity 200ms var(--ease)}
-.bento{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
-.bcard{background:rgba(12,10,9,.5); border:1px solid var(--border); border-radius:18px; padding:26px; position:relative; min-height:200px;
-  display:flex; flex-direction:column}
-.bcard .bi{width:42px;height:42px;border-radius:12px;background:rgba(212,242,104,.12);color:var(--lime);display:grid;place-items:center;margin-bottom:18px}
-.bcard h3{font-size:24px; margin-bottom:8px}
-.bcard p{font-size:15px; color:var(--muted)}
-.bcard .mono{position:absolute; top:22px; right:24px; color:var(--muted)}
-.bcard.wide{grid-column:span 1}
+		/* tabbed content */
+		.tabsec {
+			background: var(--charcoal);
+			position: relative;
+			padding: 0 0 110px;
+			background-image:
+				linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+			background-size: 40px 40px;
+		}
+		.tabsec .inner {
+			max-width: 1280px;
+			margin: 0 auto;
+			padding: 0 48px;
+		}
+		.tabsec .head {
+			padding: 74px 0 0;
+		}
+		.tabsec h2 {
+			font-size: clamp(32px, 4vw, 52px);
+			margin: 18px 0 0;
+		}
+		.tabsec h2 em {
+			color: var(--lime);
+		}
+		.folders {
+			display: flex;
+			gap: 10px;
+			margin: 46px 0 -10px;
+			position: relative;
+			z-index: 2;
+		}
+		.folder {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-bottom: none;
+			border-radius: 14px 14px 0 0;
+			padding: 12px 24px;
+			font-size: 14px;
+			font-weight: 500;
+			cursor: pointer;
+			color: var(--muted);
+			transition: all var(--t) var(--ease);
+			transform-origin: bottom center;
+		}
+		.folder:nth-child(odd) {
+			transform: rotate(-2deg);
+		}
+		.folder:nth-child(even) {
+			transform: rotate(-1deg);
+		}
+		.folder.active {
+			background: var(--lime);
+			color: var(--stone-black);
+			transform: scale(1.06) rotate(0);
+			z-index: 3;
+			font-weight: 600;
+		}
+		.panel {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: 0 24px 24px 24px;
+			padding: 42px;
+			position: relative;
+			z-index: 1;
+			transition: opacity 200ms var(--ease);
+		}
+		.bento {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+		}
+		.bcard {
+			background: rgba(12, 10, 9, 0.5);
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			padding: 26px;
+			position: relative;
+			min-height: 200px;
+			display: flex;
+			flex-direction: column;
+		}
+		.bcard .bi {
+			width: 42px;
+			height: 42px;
+			border-radius: 12px;
+			background: rgba(212, 242, 104, 0.12);
+			color: var(--lime);
+			display: grid;
+			place-items: center;
+			margin-bottom: 18px;
+		}
+		.bcard h3 {
+			font-size: 24px;
+			margin-bottom: 8px;
+		}
+		.bcard p {
+			font-size: 15px;
+			color: var(--muted);
+		}
+		.bcard .mono {
+			position: absolute;
+			top: 22px;
+			right: 24px;
+			color: var(--muted);
+		}
+		.bcard.wide {
+			grid-column: span 1;
+		}
 
-/* showcase */
-.showcase{padding:110px 0}
-.showcase .head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:48px}
-.showcase h2{font-size:clamp(32px,4vw,52px)}
-.showcase h2 em{color:var(--lime)}
-.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
-.scard{position:relative; aspect-ratio:3/4; background:var(--card); border:1px solid var(--border); border-radius:24px; overflow:hidden}
-.scard:nth-child(2){transform:translateY(40px)}
-.scard img{width:100%; height:100%; object-fit:cover; filter:grayscale(1);
-  transition:filter var(--t) var(--ease), transform 600ms var(--ease)}
-.scard:hover img{filter:grayscale(0); transform:scale(1.05)}
-.scard .grad{position:absolute; inset:0; background:linear-gradient(transparent 38%, rgba(12,10,9,.88))}
-.scard .meta{position:absolute; left:24px; bottom:22px; right:24px; display:flex; align-items:flex-end; justify-content:space-between}
-.scard .meta h3{font-style:italic; font-size:30px}
-.scard .catalog{top:18px; right:18px; min-width:0; opacity:0; transform:translateY(-6px); transition:all var(--t) var(--ease)}
-.scard:hover .catalog{opacity:1; transform:translateY(0)}
+		/* showcase */
+		.showcase {
+			padding: 110px 0;
+		}
+		.showcase .head {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: 24px;
+			margin-bottom: 48px;
+		}
+		.showcase h2 {
+			font-size: clamp(32px, 4vw, 52px);
+		}
+		.showcase h2 em {
+			color: var(--lime);
+		}
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 24px;
+		}
+		.scard {
+			position: relative;
+			aspect-ratio: 3 / 4;
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			overflow: hidden;
+		}
+		.scard:nth-child(2) {
+			transform: translateY(40px);
+		}
+		.scard img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			filter: grayscale(1);
+			transition:
+				filter var(--t) var(--ease),
+				transform 600ms var(--ease);
+		}
+		.scard:hover img {
+			filter: grayscale(0);
+			transform: scale(1.05);
+		}
+		.scard .grad {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(transparent 38%, rgba(12, 10, 9, 0.88));
+		}
+		.scard .meta {
+			position: absolute;
+			left: 24px;
+			bottom: 22px;
+			right: 24px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+		.scard .meta h3 {
+			font-style: italic;
+			font-size: 30px;
+		}
+		.scard .catalog {
+			top: 18px;
+			right: 18px;
+			min-width: 0;
+			opacity: 0;
+			transform: translateY(-6px);
+			transition: all var(--t) var(--ease);
+		}
+		.scard:hover .catalog {
+			opacity: 1;
+			transform: translateY(0);
+		}
 
-/* sticky note CTA */
-.ctasec{padding:40px 0 130px; display:flex; justify-content:center}
-.stick{background:var(--lime); color:var(--charcoal); transform:rotate(2deg); padding:44px; border-radius:24px;
-  max-width:580px; width:100%; box-shadow:0 30px 70px rgba(0,0,0,.4); transition:transform var(--t) var(--ease)}
-.stick:hover{transform:rotate(0) scale(1.02)}
-.stick .se{font-size:13px; letter-spacing:.16em; text-transform:uppercase; font-weight:600; opacity:.7}
-.stick h2{font-size:clamp(34px,4.5vw,52px); color:var(--charcoal); margin:14px 0 16px}
-.stick p{font-size:17px; opacity:.85}
-.stick .foot{display:flex; align-items:center; justify-content:space-between; margin-top:30px; padding-top:22px;
-  border-top:1px solid rgba(28,25,23,.2)}
-.stick .foot .mono{color:var(--charcoal); font-weight:600}
-.iconbtn{width:46px;height:46px;border-radius:50%;background:var(--charcoal);color:var(--lime);display:grid;place-items:center;
-  transition:transform var(--t) var(--ease)}
-.stick:hover .iconbtn{transform:translate(4px,-4px)}
+		/* sticky note CTA */
+		.ctasec {
+			padding: 40px 0 130px;
+			display: flex;
+			justify-content: center;
+		}
+		.stick {
+			background: var(--lime);
+			color: var(--charcoal);
+			transform: rotate(2deg);
+			padding: 44px;
+			border-radius: 24px;
+			max-width: 580px;
+			width: 100%;
+			box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+			transition: transform var(--t) var(--ease);
+		}
+		.stick:hover {
+			transform: rotate(0) scale(1.02);
+		}
+		.stick .se {
+			font-size: 13px;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			font-weight: 600;
+			opacity: 0.7;
+		}
+		.stick h2 {
+			font-size: clamp(34px, 4.5vw, 52px);
+			color: var(--charcoal);
+			margin: 14px 0 16px;
+		}
+		.stick p {
+			font-size: 17px;
+			opacity: 0.85;
+		}
+		.stick .foot {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-top: 30px;
+			padding-top: 22px;
+			border-top: 1px solid rgba(28, 25, 23, 0.2);
+		}
+		.stick .foot .mono {
+			color: var(--charcoal);
+			font-weight: 600;
+		}
+		.iconbtn {
+			width: 46px;
+			height: 46px;
+			border-radius: 50%;
+			background: var(--charcoal);
+			color: var(--lime);
+			display: grid;
+			place-items: center;
+			transition: transform var(--t) var(--ease);
+		}
+		.stick:hover .iconbtn {
+			transform: translate(4px, -4px);
+		}
 
-/* footer */
-footer{border-top:1px solid var(--border); padding:80px 0 40px}
-.fgrid{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:60px}
-footer .word{font-family:'Newsreader'; font-size:clamp(48px,8vw,110px); font-weight:200; line-height:.9; letter-spacing:-.03em}
-footer .word em{color:var(--lime)}
-.fcol h4{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:18px; font-family:'Instrument Sans'; font-weight:500}
-.fcol a{display:block; color:var(--muted); padding:6px 0; font-size:15px; transition:color var(--t) var(--ease)}
-.fcol a:hover{color:var(--stone)}
-.fbar{display:flex; align-items:center; justify-content:space-between; padding-top:28px; border-top:1px solid var(--border); color:var(--muted)}
+		/* footer */
+		footer {
+			border-top: 1px solid var(--border);
+			padding: 80px 0 40px;
+		}
+		.fgrid {
+			display: grid;
+			grid-template-columns: 2fr 1fr 1fr 1fr;
+			gap: 40px;
+			margin-bottom: 60px;
+		}
+		footer .word {
+			font-family: "Newsreader";
+			font-size: clamp(48px, 8vw, 110px);
+			font-weight: 200;
+			line-height: 0.9;
+			letter-spacing: -0.03em;
+		}
+		footer .word em {
+			color: var(--lime);
+		}
+		.fcol h4 {
+			font-size: 13px;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--muted);
+			margin-bottom: 18px;
+			font-family: "Instrument Sans";
+			font-weight: 500;
+		}
+		.fcol a {
+			display: block;
+			color: var(--muted);
+			padding: 6px 0;
+			font-size: 15px;
+			transition: color var(--t) var(--ease);
+		}
+		.fcol a:hover {
+			color: var(--stone);
+		}
+		.fbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding-top: 28px;
+			border-top: 1px solid var(--border);
+			color: var(--muted);
+		}
 
-/* reveal */
-[data-reveal]{opacity:0; transform:translateY(24px); transition:opacity 700ms var(--ease), transform 700ms var(--ease)}
-[data-reveal].in{opacity:1; transform:none}
+		/* reveal */
+		[data-reveal] {
+			opacity: 0;
+			transform: translateY(24px);
+			transition:
+				opacity 700ms var(--ease),
+				transform 700ms var(--ease);
+		}
+		[data-reveal].in {
+			opacity: 1;
+			transform: none;
+		}
 
-@media (max-width:980px){
-  .wrap,.hero,.tabsec .inner{padding-left:28px; padding-right:28px}
-  nav{padding:18px 28px}
-  .pill{display:none}
-  .hero{grid-template-columns:1fr; gap:40px; padding-top:140px}
-  .hero-media{order:-1}
-  .grid,.bento{grid-template-columns:repeat(2,1fr)}
-  .scard:nth-child(2){transform:none}
-  .fgrid{grid-template-columns:1fr 1fr}
-}
-@media (max-width:560px){
-  .grid{grid-template-columns:1fr}
-  .folders{flex-wrap:wrap}
-  .panel{padding:26px}
-  .showcase .head{flex-direction:column; align-items:flex-start}
-  .fgrid{grid-template-columns:1fr}
-}
-@media (prefers-reduced-motion:reduce){
-  .note{animation:none}
-  [data-reveal]{transition:none; opacity:1; transform:none}
-}
-</style>
-</head>
-<body>
-<div class="noise"></div>
+		@media (max-width: 980px) {
+			.wrap,
+			.hero,
+			.tabsec .inner {
+				padding-left: 28px;
+				padding-right: 28px;
+			}
+			nav {
+				padding: 18px 28px;
+			}
+			.pill {
+				display: none;
+			}
+			.hero {
+				grid-template-columns: 1fr;
+				gap: 40px;
+				padding-top: 140px;
+			}
+			.hero-media {
+				order: -1;
+			}
+			.grid,
+			.bento {
+				grid-template-columns: repeat(2, 1fr);
+			}
+			.scard:nth-child(2) {
+				transform: none;
+			}
+			.fgrid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+		@media (max-width: 560px) {
+			.grid {
+				grid-template-columns: 1fr;
+			}
+			.folders {
+				flex-wrap: wrap;
+			}
+			.panel {
+				padding: 26px;
+			}
+			.showcase .head {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+			.fgrid {
+				grid-template-columns: 1fr;
+			}
+		}
+		@media (prefers-reduced-motion: reduce) {
+			.note {
+				animation: none;
+			}
+			[data-reveal] {
+				transition: none;
+				opacity: 1;
+				transform: none;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="noise"></div>
 
-<nav id="nav">
-  <a class="brand" href="#">
-    <span class="disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg></span>
-    STUDIO/NORD
-  </a>
-  <div class="pill">
-    <a href="#system">Foundations</a>
-    <a href="#system">Components</a>
-    <a href="#showcase">Showcase</a>
-    <a href="#about">About</a>
-  </div>
-  <button class="cta-btn">Get the kit
-    <svg class="icn" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
-  </button>
-</nav>
+		<nav id="nav">
+			<a class="brand" href="#">
+				<span class="disc"
+					><svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="M12 3v18M3 12h18" />
+					</svg></span
+				>
+				STUDIO/NORD
+			</a>
+			<div class="pill">
+				<a href="#system">Foundations</a>
+				<a href="#system">Components</a>
+				<a href="#showcase">Showcase</a>
+				<a href="#about">About</a>
+			</div>
+			<button class="cta-btn">
+				Get the kit
+				<svg class="icn" viewBox="0 0 24 24">
+					<path d="M7 17 17 7M7 7h10v10" />
+				</svg>
+			</button>
+		</nav>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-copy" data-reveal>
-    <div class="eyebrow"><span class="dot"></span> Digital Naturalism / V.01</div>
-    <h1>A design system for <em>naturally</em> technical interfaces.</h1>
-    <p class="sub">An editorial, dark-mode toolkit built on warm stone, acid lime, and analog noise — for teams who want their software to feel made, not generated.</p>
-    <div class="actions">
-      <button class="cta-btn">Explore the system
-        <svg class="icn" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-      <a class="ghost" href="#about">Read the manifesto</a>
-    </div>
-    <div class="proof">
-      <div class="avatars">
-        <img src="assets/avatar1.jpg" alt=""><img src="assets/avatar2.jpg" alt="">
-        <img src="assets/avatar3.jpg" alt=""><img src="assets/avatar4.jpg" alt="">
-      </div>
-      <span>Trusted by 2,400+ studios</span>
-    </div>
-  </div>
-  <div class="hero-media" data-reveal>
-    <div class="arch">
-      <img src="assets/hero.jpg" alt="Abstract arch" />
-      <div class="catalog" style="left:18px; bottom:18px">
-        <div class="row1"><span class="mono">Fig. No 1A</span><span class="dot"></span></div>
-        <div class="cap">Surface study, lime on stone</div>
-      </div>
-    </div>
-    <div class="note">naturally made</div>
-  </div>
-</header>
+		<!-- HERO -->
+		<header class="hero">
+			<div class="hero-copy" data-reveal>
+				<div class="eyebrow">
+					<span class="dot"></span>
+					Digital Naturalism / V.01
+				</div>
+				<h1>A design system for <em>naturally</em> technical interfaces.</h1>
+				<p class="sub">
+					An editorial, dark-mode toolkit built on warm stone, acid lime, and
+					analog noise — for teams who want their software to feel made, not
+					generated.
+				</p>
+				<div class="actions">
+					<button class="cta-btn">
+						Explore the system
+						<svg class="icn" viewBox="0 0 24 24">
+							<path d="M5 12h14M13 6l6 6-6 6" />
+						</svg>
+					</button>
+					<a class="ghost" href="#about">Read the manifesto</a>
+				</div>
+				<div class="proof">
+					<div class="avatars">
+						<img src="assets/avatar1.jpg" alt="">
+						<img src="assets/avatar2.jpg" alt="">
+						<img src="assets/avatar3.jpg" alt="">
+						<img src="assets/avatar4.jpg" alt="">
+					</div>
+					<span>Trusted by 2,400+ studios</span>
+				</div>
+			</div>
+			<div class="hero-media" data-reveal>
+				<div class="arch">
+					<img src="assets/hero.jpg" alt="Abstract arch">
+					<div class="catalog" style="left:18px; bottom:18px">
+						<div class="row1">
+							<span class="mono">Fig. No 1A</span><span class="dot"></span>
+						</div>
+						<div class="cap">Surface study, lime on stone</div>
+					</div>
+				</div>
+				<div class="note">naturally made</div>
+			</div>
+		</header>
 
-<!-- TABBED MAIN CONTENT -->
-<div class="serrated"></div>
-<section class="tabsec" id="system">
-  <div class="inner">
-    <div class="head" data-reveal>
-      <div class="eyebrow"><span class="dot"></span> The System</div>
-      <h2>Everything in <em>one</em> folder.</h2>
-    </div>
-    <div class="folders" id="folders">
-      <div class="folder active" data-tab="0">Foundations</div>
-      <div class="folder" data-tab="1">Components</div>
-      <div class="folder" data-tab="2">Motion</div>
-      <div class="folder" data-tab="3">Tokens</div>
-    </div>
-    <div class="panel" id="panel" data-reveal></div>
-  </div>
-</section>
+		<!-- TABBED MAIN CONTENT -->
+		<div class="serrated"></div>
+		<section class="tabsec" id="system">
+			<div class="inner">
+				<div class="head" data-reveal>
+					<div class="eyebrow"><span class="dot"></span> The System</div>
+					<h2>Everything in <em>one</em> folder.</h2>
+				</div>
+				<div class="folders" id="folders">
+					<div class="folder active" data-tab="0">Foundations</div>
+					<div class="folder" data-tab="1">Components</div>
+					<div class="folder" data-tab="2">Motion</div>
+					<div class="folder" data-tab="3">Tokens</div>
+				</div>
+				<div class="panel" id="panel" data-reveal></div>
+			</div>
+		</section>
 
-<!-- SHOWCASE -->
-<section class="showcase" id="showcase">
-  <div class="wrap">
-    <div class="head" data-reveal>
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Selected catalogue</div>
-        <h2>Selected <em>work</em>.</h2>
-      </div>
-      <a class="ghost" href="#">View archive →</a>
-    </div>
-    <div class="grid" id="grid"></div>
-  </div>
-</section>
+		<!-- SHOWCASE -->
+		<section class="showcase" id="showcase">
+			<div class="wrap">
+				<div class="head" data-reveal>
+					<div>
+						<div class="eyebrow">
+							<span class="dot"></span>
+							Selected catalogue
+						</div>
+						<h2>Selected <em>work</em>.</h2>
+					</div>
+					<a class="ghost" href="#">View archive →</a>
+				</div>
+				<div class="grid" id="grid"></div>
+			</div>
+		</section>
 
-<!-- STICKY NOTE CTA -->
-<section class="ctasec" id="about">
-  <div class="stick" data-reveal>
-    <div class="se">Let's collaborate</div>
-    <h2>Let's build something <em>lasting</em>.</h2>
-    <p>Pin us to your roadmap. We'll bring the noise, the lime, and the editorial calm — you bring the idea.</p>
-    <div class="foot">
-      <span class="mono">Start a project · Fig. 7G</span>
-      <span class="iconbtn"><svg class="icn" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
-    </div>
-  </div>
-</section>
+		<!-- STICKY NOTE CTA -->
+		<section class="ctasec" id="about">
+			<div class="stick" data-reveal>
+				<div class="se">Let's collaborate</div>
+				<h2>Let's build something <em>lasting</em>.</h2>
+				<p>
+					Pin us to your roadmap. We'll bring the noise, the lime, and the
+					editorial calm — you bring the idea.
+				</p>
+				<div class="foot">
+					<span class="mono">Start a project · Fig. 7G</span>
+					<span class="iconbtn"
+						><svg class="icn" viewBox="0 0 24 24">
+							<path d="M7 17 17 7M7 7h10v10" />
+						</svg></span
+					>
+				</div>
+			</div>
+		</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="fgrid">
-      <div>
-        <div class="word">Made with<br><em>noise</em> &amp; lime.</div>
-      </div>
-      <div class="fcol"><h4>System</h4><a href="#">Foundations</a><a href="#">Components</a><a href="#">Motion</a><a href="#">Tokens</a></div>
-      <div class="fcol"><h4>Studio</h4><a href="#">Manifesto</a><a href="#">Work</a><a href="#">Journal</a><a href="#">Contact</a></div>
-      <div class="fcol"><h4>Social</h4><a href="#">Dribbble</a><a href="#">Are.na</a><a href="#">X / Twitter</a><a href="#">Read.cv</a></div>
-    </div>
-    <div class="fbar">
-      <span class="mono">© 2026 STUDIO/NORD — Editorial Naturalism</span>
-      <span class="mono">Stone · Lime · Analog noise</span>
-    </div>
-  </div>
-</footer>
+		<!-- FOOTER -->
+		<footer>
+			<div class="wrap">
+				<div class="fgrid">
+					<div>
+						<div class="word">Made with<br><em>noise</em> &amp; lime.</div>
+					</div>
+					<div class="fcol">
+						<h4>System</h4>
+						<a href="#">Foundations</a><a href="#">Components</a
+						><a href="#">Motion</a><a href="#">Tokens</a>
+					</div>
+					<div class="fcol">
+						<h4>Studio</h4>
+						<a href="#">Manifesto</a><a href="#">Work</a><a href="#">Journal</a
+						><a href="#">Contact</a>
+					</div>
+					<div class="fcol">
+						<h4>Social</h4>
+						<a href="#">Dribbble</a><a href="#">Are.na</a
+						><a href="#">X / Twitter</a><a href="#">Read.cv</a>
+					</div>
+				</div>
+				<div class="fbar">
+					<span class="mono">© 2026 STUDIO/NORD — Editorial Naturalism</span>
+					<span class="mono">Stone · Lime · Analog noise</span>
+				</div>
+			</div>
+		</footer>
 
-<script>
-// nav scroll state
-const nav = document.getElementById('nav');
-const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-window.addEventListener('scroll', onScroll); onScroll();
+		<script>
+		// nav scroll state
+		const nav = document.getElementById("nav");
+		const onScroll = () =>
+			nav.classList.toggle("scrolled", window.scrollY > 40);
+		window.addEventListener("scroll", onScroll);
+		onScroll();
 
-// reveal observer
-const io = new IntersectionObserver((es)=>{
-  es.forEach((e,_i)=>{ if(e.isIntersecting){ e.target.style.transitionDelay=`${e.target.dataset.delay||0}ms`; e.target.classList.add('in'); io.unobserve(e.target);} });
-},{threshold:.15});
-document.querySelectorAll('[data-reveal]').forEach((el,i)=>{el.dataset.delay=(i%3)*90; io.observe(el);});
+		// reveal observer
+		const io = new IntersectionObserver(
+			(es) => {
+				es.forEach((e, _i) => {
+					if (e.isIntersecting) {
+						e.target.style.transitionDelay = `${e.target.dataset.delay || 0}ms`;
+						e.target.classList.add("in");
+						io.unobserve(e.target);
+					}
+				});
+			},
+			{ threshold: 0.15 },
+		);
+		document.querySelectorAll("[data-reveal]").forEach((el, i) => {
+			el.dataset.delay = (i % 3) * 90;
+			io.observe(el);
+		});
 
-// tab content
-const ICN = {
-  layers:'M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5',
-  grid:'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
-  spark:'M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2',
-  circle:'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0'
-};
-const TABS = [
-  {label:'Foundations', cards:[
-    {ic:'layers', id:'F.01', h:'Color',  p:'Stone black, warm charcoal, off-white stone and a single acid-lime accent — tuned to never read pure black.'},
-    {ic:'grid',   id:'F.02', h:'Grid',   p:'A 40px modular grid drives every layout, surfacing as a faint 3% structure behind dark surfaces.'},
-    {ic:'spark',  id:'F.03', h:'Texture',p:'A fixed 4% fractal-noise overlay in overlay blend keeps the dark fields organic, not flat.'}
-  ]},
-  {label:'Components', cards:[
-    {ic:'circle', id:'C.01', h:'Catalog label', p:'Frosted black metadata chips with a mono Fig. No and a glowing lime status dot.'},
-    {ic:'spark',  id:'C.02', h:'Sticky note',   p:'A physical lime note, rotated and pinned, that straightens and lifts on hover.'},
-    {ic:'layers', id:'C.03', h:'Folder tabs',   p:'Slightly rotated, overlapping tabs that swap a bento panel beneath them.'}
-  ]},
-  {label:'Motion', cards:[
-    {ic:'spark',  id:'M.01', h:'Reveal', p:'Elements rise 24px and fade in over 700ms on a soft standard ease, staggered in threes.'},
-    {ic:'circle', id:'M.02', h:'Float',  p:'The sticky note breathes on a 6s loop; everything else holds still and considered.'},
-    {ic:'grid',   id:'M.03', h:'Easing', p:'A single cubic-bezier(.4,0,.2,1) at 300ms governs every state change for coherence.'}
-  ]},
-  {label:'Tokens', cards:[
-    {ic:'grid',   id:'T.01', h:'Radii',  p:'24px on primary cards, 9999px on buttons, 10rem arches on hero media.'},
-    {ic:'layers', id:'T.02', h:'Type',   p:'Newsreader 200–400 for serif display, Instrument Sans 400–600 for UI, mono for IDs.'},
-    {ic:'circle', id:'T.03', h:'Spacing',p:'An 8px base scale keeps rhythm tight while the editorial whitespace breathes.'}
-  ]}
-];
-const panel = document.getElementById('panel');
-function renderTab(i){
-  const t = TABS[i];
-  panel.style.opacity = 0;
-  setTimeout(()=>{
-    panel.innerHTML = `<div class="bento">${t.cards.map(c=>`
+		// tab content
+		const ICN = {
+			layers: "M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5",
+			grid: "M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z",
+			spark:
+				"M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2",
+			circle:
+				"M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0",
+		};
+		const TABS = [
+			{
+				label: "Foundations",
+				cards: [
+					{
+						ic: "layers",
+						id: "F.01",
+						h: "Color",
+						p: "Stone black, warm charcoal, off-white stone and a single acid-lime accent — tuned to never read pure black.",
+					},
+					{
+						ic: "grid",
+						id: "F.02",
+						h: "Grid",
+						p: "A 40px modular grid drives every layout, surfacing as a faint 3% structure behind dark surfaces.",
+					},
+					{
+						ic: "spark",
+						id: "F.03",
+						h: "Texture",
+						p: "A fixed 4% fractal-noise overlay in overlay blend keeps the dark fields organic, not flat.",
+					},
+				],
+			},
+			{
+				label: "Components",
+				cards: [
+					{
+						ic: "circle",
+						id: "C.01",
+						h: "Catalog label",
+						p: "Frosted black metadata chips with a mono Fig. No and a glowing lime status dot.",
+					},
+					{
+						ic: "spark",
+						id: "C.02",
+						h: "Sticky note",
+						p: "A physical lime note, rotated and pinned, that straightens and lifts on hover.",
+					},
+					{
+						ic: "layers",
+						id: "C.03",
+						h: "Folder tabs",
+						p: "Slightly rotated, overlapping tabs that swap a bento panel beneath them.",
+					},
+				],
+			},
+			{
+				label: "Motion",
+				cards: [
+					{
+						ic: "spark",
+						id: "M.01",
+						h: "Reveal",
+						p: "Elements rise 24px and fade in over 700ms on a soft standard ease, staggered in threes.",
+					},
+					{
+						ic: "circle",
+						id: "M.02",
+						h: "Float",
+						p: "The sticky note breathes on a 6s loop; everything else holds still and considered.",
+					},
+					{
+						ic: "grid",
+						id: "M.03",
+						h: "Easing",
+						p: "A single cubic-bezier(.4,0,.2,1) at 300ms governs every state change for coherence.",
+					},
+				],
+			},
+			{
+				label: "Tokens",
+				cards: [
+					{
+						ic: "grid",
+						id: "T.01",
+						h: "Radii",
+						p: "24px on primary cards, 9999px on buttons, 10rem arches on hero media.",
+					},
+					{
+						ic: "layers",
+						id: "T.02",
+						h: "Type",
+						p: "Newsreader 200–400 for serif display, Instrument Sans 400–600 for UI, mono for IDs.",
+					},
+					{
+						ic: "circle",
+						id: "T.03",
+						h: "Spacing",
+						p: "An 8px base scale keeps rhythm tight while the editorial whitespace breathes.",
+					},
+				],
+			},
+		];
+		const panel = document.getElementById("panel");
+		function renderTab(i) {
+			const t = TABS[i];
+			panel.style.opacity = 0;
+			setTimeout(() => {
+				panel.innerHTML = `<div class="bento">${t.cards
+					.map(
+						(c) => `
       <div class="bcard">
         <span class="mono">${c.id}</span>
         <div class="bi"><svg class="icn" viewBox="0 0 24 24"><path d="${ICN[c.ic]}"/></svg></div>
         <h3>${c.h}</h3><p>${c.p}</p>
-      </div>`).join('')}</div>`;
-    panel.style.opacity = 1;
-  },150);
-}
-document.querySelectorAll('.folder').forEach(f=>{
-  f.addEventListener('click',()=>{
-    document.querySelectorAll('.folder').forEach(x=>x.classList.remove('active'));
-    f.classList.add('active');
-    renderTab(+f.dataset.tab);
-  });
-});
-renderTab(0);
+      </div>`,
+					)
+					.join("")}</div>`;
+				panel.style.opacity = 1;
+			}, 150);
+		}
+		document.querySelectorAll(".folder").forEach((f) => {
+			f.addEventListener("click", () => {
+				document
+					.querySelectorAll(".folder")
+					.forEach((x) => x.classList.remove("active"));
+				f.classList.add("active");
+				renderTab(+f.dataset.tab);
+			});
+		});
+		renderTab(0);
 
-// showcase grid
-const WORK = [
-  {img:'arch',  t:'Arch',   id:'2A'},
-  {img:'quarry',t:'Quarry', id:'3B'},
-  {img:'meadow',t:'Meadow', id:'4C'},
-  {img:'signal',t:'Signal', id:'5D'},
-  {img:'strata',t:'Strata', id:'6E'},
-  {img:'bloom', t:'Bloom',  id:'6F'}
-];
-document.getElementById('grid').innerHTML = WORK.map(w=>`
+		// showcase grid
+		const WORK = [
+			{ img: "arch", t: "Arch", id: "2A" },
+			{ img: "quarry", t: "Quarry", id: "3B" },
+			{ img: "meadow", t: "Meadow", id: "4C" },
+			{ img: "signal", t: "Signal", id: "5D" },
+			{ img: "strata", t: "Strata", id: "6E" },
+			{ img: "bloom", t: "Bloom", id: "6F" },
+		];
+		document.getElementById("grid").innerHTML = WORK.map(
+			(w) => `
   <article class="scard">
     <img src="assets/${w.img}.jpg" alt="${w.t}">
     <div class="grad"></div>
@@ -375,7 +1043,8 @@ document.getElementById('grid').innerHTML = WORK.map(w=>`
       <div class="row1"><span class="mono">Fig. No ${w.id}</span><span class="dot"></span></div>
     </div>
     <div class="meta"><h3>${w.t}</h3><span class="mono">${w.id}</span></div>
-  </article>`).join('');
-</script>
-</body>
+  </article>`,
+		).join("");
+		</script>
+	</body>
 </html>

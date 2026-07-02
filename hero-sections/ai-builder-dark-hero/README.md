@@ -1,5 +1,7 @@
 # AI Builder Dark Hero — Dark-Mode AI Website Builder Hero Section (React + Vite + HLS.js + Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 Dark-mode hero section for an AI website builder, pairing a full-bleed HLS background video (streamed via Mux with hls.js and a Safari native fallback) with a black overlay, soft decorative gradient glows, gradient-clipped headline, and centered Motion-animated copy. A fixed transparent navbar sits on top; the hero closes with a primary pill CTA and a secondary text-link. Uses Instrument Sans + Instrument Serif typography and Tailwind CSS v4. Generated with Claude Fable 5.
 
 ## Stack

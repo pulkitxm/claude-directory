@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en" class="selection:bg-blue selection:text-white scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Blog — Hirewise</title>
+		<meta
+			name="description"
+			content="Career advice, workplace trends, and hiring insights from the Hirewise team."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"
+		></script>
+		<script>
+		(function () {
+			const t =
+				localStorage.getItem("theme") ||
+				(window.matchMedia("(prefers-color-scheme: dark)").matches
+					? "dark"
+					: "light");
+			document.documentElement.classList.toggle("dark", t === "dark");
+		})();
+		</script>
+	</head>
+	<body class="bg-white dark:bg-base-800 flex flex-col min-h-dvh">
+		<section id="navigation" class="overflow-hidden">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="bg-white dark:bg-base-800 py-4">
+					<div class="grid grid-cols-2 gap-4 items-center">
+						<a
+							href="index.html"
+							class="font-medium lowercase text-base-900 dark:text-white text-lg"
+							>hirewise®</a
+						>
+						<div class="flex items-center gap-2 text-sm justify-end">
+							<button
+								class="btn-secondary size-8 rounded"
+								id="jobSearchButton"
+								type="button"
+								aria-label="Search"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+									<path d="M21 21l-6 -6"></path>
+								</svg>
+							</button>
+							<button
+								class="btn-secondary size-8 rounded"
+								id="theme-toggle"
+								type="button"
+								aria-label="Toggle theme"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+									<path
+										d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
+									></path>
+								</svg>
+							</button>
+							<a
+								class="btn-secondary h-8 px-3 py-2 text-xs rounded whitespace-nowrap"
+								href="sign-in.html"
+								>Sign in</a
+							>
+							<a
+								class="btn-primary h-8 px-3 py-2 text-xs rounded whitespace-nowrap"
+								href="sign-up.html"
+								>Sign up</a
+							>
+							<button
+								class="btn-secondary size-8 rounded shrink-0"
+								id="menubutton"
+								type="button"
+								aria-controls="menu"
+								aria-label="Toggle menu"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M4 4h6v6h-6zm10 0h6v6h-6zm-10 10h6v6h-6zm10 0h6v6h-6z"
+									></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<nav
+						id="menu"
+						class="overflow-hidden relative outline outline-base-200 dark:outline-white/10 shadow dark:shadow-base-900 rounded-3xl bg-base-50 dark:bg-base-700 mt-4"
+						style="max-height:0;opacity:0;transition:max-height 0.5s ease-out, opacity 0.5s ease-out;"
+					>
+						<div class="p-8 grid grid-cols-1 lg:grid-cols-3 gap-y-8">
+							<div>
+								<h3 class="text-base text-base-900 dark:text-white font-medium">
+									Quick Links
+								</h3>
+								<nav class="mt-8">
+									<ul class="grid grid-cols-2 gap-y-1">
+										<li>
+											<a
+												href="index.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Browse Jobs</a
+											>
+										</li>
+										<li>
+											<a
+												href="companies.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Explore Companies</a
+											>
+										</li>
+										<li>
+											<a
+												href="blog.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>News</a
+											>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div
+								class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:col-span-2 gap-4"
+							>
+								<div
+									class="bg-orange p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a href="jobs.html" class="absolute inset-0 z-10"></a>Jobs
+								</div>
+								<div
+									class="bg-blue p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a
+										href="companies.html"
+										class="absolute inset-0 z-10"
+									></a>Companies
+								</div>
+								<div
+									class="bg-yellow-light p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-base-900 font-semibold"
+								>
+									<a
+										href="candidates.html"
+										class="absolute inset-0 z-10"
+									></a>Candidates
+								</div>
+								<div
+									class="bg-green p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a href="blog.html" class="absolute inset-0 z-10"></a>News
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<main class="flex-1">
+			<!-- Page header -->
+			<div
+				class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24 pt-16 pb-8"
+			>
+				<h1
+					class="text-4xl lg:text-5xl font-semibold text-base-900 dark:text-white"
+				>
+					Latest news
+				</h1>
+				<p class="text-base text-base-500 dark:text-base-400 mt-3">
+					Career insights, hiring tips, and workplace trends from the Hirewise
+					team.
+				</p>
+			</div>
+
+			<!-- Filter tag row -->
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24 pb-8">
+				<div
+					class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide"
+					style="-ms-overflow-style:none;scrollbar-width:none;"
+				>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-900 dark:bg-white text-white dark:text-base-900 transition"
+					>
+						All
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						Magazine
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						Market
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						Challenges
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						Finance
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						News
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						Business
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						Health
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						Economy
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						Career Advice
+					</button>
+					<button
+						class="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-300 hover:bg-base-200 dark:hover:bg-base-600 transition"
+					>
+						Technology
+					</button>
+				</div>
+			</div>
+
+			<!-- Article list -->
+			<div
+				class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24 pb-16 border-t border-base-200 dark:border-base-700"
+			>
+				<div
+					class="flex flex-col divide-y divide-base-200 dark:divide-base-700"
+				>
+					<!-- Article 1 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#1DA8FF,#0e80c7);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full bg-blue/10 text-blue"
+									>Analysis</span
+								>
+								<span class="text-xs text-base-400">Jan 15, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">8 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								Global Economic Shifts: What to Expect in 2025
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								A deep analysis of major economic trends and how they'll impact
+								the job market in the year ahead.
+							</p>
+						</div>
+					</a>
+
+					<!-- Article 2 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#fa5925,#ff8c5a);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full bg-orange/10 text-orange"
+									>Career Advice</span
+								>
+								<span class="text-xs text-base-400">Jan 20, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">6 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								How to Negotiate Your Salary Like a Pro
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								Expert tips and proven strategies for getting the compensation
+								you deserve at your next job offer.
+							</p>
+						</div>
+					</a>
+
+					<!-- Article 3 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#00c172,#00e88a);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full bg-green/10 text-green"
+									>Workplace</span
+								>
+								<span class="text-xs text-base-400">Jan 25, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">5 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								The Rise of Remote Work: Trends in 2025
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								How remote work is evolving and what it means for companies and
+								employees navigating the new landscape.
+							</p>
+						</div>
+					</a>
+
+					<!-- Article 4 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#ffb112,#ffd166);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full text-yellow-700 dark:text-yellow-400"
+									style="background:rgba(255,177,18,0.12);"
+									>Culture</span
+								>
+								<span class="text-xs text-base-400">Feb 1, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">7 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								Building a Diverse Tech Team
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								Practical strategies for hiring managers to build more inclusive
+								and diverse engineering teams.
+							</p>
+						</div>
+					</a>
+
+					<!-- Article 5 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#1DA8FF,#fa5925);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full bg-blue/10 text-blue"
+									>Career Tips</span
+								>
+								<span class="text-xs text-base-400">Feb 8, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">4 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								Top Skills Employers Are Looking for in 2025
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								The most in-demand technical and soft skills that will set you
+								apart in today's competitive job market.
+							</p>
+						</div>
+					</a>
+
+					<!-- Article 6 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#00c172,#1DA8FF);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full bg-green/10 text-green"
+									>Career</span
+								>
+								<span class="text-xs text-base-400">Feb 15, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">9 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								From Startup to Enterprise: Career Growth Paths
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								Exploring different career trajectories and how to navigate
+								growth from early-stage startups to large enterprises.
+							</p>
+						</div>
+					</a>
+
+					<!-- Article 7 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#7238C0,#9b62e0);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full"
+									style="background:rgba(114,56,192,0.12);color:#7238C0;"
+									>Technology</span
+								>
+								<span class="text-xs text-base-400">Feb 20, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">10 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								AI and the Future of Work
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								How artificial intelligence is reshaping industries and what
+								professionals need to know to stay relevant.
+							</p>
+						</div>
+					</a>
+
+					<!-- Article 8 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#fa5925,#ffb112);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full bg-orange/10 text-orange"
+									>Job Search</span
+								>
+								<span class="text-xs text-base-400">Mar 1, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">5 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								How to Stand Out in a Competitive Job Market
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								Actionable tips to make your application memorable and increase
+								your chances of landing interviews.
+							</p>
+						</div>
+					</a>
+
+					<!-- Article 9 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#00c172,#ffb112);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full bg-green/10 text-green"
+									>Workplace</span
+								>
+								<span class="text-xs text-base-400">Mar 8, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">6 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								The Benefits of Hybrid Work Models
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								Why hybrid work is becoming the preferred arrangement for both
+								employees and employers worldwide.
+							</p>
+						</div>
+					</a>
+
+					<!-- Article 10 -->
+					<a
+						href="#"
+						class="group flex items-start gap-6 py-6 hover:opacity-90 transition"
+					>
+						<div
+							class="shrink-0 w-28 h-20 rounded-xl overflow-hidden"
+							style="background:linear-gradient(135deg,#1DA8FF,#00c172);"
+						></div>
+						<div class="flex-1 min-w-0">
+							<div class="flex items-center gap-2 mb-1.5">
+								<span
+									class="text-xs font-medium px-2 py-0.5 rounded-full bg-blue/10 text-blue"
+									>Career Advice</span
+								>
+								<span class="text-xs text-base-400">Mar 15, 2025</span>
+								<span class="text-xs text-base-400">·</span>
+								<span class="text-xs text-base-400">7 min read</span>
+							</div>
+							<h2
+								class="font-semibold text-base-900 dark:text-white group-hover:text-blue transition-colors line-clamp-1"
+							>
+								Interview Tips from Top Hiring Managers
+							</h2>
+							<p
+								class="text-sm text-base-500 dark:text-base-400 mt-1 line-clamp-2"
+							>
+								What hiring managers really look for in candidates — straight
+								from the people who make the decisions.
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Newsletter section -->
+			<div
+				class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24 py-16 border-t border-base-200 dark:border-base-700"
+			>
+				<div class="max-w-xl">
+					<p
+						class="text-xs font-medium uppercase text-base-500 dark:text-base-400 tracking-wide mb-3"
+					>
+						Newsletter
+					</p>
+					<h2
+						class="text-3xl lg:text-4xl font-semibold text-base-900 dark:text-white leading-tight"
+					>
+						Subscribe to our newsletter
+					</h2>
+					<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+						Get the latest hiring tips, career advice, and job market trends
+						delivered to your inbox every week.
+					</p>
+					<form class="flex gap-2 mt-6" novalidate>
+						<input
+							type="email"
+							placeholder="Enter your email address"
+							class="flex-1 h-10 px-4 text-sm border border-base-200 dark:border-base-600 rounded-lg bg-white dark:bg-base-700 text-base-900 dark:text-white placeholder-base-400 focus:outline-none focus:border-blue transition"
+						>
+						<button
+							type="submit"
+							class="shrink-0 h-10 px-5 text-sm font-medium rounded-lg text-white"
+							style="background:#111827;"
+						>
+							Subscribe
+						</button>
+					</form>
+				</div>
+			</div>
+		</main>
+
+		<footer class="mt-auto">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="py-12 border-t border-base-200 dark:border-base-700">
+					<div
+						class="flex flex-col sm:flex-row items-center justify-between gap-4"
+					>
+						<a
+							href="index.html"
+							class="font-medium lowercase text-base-900 dark:text-white text-lg"
+							>hirewise®</a
+						>
+						<p class="text-sm text-base-500 dark:text-base-400">
+							© 2025 Hirewise. All rights reserved.
+						</p>
+						<button
+							class="btn-secondary h-8 px-3 py-2 text-xs rounded"
+							id="footer-theme-toggle"
+							type="button"
+						>
+							Toggle theme
+						</button>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<button
+			id="chat-toggle"
+			class="btn-primary fixed bottom-5 right-5 z-50 size-11 rounded-full"
+			aria-label="Chat"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="size-5"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M8 9h8"></path>
+				<path d="M8 13h6"></path>
+				<path
+					d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"
+				></path>
+			</svg>
+		</button>
+		<div
+			id="chat-bubble"
+			class="fixed bottom-20 right-5 z-50 opacity-0 pointer-events-none transition-opacity"
+		>
+			<div class="bg-white dark:bg-base-700 card p-4 w-72 rounded-2xl">
+				<p class="font-medium text-base-900 dark:text-white">Chat with us</p>
+				<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+					We typically reply in a few minutes.
+				</p>
+				<button class="btn-primary w-full mt-4 h-9 px-4 rounded text-sm">
+					Start conversation
+				</button>
+			</div>
+		</div>
+
+		<script>
+		const themeToggle = document.getElementById("theme-toggle"),
+			footerToggle = document.getElementById("footer-theme-toggle");
+		function toggleTheme() {
+			const d = document.documentElement.classList.toggle("dark");
+			localStorage.setItem("theme", d ? "dark" : "light");
+		}
+		if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+		if (footerToggle) footerToggle.addEventListener("click", toggleTheme);
+		const menuBtn = document.getElementById("menubutton"),
+			menu = document.getElementById("menu");
+		let menuOpen = false;
+		if (menuBtn && menu) {
+			menuBtn.addEventListener("click", () => {
+				menuOpen = !menuOpen;
+				if (menuOpen) {
+					menu.style.maxHeight = "1000px";
+					menu.style.opacity = "1";
+				} else {
+					menu.style.maxHeight = "0";
+					menu.style.opacity = "0";
+				}
+			});
+		}
+		const searchBtn = document.getElementById("jobSearchButton");
+		let searchModalEl = null;
+		function buildSearchModal() {
+			if (searchModalEl) return;
+			const modal = document.createElement("div");
+			modal.className = "fixed inset-0 z-[9998] overflow-y-auto hidden";
+			modal.innerHTML = `<div class="min-h-screen px-4 text-center relative"><div class="fixed inset-0 bg-base-950/50 backdrop-blur z-[9998]" id="jobModalOverlay"></div><div class="inline-block w-full max-w-xl mb-8 mt-12 rounded-2xl overflow-hidden lg:mt-48 px-1.5 text-left align-middle relative z-[9999]"><div class="bg-white dark:bg-base-700 p-4 pb-2 w-full rounded-2xl"><div class="p-1"><input type="text" id="jobSearchInput" placeholder="Search everything..." class="block w-full h-10 px-4 py-2 text-sm border border-transparent rounded-lg bg-white dark:bg-base-800"></div><div id="jobSearchResults" class="max-h-[50vh] overflow-y-auto flex flex-col gap-1 p-1"></div></div></div></div>`;
+			document.body.appendChild(modal);
+			searchModalEl = modal;
+			document
+				.getElementById("jobModalOverlay")
+				.addEventListener("click", closeSearch);
+		}
+		function openSearch(e) {
+			e.preventDefault();
+			buildSearchModal();
+			searchModalEl.classList.remove("hidden");
+			document.body.style.overflow = "hidden";
+			setTimeout(() => document.getElementById("jobSearchInput")?.focus(), 100);
+		}
+		function closeSearch() {
+			if (searchModalEl) {
+				searchModalEl.classList.add("hidden");
+				document.body.style.overflow = "";
+			}
+		}
+		if (searchBtn) searchBtn.addEventListener("click", openSearch);
+		const chatToggle = document.getElementById("chat-toggle"),
+			chatBubble = document.getElementById("chat-bubble");
+		if (chatToggle && chatBubble) {
+			chatToggle.addEventListener("click", () => {
+				chatBubble.classList.toggle("opacity-0");
+				chatBubble.classList.toggle("pointer-events-none");
+			});
+			document.addEventListener("click", (e) => {
+				if (!chatBubble.contains(e.target) && !chatToggle.contains(e.target)) {
+					chatBubble.classList.add("opacity-0", "pointer-events-none");
+				}
+			});
+		}
+		</script>
+	</body>
+</html>

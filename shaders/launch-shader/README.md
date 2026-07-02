@@ -1,5 +1,7 @@
 # LAUNCH — Ignition Control — Ray-Marched Molten Plume WebGL2 Shader (React + TypeScript + Vite)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen WebGL2 fragment shader that ray-marches a molten engine plume in real time — hot red/amber colour accumulated across ~100 marching steps and tone-mapped with `tanh` — integrated at the shadcn `@/components/ui` location and framed as a rocket flight-control ignition console. The shader drives a vertical thrust gauge, live telemetry rail, and ignition sequence checklist, with an Ignite/Hold control that pauses and resumes the GPU clock. Built with React 18, TypeScript, Vite 5, and Tailwind CSS v3 using raw WebGL2 — no Three.js required. Generated with Claude Fable 5.
 
 ## The instrument

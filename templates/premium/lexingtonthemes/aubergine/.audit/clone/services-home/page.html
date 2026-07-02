@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en"><head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Services — Aubergine</title>
+		<meta name="description" content="Full-service design and development — from UI/UX and product design to 3D, motion, and design systems.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&amp;display=swap" rel="stylesheet">
+		<link href="https://api.fontshare.com/v2/css?f[]=clash-display@1&amp;display=swap" rel="stylesheet">
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<link rel="stylesheet" href="../styles.css">
+	</head>
+	<body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
+		<div class="grid-bg" aria-hidden="true">
+			<svg xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<pattern id="grid-pattern" width="32" height="32" patternUnits="userSpaceOnUse" x="50%" y="100%" patternTransform="translate(0 -1)">
+						<path d="M0 32V.5H32" fill="none" stroke="currentColor"></path>
+					</pattern>
+				</defs>
+				<rect width="100%" height="100%" fill="url(#grid-pattern)"></rect>
+			</svg>
+		</div>
+
+		<button type="button" id="searchButton" class="search-btn" aria-label="Search posts">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor">
+				<path d="M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+			</svg>
+		</button>
+
+		<div id="searchModal" class="search-modal" role="dialog" aria-modal="true">
+			<div class="search-modal-wrap">
+				<div class="search-overlay" id="modalOverlay"></div>
+				<div class="search-inner">
+					<input type="text" id="searchInput" placeholder="Search posts..." autocomplete="off" style="">
+					<div id="searchResults" class="scrollbar-hide"></div>
+				</div>
+			</div>
+		</div>
+		<main style="position:relative;flex:1;">
+			<section class="section" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100dvh;text-align:center;">
+				<div class="container" style="display:flex;flex-direction:column;align-items:center;">
+					<div data-aos="fade-down" data-aos-duration="1200" class="aos-init aos-animate">
+						<span class="notfound-badge" style="display:flex;align-items:center;justify-content:center;width:6rem;height:6rem;margin:0 auto;color:var(--color-accent-300);font-size:1.5rem;border:1px solid var(--color-base-800);border-radius:0.75rem;background:linear-gradient(to top right,var(--color-base-950),var(--color-base-700));box-shadow:var(--shadow-massive,0 25px 50px -12px rgba(0,0,0,.6));">404</span>
+						<h1 class="heading-xl" style="margin-top:3rem;">
+							What you are looking for<span style="display:block;color:var(--color-base-400);">might have been moved.</span>
+						</h1>
+						<p class="hero-sub mt-4" style="color:var(--color-base-300);">
+							Unless you are looking for office space
+						</p>
+						<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;margin-top:3rem;">
+							<a href="../index.html" class="btn btn-accent btn-lg">Go back home</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.basic.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+		(function () {
+			AOS.init({ duration: 400, easing: "ease", once: true });
+			const posts = [
+				{
+					title: "The 3-Day Productized Website Sprint",
+					pubDate: "2026-01-01",
+					description:
+						"How we ship a production-ready marketing site in 72 hours.",
+					slug: "1",
+				},
+				{
+					title: "Onboarding Clients in 24 Hours",
+					pubDate: "2026-01-02",
+					description: "A repeatable intake playbook.",
+					slug: "2",
+				},
+				{
+					title: "Async Collaboration for Productized Builds",
+					pubDate: "2026-01-03",
+					description: "The rituals and cadences we use.",
+					slug: "3",
+				},
+				{
+					title: "Measuring ROI on Productized Design",
+					pubDate: "2026-01-04",
+					description: "Simple metrics to prove the value.",
+					slug: "4",
+				},
+				{
+					title: "Pricing a Productized Service with Confidence",
+					pubDate: "2026-01-05",
+					description: "A lightweight pricing ladder.",
+					slug: "5",
+				},
+				{
+					title: "The Maintenance Blueprint for Productized Sites",
+					pubDate: "2026-01-06",
+					description: "Keep shipped work fast and consistent.",
+					slug: "6",
+				},
+			];
+			window.addEventListener("load", () => {
+				const fuse = new Fuse(posts, {
+					keys: ["title", "description"],
+					threshold: 0.3,
+				});
+				const searchButton = document.getElementById("searchButton");
+				const searchModal = document.getElementById("searchModal");
+				const modalOverlay = document.getElementById("modalOverlay");
+				const searchInput = document.getElementById("searchInput");
+				const searchResults = document.getElementById("searchResults");
+				function openSearch(e) {
+					e.preventDefault();
+					searchModal.classList.add("open");
+					document.body.style.overflow = "hidden";
+					setTimeout(() => searchInput.focus(), 100);
+				}
+				function closeSearch() {
+					searchModal.classList.remove("open");
+					document.body.style.overflow = "";
+					searchInput.value = "";
+					searchResults.innerHTML = "";
+					searchResults.classList.remove("visible");
+				}
+				function renderResults(results) {
+					if (!searchInput.value.trim()) {
+						searchResults.innerHTML = "";
+						searchResults.classList.remove("visible");
+						return;
+					}
+					if (!results.length) {
+						searchResults.innerHTML =
+							'<div class="search-empty">Nothing found.</div>';
+						searchResults.classList.add("visible");
+						return;
+					}
+					searchResults.innerHTML = results
+						.map(
+							(r) =>
+								`<a href="../blog/index.html" class="search-result-item"><p class="search-result-date">${new Date(r.item.pubDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "2-digit" })}</p><h3 class="search-result-title">${r.item.title}</h3><p class="search-result-desc">${r.item.description}</p></a>`,
+						)
+						.join("");
+					searchResults.classList.add("visible");
+				}
+				searchButton.addEventListener("click", openSearch);
+				modalOverlay.addEventListener("click", closeSearch);
+				searchInput.addEventListener("input", (e) =>
+					renderResults(
+						e.target.value.trim() ? fuse.search(e.target.value) : [],
+					),
+				);
+				document.addEventListener("keydown", (e) => {
+					if (e.key === "Escape") closeSearch();
+				});
+			});
+			if (window.VanillaTilt)
+				VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+					max: 35,
+					speed: 2500,
+					transition: true,
+				});
+		})();
+		</script>
+	
+
+</body></html>

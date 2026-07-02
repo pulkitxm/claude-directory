@@ -1,5 +1,7 @@
 # Superdesign — Architectural Type System (HTML, Inter Tight, JetBrains Mono, Swiss Brutalism)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A minimalist monochrome Swiss-brutalist interface where typography is the primary visual element — massive Inter Tight 900 headlines spell out SU / PER / DE / SIGN across a 2×2 viewport grid, divided by 0.5px hairline borders and overlaid with a fractal-noise SVG grain at 5% opacity for tactile depth. A four-column command bar combines an email input, a JOIN button that switches to indigo (`#6366F1`) on hover, a live HH:MM:SS countdown in JetBrains Mono tabular-nums, and stacked underscore-prefixed system labels. Below, a three-card bento feature grid reveals geometric shapes on hover — including a 45°→90° rotating diamond — while keeping everything else at 0px border-radius. No shadows, no gradients; depth comes entirely from hairlines, contrast, and noise grain. Generated with Claude Fable 5.
 
 ## Run

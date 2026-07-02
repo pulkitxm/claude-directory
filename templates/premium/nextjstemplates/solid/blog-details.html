@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Details Page - Solid SaaS Boilerplate</title>
+  <meta name="description" content="This is Blog details page for Solid Pro">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; color-scheme: light; }
+    html.dark { color-scheme: dark; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      color: #757693;
+      background: #fff;
+      transition: background 0.3s, color 0.3s;
+    }
+    .dark body { color: #999aa1; background: #000; }
+
+    a { text-decoration: none; color: inherit; transition: color 0.3s; }
+    a:hover { color: #006bff; }
+    img { display: block; max-width: 100%; }
+
+    /* BG Lines */
+    .bg-lines {
+      position: fixed; left: 0; top: 0; z-index: -1;
+      display: flex; width: 100%; height: 100%;
+      align-items: center; justify-content: space-around;
+      pointer-events: none;
+    }
+    .bg-line { width: 1px; height: 100%; background: #e9e1e1; }
+    .dark .bg-line { background: #2d2f40; }
+
+    /* ── HEADER ── */
+    .header {
+      position: fixed; left: 0; top: 0; z-index: 9999;
+      width: 100%; padding: 28px 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e9e1e1;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .dark .header {
+      background: rgba(24,28,49,0.95);
+      border-bottom-color: #2d2f40;
+    }
+    .header-inner {
+      max-width: 1390px; margin: 0 auto;
+      padding: 0 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .header-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .logo-light { display: block; }
+    .logo-dark  { display: none; }
+    .dark .logo-light { display: none; }
+    .dark .logo-dark  { display: block; }
+
+    .nav-menu { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-menu a { font-size: 15px; color: #0d0e12; font-weight: 400; }
+    .dark .nav-menu a { color: #e0e0e0; }
+    .nav-menu a:hover, .nav-menu a.active { color: #006bff; }
+
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-btn {
+      display: flex; align-items: center; gap: 8px; cursor: pointer;
+      background: none; border: none; font-size: 15px; color: #0d0e12;
+      font-family: inherit; padding: 0;
+    }
+    .dark .nav-dropdown-btn { color: #e0e0e0; }
+    .nav-dropdown-btn:hover { color: #006bff; }
+    .nav-dropdown-btn svg { width: 12px; height: 12px; fill: #757693; transition: fill 0.3s; }
+    .nav-dropdown-btn:hover svg { fill: #006bff; }
+    .dropdown-menu {
+      display: none; position: absolute; top: calc(100% + 12px); left: 0;
+      background: #fff; border: 1px solid #e9e1e1; border-radius: 8px;
+      min-width: 160px; list-style: none; padding: 8px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 999;
+    }
+    .dark .dropdown-menu { background: #1c2136; border-color: #2d2f40; }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a { display: block; padding: 8px 16px; font-size: 14px; color: #0d0e12; }
+    .dark .dropdown-menu li a { color: #e0e0e0; }
+    .dropdown-menu li a:hover { color: #006bff; }
+
+    .header-right { display: flex; align-items: center; gap: 24px; flex-shrink: 0; }
+    .theme-toggle {
+      background: #f3f4f6; border: none; cursor: pointer;
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dark .theme-toggle { background: #2d2f40; }
+    .icon-moon { display: block; }
+    .icon-sun  { display: none; }
+    .dark .icon-moon { display: none; }
+    .dark .icon-sun  { display: block; }
+    .github-link { font-size: 14px; font-weight: 500; color: #757693; }
+    .github-link:hover { color: #006bff; }
+    .btn-primary {
+      display: inline-flex; align-items: center;
+      background: #006bff; color: #fff; font-size: 14px; font-weight: 500;
+      padding: 10px 30px; border-radius: 9999px; transition: background 0.3s;
+    }
+    .btn-primary:hover { background: #0058d4; color: #fff; }
+
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger-bar { display: block; width: 22px; height: 2px; background: #0d0e12; border-radius: 2px; margin: 5px 0; }
+    .dark .hamburger-bar { background: #fff; }
+
+    @media (max-width: 1199px) {
+      .hamburger { display: block; }
+      .nav-wrapper { display: none; }
+      .nav-wrapper.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-bottom: 1px solid #e9e1e1; padding: 16px; gap: 16px; z-index: 9998; }
+      .dark .nav-wrapper.open { background: #181c31; border-bottom-color: #2d2f40; }
+      .nav-menu { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .header-right { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+    @media (min-width: 1200px) {
+      .nav-wrapper { display: flex; align-items: center; justify-content: space-between; flex: 1; }
+      .hamburger { display: none; }
+    }
+
+    /* ── BLOG DETAILS SECTION ── */
+    .blog-details-section {
+      padding: 140px 0 80px;
+    }
+    @media (min-width: 1024px) { .blog-details-section { padding: 180px 0 100px; } }
+    @media (min-width: 1280px) { .blog-details-section { padding: 200px 0 120px; } }
+
+    .section-inner { max-width: 1390px; margin: 0 auto; padding: 0 16px; }
+
+    .details-layout {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 30px;
+    }
+    @media (min-width: 1024px) {
+      .details-layout { flex-direction: row; gap: 50px; }
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { width: 100%; }
+    @media (min-width: 768px)  { .sidebar { width: 50%; } }
+    @media (min-width: 1024px) { .sidebar { width: 32%; flex-shrink: 0; } }
+
+    .sidebar-widget {
+      border: 1px solid #e9e1e1;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+      margin-bottom: 40px;
+    }
+    .dark .sidebar-widget { border-color: #2d2f40; background: #1c2136; box-shadow: none; }
+
+    /* Search */
+    .search-widget { padding: 14px; }
+    .search-form { position: relative; }
+    .search-input {
+      width: 100%; border: 1px solid #e9e1e1; border-radius: 8px;
+      padding: 16px 52px 16px 24px; font-size: 14px; color: #0d0e12;
+      outline: none; background: #fff; font-family: inherit;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: border-color 0.3s;
+    }
+    .dark .search-input { border-color: #2d2f40; background: #000; color: #fff; box-shadow: none; }
+    .search-input:focus { border-color: #006bff; }
+    .search-input::placeholder { color: #aaa; }
+    .search-btn {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      padding: 0 20px; background: none; border: none; cursor: pointer;
+    }
+    .search-btn svg { fill: #0d0e12; transition: fill 0.3s; }
+    .dark .search-btn svg { fill: #fff; }
+    .search-btn:hover svg { fill: #006bff; }
+
+    /* Categories & Related Posts widgets */
+    .widget-inner { padding: 36px; }
+    .widget-title { font-size: 22px; font-weight: 600; color: #0d0e12; margin-bottom: 30px; }
+    .dark .widget-title { color: #fff; }
+    .categories-list { list-style: none; }
+    .categories-list li { margin-bottom: 12px; font-size: 15px; transition: color 0.3s; }
+    .categories-list li:last-child { margin-bottom: 0; }
+    .categories-list li a:hover { color: #006bff; }
+
+    /* Related Posts */
+    .related-post { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 30px; flex-wrap: wrap; }
+    .related-post:last-child { margin-bottom: 0; }
+    .related-post-img {
+      position: relative; width: 110px; height: 72px;
+      flex-shrink: 0; border-radius: 4px; overflow: hidden;
+    }
+    .related-post-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .related-post-title {
+      font-size: 15px; font-weight: 500; color: #0d0e12; line-height: 1.5;
+      transition: color 0.3s;
+    }
+    .dark .related-post-title { color: #fff; }
+    .related-post-title:hover { color: #006bff; }
+
+    /* ── MAIN CONTENT ── */
+    .main-content { flex: 1; min-width: 0; }
+
+    .content-card {
+      border: 1px solid #e9e1e1;
+      border-radius: 8px;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    }
+    @media (min-width: 768px) { .content-card { padding: 40px; } }
+    .dark .content-card { border-color: #2d2f40; background: #1c2136; box-shadow: none; }
+
+    /* Hero image */
+    .hero-image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 97 / 60;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    @media (min-width: 640px) { .hero-image-wrap { aspect-ratio: 97 / 44; } }
+    .hero-image-wrap img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* Article content */
+    .article-title {
+      font-size: 28px; font-weight: 600; color: #0d0e12;
+      margin-bottom: 20px; margin-top: 44px; line-height: 1.3;
+    }
+    .dark .article-title { color: #fff; }
+    @media (min-width: 1536px) { .article-title { font-size: 36px; } }
+
+    .article-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 36px; font-size: 14px; }
+    .article-meta span { color: #0d0e12; font-weight: 500; }
+    .dark .article-meta span { color: #fff; }
+
+    .blog-body p {
+      font-size: 15px; color: #757693; line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .dark .blog-body p { color: #999aa1; }
+
+    .blog-body h3 {
+      font-size: 20px; font-weight: 600; color: #0d0e12;
+      margin-top: 32px; margin-bottom: 16px; line-height: 1.4;
+    }
+    .dark .blog-body h3 { color: #fff; }
+
+    .inline-images {
+      display: flex; flex-wrap: wrap; gap: 20px;
+      margin: 20px 0;
+    }
+    .inline-images img {
+      width: 350px; max-width: 100%; height: 200px;
+      object-fit: cover; border-radius: 6px;
+    }
+
+    /* Share + Tags */
+    .article-footer {
+      margin-top: 44px;
+      display: flex; flex-wrap: wrap; gap: 16px;
+      align-items: center; justify-content: space-between;
+    }
+    .share-row { display: flex; align-items: center; gap: 24px; }
+    .share-label { font-size: 14px; font-weight: 500; color: #0d0e12; }
+    .dark .share-label { color: #fff; }
+    .share-icons { display: flex; gap: 16px; list-style: none; }
+    .share-icons li a svg { fill: #D1D8E0; transition: fill 0.3s; }
+    .share-icons li a:hover svg { fill: #006bff; }
+
+    .tags-row { display: flex; align-items: center; gap: 16px; }
+    .tags-label { font-size: 14px; font-weight: 500; color: #0d0e12; }
+    .dark .tags-label { color: #fff; }
+    .tags-list { display: flex; gap: 8px; list-style: none; }
+    .tags-list li a { font-size: 14px; color: #757693; transition: color 0.3s; }
+    .tags-list li a:hover { color: #006bff; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid #e9e1e1; background: #fff; }
+    .dark footer { border-top-color: #2d2f40; background: #1c2136; }
+    .footer-inner { max-width: 1390px; margin: 0 auto; padding: 0 16px; }
+    .footer-top { padding: 80px 0; display: flex; flex-direction: row; flex-wrap: nowrap; gap: 32px; justify-content: space-between; align-items: flex-start; }
+    .footer-brand { width: 250px; flex-shrink: 0; }
+    .footer-brand img { width: 110px; height: auto; }
+    .footer-brand p { margin: 20px 0 40px; font-size: 14px; color: #757693; line-height: 1.7; }
+    .footer-contact-label { font-size: 10px; text-transform: uppercase; letter-spacing: 5px; color: #757693; margin-bottom: 6px; }
+    .footer-contact-email { font-size: 16px; font-weight: 500; color: #0d0e12; }
+    .dark .footer-contact-email { color: #fff; }
+
+    .footer-links-wrap { display: flex; flex: 1; gap: 40px; justify-content: space-between; flex-wrap: nowrap; }
+    .footer-col { flex: 1; min-width: 120px; }
+    .footer-col h4 { font-size: 16px; font-weight: 500; color: #0d0e12; margin-bottom: 36px; }
+    .dark .footer-col h4 { color: #fff; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a { font-size: 14px; color: #757693; }
+    .footer-col ul li a:hover { color: #006bff; }
+    .dark .footer-col ul li a { color: #999aa1; }
+
+    .newsletter-form p { margin-bottom: 16px; font-size: 14px; color: #757693; max-width: 90%; }
+    .newsletter-input {
+      width: 100%; border: 1px solid #e9e1e1; border-radius: 9999px;
+      padding: 12px 50px 12px 24px; font-size: 14px; color: #0d0e12;
+      outline: none; background: #fff; font-family: inherit;
+    }
+    .dark .newsletter-input { border-color: #2d2f40; background: #000; color: #fff; }
+    .newsletter-input:focus { border-color: #006bff; }
+    .newsletter-btn {
+      position: absolute; right: 0; top: 0; bottom: 0; padding: 0 16px;
+      background: none; border: none; cursor: pointer;
+    }
+    .newsletter-btn svg { fill: #757693; transition: fill 0.3s; }
+    .newsletter-btn:hover svg { fill: #006bff; }
+    .dark .newsletter-btn svg { fill: #fff; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-top: 1px solid #e9e1e1;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .dark .footer-bottom { border-top-color: #2d2f40; }
+    .footer-bottom ul { list-style: none; display: flex; gap: 20px; }
+    .footer-bottom ul li a { font-size: 14px; color: #757693; }
+    .footer-bottom ul li a:hover { color: #006bff; }
+    .footer-copyright { font-size: 14px; color: #757693; }
+    .footer-social { list-style: none; display: flex; gap: 16px; }
+    .footer-social li a svg { fill: #D1D8E0; transition: fill 0.3s; }
+    .footer-social li a:hover svg { fill: #006bff; }
+
+    @media (max-width: 767px) {
+      .footer-brand { width: 100%; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-bottom ul { justify-content: center; }
+      .article-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <script>
+    !function(){try{var d=document.documentElement,c=d.classList;c.remove('light','dark');var e=localStorage.getItem('theme');if(e){c.add(e||'')}else{c.add('light');}if(e==='light'||e==='dark'||!e)d.style.colorScheme=e||'light'}catch(t){}}();
+  </script>
+</head>
+<body>
+
+<!-- Background lines -->
+<div class="bg-lines" aria-hidden="true">
+  <span class="bg-line"></span>
+  <span class="bg-line"></span>
+  <span class="bg-line"></span>
+</div>
+
+<!-- ── HEADER ── -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <a href="./index.html">
+        <img class="logo-light" src="./assets/images/logo/logo-light.svg" alt="Solid" width="119" height="30">
+        <img class="logo-dark"  src="./assets/images/logo/logo-dark.svg"  alt="Solid" width="119" height="30">
+      </a>
+    </div>
+
+    <button class="hamburger" aria-label="Toggle menu" onclick="document.getElementById('navWrapper').classList.toggle('open')">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <div class="nav-wrapper" id="navWrapper">
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./index.html#features">Features</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./docs.html">Docs</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-btn">
+              Pages
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="./blog.html">Blog Grid</a></li>
+              <li><a href="./auth-signin.html">Sign In</a></li>
+              <li><a href="./auth-signup.html">Sign Up</a></li>
+              <li><a href="./docs.html">Docs</a></li>
+              <li><a href="./support.html">Support</a></li>
+              <li><a href="./error.html">404</a></li>
+            </ul>
+          </li>
+          <li><a href="./support.html">Support</a></li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
+          <img class="icon-moon" src="./assets/images/icon/icon-moon.svg" alt="dark mode" width="21" height="21">
+          <img class="icon-sun"  src="./assets/images/icon/icon-sun.svg"  alt="light mode" width="22" height="22">
+        </button>
+        <a class="github-link" href="https://github.com/NextJSTemplates/solid-nextjs">GitHub Repo &#11088;</a>
+        <a class="btn-primary" href="https://nextjstemplates.com/templates/solid">Get Pro &#128293;</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── BLOG DETAILS ── -->
+<section class="blog-details-section">
+  <div class="section-inner">
+    <div class="details-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <!-- Search -->
+        <div class="sidebar-widget search-widget">
+          <form action="#" method="GET">
+            <div class="search-form">
+              <input type="text" class="search-input" placeholder="Search Here...">
+              <button type="submit" class="search-btn" aria-label="Search">
+                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.031 14.617L20.314 18.899L18.899 20.314L14.617 16.031C13.0237 17.3082 11.042 18.0029 9 18C4.032 18 0 13.968 0 9C0 4.032 4.032 0 9 0C13.968 0 18 4.032 18 9C18.0029 11.042 17.3082 13.0237 16.031 14.617ZM14.025 13.875C15.2941 12.5699 16.0029 10.8204 16 9C16 5.132 12.867 2 9 2C5.132 2 2 5.132 2 9C2 12.867 5.132 16 9 16C10.8204 16.0029 12.5699 15.2941 13.875 14.025L14.025 13.875Z"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar-widget">
+          <div class="widget-inner">
+            <h4 class="widget-title">Categories</h4>
+            <ul class="categories-list">
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Grids</a></li>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Rounded</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Related Posts -->
+        <div class="sidebar-widget">
+          <div class="widget-inner">
+            <h4 class="widget-title">Related Posts</h4>
+
+            <div class="related-post">
+              <div class="related-post-img">
+                <img src="./assets/images/blog/blog-01.png" alt="Blog">
+              </div>
+              <a href="./blog-details.html" class="related-post-title">Free advertising for your online busines...</a>
+            </div>
+
+            <div class="related-post">
+              <div class="related-post-img">
+                <img src="./assets/images/blog/blog-02.png" alt="Blog">
+              </div>
+              <a href="./blog-details.html" class="related-post-title">9 simple ways to improve your design ski...</a>
+            </div>
+
+            <div class="related-post">
+              <div class="related-post-img">
+                <img src="./assets/images/blog/blog-03.png" alt="Blog">
+              </div>
+              <a href="./blog-details.html" class="related-post-title">Tips to quickly improve your coding spee...</a>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <div class="content-card">
+
+          <!-- Hero Image -->
+          <div class="hero-image-wrap">
+            <img src="./assets/images/blog/blog-01.png" alt="Kobe Steel plant that supplied">
+          </div>
+
+          <!-- Title -->
+          <h2 class="article-title">Kobe Steel plant that supplied</h2>
+
+          <!-- Meta -->
+          <ul class="article-meta">
+            <li><span>Author: </span> Jhon Doe</li>
+            <li><span>Published On: July 30, 2023</span></li>
+            <li><span>Category:</span> Events</li>
+          </ul>
+
+          <!-- Body -->
+          <div class="blog-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh lorem. Duis sed odio lorem. In a efficitur leo. Ut venenatis rhoncus quam sed condimentum. Curabitur vel turpis in dolor volutpat imperdiet in ut mi. Integer non volutpat nulla. Nunc elementum elit viverra, tempus quam non, interdum ipsum.</p>
+
+            <p>Aenean augue ex, condimentum vel metus vitae, aliquam porta elit. Quisque non metus ac orci mollis posuere. Mauris vel ipsum a diam interdum ultricies sed vitae neque. Nulla porttitor quam vitae pulvinar placerat. Nulla fringilla elit sit amet justo feugiat sodales. Morbi eleifend, enim non eleifend laoreet, odio libero lobortis lectus, non porttitor sem urna sit amet metus. In sollicitudin quam est, pellentesque consectetur felis fermentum vitae.</p>
+
+            <div class="inline-images">
+              <img src="./assets/images/blog/blog-01.png" alt="image" width="350" height="200">
+              <img src="./assets/images/blog/blog-02.png" alt="image" width="350" height="200">
+            </div>
+
+            <h3>Nunc elementum elit viverra, tempus quam non</h3>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh lorem. Duis sed odio lorem. In a efficitur leo. Ut venenatis rhoncus quam sed condimentum. Curabitur vel turpis in dolor volutpat imperdiet in ut mi. Integer non volutpat nulla. Nunc elementum elit viverra, tempus quam non, interdum ipsum.</p>
+          </div>
+
+          <!-- Share + Tags -->
+          <div class="article-footer">
+            <div class="share-row">
+              <p class="share-label">Share On:</p>
+              <ul class="share-icons">
+                <li>
+                  <a href="#" aria-label="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#sfb)"><path d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z"/></g><defs><clipPath id="sfb"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="Twitter">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#stw)"><path d="M22.162 5.65593C21.3985 5.99362 20.589 6.2154 19.76 6.31393C20.6337 5.79136 21.2877 4.96894 21.6 3.99993C20.78 4.48793 19.881 4.82993 18.944 5.01493C18.3146 4.34151 17.4803 3.89489 16.5709 3.74451C15.6615 3.59413 14.7279 3.74842 13.9153 4.18338C13.1026 4.61834 12.4564 5.30961 12.0771 6.14972C11.6978 6.98983 11.6067 7.93171 11.818 8.82893C10.1551 8.74558 8.52832 8.31345 7.04328 7.56059C5.55823 6.80773 4.24812 5.75098 3.19799 4.45893C2.82628 5.09738 2.63095 5.82315 2.63199 6.56193C2.63199 8.01193 3.36999 9.29293 4.49199 10.0429C3.828 10.022 3.17862 9.84271 2.59799 9.51993V9.57193C2.59819 10.5376 2.93236 11.4735 3.54384 12.221C4.15532 12.9684 5.00647 13.4814 5.95299 13.6729C5.33661 13.84 4.6903 13.8646 4.06299 13.7449C4.32986 14.5762 4.85 15.3031 5.55058 15.824C6.25117 16.345 7.09712 16.6337 7.96999 16.6499C7.10247 17.3313 6.10917 17.8349 5.04687 18.1321C3.98458 18.4293 2.87412 18.5142 1.77899 18.3819C3.69069 19.6114 5.91609 20.2641 8.18899 20.2619C15.882 20.2619 20.089 13.8889 20.089 8.36193C20.089 8.18193 20.084 7.99993 20.076 7.82193C20.8949 7.2301 21.6016 6.49695 22.163 5.65693L22.162 5.65593Z"/></g><defs><clipPath id="stw"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#sli)"><path d="M6.94 5.00002C6.93974 5.53046 6.72877 6.03906 6.35351 6.41394C5.97825 6.78883 5.46944 6.99929 4.939 6.99902C4.40857 6.99876 3.89997 6.78779 3.52508 6.41253C3.1502 6.03727 2.93974 5.52846 2.94 4.99802C2.94027 4.46759 3.15124 3.95899 3.5265 3.5841C3.90176 3.20922 4.41057 2.99876 4.941 2.99902C5.47144 2.99929 5.98004 3.21026 6.35492 3.58552C6.72981 3.96078 6.94027 4.46959 6.94 5.00002ZM7 8.48002H3V21H7V8.48002ZM13.32 8.48002H9.34V21H13.28V14.43C13.28 10.77 18.05 10.43 18.05 14.43V21H22V13.07C22 6.90002 14.94 7.13002 13.28 10.16L13.32 8.48002Z"/></g><defs><clipPath id="sli"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="Behance">
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#sbe)"><path d="M7.443 5.3501C8.082 5.3501 8.673 5.4001 9.213 5.5481C9.70301 5.63814 10.1708 5.82293 10.59 6.0921C10.984 6.3391 11.279 6.6861 11.475 7.1311C11.672 7.5761 11.77 8.1211 11.77 8.7141C11.77 9.4071 11.623 10.0001 11.279 10.4451C10.984 10.8911 10.492 11.2861 9.902 11.5831C10.738 11.8311 11.377 12.2761 11.77 12.8691C12.164 13.4631 12.41 14.2051 12.41 15.0461C12.41 15.7391 12.262 16.3321 12.016 16.8271C11.77 17.3221 11.377 17.7671 10.934 18.0641C10.4528 18.3825 9.92084 18.6165 9.361 18.7561C8.771 18.9051 8.181 19.0041 7.591 19.0041H1V5.3501H7.443ZM7.049 10.8901C7.59 10.8901 8.033 10.7421 8.377 10.4951C8.721 10.2481 8.869 9.8021 8.869 9.2581C8.869 8.9611 8.819 8.6641 8.721 8.4671C8.623 8.2691 8.475 8.1201 8.279 7.9721C8.082 7.8731 7.885 7.7741 7.639 7.7251C7.393 7.6751 7.148 7.6751 6.852 7.6751H4V10.8911H7.05L7.049 10.8901ZM7.197 16.7281C7.492 16.7281 7.787 16.6781 8.033 16.6291C8.28138 16.5819 8.51628 16.4805 8.721 16.3321C8.92139 16.1873 9.08903 16.002 9.213 15.7881C9.311 15.5411 9.41 15.2441 9.41 14.8981C9.41 14.2051 9.213 13.7101 8.82 13.3641C8.426 13.0671 7.885 12.9191 7.246 12.9191H4V16.7291H7.197V16.7281ZM16.689 16.6781C17.082 17.0741 17.672 17.2721 18.459 17.2721C19 17.2721 19.492 17.1241 19.885 16.8771C20.279 16.5801 20.525 16.2831 20.623 15.9861H23.033C22.639 17.1731 22.049 18.0141 21.263 18.5581C20.475 19.0531 19.541 19.3501 18.41 19.3501C17.6864 19.3523 16.9688 19.2179 16.295 18.9541C15.6887 18.7266 15.148 18.3529 14.721 17.8661C14.2643 17.4107 13.9267 16.8498 13.738 16.2331C13.492 15.5901 13.393 14.8981 13.393 14.1061C13.393 13.3641 13.492 12.6721 13.738 12.0281C13.9745 11.4082 14.3245 10.8378 14.77 10.3461C15.213 9.9011 15.754 9.5061 16.344 9.2581C17.0007 8.99416 17.7022 8.85969 18.41 8.8621C19.246 8.8621 19.984 9.0111 20.623 9.3571C21.263 9.7031 21.754 10.0991 22.148 10.6931C22.5499 11.2636 22.8494 11.8998 23.033 12.5731C23.131 13.2651 23.18 13.9581 23.131 14.7491H16C16 15.5411 16.295 16.2831 16.689 16.6791V16.6781ZM19.787 11.4841C19.443 11.1381 18.902 10.9401 18.262 10.9401C17.82 10.9401 17.475 11.0391 17.18 11.1871C16.885 11.3361 16.689 11.5341 16.492 11.7321C16.311 11.9234 16.1912 12.1643 16.148 12.4241C16.098 12.6721 16.049 12.8691 16.049 13.0671H20.475C20.377 12.3251 20.131 11.8311 19.787 11.4841ZM15.459 6.2901H20.967V7.6261H15.46V6.2901H15.459Z"/></g><defs><clipPath id="sbe"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tags-row">
+              <p class="tags-label">Tags:</p>
+              <ul class="tags-list">
+                <li><a href="#">#business</a></li>
+                <li><a href="#">#saas</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="./index.html">
+          <img class="logo-light" src="./assets/images/logo/logo-light.svg" alt="Solid Logo" width="110" height="80">
+          <img class="logo-dark"  src="./assets/images/logo/logo-dark.svg"  alt="Solid Logo" width="110" height="80">
+        </a>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="footer-contact-label">contact</p>
+        <a href="#" class="footer-contact-email">hello@solid.com</a>
+      </div>
+
+      <div class="footer-links-wrap">
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Company</a></li>
+            <li><a href="#">Press media</a></li>
+            <li><a href="#">Our Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <div class="newsletter-form">
+            <p>Subscribe to receive future updates</p>
+            <form action="#">
+              <div style="position:relative;">
+                <input type="text" class="newsletter-input" placeholder="Email address">
+                <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip-nl2)">
+                      <path d="M3.1175 1.17318L18.5025 9.63484C18.5678 9.67081 18.6223 9.72365 18.6602 9.78786C18.6982 9.85206 18.7182 9.92527 18.7182 9.99984C18.7182 10.0744 18.6982 10.1476 18.6602 10.2118C18.6223 10.276 18.5678 10.3289 18.5025 10.3648L3.1175 18.8265C3.05406 18.8614 2.98262 18.8792 2.91023 18.8781C2.83783 18.8769 2.76698 18.857 2.70465 18.8201C2.64232 18.7833 2.59066 18.7308 2.55478 18.6679C2.51889 18.6051 2.50001 18.5339 2.5 18.4615V1.53818C2.50001 1.46577 2.51889 1.39462 2.55478 1.33174C2.59066 1.26885 2.64232 1.2164 2.70465 1.17956C2.76698 1.14272 2.83783 1.12275 2.91023 1.12163C2.98262 1.12051 3.05406 1.13828 3.1175 1.17318ZM4.16667 10.8332V16.3473L15.7083 9.99984L4.16667 3.65234V9.16651H8.33333V10.8332H4.16667Z"/>
+                    </g>
+                    <defs><clipPath id="clip-nl2"><rect width="20" height="20" fill="white"/></clipPath></defs>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <ul>
+        <li><a href="#">English</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+      <p class="footer-copyright">&copy; 2026 Solid. All rights reserved</p>
+      <ul class="footer-social">
+        <li><a href="#" aria-label="Facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#ffb)"><path d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z"/></g><defs><clipPath id="ffb"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></a></li>
+        <li><a href="#" aria-label="Twitter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#ftw)"><path d="M22.162 5.65593C21.3985 5.99362 20.589 6.2154 19.76 6.31393C20.6337 5.79136 21.2877 4.96894 21.6 3.99993C20.78 4.48793 19.881 4.82993 18.944 5.01493C18.3146 4.34151 17.4803 3.89489 16.5709 3.74451C15.6615 3.59413 14.7279 3.74842 13.9153 4.18338C13.1026 4.61834 12.4564 5.30961 12.0771 6.14972C11.6978 6.98983 11.6067 7.93171 11.818 8.82893C10.1551 8.74558 8.52832 8.31345 7.04328 7.56059C5.55823 6.80773 4.24812 5.75098 3.19799 4.45893C2.82628 5.09738 2.63095 5.82315 2.63199 6.56193C2.63199 8.01193 3.36999 9.29293 4.49199 10.0429C3.828 10.022 3.17862 9.84271 2.59799 9.51993V9.57193C2.59819 10.5376 2.93236 11.4735 3.54384 12.221C4.15532 12.9684 5.00647 13.4814 5.95299 13.6729C5.33661 13.84 4.6903 13.8646 4.06299 13.7449C4.32986 14.5762 4.85 15.3031 5.55058 15.824C6.25117 16.345 7.09712 16.6337 7.96999 16.6499C7.10247 17.3313 6.10917 17.8349 5.04687 18.1321C3.98458 18.4293 2.87412 18.5142 1.77899 18.3819C3.69069 19.6114 5.91609 20.2641 8.18899 20.2619C15.882 20.2619 20.089 13.8889 20.089 8.36193C20.089 8.18193 20.084 7.99993 20.076 7.82193C20.8949 7.2301 21.6016 6.49695 22.163 5.65693L22.162 5.65593Z"/></g><defs><clipPath id="ftw"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></a></li>
+        <li><a href="#" aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#fli)"><path d="M6.94 5.00002C6.93974 5.53046 6.72877 6.03906 6.35351 6.41394C5.97825 6.78883 5.46944 6.99929 4.939 6.99902C4.40857 6.99876 3.89997 6.78779 3.52508 6.41253C3.1502 6.03727 2.93974 5.52846 2.94 4.99802C2.94027 4.46759 3.15124 3.95899 3.5265 3.5841C3.90176 3.20922 4.41057 2.99876 4.941 2.99902C5.47144 2.99929 5.98004 3.21026 6.35492 3.58552C6.72981 3.96078 6.94027 4.46959 6.94 5.00002ZM7 8.48002H3V21H7V8.48002ZM13.32 8.48002H9.34V21H13.28V14.43C13.28 10.77 18.05 10.43 18.05 14.43V21H22V13.07C22 6.90002 14.94 7.13002 13.28 10.16L13.32 8.48002Z"/></g><defs><clipPath id="fli"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></a></li>
+        <li><a href="#" aria-label="Behance"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#fbe)"><path d="M7.443 5.3501C8.082 5.3501 8.673 5.4001 9.213 5.5481C9.70301 5.63814 10.1708 5.82293 10.59 6.0921C10.984 6.3391 11.279 6.6861 11.475 7.1311C11.672 7.5761 11.77 8.1211 11.77 8.7141C11.77 9.4071 11.623 10.0001 11.279 10.4451C10.984 10.8911 10.492 11.2861 9.902 11.5831C10.738 11.8311 11.377 12.2761 11.77 12.8691C12.164 13.4631 12.41 14.2051 12.41 15.0461C12.41 15.7391 12.262 16.3321 12.016 16.8271C11.77 17.3221 11.377 17.7671 10.934 18.0641C10.4528 18.3825 9.92084 18.6165 9.361 18.7561C8.771 18.9051 8.181 19.0041 7.591 19.0041H1V5.3501H7.443ZM7.049 10.8901C7.59 10.8901 8.033 10.7421 8.377 10.4951C8.721 10.2481 8.869 9.8021 8.869 9.2581C8.869 8.9611 8.819 8.6641 8.721 8.4671C8.623 8.2691 8.475 8.1201 8.279 7.9721C8.082 7.8731 7.885 7.7741 7.639 7.7251C7.393 7.6751 7.148 7.6751 6.852 7.6751H4V10.8911H7.05L7.049 10.8901ZM7.197 16.7281C7.492 16.7281 7.787 16.6781 8.033 16.6291C8.28138 16.5819 8.51628 16.4805 8.721 16.3321C8.92139 16.1873 9.08903 16.002 9.213 15.7881C9.311 15.5411 9.41 15.2441 9.41 14.8981C9.41 14.2051 9.213 13.7101 8.82 13.3641C8.426 13.0671 7.885 12.9191 7.246 12.9191H4V16.7291H7.197V16.7281ZM16.689 16.6781C17.082 17.0741 17.672 17.2721 18.459 17.2721C19 17.2721 19.492 17.1241 19.885 16.8771C20.279 16.5801 20.525 16.2831 20.623 15.9861H23.033C22.639 17.1731 22.049 18.0141 21.263 18.5581C20.475 19.0531 19.541 19.3501 18.41 19.3501C17.6864 19.3523 16.9688 19.2179 16.295 18.9541C15.6887 18.7266 15.148 18.3529 14.721 17.8661C14.2643 17.4107 13.9267 16.8498 13.738 16.2331C13.492 15.5901 13.393 14.8981 13.393 14.1061C13.393 13.3641 13.492 12.6721 13.738 12.0281C13.9745 11.4082 14.3245 10.8378 14.77 10.3461C15.213 9.9011 15.754 9.5061 16.344 9.2581C17.0007 8.99416 17.7022 8.85969 18.41 8.8621C19.246 8.8621 19.984 9.0111 20.623 9.3571C21.263 9.7031 21.754 10.0991 22.148 10.6931C22.5499 11.2636 22.8494 11.8998 23.033 12.5731C23.131 13.2651 23.18 13.9581 23.131 14.7491H16C16 15.5411 16.295 16.2831 16.689 16.6791V16.6781ZM19.787 11.4841C19.443 11.1381 18.902 10.9401 18.262 10.9401C17.82 10.9401 17.475 11.0391 17.18 11.1871C16.885 11.3361 16.689 11.5341 16.492 11.7321C16.311 11.9234 16.1912 12.1643 16.148 12.4241C16.098 12.6721 16.049 12.8691 16.049 13.0671H20.475C20.377 12.3251 20.131 11.8311 19.787 11.4841ZM15.459 6.2901H20.967V7.6261H15.46V6.2901H15.459Z"/></g><defs><clipPath id="fbe"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var isDark = html.classList.contains('dark');
+    if (isDark) {
+      html.classList.remove('dark'); html.classList.add('light');
+      html.style.colorScheme = 'light'; localStorage.setItem('theme', 'light');
+    } else {
+      html.classList.remove('light'); html.classList.add('dark');
+      html.style.colorScheme = 'dark'; localStorage.setItem('theme', 'dark');
+    }
+  }
+</script>
+</body>
+</html>

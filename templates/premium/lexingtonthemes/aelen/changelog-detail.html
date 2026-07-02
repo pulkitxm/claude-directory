@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Introducing the Decentralized Dashboard — Ælen CRM Changelog</title>
+		<meta
+			name="description"
+			content="Experience the future of decentralized dashboards — intuitive navigation, enhanced security, and seamless access to on-chain data. Ælen v2.1.0 release notes."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		>
+		<style>
+		:root {
+			--white: oklch(95% 0.0187 80.72);
+			--black: oklch(29% 0 0);
+			--orange: oklch(60% 0.1499 37.55);
+			--cyan: oklch(80% 0.0456 250.63);
+			--yellow: oklch(75% 0.1081 64.85);
+			--gray: oklch(83% 0.0018 325.59);
+			--font-sans: "Geist", sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: var(--font-sans);
+			background: white;
+			color: var(--black);
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		/* ── HEADER ── */
+		header {
+			background: white;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			height: 49px;
+			display: flex;
+			align-items: center;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		.header-inner {
+			width: 100%;
+			padding: 0 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.header-logo svg {
+			height: 32px;
+		}
+		.header-logo {
+			color: var(--black);
+			transition: color 300ms;
+		}
+		.header-logo:hover {
+			color: var(--orange);
+		}
+
+		.header-right {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin-left: auto;
+		}
+		.nav-link {
+			font-weight: 600;
+			color: var(--black);
+			transition: opacity 300ms;
+		}
+		.nav-link:hover {
+			opacity: 0.7;
+		}
+
+		.icon-btn {
+			width: 32px;
+			height: 32px;
+			background: var(--black);
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			transition: background 300ms;
+		}
+		.icon-btn:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+		.icon-btn:focus-visible {
+			outline: none;
+			box-shadow:
+				0 0 0 2px white,
+				0 0 0 4px var(--black);
+		}
+		.mobile-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: white;
+			z-index: 200;
+			flex-direction: column;
+			padding: 1rem;
+		}
+		.mobile-overlay.active {
+			display: flex;
+		}
+		.mobile-overlay-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 2rem;
+		}
+		.mobile-nav {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+		.mobile-nav a {
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+		.close-menu {
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		/* ── HERO ── */
+		.changelog-hero {
+			padding-top: 200px;
+			padding-bottom: 0;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		.changelog-hero h1 {
+			font-size: clamp(2rem, 8vw, 8rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1;
+			margin-bottom: 1.5rem;
+		}
+		.stacked-bars {
+			display: flex;
+			flex-direction: column;
+		}
+		.stacked-bars div {
+			width: 100%;
+			background: var(--black);
+		}
+
+		.meta-band {
+			background: var(--black);
+			padding: 2rem;
+			margin-top: 0.5rem;
+			display: flex;
+			align-items: center;
+			gap: 1.5rem;
+		}
+		.meta-band span {
+			color: white;
+			font-size: clamp(1.875rem, 4vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+		}
+
+		/* ── BREADCRUMB ── */
+		.breadcrumb {
+			background: var(--black);
+			padding: 2rem;
+			margin-top: 0.5rem;
+		}
+		.breadcrumb ol {
+			list-style: none;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.875rem;
+			color: white;
+		}
+		.breadcrumb a {
+			color: white;
+			font-weight: 500;
+		}
+		.breadcrumb svg {
+			width: 16px;
+			height: 16px;
+			display: block;
+		}
+		.breadcrumb span {
+			font-weight: 500;
+			color: white;
+		}
+
+		/* ── CONTENT ── */
+		.changelog-content {
+			background: var(--orange);
+			padding: 6rem 2rem;
+			margin-top: 0.5rem;
+			color: white;
+		}
+		.content-inner {
+			max-width: 36rem;
+			margin: 0 auto;
+		}
+		.changelog-content strong {
+			color: var(--black);
+			font-weight: 700;
+		}
+		.changelog-content p {
+			font-size: 1.075rem;
+			line-height: 1.75;
+			margin-bottom: 1rem;
+			color: color-mix(in oklab, white 90%, transparent);
+		}
+		.changelog-content ul {
+			list-style: none;
+			margin-bottom: 1.5rem;
+		}
+		.changelog-content ul li {
+			font-size: 1.075rem;
+			line-height: 1.75;
+			color: color-mix(in oklab, white 90%, transparent);
+			padding-left: 1.5rem;
+			position: relative;
+			margin-bottom: 0.5rem;
+		}
+		.changelog-content ul li::before {
+			content: "•";
+			position: absolute;
+			left: 0.25rem;
+			color: color-mix(in oklab, white 80%, transparent);
+		}
+
+		/* ── FOOTER ── */
+		footer {
+			margin-top: auto;
+			overflow: hidden;
+		}
+		.footer-inner {
+			width: 100%;
+			padding: 12rem 1rem 1rem;
+		}
+		.footer-wordmark svg {
+			width: 100%;
+			height: auto;
+			color: var(--black);
+			display: block;
+		}
+		.footer-dividers {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0.25rem;
+		}
+		.footer-dividers div {
+			width: 100%;
+			background: var(--black);
+		}
+		.footer-copy {
+			background: var(--black);
+			padding: 2rem;
+			display: flex;
+			align-items: center;
+		}
+		.footer-copy span {
+			color: white;
+			font-size: clamp(1.875rem, 4vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+		}
+		.footer-nav {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			margin-top: 1rem;
+		}
+		.footer-nav a {
+			color: var(--black);
+			font-size: 1rem;
+			font-weight: 700;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			transition: color 300ms;
+		}
+		.footer-nav a:hover {
+			color: var(--black);
+		}
+
+		@media (max-width: 768px) {
+			.header-right .nav-link {
+				display: none;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- MOBILE OVERLAY -->
+		<div class="mobile-overlay" id="mobileMenu">
+			<div class="mobile-overlay-header">
+				<a href="index.html" style="color:var(--black)">
+					<svg
+						style="height:32px"
+						viewBox="0 0 1051 289"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</a>
+				<button class="close-menu" id="closeMenu" aria-label="Close menu">
+					✕
+				</button>
+			</div>
+			<nav class="mobile-nav">
+				<a href="system-overview.html">Overview</a>
+				<a href="about.html">About</a>
+				<a href="contact.html">Contact</a>
+				<a href="integrations.html">Integrations</a>
+			</nav>
+		</div>
+
+		<!-- HEADER -->
+		<header>
+			<div class="header-inner">
+				<a href="index.html" class="header-logo">
+					<svg
+						style="height:32px"
+						viewBox="0 0 1051 289"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</a>
+				<div class="header-right">
+					<a href="system-overview.html" class="nav-link">Overview</a>
+					<a href="sign-up.html" class="nav-link">Sign up</a>
+					<button class="icon-btn" aria-label="Search">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							style="width:16px;height:16px"
+						>
+							<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+							<path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+							<path d="M21 21l-6 -6" />
+						</svg>
+					</button>
+					<button class="icon-btn" id="menuToggle" aria-label="Open menu">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							style="width:20px;height:20px"
+						>
+							<path d="M4 6h16" />
+							<path d="M7 12h13" />
+							<path d="M10 18h10" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- HERO -->
+		<section class="changelog-hero">
+			<h1>Introducing the Decentralized Dashboard</h1>
+			<div class="stacked-bars">
+				<div style="height:2px"></div>
+				<div style="height:4px"></div>
+				<div style="height:8px"></div>
+				<div style="height:12px"></div>
+			</div>
+			<div class="meta-band">
+				<span>Published <time datetime="May 20, 2025">May 20, 2025</time></span>
+			</div>
+			<div class="breadcrumb">
+				<nav aria-label="Breadcrumb">
+					<ol>
+						<li><a href="index.html">Home</a></li>
+						<li>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M9 6l6 6l-6 6" />
+							</svg>
+						</li>
+						<li><a href="changelog.html">Changelog</a></li>
+						<li>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M9 6l6 6l-6 6" />
+							</svg>
+						</li>
+						<li><span>Introducing the Decentralized Dashboard</span></li>
+					</ol>
+				</nav>
+			</div>
+		</section>
+
+		<!-- CHANGELOG CONTENT -->
+		<section class="changelog-content">
+			<div class="content-inner">
+				<p>
+					Welcome to the unveiling of our new
+					<strong>decentralized dashboard</strong>—a game-changing update
+					designed to enhance user autonomy, privacy, and efficiency in the Web3
+					ecosystem. Built on decentralized infrastructure, this new design
+					ensures a seamless and secure experience for managing on-chain data
+					and digital assets.
+				</p>
+				<p><strong>Key Highlights:</strong></p>
+				<ul>
+					<li>
+						<strong>Trustless Navigation:</strong>
+						Interact with your data directly on-chain with a sleek,
+						self-custodial interface.
+					</li>
+					<li>
+						<strong>Enhanced Performance:</strong>
+						Optimized for speed with decentralized storage and lightning-fast
+						load times.
+					</li>
+					<li>
+						<strong>Modular Components:</strong>
+						Customize your dashboard with Web3-native widgets, including live
+						DeFi tracking, NFT portfolios, and DAO governance tools.
+					</li>
+					<li>
+						<strong>Seamless Wallet Integration:</strong>
+						Connect your wallet effortlessly for real-time access to
+						transactions, staking, and asset management.
+					</li>
+				</ul>
+				<p>
+					This update brings <strong>true ownership and transparency</strong> to
+					your workflow, eliminating reliance on centralized servers. Dive in
+					and experience the next evolution of Web3 dashboards today.
+				</p>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-inner">
+				<div class="footer-wordmark">
+					<svg
+						viewBox="0 0 1051 289"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</div>
+				<div class="footer-dividers">
+					<div style="height:2px"></div>
+					<div style="height:4px"></div>
+					<div style="height:8px"></div>
+					<div style="height:12px"></div>
+				</div>
+				<div class="footer-copy">
+					<span>ⓒ Copyright Lexington Themes 2026</span>
+				</div>
+				<div class="footer-nav">
+					<a href="system-overview.html">Overview</a>
+					<a href="about.html">About</a>
+					<a href="about.html">Careers</a>
+					<a href="contact.html">Contact</a>
+					<a href="#">X</a>
+					<a href="#">Linkedin</a>
+					<a href="#">Youtube</a>
+					<a href="#">Instagram</a>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		const menuToggle = document.getElementById("menuToggle");
+		const mobileMenu = document.getElementById("mobileMenu");
+		const closeMenu = document.getElementById("closeMenu");
+		menuToggle?.addEventListener("click", () =>
+			mobileMenu.classList.add("active"),
+		);
+		closeMenu?.addEventListener("click", () =>
+			mobileMenu.classList.remove("active"),
+		);
+		</script>
+	</body>
+</html>

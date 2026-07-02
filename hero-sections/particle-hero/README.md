@@ -1,5 +1,7 @@
 # Particle Hero — Canvas Particle Animation Hero Component (React + Vite + Tailwind CSS v4 + shadcn/ui)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-bleed night-sky hero section built around the `ParticleHero` shadcn/ui component: a Canvas 2D animation of upward-drifting ember particles floats behind three rotating conic-gradient spotlights and a pulsing, radial-reveal "Gold Design" headline. A glowing orb toggles gold mode, inverting and over-brightening the entire scene from cold ice-blue to warm gold. The component is integrated into a proper shadcn/ui project structure and demonstrated with a floating navbar, anatomy grid, live props playground, and install band — making it a ready-to-drop-in hero section for design systems and SaaS landing pages. Generated with Claude Fable 5.
 
 ## Stack

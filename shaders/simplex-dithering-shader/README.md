@@ -1,5 +1,7 @@
 # Simplex Dither Bench — Bayer Ordered-Dithering Shader Instrument (WebGL2 + React 18 + TypeScript + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An integration of `dithering-shader.tsx` into a shadcn-style, Tailwind CSS v4, TypeScript Vite project, framed as a darkroom / pre-press halftone instrument: **Simplex · Dither Bench**. The shader is the hero — a continuous field (ripple, simplex, swirl, and more) crushed through a Bayer ordered-dithering matrix into two tones of ink entirely on the GPU using raw WebGL2 (GLSL ES 3.00), with no textures or images. The brief's `demo.tsx` is full-bleed behind a centred "Simplex" lockup, surrounded by a live Bayer threshold-matrix panel, a control rail wired to the uniforms, and a telemetry HUD (FPS, shader clock, cell size, drawing-buffer resolution) fed off the render loop. Generated with Claude Fable 5.
 
 ## Stack

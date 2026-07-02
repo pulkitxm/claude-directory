@@ -1,5 +1,7 @@
 # UIMIX — Vitruvian ASCII Shader Hero (React + HTML5 Canvas + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen landing hero featuring a dependency-free HTML5 Canvas ASCII shader of Leonardo da Vinci's Vitruvian Man, integrated into a shadcn-style TypeScript + Vite project. The figure's arms and legs sweep between the two canonical poses — to the square (earthly) and to the circle (cosmic) — over a faint ghost of both, while the circle breathes and a soft scan-line shimmers up the body; everything is glyphs on black, sampled from signed-distance math onto a monospace grid. The hero chrome (UIMIX wordmark, EST. 2025, LAT/LONG readout, corner frame accents, PERFECT PROPORTIONS lockup with dithered rule, CTA buttons, and SYSTEM.ACTIVE footer) is kept verbatim from the original prompt, with the UnicornStudio embed replaced by a fully offline local ASCII renderer. Generated with Claude Fable 5.
 
 ## Why the backdrop was rebuilt (and what stayed verbatim)

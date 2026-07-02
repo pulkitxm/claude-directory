@@ -1,5 +1,7 @@
 # Synex — Wealth Management Hero Section (React + TypeScript + Framer Motion + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport hero section for the fictional wealth-management platform Synex. The aesthetic is editorial-minimal with a tactile, organic twist: a warm off-white paper background, large refined Inter Tight typography, two photorealistic stones flanking the bottom corners, and a product dashboard screenshot rising centrally between them. Premium, calm, and confident — Apple keynote crossed with Swiss editorial design, grounded by natural texture. Generated with Claude Fable 5.
 
 ## Signature interaction

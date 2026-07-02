@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Pricing — Buio</title>
+		<meta
+			name="description"
+			content="Simple, transparent pricing for Web3 builders. Start free, scale as you grow."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+			rel="stylesheet"
+		>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+		>
+		<link rel="stylesheet" href="assets/styles.css">
+		<style>
+		.toggle-group {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			margin-bottom: 2rem;
+		}
+		.toggle-switch {
+			width: 3rem;
+			height: 1.5rem;
+			background: var(--color-base-700);
+			border-radius: var(--radius-full);
+			position: relative;
+			cursor: pointer;
+			transition: background 0.2s;
+		}
+		.toggle-switch.annual {
+			background: var(--color-accent-600);
+		}
+		.toggle-switch::after {
+			content: "";
+			position: absolute;
+			top: 0.2rem;
+			left: 0.2rem;
+			width: 1.1rem;
+			height: 1.1rem;
+			border-radius: 50%;
+			background: #fff;
+			transition: transform 0.2s;
+		}
+		.toggle-switch.annual::after {
+			transform: translateX(1.5rem);
+		}
+		.toggle-label {
+			font-size: 0.875rem;
+			color: var(--color-base-400);
+		}
+		.toggle-label.active {
+			color: #fff;
+		}
+		.badge-save {
+			font-size: 0.75rem;
+			color: var(--color-accent-400);
+			background: oklch(from var(--color-accent-950) l c h / 0.3);
+			border: 1px solid var(--color-accent-800);
+			padding: 0.125rem 0.5rem;
+			border-radius: var(--radius-full);
+		}
+		</style>
+	</head>
+	<body>
+		<!-- Search button -->
+		<button class="btn btn-ghost btn-icon" id="searchBtn" aria-label="Search">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 256 256"
+				fill="currentColor"
+				width="16"
+				height="16"
+			>
+				<path
+					d="M228.24,219.76l-51.38-51.38a86.15,86.15,0,1,0-8.48,8.48l51.38,51.38a6,6,0,0,0,8.48-8.48ZM38,112a74,74,0,1,1,74,74A74.09,74.09,0,0,1,38,112Z"
+				/>
+			</svg>
+		</button>
+
+		<!-- Search modal -->
+		<div id="searchModal" class="search-modal" role="dialog" aria-modal="true">
+			<div class="search-overlay" id="searchOverlay"></div>
+			<div class="search-box">
+				<button
+					id="searchClose"
+					class="btn btn-ghost btn-icon-sm"
+					style="margin-left:auto;display:flex;"
+					aria-label="Close"
+				>
+					<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+						<path
+							d="M0.877075 7.49988C0.877075 3.84219 3.84222 0.877045 7.49991 0.877045C11.1576 0.877045 14.1227 3.84219 14.1227 7.49988C14.1227 11.1575 11.1576 14.1227 7.49991 14.1227C3.84222 14.1227 0.877075 11.1575 0.877075 7.49988ZM9.85358 5.14644C10.0488 5.3417 10.0488 5.65829 9.85358 5.85355L8.20713 7.49999L9.85358 9.14644C10.0488 9.3417 10.0488 9.65829 9.85358 9.85355C9.65832 10.0488 9.34173 10.0488 9.14647 9.85355L7.50002 8.2071L5.85358 9.85355C5.65832 10.0488 5.34173 10.0488 5.14647 9.85355C4.95121 9.65829 4.95121 9.3417 5.14647 9.14644L6.79292 7.49999L5.14647 5.85355C4.95121 5.65829 4.95121 5.3417 5.14647 5.14644C5.34173 4.95118 5.65832 4.95118 5.85358 5.14644L7.50002 6.79289L9.14647 5.14644C9.34173 4.95118 9.65832 4.95118 9.85358 5.14644Z"
+							fill="currentColor"
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</button>
+				<input
+					type="text"
+					id="searchInput"
+					class="search-input"
+					placeholder="Search posts..."
+				>
+				<div id="searchResults" class="search-results"></div>
+			</div>
+		</div>
+
+		<!-- Navigation -->
+		<div id="nav-wrapper">
+			<div class="nav-inner">
+				<a href="index.html" class="nav-logo">buio®</a>
+				<nav class="nav-links">
+					<a href="customers.html">Customers</a>
+					<a href="blog.html">Blog</a>
+					<a href="helpcenter.html">Help</a>
+					<a href="jobs.html">Jobs</a>
+					<a href="system-overview.html">Overview</a>
+					<a
+						href="https://lexingtonthemes.com/templates/buio"
+						target="_blank"
+						rel="noopener"
+						>Buy Buio</a
+					>
+					<div class="nav-ctas">
+						<a href="sign-in.html" class="btn btn-ghost btn-sm">Sign in</a>
+						<a href="sign-up.html" class="btn btn-primary btn-sm">Sign up</a>
+					</div>
+				</nav>
+				<div class="mobile-menu-toggle">
+					<button
+						id="menu-toggle"
+						class="btn btn-primary btn-icon-sm"
+						aria-label="Toggle menu"
+					>
+						<svg
+							id="menu-icon"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 256 256"
+							fill="currentColor"
+							width="16"
+							height="16"
+						>
+							<path
+								d="M222,128a6,6,0,0,1-6,6H40a6,6,0,0,1,0-12H216A6,6,0,0,1,222,128ZM40,70H216a6,6,0,0,0,0-12H40a6,6,0,0,0,0,12ZM216,186H40a6,6,0,0,0,0,12H216a6,6,0,0,0,0-12Z"
+							/>
+						</svg>
+						<svg
+							id="close-icon"
+							class="hidden"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 256 256"
+							fill="currentColor"
+							width="16"
+							height="16"
+						>
+							<path
+								d="M204.24,195.76a6,6,0,1,1-8.48,8.48L128,136.49,60.24,204.24a6,6,0,0,1-8.48-8.48L119.51,128,51.76,60.24a6,6,0,0,1,8.48-8.48L128,119.51l67.76-67.75a6,6,0,0,1,8.48,8.48L136.49,128Z"
+							/>
+						</svg>
+					</button>
+					<nav id="mobile-menu" class="mobile-menu">
+						<div>
+							<div class="mobile-menu-inner">
+								<a href="customers.html">Customers</a>
+								<a href="blog.html">Blog</a>
+								<a href="helpcenter.html">Help</a>
+								<a href="jobs.html">Jobs</a>
+								<a href="system-overview.html">Overview</a>
+								<div class="mobile-menu-ctas">
+									<a href="sign-in.html" class="btn btn-ghost btn-sm"
+										>Sign in</a
+									>
+									<a href="sign-up.html" class="btn btn-primary btn-sm"
+										>Sign up</a
+									>
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<main>
+			<!-- Page header -->
+			<section class="page-header bg-gradient-up">
+				<div class="section-inner" style="padding-bottom:3rem;">
+					<span class="section-eyebrow">Pricing</span>
+					<h1 class="section-h1" style="font-size:clamp(2.5rem,8vw,4.5rem);">
+						Simple, honest pricing.
+						<span class="muted">No surprises.</span>
+					</h1>
+					<p class="section-lead">
+						Start free. Scale as you grow. Cancel anytime.
+					</p>
+
+					<!-- Toggle -->
+					<div class="toggle-group" style="margin-top:2rem;">
+						<span class="toggle-label active" id="monthlyLabel">Monthly</span>
+						<button
+							class="toggle-switch"
+							id="billingToggle"
+							aria-label="Toggle billing period"
+						></button>
+						<span class="toggle-label" id="annualLabel">Annual</span>
+						<span class="badge-save">Save 20%</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- Pricing cards -->
+			<section>
+				<div class="section-inner" style="padding:3rem 1rem 6rem;">
+					<div class="pricing-grid">
+						<!-- Starter -->
+						<div
+							class="pricing-card"
+							data-aos="fade-up"
+							data-aos-duration="1000"
+						>
+							<div>
+								<div
+									style="font-size:0.875rem; color:var(--color-base-400); margin-bottom:0.5rem;"
+								>
+									Starter
+								</div>
+								<div class="pricing-price">
+									<span id="starter-price">$0</span>
+									<span>/ month</span>
+								</div>
+								<p
+									style="font-size:0.875rem; color:var(--color-base-400); margin-top:0.5rem;"
+								>
+									Perfect for indie builders and explorers.
+								</p>
+							</div>
+							<a href="sign-up.html" class="btn btn-ghost btn-md btn-block"
+								>Get started free</a
+							>
+							<ul class="pricing-features">
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									1 project
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									100 transactions/mo
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Basic analytics
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Community support
+								</li>
+							</ul>
+						</div>
+
+						<!-- Pro (featured) -->
+						<div
+							class="pricing-card featured"
+							data-aos="fade-up"
+							data-aos-duration="1200"
+						>
+							<div>
+								<div
+									style="font-size:0.875rem; color:var(--color-accent-400); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;"
+								>
+									Pro <span class="badge-save">Most popular</span>
+								</div>
+								<div class="pricing-price">
+									<span id="pro-price">$49</span>
+									<span>/ month</span>
+								</div>
+								<p
+									style="font-size:0.875rem; color:var(--color-base-400); margin-top:0.5rem;"
+								>
+									For serious builders scaling their dApps.
+								</p>
+							</div>
+							<a href="sign-up.html" class="btn btn-primary btn-md btn-block"
+								>Start building</a
+							>
+							<ul class="pricing-features">
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Unlimited projects
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									100,000 transactions/mo
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Advanced analytics
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Priority support
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Smart contract templates
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									API access
+								</li>
+							</ul>
+						</div>
+
+						<!-- Enterprise -->
+						<div
+							class="pricing-card"
+							data-aos="fade-up"
+							data-aos-duration="1400"
+						>
+							<div>
+								<div
+									style="font-size:0.875rem; color:var(--color-base-400); margin-bottom:0.5rem;"
+								>
+									Enterprise
+								</div>
+								<div class="pricing-price">
+									<span>Custom</span>
+								</div>
+								<p
+									style="font-size:0.875rem; color:var(--color-base-400); margin-top:0.5rem;"
+								>
+									For enterprises demanding the absolute best.
+								</p>
+							</div>
+							<a href="contact.html" class="btn btn-ghost btn-md btn-block"
+								>Contact sales</a
+							>
+							<ul class="pricing-features">
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Everything in Pro
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Unlimited everything
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Dedicated account manager
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									SLA guarantees
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									Custom integrations
+								</li>
+								<li>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										width="14"
+										height="14"
+									>
+										<path
+											d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"
+										/>
+										<path
+											d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"
+										/>
+									</svg>
+									24/7 dedicated support
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div class="footer-inner">
+				<div class="footer-grid">
+					<div class="footer-links-grid">
+						<div class="footer-logo" style="padding-right:2rem;">
+							<a
+								href="index.html"
+								style="font-size:1.5rem; font-weight:600; color:#fff; font-family:'Geist',sans-serif;"
+								>buio®</a
+							>
+						</div>
+						<div class="footer-section accent-left">
+							<h3>Product</h3>
+							<ul>
+								<li><a href="customers.html">Customers</a></li>
+								<li><a href="integrations.html">Integrations</a></li>
+								<li><a href="changelog.html">Changelog</a></li>
+								<li><a href="system-overview.html">Overview</a></li>
+							</ul>
+						</div>
+						<div class="footer-section accent-left">
+							<h3>Company</h3>
+							<ul>
+								<li><a href="team.html">Team</a></li>
+								<li><a href="jobs.html">Jobs</a></li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</div>
+						<div class="footer-section accent-left">
+							<h3>Resources</h3>
+							<ul>
+								<li><a href="helpcenter.html">Help Center</a></li>
+								<li><a href="whitepaper.html">Whitepaper</a></li>
+								<li><a href="sign-in.html">Sign in</a></li>
+								<li><a href="sign-up.html">Sign up</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="footer-bottom">
+						<span>© 2025 Buio. All rights reserved.</span>
+						<span
+							>Made with
+							<a
+								href="https://lexingtonthemes.com"
+								target="_blank"
+								rel="noopener"
+								style="color:var(--color-base-400);"
+								>Lexington Themes</a
+							></span
+						>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+		<script src="assets/shared.js"></script>
+		<script>
+		const toggle = document.getElementById("billingToggle");
+		const monthlyLabel = document.getElementById("monthlyLabel");
+		const annualLabel = document.getElementById("annualLabel");
+		const starterPrice = document.getElementById("starter-price");
+		const proPrice = document.getElementById("pro-price");
+		let isAnnual = false;
+
+		toggle.addEventListener("click", () => {
+			isAnnual = !isAnnual;
+			toggle.classList.toggle("annual", isAnnual);
+			monthlyLabel.classList.toggle("active", !isAnnual);
+			annualLabel.classList.toggle("active", isAnnual);
+			starterPrice.textContent = "$0";
+			proPrice.textContent = isAnnual ? "$39" : "$49";
+		});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Dashboard 7 — Ecommerce</title>
+		<link rel="stylesheet" href="../assets/styles.css">
+		<script>
+		(function () {
+			const stored = localStorage.getItem("theme");
+			const prefersDark = window.matchMedia(
+				"(prefers-color-scheme: dark)",
+			).matches;
+			if (stored ? stored === "dark" : prefersDark)
+				document.documentElement.classList.add("dark");
+		})();
+		</script>
+		<style>
+		/* ===== PAGE TOOLBAR ===== */
+		.page-toolbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			margin-bottom: 24px;
+			flex-wrap: wrap;
+		}
+		.page-toolbar-left h1 {
+			font-size: 18px;
+			font-weight: 700;
+			color: var(--foreground);
+			letter-spacing: -0.02em;
+		}
+		.page-toolbar-left p {
+			font-size: 13px;
+			color: var(--muted-foreground);
+			margin-top: 2px;
+		}
+		.page-toolbar-right {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.toolbar-btn {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			height: 34px;
+			padding: 0 12px;
+			font-size: 13px;
+			font-weight: 500;
+			background-color: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			color: var(--foreground);
+			cursor: pointer;
+			transition: background-color 0.15s;
+			white-space: nowrap;
+		}
+		.toolbar-btn:hover {
+			background-color: var(--accent);
+		}
+		.toolbar-btn svg {
+			width: 14px;
+			height: 14px;
+			opacity: 0.7;
+		}
+
+		/* ===== 5-COLUMN KPI GRID ===== */
+		.kpi-grid-5 {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			gap: 12px;
+			margin-bottom: 20px;
+		}
+
+		/* ===== CHARTS ROW 2/3 + 1/3 ===== */
+		.charts-row-main {
+			display: grid;
+			grid-template-columns: 2fr 1fr;
+			gap: 16px;
+			margin-bottom: 16px;
+		}
+
+		/* ===== CHARTS ROW 1/2 + 1/2 ===== */
+		.charts-row-half {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 16px;
+		}
+
+		/* ===== CHART WRAP ===== */
+		.chart-wrap-lg {
+			position: relative;
+			height: 240px;
+		}
+		.chart-wrap-md {
+			position: relative;
+			height: 200px;
+		}
+
+		/* ===== TOP CHANNELS ===== */
+		.channels-list {
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+		.channel-item {
+		}
+		.channel-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 5px;
+		}
+		.channel-name {
+			font-size: 13px;
+			font-weight: 500;
+			color: var(--card-foreground);
+		}
+		.channel-stats {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.channel-amount {
+			font-size: 12px;
+			font-weight: 600;
+			color: var(--card-foreground);
+		}
+		.channel-pct {
+			font-size: 11px;
+			color: var(--muted-foreground);
+		}
+		.channel-bar-track {
+			height: 5px;
+			background-color: var(--muted);
+			border-radius: 99px;
+			overflow: hidden;
+		}
+		.channel-bar-fill {
+			height: 100%;
+			border-radius: 99px;
+			background-color: var(--chart-3);
+			transition: width 0.6s ease;
+		}
+
+		/* ===== CUSTOMER SEGMENT STATS ===== */
+		.segment-stats {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 8px;
+			margin-top: 16px;
+		}
+		.segment-stat {
+			background-color: var(--muted);
+			border-radius: var(--radius);
+			padding: 10px 12px;
+			text-align: center;
+		}
+		.segment-stat-value {
+			font-size: 16px;
+			font-weight: 700;
+			color: var(--foreground);
+		}
+		.segment-stat-label {
+			font-size: 11px;
+			color: var(--muted-foreground);
+			margin-top: 2px;
+		}
+		.segment-dot {
+			display: inline-block;
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			margin-right: 4px;
+		}
+
+		/* ===== DONUT LEGEND ===== */
+		.donut-legend-row {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			margin-top: 12px;
+		}
+		.donut-legend-item {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 12px;
+		}
+		.donut-legend-left {
+			display: flex;
+			align-items: center;
+			gap: 7px;
+		}
+		.donut-dot {
+			width: 9px;
+			height: 9px;
+			border-radius: 50%;
+			flex-shrink: 0;
+		}
+
+		/* ===== RESPONSIVE ===== */
+		@media (max-width: 1100px) {
+			.kpi-grid-5 {
+				grid-template-columns: repeat(3, 1fr);
+			}
+			.charts-row-main {
+				grid-template-columns: 1fr;
+			}
+			.charts-row-half {
+				grid-template-columns: 1fr;
+			}
+		}
+		@media (max-width: 700px) {
+			.kpi-grid-5 {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="app-wrapper">
+			<!-- SIDEBAR OVERLAY (mobile) -->
+			<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+			<!-- SIDEBAR CONTAINER -->
+			<div class="sidebar-container" id="sidebar-container">
+				<aside class="sidebar" id="sidebar">
+					<!-- Logo -->
+					<div class="sidebar-header">
+						<div class="sidebar-logo">
+							<img
+								id="sidebar-logo-img"
+								src="../assets/images/logo-black.svg"
+								alt="Logo"
+							>
+							<span class="sidebar-logo-text">Shadcnblocks</span>
+						</div>
+						<div class="sidebar-subtitle">Admin Dashboard</div>
+					</div>
+
+					<!-- Nav -->
+					<nav class="sidebar-nav">
+						<!-- Ecommerce -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Ecommerce</div>
+
+							<!-- Dashboard (collapsible) -->
+							<div class="sidebar-item open" data-submenu="sub-dashboard">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect width="7" height="9" x="3" y="3" rx="1" />
+									<rect width="7" height="5" x="14" y="3" rx="1" />
+									<rect width="7" height="9" x="14" y="12" rx="1" />
+									<rect width="7" height="5" x="3" y="16" rx="1" />
+								</svg>
+								Dashboard
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									width="14"
+									height="14"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m6 9 6 6 6-6" />
+								</svg>
+							</div>
+							<div class="sidebar-sub open" id="sub-dashboard">
+								<a class="sidebar-sub-item" href="dashboard-1.html"
+									>Dashboard 1</a
+								>
+								<a class="sidebar-sub-item" href="dashboard-2.html"
+									>Dashboard 2</a
+								>
+								<a class="sidebar-sub-item" href="dashboard-3.html"
+									>Dashboard 3</a
+								>
+								<a class="sidebar-sub-item" href="dashboard-4.html"
+									>Dashboard 4</a
+								>
+								<a class="sidebar-sub-item" href="dashboard-5.html"
+									>Dashboard 5</a
+								>
+								<a class="sidebar-sub-item" href="dashboard-6.html"
+									>Dashboard 6</a
+								>
+								<a class="sidebar-sub-item active" href="dashboard-7.html"
+									>Dashboard 7</a
+								>
+								<a class="sidebar-sub-item" href="dashboard-8.html"
+									>Dashboard 8</a
+								>
+								<a class="sidebar-sub-item" href="dashboard-9.html"
+									>Dashboard 9</a
+								>
+							</div>
+
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"
+									/>
+									<path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+								</svg>
+								Products
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
+									/>
+									<line x1="3" x2="21" y1="6" y2="6" />
+									<path d="M16 10a4 4 0 0 1-8 0" />
+								</svg>
+								Orders
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+									<circle cx="9" cy="7" r="4" />
+									<path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+									<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+								</svg>
+								Customers
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M5 12h14" />
+									<path d="m12 5 7 7-7 7" />
+								</svg>
+								Shipments
+							</a>
+						</div>
+
+						<div class="sidebar-divider"></div>
+
+						<!-- Project Management -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Project Management</div>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+									/>
+								</svg>
+								Projects
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+									<circle cx="9" cy="7" r="4" />
+									<path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+									<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+								</svg>
+								Teams
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+									<circle cx="12" cy="7" r="4" />
+								</svg>
+								Members
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<circle cx="12" cy="12" r="10" />
+									<line x1="12" x2="12" y1="8" y2="12" />
+									<line x1="12" x2="12.01" y1="16" y2="16" />
+								</svg>
+								Issues
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+									<path
+										d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+									/>
+								</svg>
+								Inbox
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M9 11l3 3L22 4" />
+									<path
+										d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+									/>
+								</svg>
+								Todo
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+									/>
+									<path d="M12 6v6l4 2" />
+								</svg>
+								Tasks
+							</a>
+						</div>
+
+						<div class="sidebar-divider"></div>
+
+						<!-- Manage -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Manage</div>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+									/>
+									<circle cx="12" cy="12" r="3" />
+								</svg>
+								Settings
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="16 18 22 12 16 6" />
+									<polyline points="8 6 2 12 8 18" />
+								</svg>
+								Developers
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect width="20" height="14" x="2" y="3" rx="2" />
+									<line x1="8" x2="16" y1="21" y2="21" />
+									<line x1="12" x2="12" y1="17" y2="21" />
+								</svg>
+								Dev Tools
+							</a>
+						</div>
+
+						<div class="sidebar-divider"></div>
+
+						<!-- Pages -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Pages</div>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+									<path d="M7 11V7a5 5 0 0 1 10 0v4" />
+								</svg>
+								Auth
+							</a>
+							<a class="sidebar-item" href="#">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"
+									/>
+									<line x1="12" x2="12" y1="9" y2="13" />
+									<line x1="12" x2="12.01" y1="17" y2="17" />
+								</svg>
+								Errors
+							</a>
+						</div>
+					</nav>
+
+					<!-- Footer user -->
+					<div class="sidebar-footer">
+						<div class="sidebar-user">
+							<img
+								class="sidebar-user-avatar"
+								src="../assets/images/avatars/ausrobdev-avatar.png"
+								alt="ausrobdev"
+							>
+							<div class="sidebar-user-info">
+								<div class="sidebar-user-name">ausrobdev</div>
+								<div class="sidebar-user-email">ausrobdev@gmail.com</div>
+							</div>
+							<svg
+								class="sidebar-user-icon"
+								xmlns="http://www.w3.org/2000/svg"
+								width="14"
+								height="14"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="M8 6h13" />
+								<path d="M8 12h13" />
+								<path d="M8 18h13" />
+								<path d="M3 6h.01" />
+								<path d="M3 12h.01" />
+								<path d="M3 18h.01" />
+							</svg>
+						</div>
+					</div>
+				</aside>
+			</div>
+
+			<!-- MAIN AREA -->
+			<div class="main-area">
+				<!-- HEADER -->
+				<header class="page-header">
+					<div class="header-left">
+						<button
+							class="sidebar-toggle"
+							id="sidebar-toggle"
+							aria-label="Toggle sidebar"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<line x1="3" x2="21" y1="6" y2="6" />
+								<line x1="3" x2="21" y1="12" y2="12" />
+								<line x1="3" x2="21" y1="18" y2="18" />
+							</svg>
+						</button>
+						<nav class="breadcrumb">
+							<span class="breadcrumb-item">Ecommerce</span>
+							<span class="breadcrumb-sep">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="14"
+									height="14"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</span>
+							<span class="breadcrumb-item current">Dashboard 7</span>
+						</nav>
+					</div>
+					<div class="header-center">
+						<div class="search-bar">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="14"
+								height="14"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<circle cx="11" cy="11" r="8" />
+								<path d="m21 21-4.3-4.3" />
+							</svg>
+							<span class="search-bar-text">Search...</span>
+							<span class="search-bar-kbd">⌘K</span>
+						</div>
+					</div>
+					<div class="header-right">
+						<button
+							class="header-btn"
+							id="theme-toggle"
+							aria-label="Toggle theme"
+						>
+							<span id="theme-icon"></span>
+						</button>
+						<button class="header-btn" aria-label="Notifications">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+								<path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+							</svg>
+							<span class="notification-badge">3</span>
+						</button>
+						<img
+							class="sidebar-user-avatar"
+							src="../assets/images/avatars/ausrobdev-avatar.png"
+							alt="ausrobdev"
+							style="width:32px;height:32px;border-radius:50%;cursor:pointer;"
+						>
+					</div>
+				</header>
+
+				<!-- PAGE CONTENT -->
+				<main class="page-content">
+					<div class="content-inner">
+						<!-- PAGE TOOLBAR -->
+						<div class="page-toolbar">
+							<div class="page-toolbar-left">
+								<h1>Dashboard Overview</h1>
+								<p>A summary for all the purchases, sales etc.</p>
+							</div>
+							<div class="page-toolbar-right">
+								<button class="toolbar-btn">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+										<line x1="16" x2="16" y1="2" y2="6" />
+										<line x1="8" x2="8" y1="2" y2="6" />
+										<line x1="3" x2="21" y1="10" y2="10" />
+									</svg>
+									Jan 1 – 31, 2025
+								</button>
+								<button class="toolbar-btn">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+										<polyline points="9 22 9 12 15 12 15 22" />
+									</svg>
+									All Platforms
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="12"
+										height="12"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="m6 9 6 6 6-6" />
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<!-- 5-COLUMN KPI GRID -->
+						<div class="kpi-grid-5">
+							<div class="kpi-card">
+								<div class="kpi-label">
+									Total Sales
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<line x1="12" x2="12" y1="2" y2="22" />
+										<path
+											d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+										/>
+									</svg>
+								</div>
+								<div class="kpi-value" style="font-size:20px;">$284,350</div>
+								<div class="kpi-change">
+									<span class="positive">▲ +8.2%</span>
+									vs prev
+								</div>
+							</div>
+
+							<div class="kpi-card">
+								<div class="kpi-label">
+									Orders
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path
+											d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
+										/>
+										<line x1="3" x2="21" y1="6" y2="6" />
+										<path d="M16 10a4 4 0 0 1-8 0" />
+									</svg>
+								</div>
+								<div class="kpi-value" style="font-size:20px;">3,420</div>
+								<div class="kpi-change">
+									<span class="positive">▲ +12.4%</span>
+									vs prev
+								</div>
+							</div>
+
+							<div class="kpi-card">
+								<div class="kpi-label">
+									Customers
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+										<circle cx="9" cy="7" r="4" />
+										<path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+										<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+									</svg>
+								</div>
+								<div class="kpi-value" style="font-size:20px;">1,840</div>
+								<div class="kpi-change">
+									<span class="positive">▲ +5.1%</span>
+									vs prev
+								</div>
+							</div>
+
+							<div class="kpi-card">
+								<div class="kpi-label">
+									Avg Order
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+										<polyline points="16 7 22 7 22 13" />
+									</svg>
+								</div>
+								<div class="kpi-value" style="font-size:20px;">$83.1</div>
+								<div class="kpi-change">
+									<span class="positive">▲ +2.8%</span>
+									vs prev
+								</div>
+							</div>
+
+							<div class="kpi-card">
+								<div class="kpi-label">
+									Return Rate
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path
+											d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+										/>
+										<path d="M3 3v5h5" />
+									</svg>
+								</div>
+								<div class="kpi-value" style="font-size:20px;">3.2%</div>
+								<div class="kpi-change">
+									<span class="negative">▼ -0.8%</span>
+									vs prev
+								</div>
+							</div>
+						</div>
+
+						<!-- SALES OVERVIEW + TOP CHANNELS -->
+						<div class="charts-row-main" style="margin-bottom:16px;">
+							<!-- Sales Overview (line) -->
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Sales Overview</div>
+									<div class="card-description">January 2025 — day by day</div>
+								</div>
+								<div class="card-content">
+									<div class="chart-wrap-lg">
+										<canvas id="chart-sales-overview"></canvas>
+									</div>
+									<div
+										style="display:flex;align-items:center;gap:16px;margin-top:12px;font-size:12px;color:var(--muted-foreground);"
+									>
+										<div style="display:flex;align-items:center;gap:6px;">
+											<div
+												style="width:24px;height:2px;background:var(--chart-3);border-radius:2px;"
+											></div>
+											This Month
+										</div>
+										<div style="display:flex;align-items:center;gap:6px;">
+											<div
+												style="width:24px;height:2px;background:var(--chart-1);border-radius:2px;stroke-dasharray:4 2;"
+											></div>
+											Last Month
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Top Channels -->
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Top Channels</div>
+									<div class="card-description">Revenue by sales platform</div>
+								</div>
+								<div class="card-content">
+									<div class="channels-list">
+										<div class="channel-item">
+											<div class="channel-header">
+												<span class="channel-name">Online Store</span>
+												<div class="channel-stats">
+													<span class="channel-amount">$145,200</span>
+													<span class="channel-pct">51.1%</span>
+												</div>
+											</div>
+											<div class="channel-bar-track">
+												<div
+													class="channel-bar-fill"
+													style="width:51%;background:var(--chart-4);"
+												></div>
+											</div>
+										</div>
+
+										<div class="channel-item">
+											<div class="channel-header">
+												<span class="channel-name">Marketplace</span>
+												<div class="channel-stats">
+													<span class="channel-amount">$82,450</span>
+													<span class="channel-pct">29.0%</span>
+												</div>
+											</div>
+											<div class="channel-bar-track">
+												<div
+													class="channel-bar-fill"
+													style="width:29%;background:var(--chart-3);"
+												></div>
+											</div>
+										</div>
+
+										<div class="channel-item">
+											<div class="channel-header">
+												<span class="channel-name">In-Store</span>
+												<div class="channel-stats">
+													<span class="channel-amount">$36,200</span>
+													<span class="channel-pct">12.7%</span>
+												</div>
+											</div>
+											<div class="channel-bar-track">
+												<div
+													class="channel-bar-fill"
+													style="width:13%;background:var(--chart-2);"
+												></div>
+											</div>
+										</div>
+
+										<div class="channel-item">
+											<div class="channel-header">
+												<span class="channel-name">Wholesale</span>
+												<div class="channel-stats">
+													<span class="channel-amount">$20,500</span>
+													<span class="channel-pct">7.2%</span>
+												</div>
+											</div>
+											<div class="channel-bar-track">
+												<div
+													class="channel-bar-fill"
+													style="width:7%;background:var(--chart-1);"
+												></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- PRODUCT PERFORMANCE + CUSTOMER SEGMENTS -->
+						<div class="charts-row-half">
+							<!-- Product Performance (horizontal bar) -->
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Product Performance</div>
+									<div class="card-description">Units sold by product</div>
+								</div>
+								<div class="card-content">
+									<div class="chart-wrap-md">
+										<canvas id="chart-product-perf"></canvas>
+									</div>
+								</div>
+							</div>
+
+							<!-- Customer Segments (donut + stats) -->
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Customer Segments</div>
+									<div class="card-description">Breakdown by customer type</div>
+								</div>
+								<div class="card-content">
+									<div class="chart-wrap-md">
+										<canvas id="chart-customer-seg"></canvas>
+									</div>
+									<div class="donut-legend-row">
+										<div class="donut-legend-item">
+											<div class="donut-legend-left">
+												<div
+													class="donut-dot"
+													style="background:var(--chart-1);"
+												></div>
+												<span>New</span>
+											</div>
+											<span
+												style="color:var(--muted-foreground);font-weight:500;"
+												>38%</span
+											>
+										</div>
+										<div class="donut-legend-item">
+											<div class="donut-legend-left">
+												<div
+													class="donut-dot"
+													style="background:var(--chart-3);"
+												></div>
+												<span>Returning</span>
+											</div>
+											<span
+												style="color:var(--muted-foreground);font-weight:500;"
+												>42%</span
+											>
+										</div>
+										<div class="donut-legend-item">
+											<div class="donut-legend-left">
+												<div
+													class="donut-dot"
+													style="background:var(--chart-5);"
+												></div>
+												<span>VIP</span>
+											</div>
+											<span
+												style="color:var(--muted-foreground);font-weight:500;"
+												>20%</span
+											>
+										</div>
+									</div>
+									<div class="segment-stats">
+										<div class="segment-stat">
+											<div class="segment-stat-value">697</div>
+											<div class="segment-stat-label">
+												<span
+													class="segment-dot"
+													style="background:var(--chart-1);"
+												></span>New
+											</div>
+										</div>
+										<div class="segment-stat">
+											<div class="segment-stat-value">771</div>
+											<div class="segment-stat-label">
+												<span
+													class="segment-dot"
+													style="background:var(--chart-3);"
+												></span>Returning
+											</div>
+										</div>
+										<div class="segment-stat">
+											<div class="segment-stat-value">368</div>
+											<div class="segment-stat-label">
+												<span
+													class="segment-dot"
+													style="background:var(--chart-5);"
+												></span>VIP
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+		<script src="../assets/app.js"></script>
+		<script>
+		/* ===== LOGO SWAP ON THEME CHANGE ===== */
+		function updateLogo() {
+			const isDark = document.documentElement.classList.contains("dark");
+			const logo = document.getElementById("sidebar-logo-img");
+			if (logo)
+				logo.src = isDark
+					? "../assets/images/logo-white.svg"
+					: "../assets/images/logo-black.svg";
+		}
+		updateLogo();
+		const origToggle = document.getElementById("theme-toggle");
+		if (origToggle) {
+			origToggle.addEventListener("click", function () {
+				setTimeout(updateLogo, 0);
+			});
+		}
+
+		/* ===== CHART COLORS FROM CSS VARS ===== */
+		function cssVar(name) {
+			return getComputedStyle(document.documentElement)
+				.getPropertyValue(name)
+				.trim();
+		}
+
+		document.addEventListener("DOMContentLoaded", function () {
+			Chart.defaults.font.family =
+				"'Inter', ui-sans-serif, system-ui, sans-serif";
+			Chart.defaults.font.size = 12;
+
+			const gridColor = () => cssVar("--border");
+			const textColor = () => cssVar("--muted-foreground");
+
+			/* -- Sales Overview line chart -- */
+			const ctxSales = document.getElementById("chart-sales-overview");
+			if (ctxSales) {
+				new Chart(ctxSales, {
+					type: "line",
+					data: {
+						labels: [1, 5, 10, 15, 20, 25, 31],
+						datasets: [
+							{
+								label: "This Month",
+								data: [7200, 8500, 9100, 10200, 8800, 11400, 9800],
+								borderColor: cssVar("--chart-3"),
+								backgroundColor: "transparent",
+								borderWidth: 2,
+								tension: 0.4,
+								pointRadius: 3,
+								pointHoverRadius: 5,
+								pointBackgroundColor: cssVar("--chart-3"),
+							},
+							{
+								label: "Last Month",
+								data: [6800, 7900, 8200, 9500, 8100, 10200, 8900],
+								borderColor: cssVar("--chart-1"),
+								backgroundColor: "transparent",
+								borderWidth: 2,
+								borderDash: [4, 3],
+								tension: 0.4,
+								pointRadius: 3,
+								pointHoverRadius: 5,
+								pointBackgroundColor: cssVar("--chart-1"),
+							},
+						],
+					},
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						interaction: { mode: "index", intersect: false },
+						plugins: {
+							legend: { display: false },
+							tooltip: {
+								callbacks: {
+									label: (ctx) =>
+										` ${ctx.dataset.label}: $${ctx.parsed.y.toLocaleString()}`,
+								},
+							},
+						},
+						scales: {
+							x: {
+								grid: { display: false },
+								ticks: { color: textColor() },
+								title: {
+									display: true,
+									text: "Day",
+									color: textColor(),
+									font: { size: 11 },
+								},
+							},
+							y: {
+								grid: { color: gridColor() },
+								ticks: {
+									color: textColor(),
+									callback: (v) => "$" + (v / 1000).toFixed(0) + "k",
+								},
+							},
+						},
+					},
+				});
+			}
+
+			/* -- Product Performance horizontal bar -- */
+			const ctxProd = document.getElementById("chart-product-perf");
+			if (ctxProd) {
+				new Chart(ctxProd, {
+					type: "bar",
+					data: {
+						labels: [
+							"iPhone 15 Pro",
+							"MacBook Air",
+							"AirPods",
+							"iPad",
+							"Watch",
+						],
+						datasets: [
+							{
+								label: "Units Sold",
+								data: [892, 234, 734, 198, 357],
+								backgroundColor: [
+									cssVar("--chart-4"),
+									cssVar("--chart-3"),
+									cssVar("--chart-2"),
+									cssVar("--chart-1"),
+									cssVar("--chart-5"),
+								],
+								borderRadius: 4,
+								borderSkipped: false,
+							},
+						],
+					},
+					options: {
+						indexAxis: "y",
+						responsive: true,
+						maintainAspectRatio: false,
+						plugins: {
+							legend: { display: false },
+							tooltip: {
+								callbacks: { label: (ctx) => ` ${ctx.parsed.x} units` },
+							},
+						},
+						scales: {
+							x: {
+								grid: { color: gridColor() },
+								ticks: { color: textColor() },
+							},
+							y: {
+								grid: { display: false },
+								ticks: { color: textColor() },
+							},
+						},
+					},
+				});
+			}
+
+			/* -- Customer Segments donut -- */
+			const ctxSeg = document.getElementById("chart-customer-seg");
+			if (ctxSeg) {
+				new Chart(ctxSeg, {
+					type: "doughnut",
+					data: {
+						labels: ["New", "Returning", "VIP"],
+						datasets: [
+							{
+								data: [38, 42, 20],
+								backgroundColor: [
+									cssVar("--chart-1"),
+									cssVar("--chart-3"),
+									cssVar("--chart-5"),
+								],
+								borderWidth: 0,
+								hoverOffset: 4,
+							},
+						],
+					},
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						cutout: "65%",
+						plugins: {
+							legend: { display: false },
+							tooltip: {
+								callbacks: { label: (ctx) => ` ${ctx.label}: ${ctx.parsed}%` },
+							},
+						},
+					},
+				});
+			}
+		});
+		</script>
+	</body>
+</html>

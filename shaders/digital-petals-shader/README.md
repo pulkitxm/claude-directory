@@ -1,5 +1,7 @@
 # Digital Petals — Interactive WebGL Polar-Coordinate Flower Shader (Three.js, GLSL, React, TypeScript)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn-style integration of the `DigitalPetalsShader` component — a polar-coordinate GLSL flower rendered on a single full-screen Three.js quad — framed as a herbarium specimen plate for a living digital cultivar, with a Petal Dial radial gauge that tracks the shader's live petal count, a cultivation log reading per-frame GPU state, and mouse-driven bloom lighting. The corolla breathes between three and seven petals, mixing magenta and blue pigments, and the specimen plate catalogues binomial name, plate number, and growth clock — all self-contained, fully offline, and interactive. Generated with Claude Fable 5.
 
 ## Stack

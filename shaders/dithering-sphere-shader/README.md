@@ -1,5 +1,7 @@
 # Dithering Sphere Shader — WebGL2 Dithering Lab with Bayer & Stochastic Modes (React, TypeScript, Vite, Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive WebGL2 dithering component lab that renders seven procedural shader fields — sphere, ripple, swirl, warp, dots, wave, and simplex — and quantises each to two colours through ordered Bayer (2×2, 4×4, 8×8) or stochastic dithering, with a live FPS telemetry HUD, a full-bleed hero, and a Threshold Matrix panel that visualises the exact Bayer matrices sampled by the GLSL fragment shader. Configured by default as `shape="sphere"`, `type="random"`, rose-on-black, giving a retro 1-bit / newsprint / CRT texture ideal for hero backgrounds or loading states. Generated with Claude Fable 5.
 
 ## What's in `components/ui`

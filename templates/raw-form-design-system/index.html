@@ -1,285 +1,826 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RAW FORM — Studio/Raw</title>
-<link rel="stylesheet" href="assets/fonts/fonts.css" />
-<style>
-  :root{
-    --base:#E4E2DD; --ink:#1E1E1E; --red:#DB4A2B; --orange:#F8A348;
-    --pink:#FF89A9; --section:#D9D6D0; --price:#444444;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--base); color:var(--ink);
-    font-family:'Satoshi',sans-serif; overflow-x:hidden;
-  }
-  ::selection{background:var(--red);color:#fff}
-  ::-webkit-scrollbar{width:8px}
-  ::-webkit-scrollbar-track{background:var(--base)}
-  ::-webkit-scrollbar-thumb{background:var(--red);border-radius:4px}
-  ::-webkit-scrollbar-thumb:hover{background:var(--ink)}
-  .display{font-family:'Clash Display',sans-serif}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>RAW FORM — Studio/Raw</title>
+		<link rel="stylesheet" href="assets/fonts/fonts.css">
+		<style>
+		:root {
+			--base: #e4e2dd;
+			--ink: #1e1e1e;
+			--red: #db4a2b;
+			--orange: #f8a348;
+			--pink: #ff89a9;
+			--section: #d9d6d0;
+			--price: #444444;
+		}
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		html {
+			scroll-behavior: smooth;
+		}
+		body {
+			background: var(--base);
+			color: var(--ink);
+			font-family: "Satoshi", sans-serif;
+			overflow-x: hidden;
+		}
+		::selection {
+			background: var(--red);
+			color: #fff;
+		}
+		::-webkit-scrollbar {
+			width: 8px;
+		}
+		::-webkit-scrollbar-track {
+			background: var(--base);
+		}
+		::-webkit-scrollbar-thumb {
+			background: var(--red);
+			border-radius: 4px;
+		}
+		::-webkit-scrollbar-thumb:hover {
+			background: var(--ink);
+		}
+		.display {
+			font-family: "Clash Display", sans-serif;
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+		img {
+			display: block;
+			max-width: 100%;
+		}
 
-  /* entrance */
-  @keyframes slide-up{from{transform:translateY(28px);opacity:0}to{transform:translateY(0);opacity:1}}
-  .reveal{opacity:0}
-  .reveal.in{animation:slide-up .8s cubic-bezier(0.16,1,0.3,1) forwards}
-  .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}
+		/* entrance */
+		@keyframes slide-up {
+			from {
+				transform: translateY(28px);
+				opacity: 0;
+			}
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+		.reveal {
+			opacity: 0;
+		}
+		.reveal.in {
+			animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+		}
+		.d1 {
+			animation-delay: 0.1s;
+		}
+		.d2 {
+			animation-delay: 0.2s;
+		}
+		.d3 {
+			animation-delay: 0.3s;
+		}
+		.d4 {
+			animation-delay: 0.4s;
+		}
 
-  /* ---- nav ---- */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:1.5rem 2.25rem;
-  }
-  .brand{font-family:'Clash Display';font-weight:700;text-transform:uppercase;
-    font-size:1.5rem;letter-spacing:-.02em}
-  .nav-links{display:flex;gap:2.5rem}
-  .nav-links a{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.1em}
-  .nav-links a:hover{color:var(--red)}
-  .nav-icons{display:flex;gap:1.25rem;align-items:center}
-  .bag{position:relative}
-  .bag .dot{position:absolute;top:-4px;right:-4px;width:8px;height:8px;border-radius:50%;background:var(--red)}
-  .icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+		/* ---- nav ---- */
+		nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 50;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 1.5rem 2.25rem;
+		}
+		.brand {
+			font-family: "Clash Display";
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 1.5rem;
+			letter-spacing: -0.02em;
+		}
+		.nav-links {
+			display: flex;
+			gap: 2.5rem;
+		}
+		.nav-links a {
+			font-size: 13px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+		}
+		.nav-links a:hover {
+			color: var(--red);
+		}
+		.nav-icons {
+			display: flex;
+			gap: 1.25rem;
+			align-items: center;
+		}
+		.bag {
+			position: relative;
+		}
+		.bag .dot {
+			position: absolute;
+			top: -4px;
+			right: -4px;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--red);
+		}
+		.icon {
+			width: 20px;
+			height: 20px;
+			stroke: currentColor;
+			fill: none;
+			stroke-width: 1.8;
+		}
 
-  /* ---- hero ---- */
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-    position:relative;overflow:hidden;padding:0 2.25rem}
-  .blobs{position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:multiply}
-  .blob{position:absolute;border-radius:50%;filter:blur(140px)}
-  .blob.b1{width:50vw;height:50vw;background:var(--red);top:8%;left:14%;animation:pulse1 12s ease-in-out infinite}
-  .blob.b2{width:46vw;height:46vw;background:var(--orange);top:36%;right:6%;animation:pulse2 14s ease-in-out infinite}
-  .blob.b3{width:40vw;height:40vw;background:var(--red);bottom:6%;left:38%;animation:pulse1 15s ease-in-out infinite reverse}
-  @keyframes pulse1{0%,100%{opacity:.6;transform:translate(0,0)}50%{opacity:.9;transform:translate(3%,-3%)}}
-  @keyframes pulse2{0%,100%{opacity:.65;transform:translate(0,0)}50%{opacity:.9;transform:translate(-4%,3%)}}
-  .hero-inner{position:relative;z-index:10}
-  .hero h1{font-family:'Clash Display';font-weight:700;text-transform:uppercase;
-    font-size:18vw;line-height:.75;letter-spacing:-.05em}
-  .hero h1 .form{display:block;margin-left:10vw}
-  .hero-meta{display:flex;flex-wrap:wrap;gap:2.5rem;align-items:flex-end;margin-top:3rem}
-  .hero-sub{max-width:400px;font-size:20px;line-height:1.4;font-weight:400}
-  .cta-row{display:flex;gap:2rem;align-items:center}
+		/* ---- hero ---- */
+		.hero {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			position: relative;
+			overflow: hidden;
+			padding: 0 2.25rem;
+		}
+		.blobs {
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+			mix-blend-mode: multiply;
+		}
+		.blob {
+			position: absolute;
+			border-radius: 50%;
+			filter: blur(140px);
+		}
+		.blob.b1 {
+			width: 50vw;
+			height: 50vw;
+			background: var(--red);
+			top: 8%;
+			left: 14%;
+			animation: pulse1 12s ease-in-out infinite;
+		}
+		.blob.b2 {
+			width: 46vw;
+			height: 46vw;
+			background: var(--orange);
+			top: 36%;
+			right: 6%;
+			animation: pulse2 14s ease-in-out infinite;
+		}
+		.blob.b3 {
+			width: 40vw;
+			height: 40vw;
+			background: var(--red);
+			bottom: 6%;
+			left: 38%;
+			animation: pulse1 15s ease-in-out infinite reverse;
+		}
+		@keyframes pulse1 {
+			0%,
+			100% {
+				opacity: 0.6;
+				transform: translate(0, 0);
+			}
+			50% {
+				opacity: 0.9;
+				transform: translate(3%, -3%);
+			}
+		}
+		@keyframes pulse2 {
+			0%,
+			100% {
+				opacity: 0.65;
+				transform: translate(0, 0);
+			}
+			50% {
+				opacity: 0.9;
+				transform: translate(-4%, 3%);
+			}
+		}
+		.hero-inner {
+			position: relative;
+			z-index: 10;
+		}
+		.hero h1 {
+			font-family: "Clash Display";
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 18vw;
+			line-height: 0.75;
+			letter-spacing: -0.05em;
+		}
+		.hero h1 .form {
+			display: block;
+			margin-left: 10vw;
+		}
+		.hero-meta {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2.5rem;
+			align-items: flex-end;
+			margin-top: 3rem;
+		}
+		.hero-sub {
+			max-width: 400px;
+			font-size: 20px;
+			line-height: 1.4;
+			font-weight: 400;
+		}
+		.cta-row {
+			display: flex;
+			gap: 2rem;
+			align-items: center;
+		}
 
-  /* interactive fill button */
-  .btn-fill{position:relative;overflow:hidden;background:var(--ink);color:var(--base);
-    padding:1rem 2.25rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
-    font-size:14px;border:none;cursor:pointer}
-  .btn-fill span{position:relative;z-index:10;transition:color .3s ease-out}
-  .btn-fill::before{content:"";position:absolute;inset:0;background:#fff;
-    transform:translateX(-100%);transition:transform .3s ease-out;z-index:1}
-  .btn-fill:hover::before{transform:translateX(0)}
-  .btn-fill:hover span{color:var(--red)}
+		/* interactive fill button */
+		.btn-fill {
+			position: relative;
+			overflow: hidden;
+			background: var(--ink);
+			color: var(--base);
+			padding: 1rem 2.25rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			font-size: 14px;
+			border: none;
+			cursor: pointer;
+		}
+		.btn-fill span {
+			position: relative;
+			z-index: 10;
+			transition: color 0.3s ease-out;
+		}
+		.btn-fill::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: #fff;
+			transform: translateX(-100%);
+			transition: transform 0.3s ease-out;
+			z-index: 1;
+		}
+		.btn-fill:hover::before {
+			transform: translateX(0);
+		}
+		.btn-fill:hover span {
+			color: var(--red);
+		}
 
-  .link-arrow{display:inline-flex;align-items:center;gap:.5rem;color:var(--red);
-    font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:14px}
-  .link-arrow:hover{gap:.85rem}
+		.link-arrow {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			color: var(--red);
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			font-size: 14px;
+		}
+		.link-arrow:hover {
+			gap: 0.85rem;
+		}
 
-  /* category divider */
-  .divider{padding:8rem 2.25rem;position:relative;overflow:hidden}
-  .divider::before{content:"";position:absolute;inset:0;
-    background:radial-gradient(circle at center, rgba(248,163,72,.2), transparent 60%);z-index:0}
-  .divider h2{font-family:'Clash Display';font-weight:700;text-transform:uppercase;
-    font-size:12vw;line-height:1;letter-spacing:-.05em;position:relative;z-index:1}
-  .divider.right{text-align:right}
+		/* category divider */
+		.divider {
+			padding: 8rem 2.25rem;
+			position: relative;
+			overflow: hidden;
+		}
+		.divider::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(
+				circle at center,
+				rgba(248, 163, 72, 0.2),
+				transparent 60%
+			);
+			z-index: 0;
+		}
+		.divider h2 {
+			font-family: "Clash Display";
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 12vw;
+			line-height: 1;
+			letter-spacing: -0.05em;
+			position: relative;
+			z-index: 1;
+		}
+		.divider.right {
+			text-align: right;
+		}
 
-  /* product grid */
-  .grid-wrap{padding:0 2.25rem 4rem}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);column-gap:16px;row-gap:64px}
-  .card .ph{position:relative;overflow:hidden;aspect-ratio:3/4;background:#cfccc6}
-  .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(0.16,1,0.3,1)}
-  .card:hover .ph img{transform:scale(1.05)}
-  .badge{position:absolute;top:0;left:0;background:var(--red);color:#fff;
-    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.4rem .75rem;z-index:2}
-  .meta{margin-top:1rem}
-  .meta .name{font-weight:700;text-transform:uppercase;letter-spacing:.15em;font-size:14px;transition:color .3s}
-  .card:hover .meta .name{color:var(--pink)}
-  .meta .mat{font-size:13px;margin-top:.3rem;color:#666}
-  .meta .price{font-size:13px;margin-top:.2rem;color:var(--price)}
-  .archive{background:var(--ink);color:#fff;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;text-align:center;aspect-ratio:3/4;gap:1rem}
-  .archive h3{font-family:'Clash Display';font-weight:700;text-transform:uppercase;font-size:2.25rem;line-height:1}
-  .archive .va{font-size:13px;text-transform:uppercase;letter-spacing:.15em;color:#bbb}
-  .archive:hover .va{color:var(--red)}
+		/* product grid */
+		.grid-wrap {
+			padding: 0 2.25rem 4rem;
+		}
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			column-gap: 16px;
+			row-gap: 64px;
+		}
+		.card .ph {
+			position: relative;
+			overflow: hidden;
+			aspect-ratio: 3 / 4;
+			background: #cfccc6;
+		}
+		.card .ph img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		.card:hover .ph img {
+			transform: scale(1.05);
+		}
+		.badge {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: var(--red);
+			color: #fff;
+			font-size: 11px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			padding: 0.4rem 0.75rem;
+			z-index: 2;
+		}
+		.meta {
+			margin-top: 1rem;
+		}
+		.meta .name {
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+			font-size: 14px;
+			transition: color 0.3s;
+		}
+		.card:hover .meta .name {
+			color: var(--pink);
+		}
+		.meta .mat {
+			font-size: 13px;
+			margin-top: 0.3rem;
+			color: #666;
+		}
+		.meta .price {
+			font-size: 13px;
+			margin-top: 0.2rem;
+			color: var(--price);
+		}
+		.archive {
+			background: var(--ink);
+			color: #fff;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			aspect-ratio: 3 / 4;
+			gap: 1rem;
+		}
+		.archive h3 {
+			font-family: "Clash Display";
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 2.25rem;
+			line-height: 1;
+		}
+		.archive .va {
+			font-size: 13px;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+			color: #bbb;
+		}
+		.archive:hover .va {
+			color: var(--red);
+		}
 
-  /* campaign */
-  .campaign{background:var(--section);padding:8rem 2.25rem}
-  .campaign-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:3rem;align-items:start}
-  .campaign-head{grid-column:span 8}
-  .campaign-head h2{font-family:'Clash Display';font-weight:700;text-transform:uppercase;
-    font-size:6vw;line-height:.9;letter-spacing:-.05em}
-  .campaign-head h2 .accent{color:var(--red)}
-  .campaign-side{grid-column:span 4;display:flex;flex-direction:column;gap:2rem}
-  .campaign-side p{font-size:17px;line-height:1.5}
-  .hr{height:1px;background:rgba(30,30,30,.2)}
-  .read-more{display:inline-flex;align-items:center;gap:1rem;font-weight:600;
-    text-transform:uppercase;letter-spacing:.08em;font-size:14px}
-  .circle{width:44px;height:44px;border-radius:50%;border:1px solid rgba(30,30,30,.4);
-    display:flex;align-items:center;justify-content:center;transition:.3s}
-  .read-more:hover .circle{background:var(--ink);color:#fff;border-color:var(--ink)}
+		/* campaign */
+		.campaign {
+			background: var(--section);
+			padding: 8rem 2.25rem;
+		}
+		.campaign-grid {
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			gap: 3rem;
+			align-items: start;
+		}
+		.campaign-head {
+			grid-column: span 8;
+		}
+		.campaign-head h2 {
+			font-family: "Clash Display";
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 6vw;
+			line-height: 0.9;
+			letter-spacing: -0.05em;
+		}
+		.campaign-head h2 .accent {
+			color: var(--red);
+		}
+		.campaign-side {
+			grid-column: span 4;
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+		}
+		.campaign-side p {
+			font-size: 17px;
+			line-height: 1.5;
+		}
+		.hr {
+			height: 1px;
+			background: rgba(30, 30, 30, 0.2);
+		}
+		.read-more {
+			display: inline-flex;
+			align-items: center;
+			gap: 1rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			font-size: 14px;
+		}
+		.circle {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			border: 1px solid rgba(30, 30, 30, 0.4);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: 0.3s;
+		}
+		.read-more:hover .circle {
+			background: var(--ink);
+			color: #fff;
+			border-color: var(--ink);
+		}
 
-  /* footer */
-  footer{background:var(--ink);color:var(--base);padding:6rem 2.25rem 0;position:relative;overflow:hidden}
-  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;position:relative;z-index:2}
-  .foot-brand{font-family:'Clash Display';font-weight:700;text-transform:uppercase;font-size:2rem;margin-bottom:1.25rem}
-  .foot p{font-size:14px;line-height:1.5;color:#bdbab4;max-width:320px}
-  .foot-col h4{font-size:12px;text-transform:uppercase;letter-spacing:.15em;color:#888;margin-bottom:1.25rem}
-  .foot-col a{display:block;font-size:14px;margin-bottom:.75rem;color:#d8d5cf}
-  .foot-col a:hover{color:var(--red)}
-  .socials{display:flex;gap:1rem;margin-top:1.5rem}
-  .socials a{color:#d8d5cf}.socials a:hover{color:var(--red)}
-  .year{font-family:'Clash Display';font-weight:700;font-size:18vw;line-height:.8;
-    color:rgba(255,255,255,.08);position:relative;z-index:1;margin-top:2rem}
-  .foot-bottom{position:relative;z-index:2;display:flex;justify-content:flex-end;
-    padding:0 0 2.5rem;margin-top:-2vw}
-  .foot-bottom span{font-size:13px;color:#888;letter-spacing:.05em}
+		/* footer */
+		footer {
+			background: var(--ink);
+			color: var(--base);
+			padding: 6rem 2.25rem 0;
+			position: relative;
+			overflow: hidden;
+		}
+		.foot-grid {
+			display: grid;
+			grid-template-columns: 2fr 1fr 1fr 1fr;
+			gap: 3rem;
+			position: relative;
+			z-index: 2;
+		}
+		.foot-brand {
+			font-family: "Clash Display";
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 2rem;
+			margin-bottom: 1.25rem;
+		}
+		.foot p {
+			font-size: 14px;
+			line-height: 1.5;
+			color: #bdbab4;
+			max-width: 320px;
+		}
+		.foot-col h4 {
+			font-size: 12px;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+			color: #888;
+			margin-bottom: 1.25rem;
+		}
+		.foot-col a {
+			display: block;
+			font-size: 14px;
+			margin-bottom: 0.75rem;
+			color: #d8d5cf;
+		}
+		.foot-col a:hover {
+			color: var(--red);
+		}
+		.socials {
+			display: flex;
+			gap: 1rem;
+			margin-top: 1.5rem;
+		}
+		.socials a {
+			color: #d8d5cf;
+		}
+		.socials a:hover {
+			color: var(--red);
+		}
+		.year {
+			font-family: "Clash Display";
+			font-weight: 700;
+			font-size: 18vw;
+			line-height: 0.8;
+			color: rgba(255, 255, 255, 0.08);
+			position: relative;
+			z-index: 1;
+			margin-top: 2rem;
+		}
+		.foot-bottom {
+			position: relative;
+			z-index: 2;
+			display: flex;
+			justify-content: flex-end;
+			padding: 0 0 2.5rem;
+			margin-top: -2vw;
+		}
+		.foot-bottom span {
+			font-size: 13px;
+			color: #888;
+			letter-spacing: 0.05em;
+		}
 
-  @media(max-width:860px){
-    nav{padding:1.25rem 1.25rem}
-    .nav-links{display:none}
-    .hero,.divider,.grid-wrap,.campaign,footer{padding-left:1.25rem;padding-right:1.25rem}
-    .hero h1{font-size:24vw}
-    .divider h2{font-size:18vw}
-    .grid{grid-template-columns:1fr;row-gap:48px}
-    .campaign-grid{grid-template-columns:1fr;gap:2.5rem}
-    .campaign-head,.campaign-side{grid-column:auto}
-    .campaign-head h2{font-size:13vw}
-    .foot-grid{grid-template-columns:1fr 1fr}
-    .year{font-size:26vw}
-  }
-</style>
-</head>
-<body>
+		@media (max-width: 860px) {
+			nav {
+				padding: 1.25rem 1.25rem;
+			}
+			.nav-links {
+				display: none;
+			}
+			.hero,
+			.divider,
+			.grid-wrap,
+			.campaign,
+			footer {
+				padding-left: 1.25rem;
+				padding-right: 1.25rem;
+			}
+			.hero h1 {
+				font-size: 24vw;
+			}
+			.divider h2 {
+				font-size: 18vw;
+			}
+			.grid {
+				grid-template-columns: 1fr;
+				row-gap: 48px;
+			}
+			.campaign-grid {
+				grid-template-columns: 1fr;
+				gap: 2.5rem;
+			}
+			.campaign-head,
+			.campaign-side {
+				grid-column: auto;
+			}
+			.campaign-head h2 {
+				font-size: 13vw;
+			}
+			.foot-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+			.year {
+				font-size: 26vw;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<nav class="reveal in">
+			<div class="brand">Studio/Raw</div>
+			<div class="nav-links">
+				<a href="#">Collection</a>
+				<a href="#">Campaign</a>
+				<a href="#">Archive</a>
+			</div>
+			<div class="nav-icons">
+				<a href="#" aria-label="Search"
+					><svg class="icon" viewBox="0 0 24 24">
+						<circle cx="11" cy="11" r="7" />
+						<line x1="21" y1="21" x2="16.65" y2="16.65" />
+					</svg></a
+				>
+				<a href="#" class="bag" aria-label="Bag"
+					><svg class="icon" viewBox="0 0 24 24">
+						<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+						<line x1="3" y1="6" x2="21" y2="6" />
+						<path d="M16 10a4 4 0 0 1-8 0" />
+					</svg><span class="dot"></span></a
+				>
+			</div>
+		</nav>
 
-<nav class="reveal in">
-  <div class="brand">Studio/Raw</div>
-  <div class="nav-links">
-    <a href="#">Collection</a>
-    <a href="#">Campaign</a>
-    <a href="#">Archive</a>
-  </div>
-  <div class="nav-icons">
-    <a href="#" aria-label="Search"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a>
-    <a href="#" class="bag" aria-label="Bag"><svg class="icon" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="dot"></span></a>
-  </div>
-</nav>
+		<header class="hero">
+			<div class="blobs">
+				<div class="blob b1"></div>
+				<div class="blob b2"></div>
+				<div class="blob b3"></div>
+			</div>
+			<div class="hero-inner">
+				<h1 class="reveal d1">Raw<span class="form">Form.</span></h1>
+				<div class="hero-meta">
+					<p class="hero-sub reveal d2">
+						Functionality stripped to its core. No excess. Just pure utility for
+						the modern nomad.
+					</p>
+					<div class="cta-row reveal d3">
+						<button class="btn-fill"><span>Shop Now</span></button>
+						<a href="#grid" class="link-arrow"
+							>Explore Lookbook
+							<svg
+								class="icon"
+								viewBox="0 0 24 24"
+								style="width:16px;height:16px"
+							>
+								<line x1="5" y1="12" x2="19" y2="12" />
+								<polyline points="12 5 19 12 12 19" />
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</header>
 
-<header class="hero">
-  <div class="blobs">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
-  </div>
-  <div class="hero-inner">
-    <h1 class="reveal d1">Raw<span class="form">Form.</span></h1>
-    <div class="hero-meta">
-      <p class="hero-sub reveal d2">Functionality stripped to its core. No excess. Just pure utility for the modern nomad.</p>
-      <div class="cta-row reveal d3">
-        <button class="btn-fill"><span>Shop Now</span></button>
-        <a href="#grid" class="link-arrow">Explore Lookbook
-          <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
+		<section class="divider">
+			<h2 class="reveal">Outerwear</h2>
+		</section>
 
-<section class="divider">
-  <h2 class="reveal">Outerwear</h2>
-</section>
+		<section class="grid-wrap" id="grid">
+			<div class="grid">
+				<a class="card reveal" href="#">
+					<div class="ph">
+						<span class="badge">New Arrival</span>
+						<img src="assets/img/structure-coat.jpg" alt="Structure Coat">
+					</div>
+					<div class="meta">
+						<div class="name">Structure Coat</div>
+						<div class="mat">Heavyweight Canvas</div>
+						<div class="price">$450</div>
+					</div>
+				</a>
+				<a class="card reveal d1" href="#">
+					<div class="ph">
+						<img src="assets/img/utility-jacket.jpg" alt="Utility Jacket 02">
+					</div>
+					<div class="meta">
+						<div class="name">Utility Jacket 02</div>
+						<div class="mat">Technical Nylon</div>
+						<div class="price">$280</div>
+					</div>
+				</a>
+				<a class="card reveal d2" href="#">
+					<div class="ph">
+						<img src="assets/img/field-overshirt.jpg" alt="Field Overshirt">
+					</div>
+					<div class="meta">
+						<div class="name">Field Overshirt</div>
+						<div class="mat">Brushed Cotton</div>
+						<div class="price">$195</div>
+					</div>
+				</a>
+				<a class="card reveal" href="#">
+					<div class="ph">
+						<img src="assets/img/modular-vest.jpg" alt="Modular Vest">
+					</div>
+					<div class="meta">
+						<div class="name">Modular Vest</div>
+						<div class="mat">Recycled Mesh</div>
+						<div class="price">$140</div>
+					</div>
+				</a>
+				<a class="card reveal d1" href="#">
+					<div class="ph">
+						<img src="assets/img/pleated-trouser.jpg" alt="Pleated Trouser">
+					</div>
+					<div class="meta">
+						<div class="name">Pleated Trouser</div>
+						<div class="mat">Wool Blend</div>
+						<div class="price">$220</div>
+					</div>
+				</a>
+				<a class="card archive reveal d2" href="#">
+					<h3>Full<br>Archive</h3>
+					<span class="va">View All →</span>
+				</a>
+			</div>
+		</section>
 
-<section class="grid-wrap" id="grid">
-  <div class="grid">
-    <a class="card reveal" href="#">
-      <div class="ph"><span class="badge">New Arrival</span><img src="assets/img/structure-coat.jpg" alt="Structure Coat" /></div>
-      <div class="meta"><div class="name">Structure Coat</div><div class="mat">Heavyweight Canvas</div><div class="price">$450</div></div>
-    </a>
-    <a class="card reveal d1" href="#">
-      <div class="ph"><img src="assets/img/utility-jacket.jpg" alt="Utility Jacket 02" /></div>
-      <div class="meta"><div class="name">Utility Jacket 02</div><div class="mat">Technical Nylon</div><div class="price">$280</div></div>
-    </a>
-    <a class="card reveal d2" href="#">
-      <div class="ph"><img src="assets/img/field-overshirt.jpg" alt="Field Overshirt" /></div>
-      <div class="meta"><div class="name">Field Overshirt</div><div class="mat">Brushed Cotton</div><div class="price">$195</div></div>
-    </a>
-    <a class="card reveal" href="#">
-      <div class="ph"><img src="assets/img/modular-vest.jpg" alt="Modular Vest" /></div>
-      <div class="meta"><div class="name">Modular Vest</div><div class="mat">Recycled Mesh</div><div class="price">$140</div></div>
-    </a>
-    <a class="card reveal d1" href="#">
-      <div class="ph"><img src="assets/img/pleated-trouser.jpg" alt="Pleated Trouser" /></div>
-      <div class="meta"><div class="name">Pleated Trouser</div><div class="mat">Wool Blend</div><div class="price">$220</div></div>
-    </a>
-    <a class="card archive reveal d2" href="#">
-      <h3>Full<br>Archive</h3>
-      <span class="va">View All →</span>
-    </a>
-  </div>
-</section>
+		<section class="campaign">
+			<div class="campaign-grid">
+				<div class="campaign-head reveal">
+					<h2>Designed for <span class="accent">Movement.</span></h2>
+				</div>
+				<div class="campaign-side reveal d1">
+					<div class="hr"></div>
+					<p>
+						Our latest series focuses on the space between the body and the
+						fabric. Garments that breathe, adapt, and endure the rhythm of the
+						city.
+					</p>
+					<div class="hr"></div>
+					<a href="#" class="read-more"
+						>Read the Story
+						<span class="circle"
+							><svg
+								class="icon"
+								viewBox="0 0 24 24"
+								style="width:18px;height:18px"
+							>
+								<line x1="7" y1="17" x2="17" y2="7" />
+								<polyline points="7 7 17 7 17 17" />
+							</svg></span
+						>
+					</a>
+				</div>
+			</div>
+		</section>
 
-<section class="campaign">
-  <div class="campaign-grid">
-    <div class="campaign-head reveal">
-      <h2>Designed for <span class="accent">Movement.</span></h2>
-    </div>
-    <div class="campaign-side reveal d1">
-      <div class="hr"></div>
-      <p>Our latest series focuses on the space between the body and the fabric. Garments that breathe, adapt, and endure the rhythm of the city.</p>
-      <div class="hr"></div>
-      <a href="#" class="read-more">Read the Story
-        <span class="circle"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
-      </a>
-    </div>
-  </div>
-</section>
+		<section class="divider right">
+			<h2 class="reveal">Objects</h2>
+		</section>
 
-<section class="divider right">
-  <h2 class="reveal">Objects</h2>
-</section>
+		<footer>
+			<div class="foot-grid">
+				<div>
+					<div class="foot-brand">Studio/Raw</div>
+					<p>
+						Experimental commerce platform focused on quality over quantity.
+						Founded 2024.
+					</p>
+					<div class="socials">
+						<a href="#" aria-label="Instagram"
+							><svg class="icon" viewBox="0 0 24 24">
+								<rect x="2" y="2" width="20" height="20" rx="5" />
+								<circle cx="12" cy="12" r="4" />
+								<line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+							</svg></a
+						>
+						<a href="#" aria-label="X"
+							><svg class="icon" viewBox="0 0 24 24">
+								<path d="M4 4l16 16M20 4L4 20" />
+							</svg></a
+						>
+					</div>
+				</div>
+				<div class="foot-col">
+					<h4>Service</h4>
+					<a href="#">Shipping &amp; Returns</a>
+					<a href="#">Size Guide</a>
+					<a href="#">FAQ</a>
+					<a href="#">Contact Us</a>
+				</div>
+				<div class="foot-col">
+					<h4>Legal</h4>
+					<a href="#">Privacy Policy</a>
+					<a href="#">Terms of Service</a>
+				</div>
+				<div class="foot-col">
+					<h4>Index</h4>
+					<a href="#">Collection</a>
+					<a href="#">Campaign</a>
+					<a href="#">Archive</a>
+				</div>
+			</div>
+			<div class="year">2024</div>
+			<div class="foot-bottom"><span>© All Rights Reserved.</span></div>
+		</footer>
 
-<footer>
-  <div class="foot-grid">
-    <div>
-      <div class="foot-brand">Studio/Raw</div>
-      <p>Experimental commerce platform focused on quality over quantity. Founded 2024.</p>
-      <div class="socials">
-        <a href="#" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
-        <a href="#" aria-label="X"><svg class="icon" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
-      </div>
-    </div>
-    <div class="foot-col">
-      <h4>Service</h4>
-      <a href="#">Shipping &amp; Returns</a>
-      <a href="#">Size Guide</a>
-      <a href="#">FAQ</a>
-      <a href="#">Contact Us</a>
-    </div>
-    <div class="foot-col">
-      <h4>Legal</h4>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-    </div>
-    <div class="foot-col">
-      <h4>Index</h4>
-      <a href="#">Collection</a>
-      <a href="#">Campaign</a>
-      <a href="#">Archive</a>
-    </div>
-  </div>
-  <div class="year">2024</div>
-  <div class="foot-bottom"><span>© All Rights Reserved.</span></div>
-</footer>
-
-<script>
-  // staggered reveal on scroll
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:0.12});
-  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
-</script>
-</body>
+		<script>
+		// staggered reveal on scroll
+		const io = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((e) => {
+					if (e.isIntersecting) {
+						e.target.classList.add("in");
+						io.unobserve(e.target);
+					}
+				});
+			},
+			{ threshold: 0.12 },
+		);
+		document
+			.querySelectorAll(".reveal:not(.in)")
+			.forEach((el) => io.observe(el));
+		</script>
+	</body>
 </html>

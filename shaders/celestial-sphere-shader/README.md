@@ -1,5 +1,7 @@
 # Celestial Sphere Shader — Interactive Fractal Nebula WebGL Background with Cursor Warp (React + Three.js + Tailwind)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive WebGL fragment shader rendering a drifting fractal-noise nebula over a sparse twinkling star field whose entire field warps toward the cursor — integrated as a shadcn `@/components/ui` component and framed as a deep-field navigation console (VANTA-IX) with live telemetry, fader controls, and a cursor-tracking gimbal reticle. The verbatim GLSL is preserved with additive `hue`, `speed`, `zoom`, and `particleSize` props wired to a live control deck, making it a powerful full-bleed interactive hero background for landing pages and portfolios. Generated with Claude Fable 5.
 
 The shader component from the brief is integrated **verbatim** (the vertex /

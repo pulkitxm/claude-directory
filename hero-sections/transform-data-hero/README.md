@@ -1,5 +1,7 @@
 # Transform Data Hero — AI Data Hero Section (React + TypeScript + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A modern hero section over a full-screen looping video background for an AI data-transformation product. Features a "Transform Data Quickly" headline in Fustat 80px, a glassy AI-style search box with credit counter and action buttons, and a navigation bar — all overlaid on a full-bleed video with a custom requestAnimationFrame fade system. Built with React 18, TypeScript, Vite, and Tailwind CSS. Generated with Claude Fable 5.
 
 The video loop uses a **custom requestAnimationFrame fade system** (no CSS

@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en" class="selection:bg-blue selection:text-white scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Candidates — Hirewise</title>
+		<meta
+			name="description"
+			content="Discover talented professionals looking for their next opportunity on Hirewise."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"
+		></script>
+		<script>
+		(function () {
+			const t =
+				localStorage.getItem("theme") ||
+				(window.matchMedia("(prefers-color-scheme: dark)").matches
+					? "dark"
+					: "light");
+			document.documentElement.classList.toggle("dark", t === "dark");
+		})();
+		</script>
+	</head>
+	<body class="bg-white dark:bg-base-800 flex flex-col min-h-dvh">
+		<section id="navigation" class="overflow-hidden">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="bg-white dark:bg-base-800 py-4">
+					<div class="grid grid-cols-2 gap-4 items-center">
+						<a
+							href="index.html"
+							class="font-medium lowercase text-base-900 dark:text-white text-lg"
+							>hirewise®</a
+						>
+						<div class="flex items-center gap-2 text-sm justify-end">
+							<button
+								class="btn-secondary size-8 rounded"
+								id="jobSearchButton"
+								type="button"
+								aria-label="Search"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+									<path d="M21 21l-6 -6"></path>
+								</svg>
+							</button>
+							<button
+								class="btn-secondary size-8 rounded"
+								id="theme-toggle"
+								type="button"
+								aria-label="Toggle theme"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+									<path
+										d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
+									></path>
+								</svg>
+							</button>
+							<a
+								class="btn-secondary h-8 px-3 py-2 text-xs rounded whitespace-nowrap"
+								href="sign-in.html"
+								>Sign in</a
+							>
+							<a
+								class="btn-primary h-8 px-3 py-2 text-xs rounded whitespace-nowrap"
+								href="sign-up.html"
+								>Sign up</a
+							>
+							<button
+								class="btn-secondary size-8 rounded shrink-0"
+								id="menubutton"
+								type="button"
+								aria-controls="menu"
+								aria-label="Toggle menu"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M4 4h6v6h-6zm10 0h6v6h-6zm-10 10h6v6h-6zm10 0h6v6h-6z"
+									></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<nav
+						id="menu"
+						class="overflow-hidden relative outline outline-base-200 dark:outline-white/10 shadow dark:shadow-base-900 rounded-3xl bg-base-50 dark:bg-base-700 mt-4"
+						style="max-height:0;opacity:0;transition:max-height 0.5s ease-out, opacity 0.5s ease-out;"
+					>
+						<div class="p-8 grid grid-cols-1 lg:grid-cols-3 gap-y-8">
+							<div>
+								<h3 class="text-base text-base-900 dark:text-white font-medium">
+									Quick Links
+								</h3>
+								<nav class="mt-8">
+									<ul class="grid grid-cols-2 gap-y-1">
+										<li>
+											<a
+												href="index.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Browse Jobs</a
+											>
+										</li>
+										<li>
+											<a
+												href="companies.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Explore Companies</a
+											>
+										</li>
+										<li>
+											<a
+												href="candidates.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Find Candidates</a
+											>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div
+								class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:col-span-2 gap-4"
+							>
+								<div
+									class="bg-orange p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a href="jobs.html" class="absolute inset-0 z-10"></a>Jobs
+								</div>
+								<div
+									class="bg-blue p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a
+										href="companies.html"
+										class="absolute inset-0 z-10"
+									></a>Companies
+								</div>
+								<div
+									class="bg-yellow-light p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-base-900 font-semibold"
+								>
+									<a
+										href="candidates.html"
+										class="absolute inset-0 z-10"
+									></a>Candidates
+								</div>
+								<div
+									class="bg-green p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a href="blog.html" class="absolute inset-0 z-10"></a>News
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<main class="flex-1">
+			<!-- Hero -->
+			<div
+				class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24 pt-16 pb-12"
+			>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<!-- Left: copy -->
+					<div>
+						<p
+							class="text-xs flex items-center font-medium uppercase gap-2 text-base-500 dark:text-base-400"
+						>
+							<span class="flex items-center -space-x-2">
+								<span class="p-2 bg-yellow-light rounded-full"></span>
+								<span class="p-2 bg-blue-light rounded-full"></span>
+								<span class="p-2 bg-orange-light rounded-full"></span>
+								<span class="p-2 bg-green-light rounded-full"></span>
+							</span>
+							Candidates
+						</p>
+						<h1
+							class="mt-4 text-4xl lg:text-5xl font-semibold text-base-900 dark:text-white leading-tight"
+						>
+							Discover your next<br>great hire.
+						</h1>
+						<p class="mt-4 text-base text-base-500 dark:text-base-400 max-w-lg">
+							Browse a curated pool of talented candidates actively looking for
+							their next opportunity — filtered by role, experience level, or
+							location.
+						</p>
+						<a
+							href="#candidates-grid"
+							class="btn-primary inline-flex items-center gap-2 h-10 px-5 rounded mt-6 text-sm"
+							>Browse candidates</a
+						>
+
+						<!-- Decorative candidate cards -->
+						<div class="grid grid-cols-4 gap-3 mt-8 max-w-sm">
+							<div
+								class="bg-orange rounded-2xl p-3 flex flex-col justify-between"
+								style="height:100px"
+							>
+								<div
+									class="size-6 rounded-full bg-white/30 flex items-center justify-center text-white font-semibold text-xs"
+								>
+									CG
+								</div>
+								<p class="text-xs text-white font-medium leading-snug">
+									Product Designer
+								</p>
+							</div>
+							<div
+								class="bg-green rounded-2xl p-3 flex flex-col justify-between"
+								style="height:100px"
+							>
+								<div
+									class="size-6 rounded-full bg-white/30 flex items-center justify-center text-white font-semibold text-xs"
+								>
+									YS
+								</div>
+								<p class="text-xs text-white font-medium leading-snug">
+									Frontend Eng.
+								</p>
+							</div>
+							<div
+								class="bg-yellow-light rounded-2xl p-3 flex flex-col justify-between"
+								style="height:100px"
+							>
+								<div
+									class="size-6 rounded-full bg-base-900/20 flex items-center justify-center text-base-900 font-semibold text-xs"
+								>
+									AD
+								</div>
+								<p class="text-xs text-base-900 font-medium leading-snug">
+									Data Scientist
+								</p>
+							</div>
+							<div
+								class="bg-blue rounded-2xl p-3 flex flex-col justify-between"
+								style="height:100px"
+							>
+								<div
+									class="size-6 rounded-full bg-white/30 flex items-center justify-center text-white font-semibold text-xs"
+								>
+									LS
+								</div>
+								<p class="text-xs text-white font-medium leading-snug">
+									Backend Dev.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Right: stats -->
+					<div class="grid grid-cols-2 gap-4">
+						<div class="card p-6">
+							<p class="text-2xl font-semibold text-base-900 dark:text-white">
+								10,000+
+							</p>
+							<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+								Candidates available
+							</p>
+						</div>
+						<div class="card p-6">
+							<p class="text-2xl font-semibold text-base-900 dark:text-white">
+								Global
+							</p>
+							<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+								Talent network
+							</p>
+						</div>
+						<div class="card p-6">
+							<p class="text-2xl font-semibold text-base-900 dark:text-white">
+								Pre-vetted
+							</p>
+							<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+								Profiles only
+							</p>
+						</div>
+						<div class="card p-6">
+							<p class="text-2xl font-semibold text-base-900 dark:text-white">
+								Days
+							</p>
+							<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+								Hire in days, not weeks
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Featured Candidates -->
+			<div
+				class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24 py-12 border-t border-base-200 dark:border-base-700"
+			>
+				<div class="flex items-center gap-4 mb-6">
+					<h2 class="text-xl font-semibold text-base-900 dark:text-white">
+						Featured Candidates
+					</h2>
+					<div class="flex items-center -space-x-2">
+						<div
+							class="size-8 rounded-full border-2 border-white dark:border-base-800 flex items-center justify-center text-xs font-semibold"
+							style="background:#E8D5B7;color:#8B6914;"
+						>
+							CG
+						</div>
+						<div
+							class="size-8 rounded-full border-2 border-white dark:border-base-800 flex items-center justify-center text-xs font-semibold"
+							style="background:#B7D5E8;color:#14568B;"
+						>
+							YS
+						</div>
+						<div
+							class="size-8 rounded-full border-2 border-white dark:border-base-800 flex items-center justify-center text-xs font-semibold"
+							style="background:#D5B7E8;color:#6B148B;"
+						>
+							AD
+						</div>
+					</div>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+					<div class="card p-6">
+						<div class="flex items-center gap-3">
+							<div
+								class="avatar size-12"
+								style="background:#E8D5B7;color:#8B6914;"
+							>
+								CG
+							</div>
+							<div>
+								<h3 class="font-medium text-base-900 dark:text-white">
+									Carlos Garcia
+								</h3>
+								<p class="text-xs text-base-500 dark:text-base-400">
+									Madrid, Spain
+								</p>
+							</div>
+						</div>
+						<div class="flex flex-wrap gap-2 mt-3">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Junior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Product Designer</span
+							>
+						</div>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+							Passionate product designer with a keen eye for user-centered
+							experiences and visual craft.
+						</p>
+						<button class="btn-primary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div class="flex items-center gap-3">
+							<div
+								class="avatar size-12"
+								style="background:#B7D5E8;color:#14568B;"
+							>
+								YS
+							</div>
+							<div>
+								<h3 class="font-medium text-base-900 dark:text-white">
+									Yuki Sato
+								</h3>
+								<p class="text-xs text-base-500 dark:text-base-400">
+									Tokyo, Japan
+								</p>
+							</div>
+						</div>
+						<div class="flex flex-wrap gap-2 mt-3">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Mid-level</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Frontend Eng.</span
+							>
+						</div>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+							Frontend engineer who thrives at the intersection of design and
+							code, building fast, accessible UIs.
+						</p>
+						<button class="btn-primary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div class="flex items-center gap-3">
+							<div
+								class="avatar size-12"
+								style="background:#D5B7E8;color:#6B148B;"
+							>
+								AD
+							</div>
+							<div>
+								<h3 class="font-medium text-base-900 dark:text-white">
+									Amara Diallo
+								</h3>
+								<p class="text-xs text-base-500 dark:text-base-400">
+									Dakar, Senegal
+								</p>
+							</div>
+						</div>
+						<div class="flex flex-wrap gap-2 mt-3">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Senior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Data Scientist</span
+							>
+						</div>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+							Senior data scientist with deep expertise in ML pipelines, NLP,
+							and production model deployment.
+						</p>
+						<button class="btn-primary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- All Candidates -->
+			<div
+				id="candidates-grid"
+				class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24 py-12 border-t border-base-200 dark:border-base-700"
+			>
+				<div class="mb-8">
+					<h2 class="text-xl font-semibold text-base-900 dark:text-white">
+						Find the right candidate
+					</h2>
+					<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+						10 talented professionals available
+					</p>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#E8D5B7;color:#8B6914;"
+						>
+							CG
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Carlos Garcia
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							Madrid, Spain
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Junior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Product Designer</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#B7D5E8;color:#14568B;"
+						>
+							YS
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Yuki Sato
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							Tokyo, Japan
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Mid-level</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Frontend Eng.</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#D5B7E8;color:#6B148B;"
+						>
+							AD
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Amara Diallo
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							Dakar, Senegal
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Senior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Data Scientist</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#B7E8D5;color:#148B56;"
+						>
+							LS
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Lucas Silva
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							São Paulo, Brazil
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Junior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Backend Dev.</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#E8B7B7;color:#8B1414;"
+						>
+							PS
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Priya Sharma
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							Mumbai, India
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Mid-level</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>UX Researcher</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#B7B7E8;color:#14148B;"
+						>
+							EL
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Erik Larsen
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							Copenhagen, Denmark
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Senior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>DevOps Engineer</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#E8D5B7;color:#8B5614;"
+						>
+							FA
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Fatima Al-Hassan
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							Dubai, UAE
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Mid-level</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Marketing Mgr.</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#D5E8B7;color:#568B14;"
+						>
+							MC
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Mei Chen
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							Shanghai, China
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Senior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>ML Engineer</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#E8B7D5;color:#8B1456;"
+						>
+							JO
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							James Okafor
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							Lagos, Nigeria
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Junior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Sales Rep</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+					<div class="card p-6">
+						<div
+							class="avatar size-12"
+							style="background:#B7E8E8;color:#148B8B;"
+						>
+							SR
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Sofia Rossi
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">
+							Milan, Italy
+						</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Mid-level</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Content Writer</span
+							>
+						</div>
+						<button class="btn-secondary h-8 w-full text-xs rounded mt-4">
+							View profile
+						</button>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer class="mt-auto">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="py-12 border-t border-base-200 dark:border-base-700">
+					<div
+						class="flex flex-col sm:flex-row items-center justify-between gap-4"
+					>
+						<a
+							href="index.html"
+							class="font-medium lowercase text-base-900 dark:text-white text-lg"
+							>hirewise®</a
+						>
+						<p class="text-sm text-base-500 dark:text-base-400">
+							© 2025 Hirewise. All rights reserved.
+						</p>
+						<button
+							class="btn-secondary h-8 px-3 py-2 text-xs rounded"
+							id="footer-theme-toggle"
+							type="button"
+						>
+							Toggle theme
+						</button>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<button
+			id="chat-toggle"
+			class="btn-primary fixed bottom-5 right-5 z-50 size-11 rounded-full"
+			aria-label="Chat"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="size-5"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M8 9h8"></path>
+				<path d="M8 13h6"></path>
+				<path
+					d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"
+				></path>
+			</svg>
+		</button>
+		<div
+			id="chat-bubble"
+			class="fixed bottom-20 right-5 z-50 opacity-0 pointer-events-none transition-opacity"
+		>
+			<div class="bg-white dark:bg-base-700 card p-4 w-72 rounded-2xl">
+				<p class="font-medium text-base-900 dark:text-white">Chat with us</p>
+				<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+					We typically reply in a few minutes.
+				</p>
+				<button class="btn-primary w-full mt-4 h-9 px-4 rounded text-sm">
+					Start conversation
+				</button>
+			</div>
+		</div>
+
+		<script>
+		const themeToggle = document.getElementById("theme-toggle"),
+			footerToggle = document.getElementById("footer-theme-toggle");
+		function toggleTheme() {
+			const d = document.documentElement.classList.toggle("dark");
+			localStorage.setItem("theme", d ? "dark" : "light");
+		}
+		if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+		if (footerToggle) footerToggle.addEventListener("click", toggleTheme);
+		const menuBtn = document.getElementById("menubutton"),
+			menu = document.getElementById("menu");
+		let menuOpen = false;
+		if (menuBtn && menu) {
+			menuBtn.addEventListener("click", () => {
+				menuOpen = !menuOpen;
+				if (menuOpen) {
+					menu.style.maxHeight = "1000px";
+					menu.style.opacity = "1";
+				} else {
+					menu.style.maxHeight = "0";
+					menu.style.opacity = "0";
+				}
+			});
+		}
+		const searchBtn = document.getElementById("jobSearchButton");
+		let searchModalEl = null;
+		function buildSearchModal() {
+			if (searchModalEl) return;
+			const modal = document.createElement("div");
+			modal.className = "fixed inset-0 z-[9998] overflow-y-auto hidden";
+			modal.innerHTML = `<div class="min-h-screen px-4 text-center relative"><div class="fixed inset-0 bg-base-950/50 backdrop-blur z-[9998]" id="jobModalOverlay"></div><div class="inline-block w-full max-w-xl mb-8 mt-12 rounded-2xl overflow-hidden lg:mt-48 px-1.5 text-left align-middle relative z-[9999]"><div class="bg-white dark:bg-base-700 p-4 pb-2 w-full rounded-2xl"><div class="p-1"><input type="text" id="jobSearchInput" placeholder="Search everything..." class="block w-full h-10 px-4 py-2 text-sm border border-transparent rounded-lg bg-white dark:bg-base-800"></div><div id="jobSearchResults" class="max-h-[50vh] overflow-y-auto flex flex-col gap-1 p-1"></div></div></div></div>`;
+			document.body.appendChild(modal);
+			searchModalEl = modal;
+			document
+				.getElementById("jobModalOverlay")
+				.addEventListener("click", closeSearch);
+		}
+		function openSearch(e) {
+			e.preventDefault();
+			buildSearchModal();
+			searchModalEl.classList.remove("hidden");
+			document.body.style.overflow = "hidden";
+			setTimeout(() => document.getElementById("jobSearchInput")?.focus(), 100);
+		}
+		function closeSearch() {
+			if (searchModalEl) {
+				searchModalEl.classList.add("hidden");
+				document.body.style.overflow = "";
+			}
+		}
+		if (searchBtn) searchBtn.addEventListener("click", openSearch);
+		const chatToggle = document.getElementById("chat-toggle"),
+			chatBubble = document.getElementById("chat-bubble");
+		if (chatToggle && chatBubble) {
+			chatToggle.addEventListener("click", () => {
+				chatBubble.classList.toggle("opacity-0");
+				chatBubble.classList.toggle("pointer-events-none");
+			});
+			document.addEventListener("click", (e) => {
+				if (!chatBubble.contains(e.target) && !chatToggle.contains(e.target)) {
+					chatBubble.classList.add("opacity-0", "pointer-events-none");
+				}
+			});
+		}
+		</script>
+	</body>
+</html>

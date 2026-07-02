@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" type="image/x-icon" href="favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Primary Meta Tags -->
+		<title>404 Not Found | Originix</title>
+		<meta name="title" content="Originix">
+		<meta
+			name="description"
+			content="React business website template for startups and growing companies. Includes services, process, testimonials, blog, FAQs, and lead capture sections."
+		>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://originx.demos.tailgrids.com">
+		<meta
+			property="og:title"
+			content="Originix - React Startup and Business Website Template"
+		>
+		<meta
+			property="og:description"
+			content="React business website template for startups and growing companies. Includes services, process, testimonials, blog, FAQs, and lead capture sections."
+		>
+		<meta
+			property="og:image"
+			content="https://assets.tailgrids.com/1768899760800-originx-lg.png"
+		>
+
+		<link rel="stylesheet" crossorigin="" href="styles.css">
+
+		<script>
+		if (
+			localStorage.getItem("color-theme") === "dark" ||
+			(!("color-theme" in localStorage) &&
+				window.matchMedia("(prefers-color-scheme: dark)").matches)
+		) {
+			document.documentElement.classList.add("dark");
+		} else {
+			document.documentElement.classList.remove("dark");
+		}
+		</script>
+	</head>
+	<body class="overflow-x-hidden">
+		<div id="root">
+			<section class="pt-10 lg:pt-20 bg-[#F4F4F4] h-screen">
+				<div class="max-w-7xl mx-auto px-4 lg:px-6">
+					<div class="max-w-[500px]">
+						<h1 class="text-5xl font-semibold text-neutral-900 mb-4">
+							Oops! Page Not found
+						</h1>
+						<p class="text-neutral-500 mb-11 font-normal">
+							The page you're looking for isn't here. Try searching or browsing
+							our others pages for your needed info.
+						</p>
+						<a
+							class="bg-[rgba(255,136,150,0.20)] p-1 relative  inline-block"
+							href="index.html"
+							data-discover="true"
+							><span
+								class="w-[3px] h-[3px] bg-[linear-gradient(270deg,#FF8268_0%,#FE7EB2_100%)] absolute -top-px -left-px"
+							></span>
+							<span
+								class="w-[3px] h-[3px] bg-[linear-gradient(270deg,#FF8268_0%,#FE7EB2_100%)] absolute -top-px -right-px"
+							></span><span
+								class="w-[3px] h-[3px] bg-[linear-gradient(270deg,#FF8268_0%,#FE7EB2_100%)] absolute -bottom-px -left-px"
+							></span><span
+								class="w-[3px] h-[3px] bg-[linear-gradient(270deg,#FF8268_0%,#FE7EB2_100%)] absolute -bottom-px -right-px"
+							></span>
+							<div
+								class="text-white font-semibold text-sm py-2 px-4 rounded bg-[linear-gradient(270deg,#FF7C61_0%,#FF68A5_100%)] shadow-[inset_0_-4px_8px_0_rgba(255,255,255,0.20),inset_0_4px_4px_0_rgba(255,255,255,0.20)]"
+							>
+								Back To Home
+							</div></a
+						>
+					</div>
+					<div><img class="w-full" alt="" src="images/404.png"></div>
+				</div>
+			</section>
+		</div>
+
+		<script>
+		// Theme Toggle Logic
+		const themeToggleBtn = document.getElementById("theme-toggle");
+		const lightIcon = document.getElementById("theme-toggle-light-icon");
+		const darkIcon = document.getElementById("theme-toggle-dark-icon");
+
+		if (document.documentElement.classList.contains("dark")) {
+			lightIcon.classList.remove("hidden");
+		} else {
+			darkIcon.classList.remove("hidden");
+		}
+
+		themeToggleBtn.addEventListener("click", () => {
+			lightIcon.classList.toggle("hidden");
+			darkIcon.classList.toggle("hidden");
+			if (document.documentElement.classList.contains("dark")) {
+				document.documentElement.classList.remove("dark");
+				localStorage.setItem("color-theme", "light");
+			} else {
+				document.documentElement.classList.add("dark");
+				localStorage.setItem("color-theme", "dark");
+			}
+		});
+
+		// Mobile Menu Toggle Logic
+		const menuBtn = document.querySelector("header button.md\\:hidden");
+		if (menuBtn) {
+			// Find or create mobile menu
+			const navUl = document.querySelector("header ul");
+			if (navUl) {
+				// Let us build a beautiful mobile menu overlay
+				const mobileMenu = document.createElement("div");
+				mobileMenu.id = "mobile-menu-overlay";
+				mobileMenu.className =
+					"fixed inset-0 z-40 bg-white dark:bg-[#0f0f11] flex flex-col items-center justify-center gap-8 text-2xl font-semibold transition-all duration-300 opacity-0 pointer-events-none";
+
+				// Copy links
+				const links = navUl.querySelectorAll("a");
+				links.forEach((link) => {
+					const newLink = link.cloneNode(true);
+					newLink.className =
+						"text-neutral-900 hover:text-primary dark:text-neutral-100 transition-colors";
+					mobileMenu.appendChild(newLink);
+				});
+
+				// Add close button
+				const closeBtn = document.createElement("button");
+				closeBtn.className =
+					"absolute top-4 right-4 text-neutral-900 dark:text-neutral-100 focus:outline-none";
+				closeBtn.innerHTML =
+					'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+				mobileMenu.appendChild(closeBtn);
+
+				document.body.appendChild(mobileMenu);
+
+				menuBtn.addEventListener("click", () => {
+					mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+				});
+
+				closeBtn.addEventListener("click", () => {
+					mobileMenu.classList.add("opacity-0", "pointer-events-none");
+				});
+
+				mobileMenu.querySelectorAll("a").forEach((a) => {
+					a.addEventListener("click", () => {
+						mobileMenu.classList.add("opacity-0", "pointer-events-none");
+					});
+				});
+			}
+		}
+
+		// Sticky header on scroll
+		const header = document.querySelector("header");
+		if (header) {
+			window.addEventListener("scroll", () => {
+				if (window.scrollY > 10) {
+					header.classList.remove("bg-transparent");
+					header.classList.add(
+						"bg-white/80",
+						"dark:bg-[#0f0f11]/80",
+						"backdrop-blur-md",
+						"shadow-md",
+					);
+				} else {
+					header.classList.add("bg-transparent");
+					header.classList.remove(
+						"bg-white/80",
+						"dark:bg-[#0f0f11]/80",
+						"backdrop-blur-md",
+						"shadow-md",
+					);
+				}
+			});
+		}
+
+		// Accordion Toggle Logic
+		const accordionTriggers = document.querySelectorAll(
+			'button[class*="w-full"][class*="text-left"]',
+		);
+		accordionTriggers.forEach((trigger) => {
+			trigger.addEventListener("click", () => {
+				const content = trigger.nextElementSibling;
+				const svg = trigger.querySelector("svg");
+
+				if (content) {
+					if (content.style.maxHeight) {
+						content.style.maxHeight = null;
+						content.classList.add("hidden");
+						if (svg) svg.style.transform = "rotate(0deg)";
+					} else {
+						content.classList.remove("hidden");
+						content.style.maxHeight = content.scrollHeight + "px";
+						if (svg) svg.style.transform = "rotate(180deg)";
+					}
+				}
+			});
+		});
+
+		// Testimonials Slider Logic
+		const testimonials = document.querySelectorAll(".touch-pan-y > div");
+		const bullets = document.querySelectorAll(".absolute.left-0.top-0.h-full");
+		const prevBtn = document
+			.querySelector('button svg path[d*="L9 12.25"]')
+			?.closest("button");
+		const nextBtn = document
+			.querySelector('button svg path[d*="L15 12.75"]')
+			?.closest("button");
+		const textIndicator = document.querySelector(
+			".text-xl.font-medium.text-neutral-400 span",
+		);
+
+		if (testimonials.length > 0) {
+			let currentIndex = 0;
+			const total = testimonials.length;
+
+			const updateSlider = () => {
+				// In desktop, testimonials show 2 side by side (flex-[0_0_50%]). Let us simple slide them
+				const percent = window.innerWidth >= 1024 ? 50 : 100;
+				const container = document.querySelector(".touch-pan-y");
+				if (container) {
+					container.style.transition = "transform 0.3s ease-in-out";
+					container.style.transform = `translate3d(-${currentIndex * percent}%, 0px, 0px)`;
+				}
+				if (textIndicator) {
+					textIndicator.textContent = currentIndex + 1;
+				}
+				const activeBullet = document.querySelector(
+					".absolute.left-0.top-0.h-full.bg-\\[linear-gradient\\(270deg\\,#FF7C61_0\\%\\,#FF68A5_100\\%\\)\\]",
+				);
+				if (activeBullet) {
+					activeBullet.style.width = `${((currentIndex + 1) / total) * 100}%`;
+				}
+			};
+
+			if (prevBtn) {
+				prevBtn.addEventListener("click", () => {
+					currentIndex = (currentIndex - 1 + total) % total;
+					updateSlider();
+				});
+			}
+			if (nextBtn) {
+				nextBtn.addEventListener("click", () => {
+					currentIndex = (currentIndex + 1) % total;
+					updateSlider();
+				});
+			}
+		}
+
+		// Scroll animations
+		const animatedElements = document.querySelectorAll(
+			'[style*="translateY(50px)"], [style*="translateX(-50px)"], [style*="translateX(50px)"]',
+		);
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.style.opacity = "1";
+						entry.target.style.transform = "none";
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.1 },
+		);
+		animatedElements.forEach((el) => observer.observe(el));
+		</script>
+	</body>
+</html>

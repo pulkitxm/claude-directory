@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <title>About Us — NeonSpark</title>
+  <meta name="description" content="We're a group of passionate creators and problem-solvers dedicated to building the future of the web.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===================== DESIGN TOKENS ===================== */
+    :root {
+      --font-primary: 'Epilogue', sans-serif;
+      --color-body: #0c0c0c;
+      --color-dark: #000;
+      --color-secondary: #212121;
+      --color-primary: #fff;
+      --color-text: #f0f3f9;
+      --color-text-light: silver;
+      --color-text-dark: #1a1d21;
+      --color-border: #b3b8c2;
+      --color-light: #a0a0a0;
+      --border-gradient: linear-gradient(178deg,#1a1d21 1.71%,#6f6f6f 13.46%,#6f6f6f 50.1%,#6f6f6f 89.64%,#1a1d21 98.84%);
+      --color-gradient: linear-gradient(90deg,#919191 8.68%,#fff 23.34%,#fff 56.71%,#919191 100%);
+    }
+
+    /* ===================== RESET & BASE ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background-color: var(--color-body);
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      line-height: 1.625;
+      font-weight: 400;
+      color: var(--color-text-light);
+    }
+    img, svg, video { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-primary);
+      line-height: 1.25;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    h1 { font-size: 3.8147rem; font-weight: 400; }
+    h2 { font-size: 3.05176rem; font-weight: 400; }
+    h3 { font-size: 2.44141rem; }
+    h4 { font-size: 1.95313rem; }
+    h5 { font-size: 1.5625rem; }
+    h6 { font-size: 1.25rem; }
+    b, strong { font-weight: 600; }
+    em { font-style: italic; font-weight: 400 !important; }
+    textarea { resize: vertical; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+
+    /* ===================== LAYOUT ===================== */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .section {
+      padding: 104px 16px;
+    }
+    .section.pt-0 { padding-top: 0; }
+    .section.pb-0 { padding-bottom: 0; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
+    .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+    .col-8 { grid-column: span 8; }
+    .col-4 { grid-column: span 4; }
+    @media (max-width: 1024px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .grid-12 { grid-template-columns: 1fr; }
+      .col-8, .col-4 { grid-column: span 1; }
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 2.8rem; }
+      h2 { font-size: 2.2rem; }
+      h3 { font-size: 1.8rem; }
+      .section { padding: 60px 16px; }
+    }
+
+    /* ===================== GRADIENT UTILITIES ===================== */
+    .gradient-border {
+      position: relative;
+    }
+    .gradient-border::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: var(--border-gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .gradient-text {
+      background: var(--color-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    .gradient-text-secondary {
+      background: linear-gradient(90deg,#919191 8.68%,#fff 23.34%,#fff 56.71%,#919191 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    .bg-dark { background-color: var(--color-dark) !important; }
+    .bg-body { background-color: var(--color-body) !important; }
+    .card-bg {
+      background-color: rgba(33, 33, 33, 0.2);
+    }
+
+    /* ===================== HEADER / NAV ===================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      padding: 16px 8px;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 32px;
+      border-radius: 9999px;
+      background: rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: relative;
+    }
+    .navbar-brand img { height: 27px; width: 150px; }
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-link {
+      display: block;
+      padding: 12px 16px;
+      color: var(--color-text-light);
+      font-size: 1rem;
+      transition: color 0.15s;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--color-text); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-label {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      padding: 12px 16px;
+      color: var(--color-text-light);
+    }
+    .nav-dropdown-label:hover { color: var(--color-text); }
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: rgba(10, 10, 10, 0.95);
+      border: 1px solid rgba(111, 111, 111, 0.3);
+      border-radius: 0.5rem;
+      padding: 8px 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+    }
+    .nav-dropdown-link {
+      display: block;
+      padding: 8px 16px;
+      color: var(--color-text-light);
+      font-size: 0.875rem;
+      white-space: nowrap;
+    }
+    .nav-dropdown-link:hover { color: var(--color-text); }
+
+    /* Mobile nav toggle */
+    .nav-toggle { display: none; cursor: pointer; }
+    @media (max-width: 1024px) {
+      .navbar-nav { display: none; flex-direction: column; align-items: flex-start; }
+      .navbar-nav.open { display: flex; }
+      .navbar { flex-wrap: wrap; border-radius: 1rem; }
+      .nav-toggle { display: flex; flex-direction: column; gap: 5px; }
+      .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--color-text); border-radius: 2px; }
+      .nav-dropdown-menu { position: static; opacity: 1; visibility: visible; background: transparent; border: none; padding: 0; }
+    }
+
+    /* ===================== BUTTON ===================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1.625;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      border: 1px solid transparent;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-text-dark);
+      border-color: var(--color-primary);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--color-text);
+      border-color: var(--color-text);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); }
+    .btn-sm { padding: 6px 18px; font-size: 0.875rem; }
+
+    /* ===================== BADGE ===================== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      border: 1px solid rgba(111, 111, 111, 0.4);
+      font-size: 0.875rem;
+      color: var(--color-text);
+      background: rgba(33, 33, 33, 0.3);
+    }
+    .badge svg { flex-shrink: 0; }
+
+    /* ===================== HERO ===================== */
+    .page-hero {
+      background-color: var(--color-dark);
+      padding: 240px 0 160px;
+      position: relative;
+      z-index: 10;
+      overflow: hidden;
+    }
+    .page-hero .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.6;
+    }
+    @media (max-width: 768px) {
+      .page-hero { padding: 140px 0 80px; }
+    }
+
+    /* ===================== MISSION SECTION ===================== */
+    .mission-section {
+      padding: 104px 16px;
+      background: var(--color-body);
+    }
+    .mission-heading {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--color-text);
+      max-width: 900px;
+    }
+    .mission-heading em {
+      font-style: italic;
+    }
+
+    /* ===================== WHO WE ARE ===================== */
+    .who-we-are-img {
+      border-radius: 1rem;
+      overflow: hidden;
+      width: 100%;
+    }
+    .who-we-are-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .check-list { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--color-text-light);
+    }
+    .check-list li svg { flex-shrink: 0; margin-top: 4px; color: var(--color-primary); }
+    .check-list li span { color: var(--color-text); }
+
+    /* ===================== STATS ===================== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+    }
+    @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+    .stat-card {
+      text-align: center;
+      padding: 40px 24px;
+      border-radius: 1rem;
+      background: rgba(33, 33, 33, 0.2);
+      position: relative;
+    }
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1;
+      background: var(--color-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      margin-top: 8px;
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* ===================== HOW WE WORK ===================== */
+    .how-we-work-section { background: var(--color-dark); }
+    .work-step {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .work-step-img {
+      border-radius: 1rem;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+    }
+    .work-step-img img { width: 100%; height: 100%; object-fit: cover; }
+    .work-step-icon {
+      width: 48px;
+      height: 48px;
+    }
+    .work-step-number {
+      font-size: 0.875rem;
+      color: var(--color-light);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .work-step h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-top: 8px;
+    }
+    .work-step p { color: var(--color-text-light); margin-top: 8px; }
+
+    /* ===================== TESTIMONIALS ===================== */
+    .testimonials-section { background: var(--color-body); }
+    .testimonial-carousel { position: relative; overflow: hidden; }
+    .testimonial-track {
+      display: flex;
+      gap: 1.5rem;
+      transition: transform 0.4s ease;
+    }
+    .testimonial-card {
+      min-width: calc(33.333% - 1rem);
+      flex-shrink: 0;
+      padding: 40px;
+      border-radius: 1rem;
+      background: rgba(33, 33, 33, 0.2);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    @media (max-width: 1024px) { .testimonial-card { min-width: calc(50% - 0.75rem); } }
+    @media (max-width: 640px) { .testimonial-card { min-width: 100%; } }
+    .testimonial-stars { display: flex; gap: 4px; color: #facc15; }
+    .testimonial-text { color: var(--color-text-light); font-size: 1rem; line-height: 1.7; flex: 1; }
+    .testimonial-author { display: flex; align-items: center; gap: 16px; }
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .testimonial-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testimonial-name { color: var(--color-text); font-weight: 600; font-size: 0.95rem; }
+    .testimonial-role { color: var(--color-light); font-size: 0.8rem; }
+    .carousel-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+      justify-content: center;
+    }
+    .carousel-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid rgba(111, 111, 111, 0.5);
+      color: var(--color-text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .carousel-btn:hover { border-color: var(--color-text); background: rgba(255,255,255,0.05); }
+
+    /* Section header (centered) */
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .section-header p { max-width: 640px; font-size: 1.125rem; color: var(--color-text-light); }
+
+    /* ===================== CONTACT FORM (INLINE) ===================== */
+    .contact-form-section { background: var(--color-body); }
+    .contact-form-card {
+      background: rgba(33, 33, 33, 0.4);
+      border-radius: 0;
+      padding: 80px;
+      position: relative;
+    }
+    @media (max-width: 768px) { .contact-form-card { padding: 40px 24px; } }
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 1024px) { .contact-form-grid { grid-template-columns: 1fr; } }
+
+    /* ===================== FORMS ===================== */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text);
+      margin-bottom: 4px;
+    }
+    .form-label .req { color: #fb2c36; }
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(33, 33, 33, 0.4);
+      border: 1px solid rgba(111, 111, 111, 0.3);
+      border-radius: 0.5rem;
+      color: var(--color-text);
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input::placeholder { color: var(--color-light); opacity: 1; }
+    .form-input:focus { border-color: rgba(111, 111, 111, 0.7); }
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 16px 32px; }
+    .checkbox-field {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: var(--color-text-light);
+    }
+    .checkbox-field input[type="checkbox"] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1px solid rgba(111, 111, 111, 0.5);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .checkbox-field input[type="checkbox"]:checked { background: var(--color-primary); border-color: var(--color-primary); }
+    .checkbox-field input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      inset: 3px 3px;
+      background: var(--color-dark);
+      border-radius: 2px;
+    }
+    .checkbox-field span { font-size: 0.9rem; }
+
+    /* ===================== SCHEDULE CARD ===================== */
+    .schedule-card {
+      padding: 24px;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      position: relative;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .schedule-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--color-secondary);
+      flex-shrink: 0;
+    }
+    .schedule-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .schedule-calendar-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer { }
+    .footer-main {
+      background: var(--color-dark);
+      padding: 120px 0 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 80px;
+    }
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-logo img { height: 27px; width: 150px; }
+    .footer-desc { color: var(--color-text-light); margin-top: 24px; margin-bottom: 32px; }
+    .footer-heading { font-size: 1.25rem; font-weight: 500; color: #fff; margin-bottom: 24px; }
+    .footer-links li { margin-bottom: 16px; }
+    .footer-links a { color: var(--color-text-light); transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-info li { margin-bottom: 16px; color: var(--color-text-light); }
+    .social-icons ul { display: flex; gap: 16px; }
+    .social-icons li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(111, 111, 111, 0.3);
+      color: var(--color-text-light);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .social-icons li a:hover { color: #fff; border-color: rgba(111, 111, 111, 0.7); }
+    .newsletter-form {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(179, 184, 194, 0.4);
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .newsletter-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--color-text);
+      padding: 8px 0;
+      font-size: 0.9rem;
+    }
+    .newsletter-form input::placeholder { color: var(--color-light); }
+    .newsletter-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      color: var(--color-text-dark);
+    }
+    .footer-divider {
+      height: 1px;
+      background: var(--border-gradient);
+      margin: 0;
+    }
+    .footer-copyright {
+      padding: 20px 0;
+      text-align: center;
+      color: var(--color-text-light);
+      font-size: 0.875rem;
+    }
+    .footer-copyright a { text-decoration: underline; color: inherit; }
+    .footer-watermark {
+      background: var(--color-dark);
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      height: 160px;
+    }
+    .footer-watermark h1 {
+      font-size: 11vw;
+      font-weight: 500;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      transform: translateY(20px);
+      background: linear-gradient(90deg,#919191 8.68%,#fff 23.34%,#fff 56.71%,#919191 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+
+    /* ===================== GRID-LINE DECORATION ===================== */
+    .grid-line {
+      background-image: linear-gradient(rgba(111,111,111,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(111,111,111,0.1) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    /* ===================== TEXT UTILS ===================== */
+    .text-center { text-align: center; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mt-8 { margin-top: 2rem; }
+    .mt-10 { margin-top: 2.5rem; }
+    .mt-12 { margin-top: 3rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mb-14 { margin-bottom: 3.5rem; }
+    .mb-15 { margin-bottom: 3.75rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-sm { font-size: 0.875rem; }
+    .text-light { color: var(--color-text-light); }
+    .text-primary { color: var(--color-primary); }
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .items-start { align-items: flex-start; }
+    .justify-between { justify-content: space-between; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-6 { gap: 1.5rem; }
+    .font-medium { font-weight: 500; }
+    .font-semibold { font-weight: 600; }
+    .pr-10 { padding-right: 2.5rem; }
+
+    /* ===================== ANIMATIONS ===================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+    .fade-in-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .fade-in-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="header">
+  <nav class="navbar gradient-border">
+    <div style="display:flex;align-items:center;">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.png" alt="NeonSpark" width="150" height="27">
+      </a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" style="display:none;background:none;border:none;cursor:pointer;padding:8px;">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="currentColor" style="color:var(--color-text);">
+        <rect y="0" width="22" height="2" rx="1"/>
+        <rect y="7" width="22" height="2" rx="1"/>
+        <rect y="14" width="22" height="2" rx="1"/>
+      </svg>
+    </button>
+    <ul class="navbar-nav" id="navMenu">
+      <li><a class="nav-link" href="index.html">Home</a></li>
+      <li><a class="nav-link active" href="about.html">About</a></li>
+      <li><a class="nav-link" href="contact.html">Contact</a></li>
+      <li class="nav-dropdown">
+        <span class="nav-dropdown-label">
+          Pages
+          <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </span>
+        <ul class="nav-dropdown-menu">
+          <li><a class="nav-dropdown-link" href="#">Teams</a></li>
+          <li><a class="nav-dropdown-link" href="#">Blog</a></li>
+          <li><a class="nav-dropdown-link" href="#">Blog Details</a></li>
+          <li><a class="nav-dropdown-link" href="#">FAQ</a></li>
+          <li><a class="nav-dropdown-link" href="#">Services</a></li>
+          <li><a class="nav-dropdown-link" href="#">Work</a></li>
+          <li><a class="nav-dropdown-link" href="#">Career</a></li>
+          <li><a class="nav-dropdown-link" href="#">Pricing</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-primary" style="display:none;" id="navGetStarted">Get Started</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ==================== PAGE HERO ==================== -->
+<section class="page-hero">
+  <img src="assets/images/hero-light.svg" alt="" class="hero-bg" aria-hidden="true">
+  <div class="container">
+    <div class="grid-2" style="gap:2rem;align-items:center;">
+      <div>
+        <div class="badge" style="margin-bottom:1.5rem;">
+          <svg width="7" height="6" viewBox="0 0 7 6" fill="none"><circle cx="3.5" cy="3" r="3" fill="white"/></svg>
+          <span>About</span>
+        </div>
+        <h2 class="gradient-text" style="font-size:3.8147rem;font-weight:400;">About <em>Us</em></h2>
+      </div>
+      <p class="text-lg" style="color:var(--color-text-light);">
+        We're not just a team of developers; we're a group of passionate creators and problem-solvers dedicated to building the future of the web. We believe that a great website is more than just code—it's the foundation of a thriving digital identity.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MISSION ==================== -->
+<section class="section grid-line" style="background:var(--color-body);padding:104px 16px;">
+  <div class="container">
+    <div style="margin-bottom:3.75rem;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;margin-bottom:3rem;">
+        <div>
+          <div class="badge" style="margin-bottom:1rem;">
+            <svg width="7" height="6" viewBox="0 0 7 6" fill="none"><circle cx="3.5" cy="3" r="3" fill="white"/></svg>
+            <span>Our Mission</span>
+          </div>
+        </div>
+        <div></div>
+      </div>
+      <div class="mission-heading" style="max-width:100%;">
+        We create impactful Experiences For our clients <em>Customers every time</em>
+      </div>
+    </div>
+
+    <!-- Who We Are -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;" class="who-we-are-grid">
+      <div class="who-we-are-img gradient-border" style="border-radius:1rem;">
+        <img src="assets/images/about/who-we-are.png" alt="Who We Are" style="width:100%;border-radius:1rem;display:block;">
+      </div>
+      <div>
+        <div class="badge mb-4">
+          <svg width="7" height="6" viewBox="0 0 7 6" fill="none"><circle cx="3.5" cy="3" r="3" fill="white"/></svg>
+          <span>Who We Are</span>
+        </div>
+        <h3 style="font-size:2.44141rem;font-weight:400;margin-bottom:1.5rem;color:var(--color-text);">
+          We Are A <em>Creative Agency</em> Focused On Growth
+        </h3>
+        <p style="color:var(--color-text-light);margin-bottom:1.5rem;line-height:1.75;">
+          We are a team of passionate designers, developers, and strategists dedicated to crafting digital experiences that make a lasting impact. Founded with a vision to bridge creativity and technology, we've helped hundreds of businesses build their online presence.
+        </p>
+        <ul class="check-list">
+          <li>
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+            <span>10+ years of industry experience in digital transformation</span>
+          </li>
+          <li>
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+            <span>200+ successful projects delivered across diverse industries</span>
+          </li>
+          <li>
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+            <span>50+ happy clients who trust us with their digital growth</span>
+          </li>
+          <li>
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+            <span>Award-winning designs recognized globally</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid mt-12">
+      <div class="stat-card gradient-border">
+        <div class="stat-number" data-target="5" data-suffix="+">0+</div>
+        <div class="stat-label">Years<br>Experience</div>
+      </div>
+      <div class="stat-card gradient-border">
+        <div class="stat-number" data-target="10" data-suffix="+">0+</div>
+        <div class="stat-label">Years Of<br>SEO Expertise</div>
+      </div>
+      <div class="stat-card gradient-border">
+        <div class="stat-number" data-target="200" data-suffix="+">0+</div>
+        <div class="stat-label">Projects<br>Completed</div>
+      </div>
+      <div class="stat-card gradient-border">
+        <div class="stat-number" data-target="50" data-suffix="+">0+</div>
+        <div class="stat-label">Happy<br>Clients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HOW WE WORK ==================== -->
+<section class="section bg-dark" style="padding:104px 0;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3.75rem;align-items:center;overflow:hidden;" class="how-work-header">
+      <div>
+        <div class="badge mb-4">
+          <svg width="7" height="6" viewBox="0 0 7 6" fill="none"><circle cx="3.5" cy="3" r="3" fill="white"/></svg>
+          <span>Our Process</span>
+        </div>
+        <h2 style="font-weight:400;" class="gradient-text"><strong>How We</strong> <em>Work</em></h2>
+      </div>
+      <p class="text-lg" style="color:var(--color-text-light);">
+        Our proven process ensures every project is delivered with precision, creativity, and strategic thinking to achieve maximum impact.
+      </p>
+    </div>
+    <div class="grid-3">
+      <div class="work-step">
+        <div class="work-step-img gradient-border">
+          <img src="assets/images/sections/how-we-work/discover-1.png" alt="Discover">
+        </div>
+        <div>
+          <img src="assets/images/sections/how-we-work/discover-icon.svg" alt="" class="work-step-icon" style="margin-bottom:12px;">
+          <p class="work-step-number">Step 01</p>
+          <h3 class="work-step" style="font-size:1.5rem;color:var(--color-text);margin-top:8px;font-weight:600;">Discover &amp; Research</h3>
+          <p class="work-step" style="color:var(--color-text-light);margin-top:8px;">
+            We dive deep into understanding your business, your goals, and your audience to uncover opportunities and define a clear strategic direction.
+          </p>
+        </div>
+      </div>
+      <div class="work-step">
+        <div class="work-step-img gradient-border">
+          <img src="assets/images/sections/how-we-work/discover-2.png" alt="Design">
+        </div>
+        <div>
+          <img src="assets/images/sections/how-we-work/discover-icon.svg" alt="" class="work-step-icon" style="margin-bottom:12px;">
+          <p class="work-step-number">Step 02</p>
+          <h3 class="work-step" style="font-size:1.5rem;color:var(--color-text);margin-top:8px;font-weight:600;">Design &amp; Prototype</h3>
+          <p class="work-step" style="color:var(--color-text-light);margin-top:8px;">
+            Our creative team crafts visually stunning designs that align with your brand identity while prioritizing user experience and engagement.
+          </p>
+        </div>
+      </div>
+      <div class="work-step">
+        <div class="work-step-img gradient-border" style="background:rgba(33,33,33,0.3);display:flex;align-items:center;justify-content:center;">
+          <img src="assets/images/sections/how-we-work/discover-3.svg" alt="Deliver" style="max-width:80%;max-height:200px;object-fit:contain;">
+        </div>
+        <div>
+          <img src="assets/images/sections/how-we-work/discover-icon.svg" alt="" class="work-step-icon" style="margin-bottom:12px;">
+          <p class="work-step-number">Step 03</p>
+          <h3 class="work-step" style="font-size:1.5rem;color:var(--color-text);margin-top:8px;font-weight:600;">Develop &amp; Deliver</h3>
+          <p class="work-step" style="color:var(--color-text-light);margin-top:8px;">
+            We build robust, scalable solutions with cutting-edge technology, test rigorously, and launch your project with ongoing support and optimization.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TESTIMONIALS ==================== -->
+<section class="section grid-line" style="background:var(--color-body);padding:104px 0;">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">
+        <svg width="7" height="6" viewBox="0 0 7 6" fill="none"><circle cx="3.5" cy="3" r="3" fill="white"/></svg>
+        <span>Testimonials</span>
+      </div>
+      <h2 class="gradient-text mt-4"><strong>What Our</strong> <em>Clients Say</em></h2>
+      <p>Real stories from real clients who trusted us with their digital vision and came out ahead.</p>
+    </div>
+
+    <div class="testimonial-carousel" id="testimonialCarousel">
+      <div class="testimonial-track" id="testimonialTrack">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card gradient-border">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="testimonial-text">"Working with this team was an absolute game-changer for our business. They delivered a website that not only looks stunning but also converts visitors into customers at an incredible rate."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="assets/images/sections/testimonials/Sarah Johnson.png" alt="Sarah Johnson">
+            </div>
+            <div>
+              <div class="testimonial-name">Sarah Johnson</div>
+              <div class="testimonial-role">CEO, TechVision Inc.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card gradient-border">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="testimonial-text">"The attention to detail and creative vision they brought to our rebranding project was exceptional. Our online presence has never been stronger, and customer engagement is up 180%."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="assets/images/sections/testimonials/Michael Chen.png" alt="Michael Chen">
+            </div>
+            <div>
+              <div class="testimonial-name">Michael Chen</div>
+              <div class="testimonial-role">Marketing Director, Apex Corp</div>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card gradient-border">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="testimonial-text">"From the initial discovery session to the final launch, every step was handled with professionalism and care. They understood our vision perfectly and delivered beyond expectations."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="assets/images/sections/testimonials/Emily Rodriguez.png" alt="Emily Rodriguez">
+            </div>
+            <div>
+              <div class="testimonial-name">Emily Rodriguez</div>
+              <div class="testimonial-role">Founder, CloudBridge</div>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card gradient-border">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="testimonial-text">"The SEO results have been phenomenal. Within 6 months, our organic traffic tripled and we're ranking on the first page for all our target keywords. Incredible work!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="assets/images/sections/testimonials/David Thompson.png" alt="David Thompson">
+            </div>
+            <div>
+              <div class="testimonial-name">David Thompson</div>
+              <div class="testimonial-role">CMO, GrowthLab</div>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 5 -->
+        <div class="testimonial-card gradient-border">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="testimonial-text">"Their mobile app development expertise is second to none. They built a flawless app that our users love, and the ongoing support has been consistently excellent."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="assets/images/sections/testimonials/Lisa Anderson.png" alt="Lisa Anderson">
+            </div>
+            <div>
+              <div class="testimonial-name">Lisa Anderson</div>
+              <div class="testimonial-role">Product Manager, NextGen Apps</div>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 6 -->
+        <div class="testimonial-card gradient-border">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          </div>
+          <p class="testimonial-text">"The UI/UX design overhaul they did for our platform reduced our bounce rate by 60%. Users are spending so much more time engaging with our content now."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="assets/images/sections/testimonials/Courtney Henry.png" alt="Courtney Henry">
+            </div>
+            <div>
+              <div class="testimonial-name">Courtney Henry</div>
+              <div class="testimonial-role">Creative Director, DesignHive</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous testimonials">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next testimonials">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT FORM ==================== -->
+<section class="section grid-line pt-0" style="padding:0 16px 104px;">
+  <div class="container">
+    <div class="contact-form-card gradient-border">
+      <div class="contact-form-grid">
+        <div>
+          <h2 style="font-size:2.5rem;font-weight:400;margin-bottom:2rem;">
+            <strong>Have a Project?</strong><br><em>Let's talk!</em>
+          </h2>
+          <ul class="check-list">
+            <li>
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+              <span>Your ideas are safe with us.</span>
+            </li>
+            <li>
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+              <span>We're quick to respond.</span>
+            </li>
+            <li>
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+              <span>You'll work with the best.</span>
+            </li>
+          </ul>
+          <div style="margin-top:48px;">
+            <h3 style="font-size:1.25rem;margin-bottom:24px;color:var(--color-text);">Schedule a call with:</h3>
+            <a href="https://calendly.com/" class="schedule-card gradient-border" style="border-radius:1rem;display:flex;align-items:center;justify-content:space-between;padding:24px;text-decoration:none;">
+              <div style="display:flex;align-items:center;gap:16px;">
+                <div class="schedule-avatar">
+                  <img src="assets/images/teams/team-1.png" alt="Kathryn Murphy">
+                </div>
+                <div>
+                  <h4 style="font-weight:500;font-size:1rem;margin-bottom:4px;color:var(--color-text);">Kathryn Murphy</h4>
+                  <p style="font-size:0.875rem;color:var(--color-text-light);">Head of Partnerships</p>
+                </div>
+              </div>
+              <div class="schedule-calendar-btn gradient-border" style="border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="14" width="14"><path d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"/></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div>
+          <form action="#" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div class="form-group">
+              <label class="form-label" for="cf-name">Your Name <span class="req">*</span></label>
+              <input type="text" id="cf-name" class="form-input" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-email">Your Email <span class="req">*</span></label>
+              <input type="email" id="cf-email" class="form-input" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-budget">Your Project Budget <span class="req">*</span></label>
+              <input type="text" id="cf-budget" class="form-input" placeholder="Enter your project budget" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-source">How did you hear about us?</label>
+              <input type="text" id="cf-source" class="form-input" placeholder="Enter how you heard about us">
+            </div>
+            <div class="form-group" style="grid-column:1/-1;">
+              <label class="form-label" for="cf-message">Tell us about your project and goals <span class="req">*</span></label>
+              <textarea id="cf-message" class="form-input" placeholder="Enter your message" rows="5" required></textarea>
+            </div>
+            <div style="grid-column:1/-1;">
+              <label class="form-label" style="margin-bottom:16px;display:block;">How can we help you? (Select all that apply)</label>
+              <div class="checkbox-group">
+                <label class="checkbox-field"><input type="checkbox" name="help" value="web"> <span>Web Development</span></label>
+                <label class="checkbox-field"><input type="checkbox" name="help" value="mobile"> <span>Mobile App Development</span></label>
+                <label class="checkbox-field"><input type="checkbox" name="help" value="uiux"> <span>UI/UX Design</span></label>
+                <label class="checkbox-field"><input type="checkbox" name="help" value="marketing"> <span>Digital Marketing</span></label>
+                <label class="checkbox-field"><input type="checkbox" name="help" value="seo"> <span>SEO Services</span></label>
+                <label class="checkbox-field"><input type="checkbox" name="help" value="other"> <span>Other</span></label>
+              </div>
+            </div>
+            <div style="grid-column:1/-1;margin-top:16px;">
+              <button type="submit" class="btn btn-primary">Request A Project</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Logo + desc + social -->
+        <div>
+          <a href="index.html" class="footer-logo">
+            <img src="assets/images/logo.png" alt="NeonSpark">
+          </a>
+          <p class="footer-desc">This membership will help you plan and execute a variety of projects.</p>
+          <div class="social-icons">
+            <ul>
+              <li>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Facebook">
+                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="16" width="16"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/" target="_blank" rel="noopener noreferrer nofollow" aria-label="X">
+                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="16" width="16"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer nofollow" aria-label="LinkedIn">
+                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h2 class="footer-heading">Quick Links</h2>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Services</a></li>
+          </ul>
+        </div>
+        <!-- Col 3: Support -->
+        <div>
+          <h2 class="footer-heading">Support</h2>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Terms and Condition</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <!-- Col 4: Contact + Newsletter -->
+        <div>
+          <h2 class="footer-heading">Contact</h2>
+          <ul class="footer-info">
+            <li>1234 Street Name, City, England</li>
+            <li>+1 234 567 890</li>
+            <li>info@example.com</li>
+          </ul>
+          <h2 class="footer-heading" style="margin-top:2rem;margin-bottom:0.75rem;">Subscribe Newsletter</h2>
+          <form class="newsletter-form" action="#">
+            <input type="email" placeholder="Enter your email" required aria-label="Email for newsletter">
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="20" width="20"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-copyright">Designed And Developed by <a href="https://themefisher.com">Themefisher</a>.</p>
+    </div>
+  </div>
+  <div class="footer-watermark">
+    <h1>NeonSpark</h1>
+  </div>
+</footer>
+
+<script>
+  /* ==================== MOBILE NAV ==================== */
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  const navGetStarted = document.getElementById('navGetStarted');
+
+  function checkMobile() {
+    if (window.innerWidth <= 1024) {
+      navToggle.style.display = 'flex';
+      navGetStarted.style.display = 'none';
+    } else {
+      navToggle.style.display = 'none';
+      navGetStarted.style.display = 'inline-flex';
+      navMenu.classList.remove('open');
+    }
+  }
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+  });
+
+  /* ==================== COUNT-UP ANIMATION ==================== */
+  function countUp(el, target, suffix, duration = 1500) {
+    let start = 0;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        start = target;
+        clearInterval(timer);
+      }
+      el.textContent = Math.floor(start) + suffix;
+    }, 16);
+  }
+
+  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+  const observed = new Set();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !observed.has(entry.target)) {
+        observed.add(entry.target);
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target'));
+        const suffix = el.getAttribute('data-suffix') || '';
+        countUp(el, target, suffix);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statNumbers.forEach(el => observer.observe(el));
+
+  /* ==================== TESTIMONIALS CAROUSEL ==================== */
+  const track = document.getElementById('testimonialTrack');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIndex = 0;
+
+  function getVisibleCount() {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 640) return 2;
+    return 1;
+  }
+
+  function updateCarousel() {
+    const cards = track.querySelectorAll('.testimonial-card');
+    const totalCards = cards.length;
+    const visibleCount = getVisibleCount();
+    const maxIndex = totalCards - visibleCount;
+    currentIndex = Math.min(currentIndex, maxIndex);
+    currentIndex = Math.max(currentIndex, 0);
+
+    // Calculate card width
+    const carousel = document.getElementById('testimonialCarousel');
+    const containerWidth = carousel.offsetWidth;
+    const gap = 24;
+    const cardWidth = (containerWidth - gap * (visibleCount - 1)) / visibleCount;
+    const offset = currentIndex * (cardWidth + gap);
+    track.style.transform = `translateX(-${offset}px)`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = Math.max(0, currentIndex - 1);
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const cards = track.querySelectorAll('.testimonial-card');
+    const maxIndex = cards.length - getVisibleCount();
+    currentIndex = Math.min(maxIndex, currentIndex + 1);
+    updateCarousel();
+  });
+
+  window.addEventListener('resize', updateCarousel);
+
+  /* ==================== STICKY HEADER STYLE ==================== */
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 20) {
+      header.style.setProperty('--header-bg', 'rgba(0,0,0,0.8)');
+    }
+  });
+
+  /* ==================== RESPONSIVE GRIDS ==================== */
+  function applyResponsiveGrids() {
+    const w = window.innerWidth;
+    // who-we-are grid
+    const whoGrid = document.querySelector('.who-we-are-grid');
+    if (whoGrid) {
+      whoGrid.style.gridTemplateColumns = w <= 1024 ? '1fr' : '1fr 1fr';
+    }
+    // how-work header
+    const howWorkHeader = document.querySelector('.how-work-header');
+    if (howWorkHeader) {
+      howWorkHeader.style.gridTemplateColumns = w <= 1024 ? '1fr' : '1fr 1fr';
+    }
+    // grid-2 generic
+    document.querySelectorAll('.grid-2').forEach(el => {
+      el.style.gridTemplateColumns = w <= 768 ? '1fr' : '1fr 1fr';
+    });
+    // grid-3
+    document.querySelectorAll('.grid-3').forEach(el => {
+      el.style.gridTemplateColumns = w <= 640 ? '1fr' : w <= 1024 ? '1fr 1fr' : 'repeat(3, 1fr)';
+    });
+    // stats-grid
+    const statsGrid = document.querySelector('.stats-grid');
+    if (statsGrid) {
+      if (w <= 640) statsGrid.style.gridTemplateColumns = '1fr 1fr';
+      else if (w <= 1024) statsGrid.style.gridTemplateColumns = '1fr 1fr';
+      else statsGrid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    }
+    // contact-form-grid
+    const cfGrid = document.querySelector('.contact-form-grid');
+    if (cfGrid) {
+      cfGrid.style.gridTemplateColumns = w <= 1024 ? '1fr' : '1fr 1fr';
+    }
+    // footer-grid
+    const fGrid = document.querySelector('.footer-grid');
+    if (fGrid) {
+      if (w <= 640) fGrid.style.gridTemplateColumns = '1fr';
+      else if (w <= 1024) fGrid.style.gridTemplateColumns = '1fr 1fr';
+      else fGrid.style.gridTemplateColumns = '1fr 1fr 1fr 1fr';
+    }
+    // form-row grids inside contact form
+    document.querySelectorAll('.contact-form-card form').forEach(form => {
+      form.style.gridTemplateColumns = w <= 640 ? '1fr' : '1fr 1fr';
+    });
+  }
+  applyResponsiveGrids();
+  window.addEventListener('resize', applyResponsiveGrids);
+</script>
+</body>
+</html>

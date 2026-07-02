@@ -1,5 +1,7 @@
 # Moving Circles Shader — Animated Full-Screen GLSL Background (React Three Fiber + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn/ui integration of a full-screen GLSL fragment shader rendered through React Three Fiber. A fullscreen plane carries a `ShaderMaterial` whose fragment shader animates a field of moving circles driven by `uTime` and `uResolution` uniforms (updated each frame via `useFrame`), with depth test/write disabled so it draws as a flat full-bleed background. Built with React + TypeScript + Vite + Tailwind CSS, using `three` and `@react-three/fiber`. Generated with Claude Fable 5.
 
 ## Run

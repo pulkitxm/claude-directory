@@ -1,5 +1,7 @@
 # Liquid Crystal Shader — Interactive WebGL Simplex-Noise Interference Bands (React + TypeScript + WebGL)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive raw-WebGL fragment shader featuring simplex-noise interference bands on a full-screen quad, warped by the pointer, integrated as a shadcn `@/components/ui` component and framed as a polarized-light microscopy bench. The six live uniforms — hue, speed, noise, warp, zoom, brightness — are controlled by the prompt's `ControlsPanel`, while a specimen reticle, instrument telemetry rail, and optical mineralogy band readout complete the microscopy metaphor. Built with React 18, TypeScript, Vite 6, and Tailwind CSS v3 using raw WebGL — no Three.js. Generated with Claude Fable 5.
 
 The component from the prompt is integrated verbatim at

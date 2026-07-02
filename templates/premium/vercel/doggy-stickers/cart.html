@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Your Cart — Doggy Stickers</title>
+		<link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+		<script>
+			window.__DOGGY_DEPTH__ = 0;
+		</script>
+		<script src="js/theme-boot.js"></script>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<div class="flex-col-wrapper">
+			<header class="site-header" data-site-header></header>
+
+			<main>
+				<section class="cart-page">
+					<h1>Your Cart</h1>
+
+					<table class="cart-table">
+						<thead>
+							<tr>
+								<th>Product</th>
+								<th>Quantity</th>
+								<th>Price</th>
+								<th>Remove</th>
+							</tr>
+						</thead>
+						<tbody id="cart-rows"></tbody>
+					</table>
+
+					<div class="cart-actions">
+						<button class="btn btn-solid btn-block" id="checkout-btn" type="button">
+							Check Out
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								width="18"
+								height="18"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path d="M5 12h14M13 6l6 6-6 6" />
+							</svg>
+						</button>
+						<a class="btn btn-outline btn-block" href="index.html">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								width="18"
+								height="18"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path d="M19 12H5M11 18l-6-6 6-6" />
+							</svg>
+							Back To All Products
+						</a>
+					</div>
+				</section>
+			</main>
+
+			<footer class="site-footer" data-site-footer></footer>
+		</div>
+
+		<script src="js/products.js"></script>
+		<script src="js/cart.js"></script>
+		<script>
+			(function () {
+				function priceNum(str) {
+					return parseFloat(str.replace("$", "")) || 0;
+				}
+
+				function render() {
+					const items = window.DoggyCart.read();
+					const tbody = document.getElementById("cart-rows");
+
+					if (!items.length) {
+						// Reserve the same visual space as the original's empty cart body.
+						tbody.innerHTML =
+							'<tr aria-hidden="true"><td colspan="4" style="height:280px;border-bottom:none;padding:0"></td></tr>';
+						return;
+					}
+
+					tbody.innerHTML = items
+						.map((item, i) => {
+							const product = window.DOGGY_PRODUCTS.find(
+								(p) => p.slug === item.slug,
+							);
+							if (!product) return "";
+							const lineTotal = (
+								priceNum(product.price) * item.qty
+							).toFixed(2);
+							return `
+                <tr>
+                  <td>
+                    <div class="cart-row-product">
+                      <img src="assets/img/${product.images[0]}" alt="${product.title}" />
+                      <div>
+                        <div class="product-title" style="font-size:1rem;margin:0">${product.title}</div>
+                        <div class="cart-row-size" style="font-size:0.85rem;color:rgb(var(--color-fg-muted))">Size: ${item.size || "3 x 3"}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <input class="cart-qty-input" type="number" min="1" value="${item.qty}" data-qty-index="${i}" />
+                  </td>
+                  <td>$${lineTotal}</td>
+                  <td>
+                    <button class="cart-remove" data-remove-index="${i}" aria-label="Remove ${product.title}">✕</button>
+                  </td>
+                </tr>
+              `;
+						})
+						.join("");
+
+					tbody.querySelectorAll("[data-qty-index]").forEach((input) => {
+						input.addEventListener("change", (e) => {
+							const idx = parseInt(e.target.dataset.qtyIndex, 10);
+							window.DoggyCart.setQty(idx, parseInt(e.target.value, 10) || 1);
+							render();
+						});
+					});
+					tbody.querySelectorAll("[data-remove-index]").forEach((btn) => {
+						btn.addEventListener("click", (e) => {
+							const idx = parseInt(
+								e.currentTarget.dataset.removeIndex,
+								10,
+							);
+							window.DoggyCart.remove(idx);
+							render();
+						});
+					});
+				}
+
+				document.addEventListener("DOMContentLoaded", () => {
+					render();
+					document
+						.getElementById("checkout-btn")
+						.addEventListener("click", () => {
+							// The original checks out through a private Shopify store —
+							// this clone can only acknowledge the action locally.
+							alert(
+								"This is a static clone — checkout isn't wired to a real store.",
+							);
+						});
+				});
+			})();
+		</script>
+	</body>
+</html>

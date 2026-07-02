@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Work with Hive — Contact</title>
+		<meta
+			name="description"
+			content="Work with Hive — tell us about your project and we'll be in touch to kick things off."
+		>
+		<link rel="icon" href="assets/favicon.svg">
+		<script>
+		try {
+			var t = localStorage.getItem("hive-theme");
+			if (
+				t === "dark" ||
+				(!t && matchMedia("(prefers-color-scheme:dark)").matches)
+			)
+				document.documentElement.classList.add("dark");
+		} catch (e) {}
+		</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="assets/css/tokens.css">
+		<link rel="stylesheet" href="assets/css/styles.css">
+		<link rel="stylesheet" href="assets/css/contact.css">
+	</head>
+	<body>
+		<header data-header></header>
+		<main class="contact-main">
+			<div class="container contact-grid reveal">
+				<div class="contact-left">
+					<h1 class="h-hero">Work with Hive</h1>
+				</div>
+				<div class="contact-right">
+					<form class="contact-form" id="contact-form" novalidate>
+						<div class="field-group">
+							<span class="field-label">How can we help?</span>
+							<div class="chip-row" data-pills="multi">
+								<button type="button" class="chip">Logo Design</button>
+								<button type="button" class="chip">Brand Identity</button>
+								<button type="button" class="chip">Rebranding</button>
+								<button type="button" class="chip">Icon Design</button>
+							</div>
+						</div>
+
+						<div class="field-group">
+							<span class="field-label">What's your budget range?</span>
+							<div class="chip-row" data-pills="single">
+								<button type="button" class="chip">$10k – $20k</button>
+								<button type="button" class="chip">$20k – $50k</button>
+								<button type="button" class="chip">$50k – $100k</button>
+								<button type="button" class="chip">$100k &lt;</button>
+							</div>
+						</div>
+
+						<div class="form-fields">
+							<input
+								class="field"
+								type="text"
+								name="name"
+								placeholder="Your name"
+							>
+							<input
+								class="field"
+								type="email"
+								name="email"
+								placeholder="Your E-Mail"
+							>
+							<input
+								class="field"
+								type="text"
+								name="company"
+								placeholder="Your company's name"
+							>
+							<textarea
+								class="field"
+								name="message"
+								placeholder="Let us know more about the project..."
+								rows="3"
+							></textarea>
+						</div>
+
+						<div>
+							<button type="submit" class="btn-primary">Kick things off</button>
+							<span class="form-confirm" id="form-confirm" hidden
+								>Thanks — we'll be in touch.</span
+							>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+		<footer data-footer></footer>
+		<script src="assets/js/site.js"></script>
+		<script>
+		(function () {
+			document.querySelectorAll("[data-pills]").forEach(function (group) {
+				var single = group.getAttribute("data-pills") === "single";
+				group.addEventListener("click", function (e) {
+					var chip = e.target.closest(".chip");
+					if (!chip) return;
+					if (single) {
+						var wasActive = chip.classList.contains("active");
+						group.querySelectorAll(".chip").forEach(function (c) {
+							c.classList.remove("active");
+						});
+						if (!wasActive) chip.classList.add("active");
+					} else {
+						chip.classList.toggle("active");
+					}
+				});
+			});
+			var form = document.getElementById("contact-form");
+			var confirm = document.getElementById("form-confirm");
+			form.addEventListener("submit", function (e) {
+				e.preventDefault();
+				confirm.hidden = false;
+			});
+		})();
+		</script>
+	</body>
+</html>

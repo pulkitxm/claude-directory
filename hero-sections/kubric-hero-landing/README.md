@@ -2,7 +2,7 @@
 
 A single-page, desktop-only dark hero landing for the fictional studio **Kubric™**, built on **TanStack Start v1 + React 19 + Vite 7 + Tailwind v4** with file-based routing. Features a looping background video with a progressive 8-layer `backdrop-filter` blur at the bottom, an animated SVG logo with arc stroke-dashoffset reveals, a glass nav pill, a character-by-character headline reveal, a vertical right-side section nav, and a white "About us" card. Everything animates in on first load once the background video is ready. Generated with Claude Fable 5.
 
-![Kubric hero](./demo.mp4)
+[![Watch Demo](./poster.jpg)](./demo.mp4)
 
 ## What's in the hero
 

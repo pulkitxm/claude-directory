@@ -2,7 +2,7 @@
 
 A self-contained React + TypeScript + Vite + Tailwind CSS v4 project integrating `shader-clock.tsx` — a raw WebGL spectral-field shader that maps wavelength-to-RGB colour through an eight-iteration cosine/sine domain warp — framed as **SPECTRA CLOCK**, a shadcn-style component lab. The live shader fills the hero stage; over it floats a frosted clock card with editable location and °C/°F temperature toggle, a live telemetry HUD reading `iTime`, measured FPS, and the centre-pixel colour straight off the GPU, plus a viewfinder reticle and cursor crosshair. A control deck promotes the four GLSL constants to live uniforms and a world-preset bank snaps the field and clock to six cities at once. Generated with Claude Fable 5.
 
-![demo](./demo.mp4)
+[![Watch Demo](./poster.jpg)](./demo.mp4)
 
 ## Run
 

@@ -1,0 +1,2602 @@
+<!DOCTYPE html><html lang="en"><head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Proactiv — Transform Your Marketing</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./styles.css">
+		<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		:root {
+			--bg: #08090a;
+			--accent: #39c3ef;
+			--accent-dim: rgba(57, 195, 239, 0.15);
+			--text: #ffffff;
+			--muted: #a0aec0;
+			--border: rgba(255, 255, 255, 0.08);
+			--card-bg: rgba(255, 255, 255, 0.03);
+			--card-border: rgba(255, 255, 255, 0.07);
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			background: var(--bg);
+			color: var(--text);
+			font-family: "Inter", sans-serif;
+			overflow-x: hidden;
+			line-height: 1.6;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+		img {
+			max-width: 100%;
+			display: block;
+		}
+
+		/* ─── UTILITIES ──────────────────────────────────────────────────────────── */
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 24px;
+		}
+		.section {
+			padding: 96px 0;
+		}
+		.section-label {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			background: rgba(57, 195, 239, 0.1);
+			border: 1px solid rgba(57, 195, 239, 0.25);
+			border-radius: 999px;
+			padding: 4px 14px;
+			font-size: 12px;
+			font-weight: 600;
+			color: var(--accent);
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			margin-bottom: 20px;
+		}
+		.section-label::before {
+			content: "";
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: var(--accent);
+		}
+		.section-title {
+			font-size: clamp(28px, 4vw, 44px);
+			font-weight: 800;
+			line-height: 1.15;
+			color: #fff;
+			margin-bottom: 16px;
+		}
+		.section-sub {
+			font-size: 16px;
+			color: var(--muted);
+			max-width: 560px;
+			line-height: 1.7;
+		}
+		.text-center {
+			text-align: center;
+		}
+		.text-center .section-sub {
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.btn-primary {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			background: var(--accent);
+			color: #000;
+			font-weight: 700;
+			font-size: 15px;
+			padding: 13px 26px;
+			border-radius: 10px;
+			border: none;
+			cursor: pointer;
+			transition:
+				opacity 0.2s,
+				transform 0.2s;
+		}
+		.btn-primary:hover {
+			opacity: 0.88;
+			transform: translateY(-1px);
+		}
+
+		/* ─── NAVIGATION ─────────────────────────────────────────────────────────── */
+		#nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1000;
+			padding: 16px 0;
+			transition:
+				background 0.3s,
+				border-color 0.3s,
+				backdrop-filter 0.3s;
+		}
+		#nav.scrolled {
+			background: rgba(8, 9, 10, 0.85);
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			border-bottom: 1px solid var(--border);
+		}
+		.nav-inner {
+			display: flex;
+			align-items: center;
+			gap: 32px;
+		}
+		.nav-logo {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-size: 17px;
+			font-weight: 700;
+			color: #fff;
+			flex-shrink: 0;
+		}
+		.logo-icon {
+			width: 32px;
+			height: 32px;
+			background: #000;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+		}
+		.logo-icon span {
+			font-size: 15px;
+			font-weight: 900;
+			color: #fff;
+			font-style: italic;
+		}
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			margin-left: 24px;
+		}
+		.nav-links a {
+			font-size: 14px;
+			color: var(--muted);
+			padding: 7px 12px;
+			border-radius: 8px;
+			font-weight: 500;
+			transition:
+				color 0.2s,
+				background 0.2s;
+		}
+		.nav-links a:hover {
+			color: #fff;
+			background: rgba(255, 255, 255, 0.06);
+		}
+		.nav-auth {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin-left: auto;
+		}
+		.nav-auth .link {
+			font-size: 14px;
+			color: var(--muted);
+			font-weight: 500;
+			transition: color 0.2s;
+		}
+		.nav-auth .link:hover {
+			color: #fff;
+		}
+		.nav-auth .btn-demo {
+			background: var(--accent);
+			color: #000;
+			font-size: 14px;
+			font-weight: 700;
+			padding: 9px 20px;
+			border-radius: 9px;
+			transition: opacity 0.2s;
+		}
+		.nav-auth .btn-demo:hover {
+			opacity: 0.85;
+		}
+		.hamburger {
+			display: none;
+			flex-direction: column;
+			gap: 5px;
+			cursor: pointer;
+			padding: 6px;
+			margin-left: auto;
+		}
+		.hamburger span {
+			display: block;
+			width: 22px;
+			height: 2px;
+			background: #fff;
+			border-radius: 2px;
+			transition:
+				transform 0.3s,
+				opacity 0.3s;
+		}
+		.mobile-menu {
+			display: none;
+			flex-direction: column;
+			gap: 4px;
+			padding: 12px 0 16px;
+			border-top: 1px solid var(--border);
+			margin-top: 12px;
+		}
+		.mobile-menu.open {
+			display: flex;
+		}
+		.mobile-menu a {
+			font-size: 15px;
+			color: var(--muted);
+			padding: 10px 4px;
+			font-weight: 500;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+		}
+		.mobile-menu a:last-child {
+			border-bottom: none;
+		}
+		.mobile-menu .btn-demo {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--accent);
+			color: #000;
+			font-weight: 700;
+			padding: 11px 20px;
+			border-radius: 9px;
+			margin-top: 8px;
+		}
+		@media (max-width: 768px) {
+			.nav-links,
+			.nav-auth {
+				display: none;
+			}
+			.hamburger {
+				display: flex;
+			}
+		}
+
+		/* ─── HERO ───────────────────────────────────────────────────────────────── */
+		#hero {
+			position: relative;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 140px 24px 80px;
+			background:
+				radial-gradient(
+					ellipse 80% 80% at 50% -20%,
+					rgba(57, 195, 239, 0.15),
+					transparent
+				),
+				var(--bg);
+			overflow: hidden;
+		}
+		.hero-circle {
+			position: absolute;
+			border-radius: 50%;
+			border: 1px solid rgba(57, 195, 239, 0.1);
+			pointer-events: none;
+		}
+		.hero-circle-1 {
+			width: 700px;
+			height: 700px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.hero-circle-2 {
+			width: 1050px;
+			height: 1050px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.hero-content {
+			position: relative;
+			z-index: 2;
+			max-width: 780px;
+		}
+		.hero-content h1 {
+			font-size: clamp(38px, 6vw, 72px);
+			font-weight: 900;
+			line-height: 1.08;
+			letter-spacing: -0.03em;
+			color: #fff;
+			margin-bottom: 22px;
+		}
+		.hero-content h1 .hero-dim {
+			color: rgba(255, 255, 255, 0.45);
+		}
+		.hero-content h1 span {
+			color: #fff;
+		}
+		.hero-subtitle {
+			font-size: 17px;
+			color: var(--muted);
+			line-height: 1.7;
+			max-width: 560px;
+			margin: 0 auto 32px;
+		}
+		.hero-social-proof {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 14px;
+			margin-bottom: 32px;
+		}
+		.avatar-stack {
+			display: flex;
+			align-items: center;
+		}
+		.avatar-stack img {
+			width: 34px;
+			height: 34px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 2px solid var(--bg);
+			margin-left: -10px;
+		}
+		.avatar-stack img:first-child {
+			margin-left: 0;
+		}
+		.proof-text {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 2px;
+		}
+		.proof-stars {
+			color: #f6c90e;
+			font-size: 14px;
+			letter-spacing: 1px;
+		}
+		.proof-label {
+			font-size: 13px;
+			color: var(--muted);
+			font-weight: 500;
+		}
+		.hero-cta {
+			margin-bottom: 64px;
+		}
+		.hero-dashboard {
+			position: relative;
+			z-index: 2;
+			width: 100%;
+			max-width: 900px;
+			margin: 0 auto;
+		}
+		.hero-dashboard img {
+			width: 100%;
+			border-radius: 16px;
+			box-shadow:
+				0 0 0 1px rgba(255, 255, 255, 0.07),
+				0 32px 80px rgba(0, 0, 0, 0.7),
+				0 0 60px rgba(57, 195, 239, 0.08);
+		}
+
+		/* ─── LOGOS MARQUEE ──────────────────────────────────────────────────────── */
+		#logos {
+			padding: 64px 0;
+			border-top: 1px solid var(--border);
+			border-bottom: 1px solid var(--border);
+			overflow: hidden;
+		}
+		.logos-label {
+			text-align: center;
+			font-size: 13px;
+			color: var(--muted);
+			font-weight: 600;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			margin-bottom: 36px;
+		}
+		.marquee-wrap {
+			position: relative;
+		}
+		.marquee-fade {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 120px;
+			z-index: 2;
+			pointer-events: none;
+		}
+		.marquee-fade-left {
+			left: 0;
+			background: linear-gradient(to right, var(--bg), transparent);
+		}
+		.marquee-fade-right {
+			right: 0;
+			background: linear-gradient(to left, var(--bg), transparent);
+		}
+		.marquee-track {
+			display: flex;
+			align-items: center;
+			gap: 64px;
+			animation: marquee-scroll 28s linear infinite;
+			width: max-content;
+		}
+		.marquee-track img {
+			height: 30px;
+			width: auto;
+			object-fit: contain;
+			filter: grayscale(1) brightness(0.6);
+			transition: filter 0.3s;
+			flex-shrink: 0;
+		}
+		.marquee-track img:hover {
+			filter: grayscale(0) brightness(1);
+		}
+		@keyframes marquee-scroll {
+			from {
+				transform: translateX(0);
+			}
+			to {
+				transform: translateX(-50%);
+			}
+		}
+
+		/* ─── SOCIAL MEDIA AUTOMATION ────────────────────────────────────────────── */
+		#automation {
+			padding: 96px 0;
+		}
+		.automation-inner {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 64px;
+			align-items: start;
+		}
+		.tab-list {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+		}
+		.tab-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 14px;
+			padding: 18px 16px;
+			border-radius: 12px;
+			cursor: pointer;
+			border: 1px solid transparent;
+			transition:
+				background 0.2s,
+				border-color 0.2s;
+		}
+		.tab-item:hover {
+			background: rgba(255, 255, 255, 0.03);
+		}
+		.tab-item.active {
+			background: rgba(57, 195, 239, 0.06);
+			border-color: rgba(57, 195, 239, 0.2);
+		}
+		.tab-icon {
+			width: 36px;
+			height: 36px;
+			border-radius: 9px;
+			background: rgba(57, 195, 239, 0.1);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			margin-top: 2px;
+		}
+		.tab-icon svg {
+			color: var(--accent);
+		}
+		.tab-body {
+		}
+		.tab-title {
+			font-size: 15px;
+			font-weight: 700;
+			color: #fff;
+			margin-bottom: 4px;
+			line-height: 1.4;
+		}
+		.tab-desc {
+			font-size: 13px;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+		.tab-item:not(.active) .tab-title {
+			color: var(--muted);
+		}
+		.tab-panel {
+			position: relative;
+		}
+		.tab-image {
+			display: none;
+			width: 100%;
+			border-radius: 14px;
+			overflow: hidden;
+			border: 1px solid var(--card-border);
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+		}
+		.tab-image.active {
+			display: block;
+		}
+		.tab-image img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+		@media (max-width: 900px) {
+			.automation-inner {
+				grid-template-columns: 1fr;
+				gap: 40px;
+			}
+		}
+
+		/* ─── PERFECT TOOLS ──────────────────────────────────────────────────────── */
+		#tools {
+			padding: 96px 0;
+		}
+		.tools-grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 16px;
+			margin-top: 56px;
+		}
+		.tool-card {
+			background: var(--card-bg);
+			border: 1px solid var(--card-border);
+			border-radius: 16px;
+			padding: 28px 24px;
+			transition:
+				border-color 0.3s,
+				background 0.3s;
+		}
+		.tool-card:hover {
+			border-color: rgba(57, 195, 239, 0.2);
+			background: rgba(57, 195, 239, 0.04);
+		}
+		.tool-icon {
+			width: 44px;
+			height: 44px;
+			border-radius: 11px;
+			background: rgba(57, 195, 239, 0.1);
+			border: 1px solid rgba(57, 195, 239, 0.2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 18px;
+		}
+		.tool-icon svg {
+			color: var(--accent);
+		}
+		.tool-title {
+			font-size: 15px;
+			font-weight: 700;
+			color: #fff;
+			margin-bottom: 10px;
+		}
+		.tool-desc {
+			font-size: 13px;
+			color: var(--muted);
+			line-height: 1.65;
+		}
+		@media (max-width: 900px) {
+			.tools-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (max-width: 520px) {
+			.tools-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* ─── TESTIMONIALS ───────────────────────────────────────────────────────── */
+		#testimonials {
+			padding: 96px 0;
+			overflow: hidden;
+		}
+		.testimonial-track-wrap {
+			position: relative;
+			overflow: hidden;
+		}
+		.testimonial-track-wrap::before,
+		.testimonial-track-wrap::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 80px;
+			z-index: 2;
+			pointer-events: none;
+		}
+		.testimonial-track-wrap::before {
+			left: 0;
+			background: linear-gradient(to right, var(--bg), transparent);
+		}
+		.testimonial-track-wrap::after {
+			right: 0;
+			background: linear-gradient(to left, var(--bg), transparent);
+		}
+		.testimonial-row {
+			display: flex;
+			gap: 16px;
+			width: max-content;
+			margin-bottom: 16px;
+		}
+		.testimonial-row-1 {
+			animation: t-scroll 40s linear infinite;
+		}
+		.testimonial-row-2 {
+			animation: t-scroll-rev 40s linear infinite;
+		}
+		@keyframes t-scroll {
+			from {
+				transform: translateX(0);
+			}
+			to {
+				transform: translateX(-50%);
+			}
+		}
+		@keyframes t-scroll-rev {
+			from {
+				transform: translateX(-50%);
+			}
+			to {
+				transform: translateX(0);
+			}
+		}
+		.testimonial-card {
+			background: var(--card-bg);
+			border: 1px solid var(--card-border);
+			border-radius: 16px;
+			padding: 22px 24px;
+			width: 300px;
+			flex-shrink: 0;
+			transition: border-color 0.3s;
+		}
+		.testimonial-card:hover {
+			border-color: rgba(57, 195, 239, 0.2);
+		}
+		.t-stars {
+			color: #f6c90e;
+			font-size: 13px;
+			margin-bottom: 12px;
+		}
+		.t-quote {
+			font-size: 13.5px;
+			color: #cbd5e0;
+			line-height: 1.65;
+			margin-bottom: 16px;
+		}
+		.t-author {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		.t-author img {
+			width: 34px;
+			height: 34px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+		.t-author-name {
+			font-size: 13px;
+			font-weight: 600;
+			color: #fff;
+		}
+		.t-author-role {
+			font-size: 12px;
+			color: var(--muted);
+		}
+
+		/* ─── PRICING ────────────────────────────────────────────────────────────── */
+		#pricing {
+			padding: 96px 0;
+		}
+		.pricing-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 14px;
+			margin: 32px 0 48px;
+		}
+		.pricing-toggle span {
+			font-size: 14px;
+			font-weight: 600;
+			color: var(--muted);
+			transition: color 0.2s;
+		}
+		.pricing-toggle span.active-period {
+			color: #fff;
+		}
+		.toggle-switch {
+			position: relative;
+			width: 44px;
+			height: 24px;
+			cursor: pointer;
+		}
+		.toggle-switch input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+		.toggle-knob {
+			position: absolute;
+			inset: 0;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, 0.12);
+			transition: background 0.25s;
+		}
+		.toggle-knob::before {
+			content: "";
+			position: absolute;
+			left: 3px;
+			top: 3px;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: #fff;
+			transition: transform 0.25s;
+		}
+		.toggle-switch input:checked + .toggle-knob {
+			background: var(--accent);
+		}
+		.toggle-switch input:checked + .toggle-knob::before {
+			transform: translateX(20px);
+		}
+		.pricing-grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 16px;
+		}
+		.price-card {
+			background: var(--card-bg);
+			border: 1px solid var(--card-border);
+			border-radius: 20px;
+			padding: 28px 24px 32px;
+			display: flex;
+			flex-direction: column;
+			gap: 0;
+			transition: border-color 0.3s;
+		}
+		.price-card:hover {
+			border-color: rgba(255, 255, 255, 0.12);
+		}
+		.price-card.featured {
+			background: var(--card-bg);
+			border: 2px solid transparent;
+			background-clip: padding-box;
+			position: relative;
+		}
+		.price-card.featured::before {
+			content: "";
+			position: absolute;
+			inset: -2px;
+			border-radius: 22px;
+			background: conic-gradient(
+				from 180deg at 50% 50%,
+				rgba(57, 195, 239, 0.9) 0deg,
+				rgba(57, 195, 239, 0.1) 90deg,
+				rgba(57, 195, 239, 0.9) 180deg,
+				rgba(57, 195, 239, 0.1) 270deg,
+				rgba(57, 195, 239, 0.9) 360deg
+			);
+			z-index: -1;
+		}
+		.price-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			background: rgba(57, 195, 239, 0.12);
+			border: 1px solid rgba(57, 195, 239, 0.3);
+			color: var(--accent);
+			font-size: 11px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			padding: 4px 10px;
+			border-radius: 999px;
+			margin-bottom: 16px;
+			width: fit-content;
+		}
+		.price-name {
+			font-size: 16px;
+			font-weight: 700;
+			color: #fff;
+			margin-bottom: 6px;
+		}
+		.price-desc {
+			font-size: 13px;
+			color: var(--muted);
+			margin-bottom: 24px;
+			line-height: 1.5;
+		}
+		.price-amount {
+			display: flex;
+			align-items: flex-end;
+			gap: 4px;
+			margin-bottom: 4px;
+		}
+		.price-amount .dollar {
+			font-size: 22px;
+			font-weight: 700;
+			color: #fff;
+			line-height: 1;
+		}
+		.price-amount .number {
+			font-size: 42px;
+			font-weight: 900;
+			color: #fff;
+			line-height: 1;
+		}
+		.price-amount .period {
+			font-size: 14px;
+			color: var(--muted);
+			margin-bottom: 4px;
+		}
+		.price-per-year {
+			font-size: 12px;
+			color: var(--muted);
+			margin-bottom: 28px;
+		}
+		.price-divider {
+			border: none;
+			border-top: 1px solid var(--border);
+			margin-bottom: 20px;
+		}
+		.price-features {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			margin-bottom: 28px;
+			flex: 1;
+		}
+		.price-features li {
+			display: flex;
+			align-items: flex-start;
+			gap: 10px;
+			font-size: 13px;
+			color: #cbd5e0;
+			line-height: 1.5;
+		}
+		.check-icon {
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: rgba(57, 195, 239, 0.15);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			margin-top: 1px;
+		}
+		.price-cta {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 12px;
+			border-radius: 10px;
+			font-size: 14px;
+			font-weight: 700;
+			cursor: pointer;
+			transition: 0.2s;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			background: rgba(255, 255, 255, 0.04);
+			color: #fff;
+		}
+		.price-cta:hover {
+			background: rgba(255, 255, 255, 0.08);
+		}
+		.price-cta.primary {
+			background: var(--accent);
+			color: #000;
+			border: none;
+		}
+		.price-cta.primary:hover {
+			opacity: 0.88;
+		}
+		.price-yearly {
+			display: none;
+		}
+		body.yearly .price-monthly {
+			display: none;
+		}
+		body.yearly .price-yearly {
+			display: block;
+		}
+		@media (max-width: 1024px) {
+			.pricing-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (max-width: 600px) {
+			.pricing-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* ─── FAQ ────────────────────────────────────────────────────────────────── */
+		#faq {
+			padding: 96px 0;
+		}
+		.faq-list {
+			max-width: 720px;
+			margin: 48px auto 0;
+		}
+		.faq-item {
+			border: 1px solid var(--card-border);
+			border-radius: 12px;
+			margin-bottom: 10px;
+			overflow: hidden;
+			background: var(--card-bg);
+			transition: border-color 0.2s;
+		}
+		.faq-item.open {
+			border-color: rgba(57, 195, 239, 0.2);
+		}
+		.faq-q {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			padding: 20px 22px;
+			cursor: pointer;
+			font-size: 15px;
+			font-weight: 600;
+			color: #fff;
+			user-select: none;
+		}
+		.faq-arrow {
+			width: 20px;
+			height: 20px;
+			flex-shrink: 0;
+			color: var(--muted);
+			transition: transform 0.3s;
+		}
+		.faq-item.open .faq-arrow {
+			transform: rotate(180deg);
+			color: var(--accent);
+		}
+		.faq-body {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.35s ease;
+		}
+		.faq-body-inner {
+			padding: 0 22px 20px;
+			font-size: 14px;
+			color: var(--muted);
+			line-height: 1.7;
+		}
+
+		/* ─── BOTTOM CTA ─────────────────────────────────────────────────────────── */
+		#cta-bottom {
+			background: #010101;
+			border-top: 1px solid var(--border);
+			padding: 96px 24px;
+		}
+		.cta-inner {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 48px;
+			align-items: center;
+		}
+		.cta-content h2 {
+			font-size: clamp(26px, 3.5vw, 42px);
+			font-weight: 800;
+			line-height: 1.15;
+			color: #fff;
+			margin-bottom: 16px;
+		}
+		.cta-content p {
+			font-size: 15px;
+			color: var(--muted);
+			line-height: 1.7;
+			margin-bottom: 28px;
+		}
+		.cta-proof {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin-bottom: 28px;
+		}
+		.cta-right {
+			background: linear-gradient(
+				135deg,
+				rgba(57, 195, 239, 0.06) 0%,
+				rgba(0, 0, 0, 0) 60%
+			);
+			border: 1px solid var(--card-border);
+			border-radius: 20px;
+			height: 260px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			overflow: hidden;
+		}
+		.cta-right::before {
+			content: "";
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			border: 1px solid rgba(57, 195, 239, 0.08);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.cta-right::after {
+			content: "";
+			position: absolute;
+			width: 330px;
+			height: 330px;
+			border-radius: 50%;
+			border: 1px solid rgba(57, 195, 239, 0.05);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.keyboard-svg {
+			position: relative;
+			z-index: 1;
+			opacity: 0.4;
+		}
+		@media (max-width: 768px) {
+			.cta-inner {
+				grid-template-columns: 1fr;
+			}
+			.cta-right {
+				display: none;
+			}
+		}
+
+		/* ─── FOOTER ─────────────────────────────────────────────────────────────── */
+		#footer {
+			background: #010101;
+			border-top: 1px solid var(--border);
+			padding: 56px 0 32px;
+		}
+		.footer-inner {
+			display: grid;
+			grid-template-columns: 2fr 1fr 1fr 1fr;
+			gap: 40px;
+			margin-bottom: 48px;
+		}
+		.footer-brand p {
+			font-size: 13px;
+			color: var(--muted);
+			line-height: 1.65;
+			margin-top: 14px;
+			max-width: 220px;
+		}
+		.footer-col-title {
+			font-size: 13px;
+			font-weight: 700;
+			color: var(--muted);
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			margin-bottom: 16px;
+		}
+		.footer-links {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+		.footer-links a {
+			font-size: 14px;
+			color: var(--muted);
+			transition: color 0.2s;
+		}
+		.footer-links a:hover {
+			color: #fff;
+		}
+		.footer-divider {
+			border: none;
+			border-top: 1px solid var(--border);
+			margin-bottom: 24px;
+		}
+		.footer-bottom {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+		}
+		.footer-copy {
+			font-size: 13px;
+			color: var(--muted);
+		}
+		@media (max-width: 768px) {
+			.footer-inner {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+		@media (max-width: 480px) {
+			.footer-inner {
+				grid-template-columns: 1fr;
+			}
+			.footer-bottom {
+				flex-direction: column;
+				text-align: center;
+			}
+		}
+
+		/* ─── FADE-IN ANIMATION ─────────────────────────────────────────────────── */
+		.fade-in-up {
+			opacity: 0;
+			transform: translateY(28px);
+			transition:
+				opacity 0.6s ease,
+				transform 0.6s ease;
+		}
+		.fade-in-up.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		</style>
+	</head>
+	<body>
+		<!-- ═══════════════════════════════════════════════════════════ NAVIGATION ═══ -->
+		<nav id="nav">
+			<div class="container">
+				<div class="nav-inner">
+					<a href="index.html" class="nav-logo">
+						<div class="logo-icon"><span>P</span></div>
+						Proactiv
+					</a>
+					<div class="nav-links">
+						<a href="/features.html">Features</a>
+						<a href="/pricing.html">Pricing</a>
+						<a href="/blog.html">Blog</a>
+						<a href="/contact.html">Contact</a>
+					</div>
+					<div class="nav-auth">
+						<a href="/register.html" class="link">Register</a>
+						<a href="/register.html" class="btn-demo">Book a demo</a>
+					</div>
+					<button class="hamburger" id="hamburger" aria-label="Menu">
+						<span></span><span></span><span></span>
+					</button>
+				</div>
+				<div class="mobile-menu" id="mobile-menu">
+					<a href="/features.html">Features</a>
+					<a href="/pricing.html">Pricing</a>
+					<a href="/blog.html">Blog</a>
+					<a href="/contact.html">Contact</a>
+					<a href="/register.html">Register</a>
+					<a href="/register.html" class="btn-demo">Book a demo</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- ════════════════════════════════════════════════════════════════ HERO ═══ -->
+		<section id="hero">
+			<div class="hero-circle hero-circle-1"></div>
+			<div class="hero-circle hero-circle-2"></div>
+			<div class="hero-content">
+				<div class="section-label">Introducing Proactiv AI</div>
+				<h1>
+					<span class="hero-dim">Transform Your</span><br>
+					<span>Marketing with Proactiv</span>
+				</h1>
+				<p class="hero-subtitle">
+					Automate Campaigns, Engage Audiences, and Boost Lead Generation with
+					Our All-in-One Marketing Solution
+				</p>
+				<div class="hero-social-proof">
+					<div class="avatar-stack">
+						<img src="assets/images/avatar1.jpg" alt="User 1">
+						<img src="assets/images/avatar2.jpg" alt="User 2">
+						<img src="assets/images/avatar3.jpg" alt="User 3">
+						<img src="assets/images/avatar4.jpg" alt="User 4">
+						<img src="assets/images/avatar5.jpg" alt="User 5">
+						<img src="assets/images/avatar6.jpg" alt="User 6">
+					</div>
+					<div class="proof-text">
+						<div class="proof-stars">★★★★★</div>
+						<div class="proof-label">Trusted by 27,000+ creators</div>
+					</div>
+				</div>
+				<div class="hero-cta">
+					<a href="/register.html" class="btn-primary">Book a demo →</a>
+				</div>
+				<div class="hero-dashboard">
+					<img src="assets/images/dashboard.png" alt="Proactiv Dashboard">
+				</div>
+			</div>
+		</section>
+
+		<!-- ══════════════════════════════════════════════════ LOGOS MARQUEE ═══ -->
+		<section id="logos">
+			<div class="logos-label">Trusted by the best</div>
+			<div class="marquee-wrap">
+				<div class="marquee-fade marquee-fade-left"></div>
+				<div class="marquee-fade marquee-fade-right"></div>
+				<div class="marquee-track" id="marquee">
+					<img src="assets/logos/netflix.png" alt="Netflix">
+					<img src="assets/logos/google.webp" alt="Google">
+					<img src="assets/logos/meta.png" alt="Meta">
+					<img src="assets/logos/onlyfans.png" alt="OnlyFans">
+					<img src="assets/logos/netflix.png" alt="Netflix">
+					<img src="assets/logos/google.webp" alt="Google">
+					<img src="assets/logos/meta.png" alt="Meta">
+					<img src="assets/logos/onlyfans.png" alt="OnlyFans">
+					<!-- duplicate set for seamless scroll -->
+					<img src="assets/logos/netflix.png" alt="Netflix">
+					<img src="assets/logos/google.webp" alt="Google">
+					<img src="assets/logos/meta.png" alt="Meta">
+					<img src="assets/logos/onlyfans.png" alt="OnlyFans">
+					<img src="assets/logos/netflix.png" alt="Netflix">
+					<img src="assets/logos/google.webp" alt="Google">
+					<img src="assets/logos/meta.png" alt="Meta">
+					<img src="assets/logos/onlyfans.png" alt="OnlyFans">
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════════════════════════════════ SOCIAL MEDIA AUTOMATION ═══ -->
+		<section id="automation" class="section">
+			<div class="container">
+				<div class="fade-in-up visible">
+					<div class="section-label">Automate your social media</div>
+					<h2 class="section-title" style="max-width:540px;">
+						Proactiv houses a rich set of features to automate your marketing
+						efforts across all social medias
+					</h2>
+				</div>
+				<div class="automation-inner" style="margin-top:52px;">
+					<div class="tab-list" id="tab-list">
+						<div class="tab-item active" data-tab="0">
+							<div class="tab-icon">
+								<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<rect x="2" y="3" width="20" height="14" rx="2"></rect>
+									<path d="M8 21h8M12 17v4"></path>
+								</svg>
+							</div>
+							<div class="tab-body">
+								<div class="tab-title">Post to multiple platforms at once</div>
+								<div class="tab-desc">
+									Publish to Twitter, Instagram, LinkedIn and more in one click.
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-item" data-tab="1">
+							<div class="tab-icon">
+								<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path d="M3 3v18h18"></path>
+									<path d="M18 9l-5 5-4-4-4 4"></path>
+								</svg>
+							</div>
+							<div class="tab-body">
+								<div class="tab-title">Analytics for everything</div>
+								<div class="tab-desc">
+									Check analytics, track your posts, and get insights into your
+									audience.
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-item" data-tab="2">
+							<div class="tab-icon">
+								<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<circle cx="12" cy="12" r="3"></circle>
+									<path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path>
+								</svg>
+							</div>
+							<div class="tab-body">
+								<div class="tab-title">Integrated AI</div>
+								<div class="tab-desc">
+									Proactiv uses AI to help you create engaging content.
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-item" data-tab="3">
+							<div class="tab-icon">
+								<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+									<circle cx="9" cy="7" r="4"></circle>
+									<path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path>
+								</svg>
+							</div>
+							<div class="tab-body">
+								<div class="tab-title">Easy Collaboration</div>
+								<div class="tab-desc">
+									Proactive can integrate with Zapier, Slack and every other
+									popular integration tools.
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-item" data-tab="4">
+							<div class="tab-icon">
+								<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+									<circle cx="12" cy="12" r="3"></circle>
+								</svg>
+							</div>
+							<div class="tab-body">
+								<div class="tab-title">Know your audience</div>
+								<div class="tab-desc">
+									Based on your audience, create funnels and drive more traffic.
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-panel">
+						<div class="tab-image active" id="tab-img-0">
+							<img src="assets/images/first.png" alt="Post to multiple platforms">
+						</div>
+						<div class="tab-image" id="tab-img-1">
+							<img src="assets/images/second-backup.png" alt="Analytics">
+						</div>
+						<div class="tab-image" id="tab-img-2">
+							<img src="assets/images/third.png" alt="Integrated AI">
+						</div>
+						<div class="tab-image" id="tab-img-3">
+							<img src="assets/images/fourth-backup.png" alt="Collaboration">
+						</div>
+						<div class="tab-image" id="tab-img-4">
+							<img src="assets/images/first.png" alt="Know your audience">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════════════════════════════════════════ PERFECT TOOLS ═══ -->
+		<section id="tools" class="section">
+			<div class="container">
+				<div class="text-center fade-in-up visible">
+					<div class="section-label">Features</div>
+					<h2 class="section-title">Perfect set of tools</h2>
+					<p class="section-sub">
+						Proactiv comes with perfect tools for the perfect jobs out there.
+					</p>
+				</div>
+				<div class="tools-grid">
+					<div class="tool-card fade-in-up visible">
+						<div class="tool-icon">
+							<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+								<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+								<polyline points="22,6 12,13 2,6"></polyline>
+							</svg>
+						</div>
+						<div class="tool-title">Email Automation</div>
+						<div class="tool-desc">
+							With our best in class email automation, you can automate your
+							entire emailing process.
+						</div>
+					</div>
+
+					<div class="tool-card fade-in-up visible">
+						<div class="tool-icon">
+							<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+								<circle cx="18" cy="5" r="3"></circle>
+								<circle cx="6" cy="12" r="3"></circle>
+								<circle cx="18" cy="19" r="3"></circle>
+								<line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+								<line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+							</svg>
+						</div>
+						<div class="tool-title">Cross Platform Marketing</div>
+						<div class="tool-desc">
+							With our cross platform marketing, you can reach your audience on
+							all the platforms they use.
+						</div>
+					</div>
+
+					<div class="tool-card fade-in-up visible">
+						<div class="tool-icon">
+							<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+								<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+								<path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+								<path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+							</svg>
+						</div>
+						<div class="tool-title">Managed CRM</div>
+						<div class="tool-desc">
+							With our managed CRM, you can manage your leads and contacts in
+							one place.
+						</div>
+					</div>
+
+					<div class="tool-card fade-in-up visible">
+						<div class="tool-icon">
+							<svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+								<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+							</svg>
+						</div>
+						<div class="tool-title">Apps Automation</div>
+						<div class="tool-desc">
+							We have cloned zapier and built our very own apps automation
+							platform.
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ══════════════════════════════════════════════ TESTIMONIALS ═══ -->
+		<section id="testimonials" class="section">
+			<div class="container text-center fade-in-up visible" style="margin-bottom:56px;">
+				<h2 class="section-title">Used by entreprenurs</h2>
+				<p class="section-sub">
+					Proactiv is used by serial entrepreneurs and overachievers.
+				</p>
+			</div>
+
+			<div class="testimonial-track-wrap">
+				<!-- Row 1 -->
+				<div class="testimonial-row testimonial-row-1">
+					<!-- original 8 -->
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"What a fantastic AI Proactiv AI is, I just love it. It has
+							completely transformed the way I approach problems and creative
+							thinking."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar1.jpg" alt="Manu Arora">
+							<div>
+								<div class="t-author-name">Manu Arora</div>
+								<div class="t-author-role">
+									Tech Innovator &amp; Entrepreneur
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"I made a soap with the help of AI, it was so easy to use. I'm so
+							glad this happened because it revolutionized my entire business
+							model."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar2.jpg" alt="Tyler Durden">
+							<div>
+								<div class="t-author-name">Tyler Durden</div>
+								<div class="t-author-role">
+									Creative Director &amp; Business Owner
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"This AI has transformed the way I work! It's like having a
+							brilliant assistant who knows exactly what I need before I even
+							ask."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar3.jpg" alt="Alice Johnson">
+							<div>
+								<div class="t-author-name">Alice Johnson</div>
+								<div class="t-author-role">Senior Software Engineer</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Absolutely revolutionary, a game-changer for our industry. I
+							can't believe how much easier it's made our marketing campaigns."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar4.jpg" alt="James Smith">
+							<div>
+								<div class="t-author-name">James Smith</div>
+								<div class="t-author-role">Industry Analyst</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Incredible productivity boost, saves me hours every week. My team
+							has never been more aligned and our output quality has
+							skyrocketed."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar5.jpg" alt="Sarah Williams">
+							<div>
+								<div class="t-author-name">Sarah Williams</div>
+								<div class="t-author-role">Product Manager</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"The insights this provides are unparalleled in the field. We've
+							been able to double our engagement rates in just three months."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar6.jpg" alt="David Brown">
+							<div>
+								<div class="t-author-name">David Brown</div>
+								<div class="t-author-role">Research Scientist</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Streamlined our entire workflow, can't imagine going back. The
+							automation features alone have paid for the subscription ten times
+							over."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar7.jpg" alt="Emily Davis">
+							<div>
+								<div class="t-author-name">Emily Davis</div>
+								<div class="t-author-role">Operations Director</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Best investment we've made for our team this year. It's truly a
+							force multiplier for everyone on our marketing team."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar8.jpg" alt="Frank Moore">
+							<div>
+								<div class="t-author-name">Frank Moore</div>
+								<div class="t-author-role">Project Manager</div>
+							</div>
+						</div>
+					</div>
+					<!-- duplicated for seamless loop -->
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"What a fantastic AI Proactiv AI is, I just love it. It has
+							completely transformed the way I approach problems and creative
+							thinking."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar1.jpg" alt="Manu Arora">
+							<div>
+								<div class="t-author-name">Manu Arora</div>
+								<div class="t-author-role">
+									Tech Innovator &amp; Entrepreneur
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"I made a soap with the help of AI, it was so easy to use. I'm so
+							glad this happened because it revolutionized my entire business
+							model."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar2.jpg" alt="Tyler Durden">
+							<div>
+								<div class="t-author-name">Tyler Durden</div>
+								<div class="t-author-role">
+									Creative Director &amp; Business Owner
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"This AI has transformed the way I work! It's like having a
+							brilliant assistant who knows exactly what I need before I even
+							ask."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar3.jpg" alt="Alice Johnson">
+							<div>
+								<div class="t-author-name">Alice Johnson</div>
+								<div class="t-author-role">Senior Software Engineer</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Absolutely revolutionary, a game-changer for our industry. I
+							can't believe how much easier it's made our marketing campaigns."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar4.jpg" alt="James Smith">
+							<div>
+								<div class="t-author-name">James Smith</div>
+								<div class="t-author-role">Industry Analyst</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Incredible productivity boost, saves me hours every week. My team
+							has never been more aligned and our output quality has
+							skyrocketed."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar5.jpg" alt="Sarah Williams">
+							<div>
+								<div class="t-author-name">Sarah Williams</div>
+								<div class="t-author-role">Product Manager</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"The insights this provides are unparalleled in the field. We've
+							been able to double our engagement rates in just three months."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar6.jpg" alt="David Brown">
+							<div>
+								<div class="t-author-name">David Brown</div>
+								<div class="t-author-role">Research Scientist</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Streamlined our entire workflow, can't imagine going back. The
+							automation features alone have paid for the subscription ten times
+							over."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar7.jpg" alt="Emily Davis">
+							<div>
+								<div class="t-author-name">Emily Davis</div>
+								<div class="t-author-role">Operations Director</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Best investment we've made for our team this year. It's truly a
+							force multiplier for everyone on our marketing team."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar8.jpg" alt="Frank Moore">
+							<div>
+								<div class="t-author-name">Frank Moore</div>
+								<div class="t-author-role">Project Manager</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Row 2 (reverse) -->
+				<div class="testimonial-row testimonial-row-2">
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Proactiv changed the entire trajectory of our content strategy.
+							We went from posting twice a week to every single day without
+							extra effort."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar9.jpg" alt="Rachel Green">
+							<div>
+								<div class="t-author-name">Rachel Green</div>
+								<div class="t-author-role">Content Strategist</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"The AI content suggestions are spot on. I've never seen an
+							automation tool that truly understands brand voice like Proactiv
+							does."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar10.jpg" alt="Marcus Chen">
+							<div>
+								<div class="t-author-name">Marcus Chen</div>
+								<div class="t-author-role">Brand Manager</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"We scaled from 5,000 to 50,000 followers in 90 days thanks to the
+							audience insights. The data-driven approach is unmatched."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar11.jpg" alt="Priya Patel">
+							<div>
+								<div class="t-author-name">Priya Patel</div>
+								<div class="t-author-role">Growth Hacker</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"The email automation sequences alone are worth the price. Our
+							open rates jumped from 18% to 41% in just two months."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar12.jpg" alt="Leon Fischer">
+							<div>
+								<div class="t-author-name">Leon Fischer</div>
+								<div class="t-author-role">Email Marketing Lead</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Team collaboration features make onboarding new marketers
+							seamless. Everyone is in sync and we ship campaigns twice as
+							fast."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar13.jpg" alt="Sofia Rossi">
+							<div>
+								<div class="t-author-name">Sofia Rossi</div>
+								<div class="t-author-role">Marketing VP</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"CRM integration is flawless. All our leads flow in automatically
+							and the scoring means our sales team only talks to hot prospects."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar14.jpg" alt="Omar Hassan">
+							<div>
+								<div class="t-author-name">Omar Hassan</div>
+								<div class="t-author-role">Sales Director</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Finally a tool that doesn't require a PhD to operate. Set it up
+							in an afternoon and saw results by the end of the week."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar15.jpg" alt="Nina Larsson">
+							<div>
+								<div class="t-author-name">Nina Larsson</div>
+								<div class="t-author-role">Solo Founder</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Support is phenomenal. Had a question at midnight and got a real
+							human response in under five minutes. That's unheard of."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar16.jpg" alt="Kevin Park">
+							<div>
+								<div class="t-author-name">Kevin Park</div>
+								<div class="t-author-role">Startup Advisor</div>
+							</div>
+						</div>
+					</div>
+					<!-- duplicate -->
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Proactiv changed the entire trajectory of our content strategy.
+							We went from posting twice a week to every single day without
+							extra effort."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar9.jpg" alt="Rachel Green">
+							<div>
+								<div class="t-author-name">Rachel Green</div>
+								<div class="t-author-role">Content Strategist</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"The AI content suggestions are spot on. I've never seen an
+							automation tool that truly understands brand voice like Proactiv
+							does."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar10.jpg" alt="Marcus Chen">
+							<div>
+								<div class="t-author-name">Marcus Chen</div>
+								<div class="t-author-role">Brand Manager</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"We scaled from 5,000 to 50,000 followers in 90 days thanks to the
+							audience insights. The data-driven approach is unmatched."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar11.jpg" alt="Priya Patel">
+							<div>
+								<div class="t-author-name">Priya Patel</div>
+								<div class="t-author-role">Growth Hacker</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"The email automation sequences alone are worth the price. Our
+							open rates jumped from 18% to 41% in just two months."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar12.jpg" alt="Leon Fischer">
+							<div>
+								<div class="t-author-name">Leon Fischer</div>
+								<div class="t-author-role">Email Marketing Lead</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Team collaboration features make onboarding new marketers
+							seamless. Everyone is in sync and we ship campaigns twice as
+							fast."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar13.jpg" alt="Sofia Rossi">
+							<div>
+								<div class="t-author-name">Sofia Rossi</div>
+								<div class="t-author-role">Marketing VP</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"CRM integration is flawless. All our leads flow in automatically
+							and the scoring means our sales team only talks to hot prospects."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar14.jpg" alt="Omar Hassan">
+							<div>
+								<div class="t-author-name">Omar Hassan</div>
+								<div class="t-author-role">Sales Director</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Finally a tool that doesn't require a PhD to operate. Set it up
+							in an afternoon and saw results by the end of the week."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar15.jpg" alt="Nina Larsson">
+							<div>
+								<div class="t-author-name">Nina Larsson</div>
+								<div class="t-author-role">Solo Founder</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<div class="t-stars">★★★★★</div>
+						<p class="t-quote">
+							"Support is phenomenal. Had a question at midnight and got a real
+							human response in under five minutes. That's unheard of."
+						</p>
+						<div class="t-author">
+							<img src="assets/images/avatar16.jpg" alt="Kevin Park">
+							<div>
+								<div class="t-author-name">Kevin Park</div>
+								<div class="t-author-role">Startup Advisor</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ══════════════════════════════════════════════════ PRICING ═══ -->
+		<section id="pricing" class="section">
+			<div class="container">
+				<div class="text-center fade-in-up visible">
+					<div class="section-label">Pricing</div>
+					<h2 class="section-title">Simple pricing</h2>
+					<p class="section-sub">
+						Simple pricing for startups, small businesses, medium scale
+						businesses and enterprises.
+					</p>
+				</div>
+
+				<div class="pricing-toggle">
+					<span id="label-monthly" class="active-period">monthly</span>
+					<label class="toggle-switch">
+						<input type="checkbox" id="pricing-toggle" style="">
+						<span class="toggle-knob"></span>
+					</label>
+					<span id="label-yearly">yearly</span>
+				</div>
+
+				<div class="pricing-grid">
+					<!-- Hobby -->
+					<div class="price-card fade-in-up visible">
+						<div class="price-name">Hobby</div>
+						<div class="price-desc">For individuals trying out the product</div>
+						<div class="price-amount price-monthly">
+							<span class="dollar">$</span><span class="number">0</span><span class="period">/month</span>
+						</div>
+						<div class="price-amount price-yearly">
+							<span class="dollar">$</span><span class="number">0</span><span class="period">/year</span>
+						</div>
+						<div class="price-per-year price-monthly">&nbsp;</div>
+						<div class="price-per-year price-yearly">&nbsp;</div>
+						<hr class="price-divider">
+						<ul class="price-features">
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Access to all tools for 14 days
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								No credit card required
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Community Support
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Access to Aceternity UI
+							</li>
+						</ul>
+						<a href="/register.html" class="price-cta">Get Started</a>
+					</div>
+
+					<!-- Starter -->
+					<div class="price-card fade-in-up visible">
+						<div class="price-name">Starter</div>
+						<div class="price-desc">For serious founders</div>
+						<div class="price-amount price-monthly">
+							<span class="dollar">$</span><span class="number">20</span><span class="period">/month</span>
+						</div>
+						<div class="price-amount price-yearly">
+							<span class="dollar">$</span><span class="number">10</span><span class="period">/year</span>
+						</div>
+						<div class="price-per-year price-monthly">&nbsp;</div>
+						<div class="price-per-year price-yearly">Billed annually</div>
+						<hr class="price-divider">
+						<ul class="price-features">
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Everything in Hobby +
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Access to Proactiv AI
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Priority tools access
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Support for Slack and Twitter
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Priority support
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								99.67% Uptime SLA
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Access to Aceternity UI Templates
+							</li>
+						</ul>
+						<a href="/register.html" class="price-cta">Get Started</a>
+					</div>
+
+					<!-- Pro (featured) -->
+					<div class="price-card featured fade-in-up visible">
+						<div class="price-badge">Most Popular</div>
+						<div class="price-name">Pro</div>
+						<div class="price-desc">For small to large businesses</div>
+						<div class="price-amount price-monthly">
+							<span class="dollar">$</span><span class="number">30</span><span class="period">/month</span>
+						</div>
+						<div class="price-amount price-yearly">
+							<span class="dollar">$</span><span class="number">15</span><span class="period">/year</span>
+						</div>
+						<div class="price-per-year price-monthly">&nbsp;</div>
+						<div class="price-per-year price-yearly">Billed annually</div>
+						<hr class="price-divider">
+						<ul class="price-features">
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Everything in Starter +
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Access to our dev team
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Coffee with the CEO
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Access to Aceternity UI
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Request tools
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Advanced analytics
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Customizable dashboards
+							</li>
+						</ul>
+						<a href="/register.html" class="price-cta primary">Get Started</a>
+					</div>
+
+					<!-- Enterprise -->
+					<div class="price-card fade-in-up visible">
+						<div class="price-name">Enterprise</div>
+						<div class="price-desc">For large scale businesses</div>
+						<div class="price-amount">
+							<span class="number" style="font-size:32px;">Custom</span><span class="period">/month</span>
+						</div>
+						<div class="price-per-year">&nbsp;</div>
+						<hr class="price-divider">
+						<ul class="price-features">
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Everything in Pro +
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								HIPAA and SOC2 Compliance
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Bulk email support
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								Customizable dashboards
+							</li>
+							<li>
+								<div class="check-icon">
+									<svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+										<path d="M2 6l3 3 5-5" stroke="#39c3ef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								24/7 customer support
+							</li>
+						</ul>
+						<a href="/register.html" class="price-cta">Book a demo</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═════════════════════════════════════════════════════ FAQ ═══ -->
+		<section id="faq" class="section">
+			<div class="container">
+				<div class="text-center fade-in-up visible">
+					<h2 class="section-title">Frequently asked questions</h2>
+				</div>
+				<div class="faq-list">
+					<div class="faq-item">
+						<div class="faq-q">
+							What is Proactic?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								Proactic is an AI-powered marketing automation platform that
+								helps businesses automate their social media, email marketing,
+								and lead generation efforts.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<div class="faq-q">
+							How does Proactic work?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								Proactic uses AI to analyze your audience and create
+								personalized marketing campaigns across multiple channels
+								automatically.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<div class="faq-q">
+							Which social media platforms does Proactic support?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								Proactic supports Twitter, Facebook, Instagram, LinkedIn,
+								TikTok, and more social media platforms.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<div class="faq-q">
+							Can I schedule posts in advance with Proactic?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								Yes, you can schedule posts weeks or months in advance with our
+								intelligent calendar system.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<div class="faq-q">
+							Does Proactic provide analytics?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								Yes, we provide detailed analytics including engagement rates,
+								click-through rates, and audience insights.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<div class="faq-q">
+							Is Proactic suitable for small businesses?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								Absolutely! We have plans starting from free that are perfect
+								for small businesses and solo entrepreneurs.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<div class="faq-q">
+							Can I collaborate with my team on Proactic?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								Yes, Proactic supports team collaboration with role-based access
+								and shared workspaces.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<div class="faq-q">
+							Does Proactic offer customer support?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								We offer 24/7 customer support via chat and email, with
+								dedicated account managers for Pro+ plans.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<div class="faq-q">
+							Is there a free trial available for Proactic?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								Yes, our Hobby plan is completely free with no credit card
+								required.
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<div class="faq-q">
+							How can I get started with Proactic?
+							<svg class="faq-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
+						<div class="faq-body">
+							<div class="faq-body-inner">
+								Simply click 'Get Started' or 'Book a demo' above to create your
+								account and start automating.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ════════════════════════════════════════════ BOTTOM CTA ═══ -->
+		<section id="cta-bottom">
+			<div class="cta-inner">
+				<div class="cta-content">
+					<h2>
+						Get started today with Proactiv to kickstart your marketing efforts
+					</h2>
+					<p>
+						Proactiv houses the best in class software tools to kickstart your
+						marketing journey. Join 127,000+ other users to get started.
+					</p>
+					<div class="cta-proof">
+						<div class="avatar-stack">
+							<img src="assets/images/avatar1.jpg" alt="">
+							<img src="assets/images/avatar2.jpg" alt="">
+							<img src="assets/images/avatar3.jpg" alt="">
+							<img src="assets/images/avatar4.jpg" alt="">
+							<img src="assets/images/avatar5.jpg" alt="">
+						</div>
+						<div class="proof-text">
+							<div class="proof-stars">★★★★★</div>
+							<div class="proof-label">Trusted by 27,000+ creators</div>
+						</div>
+					</div>
+					<a href="/register.html" class="btn-primary">Book a demo →</a>
+				</div>
+				<div class="cta-right">
+					<svg class="keyboard-svg" width="220" height="140" viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="8" y="8" width="204" height="124" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"></rect>
+						<!-- Row 1 -->
+						<rect x="20" y="20" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.06)"></rect>
+						<rect x="50" y="20" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.06)"></rect>
+						<rect x="80" y="20" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.06)"></rect>
+						<rect x="110" y="20" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.06)"></rect>
+						<rect x="140" y="20" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.06)"></rect>
+						<rect x="170" y="20" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.06)"></rect>
+						<!-- Row 2 -->
+						<rect x="20" y="46" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<rect x="50" y="46" width="24" height="18" rx="4" fill="rgba(57,195,239,0.12)" stroke="rgba(57,195,239,0.2)"></rect>
+						<rect x="80" y="46" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<rect x="110" y="46" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<rect x="140" y="46" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<rect x="170" y="46" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<!-- Row 3 -->
+						<rect x="20" y="72" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<rect x="50" y="72" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<rect x="80" y="72" width="24" height="18" rx="4" fill="rgba(57,195,239,0.12)" stroke="rgba(57,195,239,0.2)"></rect>
+						<rect x="110" y="72" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<rect x="140" y="72" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<rect x="170" y="72" width="24" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+						<!-- Spacebar -->
+						<rect x="50" y="100" width="120" height="18" rx="4" fill="rgba(255,255,255,0.06)"></rect>
+					</svg>
+				</div>
+			</div>
+		</section>
+
+		<!-- ══════════════════════════════════════════════════ FOOTER ═══ -->
+		<footer id="footer">
+			<div class="container">
+				<div class="footer-inner">
+					<div class="footer-brand">
+						<a href="index.html" class="nav-logo" style="margin-bottom:0;">
+							<div class="logo-icon"><span>P</span></div>
+							Proactiv
+						</a>
+						<p>Copyright © 2024 Proactiv INC<br>All rights reserved</p>
+					</div>
+
+					<div>
+						<div class="footer-col-title">Product</div>
+						<ul class="footer-links">
+							<li><a href="/pricing.html">Pricing</a></li>
+							<li><a href="/blog.html">Blog</a></li>
+							<li><a href="/contact.html">Contact</a></li>
+						</ul>
+					</div>
+
+					<div>
+						<div class="footer-col-title">Legal</div>
+						<ul class="footer-links">
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms of Service</a></li>
+							<li><a href="#">Refund Policy</a></li>
+						</ul>
+					</div>
+
+					<div>
+						<div class="footer-col-title">Social</div>
+						<ul class="footer-links">
+							<li>
+								<a href="#">
+									<span style="display:flex;align-items:center;gap:8px;">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+											<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.257 5.628L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"></path>
+										</svg>
+										Twitter
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span style="display:flex;align-items:center;gap:8px;">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+											<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+											<circle cx="4" cy="4" r="2"></circle>
+										</svg>
+										LinkedIn
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span style="display:flex;align-items:center;gap:8px;">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+											<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path>
+										</svg>
+										GitHub
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<hr class="footer-divider">
+				<div class="footer-bottom">
+					<span class="footer-copy">© 2024 Proactiv INC. All rights reserved.</span>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		// ── Nav scroll ──────────────────────────────────────────────────────────────
+		const nav = document.getElementById("nav");
+		window.addEventListener(
+			"scroll",
+			() => {
+				nav.classList.toggle("scrolled", window.scrollY > 50);
+			},
+			{ passive: true },
+		);
+
+		// ── Mobile menu ──────────────────────────────────────────────────────────────
+		const hamburger = document.getElementById("hamburger");
+		const mobileMenu = document.getElementById("mobile-menu");
+		hamburger.addEventListener("click", () => {
+			mobileMenu.classList.toggle("open");
+		});
+
+		// ── Feature tabs ─────────────────────────────────────────────────────────────
+		const tabItems = document.querySelectorAll(".tab-item");
+		const tabImages = document.querySelectorAll(".tab-image");
+		tabItems.forEach((item) => {
+			item.addEventListener("click", () => {
+				const idx = item.dataset.tab;
+				tabItems.forEach((t) => t.classList.remove("active"));
+				tabImages.forEach((img) => img.classList.remove("active"));
+				item.classList.add("active");
+				const target = document.getElementById("tab-img-" + idx);
+				if (target) target.classList.add("active");
+			});
+		});
+
+		// ── FAQ accordion ─────────────────────────────────────────────────────────────
+		document.querySelectorAll(".faq-item").forEach((item) => {
+			item.querySelector(".faq-q").addEventListener("click", () => {
+				const wasOpen = item.classList.contains("open");
+				document.querySelectorAll(".faq-item").forEach((i) => {
+					i.classList.remove("open");
+					i.querySelector(".faq-body").style.maxHeight = null;
+				});
+				if (!wasOpen) {
+					item.classList.add("open");
+					const body = item.querySelector(".faq-body");
+					body.style.maxHeight = body.scrollHeight + "px";
+				}
+			});
+		});
+
+		// ── Pricing toggle ────────────────────────────────────────────────────────────
+		const pricingToggle = document.getElementById("pricing-toggle");
+		const labelMonthly = document.getElementById("label-monthly");
+		const labelYearly = document.getElementById("label-yearly");
+		pricingToggle.addEventListener("change", () => {
+			if (pricingToggle.checked) {
+				document.body.classList.add("yearly");
+				labelMonthly.classList.remove("active-period");
+				labelYearly.classList.add("active-period");
+			} else {
+				document.body.classList.remove("yearly");
+				labelYearly.classList.remove("active-period");
+				labelMonthly.classList.add("active-period");
+			}
+		});
+
+		// ── IntersectionObserver fade-in ─────────────────────────────────────────────
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry, i) => {
+					if (entry.isIntersecting) {
+						setTimeout(() => {
+							entry.target.classList.add("visible");
+						}, i * 80);
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.05, rootMargin: "0px 0px 200px 0px" },
+		);
+
+		document
+			.querySelectorAll(".fade-in-up")
+			.forEach((el) => observer.observe(el));
+		setTimeout(() => {
+			document
+				.querySelectorAll(".fade-in-up")
+				.forEach((el) => el.classList.add("visible"));
+		}, 500);
+		</script>
+	
+
+</body></html>

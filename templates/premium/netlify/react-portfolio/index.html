@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chetan Verma — Designer & Developer</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- No-flash theme boot: set data-theme before first paint -->
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      if (stored) {
+        document.documentElement.setAttribute('data-theme', stored);
+      } else {
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      }
+    })();
+  </script>
+
+  <style>
+    /* ---- PAGE-LEVEL LAYOUT ---- */
+    .page-outer {
+      overflow-x: hidden;
+    }
+
+    /* Gradient circles positioning for the page */
+    .gradient-top-wrap {
+      position: relative;
+      height: 0;
+      overflow: visible;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .gradient-bottom-wrap {
+      position: relative;
+      height: 0;
+      overflow: visible;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ---- HERO SECTION PADDING ---- */
+    .hero-section {
+      padding: 0 0.5rem;
+    }
+    @media (min-width: 768px) {
+      .hero-section {
+        padding: 0;
+      }
+    }
+
+    /* ---- CONTACT SOCIAL ROW ---- */
+    .contact-social {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+    @media (min-width: 375px) {
+      .contact-social { flex-wrap: nowrap; }
+    }
+
+    /* ---- SCHEDULE CALL BUTTON ---- */
+    .btn-schedule {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.875rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 0.5rem;
+      border: none;
+      background-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+      margin-top: 1.25rem;
+    }
+    .btn-schedule:hover {
+      transform: scale(1.05);
+    }
+
+    /* ---- CURSOR ---- */
+    #cursor-svg circle {
+      transition: fill 0.2s;
+    }
+
+    /* ---- DARK MODE INVERT SUN ICON ---- */
+    [data-theme="dark"] .sun-icon {
+      filter: invert(1);
+    }
+    [data-theme="dark"] .menu-icon {
+      filter: invert(1);
+    }
+
+    /* ---- MOBILE POPOVER BORDER IN DARK ---- */
+    [data-theme="dark"] .mobile-popover {
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    /* Services grid margin fix on mobile */
+    @media (max-width: 767px) {
+      .services-heading { margin: 0; }
+      .services-grid { margin: 0; margin-top: 1.25rem; }
+      .about-heading { margin: 0; }
+      .about-text { margin: 0; margin-top: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom cursor -->
+  <svg id="cursor-svg" class="cursor-tracker" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+    <circle cx="15" cy="15" r="7.5" fill="#000" />
+  </svg>
+
+  <div class="page-outer">
+    <!-- Gradient circle TOP -->
+    <div class="gradient-top-wrap">
+      <div class="gradient-circle"></div>
+    </div>
+
+    <div class="container mx-auto">
+
+      <!-- ===== MOBILE NAV ===== -->
+      <nav class="nav-mobile" aria-label="Mobile navigation">
+        <a href="index.html" class="nav-logo" style="font-size:1.125rem;">Chetan.</a>
+        <div style="display:flex;align-items:center;gap:0.5rem;">
+          <!-- Sun / theme toggle -->
+          <button class="btn btn-icon theme-toggle-btn" aria-label="Toggle theme">
+            <img src="assets/images/sun.svg" alt="Theme toggle" class="sun-icon" />
+          </button>
+          <!-- Hamburger -->
+          <div class="mobile-nav-wrapper">
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-popover">
+              <img src="assets/images/menu.svg" alt="Menu" class="menu-icon" />
+            </button>
+            <div class="mobile-popover" id="mobile-popover" role="dialog" aria-label="Navigation menu">
+              <a href="index.html" class="btn">Home</a>
+              <button class="btn" onclick="scrollToSection('work')">Work</button>
+              <button class="btn" onclick="scrollToSection('about')">About</button>
+              <a href="blog.html" class="btn">Blog</a>
+              <a href="resume.html" class="btn">Resume</a>
+              <button class="btn" onclick="scrollToSection('contact')">Contact</button>
+              <button class="btn btn-icon theme-toggle-btn" aria-label="Toggle theme">
+                <img src="assets/images/sun.svg" alt="Theme toggle" class="sun-icon" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ===== DESKTOP NAV ===== -->
+      <nav class="nav-desktop" aria-label="Desktop navigation">
+        <a href="index.html" class="nav-logo" style="font-size:1.125rem;">Chetan.</a>
+        <div class="nav-links">
+          <button class="btn" onclick="scrollToSection('work')">Work</button>
+          <button class="btn" onclick="scrollToSection('about')">About</button>
+          <a href="blog.html" class="btn">Blog</a>
+          <a href="resume.html" class="btn">Resume</a>
+          <button class="btn" onclick="scrollToSection('contact')">Contact</button>
+          <button class="btn btn-icon theme-toggle-btn" aria-label="Toggle theme">
+            <img src="assets/images/sun.svg" alt="Theme toggle" class="sun-icon" />
+          </button>
+        </div>
+      </nav>
+
+      <!-- ===== HERO ===== -->
+      <section class="hero-section" style="margin-top:2.5rem;">
+        <h1 class="hero-heading">Hello 👋</h1>
+        <h1 class="hero-heading hero-heading-wide">I'm Chetan Verma - curious</h1>
+        <h1 class="hero-heading hero-heading-wide">designer and devloper</h1>
+        <h1 class="hero-heading hero-heading-wide">based in New Delhi, India.</h1>
+
+        <!-- Social links -->
+        <div class="social-links">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn">Github</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="btn">Twitter</a>
+          <a href="blog.html" class="btn">Blog</a>
+          <a href="mailto:chetan@example.com" class="btn">Email</a>
+        </div>
+      </section>
+
+      <!-- ===== WORK SECTION ===== -->
+      <section id="work" class="work-section">
+        <h2 class="section-heading">Work.</h2>
+        <div class="projects-grid">
+
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-image-wrap project-image-wrap-tall">
+              <img
+                src="assets/images/project1.jpg"
+                alt="Project One Test"
+                class="project-img"
+                loading="lazy"
+              />
+            </div>
+            <p class="project-title">Project One Test</p>
+            <p class="project-category">Web Design</p>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-image-wrap project-image-wrap-tall">
+              <img
+                src="assets/images/project2.jpg"
+                alt="Project Two"
+                class="project-img"
+                loading="lazy"
+              />
+            </div>
+            <p class="project-title">Project Two</p>
+            <p class="project-category">Web Development</p>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-image-wrap project-image-wrap-tall">
+              <img
+                src="assets/images/project3.jpg"
+                alt="Project Three"
+                class="project-img"
+                loading="lazy"
+              />
+            </div>
+            <p class="project-title">Project Three</p>
+            <p class="project-category">Design</p>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card">
+            <div class="project-image-wrap project-image-wrap-tall">
+              <img
+                src="assets/images/project4.jpg"
+                alt="Project Four"
+                class="project-img"
+                loading="lazy"
+              />
+            </div>
+            <p class="project-title">Project Four</p>
+            <p class="project-category">Marketing</p>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="project-card">
+            <div class="project-image-wrap project-image-wrap-tall">
+              <img
+                src="assets/images/project5.jpg"
+                alt="Project Five"
+                class="project-img"
+                loading="lazy"
+              />
+            </div>
+            <p class="project-title">Project Five</p>
+            <p class="project-category">Development</p>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="project-card">
+            <div class="project-image-wrap project-image-wrap-tall">
+              <img
+                src="assets/images/project6.jpg"
+                alt="Project Six"
+                class="project-img"
+                loading="lazy"
+              />
+            </div>
+            <p class="project-title">Project Six</p>
+            <p class="project-category">Design &amp; Development</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== SERVICES SECTION ===== -->
+      <section class="services-section">
+        <h2 class="services-heading">Services.</h2>
+        <div class="services-grid">
+
+          <div class="service-card">
+            <h3 class="service-title">Art Direction</h3>
+            <p class="service-desc">We help with the creation and development of online advertising ideas, with particular focus on their visual appearance.</p>
+          </div>
+
+          <div class="service-card">
+            <h3 class="service-title">Branding</h3>
+            <p class="service-desc">We design key brand elements such as the logo, color scheme, typography, and other design components that makes your brand stand out from competitors.</p>
+          </div>
+
+          <div class="service-card">
+            <h3 class="service-title">Web Design</h3>
+            <p class="service-desc">We build and optimize your online presence.&nbsp; Website is the digital entry point into your business and a powerful revenue channel.</p>
+          </div>
+
+          <div class="service-card">
+            <h3 class="service-title">3D Design</h3>
+            <p class="service-desc">We combine creative design and technical skills to build striking 3D visualisations that bring your project to life.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== ABOUT SECTION ===== -->
+      <section id="about" class="about-section">
+        <h2 class="about-heading">About.</h2>
+        <p class="about-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </section>
+
+      <!-- ===== CONTACT SECTION ===== -->
+      <section id="contact" class="contact-section">
+        <h2 class="contact-heading">Contact.</h2>
+        <div class="contact-cta">
+          <p class="contact-big-text">LET'S WORK</p>
+          <p class="contact-big-text">TOGETHER</p>
+        </div>
+        <button class="btn-schedule" onclick="window.open('https://calendly.com/','_blank')">Schedule a call</button>
+        <div class="contact-social">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn">Github</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="btn">Twitter</a>
+          <a href="blog.html" class="btn">Blog</a>
+          <a href="mailto:chetan@example.com" class="btn">Email</a>
+        </div>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <footer class="footer">
+        Made With ❤ by <a href="http://www.chetanverma.com" target="_blank" rel="noopener noreferrer">Chetan Verma</a>
+      </footer>
+
+    </div><!-- /container -->
+
+    <!-- Gradient circle BOTTOM -->
+    <div class="gradient-bottom-wrap">
+      <div class="gradient-circle-bottom"></div>
+    </div>
+  </div><!-- /page-outer -->
+
+  <script>
+    /* ----------------------------------------------------------------
+       THEME TOGGLE
+    ---------------------------------------------------------------- */
+    function getTheme() {
+      var stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      // Update cursor fill
+      var circle = document.querySelector('#cursor-svg circle');
+      if (circle) {
+        circle.setAttribute('fill', theme === 'dark' ? '#fff' : '#000');
+      }
+    }
+
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme') || getTheme();
+      var next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    }
+
+    // Wire all theme toggle buttons
+    document.querySelectorAll('.theme-toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', toggleTheme);
+    });
+
+    // Apply initial theme (the no-flash script already set data-theme, but
+    // we still need to sync the cursor fill)
+    applyTheme(document.documentElement.getAttribute('data-theme') || getTheme());
+
+    /* ----------------------------------------------------------------
+       MOBILE MENU
+    ---------------------------------------------------------------- */
+    var menuBtn = document.getElementById('mobile-menu-btn');
+    var popover = document.getElementById('mobile-popover');
+
+    menuBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = popover.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close popover when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!popover.contains(e.target) && e.target !== menuBtn) {
+        popover.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close mobile menu when a nav link is clicked
+    popover.querySelectorAll('a, button').forEach(function (el) {
+      el.addEventListener('click', function () {
+        popover.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ----------------------------------------------------------------
+       SCROLL TO SECTION
+    ---------------------------------------------------------------- */
+    function scrollToSection(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    /* ----------------------------------------------------------------
+       CUSTOM CURSOR
+    ---------------------------------------------------------------- */
+    (function () {
+      var cursor = document.getElementById('cursor-svg');
+      if (!cursor) return;
+      // Only track on fine-pointer (mouse) devices
+      if (!window.matchMedia('(any-pointer: fine)').matches) return;
+
+      document.addEventListener('mousemove', function (e) {
+        cursor.style.transform = 'translate(' + (e.clientX - 15) + 'px, ' + (e.clientY - 15) + 'px)';
+        // Undo the built-in translate(-50%,-50%) by using absolute positioning
+      });
+
+      // Override the built-in transform on first move
+      cursor.style.transform = 'translate(-9999px, -9999px)';
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Register — Proactiv</title>
+		<link rel="stylesheet" href="./styles.css">
+		<style>
+		/* register page overrides — match original Aceternity Proactiv */
+		.nav-cluster {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+		.auth-section {
+			position: relative;
+			overflow: hidden;
+		}
+		.auth-spotlight {
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+			overflow: hidden;
+		}
+		.auth-spotlight span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+		}
+		.auth-spotlight .s1 {
+			transform: translateY(-350px) rotate(-45deg);
+			width: 560px;
+			height: 1380px;
+			background: radial-gradient(
+				68.54% 68.72% at 55.02% 31.46%,
+				hsla(0, 0%, 85%, 0.08) 0,
+				hsla(0, 0%, 55%, 0.02) 50%,
+				hsla(0, 0%, 45%, 0) 80%
+			);
+		}
+		.auth-spotlight .s2 {
+			transform: rotate(-45deg) translate(5%, -50%);
+			transform-origin: top left;
+			width: 240px;
+			height: 1380px;
+			background: radial-gradient(
+				50% 50% at 50% 50%,
+				hsla(0, 0%, 85%, 0.06) 0,
+				hsla(0, 0%, 45%, 0.02) 80%,
+				transparent 100%
+			);
+		}
+		.auth-spotlight .s3 {
+			border-radius: 20px;
+			transform: rotate(-45deg) translate(-180%, -70%);
+			transform-origin: top left;
+			width: 240px;
+			height: 1380px;
+			background: radial-gradient(
+				50% 50% at 50% 50%,
+				hsla(0, 0%, 85%, 0.04) 0,
+				hsla(0, 0%, 45%, 0.02) 80%,
+				transparent 100%
+			);
+		}
+		.auth-card {
+			position: relative;
+			z-index: 1;
+		}
+		/* auth-card logo horizontal (logo beside brand) */
+		.auth-logo {
+			flex-direction: row;
+			gap: 8px;
+			margin-bottom: 16px;
+		}
+		.auth-brand-name {
+			font-weight: 700;
+		}
+		/* OAuth buttons: solid white, black text/icons */
+		.btn-oauth {
+			background: #fff;
+			color: #000;
+			border: none;
+			box-shadow: 0px 1px 0px 0px #00000040 inset;
+		}
+		.btn-oauth:hover {
+			background: rgba(255, 255, 255, 0.8);
+			border: none;
+		}
+		.btn-oauth svg {
+			width: 16px;
+			height: 16px;
+			fill: #000;
+		}
+		/* divider between OAuth row and Continue with Email */
+		.auth-divider {
+			height: 1px;
+			width: 100%;
+			background: #262626;
+			margin: 24px 0;
+		}
+		/* collapsed animated email input (matches original) */
+		.auth-email {
+			height: 0;
+			opacity: 0;
+			margin-bottom: 0;
+			width: 100%;
+			padding: 0 16px;
+			border-radius: 8px;
+			font-size: 14px;
+			background: var(--charcoal);
+			border: 1px solid #262626;
+			color: var(--white);
+			outline: none;
+			box-sizing: border-box;
+		}
+		.auth-email::placeholder {
+			color: #737373;
+		}
+		/* Continue with Email: solid neutral-800, white text */
+		.btn-oauth-full {
+			background: #262626;
+			border: 1px solid transparent;
+			color: #fff;
+			box-shadow: 0px 1px 0px 0px #ffffff20 inset;
+		}
+		.btn-oauth-full:hover {
+			background: #171717;
+			border: 1px solid transparent;
+		}
+		/* footer: bare link columns, no headings */
+		.footer-col h4 {
+			display: none;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- ============ NAV ============ -->
+		<nav class="nav-wrapper">
+			<div class="nav-inner" id="nav-inner">
+				<div class="nav-cluster">
+					<a href="index.html" class="nav-logo">
+						<svg
+							width="35"
+							height="35"
+							viewBox="0 0 35 35"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							style="height:24px;width:24px;"
+						>
+							<circle cx="17.5" cy="17.5" r="17.5" fill="white"></circle>
+							<path
+								d="M11.0389 19.8912L11.0392 28.5579C12.6769 28.5579 14.0028 27.2273 13.9972 25.5897L13.9712 18.071L13.9899 13.8938C13.9996 11.7406 15.753 10.003 17.9061 10.0126C20.0593 10.0223 21.797 11.7756 21.7873 13.9288L21.7686 18.106L21.7686 18.7764C21.7686 19.3921 22.2677 19.8912 22.8833 19.8911C23.499 19.8911 23.998 19.392 23.998 18.7764L23.998 13.5232C23.998 9.95254 21.1035 7.05796 17.5328 7.05796C13.9735 7.05796 11.0836 9.93487 11.0677 13.4942L11.0389 19.8912Z"
+								fill="#111B21"
+							></path>
+						</svg>
+						Proactiv
+					</a>
+					<div class="nav-links">
+						<a href="features.html" class="nav-link">Features</a>
+						<a href="pricing.html" class="nav-link">Pricing</a>
+						<a href="blog.html" class="nav-link">Blog</a>
+						<a href="contact.html" class="nav-link">Contact</a>
+					</div>
+				</div>
+				<div class="nav-auth">
+					<a href="register.html" class="btn-register">Register</a>
+					<a href="register.html" class="btn-demo">Book a demo</a>
+					<button
+						class="nav-mobile-toggle"
+						id="mobile-toggle"
+						aria-label="Toggle menu"
+					>
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<line x1="3" y1="6" x2="21" y2="6" />
+							<line x1="3" y1="12" x2="21" y2="12" />
+							<line x1="3" y1="18" x2="21" y2="18" />
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div class="nav-mobile-menu" id="mobile-menu">
+				<a href="features.html" class="nav-mobile-link">Features</a>
+				<a href="pricing.html" class="nav-mobile-link">Pricing</a>
+				<a href="blog.html" class="nav-mobile-link">Blog</a>
+				<a href="contact.html" class="nav-mobile-link">Contact</a>
+				<a href="register.html" class="nav-mobile-link">Register</a>
+				<a
+					href="register.html"
+					class="nav-mobile-link"
+					style="color:var(--secondary);"
+					>Book a demo</a
+				>
+			</div>
+		</nav>
+
+		<!-- ============ AUTH SECTION ============ -->
+		<main class="auth-section">
+			<div class="auth-spotlight" aria-hidden="true">
+				<span class="s1"></span>
+				<span class="s2"></span>
+				<span class="s3"></span>
+			</div>
+			<div class="auth-card fade-in-up">
+				<!-- Logo -->
+				<div class="auth-logo">
+					<svg
+						width="35"
+						height="35"
+						viewBox="0 0 35 35"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						style="height:24px;width:24px;"
+					>
+						<circle cx="17.5" cy="17.5" r="17.5" fill="white"></circle>
+						<path
+							d="M11.0389 19.8912L11.0392 28.5579C12.6769 28.5579 14.0028 27.2273 13.9972 25.5897L13.9712 18.071L13.9899 13.8938C13.9996 11.7406 15.753 10.003 17.9061 10.0126C20.0593 10.0223 21.797 11.7756 21.7873 13.9288L21.7686 18.106L21.7686 18.7764C21.7686 19.3921 22.2677 19.8912 22.8833 19.8911C23.499 19.8911 23.998 19.392 23.998 18.7764L23.998 13.5232C23.998 9.95254 21.1035 7.05796 17.5328 7.05796C13.9735 7.05796 11.0836 9.93487 11.0677 13.4942L11.0389 19.8912Z"
+							fill="#111B21"
+						></path>
+					</svg>
+					<span class="auth-brand-name">Proactiv</span>
+				</div>
+
+				<h1 class="auth-title">Welcome to Proactiv</h1>
+
+				<!-- OAuth buttons -->
+				<div class="auth-buttons">
+					<button class="btn-oauth" onclick="handleOAuth('GitHub')">
+						<!-- GitHub filled mark -->
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							stroke="none"
+						>
+							<path
+								d="M5.315 2.1c.791 -.113 1.9 .145 3.333 .966l.272 .161l.16 .1l.397 -.083a13.3 13.3 0 0 1 4.59 -.08l.456 .08l.396 .083l.161 -.1c1.385 -.84 2.487 -1.17 3.322 -1.148l.164 .008l.147 .017l.076 .014l.05 .011l.144 .047a1 1 0 0 1 .53 .514a5.2 5.2 0 0 1 .397 2.91l-.047 .267l-.046 .196l.123 .163c.574 .795 .93 1.728 1.03 2.707l.023 .295l.007 .272c0 3.855 -1.659 5.883 -4.644 6.68l-.245 .061l-.132 .029l.014 .161l.008 .157l.004 .365l-.002 .213l-.003 3.834a1 1 0 0 1 -.883 .993l-.117 .007h-6a1 1 0 0 1 -.993 -.883l-.007 -.117v-.734c-1.818 .26 -3.03 -.424 -4.11 -1.878l-.535 -.766c-.28 -.396 -.455 -.579 -.589 -.644l-.048 -.019a1 1 0 0 1 .564 -1.918c.642 .188 1.074 .568 1.57 1.239l.538 .769c.76 1.079 1.36 1.459 2.609 1.191l.001 -.678l-.018 -.168a5.03 5.03 0 0 1 -.021 -.824l.017 -.185l.019 -.12l-.108 -.024c-2.976 -.71 -4.703 -2.573 -4.875 -6.139l-.01 -.31l-.004 -.292a5.6 5.6 0 0 1 .908 -3.051l.152 -.222l.122 -.163l-.045 -.196a5.2 5.2 0 0 1 .145 -2.642l.1 -.282l.106 -.253a1 1 0 0 1 .529 -.514l.144 -.047l.154 -.03z"
+							></path>
+						</svg>
+						Login with GitHub
+					</button>
+					<button class="btn-oauth" onclick="handleOAuth('Google')">
+						<!-- Google filled (monochrome) -->
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							stroke="none"
+						>
+							<path
+								d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z"
+							></path>
+						</svg>
+						Login with Google
+					</button>
+				</div>
+
+				<!-- Divider -->
+				<div class="auth-divider"></div>
+
+				<!-- Collapsed/animated email input -->
+				<input
+					type="email"
+					class="auth-email"
+					placeholder="contact@aceternity.com"
+				>
+
+				<button class="btn-oauth-full" onclick="handleOAuth('Email')">
+					Continue with Email
+				</button>
+			</div>
+		</main>
+
+		<!-- ============ FOOTER ============ -->
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-brand">
+						<div class="footer-logo">
+							<svg
+								width="35"
+								height="35"
+								viewBox="0 0 35 35"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+								style="height:24px;width:24px;"
+							>
+								<circle cx="17.5" cy="17.5" r="17.5" fill="white"></circle>
+								<path
+									d="M11.0389 19.8912L11.0392 28.5579C12.6769 28.5579 14.0028 27.2273 13.9972 25.5897L13.9712 18.071L13.9899 13.8938C13.9996 11.7406 15.753 10.003 17.9061 10.0126C20.0593 10.0223 21.797 11.7756 21.7873 13.9288L21.7686 18.106L21.7686 18.7764C21.7686 19.3921 22.2677 19.8912 22.8833 19.8911C23.499 19.8911 23.998 19.392 23.998 18.7764L23.998 13.5232C23.998 9.95254 21.1035 7.05796 17.5328 7.05796C13.9735 7.05796 11.0836 9.93487 11.0677 13.4942L11.0389 19.8912Z"
+									fill="#111B21"
+								></path>
+							</svg>
+							Proactiv
+						</div>
+						<p class="footer-copy">
+							Copyright © 2024 Proactiv INC<br>All rights reserved
+						</p>
+					</div>
+					<div class="footer-col">
+						<h4>Product</h4>
+						<ul class="footer-links">
+							<li><a href="pricing.html" class="footer-link">Pricing</a></li>
+							<li><a href="blog.html" class="footer-link">Blog</a></li>
+							<li><a href="contact.html" class="footer-link">Contact</a></li>
+						</ul>
+					</div>
+					<div class="footer-col">
+						<h4>Legal</h4>
+						<ul class="footer-links">
+							<li><a href="#" class="footer-link">Privacy Policy</a></li>
+							<li><a href="#" class="footer-link">Terms of Service</a></li>
+							<li><a href="#" class="footer-link">Refund Policy</a></li>
+						</ul>
+					</div>
+					<div class="footer-col">
+						<h4>Social</h4>
+						<ul class="footer-links">
+							<li>
+								<a href="https://twitter.com/mannupaaji" class="footer-link"
+									>Twitter</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://linkedin.com/in/manuarora28"
+									class="footer-link"
+									>LinkedIn</a
+								>
+							</li>
+							<li>
+								<a href="https://github.com/manuarora700" class="footer-link"
+									>GitHub</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		// Nav scroll
+		const navInner = document.getElementById("nav-inner");
+		window.addEventListener("scroll", () => {
+			navInner.classList.toggle("scrolled", window.scrollY > 50);
+		});
+
+		// Mobile menu
+		document.getElementById("mobile-toggle").addEventListener("click", () => {
+			document.getElementById("mobile-menu").classList.toggle("open");
+		});
+
+		// OAuth handler (stub)
+		function handleOAuth(provider) {
+			console.log("Signing in with", provider);
+		}
+
+		// Scroll reveal
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((e) => {
+					if (e.isIntersecting) e.target.classList.add("visible");
+				});
+			},
+			{ threshold: 0.05, rootMargin: "0px 0px 200px 0px" },
+		);
+		document
+			.querySelectorAll(".fade-in-up")
+			.forEach((el) => observer.observe(el));
+		</script>
+	</body>
+</html>

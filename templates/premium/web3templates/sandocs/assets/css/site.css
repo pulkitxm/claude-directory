@@ -1,0 +1,314 @@
+/* Sandocs clone — layout glue + theme (light/dark) overrides.
+   Loaded after vendor-tailwind.css so these rules win the cascade at equal
+   specificity, retinting the exact same utility classes the source uses. */
+
+html,
+body {
+	background: var(--bg);
+	color: var(--fg);
+}
+
+::selection {
+	background: var(--accent-soft);
+}
+
+a {
+	color: inherit;
+}
+
+/* ---------- header ---------- */
+header {
+	background: var(--surface) !important;
+	border-color: var(--border) !important;
+}
+header a,
+header svg {
+	color: var(--fg);
+}
+header a.hover\:text-violet-500:hover {
+	color: var(--accent-2) !important;
+}
+.site-logo-img {
+	width: 120px;
+	height: 30px;
+	object-fit: contain;
+}
+.logo-dark {
+	display: none;
+}
+:root[data-theme="dark"] .logo-light {
+	display: none;
+}
+:root[data-theme="dark"] .logo-dark {
+	display: inline-block;
+}
+
+.content-img {
+	width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+	display: block;
+}
+
+.inline-icon {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+	display: block;
+}
+.icon-badge {
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	flex-shrink: 0;
+}
+
+.menu-toggle {
+	background: none;
+	border: 0;
+	cursor: pointer;
+	color: var(--fg);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px;
+}
+
+/* ---------- theme toggle ---------- */
+.theme-toggle {
+	position: fixed;
+	right: 20px;
+	bottom: 76px;
+	z-index: 20;
+	width: 40px;
+	height: 40px;
+	border-radius: 999px;
+	border: 1px solid var(--border);
+	background: var(--surface);
+	color: var(--fg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	box-shadow: var(--shadow);
+	transition:
+		background 0.2s ease,
+		transform 0.15s ease,
+		border-color 0.2s ease;
+}
+.theme-toggle:hover {
+	transform: translateY(-2px);
+	border-color: var(--accent);
+}
+.theme-toggle svg {
+	width: 18px;
+	height: 18px;
+}
+.theme-toggle .icon-moon {
+	display: none;
+}
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+	display: none;
+}
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+	display: block;
+}
+
+/* ---------- sidebar ---------- */
+.sticky.border-r {
+	background: var(--surface);
+	border-color: var(--border) !important;
+}
+.sticky.border-r a {
+	transition: color 0.15s ease;
+}
+.sticky.border-r a.is-active {
+	font-weight: 600;
+}
+.sticky.border-r .border-t {
+	border-color: var(--border) !important;
+	background: var(--surface);
+}
+
+/* ---------- content / prose ---------- */
+:root[data-theme="dark"] .prose {
+	--tw-prose-body: #d1d5db;
+	--tw-prose-headings: #fff;
+	--tw-prose-lead: #9ca3af;
+	--tw-prose-links: #fff;
+	--tw-prose-bold: #fff;
+	--tw-prose-counters: #9ca3af;
+	--tw-prose-bullets: #4b5563;
+	--tw-prose-hr: #374151;
+	--tw-prose-quotes: #f3f4f6;
+	--tw-prose-quote-borders: #374151;
+	--tw-prose-captions: #9ca3af;
+	--tw-prose-code: #fff;
+	--tw-prose-pre-code: #d1d5db;
+	--tw-prose-pre-bg: rgba(0, 0, 0, 0.5);
+	--tw-prose-th-borders: #4b5563;
+	--tw-prose-td-borders: #374151;
+}
+
+.prose :where(code):not(pre code) {
+	background: var(--code-bg);
+	color: var(--code-fg);
+	border-radius: 4px;
+	padding: 0.15em 0.4em;
+	font-weight: 500;
+}
+.prose pre,
+pre.refractor {
+	background: var(--code-bg) !important;
+	color: var(--code-fg) !important;
+	border: 1px solid var(--border);
+	border-radius: 0.5rem;
+	overflow-x: auto;
+}
+.prose table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.prose th,
+.prose td {
+	border-bottom: 1px solid var(--border);
+	padding: 0.5rem 0.75rem;
+	text-align: left;
+}
+.prose blockquote {
+	border-left: 3px solid var(--accent);
+	color: var(--muted);
+}
+.prose a {
+	color: var(--accent) !important;
+}
+
+/* ---------- TOC (right rail) ---------- */
+nav.w-64 a {
+	display: block;
+	transition: color 0.15s ease;
+}
+nav.w-64 a.is-active {
+	color: var(--accent) !important;
+	font-weight: 600;
+}
+
+/* ---------- cards / hover lift ---------- */
+a[class*="border"][class*="rounded"],
+.prose div[class*="border"][class*="rounded"] {
+	transition:
+		box-shadow 0.2s ease,
+		transform 0.15s ease,
+		border-color 0.2s ease;
+}
+a[class*="border"][class*="rounded"]:hover,
+.prose div[class*="border"][class*="rounded"]:hover {
+	box-shadow: var(--shadow);
+	transform: translateY(-2px);
+	border-color: var(--accent);
+}
+
+/* CLI copy-snippet pill */
+.copy-pill {
+	position: relative;
+}
+.copy-pill button.copy-btn {
+	background: none;
+	border: 0;
+	cursor: pointer;
+	color: inherit;
+	display: inline-flex;
+	padding: 2px;
+	border-radius: 4px;
+	transition: color 0.15s ease;
+}
+.copy-pill button.copy-btn:hover {
+	color: var(--accent);
+}
+.copy-pill .copied-tip {
+	position: absolute;
+	top: -1.9rem;
+	right: 0;
+	font-size: 0.7rem;
+	background: var(--fg);
+	color: var(--bg);
+	padding: 2px 8px;
+	border-radius: 4px;
+	opacity: 0;
+	transform: translateY(4px);
+	transition:
+		opacity 0.15s ease,
+		transform 0.15s ease;
+	pointer-events: none;
+}
+.copy-pill.copied .copied-tip {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* ---------- dark-mode retint of the vendored Tailwind utility classes ---------- */
+:root[data-theme="dark"] .bg-white {
+	background-color: var(--surface) !important;
+}
+:root[data-theme="dark"] .bg-slate-100 {
+	background-color: var(--code-bg) !important;
+}
+:root[data-theme="dark"] .text-gray-800,
+:root[data-theme="dark"] .text-gray-900,
+:root[data-theme="dark"] .text-slate-900,
+:root[data-theme="dark"] .text-slate-700 {
+	color: var(--fg) !important;
+}
+:root[data-theme="dark"] .text-gray-500,
+:root[data-theme="dark"] .text-gray-400,
+:root[data-theme="dark"] .text-slate-500,
+:root[data-theme="dark"] .text-slate-600,
+:root[data-theme="dark"] .text-slate-400 {
+	color: var(--muted) !important;
+}
+:root[data-theme="dark"] .border-gray-200,
+:root[data-theme="dark"] .border-gray-300,
+:root[data-theme="dark"] .border-slate-200,
+:root[data-theme="dark"] .border-t,
+:root[data-theme="dark"] .border-b,
+:root[data-theme="dark"] .border {
+	border-color: var(--border) !important;
+}
+:root[data-theme="dark"] .text-violet-900 {
+	color: #ddd6fe !important;
+}
+:root[data-theme="dark"] .bg-violet-100 {
+	background-color: rgba(139, 92, 246, 0.18) !important;
+}
+:root[data-theme="dark"] .text-black {
+	color: var(--muted) !important;
+}
+:root[data-theme="dark"] [class*="\\[background\\:radial-gradient"] {
+	opacity: 0.12;
+}
+:root[data-theme="dark"] .shadow-sm,
+:root[data-theme="dark"] .shadow-xl {
+	box-shadow: var(--shadow) !important;
+}
+
+/* mobile sidebar drawer */
+@media (max-width: 767px) {
+	.sticky.border-r {
+		position: fixed;
+		left: 0;
+		top: 55px;
+		width: 80vw;
+		max-width: 320px;
+		height: calc(100vh - 55px);
+		transform: translateX(-100%);
+		transition: transform 0.25s ease;
+		z-index: 15;
+		display: block !important;
+		box-shadow: var(--shadow);
+	}
+	.sticky.border-r.is-open {
+		transform: translateX(0);
+	}
+}

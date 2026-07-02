@@ -1,5 +1,7 @@
 # Hero Button Expandable — Nexus — GodRays Hero with Expanding Modal (React + @paper-design/shaders-react + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A React + TypeScript + Vite + Tailwind CSS v4 hero section integrating a `GodRays`-lit marketing hero whose CTA performs a Framer Motion shared-layout morph — the pill button expands into a full-screen `MeshGradient` modal with an animated "Get a Demo" form featuring `idle → submitting → success` states. Both shaders come from `@paper-design/shaders-react`, making it a compelling above-the-fold landing page component with WebGL backgrounds and smooth layout transitions. Generated with Claude Fable 5.
 
 ## Run

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Pricing — Carriera</title>
+		<meta
+			name="description"
+			content="Simple, transparent pricing for job posting on Carriera."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		var e = localStorage.getItem("theme");
+		if (e) document.documentElement.setAttribute("data-theme", e);
+		</script>
+		<style>
+		/* Pricing page extras */
+		.billing-toggle {
+			display: inline-flex;
+			gap: 0.25rem;
+			background: color-mix(in oklab, var(--color-primary) 8%, transparent);
+			border-radius: 9999px;
+			padding: 0.25rem;
+			margin-bottom: 2rem;
+		}
+		.billing-toggle button {
+			padding: 0.375rem 1rem;
+			border-radius: 9999px;
+			font-size: 0.75rem;
+			font-weight: 500;
+			transition: all 0.2s;
+			color: color-mix(in oklab, var(--color-primary) 60%, transparent);
+			cursor: pointer;
+		}
+		.billing-toggle button.active {
+			background: var(--color-primary);
+			color: var(--color-secondary);
+		}
+
+		.pricing-tiers {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 3rem;
+		}
+		@media (min-width: 768px) {
+			.pricing-tiers {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (min-width: 1024px) {
+			.pricing-tiers {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		.pricing-col {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+
+		.pricing-col-label {
+			font-size: 1rem;
+			font-weight: 500;
+			color: var(--color-primary);
+			text-transform: capitalize;
+			margin-bottom: 0.25rem;
+		}
+
+		.pricing-items {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			border-top: 1px solid
+				color-mix(in oklab, var(--color-primary) 10%, transparent);
+			border-bottom: 1px solid
+				color-mix(in oklab, var(--color-primary) 10%, transparent);
+		}
+
+		.pricing-item {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			padding-block: 1rem;
+			justify-content: space-between;
+			height: 100%;
+			border-bottom: 1px solid
+				color-mix(in oklab, var(--color-primary) 10%, transparent);
+		}
+
+		.pricing-item:last-child {
+			border-bottom: none;
+		}
+
+		.pricing-item-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.5rem;
+		}
+
+		.pricing-item-name {
+			font-size: 0.875rem;
+			font-family: var(--font-mono);
+			font-weight: 500;
+			text-transform: uppercase;
+			color: var(--color-primary);
+		}
+
+		.pricing-item-price {
+			font-size: 0.875rem;
+			font-family: var(--font-mono);
+			font-weight: 500;
+			color: var(--color-primary);
+		}
+
+		.pricing-item-tagline {
+			font-size: 0.75rem;
+			color: color-mix(in oklab, var(--color-primary) 60%, transparent);
+		}
+
+		.pricing-item-features-label {
+			font-size: 0.75rem;
+			font-family: var(--font-mono);
+			font-weight: 500;
+			text-transform: uppercase;
+			color: var(--color-primary);
+			margin-top: 1rem;
+		}
+
+		.pricing-item-features {
+			margin-top: 0.25rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+		}
+
+		.pricing-item-features li {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.75rem;
+			color: color-mix(in oklab, var(--color-primary) 60%, transparent);
+		}
+
+		/* Pro highlighted column */
+		.pricing-col.highlighted {
+			outline: 2px solid var(--color-primary);
+			border-radius: 0.375rem;
+			padding-inline: 1rem;
+		}
+
+		/* FAQ */
+		.faq-item {
+			border-bottom: 1px solid
+				color-mix(in oklab, var(--color-primary) 10%, transparent);
+		}
+
+		.faq-trigger {
+			display: flex;
+			width: 100%;
+			align-items: center;
+			justify-content: space-between;
+			padding-block: 1rem;
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: var(--color-primary);
+			text-align: left;
+			gap: 1rem;
+			cursor: pointer;
+			background: none;
+			border: none;
+			font-family: inherit;
+		}
+
+		.faq-trigger:hover {
+			opacity: 0.8;
+		}
+
+		.faq-icon {
+			flex-shrink: 0;
+			font-size: 1.25rem;
+			line-height: 1;
+			transition: transform 0.2s;
+			color: color-mix(in oklab, var(--color-primary) 60%, transparent);
+		}
+
+		.faq-trigger[aria-expanded="true"] .faq-icon {
+			transform: rotate(45deg);
+		}
+
+		.faq-content {
+			display: none;
+			padding-bottom: 1rem;
+			font-size: 0.875rem;
+			color: color-mix(in oklab, var(--color-primary) 70%, transparent);
+			line-height: 1.6;
+		}
+
+		.faq-content.open {
+			display: block;
+		}
+		</style>
+	</head>
+	<body class="flex flex-col bg-secondary min-h-svh">
+		<!-- ============================================================ NAV -->
+		<section>
+			<div class="max-w-screen 2xl:max-w-\[1400px\] mx-auto px-8">
+				<div class="grid grid-cols-2 lg:grid-cols-5 gap-4 py-2">
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+
+					<div
+						class="hidden items-center gap-4 text-primary lg:flex justify-center lg:col-span-3"
+					>
+						<a
+							href="index.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Home</a
+						>
+						<a
+							href="blog.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Blog</a
+						>
+						<a
+							href="helpcenter.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Help Center</a
+						>
+						<a
+							href="pricing.html"
+							class="hover:text-primary\/40 text-sm duration-300 font-medium"
+							>Pricing</a
+						>
+						<a
+							href="sign-in.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Sign In</a
+						>
+						<a
+							href="system-overview.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Overview</a
+						>
+					</div>
+
+					<div class="items-center gap-2 flex ml-auto">
+						<div class="relative">
+							<button
+								type="button"
+								id="searchButton"
+								aria-label="Search content"
+								class="hover:text-primary\/40 duration-300 text-primary text-sm"
+							>
+								Search
+							</button>
+							<div
+								id="searchModal"
+								class="fixed inset-0 z-80 hidden overflow-y-auto"
+								role="dialog"
+								aria-modal="true"
+							>
+								<div class="min-h-screen px-4 text-center">
+									<div
+										class="bg-secondary\/50 fixed inset-0 backdrop-blur transition-opacity"
+										id="modalOverlay"
+									></div>
+									<div
+										class="relative mt-12 mb-8 inline-block w-full max-w-xl transform rounded px-1.5 text-left align-middle transition-all lg:mt-24"
+									>
+										<div
+											class="bg-secondary outline-2 outline-primary\/10 w-full rounded p-4 pb-2"
+										>
+											<div class="p-1">
+												<label
+													for="searchInput"
+													class="text-primary block text-sm font-medium"
+													>Search content</label
+												>
+												<input
+													type="text"
+													id="searchInput"
+													class="border-primary\/10 focus:border-primary text-primary w-full border-0 border-b bg-transparent px-0 text-xs focus:ring-0 focus:outline-none"
+													placeholder=""
+												>
+											</div>
+											<div
+												id="searchResults"
+												class="scrollbar-hide flex max-h-200 flex-col gap-1 overflow-y-auto p-1"
+											></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="hidden items-center gap-2 lg:flex">
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary\/10 hover:bg-primary\/20 h-9 px-4 py-3 text-sm"
+								href="sign-in.html"
+								>Sign in</a
+							>
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-white bg-accent hover:bg-accent\/80 h-9 px-4 py-3 text-sm"
+								href="sign-up.html"
+								>Sign up</a
+							>
+						</div>
+
+						<button
+							id="navToggle"
+							class="hover:text-primary\/40 duration-300 text-primary text-sm lg:hidden"
+							aria-expanded="false"
+							aria-controls="mobileMenu"
+						>
+							Menu
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Mobile menu -->
+		<div
+			id="mobileMenu"
+			class="lg:hidden fixed inset-0 z-40 hidden"
+			aria-hidden="true"
+		>
+			<div
+				class="relative z-10 m-4 rounded-lg outline-2 outline-primary\/10 bg-secondary p-4 shadow-2xl"
+			>
+				<div class="flex items-center justify-between">
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+					<button
+						class="hover:text-primary text-primary duration-300 text-sm"
+						data-close-nav=""
+					>
+						Close
+					</button>
+				</div>
+				<nav class="mt-12 flex flex-col gap-3">
+					<a
+						href="index.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Home</a
+					>
+					<a
+						href="blog.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Blog</a
+					>
+					<a
+						href="helpcenter.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Help Center</a
+					>
+					<a
+						href="pricing.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Pricing</a
+					>
+					<a
+						href="sign-in.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Sign In</a
+					>
+					<a
+						href="system-overview.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Overview</a
+					>
+				</nav>
+				<div class="mt-12 flex items-center gap-2">
+					<a
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-white bg-accent hover:bg-accent\/80 h-8 px-4 py-3 text-xs"
+						href="sign-up.html"
+						>Sign up</a
+					>
+					<a
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary\/10 hover:bg-primary\/20 h-8 px-4 py-3 text-xs"
+						href="sign-in.html"
+						>Sign in</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- ============================================================ MAIN -->
+		<main class="grow">
+			<section>
+				<div
+					class="max-w-screen 2xl:max-w-\[1400px\] mx-auto px-8 py-12 lg:py-24"
+				>
+					<h1
+						class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary font-semibold tracking-tighter text-balance capitalize"
+					>
+						Post your job. Hope for the best.
+					</h1>
+
+					<!-- Billing toggle -->
+					<div class="mt-12 mb-0">
+						<div class="billing-toggle" id="billingToggle">
+							<button class="active" data-billing="monthly">Monthly</button>
+							<button data-billing="annual">
+								Annual
+								<span style="font-size:0.65rem;opacity:0.7;">Save 20%</span>
+							</button>
+						</div>
+					</div>
+
+					<!-- Pricing tiers -->
+					<div class="pricing-tiers mt-4">
+						<!-- Free -->
+						<div class="pricing-col">
+							<p class="pricing-col-label">Free</p>
+							<div class="pricing-items">
+								<div class="pricing-item">
+									<div>
+										<div class="pricing-item-header">
+											<h3 class="pricing-item-name">Free</h3>
+											<p
+												class="pricing-item-price"
+												data-monthly="$0/mo"
+												data-annual="$0/mo"
+											>
+												$0/mo
+											</p>
+										</div>
+										<p class="pricing-item-tagline">
+											For individuals just getting started
+										</p>
+										<p class="pricing-item-features-label">What's included</p>
+										<ul class="pricing-item-features">
+											<li>— <span>1 active job post</span></li>
+											<li>— <span>Basic search visibility</span></li>
+											<li>— <span>7-day listing duration</span></li>
+											<li>— <span>Email support</span></li>
+										</ul>
+									</div>
+									<div class="flex">
+										<a
+											href="sign-up.html"
+											class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary\/10 hover:bg-primary\/20 h-7\.5 px-4 py-2 text-xs mt-1"
+										>
+											Get started free
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Starter -->
+						<div class="pricing-col">
+							<p class="pricing-col-label">Starter</p>
+							<div class="pricing-items">
+								<div class="pricing-item">
+									<div>
+										<div class="pricing-item-header">
+											<h3 class="pricing-item-name">Starter</h3>
+											<p
+												class="pricing-item-price"
+												data-monthly="$29/mo"
+												data-annual="$23/mo"
+											>
+												$29/mo
+											</p>
+										</div>
+										<p class="pricing-item-tagline">
+											For small teams hiring occasionally
+										</p>
+										<p class="pricing-item-features-label">What's included</p>
+										<ul class="pricing-item-features">
+											<li>— <span>5 active job posts</span></li>
+											<li>— <span>Standard search visibility</span></li>
+											<li>— <span>30-day listing duration</span></li>
+											<li>— <span>Featured listings (2/month)</span></li>
+											<li>— <span>Basic analytics</span></li>
+											<li>— <span>Email &amp; chat support</span></li>
+										</ul>
+									</div>
+									<div class="flex">
+										<a
+											href="sign-up.html"
+											class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary\/10 hover:bg-primary\/20 h-7\.5 px-4 py-2 text-xs mt-1"
+										>
+											Get started
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Pro (highlighted) -->
+						<div class="pricing-col highlighted">
+							<p class="pricing-col-label">Pro</p>
+							<div class="pricing-items">
+								<div class="pricing-item">
+									<div>
+										<div class="pricing-item-header">
+											<h3 class="pricing-item-name">Pro</h3>
+											<p
+												class="pricing-item-price"
+												data-monthly="$79/mo"
+												data-annual="$63/mo"
+											>
+												$79/mo
+											</p>
+										</div>
+										<p class="pricing-item-tagline">
+											For growing teams with ongoing hiring needs
+										</p>
+										<p class="pricing-item-features-label">What's included</p>
+										<ul class="pricing-item-features">
+											<li>— <span>20 active job posts</span></li>
+											<li>— <span>Priority search placement</span></li>
+											<li>— <span>60-day listing duration</span></li>
+											<li>— <span>Unlimited featured listings</span></li>
+											<li>— <span>Advanced analytics</span></li>
+											<li>— <span>Dedicated account manager</span></li>
+											<li>— <span>API access</span></li>
+										</ul>
+									</div>
+									<div class="flex">
+										<a
+											href="sign-up.html"
+											class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-white bg-accent hover:bg-accent\/80 h-7\.5 px-4 py-2 text-xs mt-1"
+										>
+											Get started
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Enterprise -->
+						<div class="pricing-col">
+							<p class="pricing-col-label">Enterprise</p>
+							<div class="pricing-items">
+								<div class="pricing-item">
+									<div>
+										<div class="pricing-item-header">
+											<h3 class="pricing-item-name">Enterprise</h3>
+											<p
+												class="pricing-item-price"
+												data-monthly="Custom"
+												data-annual="Custom"
+											>
+												Custom
+											</p>
+										</div>
+										<p class="pricing-item-tagline">
+											For large organizations with complex hiring workflows
+										</p>
+										<p class="pricing-item-features-label">What's included</p>
+										<ul class="pricing-item-features">
+											<li>— <span>Unlimited job posts</span></li>
+											<li>— <span>Premium search placement</span></li>
+											<li>— <span>Custom listing duration</span></li>
+											<li>— <span>White-label options</span></li>
+											<li>— <span>Custom integrations</span></li>
+											<li>— <span>SLA support</span></li>
+											<li>— <span>Custom analytics &amp; reporting</span></li>
+										</ul>
+									</div>
+									<div class="flex">
+										<a
+											href="helpcenter.html"
+											class="flex items-center font-medium justify-center transition-all rounded-full duration-300 bg-primary text-secondary hover:bg-primary\/80 h-7\.5 px-4 py-2 text-xs mt-1"
+										>
+											Contact sales
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============================================================ FAQ -->
+			<section>
+				<div class="max-w-screen 2xl:max-w-\[1400px\] mx-auto px-8 py-24">
+					<div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-24">
+						<!-- Left: heading -->
+						<div class="lg:col-span-1">
+							<p
+								class="text-xs font-mono font-medium uppercase tracking-wide text-primary\/60"
+							>
+								FAQ
+							</p>
+							<h2
+								class="text-3xl sm:text-4xl text-primary font-semibold tracking-tighter mt-2 text-balance"
+							>
+								Frequently Asked Questions
+							</h2>
+						</div>
+
+						<!-- Right: accordion -->
+						<div class="lg:col-span-2">
+							<div
+								style="border-top: 1px solid color-mix(in oklab, var(--color-primary) 10%, transparent);"
+							>
+								<div class="faq-item">
+									<button class="faq-trigger" aria-expanded="false">
+										How does the free plan work?
+										<span class="faq-icon" aria-hidden="true">+</span>
+									</button>
+									<div class="faq-content">
+										The free plan allows you to post one active job listing at a
+										time. Your listing will be visible for 7 days and can be
+										renewed at no cost.
+									</div>
+								</div>
+
+								<div class="faq-item">
+									<button class="faq-trigger" aria-expanded="false">
+										Can I switch plans at any time?
+										<span class="faq-icon" aria-hidden="true">+</span>
+									</button>
+									<div class="faq-content">
+										Yes, you can upgrade or downgrade your plan at any time.
+										Changes take effect immediately, and you'll be billed or
+										credited accordingly.
+									</div>
+								</div>
+
+								<div class="faq-item">
+									<button class="faq-trigger" aria-expanded="false">
+										What payment methods do you accept?
+										<span class="faq-icon" aria-hidden="true">+</span>
+									</button>
+									<div class="faq-content">
+										We accept all major credit cards (Visa, MasterCard, American
+										Express) as well as PayPal and bank transfers for Enterprise
+										plans.
+									</div>
+								</div>
+
+								<div class="faq-item">
+									<button class="faq-trigger" aria-expanded="false">
+										Is there a free trial for paid plans?
+										<span class="faq-icon" aria-hidden="true">+</span>
+									</button>
+									<div class="faq-content">
+										Yes, all paid plans come with a 14-day free trial. No credit
+										card required to start.
+									</div>
+								</div>
+
+								<div class="faq-item">
+									<button class="faq-trigger" aria-expanded="false">
+										What happens when my listing expires?
+										<span class="faq-icon" aria-hidden="true">+</span>
+									</button>
+									<div class="faq-content">
+										When your listing expires, it will be automatically removed
+										from search results. You can renew it manually from your
+										dashboard.
+									</div>
+								</div>
+
+								<div class="faq-item">
+									<button class="faq-trigger" aria-expanded="false">
+										Do you offer refunds?
+										<span class="faq-icon" aria-hidden="true">+</span>
+									</button>
+									<div class="faq-content">
+										We offer a full refund within 7 days of purchase if you're
+										not satisfied with our service.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ============================================================ FOOTER -->
+		<footer>
+			<div class="max-w-screen 2xl:max-w-\[1400px\] mx-auto px-8 py-12">
+				<div class="mt-12 flex flex-wrap items-center justify-between gap-2">
+					<p class="text-xs text-primary\/60">
+						© Copyright Lexington Themes <span id="year">2026</span>
+					</p>
+					<ul role="list" class="mt-2 flex flex-wrap gap-2">
+						<li>
+							<a
+								class="text-sm text-primary\/60 hover:text-primary transition duration-300 ease-in-out"
+								href="#_"
+								>X</a
+							>
+						</li>
+						<li>
+							<a
+								class="text-sm text-primary\/60 hover:text-primary transition duration-300 ease-in-out"
+								href="#_"
+								>LinkedIn</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+
+		<!-- ============================================================ THEME SWITCHER -->
+		<div class="fixed bottom-4 right-4 z-50">
+			<div class="flex items-center gap-2">
+				<button
+					id="theme-dot-default"
+					data-theme="default"
+					style="width:1rem;height:1rem;border-radius:50%;background:#ffffff;outline:2px solid color-mix(in oklab, var(--color-primary) 10%, transparent);outline-offset:2px;cursor:pointer;transition:outline-color 0.2s;"
+					title="Light"
+				></button>
+				<button
+					id="theme-dot-dark"
+					data-theme="dark"
+					style="width:1rem;height:1rem;border-radius:50%;background:#101319;outline:2px solid transparent;outline-offset:2px;cursor:pointer;transition:outline-color 0.2s;"
+					title="Dark"
+				></button>
+				<button
+					id="theme-dot-accent"
+					data-theme="accent"
+					style="width:1rem;height:1rem;border-radius:50%;background:#245230;outline:2px solid transparent;outline-offset:2px;cursor:pointer;transition:outline-color 0.2s;"
+					title="Accent"
+				></button>
+			</div>
+		</div>
+
+		<!-- ============================================================ SCRIPTS -->
+		<script>
+		// Theme switcher
+		(function () {
+			const dots = Array.from(document.querySelectorAll('[id^="theme-dot"]'));
+			let current = localStorage.getItem("theme") || "default";
+			let timer;
+
+			function setTheme(theme) {
+				document.documentElement.classList.add("theme-animating");
+				clearTimeout(timer);
+				timer = setTimeout(
+					() => document.documentElement.classList.remove("theme-animating"),
+					400,
+				);
+				if (theme === "default") {
+					document.documentElement.removeAttribute("data-theme");
+					localStorage.removeItem("theme");
+				} else {
+					document.documentElement.setAttribute("data-theme", theme);
+					localStorage.setItem("theme", theme);
+				}
+				current = theme;
+				dots.forEach((d) => {
+					d.style.outlineColor =
+						d.dataset.theme === theme ? "var(--color-primary)" : "transparent";
+				});
+			}
+
+			setTheme(current);
+			dots.forEach((d) =>
+				d.addEventListener("click", () => setTheme(d.dataset.theme)),
+			);
+		})();
+
+		// Mobile nav
+		const navToggle = document.getElementById("navToggle");
+		const mobileMenu = document.getElementById("mobileMenu");
+		const closeTargets = mobileMenu?.querySelectorAll("[data-close-nav]");
+
+		const openNav = () => {
+			mobileMenu.classList.remove("hidden");
+			navToggle?.setAttribute("aria-expanded", "true");
+			document.body.style.overflow = "hidden";
+		};
+		const closeNav = () => {
+			mobileMenu.classList.add("hidden");
+			navToggle?.setAttribute("aria-expanded", "false");
+			document.body.style.overflow = "";
+		};
+
+		navToggle?.addEventListener("click", () => {
+			navToggle.getAttribute("aria-expanded") === "true"
+				? closeNav()
+				: openNav();
+		});
+		closeTargets?.forEach((btn) => btn.addEventListener("click", closeNav));
+		window.addEventListener("resize", () => {
+			if (window.innerWidth >= 1024) closeNav();
+		});
+
+		// Search
+		(function () {
+			const searchButton = document.getElementById("searchButton");
+			const searchModal = document.getElementById("searchModal");
+			const modalOverlay = document.getElementById("modalOverlay");
+			const searchInput = document.getElementById("searchInput");
+			const searchResults = document.getElementById("searchResults");
+
+			function openSearch(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				searchModal.classList.remove("hidden");
+				document.body.style.overflow = "hidden";
+				setTimeout(() => searchInput.focus(), 100);
+			}
+			function closeSearch() {
+				searchModal.classList.add("hidden");
+				document.body.style.overflow = "";
+				searchInput.value = "";
+				searchResults.innerHTML = "";
+			}
+
+			searchButton.addEventListener("click", openSearch);
+			modalOverlay.addEventListener("click", closeSearch);
+			document.addEventListener("keydown", (e) => {
+				if (e.key === "Escape") closeSearch();
+			});
+		})();
+
+		// Billing toggle
+		(function () {
+			const toggleWrap = document.getElementById("billingToggle");
+			const btns = toggleWrap.querySelectorAll("button");
+			const prices = document.querySelectorAll(".pricing-item-price");
+
+			btns.forEach((btn) => {
+				btn.addEventListener("click", () => {
+					btns.forEach((b) => b.classList.remove("active"));
+					btn.classList.add("active");
+					const billing = btn.dataset.billing;
+					prices.forEach((p) => {
+						p.textContent = p.dataset[billing] || p.textContent;
+					});
+				});
+			});
+		})();
+
+		// FAQ accordion
+		document.querySelectorAll(".faq-trigger").forEach((trigger) => {
+			trigger.addEventListener("click", () => {
+				const content = trigger.nextElementSibling;
+				const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+				// close all
+				document
+					.querySelectorAll(".faq-trigger")
+					.forEach((t) => t.setAttribute("aria-expanded", "false"));
+				document
+					.querySelectorAll(".faq-content")
+					.forEach((c) => c.classList.remove("open"));
+
+				// open clicked if it was closed
+				if (!isOpen) {
+					trigger.setAttribute("aria-expanded", "true");
+					content.classList.add("open");
+				}
+			});
+		});
+
+		// Year
+		document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+	</body>
+</html>

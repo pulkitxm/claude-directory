@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Hyperbit</title>
+  <link rel="icon" href="assets/images/favicon.png">  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Mobile menu */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 1rem;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 1rem;
+      right: 1rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      z-index: 50;
+    }
+    .mobile-nav.open { display: flex; }
+    @media (min-width: 768px) { .mobile-nav { display: none !important; } }
+    .mobile-nav a { padding: 0.625rem 1rem; border-radius: 0.5rem; color: var(--color-text-dark); font-weight: 500; }
+    .mobile-nav a:hover { background: #f5f5f5; }
+    .hamburger-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--color-text-dark);
+    }
+    @media (max-width: 767px) { .hamburger-btn { display: flex; } }
+
+    /* Contact layout */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (min-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr 1.4fr; }
+    }
+
+    /* Contact info side */
+    .contact-info-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      margin-bottom: 1rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: var(--radius-xl);
+      background: white;
+      border: 1px solid rgba(47,47,47,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--color-secondary);
+    }
+    .contact-detail-icon svg { width: 1.125rem; height: 1.125rem; }
+    .contact-detail-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-dark);
+      margin-bottom: 0.25rem;
+    }
+    .contact-detail-value {
+      font-size: 0.9rem;
+      color: var(--color-text);
+      font-weight: 500;
+    }
+    .contact-detail-value a { color: inherit; }
+    .contact-detail-value a:hover { color: var(--color-secondary); }
+
+    /* Contact form card */
+    .contact-form-card {
+      background: white;
+      border: 1px solid rgba(47,47,47,0.1);
+      border-radius: var(--radius-2xl);
+      padding: 2.5rem;
+    }
+
+    /* Two-col form fields */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .form-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+</head>
+<body>
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header class="header" role="banner">
+  <nav class="navbar container" aria-label="Main navigation">
+    <a href="index.html" class="navbar-brand" aria-label="Hyperbit Home">
+      <img src="assets/images/logo.svg" alt="Hyperbit" width="98" height="37">
+    </a>
+
+    <ul class="navbar-nav" id="desktop-nav" role="list">
+      <li class="nav-item">
+        <span class="nav-link" tabindex="0">
+          All Pages
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </span>
+        <ul class="nav-dropdown-list" role="menu">
+          <li><a href="index.html" class="nav-dropdown-link" role="menuitem">Home</a></li>
+          <li><a href="work.html" class="nav-dropdown-link" role="menuitem">Work</a></li>
+          <li><a href="work/spark-layer.html" class="nav-dropdown-link" role="menuitem">Work Details</a></li>
+          <li><a href="about.html" class="nav-dropdown-link" role="menuitem">About</a></li>
+          <li><a href="services.html" class="nav-dropdown-link" role="menuitem">Services</a></li>
+          <li><a href="contact.html" class="nav-dropdown-link" role="menuitem">Contact</a></li>
+          <li><a href="blog.html" class="nav-dropdown-link" role="menuitem">Blog</a></li>
+          <li><a href="blog/emerging-trends.html" class="nav-dropdown-link" role="menuitem">Blog Details</a></li>
+        </ul>
+      </li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="work.html" class="nav-link">Work</a></li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+    </ul>
+
+    <a href="contact.html" class="btn btn-dark" id="nav-cta-desktop" style="display:none;">
+      <div class="btn-inner">
+        <div class="btn-text-1">
+          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+          Book a Call
+        </div>
+        <div class="btn-text-2">
+          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+          Book a Call
+        </div>
+      </div>
+    </a>
+
+    <button class="hamburger-btn" id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+      <svg id="ham-open" width="24" height="24" viewBox="0 0 20 20" fill="currentColor"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      <svg id="ham-close" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" style="display:none;"><polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"/></svg>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" style="background:var(--color-dark);color:white;margin-top:0.5rem;text-align:center;">Book a Call</a>
+  </div>
+</header>
+
+<!-- ════════════════ MAIN ════════════════ -->
+<main>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" style="padding-top:10rem;">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <h1>Get In <em>Touch</em></h1>
+        <p style="margin-top:0.75rem;">Hyperbit Your Design Partner</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section" style="padding-top:2rem;">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left: Contact Info -->
+        <div class="reveal">
+          <h3 class="contact-info-title">Let's <em>Talk</em></h3>
+          <p style="color:var(--color-text-dark);line-height:1.7;font-size:0.95rem;margin-bottom:2.5rem;">Ready to elevate your brand? Drop us a message and we'll get back to you within 24 hours.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value"><a href="mailto:hello@workmail.com">hello@workmail.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" transform="scale(0.045) translate(2,2)"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value"><a href="tel:00987765543">(00) 987 765 543</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Location</div>
+              <div class="contact-detail-value">Remote — worldwide</div>
+            </div>
+          </div>
+
+          <div style="margin-top:2rem;">
+            <div class="contact-detail-label" style="margin-bottom:1rem;">Follow Us</div>
+            <ul class="social-icons">
+              <li><a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="reveal" style="transition-delay:.15s;">
+          <div class="contact-form-card">
+            <h4 style="font-size:1.25rem;font-weight:600;margin-bottom:1.75rem;">Send Us a Message</h4>
+            <form action="#" method="POST" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="contact-name">Full Name <span style="color:var(--color-primary);">*</span></label>
+                  <input type="text" id="contact-name" name="name" class="form-control" placeholder="Alex Rivera" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-email">Email Address <span style="color:var(--color-primary);">*</span></label>
+                  <input type="email" id="contact-email" name="email" class="form-control" placeholder="alex@company.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="contact-phone">Phone Number</label>
+                  <input type="tel" id="contact-phone" name="phone" class="form-control" placeholder="(00) 000 000 000">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-service">Service Needed</label>
+                  <select id="contact-service" name="service" class="form-control">
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="web-design">Web Design</option>
+                    <option value="consulting">Consulting</option>
+                    <option value="development">Development</option>
+                    <option value="design">Design</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-message">Message <span style="color:var(--color-primary);">*</span></label>
+                <textarea id="contact-message" name="message" class="form-control" placeholder="Tell us about your project, goals, and timeline..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-dark" style="width:100%;text-align:center;">
+                <div class="btn-inner">
+                  <div class="btn-text-1">
+                    Send Message
+                    <svg width="1em" height="1em" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                  </div>
+                  <div class="btn-text-2">
+                    Send Message
+                    <svg width="1em" height="1em" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                  </div>
+                </div>
+              </button>
+
+              <p style="font-size:0.8rem;color:var(--color-text-dark);margin-top:1rem;text-align:center;">We'll get back to you within 24 hours. No spam, ever.</p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer style="padding-bottom:2rem;">
+  <div class="container">
+    <div class="footer">
+      <a href="index.html" class="footer-logo"><img src="assets/images/logo.svg" alt="Hyperbit" height="30"></a>
+      <p class="footer-copyright">© 2026 Hyperbit. All rights reserved. Powered by <a href="https://themefisher.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Themefisher</a></p>
+      <ul class="social-icons" aria-label="Social media links">
+        <li><a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script>
+  // Header scroll
+  const header = document.querySelector('.header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // Mobile nav
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamOpen = document.getElementById('ham-open');
+  const hamClose = document.getElementById('ham-close');
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      hamOpen.style.display = isOpen ? 'none' : '';
+      hamClose.style.display = isOpen ? '' : 'none';
+    });
+  }
+
+  // Scroll reveal
+  document.querySelectorAll('.reveal').forEach(el => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
+    obs.observe(el);
+  });
+
+  // Show desktop CTA
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('nav-cta-desktop');
+    if (btn) btn.style.display = window.innerWidth >= 768 ? '' : 'none';
+    window.addEventListener('resize', () => {
+      if (btn) btn.style.display = window.innerWidth >= 768 ? '' : 'none';
+    });
+  });
+
+  // Form submit (prevent default for demo)
+  document.querySelector('form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    if (btn) {
+      const t1 = btn.querySelector('.btn-text-1');
+      const t2 = btn.querySelector('.btn-text-2');
+      if (t1) t1.textContent = 'Sent!';
+      if (t2) t2.textContent = 'Sent!';
+      btn.style.opacity = '0.7';
+      btn.disabled = true;
+    }
+  });
+
+  // Init Lenis after load
+  window.addEventListener('load', () => {
+    if (typeof Lenis !== 'undefined') {
+      const lenis = new Lenis({ lerp: 0.08 });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 # Morphing Light Shader — Interferometry Fringe GLSL Background (React + Three.js + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A Three.js fragment shader painting radially symmetric morphing interference fringes (pink-to-cyan spectrum bent around the optical axis) on a full-screen quad, reframed as **FRINGE** — a tabletop interferometer instrument console. The live observation window is the shader; a left rail of beam faders, a source bank, and a live detector strip that reads per-frame GPU state compose a calm, precise instrument interface. Built with React + TypeScript + Vite + Tailwind CSS on a shadcn project structure. Generated with Claude Fable 5.
 
 ```bash

@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("plasma-theme") || "dark";
+				document.documentElement.classList.toggle("light", t === "light");
+			} catch (e) {}
+		})();
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>AI Prompts — Plasma Docs</title>
+		<meta
+			name="description"
+			content="Discover how to leverage AI capabilities and create effective prompts for your use cases."
+		>
+		<link rel="stylesheet" href="assets/css/tokens.css">
+		<link rel="stylesheet" href="assets/css/styles.css">
+		<link rel="stylesheet" href="assets/css/docs.css">
+	</head>
+	<body class="docs">
+		<div class="promo">
+			<div class="container">
+				<span>Purchase this theme on shadcnblocks.com</span>
+				<a
+					href="https://www.shadcnblocks.com/template/plasma"
+					target="_blank"
+					rel="noopener"
+					>Get Template</a
+				>
+			</div>
+			<button class="promo-close" data-promo-close aria-label="Dismiss">
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path d="M18 6 6 18M6 6l12 12" />
+				</svg>
+			</button>
+		</div>
+
+		<header class="header">
+			<div class="container">
+				<a class="brand" href="index.html"
+					><span class="brand-mark"></span>Plasma</a
+				>
+				<div class="header-actions">
+					<a href="index.html" class="btn btn-ghost">Back to site</a>
+					<span class="muted" style="font-size:.85rem">Docs</span>
+					<button
+						class="theme-toggle"
+						data-theme-toggle
+						aria-label="Toggle theme"
+					>
+						<svg
+							class="moon"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+						</svg>
+						<svg
+							class="sun"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<circle cx="12" cy="12" r="4" />
+							<path
+								d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+							/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<div class="docs-shell">
+			<aside class="docs-sidebar">
+				<a class="brand" href="index.html" style="margin-bottom:1.25rem"
+					><span class="brand-mark"></span>Plasma</a
+				>
+				<button class="docs-search">
+					<span>Search docs...</span><kbd>⌘K</kbd>
+				</button>
+				<div class="docs-nav-group">
+					<h5>Getting Started</h5>
+					<a href="docs.html">Welcome to Plasma Docs</a>
+					<a href="docs-installation.html">Installation</a>
+				</div>
+				<div class="docs-nav-group">
+					<h5>Concepts</h5>
+					<a href="docs-core-concepts.html">Core Concepts</a>
+					<a href="docs-ai-prompts.html" class="active">AI Prompts</a>
+				</div>
+				<div class="docs-nav-group">
+					<h5>Integrations</h5>
+					<a href="docs-file-systems.html">File Systems</a>
+					<a href="docs-crm-csv.html">CRM &amp; CSV</a>
+					<a href="docs-cli.html">CLI</a>
+				</div>
+			</aside>
+
+			<main class="docs-content">
+				<h1>AI Prompts</h1>
+				<p class="subtitle">
+					Discover how to leverage AI capabilities and create effective prompts
+					for your use cases.
+				</p>
+
+				<h2 id="getting-started">Getting Started with AI</h2>
+				<p>
+					Plasma integrates AI capabilities to accelerate development and
+					improve code quality through intelligent assistance.
+				</p>
+				<h3>1. Setup AI Configuration</h3>
+				<p>
+					First, configure the AI settings in the Plasma configuration file:
+				</p>
+				<div class="code-block">
+					<button data-copy aria-label="Copy">
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<rect x="9" y="9" width="13" height="13" rx="2" />
+							<path
+								d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+							/>
+						</svg>
+					</button>
+					<pre><code>export default {
+  ai: {
+    provider: 'openai',
+    model: 'gpt-4',
+    apiKey: process.env.PLASMA_AI_KEY,
+  },
+}</code></pre>
+				</div>
+				<h3>2. Create Your First Prompt</h3>
+				<p>Use the AI prompt system to generate code or get suggestions:</p>
+				<div class="code-block">
+					<button data-copy aria-label="Copy">
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<rect x="9" y="9" width="13" height="13" rx="2" />
+							<path
+								d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+							/>
+						</svg>
+					</button>
+					<pre><code>import { ai } from 'plasma';
+
+const result = await ai.prompt('Generate a React component for user profile');</code></pre>
+				</div>
+				<h3>3. Customize Prompts</h3>
+				<p>
+					Enhance your prompts with context and examples for better results.
+				</p>
+
+				<h2 id="prompt-types">Prompt Types</h2>
+				<div data-tabs>
+					<div class="tabs-list">
+						<button class="tab-trigger active" data-tab="codegen">
+							Code Generation
+						</button>
+						<button class="tab-trigger" data-tab="docs">Documentation</button>
+						<button class="tab-trigger" data-tab="testing">Testing</button>
+					</div>
+					<div class="tab-panel active" data-panel="codegen">
+						<p>
+							Generate code components, functions, and entire modules using AI.
+						</p>
+						<div class="code-block">
+							<button data-copy aria-label="Copy">
+								<svg
+									width="14"
+									height="14"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<rect x="9" y="9" width="13" height="13" rx="2" />
+									<path
+										d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+									/>
+								</svg>
+							</button>
+							<pre><code>// Component generation
+const component = await ai.generateComponent({
+  name: 'UserCard',
+  props: ['name', 'email', 'avatar'],
+});</code></pre>
+						</div>
+					</div>
+					<div class="tab-panel" data-panel="docs">
+						<p>Automatically generate documentation from your source code.</p>
+						<div class="code-block">
+							<button data-copy aria-label="Copy">
+								<svg
+									width="14"
+									height="14"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<rect x="9" y="9" width="13" height="13" rx="2" />
+									<path
+										d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+									/>
+								</svg>
+							</button>
+							<pre
+							><code>const docs = await ai.generateDocs({ source: './src/utils.ts' });</code></pre>
+						</div>
+					</div>
+					<div class="tab-panel" data-panel="testing">
+						<p>Generate test suites and edge cases for your components.</p>
+						<div class="code-block">
+							<button data-copy aria-label="Copy">
+								<svg
+									width="14"
+									height="14"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<rect x="9" y="9" width="13" height="13" rx="2" />
+									<path
+										d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+									/>
+								</svg>
+							</button>
+							<pre
+							><code>const tests = await ai.generateTests({ target: './src/UserCard.tsx' });</code></pre>
+						</div>
+					</div>
+				</div>
+
+				<h2 id="file-structure">File Structure</h2>
+				<p>Here's how AI-generated files are organized in your project:</p>
+				<div class="code-block">
+					<button data-copy aria-label="Copy">
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<rect x="9" y="9" width="13" height="13" rx="2" />
+							<path
+								d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+							/>
+						</svg>
+					</button>
+					<pre><code>src/
+├── ai-generated/
+│   ├── components/
+│   └── utils/
+├── prompts/
+│   ├── codegen.ts
+│   └── docs.ts
+└── ai.config.ts</code></pre>
+				</div>
+
+				<h2 id="advanced-configuration">Advanced Configuration</h2>
+				<div class="accordion-item">
+					<button class="accordion-trigger">
+						Custom Models
+						<svg
+							class="chev"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="m6 9 6 6 6-6" />
+						</svg>
+					</button>
+					<div class="accordion-panel">
+						<div class="accordion-panel-inner">
+							Configure custom AI models and providers to suit your team's
+							needs. Plasma supports OpenAI, Anthropic, and self-hosted models.
+						</div>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<button class="accordion-trigger">
+						Prompt Templates
+						<svg
+							class="chev"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="m6 9 6 6 6-6" />
+						</svg>
+					</button>
+					<div class="accordion-panel">
+						<div class="accordion-panel-inner">
+							Create reusable prompt templates with variables to standardize AI
+							output across your project.
+						</div>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<button class="accordion-trigger">
+						Context Integration
+						<svg
+							class="chev"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="m6 9 6 6 6-6" />
+						</svg>
+					</button>
+					<div class="accordion-panel">
+						<div class="accordion-panel-inner">
+							Provide relevant codebase context to the AI so generated output
+							matches your conventions.
+						</div>
+					</div>
+				</div>
+
+				<h2 id="api-reference">API Reference</h2>
+				<table class="api-table">
+					<thead>
+						<tr>
+							<th>Prop</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>prompt</code></td>
+							<td>string</td>
+							<td>The prompt text to send to the AI model.</td>
+						</tr>
+						<tr>
+							<td><code>context</code></td>
+							<td>object</td>
+							<td>Additional context to improve generation accuracy.</td>
+						</tr>
+						<tr>
+							<td><code>model?</code></td>
+							<td>'gpt-4' | 'gpt-3.5-turbo' | 'claude'</td>
+							<td>Override the configured model for this call.</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h2 id="best-practices">Best Practices</h2>
+				<div class="callout">
+					Pro Tip: Always provide specific context and examples in your prompts
+					for better AI responses.
+				</div>
+				<ul>
+					<li>Be specific about the desired output format</li>
+					<li>Include relevant project context</li>
+					<li>Test prompts with different inputs</li>
+					<li>Review and refine AI-generated code</li>
+				</ul>
+
+				<div class="pager">
+					<a href="docs-core-concepts.html"
+						><span>Previous</span><strong>Core Concepts</strong></a
+					>
+					<a class="next" href="docs-file-systems.html"
+						><span>Next</span><strong>File Systems</strong></a
+					>
+				</div>
+			</main>
+
+			<aside class="docs-toc">
+				<h5>On this page</h5>
+				<a href="#getting-started">Getting Started with AI</a>
+				<a href="#prompt-types">Prompt Types</a>
+				<a href="#file-structure">File Structure</a>
+				<a href="#advanced-configuration">Advanced Configuration</a>
+				<a href="#api-reference">API Reference</a>
+				<a href="#best-practices">Best Practices</a>
+			</aside>
+		</div>
+
+		<script src="assets/js/app.js"></script>
+	</body>
+</html>

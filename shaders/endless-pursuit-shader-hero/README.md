@@ -86,7 +86,7 @@ is the only external dependency in the project; everything else is local.
 
 ## Demo
 
-![demo](./demo.mp4)
+[![Watch Demo](./poster.jpg)](./demo.mp4)
 
 Recorded with the repo recorder:
 

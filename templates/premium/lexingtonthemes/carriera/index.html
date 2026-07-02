@@ -1,0 +1,3174 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Carriera — Your Next Role Starts Here</title>
+		<meta
+			name="description"
+			content="Carriera is a job board connecting talent with top companies worldwide."
+		>
+		<meta name="robots" content="index, follow">
+		<meta name="theme-color" content="#ffffff">
+
+		<!-- Geist & Geist Mono from Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
+			rel="stylesheet"
+		>
+
+		<!-- Shared styles -->
+		<link rel="stylesheet" href="styles.css">
+
+		<!-- Fuse.js fuzzy search -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"
+		></script>
+
+		<!-- Theme boot: runs synchronously before paint -->
+		<script>
+		(function () {
+			var t = localStorage.getItem("theme");
+			if (t) document.documentElement.setAttribute("data-theme", t);
+		})();
+		</script>
+	</head>
+
+	<body class="flex flex-col bg-secondary min-h-svh">
+		<!-- =====================================================
+       NAV
+       ===================================================== -->
+		<section>
+			<div class="max-w-screen 2xl:max-w-[1400px] mx-auto px-8">
+				<div class="grid grid-cols-2 lg:grid-cols-5 gap-4 py-2">
+					<!-- Logo -->
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+
+					<!-- Desktop centre nav -->
+					<div
+						class="hidden items-center gap-4 text-primary lg:flex justify-center lg:col-span-3"
+					>
+						<a
+							href="index.html"
+							class="text-sm duration-300"
+							style="transition:color .3s;"
+							>Home</a
+						>
+						<a
+							href="blog.html"
+							class="text-sm duration-300"
+							style="transition:color .3s;"
+							>Blog</a
+						>
+						<a
+							href="helpcenter.html"
+							class="text-sm duration-300"
+							style="transition:color .3s;"
+							>Help Center</a
+						>
+						<a
+							href="pricing.html"
+							class="text-sm duration-300"
+							style="transition:color .3s;"
+							>Pricing</a
+						>
+						<a
+							href="sign-in.html"
+							class="text-sm duration-300"
+							style="transition:color .3s;"
+							>Sign In</a
+						>
+						<a
+							href="overview.html"
+							class="text-sm duration-300"
+							style="transition:color .3s;"
+							>Overview</a
+						>
+						<a
+							href="https://lexingtonthemes.com/templates/carriera"
+							class="text-sm duration-300"
+							style="transition:color .3s;"
+							>Buy Carriera</a
+						>
+					</div>
+
+					<!-- Right actions -->
+					<div class="items-center gap-2 flex ml-auto">
+						<!-- Search button + modal -->
+						<div class="relative">
+							<button
+								type="button"
+								id="searchButton"
+								aria-label="Search content"
+								class="text-primary text-sm duration-300"
+								style="transition:color .3s; background:none; border:none; cursor:pointer;"
+							>
+								Search
+							</button>
+
+							<!-- Search modal -->
+							<div
+								id="searchModal"
+								class="fixed inset-0 z-80 hidden overflow-y-auto"
+								role="dialog"
+								aria-modal="true"
+							>
+								<div class="min-h-screen px-4 text-center">
+									<div
+										id="modalOverlay"
+										class="bg-secondary fixed inset-0 backdrop-blur transition-opacity"
+										style="background-color:color-mix(in oklab,var(--color-secondary) 50%,transparent);"
+									></div>
+									<div
+										class="relative mt-12 mb-8 inline-block w-full max-w-xl transform rounded px-1.5 text-left align-middle transition-all lg:mt-24"
+									>
+										<div
+											class="bg-secondary outline-2 w-full rounded p-4 pb-2"
+											style="outline:2px solid color-mix(in oklab,var(--color-primary) 10%,transparent);"
+										>
+											<div class="hidden">
+												<button
+													type="button"
+													id="closeSearch"
+													class="ml-auto cursor-pointer"
+													style="color:color-mix(in oklab,var(--color-primary) 60%,transparent); background:none; border:none;"
+													aria-label="Close search"
+												>
+													Close
+												</button>
+											</div>
+											<div class="p-1">
+												<label
+													for="searchInput"
+													class="text-primary block text-sm font-medium"
+													>Search content</label
+												>
+												<input
+													type="text"
+													id="searchInput"
+													class="text-primary w-full bg-transparent px-0 text-xs focus:outline-none"
+													style="border:none; border-bottom:1px solid color-mix(in oklab,var(--color-primary) 10%,transparent); padding:4px 0;"
+												>
+											</div>
+											<div
+												id="searchResults"
+												class="scrollbar-hide flex flex-col gap-1 overflow-y-auto p-1"
+												style="max-height:calc(var(--spacing)*200);"
+											></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /search -->
+
+						<!-- Desktop sign-in / sign-up -->
+						<div class="hidden items-center gap-2 lg:flex">
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary h-9 px-4 py-3 text-sm"
+								style="background-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+								href="sign-in.html"
+								>Sign in</a
+							>
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-white h-9 px-4 py-3 text-sm"
+								style="background-color:var(--color-accent);"
+								href="sign-up.html"
+								>Sign up</a
+							>
+						</div>
+
+						<!-- Mobile hamburger -->
+						<button
+							id="navToggle"
+							class="text-primary text-sm lg:hidden"
+							style="background:none; border:none; cursor:pointer; transition:color .3s;"
+							aria-expanded="false"
+							aria-controls="mobileMenu"
+						>
+							Menu
+						</button>
+					</div>
+					<!-- /right actions -->
+				</div>
+			</div>
+		</section>
+
+		<!-- =====================================================
+       MOBILE MENU
+       ===================================================== -->
+		<div
+			id="mobileMenu"
+			class="lg:hidden fixed inset-0 z-40 hidden"
+			aria-hidden="true"
+		>
+			<div
+				class="relative z-10 m-4 rounded-lg bg-secondary p-4 shadow-2xl"
+				style="outline:2px solid color-mix(in oklab,var(--color-primary) 10%,transparent);"
+			>
+				<div class="flex items-center justify-between">
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+					<button
+						class="text-primary text-sm duration-300"
+						style="background:none; border:none; cursor:pointer; transition:color .3s;"
+						data-close-nav=""
+					>
+						Close
+					</button>
+				</div>
+				<nav class="mt-12 flex flex-col gap-3">
+					<a
+						href="index.html"
+						class="text-primary text-sm"
+						style="transition:color .3s;"
+						>Home</a
+					>
+					<a
+						href="blog.html"
+						class="text-primary text-sm"
+						style="transition:color .3s;"
+						>Blog</a
+					>
+					<a
+						href="helpcenter.html"
+						class="text-primary text-sm"
+						style="transition:color .3s;"
+						>Help Center</a
+					>
+					<a
+						href="pricing.html"
+						class="text-primary text-sm"
+						style="transition:color .3s;"
+						>Pricing</a
+					>
+					<a
+						href="sign-in.html"
+						class="text-primary text-sm"
+						style="transition:color .3s;"
+						>Sign In</a
+					>
+					<a
+						href="overview.html"
+						class="text-primary text-sm"
+						style="transition:color .3s;"
+						>Overview</a
+					>
+					<a
+						href="https://lexingtonthemes.com/templates/carriera"
+						class="text-primary text-sm"
+						style="transition:color .3s;"
+						>Buy Carriera</a
+					>
+				</nav>
+				<div class="mt-12 flex items-center gap-2">
+					<button
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-white h-8 px-4 py-3 text-xs"
+						style="background-color:var(--color-accent); border:none; cursor:pointer;"
+					>
+						Sign in
+					</button>
+					<button
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary h-8 px-4 py-3 text-xs"
+						style="background-color:color-mix(in oklab,var(--color-primary) 10%,transparent); border:none; cursor:pointer;"
+					>
+						Sign up
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- =====================================================
+       MAIN
+       ===================================================== -->
+		<main class="grow">
+			<section>
+				<div class="max-w-screen mx-auto px-8 py-24" style="max-width:1400px;">
+					<!-- Hero heading -->
+					<div>
+						<h1
+							class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary font-semibold tracking-tighter text-balance"
+						>
+							Your Next Role Starts Here. Or Not.
+						</h1>
+					</div>
+
+					<!-- 4-column grid -->
+					<div
+						class="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4"
+					>
+						<!-- ===== COL 1: Featured Jobs ===== -->
+						<div>
+							<h2 class="text-base font-medium text-primary">Featured Jobs</h2>
+							<div
+								class="flex flex-col mt-1 divide-y border-y"
+								style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+							>
+								<!-- Job 1: polar — Product Designer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(266,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											polar — Product Designer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Remote (US only)
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Remote</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$90k–$120k
+									</p>
+								</article>
+
+								<!-- Job 10: stripe — Sales Development Rep -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(156,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											stripe — Sales Development Rep
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										San Francisco, CA
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Hybrid</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$60k–$75k base + commission
+									</p>
+								</article>
+
+								<!-- Job 11: figma — Engineering Manager -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(266,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											figma — Engineering Manager
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Remote (North America)
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Remote</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$140k–$170k
+									</p>
+								</article>
+
+								<!-- Job 12: github — Senior Frontend Engineer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(156,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											github — Senior Frontend Engineer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Barcelona, Spain
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Hybrid</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$110k–$130k
+									</p>
+								</article>
+
+								<!-- Job 13: github — Head of Marketing -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(189,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											github — Head of Marketing
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Paris, France
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>On-site</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$120k–$160k
+									</p>
+								</article>
+
+								<!-- Job 14: polar — AI Research Engineer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(156,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											polar — AI Research Engineer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Dublin, Ireland
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Hybrid</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$150k–$200k
+									</p>
+								</article>
+
+								<!-- Job 15: github — Product Marketing Manager -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(189,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											github — Product Marketing Manager
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Munich, Germany
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>On-site</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$100k–$125k
+									</p>
+								</article>
+
+								<!-- Job 16: apple — UX Researcher -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(156,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											apple — UX Researcher
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Austin, TX
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Hybrid</span><span aria-hidden="true">/</span
+										><span>Contract</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$60–$90/hr
+									</p>
+								</article>
+
+								<!-- Job 17: apple — DevOps Engineer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(266,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											apple — DevOps Engineer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Remote
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Remote</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$130k–$150k
+									</p>
+								</article>
+
+								<!-- Job 18: apple — Community Manager -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(156,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											apple — Community Manager
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Copenhagen, Denmark
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Hybrid</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$75k–$95k
+									</p>
+								</article>
+
+								<!-- Job 19: penpot — Junior Product Designer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(189,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											penpot — Junior Product Designer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Boston, MA
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>On-site</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$70k–$85k
+									</p>
+								</article>
+
+								<!-- Job 2: polar — DevOps Engineer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(156,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											polar — DevOps Engineer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Berlin, Germany
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Hybrid</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$100k–$130k
+									</p>
+								</article>
+
+								<!-- Job 20: apple — Data Analyst -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(266,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											apple — Data Analyst
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Remote
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Remote</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$85k–$105k
+									</p>
+								</article>
+
+								<!-- Job 3: polar — Head of Growth -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(189,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											polar — Head of Growth
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										New York, NY
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>On-site</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$110k–$140k + equity
+									</p>
+								</article>
+
+								<!-- Job 4: polar — Backend Developer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(189,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											polar — Backend Developer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										New York, NY
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>On-site</span><span aria-hidden="true">/</span
+										><span>Contract (6 months)</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$70–$90/hr
+									</p>
+								</article>
+
+								<!-- Job 5: polar — Data Analyst -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(156,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											polar — Data Analyst
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Toronto, Canada
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Hybrid</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$80k–$100k
+									</p>
+								</article>
+
+								<!-- Job 6: supabase — Technical Writer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(189,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											supabase — Technical Writer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										London, UK
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>On-site</span><span aria-hidden="true">/</span
+										><span>Part-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$50–$70/hr
+									</p>
+								</article>
+
+								<!-- Job 7: netlify — Technical Writer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(156,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											netlify — Technical Writer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Amsterdam, Netherlands
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Hybrid</span><span aria-hidden="true">/</span
+										><span>Part-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$50–$70/hr
+									</p>
+								</article>
+
+								<!-- Job 8: supabase — Frontend Engineer -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(266,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											supabase — Frontend Engineer
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Remote (Global)
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>Remote</span><span aria-hidden="true">/</span
+										><span>Full-time</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$95k–$120k
+									</p>
+								</article>
+
+								<!-- Job 9: supabase — Recruiting Coordinator -->
+								<article class="relative py-4 group">
+									<a href="job-detail.html" class="absolute inset-0 z-10"> </a>
+									<div class="flex items-center gap-2">
+										<span
+											class="size-3 rounded-full"
+											style="background-color:hsl(189,80%,65%)"
+										></span>
+										<h4
+											class="text-base text-primary flex items-center gap-1 font-medium capitalize group-hover:text-accent"
+											style="transition:color .3s;"
+										>
+											supabase — Recruiting Coordinator
+										</h4>
+									</div>
+									<p
+										class="text-sm"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										Sydney, Australia
+									</p>
+									<p
+										class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+									>
+										<span>On-site</span><span aria-hidden="true">/</span
+										><span>Contract</span>
+									</p>
+									<p
+										class="text-xs mt-1"
+										style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+									>
+										$40–$60/hr
+									</p>
+								</article>
+							</div>
+						</div>
+						<!-- /col 1 -->
+
+						<!-- ===== COL 2: Categories ===== -->
+						<div>
+							<h1
+								class="text-base font-medium tracking-tight text-primary text-balance"
+							>
+								Categories
+							</h1>
+							<div
+								class="flex flex-col mt-1 border-t gap-8"
+								style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+							>
+								<!-- engineering -->
+								<article id="engineering" class="py-2">
+									<h2 class="text-base font-medium capitalize text-primary">
+										engineering
+									</h2>
+									<div
+										class="flex flex-col mt-1 divide-y border-y"
+										style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+									>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(266,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													figma — Engineering Manager
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Remote (North America)
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Remote</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$140k–$170k
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(156,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													github — Senior Frontend Engineer
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Barcelona, Spain
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Hybrid</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$110k–$130k
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(266,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													supabase — Frontend Engineer
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Remote (Global)
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Remote</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$95k–$120k
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(266,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													apple — DevOps Engineer
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Remote
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Remote</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$130k–$150k
+											</p>
+										</article>
+									</div>
+								</article>
+
+								<!-- marketing -->
+								<article id="marketing" class="py-2">
+									<h2 class="text-base font-medium capitalize text-primary">
+										marketing
+									</h2>
+									<div
+										class="flex flex-col mt-1 divide-y border-y"
+										style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+									>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(189,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													github — Head of Marketing
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Paris, France
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>On-site</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$120k–$160k
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(189,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													github — Product Marketing Manager
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Munich, Germany
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>On-site</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$100k–$125k
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(189,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													polar — Head of Growth
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												New York, NY
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>On-site</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$110k–$140k + equity
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(156,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													apple — Community Manager
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Copenhagen, Denmark
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Hybrid</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$75k–$95k
+											</p>
+										</article>
+									</div>
+								</article>
+
+								<!-- ai -->
+								<article id="ai" class="py-2">
+									<h2 class="text-base font-medium capitalize text-primary">
+										ai
+									</h2>
+									<div
+										class="flex flex-col mt-1 divide-y border-y"
+										style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+									>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(156,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													polar — AI Research Engineer
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Dublin, Ireland
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Hybrid</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$150k–$200k
+											</p>
+										</article>
+									</div>
+								</article>
+
+								<!-- sales -->
+								<article id="sales" class="py-2">
+									<h2 class="text-base font-medium capitalize text-primary">
+										sales
+									</h2>
+									<div
+										class="flex flex-col mt-1 divide-y border-y"
+										style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+									>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(156,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													stripe — Sales Development Rep
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												San Francisco, CA
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Hybrid</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$60k–$75k base + commission
+											</p>
+										</article>
+									</div>
+								</article>
+
+								<!-- operations -->
+								<article id="operations" class="py-2">
+									<h2 class="text-base font-medium capitalize text-primary">
+										operations
+									</h2>
+									<div
+										class="flex flex-col mt-1 divide-y border-y"
+										style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+									>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(189,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													supabase — Recruiting Coordinator
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Sydney, Australia
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>On-site</span><span aria-hidden="true">/</span
+												><span>Contract</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$40–$60/hr
+											</p>
+										</article>
+									</div>
+								</article>
+
+								<!-- content -->
+								<article id="content" class="py-2">
+									<h2 class="text-base font-medium capitalize text-primary">
+										content
+									</h2>
+									<div
+										class="flex flex-col mt-1 divide-y border-y"
+										style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+									>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(189,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													supabase — Technical Writer
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												London, UK
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>On-site</span><span aria-hidden="true">/</span
+												><span>Part-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$50–$70/hr
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(156,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													netlify — Technical Writer
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Amsterdam, Netherlands
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Hybrid</span><span aria-hidden="true">/</span
+												><span>Part-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$50–$70/hr
+											</p>
+										</article>
+									</div>
+								</article>
+
+								<!-- design -->
+								<article id="design" class="py-2">
+									<h2 class="text-base font-medium capitalize text-primary">
+										design
+									</h2>
+									<div
+										class="flex flex-col mt-1 divide-y border-y"
+										style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+									>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(156,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													apple — UX Researcher
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Austin, TX
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Hybrid</span><span aria-hidden="true">/</span
+												><span>Contract</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$60–$90/hr
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(266,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													polar — Product Designer
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Remote (US only)
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Remote</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$90k–$120k
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(189,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													penpot — Junior Product Designer
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Boston, MA
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>On-site</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$70k–$85k
+											</p>
+										</article>
+									</div>
+								</article>
+
+								<!-- data -->
+								<article id="data" class="py-2">
+									<h2 class="text-base font-medium capitalize text-primary">
+										data
+									</h2>
+									<div
+										class="flex flex-col mt-1 divide-y border-y"
+										style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+									>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(156,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													polar — Data Analyst
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Toronto, Canada
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Hybrid</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$80k–$100k
+											</p>
+										</article>
+										<article class="relative py-4 group">
+											<a
+												href="job-detail.html"
+												class="absolute inset-0 z-10"
+											> </a>
+											<div class="flex items-center gap-2">
+												<span
+													class="size-3 rounded-full"
+													style="background-color:hsl(266,80%,65%)"
+												></span>
+												<h4
+													class="text-base text-primary font-medium capitalize group-hover:text-accent"
+													style="transition:color .3s;"
+												>
+													apple — Data Analyst
+												</h4>
+											</div>
+											<p
+												class="text-sm"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Remote
+											</p>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												<span>Remote</span><span aria-hidden="true">/</span
+												><span>Full-time</span>
+											</p>
+											<p
+												class="text-xs mt-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												$85k–$105k
+											</p>
+										</article>
+									</div>
+								</article>
+							</div>
+						</div>
+						<!-- /col 2 -->
+
+						<!-- ===== COL 3: Companies ===== -->
+						<div class="space-y-12">
+							<!-- Who's Hiring -->
+							<div>
+								<h2 class="text-base font-medium text-primary">Who's Hiring</h2>
+								<div
+									class="flex flex-col mt-1 divide-y border-y"
+									style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+								>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+										></a>
+										<div>
+											<h4 class="text-base font-medium capitalize text-primary">
+												Apple — United States
+											</h4>
+										</div>
+										<p
+											class="text-xs mt-1"
+											style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+										>
+											3 Open Roles
+										</p>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+										></a>
+										<div>
+											<h4 class="text-base font-medium capitalize text-primary">
+												Figma — United States
+											</h4>
+										</div>
+										<p
+											class="text-xs mt-1"
+											style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+										>
+											1 Open Roles
+										</p>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+										></a>
+										<div>
+											<h4 class="text-base font-medium capitalize text-primary">
+												GitHub — United States
+											</h4>
+										</div>
+										<p
+											class="text-xs mt-1"
+											style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+										>
+											3 Open Roles
+										</p>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+										></a>
+										<div>
+											<h4 class="text-base font-medium capitalize text-primary">
+												Netlify — United States
+											</h4>
+										</div>
+										<p
+											class="text-xs mt-1"
+											style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+										>
+											1 Open Roles
+										</p>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+										></a>
+										<div>
+											<h4 class="text-base font-medium capitalize text-primary">
+												Penpot — Spain
+											</h4>
+										</div>
+										<p
+											class="text-xs mt-1"
+											style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+										>
+											1 Open Roles
+										</p>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+										></a>
+										<div>
+											<h4 class="text-base font-medium capitalize text-primary">
+												Polar — Global
+											</h4>
+										</div>
+										<p
+											class="text-xs mt-1"
+											style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+										>
+											5 Open Roles
+										</p>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+										></a>
+										<div>
+											<h4 class="text-base font-medium capitalize text-primary">
+												Stripe — United States
+											</h4>
+										</div>
+										<p
+											class="text-xs mt-1"
+											style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+										>
+											1 Open Roles
+										</p>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+										></a>
+										<div>
+											<h4 class="text-base font-medium capitalize text-primary">
+												Supabase — United States
+											</h4>
+										</div>
+										<p
+											class="text-xs mt-1"
+											style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+										>
+											3 Open Roles
+										</p>
+									</article>
+								</div>
+							</div>
+
+							<!-- All companies -->
+							<div>
+								<h2 class="text-base font-medium text-primary">
+									All companies
+								</h2>
+								<div
+									class="flex flex-col mt-1 divide-y border-y"
+									style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+								>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+											aria-label="Visit Apple"
+										></a>
+										<h4 class="text-base font-medium capitalize text-primary">
+											Apple — United States
+											<span
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+												>5000+</span
+											>
+										</h4>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+											aria-label="Visit Figma"
+										></a>
+										<h4 class="text-base font-medium capitalize text-primary">
+											Figma — United States
+											<span
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+												>1000+</span
+											>
+										</h4>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+											aria-label="Visit GitHub"
+										></a>
+										<h4 class="text-base font-medium capitalize text-primary">
+											GitHub — United States
+											<span
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+												>3000+</span
+											>
+										</h4>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+											aria-label="Visit Netlify"
+										></a>
+										<h4 class="text-base font-medium capitalize text-primary">
+											Netlify — United States
+											<span
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+												>300+</span
+											>
+										</h4>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+											aria-label="Visit Penpot"
+										></a>
+										<h4 class="text-base font-medium capitalize text-primary">
+											Penpot — Spain
+											<span
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+												>50+</span
+											>
+										</h4>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+											aria-label="Visit Polar"
+										></a>
+										<h4 class="text-base font-medium capitalize text-primary">
+											Polar — Global
+											<span
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+												>20+</span
+											>
+										</h4>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+											aria-label="Visit Stripe"
+										></a>
+										<h4 class="text-base font-medium capitalize text-primary">
+											Stripe — United States
+											<span
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+												>7000+</span
+											>
+										</h4>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+											aria-label="Visit Supabase"
+										></a>
+										<h4 class="text-base font-medium capitalize text-primary">
+											Supabase — United States
+											<span
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+												>100+</span
+											>
+										</h4>
+									</article>
+									<article class="relative py-4">
+										<a
+											href="company-detail.html"
+											class="absolute inset-0 z-10"
+											aria-label="Visit Vercel"
+										></a>
+										<h4 class="text-base font-medium capitalize text-primary">
+											Vercel — United States
+											<span
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+												>400+</span
+											>
+										</h4>
+									</article>
+								</div>
+							</div>
+						</div>
+						<!-- /col 3 -->
+
+						<!-- ===== COL 4: Candidates ===== -->
+						<div>
+							<h2 class="text-base font-medium text-primary">Candidates</h2>
+							<div
+								class="flex flex-col mt-1 divide-y border-y"
+								style="border-color:color-mix(in oklab,var(--color-primary) 10%,transparent);"
+							>
+								<!-- Anders Johansson (candidate 5, img 4) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/4.mrtVTst-_ZCArFV.webp"
+											alt="Anders Johansson"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Anders Johansson
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Stockholm, Sweden<span aria-hidden="true">/</span>Senior
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Backend Developer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Software Engineer
+											</p>
+										</li>
+									</ul>
+								</article>
+
+								<!-- Carlos Garcia (candidate 1, img 1) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/1.DDVDkL9Y_1n4Q1f.webp"
+											alt="Carlos Garcia"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Carlos Garcia
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Madrid, Spain<span aria-hidden="true">/</span>Junior
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Front-end Developer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Web Developer
+											</p>
+										</li>
+									</ul>
+								</article>
+
+								<!-- Emil Lund (candidate 8, img 7) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/7.W4-R1DK6_Z3kdDm.webp"
+											alt="Emil Lund"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Emil Lund
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Copenhagen, Denmark<span aria-hidden="true"
+													>/</span
+												>Senior
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Backend Developer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Database Administrator
+											</p>
+										</li>
+									</ul>
+								</article>
+
+								<!-- Freja Svensson (candidate 9, img 8) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/8.o1-feshq_Z47URY.webp"
+											alt="Freja Svensson"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Freja Svensson
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Gothenburg, Sweden<span aria-hidden="true"
+													>/</span
+												>Mid-level
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Frontend Developer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												UX/UI Designer
+											</p>
+										</li>
+									</ul>
+								</article>
+
+								<!-- Giulia Bianchi (candidate 4, img 3) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/3.BZTvts-C_2ciYoO.webp"
+											alt="Giulia Bianchi"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Giulia Bianchi
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Rome, Italy<span aria-hidden="true">/</span>Mid-level
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Graphic Designer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Web Designer
+											</p>
+										</li>
+									</ul>
+								</article>
+
+								<!-- Klara Peterson (candidate 2, img 10) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/10.B6sAOD7z_ZgG9jX.webp"
+											alt="Klara Peterson"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Klara Peterson
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Helsinki, Finland<span aria-hidden="true">/</span>Junior
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Web Designer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Graphic Designer
+											</p>
+										</li>
+									</ul>
+								</article>
+
+								<!-- Luca Rossi (candidate 7, img 6) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/6.1Ig3XW_b_EzdNx.webp"
+											alt="Luca Rossi"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Luca Rossi
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Milan, Italy<span aria-hidden="true">/</span>Junior
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Software Developer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Web Developer
+											</p>
+										</li>
+									</ul>
+								</article>
+
+								<!-- Sofia Nilsen (candidate 6, img 5) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/5.DDcYZjUj_ZsQcOq.webp"
+											alt="Sofia Nilsen"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Sofia Nilsen
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Oslo, Norway<span aria-hidden="true">/</span>Junior
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Full-stack Developer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Software Engineer
+											</p>
+										</li>
+									</ul>
+								</article>
+
+								<!-- Taro Yamada (candidate 10, img 9) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/9.BVI371cF_9rhiF.webp"
+											alt="Taro Yamada"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Taro Yamada
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Kyoto, Japan<span aria-hidden="true">/</span>Mid-level
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Full-stack Developer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Software Developer
+											</p>
+										</li>
+									</ul>
+								</article>
+
+								<!-- Yuki Sato (candidate 3, img 2) -->
+								<article class="relative py-4">
+									<a
+										href="candidate-detail.html"
+										class="absolute inset-0 z-10"
+									> </a>
+									<div class="flex items-center gap-2">
+										<img
+											src="assets/images/2.DgwWYAxK_1wUWNW.webp"
+											alt="Yuki Sato"
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
+											class="size-10 rounded-full"
+											style="object-fit:cover;"
+										>
+										<div>
+											<h4
+												class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+											>
+												Yuki Sato
+											</h4>
+											<p
+												class="text-sm flex items-center gap-1"
+												style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+											>
+												Tokyo, Japan<span aria-hidden="true">/</span>Mid-level
+											</p>
+										</div>
+									</div>
+									<ul class="mt-1 flex flex-col gap-1">
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												UI/UX Designer
+											</p>
+										</li>
+										<li>
+											<p
+												class="text-xs text-primary mt-1 flex items-center gap-1 font-mono font-medium uppercase"
+											>
+												Web Designer
+											</p>
+										</li>
+									</ul>
+								</article>
+							</div>
+						</div>
+						<!-- /col 4 -->
+					</div>
+					<!-- /4-col grid -->
+				</div>
+			</section>
+		</main>
+
+		<!-- =====================================================
+       FOOTER
+       ===================================================== -->
+		<footer>
+			<div class="max-w-screen mx-auto px-8 py-12" style="max-width:1400px;">
+				<div class="mt-12 flex flex-wrap items-center justify-between gap-2">
+					<p
+						class="text-xs"
+						style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+					>
+						&copy; Copyright Lexington Themes <span id="year">2026</span>
+					</p>
+					<ul role="list" class="mt-2 flex flex-wrap gap-2">
+						<li>
+							<a
+								class="text-sm transition duration-300 ease-in-out"
+								style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+								href="#_"
+								>X</a
+							>
+						</li>
+						<li>
+							<a
+								class="text-sm transition duration-300 ease-in-out"
+								style="color:color-mix(in oklab,var(--color-primary) 60%,transparent);"
+								href="#_"
+								>LinkedIn</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+
+		<!-- =====================================================
+       THEME SWITCHER (fixed bottom-right)
+       ===================================================== -->
+		<div class="fixed bottom-4 right-4 z-50">
+			<div class="flex items-center gap-2">
+				<button
+					id="theme-dot-default"
+					data-theme="default"
+					class="size-4 rounded-full transition-colors"
+					style="background-color:#ffffff; outline:2px solid color-mix(in oklab,var(--color-primary) 10%,transparent);"
+					title="Default (light)"
+				></button>
+				<button
+					id="theme-dot-accent"
+					data-theme="dark"
+					class="size-4 rounded-full transition-colors"
+					style="background-color:#101319; outline:2px solid var(--color-primary);"
+					title="Dark"
+				></button>
+				<button
+					id="theme-dot-dark"
+					data-theme="accent"
+					class="size-4 rounded-full transition-colors"
+					style="background-color:#245230; outline:2px solid var(--color-primary);"
+					title="Accent"
+				></button>
+			</div>
+		</div>
+
+		<!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
+
+		<!-- Footer year -->
+		<script>
+		document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+
+		<!-- Mobile nav toggle -->
+		<script>
+		(function () {
+			const navToggle = document.getElementById("navToggle");
+			const mobileMenu = document.getElementById("mobileMenu");
+			const closeTargets = mobileMenu
+				? mobileMenu.querySelectorAll("[data-close-nav]")
+				: [];
+
+			function openNav() {
+				mobileMenu.classList.remove("hidden");
+				navToggle && navToggle.setAttribute("aria-expanded", "true");
+				document.body.style.overflow = "hidden";
+			}
+			function closeNav() {
+				mobileMenu.classList.add("hidden");
+				navToggle && navToggle.setAttribute("aria-expanded", "false");
+				document.body.style.overflow = "";
+			}
+
+			navToggle &&
+				navToggle.addEventListener("click", function () {
+					navToggle.getAttribute("aria-expanded") === "true"
+						? closeNav()
+						: openNav();
+				});
+			closeTargets.forEach(function (btn) {
+				btn.addEventListener("click", closeNav);
+			});
+			window.addEventListener("resize", function () {
+				if (window.innerWidth >= 1024) closeNav();
+			});
+		})();
+		</script>
+
+		<!-- Theme switcher -->
+		<script>
+		(function () {
+			var dots = Array.from(document.querySelectorAll('[id^="theme-dot"]'));
+			var current = localStorage.getItem("theme") || "default";
+			var timer;
+
+			function applyTheme(t) {
+				document.documentElement.classList.add("theme-animating");
+				clearTimeout(timer);
+				timer = setTimeout(function () {
+					document.documentElement.classList.remove("theme-animating");
+				}, 400);
+
+				if (t === "default") {
+					document.documentElement.removeAttribute("data-theme");
+					localStorage.removeItem("theme");
+				} else {
+					document.documentElement.setAttribute("data-theme", t);
+					localStorage.setItem("theme", t);
+				}
+
+				dots.forEach(function (dot) {
+					var active = dot.dataset.theme === t;
+					dot.style.boxShadow = active
+						? "0 0 0 2px var(--color-secondary), 0 0 0 4px var(--color-primary)"
+						: "";
+				});
+			}
+
+			applyTheme(current);
+			dots.forEach(function (dot) {
+				dot.addEventListener("click", function () {
+					applyTheme(dot.dataset.theme);
+				});
+			});
+		})();
+		</script>
+
+		<!-- Fuse.js search -->
+		<script>
+		(function () {
+			var items = [
+				{
+					title: "Product Designer",
+					subtitle: "polar",
+					description: "Full-time",
+					meta: "Remote (US only) / $90k–$120k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "DevOps Engineer",
+					subtitle: "polar",
+					description: "Full-time",
+					meta: "Berlin, Germany / $100k–$130k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Head of Growth",
+					subtitle: "polar",
+					description: "Full-time",
+					meta: "New York, NY / $110k–$140k + equity",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Backend Developer",
+					subtitle: "polar",
+					description: "Contract (6 months)",
+					meta: "New York, NY / $70–$90/hr",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Data Analyst",
+					subtitle: "polar",
+					description: "Full-time",
+					meta: "Toronto, Canada / $80k–$100k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Technical Writer",
+					subtitle: "supabase",
+					description: "Part-time",
+					meta: "London, UK / $50–$70/hr",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Technical Writer",
+					subtitle: "netlify",
+					description: "Part-time",
+					meta: "Amsterdam, Netherlands / $50–$70/hr",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Frontend Engineer",
+					subtitle: "supabase",
+					description: "Full-time",
+					meta: "Remote (Global) / $95k–$120k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Recruiting Coordinator",
+					subtitle: "supabase",
+					description: "Contract",
+					meta: "Sydney, Australia / $40–$60/hr",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Sales Development Rep",
+					subtitle: "stripe",
+					description: "Full-time",
+					meta: "San Francisco, CA / $60k–$75k base + commission",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Engineering Manager",
+					subtitle: "figma",
+					description: "Full-time",
+					meta: "Remote (North America) / $140k–$170k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Senior Frontend Engineer",
+					subtitle: "github",
+					description: "Full-time",
+					meta: "Barcelona, Spain / $110k–$130k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Head of Marketing",
+					subtitle: "github",
+					description: "Full-time",
+					meta: "Paris, France / $120k–$160k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "AI Research Engineer",
+					subtitle: "polar",
+					description: "Full-time",
+					meta: "Dublin, Ireland / $150k–$200k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Product Marketing Manager",
+					subtitle: "github",
+					description: "Full-time",
+					meta: "Munich, Germany / $100k–$125k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "UX Researcher",
+					subtitle: "apple",
+					description: "Contract",
+					meta: "Austin, TX / $60–$90/hr",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "DevOps Engineer",
+					subtitle: "apple",
+					description: "Full-time",
+					meta: "Remote / $130k–$150k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Community Manager",
+					subtitle: "apple",
+					description: "Full-time",
+					meta: "Copenhagen, Denmark / $75k–$95k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Junior Product Designer",
+					subtitle: "penpot",
+					description: "Full-time",
+					meta: "Boston, MA / $70k–$85k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Data Analyst",
+					subtitle: "apple",
+					description: "Full-time",
+					meta: "Remote / $85k–$105k",
+					url: "job-detail.html",
+					type: "Job",
+				},
+				{
+					title: "Apple",
+					subtitle: "Consumer Electronics",
+					description:
+						"Apple develops hardware and software products for consumers and professionals.",
+					meta: "United States",
+					url: "company-detail.html",
+					type: "Company",
+				},
+				{
+					title: "Figma",
+					subtitle: "Design Tools",
+					description:
+						"Figma is a collaborative interface design tool that runs in the browser.",
+					meta: "United States",
+					url: "company-detail.html",
+					type: "Company",
+				},
+				{
+					title: "GitHub",
+					subtitle: "Software Development",
+					description:
+						"GitHub provides hosting for software development and version control using Git.",
+					meta: "United States",
+					url: "company-detail.html",
+					type: "Company",
+				},
+				{
+					title: "Netlify",
+					subtitle: "Web Infrastructure",
+					description:
+						"Netlify is a modern web development platform that automates builds and deployments.",
+					meta: "United States",
+					url: "company-detail.html",
+					type: "Company",
+				},
+				{
+					title: "Penpot",
+					subtitle: "Design Tools",
+					description:
+						"Penpot is an open-source design and prototyping platform for cross-domain teams.",
+					meta: "Spain",
+					url: "company-detail.html",
+					type: "Company",
+				},
+				{
+					title: "Polar",
+					subtitle: "Open Source Funding",
+					description:
+						"Polar helps developers fund their work through issue-based pledges and subscriptions.",
+					meta: "Global",
+					url: "company-detail.html",
+					type: "Company",
+				},
+				{
+					title: "Stripe",
+					subtitle: "Fintech",
+					description:
+						"Stripe builds economic infrastructure for the internet, powering online payments.",
+					meta: "United States",
+					url: "company-detail.html",
+					type: "Company",
+				},
+				{
+					title: "Supabase",
+					subtitle: "Database & Developer Tools",
+					description:
+						"Supabase is an open source Firebase alternative providing all backend features.",
+					meta: "United States",
+					url: "company-detail.html",
+					type: "Company",
+				},
+				{
+					title: "Carlos Garcia",
+					subtitle: "Madrid, Spain",
+					description: "Front-end Developer, Web Developer",
+					meta: "Junior",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Klara Peterson",
+					subtitle: "Helsinki, Finland",
+					description: "Web Designer, Graphic Designer",
+					meta: "Junior",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Yuki Sato",
+					subtitle: "Tokyo, Japan",
+					description: "UI/UX Designer, Web Designer",
+					meta: "Mid-level",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Giulia Bianchi",
+					subtitle: "Rome, Italy",
+					description: "Graphic Designer, Web Designer",
+					meta: "Mid-level",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Anders Johansson",
+					subtitle: "Stockholm, Sweden",
+					description: "Backend Developer, Software Engineer",
+					meta: "Senior",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Sofia Nilsen",
+					subtitle: "Oslo, Norway",
+					description: "Full-stack Developer, Software Engineer",
+					meta: "Junior",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Luca Rossi",
+					subtitle: "Milan, Italy",
+					description: "Software Developer, Web Developer",
+					meta: "Junior",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Emil Lund",
+					subtitle: "Copenhagen, Denmark",
+					description: "Backend Developer, Database Administrator",
+					meta: "Senior",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Freja Svensson",
+					subtitle: "Gothenburg, Sweden",
+					description: "Frontend Developer, UX/UI Designer",
+					meta: "Mid-level",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Taro Yamada",
+					subtitle: "Kyoto, Japan",
+					description: "Full-stack Developer, Software Developer",
+					meta: "Mid-level",
+					url: "candidate-detail.html",
+					type: "Candidate",
+				},
+				{
+					title: "Account management",
+					subtitle: "Account",
+					description:
+						"Learn how to create a job board account, update your profile, and manage your settings.",
+					meta: "",
+					url: "helpcenter.html",
+					type: "Help Center",
+				},
+				{
+					title: "Customer support",
+					subtitle: "Support",
+					description:
+						"Get help with your job board account, troubleshoot issues, and contact support.",
+					meta: "",
+					url: "helpcenter.html",
+					type: "Help Center",
+				},
+				{
+					title: "Security & fraud protection",
+					subtitle: "Security",
+					description:
+						"Learn how to keep your job board account safe, avoid scams, and protect your information.",
+					meta: "",
+					url: "helpcenter.html",
+					type: "Help Center",
+				},
+				{
+					title: "Billing & payouts",
+					subtitle: "Transactions",
+					description:
+						"Learn how to manage payments for job posts, request invoices, and troubleshoot billing issues.",
+					meta: "",
+					url: "helpcenter.html",
+					type: "Help Center",
+				},
+			];
+
+			window.addEventListener("load", function () {
+				var searchButton = document.getElementById("searchButton");
+				var searchModal = document.getElementById("searchModal");
+				var modalOverlay = document.getElementById("modalOverlay");
+				var searchInput = document.getElementById("searchInput");
+				var searchResults = document.getElementById("searchResults");
+				var closeSearch = document.getElementById("closeSearch");
+
+				searchInput.value = "";
+
+				var fuse = new Fuse(items, {
+					keys: ["title", "subtitle", "description", "meta", "type"],
+					threshold: 0.3,
+					includeMatches: true,
+				});
+
+				function openSearch(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					searchModal.classList.remove("hidden");
+					document.body.style.overflow = "hidden";
+					setTimeout(function () {
+						searchInput.focus();
+					}, 100);
+				}
+
+				function closeSearchModal(e) {
+					if (e) {
+						e.preventDefault();
+						e.stopPropagation();
+					}
+					searchModal.classList.add("hidden");
+					document.body.style.overflow = "";
+					searchInput.value = "";
+					searchResults.innerHTML = "";
+				}
+
+				function renderResults(results) {
+					if (!searchInput.value.trim()) {
+						searchResults.innerHTML = "";
+						return;
+					}
+					if (results.length === 0) {
+						searchResults.innerHTML =
+							'<div style="padding:12px 16px; font-size:.875rem; color:color-mix(in oklab,var(--color-primary) 60%,transparent);">No results found</div>';
+						return;
+					}
+					searchResults.innerHTML = results
+						.slice(0, 8)
+						.map(function (r) {
+							return (
+								'<a href="' +
+								r.item.url +
+								"\" style=\"display:block; padding:16px 4px; background:var(--color-secondary); text-decoration:none; transition:color .3s;\" onmouseover=\"this.querySelector('h3').style.color='var(--color-accent)'\" onmouseout=\"this.querySelector('h3').style.color='var(--color-primary)'\">" +
+								'<div style="display:flex; align-items:center; gap:8px;">' +
+								'<span style="font-size:.6rem; text-transform:uppercase; letter-spacing:.025em; color:color-mix(in oklab,var(--color-primary) 80%,transparent); border-radius:9999px; background:color-mix(in oklab,var(--color-primary) 10%,transparent); padding:2px 8px;">' +
+								r.item.type +
+								"</span>" +
+								(r.item.subtitle
+									? '<span style="font-size:.75rem; color:color-mix(in oklab,var(--color-primary) 60%,transparent);">' +
+										r.item.subtitle +
+										"</span>"
+									: "") +
+								"</div>" +
+								'<h3 style="font-size:1rem; font-weight:500; color:var(--color-primary); margin-top:4px; transition:color .3s;">' +
+								r.item.title +
+								"</h3>" +
+								(r.item.meta
+									? '<p style="margin-top:4px; font-size:.75rem; color:color-mix(in oklab,var(--color-primary) 60%,transparent);">' +
+										r.item.meta +
+										"</p>"
+									: "") +
+								(r.item.description
+									? '<p style="margin-top:4px; font-size:.875rem; color:color-mix(in oklab,var(--color-primary) 70%,transparent);">' +
+										r.item.description +
+										"</p>"
+									: "") +
+								"</a>"
+							);
+						})
+						.join("");
+				}
+
+				searchButton.addEventListener("click", openSearch);
+				searchButton.addEventListener("touchend", openSearch);
+				closeSearch.addEventListener("click", closeSearchModal);
+				closeSearch.addEventListener("touchend", closeSearchModal);
+				modalOverlay.addEventListener("click", closeSearchModal);
+				modalOverlay.addEventListener("touchend", closeSearchModal);
+
+				searchInput.addEventListener("input", function (e) {
+					var val = e.target.value;
+					renderResults(val.trim() ? fuse.search(val) : []);
+				});
+
+				document.addEventListener("keydown", function (e) {
+					if (e.key === "Escape" && !searchModal.classList.contains("hidden")) {
+						closeSearchModal();
+					}
+				});
+			});
+		})();
+		</script>
+	</body>
+</html>

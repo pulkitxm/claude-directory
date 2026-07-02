@@ -1,5 +1,7 @@
 # Power AI — Dark Hero Section with Video Fade Loop and Logo Marquee (React + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen dark hero section for a fictional AI talent-acquisition platform. A looping background video fades in and out via a custom `requestAnimationFrame` loop, a giant 220px General Sans headline carries an indigo → purple → amber gradient, and a liquid-glass logo marquee scrolls along the bottom — all on a deep blue-purple background with staggered rise entrance animations. This hero landing page demonstrates advanced CSS techniques including liquid-glass frosted surfaces, viewport-spanning gradient text, and RAF-driven video opacity control, ideal as a dark SaaS or AI product hero. Generated with Claude Fable 5.
 
 ## Highlights

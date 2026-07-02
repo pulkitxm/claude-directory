@@ -1,5 +1,7 @@
 # Tide — Deep-Work Focus App Landing Page (React + Vite + TypeScript + Tailwind CSS + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A single-page landing page for **Tide**, a fictional deep-work / focus app with a deep oceanic twilight aesthetic — ink navy and abyssal blue lit by bioluminescent teal and coral bloom. Features a canvas-rendered animated tide-of-light hero with a live 50:00 session dial, soundscape bento grid, count-up stats, and ARIA-compliant FAQ accordion. Built with React, TypeScript, Vite, Tailwind CSS, and Framer Motion, with Fraunces display serif and locally vendored fonts. Generated with Claude Fable 5.
 
 A single-page landing page for **Tide**, a fictional deep-work / focus app that

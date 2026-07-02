@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+	<head>
+		<title>Jarvis — Software Engineer</title>
+		<meta
+			name="description"
+			content="Crafting code, one line at a time: meet flaco, software engineer extraordinaire, yo!"
+		>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#ffffff">
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		>
+		<!-- Fuse.js -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"
+		></script>
+
+		<style>
+		/* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+		:root {
+			--font-sans: "Geist", sans-serif;
+			--font-mono: "Geist Mono", monospace;
+			--font-display: "Instrument Serif", serif;
+
+			/* Base (zinc-like warm grays) */
+			--color-base-50: oklch(98.5% 0 0);
+			--color-base-100: oklch(96.7% 0.001 286.375);
+			--color-base-200: oklch(92% 0.004 286.32);
+			--color-base-300: oklch(87.1% 0.006 286.286);
+			--color-base-400: oklch(70.5% 0.015 286.067);
+			--color-base-500: oklch(55.2% 0.016 285.938);
+			--color-base-600: oklch(44.2% 0.017 285.786);
+			--color-base-700: oklch(37% 0.013 285.805);
+			--color-base-800: oklch(27.4% 0.006 286.033);
+			--color-base-900: oklch(21% 0.006 285.885);
+			--color-base-950: oklch(14.1% 0.005 285.823);
+
+			/* Accent (lime-green) */
+			--color-accent-50: oklch(98.6% 0.031 120.757);
+			--color-accent-100: oklch(96.7% 0.067 122.328);
+			--color-accent-200: oklch(93.8% 0.127 124.321);
+			--color-accent-300: oklch(89.7% 0.196 126.665);
+			--color-accent-400: oklch(84.1% 0.238 128.85);
+			--color-accent-500: oklch(76.8% 0.233 130.85);
+			--color-accent-600: oklch(64.8% 0.2 131.684);
+			--color-accent-700: oklch(53.2% 0.157 131.589);
+			--color-accent-800: oklch(45.3% 0.124 130.933);
+			--color-accent-900: oklch(40.5% 0.101 131.063);
+			--color-accent-950: oklch(27.4% 0.072 132.109);
+
+			--color-white: #f6f6f4;
+			--color-black: #000;
+
+			/* Semantic page tokens */
+			--bg: var(--color-white);
+			--text-primary: var(--color-base-900);
+			--text-secondary: var(--color-base-600);
+			--text-muted: var(--color-base-500);
+			--card-bg-from: var(--color-base-50);
+			--card-bg-to: var(--color-base-100);
+			--card-ring: var(--color-base-200);
+			--nav-overlay-bg: rgba(246, 246, 244, 0.2);
+		}
+
+		html.dark {
+			--bg: var(--color-base-950);
+			--text-primary: var(--color-white);
+			--text-secondary: var(--color-base-400);
+			--text-muted: var(--color-base-400);
+			--card-bg-from: var(--color-base-800);
+			--card-bg-to: var(--color-base-950);
+			--card-ring: var(--color-base-800);
+			--nav-overlay-bg: rgba(0, 0, 0, 0.5);
+		}
+
+		/* ============================================================
+       RESET / BASE
+    ============================================================ */
+		*,
+		::before,
+		::after {
+			box-sizing: border-box;
+			border: 0 solid;
+			margin: 0;
+			padding: 0;
+		}
+		html {
+			-webkit-font-smoothing: antialiased;
+			text-size-adjust: 100%;
+		}
+		body {
+			font-family: var(--font-sans);
+			background-color: var(--bg);
+			color: var(--text-primary);
+			min-height: 100svh;
+			display: flex;
+			flex-direction: column;
+			transition:
+				background-color 0.3s,
+				color 0.3s;
+			line-height: 1.5;
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+		img,
+		svg {
+			display: block;
+			max-width: 100%;
+			height: auto;
+			vertical-align: middle;
+		}
+		button {
+			cursor: pointer;
+			background: none;
+			border: none;
+			font: inherit;
+			color: inherit;
+		}
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-size: inherit;
+			font-weight: inherit;
+		}
+
+		/* ============================================================
+       LAYOUT HELPERS
+    ============================================================ */
+		.container {
+			width: 100%;
+			max-width: 48rem; /* max-w-3xl */
+			margin-inline: auto;
+			padding-inline: 2rem; /* px-8 */
+		}
+
+		main {
+			flex-grow: 1;
+			position: relative;
+		}
+
+		/* ============================================================
+       SCROLLBAR HIDE
+    ============================================================ */
+		.scrollbar-hide {
+			scrollbar-width: none;
+		}
+		.scrollbar-hide::-webkit-scrollbar {
+			display: none;
+		}
+
+		/* ============================================================
+       THEME TOGGLE BUTTON
+    ============================================================ */
+		.theme-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2.25rem;
+			height: 2.25rem;
+			border-radius: 9999px;
+			background-color: var(--color-base-200);
+			color: var(--color-base-950);
+			position: fixed;
+			z-index: 50;
+			bottom: 0.5rem;
+			left: 0.5rem;
+			transition: background-color 0.5s;
+		}
+		.theme-btn:hover {
+			background-color: var(--color-base-100);
+		}
+		html.dark .theme-btn {
+			background-color: var(--color-base-900);
+			color: var(--color-white);
+		}
+		html.dark .theme-btn:hover {
+			background-color: var(--color-base-800);
+		}
+		@media (min-width: 64rem) {
+			.theme-btn {
+				bottom: 1rem;
+				left: 1rem;
+			}
+		}
+
+		/* ============================================================
+       SEARCH BUTTON
+    ============================================================ */
+		.search-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2.25rem;
+			height: 2.25rem;
+			border-radius: 9999px;
+			background-color: var(--color-base-200);
+			color: var(--color-base-950);
+			position: fixed;
+			z-index: 50;
+			bottom: 0.5rem;
+			right: 0.5rem;
+			transition: background-color 0.5s;
+		}
+		.search-btn:hover {
+			background-color: var(--color-base-100);
+		}
+		html.dark .search-btn {
+			background-color: var(--color-base-900);
+			color: var(--color-white);
+		}
+		html.dark .search-btn:hover {
+			background-color: var(--color-base-800);
+		}
+		@media (min-width: 64rem) {
+			.search-btn {
+				bottom: 1rem;
+				right: 1rem;
+			}
+		}
+
+		/* ============================================================
+       SEARCH MODAL
+    ============================================================ */
+		.search-modal {
+			position: fixed;
+			inset: 0;
+			z-index: 50;
+			overflow-y: auto;
+			display: none;
+		}
+		.search-modal.open {
+			display: block;
+		}
+		.modal-inner {
+			min-height: 100vh;
+			padding: 0 1rem;
+			text-align: center;
+		}
+		.modal-overlay {
+			position: fixed;
+			inset: 0;
+			background: rgba(9, 9, 11, 0.5);
+			backdrop-filter: blur(8px);
+		}
+		.modal-box {
+			position: relative;
+			display: inline-block;
+			width: 100%;
+			max-width: 42rem;
+			padding: 0 2rem;
+			margin-top: 3rem;
+			margin-bottom: 2rem;
+			text-align: left;
+		}
+		@media (min-width: 64rem) {
+			.modal-box {
+				margin-top: 12rem;
+			}
+		}
+
+		.search-input {
+			width: 100%;
+			height: 2.5rem;
+			padding: 0.5rem 0.75rem;
+			text-align: center;
+			border-radius: 9999px;
+			outline: 1px solid var(--color-base-200);
+			background: var(--color-base-50);
+			color: var(--color-base-900);
+			font-size: 0.875rem;
+			transition: outline-color 0.3s;
+		}
+		html.dark .search-input {
+			outline-color: var(--color-base-800);
+			background: var(--color-base-800);
+			color: var(--color-white);
+		}
+		.search-results {
+			width: 100%;
+			margin-top: 0.5rem;
+			overflow: hidden;
+			overflow-y: auto;
+			max-height: 25rem;
+			background: white;
+			border-radius: 0.75rem;
+			display: none;
+		}
+		.search-results.visible {
+			display: block;
+		}
+		html.dark .search-results {
+			background: black;
+		}
+		.search-result-item {
+			display: block;
+			padding: 2rem;
+			border-bottom: 1px solid var(--color-base-200);
+			transition: background 0.3s;
+		}
+		.search-result-item:hover {
+			background: var(--color-base-100);
+		}
+		html.dark .search-result-item:hover {
+			background: rgba(246, 246, 244, 0.05);
+		}
+		.search-result-title {
+			display: block;
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: var(--color-base-900);
+		}
+		html.dark .search-result-title {
+			color: var(--color-white);
+		}
+		.search-result-desc {
+			display: block;
+			font-size: 0.75rem;
+			color: var(--color-base-500);
+		}
+
+		/* ============================================================
+       NAV
+    ============================================================ */
+		nav.main-nav {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			align-items: center;
+			gap: 1rem;
+			padding-block: 1rem;
+			width: 100%;
+		}
+		.nav-brand {
+			font-family: var(--font-display);
+			font-style: italic;
+			font-size: 1.25rem;
+			color: var(--text-primary);
+		}
+		@media (min-width: 40rem) {
+			.nav-brand {
+				font-size: 1.5rem;
+			}
+		}
+
+		.nav-right {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			gap: 0.5rem;
+		}
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		.nav-link {
+			font-size: 0.875rem;
+			color: var(--color-base-500);
+			transition: color 0.3s;
+		}
+		.nav-link:hover {
+			color: var(--color-base-900);
+		}
+		html.dark .nav-link {
+			color: var(--color-base-400);
+		}
+		html.dark .nav-link:hover {
+			color: var(--color-white);
+		}
+
+		/* Menu overlay */
+		.menu-overlay {
+			position: fixed;
+			inset: 0;
+			z-index: 50;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.3s;
+			background: var(--nav-overlay-bg);
+			backdrop-filter: blur(24px);
+		}
+		.menu-overlay.open {
+			opacity: 1;
+			pointer-events: all;
+		}
+		.menu-inner {
+			max-width: 48rem;
+			margin-inline: auto;
+			padding-inline: 2rem;
+			padding-block: 1rem;
+			position: relative;
+			height: 100%;
+		}
+		.menu-close {
+			display: flex;
+			margin-left: auto;
+			color: var(--text-primary);
+		}
+		.menu-close svg {
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+		.menu-nav {
+			display: flex;
+			flex-direction: column;
+			margin-top: 1rem;
+			gap: 0.5rem;
+		}
+		.menu-nav-item {
+			display: flex;
+			justify-content: flex-end;
+		}
+		.menu-nav-link {
+			font-size: 1.125rem;
+			color: var(--text-primary);
+			text-align: right;
+			position: relative;
+			display: block;
+		}
+		@media (min-width: 40rem) {
+			.menu-nav-link {
+				font-size: 1.25rem;
+			}
+		}
+		@media (min-width: 48rem) {
+			.menu-nav-link {
+				font-size: 1.5rem;
+			}
+		}
+		.menu-nav-link::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 2px;
+			background: var(--text-primary);
+			transform: scaleX(0);
+			transform-origin: left center;
+			transition: transform 0.3s;
+		}
+		.menu-nav-link:hover::after {
+			transform: scaleX(1);
+		}
+		.mobile-only {
+			display: flex;
+		}
+		@media (min-width: 48rem) {
+			.mobile-only {
+				display: none;
+			}
+		}
+
+		/* ============================================================
+       HERO SECTION
+    ============================================================ */
+		.hero-inner {
+			padding-block: 6rem;
+			text-align: center;
+		}
+
+		/* Hire me link */
+		.hire-link {
+			font-size: 0.875rem;
+			color: var(--text-primary);
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			position: relative;
+		}
+		.hire-link::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 2px;
+			background: var(--text-primary);
+			transform: scaleX(0);
+			transform-origin: left center;
+			transition: transform 0.3s;
+		}
+		.hire-link:hover::after {
+			transform: scaleX(1);
+		}
+
+		/* H1 */
+		.hero-h1 {
+			font-size: 2.25rem;
+			font-weight: 500;
+			display: flex;
+			align-items: baseline;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+			color: var(--text-primary);
+			margin-top: 2rem;
+		}
+		@media (min-width: 48rem) {
+			.hero-h1 {
+				font-size: 3rem;
+			}
+		}
+		@media (min-width: 64rem) {
+			.hero-h1 {
+				font-size: 3.75rem;
+			}
+		}
+
+		.hero-avatar {
+			width: 3rem;
+			height: 3rem;
+			border-radius: 0.75rem;
+			display: inline-block;
+			vertical-align: baseline;
+			transition: transform 0.3s;
+			flex-shrink: 0;
+		}
+		@media (min-width: 48rem) {
+			.hero-avatar {
+				width: 4rem;
+				height: 4rem;
+			}
+		}
+		.hero-avatar:hover {
+			transform: scale(1.5) rotate(6deg);
+		}
+
+		/* "software engineer." italic */
+		.hero-tagline {
+			font-family: var(--font-display);
+			font-style: italic;
+			font-size: 2.25rem;
+			letter-spacing: 0.025em;
+			color: var(--text-secondary);
+		}
+		@media (min-width: 48rem) {
+			.hero-tagline {
+				font-size: 3rem;
+			}
+		}
+		@media (min-width: 64rem) {
+			.hero-tagline {
+				font-size: 3.75rem;
+			}
+		}
+
+		/* Hero body text */
+		.hero-body {
+			font-size: 1rem;
+			margin-top: 1rem;
+			color: var(--text-secondary);
+		}
+		@media (min-width: 40rem) {
+			.hero-body {
+				font-size: 1.125rem;
+			}
+		}
+		@media (min-width: 48rem) {
+			.hero-body {
+				font-size: 1.25rem;
+			}
+		}
+
+		/* ============================================================
+       MARQUEE
+    ============================================================ */
+		.marquee-wrap {
+			position: relative;
+			padding-block: 0.5rem;
+			margin-top: 3rem;
+			overflow: hidden;
+		}
+		.marquee-fade-left,
+		.marquee-fade-right {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			z-index: 10;
+			width: 11rem;
+			pointer-events: none;
+		}
+		.marquee-fade-left {
+			left: 0;
+			background: linear-gradient(to right, var(--bg), transparent);
+		}
+		.marquee-fade-right {
+			right: 0;
+			background: linear-gradient(to left, var(--bg), transparent);
+		}
+		.marquee-track {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			white-space: nowrap;
+			animation: marquee 12s linear infinite;
+			width: max-content;
+		}
+		.marquee-logo {
+			height: 2rem;
+			width: auto;
+			filter: invert(1);
+		}
+		html.dark .marquee-logo {
+			filter: none;
+		}
+
+		@keyframes marquee {
+			0% {
+				transform: translateX(0);
+			}
+			100% {
+				transform: translateX(-50%);
+			}
+		}
+
+		/* ============================================================
+       SECTION HEADERS
+    ============================================================ */
+		.section-header {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+		.section-title {
+			font-family: var(--font-display);
+			font-style: italic;
+			letter-spacing: 0.025em;
+			color: var(--text-primary);
+			font-size: 1.125rem;
+		}
+		@media (min-width: 40rem) {
+			.section-title {
+				font-size: 1.25rem;
+			}
+		}
+		@media (min-width: 48rem) {
+			.section-title {
+				font-size: 1.5rem;
+			}
+		}
+		@media (min-width: 64rem) {
+			.section-title {
+				font-size: 1.875rem;
+			}
+		}
+
+		/* pill button (secondary) */
+		.btn-pill {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			height: 2rem;
+			padding-inline: 1rem;
+			border-radius: 9999px;
+			font-size: 0.75rem;
+			font-weight: 500;
+			background: var(--color-base-200);
+			color: var(--color-base-950);
+			transition: background-color 0.5s;
+			white-space: nowrap;
+		}
+		.btn-pill:hover {
+			background: var(--color-base-100);
+		}
+		html.dark .btn-pill {
+			background: var(--color-base-900);
+			color: var(--color-white);
+		}
+		html.dark .btn-pill:hover {
+			background: var(--color-base-800);
+		}
+
+		/* primary pill button (dark bg) */
+		.btn-pill-primary {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			height: 2rem;
+			padding-inline: 1rem;
+			border-radius: 9999px;
+			font-size: 0.75rem;
+			font-weight: 500;
+			background: var(--color-base-900);
+			color: var(--color-white);
+			transition: background-color 0.5s;
+			pointer-events: none;
+			white-space: nowrap;
+		}
+		html.dark .btn-pill-primary {
+			background: var(--color-base-100);
+			color: var(--color-base-950);
+		}
+
+		/* ============================================================
+       SECTIONS
+    ============================================================ */
+		.section {
+			padding-block: 3rem;
+		}
+
+		/* card shared shadow */
+		.card-shadow {
+			box-shadow:
+				rgba(0, 0, 0, 0.1) 0 4px 10px -2px,
+				rgba(0, 0, 0, 0.1) 0 2px 2px -1px,
+				rgba(255, 255, 255, 0.08) 0 0 0 1px;
+		}
+		.card-shadow:hover {
+			box-shadow:
+				0 -2px 6px #ffffff03,
+				0 5px 18px #0000000d,
+				0 4px 40px 8px #0000000d,
+				0 1px 4px -1px #0000000a,
+				inset 0 0 0 0.3px #ffffff05,
+				0 0 0 0.1px #ffffff0d;
+		}
+		html.dark .card-shadow:hover {
+			box-shadow:
+				0 -2px 6px #ffffff2b,
+				0 5px 18px #0006,
+				0 4px 40px 8px #0006,
+				0 1px 4px -1px #0000004d,
+				inset 0 0 0 0.3px #ffffff4d,
+				0 0 0 0.5px #fff6;
+		}
+
+		/* ============================================================
+       PROJECT CARDS
+    ============================================================ */
+		.projects-grid {
+			margin-top: 1.5rem;
+			display: grid;
+			gap: 0.5rem;
+		}
+		@media (min-width: 48rem) {
+			.projects-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		.project-card {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			min-height: 18rem;
+			padding: 2rem;
+			overflow: hidden;
+			border-radius: 1.5rem;
+			background-image: linear-gradient(
+				45deg,
+				var(--card-bg-from),
+				var(--card-bg-to)
+			);
+			outline: 1px solid var(--card-ring);
+			outline-offset: -1px;
+			transition:
+				box-shadow 0.3s,
+				transform 0.3s;
+		}
+
+		.card-link-overlay {
+			position: absolute;
+			inset: 0;
+			z-index: 10;
+		}
+		.card-top {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.card-title {
+			font-size: 1rem;
+			font-weight: 500;
+			text-transform: uppercase;
+			color: var(--text-primary);
+		}
+		.card-arrow-btn {
+			padding: 0.25rem;
+			color: var(--color-white);
+			background: var(--color-black);
+			border-radius: 9999px;
+			transition: transform 0.3s;
+			display: flex;
+			align-items: center;
+		}
+		html.dark .card-arrow-btn {
+			background: var(--color-base-50);
+			color: var(--color-base-900);
+		}
+		.card-arrow-btn svg {
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+		.project-card:hover .card-arrow-btn {
+			transform: rotate(-45deg);
+		}
+
+		.card-bottom {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 3rem;
+			margin-bottom: -5rem;
+			transition: margin-bottom 0.3s;
+		}
+		.project-card:hover .card-bottom {
+			margin-bottom: 0;
+		}
+
+		.card-desc {
+			font-size: 1rem;
+			margin-top: 2rem;
+			color: var(--text-secondary);
+			line-height: 1.5rem;
+		}
+
+		/* ============================================================
+       BLOG SECTION
+    ============================================================ */
+		article.blog-card {
+			position: relative;
+			padding: 0.5rem;
+			display: grid;
+			border-radius: 1.5rem;
+			background-image: linear-gradient(
+				45deg,
+				var(--color-white),
+				var(--card-bg-to)
+			);
+			transition: box-shadow 0.3s;
+		}
+		html.dark article.blog-card {
+			background-image: linear-gradient(
+				45deg,
+				var(--card-bg-from),
+				var(--card-bg-to)
+			);
+		}
+		@media (min-width: 40rem) {
+			article.blog-card {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		.blog-meta {
+			font-size: 0.75rem;
+			color: var(--text-secondary);
+		}
+		.blog-title {
+			font-size: 1rem;
+			font-weight: 500;
+			text-transform: uppercase;
+			color: var(--text-primary);
+			margin-top: 1rem;
+		}
+		.blog-text-area {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			min-height: 18rem;
+			padding: 1rem;
+			overflow: hidden;
+			border-radius: 1rem;
+		}
+		@media (min-width: 48rem) {
+			.blog-text-area {
+				min-height: 24rem;
+			}
+		}
+		.blog-bottom {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 3rem;
+			margin-bottom: 0;
+			transition: margin-bottom 0.3s;
+		}
+		@media (min-width: 40rem) {
+			.blog-bottom {
+				margin-bottom: -5rem;
+			}
+		}
+		article.blog-card:hover .blog-bottom {
+			margin-bottom: 0;
+		}
+
+		.blog-desc {
+			font-size: 1rem;
+			margin-top: 2rem;
+			color: var(--text-secondary);
+			line-height: 1.5rem;
+		}
+		.blog-img {
+			order: -1;
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+			border-radius: 1rem;
+			display: block;
+		}
+
+		/* ============================================================
+       STACK SECTION
+    ============================================================ */
+		.stack-outer {
+			position: relative;
+			margin-top: 1.5rem;
+			overflow: hidden;
+		}
+		.stack-track {
+			display: flex;
+			padding-block: 3rem;
+			gap: 0.5rem;
+			overflow-x: auto;
+			overflow-y: visible;
+			scrollbar-width: none;
+		}
+		.stack-track::-webkit-scrollbar {
+			display: none;
+		}
+
+		.stack-card {
+			flex-shrink: 0;
+			width: 18rem;
+			min-height: 18rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 1.5rem;
+			border-radius: 1rem;
+			position: relative;
+			overflow: hidden;
+			background-image: linear-gradient(
+				45deg,
+				var(--card-bg-from),
+				var(--card-bg-to)
+			);
+			outline: 1px solid var(--card-ring);
+			outline-offset: -1px;
+			box-shadow:
+				rgba(0, 0, 0, 0.1) 0 4px 10px -2px,
+				rgba(0, 0, 0, 0.1) 0 2px 2px -1px,
+				rgba(255, 255, 255, 0.08) 0 0 0 1px;
+			transition: box-shadow 0.3s;
+		}
+		html.dark .stack-card:hover {
+			box-shadow:
+				0 -2px 6px #ffffff2b,
+				0 5px 18px #0006,
+				0 4px 40px 8px #0006,
+				0 1px 4px -1px #0000004d,
+				inset 0 0 0 0.3px #ffffff4d,
+				0 0 0 0.5px #fff6;
+		}
+
+		/* Static rotation per card position */
+		.stack-card:nth-child(1) {
+			transform: rotate(6deg);
+		}
+		.stack-card:nth-child(2) {
+			transform: rotate(-12deg);
+		}
+		.stack-card:nth-child(3) {
+			transform: rotate(6deg);
+		}
+		.stack-card:nth-child(4) {
+			transform: rotate(-12deg);
+		}
+		.stack-card:nth-child(5) {
+			transform: rotate(6deg);
+		}
+		.stack-card:nth-child(6) {
+			transform: rotate(-12deg);
+		}
+
+		.stack-card-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+		}
+		.stack-card-title {
+			font-size: 1rem;
+			font-weight: 500;
+			color: var(--text-primary);
+		}
+		.stack-card-sub {
+			font-size: 0.875rem;
+			color: var(--text-secondary);
+		}
+		.stack-icon {
+			width: 2rem;
+			height: 2rem;
+			border-radius: 0.75rem;
+			transition: transform 0.3s;
+			flex-shrink: 0;
+		}
+		html.dark .stack-icon {
+			border: 1px solid var(--color-base-700);
+		}
+		.stack-card:hover .stack-icon {
+			transform: rotate(-45deg);
+		}
+		.stack-desc {
+			font-size: 1rem;
+			margin-top: 0.5rem;
+			color: var(--text-secondary);
+		}
+
+		/* Stack fade overlays */
+		.stack-fade-left,
+		.stack-fade-right {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			z-index: 10;
+			width: 11rem;
+			pointer-events: none;
+		}
+		.stack-fade-left {
+			left: 0;
+			background: linear-gradient(to right, var(--bg), transparent);
+		}
+		.stack-fade-right {
+			right: 0;
+			background: linear-gradient(to left, var(--bg), transparent);
+		}
+
+		/* ============================================================
+       FOOTER
+    ============================================================ */
+		.footer-inner {
+			display: flex;
+			flex-direction: column;
+			padding-block: 6rem;
+		}
+		.footer-logo-link {
+			margin-inline: auto;
+		}
+		.footer-logo {
+			width: 2rem;
+			height: 2rem;
+			color: var(--text-primary);
+		}
+		.footer-copy {
+			font-size: 1rem;
+			margin-top: 3rem;
+			text-align: center;
+			line-height: 1.5rem;
+			color: var(--text-secondary);
+		}
+		.footer-socials {
+			display: flex;
+			justify-content: center;
+			margin-top: 3rem;
+			gap: 1.5rem;
+		}
+		.social-link {
+			color: var(--text-secondary);
+			transition: color 0.3s;
+		}
+		html.dark .social-link:hover {
+			color: var(--color-white);
+		}
+		.social-link:hover {
+			color: var(--color-base-900);
+		}
+		.social-link svg {
+			width: 1rem;
+			height: 1rem;
+		}
+		</style>
+	</head>
+
+	<body>
+		<!-- Theme toggle (bottom-left) -->
+		<button
+			class="theme-btn"
+			role="switch"
+			aria-checked="false"
+			id="theme-toggle"
+			aria-label="Toggle theme"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 256 256"
+				fill="currentColor"
+				style="width:1rem;height:1rem;"
+			>
+				<path
+					d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm12,24.87a83.53,83.53,0,0,1,24,7.25V203.88a83.53,83.53,0,0,1-24,7.25ZM44,128a84.12,84.12,0,0,1,72-83.13V211.13A84.12,84.12,0,0,1,44,128Zm144,58.71V69.29a83.81,83.81,0,0,1,0,117.42Z"
+				></path>
+			</svg>
+		</button>
+
+		<!-- Search button (bottom-right) -->
+		<button
+			class="search-btn"
+			type="button"
+			id="searchButton"
+			aria-label="Search posts"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				style="width:1rem;height:1rem;"
+			>
+				<circle cx="11" cy="11" r="8"></circle>
+				<path d="m21 21-4.3-4.3"></path>
+			</svg>
+		</button>
+
+		<!-- Search modal -->
+		<div id="searchModal" class="search-modal" role="dialog" aria-modal="true">
+			<div class="modal-inner">
+				<div class="modal-overlay" id="modalOverlay"></div>
+				<div class="modal-box">
+					<input
+						type="text"
+						id="searchInput"
+						placeholder="Search posts..."
+						class="search-input"
+					>
+					<div id="searchResults" class="search-results scrollbar-hide"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ===== HEADER / NAV ===== -->
+		<header>
+			<div class="container">
+				<nav role="navigation" class="main-nav">
+					<!-- Brand -->
+					<div style="display:flex;align-items:center;gap:0.5rem;">
+						<a class="nav-brand" href="/" aria-label="Go to homepage">Jarvis</a>
+					</div>
+
+					<!-- Right side -->
+					<div class="nav-right">
+						<div class="nav-links">
+							<a class="nav-link" href="/system/overview">Overview</a>
+							<a
+								class="nav-link"
+								href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
+								>Buy Flaco</a
+							>
+						</div>
+
+						<!-- Hamburger -->
+						<button
+							type="button"
+							id="menuToggle"
+							aria-controls="menu"
+							aria-expanded="false"
+							aria-label="Open menu"
+							style="display:flex;align-items:center;"
+						>
+							<span
+								style="clip-path:inset(50%);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden;"
+								>Toggle menu</span
+							>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 256 256"
+								fill="currentColor"
+								style="width:1.25rem;height:1.25rem;color:var(--text-primary);"
+							>
+								<path
+									d="M228,160a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,160ZM40,108H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24Z"
+								></path>
+							</svg>
+						</button>
+
+						<!-- Full-screen overlay menu -->
+						<div id="menuContent" class="menu-overlay" aria-hidden="true">
+							<div class="menu-inner">
+								<button
+									id="closeMenu"
+									aria-label="Close menu"
+									class="menu-close"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										style="width:1.25rem;height:1.25rem;"
+									>
+										<path
+											d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"
+										></path>
+									</svg>
+								</button>
+
+								<nav role="navigation" class="menu-nav">
+									<div class="menu-nav-item">
+										<a
+											class="menu-nav-link"
+											href="/system/colors"
+											title="Colors"
+											aria-label="Colors"
+											>Colors</a
+										>
+									</div>
+									<div class="menu-nav-item">
+										<a
+											class="menu-nav-link"
+											href="/system/link"
+											title="Links"
+											aria-label="Links"
+											>Links</a
+										>
+									</div>
+									<div class="menu-nav-item">
+										<a
+											class="menu-nav-link"
+											href="/system/buttons"
+											title="Buttons"
+											aria-label="Buttons"
+											>Buttons</a
+										>
+									</div>
+									<div class="menu-nav-item">
+										<a
+											class="menu-nav-link"
+											href="/system/typography"
+											title="Typography"
+											aria-label="Typography"
+											>Typography</a
+										>
+									</div>
+									<div class="menu-nav-item">
+										<a
+											class="menu-nav-link"
+											href="/blog"
+											title="Blog"
+											aria-label="Blog"
+											>Blog</a
+										>
+									</div>
+									<div class="menu-nav-item">
+										<a
+											class="menu-nav-link"
+											href="/store/"
+											title="Store"
+											aria-label="Store"
+											>Store</a
+										>
+									</div>
+									<div class="menu-nav-item">
+										<a
+											class="menu-nav-link"
+											href="/projects/"
+											title="Projects"
+											aria-label="Projects"
+											>Projects</a
+										>
+									</div>
+									<div class="menu-nav-item">
+										<a
+											class="menu-nav-link"
+											href="/studio"
+											title="Studio"
+											aria-label="Studio"
+											>Studio</a
+										>
+									</div>
+									<!-- Mobile-only -->
+									<div class="menu-nav-item mobile-only">
+										<a
+											class="menu-nav-link"
+											href="/system/overview"
+											title="Overview"
+											aria-label="Overview"
+											>Overview</a
+										>
+									</div>
+									<div class="menu-nav-item mobile-only">
+										<a
+											class="menu-nav-link"
+											href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU"
+											title="Buy Flaco"
+											aria-label="Buy Flaco"
+											>Buy Flaco</a
+										>
+									</div>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+		<!-- ===== MAIN ===== -->
+		<main style="flex-grow:1;position:relative;">
+			<!-- HERO -->
+			<section style="position:relative;overflow:hidden;">
+				<div class="container">
+					<div class="hero-inner">
+						<!-- Hire me link -->
+						<div style="display:flex;justify-content:center;">
+							<a class="hire-link" href="/studio">
+								Hire me 2 spots open
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 256 256"
+									fill="currentColor"
+									style="width:1rem;height:1rem;flex-shrink:0;"
+								>
+									<path
+										d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"
+									></path>
+								</svg>
+							</a>
+						</div>
+
+						<!-- H1 + tagline -->
+						<div style="margin-top:2rem;">
+							<h1 class="hero-h1">
+								Hi, I'm
+								<img
+									src="assets/images/avatar.webp"
+									alt="#_"
+									loading="lazy"
+									decoding="async"
+									width="400"
+									height="200"
+									class="hero-avatar"
+								>
+								Jarvis,
+							</h1>
+							<p class="hero-tagline">software engineer.</p>
+						</div>
+
+						<!-- Body copy -->
+						<p class="hero-body">
+							Crafting code, one line at a time: meet flaco, software engineer
+							extraordinaire, yo!
+						</p>
+
+						<!-- Marquee logos -->
+						<div class="marquee-wrap">
+							<div class="marquee-fade-left"></div>
+							<div class="marquee-fade-right"></div>
+							<div class="marquee-track">
+								<!-- 6 logos, duplicated for seamless loop (12 total) -->
+								<img
+									src="assets/images/logo-1.svg"
+									alt="b1 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-2.svg"
+									alt="b2 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-3.svg"
+									alt="b3 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-4.svg"
+									alt="b4 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-3.svg"
+									alt="b5 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-4.svg"
+									alt="b6 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<!-- duplicate set for infinite loop -->
+								<img
+									src="assets/images/logo-1.svg"
+									alt="b1 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-2.svg"
+									alt="b2 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-3.svg"
+									alt="b3 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-4.svg"
+									alt="b4 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-3.svg"
+									alt="b5 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+								<img
+									src="assets/images/logo-4.svg"
+									alt="b6 Logo"
+									loading="lazy"
+									decoding="async"
+									width="200"
+									height="100"
+									class="marquee-logo"
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- PROJECTS -->
+			<section class="section">
+				<div class="container">
+					<div class="section-header">
+						<h2 class="section-title">Projects</h2>
+						<a href="/projects/" class="btn-pill">See them all</a>
+					</div>
+
+					<div class="projects-grid">
+						<!-- Card 1: Lexington Themes -->
+						<div class="project-card card-shadow">
+							<a
+								href="/projects/1"
+								title="Read more about Lexington Themes"
+								class="card-link-overlay"
+							></a>
+							<div class="card-top">
+								<h3 class="card-title">Lexington Themes</h3>
+								<div class="card-arrow-btn">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										style="width:1.25rem;height:1.25rem;"
+									>
+										<path
+											d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<div class="card-bottom">
+								<p class="card-desc">
+									Free and premium multipage themes and UI Kits for freelancers,
+									developers, businesses, and personal use.
+								</p>
+								<a
+									href="/projects/1"
+									class="btn-pill-primary"
+									title="Read more about Lexington Themes"
+									aria-hidden="true"
+									>Read more</a
+								>
+							</div>
+						</div>
+
+						<!-- Card 2: Colors & fonts -->
+						<div class="project-card card-shadow">
+							<a
+								href="/projects/2"
+								title="Read more about Colors &amp; fonts"
+								class="card-link-overlay"
+							></a>
+							<div class="card-top">
+								<h3 class="card-title">Colors &amp; fonts</h3>
+								<div class="card-arrow-btn">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+										style="width:1.25rem;height:1.25rem;"
+									>
+										<path
+											d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<div class="card-bottom">
+								<p class="card-desc">
+									Color &amp; typography tools for web developers &amp; digital
+									designers
+								</p>
+								<a
+									href="/projects/2"
+									class="btn-pill-primary"
+									title="Read more about Colors &amp; fonts"
+									aria-hidden="true"
+									>Read more</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- BLOG -->
+			<section class="section">
+				<div class="container">
+					<div class="section-header">
+						<h2 class="section-title">Blog</h2>
+						<a href="/blog/1" class="btn-pill">Read all my blog posts</a>
+					</div>
+
+					<div style="margin-top:1.5rem;">
+						<article class="blog-card card-shadow">
+							<a
+								href="/blog/posts/1"
+								title="5 Essential Skills for Web Developers"
+								aria-label="Read more about 5 Essential Skills for Web Developers"
+								style="position:absolute;inset:0;z-index:10;"
+							></a>
+							<!-- Text column -->
+							<div class="blog-text-area">
+								<div>
+									<p class="blog-meta">
+										<time>April 01, 2024</time>
+										<span>·</span>
+										<span>2 min read</span>
+									</p>
+									<h3 class="blog-title">
+										5 Essential Skills for Web Developers
+									</h3>
+								</div>
+								<div class="blog-bottom">
+									<p class="blog-desc">
+										Web development is a rapidly evolving field, and keeping up
+										with the latest trends and technologies can be challenging.
+									</p>
+									<a
+										href="/blog/posts/1"
+										class="btn-pill-primary"
+										aria-label="Read more about 5 Essential Skills for Web Developers"
+										aria-hidden="true"
+										>Read more</a
+									>
+								</div>
+							</div>
+							<!-- Image column -->
+							<img
+								src="assets/images/blog-1.webp"
+								alt="5 Essential Skills for Web Developers"
+								loading="lazy"
+								decoding="async"
+								width="500"
+								height="800"
+								class="blog-img"
+							>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- STACK -->
+			<section class="section">
+				<div class="container">
+					<div class="section-header">
+						<h2 class="section-title">Stack</h2>
+						<a href="/stack" class="btn-pill">Check out my whole stack</a>
+					</div>
+				</div>
+
+				<!-- Stack cards — full-bleed with fade overlays -->
+				<div style="position:relative;margin-top:1.5rem;">
+					<div class="stack-outer">
+						<div class="stack-fade-left"></div>
+						<div class="stack-fade-right"></div>
+						<div class="stack-track" role="list">
+							<!-- 1. Penpot — rotate(6deg) -->
+							<div class="stack-card" role="listitem">
+								<div class="stack-card-header">
+									<div>
+										<h3 class="stack-card-title">Penpot</h3>
+										<p class="stack-card-sub">Design Tool</p>
+									</div>
+									<img
+										src="data:image/svg+xml,%3csvg%20width='500'%20height='500'%20viewBox='0%200%20500%20500'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='500'%20height='500'%20rx='125'%20fill='%2342EBB3'/%3e%3cg%20clip-path='url(%23clip0_2685_4)'%3e%3cpath%20d='M188.526%2079L152.57%20129.642V158.268L121.282%20173.15L121%20173.018V359.778L242.987%20417.409L250.441%20420.927L257.896%20417.409L379.882%20359.778V173.018L379.652%20173.126L348.356%20158.239V129.642L347.261%20128.102L312.398%2079L276.441%20129.642V129.692L250.277%2092.843L224.317%20129.409L223.388%20128.102L188.526%2079ZM194.887%20108.417L208.794%20128.002H168.258L182.003%20108.647L194.887%20108.417ZM318.757%20108.417L332.667%20128.002H292.13L305.872%20108.647L318.757%20108.417ZM256.638%20122.262L270.545%20141.846H230.012L243.754%20122.49L256.638%20122.262ZM164.414%20137.873H183.639V202.61L164.414%20193.527V137.873ZM193.51%20137.873H212.64V216.308L193.51%20207.272V137.873ZM288.288%20137.873H307.512V207.205L288.288%20216.287V137.873ZM317.381%20137.873H336.509V193.505L317.381%20202.541V137.873ZM226.166%20151.716H245.392V231.781L226.166%20222.697V151.716ZM255.263%20151.716H274.39V222.853L255.263%20231.891V151.716ZM348.352%20172.992L365.279%20179.913L348.352%20187.909V172.992ZM152.57%20173.018V187.933L135.647%20179.937L152.57%20173.018ZM135.908%20196.549L242.987%20247.134V400.918L135.907%20350.334L135.908%20196.549ZM364.973%20196.549V350.334L257.896%20400.918V247.133L364.973%20196.549Z'%20fill='%2315122D'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_2685_4'%3e%3crect%20width='259'%20height='342'%20fill='white'%20transform='translate(121%2079)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e"
+										alt="Penpot"
+										class="stack-icon"
+									>
+								</div>
+								<p class="stack-desc">
+									Penpot is the web-based open-source design tool that bridges
+									the gap between designers and developers.
+								</p>
+							</div>
+
+							<!-- 2. Tabler Icons — rotate(-12deg) -->
+							<div class="stack-card" role="listitem">
+								<div class="stack-card-header">
+									<div>
+										<h3 class="stack-card-title">Tabler Icons</h3>
+										<p class="stack-card-sub">Icon Library</p>
+									</div>
+									<img
+										src="data:image/svg+xml,%3csvg%20width='500'%20height='500'%20viewBox='0%200%20500%20500'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='500'%20height='500'%20rx='125'%20fill='%230054A6'/%3e%3cpath%20d='M267.346%20149.537L290.58%20111L398.54%20219.069L359.941%20242.21L267.346%20149.537Z'%20fill='white'/%3e%3cpath%20d='M144.07%20197.972L265.103%20183.892L325.666%20240.583L310.58%20353.454L162.146%20386.895C150.697%20389.411%20138.722%20387.596%20128.534%20381.799L209.775%20305.948C223.87%20312.252%20240.8%20308.148%20249.846%20296.252C258.876%20284.325%20257.405%20268.092%20246.345%20257.776C235.286%20247.461%20217.845%20246.082%20205.082%20254.524C192.319%20262.934%20187.92%20278.718%20194.689%20291.884L113.463%20367.626C110.463%20363.07%20108.447%20357.939%20107.542%20352.559C106.638%20347.18%20106.866%20341.671%20108.212%20336.385L144.07%20197.972Z'%20fill='white'/%3e%3c/svg%3e"
+										alt="Tabler Icons"
+										class="stack-icon"
+									>
+								</div>
+								<p class="stack-desc">
+									Free and open source icons designed to make your website or
+									app attractive, visually consistent and simply beautiful.
+								</p>
+							</div>
+
+							<!-- 3. Arc — rotate(6deg) -->
+							<div class="stack-card" role="listitem">
+								<div class="stack-card-header">
+									<div>
+										<h3 class="stack-card-title">Arc</h3>
+										<p class="stack-card-sub">Browser</p>
+									</div>
+									<img src="assets/images/arc.svg" alt="Arc" class="stack-icon">
+								</div>
+								<p class="stack-desc">
+									The Arc Browser is a new web browser developed by The Browser
+									Company, aiming to revolutionize the way users interact with
+									the internet.
+								</p>
+							</div>
+
+							<!-- 4. Tailwind CSS — rotate(-12deg) -->
+							<div class="stack-card" role="listitem">
+								<div class="stack-card-header">
+									<div>
+										<h3 class="stack-card-title">Tailwind CSS</h3>
+										<p class="stack-card-sub">CSS Framework</p>
+									</div>
+									<img
+										src="data:image/svg+xml,%3csvg%20width='500'%20height='500'%20viewBox='0%200%20500%20500'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='500'%20height='500'%20rx='125'%20fill='%2338BDF9'/%3e%3cg%20clip-path='url(%23clip0_2685_212)'%3e%3cpath%20d='M250%20152.547C206.8%20152.547%20179.8%20174.147%20169%20217.347C185.2%20195.746%20204.1%20187.646%20225.7%20193.047C238.023%20196.127%20246.832%20205.069%20256.583%20214.965C272.466%20231.088%20290.848%20249.747%20331%20249.747C374.2%20249.747%20401.2%20228.146%20412%20184.947C395.8%20206.547%20376.9%20214.647%20355.3%20209.247C342.977%20206.166%20334.168%20197.225%20324.417%20187.329C308.534%20171.206%20290.152%20152.547%20250%20152.547ZM169%20249.747C125.8%20249.747%2098.7996%20271.347%2088%20314.547C104.2%20292.946%20123.1%20284.846%20144.7%20290.247C157.023%20293.327%20165.832%20302.269%20175.583%20312.165C191.466%20328.288%20209.848%20346.947%20250%20346.947C293.2%20346.947%20320.2%20325.346%20331%20282.147C314.8%20303.747%20295.9%20311.847%20274.3%20306.447C261.977%20303.366%20253.168%20294.425%20243.417%20284.529C227.534%20268.406%20209.152%20249.747%20169%20249.747Z'%20fill='%23FAFAFA'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_2685_212'%3e%3crect%20width='324'%20height='324'%20fill='white'%20transform='translate(88%2088)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e"
+										alt="Tailwind CSS"
+										class="stack-icon"
+									>
+								</div>
+								<p class="stack-desc">
+									A utility-first CSS framework packed with classes like flex,
+									pt-4, text-center and rotate-90 that can be composed to build
+									any design, directly in your markup.
+								</p>
+							</div>
+
+							<!-- 5. Astrojs — rotate(6deg) -->
+							<div class="stack-card" role="listitem">
+								<div class="stack-card-header">
+									<div>
+										<h3 class="stack-card-title">Astrojs</h3>
+										<p class="stack-card-sub">Static Site Generator</p>
+									</div>
+									<!-- Simple Astro-style SVG icon -->
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 128 128"
+										class="stack-icon"
+										style="background:#17191e;border-radius:0.75rem;padding:4px;"
+									>
+										<path
+											fill="#ff5d01"
+											d="M81.5 24.7c-1.9-2.7-5.4-3.3-8.6-3.9L49.7 17a7.7 7.7 0 0 0-9 5.8L28.1 72.5a7.8 7.8 0 0 0 5.6 9.4l6.3 1.6a5.7 5.7 0 0 0 6.9-4.2l3.4-13.7 9.8 2.5a22.6 22.6 0 0 0 27.6-16.4 22.7 22.7 0 0 0-6.2-27zm-6 22.2a11 11 0 0 1-13.4 7.9l-9.9-2.5 4.2-16.7 9.9 2.5a11 11 0 0 1 9.2 8.8zM98 59.8l-3.3 13.2a5.7 5.7 0 0 1-6.9 4.2l-6.3-1.6a7.8 7.8 0 0 1-5.6-9.4l3-11.9a22.7 22.7 0 0 0 19.1 5.5z"
+										/>
+									</svg>
+								</div>
+								<p class="stack-desc">
+									Astro powers the world's fastest websites, client-side web
+									apps, dynamic API endpoints, and everything in-between.
+								</p>
+							</div>
+
+							<!-- 6. VS Code — rotate(-12deg) -->
+							<div class="stack-card" role="listitem">
+								<div class="stack-card-header">
+									<div>
+										<h3 class="stack-card-title">VS Code</h3>
+										<p class="stack-card-sub">Code Editor</p>
+									</div>
+									<img
+										src="assets/images/vscode.svg"
+										alt="VS Code"
+										class="stack-icon"
+									>
+								</div>
+								<p class="stack-desc">
+									Visual Studio Code (VS Code) is a source-code editor developed
+									by Microsoft for Windows, Linux, and macOS.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ===== FOOTER ===== -->
+		<footer>
+			<div class="container">
+				<div class="footer-inner">
+					<a href="/" aria-label="Go to homepage" class="footer-logo-link">
+						<svg
+							class="footer-logo"
+							viewBox="0 0 83 83"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M40.7124 69.7373V82.1123L0.837402 82.1123L0.837403 69.7373H40.7124ZM40.7124 54.6123L0.837402 54.6123L0.837403 42.2373H40.7124V54.6123ZM40.7124 27.1123L0.837402 27.1123L0.837403 14.7373L40.7124 14.7373V27.1123ZM42.0874 13.3623V0.987305L81.9624 0.987308V13.3623L42.0874 13.3623ZM42.0874 68.3623V55.9873H81.9624V68.3623L42.0874 68.3623ZM42.0874 40.8623V28.4873H81.9624V40.8623L42.0874 40.8623Z"
+								fill="currentColor"
+								stroke="currentColor"
+								stroke-width="1.375"
+							></path>
+						</svg>
+					</a>
+
+					<p class="footer-copy">
+						© 2026 Copyright Lexington Themes. All rights reserved. Designed and
+						built in the Åland Islands by Michael Andreuzza.
+					</p>
+
+					<div class="footer-socials">
+						<a href="#" class="social-link" aria-label="X (Twitter)">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 256 256"
+								fill="currentColor"
+							>
+								<path
+									d="M251.09,67.41A12,12,0,0,0,240,60H211.82a52.73,52.73,0,0,0-43.67-24,50.85,50.85,0,0,0-36.6,14.85A51.87,51.87,0,0,0,116,88v.78c-36.83-11.57-66.38-40.9-66.7-41.23a12,12,0,0,0-20.47,7.38C22.52,125.1,53.48,162.72,70.89,178.05,56.4,192.83,36,200.68,35.8,200.76A12,12,0,0,0,30,218.66C32,221.55,43.44,236,80,236c72.25,0,132.7-55.26,139.6-126.63l28.88-28.88A12,12,0,0,0,251.09,67.41ZM199.52,95.52a11.93,11.93,0,0,0-3.49,7.72C192.14,164.23,141.18,212,80,212a90.78,90.78,0,0,1-12.49-.79C78,204.55,89.72,195.07,98,182.66a12,12,0,0,0-3.9-17c-.12-.07-12.33-7.49-23.43-24.42s-17.26-37-18.46-59.78C69.37,94.4,96,110.79,126,115.84A12,12,0,0,0,140,104V88a28,28,0,0,1,8.41-20.07A27.07,27.07,0,0,1,167.86,60a28.83,28.83,0,0,1,25.82,16.81,12,12,0,0,0,11,7.19H211Z"
+								></path>
+							</svg>
+						</a>
+						<a href="#" class="social-link" aria-label="YouTube">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 256 256"
+								fill="currentColor"
+							>
+								<path
+									d="M170.49,117.91l-56-36A12,12,0,0,0,96,92v72a12,12,0,0,0,18.49,10.09l56-36a12,12,0,0,0,0-20.18ZM120,142V114l21.81,14Zm118.21-73.5a28.05,28.05,0,0,0-16.93-19.14C186.4,35.91,131.29,36,128,36s-58.4-.09-93.28,13.38A28.05,28.05,0,0,0,17.79,68.52C15.15,78.72,12,97.32,12,128s3.15,49.28,5.79,59.48a28.05,28.05,0,0,0,16.93,19.14C68.21,219.55,120.36,220,127.37,220h1.26c7,0,59.16-.45,92.65-13.38a28.05,28.05,0,0,0,16.93-19.14c2.64-10.2,5.79-28.8,5.79-59.48S240.85,78.72,238.21,68.52ZM215,181.46a4,4,0,0,1-2.34,2.77C182.78,195.76,132.27,196,128.32,196h-.39c-.53,0-53.64.17-84.56-11.77A4,4,0,0,1,41,181.46c-1.88-7.24-5-23.82-5-53.46s3.15-46.22,5-53.46a4,4,0,0,1,2.34-2.77C74.29,59.83,127.39,60,127.92,60h.15c.54,0,53.64-.17,84.56,11.77A4,4,0,0,1,215,74.54c1.88,7.24,5,23.82,5,53.46S216.85,174.22,215,181.46Z"
+								></path>
+							</svg>
+						</a>
+						<a href="#" class="social-link" aria-label="GitHub">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 256 256"
+								fill="currentColor"
+							>
+								<path
+									d="M212.62,75.17A63.7,63.7,0,0,0,206.39,26,12,12,0,0,0,196,20a63.71,63.71,0,0,0-50,24H126A63.71,63.71,0,0,0,76,20a12,12,0,0,0-10.39,6,63.7,63.7,0,0,0-6.23,49.17A61.5,61.5,0,0,0,52,104v8a60.1,60.1,0,0,0,45.76,58.28A43.66,43.66,0,0,0,92,192v4H76a20,20,0,0,1-20-20,44.05,44.05,0,0,0-44-44,12,12,0,0,0,0,24,20,20,0,0,1,20,20,44.05,44.05,0,0,0,44,44H92v12a12,12,0,0,0,24,0V192a20,20,0,0,1,40,0v40a12,12,0,0,0,24,0V192a43.66,43.66,0,0,0-5.76-21.72A60.1,60.1,0,0,0,220,112v-8A61.5,61.5,0,0,0,212.62,75.17ZM196,112a36,36,0,0,1-36,36H112a36,36,0,0,1-36-36v-8a37.87,37.87,0,0,1,6.13-20.12,11.65,11.65,0,0,0,1.58-11.49,39.9,39.9,0,0,1-.4-27.72,39.87,39.87,0,0,1,26.41,17.8A12,12,0,0,0,119.82,68h32.35a12,12,0,0,0,10.11-5.53,39.84,39.84,0,0,1,26.41-17.8,39.9,39.9,0,0,1-.4,27.72,12,12,0,0,0,1.61,11.53A37.85,37.85,0,0,1,196,104Z"
+								></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- ===== SCRIPTS ===== -->
+
+		<!-- Theme: runs immediately before paint to prevent flash -->
+		<script>
+		(function () {
+			var theme =
+				localStorage.getItem("theme") ||
+				(window.matchMedia("(prefers-color-scheme: dark)").matches
+					? "dark"
+					: "light");
+			document.documentElement.classList.toggle("dark", theme === "dark");
+			var t = document.getElementById("theme-toggle");
+			if (t)
+				t.setAttribute("aria-checked", theme === "dark" ? "true" : "false");
+		})();
+		</script>
+
+		<!-- Theme toggle -->
+		<script>
+		(function () {
+			var btn = document.getElementById("theme-toggle");
+			function setTheme(dark) {
+				document.documentElement.classList.toggle("dark", dark);
+				btn.setAttribute("aria-checked", dark ? "true" : "false");
+				localStorage.setItem("theme", dark ? "dark" : "light");
+			}
+			btn.addEventListener("click", function () {
+				setTheme(btn.getAttribute("aria-checked") !== "true");
+			});
+		})();
+		</script>
+
+		<!-- Hamburger menu -->
+		<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var menuToggle = document.getElementById("menuToggle");
+			var menuContent = document.getElementById("menuContent");
+			var closeMenu = document.getElementById("closeMenu");
+
+			function toggleMenu() {
+				var opening = !menuContent.classList.contains("open");
+				menuContent.classList.toggle("open", opening);
+				menuContent.setAttribute("aria-hidden", opening ? "false" : "true");
+				document.body.style.overflow = opening ? "hidden" : "";
+
+				if (opening) {
+					menuContent.querySelectorAll("nav a").forEach(function (a, i) {
+						a.style.opacity = "0";
+						a.style.transform = "translateY(20px)";
+						a.style.transition = "none";
+						setTimeout(function () {
+							a.style.transition =
+								"opacity 0.3s ease-out " +
+								i * 0.1 +
+								"s, transform 0.3s ease-out " +
+								i * 0.1 +
+								"s";
+							a.style.opacity = "1";
+							a.style.transform = "translateY(0)";
+						}, 50);
+					});
+				}
+			}
+
+			menuToggle.addEventListener("click", toggleMenu);
+			closeMenu.addEventListener("click", toggleMenu);
+		});
+		</script>
+
+		<!-- Search modal -->
+		<script>
+		window.addEventListener("load", function () {
+			var posts = [
+				{
+					title: "5 Essential Skills for Web Developers",
+					description:
+						"Web development is a rapidly evolving field, and keeping up with the latest trends and technologies can be challenging. ",
+					slug: "1",
+				},
+				{
+					title: "The Importance of User-Centered Design",
+					description:
+						"User-centered design (UCD) is a crucial aspect of creating effective user interfaces (UIs). ",
+					slug: "2",
+				},
+				{
+					title: "Top 10 Web Development Frameworks for 2023",
+					description:
+						"Choosing the right web development framework can make all the difference in your projects. ",
+					slug: "3",
+				},
+				{
+					title: "Best Practices for Responsive Web Design",
+					description:
+						"Responsive web design (RWD) is essential in today's mobile-first world, but implementing it can be tricky. ",
+					slug: "4",
+				},
+				{
+					title: "The Rise of AI in Web Development",
+					description:
+						"Artificial Intelligence (AI) is transforming web development in ways we could only imagine a few years ago. ",
+					slug: "5",
+				},
+				{
+					title: "Sustainable Web Design Principles and Practices",
+					description:
+						"Sustainable web design is about creating websites that are environmentally friendly and efficient in terms of energy consumption. ",
+					slug: "6",
+				},
+			];
+
+			var searchButton = document.getElementById("searchButton");
+			var searchModal = document.getElementById("searchModal");
+			var modalOverlay = document.getElementById("modalOverlay");
+			var searchInput = document.getElementById("searchInput");
+			var searchResults = document.getElementById("searchResults");
+
+			var fuse = new Fuse(posts, {
+				keys: ["title", "description"],
+				threshold: 0.3,
+				includeMatches: true,
+			});
+
+			function openSearch(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				searchModal.classList.add("open");
+				document.body.style.overflow = "hidden";
+				setTimeout(function () {
+					searchInput.focus();
+				}, 100);
+			}
+
+			function closeSearchModal(e) {
+				if (e) {
+					e.preventDefault();
+					e.stopPropagation();
+				}
+				searchModal.classList.remove("open");
+				document.body.style.overflow = "";
+				searchInput.value = "";
+				searchResults.innerHTML = "";
+				searchResults.classList.remove("visible");
+			}
+
+			function renderResults(results) {
+				if (!searchInput.value.trim()) {
+					searchResults.innerHTML = "";
+					searchResults.classList.remove("visible");
+					return;
+				}
+				if (results.length === 0) {
+					searchResults.innerHTML =
+						'<div style="padding:2rem;color:var(--color-base-500);">There\'s nothing here...</div>';
+					searchResults.classList.add("visible");
+					return;
+				}
+				searchResults.innerHTML = results
+					.map(function (r) {
+						return (
+							'<a href="/blog/posts/' +
+							r.item.slug +
+							'" class="search-result-item">' +
+							'<span class="search-result-title">' +
+							r.item.title +
+							"</span>" +
+							'<span class="search-result-desc">' +
+							r.item.description +
+							"</span>" +
+							"</a>"
+						);
+					})
+					.join("");
+				searchResults.classList.add("visible");
+			}
+
+			searchButton.addEventListener("click", openSearch);
+			searchButton.addEventListener("touchend", openSearch);
+			modalOverlay.addEventListener("click", closeSearchModal);
+			modalOverlay.addEventListener("touchend", closeSearchModal);
+			searchInput.addEventListener("input", function (e) {
+				var val = e.target.value.trim();
+				renderResults(val ? fuse.search(val) : []);
+			});
+			document.addEventListener("keydown", function (e) {
+				if (e.key === "Escape" && searchModal.classList.contains("open")) {
+					closeSearchModal();
+				}
+			});
+		});
+		</script>
+	</body>
+</html>

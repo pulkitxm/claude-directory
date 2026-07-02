@@ -2,7 +2,7 @@
 
 A full-viewport WebGL2 radial-bloom hero framed as an optical instrument called APERTURE. The GLSL shader renders nine accumulating blades gated by an angular `smoothstep`, tone-mapped with `tanh`, on a single full-screen triangle — no Three.js, no textures, purely procedural. The page surrounds the live shader with a real-time telemetry HUD, a control deck that promotes the shader's baked constants (`9` blades, `0.03` gain, hue phase) to live uniforms, a GLSL anatomy walkthrough, a "field captures" gallery rendered headless from the shader itself, and a full integration story with copyable source. Integrated as a shadcn `@/components/ui` drop-in. Generated with Claude Fable 5.
 
-![demo](./demo.mp4)
+[![Watch Demo](./poster.jpg)](./demo.mp4)
 
 ## Run
 

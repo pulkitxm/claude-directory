@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,26792,e=>{e.q("/_next/static/media/phone-frame.09-dp6fi_g6m3.svg")}]);

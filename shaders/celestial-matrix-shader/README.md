@@ -1,5 +1,7 @@
 # Celestial Matrix Shader — Interactive Digital Rain WebGL Background with Cursor Warp (React + Three.js + Tailwind)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive Three.js / WebGL fragment shader rendering a blue-to-green digital rain field that bends around the cursor through a gravitational warp — framed inside a deep-space signal console with live telemetry and cursor-tracking reticle. The verbatim shadcn `@/components/ui` drop-in makes the shader's hidden cursor interaction legible through a HUD reporting render rate, feed time, and warp coordinates live from the GPU loop — suited to hero sections, dashboards, or interactive landing pages. Generated with Claude Fable 5.
 
 The shader component is the verbatim drop-in from the integration brief

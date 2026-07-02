@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Blog — Snowpeak</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="assets/styles.css">
+	</head>
+	<body>
+		<!-- ── Navigation ── -->
+		<nav style="position:relative; z-index:50;">
+			<div class="container">
+				<div class="nav-wrapper">
+					<div style="position:relative;">
+						<div class="nav-pill" id="nav-pill">
+							<a href="index.html" class="nav-logo">Snowpeak</a>
+							<button
+								class="nav-icon-btn orange"
+								id="dropdown-toggle"
+								aria-label="Menu"
+								style="font-size:1.25rem; font-weight:700;"
+							>
+								+
+							</button>
+							<button
+								class="nav-icon-btn dark"
+								id="searchButton"
+								aria-label="Search"
+							>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<circle cx="11" cy="11" r="8" />
+									<path d="m21 21-4.35-4.35" />
+								</svg>
+							</button>
+						</div>
+						<div class="dropdown-panel" id="dropdown-panel">
+							<a href="#" class="dropdown-link pink">Buy Snowpeak</a>
+							<a href="index.html" class="dropdown-link white">Overview</a>
+							<a href="blog.html" class="dropdown-link white">Blog</a>
+							<a href="blog.html" class="dropdown-link white">Top Stories</a>
+							<a href="podcast.html" class="dropdown-link white">Podcast</a>
+							<a href="sign-in.html" class="dropdown-link accent">Sign in</a>
+							<a href="sign-up.html" class="dropdown-link orange">Sign up</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- ── Search Modal ── -->
+		<div class="search-modal" id="searchModal">
+			<div class="search-modal-inner">
+				<div class="search-modal-overlay" id="modalOverlay"></div>
+				<div class="search-modal-content">
+					<input
+						type="text"
+						class="search-input"
+						id="searchInput"
+						placeholder="Search posts or podcasts..."
+						autocomplete="off"
+					>
+					<div class="search-results" id="searchResults"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ── Main Content ── -->
+		<main class="page-content">
+			<div class="container">
+				<!-- Big Logo Hero -->
+				<div class="big-logo-block" id="bigLogo">
+					<svg
+						viewBox="0 0 63 9"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-label="Snowpeak"
+					>
+						<path
+							d="M1.83608 5.91598C1.86808 6.17998 1.96008 6.40798 2.11208 6.59998C2.26408 6.79198 2.46008 6.93998 2.70008 7.04398C2.94808 7.14798 3.22408 7.19998 3.52808 7.19998C3.93608 7.19998 4.28008 7.13198 4.56008 6.99598C4.84008 6.85198 4.98008 6.62798 4.98008 6.32398C4.98008 6.10798 4.89208 5.93598 4.71608 5.80798C4.54008 5.67998 4.30408 5.57598 4.00808 5.49598C3.72008 5.41598 3.40408 5.33598 3.06008 5.25598C2.71608 5.17598 2.36808 5.07998 2.01608 4.96798C1.67208 4.84798 1.35208 4.68798 1.05608 4.48798C0.768078 4.28798 0.536078 4.02798 0.360078 3.70798C0.184078 3.37998 0.0960781 2.96798 0.0960781 2.47198C0.0960781 1.99198 0.236078 1.56798 0.516078 1.19998C0.804078 0.823979 1.19608 0.53198 1.69208 0.32398C2.19608 0.10798 2.76808 -2.02656e-05 3.40808 -2.02656e-05C4.03208 -2.02656e-05 4.58808 0.12398 5.07608 0.371979C5.56408 0.619979 5.94808 0.95998 6.22808 1.39198C6.51608 1.82398 6.66008 2.31198 6.66008 2.85598H4.83608C4.80408 2.45598 4.66408 2.14398 4.41608 1.91998C4.17608 1.69598 3.82008 1.58398 3.34808 1.58398C2.88408 1.58398 2.52808 1.66798 2.28008 1.83598C2.03208 2.00398 1.90808 2.21598 1.90808 2.47198C1.90808 2.71198 1.99608 2.89998 2.17208 3.03598C2.34808 3.17198 2.58008 3.28398 2.86808 3.37198C3.16408 3.45998 3.48408 3.54398 3.82808 3.62398C4.18008 3.69598 4.52808 3.78798 4.87208 3.89998C5.21608 4.01198 5.53208 4.16398 5.82008 4.35598C6.11608 4.54798 6.35208 4.80398 6.52808 5.12398C6.70408 5.43598 6.79208 5.83598 6.79208 6.32398C6.79208 7.09998 6.50008 7.70398 5.91608 8.13598C5.33208 8.56798 4.51208 8.78398 3.45608 8.78398C2.80808 8.78398 2.22808 8.65998 1.71608 8.41198C1.20408 8.16398 0.796078 7.82398 0.492078 7.39198C0.188078 6.95998 0.0240781 6.46798 7.81268e-05 5.91598H1.83608ZM11.9004 8.59198L8.04842 0.191979H9.94442L13.7964 8.59198H11.9004ZM7.37642 0.191979H9.05642V8.59198H7.37642V0.191979ZM12.7884 0.191979H14.4684V8.59198H12.7884V0.191979ZM19.1042 8.78398C18.2162 8.78398 17.4602 8.58798 16.8362 8.19598C16.2202 7.79598 15.7522 7.26398 15.4322 6.59998C15.1122 5.93598 14.9522 5.19598 14.9522 4.37998C14.9522 3.77998 15.0402 3.21598 15.2162 2.68798C15.4002 2.15198 15.6682 1.68398 16.0202 1.28398C16.3722 0.88398 16.8042 0.57198 17.3162 0.34798C17.8362 0.11598 18.4322 -2.02656e-05 19.1042 -2.02656e-05C19.7682 -2.02656e-05 20.3562 0.11598 20.8682 0.34798C21.3882 0.57198 21.8242 0.88398 22.1762 1.28398C22.5282 1.68398 22.7922 2.15198 22.9682 2.68798C23.1522 3.21598 23.2442 3.77998 23.2442 4.37998C23.2442 5.19598 23.0842 5.93598 22.7642 6.59998C22.4442 7.26398 21.9762 7.79598 21.3602 8.19598C20.7442 8.58798 19.9922 8.78398 19.1042 8.78398ZM19.1042 7.19998C19.6482 7.19998 20.0922 7.06398 20.4362 6.79198C20.7802 6.51998 21.0322 6.17198 21.1922 5.74798C21.3522 5.31598 21.4322 4.85998 21.4322 4.37998C21.4322 3.90798 21.3522 3.45998 21.1922 3.03598C21.0322 2.60398 20.7802 2.25598 20.4362 1.99198C20.0922 1.71998 19.6482 1.58398 19.1042 1.58398C18.5602 1.58398 18.1122 1.71998 17.7602 1.99198C17.4162 2.25598 17.1642 2.60398 17.0042 3.03598C16.8442 3.45998 16.7642 3.90798 16.7642 4.37998C16.7642 4.85998 16.8442 5.31598 17.0042 5.74798C17.1642 6.17198 17.4162 6.51998 17.7602 6.79198C18.1122 7.06398 18.5602 7.19998 19.1042 7.19998ZM25.2083 8.59198L23.0363 0.191979H24.7523L26.8043 8.59198H25.2083ZM27.5483 8.59198H25.9523L28.0043 0.191979H29.7203L27.5483 8.59198ZM30.3563 8.59198L28.1843 0.191979H29.9003L31.9523 8.59198H30.3563ZM32.6963 8.59198H31.1003L33.1523 0.191979H34.8683L32.6963 8.59198ZM36.9967 4.31998H38.1607V5.83198H36.9967V4.31998ZM38.1607 4.31998C38.5447 4.31998 38.8727 4.28798 39.1447 4.22398C39.4247 4.15198 39.6367 4.02398 39.7807 3.83998C39.9327 3.64798 40.0087 3.37198 40.0087 3.01198C40.0087 2.65198 39.9327 2.37998 39.7807 2.19598C39.6367 2.00398 39.4247 1.87598 39.1447 1.81198C38.8727 1.73998 38.5447 1.70398 38.1607 1.70398V0.191979C38.8887 0.191979 39.5247 0.283979 40.0687 0.467979C40.6207 0.651979 41.0487 0.951979 41.3527 1.36798C41.6647 1.77598 41.8207 2.32398 41.8207 3.01198C41.8207 3.69198 41.6647 4.23998 41.3527 4.65598C41.0487 5.07198 40.6207 5.37198 40.0687 5.55598C39.5247 5.73998 38.8887 5.83198 38.1607 5.83198V4.31998ZM36.9967 0.191979H38.1607V1.70398H36.9967V0.191979ZM36.9967 0.98398V8.59198H35.2567V0.98398H36.9967ZM42.2299 7.79998V0.191979H43.9699V7.79998H42.2299ZM43.9699 8.59198V7.07998H48.1219V8.59198H43.9699ZM43.9699 5.12398V3.61198H47.5939V5.12398H43.9699ZM43.9699 1.70398V0.191979H48.0739V1.70398H43.9699ZM50.8588 0.191979H52.5148L50.1028 8.59198H48.3268L50.8588 0.191979ZM53.3188 0.191979L55.8508 8.59198H54.0748L51.6628 0.191979H53.3188ZM49.8268 5.31598H54.3508V6.82798H49.8268V5.31598ZM56.2347 0.191979H57.9507V8.59198H56.2347V0.191979ZM62.7507 0.191979L57.3027 7.07998L56.3307 5.62798L60.6147 0.191979H62.7507ZM59.3787 3.21598L62.9907 8.59198H60.8547L58.3347 4.57198L59.3787 3.21598Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</div>
+
+				<!-- Ticker Marquee -->
+				<div class="ticker-wrap" id="tickerElement">
+					<div class="ticker-track animate">
+						<a href="post.html" class="ticker-pill dark"
+							>Esports Are Already Here</a
+						>
+						<a href="post.html" class="ticker-pill light"
+							>Sports Viewing Goes Digital</a
+						>
+						<a href="post.html" class="ticker-pill accent"
+							>Women's Sports Are Surging</a
+						>
+						<a href="post.html" class="ticker-pill dark"
+							>The Data-Driven Athlete</a
+						>
+						<a href="post.html" class="ticker-pill orange"
+							>Human and Machine Collaboration</a
+						>
+						<a href="post.html" class="ticker-pill light"
+							>Blockchain Beyond Bitcoin</a
+						>
+						<a href="post.html" class="ticker-pill dark"
+							>How 5G Is Reshaping Connectivity</a
+						>
+						<a href="post.html" class="ticker-pill accent"
+							>Inside the Chip Race</a
+						>
+						<a href="post.html" class="ticker-pill light"
+							>Digital Health with Wearables</a
+						>
+						<a href="post.html" class="ticker-pill orange"
+							>Future of Renewable Energy</a
+						>
+						<!-- Duplicate -->
+						<a href="post.html" class="ticker-pill dark"
+							>Esports Are Already Here</a
+						>
+						<a href="post.html" class="ticker-pill light"
+							>Sports Viewing Goes Digital</a
+						>
+						<a href="post.html" class="ticker-pill accent"
+							>Women's Sports Are Surging</a
+						>
+						<a href="post.html" class="ticker-pill dark"
+							>The Data-Driven Athlete</a
+						>
+						<a href="post.html" class="ticker-pill orange"
+							>Human and Machine Collaboration</a
+						>
+						<a href="post.html" class="ticker-pill light"
+							>Blockchain Beyond Bitcoin</a
+						>
+						<a href="post.html" class="ticker-pill dark"
+							>How 5G Is Reshaping Connectivity</a
+						>
+						<a href="post.html" class="ticker-pill accent"
+							>Inside the Chip Race</a
+						>
+						<a href="post.html" class="ticker-pill light"
+							>Digital Health with Wearables</a
+						>
+						<a href="post.html" class="ticker-pill orange"
+							>Future of Renewable Energy</a
+						>
+					</div>
+				</div>
+
+				<!-- Featured Grid -->
+				<section class="section" style="padding-top:0.5rem;">
+					<div class="featured-grid">
+						<a href="post.html" class="article-card" style="min-height:420px;">
+							<div class="article-card-body" style="flex:1;">
+								<div class="article-meta">
+									<span class="article-tag">tech</span>
+									<span class="article-date"
+										>Jan 20, 2026 &middot; David Lee</span
+									>
+								</div>
+								<h2 class="article-title xl">Esports Are Already Here</h2>
+								<div class="article-footer">
+									<span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/20.DOswY2VT_S2iWL.webp"
+								alt="Esports Are Already Here"
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">tech</span>
+									<span class="article-date"
+										>Jan 19, 2026 &middot; Sarah Kim</span
+									>
+								</div>
+								<h2 class="article-title lg">Sports Viewing Goes Digital</h2>
+								<div class="article-footer">
+									<span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/19.Csh8mNc1_Z1VHW8o.webp"
+								alt="Sports Viewing Goes Digital"
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">tech</span>
+									<span class="article-date"
+										>Jan 18, 2026 &middot; Maria Garcia</span
+									>
+								</div>
+								<h2 class="article-title lg">Women's Sports Are Surging</h2>
+								<div class="article-footer">
+									<span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/16.B60o_fSQ_ZbrJsL.webp"
+								alt="Women's Sports Are Surging"
+								class="article-image"
+							>
+						</a>
+					</div>
+				</section>
+
+				<!-- All Posts Grid -->
+				<section class="section">
+					<div class="section-header">
+						<h2 class="section-title">All Posts</h2>
+						<a
+							href="tag.html"
+							class="btn btn-dark"
+							style="height:2.25rem; padding:0 1rem; border-radius:0.75rem; font-size:0.8rem;"
+							>Browse by Tag</a
+						>
+					</div>
+					<div class="article-grid-3">
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">tech</span
+									><span class="article-date">Jan 17, 2026</span>
+								</div>
+								<h2 class="article-title sm">The Data-Driven Athlete</h2>
+								<div class="article-footer">
+									<span class="article-author">James Wilson</span
+									><span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/10.BaHsCDo7_Zf4tm.webp"
+								alt=""
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">tech</span
+									><span class="article-date">Jan 16, 2026</span>
+								</div>
+								<h2 class="article-title sm">
+									Human and Machine Collaboration
+								</h2>
+								<div class="article-footer">
+									<span class="article-author">Alex Chen</span
+									><span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/9.CGDk4qc0_2jHBhy.webp"
+								alt=""
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">tech</span
+									><span class="article-date">Jan 15, 2026</span>
+								</div>
+								<h2 class="article-title sm">Blockchain Beyond Bitcoin</h2>
+								<div class="article-footer">
+									<span class="article-author">Isaac Turner</span
+									><span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/15.C-4hPjnl_Z1pozt1.webp"
+								alt=""
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">tech</span
+									><span class="article-date">Jan 14, 2026</span>
+								</div>
+								<h2 class="article-title sm">
+									How 5G Is Reshaping Connectivity
+								</h2>
+								<div class="article-footer">
+									<span class="article-author">Emma Carter</span
+									><span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/14.DAKTriWP_ZtluAW.webp"
+								alt=""
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">tech</span
+									><span class="article-date">Jan 13, 2026</span>
+								</div>
+								<h2 class="article-title sm">Inside the Chip Race</h2>
+								<div class="article-footer">
+									<span class="article-author">Oliver Grant</span
+									><span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/13.DYgmEpRd_1bVSkE.webp"
+								alt=""
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">business</span
+									><span class="article-date">Jan 12, 2026</span>
+								</div>
+								<h2 class="article-title sm">
+									Digital Health with Wearables and AI
+								</h2>
+								<div class="article-footer">
+									<span class="article-author">Lucas Evans</span
+									><span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/10.C_sD2ql9_2nDlgz.webp"
+								alt=""
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">business</span
+									><span class="article-date">Jan 10, 2026</span>
+								</div>
+								<h2 class="article-title sm">Future of Renewable Energy</h2>
+								<div class="article-footer">
+									<span class="article-author">David Lee</span
+									><span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/10.DkgKsNYt_1zrHms.webp"
+								alt=""
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">finance</span
+									><span class="article-date">Jan 7, 2026</span>
+								</div>
+								<h2 class="article-title sm">
+									Finance Challenges and Innovations 2025
+								</h2>
+								<div class="article-footer">
+									<span class="article-author">James Wilson</span
+									><span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/6.BJN7VhNx_ZpLRjx.webp"
+								alt=""
+								class="article-image"
+							>
+						</a>
+						<a href="post.html" class="article-card">
+							<div class="article-card-body">
+								<div class="article-meta">
+									<span class="article-tag">finance</span
+									><span class="article-date">Jan 5, 2026</span>
+								</div>
+								<h2 class="article-title sm">Global Economic Outlook 2025</h2>
+								<div class="article-footer">
+									<span class="article-author">Isaac Turner</span
+									><span class="article-arrow">→</span>
+								</div>
+							</div>
+							<img
+								src="assets/images/5.Bmlt0Ax7_ZP4HPX.webp"
+								alt=""
+								class="article-image"
+							>
+						</a>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<!-- ── Footer ── -->
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-card footer-card-dark">
+						<h3 class="footer-card-title">Subscribe to Snowpeak</h3>
+						<p class="footer-subscribe-desc">
+							Get the latest news, analysis, and insights delivered to your
+							inbox every morning.
+						</p>
+						<div class="footer-input-wrap">
+							<input
+								type="email"
+								class="footer-email-input"
+								placeholder="Enter your email"
+							>
+							<button
+								class="btn btn-accent"
+								style="height:2.75rem; padding:0 1.25rem; border-radius:0.75rem; flex-shrink:0;"
+							>
+								→
+							</button>
+						</div>
+					</div>
+					<div class="footer-card footer-card-light">
+						<h3 class="footer-card-title">Snowpeak</h3>
+						<ul class="footer-links">
+							<li><a href="../index.html">Overview</a></li>
+							<li><a href="../blog.html">Blog</a></li>
+							<li><a href="../podcast.html">Podcast</a></li>
+							<li><a href="../sign-in.html">Sign in</a></li>
+							<li><a href="../sign-up.html">Sign up</a></li>
+						</ul>
+					</div>
+					<div class="footer-card footer-card-light">
+						<h3 class="footer-card-title">Categories</h3>
+						<ul class="footer-links">
+							<li><a href="tag.html">Tech</a></li>
+							<li><a href="tag.html">Business</a></li>
+							<li><a href="tag.html">Finance</a></li>
+							<li><a href="tag.html">Health</a></li>
+						</ul>
+					</div>
+					<div class="footer-card footer-card-light">
+						<h3 class="footer-card-title">Follow Us</h3>
+						<ul class="footer-links">
+							<li><a href="#">Twitter / X</a></li>
+							<li><a href="#">LinkedIn</a></li>
+							<li><a href="#">YouTube</a></li>
+							<li><a href="#">Instagram</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<p class="footer-copy">&copy; 2026 Snowpeak. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		const dropdownToggle = document.getElementById("dropdown-toggle");
+		const dropdownPanel = document.getElementById("dropdown-panel");
+		dropdownToggle.addEventListener("click", () => {
+			dropdownPanel.classList.toggle("open");
+			dropdownToggle.textContent = dropdownPanel.classList.contains("open")
+				? "×"
+				: "+";
+		});
+		document.addEventListener("click", (e) => {
+			if (
+				!e.target.closest("#nav-pill") &&
+				!e.target.closest("#dropdown-panel")
+			) {
+				dropdownPanel.classList.remove("open");
+				dropdownToggle.textContent = "+";
+			}
+		});
+
+		const searchButton = document.getElementById("searchButton");
+		const searchModal = document.getElementById("searchModal");
+		const modalOverlay = document.getElementById("modalOverlay");
+		const searchInput = document.getElementById("searchInput");
+		const searchResults = document.getElementById("searchResults");
+
+		searchButton.addEventListener("click", (e) => {
+			e.preventDefault();
+			searchModal.style.display = "block";
+			document.body.style.overflow = "hidden";
+			setTimeout(() => searchInput.focus(), 100);
+		});
+
+		function closeSearch() {
+			searchModal.style.display = "none";
+			document.body.style.overflow = "";
+			searchInput.value = "";
+			searchResults.innerHTML = "";
+			searchResults.style.display = "none";
+		}
+
+		modalOverlay.addEventListener("click", closeSearch);
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && searchModal.style.display !== "none")
+				closeSearch();
+		});
+		</script>
+	</body>
+</html>

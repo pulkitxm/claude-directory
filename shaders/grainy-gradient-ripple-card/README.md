@@ -1,5 +1,7 @@
 # Grainy Gradient Ripple Card — Interactive WebGL Shader Card (React Three Fiber + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A faithful integration of a grainy multi-stop gradient shader card rendered on a Three.js quad with React Three Fiber, featuring ripple effects on tap and a complete Chroma Foundry pigment-lab console around it. The card is framed as a live specimen plate with an instrument rail showing pigment-stop references, a field-control deck, a named patch bank, and a telemetry strip reading per-frame shader state — making it ideal as a hero backdrop, feature card, or landing splash. Built on the shadcn project structure with React, TypeScript, Vite, and Tailwind CSS. Generated with Claude Fable 5.
 
 ```bash

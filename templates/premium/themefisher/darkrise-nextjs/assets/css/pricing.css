@@ -1,0 +1,82 @@
+/* pricing.css — page-specific styles for /pricing/. Only tokens.css vars. */
+
+.has-gradient {
+  background: linear-gradient(90deg, var(--color-white), var(--color-text-light));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 600;
+}
+
+.price-toggle { display: flex; align-items: center; justify-content: center; gap: .75rem; }
+.price-switch { position: relative; display: inline-block; width: 3rem; height: 1.75rem; cursor: pointer; }
+.price-switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; z-index: 1; }
+.price-switch-track {
+  position: absolute; inset: 0; background: var(--color-secondary); border-radius: 9999px; transition: background .3s;
+}
+.price-switch-track::before {
+  content: ""; position: absolute; left: 4px; top: 4px; height: 1.15rem; width: 1.15rem;
+  background: var(--color-white); border-radius: 9999px; transition: transform .3s cubic-bezier(.4,0,.2,1);
+}
+.price-switch input:checked ~ .price-switch-track::before { transform: translateX(1.25rem); }
+.price-off-badge {
+  background: var(--color-white); color: #111; font-weight: 700; font-size: .8rem;
+  border-radius: 9999px; padding: .25rem .75rem;
+}
+
+.price-card {
+  background: var(--bg-body);
+  border: 1px solid var(--border-color);
+  border-radius: .75rem;
+  padding: 3rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.price-card-featured {
+  border-color: color-mix(in srgb, var(--color-secondary) 60%, var(--border-color));
+  background: color-mix(in srgb, var(--color-secondary) 8%, var(--bg-body));
+}
+.price-card-name { font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin: 0; }
+.price-card-desc { opacity: .7; color: var(--text-color-light); margin: .5rem 0 0; }
+.price-card-amount { display: flex; align-items: flex-end; gap: .25rem; margin: 2rem 0; font-size: 2.75rem; font-weight: 500; color: var(--text-color); }
+.price-card-suffix { font-size: 1rem; opacity: .7; margin-left: .25rem; }
+.price-card-features { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; color: var(--text-color-light); }
+.price-card-features li::before { content: "✓ "; color: var(--color-secondary); font-weight: 700; }
+.full-width { width: 100%; }
+
+.cmp-table { border: 1px solid var(--border-color); border-radius: .75rem; overflow: hidden; }
+.cmp-row { display: grid; grid-template-columns: 1fr 3fr; border-bottom: 1px solid var(--border-color); }
+.cmp-row:last-child { border-bottom: none; }
+.cmp-label { padding: 1rem 1.5rem; font-size: .85rem; opacity: .7; color: var(--text-color-light); display: flex; align-items: center; }
+.cmp-values { display: grid; grid-template-columns: repeat(3, 1fr); }
+.cmp-cell { display: flex; align-items: center; justify-content: center; padding: 1rem .5rem; color: var(--text-color-light); text-align: center; border-left: 1px solid var(--border-color); }
+.cmp-cell:first-child { border-left: none; }
+.cmp-head { background: var(--bg-surface-alt); }
+.cmp-plan { flex-direction: column; font-weight: 600; color: var(--text-color); padding: 1.25rem .5rem; }
+.cmp-plan-featured { color: var(--color-secondary); }
+.cmp-price { font-weight: 400; opacity: .7; font-size: .85rem; }
+.cmp-group-title { padding: .85rem 1.5rem; font-weight: 600; color: var(--text-color); background: var(--bg-surface-alt); text-transform: capitalize; }
+
+.testi-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface-alt);
+  border-radius: .75rem;
+  padding: 2rem;
+  height: 100%;
+}
+.testi-quote { color: var(--text-color-light); line-height: 1.7; margin: 0 0 1.5rem; }
+.testi-person { display: flex; align-items: center; gap: .75rem; }
+.testi-avatar { width: 2.75rem; height: 2.75rem; border-radius: 9999px; background: color-mix(in srgb, var(--color-secondary) 35%, var(--bg-surface-alt)); flex-shrink: 0; }
+.testi-name { margin: 0; font-weight: 600; color: var(--text-color); font-size: .95rem; }
+.testi-role { margin: 0; opacity: .6; font-size: .8rem; color: var(--text-color-light); }
+
+.int-cta-band {
+  border: 1px solid var(--border-color);
+  background: radial-gradient(120% 140% at 50% 0%, color-mix(in srgb, var(--color-secondary) 22%, transparent), transparent 60%), var(--bg-surface-alt);
+  border-radius: 1.25rem; padding: 5rem 2rem; text-align: center;
+}
+.int-cta-band p { color: var(--text-color-light); max-width: 32rem; margin: 0 auto; }
+
+@media (max-width: 720px) {
+  .cmp-row { grid-template-columns: 1fr; }
+  .cmp-values { grid-template-columns: repeat(3, 1fr); }
+}

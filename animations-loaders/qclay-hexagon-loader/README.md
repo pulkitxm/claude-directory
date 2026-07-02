@@ -1,5 +1,7 @@
 # QClay Hexagon Loader — Animated Honeycomb Loading Screen (React + Vite + TypeScript)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A faithful, single full-screen recreation of the **QClay loader** — a centered animated honeycomb of flat-top hexagonal tiles with a blue active center tile, a soft blue glow, swapping icons, breathing polygon motion, a shimmering "Loading Resources" label, and an uneven organic progress bar. Built with **Vite + React + TypeScript** using the real supplied polygon SVGs (no CSS clip-path approximations), all assets vendored locally for fully offline operation. The 29-tile honeycomb uses three SVG polygon types (`s-polygon`, `c-polygon`, `m-polygon`) positioned on a precise 149×128.9px logical grid inside a 1184×799.5px scene container, masked radially so outer tiles fade away. Generated with Claude Fable 5.
 
 ## Run

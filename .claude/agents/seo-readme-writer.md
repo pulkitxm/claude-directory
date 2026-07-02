@@ -27,9 +27,17 @@ Write the full `README.md` in this order:
    - `<key tech>` is the 2–4 headline technologies (e.g. `React + Vite + Tailwind`, `React Three Fiber + GLSL`, `Vanilla HTML/CSS/JS + GSAP`).
    - Example: `# Aethera — Cinematic Video Hero Section (React + Vite + Tailwind)`.
 
-2. **Lead paragraph (1–3 sentences)** right after the H1. Describe the artifact type, its visual style, the standout features/techniques, and the use case, using natural keyword phrasing (the kind of words someone would search). State the full stack once. End the lead with the sentence: **`Generated with Claude Fable 5.`** Every claim must come from the source files.
+2. **Demo thumbnail** — immediately after the H1, on its own line (blank line above and below), add the clickable poster-to-recording link **exactly** like this:
 
-3. **The real technical sections.** Keep these accurate and runnable — derive them from `package.json`/source, don't copy a generic template:
+   ```
+   [![Watch Demo](./poster.jpg)](./demo.mp4)
+   ```
+
+   This renders `poster.jpg` as a thumbnail that links to `demo.mp4`. The paths are relative to the project folder — use them verbatim (`./poster.jpg` and `./demo.mp4`); the README lives in the same folder as both files. Only include this line if `poster.jpg` and `demo.mp4` both exist in the project folder (they normally do). If either is missing, skip the line and note it in your final report.
+
+3. **Lead paragraph (1–3 sentences)** right after the demo thumbnail. Describe the artifact type, its visual style, the standout features/techniques, and the use case, using natural keyword phrasing (the kind of words someone would search). State the full stack once. End the lead with the sentence: **`Generated with Claude Fable 5.`** Every claim must come from the source files.
+
+4. **The real technical sections.** Keep these accurate and runnable — derive them from `package.json`/source, don't copy a generic template:
    - A `## Run` section with the actual commands. For a Vite/npm project:
      ```sh
      npm install
@@ -42,7 +50,7 @@ Write the full `README.md` in this order:
    - Preserve any genuinely useful project-specific notes already present in an existing README (dark-mode mechanics, a custom recorder, special build quirks) — reword for clarity but keep commands, paths, and code blocks **exact**. Drop boilerplate that doesn't apply.
    - A short mention that `prompt.md` holds the full build spec and `demo.mp4` shows it in motion.
 
-4. **Footer** — exactly this block at the end (it provides internal links that help SEO; the README sits two levels deep, so `../` is the category folder and `../../` is the repo root):
+5. **Footer** — exactly this block at the end (it provides internal links that help SEO; the README sits two levels deep, so `../` is the category folder and `../../` is the repo root):
 
    ```
    ---
@@ -67,4 +75,4 @@ If the agent that invokes you passes extra required content — most commonly a 
 
 # Final report
 
-Report the project path, the H1 you wrote, the stack you identified, and which sections the README includes (Run / Verify / notes / footer). If any expected source file was missing (no `prompt.md`, no `demo.mp4`, etc.), say so.
+Report the project path, the H1 you wrote, the stack you identified, and which sections the README includes (demo thumbnail / Run / Verify / notes / footer). If any expected source file was missing (no `prompt.md`, no `demo.mp4`, no `poster.jpg`, etc.), say so.

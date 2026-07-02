@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error Page - Solid SaaS Boilerplate</title>
+  <meta name="description" content="This is Error page for Solid Pro">
+  <link rel="icon" href="./assets/favicon.ico" sizes="48x48" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('color-theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.className = theme;
+      } catch(e) {}
+    })();
+  </script>
+  <style>
+    /* 404 outlined text effect */
+    .error-number {
+      font-size: clamp(120px, 20vw, 200px);
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 2px #3d5ce5;
+      text-stroke: 2px #3d5ce5;
+      text-align: center;
+      letter-spacing: -10px;
+      line-height: 1;
+      margin-bottom: 30px;
+      background-image: radial-gradient(circle, rgba(61, 92, 229, 0.4) 1.5px, transparent 1.5px);
+      background-size: 16px 16px;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    /* Error section layout */
+    .error-section {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .error-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .error-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-black, #1c2444);
+      margin-bottom: 1rem;
+    }
+    .dark .error-title {
+      color: #fff;
+    }
+    .error-desc {
+      font-size: 1rem;
+      color: var(--color-waterloo, #8890ad);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background decorative lines -->
+  <div class="bg-lines" aria-hidden="true">
+    <span class="bg-line"></span>
+    <span class="bg-line"></span>
+    <span class="bg-line"></span>
+  </div>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <div class="container">
+      <div class="header-inner">
+
+        <!-- Logo Area -->
+        <div class="logo-area">
+          <a href="./index.html" aria-label="Solid - Home">
+            <img src="./assets/images/logo/logo-light.svg" alt="Solid Logo" class="logo-light" width="119" height="30">
+            <img src="./assets/images/logo/logo-dark.svg" alt="Solid Logo" class="logo-dark" width="119" height="30">
+          </a>
+          <button class="hamburger" id="hamburger" aria-label="hamburger Toggler" aria-expanded="false" aria-controls="main-nav">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="nav" id="main-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index.html#features">Features</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./docs.html">Docs</a></li>
+            <li class="has-dropdown" id="pages-dropdown">
+              <button aria-haspopup="true" aria-expanded="false">
+                Pages
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 4l4 4 4-4"/>
+                </svg>
+              </button>
+              <ul class="dropdown" aria-label="Pages submenu">
+                <li><a href="./blog.html">Blog Grid</a></li>
+                <li><a href="./auth-signin.html">Sign In</a></li>
+                <li><a href="./auth-signup.html">Sign Up</a></li>
+                <li><a href="./docs.html">Docs</a></li>
+                <li><a href="./support.html">Support</a></li>
+                <li><a href="./error.html">404</a></li>
+              </ul>
+            </li>
+            <li><a href="./support.html">Support</a></li>
+          </ul>
+        </nav>
+
+        <!-- Header Right Actions -->
+        <div class="header-actions">
+          <button id="themeToggle" aria-label="Toggle dark mode">
+            <img src="./assets/images/icon/icon-moon.svg" class="icon-moon" alt="Switch to dark mode" width="21" height="21">
+            <img src="./assets/images/icon/icon-sun.svg" class="icon-sun" alt="Switch to light mode" width="22" height="22">
+          </button>
+          <a href="https://github.com/NextJSTemplates/solid-nextjs" class="nav-github-link" target="_blank" rel="noopener noreferrer">GitHub Repo &#x1F31F;</a>
+          <a href="https://nextjstemplates.com/templates/solid" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Pro &#x1F525;</a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="error-section">
+      <div class="error-content">
+        <!-- 404 outlined text -->
+        <div class="error-number" aria-label="404">404</div>
+
+        <h2 class="error-title">This Page Does Not Exist</h2>
+        <p class="error-desc">The page you were looking for appears to have been moved, deleted or does not exist.</p>
+        <a href="./index.html" class="btn btn-dark">
+          Return to Home
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.4767 6.16664L6.00668 1.69664L7.18501 0.518311L13.6667 6.99998L7.18501 13.4816L6.00668 12.3033L10.4767 7.83331H0.333344V6.16664H10.4767Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <a href="./index.html" aria-label="Solid - Home">
+            <img src="./assets/images/logo/logo-light.svg" alt="Solid Logo" class="logo-light" width="119" height="30">
+            <img src="./assets/images/logo/logo-dark.svg" alt="Solid Logo" class="logo-dark" width="119" height="30">
+          </a>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p class="footer-contact-label">CONTACT</p>
+          <a href="mailto:hello@solid.com" class="footer-contact-email">hello@solid.com</a>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+
+        <!-- Support Links -->
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Company</a></li>
+            <li><a href="#">Press media</a></li>
+            <li><a href="./blog.html">Our Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-col footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Subscribe to receive future updates</p>
+          <form class="newsletter-form" onsubmit="return false;" aria-label="Newsletter signup">
+            <input type="email" placeholder="Email address" aria-label="Email address for newsletter" autocomplete="email">
+            <button type="submit" aria-label="Subscribe to newsletter">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M3 9h12M11 5l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          &copy; 2026 Solid. All rights reserved
+        </p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    var themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function() {
+        var html = document.documentElement;
+        var next = html.classList.contains('dark') ? 'light' : 'dark';
+        html.className = next;
+        localStorage.setItem('color-theme', next);
+      });
+    }
+
+    // Mobile hamburger
+    var hamburger = document.getElementById('hamburger');
+    var mainNav = document.getElementById('main-nav');
+    var navOverlay = document.getElementById('nav-overlay');
+    if (hamburger && mainNav) {
+      hamburger.addEventListener('click', function() {
+        var expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', String(!expanded));
+        mainNav.classList.toggle('open');
+        if (navOverlay) navOverlay.classList.toggle('active');
+      });
+    }
+    if (navOverlay) {
+      navOverlay.addEventListener('click', function() {
+        if (mainNav) mainNav.classList.remove('open');
+        if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+        navOverlay.classList.remove('active');
+      });
+    }
+
+    // Dropdown menus (hover-based in CSS, click for accessibility)
+    var dropdownTriggers = document.querySelectorAll('.has-dropdown > button');
+    dropdownTriggers.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var li = btn.closest('.has-dropdown');
+        var isOpen = li.classList.contains('open');
+        document.querySelectorAll('.has-dropdown').forEach(function(el) {
+          el.classList.remove('open');
+          el.querySelector('button').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          li.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.has-dropdown').forEach(function(el) {
+        el.classList.remove('open');
+        var b = el.querySelector('button');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Scroll-based header shadow
+    var siteHeader = document.getElementById('site-header');
+    window.addEventListener('scroll', function() {
+      if (siteHeader) {
+        if (window.scrollY > 10) {
+          siteHeader.classList.add('scrolled');
+        } else {
+          siteHeader.classList.remove('scrolled');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

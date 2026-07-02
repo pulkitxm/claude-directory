@@ -1,468 +1,1051 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Super Design — Warm Industrial Design System</title>
-<style>
-/* ============ FONTS (vendored) ============ */
-@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;
-  src:url('assets/fonts/inter-latin.woff2') format('woff2');}
-@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;
-  src:url('assets/fonts/playfair-italic-latin.woff2') format('woff2');}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Super Design — Warm Industrial Design System</title>
+		<style>
+		/* ============ FONTS (vendored) ============ */
+		@font-face {
+			font-family: "Inter";
+			font-style: normal;
+			font-weight: 100 900;
+			font-display: swap;
+			src: url("assets/fonts/inter-latin.woff2") format("woff2");
+		}
+		@font-face {
+			font-family: "Playfair Display";
+			font-style: italic;
+			font-weight: 400;
+			font-display: swap;
+			src: url("assets/fonts/playfair-italic-latin.woff2") format("woff2");
+		}
 
-/* ============ TOKENS ============ */
-:root{
-  --bg:#EBEBE8; --fg:#18181B; --accent:#0066FF; --border:#D4D4D8;
-  --zinc100:#F4F4F5; --green:#22C55E;
-  --ease:cubic-bezier(0.16,1,0.3,1);
-  --maxw:1600px;
-  --mono:'SF Mono', ui-monospace, 'Roboto Mono', 'Menlo', monospace;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--bg);color:var(--fg);
-  font-family:'Inter','Helvetica Neue',Arial,sans-serif;
-  overflow-x:hidden;-webkit-font-smoothing:antialiased;
-}
-a{color:inherit;text-decoration:none;}
+		/* ============ TOKENS ============ */
+		:root {
+			--bg: #ebebe8;
+			--fg: #18181b;
+			--accent: #0066ff;
+			--border: #d4d4d8;
+			--zinc100: #f4f4f5;
+			--green: #22c55e;
+			--ease: cubic-bezier(0.16, 1, 0.3, 1);
+			--maxw: 1600px;
+			--mono: "SF Mono", ui-monospace, "Roboto Mono", "Menlo", monospace;
+		}
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		html {
+			scroll-behavior: smooth;
+		}
+		body {
+			background: var(--bg);
+			color: var(--fg);
+			font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+			overflow-x: hidden;
+			-webkit-font-smoothing: antialiased;
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
 
-/* ============ UTILS ============ */
-.label{font-family:'Inter';font-weight:700;font-size:10px;line-height:1;
-  text-transform:uppercase;letter-spacing:.25em;}
-.mono{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#52525B;}
-.serif{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;}
-.stroke{-webkit-text-stroke:1px var(--fg);color:transparent;}
-.accent{color:var(--accent);}
+		/* ============ UTILS ============ */
+		.label {
+			font-family: "Inter";
+			font-weight: 700;
+			font-size: 10px;
+			line-height: 1;
+			text-transform: uppercase;
+			letter-spacing: 0.25em;
+		}
+		.mono {
+			font-family: var(--mono);
+			font-size: 10px;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: #52525b;
+		}
+		.serif {
+			font-family: "Playfair Display", Georgia, serif;
+			font-style: italic;
+			font-weight: 400;
+		}
+		.stroke {
+			-webkit-text-stroke: 1px var(--fg);
+			color: transparent;
+		}
+		.accent {
+			color: var(--accent);
+		}
 
-/* ============ GLOBAL OVERLAYS ============ */
-.grid-lines{position:fixed;inset:0;z-index:1;pointer-events:none;display:flex;justify-content:center;}
-.grid-lines .inner{position:relative;width:100%;max-width:var(--maxw);height:100%;}
-.grid-lines .v{position:absolute;top:0;bottom:0;width:1px;background:rgba(24,24,27,.10);}
+		/* ============ GLOBAL OVERLAYS ============ */
+		.grid-lines {
+			position: fixed;
+			inset: 0;
+			z-index: 1;
+			pointer-events: none;
+			display: flex;
+			justify-content: center;
+		}
+		.grid-lines .inner {
+			position: relative;
+			width: 100%;
+			max-width: var(--maxw);
+			height: 100%;
+		}
+		.grid-lines .v {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 1px;
+			background: rgba(24, 24, 27, 0.1);
+		}
 
-.noise{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+		.noise {
+			position: fixed;
+			inset: 0;
+			z-index: 9999;
+			pointer-events: none;
+			opacity: 0.04;
+			mix-blend-mode: multiply;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+		}
 
-/* ============ SHELL ============ */
-.shell{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;
-  border-left:1px solid var(--border);border-right:1px solid var(--border);}
+		/* ============ SHELL ============ */
+		.shell {
+			position: relative;
+			z-index: 2;
+			max-width: var(--maxw);
+			margin: 0 auto;
+			border-left: 1px solid var(--border);
+			border-right: 1px solid var(--border);
+		}
 
-/* ============ HEADER ============ */
-header{position:sticky;top:0;z-index:50;height:80px;
-  background:rgba(235,235,232,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);}
-.nav{position:relative;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
-.nav .links{display:flex;gap:28px;}
-.nav .links a{transition:color .3s var(--ease);}
-.nav .links a:hover{color:var(--accent);}
-.logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  font-size:20px;letter-spacing:-.01em;white-space:nowrap;}
-.logo .serif{font-size:23px;}
-.logo b{font-weight:900;}
-.cta{border:1px solid var(--fg);border-radius:999px;padding:11px 22px;
-  transition:background .4s var(--ease),color .4s var(--ease);}
-.cta:hover{background:var(--fg);color:var(--bg);}
+		/* ============ HEADER ============ */
+		header {
+			position: sticky;
+			top: 0;
+			z-index: 50;
+			height: 80px;
+			background: rgba(235, 235, 232, 0.8);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border-bottom: 1px solid var(--border);
+		}
+		.nav {
+			position: relative;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 32px;
+		}
+		.nav .links {
+			display: flex;
+			gap: 28px;
+		}
+		.nav .links a {
+			transition: color 0.3s var(--ease);
+		}
+		.nav .links a:hover {
+			color: var(--accent);
+		}
+		.logo {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 20px;
+			letter-spacing: -0.01em;
+			white-space: nowrap;
+		}
+		.logo .serif {
+			font-size: 23px;
+		}
+		.logo b {
+			font-weight: 900;
+		}
+		.cta {
+			border: 1px solid var(--fg);
+			border-radius: 999px;
+			padding: 11px 22px;
+			transition:
+				background 0.4s var(--ease),
+				color 0.4s var(--ease);
+		}
+		.cta:hover {
+			background: var(--fg);
+			color: var(--bg);
+		}
 
-/* ============ HERO ============ */
-.hero{display:grid;grid-template-columns:repeat(12,1fr);
-  min-height:calc(100vh - 80px);border-bottom:1px solid var(--border);}
-.hero-left{grid-column:1 / 8;padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;}
-.status{display:flex;align-items:center;gap:10px;}
-.pulse{width:8px;height:8px;border-radius:999px;background:var(--green);
-  box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 2s var(--ease) infinite;}
-@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(34,197,94,0);}100%{box-shadow:0 0 0 0 rgba(34,197,94,0);}}
+		/* ============ HERO ============ */
+		.hero {
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			min-height: calc(100vh - 80px);
+			border-bottom: 1px solid var(--border);
+		}
+		.hero-left {
+			grid-column: 1 / 8;
+			padding: 48px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 40px;
+		}
+		.status {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		.pulse {
+			width: 8px;
+			height: 8px;
+			border-radius: 999px;
+			background: var(--green);
+			box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+			animation: pulse 2s var(--ease) infinite;
+		}
+		@keyframes pulse {
+			70% {
+				box-shadow: 0 0 0 9px rgba(34, 197, 94, 0);
+			}
+			100% {
+				box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+			}
+		}
 
-.headline{font-weight:900;font-size:clamp(56px,9.5vw,160px);line-height:.88;letter-spacing:-.05em;}
-.headline .line{display:block;overflow:hidden;}
-.headline .serif{font-weight:400;letter-spacing:-.02em;}
+		.headline {
+			font-weight: 900;
+			font-size: clamp(56px, 9.5vw, 160px);
+			line-height: 0.88;
+			letter-spacing: -0.05em;
+		}
+		.headline .line {
+			display: block;
+			overflow: hidden;
+		}
+		.headline .serif {
+			font-weight: 400;
+			letter-spacing: -0.02em;
+		}
 
-.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.readouts{display:flex;flex-direction:column;gap:10px;max-width:320px;}
-.start-btn{display:inline-flex;align-items:center;gap:16px;background:var(--fg);color:var(--bg);
-  padding:22px 28px;border:1px solid var(--fg);}
-.start-btn .t{font-weight:700;font-size:13px;letter-spacing:.25em;text-transform:uppercase;}
-.start-btn .arrow{display:inline-block;font-size:18px;transform:rotate(45deg);
-  transition:transform .5s var(--ease);}
-.start-btn:hover .arrow{transform:rotate(0deg) translate(2px,-2px);}
-.start-btn:hover{background:#000;}
+		.hero-bottom {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: 24px;
+			flex-wrap: wrap;
+		}
+		.readouts {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			max-width: 320px;
+		}
+		.start-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 16px;
+			background: var(--fg);
+			color: var(--bg);
+			padding: 22px 28px;
+			border: 1px solid var(--fg);
+		}
+		.start-btn .t {
+			font-weight: 700;
+			font-size: 13px;
+			letter-spacing: 0.25em;
+			text-transform: uppercase;
+		}
+		.start-btn .arrow {
+			display: inline-block;
+			font-size: 18px;
+			transform: rotate(45deg);
+			transition: transform 0.5s var(--ease);
+		}
+		.start-btn:hover .arrow {
+			transform: rotate(0deg) translate(2px, -2px);
+		}
+		.start-btn:hover {
+			background: #000;
+		}
 
-.hero-right{grid-column:8 / 13;border-left:1px solid var(--border);position:relative;padding:20px;}
-.hero-right .frame{position:relative;width:100%;height:100%;overflow:hidden;}
-.hero-right img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);display:block;}
-.glass-card{position:absolute;left:20px;bottom:20px;width:248px;padding:16px;
-  background:rgba(235,235,232,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid var(--border);}
-.glass-card .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px;}
-.bar{height:4px;background:var(--border);margin-top:6px;overflow:hidden;}
-.bar i{display:block;height:100%;width:0;background:var(--fg);transition:width .9s var(--ease);}
-.glass-card .id{margin-top:16px;border-top:1px solid var(--border);padding-top:10px;}
+		.hero-right {
+			grid-column: 8 / 13;
+			border-left: 1px solid var(--border);
+			position: relative;
+			padding: 20px;
+		}
+		.hero-right .frame {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		.hero-right img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			filter: grayscale(1) contrast(1.05);
+			display: block;
+		}
+		.glass-card {
+			position: absolute;
+			left: 20px;
+			bottom: 20px;
+			width: 248px;
+			padding: 16px;
+			background: rgba(235, 235, 232, 0.6);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border: 1px solid var(--border);
+		}
+		.glass-card .row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 12px;
+		}
+		.bar {
+			height: 4px;
+			background: var(--border);
+			margin-top: 6px;
+			overflow: hidden;
+		}
+		.bar i {
+			display: block;
+			height: 100%;
+			width: 0;
+			background: var(--fg);
+			transition: width 0.9s var(--ease);
+		}
+		.glass-card .id {
+			margin-top: 16px;
+			border-top: 1px solid var(--border);
+			padding-top: 10px;
+		}
 
-/* ============ MARQUEE ============ */
-.marquee{position:relative;width:100vw;left:50%;transform:translateX(-50%);
-  height:120px;background:var(--zinc100);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  overflow:hidden;display:flex;align-items:center;}
-.marquee .track{display:flex;align-items:center;white-space:nowrap;will-change:transform;
-  animation:marquee 18s linear infinite;}
-.marquee:hover .track{animation-play-state:paused;}
-.marquee .item{font-weight:900;font-size:clamp(38px,6.5vw,80px);letter-spacing:-.03em;padding:0 28px;}
-.marquee .star{color:var(--accent);font-size:clamp(22px,3vw,38px);}
-@keyframes marquee{to{transform:translateX(-50%);}}
+		/* ============ MARQUEE ============ */
+		.marquee {
+			position: relative;
+			width: 100vw;
+			left: 50%;
+			transform: translateX(-50%);
+			height: 120px;
+			background: var(--zinc100);
+			border-top: 1px solid var(--border);
+			border-bottom: 1px solid var(--border);
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+		}
+		.marquee .track {
+			display: flex;
+			align-items: center;
+			white-space: nowrap;
+			will-change: transform;
+			animation: marquee 18s linear infinite;
+		}
+		.marquee:hover .track {
+			animation-play-state: paused;
+		}
+		.marquee .item {
+			font-weight: 900;
+			font-size: clamp(38px, 6.5vw, 80px);
+			letter-spacing: -0.03em;
+			padding: 0 28px;
+		}
+		.marquee .star {
+			color: var(--accent);
+			font-size: clamp(22px, 3vw, 38px);
+		}
+		@keyframes marquee {
+			to {
+				transform: translateX(-50%);
+			}
+		}
 
-/* ============ PROJECT LIST ============ */
-.projects .row{position:relative;display:flex;align-items:center;justify-content:space-between;
-  height:300px;padding:0 48px;border-bottom:1px solid var(--border);overflow:hidden;
-  transition:background .4s var(--ease);}
-.projects .row:hover{background:var(--zinc100);}
-.row .idx{flex:0 0 auto;}
-.row .title{flex:1;padding:0 32px;font-weight:700;font-size:clamp(36px,5.5vw,92px);
-  letter-spacing:-.03em;transition:transform .5s var(--ease),font-style .3s var(--ease);}
-.row:hover .title{font-style:italic;transform:translateX(20px);}
-.row .meta{flex:0 0 auto;text-align:right;}
-.reveal-img{position:absolute;right:48px;top:50%;transform:translateY(-50%);
-  width:420px;height:248px;clip-path:inset(0 0 0 100%);transition:clip-path .6s var(--ease);
-  pointer-events:none;overflow:hidden;}
-.row:hover .reveal-img{clip-path:inset(0 0 0 0);}
-.reveal-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);display:block;}
-.reveal-img .tint{position:absolute;inset:0;background:rgba(0,102,255,.2);mix-blend-mode:multiply;}
-.view-circle{position:absolute;width:84px;height:84px;border-radius:999px;background:var(--fg);color:var(--bg);
-  display:flex;align-items:center;justify-content:center;gap:4px;text-align:center;
-  font-weight:700;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-  transform:translate(-50%,-50%) scale(0);transition:transform .4s var(--ease);
-  pointer-events:none;z-index:5;left:0;top:50%;}
-.row:hover .view-circle{transform:translate(-50%,-50%) scale(1);}
+		/* ============ PROJECT LIST ============ */
+		.projects .row {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 300px;
+			padding: 0 48px;
+			border-bottom: 1px solid var(--border);
+			overflow: hidden;
+			transition: background 0.4s var(--ease);
+		}
+		.projects .row:hover {
+			background: var(--zinc100);
+		}
+		.row .idx {
+			flex: 0 0 auto;
+		}
+		.row .title {
+			flex: 1;
+			padding: 0 32px;
+			font-weight: 700;
+			font-size: clamp(36px, 5.5vw, 92px);
+			letter-spacing: -0.03em;
+			transition:
+				transform 0.5s var(--ease),
+				font-style 0.3s var(--ease);
+		}
+		.row:hover .title {
+			font-style: italic;
+			transform: translateX(20px);
+		}
+		.row .meta {
+			flex: 0 0 auto;
+			text-align: right;
+		}
+		.reveal-img {
+			position: absolute;
+			right: 48px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 420px;
+			height: 248px;
+			clip-path: inset(0 0 0 100%);
+			transition: clip-path 0.6s var(--ease);
+			pointer-events: none;
+			overflow: hidden;
+		}
+		.row:hover .reveal-img {
+			clip-path: inset(0 0 0 0);
+		}
+		.reveal-img img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			filter: grayscale(1);
+			display: block;
+		}
+		.reveal-img .tint {
+			position: absolute;
+			inset: 0;
+			background: rgba(0, 102, 255, 0.2);
+			mix-blend-mode: multiply;
+		}
+		.view-circle {
+			position: absolute;
+			width: 84px;
+			height: 84px;
+			border-radius: 999px;
+			background: var(--fg);
+			color: var(--bg);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 4px;
+			text-align: center;
+			font-weight: 700;
+			font-size: 10px;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			transform: translate(-50%, -50%) scale(0);
+			transition: transform 0.4s var(--ease);
+			pointer-events: none;
+			z-index: 5;
+			left: 0;
+			top: 50%;
+		}
+		.row:hover .view-circle {
+			transform: translate(-50%, -50%) scale(1);
+		}
 
-/* ============ PHILOSOPHY / PARALLAX ============ */
-.philo{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;
-  border-bottom:1px solid var(--border);overflow:hidden;padding:80px 48px;}
-.philo .tag{position:absolute;top:32px;left:48px;}
-.philo .watermark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  font-weight:900;font-size:34vw;line-height:1;letter-spacing:-.06em;color:rgba(24,24,27,.04);
-  white-space:nowrap;pointer-events:none;user-select:none;}
-.philo .statement{position:relative;max-width:1100px;text-align:center;
-  font-size:clamp(28px,4.2vw,66px);line-height:1.08;letter-spacing:-.02em;font-weight:700;}
-.philo .statement .serif{font-weight:400;}
+		/* ============ PHILOSOPHY / PARALLAX ============ */
+		.philo {
+			position: relative;
+			min-height: 90vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-bottom: 1px solid var(--border);
+			overflow: hidden;
+			padding: 80px 48px;
+		}
+		.philo .tag {
+			position: absolute;
+			top: 32px;
+			left: 48px;
+		}
+		.philo .watermark {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			font-weight: 900;
+			font-size: 34vw;
+			line-height: 1;
+			letter-spacing: -0.06em;
+			color: rgba(24, 24, 27, 0.04);
+			white-space: nowrap;
+			pointer-events: none;
+			user-select: none;
+		}
+		.philo .statement {
+			position: relative;
+			max-width: 1100px;
+			text-align: center;
+			font-size: clamp(28px, 4.2vw, 66px);
+			line-height: 1.08;
+			letter-spacing: -0.02em;
+			font-weight: 700;
+		}
+		.philo .statement .serif {
+			font-weight: 400;
+		}
 
-/* ============ JOURNAL ============ */
-.journal-head{display:flex;justify-content:space-between;align-items:center;
-  padding:24px 48px;border-bottom:1px solid var(--border);}
-.journal-grid{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border);}
-.journal-grid .entry{padding:40px 32px;border-left:1px solid var(--border);min-height:320px;
-  display:flex;flex-direction:column;justify-content:space-between;gap:24px;}
-.journal-grid .entry:first-child{border-left:none;}
-.entry .e-top{display:flex;justify-content:space-between;}
-.entry .e-title{font-weight:700;font-size:26px;line-height:1.1;letter-spacing:-.02em;
-  transition:color .3s var(--ease),font-style .3s var(--ease);}
-.entry:hover .e-title{font-style:italic;color:var(--accent);}
-.entry .e-ex{font-family:var(--mono);font-size:12px;line-height:1.6;color:#52525B;}
+		/* ============ JOURNAL ============ */
+		.journal-head {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 24px 48px;
+			border-bottom: 1px solid var(--border);
+		}
+		.journal-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			border-bottom: 1px solid var(--border);
+		}
+		.journal-grid .entry {
+			padding: 40px 32px;
+			border-left: 1px solid var(--border);
+			min-height: 320px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 24px;
+		}
+		.journal-grid .entry:first-child {
+			border-left: none;
+		}
+		.entry .e-top {
+			display: flex;
+			justify-content: space-between;
+		}
+		.entry .e-title {
+			font-weight: 700;
+			font-size: 26px;
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+			transition:
+				color 0.3s var(--ease),
+				font-style 0.3s var(--ease);
+		}
+		.entry:hover .e-title {
+			font-style: italic;
+			color: var(--accent);
+		}
+		.entry .e-ex {
+			font-family: var(--mono);
+			font-size: 12px;
+			line-height: 1.6;
+			color: #52525b;
+		}
 
-/* ============ FOOTER ============ */
-footer{position:relative;background:var(--fg);color:var(--bg);overflow:hidden;}
-.foot-top{display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap;padding:80px 48px 60px;}
-.contact{font-size:clamp(34px,6vw,82px);font-weight:700;letter-spacing:-.03em;
-  border-bottom:2px solid transparent;padding-bottom:6px;
-  transition:border-color .4s var(--ease),letter-spacing .4s var(--ease);}
-.contact:hover{border-color:var(--bg);letter-spacing:-.01em;}
-.foot-cols{display:flex;gap:64px;}
-.foot-cols .col{display:flex;flex-direction:column;gap:12px;}
-.foot-cols .col .h{opacity:.5;margin-bottom:6px;}
-.foot-cols .col a{opacity:.85;transition:opacity .3s var(--ease);}
-.foot-cols .col a:hover{opacity:1;color:#fff;}
-.foot-marquee{position:absolute;left:0;bottom:24px;width:100%;overflow:hidden;pointer-events:none;}
-.foot-marquee .track{display:flex;white-space:nowrap;font-weight:900;font-size:20vw;
-  line-height:1;letter-spacing:-.05em;opacity:.1;animation:marquee 30s linear infinite;}
-.foot-marquee .track span{padding:0 .3em;}
-.foot-bottom{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;
-  padding:24px 48px;border-top:1px solid rgba(235,235,232,.2);margin-top:18vw;}
-.foot-bottom .op{display:flex;align-items:center;gap:10px;}
+		/* ============ FOOTER ============ */
+		footer {
+			position: relative;
+			background: var(--fg);
+			color: var(--bg);
+			overflow: hidden;
+		}
+		.foot-top {
+			display: flex;
+			justify-content: space-between;
+			gap: 60px;
+			flex-wrap: wrap;
+			padding: 80px 48px 60px;
+		}
+		.contact {
+			font-size: clamp(34px, 6vw, 82px);
+			font-weight: 700;
+			letter-spacing: -0.03em;
+			border-bottom: 2px solid transparent;
+			padding-bottom: 6px;
+			transition:
+				border-color 0.4s var(--ease),
+				letter-spacing 0.4s var(--ease);
+		}
+		.contact:hover {
+			border-color: var(--bg);
+			letter-spacing: -0.01em;
+		}
+		.foot-cols {
+			display: flex;
+			gap: 64px;
+		}
+		.foot-cols .col {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+		.foot-cols .col .h {
+			opacity: 0.5;
+			margin-bottom: 6px;
+		}
+		.foot-cols .col a {
+			opacity: 0.85;
+			transition: opacity 0.3s var(--ease);
+		}
+		.foot-cols .col a:hover {
+			opacity: 1;
+			color: #fff;
+		}
+		.foot-marquee {
+			position: absolute;
+			left: 0;
+			bottom: 24px;
+			width: 100%;
+			overflow: hidden;
+			pointer-events: none;
+		}
+		.foot-marquee .track {
+			display: flex;
+			white-space: nowrap;
+			font-weight: 900;
+			font-size: 20vw;
+			line-height: 1;
+			letter-spacing: -0.05em;
+			opacity: 0.1;
+			animation: marquee 30s linear infinite;
+		}
+		.foot-marquee .track span {
+			padding: 0 0.3em;
+		}
+		.foot-bottom {
+			position: relative;
+			z-index: 2;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 24px 48px;
+			border-top: 1px solid rgba(235, 235, 232, 0.2);
+			margin-top: 18vw;
+		}
+		.foot-bottom .op {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
 
-/* ============ ENTRANCE ============ */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
-.reveal.in{opacity:1;transform:none;}
+		/* ============ ENTRANCE ============ */
+		.reveal {
+			opacity: 0;
+			transform: translateY(24px);
+			transition:
+				opacity 0.8s var(--ease),
+				transform 0.8s var(--ease);
+		}
+		.reveal.in {
+			opacity: 1;
+			transform: none;
+		}
 
-/* ============ RESPONSIVE ============ */
-@media(max-width:900px){
-  .nav .links{display:none;}
-  .hero{grid-template-columns:1fr;}
-  .hero-left,.hero-right{grid-column:1 / -1;}
-  .hero-right{border-left:none;border-top:1px solid var(--border);min-height:60vh;}
-  .journal-grid{grid-template-columns:1fr;}
-  .journal-grid .entry{border-left:none;border-top:1px solid var(--border);min-height:auto;}
-  .journal-grid .entry:first-child{border-top:none;}
-  .reveal-img{display:none;}
-  .row .title{font-size:clamp(28px,8vw,48px);padding:0 16px;}
-  .projects .row{padding:0 24px;height:200px;}
-  .hero-left{padding:32px 24px;}
-  .foot-cols{gap:32px;flex-wrap:wrap;}
-}
-</style>
-</head>
-<body>
+		/* ============ RESPONSIVE ============ */
+		@media (max-width: 900px) {
+			.nav .links {
+				display: none;
+			}
+			.hero {
+				grid-template-columns: 1fr;
+			}
+			.hero-left,
+			.hero-right {
+				grid-column: 1 / -1;
+			}
+			.hero-right {
+				border-left: none;
+				border-top: 1px solid var(--border);
+				min-height: 60vh;
+			}
+			.journal-grid {
+				grid-template-columns: 1fr;
+			}
+			.journal-grid .entry {
+				border-left: none;
+				border-top: 1px solid var(--border);
+				min-height: auto;
+			}
+			.journal-grid .entry:first-child {
+				border-top: none;
+			}
+			.reveal-img {
+				display: none;
+			}
+			.row .title {
+				font-size: clamp(28px, 8vw, 48px);
+				padding: 0 16px;
+			}
+			.projects .row {
+				padding: 0 24px;
+				height: 200px;
+			}
+			.hero-left {
+				padding: 32px 24px;
+			}
+			.foot-cols {
+				gap: 32px;
+				flex-wrap: wrap;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- GLOBAL OVERLAYS -->
+		<div class="grid-lines"><div class="inner" id="gridInner"></div></div>
+		<div class="noise"></div>
 
-<!-- GLOBAL OVERLAYS -->
-<div class="grid-lines"><div class="inner" id="gridInner"></div></div>
-<div class="noise"></div>
+		<div class="shell">
+			<!-- HEADER -->
+			<header>
+				<nav class="nav">
+					<div class="links">
+						<a class="label" href="#work">Work</a>
+						<a class="label" href="#philo">Studio</a>
+						<a class="label" href="#journal">Journal</a>
+					</div>
+					<div class="logo"><span class="serif">Super</span><b>DESIGN</b></div>
+					<a class="cta label" href="#contact">Start Project</a>
+				</nav>
+			</header>
 
-<div class="shell">
+			<!-- HERO -->
+			<section class="hero">
+				<div class="hero-left">
+					<div class="status reveal">
+						<span class="pulse"></span>
+						<span class="label">Available for Q3 2026</span>
+					</div>
 
-  <!-- HEADER -->
-  <header>
-    <nav class="nav">
-      <div class="links">
-        <a class="label" href="#work">Work</a>
-        <a class="label" href="#philo">Studio</a>
-        <a class="label" href="#journal">Journal</a>
-      </div>
-      <div class="logo"><span class="serif">Super</span><b>DESIGN</b></div>
-      <a class="cta label" href="#contact">Start Project</a>
-    </nav>
-  </header>
+					<h1 class="headline">
+						<span class="line reveal">Building</span>
+						<span class="line reveal serif">digital</span>
+						<span class="line reveal stroke">STRUCTURES</span>
+					</h1>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="status reveal">
-        <span class="pulse"></span>
-        <span class="label">Available for Q3 2026</span>
-      </div>
+					<div class="hero-bottom">
+						<div class="readouts reveal">
+							<span class="mono">Est. 2019 / San Francisco</span>
+							<span class="mono">[ Design · Engineering · Brand ]</span>
+						</div>
+						<a class="start-btn reveal" href="#work">
+							<span class="t">Start</span>
+							<span class="arrow">&#8599;</span>
+						</a>
+					</div>
+				</div>
 
-      <h1 class="headline">
-        <span class="line reveal">Building</span>
-        <span class="line reveal serif">digital</span>
-        <span class="line reveal stroke">STRUCTURES</span>
-      </h1>
+				<div class="hero-right reveal">
+					<div class="frame">
+						<img src="assets/img/hero.svg" alt="Industrial structure">
+						<div class="glass-card">
+							<span class="label">System Status</span>
+							<div>
+								<div class="row">
+									<span class="mono">Design</span><span class="mono">92%</span>
+								</div>
+								<div class="bar"><i data-w="92%"></i></div>
+							</div>
+							<div>
+								<div class="row">
+									<span class="mono">Build</span><span class="mono">78%</span>
+								</div>
+								<div class="bar"><i data-w="78%"></i></div>
+							</div>
+							<div>
+								<div class="row">
+									<span class="mono">Ship</span><span class="mono">64%</span>
+								</div>
+								<div class="bar"><i data-w="64%"></i></div>
+							</div>
+							<div class="id">
+								<span class="mono">ID: SD-0xA1F · LAT 37.77 · LON -122.41</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-      <div class="hero-bottom">
-        <div class="readouts reveal">
-          <span class="mono">Est. 2019 / San Francisco</span>
-          <span class="mono">[ Design · Engineering · Brand ]</span>
-        </div>
-        <a class="start-btn reveal" href="#work">
-          <span class="t">Start</span>
-          <span class="arrow">&#8599;</span>
-        </a>
-      </div>
-    </div>
+			<!-- MARQUEE -->
+			<div class="marquee">
+				<div class="track" id="marqueeTrack"></div>
+			</div>
 
-    <div class="hero-right reveal">
-      <div class="frame">
-        <img src="assets/img/hero.svg" alt="Industrial structure" />
-        <div class="glass-card">
-          <span class="label">System Status</span>
-          <div>
-            <div class="row"><span class="mono">Design</span><span class="mono">92%</span></div>
-            <div class="bar"><i data-w="92%"></i></div>
-          </div>
-          <div>
-            <div class="row"><span class="mono">Build</span><span class="mono">78%</span></div>
-            <div class="bar"><i data-w="78%"></i></div>
-          </div>
-          <div>
-            <div class="row"><span class="mono">Ship</span><span class="mono">64%</span></div>
-            <div class="bar"><i data-w="64%"></i></div>
-          </div>
-          <div class="id"><span class="mono">ID: SD-0xA1F · LAT 37.77 · LON -122.41</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+			<!-- PROJECT LIST -->
+			<section class="projects" id="work">
+				<a class="row" href="#" data-img="assets/img/project-01.svg">
+					<span class="idx label">(01)</span>
+					<span class="title">Atlas Foundry</span>
+					<span class="meta label">Brand System — 2025</span>
+					<div class="reveal-img">
+						<img src="assets/img/project-01.svg" alt="">
+						<div class="tint"></div>
+					</div>
+					<div class="view-circle">View&#8599;</div>
+				</a>
+				<a class="row" href="#" data-img="assets/img/project-02.svg">
+					<span class="idx label">(02)</span>
+					<span class="title">Meridian OS</span>
+					<span class="meta label">Product Design — 2025</span>
+					<div class="reveal-img">
+						<img src="assets/img/project-02.svg" alt="">
+						<div class="tint"></div>
+					</div>
+					<div class="view-circle">View&#8599;</div>
+				</a>
+				<a class="row" href="#" data-img="assets/img/project-03.svg">
+					<span class="idx label">(03)</span>
+					<span class="title">Concrete Type</span>
+					<span class="meta label">Typeface — 2024</span>
+					<div class="reveal-img">
+						<img src="assets/img/project-03.svg" alt="">
+						<div class="tint"></div>
+					</div>
+					<div class="view-circle">View&#8599;</div>
+				</a>
+				<a class="row" href="#" data-img="assets/img/project-04.svg">
+					<span class="idx label">(04)</span>
+					<span class="title">Northwind Lab</span>
+					<span class="meta label">Engineering — 2024</span>
+					<div class="reveal-img">
+						<img src="assets/img/project-04.svg" alt="">
+						<div class="tint"></div>
+					</div>
+					<div class="view-circle">View&#8599;</div>
+				</a>
+			</section>
 
-  <!-- MARQUEE -->
-  <div class="marquee">
-    <div class="track" id="marqueeTrack"></div>
-  </div>
+			<!-- PHILOSOPHY / PARALLAX -->
+			<section class="philo" id="philo">
+				<span class="tag mono">( Philosophy / 04 )</span>
+				<div class="watermark" id="watermark">FORM</div>
+				<p class="statement reveal" id="statement">
+					We treat <span class="serif">design</span> as
+					<span class="stroke">infrastructure</span>
+					— load-bearing, measured, and built to
+					<span class="serif">last</span>.
+				</p>
+			</section>
 
-  <!-- PROJECT LIST -->
-  <section class="projects" id="work">
-    <a class="row" href="#" data-img="assets/img/project-01.svg">
-      <span class="idx label">(01)</span>
-      <span class="title">Atlas Foundry</span>
-      <span class="meta label">Brand System — 2025</span>
-      <div class="reveal-img"><img src="assets/img/project-01.svg" alt=""><div class="tint"></div></div>
-      <div class="view-circle">View&#8599;</div>
-    </a>
-    <a class="row" href="#" data-img="assets/img/project-02.svg">
-      <span class="idx label">(02)</span>
-      <span class="title">Meridian OS</span>
-      <span class="meta label">Product Design — 2025</span>
-      <div class="reveal-img"><img src="assets/img/project-02.svg" alt=""><div class="tint"></div></div>
-      <div class="view-circle">View&#8599;</div>
-    </a>
-    <a class="row" href="#" data-img="assets/img/project-03.svg">
-      <span class="idx label">(03)</span>
-      <span class="title">Concrete Type</span>
-      <span class="meta label">Typeface — 2024</span>
-      <div class="reveal-img"><img src="assets/img/project-03.svg" alt=""><div class="tint"></div></div>
-      <div class="view-circle">View&#8599;</div>
-    </a>
-    <a class="row" href="#" data-img="assets/img/project-04.svg">
-      <span class="idx label">(04)</span>
-      <span class="title">Northwind Lab</span>
-      <span class="meta label">Engineering — 2024</span>
-      <div class="reveal-img"><img src="assets/img/project-04.svg" alt=""><div class="tint"></div></div>
-      <div class="view-circle">View&#8599;</div>
-    </a>
-  </section>
+			<!-- JOURNAL -->
+			<section id="journal">
+				<div class="journal-head">
+					<span class="label">Journal</span>
+					<a class="label" href="#">View All &#8599;</a>
+				</div>
+				<div class="journal-grid">
+					<article class="entry reveal">
+						<div class="e-top">
+							<span class="mono">06.12.26</span><span class="mono">/01</span>
+						</div>
+						<h3 class="e-title">On Structural Honesty</h3>
+						<p class="e-ex">
+							Why exposing the grid, the seams, and the load paths makes an
+							interface more trustworthy, not less.
+						</p>
+						<a class="label" href="#">Read &#8599;</a>
+					</article>
+					<article class="entry reveal">
+						<div class="e-top">
+							<span class="mono">05.28.26</span><span class="mono">/02</span>
+						</div>
+						<h3 class="e-title">The Grid as Grammar</h3>
+						<p class="e-ex">
+							A twelve-column system isn't a constraint — it's a shared language
+							between type, image, and space.
+						</p>
+						<a class="label" href="#">Read &#8599;</a>
+					</article>
+					<article class="entry reveal">
+						<div class="e-top">
+							<span class="mono">05.02.26</span><span class="mono">/03</span>
+						</div>
+						<h3 class="e-title">Noise, Signal, Texture</h3>
+						<p class="e-ex">
+							A four-percent fractal grain bridges the digital and the analog
+							without ever looking dirty.
+						</p>
+						<a class="label" href="#">Read &#8599;</a>
+					</article>
+				</div>
+			</section>
 
-  <!-- PHILOSOPHY / PARALLAX -->
-  <section class="philo" id="philo">
-    <span class="tag mono">( Philosophy / 04 )</span>
-    <div class="watermark" id="watermark">FORM</div>
-    <p class="statement reveal" id="statement">
-      We treat <span class="serif">design</span> as <span class="stroke">infrastructure</span> —
-      load-bearing, measured, and built to <span class="serif">last</span>.
-    </p>
-  </section>
+			<!-- FOOTER -->
+			<footer id="contact">
+				<div class="foot-top">
+					<a class="contact" href="mailto:hello@super.design"
+						>hello@super.design</a
+					>
+					<div class="foot-cols">
+						<div class="col">
+							<span class="label h">Sitemap</span>
+							<a class="label" href="#work">Work</a>
+							<a class="label" href="#philo">Studio</a>
+							<a class="label" href="#journal">Journal</a>
+						</div>
+						<div class="col">
+							<span class="label h">Social</span>
+							<a class="label" href="#">Instagram</a>
+							<a class="label" href="#">X / Twitter</a>
+							<a class="label" href="#">LinkedIn</a>
+						</div>
+						<div class="col">
+							<span class="label h">Legal</span>
+							<a class="label" href="#">Privacy</a>
+							<a class="label" href="#">Terms</a>
+							<a class="label" href="#">Cookies</a>
+						</div>
+					</div>
+				</div>
 
-  <!-- JOURNAL -->
-  <section id="journal">
-    <div class="journal-head">
-      <span class="label">Journal</span>
-      <a class="label" href="#">View All &#8599;</a>
-    </div>
-    <div class="journal-grid">
-      <article class="entry reveal">
-        <div class="e-top"><span class="mono">06.12.26</span><span class="mono">/01</span></div>
-        <h3 class="e-title">On Structural Honesty</h3>
-        <p class="e-ex">Why exposing the grid, the seams, and the load paths makes an interface more trustworthy, not less.</p>
-        <a class="label" href="#">Read &#8599;</a>
-      </article>
-      <article class="entry reveal">
-        <div class="e-top"><span class="mono">05.28.26</span><span class="mono">/02</span></div>
-        <h3 class="e-title">The Grid as Grammar</h3>
-        <p class="e-ex">A twelve-column system isn't a constraint — it's a shared language between type, image, and space.</p>
-        <a class="label" href="#">Read &#8599;</a>
-      </article>
-      <article class="entry reveal">
-        <div class="e-top"><span class="mono">05.02.26</span><span class="mono">/03</span></div>
-        <h3 class="e-title">Noise, Signal, Texture</h3>
-        <p class="e-ex">A four-percent fractal grain bridges the digital and the analog without ever looking dirty.</p>
-        <a class="label" href="#">Read &#8599;</a>
-      </article>
-    </div>
-  </section>
+				<div class="foot-marquee">
+					<div class="track">
+						<span>SUPER&#8202;DESIGN</span><span>SUPER&#8202;DESIGN</span
+						><span>SUPER&#8202;DESIGN</span><span>SUPER&#8202;DESIGN</span>
+					</div>
+				</div>
 
-  <!-- FOOTER -->
-  <footer id="contact">
-    <div class="foot-top">
-      <a class="contact" href="mailto:hello@super.design">hello@super.design</a>
-      <div class="foot-cols">
-        <div class="col">
-          <span class="label h">Sitemap</span>
-          <a class="label" href="#work">Work</a>
-          <a class="label" href="#philo">Studio</a>
-          <a class="label" href="#journal">Journal</a>
-        </div>
-        <div class="col">
-          <span class="label h">Social</span>
-          <a class="label" href="#">Instagram</a>
-          <a class="label" href="#">X / Twitter</a>
-          <a class="label" href="#">LinkedIn</a>
-        </div>
-        <div class="col">
-          <span class="label h">Legal</span>
-          <a class="label" href="#">Privacy</a>
-          <a class="label" href="#">Terms</a>
-          <a class="label" href="#">Cookies</a>
-        </div>
-      </div>
-    </div>
+				<div class="foot-bottom">
+					<div class="op">
+						<span class="pulse"></span
+						><span class="label">System Operational</span>
+					</div>
+					<span class="label">© 2026 Super Design — All Rights Reserved</span>
+				</div>
+			</footer>
+		</div>
+		<!-- /shell -->
 
-    <div class="foot-marquee"><div class="track">
-      <span>SUPER&#8202;DESIGN</span><span>SUPER&#8202;DESIGN</span><span>SUPER&#8202;DESIGN</span><span>SUPER&#8202;DESIGN</span>
-    </div></div>
+		<script>
+		(() => {
+			// ---- 12-column structural grid (13 hairlines) ----
+			var inner = document.getElementById("gridInner");
+			for (var i = 0; i <= 12; i++) {
+				var v = document.createElement("div");
+				v.className = "v";
+				v.style.left = `${(i / 12) * 100}%`;
+				if (i === 12) v.style.left = "calc(100% - 1px)";
+				inner.appendChild(v);
+			}
 
-    <div class="foot-bottom">
-      <div class="op"><span class="pulse"></span><span class="label">System Operational</span></div>
-      <span class="label">© 2026 Super Design — All Rights Reserved</span>
-    </div>
-  </footer>
+			// ---- Marquee content ----
+			var words = [
+				["STRUCTURE", 0],
+				["clarity", 1],
+				["SYSTEMS", 0],
+				["craft", 1],
+				["INDUSTRIAL", 0],
+				["precision", 1],
+			];
+			var track = document.getElementById("marqueeTrack");
+			function buildSeq() {
+				var html = "";
+				words.forEach((w) => {
+					var cls = w[1] ? "item serif" : "item stroke";
+					html += `<span class="${cls}">${w[0]}</span><span class="item star">&#10038;</span>`;
+				});
+				return html;
+			}
+			track.innerHTML = buildSeq() + buildSeq(); // duplicate for seamless -50% loop
 
-</div><!-- /shell -->
+			// ---- Glass-card progress bars (on load) ----
+			window.addEventListener("load", () => {
+				setTimeout(() => {
+					document.querySelectorAll(".bar i").forEach((b) => {
+						b.style.width = b.getAttribute("data-w");
+					});
+				}, 300);
+			});
 
-<script>
-(()=> {
-  // ---- 12-column structural grid (13 hairlines) ----
-  var inner=document.getElementById('gridInner');
-  for(var i=0;i<=12;i++){
-    var v=document.createElement('div');
-    v.className='v';
-    v.style.left=`${i/12*100}%`;
-    if(i===12) v.style.left='calc(100% - 1px)';
-    inner.appendChild(v);
-  }
+			// ---- IntersectionObserver entrance reveals ----
+			var io = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((e) => {
+						if (e.isIntersecting) {
+							e.target.classList.add("in");
+							io.unobserve(e.target);
+						}
+					});
+				},
+				{ threshold: 0.15 },
+			);
+			document.querySelectorAll(".reveal").forEach((el, i) => {
+				el.style.transitionDelay = `${Math.min(i, 6) * 0.07}s`;
+				io.observe(el);
+			});
 
-  // ---- Marquee content ----
-  var words=[['STRUCTURE',0],['clarity',1],['SYSTEMS',0],['craft',1],['INDUSTRIAL',0],['precision',1]];
-  var track=document.getElementById('marqueeTrack');
-  function buildSeq(){
-    var html='';
-    words.forEach((w)=> {
-      var cls=w[1]?'item serif':'item stroke';
-      html+=`<span class="${cls}">${w[0]}</span><span class="item star">&#10038;</span>`;
-    });
-    return html;
-  }
-  track.innerHTML=buildSeq()+buildSeq(); // duplicate for seamless -50% loop
+			// ---- Project rows: cursor-following view circle ----
+			document.querySelectorAll(".projects .row").forEach((row) => {
+				var circle = row.querySelector(".view-circle");
+				var tx = 0,
+					ty = 0,
+					cx = 0,
+					cy = 0,
+					raf = null;
+				function loop() {
+					cx += (tx - cx) * 0.18;
+					cy += (ty - cy) * 0.18;
+					circle.style.left = `${cx}px`;
+					circle.style.top = `${cy}px`;
+					if (Math.abs(tx - cx) > 0.3 || Math.abs(ty - cy) > 0.3) {
+						raf = requestAnimationFrame(loop);
+					} else {
+						raf = null;
+					}
+				}
+				row.addEventListener("mousemove", (ev) => {
+					var r = row.getBoundingClientRect();
+					tx = ev.clientX - r.left;
+					ty = ev.clientY - r.top;
+					if (!raf) raf = requestAnimationFrame(loop);
+				});
+				row.addEventListener("mouseenter", (ev) => {
+					var r = row.getBoundingClientRect();
+					cx = tx = ev.clientX - r.left;
+					cy = ty = ev.clientY - r.top;
+					circle.style.left = `${cx}px`;
+					circle.style.top = `${cy}px`;
+				});
+			});
 
-  // ---- Glass-card progress bars (on load) ----
-  window.addEventListener('load',()=> {
-    setTimeout(()=> {
-      document.querySelectorAll('.bar i').forEach((b)=> { b.style.width=b.getAttribute('data-w'); });
-    },300);
-  });
-
-  // ---- IntersectionObserver entrance reveals ----
-  var io=new IntersectionObserver((entries)=> {
-    entries.forEach((e)=> {
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  },{threshold:.15});
-  document.querySelectorAll('.reveal').forEach((el,i)=> {
-    el.style.transitionDelay=`${Math.min(i,6)*0.07}s`;
-    io.observe(el);
-  });
-
-  // ---- Project rows: cursor-following view circle ----
-  document.querySelectorAll('.projects .row').forEach((row)=> {
-    var circle=row.querySelector('.view-circle');
-    var tx=0,ty=0,cx=0,cy=0,raf=null;
-    function loop(){
-      cx+=(tx-cx)*0.18; cy+=(ty-cy)*0.18;
-      circle.style.left=`${cx}px`; circle.style.top=`${cy}px`;
-      if(Math.abs(tx-cx)>0.3||Math.abs(ty-cy)>0.3){ raf=requestAnimationFrame(loop); } else { raf=null; }
-    }
-    row.addEventListener('mousemove',(ev)=> {
-      var r=row.getBoundingClientRect();
-      tx=ev.clientX-r.left; ty=ev.clientY-r.top;
-      if(!raf) raf=requestAnimationFrame(loop);
-    });
-    row.addEventListener('mouseenter',(ev)=> {
-      var r=row.getBoundingClientRect();
-      cx=tx=ev.clientX-r.left; cy=ty=ev.clientY-r.top;
-      circle.style.left=`${cx}px`; circle.style.top=`${cy}px`;
-    });
-  });
-
-  // ---- Parallax (rAF-throttled) ----
-  var statement=document.getElementById('statement');
-  var watermark=document.getElementById('watermark');
-  var philo=document.querySelector('.philo');
-  var ticking=false;
-  function parallax(){
-    var r=philo.getBoundingClientRect();
-    var vh=window.innerHeight;
-    var prog=(vh-r.top)/(vh+r.height); // 0..1 as section passes through
-    var p=Math.max(-1,Math.min(1,(prog-0.5)*2));
-    if(watermark) watermark.style.transform=`translate(-50%,-50%) translateY(${p*-80}px)`;
-    if(statement) statement.style.transform=`translateY(${p*30}px)`;
-    ticking=false;
-  }
-  window.addEventListener('scroll',()=> {
-    if(!ticking){ ticking=true; requestAnimationFrame(parallax); }
-  },{passive:true});
-  parallax();
-})();
-</script>
-</body>
+			// ---- Parallax (rAF-throttled) ----
+			var statement = document.getElementById("statement");
+			var watermark = document.getElementById("watermark");
+			var philo = document.querySelector(".philo");
+			var ticking = false;
+			function parallax() {
+				var r = philo.getBoundingClientRect();
+				var vh = window.innerHeight;
+				var prog = (vh - r.top) / (vh + r.height); // 0..1 as section passes through
+				var p = Math.max(-1, Math.min(1, (prog - 0.5) * 2));
+				if (watermark)
+					watermark.style.transform = `translate(-50%,-50%) translateY(${p * -80}px)`;
+				if (statement) statement.style.transform = `translateY(${p * 30}px)`;
+				ticking = false;
+			}
+			window.addEventListener(
+				"scroll",
+				() => {
+					if (!ticking) {
+						ticking = true;
+						requestAnimationFrame(parallax);
+					}
+				},
+				{ passive: true },
+			);
+			parallax();
+		})();
+		</script>
+	</body>
 </html>

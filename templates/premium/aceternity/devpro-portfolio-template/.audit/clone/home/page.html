@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Home | Devpro</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+			rel="stylesheet"
+		>
+		<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		:root {
+			--bg-main: #18181b;
+			--bg-nav: #27272a;
+			--bg-card: #27272a;
+			--bg-card-hover: #3f3f46;
+			--text-primary: #fafafa;
+			--text-secondary: #e4e4e7;
+			--text-muted: #a1a1aa;
+			--text-subtle: #71717a;
+			--accent-cyan: #06b6d4;
+			--border-color: rgba(63, 63, 70, 0.6);
+			--border-subtle: #3f3f46;
+			--font-main: "Inter", ui-sans-serif, system-ui, sans-serif;
+			--max-w: 1024px;
+			--max-w-wide: 1152px;
+		}
+		body {
+			background: var(--bg-main);
+			color: var(--text-primary);
+			font-family: var(--font-main);
+			min-height: 100vh;
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+		img {
+			display: block;
+			max-width: 100%;
+		}
+
+		/* NAV */
+		.nav-wrapper {
+			max-width: var(--max-w);
+			margin: 0 auto;
+			padding: 32px 32px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			z-index: 100;
+		}
+		.nav-pill {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 4px;
+			background: var(--bg-nav);
+			border: 1px solid var(--border-color);
+			border-radius: 16px;
+			padding: 8px 16px;
+			flex-wrap: wrap;
+		}
+		.nav-pill-brand {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			text-decoration: none;
+			color: var(--text-primary);
+			font-weight: 700;
+			font-size: 14px;
+			margin-right: 4px;
+		}
+		.nav-pill-brand img {
+			width: 30px;
+			height: 30px;
+			border-radius: 9999px;
+		}
+		.nav-link {
+			color: var(--text-primary);
+			font-size: 14px;
+			text-decoration: none;
+			padding: 6px 10px;
+			border-radius: 8px;
+			transition:
+				color 0.15s,
+				background 0.15s;
+		}
+		.nav-link:hover {
+			color: var(--accent-cyan);
+		}
+		.nav-link.active {
+			color: var(--accent-cyan);
+		}
+		.nav-cv {
+			font-weight: 500;
+			color: var(--text-primary);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 10px;
+			background: linear-gradient(to bottom, #464d55, #25292e);
+			font-size: 14px;
+			padding: 8px 16px;
+			box-shadow:
+				0 10px 20px rgba(0, 0, 0, 0.1),
+				0 3px 6px rgba(0, 0, 0, 0.05);
+			transition: opacity 0.15s;
+			text-decoration: none;
+			white-space: nowrap;
+		}
+		.nav-cv:hover {
+			opacity: 0.8;
+		}
+		.hamburger {
+			display: none;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 4px;
+			color: var(--text-primary);
+		}
+		.mobile-menu {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 32px;
+			right: 32px;
+			background: var(--bg-nav);
+			border: 1px solid var(--border-color);
+			border-radius: 16px;
+			padding: 12px;
+			z-index: 200;
+			flex-direction: column;
+			gap: 4px;
+		}
+		.mobile-menu.open {
+			display: flex;
+		}
+		.mobile-menu a {
+			color: var(--text-primary);
+			font-size: 14px;
+			padding: 10px 12px;
+			border-radius: 8px;
+			display: block;
+		}
+		.mobile-menu a:hover {
+			background: var(--bg-card-hover);
+			color: var(--accent-cyan);
+		}
+
+		/* SECTIONS */
+		section {
+			padding: 0 32px;
+		}
+
+		/* HERO */
+		.hero {
+			max-width: var(--max-w);
+			margin: 80px auto 0;
+		}
+		.hero h1 {
+			font-weight: 700;
+			font-size: clamp(30px, 4vw, 48px);
+			line-height: 1.2;
+			color: var(--text-primary);
+			max-width: 768px;
+		}
+		.hero h1 .cyan {
+			color: var(--accent-cyan);
+		}
+		.hero p {
+			color: var(--text-muted);
+			font-size: 16px;
+			max-width: 672px;
+			margin-top: 32px;
+			line-height: 1.8;
+			letter-spacing: 0.02em;
+		}
+		.hero-building {
+			margin-top: 32px;
+			color: var(--text-muted);
+			font-size: 16px;
+			max-width: 672px;
+			line-height: 1.8;
+			letter-spacing: 0.02em;
+		}
+		.hero-building a {
+			color: var(--text-secondary);
+			font-weight: 700;
+			transition: color 0.15s;
+		}
+		.hero-building a:hover {
+			color: var(--accent-cyan);
+		}
+
+		/* WORK EXPERIENCE */
+		.work-exp {
+			max-width: var(--max-w);
+			margin: 160px auto 0;
+		}
+		.work-exp h2 {
+			font-size: clamp(24px, 3vw, 30px);
+			color: var(--text-primary);
+			font-weight: 700;
+		}
+		.work-exp .subtitle {
+			color: var(--text-muted);
+			font-size: 14px;
+			margin-top: 16px;
+			line-height: 1.8;
+			letter-spacing: 0.02em;
+		}
+		.work-exp-inner {
+			display: flex;
+			gap: 32px;
+			margin-top: 64px;
+		}
+		.work-tabs {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			min-width: 180px;
+		}
+		.work-tab {
+			background: none;
+			border: none;
+			cursor: pointer;
+			text-align: left;
+			padding: 12px 16px;
+			border-radius: 10px;
+			color: var(--text-muted);
+			font-size: 14px;
+			font-family: var(--font-main);
+			font-weight: 500;
+			transition:
+				background 0.15s,
+				color 0.15s;
+			border-left: 2px solid transparent;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.work-tab img {
+			width: 20px;
+			height: 20px;
+			flex-shrink: 0;
+			object-fit: contain;
+		}
+		.work-tab:hover {
+			background: var(--bg-card);
+			color: var(--text-primary);
+		}
+		.work-tab.active {
+			background: var(--bg-card);
+			color: var(--text-primary);
+			border-left-color: var(--accent-cyan);
+		}
+		.work-panel {
+			flex: 1;
+			display: none;
+		}
+		.work-panel.active {
+			display: block;
+		}
+		.work-panel h3 {
+			font-size: 18px;
+			font-weight: 700;
+			color: var(--text-primary);
+		}
+		.work-panel .meta {
+			color: var(--text-muted);
+			font-size: 13px;
+			margin-top: 8px;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+		.work-panel .meta span {
+			background: var(--bg-card);
+			padding: 4px 10px;
+			border-radius: 6px;
+			border: 1px solid var(--border-color);
+		}
+		.work-panel ul {
+			margin-top: 24px;
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+		.work-panel ul li {
+			color: var(--text-secondary);
+			font-size: 14px;
+			line-height: 1.7;
+			padding-left: 20px;
+			position: relative;
+		}
+		.work-panel ul li::before {
+			content: "▸";
+			position: absolute;
+			left: 0;
+			color: var(--accent-cyan);
+		}
+
+		/* PROJECTS */
+		.projects-section {
+			max-width: var(--max-w);
+			margin: 160px auto 0;
+		}
+		.projects-section h2 {
+			font-size: clamp(24px, 3vw, 30px);
+			color: var(--text-primary);
+			font-weight: 700;
+		}
+		.projects-section .subtitle {
+			color: var(--text-muted);
+			font-size: 14px;
+			margin-top: 16px;
+			line-height: 1.8;
+		}
+		.projects-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 16px;
+			margin-top: 48px;
+		}
+		.project-card {
+			background: var(--bg-card);
+			border: 1px solid var(--border-color);
+			border-radius: 16px;
+			overflow: hidden;
+			cursor: pointer;
+			transition: border-color 0.2s;
+			text-decoration: none;
+			display: block;
+		}
+		.project-card:hover {
+			border-color: var(--border-subtle);
+		}
+		.project-card:hover .card-img-overlay {
+			opacity: 0;
+		}
+		.project-card:hover .card-img-wrap img {
+			filter: blur(0);
+			transform: scale(1.05);
+		}
+		.card-img-wrap {
+			position: relative;
+			overflow: hidden;
+		}
+		.card-img-wrap img {
+			width: 100%;
+			height: 176px;
+			object-fit: cover;
+			filter: blur(4px);
+			transform: scale(1);
+			transition:
+				filter 0.3s ease,
+				transform 0.3s ease;
+		}
+		.card-img-overlay {
+			position: absolute;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.1);
+			transition: opacity 0.2s;
+		}
+		.card-body {
+			padding: 16px;
+		}
+		.card-title {
+			font-weight: 700;
+			font-size: 15px;
+			color: var(--text-primary);
+		}
+		.card-desc {
+			color: var(--text-muted);
+			font-size: 13px;
+			margin-top: 8px;
+			line-height: 1.6;
+		}
+		.card-stack {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin-top: 16px;
+		}
+		.card-stack svg {
+			color: #6b7280;
+			width: 20px;
+			height: 20px;
+			margin-right: 16px;
+		}
+		.card-source {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 8px;
+			margin-top: 12px;
+			padding: 0 2px;
+		}
+		.card-source svg {
+			width: 12px;
+			height: 12px;
+			color: #71717a;
+			transition: color 0.2s;
+		}
+		.card-source span {
+			color: #71717a;
+			font-size: 12px;
+			transition: color 0.2s;
+		}
+		.project-card:hover .card-source svg,
+		.project-card:hover .card-source span {
+			color: var(--accent-cyan);
+		}
+
+		/* CONTRIBUTIONS */
+		.contrib-section {
+			max-width: var(--max-w);
+			margin: 160px auto 0;
+		}
+		.contrib-section h2 {
+			font-size: clamp(24px, 3vw, 30px);
+			color: var(--text-primary);
+			font-weight: 700;
+		}
+		.contrib-section .subtitle {
+			color: var(--text-muted);
+			font-size: 14px;
+			margin-top: 16px;
+			line-height: 1.8;
+		}
+		.contrib-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 16px;
+			margin-top: 48px;
+		}
+		.contrib-card {
+			background: linear-gradient(to bottom, #27272a, #1c1c1e);
+			border: 1px solid #3f3f46;
+			border-radius: 16px;
+			padding: 16px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			min-height: 120px;
+			transition: border-color 0.2s;
+		}
+		.contrib-card:hover {
+			border-color: var(--accent-cyan);
+		}
+		.contrib-name {
+			font-weight: 700;
+			font-size: 14px;
+			color: #f4f4f5;
+			margin-bottom: 8px;
+		}
+		.contrib-desc {
+			color: #a1a1aa;
+			font-size: 13px;
+			line-height: 1.5;
+			flex: 1;
+		}
+		.contrib-stats {
+			display: flex;
+			gap: 12px;
+			margin-top: 12px;
+		}
+		.contrib-stat {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			color: #71717a;
+			font-size: 12px;
+			transition: color 0.15s;
+			cursor: default;
+		}
+		.contrib-stat:hover {
+			color: var(--accent-cyan);
+		}
+		.contrib-hidden {
+			display: none;
+		}
+		.show-more-btn {
+			display: block;
+			margin: 32px auto 0;
+			border: 1px solid #52525b;
+			background: none;
+			color: #d4d4d8;
+			padding: 8px 20px;
+			border-radius: 10px;
+			font-size: 14px;
+			cursor: pointer;
+			font-family: var(--font-main);
+			transition:
+				color 0.15s,
+				border-color 0.15s;
+		}
+		.show-more-btn:hover {
+			color: #fff;
+			border-color: #a1a1aa;
+		}
+
+		/* BLOGS */
+		.blogs-section {
+			max-width: var(--max-w);
+			margin: 160px auto 0;
+		}
+		.blogs-section h2 {
+			font-size: clamp(24px, 3vw, 30px);
+			color: var(--text-primary);
+			font-weight: 700;
+		}
+		.blogs-uses-grid {
+			display: grid;
+			grid-template-columns: 2fr 1fr;
+			gap: 40px;
+			margin-top: 0;
+		}
+		.blog-list {
+			display: flex;
+			flex-direction: column;
+			gap: 64px;
+			max-width: 768px;
+		}
+		.blog-entry {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			text-decoration: none;
+			transition: color 0.15s;
+		}
+		.blog-date {
+			color: var(--text-subtle);
+			font-size: 13px;
+			display: block;
+			border-left: 1px solid var(--border-subtle);
+			padding-left: 16px;
+		}
+		.blog-title {
+			color: var(--text-secondary);
+			font-weight: 700;
+			font-size: 18px;
+			margin-top: 16px;
+			transition: color 0.15s;
+		}
+		.blog-entry:hover .blog-title {
+			color: var(--accent-cyan);
+		}
+		.blog-excerpt {
+			color: var(--text-secondary);
+			font-size: 14px;
+			margin-top: 16px;
+			line-height: 1.8;
+			font-weight: 400;
+		}
+		.blog-readmore {
+			color: var(--accent-cyan);
+			font-size: 14px;
+			margin-top: 24px;
+			display: block;
+		}
+		.uses-col h2 {
+			font-weight: 700;
+			color: var(--text-primary);
+			font-size: 20px;
+			margin-bottom: 8px;
+		}
+		.uses-item {
+			margin: 32px 0;
+		}
+		.uses-item h4 {
+			font-size: 16px;
+			font-weight: 700;
+			color: #f4f4f5;
+		}
+		.uses-item p {
+			font-size: 14px;
+			color: var(--text-muted);
+			line-height: 1.8;
+			margin-top: 4px;
+		}
+		@media (max-width: 768px) {
+			.blogs-uses-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* FOOTER */
+		footer {
+			border-top: 1px solid #0f172a;
+			max-width: var(--max-w-wide);
+			margin: 160px auto 0;
+			padding: 40px 32px;
+		}
+		.footer-inner {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 40px 0;
+		}
+		.footer-brand {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			text-decoration: none;
+			color: var(--text-primary);
+			font-size: 20px;
+			font-weight: 700;
+		}
+		.footer-brand img {
+			width: 30px;
+			height: 30px;
+			border-radius: 9999px;
+		}
+		.footer-links {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 4px;
+			margin-top: 16px;
+		}
+		.footer-link {
+			color: var(--text-muted);
+			font-size: 14px;
+			padding: 6px 10px;
+			border-radius: 8px;
+			transition: color 0.15s;
+		}
+		.footer-link:hover {
+			color: var(--text-primary);
+		}
+		.footer-copy {
+			color: var(--text-secondary);
+			font-size: 14px;
+			font-weight: 300;
+			text-align: center;
+			margin-top: 32px;
+			border-top: 1px solid var(--border-subtle);
+			padding-top: 16px;
+			width: 100%;
+		}
+		.footer-socials {
+			display: flex;
+			gap: 16px;
+			margin-top: 16px;
+		}
+		.footer-social {
+			color: #71717a;
+			transition: color 0.15s;
+		}
+		.footer-social:hover {
+			color: var(--accent-cyan);
+		}
+
+		/* SCROLL TOP */
+		#scrollTop {
+			position: fixed;
+			right: 40px;
+			bottom: 40px;
+			width: 56px;
+			height: 56px;
+			border-radius: 9999px;
+			background: #3f3f46;
+			border: none;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+			z-index: 99999;
+			transition:
+				transform 0.2s,
+				box-shadow 0.2s;
+		}
+		#scrollTop:hover {
+			transform: scale(1.05);
+		}
+
+		@media (max-width: 768px) {
+			.nav-pill .nav-link {
+				display: none;
+			}
+			.hamburger {
+				display: block;
+			}
+			.projects-grid {
+				grid-template-columns: 1fr;
+			}
+			.contrib-grid {
+				grid-template-columns: 1fr;
+			}
+			.work-exp-inner {
+				flex-direction: column;
+			}
+			.work-tabs {
+				flex-direction: row;
+				flex-wrap: wrap;
+				min-width: unset;
+			}
+			.work-tab {
+				border-left: none;
+				border-bottom: 2px solid transparent;
+			}
+			.work-tab.active {
+				border-bottom-color: var(--accent-cyan);
+			}
+		}
+		@media (min-width: 769px) and (max-width: 1024px) {
+			.projects-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+			.contrib-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- NAV -->
+		<nav style="position:relative;">
+			<div class="nav-wrapper">
+				<div class="nav-pill">
+					<a href="index.html" class="nav-pill-brand">
+						<img src="assets/images/avatar.png" alt="Tyler Durden">
+						<span>Tyler Durden</span>
+					</a>
+					<a href="about.html" class="nav-link">About</a>
+					<a href="projects.html" class="nav-link">Projects</a>
+					<a href="contributions.html" class="nav-link">Contributions</a>
+					<a href="blogs.html" class="nav-link">Blogs</a>
+					<a href="events.html" class="nav-link">Events</a>
+					<button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							width="22"
+							height="22"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+							></path>
+						</svg>
+					</button>
+				</div>
+				<a href="#" class="nav-cv">Download CV</a>
+				<div class="mobile-menu" id="mobileMenu">
+					<a href="about.html">About</a>
+					<a href="projects.html">Projects</a>
+					<a href="contributions.html">Contributions</a>
+					<a href="blogs.html">Blogs</a>
+					<a href="events.html">Events</a>
+					<a href="#">Download CV</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- HERO -->
+		<section>
+			<div class="hero">
+				<h1>
+					I'm a software engineer that rarely
+					<span class="cyan">writes code.</span>
+				</h1>
+				<p>
+					Meet Manu Arora, the self-proclaimed code wizard who can turn caffeine
+					into beautiful websites. His passion for building clean and functional
+					designs is only rivaled by his passion for finding the perfect GIF to
+					express his excitement.
+				</p>
+				<div class="hero-building">
+					Building
+					<a href="https://algochurn.com" target="_blank" rel="noopener"
+						>Algochurn</a
+					>
+					and
+					<a href="https://aceternity.com" target="_blank" rel="noopener"
+						>Aceternity</a
+					>
+					when I'm not working on my day job.
+				</div>
+			</div>
+		</section>
+
+		<!-- WORK EXPERIENCE -->
+		<section>
+			<div class="work-exp">
+				<h2>Work Experience</h2>
+				<p class="subtitle">
+					I switch a lot of companies. It's mostly about the culture.
+				</p>
+				<div class="work-exp-inner">
+					<div class="work-tabs">
+						<button class="work-tab active" onclick="showWork('apple', this)">
+							<img src="assets/images/logos/apple.png" alt="Apple">
+							<span>Apple</span>
+						</button>
+						<button class="work-tab" onclick="showWork('google', this)">
+							<img src="assets/images/logos/google.png" alt="Google">
+							<span>Google</span>
+						</button>
+						<button class="work-tab" onclick="showWork('microsoft', this)">
+							<img src="assets/images/logos/microsoft.png" alt="Microsoft">
+							<span>Microsoft</span>
+						</button>
+						<button class="work-tab" onclick="showWork('netflix', this)">
+							<img src="assets/images/logos/netflix.png" alt="Netflix">
+							<span>Netflix</span>
+						</button>
+					</div>
+					<div style="flex:1;">
+						<div id="work-apple" class="work-panel active">
+							<h3>Senior Software Engineer @ Apple</h3>
+							<div class="meta">
+								<span>Jan 2021 – Jun 2021</span>
+								<span>Cupertino, CA</span>
+							</div>
+							<ul>
+								<li>Worked on the Apple Music team</li>
+								<li>
+									Increased the revenue of the company from $80 billion to $1
+									Trillion
+								</li>
+								<li>
+									Built a new feature that allowed users to listen to music
+									while they were sleeping
+								</li>
+							</ul>
+						</div>
+						<div id="work-google" class="work-panel">
+							<h3>Senior Software Engineer @ Google</h3>
+							<div class="meta">
+								<span>Jun 2020 – Jan 2021</span>
+								<span>Mountain View, CA</span>
+							</div>
+							<ul>
+								<li>Worked on the Google Maps team</li>
+								<li>Increased Google's revenue by $10 billion</li>
+								<li>
+									Poked a hole in the map that lead to a discovery of a new
+									continent
+								</li>
+							</ul>
+						</div>
+						<div id="work-microsoft" class="work-panel">
+							<h3>Junior Software Engineer @ Microsoft</h3>
+							<div class="meta">
+								<span>Jun 2019 – Jun 2020</span>
+								<span>Redmond, WA</span>
+							</div>
+							<ul>
+								<li>Worked on the Microsoft Teams team</li>
+								<li>Increased the number of Teams users by 100 million</li>
+								<li>
+									Discovered a bug that lead to the discovery of a new planet
+								</li>
+							</ul>
+						</div>
+						<div id="work-netflix" class="work-panel">
+							<h3>Intern @ Netflix</h3>
+							<div class="meta">
+								<span>Jun 2018 – Jun 2019</span>
+								<span>Los Gatos, CA</span>
+							</div>
+							<ul>
+								<li>Worked on the Netflix Recommendation team</li>
+								<li>
+									Increased the number of Netflix subscribers by 100 million
+								</li>
+								<li>
+									Discovered a new algorithm that lead to the discovery of a new
+									galaxy
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- PROJECTS -->
+		<section>
+			<div class="projects-section">
+				<h2>I've been building a lot of things</h2>
+				<p class="subtitle">
+					I've been building a lot of things. Here are some of them.
+				</p>
+				<div class="projects-grid">
+					<a
+						href="https://algochurn.com"
+						target="_blank"
+						rel="noopener"
+						class="project-card"
+					>
+						<div class="card-img-wrap">
+							<img src="assets/images/projects/algochurn.png" alt="Algochurn">
+							<div class="card-img-overlay"></div>
+						</div>
+						<div class="card-body">
+							<div class="card-title">Algochurn</div>
+							<div class="card-desc">
+								A web app that allows users to practice for front-end and UI
+								interviews.
+							</div>
+							<div class="card-stack">
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+									<path d="M15 12v-3"></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+									></path>
+									<path d="M9 12h4"></path>
+									<path d="M11 12v6"></path>
+									<path
+										d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+									></path>
+									<path
+										d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+									></path>
+									<path
+										d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+									></path>
+									<path
+										d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+									></path>
+									<path
+										d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+									></path>
+									<path
+										d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+									></path>
+									<path
+										d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+									></path>
+								</svg>
+							</div>
+							<div class="card-source">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 16 16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+									></path>
+									<path
+										d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+									></path>
+								</svg>
+								<span>View Source</span>
+							</div>
+						</div>
+					</a>
+					<a
+						href="https://aceternity.com"
+						target="_blank"
+						rel="noopener"
+						class="project-card"
+					>
+						<div class="card-img-wrap">
+							<img src="assets/images/projects/aceternity.png" alt="Aceternity">
+							<div class="card-img-overlay"></div>
+						</div>
+						<div class="card-body">
+							<div class="card-title">Aceternity</div>
+							<div class="card-desc">
+								A web design and development agency that gets the job done.
+								Somehow.
+							</div>
+							<div class="card-stack">
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+									<path d="M15 12v-3"></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+									></path>
+									<path d="M9 12h4"></path>
+									<path d="M11 12v6"></path>
+									<path
+										d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+									></path>
+									<path
+										d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+									></path>
+									<path
+										d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+									></path>
+									<path
+										d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+									></path>
+									<path
+										d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+									></path>
+									<path
+										d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+									></path>
+									<path
+										d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+									></path>
+								</svg>
+							</div>
+							<div class="card-source">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 16 16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+									></path>
+									<path
+										d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+									></path>
+								</svg>
+								<span>View Source</span>
+							</div>
+						</div>
+					</a>
+					<a
+						href="https://tailwindmasterkit.com"
+						target="_blank"
+						rel="noopener"
+						class="project-card"
+					>
+						<div class="card-img-wrap">
+							<img
+								src="assets/images/projects/tailwindmasterkit.png"
+								alt="Tailwind Master Kit"
+							>
+							<div class="card-img-overlay"></div>
+						</div>
+						<div class="card-body">
+							<div class="card-title">Tailwind Master Kit</div>
+							<div class="card-desc">
+								Buy premium tailwind components and templates for your next
+								project.
+							</div>
+							<div class="card-stack">
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+									<path d="M15 12v-3"></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+									></path>
+									<path d="M9 12h4"></path>
+									<path d="M11 12v6"></path>
+									<path
+										d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+									></path>
+									<path
+										d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+									></path>
+									<path
+										d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+									></path>
+									<path
+										d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+									></path>
+									<path
+										d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+									></path>
+									<path
+										d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+									></path>
+									<path
+										d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+									></path>
+								</svg>
+							</div>
+							<div class="card-source">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 16 16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+									></path>
+									<path
+										d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+									></path>
+								</svg>
+								<span>View Source</span>
+							</div>
+						</div>
+					</a>
+					<a
+						href="https://manuarora.in/boxshadows"
+						target="_blank"
+						rel="noopener"
+						class="project-card"
+					>
+						<div class="card-img-wrap">
+							<img
+								src="assets/images/projects/boxshadows.png"
+								alt="Box Shadows"
+							>
+							<div class="card-img-overlay"></div>
+						</div>
+						<div class="card-body">
+							<div class="card-title">Box Shadows</div>
+							<div class="card-desc">
+								Copy and paste beautiful box shadows that stand out for your
+								next project.
+							</div>
+							<div class="card-stack">
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+									<path d="M15 12v-3"></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+									></path>
+									<path d="M9 12h4"></path>
+									<path d="M11 12v6"></path>
+									<path
+										d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+									></path>
+									<path
+										d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+									></path>
+									<path
+										d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+									></path>
+									<path
+										d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+									></path>
+									<path
+										d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+									></path>
+									<path
+										d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+									></path>
+									<path
+										d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+									></path>
+								</svg>
+							</div>
+							<div class="card-source">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 16 16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+									></path>
+									<path
+										d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+									></path>
+								</svg>
+								<span>View Source</span>
+							</div>
+						</div>
+					</a>
+					<a
+						href="https://placeholdertech.in"
+						target="_blank"
+						rel="noopener"
+						class="project-card"
+					>
+						<div class="card-img-wrap">
+							<img
+								src="assets/images/projects/placeholdertech.png"
+								alt="PlaceholderTech"
+							>
+							<div class="card-img-overlay"></div>
+						</div>
+						<div class="card-body">
+							<div class="card-title">PlaceholderTech</div>
+							<div class="card-desc">
+								Your one-stop shop for web app needs tailored to your
+								requirements.
+							</div>
+							<div class="card-stack">
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+									<path d="M15 12v-3"></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+									></path>
+									<path d="M9 12h4"></path>
+									<path d="M11 12v6"></path>
+									<path
+										d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+									></path>
+								</svg>
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+									></path>
+									<path
+										d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+									></path>
+									<path
+										d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+									></path>
+									<path
+										d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+									></path>
+									<path
+										d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+									></path>
+									<path
+										d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+									></path>
+									<path
+										d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+									></path>
+								</svg>
+							</div>
+							<div class="card-source">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 16 16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+									></path>
+									<path
+										d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+									></path>
+								</svg>
+								<span>View Source</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- CONTRIBUTIONS -->
+		<section>
+			<div class="contrib-section">
+				<h2>Latest contributions to open source</h2>
+				<p class="subtitle">
+					I love contributing to open source. Here are some of my contributions.
+				</p>
+				<div class="contrib-grid">
+					<div class="contrib-card">
+						<div>
+							<div class="contrib-name">react-code-editor</div>
+							<div class="contrib-desc">
+								💻 Build your own code editor that compiles and runs 40+
+								programming languages.
+							</div>
+						</div>
+						<div class="contrib-stats">
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"
+									></path>
+								</svg>
+								158</span
+							>
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0 1 96 0 48.01 48.01 0 0 1-96 0zm336 600a48.01 48.01 0 0 1-96 0 48.01 48.01 0 0 1 96 0zm192-552a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"
+									></path>
+								</svg>
+								57</span
+							>
+						</div>
+					</div>
+					<div class="contrib-card">
+						<div>
+							<div class="contrib-name">simple-developer-portfolio-website</div>
+							<div class="contrib-desc">
+								✈️ A simple portfolio for developers to showcase their skills and
+								projects.
+							</div>
+						</div>
+						<div class="contrib-stats">
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"
+									></path>
+								</svg>
+								272</span
+							>
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0 1 96 0 48.01 48.01 0 0 1-96 0zm336 600a48.01 48.01 0 0 1-96 0 48.01 48.01 0 0 1 96 0zm192-552a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"
+									></path>
+								</svg>
+								116</span
+							>
+						</div>
+					</div>
+					<div class="contrib-card">
+						<div>
+							<div class="contrib-name">devmedium</div>
+							<div class="contrib-desc">
+								🚀 A Dev.to &amp; Medium like blogging platform with custom
+								usernames in Next.js
+							</div>
+						</div>
+						<div class="contrib-stats">
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"
+									></path>
+								</svg>
+								7</span
+							>
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0 1 96 0 48.01 48.01 0 0 1-96 0zm336 600a48.01 48.01 0 0 1-96 0 48.01 48.01 0 0 1 96 0zm192-552a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"
+									></path>
+								</svg>
+								1</span
+							>
+						</div>
+					</div>
+					<div class="contrib-card">
+						<div>
+							<div class="contrib-name">manuarora.in</div>
+							<div class="contrib-desc">
+								🙌🏻 Personal website built using Next.js &amp; TailwindCSS.
+							</div>
+						</div>
+						<div class="contrib-stats">
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"
+									></path>
+								</svg>
+								45</span
+							>
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0 1 96 0 48.01 48.01 0 0 1-96 0zm336 600a48.01 48.01 0 0 1-96 0 48.01 48.01 0 0 1 96 0zm192-552a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"
+									></path>
+								</svg>
+								17</span
+							>
+						</div>
+					</div>
+					<div class="contrib-card">
+						<div>
+							<div class="contrib-name">sendgrid-contact-form</div>
+							<div class="contrib-desc">
+								📧 A contact form using Next.js and SendGrid.
+							</div>
+						</div>
+						<div class="contrib-stats">
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"
+									></path>
+								</svg>
+								21</span
+							>
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0 1 96 0 48.01 48.01 0 0 1-96 0zm336 600a48.01 48.01 0 0 1-96 0 48.01 48.01 0 0 1 96 0zm192-552a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"
+									></path>
+								</svg>
+								5</span
+							>
+						</div>
+					</div>
+					<div class="contrib-card">
+						<div>
+							<div class="contrib-name">integrate-payments</div>
+							<div class="contrib-desc">
+								💳 Integrate Stripe payments in your Next.js application.
+							</div>
+						</div>
+						<div class="contrib-stats">
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"
+									></path>
+								</svg>
+								14</span
+							>
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0 1 96 0 48.01 48.01 0 0 1-96 0zm336 600a48.01 48.01 0 0 1-96 0 48.01 48.01 0 0 1 96 0zm192-552a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"
+									></path>
+								</svg>
+								2</span
+							>
+						</div>
+					</div>
+					<!-- Hidden extra cards -->
+					<div class="contrib-card contrib-hidden" id="extra-contrib">
+						<div>
+							<div class="contrib-name">tictactoe</div>
+							<div class="contrib-desc">
+								🎮 A simple tic-tac-toe game built with Next.js and TailwindCSS.
+							</div>
+						</div>
+						<div class="contrib-stats">
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"
+									></path>
+								</svg>
+								2</span
+							>
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0 1 96 0 48.01 48.01 0 0 1-96 0zm336 600a48.01 48.01 0 0 1-96 0 48.01 48.01 0 0 1 96 0zm192-552a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"
+									></path>
+								</svg>
+								1</span
+							>
+						</div>
+					</div>
+					<div class="contrib-card contrib-hidden extra-contrib">
+						<div>
+							<div class="contrib-name">hashnode-github-backup</div>
+							<div class="contrib-desc">
+								📦 Backup your Hashnode blog to GitHub automatically.
+							</div>
+						</div>
+						<div class="contrib-stats">
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"
+									></path>
+								</svg>
+								11</span
+							>
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0 1 96 0 48.01 48.01 0 0 1-96 0zm336 600a48.01 48.01 0 0 1-96 0 48.01 48.01 0 0 1 96 0zm192-552a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"
+									></path>
+								</svg>
+								3</span
+							>
+						</div>
+					</div>
+					<div class="contrib-card contrib-hidden extra-contrib">
+						<div>
+							<div class="contrib-name">100-days-interview-preparation</div>
+							<div class="contrib-desc">
+								📚 100 days of interview preparation for front-end developers.
+							</div>
+						</div>
+						<div class="contrib-stats">
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z"
+									></path>
+								</svg>
+								56</span
+							>
+							<span class="contrib-stat"
+								><svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="16"
+									width="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0 1 96 0 48.01 48.01 0 0 1-96 0zm336 600a48.01 48.01 0 0 1-96 0 48.01 48.01 0 0 1 96 0zm192-552a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"
+									></path>
+								</svg>
+								8</span
+							>
+						</div>
+					</div>
+				</div>
+				<button
+					class="show-more-btn"
+					id="showMoreBtn"
+					onclick="showMoreContribs()"
+				>
+					Show More
+				</button>
+			</div>
+		</section>
+
+		<!-- BLOGS -->
+		<section>
+			<div class="blogs-section">
+				<div class="blogs-uses-grid">
+					<div class="blog-list">
+						<a href="blog-what-is-a-website-template.html" class="blog-entry">
+							<small class="blog-date">November 28, 2022</small>
+							<h2 class="blog-title">What is a website template</h2>
+							<p class="blog-excerpt">
+								A website template is a pre-designed website that can be
+								customized to suit your needs. In this post, we’ll take a look
+								at what a website template is and why it can be a great creative
+								outlet for writers
+							</p>
+							<span class="blog-readmore">Read More</span>
+						</a>
+						<a href="blog-what-is-a-blog-anyway.html" class="blog-entry">
+							<small class="blog-date">September 2, 2022</small>
+							<h2 class="blog-title">What is a blog anyway</h2>
+							<p class="blog-excerpt">
+								A blog is a website that is updated regularly with new content.
+								It is a great way to share your thoughts and ideas with the
+								world. In this blog post, we will discuss what a blog is and how
+								to create one.
+							</p>
+							<span class="blog-readmore">Read More</span>
+						</a>
+					</div>
+					<div class="uses-col">
+						<h2>Uses</h2>
+						<div class="uses-item">
+							<h4>16 Inch M2 MacBook Pro</h4>
+							<p>
+								My main machine for development that I've been using for over 6
+								months now. Such a beast of a machine. I love it.
+							</p>
+						</div>
+						<div class="uses-item">
+							<h4>iPad Pro 12.9</h4>
+							<p>
+								Overrated in my opinion. I use it for reading books and watching
+								movies. I don't use it for development.
+							</p>
+						</div>
+						<div class="uses-item">
+							<h4>Keychron K2</h4>
+							<p>
+								My main keyboard for development. I love the clicky keys and the
+								compact size. I use it with a Logitech MX Master 3 mouse.
+							</p>
+						</div>
+						<div class="uses-item">
+							<h4>Logitech MX Master 3</h4>
+							<p>
+								My main mouse for development. I love the scroll wheel and the
+								thumb buttons. I use it with a Keychron K2 keyboard.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-inner">
+				<a href="index.html" class="footer-brand">
+					<img src="assets/images/avatar.png" alt="Avatar">
+					<span>Tyler Durden</span>
+				</a>
+				<div class="footer-links">
+					<a href="about.html" class="footer-link">About</a>
+					<a href="projects.html" class="footer-link">Projects</a>
+					<a href="contributions.html" class="footer-link">Contributions</a>
+					<a href="blogs.html" class="footer-link">Blogs</a>
+					<a href="events.html" class="footer-link">Events</a>
+				</div>
+				<div class="footer-socials">
+					<a href="#" class="footer-social" aria-label="Twitter">
+						<svg
+							stroke="currentColor"
+							fill="currentColor"
+							stroke-width="0"
+							viewBox="0 0 1024 1024"
+							height="20"
+							width="20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0 0 75-94 336.64 336.64 0 0 1-108.2 41.2A170.1 170.1 0 0 0 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 0 0-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 0 1-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 0 1-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z"
+							></path>
+						</svg>
+					</a>
+					<a href="#" class="footer-social" aria-label="LinkedIn">
+						<svg
+							stroke="currentColor"
+							fill="currentColor"
+							stroke-width="0"
+							viewBox="0 0 1024 1024"
+							height="20"
+							width="20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"
+							></path>
+						</svg>
+					</a>
+					<a href="#" class="footer-social" aria-label="GitHub">
+						<svg
+							stroke="currentColor"
+							fill="currentColor"
+							stroke-width="0"
+							viewBox="0 0 1024 1024"
+							height="20"
+							width="20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"
+							></path>
+						</svg>
+					</a>
+				</div>
+				<p class="footer-copy">
+					© 2026 Devpro Portfolio Template. All rights reserved.
+				</p>
+			</div>
+		</footer>
+
+		<!-- SCROLL TO TOP -->
+		<button
+			id="scrollTop"
+			onclick="window.scrollTo({top:0,behavior:'smooth'})"
+			aria-label="Scroll to top"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="#fafafa"
+				style="width:24px;height:24px;"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M4.5 15.75l7.5-7.5 7.5 7.5"
+				></path>
+			</svg>
+		</button>
+
+		<script>
+		function toggleMenu() {
+			var menu = document.getElementById("mobileMenu");
+			menu.classList.toggle("open");
+		}
+		document.addEventListener("click", function (e) {
+			var menu = document.getElementById("mobileMenu");
+			var nav = document.querySelector(".nav-pill");
+			if (!nav.contains(e.target)) menu.classList.remove("open");
+		});
+
+		function showWork(id, btn) {
+			document.querySelectorAll(".work-panel").forEach(function (p) {
+				p.classList.remove("active");
+			});
+			document.querySelectorAll(".work-tab").forEach(function (b) {
+				b.classList.remove("active");
+			});
+			document.getElementById("work-" + id).classList.add("active");
+			btn.classList.add("active");
+		}
+
+		var showMoreDone = false;
+		function showMoreContribs() {
+			if (showMoreDone) return;
+			showMoreDone = true;
+			document.querySelectorAll(".contrib-hidden").forEach(function (el) {
+				el.style.display = "flex";
+				el.style.flexDirection = "column";
+			});
+			document.getElementById("showMoreBtn").style.display = "none";
+		}
+		</script>
+	</body>
+</html>

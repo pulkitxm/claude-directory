@@ -1,0 +1,303 @@
+/* Kinto — auth pages (login + signup) */
+
+.auth-shell {
+	display: flex;
+	min-height: 100vh;
+}
+
+/* Minimal floating header */
+.auth-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 20;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.75rem 2rem;
+}
+.auth-header .brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	font-family: var(--font-serif);
+	font-size: 1.05rem;
+	color: var(--background); /* sits over dark panel on the left */
+}
+.auth-header .brand-mark {
+	width: 22px;
+	height: 22px;
+	color: var(--accent);
+}
+.auth-header .icon-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	border-radius: var(--radius-md);
+	border: 1px solid color-mix(in srgb, var(--foreground) 14%, transparent);
+	background: color-mix(in srgb, var(--card) 70%, transparent);
+	color: var(--foreground);
+	cursor: pointer;
+	transition:
+		background 0.2s,
+		color 0.2s;
+}
+.auth-header .icon-btn:hover {
+	background: var(--muted);
+}
+
+/* ===== Quote panel (always dark) ===== */
+.auth-quote {
+	position: relative;
+	display: none;
+	width: 50%;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 3rem;
+	overflow: hidden;
+	/* force the dark palette regardless of theme */
+	--background: #13110d;
+	--foreground: #e8e6e1;
+	--accent: #c99858;
+	background: #1f1c18;
+	color: #e8e6e1;
+}
+@media (min-width: 1024px) {
+	.auth-quote {
+		display: flex;
+	}
+}
+.auth-quote__bg {
+	position: absolute;
+	inset: 0;
+	background: url("/assets/images/home/hero-bg.webp") center / cover no-repeat;
+	opacity: 0.22;
+	mix-blend-mode: overlay;
+}
+.auth-quote__inner {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+.auth-quote .brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	color: #e8e6e1;
+	font-family: var(--font-serif);
+	font-size: 1.05rem;
+}
+.auth-quote .brand-mark {
+	width: 24px;
+	height: 24px;
+	color: #c99858;
+}
+.auth-quote__q {
+	font-family: var(--font-serif);
+	font-style: italic;
+	font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+	line-height: 1.3;
+	letter-spacing: -0.01em;
+	color: rgba(232, 230, 225, 0.82);
+	max-width: 30ch;
+}
+.auth-quote__rule {
+	margin-top: 2rem;
+	width: 3rem;
+	height: 1px;
+	background: #c99858;
+}
+.auth-quote__attr {
+	margin-top: 1rem;
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: rgba(232, 230, 225, 0.4);
+}
+
+/* ===== Form panel ===== */
+.auth-form-panel {
+	flex: 1 1 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4rem 1.5rem;
+	background: var(--background);
+}
+.auth-form {
+	width: 100%;
+	max-width: 24rem;
+}
+.auth-form .brand-mobile {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	color: var(--foreground);
+	font-family: var(--font-serif);
+	font-size: 1.05rem;
+	margin-bottom: 1rem;
+}
+.auth-form .brand-mobile .brand-mark {
+	width: 24px;
+	height: 24px;
+	color: var(--accent);
+}
+@media (min-width: 1024px) {
+	.auth-form .brand-mobile {
+		display: none;
+	}
+}
+
+.auth-form h1 {
+	font-family: var(--font-serif);
+	font-size: 1.875rem;
+	letter-spacing: -0.02em;
+	color: var(--foreground);
+	margin: 0;
+}
+.auth-form .sub {
+	margin-top: 0.5rem;
+	font-size: 0.875rem;
+	color: var(--muted-foreground);
+}
+
+.auth-social {
+	margin-top: 2rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.75rem;
+}
+.auth-social button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	height: 2.5rem;
+	border-radius: var(--radius-md);
+	border: 1px solid var(--border);
+	background: var(--card);
+	color: var(--foreground);
+	font-family: var(--font-sans);
+	font-size: 0.875rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background 0.2s,
+		transform 0.1s;
+}
+.auth-social button:hover {
+	background: var(--muted);
+}
+.auth-social button:active {
+	transform: scale(0.97);
+}
+.auth-social svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+.auth-divider {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin: 1.25rem 0;
+}
+.auth-divider::before,
+.auth-divider::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: var(--border);
+}
+.auth-divider span {
+	font-family: var(--font-mono);
+	font-size: 0.625rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+
+.auth-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+.auth-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+.auth-field label {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--foreground);
+}
+.auth-field input {
+	height: 2.5rem;
+	width: 100%;
+	border-radius: var(--radius-md);
+	border: 1px solid var(--input);
+	background: var(--card);
+	color: var(--foreground);
+	padding: 0 0.75rem;
+	font-family: var(--font-sans);
+	font-size: 0.875rem;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
+}
+.auth-field input::placeholder {
+	color: var(--muted-foreground);
+}
+.auth-field input:focus {
+	outline: none;
+	border-color: var(--ring);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 35%, transparent);
+}
+
+.auth-submit {
+	margin-top: 1.5rem;
+	width: 100%;
+	height: 2.5rem;
+	border: none;
+	border-radius: var(--radius-md);
+	background: var(--primary);
+	color: var(--primary-foreground);
+	font-family: var(--font-sans);
+	font-size: 0.875rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background 0.2s,
+		transform 0.1s;
+}
+.auth-submit:hover {
+	background: var(--primary-hover);
+}
+.auth-submit:active {
+	transform: scale(0.97);
+}
+
+.auth-foot {
+	margin-top: 2rem;
+	font-size: 0.875rem;
+	color: var(--muted-foreground);
+}
+.auth-foot a {
+	color: var(--accent);
+	font-weight: 500;
+	text-decoration: none;
+}
+.auth-foot a:hover {
+	color: var(--accent-hover);
+}

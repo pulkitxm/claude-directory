@@ -1,0 +1,641 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Chargebee Integration — Ælen CRM</title>
+		<meta name="description" content="Accept payments with Chargebee, one of the most popular subscription billing platforms. Sync billing with your CRM in minutes.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;family=Geist:wght@100..900&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+		<style>
+		:root {
+			--white: oklch(95% 0.0187 80.72);
+			--black: oklch(29% 0 0);
+			--orange: oklch(60% 0.1499 37.55);
+			--cyan: oklch(80% 0.0456 250.63);
+			--yellow: oklch(75% 0.1081 64.85);
+			--gray: oklch(83% 0.0018 325.59);
+			--font-sans: "Geist", sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: var(--font-sans);
+			background: white;
+			color: var(--black);
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		/* ── HEADER ── */
+		header {
+			background: white;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			height: 49px;
+			display: flex;
+			align-items: center;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		.header-inner {
+			width: 100%;
+			padding: 0 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.header-logo svg {
+			height: 32px;
+		}
+		.header-logo {
+			color: var(--black);
+			transition: color 300ms;
+		}
+		.header-logo:hover {
+			color: var(--orange);
+		}
+
+		.header-right {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin-left: auto;
+		}
+		.nav-link {
+			font-weight: 600;
+			color: var(--black);
+			transition: opacity 300ms;
+		}
+		.nav-link:hover {
+			opacity: 0.7;
+		}
+
+		.btn-signup {
+			background: var(--black);
+			color: white;
+			font-weight: 600;
+			padding: 8px 16px;
+			border: none;
+			cursor: pointer;
+			font-family: var(--font-sans);
+			font-size: 0.875rem;
+			transition: background 300ms;
+			display: inline-flex;
+			align-items: center;
+		}
+		.btn-signup:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+
+		.hamburger {
+			display: none;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 4px;
+			color: var(--black);
+		}
+		.mobile-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: white;
+			z-index: 200;
+			flex-direction: column;
+			padding: 1rem;
+		}
+		.mobile-overlay.active {
+			display: flex;
+		}
+		.mobile-overlay-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 2rem;
+		}
+		.mobile-nav {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+		.mobile-nav a {
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+		.close-menu {
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		/* ── HERO ── */
+		.integration-hero {
+			padding-top: 200px;
+			padding-bottom: 2rem;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		.integration-hero h1 {
+			font-size: clamp(3rem, 12vw, 12rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1;
+			margin-bottom: 1rem;
+		}
+		.integration-hero p {
+			font-size: clamp(1rem, 2vw, 1.25rem);
+			color: color-mix(in oklab, var(--black) 65%, transparent);
+			max-width: 36rem;
+			margin-bottom: 1.5rem;
+			line-height: 1.5;
+		}
+		.stacked-bars {
+			display: flex;
+			flex-direction: column;
+		}
+		.stacked-bars div {
+			width: 100%;
+			background: var(--black);
+		}
+
+		/* ── LOGO DISPLAY ── */
+		.logo-display {
+			padding: 2rem;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+		}
+
+		/* ── CTA BANNER ── */
+		.cta-banner {
+			background: var(--cyan);
+			padding-top: 12rem;
+			padding-bottom: 12rem;
+			text-align: center;
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+		.cta-banner h2 {
+			font-size: clamp(2rem, 6vw, 5rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1;
+			color: white;
+			margin-bottom: 1rem;
+		}
+		.cta-banner p {
+			font-size: 1.125rem;
+			color: color-mix(in oklab, white 75%, transparent);
+			margin-bottom: 2rem;
+		}
+		.btn-outline-white {
+			display: inline-flex;
+			align-items: center;
+			border: 1px solid white;
+			color: white;
+			font-weight: 600;
+			padding: 12px 28px;
+			font-family: var(--font-sans);
+			font-size: 0.9rem;
+			background: transparent;
+			cursor: pointer;
+			transition:
+				background 300ms,
+				color 300ms;
+			text-decoration: none;
+		}
+		.btn-outline-white:hover {
+			background: white;
+			color: var(--black);
+		}
+
+		/* ── COMPANY DETAILS ── */
+		.company-details {
+			padding: 6rem 2rem;
+		}
+		.details-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.detail-col {
+			padding-top: 1rem;
+		}
+		.detail-col-label {
+			font-size: 0.75rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: color-mix(in oklab, var(--black) 45%, transparent);
+			margin-bottom: 0.75rem;
+		}
+		.detail-col-value {
+			font-size: 1rem;
+			line-height: 1.6;
+			color: var(--black);
+		}
+		.detail-col-value a {
+			text-decoration: underline;
+			text-decoration-style: dashed;
+			text-underline-offset: 3px;
+		}
+		.detail-col-value a:hover {
+			opacity: 0.7;
+		}
+		.detail-col-links {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		/* ── HOW TO INTEGRATE ── */
+		.how-to {
+			background: var(--orange);
+			padding: 6rem 2rem;
+			color: white;
+		}
+		.how-to-inner {
+			max-width: 52rem;
+		}
+		.how-to h2 {
+			font-size: clamp(2rem, 6vw, 5rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1;
+			margin-bottom: 2rem;
+		}
+		.how-to p {
+			font-size: 1.075rem;
+			line-height: 1.75;
+			margin-bottom: 1.25rem;
+			color: color-mix(in oklab, white 90%, transparent);
+		}
+		.how-to .step-label {
+			display: inline-block;
+			font-size: 0.75rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: color-mix(in oklab, white 55%, transparent);
+			margin-bottom: 0.35rem;
+			margin-top: 2rem;
+		}
+		.how-to .step-label:first-child {
+			margin-top: 0;
+		}
+		.how-to h3 {
+			font-size: 1.25rem;
+			font-weight: 700;
+			color: white;
+			margin-bottom: 0.75rem;
+		}
+		code {
+			font-family: "Geist Mono", monospace;
+			background: color-mix(in oklab, white 12%, transparent);
+			padding: 1px 6px;
+			font-size: 0.9em;
+		}
+
+		/* ── FOOTER ── */
+		footer {
+			margin-top: auto;
+		}
+		.footer-dividers div {
+			width: 100%;
+			background: var(--black);
+		}
+		.footer-social {
+			background: var(--black);
+			padding: 2rem;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+		.footer-social a {
+			color: white;
+			transition: opacity 300ms;
+		}
+		.footer-social a:hover {
+			opacity: 0.7;
+		}
+		.footer-social svg {
+			width: 20px;
+			height: 20px;
+		}
+		.footer-nav {
+			background: var(--black);
+			padding: 1rem 2rem;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			border-top: 1px solid color-mix(in oklab, white 10%, transparent);
+		}
+		.footer-nav a {
+			color: white;
+			font-size: 0.875rem;
+			font-weight: 500;
+			transition: opacity 300ms;
+		}
+		.footer-nav a:hover {
+			opacity: 0.7;
+		}
+		.footer-wordmark {
+			background: var(--black);
+			padding: 2rem 0 0;
+		}
+		.footer-wordmark svg {
+			width: 100%;
+			height: auto;
+			color: white;
+		}
+		.footer-copy {
+			background: var(--black);
+			padding: 1rem 2rem 2rem;
+			color: color-mix(in oklab, white 60%, transparent);
+			font-size: 0.75rem;
+		}
+
+		@media (min-width: 1024px) {
+			.details-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+			.detail-col {
+				border-left: 1px dashed
+					color-mix(in oklab, var(--black) 20%, transparent);
+				padding-left: 2rem;
+			}
+			.detail-col:first-child {
+				border-left: none;
+				padding-left: 0;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.hamburger {
+				display: flex;
+			}
+			.header-right .nav-link,
+			.header-right .btn-signup {
+				display: none;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- MOBILE OVERLAY -->
+		<div class="mobile-overlay" id="mobileMenu">
+			<div class="mobile-overlay-header">
+				<a href="index.html" style="color:var(--black)">
+					<svg style="height:32px" viewBox="0 0 1051 289" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z" fill="currentColor"></path>
+					</svg>
+				</a>
+				<button class="close-menu" id="closeMenu" aria-label="Close menu">
+					✕
+				</button>
+			</div>
+			<nav class="mobile-nav">
+				<a href="system-overview.html">Overview</a>
+				<a href="about.html">About</a>
+				<a href="contact.html">Contact</a>
+				<a href="integrations.html">Integrations</a>
+			</nav>
+		</div>
+
+		<!-- HEADER -->
+		<header>
+			<div class="header-inner">
+				<a href="index.html" class="header-logo">
+					<svg style="height:32px" viewBox="0 0 1051 289" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z" fill="currentColor"></path>
+					</svg>
+				</a>
+				<div class="header-right">
+					<a href="system-overview.html" class="nav-link">Overview</a>
+					<a href="sign-up.html" class="btn-signup">Sign up</a>
+					<button class="hamburger" id="menuToggle" aria-label="Open menu">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px">
+							<line x1="3" y1="6" x2="21" y2="6"></line>
+							<line x1="3" y1="12" x2="21" y2="12"></line>
+							<line x1="3" y1="18" x2="21" y2="18"></line>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- HERO -->
+		<section class="integration-hero">
+			<h1>Chargebee</h1>
+			<p>
+				Accept payments with Chargebee, one of the most popular subscription
+				billing platforms.
+			</p>
+			<div class="stacked-bars">
+				<div style="height:2px"></div>
+				<div style="height:4px"></div>
+				<div style="height:8px"></div>
+				<div style="height:12px"></div>
+			</div>
+		</section>
+
+		<!-- LOGO DISPLAY -->
+		<div class="logo-display">
+			<img src="assets/images/chargebee.svg" style="max-width: 16rem; height: auto;" alt="Chargebee">
+		</div>
+
+		<!-- CTA BANNER -->
+		<section class="cta-banner">
+			<h2>Ready to integrate Chargebee?</h2>
+			<p>Sync billing with your CRM in minutes.</p>
+			<a href="sign-up.html" class="btn-outline-white">Sign up free</a>
+		</section>
+
+		<!-- COMPANY DETAILS -->
+		<section class="company-details">
+			<div class="details-grid">
+				<div class="detail-col">
+					<div class="detail-col-label">Website</div>
+					<div class="detail-col-value">
+						<a href="https://www.chargebee.com" target="_blank" rel="noopener">chargebee.com</a>
+					</div>
+				</div>
+				<div class="detail-col">
+					<div class="detail-col-label">Category</div>
+					<div class="detail-col-value">
+						Financial Services, Online Payments, Subscription Billing
+					</div>
+				</div>
+				<div class="detail-col">
+					<div class="detail-col-label">Resources</div>
+					<div class="detail-col-value detail-col-links">
+						<a href="#">Integration Guide</a>
+						<a href="#">Support</a>
+						<a href="#">Developer Docs</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- HOW TO INTEGRATE -->
+		<section class="how-to">
+			<div class="how-to-inner">
+				<h2>How to Integrate Chargebee with Your App</h2>
+
+				<span class="step-label">Step 1</span>
+				<h3>Create your Chargebee account</h3>
+				<p>
+					Begin by signing up for a Chargebee account at chargebee.com. During
+					the setup process, you'll configure your site name — this becomes your
+					unique subdomain (e.g., <code>yourcompany.chargebee.com</code>) and is
+					required for all subsequent API calls. Choose the plan that matches
+					your billing volume and enable the product catalog features you intend
+					to use: products, plans, add-ons, and coupons. Once your account is
+					active, navigate to the Settings section to configure your default
+					currency, tax settings, and invoice branding before connecting to
+					external systems.
+				</p>
+
+				<span class="step-label">Step 2</span>
+				<h3>Generate API credentials</h3>
+				<p>
+					Chargebee uses API keys for authentication. From your Chargebee
+					dashboard, go to Settings → API Keys and Webhooks. Create a new
+					full-access API key for your production environment, and a separate
+					test-mode key for your staging setup. Copy both keys immediately and
+					store them securely in your environment variable manager — Chargebee
+					will not display full keys again after creation. Your API key is
+					passed as the username in HTTP Basic Auth with an empty password
+					field. Confirm access by making a test call to the
+					<code>/api/v2/customers</code>
+					endpoint; a 200 response confirms your credentials are valid.
+				</p>
+
+				<span class="step-label">Step 3</span>
+				<h3>Connect to Ælen</h3>
+				<p>
+					In your Ælen CRM workspace, navigate to Settings → Integrations →
+					Chargebee. Paste your Chargebee site name and API key into the
+					configuration form. Ælen will perform a handshake verification,
+					pulling a small batch of existing subscriptions to confirm read
+					access. Once verified, you'll see a green confirmation badge and the
+					sync options panel will unlock. You can choose to do an initial full
+					sync of your existing Chargebee customer and subscription data into
+					Ælen contact records, or opt for forward-only syncing if your
+					Chargebee history is large and you prefer a clean start from the
+					connection date.
+				</p>
+
+				<span class="step-label">Step 4</span>
+				<h3>Configure webhook events</h3>
+				<p>
+					Webhooks are what keep Ælen updated in real time as billing events
+					occur in Chargebee. In Chargebee's Settings → API Keys and Webhooks →
+					Webhooks panel, add a new webhook endpoint pointing to your Ælen
+					webhook URL — found in Ælen under Settings → Integrations → Chargebee
+					→ Webhook URL. Select the event types you want Ælen to receive: at
+					minimum, enable <code>subscription_created</code>,
+					<code>subscription_renewed</code>,
+					<code>subscription_cancelled</code>, <code>customer_created</code>,
+					and <code>invoice_generated</code>. These events trigger automatic
+					updates to the corresponding contact records and deal stages in Ælen
+					without requiring manual data entry. Test each webhook using
+					Chargebee's built-in event replay tool to confirm Ælen is receiving
+					and processing events correctly.
+				</p>
+
+				<span class="step-label">Step 5</span>
+				<h3>Test the integration</h3>
+				<p>
+					Before going live, use Chargebee's test mode to simulate the full
+					subscription lifecycle: create a test customer, subscribe them to a
+					plan, renew the subscription, then cancel it. In parallel, watch
+					Ælen's activity feed for the corresponding contact to confirm each
+					event is being captured and mapped correctly. Verify that subscription
+					status, MRR value, and next renewal date are appearing on the correct
+					fields in Ælen's contact detail view. Run at least one invoice
+					generation event and confirm it surfaces as a deal activity in the
+					associated pipeline record. Once all five key events validate cleanly
+					in test mode, switch your Chargebee webhook to point at your
+					production Ælen endpoint and flip the integration toggle from Test to
+					Live. Your Chargebee billing data will now flow into Ælen
+					automatically.
+				</p>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-dividers">
+				<div style="height:2px"></div>
+				<div style="height:4px"></div>
+				<div style="height:8px"></div>
+				<div style="height:12px"></div>
+			</div>
+			<div class="footer-social">
+				<a href="#" aria-label="X (Twitter)">
+					<svg viewBox="0 0 24 24" fill="currentColor">
+						<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.213 5.567 5.952-5.567Zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+					</svg>
+				</a>
+				<a href="#" aria-label="LinkedIn">
+					<svg viewBox="0 0 24 24" fill="currentColor">
+						<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+					</svg>
+				</a>
+				<a href="#" aria-label="YouTube">
+					<svg viewBox="0 0 24 24" fill="currentColor">
+						<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+					</svg>
+				</a>
+				<a href="#" aria-label="Instagram">
+					<svg viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path>
+					</svg>
+				</a>
+			</div>
+			<nav class="footer-nav">
+				<a href="system-overview.html">Overview</a>
+				<a href="about.html">About</a>
+				<a href="#">Careers</a>
+				<a href="contact.html">Contact</a>
+				<a href="#">Blog</a>
+				<a href="#">Changelog</a>
+				<a href="#">Pricing</a>
+			</nav>
+			<div class="footer-wordmark">
+				<svg viewBox="0 0 1051 289" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z" fill="white"></path>
+				</svg>
+				<div class="footer-copy">© Copyright Lexington Themes 2026</div>
+			</div>
+		</footer>
+
+		<script>
+		const menuToggle = document.getElementById("menuToggle");
+		const mobileMenu = document.getElementById("mobileMenu");
+		const closeMenu = document.getElementById("closeMenu");
+		menuToggle?.addEventListener("click", () =>
+			mobileMenu.classList.add("active"),
+		);
+		closeMenu?.addEventListener("click", () =>
+			mobileMenu.classList.remove("active"),
+		);
+		</script>
+	
+
+</body></html>

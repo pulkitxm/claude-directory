@@ -1,5 +1,7 @@
 # Superdesign Red Noir — AI Design Tool Landing Page (TanStack Start + React 19 + Tailwind v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A pixel-faithful recreation of the "Red Noir" Superdesign AI design tool landing page, built with **TanStack Start v1**, **React 19**, **TypeScript**, **Tailwind v4**, and **lucide-react** — a dark maroon-and-red hero landing page with parallax starfields, animated gradients, and a bento feature grid. Generated with Claude Fable 5.
 
 The page is one scrolling document composed of stacked sections, in order:

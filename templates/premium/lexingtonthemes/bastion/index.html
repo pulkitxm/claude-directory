@@ -1,0 +1,2399 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#ffffff">
+		<title>Bastion — Construction Company</title>
+		<meta
+			name="description"
+			content="Bastion delivers high-quality construction through expert planning, skilled craftsmanship, and dependable execution."
+		>
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+		<!-- Design Tokens -->
+		<link rel="stylesheet" href="tokens.css">
+
+		<!-- Keen Slider (for testimonials carousel) -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css"
+			rel="stylesheet"
+		>
+
+		<style>
+		/* ============================================================
+       HOME-PAGE SPECIFIC STYLES
+       ============================================================ */
+
+		/* ── HERO ── */
+		.hero {
+			position: relative;
+			min-height: 80dvh;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.hero-video-wrap {
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+		}
+
+		.hero-video-wrap video {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.hero-overlay {
+			position: absolute;
+			inset: 0;
+			background: rgba(3, 12, 20, 0.6);
+			pointer-events: none;
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 10;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.hero-inner {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			padding-block: 3rem;
+			padding-top: 6rem;
+		}
+
+		@media (min-width: 1024px) {
+			.hero-inner {
+				border-left: 1px solid rgba(255, 255, 255, 0.1);
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+			}
+		}
+
+		.hero-label {
+			font-size: var(--text-sm);
+			text-transform: uppercase;
+			color: var(--color-white);
+			letter-spacing: 0.05em;
+		}
+
+		.hero-title {
+			font-size: var(--text-3xl);
+			font-weight: var(--fw-medium);
+			color: var(--color-white);
+			letter-spacing: var(--tracking-tight);
+			margin-top: 3rem;
+			max-width: 32rem;
+			line-height: 1.2;
+			text-wrap: balance;
+		}
+
+		@media (min-width: 768px) {
+			.hero-title {
+				font-size: var(--text-4xl);
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.hero-title {
+				font-size: var(--text-5xl);
+			}
+		}
+
+		.hero-text {
+			font-size: var(--text-base);
+			color: var(--color-white);
+			max-width: 28rem;
+			margin-top: 1rem;
+			line-height: 1.6;
+		}
+
+		@media (min-width: 640px) {
+			.hero-text {
+				font-size: var(--text-lg);
+			}
+		}
+
+		@media (min-width: 768px) {
+			.hero-text {
+				font-size: var(--text-xl);
+			}
+		}
+
+		.hero-stats-bar {
+			position: relative;
+			z-index: 10;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.hero-stats-inner {
+			padding-block: 2rem;
+		}
+
+		@media (min-width: 1024px) {
+			.hero-stats-inner {
+				border-left: 1px solid rgba(255, 255, 255, 0.1);
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+			}
+		}
+
+		.hero-stats-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1rem 2rem;
+			max-width: 48rem;
+			margin-left: auto;
+		}
+
+		@media (min-width: 768px) {
+			.hero-stats-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		.hero-stat-num {
+			font-size: var(--text-3xl);
+			font-weight: var(--fw-medium);
+			color: var(--color-white);
+			font-style: italic;
+		}
+
+		@media (min-width: 768px) {
+			.hero-stat-num {
+				font-size: var(--text-4xl);
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.hero-stat-num {
+				font-size: var(--text-5xl);
+			}
+		}
+
+		.hero-stat-label {
+			font-size: var(--text-sm);
+			color: var(--color-base-400);
+			margin-top: 0.25rem;
+		}
+
+		/* ── SECTION 2: DARK INFO STRIP ── */
+		.info-strip {
+			background-color: var(--color-accent-950);
+		}
+
+		.info-strip-inner {
+			padding-block: 0;
+		}
+
+		@media (min-width: 1024px) {
+			.info-strip-inner {
+				border-left: 1px solid rgba(255, 255, 255, 0.1);
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+			}
+		}
+
+		.info-strip-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem 5rem;
+		}
+
+		@media (min-width: 1024px) {
+			.info-strip-grid {
+				grid-template-columns: repeat(3, 1fr);
+				gap: 0;
+			}
+		}
+
+		/* Accent colored first column box */
+		.info-col-accent {
+			background-color: var(--color-accent-600);
+			padding: 2rem;
+			position: relative;
+			z-index: 10;
+		}
+
+		@media (min-width: 1024px) {
+			.info-col-accent {
+				margin-top: -6.5rem; /* negative margin to overlap hero */
+			}
+		}
+
+		.info-col-accent-logo {
+			height: 3rem;
+			color: var(--color-white);
+		}
+
+		.info-col-accent h2 {
+			font-size: var(--text-2xl);
+			font-weight: var(--fw-medium);
+			letter-spacing: var(--tracking-tight);
+			color: var(--color-white);
+			margin-top: 3rem;
+		}
+
+		.info-detail-label {
+			font-size: var(--text-sm);
+			text-transform: uppercase;
+			color: var(--color-base-100);
+			font-weight: var(--fw-medium);
+			display: block;
+			margin-top: 1.5rem;
+		}
+
+		.info-detail-value {
+			font-size: var(--text-base);
+			color: var(--color-white);
+			margin-top: 0.25rem;
+		}
+
+		.info-col-mid {
+			padding: 3rem 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		@media (min-width: 1024px) {
+			.info-col-mid {
+				padding: 3rem 5rem 3rem 5rem;
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+				border-left: 1px solid rgba(255, 255, 255, 0.1);
+			}
+		}
+
+		.info-col-cta {
+			padding: 3rem 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		@media (min-width: 1024px) {
+			.info-col-cta {
+				padding: 3rem 0 3rem 5rem;
+			}
+		}
+
+		/* ── SERVICES SECTION ── */
+		.services-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+
+		@media (min-width: 1024px) {
+			.services-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		.service-card img {
+			width: 100%;
+			aspect-ratio: 4 / 3;
+			object-fit: cover;
+			object-position: center;
+		}
+
+		.service-card-tag {
+			font-size: var(--text-xs);
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--color-accent-500);
+			font-weight: var(--fw-medium);
+			margin-top: 1rem;
+			display: block;
+		}
+
+		.service-card-title {
+			font-size: var(--text-xl);
+			font-weight: var(--fw-medium);
+			color: var(--color-accent-900);
+			margin-top: 0.5rem;
+			letter-spacing: var(--tracking-tight);
+		}
+
+		@media (min-width: 768px) {
+			.service-card-title {
+				font-size: var(--text-2xl);
+			}
+		}
+
+		.service-card-text {
+			font-size: var(--text-base);
+			color: var(--color-base-600);
+			margin-top: 0.5rem;
+			line-height: 1.6;
+		}
+
+		.service-link {
+			position: relative;
+			display: inline-flex;
+			font-size: var(--text-base);
+			font-weight: var(--fw-medium);
+			color: var(--color-accent-900);
+			text-decoration: none;
+			margin-top: 1rem;
+			transition: color var(--duration-300);
+		}
+
+		.service-link::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: -4px;
+			height: 2px;
+			width: 0;
+			background-color: var(--color-accent-500);
+			transition: width var(--duration-300) var(--ease-out);
+		}
+
+		.service-link:hover {
+			color: var(--color-accent-500);
+		}
+
+		.service-link:hover::after {
+			width: 100%;
+		}
+
+		/* ── PROJECTS SECTION ── */
+		.projects-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		@media (min-width: 768px) {
+			.projects-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		.project-card {
+			position: relative;
+			overflow: hidden;
+			display: block;
+			aspect-ratio: 4 / 3;
+		}
+
+		.project-card img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform var(--duration-500) var(--ease-in-out);
+		}
+
+		.project-card:hover img {
+			transform: scale(1.05);
+		}
+
+		.project-card-overlay {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(
+				to top,
+				rgba(3, 12, 20, 0.85) 0%,
+				transparent 55%
+			);
+		}
+
+		.project-card-content {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 1.5rem;
+		}
+
+		.project-card-title {
+			font-size: var(--text-xl);
+			font-weight: var(--fw-medium);
+			color: var(--color-white);
+		}
+
+		.project-card-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.375rem;
+			font-size: var(--text-sm);
+			color: var(--color-base-300);
+			text-decoration: none;
+			margin-top: 0.5rem;
+			transition: color var(--duration-300);
+		}
+
+		.project-card-link:hover {
+			color: var(--color-white);
+		}
+
+		/* ── DARK CTA SECTION ── */
+		.dark-cta {
+			background-color: var(--color-accent-950);
+		}
+
+		.dark-cta-inner {
+			padding-block: 6rem;
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			align-items: flex-start;
+		}
+
+		@media (min-width: 1024px) {
+			.dark-cta-inner {
+				padding-block: 10rem;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+				border-left: 1px solid rgba(255, 255, 255, 0.1);
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+			}
+		}
+
+		.dark-cta-title {
+			font-size: var(--text-3xl);
+			font-weight: var(--fw-medium);
+			color: var(--color-white);
+			letter-spacing: var(--tracking-tight);
+			max-width: 36rem;
+			text-wrap: balance;
+			line-height: 1.2;
+		}
+
+		@media (min-width: 768px) {
+			.dark-cta-title {
+				font-size: var(--text-4xl);
+			}
+		}
+		@media (min-width: 1024px) {
+			.dark-cta-title {
+				font-size: var(--text-5xl);
+			}
+		}
+
+		/* ── TEAM SECTION ── */
+		.team-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+
+		@media (min-width: 768px) {
+			.team-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.team-grid {
+				grid-template-columns: repeat(6, 1fr);
+			}
+		}
+
+		.team-card img {
+			width: 100%;
+			aspect-ratio: 1;
+			object-fit: cover;
+			object-position: top center;
+			filter: grayscale(30%);
+			transition: filter var(--duration-300);
+		}
+
+		.team-card:hover img {
+			filter: grayscale(0%);
+		}
+
+		.team-card-name {
+			font-size: var(--text-base);
+			font-weight: var(--fw-medium);
+			color: var(--color-base-900);
+			margin-top: 0.75rem;
+		}
+
+		.team-card-role {
+			font-size: var(--text-sm);
+			color: var(--color-base-500);
+			margin-top: 0.125rem;
+		}
+
+		/* ── BLOG SECTION ── */
+		.blog-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+
+		@media (min-width: 768px) {
+			.blog-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.blog-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		.blog-card {
+			display: block;
+			text-decoration: none;
+		}
+
+		.blog-card img {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			object-fit: cover;
+		}
+
+		.blog-card-meta {
+			font-size: var(--text-xs);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			color: var(--color-base-400);
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin-top: 1rem;
+		}
+
+		.blog-card-title {
+			font-size: var(--text-xl);
+			font-weight: var(--fw-medium);
+			color: var(--color-base-900);
+			letter-spacing: var(--tracking-tight);
+			margin-top: 0.5rem;
+			line-height: 1.3;
+			transition: color var(--duration-300);
+		}
+
+		.blog-card:hover .blog-card-title {
+			color: var(--color-accent-600);
+		}
+
+		.blog-card-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.375rem;
+			font-size: var(--text-sm);
+			font-weight: var(--fw-medium);
+			color: var(--color-accent-600);
+			margin-top: 0.75rem;
+			text-decoration: none;
+		}
+
+		/* Accent heading helpers */
+		.text-accent {
+			color: var(--color-accent-900);
+		}
+		.text-accent-mid {
+			color: var(--color-accent-500);
+		}
+		.text-accent-light {
+			color: var(--color-accent-300);
+		}
+
+		/* Section header layout: label + title + optional sidebar text */
+		.section-header-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 3rem;
+		}
+
+		@media (min-width: 1024px) {
+			.section-header-grid {
+				grid-template-columns: 1fr 2fr;
+				align-items: start;
+			}
+		}
+
+		.blog-header {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			align-items: end;
+		}
+
+		@media (min-width: 1024px) {
+			.blog-header {
+				grid-template-columns: 1fr auto;
+			}
+		}
+
+		/* ── TESTIMONIAL HOVER ── */
+		.testimonial-card:hover .testimonial-hover-overlay {
+			opacity: 1 !important;
+		}
+		.testimonial-card:hover img {
+			transform: scale(1.05);
+		}
+		</style>
+	</head>
+	<body>
+		<!-- ============================================================
+       NAVIGATION (copied exactly from nav.html)
+       ============================================================ -->
+		<nav class="site-nav" id="site-nav" aria-label="Main navigation">
+			<div class="container">
+				<div class="nav-inner">
+					<!-- Logo -->
+					<a href="index.html" aria-label="Bastion Home" class="nav-logo">
+						<svg
+							viewBox="0 0 394 118"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M115.165 34.8256V2C99.4547 2 89.5225 8.58854 83.5801 16.2918C78.9381 22.3091 77.8196 29.812 76.6882 37.4016C75.8715 42.8796 75.0481 48.4027 72.8882 53.445C69.6729 60.9512 64.6742 66.2306 60.6709 69.1991C57.827 71.1061 52.9896 73.7932 49.743 74.257C49.1892 74.3361 48.45 74.3867 47.574 74.4467C40.3422 74.9421 23.7814 76.0764 25.0878 99.1563C25.1692 97.8544 26.0642 95.0552 28.9936 94.2741H87.3362C87.2548 89.0664 84.2604 78.1139 72.9336 75.9657L72.5308 75.6566C92.7899 79.0407 105.303 66.2841 111.501 54.179C114.536 48.2516 115.165 41.4848 115.165 34.8256ZM31.4347 90.8565C32.6481 90.8565 33.6317 89.8729 33.6317 88.6595C33.6317 87.4462 32.6481 86.4625 31.4347 86.4625C30.2213 86.4625 29.2377 87.4462 29.2377 88.6595C29.2377 89.8729 30.2213 90.8565 31.4347 90.8565Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M8 7.12634V35.2212C8 41.363 8.56475 47.616 11.416 53.0559C18.088 65.785 32.7431 79.0304 57.5546 67.1777C52.5738 64.4027 43.4616 55.7666 42.0354 41.6283C41.9101 40.3856 41.8436 39.1332 41.7771 37.8821C41.6158 34.8438 41.4549 31.8137 40.4524 28.9505C37.0824 19.3258 27.8665 7.12634 8 7.12634Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M108.574 94.5182H87.5803V116C104.961 114.633 108.818 101.109 108.574 94.5182Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M144.557 13.076V50H138.091V13.076H144.557ZM152.74 34.2909H142.587V28.8356H152.386C154.171 28.8356 155.535 28.3979 156.478 27.5223C157.421 26.6131 157.892 25.3335 157.892 23.6834C157.892 22.1007 157.404 20.8885 156.427 20.0466C155.451 19.2047 154.036 18.7838 152.184 18.7838H142.385V13.076H152.74C156.41 13.076 159.289 13.9684 161.377 15.7531C163.465 17.5379 164.509 19.9793 164.509 23.0773C164.509 25.2998 163.97 27.1687 162.893 28.6841C161.815 30.1658 160.216 31.2433 158.094 31.9168V31.2097C160.384 31.7485 162.118 32.7587 163.297 34.2404C164.475 35.722 165.065 37.6415 165.065 39.9987C165.065 42.0865 164.593 43.8881 163.65 45.4034C162.707 46.8851 161.327 48.03 159.508 48.8382C157.724 49.6127 155.568 50 153.043 50H142.385V44.2922H152.74C154.592 44.2922 156.006 43.8544 156.983 42.9789C157.959 42.1033 158.448 40.8406 158.448 39.1905C158.448 37.6415 157.943 36.446 156.932 35.6042C155.956 34.7287 154.558 34.2909 152.74 34.2909ZM175.489 50.6567C172.862 50.6567 170.774 49.9495 169.225 48.5352C167.71 47.0872 166.952 45.2014 166.952 42.8779C166.952 40.588 167.743 38.7696 169.326 37.4226C170.943 36.042 173.232 35.2338 176.196 34.998L183.671 34.3919V33.8363C183.671 32.6 183.285 31.6917 182.512 31.1107C181.739 30.5297 180.645 30.2392 179.232 30.2392C177.818 30.2392 176.707 30.5549 175.9 31.1864C175.127 31.8179 174.623 32.7012 174.387 33.8363L168.469 32.623C168.906 30.2308 170.034 28.3787 171.852 27.0669C173.703 25.7213 176.163 25.0485 179.232 25.0485C182.603 25.0485 185.148 25.7719 186.865 27.2187C188.617 28.6655 189.493 30.7365 189.493 33.4319V44.1407C189.493 44.6966 189.611 45.0966 189.847 45.3406C190.117 45.5847 190.503 45.7067 191.008 45.7067H192.387V50H190.144C188.663 50 187.401 49.7391 186.359 49.2171C185.351 48.695 184.696 47.9886 184.394 47.0972H183.923C183.419 48.0054 182.562 48.7961 181.352 49.4696C180.176 50.143 178.879 50.4673 177.457 50.4673L175.489 50.6567ZM177.457 45.8034C179.007 45.8034 180.294 45.3069 181.318 44.3141C182.376 43.3213 182.905 42.0526 182.905 40.508V39.3967L178.056 39.8966C176.743 40.0338 175.74 40.3578 175.045 40.8684C174.35 41.3791 174.003 42.0865 174.003 42.9909C174.003 43.8273 174.316 44.5009 174.94 45.0119C175.599 45.5226 176.44 45.8034 177.457 45.8034Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M198.661 50V13.076H204.484V50H198.661ZM215.469 50.6567C213.615 50.6567 212.016 50.2199 210.669 49.3456C209.357 48.4713 208.315 47.2685 207.542 45.7367C206.769 44.205 206.383 42.4201 206.383 40.3831V25.7467H212.207V39.3967C212.207 41.0793 212.626 42.4115 213.464 43.3885C214.302 44.3655 215.444 44.854 216.888 44.854C218.436 44.854 219.671 44.3148 220.594 43.2368C221.516 42.158 221.977 40.7027 221.977 38.8709V25.7467H227.801V50H222.545V46.677H222.074C221.57 47.7887 220.783 48.6882 219.713 49.3456C218.643 50.0031 217.17 50.6567 215.469 50.6567Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M242.895 50.6567C240.942 50.6567 239.225 50.0962 237.743 48.9752C236.296 47.8205 235.19 46.2888 234.417 44.3803C233.644 42.4719 233.258 40.3072 233.258 37.8844C233.258 35.4279 233.644 33.2548 234.417 31.3651C235.19 29.4398 236.296 27.9281 237.743 26.8299C239.225 25.6955 240.942 25.1283 242.895 25.1283C244.578 25.1283 246.054 25.5651 247.326 26.4387C248.597 27.3124 249.56 28.5152 250.215 30.047H250.686V13.076H256.51V50H251.254V46.677H250.783C250.128 48.2425 249.165 49.4622 247.894 50.3359C246.622 51.2163 245.112 50.6567 242.895 50.6567ZM244.657 44.9534C246.475 44.9534 247.931 44.2816 249.024 42.9379C250.15 41.5604 250.712 39.5877 250.712 37.0209C250.712 34.4205 250.15 32.4308 249.024 31.0532C247.931 29.6419 246.475 28.9363 244.657 28.9363C242.772 28.9363 241.283 29.6587 240.19 31.1032C239.131 32.5141 238.601 34.47 238.601 36.9706C238.601 39.4882 239.148 41.4778 240.24 42.9379C241.333 44.3984 242.806 44.9534 244.657 44.9534Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M260.793 50V13.076H266.617V50H260.793ZM270.534 50V25.7467H276.358V50H270.534ZM273.436 22.2339C272.362 22.2339 271.48 21.8897 270.793 21.201C270.139 20.4787 269.811 19.5872 269.811 18.5264C269.811 17.4657 270.139 16.5742 270.793 15.8519C271.48 15.1296 272.362 14.7685 273.436 14.7685C274.509 14.7685 275.391 15.1296 276.079 15.8519C276.8 16.5742 277.16 17.4657 277.16 18.5264C277.16 19.5872 276.8 20.4787 276.079 21.201C275.391 21.8897 274.509 22.2339 273.436 22.2339Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M288.225 50.6567C285.833 50.6567 283.745 50.2199 281.961 49.3456C280.176 48.4713 278.763 47.2854 277.722 45.7874C276.714 44.2894 276.21 42.5383 276.21 40.534L281.912 40.0338C281.945 41.4946 282.499 42.6492 283.574 43.4978C284.682 44.3126 286.15 44.72 287.979 44.72C289.74 44.72 291.105 44.4254 292.079 43.836C293.085 43.2467 293.588 42.4455 293.588 41.432C293.588 40.6847 293.303 40.0675 292.734 39.5806C292.164 39.0936 291.207 38.6695 289.864 38.3082L284.842 36.9877C282.787 36.4668 281.215 35.597 280.126 34.3784C279.037 33.1598 278.492 31.6496 278.492 29.8481C278.492 28.0127 278.98 26.4124 279.955 25.0485C280.929 23.6846 282.274 22.6402 283.992 21.9185C285.71 21.1968 287.706 20.8359 289.98 20.8359C293.402 20.8359 296.068 21.6006 297.978 23.1301C299.888 24.6596 300.84 26.6918 300.84 29.2268L295.158 29.7269C295.159 28.4751 294.723 27.488 293.85 26.7649C292.975 26.0417 291.733 25.6802 290.123 25.6802C288.545 25.6802 287.274 25.9908 286.308 26.6118C285.343 27.2328 284.861 28.0549 284.861 29.0781C284.861 29.7982 285.129 30.3879 285.666 30.8474C286.203 31.3069 287.059 31.7025 288.232 32.0341L293.156 33.3254C295.347 33.9135 296.988 34.8237 298.079 36.0554C299.169 37.2872 299.714 38.9038 299.714 40.905C299.714 43.3443 298.757 45.2528 296.845 46.6304C294.93 48.0079 292.378 50.6567 288.225 50.6567Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M305.918 50V30.1921H300.963V25.7467H305.918V18.8203H311.741V25.7467H317.565V30.1921H311.741V50H305.918Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M329.469 50.6567C327.314 50.6567 325.41 50.1698 323.757 49.196C322.138 48.2222 320.871 46.862 319.962 45.1153C319.052 43.3348 318.598 41.2807 318.598 38.953C318.598 36.3188 319.103 34.0803 320.111 32.2374C321.119 30.3944 322.504 28.9835 324.264 28.0047C326.024 27.0259 328.04 26.5365 330.312 26.5365C332.47 26.5365 334.34 27.0429 335.924 28.0557C337.54 29.0347 338.79 30.4249 339.673 32.2262C340.59 33.9937 341.048 36.0461 341.048 38.384V40.2285H323.888C324.056 42.0641 324.643 43.5171 325.651 44.5879C326.659 45.6587 328.025 46.1942 329.749 46.1942C331.07 46.1942 332.141 45.8806 332.963 45.2528C333.818 44.6249 334.321 43.8053 334.474 42.7941H340.097C339.877 44.8128 338.869 46.5284 337.074 47.9406C335.279 49.3528 332.65 50.6567 329.469 50.6567ZM324.2 36.8211H335.283C335.114 35.2888 334.578 34.0548 333.671 33.1189C332.797 32.1831 331.609 31.7152 330.108 31.7152C328.607 31.7152 327.377 32.183 326.42 33.1189C325.462 34.0548 324.86 35.2888 324.2 36.8211Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M345.003 50V25.7467H350.26V29.3164H350.731C351.234 28.172 352.038 27.2571 353.14 26.5717C354.243 25.8524 355.634 25.493 357.32 25.493C359.11 25.493 360.657 25.9633 361.963 26.9037C363.302 27.8442 364.259 29.1665 364.83 30.8704H365.301C365.939 29.2 366.955 27.8914 368.351 26.9447C369.748 25.9644 371.437 25.4738 373.419 25.4738C375.915 25.4738 377.931 26.3051 379.466 27.9678C381.001 29.5968 381.769 31.8368 381.769 34.6879V50H375.945V35.4977C375.945 33.8986 375.576 32.6681 374.836 31.8064C374.097 30.9447 373.07 30.5139 371.754 30.5139C370.271 30.5139 369.086 31.0078 368.196 31.9955C367.339 32.9832 366.911 34.3114 366.911 35.9805V50H361.087V35.4977C361.087 33.8986 360.718 32.6681 359.978 31.8064C359.238 30.9447 358.211 30.5139 356.895 30.5139C355.412 30.5139 354.227 31.0078 353.337 31.9955C352.48 32.9832 352.052 34.3114 352.052 35.9805V50H345.003Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M383.972 56.1339V52.5547H386.166C387.019 52.5547 387.687 52.3263 388.172 51.8693C388.656 51.4122 388.899 50.8218 388.899 50.0979V25.7467H394.722V50.8756C394.722 52.6753 394.179 54.0781 393.092 55.0839C392.005 56.0897 390.471 56.5927 388.49 56.5927H386.213L383.972 56.1339ZM391.743 22.2339C390.636 22.2339 389.737 21.8897 389.049 21.201C388.394 20.4787 388.067 19.5872 388.067 18.5264C388.067 17.4657 388.394 16.5742 389.049 15.8519C389.737 15.1296 390.636 14.7685 391.743 14.7685C392.851 14.7685 393.75 15.1296 394.438 15.8519C395.126 16.5742 395.47 17.4657 395.47 18.5264C395.47 19.5872 395.126 20.4787 394.438 21.201C393.75 21.8897 392.851 22.2339 391.743 22.2339Z"
+								fill="currentColor"
+							/>
+						</svg>
+					</a>
+
+					<!-- Desktop Nav Pill -->
+					<nav class="nav-pill" aria-label="Desktop navigation">
+						<a href="index.html" class="nav-link" aria-current="page">Home</a>
+						<a href="about.html" class="nav-link">About</a>
+						<a href="services.html" class="nav-link">Services</a>
+						<a href="projects.html" class="nav-link">Projects</a>
+						<a href="team.html" class="nav-link">Team</a>
+						<a href="careers.html" class="nav-link">Careers</a>
+						<a href="blog.html" class="nav-link">Blog</a>
+						<a href="contact.html" class="nav-link">Contact</a>
+						<a href="system-overview.html" class="nav-link">Overview</a>
+					</nav>
+
+					<!-- Desktop CTA -->
+					<div class="nav-cta">
+						<!-- Search Button -->
+						<button
+							class="btn btn-light btn-icon"
+							id="search-toggle"
+							aria-label="Open search"
+						>
+							<svg class="icon icon-md" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M3 10a7 7 0 1 0 14 0A7 7 0 0 0 3 10Zm18 11-6-6" />
+							</svg>
+						</button>
+						<a href="contact.html" class="btn btn-light btn-sm">Get in touch</a>
+					</div>
+
+					<!-- Mobile Hamburger -->
+					<button
+						class="nav-mobile-btn"
+						id="mobile-menu-toggle"
+						aria-label="Toggle menu"
+						aria-expanded="false"
+					>
+						<svg
+							class="icon icon-lg"
+							id="hamburger-icon"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+						>
+							<path d="M4 6h16M4 12h16M4 18h16" />
+						</svg>
+						<svg
+							class="icon icon-lg"
+							id="close-icon"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+							style="display:none"
+						>
+							<path d="M18 6 6 18M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Mobile Menu -->
+		<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+			<div class="mobile-menu-inner">
+				<a href="index.html" class="mobile-menu-link">Home</a>
+				<a href="about.html" class="mobile-menu-link">About</a>
+				<a href="services.html" class="mobile-menu-link">Services</a>
+				<a href="projects.html" class="mobile-menu-link">Projects</a>
+				<a href="team.html" class="mobile-menu-link">Team</a>
+				<a href="careers.html" class="mobile-menu-link">Careers</a>
+				<a href="blog.html" class="mobile-menu-link">Blog</a>
+				<a href="contact.html" class="mobile-menu-link">Contact</a>
+				<div
+					style="margin-top:2rem;display:flex;flex-direction:column;gap:0.75rem;"
+				>
+					<a
+						href="contact.html"
+						class="btn btn-light"
+						style="width:100%;height:2.75rem;font-size:var(--text-base);"
+						>Get in touch</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Search Modal -->
+		<div
+			class="search-modal"
+			id="search-modal"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Search"
+		>
+			<div class="search-modal-center">
+				<div class="search-modal-box">
+					<div class="search-modal-header">
+						<div>
+							<span class="search-modal-label">Search</span>
+							<h2
+								style="color:var(--color-white);font-size:var(--text-xl);font-weight:var(--fw-medium);letter-spacing:var(--tracking-tight);margin-top:3rem;"
+							>
+								Find what you need
+							</h2>
+							<p
+								style="color:var(--color-base-300);font-size:var(--text-sm);margin-top:0.25rem;"
+							>
+								Posts, services, projects, team, careers, and legal pages.
+							</p>
+						</div>
+						<button
+							class="btn btn-dark btn-icon"
+							id="search-close"
+							aria-label="Close search"
+						>
+							<svg class="icon icon-md" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M18 6 6 18M6 6l12 12" />
+							</svg>
+						</button>
+					</div>
+					<div style="padding:1rem 1.5rem 1.5rem;">
+						<div class="search-modal-input-wrap">
+							<span class="search-modal-input-icon">
+								<svg
+									class="icon icon-sm"
+									viewBox="0 0 24 24"
+									aria-hidden="true"
+								>
+									<path d="M3 10a7 7 0 1 0 14 0A7 7 0 0 0 3 10Zm18 11-6-6" />
+								</svg>
+							</span>
+							<input
+								type="search"
+								class="search-modal-input"
+								id="search-input"
+								placeholder="Search pages, projects, services..."
+								autocomplete="off"
+							>
+						</div>
+						<div class="search-results" id="search-results"></div>
+						<p
+							class="search-no-results"
+							id="search-no-results"
+							style="display:none;padding:1rem;font-size:var(--text-sm);color:var(--color-base-300);"
+						>
+							No results found
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+		<main style="flex:1;">
+			<!-- ══════════════════════════════════════════════════════════
+         SECTION 1: HERO
+         ══════════════════════════════════════════════════════════ -->
+			<section class="hero" aria-label="Hero">
+				<!-- Video background -->
+				<div class="hero-video-wrap" aria-hidden="true">
+					<video autoplay muted loop playsinline>
+						<source src="assets/night.mp4" type="video/mp4">
+					</video>
+					<div class="hero-overlay"></div>
+				</div>
+
+				<!-- Hero content -->
+				<div class="hero-content">
+					<div class="container">
+						<div class="hero-inner">
+							<div style="max-width:32rem;">
+								<p class="hero-label">Built for you</p>
+								<h1 class="hero-title">
+									Everyday building with purpose and precision
+								</h1>
+								<p class="hero-text">
+									We deliver high-quality construction through expert planning,
+									skilled craftsmanship, and dependable execution.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Stats bar -->
+					<div class="hero-stats-bar">
+						<div class="container">
+							<div class="hero-stats-inner">
+								<div class="hero-stats-grid">
+									<div>
+										<p class="hero-stat-num">50+</p>
+										<p class="hero-stat-label">Project complete</p>
+									</div>
+									<div>
+										<p class="hero-stat-num">100+</p>
+										<p class="hero-stat-label">Expert teams</p>
+									</div>
+									<div>
+										<p class="hero-stat-num">$3.5M</p>
+										<p class="hero-stat-label">Project value</p>
+									</div>
+									<div>
+										<p class="hero-stat-num">$3.5M</p>
+										<p class="hero-stat-label">Project value</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ══════════════════════════════════════════════════════════
+         SECTION 2: DARK INFO STRIP (overlaps hero)
+         ══════════════════════════════════════════════════════════ -->
+			<section class="info-strip" aria-label="Contact information">
+				<div class="container">
+					<div class="info-strip-inner">
+						<div class="info-strip-grid">
+							<!-- Column 1: Accent box with logo + contact (overlaps hero via -mt) -->
+							<div class="info-col-accent">
+								<!-- Logo SVG (just the icon mark) -->
+								<svg
+									class="info-col-accent-logo"
+									viewBox="0 0 118 118"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M115.165 34.8256V2C99.4547 2 89.5225 8.58854 83.5801 16.2918C78.9381 22.3091 77.8196 29.812 76.6882 37.4016C75.8715 42.8796 75.0481 48.4027 72.8882 53.445C69.6729 60.9512 64.6742 66.2306 60.6709 69.1991C57.827 71.1061 52.9896 73.7932 49.743 74.257C49.1892 74.3361 48.45 74.3867 47.574 74.4467C40.3422 74.9421 23.7814 76.0764 25.0878 99.1563C25.1692 97.8544 26.0642 95.0552 28.9936 94.2741H87.3362C87.2548 89.0664 84.2604 78.1139 72.9336 75.9657L72.5308 75.6566C92.7899 79.0407 105.303 66.2841 111.501 54.179C114.536 48.2516 115.165 41.4848 115.165 34.8256ZM31.4347 90.8565C32.6481 90.8565 33.6317 89.8729 33.6317 88.6595C33.6317 87.4462 32.6481 86.4625 31.4347 86.4625C30.2213 86.4625 29.2377 87.4462 29.2377 88.6595C29.2377 89.8729 30.2213 90.8565 31.4347 90.8565Z"
+										fill="currentColor"
+									/>
+									<path
+										d="M8 7.12634V35.2212C8 41.363 8.56475 47.616 11.416 53.0559C18.088 65.785 32.7431 79.0304 57.5546 67.1777C52.5738 64.4027 43.4616 55.7666 42.0354 41.6283C41.9101 40.3856 41.8436 39.1332 41.7771 37.8821C41.6158 34.8438 41.4549 31.8137 40.4524 28.9505C37.0824 19.3258 27.8665 7.12634 8 7.12634Z"
+										fill="currentColor"
+									/>
+									<path
+										d="M108.574 94.5182H87.5803V116C104.961 114.633 108.818 101.109 108.574 94.5182Z"
+										fill="currentColor"
+									/>
+								</svg>
+
+								<h2>Contact us</h2>
+
+								<div>
+									<span class="info-detail-label">Phone</span>
+									<p class="info-detail-value">
+										<a
+											href="tel:+442079460123"
+											style="color:var(--color-white);text-decoration:none;transition:opacity 0.2s;"
+											onmouseover="this.style.opacity='0.8'"
+											onmouseout="this.style.opacity='1'"
+											>+44 20 7946 0123</a
+										>
+									</p>
+								</div>
+
+								<div>
+									<span class="info-detail-label">Email</span>
+									<p class="info-detail-value">
+										<a
+											href="mailto:info@yourcompany.co.uk"
+											style="color:var(--color-white);text-decoration:none;transition:opacity 0.2s;"
+											onmouseover="this.style.opacity='0.8'"
+											onmouseout="this.style.opacity='1'"
+											>info@yourcompany.co.uk</a
+										>
+									</p>
+								</div>
+							</div>
+
+							<!-- Column 2: Address -->
+							<div class="info-col-mid">
+								<p
+									style="font-size:var(--text-sm);text-transform:uppercase;letter-spacing:0.05em;color:var(--color-accent-300);font-weight:var(--fw-medium);"
+								>
+									Find us at
+								</p>
+								<h3
+									style="font-size:var(--text-2xl);font-weight:var(--fw-medium);letter-spacing:var(--tracking-tight);color:var(--color-white);margin-top:0.75rem;"
+								>
+									Our office location
+								</h3>
+								<div style="margin-top:1.5rem;">
+									<span
+										style="font-size:var(--text-sm);text-transform:uppercase;color:var(--color-base-100);font-weight:var(--fw-medium);display:block;"
+										>Address</span
+									>
+									<p
+										style="font-size:var(--text-base);color:var(--color-white);margin-top:0.25rem;line-height:1.7;"
+									>
+										123 Regent Street<br>
+										London W1B 4EW<br>
+										United Kingdom
+									</p>
+								</div>
+								<div style="margin-top:1.5rem;">
+									<span
+										style="font-size:var(--text-sm);text-transform:uppercase;color:var(--color-base-100);font-weight:var(--fw-medium);display:block;"
+										>Office hours</span
+									>
+									<p
+										style="font-size:var(--text-base);color:var(--color-white);margin-top:0.25rem;"
+									>
+										Monday–Friday, 8:00–17:00
+									</p>
+								</div>
+							</div>
+
+							<!-- Column 3: CTA -->
+							<div class="info-col-cta">
+								<p
+									style="font-size:var(--text-sm);text-transform:uppercase;letter-spacing:0.05em;color:var(--color-accent-300);font-weight:var(--fw-medium);"
+								>
+									Get in touch
+								</p>
+								<h3
+									style="font-size:var(--text-2xl);font-weight:var(--fw-medium);letter-spacing:var(--tracking-tight);color:var(--color-white);margin-top:0.75rem;max-width:24rem;text-wrap:balance;"
+								>
+									Let's discuss your project.
+								</h3>
+								<p
+									style="font-size:var(--text-base);color:var(--color-base-300);margin-top:1rem;line-height:1.6;max-width:28rem;"
+								>
+									Whether you're planning a new build, renovation, or commercial
+									project, we're ready to review your requirements and provide
+									clear, practical next steps.
+								</p>
+								<a
+									href="contact.html"
+									class="btn btn-light btn-lg"
+									style="margin-top:2rem;"
+									>Send us a message</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ══════════════════════════════════════════════════════════
+         SECTION 3: SERVICES PREVIEW
+         ══════════════════════════════════════════════════════════ -->
+			<section class="section-py" aria-label="Construction services">
+				<div class="container">
+					<!-- Header -->
+					<div style="max-width:48rem;">
+						<p class="section-label">Our focus</p>
+						<h2 class="section-title" style="margin-top:0.75rem;">
+							<span class="text-accent">Construction services </span
+							><span class="text-accent-mid">for professionals</span>
+						</h2>
+						<p
+							class="section-text"
+							style="margin-top:1rem;color:var(--color-base-600);line-height:1.6;font-size:var(--text-base);"
+						>
+							From early-stage planning to final handover, we provide the
+							expertise and coordination that complex construction projects
+							demand.
+						</p>
+					</div>
+
+					<!-- 3-col service cards -->
+					<div class="services-grid">
+						<!-- Service 1: Client Partnerships -->
+						<article class="service-card">
+							<img
+								src="assets/images/partnerships.webp"
+								alt="Client Partnerships"
+								loading="lazy"
+								width="800"
+								height="600"
+							>
+							<div>
+								<span class="service-card-tag">Client Partnerships</span>
+								<h3 class="service-card-title">Building trust from day one</h3>
+								<p class="service-card-text">
+									Clear communication, aligned expectations, and dependable
+									delivery from start to finish. We work alongside clients to
+									keep every phase on track.
+								</p>
+								<a href="services-client-partnerships.html" class="service-link"
+									>Read further &rarr;</a
+								>
+							</div>
+						</article>
+
+						<!-- Service 2: Construction Management -->
+						<article class="service-card">
+							<img
+								src="assets/images/management.webp"
+								alt="Construction Management"
+								loading="lazy"
+								width="800"
+								height="600"
+							>
+							<div>
+								<span class="service-card-tag">Construction Management</span>
+								<h3 class="service-card-title">
+									Hands-on coordination at every stage
+								</h3>
+								<p class="service-card-text">
+									Hands-on coordination with clear controls, daily reporting,
+									and proactive risk management across all trades and phases.
+								</p>
+								<a
+									href="services-construction-management.html"
+									class="service-link"
+									>Read further &rarr;</a
+								>
+							</div>
+						</article>
+
+						<!-- Service 3: Interior Fit-Out -->
+						<article class="service-card">
+							<img
+								src="assets/images/interior.webp"
+								alt="Interior Fit-Out &amp; Finishes"
+								loading="lazy"
+								width="800"
+								height="600"
+							>
+							<div>
+								<span class="service-card-tag">Interior Fit-Out</span>
+								<h3 class="service-card-title">
+									Precision finishes, cleanly executed
+								</h3>
+								<p class="service-card-text">
+									Finish packages executed cleanly, on schedule, and aligned to
+									design intent. From millwork to punchlist walkthroughs.
+								</p>
+								<a href="services.html" class="service-link"
+									>Read further &rarr;</a
+								>
+							</div>
+						</article>
+					</div>
+
+					<!-- See all services link -->
+					<div style="margin-top:3rem;text-align:center;">
+						<a href="services.html" class="btn btn-light btn-lg"
+							>See all services</a
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- ══════════════════════════════════════════════════════════
+         SECTION 4: PROJECTS PREVIEW
+         ══════════════════════════════════════════════════════════ -->
+			<section
+				class="section-py"
+				style="padding-top:0;"
+				aria-label="Featured projects"
+			>
+				<div class="container">
+					<!-- Header -->
+					<div style="margin-bottom:3rem;max-width:48rem;">
+						<p class="section-label">What we build and deliver</p>
+						<h2 class="section-title" style="margin-top:0.75rem;">
+							Our latest projects
+						</h2>
+					</div>
+
+					<!-- 2-col projects grid -->
+					<div class="projects-grid">
+						<!-- Project 1: Redwood Transit Hub -->
+						<a href="projects-redwood-transit-hub.html" class="project-card">
+							<img
+								src="assets/images/cover.webp"
+								alt="Redwood Transit Hub"
+								loading="lazy"
+							>
+							<div class="project-card-overlay"></div>
+							<div class="project-card-content">
+								<p class="project-card-title">Redwood Transit Hub</p>
+								<span class="project-card-link">View project &rarr;</span>
+							</div>
+						</a>
+
+						<!-- Project 2: Westfield Commercial Complex -->
+						<a
+							href="projects-westfield-commercial-complex.html"
+							class="project-card"
+						>
+							<img
+								src="assets/images/cover2.webp"
+								alt="Westfield Commercial Complex"
+								loading="lazy"
+							>
+							<div class="project-card-overlay"></div>
+							<div class="project-card-content">
+								<p class="project-card-title">Westfield Commercial Complex</p>
+								<span class="project-card-link">View project &rarr;</span>
+							</div>
+						</a>
+					</div>
+
+					<!-- See all projects -->
+					<div style="margin-top:3rem;display:flex;justify-content:center;">
+						<a href="projects.html" class="btn btn-light btn-lg"
+							>See all projects</a
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- ══════════════════════════════════════════════════════════
+         SECTION 5: DARK TRUST SECTION
+         ══════════════════════════════════════════════════════════ -->
+			<section
+				style="background:var(--color-accent-950);position:relative;overflow:hidden;"
+				aria-label="Trusted by clients"
+			>
+				<div class="container" style="padding-top:6rem;padding-bottom:6rem;">
+					<div style="display:grid;grid-template-columns:1fr;gap:3rem;">
+						<!-- Left col: Logo + label + heading + body -->
+						<div style="display:grid;grid-template-columns:1fr;gap:3rem;">
+							<div>
+								<svg
+									style="height:3rem;color:var(--color-white);"
+									viewBox="0 0 394 118"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M115.165 34.8256V2C99.4547 2 89.5225 8.58854 83.5801 16.2918C78.9381 22.3091 77.8196 29.812 76.6882 37.4016C75.8715 42.8796 75.0481 48.4027 72.8882 53.445C69.6729 60.9512 64.6742 66.2306 60.6709 69.1991C57.827 71.1061 52.9896 73.7932 49.743 74.257C49.1892 74.3361 48.45 74.3867 47.574 74.4467C40.3422 74.9421 23.7814 76.0764 25.0878 99.1563C25.1692 97.8544 26.0642 95.0552 28.9936 94.2741H87.3362C87.2548 89.0664 84.2604 78.1139 72.9336 75.9657L72.5308 75.6566C92.7899 79.0407 105.303 66.2841 111.501 54.179C114.536 48.2516 115.165 41.4848 115.165 34.8256ZM31.4347 90.8565C32.6481 90.8565 33.6317 89.8729 33.6317 88.6595C33.6317 87.4462 32.6481 86.4625 31.4347 86.4625C30.2213 86.4625 29.2377 87.4462 29.2377 88.6595C29.2377 89.8729 30.2213 90.8565 31.4347 90.8565Z"
+										fill="currentColor"
+									/>
+									<path
+										d="M8 7.12634V35.2212C8 41.363 8.56475 47.616 11.416 53.0559C18.088 65.785 32.7431 79.0304 57.5546 67.1777C52.5738 64.4027 43.4616 55.7666 42.0354 41.6283C41.9101 40.3856 41.8436 39.1332 41.7771 37.8821C41.6158 34.8438 41.4549 31.8137 40.4524 28.9505C37.0824 19.3258 27.8665 7.12634 8 7.12634Z"
+										fill="currentColor"
+									/>
+									<path
+										d="M108.574 94.5182H87.5803V116C104.961 114.633 108.818 101.109 108.574 94.5182Z"
+										fill="currentColor"
+									/>
+								</svg>
+								<p
+									style="font-size:var(--text-sm);text-transform:uppercase;color:var(--color-base-400);margin-top:2rem;"
+								>
+									Trusted by clients who value quality, clarity, and long-term
+									results
+								</p>
+							</div>
+							<div>
+								<h2
+									style="font-size:clamp(1.5rem,4vw,3rem);font-weight:var(--fw-medium);color:var(--color-white);letter-spacing:var(--tracking-tight);line-height:1.2;"
+								>
+									From private residences to large-scale commercial
+									developments,
+									<span style="color:var(--color-accent-400);"
+										>we partner closely with our clients to turn clear goals
+										into well-executed builds.</span
+									>
+								</h2>
+								<p
+									style="font-size:var(--text-lg);color:var(--color-base-400);margin-top:1.5rem;line-height:var(--leading-relaxed);"
+								>
+									Our work is grounded in transparent communication, disciplined
+									planning, and consistent execution. Every project — regardless
+									of size — is delivered with the same attention to detail and
+									accountability.
+								</p>
+								<!-- Stats grid -->
+								<div
+									style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;"
+								>
+									<div>
+										<p
+											style="font-size:clamp(2.5rem,6vw,4.5rem);font-weight:var(--fw-medium);color:var(--color-white);font-style:italic;"
+										>
+											99%
+										</p>
+										<p
+											style="font-size:var(--text-lg);color:var(--color-base-400);margin-top:0.25rem;"
+										>
+											Client satisfaction
+										</p>
+									</div>
+									<div>
+										<p
+											style="font-size:clamp(2.5rem,6vw,4.5rem);font-weight:var(--fw-medium);color:var(--color-white);font-style:italic;"
+										>
+											500+
+										</p>
+										<p
+											style="font-size:var(--text-lg);color:var(--color-base-400);margin-top:0.25rem;"
+										>
+											Projects delivered
+										</p>
+									</div>
+									<div>
+										<p
+											style="font-size:clamp(2.5rem,6vw,4.5rem);font-weight:var(--fw-medium);color:var(--color-white);font-style:italic;"
+										>
+											100+
+										</p>
+										<p
+											style="font-size:var(--text-lg);color:var(--color-base-400);margin-top:0.25rem;"
+										>
+											Industry professionals
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ══════════════════════════════════════════════════════════
+         SECTION 5b: TESTIMONIALS SLIDER
+         ══════════════════════════════════════════════════════════ -->
+			<section style="overflow:hidden;" aria-label="Client testimonials">
+				<div class="container" style="padding-top:6rem;padding-bottom:6rem;">
+					<div style="display:grid;grid-template-columns:1fr;gap:3rem;">
+						<div style="display:grid;grid-template-columns:1fr;gap:1rem;">
+							<p
+								style="font-size:var(--text-sm);text-transform:uppercase;color:var(--color-base-600);"
+							>
+								A construction partner trusted by homeowners, developers, and
+								commercial clients alike
+							</p>
+							<div>
+								<h2
+									style="font-size:clamp(1.25rem,3vw,2.25rem);font-weight:var(--fw-medium);letter-spacing:var(--tracking-tight);max-width:40rem;"
+								>
+									Real projects, real partners, and results delivered through
+									disciplined planning and execution.
+								</h2>
+								<div
+									style="display:flex;align-items:center;gap:0.5rem;margin-top:2rem;"
+								>
+									<button
+										style="display:flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:var(--radius-lg);background:var(--color-base-100);border:none;cursor:pointer;transition:background var(--duration-300);"
+										aria-label="Previous testimonial"
+										id="testimonials-previous"
+										onmouseover="this.style.background='var(--color-base-200)'"
+										onmouseout="this.style.background='var(--color-base-100)'"
+									>
+										<svg
+											viewBox="0 0 256 256"
+											fill="currentColor"
+											style="width:1rem;height:1rem;"
+										>
+											<path
+												d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"
+											/>
+										</svg>
+									</button>
+									<button
+										style="display:flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:var(--radius-lg);background:var(--color-base-100);border:none;cursor:pointer;transition:background var(--duration-300);"
+										aria-label="Next testimonial"
+										id="testimonials-next"
+										onmouseover="this.style.background='var(--color-base-200)'"
+										onmouseout="this.style.background='var(--color-base-100)'"
+									>
+										<svg
+											viewBox="0 0 256 256"
+											fill="currentColor"
+											style="width:1rem;height:1rem;"
+										>
+											<path
+												d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"
+											/>
+										</svg>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Keen Slider: Testimonial cards -->
+					<div
+						id="testimonials-slider"
+						class="keen-slider"
+						style="margin-top:3rem;"
+					>
+						<!-- Slide 1: Sarah Johnson -->
+						<article
+							class="keen-slider__slide"
+							style="min-width:320px;max-width:320px;"
+						>
+							<div
+								style="position:relative;overflow:hidden;cursor:pointer;"
+								class="testimonial-card"
+							>
+								<div
+									style="position:relative;aspect-ratio:3/4;overflow:hidden;"
+								>
+									<img
+										src="assets/images/sara.webp"
+										alt="Sarah Johnson"
+										loading="lazy"
+										style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+									>
+									<div
+										class="testimonial-hover-overlay"
+										style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;background:var(--color-accent-900);padding:2rem;opacity:0;transition:opacity 0.3s;"
+									>
+										<div
+											style="display:flex;gap:0.25rem;color:var(--color-accent-400);"
+										>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+										</div>
+										<blockquote
+											style="font-size:var(--text-sm);color:var(--color-base-100);line-height:var(--leading-relaxed);"
+										>
+											Bastion delivered our home build exactly as promised.
+											Clear timelines, consistent communication, and quality
+											workmanship throughout. The attention to detail on-site
+											was evident from start to finish.
+										</blockquote>
+									</div>
+								</div>
+								<div style="margin-top:0.5rem;">
+									<p
+										style="font-size:var(--text-base);color:var(--color-accent-900);font-weight:var(--fw-medium);"
+									>
+										Sarah Johnson
+									</p>
+									<p
+										style="font-size:var(--text-sm);color:var(--color-base-500);font-weight:var(--fw-medium);"
+									>
+										Homeowner
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<!-- Slide 2: Michael Chen -->
+						<article
+							class="keen-slider__slide"
+							style="min-width:320px;max-width:320px;"
+						>
+							<div
+								style="position:relative;overflow:hidden;cursor:pointer;"
+								class="testimonial-card"
+							>
+								<div
+									style="position:relative;aspect-ratio:3/4;overflow:hidden;"
+								>
+									<img
+										src="assets/images/michael.webp"
+										alt="Michael Chen"
+										loading="lazy"
+										style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+									>
+									<div
+										class="testimonial-hover-overlay"
+										style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;background:var(--color-accent-900);padding:2rem;opacity:0;transition:opacity 0.3s;"
+									>
+										<div
+											style="display:flex;gap:0.25rem;color:var(--color-accent-400);"
+										>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+										</div>
+										<blockquote
+											style="font-size:var(--text-sm);color:var(--color-base-100);line-height:var(--leading-relaxed);"
+										>
+											Our office renovation was completed on schedule and
+											without disruption to daily operations. Bastion managed
+											the process professionally and delivered a high-quality
+											result.
+										</blockquote>
+									</div>
+								</div>
+								<div style="margin-top:0.5rem;">
+									<p
+										style="font-size:var(--text-base);color:var(--color-accent-900);font-weight:var(--fw-medium);"
+									>
+										Michael Chen
+									</p>
+									<p
+										style="font-size:var(--text-sm);color:var(--color-base-500);font-weight:var(--fw-medium);"
+									>
+										CEO
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<!-- Slide 3: Emma Rodriguez -->
+						<article
+							class="keen-slider__slide"
+							style="min-width:320px;max-width:320px;"
+						>
+							<div
+								style="position:relative;overflow:hidden;cursor:pointer;"
+								class="testimonial-card"
+							>
+								<div
+									style="position:relative;aspect-ratio:3/4;overflow:hidden;"
+								>
+									<img
+										src="assets/images/emily.webp"
+										alt="Emma Rodriguez"
+										loading="lazy"
+										style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+									>
+									<div
+										class="testimonial-hover-overlay"
+										style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;background:var(--color-accent-900);padding:2rem;opacity:0;transition:opacity 0.3s;"
+									>
+										<div
+											style="display:flex;gap:0.25rem;color:var(--color-accent-400);"
+										>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+										</div>
+										<blockquote
+											style="font-size:var(--text-sm);color:var(--color-base-100);line-height:var(--leading-relaxed);"
+										>
+											Bastion handled our hotel build with precision and
+											accountability. They understood the operational
+											requirements of hospitality and delivered a result that
+											meets both form and function.
+										</blockquote>
+									</div>
+								</div>
+								<div style="margin-top:0.5rem;">
+									<p
+										style="font-size:var(--text-base);color:var(--color-accent-900);font-weight:var(--fw-medium);"
+									>
+										Emma Rodriguez
+									</p>
+									<p
+										style="font-size:var(--text-sm);color:var(--color-base-500);font-weight:var(--fw-medium);"
+									>
+										Hotel Owner
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<!-- Slide 4: David Park -->
+						<article
+							class="keen-slider__slide"
+							style="min-width:320px;max-width:320px;"
+						>
+							<div
+								style="position:relative;overflow:hidden;cursor:pointer;"
+								class="testimonial-card"
+							>
+								<div
+									style="position:relative;aspect-ratio:3/4;overflow:hidden;"
+								>
+									<img
+										src="assets/images/david.webp"
+										alt="David Park"
+										loading="lazy"
+										style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+									>
+									<div
+										class="testimonial-hover-overlay"
+										style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;background:var(--color-accent-900);padding:2rem;opacity:0;transition:opacity 0.3s;"
+									>
+										<div
+											style="display:flex;gap:0.25rem;color:var(--color-accent-400);"
+										>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+										</div>
+										<blockquote
+											style="font-size:var(--text-sm);color:var(--color-base-100);line-height:var(--leading-relaxed);"
+										>
+											From permitting to final handover, Bastion ran our
+											restaurant project efficiently and transparently. The
+											build quality is solid, and the project stayed within
+											budget.
+										</blockquote>
+									</div>
+								</div>
+								<div style="margin-top:0.5rem;">
+									<p
+										style="font-size:var(--text-base);color:var(--color-accent-900);font-weight:var(--fw-medium);"
+									>
+										David Park
+									</p>
+									<p
+										style="font-size:var(--text-sm);color:var(--color-base-500);font-weight:var(--fw-medium);"
+									>
+										Restaurant Owner
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<!-- Slide 5: Lisa Thompson -->
+						<article
+							class="keen-slider__slide"
+							style="min-width:320px;max-width:320px;"
+						>
+							<div
+								style="position:relative;overflow:hidden;cursor:pointer;"
+								class="testimonial-card"
+							>
+								<div
+									style="position:relative;aspect-ratio:3/4;overflow:hidden;"
+								>
+									<img
+										src="assets/images/lisa.webp"
+										alt="Lisa Thompson"
+										loading="lazy"
+										style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+									>
+									<div
+										class="testimonial-hover-overlay"
+										style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;background:var(--color-accent-900);padding:2rem;opacity:0;transition:opacity 0.3s;"
+									>
+										<div
+											style="display:flex;gap:0.25rem;color:var(--color-accent-400);"
+										>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+										</div>
+										<blockquote
+											style="font-size:var(--text-sm);color:var(--color-base-100);line-height:var(--leading-relaxed);"
+										>
+											Bastion translated our retail requirements into a
+											practical, well-executed build. The team was responsive,
+											organized, and delivered a space that performs exactly as
+											intended.
+										</blockquote>
+									</div>
+								</div>
+								<div style="margin-top:0.5rem;">
+									<p
+										style="font-size:var(--text-base);color:var(--color-accent-900);font-weight:var(--fw-medium);"
+									>
+										Lisa Thompson
+									</p>
+									<p
+										style="font-size:var(--text-sm);color:var(--color-base-500);font-weight:var(--fw-medium);"
+									>
+										Retail Owner
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<!-- Slide 6: Robert Martinez -->
+						<article
+							class="keen-slider__slide"
+							style="min-width:320px;max-width:320px;"
+						>
+							<div
+								style="position:relative;overflow:hidden;cursor:pointer;"
+								class="testimonial-card"
+							>
+								<div
+									style="position:relative;aspect-ratio:3/4;overflow:hidden;"
+								>
+									<img
+										src="assets/images/robert.webp"
+										alt="Robert Martinez"
+										loading="lazy"
+										style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+									>
+									<div
+										class="testimonial-hover-overlay"
+										style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;background:var(--color-accent-900);padding:2rem;opacity:0;transition:opacity 0.3s;"
+									>
+										<div
+											style="display:flex;gap:0.25rem;color:var(--color-accent-400);"
+										>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												style="width:1rem;height:1rem;"
+											>
+												<path
+													d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96Z"
+												/>
+											</svg>
+										</div>
+										<blockquote
+											style="font-size:var(--text-sm);color:var(--color-base-100);line-height:var(--leading-relaxed);"
+										>
+											Their experience in commercial construction shows. Bastion
+											took control of a complex renovation and delivered a
+											modern, functional workspace without unexpected cost
+											overruns.
+										</blockquote>
+									</div>
+								</div>
+								<div style="margin-top:0.5rem;">
+									<p
+										style="font-size:var(--text-base);color:var(--color-accent-900);font-weight:var(--fw-medium);"
+									>
+										Robert Martinez
+									</p>
+									<p
+										style="font-size:var(--text-sm);color:var(--color-base-500);font-weight:var(--fw-medium);"
+									>
+										Commercial Director
+									</p>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- ══════════════════════════════════════════════════════════
+         SECTION 5c: RECENT BUILDS
+         ══════════════════════════════════════════════════════════ -->
+			<section class="section-py" aria-label="Recent builds">
+				<div class="container">
+					<div style="display:grid;grid-template-columns:1fr;gap:3rem;">
+						<div>
+							<h2
+								style="font-size:clamp(1.5rem,4vw,3rem);font-weight:var(--fw-medium);letter-spacing:var(--tracking-tight);max-width:36rem;line-height:1.15;"
+							>
+								Recent builds that balance performance, craft, and longevity.
+							</h2>
+							<p
+								style="font-size:var(--text-base);color:var(--color-base-300);margin-top:1rem;"
+							>
+								Explore a selection of projects across sectors — each delivered
+								with precise planning, resilient materials, and reliable
+								execution.
+							</p>
+							<a
+								href="projects.html"
+								class="btn btn-light btn-sm"
+								style="margin-top:2rem;display:inline-flex;"
+								>See all projects</a
+							>
+						</div>
+						<div
+							style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;"
+						>
+							<article>
+								<img
+									src="assets/images/cover.webp"
+									alt="Redwood Transit Hub"
+									loading="lazy"
+									style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius);"
+								>
+								<div
+									style="margin-top:1rem;display:flex;flex-direction:column;gap:0.25rem;"
+								>
+									<p
+										style="font-size:var(--text-xs);text-transform:uppercase;color:var(--color-base-600);font-weight:var(--fw-medium);"
+									>
+										Transportation Infrastructure &bull; Seattle, WA &bull; 2025
+									</p>
+									<h3
+										style="font-size:var(--text-xl);font-weight:var(--fw-medium);color:var(--color-accent-900);letter-spacing:var(--tracking-tight);"
+									>
+										Redwood Transit Hub
+									</h3>
+									<a
+										href="projects-redwood-transit-hub.html"
+										style="font-size:var(--text-sm);font-weight:var(--fw-medium);color:var(--color-accent-600);text-decoration:none;margin-top:0.25rem;"
+										>View project &rarr;</a
+									>
+								</div>
+							</article>
+							<article>
+								<img
+									src="assets/images/cover2.webp"
+									alt="Westfield Commercial Complex"
+									loading="lazy"
+									style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius);"
+								>
+								<div
+									style="margin-top:1rem;display:flex;flex-direction:column;gap:0.25rem;"
+								>
+									<p
+										style="font-size:var(--text-xs);text-transform:uppercase;color:var(--color-base-600);font-weight:var(--fw-medium);"
+									>
+										Commercial Construction &bull; Los Angeles, CA &bull; 2026
+									</p>
+									<h3
+										style="font-size:var(--text-xl);font-weight:var(--fw-medium);color:var(--color-accent-900);letter-spacing:var(--tracking-tight);"
+									>
+										Westfield Commercial Complex
+									</h3>
+									<a
+										href="projects-westfield-commercial-complex.html"
+										style="font-size:var(--text-sm);font-weight:var(--fw-medium);color:var(--color-accent-600);text-decoration:none;margin-top:0.25rem;"
+										>View project &rarr;</a
+									>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ══════════════════════════════════════════════════════════
+         SECTION 6: TEAM
+         ══════════════════════════════════════════════════════════ -->
+			<section class="section-py" aria-label="Our team">
+				<div class="container">
+					<!-- Header with link -->
+					<div class="blog-header">
+						<div>
+							<p class="section-label">The people behind it</p>
+							<h2 class="section-title">Meet our experts</h2>
+						</div>
+						<div>
+							<a href="team.html" class="btn btn-light btn-lg">Meet the team</a>
+						</div>
+					</div>
+
+					<!-- 6-col team grid -->
+					<div class="team-grid">
+						<div class="team-card">
+							<img
+								src="assets/images/alvaro.webp"
+								alt="Álvaro Ruiz"
+								loading="lazy"
+							>
+							<p class="team-card-name">Álvaro Ruiz</p>
+							<p class="team-card-role">CEO</p>
+						</div>
+
+						<div class="team-card">
+							<img
+								src="assets/images/clara.webp"
+								alt="Clara Navarro"
+								loading="lazy"
+							>
+							<p class="team-card-name">Clara Navarro</p>
+							<p class="team-card-role">COO</p>
+						</div>
+
+						<div class="team-card">
+							<img
+								src="assets/images/erik.webp"
+								alt="Erik Holmström"
+								loading="lazy"
+							>
+							<p class="team-card-name">Erik Holmström</p>
+							<p class="team-card-role">Project Director</p>
+						</div>
+
+						<div class="team-card">
+							<img
+								src="assets/images/freja.webp"
+								alt="Freja Mikkelsen"
+								loading="lazy"
+							>
+							<p class="team-card-name">Freja Mikkelsen</p>
+							<p class="team-card-role">Design Lead</p>
+						</div>
+
+						<div class="team-card">
+							<img
+								src="assets/images/javier.webp"
+								alt="Javier Morales"
+								loading="lazy"
+							>
+							<p class="team-card-name">Javier Morales</p>
+							<p class="team-card-role">Site Manager</p>
+						</div>
+
+						<div class="team-card">
+							<img
+								src="assets/images/jonas.webp"
+								alt="Jonas Lindqvist"
+								loading="lazy"
+							>
+							<p class="team-card-name">Jonas Lindqvist</p>
+							<p class="team-card-role">Estimator</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ══════════════════════════════════════════════════════════
+         SECTION 7: BLOG PREVIEW
+         ══════════════════════════════════════════════════════════ -->
+			<section
+				class="section-py"
+				style="padding-top:0;"
+				aria-label="News and insights"
+			>
+				<div class="container">
+					<!-- Header -->
+					<div class="blog-header">
+						<div>
+							<p class="section-label">Stay informed</p>
+							<h2 class="section-title">News &amp; insights</h2>
+						</div>
+						<div>
+							<a href="blog.html" class="btn btn-light btn-lg">See all posts</a>
+						</div>
+					</div>
+
+					<!-- 3-col blog grid -->
+					<div class="blog-grid">
+						<!-- Blog post 1 -->
+						<a href="blog.html" class="blog-card">
+							<img
+								src="assets/images/blog-1.webp"
+								alt="Green building materials"
+								loading="lazy"
+							>
+							<div class="blog-card-meta">
+								<span>Sustainability</span>
+								<span style="color:var(--color-base-300);">&middot;</span>
+								<span>Dec 21, 2025</span>
+							</div>
+							<h3 class="blog-card-title">Green building materials</h3>
+							<span class="blog-card-link">Read more &rarr;</span>
+						</a>
+
+						<!-- Blog post 2 -->
+						<a href="blog.html" class="blog-card">
+							<img
+								src="assets/images/blog-2.webp"
+								alt="Project management tools"
+								loading="lazy"
+							>
+							<div class="blog-card-meta">
+								<span>Technology</span>
+								<span style="color:var(--color-base-300);">&middot;</span>
+								<span>Dec 22, 2025</span>
+							</div>
+							<h3 class="blog-card-title">Project management tools</h3>
+							<span class="blog-card-link">Read more &rarr;</span>
+						</a>
+
+						<!-- Blog post 3 -->
+						<a href="blog.html" class="blog-card">
+							<img
+								src="assets/images/blog-3.webp"
+								alt="Urban infrastructure challenges"
+								loading="lazy"
+							>
+							<div class="blog-card-meta">
+								<span>Infrastructure</span>
+								<span style="color:var(--color-base-300);">&middot;</span>
+								<span>Dec 23, 2025</span>
+							</div>
+							<h3 class="blog-card-title">Urban infrastructure challenges</h3>
+							<span class="blog-card-link">Read more &rarr;</span>
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ============================================================
+       FOOTER
+       ============================================================ -->
+		<footer class="site-footer" aria-label="Site footer">
+			<!-- Video background -->
+			<div class="footer-video-bg" aria-hidden="true">
+				<video autoplay muted loop playsinline>
+					<source src="assets/night.mp4" type="video/mp4">
+				</video>
+				<div class="footer-video-overlay"></div>
+			</div>
+
+			<!-- Footer top: Logo + tagline + CTA -->
+			<div class="footer-top">
+				<div class="container">
+					<div class="footer-top-inner">
+						<!-- Logo + tagline -->
+						<div>
+							<a
+								href="index.html"
+								class="footer-logo"
+								aria-label="Bastion Home"
+							>
+								<svg
+									viewBox="0 0 394 118"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M115.165 34.8256V2C99.4547 2 89.5225 8.58854 83.5801 16.2918C78.9381 22.3091 77.8196 29.812 76.6882 37.4016C75.8715 42.8796 75.0481 48.4027 72.8882 53.445C69.6729 60.9512 64.6742 66.2306 60.6709 69.1991C57.827 71.1061 52.9896 73.7932 49.743 74.257C49.1892 74.3361 48.45 74.3867 47.574 74.4467C40.3422 74.9421 23.7814 76.0764 25.0878 99.1563C25.1692 97.8544 26.0642 95.0552 28.9936 94.2741H87.3362C87.2548 89.0664 84.2604 78.1139 72.9336 75.9657L72.5308 75.6566C92.7899 79.0407 105.303 66.2841 111.501 54.179C114.536 48.2516 115.165 41.4848 115.165 34.8256ZM31.4347 90.8565C32.6481 90.8565 33.6317 89.8729 33.6317 88.6595C33.6317 87.4462 32.6481 86.4625 31.4347 86.4625C30.2213 86.4625 29.2377 87.4462 29.2377 88.6595C29.2377 89.8729 30.2213 90.8565 31.4347 90.8565Z"
+										fill="currentColor"
+									/>
+									<path
+										d="M8 7.12634V35.2212C8 41.363 8.56475 47.616 11.416 53.0559C18.088 65.785 32.7431 79.0304 57.5546 67.1777C52.5738 64.4027 43.4616 55.7666 42.0354 41.6283C41.9101 40.3856 41.8436 39.1332 41.7771 37.8821C41.6158 34.8438 41.4549 31.8137 40.4524 28.9505C37.0824 19.3258 27.8665 7.12634 8 7.12634Z"
+										fill="currentColor"
+									/>
+									<path
+										d="M108.574 94.5182H87.5803V116C104.961 114.633 108.818 101.109 108.574 94.5182Z"
+										fill="currentColor"
+									/>
+								</svg>
+							</a>
+							<p class="footer-tagline">
+								Everyday building with purpose and precision.
+							</p>
+						</div>
+
+						<!-- Get in touch CTA -->
+						<div
+							style="display:flex;flex-direction:column;gap:0.75rem;align-items:flex-start;"
+						>
+							<a href="contact.html" class="btn btn-light btn-lg"
+								>Get in touch</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer links grid (4 cols) -->
+			<div class="footer-links-section">
+				<div class="container">
+					<div class="footer-links-grid">
+						<!-- Company -->
+						<div>
+							<p class="footer-link-group-title">Company</p>
+							<a href="about.html" class="footer-link">About</a>
+							<a href="why-us.html" class="footer-link">Why Us</a>
+							<a href="partners.html" class="footer-link">Partners</a>
+							<a href="mission.html" class="footer-link">Mission</a>
+						</div>
+						<!-- Services -->
+						<div>
+							<p class="footer-link-group-title">Services</p>
+							<a href="services-client-partnerships.html" class="footer-link"
+								>Client Partnerships</a
+							>
+							<a
+								href="services-construction-management.html"
+								class="footer-link"
+								>Construction Management</a
+							>
+							<a
+								href="services-interior-fit-out-and-finishes.html"
+								class="footer-link"
+								>Interior Fit-Out</a
+							>
+							<a
+								href="services-preconstruction-estimating.html"
+								class="footer-link"
+								>Preconstruction</a
+							>
+							<a
+								href="services-project-controls-and-scheduling.html"
+								class="footer-link"
+								>Project Controls</a
+							>
+							<a
+								href="services-mep-coordination-and-commissioning.html"
+								class="footer-link"
+								>MEP Services</a
+							>
+						</div>
+						<!-- Resources -->
+						<div>
+							<p class="footer-link-group-title">Resources</p>
+							<a href="projects.html" class="footer-link">Projects</a>
+							<a href="blog.html" class="footer-link">Blog</a>
+							<a href="careers.html" class="footer-link">Careers</a>
+							<a href="team.html" class="footer-link">Team</a>
+							<a href="legal-privacy.html" class="footer-link">Privacy</a>
+						</div>
+						<!-- Contact -->
+						<div>
+							<p class="footer-link-group-title">Contact</p>
+							<p class="footer-link" style="pointer-events:none;opacity:0.7;">
+								Mon–Fri: 8AM–6PM
+							</p>
+							<p class="footer-link" style="pointer-events:none;opacity:0.7;">
+								Sat–Sun: By appointment
+							</p>
+							<p class="footer-link" style="pointer-events:none;opacity:0.7;">
+								123 Market Street, Suite 500
+							</p>
+							<p class="footer-link" style="pointer-events:none;opacity:0.7;">
+								San Francisco, CA 94103
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer bottom bar -->
+			<div class="footer-bottom">
+				<div class="container">
+					<div class="footer-bottom-inner">
+						<p class="footer-copyright">
+							&copy; 2025 Bastion. All rights reserved.
+						</p>
+						<div class="footer-legal-links">
+							<a href="legal-privacy.html" class="footer-legal-link">Privacy</a>
+							<a href="legal-terms.html" class="footer-legal-link">Terms</a>
+							<a href="legal-cookies.html" class="footer-legal-link">Cookies</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Shared JS -->
+		<script src="site.js" defer></script>
+
+		<!-- Keen-Slider testimonials initialization -->
+		<script type="module">
+		import KeenSlider from "https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm";
+		const slider = document.getElementById("testimonials-slider");
+		if (slider) {
+			const keenSlider = new KeenSlider(slider, {
+				loop: true,
+				mode: "snap",
+				slides: {
+					origin: "center",
+					perView: 1.2,
+					spacing: 12,
+				},
+				breakpoints: {
+					"(min-width: 640px)": {
+						slides: { origin: "center", perView: 2.2, spacing: 12 },
+					},
+					"(min-width: 1024px)": {
+						slides: { origin: "auto", perView: 3.2, spacing: 16 },
+					},
+				},
+			});
+			const prevBtn = document.getElementById("testimonials-previous");
+			const nextBtn = document.getElementById("testimonials-next");
+			if (prevBtn) prevBtn.addEventListener("click", () => keenSlider.prev());
+			if (nextBtn) nextBtn.addEventListener("click", () => keenSlider.next());
+		}
+		</script>
+	</body>
+</html>

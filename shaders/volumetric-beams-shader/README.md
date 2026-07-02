@@ -1,5 +1,7 @@
 # BEAMWORKS — Volumetric Beams Shader with Optics Control Deck (React Three Fiber + GLSL + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen volumetric light-beam shader rendered via a Three.js + React Three Fiber fragment raymarch — firing an angular star of light beams through a scattering medium with single-scatter in-scattering, Beer-Lambert transmittance, Henyey-Greenstein phase, depth twist, striation ribbing, and film-grain post — wrapped in a polished optics calibration bench UI. The live observation window is driven by 18 grouped faders, six named beacon presets (Searchlight, Aurora Fan, Ember Cross, Twist Drill, Veil, Supernova), mouse-steered beam orbit, and a GPU telemetry panel reading real FPS, beam flux, and spectral cast from the composited canvas. Built as a shadcn/Tailwind/TypeScript component on React + Vite. Generated with Claude Fable 5.
 
 ```bash

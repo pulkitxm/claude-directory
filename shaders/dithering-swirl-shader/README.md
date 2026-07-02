@@ -1,5 +1,7 @@
 # Dithering Swirl Shader — Halftone Press with Bayer Dither & Live Ink Coverage (React, WebGL2, TypeScript)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A WebGL2 shader experiment integrating the `DitheringShader` React component as a live **halftone press** — a swirl procedural field quantised 1-bit cyan-on-magenta through an ordered Bayer dither matrix, with a Bayer threshold-matrix panel, a CRT signal-telemetry readout sampled from the actual GPU framebuffer, and shape/screen/colour controls for switching between seven fields and four dither modes in real time. Generated with Claude Fable 5.
 
 ## What's here

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('unft-theme');
+    var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (dark) document.documentElement.classList.add('dark');
+  } catch(e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>uNFT Marketplace — Search</title>
+<meta name="description" content="uNFT Marketplace built with Cosmic CMS, Next.js, and the Stripe API">
+<link rel="icon" href="assets/img/misc/logo.png">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/search.css">
+</head>
+<body>
+<div data-mount="header"></div>
+
+<section class="section search-section">
+  <div class="container search-layout">
+    <aside class="search-sidebar">
+      <h1>Search</h1>
+      <div class="sidebar-field">
+        <label class="form-label" for="search-keyword">Search keyword</label>
+        <div class="search-input-row">
+          <input id="search-keyword" class="input" type="text" placeholder="Search...">
+          <button type="button" class="search-input-btn" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="sidebar-field">
+        <label class="form-label" for="search-color">Select color</label>
+        <select id="search-color" class="select">
+          <option>Any color</option>
+        </select>
+      </div>
+      <div class="sidebar-field">
+        <span class="form-label">Price range</span>
+        <div class="price-range-row">
+          <input class="input" type="number" placeholder="MIN">
+          <span>to</span>
+          <input class="input" type="number" placeholder="MAX">
+        </div>
+      </div>
+    </aside>
+    <div class="search-main">
+      <div class="chip-row" data-chip-row>
+        <button type="button" class="chip is-active" data-filter-chip="all">All</button>
+        <button type="button" class="chip" data-filter-chip="sale">Sale</button>
+        <button type="button" class="chip" data-filter-chip="offer">Special offer</button>
+        <button type="button" class="chip" data-filter-chip="cosmos">Cosmos</button>
+        <button type="button" class="chip" data-filter-chip="artwork">Artwork</button>
+      </div>
+      <div class="grid" data-grid></div>
+    </div>
+  </div>
+</section>
+
+<div data-mount="footer"></div>
+<div data-mount="modal"></div>
+
+<script src="assets/data/catalog.js"></script>
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/product-grid.js"></script>
+<script src="assets/js/filter.js"></script>
+<script>
+(function(){
+  var grid = document.querySelector('[data-grid]');
+  var items = UnftProductGrid.allItems();
+  UnftProductGrid.renderGrid(grid, '', items);
+  UnftFilter.wireFilter('[data-chip-row]', '[data-grid]');
+})();
+</script>
+<script src="assets/js/theme.js"></script>
+<script>UnftChrome.mount("", "");</script>
+</body>
+</html>

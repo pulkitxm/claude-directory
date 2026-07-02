@@ -1,5 +1,7 @@
 # Thermal Shader Imaging — Apple-Style Interactive Thermal Imaging Effect (three.js, React, TypeScript)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A pointer-reactive thermal imaging shader showcase — branded "THERMA — Thermal Imaging Bay" — that paints a live, animated heat gradient inside logo alpha masks using a 7-stop thermal LUT (`#000000 → #073dff → #53d5fd → #fefcdd → #ffec6a → #f9d400 → #a61904`). The `ThermalEffect` component integrates verbatim under `@/components/ui` using a three.js ping-pong draw renderer; holding and dragging any viewport pumps heat into the mask, which cools when released. The graphite instrument UI includes corner-bracketed viewports, scanlines, a reticle crosshair, and a live telemetry HUD with sensor clock and measured frame rate. All logo masks are generated procedurally as canvas data URLs — no network requests, no asset files. Generated with Claude Fable 5.
 
 ## Design

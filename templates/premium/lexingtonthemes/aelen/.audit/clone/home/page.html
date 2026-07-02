@@ -1,0 +1,1870 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Ælen CRM — A Next Generation CRM</title>
+		<meta name="description" content="Ælen CRM blends AI and sales expertise to help you close more deals, faster. Built for the AI era.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;family=Geist:wght@100..900&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+
+		<style>
+		:root {
+			--white: oklch(95% 0.0187 80.72);
+			--black: oklch(29% 0 0);
+			--orange: oklch(60% 0.1499 37.55);
+			--cyan: oklch(80% 0.0456 250.63);
+			--yellow: oklch(75% 0.1081 64.85);
+			--gray: oklch(83% 0.0018 325.59);
+			--font-sans: "Geist", sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: var(--font-sans);
+			background: white;
+			color: var(--black);
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			overflow-x: hidden;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+		button {
+			font-family: var(--font-sans);
+		}
+
+		/* HEADER */
+		header {
+			background: white;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			height: 49px;
+			display: flex;
+			align-items: center;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		.header-inner {
+			width: 100%;
+			padding: 0 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.header-logo {
+			color: var(--black);
+			transition: color 300ms ease;
+			display: flex;
+			align-items: center;
+		}
+		.header-logo:hover {
+			color: var(--orange);
+		}
+		.header-logo svg {
+			height: 32px;
+		}
+
+		.header-right {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin-left: auto;
+		}
+		.nav-link {
+			font-weight: 600;
+			color: var(--black);
+			transition: opacity 300ms ease;
+			padding: 0 0.25rem;
+		}
+		.nav-link:hover {
+			opacity: 0.6;
+		}
+
+		.btn-signup {
+			background: var(--black);
+			color: white;
+			font-weight: 600;
+			padding: 6px 14px;
+			border: none;
+			cursor: pointer;
+			font-size: 0.875rem;
+			transition: background 300ms ease;
+			display: inline-flex;
+			align-items: center;
+		}
+		.btn-signup:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+
+		.btn-icon {
+			background: var(--black);
+			color: white;
+			border: none;
+			width: 32px;
+			height: 32px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: background 300ms ease;
+			flex-shrink: 0;
+		}
+		.btn-icon:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+		.btn-icon svg {
+			width: 16px;
+			height: 16px;
+		}
+
+		.hamburger-btn {
+			display: none;
+			background: var(--black);
+			color: white;
+			border: none;
+			width: 32px;
+			height: 32px;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: background 300ms ease;
+		}
+		.hamburger-btn:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+		.hamburger-btn svg {
+			width: 20px;
+			height: 20px;
+		}
+
+		/* MOBILE OVERLAY */
+		.mobile-overlay {
+			position: fixed;
+			inset: 0;
+			background: var(--yellow);
+			z-index: 9998;
+			flex-direction: column;
+			padding: 1rem;
+			display: none;
+			transition: opacity 300ms ease;
+		}
+		.mobile-overlay.is-open {
+			display: flex;
+		}
+		.mobile-overlay-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0.5rem 0 1rem;
+		}
+		.close-menu-btn {
+			background: white;
+			color: var(--black);
+			border: none;
+			width: 36px;
+			height: 36px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: opacity 300ms;
+		}
+		.close-menu-btn:hover {
+			opacity: 0.7;
+		}
+		.close-menu-btn svg {
+			width: 20px;
+			height: 20px;
+		}
+		.mobile-nav {
+			display: flex;
+			flex-direction: column;
+			margin-top: 2rem;
+		}
+		.mobile-nav a {
+			font-size: clamp(2.5rem, 10vw, 5rem);
+			font-weight: 700;
+			color: white;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			padding: 0.5rem 0;
+			letter-spacing: -0.03em;
+			opacity: 0;
+			transform: translateY(20px);
+			transition:
+				opacity 300ms ease,
+				transform 300ms ease,
+				color 300ms ease;
+		}
+		.mobile-nav a.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		.mobile-nav a:hover {
+			color: color-mix(in oklab, white 60%, transparent);
+		}
+		.mobile-overlay-footer {
+			margin-top: auto;
+		}
+		.mobile-stacked-bars {
+			display: flex;
+			flex-direction: column;
+		}
+		.mobile-stacked-bars div {
+			background: var(--black);
+		}
+		.mobile-footer-band {
+			background: var(--black);
+			padding: 1.5rem 2rem;
+		}
+		.mobile-footer-band span {
+			color: white;
+			font-size: clamp(1rem, 3vw, 1.5rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+		}
+
+		/* SEARCH OVERLAY */
+		.search-overlay {
+			position: fixed;
+			inset: 0;
+			z-index: 9999;
+			background: var(--yellow);
+			flex-direction: column;
+			display: none;
+		}
+		.search-overlay.is-open {
+			display: flex;
+		}
+		.search-header {
+			padding: 3rem 2rem 1rem;
+			position: relative;
+		}
+		.search-header h2 {
+			font-size: clamp(3rem, 10vw, 7rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			color: var(--black);
+		}
+		.search-stacked-bars {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0.5rem;
+		}
+		.search-stacked-bars div {
+			background: var(--black);
+		}
+		.search-band {
+			background: var(--black);
+			padding: 1.5rem 2rem;
+		}
+		.search-band span {
+			font-size: clamp(1.5rem, 4vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			color: white;
+		}
+		.search-input-wrap {
+			padding: 1rem 2rem 0;
+		}
+		.search-input-wrap input {
+			width: 100%;
+			background: color-mix(in oklab, var(--black) 20%, transparent);
+			border: none;
+			outline: none;
+			padding: 1rem;
+			font-family: var(--font-sans);
+			font-size: 1.125rem;
+			color: white;
+			height: 56px;
+		}
+		.search-input-wrap input::placeholder {
+			color: color-mix(in oklab, white 70%, transparent);
+		}
+		.search-results-wrap {
+			padding: 0.5rem 2rem;
+			flex: 1;
+			overflow-y: auto;
+		}
+		.search-result-item {
+			padding: 1.5rem 2rem;
+			background: var(--black);
+			display: block;
+			border-bottom: 1px dashed color-mix(in oklab, white 20%, transparent);
+			transition: background 300ms ease;
+			cursor: pointer;
+			text-decoration: none;
+		}
+		.search-result-item:hover {
+			background: color-mix(in oklab, var(--black) 85%, transparent);
+		}
+		.search-result-type {
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			color: color-mix(in oklab, white 60%, transparent);
+		}
+		.search-result-title {
+			font-size: 1.25rem;
+			font-weight: 700;
+			color: white;
+			margin-top: 0.5rem;
+		}
+		.search-result-desc {
+			font-size: 0.9rem;
+			color: color-mix(in oklab, white 80%, transparent);
+			margin-top: 0.25rem;
+		}
+		.search-close-btn {
+			position: absolute;
+			top: 1rem;
+			right: 1.5rem;
+			background: var(--black);
+			color: white;
+			border: none;
+			width: 36px;
+			height: 36px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			z-index: 10;
+			transition: opacity 300ms;
+		}
+		.search-close-btn:hover {
+			opacity: 0.7;
+		}
+		.search-close-btn svg {
+			width: 20px;
+			height: 20px;
+		}
+
+		/* HERO */
+		.hero {
+			background: var(--white);
+			padding-top: 200px;
+			padding-bottom: 8px;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		.hero h1 {
+			font-size: clamp(3rem, 12vw, 12rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			line-height: 1;
+			color: var(--black);
+		}
+		.hero-subtitle {
+			margin-top: 1rem;
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: var(--black);
+			max-width: 40rem;
+		}
+		.stacked-bars {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0.5rem;
+		}
+		.stacked-bars div {
+			background: var(--black);
+		}
+		.black-band {
+			background: var(--black);
+			padding: 2rem;
+		}
+		.black-band span {
+			font-size: clamp(1.5rem, 4vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			color: white;
+		}
+
+		/* FEATURES INTRO SECTION */
+		.features-intro-inner {
+			background: var(--orange);
+			padding: 6rem 2rem 0;
+		}
+		.features-intro-text {
+			font-size: clamp(1.25rem, 3vw, 2rem);
+			font-weight: 600;
+			color: white;
+			max-width: 52rem;
+			line-height: 1.4;
+			margin-bottom: 3rem;
+		}
+		.features-scroll-list {
+			display: flex;
+			flex-direction: column;
+			margin-top: 3rem;
+		}
+		.feature-scroll-item {
+			position: sticky;
+			top: 49px;
+			z-index: 10;
+			background: var(--orange);
+			padding: 2rem 0;
+			border-top: 1px dashed color-mix(in oklab, white 20%, transparent);
+			display: grid;
+			grid-template-columns: auto 1fr;
+			gap: 3rem;
+		}
+		.feature-scroll-num {
+			font-size: clamp(3rem, 8vw, 5rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			color: white;
+			line-height: 1;
+			min-width: 3.5rem;
+		}
+		.feature-scroll-content {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			border-left: 1px dashed color-mix(in oklab, white 20%, transparent);
+			padding-left: 2rem;
+		}
+		.feature-scroll-title {
+			font-size: clamp(3rem, 8vw, 5rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			color: white;
+			line-height: 1;
+		}
+		.feature-scroll-desc {
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: white;
+			max-width: 36rem;
+			padding-bottom: 6rem;
+			line-height: 1.6;
+		}
+
+		/* REDEFINING */
+		.redefining {
+			background: var(--gray);
+			padding: 6rem 2rem;
+		}
+		.redefining h2 {
+			font-size: clamp(3rem, 10vw, 10rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			line-height: 1;
+			color: var(--black);
+		}
+		.redefining-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 3rem;
+			margin-top: 3rem;
+		}
+		.redefining-card {
+			border-left: 1px dashed color-mix(in oklab, var(--black) 20%, transparent);
+			padding-left: 2rem;
+		}
+		.redefining-card h3 {
+			font-size: clamp(1.25rem, 3vw, 1.75rem);
+			font-weight: 700;
+			color: var(--black);
+			margin-bottom: 1rem;
+		}
+		.redefining-card p {
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: var(--black);
+			line-height: 1.6;
+			margin-top: 1rem;
+		}
+		@media (min-width: 768px) {
+			.redefining-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		/* INDUSTRIES */
+		.industries-inner {
+			display: grid;
+			grid-template-columns: 1fr;
+			padding: 0 2rem;
+			gap: 2rem;
+		}
+		.industries-text {
+			padding: 6rem 0;
+		}
+		.industries-label {
+			font-size: 0.875rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--black);
+			margin-bottom: 1rem;
+		}
+		.industries-text h2 {
+			font-size: clamp(3rem, 8vw, 8rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			line-height: 1;
+			color: var(--black);
+		}
+		.industries-text p {
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: var(--black);
+			max-width: 28rem;
+			margin-top: 2rem;
+			line-height: 1.6;
+		}
+		.industries-marquee {
+			position: relative;
+			overflow: hidden;
+			height: 50vh;
+		}
+		.industries-marquee-track {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			gap: 0.5rem;
+			animation: upMarqueeFast 20s linear infinite;
+		}
+		.industry-item {
+			display: flex;
+			padding: 0.5rem 0;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+		}
+		.industry-item span {
+			font-size: clamp(1.5rem, 5vw, 3rem);
+			font-weight: 700;
+			color: var(--black);
+			width: 100%;
+		}
+		@keyframes upMarqueeFast {
+			0% {
+				transform: translateY(0);
+			}
+			100% {
+				transform: translateY(-50%);
+			}
+		}
+		@media (min-width: 768px) {
+			.industries-inner {
+				grid-template-columns: 1fr 1fr;
+			}
+			.industries-marquee {
+				height: 100dvh;
+			}
+		}
+
+		/* PRODUCT CALLOUT */
+		.product-callout {
+			background: var(--orange);
+			padding: 6rem 2rem 0;
+		}
+		.product-callout h2 {
+			font-size: clamp(2rem, 6vw, 6rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			color: white;
+			line-height: 1.05;
+			max-width: 56rem;
+		}
+		.product-callout-features {
+			display: flex;
+			flex-direction: column;
+			margin-top: 3rem;
+		}
+		.product-callout-feature {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1rem;
+			padding: 3rem 0;
+			border-top: 1px dashed color-mix(in oklab, white 20%, transparent);
+			position: sticky;
+			top: 49px;
+			z-index: 10;
+			background: var(--orange);
+		}
+		.product-callout-feature h3 {
+			font-size: clamp(1.75rem, 4vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			color: white;
+		}
+		.product-callout-feature-desc {
+			border-left: 1px dashed color-mix(in oklab, white 20%, transparent);
+			padding-left: 1.5rem;
+		}
+		.product-callout-feature p {
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: white;
+			max-width: 36rem;
+			line-height: 1.6;
+			padding-bottom: 3rem;
+		}
+		.product-callout-cta {
+			padding: 3rem 0;
+			border-top: 1px dashed color-mix(in oklab, white 20%, transparent);
+		}
+		@media (min-width: 768px) {
+			.product-callout-feature {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		.btn-white {
+			display: inline-flex;
+			align-items: center;
+			background: white;
+			color: var(--black);
+			font-weight: 600;
+			font-size: 1.125rem;
+			padding: 12px 24px;
+			border: none;
+			cursor: pointer;
+			transition: background 300ms ease;
+			font-family: var(--font-sans);
+		}
+		.btn-white:hover {
+			background: color-mix(in oklab, white 80%, transparent);
+		}
+
+		/* CTA BAND */
+		.cta-band {
+			background: var(--black);
+			padding: 12rem 2rem;
+			text-align: center;
+		}
+		.cta-band-inner {
+			max-width: 56rem;
+			margin: 0 auto;
+		}
+		.cta-band h2 {
+			font-size: clamp(2rem, 5vw, 4rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			color: white;
+			text-decoration: underline;
+			line-height: 1.15;
+		}
+		.cta-band p {
+			font-size: 1.125rem;
+			color: color-mix(in oklab, white 70%, transparent);
+			margin-top: 1rem;
+			font-weight: 600;
+		}
+		.btn-white-outline {
+			display: inline-flex;
+			align-items: center;
+			background: transparent;
+			color: white;
+			font-weight: 600;
+			font-size: 1.125rem;
+			padding: 12px 32px;
+			border: 1px solid white;
+			cursor: pointer;
+			margin-top: 2rem;
+			transition:
+				background 300ms ease,
+				color 300ms ease;
+			font-family: var(--font-sans);
+		}
+		.btn-white-outline:hover {
+			background: white;
+			color: var(--black);
+		}
+
+		/* INTEGRATIONS */
+		.integrations {
+			background: var(--cyan);
+			padding: 6rem 2rem;
+		}
+		.integrations-label {
+			font-size: 0.875rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--black);
+			margin-bottom: 1rem;
+		}
+		.integrations h2 {
+			font-size: clamp(3rem, 10vw, 12rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			color: var(--black);
+			line-height: 1;
+		}
+		.integrations p {
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: var(--black);
+			max-width: 28rem;
+			margin-top: 2rem;
+			line-height: 1.6;
+		}
+		.integrations-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1px;
+			margin-top: 3rem;
+			background: color-mix(in oklab, var(--black) 15%, transparent);
+		}
+		@media (min-width: 640px) {
+			.integrations-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+		.integration-card {
+			background: var(--cyan);
+			padding: 1.5rem;
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			transition: background 300ms ease;
+		}
+		.integration-card:hover {
+			background: color-mix(in oklab, var(--cyan) 80%, white);
+		}
+		.integration-icon {
+			width: 40px;
+			height: 40px;
+			background: var(--black);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			color: white;
+			font-weight: 700;
+			font-size: 0.7rem;
+			letter-spacing: -0.02em;
+		}
+		.integration-name {
+			font-weight: 700;
+			font-size: 1rem;
+			color: var(--black);
+		}
+		.btn-black {
+			display: inline-flex;
+			align-items: center;
+			background: var(--black);
+			color: white;
+			font-weight: 600;
+			font-size: 1.125rem;
+			padding: 12px 24px;
+			border: none;
+			cursor: pointer;
+			transition: background 300ms ease;
+			font-family: var(--font-sans);
+			margin-top: 2rem;
+		}
+		.btn-black:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+
+		/* TESTIMONIALS */
+		.testimonials {
+			background: var(--white);
+			padding: 4rem 2rem;
+			overflow: hidden;
+		}
+		.testimonials-header {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			margin-bottom: 2rem;
+			gap: 1rem;
+		}
+		.testimonials-header h2 {
+			font-size: clamp(3rem, 10vw, 8rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			color: var(--black);
+			line-height: 1;
+		}
+		.testimonials-nav {
+			display: flex;
+			gap: 0.25rem;
+			flex-shrink: 0;
+		}
+		.testimonials-nav button {
+			background: var(--black);
+			color: white;
+			border: none;
+			width: 32px;
+			height: 32px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			cursor: pointer;
+			transition: background 300ms ease;
+		}
+		.testimonials-nav button:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+		.testimonials-nav button svg {
+			width: 20px;
+			height: 20px;
+		}
+		.testimonials-divider {
+			border-top: 1px dashed color-mix(in oklab, var(--black) 20%, transparent);
+			margin-bottom: 3rem;
+		}
+		.testimonials-slider {
+			display: flex;
+			gap: 2rem;
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: none;
+		}
+		.testimonials-slider::-webkit-scrollbar {
+			display: none;
+		}
+		.testimonial-card {
+			flex: 0 0 calc(25% - 1.5rem);
+			border-left: 1px dashed color-mix(in oklab, var(--black) 20%, transparent);
+			padding-left: 2rem;
+			min-width: 280px;
+			scroll-snap-align: start;
+		}
+		@media (max-width: 767px) {
+			.testimonial-card {
+				flex: 0 0 calc(90% - 1rem);
+			}
+		}
+		.testimonial-img {
+			position: relative;
+			aspect-ratio: 1;
+			overflow: hidden;
+			margin-bottom: 1.5rem;
+		}
+		.testimonial-img img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			filter: grayscale(100%);
+			display: block;
+		}
+		.testimonial-img-overlay {
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			z-index: 1;
+		}
+		.testimonial-name {
+			font-size: 1.125rem;
+			font-weight: 700;
+			color: var(--black);
+			text-transform: uppercase;
+			letter-spacing: 0.02em;
+		}
+		.testimonial-role {
+			font-size: 0.75rem;
+			color: var(--black);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			margin-top: 0.125rem;
+		}
+		.testimonial-quote {
+			font-size: 1rem;
+			font-weight: 600;
+			color: var(--black);
+			margin-top: 0.75rem;
+			line-height: 1.6;
+		}
+
+		/* FOOTER */
+		footer {
+			background: var(--black);
+			margin-top: auto;
+		}
+		.footer-dividers {
+			display: flex;
+			flex-direction: column;
+		}
+		.footer-dividers div {
+			background: var(--black);
+		}
+		.footer-social {
+			background: var(--black);
+			padding: 2rem;
+			display: flex;
+			align-items: center;
+			gap: 1.5rem;
+		}
+		.footer-social a {
+			color: white;
+			font-weight: 600;
+			font-size: 0.875rem;
+			transition: opacity 300ms ease;
+			border-bottom: 1px dashed color-mix(in oklab, white 20%, transparent);
+			padding-bottom: 2px;
+		}
+		.footer-social a:hover {
+			opacity: 0.6;
+		}
+		.footer-nav {
+			background: var(--black);
+			padding: 1rem 2rem;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1.5rem;
+			border-top: 1px solid color-mix(in oklab, white 10%, transparent);
+		}
+		.footer-nav a {
+			color: white;
+			font-size: 0.875rem;
+			font-weight: 600;
+			transition: opacity 300ms ease;
+			border-bottom: 1px dashed color-mix(in oklab, white 20%, transparent);
+			padding-bottom: 2px;
+		}
+		.footer-nav a:hover {
+			opacity: 0.6;
+		}
+		.footer-wordmark {
+			background: var(--black);
+			padding: 2rem 1rem 0;
+		}
+		.footer-wordmark svg {
+			width: 100%;
+			height: auto;
+		}
+		.footer-copy {
+			background: var(--black);
+		}
+		.footer-copy-stacked {
+			display: flex;
+			flex-direction: column;
+		}
+		.footer-copy-stacked div {
+			background: white;
+		}
+		.footer-copy-band {
+			background: white;
+			padding: 1rem 2rem;
+		}
+		.footer-copy-band span {
+			font-size: clamp(1rem, 3vw, 2rem);
+			font-weight: 700;
+			letter-spacing: -0.03em;
+			color: var(--black);
+		}
+
+		/* CHAT */
+		.chat-wrap {
+			position: fixed;
+			bottom: 2rem;
+			right: 2rem;
+			z-index: 999;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			gap: 0.75rem;
+		}
+		#chat-bubble {
+			background: white;
+			border: 1px dashed color-mix(in oklab, var(--black) 20%, transparent);
+			width: 300px;
+			padding: 1.5rem;
+			box-shadow: 0 8px 32px color-mix(in oklab, var(--black) 20%, transparent);
+			opacity: 0;
+			pointer-events: none;
+			transform: translateY(8px);
+			transition:
+				opacity 300ms ease,
+				transform 300ms ease;
+		}
+		#chat-bubble.is-open {
+			opacity: 1;
+			pointer-events: all;
+			transform: translateY(0);
+		}
+		.chat-bubble-title {
+			font-weight: 700;
+			font-size: 1rem;
+			color: var(--black);
+			margin-bottom: 0.5rem;
+		}
+		.chat-bubble-body {
+			font-size: 0.875rem;
+			color: color-mix(in oklab, var(--black) 70%, transparent);
+			margin-bottom: 1rem;
+			line-height: 1.5;
+		}
+		.chat-bubble-input {
+			width: 100%;
+			border: 1px dashed color-mix(in oklab, var(--black) 20%, transparent);
+			padding: 0.5rem 0.75rem;
+			font-family: var(--font-sans);
+			font-size: 0.875rem;
+			outline: none;
+			transition: border-color 300ms;
+		}
+		.chat-bubble-input:focus {
+			border-color: var(--black);
+		}
+		#chat-toggle {
+			width: 52px;
+			height: 52px;
+			border-radius: 50%;
+			background: var(--black);
+			color: white;
+			border: none;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition:
+				background 300ms ease,
+				transform 300ms ease;
+			box-shadow: 0 4px 16px color-mix(in oklab, var(--black) 30%, transparent);
+		}
+		#chat-toggle:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+			transform: scale(1.05);
+		}
+		#chat-toggle svg {
+			width: 22px;
+			height: 22px;
+		}
+
+		/* RESPONSIVE */
+		@media (max-width: 767px) {
+			.header-right .nav-link,
+			.header-right .btn-signup,
+			.header-right .btn-icon {
+				display: none;
+			}
+			.hamburger-btn {
+				display: flex;
+			}
+			.feature-scroll-item {
+				grid-template-columns: 1fr;
+				gap: 1rem;
+			}
+			.feature-scroll-content {
+				border-left: none;
+				padding-left: 0;
+				border-top: 1px dashed color-mix(in oklab, white 20%, transparent);
+				padding-top: 1.5rem;
+			}
+			.industries-inner {
+				padding: 0 1rem;
+			}
+			.integrations {
+				padding: 4rem 1rem;
+			}
+			.testimonials {
+				padding: 3rem 1rem;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- SEARCH OVERLAY -->
+		<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+			<div class="search-header">
+				<button class="search-close-btn" id="searchClose" aria-label="Close search">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
+				<h2>Search</h2>
+				<div class="search-stacked-bars">
+					<div style="height:2px"></div>
+					<div style="height:4px"></div>
+					<div style="height:8px"></div>
+					<div style="height:12px"></div>
+				</div>
+				<div class="search-band"><span>Find anything across Ælen</span></div>
+			</div>
+			<div class="search-input-wrap">
+				<input type="text" id="searchInput" placeholder="Search..." autocomplete="off" style="">
+			</div>
+			<div class="search-results-wrap" id="searchResultsWrap"></div>
+		</div>
+
+		<!-- MOBILE MENU OVERLAY -->
+		<div class="mobile-overlay" id="mobileMenu">
+			<div class="mobile-overlay-header">
+				<a href="index.html" style="color:var(--black)">
+					<svg style="height:32px" viewBox="0 0 1051 289" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z" fill="currentColor"></path>
+					</svg>
+				</a>
+				<button class="close-menu-btn" id="closeMenu" aria-label="Close menu">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
+			</div>
+			<nav class="mobile-nav" id="mobileNav">
+				<a href="system-overview.html">Overview</a>
+				<a href="about.html">About</a>
+				<a href="pricing.html">Pricing</a>
+				<a href="blog.html">Blog</a>
+				<a href="changelog.html">Changelog</a>
+				<a href="contact.html">Contact</a>
+				<a href="integrations.html">Integrations</a>
+				<a href="sign-up.html">Sign up</a>
+			</nav>
+			<div class="mobile-overlay-footer">
+				<div class="mobile-stacked-bars">
+					<div style="height:2px"></div>
+					<div style="height:4px"></div>
+					<div style="height:8px"></div>
+					<div style="height:12px"></div>
+				</div>
+				<div class="mobile-footer-band">
+					<span>Ælen CRM — Copyright Lexington Themes 2026</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- HEADER -->
+		<header>
+			<div class="header-inner">
+				<a href="index.html" class="header-logo" aria-label="Ælen CRM">
+					<svg viewBox="0 0 1051 289" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z" fill="currentColor"></path>
+					</svg>
+				</a>
+				<div class="header-right">
+					<a href="system-overview.html" class="nav-link">Overview</a>
+					<a href="sign-up.html" class="btn-signup">Sign up</a>
+					<button class="btn-icon" id="searchButton" aria-label="Search">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+							<path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+							<path d="M21 21l-6 -6"></path>
+						</svg>
+					</button>
+					<button class="hamburger-btn" id="menuToggle" aria-label="Open menu">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+							<path d="M4 6h16"></path>
+							<path d="M7 12h13"></path>
+							<path d="M10 18h10"></path>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<!-- 1. HERO -->
+			<section class="hero">
+				<h1>Ælen's CRM</h1>
+				<p class="hero-subtitle">A next generation CRM</p>
+				<div class="stacked-bars" style="margin-top:2rem">
+					<div style="height:2px"></div>
+					<div style="height:4px"></div>
+					<div style="height:8px"></div>
+					<div style="height:12px"></div>
+				</div>
+				<div class="black-band">
+					<span>A next generation CRM</span>
+				</div>
+			</section>
+
+			<!-- 2. FEATURES INTRO — Orange sticky scroll -->
+			<section style="padding: 0.5rem 1rem;">
+				<div class="features-intro-inner">
+					<p class="features-intro-text">
+						Blending AI and sales expertise, we build smart CRM solutions that
+						close more deals, faster — for startups, enterprises, and everything
+						in between.
+					</p>
+					<div class="features-scroll-list">
+						<div class="feature-scroll-item">
+							<span class="feature-scroll-num">01</span>
+							<div class="feature-scroll-content">
+								<h3 class="feature-scroll-title">Create</h3>
+								<p class="feature-scroll-desc">
+									Quickly launch professional campaigns using pre-designed
+									templates and a user-friendly setup process. Whether you're
+									starting from scratch or scaling an existing strategy, our
+									tools help you go live faster with less friction.
+								</p>
+							</div>
+						</div>
+						<div class="feature-scroll-item">
+							<span class="feature-scroll-num">02</span>
+							<div class="feature-scroll-content">
+								<h3 class="feature-scroll-title">Adjust</h3>
+								<p class="feature-scroll-desc">
+									Fine-tune your pipelines in real time based on live
+									performance metrics. Easily update targeting, lead stages, and
+									budgets on the fly to keep your sales aligned with evolving
+									goals and customer behavior.
+								</p>
+							</div>
+						</div>
+						<div class="feature-scroll-item">
+							<span class="feature-scroll-num">03</span>
+							<div class="feature-scroll-content">
+								<h3 class="feature-scroll-title">Analyze</h3>
+								<p class="feature-scroll-desc">
+									Get full visibility into what's working and what's not with
+									detailed performance dashboards. From conversion rates to ROI,
+									you'll have the insights needed to make smarter decisions and
+									maximize results.
+								</p>
+							</div>
+						</div>
+						<div class="feature-scroll-item">
+							<span class="feature-scroll-num">04</span>
+							<div class="feature-scroll-content">
+								<h3 class="feature-scroll-title">Automate</h3>
+								<p class="feature-scroll-desc">
+									Let AI take the wheel with intelligent automation that
+									optimizes performance around the clock. Automatically score
+									leads, pause underperforming sequences, and scale what's
+									working—without lifting a finger.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 3. REDEFINING WHAT A CRM CAN DO -->
+			<section style="padding: 0.5rem 1rem;">
+				<div class="redefining">
+					<h2>Redefining what a CRM can do.</h2>
+					<div class="redefining-grid">
+						<div class="redefining-card">
+							<h3>Built for the AI Era</h3>
+							<p>
+								We design tools for forward-thinking teams. Our CRM isn't just
+								modern—it's purpose-built for today's fast-moving, data-driven
+								workflows. The tougher the sales challenge, the more we're in
+								our element.
+							</p>
+						</div>
+						<div class="redefining-card">
+							<h3>End-to-End and Evolving</h3>
+							<p>
+								Our platform connects powerful AI with proven sales strategies.
+								By working with both industry leaders and startups, we deliver
+								flexible solutions that grow with your business. Sales never
+								stands still—neither do we.
+							</p>
+						</div>
+						<div class="redefining-card">
+							<h3>Focused on What Matters</h3>
+							<p>
+								Everything we build is designed to support your long-term
+								success. No hype, just practical features that keep your team
+								efficient and your customers happy. While others make noise, we
+								deliver.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 4. INDUSTRIES -->
+			<section style="background: var(--yellow); padding: 0.5rem 0;">
+				<div class="industries-inner">
+					<div class="industries-text">
+						<p class="industries-label">Industries We Support</p>
+						<h2>From startups to enterprise</h2>
+						<p>
+							From startups to enterprises, we partner with high-performing
+							teams across industries to streamline sales, boost efficiency, and
+							scale smarter. Top performers trust our CRM to power their growth.
+						</p>
+					</div>
+					<div class="industries-marquee">
+						<div class="industries-marquee-track">
+							<div class="industry-item"><span>Tech Startups</span></div>
+							<div class="industry-item"><span>Enterprise SaaS</span></div>
+							<div class="industry-item"><span>E-commerce</span></div>
+							<div class="industry-item"><span>Fintech</span></div>
+							<div class="industry-item"><span>Healthcare</span></div>
+							<div class="industry-item"><span>Real Estate</span></div>
+							<div class="industry-item"><span>Marketing Agencies</span></div>
+							<div class="industry-item"><span>Consulting Firms</span></div>
+							<div class="industry-item">
+								<span>Education &amp; EdTech</span>
+							</div>
+							<div class="industry-item">
+								<span>Logistics &amp; Supply Chain</span>
+							</div>
+							<div class="industry-item">
+								<span>Media &amp; Publishing</span>
+							</div>
+							<div class="industry-item"><span>Hospitality</span></div>
+							<div class="industry-item"><span>Nonprofits</span></div>
+							<div class="industry-item"><span>Telecommunications</span></div>
+							<div class="industry-item"><span>Legal Services</span></div>
+							<div class="industry-item"><span>Automotive</span></div>
+							<div class="industry-item"><span>Recruitment &amp; HR</span></div>
+							<div class="industry-item"><span>Construction</span></div>
+							<div class="industry-item">
+								<span>Energy &amp; Utilities</span>
+							</div>
+							<div class="industry-item"><span>Consumer Products</span></div>
+							<!-- duplicate for seamless loop -->
+							<div class="industry-item"><span>Tech Startups</span></div>
+							<div class="industry-item"><span>Enterprise SaaS</span></div>
+							<div class="industry-item"><span>E-commerce</span></div>
+							<div class="industry-item"><span>Fintech</span></div>
+							<div class="industry-item"><span>Healthcare</span></div>
+							<div class="industry-item"><span>Real Estate</span></div>
+							<div class="industry-item"><span>Marketing Agencies</span></div>
+							<div class="industry-item"><span>Consulting Firms</span></div>
+							<div class="industry-item">
+								<span>Education &amp; EdTech</span>
+							</div>
+							<div class="industry-item">
+								<span>Logistics &amp; Supply Chain</span>
+							</div>
+							<div class="industry-item">
+								<span>Media &amp; Publishing</span>
+							</div>
+							<div class="industry-item"><span>Hospitality</span></div>
+							<div class="industry-item"><span>Nonprofits</span></div>
+							<div class="industry-item"><span>Telecommunications</span></div>
+							<div class="industry-item"><span>Legal Services</span></div>
+							<div class="industry-item"><span>Automotive</span></div>
+							<div class="industry-item"><span>Recruitment &amp; HR</span></div>
+							<div class="industry-item"><span>Construction</span></div>
+							<div class="industry-item">
+								<span>Energy &amp; Utilities</span>
+							</div>
+							<div class="industry-item"><span>Consumer Products</span></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 5. PRODUCT CALLOUT -->
+			<section style="padding: 0.5rem 1rem;">
+				<div class="product-callout">
+					<h2>Ælen is designed to help you work faster and cut costs.</h2>
+					<div class="product-callout-features">
+						<div class="product-callout-feature">
+							<h3>Multi-Platform Control</h3>
+							<div class="product-callout-feature-desc">
+								<p>
+									Run and manage your sales across all your channels—email,
+									phone, social—all from one place. No more tab-switching, no
+									more dropped leads.
+								</p>
+							</div>
+						</div>
+						<div class="product-callout-feature">
+							<h3>Live Performance Data</h3>
+							<div class="product-callout-feature-desc">
+								<p>
+									Monitor pipeline performance in real-time. Track deal
+									velocity, close rate, and revenue forecasts to stay ahead of
+									your targets at all times.
+								</p>
+							</div>
+						</div>
+						<div class="product-callout-feature">
+							<h3>AI-Powered Lead Scoring</h3>
+							<div class="product-callout-feature-desc">
+								<p>
+									Let AI prioritize your hottest leads automatically. Score
+									based on behavior, engagement, and fit so your team focuses
+									where it matters most.
+								</p>
+							</div>
+						</div>
+						<div class="product-callout-feature">
+							<h3>Automated Follow-Up Sequences</h3>
+							<div class="product-callout-feature-desc">
+								<p>
+									Never let a lead go cold. Build smart follow-up sequences that
+									trigger automatically based on lead actions and deal stage
+									changes.
+								</p>
+							</div>
+						</div>
+						<div class="product-callout-feature">
+							<h3>Real-Time Deal Pipeline</h3>
+							<div class="product-callout-feature-desc">
+								<p>
+									Visualize every deal at every stage. Drag, drop, and move
+									opportunities through your pipeline with full context on each
+									account.
+								</p>
+							</div>
+						</div>
+						<div class="product-callout-feature">
+							<h3>Team Collaboration Tools</h3>
+							<div class="product-callout-feature-desc">
+								<p>
+									Assign tasks, leave comments, and share updates with your team
+									in real time—so everyone stays in sync and deals close faster.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="product-callout-cta">
+						<a href="sign-up.html" class="btn-white">Get started</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- 6. CTA BAND -->
+			<section style="padding: 0.5rem 1rem;">
+				<div class="cta-band">
+					<div class="cta-band-inner">
+						<h2>
+							Ready to turn more leads into sales? / Join over 1,000 agencies,
+							startups, and consultants growing their business with Ælen CRM.
+						</h2>
+						<a href="sign-up.html" class="btn-white-outline">Sign up</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- 7. INTEGRATIONS -->
+			<section style="padding: 0.5rem 1rem;">
+				<div class="integrations">
+					<p class="integrations-label">Integrations</p>
+					<h2>Integrations</h2>
+					<p>
+						Connect Ælen to LinkedIn, Zapier, and More — Easily plug into your
+						existing workflow with integrations like API, Webhooks, Zapier,
+						Pabbly, and others.
+					</p>
+					<div class="integrations-grid">
+						<div class="integration-card">
+							<div class="integration-icon">CB</div>
+							<span class="integration-name">Chargebee</span>
+						</div>
+						<div class="integration-card">
+							<div class="integration-icon">ST</div>
+							<span class="integration-name">Stripe</span>
+						</div>
+						<div class="integration-card">
+							<div class="integration-icon">in</div>
+							<span class="integration-name">LinkedIn</span>
+						</div>
+						<div class="integration-card">
+							<div class="integration-icon">HS</div>
+							<span class="integration-name">HubSpot</span>
+						</div>
+						<div class="integration-card">
+							<div class="integration-icon">SF</div>
+							<span class="integration-name">Salesforce</span>
+						</div>
+						<div class="integration-card">
+							<div class="integration-icon">ZP</div>
+							<span class="integration-name">Zapier</span>
+						</div>
+						<div class="integration-card">
+							<div class="integration-icon">SL</div>
+							<span class="integration-name">Slack</span>
+						</div>
+						<div class="integration-card">
+							<div class="integration-icon">GW</div>
+							<span class="integration-name">Google Workspace</span>
+						</div>
+					</div>
+					<a href="integrations.html" class="btn-black">Get started</a>
+				</div>
+			</section>
+
+			<!-- 8. TESTIMONIALS -->
+			<section style="padding: 0.5rem 1rem;">
+				<div class="testimonials">
+					<div class="testimonials-header">
+						<h2>Customers</h2>
+						<div class="testimonials-nav">
+							<button id="sliderPrev" aria-label="Previous slide">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M5 12l14 0"></path>
+									<path d="M5 12l6 6"></path>
+									<path d="M5 12l6 -6"></path>
+								</svg>
+							</button>
+							<button id="sliderNext" aria-label="Next slide">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M5 12l14 0"></path>
+									<path d="M13 18l6 -6"></path>
+									<path d="M13 6l6 6"></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<div class="testimonials-divider"></div>
+					<div class="testimonials-slider" id="testimonialSlider">
+						<div class="testimonial-card">
+							<div class="testimonial-img">
+								<img src="assets/images/home-1.vs1G4o89_nrh5W.webp" alt="Lana M." loading="lazy">
+								<div class="testimonial-img-overlay" style="background: color-mix(in oklab, var(--cyan) 50%, transparent);"></div>
+							</div>
+							<p class="testimonial-name">Lana M.</p>
+							<p class="testimonial-role">Sales Ops Lead</p>
+							<blockquote class="testimonial-quote">
+								"I start my day with Ælen. Pipeline review, key insights, done.
+								It's like having a calm, unbothered assistant who never drops
+								the ball."
+							</blockquote>
+						</div>
+						<div class="testimonial-card">
+							<div class="testimonial-img">
+								<img src="assets/images/home-2.CXBkgsAh_1xldIp.webp" alt="Jay T." loading="lazy">
+								<div class="testimonial-img-overlay" style="background: color-mix(in oklab, var(--orange) 50%, transparent);"></div>
+							</div>
+							<p class="testimonial-name">Jay T.</p>
+							<p class="testimonial-role">
+								Founder, Recovering Spreadsheet Addict
+							</p>
+							<blockquote class="testimonial-quote">
+								"I used to live in tabs and dashboards. Ælen turned that chaos
+								into one clean view. Now I actually enjoy checking my CRM."
+							</blockquote>
+						</div>
+						<div class="testimonial-card">
+							<div class="testimonial-img">
+								<img src="assets/images/home-3.CfHgO3_-_Z7VFlH.webp" alt="Niko L." loading="lazy">
+								<div class="testimonial-img-overlay" style="background: color-mix(in oklab, var(--yellow) 50%, transparent);"></div>
+							</div>
+							<p class="testimonial-name">Niko L.</p>
+							<p class="testimonial-role">Growth Strategist</p>
+							<blockquote class="testimonial-quote">
+								"Ælen gives me daily nudges I didn't know I needed. Smart,
+								subtle, and just enough to keep deals moving without babysitting
+								them."
+							</blockquote>
+						</div>
+						<div class="testimonial-card">
+							<div class="testimonial-img">
+								<img src="assets/images/home-4.BWeRbLdr_bpCbW.webp" alt="Tessa R." loading="lazy">
+								<div class="testimonial-img-overlay" style="background: color-mix(in oklab, var(--gray) 50%, transparent);"></div>
+							</div>
+							<p class="testimonial-name">Tessa R.</p>
+							<p class="testimonial-role">Agency Director</p>
+							<blockquote class="testimonial-quote">
+								"Other CRMs felt bloated or way too 'motivational'. Ælen feels
+								focused and human. It just helps me get work done—without the
+								noise."
+							</blockquote>
+						</div>
+						<div class="testimonial-card">
+							<div class="testimonial-img">
+								<img src="assets/images/home-5.BCs2ynU5_Z10KEvi.webp" alt="Andre W." loading="lazy">
+								<div class="testimonial-img-overlay" style="background: color-mix(in oklab, var(--cyan) 50%, transparent);"></div>
+							</div>
+							<p class="testimonial-name">Andre W.</p>
+							<p class="testimonial-role">Freelancer, Team of One</p>
+							<blockquote class="testimonial-quote">
+								"This is the first CRM that actually fits how I work. The
+								dashboard is calm, the AI is sharp, and I spend way less time
+								chasing tasks."
+							</blockquote>
+						</div>
+						<div class="testimonial-card">
+							<div class="testimonial-img">
+								<img src="assets/images/home-6.B6sAOD7z_UCPzk.webp" alt="Samira K." loading="lazy">
+								<div class="testimonial-img-overlay" style="background: color-mix(in oklab, var(--orange) 50%, transparent);"></div>
+							</div>
+							<p class="testimonial-name">Samira K.</p>
+							<p class="testimonial-role">Head of Client Success</p>
+							<blockquote class="testimonial-quote">
+								"Ælen doesn't just store contacts—it helps me stay ahead. I can
+								see what matters, who needs a follow-up, and why. It's a game
+								changer."
+							</blockquote>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-dividers">
+				<div style="height:2px"></div>
+				<div style="height:4px"></div>
+				<div style="height:8px"></div>
+				<div style="height:12px"></div>
+			</div>
+			<div class="footer-social">
+				<a href="#">X</a>
+				<a href="#">Linkedin</a>
+				<a href="#">Youtube</a>
+				<a href="#">Instagram</a>
+			</div>
+			<nav class="footer-nav">
+				<a href="system-overview.html">Overview</a>
+				<a href="about.html">About</a>
+				<a href="#">Careers</a>
+				<a href="contact.html">Contact</a>
+				<a href="blog.html">Blog</a>
+				<a href="changelog.html">Changelog</a>
+				<a href="pricing.html">Pricing</a>
+			</nav>
+			<div class="footer-wordmark">
+				<svg viewBox="0 0 1051 289" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z" fill="white"></path>
+				</svg>
+			</div>
+			<div class="footer-copy">
+				<div class="footer-copy-stacked">
+					<div style="height:2px"></div>
+					<div style="height:4px"></div>
+					<div style="height:8px"></div>
+					<div style="height:12px"></div>
+				</div>
+				<div class="footer-copy-band">
+					<span>© Copyright Lexington Themes <span id="year">2026</span></span>
+				</div>
+			</div>
+		</footer>
+
+		<!-- FLOATING CHAT BUBBLE -->
+		<div class="chat-wrap">
+			<div id="chat-bubble" role="dialog" aria-label="Chat with us">
+				<p class="chat-bubble-title">Chat with us</p>
+				<p class="chat-bubble-body">
+					Have a question about Ælen? We're here to help. Usually reply within
+					minutes.
+				</p>
+				<input type="text" class="chat-bubble-input" placeholder="Type your message..." style="">
+			</div>
+			<button id="chat-toggle" aria-label="Toggle chat">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+					<path d="M8 9h8"></path>
+					<path d="M8 13h6"></path>
+					<path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"></path>
+				</svg>
+			</button>
+		</div>
+
+		<script>
+		// Year
+		document.getElementById("year").textContent = new Date().getFullYear();
+
+		// Mobile Menu
+		const menuToggle = document.getElementById("menuToggle");
+		const mobileMenu = document.getElementById("mobileMenu");
+		const closeMenu = document.getElementById("closeMenu");
+		const mobileNav = document.getElementById("mobileNav");
+
+		function openMobileMenu() {
+			mobileMenu.classList.add("is-open");
+			document.body.style.overflow = "hidden";
+			const links = mobileNav.querySelectorAll("a");
+			links.forEach((link, i) => {
+				link.style.transitionDelay = i * 0.07 + "s";
+				setTimeout(() => link.classList.add("visible"), 30);
+			});
+		}
+
+		function closeMobileMenu() {
+			const links = mobileNav.querySelectorAll("a");
+			links.forEach((link) => {
+				link.style.transitionDelay = "0s";
+				link.classList.remove("visible");
+			});
+			setTimeout(() => {
+				mobileMenu.classList.remove("is-open");
+				document.body.style.overflow = "";
+			}, 300);
+		}
+
+		menuToggle?.addEventListener("click", openMobileMenu);
+		closeMenu?.addEventListener("click", closeMobileMenu);
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && mobileMenu.classList.contains("is-open"))
+				closeMobileMenu();
+		});
+
+		// Search
+		const searchButton = document.getElementById("searchButton");
+		const searchOverlay = document.getElementById("searchOverlay");
+		const searchClose = document.getElementById("searchClose");
+		const searchInput = document.getElementById("searchInput");
+		const searchResults = document.getElementById("searchResultsWrap");
+
+		const searchData = [
+			{
+				title: "System Overview",
+				description:
+					"Explore the Ælen CRM design system, colors, and components.",
+				url: "system-overview.html",
+				type: "Page",
+			},
+			{
+				title: "About",
+				description: "Learn about the Ælen team and mission.",
+				url: "about.html",
+				type: "Page",
+			},
+			{
+				title: "Pricing",
+				description: "Find the right Ælen plan for your team.",
+				url: "pricing.html",
+				type: "Page",
+			},
+			{
+				title: "Integrations",
+				description: "Connect Ælen to LinkedIn, Stripe, Zapier, and more.",
+				url: "integrations.html",
+				type: "Page",
+			},
+			{
+				title: "Blog",
+				description: "CRM tips, sales strategies, and product updates.",
+				url: "blog.html",
+				type: "Page",
+			},
+			{
+				title: "Changelog",
+				description: "See what's new in Ælen CRM.",
+				url: "changelog.html",
+				type: "Page",
+			},
+			{
+				title: "Contact",
+				description: "Get in touch with the Ælen team.",
+				url: "contact.html",
+				type: "Page",
+			},
+			{
+				title: "Help Center — Account",
+				description: "Learn how to create and manage your Ælen account.",
+				url: "helpcenter.html",
+				type: "Help Center",
+			},
+			{
+				title: "Help Center — Billing",
+				description: "Manage your Ælen subscription and invoices.",
+				url: "helpcenter.html",
+				type: "Help Center",
+			},
+		];
+
+		function openSearch() {
+			searchOverlay.classList.add("is-open");
+			document.body.style.overflow = "hidden";
+			setTimeout(() => searchInput.focus(), 100);
+		}
+
+		function closeSearch() {
+			searchOverlay.classList.remove("is-open");
+			document.body.style.overflow = "";
+			searchInput.value = "";
+			searchResults.innerHTML = "";
+		}
+
+		function renderSearchResults(query) {
+			if (!query.trim()) {
+				searchResults.innerHTML = "";
+				return;
+			}
+			const q = query.toLowerCase();
+			const results = searchData.filter(
+				(item) =>
+					item.title.toLowerCase().includes(q) ||
+					item.description.toLowerCase().includes(q) ||
+					item.type.toLowerCase().includes(q),
+			);
+			if (results.length === 0) {
+				searchResults.innerHTML =
+					'<div class="search-result-item"><p class="search-result-title">No results found.</p></div>';
+				return;
+			}
+			searchResults.innerHTML = results
+				.slice(0, 8)
+				.map(
+					(r) =>
+						'<a href="' +
+						r.url +
+						'" class="search-result-item"><p class="search-result-type">' +
+						r.type +
+						'</p><p class="search-result-title">' +
+						r.title +
+						'</p><p class="search-result-desc">' +
+						r.description +
+						"</p></a>",
+				)
+				.join("");
+		}
+
+		searchButton?.addEventListener("click", openSearch);
+		searchClose?.addEventListener("click", closeSearch);
+		searchInput?.addEventListener("input", (e) =>
+			renderSearchResults(e.target.value),
+		);
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && searchOverlay.classList.contains("is-open"))
+				closeSearch();
+		});
+
+		// Testimonials Slider
+		const slider = document.getElementById("testimonialSlider");
+		const prevBtn = document.getElementById("sliderPrev");
+		const nextBtn = document.getElementById("sliderNext");
+
+		function getCardWidth() {
+			const card = slider && slider.querySelector(".testimonial-card");
+			return card ? card.offsetWidth + 32 : 0;
+		}
+
+		nextBtn?.addEventListener("click", () => {
+			if (slider) slider.scrollBy({ left: getCardWidth(), behavior: "smooth" });
+		});
+		prevBtn?.addEventListener("click", () => {
+			if (slider)
+				slider.scrollBy({ left: -getCardWidth(), behavior: "smooth" });
+		});
+
+		// Chat Bubble
+		const chatToggle = document.getElementById("chat-toggle");
+		const chatBubble = document.getElementById("chat-bubble");
+
+		chatToggle?.addEventListener("click", () =>
+			chatBubble.classList.toggle("is-open"),
+		);
+		document.addEventListener("click", (e) => {
+			if (
+				chatBubble &&
+				chatToggle &&
+				!chatBubble.contains(e.target) &&
+				!chatToggle.contains(e.target)
+			) {
+				chatBubble.classList.remove("is-open");
+			}
+		});
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && chatBubble?.classList.contains("is-open"))
+				chatBubble.classList.remove("is-open");
+		});
+		</script>
+	
+
+</body></html>

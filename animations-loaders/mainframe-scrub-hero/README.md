@@ -1,5 +1,7 @@
 # Mainframe® — Cursor-Scrubbed Contact Hero Section (React + Vite + Tailwind CSS + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive contact hero section for the fictional studio **Mainframe®**, featuring a full-bleed background video scrubbed frame-by-frame by horizontal mouse movement on desktop. The cursor position drives `video.currentTime` directly — one full viewport sweep covers ~80% of the timeline — with seeks serialised through the `seeked` event for smooth frame-to-frame tracking. Below the `lg` breakpoint scrubbing is disabled and the video autoplays, making this hero fully responsive. The headline types itself out with a custom `useTypewriter` hook (blinking block cursor, removed on completion), and a multi-select service pill row feeds a spring-animated status banner via Framer Motion `AnimatePresence`. Built as a studio contact page hero with a clean dark-green palette on white. Generated with Claude Fable 5.
 
 ## Stack

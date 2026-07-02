@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Authentication — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../../styles.css">
+		<link rel="icon" href="../../assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="../../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav
+						class="docs-sidebar-nav"
+						data-current="docs/api/authentication.html"
+					></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span><span>API</span
+						><span class="sep">/</span><span>Authentication</span>
+					</div>
+					<h1 class="docs-title">Authentication</h1>
+					<p class="docs-lead">
+						Authenticate requests to the Scalar CMS API using API keys or OAuth
+						2.0, and scope each credential to exactly what it needs.
+					</p>
+
+					<h2 id="api-keys">API keys</h2>
+					<p>
+						API keys are the simplest way to authenticate server-to-server
+						requests. Create one from <strong>Settings → API Keys</strong> in
+						Scalar Studio, give it a name, and select the scopes it should
+						carry. Keys are shown only once at creation time, so copy the value
+						immediately.
+					</p>
+					<p>
+						Pass the key in the <code>Authorization</code> header as a bearer
+						token on every request:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"># fetch the latest published posts</span>
+							curl https://api.scalar.dev/v1/content/posts \ -H
+							<span class="tok-str"
+								>"Authorization: Bearer sk_live_8f2c4a1e9b7d6f30"</span
+							>
+							\ -H <span class="tok-str">"Content-Type: application/json"</span>
+						</div>
+					</div>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							Never commit API keys to version control or ship them in
+							client-side bundles. Store them in environment variables or a
+							secrets manager, and rotate any key that may have been exposed.
+						</div>
+					</div>
+
+					<h2 id="scopes-permissions">Scopes &amp; permissions</h2>
+					<p>
+						Every credential carries a set of scopes that determine which
+						resources it can read or modify. Grant the narrowest set of scopes
+						that your integration requires:
+					</p>
+					<table class="docs-table">
+						<thead>
+							<tr>
+								<th>Scope</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>content:read</code></td>
+								<td>
+									Read published and draft content entries, collections, and
+									assets.
+								</td>
+							</tr>
+							<tr>
+								<td><code>content:write</code></td>
+								<td>
+									Create, update, publish, and delete content entries and
+									assets.
+								</td>
+							</tr>
+							<tr>
+								<td><code>models:write</code></td>
+								<td>
+									Define and modify content models, fields, and validation
+									rules.
+								</td>
+							</tr>
+							<tr>
+								<td><code>admin</code></td>
+								<td>
+									Full access including members, API keys, webhooks, and billing
+									settings.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2 id="oauth">OAuth 2.0</h2>
+					<p>
+						For apps acting on behalf of a user, use the OAuth 2.0 authorization
+						code flow. Register your application to receive a
+						<code>client_id</code>
+						and <code>client_secret</code>, then redirect the user to the Scalar
+						authorization endpoint:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">http</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"># 1. redirect the user to authorize</span>
+							GET https://auth.scalar.dev/oauth/authorize ?response_type=code
+							&client_id=<span class="tok-str">"app_3a9f2c"</span>
+							&redirect_uri=<span class="tok-str"
+								>"https://yourapp.com/callback"</span
+							>
+							&scope=<span class="tok-str">"content:read content:write"</span>
+
+							<span class="tok-com"
+								># 2. exchange the returned code for an access token</span
+							>
+							curl -X POST https://auth.scalar.dev/oauth/token \ -d
+							grant_type=authorization_code \ -d code=<span class="tok-str"
+								>"ac_7d1e9b..."</span
+							>
+							\ -d client_id=<span class="tok-str">"app_3a9f2c"</span>
+							\ -d client_secret=<span class="tok-str">"cs_live_..."</span>
+						</div>
+					</div>
+					<p>
+						The token response includes an <code>access_token</code>, a
+						<code>refresh_token</code>, and an <code>expires_in</code> value in
+						seconds.
+					</p>
+
+					<h2 id="token-refresh">Token refresh</h2>
+					<p>
+						Access tokens expire after one hour. Use the long-lived refresh
+						token to obtain a new access token without prompting the user again:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							curl -X POST https://auth.scalar.dev/oauth/token \ -d
+							grant_type=refresh_token \ -d refresh_token=<span class="tok-str"
+								>"rt_5c2a..."</span
+							>
+							\ -d client_id=<span class="tok-str">"app_3a9f2c"</span>
+							\ -d client_secret=<span class="tok-str">"cs_live_..."</span>
+							<span class="tok-com"
+								># → { "access_token": "...", "expires_in": 3600 }</span
+							>
+						</div>
+					</div>
+
+					<h2 id="security-best-practices">Security best practices</h2>
+					<p>Follow these guidelines to keep your Scalar credentials safe:</p>
+					<ul>
+						<li>
+							Store keys and secrets in environment variables or a dedicated
+							secrets manager, never in source control.
+						</li>
+						<li>
+							Issue separate keys per environment and per integration so they
+							can be revoked independently.
+						</li>
+						<li>
+							Grant the minimum scopes required, and avoid the
+							<code>admin</code>
+							scope for routine integrations.
+						</li>
+						<li>
+							Rotate keys on a regular schedule and immediately after any
+							suspected exposure.
+						</li>
+						<li>
+							Always make API requests over HTTPS so credentials are never sent
+							in plaintext.
+						</li>
+					</ul>
+
+					<nav class="docs-pager">
+						<a class="pg-prev" href="../../docs/api/api-reference.html"
+							><div class="pg-dir">← Previous</div>
+							<div class="pg-title">API Reference</div></a
+						>
+						<a class="pg-next" href="../../docs/api/webhooks.html"
+							><div class="pg-dir">Next →</div>
+							<div class="pg-title">Webhooks</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#api-keys">API keys</a>
+					<a href="#scopes-permissions">Scopes &amp; permissions</a>
+					<a href="#oauth">OAuth 2.0</a>
+					<a href="#token-refresh">Token refresh</a>
+					<a href="#security-best-practices">Security best practices</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="../../shared.js"></script>
+	</body>
+</html>

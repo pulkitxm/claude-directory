@@ -1,5 +1,7 @@
 # Aethera — Cinematic Video Hero Section (React + Vite + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 Fullscreen single-page hero section for the fictional studio brand "Aethera," pairing a monochrome editorial layout with a looping background video that custom-fades in and out at each playthrough. Features a glassmorphic navigation bar, Instrument Serif editorial headline with italicized emphasis, staggered `fade-rise` entrance animations, and a light/dark mode toggle that swaps three CSS palette tokens to invert the whole page with a 0.5s transition. Ideal as a cinematic landing page or creative studio hero. Generated with Claude Fable 5.
 
 ## Dark mode

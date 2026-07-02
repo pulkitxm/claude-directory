@@ -1,5 +1,7 @@
 # PRISMA Shader Lab — WebGL Flowing-Gradient Shader (React + Vite + Tailwind CSS v4 + Raw WebGL)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen WebGL generative graphics tool built as a shadcn-structured React app, showcasing a GLSL fragment shader that folds four fractal layers with a cosine palette and cursor-driven ripples — pure GPU math, no images or video. The surrounding UI is monochrome glass chrome: a brand bar, viewfinder corner brackets, a control rail (layers, glow, speed, interactive/static toggle, and pause), and a live telemetry HUD displaying FPS, elapsed time, drawing-buffer resolution, and normalized cursor position — all fed straight from the WebGL render loop. Generated with Claude Fable 5.
 
 ## Stack

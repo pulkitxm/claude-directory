@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>System Overview — Carriera</title>
+		<meta
+			name="description"
+			content="Developer reference: all pages and content collections in the Carriera template."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		var e = localStorage.getItem("theme");
+		if (e) document.documentElement.setAttribute("data-theme", e);
+		</script>
+	</head>
+	<body class="flex flex-col bg-secondary min-h-svh">
+		<!-- Navigation -->
+		<section>
+			<div class="max-w-screen 2xl:max-w-[1400px] mx-auto px-8">
+				<div class="grid grid-cols-2 lg:grid-cols-5 gap-4 py-2">
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+					<div
+						class="hidden items-center gap-4 text-primary lg:flex justify-center lg:col-span-3"
+					>
+						<a
+							href="index.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Home</a
+						>
+						<a
+							href="blog.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Blog</a
+						>
+						<a
+							href="helpcenter.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Help Center</a
+						>
+						<a
+							href="pricing.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Pricing</a
+						>
+						<a
+							href="sign-in.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Sign In</a
+						>
+						<a
+							href="system-overview.html"
+							class="hover:text-primary/40 text-sm duration-300"
+							>Overview</a
+						>
+					</div>
+					<div class="items-center gap-2 flex ml-auto">
+						<!-- Search button -->
+						<div class="relative">
+							<button
+								type="button"
+								id="searchButton"
+								aria-label="Search content"
+								class="hover:text-primary/40 duration-300 text-primary text-sm"
+							>
+								Search
+							</button>
+							<!-- Search modal -->
+							<div
+								id="searchModal"
+								class="fixed inset-0 z-80 hidden overflow-y-auto"
+								role="dialog"
+								aria-modal="true"
+							>
+								<div class="min-h-screen px-4 text-center">
+									<div
+										class="bg-secondary/50 fixed inset-0 backdrop-blur transition-opacity"
+										id="modalOverlay"
+									></div>
+									<div
+										class="relative mt-12 mb-8 inline-block w-full max-w-xl transform rounded px-1.5 text-left align-middle transition-all lg:mt-24"
+									>
+										<div
+											class="bg-secondary outline-2 outline-primary/10 w-full rounded p-4 pb-2"
+										>
+											<div class="hidden">
+												<button
+													type="button"
+													id="closeSearch"
+													class="text-primary/60 hover:text-primary/60 ml-auto cursor-pointer"
+													aria-label="Close search"
+												>
+													Close
+												</button>
+											</div>
+											<div class="p-1">
+												<label
+													for="searchInput"
+													class="text-primary block text-sm font-medium"
+													>Search content</label
+												>
+												<input
+													type="text"
+													id="searchInput"
+													class="border-primary/10 focus:border-primary text-primary w-full border-0 border-b bg-transparent px-0 text-xs focus:ring-0 focus:outline-none"
+												>
+											</div>
+											<div
+												id="searchResults"
+												class="scrollbar-hide flex max-h-200 flex-col gap-1 overflow-y-auto p-1"
+											></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Desktop CTA buttons -->
+						<div class="hidden items-center gap-2 lg:flex">
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary/10 hover:bg-primary/20 h-9 px-4 py-3 text-sm"
+								href="sign-in.html"
+								>Sign in</a
+							>
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-secondary bg-accent hover:bg-accent/80 h-9 px-4 py-3 text-sm"
+								href="sign-up.html"
+								>Sign up</a
+							>
+						</div>
+						<!-- Mobile menu toggle -->
+						<button
+							id="navToggle"
+							class="hover:text-primary/40 duration-300 text-primary text-sm lg:hidden"
+							aria-expanded="false"
+							aria-controls="mobileMenu"
+						>
+							Menu
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Mobile Menu -->
+		<div
+			id="mobileMenu"
+			class="lg:hidden fixed inset-0 z-40 hidden"
+			aria-hidden="true"
+		>
+			<div
+				class="relative z-10 m-4 rounded-lg outline-2 outline-primary/10 bg-secondary p-4 shadow-2xl"
+			>
+				<div class="flex items-center justify-between">
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+					<button
+						class="hover:text-primary text-primary duration-300 text-sm"
+						data-close-nav
+					>
+						Close
+					</button>
+				</div>
+				<nav class="mt-12 flex flex-col gap-3">
+					<a
+						href="index.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Home</a
+					>
+					<a
+						href="blog.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Blog</a
+					>
+					<a
+						href="helpcenter.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Help Center</a
+					>
+					<a
+						href="pricing.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Pricing</a
+					>
+					<a
+						href="sign-in.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Sign In</a
+					>
+					<a
+						href="system-overview.html"
+						class="hover:text-primary/40 duration-300 text-primary text-sm"
+						data-close-nav
+						>Overview</a
+					>
+				</nav>
+				<div class="mt-12 flex items-center gap-2">
+					<a
+						href="sign-in.html"
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary/10 hover:bg-primary/20 h-8 px-4 py-3 text-xs"
+						>Sign in</a
+					>
+					<a
+						href="sign-up.html"
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-secondary bg-accent hover:bg-accent/80 h-8 px-4 py-3 text-xs"
+						>Sign up</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<main class="grow">
+			<section>
+				<div class="max-w-screen 2xl:max-w-[1400px] mx-auto px-8 py-24">
+					<h1
+						class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary font-semibold tracking-tighter text-balance"
+					>
+						Overview
+					</h1>
+
+					<div class="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2">
+						<!-- Static pages -->
+						<div>
+							<h3 class="text-base text-primary font-semibold md:text-balance">
+								Static
+							</h3>
+							<div class="mt-4 grid grid-cols-2 gap-y-4 pt-4 md:grid-cols-3">
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">Static</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="index.html"
+												title="Index"
+												aria-label="Index"
+												>Index</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="pricing.html"
+												title="Pricing"
+												aria-label="Pricing"
+												>Pricing</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="blog.html"
+												title="Blog"
+												aria-label="Blog"
+												>Blog</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="helpcenter.html"
+												title="Help Center"
+												aria-label="Help Center"
+												>Help Center</a
+											>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">Forms</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="sign-in.html"
+												title="Sign in"
+												aria-label="Sign in"
+												>Sign in</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="sign-up.html"
+												title="Sign up"
+												aria-label="Sign up"
+												>Sign up</a
+											>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">
+										System Pages
+									</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="system-overview.html"
+												title="Overview"
+												aria-label="Overview"
+												>Overview</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="https://lexingtonthemes.com/legal/license/"
+												title="License"
+												aria-label="License"
+												>License</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="https://lexingtonthemes.com/documentation"
+												title="Documentation"
+												aria-label="Documentation"
+												>Documentation</a
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Content collections -->
+						<div>
+							<h3 class="text-base text-primary font-semibold md:text-balance">
+								Content collections
+							</h3>
+							<div class="mt-4 grid grid-cols-2 gap-y-4 pt-4 md:grid-cols-3">
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">Jobs</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="job-detail.html"
+												title="Job details open offer"
+												aria-label="Job details open offer"
+												>Job details open offer</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="job-detail.html"
+												title="Job details closed offer"
+												aria-label="Job details closed offer"
+												>Job details closed offer</a
+											>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">Candidates</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="candidate-detail.html"
+												title="Details"
+												aria-label="Details"
+												>Details</a
+											>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">Companies</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="company-detail.html"
+												title="Details"
+												aria-label="Details"
+												>Details</a
+											>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">Blog</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="blog.html"
+												title="Home"
+												aria-label="Home"
+												>Home</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="blog-post.html"
+												title="Details"
+												aria-label="Details"
+												>Details</a
+											>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">
+										Help Center
+									</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="helpcenter.html"
+												title="Home"
+												aria-label="Home"
+												>Home</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="helpcenter-article.html"
+												title="Details"
+												aria-label="Details"
+												>Details</a
+											>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">Legal</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="legal.html"
+												title="Details"
+												aria-label="Details"
+												>Details</a
+											>
+										</div>
+									</div>
+								</div>
+
+								<div class="flex flex-col">
+									<h3 class="text-base text-primary font-medium">Team</h3>
+									<div class="mt-2">
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="team.html"
+												title="Home"
+												aria-label="Home"
+												>Home</a
+											>
+										</div>
+										<div>
+											<a
+												class="text-sm text-primary/60 hover:text-primary duration-300"
+												href="team.html"
+												title="Details"
+												aria-label="Details"
+												>Details</a
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div class="max-w-screen 2xl:max-w-[1400px] mx-auto px-8 py-12">
+				<div class="mt-12 flex flex-wrap items-center justify-between gap-2">
+					<p class="text-xs text-primary/60">
+						© Copyright Lexington Themes <span id="year">2026</span>
+					</p>
+					<ul role="list" class="mt-2 flex flex-wrap gap-2">
+						<li>
+							<a
+								class="text-sm text-primary/60 hover:text-primary transition duration-300 ease-in-out"
+								href="#_"
+								>X</a
+							>
+						</li>
+						<li>
+							<a
+								class="text-sm text-primary/60 hover:text-primary transition duration-300 ease-in-out"
+								href="#_"
+								>LinkedIn</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Year script -->
+		<script>
+		document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+
+		<!-- Theme switcher script -->
+		<script>
+		(function () {
+			var dots = Array.from(document.querySelectorAll('[id^="theme-dot"]'));
+			var saved = localStorage.getItem("theme") || "default";
+			var timer;
+			function applyTheme(t) {
+				document.documentElement.classList.add("theme-animating");
+				clearTimeout(timer);
+				timer = setTimeout(function () {
+					document.documentElement.classList.remove("theme-animating");
+				}, 400);
+				if (t === "default") {
+					document.documentElement.removeAttribute("data-theme");
+					localStorage.removeItem("theme");
+				} else {
+					document.documentElement.setAttribute("data-theme", t);
+					localStorage.setItem("theme", t);
+				}
+				dots.forEach(function (d) {
+					var active = d.dataset.theme === t;
+					d.classList.toggle("ring-offset-2", active);
+					d.classList.toggle("ring-current", active);
+				});
+			}
+			applyTheme(saved);
+			dots.forEach(function (d) {
+				d.addEventListener("click", function () {
+					applyTheme(d.dataset.theme);
+				});
+			});
+		})();
+		</script>
+
+		<!-- Mobile menu script -->
+		<script>
+		var navToggle = document.getElementById("navToggle");
+		var mobileMenu = document.getElementById("mobileMenu");
+		var closeTargets = mobileMenu
+			? mobileMenu.querySelectorAll("[data-close-nav]")
+			: [];
+		function openNav() {
+			mobileMenu.classList.remove("hidden");
+			navToggle && navToggle.setAttribute("aria-expanded", "true");
+			document.body.style.overflow = "hidden";
+		}
+		function closeNav() {
+			mobileMenu.classList.add("hidden");
+			navToggle && navToggle.setAttribute("aria-expanded", "false");
+			document.body.style.overflow = "";
+		}
+		navToggle &&
+			navToggle.addEventListener("click", function () {
+				var isOpen = navToggle.getAttribute("aria-expanded") === "true";
+				if (isOpen) closeNav();
+				else openNav();
+			});
+		closeTargets.forEach(function (btn) {
+			btn.addEventListener("click", closeNav);
+		});
+		window.addEventListener("resize", function () {
+			if (window.innerWidth >= 1024) closeNav();
+		});
+		</script>
+
+		<!-- Search modal script -->
+		<script>
+		(function () {
+			var searchButton = document.getElementById("searchButton");
+			var searchModal = document.getElementById("searchModal");
+			var modalOverlay = document.getElementById("modalOverlay");
+			var searchInput = document.getElementById("searchInput");
+			var searchResults = document.getElementById("searchResults");
+			var closeSearch = document.getElementById("closeSearch");
+			function openSearch(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				searchModal.classList.remove("hidden");
+				document.body.style.overflow = "hidden";
+				setTimeout(function () {
+					searchInput.focus();
+				}, 100);
+			}
+			function closeSearchModal() {
+				searchModal.classList.add("hidden");
+				document.body.style.overflow = "";
+				searchInput.value = "";
+				searchResults.innerHTML = "";
+			}
+			searchButton && searchButton.addEventListener("click", openSearch);
+			closeSearch && closeSearch.addEventListener("click", closeSearchModal);
+			modalOverlay && modalOverlay.addEventListener("click", closeSearchModal);
+			document.addEventListener("keydown", function (e) {
+				if (e.key === "Escape" && !searchModal.classList.contains("hidden"))
+					closeSearchModal();
+			});
+		})();
+		</script>
+
+		<!-- Theme switcher widget -->
+		<div class="fixed bottom-4 right-4 z-50">
+			<div class="flex items-center gap-2">
+				<button
+					id="theme-dot-default"
+					data-theme="default"
+					class="ring-primary/10 size-4 rounded-full bg-[#ffffff] outline-2 transition-colors ring-offset-2 ring-current"
+					title="Light"
+				></button>
+				<button
+					id="theme-dot-accent"
+					data-theme="accent"
+					class="outline-primary size-4 rounded-full bg-[#101319] outline-2 transition-colors"
+					title="Dark"
+				></button>
+				<button
+					id="theme-dot-dark"
+					data-theme="dark"
+					class="outline-primary size-4 rounded-full bg-[#245230] outline-2 transition-colors"
+					title="Green"
+				></button>
+			</div>
+		</div>
+	</body>
+</html>

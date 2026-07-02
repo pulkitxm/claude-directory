@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Doggy Stickers — Get Doggy Stickers!</title>
+		<meta
+			name="description"
+			content="Times are tough. Liven up your home with some cute Doggy Stickers."
+		/>
+		<link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+		<script>
+			window.__DOGGY_DEPTH__ = 0;
+		</script>
+		<script src="js/theme-boot.js"></script>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<div class="flex-col-wrapper">
+			<header class="site-header" data-site-header></header>
+
+			<main>
+				<section class="hero">
+					<h1>Get Doggy Stickers!</h1>
+					<p>
+						Times are tough. Liven up your home with some cute Doggy Stickers.
+					</p>
+					<div class="paw">🐾</div>
+				</section>
+
+				<section class="product-grid" id="product-grid" aria-label="Products"></section>
+			</main>
+
+			<footer class="site-footer" data-site-footer></footer>
+		</div>
+
+		<script src="js/products.js"></script>
+		<script src="js/cart.js"></script>
+		<script>
+			(function () {
+				const grid = document.getElementById("product-grid");
+				grid.innerHTML = window.DOGGY_PRODUCTS.map(
+					(p, i) => `
+          <a class="product-card" href="products/${p.slug}/index.html">
+            <img class="thumb" src="assets/img/${p.images[0]}" alt="${p.title}" loading="lazy" />
+            <div class="body">
+              <h3 class="product-title">${p.title}</h3>
+              <p class="product-desc">${p.desc}</p>
+              <span class="price-flag">${p.price}</span>
+            </div>
+          </a>
+        `,
+				).join("");
+			})();
+		</script>
+	</body>
+</html>

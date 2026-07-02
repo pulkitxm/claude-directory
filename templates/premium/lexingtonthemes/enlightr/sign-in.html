@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sign In — Enlightr</title>
+		<meta
+			name="description"
+			content="Sign in to your Enlightr account to access your courses."
+		>
+
+		<!-- Inter -->
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<!-- Instrument Serif -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Love+Ya+Like+A+Sister&display=swap"
+			rel="stylesheet"
+		>
+		<!-- Clash Grotesk -->
+		<link
+			href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@1&display=swap"
+			rel="stylesheet"
+		>
+
+		<link rel="stylesheet" href="styles.css">
+
+		<style>
+		:root {
+			--base-50: #f9f9f9;
+			--base-100: #f3f4f4;
+			--base-200: #e8e8e8;
+			--base-400: #9ca3af;
+			--base-500: #6b7280;
+			--base-600: #4b5563;
+			--base-700: #374151;
+			--base-800: #1f2937;
+			--base-900: #111827;
+			--base-950: #030712;
+			--accent-100: #f0fdf4;
+			--accent-200: #bbf7d0;
+			--accent-400: #4ade80;
+			--accent-500: #22c55e;
+			--accent-600: #16a34a;
+			--accent-950: #052e16;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			font-family: "InterVariable", "Inter", sans-serif;
+		}
+
+		body {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			background: #fff;
+			min-height: 100svh;
+			color: var(--base-900);
+			font-size: 16px;
+			line-height: 24px;
+			selection-color: var(--accent-500);
+		}
+
+		::selection {
+			background: var(--base-100);
+			color: var(--accent-500);
+		}
+
+		.font-display {
+			font-family: "Clash Grotesk", sans-serif;
+		}
+		.font-display-italic {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+		}
+		.font-mono {
+			font-family: "Space Mono", monospace;
+		}
+
+		/* ---- FLOATING SEARCH ---- */
+		.floating-search {
+			position: fixed;
+			z-index: 50;
+			bottom: 1.25rem;
+			right: 1.25rem;
+		}
+
+		.search-btn {
+			display: flex;
+			font-weight: 500;
+			align-items: center;
+			justify-content: center;
+			width: 3.25rem;
+			height: 3.25rem;
+			border-radius: 9999px;
+			background: var(--base-900);
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			transition: background 0.5s ease-in-out;
+			outline: 2px solid var(--base-900);
+			outline-offset: 0;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		}
+		.search-btn:hover {
+			background: var(--base-800);
+		}
+
+		.search-icon {
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+
+		/* ---- SEARCH MODAL ---- */
+		.search-modal {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 50;
+			overflow-y: auto;
+		}
+		.search-modal.open {
+			display: block;
+		}
+
+		.modal-backdrop {
+			position: fixed;
+			inset: 0;
+			background: rgba(3, 7, 18, 0.5);
+			backdrop-filter: blur(4px);
+		}
+
+		.modal-inner {
+			min-height: 100vh;
+			padding: 0 1rem;
+			text-align: center;
+		}
+
+		.modal-box {
+			position: relative;
+			display: inline-block;
+			width: 100%;
+			max-width: 28rem;
+			margin-top: 3rem;
+			margin-bottom: 2rem;
+			text-align: left;
+			background: var(--base-100);
+			transform: translateY(0);
+			transition: transform 0.3s ease;
+		}
+
+		@media (min-width: 1024px) {
+			.modal-box {
+				margin-top: 12rem;
+			}
+		}
+
+		.modal-content {
+			padding: 1rem 1rem 0.5rem;
+		}
+
+		.search-input {
+			display: block;
+			width: 100%;
+			padding: 0.5rem 1rem;
+			font-size: 0.75rem;
+			line-height: 1.25;
+			background: #fff;
+			border: 1px solid transparent;
+			border-radius: 0.375rem;
+			color: var(--base-500);
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+			outline: none;
+			ring: 1px solid var(--base-200);
+			transition: all 0.3s ease;
+			height: 2.25rem;
+		}
+		.search-input {
+			box-shadow: 0 0 0 1px var(--base-200);
+		}
+		.search-input:focus {
+			box-shadow:
+				0 0 0 2px var(--accent-100),
+				0 0 0 1px var(--accent-500);
+		}
+		.search-input::placeholder {
+			color: var(--base-400);
+		}
+
+		#searchResults {
+			max-height: 30rem;
+			overflow-y: auto;
+			margin-top: 0.5rem;
+		}
+
+		.search-result-item {
+			display: block;
+			padding: 1rem;
+			margin: 0.25rem;
+			text-decoration: none;
+			transition: background 0.3s;
+		}
+		.search-result-item:hover {
+			background: var(--base-100);
+		}
+		.search-result-item h3 {
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: var(--base-800);
+		}
+		.search-result-item p {
+			font-size: 0.875rem;
+			color: var(--base-500);
+			margin-top: 0.5rem;
+		}
+		.no-results {
+			padding: 0.75rem 1rem;
+			font-size: 0.875rem;
+			color: var(--base-500);
+		}
+
+		/* ---- MAIN LAYOUT ---- */
+		main {
+			flex: 1;
+		}
+
+		.signin-wrap {
+			display: flex;
+			height: 100vh;
+		}
+
+		.signin-form-col {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			padding: 2rem;
+		}
+
+		@media (min-width: 1024px) {
+			.signin-form-col {
+				width: 66.667%;
+			}
+		}
+
+		.signin-form-inner {
+			width: 100%;
+			max-width: 28rem;
+			padding: 6rem 0;
+		}
+
+		@media (min-width: 1024px) {
+			.signin-form-inner {
+				padding: 8rem 0;
+			}
+		}
+
+		/* Back to home link */
+		.back-link {
+			display: inline-flex;
+			align-items: center;
+			text-decoration: none;
+			color: var(--base-900);
+		}
+		.back-link:hover {
+			color: var(--accent-500);
+		}
+		.back-link svg {
+			height: 1rem;
+		}
+
+		/* Headings */
+		.signin-title {
+			font-size: 1.125rem;
+			color: var(--accent-950);
+			text-transform: uppercase;
+			font-family: "Clash Grotesk", sans-serif;
+			font-weight: 500;
+			letter-spacing: 0.05em;
+			margin-top: 1rem;
+		}
+
+		@media (min-width: 640px) {
+			.signin-title {
+				font-size: 1.25rem;
+			}
+		}
+		@media (min-width: 768px) {
+			.signin-title {
+				font-size: 1.5rem;
+			}
+		}
+		@media (min-width: 1024px) {
+			.signin-title {
+				font-size: 1.875rem;
+			}
+		}
+
+		.signin-subtitle {
+			font-size: 0.75rem;
+			color: var(--base-500);
+			margin-top: 0.5rem;
+		}
+
+		/* Form */
+		.signin-form {
+			margin-top: 2rem;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.field-group {
+			width: 100%;
+		}
+
+		.field-label-row {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			margin-bottom: 0.25rem;
+		}
+
+		label {
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: var(--base-500);
+		}
+
+		.form-input {
+			display: block;
+			width: 100%;
+			padding: 0.5rem 1rem;
+			font-size: 0.75rem;
+			line-height: 1.25;
+			background: #fff;
+			border: 1px solid transparent;
+			border-radius: 0.375rem;
+			color: var(--base-500);
+			box-shadow: 0 0 0 1px var(--base-200);
+			height: 2.25rem;
+			outline: none;
+			transition: box-shadow 0.3s ease;
+			font-family: inherit;
+		}
+		.form-input::placeholder {
+			color: var(--base-400);
+		}
+		.form-input:focus {
+			box-shadow:
+				0 0 0 2px var(--accent-100),
+				0 0 0 1px var(--accent-500);
+		}
+
+		.remember-row {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.checkbox {
+			width: 1rem;
+			height: 1rem;
+			border-radius: 0.25rem;
+			border: 1px solid var(--base-300);
+			accent-color: var(--accent-600);
+			cursor: pointer;
+		}
+
+		.remember-label {
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: var(--base-500);
+		}
+
+		/* Buttons */
+		.btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 1rem;
+			font-weight: 500;
+			border-radius: 9999px;
+			border: none;
+			cursor: pointer;
+			transition: all 0.5s ease-in-out;
+			text-decoration: none;
+			height: 2.5rem;
+			padding: 1rem 2rem;
+			font-size: 0.875rem;
+			font-family: inherit;
+		}
+
+		.btn-accent {
+			background: var(--accent-200);
+			color: var(--accent-950);
+			outline: 2px solid var(--accent-200);
+		}
+		.btn-accent:hover {
+			background: var(--accent-400);
+		}
+
+		.btn-ghost {
+			background: var(--base-100);
+			color: var(--base-600);
+			outline: 2px solid var(--base-50);
+		}
+		.btn-ghost:hover {
+			background: var(--base-200);
+		}
+
+		.google-icon {
+			width: 1rem;
+			height: 1rem;
+		}
+
+		.btn-group {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		/* Footer links */
+		.signin-footer {
+			margin-top: 1rem;
+			font-size: 0.75rem;
+			font-weight: 500;
+			color: var(--base-500);
+		}
+
+		.accent-link {
+			color: var(--accent-500);
+			text-decoration: none;
+			font-weight: 500;
+		}
+		.accent-link:hover {
+			color: var(--base-500);
+		}
+
+		/* Sidebar image col */
+		.signin-image-col {
+			display: none;
+			position: relative;
+			overflow: hidden;
+		}
+
+		@media (min-width: 1024px) {
+			.signin-image-col {
+				display: block;
+				width: 33.333%;
+				order: -1;
+			}
+		}
+
+		.signin-image-col img {
+			object-fit: cover;
+			object-position: center;
+			width: 100%;
+			height: 100%;
+			background: var(--base-50);
+		}
+
+		/* Image fallback gradient */
+		.signin-image-placeholder {
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(
+				135deg,
+				var(--accent-100) 0%,
+				var(--accent-200) 40%,
+				var(--base-200) 100%
+			);
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.signin-image-watermark {
+			opacity: 0.15;
+		}
+
+		.signin-image-watermark svg {
+			width: 8rem;
+			height: 8rem;
+			color: var(--accent-950);
+		}
+		</style>
+	</head>
+
+	<body>
+		<!-- ===== FLOATING SEARCH ===== -->
+		<div class="floating-search">
+			<div style="position:relative">
+				<button
+					class="search-btn"
+					type="button"
+					id="searchButton"
+					aria-label="Search courses"
+				>
+					<svg
+						class="search-icon"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<circle cx="10" cy="10" r="7"></circle>
+						<line x1="21" y1="21" x2="15" y2="15"></line>
+					</svg>
+				</button>
+
+				<div
+					id="searchModal"
+					class="search-modal"
+					role="dialog"
+					aria-modal="true"
+				>
+					<div class="modal-inner">
+						<div class="modal-backdrop" id="modalOverlay"></div>
+						<div class="modal-box">
+							<div class="modal-content">
+								<div style="display:none">
+									<button
+										type="button"
+										id="closeSearch"
+										aria-label="Close search"
+									>
+										✕
+									</button>
+								</div>
+								<input
+									type="text"
+									id="searchInput"
+									placeholder="Search courses..."
+									class="search-input"
+									autocomplete="off"
+								>
+								<div id="searchResults"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ===== MAIN ===== -->
+		<main class="grow">
+			<div class="signin-wrap">
+				<!-- Form column -->
+				<div class="signin-form-col">
+					<div class="signin-form-inner">
+						<!-- Back to home / logo -->
+						<a href="index.html" class="back-link" title="Back to home">
+							<span
+								class="sr-only"
+								style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)"
+								>Back to home</span
+							>
+							<svg
+								class="h-4 text-base-900"
+								viewBox="0 0 125 126"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M51.2591 125.74H29.6763C13.2894 125.74 0 112.451 0 96.064V74.4813H10.8913V96.064C10.8913 106.356 19.2847 114.749 29.5764 114.749H51.1592V125.74H51.2591Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M95.3237 125.74H73.741V114.849H95.3237C105.615 114.849 114.009 106.456 114.009 96.164V74.4813H124.9V96.064C125 112.351 111.611 125.74 95.3237 125.74Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M125 51.9993H114.109V30.4166C114.109 20.1248 105.715 11.7315 95.4236 11.7315H73.741V0.840195H95.3237C111.711 0.840195 125 14.1296 125 30.5165V51.9993Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M10.9913 51.9993H0.100098V30.4166C0.100098 14.0297 13.3894 0.740295 29.7763 0.740295H51.359V11.6315H29.7763C19.4845 11.6315 11.0913 20.0248 11.0913 30.3166V51.9993H10.9913Z"
+									fill="currentColor"
+								/>
+							</svg>
+						</a>
+
+						<!-- Title -->
+						<div style="margin-top:1rem">
+							<h1 class="signin-title">Sign in</h1>
+							<p class="signin-subtitle">
+								Welcome back. Enter your email and password like you haven't
+								forgotten them for the 12th time this week.
+							</p>
+						</div>
+
+						<!-- Form -->
+						<form class="signin-form" onsubmit="return false;">
+							<!-- Email -->
+							<div class="field-group">
+								<div class="field-label-row">
+									<label for="email">Email Address</label>
+								</div>
+								<div style="position:relative;z-index:0">
+									<input
+										id="email"
+										name="email"
+										type="email"
+										placeholder="you@example.com"
+										class="form-input"
+										inputmode="email"
+										autocomplete="email"
+									>
+								</div>
+							</div>
+
+							<!-- Password -->
+							<div class="field-group">
+								<div class="field-label-row">
+									<label for="password">Password</label>
+								</div>
+								<div style="position:relative;z-index:0">
+									<input
+										id="password"
+										name="password"
+										type="password"
+										placeholder="••••••••"
+										class="form-input"
+										required
+										autocomplete="current-password"
+									>
+								</div>
+							</div>
+
+							<!-- Remember me -->
+							<div class="remember-row">
+								<input
+									type="checkbox"
+									id="login-remember"
+									name="login-remember"
+									class="checkbox"
+								>
+								<label for="login-remember" class="remember-label"
+									>Remember me for 30 days</label
+								>
+							</div>
+
+							<!-- Submit buttons -->
+							<div class="btn-group">
+								<button class="btn btn-accent" type="submit">
+									Sign in with email
+								</button>
+								<button class="btn btn-ghost" type="button">
+									<svg
+										class="google-icon"
+										viewBox="0 0 256 262"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"
+											fill="#4285F4"
+										/>
+										<path
+											d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"
+											fill="#34A853"
+										/>
+										<path
+											d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"
+											fill="#FBBC05"
+										/>
+										<path
+											d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"
+											fill="#EB4335"
+										/>
+									</svg>
+									Sign in with Google
+								</button>
+							</div>
+						</form>
+
+						<!-- Footer links -->
+						<p class="signin-footer">
+							Don't have an account?&nbsp;<a href="#" class="accent-link"
+								>Sign up</a
+							>
+						</p>
+					</div>
+				</div>
+
+				<!-- Image/sidebar column (desktop only) -->
+				<div class="signin-image-col">
+					<div class="signin-image-placeholder">
+						<div class="signin-image-watermark">
+							<svg
+								viewBox="0 0 125 126"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M51.2591 125.74H29.6763C13.2894 125.74 0 112.451 0 96.064V74.4813H10.8913V96.064C10.8913 106.356 19.2847 114.749 29.5764 114.749H51.1592V125.74H51.2591Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M95.3237 125.74H73.741V114.849H95.3237C105.615 114.849 114.009 106.456 114.009 96.164V74.4813H124.9V96.064C125 112.351 111.611 125.74 95.3237 125.74Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M125 51.9993H114.109V30.4166C114.109 20.1248 105.715 11.7315 95.4236 11.7315H73.741V0.840195H95.3237C111.711 0.840195 125 14.1296 125 30.5165V51.9993Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M10.9913 51.9993H0.100098V30.4166C0.100098 14.0297 13.3894 0.740295 29.7763 0.740295H51.359V11.6315H29.7763C19.4845 11.6315 11.0913 20.0248 11.0913 30.3166V51.9993H10.9913Z"
+									fill="currentColor"
+								/>
+							</svg>
+						</div>
+						<!-- Decorative grid dots -->
+						<div
+							style="position:absolute;inset:0;background-image:radial-gradient(var(--accent-400) 1px,transparent 1px);background-size:24px 24px;opacity:0.15;"
+						></div>
+						<!-- Decorative accent patches -->
+						<div
+							style="position:absolute;top:2rem;left:2rem;width:6rem;height:6rem;background:var(--accent-400);border-radius:9999px;opacity:0.2;filter:blur(24px);"
+						></div>
+						<div
+							style="position:absolute;bottom:4rem;right:2rem;width:8rem;height:8rem;background:var(--accent-200);border-radius:9999px;opacity:0.4;filter:blur(32px);"
+						></div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Fuse.js CDN -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"
+		></script>
+
+		<script>
+		(function () {
+			const courses = [
+				{
+					title: "Astro Content Collections Masterclass",
+					description:
+						"Master Astro's powerful content management system and build scalable, type-safe content-driven websites.",
+					slug: "astro-content-collections",
+				},
+				{
+					title: "Astro Fundamentals",
+					description:
+						"Master the core concepts of Astro by building fast, modern websites from scratch.",
+					slug: "astro-fundamentals",
+				},
+			];
+
+			window.addEventListener("load", () => {
+				const searchButton = document.getElementById("searchButton");
+				const searchModal = document.getElementById("searchModal");
+				const modalOverlay = document.getElementById("modalOverlay");
+				const searchInput = document.getElementById("searchInput");
+				const searchResults = document.getElementById("searchResults");
+				const closeSearch = document.getElementById("closeSearch");
+
+				searchInput.value = "";
+
+				const fuse = new Fuse(courses, {
+					keys: ["title", "description"],
+					threshold: 0.3,
+					includeMatches: true,
+				});
+
+				function openSearch(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					searchModal.classList.add("open");
+					document.body.style.overflow = "hidden";
+					setTimeout(() => searchInput.focus(), 100);
+				}
+
+				function closeSearchModal(e) {
+					if (e) {
+						e.preventDefault();
+						e.stopPropagation();
+					}
+					searchModal.classList.remove("open");
+					document.body.style.overflow = "";
+					searchInput.value = "";
+					searchResults.innerHTML = "";
+				}
+
+				function renderResults(results) {
+					if (!searchInput.value.trim()) {
+						searchResults.innerHTML = "";
+						return;
+					}
+					if (results.length === 0) {
+						searchResults.innerHTML = `<div class="no-results">No results found</div>`;
+						return;
+					}
+					searchResults.innerHTML = results
+						.slice(0, 5)
+						.map(
+							(result) => `
+            <a href="courses.html" class="search-result-item">
+              <h3>${result.item.title}</h3>
+              <p>${result.item.description}</p>
+            </a>
+          `,
+						)
+						.join("");
+				}
+
+				searchButton.addEventListener("click", openSearch);
+				searchButton.addEventListener("touchend", openSearch);
+				closeSearch.addEventListener("click", closeSearchModal);
+				closeSearch.addEventListener("touchend", closeSearchModal);
+				modalOverlay.addEventListener("click", closeSearchModal);
+				modalOverlay.addEventListener("touchend", closeSearchModal);
+				searchInput.addEventListener("input", (e) => {
+					const value = e.target.value;
+					const results = value.trim() ? fuse.search(value) : [];
+					renderResults(results);
+				});
+				document.addEventListener("keydown", (e) => {
+					if (e.key === "Escape" && searchModal.classList.contains("open"))
+						closeSearchModal();
+				});
+			});
+		})();
+		</script>
+	</body>
+</html>

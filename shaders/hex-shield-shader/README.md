@@ -1,5 +1,7 @@
 # Hex Shield Shader — Animated Hexagonal Dome Deflector with GLSL Ray-Accumulation (React, Three.js, @react-three/fiber)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An animated fullscreen WebGL shader that ray-accumulates 100 steps through a mirrored hexagonal lattice folded onto a sphere distortion, producing a glowing cyan-to-violet arc field tonemapped with `tanh` — framed as the AEGIS deflector-array diagnostics console with a cursor-tracked impact reticle, live field-calibration faders, deflector-profile presets, shield-integrity gauge, and GPU-sampled telemetry. The shader runs via Three.js and `@react-three/fiber` on a fullscreen quad, placed at the canonical `@/components/ui/shield-shader` location. Generated with Claude Fable 5.
 
 ## Stack

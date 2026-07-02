@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elements – Neonspark</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Elements-specific ── */
+    .elements-hero {
+      padding-top: calc(var(--header-h) + 3rem);
+      padding-bottom: 3rem;
+    }
+    .elements-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .elements-hero h1 {
+      font-size: clamp(2rem,4vw,3.5rem);
+      margin-bottom: 0.5rem;
+    }
+    .elements-section {
+      padding-block: 2.5rem 1rem;
+      border-top: 1px solid var(--color-border-card);
+      margin-top: 2rem;
+    }
+    .elements-section-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+    /* Typography demos */
+    .typo-demo h1 { font-size: 2.5rem; margin-bottom:.5rem; }
+    .typo-demo h2 { font-size: 2rem; margin-bottom:.5rem; }
+    .typo-demo h3 { font-size: 1.5rem; margin-bottom:.5rem; }
+    .typo-demo h4 { font-size: 1.25rem; margin-bottom:.5rem; }
+    .typo-demo h5 { font-size: 1rem; margin-bottom:.5rem; }
+    .typo-demo h6 { font-size: .875rem; margin-bottom:.5rem; }
+    .typo-demo p  { margin-bottom: 1rem; color: var(--color-muted); line-height: 1.7;}
+    .typo-demo strong { color: var(--color-primary); font-weight: 700; }
+    .typo-demo em { color: var(--color-muted); }
+    .typo-demo a { color: var(--color-primary); text-decoration: underline; }
+    .typo-demo a:hover { opacity:.75; }
+    .typo-demo ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .typo-demo ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .typo-demo li { color: var(--color-muted); margin-bottom: .35rem; }
+    /* Code */
+    pre {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .875rem;
+      color: #c9d1d9;
+      line-height: 1.6;
+    }
+    p code, li code {
+      background: rgba(255,255,255,0.08);
+      padding: .1em .35em;
+      border-radius: 3px;
+      font-size: .85em;
+    }
+    .code-label {
+      font-size: .7rem;
+      font-weight: 600;
+      color: var(--color-muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    /* Blockquote */
+    blockquote {
+      border-left: 3px solid rgba(255,255,255,0.25);
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      background: var(--color-bg-card);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    blockquote p { color: var(--color-muted); font-style: italic; }
+    /* Notice/callout */
+    .notice {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      padding: .85rem 1.1rem;
+      border-radius: var(--radius-md);
+      margin-bottom: .75rem;
+      font-size: .875rem;
+    }
+    .notice-icon { font-size: 1rem; flex-shrink: 0; margin-top: .1rem; }
+    .notice-body { color: var(--color-muted); }
+    .notice-body strong { color: var(--color-primary); }
+    .notice--info    { background: rgba(96,165,250,.1);  border: 1px solid rgba(96,165,250,.25); }
+    .notice--tip     { background: rgba(74,222,128,.1);  border: 1px solid rgba(74,222,128,.25); }
+    .notice--warning { background: rgba(251,191,36,.1);  border: 1px solid rgba(251,191,36,.25); }
+    .notice--info    .notice-icon { color: #60a5fa; }
+    .notice--tip     .notice-icon { color: #4ade80; }
+    .notice--warning .notice-icon { color: #fbbf24; }
+    /* Buttons group */
+    .btn-group { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+    /* Navbar preview */
+    .navbar-preview {
+      background: #000;
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-lg);
+      padding: .75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar-preview .preview-logo {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .navbar-preview .preview-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: .8rem;
+      color: var(--color-muted);
+    }
+    /* Tabs */
+    .tabs {
+      border-bottom: 1px solid var(--color-border-card);
+      display: flex;
+      gap: 0;
+      margin-bottom: 1rem;
+    }
+    .tab-btn {
+      padding: .65rem 1.25rem;
+      font-size: .875rem;
+      color: var(--color-muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+    .tab-btn:hover { color: var(--color-primary); }
+    .tab-btn.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .tab-panel { display: none; color: var(--color-muted); padding: .5rem 0; }
+    .tab-panel.active { display: block; }
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .875rem;
+    }
+    th {
+      text-align: left;
+      padding: .65rem 1rem;
+      background: var(--color-bg-card);
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: .8rem;
+      letter-spacing: .03em;
+      border-bottom: 1px solid var(--color-border-card);
+    }
+    td {
+      padding: .65rem 1rem;
+      color: var(--color-muted);
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    tr:last-child td { border-bottom: none; }
+    /* Accordion */
+    .accordion-item {
+      border-bottom: 1px solid var(--color-border-card);
+    }
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      color: var(--color-primary);
+      font-size: .9rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-weight: 500;
+      text-align: left;
+    }
+    .accordion-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      transition: transform var(--transition-fast);
+      color: var(--color-muted);
+    }
+    .accordion-item.open .accordion-icon { transform: rotate(45deg); }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+      color: var(--color-muted);
+      font-size: .875rem;
+    }
+    .accordion-item.open .accordion-content {
+      max-height: 200px;
+      padding-bottom: 1rem;
+    }
+    /* Video embed */
+    .video-embed {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: var(--color-bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-play-btn {
+      width: 64px;
+      height: 64px;
+      background: rgba(255,255,255,.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255,255,255,.3);
+      cursor: pointer;
+      transition: background var(--transition-base);
+    }
+    .video-play-btn:hover { background: rgba(255,255,255,.25); }
+    .video-play-btn svg { color: #fff; width: 24px; height: 24px; margin-left: 3px; }
+    .yt-logo { width: 64px; height: 64px; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 4h6l10 20h-6L4 4z" fill="white"/>
+          <path d="M18 4h6L14 24h-6L18 4z" fill="white" opacity="0.5"/>
+        </svg>
+        Neonspark.
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="nav-item">
+          <button class="nav-link" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:inherit;">
+            Pages
+            <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="dropdown">
+            <a href="blog.html">Blog</a>
+            <a href="career.html">Career</a>
+            <a href="elements.html">Elements</a>
+            <a href="faq.html">FAQ</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="services.html">Services</a>
+            <a href="teams.html">Teams</a>
+            <a href="terms-and-condition.html">Terms & Condition</a>
+            <a href="work.html">Work</a>
+          </div>
+        </div>
+      </nav>
+      <div class="header-cta">
+        <a href="contact.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="elements-hero">
+      <div class="container">
+        <span class="badge" style="margin-bottom:1rem;"><span class="dot"></span> Elements</span>
+        <div class="elements-hero-inner">
+          <div>
+            <h1>Elements</h1>
+          </div>
+          <div>
+            <p>Display all the elements for your system.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" style="padding-bottom: 6rem;">
+
+      <!-- HEADINGS -->
+      <div class="elements-section">
+        <div class="elements-section-title">Headings</div>
+        <div class="typo-demo">
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5 style="font-size:.9rem;font-weight:700;margin-bottom:.5rem;">Heading 5</h5>
+          <h6 style="font-size:.8rem;font-weight:700;margin-bottom:.5rem;">Heading 6</h6>
+        </div>
+      </div>
+
+      <!-- PARAGRAPH -->
+      <div class="elements-section">
+        <div class="elements-section-title">Paragraph</div>
+        <div class="typo-demo">
+          <p>Did you come here for something in particular or just general Neon Hacking? First time here? I came from Lorem ipsum dolor sit amet, consectetur adipiscing elit. We have a sentence already. Did Neonspark make something today? Or are you just talking about it? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Learn more about the <a href="#">documentation attempt</a> in Canonical Draft. Could there be another topic? Is it a start? Okay. A promise made a while back. Get it here in the reference links from below date.</p>
+        </div>
+      </div>
+
+      <!-- EMPHASIS -->
+      <div class="elements-section">
+        <div class="elements-section-title">Emphasis</div>
+        <div class="typo-demo" style="display:flex;flex-direction:column;gap:.5rem;">
+          <p>Did you come here for something in <strong>particular</strong> in general?</p>
+          <p>Did you come here <em>for something</em></p>
+          <p>Did you come here for something in <strong>particular</strong> in general?</p>
+          <p>Did you come here for something in <em>particular</em> in general?</p>
+          <p>Why is <code>x</code> a single character link? It needs more text and it can be done with a <a href="#">https://neonspark-nextjs.vercel.app</a></p>
+          <p><a href="#">Our homepage</a> and <a href="#">somewhere</a> that give examples</p>
+        </div>
+      </div>
+
+      <!-- LINK -->
+      <div class="elements-section">
+        <div class="elements-section-title">Link</div>
+        <div class="typo-demo" style="display:flex;flex-direction:column;gap:.5rem;">
+          <a href="#">Do so when a link has title</a>
+          <a href="#">Our awesome link with title link</a>
+          <a href="#">To do inline link is a reference to a link file</a>
+          <a href="#">To do a reference link of a link to a definition</a>
+          <p>Or leave it empty, and next title in brackets like <a href="#">this</a></p>
+          <p>URLs and URLs in angle brackets will automatically get turned into links. <a href="https://neonspark-nextjs.vercel.app">https://neonspark-nextjs.vercel.app</a></p>
+          <p>Some text to show that the reference links can follow later.</p>
+        </div>
+      </div>
+
+      <!-- ORDERED LIST -->
+      <div class="elements-section">
+        <div class="elements-section-title">Ordered List</div>
+        <div class="typo-demo">
+          <ol>
+            <li>List item</li>
+            <li>List item</li>
+            <li>List item</li>
+            <li>List item</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- UNORDERED LIST -->
+      <div class="elements-section">
+        <div class="elements-section-title">Unordered List</div>
+        <div class="typo-demo">
+          <ul>
+            <li>List item</li>
+            <li>List item</li>
+            <li>List item</li>
+            <li>List item</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CODE & SYNTAX HIGHLIGHTING -->
+      <div class="elements-section">
+        <div class="elements-section-title">Code and Syntax Highlighting</div>
+
+        <p class="code-label">HTML</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;This is a Heading&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <p class="code-label">CSS</p>
+        <pre><code>body {
+  color: red;
+  font-size: 16px;
+  margin: 0;
+}</code></pre>
+
+        <p class="code-label">JavaScript</p>
+        <pre><code>window.addEventListener("load", function () {
+  console.log("Hello World!");
+  alert("Hello World!");
+});</code></pre>
+      </div>
+
+      <!-- BUTTON -->
+      <div class="elements-section">
+        <div class="elements-section-title">Button</div>
+        <div class="btn-group">
+          <a href="#" class="btn btn-primary">Button</a>
+          <a href="#" class="btn btn-outline">Outline</a>
+          <a href="#" class="btn btn-primary btn-sm">Small</a>
+          <a href="#" class="btn btn-outline btn-lg">Large</a>
+        </div>
+      </div>
+
+      <!-- QUOTE -->
+      <div class="elements-section">
+        <div class="elements-section-title">Quote</div>
+        <blockquote>
+          <p>Did you come here for something in particular or just general Neon Hacking? First time here? I came here because I was told Lorem ipsum dolor sit amet, consectetur adipiscing elit. We have a sentence already you see here in a blockquote here.</p>
+        </blockquote>
+      </div>
+
+      <!-- NOTICE -->
+      <div class="elements-section">
+        <div class="elements-section-title">Notice</div>
+        <div class="notice notice--info">
+          <span class="notice-icon">ℹ</span>
+          <div class="notice-body"><strong>Note</strong><br>This is a simple note</div>
+        </div>
+        <div class="notice notice--tip">
+          <span class="notice-icon">✓</span>
+          <div class="notice-body"><strong>Tip</strong><br>This is a simple tip</div>
+        </div>
+
+        <!-- Navbar preview in notices section -->
+        <div class="navbar-preview" style="margin: 1.5rem 0;">
+          <span class="preview-logo">Neonspark</span>
+          <div class="preview-links">
+            <span>HOME</span>
+            <span>ABOUT</span>
+            <span>CONTACT</span>
+            <span>PAGES ▾</span>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Get Started</a>
+        </div>
+
+        <div class="notice notice--warning">
+          <span class="notice-icon">⚠</span>
+          <div class="notice-body"><strong>Warning</strong><br>This is a simple note</div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="elements-section">
+        <div class="elements-section-title">Tab</div>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="tab1">Tab 1</button>
+          <button class="tab-btn" data-tab="tab2">Tab 2</button>
+          <button class="tab-btn" data-tab="tab3">Tab 3</button>
+        </div>
+        <div class="tab-panel active" id="tab1">
+          <p>Did you come here for something in particular? Did you come here for something in particular or just general Neon Hacking? First time here? I came here because I was told Lorem ipsum dolor sit amet, consectetur adipiscing elit. We have a sentence already and want you to know this.</p>
+        </div>
+        <div class="tab-panel" id="tab2">
+          <p>Tab 2 content. This is an example of content within the second tab panel. Switch between tabs to explore different sections.</p>
+        </div>
+        <div class="tab-panel" id="tab3">
+          <p>Tab 3 content. Information relevant to the third category or section goes here.</p>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="elements-section">
+        <div class="elements-section-title">Table</div>
+        <div style="background:var(--color-bg-card);border:1px solid var(--color-border-card);border-radius:var(--radius-lg);overflow:hidden;">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>First</th>
+                <th>Last</th>
+                <th>Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Alex</td>
+                <td>Johnson</td>
+                <td>@alex.johnson</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Sara</td>
+                <td>Brown</td>
+                <td>@sara.brown</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Ryan</td>
+                <td>Miller</td>
+                <td>@ryan.miller</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- COLLAPSE / ACCORDION -->
+      <div class="elements-section">
+        <div class="elements-section-title">Collapse</div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span>How can we help you?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>We offer a wide range of services including web design, development, SEO, and digital marketing. Contact us to discuss your specific needs.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span>How will you collapse something?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Click the trigger button above to toggle the collapsed content. JavaScript handles the max-height animation for a smooth experience.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span>Should you just duplicate content?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>No, always write unique and meaningful content for each accordion item. Duplicate content reduces usability and SEO value.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE -->
+      <div class="elements-section">
+        <div class="elements-section-title">Image</div>
+        <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--color-border-card);">
+          <img src="assets/images/banner-shape.png" alt="NeonSpark banner" style="width:100%;max-height:400px;object-fit:cover;">
+        </div>
+      </div>
+
+      <!-- YOUTUBE VIDEO -->
+      <div class="elements-section">
+        <div class="elements-section-title">Youtube video</div>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="YouTube video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style="position:absolute;inset:0;width:100%;height:100%;border-radius:var(--radius-lg);">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- CUSTOM VIDEO -->
+      <div class="elements-section">
+        <div class="elements-section-title">Custom video</div>
+        <div class="video-embed">
+          <div class="video-play-btn" onclick="this.closest('.video-embed').querySelector('video')?.play()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <video style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);opacity:0;" controls>
+            <source src="#" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom:1rem;display:inline-flex;">
+            <svg viewBox="0 0 28 28" fill="none" width="24" height="24">
+              <path d="M4 4h6l10 20h-6L4 4z" fill="white"/>
+              <path d="M18 4h6L14 24h-6L18 4z" fill="white" opacity="0.5"/>
+            </svg>
+            Neonspark.
+          </a>
+          <p class="footer-desc">This membership will help you plan and execute a variety of projects.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="services.html">Services</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Support</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms-and-condition.html">Terms and Condition</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Contact</h4>
+          <address style="font-style:normal;">
+            <p style="margin-bottom:.5rem;">1234 Street Name, City, England</p>
+            <p style="margin-bottom:.5rem;">+1 234 567 890</p>
+            <p style="margin-bottom:1.25rem;">info@example.com</p>
+          </address>
+          <h4 class="footer-heading">Subscribe Newsletter</h4>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Enter your email" class="newsletter-input">
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Designed And Developed by <a href="https://themefisher.com" target="_blank" rel="noopener" style="color:var(--color-primary);">Themefisher.</a></p>
+      </div>
+    </div>
+    <div class="footer-watermark" aria-hidden="true">NEONSPARK</div>
+  </footer>
+
+  <script>
+    // Header scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger?.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      nav.classList.toggle('mobile-open');
+    });
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(tabId)?.classList.add('active');
+      });
+    });
+
+    // Accordion
+    function toggleAccordion(trigger) {
+      const item = trigger.closest('.accordion-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

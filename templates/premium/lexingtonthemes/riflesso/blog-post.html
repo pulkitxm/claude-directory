@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>The Art of Framing — Riflesso</title>
+		<meta
+			name="description"
+			content="A thoughtful exploration of how framing and composition can transform a simple shot into a captivating visual story."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<style>
+		/* Prose styles for blog content */
+		.prose {
+			max-width: 48rem;
+			font-size: 0.875rem;
+			line-height: 1.75;
+			color: var(--color-base-600);
+		}
+		.prose h2 {
+			font-size: 1rem;
+			font-weight: 600;
+			color: var(--color-black);
+			margin-top: 1.5rem;
+			margin-bottom: 0.75rem;
+		}
+		.prose p {
+			margin-top: 1.25em;
+			margin-bottom: 1.25em;
+		}
+		.prose img {
+			margin-top: 2em;
+			margin-bottom: 2em;
+			max-width: 100%;
+		}
+		.prose hr {
+			border-top: 1px solid var(--color-base-200);
+			margin: 3em 0;
+		}
+
+		/* Post header layout */
+		.post-header {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			width: 100%;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+		.post-tag {
+			display: block;
+			font-size: 0.875rem;
+			color: var(--color-base-600);
+			text-transform: capitalize;
+		}
+		.post-tag:hover {
+			color: var(--color-base-900);
+		}
+		.post-title {
+			font-size: 1rem;
+			margin-top: 0.5rem;
+			font-weight: 500;
+			color: var(--color-base-900);
+		}
+		.post-meta {
+			font-size: 0.875rem;
+			color: var(--color-base-600);
+		}
+
+		/* Two-col content layout */
+		.post-body-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			margin-top: 1rem;
+			gap: 2rem;
+		}
+		@media (min-width: 768px) {
+			.post-body-grid {
+				grid-template-columns: 1fr 2fr;
+			}
+		}
+		@media (min-width: 1024px) {
+			.post-body-grid {
+				grid-template-columns: 1fr 2fr;
+			}
+		}
+		.post-description {
+			font-size: 0.875rem;
+			color: var(--color-base-600);
+			letter-spacing: -0.05em;
+			font-style: italic;
+			max-width: 28rem;
+			margin-left: auto;
+		}
+		@media (min-width: 1024px) {
+			.post-description {
+				order: 2;
+			}
+		}
+
+		/* Related posts */
+		.related-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 6rem 1rem;
+			margin-top: 1rem;
+		}
+		@media (min-width: 640px) {
+			.related-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="header-inner">
+				<div class="header-row">
+					<a href="index.html" class="site-logo">Riflesso — photography</a>
+					<div class="header-actions">
+						<a
+							href="https://lexingtonthemes.com/templates/riflesso"
+							target="_blank"
+							rel="noopener"
+							>Buy Riflesso</a
+						>
+						<!-- Search button -->
+						<div style="position:relative;">
+							<button
+								type="button"
+								id="searchButton"
+								aria-label="Search site"
+								class="search-btn"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									style="width:1rem;height:1rem;"
+									fill="currentColor"
+									viewBox="0 0 256 256"
+								>
+									<path
+										d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+									/>
+								</svg>
+							</button>
+						</div>
+						<!-- Menu toggle -->
+						<div style="position:relative;">
+							<button
+								type="button"
+								id="menuToggle"
+								aria-label="Toggle menu"
+								class="menu-toggle"
+							>
+								Menu
+							</button>
+							<!-- Full-screen overlay menu -->
+							<div id="menuOverlay" class="menu-overlay">
+								<div class="menu-overlay-inner">
+									<div>
+										<button id="closeMenu" class="close-menu-btn">Close</button>
+										<nav class="menu-nav" id="menuNav">
+											<a href="blog.html" title="Blog">Blog</a>
+											<a href="store.html" title="Store">Store</a>
+											<a href="#" title="Links">Links</a>
+											<a href="#" title="Buttons">Buttons</a>
+											<a href="#" title="Colors">Colors</a>
+											<a href="#" title="Overview">Overview</a>
+											<a href="#" title="Typography">Typography</a>
+										</nav>
+									</div>
+									<address class="menu-address">
+										123 Fake Street, Springfield, Illinois —
+										<span>Tel: <a href="#_">+123 456 7890</a></span>
+										—
+										<a href="mailto:example@example.com">Contact us</a>
+									</address>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Search modal -->
+		<div id="searchModal" class="search-modal" role="dialog" aria-modal="true">
+			<div class="search-modal-center">
+				<div class="search-modal-box">
+					<input
+						type="text"
+						id="searchInput"
+						placeholder="Search site..."
+						class="search-input"
+					>
+					<div
+						id="searchResults"
+						class="search-results"
+						style="display:none;"
+					></div>
+				</div>
+			</div>
+		</div>
+
+		<main>
+			<section>
+				<div class="container" style="padding-bottom:6rem;">
+					<!-- Post header -->
+					<div class="post-header" style="margin-top:1rem;">
+						<div>
+							<a href="blog.html" class="post-tag">photography</a>
+							<h1 class="post-title">
+								The Art of Framing: Mastering Composition in Photography
+							</h1>
+						</div>
+						<p class="post-meta">David Lee &mdash; May 15, 2025</p>
+					</div>
+
+					<!-- Hero image -->
+					<div style="margin-top:1.5rem;">
+						<img
+							src="assets/images/blog-thumb-1.webp"
+							alt="The Art of Framing: Mastering Composition in Photography"
+							style="width:100%;height:auto;display:block;"
+							loading="eager"
+						>
+					</div>
+
+					<!-- Two-column body -->
+					<div class="post-body-grid">
+						<!-- Left: italic description -->
+						<p class="post-description">
+							A thoughtful exploration of how framing and composition can
+							transform a simple shot into a captivating visual story.
+						</p>
+
+						<!-- Right: article prose -->
+						<div class="prose">
+							<p>
+								Photography is more than just capturing moments — it's about
+								telling stories through light, perspective, and intent. In this
+								post, we'll explore how mastering composition and framing can
+								elevate your images from snapshots to compelling works of art.
+							</p>
+
+							<h2>1. Understanding the Rule of Thirds</h2>
+							<p>
+								The rule of thirds is a foundational technique that divides your
+								frame into a 3x3 grid. Placing your subject along these lines —
+								or at their intersections — creates balance and draws the
+								viewer's eye naturally.
+							</p>
+
+							<h2>2. Leading Lines and Visual Flow</h2>
+							<p>
+								Leading lines guide the viewer's attention through your photo.
+								Roads, fences, shadows, or even light itself can create strong
+								visual paths that add depth and direction to your shots.
+							</p>
+
+							<h2>3. Framing Within the Frame</h2>
+							<p>
+								Using elements like windows, arches, or foliage to frame your
+								subject can add layers and context to your photograph. It
+								invites the viewer to look deeper and creates a sense of space.
+							</p>
+
+							<h2>4. Negative Space for Impact</h2>
+							<p>
+								Don't be afraid of empty space. Negative space can emphasize
+								your subject, create mood, and add elegance to an otherwise busy
+								composition.
+							</p>
+
+							<h2>5. Playing with Perspective</h2>
+							<p>
+								Changing your angle — getting low, going overhead, or shooting
+								through objects — can dramatically alter the emotional tone and
+								visual interest of a shot.
+							</p>
+
+							<h2>6. Light as a Design Element</h2>
+							<p>
+								Light isn't just a technical necessity — it's a creative tool.
+								Natural light, shadows, backlighting, and contrast all play
+								critical roles in composition and mood.
+							</p>
+
+							<h2>7. Tell a Story</h2>
+							<p>
+								Great photography isn't always about perfect symmetry or
+								technical precision. Sometimes it's about imperfection, emotion,
+								or the moment between moments.
+							</p>
+						</div>
+					</div>
+
+					<!-- Related posts -->
+					<div
+						style="margin-top:4rem;padding-top:2rem;border-top:1px solid var(--color-base-200);"
+					>
+						<p class="section-heading">Related posts</p>
+						<div class="related-grid">
+							<article class="blog-card">
+								<a
+									href="blog-post.html"
+									title="The Art of Framing: Mastering Composition in Photography"
+									class="overlay"
+								> </a>
+								<img
+									src="assets/images/blog-thumb-1.webp"
+									alt="The Art of Framing: Mastering Composition in Photography"
+									loading="lazy"
+								>
+								<h3>
+									The Art of Framing: Mastering Composition in Photography
+								</h3>
+							</article>
+							<article class="blog-card">
+								<a
+									href="blog-post.html"
+									title="Capturing emotion through candid photography"
+									class="overlay"
+								> </a>
+								<img
+									src="assets/images/blog-thumb-2.webp"
+									alt="Capturing emotion through candid photography"
+									loading="lazy"
+								>
+								<h3>Capturing emotion through candid photography</h3>
+							</article>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="footer-inner">
+				<p class="footer-copy">&copy; 2025 Riflesso. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"
+		></script>
+		<script>
+		// Search
+		const searchData = [
+			{
+				title: "Shooting confidently in street photography",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+			{
+				title: "Building your editing style as a photographer",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+			{
+				title: "Why film photography still matters",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+			{
+				title: "Creating impact with minimalist photography",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+			{
+				title: "Connecting with your subject in portrait photography",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+			{
+				title: "The timeless power of black and white photography",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+			{
+				title: "Working with light in outdoor photography",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+			{
+				title: "Finding balance with visual composition",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+			{
+				title: "Capturing emotion through candid photography",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+			{
+				title: "The Art of Framing: Mastering Composition in Photography",
+				type: "Magazine",
+				href: "blog-post.html",
+			},
+		];
+
+		const fuse = new Fuse(searchData, {
+			keys: ["title", "type"],
+			threshold: 0.4,
+		});
+		const searchModal = document.getElementById("searchModal");
+		const searchButton = document.getElementById("searchButton");
+		const searchInput = document.getElementById("searchInput");
+		const searchResults = document.getElementById("searchResults");
+
+		function openSearch() {
+			searchModal.classList.add("open");
+			document.body.style.overflow = "hidden";
+			setTimeout(() => searchInput.focus(), 50);
+		}
+		function closeSearch() {
+			searchModal.classList.remove("open");
+			document.body.style.overflow = "";
+			searchInput.value = "";
+			searchResults.innerHTML = "";
+			searchResults.style.display = "none";
+		}
+
+		searchButton.addEventListener("click", openSearch);
+		searchModal.addEventListener("click", (e) => {
+			if (!e.target.closest(".search-modal-box")) closeSearch();
+		});
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && searchModal.classList.contains("open"))
+				closeSearch();
+		});
+
+		searchInput.addEventListener("input", (e) => {
+			const val = e.target.value.trim();
+			if (!val) {
+				searchResults.innerHTML = "";
+				searchResults.style.display = "none";
+				return;
+			}
+			const results = fuse.search(val);
+			if (results.length === 0) {
+				searchResults.innerHTML =
+					'<div class="search-result-item"><span class="search-result-title">There\'s nothing here.</span></div>';
+			} else {
+				searchResults.innerHTML = results
+					.map(
+						(r) => `<div class="search-result-item">
+          <a href="${r.item.href}" class="overlay"></a>
+          <span class="search-result-meta">${r.item.type}</span>
+          <span class="search-result-title">${r.item.title}</span>
+        </div>`,
+					)
+					.join("");
+			}
+			searchResults.style.display = "block";
+		});
+
+		// Menu toggle
+		const menuToggle = document.getElementById("menuToggle");
+		const menuOverlay = document.getElementById("menuOverlay");
+		const closeMenuBtn = document.getElementById("closeMenu");
+		const menuNav = document.getElementById("menuNav");
+
+		function openMenu() {
+			menuOverlay.classList.add("open");
+			document.body.style.overflow = "hidden";
+			const links = menuNav.querySelectorAll("a");
+			links.forEach((link, i) => {
+				link.style.opacity = "0";
+				link.style.transform = "translateY(20px)";
+				link.style.transition = "none";
+				setTimeout(() => {
+					link.style.transition = `opacity 0.3s ease-out ${i * 0.1}s, transform 0.3s ease-out ${i * 0.1}s`;
+					link.style.opacity = "1";
+					link.style.transform = "translateY(0)";
+				}, 50);
+			});
+		}
+		function closeMenuFn() {
+			menuOverlay.classList.remove("open");
+			document.body.style.overflow = "";
+		}
+		menuToggle.addEventListener("click", openMenu);
+		closeMenuBtn.addEventListener("click", closeMenuFn);
+		</script>
+	</body>
+</html>

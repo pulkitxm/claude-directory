@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Tweets — Manu Arora</title>
+		<meta
+			name="description"
+			content="A curated timeline of my tweets on design engineering, building, and the occasional rant."
+		>
+		<link rel="stylesheet" href="styles.css">
+		<style>
+		/* Tweets page specific */
+		.tweets-page-inner {
+			max-width: 672px;
+			margin: 0 auto;
+			padding: 1.5rem 1rem;
+		}
+		.tweets-intro-heading {
+			font-family:
+				ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			color: var(--muted);
+		}
+		.tweets-columns {
+			margin-top: 2rem;
+			margin-bottom: 5rem;
+			columns: 1;
+			gap: 1rem;
+		}
+		@media (min-width: 640px) {
+			.tweets-columns {
+				columns: 2;
+			}
+		}
+		@media (min-width: 1024px) {
+			.tweets-columns {
+				columns: 3;
+			}
+		}
+
+		.tweet-article {
+			display: inline-block;
+			width: 100%;
+			break-inside: avoid;
+			margin-bottom: 1rem;
+			align-self: flex-start;
+		}
+		.tweet-card-inner {
+			position: relative;
+			border-radius: 0.5rem;
+			background: #fff;
+			padding: 0.75rem;
+			font-size: 0.875rem;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+			outline: 1px solid rgba(0, 0, 0, 0.1);
+			outline-offset: -1px;
+		}
+		:root.dark .tweet-card-inner,
+		[data-theme="dark"] .tweet-card-inner {
+			background: #292524;
+			outline-color: rgba(255, 255, 255, 0.1);
+		}
+		.tweet-space {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+		.tweet-header-row {
+			display: flex;
+			gap: 0.75rem;
+		}
+		.tweet-pfp {
+			width: 2.5rem;
+			height: 2.5rem;
+			flex-shrink: 0;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+		.tweet-pfp img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.tweet-user-info {
+			flex: 1;
+			min-width: 0;
+		}
+		.tweet-display-name {
+			font-weight: 600;
+			color: var(--primary);
+			display: block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 0.875rem;
+		}
+		.tweet-handle {
+			color: var(--muted);
+			font-size: 0.875rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.tweet-body {
+			color: var(--fg);
+			font-size: 0.875rem;
+			line-height: 1.4;
+			white-space: pre-wrap;
+			word-break: break-word;
+		}
+		.tweet-media-wrap {
+			position: relative;
+			overflow: hidden;
+			border-radius: 0.375rem;
+			background: #1c1917;
+		}
+		.tweet-media-wrap img {
+			width: 100%;
+			max-height: 20rem;
+			object-fit: cover;
+			pointer-events: none;
+			display: block;
+		}
+		.tweet-play-btn {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			pointer-events: none;
+		}
+		.tweet-play-btn span {
+			border-radius: 50%;
+			background: rgba(0, 0, 0, 0.5);
+			padding: 0.625rem;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+			outline: 1px solid rgba(255, 255, 255, 0.25);
+			outline-offset: -1px;
+			color: #fff;
+		}
+		.tweet-play-btn svg {
+			width: 1.75rem;
+			height: 1.75rem;
+		}
+		</style>
+		<script>
+		(function () {
+			var stored = localStorage.getItem("theme") || "system";
+			var prefersDark = window.matchMedia(
+				"(prefers-color-scheme: dark)",
+			).matches;
+			var dark = stored === "dark" || (stored === "system" && prefersDark);
+			document.documentElement.classList.remove("light", "dark");
+			document.documentElement.classList.add(dark ? "dark" : "light");
+		})();
+		</script>
+	</head>
+	<body>
+		<!-- Settings button -->
+		<div
+			style="position:fixed;top:1.25rem;right:1.25rem;z-index:50;display:flex;flex-direction:column;align-items:flex-end;"
+		>
+			<button class="settings-btn" id="settingsBtn" aria-label="Theme settings">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="currentColor"
+				>
+					<path
+						d="M14.647 4.081a.724.724 0 0 0 1.08.448c2.439-1.485 5.23 1.305 3.745 3.744a.724.724 0 0 0 .447 1.08c2.775.673 2.775 4.62 0 5.294a.724.724 0 0 0-.448 1.08c1.485 2.439-1.305 5.23-3.744 3.745a.724.724 0 0 0-1.08.447c-.673 2.775-4.62 2.775-5.294 0a.724.724 0 0 0-1.08-.448c-2.439 1.485-5.23-1.305-3.745-3.744a.724.724 0 0 0-.447-1.08c-2.775-.673-2.775-4.62 0-5.294a.724.724 0 0 0 .448-1.08c-1.485-2.439 1.305-5.23 3.744-3.745a.722.722 0 0 0 1.08-.447c.673-2.775 4.62-2.775 5.294 0zm-2.647 4.919a3 3 0 1 0 0 6 3 3 0 0 0 0-6"
+					/>
+				</svg>
+			</button>
+			<div class="theme-panel" id="themePanel">
+				<button class="theme-option" data-theme="light">Light</button>
+				<button class="theme-option" data-theme="dark">Dark</button>
+				<button class="theme-option" data-theme="system">System</button>
+			</div>
+		</div>
+
+		<!-- Navigation -->
+		<nav class="site-nav">
+			<div class="nav-header">
+				<div class="nav-avatar-wrap">
+					<img
+						src="assets/avatar.webp"
+						alt="Manu Arora"
+						class="nav-avatar"
+						width="24"
+						height="24"
+					>
+				</div>
+				<h1 class="nav-title">
+					Manu Arora <span class="aka">aka</span>
+					<span class="paaji">Paaji</span>
+				</h1>
+			</div>
+			<div class="nav-links">
+				<a href="index.html" class="nav-link"
+					>Home
+					<svg
+						class="dot-line"
+						aria-hidden="true"
+						preserveAspectRatio="none"
+						style="height:4px"
+					>
+						<defs>
+							<pattern
+								id="dots-home"
+								width="6"
+								height="4"
+								patternUnits="userSpaceOnUse"
+							>
+								<circle cx="3" cy="2" r="1" fill="currentColor" />
+							</pattern>
+						</defs>
+						<rect width="100%" height="100%" fill="url(#dots-home)" />
+					</svg>
+				</a>
+				<a href="tweets.html" class="nav-link active"
+					>Tweets
+					<svg
+						class="dot-line"
+						aria-hidden="true"
+						preserveAspectRatio="none"
+						style="height:4px"
+					>
+						<defs>
+							<pattern
+								id="dots-tweets"
+								width="6"
+								height="4"
+								patternUnits="userSpaceOnUse"
+							>
+								<circle cx="3" cy="2" r="1" fill="currentColor" />
+							</pattern>
+						</defs>
+						<rect width="100%" height="100%" fill="url(#dots-tweets)" />
+					</svg>
+				</a>
+				<a href="inspiration.html" class="nav-link"
+					>Inspiration
+					<svg
+						class="dot-line"
+						aria-hidden="true"
+						preserveAspectRatio="none"
+						style="height:4px"
+					>
+						<defs>
+							<pattern
+								id="dots-insp"
+								width="6"
+								height="4"
+								patternUnits="userSpaceOnUse"
+							>
+								<circle cx="3" cy="2" r="1" fill="currentColor" />
+							</pattern>
+						</defs>
+						<rect width="100%" height="100%" fill="url(#dots-insp)" />
+					</svg>
+				</a>
+				<a href="blog.html" class="nav-link"
+					>Blog
+					<svg
+						class="dot-line"
+						aria-hidden="true"
+						preserveAspectRatio="none"
+						style="height:4px"
+					>
+						<defs>
+							<pattern
+								id="dots-blog"
+								width="6"
+								height="4"
+								patternUnits="userSpaceOnUse"
+							>
+								<circle cx="3" cy="2" r="1" fill="currentColor" />
+							</pattern>
+						</defs>
+						<rect width="100%" height="100%" fill="url(#dots-blog)" />
+					</svg>
+				</a>
+				<a href="sponsor.html" class="nav-link"
+					>Sponsor
+					<svg
+						class="dot-line"
+						aria-hidden="true"
+						preserveAspectRatio="none"
+						style="height:4px"
+					>
+						<defs>
+							<pattern
+								id="dots-sponsor"
+								width="6"
+								height="4"
+								patternUnits="userSpaceOnUse"
+							>
+								<circle cx="3" cy="2" r="1" fill="currentColor" />
+							</pattern>
+						</defs>
+						<rect width="100%" height="100%" fill="url(#dots-sponsor)" />
+					</svg>
+				</a>
+			</div>
+		</nav>
+
+		<!-- Main -->
+		<main>
+			<div style="width:100%;padding:1.5rem 1rem 0">
+				<div style="max-width:672px;margin:0 auto">
+					<h2 class="tweets-intro-heading">I post on twitter, you know.</h2>
+					<p class="bio-para" style="text-wrap:balance">
+						Most of the time I share my learnings on design engineering and
+						building my SaaS. Sometimes I shitpost, Sometimes I rant, and
+						sometimes I try to get as much fomo as I can.
+					</p>
+					<p class="bio-para">Here are some of the tweets that I'm proud of.</p>
+				</div>
+
+				<!-- Tweets columns - wider than main content -->
+				<div style="max-width:56rem;margin:0 auto">
+					<div class="tweets-columns">
+						<!-- Tweet 1 - Video tweet -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Use <code>sibling-index()</code> to stagger children of a
+										parent without having to manually track a
+										<code>--i variable</code>
+										or having to use an animation library .item { animation:
+										enter 0.45s cubic-bezier(0.22, 1, 0.36, 1)
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2041530717533011968/img/y58uuwkS2LtbUHL5?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 2 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Using `𝟷𝚕𝚑` instead of `𝟷𝚎𝚖` for inline icons or logos
+										accounts for the extra line height additions. .𝚒𝚌𝚘𝚗 {
+										𝚑𝚎𝚒𝚐𝚑𝚝: 𝟷𝚕𝚑; 𝚠𝚒𝚍𝚝𝚑: 𝟷𝚕𝚑; } The logo fills up the visual
+										length of the text line exactly. Change your 𝚕𝚎𝚊𝚍𝚒𝚗𝚐 /
+										𝚕𝚒𝚗𝚎-𝚑𝚎𝚒𝚐𝚑𝚝
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HFOcUg9aUAAyqKT?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 3 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										An upper shadow of as small as 𝟶.𝟻𝚙𝚡 can help your buttons
+										stand out &lt;𝚋𝚞𝚝𝚝𝚘𝚗 𝚌𝚕𝚊𝚜𝚜𝙽𝚊𝚖𝚎="𝚛𝚘𝚞𝚗𝚍𝚎𝚍-𝚏𝚞𝚕𝚕 𝚋𝚐-𝚕𝚒𝚗𝚎𝚊𝚛-𝚝𝚘-𝚋
+										𝚏𝚛𝚘𝚖-𝚗𝚎𝚞𝚝𝚛𝚊𝚕-𝟿𝟶𝟶 𝚝𝚘-𝚋𝚕𝚊𝚌𝚔 𝚙𝚡-𝟺 𝚙𝚢-𝟸 𝚝𝚎𝚡𝚝-𝚠𝚑𝚒𝚝𝚎
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HFD6Blfa8AERg7M?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 4 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										One of my favourites latest CSS property is 𝚊𝚗𝚌𝚑𝚘𝚛
+										𝚙𝚘𝚜𝚒𝚝𝚒𝚘𝚗𝚒𝚗𝚐 .𝚝𝚛𝚒𝚐𝚐𝚎𝚛 { 𝚊𝚗𝚌𝚑𝚘𝚛-𝚗𝚊𝚖𝚎: --𝚝𝚒𝚙; } .𝚝𝚘𝚘𝚕𝚝𝚒𝚙 {
+										𝚙𝚘𝚜𝚒𝚝𝚒𝚘𝚗: 𝚏𝚒𝚡𝚎𝚍; 𝚙𝚘𝚜𝚒𝚝𝚒𝚘𝚗-𝚊𝚗𝚌𝚑𝚘𝚛: --𝚝𝚒𝚙; 𝚙𝚘𝚜𝚒𝚝𝚒𝚘𝚗-𝚊𝚛𝚎𝚊: 𝚝𝚘𝚙
+										𝚌𝚎𝚗𝚝𝚎𝚛;
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2040088947687403520/img/tqLGx6XfEEZ7K3Nk?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 5 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										you can create a CSS only carousel with CSS `𝚜𝚌𝚛𝚘𝚕𝚕-𝚜𝚗𝚊𝚙`
+										.𝚜𝚌𝚛𝚘𝚕𝚕𝚎𝚛 { 𝚘𝚟𝚎𝚛𝚏𝚕𝚘𝚠-𝚡: 𝚊𝚞𝚝𝚘; 𝚜𝚌𝚛𝚘𝚕𝚕-𝚜𝚗𝚊𝚙-𝚝𝚢𝚙𝚎: 𝚡 𝚖𝚊𝚗𝚍𝚊𝚝𝚘𝚛𝚢;
+										𝚜𝚌𝚛𝚘𝚕𝚕-𝚙𝚊𝚍𝚍𝚒𝚗𝚐-𝚒𝚗𝚕𝚒𝚗𝚎: 𝟷.𝟻𝚛𝚎𝚖; /* 𝚖𝚊𝚝𝚌𝚑𝚎𝚜 𝚢𝚘𝚞𝚛
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2039348827321409536/img/pg5_86RfwxKCzt_-?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 6 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										I don't know what a vestaboard is here's a component that
+										flips characters - Pass in an array of messages / a single
+										message to display - Import via @shadcn CLI or Open in @v0 -
+										Light and dark mode - Mobile responsive Built with Claude
+										Opus 4.6 High + Composer 2 in around an
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2037485688065802240/img/EhHWRrNfrnvrssm-?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 7 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										For dark mode box shadows, use a layered dark color for the
+										shadow instead of white to add elevation to your cards
+										𝚋𝚘𝚡𝚂𝚑𝚊𝚍𝚘𝚠: 𝚛𝚐𝚋𝚊(𝟶, 𝟶, 𝟶, 𝟶.𝟺𝟸) 𝟶𝚙𝚡 𝟻𝟺𝚙𝚡 𝟻𝟻𝚙𝚡, 𝚛𝚐𝚋𝚊(𝟶, 𝟶, 𝟶,
+										𝟶.𝟹𝟼) 𝟶𝚙𝚡 -𝟷𝟸𝚙𝚡 𝟹𝟶𝚙𝚡, 𝚛𝚐𝚋𝚊(𝟶, 𝟶, 𝟶, 𝟶.𝟸𝟶)
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HEWJgSXa0AAGowg?format=png&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 8 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Create multiple lines and scales around your cards with
+										𝚛𝚎𝚙𝚎𝚊𝚝𝚒𝚗𝚐-𝚕𝚒𝚗𝚎𝚊𝚛-𝚐𝚛𝚊𝚍𝚒𝚎𝚗𝚝 Instead of using divs and spans,
+										use 𝚛𝚎𝚙𝚎𝚊𝚝𝚒𝚗𝚐-𝚕𝚒𝚗𝚎𝚊𝚛-𝚐𝚛𝚊𝚍𝚒𝚎𝚗𝚝 and 𝚖𝚊𝚜𝚔-𝚝-𝚏𝚛𝚘𝚖-𝟻𝟶% for smooth
+										set of lines &lt;𝚍𝚒𝚟
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HEQM2UwaIAAexgQ?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 9 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Left: 𝚋𝚘𝚛𝚍𝚎𝚛 𝚋𝚘𝚛𝚍𝚎𝚛-𝚗𝚎𝚞𝚝𝚛𝚊𝚕-𝟸𝟶𝟶 Right: 𝚜𝚑𝚊𝚍𝚘𝚠-𝚖𝚍
+										𝚜𝚑𝚊𝚍𝚘𝚠-𝚋𝚕𝚊𝚌𝚔/𝟷𝟶 𝚛𝚒𝚗𝚐-𝟷 𝚛𝚒𝚗𝚐-𝚋𝚕𝚊𝚌𝚔/𝟷𝟶 Shadow paired with a
+										ring utility elevates the input boxes to a very subtle
+										extent. i love the right one personally.
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HEKL3iuaIAQwSwE?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 10 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Create image reveal effects with CSS 𝚌𝚕𝚒𝚙-𝚙𝚊𝚝𝚑 .𝚛𝚎𝚟𝚎𝚊𝚕 {
+										𝚌𝚕𝚒𝚙-𝚙𝚊𝚝𝚑: 𝚒𝚗𝚜𝚎𝚝(𝟶 𝟷𝟶𝟶% 𝟶 𝟶); 𝚊𝚗𝚒𝚖𝚊𝚝𝚒𝚘𝚗: 𝚜𝚑𝚘𝚠-𝚒𝚖𝚊𝚐𝚎 𝟷𝚜
+										𝚏𝚘𝚛𝚠𝚊𝚛𝚍𝚜 𝚕𝚒𝚗𝚎𝚊𝚛; } @𝚔𝚎𝚢𝚏𝚛𝚊𝚖𝚎𝚜 𝚜𝚑𝚘𝚠-𝚒𝚖𝚊𝚐𝚎 { 𝚝𝚘 {
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2036056888539025408/img/3yhN-dA34c67Azfh?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 11 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Use the 𝚠𝚑𝚒𝚕𝚎𝙷𝚘𝚟𝚎𝚛 prop on the parent to animate children
+										&lt;𝚖𝚘𝚝𝚒𝚘𝚗.𝚍𝚒𝚟 𝚠𝚑𝚒𝚕𝚎𝙷𝚘𝚟𝚎𝚛="𝚊𝚗𝚒𝚖𝚊𝚝𝚎" 𝚒𝚗𝚒𝚝𝚒𝚊𝚕="𝚒𝚗𝚒𝚝𝚒𝚊𝚕"&gt;
+										... &lt;𝚖𝚘𝚝𝚒𝚘𝚗.𝚍𝚒𝚟 𝚟𝚊𝚛𝚒𝚊𝚗𝚝𝚜= { &#123;𝚊𝚗𝚒𝚖𝚊𝚝𝚎: 𝚢:𝟺𝟶, 𝚡:
+										𝟸𝟶&#125;}&gt; ...
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2034225856810508288/img/f5avHd_bvLjKpQJU?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 12 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Small little detail added to the macbook skeleton's screen
+										lid 𝚙𝚎𝚛𝚜𝚙𝚎𝚌𝚝𝚒𝚟𝚎-𝚍𝚒𝚜𝚝𝚊𝚗𝚝 to the parent 𝚛𝚘𝚝𝚊𝚝𝚎-𝚡-𝟺𝟶 𝚋𝚕𝚞𝚛-𝚕𝚐
+										𝚘𝚛𝚒𝚐𝚒𝚗-𝚝𝚘𝚙 along with 𝚒𝚗𝚒𝚝𝚒𝚊𝚕 and 𝚊𝚗𝚒𝚖𝚊𝚝𝚎 variants from
+										@motiondotdev Super nice effect, got to learn
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2033919419379023872/img/I3IHnk7TdS64PcaR?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 13 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Smooth Edges for Marquees with CSS Mask 𝚖𝚊𝚜𝚔-𝚕-𝚏𝚛𝚘𝚖-𝟾𝟶%
+										𝚖𝚊𝚜𝚔-𝚛-𝚏𝚛𝚘𝚖-𝟾𝟶% Can be used on card skeletons, marquees, or
+										anywhere you want to smooth out the edges.
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2033499352346619904/img/tUoh9noYFUbKv3t3?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 14 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Small little hero section with pixels information
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2033098638038282246/img/xoFTVYyMPsIiY2vn?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 15 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Left prompt Create a keyboard component, make no mistakes.
+										Right prompt Create a mac style keyboard component with the
+										following features - Every number should be accompanied by a
+										symbol, symbols should be lighter that the number - Each key
+										should be a component that has to be
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HDRsywebQAQF1DI?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HDRsy86bsAAdDXb?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 16 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Instead of repeating code for child elements, use the
+										`&amp;` operator on the root tag Here's an example of check
+										items with with nesting `&amp;` selector &lt;𝚞𝚕
+										𝚌𝚕𝚊𝚜𝚜𝙽𝚊𝚖𝚎="𝚏𝚕𝚎𝚡 𝚕𝚒𝚜𝚝-𝚗𝚘𝚗𝚎 𝚏𝚕𝚎𝚡-𝚌𝚘𝚕 𝚐𝚊𝚙-𝟸 [&amp;_𝚕𝚒]:𝚏𝚕𝚎𝚡
+										[&amp;_𝚕𝚒]:𝚒𝚝𝚎𝚖𝚜-𝚌𝚎𝚗𝚝𝚎𝚛
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HCtt6FSbQAEpAgy?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 17 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">Simple bento grid exploration</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/2029236954672599040/img/-oYhy5W7DxjNmM0I?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 18 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Learn how to create this beam effect from @vite_js 's
+										website
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/1946105057768038400/img/nkYBg1b6E2POyZGq?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 19 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Create this Hero Text component from @perplexity_ai hero
+										section
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/1945769762849771520/img/QmaJCmvsIzN6EKDO?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 20 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Learn how to create the Apple Vision Pro website's scroll
+										effect
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/1945450042334285824/img/2bUjTAGLz0PN944j?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 21 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Learn how to create this Like animation from @x
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/1946532977913307137/img/_YKqNs15g_ots2db?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 22 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Learn how to create this typing animation from X (Grok Chat)
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/1947256687901233152/img/FPmBM7zl35bOHuPU?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 23 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Learn how to create this 3D animation from @perplexity_ai
+										comet's invite screen
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/1947991973518082048/img/-3BRz_aL_3Le2uy3?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 24 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Learn how to create this 3D Marquee animation from @vercel
+										's OSS starter pack page
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/amplify_video_thumb/1949001929272819718/img/Ai4Kh3blmwX5CTvW?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 25 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										Not many people know this but @fireship_dev taught me how to
+										print "Hi Mom" in Javascript
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/GHM1kFoXYAAiMKo?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 26 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										How to create this infinite testimonial carousel from
+										scratch with @tailwindcss and @framer motion ⬇️
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/ext_tw_video_thumb/1726608897912532992/pu/img/DxFpd6boZOpUl-dA?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+										<div class="tweet-play-btn" aria-hidden="true">
+											<span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="currentColor"
+												>
+													<path
+														d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8a1 1 0 0 0-1.524.852z"
+													/>
+												</svg>
+											</span>
+										</div>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 27 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										I've seen a lot of isometric illustrations and they look
+										GREAT, but I cannot create them myself since I'm not that
+										great with Figma I use claude code + cursor to create SVGs
+										for me Created a bunch of isometric illustrations with AI,
+										used @motiondotdev to animate them on hover
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HE-y76hbMAAlBoA?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+
+						<!-- Tweet 28 -->
+						<a
+							target="_blank"
+							href="https://x.com/mannupaaji"
+							class="tweet-article"
+						>
+							<article class="tweet-card-inner">
+								<div class="tweet-space">
+									<div class="tweet-header-row">
+										<a
+											href="https://x.com/mannupaaji"
+											target="_blank"
+											class="tweet-pfp"
+										>
+											<img
+												src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_normal.jpg"
+												alt="Manu Arora"
+											>
+										</a>
+										<div class="tweet-user-info">
+											<a
+												href="https://x.com/mannupaaji"
+												target="_blank"
+												class="tweet-display-name"
+												>Manu Arora</a
+											>
+											<p class="tweet-handle">@mannupaaji</p>
+										</div>
+									</div>
+									<p class="tweet-body">
+										everyone is a content creator until this thing appears in
+										front of you then you just sit there, silent, questioning
+										your own existence
+									</p>
+									<div class="tweet-media-wrap">
+										<img
+											src="https://pbs.twimg.com/media/HE5Zy7dbYAAcPKn?format=jpg&name=small"
+											alt="tweet media"
+											loading="lazy"
+										>
+									</div>
+								</div>
+							</article>
+						</a>
+					</div>
+				</div>
+
+				<!-- Divider -->
+				<div style="max-width:672px;margin:0 auto">
+					<div class="dot-divider">
+						<svg aria-hidden="true" preserveAspectRatio="none">
+							<defs>
+								<pattern
+									id="divider-tweets"
+									width="6"
+									height="4"
+									patternUnits="userSpaceOnUse"
+								>
+									<circle cx="3" cy="2" r="1" fill="currentColor" />
+								</pattern>
+							</defs>
+							<rect width="100%" height="100%" fill="url(#divider-tweets)" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer class="site-footer">
+			<div class="footer-inner">
+				<svg
+					version="1.1"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="240 10 380 115"
+					class="footer-logo"
+					style="color:var(--muted)"
+				>
+					<path
+						fill="currentColor"
+						d="M0 0 C2.1875 0.3125 2.1875 0.3125 4 1 C4.38503942 6.41622115 3.01171043 10.44625012 1.1875 15.4375 C-5.31364902 34.17476063 -10.30104908 57.72993994 -1.75 76.625 C1.28454345 82.03748978 4.99654384 84.49594453 10.875 86.25 C12.421875 86.62125 12.421875 86.62125 14 87 C14 88.65 14 90.3 14 92 C9.74699804 93.50912973 6.44220947 92.78009153 2.34375 91.25 C-4.27383518 87.72062124 -8.0173897 81.94693532 -10.4375 75 C-14.78641685 58.33881635 -12.44410007 41.75319499 -10 25 C-18.99635597 40.95112337 -26.93235855 57.10773383 -34 74 C-34.37979004 74.9065332 -34.75958008 75.81306641 -35.15087891 76.74707031 C-37.12964005 81.48650092 -39.08015029 86.23641387 -41 91 C-42.65 91 -44.3 91 -46 91 C-48.80536707 79.84649487 -51.54794346 68.67895029 -54.25 57.5 C-54.6171327 55.98305965 -54.98431999 54.46613252 -55.3515625 52.94921875 C-56.23500029 49.29963026 -57.11771337 45.64986698 -58 42 C-58.50789063 43.17175781 -59.01578125 44.34351563 -59.5390625 45.55078125 C-75.68341078 82.53264814 -75.68341078 82.53264814 -93.625 90.9375 C-103.40969756 94.63172255 -115.0187698 95.49257455 -125 92 C-128.16641756 90.55656086 -131.07942299 88.88705274 -134 87 C-134.9075 86.443125 -135.815 85.88625 -136.75 85.3125 C-141.65112763 80.27522994 -144.28853199 74.41010705 -144.5625 67.375 C-144.15123426 59.88785455 -141.56940621 55.19392992 -136.125 50.125 C-129.22945538 44.12280529 -120.61526882 44.18125779 -111.93408203 44.74853516 C-106.51376599 45.45327203 -101.79907426 47.94842408 -98.21875 52.03125 C-97 54 -97 54 -97.3125 56.25 C-97.539375 56.8275 -97.76625 57.405 -98 58 C-100.25 58.25 -100.25 58.25 -103 58 C-104.37562854 56.71034824 -105.70766393 55.37310707 -107 54 C-112.99822639 51.05786478 -120.02758135 50.81276664 -126.41796875 52.72265625 C-130.61830942 54.66915558 -133.71356948 56.88442506 -136 61 C-137.23875682 65.56791576 -137.24096151 69.11145444 -136 73.6875 C-131.95265799 80.3909102 -126.51580948 84.02292052 -119 86 C-110.29481891 87.88612257 -100.74191173 86.75095906 -92.92578125 82.30078125 C-76.16498207 70.97959235 -65.51287111 47.43297559 -61 28 C-60.92611115 25.59122353 -61.12946838 23.54983005 -61.5859375 21.19140625 C-62.60763121 15.78414047 -63.26443743 9.9869731 -60.25 5.25 C-58 4 -58 4 -55.875 4.0625 C-54 5 -54 5 -52 8 C-51.76953125 10.6015625 -51.76953125 10.6015625 -51.8125 13.625 C-51.81894531 14.60726562 -51.82539063 15.58953125 -51.83203125 16.6015625 C-52 20 -52 20 -52.30862427 21.92366028 C-53.30341906 28.2623612 -52.38868447 33.52939699 -50.91015625 39.72265625 C-50.57509315 41.20178749 -50.57509315 41.20178749 -50.23326111 42.71080017 C-49.52314645 45.83130207 -48.79319209 48.94675954 -48.0625 52.0625 C-47.57484911 54.18915024 -47.08850759 56.31610118 -46.60351562 58.44335938 C-45.41746414 63.63247984 -44.21513031 68.81761632 -43 74 C-40.77259112 71.77259112 -40.03568399 70.03843497 -38.8203125 67.14453125 C-38.17799683 65.6386 -37.53256226 64.13222266 -36.88525391 62.62353516 C-34 56 -34 56 -30 47 C-25.29247263 36.90505896 -20.77618652 26.74264526 -16 17 C-13.32380977 11.34619522 -13.32380977 11.34619522 -13 6 C-12.34 4.66 -11.68 3.32 -11 2 C-9.23024482 1.07792419 -7.47099918 0.27614892 -5.66796875 -0.44140625 C-3.68310547 -1.22753906 -1.90039063 -1.63671875 0 0 Z "
+						transform="translate(384,12)"
+					/>
+					<path
+						fill="currentColor"
+						d="M0 0 C4.65667478 2.32833739 7.55226024 5.52337697 10 10 C12.05887629 15.44699013 12.17920427 20.48049774 12 26 C11.51828638 31.17754631 9.9126853 35.60064661 8 40.5 C7.65625 41.34375 7.3125 42.1875 6.95703125 43.05859375 C-0.23680046 58.81038574 -14.9695426 72.15539891 -30 80 C-37.00791015 83.53900026 -44.45068741 85.30783069 -52.1875 86.3125 C-55.35710156 86.64003906 -55.35710156 86.64003906 -58.59765625 86.97265625 C-62.93571186 87.19851806 -67.26524012 87.12219695 -71.6015625 87.01171875 C-82.73867621 86.39397421 -93.87498854 86.19551985 -104.9375 84.4375 C-107.69117188 83.9375 -107.69117188 83.9375 -110.5 83.4375 C-113.5 83 -113.5 83 -116.5 82.4375 C-115.5 83.4375 -115.5 83.4375 -114.5 84.4375 C-112.17895508 87.00506909 -110.42724609 89.37011719 -109 92.4375 C-108.4375 93.4375 -108.4375 93.4375 -107.5 94.4375 C-107.5 96.0875 -107.5 97.7375 -107.5 99.4375 C-109.1075 100.27877087 -109.1075 100.27877087 -111 101 C-117.93393025 98.31028826 -120.30273437 93.71582031 -122.5 87.4375 C-122.84375 86.4375 -123.1875 85.4375 -123.5 84.4375 C-124 82.4375 -124 82.4375 -124 79.4375 C-123 77.4375 -123 77.4375 -121 75.4375 C-116.62823509 72.77709842 -112.25683594 72.01171875 -107.25 71.8125 C-100.73949219 71.74550781 -94.09945602 72.52481308 -87.625 73.3125 C-76.2953125 74.3625 -76.2953125 74.3625 -67 75.4375 C-54.84 76.9575 -54.84 76.9575 -41.5 76.4375 C-34.91 75.5875 -34.91 75.5875 -28.5 73.4375 C-17.09453725 68.33020287 -8.30218906 59.50474791 -2.5 49.4375 C3.62893678 37.61374044 5.27499659 22.84665985 2.5 9.9375 C1.5 6.4375 1.5 6.4375 0 3.4375 C-0.33 2.30833333 -0.66 1.17916667 -1 0 C-0.67 0 -0.34 0 0 0 Z "
+						transform="translate(524,14)"
+					/>
+				</svg>
+				<p class="footer-text">
+					Built by yours truly. Here's the
+					<a
+						href="https://github.com/manuarora700/manuarora.in"
+						target="_blank"
+						rel="noopener"
+						class="footer-link"
+						>code</a
+					>
+					and
+					<a
+						href="https://www.youtube.com/@manuarora"
+						target="_blank"
+						rel="noopener"
+						class="footer-link"
+						>video</a
+					>
+					explaining it.
+				</p>
+				<p class="footer-text">
+					Website heavily inspired by
+					<a
+						href="https://designerdada.com/"
+						target="_blank"
+						rel="noopener"
+						class="footer-link"
+						>Akash Bhadange</a
+					>
+				</p>
+			</div>
+		</footer>
+
+		<script>
+		(function () {
+			var btn = document.getElementById("settingsBtn");
+			var panel = document.getElementById("themePanel");
+			var opts = panel.querySelectorAll(".theme-option");
+			var html = document.documentElement;
+			function applyTheme(t) {
+				localStorage.setItem("theme", t);
+				if (t === "dark") {
+					html.classList.remove("light");
+					html.classList.add("dark");
+				} else if (t === "light") {
+					html.classList.remove("dark");
+					html.classList.add("light");
+				} else {
+					var d = window.matchMedia("(prefers-color-scheme: dark)").matches;
+					html.classList.remove("light", "dark");
+					html.classList.add(d ? "dark" : "light");
+				}
+				opts.forEach(function (o) {
+					o.classList.toggle("active", o.dataset.theme === t);
+				});
+			}
+			var stored = localStorage.getItem("theme") || "system";
+			opts.forEach(function (o) {
+				o.classList.toggle("active", o.dataset.theme === stored);
+			});
+			btn.addEventListener("click", function (e) {
+				e.stopPropagation();
+				panel.classList.toggle("open");
+			});
+			document.addEventListener("click", function () {
+				panel.classList.remove("open");
+			});
+			opts.forEach(function (o) {
+				o.addEventListener("click", function (e) {
+					e.stopPropagation();
+					applyTheme(o.dataset.theme);
+					panel.classList.remove("open");
+				});
+			});
+		})();
+		</script>
+	</body>
+</html>

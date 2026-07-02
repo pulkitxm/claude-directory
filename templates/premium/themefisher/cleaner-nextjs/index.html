@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cleaner - Nextjs Theme for Services Business</title>
+<link rel="icon" href="assets/images/favicon.png" type="image/png">
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  /* Home-page specific styles */
+  .hero { position: relative; overflow: hidden; padding-block: clamp(3rem, 2rem + 4vw, 6.5rem) clamp(2rem, 1.5rem + 3vw, 4rem); }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.08; }
+  .hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 2.5rem; align-items: center; }
+  .hero-content .eyebrow { display: flex; align-items: center; gap: 0.5rem; }
+  .hero-content .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--color-primary); display: inline-block; }
+  .hero-content h1 { margin-bottom: 1.5rem; }
+  .hero-content .lead { margin-bottom: 2rem; max-width: 34rem; }
+  .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .call-pill { display: inline-flex; align-items: center; gap: 0.75rem; background: var(--color-secondary); color: var(--color-text); border-radius: var(--radius-pill); padding: 0.6rem 1.5rem 0.6rem 0.6rem; font-weight: 600; transition: transform var(--transition-fast) var(--ease-in-out); }
+  .call-pill:hover { transform: translateY(-2px); }
+  .call-pill .icon-wrap { width: 42px; height: 42px; border-radius: 50%; background: var(--color-text); color: var(--color-secondary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .call-pill .icon-wrap svg { width: 18px; height: 18px; }
+  .call-pill span { display: flex; flex-direction: column; line-height: 1.2; font-size: var(--text-sm); }
+  .call-pill strong { font-size: var(--text-base); }
+  .hero-media { position: relative; }
+  .hero-media img { border-radius: var(--radius-xl); width: 100%; height: auto; object-fit: cover; }
+  .hero-media .rating-card { position: absolute; bottom: -1.5rem; left: -1.5rem; background: var(--bg-body); border-radius: var(--radius-lg); box-shadow: 0 20px 40px rgba(14,13,57,0.12); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .rating-card strong { font-size: 1.4rem; color: var(--color-text); }
+  .rating-card small { color: var(--text-color-dark); font-size: var(--text-sm); }
+  .rating-card .stars { color: var(--color-secondary); }
+  @media (max-width: 900px) { .hero .container { grid-template-columns: 1fr; } .hero-media { order: -1; } }
+
+  /* Trust logos */
+  .trust-row { display: flex; align-items: center; justify-content: center; gap: 3.5rem; flex-wrap: wrap; padding-block: 2.5rem; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+  .trust-item { display: flex; align-items: center; gap: 0.6rem; color: var(--text-color-dark); font-weight: 600; font-size: 1.1rem; opacity: 0.75; transition: opacity var(--transition-base) var(--ease-in-out); }
+  .trust-item:hover { opacity: 1; }
+  .trust-item svg { width: 26px; height: 26px; color: var(--color-primary); }
+
+  /* About / intro */
+  .about-section .container { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+  .about-media { position: relative; min-height: 420px; }
+  .about-media img.about-img-1 { position: absolute; top: 0; left: 0; width: 78%; border-radius: var(--radius-xl); }
+  .about-media img.about-img-2 { position: absolute; right: 0; bottom: 0; width: 55%; border-radius: var(--radius-xl); border: 6px solid var(--bg-body); }
+  .about-media img.about-badge { position: absolute; right: 5%; top: 42%; width: 130px; }
+  .about-content ul { margin: 1.5rem 0 2rem; display: grid; gap: 0.85rem; }
+  .about-content ul li { display: flex; align-items: center; gap: 0.75rem; color: var(--text-color-dark); }
+  .about-content ul li svg { width: 22px; height: 22px; color: var(--color-primary); flex-shrink: 0; }
+  .about-hours { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+  .about-hours div strong { display: block; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary); margin-bottom: 0.35rem; }
+  @media (max-width: 900px) { .about-section .container { grid-template-columns: 1fr; } .about-media { min-height: 320px; margin-bottom: 3rem; } }
+
+  /* Services */
+  .services-head { max-width: 40rem; margin: 0 auto 3rem; text-align: center; }
+  .service-card .card-body { text-align: left; }
+  .service-icon { width: 56px; height: 56px; border-radius: 50%; background: color-mix(in srgb, var(--color-primary) 12%, transparent); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+  .service-icon svg { width: 26px; height: 26px; }
+
+  /* Responsibility / why choose us */
+  .responsibility { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+  .responsibility-media { position: relative; }
+  .responsibility-media img.main-img { width: 100%; border-radius: var(--radius-xl); }
+  .responsibility-media .thumb-card { position: absolute; bottom: -2rem; right: -1.5rem; width: 45%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 40px rgba(14,13,57,0.15); border: 6px solid var(--bg-body); }
+  .responsibility-media .thumb-card img { width: 100%; display: block; }
+  .feature-list { display: grid; gap: 1.75rem; margin: 2rem 0; }
+  .feature-item { display: flex; gap: 1rem; }
+  .feature-item .icon { width: 52px; height: 52px; border-radius: 50%; background: color-mix(in srgb, var(--color-primary) 12%, transparent); color: var(--color-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .feature-item .icon svg { width: 24px; height: 24px; }
+  .feature-item h6 { margin-bottom: 0.35rem; }
+  .stat-counter { display: flex; align-items: center; gap: 1.25rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+  .stat-counter strong { font-size: 2.6rem; color: var(--color-primary); line-height: 1; }
+  @media (max-width: 900px) { .responsibility { grid-template-columns: 1fr; } .responsibility-media { margin-bottom: 3.5rem; } }
+
+  /* Testimonials */
+  .review-head { text-align: center; max-width: 40rem; margin: 0 auto 3rem; }
+  .review-card { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem; text-align: center; transition: transform var(--transition-base) var(--ease-in-out), box-shadow var(--transition-base) var(--ease-in-out); }
+  .review-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(14,13,57,0.1); }
+  .review-card img.avatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover; }
+  .review-card .stars { color: var(--color-secondary); margin-bottom: 0.75rem; }
+  .review-card p { font-size: var(--text-sm); }
+  .review-card h6 { margin-bottom: 0.15rem; }
+  .review-card small { color: var(--text-color-dark); }
+
+  /* Blog */
+  .blog-head { max-width: 40rem; margin: 0 auto 3rem; text-align: center; }
+  .card-meta { display: flex; gap: 0.75rem; align-items: center; font-size: var(--text-sm); color: var(--text-color-dark); margin-bottom: 0.75rem; }
+  .card-meta .tag { color: var(--color-primary); font-weight: 600; }
+
+  /* CTA */
+  .cta-banner .container-inner { max-width: 40rem; margin: 0 auto; }
+  .cta-banner .btn-group { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar">
+  <div class="container">
+    <p>Need quick cleaning help?</p>
+    <a href="tel:+1-394-495-5993">
+      <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L184.6 167c13.7-11.1 18.4-30 11.6-46.3l-40-96z"/></svg>
+      Call Us: +1 071 281 9795
+    </a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">
+      <img class="logo-dark" src="assets/images/logo-dark.svg" alt="Cleaner logo" width="142" height="40">
+      <img class="logo-light" src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+    </a>
+    <div class="nav-scrim" id="nav-scrim"></div>
+    <ul class="nav" id="nav-menu">
+      <li><a href="about.html" class="nav-item">About Us</a></li>
+      <li><a href="services.html" class="nav-item">Services</a></li>
+      <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+      <li><a href="blog.html" class="nav-item">Blog</a></li>
+      <li><a href="contact.html" class="nav-item">Contact</a></li>
+    </ul>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a href="appointment.html" class="btn btn-primary btn-sm desktop-only">Make An Appointment</a>
+      <button class="nav-toggle-btn" id="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"><img src="assets/images/home/banner.png" alt=""></div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="eyebrow" data-aos="fade-up">AWARD WINNING CLEANING SERVICE COMPANY</span>
+        <h1 data-aos="fade-up" data-aos-delay="50">Professional <span class="text-accent-underline">Cleaning</span> Services in Auburn.</h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">Our company provides a wide range of cleaning services, from home cleaning to office cleaning. We use only advanced technologies to keep your room looking the best.</p>
+        <div class="hero-actions" data-aos="fade-up" data-aos-delay="150">
+          <a class="call-pill" href="tel:+1-394-495-5993">
+            <span class="icon-wrap">
+              <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L184.6 167c13.7-11.1 18.4-30 11.6-46.3l-40-96z"/></svg>
+            </span>
+            <span>Call Now<strong>+1-394-495-5993</strong></span>
+          </a>
+          <a class="btn btn-primary" href="appointment.html">Make An Appointment</a>
+        </div>
+      </div>
+      <div class="hero-media" data-aos="zoom-in" data-aos-delay="100">
+        <img src="assets/images/home/about/1.avif" alt="Professional cleaning service" width="549" height="465">
+        <div class="rating-card">
+          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span><strong>4.8</strong><br><small>Out of 5</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST LOGOS -->
+  <section class="trust-row">
+    <div class="trust-item" data-aos="fade-up" data-aos-delay="0">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.3 5.9 20.7l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+      Trustpilot &middot; 4.7 out of 5
+    </div>
+    <div class="trust-item" data-aos="fade-up" data-aos-delay="50">
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+      Capterra &middot; 4.8 out of 5
+    </div>
+  </section>
+
+  <!-- ABOUT / INTRO -->
+  <section class="section about-section">
+    <div class="container">
+      <div class="about-media">
+        <img class="about-img-1" src="assets/images/home/about/1.avif" alt="about images" width="549" height="465" data-aos="zoom-in" loading="lazy">
+        <img class="about-img-2" src="assets/images/home/about/2.avif" alt="about images" width="470" height="317" data-aos="zoom-in" data-aos-delay="100" loading="lazy">
+        <img class="about-badge" src="assets/images/home/about/badge.svg" alt="award badge" width="223" height="223" loading="lazy">
+      </div>
+      <div class="about-content">
+        <span class="eyebrow" data-aos="fade-up">HIGHEST LEVEL OF SERVICE</span>
+        <h2 data-aos="fade-up" data-aos-delay="50">We provide our best <span class="text-accent-underline">cleaning</span> services for you</h2>
+        <p data-aos="fade-up" data-aos-delay="100">Our company provides a wide range of cleaning services, from home cleaning to office cleaning. We use only advanced technologies to keep your room looking the best.</p>
+        <ul data-aos="fade-up" data-aos-delay="150">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Our team of experts who have been in the profession for years focuses on helping you achieve optimal clean surface.</li>
+        </ul>
+        <div class="about-hours" data-aos="fade-up" data-aos-delay="200">
+          <div><strong>Mon &ndash; Fri</strong>9 AM &ndash; 22 PM</div>
+          <div><strong>Saturday</strong>9 AM &ndash; 20 PM</div>
+        </div>
+        <a class="btn btn-primary" href="tel:+1-394-495-5993" data-aos="fade-up" data-aos-delay="250">Call: +1-394-495-5993</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="services-head">
+        <span class="eyebrow" data-aos="fade-up">WHAT WE DO</span>
+        <h2 data-aos="fade-up" data-aos-delay="50">Best cleaning <span class="text-accent-underline">company</span> in the town</h2>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">Our professional cleaning company offers a full range of services: deep cleaning, pest control, window and floor cleaning, and more.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card service-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="card-body">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <h5>Floor Cleaning</h5>
+            <p>Deep cleaning for tile, hardwood and carpeted floors using advanced equipment.</p>
+            <a class="card-link" href="service-floor-cleaning.html">Discover More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="card service-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="card-body">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+            <h5>House Cleaning</h5>
+            <p>Thorough top-to-bottom home cleaning tailored to your schedule and needs.</p>
+            <a class="card-link" href="service-home-cleaning.html">Discover More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="card service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-body">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg></div>
+            <h5>Pest Control</h5>
+            <p>Safe and effective treatments that keep your space pest-free year round.</p>
+            <a class="card-link" href="service-pest-control.html">Discover More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="card service-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="card-body">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/></svg></div>
+            <h5>Window Cleaning</h5>
+            <p>Streak-free window cleaning for homes and commercial buildings.</p>
+            <a class="card-link" href="service-window-cleaning.html">Discover More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US / RESPONSIBILITY -->
+  <section class="section">
+    <div class="container">
+      <div class="responsibility">
+        <div class="responsibility-media">
+          <img class="main-img" src="assets/images/home/responsibility/1.png" alt="responsibility" width="594" height="492" data-aos="fade-up" loading="lazy">
+          <div class="thumb-card" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/images/home/responsibility/thumb.webp" alt="video thumbnail" width="300" height="500" loading="lazy">
+          </div>
+        </div>
+        <div class="responsibility-content">
+          <span class="eyebrow" data-aos="fade-up">WHY CHOOSE US</span>
+          <h2 data-aos="fade-up" data-aos-delay="50">Your <span class="text-accent-underline">comfort</span> is our main priority</h2>
+          <p data-aos="fade-up" data-aos-delay="100">We appreciate your trust greatly. Our clients choose us because they know we are the best in the field.</p>
+          <div class="feature-list">
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="150">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/></svg></div>
+              <div>
+                <h6>Service and guarantees</h6>
+                <p>We will provide you with the best possible care in an atmosphere of comfort.</p>
+              </div>
+            </div>
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M17 11l2 2 4-4"/></svg></div>
+              <div>
+                <h6>Team of professionals</h6>
+                <p>We eliminate the chance of multiple visits by delivering premium quality service.</p>
+              </div>
+            </div>
+          </div>
+          <div class="stat-counter" data-aos="fade-up" data-aos-delay="250">
+            <strong>4035</strong>
+            <span>Happy Customers &amp; Counting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="review-head">
+        <span class="eyebrow" data-aos="fade-up">TESTIMONIALS</span>
+        <h2 data-aos="fade-up" data-aos-delay="50">What our <span class="text-accent-underline">clients</span> say</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="review-card" data-aos="fade-up" data-aos-delay="0">
+          <img class="avatar" src="assets/images/home/review/1.avif" alt="reviewer 1" width="120" height="120" loading="lazy">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Cleaner is the best service I have ever used. They provide a wide range of cleaning services, from home cleaning to office cleaning, using advanced technologies to keep our rooms looking their best.</p>
+          <h6>Jack Morrison</h6>
+          <small>36 y, New York</small>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+          <img class="avatar" src="assets/images/home/review/2.avif" alt="reviewer 2" width="120" height="120" loading="lazy">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Their team of experts have been in the profession for years and focus on helping us achieve an optimal clean surface every single time we book them.</p>
+          <h6>Jack Morrison</h6>
+          <small>36 y, New York</small>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+          <img class="avatar" src="assets/images/home/review/1.avif" alt="reviewer 3" width="120" height="120" loading="lazy">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Cleaner is the best service I have ever used. They provide a wide range of cleaning services, from home cleaning to office cleaning with a friendly, reliable team.</p>
+          <h6>Jack Morrison</h6>
+          <small>36 y, New York</small>
+        </div>
+      </div>
+      <div class="trust-row" style="border:none; padding-top:2.5rem;">
+        <img src="assets/images/home/review/client/1.svg" alt="client logo" width="120" height="30" loading="lazy" data-aos="fade-up" data-aos-delay="0">
+        <img src="assets/images/home/review/client/2.svg" alt="client logo" width="120" height="30" loading="lazy" data-aos="fade-up" data-aos-delay="50">
+        <img src="assets/images/home/review/client/3.svg" alt="client logo" width="120" height="30" loading="lazy" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/images/home/review/client/4.svg" alt="client logo" width="120" height="30" loading="lazy" data-aos="fade-up" data-aos-delay="150">
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+  <section class="section">
+    <div class="container">
+      <div class="blog-head">
+        <span class="eyebrow" data-aos="fade-up">RECENT POSTS</span>
+        <h2 data-aos="fade-up" data-aos-delay="50">Our latest news from <span class="text-accent-underline">blog</span></h2>
+      </div>
+      <div class="grid grid-3">
+        <a class="card" href="blog-1.html" data-aos="fade-up" data-aos-delay="0">
+          <div class="card-img"><img src="assets/images/blog/1.png" alt="The secret of cleaning your kitchen." loading="lazy" width="389" height="277"></div>
+          <div class="card-body">
+            <div class="card-meta"><span class="tag">Kitchen</span><span>April 04, 2025</span></div>
+            <h5>The secret of cleaning your kitchen.</h5>
+            <span class="card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="card" href="blog-2.html" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-img"><img src="assets/images/blog/2.png" alt="How to clean wooden floors without creating dust." loading="lazy" width="389" height="277"></div>
+          <div class="card-body">
+            <div class="card-meta"><span class="tag">Apartment</span><span>April 04, 2025</span></div>
+            <h5>How to clean wooden floors without creating dust.</h5>
+            <span class="card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="card" href="blog-3.html" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-img"><img src="assets/images/blog/3.png" alt="The secret of cleaning your wooden furnitures." loading="lazy" width="389" height="277"></div>
+          <div class="card-body">
+            <div class="card-meta"><span class="tag">Office</span><span>April 04, 2025</span></div>
+            <h5>The secret of cleaning your wooden furnitures.</h5>
+            <span class="card-link">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+      </div>
+      <div class="text-center" style="margin-top:2.5rem;" data-aos="fade-up">
+        <a class="btn btn-outline" href="blog.html">Read All Articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="cta-banner" data-aos="fade-up">
+        <img class="cta-bg" src="assets/images/cta.png" alt="" aria-hidden="true">
+        <div class="container-inner">
+          <span class="eyebrow" style="color:#fff;">CONTACT US</span>
+          <h2>Discuss our services or make an appointment</h2>
+          <p>We know what a mess your home can be, so do not hesitate to reach us via phone or make an appointment online!</p>
+          <div class="btn-group">
+            <a class="btn btn-secondary" href="tel:+1-394-495-5993">Call: +1-394-495-5993</a>
+            <a class="btn btn-light" href="appointment.html">Make An Appointment</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+        <p>Professional cleaning services<br>using innovative technology.</p>
+      </div>
+      <div class="footer-col">
+        <h6>Company</h6>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="elements.html">Elements</a></li>
+          <li><a href="contact.html">Contacts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Services</h6>
+        <ul>
+          <li><a href="service-home-cleaning.html">Home Cleaning</a></li>
+          <li><a href="service-window-cleaning.html">Window Cleaning</a></li>
+          <li><a href="service-pest-control.html">Pest Control</a></li>
+          <li><a href="service-floor-cleaning.html">Floor Cleaning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Social</h6>
+        <ul>
+          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.github.com/" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><a href="https://themefisher.com/" target="_blank" rel="noopener">Themefisher</a> &copy; 2025 All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Page 2 - Startup Pro</title>
+  <!-- No-flash theme load -->
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+        else if (theme === 'light') document.documentElement.classList.remove('dark');
+        else if (window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.classList.add('dark');
+      } catch(e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Logo visibility ── */
+    .logo-light { display: block; }
+    .logo-dark  { display: none; }
+    .dark .logo-light { display: none; }
+    .dark .logo-dark  { display: block; }
+
+    /* ── Sign In link ── */
+    .signin-link {
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      color: var(--color-dark);
+      transition: color var(--transition-base);
+    }
+    .dark .signin-link { color: rgba(255,255,255,0.7); }
+    .signin-link:hover { color: var(--color-primary); }
+
+    /* ── Hero 2 ── */
+    .hero2-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--color-bg);
+      padding-top: 100px;
+    }
+    .hero2-section .container { position: relative; z-index: 2; width: 100%; }
+    .hero2-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 1024px) {
+      .hero2-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero2-left { order: 1; }
+      .hero2-right { order: 2; }
+    }
+
+    .hero2-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 1rem;
+      background: rgba(74,108,247,0.1);
+      border: 1px solid rgba(74,108,247,0.2);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      color: var(--color-primary);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .hero2-title {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--color-dark);
+      margin-bottom: 1.5rem;
+    }
+    .hero2-title .gradient-text {
+      background: linear-gradient(135deg, #4A6CF7 0%, #7F56FA 60%, #4A6CF7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero2-desc {
+      font-size: var(--font-size-lg);
+      color: var(--color-body);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+    @media (max-width: 1024px) {
+      .hero2-desc { max-width: none; margin-left: auto; margin-right: auto; }
+    }
+    .hero2-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 1024px) {
+      .hero2-buttons { justify-content: center; }
+    }
+    .hero2-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 1024px) {
+      .hero2-stats { justify-content: center; }
+    }
+    .hero2-stat-value {
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      color: var(--color-dark);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .hero2-stat-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+    }
+    .hero2-stat-divider {
+      width: 1px;
+      background: var(--color-border);
+      align-self: stretch;
+      margin: 0.25rem 0;
+    }
+
+    /* Hero 2 Right: Image collage */
+    .hero2-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero2-img-main {
+      width: 85%;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 20px 60px rgba(74,108,247,0.2);
+      display: block;
+    }
+    .hero2-img-dark { display: none; }
+    .dark .hero2-img-light { display: none; }
+    .dark .hero2-img-dark { display: block; }
+
+    /* Blob decorations */
+    .hero2-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .hero2-blob-1 { width: 500px; height: 500px; background: #4A6CF7; top: -50px; right: -150px; animation: blobFloat2 9s ease-in-out infinite; }
+    .hero2-blob-2 { width: 350px; height: 350px; background: #7F56FA; bottom: -50px; left: -80px; animation: blobFloat2 7s ease-in-out infinite reverse; }
+    @keyframes blobFloat2 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(20px,-20px) scale(1.05); }
+    }
+
+    /* ── Features section 2 ── */
+    .features2-section {
+      background: var(--color-bg-alt);
+    }
+
+    /* ── About 2 ── */
+    .about2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .about2-grid { grid-template-columns: 1fr; }
+    }
+    .about2-tag {
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      background: rgba(74,108,247,0.1);
+      color: var(--color-primary);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .about2-content h2 {
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      color: var(--color-dark);
+      line-height: 1.3;
+      margin-bottom: 1.25rem;
+    }
+    .about2-content p {
+      color: var(--color-body);
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+    .about2-image { position: relative; }
+    .about2-img-main { width: 100%; border-radius: var(--radius-xl); }
+    .about2-img-dark { display: none; }
+    .dark .about2-img-light { display: none; }
+    .dark .about2-img-dark { display: block; }
+
+    /* Integration badges floating */
+    .integrations-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.875rem;
+      margin-top: 1.5rem;
+    }
+    .integration-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      color: var(--color-dark);
+      font-weight: 500;
+      box-shadow: 0 2px 8px var(--color-shadow);
+      transition: all 0.2s ease;
+    }
+    .integration-badge:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .integration-badge svg { color: var(--color-primary); }
+
+    /* ── Pricing 2 ── */
+    .pricing2-section { background: var(--color-bg-alt); }
+    .pricing2-section .section-title .tag { margin-bottom: 0.75rem; }
+    .pricing2-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    @media (max-width: 1024px) { .pricing2-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px)  { .pricing2-grid { grid-template-columns: 1fr; } }
+
+    .pricing2-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      transition: all 0.2s ease;
+    }
+    .pricing2-card:hover {
+      box-shadow: 0 10px 40px var(--color-shadow);
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+    }
+    .pricing2-plan {
+      font-size: var(--font-size-xl);
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+    .pricing2-price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: 0.375rem;
+    }
+    .pricing2-price span { font-size: var(--font-size-2xl); }
+    .pricing2-note {
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+      margin-bottom: 2rem;
+    }
+    .pricing2-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      margin-bottom: 2rem;
+    }
+    .pricing2-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+    }
+    .pricing2-features li svg { color: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
+
+    /* ── Testimonials 2 (grid of 9) ── */
+    .testimonials2-section { background: var(--color-bg); }
+    .testimonials2-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 1024px) { .testimonials2-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px)  { .testimonials2-grid { grid-template-columns: 1fr; } }
+
+    .testimonial2-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      transition: all 0.2s ease;
+    }
+    .testimonial2-card:hover {
+      box-shadow: 0 8px 30px var(--color-shadow);
+      border-color: var(--color-primary);
+    }
+    .testimonial2-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .testimonial2-avatar {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4A6CF7, #7F56FA);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: var(--font-size-sm);
+      flex-shrink: 0;
+    }
+    .testimonial2-name {
+      font-size: var(--font-size-base);
+      font-weight: 700;
+      color: var(--color-dark);
+    }
+    .testimonial2-company {
+      font-size: var(--font-size-xs);
+      color: var(--color-body);
+    }
+    .testimonial2-text {
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+      line-height: 1.8;
+    }
+
+    /* ── FAQ Section ── */
+    .faq-section { background: var(--color-bg-alt); }
+    .faq-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .faq-inner { grid-template-columns: 1fr; } }
+    .faq-left h2 {
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 1rem;
+    }
+    .faq-left p { color: var(--color-body); line-height: 1.8; }
+
+    /* ── Newsletter 2 ── */
+    .newsletter2-section {
+      background: linear-gradient(135deg, #4A6CF7 0%, #3959E3 100%);
+      padding: 5rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter2-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .newsletter2-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .newsletter2-tag {
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+    .newsletter2-inner h2 {
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .newsletter2-inner p {
+      color: rgba(255,255,255,0.75);
+      font-size: var(--font-size-base);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .newsletter2-form {
+      display: flex;
+      gap: 0.875rem;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .newsletter2-form .nl-input {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.875rem 1.25rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius);
+      color: #fff;
+      font-size: var(--font-size-base);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .newsletter2-form .nl-input::placeholder { color: rgba(255,255,255,0.5); }
+    .newsletter2-form .nl-input:focus { border-color: rgba(255,255,255,0.6); }
+    .btn-white {
+      background: #fff;
+      color: var(--color-primary);
+      border-color: #fff;
+      font-weight: 700;
+    }
+    .btn-white:hover { background: rgba(255,255,255,0.9); }
+
+    /* ── Blog Cards ── */
+    .blog2-section { padding: var(--section-py) 0; }
+    .blog2-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 1px 3px var(--color-shadow);
+      transition: all 0.2s ease;
+    }
+    .blog2-card:hover {
+      box-shadow: 0 8px 30px var(--color-shadow);
+      transform: translateY(-3px);
+    }
+    .blog2-card-img {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #4A6CF7 0%, #7F56FA 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 3rem;
+    }
+    .blog2-card-body { padding: 1.5rem; }
+    .blog2-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: var(--font-size-xs);
+    }
+    .blog2-category {
+      color: var(--color-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .blog2-date { color: var(--color-body); }
+    .blog2-card h3 {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    .blog2-card h3:hover { color: var(--color-primary); cursor: pointer; }
+    .blog2-card p {
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .footer-section {
+      background: var(--color-footer-bg);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="assets/images/logo/logo-2.svg" alt="Startup Pro" class="logo-light" />
+      <img src="assets/images/logo/logo.svg" alt="Startup Pro" class="logo-dark" />
+    </a>
+
+    <nav class="nav" id="desktopNav">
+      <div class="nav-item">
+        <a href="#" class="nav-link">
+          Home
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="index.html">Home Page 1</a>
+          <a href="home-2.html">Home Page 2</a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="#" class="nav-link">About</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">Blog</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">Docs</a></div>
+      <div class="nav-item">
+        <a href="#" class="nav-link">
+          Pages
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-dropdown pages-dropdown">
+          <a href="#">About Page</a>
+          <a href="#">Contact Page</a>
+          <a href="#">Pricing Page</a>
+          <a href="#">FAQ Page</a>
+          <a href="#">Blog Grid Page</a>
+          <a href="#">Blog Grid 2 Page</a>
+          <a href="#">Sign In Page</a>
+          <a href="#">Sign Up Page</a>
+          <a href="#">Mail Success Page</a>
+          <a href="#">Error Page</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="#" class="signin-link">Sign In</a>
+      <a href="#" class="btn btn-primary">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <ul>
+        <li>
+          <button class="mobile-nav-toggle" onclick="toggleMobileSub(this)">
+            Home
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="mobile-sub">
+            <a href="index.html">Home Page 1</a>
+            <a href="home-2.html">Home Page 2</a>
+          </div>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Docs</a></li>
+        <li>
+          <button class="mobile-nav-toggle" onclick="toggleMobileSub(this)">
+            Pages
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="mobile-sub">
+            <a href="#">About Page</a>
+            <a href="#">Contact Page</a>
+            <a href="#">Pricing Page</a>
+            <a href="#">Sign In Page</a>
+          </div>
+        </li>
+      </ul>
+      <div class="mobile-actions">
+        <a href="#" class="btn btn-outline">Sign In</a>
+        <a href="#" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== HERO 2 ==================== -->
+<section class="hero2-section">
+  <!-- Background blobs -->
+  <div class="hero2-blob hero2-blob-1"></div>
+  <div class="hero2-blob hero2-blob-2"></div>
+
+  <div class="container">
+    <div class="hero2-inner">
+      <!-- Left: Text -->
+      <div class="hero2-left">
+        <span class="hero2-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          New Version Released
+        </span>
+        <h1 class="hero2-title">
+          A Complete Next.js Starter Template for
+          <span class="gradient-text">SaaS Startups</span>
+        </h1>
+        <p class="hero2-desc">
+          This Next.js starter template is designed for SaaS startup websites, offering essential pages, components, and integrations for modern startup websites. It includes key tech stacks such as authentication, database, and payment integrations, as well as a fully functional blog docs portal and much more.
+        </p>
+        <div class="hero2-buttons">
+          <a href="#" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Now
+          </a>
+          <a href="#" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            Star on GitHub
+          </a>
+        </div>
+
+        <p style="font-size: var(--font-size-sm); color: var(--color-body); margin-bottom: 1.5rem;">
+          More than 15k+ companies use our products &amp; services.
+        </p>
+        <div class="hero2-stats">
+          <div>
+            <div class="hero2-stat-value">14K+</div>
+            <div class="hero2-stat-label">Happy Clients</div>
+          </div>
+          <div class="hero2-stat-divider"></div>
+          <div>
+            <div class="hero2-stat-value">100%</div>
+            <div class="hero2-stat-label">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="hero2-right">
+        <img src="assets/images/about/about-image.svg" alt="Hero" class="hero2-img-main hero2-img-light" style="width:100%; border-radius: var(--radius-xl); box-shadow: 0 20px 60px rgba(74,108,247,0.2);" />
+        <img src="assets/images/about/about-image-dark.svg" alt="Hero" class="hero2-img-main hero2-img-dark" style="width:100%; border-radius: var(--radius-xl); box-shadow: 0 20px 60px rgba(74,108,247,0.2); display:none;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES 2 ==================== -->
+<section class="section features2-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="tag">Features</span>
+      <h2>Explore our amazing features</h2>
+      <p>Our user-friendly interface and intuitive dashboards make it easy for you to explore and analyze your data, regardless of your technical expertise.</p>
+    </div>
+    <div class="grid-3">
+      <div class="feature-card">
+        <div class="icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.6 11.6L22 7l-4-8-6.4 5"/><path d="M9.4 12.4L3 18l4 4 5.6-6.4"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <h3>Crafted for SaaS Startups</h3>
+        <p>Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3>High-quality Design</h3>
+        <p>Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>React 19, Next.js 16 and TS</h3>
+        <p>Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3>Functional Blog and Docs</h3>
+        <p>Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <h3>Database, Auth and Payment</h3>
+        <p>Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>Two Unique Homepages</h3>
+        <p>Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ABOUT 2 ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="about2-grid">
+      <!-- Left: Image -->
+      <div class="about2-image">
+        <img src="assets/images/about/about-image-2.svg" alt="About" class="about2-img-main about2-img-light" />
+        <img src="assets/images/about/about-image-2-dark.svg" alt="About" class="about2-img-main about2-img-dark" />
+      </div>
+      <!-- Right: Text -->
+      <div class="about2-content">
+        <span class="about2-tag">About Us</span>
+        <h2>Create and Launch Your SaaS Product Faster.</h2>
+        <p>Designed specifically for SaaS startups, our comprehensive starter template package includes all the essential features and seamless integrations you require.</p>
+        <a href="#" class="btn btn-primary" style="margin-bottom:2rem;">More About Us</a>
+
+        <div style="border-top: 1px solid var(--color-border); padding-top: 2rem;">
+          <h3 style="font-size: var(--font-size-xl); font-weight: 700; color: var(--color-dark); margin-bottom: 0.75rem;">Offers All Essential Integrations</h3>
+          <p style="color: var(--color-body); line-height: 1.8; margin-bottom: 1.5rem;">Designed specifically for SaaS startups, our comprehensive starter template package includes all the essential features and seamless integrations you require.</p>
+          <a href="#" class="btn btn-outline">More About us</a>
+        </div>
+
+        <div class="integrations-strip" style="margin-top:2rem;">
+          <span class="integration-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            PlanetScale
+          </span>
+          <span class="integration-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            NextAuth
+          </span>
+          <span class="integration-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Stripe
+          </span>
+          <span class="integration-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Sanity
+          </span>
+          <span class="integration-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            TypeScript
+          </span>
+          <span class="integration-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            Tailwind CSS
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING 2 ==================== -->
+<section class="section pricing2-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="tag">Pricing</span>
+      <h2>Get Exclusive Plans</h2>
+      <p>Our user-friendly interface and intuitive dashboards make it easy for you to explore and analyze your data, regardless of your technical expertise.</p>
+    </div>
+    <div class="pricing2-grid">
+      <!-- Basic -->
+      <div class="pricing2-card">
+        <div class="pricing2-plan">Basic Plan</div>
+        <div class="pricing2-price"><span>$</span>100</div>
+        <div class="pricing2-note">(No credit card required)</div>
+        <ul class="pricing2-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Sell your accounts in one place</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Create a budget &amp; manage money</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Manage your money on the cross desktop + web + mobile</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Free Lifetime Updates</li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;">Purchase Now</a>
+      </div>
+      <!-- Premium -->
+      <div class="pricing2-card" style="border-color: var(--color-primary); box-shadow: 0 10px 40px rgba(74,108,247,0.15);">
+        <div class="pricing2-plan">Premium Plan</div>
+        <div class="pricing2-price"><span>$</span>200</div>
+        <div class="pricing2-note">(No credit card required)</div>
+        <ul class="pricing2-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Sell your accounts in one place</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Create a budget &amp; manage money</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Manage your money on the cross desktop + web + mobile</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Free Lifetime Updates</li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;">Purchase Now</a>
+      </div>
+      <!-- Business -->
+      <div class="pricing2-card">
+        <div class="pricing2-plan">Business Plan</div>
+        <div class="pricing2-price"><span>$</span>300</div>
+        <div class="pricing2-note">(No credit card required)</div>
+        <ul class="pricing2-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Sell your accounts in one place</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Create a budget &amp; manage money</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Manage your money on the cross desktop + web + mobile</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Free Lifetime Updates</li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;">Purchase Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TESTIMONIALS 2 ==================== -->
+<section class="section testimonials2-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="tag">Testimonials</span>
+      <h2>A few words from our users</h2>
+      <p>Our user-friendly interface and intuitive dashboards make it easy for you to explore and analyze your data, regardless of your technical expertise.</p>
+    </div>
+    <div class="testimonials2-grid">
+      <!-- Row 1 -->
+      <div class="testimonial2-card">
+        <div class="testimonial2-header">
+          <div class="testimonial2-avatar">MD</div>
+          <div>
+            <div class="testimonial2-name">Marcus Dias</div>
+            <div class="testimonial2-company">Apprenda</div>
+          </div>
+        </div>
+        <p class="testimonial2-text">Compared to other offerings, Neon always has a head start and introduces bleeding edge features first.</p>
+      </div>
+      <div class="testimonial2-card">
+        <div class="testimonial2-header">
+          <div class="testimonial2-avatar" style="background: linear-gradient(135deg,#7F56FA,#4A6CF7);">RT</div>
+          <div>
+            <div class="testimonial2-name">Ryan Torff</div>
+            <div class="testimonial2-company">Spider</div>
+          </div>
+        </div>
+        <p class="testimonial2-text">Compared to other offerings, Neon always has a head start and introduces bleeding edge features first.</p>
+      </div>
+      <div class="testimonial2-card">
+        <div class="testimonial2-header">
+          <div class="testimonial2-avatar" style="background: linear-gradient(135deg,#3959E3,#4A6CF7);">MB</div>
+          <div>
+            <div class="testimonial2-name">Martin Bergson</div>
+            <div class="testimonial2-company">Joomplace</div>
+          </div>
+        </div>
+        <p class="testimonial2-text">Compared to other offerings, Neon always has a head start and introduces bleeding edge features first.</p>
+      </div>
+      <!-- Row 2 -->
+      <div class="testimonial2-card">
+        <div class="testimonial2-header">
+          <div class="testimonial2-avatar" style="background: linear-gradient(135deg,#4A6CF7,#3959E3);">TB</div>
+          <div>
+            <div class="testimonial2-name">Talan Bator</div>
+            <div class="testimonial2-company">Alexzendri</div>
+          </div>
+        </div>
+        <p class="testimonial2-text">Compared to other offerings, Neon always has a head start and introduces bleeding edge features first.</p>
+      </div>
+      <div class="testimonial2-card">
+        <div class="testimonial2-header">
+          <div class="testimonial2-avatar" style="background: linear-gradient(135deg,#7F56FA,#3959E3);">LM</div>
+          <div>
+            <div class="testimonial2-name">Leo Mango</div>
+            <div class="testimonial2-company">Prifexa</div>
+          </div>
+        </div>
+        <p class="testimonial2-text">Compared to other offerings, Neon always has a head start and introduces bleeding edge features first.</p>
+      </div>
+      <div class="testimonial2-card">
+        <div class="testimonial2-header">
+          <div class="testimonial2-avatar" style="background: linear-gradient(135deg,#3959E3,#7F56FA);">MK</div>
+          <div>
+            <div class="testimonial2-name">Marilyn Korsgaard</div>
+            <div class="testimonial2-company">Boombaz</div>
+          </div>
+        </div>
+        <p class="testimonial2-text">Compared to other offerings, Neon always has a head start and introduces bleeding edge features first.</p>
+      </div>
+      <!-- Row 3 -->
+      <div class="testimonial2-card">
+        <div class="testimonial2-header">
+          <div class="testimonial2-avatar" style="background: linear-gradient(135deg,#4A6CF7,#7F56FA);">CB</div>
+          <div>
+            <div class="testimonial2-name">Cristofer Baptista</div>
+            <div class="testimonial2-company">Dridrio</div>
+          </div>
+        </div>
+        <p class="testimonial2-text">Compared to other offerings, Neon always has a head start and introduces bleeding edge features first.</p>
+      </div>
+      <div class="testimonial2-card">
+        <div class="testimonial2-header">
+          <div class="testimonial2-avatar" style="background: linear-gradient(135deg,#7F56FA,#4A6CF7);">KL</div>
+          <div>
+            <div class="testimonial2-name">Kaiya Levin</div>
+            <div class="testimonial2-company">Alami</div>
+          </div>
+        </div>
+        <p class="testimonial2-text">Compared to other offerings, Neon always has a head start and introduces bleeding edge features first.</p>
+      </div>
+      <div class="testimonial2-card">
+        <div class="testimonial2-header">
+          <div class="testimonial2-avatar" style="background: linear-gradient(135deg,#3959E3,#4A6CF7);">AB</div>
+          <div>
+            <div class="testimonial2-name">Aspen Bergson</div>
+            <div class="testimonial2-company">Zejone</div>
+          </div>
+        </div>
+        <p class="testimonial2-text">Compared to other offerings, Neon always has a head start and introduces bleeding edge features first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="section faq-section">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="faq-left">
+        <span class="tag" style="display:inline-block;padding:0.25rem 1rem;background:rgba(74,108,247,0.1);color:var(--color-primary);border-radius:var(--radius-sm);font-size:var(--font-size-sm);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem;">FAQ</span>
+        <h2>Frequently asked questions</h2>
+        <p>Our user-friendly interface and intuitive dashboards make it easy for you to explore and analyze your data, regardless of your technical expertise.</p>
+      </div>
+      <div class="faq-right">
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            What are startup templates?
+            <span class="icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            Startup templates are pre-designed frameworks that entrepreneurs can use to create their own business plans, pitch decks, financial models, and other necessary documents for starting a new venture. These templates can provide a starting point and help entrepreneurs save time and effort by providing a pre-designed structure to follow.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            Are startup templates suitable for all types of businesses?
+            <span class="icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            No, startup templates may not be suitable for all types of businesses. The templates may vary depending on the industry, business model, and goals of the startup. It is important to choose a template that is relevant to your business and adapt it to your specific needs.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            Are startup templates free?
+            <span class="icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            Some startup templates are available for free, while others may require a fee. Free templates may offer basic designs and features, while paid templates may offer more advanced features, customization options, and support. It is important to evaluate your needs and budget before choosing a template.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            Can startup templates help secure funding for my business?
+            <span class="icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            While startup templates can help you create a solid business plan and pitch deck, securing funding for your business depends on various factors, including the strength of your idea, the market potential, your team's expertise, and your ability to execute your plan. A well-designed template can make a good first impression and help you present your ideas more effectively, but ultimately, the quality of your business idea and your pitch will determine your success in securing funding.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            Where can I find startup templates?
+            <span class="icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            Startup templates are available online, on websites such as Canva, HubSpot, and Business Plan Template. You can also find templates in business books and courses. It's important to choose a reputable source and evaluate the quality of the template before using it for your business.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            Can startup templates be customized?
+            <span class="icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            Yes, most startup templates are customizable. You can edit the text, add or remove sections, change the colors and fonts, and adjust the design to fit your brand identity. Customizing the template can help you make it more unique and tailored to your specific needs.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            How do I choose the right startup template for my business?
+            <span class="icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            To choose the right startup template for your business, you should consider your industry, business model, target audience, and goals. Look for templates that are relevant to your business and offer the features and design elements that you need. It's also important to choose a template that is easy to use and customize, and that fits your budget.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            Can I use a startup template if I have already started my business?
+            <span class="icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            Yes, you can use a startup template even if you have already started your business. Templates can be helpful in creating a business plan, financial projections, marketing strategy, and other important documents that you may need to review or update as your business evolves. Templates can also be useful in presenting your business to potential investors or partners.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== NEWSLETTER 2 ==================== -->
+<section class="newsletter2-section">
+  <div class="container">
+    <div class="newsletter2-inner">
+      <span class="newsletter2-tag">Newsletter</span>
+      <h2>Stay updated by subscribing to our newsletter.</h2>
+      <p>Stay informed and up-to-date with the latest news and updates from our company by subscribing to our newsletter.</p>
+      <form class="newsletter2-form" onsubmit="event.preventDefault()">
+        <input type="email" class="nl-input" placeholder="Enter your email address" />
+        <button type="submit" class="btn btn-white">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BLOG ==================== -->
+<section class="blog2-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="tag">Blog</span>
+      <h2>The latest from our blog</h2>
+      <p>Our user-friendly interface and intuitive dashboards make it easy for you to explore and analyze your data, regardless of your technical expertise.</p>
+    </div>
+    <div class="grid-3">
+      <div class="blog2-card">
+        <div class="blog2-card-img">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="blog2-card-body">
+          <div class="blog2-meta">
+            <span class="blog2-category">mern-stack</span>
+            <span class="blog2-date">Mar 02, 2026</span>
+          </div>
+          <h3>The MERN stack has become a go-to choice for modern web development projects</h3>
+          <p>Modern full-stack development with MongoDB, Express, React, and Node.js for building scalable applications.</p>
+        </div>
+      </div>
+      <div class="blog2-card">
+        <div class="blog2-card-img" style="background: linear-gradient(135deg, #7F56FA 0%, #4A6CF7 100%);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <div class="blog2-card-body">
+          <div class="blog2-meta">
+            <span class="blog2-category">design</span>
+            <span class="blog2-date">Mar 05, 2026</span>
+          </div>
+          <h3>The Power of UI/UX: Elevating Your Digital Product</h3>
+          <p>Discover how great UI/UX design can transform user experience and drive product adoption and retention.</p>
+        </div>
+      </div>
+      <div class="blog2-card">
+        <div class="blog2-card-img" style="background: linear-gradient(135deg, #3959E3 0%, #7F56FA 100%);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="blog2-card-body">
+          <div class="blog2-meta">
+            <span class="blog2-category">nextjs</span>
+            <span class="blog2-date">Mar 08, 2026</span>
+          </div>
+          <h3>Getting Started with Next.js 15 and React 19</h3>
+          <p>A comprehensive guide to building modern web applications with the latest versions of Next.js and React.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/images/logo/logo.svg" alt="Startup Pro" />
+        </div>
+        <p class="footer-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="Twitter">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="YouTube">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Facebook">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Useful Links</h4>
+        <ul class="footer-links">
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Terms</h4>
+        <ul class="footer-links">
+          <li><a href="#">TOS</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support &amp; Help</h4>
+        <ul class="footer-links">
+          <li><a href="#">Open Support Ticket</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Crafted by <a href="#">Next.js Templates</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCROLL TO TOP ==================== -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+  // Theme Toggle
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+
+  // Sticky Header
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) header.classList.add('sticky');
+    else header.classList.remove('sticky');
+    const scrollTop = document.getElementById('scrollTop');
+    if (window.scrollY > 300) scrollTop.classList.add('visible');
+    else scrollTop.classList.remove('visible');
+  });
+
+  // Scroll to top
+  document.getElementById('scrollTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Hamburger / Mobile Nav
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileNav.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
+      mobileNav.classList.remove('open');
+    }
+  });
+
+  // Mobile sub-menu toggle
+  function toggleMobileSub(btn) {
+    const sub = btn.nextElementSibling;
+    sub.classList.toggle('open');
+  }
+
+  // Accordion
+  function toggleAccordion(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.accordion-btn').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    // Open if was closed
+    if (!isOpen) {
+      btn.classList.add('open');
+      body.classList.add('open');
+    }
+  }
+</script>
+</body>
+</html>

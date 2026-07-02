@@ -1,5 +1,7 @@
 # securify — Data-Security SaaS Hero Section (React + TypeScript + Tailwind CSS + Vite)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen hero section for the fictional data-security SaaS **securify**, featuring a looping fullscreen background video with a bottom fade-to-black gradient, a floating pill-shaped glass navbar, and three giant staggered lowercase headline words — "protect / your / data" — scaled with `vw` viewport units for maximum visual impact. Diagonal-divider stat blocks call out +65k startups, +1.5b GB protected, and +300k downloads. The pure black, white, and neutral palette with Readex Pro typeface gives this landing page a confident, minimal aesthetic suited to security, privacy, and enterprise SaaS products. Generated with Claude Fable 5.
 
 - Looping fullscreen background video with a bottom fade-to-black gradient

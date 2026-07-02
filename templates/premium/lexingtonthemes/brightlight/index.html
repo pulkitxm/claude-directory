@@ -1,0 +1,3869 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Brightlight — Email Delivery That Doesn't Suck</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="assets/styles.css">
+		<style>
+		/* Page-specific additions */
+		body {
+			selection-color: var(--color-accent-500);
+		}
+
+		/* Hero */
+		.hero-section {
+			padding-top: 8rem;
+			padding-bottom: 1rem;
+		}
+		.hero-heading {
+			font-family: var(--font-serif);
+			font-weight: 500;
+			letter-spacing: -0.025em;
+			font-size: clamp(1.5rem, 4vw, 3rem);
+			color: #000;
+			text-align: center;
+			text-wrap: balance;
+		}
+		.hero-subtitle {
+			font-size: 1rem;
+			color: var(--color-base-500);
+			margin-top: 1rem;
+			max-width: 36rem;
+			margin-inline: auto;
+			text-align: center;
+		}
+
+		/* Pricing toggle */
+		.pricing-toggle-wrap {
+			position: relative;
+			display: inline-flex;
+			justify-content: center;
+			padding: 0.25rem;
+			margin-inline: auto;
+			margin-top: 2rem;
+			overflow: hidden;
+			background-color: #fff;
+			box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+			ring: 1px solid var(--color-base-200);
+			border: 1px solid var(--color-base-200);
+			gap: 1rem;
+			border-radius: 0.375rem;
+			width: fit-content;
+		}
+		#toggle-slider {
+			position: absolute;
+			inset: 0;
+			width: 50%;
+			background-color: var(--color-base-50);
+			border-radius: 0.375rem;
+			transition: transform 200ms ease-in-out;
+		}
+		.toggle-btn {
+			position: relative;
+			z-index: 10;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 1.5rem;
+			padding: 0 0.5rem;
+			font-size: 0.75rem;
+			font-weight: 500;
+			border: none;
+			background: none;
+			cursor: pointer;
+			transition: color 300ms;
+			white-space: nowrap;
+		}
+
+		/* Feature grid */
+		.features-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+			margin-top: 2rem;
+		}
+		@media (min-width: 768px) {
+			.features-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (min-width: 1024px) {
+			.features-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		/* Pricing grid */
+		.pricing-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1rem;
+			margin-top: 3rem;
+		}
+		@media (min-width: 768px) {
+			.pricing-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (min-width: 1024px) {
+			.pricing-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		/* Code section */
+		.code-container {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1rem;
+			margin-top: 3rem;
+		}
+		@media (min-width: 1024px) {
+			.code-container {
+				grid-template-columns: 1fr 2fr;
+				align-items: start;
+			}
+		}
+		.code-window {
+			background-color: #fff;
+			border-radius: 0.75rem;
+			overflow: hidden;
+			outline: 1px solid oklch(68.28% 0.074 88.38 / 0.1);
+			box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.07);
+		}
+		.code-window-header {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+			padding: 1rem;
+			background-color: var(--color-sand-100);
+			border-bottom: 1px solid oklch(68.28% 0.074 88.38 / 0.1);
+		}
+		.dot {
+			width: 0.5rem;
+			height: 0.5rem;
+			border-radius: 50%;
+		}
+		.dot-red {
+			background-color: #ff421e;
+		}
+		.dot-blue {
+			background-color: #60beff;
+		}
+		.dot-yellow {
+			background-color: #e3962d;
+		}
+
+		/* SDK icons grid */
+		.sdk-grid {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.75rem;
+			overflow-x: auto;
+			scrollbar-width: none;
+			padding-block: 0.5rem;
+			margin-top: 3rem;
+		}
+		.sdk-grid::-webkit-scrollbar {
+			display: none;
+		}
+		.sdk-icon {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+			cursor: pointer;
+			gap: 0.5rem;
+		}
+		.sdk-icon-box {
+			padding: 0.5rem;
+			background-color: var(--color-sand-100);
+			border-radius: 0.75rem;
+		}
+		.sdk-icon-box img {
+			height: 1.5rem;
+			width: auto;
+		}
+		.sdk-label {
+			margin-top: 0.5rem;
+			font-size: 0.75rem;
+			color: var(--color-base-500);
+			white-space: nowrap;
+		}
+
+		/* Write section */
+		.write-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1rem;
+			margin-top: 2rem;
+		}
+		@media (min-width: 1024px) {
+			.write-grid {
+				grid-template-columns: 2fr 1fr;
+			}
+		}
+		.email-editor-mockup {
+			padding: 2rem 2rem 0;
+			overflow: hidden;
+			background-color: var(--color-sand-100);
+			border-radius: 0.75rem;
+		}
+		.editor-tab {
+			height: 0.5rem;
+			margin-inline: 2rem;
+			background-color: #fff;
+			border: 1px solid oklch(68.28% 0.074 88.38 / 0.2);
+			border-bottom: none;
+			border-radius: 0.75rem 0.75rem 0 0;
+		}
+		.editor-tab2 {
+			height: 0.75rem;
+			margin-inline: 1rem;
+			background-color: #fff;
+			border: 1px solid oklch(68.28% 0.074 88.38 / 0.2);
+			border-bottom: none;
+			border-radius: 0.75rem 0.75rem 0 0;
+		}
+		.editor-main {
+			background-color: #fff;
+			border-radius: 0.75rem;
+			box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+			outline: 1px solid oklch(68.28% 0.074 88.38 / 0.1);
+			overflow: hidden;
+			margin-bottom: -12%;
+		}
+		.editor-toolbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.5rem 1rem;
+			font-size: 0.75rem;
+			background-color: var(--color-sand-50);
+			color: var(--color-base-600);
+			border-bottom: 1px solid oklch(68.28% 0.074 88.38 / 0.1);
+		}
+		.editor-toolbar-right {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		.editor-btn-test {
+			padding: 0.25rem 0.75rem;
+			font-size: 0.75rem;
+			border: 1px solid var(--color-base-300);
+			border-radius: 9999px;
+			color: var(--color-base-700);
+			cursor: pointer;
+			transition: background-color 200ms;
+		}
+		.editor-btn-test:hover {
+			background-color: var(--color-base-100);
+		}
+		.editor-btn-send {
+			padding: 0.25rem 0.75rem;
+			font-size: 0.75rem;
+			border-radius: 9999px;
+			background-color: var(--color-base-900);
+			color: #fff;
+			cursor: pointer;
+			transition: background-color 200ms;
+		}
+		.editor-btn-send:hover {
+			background-color: var(--color-accent-600);
+		}
+		.editor-fields {
+			padding: 1rem 1.5rem;
+			font-size: 0.75rem;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			color: var(--color-base-700);
+			border-bottom: 1px solid oklch(68.28% 0.074 88.38 / 0.1);
+		}
+		.editor-field {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.editor-field-label {
+			font-weight: 500;
+			color: var(--color-base-500);
+		}
+		.editor-badge {
+			background-color: var(--color-base-100);
+			color: var(--color-base-700);
+			font-size: 0.75rem;
+			font-weight: 500;
+			padding: 0.125rem 0.5rem;
+			border-radius: 9999px;
+		}
+		.editor-body {
+			padding: 1rem 1.5rem;
+			min-height: 8rem;
+		}
+		.editor-placeholder {
+			font-size: 0.875rem;
+			color: var(--color-base-400);
+			font-style: italic;
+		}
+
+		.customer-card {
+			position: relative;
+			overflow: hidden;
+			border-radius: 0.75rem;
+			min-height: 16rem;
+		}
+		.customer-card img {
+			position: absolute;
+			inset: 0;
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
+		.customer-card-overlay {
+			position: absolute;
+			inset: 0;
+			background-color: rgb(0 0 0 / 0.4);
+		}
+		.customer-card-link {
+			position: absolute;
+			inset: 0;
+			z-index: 30;
+		}
+		.customer-card-content {
+			position: relative;
+			z-index: 20;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			height: 100%;
+			padding: 1rem;
+		}
+
+		/* Stats section */
+		.stats-card {
+			padding: 2rem;
+			background-color: var(--color-sand-100);
+			border-radius: 0.75rem;
+			overflow: hidden;
+			padding-bottom: 0;
+			padding-right: 0;
+		}
+		.stats-inner {
+			background-color: #fff;
+			border-radius: 0.75rem 0 0 0;
+			box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+			padding: 1.5rem;
+			outline: 1px solid oklch(68.28% 0.074 88.38 / 0.1);
+			max-width: 28rem;
+			margin-inline: auto;
+			margin-bottom: -0.25rem;
+			margin-right: -0.25rem;
+		}
+		.stat-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-top: 1.5rem;
+		}
+		.stat-row-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		.stat-dot {
+			width: 0.75rem;
+			height: 0.75rem;
+			border-radius: 50%;
+			flex-shrink: 0;
+			transition: transform 300ms;
+		}
+		.stat-card-group:hover .stat-dot {
+			transform: translateX(-0.5rem);
+		}
+		.stats-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+			padding-top: 1rem;
+			margin-top: 1rem;
+			border-top: 1px solid var(--color-base-100);
+		}
+
+		/* CTA section */
+		.cta-card {
+			padding: 6rem 2rem;
+			text-align: center;
+			border-radius: 0.75rem;
+			background-color: var(--color-accent-500);
+		}
+		.cta-card .heading-serif {
+			color: #fff;
+			font-size: clamp(1.875rem, 4vw, 3rem);
+		}
+		.cta-card p {
+			color: rgb(255 255 255 / 0.8);
+			font-size: 1rem;
+			margin-top: 0.5rem;
+		}
+		@media (min-width: 768px) {
+			.cta-card p {
+				font-size: 1.25rem;
+			}
+		}
+
+		/* Feature two-col */
+		.feature-two-col {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 3rem;
+			align-items: start;
+		}
+		@media (min-width: 768px) {
+			.feature-two-col {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		.feature-two-col-reverse {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 3rem;
+			align-items: center;
+		}
+		@media (min-width: 768px) {
+			.feature-two-col-reverse {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		/* Analytics cards */
+		.analytics-wrap {
+			padding: 2rem;
+			background-color: var(--color-sand-100);
+			border-radius: 0.75rem;
+			overflow: hidden;
+			padding-bottom: 0;
+			padding-left: 0;
+		}
+		.analytics-card {
+			background-color: #fff;
+			box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+			padding: 1.5rem;
+			outline: 1px solid oklch(68.28% 0.074 88.38 / 0.1);
+			margin-bottom: -0.25rem;
+		}
+		.analytics-card:first-child {
+			border-radius: 0 0.75rem 0 0;
+		}
+		.analytics-card:last-child {
+			border-radius: 0 0 0 0;
+			margin-bottom: -0.25rem;
+		}
+		.analytics-big {
+			font-size: 2.25rem;
+			font-weight: 500;
+			color: var(--color-base-900);
+			margin-top: 0.5rem;
+		}
+		.analytics-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 0.5rem;
+		}
+		.analytics-row-label {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.875rem;
+			color: var(--color-base-600);
+		}
+
+		/* Table */
+		.pricing-table-wrap {
+			width: 100%;
+			margin-top: 3rem;
+			overflow-x: auto;
+		}
+		.pricing-table {
+			width: 100%;
+			font-size: 0.875rem;
+			min-width: 48rem;
+		}
+		.pricing-table-border {
+			border: 1px solid var(--color-base-200);
+			border-radius: 0.75rem;
+			overflow: hidden;
+		}
+		.pricing-table th {
+			padding: 0.5rem 1rem;
+			font-weight: 500;
+			color: var(--color-base-900);
+		}
+		.pricing-table th:first-child {
+			text-align: left;
+			padding-top: 2rem;
+			padding-bottom: 0.5rem;
+		}
+		.pricing-table thead {
+			text-align: center;
+			border-bottom: 1px solid var(--color-base-200);
+		}
+		.pricing-table td {
+			padding: 0.5rem 1rem;
+			color: var(--color-base-500);
+		}
+		.pricing-table td:first-child {
+			text-align: left;
+		}
+		.pricing-table td:not(:first-child) {
+			text-align: center;
+		}
+		.pricing-table tr.section-row td {
+			padding: 2rem 1rem;
+			font-size: 1rem;
+			font-weight: 500;
+			color: var(--color-base-900);
+			background-color: var(--color-sand-100);
+			border-bottom: 1px solid var(--color-base-200);
+		}
+		.pricing-table tr.data-row {
+			border-bottom: 1px solid var(--color-base-200);
+		}
+		.check-icon {
+			width: 1rem;
+			height: 1rem;
+			margin-inline: auto;
+		}
+		.check-icon-check {
+			color: var(--color-accent-500);
+		}
+		.check-icon-x {
+			color: var(--color-base-400);
+		}
+		.check-icon-dash {
+			color: var(--color-base-300);
+		}
+		</style>
+	</head>
+	<body>
+		<!-- Navigation -->
+		<header class="nav-wrapper" id="nav">
+			<div class="nav-inner">
+				<a href="index.html" class="nav-logo" aria-label="Go to homepage">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="nav-logo-icon"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path
+							d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+						/>
+						<path
+							d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"
+						/>
+						<path d="M19 11h2m-1 -1v2" />
+					</svg>
+					<span>Brightlight</span>
+				</a>
+				<nav class="nav-links" aria-label="Main navigation">
+					<a href="system/overview.html" class="nav-link">Overview</a>
+					<a href="blog.html" class="nav-link">Blog</a>
+				</nav>
+				<div class="nav-actions">
+					<a href="sign-in.html" class="btn btn-secondary-sm">Sign in</a>
+					<a href="#" class="btn btn-primary-sm">Get started</a>
+				</div>
+				<button
+					class="hamburger-btn"
+					id="hamburger-btn"
+					aria-label="Open menu"
+					aria-expanded="false"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						style="width:1.5rem;height:1.5rem;"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path d="M4 6l16 0" />
+						<path d="M4 12l16 0" />
+						<path d="M4 18l16 0" />
+					</svg>
+				</button>
+			</div>
+		</header>
+
+		<!-- Mobile Navigation -->
+		<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+			<div class="mobile-nav-bg"></div>
+			<button
+				class="mobile-nav-close"
+				id="mobile-nav-close"
+				aria-label="Close menu"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					style="width:1rem;height:1rem;"
+				>
+					<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+					<path d="M18 6l-12 12" />
+					<path d="M6 6l12 12" />
+				</svg>
+			</button>
+			<ul class="mobile-nav-items">
+				<li>
+					<a href="system/overview.html" class="mobile-nav-link">Overview</a>
+				</li>
+				<li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+				<li class="mobile-nav-actions">
+					<a href="sign-in.html" class="btn btn-secondary-sm">Sign in</a>
+					<a href="#" class="btn btn-primary-sm">Get started</a>
+				</li>
+			</ul>
+		</nav>
+
+		<main style="flex:1;">
+			<!-- Hero Section -->
+			<section>
+				<div
+					class="container hero-section"
+					style="padding-top:8rem;padding-bottom:1rem;"
+				>
+					<div style="text-align:center;text-wrap:balance;">
+						<h1 class="hero-heading">
+							Email delivery that doesn't suck and won't vanish into the spam
+							folder
+						</h1>
+						<p class="hero-subtitle">
+							We built the email platform developers actually want — blazing
+							fast, spam-resistant, and wired for modern stacks.
+						</p>
+						<div
+							style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem;margin-top:2.5rem;"
+						>
+							<a
+								href="#"
+								class="btn btn-primary"
+								style="height:2.25rem;font-size:0.875rem;"
+								>Get started</a
+							>
+							<a
+								href="#"
+								class="btn btn-secondary"
+								style="height:2.25rem;font-size:0.875rem;"
+								>Start free trial</a
+							>
+						</div>
+					</div>
+					<img
+						src="assets/images/dashboard.webp"
+						alt="Brightlight dashboard"
+						style="width:100%;height:auto;margin-top:2rem;border-radius:0.75rem;"
+					>
+				</div>
+			</section>
+
+			<!-- Logos Marquee 1 -->
+			<section>
+				<div
+					class="container"
+					style="position:relative;overflow:hidden;border-top:1px dashed var(--color-base-200);padding-inline:1rem;"
+				>
+					<div class="marquee-wrapper">
+						<div class="marquee-track">
+							<img
+								src="assets/images/logo-1.svg"
+								alt="Logo 1"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-2.svg"
+								alt="Logo 2"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-3.svg"
+								alt="Logo 3"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-4.svg"
+								alt="Logo 4"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-5.svg"
+								alt="Logo 5"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-6.svg"
+								alt="Logo 6"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-7.svg"
+								alt="Logo 7"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-8.svg"
+								alt="Logo 8"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-9.svg"
+								alt="Logo 9"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-10.svg"
+								alt="Logo 10"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-11.svg"
+								alt="Logo 11"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-12.svg"
+								alt="Logo 12"
+								style="height:1rem;"
+							>
+							<!-- Duplicated for seamless loop -->
+							<img
+								src="assets/images/logo-1.svg"
+								alt="Logo 1"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-2.svg"
+								alt="Logo 2"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-3.svg"
+								alt="Logo 3"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-4.svg"
+								alt="Logo 4"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-5.svg"
+								alt="Logo 5"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-6.svg"
+								alt="Logo 6"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-7.svg"
+								alt="Logo 7"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-8.svg"
+								alt="Logo 8"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-9.svg"
+								alt="Logo 9"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-10.svg"
+								alt="Logo 10"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-11.svg"
+								alt="Logo 11"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-12.svg"
+								alt="Logo 12"
+								style="height:1rem;"
+							>
+						</div>
+						<div class="marquee-fade"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Code Section -->
+			<section style="overflow:hidden;">
+				<div
+					class="container"
+					style="padding-top:3rem;padding-bottom:1rem;border-top:1px dashed var(--color-base-200);"
+				>
+					<div style="text-align:center;text-wrap:balance;">
+						<h2
+							class="heading-serif"
+							style="font-size:clamp(1.25rem,3vw,1.875rem);"
+						>
+							Plug it in before your coffee gets cold
+						</h2>
+						<p
+							class="text-muted"
+							style="max-width:36rem;margin-inline:auto;margin-top:1rem;"
+						>
+							Four lines of code. Any language. Zero ceremony. Just a clean API
+							that works the first time.
+						</p>
+					</div>
+
+					<!-- SDK Icons -->
+					<div class="sdk-grid">
+						<div
+							class="sdk-icon"
+							data-lang="node"
+							onclick="switchLang('node',this)"
+						>
+							<div class="sdk-icon-box">
+								<img
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+									alt="Node.js"
+									style="height:1.5rem;width:auto;"
+								>
+							</div>
+							<span class="sdk-label">Node</span>
+						</div>
+						<div
+							class="sdk-icon"
+							data-lang="python"
+							onclick="switchLang('python',this)"
+						>
+							<div class="sdk-icon-box">
+								<img
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+									alt="Python"
+									style="height:1.5rem;width:auto;"
+								>
+							</div>
+							<span class="sdk-label">Python</span>
+						</div>
+						<div
+							class="sdk-icon"
+							data-lang="php"
+							onclick="switchLang('php',this)"
+						>
+							<div class="sdk-icon-box">
+								<img
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+									alt="PHP"
+									style="height:1.5rem;width:auto;"
+								>
+							</div>
+							<span class="sdk-label">PHP</span>
+						</div>
+						<div
+							class="sdk-icon"
+							data-lang="go"
+							onclick="switchLang('go',this)"
+						>
+							<div class="sdk-icon-box">
+								<img
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg"
+									alt="Go"
+									style="height:1.5rem;width:auto;"
+								>
+							</div>
+							<span class="sdk-label">Go</span>
+						</div>
+						<div
+							class="sdk-icon"
+							data-lang="ruby"
+							onclick="switchLang('ruby',this)"
+						>
+							<div class="sdk-icon-box">
+								<img
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg"
+									alt="Ruby"
+									style="height:1.5rem;width:auto;"
+								>
+							</div>
+							<span class="sdk-label">Ruby</span>
+						</div>
+						<div
+							class="sdk-icon"
+							data-lang="rust"
+							onclick="switchLang('rust',this)"
+						>
+							<div class="sdk-icon-box">
+								<img
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg"
+									alt="Rust"
+									style="height:1.5rem;width:auto;"
+								>
+							</div>
+							<span class="sdk-label">Rust</span>
+						</div>
+						<div
+							class="sdk-icon"
+							data-lang="java"
+							onclick="switchLang('java',this)"
+						>
+							<div class="sdk-icon-box">
+								<img
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+									alt="Java"
+									style="height:1.5rem;width:auto;"
+								>
+							</div>
+							<span class="sdk-label">Java</span>
+						</div>
+						<div
+							class="sdk-icon"
+							data-lang="dotnet"
+							onclick="switchLang('dotnet',this)"
+						>
+							<div class="sdk-icon-box">
+								<img
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"
+									alt=".NET"
+									style="height:1.5rem;width:auto;"
+								>
+							</div>
+							<span class="sdk-label">.NET</span>
+						</div>
+						<div
+							class="sdk-icon"
+							data-lang="rest"
+							onclick="switchLang('rest',this)"
+						>
+							<div class="sdk-icon-box" style="padding:0.5rem 0.75rem;">
+								<span
+									style="font-size:0.65rem;font-weight:700;font-family:var(--font-mono);color:var(--color-base-600);"
+									>REST</span
+								>
+							</div>
+							<span class="sdk-label">REST</span>
+						</div>
+						<div
+							class="sdk-icon"
+							data-lang="smtp"
+							onclick="switchLang('smtp',this)"
+						>
+							<div class="sdk-icon-box" style="padding:0.5rem 0.75rem;">
+								<span
+									style="font-size:0.65rem;font-weight:700;font-family:var(--font-mono);color:var(--color-base-600);"
+									>SMTP</span
+								>
+							</div>
+							<span class="sdk-label">SMTP</span>
+						</div>
+					</div>
+
+					<!-- Code Window -->
+					<div
+						style="margin-top:2rem;margin-inline:-1rem;border-top:1px dashed var(--color-base-200);"
+					>
+						<div class="code-window" style="border-radius:0;">
+							<div class="code-window-header">
+								<div class="dot dot-red"></div>
+								<div class="dot dot-blue"></div>
+								<div class="dot dot-yellow"></div>
+							</div>
+							<div id="code-display">
+								<pre
+									class="code-block"
+									id="code-node"
+									style="display:block;"
+								><code><span class="keyword">import</span> { <span class="fn">EmailSDK</span> } <span class="keyword">from</span> <span class="string">"@brightlight/sdk"</span>;
+
+<span class="keyword">const</span> sdk = <span class="keyword">new</span> <span class="fn">EmailSDK</span>({ apiKey: process.env.<span class="fn">BRIGHTLIGHT_API_KEY</span> });
+
+<span class="keyword">await</span> sdk.<span class="fn">send</span>({
+  to: <span class="string">"user@example.com"</span>,
+  from: <span class="string">"team@myapp.com"</span>,
+  subject: <span class="string">"Welcome!"</span>,
+  body: <span class="string">"Hello! Your account has been created successfully."</span>
+});</code></pre>
+								<pre
+									class="code-block"
+									id="code-python"
+									style="display:none;"
+								><code><span class="keyword">import</span> email_sdk
+
+email_sdk.<span class="fn">send</span>(
+  to=<span class="string">"user@example.com"</span>,
+  from_=<span class="string">"noreply@myapp.com"</span>,
+  subject=<span class="string">"Your Receipt"</span>,
+  body=<span class="string">"Thanks for your purchase! Here's your confirmation."</span>
+)</code></pre>
+								<pre
+									class="code-block"
+									id="code-php"
+									style="display:none;"
+								><code><span class="keyword">&lt;?</span>php
+<span class="fn">EmailSDK</span>::<span class="fn">send</span>([
+  <span class="string">'to'</span> => <span class="string">'user@example.com'</span>,
+  <span class="string">'from'</span> => <span class="string">'support@myapp.com'</span>,
+  <span class="string">'subject'</span> => <span class="string">'Password Reset'</span>,
+  <span class="string">'body'</span> => <span class="string">"Click the link below to reset your password"</span>
+]);</code></pre>
+								<pre
+									class="code-block"
+									id="code-go"
+									style="display:none;"
+								><code>email := Email{
+  To: <span class="string">"user@example.com"</span>,
+  From: <span class="string">"noreply@myapp.com"</span>,
+  Subject: <span class="string">"Go Email Example"</span>,
+  Body: <span class="string">"This email was sent using Go!"</span>,
+}
+
+<span class="keyword">if</span> err := sdk.<span class="fn">Send</span>(email); err != <span class="keyword">nil</span> {
+  log.<span class="fn">Fatal</span>(<span class="string">"Failed to send:"</span>, err)
+}</code></pre>
+								<pre
+									class="code-block"
+									id="code-ruby"
+									style="display:none;"
+								><code>EmailSDK.<span class="fn">send</span>(
+  to: <span class="string">"user@example.com"</span>,
+  from: <span class="string">"team@myapp.com"</span>,
+  subject: <span class="string">"Welcome!"</span>,
+  body: <span class="string">"Hello from Ruby. Your account has been created successfully."</span>
+)</code></pre>
+								<pre
+									class="code-block"
+									id="code-rust"
+									style="display:none;"
+								><code><span class="keyword">let</span> email = Email::<span class="fn">new</span>()
+  .<span class="fn">to</span>(<span class="string">"user@example.com"</span>)
+  .<span class="fn">from</span>(<span class="string">"noreply@myapp.com"</span>)
+  .<span class="fn">subject</span>(<span class="string">"Hello from Rust"</span>)
+  .<span class="fn">body</span>(<span class="string">"This is a longer Rust example."</span>);
+
+email_sdk::<span class="fn">send</span>(email)?;</code></pre>
+								<pre
+									class="code-block"
+									id="code-java"
+									style="display:none;"
+								><code>Email message = <span class="keyword">new</span> Email.<span class="fn">Builder</span>()
+  .<span class="fn">to</span>(<span class="string">"user@example.com"</span>)
+  .<span class="fn">from</span>(<span class="string">"noreply@myapp.com"</span>)
+  .<span class="fn">subject</span>(<span class="string">"Java Email"</span>)
+  .<span class="fn">body</span>(<span class="string">"This email was sent from Java!"</span>)
+  .<span class="fn">build</span>();
+
+EmailSDK.<span class="fn">send</span>(message);</code></pre>
+								<pre
+									class="code-block"
+									id="code-dotnet"
+									style="display:none;"
+								><code><span class="keyword">var</span> email = <span class="keyword">new</span> Email {
+  To = <span class="string">"user@example.com"</span>,
+  From = <span class="string">"noreply@myapp.com"</span>,
+  Subject = <span class="string">"Welcome from .NET"</span>,
+  Body = <span class="string">"You're all set. Happy coding!"</span>
+};
+
+EmailSDK.<span class="fn">Send</span>(email);</code></pre>
+								<pre
+									class="code-block"
+									id="code-rest"
+									style="display:none;"
+								><code>POST /send
+Content-Type: application/json
+
+{
+  <span class="string">"to"</span>: <span class="string">"user@example.com"</span>,
+  <span class="string">"from"</span>: <span class="string">"noreply@myapp.com"</span>,
+  <span class="string">"subject"</span>: <span class="string">"Hello from REST"</span>,
+  <span class="string">"body"</span>: <span class="string">"Sent using a simple POST request."</span>
+}</code></pre>
+								<pre
+									class="code-block"
+									id="code-smtp"
+									style="display:none;"
+								><code>EHLO smtp.myapp.com
+MAIL FROM:&lt;noreply@myapp.com&gt;
+RCPT TO:&lt;user@example.com&gt;
+DATA
+Subject: SMTP Welcome
+
+Welcome to MyApp via SMTP!
+.
+QUIT</code></pre>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Features Grid -->
+			<section>
+				<div
+					class="container"
+					style="padding-top:3rem;padding-bottom:1rem;border-top:1px dashed var(--color-base-200);"
+				>
+					<div style="max-width:36rem;">
+						<h2
+							class="heading-serif"
+							style="font-size:clamp(1.25rem,3vw,1.875rem);"
+						>
+							Built by developers who were sick of broken email APIs
+						</h2>
+						<p class="text-muted" style="margin-top:1rem;">
+							We got tired of wrestling with clunky tools, so we built the email
+							platform we always wanted — fast, clean, and actually works
+							without swearing at your terminal.
+						</p>
+					</div>
+					<div class="features-grid">
+						<!-- Card 1 -->
+						<div class="feature-card">
+							<div class="feature-card-icon-wrap">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feature-card-icon"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path
+										d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8"
+									/>
+									<path
+										d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8"
+									/>
+									<path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" />
+									<path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" />
+									<path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" />
+									<path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" />
+								</svg>
+							</div>
+							<h3>Test Mode (aka Safe Chaos)</h3>
+							<p>
+								Blow things up without consequences. Simulate everything, send
+								nothing. Perfect for testing, debugging, and not losing your
+								job.
+							</p>
+						</div>
+						<!-- Card 2 -->
+						<div class="feature-card">
+							<div class="feature-card-icon-wrap">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feature-card-icon"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M3 12h5v8h4v-16h4v8h5" />
+								</svg>
+							</div>
+							<h3>Webhooks That Actually Work</h3>
+							<p>
+								We ping your server the second something happens — delivery,
+								open, click, bounce, interpretive dance. You'll know.
+							</p>
+						</div>
+						<!-- Card 3 -->
+						<div class="feature-card">
+							<div class="feature-card-icon-wrap">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feature-card-icon"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697" />
+									<path d="M18 14v4h4" />
+									<path d="M18 11v-4a2 2 0 0 0 -2 -2h-2" />
+									<path
+										d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+									/>
+									<path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+									<path d="M8 11h4" />
+									<path d="M8 15h3" />
+								</svg>
+							</div>
+							<h3>Live Logs (Bring Popcorn)</h3>
+							<p>
+								Every request, every response, every oops — logged in real time.
+								It's like tailing your server logs, but less painful.
+							</p>
+						</div>
+						<!-- Card 4 -->
+						<div class="feature-card">
+							<div class="feature-card-icon-wrap">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feature-card-icon"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M7 3l0 18" />
+									<path d="M10 6l-3 -3l-3 3" />
+									<path d="M20 18l-3 3l-3 -3" />
+									<path d="M17 21l0 -18" />
+								</svg>
+							</div>
+							<h3>Retry Logic That Babysits for You</h3>
+							<p>
+								Flaky internet? Broken SMTP? We've got auto-retries so you don't
+								have to watch your queue like a hawk on Red Bull.
+							</p>
+						</div>
+						<!-- Card 5 -->
+						<div class="feature-card">
+							<div class="feature-card-icon-wrap">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feature-card-icon"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M12 8m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0" />
+									<path d="M8 11a5 5 0 1 0 3.998 1.997" />
+									<path d="M12.002 19.003a5 5 0 1 0 3.998 -8.003" />
+								</svg>
+							</div>
+							<h3>Open &amp; Click Tracking (Legally Not Creepy)</h3>
+							<p>
+								Want to know who opened what and clicked where? So do we.
+								Welcome to legally acceptable email surveillance.
+							</p>
+						</div>
+						<!-- Card 6 -->
+						<div class="feature-card">
+							<div class="feature-card-icon-wrap">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feature-card-icon"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M7 8l-4 4l4 4" />
+									<path d="M17 8l4 4l-4 4" />
+									<path d="M14 4l-4 16" />
+								</svg>
+							</div>
+							<h3>Markup Freedom (Build It Your Way)</h3>
+							<p>
+								Markdown, MJML, raw HTML, handwritten calligraphy? Whatever you
+								write, we'll render it without crying over inline styles.
+							</p>
+						</div>
+						<!-- Card 7 -->
+						<div class="feature-card">
+							<div class="feature-card-icon-wrap">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feature-card-icon"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M12 4l-8 4l8 4l8 -4l-8 -4" />
+									<path d="M4 12l8 4l8 -4" />
+									<path d="M4 16l8 4l8 -4" />
+								</svg>
+							</div>
+							<h3>Inbox Previews (For the Control Freak in You)</h3>
+							<p>
+								Preview your masterpiece before it hits the inbox. Yes, even in
+								Outlook. Especially in Outlook.
+							</p>
+						</div>
+						<!-- Card 8 -->
+						<div class="feature-card">
+							<div class="feature-card-icon-wrap">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feature-card-icon"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path
+										d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+									/>
+									<path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+								</svg>
+							</div>
+							<h3>Custom Domains (Stop Using Sketchy Emails)</h3>
+							<p>
+								Send from your own domain and stop looking like a scammer.
+								Nobody trusts 'noreply@fakedomain.biz'.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Write Like a Human -->
+			<section>
+				<div
+					class="container"
+					style="padding-top:3rem;padding-bottom:1rem;border-top:1px dashed var(--color-base-200);"
+				>
+					<div style="text-wrap:balance;">
+						<h2
+							class="heading-serif"
+							style="font-size:clamp(1.25rem,3vw,1.875rem);"
+						>
+							Write Like a Human, Not a Hacker
+						</h2>
+						<p class="text-muted" style="max-width:36rem;margin-top:1rem;">
+							Finally, an editor that doesn't fight you. Format, style, and send
+							emails without touching a single &lt;div&gt;. Build visually,
+							tweak freely, and leave the HTML rage-quits behind.
+						</p>
+					</div>
+					<div class="write-grid">
+						<!-- Email editor mockup -->
+						<div class="email-editor-mockup">
+							<div class="editor-tab"></div>
+							<div class="editor-tab2"></div>
+							<div class="editor-main">
+								<div class="editor-toolbar">
+									<span>Brightlight Newsletter</span>
+									<div class="editor-toolbar-right">
+										<span style="font-size:0.75rem;color:var(--color-base-400);"
+											>a day ago</span
+										>
+										<button class="editor-btn-test">Test</button>
+										<button class="editor-btn-send">Send</button>
+									</div>
+								</div>
+								<div class="editor-fields">
+									<div class="editor-field">
+										<span class="editor-field-label">From</span>
+										<span>your.name@lexingtonthemes.com</span>
+									</div>
+									<div class="editor-field">
+										<span class="editor-field-label">To</span>
+										<span class="editor-badge">Newsletter Subscribers</span>
+									</div>
+									<div class="editor-field">
+										<span class="editor-field-label">Subject</span>
+										<span>Weekly Newsletter</span>
+									</div>
+								</div>
+								<div class="editor-body">
+									<p class="editor-placeholder">Press '/' for commands</p>
+								</div>
+							</div>
+						</div>
+						<!-- Customer card -->
+						<div class="customer-card">
+							<img src="assets/images/team-1.jpeg" alt="Attentive">
+							<div class="customer-card-overlay"></div>
+							<a
+								href="#"
+								class="customer-card-link"
+								title="Attentive"
+								aria-label="Attentive"
+							></a>
+							<div class="customer-card-content">
+								<p
+									style="font-family:var(--font-serif);font-size:1.125rem;color:#fff;margin-top:0.5rem;"
+								>
+									"Attentive partners with leading brands to enhance customer
+									engagement through intelligent messaging."
+								</p>
+								<h3 style="font-size:0.875rem;color:#fff;margin-top:0.5rem;">
+									Attentive
+								</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact Management -->
+			<section>
+				<div
+					class="container"
+					style="padding-block:3rem;border-top:1px dashed var(--color-base-200);display:flex;flex-direction:column;gap:6rem;"
+				>
+					<!-- Part 1 -->
+					<div class="feature-two-col">
+						<div
+							style="display:flex;flex-direction:column;justify-content:space-between;height:100%;gap:1rem;"
+						>
+							<div
+								style="display:inline-flex;padding:1rem;border-radius:0.5rem;background-color:var(--color-sand-100);width:fit-content;"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									style="width:1.25rem;height:1.25rem;color:var(--color-accent-600);"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M9 6l11 0" />
+									<path d="M9 12l11 0" />
+									<path d="M9 18l11 0" />
+									<path d="M5 6l0 .01" />
+									<path d="M5 12l0 .01" />
+									<path d="M5 18l0 .01" />
+								</svg>
+							</div>
+							<div>
+								<h2
+									class="heading-serif"
+									style="font-size:clamp(1.25rem,3vw,1.875rem);"
+								>
+									Contact Management That Doesn't Suck
+								</h2>
+								<p class="text-muted" style="max-width:36rem;margin-top:1rem;">
+									Import your entire list in minutes — whether it's 50 or
+									50,000. See every contact's details without clicking through
+									12 tabs. It's like a CRM, but without the bloat (or the
+									monthly breakdown).
+								</p>
+								<div style="margin-top:1rem;">
+									<a
+										href="#"
+										class="btn btn-primary"
+										style="height:2.25rem;font-size:0.875rem;"
+										>Learn more</a
+									>
+								</div>
+							</div>
+						</div>
+						<!-- Stats card -->
+						<div class="stats-card stat-card-group">
+							<div class="stats-inner">
+								<div style="display:flex;align-items:center;gap:1rem;">
+									<div
+										style="display:inline-flex;padding:1rem;border-radius:0.5rem;background-color:var(--color-sand-100);transition:transform 300ms;"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											style="width:1rem;height:1rem;"
+										>
+											<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+											<path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+											<path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
+											<path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+											<path d="M17 10h2a2 2 0 0 1 2 2v1" />
+											<path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+											<path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
+										</svg>
+									</div>
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											Audience
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											Newsletter Subscribers
+										</p>
+									</div>
+								</div>
+								<div class="stats-grid">
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											All Contacts
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											1,034
+										</p>
+									</div>
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											Unsubscribed
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											5
+										</p>
+									</div>
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											Growth
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											+1,034 (+10%)
+										</p>
+									</div>
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											Open Rate
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											42%
+										</p>
+									</div>
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											Click Rate
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											18%
+										</p>
+									</div>
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											Bounce Rate
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											1.5%
+										</p>
+									</div>
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											Spam Reports
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											2
+										</p>
+									</div>
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											Avg. Response Time
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											4.2s
+										</p>
+									</div>
+									<div>
+										<p style="font-size:0.875rem;color:var(--color-base-500);">
+											Unopened Emails
+										</p>
+										<p
+											style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											612
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Part 2 -->
+					<div class="feature-two-col-reverse">
+						<div
+							style="display:flex;flex-direction:column;justify-content:space-between;height:100%;gap:1rem;"
+						>
+							<div
+								style="display:inline-flex;padding:1rem;border-radius:0.5rem;background-color:var(--color-sand-100);width:fit-content;"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									style="width:1.25rem;height:1.25rem;color:var(--color-accent-600);"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path
+										d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+									/>
+									<path
+										d="M9 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+									/>
+									<path
+										d="M15 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+									/>
+									<path d="M4 20h14" />
+								</svg>
+							</div>
+							<div>
+								<h2
+									class="heading-serif"
+									style="font-size:clamp(1.25rem,3vw,1.875rem);"
+								>
+									Broadcast Analytics (Because Guesswork Is for Amateurs)
+								</h2>
+								<p class="text-muted" style="max-width:36rem;margin-top:1rem;">
+									See who opened, clicked, ignored, or rage-deleted your email.
+									Real insights, no fluff — so you actually know what's working
+									(and what's not).
+								</p>
+								<div style="margin-top:1rem;">
+									<a
+										href="#"
+										class="btn btn-primary"
+										style="height:2.25rem;font-size:0.875rem;"
+										>Learn more</a
+									>
+								</div>
+							</div>
+						</div>
+						<!-- Analytics cards -->
+						<div class="analytics-wrap stat-card-group">
+							<div style="display:flex;flex-direction:column;gap:1rem;">
+								<div
+									class="analytics-card"
+									style="border-radius:0 0.75rem 0 0;"
+								>
+									<p style="font-size:0.875rem;color:var(--color-base-500);">
+										Deliverability
+									</p>
+									<p class="analytics-big">98%</p>
+									<div
+										style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem;"
+									>
+										<div class="analytics-row">
+											<div class="analytics-row-label">
+												<span
+													class="stat-dot"
+													style="background-color:#5aab69;"
+												></span>
+												<span>Delivered</span>
+											</div>
+											<span
+												style="font-size:0.875rem;font-weight:500;color:var(--color-base-900);"
+												>3,204</span
+											>
+										</div>
+										<div class="analytics-row">
+											<div class="analytics-row-label">
+												<span
+													class="stat-dot"
+													style="background-color:#ff421e;"
+												></span>
+												<span>Bounced</span>
+											</div>
+											<span
+												style="font-size:0.875rem;font-weight:500;color:var(--color-base-900);"
+												>60</span
+											>
+										</div>
+									</div>
+								</div>
+								<div
+									class="analytics-card"
+									style="border-radius:0;margin-bottom:-0.25rem;"
+								>
+									<p style="font-size:0.875rem;color:var(--color-base-500);">
+										Engagement
+									</p>
+									<p class="analytics-big">41%</p>
+									<div
+										style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem;"
+									>
+										<div class="analytics-row">
+											<div class="analytics-row-label">
+												<span
+													class="stat-dot"
+													style="background-color:#60beff;"
+												></span>
+												<span>Opened</span>
+											</div>
+											<span
+												style="font-size:0.875rem;font-weight:500;color:var(--color-base-900);"
+												>1,350</span
+											>
+										</div>
+										<div class="analytics-row">
+											<div class="analytics-row-label">
+												<span
+													class="stat-dot"
+													style="background-color:#e3962d;"
+												></span>
+												<span>Clicked</span>
+											</div>
+											<span
+												style="font-size:0.875rem;font-weight:500;color:var(--color-base-900);"
+												>472</span
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA Section -->
+			<section style="border-top:1px dashed var(--color-base-200);">
+				<div class="container" style="padding:1rem;">
+					<div class="cta-card">
+						<div>
+							<h2
+								class="heading-serif"
+								style="color:#fff;font-size:clamp(1.875rem,4vw,3rem);"
+							>
+								Email, But Actually Good
+							</h2>
+							<p
+								style="color:rgb(255 255 255 / 0.8);margin-top:0.5rem;font-size:1rem;"
+							>
+								No setup rituals. No DNS sorcery. Just emails that send, land,
+								and look damn good doing it. — Available now. Because why wait?
+							</p>
+						</div>
+						<div style="display:flex;justify-content:center;margin-top:2rem;">
+							<a
+								href="#"
+								class="btn btn-secondary"
+								style="height:2.5rem;padding:0.75rem 1.5rem;font-size:1rem;gap:1rem;"
+								>Get full access</a
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Pricing Section -->
+			<section
+				id="pricing-section"
+				style="border-top:1px dashed var(--color-base-200);scroll-margin-top:6rem;"
+			>
+				<div class="container" style="padding-top:3rem;padding-bottom:1rem;">
+					<div style="text-align:center;text-wrap:balance;">
+						<h2
+							class="heading-serif"
+							style="font-size:clamp(1.5rem,3vw,2.25rem);"
+						>
+							Plans that grow with your ambition (or chaos)
+						</h2>
+						<p
+							class="text-muted"
+							style="max-width:36rem;margin-inline:auto;margin-top:1rem;"
+						>
+							Start free. Pay when your side project accidentally turns into a
+							business.
+						</p>
+						<div class="pricing-toggle-wrap" id="pricing-toggle">
+							<div id="toggle-slider"></div>
+							<button
+								class="toggle-btn"
+								id="monthly-btn"
+								type="button"
+								aria-pressed="true"
+								style="color:var(--color-base-600);"
+							>
+								Monthly
+							</button>
+							<button
+								class="toggle-btn"
+								id="annual-btn"
+								type="button"
+								aria-pressed="false"
+							>
+								Annual
+							</button>
+						</div>
+					</div>
+					<div class="pricing-grid">
+						<!-- Pro -->
+						<div
+							style="display:flex;flex-direction:column;height:100%;justify-content:space-between;padding:1rem;border-radius:0.75rem;background-color:var(--color-sand-50);"
+						>
+							<div>
+								<h3
+									style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+								>
+									Pro
+								</h3>
+								<p
+									style="font-size:1.875rem;font-weight:500;display:flex;align-items:baseline;letter-spacing:-0.05em;margin-top:0.5rem;font-family:var(--font-serif);color:var(--color-base-900);"
+								>
+									<span
+										class="pricing-amount"
+										data-monthly="$29.00"
+										data-annual="$19.00"
+										>$29.00</span
+									>
+									<span
+										style="font-size:0.875rem;font-weight:400;letter-spacing:normal;color:var(--color-base-500);margin-left:0.25rem;"
+										><span class="monthly-text">/month</span
+										><span class="annual-text" style="display:none;"
+											>/annually</span
+										></span
+									>
+								</p>
+								<p
+									style="font-size:0.875rem;margin-top:0.5rem;color:var(--color-base-500);"
+								>
+									For solo devs who just want their emails to work (without
+									rage-quitting).
+								</p>
+								<div
+									style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--color-base-200);"
+								>
+									<p
+										style="font-size:0.75rem;font-weight:500;text-transform:uppercase;color:var(--color-base-500);"
+									>
+										Core plan includes:
+									</p>
+									<ul
+										style="display:flex;flex-direction:column;margin-top:1rem;font-size:0.875rem;gap:0.75rem;color:var(--color-base-900);"
+									>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>10,000 emails/mo</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>1 custom domain</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Basic analytics (open &amp; click)</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>API access, no SDK required</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Developer-friendly docs</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Basic support (yes, from humans)</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Markdown, HTML, and MJML</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top:2rem;">
+								<button
+									class="btn btn-primary"
+									style="width:100%;height:2.25rem;font-size:0.875rem;"
+								>
+									Get Started
+								</button>
+							</div>
+						</div>
+						<!-- Scale -->
+						<div
+							style="display:flex;flex-direction:column;height:100%;justify-content:space-between;padding:1rem;border-radius:0.75rem;background-color:var(--color-sand-100);"
+						>
+							<div>
+								<h3
+									style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+								>
+									Scale
+								</h3>
+								<p
+									style="font-size:1.875rem;font-weight:500;display:flex;align-items:baseline;letter-spacing:-0.05em;margin-top:0.5rem;font-family:var(--font-serif);color:var(--color-base-900);"
+								>
+									<span
+										class="pricing-amount"
+										data-monthly="$49.00"
+										data-annual="$39.00"
+										>$49.00</span
+									>
+									<span
+										style="font-size:0.875rem;font-weight:400;letter-spacing:normal;color:var(--color-base-500);margin-left:0.25rem;"
+										><span class="monthly-text">/month</span
+										><span class="annual-text" style="display:none;"
+											>/annually</span
+										></span
+									>
+								</p>
+								<p
+									style="font-size:0.875rem;margin-top:0.5rem;color:var(--color-base-500);"
+								>
+									For teams tired of email platforms that require PhDs to use.
+								</p>
+								<div
+									style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--color-base-200);"
+								>
+									<p
+										style="font-size:0.75rem;font-weight:500;text-transform:uppercase;color:var(--color-base-500);"
+									>
+										Core plan includes:
+									</p>
+									<ul
+										style="display:flex;flex-direction:column;margin-top:1rem;font-size:0.875rem;gap:0.75rem;color:var(--color-base-900);"
+									>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>50,000 emails/mo</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Multiple custom domains</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Custom DKIM &amp; SPF</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Webhook support</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Inbox previews (even Outlook)</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Email templating engine</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Click, open, and bounce tracking</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Team access + roles</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Light automation workflows</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Chat support</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top:2rem;">
+								<button
+									class="btn btn-primary"
+									style="width:100%;height:2.25rem;font-size:0.875rem;"
+								>
+									Get Started
+								</button>
+							</div>
+						</div>
+						<!-- Enterprise -->
+						<div
+							style="display:flex;flex-direction:column;height:100%;justify-content:space-between;padding:1rem;border-radius:0.75rem;background-color:var(--color-sand-50);"
+						>
+							<div>
+								<h3
+									style="font-size:1rem;font-weight:500;color:var(--color-base-900);"
+								>
+									Enterprise
+								</h3>
+								<p
+									style="font-size:1.875rem;font-weight:500;display:flex;align-items:baseline;letter-spacing:-0.05em;margin-top:0.5rem;font-family:var(--font-serif);color:var(--color-base-900);"
+								>
+									<span
+										class="pricing-amount"
+										data-monthly="$99.00"
+										data-annual="$79.00"
+										>$99.00</span
+									>
+									<span
+										style="font-size:0.875rem;font-weight:400;letter-spacing:normal;color:var(--color-base-500);margin-left:0.25rem;"
+										><span class="monthly-text">/month</span
+										><span class="annual-text" style="display:none;"
+											>/annually</span
+										></span
+									>
+								</p>
+								<p
+									style="font-size:0.875rem;margin-top:0.5rem;color:var(--color-base-500);"
+								>
+									For startups and teams that treat email as a core product, not
+									an afterthought.
+								</p>
+								<div
+									style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--color-base-200);"
+								>
+									<p
+										style="font-size:0.75rem;font-weight:500;text-transform:uppercase;color:var(--color-base-500);"
+									>
+										Core plan includes:
+									</p>
+									<ul
+										style="display:flex;flex-direction:column;margin-top:1rem;font-size:0.875rem;gap:0.75rem;color:var(--color-base-900);"
+									>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>100,000+ emails/mo</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Dedicated IPs (no sharing)</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>SSO &amp; enterprise auth</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Live log stream + debugging</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Blocklist monitoring &amp; auto-removal</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>Premium SLA &amp; uptime guarantees</span>
+										</li>
+										<li style="display:flex;align-items:flex-start;gap:0.5rem;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												class="check-icon check-icon-check"
+												style="flex-shrink:0;"
+											>
+												<path d="M5 12l5 5l10 -10" />
+											</svg><span>VIP onboarding + migration</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top:2rem;">
+								<button
+									class="btn"
+									style="width:100%;height:2.25rem;font-size:0.875rem;background:#000;color:#fff;border-radius:9999px;transition:background 300ms;"
+									onmouseover="this.style.background='var(--color-base-700)'"
+									onmouseout="this.style.background='#000'"
+								>
+									Upgrade Now
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Feature Comparison Table -->
+					<div class="pricing-table-wrap">
+						<div class="pricing-table-border">
+							<table class="pricing-table">
+								<thead
+									style="text-align:center;border-bottom:1px solid var(--color-base-200);"
+								>
+									<tr>
+										<th
+											style="padding:2rem 1rem 0.5rem;font-weight:500;text-align:left;color:var(--color-base-900);"
+										>
+											Features
+										</th>
+										<th
+											style="padding:0.5rem 1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											Pro
+										</th>
+										<th
+											style="padding:0.5rem 1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											Scale
+										</th>
+										<th
+											style="padding:0.5rem 1rem;font-weight:500;color:var(--color-base-900);"
+										>
+											Enterprise
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color:var(--color-sand-100);">
+										<td
+											colspan="4"
+											style="padding:2rem 1rem;font-size:1rem;font-weight:500;color:var(--color-base-900);border-bottom:1px solid var(--color-base-200);"
+										>
+											Email Sending
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Daily Limit
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											No limit
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											No limit
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											No limit
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											RESTful API
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											SMTP Relay
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Official SDKs
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Schedule Emails
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Batch Sending
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Open Tracking
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Link Tracking
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											React Email
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="background-color:var(--color-sand-100);">
+										<td
+											colspan="4"
+											style="padding:2rem 1rem;font-size:1rem;font-weight:500;color:var(--color-base-900);border-bottom:1px solid var(--color-base-200);"
+										>
+											Deliverability &amp; Reliability
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Custom Domains
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											10
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											1,000
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											Flexible
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Dedicated IPs
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-base-300);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M5 12l14 0" />
+											</svg>
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											With Add-on
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											With Add-on
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Dedicated IP Warming
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-base-300);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M5 12l14 0" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Pristine Shared IPs
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Automatic Suppression List
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Bounce Details
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Multi-Region
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Data Retention
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											3 days
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											7 days
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											Flexible
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Deliverability Insights
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											DKIM, SPF, DMARC
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Webhook Endpoints
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											10
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											10
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											Flexible
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Webhook Events
+										</td>
+										<td
+											colspan="3"
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											All Events
+										</td>
+									</tr>
+									<tr style="background-color:var(--color-sand-100);">
+										<td
+											colspan="4"
+											style="padding:2rem 1rem;font-size:1rem;font-weight:500;color:var(--color-base-900);border-bottom:1px solid var(--color-base-200);"
+										>
+											Security &amp; Privacy
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Single Sign-On
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-base-300);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M5 12l14 0" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Social Login
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Team Members
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											5
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											100
+										</td>
+										<td
+											style="padding:1rem;text-align:center;color:var(--color-base-500);"
+										>
+											Flexible
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											GDPR Compliance
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											SOC 2 Type II
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Penetration Testing
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											DDoS Protection
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Automated Backups
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Multi-factor Auth
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											API Key Permissions
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Signed Webhooks
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="background-color:var(--color-sand-100);">
+										<td
+											colspan="4"
+											style="padding:2rem 1rem;font-size:1rem;font-weight:500;color:var(--color-base-900);border-bottom:1px solid var(--color-base-200);"
+										>
+											Customer Support
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Ticket Support
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Slack Support
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-base-300);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M5 12l14 0" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Urgent Response SLA
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-base-300);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M5 12l14 0" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											Deliverability Expertise
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-base-300);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M5 12l14 0" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+										<td style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											In-App Docs
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+									<tr style="border-bottom:1px solid var(--color-base-200);">
+										<td
+											style="padding:0.5rem 1rem;color:var(--color-base-500);"
+										>
+											AI Assistant
+										</td>
+										<td colspan="3" style="padding:1rem;text-align:center;">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												class="check-icon"
+												style="margin-inline:auto;color:var(--color-accent-500);"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M18 6l-12 12" />
+												<path d="M6 6l12 12" />
+											</svg>
+										</td>
+									</tr>
+
+									<tr>
+										<td></td>
+										<td style="padding:0.5rem 1rem;text-align:center;">
+											<button
+												class="btn btn-primary"
+												style="width:100%;height:2.25rem;font-size:0.875rem;"
+											>
+												Get started
+											</button>
+										</td>
+										<td style="padding:0.5rem 1rem;text-align:center;">
+											<button
+												class="btn btn-primary"
+												style="width:100%;height:2.25rem;font-size:0.875rem;"
+											>
+												Get started
+											</button>
+										</td>
+										<td style="padding:0.5rem 1rem;text-align:center;">
+											<button
+												class="btn"
+												style="width:100%;height:2.25rem;font-size:0.875rem;background:#000;color:#fff;border-radius:9999px;"
+											>
+												Get started
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Testimonial -->
+			<section style="border-top:1px dashed var(--color-base-200);">
+				<div class="container" style="padding-block:6rem;">
+					<article style="position:relative;text-align:center;">
+						<figure
+							style="max-width:36rem;margin-inline:auto;text-wrap:balance;"
+						>
+							<blockquote>
+								<p
+									class="heading-serif"
+									style="font-size:clamp(1.5rem,3vw,2.25rem);"
+								>
+									"Attentive's approach to personalized messaging, combined with
+									its advanced automation and data-driven insights, has been
+									incredibly valuable."
+								</p>
+							</blockquote>
+							<p
+								style="font-size:1rem;display:flex;align-items:center;justify-content:center;margin-top:2rem;color:var(--color-base-500);gap:0.5rem;"
+							>
+								Read Attentive's case study
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									style="display:inline-block;width:1rem;height:1rem;"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M9 6l6 6l-6 6" />
+								</svg>
+							</p>
+						</figure>
+					</article>
+				</div>
+			</section>
+
+			<!-- Logos Marquee 2 -->
+			<section>
+				<div
+					class="container"
+					style="position:relative;overflow:hidden;border-top:1px dashed var(--color-base-200);padding-inline:1rem;"
+				>
+					<div class="marquee-wrapper">
+						<div class="marquee-track">
+							<img
+								src="assets/images/logo-1.svg"
+								alt="Logo 1"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-2.svg"
+								alt="Logo 2"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-3.svg"
+								alt="Logo 3"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-4.svg"
+								alt="Logo 4"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-5.svg"
+								alt="Logo 5"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-6.svg"
+								alt="Logo 6"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-7.svg"
+								alt="Logo 7"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-8.svg"
+								alt="Logo 8"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-9.svg"
+								alt="Logo 9"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-10.svg"
+								alt="Logo 10"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-11.svg"
+								alt="Logo 11"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-12.svg"
+								alt="Logo 12"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-1.svg"
+								alt="Logo 1"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-2.svg"
+								alt="Logo 2"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-3.svg"
+								alt="Logo 3"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-4.svg"
+								alt="Logo 4"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-5.svg"
+								alt="Logo 5"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-6.svg"
+								alt="Logo 6"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-7.svg"
+								alt="Logo 7"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-8.svg"
+								alt="Logo 8"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-9.svg"
+								alt="Logo 9"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-10.svg"
+								alt="Logo 10"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-11.svg"
+								alt="Logo 11"
+								style="height:1rem;"
+							>
+							<img
+								src="assets/images/logo-12.svg"
+								alt="Logo 12"
+								style="height:1rem;"
+							>
+						</div>
+						<div class="marquee-fade"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer style="border-top:1px dashed var(--color-base-200);">
+			<div class="container" style="padding-block:3rem;">
+				<div class="footer-inner">
+					<div style="color:#000;">
+						<a
+							href="index.html"
+							class="nav-logo"
+							style="margin-bottom:0.75rem;"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="nav-logo-icon"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path
+									d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+								/>
+								<path
+									d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"
+								/>
+								<path d="M19 11h2m-1 -1v2" />
+							</svg>
+							<span>Brightlight</span>
+						</a>
+						<p
+							style="font-size:0.875rem;color:var(--color-base-500);margin-top:0.5rem;max-width:18rem;"
+						>
+							Premium multipage themes crafted with precision for developers and
+							designers who care about quality.
+						</p>
+					</div>
+					<div class="footer-links-grid">
+						<div>
+							<p class="footer-heading">Product</p>
+							<ul class="footer-links">
+								<li>
+									<a href="system/overview.html" class="footer-link"
+										>Overview</a
+									>
+								</li>
+								<li><a href="blog.html" class="footer-link">Blog</a></li>
+								<li>
+									<a href="#pricing-section" class="footer-link">Pricing</a>
+								</li>
+								<li><a href="sign-in.html" class="footer-link">Sign in</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-heading">Company</p>
+							<ul class="footer-links">
+								<li><a href="#" class="footer-link">About</a></li>
+								<li><a href="#" class="footer-link">Careers</a></li>
+								<li><a href="#" class="footer-link">Press</a></li>
+								<li><a href="#" class="footer-link">Contact</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-heading">Legal</p>
+							<ul class="footer-links">
+								<li>
+									<a
+										href="https://www.lexingtonthemes.com/legal/license"
+										class="footer-link"
+										>License</a
+									>
+								</li>
+								<li><a href="#" class="footer-link">Privacy</a></li>
+								<li><a href="#" class="footer-link">Terms</a></li>
+								<li>
+									<a
+										href="https://www.lexingtonthemes.com/documentation"
+										class="footer-link"
+										>Documentation</a
+									>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-heading">Social</p>
+							<ul class="footer-links">
+								<li>
+									<a
+										href="https://twitter.com/lexingtonthemes"
+										class="footer-link"
+										>@lexingtonthemes</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://twitter.com/Mike_Andreuzza"
+										class="footer-link"
+										>@Mike_Andreuzza</a
+									>
+								</li>
+								<li>
+									<a href="https://lexingtonthemes.com/" class="footer-link"
+										>Lexington Themes</a
+									>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		// Mobile nav toggle
+		const hamburger = document.getElementById("hamburger-btn");
+		const mobileNav = document.getElementById("mobile-nav");
+		const mobileClose = document.getElementById("mobile-nav-close");
+
+		function openNav() {
+			mobileNav.classList.add("open");
+			mobileNav.setAttribute("aria-hidden", "false");
+			hamburger.setAttribute("aria-expanded", "true");
+			document.body.style.overflow = "hidden";
+		}
+		function closeNav() {
+			mobileNav.classList.remove("open");
+			mobileNav.setAttribute("aria-hidden", "true");
+			hamburger.setAttribute("aria-expanded", "false");
+			document.body.style.overflow = "";
+		}
+		hamburger?.addEventListener("click", openNav);
+		mobileClose?.addEventListener("click", closeNav);
+		mobileNav
+			?.querySelectorAll("a")
+			.forEach((a) => a.addEventListener("click", closeNav));
+
+		// Pricing toggle
+		document.addEventListener("DOMContentLoaded", function () {
+			const monthlyBtn = document.getElementById("monthly-btn");
+			const annualBtn = document.getElementById("annual-btn");
+			const slider = document.getElementById("toggle-slider");
+			const amounts = document.querySelectorAll(".pricing-amount");
+			const monthlyTexts = document.querySelectorAll(".monthly-text");
+			const annualTexts = document.querySelectorAll(".annual-text");
+			let mode = "monthly";
+
+			function switchMode(newMode) {
+				mode = newMode;
+				if (newMode === "monthly") {
+					slider.style.transform = "translateX(0)";
+					monthlyBtn.style.color = "var(--color-base-600)";
+					annualBtn.style.color = "";
+					monthlyBtn.setAttribute("aria-pressed", "true");
+					annualBtn.setAttribute("aria-pressed", "false");
+				} else {
+					slider.style.transform = "translateX(100%)";
+					annualBtn.style.color = "var(--color-base-600)";
+					monthlyBtn.style.color = "";
+					monthlyBtn.setAttribute("aria-pressed", "false");
+					annualBtn.setAttribute("aria-pressed", "true");
+				}
+				amounts.forEach((el) => {
+					el.textContent = el.dataset[newMode];
+				});
+				monthlyTexts.forEach((el) => {
+					el.style.display = newMode === "monthly" ? "inline" : "none";
+				});
+				annualTexts.forEach((el) => {
+					el.style.display = newMode === "annual" ? "inline" : "none";
+				});
+			}
+
+			monthlyBtn?.addEventListener("click", () => switchMode("monthly"));
+			annualBtn?.addEventListener("click", () => switchMode("annual"));
+			switchMode("monthly");
+		});
+
+		// Code tab switcher
+		function switchLang(lang, el) {
+			// Hide all
+			document
+				.querySelectorAll("#code-display pre")
+				.forEach((p) => (p.style.display = "none"));
+			// Show selected
+			const target = document.getElementById("code-" + lang);
+			if (target) target.style.display = "block";
+			// Visual feedback on SDK icons
+			document.querySelectorAll(".sdk-icon .sdk-icon-box").forEach((b) => {
+				b.style.backgroundColor = "var(--color-sand-100)";
+			});
+			if (el) {
+				el.querySelector(".sdk-icon-box").style.backgroundColor =
+					"var(--color-accent-100)";
+			}
+		}
+		</script>
+	</body>
+</html>

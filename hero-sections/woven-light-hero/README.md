@@ -1,5 +1,7 @@
 # Woven by Light — Interactive GPU Particle Hero Section (React + Three.js + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive hero section featuring 50,000 GPU particles sampled onto a rotating `TorusKnotGeometry`, forming a shimmering "woven silk" tapestry that recoils from the cursor and springs back. Built by integrating the `WovenLightHero` shadcn-style component into a Vite + React + TypeScript + Tailwind CSS v4 project, with a Playfair Display headline that reveals letter-by-letter via Framer Motion. The purely procedural visual — no image assets, only Three.js `PointsMaterial` — makes this a compelling above-the-fold landing hero for creative and tech brands. Generated with Claude Fable 5.
 
 ## Stack

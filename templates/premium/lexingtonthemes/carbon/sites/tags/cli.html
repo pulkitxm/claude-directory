@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>#cli — Carbon</title>
+		<meta name="description" content="Websites tagged with cli">
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="../../assets/css/main.css">
+		<style>
+		:root {
+			--color-white: oklch(98.6% 0.002 67.8);
+			--color-base-50: oklch(96.4% 0.003 84.4);
+			--color-base-100: oklch(92.2% 0.007 88.56);
+			--color-base-200: oklch(83.6% 0.012 89.69);
+			--color-base-300: oklch(75.1% 0.01 87.44);
+			--color-base-400: oklch(66.4% 0.009 84.55);
+			--color-base-500: oklch(56.9% 0.008 88.63);
+			--color-base-600: oklch(48.2% 0.007 84.55);
+			--color-base-700: oklch(39.8% 0.005 91.46);
+			--color-base-800: oklch(30.9% 0.004 84.54);
+			--color-base-900: oklch(22.3% 0.002 67.71);
+			--color-base-950: oklch(17.7% 0.002 106.5);
+			--color-accent-50: oklch(96.37% 0.014 34.3);
+			--color-accent-100: oklch(92.11% 0.031 32.56);
+			--color-accent-200: oklch(85.18% 0.06 35);
+			--color-accent-300: oklch(77.67% 0.096 34.47);
+			--color-accent-400: oklch(70.47% 0.133 35.14);
+			--color-accent-500: oklch(64.47% 0.167 35.21);
+			--color-accent-600: oklch(55.96% 0.174 34.81);
+			--color-accent-700: oklch(45.78% 0.139 34.91);
+			--color-accent-800: oklch(35.02% 0.102 35.05);
+			--color-accent-900: oklch(22.26% 0.055 35.39);
+			--color-accent-950: oklch(16.51% 0.033 41.46);
+			--font-display: "Hedvig Letters Serif", serif;
+			--font-sans: "InterVariable", sans-serif;
+			--container-7xl: 80rem;
+			--container-3xl: 48rem;
+			--container-2xl: 42rem;
+			--container-xl: 36rem;
+			--container-md: 28rem;
+			--radius-md: 0.375rem;
+			--radius-lg: 0.5rem;
+			--radius-xl: 0.75rem;
+			--radius-2xl: 1rem;
+			--spacing: 0.25rem;
+		}
+		::selection {
+			background-color: var(--color-accent-50);
+			color: var(--color-accent-500);
+		}
+		body {
+			font-family: var(--font-sans);
+			background-color: var(--color-white);
+		}
+		@supports (font-variation-settings: normal) {
+			:root {
+				font-family: InterVariable, sans-serif;
+			}
+		}
+		:root {
+			font-feature-settings: "tnum" 1;
+		}
+		</style>
+	</head>
+
+	<body class="bg-white flex flex-col" style="min-height:100svh">
+		<!-- Mobile Nav -->
+		<nav class="fixed inset-x-0 top-0 z-40 bg-white md:hidden">
+			<div class="mx-auto px-8 max-w-7xl py-3">
+				<div class="flex items-center justify-between">
+					<a href="../../index.html" aria-label="Go to homepage"
+						><svg
+							style="height:1rem;color:var(--color-base-900)"
+							viewBox="0 0 362 84"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M42.9211 80.2636C45.6913 80.2636 48.498 79.6986 51.3411 78.5687C54.1842 77.4387 57.0456 75.5615 59.9252 72.9371L57.7928 75.4522L67.361 59.7603H68.7279L64.4632 79.1701C60.5266 80.4094 56.918 81.2296 53.6375 81.6305C50.3934 82.0315 46.8759 82.2319 43.0851 82.2319C37.0708 82.2319 31.4575 81.3936 26.2451 79.7169C21.0327 78.0037 16.4582 75.434 12.5215 72.0076C8.58489 68.5813 5.50483 64.3166 3.28136 59.2136C1.09434 54.0741 0.00083502 48.0962 0.00083502 41.28C0.00083502 33.4432 1.75045 26.5723 5.24968 20.6673C8.74891 14.7624 13.5786 10.1514 19.7387 6.83445C25.9352 3.51747 33.0613 1.85898 41.1168 1.85898C44.1422 1.85898 47.0582 2.04124 49.8649 2.40574C52.708 2.77024 55.6605 3.317 58.7223 4.046L55.8245 4.70211L61.7841 1.64953e-05H62.5496L67.4704 26.7363L66.1035 26.9004L55.4418 8.58407L57.6288 10.8804C54.3118 8.62052 51.1224 6.98025 48.0606 5.95964C44.9988 4.90259 41.8458 4.37406 38.6017 4.37406C35.1025 4.37406 31.7491 4.99371 28.5414 6.23302C25.3338 7.43588 22.4725 9.42243 19.9574 12.1927C17.4423 14.9264 15.4558 18.5897 13.9978 23.1824C12.5397 27.7752 11.8107 33.4614 11.8107 40.2412C11.8107 47.2396 12.6309 53.2722 14.2711 58.3388C15.9478 63.3689 18.226 67.506 21.1056 70.7501C24.0216 73.9942 27.3386 76.3999 31.0565 77.9673C34.8109 79.4982 38.7657 80.2636 42.9211 80.2636ZM110.884 44.7246L111.485 47.0209C106.345 48.6247 102.172 50.1557 98.9643 51.6137C95.7931 53.0717 93.3692 54.5297 91.6925 55.9877C90.0157 57.4457 88.8676 58.9766 88.2479 60.5804C87.6283 62.1843 87.3184 63.9521 87.3184 65.884C87.3184 69.0187 88.2297 71.388 90.0522 72.9918C91.8747 74.5591 94.0982 75.3428 96.7226 75.3428C98.8367 75.3428 100.677 74.9419 102.245 74.14C103.812 73.3016 105.033 72.0987 105.908 70.5314C106.819 68.9276 107.275 66.9775 107.275 64.6811V39.5851C107.275 35.8307 106.345 32.9876 104.487 31.0557C102.664 29.1238 99.8756 28.1579 96.1212 28.1579C94.3351 28.1579 92.5308 28.3037 90.7083 28.5953C88.9222 28.8504 87.5189 29.2332 86.4983 29.7435L89.3961 27.5565C89.2867 28.9051 89.1045 30.3085 88.8493 31.7665C88.6306 33.188 88.339 34.482 87.9745 35.6484C87.6465 36.8148 87.2455 37.6896 86.7717 38.2729C86.2978 38.8561 85.5688 39.3117 84.5846 39.6397C83.6369 39.9678 82.6528 40.1318 81.6322 40.1318C80.32 40.1318 79.2629 39.8767 78.461 39.3664C77.6955 38.8196 77.3128 37.9812 77.3128 36.8513C77.3128 35.3204 78.0418 33.8077 79.4998 32.3132C80.9578 30.7823 82.835 29.3972 85.1314 28.1579C87.4642 26.9186 89.9611 25.9344 92.6219 25.2054C95.3193 24.44 97.889 24.0572 100.331 24.0572C104.45 24.0572 107.749 24.6587 110.227 25.8615C112.706 27.0644 114.51 28.7593 115.64 30.9463C116.77 33.0969 117.335 35.6302 117.335 38.5462V70.9688C117.335 72.1716 117.518 73.1376 117.882 73.8666C118.283 74.5956 118.83 75.1241 119.522 75.4522C120.215 75.7802 120.999 75.9443 121.873 75.9443C123.113 75.9443 124.334 75.7438 125.537 75.3428C126.776 74.9419 128.052 74.2858 129.364 73.3745V74.8507C126.667 78.0584 124.279 80.0996 122.201 80.9744C120.124 81.8128 117.991 82.2319 115.804 82.2319C113.654 82.2319 111.959 81.7581 110.72 80.8104C109.48 79.8262 108.587 78.4229 108.04 76.6004C107.53 74.7778 107.22 72.5908 107.111 70.0393H107.275C106.655 72.3721 105.653 74.468 104.268 76.327C102.883 78.1495 101.206 79.5893 99.2377 80.6463C97.2694 81.7034 95.1006 82.2319 92.7313 82.2319C88.2115 82.2319 84.4388 81.0291 81.4135 78.6234C78.3881 76.2176 76.8754 72.7184 76.8754 68.1257C76.8754 65.7199 77.2764 63.6058 78.0783 61.7833C78.9166 59.9243 80.5022 58.1565 82.835 56.4798C85.2043 54.8031 88.6306 53.0352 93.114 51.1763C97.6339 49.3173 103.557 47.1667 110.884 44.7246ZM165.481 24.1666C167.085 24.1666 168.361 24.6222 169.309 25.5335C170.256 26.4447 170.73 27.7023 170.73 29.3061C170.73 31.2379 170.129 32.8053 168.926 34.0082C167.759 35.1746 166.265 35.7578 164.442 35.7578C163.641 35.7578 162.82 35.6667 161.982 35.4844C161.18 35.2657 160.324 35.0652 159.412 34.883C158.501 34.6643 157.48 34.5549 156.35 34.5549C155.293 34.5549 154.291 34.7554 153.343 35.1564C152.396 35.5209 151.466 36.0312 150.555 36.6873C149.644 37.3434 148.696 38.1271 147.712 39.0383V36.6326C150.446 33.753 152.742 31.4749 154.601 29.7982C156.496 28.1214 158.082 26.8821 159.358 26.0802C160.633 25.2783 161.745 24.768 162.693 24.5493C163.641 24.2942 164.57 24.1666 165.481 24.1666ZM148.368 34.1175V78.0219L157.28 79.6622V81.1384H130.489V79.6622L138.308 78.0219V34.3362C137.834 34.0446 137.251 33.6801 136.558 33.2427C135.865 32.8053 135.009 32.2768 133.988 31.6571C133.004 31.001 131.838 30.2538 130.489 29.4154V28.4313L148.149 23.4558H148.368V34.1175ZM182.585 77.8032L189.31 76.2723L178.375 83.0521L177.665 82.6693L179.852 68.8364V10.115C179.378 9.82338 178.74 9.44065 177.938 8.9668C177.172 8.45649 176.225 7.87328 175.095 7.21718C174.001 6.52462 172.744 5.74094 171.322 4.86613V4.046L190.021 1.64953e-05H190.623L189.912 9.02147V67.3055C189.912 69.6748 190.513 71.7889 191.716 73.6479C192.919 75.5069 194.559 76.9649 196.637 78.0219C198.715 79.079 201.029 79.6075 203.581 79.6075C207.153 79.6075 210.196 78.6598 212.712 76.7644C215.227 74.8325 217.14 72.0258 218.452 68.3444C219.765 64.6264 220.421 60.1066 220.421 54.7848C220.421 49.5725 219.783 45.2531 218.507 41.8268C217.231 38.364 215.318 35.7942 212.766 34.1175C210.215 32.4044 207.007 31.5478 203.143 31.5478C201.102 31.5478 199.152 31.7847 197.293 32.2585C195.434 32.696 193.648 33.425 191.935 34.4456C190.222 35.4662 188.545 36.8513 186.905 38.6009L186.085 37.5074C188.49 34.9194 190.714 32.7689 192.755 31.0557C194.833 29.3061 196.764 27.921 198.551 26.9004C200.337 25.8797 202.032 25.1507 203.635 24.7133C205.239 24.2759 206.788 24.0572 208.283 24.0572C213.058 24.0572 217.14 25.169 220.53 27.3924C223.956 29.5795 226.581 32.6413 228.403 36.5779C230.226 40.5145 231.137 45.1255 231.137 50.4108C231.137 55.441 230.408 59.9243 228.95 63.861C227.492 67.7976 225.433 71.1328 222.772 73.8666C220.111 76.6004 216.958 78.678 213.313 80.0996C209.668 81.5212 205.658 82.2319 201.284 82.2319C199.17 82.2319 197.001 82.0679 194.778 81.7399C192.591 81.4483 190.459 80.9744 188.381 80.3183C186.303 79.6622 184.371 78.8238 182.585 77.8032ZM266.242 79.8262C269.778 79.8262 272.749 78.8238 275.154 76.8191C277.56 74.8143 279.364 71.8436 280.567 67.907C281.807 63.9339 282.426 59.0313 282.426 53.1993C282.426 47.3308 281.825 42.4282 280.622 38.4916C279.419 34.5185 277.633 31.5295 275.264 29.5248C272.931 27.4836 270.033 26.463 266.57 26.463C263.035 26.463 260.064 27.4653 257.658 29.4701C255.252 31.4749 253.43 34.4638 252.191 38.4369C250.988 42.3735 250.386 47.2579 250.386 53.0899C250.386 58.922 250.988 63.8245 252.191 67.7976C253.393 71.7707 255.161 74.7778 257.494 76.8191C259.863 78.8238 262.779 79.8262 266.242 79.8262ZM266.133 82.2319C261.176 82.2319 256.656 80.9926 252.573 78.514C248.527 76.0354 245.302 72.6091 242.896 68.235C240.49 63.8245 239.287 58.7762 239.287 53.0899C239.287 47.4037 240.508 42.3735 242.95 37.9995C245.429 33.6254 248.728 30.2173 252.847 27.7752C257.002 25.2965 261.613 24.0572 266.68 24.0572C271.746 24.0572 276.303 25.2965 280.348 27.7752C284.394 30.2538 287.602 33.6801 289.971 38.0542C292.341 42.4282 293.525 47.4766 293.525 53.1993C293.525 58.8855 292.268 63.9157 289.753 68.2897C287.274 72.6637 283.957 76.0901 279.802 78.5687C275.646 81.0109 271.09 82.2319 266.133 82.2319ZM317.947 34.1175V78.0219L325.766 79.6622V81.1384H300.068V79.6622L307.887 78.0219V34.3362C307.304 33.9717 306.465 33.4614 305.372 32.8053C304.315 32.1127 302.547 30.9828 300.068 29.4154V28.4313L317.729 23.4558H317.947V34.1175ZM335.443 79.6622L343.317 78.0219V42.8656C343.317 40.4234 342.879 38.3822 342.004 36.7419C341.166 35.1017 339.872 33.8806 338.123 33.0787C336.373 32.2403 334.113 31.8211 331.343 31.8211C328.463 31.8211 325.711 32.2221 323.087 33.024C320.499 33.7895 318.348 34.5914 316.635 35.4297L315.924 34.2815C318.767 32.1674 321.228 30.436 323.305 29.0874C325.42 27.7387 327.297 26.6999 328.937 25.9709C330.577 25.2419 332.126 24.7498 333.584 24.4946C335.042 24.203 336.592 24.0572 338.232 24.0572C343.59 24.0572 347.454 25.497 349.823 28.3766C352.192 31.2197 353.377 35.7396 353.377 41.9361V78.0219L361.196 79.6622V81.1384H335.443V79.6622Z"
+								fill="currentColor"
+							></path>
+						</svg></a
+					>
+					<button
+						type="button"
+						data-mobile-nav-toggle="true"
+						aria-expanded="false"
+						aria-label="Open menu"
+						class="text-base-900 hover:text-accent-500 cursor-pointer transition-colors"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 256 256"
+							fill="currentColor"
+							style="width:1rem;height:1rem"
+						>
+							<path
+								d="M228,160a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,160ZM40,108H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24Z"
+							></path>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div
+				class="hidden bg-white border-t border-base-100"
+				data-mobile-nav-panel=""
+			>
+				<div class="mx-auto px-8 max-w-7xl py-4">
+					<div class="flex flex-col">
+						<a
+							class="text-base-900 text-lg font-medium py-1 border-b border-base-100 last:border-b-0 hover:text-accent-500 transition-colors"
+							href="../../index.html"
+							>Websites</a
+						>
+						<a
+							class="text-base-900 text-lg font-medium py-1 border-b border-base-100 last:border-b-0 hover:text-accent-500 transition-colors"
+							href="../../pricing.html"
+							>Pricing</a
+						>
+						<a
+							class="text-base-900 text-lg font-medium py-1 border-b border-base-100 last:border-b-0 hover:text-accent-500 transition-colors"
+							href="../../blog.html"
+							>Blog</a
+						>
+						<a
+							class="text-base-900 text-lg font-medium py-1 border-b border-base-100 last:border-b-0 hover:text-accent-500 transition-colors"
+							href="../../store.html"
+							>Store</a
+						>
+						<a
+							class="text-base-900 text-lg font-medium py-1 border-b border-base-100 last:border-b-0 hover:text-accent-500 transition-colors"
+							href="../../submit.html"
+							>Submit</a
+						>
+						<a
+							class="text-base-900 text-lg font-medium py-1 border-b border-base-100 last:border-b-0 hover:text-accent-500 transition-colors"
+							href="../../advertise.html"
+							>Sponsors</a
+						>
+						<a
+							class="text-base-900 text-lg font-medium py-1 border-b border-base-100 last:border-b-0 hover:text-accent-500 transition-colors"
+							href="../../system/overview.html"
+							>Overview</a
+						>
+					</div>
+					<div class="mt-8 flex items-center gap-2">
+						<a
+							href="../../signin.html"
+							class="flex justify-center items-center px-4 py-2 text-sm font-medium text-base-900 bg-base-100 rounded-lg hover:bg-base-200 transition-colors"
+							>Sign in</a
+						>
+						<a
+							href="../../signup.html"
+							class="flex justify-center items-center px-4 py-2 text-sm font-medium text-white bg-base-900 rounded-lg hover:bg-base-950 transition-colors"
+							style="color:var(--color-white)"
+							>Sign up</a
+						>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<script>
+		(() => {
+			const toggle = document.querySelector("[data-mobile-nav-toggle]");
+			const panel = document.querySelector("[data-mobile-nav-panel]");
+			if (!toggle || !panel) return;
+			const close = () => {
+				panel.classList.add("hidden");
+				toggle.setAttribute("aria-expanded", "false");
+			};
+			const open = () => {
+				panel.classList.remove("hidden");
+				toggle.setAttribute("aria-expanded", "true");
+			};
+			toggle.addEventListener("click", () => {
+				const isOpen = toggle.getAttribute("aria-expanded") === "true";
+				if (isOpen) close();
+				else open();
+			});
+			document.addEventListener("click", (e) => {
+				if (!panel.contains(e.target) && !toggle.contains(e.target)) close();
+			});
+		})();
+		</script>
+		<!-- Desktop Nav -->
+		<nav class="fixed w-full top-0 z-20 bg-white py-4 hidden md:block">
+			<div class="mx-auto px-8 max-w-7xl">
+				<div class="flex items-center w-full gap-3">
+					<a
+						href="../../index.html"
+						class="shrink-0"
+						aria-label="Go to homepage"
+						><svg
+							style="height:1rem;color:var(--color-base-900)"
+							viewBox="0 0 362 84"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M42.9211 80.2636C45.6913 80.2636 48.498 79.6986 51.3411 78.5687C54.1842 77.4387 57.0456 75.5615 59.9252 72.9371L57.7928 75.4522L67.361 59.7603H68.7279L64.4632 79.1701C60.5266 80.4094 56.918 81.2296 53.6375 81.6305C50.3934 82.0315 46.8759 82.2319 43.0851 82.2319C37.0708 82.2319 31.4575 81.3936 26.2451 79.7169C21.0327 78.0037 16.4582 75.434 12.5215 72.0076C8.58489 68.5813 5.50483 64.3166 3.28136 59.2136C1.09434 54.0741 0.00083502 48.0962 0.00083502 41.28C0.00083502 33.4432 1.75045 26.5723 5.24968 20.6673C8.74891 14.7624 13.5786 10.1514 19.7387 6.83445C25.9352 3.51747 33.0613 1.85898 41.1168 1.85898C44.1422 1.85898 47.0582 2.04124 49.8649 2.40574C52.708 2.77024 55.6605 3.317 58.7223 4.046L55.8245 4.70211L61.7841 1.64953e-05H62.5496L67.4704 26.7363L66.1035 26.9004L55.4418 8.58407L57.6288 10.8804C54.3118 8.62052 51.1224 6.98025 48.0606 5.95964C44.9988 4.90259 41.8458 4.37406 38.6017 4.37406C35.1025 4.37406 31.7491 4.99371 28.5414 6.23302C25.3338 7.43588 22.4725 9.42243 19.9574 12.1927C17.4423 14.9264 15.4558 18.5897 13.9978 23.1824C12.5397 27.7752 11.8107 33.4614 11.8107 40.2412C11.8107 47.2396 12.6309 53.2722 14.2711 58.3388C15.9478 63.3689 18.226 67.506 21.1056 70.7501C24.0216 73.9942 27.3386 76.3999 31.0565 77.9673C34.8109 79.4982 38.7657 80.2636 42.9211 80.2636ZM110.884 44.7246L111.485 47.0209C106.345 48.6247 102.172 50.1557 98.9643 51.6137C95.7931 53.0717 93.3692 54.5297 91.6925 55.9877C90.0157 57.4457 88.8676 58.9766 88.2479 60.5804C87.6283 62.1843 87.3184 63.9521 87.3184 65.884C87.3184 69.0187 88.2297 71.388 90.0522 72.9918C91.8747 74.5591 94.0982 75.3428 96.7226 75.3428C98.8367 75.3428 100.677 74.9419 102.245 74.14C103.812 73.3016 105.033 72.0987 105.908 70.5314C106.819 68.9276 107.275 66.9775 107.275 64.6811V39.5851C107.275 35.8307 106.345 32.9876 104.487 31.0557C102.664 29.1238 99.8756 28.1579 96.1212 28.1579C94.3351 28.1579 92.5308 28.3037 90.7083 28.5953C88.9222 28.8504 87.5189 29.2332 86.4983 29.7435L89.3961 27.5565C89.2867 28.9051 89.1045 30.3085 88.8493 31.7665C88.6306 33.188 88.339 34.482 87.9745 35.6484C87.6465 36.8148 87.2455 37.6896 86.7717 38.2729C86.2978 38.8561 85.5688 39.3117 84.5846 39.6397C83.6369 39.9678 82.6528 40.1318 81.6322 40.1318C80.32 40.1318 79.2629 39.8767 78.461 39.3664C77.6955 38.8196 77.3128 37.9812 77.3128 36.8513C77.3128 35.3204 78.0418 33.8077 79.4998 32.3132C80.9578 30.7823 82.835 29.3972 85.1314 28.1579C87.4642 26.9186 89.9611 25.9344 92.6219 25.2054C95.3193 24.44 97.889 24.0572 100.331 24.0572C104.45 24.0572 107.749 24.6587 110.227 25.8615C112.706 27.0644 114.51 28.7593 115.64 30.9463C116.77 33.0969 117.335 35.6302 117.335 38.5462V70.9688C117.335 72.1716 117.518 73.1376 117.882 73.8666C118.283 74.5956 118.83 75.1241 119.522 75.4522C120.215 75.7802 120.999 75.9443 121.873 75.9443C123.113 75.9443 124.334 75.7438 125.537 75.3428C126.776 74.9419 128.052 74.2858 129.364 73.3745V74.8507C126.667 78.0584 124.279 80.0996 122.201 80.9744C120.124 81.8128 117.991 82.2319 115.804 82.2319C113.654 82.2319 111.959 81.7581 110.72 80.8104C109.48 79.8262 108.587 78.4229 108.04 76.6004C107.53 74.7778 107.22 72.5908 107.111 70.0393H107.275C106.655 72.3721 105.653 74.468 104.268 76.327C102.883 78.1495 101.206 79.5893 99.2377 80.6463C97.2694 81.7034 95.1006 82.2319 92.7313 82.2319C88.2115 82.2319 84.4388 81.0291 81.4135 78.6234C78.3881 76.2176 76.8754 72.7184 76.8754 68.1257C76.8754 65.7199 77.2764 63.6058 78.0783 61.7833C78.9166 59.9243 80.5022 58.1565 82.835 56.4798C85.2043 54.8031 88.6306 53.0352 93.114 51.1763C97.6339 49.3173 103.557 47.1667 110.884 44.7246ZM165.481 24.1666C167.085 24.1666 168.361 24.6222 169.309 25.5335C170.256 26.4447 170.73 27.7023 170.73 29.3061C170.73 31.2379 170.129 32.8053 168.926 34.0082C167.759 35.1746 166.265 35.7578 164.442 35.7578C163.641 35.7578 162.82 35.6667 161.982 35.4844C161.18 35.2657 160.324 35.0652 159.412 34.883C158.501 34.6643 157.48 34.5549 156.35 34.5549C155.293 34.5549 154.291 34.7554 153.343 35.1564C152.396 35.5209 151.466 36.0312 150.555 36.6873C149.644 37.3434 148.696 38.1271 147.712 39.0383V36.6326C150.446 33.753 152.742 31.4749 154.601 29.7982C156.496 28.1214 158.082 26.8821 159.358 26.0802C160.633 25.2783 161.745 24.768 162.693 24.5493C163.641 24.2942 164.57 24.1666 165.481 24.1666ZM148.368 34.1175V78.0219L157.28 79.6622V81.1384H130.489V79.6622L138.308 78.0219V34.3362C137.834 34.0446 137.251 33.6801 136.558 33.2427C135.865 32.8053 135.009 32.2768 133.988 31.6571C133.004 31.001 131.838 30.2538 130.489 29.4154V28.4313L148.149 23.4558H148.368V34.1175ZM182.585 77.8032L189.31 76.2723L178.375 83.0521L177.665 82.6693L179.852 68.8364V10.115C179.378 9.82338 178.74 9.44065 177.938 8.9668C177.172 8.45649 176.225 7.87328 175.095 7.21718C174.001 6.52462 172.744 5.74094 171.322 4.86613V4.046L190.021 1.64953e-05H190.623L189.912 9.02147V67.3055C189.912 69.6748 190.513 71.7889 191.716 73.6479C192.919 75.5069 194.559 76.9649 196.637 78.0219C198.715 79.079 201.029 79.6075 203.581 79.6075C207.153 79.6075 210.196 78.6598 212.712 76.7644C215.227 74.8325 217.14 72.0258 218.452 68.3444C219.765 64.6264 220.421 60.1066 220.421 54.7848C220.421 49.5725 219.783 45.2531 218.507 41.8268C217.231 38.364 215.318 35.7942 212.766 34.1175C210.215 32.4044 207.007 31.5478 203.143 31.5478C201.102 31.5478 199.152 31.7847 197.293 32.2585C195.434 32.696 193.648 33.425 191.935 34.4456C190.222 35.4662 188.545 36.8513 186.905 38.6009L186.085 37.5074C188.49 34.9194 190.714 32.7689 192.755 31.0557C194.833 29.3061 196.764 27.921 198.551 26.9004C200.337 25.8797 202.032 25.1507 203.635 24.7133C205.239 24.2759 206.788 24.0572 208.283 24.0572C213.058 24.0572 217.14 25.169 220.53 27.3924C223.956 29.5795 226.581 32.6413 228.403 36.5779C230.226 40.5145 231.137 45.1255 231.137 50.4108C231.137 55.441 230.408 59.9243 228.95 63.861C227.492 67.7976 225.433 71.1328 222.772 73.8666C220.111 76.6004 216.958 78.678 213.313 80.0996C209.668 81.5212 205.658 82.2319 201.284 82.2319C199.17 82.2319 197.001 82.0679 194.778 81.7399C192.591 81.4483 190.459 80.9744 188.381 80.3183C186.303 79.6622 184.371 78.8238 182.585 77.8032ZM266.242 79.8262C269.778 79.8262 272.749 78.8238 275.154 76.8191C277.56 74.8143 279.364 71.8436 280.567 67.907C281.807 63.9339 282.426 59.0313 282.426 53.1993C282.426 47.3308 281.825 42.4282 280.622 38.4916C279.419 34.5185 277.633 31.5295 275.264 29.5248C272.931 27.4836 270.033 26.463 266.57 26.463C263.035 26.463 260.064 27.4653 257.658 29.4701C255.252 31.4749 253.43 34.4638 252.191 38.4369C250.988 42.3735 250.386 47.2579 250.386 53.0899C250.386 58.922 250.988 63.8245 252.191 67.7976C253.393 71.7707 255.161 74.7778 257.494 76.8191C259.863 78.8238 262.779 79.8262 266.242 79.8262ZM266.133 82.2319C261.176 82.2319 256.656 80.9926 252.573 78.514C248.527 76.0354 245.302 72.6091 242.896 68.235C240.49 63.8245 239.287 58.7762 239.287 53.0899C239.287 47.4037 240.508 42.3735 242.95 37.9995C245.429 33.6254 248.728 30.2173 252.847 27.7752C257.002 25.2965 261.613 24.0572 266.68 24.0572C271.746 24.0572 276.303 25.2965 280.348 27.7752C284.394 30.2538 287.602 33.6801 289.971 38.0542C292.341 42.4282 293.525 47.4766 293.525 53.1993C293.525 58.8855 292.268 63.9157 289.753 68.2897C287.274 72.6637 283.957 76.0901 279.802 78.5687C275.646 81.0109 271.09 82.2319 266.133 82.2319ZM317.947 34.1175V78.0219L325.766 79.6622V81.1384H300.068V79.6622L307.887 78.0219V34.3362C307.304 33.9717 306.465 33.4614 305.372 32.8053C304.315 32.1127 302.547 30.9828 300.068 29.4154V28.4313L317.729 23.4558H317.947V34.1175ZM335.443 79.6622L343.317 78.0219V42.8656C343.317 40.4234 342.879 38.3822 342.004 36.7419C341.166 35.1017 339.872 33.8806 338.123 33.0787C336.373 32.2403 334.113 31.8211 331.343 31.8211C328.463 31.8211 325.711 32.2221 323.087 33.024C320.499 33.7895 318.348 34.5914 316.635 35.4297L315.924 34.2815C318.767 32.1674 321.228 30.436 323.305 29.0874C325.42 27.7387 327.297 26.6999 328.937 25.9709C330.577 25.2419 332.126 24.7498 333.584 24.4946C335.042 24.203 336.592 24.0572 338.232 24.0572C343.59 24.0572 347.454 25.497 349.823 28.3766C352.192 31.2197 353.377 35.7396 353.377 41.9361V78.0219L361.196 79.6622V81.1384H335.443V79.6622Z"
+								fill="currentColor"
+							></path>
+						</svg></a
+					>
+					<div class="flex items-center gap-4 ml-auto">
+						<a
+							class="text-base-600 hover:text-base-900 text-xs whitespace-nowrap transition-colors"
+							href="../../system/overview.html"
+							>Overview</a
+						>
+						<a
+							class="text-base-600 hover:text-base-900 text-xs whitespace-nowrap transition-colors"
+							href="../../index.html"
+							>Websites</a
+						>
+						<a
+							class="text-base-600 hover:text-base-900 text-xs whitespace-nowrap transition-colors"
+							href="../../pricing.html"
+							>Pricing</a
+						>
+						<a
+							class="text-base-600 hover:text-base-900 text-xs whitespace-nowrap transition-colors"
+							href="../../blog.html"
+							>Blog</a
+						>
+						<a
+							class="text-base-600 hover:text-base-900 text-xs whitespace-nowrap transition-colors"
+							href="../../store.html"
+							>Store</a
+						>
+						<a
+							class="text-base-600 hover:text-base-900 text-xs whitespace-nowrap transition-colors"
+							href="../../submit.html"
+							>Submit</a
+						>
+						<a
+							class="text-base-600 hover:text-base-900 text-xs whitespace-nowrap transition-colors"
+							href="../../advertise.html"
+							>Sponsors</a
+						>
+						<a
+							class="text-base-600 hover:text-base-900 text-xs whitespace-nowrap transition-colors font-medium"
+							href="https://lexingtonthemes.com/templates/carbon"
+							>Buy Carbon</a
+						>
+					</div>
+					<div class="flex items-center gap-2 ml-4">
+						<a
+							href="../../signin.html"
+							class="text-xs font-medium text-base-600 hover:text-base-900 px-3 py-1.5 rounded-lg hover:bg-base-100 transition-colors"
+							>Sign in</a
+						>
+						<a
+							href="../../signup.html"
+							class="text-xs font-medium px-3 py-1.5 rounded-lg bg-base-900 hover:bg-base-800 transition-colors"
+							style="color:var(--color-white)"
+							>Sign up</a
+						>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<main>
+			<section>
+				<div class="mx-auto px-8 max-w-7xl py-24 lg:pt-48">
+					<div class="max-w-xl">
+						<h1
+							class="text-3xl md:text-4xl lg:text-5xl text-base-900 font-light tracking-tighter"
+							style="font-family:var(--font-display)"
+						>
+							#cli
+						</h1>
+						<p class="text-base text-base-600 mt-4">
+							Websites tagged with <span class="text-accent-500">cli</span>.
+						</p>
+					</div>
+					<div class="flex gap-1 py-2 overflow-x-auto scrollbar-hide mt-8">
+						<a
+							href="../../index.html"
+							class="flex justify-center items-center px-3 py-1.5 text-xs font-medium rounded-lg bg-base-100 text-base-600 hover:bg-base-200 whitespace-nowrap transition-colors"
+							>All</a
+						>
+						<a
+							href="../../sites/tags/astro.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="astro"
+							aria-label="astro"
+							>astro</a
+						><a
+							href="../../sites/tags/cli.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-900 text-white"
+							title="cli"
+							aria-label="cli"
+							>cli</a
+						><a
+							href="../../sites/tags/colors.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="colors"
+							aria-label="colors"
+							>colors</a
+						><a
+							href="../../sites/tags/css.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="css"
+							aria-label="css"
+							>css</a
+						><a
+							href="../../sites/tags/design.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="design"
+							aria-label="design"
+							>design</a
+						><a
+							href="../../sites/tags/development.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="development"
+							aria-label="development"
+							>development</a
+						><a
+							href="../../sites/tags/framework.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="framework"
+							aria-label="framework"
+							>framework</a
+						><a
+							href="../../sites/tags/graphics.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="graphics"
+							aria-label="graphics"
+							>graphics</a
+						><a
+							href="../../sites/tags/letters.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="letters"
+							aria-label="letters"
+							>letters</a
+						><a
+							href="../../sites/tags/library.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="library"
+							aria-label="library"
+							>library</a
+						><a
+							href="../../sites/tags/NPM.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="NPM"
+							aria-label="NPM"
+							>NPM</a
+						><a
+							href="../../sites/tags/productivity.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="productivity"
+							aria-label="productivity"
+							>productivity</a
+						><a
+							href="../../sites/tags/something.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="something"
+							aria-label="something"
+							>something</a
+						><a
+							href="../../sites/tags/svg.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="svg"
+							aria-label="svg"
+							>svg</a
+						><a
+							href="../../sites/tags/tailwind.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="tailwind"
+							aria-label="tailwind"
+							>tailwind</a
+						><a
+							href="../../sites/tags/type.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="type"
+							aria-label="type"
+							>type</a
+						><a
+							href="../../sites/tags/typography.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="typography"
+							aria-label="typography"
+							>typography</a
+						><a
+							href="../../sites/tags/uiux.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="uiux"
+							aria-label="uiux"
+							>uiux</a
+						><a
+							href="../../sites/tags/variables.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="variables"
+							aria-label="variables"
+							>variables</a
+						><a
+							href="../../sites/tags/wallpapers.html"
+							class="flex justify-center text-center font-medium items-center duration-500 ease-in-out rounded-lg text-xs px-3 py-1.5 whitespace-nowrap transition-colors bg-base-100 text-base-600 hover:bg-base-200"
+							title="wallpapers"
+							aria-label="wallpapers"
+							>wallpapers</a
+						>
+					</div>
+					<div
+						class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 mt-8"
+					>
+						<div>
+							<div class="relative p-8 bg-base-50 rounded-lg">
+								<img
+									src="../../assets/images/1.DazSFvQj_tAXCM.webp"
+									alt="Pico Paco"
+									loading="lazy"
+									width="900"
+									height="900"
+									class="object-cover w-full object-top rounded shadow"
+									style="aspect-ratio:8/5"
+								>
+								<a
+									href="../../sites/site/1.html"
+									title="Pico Paco"
+									class="absolute inset-0"
+								></a>
+							</div>
+							<div class="mt-2">
+								<h3 class="text-sm text-base-600 capitalize">Pico Paco</h3>
+							</div>
+						</div>
+						<div>
+							<div class="relative p-8 bg-base-50 rounded-lg">
+								<img
+									src="../../assets/images/2.BFC_cGji_1s3cnS.webp"
+									alt="Oxbow UI"
+									loading="lazy"
+									width="900"
+									height="900"
+									class="object-cover w-full object-top rounded shadow"
+									style="aspect-ratio:8/5"
+								>
+								<a
+									href="../../sites/site/2.html"
+									title="Oxbow UI"
+									class="absolute inset-0"
+								></a>
+							</div>
+							<div class="mt-2">
+								<h3 class="text-sm text-base-600 capitalize">Oxbow UI</h3>
+							</div>
+						</div>
+						<div>
+							<div class="relative p-8 bg-base-50 rounded-lg">
+								<img
+									src="../../assets/images/3.D1FJEAon_1OhX1p.webp"
+									alt="Carrington"
+									loading="lazy"
+									width="900"
+									height="900"
+									class="object-cover w-full object-top rounded shadow"
+									style="aspect-ratio:8/5"
+								>
+								<a
+									href="../../sites/site/3.html"
+									title="Carrington"
+									class="absolute inset-0"
+								></a>
+							</div>
+							<div class="mt-2">
+								<h3 class="text-sm text-base-600 capitalize">Carrington</h3>
+							</div>
+						</div>
+						<div>
+							<div class="relative p-8 bg-base-50 rounded-lg">
+								<img
+									src="../../assets/images/4.BsM5UMjK_OEmrj.webp"
+									alt="Wakki"
+									loading="lazy"
+									width="900"
+									height="900"
+									class="object-cover w-full object-top rounded shadow"
+									style="aspect-ratio:8/5"
+								>
+								<a
+									href="../../sites/site/4.html"
+									title="Wakki"
+									class="absolute inset-0"
+								></a>
+							</div>
+							<div class="mt-2">
+								<h3 class="text-sm text-base-600 capitalize">Wakki</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- Footer -->
+		<footer class="mt-auto">
+			<div class="mx-auto px-8 max-w-7xl py-12 border-t border-base-100">
+				<div
+					class="flex flex-col md:flex-row md:items-center justify-between gap-6"
+				>
+					<div class="max-w-xs">
+						<h3 class="text-sm font-medium text-base-900">
+							Stay connected to the future of Carbon
+						</h3>
+						<form class="mt-4 flex gap-2" onsubmit="return false;">
+							<input
+								type="email"
+								placeholder="Email address"
+								class="flex-1 px-3 py-2 text-xs border border-base-200 rounded-lg bg-base-50 placeholder-base-400 text-base-900 focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-100 transition-colors"
+							>
+							<button
+								type="submit"
+								class="px-4 py-2 text-xs font-medium bg-base-900 rounded-lg hover:bg-base-800 transition-colors"
+								style="color:var(--color-white)"
+							>
+								Subscribe
+							</button>
+						</form>
+					</div>
+					<div class="flex items-center gap-4">
+						<a
+							href="#"
+							class="text-xs text-base-600 hover:text-base-900 transition-colors"
+							>Twitter</a
+						>
+						<a
+							href="#"
+							class="text-xs text-base-600 hover:text-base-900 transition-colors"
+							>Pinterest</a
+						>
+						<a
+							href="#"
+							class="text-xs text-base-600 hover:text-base-900 transition-colors"
+							>Instagram</a
+						>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,379 @@
+/* =========================================================
+   NOTION BLOG — SHARED STYLES
+   Clone of https://notion-blog.vercel.app/
+   ========================================================= */
+
+/* ---- Design Tokens (Light mode default) ---- */
+:root {
+  --gap-quarter: 0.25rem;
+  --gap-half: 0.5rem;
+  --gap: 1rem;
+  --gap-double: 2rem;
+  --bg: #fff;
+  --fg: #000;
+  --accents-1: #111;
+  --accents-2: #333;
+  --accents-3: #888;
+  --geist-foreground: #000;
+  --radius: 8px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  --font-mono: Menlo, Monaco, "Lucida Console", "Liberation Mono",
+    "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0a0a;
+    --fg: #ededed;
+    --accents-1: #f0f0f0;
+    --accents-2: #c0c0c0;
+    --accents-3: #777;
+    --geist-foreground: #ededed;
+  }
+}
+[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --fg: #ededed;
+  --accents-1: #f0f0f0;
+  --accents-2: #c0c0c0;
+  --accents-3: #777;
+  --geist-foreground: #ededed;
+}
+[data-theme="light"] {
+  --bg: #fff;
+  --fg: #000;
+  --accents-1: #111;
+  --accents-2: #333;
+  --accents-3: #888;
+  --geist-foreground: #000;
+}
+
+/* ---- Reset & Base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  background-image:
+    radial-gradient(#ddd 1px, transparent 0),
+    radial-gradient(#ddd 1px, transparent 0);
+  background-position: 0 0, 25px 25px;
+  background-attachment: fixed;
+  background-size: 50px 50px;
+  overflow-x: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) {
+    background-image:
+      radial-gradient(#333 1px, transparent 0),
+      radial-gradient(#333 1px, transparent 0);
+  }
+}
+[data-theme="dark"] body,
+body[data-theme="dark"] {
+  background-image:
+    radial-gradient(#333 1px, transparent 0),
+    radial-gradient(#333 1px, transparent 0);
+}
+
+/* ---- Typography ---- */
+h1 {
+  margin: var(--gap-double) 0 calc(0.5 * var(--gap)) 0;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 1.25rem;
+  letter-spacing: -0.02rem;
+  color: var(--accents-3);
+}
+
+p {
+  color: #555;
+  font-weight: 400;
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+a:hover {
+  color: #3291ff;
+}
+
+code {
+  font-size: 0.8rem;
+  background: #f1f1f1;
+  padding: 0.2rem;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+}
+
+mark {
+  padding: var(--gap-quarter);
+  border-radius: var(--radius);
+  background: rgba(247, 212, 255, 0.8);
+}
+
+/* ---- Header / Nav ---- */
+.header {
+  display: block;
+  min-height: 64px;
+  padding: 2em 0;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.header ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header ul li {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.header a {
+  color: var(--accents-3);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.header a.active {
+  color: #0070f3;
+  font-weight: 600;
+}
+
+.header a:hover:not(.active) {
+  color: #3291ff;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 0.5em 0 2em;
+  }
+}
+
+/* ---- Shared Layout ---- */
+.layout {
+  /* shared container */
+}
+
+.layout img {
+  margin: auto;
+  max-width: 98%;
+  display: block;
+  height: auto;
+}
+
+.layout h1,
+.layout h2 {
+  text-align: center;
+}
+
+/* ---- Features Grid (Home) ---- */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4rem auto;
+  width: 920px;
+  max-width: calc(100vw - var(--gap-double));
+}
+
+.feature {
+  flex: 0 0 25%;
+  align-items: center;
+  display: inline-flex;
+  padding: 0 0.5rem 1.5rem;
+  margin: 0 auto;
+}
+
+.feature h4 {
+  margin: 0 0 0 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .feature {
+    flex-basis: auto;
+    padding-left: 0;
+  }
+  .feature h4 {
+    font-size: 0.75rem;
+  }
+}
+
+/* ---- Explanation Block (Home) ---- */
+.explanation {
+  font-size: 1rem;
+  width: 35rem;
+  max-width: 100vw;
+  padding: 0 2rem;
+  background: var(--bg);
+  margin: var(--gap-half) auto;
+}
+
+.explanation p {
+  color: #555;
+  font-weight: 400;
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.dotted {
+  border-bottom: 1px dashed currentColor;
+}
+
+/* ---- Links row ---- */
+.links {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--gap);
+}
+
+/* ---- Footer ---- */
+footer {
+  padding: 2em 0;
+  text-align: center;
+}
+
+footer img {
+  display: block;
+  margin: 0.5rem auto;
+}
+
+footer .deploy-text {
+  color: var(--fg);
+  display: block;
+}
+
+footer .view-source {
+  color: #777;
+  display: block;
+}
+
+footer .view-source a {
+  color: inherit;
+}
+
+/* ---- Blog Page ---- */
+.blog-index {
+  padding: 0 5%;
+}
+
+.blog-index h1 {
+  margin-bottom: 50px;
+}
+
+.no-posts {
+  text-align: center;
+  color: #555;
+  font-size: 0.94rem;
+}
+
+.post-preview {
+  max-width: 600px;
+  margin: 10px auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.post-preview:last-child {
+  border-bottom: none;
+}
+
+.post-preview h3 {
+  margin-bottom: 0;
+}
+
+.post-preview .posted {
+  margin-bottom: 0.5em;
+}
+
+/* ---- Contact Page ---- */
+.contact-avatar {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.contact-avatar img {
+  height: 120px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.contact-name {
+  text-align: center;
+  font-size: 0.94rem;
+  color: var(--fg);
+  margin: 0.5rem 0 1rem;
+}
+
+.contact-name a {
+  color: inherit;
+}
+
+.contact-links {
+  display: block;
+  margin: 1rem auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.contact-links a {
+  width: 48px;
+  height: 48px;
+  margin: 0 10px;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.contact-links a:hover {
+  opacity: 0.6;
+}
+
+.contact-links svg {
+  fill: var(--fg);
+}
+
+/* ---- Responsive fixes ---- */
+@media (max-width: 600px) {
+  .explanation {
+    padding: 0 1rem 4rem;
+  }
+  h2 {
+    font-size: 0.95rem;
+    letter-spacing: 0;
+  }
+  .features {
+    justify-content: flex-start;
+  }
+}

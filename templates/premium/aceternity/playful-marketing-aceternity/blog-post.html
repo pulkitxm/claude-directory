@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Playful - Aceternity UI Pro Template</title>
+		<meta
+			name="description"
+			content="A modern and playful template designed for SaaS and marketing websites."
+		>
+		<link rel="stylesheet" href="css/styles.css">
+		<style>
+		/* ===== Blog post page (same-to-same with original) ===== */
+		.breadcrumb span.bc-current {
+			color: var(--brand);
+			font-weight: 400;
+		}
+
+		/* Hero image + frosted overlay */
+		.bp-hero {
+			position: relative;
+			width: 100%;
+			padding-bottom: 56.25%;
+			border-radius: 10px;
+			overflow: hidden;
+			margin-bottom: 8px;
+		}
+		.bp-hero-bg {
+			position: absolute;
+			inset: 0;
+			background-image: url(assets/blog.png);
+			background-size: cover;
+			background-position: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+		}
+		.bp-hero-overlay {
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			background: rgba(0, 0, 0, 0.08);
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		.bp-pill {
+			background: #fff;
+			border-radius: 9999px;
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 4px 12px;
+			font-size: 14px;
+			font-weight: 500;
+			color: #1a1a1a;
+		}
+		.bp-pill .dot {
+			width: 20px;
+			height: 20px;
+			background: #58d2fb;
+			border-radius: 9999px;
+		}
+		.bp-hero-title {
+			color: #fff;
+			font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+			font-weight: 600;
+			margin-top: 16px;
+			line-height: 1.3;
+		}
+		.bp-hero-meta {
+			color: #fff;
+			font-size: 14px;
+			margin-top: 12px;
+			opacity: 0.95;
+		}
+
+		/* MDX article body */
+		.mdx {
+			padding: 32px 0 48px;
+		}
+		.mdx h1 {
+			font-size: 2.25rem;
+			font-weight: 700;
+			line-height: 1.15;
+			letter-spacing: -0.02em;
+			margin: 8px 0 0;
+			scroll-margin-top: 90px;
+		}
+		.mdx h2 {
+			font-size: 1.5rem;
+			font-weight: 600;
+			letter-spacing: -0.01em;
+			margin-top: 48px;
+			padding-bottom: 8px;
+			border-bottom: 1px solid var(--border);
+			scroll-margin-top: 90px;
+		}
+		.mdx p {
+			font-size: 16px;
+			color: var(--text-primary);
+			line-height: 1.75;
+			margin-top: 24px;
+		}
+		.mdx ul {
+			margin: 24px 0 24px 24px;
+			list-style: disc;
+		}
+		.mdx ol {
+			margin: 24px 0 24px 24px;
+			list-style: decimal;
+		}
+		.mdx li {
+			margin-top: 8px;
+			padding-left: 4px;
+			line-height: 1.75;
+		}
+		.mdx li p {
+			margin-top: 0;
+		}
+		.mdx blockquote {
+			margin-top: 24px;
+			border-left: 2px solid var(--border);
+			padding-left: 24px;
+			font-style: italic;
+			color: var(--text-secondary);
+		}
+		.mdx blockquote p {
+			margin-top: 0;
+		}
+		.mdx hr {
+			border: 0;
+			border-top: 1px solid var(--border);
+			margin: 32px 0;
+		}
+
+		/* TOC */
+		.bp-toc {
+			background: transparent;
+			border: none;
+			padding: 0;
+			position: sticky;
+			top: 80px;
+		}
+		.bp-toc-title {
+			font-size: 1.25rem;
+			font-weight: 500;
+			text-transform: none;
+			letter-spacing: 0;
+			color: var(--text-primary);
+			margin-bottom: 8px;
+		}
+		.bp-toc ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.bp-toc ul ul {
+			padding-left: 16px;
+		}
+		.bp-toc li {
+			margin: 0;
+			padding: 8px 0 0 20px;
+		}
+		.bp-toc a {
+			display: inline-block;
+			font-size: 15px;
+			color: #000;
+			text-decoration: none;
+			transition: color 0.2s ease;
+			line-height: 1.4;
+		}
+		.bp-toc a:hover {
+			color: #10b981;
+		}
+
+		/* Mobile accordion TOC */
+		.bp-toc-mobile {
+			display: none;
+			border-top: 2px solid var(--border);
+			border-bottom: 2px solid var(--border);
+			margin-bottom: 16px;
+		}
+		.bp-toc-mobile-btn {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-size: 1.25rem;
+			font-weight: 600;
+			padding: 20px 0;
+			color: var(--text-primary);
+		}
+		.bp-toc-mobile-btn svg {
+			transition: transform 0.2s ease;
+		}
+		.bp-toc-mobile.open .bp-toc-mobile-btn svg {
+			transform: rotate(180deg);
+		}
+		.bp-toc-mobile-panel {
+			display: none;
+			padding: 0 0 16px 16px;
+		}
+		.bp-toc-mobile.open .bp-toc-mobile-panel {
+			display: block;
+		}
+		.bp-toc-mobile-panel ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.bp-toc-mobile-panel ul ul {
+			padding-left: 16px;
+		}
+		.bp-toc-mobile-panel li {
+			padding: 8px 0 0 20px;
+		}
+		.bp-toc-mobile-panel a {
+			font-size: 15px;
+			color: #000;
+			text-decoration: none;
+		}
+		.bp-toc-mobile-panel a:hover {
+			color: #10b981;
+		}
+
+		@media (max-width: 1024px) {
+			.bp-toc-desktop {
+				display: none;
+			}
+			.bp-toc-mobile {
+				display: block;
+			}
+		}
+
+		/* ===== Marketing footer panel ===== */
+		.bp-footer {
+			position: relative;
+			border: 1px solid #e6e6e6;
+			border-radius: 35px;
+			margin: 20px 0 44px;
+			padding: 16px;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			min-height: 600px;
+		}
+		.bp-footer-dots {
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			background-image: radial-gradient(circle, #e6e6e6 1px, transparent 1px);
+			background-size: 10px 10px;
+		}
+		.bp-footer-deco {
+			position: absolute;
+			bottom: -160px;
+			width: 405px;
+			height: 439px;
+			z-index: 1;
+			pointer-events: none;
+		}
+		.bp-footer-deco.left {
+			left: -120px;
+			transform: rotate(20deg);
+		}
+		.bp-footer-deco.right {
+			right: -120px;
+			transform: rotate(-10deg);
+		}
+		.bp-footer-deco img.bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 0;
+		}
+		.bp-footer-deco .deco-label {
+			position: absolute;
+			left: 64px;
+			top: 70px;
+			font-weight: 500;
+			z-index: 2;
+		}
+		.bp-footer-deco .socials-row {
+			position: absolute;
+			left: 40px;
+			margin-top: 28px;
+			display: flex;
+			width: 405px;
+		}
+		.bp-footer-deco .socials-row img {
+			width: 200px;
+			height: 200px;
+		}
+		.bp-footer-deco .socials-row img:nth-child(1) {
+			transform: rotate(-16deg);
+		}
+		.bp-footer-deco .socials-row img:nth-child(2) {
+			transform: rotate(7deg);
+			margin-left: -155px;
+		}
+		.bp-footer-deco .socials-row img:nth-child(3) {
+			transform: rotate(-10deg);
+			margin-left: -125px;
+		}
+		.bp-footer-deco .socials-row img:nth-child(4) {
+			transform: rotate(12deg);
+			margin-left: -150px;
+		}
+		.bp-footer-deco .cards {
+			position: absolute;
+			left: 48px;
+			margin-top: 96px;
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			width: 300px;
+		}
+		.bp-int-card {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 16px;
+			width: 300px;
+			height: 80px;
+			background: #fff;
+			border-radius: 12px;
+			box-shadow:
+				0px 3px 8px -1px #3232470d,
+				0px 0px 1px 0px #0c1a4b3d;
+		}
+		.bp-int-card .who {
+			display: flex;
+			align-items: center;
+		}
+		.bp-int-card .ava {
+			position: relative;
+			width: 50px;
+			height: 50px;
+		}
+		.bp-int-card .ava img.main {
+			width: 50px;
+			height: 50px;
+			border-radius: 9999px;
+			object-fit: cover;
+		}
+		.bp-int-card .ava img.badge {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 20px;
+			height: 20px;
+		}
+		.bp-int-card .meta {
+			margin-left: 16px;
+		}
+		.bp-int-card .meta h4 {
+			font-weight: 600;
+			font-size: 16px;
+		}
+		.bp-int-card .meta p {
+			font-weight: 400;
+			font-size: 14px;
+			color: #535353;
+		}
+		.bp-footer-main {
+			position: relative;
+			z-index: 5;
+			display: flex;
+			flex-direction: column;
+			padding: 36px;
+		}
+		.bp-footer-logo {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+		}
+		.bp-footer-logo label {
+			font-size: 1.875rem;
+			font-weight: 600;
+		}
+		.bp-footer-headline {
+			font-size: clamp(1.125rem, 4vw, 3rem);
+			font-weight: 700;
+			line-height: 1.15;
+			max-width: 700px;
+			margin-top: 36px;
+		}
+		.bp-footer-cols {
+			position: relative;
+			z-index: 5;
+			display: flex;
+			justify-content: flex-end;
+			gap: 40px;
+			padding: 0 36px 36px;
+		}
+		.bp-footer-cols .col {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+		.bp-footer-cols .col h4 {
+			font-weight: 800;
+		}
+		.bp-footer-cols .col a {
+			font-weight: 400;
+			color: #535353;
+			text-decoration: none;
+			white-space: nowrap;
+			transition: color 0.2s ease;
+		}
+		.bp-footer-cols .col a:hover {
+			color: var(--brand);
+		}
+		.bp-footer-bottom {
+			position: relative;
+			z-index: 5;
+			width: 100%;
+		}
+		.bp-footer-bottom .divider {
+			border-top: 1px dashed #cccccc;
+			width: 100%;
+			margin-top: 40px;
+		}
+		.bp-footer-bottom .row {
+			height: 80px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 40px;
+		}
+		.bp-footer-bottom .row p {
+			color: #737373;
+			font-weight: 400;
+			font-size: 1.125rem;
+			white-space: nowrap;
+		}
+		.bp-footer-bottom .row .links {
+			display: flex;
+			gap: 20px;
+		}
+		@media (max-width: 1024px) {
+			.bp-footer-deco {
+				display: none;
+			}
+			.bp-footer-headline {
+				max-width: 300px;
+			}
+		}
+		@media (max-width: 768px) {
+			.bp-footer-cols {
+				justify-content: flex-start;
+			}
+			.bp-footer-bottom .row p {
+				font-size: 12px;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- NAV -->
+		<nav class="nav">
+			<div class="nav-inner">
+				<a href="index.html" class="nav-logo">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M13 2L4.09 12.11C3.73 12.54 3.55 12.76 3.55 13C3.55 13.24 3.73 13.46 4.09 13.89L4.5 14.39C4.86 14.82 5.04 15.04 5.28 15.04C5.52 15.04 5.7 14.82 6.06 14.39L13 6L20 14.39C20.36 14.82 20.54 15.04 20.78 15.04C21.02 15.04 21.2 14.82 21.56 14.39L21.97 13.89C22.33 13.46 22.51 13.24 22.51 13C22.51 12.76 22.33 12.54 21.97 12.11L13 2Z"
+							fill="#25A18E"
+						/>
+						<path
+							d="M13 10L6.5 17.89C6.14 18.32 5.96 18.54 5.96 18.78C5.96 19.02 6.14 19.24 6.5 19.67L6.91 20.17C7.27 20.6 7.45 20.82 7.69 20.82C7.93 20.82 8.11 20.6 8.47 20.17L13 14.7L17.53 20.17C17.89 20.6 18.07 20.82 18.31 20.82C18.55 20.82 18.73 20.6 19.09 20.17L19.5 19.67C19.86 19.24 20.04 19.02 20.04 18.78C20.04 18.54 19.86 18.32 19.5 17.89L13 10Z"
+							fill="#25A18E"
+						/>
+					</svg>
+					Playful
+				</a>
+				<ul class="nav-links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="pricing.html">Pricing</a></li>
+					<li><a href="blog.html" class="active">Blog</a></li>
+				</ul>
+				<a href="sign-up.html" class="btn-primary">Get started →</a>
+				<button class="hamburger" id="hamburger" aria-label="Menu">
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+		</nav>
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="index.html">Home</a>
+			<a href="pricing.html">Pricing</a>
+			<a href="blog.html">Blog</a>
+			<a href="sign-up.html" style="color:#25A18E;font-weight:700;"
+				>Get started →</a
+			>
+		</div>
+
+		<!-- MAIN CONTENT -->
+		<main class="section">
+			<div class="container">
+				<!-- BREADCRUMB -->
+				<nav class="breadcrumb" aria-label="Breadcrumb">
+					<a href="index.html">Home</a>
+					<svg
+						width="14"
+						height="14"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<polyline points="9 18 15 12 9 6" />
+					</svg>
+					<a href="blog.html">Blog</a>
+					<svg
+						width="14"
+						height="14"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<polyline points="9 18 15 12 9 6" />
+					</svg>
+					<span class="bc-current">Artificial Intelligence</span>
+				</nav>
+
+				<!-- TWO-COLUMN LAYOUT -->
+				<div class="blog-post-layout">
+					<!-- ARTICLE COLUMN -->
+					<article class="blog-post-content">
+						<!-- Mobile TOC accordion -->
+						<div class="bp-toc-mobile" id="tocMobile">
+							<button
+								class="bp-toc-mobile-btn"
+								id="tocMobileBtn"
+								type="button"
+								aria-expanded="false"
+							>
+								In this article
+								<svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="6 9 12 15 18 9" />
+								</svg>
+							</button>
+							<div class="bp-toc-mobile-panel">
+								<ul>
+									<li>
+										<a href="#exploring-generative-ai-in-content-creation"
+											>Exploring Generative AI in Content Creation</a
+										>
+									</li>
+									<li>
+										<a href="#steering-clear-of-common-ai-writing-pitfalls"
+											>Steering Clear of Common AI Writing Pitfalls</a
+										>
+									</li>
+									<li>
+										<a
+											href="#understanding-chatgpt-capabilities---define-your-style"
+											>Understanding ChatGPT Capabilities - Define Your Style</a
+										>
+									</li>
+									<li>
+										<a href="#understand-your-readers"
+											>Understand Your Readers</a
+										>
+									</li>
+									<li>
+										<a href="#creating-quality-ai-powered-blogs-that-stand-out"
+											>Creating Quality AI-powered Blogs that Stand Out</a
+										>
+										<ul>
+											<li>
+												<a href="#1-start-with-a-strong-hook"
+													>1. Start with a Strong Hook</a
+												>
+											</li>
+											<li>
+												<a href="#2-structure-matters">2. Structure Matters</a>
+											</li>
+											<li>
+												<a href="#3-infuse-personal-touch"
+													>3. Infuse Personal Touch</a
+												>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="#conclusion-embracing-ai-in-blog-creation"
+											>Conclusion: Embracing AI in Blog Creation</a
+										>
+									</li>
+									<li>
+										<a href="#afterword-the-ai-behind-this-article"
+											>Afterword: The AI Behind This Article</a
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- HERO image + frosted overlay -->
+						<div class="bp-hero">
+							<div class="bp-hero-bg">
+								<div class="bp-hero-overlay">
+									<span class="bp-pill"
+										><span class="dot"></span>Artificial Intelligence</span
+									>
+									<p class="bp-hero-title">
+										Lorem ipsum dolor sit amet, consectetur adipiLorem ipsum
+										dolor sit amet, consectetur.
+									</p>
+									<span class="bp-hero-meta">Oct 19 • 10 min read</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- MDX ARTICLE BODY (verbatim from original) -->
+						<div class="mdx">
+							<h1 id="exploring-generative-ai-in-content-creation">
+								Exploring Generative AI in Content Creation
+							</h1>
+							<p>
+								Generative AI has revolutionized the way content is created.
+								From brainstorming topics to drafting entire articles, AI tools
+								like ChatGPT are empowering writers to focus more on creativity
+								and less on manual effort. Whether you're a blogger, marketer,
+								or content strategist, understanding how to harness AI
+								effectively can elevate your content game.
+							</p>
+							<ul>
+								<li>
+									<p>
+										<strong>What is Generative AI?</strong><br>
+										Generative AI refers to machine learning systems designed to
+										produce text, images, and more based on provided prompts.
+									</p>
+								</li>
+								<li>
+									<p>
+										<strong>Why Use It?</strong><br>
+										Save time, spark creativity, and scale content production
+										without compromising on quality.
+									</p>
+								</li>
+							</ul>
+							<blockquote>
+								<p><em>"AI doesn't replace writers—it empowers them."</em></p>
+							</blockquote>
+							<hr>
+							<h1 id="steering-clear-of-common-ai-writing-pitfalls">
+								Steering Clear of Common AI Writing Pitfalls
+							</h1>
+							<p>
+								While AI is a powerful tool, it's not without limitations. Avoid
+								these pitfalls to make the most of AI-generated content:
+							</p>
+							<ol>
+								<li>
+									<p>
+										<strong>Over-reliance on AI:</strong><br>
+										AI isn't a substitute for human creativity or critical
+										thinking. Always review and refine outputs.
+									</p>
+								</li>
+								<li>
+									<p>
+										<strong>Generic Content:</strong><br>
+										Poorly fine-tuned prompts lead to bland results. Ensure your
+										instructions are clear and detailed.
+									</p>
+								</li>
+								<li>
+									<p>
+										<strong>Lack of Originality:</strong><br>
+										Without unique insights or perspectives, your content might
+										lack personality.
+									</p>
+								</li>
+							</ol>
+							<p>
+								💡 <strong>Pro Tip:</strong> Use AI as a collaborator, not a
+								replacement, for your unique voice.
+							</p>
+							<hr>
+							<h1 id="understanding-chatgpt-capabilities---define-your-style">
+								Understanding ChatGPT Capabilities - Define Your Style
+							</h1>
+							<p>
+								ChatGPT can adapt to various tones and styles, but first, you
+								need to define your brand's voice:
+							</p>
+							<ul>
+								<li>
+									<p>
+										<strong>Formal or Casual?</strong><br>
+										Tailor responses by specifying tone:<br>
+										<em>“Write this in a professional tone”</em>
+										or
+										<em>“Make it conversational and engaging.”</em>
+									</p>
+								</li>
+								<li>
+									<p>
+										<strong>Who's Your Audience?</strong><br>
+										Your writing should resonate with your readers, whether
+										they're academics, tech enthusiasts, or lifestyle followers.
+									</p>
+								</li>
+							</ul>
+							<p>
+								🎯 <strong>How to Do It:</strong><br>
+								Experiment with prompts like:<br>
+								<em>"Draft a blog intro for a beginner audience."</em>
+							</p>
+							<hr>
+							<h1 id="understand-your-readers">Understand Your Readers</h1>
+							<p>
+								Great content speaks directly to the audience. Understanding
+								their needs is essential:
+							</p>
+							<ul>
+								<li>
+									<p>
+										<strong>Ask Questions:</strong><br>
+										What problems are they trying to solve? What are their
+										interests?
+									</p>
+								</li>
+								<li>
+									<p>
+										<strong>Be Empathetic:</strong><br>
+										Speak their language. Use terms they understand and examples
+										they relate to.
+									</p>
+								</li>
+							</ul>
+							<p>
+								📊 <strong>Engage with Analytics:</strong><br>
+								Leverage tools like Google Analytics to learn which topics
+								resonate most.
+							</p>
+							<hr>
+							<h1 id="creating-quality-ai-powered-blogs-that-stand-out">
+								Creating Quality AI-powered Blogs that Stand Out
+							</h1>
+							<p>Here's how to craft compelling blogs using AI:</p>
+							<h2 id="1-start-with-a-strong-hook">
+								1. Start with a Strong Hook
+							</h2>
+							<p>
+								Engage your readers from the first sentence. AI can help
+								brainstorm creative intros.<br>
+								Example:
+							</p>
+							<blockquote>
+								<p>
+									<em
+										>"Imagine cutting your writing time in half—without
+										sacrificing quality."</em
+									>
+								</p>
+							</blockquote>
+							<h2 id="2-structure-matters">2. Structure Matters</h2>
+							<p>
+								Break content into clear sections with headings and subheadings.
+							</p>
+							<h2 id="3-infuse-personal-touch">3. Infuse Personal Touch</h2>
+							<p>
+								Add anecdotes, opinions, or unique insights to humanize
+								AI-generated content.
+							</p>
+							<p>🎨 <strong>Styling Matters:</strong></p>
+							<ul>
+								<li>Use <strong>bold</strong> for emphasis.</li>
+								<li>Include lists for clarity.</li>
+								<li>Add visuals for appeal.</li>
+							</ul>
+							<hr>
+							<h1 id="conclusion-embracing-ai-in-blog-creation">
+								Conclusion: Embracing AI in Blog Creation
+							</h1>
+							<p>
+								AI is a game-changer in content creation, but it works best when
+								paired with human intuition and creativity. By understanding its
+								strengths and limitations, you can create blogs that are both
+								efficient and impactful. Remember, AI is your partner, not a
+								replacement.
+							</p>
+							<p>
+								🌟 <strong>Final Takeaway:</strong> Embrace AI to amplify your
+								content strategy and reach new heights.
+							</p>
+							<hr>
+							<h1 id="afterword-the-ai-behind-this-article">
+								Afterword: The AI Behind This Article
+							</h1>
+							<p>
+								This blog was crafted with the help of ChatGPT, OpenAI's
+								state-of-the-art language model. Every section was designed with
+								a mix of AI creativity and human curation to demonstrate what's
+								possible when technology meets imagination.
+							</p>
+							<blockquote>
+								<p>
+									<em
+										>Curious to try it yourself? Start exploring AI for your
+										next blog project!</em
+									>
+								</p>
+							</blockquote>
+						</div>
+					</article>
+
+					<!-- TOC SIDEBAR (desktop) -->
+					<aside class="bp-toc-desktop">
+						<nav class="bp-toc">
+							<p class="bp-toc-title">In this article</p>
+							<ul>
+								<li>
+									<a href="#exploring-generative-ai-in-content-creation"
+										>Exploring Generative AI in Content Creation</a
+									>
+								</li>
+								<li>
+									<a href="#steering-clear-of-common-ai-writing-pitfalls"
+										>Steering Clear of Common AI Writing Pitfalls</a
+									>
+								</li>
+								<li>
+									<a
+										href="#understanding-chatgpt-capabilities---define-your-style"
+										>Understanding ChatGPT Capabilities - Define Your Style</a
+									>
+								</li>
+								<li>
+									<a href="#understand-your-readers">Understand Your Readers</a>
+								</li>
+								<li>
+									<a href="#creating-quality-ai-powered-blogs-that-stand-out"
+										>Creating Quality AI-powered Blogs that Stand Out</a
+									>
+									<ul>
+										<li>
+											<a href="#1-start-with-a-strong-hook"
+												>1. Start with a Strong Hook</a
+											>
+										</li>
+										<li>
+											<a href="#2-structure-matters">2. Structure Matters</a>
+										</li>
+										<li>
+											<a href="#3-infuse-personal-touch"
+												>3. Infuse Personal Touch</a
+											>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#conclusion-embracing-ai-in-blog-creation"
+										>Conclusion: Embracing AI in Blog Creation</a
+									>
+								</li>
+								<li>
+									<a href="#afterword-the-ai-behind-this-article"
+										>Afterword: The AI Behind This Article</a
+									>
+								</li>
+							</ul>
+						</nav>
+					</aside>
+				</div>
+
+				<!-- MARKETING FOOTER PANEL -->
+				<div class="bp-footer">
+					<div class="bp-footer-dots"></div>
+
+					<!-- Left decoration: Social Media Integrations -->
+					<div class="bp-footer-deco left">
+						<img class="bg" src="assets/Social_Media.svg" alt="">
+						<p class="deco-label">Social Media Integrations</p>
+						<div class="socials-row">
+							<img src="assets/social/discord.svg" alt="">
+							<img src="assets/social/insta.svg" alt="">
+							<img src="assets/social/fb.svg" alt="">
+							<img src="assets/social/in.svg" alt="">
+						</div>
+					</div>
+
+					<!-- Right decoration: tilted interview cards -->
+					<div class="bp-footer-deco right">
+						<img class="bg" src="assets/Social_Media.svg" alt="">
+						<div class="cards">
+							<div class="bp-int-card">
+								<div class="who">
+									<div class="ava">
+										<img class="main" src="assets/avatar.png" alt="avatar">
+										<img class="badge" src="assets/avatar_badge.png" alt="">
+									</div>
+									<div class="meta">
+										<h4>Manu's Interview</h4>
+										<p>Candidate is mid.</p>
+									</div>
+								</div>
+								<svg width="25" height="25" viewBox="0 0 25 25" fill="none">
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M12.5461 7.54623C13.6507 7.54623 14.5461 6.6508 14.5461 5.54623C14.5461 4.44166 13.6507 3.54623 12.5461 3.54623C11.4416 3.54623 10.5461 4.44166 10.5461 5.54623C10.5461 6.6508 11.4416 7.54623 12.5461 7.54623Z"
+										fill="#7A7A9D"
+									/>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M12.5461 14.5462C13.6507 14.5462 14.5461 13.6508 14.5461 12.5462C14.5461 11.4417 13.6507 10.5462 12.5461 10.5462C11.4416 10.5462 10.5461 11.4417 10.5461 12.5462C10.5461 13.6508 11.4416 14.5462 12.5461 14.5462Z"
+										fill="#7A7A9D"
+									/>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M12.5461 21.5462C13.6507 21.5462 14.5461 20.6508 14.5461 19.5462C14.5461 18.4417 13.6507 17.5462 12.5461 17.5462C11.4416 17.5462 10.5461 18.4417 10.5461 19.5462C10.5461 20.6508 11.4416 21.5462 12.5461 21.5462Z"
+										fill="#7A7A9D"
+									/>
+								</svg>
+							</div>
+							<div class="bp-int-card">
+								<div class="who">
+									<div class="ava">
+										<img class="main" src="assets/avatar.png" alt="avatar">
+										<img class="badge" src="assets/avatar_badge.png" alt="">
+									</div>
+									<div class="meta">
+										<h4>Ruru's Interview</h4>
+										<p>Candidate is good.</p>
+									</div>
+								</div>
+								<svg width="25" height="25" viewBox="0 0 25 25" fill="none">
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M12.5461 7.54623C13.6507 7.54623 14.5461 6.6508 14.5461 5.54623C14.5461 4.44166 13.6507 3.54623 12.5461 3.54623C11.4416 3.54623 10.5461 4.44166 10.5461 5.54623C10.5461 6.6508 11.4416 7.54623 12.5461 7.54623Z"
+										fill="#7A7A9D"
+									/>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M12.5461 14.5462C13.6507 14.5462 14.5461 13.6508 14.5461 12.5462C14.5461 11.4417 13.6507 10.5462 12.5461 10.5462C11.4416 10.5462 10.5461 11.4417 10.5461 12.5462C10.5461 13.6508 11.4416 14.5462 12.5461 14.5462Z"
+										fill="#7A7A9D"
+									/>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M12.5461 21.5462C13.6507 21.5462 14.5461 20.6508 14.5461 19.5462C14.5461 18.4417 13.6507 17.5462 12.5461 17.5462C11.4416 17.5462 10.5461 18.4417 10.5461 19.5462C10.5461 20.6508 11.4416 21.5462 12.5461 21.5462Z"
+										fill="#7A7A9D"
+									/>
+								</svg>
+							</div>
+						</div>
+					</div>
+
+					<!-- Footer headline -->
+					<div class="bp-footer-main">
+						<div class="bp-footer-logo">
+							<svg
+								width="39"
+								height="51"
+								viewBox="0 0 39 51"
+								fill="none"
+								class="flex-shrink-0"
+							>
+								<path
+									d="M28.4037 17H22.9204C22.3083 17 21.8399 16.455 21.9318 15.8498L23.0424 8.53875C23.0806 8.28789 23.0686 8.03089 23.0071 7.78565C22.9456 7.54042 22.8361 7.31285 22.6863 7.11878C22.5365 6.92471 22.3499 6.76882 22.1396 6.66195C21.9292 6.55509 21.7002 6.49982 21.4684 6.5H13.2526C12.8753 6.50012 12.5103 6.647 12.2225 6.91454C11.9346 7.18207 11.7425 7.55294 11.6802 7.96125L9.02186 25.4612C8.98364 25.712 8.99565 25.9688 9.05706 26.2139C9.11847 26.459 9.2278 26.6865 9.37745 26.8806C9.52709 27.0746 9.71347 27.2305 9.9236 27.3375C10.1337 27.4445 10.3626 27.4999 10.5942 27.5H15.973C16.5253 27.5 16.973 27.9477 16.973 28.5V37.8148C16.973 38.8346 18.3204 39.2002 18.8358 38.3203L29.7465 19.6968C29.9015 19.4323 29.9887 19.1269 29.999 18.8126C30.0092 18.4983 29.9421 18.1868 29.8047 17.9109C29.6673 17.6349 29.4647 17.4047 29.2182 17.2444C28.9716 17.0841 28.6903 16.9997 28.4037 17Z"
+									fill="#25A18E"
+								/>
+							</svg>
+							<label>Playful</label>
+						</div>
+						<p class="bp-footer-headline">
+							Record interviews. Centralise feedback automatically.
+						</p>
+					</div>
+
+					<!-- Footer columns -->
+					<div class="bp-footer-cols">
+						<div class="col">
+							<h4>Pages</h4>
+							<a href="index.html">All Products</a>
+							<a href="index.html">Studio</a>
+							<a href="index.html">Clients</a>
+							<a href="pricing.html">Pricing</a>
+							<a href="blog.html">Blog</a>
+						</div>
+						<div class="col">
+							<h4>Legal</h4>
+							<a href="#">Privacy Policy</a>
+							<a href="#">Terms of Service</a>
+							<a href="#">Cookie Policy</a>
+						</div>
+					</div>
+
+					<!-- Footer bottom -->
+					<div class="bp-footer-bottom">
+						<div class="divider"></div>
+						<div class="row">
+							<p>© Playful Aceternity LLC</p>
+							<div class="links">
+								<a href="https://twitter.com" aria-label="Twitter"
+									><svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+										<path
+											d="M13.3701 9.47204L20.542 0.583496H17.341L11.867 7.37204L7.01074 0.583496H0.0419922L8.17324 11.9481L0.531576 21.4168H3.73366L9.67637 14.0522L14.9482 21.4168H21.917L13.3701 9.47204ZM10.891 12.545L9.38574 10.4418L3.54199 2.27829H5.94824L10.6649 8.8585L12.168 10.9627L18.4368 19.722H16.0305L10.891 12.545Z"
+											fill="#808080"
+										/>
+									</svg></a
+								>
+								<a href="https://linkedin.com" aria-label="LinkedIn"
+									><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M19.5 0.75C20.4946 0.75 21.4484 1.14509 22.1517 1.84835C22.8549 2.55161 23.25 3.50544 23.25 4.5V19.5C23.25 20.4946 22.8549 21.4484 22.1517 22.1517C21.4484 22.8549 20.4946 23.25 19.5 23.25H4.5C3.50544 23.25 2.55161 22.8549 1.84835 22.1517C1.14509 21.4484 0.75 20.4946 0.75 19.5V4.5C0.75 3.50544 1.14509 2.55161 1.84835 1.84835C2.55161 1.14509 3.50544 0.75 4.5 0.75H19.5ZM19.5 3.25H4.5C4.16848 3.25 3.85054 3.3817 3.61612 3.61612C3.3817 3.85054 3.25 4.16848 3.25 4.5V19.5C3.25 19.8315 3.3817 20.1495 3.61612 20.3839C3.85054 20.6183 4.16848 20.75 4.5 20.75H19.5C19.8315 20.75 20.1495 20.6183 20.3839 20.3839C20.6183 20.1495 20.75 19.8315 20.75 19.5V4.5C20.75 4.16848 20.6183 3.85054 20.3839 3.61612C20.1495 3.3817 19.8315 3.25 19.5 3.25Z"
+											fill="#808080"
+										/>
+									</svg></a
+								>
+								<a href="https://facebook.com" aria-label="Facebook"
+									><svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="#808080"
+									>
+										<path
+											d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+										/>
+									</svg></a
+								>
+								<a href="https://instagram.com" aria-label="Instagram"
+									><svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="#808080"
+									>
+										<path
+											d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+										/>
+									</svg></a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<script>
+		const hamburger = document.getElementById("hamburger");
+		const mobileMenu = document.getElementById("mobileMenu");
+		hamburger.addEventListener("click", () =>
+			mobileMenu.classList.toggle("open"),
+		);
+		document.addEventListener("click", (e) => {
+			if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+				mobileMenu.classList.remove("open");
+			}
+		});
+
+		// Mobile TOC accordion
+		const tocMobile = document.getElementById("tocMobile");
+		const tocMobileBtn = document.getElementById("tocMobileBtn");
+		tocMobileBtn.addEventListener("click", () => {
+			const open = tocMobile.classList.toggle("open");
+			tocMobileBtn.setAttribute("aria-expanded", open ? "true" : "false");
+		});
+		</script>
+	</body>
+</html>

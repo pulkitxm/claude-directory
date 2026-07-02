@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>API Reference — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../../styles.css">
+		<link rel="icon" href="../../assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="../../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav
+						class="docs-sidebar-nav"
+						data-current="docs/api/api-reference.html"
+					></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span><span>API</span
+						><span class="sep">/</span><span>API Reference</span>
+					</div>
+					<h1 class="docs-title">API Reference</h1>
+					<p class="docs-lead">
+						Read and write content through Scalar's REST and GraphQL APIs, with
+						consistent JSON responses across every model.
+					</p>
+
+					<h2 id="base-url">Base URL</h2>
+					<p>
+						All REST requests are made to your project's content API, scoped by
+						version:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">base url</span>
+						</div>
+						<div class="code-body">https://api.scalar.dev/v1</div>
+					</div>
+					<p>
+						Replace <code>{ model}</code> in the paths below with the API
+						identifier of one of your content models, such as
+						<code>articles</code>
+						or <code>authors</code>.
+					</p>
+
+					<h2 id="endpoints">Endpoints</h2>
+					<p>
+						The REST API exposes a predictable set of resource endpoints for
+						every content model:
+					</p>
+					<table class="docs-table">
+						<thead>
+							<tr>
+								<th>Method</th>
+								<th>Endpoint</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>GET</code></td>
+								<td><code>/v1/content/ { model}</code></td>
+								<td>List entries for a model with pagination and filtering.</td>
+							</tr>
+							<tr>
+								<td><code>GET</code></td>
+								<td><code>/v1/content/ { model}/ { id}</code></td>
+								<td>Retrieve a single entry by its unique id.</td>
+							</tr>
+							<tr>
+								<td><code>POST</code></td>
+								<td><code>/v1/content/ { model}</code></td>
+								<td>Create a new entry for the model.</td>
+							</tr>
+							<tr>
+								<td><code>PATCH</code></td>
+								<td><code>/v1/content/ { model}/ { id}</code></td>
+								<td>Update fields on an existing entry.</td>
+							</tr>
+							<tr>
+								<td><code>DELETE</code></td>
+								<td><code>/v1/content/ { model}/ { id}</code></td>
+								<td>Delete an entry permanently.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2 id="request-example">Request example</h2>
+					<p>
+						Fetch a page of published articles, passing your API token as a
+						bearer credential:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"># list published articles</span>
+							curl https://api.scalar.dev/v1/content/articles?status=published \
+							-H
+							<span class="tok-str">"Authorization: Bearer $SCALAR_TOKEN"</span>
+							\ -H <span class="tok-str">"Accept: application/json"</span>
+						</div>
+					</div>
+
+					<h2 id="response-format">Response format</h2>
+					<p>
+						List endpoints return a <code>data</code> array alongside a
+						<code>meta</code>
+						object describing pagination:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">json</span>
+						</div>
+						<div class="code-body">
+							{
+							<span class="tok-str">"data"</span>: [ {
+							<span class="tok-str">"id"</span>:
+							<span class="tok-str">"ent_a1b2c3"</span>,
+							<span class="tok-str">"model"</span>:
+							<span class="tok-str">"articles"</span>,
+							<span class="tok-str">"fields"</span>: {
+							<span class="tok-str">"title"</span>:
+							<span class="tok-str">"Hello World"</span>,
+							<span class="tok-str">"status"</span>:
+							<span class="tok-str">"published"</span>
+							} ,
+							<span class="tok-str">"updatedAt"</span>:
+							<span class="tok-str">"2026-06-22T10:30:00Z"</span>
+							} ],
+							<span class="tok-str">"meta"</span>: {
+							<span class="tok-str">"page"</span>:
+							<span class="tok-num">1</span>,
+							<span class="tok-str">"pageSize"</span>:
+							<span class="tok-num">20</span>,
+							<span class="tok-str">"total"</span>:
+							<span class="tok-num">87</span>
+							} }
+						</div>
+					</div>
+
+					<h2 id="graphql-endpoint">GraphQL endpoint</h2>
+					<p>
+						Prefer GraphQL? Send queries to the single
+						<code>/v1/graphql</code>
+						endpoint to fetch exactly the fields you need:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">graphql</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">query</span>
+							<span class="tok-fn">PublishedArticles</span>
+							{ articles(<span class="tok-str">where</span>: { status: PUBLISHED
+							}, first: <span class="tok-num">20</span>) { nodes { id title
+							author { name } updatedAt } } }
+						</div>
+					</div>
+
+					<h2 id="rate-limits">Rate limits</h2>
+					<p>
+						Requests are rate limited per API token. The current usage is
+						returned on every response in the
+						<code>X-RateLimit-Remaining</code>
+						header.
+					</p>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							The default limit is 1,000 requests per minute. Exceeding it
+							returns a <code>429 Too Many Requests</code> response — back off
+							and retry after the seconds given in the
+							<code>Retry-After</code>
+							header.
+						</div>
+					</div>
+
+					<nav class="docs-pager">
+						<a class="pg-prev" href="../../docs/guides/examples.html"
+							><div class="pg-dir">← Previous</div>
+							<div class="pg-title">Examples</div></a
+						>
+						<a class="pg-next" href="../../docs/api/authentication.html"
+							><div class="pg-dir">Next →</div>
+							<div class="pg-title">Authentication</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#base-url">Base URL</a>
+					<a href="#endpoints">Endpoints</a>
+					<a href="#request-example">Request example</a>
+					<a href="#response-format">Response format</a>
+					<a href="#graphql-endpoint">GraphQL endpoint</a>
+					<a href="#rate-limits">Rate limits</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="../../shared.js"></script>
+	</body>
+</html>

@@ -1,5 +1,7 @@
 # Handcraft — Hand-Drawn Paper UI Landing Page for Scribbly (React, TypeScript, Tailwind CSS v4, Kalam, Patrick Hand)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A complete landing page that fully expresses the Hand-Drawn design system through the fictional whiteboard product "Scribbly" — every container, button, card, and frame rejects geometric perfection in favour of wobbly irregular border-radii, hard cut-paper offset shadows (zero blur), warm paper-grain radial-gradient texture, and exclusively handwritten type (Kalam for headings, Patrick Hand for body). Composable primitives in `src/components/primitives.tsx` cover `Button`, `Card` (with tape and tack decorations and a post-it variant), `Input`, `Textarea`, `StickyTag`, `IconCircle`, `AvatarStack`, and a set of hand-drawn SVG scribbles including `ScribbleArrow`, `SquigglyLine`, `CornerFrames`, `Tape`, `Tack`, and `WavyDivider`. The full landing page includes a sticky wobbly-pill nav, two-column hero with a fully hand-drawn whiteboard sketch, doodled logo strip, organic blob count-up stats, a six-card feature grid, squiggly-connected how-it-works steps, a drop-cap product detail, scaled "most loved" pricing tier ringed by a dashed circle, speech-bubble testimonials with geometric tails, and a lift-on-hover blog grid. Generated with Claude Fable 5.
 
 ## What's inside

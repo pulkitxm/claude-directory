@@ -1,5 +1,7 @@
 # Scanner Card Stream — Draggable Infinite WebGL Card Stream with ASCII Scan Effect (React + Three.js + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A draggable, infinitely-looping Three.js card stream component where each card glides toward a glowing violet scan line at the center of the viewport — as it crosses, the photo clips away and the card "decodes" into a wall of glitching, scrambling ASCII. An ambient WebGL particle field drifts behind the cards, and a 2D spark field erupts from the scan line whenever a card is under it. Structured as a shadcn-style drop-in component (`src/components/ui/scanner-card-stream.tsx`) for React + Tailwind CSS v4 + TypeScript projects. Generated with Claude Fable 5.
 
 ## Run it

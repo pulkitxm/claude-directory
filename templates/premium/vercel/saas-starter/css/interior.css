@@ -1,0 +1,476 @@
+/* Shared styles for interior content pages: Features, Pricing, Contact,
+   Blog index/article, legal pages, 404. */
+
+.section {
+	margin-top: 15rem;
+}
+.section:first-of-type {
+	margin-top: 10rem;
+}
+.section-heading {
+	text-align: center;
+	font-size: 3.6rem;
+	font-weight: bold;
+	letter-spacing: -0.02em;
+	margin-bottom: 4rem;
+}
+
+/* Features: video block */
+.video-block {
+	max-width: 90rem;
+	margin: 0 auto 6rem;
+}
+.video-frame {
+	position: relative;
+	width: 100%;
+	border-radius: 0.8rem;
+	overflow: hidden;
+	box-shadow: var(--shadow-lg);
+	background: #000;
+	cursor: pointer;
+}
+.video-frame::before {
+	content: "";
+	display: block;
+	padding-top: 56.25%;
+}
+.video-frame > * {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+.video-frame img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.video-play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 7rem;
+	height: 7rem;
+	border-radius: 50%;
+	background: rgb(var(--primary));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+	transition: transform 0.2s;
+}
+.video-frame:hover .video-play {
+	transform: translate(-50%, -50%) scale(1.08);
+}
+.video-play svg {
+	width: 2.6rem;
+	height: 2.6rem;
+	margin-left: 0.4rem;
+}
+
+/* Contact form */
+.contact-grid {
+	display: flex;
+	gap: 6rem;
+	max-width: 100rem;
+	margin: 0 auto;
+}
+@media (max-width: 900px) {
+	.contact-grid {
+		flex-direction: column;
+	}
+}
+.contact-info {
+	flex: 1 1 0%;
+}
+.contact-info h3 {
+	font-size: 2.2rem;
+	font-weight: bold;
+	margin-bottom: 1.5rem;
+}
+.contact-info p {
+	font-size: 1.5rem;
+	opacity: 0.75;
+}
+.contact-form {
+	flex: 2 1 0%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.6rem;
+}
+.contact-form textarea,
+.contact-form input {
+	grid-column: span 2;
+	width: 100%;
+	padding: 1.6rem 1.8rem;
+	border: 1px solid rgba(var(--text), 0.12);
+	background: rgb(var(--inputBackground));
+	color: rgb(var(--text));
+	border-radius: 0.4rem;
+	font-size: 1.5rem;
+	font-family: var(--font);
+}
+.contact-form input {
+	grid-column: span 1;
+}
+.contact-form textarea {
+	min-height: 16rem;
+	resize: vertical;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+	outline: 2px solid rgb(var(--primary));
+	outline-offset: 1px;
+}
+.contact-form button {
+	grid-column: span 2;
+	justify-self: start;
+}
+
+/* Pricing */
+.pricing-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2rem;
+	max-width: 110rem;
+	margin: 0 auto;
+	align-items: center;
+}
+@media (max-width: 900px) {
+	.pricing-grid {
+		grid-template-columns: 1fr;
+	}
+}
+.pricing-card {
+	display: flex;
+	flex-direction: column;
+	padding: 3rem;
+	background: rgb(var(--cardBackground));
+	box-shadow: var(--shadow-md);
+	text-align: center;
+	border-radius: 0.6rem;
+	gap: 1rem;
+}
+.pricing-card.featured {
+	box-shadow: var(--shadow-lg);
+	transform: scale(1.06);
+	z-index: 1;
+}
+@media (max-width: 900px) {
+	.pricing-card.featured {
+		transform: none;
+	}
+}
+.pricing-card h3 {
+	font-size: 2.5rem;
+}
+.pricing-card .tagline {
+	opacity: 0.7;
+	font-size: 1.5rem;
+	margin-top: 0.3rem;
+}
+.pricing-card .price {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	font-size: 4rem;
+	line-height: 1;
+	font-weight: bold;
+	margin: 1.5rem 0;
+}
+.pricing-card .price span {
+	font-size: 1.8rem;
+	font-weight: normal;
+	opacity: 0.7;
+}
+.pricing-card ul {
+	list-style: none;
+	padding: 0;
+	margin: 0.5rem 0 1.5rem;
+	font-size: 1.5rem;
+	text-align: left;
+}
+.pricing-card ul li {
+	padding: 0.4rem 0 0.4rem 2.2rem;
+	position: relative;
+}
+.pricing-card ul li::before {
+	content: "\2713";
+	position: absolute;
+	left: 0;
+	color: rgb(var(--primary));
+	font-weight: bold;
+}
+.pricing-card .btn {
+	width: 100%;
+}
+
+/* FAQ accordion */
+.faq-list {
+	max-width: 90rem;
+	margin: 6rem auto 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+.faq-item {
+	background: rgb(var(--cardBackground));
+	box-shadow: var(--shadow-md);
+	border-radius: 0.6rem;
+	padding: 2rem 2.5rem;
+}
+.faq-question {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	font-size: 1.7rem;
+	font-weight: 600;
+	gap: 2rem;
+}
+.faq-chevron {
+	width: 2rem;
+	height: 2rem;
+	flex: none;
+	transition: transform 0.3s;
+	transform: rotateZ(0deg);
+}
+.faq-panel {
+	height: 0;
+	overflow: hidden;
+	transition: height 0.3s ease;
+}
+.faq-panel-inner {
+	padding-top: 1.6rem;
+	font-size: 1.5rem;
+	line-height: 1.7;
+	opacity: 0.75;
+}
+
+/* Blog */
+.blog-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 3rem;
+}
+@media (max-width: 900px) {
+	.blog-grid {
+		grid-template-columns: 1fr;
+	}
+}
+.blog-card {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	border-radius: 0.6rem;
+	background: rgb(var(--cardBackground));
+	text-decoration: none;
+	color: rgb(var(--text));
+	box-shadow: var(--shadow-md);
+	transition: transform 0.3s;
+}
+.blog-card:hover {
+	transform: scale(1.02);
+}
+.blog-card-img {
+	position: relative;
+	width: 100%;
+	padding-top: 56.25%;
+	overflow: hidden;
+}
+.blog-card-img img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.blog-card-body {
+	padding: 2rem;
+}
+.blog-card-body h3 {
+	font-size: 1.8rem;
+	margin-bottom: 1rem;
+	line-height: 1.35;
+}
+.blog-card-body p {
+	font-size: 1.5rem;
+	opacity: 0.65;
+	line-height: 1.6;
+}
+
+/* Blog article */
+.article-hero {
+	position: relative;
+	max-width: 90rem;
+	margin: 0 auto 4rem;
+	border-radius: 0.6rem;
+	overflow: hidden;
+}
+.article-hero::before {
+	content: "";
+	display: block;
+	padding-top: 56.25%;
+}
+.article-hero img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.article-body {
+	max-width: 90rem;
+	margin: 0 auto;
+}
+.article-social {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+	position: sticky;
+	top: 12rem;
+	float: left;
+	margin-left: -8rem;
+	margin-top: 2rem;
+}
+@media (max-width: 1100px) {
+	.article-social {
+		display: none;
+	}
+}
+.article-social a {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(var(--text), 0.06);
+	color: rgb(var(--text));
+}
+.article-social a svg {
+	width: 1.8rem;
+	height: 1.8rem;
+}
+.article-title {
+	font-size: 3.5rem;
+	font-weight: 600;
+	line-height: 1.2;
+	margin-bottom: 1.5rem;
+}
+.article-meta {
+	font-size: 1.4rem;
+	opacity: 0.6;
+	margin-bottom: 4rem;
+}
+.article-content {
+	font-size: 1.7rem;
+	line-height: 1.8;
+	display: flex;
+	flex-direction: column;
+	gap: 2.2rem;
+}
+.article-content h2 {
+	font-size: 2.4rem;
+	font-weight: 600;
+	margin-top: 1rem;
+}
+.article-content blockquote {
+	border-left: 1px solid rgb(var(--secondary));
+	padding: 1.5rem 2.5rem;
+	color: rgb(var(--secondary));
+	font-style: italic;
+	font-size: 1.9rem;
+}
+.article-content blockquote cite {
+	display: block;
+	margin-top: 1.2rem;
+	font-size: 1.4rem;
+	font-style: normal;
+	opacity: 0.7;
+}
+.article-content pre {
+	background: rgba(var(--text), 0.05);
+	border-radius: 0.4rem;
+	padding: 2rem;
+	overflow-x: auto;
+	font-size: 1.4rem;
+	line-height: 1.7;
+}
+.article-content img {
+	width: 100%;
+	border-radius: 0.4rem;
+}
+.article-content strong {
+	font-weight: 700;
+}
+
+/* Legal pages (Privacy / Cookies) */
+.legal-content {
+	max-width: 90rem;
+	margin: 0 auto;
+	font-size: 1.6rem;
+	line-height: 1.75;
+	opacity: 0.85;
+}
+.legal-content p {
+	margin-bottom: 1.6rem;
+}
+.legal-content h3 {
+	font-size: 1.8rem;
+	margin: 3rem 0 1.5rem;
+	opacity: 1;
+}
+.legal-content ul {
+	margin: 0 0 2rem;
+	padding-left: 2.4rem;
+}
+.legal-table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	margin-top: 3rem;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	table-layout: fixed;
+}
+.legal-table th,
+.legal-table td {
+	border: 1px solid rgba(var(--text), 0.1);
+	padding: 1.4rem;
+	font-size: 1.4rem;
+	text-align: left;
+}
+.legal-table th {
+	background: rgba(var(--text), 0.04);
+}
+.legal-table tr:nth-child(2n) td {
+	background: rgba(var(--text), 0.02);
+}
+
+/* 404 */
+.notfound {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 4rem 2rem 8rem;
+}
+.notfound svg,
+.notfound img {
+	max-width: 40rem;
+	width: 100%;
+	margin-bottom: 3rem;
+}
+.notfound h1 {
+	font-size: 5rem;
+	font-weight: bold;
+	margin-bottom: 1.5rem;
+}
+.notfound p {
+	font-size: 1.8rem;
+	opacity: 0.7;
+}

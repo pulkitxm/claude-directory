@@ -1,5 +1,7 @@
 # SDF Dreamscape — WebGL Fractal Signed-Distance-Field Shader Hero (React + Vite + Tailwind CSS v4 + WebGL)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport WebGL fractal signed-distance-field (SDF) shader — a recursive Julia-fold ringed by a glowing palette and bent in real time by the cursor — rendered on a single GLSL fragment shader and framed as the Oneirograph dream-recorder console. The shader component is integrated at the shadcn `@/components/ui/sdf-dreamscape` location as a reusable `ShaderCanvas`/`useShaderAnimation` primitive plus the original self-contained `ShaderComponent`. The chrome includes a hero lockup, corner bracket registration frame, a tuning deck with four controls (Spectrum/Drift/Recursion/Lens), four dream-state presets, and a live telemetry strip reading frame rate through an `onFps` callback. No Three.js — native WebGL only. Generated with Claude Fable 5.
 
 ## Stack

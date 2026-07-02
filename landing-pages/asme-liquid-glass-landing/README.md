@@ -1,5 +1,7 @@
 # Asme — Liquid Glass Dark Landing Page (React + TypeScript + Vite + Tailwind CSS + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A pixel-spec, dark-themed single-page marketing landing site for **Asme**, a fictional knowledge and insights platform, featuring a signature reusable `.liquid-glass` surface treatment — luminosity-blended translucent fill, 4px backdrop blur, inset top highlight, and a masked `::before` gradient border — applied consistently across the navbar pill, email capture, buttons, cards, and icon chips. The full-viewport hero loops a locally vendored `.mp4` video via a vanilla `requestAnimationFrame` opacity crossfade (fade in on `canplay`, fade out at 0.55s remaining, 100ms gap restart). Four scroll-triggered sections animate in with Framer Motion `useInView`: About, Featured Video, Innovation × Vision (video + two columns sliding from opposite sides), and Services (two glass cards with hover-zoom video). Instrument Serif display type sits against pure black throughout. Generated with Claude Fable 5.
 
 ## Highlights

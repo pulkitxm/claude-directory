@@ -1,5 +1,7 @@
 # Nexto 404 Hero — Full-Viewport "Page Not Found" Page (React + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport 404 "Page Not Found" hero page for the fictional **nexto.** brand, featuring a layered alien-spaceship PNG over a soft gradient background, floating gradient Material Symbols icons, bottom-pinned navigation cards, and a hamburger-to-X mobile overlay — all locked to `100vh` with zero scroll. The visual style pairs DM Sans variable font with gradient-clipped icon decorations and a dashed-gradient navbar border. Use case: branded error pages and empty-state landing views. Generated with Claude Fable 5.
 
 ## Highlights

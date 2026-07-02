@@ -1,5 +1,7 @@
 # Fluid Swirl Shader — FLUX Pigment Lab (React + TypeScript + Raw WebGL + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A self-contained WebGL shader experiment integrating the `FluidSwirl` component — a procedural fragment field that folds three pigments into an endless paint vortex — into a polished pigment-mixing console called FLUX. Drag to steer the spin, re-mix the three colours live, push contrast and spin, freeze the flow, or flip on a kaleidoscopic polar warp. A rolling oscilloscope panel reads real luminance directly off the GL framebuffer via `readPixels` — nothing is faked. Fully procedural, no image assets required. Generated with Claude Fable 5.
 
 ## What's here

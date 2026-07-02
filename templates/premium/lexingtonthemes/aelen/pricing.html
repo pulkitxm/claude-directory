@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Pricing — Ælen CRM</title>
+		<meta
+			name="description"
+			content="Simple pricing for everyone. Solo, Team, and Enterprise plans for Ælen CRM."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		>
+		<style>
+		:root {
+			--white: oklch(95% 0.0187 80.72);
+			--black: oklch(29% 0 0);
+			--orange: oklch(60% 0.1499 37.55);
+			--cyan: oklch(80% 0.0456 250.63);
+			--yellow: oklch(75% 0.1081 64.85);
+			--gray: oklch(83% 0.0018 325.59);
+			--font-sans: "Geist", sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: var(--font-sans);
+			background: var(--white);
+			color: var(--black);
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			max-width: 80rem;
+			margin: 0 auto;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 100%;
+			padding: 0 1rem;
+			margin: 0 auto;
+		}
+
+		/* ── HEADER ── */
+		header {
+			background: var(--white);
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		.header-inner {
+			padding: 0.5rem 1rem;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+		}
+		.header-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+		}
+		.header-logo svg {
+			height: 32px;
+		}
+		.header-logo {
+			color: var(--black);
+			transition: color 300ms;
+		}
+		.header-logo:hover {
+			color: var(--orange);
+		}
+		.header-right {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin-left: auto;
+		}
+		.nav-link {
+			font-weight: 600;
+			color: var(--black);
+			transition: color 300ms;
+		}
+		.nav-link:hover {
+			color: var(--black);
+		}
+		.btn-signup {
+			background: var(--black);
+			color: white;
+			font-weight: 600;
+			padding: 8px 16px;
+			border: none;
+			cursor: pointer;
+			font-family: var(--font-sans);
+			font-size: 0.875rem;
+			transition: background 300ms;
+			display: inline-flex;
+			align-items: center;
+		}
+		.btn-signup:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+		.btn-icon {
+			background: var(--black);
+			color: white;
+			border: none;
+			width: 32px;
+			height: 32px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: background 300ms;
+		}
+		.btn-icon:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+		.btn-icon svg {
+			width: 16px;
+			height: 16px;
+		}
+		.hamburger svg {
+			width: 24px;
+			height: 24px;
+		}
+
+		/* ── MOBILE OVERLAY ── */
+		.mobile-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: var(--yellow);
+			z-index: 9998;
+			flex-direction: column;
+			padding: 0.25rem 1rem;
+		}
+		.mobile-overlay.active {
+			display: flex;
+		}
+		.mobile-overlay-header {
+			display: flex;
+			justify-content: flex-end;
+			margin-bottom: 2rem;
+		}
+		.close-menu {
+			background: white;
+			color: var(--black);
+			border: none;
+			cursor: pointer;
+			padding: 0.5rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.close-menu svg {
+			width: 24px;
+			height: 24px;
+		}
+		.mobile-nav {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+		.mobile-nav a {
+			font-size: clamp(2.25rem, 8vw, 3.75rem);
+			font-weight: 700;
+			color: white;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			transition: color 300ms;
+		}
+		.mobile-nav a:hover {
+			color: color-mix(in oklab, var(--black) 50%, transparent);
+		}
+
+		/* ── DIVIDER STACK ── */
+		.divider-stack {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			width: 100%;
+		}
+		.divider-stack > div {
+			background: var(--black);
+		}
+		.bar-black {
+			background: var(--black);
+			padding: 2rem;
+			display: flex;
+			align-items: center;
+		}
+		.bar-black span {
+			font-size: clamp(1.875rem, 5vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			color: white;
+		}
+
+		/* ── HERO / PRICING SECTION ── */
+		.pricing-section {
+			padding: 12.5rem 1rem 0.5rem;
+		}
+		.pricing-section h1 {
+			font-size: clamp(3.75rem, 12vw, 12rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			line-height: 1;
+			color: var(--black);
+		}
+		.divider-block {
+			margin-top: 0.5rem;
+		}
+		.pricing-grid {
+			margin-top: 1rem;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+		@media (min-width: 1024px) {
+			.pricing-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		.pricing-card {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			padding: 3rem 2rem;
+		}
+		.pricing-card.orange {
+			background: var(--orange);
+			color: white;
+		}
+		.pricing-card.yellow {
+			background: var(--yellow);
+			color: var(--black);
+		}
+		.pricing-card.cyan {
+			background: var(--cyan);
+			color: var(--black);
+		}
+		.card-name {
+			font-size: clamp(1.5rem, 3vw, 2.25rem);
+			font-weight: 700;
+			letter-spacing: -0.025em;
+		}
+		.card-price {
+			font-size: clamp(1rem, 2vw, 1.25rem);
+			font-weight: 600;
+			margin-top: 3rem;
+		}
+		.card-desc {
+			font-size: clamp(1rem, 2vw, 1.25rem);
+			font-weight: 600;
+			margin-top: 0.5rem;
+		}
+		.card-btn-wrap {
+			display: flex;
+			width: 100%;
+			margin-top: 2rem;
+		}
+		.card-btn {
+			width: 100%;
+			height: 56px;
+			padding: 0.75rem 1.5rem;
+			font-size: 1.25rem;
+			font-weight: 500;
+			font-family: var(--font-sans);
+			cursor: pointer;
+			border: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: background 300ms;
+		}
+		.card-btn-white {
+			background: white;
+			color: var(--black);
+		}
+		.card-btn-white:hover {
+			background: color-mix(in oklab, white 80%, transparent);
+		}
+		.card-btn-black {
+			background: var(--black);
+			color: white;
+		}
+		.card-btn-black:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+		.card-features {
+			list-style: none;
+			padding-top: 1.5rem;
+			margin-top: 1.5rem;
+			border-top: 1px dashed color-mix(in oklab, var(--black) 50%, transparent);
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+			font-size: 1rem;
+			font-weight: 600;
+		}
+		.card-features li {
+			display: inline-flex;
+			align-items: flex-start;
+			gap: 0.75rem;
+		}
+		.card-features li.muted {
+			opacity: 0.6;
+		}
+
+		/* ── FAQ ── */
+		.faq-section {
+			padding: 6rem 1rem;
+		}
+		.faq-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		@media (min-width: 1024px) {
+			.faq-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+			.faq-list {
+				grid-column: span 2;
+			}
+		}
+		.faq-section h2 {
+			font-size: clamp(3.75rem, 12vw, 12rem);
+			font-weight: 700;
+			letter-spacing: -0.05em;
+			line-height: 1;
+			color: var(--black);
+		}
+		.faq-list {
+			width: 100%;
+		}
+		.faq-item {
+			padding: 2rem 0 0.5rem;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			user-select: none;
+		}
+		.faq-summary {
+			font-size: clamp(1rem, 4vw, 1.875rem);
+			font-weight: 700;
+			color: var(--black);
+			list-style: none;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			transition: color 300ms;
+		}
+		.faq-summary::-webkit-details-marker {
+			display: none;
+		}
+		.faq-icon {
+			background: var(--black);
+			color: white;
+			padding: 0.25rem;
+			border-radius: 9999px;
+			flex-shrink: 0;
+			display: flex;
+		}
+		.faq-icon svg {
+			width: 16px;
+			height: 16px;
+			transition: transform 300ms;
+		}
+		.faq-item[open] .faq-icon svg {
+			transform: rotate(180deg);
+		}
+		.faq-answer {
+			margin-top: 1rem;
+			color: var(--black);
+			font-size: 1.25rem;
+			font-weight: 600;
+			max-width: 36rem;
+		}
+
+		/* ── FOOTER ── */
+		footer {
+			overflow: hidden;
+			margin-top: auto;
+		}
+		.footer-inner {
+			padding: 12rem 1rem 1rem;
+		}
+		.footer-wordmark {
+			color: var(--black);
+			width: 100%;
+		}
+		.footer-wordmark svg {
+			width: 100%;
+			height: auto;
+		}
+		.footer-copy-stack {
+			margin-top: 0.25rem;
+		}
+		.footer-links {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 1rem;
+			gap: 1rem;
+		}
+		.footer-links a {
+			font-size: 1rem;
+			font-weight: 700;
+			color: var(--black);
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			transition: color 300ms;
+		}
+		.footer-links a:hover {
+			color: var(--black);
+		}
+
+		@media (max-width: 768px) {
+			.header-right .nav-link,
+			.header-right .btn-signup,
+			.header-right .btn-search {
+				display: none;
+			}
+		}
+		@media (min-width: 769px) {
+			.hamburger {
+				display: none;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- MOBILE OVERLAY -->
+		<div class="mobile-overlay" id="mobileMenu">
+			<div class="mobile-overlay-header">
+				<button class="close-menu" id="closeMenu" aria-label="Close menu">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path d="M18 6l-12 12" />
+						<path d="M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+			<nav class="mobile-nav">
+				<a href="system-overview.html">Overview</a>
+				<a href="https://lexingtonthemes.com/templates/aelen">Buy Aelen</a>
+				<a href="system-colors.html">Colors</a>
+				<a href="system-buttons.html">Buttons</a>
+				<a href="system-typography.html">Typography</a>
+				<a href="blog.html">Blog</a>
+				<a href="changelog.html">Changelog</a>
+				<a href="pricing.html">Pricing</a>
+			</nav>
+		</div>
+
+		<!-- HEADER -->
+		<header>
+			<div class="header-inner">
+				<div class="header-row">
+					<a href="index.html" class="header-logo">
+						<svg
+							viewBox="0 0 1051 289"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+								fill="currentColor"
+							/>
+						</svg>
+					</a>
+					<div class="header-right">
+						<a href="system-overview.html" class="nav-link">Overview</a>
+						<a href="sign-up.html" class="btn-signup">Sign up</a>
+						<button class="btn-icon btn-search" aria-label="Search">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+								<path d="M21 21l-6 -6" />
+							</svg>
+						</button>
+						<button
+							class="btn-icon hamburger"
+							id="menuToggle"
+							aria-label="Open menu"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M4 6h16" />
+								<path d="M7 12h13" />
+								<path d="M10 18h10" />
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main style="flex: 1">
+			<!-- HERO + PRICING -->
+			<section>
+				<div class="pricing-section">
+					<h1>Simple pricing.</h1>
+					<div class="divider-block">
+						<div class="divider-stack">
+							<div style="height:2px"></div>
+							<div style="height:4px"></div>
+							<div style="height:8px"></div>
+							<div style="height:12px"></div>
+							<div class="bar-black"><span>For everyone.</span></div>
+						</div>
+					</div>
+
+					<div class="pricing-grid">
+						<!-- Solo -->
+						<div class="pricing-card orange">
+							<div>
+								<div class="card-name">Solo</div>
+								<p class="card-price">$199/One time</p>
+								<p class="card-desc">
+									Perfect for freelancers and solo founders
+								</p>
+								<div class="card-btn-wrap">
+									<button class="card-btn card-btn-white">
+										Subscribe to Solo
+									</button>
+								</div>
+								<ul class="card-features">
+									<li>— Manage up to 500 contacts</li>
+									<li>— 1 user included</li>
+									<li>— Custom pipelines</li>
+									<li>— Email tracking &amp; reminders</li>
+									<li>— Basic reporting dashboard</li>
+									<li>— API &amp; webhook access</li>
+									<li class="muted">— Team collaboration tools</li>
+									<li class="muted">— Shared pipelines</li>
+									<li class="muted">— Priority support</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Team -->
+						<div class="pricing-card yellow">
+							<div>
+								<div class="card-name">Team</div>
+								<p class="card-price">$79/One time</p>
+								<p class="card-desc">
+									For startups and small teams ready to scale
+								</p>
+								<div class="card-btn-wrap">
+									<button class="card-btn card-btn-black">
+										Subscribe to Team
+									</button>
+								</div>
+								<ul class="card-features">
+									<li>— Everything in Solo</li>
+									<li>— Up to 10 users</li>
+									<li>— Shared pipelines &amp; permissions</li>
+									<li>— Team activity tracking</li>
+									<li>— Advanced reporting &amp; analytics</li>
+									<li>— Slack + Zapier integrations</li>
+									<li class="muted">— Custom roles &amp; permissions</li>
+									<li class="muted">— Dedicated account manager</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Enterprise -->
+						<div class="pricing-card cyan">
+							<div>
+								<div class="card-name">Enterprise</div>
+								<p class="card-price">Contact us</p>
+								<p class="card-desc">
+									For fast-growing companies and large teams
+								</p>
+								<div class="card-btn-wrap">
+									<button class="card-btn card-btn-black">
+										Subscribe to Enterprise
+									</button>
+								</div>
+								<ul class="card-features">
+									<li>— Everything in Team</li>
+									<li>— Unlimited users</li>
+									<li>— Custom roles &amp; permissions</li>
+									<li>— Dedicated success manager</li>
+									<li>— Single sign-on (SSO)</li>
+									<li>— Priority support &amp; onboarding</li>
+									<li>— Custom API limits</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- FAQ -->
+			<section class="faq-section">
+				<div class="faq-grid">
+					<h2>FAQ</h2>
+					<div class="faq-list">
+						<details class="faq-item">
+							<summary class="faq-summary">
+								<div class="faq-icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M12 5l0 14" />
+										<path d="M5 12l14 0" />
+									</svg>
+								</div>
+								Can I get a refund if Ælen’s not right for me?
+							</summary>
+							<div class="faq-answer">
+								Yes. If you’re not satisfied within your first 30 days, we’ll
+								refund your full subscription—no questions asked. Just reach out
+								to support with your account info and reason for canceling.
+								Refunds are typically processed in 5–7 business days and apply
+								to both monthly and annual plans.
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary class="faq-summary">
+								<div class="faq-icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M12 5l0 14" />
+										<path d="M5 12l14 0" />
+									</svg>
+								</div>
+								Do you offer custom pricing for large teams?
+							</summary>
+							<div class="faq-answer">
+								We do. Enterprise clients get flexible pricing based on team
+								size, contract length, and feature needs. We also offer
+								dedicated onboarding, support, and integrations. Contact our
+								sales team to talk about a tailored plan for your company.
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary class="faq-summary">
+								<div class="faq-icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M12 5l0 14" />
+										<path d="M5 12l14 0" />
+									</svg>
+								</div>
+								How does the Ælen referral program work?
+							</summary>
+							<div class="faq-answer">
+								Invite a friend, and when they sign up for a paid plan, you both
+								get 20% off your next billing cycle. There’s no cap on
+								referrals, so the savings stack up. Share your unique link from
+								your dashboard to start earning rewards.
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary class="faq-summary">
+								<div class="faq-icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M12 5l0 14" />
+										<path d="M5 12l14 0" />
+									</svg>
+								</div>
+								Are there any hidden fees?
+							</summary>
+							<div class="faq-answer">
+								Nope. Your subscription covers all core features, updates, and
+								standard support. Extra services—like advanced onboarding,
+								custom integrations, or premium support—are optional and clearly
+								priced. No surprises.
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary class="faq-summary">
+								<div class="faq-icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M12 5l0 14" />
+										<path d="M5 12l14 0" />
+									</svg>
+								</div>
+								Is Ælen optimized for performance?
+							</summary>
+							<div class="faq-answer">
+								Yes. Ælen ships with Astro and Tailwind CSS, optimized out of
+								the box for fast loading and high Lighthouse scores. It’s
+								designed to be light, clean, and efficient—no bloat, no
+								nonsense.
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary class="faq-summary">
+								<div class="faq-icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M12 5l0 14" />
+										<path d="M5 12l14 0" />
+									</svg>
+								</div>
+								Can I use Ælen with other CMS platforms?
+							</summary>
+							<div class="faq-answer">
+								Ælen is built with Astro, but you can connect it to any headless
+								CMS or data source you like—Sanity, Contentful, Ghost, or even a
+								custom API. It’s flexible enough to adapt to whatever stack
+								you're using.
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary class="faq-summary">
+								<div class="faq-icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M12 5l0 14" />
+										<path d="M5 12l14 0" />
+									</svg>
+								</div>
+								Is there dark mode?
+							</summary>
+							<div class="faq-answer">
+								Ælen ships in light mode by default, but you can easily add dark
+								mode support with Tailwind’s dark variant. A full toggle is just
+								a few lines of config away—no plugin necessary.
+							</div>
+						</details>
+						<details class="faq-item">
+							<summary class="faq-summary">
+								<div class="faq-icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M12 5l0 14" />
+										<path d="M5 12l14 0" />
+									</svg>
+								</div>
+								Can I customize the components?
+							</summary>
+							<div class="faq-answer">
+								Definitely. Ælen’s components are built with flexibility in
+								mind—fully reusable, well-commented, and easy to adapt to your
+								branding or design system. Tweak, remix, or completely
+								overhaul—it’s your call.
+							</div>
+						</details>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-inner">
+				<div class="footer-wordmark">
+					<svg
+						viewBox="0 0 1051 289"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</div>
+				<div class="footer-copy-stack">
+					<div class="divider-stack">
+						<div style="height:2px"></div>
+						<div style="height:4px"></div>
+						<div style="height:8px"></div>
+						<div style="height:12px"></div>
+						<div class="bar-black">
+							<span
+								>ⓒ Copyright Lexington Themes <span id="year">2026</span></span
+							>
+						</div>
+					</div>
+				</div>
+				<div class="footer-links">
+					<a href="system-overview.html">Overview</a>
+					<a href="about.html">About</a>
+					<a href="about.html">Careers</a>
+					<a href="contact.html">Contact</a>
+					<a href="#_">X</a>
+					<a href="#_">Linkedin</a>
+					<a href="#_">Youtube</a>
+					<a href="#_">Instagram</a>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		// Mobile menu
+		const menuToggle = document.getElementById("menuToggle");
+		const mobileMenu = document.getElementById("mobileMenu");
+		const closeMenu = document.getElementById("closeMenu");
+		menuToggle?.addEventListener("click", () =>
+			mobileMenu.classList.add("active"),
+		);
+		closeMenu?.addEventListener("click", () =>
+			mobileMenu.classList.remove("active"),
+		);
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") mobileMenu.classList.remove("active");
+		});
+
+		// Dynamic year
+		document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+	</body>
+</html>

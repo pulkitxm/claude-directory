@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Analytics | Admin Dashboard - DashSpace</title>
+		<meta
+			name="description"
+			content="React admin dashboard template for SaaS apps and internal tools. Includes charts, tables, KPI cards, and analytics dashboard."
+		>
+		<link rel="icon" type="image/png" href="assets/favicon.png">
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		// No-flash theme init
+		(function () {
+			const s = localStorage.getItem("dashspace-theme");
+			const p = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			if (s === "dark" || (!s && p))
+				document.documentElement.classList.add("dark");
+			else document.documentElement.classList.add("light");
+		})();
+		</script>
+	</head>
+	<body>
+		<!-- Sidebar overlay (mobile) -->
+		<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+		<div class="app-layout">
+			<!-- SIDEBAR -->
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-logo">
+					<a href="index.html">
+						<img
+							class="logo-light"
+							src="assets/images/logo/logo-black.svg"
+							alt="TailGrids Logo"
+						>
+						<img
+							class="logo-dark"
+							src="assets/images/logo/logo-white.svg"
+							alt="TailGrids Logo"
+						>
+					</a>
+					<button
+						class="sidebar-close-btn"
+						id="sidebar-close-btn"
+						aria-label="Close sidebar"
+					>
+						<svg
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M6.75 17.249L17.2479 6.75111M6.75 6.75098L17.2479 17.2489"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</button>
+				</div>
+
+				<nav class="sidebar-nav">
+					<!-- MENU Section -->
+					<div class="nav-section">
+						<h4 class="nav-section-label">MENU</h4>
+						<div class="nav-items">
+							<a href="index.html" class="nav-item active">
+								<span class="nav-icon">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M10.6504 3.70337C11.4503 3.10369 12.5497 3.10369 13.3496 3.70337L19.8496 8.57837C20.4161 9.00322 20.7499 9.6701 20.75 10.3782V18.4993C20.75 19.7419 19.7426 20.7493 18.5 20.7493H12.0195C12.013 20.7494 12.0065 20.7502 12 20.7502C11.9935 20.7502 11.987 20.7494 11.9805 20.7493H5.5C4.25736 20.7493 3.25 19.7419 3.25 18.4993V10.3782C3.25011 9.6701 3.58392 9.00322 4.15039 8.57837L10.6504 3.70337ZM12.4502 4.90356C12.1836 4.70373 11.8164 4.70373 11.5498 4.90356L5.0498 9.77856C4.86123 9.92015 4.75011 10.1424 4.75 10.3782V18.4993C4.75 18.9135 5.08579 19.2493 5.5 19.2493H11.25V16.2502C11.25 15.836 11.5858 15.5002 12 15.5002C12.4142 15.5002 12.75 15.836 12.75 16.2502V19.2493H18.5C18.9142 19.2493 19.25 18.9135 19.25 18.4993V10.3782C19.2499 10.1424 19.1388 9.92015 18.9502 9.77856L12.4502 4.90356Z"
+											fill="currentColor"
+										/>
+									</svg>
+								</span>
+								<span>Dashboard</span>
+							</a>
+							<a href="calendar.html" class="nav-item">
+								<span class="nav-icon">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M8.00055 2.75V4.5M16.0005 2.75V4.5M4.00055 9H20.0005M5.50055 20.5H18.5005C19.329 20.5 20.0005 19.8284 20.0005 19V6C20.0005 5.17157 19.329 4.5 18.5005 4.5H5.50055C4.67212 4.5 4.00055 5.17157 4.00055 6V19C4.00055 19.8284 4.67212 20.5 5.50055 20.5Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+								<span>Calendar</span>
+							</a>
+							<a href="tables.html" class="nav-item">
+								<span class="nav-icon">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M3.25 4C3.25 3.58579 3.58579 3.25 4 3.25H20C20.4142 3.25 20.75 3.58579 20.75 4V20C20.75 20.4142 20.4142 20.75 20 20.75H4C3.58579 20.75 3.25 20.4142 3.25 20V4ZM4.75 4.75V9.25H19.25V4.75H4.75ZM4.75 10.75V14.25H19.25V10.75H4.75ZM4.75 15.75V19.25H19.25V15.75H4.75Z"
+											fill="currentColor"
+										/>
+									</svg>
+								</span>
+								<span>Tables</span>
+							</a>
+						</div>
+					</div>
+
+					<!-- FORMS Section -->
+					<div class="nav-section">
+						<h4 class="nav-section-label">FORMS</h4>
+						<div class="nav-items">
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="forms-dropdown"
+							>
+								<span class="nav-icon">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M15.0016 14.5H9.00156M12.0016 17.5H9.00156M5.38583 9.00073C5.45951 8.00297 6.29058 7.24597 7.2911 7.25H16.7121C17.7126 7.24597 18.5437 8.00297 18.6174 9.00073L19.3674 19.0007C19.4475 20.0668 18.6167 20.9866 17.5477 21.0513C17.4831 21.0554 17.4183 21.0553 17.3538 21.0511H6.65012C5.5806 20.9914 4.74714 20.0762 4.80684 19.0067C4.81097 18.9337 4.81913 18.861 4.83125 18.789L5.38583 9.00073ZM8.25156 7.25V5.75C8.25156 4.64543 9.14699 3.75 10.2516 3.75H13.7516C14.8561 3.75 15.7516 4.64543 15.7516 5.75V7.25H8.25156Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+								<span>Forms</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="forms-dropdown">
+								<a href="#">Form Elements</a>
+								<a href="#">Form Layout</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- PAGES Section -->
+					<div class="nav-section">
+						<h4 class="nav-section-label">PAGES</h4>
+						<div class="nav-items">
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="pages-dropdown"
+							>
+								<span class="nav-icon">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M9 7H15M9 12H15M9 17H12M5 3H19C19.5523 3 20 3.44772 20 4V20C20 20.5523 19.5523 21 19 21H5C4.44772 21 4 20.5523 4 20V4C4 3.44772 4.44772 3 5 3Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+								<span>Pages</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="pages-dropdown">
+								<a href="#">Blank Page</a>
+								<a href="#">404 Page</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- OTHERS Section -->
+					<div class="nav-section">
+						<h4 class="nav-section-label">OTHERS</h4>
+						<div class="nav-items">
+							<a href="profile.html" class="nav-item">
+								<span class="nav-icon">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12ZM12 12C8.13401 12 5 15.134 5 19V21H19V19C19 15.134 15.866 12 12 12Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+								<span>Profile</span>
+							</a>
+							<a href="charts.html" class="nav-item">
+								<span class="nav-icon">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M21.25 17.5H4.75V3.25M8.25 13.5V17.5M12 10V17.5M15.75 6.5V17.5M19.5 3.5V17.5"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+								<span>Charts</span>
+							</a>
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="auth-dropdown"
+							>
+								<span class="nav-icon">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M12 2C9.23858 2 7 4.23858 7 7V10H5C4.44772 10 4 10.4477 4 11V21C4 21.5523 4.44772 22 5 22H19C19.5523 22 20 21.5523 20 21V11C20 10.4477 19.5523 10 19 10H17V7C17 4.23858 14.7614 2 12 2ZM15.5 10H8.5V7C8.5 5.067 10.067 3.5 12 3.5C13.933 3.5 15.5 5.067 15.5 7V10ZM12 14C12.8284 14 13.5 14.6716 13.5 15.5C13.5 16.3284 12.8284 17 12 17C11.1716 17 10.5 16.3284 10.5 15.5C10.5 14.6716 11.1716 14 12 14Z"
+											fill="currentColor"
+										/>
+									</svg>
+								</span>
+								<span>Authentication</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="auth-dropdown">
+								<a href="#">Sign In</a>
+								<a href="#">Sign Up</a>
+								<a href="#">Reset Password</a>
+							</div>
+						</div>
+					</div>
+				</nav>
+
+				<div class="sidebar-footer">
+					<div class="upgrade-card">
+						<div>
+							<h4>Pro Plan</h4>
+							<p>Unlock all features</p>
+						</div>
+						<a href="#" class="btn-upgrade">Upgrade Now</a>
+					</div>
+				</div>
+			</aside>
+
+			<!-- MAIN AREA -->
+			<div class="main-area">
+				<!-- Header -->
+				<header class="main-header">
+					<button
+						class="hamburger-btn"
+						id="hamburger-btn"
+						aria-label="Open sidebar"
+					>
+						<svg
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M4 6H20M4 12H20M4 18H20"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+							/>
+						</svg>
+					</button>
+					<div class="header-title">
+						<h1>Dashboard</h1>
+						<p>Welcome back!</p>
+					</div>
+					<div class="header-spacer"></div>
+					<div class="search-bar">
+						<svg
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M21 21L16.5 16.5M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+							/>
+						</svg>
+						<input type="text" placeholder="Search...">
+					</div>
+					<div class="header-actions">
+						<button
+							class="icon-btn"
+							id="theme-toggle"
+							aria-label="Toggle theme"
+						></button>
+						<button class="icon-btn" aria-label="Notifications">
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M12 22C13.1046 22 14 21.1046 14 20H10C10 21.1046 10.8954 22 12 22ZM18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span class="notif-dot"></span>
+						</button>
+						<button class="user-menu-btn" aria-label="User menu">
+							<img
+								src="assets/images/owner.jpg"
+								alt="Musharof"
+								class="user-avatar"
+							>
+							<span class="user-name">Musharof</span>
+							<svg
+								class="user-chevron"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M6 9L12 15L18 9"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+					</div>
+				</header>
+
+				<!-- Content -->
+				<main class="content">
+					<!-- KPI Cards -->
+					<div class="kpi-grid">
+						<!-- Total Revenue -->
+						<div class="kpi-card">
+							<div class="kpi-icon-wrap">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
+										fill="currentColor"
+									/>
+								</svg>
+							</div>
+							<p class="kpi-label">Total Revenue</p>
+							<div class="kpi-value-row">
+								<span class="kpi-value">$128,430</span>
+								<div>
+									<div class="kpi-change positive">
+										<svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+											<path
+												d="M12 5L19 12M12 5L5 12M12 5V19"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										+12.5%
+									</div>
+									<div class="kpi-vs">Vs last month</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Active Users -->
+						<div class="kpi-card">
+							<div class="kpi-icon-wrap">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M16 11C17.66 11 18.99 9.66 18.99 8C18.99 6.34 17.66 5 16 5C14.34 5 13 6.34 13 8C13 9.66 14.34 11 16 11ZM8 11C9.66 11 10.99 9.66 10.99 8C10.99 6.34 9.66 5 8 5C6.34 5 5 6.34 5 8C5 9.66 6.34 11 8 11ZM8 13C5.67 13 1 14.17 1 16.5V19H15V16.5C15 14.17 10.33 13 8 13ZM16 13C15.71 13 15.38 13.02 15.03 13.05C16.19 13.89 17 15.02 17 16.5V19H23V16.5C23 14.17 18.33 13 16 13Z"
+										fill="currentColor"
+									/>
+								</svg>
+							</div>
+							<p class="kpi-label">Active Users</p>
+							<div class="kpi-value-row">
+								<span class="kpi-value">24,532</span>
+								<div>
+									<div class="kpi-change positive">
+										<svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+											<path
+												d="M12 5L19 12M12 5L5 12M12 5V19"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										+8.2%
+									</div>
+									<div class="kpi-vs">Vs last month</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Conversion Rate -->
+						<div class="kpi-card">
+							<div class="kpi-icon-wrap">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M3.5 18.5L9.5 12.5L13.5 16.5L22 6.92L20.59 5.51L13.5 13.5L9.5 9.5L2 17L3.5 18.5Z"
+										fill="currentColor"
+									/>
+								</svg>
+							</div>
+							<p class="kpi-label">Conversion Rate</p>
+							<div class="kpi-value-row">
+								<span class="kpi-value">3.42%</span>
+								<div>
+									<div class="kpi-change negative">
+										<svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+											<path
+												d="M12 19L5 12M12 19L19 12M12 19V5"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										-1.5%
+									</div>
+									<div class="kpi-vs">Vs last month</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Avg Client Rating -->
+						<div class="kpi-card">
+							<div class="kpi-icon-wrap">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</div>
+							<p class="kpi-label">Avg. Client Rating</p>
+							<div class="kpi-value-row">
+								<span class="kpi-value">7.8/10</span>
+								<div>
+									<div class="kpi-change positive">
+										<svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+											<path
+												d="M12 5L19 12M12 5L5 12M12 5V19"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										+20%
+									</div>
+									<div class="kpi-vs">Vs last month</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Chart Grid -->
+					<div class="chart-grid" style="margin-bottom: 1.5rem">
+						<!-- Analytics Chart -->
+						<div class="card">
+							<div class="card-header">
+								<div>
+									<h3 class="card-title">Analytics</h3>
+									<p class="card-subtitle">Visitor analytics of last 30 days</p>
+								</div>
+								<div class="chart-tabs" id="analytics-tabs">
+									<button class="chart-tab" data-period="12months">
+										12 months
+									</button>
+									<button class="chart-tab active" data-period="30days">
+										30 days
+									</button>
+									<button class="chart-tab" data-period="7days">7 days</button>
+									<button class="chart-tab" data-period="24hours">
+										24 hours
+									</button>
+								</div>
+							</div>
+							<div id="analytics-chart" style="min-height: 280px"></div>
+						</div>
+
+						<!-- Sessions Chart -->
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Sessions</h3>
+								<button class="more-btn">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M12 5C12.5523 5 13 4.55228 13 4C13 3.44772 12.5523 3 12 3C11.4477 3 11 3.44772 11 4C11 4.55228 11.4477 5 12 5Z"
+											fill="currentColor"
+										/>
+										<path
+											d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+											fill="currentColor"
+										/>
+										<path
+											d="M12 21C12.5523 21 13 20.5523 13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20C11 20.5523 11.4477 21 12 21Z"
+											fill="currentColor"
+										/>
+										<path
+											d="M12 5C12.5523 5 13 4.55228 13 4C13 3.44772 12.5523 3 12 3C11.4477 3 11 3.44772 11 4C11 4.55228 11.4477 5 12 5Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M12 21C12.5523 21 13 20.5523 13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20C11 20.5523 11.4477 21 12 21Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+									</svg>
+								</button>
+							</div>
+							<div
+								id="sessions-chart"
+								style="display: flex; justify-content: center; padding: 1rem 0"
+							></div>
+							<div
+								style="
+                  display: flex;
+                  justify-content: center;
+                  gap: 1rem;
+                  flex-wrap: wrap;
+                  margin-top: 1rem;
+                "
+								id="sessions-legend"
+							></div>
+						</div>
+					</div>
+
+					<!-- Bottom Grid: Map + Recent Orders -->
+					<div
+						style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1.5rem;
+            "
+					>
+						<!-- Sellers by States -->
+						<div class="card">
+							<div class="card-header">
+								<div>
+									<h3 class="card-title">Sellers by states</h3>
+									<p class="card-subtitle">
+										See seller counts categorized by state
+									</p>
+								</div>
+								<button class="more-btn">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M12 5C12.5523 5 13 4.55228 13 4C13 3.44772 12.5523 3 12 3C11.4477 3 11 3.44772 11 4C11 4.55228 11.4477 5 12 5Z"
+											fill="currentColor"
+										/>
+										<path
+											d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+											fill="currentColor"
+										/>
+										<path
+											d="M12 21C12.5523 21 13 20.5523 13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20C11 20.5523 11.4477 21 12 21Z"
+											fill="currentColor"
+										/>
+										<path
+											d="M12 5C12.5523 5 13 4.55228 13 4C13 3.44772 12.5523 3 12 3C11.4477 3 11 3.44772 11 4C11 4.55228 11.4477 5 12 5Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M12 21C12.5523 21 13 20.5523 13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20C11 20.5523 11.4477 21 12 21Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+									</svg>
+								</button>
+							</div>
+							<!-- Simplified world map representation -->
+							<div
+								id="world-map"
+								style="
+                  width: 100%;
+                  height: 220px;
+                  background-color: var(--bg-soft);
+                  border-radius: var(--radius-lg);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  overflow: hidden;
+                  position: relative;
+                "
+							>
+								<svg
+									viewBox="0 0 900 500"
+									style="width: 100%; height: 100%"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<g
+										id="map-paths"
+										fill="var(--border-strong)"
+										stroke="var(--bg-soft)"
+										stroke-width="0.5"
+									>
+										<!-- North America -->
+										<path
+											d="M60,80 L180,80 L200,120 L220,130 L230,160 L210,190 L190,200 L170,220 L150,260 L130,280 L110,290 L90,280 L70,260 L50,230 L40,200 L45,160 L55,130 Z"
+										/>
+										<!-- Greenland -->
+										<path
+											d="M190,40 L240,30 L260,50 L250,80 L220,90 L195,75 Z"
+										/>
+										<!-- South America -->
+										<path
+											d="M160,280 L200,270 L220,290 L230,330 L225,380 L210,420 L190,450 L170,460 L155,440 L145,400 L140,350 L145,310 Z"
+										/>
+										<!-- Europe -->
+										<path
+											d="M380,70 L440,65 L470,75 L480,100 L470,120 L450,130 L420,135 L390,130 L370,110 L365,90 Z"
+										/>
+										<!-- Africa -->
+										<path
+											d="M380,140 L440,135 L475,155 L490,200 L495,260 L490,320 L470,370 L440,400 L410,410 L380,400 L355,370 L340,320 L338,260 L345,200 L360,160 Z"
+										/>
+										<!-- Russia / Asia -->
+										<path
+											d="M490,50 L650,40 L750,55 L780,80 L750,100 L700,110 L650,115 L600,110 L550,100 L510,90 L490,75 Z"
+										/>
+										<!-- East Asia / China -->
+										<path
+											d="M620,100 L720,95 L760,115 L770,150 L750,180 L710,200 L660,210 L620,200 L595,170 L590,140 L600,115 Z"
+										/>
+										<!-- India -->
+										<path
+											d="M580,150 L620,145 L635,170 L630,210 L615,250 L595,270 L575,255 L565,210 L570,170 Z"
+										/>
+										<!-- Southeast Asia / Indonesia -->
+										<path
+											d="M700,210 L760,200 L790,215 L800,235 L780,250 L740,255 L705,245 L690,230 Z"
+										/>
+										<!-- Australia -->
+										<path
+											d="M700,300 L790,295 L830,315 L845,355 L840,400 L815,430 L775,440 L735,435 L705,410 L690,370 L690,330 Z"
+										/>
+										<!-- Japan -->
+										<path
+											d="M790,110 L815,100 L825,120 L815,140 L795,145 L780,130 Z"
+										/>
+										<!-- UK/Ireland -->
+										<path d="M358,75 L372,70 L378,85 L370,100 L358,95 Z" />
+										<!-- Scandinavia -->
+										<path d="M410,40 L450,30 L460,55 L440,70 L415,68 Z" />
+									</g>
+									<!-- Highlighted countries with blue -->
+									<g fill="#3758f9" opacity="0.6">
+										<path
+											d="M100,130 L150,125 L165,150 L155,180 L130,190 L100,180 L85,160 Z"
+										/>
+										<path d="M450,70 L475,68 L480,85 L465,98 L445,96 Z" />
+										<path
+											d="M630,105 L680,100 L700,125 L690,150 L650,155 L620,140 Z"
+										/>
+										<path
+											d="M720,305 L775,298 L800,325 L795,360 L755,370 L720,355 Z"
+										/>
+									</g>
+								</svg>
+							</div>
+						</div>
+
+						<!-- Recent Orders -->
+						<div class="card" style="padding: 0; overflow: hidden">
+							<div
+								style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-subtle)"
+							>
+								<h3 class="card-title">Recent Orders</h3>
+							</div>
+							<div style="overflow-x: auto">
+								<table class="data-table">
+									<thead>
+										<tr>
+											<th>Products</th>
+											<th>Category</th>
+											<th>Date</th>
+											<th>Price</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<div class="product-cell">
+													<img
+														src="assets/images/orders/image-1.jpg"
+														alt="Macbook Pro"
+														class="product-img"
+													>
+													<div class="product-info">
+														<h5>Macbook Pro 13"</h5>
+														<p>2 Variants</p>
+													</div>
+												</div>
+											</td>
+											<td>Laptop</td>
+											<td
+												style="color: var(--text-muted); font-size: 0.8125rem"
+											>
+												Nov 23, 01:00 PM
+											</td>
+											<td class="amount-cell">$2399.00</td>
+											<td>
+												<span class="badge badge-delivered">Delivered</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="product-cell">
+													<img
+														src="assets/images/orders/image-2.jpg"
+														alt="iPhone 14"
+														class="product-img"
+													>
+													<div class="product-info">
+														<h5>iPhone 14 Pro</h5>
+														<p>3 Variants</p>
+													</div>
+												</div>
+											</td>
+											<td>Phone</td>
+											<td
+												style="color: var(--text-muted); font-size: 0.8125rem"
+											>
+												Nov 23, 02:30 PM
+											</td>
+											<td class="amount-cell">$999.00</td>
+											<td><span class="badge badge-pending">Pending</span></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="product-cell">
+													<img
+														src="assets/images/orders/image-3.jpg"
+														alt="AirPods"
+														class="product-img"
+													>
+													<div class="product-info">
+														<h5>AirPods Pro</h5>
+														<p>1 Variant</p>
+													</div>
+												</div>
+											</td>
+											<td>Audio</td>
+											<td
+												style="color: var(--text-muted); font-size: 0.8125rem"
+											>
+												Nov 23, 04:00 PM
+											</td>
+											<td class="amount-cell">$249.00</td>
+											<td><span class="badge badge-shipped">Shipped</span></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="product-cell">
+													<img
+														src="assets/images/orders/image-4.jpg"
+														alt="iPad"
+														class="product-img"
+													>
+													<div class="product-info">
+														<h5>iPad Air</h5>
+														<p>2 Variants</p>
+													</div>
+												</div>
+											</td>
+											<td>Tablet</td>
+											<td
+												style="color: var(--text-muted); font-size: 0.8125rem"
+											>
+												Nov 24, 10:00 AM
+											</td>
+											<td class="amount-cell">$599.00</td>
+											<td>
+												<span class="badge badge-cancelled">Cancelled</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="product-cell">
+													<img
+														src="assets/images/orders/image-5.jpg"
+														alt="Apple Watch"
+														class="product-img"
+													>
+													<div class="product-info">
+														<h5>Apple Watch S9</h5>
+														<p>4 Variants</p>
+													</div>
+												</div>
+											</td>
+											<td>Watch</td>
+											<td
+												style="color: var(--text-muted); font-size: 0.8125rem"
+											>
+												Nov 24, 11:30 AM
+											</td>
+											<td class="amount-cell">$399.00</td>
+											<td><span class="badge badge-shipped">Shipped</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+
+		<!-- ApexCharts -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/apexcharts@3/dist/apexcharts.min.js"
+		></script>
+		<script src="app.js"></script>
+		<script>
+		// Analytics bar chart data
+		const analyticsData30 = [
+			165000, 380000, 300000, 195000, 185000, 290000, 190000, 380000, 120000,
+			140000, 130000, 145000, 270000, 165000, 190000, 130000, 210000, 305000,
+			180000, 195000, 105000, 380000, 220000, 280000, 280000, 135000, 280000,
+			285000, 380000, 310000,
+		];
+
+		const analyticsData7 = [
+			120000, 250000, 180000, 320000, 290000, 210000, 340000,
+		];
+
+		const analyticsData12 = [
+			280000, 310000, 250000, 380000, 320000, 290000, 340000, 380000, 295000,
+			265000, 310000, 360000,
+		];
+
+		const analyticsData24 = [
+			12000, 8000, 5000, 4000, 6000, 9000, 15000, 22000, 28000, 32000, 35000,
+			38000, 40000, 42000, 45000, 43000, 41000, 38000, 35000, 30000, 25000,
+			20000, 16000, 13000,
+		];
+
+		function getChartColors() {
+			const isDark = document.documentElement.classList.contains("dark");
+			return {
+				barColor: "#3758f9",
+				gridColor: isDark ? "#111827" : "#e5e7eb",
+				textColor: isDark ? "#6b7280" : "#9ca3af",
+				bgColor: isDark ? "#1f2937" : "#ffffff",
+			};
+		}
+
+		let analyticsChart;
+		let sessionsChart;
+
+		function createAnalyticsChart(data, categories) {
+			const colors = getChartColors();
+			const opts = {
+				series: [{ name: "Visitors", data }],
+				chart: {
+					type: "bar",
+					height: 280,
+					toolbar: { show: false },
+					background: "transparent",
+					animations: { enabled: true, speed: 400 },
+				},
+				plotOptions: {
+					bar: {
+						columnWidth: "60%",
+						borderRadius: 3,
+					},
+				},
+				colors: [colors.barColor],
+				dataLabels: { enabled: false },
+				grid: {
+					borderColor: colors.gridColor,
+					strokeDashArray: 0,
+					xaxis: { lines: { show: false } },
+					yaxis: { lines: { show: true } },
+				},
+				xaxis: {
+					categories,
+					labels: {
+						style: { colors: colors.textColor, fontSize: "11px" },
+					},
+					axisBorder: { show: false },
+					axisTicks: { show: false },
+				},
+				yaxis: {
+					labels: {
+						style: { colors: colors.textColor, fontSize: "11px" },
+						formatter: (v) => {
+							if (v >= 1000) return Math.round(v / 1000) + "K";
+							return v;
+						},
+					},
+				},
+				tooltip: {
+					theme: document.documentElement.classList.contains("dark")
+						? "dark"
+						: "light",
+					y: {
+						formatter: (v) => v.toLocaleString(),
+					},
+				},
+			};
+
+			if (analyticsChart) {
+				analyticsChart.destroy();
+			}
+			analyticsChart = new ApexCharts(
+				document.getElementById("analytics-chart"),
+				opts,
+			);
+			analyticsChart.render();
+		}
+
+		function getAnalyticsData(period) {
+			switch (period) {
+				case "12months":
+					return {
+						data: analyticsData12,
+						cats: [
+							"Jan",
+							"Feb",
+							"Mar",
+							"Apr",
+							"May",
+							"Jun",
+							"Jul",
+							"Aug",
+							"Sep",
+							"Oct",
+							"Nov",
+							"Dec",
+						],
+					};
+				case "7days":
+					return {
+						data: analyticsData7,
+						cats: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+					};
+				case "24hours":
+					return {
+						data: analyticsData24,
+						cats: Array.from({ length: 24 }, (_, i) => `${i}h`),
+					};
+				default:
+					return {
+						data: analyticsData30,
+						cats: Array.from({ length: 30 }, (_, i) => String(i + 1)),
+					};
+			}
+		}
+
+		function createSessionsChart() {
+			const colors = getChartColors();
+			const opts = {
+				series: [1225, 980, 245],
+				chart: {
+					type: "donut",
+					height: 240,
+					background: "transparent",
+				},
+				colors: ["#3758f9", "#91aeff", "#c7d7ff"],
+				labels: ["Desktop", "Mobile", "Tablet"],
+				plotOptions: {
+					pie: {
+						donut: {
+							size: "72%",
+							labels: {
+								show: true,
+								total: {
+									show: true,
+									showAlways: true,
+									label: "Total Sessions",
+									fontSize: "13px",
+									fontWeight: "500",
+									color: colors.textColor,
+									formatter: () => "2,450",
+								},
+								value: {
+									show: false,
+								},
+							},
+						},
+					},
+				},
+				dataLabels: { enabled: false },
+				legend: { show: false },
+				stroke: { width: 2, colors: [colors.bgColor] },
+				tooltip: {
+					theme: document.documentElement.classList.contains("dark")
+						? "dark"
+						: "light",
+				},
+			};
+
+			if (sessionsChart) {
+				sessionsChart.destroy();
+			}
+			sessionsChart = new ApexCharts(
+				document.getElementById("sessions-chart"),
+				opts,
+			);
+			sessionsChart.render();
+
+			// Custom legend
+			const legend = document.getElementById("sessions-legend");
+			if (legend) {
+				const items = [
+					{ color: "#3758f9", label: "Desktop" },
+					{ color: "#91aeff", label: "Mobile" },
+					{ color: "#c7d7ff", label: "Tablet" },
+				];
+				legend.innerHTML = items
+					.map(
+						(item) =>
+							`<span style="display:flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--text-muted)">
+              <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="${item.color}"/></svg>
+              ${item.label}
+            </span>`,
+					)
+					.join("");
+			}
+		}
+
+		function updateChartsTheme() {
+			const d = getAnalyticsData("30days");
+			createAnalyticsChart(d.data, d.cats);
+			createSessionsChart();
+		}
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const d = getAnalyticsData("30days");
+			createAnalyticsChart(d.data, d.cats);
+			createSessionsChart();
+
+			// Tab switching
+			initChartTabs("#analytics-tabs", (period) => {
+				const data = getAnalyticsData(period);
+				createAnalyticsChart(data.data, data.cats);
+			});
+		});
+		</script>
+	</body>
+</html>

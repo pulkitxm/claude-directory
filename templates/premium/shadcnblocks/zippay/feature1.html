@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>AP Automation Software — Zippay</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("zippay-theme");
+				if (
+					t === "dark" ||
+					(!t && matchMedia("(prefers-color-scheme: dark)").matches)
+				)
+					document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="icon" href="assets/favicon/favicon.svg">
+		<link rel="stylesheet" href="css/styles.css">
+		<style>
+		.f1-hero {
+			padding: 3.5rem 0 0;
+		}
+		.f1-hero-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
+			align-items: center;
+		}
+		.f1-hero h1 {
+			max-width: 14ch;
+		}
+		.f1-hero .lead {
+			margin-bottom: 1.75rem;
+		}
+		.f1-hero-actions {
+			display: flex;
+			gap: 0.75rem;
+		}
+		.pill-tag {
+			display: inline-block;
+			background: var(--muted);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-pill);
+			padding: 0.35rem 0.9rem;
+			font-size: 0.8rem;
+			font-weight: 600;
+			margin-bottom: 1.25rem;
+		}
+		.f1-mock {
+			background: var(--forest);
+			border-radius: var(--radius);
+			padding: 2rem;
+			margin-top: 3.5rem;
+		}
+		.f1-mock img {
+			width: 100%;
+			display: block;
+			border-radius: 0.5rem;
+		}
+		.f1-logos {
+			padding: 3.5rem 0;
+		}
+		.sol-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1rem;
+			margin-top: 3rem;
+		}
+		.sol-card {
+			background: var(--muted-2);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 1.5rem;
+		}
+		.sol-card img {
+			width: 100%;
+			border-radius: 0.6rem;
+			margin-bottom: 1.25rem;
+			aspect-ratio: 16 / 10;
+			object-fit: cover;
+			background: var(--muted);
+		}
+		.sol-card h4 {
+			margin-bottom: 0.4rem;
+		}
+		.sol-card p {
+			color: var(--muted-foreground);
+			font-size: 0.9rem;
+		}
+		.stream-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
+			align-items: center;
+			margin-top: 2.5rem;
+		}
+		.check-list {
+			list-style: none;
+			margin: 2rem 0;
+		}
+		.check-list li {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			padding: 0.85rem 0;
+			border-bottom: 1px solid var(--border);
+			font-weight: 600;
+		}
+		.check-list .tick {
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			background: var(--primary);
+			color: var(--primary-foreground);
+			display: grid;
+			place-items: center;
+			flex: none;
+		}
+		.stream-img {
+			width: 100%;
+			border-radius: var(--radius);
+			display: block;
+		}
+		.faq-wrap {
+			max-width: 760px;
+			margin: 3rem auto 0;
+		}
+		@media (max-width: 900px) {
+			.f1-hero-grid,
+			.sol-grid,
+			.stream-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="container nav">
+				<a class="brand" href="index.html"
+					><img
+						src="assets/images/layout/logo.svg"
+						alt="Zippay"
+						style="width:auto;height:26px"
+					></a
+				>
+				<nav class="nav-links">
+					<div class="nav-item">
+						<button>
+							Product
+							<svg
+								width="14"
+								height="14"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path d="m6 9 6 6 6-6" />
+							</svg>
+						</button>
+						<div class="dropdown">
+							<a href="feature1.html">Feature 1</a
+							><a href="feature2.html">Feature 2</a>
+						</div>
+					</div>
+					<a href="integrations.html">Integrations</a>
+					<a href="about.html">About us</a>
+					<a href="pricing.html">Pricing</a>
+					<a href="faq.html">FAQ</a>
+					<a href="blog.html">Blog</a>
+					<a href="contact.html">Contact</a>
+				</nav>
+				<div class="nav-actions">
+					<button
+						class="theme-toggle"
+						data-theme-toggle
+						aria-label="Toggle theme"
+					>
+						<svg
+							class="sun"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<circle cx="12" cy="12" r="4" />
+							<path
+								d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+							/>
+						</svg>
+						<svg
+							class="moon"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+						</svg>
+					</button>
+					<a href="login.html" class="btn btn-ghost">Sign In</a>
+					<a href="signup.html" class="btn btn-primary">Get Started</a>
+					<button class="hamburger" data-hamburger aria-label="Menu">
+						<svg
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M3 6h18M3 12h18M3 18h18" />
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div class="mobile-menu" data-mobile-menu>
+				<a href="feature1.html">Feature 1</a
+				><a href="feature2.html">Feature 2</a
+				><a href="integrations.html">Integrations</a
+				><a href="about.html">About us</a><a href="pricing.html">Pricing</a
+				><a href="faq.html">FAQ</a><a href="blog.html">Blog</a
+				><a href="contact.html">Contact</a><a href="login.html">Sign In</a
+				><a href="signup.html" class="btn btn-primary" style="margin-top:.5rem"
+					>Get Started</a
+				>
+			</div>
+		</header>
+
+		<main>
+			<section class="f1-hero">
+				<div class="container">
+					<div class="f1-hero-grid">
+						<div class="reveal">
+							<span class="pill-tag">Accounts Payable Software</span>
+							<h1 class="h-display">AI Enhancing Work Efficiency</h1>
+						</div>
+						<div class="reveal">
+							<p class="lead">
+								Zippay Bill Pay automates your entire accounts payable workflow
+								so every bill is recorded, approved, and paid without any data
+								entry or repetitive tasks.
+							</p>
+							<div class="f1-hero-actions">
+								<a href="signup.html" class="btn btn-primary">Get Started</a>
+								<a href="#faq" class="btn btn-ghost">Why Zippay</a>
+							</div>
+						</div>
+					</div>
+					<div class="f1-mock reveal">
+						<img
+							src="assets/images/features/zippay-feature.webp"
+							alt="Zippay invoice dashboard"
+						>
+					</div>
+				</div>
+			</section>
+
+			<div class="container f1-logos">
+				<div class="reveal" style="text-align:center">
+					<p class="muted" style="font-size:.85rem;margin-bottom:1.5rem">
+						Trusted by 25K+ Business Teams
+					</p>
+					<div class="logo-strip">
+						<img src="assets/images/about/logos/cl1.svg" alt="">
+						<img src="assets/images/about/logos/cl2.svg" alt="">
+						<img src="assets/images/about/logos/cl3.svg" alt="">
+						<img src="assets/images/about/logos/cl4.svg" alt="">
+						<img src="assets/images/about/logos/cl5.svg" alt="">
+					</div>
+				</div>
+			</div>
+
+			<section class="section">
+				<div class="container">
+					<p class="eyebrow reveal">Solutions</p>
+					<h2 class="h2 center reveal" style="margin-top:.5rem">
+						Enhanced AP Automation<br>Software Solutions
+					</h2>
+					<p class="lead center reveal" style="margin-top:1rem">
+						Keep your business account and all your finance needs safely
+						organized under one roof. Manage money quickly &amp; efficiently,
+						whether you're alone or leading a team.
+					</p>
+					<div class="sol-grid">
+						<div class="sol-card reveal">
+							<img src="assets/images/features/solutions/f1.webp" alt="">
+							<h4>Global Currency</h4>
+							<p>
+								Effortlessly handle international transactions with our
+								intuitive currency management and conversion features.
+							</p>
+						</div>
+						<div class="sol-card reveal">
+							<img src="assets/images/features/solutions/f2.webp" alt="">
+							<h4>Working Capital</h4>
+							<p>
+								Optimize your working capital efficiently, ensuring smooth cash
+								flow and enhanced financial stability.
+							</p>
+						</div>
+						<div class="sol-card reveal">
+							<img src="assets/images/features/solutions/f3.webp" alt="">
+							<h4>Vendor Management</h4>
+							<p>
+								Streamline all aspects of vendor relationships and payments with
+								our comprehensive management tools.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<p class="eyebrow reveal" style="text-align:left">Features</p>
+					<h2 class="h2 reveal" style="margin-top:.5rem">
+						Streamlined AP Software
+					</h2>
+					<p class="lead reveal" style="margin-top:1rem">
+						Simplify accounts payable with intuitive automation, efficient
+						processing, and seamless integration for faster financial
+						management.
+					</p>
+					<div class="stream-grid">
+						<div class="reveal">
+							<ul class="check-list">
+								<li>
+									<span class="tick"
+										><svg
+											width="12"
+											height="12"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="3"
+										>
+											<path d="M20 6 9 17l-5-5" />
+										</svg></span
+									>Eliminate Data Entry
+								</li>
+								<li>
+									<span class="tick"
+										><svg
+											width="12"
+											height="12"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="3"
+										>
+											<path d="M20 6 9 17l-5-5" />
+										</svg></span
+									>Instantly Strengthen Controls
+								</li>
+								<li>
+									<span class="tick"
+										><svg
+											width="12"
+											height="12"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="3"
+										>
+											<path d="M20 6 9 17l-5-5" />
+										</svg></span
+									>Never Miss a Bill
+								</li>
+								<li>
+									<span class="tick"
+										><svg
+											width="12"
+											height="12"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="3"
+										>
+											<path d="M20 6 9 17l-5-5" />
+										</svg></span
+									>Use Any Vendor Payment Method
+								</li>
+							</ul>
+							<p class="muted">
+								Capture invoices automatically and sync line items into your
+								ledger with zero manual typing.
+							</p>
+							<a
+								href="signup.html"
+								class="btn btn-ghost"
+								style="margin-top:1.5rem"
+								>Learn More</a
+							>
+						</div>
+						<div class="reveal">
+							<img
+								class="stream-img"
+								src="assets/images/features/tabs/t1.webp"
+								alt="Zippay activity feed"
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="faq">
+				<div class="container">
+					<p class="eyebrow reveal">FAQ</p>
+					<h2 class="h2 center reveal" style="margin-top:.5rem">
+						Frequently Asked Questions
+					</h2>
+					<p class="lead center reveal" style="margin-top:1rem">
+						Find answers to common queries and get the information you need
+						quickly and easily.
+					</p>
+					<div class="faq-wrap reveal">
+						<div class="accordion-item">
+							<button class="accordion-trigger">
+								What is Zippay?
+								<span class="plus"
+									><svg
+										width="18"
+										height="18"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<path d="M12 5v14M5 12h14" />
+									</svg></span
+								>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Zippay is an all-in-one spend management platform that
+									automates accounts payable, corporate cards, and expense
+									tracking so finance teams can control spend in real time.
+								</p>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<button class="accordion-trigger">
+								How does Zippay's global corporate card work?
+								<span class="plus"
+									><svg
+										width="18"
+										height="18"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<path d="M12 5v14M5 12h14" />
+									</svg></span
+								>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Issue physical and virtual cards with custom limits for teams
+									across borders, with every transaction synced automatically to
+									your ledger.
+								</p>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<button class="accordion-trigger">
+								How secure is my financial data with Zippay?
+								<span class="plus"
+									><svg
+										width="18"
+										height="18"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<path d="M12 5v14M5 12h14" />
+									</svg></span
+								>
+							</button>
+							<div class="accordion-body">
+								<p>
+									We protect your data with bank-grade encryption, rigorous
+									access controls, and continuous monitoring to keep your
+									finances safe.
+								</p>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<button class="accordion-trigger">
+								Is Zippay suitable for businesses of all sizes?
+								<span class="plus"
+									><svg
+										width="18"
+										height="18"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<path d="M12 5v14M5 12h14" />
+									</svg></span
+								>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Yes. From early-stage startups to large enterprises, Zippay
+									scales with you and adapts to your unique finance workflows.
+								</p>
+							</div>
+						</div>
+						<div style="text-align:center;margin-top:1.5rem">
+							<a href="faq.html" class="btn btn-ghost">See All FAQs</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="container">
+				<section class="cta reveal">
+					<h2>A Better Way to Manage Your Money</h2>
+					<p>
+						Zippay enables you to achieve clarity and significant results on a
+						large scale by linking tasks and workflows to the overarching
+						objectives of the company.
+					</p>
+					<div class="cta-actions">
+						<a href="signup.html" class="btn btn-primary">Get Started</a
+						><a href="about.html" class="btn btn-forest">Why Zippay</a>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<footer class="site-footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-brand">
+						<a class="brand" href="index.html"
+							><img
+								src="assets/images/logos/white.svg"
+								alt="Zippay"
+								style="width:auto;height:26px"
+							></a
+						>
+						<p>Zippay Technologies, LLC 2026</p>
+						<p class="follow">Follow us on:</p>
+						<div class="socials">
+							<a href="#"><img src="assets/icons/in.svg" alt=""></a
+							><a href="#"><img src="assets/icons/x.svg" alt=""></a
+							><a href="#"><img src="assets/icons/yt.svg" alt=""></a>
+						</div>
+					</div>
+					<div class="footer-col">
+						<h4>Product</h4>
+						<a href="feature1.html">Feature 1</a
+						><a href="feature2.html">Feature 2</a
+						><a href="integrations.html">Integrations</a>
+					</div>
+					<div class="footer-col">
+						<h4>Company</h4>
+						<a href="about.html">About Us</a><a href="pricing.html">Pricing</a
+						><a href="faq.html">FAQ</a><a href="contact.html">Contatct</a>
+					</div>
+					<div class="footer-col">
+						<h4>Resources</h4>
+						<a href="blog.html">Blog</a><a href="login.html">Sign In</a
+						><a href="signup.html">Sign Up</a>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<a href="privacy.html">Privacy Policy</a
+					><a href="terms.html">Terms of Service</a>
+				</div>
+			</div>
+		</footer>
+		<script src="js/main.js"></script>
+	</body>
+</html>

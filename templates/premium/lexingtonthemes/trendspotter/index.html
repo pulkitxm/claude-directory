@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Trendspotter — Discover the Best Design Tools</title>
+		<meta
+			name="description"
+			content="A curated directory of the best design, development, and creative tools trending right now."
+		>
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<!-- HEADER -->
+		<header class="site-header">
+			<div class="container">
+				<nav class="nav-inner">
+					<!-- Left: nav links + actions + hamburger -->
+					<div
+						class="nav-left"
+						style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;"
+					>
+						<a href="blog.html" class="nav-link">Blog</a>
+						<a href="store.html" class="nav-link">Store</a>
+						<a href="system/overview.html" class="nav-link">Overview</a>
+						<a
+							href="https://lexingtonthemes.com/templates/trendspotter"
+							target="_blank"
+							rel="noopener"
+							class="nav-link"
+							>Buy</a
+						>
+						<button
+							type="button"
+							data-modal-open="submit-tool"
+							class="nav-action"
+							style="display:block;font-size:0.75rem;"
+						>
+							Submit a tool
+						</button>
+						<button
+							type="button"
+							data-modal-open="subscribe"
+							class="nav-action"
+							style="font-size:0.75rem;"
+						>
+							Subscribe
+						</button>
+						<button
+							type="button"
+							id="searchButton"
+							class="nav-action"
+							style="font-size:0.75rem;"
+						>
+							Search
+						</button>
+						<!-- Hamburger (mobile) -->
+						<button
+							type="button"
+							id="navDrawerOpen"
+							class="nav-action"
+							style="margin-left:auto;padding:0;"
+							aria-label="Open menu"
+						>
+							<svg
+								viewBox="0 0 256 256"
+								fill="currentColor"
+								style="width:2rem;height:2rem;"
+							>
+								<path
+									d="M228,160a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,160ZM40,108H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24Z"
+								/>
+							</svg>
+						</button>
+					</div>
+
+					<!-- Right: SVG wordmark logo -->
+					<a href="index.html" style="display:flex;align-items:center;">
+						<svg
+							class="nav-wordmark"
+							viewBox="0 0 74 14"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M2.7 11V4.22H0.204V2.42H7.344V4.22H4.824V11H2.7ZM6.86972 11V4.856H8.74172V5.816H8.77772C9.19372 5.112 9.75372 4.76 10.4577 4.76C10.6417 4.76 10.7697 4.776 10.8417 4.808V6.488H10.7937C10.1857 6.4 9.70572 6.508 9.35372 6.812C9.00172 7.108 8.82572 7.584 8.82572 8.24V11H6.86972ZM13.9863 11.18C12.9943 11.18 12.1983 10.876 11.5983 10.268C11.0063 9.652 10.7103 8.868 10.7103 7.916C10.7103 6.988 11.0023 6.216 11.5863 5.6C12.1783 4.984 12.9383 4.676 13.8663 4.676C14.7063 4.676 15.4063 4.932 15.9663 5.444C16.7023 6.116 17.0623 7.112 17.0463 8.432H12.6303C12.6943 8.856 12.8423 9.188 13.0743 9.428C13.3063 9.66 13.6183 9.776 14.0103 9.776C14.5143 9.776 14.8543 9.572 15.0303 9.164H16.9383C16.7943 9.756 16.4503 10.24 15.9063 10.616C15.3703 10.992 14.7303 11.18 13.9863 11.18ZM12.6423 7.268H15.0663C15.0343 6.9 14.9103 6.608 14.6943 6.392C14.4863 6.176 14.2223 6.068 13.9023 6.068C13.2063 6.068 12.7863 6.468 12.6423 7.268ZM17.3411 11V4.856H19.2251V5.696H19.2611C19.7331 5.016 20.3651 4.676 21.1571 4.676C21.8211 4.676 22.3411 4.892 22.7171 5.324C23.1011 5.748 23.2931 6.308 23.2931 7.004V11H21.3371V7.4C21.3371 7.064 21.2531 6.8 21.0851 6.608C20.9251 6.408 20.6891 6.308 20.3771 6.308C20.0571 6.308 19.7971 6.428 19.5971 6.668C19.3971 6.908 19.2971 7.22 19.2971 7.604V11H17.3411ZM26.2369 11.192C25.4369 11.192 24.7889 10.9 24.2929 10.316C23.7969 9.732 23.5489 8.936 23.5489 7.928C23.5489 6.968 23.7969 6.188 24.2929 5.588C24.7969 4.98 25.4449 4.676 26.2369 4.676C26.9729 4.676 27.5449 4.968 27.9529 5.552H27.9889V2.42H29.9449V11H28.0729V10.172H28.0489C27.6489 10.852 27.0449 11.192 26.2369 11.192ZM26.7409 9.644C27.1409 9.644 27.4569 9.488 27.6889 9.176C27.9209 8.856 28.0369 8.44 28.0369 7.928C28.0369 7.392 27.9289 6.964 27.7129 6.644C27.4969 6.316 27.1809 6.152 26.7649 6.152C26.3809 6.152 26.0769 6.312 25.8529 6.632C25.6369 6.952 25.5289 7.376 25.5289 7.904C25.5289 8.44 25.6369 8.864 25.8529 9.176C26.0689 9.488 26.3649 9.644 26.7409 9.644ZM34.0596 11.204C32.8996 11.204 31.9756 10.956 31.2876 10.46C30.6076 9.956 30.2556 9.236 30.2316 8.3H32.3676C32.4556 9.116 33.0156 9.524 34.0476 9.524C34.4316 9.524 34.7556 9.452 35.0196 9.308C35.2916 9.156 35.4276 8.928 35.4276 8.624C35.4276 8.416 35.3436 8.244 35.1756 8.108C35.0076 7.964 34.8356 7.864 34.6596 7.808C34.4916 7.752 34.1676 7.664 33.6876 7.544C33.6636 7.536 33.6476 7.532 33.6396 7.532C33.6316 7.524 33.6196 7.52 33.6036 7.52C33.5876 7.512 33.5716 7.508 33.5556 7.508C33.1876 7.42 32.8836 7.344 32.6436 7.28C32.4116 7.208 32.1436 7.104 31.8396 6.968C31.5436 6.824 31.3076 6.668 31.1316 6.5C30.9556 6.332 30.8036 6.112 30.6756 5.84C30.5556 5.56 30.4956 5.248 30.4956 4.904C30.4956 4.024 30.8076 3.364 31.4316 2.924C32.0636 2.484 32.8876 2.264 33.9036 2.264C34.8796 2.264 35.6756 2.488 36.2916 2.936C36.9156 3.384 37.2476 4.04 37.2876 4.904H35.2116C35.1716 4.576 35.0316 4.324 34.7916 4.148C34.5516 3.964 34.2316 3.872 33.8316 3.872C33.4636 3.872 33.1636 3.948 32.9316 4.1C32.7076 4.244 32.5956 4.436 32.5956 4.676C32.5956 4.948 32.7316 5.148 33.0036 5.276C33.2756 5.396 33.7876 5.54 34.5396 5.708C35.0116 5.82 35.3996 5.932 35.7036 6.044C36.0076 6.148 36.3156 6.3 36.6276 6.5C36.9476 6.7 37.1836 6.96 37.3356 7.28C37.4956 7.592 37.5756 7.968 37.5756 8.408C37.5756 9.28 37.2436 9.964 36.5796 10.46C35.9236 10.956 35.0836 11.204 34.0596 11.204ZM37.9643 13.028V4.856H39.8363V5.6H39.8723C40.3443 4.984 40.9643 4.676 41.7323 4.676C42.5323 4.676 43.1683 4.984 43.6403 5.6C44.1203 6.208 44.3603 6.984 44.3603 7.928C44.3603 8.92 44.1163 9.712 43.6283 10.304C43.1403 10.896 42.4923 11.192 41.6843 11.192C40.9323 11.192 40.3523 10.916 39.9443 10.364H39.9203V13.028H37.9643ZM41.1803 9.68C41.5563 9.68 41.8483 9.532 42.0563 9.236C42.2723 8.932 42.3803 8.52 42.3803 8C42.3803 7.456 42.2763 7.028 42.0683 6.716C41.8603 6.404 41.5523 6.248 41.1443 6.248C40.7363 6.248 40.4203 6.412 40.1963 6.74C39.9723 7.06 39.8603 7.48 39.8603 8C39.8603 8.504 39.9763 8.912 40.2083 9.224C40.4403 9.528 40.7643 9.68 41.1803 9.68ZM46.6989 9.296C46.9229 9.632 47.2429 9.8 47.6589 9.8C48.0749 9.8 48.3949 9.632 48.6189 9.296C48.8509 8.96 48.9669 8.508 48.9669 7.94C48.9669 7.372 48.8509 6.92 48.6189 6.584C48.3949 6.24 48.0749 6.068 47.6589 6.068C47.2429 6.068 46.9229 6.236 46.6989 6.572C46.4749 6.908 46.3629 7.364 46.3629 7.94C46.3629 8.508 46.4749 8.96 46.6989 9.296ZM50.0349 10.268C49.4349 10.884 48.6469 11.192 47.6709 11.192C46.6949 11.192 45.9029 10.884 45.2949 10.268C44.6869 9.652 44.3829 8.876 44.3829 7.94C44.3829 7.004 44.6869 6.228 45.2949 5.612C45.9029 4.996 46.6949 4.688 47.6709 4.688C48.6469 4.688 49.4349 4.996 50.0349 5.612C50.6429 6.228 50.9469 7.004 50.9469 7.94C50.9469 8.876 50.6429 9.652 50.0349 10.268ZM53.567 11.072C52.943 11.072 52.459 10.948 52.115 10.7C51.779 10.444 51.611 10.004 51.611 9.38V6.08H50.795V4.856H51.611V2.912H53.519V4.856H54.635V6.08H53.519V8.96C53.519 9.184 53.575 9.34 53.687 9.428C53.807 9.516 53.979 9.56 54.203 9.56C54.267 9.56 54.351 9.56 54.455 9.56C54.559 9.552 54.619 9.548 54.635 9.548V10.976C54.411 11.04 54.055 11.072 53.567 11.072ZM57.3554 11.072C56.7314 11.072 56.2474 10.948 55.9034 10.7C55.5674 10.444 55.3994 10.004 55.3994 9.38V6.08H54.5834V4.856H55.3994V2.912H57.3074V4.856H58.4234V6.08H57.3074V8.96C57.3074 9.184 57.3634 9.34 57.4754 9.428C57.5954 9.516 57.7674 9.56 57.9914 9.56C58.0554 9.56 58.1394 9.56 58.2434 9.56C58.3474 9.552 58.4074 9.548 58.4234 9.548V10.976C58.1994 11.04 57.8434 11.072 57.3554 11.072ZM61.7078 11.18C60.7158 11.18 59.9198 10.876 59.3198 10.268C58.7278 9.652 58.4318 8.868 58.4318 7.916C58.4318 6.988 58.7238 6.216 59.3078 5.6C59.8998 4.984 60.6598 4.676 61.5878 4.676C62.4278 4.676 63.1278 4.932 63.6878 5.444C64.4238 6.116 64.7838 7.112 64.7678 8.432H60.3518C60.4158 8.856 60.5638 9.188 60.7958 9.428C61.0278 9.66 61.3398 9.776 61.7318 9.776C62.2358 9.776 62.5758 9.572 62.7518 9.164H64.6598C64.5158 9.756 64.1718 10.24 63.6278 10.616C63.0918 10.992 62.4518 11.18 61.7078 11.18ZM60.3638 7.268H62.7878C62.7558 6.9 62.6318 6.608 62.4158 6.392C62.2078 6.176 61.9438 6.068 61.6238 6.068C60.9278 6.068 60.5078 6.468 60.3638 7.268ZM65.0627 11V4.856H66.9347V5.816H66.9707C67.3867 5.112 67.9467 4.76 68.6507 4.76C68.8347 4.76 68.9627 4.776 69.0347 4.808V6.488H68.9867C68.3787 6.4 67.8987 6.508 67.5467 6.812C67.1947 7.108 67.0187 7.584 67.0187 8.24V11H65.0627Z"
+								fill="currentColor"
+							/>
+							<rect x="69" width="5" height="5" fill="#3e8855" />
+						</svg>
+					</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- MARQUEE STRIP -->
+		<div class="marquee-wrap" style="padding-block: 0.5rem;">
+			<div class="marquee-track" id="marqueeTrack">
+				<!-- First set -->
+				<img src="assets/1.BlVr7yj8_Z9RIUO.webp" alt="" class="marquee-item">
+				<img src="assets/2.DyPaU2Ux_YLp3W.webp" alt="" class="marquee-item">
+				<img src="assets/3.D2Pl-lLD_ZNoRKl.webp" alt="" class="marquee-item">
+				<img src="assets/4.yPPMTDA3_oSuvk.webp" alt="" class="marquee-item">
+				<img src="assets/5.CwiesIRt_Z8mITJ.webp" alt="" class="marquee-item">
+				<img src="assets/6.CoFY7GVA_Z156XYU.webp" alt="" class="marquee-item">
+				<img src="assets/7.3gXtmNHb_2jRyvu.webp" alt="" class="marquee-item">
+				<img src="assets/8.BWaRltKz_1sQUID.webp" alt="" class="marquee-item">
+				<img src="assets/9.C5MHhrWJ_ZCW63f.webp" alt="" class="marquee-item">
+				<img src="assets/10.B7d84LhC_2hLMfL.webp" alt="" class="marquee-item">
+				<!-- Duplicate for infinite scroll -->
+				<img src="assets/1.BlVr7yj8_Z9RIUO.webp" alt="" class="marquee-item">
+				<img src="assets/2.DyPaU2Ux_YLp3W.webp" alt="" class="marquee-item">
+				<img src="assets/3.D2Pl-lLD_ZNoRKl.webp" alt="" class="marquee-item">
+				<img src="assets/4.yPPMTDA3_oSuvk.webp" alt="" class="marquee-item">
+				<img src="assets/5.CwiesIRt_Z8mITJ.webp" alt="" class="marquee-item">
+				<img src="assets/6.CoFY7GVA_Z156XYU.webp" alt="" class="marquee-item">
+				<img src="assets/7.3gXtmNHb_2jRyvu.webp" alt="" class="marquee-item">
+				<img src="assets/8.BWaRltKz_1sQUID.webp" alt="" class="marquee-item">
+				<img src="assets/9.C5MHhrWJ_ZCW63f.webp" alt="" class="marquee-item">
+				<img src="assets/10.B7d84LhC_2hLMfL.webp" alt="" class="marquee-item">
+			</div>
+		</div>
+
+		<!-- MAIN CONTENT -->
+		<main style="flex:1; padding-block: 2rem;">
+			<div class="container">
+				<!-- Filter / tag bar -->
+				<div class="filter-bar">
+					<button
+						type="button"
+						class="btn btn-primary btn-sm"
+						style="font-size:0.75rem;height:2rem;padding-inline:1rem;"
+					>
+						Filters
+					</button>
+					<div
+						style="display:flex;gap:0.5rem;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-block:0.5rem;"
+					>
+						<a href="tools/tags/colors.html" class="tag">colors</a>
+						<a href="tools/tags/development.html" class="tag">development</a>
+						<a href="tools/tags/graphics.html" class="tag">graphics</a>
+						<a href="tools/tags/typography.html" class="tag">typography</a>
+					</div>
+				</div>
+
+				<div
+					style="display: grid; grid-template-columns: 1fr; gap: 2rem;"
+					class="main-layout"
+				>
+					<!-- Tools grid -->
+					<div>
+						<div class="tools-grid" id="toolsGrid">
+							<a href="tools/tool/1.html" class="tool-card">
+								<img
+									src="assets/1.BlVr7yj8_Z9RIUO.webp"
+									alt="Foundry Atlas"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">Foundry Atlas</div>
+									<div class="tool-card-tagline">
+										Multipage web kits for modern storefronts
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">graphics</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+
+							<a href="tools/tool/2.html" class="tool-card">
+								<img
+									src="assets/2.DyPaU2Ux_YLp3W.webp"
+									alt="Circuit Blocks"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">Circuit Blocks</div>
+									<div class="tool-card-tagline">
+										Composable UI sections for scrappy builders
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">development</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+
+							<a href="tools/tool/3.html" class="tool-card">
+								<img
+									src="assets/3.D2Pl-lLD_ZNoRKl.webp"
+									alt="Spectrum & Type"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">Spectrum &amp; Type</div>
+									<div class="tool-card-tagline">
+										Visual harmony for type and color systems
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">colors</span>
+											<span class="tag">typography</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+
+							<a href="tools/tool/4.html" class="tool-card">
+								<img
+									src="assets/4.yPPMTDA3_oSuvk.webp"
+									alt="Inkwell Studio"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">Inkwell Studio</div>
+									<div class="tool-card-tagline">
+										Craft editorial content with pixel precision
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">graphics</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+
+							<a href="tools/tool/5.html" class="tool-card">
+								<img
+									src="assets/5.CwiesIRt_Z8mITJ.webp"
+									alt="Palette Pro"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">Palette Pro</div>
+									<div class="tool-card-tagline">
+										Build accessible color systems in minutes
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">colors</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+
+							<a href="tools/tool/6.html" class="tool-card">
+								<img
+									src="assets/6.CoFY7GVA_Z156XYU.webp"
+									alt="Gridsmith"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">Gridsmith</div>
+									<div class="tool-card-tagline">
+										Layout scaffolding for complex design grids
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">development</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+
+							<a href="tools/tool/7.html" class="tool-card">
+								<img
+									src="assets/7.3gXtmNHb_2jRyvu.webp"
+									alt="Typecraft"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">Typecraft</div>
+									<div class="tool-card-tagline">
+										Preview every font on your machine without fuss
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">typography</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+
+							<a href="tools/tool/8.html" class="tool-card">
+								<img
+									src="assets/8.BWaRltKz_1sQUID.webp"
+									alt="IconForge"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">IconForge</div>
+									<div class="tool-card-tagline">
+										SVG icon toolkit for design systems
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">graphics</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+
+							<a href="tools/tool/9.html" class="tool-card">
+								<img
+									src="assets/9.C5MHhrWJ_ZCW63f.webp"
+									alt="ShadowBox"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">ShadowBox</div>
+									<div class="tool-card-tagline">
+										Real-time CSS shadow generator and exporter
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">development</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+
+							<a href="tools/tool/10.html" class="tool-card">
+								<img
+									src="assets/10.B7d84LhC_2hLMfL.webp"
+									alt="Local Loft"
+									class="tool-card-img"
+									loading="lazy"
+								>
+								<div class="tool-card-body">
+									<div class="tool-card-name">Local Loft</div>
+									<div class="tool-card-tagline">
+										Preview every font on your machine without fuss
+									</div>
+									<div class="tool-card-footer">
+										<div class="tool-card-tags">
+											<span class="tag">typography</span>
+										</div>
+										<button
+											type="button"
+											class="bookmark-btn"
+											aria-label="Bookmark"
+											onclick="event.preventDefault()"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.5"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</a>
+						</div>
+
+						<!-- Newsletter strip -->
+						<div class="newsletter-strip" style="margin-top: 2rem;">
+							<p class="section-label" style="color: var(--base-400);">
+								Newsletter
+							</p>
+							<h2
+								style="font-size:1.25rem; font-weight:600; color:white; margin-top:0.5rem;"
+							>
+								The Trend Report
+							</h2>
+							<p
+								style="font-size:0.875rem; color:var(--base-400); margin-top:0.5rem; max-width:36ch;"
+							>
+								Stay informed on the latest trends with a weekly roundup of the
+								best websites delivered straight to your inbox every Monday.
+							</p>
+							<form class="newsletter-form" onsubmit="return false;">
+								<input
+									type="email"
+									placeholder="Your email"
+									class="newsletter-input"
+									aria-label="Email address"
+								>
+								<button type="submit" class="btn btn-accent">Subscribe</button>
+							</form>
+						</div>
+
+						<!-- Featured blog post -->
+						<div
+							style="margin-top: 2rem; border-top: 1px solid var(--color-border); padding-top: 2rem;"
+						>
+							<p class="section-label" style="margin-bottom:1rem;">
+								From the blog
+							</p>
+							<a
+								href="blog.html"
+								class="blog-card"
+								style="text-decoration:none;"
+							>
+								<img
+									src="assets/time.B3cEeqkx_LLdVA.webp"
+									alt="Blog post"
+									class="blog-card-img"
+								>
+								<div>
+									<p class="blog-card-date">Jun 12, 2025</p>
+									<h3 class="blog-card-title" style="margin-top:0.25rem;">
+										The rise of AI-assisted design tooling in 2025
+									</h3>
+									<p class="blog-card-excerpt" style="margin-top:0.5rem;">
+										How the best designers are augmenting their workflows with
+										AI, and what that means for the future of tool discovery.
+									</p>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- FOOTER -->
+		<footer class="site-footer">
+			<div class="container">
+				<div class="footer-inner">
+					<nav class="footer-links">
+						<a href="blog.html" class="footer-link">Blog</a>
+						<a href="store.html" class="footer-link">Store</a>
+						<a href="pricing.html" class="footer-link">Pricing</a>
+						<a href="infopages/terms.html" class="footer-link">Terms</a>
+						<a href="signin.html" class="footer-link">Sign in</a>
+					</nav>
+					<p class="footer-credit">
+						Built with
+						<a
+							href="https://lexingtonthemes.com"
+							target="_blank"
+							rel="noopener"
+							class="footer-link"
+							style="text-decoration:underline;"
+							>Lexington Themes</a
+						>
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- SUBMIT TOOL MODAL -->
+		<div
+			id="modal-submit-tool"
+			class="modal"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="submit-tool-title"
+		>
+			<div class="modal-overlay" id="modal-submit-tool-overlay"></div>
+			<div class="modal-panel-wrapper">
+				<div class="modal-panel">
+					<button
+						type="button"
+						class="modal-close"
+						data-modal-close="submit-tool"
+						aria-label="Close"
+					>
+						<svg width="20" height="20" viewBox="0 0 15 15" fill="none">
+							<path
+								d="M0.877075 7.49988C0.877075 3.84219 3.84222 0.877045 7.49991 0.877045C11.1576 0.877045 14.1227 3.84219 14.1227 7.49988C14.1227 11.1575 11.1576 14.1227 7.49991 14.1227C3.84222 14.1227 0.877075 11.1575 0.877075 7.49988ZM7.49991 1.82704C4.36689 1.82704 1.82708 4.36686 1.82708 7.49988C1.82708 10.6329 4.36689 13.1727 7.49991 13.1727C10.6329 13.1727 13.1727 10.6329 13.1727 7.49988C13.1727 4.36686 10.6329 1.82704 7.49991 1.82704ZM9.85358 5.14644C10.0488 5.3417 10.0488 5.65829 9.85358 5.85355L8.20713 7.49999L9.85358 9.14644C10.0488 9.3417 10.0488 9.65829 9.85358 9.85355C9.65832 10.0488 9.34173 10.0488 9.14647 9.85355L7.50002 8.2071L5.85358 9.85355C5.65832 10.0488 5.34173 10.0488 5.14647 9.85355C4.95121 9.65829 4.95121 9.3417 5.14647 9.14644L6.79292 7.49999L5.14647 5.85355C4.95121 5.65829 4.95121 5.3417 5.14647 5.14644C5.34173 4.95118 5.65832 4.95118 5.85358 5.14644L7.50002 6.79289L9.14647 5.14644C9.34173 4.95118 9.65832 4.95118 9.85358 5.14644Z"
+								fill="currentColor"
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</button>
+					<img
+						src="assets/white.DMKzhvaA_gEO9V.webp"
+						alt=""
+						style="width:100%;aspect-ratio:16/10;object-fit:cover;"
+					>
+					<div style="padding: 2rem;">
+						<h3
+							id="submit-tool-title"
+							style="font-size:1.125rem;font-weight:500;color:var(--base-900);text-align:center;"
+						>
+							Submit a tool
+						</h3>
+						<p
+							style="font-size:0.875rem;color:var(--base-600);text-align:center;margin-top:0.5rem;"
+						>
+							Submit a tool to our collection, wait for approval or
+							<a
+								href="tools/submit.html"
+								style="color:black;text-decoration:underline;"
+								>skip the line</a
+							>.
+						</p>
+						<form
+							style="margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;"
+							onsubmit="return false;"
+						>
+							<input type="text" placeholder="Tool name" class="input">
+							<input type="url" placeholder="Enter tool URL" class="input">
+							<a href="forms/signup.html" class="btn btn-primary btn-full"
+								>Submit tool</a
+							>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- SUBSCRIBE MODAL -->
+		<div
+			id="modal-subscribe"
+			class="modal"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="subscribe-title"
+		>
+			<div class="modal-overlay" id="modal-subscribe-overlay"></div>
+			<div class="modal-panel-wrapper">
+				<div class="modal-panel">
+					<button
+						type="button"
+						class="modal-close"
+						data-modal-close="subscribe"
+						aria-label="Close"
+					>
+						<svg width="20" height="20" viewBox="0 0 15 15" fill="none">
+							<path
+								d="M0.877075 7.49988C0.877075 3.84219 3.84222 0.877045 7.49991 0.877045C11.1576 0.877045 14.1227 3.84219 14.1227 7.49988C14.1227 11.1575 11.1576 14.1227 7.49991 14.1227C3.84222 14.1227 0.877075 11.1575 0.877075 7.49988ZM7.49991 1.82704C4.36689 1.82704 1.82708 4.36686 1.82708 7.49988C1.82708 10.6329 4.36689 13.1727 7.49991 13.1727C10.6329 13.1727 13.1727 10.6329 13.1727 7.49988C13.1727 4.36686 10.6329 1.82704 7.49991 1.82704ZM9.85358 5.14644C10.0488 5.3417 10.0488 5.65829 9.85358 5.85355L8.20713 7.49999L9.85358 9.14644C10.0488 9.3417 10.0488 9.65829 9.85358 9.85355C9.65832 10.0488 9.34173 10.0488 9.14647 9.85355L7.50002 8.2071L5.85358 9.85355C5.65832 10.0488 5.34173 10.0488 5.14647 9.85355C4.95121 9.65829 4.95121 9.3417 5.14647 9.14644L6.79292 7.49999L5.14647 5.85355C4.95121 5.65829 4.95121 5.3417 5.14647 5.14644C5.34173 4.95118 5.65832 4.95118 5.85358 5.14644L7.50002 6.79289L9.14647 5.14644C9.34173 4.95118 9.65832 4.95118 9.85358 5.14644Z"
+								fill="currentColor"
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</button>
+					<img
+						src="assets/carousel.DjbB2_SU_Zmk4iE.webp"
+						alt=""
+						style="width:100%;aspect-ratio:16/10;object-fit:cover;"
+					>
+					<div style="padding: 2rem;">
+						<h3
+							id="subscribe-title"
+							style="font-size:1.125rem;font-weight:500;color:var(--base-900);text-align:center;"
+						>
+							Weekly Highlights
+						</h3>
+						<p
+							style="font-size:0.875rem;color:var(--base-600);text-align:center;margin-top:0.5rem;"
+						>
+							Stay informed on the latest trends with a weekly roundup of the
+							best websites delivered straight to your inbox every Monday.
+						</p>
+						<form
+							style="margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;"
+							onsubmit="return false;"
+						>
+							<input
+								type="text"
+								placeholder="Your name"
+								class="input"
+								style="margin-top:1rem;"
+							>
+							<button type="submit" class="btn btn-primary btn-full">
+								Subscribe
+							</button>
+							<p
+								style="font-size:0.75rem;color:var(--base-600);text-align:center;"
+							>
+								Mostly tools.
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- SEARCH OVERLAY -->
+		<div
+			id="searchModal"
+			class="search-overlay"
+			role="dialog"
+			aria-modal="true"
+		>
+			<div class="search-inner">
+				<div class="search-box">
+					<div class="search-input-wrap">
+						<svg
+							class="search-input-icon"
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<circle cx="11" cy="11" r="8" />
+							<path d="m21 21-4.35-4.35" />
+						</svg>
+						<input
+							type="text"
+							id="searchInput"
+							placeholder="Search tools..."
+							class="search-input"
+							autocomplete="off"
+						>
+					</div>
+					<div id="searchResults" class="search-results"></div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+		// Tools data for search
+		const tools = [
+			{
+				slug: "1",
+				title: "Foundry Atlas",
+				tagline: "Multipage web kits for modern storefronts",
+				img: "assets/1.BlVr7yj8_Z9RIUO.webp",
+			},
+			{
+				slug: "2",
+				title: "Circuit Blocks",
+				tagline: "Composable UI sections for scrappy builders",
+				img: "assets/2.DyPaU2Ux_YLp3W.webp",
+			},
+			{
+				slug: "3",
+				title: "Spectrum & Type",
+				tagline: "Visual harmony for type and color systems",
+				img: "assets/3.D2Pl-lLD_ZNoRKl.webp",
+			},
+			{
+				slug: "4",
+				title: "Inkwell Studio",
+				tagline: "Craft editorial content with pixel precision",
+				img: "assets/4.yPPMTDA3_oSuvk.webp",
+			},
+			{
+				slug: "5",
+				title: "Palette Pro",
+				tagline: "Build accessible color systems in minutes",
+				img: "assets/5.CwiesIRt_Z8mITJ.webp",
+			},
+			{
+				slug: "6",
+				title: "Gridsmith",
+				tagline: "Layout scaffolding for complex design grids",
+				img: "assets/6.CoFY7GVA_Z156XYU.webp",
+			},
+			{
+				slug: "7",
+				title: "Typecraft",
+				tagline: "Preview every font on your machine without fuss",
+				img: "assets/7.3gXtmNHb_2jRyvu.webp",
+			},
+			{
+				slug: "8",
+				title: "IconForge",
+				tagline: "SVG icon toolkit for design systems",
+				img: "assets/8.BWaRltKz_1sQUID.webp",
+			},
+			{
+				slug: "9",
+				title: "ShadowBox",
+				tagline: "Real-time CSS shadow generator and exporter",
+				img: "assets/9.C5MHhrWJ_ZCW63f.webp",
+			},
+			{
+				slug: "10",
+				title: "Local Loft",
+				tagline: "Preview every font on your machine without fuss",
+				img: "assets/10.B7d84LhC_2hLMfL.webp",
+			},
+		];
+
+		// Modal logic
+		function openModal(id) {
+			const el = document.getElementById("modal-" + id);
+			if (!el) return;
+			el.classList.add("is-open");
+			document.body.style.overflow = "hidden";
+		}
+
+		function closeModal(id) {
+			const el = document.getElementById("modal-" + id);
+			if (!el) return;
+			el.classList.remove("is-open");
+			document.body.style.overflow = "";
+		}
+
+		document.querySelectorAll("[data-modal-open]").forEach((btn) => {
+			btn.addEventListener("click", () => openModal(btn.dataset.modalOpen));
+		});
+
+		document.querySelectorAll("[data-modal-close]").forEach((btn) => {
+			btn.addEventListener("click", () => closeModal(btn.dataset.modalClose));
+		});
+
+		document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+			overlay.addEventListener("click", () => {
+				document.querySelectorAll(".modal.is-open").forEach((m) => {
+					m.classList.remove("is-open");
+					document.body.style.overflow = "";
+				});
+			});
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") {
+				document
+					.querySelectorAll(".modal.is-open")
+					.forEach((m) => m.classList.remove("is-open"));
+				document.getElementById("searchModal").classList.remove("is-open");
+				document.body.style.overflow = "";
+			}
+		});
+
+		// Search
+		const searchBtn = document.getElementById("searchButton");
+		const searchModal = document.getElementById("searchModal");
+		const searchInput = document.getElementById("searchInput");
+		const searchResults = document.getElementById("searchResults");
+
+		searchBtn.addEventListener("click", () => {
+			searchModal.classList.add("is-open");
+			document.body.style.overflow = "hidden";
+			setTimeout(() => searchInput.focus(), 100);
+		});
+
+		searchModal.addEventListener("click", (e) => {
+			if (e.target === searchModal) {
+				searchModal.classList.remove("is-open");
+				document.body.style.overflow = "";
+			}
+		});
+
+		searchInput.addEventListener("input", () => {
+			const q = searchInput.value.toLowerCase().trim();
+			if (!q) {
+				searchResults.innerHTML = "";
+				searchResults.classList.remove("has-results");
+				return;
+			}
+			const matches = tools.filter(
+				(t) =>
+					t.title.toLowerCase().includes(q) ||
+					t.tagline.toLowerCase().includes(q),
+			);
+			if (matches.length === 0) {
+				searchResults.innerHTML =
+					'<div style="padding:1rem;text-align:center;font-size:0.875rem;color:var(--base-500);">No results found</div>';
+				searchResults.classList.add("has-results");
+			} else {
+				searchResults.innerHTML = matches
+					.map(
+						(t) => `
+      <a href="tools/tool/${t.slug}.html" class="search-result-item">
+        <img src="${t.img}" alt="${t.title}" class="search-result-img">
+        <div>
+          <div class="search-result-name">${t.title}</div>
+          <div class="search-result-tagline">${t.tagline}</div>
+        </div>
+      </a>
+    `,
+					)
+					.join("");
+				searchResults.classList.add("has-results");
+			}
+		});
+		</script>
+	</body>
+</html>

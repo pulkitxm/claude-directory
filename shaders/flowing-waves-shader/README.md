@@ -1,5 +1,7 @@
 # Flowing Waves Shader — Interactive Cosine Wave Fragment Shader (React + TypeScript + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport interactive Three.js fragment-shader wave field — a nine-iteration cosine displacement rippling across a full-screen quad — wrapped in a tidal field observatory showcase. The shader is the ambient background; layered over it is a live "Meridian Tidal Lab" oceanographic HUD with a buoy telemetry panel (significant wave height, wave period, turbulence index), a sea-state mode selector, a center-clarity toggle, and an amplitude dial. GPU luminance is sampled via `gl.readPixels` to drive real telemetry — nothing faked. Built following the shadcn component structure with full TypeScript typing. Generated with Claude Fable 5.
 
 ```bash

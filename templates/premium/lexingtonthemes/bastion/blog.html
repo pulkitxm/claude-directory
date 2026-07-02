@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Blog — Bastion Construction</title>
+		<meta
+			name="description"
+			content="News, insights, and expert perspectives from the Bastion construction team."
+		>
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<link rel="stylesheet" href="tokens.css">
+		<style>
+		.blog-card-img-wrap {
+			overflow: hidden;
+			border-radius: var(--radius) var(--radius) 0 0;
+			aspect-ratio: 16 / 9;
+		}
+		.blog-card-img-wrap img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.5s ease;
+		}
+		.blog-card:hover .blog-card-img-wrap img {
+			transform: scale(1.05);
+		}
+		.blog-card {
+			background: var(--color-white);
+			border-radius: var(--radius-lg);
+			border: 1px solid var(--color-base-100);
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			transition: box-shadow 0.3s;
+		}
+		.blog-card:hover {
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+		}
+		.blog-card-body {
+			padding: 1.5rem;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+		}
+		.blog-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+		}
+		@media (max-width: 1024px) {
+			.blog-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (max-width: 640px) {
+			.blog-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- NAV -->
+		<nav class="site-nav" id="site-nav" aria-label="Main navigation">
+			<div class="container">
+				<div class="nav-inner">
+					<a href="index.html" aria-label="Bastion Home" class="nav-logo">
+						<svg
+							viewBox="0 0 394 118"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M115.165 34.8256V2C99.4547 2 89.5225 8.58854 83.5801 16.2918C78.9381 22.3091 77.8196 29.812 76.6882 37.4016C75.8715 42.8796 75.0481 48.4027 72.8882 53.445C69.6729 60.9512 64.6742 66.2306 60.6709 69.1991C57.827 71.1061 52.9896 73.7932 49.743 74.257C49.1892 74.3361 48.45 74.3867 47.574 74.4467C40.3422 74.9421 23.7814 76.0764 25.0878 99.1563C25.1692 97.8544 26.0642 95.0552 28.9936 94.2741H87.3362C87.2548 89.0664 84.2604 78.1139 72.9336 75.9657L72.5308 75.6566C92.7899 79.0407 105.303 66.2841 111.501 54.179C114.536 48.2516 115.165 41.4848 115.165 34.8256ZM31.4347 90.8565C32.6481 90.8565 33.6317 89.8729 33.6317 88.6595C33.6317 87.4462 32.6481 86.4625 31.4347 86.4625C30.2213 86.4625 29.2377 87.4462 29.2377 88.6595C29.2377 89.8729 30.2213 90.8565 31.4347 90.8565Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M8 7.12634V35.2212C8 41.363 8.56475 47.616 11.416 53.0559C18.088 65.785 32.7431 79.0304 57.5546 67.1777C52.5738 64.4027 43.4616 55.7666 42.0354 41.6283C41.9101 40.3856 41.8436 39.1332 41.7771 37.8821C41.6158 34.8438 41.4549 31.8137 40.4524 28.9505C37.0824 19.3258 27.8665 7.12634 8 7.12634Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M108.574 94.5182H87.5803V116C104.961 114.633 108.818 101.109 108.574 94.5182Z"
+								fill="currentColor"
+							/>
+						</svg>
+					</a>
+					<nav class="nav-pill" aria-label="Desktop navigation">
+						<a href="index.html" class="nav-link">Home</a>
+						<a href="about.html" class="nav-link">About</a>
+						<a href="services.html" class="nav-link">Services</a>
+						<a href="projects.html" class="nav-link">Projects</a>
+						<a href="team.html" class="nav-link">Team</a>
+						<a href="careers.html" class="nav-link">Careers</a>
+						<a href="blog.html" class="nav-link">Blog</a>
+						<a href="contact.html" class="nav-link">Contact</a>
+						<a href="system-overview.html" class="nav-link">Overview</a>
+					</nav>
+					<div class="nav-cta">
+						<button
+							class="btn btn-light btn-icon"
+							id="search-toggle"
+							aria-label="Open search"
+						>
+							<svg class="icon icon-md" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M3 10a7 7 0 1 0 14 0A7 7 0 0 0 3 10Zm18 11-6-6" />
+							</svg>
+						</button>
+						<a href="contact.html" class="btn btn-light btn-sm">Get in touch</a>
+					</div>
+					<button
+						class="nav-mobile-btn"
+						id="mobile-menu-toggle"
+						aria-label="Toggle menu"
+						aria-expanded="false"
+					>
+						<svg
+							class="icon icon-lg"
+							id="hamburger-icon"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+						>
+							<path d="M4 6h16M4 12h16M4 18h16" />
+						</svg>
+						<svg
+							class="icon icon-lg"
+							id="close-icon"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+							style="display:none"
+						>
+							<path d="M18 6 6 18M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Mobile Menu -->
+		<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+			<div class="mobile-menu-inner">
+				<a href="index.html" class="mobile-menu-link">Home</a>
+				<a href="about.html" class="mobile-menu-link">About</a>
+				<a href="services.html" class="mobile-menu-link">Services</a>
+				<a href="projects.html" class="mobile-menu-link">Projects</a>
+				<a href="team.html" class="mobile-menu-link">Team</a>
+				<a href="careers.html" class="mobile-menu-link">Careers</a>
+				<a href="blog.html" class="mobile-menu-link">Blog</a>
+				<a href="contact.html" class="mobile-menu-link">Contact</a>
+				<div
+					style="margin-top:2rem;display:flex;flex-direction:column;gap:0.75rem;"
+				>
+					<a
+						href="contact.html"
+						class="btn btn-light"
+						style="width:100%;height:2.75rem;font-size:var(--text-base);"
+						>Get in touch</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Search Modal -->
+		<div
+			class="search-modal"
+			id="search-modal"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Search"
+		>
+			<div class="search-modal-center">
+				<div class="search-modal-box">
+					<div class="search-modal-header">
+						<span class="search-modal-label">Search</span>
+						<button
+							class="btn btn-dark btn-icon"
+							id="search-close"
+							aria-label="Close search"
+						>
+							<svg class="icon icon-md" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M18 6 6 18M6 6l12 12" />
+							</svg>
+						</button>
+					</div>
+					<div style="padding:1rem 1.5rem 1.5rem;">
+						<div class="search-modal-input-wrap">
+							<span class="search-modal-input-icon">
+								<svg
+									class="icon icon-sm"
+									viewBox="0 0 24 24"
+									aria-hidden="true"
+								>
+									<path d="M3 10a7 7 0 1 0 14 0A7 7 0 0 0 3 10Zm18 11-6-6" />
+								</svg>
+							</span>
+							<input
+								type="search"
+								class="search-modal-input"
+								id="search-input"
+								placeholder="Search pages, projects, services..."
+								autocomplete="off"
+							>
+						</div>
+						<div class="search-results" id="search-results"></div>
+						<p
+							class="search-no-results"
+							id="search-no-results"
+							style="display:none;padding:1rem;font-size:var(--text-sm);color:var(--color-base-300);"
+						>
+							No results found
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- HERO -->
+		<section
+			style="background:var(--color-accent-800);padding-top:12rem;padding-bottom:6rem;"
+		>
+			<div class="container">
+				<p
+					style="font-size:var(--text-sm);text-transform:uppercase;letter-spacing:0.08em;color:var(--color-base-300);font-weight:500;margin-bottom:1rem;"
+				>
+					Our insights
+				</p>
+				<h1
+					style="font-size:clamp(2.25rem,5vw,3.5rem);font-weight:500;color:var(--color-white);letter-spacing:-0.025em;max-width:40rem;line-height:1.1;margin-bottom:1.5rem;text-wrap:balance;"
+				>
+					News &amp; articles
+				</h1>
+				<p
+					style="font-size:var(--text-lg);color:var(--color-base-300);max-width:36rem;line-height:1.65;"
+				>
+					Perspectives from the Bastion team on construction innovation, project
+					delivery, industry trends, and the craft of building well.
+				</p>
+			</div>
+		</section>
+
+		<!-- BLOG GRID -->
+		<section style="padding-block:6rem;background:var(--color-base-50);">
+			<div class="container">
+				<div class="blog-grid">
+					<!-- Post 1 -->
+					<article class="blog-card">
+						<div class="blog-card-img-wrap">
+							<img
+								src="assets/images/blog-1.webp"
+								alt="Modern construction techniques reshaping urban landscapes"
+								loading="lazy"
+							>
+						</div>
+						<div class="blog-card-body">
+							<p
+								style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.06em;color:var(--color-accent-600);font-weight:500;margin-bottom:0.75rem;"
+							>
+								Construction · Jan 2025
+							</p>
+							<h2
+								style="font-size:var(--text-xl);font-weight:500;color:var(--color-base-900);letter-spacing:-0.015em;margin-bottom:0.75rem;line-height:1.3;"
+							>
+								How Modern Construction Techniques Are Reshaping Urban
+								Landscapes
+							</h2>
+							<p
+								style="font-size:var(--text-sm);color:var(--color-base-500);line-height:1.7;flex:1;margin-bottom:1.5rem;"
+							>
+								Advances in prefabrication, modular assembly, and digital
+								coordination are changing what is possible in dense city
+								environments. We explore how these methods are cutting programme
+								time and reducing disruption for residents and businesses alike.
+							</p>
+							<a
+								href="#"
+								style="font-size:var(--text-sm);font-weight:500;color:var(--color-accent-600);text-decoration:none;"
+								>Read more →</a
+							>
+						</div>
+					</article>
+
+					<!-- Post 2 -->
+					<article class="blog-card">
+						<div class="blog-card-img-wrap">
+							<img
+								src="assets/images/blog-2.webp"
+								alt="The future of sustainable building materials"
+								loading="lazy"
+							>
+						</div>
+						<div class="blog-card-body">
+							<p
+								style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.06em;color:var(--color-accent-600);font-weight:500;margin-bottom:0.75rem;"
+							>
+								Sustainability · Feb 2025
+							</p>
+							<h2
+								style="font-size:var(--text-xl);font-weight:500;color:var(--color-base-900);letter-spacing:-0.015em;margin-bottom:0.75rem;line-height:1.3;"
+							>
+								The Future of Sustainable Building Materials
+							</h2>
+							<p
+								style="font-size:var(--text-sm);color:var(--color-base-500);line-height:1.7;flex:1;margin-bottom:1.5rem;"
+							>
+								From mass timber and low-carbon concrete to bio-based
+								insulation, the materials available to builders today are
+								fundamentally different from a decade ago. We look at which
+								innovations are ready for commercial projects now and which are
+								still maturing.
+							</p>
+							<a
+								href="#"
+								style="font-size:var(--text-sm);font-weight:500;color:var(--color-accent-600);text-decoration:none;"
+								>Read more →</a
+							>
+						</div>
+					</article>
+
+					<!-- Post 3 -->
+					<article class="blog-card">
+						<div class="blog-card-img-wrap">
+							<img
+								src="assets/images/blog-3.webp"
+								alt="Project management best practices for large-scale builds"
+								loading="lazy"
+							>
+						</div>
+						<div class="blog-card-body">
+							<p
+								style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.06em;color:var(--color-accent-600);font-weight:500;margin-bottom:0.75rem;"
+							>
+								Management · Mar 2025
+							</p>
+							<h2
+								style="font-size:var(--text-xl);font-weight:500;color:var(--color-base-900);letter-spacing:-0.015em;margin-bottom:0.75rem;line-height:1.3;"
+							>
+								Project Management Best Practices for Large-Scale Builds
+							</h2>
+							<p
+								style="font-size:var(--text-sm);color:var(--color-base-500);line-height:1.7;flex:1;margin-bottom:1.5rem;"
+							>
+								Large projects fail most often at the edges — in the handoffs
+								between teams and the gaps between planning and field execution.
+								Our senior project managers share the disciplines that keep
+								complex programmes on track from mobilisation through to
+								closeout.
+							</p>
+							<a
+								href="#"
+								style="font-size:var(--text-sm);font-weight:500;color:var(--color-accent-600);text-decoration:none;"
+								>Read more →</a
+							>
+						</div>
+					</article>
+
+					<!-- Post 4 -->
+					<article class="blog-card">
+						<div class="blog-card-img-wrap">
+							<img
+								src="assets/images/blog-4.webp"
+								alt="Understanding MEP coordination in complex projects"
+								loading="lazy"
+							>
+						</div>
+						<div class="blog-card-body">
+							<p
+								style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.06em;color:var(--color-accent-600);font-weight:500;margin-bottom:0.75rem;"
+							>
+								Engineering · Apr 2025
+							</p>
+							<h2
+								style="font-size:var(--text-xl);font-weight:500;color:var(--color-base-900);letter-spacing:-0.015em;margin-bottom:0.75rem;line-height:1.3;"
+							>
+								Understanding MEP Coordination in Complex Projects
+							</h2>
+							<p
+								style="font-size:var(--text-sm);color:var(--color-base-500);line-height:1.7;flex:1;margin-bottom:1.5rem;"
+							>
+								Mechanical, electrical, and plumbing systems are where projects
+								most often run into costly clashes and rework. A rigorous BIM
+								coordination process, combined with strong trade relationships,
+								is the difference between a smooth installation and weeks of
+								delays in the ceiling void.
+							</p>
+							<a
+								href="#"
+								style="font-size:var(--text-sm);font-weight:500;color:var(--color-accent-600);text-decoration:none;"
+								>Read more →</a
+							>
+						</div>
+					</article>
+
+					<!-- Post 5 -->
+					<article class="blog-card">
+						<div class="blog-card-img-wrap">
+							<img
+								src="assets/images/blog-5.webp"
+								alt="Client partnerships: building long-term relationships"
+								loading="lazy"
+							>
+						</div>
+						<div class="blog-card-body">
+							<p
+								style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.06em;color:var(--color-accent-600);font-weight:500;margin-bottom:0.75rem;"
+							>
+								Client Relations · May 2025
+							</p>
+							<h2
+								style="font-size:var(--text-xl);font-weight:500;color:var(--color-base-900);letter-spacing:-0.015em;margin-bottom:0.75rem;line-height:1.3;"
+							>
+								Client Partnerships: Building Long-Term Relationships
+							</h2>
+							<p
+								style="font-size:var(--text-sm);color:var(--color-base-500);line-height:1.7;flex:1;margin-bottom:1.5rem;"
+							>
+								The best construction relationships outlast individual projects.
+								We share how we approach client engagement — from transparent
+								communication during delivery to the post-handover support that
+								keeps clients coming back for their next build.
+							</p>
+							<a
+								href="#"
+								style="font-size:var(--text-sm);font-weight:500;color:var(--color-accent-600);text-decoration:none;"
+								>Read more →</a
+							>
+						</div>
+					</article>
+
+					<!-- Post 6 -->
+					<article class="blog-card">
+						<div class="blog-card-img-wrap">
+							<img
+								src="assets/images/blog-6.webp"
+								alt="Site safety innovations changing construction"
+								loading="lazy"
+							>
+						</div>
+						<div class="blog-card-body">
+							<p
+								style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.06em;color:var(--color-accent-600);font-weight:500;margin-bottom:0.75rem;"
+							>
+								Safety · Jun 2025
+							</p>
+							<h2
+								style="font-size:var(--text-xl);font-weight:500;color:var(--color-base-900);letter-spacing:-0.015em;margin-bottom:0.75rem;line-height:1.3;"
+							>
+								Site Safety Innovations That Are Changing Construction
+							</h2>
+							<p
+								style="font-size:var(--text-sm);color:var(--color-base-500);line-height:1.7;flex:1;margin-bottom:1.5rem;"
+							>
+								Wearable sensors, drone-based site surveillance, and AI-powered
+								hazard detection are moving safety from a compliance exercise to
+								a genuine operational advantage. We look at which technologies
+								are delivering real results on site today.
+							</p>
+							<a
+								href="#"
+								style="font-size:var(--text-sm);font-weight:500;color:var(--color-accent-600);text-decoration:none;"
+								>Read more →</a
+							>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA STRIP -->
+		<section style="background:var(--color-accent-950);padding-block:5rem;">
+			<div class="container" style="text-align:center;">
+				<h2
+					style="font-size:clamp(1.5rem,3vw,2.25rem);font-weight:500;color:var(--color-white);letter-spacing:-0.02em;margin-bottom:1rem;text-wrap:balance;"
+				>
+					Have a project in mind?
+				</h2>
+				<p
+					style="font-size:var(--text-base);color:var(--color-base-400);max-width:30rem;margin:0 auto 2rem;line-height:1.65;"
+				>
+					Our team is ready to help you plan, price, and deliver your next
+					build.
+				</p>
+				<a
+					href="contact.html"
+					style="display:inline-flex;align-items:center;justify-content:center;height:2.75rem;padding-inline:1.75rem;background:var(--color-base-100);color:var(--color-base-900);border-radius:var(--radius-lg);font-weight:500;text-decoration:none;font-size:var(--text-base);transition:background 0.2s;"
+					onmouseover="this.style.background='var(--color-white)'"
+					onmouseout="this.style.background='var(--color-base-100)'"
+					>Get in touch</a
+				>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer
+			style="position:relative;overflow:hidden;background:var(--color-accent-950);color:var(--color-base-100);isolation:isolate;"
+		>
+			<div style="position:absolute;inset:0;pointer-events:none;z-index:0;">
+				<video
+					autoplay
+					muted
+					loop
+					playsinline
+					style="width:100%;height:100%;object-fit:cover;"
+				>
+					<source src="assets/night.mp4" type="video/mp4">
+				</video>
+				<div
+					style="position:absolute;inset:0;background:rgba(3,12,20,0.75);"
+				></div>
+			</div>
+			<div class="container" style="position:relative;z-index:1;">
+				<div
+					style="padding:2rem;border-bottom:1px solid rgba(255,255,255,0.15);"
+				>
+					<div
+						style="display:flex;flex-direction:column;gap:2rem;padding:2rem;background:var(--color-accent-950);border-radius:0.25rem;"
+					>
+						<div>
+							<svg
+								style="height:3rem;color:var(--color-white);"
+								viewBox="0 0 394 118"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M115.165 34.8256V2C99.4547 2 89.5225 8.58854 83.5801 16.2918C78.9381 22.3091 77.8196 29.812 76.6882 37.4016C75.8715 42.8796 75.0481 48.4027 72.8882 53.445C69.6729 60.9512 64.6742 66.2306 60.6709 69.1991C57.827 71.1061 52.9896 73.7932 49.743 74.257C49.1892 74.3361 48.45 74.3867 47.574 74.4467C40.3422 74.9421 23.7814 76.0764 25.0878 99.1563C25.1692 97.8544 26.0642 95.0552 28.9936 94.2741H87.3362C87.2548 89.0664 84.2604 78.1139 72.9336 75.9657L72.5308 75.6566C92.7899 79.0407 105.303 66.2841 111.501 54.179C114.536 48.2516 115.165 41.4848 115.165 34.8256ZM31.4347 90.8565C32.6481 90.8565 33.6317 89.8729 33.6317 88.6595C33.6317 87.4462 32.6481 86.4625 31.4347 86.4625C30.2213 86.4625 29.2377 87.4462 29.2377 88.6595C29.2377 89.8729 30.2213 90.8565 31.4347 90.8565Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M8 7.12634V35.2212C8 41.363 8.56475 47.616 11.416 53.0559C18.088 65.785 32.7431 79.0304 57.5546 67.1777C52.5738 64.4027 43.4616 55.7666 42.0354 41.6283C41.9101 40.3856 41.8436 39.1332 41.7771 37.8821C41.6158 34.8438 41.4549 31.8137 40.4524 28.9505C37.0824 19.3258 27.8665 7.12634 8 7.12634Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M108.574 94.5182H87.5803V116C104.961 114.633 108.818 101.109 108.574 94.5182Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<p
+								style="font-size:var(--text-2xl);font-weight:500;color:var(--color-white);letter-spacing:-0.025em;max-width:28rem;margin-top:1rem;text-wrap:balance;"
+							>
+								Everyday building with purpose and precision.
+							</p>
+						</div>
+						<a
+							href="contact.html"
+							style="display:inline-flex;align-items:center;justify-content:center;height:2.5rem;padding-inline:1.25rem;background:var(--color-base-100);color:var(--color-base-900);border-radius:0.5rem;font-weight:500;text-decoration:none;align-self:flex-start;"
+							>Get in touch</a
+						>
+					</div>
+				</div>
+				<div
+					style="padding-block:2rem;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;"
+				>
+					<div>
+						<p
+							style="font-size:0.875rem;text-transform:uppercase;color:var(--color-base-400);font-weight:500;letter-spacing:0.05em;margin-bottom:1rem;"
+						>
+							Pages
+						</p>
+						<a
+							href="index.html"
+							style="display:block;font-size:0.875rem;color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Home</a
+						>
+						<a
+							href="about.html"
+							style="display:block;font-size:0.875rem;color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>About</a
+						>
+						<a
+							href="services.html"
+							style="display:block;font-size:0.875rem;color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Services</a
+						>
+						<a
+							href="projects.html"
+							style="display:block;font-size:0.875rem;color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Projects</a
+						>
+					</div>
+					<div>
+						<p
+							style="font-size:0.875rem;text-transform:uppercase;color:var(--color-base-400);font-weight:500;letter-spacing:0.05em;margin-bottom:1rem;"
+						>
+							Legal
+						</p>
+						<a
+							href="legal-privacy.html"
+							style="display:block;font-size:0.875rem;color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Privacy</a
+						>
+						<a
+							href="legal-terms.html"
+							style="display:block;font-size:0.875rem;color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Terms</a
+						>
+						<a
+							href="legal-cookies.html"
+							style="display:block;font-size:0.875rem;color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Cookies</a
+						>
+					</div>
+				</div>
+				<div
+					style="padding-block:1.5rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;"
+				>
+					<span style="font-size:0.875rem;color:var(--color-base-400);"
+						>© 2025 Bastion. All rights reserved.</span
+					>
+					<div style="display:flex;gap:1.5rem;">
+						<a
+							href="legal-privacy.html"
+							style="font-size:0.875rem;color:var(--color-base-400);text-decoration:none;"
+							>Privacy</a
+						>
+						<a
+							href="legal-terms.html"
+							style="font-size:0.875rem;color:var(--color-base-400);text-decoration:none;"
+							>Terms</a
+						>
+						<a
+							href="legal-cookies.html"
+							style="font-size:0.875rem;color:var(--color-base-400);text-decoration:none;"
+							>Cookies</a
+						>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="site.js" defer></script>
+	</body>
+</html>

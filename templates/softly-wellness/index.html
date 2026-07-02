@@ -1,451 +1,781 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Softly - Find Your Rhythm</title>
-    <script src="./assets/tailwind.js"></script>
-    <link rel="stylesheet" href="./assets/fonts/fonts.css">
-    <style>
-        :root {
-            --bg-warm: #FDFCF8;
-            --bg-sage: #E8EFE8;
-            --bg-lavender: #EFEDF4;
-            --bg-peach: #FFF0ED;
-            --accent-coral: #FFB7B2;
-            --text-dark: #292524;
-            --text-muted: #78716C;
-        }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Softly - Find Your Rhythm</title>
+		<script src="./assets/tailwind.js"></script>
+		<link rel="stylesheet" href="./assets/fonts/fonts.css">
+		<style>
+		:root {
+			--bg-warm: #fdfcf8;
+			--bg-sage: #e8efe8;
+			--bg-lavender: #efedf4;
+			--bg-peach: #fff0ed;
+			--accent-coral: #ffb7b2;
+			--text-dark: #292524;
+			--text-muted: #78716c;
+		}
 
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-warm);
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
+		body {
+			font-family: "Outfit", sans-serif;
+			background-color: var(--bg-warm);
+			color: var(--text-dark);
+			overflow-x: hidden;
+		}
 
-        /* Grain Overlay for Texture */
-        .grain-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0.35;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-        }
+		/* Grain Overlay for Texture */
+		.grain-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			z-index: 50;
+			opacity: 0.35;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+			mix-blend-mode: overlay;
+		}
 
-        /* Smooth Reveal Animations */
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-on-scroll.delay-100 { transition-delay: 0.1s; }
-        .reveal-on-scroll.delay-200 { transition-delay: 0.2s; }
+		/* Smooth Reveal Animations */
+		.reveal-on-scroll {
+			opacity: 0;
+			transform: translateY(30px);
+			transition:
+				opacity 0.8s ease-out,
+				transform 0.8s ease-out;
+		}
+		.reveal-on-scroll.is-visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		.reveal-on-scroll.delay-100 {
+			transition-delay: 0.1s;
+		}
+		.reveal-on-scroll.delay-200 {
+			transition-delay: 0.2s;
+		}
 
-        /* Hide scrollbars */
-        ::-webkit-scrollbar { display: none; width: 0; height: 0; }
-        html, body, * { -ms-overflow-style: none; scrollbar-width: none; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+		/* Hide scrollbars */
+		::-webkit-scrollbar {
+			display: none;
+			width: 0;
+			height: 0;
+		}
+		html,
+		body,
+		* {
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+		.no-scrollbar::-webkit-scrollbar {
+			display: none;
+		}
 
-        /* Gentle Float Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-delayed { animation: float 7s ease-in-out infinite 1s; }
+		/* Gentle Float Animation */
+		@keyframes float {
+			0% {
+				transform: translateY(0px);
+			}
+			50% {
+				transform: translateY(-10px);
+			}
+			100% {
+				transform: translateY(0px);
+			}
+		}
+		.animate-float {
+			animation: float 6s ease-in-out infinite;
+		}
+		.animate-float-delayed {
+			animation: float 7s ease-in-out infinite 1s;
+		}
 
-        /* Handwriting Font */
-        .font-hand { font-family: 'Reenie Beanie', cursive; }
+		/* Handwriting Font */
+		.font-hand {
+			font-family: "Reenie Beanie", cursive;
+		}
 
-        /* Selection Color */
-        ::selection { background-color: #E6E6FA; color: #292524; }
-    </style>
-</head>
-<body>
-    <!-- Noise Texture Overlay -->
-    <div class="grain-overlay"></div>
+		/* Selection Color */
+		::selection {
+			background-color: #e6e6fa;
+			color: #292524;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- Noise Texture Overlay -->
+		<div class="grain-overlay"></div>
 
-    <!-- Main Container -->
-    <div class="relative min-h-screen flex flex-col items-center justify-start">
+		<!-- Main Container -->
+		<div class="relative min-h-screen flex flex-col items-center justify-start">
+			<!-- Navigation -->
+			<nav
+				class="fixed top-6 z-40 w-full max-w-sm md:max-w-2xl px-4 transition-all duration-300"
+				id="main-nav"
+			>
+				<div
+					class="bg-white/70 backdrop-blur-xl border border-white/40 shadow-sm rounded-full px-6 py-3 flex items-center justify-between transition-all hover:bg-white/90"
+				>
+					<a
+						href="#"
+						id="nav-logo"
+						class="text-xl font-medium tracking-tight text-stone-800 flex items-center gap-2"
+					>
+						<div
+							class="w-6 h-6 rounded-full bg-[#FFB7B2] flex items-center justify-center"
+						>
+							<div class="w-2 h-2 rounded-full bg-white"></div>
+						</div>
+						Softly.
+					</a>
+					<div
+						class="hidden md:flex items-center gap-6 text-sm text-stone-600 font-medium"
+					>
+						<a
+							href="#features"
+							id="nav-features"
+							class="hover:text-stone-900 transition-colors"
+							>Features</a
+						>
+						<a
+							href="#manifesto"
+							id="nav-manifesto"
+							class="hover:text-stone-900 transition-colors"
+							>Manifesto</a
+						>
+						<a
+							href="#community"
+							id="nav-community"
+							class="hover:text-stone-900 transition-colors"
+							>Stories</a
+						>
+					</div>
+					<a
+						href="#download"
+						id="nav-cta"
+						class="bg-stone-900 text-stone-50 text-xs md:text-sm font-medium px-5 py-2 rounded-full hover:scale-105 hover:bg-stone-800 transition-all duration-300"
+					>
+						Get early access
+					</a>
+				</div>
+			</nav>
 
-        <!-- Navigation -->
-        <nav class="fixed top-6 z-40 w-full max-w-sm md:max-w-2xl px-4 transition-all duration-300" id="main-nav">
-            <div class="bg-white/70 backdrop-blur-xl border border-white/40 shadow-sm rounded-full px-6 py-3 flex items-center justify-between transition-all hover:bg-white/90">
-                <a href="#" id="nav-logo" class="text-xl font-medium tracking-tight text-stone-800 flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-[#FFB7B2] flex items-center justify-center">
-                        <div class="w-2 h-2 rounded-full bg-white"></div>
-                    </div>
-                    Softly.
-                </a>
-                <div class="hidden md:flex items-center gap-6 text-sm text-stone-600 font-medium">
-                    <a href="#features" id="nav-features" class="hover:text-stone-900 transition-colors">Features</a>
-                    <a href="#manifesto" id="nav-manifesto" class="hover:text-stone-900 transition-colors">Manifesto</a>
-                    <a href="#community" id="nav-community" class="hover:text-stone-900 transition-colors">Stories</a>
-                </div>
-                <a href="#download" id="nav-cta" class="bg-stone-900 text-stone-50 text-xs md:text-sm font-medium px-5 py-2 rounded-full hover:scale-105 hover:bg-stone-800 transition-all duration-300">
-                    Get early access
-                </a>
-            </div>
-        </nav>
+			<!-- Hero Section -->
+			<header
+				class="relative w-full pt-40 pb-20 md:pt-48 md:pb-32 px-6 flex flex-col items-center text-center overflow-hidden"
+			>
+				<!-- Background Blobs -->
+				<div
+					class="absolute top-0 left-1/4 w-96 h-96 bg-[#FFE4E1] rounded-full blur-[100px] -z-10 opacity-60 animate-float"
+				></div>
+				<div
+					class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#E6E6FA] rounded-full blur-[120px] -z-10 opacity-50 animate-float-delayed"
+				></div>
 
-        <!-- Hero Section -->
-        <header class="relative w-full pt-40 pb-20 md:pt-48 md:pb-32 px-6 flex flex-col items-center text-center overflow-hidden">
-            <!-- Background Blobs -->
-            <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#FFE4E1] rounded-full blur-[100px] -z-10 opacity-60 animate-float"></div>
-            <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#E6E6FA] rounded-full blur-[120px] -z-10 opacity-50 animate-float-delayed"></div>
+				<div class="max-w-3xl mx-auto space-y-8 reveal-on-scroll">
+					<div
+						class="inline-flex items-center gap-2 px-3 py-1 bg-white/50 border border-white/60 rounded-full text-xs font-medium text-stone-500 backdrop-blur-sm"
+					>
+						<span
+							class="w-2 h-2 rounded-full bg-green-400 animate-pulse"
+						></span>
+						Waitlist open for iOS &amp; Android
+					</div>
 
-            <div class="max-w-3xl mx-auto space-y-8 reveal-on-scroll">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/50 border border-white/60 rounded-full text-xs font-medium text-stone-500 backdrop-blur-sm">
-                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                    Waitlist open for iOS &amp; Android
-                </div>
+					<h1
+						class="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-stone-800 leading-[1.1]"
+					>
+						Digital wellness for <br class="hidden md:block">
+						<span
+							class="text-stone-400 italic font-hand text-6xl md:text-8xl lg:text-9xl align-middle mr-2"
+							>the</span
+						>
+						scrolling generation.
+					</h1>
 
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-stone-800 leading-[1.1]">
-                    Digital wellness for <br class="hidden md:block" />
-                    <span class="text-stone-400 italic font-hand text-6xl md:text-8xl lg:text-9xl align-middle mr-2">the</span>
-                    scrolling generation.
-                </h1>
+					<p
+						class="text-lg md:text-xl text-stone-500 max-w-lg mx-auto leading-relaxed"
+					>
+						A gentle space to collect your thoughts, track your moods, and find
+						calm in the daily chaos.
+					</p>
 
-                <p class="text-lg md:text-xl text-stone-500 max-w-lg mx-auto leading-relaxed">
-                    A gentle space to collect your thoughts, track your moods, and find calm in the daily chaos.
-                </p>
+					<div
+						class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+					>
+						<a
+							href="#download"
+							id="hero-cta-primary"
+							class="w-full sm:w-auto px-8 py-4 bg-[#FFB7B2] text-stone-900 font-medium rounded-full hover:bg-[#FFC4BF] hover:-translate-y-1 transition-all duration-300 shadow-sm shadow-[#FFB7B2]/30"
+						>
+							Start your journey
+						</a>
+						<a
+							href="#manifesto"
+							id="hero-cta-secondary"
+							class="w-full sm:w-auto px-8 py-4 bg-white text-stone-600 font-medium rounded-full border border-stone-200 hover:bg-stone-50 hover:border-stone-300 transition-all duration-300"
+						>
+							How it works
+						</a>
+					</div>
+				</div>
+			</header>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                    <a href="#download" id="hero-cta-primary" class="w-full sm:w-auto px-8 py-4 bg-[#FFB7B2] text-stone-900 font-medium rounded-full hover:bg-[#FFC4BF] hover:-translate-y-1 transition-all duration-300 shadow-sm shadow-[#FFB7B2]/30">
-                        Start your journey
-                    </a>
-                    <a href="#manifesto" id="hero-cta-secondary" class="w-full sm:w-auto px-8 py-4 bg-white text-stone-600 font-medium rounded-full border border-stone-200 hover:bg-stone-50 hover:border-stone-300 transition-all duration-300">
-                        How it works
-                    </a>
-                </div>
-            </div>
-        </header>
+			<!-- Manifesto -->
+			<section
+				id="manifesto"
+				class="w-full py-24 px-6 md:px-12 max-w-7xl mx-auto"
+			>
+				<div class="grid md:grid-cols-2 gap-16 items-center">
+					<div class="space-y-8 reveal-on-scroll">
+						<h2
+							class="text-3xl md:text-5xl font-medium text-stone-800 leading-tight"
+						>
+							It&rsquo;s not about doing more. <br>
+							<span class="text-stone-400">It&rsquo;s about feeling more.</span>
+						</h2>
+						<div class="space-y-6 text-lg text-stone-600">
+							<p>
+								We built Softly because our phones have become loud, demanding,
+								and infinite.
+							</p>
+							<p>
+								This is an app designed to be opened, enjoyed, and closed. No
+								doomscrolling, no metrics, just a moment for you.
+							</p>
+						</div>
+					</div>
+					<div
+						class="relative h-[400px] md:h-[500px] rounded-[3rem] overflow-hidden reveal-on-scroll bg-[#F0F4F8]"
+					>
+						<div class="absolute inset-0 flex items-center justify-center">
+							<div
+								class="w-64 h-64 bg-[#B5C7E6] rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-float"
+							></div>
+							<div
+								class="w-64 h-64 bg-[#FFB7B2] rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-float-delayed -ml-12"
+							></div>
+						</div>
+						<div
+							class="absolute inset-0 flex flex-col items-center justify-center text-center p-8"
+						>
+							<p class="font-hand text-4xl text-stone-800 rotate-[-4deg]">
+								"Finally, a quiet place."
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
 
-        <!-- Manifesto -->
-        <section id="manifesto" class="w-full py-24 px-6 md:px-12 max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8 reveal-on-scroll">
-                    <h2 class="text-3xl md:text-5xl font-medium text-stone-800 leading-tight">
-                        It&rsquo;s not about doing more. <br>
-                        <span class="text-stone-400">It&rsquo;s about feeling more.</span>
-                    </h2>
-                    <div class="space-y-6 text-lg text-stone-600">
-                        <p>We built Softly because our phones have become loud, demanding, and infinite.</p>
-                        <p>This is an app designed to be opened, enjoyed, and closed. No doomscrolling, no metrics, just a moment for you.</p>
-                    </div>
-                </div>
-                <div class="relative h-[400px] md:h-[500px] rounded-[3rem] overflow-hidden reveal-on-scroll bg-[#F0F4F8]">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                         <div class="w-64 h-64 bg-[#B5C7E6] rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-float"></div>
-                         <div class="w-64 h-64 bg-[#FFB7B2] rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-float-delayed -ml-12"></div>
-                    </div>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                        <p class="font-hand text-4xl text-stone-800 rotate-[-4deg]">"Finally, a quiet place."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+			<!-- Everyday Use Scenarios -->
+			<section class="w-full py-16 overflow-hidden">
+				<div class="flex gap-6 px-6 overflow-x-auto no-scrollbar snap-x">
+					<div
+						class="flex-none snap-center w-72 h-40 bg-white rounded-3xl p-6 flex flex-col justify-between border border-stone-100 shadow-sm hover:shadow-md transition-shadow cursor-default group"
+					>
+						<span class="text-stone-400 text-sm font-medium">07:30 AM</span>
+						<p
+							class="text-xl text-stone-800 group-hover:text-[#FFB7B2] transition-colors"
+						>
+							Morning intention setting while coffee brews.
+						</p>
+					</div>
+					<div
+						class="flex-none snap-center w-72 h-40 bg-white rounded-3xl p-6 flex flex-col justify-between border border-stone-100 shadow-sm hover:shadow-md transition-shadow cursor-default group"
+					>
+						<span class="text-stone-400 text-sm font-medium">01:15 PM</span>
+						<p
+							class="text-xl text-stone-800 group-hover:text-[#B5C7E6] transition-colors"
+						>
+							A 2-minute breather between Zoom calls.
+						</p>
+					</div>
+					<div
+						class="flex-none snap-center w-72 h-40 bg-white rounded-3xl p-6 flex flex-col justify-between border border-stone-100 shadow-sm hover:shadow-md transition-shadow cursor-default group"
+					>
+						<span class="text-stone-400 text-sm font-medium">06:45 PM</span>
+						<p
+							class="text-xl text-stone-800 group-hover:text-[#A7D7C5] transition-colors"
+						>
+							Decompressing on the bus ride home.
+						</p>
+					</div>
+					<div
+						class="flex-none snap-center w-72 h-40 bg-white rounded-3xl p-6 flex flex-col justify-between border border-stone-100 shadow-sm hover:shadow-md transition-shadow cursor-default group"
+					>
+						<span class="text-stone-400 text-sm font-medium">10:00 PM</span>
+						<p
+							class="text-xl text-stone-800 group-hover:text-[#D4C4FB] transition-colors"
+						>
+							Dumping thoughts before sleep.
+						</p>
+					</div>
+				</div>
+			</section>
 
-        <!-- Everyday Use Scenarios -->
-        <section class="w-full py-16 overflow-hidden">
-            <div class="flex gap-6 px-6 overflow-x-auto no-scrollbar snap-x">
-                <div class="flex-none snap-center w-72 h-40 bg-white rounded-3xl p-6 flex flex-col justify-between border border-stone-100 shadow-sm hover:shadow-md transition-shadow cursor-default group">
-                    <span class="text-stone-400 text-sm font-medium">07:30 AM</span>
-                    <p class="text-xl text-stone-800 group-hover:text-[#FFB7B2] transition-colors">Morning intention setting while coffee brews.</p>
-                </div>
-                <div class="flex-none snap-center w-72 h-40 bg-white rounded-3xl p-6 flex flex-col justify-between border border-stone-100 shadow-sm hover:shadow-md transition-shadow cursor-default group">
-                    <span class="text-stone-400 text-sm font-medium">01:15 PM</span>
-                    <p class="text-xl text-stone-800 group-hover:text-[#B5C7E6] transition-colors">A 2-minute breather between Zoom calls.</p>
-                </div>
-                <div class="flex-none snap-center w-72 h-40 bg-white rounded-3xl p-6 flex flex-col justify-between border border-stone-100 shadow-sm hover:shadow-md transition-shadow cursor-default group">
-                    <span class="text-stone-400 text-sm font-medium">06:45 PM</span>
-                    <p class="text-xl text-stone-800 group-hover:text-[#A7D7C5] transition-colors">Decompressing on the bus ride home.</p>
-                </div>
-                <div class="flex-none snap-center w-72 h-40 bg-white rounded-3xl p-6 flex flex-col justify-between border border-stone-100 shadow-sm hover:shadow-md transition-shadow cursor-default group">
-                    <span class="text-stone-400 text-sm font-medium">10:00 PM</span>
-                    <p class="text-xl text-stone-800 group-hover:text-[#D4C4FB] transition-colors">Dumping thoughts before sleep.</p>
-                </div>
-            </div>
-        </section>
+			<!-- App Experience Preview -->
+			<section class="w-full py-24 relative">
+				<div
+					class="absolute inset-0 bg-gradient-to-b from-transparent via-[#F5F5F0] to-transparent -z-10"
+				></div>
+				<div class="max-w-7xl mx-auto px-6 text-center mb-16 reveal-on-scroll">
+					<h2 class="text-3xl md:text-5xl font-medium text-stone-800 mb-4">
+						Quiet by design.
+					</h2>
+					<p class="text-stone-500 max-w-md mx-auto">
+						No red dots. No push notifications. Just you.
+					</p>
+				</div>
 
-        <!-- App Experience Preview -->
-        <section class="w-full py-24 relative">
-             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#F5F5F0] to-transparent -z-10"></div>
-             <div class="max-w-7xl mx-auto px-6 text-center mb-16 reveal-on-scroll">
-                 <h2 class="text-3xl md:text-5xl font-medium text-stone-800 mb-4">Quiet by design.</h2>
-                 <p class="text-stone-500 max-w-md mx-auto">No red dots. No push notifications. Just you.</p>
-             </div>
+				<div
+					class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-6 overflow-hidden"
+				>
+					<!-- Left Mockup -->
+					<div
+						class="relative w-[280px] h-[580px] bg-white rounded-[3rem] border-8 border-white shadow-2xl shadow-stone-200/50 transform translate-y-12 opacity-80 scale-95 reveal-on-scroll"
+					>
+						<div
+							class="w-full h-full bg-[#E8EFE8] rounded-[2.3rem] overflow-hidden relative"
+						>
+							<div class="p-6 space-y-6">
+								<div
+									class="w-8 h-1 bg-stone-300 rounded-full mx-auto mb-8"
+								></div>
+								<h3 class="text-2xl font-medium text-stone-700">
+									Good morning.
+								</h3>
+								<div class="space-y-3">
+									<div class="h-24 bg-white/60 rounded-2xl w-full"></div>
+									<div class="h-24 bg-white/40 rounded-2xl w-full"></div>
+								</div>
+							</div>
+							<div
+								class="absolute bottom-0 w-full h-20 bg-white/30 backdrop-blur-md"
+							></div>
+						</div>
+					</div>
 
-             <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-6 overflow-hidden">
-                 <!-- Left Mockup -->
-                 <div class="relative w-[280px] h-[580px] bg-white rounded-[3rem] border-8 border-white shadow-2xl shadow-stone-200/50 transform translate-y-12 opacity-80 scale-95 reveal-on-scroll">
-                     <div class="w-full h-full bg-[#E8EFE8] rounded-[2.3rem] overflow-hidden relative">
-                         <div class="p-6 space-y-6">
-                             <div class="w-8 h-1 bg-stone-300 rounded-full mx-auto mb-8"></div>
-                             <h3 class="text-2xl font-medium text-stone-700">Good morning.</h3>
-                             <div class="space-y-3">
-                                 <div class="h-24 bg-white/60 rounded-2xl w-full"></div>
-                                 <div class="h-24 bg-white/40 rounded-2xl w-full"></div>
-                             </div>
-                         </div>
-                         <div class="absolute bottom-0 w-full h-20 bg-white/30 backdrop-blur-md"></div>
-                     </div>
-                 </div>
+					<!-- Center Main Mockup -->
+					<div
+						class="relative w-[300px] h-[620px] bg-white rounded-[3.5rem] border-8 border-white shadow-2xl shadow-stone-300/50 z-10 reveal-on-scroll"
+					>
+						<div
+							class="w-full h-full bg-[#FFF0ED] rounded-[2.8rem] overflow-hidden relative flex flex-col"
+						>
+							<div class="p-8 pt-12">
+								<div class="flex justify-between items-center mb-6">
+									<i data-icon="menu" class="text-stone-600 text-xl"></i>
+									<div
+										class="w-8 h-8 rounded-full bg-stone-900 overflow-hidden"
+									></div>
+								</div>
+								<h3 class="text-3xl font-medium text-stone-800 mb-2">
+									Focus mode
+								</h3>
+								<p class="text-stone-500 text-sm">20 minutes remaining</p>
+							</div>
+							<div class="flex-1 flex items-center justify-center relative">
+								<div
+									class="w-48 h-48 rounded-full border border-stone-300 flex items-center justify-center"
+								>
+									<div
+										class="w-36 h-36 rounded-full bg-[#FFB7B2] opacity-80 animate-pulse flex items-center justify-center text-white font-medium"
+									>
+										Breathe
+									</div>
+								</div>
+							</div>
+							<div class="p-8 pb-12">
+								<div
+									class="h-16 bg-white rounded-full flex items-center justify-between px-6 shadow-sm"
+								>
+									<i data-icon="play" class="text-stone-800"></i>
+									<div
+										class="h-1 bg-stone-100 flex-1 mx-4 rounded-full overflow-hidden"
+									>
+										<div class="w-1/3 h-full bg-[#FFB7B2]"></div>
+									</div>
+									<span class="text-xs text-stone-400">04:12</span>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                 <!-- Center Main Mockup -->
-                 <div class="relative w-[300px] h-[620px] bg-white rounded-[3.5rem] border-8 border-white shadow-2xl shadow-stone-300/50 z-10 reveal-on-scroll">
-                    <div class="w-full h-full bg-[#FFF0ED] rounded-[2.8rem] overflow-hidden relative flex flex-col">
-                        <div class="p-8 pt-12">
-                            <div class="flex justify-between items-center mb-6">
-                                <i data-icon="menu" class="text-stone-600 text-xl"></i>
-                                <div class="w-8 h-8 rounded-full bg-stone-900 overflow-hidden"></div>
-                            </div>
-                            <h3 class="text-3xl font-medium text-stone-800 mb-2">Focus mode</h3>
-                            <p class="text-stone-500 text-sm">20 minutes remaining</p>
-                        </div>
-                        <div class="flex-1 flex items-center justify-center relative">
-                            <div class="w-48 h-48 rounded-full border border-stone-300 flex items-center justify-center">
-                                <div class="w-36 h-36 rounded-full bg-[#FFB7B2] opacity-80 animate-pulse flex items-center justify-center text-white font-medium">
-                                    Breathe
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-8 pb-12">
-                            <div class="h-16 bg-white rounded-full flex items-center justify-between px-6 shadow-sm">
-                                <i data-icon="play" class="text-stone-800"></i>
-                                <div class="h-1 bg-stone-100 flex-1 mx-4 rounded-full overflow-hidden">
-                                    <div class="w-1/3 h-full bg-[#FFB7B2]"></div>
-                                </div>
-                                <span class="text-xs text-stone-400">04:12</span>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
+					<!-- Right Mockup -->
+					<div
+						class="relative w-[280px] h-[580px] bg-white rounded-[3rem] border-8 border-white shadow-2xl shadow-stone-200/50 transform translate-y-24 opacity-80 scale-95 reveal-on-scroll"
+					>
+						<div
+							class="w-full h-full bg-[#EFEDF4] rounded-[2.3rem] overflow-hidden relative"
+						>
+							<div class="p-6 space-y-6">
+								<div
+									class="w-8 h-1 bg-stone-300 rounded-full mx-auto mb-8"
+								></div>
+								<h3 class="text-2xl font-medium text-stone-700">
+									Your Journal
+								</h3>
+								<div class="grid grid-cols-2 gap-3">
+									<div class="aspect-square bg-white/60 rounded-2xl"></div>
+									<div class="aspect-square bg-white/40 rounded-2xl"></div>
+									<div class="aspect-square bg-white/40 rounded-2xl"></div>
+									<div class="aspect-square bg-white/60 rounded-2xl"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-                 <!-- Right Mockup -->
-                 <div class="relative w-[280px] h-[580px] bg-white rounded-[3rem] border-8 border-white shadow-2xl shadow-stone-200/50 transform translate-y-24 opacity-80 scale-95 reveal-on-scroll">
-                    <div class="w-full h-full bg-[#EFEDF4] rounded-[2.3rem] overflow-hidden relative">
-                         <div class="p-6 space-y-6">
-                             <div class="w-8 h-1 bg-stone-300 rounded-full mx-auto mb-8"></div>
-                             <h3 class="text-2xl font-medium text-stone-700">Your Journal</h3>
-                             <div class="grid grid-cols-2 gap-3">
-                                 <div class="aspect-square bg-white/60 rounded-2xl"></div>
-                                 <div class="aspect-square bg-white/40 rounded-2xl"></div>
-                                 <div class="aspect-square bg-white/40 rounded-2xl"></div>
-                                 <div class="aspect-square bg-white/60 rounded-2xl"></div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-        </section>
+			<!-- Core Features -->
+			<section
+				id="features"
+				class="w-full py-24 px-6 md:px-12 max-w-6xl mx-auto"
+			>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div
+						class="group p-8 bg-white rounded-[2.5rem] hover:bg-[#E8EFE8] transition-colors duration-500 reveal-on-scroll cursor-default"
+					>
+						<div
+							class="w-12 h-12 bg-stone-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/50 transition-colors"
+						>
+							<i data-icon="cloud" class="text-2xl text-stone-700"></i>
+						</div>
+						<h3 class="text-xl font-medium text-stone-800 mb-2">
+							Mood Tracking
+						</h3>
+						<p class="text-stone-500 leading-relaxed">
+							Log how you feel without typing a word. Just colors and shapes.
+						</p>
+					</div>
 
-        <!-- Core Features -->
-        <section id="features" class="w-full py-24 px-6 md:px-12 max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="group p-8 bg-white rounded-[2.5rem] hover:bg-[#E8EFE8] transition-colors duration-500 reveal-on-scroll cursor-default">
-                    <div class="w-12 h-12 bg-stone-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/50 transition-colors">
-                        <i data-icon="cloud" class="text-2xl text-stone-700"></i>
-                    </div>
-                    <h3 class="text-xl font-medium text-stone-800 mb-2">Mood Tracking</h3>
-                    <p class="text-stone-500 leading-relaxed">Log how you feel without typing a word. Just colors and shapes.</p>
-                </div>
+					<div
+						class="group p-8 bg-white rounded-[2.5rem] hover:bg-[#FFF0ED] transition-colors duration-500 reveal-on-scroll delay-100 cursor-default"
+					>
+						<div
+							class="w-12 h-12 bg-stone-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/50 transition-colors"
+						>
+							<i data-icon="pen-tool" class="text-2xl text-stone-700"></i>
+						</div>
+						<h3 class="text-xl font-medium text-stone-800 mb-2">
+							Gentle Prompting
+						</h3>
+						<p class="text-stone-500 leading-relaxed">
+							One question a day to help you untangle your thoughts.
+						</p>
+					</div>
 
-                <div class="group p-8 bg-white rounded-[2.5rem] hover:bg-[#FFF0ED] transition-colors duration-500 reveal-on-scroll delay-100 cursor-default">
-                    <div class="w-12 h-12 bg-stone-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/50 transition-colors">
-                        <i data-icon="pen-tool" class="text-2xl text-stone-700"></i>
-                    </div>
-                    <h3 class="text-xl font-medium text-stone-800 mb-2">Gentle Prompting</h3>
-                    <p class="text-stone-500 leading-relaxed">One question a day to help you untangle your thoughts.</p>
-                </div>
+					<div
+						class="group p-8 bg-white rounded-[2.5rem] hover:bg-[#EFEDF4] transition-colors duration-500 reveal-on-scroll delay-200 cursor-default"
+					>
+						<div
+							class="w-12 h-12 bg-stone-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/50 transition-colors"
+						>
+							<i data-icon="moon" class="text-2xl text-stone-700"></i>
+						</div>
+						<h3 class="text-xl font-medium text-stone-800 mb-2">
+							Sleep Sounds
+						</h3>
+						<p class="text-stone-500 leading-relaxed">
+							Brown noise, rain on pavement, and distant trains. Real textures.
+						</p>
+					</div>
+				</div>
+			</section>
 
-                <div class="group p-8 bg-white rounded-[2.5rem] hover:bg-[#EFEDF4] transition-colors duration-500 reveal-on-scroll delay-200 cursor-default">
-                    <div class="w-12 h-12 bg-stone-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/50 transition-colors">
-                        <i data-icon="moon" class="text-2xl text-stone-700"></i>
-                    </div>
-                    <h3 class="text-xl font-medium text-stone-800 mb-2">Sleep Sounds</h3>
-                    <p class="text-stone-500 leading-relaxed">Brown noise, rain on pavement, and distant trains. Real textures.</p>
-                </div>
-            </div>
-        </section>
+			<!-- Community -->
+			<section
+				id="community"
+				class="w-full py-24 px-6 md:px-12 bg-stone-100/50"
+			>
+				<div class="max-w-5xl mx-auto">
+					<h2 class="text-center text-3xl font-medium text-stone-800 mb-16">
+						Notes from the community
+					</h2>
 
-        <!-- Community -->
-        <section id="community" class="w-full py-24 px-6 md:px-12 bg-stone-100/50">
-            <div class="max-w-5xl mx-auto">
-                <h2 class="text-center text-3xl font-medium text-stone-800 mb-16">Notes from the community</h2>
+					<div class="grid md:grid-cols-2 gap-8">
+						<div
+							class="bg-white p-8 md:p-10 rounded-3xl shadow-sm rotate-1 hover:rotate-0 transition-transform duration-500 reveal-on-scroll"
+						>
+							<p
+								class="text-lg md:text-xl text-stone-700 leading-relaxed mb-6 font-medium"
+							>
+								"I used to check Instagram first thing in the morning. Now I
+								open Softly, breathe for two minutes, and start my day on my own
+								terms."
+							</p>
+							<div class="flex items-center gap-3">
+								<div class="h-px w-8 bg-stone-300"></div>
+								<span class="font-hand text-2xl text-stone-500"
+									>Sarah, London</span
+								>
+							</div>
+						</div>
 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm rotate-1 hover:rotate-0 transition-transform duration-500 reveal-on-scroll">
-                        <p class="text-lg md:text-xl text-stone-700 leading-relaxed mb-6 font-medium">
-                            "I used to check Instagram first thing in the morning. Now I open Softly, breathe for two minutes, and start my day on my own terms."
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div class="h-px w-8 bg-stone-300"></div>
-                            <span class="font-hand text-2xl text-stone-500">Sarah, London</span>
-                        </div>
-                    </div>
+						<div
+							class="bg-white p-8 md:p-10 rounded-3xl shadow-sm -rotate-1 hover:rotate-0 transition-transform duration-500 reveal-on-scroll delay-100 md:mt-12"
+						>
+							<p
+								class="text-lg md:text-xl text-stone-700 leading-relaxed mb-6 font-medium"
+							>
+								"It feels like a digital living room where I can just sit and do
+								nothing. The interface is so kind to my eyes."
+							</p>
+							<div class="flex items-center gap-3">
+								<div class="h-px w-8 bg-stone-300"></div>
+								<span class="font-hand text-2xl text-stone-500"
+									>Marcus, Toronto</span
+								>
+							</div>
+						</div>
+					</div>
 
-                    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm -rotate-1 hover:rotate-0 transition-transform duration-500 reveal-on-scroll delay-100 md:mt-12">
-                        <p class="text-lg md:text-xl text-stone-700 leading-relaxed mb-6 font-medium">
-                            "It feels like a digital living room where I can just sit and do nothing. The interface is so kind to my eyes."
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div class="h-px w-8 bg-stone-300"></div>
-                            <span class="font-hand text-2xl text-stone-500">Marcus, Toronto</span>
-                        </div>
-                    </div>
-                </div>
+					<div
+						class="mt-20 flex flex-col md:flex-row items-center justify-center gap-12 text-center reveal-on-scroll"
+					>
+						<div>
+							<div class="text-4xl md:text-5xl font-medium text-[#FFB7B2] mb-1">
+								12k+
+							</div>
+							<div class="text-stone-500 text-sm">Waitlist members</div>
+						</div>
+						<div class="hidden md:block w-px h-12 bg-stone-200"></div>
+						<div>
+							<div class="text-4xl md:text-5xl font-medium text-[#B5C7E6] mb-1">
+								4.9
+							</div>
+							<div class="text-stone-500 text-sm">Average calm rating</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-                <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-12 text-center reveal-on-scroll">
-                    <div>
-                        <div class="text-4xl md:text-5xl font-medium text-[#FFB7B2] mb-1">12k+</div>
-                        <div class="text-stone-500 text-sm">Waitlist members</div>
-                    </div>
-                    <div class="hidden md:block w-px h-12 bg-stone-200"></div>
-                    <div>
-                        <div class="text-4xl md:text-5xl font-medium text-[#B5C7E6] mb-1">4.9</div>
-                        <div class="text-stone-500 text-sm">Average calm rating</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+			<!-- FAQ -->
+			<section class="w-full py-24 px-6 md:px-12 max-w-3xl mx-auto">
+				<h2
+					class="text-2xl md:text-3xl font-medium text-stone-800 mb-10 text-center"
+				>
+					Common questions
+				</h2>
 
-        <!-- FAQ -->
-        <section class="w-full py-24 px-6 md:px-12 max-w-3xl mx-auto">
-             <h2 class="text-2xl md:text-3xl font-medium text-stone-800 mb-10 text-center">Common questions</h2>
+				<div class="space-y-4">
+					<div
+						class="bg-white rounded-2xl border border-stone-100 overflow-hidden reveal-on-scroll"
+					>
+						<button
+							class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
+							onclick="toggleFaq(this)"
+						>
+							<span
+								class="font-medium text-stone-700 group-hover:text-stone-900"
+								>Is Softly free to use?</span
+							>
+							<i
+								data-icon="plus"
+								class="text-stone-400 transition-transform duration-300"
+							></i>
+						</button>
+						<div
+							class="px-6 pb-0 h-0 overflow-hidden transition-all duration-500 ease-in-out"
+						>
+							<p class="pb-6 text-stone-500 leading-relaxed">
+								Yes, the core features of Softly are free forever. We have a
+								completely optional 'Supporter' tier for those who want extra
+								themes and sounds.
+							</p>
+						</div>
+					</div>
 
-             <div class="space-y-4">
-                 <div class="bg-white rounded-2xl border border-stone-100 overflow-hidden reveal-on-scroll">
-                     <button class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group" onclick="toggleFaq(this)">
-                         <span class="font-medium text-stone-700 group-hover:text-stone-900">Is Softly free to use?</span>
-                         <i data-icon="plus" class="text-stone-400 transition-transform duration-300"></i>
-                     </button>
-                     <div class="px-6 pb-0 h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                         <p class="pb-6 text-stone-500 leading-relaxed">
-                             Yes, the core features of Softly are free forever. We have a completely optional 'Supporter' tier for those who want extra themes and sounds.
-                         </p>
-                     </div>
-                 </div>
+					<div
+						class="bg-white rounded-2xl border border-stone-100 overflow-hidden reveal-on-scroll delay-100"
+					>
+						<button
+							class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
+							onclick="toggleFaq(this)"
+						>
+							<span
+								class="font-medium text-stone-700 group-hover:text-stone-900"
+								>Is my data private?</span
+							>
+							<i
+								data-icon="plus"
+								class="text-stone-400 transition-transform duration-300"
+							></i>
+						</button>
+						<div
+							class="px-6 pb-0 h-0 overflow-hidden transition-all duration-500 ease-in-out"
+						>
+							<p class="pb-6 text-stone-500 leading-relaxed">
+								Absolutely. Your journal entries and mood data are stored
+								locally on your device. We don't see what you write, ever.
+							</p>
+						</div>
+					</div>
 
-                 <div class="bg-white rounded-2xl border border-stone-100 overflow-hidden reveal-on-scroll delay-100">
-                     <button class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group" onclick="toggleFaq(this)">
-                         <span class="font-medium text-stone-700 group-hover:text-stone-900">Is my data private?</span>
-                         <i data-icon="plus" class="text-stone-400 transition-transform duration-300"></i>
-                     </button>
-                     <div class="px-6 pb-0 h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                         <p class="pb-6 text-stone-500 leading-relaxed">
-                             Absolutely. Your journal entries and mood data are stored locally on your device. We don't see what you write, ever.
-                         </p>
-                     </div>
-                 </div>
+					<div
+						class="bg-white rounded-2xl border border-stone-100 overflow-hidden reveal-on-scroll delay-200"
+					>
+						<button
+							class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
+							onclick="toggleFaq(this)"
+						>
+							<span
+								class="font-medium text-stone-700 group-hover:text-stone-900"
+								>When is the Android version coming?</span
+							>
+							<i
+								data-icon="plus"
+								class="text-stone-400 transition-transform duration-300"
+							></i>
+						</button>
+						<div
+							class="px-6 pb-0 h-0 overflow-hidden transition-all duration-500 ease-in-out"
+						>
+							<p class="pb-6 text-stone-500 leading-relaxed">
+								We're building iOS and Android simultaneously. Both will launch
+								in Q3 this year.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
 
-                 <div class="bg-white rounded-2xl border border-stone-100 overflow-hidden reveal-on-scroll delay-200">
-                     <button class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group" onclick="toggleFaq(this)">
-                         <span class="font-medium text-stone-700 group-hover:text-stone-900">When is the Android version coming?</span>
-                         <i data-icon="plus" class="text-stone-400 transition-transform duration-300"></i>
-                     </button>
-                     <div class="px-6 pb-0 h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                         <p class="pb-6 text-stone-500 leading-relaxed">
-                             We're building iOS and Android simultaneously. Both will launch in Q3 this year.
-                         </p>
-                     </div>
-                 </div>
-             </div>
-        </section>
+			<!-- Waitlist / CTA -->
+			<section
+				id="download"
+				class="w-full py-24 px-6 md:px-12 bg-white relative overflow-hidden"
+			>
+				<div
+					class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FFE4E1] rounded-full mix-blend-multiply blur-[120px] opacity-40 animate-float pointer-events-none"
+				></div>
+				<div
+					class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#E8EFE8] rounded-full mix-blend-multiply blur-[120px] opacity-40 animate-float-delayed pointer-events-none"
+				></div>
 
-        <!-- Waitlist / CTA -->
-        <section id="download" class="w-full py-24 px-6 md:px-12 bg-white relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FFE4E1] rounded-full mix-blend-multiply blur-[120px] opacity-40 animate-float pointer-events-none"></div>
-            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#E8EFE8] rounded-full mix-blend-multiply blur-[120px] opacity-40 animate-float-delayed pointer-events-none"></div>
+				<div class="relative max-w-xl mx-auto text-center reveal-on-scroll">
+					<div
+						class="w-16 h-16 bg-stone-900 rounded-[1.2rem] flex items-center justify-center mx-auto mb-8 shadow-xl shadow-stone-200"
+					>
+						<div class="w-6 h-6 rounded-full bg-[#FFB7B2]"></div>
+					</div>
+					<h2 class="text-4xl md:text-5xl font-medium text-stone-800 mb-6">
+						Ready to slow down?
+					</h2>
+					<p class="text-stone-500 mb-10 text-lg">
+						Join the waitlist to get early access and a free "Calm Kit" of
+						digital wallpapers.
+					</p>
 
-            <div class="relative max-w-xl mx-auto text-center reveal-on-scroll">
-                <div class="w-16 h-16 bg-stone-900 rounded-[1.2rem] flex items-center justify-center mx-auto mb-8 shadow-xl shadow-stone-200">
-                    <div class="w-6 h-6 rounded-full bg-[#FFB7B2]"></div>
-                </div>
-                <h2 class="text-4xl md:text-5xl font-medium text-stone-800 mb-6">Ready to slow down?</h2>
-                <p class="text-stone-500 mb-10 text-lg">
-                    Join the waitlist to get early access and a free "Calm Kit" of digital wallpapers.
-                </p>
+					<form
+						class="flex flex-col sm:flex-row gap-4 relative z-10"
+						onsubmit="event.preventDefault();"
+					>
+						<input
+							type="email"
+							placeholder="name@example.com"
+							class="flex-1 px-6 py-4 rounded-full bg-stone-50 border border-stone-200 text-stone-800 focus:outline-none focus:ring-2 focus:ring-[#FFB7B2]/50 focus:border-[#FFB7B2] transition-all placeholder:text-stone-400"
+							required
+						>
+						<button
+							type="submit"
+							id="footer-submit-btn"
+							class="px-8 py-4 bg-stone-900 text-white font-medium rounded-full hover:bg-stone-800 hover:scale-105 transition-all duration-300 shadow-lg shadow-stone-900/10 whitespace-nowrap"
+						>
+							Join Waitlist
+						</button>
+					</form>
+					<p class="mt-4 text-xs text-stone-400">
+						No spam, just calm updates. Unsubscribe anytime.
+					</p>
+				</div>
+			</section>
 
-                <form class="flex flex-col sm:flex-row gap-4 relative z-10" onsubmit="event.preventDefault();">
-                    <input type="email" placeholder="name@example.com" class="flex-1 px-6 py-4 rounded-full bg-stone-50 border border-stone-200 text-stone-800 focus:outline-none focus:ring-2 focus:ring-[#FFB7B2]/50 focus:border-[#FFB7B2] transition-all placeholder:text-stone-400" required>
-                    <button type="submit" id="footer-submit-btn" class="px-8 py-4 bg-stone-900 text-white font-medium rounded-full hover:bg-stone-800 hover:scale-105 transition-all duration-300 shadow-lg shadow-stone-900/10 whitespace-nowrap">
-                        Join Waitlist
-                    </button>
-                </form>
-                <p class="mt-4 text-xs text-stone-400">No spam, just calm updates. Unsubscribe anytime.</p>
-            </div>
-        </section>
+			<!-- Footer -->
+			<footer class="w-full py-12 px-6 border-t border-stone-100 bg-[#FDFCF8]">
+				<div
+					class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6"
+				>
+					<div class="flex items-center gap-2">
+						<div class="w-4 h-4 rounded-full bg-[#FFB7B2]"></div>
+						<span class="text-stone-800 font-medium">Softly Inc.</span>
+					</div>
 
-        <!-- Footer -->
-        <footer class="w-full py-12 px-6 border-t border-stone-100 bg-[#FDFCF8]">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-2">
-                    <div class="w-4 h-4 rounded-full bg-[#FFB7B2]"></div>
-                    <span class="text-stone-800 font-medium">Softly Inc.</span>
-                </div>
+					<div class="flex gap-8 text-sm text-stone-500">
+						<a
+							href="#"
+							id="footer-privacy"
+							class="hover:text-stone-900 transition-colors"
+							>Privacy</a
+						>
+						<a
+							href="#"
+							id="footer-terms"
+							class="hover:text-stone-900 transition-colors"
+							>Terms</a
+						>
+						<a
+							href="#"
+							id="footer-contact"
+							class="hover:text-stone-900 transition-colors"
+							>Contact</a
+						>
+					</div>
 
-                <div class="flex gap-8 text-sm text-stone-500">
-                    <a href="#" id="footer-privacy" class="hover:text-stone-900 transition-colors">Privacy</a>
-                    <a href="#" id="footer-terms" class="hover:text-stone-900 transition-colors">Terms</a>
-                    <a href="#" id="footer-contact" class="hover:text-stone-900 transition-colors">Contact</a>
-                </div>
+					<div class="flex gap-4">
+						<a
+							href="#"
+							id="social-insta"
+							class="text-stone-400 hover:text-stone-900 transition-colors"
+						>
+							<i data-icon="instagram" class="text-xl"></i>
+						</a>
+						<a
+							href="#"
+							id="social-twitter"
+							class="text-stone-400 hover:text-stone-900 transition-colors"
+						>
+							<i data-icon="twitter" class="text-xl"></i>
+						</a>
+					</div>
+				</div>
+				<div class="text-center mt-8 text-xs text-stone-300">
+					&copy; 2024 Softly App. All rights reserved. Designed with intention.
+				</div>
+			</footer>
+		</div>
 
-                <div class="flex gap-4">
-                    <a href="#" id="social-insta" class="text-stone-400 hover:text-stone-900 transition-colors">
-                        <i data-icon="instagram" class="text-xl"></i>
-                    </a>
-                    <a href="#" id="social-twitter" class="text-stone-400 hover:text-stone-900 transition-colors">
-                        <i data-icon="twitter" class="text-xl"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="text-center mt-8 text-xs text-stone-300">
-                &copy; 2024 Softly App. All rights reserved. Designed with intention.
-            </div>
-        </footer>
+		<script src="./assets/icons.js"></script>
+		<script>
+		// Intersection Observer for Scroll Animations
+		const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("is-visible");
+					observer.unobserve(entry.target);
+				}
+			});
+		}, observerOptions);
+		document
+			.querySelectorAll(".reveal-on-scroll")
+			.forEach((el) => observer.observe(el));
 
-    </div>
-
-    <script src="./assets/icons.js"></script>
-    <script>
-        // Intersection Observer for Scroll Animations
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
-
-        // FAQ Toggle
-        function _toggleFaq(button) {
-            const content = button.nextElementSibling;
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-            const icon = button.querySelector('svg, i[data-icon]');
-            button.setAttribute('aria-expanded', !isExpanded);
-            if (!isExpanded) {
-                content.style.height = `${content.scrollHeight}px`;
-                if (icon) icon.style.transform = 'rotate(45deg)';
-            } else {
-                content.style.height = '0px';
-                if (icon) icon.style.transform = 'rotate(0deg)';
-            }
-        }
-    </script>
-</body>
+		// FAQ Toggle
+		function _toggleFaq(button) {
+			const content = button.nextElementSibling;
+			const isExpanded = button.getAttribute("aria-expanded") === "true";
+			const icon = button.querySelector("svg, i[data-icon]");
+			button.setAttribute("aria-expanded", !isExpanded);
+			if (!isExpanded) {
+				content.style.height = `${content.scrollHeight}px`;
+				if (icon) icon.style.transform = "rotate(45deg)";
+			} else {
+				content.style.height = "0px";
+				if (icon) icon.style.transform = "rotate(0deg)";
+			}
+		}
+		</script>
+	</body>
 </html>

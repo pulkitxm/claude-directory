@@ -1,5 +1,7 @@
 # Lumi — Material You (Material Design 3) Showcase (React, Tailwind CSS v4, Roboto)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A complete, polished landing page that showcases an entire Material You (Material Design 3) design system for a fictional theming toolkit ("Lumi"): personal, adaptive and spirited with a tonal surface system, pill-shaped buttons, 24–48px architectural border radii, organic blurred background shapes, state-layer hover feedback, and Material's signature "emphasized decelerate" easing (`cubic-bezier(0.2, 0, 0, 1)`) throughout. Generated with Claude Fable 5.
 
 ## What it demonstrates

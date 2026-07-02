@@ -1,0 +1,42 @@
+/* Catalyst clone — small overrides layered over the vendored compiled Tailwind CSS.
+   Restores interactive cursors (the original relied on Headless UI's data-attributes)
+   and tightens a couple of behaviours the static clone re-implements in JS. */
+
+a,
+button,
+[role="menuitem"],
+[role="button"],
+label,
+select,
+input[type="checkbox"] {
+	cursor: pointer;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+	cursor: text;
+}
+
+/* data-focus highlight for our JS dropdowns (mirrors Headless UI data-focus utilities) */
+[role="menuitem"][data-focus] {
+	background-color: #3b82f6; /* blue-500 */
+	color: #fff;
+}
+[role="menuitem"][data-focus] svg {
+	color: #fff !important;
+}
+
+/* table rows: whole-row clickable highlight */
+tr:hover {
+	background-color: color-mix(in oklab, #09090b 2.5%, transparent);
+}
+.dark tr:hover {
+	background-color: color-mix(in oklab, #fff 2.5%, transparent);
+}
+
+/* smooth color-scheme + element transitions */
+html {
+	color-scheme: light dark;
+}

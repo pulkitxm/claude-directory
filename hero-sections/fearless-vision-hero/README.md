@@ -1,5 +1,7 @@
 # Fearless Vision Hero — Cinematic Full-Screen Video Hero Section (React + Framer Motion + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen, video-background hero section for a creative studio — "Fearless / Vision / Delivered" — with staggered Framer Motion entrance animations, a three-tier responsive layout, and a giant fluid-type heading that reveals character-by-character via a clip-reveal slide-up effect. The design uses uppercase Inter 600 throughout with a deep-purple accent (`#5E0ED7`), a right-aligned stats row, and a full-screen white mobile menu overlay with Escape-to-close and body scroll lock. Built with React 18, Vite, Tailwind CSS 3, and Framer Motion. Generated with Claude Fable 5.
 
 ## Stack

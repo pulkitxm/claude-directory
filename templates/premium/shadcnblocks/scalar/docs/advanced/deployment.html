@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Deployment — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../../styles.css">
+		<link rel="icon" href="../../assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="../../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav
+						class="docs-sidebar-nav"
+						data-current="docs/advanced/deployment.html"
+					></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span><span>Advanced</span
+						><span class="sep">/</span><span>Deployment</span>
+					</div>
+					<h1 class="docs-title">Deployment</h1>
+					<p class="docs-lead">
+						Ship Scalar CMS to production — deploy to Vercel, run it in Docker,
+						or self-host on your own infrastructure.
+					</p>
+
+					<h2 id="Vercel">Vercel</h2>
+					<p>
+						Vercel is the fastest path to production for Scalar. Connect your
+						Git repository and the build runs automatically, or deploy from the
+						command line:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"
+								># install the CLI and link the project</span
+							>
+							npm install -g vercel vercel link
+
+							<span class="tok-com"># deploy to production</span>
+							vercel --prod
+						</div>
+					</div>
+					<p>
+						Define your environment variables in the Vercel dashboard, or push
+						them from a local file:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"
+								># add env vars to the production environment</span
+							>
+							vercel env add SCALAR_PROJECT_ID production vercel env add
+							SCALAR_API_KEY production vercel env add DATABASE_URL production
+						</div>
+					</div>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							Set <code>SCALAR_ENV=production</code> on Vercel so Scalar Studio
+							disables draft previews and enables edge caching for published
+							content.
+						</div>
+					</div>
+
+					<h2 id="Docker">Docker</h2>
+					<p>
+						For containerized deployments, build an image with the official Node
+						base. Drop this <code>Dockerfile</code> at the root of your project:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">Dockerfile</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">FROM</span>
+							node:20-alpine <span class="tok-kw">AS</span> base
+							<span class="tok-kw">WORKDIR</span>
+							/app
+
+							<span class="tok-com"># install dependencies</span>
+							<span class="tok-kw">COPY</span>
+							package*.json ./
+							<span class="tok-kw">RUN</span>
+							npm ci --omit=dev
+
+							<span class="tok-com"># build the application</span>
+							<span class="tok-kw">COPY</span>
+							. .
+							<span class="tok-kw">RUN</span>
+							npm run build
+
+							<span class="tok-com"># run Scalar in production mode</span>
+							<span class="tok-kw">ENV</span>
+							NODE_ENV=production
+							<span class="tok-kw">ENV</span>
+							SCALAR_ENV=production
+							<span class="tok-kw">EXPOSE</span>
+							3000
+							<span class="tok-kw">CMD</span>
+							[<span class="tok-str">"npm"</span>,
+							<span class="tok-str">"run"</span>,
+							<span class="tok-str">"start"</span>]
+						</div>
+					</div>
+					<p>
+						Build and run the container locally to verify the image before
+						pushing to a registry:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							docker build -t scalar-cms . docker run -p 3000:3000 --env-file
+							.env scalar-cms
+						</div>
+					</div>
+
+					<h2 id="Self-hosting">Self-hosting</h2>
+					<p>
+						Run Scalar on your own server with a process manager and a reverse
+						proxy. The steps below assume a fresh Linux host with Node.js
+						installed:
+					</p>
+					<ol class="docs-steps">
+						<li>
+							<span class="step-n">1</span><strong>Clone and build.</strong>
+							Pull your repository onto the host, run <code>npm ci</code>, then
+							<code>npm run build</code>
+							to compile the production bundle.
+						</li>
+						<li>
+							<span class="step-n">2</span
+							><strong>Configure the environment.</strong>
+							Create a <code>.env</code> file with your
+							<code>DATABASE_URL</code>, API keys, and
+							<code>SCALAR_ENV=production</code>. Never commit this file.
+						</li>
+						<li>
+							<span class="step-n">3</span
+							><strong>Run with a process manager.</strong>
+							Start the server under <code>pm2</code> or <code>systemd</code> so
+							it restarts on crashes and reboots:
+							<code>pm2 start npm --name scalar -- run start</code>.
+						</li>
+						<li>
+							<span class="step-n">4</span><strong>Add a reverse proxy.</strong>
+							Put Nginx or Caddy in front of port 3000 to terminate TLS and
+							serve over HTTPS on your domain.
+						</li>
+					</ol>
+
+					<h2 id="Environment variables">Environment variables</h2>
+					<p>
+						Scalar reads its configuration from the environment at boot. The
+						following variables are recognized in every deployment target:
+					</p>
+					<table class="docs-table">
+						<thead>
+							<tr>
+								<th>Variable</th>
+								<th>Required</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>DATABASE_URL</code></td>
+								<td>Yes</td>
+								<td>
+									Connection string for your PostgreSQL, MySQL, or SQLite
+									database.
+								</td>
+							</tr>
+							<tr>
+								<td><code>SCALAR_PROJECT_ID</code></td>
+								<td>Yes</td>
+								<td>
+									Identifier for your Scalar project, used to scope content and
+									API access.
+								</td>
+							</tr>
+							<tr>
+								<td><code>SCALAR_API_KEY</code></td>
+								<td>Yes</td>
+								<td>
+									Secret key authenticating server-side requests to the Scalar
+									API.
+								</td>
+							</tr>
+							<tr>
+								<td><code>SCALAR_ENV</code></td>
+								<td>No</td>
+								<td>
+									Runtime mode — <code>development</code> or
+									<code>production</code>. Defaults to <code>development</code>.
+								</td>
+							</tr>
+							<tr>
+								<td><code>PORT</code></td>
+								<td>No</td>
+								<td>
+									Port the server listens on. Defaults to <code>3000</code>.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h2 id="Health checks">Health checks</h2>
+					<p>
+						Scalar exposes a health endpoint so load balancers and orchestrators
+						can verify the instance is live. Point your probe at
+						<code>/api/health</code>:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"
+								># expect HTTP 200 with a JSON status payload</span
+							>
+							curl -fsS http://localhost:3000/api/health
+
+							<span class="tok-com"
+								># → { "status":"ok","db":"connected","uptime":1284}</span
+							>
+						</div>
+					</div>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<path d="M20 6 9 17l-5-5" />
+						</svg>
+						<div>
+							The endpoint returns <code>503</code> when the database connection
+							is down, so it doubles as a readiness gate during rolling deploys.
+							Configure a 10-second interval with three retries before marking
+							an instance unhealthy.
+						</div>
+					</div>
+
+					<nav class="docs-pager">
+						<a class="pg-prev" href="../../docs/api/webhooks.html"
+							><div class="pg-dir">← Previous</div>
+							<div class="pg-title">Webhooks</div></a
+						>
+						<a class="pg-next" href="../../docs/advanced/performance.html"
+							><div class="pg-dir">Next →</div>
+							<div class="pg-title">Performance</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#Vercel">Vercel</a>
+					<a href="#Docker">Docker</a>
+					<a href="#Self-hosting">Self-hosting</a>
+					<a href="#Environment variables">Environment variables</a>
+					<a href="#Health checks">Health checks</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="../../shared.js"></script>
+	</body>
+</html>

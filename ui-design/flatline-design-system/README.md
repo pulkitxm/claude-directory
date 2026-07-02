@@ -1,5 +1,7 @@
 # Flatline — Flat Design System Marketing Page (React, TypeScript, Tailwind CSS v4, Vite)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A complete marketing page that showcases the Flatline flat design system: confident reduction, bold color blocking, geometric purity, and typography that carries the full visual hierarchy — with zero box-shadows anywhere. Solid color sections rotate White → Blue hero → Fog features → Emerald benefits → dark how-it-works → Pricing → FAQ → Amber CTA → dark footer, using color as structure rather than dividing lines. The Outfit typeface is self-hosted in `public/fonts/*.woff2` for fully offline use, and all design tokens — palette, radii, the Outfit font stack — live in a single Tailwind v4 `@theme` block in `src/index.css`. Every specified component is present: primary / secondary / outline buttons with thick `border-4` outlines that fill on hover, tinted color-block cards with icons in solid circles, a gray-to-hard-blue-border input, pill tags, multi-color stat count-ups, a scaled popular pricing tier, and a bold FAQ with thick `border-2` rules. Generated with Claude Fable 5.
 
 ## Stack

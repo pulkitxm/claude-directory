@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Overview — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="styles.css">
+		<link rel="icon" href="assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav class="docs-sidebar-nav" data-current="docs.html"></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span><span>Overview</span>
+					</div>
+					<h1 class="docs-title">Overview</h1>
+					<p class="docs-lead">
+						Complete guide to Scalar CMS — the modern headless content
+						management system.
+					</p>
+
+					<h2 id="introduction">Introduction</h2>
+					<p>
+						Scalar CMS is a headless content management system designed for
+						speed, clarity, flexibility, and validation. It's built for modern
+						development workflows, static sites, dynamic apps, and everything in
+						between.
+					</p>
+					<p>Key features include:</p>
+					<ul>
+						<li>
+							<strong>Type-safe content models</strong>
+							with built-in validation.
+						</li>
+						<li>
+							<strong>GraphQL and REST APIs</strong>
+							for flexible data access.
+						</li>
+						<li>
+							<strong>Real-time collaborative editing</strong>
+							for content teams.
+						</li>
+						<li>
+							<strong>Multi-environment deployments</strong>
+							and role-based permissions.
+						</li>
+					</ul>
+
+					<h2 id="quick-example">Quick Example</h2>
+					<p>Here's how easy it is to get started with Scalar:</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">quickstart.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">import</span>
+							{ createClient } <span class="tok-kw">from</span>
+							<span class="tok-str">"@scalar/sdk"</span>;
+
+							<span class="tok-kw">const</span>
+							client = <span class="tok-fn">createClient</span>( { projectId:
+							process.env.<span class="tok-fn">SCALAR_PROJECT_ID</span>, apiKey:
+							process.env.<span class="tok-fn">SCALAR_API_KEY</span>, });
+
+							<span class="tok-com">// fetch your content</span>
+							<span class="tok-kw">const</span>
+							posts = <span class="tok-kw">await</span> client.<span
+								class="tok-fn"
+								>query</span
+							>( { model: <span class="tok-str">"blogPost"</span>, include: [<span
+								class="tok-str"
+								>"author"</span
+							>, <span class="tok-str">"categories"</span>], });
+						</div>
+					</div>
+
+					<h2 id="core-components">Core Components</h2>
+					<p>Scalar CMS has several core parts:</p>
+					<div class="docs-cards">
+						<div class="card docs-card">
+							<h3>Scalar Core</h3>
+							<p>
+								The data and API layer: content models, validation, database
+								handling, and runtime generation. This is the foundation of your
+								Scalar CMS setup, handling all the backend operations and data
+								management.
+							</p>
+						</div>
+						<div class="card docs-card">
+							<h3>Scalar Studio</h3>
+							<p>
+								A lightweight admin UI for managing content with live preview
+								and model editing. The visual interface where content creators
+								and editors can manage your content efficiently with real-time
+								previews.
+							</p>
+						</div>
+					</div>
+					<div class="card docs-card" style="margin-top:16px">
+						<h3>Scalar CLI</h3>
+						<p>
+							A command-line interface to scaffold content models, sync schemas,
+							run migrations, and deploy. Built for developers who prefer
+							automation over GUI-based programming. Run
+							<code>scalar init</code>
+							to get started.
+						</p>
+					</div>
+
+					<h2 id="installation">Installation</h2>
+					<ol class="docs-steps">
+						<li>
+							<span class="step-n">1</span><strong>Install Scalar CMS.</strong>
+							Run the installation command:
+							<code>npx create-scalar@latest</code>
+							in your project directory.
+						</li>
+						<li>
+							<span class="step-n">2</span
+							><strong>Configure your setup.</strong>
+							Follow the prompts to choose your database (PostgreSQL, SQLite,
+							etc.), generate models, and launch the admin panel.
+						</li>
+						<li>
+							<span class="step-n">3</span><strong>Launch your CMS.</strong>
+							Once installation completes, start your development server with
+							<code>npm run dev</code>. Your Scalar CMS admin panel will be
+							available at <code>http://localhost:3000/admin</code>.
+						</li>
+					</ol>
+
+					<h2 id="first-time-setup">First-Time Setup</h2>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							The setup wizard walks you through the initial configuration
+							process: connecting to your chosen database, defining your first
+							content models, and setting up user permissions. Configuring the
+							admin panel takes only a few minutes.
+						</div>
+					</div>
+
+					<h2 id="framework-integration">Framework Integration</h2>
+					<p>Scalar works seamlessly with your favorite frameworks:</p>
+					<div class="code-block" data-tabgroup="fw">
+						<div class="code-head">
+							<span class="ctab active" data-tab="next">Next.js</span>
+							<span class="ctab" data-tab="react">React</span>
+							<span class="ctab" data-tab="svelte">Svelte</span>
+							<span style="margin-left:auto;color:var(--muted-foreground)"
+								>app.tsx</span
+							>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">import</span>
+							{ scalar } <span class="tok-kw">from</span>
+							<span class="tok-str">"@scalar/next"</span>;
+
+							<span class="tok-kw">export default async function</span>
+							<span class="tok-fn">Page</span>() {
+							<span class="tok-kw">const</span>
+							posts = <span class="tok-kw">await</span> scalar.<span
+								class="tok-fn"
+								>getMany</span
+							>(<span class="tok-str">"blogPost"</span>);
+							<span class="tok-kw">return</span>
+							posts.<span class="tok-fn">map</span>((p) =>
+							<span class="tok-str">&lt;Post key= { p.id} { ...p} /&gt;</span>);
+							}
+						</div>
+					</div>
+
+					<h2 id="content-models">Content Models</h2>
+					<p>Define your content structure with TypeScript-like syntax:</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)"
+								>models/blogPost.ts</span
+							>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">export const</span>
+							BlogPost = { title: { type: <span class="tok-str">"string"</span>,
+							required: <span class="tok-kw">true</span> } , slug: { type:
+							<span class="tok-str">"slug"</span>, from:
+							<span class="tok-str">"title"</span>
+							} , excerpt: { type:
+							<span class="tok-str">"text"</span>, maxLength:
+							<span class="tok-fn">280</span>
+							} , body: { type:
+							<span class="tok-str">"richText"</span>
+							} , author: { type:
+							<span class="tok-str">"reference"</span>, to:
+							<span class="tok-str">"Author"</span>
+							} , publishedAt: { type:
+							<span class="tok-str">"datetime"</span>
+							} , };
+						</div>
+					</div>
+
+					<h2 id="creating-content">Creating Content</h2>
+					<p>Use the API to create and manage content programmatically:</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">create.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com">// create a new blog post</span>
+							<span class="tok-kw">const</span>
+							post = <span class="tok-kw">await</span> client.<span
+								class="tok-fn"
+								>create</span
+							>( { model: <span class="tok-str">"blogPost"</span>, data: {
+							title: <span class="tok-str">"Hello, Scalar"</span>, body:
+							<span class="tok-str">"Your first post."</span>, author: {
+							connect: <span class="tok-str">"author_42"</span> } , }, } );
+						</div>
+					</div>
+
+					<h2 id="graphql-api">GraphQL API</h2>
+					<p>Access your content using GraphQL:</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">query.graphql</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">query</span>
+							<span class="tok-fn">GetPosts</span>
+							{
+							<span class="tok-fn">blogPosts</span>(first:
+							<span class="tok-fn">10</span>, orderBy: { publishedAt: DESC }) {
+							id title slug excerpt author { name avatar } } }
+						</div>
+					</div>
+
+					<h2 id="production-ready">Production Ready</h2>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<path d="M20 6 9 17l-5-5" />
+						</svg>
+						<div>
+							<strong>Production Ready.</strong>
+							Configure environment variables, database backups, and HTTPS
+							before deploying. Scalar is battle-tested across thousands of
+							production deployments. Learn how to install and set up Scalar in
+							your project.
+						</div>
+					</div>
+
+					<nav class="docs-pager">
+						<a class="pg-next" href="docs/getting-started/installation.html"
+							><div class="pg-dir">Next →</div>
+							<div class="pg-title">Installation</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#introduction">Introduction</a>
+					<a href="#quick-example">Quick Example</a>
+					<a href="#core-components">Core Components</a>
+					<a href="#installation">Installation</a>
+					<a href="#first-time-setup">First-Time Setup</a>
+					<a href="#framework-integration">Framework Integration</a>
+					<a href="#content-models">Content Models</a>
+					<a href="#creating-content">Creating Content</a>
+					<a href="#graphql-api">GraphQL API</a>
+					<a href="#production-ready">Production Ready</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="shared.js"></script>
+	</body>
+</html>

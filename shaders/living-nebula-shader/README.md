@@ -1,5 +1,7 @@
 # Living Nebula Shader — Cursor-Lensing FBM Gas Cloud WebGL Shader (React + TypeScript + Three.js)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive WebGL fragment shader rendering a two-layer fractal-Brownian-motion gas cloud — magenta plasma and ion-blue, rotating slowly and lensing around the cursor like a gravitational well — rendered full-viewport with Three.js and framed as a deep-sky radio-observatory sky-feed console. The live telemetry HUD reports shader time, smoothed FPS, and warp-center coordinates sampled directly from the render loop. Built with React 18, TypeScript, Vite 6, and Tailwind CSS v4 using Three.js as the WebGL host. Generated with Claude Fable 5.
 
 The shader component from the prompt is integrated at

@@ -1,5 +1,7 @@
 # Pallet Ross — Scroll-Driven Artist Marketplace Landing Page (React + Vite + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A single-page, scroll-driven landing page for the fictional artist marketplace **Pallet Ross**. Seven artwork cards perform a choreographed intro — a lead card rises, flies to the right, then sweeps left while the rest reveal in its wake — then become scroll-linked: as you scroll they gather into one centered stack, descend together, fan out into a diagonal cascade ladder, and lock in place anchored to Section 2. Three full-height sections cover Hero, E-Commerce, and a Class page with an autoplay banner carousel. Framer Motion's `useScroll` and `useTransform` power the entire scroll-linked card choreography, including a precise `lockProgress` anchor computed from the Section 2 DOM position. An off-white `#F2F2F0` page background, Inter Tight typography, and a teal/red/blue accent palette give the marketplace a clean editorial feel. Generated with Claude Fable 5.
 
 ## Stack

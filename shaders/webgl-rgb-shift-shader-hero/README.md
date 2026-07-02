@@ -1,5 +1,7 @@
 # CHROMA OSC — WebGL RGB-Split Shader Hero (React + Three.js + Tailwind CSS + shadcn)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A live oscilloscope instrument hero framed in a shadcn-structured React app, built around a `RawShaderMaterial` GLSL pass that draws three additive sine ribbons on pure black with R/G/B channels distorted by a radial term — chromatic aberration baked directly into the math. The surrounding instrument card keeps a hairline `#27272a` border, corner brackets, an RGB-split mirrored headline, a sweeping scan line, a pinging green "available" pulse dot, and a `LiquidButton` CTA. Top and bottom mono telemetry strips read the page's real frame rate and shader uptime, sampled from `requestAnimationFrame`. Generated with Claude Fable 5.
 
 ## Stack

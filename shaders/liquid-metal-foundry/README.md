@@ -1,5 +1,7 @@
 # LiquidMetal Foundry — Animated Molten-Metal Background Shader Console (@paper-design/shaders-react + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A runnable shadcn component integration of `@paper-design/shaders-react`'s `LiquidMetal` field animated by Framer Motion — framed as a molten-metal foundry console where the live shader pours into a registration-bracketed crucible plate and a right-hand casting deck drives all shader props in real time. Five alloy presets, a full props API dock, and a live copy-paste usage snippet make this a complete interactive showcase for the `LiquidMetal` generative background. Built with React 19, TypeScript, Vite 7, and Tailwind CSS v4. Generated with Claude Fable 5.
 
 The prompt's component is pasted **verbatim** at

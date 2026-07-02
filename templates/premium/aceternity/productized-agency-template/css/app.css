@@ -1,0 +1,204 @@
+/* Clone-specific additions layered on top of the original compiled Tailwind CSS. */
+
+/* ----- Scroll reveal (Framer-Motion fade + rise replacement) ----- */
+[data-reveal] {
+	opacity: 0;
+	transform: translateY(28px);
+	transition:
+		opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+	will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+	opacity: 1;
+	transform: none;
+}
+[data-reveal][data-reveal-delay="1"] {
+	transition-delay: 0.08s;
+}
+[data-reveal][data-reveal-delay="2"] {
+	transition-delay: 0.16s;
+}
+[data-reveal][data-reveal-delay="3"] {
+	transition-delay: 0.24s;
+}
+[data-reveal][data-reveal-delay="4"] {
+	transition-delay: 0.32s;
+}
+[data-reveal][data-reveal-delay="5"] {
+	transition-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-reveal] {
+		opacity: 1 !important;
+		transform: none !important;
+		transition: none !important;
+	}
+}
+
+/* ----- Accordion content (max-height transition) ----- */
+[data-accordion-content] {
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-accordion-item][data-open="true"] [data-accordion-chevron] {
+	transform: rotate(180deg);
+}
+[data-accordion-chevron] {
+	transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ----- Logo marquee ----- */
+.clone-marquee {
+	display: flex;
+	width: max-content;
+	animation: clone-marquee-scroll 38s linear infinite;
+}
+.clone-marquee:hover {
+	animation-play-state: paused;
+}
+@keyframes clone-marquee-scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* ----- Tabs ----- */
+[data-tab-panel] {
+	display: none;
+}
+[data-tab-panel][data-active="true"] {
+	display: block;
+}
+[data-tab-trigger] {
+	cursor: pointer;
+}
+
+/* ----- Mobile nav menu ----- */
+[data-nav-menu] {
+	transition:
+		opacity 0.25s ease,
+		transform 0.25s ease;
+}
+@media (max-width: 767px) {
+	[data-nav-menu][data-open="false"] {
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(-8px);
+	}
+	[data-nav-menu][data-open="true"] {
+		opacity: 1;
+		pointer-events: auto;
+		transform: none;
+	}
+}
+
+/* ----- Hero glow (warm radial arc) — fallback if original gradient stripped ----- */
+.clone-hero-glow {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background:
+		radial-gradient(
+			120% 80% at 50% 118%,
+			rgba(255, 170, 60, 0.55) 0%,
+			rgba(255, 120, 30, 0.22) 28%,
+			rgba(0, 0, 0, 0) 60%
+		),
+		radial-gradient(
+			60% 40% at 50% 110%,
+			rgba(255, 220, 150, 0.6) 0%,
+			rgba(0, 0, 0, 0) 55%
+		);
+	mix-blend-mode: screen;
+}
+
+/* ----- react-fast-marquee runtime CSS (vendored from original inline <style>) ----- */
+.rfm-marquee-container {
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	width: var(--width);
+	transform: var(--transform);
+}
+.rfm-marquee-container:hover div {
+	animation-play-state: var(--pause-on-hover);
+}
+.rfm-marquee-container:active div {
+	animation-play-state: var(--pause-on-click);
+}
+
+.rfm-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.rfm-overlay::before,
+.rfm-overlay::after {
+	background: linear-gradient(
+		to right,
+		var(--gradient-color),
+		rgba(255, 255, 255, 0)
+	);
+	content: "";
+	height: 100%;
+	position: absolute;
+	width: var(--gradient-width);
+	z-index: 2;
+	pointer-events: none;
+	touch-action: none;
+}
+.rfm-overlay::after {
+	right: 0;
+	top: 0;
+	transform: rotateZ(180deg);
+}
+.rfm-overlay::before {
+	left: 0;
+	top: 0;
+}
+
+.rfm-marquee {
+	flex: 0 0 auto;
+	min-width: var(--min-width);
+	z-index: 1;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
+	animation-play-state: var(--play);
+	animation-delay: var(--delay);
+	animation-direction: var(--direction);
+}
+@keyframes scroll {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+.rfm-initial-child-container {
+	flex: 0 0 auto;
+	display: flex;
+	min-width: auto;
+	flex-direction: row;
+	align-items: center;
+}
+
+.rfm-child {
+	transform: var(--transform);
+}
+
+/* Mobile nav menu open state (data-nav-menu toggled by app.js) */
+[data-nav-menu][data-open="true"] {
+	max-height: 80vh;
+	opacity: 1;
+}

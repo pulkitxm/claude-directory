@@ -1,5 +1,7 @@
 # Warp Checks Background Lab — Animated Checks-Warp GLSL Background with Live Console (React + @paper-design/shaders-react + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport animated checks-warp shader background using `@paper-design/shaders-react`'s `<Warp shape="checks" />` component, integrated in a shadcn/Tailwind/TypeScript project and wrapped in a live instrument console. The `<Warp>` element runs fixed in a `fixed inset-0 -z-10` layer behind glassy, backdrop-blurred content; a live console lets you dial every shader prop in real time, switch between three Warp shapes, apply mood presets, and reset to the prompt's exact verbatim configuration. A telemetry strip reads live FPS and frame count off `requestAnimationFrame`. Generated with Claude Fable 5.
 
 ## What it does

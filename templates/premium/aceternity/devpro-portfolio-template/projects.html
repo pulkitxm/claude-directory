@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Projects | Devpro</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		>
+		<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		:root {
+			--bg-main: #18181b;
+			--bg-nav: #27272a;
+			--bg-card: #27272a;
+			--bg-card-hover: #3f3f46;
+			--text-primary: #fafafa;
+			--text-secondary: #e4e4e7;
+			--text-muted: #a1a1aa;
+			--text-subtle: #71717a;
+			--accent-cyan: #06b6d4;
+			--border-color: rgba(63, 63, 70, 0.6);
+			--border-subtle: #3f3f46;
+			--font-main: "Inter", ui-sans-serif, system-ui, sans-serif;
+			--max-w: 1024px;
+			--max-w-wide: 1152px;
+		}
+		body {
+			background: var(--bg-main);
+			color: var(--text-primary);
+			font-family: var(--font-main);
+			min-height: 100vh;
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+		img {
+			display: block;
+			max-width: 100%;
+		}
+
+		/* NAV */
+		.nav-wrapper {
+			max-width: var(--max-w);
+			margin: 0 auto;
+			padding: 32px 32px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			z-index: 100;
+		}
+		.nav-pill {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 4px;
+			background: var(--bg-nav);
+			border: 1px solid var(--border-color);
+			border-radius: 16px;
+			padding: 8px 16px;
+			flex-wrap: wrap;
+		}
+		.nav-pill-brand {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			text-decoration: none;
+			color: var(--text-primary);
+			font-weight: 700;
+			font-size: 14px;
+			margin-right: 4px;
+		}
+		.nav-pill-brand img {
+			width: 30px;
+			height: 30px;
+			border-radius: 9999px;
+		}
+		.nav-link {
+			color: var(--text-primary);
+			font-size: 14px;
+			text-decoration: none;
+			padding: 6px 10px;
+			border-radius: 8px;
+			transition: color 0.15s;
+		}
+		.nav-link:hover,
+		.nav-link.active {
+			color: var(--accent-cyan);
+		}
+		.nav-cv {
+			font-weight: 500;
+			color: var(--text-primary);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 10px;
+			background: linear-gradient(to bottom, #464d55, #25292e);
+			font-size: 14px;
+			padding: 8px 16px;
+			box-shadow:
+				0 10px 20px rgba(0, 0, 0, 0.1),
+				0 3px 6px rgba(0, 0, 0, 0.05);
+			transition: opacity 0.15s;
+			text-decoration: none;
+			white-space: nowrap;
+		}
+		.nav-cv:hover {
+			opacity: 0.85;
+		}
+		.hamburger {
+			display: none;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 4px;
+			color: var(--text-primary);
+		}
+		.mobile-menu {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 32px;
+			right: 32px;
+			background: var(--bg-nav);
+			border: 1px solid var(--border-color);
+			border-radius: 16px;
+			padding: 12px;
+			z-index: 200;
+			flex-direction: column;
+			gap: 4px;
+		}
+		.mobile-menu.open {
+			display: flex;
+		}
+		.mobile-menu a {
+			color: var(--text-primary);
+			font-size: 14px;
+			padding: 10px 12px;
+			border-radius: 8px;
+			display: block;
+		}
+		.mobile-menu a:hover {
+			background: var(--bg-card-hover);
+			color: var(--accent-cyan);
+		}
+
+		/* PROJECTS PAGE */
+		.projects-page {
+			max-width: var(--max-w);
+			margin: 80px auto 0;
+			padding: 0 32px;
+		}
+		.projects-page h1 {
+			font-weight: 700;
+			font-size: clamp(28px, 3.5vw, 48px);
+			line-height: 1.2;
+			color: var(--text-primary);
+			max-width: 960px;
+		}
+		.projects-page h1 .accent {
+			color: var(--accent-cyan);
+		}
+		.projects-page .subtitle {
+			color: var(--text-muted);
+			font-size: 15px;
+			margin-top: 32px;
+			line-height: 2;
+			max-width: 36rem;
+		}
+		.projects-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 40px;
+			margin-top: 64px;
+		}
+		.project-card {
+			background: var(--bg-card);
+			border: 1px solid var(--border-color);
+			border-radius: 16px;
+			overflow: hidden;
+			cursor: pointer;
+			transition:
+				border-color 0.2s,
+				transform 0.2s;
+			text-decoration: none;
+			display: block;
+		}
+		.project-card:hover {
+			border-color: var(--border-subtle);
+		}
+		.project-card:hover .card-img-overlay {
+			opacity: 0;
+		}
+		.card-img-wrap {
+			position: relative;
+		}
+		.card-img-wrap img {
+			width: 100%;
+			height: 176px;
+			object-fit: cover;
+		}
+		.card-img-overlay {
+			position: absolute;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.1);
+			transition: opacity 0.2s;
+		}
+		.card-body {
+			padding: 16px;
+		}
+		.card-title {
+			font-weight: 700;
+			font-size: 15px;
+			color: var(--text-primary);
+		}
+		.card-desc {
+			color: var(--text-muted);
+			font-size: 14px;
+			margin-top: 8px;
+			line-height: 1.6;
+		}
+		.card-stack {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin-top: 16px;
+		}
+		.card-stack svg {
+			color: #6b7280;
+			width: 20px;
+			height: 20px;
+			margin-right: 16px;
+		}
+		.card-source {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 8px;
+			margin-top: 12px;
+			padding: 0 2px;
+		}
+		.card-source svg {
+			width: 12px;
+			height: 12px;
+			color: #71717a;
+			transition: color 0.2s;
+		}
+		.card-source span {
+			color: #71717a;
+			font-size: 12px;
+			transition: color 0.2s;
+		}
+		.project-card:hover .card-source svg,
+		.project-card:hover .card-source span {
+			color: var(--accent-cyan);
+		}
+
+		/* FOOTER */
+		footer {
+			border-top: 1px solid #0f172a;
+			max-width: var(--max-w-wide);
+			margin: 120px auto 0;
+			padding: 40px 32px;
+		}
+		.footer-inner {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 40px 0;
+		}
+		.footer-brand {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			text-decoration: none;
+			color: var(--text-primary);
+			font-size: 20px;
+			font-weight: 700;
+		}
+		.footer-brand img {
+			width: 30px;
+			height: 30px;
+			border-radius: 9999px;
+		}
+		.footer-links {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 4px;
+			margin-top: 16px;
+		}
+		.footer-link {
+			color: var(--text-muted);
+			font-size: 14px;
+			padding: 6px 10px;
+			border-radius: 8px;
+			transition: color 0.15s;
+		}
+		.footer-link:hover {
+			color: var(--text-primary);
+		}
+		.footer-copy {
+			color: var(--text-secondary);
+			font-size: 14px;
+			font-weight: 300;
+			text-align: center;
+			margin-top: 32px;
+			border-top: 1px solid var(--border-subtle);
+			padding-top: 16px;
+			width: 100%;
+		}
+		.footer-socials {
+			display: flex;
+			gap: 16px;
+			margin-top: 16px;
+		}
+		.footer-social {
+			color: #71717a;
+			transition: color 0.15s;
+		}
+		.footer-social:hover {
+			color: var(--accent-cyan);
+		}
+
+		/* SCROLL TOP */
+		#scrollTop {
+			position: fixed;
+			right: 40px;
+			bottom: 40px;
+			width: 56px;
+			height: 56px;
+			border-radius: 9999px;
+			background: #3f3f46;
+			border: none;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+			z-index: 99999;
+			transition: transform 0.2s;
+		}
+		#scrollTop:hover {
+			transform: scale(1.05);
+		}
+
+		@media (max-width: 768px) {
+			.nav-pill .nav-link {
+				display: none;
+			}
+			.hamburger {
+				display: block;
+			}
+			.projects-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+		@media (min-width: 769px) and (max-width: 1024px) {
+			.projects-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- NAV -->
+		<nav style="position:relative;">
+			<div class="nav-wrapper">
+				<div class="nav-pill">
+					<a href="index.html" class="nav-pill-brand">
+						<img src="assets/images/avatar.png" alt="Tyler Durden">
+						<span>Tyler Durden</span>
+					</a>
+					<a href="about.html" class="nav-link">About</a>
+					<a href="projects.html" class="nav-link active">Projects</a>
+					<a href="contributions.html" class="nav-link">Contributions</a>
+					<a href="blogs.html" class="nav-link">Blogs</a>
+					<a href="events.html" class="nav-link">Events</a>
+					<button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							width="22"
+							height="22"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+							/>
+						</svg>
+					</button>
+				</div>
+				<a href="#" class="nav-cv">Download CV</a>
+				<div class="mobile-menu" id="mobileMenu">
+					<a href="about.html">About</a>
+					<a href="projects.html">Projects</a>
+					<a href="contributions.html">Contributions</a>
+					<a href="blogs.html">Blogs</a>
+					<a href="events.html">Events</a>
+					<a href="#">Download CV</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- PROJECTS PAGE -->
+		<section class="projects-page">
+			<h1>I've been building a<span class="accent"> lot of things</span></h1>
+			<p class="subtitle">
+				Come explore the fruits of my labor, from small experiments to
+				full-blown web applications, each project showcases my love for coding
+				and design.
+			</p>
+
+			<div class="projects-grid">
+				<a
+					href="https://algochurn.com"
+					target="_blank"
+					rel="noopener"
+					class="project-card"
+				>
+					<div class="card-img-wrap">
+						<img src="assets/images/projects/algochurn.png" alt="Algochurn">
+						<div class="card-img-overlay"></div>
+					</div>
+					<div class="card-body">
+						<div class="card-title">Algochurn</div>
+						<div class="card-desc">
+							A web app that allows users to practice for front-end and UI
+							interviews.
+						</div>
+						<div class="card-stack">
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+								<path d="M15 12v-3"></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+								></path>
+								<path d="M9 12h4"></path>
+								<path d="M11 12v6"></path>
+								<path
+									d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+								></path>
+								<path
+									d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+								></path>
+								<path
+									d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+								></path>
+								<path
+									d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+								></path>
+								<path
+									d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+								></path>
+								<path
+									d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+								></path>
+								<path
+									d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+								></path>
+							</svg>
+						</div>
+						<div class="card-source">
+							<svg
+								stroke="currentColor"
+								fill="currentColor"
+								stroke-width="0"
+								viewBox="0 0 16 16"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+								></path>
+								<path
+									d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+								></path>
+							</svg>
+							<span>View Source</span>
+						</div>
+					</div>
+				</a>
+
+				<a
+					href="https://aceternity.com"
+					target="_blank"
+					rel="noopener"
+					class="project-card"
+				>
+					<div class="card-img-wrap">
+						<img src="assets/images/projects/aceternity.png" alt="Aceternity">
+						<div class="card-img-overlay"></div>
+					</div>
+					<div class="card-body">
+						<div class="card-title">Aceternity</div>
+						<div class="card-desc">
+							A web design and development agency that gets the job done.
+							Somehow.
+						</div>
+						<div class="card-stack">
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+								<path d="M15 12v-3"></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+								></path>
+								<path d="M9 12h4"></path>
+								<path d="M11 12v6"></path>
+								<path
+									d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+								></path>
+								<path
+									d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+								></path>
+								<path
+									d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+								></path>
+								<path
+									d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+								></path>
+								<path
+									d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+								></path>
+								<path
+									d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+								></path>
+								<path
+									d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+								></path>
+							</svg>
+						</div>
+						<div class="card-source">
+							<svg
+								stroke="currentColor"
+								fill="currentColor"
+								stroke-width="0"
+								viewBox="0 0 16 16"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+								></path>
+								<path
+									d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+								></path>
+							</svg>
+							<span>View Source</span>
+						</div>
+					</div>
+				</a>
+
+				<a
+					href="https://tailwindmasterkit.com"
+					target="_blank"
+					rel="noopener"
+					class="project-card"
+				>
+					<div class="card-img-wrap">
+						<img
+							src="assets/images/projects/tailwindmasterkit.png"
+							alt="Tailwind Master Kit"
+						>
+						<div class="card-img-overlay"></div>
+					</div>
+					<div class="card-body">
+						<div class="card-title">Tailwind Master Kit</div>
+						<div class="card-desc">
+							Buy premium tailwind components and templates for your next
+							project.
+						</div>
+						<div class="card-stack">
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+								<path d="M15 12v-3"></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+								></path>
+								<path d="M9 12h4"></path>
+								<path d="M11 12v6"></path>
+								<path
+									d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+								></path>
+								<path
+									d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+								></path>
+								<path
+									d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+								></path>
+								<path
+									d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+								></path>
+								<path
+									d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+								></path>
+								<path
+									d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+								></path>
+								<path
+									d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+								></path>
+							</svg>
+						</div>
+						<div class="card-source">
+							<svg
+								stroke="currentColor"
+								fill="currentColor"
+								stroke-width="0"
+								viewBox="0 0 16 16"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+								></path>
+								<path
+									d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+								></path>
+							</svg>
+							<span>View Source</span>
+						</div>
+					</div>
+				</a>
+
+				<a
+					href="https://manuarora.in/boxshadows"
+					target="_blank"
+					rel="noopener"
+					class="project-card"
+				>
+					<div class="card-img-wrap">
+						<img src="assets/images/projects/boxshadows.png" alt="Box Shadows">
+						<div class="card-img-overlay"></div>
+					</div>
+					<div class="card-body">
+						<div class="card-title">Box Shadows</div>
+						<div class="card-desc">
+							Copy and paste beautiful box shadows that stand out for your next
+							project.
+						</div>
+						<div class="card-stack">
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+								<path d="M15 12v-3"></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+								></path>
+								<path d="M9 12h4"></path>
+								<path d="M11 12v6"></path>
+								<path
+									d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+								></path>
+								<path
+									d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+								></path>
+								<path
+									d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+								></path>
+								<path
+									d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+								></path>
+								<path
+									d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+								></path>
+								<path
+									d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+								></path>
+								<path
+									d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+								></path>
+							</svg>
+						</div>
+						<div class="card-source">
+							<svg
+								stroke="currentColor"
+								fill="currentColor"
+								stroke-width="0"
+								viewBox="0 0 16 16"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+								></path>
+								<path
+									d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+								></path>
+							</svg>
+							<span>View Source</span>
+						</div>
+					</div>
+				</a>
+
+				<a
+					href="https://placeholdertech.in"
+					target="_blank"
+					rel="noopener"
+					class="project-card"
+				>
+					<div class="card-img-wrap">
+						<img
+							src="assets/images/projects/placeholdertech.png"
+							alt="PlaceholderTech"
+						>
+						<div class="card-img-overlay"></div>
+					</div>
+					<div class="card-body">
+						<div class="card-title">PlaceholderTech</div>
+						<div class="card-desc">
+							Your one-stop shop for web app needs tailored to your
+							requirements.
+						</div>
+						<div class="card-stack">
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
+								<path d="M15 12v-3"></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5"
+								></path>
+								<path d="M9 12h4"></path>
+								<path d="M11 12v6"></path>
+								<path
+									d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z"
+								></path>
+							</svg>
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"
+								></path>
+								<path
+									d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"
+								></path>
+								<path
+									d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"
+								></path>
+								<path
+									d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"
+								></path>
+								<path
+									d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"
+								></path>
+								<path
+									d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"
+								></path>
+								<path
+									d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"
+								></path>
+							</svg>
+						</div>
+						<div class="card-source">
+							<svg
+								stroke="currentColor"
+								fill="currentColor"
+								stroke-width="0"
+								viewBox="0 0 16 16"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"
+								></path>
+								<path
+									d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"
+								></path>
+							</svg>
+							<span>View Source</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-inner">
+				<a href="index.html" class="footer-brand">
+					<img src="assets/images/avatar.png" alt="Avatar">
+					<span>Tyler Durden</span>
+				</a>
+				<div class="footer-links">
+					<a href="about.html" class="footer-link">About</a>
+					<a href="projects.html" class="footer-link">Projects</a>
+					<a href="contributions.html" class="footer-link">Contributions</a>
+					<a href="blogs.html" class="footer-link">Blogs</a>
+					<a href="events.html" class="footer-link">Events</a>
+				</div>
+				<div class="footer-socials">
+					<a href="#" class="footer-social" aria-label="Twitter">
+						<svg
+							stroke="currentColor"
+							fill="currentColor"
+							stroke-width="0"
+							viewBox="0 0 1024 1024"
+							height="20"
+							width="20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0 0 75-94 336.64 336.64 0 0 1-108.2 41.2A170.1 170.1 0 0 0 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 0 0-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 0 1-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 0 1-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z"
+							/>
+						</svg>
+					</a>
+					<a href="#" class="footer-social" aria-label="LinkedIn">
+						<svg
+							stroke="currentColor"
+							fill="currentColor"
+							stroke-width="0"
+							viewBox="0 0 1024 1024"
+							height="20"
+							width="20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"
+							/>
+						</svg>
+					</a>
+					<a href="#" class="footer-social" aria-label="GitHub">
+						<svg
+							stroke="currentColor"
+							fill="currentColor"
+							stroke-width="0"
+							viewBox="0 0 1024 1024"
+							height="20"
+							width="20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"
+							/>
+						</svg>
+					</a>
+				</div>
+				<p class="footer-copy">
+					© 2026 Devpro Portfolio Template. All rights reserved.
+				</p>
+			</div>
+		</footer>
+
+		<button
+			id="scrollTop"
+			onclick="window.scrollTo({top:0,behavior:'smooth'})"
+			aria-label="Scroll to top"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="#fafafa"
+				style="width:24px;height:24px;"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+				/>
+			</svg>
+		</button>
+
+		<script>
+		function toggleMenu() {
+			document.getElementById("mobileMenu").classList.toggle("open");
+		}
+		document.addEventListener("click", function (e) {
+			var nav = document.querySelector(".nav-pill");
+			if (!nav.contains(e.target))
+				document.getElementById("mobileMenu").classList.remove("open");
+		});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en" class="light">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Behind the Scenes of Our Latest Feature Drop — Lumen</title>
+		<meta
+			name="description"
+			content="A look inside how we plan, build, test, and launch new features at Lumen."
+		>
+		<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:opsz,wght@14..32,100..900&display=swap"
+			rel="stylesheet"
+		>
+		<script>
+		(function () {
+			try {
+				var s = localStorage.getItem("lumen-theme");
+				var d = s
+					? s === "dark"
+					: matchMedia("(prefers-color-scheme: dark)").matches;
+				document.documentElement.classList.toggle("dark", d);
+				document.documentElement.classList.toggle("light", !d);
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../assets/css/styles.css">
+	</head>
+	<body data-page="blog-post">
+		<header class="site-header">
+			<div class="container site-header__inner">
+				<a class="brand" href="../index.html" aria-label="Lumen home">
+					<img
+						src="../assets/layout/logo.svg"
+						alt="Lumen"
+						style="width:auto;height:1.5rem"
+					>
+				</a>
+				<nav class="main-nav">
+					<div class="nav-item">
+						<button class="nav-trigger" data-nav-trigger aria-expanded="false">
+							Features
+							<svg
+								width="14"
+								height="14"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path d="m6 9 6 6 6-6" />
+							</svg>
+						</button>
+						<div class="nav-menu">
+							<a href="../index.html#features"
+								><strong>Feature management</strong
+								><span>Plan, track and ship features with clarity</span></a
+							>
+							<a href="../index.html#features"
+								><strong>Feature intelligence</strong
+								><span>Insights built for modern product teams</span></a
+							>
+							<a href="../index.html#features"
+								><strong>Segment users</strong
+								><span>Group users by feature behavior</span></a
+							>
+							<a href="../index.html#features"
+								><strong>Export insights</strong
+								><span>Tie usage to business impact</span></a
+							>
+						</div>
+					</div>
+					<a href="../about.html">About</a>
+					<a href="../pricing.html">Pricing</a>
+					<a href="../blog.html">Blog</a>
+					<a href="../faq.html">FAQ</a>
+				</nav>
+				<div class="header-actions">
+					<button
+						class="theme-toggle"
+						data-theme-toggle
+						aria-label="Toggle theme"
+					>
+						<svg
+							class="icon-moon"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+						</svg>
+						<svg
+							class="icon-sun"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="4" />
+							<path
+								d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+							/>
+						</svg>
+					</button>
+					<a class="btn btn-ghost desktop-only" href="../signin.html"
+						>Sign in</a
+					>
+					<a class="btn btn-primary desktop-only" href="../signup.html"
+						>Get started</a
+					>
+					<button class="hamburger" data-hamburger aria-label="Open menu">
+						<svg
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M3 12h18M3 6h18M3 18h18" />
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div class="container mobile-menu">
+				<a href="../index.html#features">Features</a>
+				<a href="../about.html">About</a>
+				<a href="../pricing.html">Pricing</a>
+				<a href="../blog.html">Blog</a>
+				<a href="../faq.html">FAQ</a>
+				<a href="../signin.html">Sign in</a>
+				<a
+					class="btn btn-primary"
+					href="../signup.html"
+					style="margin-top:.5rem"
+					>Get started</a
+				>
+			</div>
+		</header>
+		<main>
+			<section class="section">
+				<div class="container container-narrow article-head">
+					<a class="back-link" href="../blog.html">&larr; Back to blog</a>
+					<div class="article-author">
+						<img
+							src="../assets/photos/face-4c6ce005b128-400.jpg"
+							alt="Tom Baker"
+						>
+						<div>
+							<strong>Tom Baker</strong>
+							<span
+								>Product Manager &middot; Published on 11 Jul 2025 &middot; 7
+								min read</span
+							>
+						</div>
+					</div>
+					<h1 class="h1">Behind the Scenes of Our Latest Feature Drop</h1>
+					<p class="article-standfirst">
+						A look inside how we plan, build, test, and launch new features at
+						Lumen.
+					</p>
+					<span class="badge article-tag">Product</span>
+				</div>
+				<div class="container container-narrow article-hero">
+					<img src="../assets/photos/img-41bc2dd41cd2-1200.jpg" alt="">
+				</div>
+				<div class="container container-narrow article-body">
+					<h2>Introduction</h2>
+					<p>
+						Great products are rarely the result of a single moment of
+						inspiration. They emerge from disciplined habits, clear
+						communication, and a willingness to learn from real-world feedback.
+						In this article we break down the approach our teams use every day
+						and the lessons that have shaped how we work.
+					</p>
+					<p>
+						Whether you are just getting started or refining a process you have
+						run for years, the principles below apply across team sizes and
+						industries.
+					</p>
+					<h2>Why it matters</h2>
+					<p>
+						When teams skip the fundamentals, the cost compounds quietly. Small
+						inefficiencies pile up, context gets lost between hand-offs, and the
+						work that should energize a team starts to drain it instead. Getting
+						the basics right pays dividends long after the initial effort.
+					</p>
+					<blockquote>
+						The best teams don't move fast by cutting corners — they move fast
+						because their process removes friction.
+					</blockquote>
+					<h2>Core principles</h2>
+					<p>
+						A handful of ideas show up again and again in the teams that
+						consistently deliver. Keep these front and center:
+					</p>
+					<ul>
+						<li>
+							<strong>Start with the problem, not the solution.</strong>
+							Clarity about the outcome keeps everyone aligned.
+						</li>
+						<li>
+							<strong>Make the work visible.</strong>
+							Shared context beats heroic individual effort every time.
+						</li>
+						<li>
+							<strong>Iterate based on evidence.</strong>
+							Let data and user feedback guide the next step.
+						</li>
+						<li>
+							<strong>Protect focus time.</strong>
+							Deep work is where the real progress happens.
+						</li>
+					</ul>
+					<h3>Putting it into practice</h3>
+					<p>
+						Principles are only useful when they translate into daily habits.
+						Pick one area to improve this week, measure the impact, and build
+						from there. Sustainable change comes from compounding small wins,
+						not sweeping overhauls.
+					</p>
+					<ul>
+						<li>Agree on a single source of truth for status and ownership.</li>
+						<li>Keep feedback loops short — days, not weeks.</li>
+						<li>Document decisions so context survives team changes.</li>
+					</ul>
+					<h2>Common pitfalls</h2>
+					<p>
+						Even strong teams fall into predictable traps: over-planning instead
+						of shipping, optimizing for activity instead of outcomes, and
+						treating process as a goal rather than a tool. Stay alert to these
+						patterns and adjust quickly when you spot them.
+					</p>
+					<h2>Conclusion</h2>
+					<p>
+						There is no shortcut to building great products, but there is a
+						reliable path: understand your users, work in tight feedback loops,
+						and keep improving the way you work. By applying the ideas in this
+						article, your team can ship better work faster — and enjoy the
+						process more along the way.
+					</p>
+				</div>
+				<div class="container related-grid">
+					<h2>Related Articles</h2>
+					<div class="grid grid-3">
+						<article class="card card-hover blog-card">
+							<a
+								class="blog-card__media"
+								href="./customer-success-coordination-time.html"
+								><img
+									src="../assets/photos/img-43269d4ea984-1200.jpg"
+									alt=""
+									loading="lazy"
+								></a
+							>
+							<div class="blog-card__body">
+								<span class="badge">Customer Success</span>
+								<h3 class="blog-card__title">
+									<a href="./customer-success-coordination-time.html"
+										>Customer Success Stories: How Teams Cut Coordination Time
+										in Half</a
+									>
+								</h3>
+							</div>
+						</article>
+						<article class="card card-hover blog-card">
+							<a class="blog-card__media" href="./pulse-integrations-guide.html"
+								><img
+									src="../assets/photos/img-757bb62b4baf-1200.jpg"
+									alt=""
+									loading="lazy"
+								></a
+							>
+							<div class="blog-card__body">
+								<span class="badge">Product</span>
+								<h3 class="blog-card__title">
+									<a href="./pulse-integrations-guide.html"
+										>How Lumen Integrates with Slack, Figma, and Notion in
+										Seconds</a
+									>
+								</h3>
+							</div>
+						</article>
+						<article class="card card-hover blog-card">
+							<a
+								class="blog-card__media"
+								href="./team-automations-save-time.html"
+								><img
+									src="../assets/photos/img-89b55fcc595e-1200.jpg"
+									alt=""
+									loading="lazy"
+								></a
+							>
+							<div class="blog-card__body">
+								<span class="badge">Product</span>
+								<h3 class="blog-card__title">
+									<a href="./team-automations-save-time.html"
+										>5 Automations That Saved Our Team 15 Hours This Month</a
+									>
+								</h3>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="site-footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-col">
+						<h4>Navigation</h4>
+						<ul>
+							<li><a href="../index.html#features">Features</a></li>
+							<li><a href="../about.html">About</a></li>
+							<li><a href="../pricing.html">Pricing</a></li>
+							<li><a href="../blog.html">Blog</a></li>
+							<li><a href="../faq.html">FAQ</a></li>
+						</ul>
+					</div>
+					<div class="footer-col">
+						<h4>Blog</h4>
+						<ul>
+							<li><a href="../blog.html">All Posts</a></li>
+							<li>
+								<a href="../blog/agile-project-management-tips.html"
+									>Agile Project Management</a
+								>
+							</li>
+							<li>
+								<a href="../blog/customer-onboarding-strategies.html"
+									>Customer Onboarding</a
+								>
+							</li>
+						</ul>
+					</div>
+					<div class="footer-col">
+						<h4>Resources</h4>
+						<ul>
+							<li>
+								<a href="../terms-and-conditions.html"
+									>Terms &amp; Conditions</a
+								>
+							</li>
+							<li><a href="../privacy-policy.html">Privacy Policy</a></li>
+						</ul>
+					</div>
+					<div class="footer-brand">
+						<a class="brand" href="../index.html"
+							><img
+								src="../assets/layout/logo.svg"
+								alt="Lumen"
+								style="width:auto;height:1.5rem"
+							></a
+						>
+						<ul style="display:grid;gap:.6rem">
+							<li><a href="#">Follow on LinkedIn</a></li>
+							<li><a href="#">Follow on X</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="app-badges">
+					<img
+						src="../assets/images/apple-button.png"
+						alt="Download on the App Store"
+					>
+					<img
+						src="../assets/images/google-button.png"
+						alt="Get it on Google Play"
+					>
+				</div>
+				<div class="footer-bottom">
+					<span>© 2026 Shadcnblocks.com</span>
+					<span
+						><a href="../privacy-policy.html">Privacy</a>
+						&nbsp; <a href="../terms-and-conditions.html">Terms</a></span
+					>
+				</div>
+			</div>
+		</footer>
+		<script src="../assets/js/app.js"></script>
+	</body>
+</html>

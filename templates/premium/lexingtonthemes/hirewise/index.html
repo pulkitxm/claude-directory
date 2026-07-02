@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en" class="selection:bg-blue selection:text-white scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Home — Hirewise</title>
+		<meta
+			name="description"
+			content="Find jobs that fit your life. The job board for people who care about where they work."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"
+		></script>
+		<script>
+		(function () {
+			const theme =
+				localStorage.getItem("theme") ||
+				(window.matchMedia("(prefers-color-scheme: dark)").matches
+					? "dark"
+					: "light");
+			document.documentElement.classList.toggle("dark", theme === "dark");
+		})();
+		</script>
+	</head>
+	<body class="bg-white dark:bg-base-800 flex flex-col min-h-dvh">
+		<section id="navigation" class="overflow-hidden">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="bg-white dark:bg-base-800 py-4">
+					<div class="grid grid-cols-2 gap-4 items-center">
+						<a
+							href="index.html"
+							class="font-medium lowercase text-base-900 dark:text-white text-lg"
+							>hirewise®</a
+						>
+						<div class="flex items-center gap-2 text-sm justify-end">
+							<button
+								class="btn-secondary size-8 rounded"
+								id="jobSearchButton"
+								type="button"
+								aria-label="Search"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+									<path d="M21 21l-6 -6"></path>
+								</svg>
+							</button>
+							<button
+								class="btn-secondary size-8 rounded"
+								id="theme-toggle"
+								type="button"
+								aria-label="Toggle theme"
+								aria-checked="false"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+									<path
+										d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
+									></path>
+								</svg>
+							</button>
+							<a
+								class="btn-secondary h-8 px-3 py-2 text-xs rounded whitespace-nowrap"
+								href="sign-in.html"
+								>Sign in</a
+							>
+							<a
+								class="btn-primary h-8 px-3 py-2 text-xs rounded whitespace-nowrap"
+								href="sign-up.html"
+								>Sign up</a
+							>
+							<button
+								class="btn-secondary size-8 rounded shrink-0"
+								id="menubutton"
+								type="button"
+								aria-controls="menu"
+								aria-label="Toggle menu"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="size-4"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path
+										d="M4 4h6v6h-6zm10 0h6v6h-6zm-10 10h6v6h-6zm10 0h6v6h-6z"
+									></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<nav
+						id="menu"
+						class="overflow-hidden relative outline outline-base-200 dark:outline-white/10 shadow dark:shadow-base-900 rounded-3xl bg-base-50 dark:bg-base-700 mt-4"
+						style="max-height:0;opacity:0;transition:max-height 0.5s ease-out, opacity 0.5s ease-out;"
+					>
+						<div class="p-8 grid grid-cols-1 lg:grid-cols-3 gap-y-8">
+							<div>
+								<h3 class="text-base text-base-900 dark:text-white font-medium">
+									Quick Links
+								</h3>
+								<nav class="mt-8">
+									<ul class="grid grid-cols-2 gap-y-1">
+										<li>
+											<a
+												href="index.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Browse Jobs</a
+											>
+										</li>
+										<li>
+											<a
+												href="companies.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Explore Companies</a
+											>
+										</li>
+										<li>
+											<a
+												href="candidates.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Find Candidates</a
+											>
+										</li>
+										<li>
+											<a
+												href="submit-job.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Post a Job</a
+											>
+										</li>
+										<li>
+											<a
+												href="blog.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>News</a
+											>
+										</li>
+										<li>
+											<a
+												href="sign-in.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Sign In</a
+											>
+										</li>
+										<li>
+											<a
+												href="sign-up.html"
+												class="text-sm hover:text-blue text-base-600 dark:text-base-400 transition duration-300"
+												>Create an account</a
+											>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div
+								class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:col-span-2 gap-4"
+							>
+								<div
+									class="bg-orange p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a href="jobs.html" class="absolute inset-0 z-10"></a>Jobs
+								</div>
+								<div
+									class="bg-blue p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a
+										href="companies.html"
+										class="absolute inset-0 z-10"
+									></a>Companies
+								</div>
+								<div
+									class="bg-yellow-light p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-base-900 font-semibold"
+								>
+									<a
+										href="candidates.html"
+										class="absolute inset-0 z-10"
+									></a>Candidates
+								</div>
+								<div
+									class="bg-green p-4 lg:aspect-square relative flex flex-col items-center justify-center rounded-2xl text-xl text-white font-semibold"
+								>
+									<a href="blog.html" class="absolute inset-0 z-10"></a>News
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<!-- Hero -->
+		<section class="py-12 lg:py-24">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<div>
+						<div class="flex items-center gap-2 mb-4">
+							<span
+								class="text-xs font-medium text-base-500 dark:text-base-400 uppercase tracking-wide"
+								>Welcome</span
+							>
+							<span class="flex gap-1">
+								<span class="size-1.5 rounded-full bg-blue inline-block"></span>
+								<span
+									class="size-1.5 rounded-full bg-orange inline-block"
+								></span>
+								<span
+									class="size-1.5 rounded-full bg-green inline-block"
+								></span>
+							</span>
+						</div>
+						<h1
+							class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-base-900 dark:text-white tracking-tight text-balance"
+						>
+							Find jobs that fit your life.
+						</h1>
+						<p class="mt-4 text-base text-base-500 dark:text-base-400 max-w-lg">
+							Hirewise connects talented people with companies that value
+							culture, flexibility, and purpose. Browse thousands of vetted
+							opportunities.
+						</p>
+						<div class="flex items-center gap-3 mt-8">
+							<a href="jobs.html" class="btn-primary h-10 px-5 rounded text-sm"
+								>Browse jobs</a
+							>
+							<a
+								href="companies.html"
+								class="btn-secondary h-10 px-5 rounded text-sm"
+								>Explore companies</a
+							>
+						</div>
+						<div class="grid grid-cols-2 gap-4 mt-10">
+							<div class="card p-4">
+								<p class="text-2xl font-semibold text-base-900 dark:text-white">
+									20,000+
+								</p>
+								<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+									Active job listings
+								</p>
+							</div>
+							<div class="card p-4">
+								<p class="text-2xl font-semibold text-base-900 dark:text-white">
+									5,000+
+								</p>
+								<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+									Top companies hiring
+								</p>
+							</div>
+							<div class="card p-4">
+								<p class="text-2xl font-semibold text-base-900 dark:text-white">
+									500k+
+								</p>
+								<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+									Candidates registered
+								</p>
+							</div>
+							<div class="card p-4">
+								<p class="text-2xl font-semibold text-base-900 dark:text-white">
+									98%
+								</p>
+								<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+									Satisfaction rate
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="flex flex-col gap-4">
+						<div class="bg-orange p-6 rounded-2xl">
+							<div class="flex items-center gap-3">
+								<div
+									class="avatar size-10"
+									style="background:rgba(255,255,255,0.3);color:white;"
+								>
+									JD
+								</div>
+								<div>
+									<p class="font-medium text-white">Jane D.</p>
+									<p class="text-sm text-white/70">Product Designer @ Figma</p>
+								</div>
+							</div>
+							<p class="mt-3 text-white text-sm">
+								"Found my dream job in less than a week. The platform made it so
+								easy to connect with the right companies."
+							</p>
+						</div>
+						<div class="bg-blue p-6 rounded-2xl">
+							<div class="flex items-center gap-3">
+								<div
+									class="avatar size-10"
+									style="background:rgba(255,255,255,0.3);color:white;"
+								>
+									MR
+								</div>
+								<div>
+									<p class="font-medium text-white">Mike R.</p>
+									<p class="text-sm text-white/70">
+										Engineering Manager @ GitHub
+									</p>
+								</div>
+							</div>
+							<p class="mt-3 text-white text-sm">
+								"Hirewise helped us hire 12 engineers in 2 months. The quality
+								of candidates is exceptional."
+							</p>
+						</div>
+						<div class="bg-green p-6 rounded-2xl">
+							<div class="flex items-center gap-3">
+								<div
+									class="avatar size-10"
+									style="background:rgba(255,255,255,0.3);color:white;"
+								>
+									AL
+								</div>
+								<div>
+									<p class="font-medium text-white">Ana L.</p>
+									<p class="text-sm text-white/70">
+										Frontend Engineer @ Supabase
+									</p>
+								</div>
+							</div>
+							<p class="mt-3 text-white text-sm">
+								"The job search experience here is unlike any other platform.
+								Clean, fast, and focused on what matters."
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Featured Jobs -->
+		<section
+			class="py-12 lg:py-24 border-t border-base-200 dark:border-base-700"
+		>
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="flex items-center justify-between mb-8">
+					<div>
+						<h2 class="text-2xl font-semibold text-base-900 dark:text-white">
+							Featured Jobs
+						</h2>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+							Hand-picked opportunities from top employers
+						</p>
+					</div>
+					<a href="jobs.html" class="btn-secondary h-8 px-3 text-xs rounded"
+						>View all</a
+					>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+					<!-- Job 1 -->
+					<div class="card p-6 group relative">
+						<div class="flex items-start justify-between">
+							<div class="company-logo" style="background:#F24E1E;color:white;">
+								F
+							</div>
+							<span
+								class="text-xs bg-orange/10 text-orange px-2 py-1 rounded font-medium"
+								>Featured</span
+							>
+						</div>
+						<h3 class="mt-4 font-semibold text-base-900 dark:text-white">
+							Engineering Manager
+						</h3>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+							Figma • Remote (North America)
+						</p>
+						<div class="flex flex-wrap gap-2 mt-3">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-1 rounded"
+								>Engineering</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-1 rounded"
+								>Remote</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-1 rounded"
+								>Full-time</span
+							>
+						</div>
+						<div class="flex items-center justify-between mt-4">
+							<span class="text-sm font-medium text-base-900 dark:text-white"
+								>$140k–$170k</span
+							>
+							<a
+								href="job-detail.html"
+								class="btn-primary h-8 px-3 text-xs rounded apply-btn"
+								>Apply</a
+							>
+						</div>
+						<a href="job-detail.html" class="absolute inset-0"></a>
+					</div>
+					<!-- Job 2 -->
+					<div class="card p-6 group relative">
+						<div class="flex items-start justify-between">
+							<div class="company-logo" style="background:#3ECF8E;color:#111;">
+								SB
+							</div>
+							<span
+								class="text-xs bg-blue/10 text-blue px-2 py-1 rounded font-medium"
+								>New</span
+							>
+						</div>
+						<h3 class="mt-4 font-semibold text-base-900 dark:text-white">
+							Frontend Engineer
+						</h3>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+							Supabase • Remote (Global)
+						</p>
+						<div class="flex flex-wrap gap-2 mt-3">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-1 rounded"
+								>Engineering</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-1 rounded"
+								>Remote</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-1 rounded"
+								>Full-time</span
+							>
+						</div>
+						<div class="flex items-center justify-between mt-4">
+							<span class="text-sm font-medium text-base-900 dark:text-white"
+								>$100k–$130k</span
+							>
+							<a
+								href="job-detail.html"
+								class="btn-primary h-8 px-3 text-xs rounded apply-btn"
+								>Apply</a
+							>
+						</div>
+						<a href="job-detail.html" class="absolute inset-0"></a>
+					</div>
+					<!-- Job 3 -->
+					<div class="card p-6 group relative">
+						<div class="flex items-start justify-between">
+							<div class="company-logo" style="background:#635BFF;color:white;">
+								S
+							</div>
+							<span
+								class="text-xs bg-green/10 text-green px-2 py-1 rounded font-medium"
+								>Urgent</span
+							>
+						</div>
+						<h3 class="mt-4 font-semibold text-base-900 dark:text-white">
+							Sales Development Rep
+						</h3>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+							Stripe • San Francisco, CA
+						</p>
+						<div class="flex flex-wrap gap-2 mt-3">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-1 rounded"
+								>Sales</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-1 rounded"
+								>On-site</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-1 rounded"
+								>Full-time</span
+							>
+						</div>
+						<div class="flex items-center justify-between mt-4">
+							<span class="text-sm font-medium text-base-900 dark:text-white"
+								>$80k–$100k</span
+							>
+							<a
+								href="job-detail.html"
+								class="btn-primary h-8 px-3 text-xs rounded apply-btn"
+								>Apply</a
+							>
+						</div>
+						<a href="job-detail.html" class="absolute inset-0"></a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Jobs by Category -->
+		<section
+			class="py-12 lg:py-24 border-t border-base-200 dark:border-base-700"
+		>
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="mb-8">
+					<h2 class="text-2xl font-semibold text-base-900 dark:text-white">
+						Browse by Category
+					</h2>
+					<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+						Explore jobs across all major disciplines
+					</p>
+				</div>
+				<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+					<a
+						href="jobs.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300 group"
+					>
+						<div
+							class="size-10 rounded-xl bg-orange/10 flex items-center justify-center"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="size-5 text-orange"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M4 16l6 -7l5 5l5 -6" />
+								<path d="M15 14m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+							</svg>
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Engineering
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">8 jobs</p>
+					</a>
+					<a
+						href="jobs.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300 group"
+					>
+						<div
+							class="size-10 rounded-xl bg-blue/10 flex items-center justify-center"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="size-5 text-blue"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
+								<path d="M4 16v2a2 2 0 0 0 2 2h2" />
+								<path d="M16 4h2a2 2 0 0 1 2 2v2" />
+								<path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
+								<path
+									d="M9 10h1a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1z"
+								/>
+								<path d="M14 10h.01" />
+								<path d="M17 10h.01" />
+								<path d="M14 14h.01" />
+								<path d="M17 14h.01" />
+							</svg>
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Design
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">3 jobs</p>
+					</a>
+					<a
+						href="jobs.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300 group"
+					>
+						<div
+							class="size-10 rounded-xl bg-green/10 flex items-center justify-center"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="size-5 text-green"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M3 12h4l3 8l4 -16l3 8h4" />
+							</svg>
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Marketing
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">4 jobs</p>
+					</a>
+					<a
+						href="jobs.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300 group"
+					>
+						<div
+							class="size-10 rounded-xl bg-yellow/10 flex items-center justify-center"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="size-5 text-yellow"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path
+									d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"
+								/>
+								<path
+									d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+								/>
+								<path d="M9 12h6" />
+								<path d="M9 16h6" />
+							</svg>
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Analytics
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">2 jobs</p>
+					</a>
+					<a
+						href="jobs.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300 group"
+					>
+						<div
+							class="size-10 rounded-xl bg-orange/10 flex items-center justify-center"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="size-5 text-orange"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M8 9h8" />
+								<path d="M8 13h6" />
+								<path
+									d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"
+								/>
+							</svg>
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Writing
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">2 jobs</p>
+					</a>
+					<a
+						href="jobs.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300 group"
+					>
+						<div
+							class="size-10 rounded-xl bg-blue/10 flex items-center justify-center"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="size-5 text-blue"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path
+									d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12"
+								/>
+							</svg>
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Sales
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">1 job</p>
+					</a>
+					<a
+						href="jobs.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300 group"
+					>
+						<div
+							class="size-10 rounded-xl bg-green/10 flex items-center justify-center"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="size-5 text-green"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+							</svg>
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							AI / ML
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">1 job</p>
+					</a>
+					<a
+						href="jobs.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300 group"
+					>
+						<div
+							class="size-10 rounded-xl bg-yellow/10 flex items-center justify-center"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="size-5 text-yellow"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path
+									d="M9 7m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"
+								/>
+								<path d="M9 13l-3 -3a2 2 0 0 0 -2 .586v5.414a2 2 0 0 0 2 2h3" />
+							</svg>
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">HR</h3>
+						<p class="text-xs text-base-500 dark:text-base-400 mt-1">1 job</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Companies -->
+		<section
+			class="py-12 lg:py-24 border-t border-base-200 dark:border-base-700"
+		>
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="flex items-center justify-between mb-8">
+					<div>
+						<h2 class="text-2xl font-semibold text-base-900 dark:text-white">
+							Top Companies
+						</h2>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+							Join the world's most innovative teams
+						</p>
+					</div>
+					<a
+						href="companies.html"
+						class="btn-secondary h-8 px-3 text-xs rounded"
+						>View all</a
+					>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+					<a
+						href="company-detail.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div class="flex items-center gap-3">
+							<div class="company-logo" style="background:#F24E1E;color:white;">
+								F
+							</div>
+							<div>
+								<p class="font-medium text-base-900 dark:text-white">Figma</p>
+								<p class="text-xs text-base-500 dark:text-base-400">
+									1 open role
+								</p>
+							</div>
+						</div>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+							The collaborative interface design tool.
+						</p>
+					</a>
+					<a
+						href="company-detail.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div class="flex items-center gap-3">
+							<div class="company-logo" style="background:#24292F;color:white;">
+								G
+							</div>
+							<div>
+								<p class="font-medium text-base-900 dark:text-white">GitHub</p>
+								<p class="text-xs text-base-500 dark:text-base-400">
+									3 open roles
+								</p>
+							</div>
+						</div>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+							The world's largest developer platform.
+						</p>
+					</a>
+					<a
+						href="company-detail.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div class="flex items-center gap-3">
+							<div class="company-logo" style="background:#3ECF8E;color:#111;">
+								SB
+							</div>
+							<div>
+								<p class="font-medium text-base-900 dark:text-white">
+									Supabase
+								</p>
+								<p class="text-xs text-base-500 dark:text-base-400">
+									3 open roles
+								</p>
+							</div>
+						</div>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+							The open source Firebase alternative.
+						</p>
+					</a>
+					<a
+						href="company-detail.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div class="flex items-center gap-3">
+							<div class="company-logo" style="background:#635BFF;color:white;">
+								S
+							</div>
+							<div>
+								<p class="font-medium text-base-900 dark:text-white">Stripe</p>
+								<p class="text-xs text-base-500 dark:text-base-400">
+									1 open role
+								</p>
+							</div>
+						</div>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+							Financial infrastructure for the internet.
+						</p>
+					</a>
+					<a
+						href="company-detail.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div class="flex items-center gap-3">
+							<div class="company-logo" style="background:#A2AAAD;color:white;">
+								A
+							</div>
+							<div>
+								<p class="font-medium text-base-900 dark:text-white">Apple</p>
+								<p class="text-xs text-base-500 dark:text-base-400">
+									4 open roles
+								</p>
+							</div>
+						</div>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+							Think different. Build the future.
+						</p>
+					</a>
+					<a
+						href="company-detail.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div class="flex items-center gap-3">
+							<div class="company-logo" style="background:#2D2D2D;color:white;">
+								PL
+							</div>
+							<div>
+								<p class="font-medium text-base-900 dark:text-white">Polar</p>
+								<p class="text-xs text-base-500 dark:text-base-400">
+									5 open roles
+								</p>
+							</div>
+						</div>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-3">
+							Building the future of open source monetization.
+						</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Candidates -->
+		<section
+			class="py-12 lg:py-24 border-t border-base-200 dark:border-base-700"
+		>
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="flex items-center justify-between mb-8">
+					<div>
+						<h2 class="text-2xl font-semibold text-base-900 dark:text-white">
+							Top Candidates
+						</h2>
+						<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+							Discover talented professionals looking for their next opportunity
+						</p>
+					</div>
+					<a
+						href="candidates.html"
+						class="btn-secondary h-8 px-3 text-xs rounded"
+						>View all</a
+					>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+					<a
+						href="candidates.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div
+							class="avatar size-12"
+							style="background:#E8D5B7;color:#8B6914;"
+						>
+							CG
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Carlos Garcia
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400">
+							Madrid, Spain
+						</p>
+						<div class="flex items-center gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Junior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Product Designer</span
+							>
+						</div>
+					</a>
+					<a
+						href="candidates.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div
+							class="avatar size-12"
+							style="background:#B7D5E8;color:#14568B;"
+						>
+							YS
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Yuki Sato
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400">Tokyo, Japan</p>
+						<div class="flex items-center gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Mid-level</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Frontend Eng.</span
+							>
+						</div>
+					</a>
+					<a
+						href="candidates.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div
+							class="avatar size-12"
+							style="background:#D5B7E8;color:#6B148B;"
+						>
+							AD
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Amara Diallo
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400">
+							Dakar, Senegal
+						</p>
+						<div class="flex items-center gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Senior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Data Scientist</span
+							>
+						</div>
+					</a>
+					<a
+						href="candidates.html"
+						class="card p-6 hover:shadow-2xl transition-all duration-300"
+					>
+						<div
+							class="avatar size-12"
+							style="background:#B7E8D5;color:#148B56;"
+						>
+							LS
+						</div>
+						<h3 class="mt-3 font-medium text-base-900 dark:text-white">
+							Lucas Silva
+						</h3>
+						<p class="text-xs text-base-500 dark:text-base-400">
+							São Paulo, Brazil
+						</p>
+						<div class="flex items-center gap-2 mt-2">
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Junior</span
+							>
+							<span
+								class="text-xs bg-base-100 dark:bg-base-700 text-base-600 dark:text-base-400 px-2 py-0.5 rounded"
+								>Backend Dev.</span
+							>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Newsletter CTA -->
+		<section class="py-12 lg:py-24 bg-base-900 dark:bg-base-950">
+			<div
+				class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24 text-center"
+			>
+				<h2
+					class="text-2xl sm:text-3xl font-semibold text-white tracking-tight"
+				>
+					Get job alerts in your inbox
+				</h2>
+				<p class="text-base-400 mt-3 max-w-lg mx-auto text-sm">
+					Subscribe to receive personalized job recommendations and the latest
+					news from the hirewise community.
+				</p>
+				<form
+					class="flex flex-col sm:flex-row gap-3 justify-center mt-8 max-w-md mx-auto"
+					onsubmit="return false;"
+				>
+					<input
+						type="email"
+						placeholder="Enter your email"
+						class="flex-1 h-10 px-4 rounded text-sm"
+						style="background:var(--color-base-800);border-color:var(--color-base-700);outline-color:var(--color-base-700);color:white;"
+					>
+					<button
+						type="submit"
+						class="btn-primary h-10 px-5 rounded text-sm whitespace-nowrap"
+					>
+						Subscribe
+					</button>
+				</form>
+				<p class="text-xs text-base-500 mt-3">
+					No spam. Unsubscribe at any time.
+				</p>
+			</div>
+		</section>
+
+		<footer class="mt-auto">
+			<div class="max-w-screen 2xl:max-w-[100rem] mx-auto px-8 lg:px-24">
+				<div class="py-12 border-t border-base-200 dark:border-base-700">
+					<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+						<div class="col-span-2 md:col-span-1">
+							<a
+								href="index.html"
+								class="font-medium lowercase text-base-900 dark:text-white text-lg"
+								>hirewise®</a
+							>
+							<p class="text-sm text-base-500 dark:text-base-400 mt-2">
+								The job board for people who care about where they work.
+							</p>
+							<div class="flex items-center gap-3 mt-4">
+								<a
+									href="#"
+									class="text-base-400 hover:text-base-900 dark:hover:text-white transition duration-300"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="size-4"
+										viewBox="0 0 24 24"
+										fill="currentColor"
+									>
+										<path
+											d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+										/>
+									</svg>
+								</a>
+								<a
+									href="#"
+									class="text-base-400 hover:text-base-900 dark:hover:text-white transition duration-300"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="size-4"
+										viewBox="0 0 24 24"
+										fill="currentColor"
+									>
+										<path
+											d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+										/>
+									</svg>
+								</a>
+								<a
+									href="#"
+									class="text-base-400 hover:text-base-900 dark:hover:text-white transition duration-300"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="size-4"
+										viewBox="0 0 24 24"
+										fill="currentColor"
+									>
+										<path
+											d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.26 8.26 0 004.83 1.56V6.79a4.85 4.85 0 01-1.06-.1z"
+										/>
+									</svg>
+								</a>
+							</div>
+						</div>
+						<div>
+							<h3 class="text-sm font-medium text-base-900 dark:text-white">
+								Jobs
+							</h3>
+							<ul class="mt-4 space-y-2">
+								<li>
+									<a
+										href="jobs.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Browse All</a
+									>
+								</li>
+								<li>
+									<a
+										href="submit-job.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Post a Job</a
+									>
+								</li>
+								<li>
+									<a
+										href="jobs.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>By Category</a
+									>
+								</li>
+								<li>
+									<a
+										href="jobs.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Remote Jobs</a
+									>
+								</li>
+								<li>
+									<a
+										href="jobs.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Featured</a
+									>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="text-sm font-medium text-base-900 dark:text-white">
+								Companies
+							</h3>
+							<ul class="mt-4 space-y-2">
+								<li>
+									<a
+										href="companies.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Explore All</a
+									>
+								</li>
+								<li>
+									<a
+										href="companies.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Top Employers</a
+									>
+								</li>
+								<li>
+									<a
+										href="companies.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>New Companies</a
+									>
+								</li>
+								<li>
+									<a
+										href="companies.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Company Reviews</a
+									>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="text-sm font-medium text-base-900 dark:text-white">
+								System
+							</h3>
+							<ul class="mt-4 space-y-2">
+								<li>
+									<a
+										href="pricing.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Overview</a
+									>
+								</li>
+								<li>
+									<a
+										href="pricing.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Pricing</a
+									>
+								</li>
+								<li>
+									<a
+										href="sign-in.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Sign In</a
+									>
+								</li>
+								<li>
+									<a
+										href="sign-up.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Create Account</a
+									>
+								</li>
+								<li>
+									<a
+										href="#"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Help Center</a
+									>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="text-sm font-medium text-base-900 dark:text-white">
+								Company
+							</h3>
+							<ul class="mt-4 space-y-2">
+								<li>
+									<a
+										href="#"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>About</a
+									>
+								</li>
+								<li>
+									<a
+										href="blog.html"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Blog</a
+									>
+								</li>
+								<li>
+									<a
+										href="#"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Careers</a
+									>
+								</li>
+								<li>
+									<a
+										href="#"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Press</a
+									>
+								</li>
+								<li>
+									<a
+										href="#"
+										class="text-sm text-base-500 dark:text-base-400 hover:text-blue transition duration-300"
+										>Contact</a
+									>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div
+						class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-8 border-t border-base-200 dark:border-base-700"
+					>
+						<p class="text-sm text-base-500 dark:text-base-400">
+							© 2025 Hirewise. All rights reserved.
+						</p>
+						<button
+							class="btn-secondary h-8 px-3 py-2 text-xs rounded"
+							id="footer-theme-toggle"
+							type="button"
+						>
+							Toggle theme
+						</button>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<button
+			id="chat-toggle"
+			class="btn-primary fixed bottom-5 right-5 z-50 size-11 rounded-full"
+			aria-label="Chat"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="size-5"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M8 9h8"></path>
+				<path d="M8 13h6"></path>
+				<path
+					d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"
+				></path>
+			</svg>
+		</button>
+		<div
+			id="chat-bubble"
+			class="fixed bottom-20 right-5 z-50 opacity-0 pointer-events-none transition-opacity"
+		>
+			<div class="bg-white dark:bg-base-700 card p-4 w-72 rounded-2xl">
+				<p class="font-medium text-base-900 dark:text-white">Chat with us</p>
+				<p class="text-sm text-base-500 dark:text-base-400 mt-1">
+					We typically reply in a few minutes.
+				</p>
+				<button class="btn-primary w-full mt-4 h-9 px-4 rounded text-sm">
+					Start conversation
+				</button>
+			</div>
+		</div>
+
+		<script>
+		const searchItems = [
+			{
+				title: "Product Designer",
+				subtitle: "polar • Remote (US only)",
+				href: "job-detail.html?id=1",
+				type: "Job",
+			},
+			{
+				title: "DevOps Engineer",
+				subtitle: "polar • Berlin, Germany",
+				href: "job-detail.html?id=2",
+				type: "Job",
+			},
+			{
+				title: "Head of Growth",
+				subtitle: "polar • New York, NY",
+				href: "job-detail.html?id=3",
+				type: "Job",
+			},
+			{
+				title: "Backend Developer",
+				subtitle: "polar • New York, NY",
+				href: "job-detail.html?id=4",
+				type: "Job",
+			},
+			{
+				title: "Data Analyst",
+				subtitle: "polar • Toronto, Canada",
+				href: "job-detail.html?id=5",
+				type: "Job",
+			},
+			{
+				title: "Technical Writer",
+				subtitle: "supabase • London, UK",
+				href: "job-detail.html?id=6",
+				type: "Job",
+			},
+			{
+				title: "Technical Writer",
+				subtitle: "netlify • Amsterdam, Netherlands",
+				href: "job-detail.html?id=7",
+				type: "Job",
+			},
+			{
+				title: "Frontend Engineer",
+				subtitle: "supabase • Remote (Global)",
+				href: "job-detail.html?id=8",
+				type: "Job",
+			},
+			{
+				title: "Recruiting Coordinator",
+				subtitle: "supabase • Sydney, Australia",
+				href: "job-detail.html?id=9",
+				type: "Job",
+			},
+			{
+				title: "Sales Development Rep",
+				subtitle: "stripe • San Francisco, CA",
+				href: "job-detail.html?id=10",
+				type: "Job",
+			},
+			{
+				title: "Engineering Manager",
+				subtitle: "figma • Remote (North America)",
+				href: "job-detail.html?id=11",
+				type: "Job",
+			},
+			{
+				title: "Senior Frontend Engineer",
+				subtitle: "github • Barcelona, Spain",
+				href: "job-detail.html?id=12",
+				type: "Job",
+			},
+			{
+				title: "Head of Marketing",
+				subtitle: "github • Paris, France",
+				href: "job-detail.html?id=13",
+				type: "Job",
+			},
+			{
+				title: "AI Research Engineer",
+				subtitle: "polar • Dublin, Ireland",
+				href: "job-detail.html?id=14",
+				type: "Job",
+			},
+			{
+				title: "Product Marketing Manager",
+				subtitle: "github • Munich, Germany",
+				href: "job-detail.html?id=15",
+				type: "Job",
+			},
+			{
+				title: "UX Researcher",
+				subtitle: "apple • Austin, TX",
+				href: "job-detail.html?id=16",
+				type: "Job",
+			},
+			{
+				title: "DevOps Engineer",
+				subtitle: "apple • Remote",
+				href: "job-detail.html?id=17",
+				type: "Job",
+			},
+			{
+				title: "Community Manager",
+				subtitle: "apple • Copenhagen, Denmark",
+				href: "job-detail.html?id=18",
+				type: "Job",
+			},
+			{
+				title: "Junior Product Designer",
+				subtitle: "penpot • Boston, MA",
+				href: "job-detail.html?id=19",
+				type: "Job",
+			},
+			{
+				title: "Data Analyst",
+				subtitle: "apple • Remote",
+				href: "job-detail.html?id=20",
+				type: "Job",
+			},
+			{
+				title: "Apple",
+				subtitle: "United States",
+				href: "company-detail.html?id=apple",
+				type: "Company",
+			},
+			{
+				title: "Figma",
+				subtitle: "United States",
+				href: "company-detail.html?id=figma",
+				type: "Company",
+			},
+			{
+				title: "GitHub",
+				subtitle: "United States",
+				href: "company-detail.html?id=github",
+				type: "Company",
+			},
+			{
+				title: "Netlify",
+				subtitle: "United States",
+				href: "company-detail.html?id=netlify",
+				type: "Company",
+			},
+			{
+				title: "Penpot",
+				subtitle: "Spain",
+				href: "company-detail.html?id=penpot",
+				type: "Company",
+			},
+			{
+				title: "Polar",
+				subtitle: "Global",
+				href: "company-detail.html?id=polar",
+				type: "Company",
+			},
+			{
+				title: "Stripe",
+				subtitle: "United States",
+				href: "company-detail.html?id=stripe",
+				type: "Company",
+			},
+			{
+				title: "Supabase",
+				subtitle: "United States",
+				href: "company-detail.html?id=supabase",
+				type: "Company",
+			},
+			{
+				title: "Vercel",
+				subtitle: "United States",
+				href: "company-detail.html?id=vercel",
+				type: "Company",
+			},
+			{
+				title: "Carlos Garcia",
+				subtitle: "Madrid, Spain • Junior",
+				href: "candidates.html",
+				type: "Candidate",
+			},
+			{
+				title: "Yuki Sato",
+				subtitle: "Tokyo, Japan • Mid-level",
+				href: "candidates.html",
+				type: "Candidate",
+			},
+			{
+				title: "Global Economic Shifts: What to Expect in 2025",
+				subtitle: "Analysis of major economic trends",
+				href: "blog.html",
+				type: "Post",
+			},
+			{
+				title: "Account management",
+				subtitle: "Manage your account settings",
+				href: "#",
+				type: "Help Center",
+			},
+		];
+		const themeToggle = document.getElementById("theme-toggle");
+		const footerToggle = document.getElementById("footer-theme-toggle");
+		function toggleTheme() {
+			const isDark = document.documentElement.classList.toggle("dark");
+			localStorage.setItem("theme", isDark ? "dark" : "light");
+			if (themeToggle)
+				themeToggle.setAttribute("aria-checked", isDark ? "true" : "false");
+		}
+		if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+		if (footerToggle) footerToggle.addEventListener("click", toggleTheme);
+		const menuBtn = document.getElementById("menubutton");
+		const menu = document.getElementById("menu");
+		let menuOpen = false;
+		if (menuBtn && menu) {
+			menuBtn.addEventListener("click", () => {
+				menuOpen = !menuOpen;
+				menuBtn.setAttribute("aria-expanded", menuOpen);
+				if (menuOpen) {
+					menu.style.maxHeight = "1000px";
+					menu.style.opacity = "1";
+				} else {
+					menu.style.maxHeight = "0";
+					menu.style.opacity = "0";
+				}
+			});
+		}
+		const searchBtn = document.getElementById("jobSearchButton");
+		let searchModalEl = null;
+		function buildSearchModal() {
+			if (searchModalEl) return;
+			const modal = document.createElement("div");
+			modal.id = "jobSearchModal";
+			modal.className = "fixed inset-0 z-[9998] overflow-y-auto hidden";
+			modal.innerHTML = `
+    <div class="min-h-screen px-4 text-center relative">
+      <div class="fixed inset-0 bg-base-950/50 backdrop-blur z-[9998]" id="jobModalOverlay"></div>
+      <div class="inline-block w-full max-w-xl mb-8 mt-12 rounded-2xl overflow-hidden lg:mt-48 px-1.5 text-left align-middle relative z-[9999]">
+        <div class="bg-white dark:bg-base-700 p-4 pb-2 w-full rounded-2xl">
+          <div class="p-1">
+            <input type="text" id="jobSearchInput" placeholder="Search everything..." class="block w-full h-10 px-4 py-2 text-sm text-base-900 dark:text-white border border-transparent rounded-lg bg-white dark:bg-base-800 placeholder-base-400">
+          </div>
+          <div id="jobSearchResults" class="max-h-[50vh] overflow-y-auto flex flex-col gap-1 p-1"></div>
+        </div>
+      </div>
+    </div>`;
+			document.body.appendChild(modal);
+			searchModalEl = modal;
+			document
+				.getElementById("jobModalOverlay")
+				.addEventListener("click", closeSearch);
+			const fuse = new Fuse(searchItems, {
+				keys: ["title", "subtitle", "type"],
+				threshold: 0.3,
+			});
+			document
+				.getElementById("jobSearchInput")
+				.addEventListener("input", (e) => {
+					const val = e.target.value;
+					const results = val.trim() ? fuse.search(val) : [];
+					const el = document.getElementById("jobSearchResults");
+					if (!val.trim()) {
+						el.innerHTML = "";
+						return;
+					}
+					if (!results.length) {
+						el.innerHTML =
+							'<p class="text-sm text-base-500 p-2">No results found.</p>';
+						return;
+					}
+					el.innerHTML = results
+						.slice(0, 10)
+						.map(
+							(r) =>
+								`<a href="${r.item.href}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-base-50 dark:hover:bg-base-600 transition"><div><p class="text-sm font-medium text-base-900 dark:text-white">${r.item.title}</p><p class="text-xs text-base-500 dark:text-base-400">${r.item.subtitle}</p></div><span class="ml-auto text-xs text-base-400 bg-base-100 dark:bg-base-700 px-2 py-0.5 rounded">${r.item.type}</span></a>`,
+						)
+						.join("");
+				});
+		}
+		function openSearch(e) {
+			e.preventDefault();
+			buildSearchModal();
+			searchModalEl.classList.remove("hidden");
+			document.body.style.overflow = "hidden";
+			setTimeout(() => document.getElementById("jobSearchInput")?.focus(), 100);
+		}
+		function closeSearch() {
+			if (searchModalEl) {
+				searchModalEl.classList.add("hidden");
+				document.body.style.overflow = "";
+			}
+		}
+		if (searchBtn) searchBtn.addEventListener("click", openSearch);
+		const chatToggle = document.getElementById("chat-toggle");
+		const chatBubble = document.getElementById("chat-bubble");
+		if (chatToggle && chatBubble) {
+			chatToggle.addEventListener("click", () => {
+				chatBubble.classList.toggle("opacity-0");
+				chatBubble.classList.toggle("pointer-events-none");
+			});
+			document.addEventListener("click", (e) => {
+				if (!chatBubble.contains(e.target) && !chatToggle.contains(e.target)) {
+					chatBubble.classList.add("opacity-0", "pointer-events-none");
+				}
+			});
+		}
+		</script>
+	</body>
+</html>

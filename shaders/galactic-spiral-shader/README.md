@@ -1,5 +1,7 @@
 # Galactic Spiral Shader — Neon Rainbow Spiral GLSL Hero (React + TypeScript + Three.js + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A 7-colour neon rainbow spiral GLSL fragment shader — five interleaved arms wound around a bright core in polar coordinates — rendered full-viewport with Three.js. Framed as a deep-field survey transmission: the "Galactic Spiral" title set over a soft radial legibility scrim, an eyebrow label, a Fraunces italic strapline, a hairline registration frame with corner crops, film-grain grade, and a live telemetry ledger (mission clock, measured FPS, drifting right-ascension / declination coordinates). Fully offline-ready with vendored fonts. Generated with Claude Fable 5.
 
 ## Stack

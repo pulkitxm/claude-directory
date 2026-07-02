@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>How we built Scalar's visual model editor — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../styles.css">
+		<link rel="icon" href="../assets/layout/logo-icon.svg">
+		<style>
+		.article-wrap {
+			max-width: 760px;
+			margin: 0 auto;
+		}
+		.back-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 14px;
+			color: var(--muted-foreground);
+			text-decoration: none;
+		}
+		.back-link:hover {
+			color: var(--foreground);
+		}
+		.article-meta {
+			font-size: 13px;
+			color: var(--muted-foreground);
+			margin: 28px 0 14px;
+			display: flex;
+			gap: 10px;
+		}
+		.article-meta .cat {
+			color: var(--secondary);
+			font-weight: 600;
+		}
+		.article-title {
+			font-size: clamp(1.9rem, 4vw, 2.6rem);
+			font-weight: 700;
+			line-height: 1.15;
+		}
+		.author-row {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 24px 0 8px;
+		}
+		.author-row .name {
+			font-size: 14px;
+			font-weight: 500;
+			color: var(--foreground);
+		}
+		.hero-img {
+			width: 100%;
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			margin: 36px 0 8px;
+			overflow: hidden;
+		}
+		.hero-img img {
+			width: 100%;
+			display: block;
+		}
+		</style>
+	</head>
+	<body data-active="Blog" data-prefix="../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<article class="frame-pad" style="padding:48px 32px 64px">
+				<div class="article-wrap reveal">
+					<a class="back-link" href="../blog.html"
+						><svg
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<path d="m12 19-7-7 7-7M19 12H5" />
+						</svg>
+						Back</a
+					>
+					<div class="article-meta">
+						<span class="cat">Community</span><span>·</span
+						><span>Mar 14, 2025</span>
+					</div>
+					<h1 class="article-title">
+						How we built Scalar's visual model editor
+					</h1>
+					<p class="muted" style="font-size:16px;margin-top:14px">
+						Go behind the scenes with our product team on building Scalar's
+						drag-and-drop schema editor — and what's coming next.
+					</p>
+					<div class="author-row">
+						<img
+							class="avatar"
+							src="../assets/images/blog/authors/fedir-davydov.webp"
+							width="40"
+							height="40"
+							alt=""
+						>
+						<span class="name">Fedir Davydov</span>
+						<span class="muted" style="font-size:13px">· 6 min read</span>
+					</div>
+					<div class="hero-img">
+						<img
+							src="../assets/images/blog/blog-8.webp"
+							alt="How we built Scalar's visual model editor"
+						>
+					</div>
+					<div class="prose">
+						<p>
+							Scalar is code-first, but not everyone wants to write a schema by
+							hand. So we built a visual model editor that stays perfectly in
+							sync with your code. Here's the story of how it came together.
+						</p>
+
+						<h2>The challenge</h2>
+						<p>
+							Most visual schema builders trap your models in a database,
+							drifting away from your codebase. We wanted the opposite: a visual
+							editor whose every action produces a clean, committable diff.
+						</p>
+
+						<h2>Two-way sync</h2>
+						<p>
+							The breakthrough was treating the canvas and the code as two views
+							of the same source. Drag a field and we generate the same
+							TypeScript you'd have written by hand:
+						</p>
+						<div class="code-block" style="margin:24px 0">
+							<div class="code-head">
+								<span style="margin-left:auto;color:var(--muted-foreground)"
+									>generated.ts</span
+								>
+							</div>
+							<div class="code-body">
+								<span class="tok-com">// added via the visual editor</span>
+								author: fields.<span class="tok-fn">reference</span>(<span
+									class="tok-str"
+									>"author"</span
+								>),
+							</div>
+						</div>
+						<p>
+							Edit the file directly and the canvas updates instantly. Neither
+							view is the master — the model is.
+						</p>
+
+						<h2>Design decisions</h2>
+						<ul>
+							<li>
+								<strong>Diff-first</strong>
+								— every drag produces a reviewable change, not hidden state.
+							</li>
+							<li>
+								<strong>Real types</strong>
+								— the editor only offers field types the SDK actually supports.
+							</li>
+							<li>
+								<strong>Undo everywhere</strong>
+								— backed by the same history engine as content editing.
+							</li>
+						</ul>
+
+						<img
+							src="../assets/images/blog/blog-8.webp"
+							alt="Scalar visual model editor"
+						>
+
+						<h2>What we learned</h2>
+						<p>
+							The hardest part wasn't the canvas — it was the merge logic that
+							keeps code and UI consistent when both change at once. Investing
+							there made everything else feel effortless.
+						</p>
+
+						<h2>What's next</h2>
+						<p>
+							We're adding model templates, relationship visualization, and live
+							validation previews. Join the community to help shape the roadmap.
+						</p>
+
+						<h2>Wrap-up</h2>
+						<p>
+							The visual model editor proves code-first and visual editing
+							aren't at odds. Thanks to everyone in the community who tested
+							early builds and sent feedback.
+						</p>
+					</div>
+				</div>
+			</article>
+		</main>
+
+		<div id="site-cta"></div>
+		<div id="site-footer"></div>
+		<script src="../shared.js"></script>
+	</body>
+</html>

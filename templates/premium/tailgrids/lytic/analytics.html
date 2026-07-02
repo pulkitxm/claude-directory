@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Lytic – Analytics</title>
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		(function () {
+			var saved = localStorage.getItem("lytic-theme");
+			var prefersDark = window.matchMedia(
+				"(prefers-color-scheme: dark)",
+			).matches;
+			if (saved === "dark" || (!saved && prefersDark)) {
+				document.documentElement.classList.add("dark");
+			} else {
+				document.documentElement.classList.add("light");
+			}
+		})();
+		</script>
+	</head>
+	<body>
+		<div class="app-layout" id="app">
+			<!-- SIDEBAR -->
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-header">
+					<a class="sidebar-logo" href="index.html">
+						<img
+							src="assets/logo-black.svg"
+							alt="Lytic Logo"
+							id="sidebar-logo-img"
+						>
+					</a>
+					<button
+						class="sidebar-collapse-btn"
+						id="collapseBtn"
+						aria-label="Collapse sidebar"
+					>
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M9.333 20V4M18.5 4H5.5C4.672 4 4 4.672 4 5.5V18.5C4 19.328 4.672 20 5.5 20H18.5C19.328 20 20 19.328 20 18.5V5.5C20 4.672 19.328 4 18.5 4Z"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="sidebar-search">
+					<label>
+						<svg
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							style="color:var(--color-text-lighter);flex-shrink:0;"
+						>
+							<path
+								d="M11.325 2.925C15.964 2.925 19.726 6.686 19.726 11.324C19.726 13.374 18.99 15.251 17.77 16.709L20.856 19.795C21.148 20.088 21.148 20.563 20.856 20.856C20.563 21.148 20.088 21.148 19.795 20.856L16.709 17.769C15.251 18.99 13.374 19.726 11.325 19.726C6.686 19.726 2.925 15.964 2.925 11.324C2.925 6.686 6.686 2.925 11.325 2.925ZM11.325 4.425C7.514 4.425 4.425 7.514 4.425 11.324C4.425 15.135 7.514 18.226 11.325 18.226C15.136 18.226 18.226 15.135 18.226 11.324C18.226 7.514 15.136 4.425 11.325 4.425Z"
+								fill="currentColor"
+							/>
+						</svg>
+						<input type="text" placeholder="Search">
+						<span class="search-shortcut"><kbd>⌘</kbd><kbd>K</kbd></span>
+					</label>
+				</div>
+				<p class="sidebar-nav-label">MENU</p>
+				<ul class="sidebar-nav">
+					<li>
+						<a href="index.html"
+							><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+								<rect
+									x="2"
+									y="2"
+									width="9"
+									height="9"
+									rx="1.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<rect
+									x="13"
+									y="2"
+									width="9"
+									height="9"
+									rx="1.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<rect
+									x="2"
+									y="13"
+									width="9"
+									height="9"
+									rx="1.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<rect
+									x="13"
+									y="13"
+									width="9"
+									height="9"
+									rx="1.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+							</svg><span>Overview</span></a
+						>
+					</li>
+					<li>
+						<a href="analytics.html" class="active"
+							><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M3 17l4-4 4 4 5-6 4 3"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M3 3v18h18"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg><span>Analytics</span></a
+						>
+					</li>
+					<li>
+						<a href="revenue.html"
+							><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+								<circle
+									cx="12"
+									cy="12"
+									r="9"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<path
+									d="M12 7v10M9.5 9.5C9.5 8.4 10.6 7.5 12 7.5s2.5.9 2.5 2-.9 1.8-2.5 2c-1.8.2-2.5 1.1-2.5 2.1 0 1.1 1.1 2 2.5 2s2.5-.9 2.5-2"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+								/>
+							</svg><span>Revenue</span></a
+						>
+					</li>
+					<li>
+						<a href="campaign.html"
+							><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M3 6.5L10 3l7 3.5 4-2v13l-4 2-7-3.5-7 3.5V6.5z"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M10 3v13.5M17 6.5v13"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+								/>
+							</svg><span>Campaign</span></a
+						>
+					</li>
+					<li>
+						<a href="users.html"
+							><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+								<circle
+									cx="9"
+									cy="7"
+									r="4"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<path
+									d="M2 20c0-3.314 3.134-6 7-6"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+								/>
+								<circle
+									cx="17"
+									cy="11"
+									r="3"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<path
+									d="M14 20c0-2.21 1.343-4 3-4s3 1.79 3 4"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+								/>
+							</svg><span>Users</span></a
+						>
+					</li>
+				</ul>
+				<div class="sidebar-bottom">
+					<ul class="sidebar-nav">
+						<li>
+							<a href="settings.html"
+								><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+									<circle
+										cx="12"
+										cy="12"
+										r="3"
+										stroke="currentColor"
+										stroke-width="1.5"
+									/>
+									<path
+										d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+									/>
+								</svg><span>Settings</span></a
+							>
+						</li>
+						<li>
+							<a href="help.html"
+								><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+									<circle
+										cx="12"
+										cy="12"
+										r="9"
+										stroke="currentColor"
+										stroke-width="1.5"
+									/>
+									<path
+										d="M12 17v.5"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+									/>
+									<path
+										d="M12 14c0-2 2.5-2 2.5-4a2.5 2.5 0 0 0-5 0"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+									/>
+								</svg><span>Help Center</span></a
+							>
+						</li>
+					</ul>
+				</div>
+				<div class="sidebar-footer">
+					<img src="assets/footer-user.png" alt="Fajar Alexander">
+					<div class="sidebar-footer-info">
+						<div class="sidebar-footer-name">Fajar Alexander</div>
+						<div class="sidebar-footer-email">fajar@gmail.com</div>
+					</div>
+					<svg
+						class="sidebar-footer-chevron"
+						width="16"
+						height="16"
+						viewBox="0 0 24 24"
+						fill="none"
+					>
+						<path
+							d="M6 9l6 6 6-6"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</div>
+			</aside>
+			<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+			<div class="main-content">
+				<div class="topbar">
+					<div class="flex items-center gap-2">
+						<button class="mobile-menu-toggle" id="mobileMenuToggle">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M3 12h18M3 6h18M3 18h18"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+								/>
+							</svg>
+						</button>
+						<h1 class="topbar-title">Analytics</h1>
+					</div>
+					<div class="topbar-actions">
+						<button class="btn-icon">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M1 4v6h6M23 20v-6h-6"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+						<button class="date-range-btn">
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+								<rect
+									x="3"
+									y="4"
+									width="18"
+									height="18"
+									rx="2"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<path
+									d="M16 2v4M8 2v4M3 10h18"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+								/>
+							</svg><span>Jun 01 – Jul 01</span>
+						</button>
+						<button class="btn btn-primary">
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>Export
+						</button>
+					</div>
+				</div>
+
+				<div class="page-body">
+					<!-- KPI CARDS -->
+					<div class="kpi-grid">
+						<div class="kpi-card">
+							<div class="kpi-header">
+								<span class="kpi-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<circle
+											cx="9"
+											cy="7"
+											r="4"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+										/>
+									</svg></span
+								><span class="kpi-label">Total Visitor</span>
+							</div>
+							<div class="kpi-value">124,382</div>
+							<div class="kpi-footer">
+								<span class="kpi-change positive">+8.6%</span
+								><span class="kpi-period">from last month</span>
+							</div>
+						</div>
+						<div class="kpi-card">
+							<div class="kpi-header">
+								<span class="kpi-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<circle
+											cx="12"
+											cy="12"
+											r="9"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M12 7v10M9.5 9.5C9.5 8.4 10.6 7.5 12 7.5s2.5.9 2.5 2-.9 1.8-2.5 2c-1.8.2-2.5 1.1-2.5 2.1 0 1.1 1.1 2 2.5 2s2.5-.9 2.5-2"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+										/>
+									</svg></span
+								><span class="kpi-label">Unique Users</span>
+							</div>
+							<div class="kpi-value">87,491</div>
+							<div class="kpi-footer">
+								<span class="kpi-change positive">+12.4%</span
+								><span class="kpi-period">from last month</span>
+							</div>
+						</div>
+						<div class="kpi-card">
+							<div class="kpi-header">
+								<span class="kpi-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<circle
+											cx="12"
+											cy="12"
+											r="9"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M12 8v4l2 2"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+										/>
+									</svg></span
+								><span class="kpi-label">Avg Session Duration</span>
+							</div>
+							<div class="kpi-value">4m 18s</div>
+							<div class="kpi-footer">
+								<span class="kpi-change negative">-7.1%</span
+								><span class="kpi-period">from last month</span>
+							</div>
+						</div>
+						<div class="kpi-card">
+							<div class="kpi-header">
+								<span class="kpi-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								><span class="kpi-label">Bounce Rate</span>
+							</div>
+							<div class="kpi-value">38.4%</div>
+							<div class="kpi-footer">
+								<span class="kpi-change negative">-2.4%</span
+								><span class="kpi-period">from last month</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- TRAFFIC TREND + SESSIONS BY DEVICE -->
+					<div class="col-3-2 section">
+						<div class="card">
+							<div class="card-header">
+								<div>
+									<div
+										style="font-size:1rem;font-weight:600;color:var(--color-title);"
+									>
+										Traffic Trend
+									</div>
+									<div
+										style="font-size:0.8125rem;color:var(--color-text-muted);margin-top:2px;"
+									>
+										Daily visitor activity across the selected time period.
+									</div>
+								</div>
+								<button class="select-range-btn">
+									<svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+										<rect
+											x="3"
+											y="4"
+											width="18"
+											height="18"
+											rx="2"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M16 2v4M8 2v4M3 10h18"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+										/>
+									</svg>Select range<svg
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+									>
+										<path
+											d="M6 9l6 6 6-6"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</button>
+							</div>
+							<div id="trafficChart" class="chart-wrap"></div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<div
+									style="font-size:1rem;font-weight:600;color:var(--color-title);"
+								>
+									Sessions By Device
+								</div>
+								<button class="menu-dots">
+									<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+										<circle cx="12" cy="5" r="1.5" fill="currentColor" />
+										<circle cx="12" cy="12" r="1.5" fill="currentColor" />
+										<circle cx="12" cy="19" r="1.5" fill="currentColor" />
+									</svg>
+								</button>
+							</div>
+							<div id="deviceChart" style="margin:0 auto;"></div>
+							<div
+								class="chart-legend"
+								style="justify-content:center;margin-top:12px;"
+							>
+								<span
+									style="display:inline-flex;align-items:center;gap:6px;font-size:0.8125rem;color:var(--color-text-muted);"
+									><span
+										style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#3758f9;"
+									></span>Desktop</span
+								>
+								<span
+									style="display:inline-flex;align-items:center;gap:6px;font-size:0.8125rem;color:var(--color-text-muted);"
+									><span
+										style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#5e84fc;"
+									></span>Mobile</span
+								>
+								<span
+									style="display:inline-flex;align-items:center;gap:6px;font-size:0.8125rem;color:var(--color-text-muted);"
+									><span
+										style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#becdff;"
+									></span>Tablet</span
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- TOP USER LOCATIONS + TOP PAGES -->
+					<div class="grid-2 section">
+						<div class="card">
+							<div class="card-header">
+								<div>
+									<div
+										style="font-size:1rem;font-weight:600;color:var(--color-title);"
+									>
+										Top User Locations
+									</div>
+									<div
+										style="font-size:0.8125rem;color:var(--color-text-muted);margin-top:2px;"
+									>
+										Number of customer based on country
+									</div>
+								</div>
+								<button class="menu-dots">
+									<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+										<circle cx="12" cy="5" r="1.5" fill="currentColor" />
+										<circle cx="12" cy="12" r="1.5" fill="currentColor" />
+										<circle cx="12" cy="19" r="1.5" fill="currentColor" />
+									</svg>
+								</button>
+							</div>
+							<!-- Simple world map SVG placeholder -->
+							<div
+								style="background:var(--color-bg-card-alt);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;overflow:hidden;"
+							>
+								<svg
+									viewBox="0 0 800 400"
+									style="width:100%;height:100%;opacity:0.6;"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<!-- Simple world continents outline -->
+									<path
+										d="M120 160 C140 140 160 130 190 125 C210 120 230 125 250 130 C270 135 280 150 275 170 C270 185 255 195 240 200 C220 205 200 200 185 190 C165 178 140 175 120 160Z"
+										fill="var(--color-text-lighter)"
+										opacity="0.3"
+									/>
+									<path
+										d="M260 120 C290 100 330 90 380 95 C420 100 460 115 490 140 C510 158 520 175 510 195 C500 210 480 215 460 210 C430 200 410 185 390 175 C360 160 330 155 310 160 C290 165 270 175 260 185 C245 198 240 175 250 160 C255 148 258 130 260 120Z"
+										fill="var(--color-text-lighter)"
+										opacity="0.3"
+									/>
+									<path
+										d="M530 80 C560 65 600 60 640 70 C670 78 690 95 700 115 C710 132 705 150 690 160 C670 172 645 168 625 158 C600 145 580 130 560 125 C540 120 520 125 510 140 C500 153 505 130 515 115 C522 103 526 88 530 80Z"
+										fill="var(--color-text-lighter)"
+										opacity="0.3"
+									/>
+									<path
+										d="M300 220 C320 210 345 215 365 230 C380 242 385 260 375 275 C360 292 335 295 315 285 C295 275 280 258 285 240 C288 230 296 224 300 220Z"
+										fill="var(--color-text-lighter)"
+										opacity="0.3"
+									/>
+									<path
+										d="M380 230 C400 220 425 225 445 240 C460 252 462 268 455 280 C445 295 425 298 408 290 C390 280 378 265 380 248 C381 240 379 234 380 230Z"
+										fill="var(--color-text-lighter)"
+										opacity="0.3"
+									/>
+									<path
+										d="M580 180 C600 170 625 172 645 185 C658 195 660 210 650 225 C638 240 615 243 598 233 C580 222 570 205 578 192 C579 188 579 183 580 180Z"
+										fill="var(--color-text-lighter)"
+										opacity="0.3"
+									/>
+									<!-- Location dots -->
+									<circle
+										cx="220"
+										cy="155"
+										r="6"
+										fill="#3758f9"
+										opacity="0.9"
+									/>
+									<circle
+										cx="430"
+										cy="165"
+										r="5"
+										fill="#3758f9"
+										opacity="0.8"
+									/>
+									<circle
+										cx="600"
+										cy="140"
+										r="4"
+										fill="#3758f9"
+										opacity="0.7"
+									/>
+									<circle
+										cx="330"
+										cy="250"
+										r="4"
+										fill="#3758f9"
+										opacity="0.6"
+									/>
+									<circle
+										cx="650"
+										cy="200"
+										r="3"
+										fill="#3758f9"
+										opacity="0.6"
+									/>
+								</svg>
+							</div>
+							<ul class="country-list">
+								<li class="country-row">
+									<img
+										src="assets/flags/c-1.png"
+										alt="USA"
+										class="country-flag"
+									>
+									<span class="country-name">United States</span>
+									<div class="country-bar-wrap">
+										<div class="country-bar">
+											<div class="country-bar-fill" style="width:78%;"></div>
+										</div>
+										<span class="country-pct">78%</span>
+									</div>
+								</li>
+								<li class="country-row">
+									<img
+										src="assets/flags/c-2.png"
+										alt="France"
+										class="country-flag"
+									>
+									<span class="country-name">France</span>
+									<div class="country-bar-wrap">
+										<div class="country-bar">
+											<div class="country-bar-fill" style="width:54%;"></div>
+										</div>
+										<span class="country-pct">54%</span>
+									</div>
+								</li>
+								<li class="country-row">
+									<div
+										style="width:28px;height:20px;border-radius:3px;background:var(--color-bg-card-alt);display:flex;align-items:center;justify-content:center;font-size:0.6875rem;color:var(--color-text-lighter);"
+									>
+										UK
+									</div>
+									<span class="country-name">United Kingdom</span>
+									<div class="country-bar-wrap">
+										<div class="country-bar">
+											<div class="country-bar-fill" style="width:42%;"></div>
+										</div>
+										<span class="country-pct">42%</span>
+									</div>
+								</li>
+								<li class="country-row">
+									<div
+										style="width:28px;height:20px;border-radius:3px;background:var(--color-bg-card-alt);display:flex;align-items:center;justify-content:center;font-size:0.6875rem;color:var(--color-text-lighter);"
+									>
+										DE
+									</div>
+									<span class="country-name">Germany</span>
+									<div class="country-bar-wrap">
+										<div class="country-bar">
+											<div class="country-bar-fill" style="width:31%;"></div>
+										</div>
+										<span class="country-pct">31%</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="card" style="padding:0;overflow:hidden;">
+							<div
+								style="padding:20px 20px 8px;display:flex;align-items:flex-start;justify-content:space-between;"
+							>
+								<div>
+									<div
+										style="font-size:1rem;font-weight:600;color:var(--color-title);"
+									>
+										Top Pages
+									</div>
+									<div
+										style="font-size:0.8125rem;color:var(--color-text-muted);margin-top:2px;"
+									>
+										Pages generating the highest engagement.
+									</div>
+								</div>
+								<button class="select-range-btn">
+									<svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+										<rect
+											x="3"
+											y="4"
+											width="18"
+											height="18"
+											rx="2"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M16 2v4M8 2v4M3 10h18"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+										/>
+									</svg>Select range<svg
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+									>
+										<path
+											d="M6 9l6 6 6-6"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</button>
+							</div>
+							<div style="padding:12px 20px 20px;">
+								<div
+									style="font-size:0.8125rem;color:var(--color-text-muted);margin-bottom:4px;"
+								>
+									Pages Per Session
+								</div>
+								<div
+									style="font-size:1.875rem;font-weight:700;color:var(--color-title);"
+								>
+									3.6
+								</div>
+								<div
+									style="font-size:0.8125rem;color:var(--color-success);margin-top:2px;margin-bottom:16px;"
+								>
+									+0.5 than last Week
+								</div>
+								<div
+									style="font-size:0.8125rem;color:var(--color-text-muted);margin-bottom:4px;"
+								>
+									Scroll Depth
+								</div>
+								<div
+									style="font-size:1.5rem;font-weight:700;color:var(--color-title);"
+								>
+									62%
+								</div>
+								<div id="scrollSparkline" style="margin-top:8px;"></div>
+							</div>
+							<table class="data-table">
+								<thead>
+									<tr>
+										<th>PAGE</th>
+										<th>VIEWS</th>
+										<th>BOUNCE</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td style="color:var(--color-title);font-weight:500;">
+											/Homepage
+										</td>
+										<td>36,545</td>
+										<td><span class="kpi-change negative">38%</span></td>
+									</tr>
+									<tr>
+										<td style="color:var(--color-title);font-weight:500;">
+											/Pricing
+										</td>
+										<td>18,230</td>
+										<td><span class="kpi-change negative">42%</span></td>
+									</tr>
+									<tr>
+										<td style="color:var(--color-title);font-weight:500;">
+											/Features
+										</td>
+										<td>14,872</td>
+										<td><span class="kpi-change negative">51%</span></td>
+									</tr>
+									<tr>
+										<td style="color:var(--color-title);font-weight:500;">
+											/Blog
+										</td>
+										<td>11,640</td>
+										<td><span class="kpi-change positive">28%</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+			<svg
+				id="themeIconSun"
+				width="20"
+				height="20"
+				viewBox="0 0 24 24"
+				fill="none"
+				style="display:none;"
+			>
+				<circle
+					cx="12"
+					cy="12"
+					r="5"
+					stroke="currentColor"
+					stroke-width="1.5"
+				/>
+				<path
+					d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+				/>
+			</svg>
+			<svg
+				id="themeIconMoon"
+				width="20"
+				height="20"
+				viewBox="0 0 24 24"
+				fill="none"
+			>
+				<path
+					d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
+		</button>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"
+		></script>
+		<script src="shared.js"></script>
+		<script>
+		var trafficChart, deviceChart, scrollSparkline;
+
+		function getTrafficOptions(isDark) {
+			// Generate random-ish daily data for 6 months
+			var data = [];
+			var base = 250;
+			for (var i = 0; i < 180; i++) {
+				base += (Math.random() - 0.4) * 30;
+				if (base < 200) base = 210;
+				if (base > 950) base = 920;
+				data.push(Math.round(base));
+			}
+			return {
+				chart: {
+					type: "area",
+					height: 240,
+					toolbar: { show: false },
+					background: "transparent",
+					fontFamily: "DM Sans, sans-serif",
+				},
+				series: [{ name: "Visitors", data: data }],
+				xaxis: {
+					type: "category",
+					tickAmount: 6,
+					categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"].map((m) => m),
+					axisBorder: { show: false },
+					axisTicks: { show: false },
+					labels: {
+						style: {
+							colors: isDark ? "#6b7280" : "#9ca3af",
+							fontFamily: "DM Sans, sans-serif",
+							fontSize: "12px",
+						},
+					},
+				},
+				yaxis: {
+					min: 0,
+					max: 1000,
+					tickAmount: 5,
+					labels: {
+						style: {
+							colors: isDark ? "#6b7280" : "#9ca3af",
+							fontFamily: "DM Sans, sans-serif",
+							fontSize: "12px",
+						},
+					},
+				},
+				colors: ["#3758f9"],
+				fill: {
+					type: "gradient",
+					gradient: { type: "vertical", opacityFrom: 0.2, opacityTo: 0.02 },
+				},
+				stroke: { curve: "smooth", width: 2 },
+				grid: {
+					borderColor: isDark ? "#111827" : "#e5e7eb",
+					strokeDashArray: 4,
+					xaxis: { lines: { show: false } },
+				},
+				dataLabels: { enabled: false },
+				tooltip: { theme: isDark ? "dark" : "light" },
+				legend: { show: false },
+			};
+		}
+
+		function getDeviceOptions(isDark) {
+			return {
+				chart: {
+					type: "donut",
+					height: 200,
+					background: "transparent",
+					fontFamily: "DM Sans, sans-serif",
+				},
+				series: [12500, 5200, 1800],
+				labels: ["Desktop", "Mobile", "Tablet"],
+				colors: ["#3758f9", "#5e84fc", "#becdff"],
+				legend: { show: false },
+				plotOptions: {
+					pie: {
+						donut: {
+							size: "70%",
+							labels: {
+								show: true,
+								name: {
+									show: true,
+									fontSize: "14px",
+									fontFamily: "DM Sans, sans-serif",
+									color: isDark ? "#9ca3af" : "#6b7280",
+								},
+								value: {
+									show: true,
+									fontSize: "22px",
+									fontWeight: "700",
+									fontFamily: "DM Sans, sans-serif",
+									color: isDark ? "#fff" : "#1f2937",
+									formatter: function (v) {
+										return (parseInt(v) / 1000).toFixed(1) + "K";
+									},
+								},
+								total: {
+									show: true,
+									label: "Desktop",
+									fontSize: "13px",
+									fontFamily: "DM Sans, sans-serif",
+									color: isDark ? "#9ca3af" : "#6b7280",
+									formatter: function () {
+										return "12.5K";
+									},
+								},
+							},
+						},
+					},
+				},
+				dataLabels: { enabled: false },
+				stroke: { width: 3, colors: [isDark ? "#030712" : "#fff"] },
+				tooltip: { theme: isDark ? "dark" : "light" },
+			};
+		}
+
+		function getSparklineOptions(isDark) {
+			return {
+				chart: {
+					type: "line",
+					height: 60,
+					sparkline: { enabled: true },
+					background: "transparent",
+					fontFamily: "DM Sans, sans-serif",
+				},
+				series: [{ data: [30, 35, 45, 40, 55, 50, 58, 62, 60, 68, 65, 72] }],
+				colors: ["#22c55e"],
+				stroke: { curve: "smooth", width: 2 },
+				tooltip: { enabled: false },
+			};
+		}
+
+		function initCharts() {
+			var isDark = document.documentElement.classList.contains("dark");
+			trafficChart = new ApexCharts(
+				document.getElementById("trafficChart"),
+				getTrafficOptions(isDark),
+			);
+			trafficChart.render();
+			deviceChart = new ApexCharts(
+				document.getElementById("deviceChart"),
+				getDeviceOptions(isDark),
+			);
+			deviceChart.render();
+			scrollSparkline = new ApexCharts(
+				document.getElementById("scrollSparkline"),
+				getSparklineOptions(isDark),
+			);
+			scrollSparkline.render();
+		}
+
+		window.addEventListener("lytic-theme-change", function (e) {
+			var dark = e.detail.dark;
+			if (trafficChart) trafficChart.updateOptions(getTrafficOptions(dark));
+			if (deviceChart) deviceChart.updateOptions(getDeviceOptions(dark));
+			if (scrollSparkline)
+				scrollSparkline.updateOptions(getSparklineOptions(dark));
+		});
+
+		document.addEventListener("DOMContentLoaded", initCharts);
+		</script>
+	</body>
+</html>

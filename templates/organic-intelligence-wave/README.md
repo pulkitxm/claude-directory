@@ -1,5 +1,7 @@
 # Organic Intelligence — Editorial-Tech Wave Template (Vanilla HTML, CSS, JS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An editorial-tech hybrid landing page template, branded **Organic Intelligence**, built around "premium fluidity": high-contrast typography, a signature curved concave-wave layout architecture, and soft colored blurs instead of harsh shadows. The warm cream (`#FCFBF9`) and rich charcoal (`#171717`) palette is accented by vibrant indigo (`#4338CA`). Playfair Display (serif, italic for emphasis) drives the hero at `clamp(64px, 13vw, 220px)`, paired with JetBrains Mono labels and Inter body copy, with a `mix-blend-difference` fixed header and procedural CSS orb gradients so the page runs fully offline. Generated with Claude Fable 5.
 
 ## Run

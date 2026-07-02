@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NeonSpark Pricing — Transparent plans for every stage of your business. Professional and Enterprise plans available." />
+  <title>Pricing — NeonSpark</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <style>
+    /* ── Pricing page specifics ── */
+    .pricing-hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .pricing-hero-layout { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* Toggle */
+    .billing-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-pill);
+      padding: 3px;
+      margin-top: 1.75rem;
+      position: relative;
+    }
+
+    .billing-toggle-btn {
+      position: relative;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-pill);
+      font-size: var(--size-sm);
+      font-weight: 500;
+      color: var(--color-muted);
+      cursor: pointer;
+      transition: color var(--transition-base);
+      background: transparent;
+      border: none;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .billing-toggle-btn.active {
+      background: rgba(255,255,255,0.12);
+      color: var(--color-primary);
+      border-radius: var(--radius-pill);
+    }
+
+    .billing-save-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15rem 0.5rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-pill);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      letter-spacing: 0.02em;
+    }
+
+    /* Pricing cards */
+    .pricing-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (max-width: 640px) {
+      .pricing-cards-grid { grid-template-columns: 1fr; }
+    }
+
+    .pricing-card {
+      background: rgba(20, 20, 20, 0.85);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      transition: border-color var(--transition-base), transform var(--transition-base);
+    }
+
+    .pricing-card:hover {
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
+    .pricing-plan-name {
+      font-size: var(--size-sm);
+      font-weight: 600;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-amount {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .pricing-period {
+      font-size: var(--size-xs);
+      color: var(--color-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin-bottom: 1.25rem;
+    }
+
+    .pricing-includes-label {
+      font-size: var(--size-xs);
+      font-weight: 600;
+      color: var(--color-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .pricing-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: var(--size-sm);
+      color: var(--color-muted);
+      line-height: 1.4;
+    }
+
+    .pricing-check {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      color: var(--color-primary);
+    }
+
+    /* Testimonial strip below cards */
+    .pricing-testimonial {
+      background: rgba(20,20,20,0.6);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      margin-top: var(--spacing-3xl);
+    }
+
+    .pricing-testimonial blockquote {
+      font-size: var(--size-lg);
+      font-style: italic;
+      color: var(--color-text);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .pricing-testimonial cite {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-style: normal;
+    }
+
+    .pricing-testimonial cite img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid rgba(255,255,255,0.12);
+    }
+
+    .pricing-testimonial cite span {
+      font-size: var(--size-sm);
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .pricing-testimonial cite small {
+      display: block;
+      font-size: var(--size-xs);
+      color: var(--color-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====================================================
+     HEADER
+     ==================================================== -->
+<header class="header" id="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="28" height="28" rx="6" fill="white"/>
+        <path d="M7 21V7L14 14L21 7V21" stroke="#0c0c0c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Neonspark.
+    </a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html" class="nav-link">HOME</a>
+      <a href="about.html" class="nav-link">ABOUT</a>
+      <a href="contact.html" class="nav-link">CONTACT</a>
+      <div class="nav-item">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="pages-btn">
+          PAGES
+          <svg class="dropdown-arrow" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="dropdown" role="menu" aria-labelledby="pages-btn">
+          <a href="blog.html"            role="menuitem">Blog</a>
+          <a href="career.html"          role="menuitem">Career</a>
+          <a href="elements.html"        role="menuitem">Elements</a>
+          <a href="faq.html"             role="menuitem">FAQ</a>
+          <a href="pricing.html"         role="menuitem">Pricing</a>
+          <a href="privacy-policy.html"  role="menuitem">Privacy Policy</a>
+          <a href="services.html"        role="menuitem">Services</a>
+          <a href="teams.html"           role="menuitem">Teams</a>
+          <a href="terms.html"           role="menuitem">Terms</a>
+          <a href="work.html"            role="menuitem">Work</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="header-cta">
+      <a href="contact.html" class="btn btn-primary btn-sm">Get Started</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div>
+    <a href="#" id="mobile-pages-toggle" style="display:flex;justify-content:space-between;align-items:center;">
+      Pages
+      <svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="mobile-nav-sub" id="mobile-pages-sub" style="display:none;">
+      <a href="blog.html">Blog</a>
+      <a href="career.html">Career</a>
+      <a href="elements.html">Elements</a>
+      <a href="faq.html">FAQ</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="services.html">Services</a>
+      <a href="teams.html">Teams</a>
+      <a href="terms.html">Terms</a>
+      <a href="work.html">Work</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ====================================================
+     PAGE HERO + PRICING CARDS
+     ==================================================== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="pricing-hero-layout">
+
+      <!-- Left: heading + toggle -->
+      <div>
+        <div class="reveal" style="margin-bottom: 1.25rem;">
+          <span class="badge"><span class="dot"></span> Pricing plan</span>
+        </div>
+        <h1 class="reveal reveal-delay-1" style="font-size:clamp(2.25rem,5vw,4rem);font-weight:700;color:var(--color-primary);line-height:1.1;margin-bottom:1rem;">
+          Our <em>Pricing Plan</em>
+        </h1>
+        <p class="reveal reveal-delay-2" style="font-size:var(--size-base);color:var(--color-muted);line-height:1.75;max-width:340px;">
+          For detailed information on each plan, please contact our team.
+        </p>
+
+        <!-- Monthly / Yearly toggle -->
+        <div class="reveal reveal-delay-3">
+          <div class="billing-toggle" role="group" aria-label="Billing period">
+            <button class="billing-toggle-btn active" id="btn-monthly" aria-pressed="true">
+              Monthly
+            </button>
+            <button class="billing-toggle-btn" id="btn-yearly" aria-pressed="false">
+              Yearly
+              <span class="billing-save-badge">Save 20%</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: pricing cards -->
+      <div class="reveal reveal-delay-2">
+        <div class="pricing-cards-grid">
+
+          <!-- Professional Plan -->
+          <div class="pricing-card">
+            <p class="pricing-plan-name">Professional Plan</p>
+            <div class="pricing-amount">
+              <span class="price-monthly">$99.00</span>
+              <span class="price-yearly" style="display:none;">$79.00</span>
+            </div>
+            <p class="pricing-period">
+              <span class="period-monthly">/Per User month</span>
+              <span class="period-yearly" style="display:none;">/Per User month (billed yearly)</span>
+            </p>
+            <div class="pricing-divider"></div>
+            <p class="pricing-includes-label">What's Included:</p>
+            <ul class="pricing-checklist">
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Custom Software Development
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Scalable Cloud Solutions
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Data Analytics &amp; Reporting
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                3 Workflow Automations
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Basic Analytics Dashboard
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Ongoing Support
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">Choose Plan</a>
+          </div>
+
+          <!-- Enterprise Plan -->
+          <div class="pricing-card">
+            <p class="pricing-plan-name">Enterprise Plan</p>
+            <div class="pricing-amount">
+              <span class="price-monthly">$199.00</span>
+              <span class="price-yearly" style="display:none;">$159.00</span>
+            </div>
+            <p class="pricing-period">
+              <span class="period-monthly">/Per User month</span>
+              <span class="period-yearly" style="display:none;">/Per User month (billed yearly)</span>
+            </p>
+            <div class="pricing-divider"></div>
+            <p class="pricing-includes-label">What's Included:</p>
+            <ul class="pricing-checklist">
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Custom Software Development
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Scalable Cloud Solutions
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Data Analytics &amp; Reporting
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                3 Workflow Automations
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Basic Analytics Dashboard
+              </li>
+              <li>
+                <svg class="pricing-check" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Ongoing Support
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">Choose Plan</a>
+          </div>
+
+        </div><!-- /pricing-cards-grid -->
+      </div>
+
+    </div><!-- /pricing-hero-layout -->
+  </div>
+</section>
+
+
+<!-- ====================================================
+     TESTIMONIAL / SOCIAL PROOF
+     ==================================================== -->
+<section class="section" style="padding-top: var(--spacing-3xl); padding-bottom: var(--spacing-3xl);">
+  <div class="container">
+    <div class="pricing-testimonial reveal" style="max-width: 720px; margin-inline: auto;">
+      <blockquote>
+        "NeonSpark's pricing is transparent and fair. We started on the Professional plan and
+        scaled to Enterprise within 3 months — the transition was completely seamless."
+      </blockquote>
+      <cite>
+        <img src="assets/images/sections/testimonials/Sarah Johnson.png" alt="Sarah Johnson" />
+        <div style="text-align:left;">
+          <span>Sarah Johnson</span>
+          <small>CEO, TechVentures</small>
+        </div>
+      </cite>
+    </div>
+
+    <div style="text-align:center; margin-top: var(--spacing-3xl);" class="reveal">
+      <p style="color:var(--color-muted);margin-bottom:1.25rem;">Not sure which plan is right for you?</p>
+      <a href="contact.html" class="btn btn-outline">Talk to Sales</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     CTA BANNER
+     ==================================================== -->
+<section class="section--sm" id="cta">
+  <div class="container">
+    <div class="cta-wrapper reveal">
+      <div class="cta-inner">
+        <span class="badge" style="margin-bottom: 1.5rem;"><span class="dot"></span> Get In Touch</span>
+        <h2>
+          Transform Your Business with<br>
+          <em>Cutting-Edge Technology.</em>
+        </h2>
+        <p style="max-width:500px; margin:1rem auto 2rem; color:var(--color-muted);">
+          Partner with NeonSpark and unlock the full potential of your digital
+          presence. Let's build something remarkable together.
+        </p>
+        <a href="contact.html" class="btn btn-primary btn-lg">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     FOOTER
+     ==================================================== -->
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="margin-bottom:1rem;">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="28" height="28" rx="6" fill="white"/>
+            <path d="M7 21V7L14 14L21 7V21" stroke="#0c0c0c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Neonspark.
+        </a>
+        <p>
+          We craft stunning digital experiences that captivate your audience
+          and drive real results. Your success is our mission.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Follow on X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Connect on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Follow on Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Follow on Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <nav class="footer-links" aria-label="Quick links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="work.html">Work</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <nav class="footer-links" aria-label="Support links">
+          <a href="faq.html">FAQ</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="career.html">Career</a>
+          <a href="teams.html">Teams</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="currentColor"/>
+          </svg>
+          123 Digital Avenue, San Francisco, CA 94102
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+          </svg>
+          hello@neonspark.com
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/>
+          </svg>
+          +1 (555) 123-4567
+        </div>
+
+        <h4 style="margin-top: 1.5rem;">Newsletter</h4>
+        <p style="font-size:var(--size-sm);color:var(--color-muted);margin-bottom:0.75rem;">
+          Get the latest updates delivered to your inbox.
+        </p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">Designed And Developed by <a href="https://themefisher.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">Themefisher</a>.</p>
+      <p class="footer-copy">&copy; <span id="footer-year">2025</span> NeonSpark. All rights reserved.</p>
+    </div>
+
+  </div>
+
+  <div class="watermark" aria-hidden="true">
+    <span class="watermark-text">NEONSPARK</span>
+  </div>
+</footer>
+
+
+<!-- ====================================================
+     JAVASCRIPT
+     ==================================================== -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Footer year ── */
+  const fyEl = document.getElementById('footer-year');
+  if (fyEl) fyEl.textContent = new Date().getFullYear();
+
+  /* ── Sticky header ── */
+  const header = document.getElementById('site-header');
+  function updateHeader() {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
+  /* ── Mobile hamburger ── */
+  const hamburger = document.getElementById('hamburger-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', function () {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (!link.id) {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+  const mobilePagesTgl = document.getElementById('mobile-pages-toggle');
+  const mobilePagesSub = document.getElementById('mobile-pages-sub');
+  if (mobilePagesTgl && mobilePagesSub) {
+    mobilePagesTgl.addEventListener('click', function (e) {
+      e.preventDefault();
+      mobilePagesSub.style.display = mobilePagesSub.style.display === 'block' ? 'none' : 'block';
+    });
+  }
+
+  /* ── Desktop dropdown ── */
+  const pagesBtn = document.getElementById('pages-btn');
+  if (pagesBtn) {
+    pagesBtn.addEventListener('click', function () {
+      const expanded = pagesBtn.getAttribute('aria-expanded') === 'true';
+      pagesBtn.setAttribute('aria-expanded', String(!expanded));
+    });
+    document.addEventListener('click', function (e) {
+      if (!pagesBtn.closest('.nav-item').contains(e.target)) {
+        pagesBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { obs.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  /* ── Billing toggle ── */
+  const btnMonthly = document.getElementById('btn-monthly');
+  const btnYearly  = document.getElementById('btn-yearly');
+
+  function setMonthly() {
+    btnMonthly.classList.add('active');
+    btnMonthly.setAttribute('aria-pressed', 'true');
+    btnYearly.classList.remove('active');
+    btnYearly.setAttribute('aria-pressed', 'false');
+    document.querySelectorAll('.price-monthly, .period-monthly').forEach(function (el) { el.style.display = ''; });
+    document.querySelectorAll('.price-yearly,  .period-yearly').forEach(function (el) { el.style.display = 'none'; });
+  }
+
+  function setYearly() {
+    btnYearly.classList.add('active');
+    btnYearly.setAttribute('aria-pressed', 'true');
+    btnMonthly.classList.remove('active');
+    btnMonthly.setAttribute('aria-pressed', 'false');
+    document.querySelectorAll('.price-monthly, .period-monthly').forEach(function (el) { el.style.display = 'none'; });
+    document.querySelectorAll('.price-yearly,  .period-yearly').forEach(function (el) { el.style.display = ''; });
+  }
+
+  if (btnMonthly) btnMonthly.addEventListener('click', setMonthly);
+  if (btnYearly)  btnYearly.addEventListener('click', setYearly);
+
+})();
+</script>
+
+</body>
+</html>

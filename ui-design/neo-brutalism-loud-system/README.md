@@ -1,5 +1,7 @@
 # LOUDHOUSE — Neo-Brutalism Design System Showcase (React + TypeScript + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A single-page design-system showcase for a fictional component kit called **LOUDHOUSE**, built to express the Neo-Brutalism aesthetic end to end: thick black borders on every element, hard zero-blur offset shadows, highlighter color-blocked sections, sticker rotations, and mechanical click-down button interactions. The page documents its own design DNA — from the centralized `@theme` token block to a live component playground — making it both a reference implementation and a living style guide. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")

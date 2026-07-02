@@ -1,5 +1,7 @@
 # LUMIÈRE — Cinematic Streaming Hero Section (React + TypeScript + Tailwind CSS v4 + Liquid Glass)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport, no-scroll cinematic streaming hero for a movie/streaming brand. A looping background video fills the viewport behind a masked `backdrop-blur-xl` veil that dissolves toward the middle of the screen (blur only — no dark gradient). Reusable liquid-glass pill buttons carry a 1.4px masked gradient rim, and a `blurFadeUp` entrance animates every element in with staggered delays from 0 to 900 ms. Fully responsive with a mobile hamburger menu and `prefers-reduced-motion` support. Generated with Claude Fable 5.
 
 **Stack:** React 18 + TypeScript + Vite + Tailwind CSS v4 + Lucide React, Inter (300–700) from Google Fonts.

@@ -1,284 +1,433 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="SUPERDESIGN — invite-only. Quiet confidence. Cinematic editorial waitlist." />
-<title>SUPERDESIGN — Invite Only</title>
-<style>
-  @font-face{
-    font-family:'Clash Grotesk';
-    src:url('./assets/fonts/ClashGrotesk-Variable.woff2') format('woff2');
-    font-weight:200 700;font-display:swap;font-style:normal;
-  }
-  @font-face{
-    font-family:'General Sans';
-    src:url('./assets/fonts/GeneralSans-Variable.woff2') format('woff2');
-    font-weight:200 700;font-display:swap;font-style:normal;
-  }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta
+			name="description"
+			content="SUPERDESIGN — invite-only. Quiet confidence. Cinematic editorial waitlist."
+		>
+		<title>SUPERDESIGN — Invite Only</title>
+		<style>
+		@font-face {
+			font-family: "Clash Grotesk";
+			src: url("./assets/fonts/ClashGrotesk-Variable.woff2") format("woff2");
+			font-weight: 200 700;
+			font-display: swap;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: "General Sans";
+			src: url("./assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+			font-weight: 200 700;
+			font-display: swap;
+			font-style: normal;
+		}
 
-  :root{
-    --bg:#181818; --text:#EBDCC4; --label:#B6A596;
-    --accent:#DC9F85; --border:#66473B; --umber:#35211A;
-    --radius:4px;
-  }
+		:root {
+			--bg: #181818;
+			--text: #ebdcc4;
+			--label: #b6a596;
+			--accent: #dc9f85;
+			--border: #66473b;
+			--umber: #35211a;
+			--radius: 4px;
+		}
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html,body{background:var(--bg);}
-  body{
-    font-family:'General Sans',system-ui,-apple-system,sans-serif;
-    color:var(--text);
-    min-height:100vh;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		html,
+		body {
+			background: var(--bg);
+		}
+		body {
+			font-family: "General Sans", system-ui, -apple-system, sans-serif;
+			color: var(--text);
+			min-height: 100vh;
+			-webkit-font-smoothing: antialiased;
+			overflow-x: hidden;
+		}
 
-  /* Fixed fractal-noise overlay, 3% opacity, full viewport */
-  .noise{
-    position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.03;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat:repeat;
-  }
+		/* Fixed fractal-noise overlay, 3% opacity, full viewport */
+		.noise {
+			position: fixed;
+			inset: 0;
+			z-index: 50;
+			pointer-events: none;
+			opacity: 0.03;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+			background-repeat: repeat;
+		}
 
-  .shell{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    padding:36px clamp(20px,4vw,64px);
-  }
+		.shell {
+			position: relative;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			padding: 36px clamp(20px, 4vw, 64px);
+		}
 
-  /* ---------- NAV ---------- */
-  nav{
-    position:absolute;
-    top:0;left:0;right:0;
-    display:flex;align-items:center;gap:24px;
-    padding:36px clamp(20px,4vw,64px);
-    z-index:10;
-  }
-  .brand{
-    font-size:11px;font-weight:600;text-transform:uppercase;
-    letter-spacing:.28em;color:var(--label);white-space:nowrap;
-  }
-  .nav-line{flex:1;height:1px;background:var(--umber);}
-  .nav-status{
-    font-size:11px;font-weight:600;text-transform:uppercase;
-    letter-spacing:.28em;color:var(--umber);white-space:nowrap;
-  }
+		/* ---------- NAV ---------- */
+		nav {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			align-items: center;
+			gap: 24px;
+			padding: 36px clamp(20px, 4vw, 64px);
+			z-index: 10;
+		}
+		.brand {
+			font-size: 11px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.28em;
+			color: var(--label);
+			white-space: nowrap;
+		}
+		.nav-line {
+			flex: 1;
+			height: 1px;
+			background: var(--umber);
+		}
+		.nav-status {
+			font-size: 11px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.28em;
+			color: var(--umber);
+			white-space: nowrap;
+		}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    flex:1;
-    display:flex;flex-direction:column;justify-content:center;
-    padding-top:72px;
-  }
-  .eyebrow{
-    display:flex;align-items:center;gap:14px;
-    margin-bottom:clamp(20px,3vw,40px);
-  }
-  .eyebrow .bar{width:24px;height:1px;background:var(--accent);}
-  .eyebrow span{
-    font-size:11px;font-weight:600;text-transform:uppercase;
-    letter-spacing:.28em;color:var(--label);
-  }
+		/* ---------- HERO ---------- */
+		.hero {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-top: 72px;
+		}
+		.eyebrow {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin-bottom: clamp(20px, 3vw, 40px);
+		}
+		.eyebrow .bar {
+			width: 24px;
+			height: 1px;
+			background: var(--accent);
+		}
+		.eyebrow span {
+			font-size: 11px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.28em;
+			color: var(--label);
+		}
 
-  .headline{
-    position:relative;
-    font-family:'Clash Grotesk',system-ui,sans-serif;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:-.03em;
-    line-height:.85;
-    font-size:11.5vw;
-    user-select:none;
-  }
-  .headline .layer{display:block;}
-  .headline .back{
-    position:absolute;top:0;left:0;
-    transform:translate(4px,4px);
-    -webkit-text-stroke:1px var(--border);
-    color:transparent;
-    z-index:1;
-  }
-  .headline .front{
-    position:relative;
-    color:var(--text);
-    z-index:2;
-  }
+		.headline {
+			position: relative;
+			font-family: "Clash Grotesk", system-ui, sans-serif;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: -0.03em;
+			line-height: 0.85;
+			font-size: 11.5vw;
+			user-select: none;
+		}
+		.headline .layer {
+			display: block;
+		}
+		.headline .back {
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: translate(4px, 4px);
+			-webkit-text-stroke: 1px var(--border);
+			color: transparent;
+			z-index: 1;
+		}
+		.headline .front {
+			position: relative;
+			color: var(--text);
+			z-index: 2;
+		}
 
-  /* ---------- BOTTOM GRID ---------- */
-  .divider{height:1px;background:var(--umber);margin:clamp(32px,5vw,64px) 0 clamp(28px,4vw,48px);}
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(12,1fr);
-    gap:32px;
-    align-items:start;
-  }
-  .statement{grid-column:1 / span 5;}
-  .statement p{
-    font-size:clamp(18px,1.45vw,22px);
-    font-weight:300;
-    line-height:1.6;
-    color:var(--text);
-    max-width:30ch;
-  }
-  .status-indicator{
-    display:flex;align-items:center;gap:10px;
-    margin-top:28px;
-  }
-  .status-indicator .dot{
-    width:8px;height:8px;border-radius:50%;
-    background:var(--accent);
-  }
-  .status-indicator span{
-    font-size:11px;font-weight:600;text-transform:uppercase;
-    letter-spacing:.22em;color:var(--label);
-  }
+		/* ---------- BOTTOM GRID ---------- */
+		.divider {
+			height: 1px;
+			background: var(--umber);
+			margin: clamp(32px, 5vw, 64px) 0 clamp(28px, 4vw, 48px);
+		}
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			gap: 32px;
+			align-items: start;
+		}
+		.statement {
+			grid-column: 1 / span 5;
+		}
+		.statement p {
+			font-size: clamp(18px, 1.45vw, 22px);
+			font-weight: 300;
+			line-height: 1.6;
+			color: var(--text);
+			max-width: 30ch;
+		}
+		.status-indicator {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-top: 28px;
+		}
+		.status-indicator .dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--accent);
+		}
+		.status-indicator span {
+			font-size: 11px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.22em;
+			color: var(--label);
+		}
 
-  .form-col{grid-column:7 / span 6;}
-  .form-label{
-    font-size:11px;font-weight:600;text-transform:uppercase;
-    letter-spacing:.28em;color:var(--label);
-    margin-bottom:16px;display:block;
-  }
-  form.capture{display:flex;width:100%;}
-  form.capture input{
-    flex:1;min-width:0;
-    background:transparent;
-    border:1px solid var(--border);
-    border-right:none;
-    border-radius:var(--radius) 0 0 var(--radius);
-    color:var(--text);
-    font-family:inherit;
-    font-size:15px;font-weight:400;
-    padding:18px 20px;
-    outline:none;
-  }
-  form.capture input::placeholder{color:var(--border);}
-  form.capture input:focus{border-color:var(--accent);}
-  form.capture button{
-    background:var(--accent);
-    color:var(--bg);
-    border:1px solid var(--accent);
-    border-radius:0 var(--radius) var(--radius) 0;
-    font-family:'General Sans',sans-serif;
-    font-size:13px;font-weight:700;text-transform:uppercase;
-    letter-spacing:.12em;
-    padding:0 28px;
-    cursor:pointer;white-space:nowrap;
-    transition:opacity .2s ease;
-  }
-  form.capture button:hover{opacity:.88;}
-  .caption{
-    margin-top:14px;
-    font-size:11px;font-weight:500;text-transform:uppercase;
-    letter-spacing:.16em;color:var(--umber);
-  }
+		.form-col {
+			grid-column: 7 / span 6;
+		}
+		.form-label {
+			font-size: 11px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.28em;
+			color: var(--label);
+			margin-bottom: 16px;
+			display: block;
+		}
+		form.capture {
+			display: flex;
+			width: 100%;
+		}
+		form.capture input {
+			flex: 1;
+			min-width: 0;
+			background: transparent;
+			border: 1px solid var(--border);
+			border-right: none;
+			border-radius: var(--radius) 0 0 var(--radius);
+			color: var(--text);
+			font-family: inherit;
+			font-size: 15px;
+			font-weight: 400;
+			padding: 18px 20px;
+			outline: none;
+		}
+		form.capture input::placeholder {
+			color: var(--border);
+		}
+		form.capture input:focus {
+			border-color: var(--accent);
+		}
+		form.capture button {
+			background: var(--accent);
+			color: var(--bg);
+			border: 1px solid var(--accent);
+			border-radius: 0 var(--radius) var(--radius) 0;
+			font-family: "General Sans", sans-serif;
+			font-size: 13px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.12em;
+			padding: 0 28px;
+			cursor: pointer;
+			white-space: nowrap;
+			transition: opacity 0.2s ease;
+		}
+		form.capture button:hover {
+			opacity: 0.88;
+		}
+		.caption {
+			margin-top: 14px;
+			font-size: 11px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.16em;
+			color: var(--umber);
+		}
 
-  /* ---------- ROTATING BADGE ---------- */
-  .badge{
-    position:fixed;
-    bottom:28px;right:28px;
-    width:64px;height:64px;
-    border:1px solid var(--umber);
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    z-index:40;
-  }
-  .badge .core{
-    width:5px;height:5px;border-radius:50%;
-    background:var(--accent);
-  }
-  .badge svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 12s linear infinite;}
-  @keyframes spin{to{transform:rotate(360deg);}}
+		/* ---------- ROTATING BADGE ---------- */
+		.badge {
+			position: fixed;
+			bottom: 28px;
+			right: 28px;
+			width: 64px;
+			height: 64px;
+			border: 1px solid var(--umber);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 40;
+		}
+		.badge .core {
+			width: 5px;
+			height: 5px;
+			border-radius: 50%;
+			background: var(--accent);
+		}
+		.badge svg {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			animation: spin 12s linear infinite;
+		}
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
 
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width:768px){
-    .headline{font-size:16vw;}
-    .headline .layer{display:block;}
-    .grid{grid-template-columns:1fr;gap:40px;}
-    .statement,.form-col{grid-column:1 / -1;}
-    .statement p{max-width:none;}
-    .badge{width:56px;height:56px;bottom:20px;right:20px;}
-    nav{gap:14px;}
-    .nav-status{display:none;}
-  }
-</style>
-</head>
-<body>
-  <div class="noise"></div>
+		/* ---------- RESPONSIVE ---------- */
+		@media (max-width: 768px) {
+			.headline {
+				font-size: 16vw;
+			}
+			.headline .layer {
+				display: block;
+			}
+			.grid {
+				grid-template-columns: 1fr;
+				gap: 40px;
+			}
+			.statement,
+			.form-col {
+				grid-column: 1 / -1;
+			}
+			.statement p {
+				max-width: none;
+			}
+			.badge {
+				width: 56px;
+				height: 56px;
+				bottom: 20px;
+				right: 20px;
+			}
+			nav {
+				gap: 14px;
+			}
+			.nav-status {
+				display: none;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="noise"></div>
 
-  <nav>
-    <div class="brand">SD—PROTOCOL 01</div>
-    <div class="nav-line"></div>
-    <div class="nav-status">INVITE ONLY</div>
-  </nav>
+		<nav>
+			<div class="brand">SD—PROTOCOL 01</div>
+			<div class="nav-line"></div>
+			<div class="nav-status">INVITE ONLY</div>
+		</nav>
 
-  <div class="shell">
-    <section class="hero">
-      <div class="eyebrow">
-        <span class="bar"></span>
-        <span>Early Access</span>
-      </div>
+		<div class="shell">
+			<section class="hero">
+				<div class="eyebrow">
+					<span class="bar"></span>
+					<span>Early Access</span>
+				</div>
 
-      <h1 class="headline">
-        <span class="layer">
-          <span class="back" aria-hidden="true">SUPER</span>
-          <span class="front">SUPER</span>
-        </span>
-        <span class="layer">
-          <span class="back" aria-hidden="true">DESIGN</span>
-          <span class="front">DESIGN</span>
-        </span>
-      </h1>
-    </section>
+				<h1 class="headline">
+					<span class="layer">
+						<span class="back" aria-hidden="true">SUPER</span>
+						<span class="front">SUPER</span>
+					</span>
+					<span class="layer">
+						<span class="back" aria-hidden="true">DESIGN</span>
+						<span class="front">DESIGN</span>
+					</span>
+				</h1>
+			</section>
 
-    <div class="divider"></div>
+			<div class="divider"></div>
 
-    <div class="grid">
-      <div class="statement">
-        <p>An invitation-only design protocol for those who build with restraint. No noise. No theatrics. Only the work, refined until it disappears.</p>
-        <div class="status-indicator">
-          <span class="dot"></span>
-          <span>Batch 003 Filling</span>
-        </div>
-      </div>
+			<div class="grid">
+				<div class="statement">
+					<p>
+						An invitation-only design protocol for those who build with
+						restraint. No noise. No theatrics. Only the work, refined until it
+						disappears.
+					</p>
+					<div class="status-indicator">
+						<span class="dot"></span>
+						<span>Batch 003 Filling</span>
+					</div>
+				</div>
 
-      <div class="form-col">
-        <span class="form-label">Request Access</span>
-        <form class="capture" id="capture">
-          <input type="email" id="email" placeholder="your@studio.com" required autocomplete="email" />
-          <button type="submit" id="submit">Request</button>
-        </form>
-        <div class="caption">Zero spam. Pure utility.</div>
-      </div>
-    </div>
-  </div>
+				<div class="form-col">
+					<span class="form-label">Request Access</span>
+					<form class="capture" id="capture">
+						<input
+							type="email"
+							id="email"
+							placeholder="your@studio.com"
+							required
+							autocomplete="email"
+						>
+						<button type="submit" id="submit">Request</button>
+					</form>
+					<div class="caption">Zero spam. Pure utility.</div>
+				</div>
+			</div>
+		</div>
 
-  <div class="badge" aria-label="Waiting list">
-    <svg viewBox="0 0 100 100">
-      <defs>
-        <path id="circ" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0" />
-      </defs>
-      <text font-family="General Sans, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#35211A">
-        <textPath href="#circ">WAITING LIST&#160;&#8226;&#160;WAITING LIST&#160;&#8226;&#160;</textPath>
-      </text>
-    </svg>
-    <span class="core"></span>
-  </div>
+		<div class="badge" aria-label="Waiting list">
+			<svg viewBox="0 0 100 100">
+				<defs>
+					<path
+						id="circ"
+						d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"
+					/>
+				</defs>
+				<text
+					font-family="General Sans, sans-serif"
+					font-size="11"
+					font-weight="700"
+					letter-spacing="2"
+					fill="#35211A"
+				>
+					<textPath href="#circ">
+						WAITING LIST&#160;&#8226;&#160;WAITING LIST&#160;&#8226;&#160;
+					</textPath>
+				</text>
+			</svg>
+			<span class="core"></span>
+		</div>
 
-  <script>
-    var form = document.getElementById('capture');
-    var btn = document.getElementById('submit');
-    form.addEventListener('submit', (e)=> {
-      e.preventDefault();
-      var email = document.getElementById('email');
-      if(!email.value){ return; }
-      btn.textContent = 'Joined ✓';
-      btn.disabled = true;
-      email.setAttribute('readonly','readonly');
-      email.style.opacity = '.6';
-    });
-  </script>
-</body>
+		<script>
+		var form = document.getElementById("capture");
+		var btn = document.getElementById("submit");
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+			var email = document.getElementById("email");
+			if (!email.value) {
+				return;
+			}
+			btn.textContent = "Joined ✓";
+			btn.disabled = true;
+			email.setAttribute("readonly", "readonly");
+			email.style.opacity = ".6";
+		});
+		</script>
+	</body>
 </html>

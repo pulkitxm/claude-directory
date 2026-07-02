@@ -1,0 +1,95 @@
+/*
+  tokens.css — Design tokens (CSS custom properties) for the Cleaner clone.
+
+  Theme model:
+  - The source template ("Cleaner" by Themefisher) is LIGHT-FIRST and has no
+    theme toggle at all. `:root` / `[data-theme="light"]` carry the source's
+    real light palette as the default.
+  - `[data-theme="dark"]` is an ADDED dark-mode override (source has none) so
+    the clone still looks good with a toggle, derived from the same brand
+    hues (primary/secondary/accent stay constant, surfaces/text invert).
+  - Theme is chosen by (in order): stored `localStorage.theme` choice ->
+    `prefers-color-scheme` media query -> light default. See common.js's
+    boot script for the actual resolution logic (must run pre-paint).
+*/
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Core palette (source Cleaner light theme) */
+  --color-primary: #443dfc;
+  --color-secondary: #fed00e;
+  --color-accent: #38ff64;
+  --color-body: #ffffff;
+  --color-light: #fafafb;
+  --color-border: #e3e3ee;
+  --color-text: #0e0d39;
+  --color-text-dark: #3d3c53;
+  --color-text-light: #ffffff;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-dark: #100e3a;
+
+  /* Semantic aliases used throughout base.css / pages */
+  --bg-body: var(--color-body);
+  --bg-surface: var(--color-light);
+  --bg-surface-alt: var(--color-border);
+  --bg-inverse: var(--color-dark);
+  --border-color: var(--color-border);
+  --text-color: var(--color-text);
+  --text-color-dark: var(--color-text-dark);
+  --text-color-light: var(--color-text-light);
+  --text-color-inverse: #ffffff;
+
+  /* Radii */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-pill: 9999px;
+
+  /* Type scale (desktop / mobile via clamp) */
+  --text-h1: clamp(2.5rem, 1.9rem + 2.4vw, 3.54815rem);
+  --text-h2: clamp(2rem, 1.55rem + 1.8vw, 2.87299rem);
+  --text-h3: clamp(1.7rem, 1.4rem + 1.3vw, 2.32631rem);
+  --text-h4: clamp(1.45rem, 1.2rem + 1vw, 1.88365rem);
+  --text-h5: clamp(1.25rem, 1.1rem + 0.6vw, 1.52523rem);
+  --text-h6: clamp(1.05rem, 0.95rem + 0.4vw, 1.235rem);
+  --text-base: 1.125rem;
+  --text-base-sm: 1.0125rem;
+  --text-lg: 1.125rem;
+  --text-sm: 0.875rem;
+
+  --font-primary: "Rubik", sans-serif;
+
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s;
+  --transition-base: 0.3s;
+  --transition-slow: 0.5s;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-primary: #6a63ff;
+  --color-secondary: #fed00e;
+  --color-accent: #38ff64;
+  --color-body: #100e3a;
+  --color-light: #17153f;
+  --color-border: #2b2a55;
+  --color-text: #f4f4fb;
+  --color-text-dark: #c7c6dd;
+  --color-text-light: #ffffff;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-dark: #0a0926;
+
+  --bg-body: var(--color-body);
+  --bg-surface: var(--color-light);
+  --bg-surface-alt: #201e4d;
+  --bg-inverse: var(--color-dark);
+  --border-color: var(--color-border);
+  --text-color: var(--color-text);
+  --text-color-dark: var(--color-text-dark);
+  --text-color-light: var(--color-text-light);
+  --text-color-inverse: #ffffff;
+}

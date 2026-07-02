@@ -1,5 +1,7 @@
 # Aurora Borealis Shader — Interactive Three.js FBM Aurora Background (React + TypeScript + Three.js + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive Three.js WebGL aurora-borealis shader background featuring an FBM-noise curtain mixed green to violet up the viewport, brightened by a soft flare that tracks the cursor. Framed inside a high-latitude Aurora Watch field console with a probe reticle reporting geomagnetic latitude/longitude, and a Kp-index gauge (the real 0–9 geomagnetic-activity scale) whose lit segments are driven by aurora brightness sampled off the GPU each frame. A Hold Sky control freezes the animation clock. Built with React 18, TypeScript, Vite, Three.js, Tailwind CSS, and `lucide-react`. Generated with Claude Fable 5.
 
 The shader component is the verbatim drop-in from the integration brief

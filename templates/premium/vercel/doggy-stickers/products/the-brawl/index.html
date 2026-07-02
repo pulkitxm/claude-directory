@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>The Brawl — Doggy Stickers</title>
+		<meta name="description" content="Let's just say a lot of bones were broken...and chewed on." />
+		<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml" />
+		<script>
+			window.__DOGGY_DEPTH__ = 2;
+		</script>
+		<script src="../../js/theme-boot.js"></script>
+		<link rel="stylesheet" href="../../css/styles.css" />
+	</head>
+	<body>
+		<div class="flex-col-wrapper">
+			<header class="site-header" data-site-header></header>
+
+			<main>
+				<section class="product-page">
+					<div class="gallery">
+						<div class="gallery-main">
+							<img id="gallery-main-img" src="../../assets/img/mockup-be79c598.jpg" alt="The Brawl" />
+						</div>
+						<div class="gallery-thumbs">
+							<button class="gallery-arrow" id="thumb-prev" aria-label="Scroll thumbnails left">&#8592;</button>
+							<div class="track" id="thumb-track">
+								
+								<button class="thumb-btn active" data-thumb-src="../../assets/img/mockup-be79c598.jpg" data-thumb-index="0">
+									<img src="../../assets/img/mockup-be79c598.jpg" alt="The Brawl view 1" />
+								</button>
+								<button class="thumb-btn" data-thumb-src="../../assets/img/mockup-831e339d.jpg" data-thumb-index="1">
+									<img src="../../assets/img/mockup-831e339d.jpg" alt="The Brawl view 2" />
+								</button>
+								<button class="thumb-btn" data-thumb-src="../../assets/img/mockup-15b4e8e6.jpg" data-thumb-index="2">
+									<img src="../../assets/img/mockup-15b4e8e6.jpg" alt="The Brawl view 3" />
+								</button>
+							</div>
+							<button class="gallery-arrow" id="thumb-next" aria-label="Scroll thumbnails right">&#8594;</button>
+						</div>
+					</div>
+
+					<div class="product-info">
+						<a class="btn btn-outline" href="../../index.html">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+							Back To All Products
+						</a>
+
+						<h1>The Brawl</h1>
+						<p class="desc">Let's just say a lot of bones were broken...and chewed on.</p>
+						<p class="price">$9.99</p>
+
+						<div class="product-form-row">
+							<div class="form-field">
+								<label for="qty">Qty.</label>
+								<input id="qty" type="number" min="1" value="1" />
+							</div>
+							<div class="form-field">
+								<label for="size">Size</label>
+								<select id="size">
+									<option value="3 x 3">3 x 3</option>
+									<option value="4 x 4">4 x 4</option>
+									<option value="5 x 5">5 x 5</option>
+								</select>
+							</div>
+						</div>
+
+						<button class="btn btn-solid btn-lg btn-block" id="add-to-cart-btn" type="button">
+							Add To Cart
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7 4h-2l-1 2v1h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2h-11.42c-.13 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1h-14.19l-.94-2zm14 15c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+						</button>
+					</div>
+				</section>
+			</main>
+
+			<footer class="site-footer" data-site-footer></footer>
+		</div>
+
+		<script src="../../js/products.js"></script>
+		<script src="../../js/cart.js"></script>
+		<script>
+			(function () {
+				const slug = "the-brawl";
+				const mainImg = document.getElementById("gallery-main-img");
+				const track = document.getElementById("thumb-track");
+
+				track.querySelectorAll(".thumb-btn").forEach((btn) => {
+					btn.addEventListener("click", () => {
+						mainImg.src = btn.dataset.thumbSrc;
+						track
+							.querySelectorAll(".thumb-btn")
+							.forEach((b) => b.classList.remove("active"));
+						btn.classList.add("active");
+					});
+				});
+
+				document.getElementById("thumb-prev").addEventListener("click", () => {
+					track.scrollBy({ left: -100, behavior: "smooth" });
+				});
+				document.getElementById("thumb-next").addEventListener("click", () => {
+					track.scrollBy({ left: 100, behavior: "smooth" });
+				});
+
+				document
+					.getElementById("add-to-cart-btn")
+					.addEventListener("click", () => {
+						const qty = parseInt(document.getElementById("qty").value, 10) || 1;
+						const size = document.getElementById("size").value;
+						window.DoggyCart.add(slug, qty, size);
+						const btn = document.getElementById("add-to-cart-btn");
+						const original = btn.innerHTML;
+						btn.textContent = "Added!";
+						setTimeout(() => {
+							btn.innerHTML = original;
+						}, 1200);
+					});
+			})();
+		</script>
+	</body>
+</html>

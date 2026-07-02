@@ -1,5 +1,7 @@
 # Mesh Gradient Shader Hero — Live Palette Studio with MeshGradient (React + Vite + Tailwind CSS + paper-design/shaders-react)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-featured shader hero integration built around the `@paper-design/shaders-react` **`MeshGradient`** component, framed as an interactive **palette studio**. The live hero sits behind a registration-bracketed plate with a frosted veil; a right-hand control deck drives the shader's real props — color stops, distortion, swirl, speed, and offset — in real time. A tabbed dock documents the install, the full props API, a live copy-paste usage snippet, and the shadcn `components/ui` story. Generated with Claude Fable 5.
 
 ## What's wired up

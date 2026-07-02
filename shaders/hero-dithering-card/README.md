@@ -1,5 +1,7 @@
 # Dither Press — Hero Dithering Card (@paper-design/shaders-react + React + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A print-house proof room built around a shadcn `components/ui` dithering shader card from `@paper-design/shaders-react`. The `CTASection` component drops in untouched — a transparent-backed `Dithering` shader with Pantone-orange ink under an editorial headline and CTA — then is mounted on a press bed with crop marks, an engraved registration grid, a half-tone dot field, a rotating loupe reticle, and a live telemetry strip that reads ink coverage directly off the plate. A second live shader plate is wired to a full control rack. Generated with Claude Fable 5.
 
 ## The proof, framed

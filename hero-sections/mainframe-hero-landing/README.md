@@ -1,5 +1,7 @@
 # Mainframe — Mouse-Scrub Video Hero with AI Typewriter (React 19 + TypeScript + Tailwind CSS 3)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen, cinematic hero landing page for a creative agency called Mainframe, featuring a fixed background video that scrubs forward and backward in response to horizontal mouse movement, an AI-assistant-themed blurred intro label, a typewriter-animated headline, and a row of pill-shaped action buttons with a clipboard copy email link. The design pairs HelveticaNowDisplay-Medium headings with HelveticaNowDisplayW01-Rg body text, both vendored locally for offline use. Built with React 19, TypeScript, Vite, and Tailwind CSS v3. Generated with Claude Fable 5.
 
 ## Stack

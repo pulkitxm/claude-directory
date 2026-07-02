@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("plasma-theme") || "dark";
+				document.documentElement.classList.toggle("light", t === "light");
+			} catch (e) {}
+		})();
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>File Systems — Plasma Docs</title>
+		<meta
+			name="description"
+			content="Understand how to manage and organize files efficiently within the Plasma ecosystem."
+		>
+		<link rel="stylesheet" href="assets/css/tokens.css">
+		<link rel="stylesheet" href="assets/css/styles.css">
+		<link rel="stylesheet" href="assets/css/docs.css">
+	</head>
+	<body class="docs">
+		<div class="promo">
+			<div class="container">
+				<span>Purchase this theme on shadcnblocks.com</span>
+				<a
+					href="https://www.shadcnblocks.com/template/plasma"
+					target="_blank"
+					rel="noopener"
+					>Get Template</a
+				>
+			</div>
+			<button class="promo-close" data-promo-close aria-label="Dismiss">
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path d="M18 6 6 18M6 6l12 12" />
+				</svg>
+			</button>
+		</div>
+
+		<header class="header">
+			<div class="container">
+				<a class="brand" href="index.html"
+					><span class="brand-mark"></span>Plasma</a
+				>
+				<div class="header-actions">
+					<a href="index.html" class="btn btn-ghost">Back to site</a>
+					<span class="muted" style="font-size:.85rem">Docs</span>
+					<button
+						class="theme-toggle"
+						data-theme-toggle
+						aria-label="Toggle theme"
+					>
+						<svg
+							class="moon"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+						</svg>
+						<svg
+							class="sun"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<circle cx="12" cy="12" r="4" />
+							<path
+								d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+							/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<div class="docs-shell">
+			<aside class="docs-sidebar">
+				<a class="brand" href="index.html" style="margin-bottom:1.25rem"
+					><span class="brand-mark"></span>Plasma</a
+				>
+				<button class="docs-search">
+					<span>Search docs...</span><kbd>⌘K</kbd>
+				</button>
+				<div class="docs-nav-group">
+					<h5>Getting Started</h5>
+					<a href="docs.html">Welcome to Plasma Docs</a>
+					<a href="docs-installation.html">Installation</a>
+				</div>
+				<div class="docs-nav-group">
+					<h5>Concepts</h5>
+					<a href="docs-core-concepts.html">Core Concepts</a>
+					<a href="docs-ai-prompts.html">AI Prompts</a>
+				</div>
+				<div class="docs-nav-group">
+					<h5>Integrations</h5>
+					<a href="docs-file-systems.html" class="active">File Systems</a>
+					<a href="docs-crm-csv.html">CRM &amp; CSV</a>
+					<a href="docs-cli.html">CLI</a>
+				</div>
+			</aside>
+
+			<main class="docs-content">
+				<h1>File Systems</h1>
+				<p class="subtitle">
+					Understand how to manage and organize files efficiently within the
+					Plasma ecosystem.
+				</p>
+
+				<h2 id="project-structure">Project Structure</h2>
+				<p>
+					Plasma follows a well-organized file structure that promotes
+					maintainability and scalability.
+				</p>
+				<div class="code-block">
+					<button data-copy aria-label="Copy">
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<rect x="9" y="9" width="13" height="13" rx="2" />
+							<path
+								d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+							/>
+						</svg>
+					</button>
+					<pre><code>plasma-project/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── utils/
+│   └── styles/
+├── public/
+├── docs/
+├── plasma.config.ts
+└── package.json</code></pre>
+				</div>
+
+				<h2 id="file-management">File Management</h2>
+				<p>
+					Use Plasma's file system API to create and manage files
+					programmatically.
+				</p>
+				<div class="code-block">
+					<button data-copy aria-label="Copy">
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<rect x="9" y="9" width="13" height="13" rx="2" />
+							<path
+								d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+							/>
+						</svg>
+					</button>
+					<pre><code>import { fileSystem } from 'plasma';
+
+// Create a new file
+await fileSystem.create('src/components/UserCard.tsx', {
+  template: 'react-component',
+  props: { name: 'UserCard' },
+});
+
+// Read an existing file
+const content = await fileSystem.read('src/features/auth.ts');</code></pre>
+				</div>
+
+				<h2 id="configuration-files">Configuration Files</h2>
+				<h3>1. Main Configuration</h3>
+				<p>
+					The <code>plasma.config.ts</code> file is the heart of your project
+					configuration:
+				</p>
+				<div class="code-block">
+					<button data-copy aria-label="Copy">
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<rect x="9" y="9" width="13" height="13" rx="2" />
+							<path
+								d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+							/>
+						</svg>
+					</button>
+					<pre><code>export default {
+  fileSystem: {
+    root: 'src',
+    ignorePatterns: ['node_modules', 'dist'],
+    watch: true,
+  },
+  build: {
+    target: 'es2020',
+    format: 'esm',
+    minify: true,
+  },
+}</code></pre>
+				</div>
+				<h3>2. TypeScript Configuration</h3>
+				<p>Configure TypeScript for optimal development:</p>
+				<div class="code-block">
+					<button data-copy aria-label="Copy">
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<rect x="9" y="9" width="13" height="13" rx="2" />
+							<path
+								d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+							/>
+						</svg>
+					</button>
+					<pre><code>{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}</code></pre>
+				</div>
+				<h3>3. Package Configuration</h3>
+				<p>Set up your package.json with Plasma scripts:</p>
+				<div class="code-block">
+					<button data-copy aria-label="Copy">
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<rect x="9" y="9" width="13" height="13" rx="2" />
+							<path
+								d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+							/>
+						</svg>
+					</button>
+					<pre><code>{
+  "scripts": {
+    "dev": "plasma dev",
+    "build": "plasma build",
+    "preview": "plasma preview",
+    "lint": "plasma lint"
+  }
+}</code></pre>
+				</div>
+
+				<h2 id="file-templates">File Templates</h2>
+				<p>Plasma supports file templates for consistent code generation.</p>
+				<div class="accordion-item">
+					<button class="accordion-trigger">
+						Component Template
+						<svg
+							class="chev"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="m6 9 6 6 6-6" />
+						</svg>
+					</button>
+					<div class="accordion-panel">
+						<div class="accordion-panel-inner">
+							A scaffold for new React components with typed props and default
+							exports.
+						</div>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<button class="accordion-trigger">
+						Page Template
+						<svg
+							class="chev"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="m6 9 6 6 6-6" />
+						</svg>
+					</button>
+					<div class="accordion-panel">
+						<div class="accordion-panel-inner">
+							A full page scaffold including routing metadata and layout
+							boilerplate.
+						</div>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<button class="accordion-trigger">
+						Hook Template
+						<svg
+							class="chev"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="m6 9 6 6 6-6" />
+						</svg>
+					</button>
+					<div class="accordion-panel">
+						<div class="accordion-panel-inner">
+							A reusable custom hook scaffold with state and cleanup wiring.
+						</div>
+					</div>
+				</div>
+
+				<h2 id="file-system-api">File System API</h2>
+				<table class="api-table">
+					<thead>
+						<tr>
+							<th>Method</th>
+							<th>Signature</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>create</code></td>
+							<td>
+								(path: string, options?: CreateOptions) =&gt;
+								Promise&lt;void&gt;
+							</td>
+						</tr>
+						<tr>
+							<td><code>read</code></td>
+							<td>(path: string) =&gt; Promise&lt;string&gt;</td>
+						</tr>
+						<tr>
+							<td><code>write</code></td>
+							<td>(path: string, content: string) =&gt; Promise&lt;void&gt;</td>
+						</tr>
+						<tr>
+							<td><code>delete</code></td>
+							<td>(path: string) =&gt; Promise&lt;void&gt;</td>
+						</tr>
+						<tr>
+							<td><code>exists</code></td>
+							<td>(path: string) =&gt; Promise&lt;boolean&gt;</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h2 id="best-practices">Best Practices</h2>
+				<div class="callout">
+					Important: Always use absolute paths or configure path aliases for
+					better maintainability.
+				</div>
+				<ul>
+					<li>Use descriptive file and folder names</li>
+					<li>Group related files in logical directories</li>
+					<li>Keep configuration files in the project root</li>
+					<li>Use templates for consistent file structure</li>
+					<li>Implement proper file watching for development</li>
+				</ul>
+
+				<div class="pager">
+					<a href="docs-ai-prompts.html"
+						><span>Previous</span><strong>AI Prompts</strong></a
+					>
+					<a class="next" href="docs-crm-csv.html"
+						><span>Next</span><strong>CRM &amp; CSV</strong></a
+					>
+				</div>
+			</main>
+
+			<aside class="docs-toc">
+				<h5>On this page</h5>
+				<a href="#project-structure">Project Structure</a>
+				<a href="#file-management">File Management</a>
+				<a href="#configuration-files">Configuration Files</a>
+				<a href="#file-templates">File Templates</a>
+				<a href="#file-system-api">File System API</a>
+				<a href="#best-practices">Best Practices</a>
+			</aside>
+		</div>
+
+		<script src="assets/js/app.js"></script>
+	</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>A Comprehensive Guide on Importing Customers — Metafi</title>
+		<meta
+			name="description"
+			content="CSV, API, or UI? Mapping, validation, safe retries—plus a rollback plan. How Metafi built a customer import framework that balances flexibility with safety."
+		>
+		<link rel="icon" href="assets/images/layout/logo-single.svg">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=IBM+Plex+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="page.css">
+		<script src="theme-boot.js"></script>
+	</head>
+	<body>
+		<main>
+			<article class="section container" style="padding-bottom:3rem;">
+				<header class="prose" style="margin-bottom:2.5rem;">
+					<p class="eyebrow reveal">Compliance</p>
+					<h1
+						class="reveal"
+						style="font-size:clamp(2rem,4.5vw,3rem);margin:.75rem 0 1rem;"
+					>
+						A Comprehensive Guide on Importing Customers
+					</h1>
+					<p
+						class="reveal"
+						style="color:var(--muted-foreground);font-size:1.125rem;"
+					>
+						CSV, API, or UI? Mapping, validation, safe retries—plus a rollback
+						plan.
+					</p>
+					<div class="post-meta reveal">
+						<img src="assets/images/team/1.webp" alt="">
+						<div class="post-meta-text">
+							<span class="name">Savannah Nguyen</span>
+							<span class="sub">Oct 24, 2023 • 5–7 minute read</span>
+						</div>
+					</div>
+				</header>
+
+				<div class="post-cover reveal">
+					<img
+						src="assets/images/blog/1.webp"
+						alt="Importing customers cover"
+						loading="lazy"
+					>
+				</div>
+
+				<div class="prose reveal">
+					<h2>Why Customer Importing Matters</h2>
+					<p>
+						For any SaaS business, importing customer data is one of the most
+						crucial and delicate onboarding steps. Done right, it feels
+						invisible—users see their customers appear instantly, ready to go.
+						Done poorly, it can erode trust in your product before the first
+						session even ends.
+					</p>
+					<p>
+						At Metafi, we built a customer import framework that balances
+						flexibility for developers with safety for operators. It’s the
+						bridge between data chaos and a working CRM.
+					</p>
+
+					<h2>Data Sources: CSV, API, and Direct Sync</h2>
+					<h3>CSV Imports</h3>
+					<p>
+						Still the most common route. Easy for users but error-prone. We
+						introduced schema detection and instant feedback to validate headers
+						and data types before upload.
+					</p>
+					<h3>API Imports</h3>
+					<p>
+						Ideal for power users. APIs let larger clients run nightly syncs. We
+						versioned endpoints, added safe retries, and built audit trails for
+						every record.
+					</p>
+					<h3>Direct Sync</h3>
+					<p>
+						Integrations with tools like Salesforce or HubSpot use OAuth2 to
+						ensure secure tokenized access. Data sync happens in near real-time
+						with rollback on any validation failure.
+					</p>
+
+					<h2>Mapping and Validation</h2>
+					<p>
+						Every import requires a mapping layer. We designed a guided UI that
+						auto-detects columns but lets users override or ignore fields.
+						Behind the scenes, our validator checks:
+					</p>
+					<ul>
+						<li>Email and phone format</li>
+						<li>Duplicates and conflicts</li>
+						<li>Referential integrity (linked accounts or billing info)</li>
+					</ul>
+					<p>
+						If errors occur, users can download a detailed CSV error report.
+					</p>
+
+					<h2>Safe Retries and Rollbacks</h2>
+					<p>
+						Our import pipeline is idempotent. Each row carries a unique
+						checksum. If a retry is triggered, we skip rows that already
+						succeeded, and roll back only the failed subset. That means no
+						duplicate customers and no partial imports that silently break your
+						CRM.
+					</p>
+
+					<h2>Compliance and Security</h2>
+					<p>
+						Customer data import isn’t just technical—it’s regulatory. GDPR and
+						CCPA require clear data provenance. We store every import event with
+						metadata (who, when, what source) and allow admins to delete
+						datasets at any time.
+					</p>
+
+					<h2>Lessons Learned</h2>
+					<ul>
+						<li>
+							<strong>Transparency beats magic:</strong>
+							Users prefer seeing progress and errors clearly.
+						</li>
+						<li>
+							<strong>Asynchronous jobs need real-time feedback:</strong>
+							a progress bar or webhook beats silent background tasks.
+						</li>
+						<li>
+							<strong>Validation early</strong>
+							saves engineering pain later.
+						</li>
+					</ul>
+					<p>
+						With these principles, importing customers becomes not just a setup
+						step—but a trust-building moment in your user journey.
+					</p>
+				</div>
+			</article>
+		</main>
+		<script src="app.js"></script>
+	</body>
+</html>

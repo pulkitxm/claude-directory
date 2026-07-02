@@ -1,5 +1,7 @@
 # Celestial Matrix Terminal — Digital Rain WebGL Shader with CRT Boot Sequence (React + Three.js + Tailwind)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn-style integration of the Three.js Celestial Matrix digital rain shader — a blue-to-green field bent by a cursor-driven gravitational warp — reframed as a deep-space relay terminal (Meridian Station · Orbital Relay 9) with a typed CRT login sequence, live telemetry strip, and cursor reticle. The retro-CRT aesthetic, typed boot-to-ACCESS-GRANTED sequence, and real GPU-sampled telemetry make it a distinctive login page, landing moment, or interactive hero background. Generated with Claude Fable 5.
 
 The shader runs full-viewport behind a bracketed CRT terminal that types out a

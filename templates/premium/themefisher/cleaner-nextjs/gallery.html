@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - Cleaner</title>
+<link rel="icon" href="assets/images/favicon.png" type="image/png">
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  /* ---- gallery.html page-specific styles ---- */
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 1rem; }
+  .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .gallery-grid .gallery-item:nth-child(4) { grid-column: span 2; }
+  .gallery-grid .gallery-item:nth-child(6) { grid-column: span 2; grid-row: span 2; }
+  .gallery-grid .gallery-item:nth-child(7) { grid-column: span 2; }
+  @media (max-width: 991px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid .gallery-item:nth-child(1),
+    .gallery-grid .gallery-item:nth-child(4),
+    .gallery-grid .gallery-item:nth-child(6),
+    .gallery-grid .gallery-item:nth-child(7) { grid-column: span 1; grid-row: span 1; }
+  }
+  @media (max-width: 600px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+  .gallery-item { position: relative; overflow: hidden; border-radius: var(--radius-lg, 16px); display: block; cursor: pointer; height: 100%; min-height: 220px; }
+  .gallery-item img { display: block; width: 100%; height: 100%; min-height: 220px; object-fit: cover; transition: transform 0.6s var(--ease-in-out, ease); }
+  .gallery-item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,13,57,0.75), rgba(14,13,57,0.05) 60%); opacity: 0; transition: opacity 0.4s ease; }
+  .gallery-item .gallery-overlay { position: absolute; left: 1.25rem; right: 1.25rem; bottom: -2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; opacity: 0; transition: bottom 0.5s var(--ease-in-out, ease), opacity 0.4s ease; }
+  .gallery-item .gallery-caption { background: rgba(14,13,57,0.55); color: #fff; padding: 0.5rem 0.9rem; border-radius: 999px; font-size: var(--text-sm); backdrop-filter: blur(2px); }
+  .gallery-item .gallery-zoom { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(14,13,57,0.55); color: #fff; flex-shrink: 0; }
+  .gallery-item .gallery-zoom svg { width: 18px; height: 18px; }
+  .gallery-item:hover img { transform: scale(1.08); }
+  .gallery-item:hover::after { opacity: 1; }
+  .gallery-item:hover .gallery-overlay { bottom: 1.25rem; opacity: 1; }
+  .cta-banner-split { display: flex; align-items: center; gap: clamp(1.5rem, 2vw, 3rem); flex-wrap: wrap; text-align: left; }
+  .cta-banner-split .cta-copy { flex: 1 1 420px; }
+  .cta-banner-split .cta-copy p { color: rgba(255,255,255,0.85); }
+  .cta-banner-split .cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+  .cta-banner-split .cta-media { flex: 1 1 320px; }
+  .cta-banner-split .cta-media img { border-radius: var(--radius-lg, 16px); width: 100%; height: auto; object-fit: cover; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar">
+  <div class="container">
+    <p>Need quick cleaning help?</p>
+    <a href="tel:+1-394-495-5993">
+      <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L184.6 167c13.7-11.1 18.4-30 11.6-46.3l-40-96z"/></svg>
+      Call Us: +1 071 281 9795
+    </a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">
+      <img class="logo-dark" src="assets/images/logo-dark.svg" alt="Cleaner logo" width="142" height="40">
+      <img class="logo-light" src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+    </a>
+    <div class="nav-scrim" id="nav-scrim"></div>
+    <ul class="nav" id="nav-menu">
+      <li><a href="about.html" class="nav-item">About Us</a></li>
+      <li><a href="services.html" class="nav-item">Services</a></li>
+      <li><a href="gallery.html" class="nav-item active">Gallery</a></li>
+      <li><a href="blog.html" class="nav-item">Blog</a></li>
+      <li><a href="contact.html" class="nav-item">Contact</a></li>
+    </ul>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a href="appointment.html" class="btn btn-primary btn-sm desktop-only">Make An Appointment</a>
+      <button class="nav-toggle-btn" id="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Page header -->
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Gallery</span>
+      </div>
+      <p class="eyebrow" style="display:block;margin-top:1.5rem;" data-aos="fade-up-sm">OUR PHOTOS</p>
+      <h1 data-aos="fade-up-sm" data-aos-delay="50">Explore <span class="text-accent-underline">Gallery</span></h1>
+    </div>
+  </section>
+
+  <!-- Gallery grid -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="gallery-grid">
+        <a class="gallery-item" href="assets/images/gallery/1.png" data-aos="fade-up-sm" data-aos-delay="50">
+          <img src="assets/images/gallery/1.png" alt="Floor Cleaning, New York" width="635" height="433" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Floor Cleaning, New York</span>
+            <span class="gallery-zoom" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6.99h3L12 3 8 6.99h3v10.02H8L12 21l4-3.99h-3z" transform="rotate(45 12 12)"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/images/gallery/2.png" data-aos="fade-up-sm" data-aos-delay="100">
+          <img src="assets/images/gallery/2.png" alt="Home Cleaning, Chicago" width="635" height="433" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Home Cleaning, Chicago</span>
+            <span class="gallery-zoom" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6.99h3L12 3 8 6.99h3v10.02H8L12 21l4-3.99h-3z" transform="rotate(45 12 12)"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/images/gallery/3.png" data-aos="fade-up-sm" data-aos-delay="150">
+          <img src="assets/images/gallery/3.png" alt="Window Cleaning, Boston" width="635" height="433" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Window Cleaning, Boston</span>
+            <span class="gallery-zoom" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6.99h3L12 3 8 6.99h3v10.02H8L12 21l4-3.99h-3z" transform="rotate(45 12 12)"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/images/gallery/4.png" data-aos="fade-up-sm" data-aos-delay="200">
+          <img src="assets/images/gallery/4.png" alt="Pest Control, Austin" width="635" height="433" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Pest Control, Austin</span>
+            <span class="gallery-zoom" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6.99h3L12 3 8 6.99h3v10.02H8L12 21l4-3.99h-3z" transform="rotate(45 12 12)"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/images/gallery/2.png" data-aos="fade-up-sm" data-aos-delay="250">
+          <img src="assets/images/gallery/2.png" alt="Home Cleaning, Seattle" width="635" height="433" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Home Cleaning, Seattle</span>
+            <span class="gallery-zoom" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6.99h3L12 3 8 6.99h3v10.02H8L12 21l4-3.99h-3z" transform="rotate(45 12 12)"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/images/gallery/1.png" data-aos="fade-up-sm" data-aos-delay="300">
+          <img src="assets/images/gallery/1.png" alt="Floor Cleaning, Denver" width="635" height="433" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Floor Cleaning, Denver</span>
+            <span class="gallery-zoom" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6.99h3L12 3 8 6.99h3v10.02H8L12 21l4-3.99h-3z" transform="rotate(45 12 12)"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/images/gallery/4.png" data-aos="fade-up-sm" data-aos-delay="350">
+          <img src="assets/images/gallery/4.png" alt="Pest Control, Miami" width="635" height="433" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Pest Control, Miami</span>
+            <span class="gallery-zoom" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6.99h3L12 3 8 6.99h3v10.02H8L12 21l4-3.99h-3z" transform="rotate(45 12 12)"/></svg>
+            </span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/images/gallery/3.png" data-aos="fade-up-sm" data-aos-delay="400">
+          <img src="assets/images/gallery/3.png" alt="Window Cleaning, Portland" width="635" height="433" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Window Cleaning, Portland</span>
+            <span class="gallery-zoom" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6.99h3L12 3 8 6.99h3v10.02H8L12 21l4-3.99h-3z" transform="rotate(45 12 12)"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner" data-aos="zoom-in">
+        <div class="cta-banner-split">
+          <div class="cta-copy">
+            <h2>Discuss our services or make an <span class="text-accent-underline">appointment</span></h2>
+            <p>We know what a sore tooth is, so do not hesitate to reach us via the phone or to make an appointment online! We know what a sore.</p>
+            <div class="cta-actions">
+              <a href="tel:+1-394-495-5993" class="btn btn-secondary">Call: +1-394-495-5993</a>
+              <a href="appointment.html" class="btn btn-light">Make An Appointment</a>
+            </div>
+          </div>
+          <div class="cta-media">
+            <img src="assets/images/cta.png" alt="Call to action" width="750" height="608" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+        <p>Professional cleaning services<br>using innovative technology.</p>
+      </div>
+      <div class="footer-col">
+        <h6>Company</h6>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="elements.html">Elements</a></li>
+          <li><a href="contact.html">Contacts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Services</h6>
+        <ul>
+          <li><a href="service-home-cleaning.html">Home Cleaning</a></li>
+          <li><a href="service-window-cleaning.html">Window Cleaning</a></li>
+          <li><a href="service-pest-control.html">Pest Control</a></li>
+          <li><a href="service-floor-cleaning.html">Floor Cleaning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Social</h6>
+        <ul>
+          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.github.com/" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><a href="https://themefisher.com/" target="_blank" rel="noopener">Themefisher</a> &copy; 2025 All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js" defer></script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 # Aether Flow Shader — Fractal-Noise Gas Atmosphere Synthesizer (React + TypeScript + Three.js + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 Aether Flow is a React + TypeScript + Vite + Tailwind CSS integration of a procedural fractal-noise (fBm) gas shader rendered on a full-screen Three.js quad, wrapped in a distinctive atmosphere synthesizer console. The shader — a living aether field driven by layered fBm noise with HSV-to-RGB colour mapping, mouse-warp, and rotation — is the hero observation window; framing it is a left-anchored instrument rail with five faders (Hue, Speed, Intensity, Complexity, Warp) that map directly onto the shader's uniforms, six named patch states (Nebula, Ember, Abyss, Drift, Solar, Bloom), and a live telemetry strip whose FPS and uptime run on the same `requestAnimationFrame` clock as the shader. Type is Space Grotesk, Inter, and Space Mono — all vendored locally as latin woff2 in `src/fonts/` for fully offline operation. The console palette is an ink background (`#070510`) with a violet signal accent (`#a78bfa`) derived from the shader's own HSV bloom ramp. Responsive down to mobile; respects `prefers-reduced-motion`; all controls have visible keyboard focus. Generated with Claude Fable 5.
 
 ```bash

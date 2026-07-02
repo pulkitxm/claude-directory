@@ -1,5 +1,7 @@
 # TOONHUB — 3D Figurine Carousel Hero Section (React + TypeScript + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A single full-viewport hero section featuring a character-figurine carousel with a giant "3D SHAPE" ghost headline, role-based 3D-ish depth positioning (center / left / right / back), and a background color that crossfades with each slide over 650ms. Built for toy and collectibles storefronts or animated brand showcases. Built with React, TypeScript, Vite, Tailwind CSS, and Lucide React. Display font: Anton. Body font: Inter. Generated with Claude Fable 5.
 
 ## Run

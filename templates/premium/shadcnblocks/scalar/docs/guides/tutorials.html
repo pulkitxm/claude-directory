@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Tutorials — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../../styles.css">
+		<link rel="icon" href="../../assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="../../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav
+						class="docs-sidebar-nav"
+						data-current="docs/guides/tutorials.html"
+					></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span><span>Guides</span
+						><span class="sep">/</span><span>Tutorials</span>
+					</div>
+					<h1 class="docs-title">Tutorials</h1>
+					<p class="docs-lead">
+						Follow these end-to-end, step-by-step tutorials to build real
+						features with Scalar CMS — from your first blog to a fully deployed
+						site.
+					</p>
+
+					<h2 id="build-a-blog">Build a blog</h2>
+					<p>
+						This tutorial walks you through modeling content, querying it, and
+						rendering posts on a public page.
+					</p>
+					<ol class="docs-steps">
+						<li>
+							<span class="step-n">1</span
+							><strong>Create a Post collection.</strong>
+							In Scalar Studio, add a collection with <code>title</code>,
+							<code>slug</code>, <code>body</code>, and
+							<code>publishedAt</code>
+							fields.
+						</li>
+						<li>
+							<span class="step-n">2</span><strong>Add a few entries.</strong>
+							Write two or three draft posts and mark one as published so you
+							have data to query.
+						</li>
+						<li>
+							<span class="step-n">3</span
+							><strong>Query the published posts.</strong>
+							Use the SDK to fetch entries filtered by status.
+						</li>
+						<li>
+							<span class="step-n">4</span><strong>Render the list.</strong>
+							Map the results to a page and link each post to its slug route.
+						</li>
+					</ol>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">posts.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">import</span>
+							{ scalar } <span class="tok-kw">from</span>
+							<span class="tok-str">"@scalar/sdk"</span>
+
+							<span class="tok-kw">const</span>
+							posts = <span class="tok-kw">await</span> scalar.collection(<span
+								class="tok-str"
+								>"posts"</span
+							>).find( { where: { status:
+							<span class="tok-str">"published"</span>
+							} , sort:
+							<span class="tok-str">"-publishedAt"</span>, })
+						</div>
+					</div>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							Keep drafts out of production by always filtering on
+							<code>status: "published"</code>
+							in your public queries.
+						</div>
+					</div>
+
+					<h2 id="add-authentication">Add authentication</h2>
+					<p>
+						Protect the admin panel and gate content behind signed-in users.
+					</p>
+					<ol class="docs-steps">
+						<li>
+							<span class="step-n">1</span
+							><strong>Enable the auth plugin.</strong>
+							Add <code>@scalar/auth</code> to your config and choose an email
+							or OAuth provider.
+						</li>
+						<li>
+							<span class="step-n">2</span><strong>Define roles.</strong>
+							Map <code>admin</code>, <code>editor</code>, and
+							<code>viewer</code>
+							roles to collection permissions.
+						</li>
+						<li>
+							<span class="step-n">3</span
+							><strong>Wrap protected routes.</strong>
+							Use the <code>requireUser</code> guard to redirect unauthenticated
+							requests.
+						</li>
+					</ol>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)"
+								>scalar.config.ts</span
+							>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">import</span>
+							{ auth } <span class="tok-kw">from</span>
+							<span class="tok-str">"@scalar/auth"</span>
+
+							<span class="tok-kw">export default</span>
+							defineConfig( { plugins: [ auth( { provider:
+							<span class="tok-str">"email"</span>, roles: [<span
+								class="tok-str"
+								>"admin"</span
+							>, <span class="tok-str">"editor"</span>] }), ], })
+						</div>
+					</div>
+
+					<h2 id="image-uploads">Image uploads</h2>
+					<p>
+						Let editors upload media and serve optimized images from your
+						storage backend.
+					</p>
+					<ol class="docs-steps">
+						<li>
+							<span class="step-n">1</span
+							><strong>Configure a storage adapter.</strong>
+							Point Scalar at S3, R2, or the local disk for development.
+						</li>
+						<li>
+							<span class="step-n">2</span><strong>Add a media field.</strong>
+							Attach an <code>image</code> field to your Post collection.
+						</li>
+						<li>
+							<span class="step-n">3</span><strong>Request transforms.</strong>
+							Resize and format images on the fly with query params.
+						</li>
+					</ol>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"># install the storage adapter</span>
+							npm install @scalar/storage-s3
+						</div>
+					</div>
+
+					<h2 id="deploy-your-site">Deploy your site</h2>
+					<p>
+						Ship your project to production with a managed database and
+						CDN-backed assets.
+					</p>
+					<ol class="docs-steps">
+						<li>
+							<span class="step-n">1</span
+							><strong>Set environment variables.</strong>
+							Provide <code>DATABASE_URL</code> and your storage credentials in
+							the host dashboard.
+						</li>
+						<li>
+							<span class="step-n">2</span><strong>Run migrations.</strong>
+							Apply your schema before the first boot.
+						</li>
+						<li>
+							<span class="step-n">3</span><strong>Build and start.</strong>
+							Compile assets and launch the production server.
+						</li>
+					</ol>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">terminal</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"># apply migrations, then build</span>
+							npx scalar migrate deploy npm run build npm run start
+						</div>
+					</div>
+
+					<nav class="docs-pager">
+						<a class="pg-prev" href="../../docs/guides/guides.html"
+							><div class="pg-dir">← Previous</div>
+							<div class="pg-title">Guides</div></a
+						>
+						<a class="pg-next" href="../../docs/guides/examples.html"
+							><div class="pg-dir">Next →</div>
+							<div class="pg-title">Examples</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#build-a-blog">Build a blog</a>
+					<a href="#add-authentication">Add authentication</a>
+					<a href="#image-uploads">Image uploads</a>
+					<a href="#deploy-your-site">Deploy your site</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="../../shared.js"></script>
+	</body>
+</html>

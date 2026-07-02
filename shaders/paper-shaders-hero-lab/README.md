@@ -1,5 +1,7 @@
 # Paper Shaders Hero Lab — Interactive Mesh Gradient Shader Hero with Control Deck (React + Vite + Tailwind CSS + @paper-design/shaders-react)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-bleed, above-the-fold landing hero that frames the 21st.dev "Beautiful Shader Experiences" component — two stacked `@paper-design/shaders-react` `MeshGradient` layers, a rainbow `PulsingBorder` ring, and an orbiting marquee — as a dark instrument console. A tabbed Lab view exposes live GLSL controls (colour stops, base/wire speed, distortion, swirl, wire opacity, wireframe, pulse speed, glow) and documents the props API, install snippet, and responsive behaviour in real time. The hero is GPU-procedural: no images, no external network calls, fully offline. Generated with Claude Fable 5.
 
 ## The integration questions, answered

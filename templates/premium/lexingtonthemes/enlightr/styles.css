@@ -1,0 +1,1335 @@
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+	--color-base-50: #f9fafb;
+	--color-base-100: #f3f4f6;
+	--color-base-200: #e5e7eb;
+	--color-base-300: #d1d5db;
+	--color-base-400: #9ca3af;
+	--color-base-500: #6b7280;
+	--color-base-600: #4b5563;
+	--color-base-700: #374151;
+	--color-base-800: #1f2937;
+	--color-base-900: #111827;
+	--color-base-950: #030712;
+	--color-accent-50: #f0fdf4;
+	--color-accent-100: #dcfce7;
+	--color-accent-200: #bbf7d0;
+	--color-accent-300: #86efac;
+	--color-accent-400: #4ade80;
+	--color-accent-500: #22c55e;
+	--color-accent-600: #16a34a;
+	--color-accent-700: #15803d;
+	--color-accent-800: #166534;
+	--color-accent-900: #14532d;
+	--color-accent-950: #052e16;
+	--font-sans: "Inter", sans-serif;
+	--font-display: "Clash Grotesk", sans-serif;
+	--font-serif: "Instrument Serif", serif;
+	--font-mono: "Space Mono", monospace;
+	--spacing: 0.25rem;
+}
+
+/* ============================================================
+   BASE RESET
+   ============================================================ */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0 solid;
+}
+
+html {
+	scroll-behavior: smooth;
+	font-family: var(--font-sans);
+	line-height: 1.5;
+}
+
+body {
+	font-family: var(--font-sans);
+	background: white;
+	color: var(--color-base-900);
+	display: flex;
+	flex-direction: column;
+	min-height: 100svh;
+	position: relative;
+}
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+button {
+	cursor: pointer;
+	font: inherit;
+}
+
+img,
+svg,
+video {
+	display: block;
+	max-width: 100%;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	text-indent: 0;
+	border-color: inherit;
+}
+
+summary {
+	display: list-item;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+::selection {
+	background-color: var(--color-base-100);
+	color: var(--color-accent-500);
+}
+
+/* ============================================================
+   POSITION
+   ============================================================ */
+.relative {
+	position: relative;
+}
+.absolute {
+	position: absolute;
+}
+.fixed {
+	position: fixed;
+}
+.sticky {
+	position: sticky;
+}
+.static {
+	position: static;
+}
+
+/* ============================================================
+   INSET
+   ============================================================ */
+.inset-0 {
+	inset: 0;
+}
+.inset-x-0 {
+	left: 0;
+	right: 0;
+}
+.inset-auto {
+	inset: auto;
+}
+.top-0 {
+	top: 0;
+}
+.top-4 {
+	top: 1rem;
+}
+.top-24 {
+	top: 6rem;
+}
+.right-5 {
+	right: 1.25rem;
+}
+.right-8 {
+	right: 2rem;
+}
+.bottom-5 {
+	bottom: 1.25rem;
+}
+
+/* ============================================================
+   Z-INDEX
+   ============================================================ */
+.z-0 {
+	z-index: 0;
+}
+.z-10 {
+	z-index: 10;
+}
+.z-50 {
+	z-index: 50;
+}
+.z-51 {
+	z-index: 51;
+}
+
+/* ============================================================
+   DISPLAY
+   ============================================================ */
+.hidden {
+	display: none;
+}
+.block {
+	display: block;
+}
+.inline-block {
+	display: inline-block;
+}
+.inline {
+	display: inline;
+}
+.flex {
+	display: flex;
+}
+.inline-flex {
+	display: inline-flex;
+}
+.grid {
+	display: grid;
+}
+.table {
+	display: table;
+}
+.grow {
+	flex-grow: 1;
+}
+
+/* ============================================================
+   FLEX
+   ============================================================ */
+.flex-col {
+	flex-direction: column;
+}
+.flex-row {
+	flex-direction: row;
+}
+.flex-wrap {
+	flex-wrap: wrap;
+}
+.items-start {
+	align-items: flex-start;
+}
+.items-center {
+	align-items: center;
+}
+.items-end {
+	align-items: flex-end;
+}
+.justify-start {
+	justify-content: flex-start;
+}
+.justify-center {
+	justify-content: center;
+}
+.justify-between {
+	justify-content: space-between;
+}
+.justify-end {
+	justify-content: flex-end;
+}
+.self-start {
+	align-self: flex-start;
+}
+
+/* ============================================================
+   GRID
+   ============================================================ */
+.grid-cols-1 {
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-cols-3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-cols-4 {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.col-span-2 {
+	grid-column: span 2 / span 2;
+}
+.col-span-full {
+	grid-column: 1 / -1;
+}
+
+/* ============================================================
+   GAP
+   ============================================================ */
+.gap-1 {
+	gap: 0.25rem;
+}
+.gap-2 {
+	gap: 0.5rem;
+}
+.gap-4 {
+	gap: 1rem;
+}
+.gap-8 {
+	gap: 2rem;
+}
+.gap-12 {
+	gap: 3rem;
+}
+.gap-24 {
+	gap: 6rem;
+}
+.gap-48 {
+	gap: 12rem;
+}
+.gap-x-4 {
+	column-gap: 1rem;
+}
+.gap-y-3 {
+	row-gap: 0.75rem;
+}
+
+/* ============================================================
+   WIDTH
+   ============================================================ */
+.w-fit {
+	width: fit-content;
+}
+.w-full {
+	width: 100%;
+}
+.w-px {
+	width: 1px;
+}
+.w-1\/2 {
+	width: 50%;
+}
+.w-1\/3 {
+	width: 33.333333%;
+}
+.max-w-6xl {
+	max-width: 72rem;
+}
+.max-w-md {
+	max-width: 28rem;
+}
+.max-w-xl {
+	max-width: 36rem;
+}
+.max-w-lg {
+	max-width: 32rem;
+}
+.max-w-screen-xl {
+	max-width: 1280px;
+}
+.min-w-0 {
+	min-width: 0;
+}
+.min-w-\[768px\] {
+	min-width: 768px;
+}
+
+/* ============================================================
+   HEIGHT
+   ============================================================ */
+.h-full {
+	height: 100%;
+}
+.h-4 {
+	height: 1rem;
+}
+.h-6 {
+	height: 1.5rem;
+}
+.h-8 {
+	height: 2rem;
+}
+.h-9 {
+	height: 2.25rem;
+}
+.h-10 {
+	height: 2.5rem;
+}
+.h-px {
+	height: 1px;
+}
+.h-3\.5 {
+	height: 0.875rem;
+}
+.min-h-screen {
+	min-height: 100vh;
+}
+.min-h-svh {
+	min-height: 100svh;
+}
+.max-h-64 {
+	max-height: 16rem;
+}
+.max-h-200 {
+	max-height: 50rem;
+}
+
+/* Size shorthand (width + height) */
+.size-4 {
+	width: 1rem;
+	height: 1rem;
+}
+.size-5 {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+.size-8 {
+	width: 2rem;
+	height: 2rem;
+}
+.size-13 {
+	width: 3.25rem;
+	height: 3.25rem;
+}
+
+/* ============================================================
+   PADDING
+   ============================================================ */
+.p-1 {
+	padding: 0.25rem;
+}
+.p-4 {
+	padding: 1rem;
+}
+.p-6 {
+	padding: 1.5rem;
+}
+.p-8 {
+	padding: 2rem;
+}
+.px-2 {
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+.px-3 {
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+}
+.px-4 {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+.px-6 {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+.px-8 {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+.py-0\.5 {
+	padding-top: 0.125rem;
+	padding-bottom: 0.125rem;
+}
+.py-1 {
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+}
+.py-2 {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.py-3 {
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+}
+.py-4 {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+.py-6 {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+}
+.py-12 {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+.py-24 {
+	padding-top: 6rem;
+	padding-bottom: 6rem;
+}
+.pt-2 {
+	padding-top: 0.5rem;
+}
+.pt-2\.5 {
+	padding-top: 0.625rem;
+}
+.pt-4 {
+	padding-top: 1rem;
+}
+.pt-10 {
+	padding-top: 2.5rem;
+}
+.pt-12 {
+	padding-top: 3rem;
+}
+.pt-48 {
+	padding-top: 12rem;
+}
+.pb-1 {
+	padding-bottom: 0.25rem;
+}
+.pb-2 {
+	padding-bottom: 0.5rem;
+}
+.pb-4 {
+	padding-bottom: 1rem;
+}
+.pb-24 {
+	padding-bottom: 6rem;
+}
+.pl-4 {
+	padding-left: 1rem;
+}
+.pr-8 {
+	padding-right: 2rem;
+}
+
+/* ============================================================
+   MARGIN
+   ============================================================ */
+.m-1 {
+	margin: 0.25rem;
+}
+.mx-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+.ml-auto {
+	margin-left: auto;
+}
+.mt-auto {
+	margin-top: auto;
+}
+.mt-1 {
+	margin-top: 0.25rem;
+}
+.mt-2 {
+	margin-top: 0.5rem;
+}
+.mt-4 {
+	margin-top: 1rem;
+}
+.mt-6 {
+	margin-top: 1.5rem;
+}
+.mt-8 {
+	margin-top: 2rem;
+}
+.mt-12 {
+	margin-top: 3rem;
+}
+.-mt-px {
+	margin-top: -1px;
+}
+.mb-8 {
+	margin-bottom: 2rem;
+}
+
+/* ============================================================
+   OVERFLOW
+   ============================================================ */
+.overflow-hidden {
+	overflow: hidden;
+}
+.overflow-x-auto {
+	overflow-x: auto;
+}
+.overflow-y-auto {
+	overflow-y: auto;
+}
+.overflow-x-scroll {
+	overflow-x: scroll;
+}
+
+/* ============================================================
+   SCROLL
+   ============================================================ */
+.scroll-smooth {
+	scroll-behavior: smooth;
+}
+.scroll-mt-24 {
+	scroll-margin-top: 6rem;
+}
+.scrollbar-hide {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+.snap-x {
+	scroll-snap-type: x mandatory;
+}
+.snap-proximity {
+	scroll-snap-type: x proximity;
+}
+.snap-start {
+	scroll-snap-align: start;
+}
+
+/* ============================================================
+   BACKGROUND
+   ============================================================ */
+.bg-white {
+	background-color: white;
+}
+.bg-white\/80 {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.bg-white\/10 {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.bg-white\/5 {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+.bg-base-50 {
+	background-color: var(--color-base-50);
+}
+.bg-base-50\/50 {
+	background-color: rgba(249, 250, 251, 0.5);
+}
+.bg-base-100 {
+	background-color: var(--color-base-100);
+}
+.bg-base-200 {
+	background-color: var(--color-base-200);
+}
+.bg-base-900 {
+	background-color: var(--color-base-900);
+}
+.bg-base-950\/50 {
+	background-color: rgba(3, 7, 18, 0.5);
+}
+.bg-accent-100 {
+	background-color: var(--color-accent-100);
+}
+.bg-accent-200 {
+	background-color: var(--color-accent-200);
+}
+.bg-accent-400 {
+	background-color: var(--color-accent-400);
+}
+.bg-transparent {
+	background-color: transparent;
+}
+.bg-none {
+	background-image: none;
+}
+
+/* ============================================================
+   TEXT COLORS
+   ============================================================ */
+.text-white {
+	color: white;
+}
+.text-base-400 {
+	color: var(--color-base-400);
+}
+.text-base-500 {
+	color: var(--color-base-500);
+}
+.text-base-600 {
+	color: var(--color-base-600);
+}
+.text-base-700 {
+	color: var(--color-base-700);
+}
+.text-base-800 {
+	color: var(--color-base-800);
+}
+.text-base-900 {
+	color: var(--color-base-900);
+}
+.text-accent-500 {
+	color: var(--color-accent-500);
+}
+.text-accent-900 {
+	color: var(--color-accent-900);
+}
+.text-accent-950 {
+	color: var(--color-accent-950);
+}
+
+/* ============================================================
+   TEXT SIZE
+   ============================================================ */
+.text-\[10px\] {
+	font-size: 10px;
+}
+.text-xs {
+	font-size: 0.75rem;
+	line-height: 1rem;
+}
+.text-sm {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+}
+.text-base {
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
+.text-lg {
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+}
+.text-xl {
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+}
+.text-2xl {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+.text-3xl {
+	font-size: 1.875rem;
+	line-height: 2.25rem;
+}
+.text-4xl {
+	font-size: 2.25rem;
+	line-height: 2.5rem;
+}
+
+/* ============================================================
+   FONT
+   ============================================================ */
+.font-sans {
+	font-family: var(--font-sans);
+}
+.font-display {
+	font-family: var(--font-display);
+}
+.font-serif {
+	font-family: var(--font-serif);
+}
+.font-mono {
+	font-family: var(--font-mono);
+}
+.font-normal {
+	font-weight: 400;
+}
+.font-medium {
+	font-weight: 500;
+}
+.font-semibold {
+	font-weight: 600;
+}
+.font-bold {
+	font-weight: 700;
+}
+
+/* ============================================================
+   TEXT TRANSFORM / DECORATION
+   ============================================================ */
+.uppercase {
+	text-transform: uppercase;
+}
+.capitalize {
+	text-transform: capitalize;
+}
+.tracking-tight {
+	letter-spacing: -0.025em;
+}
+.tracking-normal {
+	letter-spacing: 0;
+}
+.tracking-wide {
+	letter-spacing: 0.025em;
+}
+.leading-tight {
+	line-height: 1.25;
+}
+.text-left {
+	text-align: left;
+}
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.text-balance {
+	text-wrap: balance;
+}
+.line-clamp-2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+.line-clamp-3 {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+/* ============================================================
+   BORDER
+   ============================================================ */
+.border {
+	border-width: 1px;
+	border-style: solid;
+}
+.border-0 {
+	border-width: 0;
+}
+.border-t {
+	border-top: 1px solid;
+}
+.border-b {
+	border-bottom: 1px solid;
+}
+.border-l {
+	border-left: 1px solid;
+}
+.border-transparent {
+	border-color: transparent;
+}
+.border-base-200 {
+	border-color: var(--color-base-200);
+}
+.border-accent-200 {
+	border-color: var(--color-accent-200);
+}
+
+.divide-y > * + * {
+	border-top: 1px solid;
+}
+.divide-base-200 > * + * {
+	border-color: var(--color-base-200);
+}
+.divide-accent-200 > * + * {
+	border-color: var(--color-accent-200);
+}
+
+/* ============================================================
+   BORDER RADIUS
+   ============================================================ */
+.rounded-full {
+	border-radius: 9999px;
+}
+.rounded-2xl {
+	border-radius: 1rem;
+}
+.rounded-xl {
+	border-radius: 0.75rem;
+}
+.rounded-lg {
+	border-radius: 0.5rem;
+}
+.rounded-md {
+	border-radius: 0.375rem;
+}
+
+/* ============================================================
+   SHADOW
+   ============================================================ */
+.shadow-sm {
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================================
+   OUTLINE
+   ============================================================ */
+.outline {
+	outline-style: solid;
+}
+.outline-accent-200 {
+	outline-color: var(--color-accent-200);
+}
+.outline-base-50 {
+	outline-color: var(--color-base-50);
+}
+.outline-base-900 {
+	outline-color: var(--color-base-900);
+}
+
+.focus\:outline-2:focus {
+	outline-width: 2px;
+}
+.focus\:outline-offset-2:focus {
+	outline-offset: 2px;
+}
+.focus\:outline-none:focus {
+	outline: none;
+}
+.focus\:outline-accent-400:focus {
+	outline-color: var(--color-accent-400);
+}
+.focus\:outline-accent-500:focus {
+	outline-color: var(--color-accent-500);
+}
+.focus\:outline-base-600:focus {
+	outline-color: var(--color-base-600);
+}
+.focus\:outline-base-800:focus {
+	outline-color: var(--color-base-800);
+}
+
+/* Ring utilities */
+.ring-1 {
+	box-shadow: 0 0 0 1px var(--ring-color, currentColor);
+}
+.ring-2 {
+	box-shadow: 0 0 0 2px var(--ring-color, currentColor);
+}
+.ring-base-200 {
+	--ring-color: var(--color-base-200);
+	box-shadow: 0 0 0 1px var(--color-base-200);
+}
+.ring-inset {
+	--ring-inset: inset;
+}
+.focus\:ring-2:focus {
+	box-shadow: 0 0 0 2px var(--ring-color, currentColor);
+}
+.focus\:ring-accent-100:focus {
+	--ring-color: var(--color-accent-100);
+}
+.focus\:ring-accent-500:focus {
+	--ring-color: var(--color-accent-500);
+}
+.focus\:border-accent-500:focus {
+	border-color: var(--color-accent-500);
+}
+.focus\:z-10:focus {
+	z-index: 10;
+}
+
+/* ============================================================
+   TRANSFORM / TRANSITION
+   ============================================================ */
+.transform {
+	--tw-translate-x: 0;
+	--tw-translate-y: 0;
+}
+
+.transition {
+	transition-property: all;
+	transition-duration: 150ms;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.transition-all {
+	transition-property: all;
+	transition-duration: 150ms;
+}
+.transition-opacity {
+	transition-property: opacity;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
+.transition-colors {
+	transition-property: color, background-color, border-color;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
+.transition-transform {
+	transition-property: transform;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
+.duration-200 {
+	transition-duration: 200ms;
+}
+.duration-300 {
+	transition-duration: 300ms;
+}
+.duration-500 {
+	transition-duration: 500ms;
+}
+.ease-in-out {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.translate-y-0 {
+	transform: translateY(0);
+}
+.-translate-y-4 {
+	transform: translateY(-1rem);
+}
+.rotate-45 {
+	transform: rotate(45deg);
+}
+
+/* ============================================================
+   OPACITY / POINTER EVENTS
+   ============================================================ */
+.opacity-0 {
+	opacity: 0;
+}
+.opacity-100 {
+	opacity: 1;
+}
+.pointer-events-none {
+	pointer-events: none;
+}
+.pointer-events-auto {
+	pointer-events: auto;
+}
+
+/* ============================================================
+   MISC UTILITIES
+   ============================================================ */
+.cursor-pointer {
+	cursor: pointer;
+}
+.select-none {
+	user-select: none;
+}
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+.group {
+}
+.isolation {
+	isolation: isolate;
+}
+.align-top {
+	vertical-align: top;
+}
+.align-middle {
+	vertical-align: middle;
+}
+
+/* Space Y utilities */
+.space-y-2 > * + * {
+	margin-top: 0.5rem;
+}
+
+/* ============================================================
+   BACKDROP BLUR
+   ============================================================ */
+.backdrop-blur {
+	backdrop-filter: blur(8px);
+}
+.backdrop-blur-sm {
+	backdrop-filter: blur(4px);
+}
+
+/* ============================================================
+   HOVER STATES
+   ============================================================ */
+.hover\:bg-accent-400:hover {
+	background-color: var(--color-accent-400);
+}
+.hover\:bg-base-200:hover {
+	background-color: var(--color-base-200);
+}
+.hover\:bg-base-800:hover {
+	background-color: var(--color-base-800);
+}
+.hover\:bg-base-100:hover {
+	background-color: var(--color-base-100);
+}
+.hover\:text-accent-500:hover {
+	color: var(--color-accent-500);
+}
+.hover\:text-base-900:hover {
+	color: var(--color-base-900);
+}
+
+/* ============================================================
+   DETAILS / SUMMARY (FAQ)
+   ============================================================ */
+details > summary {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 1rem;
+	padding-bottom: 0.25rem;
+	font-weight: 500;
+	color: var(--color-base-900);
+	cursor: pointer;
+}
+
+details > summary::-webkit-details-marker {
+	display: none;
+}
+
+details > summary > svg {
+	flex-shrink: 0;
+	transition: transform 0.3s ease;
+}
+
+details[open] > summary > svg {
+	transform: rotate(45deg);
+}
+
+/* ============================================================
+   SPECIAL WIDTHS / MISC
+   ============================================================ */
+.w-\[62\.75px\] {
+	width: 62.75px;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* Small (sm) = 640px */
+@media (min-width: 640px) {
+	.sm\:text-lg {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+	}
+	.sm\:text-xl {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+	}
+	.sm\:text-2xl {
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
+	.sm\:grid-cols-2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.sm\:text-lg {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+	}
+}
+
+/* Medium (md) = 768px */
+@media (min-width: 768px) {
+	.md\:hidden {
+		display: none;
+	}
+	.md\:flex {
+		display: flex;
+	}
+	.md\:block {
+		display: block;
+	}
+	.md\:grid {
+		display: grid;
+	}
+	.md\:grid-cols-2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.md\:gap-8 {
+		gap: 2rem;
+	}
+	.md\:mt-0 {
+		margin-top: 0;
+	}
+	.md\:items-center {
+		align-items: center;
+	}
+	.md\:justify-between {
+		justify-content: space-between;
+	}
+	.md\:gap-12 {
+		gap: 3rem;
+	}
+	.md\:flex-row {
+		flex-direction: row;
+	}
+	.md\:text-3xl {
+		font-size: 1.875rem;
+		line-height: 2.25rem;
+	}
+	.md\:text-2xl {
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
+	.md\:text-xl {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+	}
+	.md\:text-left {
+		text-align: left;
+	}
+	.md\:bg-none {
+		background: none;
+	}
+	.md\:bg-transparent {
+		background-color: transparent;
+	}
+	.md\:relative {
+		position: relative;
+	}
+	.md\:inset-auto {
+		inset: auto;
+	}
+	.md\:opacity-100 {
+		opacity: 1;
+	}
+	.md\:pointer-events-auto {
+		pointer-events: auto;
+	}
+	.md\:translate-y-0 {
+		transform: translateY(0);
+	}
+	.md\:w-full {
+		width: 100%;
+	}
+	.md\:px-0 {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.md\:ml-auto {
+		margin-left: auto;
+	}
+	.md\:p-0 {
+		padding: 0;
+	}
+	.md\:text-left {
+		text-align: left;
+	}
+	.sm\:text-xl {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+	}
+	.sm\:text-2xl {
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
+	.sm\:grid-cols-2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.sm\:text-lg {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+	}
+	.md\:grid-cols-3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+/* Large (lg) = 1024px */
+@media (min-width: 1024px) {
+	.lg\:hidden {
+		display: none;
+	}
+	.lg\:flex {
+		display: flex;
+	}
+	.lg\:block {
+		display: block;
+	}
+	.lg\:grid {
+		display: grid;
+	}
+	.lg\:grid-cols-2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.lg\:grid-cols-3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.lg\:gap-4 {
+		gap: 1rem;
+	}
+	.lg\:gap-8 {
+		gap: 2rem;
+	}
+	.lg\:gap-48 {
+		gap: 12rem;
+	}
+	.lg\:gap-24 {
+		gap: 6rem;
+	}
+	.lg\:items-start {
+		align-items: flex-start;
+	}
+	.lg\:items-end {
+		align-items: flex-end;
+	}
+	.lg\:col-span-2 {
+		grid-column: span 2 / span 2;
+	}
+	.lg\:col-span-3 {
+		grid-column: span 3 / span 3;
+	}
+	.lg\:ml-auto {
+		margin-left: auto;
+	}
+	.lg\:mt-48 {
+		margin-top: 12rem;
+	}
+	.lg\:top-24 {
+		top: 6rem;
+	}
+	.lg\:p-0 {
+		padding: 0;
+	}
+	.lg\:p-20 {
+		padding: 5rem;
+	}
+	.lg\:pt-62 {
+		padding-top: 15.5rem;
+	}
+	.lg\:text-4xl {
+		font-size: 2.25rem;
+		line-height: 2.5rem;
+	}
+	.lg\:text-3xl {
+		font-size: 1.875rem;
+		line-height: 2.25rem;
+	}
+	.lg\:sticky {
+		position: sticky;
+	}
+	.lg\:mx-0 {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.lg\:items-center {
+		align-items: center;
+	}
+	.lg\:flex-row {
+		flex-direction: row;
+	}
+	.lg\:gap-12 {
+		gap: 3rem;
+	}
+}
+
+/* Extra Large (xl) = 1280px */
+@media (min-width: 1280px) {
+	.xl\:grid {
+		display: grid;
+	}
+	.xl\:grid-cols-3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.xl\:grid-cols-4 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+	.xl\:col-span-2 {
+		grid-column: span 2 / span 2;
+	}
+	.xl\:gap-8 {
+		gap: 2rem;
+	}
+}
+
+/* 2XL = 1536px */
+@media (min-width: 1536px) {
+	.\32xl\:max-w-\[1400px\] {
+		max-width: 1400px;
+	}
+	.max-w-\[1400px\] {
+		max-width: 1400px;
+	}
+}

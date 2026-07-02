@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relux — Luxury Hotel</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Home-specific */
+.hero-banner { --banner-image: url(assets/images/homepage/banner.png); }
+
+/* About triptych */
+.about-triptych {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .about-triptych {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+.about-img-side { width: 300px; }
+@media (min-width: 1024px) {
+  .about-img-side { width: 238px; height: 254px; margin-top: 10rem; }
+}
+.about-img-center { width: 340px; }
+@media (min-width: 1024px) { .about-img-center { width: 408px; height: 436px; } }
+.about-img-side img, .about-img-center img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Arc SVG decoration */
+.arc-decoration {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 1024px) { .arc-decoration { display: flex; } }
+
+/* Stats row */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+@media (min-width: 768px) {
+  .about-stats { grid-template-columns: repeat(4, 1fr); }
+}
+.about-stat-num {
+  font-family: var(--font-secondary);
+  font-size: var(--text-h3-sm);
+  color: var(--color-text-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+.about-stat-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
+
+/* Amenities grid */
+.amenities-grid {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) { .amenities-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .amenities-grid { grid-template-columns: repeat(4, 1fr); } }
+.amenity-item {
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--color-border);
+  border-collapse: collapse;
+  background: var(--color-white);
+  transition: background 0.3s ease;
+}
+.amenity-item:hover { background: var(--color-light); }
+.amenity-item svg { width: 2.5rem; height: 2.5rem; color: var(--color-primary); margin-bottom: 1rem; }
+.amenity-item h5 { margin-bottom: 0.5rem; font-size: var(--text-h6); }
+
+/* Rooms slider (home) — full-width cards stacked */
+.home-rooms { display: grid; gap: 0; }
+.home-room-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--color-white);
+}
+@media (min-width: 768px) {
+  .home-room-item { grid-template-columns: 3fr 2fr; }
+  .home-room-item:nth-child(even) .home-room-img { order: 2; }
+  .home-room-item:nth-child(even) .home-room-content { order: 1; }
+}
+.home-room-img { overflow: hidden; }
+.home-room-img img { width: 100%; height: 280px; object-fit: cover; transition: transform 0.5s ease; }
+@media (min-width: 768px) { .home-room-img img { height: 100%; min-height: 320px; } }
+.home-room-item:hover .home-room-img img { transform: scale(1.04); }
+.home-room-content {
+  padding: 2rem 1.5rem;
+  background: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-room-number {
+  font-family: var(--font-secondary);
+  font-size: var(--text-h2-sm);
+  color: rgba(174,133,31,0.15);
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.home-room-price { color: var(--color-primary); font-size: var(--text-lg); font-weight: 600; margin-bottom: 0.5rem; }
+.home-room-name { margin-bottom: 1rem; font-size: var(--text-h4); }
+.home-room-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.room-tag {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  background: rgba(229,166,63,0.1);
+  letter-spacing: 0.05em;
+}
+
+/* Features section */
+.features-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1280px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
+.feature-item { text-align: center; padding: 2rem; }
+.feature-icon { color: var(--color-primary); margin: 0 auto 1rem; width: 3.5rem; height: 3.5rem; }
+.feature-icon svg { width: 3.5rem; height: 3.5rem; }
+.feature-item h4 { margin-bottom: 0.75rem; font-size: var(--text-h5); }
+
+/* Testimonials */
+.testimonial-section { position: relative; }
+.testimonial-wrapper {
+  overflow: hidden;
+}
+.testimonial-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s cubic-bezier(0,0,0.2,1);
+}
+.testimonial-card {
+  min-width: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+@media (min-width: 1024px) {
+  .testimonial-card { min-width: calc(50% - 12px); }
+}
+.testimonial-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+@media (min-width: 1024px) {
+  .testimonial-card img { height: 600px; }
+}
+.testimonial-body {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5,28,86,0.88) 0%, transparent 55%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.testimonial-quote-icon { color: var(--color-text-dark); margin: 0 auto 1.5rem; }
+.testimonial-quote { font-size: var(--text-h6); color: var(--color-text-light); margin-bottom: 0.75rem; line-height: var(--leading-snug); }
+.testimonial-name { font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; color: var(--color-primary); letter-spacing: 0.05em; }
+.testimonial-controls {
+  position: absolute;
+  right: 1.5rem;
+  top: -4.5rem;
+  display: flex;
+  gap: 0.625rem;
+}
+.t-btn {
+  width: 3.5rem; height: 3.5rem;
+  background: var(--color-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.t-btn:hover { background: #c8902e; }
+.t-btn:active { transform: scale(0.95); }
+.t-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Cafe gallery (home) */
+.cafe-duo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .cafe-duo { grid-template-columns: 1fr 1fr; }
+}
+.cafe-duo img { width: 100%; height: 380px; object-fit: cover; }
+
+/* Blog events (dark section) */
+.blog-events-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .blog-events-grid { grid-template-columns: 1fr 1fr; }
+}
+.blog-event-link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+.blog-event-link:hover .bel-title { color: var(--color-primary); }
+.bel-num {
+  font-family: var(--font-secondary);
+  font-size: 3rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.15);
+  min-width: 3.5rem;
+  line-height: 1;
+}
+.bel-content { flex: 1; }
+.bel-title {
+  color: var(--color-text-light);
+  font-family: var(--font-secondary);
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  line-height: var(--leading-snug);
+  margin-bottom: 0.25rem;
+}
+.bel-meta { font-size: var(--text-xs); text-transform: uppercase; color: rgba(255,255,255,0.45); }
+
+/* Instagram gallery strip */
+.insta-strip {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+}
+.insta-strip::-webkit-scrollbar { display: none; }
+.insta-item {
+  flex-shrink: 0;
+  width: 250px;
+  height: 380px;
+  position: relative;
+  overflow: hidden;
+}
+.insta-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.insta-item:hover img { transform: scale(1.05); }
+.insta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.insta-item:hover .insta-overlay { opacity: 1; }
+.insta-overlay svg { width: 2rem; height: 2rem; color: white; }
+
+/* Newsletter section */
+.newsletter-wrap {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.newsletter-input-row {
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--color-dark);
+  background: var(--color-light);
+  padding: 0.5rem 0.75rem;
+  max-width: 540px;
+  margin: 2.5rem auto 4rem;
+}
+.newsletter-input-row input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.5rem;
+  font-size: var(--text-sm);
+  outline: none;
+  color: var(--color-text);
+}
+.newsletter-input-row button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-primary);
+  padding: 0 0.5rem;
+  transition: opacity 0.2s;
+}
+.newsletter-input-row button:hover { opacity: 0.7; }
+
+/* Brands */
+.brands-partner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 3rem 0;
+}
+.brands-partner img { height: 28px; width: auto; opacity: 0.55; filter: grayscale(0.8); transition: all 0.2s; }
+.brands-partner img:hover { opacity: 1; filter: none; }
+
+/* Divider line with arrow */
+.divider-with-arrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0 1rem;
+}
+.divider-stars { display: flex; gap: 2px; align-items: center; }
+.divider-stars svg { width: 1rem; height: 1rem; fill: var(--color-primary); }
+</style>
+</head>
+<body>
+
+<!-- Mobile nav toggle (hidden checkbox) -->
+<input id="nav-toggle" type="checkbox" style="display:none">
+
+<!-- Mobile overlay nav -->
+<nav class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="rooms.html">Rooms</a>
+  <a href="about.html">About</a>
+  <a href="cafe-juice.html">Cafe &amp; Juice</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:1rem">Book Here</a>
+</nav>
+
+<!-- Header -->
+<header class="header" data-reveal="fade-down" data-reveal-delay="100">
+  <nav class="navbar container">
+    <!-- Hamburger -->
+    <label for="nav-toggle" class="hamburger-label">
+      <div class="hamburger-icon">
+        <span class="hamburger-bar bar-top"></span>
+        <span class="hamburger-bar bar-middle"></span>
+        <span class="hamburger-bar bar-bottom"></span>
+      </div>
+      <span class="menu-text">MENU</span>
+      <span class="close-text">CLOSE</span>
+    </label>
+
+    <!-- Desktop nav -->
+    <div class="nav-desktop">
+      <ul class="nav-left">
+        <li><a class="nav-link" href="rooms.html">Rooms</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+      </ul>
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.svg" alt="Relux" width="123" height="24">
+      </a>
+      <ul class="nav-right">
+        <li><a class="nav-link" href="cafe-juice.html">Cafe &amp; Juice</a></li>
+        <li><a class="nav-link" href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+
+    <!-- Mobile logo -->
+    <div style="order:1;position:absolute;left:50%;transform:translateX(-50%)" class="lg:hidden">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.svg" alt="Relux" width="123" height="24">
+      </a>
+    </div>
+
+    <!-- CTA -->
+    <div class="nav-cta" style="order:2">
+      <a href="contact.html" class="btn btn-primary">Book Here</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- ====== HERO ====== -->
+<section class="hero-banner">
+  <p class="hero-subtitle" data-reveal="fade-up" data-reveal-delay="150">The feel</p>
+
+  <div class="hero-content">
+    <!-- Left aside -->
+    <aside class="hero-aside hero-aside-left" data-reveal="fade-right" data-reveal-delay="150" style="order:3">
+      <img src="assets/images/homepage/badge.svg" alt="Relux Badge" style="max-width:158px;max-height:138px">
+    </aside>
+
+    <!-- Main H1 -->
+    <h1 class="hero-h1" data-reveal="fade-up" data-reveal-delay="200" style="order:1">Living<br>Luxury</h1>
+
+    <!-- Right aside -->
+    <aside class="hero-aside hero-aside-right" data-reveal="fade-left" data-reveal-delay="150" style="order:2">
+      <p class="hero-aside-text">We prioritize your safety and comfort</p>
+      <a href="contact.html" class="btn btn-primary btn-arrow">
+        <span class="btn-arrow-inner">
+          <span class="btn-arrow-text">
+            <svg class="arrow-lead" viewBox="0 0 37 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            book here
+            <svg class="arrow-trail" viewBox="0 0 37 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </span>
+        </span>
+      </a>
+    </aside>
+  </div>
+</section>
+
+<!-- ====== ABOUT TRIPTYCH ====== -->
+<section class="section bg-light relative">
+  <!-- Arc SVG decoration (desktop) -->
+  <div class="arc-decoration" data-reveal="fade-up" data-reveal-delay="200" style="position:absolute;inset:0;pointer-events:none;display:none" id="arc-svg">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1162" style="width:100%;height:auto;color:var(--color-primary);opacity:0.5" aria-hidden="true">
+      <path fill="currentColor" d="M960.5 202c255.27 0 500.09 101.513 680.59 282.207C1820.77 664.073 1922.07 907.729 1923 1162h-2.01c-.92-253.739-102.01-496.884-281.31-676.373-180.13-180.317-424.44-281.619-679.18-281.619-254.741 0-499.048 101.302-679.176 281.619C102.022 665.116.934 908.261.008 1162H-2c.922-253.274 101.434-496.015 279.793-675.673l2.112-2.12C460.41 303.513 705.227 202 960.5 202Z"/>
+    </svg>
+  </div>
+
+  <div class="container" style="position:relative;z-index:10">
+    <div class="about-triptych">
+      <div class="about-img-side" data-reveal="zoom-in" data-reveal-delay="250">
+        <img src="assets/images/homepage/about-section-2.png" alt="Luxury Hotel Interior" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="about-img-center" data-reveal="zoom-in" data-reveal-delay="150">
+        <img src="assets/images/homepage/about-section-1.png" alt="Luxury Hotel Exterior" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="about-img-side" data-reveal="zoom-in" data-reveal-delay="250">
+        <img src="assets/images/homepage/about-section-3.png" alt="Luxury Hotel Garden" style="width:100%;height:100%;object-fit:cover">
+      </div>
+    </div>
+
+    <!-- Divider + stars -->
+    <div style="margin-top:2.5rem">
+      <div class="divider-with-arrow" data-reveal="fade-up" data-reveal-delay="150">
+        <svg width="326" height="10" viewBox="0 0 326 10" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:200px;opacity:0.7">
+          <path d="M9.1123 4.06445C5.40406 2.5641 8.61719 -1.37747 8.61719 0.494141C8.61764 2.29082 11.2626 3.93929 12.6592 4.57715C12.7112 4.57715 12.7373 4.57715 12.7373 4.57715C12.724 4.58304 12.7108 4.58961 12.6973 4.5957C12.7107 4.60178 12.7241 4.60838 12.7373 4.61426C12.7112 4.61426 12.6592 4.61328 12.6592 4.61328C11.2626 5.2511 8.61732 6.90036 8.61719 8.69727C8.61719 10.5929 5.31985 6.52199 9.25781 5.06738L3.66211 5.95117L0 4.57812L3.66211 3.2041L9.1123 4.06445Z" fill="var(--color-primary)"/>
+          <rect x="8.7373" y="4.34558" width="317.263" height="0.5" fill="var(--color-primary)"/>
+        </svg>
+        <div class="divider-stars">
+          <svg viewBox="0 0 512 491" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1rem;height:1rem"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0.00241518 182.019 0.00241518 193.719C-0.0975848 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119C107.302 490.219 114.402 490.219 125.902 488.319L256.702 411.919L391.902 313.019L422.002 475.419C426.502 466.619 426.502 466.419 408.502 387.119C501.302 215.719 508.902 208.519 511.902 193.619C511.902 179.919 504.102 169.919 490.902 166.819L339.802 151.919L268.402 2.21866C263.602 -0.0813293 250.902 -0.781342 246.402 1.01865Z" fill="var(--color-primary)"/></svg>
+          <svg viewBox="0 0 512 491" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1rem;height:1rem"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0.00241518 182.019 0.00241518 193.719C-0.0975848 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119C107.302 490.219 114.402 490.219 125.902 488.319L256.702 411.919L391.902 313.019L422.002 475.419C426.502 466.619 426.502 466.419 408.502 387.119C501.302 215.719 508.902 208.519 511.902 193.619C511.902 179.919 504.102 169.919 490.902 166.819L339.802 151.919L268.402 2.21866C263.602 -0.0813293 250.902 -0.781342 246.402 1.01865Z" fill="var(--color-primary)"/></svg>
+          <svg viewBox="0 0 512 491" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1rem;height:1rem"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0.00241518 182.019 0.00241518 193.719C-0.0975848 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119C107.302 490.219 114.402 490.219 125.902 488.319L256.702 411.919L391.902 313.019L422.002 475.419C426.502 466.619 426.502 466.419 408.502 387.119C501.302 215.719 508.902 208.519 511.902 193.619C511.902 179.919 504.102 169.919 490.902 166.819L339.802 151.919L268.402 2.21866C263.602 -0.0813293 250.902 -0.781342 246.402 1.01865Z" fill="var(--color-primary)"/></svg>
+          <svg viewBox="0 0 512 491" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1rem;height:1rem"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0.00241518 182.019 0.00241518 193.719C-0.0975848 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119C107.302 490.219 114.402 490.219 125.902 488.319L256.702 411.919L391.902 313.019L422.002 475.419C426.502 466.619 426.502 466.419 408.502 387.119C501.302 215.719 508.902 208.519 511.902 193.619C511.902 179.919 504.102 169.919 490.902 166.819L339.802 151.919L268.402 2.21866C263.602 -0.0813293 250.902 -0.781342 246.402 1.01865Z" fill="var(--color-primary)"/></svg>
+          <svg viewBox="0 0 512 491" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:1rem;height:1rem"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0.00241518 182.019 0.00241518 193.719C-0.0975848 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119C107.302 490.219 114.402 490.219 125.902 488.319L256.702 411.919L391.902 313.019L422.002 475.419C426.502 466.619 426.502 466.419 408.502 387.119C501.302 215.719 508.902 208.519 511.902 193.619C511.902 179.919 504.102 169.919 490.902 166.819L339.802 151.919L268.402 2.21866C263.602 -0.0813293 250.902 -0.781342 246.402 1.01865Z" fill="var(--color-primary)"/></svg>
+        </div>
+      </div>
+
+      <div style="margin-top:-0.5rem" data-reveal="fade-up" data-reveal-delay="150">
+        <h2 style="font-size:var(--text-h3-sm);margin-bottom:0.75rem">Prishtina's Five-Star Luxury<br>in the Heart of the City</h2>
+        <p style="max-width:600px;margin-bottom:2rem">Experience unparalleled luxury in the heart of Prishtina. Our hotel offers world-class amenities, exquisite dining, and impeccable service, all designed to provide an unforgettable stay in one of Europe's most vibrant cities.</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="about-stats" data-reveal="fade-up" data-reveal-delay="200">
+        <div class="stat-item">
+          <div class="about-stat-num">12+</div>
+          <div class="about-stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="about-stat-num">30+</div>
+          <div class="about-stat-label">Countries</div>
+        </div>
+        <div class="stat-item">
+          <div class="about-stat-num">80+</div>
+          <div class="about-stat-label">Luxury Rooms</div>
+        </div>
+        <div class="stat-item">
+          <div class="about-stat-num">4.9</div>
+          <div class="about-stat-label">Review Stars</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== AMENITIES ====== -->
+<section class="section bg-light" style="padding-top:0">
+  <div class="container">
+    <div class="amenities-grid" data-reveal="fade-up" data-reveal-delay="150">
+      <div class="amenity-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zm0 4.5a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75zm0 4.5a.75.75 0 01.75-.75h6.75a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"/></svg>
+        <h5>Restaurant &amp; Coffee</h5>
+        <p style="font-size:var(--text-sm)">Savor gourmet cuisine and artisanal coffee in our elegant restaurant and café.</p>
+      </div>
+      <div class="amenity-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <h5>Fitness Center</h5>
+        <p style="font-size:var(--text-sm)">Stay active with our state-of-the-art fitness center, open 24/7 for guests.</p>
+      </div>
+      <div class="amenity-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        <h5>Room Service</h5>
+        <p style="font-size:var(--text-sm)">24-hour room service with a curated menu of local and international specialties.</p>
+      </div>
+      <div class="amenity-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        <h5>Indoor Pool Hotel</h5>
+        <p style="font-size:var(--text-sm)">Relax in our heated indoor pool, spa facilities, and serene wellness retreats.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PRESTIGE RESIDENCES ====== -->
+<section class="section bg-light" style="padding-top:0">
+  <div class="container">
+    <div style="margin-bottom:3rem" data-reveal="fade-up" data-reveal-delay="150">
+      <h2>Prestige Residences</h2>
+    </div>
+    <div class="home-rooms">
+      <!-- Room 1: Deluxe Suite -->
+      <div class="home-room-item" data-reveal="fade-up" data-reveal-delay="100">
+        <div class="home-room-img"><img src="assets/images/rooms/room-1-1.png" alt="Deluxe Suite"></div>
+        <div class="home-room-content">
+          <div class="home-room-number">01</div>
+          <div class="home-room-price">from $299.99/night</div>
+          <h3 class="home-room-name">Deluxe Suite</h3>
+          <div class="home-room-tags">
+            <span class="room-tag">Luxury Room</span>
+            <span class="room-tag">Sea View</span>
+            <span class="room-tag">Shared Pool</span>
+          </div>
+          <a href="room-deluxe-suite.html" class="btn btn-outline btn-arrow" style="border-radius:0">
+            <span class="btn-arrow-inner">
+              <span class="btn-arrow-text">
+                <svg class="arrow-lead" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                Book now
+                <svg class="arrow-trail" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <!-- Room 2: Dine and Stay -->
+      <div class="home-room-item" data-reveal="fade-up" data-reveal-delay="150">
+        <div class="home-room-img"><img src="assets/images/rooms/room-2-1.png" alt="Dine and Stay"></div>
+        <div class="home-room-content">
+          <div class="home-room-number">02</div>
+          <div class="home-room-price">from $399.99/night</div>
+          <h3 class="home-room-name">Dine and Stay</h3>
+          <div class="home-room-tags">
+            <span class="room-tag">Luxury Room</span>
+            <span class="room-tag">Sea View</span>
+            <span class="room-tag">Shared Pool</span>
+          </div>
+          <a href="room-dine-and-stay.html" class="btn btn-outline btn-arrow" style="border-radius:0">
+            <span class="btn-arrow-inner">
+              <span class="btn-arrow-text">
+                <svg class="arrow-lead" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                Book now
+                <svg class="arrow-trail" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <!-- Room 3: Presidential Suite -->
+      <div class="home-room-item" data-reveal="fade-up" data-reveal-delay="100">
+        <div class="home-room-img"><img src="assets/images/rooms/room-3-1.png" alt="Presidential Suite"></div>
+        <div class="home-room-content">
+          <div class="home-room-number">03</div>
+          <div class="home-room-price">from $169.99/night</div>
+          <h3 class="home-room-name">Presidential Suite</h3>
+          <div class="home-room-tags">
+            <span class="room-tag">Luxury Room</span>
+            <span class="room-tag">Sea View</span>
+            <span class="room-tag">Private Pool</span>
+          </div>
+          <a href="room-presidential-suite.html" class="btn btn-outline btn-arrow" style="border-radius:0">
+            <span class="btn-arrow-inner">
+              <span class="btn-arrow-text">
+                <svg class="arrow-lead" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                Book now
+                <svg class="arrow-trail" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <!-- Room 4: Horizon Suite -->
+      <div class="home-room-item" data-reveal="fade-up" data-reveal-delay="150">
+        <div class="home-room-img"><img src="assets/images/rooms/room-4-1.png" alt="The Horizon Suite"></div>
+        <div class="home-room-content">
+          <div class="home-room-number">04</div>
+          <div class="home-room-price">from $499.99/night</div>
+          <h3 class="home-room-name">The Horizon Suite</h3>
+          <div class="home-room-tags">
+            <span class="room-tag">Luxury Room</span>
+            <span class="room-tag">Mountain View</span>
+            <span class="room-tag">Private Pool</span>
+          </div>
+          <a href="room-the-horizon-suite.html" class="btn btn-outline btn-arrow" style="border-radius:0">
+            <span class="btn-arrow-inner">
+              <span class="btn-arrow-text">
+                <svg class="arrow-lead" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                Book now
+                <svg class="arrow-trail" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <!-- Room 5: The View Suite -->
+      <div class="home-room-item" data-reveal="fade-up" data-reveal-delay="100">
+        <div class="home-room-img"><img src="assets/images/rooms/room-5-1.png" alt="The View Suite"></div>
+        <div class="home-room-content">
+          <div class="home-room-number">05</div>
+          <div class="home-room-price">from $599.99/night</div>
+          <h3 class="home-room-name">The View Suite</h3>
+          <div class="home-room-tags">
+            <span class="room-tag">Luxury Room</span>
+            <span class="room-tag">Panoramic View</span>
+            <span class="room-tag">Private Pool</span>
+          </div>
+          <a href="room-the-view-suite.html" class="btn btn-outline btn-arrow" style="border-radius:0">
+            <span class="btn-arrow-inner">
+              <span class="btn-arrow-text">
+                <svg class="arrow-lead" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                Book now
+                <svg class="arrow-trail" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem" data-reveal="fade-up">
+      <a href="rooms.html" class="btn btn-primary">View All Rooms</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== INDULGE IN LUXURY (features) ====== -->
+<section class="section bg-light">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem" data-reveal="fade-up">
+      <h2>Indulge in Luxury</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item" data-reveal="zoom-in" data-reveal-delay="100">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"/></svg>
+        </div>
+        <h4>Restaurant &amp; Coffee</h4>
+        <p>World-class dining experiences with locally sourced ingredients and international flavors.</p>
+      </div>
+      <div class="feature-item" data-reveal="zoom-in" data-reveal-delay="150">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+        </div>
+        <h4>Gourmet Dining</h4>
+        <p>Michelin-starred cuisine served in our signature restaurant with panoramic city views.</p>
+      </div>
+      <div class="feature-item" data-reveal="zoom-in" data-reveal-delay="200">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+        </div>
+        <h4>Wellness and Leisure</h4>
+        <p>Rejuvenate your body and mind with our full-service spa, sauna, and wellness treatments.</p>
+      </div>
+      <div class="feature-item" data-reveal="zoom-in" data-reveal-delay="250">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        </div>
+        <h4>Prime Location</h4>
+        <p>Perfectly situated in the heart of Prishtina, close to cultural landmarks and shopping.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TESTIMONIALS ====== -->
+<section class="section bg-light testimonial-section" style="overflow:visible">
+  <div class="container">
+    <div style="margin-bottom:4rem;position:relative" data-reveal="fade-up">
+      <h2>What's client's say</h2>
+      <!-- Nav buttons -->
+      <div class="testimonial-controls" id="t-controls">
+        <button class="t-btn" id="t-prev" aria-label="Previous" disabled>
+          <svg width="14" height="24" viewBox="0 0 14 24" fill="none"><path d="M12.8281 0C12.8281 7.85455 4.94241 11.2727 0.999554 12C4.94241 12.7273 12.8281 16.1455 12.8281 24" stroke="var(--color-secondary)" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="t-btn" id="t-next" aria-label="Next">
+          <svg width="14" height="24" viewBox="0 0 14 24" fill="none"><path d="M1 24C1 16.1455 8.88571 12.7273 12.8286 12C8.88571 11.2727 1 7.85455 1 0" stroke="var(--color-secondary)" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="testimonial-wrapper" data-reveal="fade-up" data-reveal-delay="200">
+      <div class="testimonial-track" id="t-track">
+        <div class="testimonial-card">
+          <img src="assets/images/slider/1.jpg" alt="Guest testimonial" class="testimonial-img">
+          <div class="testimonial-body">
+            <svg class="testimonial-quote-icon" width="49" height="38" viewBox="0 0 49 38" fill="none"><path d="M9.3 3.9C3.4 11.3 0.8 18.5 0.4 28.8L0 38H8.9H17.9L18.5 27.1C18.9 19.8 19.8 14.4 21.2 10.8C22.3 7.9 23.2 5.4 23.2 5.3C23.2 5 13.4 0 12.8 0C12.6 0 11 1.8 9.3 3.9Z" fill="currentColor"/><path d="M34.5002 3.9C28.6002 11.3 26.0002 18.5 25.6002 28.8L25.2002 38H34.1002H43.1002L43.7002 27.1C44.1002 19.8 45.0002 14.4 46.4002 10.8C47.5002 7.9 48.4002 5.4 48.4002 5.3C48.4002 5 38.6002 0 38.0002 0C37.8002 0 36.2002 1.8 34.5002 3.9Z" fill="currentColor"/></svg>
+            <blockquote class="testimonial-quote">Pure indulgence! The elegant décor, gourmet cuisine, and top-tier hospitality made our stay magical.</blockquote>
+            <div class="stars" style="justify-content:center;margin-bottom:0.5rem">
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0 182.019 0 193.719C0 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119C107.302 490.219 114.402 490.219 125.902 488.319L256.702 411.919L391.902 313.019L422.002 475.419L409.502 488.019C403.502 491.219 391.202 491.119 384.902 487.819L319.402 448.919L192.202 449.019L125.902 488.319L109.502 490.219L100.902 487.119L103.402 386.719L192.202 449.019L256.702 411.919L392.202 489.219L391.902 313.019L443.702 266.619L501.302 215.719C508.902 208.519 511.902 202.419 511.902 193.619C511.902 179.919 504.102 169.919 490.902 166.819L339.802 151.919L268.402 2.21866C263.602 -0.0813293 250.902 -0.781342 246.402 1.01865Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0 182.019 0 193.719C0 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119C107.302 490.219 114.402 490.219 125.902 488.319L256.702 411.919L391.902 313.019L408.502 387.119L422.002 475.419L384.902 487.819L319.402 448.919L256.702 411.919L125.902 488.319L100.902 487.119L86.9024 463.319L119.902 313.019L10.0024 215.319L95.7024 159.519L172.002 151.919L246.402 1.01865Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0 182.019 0 193.719C0 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119L125.902 488.319L256.702 411.919L391.902 313.019L408.502 387.119L422.002 475.419L409.502 488.019C403.502 491.219 391.202 491.119 384.902 487.819L319.402 448.919L256.702 411.919L125.902 488.319L100.902 487.119L86.9024 463.319L119.902 313.019L10.0024 215.319C2.90242 208.519 0 202.119 0 193.719C0 182.019 4.90242 173.819 14.5024 169.119L172.002 151.919L246.402 1.01865Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0 182.019 0 193.719C0 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119L125.902 488.319L256.702 411.919L391.902 313.019L422.002 475.419L409.502 488.019L384.902 487.819L319.402 448.919L256.702 411.919L125.902 488.319L100.902 487.119L86.9024 463.319L119.902 313.019L10.0024 215.319C2.90242 208.519 0 202.119 0 193.719Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1.01865C241.602 2.91867 237.602 5.71866 234.602 9.21866L172.002 151.919L14.5024 169.119C4.90242 173.819 0 182.019 0 193.719C0 202.119 2.90242 208.519 10.0024 215.319L119.902 313.019L86.9024 463.319C86.9024 473.019 92.3024 482.219 100.902 487.119L125.902 488.319L256.702 411.919L391.902 313.019L422.002 475.419L409.502 488.019L384.902 487.819L319.402 448.919L256.702 411.919L125.902 488.319L100.902 487.119L86.9024 463.319L119.902 313.019L10.0024 215.319Z" fill="var(--color-primary)"/></svg>
+            </div>
+            <p class="testimonial-name">Marvin McKinney</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <img src="assets/images/slider/2.png" alt="Guest testimonial" class="testimonial-img">
+          <div class="testimonial-body">
+            <svg class="testimonial-quote-icon" width="49" height="38" viewBox="0 0 49 38" fill="none"><path d="M9.3 3.9C3.4 11.3 0.8 18.5 0.4 28.8L0 38H17.9L18.5 27.1C19.8 14.4 23.2 5.4 23.2 5.3C23.2 5 13.4 0 12.8 0C12.6 0 11 1.8 9.3 3.9Z" fill="currentColor"/><path d="M34.5002 3.9C28.6002 11.3 26.0002 18.5 25.6002 28.8L25.2002 38H43.1002L43.7002 27.1C45.0002 14.4 48.4002 5.4 48.4002 5.3C48.4002 5 38.6002 0 38.0002 0C37.8002 0 36.2002 1.8 34.5002 3.9Z" fill="currentColor"/></svg>
+            <blockquote class="testimonial-quote">A true sanctuary of elegance. The personalized service and stunning interiors exceeded all expectations.</blockquote>
+            <div class="stars" style="justify-content:center;margin-bottom:0.5rem">
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1C241.602 3 237.602 5.7 234.602 9.2L172 152L14.5 169C4.9 173.8 0 182 0 193.7C0 202.1 2.9 208.5 10 215.3L120 313L87 463C87 473 92.3 482.2 100.9 487.1C107.3 490.2 120.2 490.2 125.9 488.3L256.7 411.9L392 313L422 475L409.5 488C403.5 491.2 391.2 491.1 384.9 487.8L319.4 448.9L192.2 449L125.9 488.3L86.9 463.3L119.9 313L10 215.3C2.9 208.5 0 202.1 0 193.7C0 182 4.9 173.8 14.5 169.1L172 151.9L246.402 1Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1C241.602 3 237.602 5.7 234.602 9.2L172 152L14.5 169C4.9 173.8 0 182 0 193.7L120 313L87 463C87 473 92.3 482.2 100.9 487.1L125.9 488.3L256.7 411.9L392 313L422 475L409.5 488L384.9 487.8L319.4 448.9L256.7 411.9L125.9 488.3L100.9 487.1L87 463.3L120 313L10 215.3L95.7 159.5L172 151.9L246.402 1Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1C241.602 3 237.602 5.7 234.602 9.2L172 152L14.5 169C4.9 173.8 0 182 0 193.7C0 202.1 2.9 208.5 10 215.3L120 313L87 463L100.9 487.1L125.9 488.3L256.7 411.9L392 313L422 475L384.9 487.8L319.4 448.9L256.7 411.9L125.9 488.3L100.9 487.1L87 463L120 313L10 215.3Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1C241.602 3 237.602 5.7 234.602 9.2L172 152L14.5 169C4.9 173.8 0 182 0 193.7L10 215.3L120 313L87 463L100.9 487.1L125.9 488.3L256.7 411.9L392 313L422 475L409.5 488L384.9 487.8L319.4 448.9L256.7 411.9L125.9 488.3L10 215.3Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M246.402 1C241.602 3 237.602 5.7 234.602 9.2L172 152L14.5 169C4.9 173.8 0 182 0 193.7L10 215.3L120 313L87 463L100.9 487.1L125.9 488.3L256.7 411.9L392 313L422 475L384.9 487.8L319.4 448.9L256.7 411.9L125.9 488.3Z" fill="var(--color-primary)"/></svg>
+            </div>
+            <p class="testimonial-name">John McKinney</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <img src="assets/images/slider/3.png" alt="Guest testimonial" class="testimonial-img">
+          <div class="testimonial-body">
+            <svg class="testimonial-quote-icon" width="49" height="38" viewBox="0 0 49 38" fill="none"><path d="M9.3 3.9C3.4 11.3 0.8 18.5 0.4 28.8L0 38H17.9L18.5 27.1C19.8 14.4 23.2 5.4 23.2 5.3C23.2 5 13.4 0 12.8 0Z" fill="currentColor"/><path d="M34.5002 3.9C28.6002 11.3 26.0002 18.5 25.6002 28.8L25.2002 38H43.1002L43.7002 27.1C45.0002 14.4 48.4002 5.4 48.4002 5.3C48.4002 5 38.6002 0 38.0002 0Z" fill="currentColor"/></svg>
+            <blockquote class="testimonial-quote">Unmatched luxury and comfort. Every detail was thoughtfully crafted for the ultimate guest experience.</blockquote>
+            <div class="stars" style="justify-content:center;margin-bottom:0.5rem">
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+            </div>
+            <p class="testimonial-name">Sarah Williams</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <img src="assets/images/slider/4.jpg" alt="Guest testimonial" class="testimonial-img">
+          <div class="testimonial-body">
+            <svg class="testimonial-quote-icon" width="49" height="38" viewBox="0 0 49 38" fill="none"><path d="M9.3 3.9C3.4 11.3 0.8 18.5 0.4 28.8L0 38H17.9L18.5 27.1C19.8 14.4 23.2 5.4 23.2 5.3C23.2 5 13.4 0 12.8 0Z" fill="currentColor"/><path d="M34.5002 3.9C28.6002 11.3 26.0002 18.5 25.6002 28.8L25.2002 38H43.1002L43.7002 27.1C45.0002 14.4 48.4002 5.4 48.4002 5.3C48.4002 5 38.6002 0 38.0002 0Z" fill="currentColor"/></svg>
+            <blockquote class="testimonial-quote">The most luxurious experience I've ever had. The staff goes above and beyond to make you feel special.</blockquote>
+            <div class="stars" style="justify-content:center;margin-bottom:0.5rem">
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+              <svg class="star" viewBox="0 0 512 491"><path d="M256 10L309 166H475L344 263L397 419L256 322L115 419L168 263L37 166H203L256 10Z" fill="var(--color-primary)"/></svg>
+            </div>
+            <p class="testimonial-name">Emma Johnson</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CAFE GALLERY ====== -->
+<section class="section bg-light" style="padding-top:0">
+  <div class="container">
+    <div style="margin-bottom:2rem" data-reveal="fade-up">
+      <h2>CAFÉ &amp; Juice GALLERY</h2>
+    </div>
+    <div class="cafe-duo" data-reveal="zoom-in" data-reveal-delay="150">
+      <a href="cafe-juice.html">
+        <img src="assets/images/cafe-juice/g1.png" alt="Cafe Gallery 1" style="width:100%;height:380px;object-fit:cover;transition:transform 0.4s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      </a>
+      <a href="cafe-juice.html">
+        <img src="assets/images/cafe-juice/g2.png" alt="Cafe Gallery 2" style="width:100%;height:380px;object-fit:cover;transition:transform 0.4s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BLOG & EVENTS ====== -->
+<section class="section bg-secondary">
+  <div class="container">
+    <div style="margin-bottom:3rem" data-reveal="fade-up">
+      <h2 style="color:var(--color-text-light)">Blog &amp; events</h2>
+    </div>
+    <div class="blog-events-grid">
+      <div>
+        <a href="blog-guest-stories.html" class="blog-event-link" data-reveal="fade-up" data-reveal-delay="100">
+          <div class="bel-num">01</div>
+          <div class="bel-content">
+            <div class="bel-title">Guest Stories – testimonials, unique experiences, memories.</div>
+            <div class="bel-meta">June 2024</div>
+          </div>
+        </a>
+        <a href="blog-luxury-lifestyle.html" class="blog-event-link" data-reveal="fade-up" data-reveal-delay="150">
+          <div class="bel-num">02</div>
+          <div class="bel-content">
+            <div class="bel-title">Luxury Lifestyle – fashion, art, design, high-end living tips</div>
+            <div class="bel-meta">May 2024</div>
+          </div>
+        </a>
+        <a href="blog-suites-stays.html" class="blog-event-link" data-reveal="fade-up" data-reveal-delay="200">
+          <div class="bel-num">03</div>
+          <div class="bel-content">
+            <div class="bel-title">Suites &amp; Stays – room features, design, premium services</div>
+            <div class="bel-meta">April 2024</div>
+          </div>
+        </a>
+      </div>
+      <div>
+        <a href="blog-travel-inspiration.html" class="blog-event-link" data-reveal="fade-up" data-reveal-delay="100">
+          <div class="bel-num">04</div>
+          <div class="bel-content">
+            <div class="bel-title">Travel Inspiration – local attractions, cultural highlights</div>
+            <div class="bel-meta">March 2024</div>
+          </div>
+        </a>
+        <a href="blog-wellness-spa.html" class="blog-event-link" data-reveal="fade-up" data-reveal-delay="150">
+          <div class="bel-num">05</div>
+          <div class="bel-content">
+            <div class="bel-title">Wellness &amp; Spa – relaxation, treatments, holistic therapies</div>
+            <div class="bel-meta">February 2024</div>
+          </div>
+        </a>
+        <a href="blog.html" class="blog-event-link" data-reveal="fade-up" data-reveal-delay="200">
+          <div class="bel-num" style="color:var(--color-primary)">→</div>
+          <div class="bel-content">
+            <div class="bel-title" style="color:var(--color-primary)">View All Posts</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== LUXURY CAPTURED (gallery) ====== -->
+<section class="section bg-light">
+  <div class="container">
+    <div style="margin-bottom:2rem" data-reveal="fade-up">
+      <h2>Luxury Captured</h2>
+      <p style="margin-top:0.5rem;font-size:var(--text-sm);text-transform:uppercase;letter-spacing:0.05em">Follow Us <a href="https://www.instagram.com/" target="_blank" rel="noopener" style="color:var(--color-text-dark)">@RELUX_HOTEL</a></p>
+    </div>
+    <div class="gallery-grid" data-reveal="zoom-in" data-reveal-delay="150">
+      <img src="assets/images/homepage/gallery-image-1.png" alt="Luxury gallery 1" data-lightbox="assets/images/homepage/gallery-image-1.png">
+      <img src="assets/images/homepage/gallery-image-2.png" alt="Luxury gallery 2" data-lightbox="assets/images/homepage/gallery-image-2.png">
+      <img src="assets/images/homepage/gallery-image-3.png" alt="Luxury gallery 3" data-lightbox="assets/images/homepage/gallery-image-3.png">
+      <img src="assets/images/homepage/about-section-1.png" alt="Luxury gallery 4" data-lightbox="assets/images/homepage/about-section-1.png">
+      <img src="assets/images/homepage/about-section-2.png" alt="Luxury gallery 5" data-lightbox="assets/images/homepage/about-section-2.png">
+      <img src="assets/images/homepage/about-section-3.png" alt="Luxury gallery 6" data-lightbox="assets/images/homepage/about-section-3.png">
+    </div>
+  </div>
+</section>
+
+<!-- ====== NEWSLETTER ====== -->
+<section class="section bg-light" style="padding-top:0">
+  <div class="container">
+    <!-- Decorative bird/divider SVG -->
+    <div style="text-align:center;margin-bottom:1rem">
+      <svg width="auto" height="21" viewBox="0 0 1760 21" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;opacity:0.6">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.8994 8.87807C11.8069 5.59919 18.8232 -3.00828 18.8232 1.07924C18.8234 5.00555 24.6051 8.60868 27.6553 10.0011C27.711 10.0009 27.7671 9.99916 27.8232 9.99916C27.7945 10.0119 27.7656 10.026 27.7363 10.0392C27.7656 10.0524 27.7945 10.0665 27.8232 10.0792C27.7671 10.0792 27.711 10.0765 27.6553 10.0763C24.6052 11.4686 18.8234 15.0727 18.8232 18.9992C18.8232 23.1414 11.6165 14.2433 20.2314 11.0685L8 13.0001L0 10.0001L8 7.00013L19.8994 8.87807Z" fill="var(--color-primary)"/>
+        <rect x="23.8232" y="9.78906" width="1712.35" height="0.5" fill="var(--color-primary)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1740.1 8.87807C1748.19 5.59919 1741.18 -3.00828 1741.18 1.07924C1741.18 5.00555 1735.39 8.60868 1732.34 10.0011C1732.29 10.0009 1732.23 9.99916 1732.18 9.99916C1732.21 10.0119 1732.23 10.026 1732.26 10.0392C1732.23 10.0524 1732.21 10.0665 1732.18 10.0792C1732.23 10.0792 1732.29 10.0765 1732.34 10.0763C1735.39 11.4686 1741.18 15.0727 1741.18 18.9992C1741.18 23.1414 1748.38 14.2433 1739.77 11.0685L1752 13.0001L1760 10.0001L1752 7.00014L1740.1 8.87807Z" fill="var(--color-primary)"/>
+      </svg>
+    </div>
+    <div class="newsletter-wrap" data-reveal="fade-up" data-reveal-delay="200">
+      <h2 style="margin-top:5rem;margin-bottom:0.5rem">Stay in the know</h2>
+      <p class="h6" style="opacity:0.8;text-transform:uppercase">Be the first to know about new hotels we've uncovered</p>
+      <div class="newsletter-input-row">
+        <input type="email" placeholder="Enter your email">
+        <button type="button" title="Subscribe">
+          <svg width="37" height="24" viewBox="0 0 37 24" fill="none"><path d="M0 12L36 12M36 12C32.0571 12.7273 24.1714 16.1455 24.1714 24M36 12C32.0571 11.2727 24.1714 7.85455 24.1714 0" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <!-- Bottom divider -->
+      <svg width="auto" height="21" viewBox="0 0 1760 21" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;opacity:0.6">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.8994 8.87807C11.8069 5.59919 18.8232 -3.00828 18.8232 1.07924C18.8234 5.00555 24.6051 8.60868 27.6553 10.0011C27.7671 9.99916 27.8232 9.99916C27.7945 10.0119 27.7656 10.026 27.7363 10.0392C27.7656 10.0524 27.7945 10.0665 27.8232 10.0792C27.7671 10.0792 27.711 10.0765 27.6553 10.0763C24.6052 11.4686 18.8234 15.0727 18.8232 18.9992C18.8232 23.1414 11.6165 14.2433 20.2314 11.0685L8 13.0001L0 10.0001L8 7.00013L19.8994 8.87807Z" fill="var(--color-primary)"/>
+        <rect x="23.8232" y="9.78906" width="1712.35" height="0.5" fill="var(--color-primary)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1740.1 8.87807C1748.19 5.59919 1741.18 -3.00828 1741.18 1.07924C1741.18 5.00555 1735.39 8.60868 1732.34 10.0011C1732.29 10.0009 1732.23 9.99916 1732.18 9.99916C1732.21 10.0119 1732.23 10.026 1732.26 10.0392C1732.23 10.0524 1732.21 10.0665 1732.18 10.0792C1732.23 10.0792 1732.29 10.0765 1732.34 10.0763C1735.39 11.4686 1741.18 15.0727 1741.18 18.9992C1741.18 23.1414 1748.38 14.2433 1739.77 11.0685L1752 13.0001L1760 10.0001L1752 7.00014L1740.1 8.87807Z" fill="var(--color-primary)"/>
+      </svg>
+    </div>
+
+    <!-- Brands -->
+    <div class="brands-partner" data-reveal="fade-up" data-reveal-delay="150">
+      <img src="assets/images/brands/booking.svg" alt="Booking.com">
+      <img src="assets/images/brands/expedia.svg" alt="Expedia">
+      <img src="assets/images/brands/tripadvisor.svg" alt="TripAdvisor">
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA BANNER ====== -->
+<section style="position:relative;min-height:400px;overflow:hidden" data-reveal="fade-up">
+  <img src="assets/images/homepage/cta.png" alt="Book your stay" style="width:100%;height:400px;object-fit:cover">
+  <div style="position:absolute;inset:0;background:rgba(5,28,86,0.6);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;text-align:center;padding:2rem">
+    <h2 style="color:var(--color-text-light)">Book Your Dream Stay</h2>
+    <p style="color:rgba(255,255,255,0.8);max-width:500px">Experience unparalleled luxury and impeccable service at Relux Hotel. Your perfect getaway awaits.</p>
+    <a href="contact.html" class="btn btn-primary">Book Here</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ====== FOOTER ====== -->
+<footer class="section" style="background:var(--color-secondary);padding-bottom:2rem">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:2rem;justify-content:space-between" id="footer-inner">
+      <!-- Left col -->
+      <div style="max-width:300px">
+        <h4 style="color:var(--color-text-dark);margin-bottom:1.5rem;text-transform:uppercase" data-reveal="fade-up" data-reveal-delay="150">A Stay Beyond Compare</h4>
+        <a href="contact.html" class="btn btn-primary" style="display:inline-block;margin-bottom:2.5rem">BOOK HERE</a>
+        <div class="social-icons" style="margin-top:1rem">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 320 512" fill="currentColor" width="1em" height="1em"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4.4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg>
+          </a>
+          <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 512 512" fill="currentColor" width="1em" height="1em"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+          </a>
+          <a href="https://www.pinterest.com/" target="_blank" rel="noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 384 512" fill="currentColor" width="1em" height="1em"><path d="M204 6.5C101.4 6.5 0 74.9 0 185.6 0 256 39.6 296 63.6 296c9.9 0 15.6-27.6 15.6-35.4 0-9.3-23.7-29.1-23.7-67.8 0-80.4 61.2-137.4 140.4-137.4 68.1 0 118.5 38.7 118.5 109.8 0 53.1-21.3 152.7-90.3 152.7-24.9 0-46.2-18-46.2-43.8 0-37.8 26.4-74.4 26.4-113.4 0-66.2-93.9-54.2-93.9 25.8 0 16.8 2.1 35.4 9.6 50.7-13.8 59.4-42 147.9-42 209.1 0 18.9 2.7 37.5 4.5 56.4 3.4 3.8 1.7 3.4 6.9 1.5 50.4-69 48.6-82.5 71.4-172.8 12.3 23.4 44.1 36 69.3 36 106.2 0 153.9-103.5 153.9-196.8C384 71.3 298.2 6.5 204 6.5z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right cols grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem">
+        <div data-reveal="fade-up" data-reveal-delay="150">
+          <p class="footer-heading">Star Bene</p>
+          <ul class="footer-links">
+            <li><a href="room-the-view-suite.html">Relux San Felice Resort</a></li>
+            <li><a href="room-deluxe-suite.html">Food &amp; Juice Experience</a></li>
+            <li><a href="room-dine-and-stay.html">See Oscine Hotel</a></li>
+            <li><a href="rooms.html">Elite Stays Hotel</a></li>
+            <li><a href="rooms.html">Mountain View Resort</a></li>
+          </ul>
+        </div>
+        <div data-reveal="fade-up" data-reveal-delay="200">
+          <p class="footer-heading">Services</p>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="cafe-juice.html">Cafe &amp; Juice</a></li>
+            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div data-reveal="fade-up" data-reveal-delay="250">
+          <p class="footer-heading">Contact</p>
+          <ul class="footer-links">
+            <li><span>Prishtina, Kosovo</span></li>
+            <li><a href="tel:+38344123456">+383 44 123 456</a></li>
+            <li><a href="mailto:info@relux.com">info@relux.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2024 Relux Hotel. All Rights Reserved.</p>
+      <a href="privacy-policy.html" style="font-size:var(--text-sm);color:rgba(255,255,255,0.5);transition:color 0.2s" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Footer layout fix -->
+<style>
+@media (min-width: 768px) {
+  #footer-inner { flex-direction: row; }
+}
+</style>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img src="" alt="Gallery image">
+</div>
+
+<!-- Back to top -->
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script src="script.js"></script>
+<script>
+// Testimonial slider
+(function() {
+  const track = document.getElementById('t-track');
+  const prev = document.getElementById('t-prev');
+  const next = document.getElementById('t-next');
+  if (!track) return;
+
+  const cards = track.querySelectorAll('.testimonial-card');
+  let cur = 0;
+
+  function visible() { return window.innerWidth >= 1024 ? 2 : 1; }
+
+  function update() {
+    const gap = window.innerWidth >= 1024 ? 24 : 0;
+    const cardW = cards[0].offsetWidth + gap;
+    track.style.transform = `translateX(-${cur * cardW}px)`;
+    prev.disabled = cur === 0;
+    next.disabled = cur >= cards.length - visible();
+  }
+
+  prev.addEventListener('click', () => { if (cur > 0) { cur--; update(); } });
+  next.addEventListener('click', () => { if (cur < cards.length - visible()) { cur++; update(); } });
+  window.addEventListener('resize', update, {passive:true});
+  update();
+
+  // Arc decoration visible on large screens
+  const arc = document.getElementById('arc-svg');
+  if (arc && window.innerWidth >= 1024) arc.style.display = 'flex';
+  window.addEventListener('resize', () => {
+    if (arc) arc.style.display = window.innerWidth >= 1024 ? 'flex' : 'none';
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>

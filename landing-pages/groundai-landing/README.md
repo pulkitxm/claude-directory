@@ -1,5 +1,7 @@
 # GroundAI — Interior Design AI Landing Page (TanStack Start, React 19, TypeScript, Tailwind v4, Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A single-page landing page for GroundAI, an interior-design AI product, built with TanStack Start v1 on file-based routing, React 19, TypeScript, Tailwind CSS v4, framer-motion for all animation, and lucide-react for icons. The page is composed of four stacked sections: a full-bleed autoplaying video hero with spring-animated header, expanding glass nav pill, and word-by-word animated description; a CSS marquee of partner brand wordmarks; a CraftExperiences section with a spring-driven style carousel, a skeleton-morphing chat card, and a staggered adaptable list; and a two-column testimonials block with animated word reveals. Generated with Claude Fable 5.
 
 ## Stack

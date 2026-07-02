@@ -1,0 +1,134 @@
+> SELF-CONTAINED, PIXEL-FAITHFUL REPRODUCTION OF THE TRENDSPOTTER TEMPLATE — EVERY PAGE, THE FULL LOOK & FEEL, HOVER STATES, AND SCROLL/ENTRANCE ANIMATIONS — AS PLAIN HTML/CSS/JS.
+> REFERENCE: `https://lexingtonthemes.com/viewports/trendspotter`
+
+## SUMMARY
+
+TRENDSPOTTER IS A TOOL DIRECTORY / DESIGN SHOWCASE SITE TEMPLATE BUILT BY LEXINGTON THEMES. IT FEATURES A CLEAN, MINIMAL AESTHETIC WITH A LIGHT BACKGROUND, GREEN ACCENT PALETTE, AND INTER FONT THROUGHOUT. THE TEMPLATE INCLUDES A TOOLS LISTING PAGE (HOME), BLOG, STORE, PRICING, SIGN IN/UP FORMS, INDIVIDUAL TOOL DETAIL PAGES, TAG FILTERING, SUBMIT TOOL FLOW, AND DASHBOARD COLLECTIONS — ALL CONNECTED THROUGH A CONSISTENT SHARED NAVIGATION AND FOOTER.
+
+## STYLE
+
+### PALETTE
+
+- ACCENT: oklch-BASED GREEN SCALE
+  - ACCENT-50: oklch(96% 0.015 158.25)
+  - ACCENT-100: oklch(92.17% 0.032 155.36)
+  - ACCENT-200: oklch(84.4% 0.065 154.46)
+  - ACCENT-300: oklch(76.02% 0.1 153.86)
+  - ACCENT-400: oklch(68.65% 0.13 151.92)
+  - ACCENT-500: oklch(56.56% 0.108 151.62) — PRIMARY ACCENT
+  - ACCENT-600: oklch(48.31% 0.091 151.89)
+  - ACCENT-700: oklch(39.44% 0.071 152.24)
+  - ACCENT-800: oklch(31.05% 0.052 151.99)
+  - ACCENT-900: oklch(20.92% 0.029 154.01)
+  - ACCENT-950: oklch(15.3% 0.017 157.97)
+- BASE: NEUTRAL GRAY SCALE
+  - BASE-50: oklch(98% 0 0)
+  - BASE-100: oklch(96% 0 0)
+  - BASE-200: oklch(91% 0 0)
+  - BASE-300: oklch(85% 0 0)
+  - BASE-400: oklch(78% 0 0)
+  - BASE-500: oklch(63% 0 0)
+  - BASE-600: oklch(54% 0 0)
+  - BASE-700: oklch(46% 0 0)
+  - BASE-800: oklch(35% 0 0)
+  - BASE-900: oklch(25% 0 0)
+  - BASE-950: oklch(15% 0 0)
+- PAGE BACKGROUND: WHITE (#FFFFFF)
+- BODY TEXT: BASE-900
+- MUTED TEXT: BASE-600
+
+### FONTS
+
+- PRIMARY: Inter, sans-serif (LOADED FROM https://rsms.me/inter/inter.css)
+- MONO: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas
+
+### TYPE SCALE
+
+- XS: 0.75rem / LINE-HEIGHT calc(1 / 0.75)
+- SM: 0.875rem / LINE-HEIGHT calc(1.25 / 0.875)
+- BASE: 1rem / LINE-HEIGHT calc(1.5 / 1)
+- LG: 1.125rem / LINE-HEIGHT calc(1.75 / 1.125)
+- XL: 1.25rem / LINE-HEIGHT calc(1.75 / 1.25)
+- 2XL: 1.5rem / LINE-HEIGHT calc(2 / 1.5)
+- 3XL: 1.875rem
+- 4XL: 2.25rem
+- 5XL: 3rem
+
+### RADII
+
+- MD: 0.375rem
+- LG: 0.5rem
+- XL: 0.75rem
+- FULL: 9999px (USED FOR PILLS/TAGS/INPUTS)
+
+### ANIMATION EASINGS
+
+- DEFAULT: cubic-bezier(0.4, 0, 0.2, 1) / 150ms
+- EASE-OUT: cubic-bezier(0, 0, 0.2, 1)
+- TRANSITIONS: 300ms DURATION FOR MODALS, 500ms FOR BUTTONS
+
+### THEME
+
+- LIGHT-MODE PRIMARY (WHITE BG, BASE-900 TEXT, GREEN ACCENTS)
+- DARK MODE SUPPORTED VIA CSS CUSTOM PROPERTIES
+- NO DARK-MODE TOGGLE VISIBLE IN TEMPLATE (HONOR prefers-color-scheme)
+
+## LAYOUT & STRUCTURE
+
+### PAGES DISCOVERED
+
+1. **HOME / TOOLS DIRECTORY** (`index.html`) — https://trendspotter-astro.pages.dev/
+   - TOP NAVIGATION: LEFT LINKS (BLOG, STORE, OVERVIEW, BUY) + RIGHT ACTIONS (SUBMIT A TOOL MODAL, SUBSCRIBE MODAL, SEARCH MODAL)
+   - CENTER LOGO: "TRENDSPOTTER" TEXT WITH ICON
+   - HORIZONTAL SCROLLING MARQUEE STRIP (TOOL IMAGES)
+   - TAG FILTER PILLS (COLORS, DEVELOPMENT, GRAPHICS, TYPOGRAPHY)
+   - TOOL CARDS GRID (10+ TOOLS): EACH CARD HAS IMAGE, NAME, TAGLINE, TAGS, BOOKMARK ICON
+   - SIDEBAR / INLINE: "THE TREND REPORT" NEWSLETTER CTA
+   - FEATURED BLOG POST SECTION
+   - FOOTER: MINIMAL WITH NAV LINKS AND LEXINGTON CREDIT
+
+2. **BLOG** (`blog.html`) — https://trendspotter-astro.pages.dev/blog
+   - NAVIGATION SAME AS HOME
+   - BLOG POSTS LIST/GRID
+   - EACH POST: COVER IMAGE, TITLE, DATE, EXCERPT
+
+3. **STORE** (`store.html`) — https://trendspotter-astro.pages.dev/store
+   - NAVIGATION SAME AS HOME
+   - PRODUCT CARDS GRID: LEXINGTON THEMES TEMPLATES FOR SALE
+
+4. **STORE SINGLE PRODUCT** (`store/1.html`) — https://trendspotter-astro.pages.dev/store/1
+   - SINGLE PRODUCT DETAIL VIEW
+
+5. **PRICING** (`pricing.html`) — https://trendspotter-astro.pages.dev/pricing
+   - PRICING TIERS WITH FEATURE LISTS AND CTA BUTTONS
+
+6. **SIGN IN** (`signin.html`) — https://trendspotter-astro.pages.dev/signin
+   - CENTERED SIGN-IN FORM WITH EMAIL/PASSWORD
+
+7. **SIGN UP** (`signup.html`) — https://trendspotter-astro.pages.dev/signup
+   - CENTERED SIGN-UP FORM
+
+8. **TOOLS SUBMIT** (`tools/submit.html`) — https://trendspotter-astro.pages.dev/tools/submit
+   - FORM TO SUBMIT A TOOL WITH PREMIUM QUEUE SKIP OPTION
+
+9. **TOOL DETAIL** (`tools/tool/1.html`) — https://trendspotter-astro.pages.dev/tools/tool/1
+   - SINGLE TOOL DETAIL WITH SCREENSHOT, DESCRIPTION, TAGS, LINKS
+
+10. **TAG PAGE** (`tools/tags/colors.html`) — https://trendspotter-astro.pages.dev/tools/tags/colors
+    - FILTERED TOOL LISTING BY TAG
+
+11. **SYSTEM OVERVIEW** (`system/overview.html`) — https://trendspotter-astro.pages.dev/system/overview
+    - DESIGN SYSTEM OVERVIEW PAGE
+
+12. **DASHBOARD COLLECTIONS** (`dashboard/collections.html`) — https://trendspotter-astro.pages.dev/dashboard/collections
+    - USER COLLECTIONS DASHBOARD VIEW
+
+13. **INFOPAGES TERMS** (`infopages/terms.html`) — https://trendspotter-astro.pages.dev/infopages/terms
+    - TERMS OF SERVICE PAGE (PROSE CONTENT)
+
+### SHARED CHROME
+
+- HEADER/NAV: STICKY TOP, FULL WIDTH, TRANSPARENT/WHITE BG, LINKS LEFT + ACTIONS RIGHT, CENTER LOGO
+- FOOTER: MINIMAL LINKS BAR WITH LEXINGTON ATTRIBUTION
+- MODALS: SUBMIT TOOL, SUBSCRIBE (CENTERED WITH BACKDROP)
+- SEARCH: FULL-SCREEN OVERLAY WITH FUSE.JS SEARCH

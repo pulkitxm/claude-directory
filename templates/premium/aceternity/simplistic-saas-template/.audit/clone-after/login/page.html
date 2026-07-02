@@ -1,0 +1,1210 @@
+<!DOCTYPE html><html lang="en"><head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Login | Simplistic</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("theme");
+				if (
+					t === "dark" ||
+					(!t && window.matchMedia("(prefers-color-scheme: dark)").matches)
+				) {
+					document.documentElement.classList.add("dark");
+				}
+			} catch (e) {}
+		})();
+		</script>
+		<style>
+		@font-face {
+			font-family: "Geist";
+			src: url("assets/fonts/geist-latin-ext.woff2") format("woff2");
+			unicode-range:
+				U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+			font-display: swap;
+		}
+		@font-face {
+			font-family: "Geist";
+			src: url("assets/fonts/geist-latin.woff2") format("woff2");
+			unicode-range:
+				U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			font-display: swap;
+		}
+
+		:root {
+			--bg: #fff;
+			--fg: #171717;
+			--muted: #737373;
+			--border: rgba(0, 0, 0, 0.1);
+			--card-bg: #fff;
+			--card-border: rgba(0, 0, 0, 0.1);
+			--neutral-50: #fafafa;
+			--neutral-100: #f5f5f5;
+			--neutral-200: #e5e5e5;
+			--neutral-300: #d4d4d4;
+			--neutral-400: #a1a1a1;
+			--neutral-500: #737373;
+			--neutral-600: #525252;
+			--neutral-700: #404040;
+			--neutral-800: #262626;
+			--neutral-900: #171717;
+			--neutral-950: #0a0a0a;
+			--brand: #1e90ff;
+			--brand-secondary: #5cb3ff;
+		}
+
+		html.dark {
+			--bg: #0a0a0a;
+			--fg: #d4d4d4;
+			--muted: #737373;
+			--border: rgba(255, 255, 255, 0.1);
+			--card-bg: #171717;
+			--card-border: rgba(255, 255, 255, 0.1);
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+			background: var(--bg);
+			color: var(--fg);
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			transition:
+				background 0.2s,
+				color 0.2s;
+		}
+
+		/* ---- NAV ---- */
+		.nav-wrapper {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 100;
+			transition:
+				background 0.2s,
+				border-color 0.2s,
+				backdrop-filter 0.2s;
+		}
+
+		.nav-wrapper.scrolled {
+			background: rgba(255, 255, 255, 0.8);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-bottom: 1px solid var(--border);
+		}
+
+		html.dark .nav-wrapper.scrolled {
+			background: rgba(10, 10, 10, 0.8);
+		}
+
+		.nav-inner {
+			max-width: 1280px;
+			margin: 0 auto;
+			padding: 0 2rem;
+			height: 56px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 2rem;
+		}
+
+		@media (min-width: 768px) {
+			.nav-inner {
+				height: 64px;
+			}
+		}
+
+		.nav-logo {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			text-decoration: none;
+			color: var(--fg);
+			flex-shrink: 0;
+		}
+
+		.nav-logo img {
+			width: 16px;
+			height: 16px;
+		}
+
+		.logo-light {
+			display: block;
+		}
+		.logo-dark {
+			display: none;
+		}
+		html.dark .logo-light {
+			display: none;
+		}
+		html.dark .logo-dark {
+			display: block;
+		}
+
+		.nav-logo-text {
+			font-weight: 600;
+			font-size: 0.9375rem;
+		}
+
+		.nav-links {
+			display: none;
+			align-items: center;
+			gap: 0.25rem;
+			flex: 1;
+		}
+
+		@media (min-width: 768px) {
+			.nav-links {
+				display: flex;
+			}
+		}
+
+		.nav-link {
+			font-size: 0.875rem;
+			color: var(--muted);
+			text-decoration: none;
+			padding: 0.375rem 0.75rem;
+			border-radius: 0.375rem;
+			transition:
+				color 0.15s,
+				background 0.15s;
+		}
+
+		.nav-link:hover {
+			color: var(--fg);
+			background: var(--neutral-100);
+		}
+
+		html.dark .nav-link:hover {
+			background: var(--neutral-800);
+		}
+
+		.nav-dropdown {
+			position: relative;
+		}
+
+		.nav-dropdown-btn {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+			font-size: 0.875rem;
+			color: var(--muted);
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0.375rem 0.75rem;
+			border-radius: 0.375rem;
+			font-family: inherit;
+			transition:
+				color 0.15s,
+				background 0.15s;
+		}
+
+		.nav-dropdown-btn:hover {
+			color: var(--fg);
+			background: var(--neutral-100);
+		}
+
+		html.dark .nav-dropdown-btn:hover {
+			background: var(--neutral-800);
+		}
+
+		.nav-dropdown-btn svg {
+			transition: transform 0.2s;
+		}
+
+		.nav-dropdown-btn.open svg {
+			transform: rotate(180deg);
+		}
+
+		.nav-dropdown-menu {
+			display: none;
+			position: absolute;
+			top: calc(100% + 0.5rem);
+			left: 0;
+			min-width: 180px;
+			background: var(--bg);
+			border: 1px solid var(--border);
+			border-radius: 0.75rem;
+			padding: 0.375rem;
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+		}
+
+		html.dark .nav-dropdown-menu {
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+		}
+
+		.nav-dropdown-menu.open {
+			display: block;
+		}
+
+		.nav-dropdown-item {
+			display: block;
+			padding: 0.5rem 0.875rem;
+			font-size: 0.875rem;
+			color: var(--muted);
+			text-decoration: none;
+			border-radius: 0.5rem;
+			transition:
+				color 0.15s,
+				background 0.15s;
+		}
+
+		.nav-dropdown-item:hover {
+			color: var(--fg);
+			background: var(--neutral-100);
+		}
+
+		html.dark .nav-dropdown-item:hover {
+			background: var(--neutral-800);
+		}
+
+		.nav-right {
+			display: none;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		@media (min-width: 768px) {
+			.nav-right {
+				display: flex;
+			}
+		}
+
+		.nav-login-link {
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: var(--brand);
+			text-decoration: none;
+			padding: 0.375rem 0.75rem;
+			border-radius: 0.375rem;
+			transition: background 0.15s;
+		}
+
+		.nav-login-link:hover {
+			background: rgba(30, 144, 255, 0.08);
+		}
+
+		.btn-primary-nav {
+			display: inline-flex;
+			align-items: center;
+			padding: 0.4375rem 1rem;
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: #fff;
+			background: linear-gradient(to bottom, #5cb3ff, #1e90ff);
+			border: none;
+			border-radius: 0.5rem;
+			cursor: pointer;
+			text-decoration: none;
+			transition: all 150ms;
+		}
+
+		.btn-primary-nav:hover {
+			box-shadow:
+				0 1px 2px rgba(0, 0, 0, 0.1),
+				0 3px 5px rgba(30, 144, 255, 0.5),
+				inset 0 1px 0 rgba(255, 255, 255, 0.25);
+		}
+
+		.theme-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2rem;
+			height: 2rem;
+			background: none;
+			border: none;
+			cursor: pointer;
+			color: var(--muted);
+			border-radius: 0.375rem;
+			transition:
+				color 0.15s,
+				background 0.15s;
+		}
+
+		.theme-toggle:hover {
+			color: var(--fg);
+			background: var(--neutral-100);
+		}
+
+		html.dark .theme-toggle:hover {
+			background: var(--neutral-800);
+		}
+
+		.theme-sun {
+			display: none;
+		}
+		.theme-moon {
+			display: block;
+		}
+		html.dark .theme-sun {
+			display: block;
+		}
+		html.dark .theme-moon {
+			display: none;
+		}
+
+		/* Mobile hamburger */
+		.nav-hamburger {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2rem;
+			height: 2rem;
+			background: none;
+			border: none;
+			cursor: pointer;
+			color: var(--fg);
+			border-radius: 0.375rem;
+		}
+
+		@media (min-width: 768px) {
+			.nav-hamburger {
+				display: none;
+			}
+		}
+
+		/* Mobile overlay */
+		.mobile-menu {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 99;
+			background: var(--bg);
+			flex-direction: column;
+			padding: 1.5rem;
+		}
+
+		.mobile-menu.open {
+			display: flex;
+		}
+
+		.mobile-menu-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 2rem;
+		}
+
+		.mobile-close {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2rem;
+			height: 2rem;
+			background: none;
+			border: none;
+			cursor: pointer;
+			color: var(--fg);
+		}
+
+		.mobile-nav-link {
+			display: block;
+			font-size: 1rem;
+			font-weight: 500;
+			color: var(--fg);
+			text-decoration: none;
+			padding: 0.75rem 0;
+			border-bottom: 1px solid var(--border);
+			transition: color 0.15s;
+		}
+
+		.mobile-nav-link:last-child {
+			border-bottom: none;
+		}
+
+		.mobile-nav-link:hover {
+			color: var(--brand);
+		}
+
+		.mobile-dropdown-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 1rem;
+			font-weight: 500;
+			color: var(--fg);
+			background: none;
+			border: none;
+			border-bottom: 1px solid var(--border);
+			cursor: pointer;
+			width: 100%;
+			padding: 0.75rem 0;
+			font-family: inherit;
+		}
+
+		.mobile-dropdown-sub {
+			display: none;
+			padding-left: 1rem;
+		}
+
+		.mobile-dropdown-sub.open {
+			display: block;
+		}
+
+		.mobile-dropdown-sub a {
+			display: block;
+			font-size: 0.9375rem;
+			color: var(--muted);
+			text-decoration: none;
+			padding: 0.5rem 0;
+			border-bottom: 1px solid var(--border);
+			transition: color 0.15s;
+		}
+
+		.mobile-dropdown-sub a:last-child {
+			border-bottom: none;
+		}
+
+		.mobile-dropdown-sub a:hover {
+			color: var(--fg);
+		}
+
+		.mobile-nav-actions {
+			margin-top: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			padding-top: 2rem;
+		}
+
+		/* ---- MAIN / LOGIN ---- */
+		.page-main {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+			padding: 6rem 1rem 2rem;
+		}
+
+		.login-container {
+			width: 100%;
+			max-width: 24rem;
+		}
+
+		.login-heading {
+			text-align: center;
+			font-size: 1.25rem;
+			font-weight: 600;
+			color: var(--fg);
+			margin-bottom: 0.5rem;
+		}
+
+		.login-tagline {
+			text-align: center;
+			font-size: 0.875rem;
+			color: var(--muted);
+			margin-bottom: 2rem;
+		}
+
+		.login-form {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.form-field label {
+			display: block;
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: #404040;
+			margin-bottom: 0.375rem;
+		}
+
+		html.dark .form-field label {
+			color: #d4d4d4;
+		}
+
+		.form-field input {
+			display: block;
+			width: 100%;
+			padding: 0.625rem 1rem;
+			font-size: 0.875rem;
+			font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+			background: var(--bg);
+			color: var(--fg);
+			border: none;
+			border-radius: 0.5rem;
+			box-shadow:
+				0 0 0 1px rgba(0, 0, 0, 0.1),
+				0 1px 2px rgba(0, 0, 0, 0.05);
+			outline: none;
+			transition: box-shadow 0.15s;
+		}
+
+		html.dark .form-field input {
+			background: #262626;
+			box-shadow:
+				0 0 0 1px rgba(255, 255, 255, 0.1),
+				0 1px 2px rgba(0, 0, 0, 0.05);
+		}
+
+		.form-field input::placeholder {
+			color: var(--neutral-400);
+		}
+
+		.form-field input:focus {
+			box-shadow:
+				0 0 0 2px var(--fg),
+				0 1px 2px rgba(0, 0, 0, 0.05);
+		}
+
+		html.dark .form-field input:focus {
+			box-shadow:
+				0 0 0 2px rgba(255, 255, 255, 0.3),
+				0 1px 2px rgba(0, 0, 0, 0.05);
+		}
+
+		.password-label-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 0.375rem;
+		}
+
+		.password-label-row label {
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: #404040;
+			margin-bottom: 0;
+		}
+
+		html.dark .password-label-row label {
+			color: #d4d4d4;
+		}
+
+		.forgot-link {
+			font-size: 0.875rem;
+			color: var(--muted);
+			text-decoration: none;
+			transition: color 0.15s;
+		}
+
+		.forgot-link:hover {
+			color: var(--fg);
+		}
+
+		.btn-signin {
+			background: linear-gradient(to bottom, #5cb3ff, #1e90ff);
+			color: #fff;
+			border: none;
+			width: 100%;
+			padding: 0.625rem 1.5rem;
+			border-radius: 0.5rem;
+			font-size: 0.875rem;
+			font-weight: 500;
+			font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+			cursor: pointer;
+			transition: all 150ms;
+		}
+
+		.btn-signin:hover {
+			box-shadow:
+				0 1px 2px rgba(0, 0, 0, 0.1),
+				0 3px 5px rgba(30, 144, 255, 0.5),
+				inset 0 1px 0 rgba(255, 255, 255, 0.25);
+		}
+
+		.btn-signin:active {
+			transform: scale(0.98);
+		}
+
+		.or-divider {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			margin: 1.5rem 0;
+		}
+
+		.or-line {
+			flex: 1;
+			height: 1px;
+			background: repeating-linear-gradient(
+				90deg,
+				var(--neutral-300) 0px,
+				var(--neutral-300) 4px,
+				transparent 4px,
+				transparent 8px
+			);
+		}
+
+		html.dark .or-line {
+			background: repeating-linear-gradient(
+				90deg,
+				var(--neutral-700) 0px,
+				var(--neutral-700) 4px,
+				transparent 4px,
+				transparent 8px
+			);
+		}
+
+		.or-text {
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			color: var(--muted);
+		}
+
+		.social-buttons {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+
+		.btn-social {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.75rem;
+			width: 100%;
+			padding: 0.625rem 1.5rem;
+			font-size: 0.875rem;
+			font-weight: 500;
+			font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+			background: var(--bg);
+			color: var(--fg);
+			border: none;
+			border-radius: 0.5rem;
+			box-shadow:
+				0 0 0 1px rgba(0, 0, 0, 0.15),
+				0 1px 2px rgba(0, 0, 0, 0.05);
+			cursor: pointer;
+			transition: all 150ms;
+		}
+
+		.btn-social:hover {
+			background: var(--neutral-100);
+			box-shadow:
+				0 0 0 1px rgba(0, 0, 0, 0.2),
+				0 1px 2px rgba(0, 0, 0, 0.05);
+		}
+
+		html.dark .btn-social {
+			background: #262626;
+			box-shadow:
+				0 0 0 1px rgba(255, 255, 255, 0.1),
+				0 1px 2px rgba(0, 0, 0, 0.05);
+		}
+
+		html.dark .btn-social:hover {
+			background: #404040;
+		}
+
+		.signup-link {
+			text-align: center;
+			font-size: 0.875rem;
+			color: var(--muted);
+			margin-top: 1.5rem;
+		}
+
+		.signup-link a {
+			font-weight: 500;
+			color: var(--fg);
+			text-decoration: none;
+			transition: color 0.15s;
+		}
+
+		.signup-link a:hover {
+			color: var(--brand);
+		}
+
+		/* ---- FOOTER ---- */
+		.site-footer {
+			border-top: 1px solid var(--border);
+			background: var(--bg);
+			padding: 5rem 2rem 0;
+		}
+
+		.footer-inner {
+			max-width: 80rem;
+			margin: 0 auto;
+		}
+
+		.footer-top {
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+		}
+
+		@media (min-width: 1024px) {
+			.footer-top {
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: flex-start;
+			}
+		}
+
+		.footer-brand {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.footer-logo-row {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.footer-logo-row img {
+			width: 16px;
+			height: 16px;
+		}
+
+		.footer-logo-text {
+			font-weight: 600;
+			font-size: 0.9375rem;
+			color: var(--fg);
+		}
+
+		.footer-socials {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.footer-social-link {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2rem;
+			height: 2rem;
+			color: var(--muted);
+			text-decoration: none;
+			border-radius: 0.375rem;
+			transition:
+				color 0.15s,
+				background 0.15s;
+		}
+
+		.footer-social-link:hover {
+			color: var(--fg);
+			background: var(--neutral-100);
+		}
+
+		html.dark .footer-social-link:hover {
+			background: var(--neutral-800);
+		}
+
+		.footer-theme-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2rem;
+			height: 2rem;
+			background: none;
+			border: 1px solid var(--border);
+			cursor: pointer;
+			color: var(--muted);
+			border-radius: 0.375rem;
+			transition:
+				color 0.15s,
+				background 0.15s;
+		}
+
+		.footer-theme-toggle:hover {
+			color: var(--fg);
+			background: var(--neutral-100);
+		}
+
+		html.dark .footer-theme-toggle:hover {
+			background: var(--neutral-800);
+		}
+
+		.footer-copyright {
+			font-size: 0.8125rem;
+			color: var(--muted);
+		}
+
+		.footer-links {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2.5rem;
+		}
+
+		@media (min-width: 1024px) {
+			.footer-links {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		.footer-col-title {
+			font-size: 0.8125rem;
+			font-weight: 600;
+			color: var(--fg);
+			text-transform: none;
+			letter-spacing: 0;
+			margin-bottom: 1rem;
+		}
+
+		.footer-col-links {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 0.625rem;
+		}
+
+		.footer-col-links li a {
+			font-size: 0.875rem;
+			color: var(--muted);
+			text-decoration: none;
+			transition: color 0.15s;
+		}
+
+		.footer-col-links li a:hover {
+			color: var(--fg);
+		}
+
+		.footer-wordmark {
+			position: relative;
+			height: calc(clamp(3rem, 18vw, 20rem) * 0.75);
+			overflow: hidden;
+			margin-top: 5rem;
+		}
+
+		.footer-wordmark-text {
+			position: absolute;
+			inset-x: 0;
+			top: 0;
+			font-size: clamp(3rem, 18vw, 20rem);
+			letter-spacing: -0.02em;
+			font-weight: 700;
+			text-align: center;
+			line-height: 1;
+			color: transparent;
+		}
+
+		.wordmark-light {
+			display: inline;
+		}
+		.wordmark-dark {
+			display: none;
+		}
+		html.dark .wordmark-light {
+			display: none;
+		}
+		html.dark .wordmark-dark {
+			display: inline;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- FIXED NAV -->
+		<header class="nav-wrapper" id="navbar">
+			<nav class="nav-inner">
+				<a href="index.html" class="nav-logo">
+					<img src="assets/images/logo.png" alt="Simplistic logo" class="logo-light">
+					<img src="assets/images/logo-dark.png" alt="Simplistic logo" class="logo-dark">
+					<span class="nav-logo-text">Simplistic</span>
+				</a>
+
+				<div class="nav-links">
+					<a href="index.html#product" class="nav-link">Product</a>
+					<a href="pricing.html" class="nav-link">Pricing</a>
+					<div class="nav-dropdown" id="resources-dropdown">
+						<button class="nav-dropdown-btn" id="resources-btn" aria-expanded="false">
+							Resources
+							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="6 9 12 15 18 9"></polyline>
+							</svg>
+						</button>
+						<div class="nav-dropdown-menu" id="resources-menu">
+							<a href="#" class="nav-dropdown-item">Blog</a>
+							<a href="#" class="nav-dropdown-item">Documentation</a>
+							<a href="#" class="nav-dropdown-item">Help Center</a>
+							<a href="#" class="nav-dropdown-item">Changelog</a>
+							<a href="#" class="nav-dropdown-item">Tutorials</a>
+						</div>
+					</div>
+					<a href="#" class="nav-link">Contact</a>
+				</div>
+
+				<div class="nav-right">
+					<a href="login.html" class="nav-login-link">Login</a>
+					<a href="#" class="btn-primary-nav">Try for free</a>
+				</div>
+
+				<button class="nav-hamburger" id="hamburger-btn" aria-label="Open menu">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="3" y1="12" x2="21" y2="12"></line>
+						<line x1="3" y1="6" x2="21" y2="6"></line>
+						<line x1="3" y1="18" x2="21" y2="18"></line>
+					</svg>
+				</button>
+			</nav>
+		</header>
+
+		<!-- MOBILE MENU -->
+		<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+			<div class="mobile-menu-header">
+				<a href="index.html" class="nav-logo">
+					<img src="assets/images/logo.png" alt="" class="logo-light">
+					<img src="assets/images/logo-dark.png" alt="" class="logo-dark">
+					<span class="nav-logo-text">Simplistic</span>
+				</a>
+				<button class="mobile-close" id="mobile-close-btn" aria-label="Close menu">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
+			</div>
+			<a href="index.html#product" class="mobile-nav-link">Product</a>
+			<a href="pricing.html" class="mobile-nav-link">Pricing</a>
+			<button class="mobile-dropdown-toggle" id="mobile-resources-btn">
+				Resources
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
+			</button>
+			<div class="mobile-dropdown-sub" id="mobile-resources-sub">
+				<a href="#">Blog</a>
+				<a href="#">Documentation</a>
+				<a href="#">Help Center</a>
+				<a href="#">Changelog</a>
+				<a href="#">Tutorials</a>
+			</div>
+			<a href="#" class="mobile-nav-link">Contact</a>
+			<div class="mobile-nav-actions">
+				<a href="login.html" class="btn-signin" style="text-align:center;text-decoration:none;">Login</a>
+				<a href="#" class="btn-primary-nav" style="justify-content:center;text-decoration:none;">Try for free</a>
+			</div>
+		</div>
+
+		<!-- MAIN LOGIN -->
+		<main class="page-main">
+			<div class="login-container">
+				<h1 class="login-heading">Sign in to your account</h1>
+				<p class="login-tagline">Welcome back! Please enter your details.</p>
+
+				<form class="login-form" onsubmit="return false;">
+					<div class="form-field">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" style="">
+					</div>
+
+					<div class="form-field">
+						<div class="password-label-row">
+							<label for="password">Password</label>
+							<a href="#" class="forgot-link">Forgot?</a>
+						</div>
+						<input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" style="">
+					</div>
+
+					<button type="submit" class="btn-signin">Sign in</button>
+				</form>
+
+				<div class="or-divider">
+					<div class="or-line"></div>
+					<span class="or-text">or</span>
+					<div class="or-line"></div>
+				</div>
+
+				<div class="social-buttons">
+					<button type="button" class="btn-social">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M20.945 11a9 9 0 1 1 -3.284 -5.997l-2.655 2.392a5.5 5.5 0 1 0 2.119 6.605h-4.125v-3h7.945"></path>
+						</svg>
+						Continue with Google
+					</button>
+					<button type="button" class="btn-social">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 814 1000" fill="currentColor">
+							<path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-42.4-155.5-127.4C46.7 790.8 0 663 0 541.8 0 347.3 107.2 244.5 195.2 244.5c59.4 0 109.4 39.5 141.9 39.5 32.5 0 90.9-41.8 159.1-41.8 25.3 0 108.1 2.5 167.4 78.5zm-56.8-155.4c28.5-34.9 48.9-83.2 48.9-131.4 0-6.7-.6-13.5-1.9-19.5-46.5 1.9-101.4 32-134.2 72.4-26.7 31.5-51 80.5-51 129.4 0 6.7.9 13.5 1.9 15.8 3.2.6 7.8 1.3 12.4 1.3 43.9 0 96.2-29.2 123.9-68z"></path>
+						</svg>
+						Continue with Apple
+					</button>
+				</div>
+
+				<p class="signup-link">
+					Don't have an account? <a href="#">Sign up</a>
+				</p>
+			</div>
+		</main>
+
+		<!-- FOOTER -->
+		<footer class="site-footer">
+			<div class="footer-inner">
+				<div class="footer-top">
+					<div class="footer-brand">
+						<div class="footer-logo-row">
+							<img src="assets/images/logo.png" alt="Simplistic logo" class="logo-light">
+							<img src="assets/images/logo-dark.png" alt="Simplistic logo" class="logo-dark">
+							<span class="footer-logo-text">Simplistic</span>
+						</div>
+						<div class="footer-socials">
+							<a href="#" class="footer-social-link" aria-label="Twitter">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:1.25rem;height:1.25rem">
+									<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+								</svg>
+							</a>
+							<a href="#" class="footer-social-link" aria-label="LinkedIn">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:1.25rem;height:1.25rem">
+									<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+								</svg>
+							</a>
+							<button class="footer-theme-toggle" id="theme-toggle-footer" aria-label="Toggle theme">
+								<svg class="theme-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<circle cx="12" cy="12" r="4"></circle>
+									<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+								</svg>
+								<svg class="theme-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+								</svg>
+							</button>
+						</div>
+						<p class="footer-copyright">
+							© copyright Simplistic 2024. All rights reserved.
+						</p>
+					</div>
+
+					<div class="footer-links">
+						<div>
+							<p class="footer-col-title">Pages</p>
+							<ul class="footer-col-links">
+								<li><a href="index.html#product">Products</a></li>
+								<li><a href="index.html#product">Features</a></li>
+								<li><a href="#">Integrations</a></li>
+								<li><a href="pricing.html">Pricing</a></li>
+								<li><a href="#">Blog</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-col-title">Socials</p>
+							<ul class="footer-col-links">
+								<li><a href="#">Twitter</a></li>
+								<li><a href="#">LinkedIn</a></li>
+								<li><a href="#">GitHub</a></li>
+								<li><a href="#">Discord</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-col-title">Legal</p>
+							<ul class="footer-col-links">
+								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Terms of Service</a></li>
+								<li><a href="#">Cookie Policy</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-col-title">Register</p>
+							<ul class="footer-col-links">
+								<li><a href="#">Get Started</a></li>
+								<li><a href="login.html">Login</a></li>
+								<li><a href="#">Documentation</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="footer-wordmark">
+					<p class="footer-wordmark-text">
+						<span class="wordmark-light" style="-webkit-text-stroke:1px #e5e5e5">Simplistic</span>
+						<span class="wordmark-dark" style="-webkit-text-stroke:1px #404040">Simplistic</span>
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		// Theme toggle
+		function applyTheme() {
+			var isDark = document.documentElement.classList.contains("dark");
+			localStorage.setItem("theme", isDark ? "dark" : "light");
+		}
+
+		function toggleTheme() {
+			document.documentElement.classList.toggle("dark");
+			applyTheme();
+		}
+
+		document.getElementById("theme-toggle-nav")?.addEventListener("click", toggleTheme);
+		document.getElementById("theme-toggle-footer")?.addEventListener("click", toggleTheme);
+
+		// Nav scroll
+		var navbar = document.getElementById("navbar");
+		window.addEventListener(
+			"scroll",
+			function () {
+				if (window.scrollY > 10) {
+					navbar.classList.add("scrolled");
+				} else {
+					navbar.classList.remove("scrolled");
+				}
+			},
+			{ passive: true },
+		);
+
+		// Mobile menu
+		var hamburgerBtn = document.getElementById("hamburger-btn");
+		var mobileMenu = document.getElementById("mobile-menu");
+		var mobileCloseBtn = document.getElementById("mobile-close-btn");
+
+		hamburgerBtn.addEventListener("click", function () {
+			mobileMenu.classList.add("open");
+			document.body.style.overflow = "hidden";
+		});
+
+		mobileCloseBtn.addEventListener("click", function () {
+			mobileMenu.classList.remove("open");
+			document.body.style.overflow = "";
+		});
+
+		// Mobile resources dropdown
+		var mobileResourcesBtn = document.getElementById("mobile-resources-btn");
+		var mobileResourcesSub = document.getElementById("mobile-resources-sub");
+
+		mobileResourcesBtn.addEventListener("click", function () {
+			var isOpen = mobileResourcesSub.classList.toggle("open");
+			var chevron = mobileResourcesBtn.querySelector("svg");
+			chevron.style.transform = isOpen ? "rotate(180deg)" : "";
+		});
+
+		// Desktop resources dropdown
+		var resourcesBtn = document.getElementById("resources-btn");
+		var resourcesMenu = document.getElementById("resources-menu");
+
+		resourcesBtn.addEventListener("click", function (e) {
+			e.stopPropagation();
+			var isOpen = resourcesMenu.classList.toggle("open");
+			resourcesBtn.classList.toggle("open", isOpen);
+			resourcesBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+		});
+
+		document.addEventListener("click", function (e) {
+			if (!document.getElementById("resources-dropdown").contains(e.target)) {
+				resourcesMenu.classList.remove("open");
+				resourcesBtn.classList.remove("open");
+				resourcesBtn.setAttribute("aria-expanded", "false");
+			}
+		});
+
+		document.addEventListener("keydown", function (e) {
+			if (e.key === "Escape") {
+				resourcesMenu.classList.remove("open");
+				resourcesBtn.classList.remove("open");
+				resourcesBtn.setAttribute("aria-expanded", "false");
+				if (mobileMenu.classList.contains("open")) {
+					mobileMenu.classList.remove("open");
+					document.body.style.overflow = "";
+				}
+			}
+		});
+		</script>
+	
+
+</body></html>

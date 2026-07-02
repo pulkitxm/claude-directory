@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html
+	lang="en"
+	class="scroll-smooth selection:bg-accent-500 selection:text-base-100"
+>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Our Cabins — Mølle</title>
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<link rel="stylesheet" href="assets/css/base.css">
+	</head>
+	<body class="flex flex-col bg-base-100 min-h-svh 2xl:max-w-[120rem] mx-auto">
+		<div
+			class="fixed bottom-0 right-0 z-50 border-t border-l border-dashed border-black/15 p-4"
+		>
+			<button
+				class="flex transition text-center items-center duration-300 justify-center bg-base-900 text-white hover:bg-base-700 size-13"
+				type="button"
+				id="searchButton"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					class="size-4"
+				>
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+					<path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+					<path d="M21 21l-6 -6"></path>
+				</svg>
+			</button>
+		</div>
+		<div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+			<div class="relative w-full min-h-screen px-1 text-center">
+				<div
+					class="fixed inset-0 bg-base-900/20 backdrop-blur"
+					id="modalOverlay"
+				></div>
+				<div class="w-full mt-48 grid grid-cols-1 lg:grid-cols-5">
+					<div
+						class="relative block w-full p-4 text-left col-span-full lg:col-span-3 lg:col-start-2"
+					>
+						<input
+							type="text"
+							id="searchInput"
+							placeholder="Search posts and products..."
+							class="w-full text-lg bg-white border-dashed outline-none h-14 text-base-700"
+						>
+						<div
+							id="searchResults"
+							class="w-full overflow-y-auto bg-white max-h-100 divide-y divide-base-200 hidden"
+						></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="fixed inset-x-0 top-0 w-full z-51 border-b border-dashed border-black/15 2xl:max-w-[120rem] mx-auto lg:static bg-base-100"
+		>
+			<div class="mx-auto max-w-screen py-4">
+				<div
+					class="flex flex-col px-4 md:items-center md:justify-between md:flex-row"
+				>
+					<div class="flex items-center justify-between">
+						<a href="index.html"
+							><svg
+								class="text-base-900 h-7"
+								viewBox="0 0 168 169"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M29.2348 2.17664H1.79688V29.6145H29.2348V2.17664Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M56.6723 2.17664H29.2344V29.6145H56.6723V2.17664Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M84.1107 2.17664H56.6729V29.6145H84.1107V2.17664Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M111.536 2.17664H84.0977V29.6145H111.536V2.17664Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M138.973 2.17664H111.535V29.6145H138.973V2.17664Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M166.411 2.17664H138.974V29.6145H166.411V2.17664Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M29.2348 29.6145H1.79688V57.0524H29.2348V29.6145Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M56.6723 29.6145H29.2344V57.0524H56.6723V29.6145Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M84.1107 29.6145H56.6729V57.0524H84.1107V29.6145Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M111.536 29.6145H84.0977V57.0524H111.536V29.6145Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M138.973 29.6145H111.535V57.0524H138.973V29.6145Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M166.411 29.6145H138.974V57.0524H166.411V29.6145Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M29.2348 57.0395H1.79688V84.4774H29.2348V57.0395Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M56.6723 57.0395H29.2344V84.4774H56.6723V57.0395Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M84.1107 57.0395H56.6729V84.4774H84.1107V57.0395Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M111.536 57.0395H84.0977V84.4774H111.536V57.0395Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M138.973 57.0395H111.535V84.4774H138.973V57.0395Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M166.411 57.0395H138.974V84.4774H166.411V57.0395Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M29.2348 84.4774H1.79688V111.915H29.2348V84.4774Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M56.6723 84.4774H29.2344V111.915H56.6723V84.4774Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M84.1107 84.4774H56.6729V111.915H84.1107V84.4774Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M111.536 84.4774H84.0977V111.915H111.536V84.4774Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M138.973 84.4774H111.535V111.915H138.973V84.4774Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M166.411 84.4774H138.974V111.915H166.411V84.4774Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M29.2348 111.915H1.79688V139.353H29.2348V111.915Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M56.6723 111.915H29.2344V139.353H56.6723V111.915Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M84.1107 111.915H56.6729V139.353H84.1107V111.915Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M111.536 111.915H84.0977V139.353H111.536V111.915Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M138.973 111.915H111.535V139.353H138.973V111.915Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M166.411 111.915H138.974V139.353H166.411V111.915Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M29.2348 139.34H1.79688V166.778H29.2348V139.34Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M56.6723 139.34H29.2344V166.778H56.6723V139.34Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M84.1107 139.34H56.6729V166.778H84.1107V139.34Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M111.536 139.34H84.0977V166.778H111.536V139.34Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M138.973 139.34H111.535V166.778H138.973V139.34Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+								<path
+									d="M166.411 139.34H138.974V166.778H166.411V139.34Z"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-miterlimit="10"
+								/>
+							</svg></a
+						>
+						<button
+							class="flex items-center justify-center bg-white hover:text-accent-500 size-8 md:hidden"
+							id="menu-toggle"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="size-4"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M4 8l16 0"></path>
+								<path d="M4 16l16 0"></path>
+							</svg>
+						</button>
+					</div>
+					<nav
+						id="navigation-menu"
+						class="fixed inset-0 flex flex-col justify-between h-full py-12 opacity-0 pointer-events-none bg-base-100 transform transition-all duration-300 -translate-y-4 md:relative md:inset-auto md:opacity-100 md:pointer-events-auto md:translate-y-0 md:w-full"
+					>
+						<button
+							class="absolute top-4 right-4 bg-white hover:text-accent-500 size-8 md:hidden"
+							id="menu-close"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="size-4"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M18 6l-12 12" />
+								<path d="M6 6l12 12" />
+							</svg>
+						</button>
+						<div
+							class="flex flex-col justify-center mt-12 gap-2 md:gap-4 md:flex-row md:ml-auto md:mt-0"
+						>
+							<a
+								href="system-overview.html"
+								class="text-2xl text-base-900 md:text-xs md:text-base-600 hover:text-base-600"
+								>Overview</a
+							>
+							<a
+								href="homes.html"
+								class="text-2xl text-base-900 md:text-xs md:text-base-600 hover:text-base-600"
+								>Homes</a
+							>
+							<a
+								href="process.html"
+								class="text-2xl text-base-900 md:text-xs md:text-base-600 hover:text-base-600"
+								>How It Works</a
+							>
+							<a
+								href="about.html"
+								class="text-2xl text-base-900 md:text-xs md:text-base-600 hover:text-base-600"
+								>About</a
+							>
+							<a
+								href="customers.html"
+								class="text-2xl text-base-900 md:text-xs md:text-base-600 hover:text-base-600"
+								>Customers</a
+							>
+							<a
+								href="contact.html"
+								class="text-2xl text-base-900 md:text-xs md:text-base-600 hover:text-base-600"
+								>Contact</a
+							>
+							<a
+								href="sign-in.html"
+								class="text-2xl text-base-900 md:text-xs md:text-base-600 hover:text-base-600"
+								>Sign in</a
+							>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div
+			aria-hidden="true"
+			class="fixed inset-0 z-0 pointer-events-none w-full 2xl:max-w-[120rem] mx-auto hidden lg:block"
+		>
+			<div
+				class="h-full border-dashed grid grid-cols-5 border-x divide-x divide-dashed divide-black/15 border-black/15"
+			>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+
+		<main class="grow relative pt-[3.7rem] lg:pt-0">
+			<section>
+				<div class="mx-auto max-w-screen">
+					<div class="items-start grid grid-cols-1 lg:grid-cols-5">
+						<div
+							class="w-full px-4 py-12 border-b border-dashed col-span-full lg:col-span-2 lg:col-start-2 border-black/15"
+						>
+							<h1
+								class="text-5xl sm:text-4xl md:text-5xl lg:text-6xl text-justify uppercase text-base-900 font-display"
+							>
+								Our Cabins
+							</h1>
+						</div>
+						<div
+							class="p-4 lg:col-span-1 lg:col-start-4 lg:row-start-2 lg:border-t border-black/15"
+						>
+							<p class="text-base mt-2 text-base-500">
+								A curated collection of modern prefab homes — crafted for design
+								lovers, dreamers, and off-grid adventurers alike.
+							</p>
+						</div>
+						<div
+							class="border-dashed grid grid-cols-1 lg:grid-cols-5 col-span-full"
+						>
+							<div
+								class="relative p-4 border-t border-dashed group border-black/15"
+							>
+								<a
+									href="product.html"
+									class="absolute inset-0 z-10"
+									title="Halo X"
+								></a>
+								<div
+									class="overflow-hidden aspect-12/8 group-hover:bg-base-200 duration-300 bg-base-100"
+								>
+									<img
+										src="assets/images/thumbnail.DsFJYJH3_OLbF5.webp"
+										alt="Halo X"
+										class="object-cover object-center size-full"
+									>
+								</div>
+								<div class="mt-1">
+									<h3 class="text-sm font-medium uppercase text-base-900">
+										Halo X
+									</h3>
+									<p class="text-xs text-base-600">Off-Grid Retreat</p>
+								</div>
+							</div>
+							<div
+								class="relative p-4 border-t border-dashed group border-black/15"
+							>
+								<a
+									href="product.html"
+									class="absolute inset-0 z-10"
+									title="Luma Vista"
+								></a>
+								<div
+									class="overflow-hidden aspect-12/8 group-hover:bg-base-200 duration-300 bg-base-100"
+								>
+									<img
+										src="assets/images/thumbnail.DmvB7T1o_21wnGf.webp"
+										alt="Luma Vista"
+										class="object-cover object-center size-full"
+									>
+								</div>
+								<div class="mt-1">
+									<h3 class="text-sm font-medium uppercase text-base-900">
+										Luma Vista
+									</h3>
+									<p class="text-xs text-base-600">Luxury Living · $245,000</p>
+								</div>
+							</div>
+							<div
+								class="relative p-4 border-t border-dashed group border-black/15 lg:col-span-2 lg:col-start-4"
+							>
+								<a
+									href="product.html"
+									class="absolute inset-0 z-10"
+									title="Nook 360"
+								></a>
+								<div
+									class="overflow-hidden aspect-12/8 group-hover:bg-base-200 duration-300 bg-base-100"
+								>
+									<img
+										src="assets/images/thumbnail.rfGYv_VK_Z1szFfB.webp"
+										alt="Nook 360"
+										class="object-cover object-center size-full"
+									>
+								</div>
+								<div class="mt-1">
+									<h3 class="text-sm font-medium uppercase text-base-900">
+										Nook 360
+									</h3>
+									<p class="text-xs text-base-600">Micro Living · $112,500</p>
+								</div>
+							</div>
+							<div
+								class="relative p-4 border-t border-dashed group border-black/15 lg:col-span-3"
+							>
+								<a
+									href="product.html"
+									class="absolute inset-0 z-10"
+									title="Ridge A1"
+								></a>
+								<div
+									class="overflow-hidden aspect-12/8 group-hover:bg-base-200 duration-300 bg-base-100"
+								>
+									<img
+										src="assets/images/thumbnail.BVTdCAzE_1D8Yo8.webp"
+										alt="Ridge A1"
+										class="object-cover object-center size-full"
+									>
+								</div>
+								<div class="mt-1">
+									<h3 class="text-sm font-medium uppercase text-base-900">
+										Ridge A1
+									</h3>
+									<p class="text-xs text-base-600">Off-Grid Cabin</p>
+								</div>
+							</div>
+							<div
+								class="relative p-4 border-t border-dashed group border-black/15 lg:col-start-5"
+							>
+								<a
+									href="product.html"
+									class="absolute inset-0 z-10"
+									title="RidgeHaus"
+								></a>
+								<div
+									class="overflow-hidden aspect-12/8 group-hover:bg-base-200 duration-300 bg-base-100"
+								>
+									<img
+										src="assets/images/thumbnail.CptuS-Y-_Z2bKCKy.webp"
+										alt="RidgeHaus"
+										class="object-cover object-center size-full"
+									>
+								</div>
+								<div class="mt-1">
+									<h3 class="text-sm font-medium uppercase text-base-900">
+										RidgeHaus
+									</h3>
+									<p class="text-xs text-base-600">Mountain Cabin · $158,000</p>
+								</div>
+							</div>
+							<div
+								class="relative p-4 border-t border-dashed group border-black/15 lg:col-span-2"
+							>
+								<a
+									href="product.html"
+									class="absolute inset-0 z-10"
+									title="Solis V4"
+								></a>
+								<div
+									class="overflow-hidden aspect-12/8 group-hover:bg-base-200 duration-300 bg-base-100"
+								>
+									<img
+										src="assets/images/thumbnail.Cx-48zvi_1kQm5M.webp"
+										alt="Solis V4"
+										class="object-cover object-center size-full"
+									>
+								</div>
+								<div class="mt-1">
+									<h3 class="text-sm font-medium uppercase text-base-900">
+										Solis V4
+									</h3>
+									<p class="text-xs text-base-600">Luxury Villa</p>
+								</div>
+							</div>
+							<div
+								class="relative p-4 border-t border-dashed group border-black/15"
+							>
+								<a
+									href="product.html"
+									class="absolute inset-0 z-10"
+									title="Summit Haus"
+								></a>
+								<div
+									class="overflow-hidden aspect-12/8 group-hover:bg-base-200 duration-300 bg-base-100"
+								>
+									<img
+										src="assets/images/thumbnail.CTd43GAH_ZSUee7.webp"
+										alt="Summit Haus"
+										class="object-cover object-center size-full"
+									>
+								</div>
+								<div class="mt-1">
+									<h3 class="text-sm font-medium uppercase text-base-900">
+										Summit Haus
+									</h3>
+									<p class="text-xs text-base-600">Family Living</p>
+								</div>
+							</div>
+							<div
+								class="relative p-4 border-t border-dashed group border-black/15 lg:col-start-5"
+							>
+								<a
+									href="product.html"
+									class="absolute inset-0 z-10"
+									title="Verdant"
+								></a>
+								<div
+									class="overflow-hidden aspect-12/8 group-hover:bg-base-200 duration-300 bg-base-100"
+								>
+									<img
+										src="assets/images/thumbnail.COKXryOF_Ccqrm.webp"
+										alt="Verdant"
+										class="object-cover object-center size-full"
+									>
+								</div>
+								<div class="mt-1">
+									<h3 class="text-sm font-medium uppercase text-base-900">
+										Verdant
+									</h3>
+									<p class="text-xs text-base-600">Creative Studio</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- FAQ -->
+			<section class="border-t border-dashed border-black/15">
+				<div
+					class="mx-auto max-w-screen mt-24 border-t border-dashed border-black/15 lg:mt-48"
+				>
+					<div class="grid gap-4 grid-cols-1 lg:grid-cols-5">
+						<div class="p-4 lg:col-span-2 lg:col-start-2">
+							<h2
+								class="text-5xl sm:text-4xl md:text-5xl lg:text-6xl text-justify uppercase text-base-900 font-display"
+							>
+								FAQ
+							</h2>
+						</div>
+						<div
+							class="border-t border-dashed lg:col-span-full border-black/15 divide-y divide-dashed divide-black/15"
+						>
+							<details class="group">
+								<summary
+									class="items-start cursor-pointer grid grid-cols-1 lg:grid-cols-5 text-base-900"
+								>
+									<span class="p-4"
+										><p
+											class="text-5xl sm:text-4xl md:text-5xl lg:text-6xl font-thin text-base-900"
+										>
+											1
+										</p></span
+									><span class="p-4 lg:col-span-3"
+										><h3
+											class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl uppercase text-base-900 font-display"
+										>
+											How long does the full process take?
+										</h3></span
+									>
+									<div class="p-4 lg:ml-auto">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											class="size-8 transition-transform group-open:-rotate-180"
+										>
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M12 5l0 14"></path>
+											<path d="M18 13l-6 6"></path>
+											<path d="M6 13l6 6"></path>
+										</svg>
+									</div>
+								</summary>
+								<div
+									class="border-t border-dashed grid grid-cols-1 lg:grid-cols-5 border-black/15"
+								>
+									<div class="p-4 lg:col-span-2 lg:col-start-3">
+										<p class="text-sm text-justify uppercase text-base-600">
+											From design to move-in, the typical timeline ranges from 4
+											to 6 months depending on permitting, location, and
+											customization level.
+										</p>
+									</div>
+								</div>
+							</details>
+							<details class="group">
+								<summary
+									class="items-start cursor-pointer grid grid-cols-1 lg:grid-cols-5 text-base-900"
+								>
+									<span class="p-4"
+										><p
+											class="text-5xl sm:text-4xl md:text-5xl lg:text-6xl font-thin text-base-900"
+										>
+											2
+										</p></span
+									><span class="p-4 lg:col-span-3"
+										><h3
+											class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl uppercase text-base-900 font-display"
+										>
+											Can I customize the layout or finishes?
+										</h3></span
+									>
+									<div class="p-4 lg:ml-auto">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											class="size-8 transition-transform group-open:-rotate-180"
+										>
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M12 5l0 14"></path>
+											<path d="M18 13l-6 6"></path>
+											<path d="M6 13l6 6"></path>
+										</svg>
+									</div>
+								</summary>
+								<div
+									class="border-t border-dashed grid grid-cols-1 lg:grid-cols-5 border-black/15"
+								>
+									<div class="p-4 lg:col-span-2 lg:col-start-3">
+										<p class="text-sm text-justify uppercase text-base-600">
+											Absolutely. Our homes are modular and offer a range of
+											layouts, finishes, and add-ons to suit your needs.
+										</p>
+									</div>
+								</div>
+							</details>
+							<details class="group">
+								<summary
+									class="items-start cursor-pointer grid grid-cols-1 lg:grid-cols-5 text-base-900"
+								>
+									<span class="p-4"
+										><p
+											class="text-5xl sm:text-4xl md:text-5xl lg:text-6xl font-thin text-base-900"
+										>
+											3
+										</p></span
+									><span class="p-4 lg:col-span-3"
+										><h3
+											class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl uppercase text-base-900 font-display"
+										>
+											Do you offer installation and setup?
+										</h3></span
+									>
+									<div class="p-4 lg:ml-auto">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											class="size-8 transition-transform group-open:-rotate-180"
+										>
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M12 5l0 14"></path>
+											<path d="M18 13l-6 6"></path>
+											<path d="M6 13l6 6"></path>
+										</svg>
+									</div>
+								</summary>
+								<div
+									class="border-t border-dashed grid grid-cols-1 lg:grid-cols-5 border-black/15"
+								>
+									<div class="p-4 lg:col-span-2 lg:col-start-3">
+										<p class="text-sm text-justify uppercase text-base-600">
+											Yes. We deliver your Mølle home and handle on-site
+											installation and hookups. You don't lift a finger.
+										</p>
+									</div>
+								</div>
+							</details>
+							<details class="group">
+								<summary
+									class="items-start cursor-pointer grid grid-cols-1 lg:grid-cols-5 text-base-900"
+								>
+									<span class="p-4"
+										><p
+											class="text-5xl sm:text-4xl md:text-5xl lg:text-6xl font-thin text-base-900"
+										>
+											4
+										</p></span
+									><span class="p-4 lg:col-span-3"
+										><h3
+											class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl uppercase text-base-900 font-display"
+										>
+											Are Mølle homes compliant with local codes?
+										</h3></span
+									>
+									<div class="p-4 lg:ml-auto">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											class="size-8 transition-transform group-open:-rotate-180"
+										>
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M12 5l0 14"></path>
+											<path d="M18 13l-6 6"></path>
+											<path d="M6 13l6 6"></path>
+										</svg>
+									</div>
+								</summary>
+								<div
+									class="border-t border-dashed grid grid-cols-1 lg:grid-cols-5 border-black/15"
+								>
+									<div class="p-4 lg:col-span-2 lg:col-start-3">
+										<p class="text-sm text-justify uppercase text-base-600">
+											All models are designed to meet standard building codes.
+											We assist with site-specific adjustments and permitting.
+										</p>
+									</div>
+								</div>
+							</details>
+							<details class="group">
+								<summary
+									class="items-start cursor-pointer grid grid-cols-1 lg:grid-cols-5 text-base-900"
+								>
+									<span class="p-4"
+										><p
+											class="text-5xl sm:text-4xl md:text-5xl lg:text-6xl font-thin text-base-900"
+										>
+											5
+										</p></span
+									><span class="p-4 lg:col-span-3"
+										><h3
+											class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl uppercase text-base-900 font-display"
+										>
+											Is it possible to go off-grid?
+										</h3></span
+									>
+									<div class="p-4 lg:ml-auto">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											class="size-8 transition-transform group-open:-rotate-180"
+										>
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M12 5l0 14"></path>
+											<path d="M18 13l-6 6"></path>
+											<path d="M6 13l6 6"></path>
+										</svg>
+									</div>
+								</summary>
+								<div
+									class="border-t border-dashed grid grid-cols-1 lg:grid-cols-5 border-black/15"
+								>
+									<div class="p-4 lg:col-span-2 lg:col-start-3">
+										<p class="text-sm text-justify uppercase text-base-600">
+											Yes. Many of our models can be equipped with solar, water
+											collection, and composting systems for full off-grid
+											capability.
+										</p>
+									</div>
+								</div>
+							</details>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="relative overflow-hidden">
+			<div class="mx-auto max-w-screen pt-24">
+				<div
+					class="items-start border-t border-dashed grid lg:grid-cols-5 border-black/15"
+				>
+					<div
+						class="flex flex-col gap-2 lg:col-span-2 divide-dashed divide-y divide-black/15"
+					>
+						<div class="p-4">
+							<svg
+								class="text-base-900 w-40"
+								viewBox="0 0 1041 423"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M74.0068 58.3888V394H0.591833V0.981686H135.278L173.917 280.29H175.021L213.661 0.981686H345.587V394H262.788V58.3888H261.684L208.693 394H128.102L75.1108 58.3888H74.0068ZM457.637 225.642L490.204 141.188C487.996 135.668 483.029 131.804 474.749 131.804C460.949 131.804 456.533 142.292 456.533 153.883V225.642H457.637ZM378.15 422.704L397.47 374.68C379.806 360.88 369.318 341.009 369.318 313.961V163.267C369.318 106.412 406.854 74.3966 474.749 74.3966C489.652 74.3966 503.452 76.0526 515.044 79.3645L524.98 53.9729H568.035L550.924 96.4763C570.243 110.828 580.179 134.012 580.179 163.267V313.961C580.179 372.472 530.5 397.864 474.749 397.864C459.845 397.864 445.493 396.208 432.245 392.344L420.101 422.704H378.15ZM491.86 241.098L458.189 328.313C459.845 334.937 464.813 340.457 474.749 340.457C488.548 340.457 492.964 329.969 492.964 318.377V241.098H491.86ZM692.113 394H604.898V0.981686H692.113V394ZM804.775 394H717.56V0.981686H804.775V394ZM1040.53 246.066H916.886V310.097C916.886 328.865 923.51 340.457 935.101 340.457C948.901 340.457 953.317 328.865 953.317 310.097V269.25H1040.53V315.617C1040.53 375.232 996.372 397.864 935.101 397.864C879.35 397.864 829.671 372.472 829.671 313.961V163.267C829.671 106.412 867.206 74.3966 935.101 74.3966C990.853 74.3966 1040.53 95.3723 1040.53 163.267V246.066ZM916.886 193.627H953.317V150.572C953.317 138.428 947.245 131.804 935.101 131.804C922.958 131.804 916.886 138.428 916.886 150.572V193.627Z"
+									fill="currentColor"
+								/>
+							</svg>
+						</div>
+						<div class="p-4">
+							<p class="text-xs text-base-600">
+								© Copyright Lexington Themes <span id="year">2025</span>
+							</p>
+						</div>
+					</div>
+					<div
+						class="lg:col-span-2 lg:col-start-4 grid grid-cols-1 lg:grid-cols-2"
+					>
+						<nav
+							class="border-b divide-dashed divide-y divide-black/15 border-black/15"
+						>
+							<div class="p-4">
+								<h3 class="text-base text-base-900">Navigation</h3>
+							</div>
+							<ul class="p-4 text-xs space-y-1">
+								<li>
+									<a
+										class="hover:text-base-900 text-base-600"
+										href="sign-in.html"
+										>Sign in</a
+									>
+								</li>
+								<li>
+									<a
+										class="hover:text-base-900 text-base-600"
+										href="sign-up.html"
+										>Sign up</a
+									>
+								</li>
+								<li>
+									<a
+										class="hover:text-base-900 text-base-600"
+										href="contact.html"
+										>Contact</a
+									>
+								</li>
+								<li>
+									<a class="hover:text-base-900 text-base-600" href="blog.html"
+										>Blog</a
+									>
+								</li>
+								<li>
+									<a
+										class="hover:text-base-900 text-base-600"
+										href="helpcenter.html"
+										>Helpcenter</a
+									>
+								</li>
+							</ul>
+						</nav>
+						<nav
+							class="border-b divide-dashed divide-y divide-black/15 border-black/15"
+						>
+							<div class="p-4">
+								<h3 class="text-base text-base-900">Resources</h3>
+							</div>
+							<ul class="p-4 text-xs space-y-1">
+								<li>
+									<a
+										class="hover:text-base-900 text-base-600"
+										href="system-overview.html"
+										>Overview</a
+									>
+								</li>
+								<li>
+									<a
+										class="hover:text-base-900 text-base-600"
+										href="https://lexingtonthemes.com/"
+										>More Themes</a
+									>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="assets/js/fuse.min.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

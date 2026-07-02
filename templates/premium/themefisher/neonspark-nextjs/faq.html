@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <title>FAQ — Neonspark</title>
+  <meta name="description" content="Frequently asked questions about Neonspark services, pricing, and technical implementation.">
+  <meta name="author" content="Themefisher">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── FAQ page hero ─────────────────────────────────────────── */
+    .faq-hero {
+      padding-top: 10rem;
+      padding-bottom: 4rem;
+      text-align: center;
+    }
+    .faq-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-light);
+      border: 1px solid rgba(179,184,194,0.3);
+      border-radius: 9999px;
+      padding: 0.35rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .faq-hero__title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .faq-hero__title em { font-style: italic; }
+    .faq-hero__desc {
+      max-width: 520px;
+      margin: 0 auto;
+      color: var(--color-text-light);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ── FAQ section ───────────────────────────────────────────── */
+    .faq-section {
+      padding: 3rem 0 7rem;
+    }
+    .faq-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Category label above a group */
+    .faq-category {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-text-light);
+      margin: 3rem 0 1.25rem;
+    }
+    .faq-category:first-child { margin-top: 0; }
+
+    /* Accordion item */
+    .accordion-item {
+      position: relative;
+      border-radius: 1rem;
+      margin-bottom: 0.75rem;
+      background: rgba(33,33,33,0.2);
+      border: 1px solid rgba(179,184,194,0.15);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .accordion-item.is-open {
+      border-color: rgba(179,184,194,0.35);
+    }
+
+    /* Rotating gradient border on open item */
+    .accordion-item.is-open::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: calc(1rem + 2px);
+      background: conic-gradient(from var(--gradient-angle, 0deg),
+        transparent 0%,
+        rgba(255,255,255,0.25) 20%,
+        rgba(255,255,255,0.6) 40%,
+        rgba(255,255,255,0.25) 60%,
+        transparent 80%
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      padding: 2px;
+      animation: rotateBorder 4s linear infinite;
+      pointer-events: none;
+    }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      gap: 1rem;
+      list-style: none;
+      user-select: none;
+    }
+    .accordion-header::-webkit-details-marker { display: none; }
+
+    .accordion-question {
+      font-size: 0.975rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      line-height: 1.4;
+    }
+
+    .accordion-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 9999px;
+      border: 1px solid rgba(179,184,194,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .accordion-item.is-open .accordion-icon {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(179,184,194,0.5);
+    }
+    .accordion-icon .icon-minus { display: none; }
+    .accordion-item.is-open .accordion-icon .icon-plus  { display: none; }
+    .accordion-item.is-open .accordion-icon .icon-minus { display: block; }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 1.5rem;
+    }
+    .accordion-item.is-open .accordion-body {
+      max-height: 500px;
+      padding: 0 1.5rem 1.5rem;
+    }
+    .accordion-body p {
+      font-size: 0.925rem;
+      color: var(--color-text-light);
+      line-height: 1.75;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HEADER / NAVBAR
+  ═══════════════════════════════════════════════════════════════ -->
+  <header class="header-sticky" id="site-header">
+    <nav class="navbar-pill" aria-label="Main navigation">
+      <a href="index.html" class="navbar-logo" aria-label="Neonspark home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect width="28" height="28" rx="6" fill="#fff"/>
+          <text x="7" y="20" font-family="Epilogue,sans-serif" font-size="16" font-weight="700" fill="#000">N</text>
+        </svg>
+        <span>Neonspark.</span>
+      </a>
+
+      <ul class="navbar-menu" id="navbar-menu">
+        <li><a href="index.html" class="navbar-link">Home</a></li>
+        <li><a href="about.html" class="navbar-link">About</a></li>
+        <li><a href="contact.html" class="navbar-link">Contact</a></li>
+        <li class="navbar-dropdown">
+          <button class="navbar-link navbar-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Pages
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L1 3h10L6 8z"/></svg>
+          </button>
+          <ul class="navbar-dropdown-menu">
+            <li><a href="blog.html" class="navbar-dropdown-link">Blog</a></li>
+            <li><a href="blog-post.html" class="navbar-dropdown-link">Blog Post</a></li>
+            <li><a href="career.html" class="navbar-dropdown-link">Career</a></li>
+            <li><a href="elements.html" class="navbar-dropdown-link">Elements</a></li>
+            <li><a href="faq.html" class="navbar-dropdown-link">FAQ</a></li>
+            <li><a href="pricing.html" class="navbar-dropdown-link">Pricing</a></li>
+            <li><a href="privacy-policy.html" class="navbar-dropdown-link">Privacy Policy</a></li>
+            <li><a href="services.html" class="navbar-dropdown-link">Services</a></li>
+            <li><a href="teams.html" class="navbar-dropdown-link">Teams</a></li>
+            <li><a href="terms-and-condition.html" class="navbar-dropdown-link">Terms &amp; Condition</a></li>
+            <li><a href="work.html" class="navbar-dropdown-link">Work</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="navbar-actions">
+        <a href="contact.html" class="btn btn-primary navbar-cta">Get Started</a>
+        <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbar-menu">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <rect y="3" width="22" height="2" rx="1" fill="currentColor"/>
+            <rect y="10" width="22" height="2" rx="1" fill="currentColor"/>
+            <rect y="17" width="22" height="2" rx="1" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FAQ HERO
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="faq-hero">
+    <div class="container">
+      <div class="faq-hero__badge">• FAQ</div>
+      <h1 class="faq-hero__title">Frequently Asked <em>Questions</em></h1>
+      <p class="faq-hero__desc">
+        Everything you need to know about our services, pricing, and how we work. Can't find an answer?
+        <a href="contact.html" style="color:var(--color-primary);text-decoration:underline;">Get in touch.</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FAQ ACCORDION
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-inner">
+
+        <!-- ── General ─────────────────────────────────────────── -->
+        <p class="faq-category reveal">General</p>
+
+        <div class="accordion-item reveal" id="faq-1">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-body-1" onclick="toggleAccordion(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleAccordion(this)">
+            <span class="accordion-question">What services does Neonspark offer?</span>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg class="icon-plus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="icon-minus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-body" id="faq-body-1" role="region">
+            <p>
+              Neonspark offers a full suite of digital services including web design, UI/UX design, copywriting,
+              digital marketing, SEO optimisation, and project management. We tailor every engagement to your
+              specific goals, whether you are launching a new product, refreshing a brand, or scaling an existing
+              digital presence.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item reveal" id="faq-2">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-body-2" onclick="toggleAccordion(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleAccordion(this)">
+            <span class="accordion-question">How long does a typical project take?</span>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg class="icon-plus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="icon-minus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-body" id="faq-body-2" role="region">
+            <p>
+              Project timelines vary based on scope and complexity. A simple landing page typically takes 2–3 weeks,
+              while a full website redesign or SaaS product build can range from 6 to 16 weeks. We provide a detailed
+              project timeline during the discovery phase so you always know what to expect.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item reveal" id="faq-3">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-body-3" onclick="toggleAccordion(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleAccordion(this)">
+            <span class="accordion-question">Do you work with startups as well as established businesses?</span>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg class="icon-plus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="icon-minus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-body" id="faq-body-3" role="region">
+            <p>
+              Absolutely. We work with early-stage startups, scale-ups, and enterprise organisations alike. Our
+              engagement models are flexible enough to meet you where you are — whether that is a lean MVP build
+              or a large-scale platform overhaul. We adapt our process to match your budget, timeline, and goals.
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Pricing ─────────────────────────────────────────── -->
+        <p class="faq-category reveal">Pricing</p>
+
+        <div class="accordion-item reveal" id="faq-4">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-body-4" onclick="toggleAccordion(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleAccordion(this)">
+            <span class="accordion-question">How much does a website design project cost?</span>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg class="icon-plus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="icon-minus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-body" id="faq-body-4" role="region">
+            <p>
+              Project costs depend on scope, number of pages, integrations required, and the level of custom design.
+              Our plans start at $99/user/month for the Professional tier and $199/user/month for Enterprise. For
+              bespoke project engagements, we provide a fixed-price proposal after an initial discovery call — so
+              there are no surprise invoices.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item reveal" id="faq-5">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-body-5" onclick="toggleAccordion(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleAccordion(this)">
+            <span class="accordion-question">Do you offer refunds or a money-back guarantee?</span>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg class="icon-plus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="icon-minus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-body" id="faq-body-5" role="region">
+            <p>
+              We offer a 14-day satisfaction guarantee on our subscription plans. For project-based engagements,
+              we structure work into milestones with client sign-off at each stage — if you are unhappy at any
+              milestone, we will revise until you are satisfied or discuss a fair resolution. We are committed
+              to delivering work you love.
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Technical ───────────────────────────────────────── -->
+        <p class="faq-category reveal">Technical</p>
+
+        <div class="accordion-item reveal" id="faq-6">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-body-6" onclick="toggleAccordion(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleAccordion(this)">
+            <span class="accordion-question">Which technologies and platforms do you build with?</span>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg class="icon-plus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="icon-minus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-body" id="faq-body-6" role="region">
+            <p>
+              Our team is platform-agnostic. We work with Next.js, React, Vue, and Astro on the frontend;
+              Node.js, Python, and Laravel on the backend; and WordPress, Webflow, or Sanity CMS for content-driven
+              sites. We recommend the stack that best fits your performance, scalability, and maintenance requirements
+              rather than defaulting to a single tool.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item reveal" id="faq-7">
+          <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-body-7" onclick="toggleAccordion(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleAccordion(this)">
+            <span class="accordion-question">Will my website be optimised for search engines?</span>
+            <span class="accordion-icon" aria-hidden="true">
+              <svg class="icon-plus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="icon-minus" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+          <div class="accordion-body" id="faq-body-7" role="region">
+            <p>
+              Yes. Every project we deliver includes on-page SEO foundations: semantic HTML structure, meta tags,
+              Open Graph markup, sitemap generation, robots.txt configuration, Core Web Vitals optimisation, and
+              accessibility compliance. For clients who want ongoing SEO strategy and content — keyword research,
+              link building, technical audits — we offer a dedicated SEO retainer service.
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /.faq-inner -->
+    </div><!-- /.container -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand column -->
+        <div class="footer-col">
+          <a href="index.html" class="footer-logo">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <rect width="28" height="28" rx="6" fill="#fff"/>
+              <text x="7" y="20" font-family="Epilogue,sans-serif" font-size="16" font-weight="700" fill="#000">N</text>
+            </svg>
+            <span>Neonspark.</span>
+          </a>
+          <p class="footer-desc">
+            We are a passionate team of designers and developers creating exceptional digital experiences for forward-thinking brands.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="GitHub">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+            <li><a href="blog.html" class="footer-link">Blog</a></li>
+            <li><a href="services.html" class="footer-link">Services</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+            <li><a href="terms-and-condition.html" class="footer-link">Terms and Condition</a></li>
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="faq.html" class="footer-link">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Newsletter -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Contact</h3>
+          <address class="footer-contact">
+            <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
+            <p><a href="tel:+10001234567" class="footer-link">(000) 123-4567</a></p>
+            <p><a href="mailto:info@neonspark.com" class="footer-link">info@neonspark.com</a></p>
+          </address>
+          <div class="footer-newsletter">
+            <p class="footer-newsletter-label">Subscribe to newsletter</p>
+            <form class="footer-newsletter-form" onsubmit="return false;">
+              <input type="email" placeholder="Your email address" class="footer-newsletter-input" aria-label="Email address">
+              <button type="submit" class="footer-newsletter-btn" aria-label="Subscribe">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div><!-- /.footer-grid -->
+
+      <div class="footer-bottom">
+        <p class="footer-copy">Designed And Developed by <a href="https://themefisher.com" class="footer-link" target="_blank" rel="noopener">Themefisher.</a></p>
+      </div>
+    </div><!-- /.container -->
+
+    <!-- Watermark -->
+    <div class="watermark" aria-hidden="true">
+      <span class="watermark-text">NEONSPARK</span>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════════════════════ -->
+  <script>
+    // ── Accordion ──────────────────────────────────────────────
+    function toggleAccordion(header) {
+      const item = header.closest('.accordion-item');
+      const isOpen = item.classList.contains('is-open');
+
+      // Close all open items
+      document.querySelectorAll('.accordion-item.is-open').forEach(openItem => {
+        openItem.classList.remove('is-open');
+        openItem.querySelector('[aria-expanded]').setAttribute('aria-expanded', 'false');
+      });
+
+      // Open the clicked item if it was closed
+      if (!isOpen) {
+        item.classList.add('is-open');
+        header.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // ── Mobile nav toggle ──────────────────────────────────────
+    const toggler = document.getElementById('navbar-toggler');
+    const menu    = document.getElementById('navbar-menu');
+    toggler.addEventListener('click', () => {
+      const open = menu.classList.toggle('is-open');
+      toggler.setAttribute('aria-expanded', String(open));
+    });
+
+    // ── Hide CTA on mobile ─────────────────────────────────────
+    function syncCta() {
+      const cta = document.querySelector('.navbar-cta');
+      if (cta) cta.style.display = window.innerWidth >= 1024 ? '' : 'none';
+    }
+    syncCta();
+    window.addEventListener('resize', syncCta);
+
+    // ── Scroll reveal ──────────────────────────────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+
+    // ── Header scroll background ───────────────────────────────
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+</body>
+</html>

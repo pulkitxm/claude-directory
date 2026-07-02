@@ -1,5 +1,7 @@
 # Exoplanet Survey Shader — Procedural Planetary Sphere (React + TypeScript + Three.js + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A procedural 3D sphere rendered with a Three.js `ShaderMaterial` — six-octave fractal Brownian-motion noise for the cloud deck and a Fresnel rim for the atmosphere glow. Framed as a live "Stellar Cartography" exoplanet survey instrument: a circular brass eyepiece with reticle, azimuth ticks, and a slow radar sweep; colour pickers and dials for rotation speed, cloud density, and glow intensity; three preset worlds (Orion Nebula, Crimson Gas Giant, Ice Planet); and a per-frame telemetry strip (mission clock, FPS, sphere longitude). All self-contained and offline-ready. Generated with Claude Fable 5.
 
 ## Stack

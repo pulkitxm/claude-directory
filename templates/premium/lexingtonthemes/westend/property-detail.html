@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Modern Family Home on Elm Street — Westend®</title>
+		<meta
+			name="description"
+			content="For sale: 4-bed family home in Helsinki's Elm District. 210 sqm. €875,000."
+		>
+		<link rel="preconnect" href="https://fonts.bunny.net">
+		<link
+			href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("westend-theme");
+				if (t === "dark" || t === "light")
+					document.documentElement.classList.add(t);
+			} catch (e) {}
+		})();
+		</script>
+	</head>
+	<body>
+		<nav class="nav" id="site-nav">
+			<div class="container nav__inner">
+				<a href="index.html" class="nav__brand">westend®</a>
+				<div class="nav__desktop">
+					<button
+						class="nav__search-btn"
+						id="searchBtn"
+						aria-label="Search site"
+					>
+						Search
+					</button>
+					<a href="open-houses.html" class="nav__link">Open Houses</a>
+					<div class="nav__dropdown">
+						<button class="nav__dropdown-btn" type="button">
+							Listing
+							<svg
+								width="12"
+								height="12"
+								viewBox="0 0 12 12"
+								fill="currentColor"
+							>
+								<path d="M6 8L2 4h8L6 8z" />
+							</svg>
+						</button>
+						<div class="nav__dropdown-panel">
+							<a href="properties.html">All Properties</a>
+							<a href="properties-for-rent.html">For Rent</a>
+							<a href="properties-for-sale.html">For Sale</a>
+							<a href="properties-off-market.html">Off Market</a>
+							<a href="properties-sold.html">Sold</a>
+						</div>
+					</div>
+					<a href="agents.html" class="nav__link">Agents</a>
+					<a href="system-overview.html" class="nav__link">Overview</a>
+				</div>
+				<div class="nav__actions">
+					<button
+						class="theme-toggle"
+						id="themeToggle"
+						aria-label="Toggle color theme"
+						type="button"
+					>
+						<svg
+							class="icon-sun"
+							width="18"
+							height="18"
+							viewBox="0 0 256 256"
+							fill="currentColor"
+						>
+							<path
+								d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"
+							/>
+						</svg><svg
+							class="icon-moon"
+							width="18"
+							height="18"
+							viewBox="0 0 256 256"
+							fill="currentColor"
+						>
+							<path
+								d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23Z"
+							/>
+						</svg>
+					</button><a href="#" class="btn-buy">Buy Westend</a
+					><button
+						class="nav__hamburger"
+						id="mobileNavBtn"
+						type="button"
+						aria-label="Open menu"
+						aria-expanded="false"
+					>
+						<svg viewBox="0 0 256 256" fill="currentColor">
+							<path
+								d="M228,160a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,160ZM40,108H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24Z"
+							/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</nav>
+		<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+		<div class="mobile-nav-panel" id="mobileNavPanel" aria-hidden="true">
+			<div class="mobile-nav-head">
+				<span
+					style="font-size:.75rem;font-weight:500;color:var(--color-muted);text-transform:uppercase;letter-spacing:.05em"
+					>Menu</span
+				><button
+					class="nav__hamburger"
+					id="mobileNavClose"
+					type="button"
+					aria-label="Close menu"
+				>
+					<svg viewBox="0 0 256 256" fill="currentColor">
+						<path
+							d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+						/>
+					</svg>
+				</button>
+			</div>
+			<div class="mobile-nav-links">
+				<a href="index.html">Home</a><a href="properties.html">All Properties</a
+				><a href="agents.html">Agents</a
+				><a href="open-houses.html">Open Houses</a
+				><a href="services.html">Services</a
+				><a href="neighborhoods.html">Neighborhoods</a
+				><a href="company.html">About</a><a href="blog.html">Blog</a
+				><a href="careers.html">Careers</a
+				><a href="book-a-call.html">Book a Call</a>
+			</div>
+			<div class="mobile-nav-foot">
+				<a href="#" class="btn-buy">Buy Westend</a>
+			</div>
+		</div>
+		<div class="search-modal" id="searchModal" role="dialog" aria-modal="true">
+			<div class="search-modal-wrap">
+				<div class="search-modal-box">
+					<button
+						type="button"
+						id="closeSearch"
+						style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--color-muted);font-size:1.25rem;cursor:pointer;"
+						aria-label="Close search"
+					>
+						×
+					</button><input
+						type="text"
+						id="searchInput"
+						class="search-input"
+						placeholder="Search site..."
+					>
+					<div id="searchResults" class="search-results"></div>
+				</div>
+			</div>
+		</div>
+		<main class="grow">
+			<div class="container" style="padding-top:3rem;">
+				<div style="margin-bottom:1.5rem;">
+					<a
+						href="properties.html"
+						style="font-size:.875rem;color:var(--color-muted);"
+						>← All Properties</a
+					>
+				</div>
+				<!-- Gallery -->
+				<div
+					style="display:grid;grid-template-columns:2fr 1fr;gap:.5rem;border-radius:var(--radius-xl);overflow:hidden;height:32rem;"
+				>
+					<div style="overflow:hidden;">
+						<img
+							src="assets/images/cover.DsB1UH2n_Z2h52Ez.webp"
+							alt="Modern Family Home"
+							style="width:100%;height:100%;object-fit:cover;"
+							loading="eager"
+						>
+					</div>
+					<div style="display:grid;grid-template-rows:1fr 1fr;gap:.5rem;">
+						<div style="overflow:hidden;">
+							<img
+								src="assets/images/1.C1PF_1B7_Z1zCjOz.webp"
+								alt="Interior"
+								style="width:100%;height:100%;object-fit:cover;"
+								loading="lazy"
+							>
+						</div>
+						<div style="overflow:hidden;">
+							<img
+								src="assets/images/2.LXqngIyK_1No8Kl.webp"
+								alt="Kitchen"
+								style="width:100%;height:100%;object-fit:cover;"
+								loading="lazy"
+							>
+						</div>
+					</div>
+				</div>
+				<!-- Details -->
+				<div class="two-col" style="margin-top:3rem;gap:4rem;">
+					<div>
+						<div
+							style="display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;"
+						>
+							<span class="badge badge--green">For Sale</span>
+							<span class="badge badge--gray">House</span>
+						</div>
+						<h1
+							style="font-size:2.25rem;font-weight:600;letter-spacing:-.025em;color:var(--color-text);"
+						>
+							Modern Family Home on Elm Street
+						</h1>
+						<p
+							style="font-size:1.125rem;color:var(--color-muted);margin-top:.5rem;"
+						>
+							42 Elm Street, Helsinki, Finland
+						</p>
+						<p
+							style="font-size:2rem;font-weight:600;color:var(--color-text);margin-top:1.5rem;"
+						>
+							€875,000
+						</p>
+						<!-- Stats -->
+						<div
+							style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;padding:1.5rem;background:var(--color-surface);border-radius:var(--radius-xl);"
+						>
+							<div style="text-align:center;">
+								<p
+									style="font-size:1.5rem;font-weight:600;color:var(--color-text);"
+								>
+									4
+								</p>
+								<p
+									style="font-size:.75rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:.05em;"
+								>
+									Bedrooms
+								</p>
+							</div>
+							<div style="text-align:center;">
+								<p
+									style="font-size:1.5rem;font-weight:600;color:var(--color-text);"
+								>
+									3
+								</p>
+								<p
+									style="font-size:.75rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:.05em;"
+								>
+									Bathrooms
+								</p>
+							</div>
+							<div style="text-align:center;">
+								<p
+									style="font-size:1.5rem;font-weight:600;color:var(--color-text);"
+								>
+									210
+								</p>
+								<p
+									style="font-size:.75rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:.05em;"
+								>
+									sqm
+								</p>
+							</div>
+						</div>
+						<!-- Description -->
+						<div style="margin-top:2rem;">
+							<h2
+								style="font-size:1.25rem;font-weight:600;color:var(--color-text);margin-bottom:1rem;"
+							>
+								About This Property
+							</h2>
+							<p
+								style="font-size:.9375rem;color:var(--color-muted);line-height:1.75;"
+							>
+								This bright, spacious family home on Elm Street is move-in ready
+								and perfectly situated in one of Helsinki's most desirable
+								residential neighborhoods. Built in 2018 with high-quality
+								Finnish craftsmanship, the home features an open-plan living and
+								dining area, a fully equipped kitchen with island, and a
+								generous master suite with en-suite bathroom.
+							</p>
+							<p
+								style="font-size:.9375rem;color:var(--color-muted);line-height:1.75;margin-top:1rem;"
+							>
+								The property includes a private garden, a two-car garage, and
+								underfloor heating throughout. Located just minutes from
+								excellent schools, Elm District's tree-lined parks, and
+								convenient public transport connections to central Helsinki.
+							</p>
+						</div>
+						<!-- Features -->
+						<div style="margin-top:2rem;">
+							<h2
+								style="font-size:1.25rem;font-weight:600;color:var(--color-text);margin-bottom:1rem;"
+							>
+								Features
+							</h2>
+							<div
+								style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;"
+							>
+								<div style="display:flex;gap:.5rem;align-items:center;">
+									<span
+										style="width:.375rem;height:.375rem;background:var(--color-muted);border-radius:50%;flex-shrink:0;"
+									></span><span
+										style="font-size:.875rem;color:var(--color-muted);"
+										>Underfloor heating</span
+									>
+								</div>
+								<div style="display:flex;gap:.5rem;align-items:center;">
+									<span
+										style="width:.375rem;height:.375rem;background:var(--color-muted);border-radius:50%;flex-shrink:0;"
+									></span><span
+										style="font-size:.875rem;color:var(--color-muted);"
+										>Private garden</span
+									>
+								</div>
+								<div style="display:flex;gap:.5rem;align-items:center;">
+									<span
+										style="width:.375rem;height:.375rem;background:var(--color-muted);border-radius:50%;flex-shrink:0;"
+									></span><span
+										style="font-size:.875rem;color:var(--color-muted);"
+										>Double garage</span
+									>
+								</div>
+								<div style="display:flex;gap:.5rem;align-items:center;">
+									<span
+										style="width:.375rem;height:.375rem;background:var(--color-muted);border-radius:50%;flex-shrink:0;"
+									></span><span
+										style="font-size:.875rem;color:var(--color-muted);"
+										>Solar panels</span
+									>
+								</div>
+								<div style="display:flex;gap:.5rem;align-items:center;">
+									<span
+										style="width:.375rem;height:.375rem;background:var(--color-muted);border-radius:50%;flex-shrink:0;"
+									></span><span
+										style="font-size:.875rem;color:var(--color-muted);"
+										>Home automation</span
+									>
+								</div>
+								<div style="display:flex;gap:.5rem;align-items:center;">
+									<span
+										style="width:.375rem;height:.375rem;background:var(--color-muted);border-radius:50%;flex-shrink:0;"
+									></span><span
+										style="font-size:.875rem;color:var(--color-muted);"
+										>Sauna</span
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Sidebar -->
+					<div style="display:flex;flex-direction:column;gap:1.5rem;">
+						<!-- Agent card -->
+						<div
+							style="padding:1.5rem;border:1px solid var(--color-border);border-radius:var(--radius-xl);"
+						>
+							<div
+								style="display:flex;gap:1rem;align-items:center;margin-bottom:1.5rem;"
+							>
+								<div
+									style="width:4rem;height:4rem;border-radius:50%;overflow:hidden;flex-shrink:0;"
+								>
+									<img
+										src="assets/images/emma-stone.BparDnBl_1xrX0A.webp"
+										alt="Emma Stone"
+										style="width:100%;height:100%;object-fit:cover;"
+									>
+								</div>
+								<div>
+									<p style="font-weight:500;color:var(--color-text);">
+										Emma Stone
+									</p>
+									<p style="font-size:.875rem;color:var(--color-muted);">
+										Senior Real Estate Broker
+									</p>
+								</div>
+							</div>
+							<form
+								action="#"
+								style="display:flex;flex-direction:column;gap:.75rem;"
+							>
+								<input type="text" class="form-input" placeholder="Your name">
+								<input type="email" class="form-input" placeholder="Your email">
+								<input type="tel" class="form-input" placeholder="Your phone">
+								<textarea
+									class="form-textarea"
+									style="min-height:5rem;"
+									placeholder="I am interested in this property..."
+								></textarea>
+								<button type="submit" class="btn btn--primary">
+									Contact Agent
+								</button>
+							</form>
+						</div>
+						<!-- Open house -->
+						<div
+							style="padding:1.5rem;border:1px solid var(--color-border);border-radius:var(--radius-xl);"
+						>
+							<h3
+								style="font-size:1rem;font-weight:600;color:var(--color-text);margin-bottom:1rem;"
+							>
+								Upcoming Open House
+							</h3>
+							<p
+								style="font-size:.875rem;color:var(--color-text);font-weight:500;"
+							>
+								November 22, 2025
+							</p>
+							<p style="font-size:.875rem;color:var(--color-muted);">
+								11:00 – 14:00
+							</p>
+							<a
+								href="open-house-detail.html"
+								class="btn btn--outline btn--sm"
+								style="margin-top:1rem;display:inline-flex;"
+								>View Details</a
+							>
+						</div>
+					</div>
+				</div>
+				<!-- Similar -->
+				<div
+					style="margin-top:4rem;padding-top:4rem;border-top:1px solid var(--color-border);"
+				>
+					<h2
+						style="font-size:1.875rem;font-weight:600;color:var(--color-text);margin-bottom:2rem;"
+					>
+						Similar Properties
+					</h2>
+					<div class="property-grid">
+						<article class="property-card">
+							<a
+								href="property-detail.html"
+								class="property-card__link-overlay"
+							></a>
+							<div>
+								<p class="property-card__title">
+									Harbour Apartment in Aarhus Ø
+								</p>
+								<p class="property-card__location">Aarhus, Denmark</p>
+								<p class="property-card__price">€890,000</p>
+							</div>
+							<div class="property-card__img-wrap">
+								<div class="property-card__overlay">
+									<ul class="property-card__overlay-inner">
+										<li>
+											<span class="property-card__meta-item">Apartment</span>
+										</li>
+										<li>
+											<span class="property-card__meta-item">For Sale</span>
+										</li>
+									</ul>
+								</div>
+								<img
+									src="assets/images/cover.Dg5T8hV__1KDPow.webp"
+									alt="Harbour Apartment"
+									class="property-card__img"
+									loading="lazy"
+								>
+							</div>
+						</article>
+						<article class="property-card">
+							<a
+								href="property-detail.html"
+								class="property-card__link-overlay"
+							></a>
+							<div>
+								<p class="property-card__title">
+									Contemporary Villa in Hellerup
+								</p>
+								<p class="property-card__location">Copenhagen, Denmark</p>
+								<p class="property-card__price">€2,450,000</p>
+							</div>
+							<div class="property-card__img-wrap">
+								<div class="property-card__overlay">
+									<ul class="property-card__overlay-inner">
+										<li><span class="property-card__meta-item">Villa</span></li>
+										<li>
+											<span class="property-card__meta-item">For Sale</span>
+										</li>
+									</ul>
+								</div>
+								<img
+									src="assets/images/cover.CFa-slo2_ZInbYx.webp"
+									alt="Contemporary Villa"
+									class="property-card__img"
+									loading="lazy"
+								>
+							</div>
+						</article>
+						<article class="property-card">
+							<a
+								href="property-detail.html"
+								class="property-card__link-overlay"
+							></a>
+							<div>
+								<p class="property-card__title">Downtown Reykjavik Apartment</p>
+								<p class="property-card__location">Reykjavik, Iceland</p>
+								<p class="property-card__price">€620,000</p>
+							</div>
+							<div class="property-card__img-wrap">
+								<div class="property-card__overlay">
+									<ul class="property-card__overlay-inner">
+										<li>
+											<span class="property-card__meta-item">Apartment</span>
+										</li>
+										<li>
+											<span class="property-card__meta-item">For Sale</span>
+										</li>
+									</ul>
+								</div>
+								<img
+									src="assets/images/cover.DxTRxclN_Z6DXWl.webp"
+									alt="Reykjavik Apartment"
+									class="property-card__img"
+									loading="lazy"
+								>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+			<div style="padding-bottom:4rem;"></div>
+		</main>
+		<footer class="footer">
+			<div class="container footer__inner">
+				<div><span class="footer__brand">westend®</span></div>
+				<div class="footer__links-grid">
+					<div>
+						<p class="footer__col-title">Properties</p>
+						<div class="footer__col-links">
+							<a href="properties-for-sale.html" class="footer__col-link"
+								>For Sale</a
+							><a href="properties-for-rent.html" class="footer__col-link"
+								>For Rent</a
+							>
+						</div>
+					</div>
+					<div>
+						<p class="footer__col-title">Company</p>
+						<div class="footer__col-links">
+							<a href="company.html" class="footer__col-link">About</a
+							><a href="agents.html" class="footer__col-link">Agents</a>
+						</div>
+					</div>
+					<div>
+						<p class="footer__col-title">Contact</p>
+						<div class="footer__col-links">
+							<a href="book-a-call.html" class="footer__col-link"
+								>Book a Call</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container footer__bottom">
+				<p class="footer__copy">© 2025 Westend®. All rights reserved.</p>
+				<div class="footer__legal">
+					<a href="legal-privacy.html">Privacy Policy</a
+					><a href="legal-terms.html">Terms of Service</a>
+				</div>
+			</div>
+		</footer>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

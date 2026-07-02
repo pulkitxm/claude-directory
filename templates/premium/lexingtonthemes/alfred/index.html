@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Alfred — The last business platform you'll ever need</title>
+		<meta
+			name="description"
+			content="Alfred is a SaaS business platform combining scheduling, insights, and collaboration in one beautiful workspace."
+		>
+		<link rel="stylesheet" href="./assets/styles.css">
+		<style>
+		/* Page-specific styles */
+		.hero-section {
+			padding-top: 12rem;
+			padding-bottom: 2rem;
+			overflow: hidden;
+		}
+		@media (min-width: 1024px) {
+			.hero-section {
+				padding-top: 20.5rem;
+			}
+		}
+
+		.hero-h1 {
+			font-size: clamp(1.875rem, 4vw, 3rem);
+			color: var(--base-800);
+			font-weight: 500;
+			letter-spacing: -0.02em;
+			max-width: 36rem;
+			text-wrap: balance;
+			line-height: 1.15;
+		}
+		@media (min-width: 1024px) {
+			.hero-h1 {
+				font-size: 3rem;
+			}
+		}
+
+		.marquee-wrapper {
+			overflow: hidden;
+			width: 100%;
+			margin-top: 3rem;
+		}
+		.marquee-inner {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			animation: marquee-anim 25s linear infinite;
+			width: max-content;
+		}
+		.marquee-inner img {
+			height: 2rem;
+			width: auto;
+			flex-shrink: 0;
+		}
+
+		/* Feature section headings */
+		.accent-h2 {
+			font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+			font-weight: 500;
+			letter-spacing: -0.02em;
+			text-wrap: balance;
+			margin-top: 2rem;
+		}
+		.accent-h3 {
+			font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+			font-weight: 500;
+		}
+		.accent-p {
+			font-size: clamp(1rem, 1.5vw, 1.25rem);
+			color: var(--base-600);
+			margin-top: 1rem;
+			text-wrap: balance;
+		}
+
+		/* Feature sub-grid */
+		.feature-sub-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+		@media (min-width: 768px) {
+			.feature-sub-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (min-width: 1024px) {
+			.feature-sub-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		/* Tools bento */
+		.tools-bento {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+		@media (min-width: 1024px) {
+			.tools-bento {
+				grid-template-columns: repeat(6, 1fr);
+			}
+		}
+		.bento-analytics {
+			background: var(--teal-100);
+			padding: 2rem;
+			overflow: hidden;
+		}
+		@media (min-width: 1024px) {
+			.bento-analytics {
+				grid-column: span 3;
+				padding: 3rem;
+			}
+		}
+		.bento-teamwork {
+			background: var(--purple-50);
+			padding: 2rem;
+			overflow: hidden;
+		}
+		@media (min-width: 1024px) {
+			.bento-teamwork {
+				grid-column: span 3;
+				padding: 3rem;
+			}
+		}
+		.bento-files {
+			background: var(--blue-50);
+			padding: 1rem;
+			overflow: hidden;
+		}
+		@media (min-width: 1024px) {
+			.bento-files {
+				grid-column: span 2;
+				padding: 2rem;
+			}
+		}
+		.bento-shortcuts {
+			background: var(--rose-50);
+			padding: 1rem;
+			overflow: hidden;
+		}
+		@media (min-width: 1024px) {
+			.bento-shortcuts {
+				grid-column: span 2;
+				padding: 2rem;
+			}
+		}
+		.bento-integrations {
+			background: var(--yellow-50);
+			padding: 1rem;
+			overflow: hidden;
+		}
+		@media (min-width: 1024px) {
+			.bento-integrations {
+				grid-column: span 2;
+				padding: 2rem;
+			}
+		}
+
+		/* Analytics preview */
+		.stat-card {
+			background: #fff;
+			padding: 1.5rem;
+			border-bottom: 1px solid var(--base-200);
+		}
+		.stat-label {
+			font-size: 0.75rem;
+			color: var(--base-500);
+		}
+		.stat-value {
+			font-size: 1.5rem;
+			font-weight: 500;
+			color: var(--base-800);
+		}
+		.stat-delta {
+			font-size: 0.875rem;
+		}
+		.text-red {
+			color: var(--red-600);
+		}
+		.text-green {
+			color: var(--green-700);
+		}
+
+		/* Progress */
+		.progress-bar-wrap {
+			width: 100%;
+			height: 0.5rem;
+			background: var(--base-100);
+			border-radius: 9999px;
+			overflow: hidden;
+		}
+		.progress-bar-fill {
+			height: 100%;
+			background: var(--purple-400);
+			border-radius: 9999px;
+		}
+
+		/* Integration logo grid */
+		.int-logo-grid {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			gap: 0.25rem;
+		}
+		.int-logo-cell {
+			background: #fff;
+			border-radius: 0.25rem;
+			aspect-ratio: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 1.5rem;
+		}
+		.int-logo-cell img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		/* Green features tab section */
+		.features-tab-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			margin-top: 3rem;
+			align-items: center;
+		}
+		@media (min-width: 1024px) {
+			.features-tab-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		.features-tab-visual {
+			position: relative;
+			aspect-ratio: 1;
+		}
+		.features-tab-visual img {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+		.features-tab-overlay {
+			position: absolute;
+			inset: 0;
+			z-index: 10;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 1rem;
+		}
+
+		/* CTA section */
+		.cta-visual {
+			position: relative;
+			overflow: hidden;
+			min-height: 50rem;
+		}
+		.cta-visual img {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+		.cta-overlay {
+			position: absolute;
+			inset: 0;
+			z-index: 10;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 2rem;
+			text-align: center;
+		}
+		.cta-overlay h2 {
+			font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+			font-weight: 500;
+			color: #fff;
+			text-wrap: balance;
+		}
+		@media (min-width: 768px) {
+			.cta-overlay h2 {
+				color: #000;
+			}
+		}
+
+		/* Keyboard rows */
+		.keyboard-wrap {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+			margin-top: 3rem;
+			margin-right: -4rem;
+		}
+		.keyboard-row {
+			display: flex;
+			gap: 0.25rem;
+		}
+		.k-key {
+			font-size: 0.65rem;
+			padding: 0.5rem;
+			background: #fff;
+			border-radius: 0.25rem;
+			min-width: 3.75rem;
+			cursor: default;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.k-key-q {
+			transition:
+				box-shadow 0.3s,
+				color 0.3s;
+		}
+		.keyboard-wrap:hover .k-key-q {
+			box-shadow: 0 0 0 1px var(--rose-500);
+			color: var(--rose-500);
+		}
+		</style>
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="site-header">
+			<div class="container" style="padding-inline: 0">
+				<div class="nav-inner">
+					<div class="nav-brand-row">
+						<a href="index.html" class="logo-link" aria-label="Alfred home">
+							<svg
+								class="logo-svg"
+								viewBox="0 0 125 126"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M0 33.1V92C0 110.3 14.7881 125.1 33.0735 125.1H91.9265C110.212 125.1 125 110.3 125 92V33.1C125 14.8 110.212 0 91.9265 0H33.0735C14.7881 0.1 0 14.9 0 33.1ZM33.1734 116.8C19.3844 116.8 8.1934 105.6 8.1934 91.8C8.1934 78 19.3844 66.8 33.1734 66.8C46.9624 66.8 58.1534 78 58.1534 91.8C58.1534 105.6 46.9624 116.8 33.1734 116.8ZM33.1734 58.3C19.3844 58.3 8.1934 47.1 8.1934 33.3C8.1934 19.5 19.3844 8.3 33.1734 8.3C46.9624 8.3 58.1534 19.5 58.1534 33.3C58.1534 47.1 46.9624 58.3 33.1734 58.3ZM91.6267 116.8C77.8377 116.8 66.6466 105.6 66.6466 91.8C66.6466 78 77.8377 66.8 91.6267 66.8C105.416 66.8 116.607 78 116.607 91.8C116.607 105.6 105.416 116.8 91.6267 116.8ZM91.6267 58.3C77.8377 58.3 66.6466 47.1 66.6466 33.3C66.6466 19.5 77.8377 8.3 91.6267 8.3C105.416 8.3 116.607 19.5 116.607 33.3C116.607 47.1 105.416 58.3 91.6267 58.3Z"
+									fill="white"
+								/>
+							</svg>
+						</a>
+						<button
+							class="nav-toggle"
+							id="navToggle"
+							aria-label="Toggle navigation menu"
+						>
+							<span class="sr-only">Toggle navigation</span>
+							<svg
+								id="menuIcon"
+								class="icon"
+								style="width:1.75rem;height:1.75rem;margin:auto"
+								stroke="currentColor"
+								fill="none"
+								viewBox="0 0 24 24"
+							>
+								<path stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+							</svg>
+							<svg
+								id="closeIcon"
+								class="icon hidden"
+								style="width:1.75rem;height:1.75rem;margin:auto"
+								stroke="currentColor"
+								fill="none"
+								viewBox="0 0 24 24"
+							>
+								<path stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+							</svg>
+						</button>
+					</div>
+
+					<nav
+						id="navMenu"
+						class="nav-menu"
+						role="navigation"
+						aria-label="Main navigation"
+					>
+						<!-- Overview dropdown -->
+						<div class="nav-item-group">
+							<button
+								class="nav-btn dropdown-toggle"
+								aria-haspopup="true"
+								aria-expanded="false"
+								aria-controls="menu-overview"
+								data-menu-button="menu-overview"
+							>
+								Overview
+							</button>
+							<div id="menu-overview" class="dropdown-menu" role="menu">
+								<ul>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="system-overview.html"
+											aria-label="Go to All pages page"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800);transition:color 0.2s"
+											><div class="menu-icon-box">
+												<span class="menu-letter">A</span>
+											</div>
+											<span style="padding:0.625rem">All pages</span></a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="system-colors.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">C</span>
+											</div>
+											<span style="padding:0.625rem">Colors</span></a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="system-links.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">L</span>
+											</div>
+											<span style="padding:0.625rem">Links</span></a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="system-buttons.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">B</span>
+											</div>
+											<span style="padding:0.625rem">Buttons</span></a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="system-typography.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">T</span>
+											</div>
+											<span style="padding:0.625rem">Typography</span></a
+										>
+									</li>
+									<li role="none" style="position:relative">
+										<button
+											class="flyout-trigger"
+											aria-haspopup="true"
+											aria-expanded="false"
+											aria-controls="second-flyout-submenu"
+											aria-label="Toggle second-level submenu"
+											style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:0.625rem 0.625rem 0.625rem 0.75rem;font-size:0.875rem;font-weight:500;color:var(--base-800);background:none;border:none;cursor:pointer"
+										>
+											<span>Resources</span>
+											<div style="padding:0.625rem">
+												<span
+													style="display:flex;align-items:center;justify-content:center;font-size:0.875rem;border:1px solid var(--base-200);border-radius:9999px;width:1.5rem;height:1.5rem"
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="currentColor"
+														stroke-width="2"
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														style="width:1rem;height:1rem"
+													>
+														<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+														<path d="M9 6l6 6l-6 6" />
+													</svg>
+												</span>
+											</div>
+										</button>
+										<div id="second-flyout-submenu" class="flyout-menu">
+											<ul>
+												<li role="none">
+													<a
+														role="menuitem"
+														href="https://lexingtonthemes.com/legal/license/"
+														style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800);padding:0.625rem"
+														><span
+															style="display:flex;align-items:center;justify-content:center;border:1px solid var(--base-200);border-radius:9999px;width:1.5rem;height:1.5rem;font-size:0.875rem"
+															>L</span
+														><span>License</span></a
+													>
+												</li>
+												<li role="none">
+													<a
+														role="menuitem"
+														href="https://lexingtonthemes.com/documentation/"
+														style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800);padding:0.625rem"
+														><span
+															style="display:flex;align-items:center;justify-content:center;border:1px solid var(--base-200);border-radius:9999px;width:1.5rem;height:1.5rem;font-size:0.875rem"
+															>D</span
+														><span>Documentation</span></a
+													>
+												</li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Company dropdown -->
+						<div class="nav-item-group">
+							<button
+								class="nav-btn dropdown-toggle"
+								aria-haspopup="true"
+								aria-expanded="false"
+								aria-controls="menu-company"
+								data-menu-button="menu-company"
+							>
+								Company
+							</button>
+							<div id="menu-company" class="dropdown-menu" role="menu">
+								<ul>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="about.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">A</span>
+											</div>
+											<span style="padding:0.625rem">About</span></a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="pricing.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">P</span>
+											</div>
+											<span style="padding:0.625rem">Pricing</span></a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="customers.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">C</span>
+											</div>
+											<span style="padding:0.625rem">Customers</span></a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="changelog.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">C</span>
+											</div>
+											<span style="padding:0.625rem">Changelog</span></a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="integrations.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">I</span>
+											</div>
+											<span style="padding:0.625rem">Integrations</span></a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											href="helpcenter.html"
+											class="group"
+											style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:var(--base-800)"
+											><div class="menu-icon-box">
+												<span class="menu-letter">H</span>
+											</div>
+											<span style="padding:0.625rem">Help Center</span></a
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<a
+							class="nav-btn nav-btn-ml-auto"
+							href="blog.html"
+							aria-label="Go to news page"
+							>News</a
+						>
+						<a class="nav-btn" href="signin.html" aria-label="Log in">Log in</a>
+						<a
+							class="nav-btn nav-btn-dark"
+							href="https://buy.polar.sh/polar_cl_If6pmsfFZUt7F1mjsfQjWC1EHxZDN3_u6HhhcEzUBm8"
+							aria-label="Buy Alfred"
+							>Buy Alfred</a
+						>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<main style="flex:1">
+			<!-- Hero -->
+			<section>
+				<div class="container hero-section">
+					<h1 class="hero-h1">The last business platform you'll ever need</h1>
+
+					<!-- Marquee logos -->
+					<div class="marquee-wrapper">
+						<div class="marquee-inner">
+							<img
+								src="./assets/images/logo-1a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-2a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-3a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-6a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-3a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-6a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<!-- duplicate for seamless loop -->
+							<img
+								src="./assets/images/logo-1a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-2a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-3a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-6a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-3a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+							<img
+								src="./assets/images/logo-6a.svg"
+								alt="Brand logo"
+								width="200"
+								height="100"
+							>
+						</div>
+					</div>
+
+					<!-- Dashboard image -->
+					<div style="margin-top:3rem">
+						<img
+							src="./assets/images/dashboard.webp"
+							alt="Alfred Dashboard"
+							loading="eager"
+							decoding="async"
+							width="1800"
+							height="800"
+							style="width:100%"
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- Collaboration section (blue) -->
+			<section>
+				<div class="container section-py">
+					<div class="block-blue">
+						<div class="grid-4-2">
+							<div>
+								<div
+									style="display:inline-flex;width:2.5rem;height:2.5rem;align-items:center;justify-content:center;font-weight:500;font-size:1.25rem;color:#fff;background:var(--blue-800)"
+								>
+									M
+								</div>
+								<h2 class="accent-h2" style="color:var(--blue-800)">
+									Making teamwork slightly less painful
+								</h2>
+							</div>
+							<p
+								class="accent-p"
+								style="grid-column:span 2;grid-column-start:3;margin-top:1rem"
+							>
+								No more "who edited this?" panic. Just smooth, drama-free
+								workflows that actually help your team get stuff done—for once.
+							</p>
+						</div>
+						<div style="margin-top:3rem">
+							<img
+								src="./assets/images/teamDashboard.webp"
+								alt="Team Dashboard"
+								loading="eager"
+								decoding="async"
+								width="1800"
+								height="800"
+								style="width:100%"
+							>
+						</div>
+						<div class="feature-sub-grid">
+							<div>
+								<h3 class="accent-h3" style="color:var(--blue-800)">
+									Invite your chaos crew
+								</h3>
+								<p class="accent-p">
+									Wrangle your team into one place and pretend it's organized.
+									Real-time updates keep everyone from screaming.
+								</p>
+							</div>
+							<div>
+								<h3 class="accent-h3" style="color:var(--blue-800)">
+									Edit together (without fighting)
+								</h3>
+								<p class="accent-p">
+									No more endless file versions like 'final-FINAL-v3'. Everyone
+									edits the same thing. Like magic. Or witchcraft.
+								</p>
+							</div>
+							<div>
+								<h3 class="accent-h3" style="color:var(--blue-800)">
+									Feedback without the awkward
+								</h3>
+								<p class="accent-p">
+									Drop comments, ask questions, and critique stuff—without the
+									passive-aggressive email chains.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Calendar section (rose) -->
+			<section>
+				<div class="container section-py">
+					<div class="block-rose">
+						<div class="grid-4-2">
+							<div>
+								<div
+									style="display:inline-flex;width:2.5rem;height:2.5rem;align-items:center;justify-content:center;font-weight:500;font-size:1.25rem;color:#fff;background:var(--rose-800)"
+								>
+									C
+								</div>
+								<h2 class="accent-h2" style="color:var(--rose-800)">
+									Calendar that doesn't flake
+								</h2>
+							</div>
+							<p
+								class="accent-p"
+								style="grid-column:span 2;grid-column-start:3;margin-top:1rem"
+							>
+								No more "who edited this?" panic. Just smooth, drama-free
+								workflows that actually help your team get stuff done—for once.
+							</p>
+						</div>
+						<div style="margin-top:3rem">
+							<img
+								src="./assets/images/calendarDashboard.webp"
+								alt="Calendar Dashboard"
+								loading="eager"
+								decoding="async"
+								width="1800"
+								height="800"
+								style="width:100%"
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Tools bento grid -->
+			<section>
+				<div class="container section-py-lg">
+					<div class="grid-4-2">
+						<div>
+							<h2
+								style="font-size:clamp(1.25rem,2.5vw,1.875rem);font-weight:500;letter-spacing:-0.02em;color:var(--base-800);text-wrap:balance"
+							>
+								Tools that actually pull their weight
+							</h2>
+						</div>
+						<p
+							style="font-size:clamp(1rem,1.5vw,1.25rem);color:var(--base-600);text-wrap:balance;grid-column:span 2;grid-column-start:3;margin-top:1rem"
+						>
+							Ditch the fluff. Get the stuff that helps you move faster, think
+							smarter, and actually get things done.
+						</p>
+					</div>
+
+					<div class="tools-bento">
+						<!-- Analytics -->
+						<div class="bento-analytics">
+							<div
+								style="position:relative;display:flex;flex-direction:column;justify-content:flex-start;height:100%"
+							>
+								<div>
+									<h3 class="accent-h3" style="color:var(--teal-950)">
+										Data that actually does something
+									</h3>
+									<p
+										style="font-size:clamp(1rem,1.5vw,1.25rem);color:var(--base-600);margin-top:0.5rem;text-wrap:balance"
+									>
+										Stop squinting at charts. Make faster, smarter decisions
+										with insights that actually matter to your business.
+									</p>
+								</div>
+								<div style="margin-top:3rem;margin-right:-4rem">
+									<div style="pointer-events:none">
+										<div class="stat-card">
+											<p class="stat-label">Churn Rate</p>
+											<p class="stat-value">4.7%</p>
+											<p class="stat-delta text-red">-0.9% from last month</p>
+										</div>
+										<div class="stat-card">
+											<p class="stat-label">Net Promoter Score</p>
+											<p class="stat-value">67</p>
+											<p class="stat-delta text-green">Holding steady</p>
+										</div>
+										<div class="stat-card">
+											<p class="stat-label">Avg. Page Load Time</p>
+											<p class="stat-value">1.3s</p>
+											<p class="stat-delta text-green">Improved by 200ms</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Teamwork -->
+						<div class="bento-teamwork">
+							<div
+								style="position:relative;display:flex;flex-direction:column;justify-content:flex-start;height:100%"
+							>
+								<div>
+									<h3 class="accent-h3" style="color:var(--purple-900)">
+										Teamwork, minus the chaos
+									</h3>
+									<p
+										style="font-size:clamp(1rem,1.5vw,1.25rem);color:var(--base-600);margin-top:0.5rem;text-wrap:balance"
+									>
+										Ping less, achieve more. Real-time updates and shared
+										progress that don't require a group therapy session.
+									</p>
+								</div>
+								<div style="margin-top:3rem;margin-right:-4rem">
+									<div style="background:#fff;padding:2rem">
+										<div style="margin-bottom:1rem">
+											<div
+												style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem"
+											>
+												<p
+													style="font-size:0.875rem;font-weight:500;color:var(--base-600)"
+												>
+													Project Progress
+												</p>
+												<span style="font-size:0.875rem;color:var(--base-500)"
+													>72%</span
+												>
+											</div>
+											<div class="progress-bar-wrap">
+												<div class="progress-bar-fill" style="width:72%"></div>
+											</div>
+										</div>
+										<div style="display:flex;flex-direction:column;gap:0.75rem">
+											<div style="display:flex;align-items:center;gap:0.75rem">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													style="width:1rem;height:1rem;flex-shrink:0"
+												>
+													<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+													<path d="M5 12l5 5l10 -10" />
+												</svg>
+												<p style="font-size:0.875rem;color:var(--base-500)">
+													<span style="font-weight:500;color:var(--base-950)"
+														>Taylor</span
+													>
+													marked
+													<span style="font-weight:500;color:var(--base-950)"
+														>Onboarding flow</span
+													>
+													as complete
+												</p>
+											</div>
+											<div style="display:flex;align-items:center;gap:0.75rem">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													style="width:1rem;height:1rem;flex-shrink:0"
+												>
+													<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+													<path d="M5 12l5 5l10 -10" />
+												</svg>
+												<p style="font-size:0.875rem;color:var(--base-500)">
+													<span style="font-weight:500;color:var(--base-950)"
+														>Dev team</span
+													>
+													updated
+													<span style="font-weight:500;color:var(--base-950)"
+														>API docs</span
+													>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Files -->
+						<div class="bento-files">
+							<div
+								style="display:flex;flex-direction:column;justify-content:flex-start;height:100%"
+							>
+								<div>
+									<h3 class="accent-h3" style="color:var(--blue-900)">
+										Your files, your clones
+									</h3>
+									<p
+										style="font-size:clamp(1rem,1.5vw,1.25rem);color:var(--base-600);margin-top:0.5rem"
+									>
+										Copy what works. Ditch the repetitive setup and get straight
+										to the productive part.
+									</p>
+								</div>
+								<div
+									style="margin-top:3rem;margin-right:-4rem;pointer-events:none;display:flex;flex-direction:column;gap:0.25rem"
+								>
+									<div
+										style="background:#fff;padding:1rem;display:flex;flex-direction:column;gap:1rem"
+									>
+										<div style="display:flex;align-items:center;gap:0.5rem">
+											<div
+												style="width:2rem;height:2rem;background:var(--base-50);display:flex;align-items:center;justify-content:center;border-radius:0.375rem"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													style="width:1rem;height:1rem;color:var(--base-500)"
+												>
+													<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+													<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+													<path
+														d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
+													/>
+												</svg>
+											</div>
+											<div style="flex:1">
+												<p
+													style="font-size:0.75rem;font-weight:500;color:var(--base-600)"
+												>
+													Cloned File
+												</p>
+												<p style="font-size:0.6rem;color:var(--base-500)">
+													Created 3 days ago
+												</p>
+											</div>
+										</div>
+										<div>
+											<p style="font-size:0.75rem;color:var(--base-500)">
+												Clone #1
+											</p>
+											<p
+												style="font-size:0.875rem;font-weight:500;color:var(--base-800);overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+											>
+												/final-final-final.docx
+											</p>
+										</div>
+									</div>
+									<div
+										style="background:#fff;padding:1rem;display:flex;flex-direction:column;gap:1rem"
+									>
+										<div style="display:flex;align-items:center;gap:0.5rem">
+											<div
+												style="width:2rem;height:2rem;background:var(--base-50);display:flex;align-items:center;justify-content:center;border-radius:0.375rem"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													style="width:1rem;height:1rem;color:var(--base-500)"
+												>
+													<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+													<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+													<path
+														d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
+													/>
+												</svg>
+											</div>
+											<div style="flex:1">
+												<p
+													style="font-size:0.75rem;font-weight:500;color:var(--base-600)"
+												>
+													Cloned File
+												</p>
+												<p style="font-size:0.6rem;color:var(--base-500)">
+													Created 2 minutes ago
+												</p>
+											</div>
+										</div>
+										<div>
+											<p style="font-size:0.75rem;color:var(--base-500)">
+												Clone #2
+											</p>
+											<p
+												style="font-size:0.875rem;font-weight:500;color:var(--base-800);overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+											>
+												/final-final-final-final.docx
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Shortcuts (keyboard) -->
+						<div class="bento-shortcuts">
+							<div
+								style="display:flex;flex-direction:column;justify-content:flex-start;height:100%"
+							>
+								<div>
+									<h3 class="accent-h3" style="color:var(--rose-900)">
+										Shortcuts that don't suck
+									</h3>
+									<p
+										style="font-size:clamp(1rem,1.5vw,1.25rem);color:var(--base-600);margin-top:0.5rem"
+									>
+										Click less, do more. Access everything important without
+										turning it into a treasure hunt.
+									</p>
+								</div>
+								<div class="keyboard-wrap">
+									<div class="keyboard-row">
+										<button class="k-key" style="min-width:4rem">
+											<div style="margin-top:-0.5rem">esc</div>
+										</button>
+										<button class="k-key" style="min-width:4rem">F1</button>
+										<button class="k-key" style="min-width:4rem">F2</button>
+										<button class="k-key" style="min-width:4rem">F3</button>
+										<button class="k-key" style="min-width:4rem">F4</button>
+										<button class="k-key" style="min-width:4rem">F5</button>
+									</div>
+									<div class="keyboard-row">
+										<button
+											class="k-key"
+											style="min-width:3.75rem;flex-direction:column;justify-content:space-between;aspect-ratio:1"
+										>
+											<span>°</span><span>§</span>
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;flex-direction:column;justify-content:space-between;aspect-ratio:1"
+										>
+											<span>!</span><span>1</span>
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;flex-direction:column;justify-content:space-between;aspect-ratio:1"
+										>
+											<span>"</span><span>2</span>
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;flex-direction:column;justify-content:space-between;aspect-ratio:1"
+										>
+											<span>#</span><span>3</span>
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;flex-direction:column;justify-content:space-between;aspect-ratio:1"
+										>
+											<span>€</span><span>4</span>
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;flex-direction:column;justify-content:space-between;aspect-ratio:1"
+										>
+											<span>%</span><span>5</span>
+										</button>
+									</div>
+									<div class="keyboard-row">
+										<button
+											class="k-key"
+											style="min-width:6rem;padding:1.125rem 0.5rem"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												style="width:0.75rem;height:0.75rem;margin-right:auto"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path d="M14 12l-10 0" />
+												<path d="M14 12l-4 4" />
+												<path d="M14 12l-4 -4" />
+												<path d="M20 4l0 16" />
+											</svg>
+										</button>
+										<button
+											class="k-key k-key-q"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											Q
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											W
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											E
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											R
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											T
+										</button>
+									</div>
+									<div class="keyboard-row">
+										<button
+											class="k-key"
+											style="min-width:7.5rem;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:0.5rem;text-align:left"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												style="width:0.5rem;height:0.5rem;color:var(--base-200)"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path
+													d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+												/>
+											</svg>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												style="width:0.75rem;height:0.75rem;margin-right:auto"
+											>
+												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+												<path
+													d="M9 12h-3.586a1 1 0 0 1 -.707 -1.707l6.586 -6.586a1 1 0 0 1 1.414 0l6.586 6.586a1 1 0 0 1 -.707 1.707h-3.586v3h-6v-3z"
+												/>
+												<path d="M9 21h6" />
+												<path d="M9 18h6" />
+											</svg>
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											A
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											S
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											D
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											F
+										</button>
+										<button
+											class="k-key"
+											style="min-width:3.75rem;aspect-ratio:1"
+										>
+											G
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Integration logos -->
+						<div class="bento-integrations">
+							<div
+								style="display:flex;flex-direction:column;justify-content:flex-start;height:100%"
+							>
+								<div>
+									<h3 class="accent-h3" style="color:var(--yellow-900)">
+										Integrations that don't break
+									</h3>
+									<p
+										style="font-size:clamp(1rem,1.5vw,1.25rem);color:var(--base-600);margin-top:0.5rem"
+									>
+										Plug into your favorite tools without needing an API degree.
+										Everything just works.
+									</p>
+								</div>
+								<div style="margin-top:3rem;margin-right:-4rem">
+									<div class="int-logo-grid">
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-1.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-2.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-3.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-4.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-5.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-6.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-7.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-8.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-9.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-10.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-11.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-12.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-13.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-14.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-15.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-16.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-17.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-18.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-19.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+										<div class="int-logo-cell">
+											<img
+												src="./assets/images/brand-20.svg"
+												alt="Integration logo"
+												loading="eager"
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Features tab section (green) -->
+			<section>
+				<div class="container section-py">
+					<div class="block-green">
+						<div class="grid-4-2">
+							<div>
+								<h2 class="accent-h2" style="color:var(--green-900)">
+									Tools built for whatever today throws at you
+								</h2>
+							</div>
+							<p
+								class="accent-p"
+								style="grid-column:span 2;grid-column-start:3;margin-top:1rem"
+							>
+								Whether you're planning, building, or just trying to make it
+								through Monday, we've got a feature (or five) to make it suck
+								less.
+							</p>
+						</div>
+						<div class="features-tab-grid">
+							<div style="display:flex;flex-direction:column;gap:2rem">
+								<button class="tab-btn active" data-tab="feature1">
+									<div>
+										<h3
+											style="font-size:clamp(1rem,1.5vw,1.25rem);font-weight:500;color:var(--green-900)"
+										>
+											Plays nice with the tools you already tolerate
+										</h3>
+										<p
+											style="font-size:1rem;margin-top:1rem;color:var(--green-800);text-wrap:balance"
+										>
+											Boost your workflow without blowing up your setup.
+											Everything connects, nothing breaks (hopefully).
+										</p>
+									</div>
+								</button>
+								<button class="tab-btn" data-tab="feature2">
+									<div>
+										<h3
+											style="font-size:clamp(1rem,1.5vw,1.25rem);font-weight:500;color:var(--green-900)"
+										>
+											Pretend you've got it together
+										</h3>
+										<p
+											style="font-size:1rem;margin-top:1rem;color:var(--green-800);text-wrap:balance"
+										>
+											Manage your time (or at least look like you do) with a
+											calendar that doesn't fight back.
+										</p>
+									</div>
+								</button>
+								<button class="tab-btn" data-tab="feature3">
+									<div>
+										<h3
+											style="font-size:clamp(1rem,1.5vw,1.25rem);font-weight:500;color:var(--green-900)"
+										>
+											Analytics that actually mean something
+										</h3>
+										<p
+											style="font-size:1rem;margin-top:1rem;color:var(--green-800);text-wrap:balance"
+										>
+											Because staring at graphs isn't a strategy. Get real
+											insights, not just pretty charts and vague vibes.
+										</p>
+									</div>
+								</button>
+								<button class="tab-btn" data-tab="feature4">
+									<div>
+										<h3
+											style="font-size:clamp(1rem,1.5vw,1.25nm);font-weight:500;color:var(--green-900)"
+										>
+											Boards without the bloat
+										</h3>
+										<p
+											style="font-size:1rem;margin-top:1rem;color:var(--green-800);text-wrap:balance"
+										>
+											Finally, a way to manage projects without feeling like
+											you're drowning in features you'll never use.
+										</p>
+									</div>
+								</button>
+							</div>
+							<div class="features-tab-visual">
+								<img
+									src="./assets/images/glass4.webp"
+									alt="Feature visual"
+									loading="eager"
+									decoding="async"
+									width="600"
+									height="800"
+								>
+								<div class="features-tab-overlay">
+									<!-- Tab content 1: Integrations -->
+									<div
+										class="tab-content active"
+										id="feature1"
+										style="width:100%;max-width:24rem;margin:auto"
+									>
+										<div style="background:#fff;padding:1.5rem">
+											<ul
+												style="list-style:none;display:flex;flex-direction:column;gap:1rem"
+											>
+												<li
+													style="display:flex;align-items:center;justify-content:space-between"
+												>
+													<div
+														style="display:flex;align-items:flex-start;gap:0.75rem"
+													>
+														<img
+															src="./assets/images/brand-notion.svg"
+															alt="Notion"
+															loading="lazy"
+															width="24"
+															height="24"
+															style="width:1.5rem;height:1.5rem"
+														>
+														<div>
+															<p
+																style="font-size:0.875rem;font-weight:500;color:var(--base-900)"
+															>
+																Notion
+															</p>
+															<p
+																style="font-size:0.75rem;color:var(--base-500)"
+															>
+																Docs &amp; knowledge base
+															</p>
+														</div>
+													</div>
+													<button
+														style="display:inline-flex;align-items:center;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:500;color:var(--green-800);border-radius:9999px;gap:0.25rem;background:var(--green-100);border:none;cursor:pointer"
+													>
+														<svg
+															style="width:1rem;height:1rem"
+															fill="none"
+															stroke="currentColor"
+															stroke-width="2"
+															viewBox="0 0 24 24"
+														>
+															<path d="M5 13l4 4L19 7"></path>
+														</svg>Connected
+													</button>
+												</li>
+												<li
+													style="display:flex;align-items:center;justify-content:space-between"
+												>
+													<div
+														style="display:flex;align-items:flex-start;gap:0.75rem"
+													>
+														<img
+															src="./assets/images/brand-sketch.svg"
+															alt="Sketch"
+															loading="lazy"
+															width="24"
+															height="24"
+															style="width:1.5rem;height:1.5rem"
+														>
+														<div>
+															<p
+																style="font-size:0.875rem;font-weight:500;color:var(--base-900)"
+															>
+																Sketch
+															</p>
+															<p
+																style="font-size:0.75rem;color:var(--base-500)"
+															>
+																Vector design &amp; prototyping
+															</p>
+														</div>
+													</div>
+													<button
+														style="display:inline-flex;align-items:center;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:500;color:var(--base-600);border-radius:9999px;gap:0.25rem;background:var(--base-50);border:none;cursor:pointer"
+													>
+														<svg
+															style="width:1rem;height:1rem"
+															fill="none"
+															stroke="currentColor"
+															stroke-width="2"
+															viewBox="0 0 24 24"
+														>
+															<path d="M12 5v14M5 12h14"></path>
+														</svg>Connect
+													</button>
+												</li>
+												<li
+													style="display:flex;align-items:center;justify-content:space-between"
+												>
+													<div
+														style="display:flex;align-items:flex-start;gap:0.75rem"
+													>
+														<img
+															src="./assets/images/brand-behance.svg"
+															alt="Behance"
+															loading="lazy"
+															width="24"
+															height="24"
+															style="width:1.5rem;height:1.5rem"
+														>
+														<div>
+															<p
+																style="font-size:0.875rem;font-weight:500;color:var(--base-900)"
+															>
+																Behance
+															</p>
+															<p
+																style="font-size:0.75rem;color:var(--base-500)"
+															>
+																Creative portfolio platform
+															</p>
+														</div>
+													</div>
+													<button
+														style="display:inline-flex;align-items:center;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:500;color:var(--green-800);border-radius:9999px;gap:0.25rem;background:var(--green-100);border:none;cursor:pointer"
+													>
+														<svg
+															style="width:1rem;height:1rem"
+															fill="none"
+															stroke="currentColor"
+															stroke-width="2"
+															viewBox="0 0 24 24"
+														>
+															<path d="M5 13l4 4L19 7"></path>
+														</svg>Connected
+													</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<!-- Tab content 2: Calendar -->
+									<div
+										class="tab-content"
+										id="feature2"
+										style="width:100%;max-width:36rem;padding:1.5rem;background:#fff"
+									>
+										<div
+											style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem"
+										>
+											<h4
+												style="font-size:0.875rem;font-weight:500;color:var(--base-900)"
+											>
+												April 2025
+											</h4>
+										</div>
+										<div
+											style="display:grid;grid-template-columns:repeat(7,1fr);gap:0.25rem;font-size:0.75rem;text-align:center;color:var(--base-400);margin-bottom:0.5rem"
+										>
+											<div>Su</div>
+											<div>Mo</div>
+											<div>Tu</div>
+											<div>We</div>
+											<div>Th</div>
+											<div>Fr</div>
+											<div>Sa</div>
+										</div>
+										<div
+											style="display:grid;grid-template-columns:repeat(7,1fr);gap:0.25rem;font-size:0.875rem;text-align:center"
+										>
+											<div></div>
+											<div></div>
+											<div>1</div>
+											<div>2</div>
+											<div>3</div>
+											<div>4</div>
+											<div>5</div>
+											<div>6</div>
+											<div
+												style="display:flex;align-items:center;justify-content:center;font-weight:500;color:var(--green-600);background:var(--teal-100);border-radius:9999px;width:1.5rem;height:1.5rem;margin:auto"
+											>
+												7
+											</div>
+											<div>8</div>
+											<div>9</div>
+											<div>10</div>
+											<div>11</div>
+											<div>12</div>
+											<div>13</div>
+											<div>14</div>
+											<div>15</div>
+											<div>16</div>
+											<div>17</div>
+											<div>18</div>
+											<div>19</div>
+											<div>20</div>
+											<div>21</div>
+											<div>22</div>
+											<div>23</div>
+											<div>24</div>
+											<div>25</div>
+											<div>26</div>
+											<div>27</div>
+											<div>28</div>
+											<div>29</div>
+											<div>30</div>
+										</div>
+										<div
+											style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem"
+										>
+											<div
+												style="display:flex;align-items:center;justify-content:space-between"
+											>
+												<span style="font-size:0.75rem;color:var(--base-500)"
+													>Apr 7</span
+												><span
+													style="font-size:0.75rem;font-weight:500;color:var(--base-900)"
+													>Team sync</span
+												>
+											</div>
+											<div
+												style="display:flex;align-items:center;justify-content:space-between"
+											>
+												<span style="font-size:0.75rem;color:var(--base-500)"
+													>Apr 15</span
+												><span
+													style="font-size:0.75rem;font-weight:500;color:var(--base-900)"
+													>Client review</span
+												>
+											</div>
+										</div>
+									</div>
+									<!-- Tab content 3: Analytics -->
+									<div
+										class="tab-content"
+										id="feature3"
+										style="width:100%;max-width:32rem;padding:1.5rem;background:#fff"
+									>
+										<div
+											style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem"
+										>
+											<div>
+												<p style="font-size:0.75rem;color:var(--base-500)">
+													Active Users
+												</p>
+												<p
+													style="font-size:1.125rem;font-weight:500;color:var(--base-900)"
+												>
+													1.2K
+												</p>
+												<svg
+													viewBox="0 0 80 20"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													style="width:100%;height:2rem;color:var(--blue-600)"
+												>
+													<polyline
+														points="0,20 10,12 20,14 30,8 40,18 50,10 60,16 70,6 80,14"
+													></polyline>
+												</svg>
+											</div>
+											<div>
+												<p style="font-size:0.75rem;color:var(--base-500)">
+													Conversion Rate
+												</p>
+												<p
+													style="font-size:1.125rem;font-weight:500;color:var(--base-900)"
+												>
+													7.8%
+												</p>
+												<svg
+													viewBox="0 0 80 20"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													style="width:100%;height:2rem;color:var(--blue-600)"
+												>
+													<polyline
+														points="0,18 10,10 20,12 30,6 40,9 50,5 60,3 70,2 80,4"
+													></polyline>
+												</svg>
+											</div>
+											<div>
+												<p style="font-size:0.75rem;color:var(--base-500)">
+													Bounce Rate
+												</p>
+												<p
+													style="font-size:1.125rem;font-weight:500;color:var(--base-900)"
+												>
+													38%
+												</p>
+												<svg
+													viewBox="0 0 80 20"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													style="width:100%;height:2rem;color:var(--blue-600)"
+												>
+													<polyline
+														points="0,12 10,14 20,11 30,7 40,10 50,6 60,8 70,5 80,9"
+													></polyline>
+												</svg>
+											</div>
+										</div>
+									</div>
+									<!-- Tab content 4: Board -->
+									<div
+										class="tab-content"
+										id="feature4"
+										style="width:100%;max-width:32rem;padding:1.5rem;background:#fff"
+									>
+										<div
+											style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem"
+										>
+											<div>
+												<p
+													style="font-size:0.75rem;font-weight:500;color:var(--base-600);margin-bottom:0.5rem"
+												>
+													To Do
+												</p>
+												<div
+													style="font-size:0.75rem;background:var(--base-50);padding:0.5rem;border-radius:0.375rem;color:var(--base-900);margin-bottom:0.5rem"
+												>
+													Design homepage hero
+												</div>
+												<div
+													style="font-size:0.75rem;background:var(--base-50);padding:0.5rem;border-radius:0.375rem;color:var(--base-900)"
+												>
+													Write user stories
+												</div>
+											</div>
+											<div>
+												<p
+													style="font-size:0.75rem;font-weight:500;color:var(--base-600);margin-bottom:0.5rem"
+												>
+													In Progress
+												</p>
+												<div
+													style="font-size:0.75rem;background:var(--base-50);padding:0.5rem;border-radius:0.375rem;color:var(--base-900)"
+												>
+													Build API endpoints
+												</div>
+											</div>
+											<div>
+												<p
+													style="font-size:0.75rem;font-weight:500;color:var(--base-600);margin-bottom:0.5rem"
+												>
+													Done
+												</p>
+												<div
+													style="font-size:0.75rem;background:var(--base-50);padding:0.5rem;border-radius:0.375rem;color:var(--base-900);margin-bottom:0.5rem"
+												>
+													Set up repo
+												</div>
+												<div
+													style="font-size:0.75rem;background:var(--base-50);padding:0.5rem;border-radius:0.375rem;color:var(--base-900)"
+												>
+													Initial designs
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA section -->
+			<section>
+				<div class="container section-py-lg">
+					<div class="cta-visual">
+						<img
+							src="./assets/images/glass1.webp"
+							alt="Background"
+							loading="eager"
+							decoding="async"
+							width="800"
+							height="800"
+						>
+						<div class="cta-overlay">
+							<h2>
+								Experience Alfred in action — discover how our platform helps
+								you move faster, work smarter, and stay ahead.
+							</h2>
+							<div class="marquee-wrapper" style="margin-top:3rem">
+								<div class="marquee-inner" style="filter:invert(1)">
+									<img
+										src="./assets/images/logo-1a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-2a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-3a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-6a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-3a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-6a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<!-- duplicate -->
+									<img
+										src="./assets/images/logo-1a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-2a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-3a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-6a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-3a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+									<img
+										src="./assets/images/logo-6a.svg"
+										alt="Brand"
+										width="200"
+										height="100"
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a
+						class="btn btn-dark btn-lg"
+						href="bookdemo.html"
+						style="width:100%;margin-top:auto;display:flex"
+						>Book a demo</a
+					>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div class="container section-py">
+				<div class="footer-grid">
+					<div class="footer-links-grid">
+						<div>
+							<h3>Navigation</h3>
+							<ul>
+								<li><a href="system-overview.html">Overview</a></li>
+								<li><a href="system-colors.html">Colors</a></li>
+								<li><a href="system-links.html">Links</a></li>
+								<li><a href="system-buttons.html">Buttons</a></li>
+								<li><a href="system-typography.html">Typography</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Stay updated</h3>
+							<ul>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="changelog.html">Changelog</a></li>
+								<li>
+									<a href="https://www.lexingtonthemes.com/legal/license"
+										>License</a
+									>
+								</li>
+								<li>
+									<a href="https://www.lexingtonthemes.com/documentation"
+										>Documentation</a
+									>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h3>Company</h3>
+							<ul>
+								<li><a href="about.html">About</a></li>
+								<li><a href="customers.html">Customers</a></li>
+								<li><a href="helpcenter.html">Help Center</a></li>
+								<li><a href="integrations.html">Integrations</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Socials</h3>
+							<ul>
+								<li>
+									<a href="https://twitter.com/lexingtonthemes"
+										>@lexingtonthemes</a
+									>
+								</li>
+								<li>
+									<a href="https://twitter.com/Mike_Andreuzza"
+										>@Mike_Andreuzza</a
+									>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="footer-newsletter">
+						<p class="footer-newsletter-title">
+							Stay up to date with Alfred's news.
+						</p>
+						<div>
+							<form
+								class="newsletter-form"
+								aria-label="Newsletter Signup Form"
+								onsubmit="return false"
+							>
+								<div>
+									<label for="email-footer" class="sr-only"
+										>Email address</label
+									>
+									<input
+										type="email"
+										id="email-footer"
+										name="email"
+										placeholder="name@email.com"
+										required
+										class="newsletter-input"
+									>
+								</div>
+								<button type="submit" class="btn btn-dark btn-lg btn-full">
+									Signup
+								</button>
+							</form>
+							<p class="footer-legal">
+								By signing up, you agree that Alfred may contact you about our
+								products and services. You can unsubscribe at any time. See
+								Alfred's <a href="#">Privacy Statement</a> for more information
+								on how we handle your data.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="./assets/nav.js"></script>
+		<script>
+		// Feature tabs
+		document.addEventListener("DOMContentLoaded", () => {
+			const tabBtns = document.querySelectorAll(".tab-btn");
+			const tabContents = document.querySelectorAll(".tab-content");
+
+			const switchTab = (tabId) => {
+				tabBtns.forEach((btn) => {
+					const active = btn.dataset.tab === tabId;
+					btn.classList.toggle("active", active);
+				});
+				tabContents.forEach((content) => {
+					content.classList.toggle("active", content.id === tabId);
+				});
+			};
+
+			tabBtns.forEach((btn) => {
+				btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+			});
+
+			switchTab("feature1");
+		});
+		</script>
+	</body>
+</html>

@@ -1,114 +1,124 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>aperture specimen</title>
-    <style>
-      html, body { margin: 0; background: #000; }
-      #c { display: block; }
-    </style>
-  </head>
-  <body>
-    <canvas id="c"></canvas>
-    <script type="text/javascript">
-      // Standalone renderer for the radial-bloom "field captures" gallery.
-      // It runs the SAME promoted-uniform GLSL as src/components/aperture-canvas.tsx,
-      // reads a preset from the query string, draws one frame, and flags ready
-      // so the Playwright capture script can screenshot a deterministic still.
-      (() => {
-        var q = new URLSearchParams(location.search);
-        var blades = parseFloat(q.get("blades") || "9");
-        var gain = parseFloat(q.get("gain") || "1");
-        var hue = parseFloat(q.get("hue") || "0");
-        var t = parseFloat(q.get("t") || "0");
-        var SIZE = parseInt(q.get("size") || "900", 10);
+	<head>
+		<meta charset="UTF-8">
+		<title>aperture specimen</title>
+		<style>
+		html,
+		body {
+			margin: 0;
+			background: #000;
+		}
+		#c {
+			display: block;
+		}
+		</style>
+	</head>
+	<body>
+		<canvas id="c"></canvas>
+		<script type="text/javascript">
+		// Standalone renderer for the radial-bloom "field captures" gallery.
+		// It runs the SAME promoted-uniform GLSL as src/components/aperture-canvas.tsx,
+		// reads a preset from the query string, draws one frame, and flags ready
+		// so the Playwright capture script can screenshot a deterministic still.
+		(() => {
+			var q = new URLSearchParams(location.search);
+			var blades = parseFloat(q.get("blades") || "9");
+			var gain = parseFloat(q.get("gain") || "1");
+			var hue = parseFloat(q.get("hue") || "0");
+			var t = parseFloat(q.get("t") || "0");
+			var SIZE = parseInt(q.get("size") || "900", 10);
 
-        var canvas = document.getElementById("c");
-        canvas.width = SIZE;
-        canvas.height = SIZE;
-        canvas.style.width = `${SIZE}px`;
-        canvas.style.height = `${SIZE}px`;
+			var canvas = document.getElementById("c");
+			canvas.width = SIZE;
+			canvas.height = SIZE;
+			canvas.style.width = `${SIZE}px`;
+			canvas.style.height = `${SIZE}px`;
 
-        var gl = canvas.getContext("webgl2", { premultipliedAlpha: false });
-        if (!gl) {
-          window.__error = "no webgl2";
-          return;
-        }
+			var gl = canvas.getContext("webgl2", { premultipliedAlpha: false });
+			if (!gl) {
+				window.__error = "no webgl2";
+				return;
+			}
 
-        var VERT =
-          "#version 300 es\n" +
-          "precision highp float;\n" +
-          "layout(location=0) in vec2 a_pos;\n" +
-          "void main(){ gl_Position = vec4(a_pos, 0.0, 1.0); }\n";
+			var VERT =
+				"#version 300 es\n" +
+				"precision highp float;\n" +
+				"layout(location=0) in vec2 a_pos;\n" +
+				"void main(){ gl_Position = vec4(a_pos, 0.0, 1.0); }\n";
 
-        var FRAG =
-          "#version 300 es\n" +
-          "precision highp float;\n" +
-          "out vec4 fragColor;\n" +
-          "uniform vec3 iResolution; uniform float iTime; uniform vec4 iMouse;\n" +
-          "uniform float uBlades; uniform float uGain; uniform float uHue;\n" +
-          "void mainImage(out vec4 fragColor, in vec2 fragCoord){\n" +
-          "  vec2 r = iResolution.xy; float t = iTime; vec4 o = vec4(0.0);\n" +
-          "  vec2 p = fragCoord - (r * 0.5 + iMouse.xy);\n" +
-          "  for (float i = 0.0, a = 0.0; i++ < 16.0; ){\n" +
-          "    if (i > uBlades) break;\n" +
-          "    a = (i*i)/80.0 - length(p)/r.y;\n" +
-          "    float denom = max(a, -a*3.0) + 2.0/r.y;\n" +
-          "    a = cos(i - t); float edge0 = a; float edge1 = 2.0;\n" +
-          "    a = atan(p.y, p.x) + a + i*i;\n" +
-          "    float sm = smoothstep(edge0, edge1, cos(a));\n" +
-          "    o += (0.03 * uGain)/denom * sm * (1.2 + sin(a + i + uHue + vec4(0.0,2.0,4.0,0.0)));\n" +
-          "  }\n" +
-          "  o = tanh(o); fragColor = vec4(o.rgb, 1.0);\n" +
-          "}\n" +
-          "void main(){ mainImage(fragColor, gl_FragCoord.xy); }\n";
+			var FRAG =
+				"#version 300 es\n" +
+				"precision highp float;\n" +
+				"out vec4 fragColor;\n" +
+				"uniform vec3 iResolution; uniform float iTime; uniform vec4 iMouse;\n" +
+				"uniform float uBlades; uniform float uGain; uniform float uHue;\n" +
+				"void mainImage(out vec4 fragColor, in vec2 fragCoord){\n" +
+				"  vec2 r = iResolution.xy; float t = iTime; vec4 o = vec4(0.0);\n" +
+				"  vec2 p = fragCoord - (r * 0.5 + iMouse.xy);\n" +
+				"  for (float i = 0.0, a = 0.0; i++ < 16.0; ){\n" +
+				"    if (i > uBlades) break;\n" +
+				"    a = (i*i)/80.0 - length(p)/r.y;\n" +
+				"    float denom = max(a, -a*3.0) + 2.0/r.y;\n" +
+				"    a = cos(i - t); float edge0 = a; float edge1 = 2.0;\n" +
+				"    a = atan(p.y, p.x) + a + i*i;\n" +
+				"    float sm = smoothstep(edge0, edge1, cos(a));\n" +
+				"    o += (0.03 * uGain)/denom * sm * (1.2 + sin(a + i + uHue + vec4(0.0,2.0,4.0,0.0)));\n" +
+				"  }\n" +
+				"  o = tanh(o); fragColor = vec4(o.rgb, 1.0);\n" +
+				"}\n" +
+				"void main(){ mainImage(fragColor, gl_FragCoord.xy); }\n";
 
-        function sh(type, src) {
-          var s = gl.createShader(type);
-          gl.shaderSource(s, src);
-          gl.compileShader(s);
-          if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-            window.__error = gl.getShaderInfoLog(s);
-            return null;
-          }
-          return s;
-        }
+			function sh(type, src) {
+				var s = gl.createShader(type);
+				gl.shaderSource(s, src);
+				gl.compileShader(s);
+				if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+					window.__error = gl.getShaderInfoLog(s);
+					return null;
+				}
+				return s;
+			}
 
-        var vs = sh(gl.VERTEX_SHADER, VERT);
-        var fs = sh(gl.FRAGMENT_SHADER, FRAG);
-        var prog = gl.createProgram();
-        gl.attachShader(prog, vs);
-        gl.attachShader(prog, fs);
-        gl.linkProgram(prog);
-        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-          window.__error = gl.getProgramInfoLog(prog);
-          return;
-        }
+			var vs = sh(gl.VERTEX_SHADER, VERT);
+			var fs = sh(gl.FRAGMENT_SHADER, FRAG);
+			var prog = gl.createProgram();
+			gl.attachShader(prog, vs);
+			gl.attachShader(prog, fs);
+			gl.linkProgram(prog);
+			if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+				window.__error = gl.getProgramInfoLog(prog);
+				return;
+			}
 
-        var vao = gl.createVertexArray();
-        gl.bindVertexArray(vao);
-        var vbo = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-        gl.enableVertexAttribArray(0);
-        gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+			var vao = gl.createVertexArray();
+			gl.bindVertexArray(vao);
+			var vbo = gl.createBuffer();
+			gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+			gl.bufferData(
+				gl.ARRAY_BUFFER,
+				new Float32Array([-1, -1, 3, -1, -1, 3]),
+				gl.STATIC_DRAW,
+			);
+			gl.enableVertexAttribArray(0);
+			gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
 
-        gl.useProgram(prog);
-        gl.viewport(0, 0, SIZE, SIZE);
-        gl.uniform3f(gl.getUniformLocation(prog, "iResolution"), SIZE, SIZE, 1.0);
-        gl.uniform1f(gl.getUniformLocation(prog, "iTime"), t);
-        gl.uniform4f(gl.getUniformLocation(prog, "iMouse"), 0, 0, 0, 0);
-        gl.uniform1f(gl.getUniformLocation(prog, "uBlades"), blades);
-        gl.uniform1f(gl.getUniformLocation(prog, "uGain"), gain);
-        gl.uniform1f(gl.getUniformLocation(prog, "uHue"), hue);
+			gl.useProgram(prog);
+			gl.viewport(0, 0, SIZE, SIZE);
+			gl.uniform3f(gl.getUniformLocation(prog, "iResolution"), SIZE, SIZE, 1.0);
+			gl.uniform1f(gl.getUniformLocation(prog, "iTime"), t);
+			gl.uniform4f(gl.getUniformLocation(prog, "iMouse"), 0, 0, 0, 0);
+			gl.uniform1f(gl.getUniformLocation(prog, "uBlades"), blades);
+			gl.uniform1f(gl.getUniformLocation(prog, "uGain"), gain);
+			gl.uniform1f(gl.getUniformLocation(prog, "uHue"), hue);
 
-        gl.clearColor(0, 0, 0, 1);
-        gl.clear(gl.COLOR_BUFFER_BIT);
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
-        gl.finish();
+			gl.clearColor(0, 0, 0, 1);
+			gl.clear(gl.COLOR_BUFFER_BIT);
+			gl.drawArrays(gl.TRIANGLES, 0, 3);
+			gl.finish();
 
-        window.__ready = true;
-      })();
-    </script>
-  </body>
+			window.__ready = true;
+		})();
+		</script>
+	</body>
 </html>

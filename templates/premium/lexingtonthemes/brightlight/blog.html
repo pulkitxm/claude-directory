@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Blog — Brightlight</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="assets/styles.css">
+		<style>
+		.post-card {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			padding: 1rem;
+			border-radius: 0.75rem;
+			transition: background-color 200ms;
+		}
+		.post-card:hover {
+			background-color: var(--color-sand-100);
+		}
+		.post-meta {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.75rem;
+			color: var(--color-base-500);
+		}
+		.post-tag {
+			font-size: 0.75rem;
+			color: var(--color-accent-600);
+			background-color: var(--color-accent-50);
+			padding: 0.125rem 0.5rem;
+			border-radius: 9999px;
+			font-weight: 500;
+		}
+		.posts-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+			margin-top: 2rem;
+		}
+		@media (min-width: 768px) {
+			.posts-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (min-width: 1024px) {
+			.posts-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<header class="nav-wrapper" id="nav">
+			<div class="nav-inner">
+				<a href="index.html" class="nav-logo" aria-label="Go to homepage">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="nav-logo-icon"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path
+							d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+						/>
+						<path
+							d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"
+						/>
+						<path d="M19 11h2m-1 -1v2" />
+					</svg>
+					<span>Brightlight</span>
+				</a>
+				<nav class="nav-links">
+					<a href="system/overview.html" class="nav-link">Overview</a
+					><a href="blog.html" class="nav-link" aria-current="page">Blog</a>
+				</nav>
+				<div class="nav-actions">
+					<a href="sign-in.html" class="btn btn-secondary-sm">Sign in</a
+					><a href="#" class="btn btn-primary-sm">Get started</a>
+				</div>
+				<button
+					class="hamburger-btn"
+					id="hamburger-btn"
+					aria-label="Open menu"
+					aria-expanded="false"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						style="width:1.5rem;height:1.5rem;"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path d="M4 6l16 0" />
+						<path d="M4 12l16 0" />
+						<path d="M4 18l16 0" />
+					</svg>
+				</button>
+			</div>
+		</header>
+		<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+			<div class="mobile-nav-bg"></div>
+			<button
+				class="mobile-nav-close"
+				id="mobile-nav-close"
+				aria-label="Close menu"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					style="width:1rem;height:1rem;"
+				>
+					<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+					<path d="M18 6l-12 12" />
+					<path d="M6 6l12 12" />
+				</svg>
+			</button>
+			<ul class="mobile-nav-items">
+				<li>
+					<a href="system/overview.html" class="mobile-nav-link">Overview</a>
+				</li>
+				<li><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+				<li class="mobile-nav-actions">
+					<a href="sign-in.html" class="btn btn-secondary-sm">Sign in</a
+					><a href="#" class="btn btn-primary-sm">Get started</a>
+				</li>
+			</ul>
+		</nav>
+
+		<main style="flex:1;">
+			<section>
+				<div class="container" style="padding-top:8rem;padding-bottom:3rem;">
+					<div>
+						<h1
+							class="heading-serif"
+							style="font-size:clamp(1.5rem,3vw,2.25rem);"
+						>
+							From the Brightlight Blog
+						</h1>
+						<p class="text-muted" style="margin-top:0.5rem;max-width:36rem;">
+							Developer insights, deliverability guides, and the occasional rant
+							about email infrastructure.
+						</p>
+					</div>
+					<div class="posts-grid">
+						<!-- Post 1 -->
+						<a
+							href="#"
+							class="post-card"
+							style="text-decoration:none;color:inherit;"
+						>
+							<span class="post-tag">Deliverability</span>
+							<h2
+								style="font-family:var(--font-serif);font-size:1.125rem;color:var(--color-base-900);font-weight:500;margin-top:0.25rem;"
+							>
+								Why Your Emails Are Landing in Spam (And How to Fix It)
+							</h2>
+							<p
+								class="text-muted"
+								style="font-size:0.875rem;margin-top:0.25rem;"
+							>
+								SPF, DKIM, DMARC — three acronyms standing between you and the
+								inbox. Here's what they do and how to actually configure them.
+							</p>
+							<div class="post-meta" style="margin-top:0.5rem;">
+								<span>June 15, 2025</span>
+								<span>&middot;</span>
+								<span>8 min read</span>
+							</div>
+						</a>
+						<!-- Post 2 -->
+						<a
+							href="#"
+							class="post-card"
+							style="text-decoration:none;color:inherit;"
+						>
+							<span class="post-tag">Engineering</span>
+							<h2
+								style="font-family:var(--font-serif);font-size:1.125rem;color:var(--color-base-900);font-weight:500;margin-top:0.25rem;"
+							>
+								Building a Zero-Downtime Email Queue with Redis and Node.js
+							</h2>
+							<p
+								class="text-muted"
+								style="font-size:0.875rem;margin-top:0.25rem;"
+							>
+								A walkthrough of how we architected our email processing
+								pipeline to handle 10M+ sends per day without breaking a sweat.
+							</p>
+							<div class="post-meta" style="margin-top:0.5rem;">
+								<span>June 8, 2025</span>
+								<span>&middot;</span>
+								<span>12 min read</span>
+							</div>
+						</a>
+						<!-- Post 3 -->
+						<a
+							href="#"
+							class="post-card"
+							style="text-decoration:none;color:inherit;"
+						>
+							<span class="post-tag">Product</span>
+							<h2
+								style="font-family:var(--font-serif);font-size:1.125rem;color:var(--color-base-900);font-weight:500;margin-top:0.25rem;"
+							>
+								Announcing Brightlight Webhooks 2.0: Real-Time Event Streaming
+							</h2>
+							<p
+								class="text-muted"
+								style="font-size:0.875rem;margin-top:0.25rem;"
+							>
+								We rewrote our webhook system from scratch. Retry logic, payload
+								signing, and filtering — all redesigned with developer
+								experience first.
+							</p>
+							<div class="post-meta" style="margin-top:0.5rem;">
+								<span>May 28, 2025</span>
+								<span>&middot;</span>
+								<span>6 min read</span>
+							</div>
+						</a>
+						<!-- Post 4 -->
+						<a
+							href="#"
+							class="post-card"
+							style="text-decoration:none;color:inherit;"
+						>
+							<span class="post-tag">Guide</span>
+							<h2
+								style="font-family:var(--font-serif);font-size:1.125rem;color:var(--color-base-900);font-weight:500;margin-top:0.25rem;"
+							>
+								The Complete Guide to Email Open Tracking in 2025
+							</h2>
+							<p
+								class="text-muted"
+								style="font-size:0.875rem;margin-top:0.25rem;"
+							>
+								Privacy changes have made tracking harder. Here's the state of
+								email analytics and what you can still measure reliably.
+							</p>
+							<div class="post-meta" style="margin-top:0.5rem;">
+								<span>May 19, 2025</span>
+								<span>&middot;</span>
+								<span>10 min read</span>
+							</div>
+						</a>
+						<!-- Post 5 -->
+						<a
+							href="#"
+							class="post-card"
+							style="text-decoration:none;color:inherit;"
+						>
+							<span class="post-tag">Engineering</span>
+							<h2
+								style="font-family:var(--font-serif);font-size:1.125rem;color:var(--color-base-900);font-weight:500;margin-top:0.25rem;"
+							>
+								MJML vs. Raw HTML: Which Is Right for Your Email Templates?
+							</h2>
+							<p
+								class="text-muted"
+								style="font-size:0.875rem;margin-top:0.25rem;"
+							>
+								We tested both approaches across 40 email clients. Here's an
+								honest comparison with real rendering screenshots and code
+								examples.
+							</p>
+							<div class="post-meta" style="margin-top:0.5rem;">
+								<span>May 10, 2025</span>
+								<span>&middot;</span>
+								<span>9 min read</span>
+							</div>
+						</a>
+						<!-- Post 6 -->
+						<a
+							href="#"
+							class="post-card"
+							style="text-decoration:none;color:inherit;"
+						>
+							<span class="post-tag">Deliverability</span>
+							<h2
+								style="font-family:var(--font-serif);font-size:1.125rem;color:var(--color-base-900);font-weight:500;margin-top:0.25rem;"
+							>
+								Dedicated IPs vs. Shared Sending: What Nobody Tells You
+							</h2>
+							<p
+								class="text-muted"
+								style="font-size:0.875rem;margin-top:0.25rem;"
+							>
+								The sales pitch says dedicated IPs are always better. Reality is
+								more nuanced. Here's when they help, when they hurt, and how to
+								decide.
+							</p>
+							<div class="post-meta" style="margin-top:0.5rem;">
+								<span>April 30, 2025</span>
+								<span>&middot;</span>
+								<span>7 min read</span>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer style="border-top:1px dashed var(--color-base-200);">
+			<div class="container" style="padding-block:3rem;">
+				<div class="footer-inner">
+					<div>
+						<a
+							href="index.html"
+							class="nav-logo"
+							style="margin-bottom:0.75rem;"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="nav-logo-icon"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path
+									d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+								/>
+								<path
+									d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"
+								/>
+								<path d="M19 11h2m-1 -1v2" />
+							</svg>
+							<span>Brightlight</span>
+						</a>
+						<p
+							style="font-size:0.875rem;color:var(--color-base-500);margin-top:0.5rem;max-width:18rem;"
+						>
+							Premium multipage themes crafted with precision for developers and
+							designers who care about quality.
+						</p>
+					</div>
+					<div class="footer-links-grid">
+						<div>
+							<p class="footer-heading">Product</p>
+							<ul class="footer-links">
+								<li>
+									<a href="system/overview.html" class="footer-link"
+										>Overview</a
+									>
+								</li>
+								<li><a href="blog.html" class="footer-link">Blog</a></li>
+								<li>
+									<a href="index.html#pricing-section" class="footer-link"
+										>Pricing</a
+									>
+								</li>
+								<li><a href="sign-in.html" class="footer-link">Sign in</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-heading">Company</p>
+							<ul class="footer-links">
+								<li><a href="#" class="footer-link">About</a></li>
+								<li><a href="#" class="footer-link">Careers</a></li>
+								<li><a href="#" class="footer-link">Press</a></li>
+								<li><a href="#" class="footer-link">Contact</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-heading">Legal</p>
+							<ul class="footer-links">
+								<li>
+									<a
+										href="https://www.lexingtonthemes.com/legal/license"
+										class="footer-link"
+										>License</a
+									>
+								</li>
+								<li><a href="#" class="footer-link">Privacy</a></li>
+								<li><a href="#" class="footer-link">Terms</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-heading">Social</p>
+							<ul class="footer-links">
+								<li>
+									<a
+										href="https://twitter.com/lexingtonthemes"
+										class="footer-link"
+										>@lexingtonthemes</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://twitter.com/Mike_Andreuzza"
+										class="footer-link"
+										>@Mike_Andreuzza</a
+									>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script>
+		const hamburger = document.getElementById("hamburger-btn");
+		const mobileNav = document.getElementById("mobile-nav");
+		const mobileClose = document.getElementById("mobile-nav-close");
+		function openNav() {
+			mobileNav.classList.add("open");
+			mobileNav.setAttribute("aria-hidden", "false");
+			hamburger.setAttribute("aria-expanded", "true");
+			document.body.style.overflow = "hidden";
+		}
+		function closeNav() {
+			mobileNav.classList.remove("open");
+			mobileNav.setAttribute("aria-hidden", "true");
+			hamburger.setAttribute("aria-expanded", "false");
+			document.body.style.overflow = "";
+		}
+		hamburger?.addEventListener("click", openNav);
+		mobileClose?.addEventListener("click", closeNav);
+		mobileNav
+			?.querySelectorAll("a")
+			.forEach((a) => a.addEventListener("click", closeNav));
+		</script>
+	</body>
+</html>

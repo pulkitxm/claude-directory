@@ -1,5 +1,7 @@
 # Animated Dots Rain — Canvas Background Component (React + Vite + Tailwind CSS + shadcn)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn/ui integration of **`AnimatedDots`** — a raw-`<canvas>` background where columns of dots rain down, each dot bleeding a single **R / G / B** channel from black to full saturation as it accelerates toward the bottom, then recycling with a fresh colour and speed. No Three.js, no Framer Motion, no assets — just React and one `requestAnimationFrame` loop. The showcase page is a component lab: a full-bleed live hero (the verbatim `demo.tsx`), a control deck wiring every real prop to a fader, copy-paste integration steps, and a full props API with the prompt's required Q&A. All fonts (Space Grotesk, Inter, JetBrains Mono) are vendored locally as woff2 for fully offline operation. Generated with Claude Fable 5.
 
 ## Stack

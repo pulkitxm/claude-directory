@@ -1,0 +1,44 @@
+[
+  {
+    "name": "dark-mode-toggle",
+    "trigger": "button next to 'Get Started' in navbar (sun/moon icon, text 'Dark Mode' sr-only)",
+    "delta": "Adds class 'dark' to <html> (removes 'light'). Body bg goes white -> rgb(23,23,23). All dark: tailwind variants activate (text colors, card bgs, borders). Icon swaps sun -> moon. Persisted to localStorage('theme'). Illustration SVG swaps a couple of fill colors (fill-current on shirt element).",
+    "screenshots": ["dark-mode-toggle-before.png", "dark-mode-toggle-after.png"]
+  },
+  {
+    "name": "mobile-menu-toggle",
+    "trigger": "hamburger button aria-label='Toggle Menu', visible below 1024px (lg breakpoint)",
+    "delta": "Toggles aria-expanded true/false on button. Reveals a headlessui Disclosure.Panel containing the nav links (Product/Features/Pricing/Company/Blog) stacked vertically + 'Get Started' button, pushed below the logo row. Icon swaps hamburger -> X. Panel is CSS transitioned (opacity/scale, duration ~150ms, ease-out) — implemented in source as @headlessui/react Transition with enter='transition duration-200 ease-out' enterFrom='opacity-0 -translate-y-1' enterTo='opacity-100 translate-y-0'.",
+    "screenshots": ["mobile-menu-toggle-before.png", "mobile-menu-toggle-after.png"]
+  },
+  {
+    "name": "faq-accordion",
+    "trigger": "each FAQ question button (4 total, headlessui Disclosure)",
+    "delta": "Clicking a question toggles aria-expanded on that button only (independent per-item, not single-open-accordion). Chevron icon rotates 180deg (rotate-180 class toggle) when open. Answer paragraph is revealed below the question row with a transition (opacity/height via headlessui Transition, duration ~150-200ms). Default state on page load (confirmed via raw page.html): all four buttons have aria-expanded=\"false\" -- CLOSED by default, chevron pointing down; clicking opens/closes each independently.",
+    "screenshots": ["faq-accordion-1-before.png", "faq-accordion-1-after.png"]
+  },
+  {
+    "name": "contact-widget-open",
+    "trigger": "floating circular button bottom-right, aria text 'Open Contact form Widget', fixed z-40 right-5 bottom-5",
+    "delta": "Opens a fixed-position contact card anchored above the fab (bottom-right), with a purple header 'How can we help? / We usually respond in a few hours', fields Full Name / Email Address / Your Message, a 'Send Message' submit button, and 'Powered by Web3Forms' caption. The fab icon swaps from a chat-bubble glyph to an X close icon. Panel enters with a transition (fade + slide up, headlessui Transition, duration ~200ms ease-out).",
+    "screenshots": ["contact-widget-open-before.png", "contact-widget-open-after.png"]
+  },
+  {
+    "name": "play-video-click",
+    "trigger": "large circular play button centered on the purple-gradient video placeholder card",
+    "delta": "This is a decorative placeholder (no real <video> element/src in source) — clicking simply removes/hides the play button overlay (setState toggling a boolean that conditionally renders the button); the gradient card remains. No modal or actual video playback occurs.",
+    "screenshots": ["play-video-click-before.png", "play-video-click-after.png"]
+  },
+  {
+    "name": "nav-link-hover",
+    "trigger": "each navbar link (Product, Features, Pricing, Company, Blog) and buttons (Nextly logo, Dark Mode toggle, Get Started, Download for Free)",
+    "delta": "Text color transitions gray-800 -> indigo-500 on hover (hover:text-indigo-500), with focus ring variants. Buttons (Get Started, Download for Free) darken bg on hover (hover:bg-indigo-600). Captured per-element in el-N-rest.png / el-N-hover.png (see index.json for element->label mapping: 0=Nextly logo, 1=Dark Mode, 2=Get Started, 4-8=nav links, 9=Download for Free).",
+    "screenshots": ["el-0-rest.png/el-0-hover.png", "el-9-rest.png/el-9-hover.png"]
+  },
+  {
+    "name": "scroll-behavior",
+    "trigger": "page scroll",
+    "delta": "No sticky/shrinking header, no scroll-triggered reveal animations or parallax detected in source CSS/JS (static Next.js/Tailwind marketing page, no GSAP/ScrollTrigger/Lenis present in fetched bundles; the only IntersectionObserver usage found is Next.js's built-in link-prefetch-on-viewport, unrelated to visual animation). Header is in normal flow (not position:sticky/fixed). Page is a plain scroll.",
+    "screenshots": []
+  }
+]

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Calendar | Admin Dashboard - DashSpace</title>
+		<link rel="icon" type="image/png" href="assets/favicon.png">
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		(function () {
+			const s = localStorage.getItem("dashspace-theme");
+			const p = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			if (s === "dark" || (!s && p))
+				document.documentElement.classList.add("dark");
+			else document.documentElement.classList.add("light");
+		})();
+		</script>
+	</head>
+	<body>
+		<div class="sidebar-overlay" id="sidebar-overlay"></div>
+		<div class="app-layout">
+			<!-- SIDEBAR -->
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-logo">
+					<a href="index.html">
+						<img
+							class="logo-light"
+							src="assets/images/logo/logo-black.svg"
+							alt="TailGrids Logo"
+						>
+						<img
+							class="logo-dark"
+							src="assets/images/logo/logo-white.svg"
+							alt="TailGrids Logo"
+						>
+					</a>
+					<button
+						class="sidebar-close-btn"
+						id="sidebar-close-btn"
+						aria-label="Close sidebar"
+					>
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M6.75 17.249L17.2479 6.75111M6.75 6.75098L17.2479 17.2489"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</button>
+				</div>
+				<nav class="sidebar-nav">
+					<div class="nav-section">
+						<h4 class="nav-section-label">MENU</h4>
+						<div class="nav-items">
+							<a href="index.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M10.6504 3.70337C11.4503 3.10369 12.5497 3.10369 13.3496 3.70337L19.8496 8.57837C20.4161 9.00322 20.7499 9.6701 20.75 10.3782V18.4993C20.75 19.7419 19.7426 20.7493 18.5 20.7493H5.5C4.25736 20.7493 3.25 19.7419 3.25 18.4993V10.3782C3.25011 9.6701 3.58392 9.00322 4.15039 8.57837L10.6504 3.70337ZM12.4502 4.90356C12.1836 4.70373 11.8164 4.70373 11.5498 4.90356L5.0498 9.77856C4.86123 9.92015 4.75011 10.1424 4.75 10.3782V18.4993C4.75 18.9135 5.08579 19.2493 5.5 19.2493H11.25V16.2502C11.25 15.836 11.5858 15.5002 12 15.5002C12.4142 15.5002 12.75 15.836 12.75 16.2502V19.2493H18.5C18.9142 19.2493 19.25 18.9135 19.25 18.4993V10.3782C19.2499 10.1424 19.1388 9.92015 18.9502 9.77856L12.4502 4.90356Z"
+											fill="currentColor"
+										/>
+									</svg></span
+								>
+								<span>Dashboard</span>
+							</a>
+							<a href="calendar.html" class="nav-item active">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M8.00055 2.75V4.5M16.0005 2.75V4.5M4.00055 9H20.0005M5.50055 20.5H18.5005C19.329 20.5 20.0005 19.8284 20.0005 19V6C20.0005 5.17157 19.329 4.5 18.5005 4.5H5.50055C4.67212 4.5 4.00055 5.17157 4.00055 6V19C4.00055 19.8284 4.67212 20.5 5.50055 20.5Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Calendar</span>
+							</a>
+							<a href="tables.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M3.25 4C3.25 3.58579 3.58579 3.25 4 3.25H20C20.4142 3.25 20.75 3.58579 20.75 4V20C20.75 20.4142 20.4142 20.75 20 20.75H4C3.58579 20.75 3.25 20.4142 3.25 20V4ZM4.75 4.75V9.25H19.25V4.75H4.75ZM4.75 10.75V14.25H19.25V10.75H4.75ZM4.75 15.75V19.25H19.25V15.75H4.75Z"
+											fill="currentColor"
+										/>
+									</svg></span
+								>
+								<span>Tables</span>
+							</a>
+						</div>
+					</div>
+					<div class="nav-section">
+						<h4 class="nav-section-label">FORMS</h4>
+						<div class="nav-items">
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="forms-dropdown"
+							>
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M15.0016 14.5H9.00156M12.0016 17.5H9.00156M5.38583 9.00073C5.45951 8.00297 6.29058 7.24597 7.2911 7.25H16.7121C17.7126 7.24597 18.5437 8.00297 18.6174 9.00073L19.3674 19.0007C19.4475 20.0668 18.6167 20.9866 17.5477 21.0513C17.4831 21.0554 17.4183 21.0553 17.3538 21.0511H6.65012C5.5806 20.9914 4.74714 20.0762 4.80684 19.0067C4.81097 18.9337 4.81913 18.861 4.83125 18.789L5.38583 9.00073ZM8.25156 7.25V5.75C8.25156 4.64543 9.14699 3.75 10.2516 3.75H13.7516C14.8561 3.75 15.7516 4.64543 15.7516 5.75V7.25H8.25156Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Forms</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="forms-dropdown">
+								<a href="#">Form Elements</a><a href="#">Form Layout</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav-section">
+						<h4 class="nav-section-label">PAGES</h4>
+						<div class="nav-items">
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="pages-dropdown"
+							>
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M9 7H15M9 12H15M9 17H12M5 3H19C19.5523 3 20 3.44772 20 4V20C20 20.5523 19.5523 21 19 21H5C4.44772 21 4 20.5523 4 20V4C4 3.44772 4.44772 3 5 3Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Pages</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="pages-dropdown">
+								<a href="#">Blank Page</a><a href="#">404 Page</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav-section">
+						<h4 class="nav-section-label">OTHERS</h4>
+						<div class="nav-items">
+							<a href="profile.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12ZM12 12C8.13401 12 5 15.134 5 19V21H19V19C19 15.134 15.866 12 12 12Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Profile</span>
+							</a>
+							<a href="charts.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M21.25 17.5H4.75V3.25M8.25 13.5V17.5M12 10V17.5M15.75 6.5V17.5M19.5 3.5V17.5"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Charts</span>
+							</a>
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="auth-dropdown"
+							>
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M12 2C9.23858 2 7 4.23858 7 7V10H5C4.44772 10 4 10.4477 4 11V21C4 21.5523 4.44772 22 5 22H19C19.5523 22 20 21.5523 20 21V11C20 10.4477 19.5523 10 19 10H17V7C17 4.23858 14.7614 2 12 2ZM15.5 10H8.5V7C8.5 5.067 10.067 3.5 12 3.5C13.933 3.5 15.5 5.067 15.5 7V10ZM12 14C12.8284 14 13.5 14.6716 13.5 15.5C13.5 16.3284 12.8284 17 12 17C11.1716 17 10.5 16.3284 10.5 15.5C10.5 14.6716 11.1716 14 12 14Z"
+											fill="currentColor"
+										/>
+									</svg></span
+								>
+								<span>Authentication</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="auth-dropdown">
+								<a href="#">Sign In</a><a href="#">Sign Up</a
+								><a href="#">Reset Password</a>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<div class="sidebar-footer">
+					<div class="upgrade-card">
+						<div>
+							<h4>Pro Plan</h4>
+							<p>Unlock all features</p>
+						</div>
+						<a href="#" class="btn-upgrade">Upgrade Now</a>
+					</div>
+				</div>
+			</aside>
+
+			<!-- MAIN AREA -->
+			<div class="main-area">
+				<header class="main-header">
+					<button
+						class="hamburger-btn"
+						id="hamburger-btn"
+						aria-label="Open sidebar"
+					>
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M4 6H20M4 12H20M4 18H20"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+							/>
+						</svg>
+					</button>
+					<div class="header-title">
+						<h1>Calendar</h1>
+						<p>Manage your events</p>
+					</div>
+					<div class="header-spacer"></div>
+					<div class="search-bar">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M21 21L16.5 16.5M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+							/>
+						</svg>
+						<input type="text" placeholder="Search...">
+					</div>
+					<div class="header-actions">
+						<button
+							class="icon-btn"
+							id="theme-toggle"
+							aria-label="Toggle theme"
+						></button>
+						<button class="icon-btn" aria-label="Notifications">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M12 22C13.1046 22 14 21.1046 14 20H10C10 21.1046 10.8954 22 12 22ZM18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span class="notif-dot"></span>
+						</button>
+						<button class="user-menu-btn" aria-label="User menu">
+							<img
+								src="assets/images/owner.jpg"
+								alt="Musharof"
+								class="user-avatar"
+							>
+							<span class="user-name">Musharof</span>
+							<svg
+								class="user-chevron"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M6 9L12 15L18 9"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+					</div>
+				</header>
+
+				<main class="content">
+					<div class="card" style="padding: 0; overflow: hidden">
+						<!-- Calendar toolbar -->
+						<div class="cal-toolbar">
+							<div style="display:flex;align-items:center;gap:0.75rem">
+								<button class="cal-add-btn" id="add-event-btn">
+									<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M12 5V19M5 12H19"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+										/>
+									</svg>
+									Add Event +
+								</button>
+								<div class="cal-nav">
+									<button class="cal-nav-btn" id="cal-prev">
+										<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+											<path
+												d="M15 18L9 12L15 6"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+									</button>
+									<button class="cal-nav-btn" id="cal-next">
+										<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+											<path
+												d="M9 18L15 12L9 6"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+									</button>
+								</div>
+							</div>
+							<h2 class="cal-title" id="cal-title">July 2026</h2>
+							<div class="view-tabs">
+								<button class="view-tab active">Month</button>
+								<button class="view-tab">Week</button>
+								<button class="view-tab">Day</button>
+								<button class="view-tab">Year</button>
+							</div>
+						</div>
+
+						<!-- Calendar Grid -->
+						<div id="calendar-container"></div>
+					</div>
+				</main>
+			</div>
+		</div>
+
+		<script src="app.js"></script>
+		<script>
+		// Calendar implementation
+		const EVENTS = [
+			{ date: "2026-07-01", label: "Event Conf.", color: "red" },
+			{ date: "2026-07-02", label: "Meeting", color: "green" },
+			{ date: "2026-07-03", label: "Workshop", color: "blue" },
+		];
+
+		let currentYear = 2026;
+		let currentMonth = 6; // 0-indexed, so 6 = July
+
+		function renderCalendar(year, month) {
+			const monthNames = [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December",
+			];
+			document.getElementById("cal-title").textContent =
+				`${monthNames[month]} ${year}`;
+
+			const firstDay = new Date(year, month, 1).getDay();
+			const daysInMonth = new Date(year, month + 1, 0).getDate();
+			const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+			const today = new Date();
+			const isCurrentMonth =
+				today.getFullYear() === year && today.getMonth() === month;
+			const todayDate = today.getDate();
+
+			const dayHeaders = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+			let html = `<div class="cal-grid">`;
+
+			// Day headers
+			dayHeaders.forEach((d) => {
+				html += `<div class="cal-day-header">${d}</div>`;
+			});
+
+			// Previous month days
+			for (let i = firstDay - 1; i >= 0; i--) {
+				const d = daysInPrevMonth - i;
+				html += `<div class="cal-cell"><div class="cal-day-num other-month">${d}</div></div>`;
+			}
+
+			// Current month days
+			for (let d = 1; d <= daysInMonth; d++) {
+				const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+				const dayEvents = EVENTS.filter((e) => e.date === dateStr);
+				const isToday = isCurrentMonth && d === todayDate;
+
+				html += `<div class="cal-cell">`;
+				if (isToday) {
+					html += `<div class="cal-day-num today">${d}</div>`;
+				} else {
+					html += `<div class="cal-day-num">${d}</div>`;
+				}
+				dayEvents.forEach((ev) => {
+					html += `<div class="cal-event cal-event-${ev.color}">
+              <div class="cal-event-dot"></div>
+              ${ev.label}
+            </div>`;
+				});
+				html += `</div>`;
+			}
+
+			// Next month days
+			const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+			const remaining = totalCells - firstDay - daysInMonth;
+			for (let d = 1; d <= remaining; d++) {
+				html += `<div class="cal-cell"><div class="cal-day-num other-month">${d}</div></div>`;
+			}
+
+			html += "</div>";
+			document.getElementById("calendar-container").innerHTML = html;
+		}
+
+		document.addEventListener("DOMContentLoaded", () => {
+			renderCalendar(currentYear, currentMonth);
+
+			document.getElementById("cal-prev").addEventListener("click", () => {
+				currentMonth--;
+				if (currentMonth < 0) {
+					currentMonth = 11;
+					currentYear--;
+				}
+				renderCalendar(currentYear, currentMonth);
+			});
+
+			document.getElementById("cal-next").addEventListener("click", () => {
+				currentMonth++;
+				if (currentMonth > 11) {
+					currentMonth = 0;
+					currentYear++;
+				}
+				renderCalendar(currentYear, currentMonth);
+			});
+		});
+		</script>
+	</body>
+</html>

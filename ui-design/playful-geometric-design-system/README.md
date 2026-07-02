@@ -1,5 +1,7 @@
 # Blobby — Playful Geometric Design System Landing Page (React + TypeScript + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full landing page that puts a complete **Playful Geometric** design system to work, built for a fictional no-code kit ("Blobby") for sticker-book brand sites. The design principle is **stable grid, wild decoration**: content lives in clean, readable areas while the world around it is alive with shape and motion — referencing the Memphis Group (80s) cleaned up for modern screens. A warm paper background (`#FFFDF5`) and four punchy pop colors (violet, hot pink, amber, mint) create a confetti-effect rotating palette, paired with chunky 2px borders, hard zero-blur offset shadows, and bouncy elastic animations throughout. Generated with Claude Fable 5.
 
 ## Sections

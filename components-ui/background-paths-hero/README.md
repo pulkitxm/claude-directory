@@ -1,5 +1,7 @@
 # Background Paths — Animated SVG Hero Component (React + shadcn/ui + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen landing hero built around the shadcn/ui Background Paths component: 72 flowing SVG paths drift across the canvas behind a per-letter spring-animated headline, topped by a glassmorphic call-to-action button. The showcase adds a dark/light theme toggle, a headline preset switcher, and a floating top bar — all written against Tailwind CSS dark-mode variants. Both Geist and Geist Mono fonts are vendored locally; the component ships zero runtime assets beyond inline SVG. A perfect drop-in hero section for marketing pages or app splash screens built on a shadcn/ui + Tailwind CSS + TypeScript stack. Generated with Claude Fable 5.
 
 ## What's in it

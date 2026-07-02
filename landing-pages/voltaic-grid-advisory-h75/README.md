@@ -1,5 +1,7 @@
 # Voltaic — "Putty & Voltage" Strategic Advisory Landing Page (HTML + CSS + Vanilla JS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A composed, premium landing page for **Voltaic Advisory**, a fictional high-end strategy consultancy. The design language is "Putty & Voltage" — a warm putty-grey canvas (`#CBC9C6`), generously rounded tile architecture, a neutral grotesque display face (Host Grotesk over Inter), and one decisive electric-lime accent (`#D8F010`) that does all the emotional work. Each major section is a single rounded panel floating on the putty background, alternating white, warm off-white, and soft pastel fills (lavender, yellow, pink, mint). The mood is composed, confident, and premium: calm Swiss restraint punctuated by voltage-lime. Built with vanilla HTML, CSS, and JS. Generated with Claude Fable 5.
 
 The page stacks a floating pill nav, a full-bleed golden-hour hero with social-proof avatars, a stats/intro tile, a commitment panel, a sticky service-card stack, a testimonial tile, an expanding case-studies list, an insights marquee, a lime final-CTA tile, and a near-black footer.

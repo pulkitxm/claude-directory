@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Building a blog with Scalar, Next.js and Tailwind — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../styles.css">
+		<link rel="icon" href="../assets/layout/logo-icon.svg">
+		<style>
+		.article-wrap {
+			max-width: 760px;
+			margin: 0 auto;
+		}
+		.back-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 14px;
+			color: var(--muted-foreground);
+			text-decoration: none;
+		}
+		.back-link:hover {
+			color: var(--foreground);
+		}
+		.article-meta {
+			font-size: 13px;
+			color: var(--muted-foreground);
+			margin: 28px 0 14px;
+			display: flex;
+			gap: 10px;
+		}
+		.article-meta .cat {
+			color: var(--secondary);
+			font-weight: 600;
+		}
+		.article-title {
+			font-size: clamp(1.9rem, 4vw, 2.6rem);
+			font-weight: 700;
+			line-height: 1.15;
+		}
+		.author-row {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 24px 0 8px;
+		}
+		.author-row .name {
+			font-size: 14px;
+			font-weight: 500;
+			color: var(--foreground);
+		}
+		.hero-img {
+			width: 100%;
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			margin: 36px 0 8px;
+			overflow: hidden;
+		}
+		.hero-img img {
+			width: 100%;
+			display: block;
+		}
+		</style>
+	</head>
+	<body data-active="Blog" data-prefix="../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<article class="frame-pad" style="padding:48px 32px 64px">
+				<div class="article-wrap reveal">
+					<a class="back-link" href="../blog.html"
+						><svg
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<path d="m12 19-7-7 7-7M19 12H5" />
+						</svg>
+						Back</a
+					>
+					<div class="article-meta">
+						<span class="cat">Guides</span><span>·</span
+						><span>Mar 22, 2025</span>
+					</div>
+					<h1 class="article-title">
+						Building a blog with Scalar, Next.js and Tailwind
+					</h1>
+					<p class="muted" style="font-size:16px;margin-top:14px">
+						Follow this step-by-step guide to launch a performant,
+						developer-friendly blog using Scalar CMS and your favorite tools.
+					</p>
+					<div class="author-row">
+						<img
+							class="avatar"
+							src="../assets/images/blog/authors/yassine-zaanouni.webp"
+							width="40"
+							height="40"
+							alt=""
+						>
+						<span class="name">Yassine Zaanouni</span>
+						<span class="muted" style="font-size:13px">· 8 min read</span>
+					</div>
+					<div class="hero-img">
+						<img
+							src="../assets/images/blog/blog-6.webp"
+							alt="Building a blog with Scalar, Next.js and Tailwind"
+						>
+					</div>
+					<div class="prose">
+						<p>
+							In this tutorial we'll build a fast, modern blog from scratch
+							using Scalar for content, Next.js for rendering, and Tailwind for
+							styling. By the end you'll have a deployable blog wired to a
+							structured CMS.
+						</p>
+
+						<h2>1. Model your content</h2>
+						<p>
+							Start by defining a <code>blogPost</code> model with a title,
+							slug, body, and author reference, then push it to Scalar.
+						</p>
+						<div class="code-block" style="margin:24px 0">
+							<div class="code-head">
+								<span style="margin-left:auto;color:var(--muted-foreground)"
+									>models/blogPost.ts</span
+								>
+							</div>
+							<div class="code-body">
+								<span class="tok-kw">export const</span>
+								blogPost = <span class="tok-fn">defineModel</span>( { name:
+								<span class="tok-str">"blogPost"</span>, fields: { title:
+								fields.<span class="tok-fn">string</span>(), slug: fields.<span
+									class="tok-fn"
+									>slug</span
+								>( { from: <span class="tok-str">"title"</span> } ), body:
+								fields.<span class="tok-fn">richText</span>(), }, } );
+							</div>
+						</div>
+
+						<h2>2. Set up Next.js</h2>
+						<p>
+							Create a Next.js app and install the Scalar SDK. Add your project
+							ID and API key as environment variables.
+						</p>
+
+						<h2>3. Fetch posts</h2>
+						<p>
+							Use the SDK in a server component to pull published posts at build
+							time:
+						</p>
+						<div class="code-block" style="margin:24px 0">
+							<div class="code-head">
+								<span style="margin-left:auto;color:var(--muted-foreground)"
+									>app/page.tsx</span
+								>
+							</div>
+							<div class="code-body">
+								<span class="tok-kw">const</span>
+								posts = <span class="tok-kw">await</span> client.<span
+									class="tok-fn"
+									>query</span
+								>( { model: <span class="tok-str">"blogPost"</span> } );
+								<span class="tok-kw">return</span>
+								posts.map((p) =&gt; &lt;PostCard
+								<span class="tok-fn">key</span>= { p.id} { ...p} /&gt;);
+							</div>
+						</div>
+
+						<img
+							src="../assets/images/blog/blog-6.webp"
+							alt="Blog built with Next.js"
+						>
+
+						<h2>4. Style with Tailwind</h2>
+						<p>
+							Add Tailwind's typography plugin and wrap your rich text in a
+							<code>prose</code>
+							container for beautiful defaults with zero custom CSS.
+						</p>
+						<ul>
+							<li>Use <code>prose-lg</code> for comfortable reading width.</li>
+							<li>Lazy-load images for fast first paint.</li>
+							<li>
+								Generate static pages with <code>generateStaticParams</code>.
+							</li>
+						</ul>
+
+						<h2>5. Deploy</h2>
+						<p>
+							Push to your host of choice. Static generation plus Scalar's edge
+							cache means your blog loads in milliseconds.
+						</p>
+
+						<h2>Wrap-up</h2>
+						<p>
+							With Scalar handling content and Next.js handling rendering, you
+							get a fast, type-safe blog you can extend however you like. Clone
+							the starter and ship today.
+						</p>
+					</div>
+				</div>
+			</article>
+		</main>
+
+		<div id="site-cta"></div>
+		<div id="site-footer"></div>
+		<script src="../shared.js"></script>
+	</body>
+</html>

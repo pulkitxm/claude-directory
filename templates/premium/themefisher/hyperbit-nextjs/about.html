@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Hyperbit</title>
+  <link rel="icon" href="assets/images/favicon.png">  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Mobile menu */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 1rem;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 1rem;
+      right: 1rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      z-index: 50;
+    }
+    .mobile-nav.open { display: flex; }
+    @media (min-width: 768px) { .mobile-nav { display: none !important; } }
+    .mobile-nav a { padding: 0.625rem 1rem; border-radius: 0.5rem; color: var(--color-text-dark); font-weight: 500; }
+    .mobile-nav a:hover { background: #f5f5f5; }
+    .hamburger-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--color-text-dark);
+    }
+    @media (max-width: 767px) { .hamburger-btn { display: flex; } }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 767px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 640px) and (max-width: 767px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .gallery-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+
+    /* Our Story */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (min-width: 1024px) {
+      .story-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .story-stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .stat-item {
+      border-left: 3px solid var(--color-secondary);
+      padding-left: 1.25rem;
+    }
+    .stat-number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--color-text);
+    }
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--color-text-dark);
+      margin-top: 0.25rem;
+    }
+    .story-img {
+      width: 100%;
+      border-radius: 1.5rem;
+      object-fit: cover;
+    }
+
+    /* Services grid */
+    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+    @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(4,1fr); } }
+    @media (max-width: 640px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* Team grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .team-card-inner {
+      background: white;
+      border: 1px solid rgba(47,47,47,0.1);
+      border-radius: var(--radius-2xl);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .team-card-inner:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-3px); }
+
+    /* CTA / Book section */
+    .book-section { background: var(--color-dark); border-radius: 2rem; overflow: hidden; position: relative; }
+    .book-section-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.06; }
+    .book-inner { position: relative; z-index: 1; padding: 5rem 3rem; text-align: center; }
+    .book-inner h2, .book-inner p { color: white; }
+    .book-contact { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin: 1.5rem 0; }
+    .book-contact a { color: white; margin: 0 1rem; }
+    .cta-avatar-row { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
+    .cta-avatar { width: 4rem; height: 4rem; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.2); }
+
+    /* Marquee logos */
+    .logos-marquee { display: flex; align-items: center; }
+    .logos-track { display: flex; gap: 3rem; align-items: center; animation: marquee 25s linear infinite; }
+    .logos-track img { height: 2rem; width: auto; object-fit: contain; opacity: 0.5; filter: grayscale(1); }
+  </style>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+</head>
+<body>
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header class="header" role="banner">
+  <nav class="navbar container" aria-label="Main navigation">
+    <a href="index.html" class="navbar-brand" aria-label="Hyperbit Home">
+      <img src="assets/images/logo.svg" alt="Hyperbit" width="98" height="37">
+    </a>
+
+    <ul class="navbar-nav" id="desktop-nav" role="list">
+      <li class="nav-item">
+        <span class="nav-link" tabindex="0">
+          All Pages
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </span>
+        <ul class="nav-dropdown-list" role="menu">
+          <li><a href="index.html" class="nav-dropdown-link" role="menuitem">Home</a></li>
+          <li><a href="work.html" class="nav-dropdown-link" role="menuitem">Work</a></li>
+          <li><a href="work/spark-layer.html" class="nav-dropdown-link" role="menuitem">Work Details</a></li>
+          <li><a href="about.html" class="nav-dropdown-link" role="menuitem">About</a></li>
+          <li><a href="services.html" class="nav-dropdown-link" role="menuitem">Services</a></li>
+          <li><a href="contact.html" class="nav-dropdown-link" role="menuitem">Contact</a></li>
+          <li><a href="blog.html" class="nav-dropdown-link" role="menuitem">Blog</a></li>
+          <li><a href="blog/emerging-trends.html" class="nav-dropdown-link" role="menuitem">Blog Details</a></li>
+        </ul>
+      </li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="work.html" class="nav-link">Work</a></li>
+      <li class="nav-dot" aria-hidden="true"></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <a href="contact.html" class="btn btn-dark" id="nav-cta-desktop" style="display:none;">
+      <div class="btn-inner">
+        <div class="btn-text-1">
+          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+          Book a Call
+        </div>
+        <div class="btn-text-2">
+          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+          Book a Call
+        </div>
+      </div>
+    </a>
+
+    <button class="hamburger-btn" id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+      <svg id="ham-open" width="24" height="24" viewBox="0 0 20 20" fill="currentColor"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      <svg id="ham-close" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" style="display:none;"><polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"/></svg>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" style="background:var(--color-dark);color:white;margin-top:0.5rem;text-align:center;">Book a Call</a>
+  </div>
+</header>
+
+<!-- ════════════════ MAIN ════════════════ -->
+<main>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" style="padding-top:10rem;">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <h1>About <em>Studio</em></h1>
+        <p style="margin-top:0.75rem;">Driven by Your Success</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" style="padding-top:2rem;">
+    <div class="container">
+      <div class="gallery-grid reveal">
+        <img src="assets/images/about/gallery/gallery-1.jpeg" alt="Gallery image 1" class="gallery-img" loading="lazy">
+        <img src="assets/images/about/gallery/gallery-2.jpeg" alt="Gallery image 2" class="gallery-img" loading="lazy">
+        <img src="assets/images/about/gallery/gallery-3.jpeg" alt="Gallery image 3" class="gallery-img" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="story-grid">
+        <div class="reveal">
+          <h2>Our <em>Story</em></h2>
+          <p style="color:var(--color-text-dark);line-height:1.7;margin-top:1.5rem;font-size:1rem;">Hyperbit is a full-circle digital agency built for bold brands that want to make an impact. Founded in 2018, we've grown from a two-person studio into a global team of senior creatives dedicated to one mission: turning ambitious ideas into breathtaking design.</p>
+          <div class="story-stats">
+            <div class="stat-item">
+              <div class="stat-number">7+</div>
+              <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">200+</div>
+              <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">15</div>
+              <div class="stat-label">Design Awards</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:.15s;">
+          <img src="assets/images/about/our-story.png" alt="Our Story" class="story-img" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-heading reveal">
+        <h2>What We <em>Do</em></h2>
+        <p>A full-circle suite of creative services to elevate your brand at every stage.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><img src="assets/images/icons/branding-design.png" alt="Branding Design"></div>
+          <h3 class="service-title">Branding Design</h3>
+          <p class="service-desc">We build cohesive brand identities that communicate your vision and resonate deeply with your audience.</p>
+          <a href="services.html" class="service-link">
+            Learn more
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.1s">
+          <div class="service-icon"><img src="assets/images/icons/product-design.png" alt="Product Design"></div>
+          <h3 class="service-title">Product Design</h3>
+          <p class="service-desc">From wireframes to pixel-perfect interfaces, we design products that users love to engage with.</p>
+          <a href="services.html" class="service-link">
+            Learn more
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.2s">
+          <div class="service-icon"><img src="assets/images/icons/social-ads-design.png" alt="Social Ads Design"></div>
+          <h3 class="service-title">Social Ads Design</h3>
+          <p class="service-desc">High-converting ad creatives designed to capture attention and drive measurable results on every platform.</p>
+          <a href="services.html" class="service-link">
+            Learn more
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.3s">
+          <div class="service-icon"><img src="assets/images/icons/slide-decks-design.png" alt="Slide Decks Design"></div>
+          <h3 class="service-title">Slide Decks Design</h3>
+          <p class="service-desc">Compelling pitch decks and presentations that tell your story and close the deals that matter.</p>
+          <a href="services.html" class="service-link">
+            Learn more
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-heading reveal">
+        <h2>Meet Our <em>Team</em></h2>
+        <p>The brilliant minds behind every project we deliver.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="reveal">
+          <div class="team-card-inner">
+            <img src="assets/images/about/team/1.png" alt="Alex Rivera" class="team-avatar">
+            <div class="team-name">Alex Rivera</div>
+            <div class="team-role">Creative Director</div>
+            <ul class="social-icons" style="justify-content:center;margin-top:1rem;">
+              <li><a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:.1s">
+          <div class="team-card-inner">
+            <img src="assets/images/about/team/2.png" alt="Jamie Chen" class="team-avatar">
+            <div class="team-name">Jamie Chen</div>
+            <div class="team-role">Lead Designer</div>
+            <ul class="social-icons" style="justify-content:center;margin-top:1rem;">
+              <li><a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:.2s">
+          <div class="team-card-inner">
+            <img src="assets/images/about/team/3.png" alt="Sam Patel" class="team-avatar">
+            <div class="team-name">Sam Patel</div>
+            <div class="team-role">Brand Strategist</div>
+            <ul class="social-icons" style="justify-content:center;margin-top:1rem;">
+              <li><a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a></li>
+              <li><a href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="book-section">
+        <img src="assets/images/shapes/book-call-shape.png" alt="" class="book-section-bg" aria-hidden="true">
+        <div class="book-inner">
+          <h2>Hyperbit <em>Your Design</em> Partner</h2>
+          <p style="margin-top:1rem;">Start with a free 15-minute intro call</p>
+          <div class="cta-avatar-row">
+            <img src="assets/images/avatar.png" alt="Team avatar" class="cta-avatar">
+          </div>
+          <div class="book-contact">
+            <a href="mailto:hello@workmail.com">hello@workmail.com</a>
+            <a href="tel:00987765543">(00) 987 765 543</a>
+          </div>
+          <a href="contact.html" class="btn btn-dark" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);">
+            <div class="btn-inner">
+              <div class="btn-text-1">
+                <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+                Book a Call
+              </div>
+              <div class="btn-text-2">
+                <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+                Book a Call
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer style="padding-bottom:2rem;">
+  <div class="container">
+    <div class="footer">
+      <a href="index.html" class="footer-logo"><img src="assets/images/logo.svg" alt="Hyperbit" height="30"></a>
+      <p class="footer-copyright">© 2026 Hyperbit. All rights reserved. Powered by <a href="https://themefisher.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Themefisher</a></p>
+      <ul class="social-icons" aria-label="Social media links">
+        <li><a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script>
+  // Header scroll
+  const header = document.querySelector('.header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // Mobile nav
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamOpen = document.getElementById('ham-open');
+  const hamClose = document.getElementById('ham-close');
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      hamOpen.style.display = isOpen ? 'none' : '';
+      hamClose.style.display = isOpen ? '' : 'none';
+    });
+  }
+
+  // Scroll reveal
+  document.querySelectorAll('.reveal').forEach(el => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
+    obs.observe(el);
+  });
+
+  // Show desktop CTA
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('nav-cta-desktop');
+    if (btn) btn.style.display = window.innerWidth >= 768 ? '' : 'none';
+    window.addEventListener('resize', () => {
+      if (btn) btn.style.display = window.innerWidth >= 768 ? '' : 'none';
+    });
+  });
+
+  // Init Lenis after load
+  window.addEventListener('load', () => {
+    if (typeof Lenis !== 'undefined') {
+      const lenis = new Lenis({ lerp: 0.08 });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    }
+  });
+</script>
+</body>
+</html>

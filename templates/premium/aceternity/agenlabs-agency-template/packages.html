@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Packages - Agenlabs Agency</title>
+		<meta
+			name="description"
+			content="Choose a package that fits your needs. Landing page, web app, or full stack development."
+		>
+		<link rel="stylesheet" href="assets/styles.css">
+		<style>
+		.packages-page-main {
+			background: white;
+			min-height: 100vh;
+			-webkit-font-smoothing: antialiased;
+			padding: 0 1.5rem 5rem;
+			max-width: 90rem;
+			margin: 0 auto;
+		}
+
+		.pkg-hero {
+			position: relative;
+		}
+
+		.pkg-hero-inner {
+			position: relative;
+			margin: 0 auto;
+			padding: 4rem 1rem 0;
+		}
+
+		@media (min-width: 1024px) {
+			.pkg-hero-inner {
+				padding: 5rem 2rem 0;
+			}
+		}
+
+		.pkg-pricing-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 4rem 2rem;
+		}
+
+		@media (min-width: 1024px) {
+			.pkg-pricing-grid {
+				grid-template-columns: 1fr 2fr;
+				max-width: none;
+			}
+		}
+
+		.pkg-price-col {
+			display: flex;
+			flex-direction: column;
+			padding-bottom: 1.5rem;
+		}
+
+		.pkg-price {
+			margin-top: 1rem;
+			font-size: 3rem;
+			font-weight: 800;
+			line-height: 1;
+			letter-spacing: -0.025em;
+			color: var(--color-slate-900);
+		}
+
+		@media (min-width: 640px) {
+			.pkg-price {
+				font-size: 3.5rem;
+				line-height: 3.5rem;
+			}
+		}
+
+		.pkg-label {
+			font-size: 1rem;
+			font-weight: 600;
+			line-height: 1.75rem;
+			color: var(--color-sky-500);
+			display: block;
+		}
+
+		.pkg-desc {
+			margin-top: 1.5rem;
+			font-size: 1rem;
+			line-height: 1.75rem;
+			color: var(--color-slate-700);
+		}
+
+		.pkg-btn-wrap {
+			margin-top: 2.5rem;
+			display: flex;
+			gap: 1rem;
+		}
+
+		.pkg-buy-btn {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 0.5rem;
+			font-size: 0.875rem;
+			font-weight: 600;
+			padding: 0.75rem 1rem;
+			background-color: var(--color-slate-900);
+			color: white;
+			transition: background-color 200ms;
+			gap: 0.375rem;
+		}
+
+		.pkg-buy-btn:hover {
+			background-color: var(--color-slate-700);
+		}
+
+		.pkg-image-col {
+			position: relative;
+		}
+
+		.pkg-image {
+			margin-bottom: -9rem;
+			aspect-ratio: 1600 / 1600;
+			width: 100%;
+			border-radius: 0.75rem;
+			background-color: #e2e8f0;
+			box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+			border: 1px solid rgba(15, 23, 42, 0.05);
+			object-fit: cover;
+		}
+
+		@media (min-width: 640px) {
+			.pkg-image {
+				margin-bottom: -4rem;
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.pkg-image {
+				margin-bottom: -2rem;
+			}
+		}
+
+		@media (min-width: 1280px) {
+			.pkg-image {
+				margin-bottom: -4rem;
+			}
+		}
+
+		.pkg-decorations {
+			display: none;
+		}
+
+		@media (min-width: 768px) {
+			.pkg-decorations {
+				display: block;
+			}
+		}
+
+		.pkg-dec-top {
+			position: absolute;
+			top: -1rem;
+			right: -3rem;
+			left: -3rem;
+			height: 1px;
+			background-color: rgba(15, 23, 42, 0.1);
+			-webkit-mask-image: linear-gradient(
+				to right,
+				transparent,
+				white 4rem,
+				white calc(100% - 4rem),
+				transparent
+			);
+			mask-image: linear-gradient(
+				to right,
+				transparent,
+				white 4rem,
+				white calc(100% - 4rem),
+				transparent
+			);
+		}
+
+		.pkg-dec-left {
+			position: absolute;
+			top: -3rem;
+			bottom: 0;
+			left: -1rem;
+			width: 1px;
+			background-color: rgba(15, 23, 42, 0.1);
+			-webkit-mask-image: linear-gradient(
+				to top,
+				white 4rem,
+				white calc(100% - 4rem),
+				transparent
+			);
+			mask-image: linear-gradient(
+				to top,
+				white 4rem,
+				white calc(100% - 4rem),
+				transparent
+			);
+		}
+
+		.pkg-dec-glow {
+			position: absolute;
+			top: -3rem;
+			right: 2.5rem;
+			margin-top: 1px;
+			display: flex;
+			height: 2rem;
+			align-items: flex-end;
+			overflow: hidden;
+		}
+
+		.pkg-dec-glow-inner {
+			display: flex;
+			margin-bottom: -1px;
+			height: 2px;
+			width: 20rem;
+			transform: scaleX(-1);
+		}
+
+		.pkg-dec-bar1 {
+			width: 100%;
+			flex: none;
+			filter: blur(4px);
+			background-image: linear-gradient(
+				90deg,
+				rgba(56, 189, 248, 0) 0%,
+				#0ea5e9 32.29%,
+				rgba(236, 72, 153, 0.3) 67.19%,
+				rgba(236, 72, 153, 0) 100%
+			);
+		}
+
+		.pkg-dec-bar2 {
+			margin-left: -100%;
+			width: 100%;
+			flex: none;
+			filter: blur(1px);
+			background-image: linear-gradient(
+				90deg,
+				rgba(56, 189, 248, 0) 0%,
+				#0ea5e9 32.29%,
+				rgba(236, 72, 153, 0.3) 67.19%,
+				rgba(236, 72, 153, 0) 100%
+			);
+		}
+
+		.pkg-included {
+			margin-top: 13rem;
+			padding-bottom: 5rem;
+		}
+
+		@media (min-width: 640px) {
+			.pkg-included {
+				margin-top: 9rem;
+				padding-bottom: 6rem;
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.pkg-included {
+				margin-top: 7rem;
+				padding-bottom: 8rem;
+			}
+		}
+
+		.pkg-included-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+			padding-top: 2rem;
+			border-top: 1px solid var(--color-slate-200);
+		}
+
+		@media (min-width: 1024px) {
+			.pkg-included-grid {
+				grid-template-columns: 1fr 2fr;
+				max-width: none;
+			}
+		}
+
+		.pkg-included-title {
+			font-size: 1.5rem;
+			font-weight: 600;
+			line-height: 2.25rem;
+			letter-spacing: -0.025em;
+			color: var(--color-slate-900);
+		}
+
+		.pkg-included-content p {
+			margin-bottom: 1rem;
+			font-size: 1rem;
+			line-height: 1.75rem;
+			color: var(--color-slate-700);
+		}
+
+		.pkg-included-content p strong {
+			font-weight: 700;
+		}
+
+		.pkg-included-content a {
+			font-weight: 600;
+			color: var(--color-sky-500);
+		}
+
+		.pkg-included-content a:hover {
+			color: #0284c7;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- Navigation -->
+		<div class="nav-wrapper">
+			<div class="nav-brand">
+				<svg
+					width="25"
+					height="25"
+					viewBox="0 0 62 61"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					class="nav-logo-svg"
+				>
+					<path
+						d="M6.09521 5.98586C6.09521 5.98586 52.9961 16.1083 55.9639 27.9921C58.9317 39.876 7.14953 55.3998 7.14953 55.3998"
+						stroke="url(#paint0_linear_nav)"
+						stroke-width="11"
+						stroke-miterlimit="3.86874"
+						stroke-linecap="round"
+						style="mix-blend-mode: darken;"
+					></path>
+					<defs>
+						<linearGradient
+							id="paint0_linear_nav"
+							x1="30.5444"
+							y1="2.16844"
+							x2="31.5724"
+							y2="50.347"
+							gradientUnits="userSpaceOnUse"
+						>
+							<stop stop-color="#374151"></stop>
+							<stop offset="0.5" stop-color="#111827"></stop>
+							<stop offset="1" stop-color="#374151"></stop>
+						</linearGradient>
+					</defs>
+				</svg>
+				<a class="nav-brand-text" href="index.html">Agenlabs</a>
+			</div>
+
+			<div class="nav-links">
+				<a href="work.html"><span>Work</span></a>
+				<a href="index.html#services"><span>Services</span></a>
+				<a href="packages.html"><span>Packages</span></a>
+				<a href="templates.html"><span>Templates</span></a>
+				<a href="blog.html"><span>Blog</span></a>
+			</div>
+
+			<a href="mailto:youremail@yourgmail.com" class="nav-contact">
+				<span class="nav-contact-inner">Contact</span>
+			</a>
+
+			<div class="nav-hamburger" onclick="toggleMobileMenu()">
+				<svg
+					stroke="currentColor"
+					fill="currentColor"
+					stroke-width="0"
+					viewBox="0 0 512 512"
+					height="1em"
+					width="1em"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M432 176H80c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zM432 272H80c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zM432 368H80c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16z"
+					></path>
+				</svg>
+			</div>
+		</div>
+
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="work.html">Work</a>
+			<a href="index.html#services">Services</a>
+			<a href="packages.html">Packages</a>
+			<a href="templates.html">Templates</a>
+			<a href="blog.html">Blog</a>
+			<a href="mailto:youremail@yourgmail.com">Contact</a>
+		</div>
+
+		<main class="packages-page-main">
+			<!-- Packages Hero -->
+			<div class="pkg-hero">
+				<div class="pkg-hero-inner">
+					<div class="pkg-pricing-grid">
+						<!-- Price Column -->
+						<div class="pkg-price-col">
+							<span class="pkg-label">Landing Page Development</span>
+							<div class="pkg-price">$4,995</div>
+							<p class="pkg-desc">
+								A landing page can make or break your business. We create
+								world-class, professional landing pages that convert and help
+								you achieve your sales targets.
+							</p>
+							<div class="pkg-btn-wrap">
+								<a
+									href="mailto:youremail@yourgmail.com"
+									class="pkg-buy-btn"
+									target="_blank"
+								>
+									<span>
+										<span
+											style="display: inline-flex; align-items: center; gap: 0.375rem;"
+										>
+											<span>Buy Package</span>
+											<svg
+												viewBox="0 0 20 20"
+												style="width: 1.25rem; height: 1.25rem; fill: #94a3b8;"
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+											>
+												<path
+													d="M7 3.25H3.25v13.5h13.5V13h-1.5v2.25H4.75V4.75H7v-1.5Zm9.75 0H10v1.5h4.19l-5.72 5.72 1.06 1.06 5.72-5.72V10h1.5V3.25Z"
+												></path>
+											</svg>
+										</span>
+									</span>
+								</a>
+							</div>
+						</div>
+
+						<!-- Image Column -->
+						<div class="pkg-image-col">
+							<img
+								src="assets/images/products/aceternity.png"
+								alt="Aceternity template preview"
+								class="pkg-image"
+							>
+							<div class="pkg-decorations">
+								<div class="pkg-dec-top"></div>
+								<div class="pkg-dec-left"></div>
+								<div class="pkg-dec-glow">
+									<div class="pkg-dec-glow-inner">
+										<div class="pkg-dec-bar1"></div>
+										<div class="pkg-dec-bar2"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- What's Included Section -->
+			<div class="pkg-included">
+				<div class="pkg-included-grid">
+					<h2 class="pkg-included-title">What's included</h2>
+					<div class="pkg-included-content">
+						<p>
+							<strong>Top Notch Design</strong>
+							— We design great looking websites that stand out. We use the
+							latest design trends and techniques to make your website look
+							great.
+						</p>
+						<p>
+							<strong>Development</strong>
+							— We build your website using the latest technologies and
+							frameworks. We use the best tools to make sure your website is
+							fast and secure.
+						</p>
+						<p>
+							<strong>Performance Optimized</strong>
+							— We focus heavily on performance optimizations. Whether it's
+							Image optimization or website load speed, we have got you covered.
+						</p>
+						<p>
+							<strong>Responsive Design</strong>
+							— Your website will look amazing on any device. We make sure your
+							website looks great on mobile, tablet, and desktop.
+						</p>
+						<p>
+							<strong>Search Engine Optimized</strong>
+							— We make sure you get found on Google. We use the latest SEO
+							techniques to make sure your website is optimized for search
+							engines.
+						</p>
+						<p>
+							<strong>Contact Forms</strong>
+							— We know that you want to get reached out. We make sure you get
+							all the leads you need. We integrate your website with your
+							favorite email marketing service.
+						</p>
+						<p>
+							<strong>Revisions</strong>
+							— We make sure you are happy with the website. We provide
+							revisions until you are happy with the website.
+						</p>
+						<p>
+							<strong>Analytics and Tracking</strong>
+							— We make sure you know how your website is performing. We
+							integrate your website with Google Analytics and Google Search
+							Console.
+						</p>
+						<p>
+							<strong>Built by experts</strong>
+							— We are the people behind websites like Algochurn and
+							TailwindMasterKit. We have been building websites for over 5+
+							years now and we know what we are doing.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Work Section -->
+			<div id="work" class="work-section" style="margin-top: 2rem;">
+				<h2 class="work-section-header">
+					Some of the websites that we have
+					<span class="gradient-text">built</span>
+				</h2>
+				<p class="work-section-sub">
+					A look at some of the amazing websites that we've built recently.
+				</p>
+
+				<div style="position: relative; z-index: 10;">
+					<!-- Project: Algochurn -->
+					<div class="project-row">
+						<div class="project-info">
+							<h1 class="project-title">Algochurn</h1>
+							<div class="project-desc">
+								<p>
+									Practice the most popular coding questions asked in a
+									technical interview round.
+								</p>
+								<p style="margin-top: 1rem;">
+									Used by 1000+ registered users preparing for technical
+									interviews.
+								</p>
+							</div>
+							<div class="project-divider"></div>
+							<div style="margin-top: 1.5rem;">
+								<a
+									href="https://algochurn.com"
+									target="_blank"
+									class="project-link"
+									>Live Preview</a
+								>
+							</div>
+						</div>
+						<div class="project-images">
+							<div class="project-image-wrap">
+								<img src="assets/images/products/algochurn.png" alt="Algochurn">
+							</div>
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/algochurn2.png"
+									alt="Algochurn 2"
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project: Tailwind Master Kit -->
+					<div class="project-row">
+						<div class="project-info">
+							<h1 class="project-title">Tailwind Master Kit</h1>
+							<div class="project-desc">
+								<p>
+									Get beautiful, responsive, professionally developed Tailwind
+									UI components and build your website quicker
+								</p>
+								<p style="margin-top: 1rem;">
+									Worry less about responsive and beautiful UI, let Tailwind
+									Master Kit handle the complexity.
+								</p>
+							</div>
+							<div class="project-divider"></div>
+							<div style="margin-top: 1.5rem;">
+								<a
+									href="https://tailwindmasterkit.com"
+									target="_blank"
+									class="project-link"
+									>Live Preview</a
+								>
+							</div>
+						</div>
+						<div class="project-images">
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/tailwindmasterkit.png"
+									alt="Tailwind Master Kit"
+								>
+							</div>
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/tailwindmasterkit3.png"
+									alt="Tailwind Master Kit 3"
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project: Creme Digital -->
+					<div class="project-row">
+						<div class="project-info">
+							<h1 class="project-title">Creme Digital</h1>
+							<div class="project-desc">
+								<p>
+									Commonsense solutions that achieve marketing objectives and
+									reach business goals
+								</p>
+								<p style="margin-top: 1rem;">
+									Since 2015, Creme Digital's solutions have supported brands
+									from virtually every industry
+								</p>
+							</div>
+							<div class="project-divider"></div>
+							<div style="margin-top: 1.5rem;">
+								<a
+									href="https://cremedigital.com"
+									target="_blank"
+									class="project-link"
+									>Live Preview</a
+								>
+							</div>
+						</div>
+						<div class="project-images">
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/cremedigital3.png"
+									alt="Creme Digital 3"
+								>
+							</div>
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/cremedigital.png"
+									alt="Creme Digital"
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project: Invoker Labs -->
+					<div class="project-row">
+						<div class="project-info">
+							<h1 class="project-title">Invoker Labs</h1>
+							<div class="project-desc">
+								<p>
+									Delivering magical Web3 experiences with a wide range of
+									products and services.
+								</p>
+								<p style="margin-top: 1rem;">
+									Flagship products include Nearsend, Nearblocks, nKYC and Route
+									ag.
+								</p>
+							</div>
+							<div class="project-divider"></div>
+							<div style="margin-top: 1.5rem;">
+								<a
+									href="https://invoker.lol"
+									target="_blank"
+									class="project-link"
+									>Live Preview</a
+								>
+							</div>
+						</div>
+						<div class="project-images">
+							<div class="project-image-wrap">
+								<img src="assets/images/products/invoker.png" alt="Invoker">
+							</div>
+							<div class="project-image-wrap">
+								<img src="assets/images/products/invoker2.png" alt="Invoker 2">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Testimonial -->
+			<div class="testimonial-section">
+				<div
+					class="testimonial-bg bg-grid"
+					style="-webkit-mask-image: linear-gradient(transparent, white, white); mask-image: linear-gradient(transparent, white, white);"
+				></div>
+				<div class="testimonial-inner">
+					<div class="testimonial-avatar">
+						<img src="assets/images/testimonials/tyler.png" alt="Tyler Durden">
+					</div>
+					<blockquote class="testimonial-quote">
+						"Agenlabs helped us build our website from scratch to production in
+						a record 1 month time. They took our requirements and delivered a
+						website we are proud of so much that we are thrilled.<br><br>I
+						couldn't be any happier. Highly recommended. "
+					</blockquote>
+					<h4 class="testimonial-name">Tyler Durden</h4>
+					<span class="testimonial-role">Founder at Project Mayhem</span>
+				</div>
+				<div class="testimonial-border-bottom">
+					<div class="testimonial-border-line"></div>
+				</div>
+				<div class="testimonial-glow-line">
+					<div class="testimonial-glow-inner">
+						<div class="testimonial-glow-bar" style="filter: blur(4px);"></div>
+						<div class="testimonial-glow-bar-blur"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Dark CTA Block -->
+			<div class="cta-block">
+				<div class="cta-block-bg"></div>
+				<div class="cta-block-content">
+					<h2 class="cta-title">
+						Want a custom website or more features? Talk to us.
+					</h2>
+					<p class="cta-desc">
+						See the blue chat box and the bottom? Click on it and talk to us. We
+						will get back to you within 24 hours. Or just email us, just talk.
+						:)
+					</p>
+					<div style="display: flex; justify-content: center;">
+						<a href="mailto:youremail@yourgmail.com" class="cta-button"
+							>Contact Us</a
+						>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<div class="footer">
+			<div class="footer-inner">
+				<div class="footer-brand">
+					<svg
+						width="25"
+						height="25"
+						viewBox="0 0 62 61"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						class="nav-logo-svg"
+					>
+						<path
+							d="M6.09521 5.98586C6.09521 5.98586 52.9961 16.1083 55.9639 27.9921C58.9317 39.876 7.14953 55.3998 7.14953 55.3998"
+							stroke="url(#paint0_linear_footer)"
+							stroke-width="11"
+							stroke-miterlimit="3.86874"
+							stroke-linecap="round"
+							style="mix-blend-mode: darken;"
+						></path>
+						<defs>
+							<linearGradient
+								id="paint0_linear_footer"
+								x1="30.5444"
+								y1="2.16844"
+								x2="31.5724"
+								y2="50.347"
+								gradientUnits="userSpaceOnUse"
+							>
+								<stop stop-color="#374151"></stop>
+								<stop offset="0.5" stop-color="#111827"></stop>
+								<stop offset="1" stop-color="#374151"></stop>
+							</linearGradient>
+						</defs>
+					</svg>
+					<a class="footer-brand-text" href="index.html">Agenlabs</a>
+				</div>
+				<p class="footer-copyright">
+					© 2026 Agency Template. All rights reserved.
+				</p>
+			</div>
+		</div>
+
+		<script>
+		function toggleMobileMenu() {
+			const menu = document.getElementById("mobileMenu");
+			menu.classList.toggle("open");
+		}
+		</script>
+	</body>
+</html>

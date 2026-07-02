@@ -1,5 +1,7 @@
 # Roman & Quill — Serif Editorial Design System Showcase (React + TypeScript + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A standalone, fully self-contained showcase page expressing the **Serif** design system — typographic elegance through classical restraint. Built around a fictional private publishing house, **Roman & Quill**, the page evokes the feeling of opening a beautifully designed hardcover book: editorial, timeless, warm, and refined, combining the finest literary magazine conventions with luxury brand identity details — illuminated-manuscript gold leaf (`#B8860B`), fine binding aesthetics, and generous whitespace. Generated with Claude Fable 5.
 
 ## Sections

@@ -1,5 +1,7 @@
 # Phosphor 30 — Field of Light — CRT Phosphor GLSL Hero (React + Vite + Tailwind CSS + WebGL2)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport CRT phosphor instrument hero built around the `phosphor-30` WebGL2 GLSL shader — an 80-step signed-distance-field raymarch that accumulates ribbons of glowing light (`tanh(o / 5e3)`) on pure black, solved entirely in GLSL ES 3.00 with no textures and no geometry. The hero frames the live shader behind a hairline bezel with corner brackets, a drifting CRT scanline, a phosphor-glow "FIELD OF LIGHT" headline, and a mono telemetry strip reporting real render FPS and session uptime. Integrated as a shadcn `@/components/ui` drop-in following the canonical React + TypeScript + Vite + Tailwind CSS project structure. Generated with Claude Fable 5.
 
 ## The component (copied verbatim)

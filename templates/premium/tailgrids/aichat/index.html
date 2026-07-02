@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" type="image/png" href="assets/images/favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>AI Chat - React AI Chat Interface Template</title>
+		<meta
+			name="description"
+			content="React AI chat interface template for AI assistant apps. Includes chat input, sidebar, conversation history, and model selector."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<div class="app-wrapper">
+			<div class="app-layout">
+				<!-- Sidebar -->
+				<aside class="sidebar" id="sidebar">
+					<div class="sidebar-top">
+						<!-- Logo row -->
+						<div class="sidebar-logo-row">
+							<a href="/" class="sidebar-logo-link">
+								<img
+									alt="Logo"
+									src="assets/images/logo/onyx-logo.svg"
+									class="logo-img"
+								>
+							</a>
+							<div class="sidebar-header-actions">
+								<button
+									class="sidebar-close-btn mobile-only"
+									id="sidebarCloseBtn"
+									aria-label="Close sidebar"
+								>
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M6.75 17.249L17.2479 6.75111M6.75 6.75098L17.2479 17.2489"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</button>
+								<button
+									class="sidebar-collapse-btn desktop-only"
+									id="sidebarCollapseBtn"
+									aria-label="Collapse sidebar"
+								>
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M9.33301 20L9.33301 4M18.5 4L5.5 4C4.67157 4 4 4.67157 4 5.5L4 18.5C4 19.3284 4.67157 20 5.5 20L18.5 20C19.3284 20 20 19.3284 20 18.5L20 5.5C20 4.67157 19.3284 4 18.5 4Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<!-- Nav actions -->
+						<div class="sidebar-nav-actions">
+							<button class="sidebar-nav-btn">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									class="nav-icon"
+								>
+									<path
+										d="M18.8755 13.6249V19.6249C18.8755 20.4533 18.2039 21.1249 17.3755 21.1249H4.37488C3.54639 21.1249 2.87479 20.4532 2.87488 19.6247L2.8756 13.1249L2.94432 6.60903C2.95299 5.78682 3.62185 5.12485 4.44411 5.12485H10.3756M16.4799 5.16165L19.044 7.72574M19.6744 3.31449L20.6858 4.32585C21.2716 4.91163 21.2716 5.86138 20.6858 6.44717L12.2618 14.8711C12.0562 15.0767 11.7953 15.2181 11.5108 15.2781L7.9766 16.0237L8.72213 12.4895C8.78214 12.205 8.92356 11.944 9.12917 11.7384L17.5531 3.31449C18.1389 2.72871 19.0886 2.72871 19.6744 3.31449Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+								New Chat
+							</button>
+							<button class="sidebar-nav-btn">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									class="nav-icon"
+								>
+									<path
+										d="M11.3253 2.92485C15.9645 2.92485 19.7256 6.68564 19.7257 11.3243C19.7256 13.374 18.9897 15.2511 17.7697 16.709L20.8556 19.795C21.1483 20.0878 21.1481 20.5626 20.8556 20.8555C20.5627 21.1484 20.0879 21.1484 19.795 20.8555L16.7091 17.7696C15.2511 18.9882 13.3743 19.7227 11.3253 19.7227C6.68631 19.7225 2.92518 15.9627 2.92493 11.3243C2.92507 6.68575 6.68624 2.92503 11.3253 2.92485ZM11.3253 4.42485C7.51438 4.42503 4.42507 7.51446 4.42493 11.3243C4.42518 15.134 7.51445 18.2225 11.3253 18.2227C15.1363 18.2227 18.2255 15.1341 18.2257 11.3243C18.2256 7.51435 15.1364 4.42485 11.3253 4.42485Z"
+										fill="currentColor"
+									/>
+								</svg>
+								Search
+							</button>
+						</div>
+
+						<!-- Projects section header -->
+						<div class="sidebar-section-header">
+							<p class="sidebar-section-label">Projects</p>
+							<button class="sidebar-add-btn" aria-label="Add project">
+								<svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+									<path
+										d="M9 14.25H3.75C3.35218 14.25 2.97064 14.092 2.68934 13.8107C2.40804 13.5294 2.25 13.1478 2.25 12.75V4.5C2.25 4.10218 2.40804 3.72064 2.68934 3.43934C2.97064 3.15804 3.35218 3 3.75 3H6.33579C6.601 3 6.85536 3.10536 7.04289 3.29289L8.70711 4.95711C8.89464 5.14464 9.149 5.25 9.41421 5.25H14.25C14.6478 5.25 15.0294 5.40804 15.3107 5.68934C15.592 5.97064 15.75 6.35218 15.75 6.75V9.375"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linejoin="round"
+									/>
+									<path
+										d="M12 14.25H16.5"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linejoin="round"
+									/>
+									<path
+										d="M14.25 12V16.5"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+						</div>
+					</div>
+
+					<!-- Scrollable content -->
+					<div class="sidebar-scroll">
+						<!-- Projects list — NOTE: dots buttons are SIBLINGS of project buttons, not nested -->
+						<ul class="sidebar-list mb-projects">
+							<li class="sidebar-list-item">
+								<div class="sidebar-item-group">
+									<button class="sidebar-project-btn">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											class="nav-icon"
+										>
+											<path
+												d="M9.7 5.1C9.41672 4.72229 8.97214 4.5 8.5 4.5H4.25C3.42157 4.5 2.75 5.17157 2.75 6V18C2.75 18.8284 3.42157 19.5 4.25 19.5H19.75C20.5784 19.5 21.25 18.8284 21.25 18V9C21.25 8.17157 20.5784 7.5 19.75 7.5H12.25C11.7779 7.5 11.3333 7.27771 11.05 6.9L9.7 5.1Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										<span class="sidebar-item-label">Pimjo</span>
+										<span class="sidebar-item-badge">03</span>
+									</button>
+									<div class="sidebar-item-menu-wrap">
+										<button class="sidebar-dots-btn" aria-label="Options">
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+											>
+												<path
+													d="M11.995 6L12.005 6M11.995 18H12.005M11.995 12H12.005"
+													stroke="currentColor"
+													stroke-width="3.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li class="sidebar-list-item">
+								<div class="sidebar-item-group">
+									<button class="sidebar-project-btn">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											class="nav-icon"
+										>
+											<path
+												d="M9.7 5.1C9.41672 4.72229 8.97214 4.5 8.5 4.5H4.25C3.42157 4.5 2.75 5.17157 2.75 6V18C2.75 18.8284 3.42157 19.5 4.25 19.5H19.75C20.5784 19.5 21.25 18.8284 21.25 18V9C21.25 8.17157 20.5784 7.5 19.75 7.5H12.25C11.7779 7.5 11.3333 7.27771 11.05 6.9L9.7 5.1Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										<span class="sidebar-item-label">Meku</span>
+										<span class="sidebar-item-badge">02</span>
+									</button>
+									<div class="sidebar-item-menu-wrap">
+										<button class="sidebar-dots-btn" aria-label="Options">
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+											>
+												<path
+													d="M11.995 6L12.005 6M11.995 18H12.005M11.995 12H12.005"
+													stroke="currentColor"
+													stroke-width="3.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li class="sidebar-list-item">
+								<div class="sidebar-item-group">
+									<button class="sidebar-project-btn">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											class="nav-icon"
+										>
+											<path
+												d="M9.7 5.1C9.41672 4.72229 8.97214 4.5 8.5 4.5H4.25C3.42157 4.5 2.75 5.17157 2.75 6V18C2.75 18.8284 3.42157 19.5 4.25 19.5H19.75C20.5784 19.5 21.25 18.8284 21.25 18V9C21.25 8.17157 20.5784 7.5 19.75 7.5H12.25C11.7779 7.5 11.3333 7.27771 11.05 6.9L9.7 5.1Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										<span class="sidebar-item-label">Formbold</span>
+										<span class="sidebar-item-badge">04</span>
+									</button>
+									<div class="sidebar-item-menu-wrap">
+										<button class="sidebar-dots-btn" aria-label="Options">
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+											>
+												<path
+													d="M11.995 6L12.005 6M11.995 18H12.005M11.995 12H12.005"
+													stroke="currentColor"
+													stroke-width="3.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+							<li class="sidebar-list-item">
+								<div class="sidebar-item-group">
+									<button class="sidebar-project-btn">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											class="nav-icon"
+										>
+											<path
+												d="M9.7 5.1C9.41672 4.72229 8.97214 4.5 8.5 4.5H4.25C3.42157 4.5 2.75 5.17157 2.75 6V18C2.75 18.8284 3.42157 19.5 4.25 19.5H19.75C20.5784 19.5 21.25 18.8284 21.25 18V9C21.25 8.17157 20.5784 7.5 19.75 7.5H12.25C11.7779 7.5 11.3333 7.27771 11.05 6.9L9.7 5.1Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										<span class="sidebar-item-label">Tailadmin</span>
+										<span class="sidebar-item-badge">03</span>
+									</button>
+									<div class="sidebar-item-menu-wrap">
+										<button class="sidebar-dots-btn" aria-label="Options">
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+											>
+												<path
+													d="M11.995 6L12.005 6M11.995 18H12.005M11.995 12H12.005"
+													stroke="currentColor"
+													stroke-width="3.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</li>
+						</ul>
+
+						<!-- Chat history -->
+						<div class="sidebar-history">
+							<div class="sidebar-history-group">
+								<h4 class="sidebar-history-label">Today</h4>
+								<ul class="sidebar-list">
+									<li>
+										<div class="sidebar-chat-item-wrap">
+											<button class="sidebar-chat-btn">
+												<span class="sidebar-chat-title"
+													>Getting Started Conversation</span
+												>
+											</button>
+											<div class="sidebar-chat-actions">
+												<button class="sidebar-dots-btn" aria-label="Options">
+													<svg
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														fill="none"
+													>
+														<path
+															d="M11.995 6L12.005 6M11.995 18H12.005M11.995 12H12.005"
+															stroke="currentColor"
+															stroke-width="3.5"
+															stroke-linecap="round"
+															stroke-linejoin="round"
+														/>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="sidebar-chat-item-wrap">
+											<button class="sidebar-chat-btn">
+												<span class="sidebar-chat-title">AI Inspirations</span>
+											</button>
+											<div class="sidebar-chat-actions">
+												<button class="sidebar-dots-btn" aria-label="Options">
+													<svg
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														fill="none"
+													>
+														<path
+															d="M11.995 6L12.005 6M11.995 18H12.005M11.995 12H12.005"
+															stroke="currentColor"
+															stroke-width="3.5"
+															stroke-linecap="round"
+															stroke-linejoin="round"
+														/>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="sidebar-history-group">
+								<h4 class="sidebar-history-label">Yesterday</h4>
+								<ul class="sidebar-list">
+									<li>
+										<div class="sidebar-chat-item-wrap">
+											<button class="sidebar-chat-btn">
+												<span class="sidebar-chat-title">Analytics Report</span>
+											</button>
+											<div class="sidebar-chat-actions">
+												<button class="sidebar-dots-btn" aria-label="Options">
+													<svg
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														fill="none"
+													>
+														<path
+															d="M11.995 6L12.005 6M11.995 18H12.005M11.995 12H12.005"
+															stroke="currentColor"
+															stroke-width="3.5"
+															stroke-linecap="round"
+															stroke-linejoin="round"
+														/>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="sidebar-chat-item-wrap">
+											<button class="sidebar-chat-btn">
+												<span class="sidebar-chat-title">Project Overview</span>
+											</button>
+											<div class="sidebar-chat-actions">
+												<button class="sidebar-dots-btn" aria-label="Options">
+													<svg
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														fill="none"
+													>
+														<path
+															d="M11.995 6L12.005 6M11.995 18H12.005M11.995 12H12.005"
+															stroke="currentColor"
+															stroke-width="3.5"
+															stroke-linecap="round"
+															stroke-linejoin="round"
+														/>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="sidebar-chat-item-wrap">
+											<button class="sidebar-chat-btn">
+												<span class="sidebar-chat-title"
+													>The Future of AI and Its Impact on Society</span
+												>
+											</button>
+											<div class="sidebar-chat-actions">
+												<button class="sidebar-dots-btn" aria-label="Options">
+													<svg
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														fill="none"
+													>
+														<path
+															d="M11.995 6L12.005 6M11.995 18H12.005M11.995 12H12.005"
+															stroke="currentColor"
+															stroke-width="3.5"
+															stroke-linecap="round"
+															stroke-linejoin="round"
+														/>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- User profile card -->
+					<div class="sidebar-bottom">
+						<button class="user-card" id="userCardBtn">
+							<div class="user-card-inner">
+								<div class="user-avatar-wrap">
+									<img
+										class="user-avatar"
+										alt="Avatar"
+										src="assets/images/avatar/user.png"
+									>
+								</div>
+								<div class="user-info">
+									<h3 class="user-name">Adam wathon...</h3>
+									<p class="user-plan">Free</p>
+								</div>
+								<div class="upgrade-btn" role="button" tabindex="0">
+									Upgrade
+								</div>
+							</div>
+							<img
+								class="user-card-shape"
+								alt=""
+								src="assets/images/misc/shape.png"
+								aria-hidden="true"
+							>
+						</button>
+					</div>
+				</aside>
+
+				<!-- Main content area -->
+				<div class="main-area">
+					<!-- Mobile header (hidden on desktop) -->
+					<header class="mobile-header">
+						<img
+							alt="Logo"
+							src="assets/images/logo/onyx-logo.svg"
+							class="logo-img"
+						>
+						<div style="flex:1"></div>
+						<button
+							class="mobile-menu-btn"
+							id="mobileMenuBtn"
+							aria-label="Open menu"
+						>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M4 6L20 6M4 18L20 18M4 12L20 12"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+					</header>
+
+					<!-- Chat main -->
+					<main class="chat-main">
+						<div class="chat-content-wrapper">
+							<div class="chat-content-inner">
+								<!-- Welcome -->
+								<div class="chat-welcome">
+									<h1 class="chat-welcome-title">Hey, How Can I Assist?</h1>
+									<p class="chat-welcome-subtitle">
+										AI Chat is our smartest and fastest chatbot &#8212; built to
+										give you accurate, helpful answers every time.
+									</p>
+								</div>
+
+								<!-- Chat input -->
+								<div class="chat-input-container">
+									<div class="chat-input-box" id="chatInputBox">
+										<div class="chat-input-inner">
+											<textarea
+												rows="1"
+												class="chat-textarea"
+												id="chatTextarea"
+												placeholder="Ask me anything..."
+											></textarea>
+											<div class="chat-input-toolbar">
+												<div class="chat-input-left">
+													<input
+														id="chat-file-input"
+														class="hidden-input"
+														type="file"
+													>
+													<button
+														class="chat-tool-btn"
+														aria-label="Attach file"
+														onclick="document.getElementById('chat-file-input').click()"
+													>
+														<svg
+															width="20"
+															height="20"
+															viewBox="0 0 20 20"
+															fill="none"
+														>
+															<path
+																fill-rule="evenodd"
+																clip-rule="evenodd"
+																d="M8.58191 1.54199C10.5624 1.54218 12.1688 3.14806 12.1688 5.12891L12.1688 13.4541C12.1685 14.6513 11.1972 15.6221 9.99988 15.6221C8.80293 15.6217 7.83224 14.6511 7.83191 13.4541L7.83191 5.12891C7.83191 4.71484 8.1679 4.37915 8.58191 4.37891C8.99612 4.37891 9.33191 4.71469 9.33191 5.12891L9.33191 13.4541C9.33224 13.8226 9.63135 14.1217 9.99988 14.1221C10.3688 14.1221 10.6685 13.8229 10.6688 13.4541V12.0537C10.6687 12.0478 10.6679 12.0412 10.6678 12.0352L10.6688 5.12891C10.6688 3.97681 9.73429 3.04218 8.58191 3.04199C7.42969 3.04217 6.495 3.97664 6.495 5.12891L6.495 13.4541C6.49533 15.3893 8.06465 16.9587 9.99988 16.959C11.9353 16.959 13.5044 15.3895 13.5048 13.4541L13.5048 7.96484C13.5049 7.55092 13.8409 7.21511 14.2548 7.21484C14.6689 7.21484 15.0046 7.55076 15.0048 7.96484L15.0048 13.4541C15.0044 16.2179 12.7638 18.459 9.99988 18.459C7.23623 18.4587 4.99533 16.2177 4.995 13.4541L4.995 5.12891C4.995 3.14821 6.60126 1.54217 8.58191 1.54199Z"
+																fill="currentColor"
+															/>
+														</svg>
+													</button>
+													<button
+														class="chat-tools-selector-btn"
+														aria-label="Tools"
+													>
+														<svg
+															width="16"
+															height="16"
+															viewBox="0 0 16 16"
+															fill="none"
+														>
+															<path
+																d="M11.7227 4.72366C11.7227 3.5878 10.8019 2.66699 9.66605 2.66699C8.53019 2.66699 7.6094 3.58781 7.60938 4.72366M11.7227 4.72366C11.7227 5.85952 10.8019 6.78033 9.66605 6.78033C8.53019 6.78033 7.60938 5.85952 7.60938 4.72366M11.7227 4.72366L14.1667 4.72363M7.60938 4.72366L1.83334 4.72363M4.2773 11.277C4.27731 10.1411 5.1981 9.22033 6.33397 9.22033C7.46983 9.22033 8.39063 10.1411 8.39063 11.277M4.2773 11.277C4.2773 12.4129 5.1981 13.3337 6.33397 13.3337C7.46983 13.3337 8.39063 12.4129 8.39063 11.277M4.2773 11.277L1.83334 11.277M8.39063 11.277L14.1667 11.277"
+																stroke="currentColor"
+																stroke-width="1.3"
+																stroke-linecap="round"
+																stroke-linejoin="round"
+															/>
+														</svg>
+														<span class="tools-label">Tools</span>
+													</button>
+												</div>
+												<div class="chat-input-right">
+													<button
+														class="model-selector-btn"
+														id="modelSelectorBtn"
+														aria-label="Select model"
+													>
+														<svg
+															width="14"
+															height="13"
+															viewBox="0 0 14 13"
+															fill="none"
+															class="model-icon"
+														>
+															<path
+																d="M2.55871 8.64257L5.12402 7.20872L5.16694 7.08375L5.12402 7.01469H4.99856L4.56936 6.98838L3.10347 6.94891L1.83237 6.89629L0.600884 6.83052L0.290537 6.76475L0 6.38327L0.029714 6.19252L0.290537 6.01823L0.663614 6.05111L1.489 6.10702L2.72709 6.19252L3.62511 6.24514L4.95564 6.38327H5.16694L5.19666 6.29776L5.12402 6.24514L5.0679 6.19252L3.78689 5.32761L2.40023 4.41337L1.67389 3.88718L1.28101 3.6208L1.08291 3.37086L0.997071 2.82495L1.35364 2.4336L1.83237 2.46649L1.95452 2.49937L2.43985 2.87099L3.47654 3.67013L4.83018 4.6633L5.02828 4.82774L5.10751 4.77183L5.11742 4.73236L5.02828 4.58438L4.29203 3.25905L3.50626 1.9107L3.15629 1.35163L3.06385 1.01619C3.03083 0.878069 3.00772 0.762966 3.00772 0.621554L3.41381 0.0723503L3.63832 0L4.17978 0.0723503L4.40758 0.269669L4.74434 1.03592L5.2891 2.24286L6.1343 3.88389L6.38192 4.37061L6.51398 4.82116L6.5635 4.95928H6.64934V4.88035L6.71868 3.95624L6.84744 2.82166L6.9729 1.3615L7.01582 0.950419L7.22051 0.457122L7.62661 0.190742L7.94355 0.342019L8.20438 0.713637L8.16806 0.953708L8.01289 1.95675L7.70914 3.52872L7.51105 4.58109H7.62661L7.75867 4.44954L8.29352 3.74248L9.19154 2.62434L9.58773 2.18037L10.05 1.69037L10.3471 1.45687H10.9084L11.3211 2.06856L11.1362 2.69998L10.5584 3.43006L10.0797 4.04833L9.39294 4.96915L8.96374 5.7058L9.00336 5.765L9.1057 5.75513L10.6574 5.42627L11.496 5.27499L12.4964 5.10398L12.9487 5.31446L12.9982 5.52822L12.82 5.96561L11.7503 6.2287L10.4957 6.47864L8.62698 6.91932L8.60387 6.93576L8.63028 6.96865L9.47218 7.047L10.7136 7.18899L12.3544 7.25299L12.7836 7.47181L13.0412 7.81712L12.9982 8.08021L12.3379 8.41565L11.4465 8.20518L9.36653 7.71188L8.65339 7.53429H8.55434V7.59349L9.14862 8.17229L10.2381 9.15231L11.6017 10.4151L11.671 10.7276L11.496 10.9742L11.3111 10.9479L10.1127 10.0501L9.65046 9.64561L8.60387 8.76754H8.53453V8.85962L8.77555 9.2115L10.05 11.1189L10.116 11.7043L10.0235 11.895L9.69338 12.0101L9.33021 11.9444L8.58406 10.9019L7.81479 9.72782L7.1941 8.67545L7.11816 8.71821L6.75169 12.6481L6.58001 12.8487L6.18382 13L5.85367 12.7501L5.67868 12.3456L5.85367 11.5464L6.06497 10.5039L6.23665 9.6752L6.39182 8.64586L6.48426 8.30384L6.47766 8.28082L6.40173 8.29068L5.62256 9.3562L4.4373 10.9512L3.49965 11.9509L3.27515 12.0397L2.88556 11.8391L2.92188 11.4807L3.13978 11.1617L4.4373 9.51735L5.21977 8.49787L5.72491 7.9092L5.7216 7.82369H5.69189L2.24506 10.0534L1.63097 10.1323L1.36685 9.88568L1.39986 9.48117L1.52532 9.34963L2.56201 8.63928L2.55871 8.64257Z"
+																fill="#D97757"
+															/>
+														</svg>
+														<span class="model-label">Claude-3.5-sonnet</span>
+														<svg
+															width="24"
+															height="24"
+															viewBox="0 0 24 24"
+															fill="none"
+															class="chevron-icon"
+														>
+															<path
+																d="M5.75 8.875L12 15.125L18.25 8.875"
+																stroke="currentColor"
+																stroke-width="1.5"
+																stroke-linecap="round"
+																stroke-linejoin="round"
+															/>
+														</svg>
+													</button>
+													<button
+														class="send-btn"
+														disabled
+														id="sendBtn"
+														aria-label="Send message"
+													>
+														<svg
+															width="24"
+															height="24"
+															viewBox="0 0 24 24"
+															fill="none"
+														>
+															<path
+																d="M12.2454 4.24805L12.2454 20.2494M6.24927 10.244L12.2491 4.24805L18.2493 10.244"
+																stroke="currentColor"
+																stroke-width="1.5"
+																stroke-linecap="round"
+																stroke-linejoin="round"
+															/>
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Quick action chips -->
+								<div class="chat-actions-row">
+									<button class="chat-action-chip">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											class="chip-icon"
+										>
+											<path
+												d="M11.3253 2.92485C15.9645 2.92485 19.7256 6.68564 19.7257 11.3243C19.7256 13.374 18.9897 15.2511 17.7697 16.709L20.8556 19.795C21.1483 20.0878 21.1481 20.5626 20.8556 20.8555C20.5627 21.1484 20.0879 21.1484 19.795 20.8555L16.7091 17.7696C15.2511 18.9882 13.3743 19.7227 11.3253 19.7227C6.68631 19.7225 2.92518 15.9627 2.92493 11.3243C2.92507 6.68575 6.68624 2.92503 11.3253 2.92485ZM11.3253 4.42485C7.51438 4.42503 4.42507 7.51446 4.42493 11.3243C4.42518 15.134 7.51445 18.2225 11.3253 18.2227C15.1363 18.2227 18.2255 15.1341 18.2257 11.3243C18.2256 7.51435 15.1364 4.42485 11.3253 4.42485Z"
+												fill="currentColor"
+											/>
+										</svg>
+										Deep Search
+									</button>
+									<button class="chat-action-chip">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											class="chip-icon"
+										>
+											<path
+												d="M20 16.1492L15.6656 11.4736C15.4812 11.2723 15.2206 11.1577 14.9476 11.1577C14.6893 11.1577 14.4415 11.2604 14.2589 11.443L10.3917 15.3102C10.3878 15.3141 10.3814 15.3141 10.3775 15.3102L8.58708 13.5198C8.40635 13.339 8.16125 13.2375 7.90567 13.2375C7.6304 13.2375 7.36828 13.3552 7.18541 13.561L4 16.9811M20 16.1492V5.5C20 4.67157 19.3284 4 18.5 4H5.5C4.67157 4 4 4.67157 4 5.5V16.9811M20 16.1492V18.5C20 19.3284 19.3284 20 18.5 20H5.5C4.67157 20 4 19.3284 4 18.5V16.9811M10.3846 9.07793C10.3846 9.76711 9.8259 10.3258 9.13672 10.3258C8.44754 10.3258 7.88885 9.76711 7.88885 9.07793C7.88885 8.38875 8.44754 7.83006 9.13672 7.83006C9.8259 7.83006 10.3846 8.38875 10.3846 9.07793Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+											/>
+										</svg>
+										Create Images
+									</button>
+									<button class="chat-action-chip">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											class="chip-icon"
+										>
+											<path
+												d="M4.25 18.75H19.75C20.5784 18.75 21.25 18.0784 21.25 17.25V6.75C21.25 5.92157 20.5784 5.25 19.75 5.25H7.25C6.42157 5.25 5.75 5.92157 5.75 6.75V12M4.25 18.75C3.42157 18.75 2.75 18.0784 2.75 17.25V6.75M4.25 18.75C5.07843 18.75 5.75 18.0784 5.75 17.25V8.25M18.25 15.3926H8.75M18.25 9L15.75 9M18.25 12H15.75M8.75 8.25H12.75V12.25H8.75V8.25Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										Latest News
+									</button>
+									<button class="chat-action-chip">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											class="chip-icon"
+										>
+											<path
+												d="M6.375 5.93126L6.375 18.0687C6.375 19.2416 7.66045 19.9607 8.65989 19.347L18.5433 13.2783C19.4967 12.6928 19.4967 11.3072 18.5433 10.7217L8.65989 4.653C7.66045 4.03931 6.375 4.75843 6.375 5.93126Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										Generate Video
+									</button>
+								</div>
+							</div>
+						</div>
+					</main>
+				</div>
+			</div>
+		</div>
+
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<script src="script.js"></script>
+	</body>
+</html>

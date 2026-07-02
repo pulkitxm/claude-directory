@@ -2,7 +2,7 @@
 
 A full-viewport WebGL2 fragment shader component that raymarches a 20-step noise field and tints it with a warm amber-to-magenta cosine spectrum flowing right to left — integrated as HIVE, a shadcn-style component lab with a frosted-glass hero, shader-spec HUD surfacing real uniforms and raymarch step count, and a full integration guide covering setup, the `components/ui` alias, and render-pipeline walkthrough. Generated with Claude Fable 5.
 
-![demo](./demo.mp4)
+[![Watch Demo](./poster.jpg)](./demo.mp4)
 
 ## Run
 

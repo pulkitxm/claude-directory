@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Dashboard 9 — Shadcnblocks Admin Kit</title>
+		<!-- No-flash theme boot -->
+		<script>
+		(function () {
+			var t = localStorage.getItem("theme"),
+				d =
+					window.matchMedia &&
+					window.matchMedia("(prefers-color-scheme:dark)").matches;
+			if (t === "dark" || (t === null && d))
+				document.documentElement.classList.add("dark");
+		})();
+		</script>
+		<link rel="stylesheet" href="../assets/styles.css">
+		<style>
+		/* ===== LOGO SWAP ===== */
+		.logo-light {
+			display: block;
+		}
+		.logo-dark {
+			display: none;
+		}
+		html.dark .logo-light {
+			display: none;
+		}
+		html.dark .logo-dark {
+			display: block;
+		}
+
+		.sidebar-logo-icon {
+			width: 28px;
+			height: 28px;
+			border: 1px solid var(--border);
+			border-radius: 6px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+		.sidebar-logo-icon img {
+			width: 16px;
+			height: 16px;
+			object-fit: contain;
+		}
+
+		/* ===== STORE HEADER ===== */
+		.store-header {
+			margin-bottom: 20px;
+		}
+		.store-breadcrumb {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 13px;
+			color: var(--muted-foreground);
+			margin-bottom: 4px;
+		}
+		.store-breadcrumb-sep {
+			color: var(--muted-foreground);
+			opacity: 0.5;
+		}
+		.store-breadcrumb-current {
+			color: var(--foreground);
+			font-weight: 500;
+		}
+		.store-subtitle {
+			font-size: 13px;
+			color: var(--muted-foreground);
+		}
+
+		/* ===== TABS ===== */
+		.tab-bar {
+			display: flex;
+			gap: 2px;
+			border-bottom: 1px solid var(--border);
+			margin-bottom: 20px;
+		}
+		.tab-btn {
+			padding: 8px 16px;
+			font-size: 13px;
+			font-weight: 500;
+			color: var(--muted-foreground);
+			background: none;
+			border: none;
+			border-bottom: 2px solid transparent;
+			cursor: pointer;
+			transition:
+				color 0.15s,
+				border-color 0.15s;
+			margin-bottom: -1px;
+		}
+		.tab-btn:hover {
+			color: var(--foreground);
+		}
+		.tab-btn.active {
+			color: var(--foreground);
+			border-bottom-color: var(--primary);
+		}
+		.tab-panel {
+			display: none;
+		}
+		.tab-panel.active {
+			display: block;
+		}
+		.tab-placeholder {
+			padding: 48px 0;
+			text-align: center;
+			color: var(--muted-foreground);
+			font-size: 14px;
+		}
+
+		/* ===== KPI CARDS ===== */
+		.d9-kpi-grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 16px;
+			margin-bottom: 20px;
+		}
+		@media (max-width: 1100px) {
+			.d9-kpi-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (max-width: 640px) {
+			.d9-kpi-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* ===== MAIN LAYOUT: chart (3/5) + aside (2/5) ===== */
+		.d9-main-row {
+			display: grid;
+			grid-template-columns: 3fr 2fr;
+			gap: 16px;
+			align-items: start;
+		}
+		@media (max-width: 960px) {
+			.d9-main-row {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* ===== BEST SELLERS ===== */
+		.best-sellers {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			margin-bottom: 20px;
+		}
+		.best-seller-item {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		.best-seller-rank {
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			background: var(--muted);
+			color: var(--muted-foreground);
+			font-size: 11px;
+			font-weight: 700;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+		.best-seller-info {
+			flex: 1;
+			min-width: 0;
+		}
+		.best-seller-name {
+			font-size: 13px;
+			font-weight: 500;
+			color: var(--foreground);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.best-seller-meta {
+			font-size: 11px;
+			color: var(--muted-foreground);
+		}
+		.best-seller-price {
+			font-size: 13px;
+			font-weight: 600;
+			color: var(--foreground);
+			flex-shrink: 0;
+		}
+
+		/* ===== RATING SECTION ===== */
+		.rating-block {
+			padding-top: 16px;
+			border-top: 1px solid var(--border);
+		}
+		.rating-score-row {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin-bottom: 12px;
+		}
+		.rating-big {
+			font-size: 36px;
+			font-weight: 800;
+			letter-spacing: -0.04em;
+			color: var(--foreground);
+			line-height: 1;
+		}
+		.rating-big-denom {
+			font-size: 16px;
+			font-weight: 500;
+			color: var(--muted-foreground);
+			align-self: flex-end;
+			margin-bottom: 4px;
+		}
+		.rating-stars {
+			display: flex;
+			gap: 2px;
+		}
+		.rating-star {
+			width: 16px;
+			height: 16px;
+			color: #f59e0b;
+		}
+		.rating-reviews {
+			font-size: 12px;
+			color: var(--muted-foreground);
+			margin-top: 4px;
+		}
+		.rating-bars {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			margin-top: 12px;
+		}
+		.rating-bar-row {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.rating-bar-label {
+			font-size: 11px;
+			color: var(--muted-foreground);
+			width: 36px;
+			flex-shrink: 0;
+		}
+		.rating-bar-track {
+			flex: 1;
+			height: 6px;
+			background: var(--muted);
+			border-radius: 3px;
+			overflow: hidden;
+		}
+		.rating-bar-fill {
+			height: 100%;
+			border-radius: 3px;
+			background: #f59e0b;
+		}
+		.rating-bar-pct {
+			font-size: 11px;
+			color: var(--muted-foreground);
+			width: 28px;
+			text-align: right;
+			flex-shrink: 0;
+		}
+
+		.theme-label {
+			font-size: 13px;
+			color: var(--muted-foreground);
+		}
+		</style>
+	</head>
+	<body>
+		<div class="app-wrapper">
+			<!-- SIDEBAR -->
+			<div id="sidebar-container" class="sidebar-container">
+				<aside id="sidebar" class="sidebar">
+					<div class="sidebar-header">
+						<div class="sidebar-logo">
+							<div class="sidebar-logo-icon">
+								<img
+									src="../assets/images/logo-black.svg"
+									alt="Shadcnblocks"
+									class="logo-light"
+								>
+								<img
+									src="../assets/images/logo-white.svg"
+									alt="Shadcnblocks"
+									class="logo-dark"
+								>
+							</div>
+							<div>
+								<div class="sidebar-logo-text">Shadcnblocks Admin Kit</div>
+								<div class="sidebar-subtitle" style="padding-left:0">
+									Nextjs + shadcn/ui
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<nav class="sidebar-nav">
+						<!-- ECOMMERCE -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Ecommerce</div>
+
+							<div class="sidebar-item open" data-submenu="sub-dashboard">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1"
+									/>
+								</svg>
+								<span>Dashboard</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m18 15-6-6-6 6" />
+								</svg>
+							</div>
+							<div id="sub-dashboard" class="sidebar-sub open">
+								<a href="dashboard-1.html" class="sidebar-sub-item"
+									>Dashboard 1</a
+								>
+								<a href="dashboard-2.html" class="sidebar-sub-item"
+									>Dashboard 2</a
+								>
+								<a href="dashboard-3.html" class="sidebar-sub-item"
+									>Dashboard 3</a
+								>
+								<a href="dashboard-4.html" class="sidebar-sub-item"
+									>Dashboard 4</a
+								>
+								<a href="dashboard-5.html" class="sidebar-sub-item"
+									>Dashboard 5</a
+								>
+								<a href="dashboard-6.html" class="sidebar-sub-item"
+									>Dashboard 6</a
+								>
+								<a href="dashboard-7.html" class="sidebar-sub-item"
+									>Dashboard 7</a
+								>
+								<a href="dashboard-8.html" class="sidebar-sub-item"
+									>Dashboard 8</a
+								>
+								<a href="dashboard-9.html" class="sidebar-sub-item active"
+									>Dashboard 9</a
+								>
+							</div>
+
+							<div class="sidebar-item" data-submenu="sub-products">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M12 3l8 4.5 0 9L12 21l-8-4.5 0-9z" />
+									<path d="M12 12l8-4.5" />
+									<path d="M12 12v9" />
+									<path d="M12 12L4 7.5" />
+								</svg>
+								<span>Products</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-products" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-orders">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
+									<path d="M15 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
+									<path d="M17 17h-11v-14h-2" />
+									<path d="M6 5l14 1-1 7H6" />
+								</svg>
+								<span>Orders</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-orders" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-customers">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M5 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
+									<path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+									<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+									<path d="M21 21v-2a4 4 0 0 0-3-3.85" />
+								</svg>
+								<span>Customers</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-customers" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-shipments">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"
+									/>
+									<path d="M15 18H9" />
+									<path
+										d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"
+									/>
+									<circle cx="17" cy="18" r="2" />
+									<circle cx="7" cy="18" r="2" />
+								</svg>
+								<span>Shipments</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-shipments" class="sidebar-sub"></div>
+						</div>
+
+						<!-- PROJECT MANAGEMENT -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Project Management</div>
+
+							<div class="sidebar-item" data-submenu="sub-pm-dash">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1"
+									/>
+								</svg>
+								<span>Dashboard</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-pm-dash" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-projects">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"
+									/>
+									<path d="M8 10v4" />
+									<path d="M12 10v2" />
+									<path d="M16 10v6" />
+								</svg>
+								<span>Projects</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-projects" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-teams">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M5 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
+									<path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+									<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+									<path d="M21 21v-2a4 4 0 0 0-3-3.85" />
+								</svg>
+								<span>Teams</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-teams" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-members">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
+									<path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+								</svg>
+								<span>Members</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-members" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-issues">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<circle cx="12" cy="12" r="1" />
+									<circle cx="12" cy="12" r="10" />
+								</svg>
+								<span>Issues</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-issues" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-inbox">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+									<path
+										d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+									/>
+								</svg>
+								<span>Inbox</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-inbox" class="sidebar-sub"></div>
+
+							<a href="../original/tasks.html" class="sidebar-item">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M9 11l3 3L22 4" />
+									<path
+										d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+									/>
+								</svg>
+								<span>Tasks</span>
+							</a>
+						</div>
+
+						<!-- MANAGE -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Manage</div>
+
+							<div class="sidebar-item" data-submenu="sub-settings">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+									/>
+									<circle cx="12" cy="12" r="3" />
+								</svg>
+								<span>Settings</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-settings" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-developers">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="16 18 22 12 16 6" />
+									<polyline points="8 6 2 12 8 18" />
+								</svg>
+								<span>Developers</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-developers" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-devtools">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+									/>
+								</svg>
+								<span>Dev Tools</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-devtools" class="sidebar-sub"></div>
+						</div>
+
+						<!-- PAGES -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Pages</div>
+
+							<div class="sidebar-item" data-submenu="sub-auth">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+									<path d="M7 11V7a5 5 0 0 1 10 0v4" />
+								</svg>
+								<span>Auth</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-auth" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-errors">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+									/>
+									<path d="M12 9v4" />
+									<path d="M12 17h.01" />
+								</svg>
+								<span>Errors</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-errors" class="sidebar-sub"></div>
+						</div>
+					</nav>
+
+					<div class="sidebar-footer">
+						<div class="sidebar-user">
+							<img
+								src="../assets/images/avatars/ausrobdev-avatar.png"
+								alt="ausrobdev"
+								style="width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;"
+							>
+							<div class="sidebar-user-info">
+								<div class="sidebar-user-name">ausrobdev</div>
+								<div class="sidebar-user-email">rob@shadcnblocks.com</div>
+							</div>
+							<svg
+								class="sidebar-user-icon"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="m7 15 5 5 5-5" />
+								<path d="m7 9 5-5 5 5" />
+							</svg>
+						</div>
+					</div>
+				</aside>
+			</div>
+
+			<div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+			<!-- MAIN AREA -->
+			<div class="main-area">
+				<!-- Header -->
+				<header class="page-header">
+					<div class="header-left">
+						<button
+							id="sidebar-toggle"
+							class="sidebar-toggle"
+							aria-label="Toggle sidebar"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<rect width="18" height="18" x="3" y="3" rx="2" />
+								<path d="M9 3v18" />
+							</svg>
+						</button>
+						<nav class="breadcrumb" aria-label="Breadcrumb">
+							<span class="breadcrumb-item">Ecommerce</span>
+							<span class="breadcrumb-sep">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="12"
+									height="12"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</span>
+							<span class="breadcrumb-item current">Dashboard 9</span>
+						</nav>
+					</div>
+
+					<div class="header-center">
+						<div class="search-bar" role="search">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<circle cx="11" cy="11" r="8" />
+								<path d="m21 21-4.3-4.3" />
+							</svg>
+							<span class="search-bar-text">Search...</span>
+							<kbd class="search-bar-kbd">⌘K</kbd>
+						</div>
+					</div>
+
+					<div class="header-right">
+						<button class="header-btn" aria-label="Notifications">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+								<path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+							</svg>
+							<span class="notification-badge">2</span>
+						</button>
+						<button
+							id="theme-toggle"
+							class="header-btn"
+							aria-label="Toggle theme"
+						>
+							<span id="theme-icon"></span>
+						</button>
+						<span class="theme-label">Default</span>
+					</div>
+				</header>
+
+				<!-- Page Content -->
+				<main class="page-content">
+					<div class="content-inner">
+						<!-- Store header / breadcrumb -->
+						<div class="store-header">
+							<div class="store-breadcrumb">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="14"
+									height="14"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+									<polyline points="9 22 9 12 15 12 15 22" />
+								</svg>
+								<span>Acme Store</span>
+								<span class="store-breadcrumb-sep">/</span>
+								<span class="store-breadcrumb-current">Overview</span>
+							</div>
+							<div class="store-subtitle">
+								Your store performance at a glance
+							</div>
+						</div>
+
+						<!-- Tab bar -->
+						<div class="tab-bar" data-tabs>
+							<button class="tab-btn active" data-tab="overview">
+								Overview
+							</button>
+							<button class="tab-btn" data-tab="orders">Orders</button>
+							<button class="tab-btn" data-tab="products">Products</button>
+							<button class="tab-btn" data-tab="customers">Customers</button>
+							<button class="tab-btn" data-tab="analytics">Analytics</button>
+						</div>
+
+						<!-- Tab: Overview -->
+						<div id="tab-overview" class="tab-panel active">
+							<!-- KPI Cards -->
+							<div class="d9-kpi-grid">
+								<div class="kpi-card">
+									<div class="kpi-label">
+										Total Revenue
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<line x1="12" y1="1" x2="12" y2="23" />
+											<path
+												d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+											/>
+										</svg>
+									</div>
+									<div class="kpi-value">$1,240,000</div>
+									<div class="kpi-change">
+										<span class="positive">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="11"
+												height="11"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												style="display:inline-block;vertical-align:-1px"
+											>
+												<path d="m18 15-6-6-6 6" />
+											</svg>
+											+14.2% vs last month
+										</span>
+									</div>
+								</div>
+
+								<div class="kpi-card">
+									<div class="kpi-label">
+										Total Orders
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
+											<path d="M15 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
+											<path d="M17 17h-11v-14h-2" />
+											<path d="M6 5l14 1-1 7H6" />
+										</svg>
+									</div>
+									<div class="kpi-value">8,420</div>
+									<div class="kpi-change">
+										<span class="positive">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="11"
+												height="11"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												style="display:inline-block;vertical-align:-1px"
+											>
+												<path d="m18 15-6-6-6 6" />
+											</svg>
+											+9.8% vs last month
+										</span>
+									</div>
+								</div>
+
+								<div class="kpi-card">
+									<div class="kpi-label">
+										Total Customers
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<path d="M5 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
+											<path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+											<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+											<path d="M21 21v-2a4 4 0 0 0-3-3.85" />
+										</svg>
+									</div>
+									<div class="kpi-value">3,284</div>
+									<div class="kpi-change">
+										<span class="positive">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="11"
+												height="11"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												style="display:inline-block;vertical-align:-1px"
+											>
+												<path d="m18 15-6-6-6 6" />
+											</svg>
+											+22.1% vs last month
+										</span>
+									</div>
+								</div>
+
+								<div class="kpi-card">
+									<div class="kpi-label">
+										Avg Order Value
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<line x1="12" y1="1" x2="12" y2="23" />
+											<path
+												d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+											/>
+										</svg>
+									</div>
+									<div class="kpi-value">$147.27</div>
+									<div class="kpi-change">
+										<span class="positive">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="11"
+												height="11"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												style="display:inline-block;vertical-align:-1px"
+											>
+												<path d="m18 15-6-6-6 6" />
+											</svg>
+											+4.1% vs last month
+										</span>
+									</div>
+								</div>
+							</div>
+							<!-- /.d9-kpi-grid -->
+
+							<!-- Main row: Revenue chart + Best Sellers + Rating -->
+							<div class="d9-main-row">
+								<!-- Revenue Overview area chart -->
+								<div class="chart-card">
+									<div class="chart-card-header">
+										<div>
+											<div class="chart-card-title">Revenue Overview</div>
+											<div class="chart-card-subtitle">
+												Monthly revenue for the current year
+											</div>
+										</div>
+									</div>
+									<div class="chart-canvas-wrapper" style="height:260px">
+										<canvas id="revenueOverviewChart"></canvas>
+									</div>
+								</div>
+
+								<!-- Right column: Best Sellers + Rating -->
+								<div style="display:flex;flex-direction:column;gap:16px">
+									<!-- Best Sellers -->
+									<div class="chart-card">
+										<div class="chart-card-header">
+											<div>
+												<div class="chart-card-title">Best Sellers</div>
+												<div class="chart-card-subtitle">
+													Top products this period
+												</div>
+											</div>
+										</div>
+
+										<div class="best-sellers">
+											<div class="best-seller-item">
+												<div class="best-seller-rank">1</div>
+												<div class="best-seller-info">
+													<div class="best-seller-name">
+														Wireless Earbuds Pro
+													</div>
+													<div class="best-seller-meta">1,247 sold</div>
+												</div>
+												<div class="best-seller-price">$89.99</div>
+											</div>
+
+											<div class="best-seller-item">
+												<div class="best-seller-rank">2</div>
+												<div class="best-seller-info">
+													<div class="best-seller-name">Smart Watch Ultra</div>
+													<div class="best-seller-meta">893 sold</div>
+												</div>
+												<div class="best-seller-price">$299.99</div>
+											</div>
+
+											<div class="best-seller-item">
+												<div class="best-seller-rank">3</div>
+												<div class="best-seller-info">
+													<div class="best-seller-name">USB-C Hub 7-in-1</div>
+													<div class="best-seller-meta">2,103 sold</div>
+												</div>
+												<div class="best-seller-price">$49.99</div>
+											</div>
+
+											<div class="best-seller-item">
+												<div class="best-seller-rank">4</div>
+												<div class="best-seller-info">
+													<div class="best-seller-name">
+														Leather Wallet Slim
+													</div>
+													<div class="best-seller-meta">1,562 sold</div>
+												</div>
+												<div class="best-seller-price">$34.99</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Customer Rating -->
+									<div class="chart-card">
+										<div class="chart-card-title" style="margin-bottom:12px">
+											Customer Rating
+										</div>
+
+										<div class="rating-score-row">
+											<div class="rating-big">4.8</div>
+											<div class="rating-big-denom">/ 5.0</div>
+											<div style="margin-left:auto">
+												<div class="rating-stars">
+													<!-- 5 filled stars -->
+													<svg
+														class="rating-star"
+														xmlns="http://www.w3.org/2000/svg"
+														viewBox="0 0 24 24"
+														fill="currentColor"
+													>
+														<path
+															d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+														/>
+													</svg>
+													<svg
+														class="rating-star"
+														xmlns="http://www.w3.org/2000/svg"
+														viewBox="0 0 24 24"
+														fill="currentColor"
+													>
+														<path
+															d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+														/>
+													</svg>
+													<svg
+														class="rating-star"
+														xmlns="http://www.w3.org/2000/svg"
+														viewBox="0 0 24 24"
+														fill="currentColor"
+													>
+														<path
+															d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+														/>
+													</svg>
+													<svg
+														class="rating-star"
+														xmlns="http://www.w3.org/2000/svg"
+														viewBox="0 0 24 24"
+														fill="currentColor"
+													>
+														<path
+															d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+														/>
+													</svg>
+													<!-- half-star approx: filled -->
+													<svg
+														class="rating-star"
+														xmlns="http://www.w3.org/2000/svg"
+														viewBox="0 0 24 24"
+														fill="currentColor"
+														style="opacity:0.85"
+													>
+														<path
+															d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+														/>
+													</svg>
+												</div>
+												<div class="rating-reviews">Based on 2,847 reviews</div>
+											</div>
+										</div>
+
+										<div class="rating-bars">
+											<div class="rating-bar-row">
+												<span class="rating-bar-label">5 stars</span>
+												<div class="rating-bar-track">
+													<div class="rating-bar-fill" style="width:68%"></div>
+												</div>
+												<span class="rating-bar-pct">68%</span>
+											</div>
+											<div class="rating-bar-row">
+												<span class="rating-bar-label">4 stars</span>
+												<div class="rating-bar-track">
+													<div class="rating-bar-fill" style="width:21%"></div>
+												</div>
+												<span class="rating-bar-pct">21%</span>
+											</div>
+											<div class="rating-bar-row">
+												<span class="rating-bar-label">3 stars</span>
+												<div class="rating-bar-track">
+													<div class="rating-bar-fill" style="width:7%"></div>
+												</div>
+												<span class="rating-bar-pct">7%</span>
+											</div>
+											<div class="rating-bar-row">
+												<span class="rating-bar-label">2 stars</span>
+												<div class="rating-bar-track">
+													<div class="rating-bar-fill" style="width:3%"></div>
+												</div>
+												<span class="rating-bar-pct">3%</span>
+											</div>
+											<div class="rating-bar-row">
+												<span class="rating-bar-label">1 star</span>
+												<div class="rating-bar-track">
+													<div class="rating-bar-fill" style="width:1%"></div>
+												</div>
+												<span class="rating-bar-pct">1%</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /.right column -->
+							</div>
+							<!-- /.d9-main-row -->
+						</div>
+						<!-- /#tab-overview -->
+
+						<!-- Tab: Orders (hidden) -->
+						<div id="tab-orders" class="tab-panel">
+							<div class="tab-placeholder">Orders content coming soon.</div>
+						</div>
+
+						<!-- Tab: Products (hidden) -->
+						<div id="tab-products" class="tab-panel">
+							<div class="tab-placeholder">Products content coming soon.</div>
+						</div>
+
+						<!-- Tab: Customers (hidden) -->
+						<div id="tab-customers" class="tab-panel">
+							<div class="tab-placeholder">Customers content coming soon.</div>
+						</div>
+
+						<!-- Tab: Analytics (hidden) -->
+						<div id="tab-analytics" class="tab-panel">
+							<div class="tab-placeholder">Analytics content coming soon.</div>
+						</div>
+					</div>
+					<!-- /.content-inner -->
+				</main>
+			</div>
+			<!-- /.main-area -->
+		</div>
+		<!-- /.app-wrapper -->
+
+		<script src="../assets/app.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+		<script>
+		(function () {
+			/* ===== TAB SYSTEM ===== */
+			var tabBar = document.querySelector("[data-tabs]");
+			if (tabBar) {
+				tabBar.addEventListener("click", function (e) {
+					var btn = e.target.closest("[data-tab]");
+					if (!btn) return;
+					var key = btn.dataset.tab;
+
+					// update buttons
+					tabBar.querySelectorAll(".tab-btn").forEach(function (b) {
+						b.classList.toggle("active", b === btn);
+					});
+
+					// update panels
+					document.querySelectorAll(".tab-panel").forEach(function (p) {
+						p.classList.toggle("active", p.id === "tab-" + key);
+					});
+				});
+			}
+
+			/* ===== CHART HELPERS ===== */
+			function cssVar(n) {
+				return getComputedStyle(document.documentElement)
+					.getPropertyValue(n)
+					.trim();
+			}
+
+			function hexToRgba(hex, a) {
+				hex = (hex || "").replace("#", "").trim();
+				if (hex.length === 3)
+					hex = hex
+						.split("")
+						.map(function (c) {
+							return c + c;
+						})
+						.join("");
+				var r = parseInt(hex.slice(0, 2), 16);
+				var g = parseInt(hex.slice(2, 4), 16);
+				var b = parseInt(hex.slice(4, 6), 16);
+				if (isNaN(r)) return "rgba(21,93,252," + a + ")";
+				return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+			}
+
+			var charts = {};
+
+			function destroyAll() {
+				Object.values(charts).forEach(function (c) {
+					if (c) c.destroy();
+				});
+				charts = {};
+			}
+
+			function buildCharts() {
+				destroyAll();
+
+				var c1 = cssVar("--chart-1");
+				var c3 = cssVar("--chart-3");
+				var muted = cssVar("--muted-foreground");
+				var grid = cssVar("--border");
+
+				/* ---- REVENUE OVERVIEW (area chart, Jan-Dec) ---- */
+				var roCtx = document.getElementById("revenueOverviewChart");
+				if (roCtx) {
+					var roData = [82, 95, 110, 88, 124, 138, 128, 145, 118, 156, 160, 74];
+					var gRev = roCtx.getContext("2d").createLinearGradient(0, 0, 0, 260);
+					try {
+						gRev.addColorStop(0, hexToRgba(c3, 0.22));
+						gRev.addColorStop(1, hexToRgba(c3, 0));
+					} catch (e) {
+						gRev.addColorStop(0, "rgba(21,93,252,0.22)");
+						gRev.addColorStop(1, "rgba(21,93,252,0)");
+					}
+					charts.revOverview = new Chart(roCtx, {
+						type: "line",
+						data: {
+							labels: [
+								"Jan",
+								"Feb",
+								"Mar",
+								"Apr",
+								"May",
+								"Jun",
+								"Jul",
+								"Aug",
+								"Sep",
+								"Oct",
+								"Nov",
+								"Dec",
+							],
+							datasets: [
+								{
+									label: "Revenue",
+									data: roData,
+									borderColor: c3,
+									backgroundColor: gRev,
+									fill: true,
+									borderWidth: 2.5,
+									pointRadius: 3,
+									pointHoverRadius: 6,
+									pointBackgroundColor: c3,
+									tension: 0.4,
+								},
+							],
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							plugins: {
+								legend: { display: false },
+								tooltip: {
+									callbacks: {
+										label: function (ctx) {
+											return " $" + (ctx.parsed.y * 1000).toLocaleString();
+										},
+									},
+								},
+							},
+							scales: {
+								x: {
+									grid: { display: false },
+									ticks: { color: muted, font: { size: 11 } },
+									border: { display: false },
+								},
+								y: {
+									min: 0,
+									max: 180,
+									grid: { color: grid },
+									ticks: {
+										color: muted,
+										font: { size: 11 },
+										callback: function (v) {
+											return "$" + v + "K";
+										},
+									},
+									border: { display: false },
+								},
+							},
+						},
+					});
+				}
+			}
+
+			buildCharts();
+
+			var observer = new MutationObserver(function (mutations) {
+				mutations.forEach(function (m) {
+					if (m.attributeName === "class") setTimeout(buildCharts, 50);
+				});
+			});
+			observer.observe(document.documentElement, { attributes: true });
+		})();
+		</script>
+	</body>
+</html>

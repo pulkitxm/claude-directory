@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			Agenlabs Agency - Websites that stand out and make a difference
+		</title>
+		<meta
+			name="description"
+			content="Agency Template is a website template for Next.js. It's built with Tailwind CSS, TypeScript, and is fully customizable."
+		>
+		<link rel="stylesheet" href="assets/styles.css">
+		<style>
+		/* Page-specific mouse-tracking for service cards */
+		.service-card .service-card-hover-bg {
+			--mouse-x: 50%;
+			--mouse-y: 50%;
+		}
+		.service-card:hover .service-card-hover-bg {
+			-webkit-mask-image: radial-gradient(
+				300px at var(--mouse-x) var(--mouse-y),
+				white,
+				transparent
+			);
+			mask-image: radial-gradient(
+				300px at var(--mouse-x) var(--mouse-y),
+				white,
+				transparent
+			);
+			opacity: 1;
+		}
+		.service-card:hover .service-card-overlay {
+			-webkit-mask-image: radial-gradient(
+				300px at var(--mouse-x) var(--mouse-y),
+				white,
+				transparent
+			);
+			mask-image: radial-gradient(
+				300px at var(--mouse-x) var(--mouse-y),
+				white,
+				transparent
+			);
+			opacity: 1;
+		}
+		.service-card-overlay {
+			position: absolute;
+			inset: 0;
+			border-radius: 1rem;
+			opacity: 0;
+			mix-blend-mode: overlay;
+			transition: opacity 300ms;
+		}
+		.service-card-overlay svg {
+			position: absolute;
+			inset-x: 0;
+			top: -30%;
+			bottom: -30%;
+			width: 100%;
+			height: 160%;
+			transform: skewY(-18deg);
+			fill: rgba(0, 0, 0, 0.5);
+			stroke: rgba(0, 0, 0, 0.7);
+		}
+		.animate-tilt {
+			animation: tilt 10s infinite linear;
+		}
+		@keyframes tilt {
+			0%,
+			50%,
+			100% {
+				transform: rotate(0deg);
+			}
+			25% {
+				transform: rotate(0.5deg);
+			}
+			75% {
+				transform: rotate(-0.5deg);
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- Navigation -->
+		<div class="nav-wrapper">
+			<div class="nav-brand">
+				<svg
+					width="25"
+					height="25"
+					viewBox="0 0 62 61"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					class="nav-logo-svg"
+				>
+					<path
+						d="M6.09521 5.98586C6.09521 5.98586 52.9961 16.1083 55.9639 27.9921C58.9317 39.876 7.14953 55.3998 7.14953 55.3998"
+						stroke="url(#paint0_linear_home)"
+						stroke-width="11"
+						stroke-miterlimit="3.86874"
+						stroke-linecap="round"
+						style="mix-blend-mode: darken;"
+					></path>
+					<defs>
+						<linearGradient
+							id="paint0_linear_home"
+							x1="30.5444"
+							y1="2.16844"
+							x2="31.5724"
+							y2="50.347"
+							gradientUnits="userSpaceOnUse"
+						>
+							<stop stop-color="#374151"></stop>
+							<stop offset="0.5" stop-color="#111827"></stop>
+							<stop offset="1" stop-color="#374151"></stop>
+						</linearGradient>
+					</defs>
+				</svg>
+				<a class="nav-brand-text" href="index.html">Agenlabs</a>
+			</div>
+
+			<div class="nav-links">
+				<a href="work.html"><span>Work</span></a>
+				<a href="index.html#services"><span>Services</span></a>
+				<a href="packages.html"><span>Packages</span></a>
+				<a href="templates.html"><span>Templates</span></a>
+				<a href="blog.html"><span>Blog</span></a>
+			</div>
+
+			<a href="mailto:youremail@yourgmail.com" class="nav-contact">
+				<span class="nav-contact-inner">Contact</span>
+			</a>
+
+			<div class="nav-hamburger" onclick="toggleMobileMenu()">
+				<svg
+					stroke="currentColor"
+					fill="currentColor"
+					stroke-width="0"
+					viewBox="0 0 512 512"
+					height="1em"
+					width="1em"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M432 176H80c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zM432 272H80c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16zM432 368H80c-8.8 0-16-7.2-16-16s7.2-16 16-16h352c8.8 0 16 7.2 16 16s-7.2 16-16 16z"
+					></path>
+				</svg>
+			</div>
+		</div>
+
+		<!-- Mobile Menu -->
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="work.html">Work</a>
+			<a href="index.html#services">Services</a>
+			<a href="packages.html">Packages</a>
+			<a href="templates.html">Templates</a>
+			<a href="blog.html">Blog</a>
+			<a href="mailto:youremail@yourgmail.com">Contact</a>
+		</div>
+
+		<main class="main-content">
+			<!-- Hero Section -->
+			<div class="hero-section">
+				<div class="hero-inner">
+					<svg
+						width="25"
+						height="25"
+						viewBox="0 0 62 61"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						class="hero-logo"
+						id="hero-logo"
+					>
+						<path
+							d="M6.09521 5.98586C6.09521 5.98586 52.9961 16.1083 55.9639 27.9921C58.9317 39.876 7.14953 55.3998 7.14953 55.3998"
+							stroke="url(#paint0_linear_hero)"
+							stroke-width="11"
+							stroke-miterlimit="3.86874"
+							stroke-linecap="round"
+							style="mix-blend-mode: darken;"
+						></path>
+						<defs>
+							<linearGradient
+								id="paint0_linear_hero"
+								x1="30.5444"
+								y1="2.16844"
+								x2="31.5724"
+								y2="50.347"
+								gradientUnits="userSpaceOnUse"
+							>
+								<stop stop-color="#374151"></stop>
+								<stop offset="0.5" stop-color="#111827"></stop>
+								<stop offset="1" stop-color="#374151"></stop>
+							</linearGradient>
+						</defs>
+					</svg>
+
+					<h1 class="hero-h1">
+						Web Apps that <span class="gradient-text">Make Sense.</span>
+					</h1>
+
+					<p class="hero-subtitle">
+						We build website for your business that actually converts.
+						Wonderfully designed, masterfully created websites and layouts,
+						created by the founders of
+						<a href="https://google.com">Google</a>
+						and
+						<a href="https://facebook.com">Facebook.</a>
+						The ideal beginning stage for your next project.
+					</p>
+				</div>
+
+				<!-- Feature Grid -->
+				<div class="feature-grid">
+					<!-- Card 1 -->
+					<div class="feature-card">
+						<div class="feature-icon-wrap">
+							<svg
+								stroke="currentColor"
+								fill="none"
+								stroke-width="0"
+								viewBox="0 0 24 24"
+								height="1em"
+								width="1em"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M14 7C13.4477 7 13 7.44772 13 8V16C13 16.5523 13.4477 17 14 17H18C18.5523 17 19 16.5523 19 16V8C19 7.44772 18.5523 7 18 7H14ZM17 9H15V15H17V9Z"
+									fill="currentColor"
+								></path>
+								<path
+									d="M6 7C5.44772 7 5 7.44772 5 8C5 8.55228 5.44772 9 6 9H10C10.5523 9 11 8.55228 11 8C11 7.44772 10.5523 7 10 7H6Z"
+									fill="currentColor"
+								></path>
+								<path
+									d="M6 11C5.44772 11 5 11.4477 5 12C5 12.5523 5.44772 13 6 13H10C10.5523 13 11 12.5523 11 12C11 11.4477 10.5523 11 10 11H6Z"
+									fill="currentColor"
+								></path>
+								<path
+									d="M5 16C5 15.4477 5.44772 15 6 15H10C10.5523 15 11 15.4477 11 16C11 16.5523 10.5523 17 10 17H6C5.44772 17 5 16.5523 5 16Z"
+									fill="currentColor"
+								></path>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M4 3C2.34315 3 1 4.34315 1 6V18C1 19.6569 2.34315 21 4 21H20C21.6569 21 23 19.6569 23 18V6C23 4.34315 21.6569 3 20 3H4ZM20 5H4C3.44772 5 3 5.44772 3 6V18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18V6C21 5.44772 20.5523 5 20 5Z"
+									fill="currentColor"
+								></path>
+							</svg>
+						</div>
+						<div>
+							<h2 class="feature-title">Modern Web Apps</h2>
+							<p class="feature-desc">
+								Web apps that are discoverable, easy to customize with a modern
+								tech stack to optimize your website for performance.
+							</p>
+						</div>
+					</div>
+
+					<!-- Card 2 -->
+					<div class="feature-card">
+						<div class="feature-icon-wrap">
+							<svg
+								stroke="currentColor"
+								fill="currentColor"
+								stroke-width="0"
+								viewBox="0 0 24 24"
+								height="1em"
+								width="1em"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path fill="none" d="M0 0h24v24H0z"></path>
+								<path
+									d="M20.97 7.27a.996.996 0 000-1.41l-2.83-2.83a.996.996 0 00-1.41 0l-4.49 4.49-3.89-3.89c-.78-.78-2.05-.78-2.83 0l-1.9 1.9c-.78.78-.78 2.05 0 2.83l3.89 3.89L3 16.76V21h4.24l4.52-4.52 3.89 3.89c.95.95 2.23.6 2.83 0l1.9-1.9c.78-.78.78-2.05 0-2.83l-3.89-3.89 4.48-4.48zM5.04 6.94l1.89-1.9L8.2 6.31 7.02 7.5l1.41 1.41 1.19-1.19 1.2 1.2-1.9 1.9-3.88-3.88zm11.23 7.44l-1.19 1.19 1.41 1.41 1.19-1.19 1.27 1.27-1.9 1.9-3.89-3.89 1.9-1.9 1.21 1.21zM6.41 19H5v-1.41l9.61-9.61 1.3 1.3.11.11L6.41 19zm9.61-12.44l1.41-1.41 1.41 1.41-1.41 1.41-1.41-1.41z"
+								></path>
+							</svg>
+						</div>
+						<div>
+							<h2 class="feature-title">Tailored design</h2>
+							<p class="feature-desc">
+								Custom designs tailored to your needs, providing you with a
+								Figma file that is easy to navigate and comfortable to work
+								with.
+							</p>
+						</div>
+					</div>
+
+					<!-- Card 3 -->
+					<div class="feature-card">
+						<div class="feature-icon-wrap">
+							<svg
+								stroke="currentColor"
+								fill="currentColor"
+								stroke-width="0"
+								viewBox="0 0 512 512"
+								height="1em"
+								width="1em"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M349.1 334.7c-11.2-4-29.5-4.2-37.6-7.3-5.6-2.2-14.5-4.6-17.4-8.1-2.9-3.5-2.9-28.5-2.9-28.5s7-6.6 9.9-14c2.9-7.3 4.8-27.5 4.8-27.5s6.6 2.8 9.2-10.4c2.2-11.4 6.4-17.4 5.3-25.8-1.2-8.4-5.8-6.4-5.8-6.4s5.8-8.5 5.8-37.4c0-29.8-22.5-59.1-64.6-59.1-42 0-64.7 29.4-64.7 59.1 0 28.9 5.7 37.4 5.7 37.4s-4.7-2-5.8 6.4c-1.2 8.4 3 14.4 5.3 25.8 2.6 13.3 9.2 10.4 9.2 10.4s1.9 20.1 4.8 27.5c2.9 7.4 9.9 14 9.9 14s0 25-2.9 28.5-11.8 5.9-17.4 8c-8 3.1-26.3 3.5-37.6 7.5-11.2 4-45.8 22.2-45.8 67.2h278.3c.1-45.1-34.5-63.3-45.7-67.3z"
+								></path>
+								<path
+									d="M140 286s23.9-.8 33.4-9.3c-15.5-23.5-7.1-50.9-10.3-76.5-3.2-25.5-17.7-40.8-46.7-40.8h-.4c-28 0-43.1 15.2-46.3 40.8-3.2 25.5 5.7 56-10.2 76.5C69 285.3 93 285 93 285s1 14.4-1 16.8c-2 2.4-7.9 4.7-12 5.5-8.8 1.9-18.1 4.5-25.9 7.2-7.8 2.7-22.6 17.2-22.6 37.2h80.3c2.2-8 17.3-22.3 32-29.8 9-4.6 17.9-4.3 24.7-5.2 0 0 3.8-6-8.7-8.3 0 0-17.2-4.3-19.2-6.7-1.9-2.2-.6-15.7-.6-15.7zM372 286s-23.9-.8-33.4-9.3c15.5-23.5 7.1-50.9 10.3-76.5 3.2-25.5 17.7-40.8 46.7-40.8h.4c28 0 43.1 15.2 46.3 40.8 3.2 25.5-5.7 56 10.2 76.5-9.5 8.6-33.5 8.3-33.5 8.3s-1 14.4 1 16.8c2 2.4 7.9 4.7 12 5.5 8.8 1.9 18.1 4.5 25.9 7.2 7.8 2.7 22.6 17.2 22.6 37.2h-80.3c-2.2-8-17.3-22.3-32-29.8-9-4.6-17.9-4.3-24.7-5.2 0 0-3.8-6 8.7-8.3 0 0 17.2-4.3 19.2-6.7 1.9-2.2.6-15.7.6-15.7z"
+								></path>
+							</svg>
+						</div>
+						<div>
+							<h2 class="feature-title">Built by experts</h2>
+							<p class="feature-desc">
+								We are a team of Senior Software Engineers that have built and
+								developed web apps at scale. You can trust us.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Glow Button -->
+				<div class="glow-btn">
+					<div class="glow-btn-glow animate-tilt"></div>
+					<a class="glow-btn-inner" href="#work">Explore Work</a>
+				</div>
+			</div>
+
+			<!-- Testimonial 1 -->
+			<div class="testimonial-section">
+				<div
+					class="testimonial-bg bg-grid"
+					style="-webkit-mask-image: linear-gradient(transparent, white, white); mask-image: linear-gradient(transparent, white, white);"
+				></div>
+				<div class="testimonial-inner">
+					<div class="testimonial-avatar">
+						<img src="assets/images/testimonials/tyler.png" alt="Tyler Durden">
+					</div>
+					<blockquote class="testimonial-quote">
+						"Agenlabs helped us build our website from scratch to production in
+						a record 1 month time. They took our requirements and delivered a
+						website we are proud of so much that we are thrilled.<br><br>I
+						couldn't be any happier. Highly recommended. "
+					</blockquote>
+					<h4 class="testimonial-name">Tyler Durden</h4>
+					<span class="testimonial-role">Founder at Project Mayhem</span>
+				</div>
+				<div class="testimonial-border-bottom">
+					<div class="testimonial-border-line"></div>
+				</div>
+				<div class="testimonial-glow-line">
+					<div class="testimonial-glow-inner">
+						<div class="testimonial-glow-bar" style="filter: blur(4px);"></div>
+						<div class="testimonial-glow-bar-blur"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Recent Work Section -->
+			<div id="work" class="work-section">
+				<h2 class="work-section-header">
+					Recent <span class="gradient-text">Work</span>
+				</h2>
+				<p class="work-section-sub">
+					A look at some of the amazing websites that we've built recently.
+				</p>
+
+				<div style="position: relative; z-index: 10;">
+					<!-- Project: Algochurn -->
+					<div class="project-row">
+						<div class="project-info">
+							<h1 class="project-title">Algochurn</h1>
+							<div class="project-desc">
+								<p>
+									Practice the most popular coding questions asked in a
+									technical interview round.
+								</p>
+								<p style="margin-top: 1rem;">
+									Used by 1000+ registered users preparing for technical
+									interviews.
+								</p>
+							</div>
+							<div class="project-divider"></div>
+							<div style="margin-top: 1.5rem;">
+								<a
+									href="https://algochurn.com"
+									target="_blank"
+									class="project-link"
+									>Live Preview</a
+								>
+							</div>
+						</div>
+						<div class="project-images">
+							<div class="project-image-wrap">
+								<img src="assets/images/products/algochurn.png" alt="Algochurn">
+							</div>
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/algochurn2.png"
+									alt="Algochurn 2"
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project: Tailwind Master Kit -->
+					<div class="project-row">
+						<div class="project-info">
+							<h1 class="project-title">Tailwind Master Kit</h1>
+							<div class="project-desc">
+								<p>
+									Get beautiful, responsive, professionally developed Tailwind
+									UI components and build your website quicker
+								</p>
+								<p style="margin-top: 1rem;">
+									Worry less about responsive and beautiful UI, let Tailwind
+									Master Kit handle the complexity.
+								</p>
+							</div>
+							<div class="project-divider"></div>
+							<div style="margin-top: 1.5rem;">
+								<a
+									href="https://tailwindmasterkit.com"
+									target="_blank"
+									class="project-link"
+									>Live Preview</a
+								>
+							</div>
+						</div>
+						<div class="project-images">
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/tailwindmasterkit.png"
+									alt="Tailwind Master Kit"
+								>
+							</div>
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/tailwindmasterkit3.png"
+									alt="Tailwind Master Kit 3"
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project: Creme Digital -->
+					<div class="project-row">
+						<div class="project-info">
+							<h1 class="project-title">Creme Digital</h1>
+							<div class="project-desc">
+								<p>
+									Commonsense solutions that achieve marketing objectives and
+									reach business goals
+								</p>
+								<p style="margin-top: 1rem;">
+									Since 2015, Creme Digital's solutions have supported brands
+									from virtually every industry
+								</p>
+							</div>
+							<div class="project-divider"></div>
+							<div style="margin-top: 1.5rem;">
+								<a
+									href="https://cremedigital.com"
+									target="_blank"
+									class="project-link"
+									>Live Preview</a
+								>
+							</div>
+						</div>
+						<div class="project-images">
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/cremedigital3.png"
+									alt="Creme Digital 3"
+								>
+							</div>
+							<div class="project-image-wrap">
+								<img
+									src="assets/images/products/cremedigital.png"
+									alt="Creme Digital"
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- Project: Invoker Labs -->
+					<div class="project-row">
+						<div class="project-info">
+							<h1 class="project-title">Invoker Labs</h1>
+							<div class="project-desc">
+								<p>
+									Delivering magical Web3 experiences with a wide range of
+									products and services.
+								</p>
+								<p style="margin-top: 1rem;">
+									Flagship products include Nearsend, Nearblocks, nKYC and Route
+									ag.
+								</p>
+							</div>
+							<div class="project-divider"></div>
+							<div style="margin-top: 1.5rem;">
+								<a
+									href="https://invoker.lol"
+									target="_blank"
+									class="project-link"
+									>Live Preview</a
+								>
+							</div>
+						</div>
+						<div class="project-images">
+							<div class="project-image-wrap">
+								<img src="assets/images/products/invoker.png" alt="Invoker">
+							</div>
+							<div class="project-image-wrap">
+								<img src="assets/images/products/invoker2.png" alt="Invoker 2">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Testimonial 2 -->
+			<div class="testimonial-section">
+				<div
+					class="testimonial-bg bg-grid"
+					style="-webkit-mask-image: linear-gradient(transparent, white, white); mask-image: linear-gradient(transparent, white, white);"
+				></div>
+				<div class="testimonial-inner">
+					<div class="testimonial-avatar">
+						<img
+							src="assets/images/testimonials/michael.png"
+							alt="Michael Scott"
+						>
+					</div>
+					<blockquote class="testimonial-quote">
+						"Agenlabs are different and one of their kind. They are very
+						professional and have a great team of developers. They are very
+						responsive and always available to help. I would highly recommend
+						them to anyone looking for a website or app development. "
+					</blockquote>
+					<h4 class="testimonial-name">Michael Scott</h4>
+					<span class="testimonial-role">Manager at Dunder Mifflin</span>
+				</div>
+				<div class="testimonial-border-bottom">
+					<div class="testimonial-border-line"></div>
+				</div>
+				<div class="testimonial-glow-line">
+					<div class="testimonial-glow-inner">
+						<div class="testimonial-glow-bar" style="filter: blur(4px);"></div>
+						<div class="testimonial-glow-bar-blur"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Services Section -->
+			<div id="services" class="services-section">
+				<div class="services-header">
+					<h2 class="services-title">We handle just about everything!</h2>
+					<p class="services-sub">
+						We handle everything from design to deployment to get your website
+						shipped and ready to go!
+					</p>
+				</div>
+
+				<ul role="list" class="services-grid">
+					<!-- Service 1 -->
+					<li class="service-card" id="sc1">
+						<div class="service-card-bg">
+							<div class="service-card-pattern">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p1"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="16"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p1)"
+									></rect>
+									<svg x="50%" y="16" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="0"
+											y="56"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+							<div class="service-card-hover-bg"></div>
+							<div class="service-card-overlay">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p1o"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="16"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p1o)"
+									></rect>
+									<svg x="50%" y="16" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="0"
+											y="56"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+						</div>
+						<div class="service-card-content">
+							<span class="service-card-icon">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 1024 1024"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M516 673c0 4.4 3.4 8 7.5 8h185c4.1 0 7.5-3.6 7.5-8v-48c0-4.4-3.4-8-7.5-8h-185c-4.1 0-7.5 3.6-7.5 8v48zm-194.9 6.1l192-161c3.8-3.2 3.8-9.1 0-12.3l-192-160.9A7.95 7.95 0 0 0 308 351v62.7c0 2.4 1 4.6 2.9 6.1L420.7 512l-109.8 92.2a8.1 8.1 0 0 0-2.9 6.1V673c0 6.8 7.9 10.5 13.1 6.1zM880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"
+									></path>
+								</svg>
+							</span>
+							<h3 class="service-card-title">Web App development</h3>
+							<p class="service-card-desc">
+								We'll build you a website that's so good, it'll make all the
+								other websites jealous. Trust me, not kidding.
+							</p>
+						</div>
+					</li>
+
+					<!-- Service 2 -->
+					<li class="service-card" id="sc2">
+						<div class="service-card-bg">
+							<div class="service-card-pattern">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p2"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="-6"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p2)"
+									></rect>
+									<svg x="50%" y="-6" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="-72"
+											y="112"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+							<div class="service-card-hover-bg"></div>
+							<div class="service-card-overlay">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p2o"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="-6"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p2o)"
+									></rect>
+									<svg x="50%" y="-6" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="-72"
+											y="112"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+						</div>
+						<div class="service-card-content">
+							<span class="service-card-icon">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 16 16"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"
+									/>
+									<path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+								</svg>
+							</span>
+							<h3 class="service-card-title">Web Design</h3>
+							<p class="service-card-desc">
+								Your website will be so beautiful, you'll want to frame it and
+								hang it on your wall (but please don't).
+							</p>
+						</div>
+					</li>
+
+					<!-- Service 3 -->
+					<li class="service-card" id="sc3">
+						<div class="service-card-bg">
+							<div class="service-card-pattern">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p3"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="16"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p3)"
+									></rect>
+									<svg x="50%" y="16" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="0"
+											y="56"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+							<div class="service-card-hover-bg"></div>
+							<div class="service-card-overlay">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p3o"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="16"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p3o)"
+									></rect>
+									<svg x="50%" y="16" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="0"
+											y="56"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+						</div>
+						<div class="service-card-content">
+							<span class="service-card-icon">
+								<svg
+									stroke="currentColor"
+									fill="none"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+									></path>
+								</svg>
+							</span>
+							<h3 class="service-card-title">Deployments and Hosting</h3>
+							<p class="service-card-desc">
+								Get your website out there in the world, where it belongs, with
+								our lightning-fast deployment services.
+							</p>
+						</div>
+					</li>
+
+					<!-- Service 4 -->
+					<li class="service-card" id="sc4">
+						<div class="service-card-bg">
+							<div class="service-card-pattern">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p4"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="-6"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p4)"
+									></rect>
+									<svg x="50%" y="-6" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="-72"
+											y="112"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+							<div class="service-card-hover-bg"></div>
+							<div class="service-card-overlay">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p4o"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="-6"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p4o)"
+									></rect>
+									<svg x="50%" y="-6" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="-72"
+											y="112"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+						</div>
+						<div class="service-card-content">
+							<span class="service-card-icon">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 24 24"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path fill="none" d="M0 0h24v24H0z"></path>
+									<path
+										d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+									></path>
+								</svg>
+							</span>
+							<h3 class="service-card-title">Maintenence</h3>
+							<p class="service-card-desc">
+								We keep your website running like a well-oiled machine. From
+								optimizing performance to ensuring security, we've got you
+								covered
+							</p>
+						</div>
+					</li>
+
+					<!-- Service 5 -->
+					<li class="service-card" id="sc5">
+						<div class="service-card-bg">
+							<div class="service-card-pattern">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p5"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="16"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p5)"
+									></rect>
+									<svg x="50%" y="16" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="0"
+											y="56"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+							<div class="service-card-hover-bg"></div>
+							<div class="service-card-overlay">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p5o"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="16"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p5o)"
+									></rect>
+									<svg x="50%" y="16" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="0"
+											y="56"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+						</div>
+						<div class="service-card-content">
+							<span class="service-card-icon">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 24 24"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path fill="none" d="M0 0h24v24H0z"></path>
+									<path
+										d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+									></path>
+								</svg>
+							</span>
+							<h3 class="service-card-title">Full-Stack Development</h3>
+							<p class="service-card-desc">
+								Take your website to the next level with our full-stack
+								development services. We've got all the skills to make your
+								vision a reality.
+							</p>
+						</div>
+					</li>
+
+					<!-- Service 6 -->
+					<li class="service-card" id="sc6">
+						<div class="service-card-bg">
+							<div class="service-card-pattern">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p6"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="-6"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p6)"
+									></rect>
+									<svg x="50%" y="-6" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="-72"
+											y="112"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+							<div class="service-card-hover-bg"></div>
+							<div class="service-card-overlay">
+								<svg aria-hidden="true">
+									<defs>
+										<pattern
+											id="p6o"
+											width="72"
+											height="56"
+											patternUnits="userSpaceOnUse"
+											x="50%"
+											y="-6"
+										>
+											<path d="M.5 56V.5H72" fill="none"></path>
+										</pattern>
+									</defs>
+									<rect
+										width="100%"
+										height="100%"
+										stroke-width="0"
+										fill="url(#p6o)"
+									></rect>
+									<svg x="50%" y="-6" style="overflow: visible;">
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="-72"
+											y="112"
+										></rect>
+										<rect
+											stroke-width="0"
+											width="73"
+											height="57"
+											x="72"
+											y="168"
+										></rect>
+									</svg>
+								</svg>
+							</div>
+						</div>
+						<div class="service-card-content">
+							<span class="service-card-icon">
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 24 24"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path fill="none" d="M0 0h24v24H0z"></path>
+									<path
+										d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+									></path>
+								</svg>
+							</span>
+							<h3 class="service-card-title">And everything else</h3>
+							<p class="service-card-desc">
+								Ecommerce, Landing pages, Back-end heavy, Dashboards. You name
+								it, we've done it AND we'll do it for you.
+							</p>
+						</div>
+					</li>
+				</ul>
+
+				<!-- Dark CTA Block -->
+				<div class="cta-block">
+					<div class="cta-block-bg"></div>
+					<div class="cta-block-content">
+						<h2 class="cta-title">Let's build your website today!</h2>
+						<p class="cta-desc">
+							Contact us and we will get back within 24 hours. We mean it. You
+							saw the testimonials, right?
+						</p>
+						<div style="display: flex; justify-content: center;">
+							<a href="mailto:youremail@yourgmail.com" class="cta-button"
+								>Contact Us</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<div class="footer">
+			<div class="footer-inner">
+				<div class="footer-brand">
+					<svg
+						width="25"
+						height="25"
+						viewBox="0 0 62 61"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						class="nav-logo-svg"
+					>
+						<path
+							d="M6.09521 5.98586C6.09521 5.98586 52.9961 16.1083 55.9639 27.9921C58.9317 39.876 7.14953 55.3998 7.14953 55.3998"
+							stroke="url(#paint0_linear_footer)"
+							stroke-width="11"
+							stroke-miterlimit="3.86874"
+							stroke-linecap="round"
+							style="mix-blend-mode: darken;"
+						></path>
+						<defs>
+							<linearGradient
+								id="paint0_linear_footer"
+								x1="30.5444"
+								y1="2.16844"
+								x2="31.5724"
+								y2="50.347"
+								gradientUnits="userSpaceOnUse"
+							>
+								<stop stop-color="#374151"></stop>
+								<stop offset="0.5" stop-color="#111827"></stop>
+								<stop offset="1" stop-color="#374151"></stop>
+							</linearGradient>
+						</defs>
+					</svg>
+					<a class="footer-brand-text" href="index.html">Agenlabs</a>
+				</div>
+				<p class="footer-copyright">
+					© 2026 Agency Template. All rights reserved.
+				</p>
+			</div>
+		</div>
+
+		<script>
+		function toggleMobileMenu() {
+			const menu = document.getElementById("mobileMenu");
+			menu.classList.toggle("open");
+		}
+
+		// Mouse tracking for service cards
+		document.querySelectorAll(".service-card").forEach((card) => {
+			card.addEventListener("mousemove", (e) => {
+				const rect = card.getBoundingClientRect();
+				const x = e.clientX - rect.left;
+				const y = e.clientY - rect.top;
+				const hoverBg = card.querySelector(".service-card-hover-bg");
+				const overlay = card.querySelector(".service-card-overlay");
+				if (hoverBg) {
+					hoverBg.style.setProperty("--mouse-x", x + "px");
+					hoverBg.style.setProperty("--mouse-y", y + "px");
+					hoverBg.style.webkitMaskImage = `radial-gradient(300px at ${x}px ${y}px, white, transparent)`;
+					hoverBg.style.maskImage = `radial-gradient(300px at ${x}px ${y}px, white, transparent)`;
+				}
+				if (overlay) {
+					overlay.style.webkitMaskImage = `radial-gradient(300px at ${x}px ${y}px, white, transparent)`;
+					overlay.style.maskImage = `radial-gradient(300px at ${x}px ${y}px, white, transparent)`;
+				}
+			});
+		});
+		</script>
+	</body>
+</html>

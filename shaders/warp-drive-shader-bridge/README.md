@@ -1,5 +1,7 @@
 # Warp Drive Shader Bridge — Hyperspace Tunnel WebGL Shader with Starship Console (React + Three.js + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen pointer-steered hyperspace tunnel WebGL shader integrated as a shadcn/Tailwind/TypeScript drop-in, presented as an immersive starship-bridge navigation console. The `<WarpDriveShader />` component renders a chromatic-aberration tunnel effect via Three.js GLSL — red/green/blue filaments converging on a vanishing point, steered by `iMouse` — fixed behind a cold-cockpit UI. The signature NavReticle gauge locks to the tunnel's vanishing point with a heading needle, warp-factor dial, and amber FPS indicator, all driven by the shader's per-frame `onFrame` callback. A helm console surfaces live `iTime`/`iMouse`/`iResolution` uniforms and a warp throttle. Generated with Claude Fable 5.
 
 ## Design

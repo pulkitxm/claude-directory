@@ -1,5 +1,7 @@
 # ARCWAVE — Electric Waves GLSL Shader Instrument (React + TypeScript + Three.js + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An integration of the `ElectricWavesShader` component into a polished signal instrument called ARCWAVE. The GLSL fragment shader stacks sine fields across a full-screen orthographic quad, folding additive interference into the red, green, and blue channels — pure GPU math, no textures or video. Around it sits dark "instrument glass" chrome: a brand bar, viewfinder corner brackets, CRT scanlines, a sweeping scope line, a five-slider control deck, and a live telemetry HUD (FPS, uptime, drawing-buffer resolution, R/G/B channels) fed straight from the render loop. Generated with Claude Fable 5.
 
 ## Stack

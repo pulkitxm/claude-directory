@@ -1,5 +1,7 @@
 # Paper Warp Shader Lab — Live Warp Hero with Instrument Deck (@paper-design/shaders-react + React + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen hero section built on `@paper-design/shaders-react`'s `<Warp>` component — a teal/aqua animated checks-warp field — integrated in a shadcn/Tailwind/TypeScript project and presented as a brushed-graphite instrument deck. The verbatim `WarpShaderHero` component sits behind glass as a live specimen in a scope housing; a left-hand module rack exposes every Warp uniform as a live fader, a shape selector, four mood presets (Lagoon — the prompt's verbatim configuration, plus Ember, Ultraviolet, Graphite), an editable four-stop colour ramp, transport controls, and a telemetry strip reading real FPS and frame count. Generated with Claude Fable 5.
 
 ## What the deck does

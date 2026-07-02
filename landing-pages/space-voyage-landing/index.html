@@ -1,121 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>astra — Venture Past Our Sky</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23000'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='20' fill='%23fff'%3Ea%3C/text%3E%3C/svg%3E" />
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>astra — Venture Past Our Sky</title>
+		<link
+			rel="icon"
+			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23000'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='20' fill='%23fff'%3Ea%3C/text%3E%3C/svg%3E"
+		>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		>
 
-  <!-- Tailwind (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            heading: ['"Instrument Serif"', 'serif'],
-            body: ['Barlow', 'sans-serif'],
-          },
-          borderRadius: {
-            DEFAULT: '9999px',
-          },
-        },
-      },
-    };
-  </script>
+		<!-- Tailwind (CDN) -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						heading: ['"Instrument Serif"', "serif"],
+						body: ["Barlow", "sans-serif"],
+					},
+					borderRadius: {
+						DEFAULT: "9999px",
+					},
+				},
+			},
+		};
+		</script>
 
-  <!-- React 18.3.1 + Babel standalone + Framer Motion (pinned, CDN-only) -->
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
-  <script>window.Motion = window.FramerMotion || window.Motion;</script>
+		<!-- React 18.3.1 + Babel standalone + Framer Motion (pinned, CDN-only) -->
+		<script
+			src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+			integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+			integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+			integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"
+		></script>
+		<script>
+		window.Motion = window.FramerMotion || window.Motion;
+		</script>
 
-  <!-- Framer Motion dev warnings about list keys are benign — filter them out. -->
-  <script>
-    (() => {
-      var origError = console.error;
-      console.error = function () {
-        var first = arguments[0];
-        if (typeof first === 'string' && (first.indexOf('unique "key" prop') !== -1 || first.indexOf('Each child in a list') !== -1)) return;
-        origError.apply(console, arguments);
-      };
-    })();
-  </script>
+		<!-- Framer Motion dev warnings about list keys are benign — filter them out. -->
+		<script>
+		(() => {
+			var origError = console.error;
+			console.error = function () {
+				var first = arguments[0];
+				if (
+					typeof first === "string" &&
+					(first.indexOf('unique "key" prop') !== -1 ||
+						first.indexOf("Each child in a list") !== -1)
+				)
+					return;
+				origError.apply(console, arguments);
+			};
+		})();
+		</script>
 
-  <style>
-    html, body { background: #000; }
+		<style>
+		html,
+		body {
+			background: #000;
+		}
 
-    .liquid-glass {
-      background: rgba(255,255,255,0.01);
-      background-blend-mode: luminosity;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border: none;
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
-      position: relative;
-      overflow: hidden;
-    }
-    .liquid-glass::before {
-      content: "";
-      position: absolute; inset: 0;
-      border-radius: inherit;
-      padding: 1.4px;
-      background: linear-gradient(180deg,
-        rgba(255,255,255,0.45) 0%,
-        rgba(255,255,255,0.15) 20%,
-        rgba(255,255,255,0) 40%,
-        rgba(255,255,255,0) 60%,
-        rgba(255,255,255,0.15) 80%,
-        rgba(255,255,255,0.45) 100%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-    .liquid-glass-strong {
-      background: rgba(255,255,255,0.01);
-      background-blend-mode: luminosity;
-      backdrop-filter: blur(50px);
-      -webkit-backdrop-filter: blur(50px);
-      border: none;
-      box-shadow: 4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15);
-      position: relative;
-      overflow: hidden;
-    }
-    .liquid-glass-strong::before {
-      content: "";
-      position: absolute; inset: 0;
-      border-radius: inherit;
-      padding: 1.4px;
-      background: linear-gradient(180deg,
-        rgba(255,255,255,0.5) 0%,
-        rgba(255,255,255,0.2) 20%,
-        rgba(255,255,255,0) 40%,
-        rgba(255,255,255,0) 60%,
-        rgba(255,255,255,0.2) 80%,
-        rgba(255,255,255,0.5) 100%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-  </style>
-</head>
-<body class="bg-black antialiased">
-  <div id="root"></div>
+		.liquid-glass {
+			background: rgba(255, 255, 255, 0.01);
+			background-blend-mode: luminosity;
+			backdrop-filter: blur(4px);
+			-webkit-backdrop-filter: blur(4px);
+			border: none;
+			box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+			position: relative;
+			overflow: hidden;
+		}
+		.liquid-glass::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			padding: 1.4px;
+			background: linear-gradient(
+				180deg,
+				rgba(255, 255, 255, 0.45) 0%,
+				rgba(255, 255, 255, 0.15) 20%,
+				rgba(255, 255, 255, 0) 40%,
+				rgba(255, 255, 255, 0) 60%,
+				rgba(255, 255, 255, 0.15) 80%,
+				rgba(255, 255, 255, 0.45) 100%
+			);
+			-webkit-mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+			pointer-events: none;
+		}
+		.liquid-glass-strong {
+			background: rgba(255, 255, 255, 0.01);
+			background-blend-mode: luminosity;
+			backdrop-filter: blur(50px);
+			-webkit-backdrop-filter: blur(50px);
+			border: none;
+			box-shadow:
+				4px 4px 4px rgba(0, 0, 0, 0.05),
+				inset 0 1px 1px rgba(255, 255, 255, 0.15);
+			position: relative;
+			overflow: hidden;
+		}
+		.liquid-glass-strong::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			padding: 1.4px;
+			background: linear-gradient(
+				180deg,
+				rgba(255, 255, 255, 0.5) 0%,
+				rgba(255, 255, 255, 0.2) 20%,
+				rgba(255, 255, 255, 0) 40%,
+				rgba(255, 255, 255, 0) 60%,
+				rgba(255, 255, 255, 0.2) 80%,
+				rgba(255, 255, 255, 0.5) 100%
+			);
+			-webkit-mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+			pointer-events: none;
+		}
+		</style>
+	</head>
+	<body class="bg-black antialiased">
+		<div id="root"></div>
 
-  <script type="text/babel" src="js/icons.js"></script>
-  <script type="text/babel" src="js/FadingVideo.js"></script>
-  <script type="text/babel" src="js/BlurText.js"></script>
-  <script type="text/babel" src="js/Navbar.js"></script>
-  <script type="text/babel" src="js/Hero.js"></script>
-  <script type="text/babel" src="js/Capabilities.js"></script>
-  <script type="text/babel" src="js/App.js"></script>
-</body>
+		<script type="text/babel" src="js/icons.js"></script>
+		<script type="text/babel" src="js/FadingVideo.js"></script>
+		<script type="text/babel" src="js/BlurText.js"></script>
+		<script type="text/babel" src="js/Navbar.js"></script>
+		<script type="text/babel" src="js/Hero.js"></script>
+		<script type="text/babel" src="js/Capabilities.js"></script>
+		<script type="text/babel" src="js/App.js"></script>
+	</body>
 </html>

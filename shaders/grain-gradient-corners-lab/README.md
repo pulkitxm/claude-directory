@@ -1,5 +1,7 @@
 # Grainfield — GrainGradient Corners Shader Lab (@paper-design/shaders-react + React + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn/ui integration of the `@paper-design/shaders-react` **GrainGradient** shader painting the `corners` shape, built into a live instrument console called Grainfield. The verbatim `GradientBackground` component is preserved as a full-bleed WebGL background with all shader uniforms — shape, palette, softness, intensity, grain, scale, rotation, and speed — exposed as drivable faders, with a telemetry strip reading real FPS, clock, and frame count from the render loop. Generated with Claude Fable 5.
 
 ---

@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>System Overview — Enlightr Design System</title>
+		<meta
+			name="description"
+			content="A reference for the visual building blocks of Enlightr — colors, typography, and interactive components."
+		>
+
+		<!-- Inter -->
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Love+Ya+Like+A+Sister&display=swap"
+			rel="stylesheet"
+		>
+		<!-- Clash Grotesk -->
+		<link
+			href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@1&display=swap"
+			rel="stylesheet"
+		>
+
+		<link rel="stylesheet" href="styles.css">
+
+		<style>
+		:root {
+			--base-50: #f9f9f9;
+			--base-100: #f3f4f4;
+			--base-200: #e8e8e8;
+			--base-400: #9ca3af;
+			--base-500: #6b7280;
+			--base-600: #4b5563;
+			--base-700: #374151;
+			--base-800: #1f2937;
+			--base-900: #111827;
+			--base-950: #030712;
+			--accent-100: #f0fdf4;
+			--accent-200: #bbf7d0;
+			--accent-400: #4ade80;
+			--accent-500: #22c55e;
+			--accent-600: #16a34a;
+			--accent-800: #166534;
+			--accent-900: #14532d;
+			--accent-950: #052e16;
+			--violet-200: #ddd6fe;
+			--violet-950: #2e1065;
+			--blue-100: #dbeafe;
+			--blue-200: #bfdbfe;
+			--blue-700: #1d4ed8;
+			--blue-900: #1e3a8a;
+			--yellow-200: #fef08a;
+			--yellow-950: #422006;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			font-family: "InterVariable", "Inter", sans-serif;
+		}
+
+		body {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			background: #fff;
+			min-height: 100svh;
+			color: var(--base-900);
+			font-size: 16px;
+			line-height: 24px;
+		}
+
+		::selection {
+			background: var(--base-100);
+			color: var(--accent-500);
+		}
+
+		/* =====================
+       TYPOGRAPHY HELPERS
+    ===================== */
+		.font-display {
+			font-family: "Clash Grotesk", sans-serif;
+		}
+		.font-display-italic {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+		}
+		.font-mono {
+			font-family: "Space Mono", monospace;
+		}
+		.font-love {
+			font-family: "Love Ya Like A Sister", cursive;
+		}
+
+		.uppercase {
+			text-transform: uppercase;
+		}
+		.tracking-widest {
+			letter-spacing: 0.1em;
+		}
+
+		/* =====================
+       NAV
+    ===================== */
+		.topbar {
+			position: fixed;
+			inset-x: 0;
+			top: 0;
+			width: 100%;
+			z-index: 51;
+			transition:
+				background 0.3s ease,
+				backdrop-filter 0.3s ease;
+		}
+
+		.topbar.scrolled {
+			background: rgba(255, 255, 255, 0.9);
+			backdrop-filter: blur(8px);
+		}
+
+		.topbar-inner {
+			max-width: 72rem;
+			margin: 0 auto;
+			padding: 1rem 2rem;
+		}
+
+		.topbar-row {
+			display: flex;
+			flex-direction: column;
+			gap: 0;
+		}
+
+		@media (min-width: 768px) {
+			.topbar-row {
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+				gap: 3rem;
+			}
+		}
+
+		.topbar-logo-row {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.logo-link {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			text-decoration: none;
+			font-family: "Clash Grotesk", sans-serif;
+			text-transform: uppercase;
+			font-weight: 500;
+			color: var(--base-900);
+			font-size: 0.875rem;
+		}
+
+		.logo-link svg {
+			height: 1rem;
+			color: var(--base-900);
+		}
+
+		/* hamburger */
+		.hamburger-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2rem;
+			height: 2rem;
+			border-radius: 9999px;
+			background: var(--base-100);
+			color: var(--base-600);
+			border: none;
+			cursor: pointer;
+			transition: background 0.5s ease-in-out;
+		}
+		.hamburger-btn:hover {
+			background: var(--base-200);
+		}
+
+		@media (min-width: 768px) {
+			.hamburger-btn {
+				display: none;
+			}
+		}
+
+		.hamburger-btn svg {
+			width: 1rem;
+			height: 1rem;
+		}
+
+		/* mobile nav overlay */
+		.nav-menu {
+			position: fixed;
+			inset: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			height: 100%;
+			padding: 3rem 0;
+			background: #fff;
+			opacity: 0;
+			pointer-events: none;
+			transform: translateY(-1rem);
+			transition:
+				opacity 0.3s ease,
+				transform 0.3s ease;
+			z-index: 50;
+		}
+
+		@media (min-width: 768px) {
+			.nav-menu {
+				position: relative;
+				inset: auto;
+				opacity: 1;
+				pointer-events: auto;
+				transform: none;
+				background: transparent;
+				padding: 0;
+				height: auto;
+				flex-direction: row;
+				align-items: center;
+				width: 100%;
+				z-index: auto;
+			}
+		}
+
+		.nav-menu.open {
+			opacity: 1;
+			pointer-events: auto;
+			transform: translateY(0);
+		}
+
+		.menu-close-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2rem;
+			height: 2rem;
+			border-radius: 9999px;
+			background: var(--base-100);
+			color: var(--base-600);
+			border: none;
+			cursor: pointer;
+			position: absolute;
+			top: 1rem;
+			right: 2rem;
+			transition: background 0.5s ease-in-out;
+		}
+		.menu-close-btn svg {
+			width: 1rem;
+			height: 1rem;
+		}
+
+		@media (min-width: 768px) {
+			.menu-close-btn {
+				display: none;
+			}
+		}
+
+		.nav-links {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			width: 100%;
+			height: 100%;
+			padding: 0 2rem;
+			gap: 1rem;
+		}
+
+		@media (min-width: 768px) {
+			.nav-links {
+				flex-direction: row;
+				align-items: center;
+				padding: 0;
+				gap: 1rem;
+				height: auto;
+				margin-left: auto;
+				margin-top: 0;
+			}
+		}
+
+		/* mobile logo inside menu */
+		.nav-menu-logo {
+			display: block;
+		}
+		@media (min-width: 768px) {
+			.nav-menu-logo {
+				display: none;
+			}
+		}
+
+		.nav-link {
+			font-size: 0.75rem;
+			color: var(--base-700);
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+		.nav-link:hover {
+			color: var(--accent-500);
+		}
+		.nav-link.active {
+			color: var(--accent-500);
+		}
+
+		.nav-cta {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			height: 2rem;
+			padding: 0.75rem 1.5rem;
+			font-size: 0.75rem;
+			font-weight: 500;
+			border-radius: 9999px;
+			background: var(--base-900);
+			color: #fff;
+			text-decoration: none;
+			border: none;
+			cursor: pointer;
+			outline: 2px solid var(--base-900);
+			transition: background 0.5s ease-in-out;
+			font-family: inherit;
+		}
+		.nav-cta:hover {
+			background: var(--base-800);
+		}
+
+		/* =====================
+       FLOATING SEARCH
+    ===================== */
+		.floating-search {
+			position: fixed;
+			z-index: 50;
+			bottom: 1.25rem;
+			right: 1.25rem;
+		}
+
+		.search-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 3.25rem;
+			height: 3.25rem;
+			border-radius: 9999px;
+			background: var(--base-900);
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			transition: background 0.5s ease-in-out;
+			outline: 2px solid var(--base-900);
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		}
+		.search-btn:hover {
+			background: var(--base-800);
+		}
+
+		.search-modal {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 50;
+			overflow-y: auto;
+		}
+		.search-modal.open {
+			display: block;
+		}
+
+		.modal-backdrop {
+			position: fixed;
+			inset: 0;
+			background: rgba(3, 7, 18, 0.5);
+			backdrop-filter: blur(4px);
+		}
+
+		.modal-inner {
+			min-height: 100vh;
+			padding: 0 1rem;
+			text-align: center;
+		}
+
+		.modal-box {
+			position: relative;
+			display: inline-block;
+			width: 100%;
+			max-width: 28rem;
+			margin-top: 3rem;
+			margin-bottom: 2rem;
+			text-align: left;
+			background: var(--base-100);
+		}
+
+		@media (min-width: 1024px) {
+			.modal-box {
+				margin-top: 12rem;
+			}
+		}
+
+		.modal-content {
+			padding: 1rem 1rem 0.5rem;
+		}
+
+		.search-input {
+			display: block;
+			width: 100%;
+			padding: 0.5rem 1rem;
+			font-size: 0.75rem;
+			line-height: 1.25;
+			background: #fff;
+			border: 1px solid transparent;
+			border-radius: 0.375rem;
+			color: var(--base-500);
+			box-shadow: 0 0 0 1px var(--base-200);
+			outline: none;
+			transition: all 0.3s ease;
+			height: 2.25rem;
+			font-family: inherit;
+		}
+		.search-input:focus {
+			box-shadow:
+				0 0 0 2px var(--accent-100),
+				0 0 0 1px var(--accent-500);
+		}
+		.search-input::placeholder {
+			color: var(--base-400);
+		}
+
+		#searchResults {
+			max-height: 30rem;
+			overflow-y: auto;
+			margin-top: 0.5rem;
+		}
+
+		.search-result-item {
+			display: block;
+			padding: 1rem;
+			margin: 0.25rem;
+			text-decoration: none;
+			transition: background 0.3s;
+		}
+		.search-result-item:hover {
+			background: var(--base-100);
+		}
+		.search-result-item h3 {
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: var(--base-800);
+		}
+		.search-result-item p {
+			font-size: 0.875rem;
+			color: var(--base-500);
+			margin-top: 0.5rem;
+		}
+		.no-results {
+			padding: 0.75rem 1rem;
+			font-size: 0.875rem;
+			color: var(--base-500);
+		}
+
+		/* =====================
+       PAGE LAYOUT
+    ===================== */
+		main {
+			flex: 1;
+		}
+
+		.container {
+			max-width: 72rem;
+			margin: 0 auto;
+			padding: 0 2rem;
+		}
+
+		/* =====================
+       HERO
+    ===================== */
+		.hero {
+			padding-top: 12rem;
+			padding-bottom: 3rem;
+		}
+
+		.section-label {
+			font-size: 0.625rem;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--base-500);
+			font-weight: 500;
+		}
+
+		.hero h1 {
+			font-family: "Clash Grotesk", sans-serif;
+			font-weight: 500;
+			text-transform: uppercase;
+			font-size: clamp(1.875rem, 4vw, 3rem);
+			color: var(--base-900);
+			margin-top: 0.75rem;
+			line-height: 1.1;
+			letter-spacing: -0.01em;
+		}
+
+		.hero p {
+			font-size: 0.875rem;
+			color: var(--base-500);
+			margin-top: 1rem;
+			max-width: 36rem;
+			line-height: 1.6;
+		}
+
+		/* =====================
+       SECTIONS
+    ===================== */
+		.section {
+			margin-top: 2rem;
+		}
+
+		.section-card {
+			background: var(--base-50);
+			padding: 2rem;
+		}
+
+		.section h2 {
+			font-family: "Clash Grotesk", sans-serif;
+			font-weight: 500;
+			text-transform: uppercase;
+			font-size: 1.125rem;
+			color: var(--base-900);
+			letter-spacing: 0.02em;
+			margin-bottom: 1.5rem;
+		}
+
+		.section-divider {
+			height: 1px;
+			background: var(--base-200);
+			margin: 2rem 0;
+		}
+
+		/* =====================
+       COLOR SWATCHES
+    ===================== */
+		.swatches-group {
+			margin-bottom: 1.5rem;
+		}
+		.swatches-group-label {
+			font-size: 0.625rem;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--base-500);
+			margin-bottom: 0.75rem;
+			font-weight: 500;
+		}
+
+		.swatches {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+		}
+
+		.swatch {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.375rem;
+		}
+
+		.swatch-box {
+			width: 2rem;
+			height: 2rem;
+			border-radius: 0.25rem;
+			border: 1px solid rgba(0, 0, 0, 0.08);
+		}
+
+		.swatch-label {
+			font-size: 0.625rem;
+			color: var(--base-500);
+			text-align: center;
+			font-family: "Space Mono", monospace;
+			white-space: nowrap;
+		}
+
+		/* =====================
+       TYPOGRAPHY SECTION
+    ===================== */
+		.type-row {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+			padding: 1.25rem 0;
+			border-bottom: 1px solid var(--base-200);
+		}
+		.type-row:last-child {
+			border-bottom: none;
+		}
+
+		.type-meta {
+			font-size: 0.625rem;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: var(--base-400);
+			font-family: "Space Mono", monospace;
+			margin-bottom: 0.5rem;
+		}
+
+		.type-sample-inter {
+			font-family: "InterVariable", "Inter", sans-serif;
+			font-size: 1rem;
+			color: var(--base-700);
+			line-height: 1.5;
+		}
+
+		.type-sample-serif {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			font-size: 1.5rem;
+			color: var(--base-700);
+			line-height: 1.3;
+		}
+
+		.type-sample-clash {
+			font-family: "Clash Grotesk", sans-serif;
+			font-size: 1.5rem;
+			text-transform: uppercase;
+			color: var(--base-900);
+			font-weight: 500;
+			letter-spacing: 0.02em;
+			line-height: 1.2;
+		}
+
+		.type-sample-mono {
+			font-family: "Space Mono", monospace;
+			font-size: 0.875rem;
+			color: var(--base-500);
+			line-height: 1.5;
+		}
+
+		.type-sample-love {
+			font-family: "Love Ya Like A Sister", cursive;
+			font-size: 1.5rem;
+			color: var(--accent-500);
+			line-height: 1.3;
+		}
+
+		/* Type scale showcase */
+		.type-scale {
+			margin-top: 1.5rem;
+		}
+		.type-scale-label {
+			font-size: 0.625rem;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--base-400);
+			margin-bottom: 0.25rem;
+			font-family: "Space Mono", monospace;
+		}
+		.type-scale-row {
+			display: flex;
+			align-items: baseline;
+			gap: 1rem;
+			padding: 0.75rem 0;
+			border-bottom: 1px solid var(--base-100);
+		}
+		.type-scale-tag {
+			font-size: 0.625rem;
+			color: var(--base-400);
+			font-family: "Space Mono", monospace;
+			min-width: 2.5rem;
+			flex-shrink: 0;
+		}
+
+		/* =====================
+       BUTTONS SECTION
+    ===================== */
+		.btn-showcase {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			align-items: center;
+		}
+
+		.btn-showcase-group {
+			margin-bottom: 1.5rem;
+		}
+		.btn-showcase-label {
+			font-size: 0.625rem;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: var(--base-400);
+			font-family: "Space Mono", monospace;
+			margin-bottom: 0.75rem;
+		}
+
+		/* base button reset */
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			font-weight: 500;
+			border-radius: 9999px;
+			border: none;
+			cursor: pointer;
+			transition: all 0.5s ease-in-out;
+			text-decoration: none;
+			font-family: "InterVariable", "Inter", sans-serif;
+			white-space: nowrap;
+		}
+
+		/* variants */
+		.btn-primary {
+			background: var(--base-900);
+			color: #fff;
+			outline: 2px solid var(--base-900);
+		}
+		.btn-primary:hover {
+			background: var(--base-800);
+		}
+
+		.btn-accent {
+			background: var(--accent-200);
+			color: var(--accent-950);
+			outline: 2px solid var(--accent-200);
+		}
+		.btn-accent:hover {
+			background: var(--accent-400);
+		}
+
+		.btn-ghost {
+			background: var(--base-100);
+			color: var(--base-600);
+			outline: 2px solid var(--base-50);
+		}
+		.btn-ghost:hover {
+			background: var(--base-200);
+		}
+
+		.btn-outline {
+			background: transparent;
+			color: var(--base-700);
+			outline: 2px solid var(--base-200);
+		}
+		.btn-outline:hover {
+			background: var(--base-50);
+		}
+
+		/* sizes */
+		.btn-sm {
+			height: 2rem;
+			padding: 0 1.5rem;
+			font-size: 0.75rem;
+		}
+		.btn-md {
+			height: 2.25rem;
+			padding: 0 1.5rem;
+			font-size: 0.875rem;
+		}
+		.btn-lg {
+			height: 2.5rem;
+			padding: 0 2rem;
+			font-size: 0.875rem;
+		}
+
+		.btn-icon {
+			width: 2.5rem;
+			height: 2.5rem;
+			padding: 0;
+			font-size: 1.125rem;
+		}
+		.btn-icon svg {
+			width: 1.125rem;
+			height: 1.125rem;
+		}
+
+		/* =====================
+       FOOTER
+    ===================== */
+		footer {
+			border-top: 1px solid var(--base-200);
+			margin-top: 4rem;
+			padding: 3rem 0;
+		}
+
+		.footer-inner {
+			max-width: 72rem;
+			margin: 0 auto;
+			padding: 0 2rem;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		@media (min-width: 768px) {
+			.footer-inner {
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+		}
+
+		.footer-brand p {
+			font-size: 0.75rem;
+			color: var(--base-500);
+			margin-top: 0.75rem;
+			line-height: 1.6;
+		}
+
+		.footer-col h4 {
+			font-family: "Clash Grotesk", sans-serif;
+			font-weight: 500;
+			text-transform: uppercase;
+			font-size: 0.75rem;
+			color: var(--base-900);
+			letter-spacing: 0.05em;
+			margin-bottom: 1rem;
+		}
+
+		.footer-links {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.footer-links a {
+			font-size: 0.75rem;
+			color: var(--base-500);
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+		.footer-links a:hover {
+			color: var(--accent-500);
+		}
+
+		.footer-copy {
+			text-align: center;
+			font-size: 0.75rem;
+			color: var(--base-400);
+			margin-top: 2rem;
+			padding-top: 2rem;
+			border-top: 1px solid var(--base-200);
+		}
+		</style>
+	</head>
+
+	<body>
+		<!-- ===== NAV ===== -->
+		<header class="topbar" id="topbar">
+			<div class="topbar-inner">
+				<div class="topbar-row">
+					<div class="topbar-logo-row">
+						<a href="index.html" class="logo-link">
+							<svg
+								class="h-4 text-base-900"
+								viewBox="0 0 125 126"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M51.2591 125.74H29.6763C13.2894 125.74 0 112.451 0 96.064V74.4813H10.8913V96.064C10.8913 106.356 19.2847 114.749 29.5764 114.749H51.1592V125.74H51.2591Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M95.3237 125.74H73.741V114.849H95.3237C105.615 114.849 114.009 106.456 114.009 96.164V74.4813H124.9V96.064C125 112.351 111.611 125.74 95.3237 125.74Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M125 51.9993H114.109V30.4166C114.109 20.1248 105.715 11.7315 95.4236 11.7315H73.741V0.840195H95.3237C111.711 0.840195 125 14.1296 125 30.5165V51.9993Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M10.9913 51.9993H0.100098V30.4166C0.100098 14.0297 13.3894 0.740295 29.7763 0.740295H51.359V11.6315H29.7763C19.4845 11.6315 11.0913 20.0248 11.0913 30.3166V51.9993H10.9913Z"
+									fill="currentColor"
+								/>
+							</svg>
+							Enlightr®
+						</a>
+
+						<!-- Hamburger (mobile) -->
+						<button
+							class="hamburger-btn"
+							id="menu-toggle"
+							aria-label="Open menu"
+							type="button"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<line x1="3" y1="6" x2="21" y2="6"></line>
+								<line x1="3" y1="12" x2="21" y2="12"></line>
+								<line x1="3" y1="18" x2="21" y2="18"></line>
+							</svg>
+						</button>
+					</div>
+
+					<!-- Nav menu -->
+					<nav
+						id="navigation-menu"
+						class="nav-menu"
+						aria-label="Main navigation"
+					>
+						<!-- Close button (mobile) -->
+						<button
+							class="menu-close-btn"
+							id="menu-close"
+							aria-label="Close menu"
+							type="button"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<line x1="18" y1="6" x2="6" y2="18"></line>
+								<line x1="6" y1="6" x2="18" y2="18"></line>
+							</svg>
+						</button>
+
+						<div class="nav-links">
+							<!-- Mobile logo -->
+							<a
+								href="index.html"
+								class="logo-link nav-menu-logo"
+								style="margin-bottom:1rem"
+							>
+								<svg
+									style="height:2rem;color:var(--base-900)"
+									viewBox="0 0 125 126"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M51.2591 125.74H29.6763C13.2894 125.74 0 112.451 0 96.064V74.4813H10.8913V96.064C10.8913 106.356 19.2847 114.749 29.5764 114.749H51.1592V125.74H51.2591Z"
+										fill="currentColor"
+									/>
+									<path
+										d="M95.3237 125.74H73.741V114.849H95.3237C105.615 114.849 114.009 106.456 114.009 96.164V74.4813H124.9V96.064C125 112.351 111.611 125.74 95.3237 125.74Z"
+										fill="currentColor"
+									/>
+									<path
+										d="M125 51.9993H114.109V30.4166C114.109 20.1248 105.715 11.7315 95.4236 11.7315H73.741V0.840195H95.3237C111.711 0.840195 125 14.1296 125 30.5165V51.9993Z"
+										fill="currentColor"
+									/>
+									<path
+										d="M10.9913 51.9993H0.100098V30.4166C0.100098 14.0297 13.3894 0.740295 29.7763 0.740295H51.359V11.6315H29.7763C19.4845 11.6315 11.0913 20.0248 11.0913 30.3166V51.9993H10.9913Z"
+										fill="currentColor"
+									/>
+								</svg>
+							</a>
+
+							<a href="system-overview.html" class="nav-link active"
+								>Overview</a
+							>
+							<a href="pricing.html" class="nav-link">Pricing</a>
+							<a
+								href="https://polar.sh"
+								target="_blank"
+								rel="noopener"
+								class="nav-link"
+								>Buy Enlightr</a
+							>
+							<a href="sign-in.html" class="nav-link">Sign in</a>
+							<a href="#" class="nav-cta">Get started</a>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<!-- ===== FLOATING SEARCH ===== -->
+		<div class="floating-search">
+			<button
+				class="search-btn"
+				type="button"
+				id="searchButton"
+				aria-label="Search courses"
+			>
+				<svg
+					width="20"
+					height="20"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<circle cx="10" cy="10" r="7"></circle>
+					<line x1="21" y1="21" x2="15" y2="15"></line>
+				</svg>
+			</button>
+
+			<div
+				id="searchModal"
+				class="search-modal"
+				role="dialog"
+				aria-modal="true"
+			>
+				<div class="modal-inner">
+					<div class="modal-backdrop" id="modalOverlay"></div>
+					<div class="modal-box">
+						<div class="modal-content">
+							<div style="display:none">
+								<button
+									type="button"
+									id="closeSearch"
+									aria-label="Close search"
+								>
+									✕
+								</button>
+							</div>
+							<input
+								type="text"
+								id="searchInput"
+								placeholder="Search courses..."
+								class="search-input"
+								autocomplete="off"
+							>
+							<div id="searchResults"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ===== MAIN ===== -->
+		<main>
+			<!-- HERO -->
+			<section class="hero">
+				<div class="container">
+					<p class="section-label">System / Overview</p>
+					<h1>Enlightr Design System</h1>
+					<p>
+						A reference for the visual building blocks of Enlightr — colors,
+						typography, and interactive components.
+					</p>
+				</div>
+			</section>
+
+			<!-- ========================
+         SECTION 1: COLORS
+    ========================= -->
+			<section class="section">
+				<div class="container">
+					<div class="section-card">
+						<h2>Colors</h2>
+
+						<!-- Base palette -->
+						<div class="swatches-group">
+							<p class="swatches-group-label">Base</p>
+							<div class="swatches">
+								<div class="swatch">
+									<div class="swatch-box" style="background:#ffffff;"></div>
+									<span class="swatch-label">white</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#f9f9f9;"></div>
+									<span class="swatch-label">50</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#f3f4f4;"></div>
+									<span class="swatch-label">100</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#e8e8e8;"></div>
+									<span class="swatch-label">200</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#9ca3af;"></div>
+									<span class="swatch-label">400</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#6b7280;"></div>
+									<span class="swatch-label">500</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#4b5563;"></div>
+									<span class="swatch-label">600</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#374151;"></div>
+									<span class="swatch-label">700</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#1f2937;"></div>
+									<span class="swatch-label">800</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#111827;"></div>
+									<span class="swatch-label">900</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#030712;"></div>
+									<span class="swatch-label">950</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="section-divider"></div>
+
+						<!-- Accent palette -->
+						<div class="swatches-group">
+							<p class="swatches-group-label">Accent (Green)</p>
+							<div class="swatches">
+								<div class="swatch">
+									<div class="swatch-box" style="background:#f0fdf4;"></div>
+									<span class="swatch-label">100</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#bbf7d0;"></div>
+									<span class="swatch-label">200</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#4ade80;"></div>
+									<span class="swatch-label">400</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#22c55e;"></div>
+									<span class="swatch-label">500</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#16a34a;"></div>
+									<span class="swatch-label">600</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#166534;"></div>
+									<span class="swatch-label">800</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#14532d;"></div>
+									<span class="swatch-label">900</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#052e16;"></div>
+									<span class="swatch-label">950</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="section-divider"></div>
+
+						<!-- Extended palette -->
+						<div class="swatches-group">
+							<p class="swatches-group-label">Extended</p>
+							<div class="swatches">
+								<div class="swatch">
+									<div class="swatch-box" style="background:#ddd6fe;"></div>
+									<span class="swatch-label">violet-200</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#2e1065;"></div>
+									<span class="swatch-label">violet-950</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#dbeafe;"></div>
+									<span class="swatch-label">blue-100</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#bfdbfe;"></div>
+									<span class="swatch-label">blue-200</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#1d4ed8;"></div>
+									<span class="swatch-label">blue-700</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#1e3a8a;"></div>
+									<span class="swatch-label">blue-900</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#fef08a;"></div>
+									<span class="swatch-label">yellow-200</span>
+								</div>
+								<div class="swatch">
+									<div class="swatch-box" style="background:#422006;"></div>
+									<span class="swatch-label">yellow-950</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ========================
+         SECTION 2: TYPOGRAPHY
+    ========================= -->
+			<section class="section">
+				<div class="container">
+					<h2
+						style="font-family:'Clash Grotesk',sans-serif;font-weight:500;text-transform:uppercase;font-size:1.125rem;color:var(--base-900);letter-spacing:0.02em;margin-bottom:1.5rem;"
+					>
+						Typography
+					</h2>
+
+					<!-- Font families -->
+					<div class="type-row">
+						<p class="type-meta">Inter — Body / UI</p>
+						<p class="type-sample-inter">
+							The quick brown fox jumps over the lazy dog
+						</p>
+						<p
+							style="font-size:0.625rem;color:var(--base-400);margin-top:0.25rem;font-family:'Space Mono',monospace;"
+						>
+							InterVariable, sans-serif · 16px / 24px
+						</p>
+					</div>
+
+					<div class="type-row">
+						<p class="type-meta">Instrument Serif — Display Italic</p>
+						<p class="type-sample-serif">
+							The quick brown fox jumps over the lazy dog
+						</p>
+						<p
+							style="font-size:0.625rem;color:var(--base-400);margin-top:0.25rem;font-family:'Space Mono',monospace;"
+						>
+							"Instrument Serif", serif · italic
+						</p>
+					</div>
+
+					<div class="type-row">
+						<p class="type-meta">Clash Grotesk — Display Uppercase</p>
+						<p class="type-sample-clash">Heading Display Text</p>
+						<p
+							style="font-size:0.625rem;color:var(--base-400);margin-top:0.25rem;font-family:'Space Mono',monospace;"
+						>
+							Clash Grotesk · uppercase · weight 500
+						</p>
+					</div>
+
+					<div class="type-row">
+						<p class="type-meta">Space Mono — Monospace</p>
+						<p class="type-sample-mono">
+							const enlightr = { version: "1.0.0" };
+						</p>
+						<p
+							style="font-size:0.625rem;color:var(--base-400);margin-top:0.25rem;font-family:'Space Mono',monospace;"
+						>
+							"Space Mono", monospace · 14px
+						</p>
+					</div>
+
+					<div class="type-row">
+						<p class="type-meta">Love Ya Like A Sister — Accent Decorative</p>
+						<p class="type-sample-love">Enlightr is delightful!</p>
+						<p
+							style="font-size:0.625rem;color:var(--base-400);margin-top:0.25rem;font-family:'Space Mono',monospace;"
+						>
+							"Love Ya Like A Sister" · accent / rare use
+						</p>
+					</div>
+
+					<!-- Type scale -->
+					<div class="type-scale">
+						<p class="type-scale-label">Type scale</p>
+
+						<div class="type-scale-row">
+							<span class="type-scale-tag">H1</span>
+							<span
+								style="font-family:'Clash Grotesk',sans-serif;font-size:clamp(2.25rem,5vw,3.75rem);font-weight:500;text-transform:uppercase;color:var(--base-900);line-height:1.05;"
+								>Hero heading</span
+							>
+						</div>
+						<div class="type-scale-row">
+							<span class="type-scale-tag">H2</span>
+							<span
+								style="font-family:'Clash Grotesk',sans-serif;font-size:clamp(1.125rem,3vw,1.875rem);font-weight:500;text-transform:uppercase;color:var(--base-900);"
+								>Section heading</span
+							>
+						</div>
+						<div class="type-scale-row">
+							<span class="type-scale-tag">H3</span>
+							<span
+								style="font-family:'Clash Grotesk',sans-serif;font-size:clamp(1rem,2vw,1.25rem);font-weight:500;color:var(--base-900);letter-spacing:-0.01em;"
+								>Card heading</span
+							>
+						</div>
+						<div class="type-scale-row">
+							<span class="type-scale-tag">H4</span>
+							<span
+								style="font-family:'InterVariable','Inter',sans-serif;font-size:1rem;font-weight:600;color:var(--base-800);"
+								>Subheading</span
+							>
+						</div>
+						<div class="type-scale-row">
+							<span class="type-scale-tag">body</span>
+							<span
+								style="font-size:0.875rem;color:var(--base-500);line-height:1.6;"
+								>Body text — 14px, color base-500, line-height 1.6</span
+							>
+						</div>
+						<div class="type-scale-row">
+							<span class="type-scale-tag">label</span>
+							<span
+								style="font-size:0.625rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--base-500);font-weight:500;"
+								>SECTION LABEL — 10px UPPERCASE</span
+							>
+						</div>
+						<div class="type-scale-row">
+							<span class="type-scale-tag">stat</span>
+							<span
+								style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(1.875rem,5vw,3rem);color:var(--base-900);"
+								>4,200+</span
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ========================
+         SECTION 3: BUTTONS
+    ========================= -->
+			<section class="section">
+				<div class="container">
+					<div class="section-card">
+						<h2>Buttons</h2>
+
+						<!-- Variants -->
+						<div class="btn-showcase-group">
+							<p class="btn-showcase-label">Variants</p>
+							<div class="btn-showcase">
+								<button class="btn btn-primary btn-lg" type="button">
+									Get started
+								</button>
+								<button class="btn btn-accent btn-lg" type="button">
+									Get pro access
+								</button>
+								<button class="btn btn-ghost btn-lg" type="button">
+									Learn more
+								</button>
+								<button class="btn btn-outline btn-lg" type="button">
+									View all
+								</button>
+								<button
+									class="btn btn-primary btn-icon"
+									type="button"
+									aria-label="Add"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<line x1="12" y1="5" x2="12" y2="19" />
+										<line x1="5" y1="12" x2="19" y2="12" />
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<div class="section-divider"></div>
+
+						<!-- Sizes -->
+						<div class="btn-showcase-group">
+							<p class="btn-showcase-label">Sizes — Primary</p>
+							<div class="btn-showcase">
+								<button class="btn btn-primary btn-sm" type="button">
+									Small · h-8
+								</button>
+								<button class="btn btn-primary btn-md" type="button">
+									Medium · h-9
+								</button>
+								<button class="btn btn-primary btn-lg" type="button">
+									Large · h-10
+								</button>
+							</div>
+						</div>
+
+						<div class="section-divider"></div>
+
+						<!-- Sizes — Accent -->
+						<div class="btn-showcase-group">
+							<p class="btn-showcase-label">Sizes — Accent</p>
+							<div class="btn-showcase">
+								<button class="btn btn-accent btn-sm" type="button">
+									Small
+								</button>
+								<button class="btn btn-accent btn-md" type="button">
+									Medium
+								</button>
+								<button class="btn btn-accent btn-lg" type="button">
+									Large
+								</button>
+							</div>
+						</div>
+
+						<div class="section-divider"></div>
+
+						<!-- Icon buttons -->
+						<div class="btn-showcase-group">
+							<p class="btn-showcase-label">Icon Buttons</p>
+							<div class="btn-showcase">
+								<button
+									class="btn btn-primary btn-icon"
+									type="button"
+									aria-label="Add"
+								>
+									<svg
+										width="18"
+										height="18"
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<line x1="12" y1="5" x2="12" y2="19" />
+										<line x1="5" y1="12" x2="19" y2="12" />
+									</svg>
+								</button>
+								<button
+									class="btn btn-accent btn-icon"
+									type="button"
+									aria-label="Star"
+								>
+									<svg
+										width="18"
+										height="18"
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polygon
+											points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+										/>
+									</svg>
+								</button>
+								<button
+									class="btn btn-ghost btn-icon"
+									type="button"
+									aria-label="Share"
+								>
+									<svg
+										width="18"
+										height="18"
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<circle cx="18" cy="5" r="3" />
+										<circle cx="6" cy="12" r="3" />
+										<circle cx="18" cy="19" r="3" />
+										<line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+										<line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+									</svg>
+								</button>
+								<button
+									class="btn btn-outline btn-icon"
+									type="button"
+									aria-label="Search"
+								>
+									<svg
+										width="18"
+										height="18"
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<circle cx="10" cy="10" r="7" />
+										<line x1="21" y1="21" x2="15" y2="15" />
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<div class="section-divider"></div>
+
+						<!-- Disabled states -->
+						<div class="btn-showcase-group">
+							<p class="btn-showcase-label">Disabled</p>
+							<div class="btn-showcase">
+								<button
+									class="btn btn-primary btn-lg"
+									type="button"
+									disabled
+									style="opacity:0.5;cursor:not-allowed;"
+								>
+									Get started
+								</button>
+								<button
+									class="btn btn-accent btn-lg"
+									type="button"
+									disabled
+									style="opacity:0.5;cursor:not-allowed;"
+								>
+									Get pro access
+								</button>
+								<button
+									class="btn btn-ghost btn-lg"
+									type="button"
+									disabled
+									style="opacity:0.5;cursor:not-allowed;"
+								>
+									Learn more
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ===== FOOTER ===== -->
+		<footer>
+			<div class="footer-inner">
+				<div class="footer-brand">
+					<a href="index.html" class="logo-link">
+						<svg
+							style="height:1rem;color:var(--base-900)"
+							viewBox="0 0 125 126"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M51.2591 125.74H29.6763C13.2894 125.74 0 112.451 0 96.064V74.4813H10.8913V96.064C10.8913 106.356 19.2847 114.749 29.5764 114.749H51.1592V125.74H51.2591Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M95.3237 125.74H73.741V114.849H95.3237C105.615 114.849 114.009 106.456 114.009 96.164V74.4813H124.9V96.064C125 112.351 111.611 125.74 95.3237 125.74Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M125 51.9993H114.109V30.4166C114.109 20.1248 105.715 11.7315 95.4236 11.7315H73.741V0.840195H95.3237C111.711 0.840195 125 14.1296 125 30.5165V51.9993Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M10.9913 51.9993H0.100098V30.4166C0.100098 14.0297 13.3894 0.740295 29.7763 0.740295H51.359V11.6315H29.7763C19.4845 11.6315 11.0913 20.0248 11.0913 30.3166V51.9993H10.9913Z"
+								fill="currentColor"
+							/>
+						</svg>
+						Enlightr®
+					</a>
+					<p>
+						A premium educational platform template for online Astro courses,
+						built with clean design and modern typography.
+					</p>
+				</div>
+
+				<div class="footer-col">
+					<h4>Platform</h4>
+					<ul class="footer-links">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="courses.html">Courses</a></li>
+						<li><a href="pricing.html">Pricing</a></li>
+						<li><a href="system-overview.html">Design System</a></li>
+					</ul>
+				</div>
+
+				<div class="footer-col">
+					<h4>Account</h4>
+					<ul class="footer-links">
+						<li><a href="sign-in.html">Sign in</a></li>
+						<li><a href="#">Sign up</a></li>
+						<li>
+							<a href="https://polar.sh" target="_blank" rel="noopener"
+								>Buy Enlightr</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<p class="footer-copy">
+				© 2025 Enlightr · Built with Astro &amp; Tailwind CSS
+			</p>
+		</footer>
+
+		<!-- Fuse.js CDN -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"
+		></script>
+
+		<script>
+		// ---- NAV SCROLL ----
+		(function () {
+			const topbar = document.getElementById("topbar");
+			const menuToggle = document.getElementById("menu-toggle");
+			const menuClose = document.getElementById("menu-close");
+			const navMenu = document.getElementById("navigation-menu");
+
+			window.addEventListener("scroll", () => {
+				if (window.scrollY > 50) {
+					topbar.classList.add("scrolled");
+				} else {
+					topbar.classList.remove("scrolled");
+				}
+			});
+
+			menuToggle.addEventListener("click", () => {
+				navMenu.classList.add("open");
+				document.body.style.overflow = "hidden";
+			});
+
+			menuClose.addEventListener("click", () => {
+				navMenu.classList.remove("open");
+				document.body.style.overflow = "";
+			});
+		})();
+
+		// ---- SEARCH ----
+		(function () {
+			const courses = [
+				{
+					title: "Astro Content Collections Masterclass",
+					description:
+						"Master Astro's powerful content management system and build scalable, type-safe content-driven websites.",
+					slug: "astro-content-collections",
+				},
+				{
+					title: "Astro Fundamentals",
+					description:
+						"Master the core concepts of Astro by building fast, modern websites from scratch.",
+					slug: "astro-fundamentals",
+				},
+			];
+
+			window.addEventListener("load", () => {
+				const searchButton = document.getElementById("searchButton");
+				const searchModal = document.getElementById("searchModal");
+				const modalOverlay = document.getElementById("modalOverlay");
+				const searchInput = document.getElementById("searchInput");
+				const searchResults = document.getElementById("searchResults");
+				const closeSearch = document.getElementById("closeSearch");
+
+				searchInput.value = "";
+
+				const fuse = new Fuse(courses, {
+					keys: ["title", "description"],
+					threshold: 0.3,
+					includeMatches: true,
+				});
+
+				function openSearch(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					searchModal.classList.add("open");
+					document.body.style.overflow = "hidden";
+					setTimeout(() => searchInput.focus(), 100);
+				}
+
+				function closeSearchModal(e) {
+					if (e) {
+						e.preventDefault();
+						e.stopPropagation();
+					}
+					searchModal.classList.remove("open");
+					document.body.style.overflow = "";
+					searchInput.value = "";
+					searchResults.innerHTML = "";
+				}
+
+				function renderResults(results) {
+					if (!searchInput.value.trim()) {
+						searchResults.innerHTML = "";
+						return;
+					}
+					if (results.length === 0) {
+						searchResults.innerHTML = `<div class="no-results">No results found</div>`;
+						return;
+					}
+					searchResults.innerHTML = results
+						.slice(0, 5)
+						.map(
+							(result) => `
+            <a href="courses.html" class="search-result-item">
+              <h3>${result.item.title}</h3>
+              <p>${result.item.description}</p>
+            </a>
+          `,
+						)
+						.join("");
+				}
+
+				searchButton.addEventListener("click", openSearch);
+				searchButton.addEventListener("touchend", openSearch);
+				closeSearch.addEventListener("click", closeSearchModal);
+				closeSearch.addEventListener("touchend", closeSearchModal);
+				modalOverlay.addEventListener("click", closeSearchModal);
+				modalOverlay.addEventListener("touchend", closeSearchModal);
+				searchInput.addEventListener("input", (e) => {
+					const value = e.target.value;
+					const results = value.trim() ? fuse.search(value) : [];
+					renderResults(results);
+				});
+				document.addEventListener("keydown", (e) => {
+					if (e.key === "Escape" && searchModal.classList.contains("open"))
+						closeSearchModal();
+				});
+			});
+		})();
+		</script>
+	</body>
+</html>

@@ -1,5 +1,7 @@
 # Finsyc — Finance Management Landing Page (React + Vite + Tailwind CSS + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full, multi-section **finance-management landing page** for the fictional fintech **Finsyc**, applied verbatim from a 10-component template. A polished fintech UI with animated soft-gradient video backgrounds, Playfair-italic accent typography, count-up metrics, product mockup carousels, and an integrations diagram — built with React, Vite, Tailwind CSS, Framer Motion, and lucide-react. Generated with Claude Fable 5.
 
 ## What's inside

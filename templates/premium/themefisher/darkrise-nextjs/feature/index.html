@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || 'dark'; // Darkrise has no native light mode; default stays dark unless the user explicitly toggles (see common.js).
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/feature.css">
+<title>Features | Darkrise — Analytics &amp; Dashboard Template</title>
+<meta name="description" content="Gain invaluable predictive analytics and actionable insights, empowering your team to make data-driven decisions and close more deals with Darkrise.">
+<link rel="shortcut icon" href="/assets/images/favicon.png">
+</head>
+<body>
+<header class="header sticky top-0 z-30">
+  <nav class="navbar container relative z-10">
+    <div class="order-0">
+      <a class="navbar-brand inline-block" href="/" aria-label="Darkrise home">
+        <img alt="Darkrise" loading="lazy" width="248" height="52" class="inline-block" src="/assets/images/logo.svg">
+      </a>
+    </div>
+
+    <input id="nav-toggle" type="checkbox" class="hidden">
+    <label for="nav-toggle" class="order-3 flex cursor-pointer items-center text-text lg:order-1 lg:hidden">
+      <svg id="show-button" class="block h-6 fill-current" viewBox="0 0 20 20">
+        <title>Menu Open</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="hidden h-6 fill-current" viewBox="0 0 20 20">
+        <title>Menu Close</title>
+        <polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+
+    <ul id="nav-menu" class="navbar-nav order-3 hidden pb-6 lg:order-1 lg:flex lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-4">
+      <li class="nav-item nav-dropdown group">
+        <span class="nav-link inline-flex items-center cursor-pointer">
+          All Pages
+          <span class="arrow-icon">
+            <svg class="h-4 w-4 fill-current transition-transform" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+            </svg>
+          </span>
+        </span>
+        <div class="mega-menu-wrapper">
+          <div class="nav-dropdown-group">
+            <p class="nav-dropdown-eyebrow">Landing</p>
+            <ul class="nav-dropdown-list" style="width:150px;">
+              <li class="nav-dropdown-item">
+                <a aria-label="Home" class="nav-dropdown-link" href="/">Home</a>
+                <p class="nav-dropdown-desc">A Colorful Dark World</p>
+              </li>
+              <li class="nav-dropdown-item">
+                <a aria-label="Elements" class="nav-dropdown-link" href="/elements/">Elements</a>
+                <p class="nav-dropdown-desc">A collection of UI elements</p>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-dropdown-group">
+            <p class="nav-dropdown-eyebrow">Essentials</p>
+            <ul class="nav-dropdown-list">
+              <li class="nav-dropdown-item"><a aria-label="About" class="nav-dropdown-link" href="/about/">About</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Pricing" class="nav-dropdown-link" href="/pricing/">Pricing</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Integrations" class="nav-dropdown-link" href="/integration/">Integrations</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Blog Details" class="nav-dropdown-link" href="/blog/post-1/">Blog Details</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Feature" class="nav-dropdown-link active" href="/feature/">Feature</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Blog" class="nav-dropdown-link" href="/blog/">Blog</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Integrations Details" class="nav-dropdown-link" href="/integration/intercom/">Integrations Details</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Changelog" class="nav-dropdown-link" href="/changelog/">Changelog</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Contact" class="nav-dropdown-link" href="/contact/">Contact</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Terms" class="nav-dropdown-link" href="/terms-conditions/">Terms</a></li>
+              <li class="nav-dropdown-item"><a aria-label="Privacy" class="nav-dropdown-link" href="/privacy-policy/">Privacy</a></li>
+              <li class="nav-dropdown-item"><a aria-label="404" class="nav-dropdown-link" href="/404/">404</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item"><a aria-label="Integrations" class="nav-link block" href="/integration/">Integrations</a></li>
+      <li class="nav-item"><a aria-label="Pricing" class="nav-link block" href="/pricing/">Pricing</a></li>
+      <li class="nav-item"><a aria-label="Contact" class="nav-link block" href="/contact/">Contact</a></li>
+
+      <a class="btn btn-primary bg-transparent mt-2 lg:hidden bg-none has-icon" href="https://themefisher.com/products/darkrise-nextjs" target="_blank" rel="noopener">
+        <span class="value"><span data-content="Get This Template">Get This Template</span></span>
+        <span class="icon">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+        </span>
+      </a>
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+      <a class="btn btn-primary bg-transparent hidden lg:flex bg-none has-icon" href="https://themefisher.com/products/darkrise-nextjs" target="_blank" rel="noopener">
+        <span class="value"><span data-content="Get This Template">Get This Template</span></span>
+        <span class="icon">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+        </span>
+      </a>
+
+      <!-- Theme toggle: added for this clone (source template has no
+           toggle). Icon-button styled to match the header. -->
+      <button type="button" data-theme-toggle aria-label="Toggle light and dark theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="feature-hero-glow" aria-hidden="true"></div>
+
+<main>
+  <!-- Hero + top feature cards -->
+  <section class="section">
+    <div class="container">
+      <div class="feature-hero-intro" data-aos="fade-up-sm">
+        <h1 class="has-gradient mb-6">Connect with Customers</h1>
+        <p>Gain invaluable predictive analytics and actionable insights, empowering your team to make data-driven decisions and close.</p>
+      </div>
+
+      <div class="feature-cards-row">
+        <div class="feature-card feature-card--customers" data-aos="fade-up-sm" data-aos-delay="0">
+          <div>
+            <h3>Connect Customers</h3>
+            <p>Gain invaluable predictive analytics and actionable insights, empowering your to make sales.</p>
+          </div>
+          <div class="feature-card-avatars">
+            <img src="/assets/images/feature/features/1.png" alt="user image" width="64" height="64" loading="lazy">
+            <img src="/assets/images/feature/features/2.png" alt="user image" width="144" height="144" loading="lazy">
+            <img src="/assets/images/feature/features/3.png" alt="user image" width="64" height="64" loading="lazy">
+          </div>
+        </div>
+
+        <div class="feature-card feature-card--data" data-aos="fade-up-sm" data-aos-delay="150">
+          <div>
+            <h3>Action Based on Data</h3>
+            <p>Gain invaluable predictive analytics and pro insights, empowering your to make data-driven decisions.</p>
+          </div>
+          <div class="feature-card-media">
+            <img src="/assets/images/feature/features/insights-1.png" alt="feature" width="320" height="320" loading="lazy">
+            <img src="/assets/images/feature/features/insights-2.png" alt="feature" width="400" height="400" loading="lazy">
+            <img src="/assets/images/feature/features/insights-3.png" alt="user image" width="400" height="400" loading="lazy">
+          </div>
+        </div>
+
+        <div class="feature-card feature-card--tools" data-aos="fade-up-sm" data-aos-delay="300">
+          <div>
+            <h3>Connect Unlimited Tools</h3>
+            <p>Gain invaluable predictive analytics and pro insights, empowering your to make data-driven decisions.</p>
+          </div>
+          <div class="feature-card-media">
+            <img src="/assets/images/feature/features/tools-images-bg.png" alt="user image" width="400" height="400" loading="lazy">
+            <div class="tool-icon tool-icon-1"><img src="/assets/images/feature/features/tools-1.svg" alt="user image" width="64" height="64" loading="lazy"></div>
+            <div class="tool-icon tool-icon-2"><img src="/assets/images/feature/features/tools-2.svg" alt="user image" width="64" height="64" loading="lazy"></div>
+            <div class="tool-icon tool-icon-3"><img src="/assets/images/feature/features/tools-3.svg" alt="user image" width="64" height="64" loading="lazy"></div>
+            <div class="tool-icon tool-icon-4"><img src="/assets/images/feature/features/tools-4.svg" alt="user image" width="64" height="64" loading="lazy"></div>
+            <div class="tool-icon tool-icon-5"><img src="/assets/images/feature/features/tools-5.svg" alt="user image" width="64" height="64" loading="lazy"></div>
+            <div class="tool-icon tool-icon-6"><img src="/assets/images/feature/features/tools-6.svg" alt="user image" width="64" height="64" loading="lazy"></div>
+            <div class="tool-icon tool-icon-7"><img src="/assets/images/feature/features/tools-7.svg" alt="user image" width="64" height="64" loading="lazy"></div>
+            <div class="tool-icon tool-icon-8"><img src="/assets/images/feature/features/tools-8.svg" alt="user image" width="64" height="64" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature bands -->
+  <section class="section pt-0">
+    <div class="container">
+
+      <div class="feature-band">
+        <div class="feature-band-row">
+          <div class="feature-band-text" data-aos="fade-up-sm">
+            <h2 class="has-gradient" data-aos="fade-up-sm">Get proper data &amp; sales statistics.</h2>
+            <p data-aos="fade-up-sm" data-aos-delay="100">Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven decisions and close deals more effectively looking.</p>
+            <ul class="feature-band-list">
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Event marketing</span></li>
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Content creation</span></li>
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Brand strategy</span></li>
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Data analyzing</span></li>
+            </ul>
+            <a class="btn btn-primary mt-6 has-icon" href="/" style="margin-top:2.5rem;">
+              <span class="value"><span data-content="Get Started Now">Get Started Now</span></span>
+              <span class="icon">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+              </span>
+            </a>
+          </div>
+          <div class="feature-band-media">
+            <div class="feature-band-media-inner">
+              <div class="feature-band-media-figure" data-aos="fade-up-sm" data-aos-delay="250">
+                <img class="band-1-img-1" src="/assets/images/feature/features/sales-overview.png" alt="Get proper data &amp; sales statistics." width="500" height="500" loading="lazy">
+                <img class="band-1-img-2" src="/assets/images/feature/features/monthly-sale.png" alt="Get proper data &amp; sales statistics." width="500" height="500" loading="lazy">
+                <div class="feature-band-glow" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-band">
+        <div class="feature-band-row">
+          <div class="feature-band-text" data-aos="fade-up-sm">
+            <h2 class="has-gradient" data-aos="fade-up-sm">Bring visitors from different sources.</h2>
+            <p data-aos="fade-up-sm" data-aos-delay="100">Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven decisions and close deals more effectively looking.</p>
+            <ul class="feature-band-list">
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Event marketing</span></li>
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Content creation</span></li>
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Brand strategy</span></li>
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Data analyzing</span></li>
+            </ul>
+            <a class="btn btn-primary mt-6 has-icon" href="/" style="margin-top:2.5rem;">
+              <span class="value"><span data-content="Get Started Now">Get Started Now</span></span>
+              <span class="icon">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+              </span>
+            </a>
+          </div>
+          <div class="feature-band-media">
+            <div class="feature-band-media-inner">
+              <div class="feature-band-media-figure" data-aos="fade-up-sm" data-aos-delay="250">
+                <img class="band-2-img-1" src="/assets/images/feature/features/audience-activity.png" alt="Bring visitors from different sources." width="500" height="500" loading="lazy">
+                <img class="band-2-img-2" src="/assets/images/feature/features/summery.png" alt="Bring visitors from different sources." width="500" height="500" loading="lazy">
+                <div class="feature-band-glow" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-band">
+        <div class="feature-band-row">
+          <div class="feature-band-text" data-aos="fade-up-sm">
+            <h2 class="has-gradient" data-aos="fade-up-sm">Acquire and retrain more customer.</h2>
+            <p data-aos="fade-up-sm" data-aos-delay="100">Gain invaluable predictive analytics and actionable insights, empowering your to make data-driven decisions and close deals more effectively looking.</p>
+            <ul class="feature-band-list">
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Event marketing</span></li>
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Content creation</span></li>
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Brand strategy</span></li>
+              <li><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg><span>Data analyzing</span></li>
+            </ul>
+            <a class="btn btn-primary mt-6 has-icon" href="/" style="margin-top:2.5rem;">
+              <span class="value"><span data-content="Get Started Now">Get Started Now</span></span>
+              <span class="icon">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+              </span>
+            </a>
+          </div>
+          <div class="feature-band-media">
+            <div class="feature-band-media-inner">
+              <div class="feature-band-media-figure" data-aos="fade-up-sm" data-aos-delay="250">
+                <img class="band-3-img-1" src="/assets/images/feature/features/customer.png" alt="Acquire and retrain more customer." width="500" height="500" loading="lazy">
+                <img class="band-3-img-2" src="/assets/images/feature/features/customer-sales.png" alt="Acquire and retrain more customer." width="500" height="500" loading="lazy">
+                <div class="feature-band-glow" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="feature-testimonial-panel" data-aos="fade-up-sm" data-aos-delay="200">
+        <div class="feature-testimonial-row">
+          <div class="feature-testimonial-media">
+            <img src="/assets/images/feature/customers/6.png" alt="David Miller" width="500" height="500" loading="lazy">
+            <div class="feature-testimonial-media-caption">
+              <h4>David Miller</h4>
+              <p>CEO, SmallBizCo</p>
+            </div>
+          </div>
+          <div class="feature-testimonial-body" data-aos="fade-up-sm">
+            <blockquote>&ldquo;Our business wouldn&rsquo;t be where it is today without DarkRise. The feature has been instrumental in our growth.&rdquo;</blockquote>
+            <ul class="feature-testimonial-stats">
+              <li><strong class="has-gradient">10k</strong><p>New customers</p></li>
+              <li><strong class="has-gradient">20%</strong><p>Market share</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="feature-cta">
+        <img class="feature-cta-bg" src="/assets/images/feature/call-to-action-2.png" alt="" aria-hidden="true" loading="lazy">
+
+        <div class="feature-cta-decor" aria-hidden="true">
+          <img class="feature-cta-icon" style="left:9%; top:12%;" src="/assets/images/feature/call-to-action/pattern-1.png" alt="" loading="lazy">
+          <div class="feature-cta-avatar" style="position:absolute; left:10.5%; top:14%;"><img src="/assets/images/feature/customers/6.svg" alt=""></div>
+
+          <img class="feature-cta-icon" style="left:38%; top:-1%; width:4rem;" src="/assets/images/feature/call-to-action/pattern-2.png" alt="" loading="lazy">
+          <div class="feature-cta-avatar" style="position:absolute; left:38.5%; top:1%; width:2.5rem; height:2.5rem;"><img src="/assets/images/feature/customers/8.svg" alt=""></div>
+
+          <img class="feature-cta-icon" style="right:12%; top:10%;" src="/assets/images/feature/call-to-action/pattern-3.png" alt="" loading="lazy">
+          <div class="feature-cta-avatar" style="position:absolute; right:11%; top:8%; width:2.5rem; height:2.5rem;"><img src="/assets/images/feature/icons/png/gift.png" alt="" style="object-fit:contain; padding:0.5rem; background:var(--bg-surface-alt);"></div>
+
+          <img class="feature-cta-icon" style="right:9%; top:48%;" src="/assets/images/feature/call-to-action/pattern-4.png" alt="" loading="lazy">
+          <div class="feature-cta-avatar" style="position:absolute; right:9.5%; top:52%; width:2.5rem; height:2.5rem;"><img src="/assets/images/feature/customers/10.svg" alt=""></div>
+
+          <img class="feature-cta-icon" style="right:28%; bottom:-3%;" src="/assets/images/feature/call-to-action/pattern-5.png" alt="" loading="lazy">
+          <div class="feature-cta-avatar" style="position:absolute; right:29%; bottom:1%; width:2.5rem; height:2.5rem;"><img src="/assets/images/feature/icons/png/focus.png" alt="" style="object-fit:contain; padding:0.5rem; background:var(--bg-surface-alt);"></div>
+
+          <img class="feature-cta-icon" style="left:14%; bottom:2%;" src="/assets/images/feature/call-to-action/pattern-6.png" alt="" loading="lazy">
+          <div class="feature-cta-avatar" style="position:absolute; left:15%; bottom:6%;"><img src="/assets/images/feature/icons/png/date-2.png" alt="" style="object-fit:contain; padding:0.5rem; background:var(--bg-surface-alt);"></div>
+        </div>
+
+        <div class="feature-cta-body">
+          <h2 class="has-gradient" data-aos="fade-up-sm">Start making sales online</h2>
+          <div data-aos="fade-up-sm" data-aos-delay="50">
+            <p>Gain invaluable predictive analytics and actionable insights empowering your to make data-driven decisions.</p>
+          </div>
+          <a class="btn btn-primary mt-10 has-icon" href="/contact/" data-aos="fade-up-sm" data-aos-delay="150" style="margin-top:2.5rem;">
+            <span class="value"><span data-content="Get This Theme">Get This Theme</span></span>
+            <span class="icon">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="feature-cta-glow" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-aos="fade-up-sm">
+  <div class="container">
+    <div class="row gy-6 justify-between">
+      <div class="col-12" style="padding-bottom: 3.5rem;">
+        <a class="navbar-brand inline-block" href="/" aria-label="Darkrise home">
+          <img alt="Darkrise" loading="lazy" width="450" height="96" class="inline-block" src="/assets/images/logo.svg">
+        </a>
+      </div>
+
+      <div class="sm:col-6 md:col-auto">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/feature/">Product Features</a></li>
+          <li><a href="/changelog/">Changelog</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="sm:col-6 md:col-auto">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="/pricing/">Pricing &amp; Plans</a></li>
+          <li><a href="/feature/">Product Features</a></li>
+          <li><a href="/integration/">Integration</a></li>
+          <li><a href="/integration/kickstarter/">Integration Details</a></li>
+        </ul>
+      </div>
+
+      <div class="sm:col-6 md:col-auto">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/post-1/">Blog Details</a></li>
+          <li><a href="/changelog/">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="sm:col-6 md:col-auto">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/elements/">Elements</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/404/">404</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12" style="padding-top: 1.25rem;">
+        <div class="footer-bottom">
+          <p>Copyright &copy; 2025 Darkrise. All Rights Reserved</p>
+          <ul class="footer-legal">
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/terms-conditions/">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/common.js" defer></script>
+</body>
+</html>

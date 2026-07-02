@@ -1,5 +1,7 @@
 # Cosmic Plasma Web — Cursor-Driven OGL Plasma Lattice Shader (React + Vite + Tailwind + shadcn/ui)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A cursor-reactive OGL fragment shader painting a layered plasma lattice of pulsing nodes, flowing connective streams, and excited particles — integrated verbatim as a shadcn `@/components/ui` drop-in and framed as a field-resonance console with live faders, named presets, cursor-tracking reticle, and real-time telemetry. The `<PlasmaWeb>` component's `uMouse` / `uMouseAttraction` uniforms pull the entire field toward the pointer, making it a vivid full-bleed interactive hero background or animated landing page section. Generated with Claude Fable 5.
 
 The shader is entirely cursor-reactive (its `uMouse` / `uMouseAttraction`

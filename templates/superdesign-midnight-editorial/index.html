@@ -1,407 +1,1044 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Superdesign | AI Product Designer</title>
-<style>
-/* ============ Fonts (Satoshi -> Inter fallback, vendored) ============ */
-@font-face {
-  font-family: 'Satoshi';
-  src: url('assets/inter-variable.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Superdesign | AI Product Designer</title>
+		<style>
+		/* ============ Fonts (Satoshi -> Inter fallback, vendored) ============ */
+		@font-face {
+			font-family: "Satoshi";
+			src: url("assets/inter-variable.woff2") format("woff2");
+			font-weight: 100 900;
+			font-display: swap;
+			font-style: normal;
+		}
 
-:root {
-  --font-satoshi: 'Satoshi', 'Inter', system-ui, sans-serif;
-  --bg: #050505;
-  --accent: #FF6B50;
-  --accent-dark: #E55A40;
-}
+		:root {
+			--font-satoshi: "Satoshi", "Inter", system-ui, sans-serif;
+			--bg: #050505;
+			--accent: #ff6b50;
+			--accent-dark: #e55a40;
+		}
 
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: var(--font-satoshi);
-  background-color: var(--bg);
-  color: #ebebeb;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-.wrap { min-height: 100vh; background: var(--bg); overflow-x: hidden; position: relative; }
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+		html {
+			scroll-behavior: smooth;
+		}
+		body {
+			margin: 0;
+			font-family: var(--font-satoshi);
+			background-color: var(--bg);
+			color: #ebebeb;
+			-webkit-font-smoothing: antialiased;
+			text-rendering: optimizeLegibility;
+		}
+		.wrap {
+			min-height: 100vh;
+			background: var(--bg);
+			overflow-x: hidden;
+			position: relative;
+		}
 
-::selection { background-color: var(--accent); color: #fff; }
+		::selection {
+			background-color: var(--accent);
+			color: #fff;
+		}
 
-a { text-decoration: none; color: inherit; }
-img { display: block; max-width: 100%; }
-button { font-family: inherit; border: none; background: none; cursor: pointer; }
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+		img {
+			display: block;
+			max-width: 100%;
+		}
+		button {
+			font-family: inherit;
+			border: none;
+			background: none;
+			cursor: pointer;
+		}
 
-.icon { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; stroke: currentColor; fill: none;
-  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+		.icon {
+			width: 1em;
+			height: 1em;
+			display: inline-block;
+			vertical-align: -0.125em;
+			stroke: currentColor;
+			fill: none;
+			stroke-width: 2;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
 
-/* ============ Top Navigation ============ */
-.topnav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;
-  font-size: 0.875rem; font-weight: 500; letter-spacing: -0.01em;
-}
-.nav-left { display: flex; align-items: center; gap: 2.5rem; }
-.logo { display: flex; align-items: center; }
-.logo-mark {
-  width: 2rem; height: 2rem; background: #fff; border-radius: 0.25rem;
-  display: flex; align-items: center; justify-content: center;
-  color: #000; font-weight: 800; font-size: 1.25rem;
-  transition: transform .3s ease;
-}
-.logo:hover .logo-mark { transform: rotate(12deg); }
-.nav-links { display: none; align-items: center; gap: 2rem; color: #888; }
-.nav-links a, .nav-journal { transition: color .3s ease; }
-.nav-links a:hover, .nav-journal:hover { color: #fff; }
-.nav-right { display: flex; align-items: center; gap: 2rem; }
-.nav-journal { display: none; color: #888; }
-.nav-cta {
-  padding: 0.625rem 1.25rem; background: #1a1a1a; border: 1px solid #333;
-  border-radius: 0.5rem; transition: all .3s ease; color: #ebebeb;
-}
-.nav-cta:hover { background: #fff; color: #000; }
+		/* ============ Top Navigation ============ */
+		.topnav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 100;
+			padding: 1.5rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 0.875rem;
+			font-weight: 500;
+			letter-spacing: -0.01em;
+		}
+		.nav-left {
+			display: flex;
+			align-items: center;
+			gap: 2.5rem;
+		}
+		.logo {
+			display: flex;
+			align-items: center;
+		}
+		.logo-mark {
+			width: 2rem;
+			height: 2rem;
+			background: #fff;
+			border-radius: 0.25rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #000;
+			font-weight: 800;
+			font-size: 1.25rem;
+			transition: transform 0.3s ease;
+		}
+		.logo:hover .logo-mark {
+			transform: rotate(12deg);
+		}
+		.nav-links {
+			display: none;
+			align-items: center;
+			gap: 2rem;
+			color: #888;
+		}
+		.nav-links a,
+		.nav-journal {
+			transition: color 0.3s ease;
+		}
+		.nav-links a:hover,
+		.nav-journal:hover {
+			color: #fff;
+		}
+		.nav-right {
+			display: flex;
+			align-items: center;
+			gap: 2rem;
+		}
+		.nav-journal {
+			display: none;
+			color: #888;
+		}
+		.nav-cta {
+			padding: 0.625rem 1.25rem;
+			background: #1a1a1a;
+			border: 1px solid #333;
+			border-radius: 0.5rem;
+			transition: all 0.3s ease;
+			color: #ebebeb;
+		}
+		.nav-cta:hover {
+			background: #fff;
+			color: #000;
+		}
 
-/* ============ Floating Bottom Dock ============ */
-.dock {
-  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 110;
-  display: none; align-items: center; gap: 0.5rem; padding: 0.5rem;
-  background: rgba(17,17,17,0.8); backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem;
-  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
-}
-.dock-cluster { display: flex; align-items: center; gap: 0.25rem; padding-right: 1rem; border-right: 1px solid #333; }
-.dock-btn { padding: 0.75rem; border-radius: 0.75rem; transition: background .2s ease; color: #fff; display: flex; }
-.dock-btn .icon { font-size: 1.25rem; }
-.dock-btn:hover { background: #222; }
-.dock-contact {
-  padding: 0.75rem 1.5rem; background: var(--accent); color: #000;
-  font-weight: 700; font-size: 0.875rem; letter-spacing: 0.03em; text-transform: uppercase;
-  border-radius: 0.75rem; transition: background .2s ease;
-}
-.dock-contact:hover { background: var(--accent-dark); }
+		/* ============ Floating Bottom Dock ============ */
+		.dock {
+			position: fixed;
+			bottom: 2rem;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 110;
+			display: none;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.5rem;
+			background: rgba(17, 17, 17, 0.8);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 1rem;
+			box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+		}
+		.dock-cluster {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+			padding-right: 1rem;
+			border-right: 1px solid #333;
+		}
+		.dock-btn {
+			padding: 0.75rem;
+			border-radius: 0.75rem;
+			transition: background 0.2s ease;
+			color: #fff;
+			display: flex;
+		}
+		.dock-btn .icon {
+			font-size: 1.25rem;
+		}
+		.dock-btn:hover {
+			background: #222;
+		}
+		.dock-contact {
+			padding: 0.75rem 1.5rem;
+			background: var(--accent);
+			color: #000;
+			font-weight: 700;
+			font-size: 0.875rem;
+			letter-spacing: 0.03em;
+			text-transform: uppercase;
+			border-radius: 0.75rem;
+			transition: background 0.2s ease;
+		}
+		.dock-contact:hover {
+			background: var(--accent-dark);
+		}
 
-/* ============ Hero ============ */
-.hero { position: relative; height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.hero-bg::after {
-  content: ""; position: absolute; inset: 0; opacity: 0.6;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #050505 70%);
-}
-.hero-text {
-  position: relative; z-index: 10;
-  font-size: 13vw; line-height: 0.9; letter-spacing: -0.05em;
-  font-weight: 700; color: #fff; text-align: center; margin: 0;
-}
-.hero-left { position: absolute; bottom: 3rem; left: 2rem; display: flex; align-items: center; gap: 1.25rem; }
-.avatars { display: flex; }
-.avatars img {
-  width: 2.5rem; height: 2.5rem; border-radius: 9999px; border: 2px solid var(--bg);
-  object-fit: cover; filter: grayscale(1); transition: filter .4s ease; margin-left: -1rem;
-}
-.avatars img:first-child { margin-left: 0; }
-.hero-left:hover .avatars img { filter: grayscale(0); }
-.avatars img:nth-child(2) { transition-delay: .075s; }
-.avatars img:nth-child(3) { transition-delay: .15s; }
-.hero-left p { font-size: 0.75rem; font-weight: 500; line-height: 1.2; color: #888; transition: color .3s ease; margin: 0; }
-.hero-left:hover p { color: #fff; }
-.hero-right { position: absolute; bottom: 3rem; right: 2rem; text-align: right; }
-.hero-email {
-  color: #fff; font-weight: 500; border-bottom: 2px solid #fff; padding-bottom: 0.25rem;
-  transition: color .3s ease, border-color .3s ease;
-}
-.hero-email:hover { color: var(--accent); border-color: var(--accent); }
+		/* ============ Hero ============ */
+		.hero {
+			position: relative;
+			height: 100vh;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.hero-bg {
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+		}
+		.hero-bg::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			opacity: 0.6;
+			background: radial-gradient(circle at center, #1a1a1a 0%, #050505 70%);
+		}
+		.hero-text {
+			position: relative;
+			z-index: 10;
+			font-size: 13vw;
+			line-height: 0.9;
+			letter-spacing: -0.05em;
+			font-weight: 700;
+			color: #fff;
+			text-align: center;
+			margin: 0;
+		}
+		.hero-left {
+			position: absolute;
+			bottom: 3rem;
+			left: 2rem;
+			display: flex;
+			align-items: center;
+			gap: 1.25rem;
+		}
+		.avatars {
+			display: flex;
+		}
+		.avatars img {
+			width: 2.5rem;
+			height: 2.5rem;
+			border-radius: 9999px;
+			border: 2px solid var(--bg);
+			object-fit: cover;
+			filter: grayscale(1);
+			transition: filter 0.4s ease;
+			margin-left: -1rem;
+		}
+		.avatars img:first-child {
+			margin-left: 0;
+		}
+		.hero-left:hover .avatars img {
+			filter: grayscale(0);
+		}
+		.avatars img:nth-child(2) {
+			transition-delay: 0.075s;
+		}
+		.avatars img:nth-child(3) {
+			transition-delay: 0.15s;
+		}
+		.hero-left p {
+			font-size: 0.75rem;
+			font-weight: 500;
+			line-height: 1.2;
+			color: #888;
+			transition: color 0.3s ease;
+			margin: 0;
+		}
+		.hero-left:hover p {
+			color: #fff;
+		}
+		.hero-right {
+			position: absolute;
+			bottom: 3rem;
+			right: 2rem;
+			text-align: right;
+		}
+		.hero-email {
+			color: #fff;
+			font-weight: 500;
+			border-bottom: 2px solid #fff;
+			padding-bottom: 0.25rem;
+			transition:
+				color 0.3s ease,
+				border-color 0.3s ease;
+		}
+		.hero-email:hover {
+			color: var(--accent);
+			border-color: var(--accent);
+		}
 
-/* ============ Section base ============ */
-.section { padding: 8rem 1.5rem; max-width: 80rem; margin: 0 auto; }
+		/* ============ Section base ============ */
+		.section {
+			padding: 8rem 1.5rem;
+			max-width: 80rem;
+			margin: 0 auto;
+		}
 
-/* ============ Benefits ============ */
-.eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2.5rem; }
-.dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: var(--accent); animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-.eyebrow span { font-size: 10px; font-weight: 700; letter-spacing: 0.3em; color: #666; text-transform: uppercase; }
-.benefits-head {
-  font-size: 2.25rem; font-weight: 500; line-height: 1.05; letter-spacing: -0.02em;
-  color: #fff; max-width: 64rem; margin: 0 0 6rem;
-}
-.benefits-head .muted { color: #666; }
-.benefits-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-.bcard { border-radius: 2.5rem; min-height: 520px; position: relative; overflow: hidden; }
-.bcard-1 { background: #111; padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; transition: background .5s ease; }
-.bcard-1:hover { background: #161616; }
-.badge {
-  position: absolute; top: 2.5rem; right: 2.5rem; background: #1a1a1a; border: 1px solid #333;
-  font-size: 10px; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px;
-  text-transform: uppercase; letter-spacing: 0.1em; color: #888;
-}
-.bcard-1 .stack { margin-top: auto; }
-.bcard-1 h3 { font-size: 3rem; font-weight: 600; letter-spacing: -0.04em; margin: 0 0 0.5rem; line-height: 1; }
-.bcard-1 h3.first { color: #fff; }
-.bcard-1 h3.second { color: #444; margin-bottom: 0; transition: color .3s ease; }
-.bcard-1:hover h3.second { color: #666; }
-.bcard-2 { background: linear-gradient(to bottom right, #4F46E5, #7C3AED); padding: 2rem; display: flex; align-items: center; justify-content: center; }
-.browser {
-  width: 100%; max-width: 28rem; background: #e5e5e5; border-radius: 0.75rem; overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); transition: transform .7s cubic-bezier(.16,1,.3,1);
-}
-.bcard-2:hover .browser { transform: scale(1.05); }
-.browser-bar { background: #f5f5f5; padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; gap: 0.5rem; }
-.tl { width: 0.625rem; height: 0.625rem; border-radius: 9999px; }
-.tl.r { background: #f87171; } .tl.y { background: #facc15; } .tl.g { background: #4ade80; }
-.urlpill { margin-left: 1rem; height: 0.75rem; width: 8rem; background: #e5e7eb; border-radius: 9999px; }
-.browser-shot { aspect-ratio: 16/9; background: #f3f4f6; position: relative; overflow: hidden; }
-.browser-shot img { width: 100%; height: 100%; object-fit: cover; }
-.browser-shot .scrim { position: absolute; inset: 0; background: rgba(0,0,0,0.2); }
-.browser-shot .labels { position: absolute; bottom: 1.5rem; left: 1.5rem; color: #fff; }
-.browser-shot .labels .kicker { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
-.browser-shot .labels .big { font-size: 1.125rem; font-weight: 700; }
-.bcard-2 .hover-veil { position: absolute; inset: 0; background: rgba(255,255,255,0.05); opacity: 0; transition: opacity .5s ease; }
-.bcard-2:hover .hover-veil { opacity: 1; }
+		/* ============ Benefits ============ */
+		.eyebrow {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			margin-bottom: 2.5rem;
+		}
+		.dot {
+			width: 0.5rem;
+			height: 0.5rem;
+			border-radius: 9999px;
+			background: var(--accent);
+			animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+		}
+		@keyframes pulse {
+			0%,
+			100% {
+				opacity: 1;
+			}
+			50% {
+				opacity: 0.4;
+			}
+		}
+		.eyebrow span {
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.3em;
+			color: #666;
+			text-transform: uppercase;
+		}
+		.benefits-head {
+			font-size: 2.25rem;
+			font-weight: 500;
+			line-height: 1.05;
+			letter-spacing: -0.02em;
+			color: #fff;
+			max-width: 64rem;
+			margin: 0 0 6rem;
+		}
+		.benefits-head .muted {
+			color: #666;
+		}
+		.benefits-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.bcard {
+			border-radius: 2.5rem;
+			min-height: 520px;
+			position: relative;
+			overflow: hidden;
+		}
+		.bcard-1 {
+			background: #111;
+			padding: 3rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			transition: background 0.5s ease;
+		}
+		.bcard-1:hover {
+			background: #161616;
+		}
+		.badge {
+			position: absolute;
+			top: 2.5rem;
+			right: 2.5rem;
+			background: #1a1a1a;
+			border: 1px solid #333;
+			font-size: 10px;
+			font-weight: 700;
+			padding: 0.5rem 1rem;
+			border-radius: 9999px;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: #888;
+		}
+		.bcard-1 .stack {
+			margin-top: auto;
+		}
+		.bcard-1 h3 {
+			font-size: 3rem;
+			font-weight: 600;
+			letter-spacing: -0.04em;
+			margin: 0 0 0.5rem;
+			line-height: 1;
+		}
+		.bcard-1 h3.first {
+			color: #fff;
+		}
+		.bcard-1 h3.second {
+			color: #444;
+			margin-bottom: 0;
+			transition: color 0.3s ease;
+		}
+		.bcard-1:hover h3.second {
+			color: #666;
+		}
+		.bcard-2 {
+			background: linear-gradient(to bottom right, #4f46e5, #7c3aed);
+			padding: 2rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.browser {
+			width: 100%;
+			max-width: 28rem;
+			background: #e5e5e5;
+			border-radius: 0.75rem;
+			overflow: hidden;
+			box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+			transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		.bcard-2:hover .browser {
+			transform: scale(1.05);
+		}
+		.browser-bar {
+			background: #f5f5f5;
+			padding: 0.75rem 1rem;
+			border-bottom: 1px solid #e5e7eb;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		.tl {
+			width: 0.625rem;
+			height: 0.625rem;
+			border-radius: 9999px;
+		}
+		.tl.r {
+			background: #f87171;
+		}
+		.tl.y {
+			background: #facc15;
+		}
+		.tl.g {
+			background: #4ade80;
+		}
+		.urlpill {
+			margin-left: 1rem;
+			height: 0.75rem;
+			width: 8rem;
+			background: #e5e7eb;
+			border-radius: 9999px;
+		}
+		.browser-shot {
+			aspect-ratio: 16 / 9;
+			background: #f3f4f6;
+			position: relative;
+			overflow: hidden;
+		}
+		.browser-shot img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.browser-shot .scrim {
+			position: absolute;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.2);
+		}
+		.browser-shot .labels {
+			position: absolute;
+			bottom: 1.5rem;
+			left: 1.5rem;
+			color: #fff;
+		}
+		.browser-shot .labels .kicker {
+			font-size: 10px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			margin-bottom: 0.25rem;
+		}
+		.browser-shot .labels .big {
+			font-size: 1.125rem;
+			font-weight: 700;
+		}
+		.bcard-2 .hover-veil {
+			position: absolute;
+			inset: 0;
+			background: rgba(255, 255, 255, 0.05);
+			opacity: 0;
+			transition: opacity 0.5s ease;
+		}
+		.bcard-2:hover .hover-veil {
+			opacity: 1;
+		}
 
-/* ============ Selected Work ============ */
-.work-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; border-bottom: 1px solid #222; padding-bottom: 2.5rem; }
-.work-head h2 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: var(--accent); margin: 0; }
-.work-head .vol { display: none; color: #444; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
-.work-grid { display: grid; grid-template-columns: 1fr; gap: 8rem 4rem; }
-.project { cursor: pointer; }
-.project-frame { aspect-ratio: 4/3; overflow: hidden; background: #111; border-radius: 0.125rem; }
-.project-frame img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity .7s ease, transform .7s ease; }
-.project:hover .project-frame img { opacity: 1; transform: scale(1.05); }
-.project-meta { margin-top: 2rem; display: flex; justify-content: space-between; align-items: flex-start; }
-.project-meta h3 { font-size: 1.875rem; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 0.5rem; transition: color .3s ease; }
-.project:hover .project-meta h3 { color: var(--accent); }
-.project-meta .cat { color: #666; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; margin: 0; }
-.arrow-btn { padding: 0.75rem; border-radius: 9999px; border: 1px solid #333; display: flex; transition: all .3s ease; color: #ebebeb; }
-.arrow-btn .icon { font-size: 1.5rem; }
-.project:hover .arrow-btn { background: var(--accent); color: #000; border-color: transparent; }
+		/* ============ Selected Work ============ */
+		.work-head {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			margin-bottom: 5rem;
+			border-bottom: 1px solid #222;
+			padding-bottom: 2.5rem;
+		}
+		.work-head h2 {
+			font-size: 0.75rem;
+			font-weight: 700;
+			letter-spacing: 0.4em;
+			text-transform: uppercase;
+			color: var(--accent);
+			margin: 0;
+		}
+		.work-head .vol {
+			display: none;
+			color: #444;
+			font-size: 0.75rem;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+		}
+		.work-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 8rem 4rem;
+		}
+		.project {
+			cursor: pointer;
+		}
+		.project-frame {
+			aspect-ratio: 4 / 3;
+			overflow: hidden;
+			background: #111;
+			border-radius: 0.125rem;
+		}
+		.project-frame img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0.6;
+			transition:
+				opacity 0.7s ease,
+				transform 0.7s ease;
+		}
+		.project:hover .project-frame img {
+			opacity: 1;
+			transform: scale(1.05);
+		}
+		.project-meta {
+			margin-top: 2rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+		.project-meta h3 {
+			font-size: 1.875rem;
+			font-weight: 700;
+			letter-spacing: -0.01em;
+			margin: 0 0 0.5rem;
+			transition: color 0.3s ease;
+		}
+		.project:hover .project-meta h3 {
+			color: var(--accent);
+		}
+		.project-meta .cat {
+			color: #666;
+			font-size: 10px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.2em;
+			margin: 0;
+		}
+		.arrow-btn {
+			padding: 0.75rem;
+			border-radius: 9999px;
+			border: 1px solid #333;
+			display: flex;
+			transition: all 0.3s ease;
+			color: #ebebeb;
+		}
+		.arrow-btn .icon {
+			font-size: 1.5rem;
+		}
+		.project:hover .arrow-btn {
+			background: var(--accent);
+			color: #000;
+			border-color: transparent;
+		}
 
-/* ============ Footer ============ */
-.footer { position: relative; padding: 12rem 1.5rem 8rem; border-top: 1px solid #1a1a1a; }
-.footer-inner { max-width: 80rem; margin: 0 auto; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 4rem; }
-.lets-talk { font-size: 14vw; line-height: 0.85; font-weight: 900; letter-spacing: -0.04em; color: #fff; margin: 0 0 3rem; user-select: none; }
-.footer-email { font-size: 1.875rem; font-weight: 600; transition: color .3s ease; width: fit-content; display: block; margin-bottom: 1.5rem; }
-.footer-email:hover { color: var(--accent); }
-.loc { color: #666; display: flex; align-items: center; gap: 0.5rem; margin: 0; }
-.socials { display: flex; gap: 1rem; }
-.social {
-  width: 3.5rem; height: 3.5rem; border: 1px solid #333; border-radius: 9999px;
-  display: flex; align-items: center; justify-content: center; transition: all .3s ease; color: #ebebeb;
-}
-.social .icon { font-size: 1.25rem; }
-.social:hover { background: #fff; color: #000; transform: translateY(-0.5rem); }
-.legal { max-width: 80rem; margin: 10rem auto 0; padding-top: 2.5rem; border-top: 1px solid #111;
-  display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
-  color: #333; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-.legal p { margin: 0; }
-.legal-links { display: flex; gap: 2.5rem; }
-.legal-links a { transition: color .3s ease; }
-.legal-links a:hover { color: #666; }
+		/* ============ Footer ============ */
+		.footer {
+			position: relative;
+			padding: 12rem 1.5rem 8rem;
+			border-top: 1px solid #1a1a1a;
+		}
+		.footer-inner {
+			max-width: 80rem;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 4rem;
+		}
+		.lets-talk {
+			font-size: 14vw;
+			line-height: 0.85;
+			font-weight: 900;
+			letter-spacing: -0.04em;
+			color: #fff;
+			margin: 0 0 3rem;
+			user-select: none;
+		}
+		.footer-email {
+			font-size: 1.875rem;
+			font-weight: 600;
+			transition: color 0.3s ease;
+			width: fit-content;
+			display: block;
+			margin-bottom: 1.5rem;
+		}
+		.footer-email:hover {
+			color: var(--accent);
+		}
+		.loc {
+			color: #666;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin: 0;
+		}
+		.socials {
+			display: flex;
+			gap: 1rem;
+		}
+		.social {
+			width: 3.5rem;
+			height: 3.5rem;
+			border: 1px solid #333;
+			border-radius: 9999px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.3s ease;
+			color: #ebebeb;
+		}
+		.social .icon {
+			font-size: 1.25rem;
+		}
+		.social:hover {
+			background: #fff;
+			color: #000;
+			transform: translateY(-0.5rem);
+		}
+		.legal {
+			max-width: 80rem;
+			margin: 10rem auto 0;
+			padding-top: 2.5rem;
+			border-top: 1px solid #111;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 1.5rem;
+			color: #333;
+			font-size: 10px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+		}
+		.legal p {
+			margin: 0;
+		}
+		.legal-links {
+			display: flex;
+			gap: 2.5rem;
+		}
+		.legal-links a {
+			transition: color 0.3s ease;
+		}
+		.legal-links a:hover {
+			color: #666;
+		}
 
-/* ============ Responsive ============ */
-@media (min-width: 768px) {
-  .nav-journal { display: block; }
-  .dock { display: flex; }
-  .hero-left { left: 3rem; } .hero-right { right: 3rem; }
-  .hero-left p { font-size: 0.875rem; }
-  .section { padding-left: 3rem; padding-right: 3rem; }
-  .benefits-head { font-size: 4.5rem; }
-  .benefits-grid { grid-template-columns: 1fr 1fr; }
-  .bcard-1 h3 { font-size: 4.5rem; }
-  .bcard-2 { padding: 3rem; }
-  .work-head .vol { display: block; }
-  .work-grid { grid-template-columns: 1fr 1fr; }
-  .project:nth-child(2), .project:nth-child(4) { margin-top: 6rem; }
-  .footer { padding-left: 3rem; padding-right: 3rem; }
-  .footer-inner { flex-direction: row; align-items: flex-end; }
-  .lets-talk { font-size: 10vw; }
-  .footer-email { font-size: 2.25rem; }
-  .socials { margin-bottom: 1.5rem; }
-  .legal { flex-direction: row; }
-}
-@media (min-width: 1024px) {
-  .nav-links { display: flex; }
-}
-</style>
-</head>
-<body>
-<div class="wrap">
+		/* ============ Responsive ============ */
+		@media (min-width: 768px) {
+			.nav-journal {
+				display: block;
+			}
+			.dock {
+				display: flex;
+			}
+			.hero-left {
+				left: 3rem;
+			}
+			.hero-right {
+				right: 3rem;
+			}
+			.hero-left p {
+				font-size: 0.875rem;
+			}
+			.section {
+				padding-left: 3rem;
+				padding-right: 3rem;
+			}
+			.benefits-head {
+				font-size: 4.5rem;
+			}
+			.benefits-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+			.bcard-1 h3 {
+				font-size: 4.5rem;
+			}
+			.bcard-2 {
+				padding: 3rem;
+			}
+			.work-head .vol {
+				display: block;
+			}
+			.work-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+			.project:nth-child(2),
+			.project:nth-child(4) {
+				margin-top: 6rem;
+			}
+			.footer {
+				padding-left: 3rem;
+				padding-right: 3rem;
+			}
+			.footer-inner {
+				flex-direction: row;
+				align-items: flex-end;
+			}
+			.lets-talk {
+				font-size: 10vw;
+			}
+			.footer-email {
+				font-size: 2.25rem;
+			}
+			.socials {
+				margin-bottom: 1.5rem;
+			}
+			.legal {
+				flex-direction: row;
+			}
+		}
+		@media (min-width: 1024px) {
+			.nav-links {
+				display: flex;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<!-- Top Navigation -->
+			<nav class="topnav">
+				<div class="nav-left">
+					<a href="/" id="nav-logo" class="logo">
+						<div class="logo-mark">S.</div>
+					</a>
+					<div class="nav-links">
+						<a href="#" id="nav-home-link">Home</a>
+						<a href="#" id="nav-about-link">About</a>
+						<a href="#work" id="nav-work-link">Our Work</a>
+						<a href="#contact" id="nav-contact-link">Contact</a>
+					</div>
+				</div>
+				<div class="nav-right">
+					<a href="#" id="nav-journal-link" class="nav-journal">Our journal</a>
+					<a href="#" id="nav-cta-btn" class="nav-cta">Get started</a>
+				</div>
+			</nav>
 
-  <!-- Top Navigation -->
-  <nav class="topnav">
-    <div class="nav-left">
-      <a href="/" id="nav-logo" class="logo">
-        <div class="logo-mark">S.</div>
-      </a>
-      <div class="nav-links">
-        <a href="#" id="nav-home-link">Home</a>
-        <a href="#" id="nav-about-link">About</a>
-        <a href="#work" id="nav-work-link">Our Work</a>
-        <a href="#contact" id="nav-contact-link">Contact</a>
-      </div>
-    </div>
-    <div class="nav-right">
-      <a href="#" id="nav-journal-link" class="nav-journal">Our journal</a>
-      <a href="#" id="nav-cta-btn" class="nav-cta">Get started</a>
-    </div>
-  </nav>
+			<!-- Floating Bottom Navigation -->
+			<div class="dock">
+				<div class="dock-cluster">
+					<button class="dock-btn" title="Dashboard">
+						<svg class="icon" viewBox="0 0 24 24">
+							<rect x="3" y="3" width="7" height="7" rx="1" />
+							<rect x="14" y="3" width="7" height="7" rx="1" />
+							<rect x="14" y="14" width="7" height="7" rx="1" />
+							<rect x="3" y="14" width="7" height="7" rx="1" />
+						</svg>
+					</button>
+					<button class="dock-btn" title="Global">
+						<svg class="icon" viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="10" />
+							<path d="M2 12h20" />
+							<path
+								d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+							/>
+						</svg>
+					</button>
+					<button class="dock-btn" title="Mobile">
+						<svg class="icon" viewBox="0 0 24 24">
+							<rect x="5" y="2" width="14" height="20" rx="2" />
+							<path d="M12 18h.01" />
+						</svg>
+					</button>
+					<button class="dock-btn" title="Services">
+						<svg class="icon" viewBox="0 0 24 24">
+							<path d="M16.5 9.4 7.55 4.24" />
+							<path
+								d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+							/>
+							<path d="m3.3 7 8.7 5 8.7-5" />
+							<path d="M12 22V12" />
+						</svg>
+					</button>
+					<button class="dock-btn" title="Announcements">
+						<svg class="icon" viewBox="0 0 24 24">
+							<path d="m3 11 18-5v12L3 14v-3z" />
+							<path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+						</svg>
+					</button>
+				</div>
+				<a href="#contact" id="floating-contact-btn" class="dock-contact"
+					>Contact</a
+				>
+			</div>
 
-  <!-- Floating Bottom Navigation -->
-  <div class="dock">
-    <div class="dock-cluster">
-      <button class="dock-btn" title="Dashboard"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></button>
-      <button class="dock-btn" title="Global"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></button>
-      <button class="dock-btn" title="Mobile"><svg class="icon" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></button>
-      <button class="dock-btn" title="Services"><svg class="icon" viewBox="0 0 24 24"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></button>
-      <button class="dock-btn" title="Announcements"><svg class="icon" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></button>
-    </div>
-    <a href="#contact" id="floating-contact-btn" class="dock-contact">Contact</a>
-  </div>
+			<!-- Hero -->
+			<header class="hero">
+				<div class="hero-bg"></div>
+				<h1 class="hero-text">/design</h1>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="hero-bg"></div>
-    <h1 class="hero-text">/design</h1>
+				<div class="hero-left">
+					<div class="avatars">
+						<img src="assets/avatar-1.jpg" alt="Team member">
+						<img src="assets/avatar-2.jpg" alt="Team member">
+						<img src="assets/avatar-3.jpg" alt="Team member">
+					</div>
+					<p>Designing the<br>future, today.</p>
+				</div>
 
-    <div class="hero-left">
-      <div class="avatars">
-        <img src="assets/avatar-1.jpg" alt="Team member" />
-        <img src="assets/avatar-2.jpg" alt="Team member" />
-        <img src="assets/avatar-3.jpg" alt="Team member" />
-      </div>
-      <p>Designing the<br/>future, today.</p>
-    </div>
+				<div class="hero-right">
+					<a
+						href="mailto:hello@superdesign.dev"
+						id="hero-email-link"
+						class="hero-email"
+						>hello@superdesign.dev</a
+					>
+				</div>
+			</header>
 
-    <div class="hero-right">
-      <a href="mailto:hello@superdesign.dev" id="hero-email-link" class="hero-email">hello@superdesign.dev</a>
-    </div>
-  </header>
+			<!-- Benefits -->
+			<section class="section">
+				<div class="eyebrow">
+					<div class="dot"></div>
+					<span>Why launch slow when you can move fast?</span>
+				</div>
+				<h2 class="benefits-head">
+					Clean, scalable design that helps you
+					<span class="muted">ship faster</span>
+					and grow your revenue.
+				</h2>
 
-  <!-- Benefits -->
-  <section class="section">
-    <div class="eyebrow">
-      <div class="dot"></div>
-      <span>Why launch slow when you can move fast?</span>
-    </div>
-    <h2 class="benefits-head">Clean, scalable design that helps you <span class="muted">ship faster</span> and grow your revenue.</h2>
+				<div class="benefits-grid">
+					<div class="bcard bcard-1">
+						<div class="badge">Hyper-Growth</div>
+						<div class="stack">
+							<h3 class="first">Start faster.</h3>
+							<h3 class="second">Earn sooner.</h3>
+						</div>
+					</div>
 
-    <div class="benefits-grid">
-      <div class="bcard bcard-1">
-        <div class="badge">Hyper-Growth</div>
-        <div class="stack">
-          <h3 class="first">Start faster.</h3>
-          <h3 class="second">Earn sooner.</h3>
-        </div>
-      </div>
+					<div class="bcard bcard-2">
+						<div class="browser">
+							<div class="browser-bar">
+								<span class="tl r"></span><span class="tl y"></span
+								><span class="tl g"></span>
+								<span class="urlpill"></span>
+							</div>
+							<div class="browser-shot">
+								<img src="assets/dashboard.jpg" alt="Dashboard preview">
+								<div class="scrim"></div>
+								<div class="labels">
+									<div class="kicker">Enterprise Edition</div>
+									<div class="big">Analytics v4.0</div>
+								</div>
+							</div>
+						</div>
+						<div class="hover-veil"></div>
+					</div>
+				</div>
+			</section>
 
-      <div class="bcard bcard-2">
-        <div class="browser">
-          <div class="browser-bar">
-            <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
-            <span class="urlpill"></span>
-          </div>
-          <div class="browser-shot">
-            <img src="assets/dashboard.jpg" alt="Dashboard preview" />
-            <div class="scrim"></div>
-            <div class="labels">
-              <div class="kicker">Enterprise Edition</div>
-              <div class="big">Analytics v4.0</div>
-            </div>
-          </div>
-        </div>
-        <div class="hover-veil"></div>
-      </div>
-    </div>
-  </section>
+			<!-- Selected Work -->
+			<section id="work" class="section">
+				<div class="work-head">
+					<h2>Selected Work</h2>
+					<span class="vol">Volume 01 &mdash; 2024</span>
+				</div>
 
-  <!-- Selected Work -->
-  <section id="work" class="section">
-    <div class="work-head">
-      <h2>Selected Work</h2>
-      <span class="vol">Volume 01 &mdash; 2024</span>
-    </div>
+				<div class="work-grid">
+					<article class="project">
+						<div class="project-frame">
+							<img src="assets/project-nebula.jpg" alt="Nebula Project">
+						</div>
+						<div class="project-meta">
+							<div>
+								<h3>NEBULA</h3>
+								<p class="cat">Brand Identity / AI</p>
+							</div>
+							<div class="arrow-btn">
+								<svg class="icon" viewBox="0 0 24 24">
+									<path d="M7 7h10v10" />
+									<path d="M7 17 17 7" />
+								</svg>
+							</div>
+						</div>
+					</article>
 
-    <div class="work-grid">
-      <article class="project">
-        <div class="project-frame"><img src="assets/project-nebula.jpg" alt="Nebula Project" /></div>
-        <div class="project-meta">
-          <div>
-            <h3>NEBULA</h3>
-            <p class="cat">Brand Identity / AI</p>
-          </div>
-          <div class="arrow-btn"><svg class="icon" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
-        </div>
-      </article>
+					<article class="project">
+						<div class="project-frame">
+							<img src="assets/project-quantum.jpg" alt="Quantum Project">
+						</div>
+						<div class="project-meta">
+							<div>
+								<h3>QUANTUM</h3>
+								<p class="cat">Web Design / Fintech</p>
+							</div>
+							<div class="arrow-btn">
+								<svg class="icon" viewBox="0 0 24 24">
+									<path d="M7 7h10v10" />
+									<path d="M7 17 17 7" />
+								</svg>
+							</div>
+						</div>
+					</article>
 
-      <article class="project">
-        <div class="project-frame"><img src="assets/project-quantum.jpg" alt="Quantum Project" /></div>
-        <div class="project-meta">
-          <div>
-            <h3>QUANTUM</h3>
-            <p class="cat">Web Design / Fintech</p>
-          </div>
-          <div class="arrow-btn"><svg class="icon" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
-        </div>
-      </article>
+					<article class="project">
+						<div class="project-frame">
+							<img src="assets/project-echo.jpg" alt="Echo Project">
+						</div>
+						<div class="project-meta">
+							<div>
+								<h3>ECHO</h3>
+								<p class="cat">Art Direction / Media</p>
+							</div>
+							<div class="arrow-btn">
+								<svg class="icon" viewBox="0 0 24 24">
+									<path d="M7 7h10v10" />
+									<path d="M7 17 17 7" />
+								</svg>
+							</div>
+						</div>
+					</article>
 
-      <article class="project">
-        <div class="project-frame"><img src="assets/project-echo.jpg" alt="Echo Project" /></div>
-        <div class="project-meta">
-          <div>
-            <h3>ECHO</h3>
-            <p class="cat">Art Direction / Media</p>
-          </div>
-          <div class="arrow-btn"><svg class="icon" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
-        </div>
-      </article>
+					<article class="project">
+						<div class="project-frame">
+							<img src="assets/project-flux.jpg" alt="Flux Project">
+						</div>
+						<div class="project-meta">
+							<div>
+								<h3>FLUX</h3>
+								<p class="cat">Development / SaaS</p>
+							</div>
+							<div class="arrow-btn">
+								<svg class="icon" viewBox="0 0 24 24">
+									<path d="M7 7h10v10" />
+									<path d="M7 17 17 7" />
+								</svg>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
 
-      <article class="project">
-        <div class="project-frame"><img src="assets/project-flux.jpg" alt="Flux Project" /></div>
-        <div class="project-meta">
-          <div>
-            <h3>FLUX</h3>
-            <p class="cat">Development / SaaS</p>
-          </div>
-          <div class="arrow-btn"><svg class="icon" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
-        </div>
-      </article>
-    </div>
-  </section>
+			<!-- CTA / Footer -->
+			<footer id="contact" class="footer">
+				<div class="footer-inner">
+					<div>
+						<h2 class="lets-talk">LET'S<br>TALK.</h2>
+						<a
+							href="mailto:hello@superdesign.dev"
+							id="footer-email-link"
+							class="footer-email"
+							>hello@superdesign.dev</a
+						>
+						<p class="loc">
+							<svg class="icon" viewBox="0 0 24 24">
+								<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+								<circle cx="12" cy="10" r="3" />
+							</svg>
+							Available for worldwide collaborations.
+						</p>
+					</div>
+					<div class="socials">
+						<a href="#" id="social-ig" class="social" aria-label="Instagram"
+							><svg class="icon" viewBox="0 0 24 24">
+								<rect x="2" y="2" width="20" height="20" rx="5" />
+								<circle cx="12" cy="12" r="4" />
+								<path d="M17.5 6.5h.01" />
+							</svg></a
+						>
+						<a href="#" id="social-tw" class="social" aria-label="Twitter"
+							><svg class="icon" viewBox="0 0 24 24">
+								<path
+									d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+								/>
+							</svg></a
+						>
+						<a href="#" id="social-li" class="social" aria-label="LinkedIn"
+							><svg class="icon" viewBox="0 0 24 24">
+								<path
+									d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"
+								/>
+								<rect x="2" y="9" width="4" height="12" />
+								<circle cx="4" cy="4" r="2" />
+							</svg></a
+						>
+						<a href="#" id="social-web" class="social" aria-label="Website"
+							><svg class="icon" viewBox="0 0 24 24">
+								<circle cx="12" cy="12" r="10" />
+								<path d="M2 12h20" />
+								<path
+									d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+								/>
+							</svg></a
+						>
+					</div>
+				</div>
 
-  <!-- CTA / Footer -->
-  <footer id="contact" class="footer">
-    <div class="footer-inner">
-      <div>
-        <h2 class="lets-talk">LET'S<br/>TALK.</h2>
-        <a href="mailto:hello@superdesign.dev" id="footer-email-link" class="footer-email">hello@superdesign.dev</a>
-        <p class="loc">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Available for worldwide collaborations.
-        </p>
-      </div>
-      <div class="socials">
-        <a href="#" id="social-ig" class="social" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
-        <a href="#" id="social-tw" class="social" aria-label="Twitter"><svg class="icon" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-        <a href="#" id="social-li" class="social" aria-label="LinkedIn"><svg class="icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-        <a href="#" id="social-web" class="social" aria-label="Website"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
-      </div>
-    </div>
-
-    <div class="legal">
-      <p>&copy; 2024 Superdesign Agency. All rights reserved.</p>
-      <div class="legal-links">
-        <a href="#" id="footer-privacy">Privacy Policy</a>
-        <a href="#" id="footer-terms">Terms of Service</a>
-      </div>
-    </div>
-  </footer>
-
-</div>
-</body>
+				<div class="legal">
+					<p>&copy; 2024 Superdesign Agency. All rights reserved.</p>
+					<div class="legal-links">
+						<a href="#" id="footer-privacy">Privacy Policy</a>
+						<a href="#" id="footer-terms">Terms of Service</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
 </html>

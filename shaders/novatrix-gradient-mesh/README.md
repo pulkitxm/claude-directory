@@ -1,5 +1,7 @@
 # NOVATRIX — Gradient Mesh Shader Studio (ogl + React + Vite + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive palette and uniform studio built around the **Novatrix** `ogl` gradient mesh WebGL shader — a water-distorted fractal gradient field rendered on the GPU through three colour stops mixed via a distortion loop, sine/cosine ripples, radial swirl, and colour-dodge film grain. The prompt's `demo.tsx` headline ("Gradient Mesh" in `mix-blend-overlay`) sits verbatim on top of the live field; surrounding monochrome glass chrome keeps the shader as the sole colour source with a uniform control deck, eight curated palettes, a live telemetry HUD, and a tabbed docs dock. Built with React 18 + TypeScript + Vite 5 + Tailwind CSS v4 on a shadcn-style project structure. Generated with Claude Fable 5.
 
 ## Stack

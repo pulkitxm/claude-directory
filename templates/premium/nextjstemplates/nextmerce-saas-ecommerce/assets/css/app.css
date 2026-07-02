@@ -1,0 +1,307 @@
+/* NextMerce clone — supplemental styles (drawer, modal, helpers) */
+
+/* Hero swiper pagination bullets (blue active) */
+.hero-carousel .swiper-pagination {
+	position: absolute;
+	bottom: 16px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 8px;
+	z-index: 10;
+	width: auto;
+}
+.hero-carousel .swiper-pagination-bullet {
+	width: 8px;
+	height: 8px;
+	border-radius: 9999px;
+	background: #c3cef6;
+	opacity: 1;
+	transition:
+		width 0.2s ease,
+		background 0.2s ease;
+}
+.hero-carousel .swiper-pagination-bullet-active {
+	width: 22px;
+	background: #3c50e0;
+}
+
+/* Swiper nav arrows: the template uses its own SVG buttons placed in a flex header.
+   Hide swiper's default chevrons and keep our buttons in normal flow (not abs-positioned). */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+	display: none;
+}
+.swiper-button-next,
+.swiper-button-prev {
+	position: static !important;
+	margin: 0 !important;
+	width: 36px;
+	height: 36px;
+	border: 1px solid #e5e7eb;
+	background: #fff;
+	color: #1c274c;
+	border-radius: 9999px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	top: auto;
+	left: auto;
+	right: auto;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+	border-color: #3c50e0;
+	background: #3c50e0;
+	color: #fff;
+}
+.swiper-button-disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+.swiper-button-next svg,
+.swiper-button-prev svg {
+	width: 20px;
+	height: 20px;
+}
+
+/* List view for shop pages */
+.nm-list-view {
+	display: flex !important;
+	flex-direction: column;
+	gap: 20px;
+}
+.nm-list-view .group {
+	width: 100%;
+}
+
+.nm-thumb-active {
+	outline: 2px solid #3c50e0;
+	outline-offset: 2px;
+	border-radius: 10px;
+}
+
+/* ---------- Overlay ---------- */
+.nm-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	visibility: hidden;
+	transition:
+		opacity 0.3s ease,
+		visibility 0.3s ease;
+	z-index: 9998;
+}
+.nm-overlay.show {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* ---------- Mini-cart drawer ---------- */
+.nm-cart-drawer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	max-width: 500px;
+	background: #fff;
+	z-index: 9999;
+	transform: translateX(100%);
+	transition: transform 0.3s ease;
+	display: flex;
+	flex-direction: column;
+	box-shadow: -8px 0 24px rgba(13, 10, 44, 0.12);
+}
+.nm-cart-drawer.show {
+	transform: translateX(0);
+}
+.nm-cart-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24px 28px;
+	border-bottom: 1px solid #e5e7eb;
+}
+.nm-cart-head h3 {
+	font-size: 20px;
+	font-weight: 600;
+	color: #1c274c;
+}
+.nm-close {
+	font-size: 28px;
+	line-height: 1;
+	color: #6c6f93;
+	background: none;
+	border: none;
+	cursor: pointer;
+	transition: color 0.2s ease;
+}
+.nm-close:hover {
+	color: #f23030;
+}
+.nm-cart-body {
+	flex: 1;
+	overflow-y: auto;
+	padding: 28px;
+}
+.nm-cart-empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	height: 100%;
+	min-height: 280px;
+}
+.nm-cart-empty p {
+	color: #6c6f93;
+	font-size: 16px;
+}
+.nm-cart-foot {
+	border-top: 1px solid #e5e7eb;
+	padding: 24px 28px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+.nm-cart-subtotal {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: 600;
+	color: #1c274c;
+	margin-bottom: 6px;
+}
+
+/* ---------- Buttons ---------- */
+.nm-btn-blue,
+.nm-btn-dark,
+.nm-btn-outline {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-weight: 500;
+	font-size: 15px;
+	border-radius: 9999px;
+	padding: 12px 28px;
+	transition: all 0.2s ease;
+}
+.nm-btn-blue {
+	background: #3c50e0;
+	color: #fff;
+}
+.nm-btn-blue:hover {
+	background: #1c3fb7;
+}
+.nm-btn-dark {
+	background: #1c274c;
+	color: #fff;
+}
+.nm-btn-dark:hover {
+	background: #2a3a6b;
+}
+.nm-btn-outline {
+	border: 1px solid #e5e7eb;
+	color: #1c274c;
+	background: #fff;
+}
+.nm-btn-outline:hover {
+	border-color: #3c50e0;
+	color: #3c50e0;
+}
+
+/* ---------- Quick-view modal ---------- */
+.nm-qv-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -48%) scale(0.96);
+	z-index: 9999;
+	background: #fff;
+	border-radius: 16px;
+	width: calc(100% - 32px);
+	max-width: 1000px;
+	max-height: 90vh;
+	overflow-y: auto;
+	padding: 32px;
+	opacity: 0;
+	visibility: hidden;
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease,
+		visibility 0.3s ease;
+	box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+.nm-qv-modal.show {
+	opacity: 1;
+	visibility: visible;
+	transform: translate(-50%, -50%) scale(1);
+}
+.nm-qv-close {
+	position: absolute;
+	top: 16px;
+	right: 20px;
+}
+.nm-qv-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 28px;
+}
+@media (min-width: 768px) {
+	.nm-qv-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+.nm-qv-img {
+	background: #f6f7fb;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	min-height: 320px;
+}
+.nm-qv-img img {
+	max-width: 100%;
+	max-height: 300px;
+	object-fit: contain;
+}
+.nm-qv-info {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+.nm-qv-title {
+	font-size: 26px;
+	font-weight: 600;
+	color: #1c274c;
+}
+.nm-qv-rating {
+	color: #fbbf24;
+	font-size: 16px;
+}
+.nm-qv-rating span {
+	color: #6c6f93;
+	font-size: 14px;
+	margin-left: 6px;
+}
+.nm-qv-price {
+	font-size: 24px;
+	font-weight: 700;
+	color: #1c274c;
+}
+.nm-qv-desc {
+	color: #6c6f93;
+	line-height: 1.6;
+}
+.nm-qv-actions {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin-top: 8px;
+}

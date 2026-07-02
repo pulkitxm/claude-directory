@@ -1,5 +1,7 @@
 # Ironclad — Password Manager Hero Section (React 18 + TypeScript + Framer Motion + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A single-screen landing page hero section for a password manager called Ironclad, featuring a full-viewport looping background video, a responsive navbar with a slide-in mobile sheet menu, and a centered hero block with an inline-icon headline, subtext, and a pill CTA whose elements fade up in sequence on load. The design uses Helvetica Now Display Bold for headings, Inter for body text, and a purple accent (`#7342E2`) for CTAs. Built with React 18, TypeScript, Vite, Tailwind CSS 3, and Framer Motion. Generated with Claude Fable 5.
 
 - Full-viewport looping background video

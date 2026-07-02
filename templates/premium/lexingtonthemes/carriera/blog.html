@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Blog — Carriera</title>
+		<meta name="description" content="Latest news and updates from Carriera.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		var e = localStorage.getItem("theme");
+		if (e) document.documentElement.setAttribute("data-theme", e);
+		</script>
+	</head>
+	<body class="flex flex-col bg-secondary min-h-svh">
+		<!-- ============================================================ NAV -->
+		<section>
+			<div class="max-w-screen 2xl:max-w-\[1400px\] mx-auto px-8">
+				<div class="grid grid-cols-2 lg:grid-cols-5 gap-4 py-2">
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+
+					<div
+						class="hidden items-center gap-4 text-primary lg:flex justify-center lg:col-span-3"
+					>
+						<a
+							href="index.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Home</a
+						>
+						<a
+							href="blog.html"
+							class="hover:text-primary\/40 text-sm duration-300 font-medium"
+							>Blog</a
+						>
+						<a
+							href="helpcenter.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Help Center</a
+						>
+						<a
+							href="pricing.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Pricing</a
+						>
+						<a
+							href="sign-in.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Sign In</a
+						>
+						<a
+							href="system-overview.html"
+							class="hover:text-primary\/40 text-sm duration-300"
+							>Overview</a
+						>
+					</div>
+
+					<div class="items-center gap-2 flex ml-auto">
+						<!-- Search button -->
+						<div class="relative">
+							<button
+								type="button"
+								id="searchButton"
+								aria-label="Search content"
+								class="hover:text-primary\/40 duration-300 text-primary text-sm"
+							>
+								Search
+							</button>
+							<!-- Search modal -->
+							<div
+								id="searchModal"
+								class="fixed inset-0 z-80 hidden overflow-y-auto"
+								role="dialog"
+								aria-modal="true"
+							>
+								<div class="min-h-screen px-4 text-center">
+									<div
+										class="bg-secondary\/50 fixed inset-0 backdrop-blur transition-opacity"
+										id="modalOverlay"
+									></div>
+									<div
+										class="relative mt-12 mb-8 inline-block w-full max-w-xl transform rounded px-1.5 text-left align-middle transition-all lg:mt-24"
+									>
+										<div
+											class="bg-secondary outline-2 outline-primary\/10 w-full rounded p-4 pb-2"
+										>
+											<div class="p-1">
+												<label
+													for="searchInput"
+													class="text-primary block text-sm font-medium"
+													>Search content</label
+												>
+												<input
+													type="text"
+													id="searchInput"
+													class="border-primary\/10 focus:border-primary text-primary w-full border-0 border-b bg-transparent px-0 text-xs focus:ring-0 focus:outline-none"
+													placeholder=""
+												>
+											</div>
+											<div
+												id="searchResults"
+												class="scrollbar-hide flex max-h-200 flex-col gap-1 overflow-y-auto p-1"
+											></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Desktop CTAs -->
+						<div class="hidden items-center gap-2 lg:flex">
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary\/10 hover:bg-primary\/20 h-9 px-4 py-3 text-sm"
+								href="sign-in.html"
+								>Sign in</a
+							>
+							<a
+								class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-white bg-accent hover:bg-accent\/80 h-9 px-4 py-3 text-sm"
+								href="sign-up.html"
+								>Sign up</a
+							>
+						</div>
+
+						<!-- Mobile hamburger -->
+						<button
+							id="navToggle"
+							class="hover:text-primary\/40 duration-300 text-primary text-sm lg:hidden"
+							aria-expanded="false"
+							aria-controls="mobileMenu"
+						>
+							Menu
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Mobile menu -->
+		<div
+			id="mobileMenu"
+			class="lg:hidden fixed inset-0 z-40 hidden"
+			aria-hidden="true"
+		>
+			<div
+				class="relative z-10 m-4 rounded-lg outline-2 outline-primary\/10 bg-secondary p-4 shadow-2xl"
+			>
+				<div class="flex items-center justify-between">
+					<a href="index.html" class="flex items-center gap-2">
+						<span class="text-primary font-medium lowercase">Carriera®</span>
+					</a>
+					<button
+						class="hover:text-primary text-primary duration-300 text-sm"
+						data-close-nav=""
+					>
+						Close
+					</button>
+				</div>
+				<nav class="mt-12 flex flex-col gap-3">
+					<a
+						href="index.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Home</a
+					>
+					<a
+						href="blog.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Blog</a
+					>
+					<a
+						href="helpcenter.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Help Center</a
+					>
+					<a
+						href="pricing.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Pricing</a
+					>
+					<a
+						href="sign-in.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Sign In</a
+					>
+					<a
+						href="system-overview.html"
+						class="hover:text-primary\/40 duration-300 text-primary text-sm"
+						>Overview</a
+					>
+				</nav>
+				<div class="mt-12 flex items-center gap-2">
+					<a
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-white bg-accent hover:bg-accent\/80 h-8 px-4 py-3 text-xs"
+						href="sign-up.html"
+						>Sign up</a
+					>
+					<a
+						class="flex items-center font-medium justify-center transition-all rounded-full duration-300 text-primary bg-primary\/10 hover:bg-primary\/20 h-8 px-4 py-3 text-xs"
+						href="sign-in.html"
+						>Sign in</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- ============================================================ MAIN -->
+		<main class="grow">
+			<section>
+				<div class="max-w-screen 2xl:max-w-\[1400px\] mx-auto px-8 py-24">
+					<h1
+						class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary font-semibold tracking-tighter text-balance"
+					>
+						Latest news
+					</h1>
+
+					<!-- 4-col grid: tags sidebar | posts list (2 cols) | newsletter -->
+					<div
+						class="mt-12 grid grid-cols-1 items-start gap-12 md:grid-cols-2 lg:grid-cols-4"
+					>
+						<!-- Tags filter (col 1, sticky) -->
+						<div
+							class="flex flex-wrap items-center gap-2 lg:sticky lg:top-24 lg:z-50"
+						>
+							<a
+								title="business"
+								aria-label="business"
+								href="blog.html?tag=business"
+								class="text-primary font-mono text-xs font-medium uppercase duration-300 hover:underline"
+								>business</a
+							>
+							<a
+								title="sports"
+								aria-label="sports"
+								href="blog.html?tag=sports"
+								class="text-primary font-mono text-xs font-medium uppercase duration-300 hover:underline"
+								>sports</a
+							>
+							<a
+								title="health"
+								aria-label="health"
+								href="blog.html?tag=health"
+								class="text-primary font-mono text-xs font-medium uppercase duration-300 hover:underline"
+								>health</a
+							>
+							<a
+								title="finance"
+								aria-label="finance"
+								href="blog.html?tag=finance"
+								class="text-primary font-mono text-xs font-medium uppercase duration-300 hover:underline"
+								>finance</a
+							>
+							<a
+								title="economy"
+								aria-label="economy"
+								href="blog.html?tag=economy"
+								class="text-primary font-mono text-xs font-medium uppercase duration-300 hover:underline"
+								>economy</a
+							>
+							<a
+								title="politics"
+								aria-label="politics"
+								href="blog.html?tag=politics"
+								class="text-primary font-mono text-xs font-medium uppercase duration-300 hover:underline"
+								>politics</a
+							>
+							<a
+								title="shifts"
+								aria-label="shifts"
+								href="blog.html?tag=shifts"
+								class="text-primary font-mono text-xs font-medium uppercase duration-300 hover:underline"
+								>shifts</a
+							>
+						</div>
+
+						<!-- Posts list (col 2–3, 2 cols wide) -->
+						<div
+							class="divide-primary\/10 border-primary\/10 flex flex-col divide-y border-y lg:col-span-2"
+						>
+							<!-- Post 2: Health -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="The Future of Renewable Energy: Innovations and Challenges"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Jan 22, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										The Future of Renewable Energy: Innovations and Challenges
+									</h3>
+									<p class="text-sm text-primary\/60">
+										Exploring the latest advancements in renewable energy and
+										the challenges that lie ahead for a sustainable future.
+									</p>
+								</div>
+							</div>
+
+							<!-- Post 10: Sports -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="The Biggest Sports Moments of 2026"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Apr 10, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										The Biggest Sports Moments of 2026
+									</h3>
+									<p class="text-sm text-primary\/60">
+										A look at the most exciting and unforgettable moments in
+										sports for 2026, from record-breaking performances to
+										championship victories.
+									</p>
+								</div>
+							</div>
+
+							<!-- Post 9: Finance -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="Top Finance Trends in 2026: Innovations Shaping the Future"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Apr 01, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										Top Finance Trends in 2026: Innovations Shaping the Future
+									</h3>
+									<p class="text-sm text-primary\/60">
+										Exploring the latest advancements and trends in technology
+										for 2026, from AI breakthroughs to cybersecurity
+										developments.
+									</p>
+								</div>
+							</div>
+
+							<!-- Post 8: Finance -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="Finances in 2026: Challenges and Innovations"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Mar 20, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										Finances in 2026: Challenges and Innovations
+									</h3>
+									<p class="text-sm text-primary\/60">
+										Exploring the latest advancements, challenges, and
+										breakthroughs in global health for 2026.
+									</p>
+								</div>
+							</div>
+
+							<!-- Post 7: Finance -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="Financial Trends in 2026: Navigating an Evolving Market"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Mar 10, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										Financial Trends in 2026: Navigating an Evolving Market
+									</h3>
+									<p class="text-sm text-primary\/60">
+										Analyzing the key financial trends, investment strategies,
+										and market developments shaping the global financial
+										landscape in 2026.
+									</p>
+								</div>
+							</div>
+
+							<!-- Post 6: Economy -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="The Global Economic Outlook for 2026: Challenges and Opportunities"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Mar 01, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										The Global Economic Outlook for 2026: Challenges and
+										Opportunities
+									</h3>
+									<p class="text-sm text-primary\/60">
+										Examining the key economic trends, challenges, and
+										opportunities shaping the global economy in 2026.
+									</p>
+								</div>
+							</div>
+
+							<!-- Post 5: Politics -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="The Political Landscape of 2026: Key Issues and Challenges"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Feb 18, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										The Political Landscape of 2026: Key Issues and Challenges
+									</h3>
+									<p class="text-sm text-primary\/60">
+										Analyzing the major political developments and challenges
+										shaping global politics in 2026, from elections to policy
+										shifts.
+									</p>
+								</div>
+							</div>
+
+							<!-- Post 4: Business -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="The Future of Business: Key Strategies for 2026"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Feb 10, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										The Future of Business: Key Strategies for 2026
+									</h3>
+									<p class="text-sm text-primary\/60">
+										Examining the major trends and strategies shaping the
+										business landscape in 2026, from digital transformation to
+										sustainability initiatives.
+									</p>
+								</div>
+							</div>
+
+							<!-- Post 3: Politics -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="Europe's Shifting Landscape: Key Political and Economic Trends"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Feb 01, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										Europe's Shifting Landscape: Key Political and Economic
+										Trends
+									</h3>
+									<p class="text-sm text-primary\/60">
+										Exploring the major political and economic changes shaping
+										Europe in 2026, from policy shifts to economic challenges
+										and opportunities.
+									</p>
+								</div>
+							</div>
+
+							<!-- Post 1: Finance -->
+							<div class="relative py-4">
+								<a
+									href="blog-post.html"
+									title="Global Economic Shifts: What to Expect in 2026"
+									class="absolute inset-0 z-10"
+								></a>
+								<div class="relative items-start">
+									<p
+										class="text-xs text-primary\/60 font-mono font-medium uppercase"
+									>
+										Jan 15, 2026
+									</p>
+									<h3
+										class="text-base text-primary mt-2 flex items-center gap-1 font-medium capitalize"
+									>
+										Global Economic Shifts: What to Expect in 2026
+									</h3>
+									<p class="text-sm text-primary\/60">
+										An analysis of the major economic trends shaping the world
+										in 2026, from market fluctuations to policy changes and
+										their global impact.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Newsletter (col 4, sticky) -->
+						<div class="lg:sticky lg:top-24 lg:z-50">
+							<div>
+								<h3
+									class="text-base text-primary flex items-center gap-1 font-medium capitalize"
+								>
+									Subscribe to our newsletter
+								</h3>
+								<p class="text-sm text-primary\/60 mt-2">
+									Enjoy the latest news and updates from our team and community.
+								</p>
+								<form action="#" method="POST" class="mt-2">
+									<div>
+										<label
+											for="email"
+											class="text-primary block text-sm font-medium"
+											>Subscribe to our newsletter</label
+										>
+										<input
+											type="email"
+											id="email"
+											name="email"
+											required=""
+											class="border-primary\/10 focus:border-primary text-primary w-full border-0 border-b bg-transparent px-0 text-xs focus:ring-0 focus:outline-none"
+											placeholder="your@email.com"
+										>
+									</div>
+									<div class="mt-2 flex">
+										<button
+											class="flex items-center font-medium justify-center transition-all rounded-full duration-300 bg-primary text-secondary hover:bg-primary\/80 h-8 px-4 py-3 text-xs"
+											type="submit"
+										>
+											Subscribe
+										</button>
+									</div>
+								</form>
+								<p class="text-xs text-primary\/60 mt-2">
+									No spam, promise......
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ============================================================ FOOTER -->
+		<footer>
+			<div class="max-w-screen 2xl:max-w-\[1400px\] mx-auto px-8 py-12">
+				<div class="mt-12 flex flex-wrap items-center justify-between gap-2">
+					<p class="text-xs text-primary\/60">
+						© Copyright Lexington Themes <span id="year">2026</span>
+					</p>
+					<ul role="list" class="mt-2 flex flex-wrap gap-2">
+						<li>
+							<a
+								class="text-sm text-primary\/60 hover:text-primary transition duration-300 ease-in-out"
+								href="#_"
+								>X</a
+							>
+						</li>
+						<li>
+							<a
+								class="text-sm text-primary\/60 hover:text-primary transition duration-300 ease-in-out"
+								href="#_"
+								>LinkedIn</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+
+		<!-- ============================================================ THEME SWITCHER -->
+		<div class="fixed bottom-4 right-4 z-50">
+			<div class="flex items-center gap-2">
+				<button
+					id="theme-dot-default"
+					data-theme="default"
+					style="width:1rem;height:1rem;border-radius:50%;background:#ffffff;outline:2px solid color-mix(in oklab, var(--color-primary) 10%, transparent);outline-offset:2px;cursor:pointer;transition:outline-color 0.2s;"
+					title="Light"
+				></button>
+				<button
+					id="theme-dot-dark"
+					data-theme="dark"
+					style="width:1rem;height:1rem;border-radius:50%;background:#101319;outline:2px solid transparent;outline-offset:2px;cursor:pointer;transition:outline-color 0.2s;"
+					title="Dark"
+				></button>
+				<button
+					id="theme-dot-accent"
+					data-theme="accent"
+					style="width:1rem;height:1rem;border-radius:50%;background:#245230;outline:2px solid transparent;outline-offset:2px;cursor:pointer;transition:outline-color 0.2s;"
+					title="Accent"
+				></button>
+			</div>
+		</div>
+
+		<!-- ============================================================ SCRIPTS -->
+		<script>
+		// Theme switcher
+		(function () {
+			const dots = Array.from(document.querySelectorAll('[id^="theme-dot"]'));
+			let current = localStorage.getItem("theme") || "default";
+			let timer;
+
+			function setTheme(theme) {
+				document.documentElement.classList.add("theme-animating");
+				clearTimeout(timer);
+				timer = setTimeout(
+					() => document.documentElement.classList.remove("theme-animating"),
+					400,
+				);
+
+				if (theme === "default") {
+					document.documentElement.removeAttribute("data-theme");
+					localStorage.removeItem("theme");
+				} else {
+					document.documentElement.setAttribute("data-theme", theme);
+					localStorage.setItem("theme", theme);
+				}
+				current = theme;
+				dots.forEach((d) => {
+					const active = d.dataset.theme === theme;
+					d.style.outlineColor = active
+						? "var(--color-primary)"
+						: "transparent";
+				});
+			}
+
+			setTheme(current);
+			dots.forEach((d) =>
+				d.addEventListener("click", () => setTheme(d.dataset.theme)),
+			);
+		})();
+
+		// Mobile nav
+		const navToggle = document.getElementById("navToggle");
+		const mobileMenu = document.getElementById("mobileMenu");
+		const closeTargets = mobileMenu?.querySelectorAll("[data-close-nav]");
+
+		const openNav = () => {
+			mobileMenu.classList.remove("hidden");
+			navToggle?.setAttribute("aria-expanded", "true");
+			document.body.style.overflow = "hidden";
+		};
+		const closeNav = () => {
+			mobileMenu.classList.add("hidden");
+			navToggle?.setAttribute("aria-expanded", "false");
+			document.body.style.overflow = "";
+		};
+
+		navToggle?.addEventListener("click", () => {
+			navToggle.getAttribute("aria-expanded") === "true"
+				? closeNav()
+				: openNav();
+		});
+		closeTargets?.forEach((btn) => btn.addEventListener("click", closeNav));
+		window.addEventListener("resize", () => {
+			if (window.innerWidth >= 1024) closeNav();
+		});
+
+		// Search
+		(function () {
+			const searchButton = document.getElementById("searchButton");
+			const searchModal = document.getElementById("searchModal");
+			const modalOverlay = document.getElementById("modalOverlay");
+			const searchInput = document.getElementById("searchInput");
+			const searchResults = document.getElementById("searchResults");
+
+			function openSearch(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				searchModal.classList.remove("hidden");
+				document.body.style.overflow = "hidden";
+				setTimeout(() => searchInput.focus(), 100);
+			}
+			function closeSearch() {
+				searchModal.classList.add("hidden");
+				document.body.style.overflow = "";
+				searchInput.value = "";
+				searchResults.innerHTML = "";
+			}
+
+			searchButton.addEventListener("click", openSearch);
+			modalOverlay.addEventListener("click", closeSearch);
+			document.addEventListener("keydown", (e) => {
+				if (e.key === "Escape") closeSearch();
+			});
+
+			searchInput.addEventListener("input", () => {
+				const q = searchInput.value.trim().toLowerCase();
+				if (!q) {
+					searchResults.innerHTML = "";
+					return;
+				}
+				searchResults.innerHTML =
+					'<p style="padding:1rem;font-size:0.875rem;color:color-mix(in oklab, var(--color-primary) 60%, transparent);">Type to search…</p>';
+			});
+		})();
+
+		// Year
+		document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+	</body>
+</html>

@@ -1,5 +1,7 @@
 # PlasmaSignal — WebGL Plasma-Grid Background Shader Component for shadcn (React + TypeScript + Raw WebGL)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn-structured Vite + TypeScript + Tailwind showcase for `shader-background.tsx`, a drop-in raw WebGL plasma-grid background component. The warping violet field is a single GLSL fragment shader (~90 lines, one draw call): animated grid lines with sinusoidal warp, flowing plasma curves, and orbiting highlight circles. The project frames it as a "Signal Lab" — a live oscilloscope HUD pulls real `iTime`, FPS, and `iResolution` from the running WebGL context, and a control deck of faders promotes the shader's baked-in constants to live uniforms so you can re-tint and re-shape the field in real time. Generated with Claude Fable 5.
 
 ## What's in `components/ui`

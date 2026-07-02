@@ -1,5 +1,7 @@
 # VaultShield — Cinematic Password-Manager Hero Section (React + TypeScript + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport hero section for a fictional password-manager app, **VaultShield**, featuring a looping background video, staggered Framer Motion entrance animations, inline Lucide icons baked into the heading, and a responsive mobile slide-in sheet. The dark-and-purple visual identity pairs Helvetica Now Display Bold headlines with Inter body text over a cinematic video backdrop, making it ideal as a landing page hero for security or productivity SaaS products. Generated with Claude Fable 5.
 
 ## Highlights

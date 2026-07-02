@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Performance — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../../styles.css">
+		<link rel="icon" href="../../assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="../../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav
+						class="docs-sidebar-nav"
+						data-current="docs/advanced/performance.html"
+					></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span><span>Advanced</span
+						><span class="sep">/</span><span>Performance</span>
+					</div>
+					<h1 class="docs-title">Performance</h1>
+					<p class="docs-lead">
+						Tune caching, CDN delivery, and query patterns to keep Scalar fast
+						as your content and traffic grow.
+					</p>
+
+					<h2 id="caching">Caching</h2>
+					<p>
+						Scalar caches resolved queries in a layered store. Configure the
+						time-to-live for read responses in your
+						<code>scalar.config.ts</code>
+						so repeat requests skip the database entirely:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)"
+								>scalar.config.ts</span
+							>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">export</span>
+							<span class="tok-kw">default</span>
+							defineConfig( { cache: {
+							<span class="tok-com">// in-memory + Redis tiered cache</span>
+							driver: <span class="tok-str">"redis"</span>, url: process.env.<span
+								class="tok-num"
+								>REDIS_URL</span
+							>,
+							<span class="tok-com"
+								>// default TTL for read queries (seconds)</span
+							>
+							ttl: <span class="tok-num">60</span>,
+							<span class="tok-com">// per-collection overrides</span>
+							rules: { posts: { ttl: <span class="tok-num">300</span> } ,
+							settings: { ttl: <span class="tok-num">3600</span> } , }, }, } );
+						</div>
+					</div>
+					<p>
+						Mutations automatically invalidate the affected keys, so you never
+						serve stale content after a publish.
+					</p>
+
+					<h2 id="cdn">CDN delivery</h2>
+					<p>
+						Place a CDN in front of Scalar's read API and asset endpoints to
+						push cached responses close to your users. Scalar emits
+						<code>Cache-Control</code>
+						and <code>ETag</code> headers that map directly to your TTL rules,
+						and surrogate keys let the CDN purge only what changed on each
+						publish.
+					</p>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							Serve images and uploads through the CDN's image pipeline rather
+							than your origin. Scalar's asset URLs accept <code>?w=</code> and
+							<code>?format=</code>
+							params that most CDNs can transform and cache at the edge.
+						</div>
+					</div>
+
+					<h2 id="queries">Query optimization</h2>
+					<p>
+						The single biggest win is selecting only the fields you render and
+						avoiding N+1 lookups by expanding relations in one request:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">query.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"
+								>// ❌ fetches every field, then a query per author</span
+							>
+							<span class="tok-kw">const</span>
+							posts = <span class="tok-kw">await</span> scalar.find(<span
+								class="tok-str"
+								>"posts"</span
+							>);
+
+							<span class="tok-com"
+								>// ✅ select only what you need, join authors once</span
+							>
+							<span class="tok-kw">const</span>
+							posts = <span class="tok-kw">await</span> scalar.find(<span
+								class="tok-str"
+								>"posts"</span
+							>, { select: [<span class="tok-str">"title"</span>,
+							<span class="tok-str">"slug"</span>,
+							<span class="tok-str">"publishedAt"</span>], expand: { author: {
+							select: [<span class="tok-str">"name"</span>] } }, limit:
+							<span class="tok-num">20</span>, });
+						</div>
+					</div>
+
+					<h2 id="pagination">Pagination</h2>
+					<p>
+						Prefer cursor-based pagination over offset for large collections —
+						it stays fast at any depth because the database never scans skipped
+						rows:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">paginate.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">const</span>
+							page = <span class="tok-kw">await</span> scalar.find(<span
+								class="tok-str"
+								>"posts"</span
+							>, { orderBy: { publishedAt: <span class="tok-str">"desc"</span> }
+							, cursor: req.query.cursor,
+							<span class="tok-com"
+								>// opaque token from the previous page</span
+							>
+							limit: <span class="tok-num">20</span>, });
+
+							<span class="tok-com"
+								>// page.nextCursor is null when there are no more results</span
+							>
+							<span class="tok-kw">return</span>
+							{ items: page.items, nextCursor: page.nextCursor };
+						</div>
+					</div>
+
+					<h2 id="benchmarks">Benchmarks</h2>
+					<p>
+						Measured against a 100k-entry collection on a single mid-tier
+						instance with the tiered cache warm:
+					</p>
+					<table class="docs-table">
+						<thead>
+							<tr>
+								<th>Operation</th>
+								<th>p50</th>
+								<th>p99</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Single entry fetch</td>
+								<td>3 ms</td>
+								<td>11 ms</td>
+							</tr>
+							<tr>
+								<td>List query (20 items)</td>
+								<td>9 ms</td>
+								<td>28 ms</td>
+							</tr>
+							<tr>
+								<td>GraphQL query (nested)</td>
+								<td>14 ms</td>
+								<td>46 ms</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<nav class="docs-pager">
+						<a class="pg-prev" href="../../docs/advanced/deployment.html"
+							><div class="pg-dir">← Previous</div>
+							<div class="pg-title">Deployment</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#caching">Caching</a>
+					<a href="#cdn">CDN delivery</a>
+					<a href="#queries">Query optimization</a>
+					<a href="#pagination">Pagination</a>
+					<a href="#benchmarks">Benchmarks</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="../../shared.js"></script>
+	</body>
+</html>

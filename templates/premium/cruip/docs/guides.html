@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Docs — Marketing API Quick Start</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		if (localStorage.getItem("dark-mode") === "true") {
+			document.documentElement.classList.add("dark");
+		}
+		</script>
+	</head>
+	<body>
+		<div class="page-wrapper">
+			<!-- ── HEADER ──────────────────────────────────────────── -->
+			<header class="site-header">
+				<div class="header-bg"></div>
+				<div class="header-inner">
+					<div class="header-left">
+						<a href="index.html" class="site-logo" aria-label="Docs home">
+							<svg
+								width="32"
+								height="32"
+								viewBox="0 0 32 32"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<rect width="32" height="32" rx="8" fill="#6366f1" />
+								<path
+									d="M16 6L26 11.5L16 17L6 11.5L16 6Z"
+									fill="white"
+									fill-opacity="0.9"
+								/>
+								<path
+									d="M6 11.5V20.5L16 26V17L6 11.5Z"
+									fill="white"
+									fill-opacity="0.5"
+								/>
+								<path
+									d="M26 11.5V20.5L16 26V17L26 11.5Z"
+									fill="white"
+									fill-opacity="0.7"
+								/>
+							</svg>
+						</a>
+						<button
+							class="search-btn"
+							aria-haspopup="dialog"
+							aria-expanded="false"
+						>
+							<span class="search-btn-left">
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 16 16"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path
+										d="m14.707 13.293-1.414 1.414-2.4-2.4 1.414-1.414 2.4 2.4ZM6.8 12.6A5.8 5.8 0 1 1 6.8 1a5.8 5.8 0 0 1 0 11.6Zm0-2a3.8 3.8 0 1 0 0-7.6 3.8 3.8 0 0 0 0 7.6Z"
+									/>
+								</svg>
+								<span>Search<span class="long"> for anything</span>…</span>
+							</span>
+							<kbd class="search-kbd">/</kbd>
+						</button>
+					</div>
+					<div class="header-right">
+						<nav class="header-nav">
+							<a href="#0" class="header-nav-link">Support</a>
+						</nav>
+						<div class="dark-mode-toggle">
+							<input type="checkbox" id="dark-toggle" class="sr-only">
+							<label
+								for="dark-toggle"
+								class="dark-mode-label"
+								aria-label="Toggle dark mode"
+							>
+								<svg
+									class="icon-sun"
+									width="16"
+									height="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M7 0h2v2H7zM12.88 1.637l1.414 1.415-1.415 1.413-1.413-1.414zM14 7h2v2h-2zM12.95 14.433l-1.414-1.413 1.413-1.415 1.415 1.414zM7 14h2v2H7zM2.98 14.364l-1.413-1.415 1.414-1.414 1.414 1.415zM0 7h2v2H0zM3.05 1.706 4.463 3.12 3.05 4.535 1.636 3.12z"
+									/>
+									<path
+										d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z"
+									/>
+								</svg>
+								<svg
+									class="icon-moon"
+									width="16"
+									height="16"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6.2 1C3.2 1.8 1 4.6 1 7.9 1 11.8 4.2 15 8.1 15c3.3 0 6-2.2 6.9-5.2C9.7 11.2 4.8 6.3 6.2 1Z"
+									/>
+									<path
+										d="M12.5 5a.625.625 0 0 1-.625-.625 1.252 1.252 0 0 0-1.25-1.25.625.625 0 1 1 0-1.25 1.252 1.252 0 0 0 1.25-1.25.625.625 0 1 1 1.25 0c.001.69.56 1.249 1.25 1.25a.625.625 0 1 1 0 1.25c-.69.001-1.249.56-1.25 1.25A.625.625 0 0 1 12.5 5Z"
+									/>
+								</svg>
+							</label>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<!-- ── SEARCH MODAL ─────────────────────────────────────── -->
+			<div
+				id="search-overlay"
+				class="search-modal-overlay"
+				aria-hidden="true"
+			></div>
+			<div
+				id="search-modal"
+				class="search-modal"
+				role="dialog"
+				aria-modal="true"
+				aria-label="Search"
+			>
+				<div class="search-modal-dialog">
+					<form class="search-modal-form" role="search">
+						<svg
+							width="16"
+							height="16"
+							viewBox="0 0 16 16"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+						>
+							<path
+								d="m14.707 13.293-1.414 1.414-2.4-2.4 1.414-1.414 2.4 2.4ZM6.8 12.6A5.8 5.8 0 1 1 6.8 1a5.8 5.8 0 0 1 0 11.6Zm0-2a3.8 3.8 0 1 0 0-7.6 3.8 3.8 0 0 0 0 7.6Z"
+							/>
+						</svg>
+						<label for="modal-search" class="sr-only">Search</label>
+						<input
+							id="modal-search"
+							type="search"
+							placeholder="Search for anything…"
+							autocomplete="off"
+						>
+					</form>
+					<div class="search-modal-results">
+						<div class="search-results-section">
+							<div class="search-results-label">Popular</div>
+							<ul class="search-results-list">
+								<li>
+									<a class="search-result-item" href="#0"
+										><svg
+											width="12"
+											height="12"
+											viewBox="0 0 12 12"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z"
+											/>
+										</svg><span>Alternative Schemas</span></a
+									>
+								</li>
+								<li>
+									<a class="search-result-item" href="#0"
+										><svg
+											width="12"
+											height="12"
+											viewBox="0 0 12 12"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z"
+											/>
+										</svg><span>Query string parameters</span></a
+									>
+								</li>
+							</ul>
+						</div>
+						<div class="search-results-section">
+							<div class="search-results-label">Actions</div>
+							<ul class="search-results-list">
+								<li>
+									<a class="search-result-item" href="#0"
+										><svg
+											width="12"
+											height="12"
+											viewBox="0 0 12 12"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M11.854.146a.5.5 0 0 0-.525-.116l-11 4a.5.5 0 0 0-.015.934l4.8 1.921 1.921 4.8A.5.5 0 0 0 7.5 12h.008a.5.5 0 0 0 .462-.329l4-11a.5.5 0 0 0-.116-.525Z"
+											/>
+										</svg><span>Contact support</span></a
+									>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ── VIDEO MODAL ─────────────────────────────────────── -->
+			<div id="video-overlay" class="video-modal-overlay" aria-hidden="true">
+				<div class="video-modal-content">
+					<button id="video-close" class="video-close" aria-label="Close video">
+						&times;
+					</button>
+					<video id="modal-video" width="1920" height="1080" loop controls>
+						<source src="assets/video.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+
+			<!-- ── MAIN ────────────────────────────────────────────── -->
+			<main>
+				<section class="docs-section">
+					<div class="hero-illustration" aria-hidden="true">
+						<svg
+							viewBox="0 0 1972 392"
+							xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid slice"
+						>
+							<defs>
+								<linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1">
+									<stop offset="0%" stop-color="#fef3c7" stop-opacity="0.5" />
+									<stop offset="100%" stop-color="#f8fafc" stop-opacity="0" />
+								</linearGradient>
+							</defs>
+							<rect width="1972" height="392" fill="url(#hg2)" />
+							<circle
+								cx="986"
+								cy="0"
+								r="600"
+								fill="none"
+								stroke="#fde68a"
+								stroke-width="1"
+								opacity="0.4"
+							/>
+							<circle
+								cx="986"
+								cy="0"
+								r="400"
+								fill="none"
+								stroke="#fbbf24"
+								stroke-width="1"
+								opacity="0.3"
+							/>
+							<circle
+								cx="986"
+								cy="0"
+								r="200"
+								fill="none"
+								stroke="#f59e0b"
+								stroke-width="1"
+								opacity="0.2"
+							/>
+						</svg>
+					</div>
+
+					<div class="docs-container">
+						<div
+							id="sidebar-backdrop"
+							class="sidebar-backdrop"
+							aria-hidden="true"
+						></div>
+						<div class="docs-layout">
+							<!-- ── SIDEBAR ──────────────────────────────── -->
+							<aside
+								id="sidebar"
+								class="sidebar"
+								aria-label="Documentation navigation"
+							>
+								<div class="sidebar-gradient" aria-hidden="true"></div>
+								<div class="sidebar-inner">
+									<nav class="sidebar-nav">
+										<ul class="sidebar-nav-list">
+											<li>
+												<button
+													class="nav-l1"
+													data-toggle="nav-docs-list"
+													aria-expanded="false"
+													aria-controls="nav-docs-list"
+												>
+													<svg
+														class="nav-icon-docs"
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														xmlns="http://www.w3.org/2000/svg"
+														aria-hidden="true"
+													>
+														<path
+															class="top"
+															d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"
+														/>
+														<path
+															class="left"
+															d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z"
+														/>
+														<path
+															class="right"
+															d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"
+														/>
+													</svg>
+													<span>Documentation</span>
+													<svg
+														class="nav-chevron"
+														width="8"
+														height="10"
+														viewBox="0 0 8 10"
+														xmlns="http://www.w3.org/2000/svg"
+														aria-hidden="true"
+													>
+														<path
+															d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z"
+														/>
+													</svg>
+												</button>
+												<ul class="nav-l2-list collapsed" id="nav-docs-list">
+													<li>
+														<a class="nav-l2" href="index.html">Fundamentals</a>
+													</li>
+													<li>
+														<a class="nav-l2" href="#0"
+															>Methods and Parameters</a
+														>
+													</li>
+													<li><a class="nav-l2" href="#0">Merge Fields</a></li>
+													<li>
+														<a class="nav-l2" href="#0">Account Exports</a>
+													</li>
+													<li><a class="nav-l2" href="#0">Integrations</a></li>
+												</ul>
+											</li>
+											<li>
+												<button
+													class="nav-l1"
+													data-toggle="nav-guides-list"
+													aria-expanded="true"
+													aria-controls="nav-guides-list"
+												>
+													<svg
+														class="nav-icon-guides"
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														xmlns="http://www.w3.org/2000/svg"
+														aria-hidden="true"
+													>
+														<path
+															class="top"
+															d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"
+														/>
+														<path
+															class="left"
+															d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z"
+														/>
+														<path
+															class="right"
+															d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"
+														/>
+													</svg>
+													<span>Guides / Tutorials</span>
+													<svg
+														class="nav-chevron open"
+														width="8"
+														height="10"
+														viewBox="0 0 8 10"
+														xmlns="http://www.w3.org/2000/svg"
+														aria-hidden="true"
+													>
+														<path
+															d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z"
+														/>
+													</svg>
+												</button>
+												<ul class="nav-l2-list" id="nav-guides-list">
+													<li>
+														<a class="nav-l2 active" href="guides.html"
+															>Marketing API Quick Start</a
+														>
+													</li>
+													<li>
+														<a class="nav-l2" href="#0">Create an account</a>
+													</li>
+													<li>
+														<a class="nav-l2" href="#0"
+															>Generate your API key</a
+														>
+													</li>
+													<li>
+														<a class="nav-l2" href="#0"
+															>Make your first API call</a
+														>
+													</li>
+													<li><a class="nav-l2" href="#0">Next steps</a></li>
+												</ul>
+											</li>
+											<li>
+												<a class="nav-l1" href="help.html">
+													<svg
+														class="nav-icon-help"
+														width="24"
+														height="24"
+														viewBox="0 0 24 24"
+														xmlns="http://www.w3.org/2000/svg"
+														aria-hidden="true"
+													>
+														<path
+															class="top"
+															d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"
+														/>
+														<path
+															class="left"
+															d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z"
+														/>
+														<path
+															class="right"
+															d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"
+														/>
+													</svg>
+													<span>Help / Support</span>
+												</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</aside>
+
+							<!-- ── PAGE CONTENT ─────────────────────────── -->
+							<div class="page-content">
+								<div class="page-hdr">
+									<svg
+										width="64"
+										height="54"
+										viewBox="0 0 64 54"
+										xmlns="http://www.w3.org/2000/svg"
+										aria-hidden="true"
+									>
+										<path
+											fill="#fdba74"
+											d="M43.832 7.206a1.32 1.32 0 0 0-.47-.492L32.694.195a1.333 1.333 0 0 0-1.39 0L20.64 6.714c-.198.12-.36.29-.471.492L32 14.436l11.832-7.23Z"
+										/>
+										<path
+											fill="#fed7aa"
+											opacity=".7"
+											d="M20.168 7.206c-.11.197-.168.42-.168.645V19.69c0 .464.242.895.639 1.137l10.666 6.519c.21.128.45.195.695.196V14.437L20.168 7.206Z"
+										/>
+										<path
+											fill="#f97316"
+											d="M43.832 7.206c.11.197.168.42.168.645V19.69c0 .464-.242.895-.639 1.137l-10.666 6.519c-.21.128-.45.195-.695.196V14.437l11.832-7.231Z"
+										/>
+										<path
+											fill="#fdba74"
+											d="M63.832 19.451a1.32 1.32 0 0 0-.47-.492l-10.667-6.518a1.333 1.333 0 0 0-1.39 0L40.64 18.959c-.198.12-.36.29-.471.492L52 26.683l11.832-7.232Z"
+										/>
+										<path
+											fill="#fed7aa"
+											opacity=".7"
+											d="M40.168 19.451c-.11.198-.168.42-.168.647v11.837c0 .465.242.896.639 1.138l10.666 6.518c.21.128.45.196.695.196V26.683l-11.832-7.232Z"
+										/>
+										<path
+											fill="#f97316"
+											d="M63.832 19.451c.11.198.168.42.168.647v11.837c0 .465-.242.896-.639 1.138L52.695 39.59c-.21.128-.45.196-.695.196V26.683l11.832-7.232Z"
+										/>
+										<path
+											fill="#fdba74"
+											d="M23.832 19.451a1.32 1.32 0 0 0-.47-.492l-10.667-6.518a1.333 1.333 0 0 0-1.39 0L.64 18.959c-.198.12-.36.29-.471.492L12 26.683l11.832-7.232Z"
+										/>
+										<path
+											fill="#fed7aa"
+											opacity=".7"
+											d="M.168 19.451c-.11.198-.168.42-.168.647v11.837c0 .465.242.896.639 1.138l10.666 6.518c.21.128.45.196.695.196V26.683L.168 19.451Z"
+										/>
+										<path
+											fill="#f97316"
+											d="M23.832 19.451c.11.198.168.42.168.647v11.837c0 .465-.242.896-.639 1.138L12.695 39.59c-.21.128-.45.196-.695.196V26.683l11.832-7.232Z"
+										/>
+										<path
+											fill="#fdba74"
+											d="M43.832 32.769a1.32 1.32 0 0 0-.47-.492l-10.667-6.52a1.333 1.333 0 0 0-1.39 0l-10.666 6.52c-.198.12-.36.29-.471.492L32 39.999l11.832-7.23Z"
+										/>
+										<path
+											fill="#fed7aa"
+											opacity=".7"
+											d="M20.168 32.769c-.11.197-.168.42-.168.645V45.25c0 .465.242.896.639 1.138l10.666 6.518c.21.128.45.196.695.196V40l-11.832-7.23Z"
+										/>
+										<path
+											fill="#f97316"
+											d="M43.832 32.769c.11.197.168.42.168.645V45.25c0 .465-.242.896-.639 1.138l-10.666 6.518c-.21.128-.45.196-.695.196V40l11.832-7.23Z"
+										/>
+									</svg>
+									<span class="page-hdr-label" style="color: #f97316;"
+										>Guides / Tutorials</span
+									>
+								</div>
+
+								<article class="docs-article">
+									<div class="article-main">
+										<!-- Mobile topbar -->
+										<div class="mobile-topbar">
+											<button
+												class="hamburger-btn"
+												aria-controls="sidebar"
+												aria-expanded="false"
+												aria-label="Open menu"
+											>
+												<svg
+													width="18"
+													height="18"
+													viewBox="0 0 24 24"
+													xmlns="http://www.w3.org/2000/svg"
+													aria-hidden="true"
+												>
+													<rect
+														x="4"
+														y="5"
+														width="16"
+														height="2"
+														fill="currentColor"
+													/>
+													<rect
+														x="4"
+														y="11"
+														width="16"
+														height="2"
+														fill="currentColor"
+													/>
+													<rect
+														x="4"
+														y="17"
+														width="16"
+														height="2"
+														fill="currentColor"
+													/>
+												</svg>
+											</button>
+											<div class="breadcrumbs">
+												<span class="breadcrumb-parent"
+													>Guides / Tutorials</span
+												>
+												<svg
+													class="breadcrumb-sep"
+													width="8"
+													height="10"
+													viewBox="0 0 8 10"
+													xmlns="http://www.w3.org/2000/svg"
+													aria-hidden="true"
+												>
+													<path
+														d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z"
+													/>
+												</svg>
+												<span class="breadcrumb-current"
+													>Marketing API Quick Start</span
+												>
+											</div>
+										</div>
+
+										<!-- Article header -->
+										<header class="article-hdr">
+											<h1>Marketing API Quick Start</h1>
+											<p>
+												This guide will give you everything you need to start
+												using the Docs Marketing API to manage audiences,
+												control automation workflows, sync email activity with
+												your database, and more.
+											</p>
+										</header>
+
+										<!-- Article body -->
+										<div class="article-body">
+											<!-- At a glance -->
+											<div class="article-section">
+												<div class="article-block">
+													<h2 id="at-a-glance" data-scrollspy-target>
+														At a glance
+													</h2>
+													<p>
+														We'll walk through generating your API key,
+														installing the client library for your preferred
+														language, and making your first API call—a simple
+														request to the Ping endpoint.
+													</p>
+												</div>
+											</div>
+
+											<!-- Generate API key -->
+											<div class="article-section">
+												<div class="article-block">
+													<h2 id="generate-api" data-scrollspy-target>
+														Generate your API key
+													</h2>
+													<p>
+														The simplest way to authenticate a request to the
+														Marketing API is using an <a href="#0">API key</a>.
+													</p>
+													<ul class="custom-list">
+														<li>
+															<span class="arrow">↳</span>
+															Navigate to the API Keys section of your Docs
+															account.
+														</li>
+														<li>
+															<span class="arrow">↳</span>
+															If you already have an API key listed to use for
+															your application, simply copy it.
+														</li>
+													</ul>
+													<p>Let's see an example:</p>
+
+													<!-- Image with video play button -->
+													<div class="media-container">
+														<svg
+															viewBox="0 0 680 382"
+															xmlns="http://www.w3.org/2000/svg"
+															style="width:100%;height:auto;display:block;background:#1e293b;border-radius:8px;"
+														>
+															<defs>
+																<linearGradient
+																	id="sg1"
+																	x1="0"
+																	y1="0"
+																	x2="1"
+																	y2="1"
+																>
+																	<stop offset="0%" stop-color="#1e293b" />
+																	<stop offset="100%" stop-color="#0f172a" />
+																</linearGradient>
+															</defs>
+															<rect width="680" height="382" fill="url(#sg1)" />
+															<!-- Fake code editor UI -->
+															<rect
+																x="20"
+																y="20"
+																width="640"
+																height="342"
+																rx="8"
+																fill="#0f172a"
+																opacity=".8"
+															/>
+															<circle
+																cx="44"
+																cy="44"
+																r="6"
+																fill="#ef4444"
+																opacity=".8"
+															/>
+															<circle
+																cx="62"
+																cy="44"
+																r="6"
+																fill="#eab308"
+																opacity=".8"
+															/>
+															<circle
+																cx="80"
+																cy="44"
+																r="6"
+																fill="#22c55e"
+																opacity=".8"
+															/>
+															<rect
+																x="36"
+																y="66"
+																width="200"
+																height="8"
+																rx="4"
+																fill="#6366f1"
+																opacity=".5"
+															/>
+															<rect
+																x="36"
+																y="86"
+																width="160"
+																height="6"
+																rx="3"
+																fill="#64748b"
+																opacity=".5"
+															/>
+															<rect
+																x="36"
+																y="106"
+																width="280"
+																height="6"
+																rx="3"
+																fill="#64748b"
+																opacity=".4"
+															/>
+															<rect
+																x="36"
+																y="126"
+																width="240"
+																height="6"
+																rx="3"
+																fill="#64748b"
+																opacity=".3"
+															/>
+															<rect
+																x="36"
+																y="150"
+																width="320"
+																height="8"
+																rx="4"
+																fill="#f97316"
+																opacity=".4"
+															/>
+															<rect
+																x="36"
+																y="170"
+																width="180"
+																height="6"
+																rx="3"
+																fill="#64748b"
+																opacity=".4"
+															/>
+															<rect
+																x="36"
+																y="190"
+																width="260"
+																height="6"
+																rx="3"
+																fill="#22c55e"
+																opacity=".4"
+															/>
+															<rect
+																x="36"
+																y="210"
+																width="200"
+																height="6"
+																rx="3"
+																fill="#64748b"
+																opacity=".3"
+															/>
+															<!-- Grid pattern -->
+															<g opacity=".05">
+																<line
+																	x1="0"
+																	y1="0"
+																	x2="0"
+																	y2="382"
+																	stroke="white"
+																	stroke-width=".5"
+																/>
+																<line
+																	x1="80"
+																	y1="0"
+																	x2="80"
+																	y2="382"
+																	stroke="white"
+																	stroke-width=".5"
+																/>
+																<line
+																	x1="160"
+																	y1="0"
+																	x2="160"
+																	y2="382"
+																	stroke="white"
+																	stroke-width=".5"
+																/>
+																<line
+																	x1="240"
+																	y1="0"
+																	x2="240"
+																	y2="382"
+																	stroke="white"
+																	stroke-width=".5"
+																/>
+																<line
+																	x1="320"
+																	y1="0"
+																	x2="320"
+																	y2="382"
+																	stroke="white"
+																	stroke-width=".5"
+																/>
+																<line
+																	x1="400"
+																	y1="0"
+																	x2="400"
+																	y2="382"
+																	stroke="white"
+																	stroke-width=".5"
+																/>
+																<line
+																	x1="480"
+																	y1="0"
+																	x2="480"
+																	y2="382"
+																	stroke="white"
+																	stroke-width=".5"
+																/>
+																<line
+																	x1="560"
+																	y1="0"
+																	x2="560"
+																	y2="382"
+																	stroke="white"
+																	stroke-width=".5"
+																/>
+																<line
+																	x1="640"
+																	y1="0"
+																	x2="640"
+																	y2="382"
+																	stroke="white"
+																	stroke-width=".5"
+																/>
+															</g>
+															<text
+																x="340"
+																y="340"
+																text-anchor="middle"
+																fill="#64748b"
+																font-size="12"
+																font-family="monospace"
+															>
+																API Key Dashboard Preview
+															</text>
+														</svg>
+														<div class="play-btn">
+															<div
+																class="play-btn-circle"
+																role="button"
+																aria-label="Play video"
+															>
+																<svg
+																	width="20"
+																	height="20"
+																	viewBox="0 0 20 20"
+																	xmlns="http://www.w3.org/2000/svg"
+																	aria-hidden="true"
+																>
+																	<path d="M6 4l12 6-12 6z" />
+																</svg>
+															</div>
+														</div>
+													</div>
+
+													<p>
+														If you're creating integrations that require access
+														to Mailchimp on behalf of other Docs users, you'll
+														want to
+														<a href="#0">set up authentication via OAuth 2</a>
+														instead.
+													</p>
+												</div>
+											</div>
+
+											<!-- Install client library -->
+											<div class="article-section">
+												<div class="article-block">
+													<h2 id="install" data-scrollspy-target>
+														Install the client library for your language
+													</h2>
+													<p>
+														You can make calls to the Marketing API with
+														whichever method you usually use to make HTTP
+														requests, but Docs offers client libraries that make
+														interacting with the API even simpler.
+													</p>
+													<p>
+														Install the library for your language of choice:
+													</p>
+
+													<pre><code><span class="code-comment"># Node.js</span>
+npm install @mailchimp/mailchimp_marketing
+
+<span class="code-comment"># Python</span>
+pip install mailchimp-marketing
+
+<span class="code-comment"># Ruby</span>
+gem install MailchimpMarketing</code></pre>
+
+													<p>
+														Once you've installed the library, you can set up
+														your client by providing your API key and server
+														prefix:
+													</p>
+													<pre
+													><code><span class="code-keyword">const</span> client = <span class="code-keyword">require</span>(<span class="code-string">"@mailchimp/mailchimp_marketing"</span>);
+
+client.setConfig({
+  apiKey: <span class="code-string">"YOUR_API_KEY"</span>,
+  server: <span class="code-string">"YOUR_SERVER_PREFIX"</span>,
+});</code></pre>
+												</div>
+											</div>
+
+											<!-- Make your first call -->
+											<div class="article-section">
+												<div class="article-block">
+													<h2 id="first-call" data-scrollspy-target>
+														Make your first API call
+													</h2>
+													<p>
+														The Ping endpoint in the Marketing API is a great
+														resource for verifying that your API key is working.
+														Let's call it to confirm we're connected:
+													</p>
+													<pre
+													><code><span class="code-keyword">async function</span> call() {
+  <span class="code-keyword">const</span> response = <span class="code-keyword">await</span> client.ping.get();
+  console.log(response);
+}
+
+call();</code></pre>
+													<p>
+														If successful, you should see the following
+														response:
+													</p>
+													<pre
+													><code>{ health_status: <span class="code-string">"Everything's Chimpy!"</span> }</code></pre>
+
+													<div class="info-box">
+														<svg
+															width="16"
+															height="16"
+															viewBox="0 0 16 16"
+															xmlns="http://www.w3.org/2000/svg"
+															aria-hidden="true"
+														>
+															<path
+																d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8Zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1Zm1-3H7V4h2v5Z"
+															/>
+														</svg>
+														<p>
+															Make sure your server prefix (the
+															<code>us6</code>
+															part of your API key) matches what you pass to
+															<code>setConfig</code>. An incorrect prefix is the
+															most common cause of authentication errors.
+														</p>
+													</div>
+												</div>
+											</div>
+
+											<!-- Next steps -->
+											<div class="article-section">
+												<div class="article-block">
+													<h2 id="next-steps" data-scrollspy-target>
+														Next steps
+													</h2>
+													<p>
+														Now that you've made your first API call, you're
+														ready to explore the full Marketing API.
+													</p>
+													<ul>
+														<li>
+															Browse the
+															<a href="index.html">API Reference</a>
+															to explore all available endpoints
+														</li>
+														<li>
+															Check out our <a href="#0">code examples</a> and
+															sample apps
+														</li>
+														<li>
+															Join our <a href="#0">developer community</a> to
+															ask questions and share your projects
+														</li>
+														<li>
+															Read about <a href="#0">best practices</a> for
+															building with the Marketing API
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+
+										<!-- Feedback -->
+										<div class="feedback-section">
+											<span class="feedback-label">Was this helpful?</span>
+											<div
+												class="feedback-buttons"
+												role="group"
+												aria-label="Feedback"
+											>
+												<button class="feedback-btn" title="No, it didn't help">
+													😕
+												</button>
+												<button
+													class="feedback-btn"
+													title="Still feel confused"
+												>
+													😐
+												</button>
+												<button class="feedback-btn" title="Sounds good!">
+													🙂
+												</button>
+												<button class="feedback-btn" title="Excellent article">
+													😄
+												</button>
+											</div>
+										</div>
+
+										<!-- Page nav -->
+										<nav class="page-nav" aria-label="Page navigation">
+											<div class="page-nav-link prev">
+												<span class="page-nav-label">Prev</span>
+												<a class="page-nav-title" href="index.html">
+													<svg
+														width="8"
+														height="10"
+														viewBox="0 0 8 10"
+														xmlns="http://www.w3.org/2000/svg"
+														aria-hidden="true"
+													>
+														<path
+															d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z"
+														/>
+													</svg>
+													<span>Basics &amp; Fundamentals</span>
+												</a>
+											</div>
+											<div class="page-nav-link next">
+												<span class="page-nav-label">Next</span>
+												<a class="page-nav-title" href="#0">
+													<span>Create an account</span>
+													<svg
+														width="8"
+														height="10"
+														viewBox="0 0 8 10"
+														xmlns="http://www.w3.org/2000/svg"
+														aria-hidden="true"
+													>
+														<path
+															d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z"
+														/>
+													</svg>
+												</a>
+											</div>
+										</nav>
+
+										<!-- Article footer -->
+										<footer class="article-footer">
+											<div class="footer-brand">
+												<svg
+													width="28"
+													height="28"
+													viewBox="0 0 32 32"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<rect width="32" height="32" rx="8" fill="#6366f1" />
+													<path
+														d="M16 6L26 11.5L16 17L6 11.5L16 6Z"
+														fill="white"
+														fill-opacity="0.9"
+													/>
+													<path
+														d="M6 11.5V20.5L16 26V17L6 11.5Z"
+														fill="white"
+														fill-opacity="0.5"
+													/>
+													<path
+														d="M26 11.5V20.5L16 26V17L26 11.5Z"
+														fill="white"
+														fill-opacity="0.7"
+													/>
+												</svg>
+												<span class="footer-copyright"
+													>Copyright &copy; Docs. All rights reserved.</span
+												>
+											</div>
+											<ul class="social-links" aria-label="Social links">
+												<li>
+													<a
+														class="social-link"
+														href="#0"
+														aria-label="Twitter / X"
+														><svg
+															viewBox="0 0 32 32"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path
+																d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z"
+															/>
+														</svg></a
+													>
+												</li>
+												<li>
+													<a class="social-link" href="#0" aria-label="GitHub"
+														><svg
+															viewBox="0 0 32 32"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path
+																d="M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z"
+															/>
+														</svg></a
+													>
+												</li>
+											</ul>
+										</footer>
+									</div>
+									<!-- /article-main -->
+
+									<!-- Right nav -->
+									<nav class="right-nav" aria-label="On this page">
+										<div class="right-nav-title">On this page</div>
+										<ul class="right-nav-list">
+											<li>
+												<a
+													class="right-nav-link scrollspy-active"
+													href="#at-a-glance"
+													data-target="at-a-glance"
+													>At a glance</a
+												>
+											</li>
+											<li>
+												<a
+													class="right-nav-link"
+													href="#generate-api"
+													data-target="generate-api"
+													>Generate your API key</a
+												>
+											</li>
+											<li>
+												<a
+													class="right-nav-link"
+													href="#install"
+													data-target="install"
+													>Install the client library</a
+												>
+											</li>
+											<li>
+												<a
+													class="right-nav-link"
+													href="#first-call"
+													data-target="first-call"
+													>Make your first API call</a
+												>
+											</li>
+											<li>
+												<a
+													class="right-nav-link"
+													href="#next-steps"
+													data-target="next-steps"
+													>Next steps</a
+												>
+											</li>
+										</ul>
+									</nav>
+								</article>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>

@@ -1,5 +1,7 @@
 # Interactive Flux Shader — Cursor-Reactive WebGL FBM Field Synthesizer (React + TypeScript + WebGL2)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen WebGL2 fractal-noise (FBM) field whose hue, speed, intensity, and complexity are live uniforms and whose flow warps toward the cursor — integrated as a shadcn `@/components/ui` component and framed as **FLUX·01**, a Eurorack-style "field synthesizer." The four shader parameters become engraved aluminium faders, the generative field sits in a recessed scope window with a tracking crosshair reticle, and a live telemetry stack reads per-frame GPU output via `gl.readPixels`. Built with React, TypeScript, Vite, and Tailwind CSS following the shadcn project structure, with no external rendering dependency — raw WebGL2 only. Generated with Claude Fable 5.
 
 ## Design notes

@@ -1,0 +1,1642 @@
+<!DOCTYPE html><html lang="en"><head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("theme");
+				if (
+					t === "dark" ||
+					(!t && window.matchMedia("(prefers-color-scheme: dark)").matches)
+				) {
+					document.documentElement.classList.add("dark");
+				}
+			} catch (e) {}
+		})();
+		</script>
+		<title>Pricing | Simplistic</title>
+		<style>
+		@font-face {
+			font-family: "Geist";
+			src: url("assets/fonts/geist-latin-ext.woff2") format("woff2");
+			unicode-range:
+				U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+			font-display: swap;
+		}
+		@font-face {
+			font-family: "Geist";
+			src: url("assets/fonts/geist-latin.woff2") format("woff2");
+			unicode-range:
+				U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			font-display: swap;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		:root {
+			--bg: #fff;
+			--fg: #171717;
+			--muted: #737373;
+			--border: rgba(0, 0, 0, 0.1);
+			--card-bg: #fff;
+			--card-border: rgba(0, 0, 0, 0.1);
+			--neutral-50: #fafafa;
+			--neutral-100: #f5f5f5;
+			--neutral-200: #e5e5e5;
+			--neutral-300: #d4d4d4;
+			--neutral-400: #a1a1a1;
+			--neutral-500: #737373;
+			--neutral-600: #525252;
+			--neutral-700: #404040;
+			--neutral-800: #262626;
+			--neutral-900: #171717;
+			--neutral-950: #0a0a0a;
+			--brand: #1e90ff;
+			--brand-secondary: #5cb3ff;
+		}
+		html.dark {
+			--bg: #0a0a0a;
+			--fg: #d4d4d4;
+			--muted: #737373;
+			--border: rgba(255, 255, 255, 0.1);
+			--card-bg: #171717;
+			--card-border: rgba(255, 255, 255, 0.1);
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+			background: var(--bg);
+			color: var(--fg);
+			line-height: 1.5;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		/* Buttons */
+		.btn-brand {
+			background: linear-gradient(to bottom, #5cb3ff, #1e90ff);
+			color: white;
+			border: none;
+			cursor: pointer;
+			font-weight: 500;
+			transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+			font-family: inherit;
+			font-size: 0.875rem;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+		}
+		.btn-brand:hover {
+			box-shadow:
+				0 1px 2px rgba(0, 0, 0, 0.1),
+				0 3px 5px rgba(30, 144, 255, 0.5),
+				inset 0 1px 0 rgba(255, 255, 255, 0.25);
+		}
+		.btn-brand:active {
+			transform: scale(0.98);
+		}
+
+		.btn-outline {
+			background: transparent;
+			color: var(--fg);
+			border: 1px solid var(--border);
+			cursor: pointer;
+			transition: all 150ms;
+			font-family: inherit;
+			font-size: 0.875rem;
+			font-weight: 500;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+		}
+		html.dark .btn-outline {
+			border-color: rgba(255, 255, 255, 0.15);
+		}
+		.btn-outline:hover {
+			background: var(--neutral-100);
+		}
+		html.dark .btn-outline:hover {
+			background: var(--neutral-800);
+		}
+
+		/* Nav */
+		nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 50;
+			height: 3.5rem;
+		}
+		@media (min-width: 640px) {
+			nav {
+				height: 4rem;
+			}
+		}
+
+		.nav-inner {
+			max-width: 1280px;
+			margin: 0 auto;
+			padding: 0 1.5rem;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			transition:
+				background 200ms,
+				border-color 200ms;
+		}
+		.nav-inner.scrolled {
+			background: rgba(255, 255, 255, 0.9);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-bottom: 1px solid var(--border);
+		}
+		html.dark .nav-inner.scrolled {
+			background: rgba(10, 10, 10, 0.9);
+		}
+
+		.nav-logo {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			text-decoration: none;
+			color: var(--fg);
+			font-weight: 600;
+			font-size: 0.9375rem;
+		}
+		.nav-logo img {
+			width: 16px;
+			height: 16px;
+		}
+		.logo-light {
+			display: block;
+		}
+		.logo-dark {
+			display: none;
+		}
+		html.dark .logo-light {
+			display: none;
+		}
+		html.dark .logo-dark {
+			display: block;
+		}
+
+		.nav-links {
+			display: none;
+			align-items: center;
+			gap: 1.5rem;
+			list-style: none;
+		}
+		@media (min-width: 1024px) {
+			.nav-links {
+				display: flex;
+			}
+		}
+
+		.nav-links a {
+			text-decoration: none;
+			color: var(--muted);
+			font-size: 0.875rem;
+			transition: color 150ms;
+		}
+		.nav-links a:hover {
+			color: var(--fg);
+		}
+		.nav-links a.active {
+			color: var(--brand);
+			font-weight: 600;
+		}
+
+		.nav-dropdown-wrapper {
+			position: relative;
+		}
+		.nav-dropdown-btn {
+			background: none;
+			border: none;
+			color: var(--muted);
+			font-size: 0.875rem;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+			font-family: inherit;
+			padding: 0;
+			transition: color 150ms;
+		}
+		.nav-dropdown-btn:hover {
+			color: var(--fg);
+		}
+		.nav-dropdown-btn svg {
+			transition: transform 150ms;
+		}
+		.nav-dropdown-btn.open svg {
+			transform: rotate(180deg);
+		}
+
+		.nav-dropdown {
+			display: none;
+			position: absolute;
+			top: calc(100% + 0.75rem);
+			left: 50%;
+			transform: translateX(-50%);
+			min-width: 220px;
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			padding: 0.5rem;
+			box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+		}
+		html.dark .nav-dropdown {
+			box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+		}
+		.nav-dropdown.open {
+			display: block;
+		}
+		.nav-dropdown a {
+			display: block;
+			padding: 0.625rem 0.75rem;
+			border-radius: 8px;
+			text-decoration: none;
+			color: var(--fg);
+			font-size: 0.8125rem;
+		}
+		.nav-dropdown a:hover {
+			background: var(--neutral-100);
+		}
+		html.dark .nav-dropdown a:hover {
+			background: var(--neutral-800);
+		}
+		.nav-dropdown a span {
+			display: block;
+			color: var(--muted);
+			font-size: 0.75rem;
+			margin-top: 0.125rem;
+		}
+
+		.nav-right {
+			display: none;
+			align-items: center;
+			gap: 0.75rem;
+		}
+		@media (min-width: 1024px) {
+			.nav-right {
+				display: flex;
+			}
+		}
+
+		.nav-right a.login-link {
+			text-decoration: none;
+			color: var(--muted);
+			font-size: 0.875rem;
+			transition: color 150ms;
+		}
+		.nav-right a.login-link:hover {
+			color: var(--fg);
+		}
+
+		.theme-toggle {
+			background: none;
+			border: none;
+			cursor: pointer;
+			color: var(--muted);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0.375rem;
+			border-radius: 6px;
+			transition:
+				color 150ms,
+				background 150ms;
+		}
+		.theme-toggle:hover {
+			color: var(--fg);
+			background: var(--neutral-100);
+		}
+		html.dark .theme-toggle:hover {
+			background: var(--neutral-800);
+		}
+
+		.icon-sun {
+			display: none;
+		}
+		.icon-moon {
+			display: block;
+		}
+		html.dark .icon-sun {
+			display: block;
+		}
+		html.dark .icon-moon {
+			display: none;
+		}
+
+		/* Hamburger */
+		.hamburger {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0.375rem;
+		}
+		@media (min-width: 1024px) {
+			.hamburger {
+				display: none;
+			}
+		}
+		.hamburger span {
+			display: block;
+			width: 20px;
+			height: 1.5px;
+			background: var(--fg);
+			border-radius: 2px;
+			transition: all 200ms;
+		}
+
+		.nav-mobile-actions {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		@media (min-width: 1024px) {
+			.nav-mobile-actions {
+				display: none;
+			}
+		}
+
+		/* Mobile menu */
+		.mobile-menu {
+			position: fixed;
+			inset: 0;
+			z-index: 40;
+			background: var(--bg);
+			display: flex;
+			flex-direction: column;
+			padding: 5rem 1.5rem 2rem;
+			opacity: 0;
+			transform: translateY(-8px);
+			pointer-events: none;
+			transition:
+				opacity 200ms,
+				transform 200ms;
+		}
+		.mobile-menu.open {
+			opacity: 1;
+			transform: translateY(0);
+			pointer-events: auto;
+		}
+		.mobile-menu-links {
+			display: flex;
+			flex-direction: column;
+			gap: 0;
+			list-style: none;
+			flex: 1;
+		}
+		.mobile-menu-links li a,
+		.mobile-menu-links li button {
+			display: block;
+			width: 100%;
+			text-align: left;
+			padding: 0.875rem 0;
+			text-decoration: none;
+			color: var(--fg);
+			font-size: 1rem;
+			font-weight: 500;
+			border: none;
+			background: none;
+			border-bottom: 1px solid var(--border);
+			cursor: pointer;
+			font-family: inherit;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.mobile-menu-links li a.active {
+			color: var(--brand);
+		}
+		.mobile-sub-menu {
+			overflow: hidden;
+			max-height: 0;
+			transition: max-height 300ms ease;
+		}
+		.mobile-sub-menu a {
+			padding: 0.625rem 1rem !important;
+			font-size: 0.875rem !important;
+			font-weight: 400 !important;
+			color: var(--muted) !important;
+			border-bottom: none !important;
+		}
+		.mobile-menu-footer {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			padding-top: 1.5rem;
+		}
+
+		/* Pricing Section */
+		.pricing-section {
+			padding-top: 8rem;
+			padding-bottom: 6rem;
+			background: var(--bg);
+		}
+		.pricing-container {
+			max-width: 1280px;
+			margin: 0 auto;
+			padding: 0 1rem;
+		}
+		@media (min-width: 768px) {
+			.pricing-container {
+				padding: 0 2rem;
+			}
+		}
+
+		.pricing-heading {
+			text-align: center;
+			font-size: 2.25rem;
+			font-weight: 500;
+			letter-spacing: -0.025em;
+			color: var(--fg);
+			line-height: 1.15;
+		}
+		@media (min-width: 768px) {
+			.pricing-heading {
+				font-size: 3rem;
+			}
+		}
+
+		.pricing-subtitle {
+			text-align: center;
+			font-size: 0.875rem;
+			color: var(--muted);
+			margin-top: 1rem;
+			max-width: 32rem;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.pricing-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			margin-top: 4rem;
+		}
+		@media (min-width: 1024px) {
+			.pricing-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		.pricing-card {
+			border-radius: 16px;
+			padding: 2rem;
+			border: 1px solid var(--border);
+			background: transparent;
+		}
+		.pricing-card.popular {
+			background: var(--card-bg);
+			border: 1px solid var(--card-border);
+			box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+			position: relative;
+		}
+		html.dark .pricing-card.popular {
+			box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+		}
+
+		.popular-deco-top {
+			position: absolute;
+			top: 0;
+			left: 2rem;
+			right: 2rem;
+			height: 0;
+			border-top: 1px dashed var(--border);
+		}
+		.popular-deco-bottom {
+			position: absolute;
+			bottom: 0;
+			left: 2rem;
+			right: 2rem;
+			height: 0;
+			border-bottom: 1px dashed var(--border);
+		}
+
+		.popular-badge {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			background: var(--neutral-900);
+			color: white;
+			font-size: 0.625rem;
+			font-weight: 600;
+			padding: 0.125rem 0.5rem;
+			border-radius: 9999px;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+		}
+		html.dark .popular-badge {
+			background: rgba(255, 255, 255, 0.1);
+		}
+
+		.card-tier {
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: var(--fg);
+		}
+
+		.card-price {
+			display: flex;
+			align-items: baseline;
+			gap: 0.25rem;
+			margin-top: 0.75rem;
+		}
+		.price-amount {
+			font-size: 3rem;
+			font-weight: 700;
+			letter-spacing: -0.025em;
+			color: var(--fg);
+			line-height: 1;
+		}
+		.price-period {
+			font-size: 0.875rem;
+			color: var(--muted);
+		}
+		.price-custom {
+			font-size: 2rem;
+			font-weight: 700;
+			letter-spacing: -0.025em;
+			color: var(--fg);
+		}
+
+		.card-desc {
+			font-size: 0.875rem;
+			color: var(--muted);
+			margin-top: 0.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.card-divider {
+			border: none;
+			border-top: 1px solid var(--border);
+			margin: 1.5rem 0;
+		}
+
+		.card-btn {
+			width: 100%;
+			padding: 0.625rem 0;
+			border-radius: 6px;
+		}
+
+		.features-list {
+			list-style: none;
+			margin-top: 1.5rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+		.feature-item {
+			display: flex;
+			align-items: center;
+			gap: 0.625rem;
+			font-size: 0.875rem;
+			color: var(--fg);
+		}
+		.check-circle {
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			background: var(--neutral-700);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+		.check-circle.blue {
+			background: #1e90ff;
+		}
+
+		.features-divider {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			margin: 1rem 0;
+		}
+		.features-divider hr {
+			flex: 1;
+			border: none;
+			border-top: 1px solid var(--border);
+		}
+		.features-divider span {
+			font-size: 0.875rem;
+			color: var(--muted);
+		}
+
+		/* FAQ Section */
+		.faq-section {
+			background: var(--bg);
+			padding: 6rem 0;
+		}
+		.faq-container {
+			max-width: 48rem;
+			margin: 0 auto;
+			padding: 0 1rem;
+		}
+
+		.faq-heading {
+			text-align: center;
+			font-size: 2.25rem;
+			font-weight: 500;
+			letter-spacing: -0.025em;
+			color: var(--fg);
+			line-height: 1.15;
+		}
+		@media (min-width: 768px) {
+			.faq-heading {
+				font-size: 2.75rem;
+			}
+		}
+
+		.faq-subtitle {
+			text-align: center;
+			font-size: 0.875rem;
+			color: var(--muted);
+			margin-top: 1rem;
+		}
+
+		.faq-categories {
+			margin-top: 3rem;
+		}
+		.faq-category {
+			margin-bottom: 2.5rem;
+		}
+		.faq-category-title {
+			font-weight: 600;
+			font-size: 0.9375rem;
+			color: var(--fg);
+			margin-bottom: 1rem;
+		}
+
+		.accordion-item {
+			border-bottom: 1px solid var(--border);
+		}
+		.accordion-trigger {
+			width: 100%;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 1rem 0;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			text-align: left;
+			font-family: inherit;
+			color: var(--fg);
+			font-size: 0.9375rem;
+			font-weight: 500;
+		}
+		.accordion-icon {
+			font-size: 1.125rem;
+			line-height: 1;
+			color: var(--muted);
+			flex-shrink: 0;
+			transition:
+				transform 200ms,
+				color 200ms;
+			font-style: normal;
+		}
+		.accordion-trigger.open .accordion-icon {
+			transform: rotate(45deg);
+			color: var(--fg);
+		}
+		.accordion-body {
+			overflow: hidden;
+			max-height: 0;
+			transition: max-height 300ms ease;
+		}
+		.accordion-body p {
+			font-size: 0.875rem;
+			color: var(--muted);
+			padding-bottom: 1rem;
+			line-height: 1.6;
+		}
+
+		/* CTA Section */
+		.cta-section {
+			background: var(--neutral-950);
+			padding: 6rem 1rem;
+			overflow: hidden;
+		}
+		.cta-inner {
+			max-width: 72rem;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 3rem;
+			align-items: center;
+		}
+		@media (min-width: 768px) {
+			.cta-inner {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+		.cta-text {
+			text-align: left;
+		}
+		.cta-heading {
+			font-size: 2rem;
+			font-weight: 500;
+			color: white;
+			letter-spacing: -0.025em;
+			line-height: 1.2;
+		}
+		@media (min-width: 768px) {
+			.cta-heading {
+				font-size: 2.5rem;
+			}
+		}
+		.cta-sub {
+			font-size: 0.875rem;
+			color: rgba(255, 255, 255, 0.6);
+			margin-top: 1rem;
+			max-width: 28rem;
+		}
+		.cta-btn {
+			margin-top: 2rem;
+			padding: 0.75rem 1.5rem;
+			border-radius: 6px;
+		}
+		.cta-visuals {
+			position: relative;
+			display: flex;
+			gap: 1rem;
+			align-items: flex-start;
+		}
+		.cta-mockup {
+			border-radius: 0.75rem;
+			overflow: hidden;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			background: #1a1a2e;
+			flex: 1;
+		}
+		.cta-mockup img {
+			width: 100%;
+			display: block;
+			object-fit: cover;
+		}
+		.cta-mockup-sm {
+			width: 45%;
+			margin-top: 2rem;
+			flex-shrink: 0;
+		}
+
+		/* Footer */
+		footer {
+			border-top: 1px solid var(--border);
+			background: var(--bg);
+			padding: 5rem 2rem 0;
+		}
+		.footer-inner {
+			max-width: 1280px;
+			margin: 0 auto;
+		}
+		.footer-top {
+			display: flex;
+			flex-direction: column;
+			gap: 2.5rem;
+		}
+		@media (min-width: 1024px) {
+			.footer-top {
+				flex-direction: row;
+				align-items: flex-start;
+				justify-content: space-between;
+			}
+		}
+		.footer-brand {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+		.footer-logo-row {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		.footer-logo-row img {
+			width: 16px;
+			height: 16px;
+		}
+		.footer-logo-name {
+			font-weight: 600;
+			font-size: 0.9375rem;
+			color: var(--fg);
+		}
+		.footer-socials {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		.footer-social-link {
+			color: var(--muted);
+			transition: color 150ms;
+			display: flex;
+			align-items: center;
+		}
+		.footer-social-link:hover {
+			color: var(--fg);
+		}
+		.footer-copyright {
+			font-size: 0.75rem;
+			color: var(--muted);
+			margin-top: 0.25rem;
+		}
+		.footer-links-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
+		}
+		@media (min-width: 1024px) {
+			.footer-links-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+		.footer-col-title {
+			font-size: 0.8125rem;
+			font-weight: 600;
+			color: var(--fg);
+			margin-bottom: 1rem;
+		}
+		.footer-col-links {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 0.625rem;
+		}
+		.footer-col-links a {
+			text-decoration: none;
+			font-size: 0.8125rem;
+			color: var(--muted);
+			transition: color 150ms;
+		}
+		.footer-col-links a:hover {
+			color: var(--fg);
+		}
+
+		.wordmark-light {
+		}
+		.wordmark-dark {
+			display: none;
+		}
+		html.dark .wordmark-light {
+			display: none;
+		}
+		html.dark .wordmark-dark {
+			display: inline;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- NAVIGATION -->
+		<nav>
+			<div class="nav-inner" id="navInner">
+				<a href="index.html" class="nav-logo">
+					<img src="assets/images/logo.png" alt="Simplistic" class="logo-light">
+					<img src="assets/images/logo-dark.png" alt="Simplistic" class="logo-dark">
+					Simplistic
+				</a>
+
+				<ul class="nav-links">
+					<li><a href="index.html#product">Product</a></li>
+					<li><a href="pricing.html" class="active">Pricing</a></li>
+					<li class="nav-dropdown-wrapper">
+						<button class="nav-dropdown-btn" id="resourcesBtn" aria-expanded="false">
+							Resources
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:0.875rem;height:0.875rem">
+								<path d="m6 9 6 6 6-6"></path>
+							</svg>
+						</button>
+						<div class="nav-dropdown" id="resourcesDropdown">
+							<a href="#">Blog <span>Latest news and articles</span></a>
+							<a href="#">Documentation <span>Guides and API references</span></a>
+							<a href="#">Help Center <span>Get support and FAQs</span></a>
+							<a href="#">Changelog <span>See what's new</span></a>
+							<a href="#">Tutorials <span>Learn with video guides</span></a>
+						</div>
+					</li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+
+				<div class="nav-right">
+					<a href="login.html" class="login-link">Login</a>
+					<a href="#" class="btn-brand" style="padding:0.5rem 1rem;border-radius:6px;">Try for free</a>
+					<button class="theme-toggle" id="themeToggleDesktop" aria-label="Toggle theme">
+						<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem;height:1.25rem">
+							<circle cx="12" cy="12" r="4"></circle>
+							<path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2m-4.93-7.07-1.41 1.41M6.34 17.66l-1.41 1.41"></path>
+						</svg>
+						<svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem;height:1.25rem">
+							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+						</svg>
+					</button>
+				</div>
+
+				<div class="nav-mobile-actions">
+					<button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle theme">
+						<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem;height:1.25rem">
+							<circle cx="12" cy="12" r="4"></circle>
+							<path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2m-4.93-7.07-1.41 1.41M6.34 17.66l-1.41 1.41"></path>
+						</svg>
+						<svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem;height:1.25rem">
+							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+						</svg>
+					</button>
+					<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+						<span></span><span></span><span></span>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<!-- MOBILE MENU -->
+		<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+			<ul class="mobile-menu-links">
+				<li><a href="index.html#product">Product</a></li>
+				<li><a href="pricing.html" class="active">Pricing</a></li>
+				<li>
+					<button id="mobileResourcesBtn" aria-expanded="false">
+						Resources
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1rem;height:1rem">
+							<path d="m6 9 6 6 6-6"></path>
+						</svg>
+					</button>
+					<div class="mobile-sub-menu" id="mobileResourcesSub">
+						<a href="#">Blog</a>
+						<a href="#">Documentation</a>
+						<a href="#">Help Center</a>
+						<a href="#">Changelog</a>
+						<a href="#">Tutorials</a>
+					</div>
+				</li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+			<div class="mobile-menu-footer">
+				<a href="login.html" class="btn-outline" style="padding:0.75rem;border-radius:6px;">Login</a>
+				<a href="#" class="btn-brand" style="padding:0.75rem;border-radius:6px;">Try for free</a>
+			</div>
+		</div>
+
+		<!-- PRICING SECTION -->
+		<section class="pricing-section">
+			<div class="pricing-container">
+				<h2 class="pricing-heading">Simple, Transparent Pricing</h2>
+				<p class="pricing-subtitle">
+					Choose a plan that works best for you and your team. No hidden fees.
+				</p>
+
+				<div class="pricing-grid">
+					<!-- Starter -->
+					<div class="pricing-card">
+						<div class="card-tier">Starter</div>
+						<div class="card-price">
+							<span class="price-amount">$19</span>
+							<span class="price-period">/month</span>
+						</div>
+						<p class="card-desc">Perfect for exploring AI agent capabilities</p>
+						<hr class="card-divider">
+						<a href="#" class="btn-outline card-btn">Get Started</a>
+						<ul class="features-list">
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								3 AI Agents
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								1,000 Task Executions
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Basic Workflows
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Email Support
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								API Access
+							</li>
+						</ul>
+					</div>
+
+					<!-- Pro (Popular) -->
+					<div class="pricing-card popular">
+						<div class="popular-deco-top"></div>
+						<div class="popular-deco-bottom"></div>
+						<span class="popular-badge">Popular</span>
+						<div class="card-tier">Pro</div>
+						<div class="card-price">
+							<span class="price-amount">$79</span>
+							<span class="price-period">/month</span>
+						</div>
+						<p class="card-desc">For teams automating complex workflows</p>
+						<hr class="card-divider">
+						<a href="#" class="btn-brand card-btn">Get Started</a>
+						<ul class="features-list">
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Unlimited AI Agents
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								25,000 Task Executions
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Advanced Workflows
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Priority Support
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Dedicated Account Manager
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								API Access
+							</li>
+						</ul>
+						<div class="features-divider">
+							<hr>
+							<span>+</span>
+							<hr>
+						</div>
+						<ul class="features-list" style="margin-top:0;">
+							<li class="feature-item">
+								<span class="check-circle blue">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Autonomous Decision Making
+							</li>
+							<li class="feature-item">
+								<span class="check-circle blue">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Team Collaboration
+							</li>
+							<li class="feature-item">
+								<span class="check-circle blue">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Workflow Orchestration
+							</li>
+						</ul>
+					</div>
+
+					<!-- Enterprise -->
+					<div class="pricing-card">
+						<div class="card-tier">Enterprise</div>
+						<div class="card-price" style="margin-top:0.75rem;">
+							<span class="price-amount">$299</span>
+							<span class="price-period">/month</span>
+						</div>
+						<p class="card-desc">For organizations that need full autonomy.</p>
+						<hr class="card-divider">
+						<a href="#" class="btn-outline card-btn">Get Started</a>
+						<ul class="features-list">
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Unlimited Agents
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Unlimited Task Executions
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Custom Workflow Builder
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								24/7 Dedicated Support
+							</li>
+							<li class="feature-item">
+								<span class="check-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Dedicated Account Manager
+							</li>
+						</ul>
+						<div class="features-divider">
+							<hr>
+							<span>+</span>
+							<hr>
+						</div>
+						<ul class="features-list" style="margin-top:0;">
+							<li class="feature-item">
+								<span class="check-circle blue">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								SSO &amp; SAML
+							</li>
+							<li class="feature-item">
+								<span class="check-circle blue">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								Audit Logs
+							</li>
+							<li class="feature-item">
+								<span class="check-circle blue">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+										<polyline points="2,6 5,9 10,3"></polyline>
+									</svg>
+								</span>
+								SLA Guarantee
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ SECTION -->
+		<section class="faq-section">
+			<div class="faq-container">
+				<h2 class="faq-heading">Frequently Asked Questions</h2>
+				<p class="faq-subtitle">
+					Everything you need to know about deploying AI agents and automating
+					your workflows.
+				</p>
+
+				<div class="faq-categories">
+					<!-- Pricing Category -->
+					<div class="faq-category">
+						<p class="faq-category-title">Pricing</p>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								How much does it cost to deploy AI agents?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Our pricing starts at $19/month for the Starter plan, which
+									includes 3 AI agents and 1,000 task executions. The Pro plan
+									is $79/month with unlimited agents. Enterprise pricing is
+									custom.
+								</p>
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								Is there a free trial available?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Yes, we offer a 14-day free trial on all plans. No credit card
+									required to start.
+								</p>
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								What happens if I exceed my plan limits?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									We'll notify you when you're approaching your limits. You can
+									upgrade at any time or purchase additional executions as
+									add-ons.
+								</p>
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								Can I change plans at any time?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Yes, you can upgrade or downgrade your plan at any time.
+									Changes take effect at the start of your next billing cycle.
+								</p>
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								Do you offer refunds?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									We offer a 30-day money-back guarantee on all paid plans, no
+									questions asked.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Agents Category -->
+					<div class="faq-category">
+						<p class="faq-category-title">Agents</p>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								What can AI agents automate?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Our AI agents can automate repetitive tasks, data processing,
+									customer communication, report generation, and complex
+									multi-step workflows across your entire tech stack.
+								</p>
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								How do I deploy and orchestrate my agents?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Deploy agents with a single click from our dashboard or via
+									our API. Use our visual workflow builder to orchestrate
+									multiple agents working together.
+								</p>
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								Can agents make autonomous decisions?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Yes, on the Enterprise plan, agents can make autonomous
+									decisions within parameters you define. You maintain full
+									control with audit logs and approval workflows.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Legal Category -->
+					<div class="faq-category">
+						<p class="faq-category-title">Legal</p>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								How do you handle my data?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Your data is encrypted at rest and in transit. We never sell
+									your data to third parties. You retain full ownership of all
+									data processed by your agents.
+								</p>
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								Are you GDPR compliant?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Yes, Simplistic is fully GDPR compliant. We are a data
+									processor and provide data processing agreements (DPAs) for
+									all customers.
+								</p>
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<button class="accordion-trigger" aria-expanded="false">
+								Who owns the data my agents process?
+								<i class="accordion-icon">+</i>
+							</button>
+							<div class="accordion-body">
+								<p>
+									You own all data processed by your agents. Simplistic acts
+									solely as a data processor under your instructions.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA SECTION -->
+		<section class="cta-section">
+			<div class="cta-inner">
+				<div class="cta-text">
+					<h2 class="cta-heading">
+						Start building autonomous workflows today.
+					</h2>
+					<p class="cta-sub">
+						Deploy AI agents that handle the repetitive work so your team can
+						focus on what matters.
+					</p>
+					<a href="#" class="btn-brand cta-btn">Get Started</a>
+				</div>
+				<div class="cta-visuals">
+					<div class="cta-mockup">
+						<img src="assets/images/dashboard.jpg" alt="Simplistic dashboard" loading="lazy">
+					</div>
+					<div class="cta-mockup cta-mockup-sm">
+						<img src="assets/images/flipping-images-with-bar.webp" alt="Simplistic mobile" loading="lazy">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-inner">
+				<div class="footer-top">
+					<div class="footer-brand">
+						<div class="footer-logo-row">
+							<img src="assets/images/logo.png" alt="Simplistic" class="logo-light">
+							<img src="assets/images/logo-dark.png" alt="Simplistic" class="logo-dark">
+							<span class="footer-logo-name">Simplistic</span>
+						</div>
+						<div class="footer-socials">
+							<a href="#" class="footer-social-link" aria-label="Twitter">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:1.25rem;height:1.25rem">
+									<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+								</svg>
+							</a>
+							<a href="#" class="footer-social-link" aria-label="LinkedIn">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:1.25rem;height:1.25rem">
+									<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+								</svg>
+							</a>
+							<button class="theme-toggle" id="themeToggleFooter" aria-label="Toggle theme">
+								<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem;height:1.25rem">
+									<circle cx="12" cy="12" r="4"></circle>
+									<path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2m-4.93-7.07-1.41 1.41M6.34 17.66l-1.41 1.41"></path>
+								</svg>
+								<svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem;height:1.25rem">
+									<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+								</svg>
+							</button>
+						</div>
+						<p class="footer-copyright">
+							© copyright Simplistic 2024. All rights reserved.
+						</p>
+					</div>
+
+					<div class="footer-links-grid">
+						<div>
+							<p class="footer-col-title">Pages</p>
+							<ul class="footer-col-links">
+								<li><a href="#">Products</a></li>
+								<li><a href="#">Features</a></li>
+								<li><a href="#">Integrations</a></li>
+								<li><a href="pricing.html">Pricing</a></li>
+								<li><a href="#">Blog</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-col-title">Socials</p>
+							<ul class="footer-col-links">
+								<li><a href="#">Twitter</a></li>
+								<li><a href="#">LinkedIn</a></li>
+								<li><a href="#">GitHub</a></li>
+								<li><a href="#">Discord</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-col-title">Legal</p>
+							<ul class="footer-col-links">
+								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Terms of Service</a></li>
+								<li><a href="#">Cookie Policy</a></li>
+							</ul>
+						</div>
+						<div>
+							<p class="footer-col-title">Register</p>
+							<ul class="footer-col-links">
+								<li><a href="#">Get Started</a></li>
+								<li><a href="login.html">Login</a></li>
+								<li><a href="#">Documentation</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div style="position:relative;height:calc(clamp(3rem,18vw,20rem)*0.75);overflow:hidden;margin-top:5rem">
+					<p style="position:absolute;inset-x:0;top:0;font-size:clamp(3rem,18vw,20rem);letter-spacing:-0.02em;font-weight:700;text-align:center;line-height:1;background:transparent;color:transparent">
+						<span class="wordmark-light" style="-webkit-text-stroke:1px #e5e5e5">Simplistic</span>
+						<span class="wordmark-dark" style="-webkit-text-stroke:1px #404040">Simplistic</span>
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		// Theme toggle
+		function applyTheme(dark) {
+			if (dark) {
+				document.documentElement.classList.add("dark");
+				localStorage.setItem("theme", "dark");
+			} else {
+				document.documentElement.classList.remove("dark");
+				localStorage.setItem("theme", "light");
+			}
+		}
+		function toggleTheme() {
+			applyTheme(!document.documentElement.classList.contains("dark"));
+		}
+		document
+			.getElementById("themeToggleDesktop")
+			.addEventListener("click", toggleTheme);
+		document
+			.getElementById("themeToggleMobile")
+			.addEventListener("click", toggleTheme);
+		document
+			.getElementById("themeToggleFooter")
+			.addEventListener("click", toggleTheme);
+
+		// Nav scroll
+		var navInner = document.getElementById("navInner");
+		window.addEventListener(
+			"scroll",
+			function () {
+				if (window.scrollY > 10) {
+					navInner.classList.add("scrolled");
+				} else {
+					navInner.classList.remove("scrolled");
+				}
+			},
+			{ passive: true },
+		);
+
+		// Mobile menu
+		var hamburger = document.getElementById("hamburger");
+		var mobileMenu = document.getElementById("mobileMenu");
+		var menuOpen = false;
+		hamburger.addEventListener("click", function () {
+			menuOpen = !menuOpen;
+			hamburger.setAttribute("aria-expanded", menuOpen);
+			mobileMenu.setAttribute("aria-hidden", !menuOpen);
+			if (menuOpen) {
+				mobileMenu.classList.add("open");
+				document.body.style.overflow = "hidden";
+			} else {
+				mobileMenu.classList.remove("open");
+				document.body.style.overflow = "";
+			}
+		});
+
+		// Mobile Resources sub-accordion
+		var mobileResourcesBtn = document.getElementById("mobileResourcesBtn");
+		var mobileResourcesSub = document.getElementById("mobileResourcesSub");
+		var mobileSubOpen = false;
+		mobileResourcesBtn.addEventListener("click", function () {
+			mobileSubOpen = !mobileSubOpen;
+			mobileResourcesBtn.setAttribute("aria-expanded", mobileSubOpen);
+			if (mobileSubOpen) {
+				mobileResourcesSub.style.maxHeight =
+					mobileResourcesSub.scrollHeight + "px";
+			} else {
+				mobileResourcesSub.style.maxHeight = "0";
+			}
+		});
+
+		// Desktop Resources dropdown
+		var resourcesBtn = document.getElementById("resourcesBtn");
+		var resourcesDropdown = document.getElementById("resourcesDropdown");
+		resourcesBtn.addEventListener("click", function (e) {
+			e.stopPropagation();
+			var isOpen = resourcesDropdown.classList.contains("open");
+			resourcesDropdown.classList.toggle("open");
+			resourcesBtn.classList.toggle("open");
+			resourcesBtn.setAttribute("aria-expanded", !isOpen);
+		});
+		document.addEventListener("click", function () {
+			resourcesDropdown.classList.remove("open");
+			resourcesBtn.classList.remove("open");
+			resourcesBtn.setAttribute("aria-expanded", "false");
+		});
+
+		// FAQ accordion
+		var triggers = document.querySelectorAll(".accordion-trigger");
+		triggers.forEach(function (trigger) {
+			trigger.addEventListener("click", function () {
+				var isOpen = trigger.classList.contains("open");
+				// Close all in same category
+				var category = trigger.closest(".faq-category");
+				category.querySelectorAll(".accordion-trigger").forEach(function (t) {
+					t.classList.remove("open");
+					t.setAttribute("aria-expanded", "false");
+					t.nextElementSibling.style.maxHeight = "0";
+				});
+				// Open clicked if it was closed
+				if (!isOpen) {
+					trigger.classList.add("open");
+					trigger.setAttribute("aria-expanded", "true");
+					var body = trigger.nextElementSibling;
+					body.style.maxHeight = body.scrollHeight + "px";
+				}
+			});
+		});
+		</script>
+	
+
+</body></html>

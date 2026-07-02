@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Cuisine Restaurant Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    .menu-filter-bar {
+      background: rgba(77,89,43,0.05);
+      padding: 1.5rem 0 0;
+    }
+    .menu-filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-bottom: 0;
+    }
+    .menu-filter-tabs button {
+      padding: 0.5rem 1.5rem;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      font-family: var(--font-primary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--color-text-dark);
+      transition: background 0.2s, color 0.2s;
+    }
+    .menu-filter-tabs button.active {
+      background: var(--color-secondary);
+      color: white;
+    }
+    .menu-filter-tabs button:hover:not(.active) {
+      background: rgba(236,86,0,0.1);
+      color: var(--color-secondary);
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .menu-item-card {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: white;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .menu-item-card:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .menu-item-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .menu-item-card:hover .menu-item-img {
+      transform: scale(1.06);
+    }
+    .menu-item-img-wrap {
+      overflow: hidden;
+      height: 200px;
+    }
+    .menu-item-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+    .menu-item-price {
+      color: var(--color-secondary);
+      font-family: var(--font-primary);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .menu-item-name {
+      font-family: var(--font-primary);
+      font-weight: 600;
+      font-size: 1.0625rem;
+      color: var(--color-text-dark);
+      margin-bottom: 0.5rem;
+    }
+    .menu-item-desc {
+      font-size: 13px;
+      color: var(--color-text-light);
+      line-height: 1.6;
+    }
+    .menu-section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 2rem;
+      color: var(--color-text-dark);
+    }
+    @media (max-width: 575px) {
+      .menu-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="topbar-contact">
+          <a href="tel:(123) 456 -7890">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+            (123) 456 -7890
+          </a>
+          <a href="mailto:contact@themefisher.com">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+            contact@themefisher.com
+          </a>
+        </div>
+        <ul class="social-icons">
+          <li><a href="https://www.facebook.com/" aria-label="facebook" target="_blank"><svg fill="currentColor" viewBox="0 0 320 512" height="12" width="12"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a></li>
+          <li><a href="https://x.com/" aria-label="twitter" target="_blank"><svg fill="currentColor" viewBox="0 0 512 512" height="12" width="12"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a></li>
+          <li><a href="https://www.instagram.com/" aria-label="instagram" target="_blank"><svg fill="currentColor" viewBox="0 0 448 512" height="12" width="12"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/" aria-label="linkedin" target="_blank"><svg fill="currentColor" viewBox="0 0 448 512" height="12" width="12"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="site-header">
+    <input type="checkbox" id="nav-toggle" aria-hidden="true">
+    <nav class="navbar">
+      <div style="order:0;display:flex;align-items:center;">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/images/logo.svg" alt="Cuisine" style="height:39px;width:auto;">
+        </a>
+      </div>
+      <label for="nav-toggle" class="nav-toggle-label" style="order:3;">
+        <svg class="show-icon" viewBox="0 0 20 20" width="24" height="24"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        <svg class="hide-icon" viewBox="0 0 20 20" width="24" height="24"><polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"/></svg>
+      </label>
+      <ul class="navbar-nav" id="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="menu.html" class="nav-link active">Menu</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="book.html" class="nav-link">Book A Table</a></li>
+        <li class="nav-item" style="display:none;" id="mobile-cta">
+          <a href="https://themefisher.com/products/cuisine-nextjs" target="_blank" class="btn btn-outline btn-lg" style="margin-top:1rem;"><span>Get This Theme</span><span class="btn-fill"></span></a>
+        </li>
+      </ul>
+      <div style="order:1;margin-left:auto;display:flex;align-items:center;">
+        <a href="https://themefisher.com/products/cuisine-nextjs" target="_blank" class="btn btn-outline btn-lg">
+          <span>Get This Theme</span><span class="btn-fill"></span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Page Banner -->
+    <div class="page-banner" data-aos="fade-up-sm">
+      <div class="container">
+        <h1>Our Menu</h1>
+        <p>Explore our handcrafted dishes prepared with the finest ingredients and culinary expertise.</p>
+      </div>
+    </div>
+
+    <!-- Menu Filter -->
+    <div class="menu-filter-bar">
+      <div class="container">
+        <div class="menu-filter-tabs" id="menu-tabs">
+          <button class="active" data-tab="all">All</button>
+          <button data-tab="breakfast">Breakfast</button>
+          <button data-tab="main">Main Dishes</button>
+          <button data-tab="desserts">Desserts</button>
+          <button data-tab="special">Special</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Items -->
+    <section class="section">
+      <div class="container">
+        <div class="menu-grid" id="menu-grid">
+
+          <!-- Breakfast items -->
+          <div class="menu-item-card" data-category="breakfast" data-aos="fade-up-sm" data-aos-delay="50">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/b1.png" alt="Classic Pancake Stack" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$12.00</div>
+              <div class="menu-item-name">Classic Pancake Stack</div>
+              <div class="menu-item-desc">Fluffy buttermilk pancakes served with maple syrup and fresh berries.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="breakfast" data-aos="fade-up-sm" data-aos-delay="100">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/b2.png" alt="Eggs Benedict" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$15.00</div>
+              <div class="menu-item-name">Eggs Benedict</div>
+              <div class="menu-item-desc">Poached eggs on toasted English muffin with hollandaise sauce and smoked salmon.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="breakfast" data-aos="fade-up-sm" data-aos-delay="150">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/b3.png" alt="Avocado Toast" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$11.00</div>
+              <div class="menu-item-name">Avocado Toast</div>
+              <div class="menu-item-desc">Sourdough toast topped with smashed avocado, cherry tomatoes and poached egg.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="breakfast" data-aos="fade-up-sm" data-aos-delay="200">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/b4.png" alt="French Toast" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$13.00</div>
+              <div class="menu-item-name">French Toast</div>
+              <div class="menu-item-desc">Brioche bread dipped in egg custard, pan-fried golden, served with powdered sugar.</div>
+            </div>
+          </div>
+
+          <!-- Main dishes -->
+          <div class="menu-item-card" data-category="main" data-aos="fade-up-sm" data-aos-delay="50">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/1.png" alt="Grilled Salmon" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$28.00</div>
+              <div class="menu-item-name">Grilled Salmon</div>
+              <div class="menu-item-desc">Atlantic salmon grilled to perfection with lemon butter and seasonal vegetables.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="main" data-aos="fade-up-sm" data-aos-delay="100">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/2.png" alt="Herb Roasted Chicken" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$24.00</div>
+              <div class="menu-item-name">Herb Roasted Chicken</div>
+              <div class="menu-item-desc">Free-range chicken roasted with fresh herbs, garlic and served with mashed potatoes.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="main" data-aos="fade-up-sm" data-aos-delay="150">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/3.png" alt="Beef Tenderloin" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$38.00</div>
+              <div class="menu-item-name">Beef Tenderloin</div>
+              <div class="menu-item-desc">Prime beef tenderloin served with red wine reduction and truffle mashed potato.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="main" data-aos="fade-up-sm" data-aos-delay="200">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/4.png" alt="Mushroom Risotto" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$22.00</div>
+              <div class="menu-item-name">Mushroom Risotto</div>
+              <div class="menu-item-desc">Creamy arborio rice cooked with wild mushrooms, parmesan and fresh thyme.</div>
+            </div>
+          </div>
+
+          <!-- Desserts -->
+          <div class="menu-item-card" data-category="desserts" data-aos="fade-up-sm" data-aos-delay="50">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/5.png" alt="Chocolate Lava Cake" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$10.00</div>
+              <div class="menu-item-name">Chocolate Lava Cake</div>
+              <div class="menu-item-desc">Warm chocolate cake with a molten centre, served with vanilla ice cream.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="desserts" data-aos="fade-up-sm" data-aos-delay="100">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/6.png" alt="Crème Brûlée" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$9.00</div>
+              <div class="menu-item-name">Crème Brûlée</div>
+              <div class="menu-item-desc">Classic French dessert with a rich vanilla custard topped with caramelized sugar.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="desserts" data-aos="fade-up-sm" data-aos-delay="150">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/7.png" alt="Tiramisu" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$11.00</div>
+              <div class="menu-item-name">Tiramisu</div>
+              <div class="menu-item-desc">Italian classic with espresso-soaked ladyfingers, mascarpone and cocoa powder.</div>
+            </div>
+          </div>
+
+          <!-- Special dishes -->
+          <div class="menu-item-card" data-category="special" data-aos="fade-up-sm" data-aos-delay="50">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/8.png" alt="Chef's Tasting Platter" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$55.00</div>
+              <div class="menu-item-name">Chef's Tasting Platter</div>
+              <div class="menu-item-desc">A curated selection of our finest seasonal specialties chosen by the head chef.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="special" data-aos="fade-up-sm" data-aos-delay="100">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/9.png" alt="Seafood Linguine" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$32.00</div>
+              <div class="menu-item-name">Seafood Linguine</div>
+              <div class="menu-item-desc">Fresh linguine with shrimp, scallops and clams in a white wine garlic sauce.</div>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="special" data-aos="fade-up-sm" data-aos-delay="150">
+            <div class="menu-item-img-wrap">
+              <img src="assets/images/menu/10.png" alt="Duck Confit" class="menu-item-img">
+            </div>
+            <div class="menu-item-body">
+              <div class="menu-item-price">$34.00</div>
+              <div class="menu-item-name">Duck Confit</div>
+              <div class="menu-item-desc">Slow-cooked duck leg with orange glaze, lentils and roasted root vegetables.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background-color:rgba(77,89,43,0.05);padding-top:4rem;padding-bottom:4rem;">
+      <div class="container" style="text-align:center;">
+        <h2 data-aos="fade-up-sm" style="margin-bottom:1rem;">Ready to Experience Our Cuisine?</h2>
+        <p data-aos="fade-up-sm" data-aos-delay="50" style="margin-bottom:2.5rem;max-width:40rem;margin-left:auto;margin-right:auto;">Reserve your table today and enjoy an unforgettable dining experience crafted just for you.</p>
+        <div data-aos="zoom-in-sm" data-aos-delay="100">
+          <a href="book.html" class="btn btn-solid btn-lg">
+            <span>Book A Table</span><span class="btn-fill"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand" data-aos="fade-up-sm">
+          <div class="footer-logo">
+            <a href="index.html"><img src="assets/images/logo-footer.svg" alt="Cuisine" style="height:39px;width:auto;"></a>
+          </div>
+          <p class="footer-tagline">In the new era of technology we look a in the future with certainty and pride to for our company and.</p>
+          <ul class="social-icons-footer">
+            <li><a href="https://www.facebook.com/" aria-label="facebook" target="_blank"><svg fill="currentColor" viewBox="0 0 320 512" height="14" width="14"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a></li>
+            <li><a href="https://x.com/" aria-label="twitter" target="_blank"><svg fill="currentColor" viewBox="0 0 512 512" height="14" width="14"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a></li>
+            <li><a href="https://www.instagram.com/" aria-label="instagram" target="_blank"><svg fill="currentColor" viewBox="0 0 448 512" height="14" width="14"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/" aria-label="linkedin" target="_blank"><svg fill="currentColor" viewBox="0 0 448 512" height="14" width="14"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg></a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-cols">
+          <div class="footer-nav-col" data-aos="fade-up-sm" data-aos-delay="100">
+            <h6>Pages</h6>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col" data-aos="fade-up-sm" data-aos-delay="150">
+            <h6>Utility Pages</h6>
+            <ul>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+              <li><a href="elements.html">Elements</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col" data-aos="fade-up-sm" data-aos-delay="200">
+            <h6>Follow Us</h6>
+            <div class="footer-instagram-grid" style="grid-template-columns:repeat(2,1fr);gap:0.375rem;display:grid;max-width:120px;">
+              <a href="https://www.instagram.com/" target="_blank"><img src="assets/images/instagram/1.png" alt="Instagram" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;"></a>
+              <a href="https://www.instagram.com/" target="_blank"><img src="assets/images/instagram/2.png" alt="Instagram" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;"></a>
+              <a href="https://www.instagram.com/" target="_blank"><img src="assets/images/instagram/3.png" alt="Instagram" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;"></a>
+              <a href="https://www.instagram.com/" target="_blank"><img src="assets/images/instagram/4.png" alt="Instagram" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; Copyright 2026, All Rights Reserved by <a href="https://themefisher.com" target="_blank" style="color:var(--color-secondary);">Themefisher</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 600, once: true, offset: 80 });
+
+    // Sticky Header
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header-reveal', window.scrollY > 80);
+    });
+
+    // Mobile CTA
+    function checkMobile() {
+      document.getElementById('mobile-cta').style.display = window.innerWidth < 1024 ? 'block' : 'none';
+    }
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Menu filter
+    const tabs = document.querySelectorAll('#menu-tabs button');
+    const cards = document.querySelectorAll('.menu-item-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const cat = tab.dataset.tab;
+        cards.forEach(card => {
+          if (cat === 'all' || card.dataset.category === cat) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

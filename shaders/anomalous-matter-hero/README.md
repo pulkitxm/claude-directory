@@ -1,5 +1,7 @@
 # Anomalous Matter Hero — Three.js Icosahedron Wireframe Hero Section (React + TypeScript + Three.js + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport containment-lab observation hero built around a noise-displaced Three.js icosahedron wireframe with a fresnel rim glow and a cursor-tracked point light. The GLSL vertex shader applies Simplex noise displacement to the geometry over time, while the fragment shader computes a diffuse + fresnel composite. A control rail lets users adjust `Flux`, `Glow`, and `Tempo` faders wired directly into shader uniforms, and a live telemetry HUD reports center-pixel luminance sampled off the GPU as a rolling "anomaly energy" sparkline alongside smoothed FPS. Generated with Claude Fable 5.
 
 The component from the prompt is integrated at

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuisine - Food & Restaurant Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* Page-specific */
+    .hero-section {
+      background-image: url('assets/images/homepage/banner.png');
+      background-size: cover;
+      background-position: center;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+
+    .hero-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      padding-top: 9vh;
+    }
+
+    .hero-inner h1 {
+      font-size: clamp(3rem, 7vw, 6.25rem);
+      line-height: 1.0;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      color: var(--color-text-dark);
+    }
+
+    .hero-inner p {
+      font-size: 1.125rem;
+      color: rgba(68,68,68,0.9);
+      line-height: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Visit Us section */
+    .visit-section {
+      background-color: rgba(77,89,43,0.05);
+      padding-bottom: 4.5rem;
+    }
+
+    .visit-info-box {
+      background-color: var(--color-primary);
+      border-radius: 1rem;
+      padding: 2rem;
+      color: white;
+      position: relative;
+    }
+
+    .visit-info-box h6 {
+      color: white;
+      font-family: var(--font-primary);
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .visit-contact-link {
+      color: rgba(255,255,255,0.85);
+      font-size: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .visit-contact-link svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      width: 1em;
+      height: 1em;
+    }
+
+    .visit-content-right h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1.75rem;
+    }
+
+    .visit-content-right p {
+      margin-bottom: 2rem;
+    }
+
+    /* Services section */
+    .service-card { cursor: default; }
+    .service-card .service-img {
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card .service-img img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+
+    .service-card:hover .service-img img { transform: scale(1.1); }
+
+    .service-card h3 {
+      font-family: var(--font-primary);
+      font-size: var(--text-h6);
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      padding: 0 0.75rem;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: rgba(68,68,68,0.9);
+      padding: 0 0.75rem;
+    }
+
+    /* Benefits section */
+    .benefits-images {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .benefits-img-main {
+      width: 58%;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      height: 595px;
+    }
+
+    .benefits-img-stack {
+      width: 42%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .benefits-img-stack img {
+      border-radius: var(--radius-md);
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .benefits-img-stack img:first-child { height: 330px; }
+    .benefits-img-stack img:last-child  { height: 238px; }
+
+    .benefits-check-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .benefits-check-icon {
+      padding: 0.375rem;
+      background: var(--color-secondary);
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .benefits-check-icon svg {
+      width: 1em;
+      height: 1em;
+      color: white;
+    }
+
+    /* Testimonials */
+    .testimonial-slide {
+      border-radius: var(--radius-lg);
+      background-color: rgba(77, 89, 43, 0.07);
+      padding: 2.5rem 2rem;
+      height: auto;
+    }
+
+    .testimonial-slide h6 {
+      color: var(--color-secondary);
+      font-family: var(--font-primary);
+      font-weight: 700;
+      font-size: var(--text-h6);
+    }
+
+    .testimonial-slide blockquote {
+      margin-top: 2rem;
+      padding-bottom: 1.5rem;
+      color: rgba(68,68,68,0.9);
+      font-style: normal;
+      font-size: var(--text-base);
+      line-height: 1.7;
+    }
+
+    .testimonial-author-wrap {
+      display: flex;
+      align-items: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+      margin-top: auto;
+    }
+
+    .testimonial-author-wrap img {
+      width: 70px;
+      height: 70px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .testimonial-author-info {
+      margin-left: 1rem;
+    }
+
+    .testimonial-author-info h3 {
+      font-family: var(--font-primary);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .testimonial-author-info p {
+      font-size: 14px;
+      color: var(--color-text-light);
+    }
+
+    /* Blog section */
+    .blog-card-home { height: 100%; }
+
+    /* Swiper buttons */
+    .swiper-nav-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .swiper-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--color-border);
+      background: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-dark);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .swiper-nav-btn:hover {
+      border-color: var(--color-secondary);
+      color: var(--color-secondary);
+    }
+
+    /* Footer layout */
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand { flex: 0 0 260px; }
+    .footer-nav-cols { flex: 1; display: flex; flex-wrap: wrap; gap: 2.5rem; }
+    .footer-nav-col { min-width: 120px; }
+    .footer-nav-col h6 {
+      color: rgba(255,255,255,0.9);
+      font-family: var(--font-primary);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-nav-col ul li { margin-bottom: 1rem; }
+    .footer-nav-col ul li a {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-nav-col ul li a:hover {
+      color: var(--color-secondary);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 767px) {
+      .benefits-images { flex-direction: column; }
+      .benefits-img-main { width: 100%; height: 280px; }
+      .benefits-img-stack { width: 100%; flex-direction: row; margin-top: 0; }
+      .benefits-img-stack img:first-child,
+      .benefits-img-stack img:last-child { height: 180px; flex: 1; }
+      .hero-inner { padding-top: 2rem; }
+      .footer-inner { gap: 2rem; }
+      .footer-brand { flex: 0 0 100%; }
+    }
+
+    @media (max-width: 575px) {
+      .topbar { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="topbar-contact">
+          <a href="tel:(123) 456 -7890">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+            (123) 456 -7890
+          </a>
+          <a href="mailto:contact@themefisher.com">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+            contact@themefisher.com
+          </a>
+        </div>
+        <ul class="social-icons">
+          <li><a href="https://www.facebook.com/" aria-label="facebook" target="_blank">
+            <svg fill="currentColor" viewBox="0 0 320 512" height="12" width="12"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg>
+          </a></li>
+          <li><a href="https://x.com/" aria-label="twitter" target="_blank">
+            <svg fill="currentColor" viewBox="0 0 512 512" height="12" width="12"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+          </a></li>
+          <li><a href="https://www.instagram.com/" aria-label="instagram" target="_blank">
+            <svg fill="currentColor" viewBox="0 0 448 512" height="12" width="12"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+          </a></li>
+          <li><a href="https://www.linkedin.com/" aria-label="linkedin" target="_blank">
+            <svg fill="currentColor" viewBox="0 0 448 512" height="12" width="12"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="site-header">
+    <input type="checkbox" id="nav-toggle" aria-hidden="true">
+    <nav class="navbar">
+      <div style="order:0;display:flex;align-items:center;" data-aos="zoom-in" data-aos-delay="20">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/images/logo.svg" alt="Cuisine" style="height:39px;width:auto;">
+        </a>
+      </div>
+
+      <label for="nav-toggle" class="nav-toggle-label" style="order:3;">
+        <svg class="show-icon" viewBox="0 0 20 20" width="24" height="24"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        <svg class="hide-icon" viewBox="0 0 20 20" width="24" height="24"><polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"/></svg>
+      </label>
+
+      <ul class="navbar-nav" id="nav-menu">
+        <li class="nav-item" data-aos="fade-up-sm" data-aos-delay="100">
+          <a href="index.html" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item" data-aos="fade-up-sm" data-aos-delay="150">
+          <a href="about.html" class="nav-link">About</a>
+        </li>
+        <li class="nav-item" data-aos="fade-up-sm" data-aos-delay="200">
+          <a href="menu.html" class="nav-link">Menu</a>
+        </li>
+        <li class="nav-item" data-aos="fade-up-sm" data-aos-delay="250">
+          <a href="blog.html" class="nav-link">Blog</a>
+        </li>
+        <li class="nav-item" data-aos="fade-up-sm" data-aos-delay="300">
+          <a href="contact.html" class="nav-link">Contact</a>
+        </li>
+        <li class="nav-item" data-aos="fade-up-sm" data-aos-delay="350">
+          <a href="book.html" class="nav-link">Book A Table</a>
+        </li>
+        <li class="nav-item" style="display:none;" data-aos="zoom-in-sm" data-aos-delay="150" id="mobile-cta">
+          <a href="#" class="btn btn-outline btn-lg" style="margin-top:1rem;">
+            <span>Get This Theme</span>
+            <span class="btn-fill"></span>
+          </a>
+        </li>
+      </ul>
+
+      <div style="order:1;margin-left:auto;display:flex;align-items:center;" data-aos="zoom-in-sm" data-aos-delay="150">
+        <a href="https://themefisher.com/products/cuisine-nextjs" target="_blank" class="btn btn-outline btn-lg">
+          <span>Get This Theme</span>
+          <span class="btn-fill"></span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" data-aos="fade-up-sm" data-aos-delay="0">
+      <div class="hero-inner">
+        <h1 data-aos="fade-up-sm" data-aos-delay="100">Best food for your taste</h1>
+        <p data-aos="fade-up-sm" data-aos-delay="25">Discover delectable cuisine and unforgettable moments in our welcoming, culinary haven.</p>
+        <div class="hero-btns" data-aos="zoom-in-sm" data-aos-delay="200">
+          <a href="book.html" class="btn btn-solid">
+            <span>Book A Table</span>
+            <span class="btn-fill"></span>
+          </a>
+          <a href="menu.html" class="btn btn-outline">
+            <span>Explore Menu</span>
+            <span class="btn-fill"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Browse Our Menu Section -->
+    <section class="section">
+      <div class="container">
+        <h2 class="text-center" style="margin-bottom:3.5rem;" data-aos="fade-up-sm" data-aos-delay="100">Browse Our Menu</h2>
+        <div class="row g-4">
+          <!-- Breakfast -->
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="category-card" data-aos="fade-up-sm" data-aos-delay="100">
+              <div class="category-icon-wrap">
+                <div class="category-icon-rest">
+                  <svg fill="currentColor" viewBox="0 0 512 512" width="32" height="32" style="color:var(--color-primary)"><path d="M88 0C74.7 0 64 10.7 64 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1C120.5 112.3 128 119.9 128 136c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C119.5 47.7 112 40.1 112 24c0-13.3-10.7-24-24-24zM32 192c-17.7 0-32 14.3-32 32L0 416c0 53 43 96 96 96l192 0c53 0 96-43 96-96l16 0c61.9 0 112-50.1 112-112s-50.1-112-112-112l-48 0L32 192zm352 64l16 0c26.5 0 48 21.5 48 48s-21.5 48-48 48l-16 0 0-96zM224 24c0-13.3-10.7-24-24-24s-24 10.7-24 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1C232.5 112.3 240 119.9 240 136c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C231.5 47.7 224 40.1 224 24z"/></svg>
+                </div>
+                <div class="category-icon-hover">
+                  <svg fill="currentColor" viewBox="0 0 512 512" width="32" height="32" style="color:var(--color-primary)"><path d="M88 0C74.7 0 64 10.7 64 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1C120.5 112.3 128 119.9 128 136c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C119.5 47.7 112 40.1 112 24c0-13.3-10.7-24-24-24zM32 192c-17.7 0-32 14.3-32 32L0 416c0 53 43 96 96 96l192 0c53 0 96-43 96-96l16 0c61.9 0 112-50.1 112-112s-50.1-112-112-112l-48 0L32 192zm352 64l16 0c26.5 0 48 21.5 48 48s-21.5 48-48 48l-16 0 0-96zM224 24c0-13.3-10.7-24-24-24s-24 10.7-24 24c0 38.9 23.4 59.4 39.1 73.1l1.1 1C232.5 112.3 240 119.9 240 136c0 13.3 10.7 24 24 24s24-10.7 24-24c0-38.9-23.4-59.4-39.1-73.1l-1.1-1C231.5 47.7 224 40.1 224 24z"/></svg>
+                </div>
+              </div>
+              <h3 class="h6 font-primary font-semibold" style="margin-bottom:1rem;">Breakfast</h3>
+              <p style="font-size:14px;color:rgba(68,68,68,0.9);margin-bottom:2.25rem;line-height:1.7;">In the new era of technology we look in the future with certainty and pride for our life.</p>
+              <a href="menu.html" class="explore-link" style="font-size:14px;font-weight:600;color:var(--color-secondary);">Explore Menu</a>
+            </div>
+          </div>
+          <!-- Main Dishes -->
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="category-card" data-aos="fade-up-sm" data-aos-delay="150">
+              <div class="category-icon-wrap">
+                <div class="category-icon-rest">
+                  <svg fill="currentColor" viewBox="0 0 512 512" width="32" height="32" style="color:var(--color-primary)"><path d="M0 192c0-35.3 28.7-64 64-64c.5 0 1.1 0 1.6 0C73 91.5 105.3 64 144 64c15 0 29 4.1 40.9 11.2C198.2 49.6 225.1 32 256 32s57.8 17.6 71.1 43.2C339 68.1 353 64 368 64c38.7 0 71 27.5 78.4 64c.5 0 1.1 0 1.6 0c35.3 0 64 28.7 64 64c0 11.7-3.1 22.6-8.6 32L8.6 224C3.1 214.6 0 203.7 0 192zm0 91.4C0 268.3 12.3 256 27.4 256l457.1 0c15.1 0 27.4 12.3 27.4 27.4c0 70.5-44.4 130.7-106.7 154.1L403.5 452c-2 16-15.6 28-31.8 28l-231.5 0c-16.1 0-29.8-12-31.8-28l-1.8-14.4C44.4 414.1 0 353.9 0 283.4z"/></svg>
+                </div>
+                <div class="category-icon-hover">
+                  <svg fill="currentColor" viewBox="0 0 512 512" width="32" height="32" style="color:var(--color-primary)"><path d="M0 192c0-35.3 28.7-64 64-64c.5 0 1.1 0 1.6 0C73 91.5 105.3 64 144 64c15 0 29 4.1 40.9 11.2C198.2 49.6 225.1 32 256 32s57.8 17.6 71.1 43.2C339 68.1 353 64 368 64c38.7 0 71 27.5 78.4 64c.5 0 1.1 0 1.6 0c35.3 0 64 28.7 64 64c0 11.7-3.1 22.6-8.6 32L8.6 224C3.1 214.6 0 203.7 0 192zm0 91.4C0 268.3 12.3 256 27.4 256l457.1 0c15.1 0 27.4 12.3 27.4 27.4c0 70.5-44.4 130.7-106.7 154.1L403.5 452c-2 16-15.6 28-31.8 28l-231.5 0c-16.1 0-29.8-12-31.8-28l-1.8-14.4C44.4 414.1 0 353.9 0 283.4z"/></svg>
+                </div>
+              </div>
+              <h3 class="h6 font-primary font-semibold" style="margin-bottom:1rem;">Main Dishes</h3>
+              <p style="font-size:14px;color:rgba(68,68,68,0.9);margin-bottom:2.25rem;line-height:1.7;">In the new era of technology we look in the future with certainty and pride for our life.</p>
+              <a href="menu.html" class="explore-link" style="font-size:14px;font-weight:600;color:var(--color-secondary);">Explore Menu</a>
+            </div>
+          </div>
+          <!-- Desserts -->
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="category-card" data-aos="fade-up-sm" data-aos-delay="200">
+              <div class="category-icon-wrap">
+                <div class="category-icon-rest">
+                  <svg fill="currentColor" viewBox="0 0 384 512" width="32" height="32" style="color:var(--color-primary)"><path d="M32 0C23.1 0 14.6 3.7 8.6 10.2S-.6 25.4 .1 34.3L28.9 437.7c3 41.9 37.8 74.3 79.8 74.3l166.6 0c42 0 76.8-32.4 79.8-74.3L383.9 34.3c.6-8.9-2.4-17.6-8.5-24.1S360.9 0 352 0L32 0zM73 156.5L66.4 64l251.3 0L311 156.5l-24.2 12.1c-19.4 9.7-42.2 9.7-61.6 0c-20.9-10.4-45.5-10.4-66.4 0c-19.4 9.7-42.2 9.7-61.6 0L73 156.5z"/></svg>
+                </div>
+                <div class="category-icon-hover">
+                  <svg fill="currentColor" viewBox="0 0 384 512" width="32" height="32" style="color:var(--color-primary)"><path d="M32 0C23.1 0 14.6 3.7 8.6 10.2S-.6 25.4 .1 34.3L28.9 437.7c3 41.9 37.8 74.3 79.8 74.3l166.6 0c42 0 76.8-32.4 79.8-74.3L383.9 34.3c.6-8.9-2.4-17.6-8.5-24.1S360.9 0 352 0L32 0zM73 156.5L66.4 64l251.3 0L311 156.5l-24.2 12.1c-19.4 9.7-42.2 9.7-61.6 0c-20.9-10.4-45.5-10.4-66.4 0c-19.4 9.7-42.2 9.7-61.6 0L73 156.5z"/></svg>
+                </div>
+              </div>
+              <h3 class="h6 font-primary font-semibold" style="margin-bottom:1rem;">Desserts</h3>
+              <p style="font-size:14px;color:rgba(68,68,68,0.9);margin-bottom:2.25rem;line-height:1.7;">In the new era of technology we look in the future with certainty and pride for our life.</p>
+              <a href="menu.html" class="explore-link" style="font-size:14px;font-weight:600;color:var(--color-secondary);">Explore Menu</a>
+            </div>
+          </div>
+          <!-- Special Dishes -->
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="category-card" data-aos="fade-up-sm" data-aos-delay="250">
+              <div class="category-icon-wrap">
+                <div class="category-icon-rest">
+                  <svg fill="currentColor" viewBox="0 0 576 512" width="32" height="32" style="color:var(--color-primary)"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+                </div>
+                <div class="category-icon-hover">
+                  <svg fill="currentColor" viewBox="0 0 576 512" width="32" height="32" style="color:var(--color-primary)"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+                </div>
+              </div>
+              <h3 class="h6 font-primary font-semibold" style="margin-bottom:1rem;">Special Dishes</h3>
+              <p style="font-size:14px;color:rgba(68,68,68,0.9);margin-bottom:2.25rem;line-height:1.7;">In the new era of technology we look in the future with certainty and pride for our life.</p>
+              <a href="menu.html" class="explore-link" style="font-size:14px;font-weight:600;color:var(--color-secondary);">Explore Menu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Come and Visit Us Section -->
+    <section class="section visit-section">
+      <div class="container">
+        <div style="display:flex;flex-wrap:wrap;gap:3rem;align-items:flex-start;">
+          <!-- Left: Info Box -->
+          <div style="flex:0 0 300px;max-width:100%;">
+            <div class="visit-info-box" data-aos="zoom-in-sm" data-aos-delay="100">
+              <h6>Come and visit us</h6>
+              <a href="tel:(123) 456 -7890" class="visit-contact-link">
+                <svg fill="currentColor" viewBox="0 0 512 512" width="14" height="14"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+                <span>(123) 456 -7890</span>
+              </a>
+              <a href="mailto:contact@themefisher.com" class="visit-contact-link">
+                <svg fill="currentColor" viewBox="0 0 512 512" width="14" height="14"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                <span>contact@themefisher.com</span>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=837+W.+Marshall+Lane+Marshalltown,+IA+50158" target="_blank" class="visit-contact-link">
+                <svg fill="currentColor" viewBox="0 0 384 512" width="14" height="14"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                <span>837 W. Marshall Lane Marshalltown, IA 50158, Los Angeles</span>
+              </a>
+            </div>
+          </div>
+          <!-- Right: Content -->
+          <div class="visit-content-right" style="flex:1;min-width:280px;">
+            <h2 data-aos="fade-up-sm" data-aos-delay="50">We provide healthy food for your family.</h2>
+            <p data-aos="fade-up-sm" data-aos-delay="100">Our story began with a vision to create a unique dining experience that merges fine dining, exceptional service, and a vibrant ambiance. Rooted in city's rich culinary culture, we aim to honor our local roots while infusing a global palate.<br><br>At place, we believe that dining is not just about food, but also about the overall experience. Our staff, renowned for their warmth and dedication, strives to make every visit an unforgettable event.</p>
+            <div data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="book.html" class="btn btn-solid" style="margin-top:2rem;">
+                <span>Book A Table</span>
+                <span class="btn-fill"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section">
+      <div class="container">
+        <h2 style="margin-bottom:3.5rem;" data-aos="fade-up-sm" data-aos-delay="100">We also offer unique <br>services for your events</h2>
+        <div class="row g-4">
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="service-card" data-aos="fade-up-sm" data-aos-delay="100">
+              <div class="service-img">
+                <img src="assets/images/homepage/s1.png" alt="Caterings" style="height:320px;">
+              </div>
+              <h3>Caterings</h3>
+              <p>In the new era of technology we look in the future with certainty for life.</p>
+            </div>
+          </div>
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="service-card" data-aos="fade-up-sm" data-aos-delay="150">
+              <div class="service-img">
+                <img src="assets/images/homepage/s2.png" alt="Birthdays" style="height:320px;">
+              </div>
+              <h3>Birthdays</h3>
+              <p>In the new era of technology we look in the future with certainty for life.</p>
+            </div>
+          </div>
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="service-card" data-aos="fade-up-sm" data-aos-delay="200">
+              <div class="service-img">
+                <img src="assets/images/homepage/s3.png" alt="Weddings" style="height:320px;">
+              </div>
+              <h3>Weddings</h3>
+              <p>In the new era of technology we look in the future with certainty for life.</p>
+            </div>
+          </div>
+          <div class="col-12 md:col-6 lg:col-3">
+            <div class="service-card" data-aos="fade-up-sm" data-aos-delay="250">
+              <div class="service-img">
+                <img src="assets/images/homepage/s4.png" alt="Events" style="height:320px;">
+              </div>
+              <h3>Events</h3>
+              <p>In the new era of technology we look in the future with certainty for life.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fastest Food Delivery Section -->
+    <section class="section" style="background-color:rgba(77,89,43,0.05);">
+      <div class="container">
+        <div style="display:flex;flex-wrap:wrap;gap:4rem;align-items:center;">
+          <!-- Images Column -->
+          <div style="flex:0 0 58%;max-width:100%;" class="benefits-images-col">
+            <div class="benefits-images">
+              <img src="assets/images/homepage/benefits-1.png" alt="Food delivery" class="benefits-img-main" data-aos="zoom-in-sm">
+              <div class="benefits-img-stack">
+                <img src="assets/images/homepage/benefits-2.png" alt="Food" data-aos="zoom-in-sm">
+                <img src="assets/images/homepage/benefits-3.png" alt="Food" data-aos="zoom-in-sm">
+              </div>
+            </div>
+          </div>
+          <!-- Text Column -->
+          <div style="flex:1;min-width:280px;">
+            <h2 style="margin-bottom:1.75rem;" data-aos="fade-up-sm" data-aos-delay="50">Fastest Food Delivery in City</h2>
+            <p style="margin-bottom:3rem;font-size:14px;" data-aos="fade-up-sm" data-aos-delay="100">Our visual designer lets you quickly and drag a down your way to custom apps for both desktop.</p>
+            <div class="benefits-check-item" data-aos="fade-up-sm" data-aos-delay="150">
+              <span class="benefits-check-icon">
+                <svg fill="currentColor" viewBox="0 0 512 512" width="12" height="12" style="color:white;"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
+              </span>
+              <p style="font-weight:500;font-size:1.0625rem;">Delivery within 30 minutes</p>
+            </div>
+            <div class="benefits-check-item" data-aos="fade-up-sm" data-aos-delay="200">
+              <span class="benefits-check-icon">
+                <svg fill="currentColor" viewBox="0 0 512 512" width="12" height="12" style="color:white;"><path d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5L0 80C0 53.5 21.5 32 48 32l149.5 0c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>
+              </span>
+              <p style="font-weight:500;font-size:1.0625rem;">Best Offer &amp; Prices</p>
+            </div>
+            <div class="benefits-check-item" data-aos="fade-up-sm" data-aos-delay="250">
+              <span class="benefits-check-icon">
+                <svg fill="currentColor" viewBox="0 0 576 512" width="12" height="12" style="color:white;"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+              </span>
+              <p style="font-weight:500;font-size:1.0625rem;">Online Services Available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" style="overflow:hidden;">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:3rem;" data-aos="fade-up-sm" data-aos-delay="100">
+          <h2>What Our Customers Say</h2>
+        </div>
+        <div class="swiper testimonial-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide testimonial-slide">
+              <div style="height:100%;display:flex;flex-direction:column;">
+                <h6 style="color:var(--color-secondary);font-family:var(--font-primary);font-weight:700;">"The best restaurant"</h6>
+                <blockquote style="margin-top:2rem;padding-bottom:1.5rem;color:rgba(68,68,68,0.9);line-height:1.7;">Last night, we dined at place and were simply blown away. From the moment we stepped in, we were enveloped in an inviting atmosphere and greeted with warm smiles.</blockquote>
+                <div class="testimonial-author-wrap">
+                  <img src="assets/images/homepage/testimonial-1.png" alt="Sophire Robson">
+                  <div class="testimonial-author-info">
+                    <h3>Sophire Robson</h3>
+                    <p>Los Angeles, CA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide testimonial-slide">
+              <div style="height:100%;display:flex;flex-direction:column;">
+                <h6 style="color:var(--color-secondary);font-family:var(--font-primary);font-weight:700;">"The best restaurant"</h6>
+                <blockquote style="margin-top:2rem;padding-bottom:1.5rem;color:rgba(68,68,68,0.9);line-height:1.7;">Place exceeded my expectations on all fronts. The ambiance was cozy and relaxed, making it a perfect venue for our anniversary dinner. Each dish was prepared and beautifully presented.</blockquote>
+                <div class="testimonial-author-wrap">
+                  <img src="assets/images/homepage/testimonial-2.png" alt="Marvin McKinney">
+                  <div class="testimonial-author-info">
+                    <h3>Marvin McKinney</h3>
+                    <p>Los Angeles, CA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide testimonial-slide">
+              <div style="height:100%;display:flex;flex-direction:column;">
+                <h6 style="color:var(--color-secondary);font-family:var(--font-primary);font-weight:700;">"One of a kind restaurant"</h6>
+                <blockquote style="margin-top:2rem;padding-bottom:1.5rem;color:rgba(68,68,68,0.9);line-height:1.7;">The culinary experience at place is first to none. The atmosphere is vibrant, the food - nothing short of extraordinary. The food was the highlight of our evening. Highly recommended.</blockquote>
+                <div class="testimonial-author-wrap">
+                  <img src="assets/images/homepage/testimonial-3.png" alt="Marvin Doe">
+                  <div class="testimonial-author-info">
+                    <h3>Marvin Doe</h3>
+                    <p>Los Angeles, CA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-nav-btns">
+          <button class="swiper-nav-btn" id="testimonial-prev" aria-label="Previous">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </button>
+          <button class="swiper-nav-btn" id="testimonial-next" aria-label="Next">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section" style="background-color:rgba(77,89,43,0.05);overflow:hidden;">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem;">
+          <h2 data-aos="fade-up-sm" data-aos-delay="100">Our Blog &amp; Articles</h2>
+          <a href="blog.html" class="btn btn-outline" data-aos="zoom-in-sm" data-aos-delay="100">
+            <span>Read All Articles</span>
+            <span class="btn-fill"></span>
+          </a>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 md:col-4" data-aos="fade-up-sm" data-aos-delay="100">
+            <div class="blog-card">
+              <div class="blog-card-img">
+                <img src="assets/images/blog/2.png" alt="The secret tips & tricks to prepare a perfect burger">
+              </div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">04 Jul, 2025</div>
+                <div class="blog-card-title">
+                  <a href="blog-the-secret-tip.html">The secret tips &amp; tricks to prepare a perfect burger</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 md:col-4" data-aos="fade-up-sm" data-aos-delay="200">
+            <div class="blog-card">
+              <div class="blog-card-img">
+                <img src="assets/images/blog/4.png" alt="5 great cooking gadgets">
+              </div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">04 Apr, 2025</div>
+                <div class="blog-card-title">
+                  <a href="blog-gadgets.html">5 great cooking gadgets you can buy to save time</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 md:col-4" data-aos="fade-up-sm" data-aos-delay="300">
+            <div class="blog-card">
+              <div class="blog-card-img">
+                <img src="assets/images/blog/3.png" alt="Exclusive baking lessons from the pastry king">
+              </div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">04 Apr, 2025</div>
+                <div class="blog-card-title">
+                  <a href="blog-baking.html">Exclusive baking lessons from the pastry king</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand" data-aos="fade-up-sm">
+          <div class="footer-logo">
+            <a href="index.html">
+              <img src="assets/images/logo-footer.svg" alt="Cuisine" style="height:39px;width:auto;">
+            </a>
+          </div>
+          <p class="footer-tagline">In the new era of technology we look a in the future with certainty and pride to for our company and.</p>
+          <ul class="social-icons-footer">
+            <li><a href="https://www.facebook.com/" aria-label="facebook" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 320 512" height="14" width="14"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg>
+            </a></li>
+            <li><a href="https://x.com/" aria-label="twitter" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 512 512" height="14" width="14"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+            </a></li>
+            <li><a href="https://www.instagram.com/" aria-label="instagram" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 448 512" height="14" width="14"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+            </a></li>
+            <li><a href="https://www.linkedin.com/" aria-label="linkedin" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 448 512" height="14" width="14"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-cols">
+          <div class="footer-nav-col" data-aos="fade-up-sm" data-aos-delay="100">
+            <h6>Pages</h6>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col" data-aos="fade-up-sm" data-aos-delay="150">
+            <h6>Utility Pages</h6>
+            <ul>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+              <li><a href="elements.html">Elements</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col" data-aos="fade-up-sm" data-aos-delay="200">
+            <h6>Follow Us</h6>
+            <div class="footer-instagram-grid" style="grid-template-columns:repeat(2,1fr);gap:0.375rem;display:grid;max-width:120px;">
+              <a href="https://www.instagram.com/" target="_blank">
+                <img src="assets/images/instagram/1.png" alt="Instagram" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;">
+              </a>
+              <a href="https://www.instagram.com/" target="_blank">
+                <img src="assets/images/instagram/2.png" alt="Instagram" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;">
+              </a>
+              <a href="https://www.instagram.com/" target="_blank">
+                <img src="assets/images/instagram/3.png" alt="Instagram" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;">
+              </a>
+              <a href="https://www.instagram.com/" target="_blank">
+                <img src="assets/images/instagram/4.png" alt="Instagram" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; Copyright 2026, All Rights Reserved by <a href="https://themefisher.com" target="_blank" style="color:var(--color-secondary);">Themefisher</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    // AOS
+    AOS.init({ duration: 600, once: true, offset: 80 });
+
+    // Testimonial Swiper
+    const testimonialSwiper = new Swiper('.testimonial-slider', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      navigation: {
+        nextEl: '#testimonial-next',
+        prevEl: '#testimonial-prev',
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      }
+    });
+
+    document.getElementById('testimonial-prev').addEventListener('click', () => testimonialSwiper.slidePrev());
+    document.getElementById('testimonial-next').addEventListener('click', () => testimonialSwiper.slideNext());
+
+    // Sticky Header
+    const header = document.getElementById('site-header');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 80) {
+        header.classList.add('header-reveal');
+      } else {
+        header.classList.remove('header-reveal');
+      }
+      lastScroll = currentScroll;
+    });
+
+    // Mobile menu: show CTA button in mobile
+    function checkMobile() {
+      const mobileCta = document.getElementById('mobile-cta');
+      if (window.innerWidth < 1024) {
+        mobileCta.style.display = 'block';
+      } else {
+        mobileCta.style.display = 'none';
+      }
+    }
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+  </script>
+</body>
+</html>

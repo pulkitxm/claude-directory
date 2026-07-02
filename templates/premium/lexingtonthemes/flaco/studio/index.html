@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Studio — Jarvis</title>
+		<meta
+			name="description"
+			content="Design, development, and delivery — from first commit to production. Hire me for web development, UI design, and consulting."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		>
+		<script
+			src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"
+		></script>
+
+		<!-- No-flash theme script -->
+		<script>
+		(function () {
+			try {
+				var theme = localStorage.getItem("theme");
+				if (theme === "dark") {
+					document.documentElement.classList.add("dark");
+				}
+			} catch (e) {}
+		})();
+		</script>
+
+		<style>
+		/* ===================== CSS CUSTOM PROPERTIES ===================== */
+		:root {
+			--color-white: #f6f6f4;
+			--color-black: #000;
+			--color-base-50: #fafaf9;
+			--color-base-100: #f4f4f2;
+			--color-base-200: #e8e8e4;
+			--color-base-300: #d4d4ce;
+			--color-base-400: #a8a8a0;
+			--color-base-500: #737370;
+			--color-base-600: #5a5a57;
+			--color-base-700: #3d3d3b;
+			--color-base-800: #292928;
+			--color-base-900: #1a1a19;
+			--color-base-950: #111110;
+			--color-accent-50: oklch(98.6% 0.031 120.757);
+			--color-accent-300: oklch(89.7% 0.196 126.665);
+			--color-accent-400: oklch(84.1% 0.238 128.85);
+			--color-accent-500: oklch(76.8% 0.233 130.85);
+			--color-accent-600: oklch(64.8% 0.2 131.684);
+
+			--bg: var(--color-white);
+			--fg: var(--color-base-950);
+			--muted: var(--color-base-500);
+			--border: var(--color-base-200);
+			--card-bg-from: var(--color-base-50);
+			--card-bg-to: var(--color-base-100);
+			--card-ring: var(--color-base-200);
+			--logo-filter: invert(1);
+		}
+
+		html.dark {
+			--color-white: #0a0a0b;
+			--color-black: #f6f6f4;
+			--color-base-50: #111110;
+			--color-base-100: #1a1a19;
+			--color-base-200: #292928;
+			--color-base-300: #3d3d3b;
+			--color-base-400: #5a5a57;
+			--color-base-500: #737370;
+			--color-base-600: #a8a8a0;
+			--color-base-700: #d4d4ce;
+			--color-base-800: #e8e8e4;
+			--color-base-900: #f4f4f2;
+			--color-base-950: #fafaf9;
+
+			--bg: var(--color-white);
+			--fg: var(--color-base-950);
+			--muted: var(--color-base-500);
+			--border: var(--color-base-200);
+			--card-bg-from: var(--color-base-100);
+			--card-bg-to: var(--color-base-50);
+			--card-ring: var(--color-base-200);
+			--logo-filter: none;
+		}
+
+		/* ===================== RESET & BASE ===================== */
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: "Geist", sans-serif;
+			font-weight: 400;
+			background-color: var(--bg);
+			color: var(--fg);
+			line-height: 1.6;
+			transition:
+				background-color 0.2s ease,
+				color 0.2s ease;
+			overflow-x: hidden;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		/* ===================== TYPOGRAPHY ===================== */
+		.font-display {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+		}
+
+		/* ===================== FIXED BUTTONS ===================== */
+		.fixed-btn {
+			position: fixed;
+			z-index: 50;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			border-radius: 9999px;
+			border: 1px solid var(--border);
+			background-color: var(--bg);
+			color: var(--fg);
+			cursor: pointer;
+			transition:
+				background-color 0.15s ease,
+				border-color 0.15s ease,
+				box-shadow 0.15s ease;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+		}
+
+		.fixed-btn:hover {
+			background-color: var(--color-base-100);
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+		}
+
+		html.dark .fixed-btn:hover {
+			background-color: var(--color-base-200);
+		}
+
+		#theme-toggle {
+			bottom: 1.5rem;
+			left: 1.5rem;
+		}
+
+		#search-btn {
+			bottom: 1.5rem;
+			right: 1.5rem;
+		}
+
+		/* ===================== SEARCH MODAL ===================== */
+		#search-modal {
+			position: fixed;
+			inset: 0;
+			z-index: 100;
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			padding-top: 6rem;
+			background: rgba(0, 0, 0, 0.4);
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.2s ease;
+		}
+
+		#search-modal.open {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		html.dark #search-modal {
+			background: rgba(0, 0, 0, 0.6);
+		}
+
+		.search-box {
+			background: var(--bg);
+			border: 1px solid var(--border);
+			border-radius: 1rem;
+			width: 100%;
+			max-width: 520px;
+			margin: 0 1rem;
+			overflow: hidden;
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+			transform: translateY(-10px);
+			transition: transform 0.2s ease;
+		}
+
+		#search-modal.open .search-box {
+			transform: translateY(0);
+		}
+
+		.search-header {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			padding: 1rem 1.25rem;
+			border-bottom: 1px solid var(--border);
+		}
+
+		.search-header svg {
+			flex-shrink: 0;
+			color: var(--muted);
+		}
+
+		#search-input {
+			flex: 1;
+			border: none;
+			outline: none;
+			background: transparent;
+			font-family: "Geist", sans-serif;
+			font-size: 0.9375rem;
+			color: var(--fg);
+		}
+
+		#search-input::placeholder {
+			color: var(--muted);
+		}
+
+		.search-close {
+			background: none;
+			border: none;
+			cursor: pointer;
+			color: var(--muted);
+			padding: 0.25rem;
+			border-radius: 0.375rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition:
+				color 0.15s ease,
+				background 0.15s ease;
+		}
+
+		.search-close:hover {
+			color: var(--fg);
+			background: var(--color-base-100);
+		}
+
+		html.dark .search-close:hover {
+			background: var(--color-base-200);
+		}
+
+		#search-results {
+			max-height: 320px;
+			overflow-y: auto;
+		}
+
+		.search-result-item {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			padding: 0.75rem 1.25rem;
+			cursor: pointer;
+			transition: background 0.1s ease;
+			text-decoration: none;
+		}
+
+		.search-result-item:hover {
+			background: var(--color-base-50);
+		}
+
+		html.dark .search-result-item:hover {
+			background: var(--color-base-100);
+		}
+
+		.search-result-type {
+			font-size: 0.6875rem;
+			font-weight: 500;
+			color: var(--color-accent-600);
+			background: var(--color-accent-50);
+			padding: 0.15rem 0.5rem;
+			border-radius: 9999px;
+			white-space: nowrap;
+			flex-shrink: 0;
+		}
+
+		html.dark .search-result-type {
+			background: rgba(132, 204, 22, 0.15);
+			color: var(--color-accent-400);
+		}
+
+		.search-result-title {
+			font-size: 0.875rem;
+			color: var(--fg);
+		}
+
+		.search-empty {
+			padding: 2rem 1.25rem;
+			text-align: center;
+			color: var(--muted);
+			font-size: 0.875rem;
+		}
+
+		/* ===================== HEADER ===================== */
+		header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 40;
+			height: 3.5rem;
+			display: flex;
+			align-items: center;
+			padding: 0 1.5rem;
+			border-bottom: 1px solid var(--border);
+			background: rgba(246, 246, 244, 0.85);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			transition:
+				background 0.2s ease,
+				border-color 0.2s ease;
+		}
+
+		html.dark header {
+			background: rgba(10, 10, 11, 0.85);
+		}
+
+		.header-inner {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			max-width: 1280px;
+			margin: 0 auto;
+		}
+
+		.header-logo {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			font-size: 1.25rem;
+			color: var(--fg);
+			transition: opacity 0.15s ease;
+		}
+
+		.header-logo:hover {
+			opacity: 0.7;
+		}
+
+		.header-nav {
+			display: none;
+			align-items: center;
+			gap: 1.25rem;
+		}
+
+		@media (min-width: 640px) {
+			.header-nav {
+				display: flex;
+			}
+		}
+
+		.nav-link {
+			font-size: 0.875rem;
+			color: var(--muted);
+			transition: color 0.15s ease;
+		}
+
+		.nav-link:hover {
+			color: var(--fg);
+		}
+
+		.btn-primary {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.375rem;
+			font-size: 0.875rem;
+			font-weight: 500;
+			padding: 0.375rem 0.875rem;
+			border-radius: 9999px;
+			border: 1px solid var(--color-accent-400);
+			background: var(--color-accent-300);
+			color: var(--color-base-900);
+			cursor: pointer;
+			transition:
+				background 0.15s ease,
+				border-color 0.15s ease,
+				box-shadow 0.15s ease;
+			text-decoration: none;
+		}
+
+		.btn-primary:hover {
+			background: var(--color-accent-400);
+			box-shadow: 0 2px 12px rgba(132, 204, 22, 0.25);
+		}
+
+		html.dark .btn-primary {
+			color: #111110;
+		}
+
+		.hamburger-btn {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 5px;
+			width: 36px;
+			height: 36px;
+			border: 1px solid var(--border);
+			border-radius: 9999px;
+			background: transparent;
+			cursor: pointer;
+			transition:
+				background 0.15s ease,
+				border-color 0.15s ease;
+		}
+
+		.hamburger-btn:hover {
+			background: var(--color-base-100);
+		}
+
+		html.dark .hamburger-btn:hover {
+			background: var(--color-base-200);
+		}
+
+		.hamburger-line {
+			display: block;
+			width: 14px;
+			height: 1.5px;
+			background: var(--fg);
+			border-radius: 2px;
+			transition: background 0.15s ease;
+		}
+
+		/* ===================== HAMBURGER MENU OVERLAY ===================== */
+		#menu-overlay {
+			position: fixed;
+			inset: 0;
+			z-index: 80;
+			display: flex;
+			flex-direction: column;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.3s ease;
+			background: rgba(255, 255, 255, 0.2);
+			backdrop-filter: blur(24px);
+			-webkit-backdrop-filter: blur(24px);
+		}
+
+		html.dark #menu-overlay {
+			background: rgba(0, 0, 0, 0.5);
+		}
+
+		#menu-overlay.menu-open {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.menu-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 1.5rem;
+			height: 3.5rem;
+			border-bottom: 1px solid var(--border);
+		}
+
+		.menu-close-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			border: 1px solid var(--border);
+			border-radius: 9999px;
+			background: transparent;
+			cursor: pointer;
+			color: var(--fg);
+			transition: background 0.15s ease;
+		}
+
+		.menu-close-btn:hover {
+			background: var(--color-base-100);
+		}
+
+		html.dark .menu-close-btn:hover {
+			background: var(--color-base-200);
+		}
+
+		.menu-nav {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			justify-content: center;
+			padding: 2rem 3rem;
+			gap: 0.25rem;
+		}
+
+		.menu-nav-link {
+			font-size: clamp(2rem, 5vw, 3.5rem);
+			font-weight: 500;
+			color: var(--fg);
+			line-height: 1.2;
+			position: relative;
+			display: inline-block;
+			opacity: 0;
+			transform: translateY(20px);
+			transition:
+				opacity 0.3s ease,
+				transform 0.3s ease,
+				color 0.15s ease;
+			text-decoration: none;
+		}
+
+		.menu-nav-link::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: var(--fg);
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		.menu-nav-link:hover::after {
+			transform: scaleX(1);
+		}
+
+		.menu-nav-link:hover {
+			color: var(--muted);
+		}
+
+		#menu-overlay.menu-open .menu-nav-link {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		#menu-overlay.menu-open .menu-nav-link:nth-child(1) {
+			transition-delay: 0.05s;
+		}
+		#menu-overlay.menu-open .menu-nav-link:nth-child(2) {
+			transition-delay: 0.1s;
+		}
+		#menu-overlay.menu-open .menu-nav-link:nth-child(3) {
+			transition-delay: 0.15s;
+		}
+		#menu-overlay.menu-open .menu-nav-link:nth-child(4) {
+			transition-delay: 0.2s;
+		}
+		#menu-overlay.menu-open .menu-nav-link:nth-child(5) {
+			transition-delay: 0.25s;
+		}
+		#menu-overlay.menu-open .menu-nav-link:nth-child(6) {
+			transition-delay: 0.3s;
+		}
+		#menu-overlay.menu-open .menu-nav-link:nth-child(7) {
+			transition-delay: 0.35s;
+		}
+		#menu-overlay.menu-open .menu-nav-link:nth-child(8) {
+			transition-delay: 0.4s;
+		}
+		#menu-overlay.menu-open .menu-nav-link:nth-child(9) {
+			transition-delay: 0.45s;
+		}
+		#menu-overlay.menu-open .menu-nav-link:nth-child(10) {
+			transition-delay: 0.5s;
+		}
+
+		.menu-mobile-only {
+			display: flex;
+		}
+
+		@media (min-width: 640px) {
+			.menu-mobile-only {
+				display: none;
+			}
+		}
+
+		/* ===================== MAIN CONTENT ===================== */
+		main {
+			padding-top: 3.5rem;
+		}
+
+		/* ===================== PAGE HERO ===================== */
+		.page-hero {
+			padding: 5rem 1.5rem 3rem;
+			max-width: 768px;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.page-hero h1 {
+			font-size: clamp(2.5rem, 6vw, 4rem);
+			font-weight: 600;
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+			margin-bottom: 0.75rem;
+		}
+
+		.availability-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.8125rem;
+			font-weight: 500;
+			padding: 0.3rem 0.875rem;
+			border-radius: 9999px;
+			border: 1px solid var(--color-accent-400);
+			color: var(--color-accent-600);
+			background: var(--color-accent-50);
+			margin-bottom: 1.75rem;
+		}
+
+		html.dark .availability-badge {
+			background: rgba(132, 204, 22, 0.08);
+			color: var(--color-accent-400);
+			border-color: rgba(132, 204, 22, 0.3);
+		}
+
+		.availability-dot {
+			width: 7px;
+			height: 7px;
+			border-radius: 9999px;
+			background: var(--color-accent-500);
+			display: inline-block;
+			animation: pulse-dot 2s ease-in-out infinite;
+		}
+
+		@keyframes pulse-dot {
+			0%,
+			100% {
+				opacity: 1;
+				transform: scale(1);
+			}
+			50% {
+				opacity: 0.6;
+				transform: scale(0.85);
+			}
+		}
+
+		html.dark .availability-dot {
+			background: var(--color-accent-400);
+		}
+
+		.page-hero-subtitle {
+			font-size: 1rem;
+			color: var(--muted);
+			max-width: 460px;
+			margin: 0 auto;
+			line-height: 1.7;
+		}
+
+		/* ===================== SERVICES SECTION ===================== */
+		.services-section {
+			padding: 2rem 1.5rem 0;
+			max-width: 768px;
+			margin: 0 auto;
+		}
+
+		.section-label {
+			font-size: 0.75rem;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--muted);
+			margin-bottom: 1.25rem;
+		}
+
+		.services-list {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+
+		.service-card {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 1.5rem;
+			border-radius: 1.25rem;
+			background: linear-gradient(
+				135deg,
+				var(--card-bg-from),
+				var(--card-bg-to)
+			);
+			box-shadow: inset 0 0 0 1px var(--card-ring);
+			min-height: 18rem;
+			overflow: hidden;
+			transition: box-shadow 0.3s ease;
+		}
+
+		.service-card:hover {
+			box-shadow:
+				inset 0 0 0 1px var(--card-ring),
+				0 20px 40px rgba(0, 0, 0, 0.1);
+		}
+
+		html.dark .service-card:hover {
+			box-shadow:
+				inset 0 0 0 1px var(--card-ring),
+				0 20px 40px rgba(0, 0, 0, 0.4);
+		}
+
+		.service-card-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			color: var(--fg);
+		}
+
+		.service-title {
+			font-size: clamp(1.5rem, 3vw, 2.25rem);
+			font-weight: 500;
+			letter-spacing: -0.01em;
+		}
+
+		.service-price {
+			font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+			color: var(--muted);
+		}
+
+		.service-desc {
+			font-size: 1rem;
+			color: var(--muted);
+			line-height: 1.7;
+			margin-top: 1.25rem;
+			max-width: 36rem;
+		}
+
+		.service-features {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+			margin-top: 1.25rem;
+			list-style: none;
+		}
+
+		@media (min-width: 540px) {
+			.service-features {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		.service-feature-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.875rem;
+			color: var(--muted);
+			transition: transform 0.2s ease;
+		}
+
+		.service-feature-item:hover {
+			transform: translateX(4px);
+		}
+
+		.service-feature-item svg {
+			flex-shrink: 0;
+			color: var(--fg);
+		}
+
+		.service-card-footer {
+			margin-top: 2rem;
+		}
+
+		.service-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.375rem;
+			font-size: 0.875rem;
+			font-weight: 500;
+			padding: 0.5rem 1.125rem;
+			border-radius: 9999px;
+			background: var(--color-base-900);
+			color: var(--color-base-50);
+			border: none;
+			cursor: pointer;
+			transition: background 0.15s ease;
+			text-decoration: none;
+		}
+
+		html.dark .service-btn {
+			background: var(--color-base-100);
+			color: var(--color-base-900);
+		}
+
+		.service-btn:hover {
+			background: var(--color-base-700);
+		}
+
+		html.dark .service-btn:hover {
+			background: var(--color-base-200);
+		}
+
+		/* ===================== TWO-COL CARDS ===================== */
+		.two-col-section {
+			padding: 0.75rem 1.5rem 0;
+			max-width: 768px;
+			margin: 0 auto;
+		}
+
+		.two-col-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 0.75rem;
+		}
+
+		@media (min-width: 640px) {
+			.two-col-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		.mini-card {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 1.5rem;
+			border-radius: 1.25rem;
+			background: linear-gradient(
+				135deg,
+				var(--card-bg-from),
+				var(--card-bg-to)
+			);
+			box-shadow: inset 0 0 0 1px var(--card-ring);
+			min-height: 20rem;
+			overflow: hidden;
+			transition: box-shadow 0.3s ease;
+		}
+
+		.mini-card:hover {
+			box-shadow:
+				inset 0 0 0 1px var(--card-ring),
+				0 20px 40px rgba(0, 0, 0, 0.1);
+		}
+
+		html.dark .mini-card:hover {
+			box-shadow:
+				inset 0 0 0 1px var(--card-ring),
+				0 20px 40px rgba(0, 0, 0, 0.4);
+		}
+
+		.mini-card-header {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
+
+		.mini-card-title {
+			font-size: 0.9375rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			color: var(--fg);
+		}
+
+		.mini-card-icon-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 28px;
+			height: 28px;
+			border-radius: 9999px;
+			background: var(--fg);
+			color: var(--bg);
+			transition: transform 0.3s ease;
+			flex-shrink: 0;
+		}
+
+		.mini-card:hover .mini-card-icon-btn {
+			transform: rotate(-45deg);
+		}
+
+		.mini-card-desc {
+			font-size: 0.9375rem;
+			color: var(--muted);
+			line-height: 1.7;
+			margin-top: 1.5rem;
+		}
+
+		.mini-card-title-display {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			font-size: clamp(1.75rem, 4vw, 2.5rem);
+			font-weight: 500;
+			color: var(--fg);
+			line-height: 1.15;
+		}
+
+		.mini-card-footer {
+			margin-top: 1.5rem;
+		}
+
+		.mini-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.375rem;
+			font-size: 0.8125rem;
+			font-weight: 500;
+			padding: 0.375rem 0.875rem;
+			border-radius: 9999px;
+			background: var(--color-base-900);
+			color: var(--color-base-50);
+			border: none;
+			cursor: pointer;
+			transition: background 0.15s ease;
+			text-decoration: none;
+		}
+
+		html.dark .mini-btn {
+			background: var(--color-base-100);
+			color: var(--color-base-900);
+		}
+
+		.mini-btn:hover {
+			background: var(--color-base-700);
+		}
+
+		html.dark .mini-btn:hover {
+			background: var(--color-base-200);
+		}
+
+		.mini-btn-ghost {
+			background: var(--color-base-200);
+			color: var(--fg);
+		}
+
+		html.dark .mini-btn-ghost {
+			background: var(--color-base-200);
+			color: var(--fg);
+		}
+
+		.mini-btn-ghost:hover {
+			background: var(--color-base-300);
+		}
+
+		html.dark .mini-btn-ghost:hover {
+			background: var(--color-base-300);
+		}
+
+		/* ===================== SKILLS SECTION ===================== */
+		.skills-section {
+			padding: 2rem 1.5rem 0;
+			max-width: 768px;
+			margin: 0 auto;
+		}
+
+		.skills-grid {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			margin-top: 1rem;
+		}
+
+		.skill-tag {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.375rem;
+			font-size: 0.8125rem;
+			font-weight: 500;
+			padding: 0.375rem 0.875rem;
+			border-radius: 9999px;
+			border: 1px solid var(--border);
+			color: var(--muted);
+			background: var(--card-bg-from);
+			transition:
+				color 0.15s ease,
+				border-color 0.15s ease,
+				background 0.15s ease;
+			font-family: "Geist Mono", monospace;
+		}
+
+		.skill-tag:hover {
+			color: var(--fg);
+			border-color: var(--color-base-300);
+			background: var(--color-base-50);
+		}
+
+		html.dark .skill-tag:hover {
+			background: var(--color-base-100);
+		}
+
+		/* ===================== CTA SECTION ===================== */
+		.cta-section {
+			padding: 2rem 1.5rem 5rem;
+			max-width: 768px;
+			margin: 0 auto;
+		}
+
+		.cta-card {
+			background: linear-gradient(
+				135deg,
+				var(--card-bg-from),
+				var(--card-bg-to)
+			);
+			box-shadow: inset 0 0 0 1px var(--card-ring);
+			border-radius: 1.5rem;
+			padding: 3rem 2rem;
+			text-align: center;
+		}
+
+		.cta-heading {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			font-size: clamp(1.75rem, 4vw, 2.5rem);
+			color: var(--fg);
+			margin-bottom: 0.75rem;
+			line-height: 1.2;
+		}
+
+		.cta-sub {
+			font-size: 0.9375rem;
+			color: var(--muted);
+			margin-bottom: 1.75rem;
+			line-height: 1.6;
+		}
+
+		.cta-email {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.9375rem;
+			font-weight: 500;
+			padding: 0.625rem 1.375rem;
+			border-radius: 9999px;
+			background: var(--color-base-900);
+			color: var(--color-base-50);
+			transition:
+				background 0.15s ease,
+				box-shadow 0.15s ease;
+			text-decoration: none;
+		}
+
+		html.dark .cta-email {
+			background: var(--color-base-100);
+			color: var(--color-base-900);
+		}
+
+		.cta-email:hover {
+			background: var(--color-base-700);
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+		}
+
+		html.dark .cta-email:hover {
+			background: var(--color-base-200);
+		}
+
+		/* ===================== FOOTER ===================== */
+		footer {
+			border-top: 1px solid var(--border);
+			padding: 3rem 1.5rem;
+			text-align: center;
+		}
+
+		.footer-logo {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			font-size: 1.125rem;
+			color: var(--fg);
+			margin-bottom: 1rem;
+			display: block;
+			transition: opacity 0.15s ease;
+		}
+
+		.footer-logo:hover {
+			opacity: 0.7;
+		}
+
+		.footer-copy {
+			font-size: 0.8125rem;
+			color: var(--muted);
+			margin-bottom: 1.25rem;
+		}
+
+		.footer-socials {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.75rem;
+		}
+
+		.social-link {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 34px;
+			height: 34px;
+			border: 1px solid var(--border);
+			border-radius: 9999px;
+			color: var(--muted);
+			transition:
+				color 0.15s ease,
+				border-color 0.15s ease,
+				background 0.15s ease;
+		}
+
+		.social-link:hover {
+			color: var(--fg);
+			border-color: var(--color-base-300);
+			background: var(--color-base-50);
+		}
+
+		html.dark .social-link:hover {
+			background: var(--color-base-100);
+		}
+
+		/* ===================== UTILITY ===================== */
+		.sr-only {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+			border-width: 0;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- ===================== FIXED THEME TOGGLE ===================== -->
+		<button class="fixed-btn" id="theme-toggle" aria-label="Toggle theme">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="16"
+				height="16"
+				viewBox="0 0 24 24"
+				fill="currentColor"
+			>
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+			</svg>
+		</button>
+
+		<!-- ===================== FIXED SEARCH BUTTON ===================== -->
+		<button class="fixed-btn" id="search-btn" aria-label="Open search">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="16"
+				height="16"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<circle cx="11" cy="11" r="8" />
+				<path d="m21 21-4.35-4.35" />
+			</svg>
+		</button>
+
+		<!-- ===================== SEARCH MODAL ===================== -->
+		<div id="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+			<div class="search-box">
+				<div class="search-header">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<circle cx="11" cy="11" r="8" />
+						<path d="m21 21-4.35-4.35" />
+					</svg>
+					<input
+						type="text"
+						id="search-input"
+						placeholder="Search posts and projects…"
+						autocomplete="off"
+					>
+					<button
+						class="search-close"
+						id="search-close"
+						aria-label="Close search"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M18 6 6 18M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+				<div id="search-results">
+					<div class="search-empty">Start typing to search…</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ===================== HAMBURGER MENU OVERLAY ===================== -->
+		<div id="menu-overlay" aria-hidden="true">
+			<div class="menu-header">
+				<a href="../index.html" class="header-logo">Jarvis</a>
+				<button class="menu-close-btn" id="menu-close" aria-label="Close menu">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="20"
+						height="20"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="M18 6 6 18M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+			<nav class="menu-nav">
+				<a href="#" class="menu-nav-link">Colors</a>
+				<a href="#" class="menu-nav-link">Links</a>
+				<a href="#" class="menu-nav-link">Buttons</a>
+				<a href="#" class="menu-nav-link">Typography</a>
+				<a href="../blog/index.html" class="menu-nav-link">Blog</a>
+				<a href="../store/index.html" class="menu-nav-link">Store</a>
+				<a href="../projects/index.html" class="menu-nav-link">Projects</a>
+				<a href="index.html" class="menu-nav-link">Studio</a>
+				<a href="../index.html" class="menu-nav-link menu-mobile-only"
+					>Overview</a
+				>
+				<a href="#" class="menu-nav-link menu-mobile-only">Buy Flaco</a>
+			</nav>
+		</div>
+
+		<!-- ===================== HEADER ===================== -->
+		<header>
+			<div class="header-inner">
+				<a href="../index.html" class="header-logo">Jarvis</a>
+				<nav class="header-nav">
+					<a href="../index.html" class="nav-link">Overview</a>
+					<a href="#" class="btn-primary">Buy Flaco</a>
+				</nav>
+				<button
+					class="hamburger-btn"
+					id="hamburger-btn"
+					aria-label="Open menu"
+					aria-expanded="false"
+					aria-controls="menu-overlay"
+				>
+					<span class="hamburger-line"></span>
+					<span class="hamburger-line"></span>
+				</button>
+			</div>
+		</header>
+
+		<!-- ===================== MAIN ===================== -->
+		<main>
+			<!-- PAGE HERO -->
+			<section class="page-hero">
+				<div class="availability-badge">
+					<span class="availability-dot"></span>
+					2 spots open
+				</div>
+				<h1>
+					Software Engineer
+					<span
+						class="font-display"
+						style="display:block; font-weight:300; color:var(--muted); font-size:0.85em;"
+						>for hire</span
+					>
+				</h1>
+				<p class="page-hero-subtitle">
+					Design, development, and delivery — from first commit to production.
+				</p>
+			</section>
+
+			<!-- SERVICES -->
+			<section class="services-section">
+				<p class="section-label">What I do</p>
+				<div class="services-list">
+					<!-- Service 1: Web Development -->
+					<div class="service-card">
+						<div>
+							<div class="service-card-header">
+								<h3 class="service-title">Design</h3>
+								<span class="service-price">$5,455/m</span>
+							</div>
+							<p class="service-desc">
+								Ideal for emerging businesses requiring continuous design
+								assistance. I'll create and maintain a design system that scales
+								with your product.
+							</p>
+							<ul class="service-features">
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Brand Style Guide
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Component Library
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									UI Patterns
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Interactive Prototypes
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Accessibility Standards
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Responsive Designs
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Design Tokens
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									User Flow Diagrams
+								</li>
+							</ul>
+						</div>
+						<div class="service-card-footer">
+							<a href="mailto:hello@jarvis.dev" class="service-btn"
+								>Get started</a
+							>
+						</div>
+					</div>
+
+					<!-- Service 2: Design + Development -->
+					<div class="service-card">
+						<div>
+							<div class="service-card-header">
+								<h3 class="service-title">Design and Development</h3>
+								<span class="service-price">$8,455/m</span>
+							</div>
+							<p class="service-desc">
+								Ideal for startups requiring design and front-end development
+								services. Full-stack execution from wireframe to deployed
+								product.
+							</p>
+							<ul class="service-features">
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Everything in Design
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									End-to-End Development
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Database Design &amp; Integration
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									API Development &amp; Integration
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Front-End &amp; Back-End
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Cloud Deployment &amp; CI/CD
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Performance Optimization
+								</li>
+								<li class="service-feature-item">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+									Ongoing Support &amp; Maintenance
+								</li>
+							</ul>
+						</div>
+						<div class="service-card-footer">
+							<a href="mailto:hello@jarvis.dev" class="service-btn"
+								>Get started</a
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- BOOK A CALL + REFERRAL -->
+			<section class="two-col-section" style="margin-top:0.75rem;">
+				<div class="two-col-grid">
+					<!-- Book a call -->
+					<div class="mini-card">
+						<div>
+							<div class="mini-card-header">
+								<h3 class="mini-card-title">Book a call</h3>
+								<a
+									href="mailto:hello@jarvis.dev"
+									class="mini-card-icon-btn"
+									aria-label="Book a call"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 12h14M12 5l7 7-7 7" />
+									</svg>
+								</a>
+							</div>
+							<p class="mini-card-desc">
+								Not sure which plan fits? Book an intro call to learn more about
+								my services and get a free consultation to discuss your project.
+							</p>
+						</div>
+						<div class="mini-card-footer">
+							<a href="mailto:hello@jarvis.dev" class="mini-btn"
+								>Book an intro call</a
+							>
+						</div>
+					</div>
+
+					<!-- Referral program -->
+					<div class="mini-card">
+						<div>
+							<h3 class="mini-card-title-display">Referral program</h3>
+							<p class="mini-card-desc">
+								Refer someone and get 10% off your next project or month of
+								work. No limits — refer as many as you'd like.
+							</p>
+						</div>
+						<div class="mini-card-footer">
+							<a href="#" class="mini-btn mini-btn-ghost">Join the program</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- SKILLS / TECH -->
+			<section class="skills-section">
+				<p class="section-label">Stack &amp; tools</p>
+				<div class="skills-grid">
+					<span class="skill-tag">Astro</span>
+					<span class="skill-tag">Tailwind CSS</span>
+					<span class="skill-tag">React</span>
+					<span class="skill-tag">TypeScript</span>
+					<span class="skill-tag">Next.js</span>
+					<span class="skill-tag">Node.js</span>
+					<span class="skill-tag">PostgreSQL</span>
+					<span class="skill-tag">Figma</span>
+					<span class="skill-tag">Framer</span>
+					<span class="skill-tag">Vercel</span>
+					<span class="skill-tag">Git</span>
+					<span class="skill-tag">CSS</span>
+				</div>
+			</section>
+
+			<!-- CTA -->
+			<section class="cta-section">
+				<div class="cta-card">
+					<h2 class="cta-heading">Ready to work together?<br>Let's talk.</h2>
+					<p class="cta-sub">
+						I'm currently taking on 2 new clients. Reach out and let's build
+						something great.
+					</p>
+					<a href="mailto:hello@jarvis.dev" class="cta-email">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<rect width="20" height="16" x="2" y="4" rx="2" />
+							<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+						</svg>
+						hello@jarvis.dev
+					</a>
+				</div>
+			</section>
+		</main>
+
+		<!-- ===================== FOOTER ===================== -->
+		<footer>
+			<a href="../index.html" class="footer-logo">Jarvis</a>
+			<p class="footer-copy">&copy; 2025 Jarvis. All rights reserved.</p>
+			<div class="footer-socials">
+				<a href="#" class="social-link" aria-label="X (Twitter)">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="15"
+						height="15"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+					>
+						<path
+							d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.713 5.896 5.45-5.896Zm-1.161 17.52h1.833L7.084 4.126H5.117Z"
+						/>
+					</svg>
+				</a>
+				<a href="#" class="social-link" aria-label="YouTube">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+					>
+						<path
+							d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+						/>
+					</svg>
+				</a>
+				<a href="#" class="social-link" aria-label="GitHub">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+					>
+						<path
+							d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+						/>
+					</svg>
+				</a>
+			</div>
+		</footer>
+
+		<!-- ===================== JAVASCRIPT ===================== -->
+		<script>
+		// ---- Theme Toggle ----
+		const htmlEl = document.documentElement;
+		const themeToggle = document.getElementById("theme-toggle");
+
+		themeToggle.addEventListener("click", () => {
+			htmlEl.classList.toggle("dark");
+			try {
+				localStorage.setItem(
+					"theme",
+					htmlEl.classList.contains("dark") ? "dark" : "light",
+				);
+			} catch (e) {}
+		});
+
+		// ---- Hamburger Menu ----
+		const hamburgerBtn = document.getElementById("hamburger-btn");
+		const menuOverlay = document.getElementById("menu-overlay");
+		const menuClose = document.getElementById("menu-close");
+
+		function openMenu() {
+			menuOverlay.classList.add("menu-open");
+			menuOverlay.setAttribute("aria-hidden", "false");
+			hamburgerBtn.setAttribute("aria-expanded", "true");
+			document.body.style.overflow = "hidden";
+		}
+
+		function closeMenu() {
+			menuOverlay.classList.remove("menu-open");
+			menuOverlay.setAttribute("aria-hidden", "true");
+			hamburgerBtn.setAttribute("aria-expanded", "false");
+			document.body.style.overflow = "";
+		}
+
+		hamburgerBtn.addEventListener("click", openMenu);
+		menuClose.addEventListener("click", closeMenu);
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") {
+				closeMenu();
+				closeSearch();
+			}
+		});
+
+		// ---- Search ----
+		const searchBtn = document.getElementById("search-btn");
+		const searchModal = document.getElementById("search-modal");
+		const searchClose = document.getElementById("search-close");
+		const searchInput = document.getElementById("search-input");
+		const searchResults = document.getElementById("search-results");
+
+		const searchData = [
+			{
+				title: "Building a design system from scratch",
+				type: "Blog",
+				url: "#",
+			},
+			{ title: "My favorite VS Code extensions", type: "Blog", url: "#" },
+			{ title: "Getting started with Astro", type: "Blog", url: "#" },
+			{ title: "Lexington Themes", type: "Project", url: "#" },
+			{ title: "Colors & fonts", type: "Project", url: "#" },
+		];
+
+		const fuse = new Fuse(searchData, {
+			keys: ["title", "type"],
+			threshold: 0.4,
+			includeMatches: true,
+		});
+
+		function openSearch() {
+			searchModal.classList.add("open");
+			document.body.style.overflow = "hidden";
+			setTimeout(() => searchInput.focus(), 80);
+		}
+
+		function closeSearch() {
+			searchModal.classList.remove("open");
+			document.body.style.overflow = "";
+			searchInput.value = "";
+			renderResults([]);
+		}
+
+		function renderResults(results) {
+			if (!searchInput.value.trim()) {
+				searchResults.innerHTML =
+					'<div class="search-empty">Start typing to search…</div>';
+				return;
+			}
+			if (!results.length) {
+				searchResults.innerHTML =
+					'<div class="search-empty">No results found.</div>';
+				return;
+			}
+			searchResults.innerHTML = results
+				.map(
+					(r) =>
+						`<a class="search-result-item" href="${r.item.url}">
+          <span class="search-result-type">${r.item.type}</span>
+          <span class="search-result-title">${r.item.title}</span>
+        </a>`,
+				)
+				.join("");
+		}
+
+		searchBtn.addEventListener("click", openSearch);
+		searchClose.addEventListener("click", closeSearch);
+
+		searchModal.addEventListener("click", (e) => {
+			if (e.target === searchModal) closeSearch();
+		});
+
+		searchInput.addEventListener("input", () => {
+			const q = searchInput.value.trim();
+			renderResults(q ? fuse.search(q) : []);
+		});
+		</script>
+	</body>
+</html>

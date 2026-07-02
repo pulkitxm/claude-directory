@@ -1,5 +1,7 @@
 # AETHER Spooky Smoke Shader — WebGL2 FBM Noise Smoke Animation React Component (Tailwind CSS, shadcn/ui, TypeScript)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A séance-themed interactive WebGL2 smoke-field showcase that integrates the `SmokeBackground` React component — a raw WebGL2 fbm-noise smoke animation driven by a single `smokeColor` hex prop — into a polished "vapour reading instrument" UI. The dark, atmospheric design features a reagent tray of alchemical preset colours, a brass-dial color picker, live smoke readout panels, and a headline accent that all respond to one shared hex value. Built on React 18, TypeScript, Vite, Tailwind CSS, and shadcn/ui project structure with no external shader libraries. Generated with Claude Fable 5.
 
 ## What's here

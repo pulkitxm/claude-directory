@@ -1,5 +1,7 @@
 # Jessi.cv — Paper Shader Resume Hero with Dithering (React + Vite + Tailwind CSS v4 + paper-design/shaders-react)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn `components/ui` integration of a split-screen designer résumé hero whose right half is a live **`Dithering`** shader from `@paper-design/shaders-react`. The component drops in verbatim and the surrounding page frames it as a **darkroom proof**: the as-shipped component sits in a crop-marked plate, an "ink console" promotes every shader prop to a live fader, and a documentary dock explains installation, placement in `components/ui`, and each `Dithering` prop. A perfect portfolio hero or "about" splash with a procedural ink visual — no stock photography required. Generated with Claude Fable 5.
 
 ## The proof, as-shipped

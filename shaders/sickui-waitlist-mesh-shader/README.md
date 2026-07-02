@@ -1,5 +1,7 @@
 # SickUI Waitlist — Mesh-Gradient Shader Launch Page (React 19 + @paper-design/shaders-react + Tailwind CSS v4)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn-style waitlist launch page whose backdrop is a flowing `@paper-design/shaders-react` `MeshGradient` in deep editorial blues. The verbatim `background-shader.tsx` component is copied into `src/components/ui/` and the bare launch headline is grown into a real product launch page: a frosted-glass email-capture card with validation and success state, animated social proof, a "what's shipping" feature grid, plus nav and footer — all sitting on the same living mesh-gradient shader. Built with React 19, TypeScript, Vite 7, and Tailwind CSS v4 in a shadcn-structured project. Generated with Claude Fable 5.
 
 ## The integration, exactly as asked

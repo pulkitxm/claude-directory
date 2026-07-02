@@ -1,5 +1,7 @@
 # Aura Core Shader — Interactive WebGL2 Energy Core with HSV Glow (React + TypeScript + WebGL2 + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive WebGL2 energy-core shader featuring a glowing HSV core with ten rotating rays, an FBM-distorted surface, and a shimmering particle field that brightens as the cursor nears the center — framed inside a plasma-containment monitoring console. Four shader uniforms (`uColor`, `uPower`, `uFocus`, `uDistortion`) are exposed as live faders with named field profiles (Halcyon, Solar Flare, Ion Bloom, Verdant). Telemetry readouts for containment integrity, field power, coherence, turbulence, and excitation are computed deterministically from live uniforms and cursor proximity. Uses an inlined OGL micro-renderer with no Three.js dependency. Generated with Claude Fable 5.
 
 The shader is the verbatim drop-in from the integration brief

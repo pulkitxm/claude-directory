@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sandstone&co® — Interior Design Studio</title>
+		<meta
+			name="description"
+			content="A multidisciplinary interior design studio dedicated to creating timeless interiors that enhance living spaces."
+		>
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css"
+		>
+		<link rel="stylesheet" href="assets/css/tokens.css">
+		<style>
+		/* Page-level styles */
+		body {
+			background-color: var(--color-base-100);
+		}
+
+		/* Header */
+		.site-header {
+			position: fixed;
+			width: 100%;
+			top: 2rem;
+			z-index: 100;
+			pointer-events: none;
+		}
+		.site-header .inner {
+			max-width: 100%;
+			margin: 0 auto;
+			padding: 0 1rem;
+		}
+		.nav-pill {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			max-width: 24rem;
+			justify-content: space-between;
+			background: #fff;
+			border-radius: var(--radius-xl);
+			margin: 0 1rem;
+			padding: 1rem;
+			pointer-events: auto;
+		}
+		.nav-logo {
+			font-size: 1rem;
+			letter-spacing: -0.05em;
+			text-transform: uppercase;
+			color: var(--color-base-900);
+			font-weight: 600;
+		}
+		.menu-toggle {
+			background: none;
+			border: none;
+			color: var(--color-base-900);
+			display: inline-flex;
+			align-items: center;
+			gap: 0.25rem;
+		}
+		.menu-toggle svg {
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+		.mobile-menu {
+			margin-top: 0.5rem;
+			margin-inline: 1rem;
+			max-width: 24rem;
+			transition: opacity var(--dur-md) var(--ease-menu);
+			pointer-events: none;
+			opacity: 0;
+		}
+		.mobile-menu[data-menu-state="open"] {
+			opacity: 1;
+			pointer-events: auto;
+		}
+		.mobile-menu-inner {
+			height: 0;
+			overflow: hidden;
+			transition: height var(--dur-md) var(--ease-menu);
+		}
+		.menu-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1rem;
+			background: #fff;
+			border-radius: var(--radius-xl);
+			padding: 1rem;
+		}
+		.menu-section h3 {
+			font-size: 0.75rem;
+			color: var(--color-base-900);
+			margin-bottom: 0.75rem;
+		}
+		.menu-section a {
+			display: block;
+			font-size: 0.75rem;
+			color: var(--color-base-500);
+			letter-spacing: 0.025em;
+			margin-bottom: 0.25rem;
+			transition: color var(--dur-fast);
+		}
+		.menu-section a:hover {
+			color: var(--color-base-900);
+		}
+		.menu-contact {
+			margin-top: 0.25rem;
+			background: #fff;
+			border-radius: var(--radius-xl);
+			padding: 1rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+		}
+		.menu-contact a {
+			font-size: 0.75rem;
+			color: var(--color-base-500);
+		}
+		.menu-contact a:hover {
+			color: var(--color-base-900);
+		}
+
+		/* Sections */
+		.hero-section {
+			overflow: hidden;
+		}
+		.hero-container {
+			max-width: 100%;
+			margin: 0 auto;
+			padding: 1rem;
+		}
+		.hero-inner {
+			position: relative;
+			overflow: hidden;
+			border-radius: var(--radius-3xl);
+			height: calc(100vh - 2rem);
+			display: flex;
+			align-items: flex-end;
+			justify-content: flex-end;
+		}
+		@media (min-width: 1024px) {
+			.hero-inner {
+				align-items: flex-start;
+				justify-content: flex-start;
+			}
+		}
+		.hero-video {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			inset: 0;
+			object-position: center;
+		}
+		.hero-ticker {
+			padding: 2rem 0;
+			overflow: hidden;
+			position: relative;
+			z-index: 20;
+		}
+		.ticker-track {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			width: max-content;
+			white-space: nowrap;
+			font-size: 0.875rem;
+			font-weight: 300;
+			color: var(--color-base-900);
+			animation: var(--animate-marquee);
+		}
+		.hero-logo-overlay {
+			position: absolute;
+			inset: 0;
+			z-index: 10;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 2rem;
+			justify-content: center;
+			mix-blend-mode: difference;
+			pointer-events: none;
+		}
+		.hero-logo-overlay svg {
+			color: var(--color-base-800);
+			width: 20rem;
+			max-width: 80vw;
+		}
+
+		/* About section */
+		.section-about {
+			padding: 3rem 0 6rem;
+		}
+		.about-text {
+			font-size: clamp(1.875rem, 5vw, 4.5rem);
+			font-weight: 500;
+			color: var(--color-base-900);
+			letter-spacing: -0.025em;
+			line-height: 1.1;
+		}
+		.about-text em {
+			color: var(--color-base-500);
+			font-weight: 300;
+			font-style: italic;
+		}
+
+		/* Latest works */
+		.section-works {
+			overflow: hidden;
+		}
+		.section-label {
+			font-size: 1rem;
+			font-weight: 500;
+			color: var(--color-base-600);
+			display: flex;
+			align-items: center;
+		}
+		.section-heading {
+			font-size: clamp(1.875rem, 4vw, 3rem);
+			font-weight: 500;
+			color: var(--color-base-900);
+			letter-spacing: -0.025em;
+			margin-top: 3rem;
+		}
+		.projects-slider {
+			margin-top: 2rem;
+		}
+		.project-card {
+			min-width: 300px;
+			overflow: hidden;
+		}
+		.project-card a {
+			display: block;
+		}
+		.project-card img {
+			width: 100%;
+			aspect-ratio: 3 / 4;
+			object-fit: cover;
+			border-radius: var(--radius-2xl);
+		}
+		.project-card-info {
+			padding: 1rem 0;
+		}
+		.project-card-info h3 {
+			font-weight: 500;
+			color: var(--color-base-900);
+		}
+		.project-card-info p {
+			font-size: 0.875rem;
+			color: var(--color-base-500);
+			margin-top: 0.25rem;
+		}
+
+		/* Stats section */
+		.section-stats {
+			padding: 3rem 0 6rem;
+		}
+		.stats-quote {
+			font-size: clamp(1.5rem, 4vw, 2.5rem);
+			font-weight: 500;
+			color: var(--color-base-900);
+			letter-spacing: -0.025em;
+		}
+		.stats-quote em {
+			color: var(--color-base-500);
+			font-style: italic;
+			font-weight: 300;
+		}
+		.stats-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+		@media (min-width: 768px) {
+			.stats-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+		.stat-num {
+			font-size: 3rem;
+			font-weight: 600;
+			color: var(--color-base-900);
+		}
+		.stat-label {
+			font-size: 0.875rem;
+			color: var(--color-base-500);
+			margin-top: 0.25rem;
+		}
+
+		/* About long text section */
+		.section-about-long {
+			padding: 3rem 0 6rem;
+		}
+		.about-long-quote {
+			font-size: clamp(2rem, 5vw, 3.75rem);
+			font-weight: 500;
+			color: var(--color-base-900);
+			letter-spacing: -0.025em;
+			line-height: 1.1;
+		}
+		.about-long-quote em {
+			color: var(--color-base-500);
+			font-style: italic;
+			font-weight: 300;
+		}
+
+		/* Process section */
+		.section-process {
+			padding: 3rem 0 6rem;
+		}
+		.process-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		@media (min-width: 1024px) {
+			.process-grid {
+				grid-template-columns: 1fr 2fr;
+			}
+		}
+		.process-sidebar {
+			background: #fff;
+			border-radius: var(--radius-xl);
+			padding: 2rem;
+			max-width: 24rem;
+			display: flex;
+			flex-direction: column;
+		}
+		@media (min-width: 1024px) {
+			.process-sidebar {
+				position: sticky;
+				top: 6rem;
+			}
+		}
+		.process-steps {
+			border-top: 1px solid var(--color-base-200);
+			border-bottom: 1px solid var(--color-base-200);
+		}
+		.process-step {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1rem;
+			padding: 2rem 0;
+			border-bottom: 1px solid var(--color-base-200);
+		}
+		.process-step:last-child {
+			border-bottom: none;
+		}
+		@media (min-width: 768px) {
+			.process-step {
+				grid-template-columns: 1fr 2fr 1fr;
+			}
+		}
+		@media (min-width: 1024px) {
+			.process-step {
+				grid-template-columns: 1fr 2fr 1fr;
+			}
+		}
+		.process-num {
+			font-size: clamp(3rem, 6vw, 4.5rem);
+			font-weight: 600;
+			color: var(--color-base-900);
+			font-style: italic;
+		}
+		.process-step-title {
+			font-size: clamp(1.125rem, 2vw, 1.875rem);
+			font-weight: 500;
+			color: var(--color-base-900);
+			letter-spacing: -0.025em;
+		}
+		.process-step-desc {
+			font-size: 0.875rem;
+			color: var(--color-base-600);
+			margin-top: 0.5rem;
+		}
+		.process-step img {
+			width: 100%;
+			height: 12rem;
+			object-fit: cover;
+			border-radius: var(--radius-xl);
+		}
+
+		/* Testimonials */
+		.section-testimonials {
+			overflow: hidden;
+			padding: 3rem 0;
+		}
+		.testimonials-inner {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1rem;
+			align-items: start;
+		}
+		@media (min-width: 1024px) {
+			.testimonials-inner {
+				grid-template-columns: 1fr 2fr;
+			}
+		}
+		.testimonials-sidebar {
+			padding: 1rem 2rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			height: 100%;
+		}
+		@media (min-width: 1024px) {
+			.testimonials-sidebar {
+				background: #fff;
+				border-radius: var(--radius-2xl);
+				height: calc(100vh - 8rem);
+			}
+		}
+		.testimonials-title {
+			font-size: clamp(1.25rem, 2.5vw, 2rem);
+			font-weight: 500;
+			color: var(--color-base-900);
+			margin-top: 1rem;
+		}
+		.nav-btns {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			margin-top: 2rem;
+		}
+		.nav-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2.625rem;
+			height: 2.625rem;
+			border-radius: 50%;
+			background: var(--color-base-200);
+			border: none;
+			color: var(--color-base-950);
+			font-size: 0.875rem;
+			transition: background var(--dur-fast);
+		}
+		.nav-btn:hover {
+			background: var(--color-base-100);
+		}
+		.nav-btn svg {
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+		.testimonial-slide {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			border-radius: var(--radius-2xl);
+			overflow: hidden;
+			background: #fff;
+			padding: 2rem;
+			height: 100%;
+		}
+		.testimonial-quote {
+			font-size: 6rem;
+			font-style: italic;
+			line-height: 1;
+			color: var(--color-base-900);
+		}
+		.testimonial-text {
+			font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+			font-weight: 500;
+			color: var(--color-base-900);
+			letter-spacing: -0.025em;
+			font-style: italic;
+		}
+		.testimonial-author {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin-top: 3rem;
+		}
+		.testimonial-author img {
+			width: 3rem;
+			height: 3rem;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+		.testimonial-name {
+			font-weight: 500;
+			color: var(--color-base-900);
+		}
+		.testimonial-role {
+			font-size: 0.875rem;
+			color: var(--color-base-600);
+		}
+
+		/* Journal */
+		.section-journal {
+			padding: 3rem 0 6rem;
+		}
+		.article-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 3rem;
+			margin-top: 3rem;
+		}
+		@media (min-width: 1024px) {
+			.article-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+		.article-card img {
+			width: 100%;
+			aspect-ratio: 12 / 8;
+			object-fit: cover;
+			border-radius: var(--radius-2xl);
+		}
+		.article-date {
+			font-size: 0.75rem;
+			color: var(--color-base-400);
+			margin-top: 0.25rem;
+		}
+		.article-title {
+			font-size: 1.125rem;
+			font-weight: 500;
+			color: var(--color-base-900);
+			letter-spacing: -0.025em;
+			margin-top: 1rem;
+		}
+		.article-desc {
+			color: var(--color-base-500);
+			margin-top: 0.25rem;
+		}
+
+		/* Footer services */
+		footer {
+			overflow: hidden;
+		}
+		.footer-container {
+			max-width: 100%;
+			margin: 0 auto;
+			padding: 1rem;
+		}
+		.footer-inner {
+			position: relative;
+			border-radius: var(--radius-3xl);
+			height: calc(100vh - 2rem);
+			overflow: hidden;
+			display: flex;
+		}
+		.footer-bg-img {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			inset: 0;
+			object-position: center;
+			transition: opacity 0.5s ease;
+		}
+		.footer-panel {
+			position: relative;
+			margin-left: auto;
+			max-width: 36rem;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+		.footer-panel-inner {
+			padding: 2rem;
+			background: var(--color-base-100);
+			margin: 1rem;
+			border-radius: var(--radius-2xl);
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		.footer-service-title {
+			font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+			font-weight: 500;
+			color: var(--color-base-900);
+			letter-spacing: -0.025em;
+			margin-top: 3rem;
+		}
+		.service-buttons {
+			border-top: 1px solid var(--color-base-200);
+			border-bottom: 1px solid var(--color-base-200);
+			margin-top: 2rem;
+		}
+		.service-btn {
+			display: block;
+			width: 100%;
+			text-align: left;
+			background: none;
+			border: none;
+			color: var(--color-base-900);
+			padding: 0.5rem 0;
+			border-bottom: 1px solid var(--color-base-200);
+			transition: all var(--dur-slow);
+		}
+		.service-btn:last-child {
+			border-bottom: none;
+		}
+		.service-btn p {
+			font-size: 1.125rem;
+			font-weight: 500;
+			transition: transform var(--dur-slow);
+		}
+		.service-btn:focus p,
+		.service-btn.active p {
+			/* optional */
+		}
+		.service-btn.inactive {
+			opacity: 0.5;
+		}
+		.service-desc {
+			color: var(--color-base-600);
+			margin-top: 2rem;
+		}
+
+		/* Search modal */
+		#searchModal {
+			position: fixed;
+			inset: 0;
+			z-index: 200;
+			background: rgba(0, 0, 0, 0.5);
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			padding-top: 5rem;
+		}
+		#searchModal.hidden {
+			display: none;
+		}
+		.search-box {
+			background: #fff;
+			border-radius: var(--radius-2xl);
+			padding: 1.5rem;
+			width: 90%;
+			max-width: 36rem;
+			position: relative;
+		}
+		.search-input {
+			width: 100%;
+			border: 1px solid var(--color-base-200);
+			border-radius: var(--radius-xl);
+			padding: 0.75rem 1rem;
+			font-size: 1rem;
+			outline: none;
+			font-family: var(--font-sans);
+			color: var(--color-base-900);
+		}
+		.search-close {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			background: none;
+			border: none;
+			font-size: 1.5rem;
+			color: var(--color-base-500);
+			cursor: pointer;
+		}
+		.search-btn-fixed {
+			position: fixed;
+			right: 1.5rem;
+			bottom: 1.5rem;
+			z-index: 50;
+			width: 2.625rem;
+			height: 2.625rem;
+			border-radius: 50%;
+			background: var(--color-base-200);
+			border: none;
+			color: var(--color-base-950);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: background var(--dur-fast);
+		}
+		.search-btn-fixed:hover {
+			background: var(--color-base-100);
+		}
+		.search-btn-fixed svg {
+			width: 1rem;
+			height: 1rem;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- HEADER -->
+		<header class="site-header">
+			<div class="inner">
+				<nav class="nav-pill">
+					<a href="index.html" class="nav-logo">Sandstone&amp;co®</a>
+					<button
+						id="mobile-menu-toggle"
+						type="button"
+						aria-label="Toggle menu"
+						aria-expanded="false"
+						data-menu-state="closed"
+						class="menu-toggle"
+					>
+						<span class="sr-only">Toggle navigation menu</span>
+						<span aria-hidden="true" data-closed-icon="">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 256 256"
+								fill="currentColor"
+							>
+								<path
+									d="M72,60A12,12,0,1,1,60,48,12,12,0,0,1,72,60Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,128,48Zm68,24a12,12,0,1,0-12-12A12,12,0,0,0,196,72ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Zm68,0a12,12,0,1,0,12,12A12,12,0,0,0,128,116Zm68,0a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,184a12,12,0,1,0,12,12A12,12,0,0,0,60,184Zm68,0a12,12,0,1,0,12,12A12,12,0,0,0,128,184Zm68,0a12,12,0,1,0,12,12A12,12,0,0,0,196,184Z"
+								/>
+							</svg>
+						</span>
+						<span aria-hidden="true" data-open-icon="" class="hidden">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 256 256"
+								fill="currentColor"
+							>
+								<path
+									d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"
+								/>
+							</svg>
+						</span>
+					</button>
+				</nav>
+				<nav
+					id="mobile-menu"
+					aria-hidden="true"
+					data-menu-state="closed"
+					class="mobile-menu"
+				>
+					<div id="mobile-menu-inner" class="mobile-menu-inner">
+						<div class="menu-grid">
+							<div class="menu-section">
+								<h3>Navigation</h3>
+								<a href="projects/index.html">Projects</a>
+								<a href="services/index.html">Services</a>
+								<a href="studio.html">Studio</a>
+								<a href="contact.html">Contact</a>
+								<a href="system/overview.html">Overview</a>
+								<a
+									href="https://lexingtonthemes.com/templates/sandstone"
+									target="_blank"
+									rel="noopener"
+									>Buy Sandstone</a
+								>
+							</div>
+							<div class="menu-section">
+								<h3>Connect</h3>
+								<a
+									href="https://www.linkedin.com"
+									target="_blank"
+									rel="noopener noreferrer"
+									>LinkedIn</a
+								>
+								<a
+									href="https://www.instagram.com"
+									target="_blank"
+									rel="noopener noreferrer"
+									>Instagram</a
+								>
+								<a
+									href="https://www.behance.net"
+									target="_blank"
+									rel="noopener noreferrer"
+									>Behance</a
+								>
+							</div>
+						</div>
+						<div class="menu-contact">
+							<a href="tel:4155551234">(415) 555-1234</a>
+							<a href="mailto:hello@sandstone.com">hello@sandstone.com</a>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+		<!-- MAIN -->
+		<main class="grow">
+			<!-- HERO -->
+			<section class="hero-section">
+				<div class="hero-container">
+					<div class="hero-inner">
+						<div class="hero-ticker">
+							<div class="ticker-track">
+								(415) 555-1234 // hello@sandstone.com // San Francisco, CA //
+								Mon - Fri: 9AM - 6PM //&nbsp; (415) 555-1234 //
+								hello@sandstone.com // San Francisco, CA // Mon - Fri: 9AM - 6PM
+								//&nbsp; (415) 555-1234 // hello@sandstone.com // San Francisco,
+								CA // Mon - Fri: 9AM - 6PM //&nbsp; (415) 555-1234 //
+								hello@sandstone.com // San Francisco, CA // Mon - Fri: 9AM - 6PM
+								//&nbsp; (415) 555-1234 // hello@sandstone.com // San Francisco,
+								CA // Mon - Fri: 9AM - 6PM //&nbsp; (415) 555-1234 //
+								hello@sandstone.com // San Francisco, CA // Mon - Fri: 9AM - 6PM
+							</div>
+						</div>
+						<div class="hero-logo-overlay" aria-hidden="true">
+							<svg
+								viewBox="0 0 40 10"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M3.54492 9.01172C2.42773 9.01172 1.55664 8.74805 0.931641 8.2207C0.310547 7.69336 0 6.95508 0 6.00586H1.74023C1.75195 6.48633 1.91797 6.86133 2.23828 7.13086C2.55859 7.39648 2.99805 7.5293 3.55664 7.5293C4.05664 7.5293 4.45898 7.42773 4.76367 7.22461C5.06836 7.02148 5.2207 6.75 5.2207 6.41016C5.2207 6.12891 5.09766 5.90039 4.85156 5.72461C4.60938 5.54883 4.21094 5.40039 3.65625 5.2793L2.73633 5.08008C1.02539 4.70898 0.169922 3.90039 0.169922 2.6543C0.169922 2.12305 0.308594 1.66016 0.585938 1.26562C0.863281 0.867188 1.25 0.556641 1.74609 0.333984C2.24219 0.111328 2.82227 0 3.48633 0C4.49023 0 5.28516 0.25 5.87109 0.75C6.46094 1.25 6.76953 1.93945 6.79688 2.81836H5.10938C5.07812 2.4043 4.91797 2.07813 4.62891 1.83984C4.33984 1.60156 3.96094 1.48242 3.49219 1.48242C3.04688 1.48242 2.68164 1.58398 2.39648 1.78711C2.11523 1.99023 1.97461 2.25 1.97461 2.56641C1.97461 2.83594 2.0918 3.05273 2.32617 3.2168C2.56055 3.38086 2.94531 3.52148 3.48047 3.63867L4.31836 3.82031C5.24805 4.01953 5.92773 4.31836 6.35742 4.7168C6.79102 5.11133 7.00781 5.63672 7.00781 6.29297C7.00781 7.13281 6.69922 7.79688 6.08203 8.28516C5.46484 8.76953 4.61914 9.01172 3.54492 9.01172ZM8.06836 8.87109V0.140625H9.9668L12.7734 4.60547C12.875 4.76953 13.0117 5.00195 13.1836 5.30273C13.3555 5.60352 13.5273 5.91016 13.6992 6.22266C13.6875 5.88281 13.6797 5.55078 13.6758 5.22656C13.6719 4.89844 13.6699 4.64258 13.6699 4.45898V0.140625H15.4688V8.87109H13.5645L11.0215 4.82812C10.8926 4.62891 10.7227 4.35156 10.5117 3.99609C10.3047 3.63672 10.0781 3.23438 9.83203 2.78906C9.84766 3.24609 9.85742 3.65234 9.86133 4.00781C9.86914 4.36328 9.87305 4.63477 9.87305 4.82227V8.87109H8.06836ZM19.8574 8.87109H16.7754V0.140625H19.8926C20.7676 0.140625 21.5254 0.318359 22.166 0.673828C22.8066 1.0293 23.3008 1.5332 23.6484 2.18555C23.9961 2.83789 24.1699 3.60938 24.1699 4.5C24.1699 5.39453 23.9961 6.16992 23.6484 6.82617C23.3008 7.47852 22.8047 7.98242 22.1602 8.33789C21.5195 8.69336 20.752 8.87109 19.8574 8.87109ZM18.5801 7.35352H19.7637C20.6465 7.35352 21.2988 7.10742 21.7207 6.61523C22.1426 6.12305 22.3535 5.41797 22.3535 4.5C22.3535 3.58203 22.1406 2.87891 21.7148 2.39062C21.293 1.90234 20.6484 1.6582 19.7812 1.6582H18.5801V7.35352ZM28.4941 9.01172C27.377 9.01172 26.5059 8.74805 25.8809 8.2207C25.2598 7.69336 24.9492 6.95508 24.9492 6.00586H26.6895C26.7012 6.48633 26.8672 6.86133 27.1875 7.13086C27.5078 7.39648 27.9473 7.5293 28.5059 7.5293C29.0059 7.5293 29.4082 7.42773 29.7129 7.22461C30.0176 7.02148 30.1699 6.75 30.1699 6.41016C30.1699 6.12891 30.0469 5.90039 29.8008 5.72461C29.5586 5.54883 29.1602 5.40039 28.6055 5.2793L27.6855 5.08008C25.9746 4.70898 25.1191 3.90039 25.1191 2.6543C25.1191 2.12305 25.2578 1.66016 25.5352 1.26562C25.8125 0.867188 26.1992 0.556641 26.6953 0.333984C27.1914 0.111328 27.7715 0 28.4355 0C29.4395 0 30.2344 0.25 30.8203 0.75C31.4102 1.25 31.7188 1.93945 31.7461 2.81836H30.0586C30.0273 2.4043 29.8672 2.07813 29.5781 1.83984C29.2891 1.60156 28.9102 1.48242 28.4414 1.48242C27.9961 1.48242 27.6309 1.58398 27.3457 1.78711C27.0645 1.99023 26.9238 2.25 26.9238 2.56641C26.9238 2.83594 27.041 3.05273 27.2754 3.2168C27.5098 3.38086 27.8945 3.52148 28.4297 3.63867L29.2676 3.82031C30.1973 4.01953 30.877 4.31836 31.3066 4.7168C31.7402 5.11133 31.957 5.63672 31.957 6.29297C31.957 7.13281 31.6484 7.79688 31.0312 8.28516C30.4141 8.76953 29.5684 9.01172 28.4941 9.01172ZM32.6309 1.6875V0.140625H39.7266V1.6875H37.084V8.87109H35.2793V1.6875H32.6309Z"
+									fill="currentColor"
+								/>
+							</svg>
+						</div>
+						<video autoplay muted loop playsinline class="hero-video">
+							<source src="assets/video/hero.mp4" type="video/mp4">
+							<source src="assets/video/hero.webm" type="video/webm">
+						</video>
+					</div>
+				</div>
+			</section>
+
+			<!-- ABOUT -->
+			<section class="section-about">
+				<div class="container-wide">
+					<p class="about-text">
+						We are a <em>multidisciplinary interior design</em> studio dedicated
+						to creating
+						<em>timeless interiors</em>
+						that enhance living spaces and inspire everyday experiences.
+					</p>
+				</div>
+			</section>
+
+			<!-- LATEST WORKS -->
+			<section
+				class="section-works"
+				style="padding-bottom: 3rem; padding-top: 6rem;"
+			>
+				<div class="container-wide">
+					<h2 class="section-label">Latest works</h2>
+					<p class="section-heading">
+						Explore our latest interior design works, where every project
+						reflects our commitment to quality, sustainability, and timeless
+						aesthetics.
+					</p>
+					<a
+						href="projects/index.html"
+						class="hover-link"
+						style="margin-top: 2rem;"
+					>
+						<span class="label-default">See all projects</span>
+						<span class="label-hover">Explore now</span>
+					</a>
+				</div>
+				<div class="container-wide" style="margin-top: 2rem; overflow: hidden;">
+					<div id="projects-slider" class="keen-slider">
+						<div class="keen-slider__slide project-card">
+							<a href="projects/1.html">
+								<img
+									src="assets/images/cover.CDs52o9P_ZpPGSm.webp"
+									alt="Luxury Residential Complex"
+									loading="lazy"
+								>
+								<div class="project-card-info">
+									<h3>Luxury Residential Complex</h3>
+									<p>2025 · 180,000 sq ft</p>
+								</div>
+							</a>
+						</div>
+						<div class="keen-slider__slide project-card">
+							<a href="projects/2.html">
+								<img
+									src="assets/images/cover.BuXjPU-B_2p3QXl.webp"
+									alt="Modern Office Headquarters"
+									loading="lazy"
+								>
+								<div class="project-card-info">
+									<h3>Modern Office Headquarters</h3>
+									<p>2025 · 150,000 sq ft</p>
+								</div>
+							</a>
+						</div>
+						<div class="keen-slider__slide project-card">
+							<a href="projects/3.html">
+								<img
+									src="assets/images/cover.CTQQ3OyO_Yq07y.webp"
+									alt="Boutique Hotel Renovation"
+									loading="lazy"
+								>
+								<div class="project-card-info">
+									<h3>Boutique Hotel Renovation</h3>
+									<p>2024 · 45,000 sq ft</p>
+								</div>
+							</a>
+						</div>
+						<div class="keen-slider__slide project-card">
+							<a href="projects/4.html">
+								<img
+									src="assets/images/cover.DXv9AiFs_ZQx9up.webp"
+									alt="Sustainable Restaurant Design"
+									loading="lazy"
+								>
+								<div class="project-card-info">
+									<h3>Sustainable Restaurant Design</h3>
+									<p>2024 · 8,500 sq ft</p>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- STATS -->
+			<section class="section-stats">
+				<div class="container-wide">
+					<p class="about-text" style="font-size: clamp(1.5rem, 3vw, 2.25rem);">
+						<em>Purposeful in vision. Meticulous in execution.</em>
+						We transform spaces into living works of art.
+					</p>
+					<div class="stats-grid" style="margin-top: 3rem;">
+						<div>
+							<div class="stat-num">500+</div>
+							<div class="stat-label">
+								Over 500 interior design projects have been completed since our
+								founding.
+							</div>
+						</div>
+						<div>
+							<div class="stat-num">15</div>
+							<div class="stat-label">
+								Years of creating exceptional interior spaces with passion and
+								precision.
+							</div>
+						</div>
+						<div>
+							<div class="stat-num">98%</div>
+							<div class="stat-label">
+								Client satisfaction rate based on post-project surveys and
+								reviews.
+							</div>
+						</div>
+						<div>
+							<div class="stat-num">42</div>
+							<div class="stat-label">
+								Design awards recognizing our excellence in interior innovation.
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ABOUT LONG -->
+			<section class="section-about-long">
+				<div class="container-wide">
+					<p class="about-long-quote">
+						At Sandstone, we believe great <em>interior design</em> creates
+						environments that nurture and inspire. Our approach blends
+						<em>timeless principles</em>
+						with
+						<em>contemporary innovation</em>, ensuring every space serves its
+						inhabitants while telling a unique story.
+					</p>
+				</div>
+			</section>
+
+			<!-- PROCESS -->
+			<section class="section-process">
+				<div class="container-wide">
+					<div class="process-grid">
+						<div>
+							<div class="process-sidebar">
+								<h2 class="section-label">The Process</h2>
+								<h3
+									style="font-size: 1rem; font-weight: 500; color: var(--color-base-900); margin-top: 3rem; line-height: 1.4;"
+								>
+									A proven methodology that transforms visions into beautiful
+									interiors through collaboration, creativity, and meticulous
+									attention to detail.
+								</h3>
+							</div>
+						</div>
+						<div class="process-steps">
+							<div class="process-step">
+								<p class="process-num">01.</p>
+								<div style="grid-column: span 1 / span 2;">
+									<h3 class="process-step-title">Discovery</h3>
+									<p class="process-step-desc">
+										Every project begins with discovery. We explore your vision,
+										assess your space, and understand your lifestyle so we can
+										create interiors that truly reflect your personality and
+										needs.
+									</p>
+								</div>
+								<img src="assets/images/1.BBQfGySU_6Kj00.webp" alt="Discovery">
+							</div>
+							<div class="process-step">
+								<p class="process-num">02.</p>
+								<div>
+									<h3 class="process-step-title">Design Development</h3>
+									<p class="process-step-desc">
+										Design development drives the creative process. Our interior
+										designers work closely with you through mood boards,
+										material samples, and 3D visualizations to refine concepts
+										with clarity and intention.
+									</p>
+								</div>
+								<img
+									src="assets/images/2.8JiDXXSy_ZU473F.webp"
+									alt="Design Development"
+								>
+							</div>
+							<div class="process-step">
+								<p class="process-num">03.</p>
+								<div>
+									<h3 class="process-step-title">Communication</h3>
+									<p class="process-step-desc">
+										Throughout the process, we maintain open communication and
+										detailed planning. Regular check-ins, design presentations,
+										and feedback sessions keep us aligned while allowing
+										flexibility as your vision evolves.
+									</p>
+								</div>
+								<img
+									src="assets/images/3.D0li16ZY_Z2du5L9.webp"
+									alt="Communication"
+								>
+							</div>
+							<div class="process-step">
+								<p class="process-num">04.</p>
+								<div>
+									<h3 class="process-step-title">Implementation</h3>
+									<p class="process-step-desc">
+										As we move from design to implementation, our focus shifts
+										to execution and quality. Careful material sourcing, artisan
+										coordination, and on-site supervision ensure the finished
+										interior not only meets your expectations but creates a
+										space you'll love for years to come.
+									</p>
+								</div>
+								<img
+									src="assets/images/4.BZIWNBRK_Zcnvgs.webp"
+									alt="Implementation"
+								>
+							</div>
+							<div class="process-step">
+								<p class="process-num">05.</p>
+								<div>
+									<h3 class="process-step-title">Procurement</h3>
+									<p class="process-step-desc">
+										Procurement involves carefully selecting and acquiring all
+										the materials, furniture, and finishes needed for your
+										project. We work with trusted suppliers to ensure quality,
+										sustainability, and timely delivery while staying within
+										budget.
+									</p>
+								</div>
+								<img
+									src="assets/images/5.M1uFjjip_2n21U5.webp"
+									alt="Procurement"
+								>
+							</div>
+							<div class="process-step" style="border-bottom: none;">
+								<p class="process-num">06.</p>
+								<div>
+									<h3 class="process-step-title">Installation</h3>
+									<p class="process-step-desc">
+										During installation, our team oversees the careful placement
+										and assembly of all elements. From furniture arrangement to
+										lighting installation, we ensure every detail is executed
+										flawlessly to bring your vision to life.
+									</p>
+								</div>
+								<img
+									src="assets/images/6.CbMLiOxa_qdH02.webp"
+									alt="Installation"
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- TESTIMONIALS -->
+			<section class="section-testimonials">
+				<div
+					style="max-width: 100%; margin: 0 auto; padding: 0 0 0 2rem; overflow: hidden;"
+				>
+					<div class="testimonials-inner">
+						<div class="testimonials-sidebar">
+							<div>
+								<h2 class="testimonials-title">
+									Real partner stories, brought to life through creativity,
+									strategy, and brand experiences that stick.
+								</h2>
+							</div>
+							<div class="nav-btns">
+								<button
+									class="nav-btn"
+									id="testimonials-previous"
+									aria-label="Previous testimonial"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+									>
+										<path
+											d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"
+										/>
+									</svg>
+								</button>
+								<button
+									class="nav-btn"
+									id="testimonials-next"
+									aria-label="Next testimonial"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 256 256"
+										fill="currentColor"
+									>
+										<path
+											d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div
+							id="testimonials-slider"
+							class="keen-slider"
+							style="padding-left: 1rem;"
+						>
+							<div class="keen-slider__slide testimonial-slide">
+								<blockquote>
+									<span aria-hidden="true" class="testimonial-quote">"</span>
+									<p class="testimonial-text">
+										"Sandstone transformed our home into a sanctuary that
+										perfectly blends modern comfort with timeless elegance.
+										Their attention to detail and sustainable approach exceeded
+										our expectations."
+									</p>
+								</blockquote>
+								<div class="testimonial-author">
+									<img
+										src="assets/images/sara.DT1U_OIB_Z1SAbLC.webp"
+										alt="Sarah Johnson"
+									>
+									<div>
+										<p class="testimonial-name">Sarah Johnson</p>
+										<p class="testimonial-role">Homeowner, Austin, TX</p>
+									</div>
+								</div>
+							</div>
+							<div class="keen-slider__slide testimonial-slide">
+								<blockquote>
+									<span aria-hidden="true" class="testimonial-quote">"</span>
+									<p class="testimonial-text">
+										"Working with Sandstone on our office redesign was
+										incredible. They created a space that boosts productivity
+										while maintaining a warm, inviting atmosphere for our team."
+									</p>
+								</blockquote>
+								<div class="testimonial-author">
+									<img
+										src="assets/images/michael.BoPnZWnH_2lCPvf.webp"
+										alt="Michael Chen"
+									>
+									<div>
+										<p class="testimonial-name">Michael Chen</p>
+										<p class="testimonial-role">CEO, San Francisco, CA</p>
+									</div>
+								</div>
+							</div>
+							<div class="keen-slider__slide testimonial-slide">
+								<blockquote>
+									<span aria-hidden="true" class="testimonial-quote">"</span>
+									<p class="testimonial-text">
+										"The boutique hotel project with Sandstone was a
+										masterpiece. They understood our vision perfectly and
+										delivered interiors that tell a story and create
+										unforgettable experiences."
+									</p>
+								</blockquote>
+								<div class="testimonial-author">
+									<img
+										src="assets/images/emily.Bj8lgQgr_1mrAHT.webp"
+										alt="Emma Rodriguez"
+									>
+									<div>
+										<p class="testimonial-name">Emma Rodriguez</p>
+										<p class="testimonial-role">Hotel Owner, Santa Fe, NM</p>
+									</div>
+								</div>
+							</div>
+							<div class="keen-slider__slide testimonial-slide">
+								<blockquote>
+									<span aria-hidden="true" class="testimonial-quote">"</span>
+									<p class="testimonial-text">
+										"Sandstone's sustainable approach to our restaurant design
+										not only looks beautiful but also aligns perfectly with our
+										commitment to eco-friendly dining."
+									</p>
+								</blockquote>
+								<div class="testimonial-author">
+									<img
+										src="assets/images/david.DmGgNqlk_1tLST2.webp"
+										alt="David Park"
+									>
+									<div>
+										<p class="testimonial-name">David Park</p>
+										<p class="testimonial-role">
+											Restaurant Owner, Portland, OR
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="keen-slider__slide testimonial-slide">
+								<blockquote>
+									<span aria-hidden="true" class="testimonial-quote">"</span>
+									<p class="testimonial-text">
+										"From concept to completion, Sandstone brought our retail
+										space vision to life. Their innovative design solutions and
+										flawless execution made our store a destination for
+										customers."
+									</p>
+								</blockquote>
+								<div class="testimonial-author">
+									<img
+										src="assets/images/lisa.CXLm-N6h_1yPnBx.webp"
+										alt="Lisa Thompson"
+									>
+									<div>
+										<p class="testimonial-name">Lisa Thompson</p>
+										<p class="testimonial-role">Retail Owner, Seattle, WA</p>
+									</div>
+								</div>
+							</div>
+							<div class="keen-slider__slide testimonial-slide">
+								<blockquote>
+									<span aria-hidden="true" class="testimonial-quote">"</span>
+									<p class="testimonial-text">
+										"Sandstone's expertise in commercial spaces is unmatched.
+										They transformed our outdated office into a modern,
+										functional workspace that our employees love coming to every
+										day."
+									</p>
+								</blockquote>
+								<div class="testimonial-author">
+									<img
+										src="assets/images/robert.DdcTk2Af_Z18S4Bx.webp"
+										alt="Robert Martinez"
+									>
+									<div>
+										<p class="testimonial-name">Robert Martinez</p>
+										<p class="testimonial-role">
+											Operations Director, Denver, CO
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- JOURNAL -->
+			<section class="section-journal">
+				<div class="container-wide">
+					<div>
+						<h2 class="section-label">Journal</h2>
+						<p class="section-heading">
+							Explore our latest articles and insights on design, technology,
+							and creative innovation
+						</p>
+						<a
+							href="blog/index.html"
+							class="hover-link"
+							style="margin-top: 2rem;"
+						>
+							<span class="label-default">See all articles</span>
+							<span class="label-hover">Read more</span>
+						</a>
+					</div>
+					<div class="article-grid">
+						<article>
+							<img
+								src="assets/images/1.Bt17PaHm_Z1ec6Qo.webp"
+								alt="Human-Centered Architecture"
+								loading="lazy"
+							>
+							<div style="margin-top: 1rem;">
+								<p class="article-date">
+									<time datetime="2025-11-12">November 12, 2025</time>
+								</p>
+								<h3 class="article-title">Human-Centered Architecture</h3>
+								<p class="article-desc">
+									How architects translate vision into space, blending context,
+									materiality, and technology to shape environments that elevate
+									daily life.
+								</p>
+								<a
+									href="blog/posts/1.html"
+									class="hover-link"
+									style="margin-top: 2rem;"
+								>
+									<span class="label-default">Read this article</span>
+									<span class="label-hover">Read further</span>
+								</a>
+							</div>
+						</article>
+						<article>
+							<img
+								src="assets/images/2.CnFPHxKi_1Nl02n.webp"
+								alt="Breathing new life into existing structures"
+								loading="lazy"
+							>
+							<div style="margin-top: 1rem;">
+								<p class="article-date">
+									<time datetime="2025-10-22">October 22, 2025</time>
+								</p>
+								<h3 class="article-title">
+									Breathing new life into existing structures
+								</h3>
+								<p class="article-desc">
+									Strategies for transforming legacy buildings into
+									high-performance spaces without erasing their character.
+								</p>
+								<a
+									href="blog/posts/2.html"
+									class="hover-link"
+									style="margin-top: 2rem;"
+								>
+									<span class="label-default">Read this article</span>
+									<span class="label-hover">Read further</span>
+								</a>
+							</div>
+						</article>
+						<article>
+							<img
+								src="assets/images/4.CWbEoihs_ZaGpnn.webp"
+								alt="Architecture that supports well-being"
+								loading="lazy"
+							>
+							<div style="margin-top: 1rem;">
+								<p class="article-date">
+									<time datetime="2025-09-14">September 14, 2025</time>
+								</p>
+								<h3 class="article-title">
+									Architecture that supports well-being
+								</h3>
+								<p class="article-desc">
+									Evidence-based design moves that help healthcare and workplace
+									projects nurture calm, connection, and recovery.
+								</p>
+								<a
+									href="blog/posts/4.html"
+									class="hover-link"
+									style="margin-top: 2rem;"
+								>
+									<span class="label-default">Read this article</span>
+									<span class="label-hover">Read further</span>
+								</a>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-container">
+				<div class="footer-inner">
+					<!-- Background images -->
+					<img
+						src="assets/images/1.BBQfGySU_1auyew.webp"
+						id="service-image-0"
+						alt="Eco-Materials Selection"
+						class="footer-bg-img"
+						style="display:block;"
+					>
+					<img
+						src="assets/images/2.8JiDXXSy_Z1WjyB.webp"
+						id="service-image-1"
+						alt="Energy-Efficient Systems"
+						class="footer-bg-img"
+						style="display:none;"
+					>
+					<img
+						src="assets/images/3.D0li16ZY_hqtS8.webp"
+						id="service-image-2"
+						alt="Environmental Impact Assessment"
+						class="footer-bg-img"
+						style="display:none;"
+					>
+					<!-- Services panel -->
+					<div class="footer-panel">
+						<div class="footer-panel-inner">
+							<h2 class="section-label">Services</h2>
+							<p class="footer-service-title">
+								Leading sustainable interior design services that integrate
+								ecofriendly materials and energy efficient solutions.
+							</p>
+							<div class="service-buttons">
+								<button class="service-btn active" data-service-index="0">
+									<p>Eco-Materials Selection</p>
+								</button>
+								<button class="service-btn inactive" data-service-index="1">
+									<p>Energy-Efficient Systems</p>
+								</button>
+								<button class="service-btn inactive" data-service-index="2">
+									<p>Environmental Impact Assessment</p>
+								</button>
+							</div>
+							<p class="service-desc" id="active-description">
+								Curated selection of sustainable, low-impact interior materials
+								that meet both environmental and aesthetic standards.
+							</p>
+							<a
+								href="services/index.html"
+								class="hover-link"
+								style="margin-top: 2rem;"
+							>
+								<span class="label-default">See all services</span>
+								<span class="label-hover">Explore now</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Search button -->
+		<button class="search-btn-fixed" id="searchButton" aria-label="Search site">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 256 256"
+				fill="currentColor"
+			>
+				<path
+					d="M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+				/>
+			</svg>
+		</button>
+
+		<!-- Search modal -->
+		<div id="searchModal" class="hidden">
+			<div class="search-box">
+				<button id="searchClose" class="search-close" aria-label="Close search">
+					&times;
+				</button>
+				<input
+					type="search"
+					id="searchInput"
+					class="search-input"
+					placeholder="Search…"
+					aria-label="Search"
+				>
+			</div>
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm"
+			type="module"
+			id="keen-slider-cdn"
+		></script>
+		<script type="module">
+		import KeenSlider from "https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm";
+
+		// Testimonials slider
+		const testimonials = new KeenSlider("#testimonials-slider", {
+			loop: true,
+			slides: { origin: "auto", perView: 1, spacing: 8 },
+			breakpoints: {
+				"(min-width: 1024px)": {
+					slides: { origin: "auto", perView: 1.5, spacing: 16 },
+				},
+			},
+		});
+		document
+			.getElementById("testimonials-previous")
+			?.addEventListener("click", () => testimonials.prev());
+		document
+			.getElementById("testimonials-next")
+			?.addEventListener("click", () => testimonials.next());
+
+		// Projects slider
+		const projects = new KeenSlider("#projects-slider", {
+			slides: { perView: 1.2, spacing: 16 },
+			breakpoints: {
+				"(min-width: 640px)": { slides: { perView: 2.2, spacing: 16 } },
+				"(min-width: 1024px)": { slides: { perView: 3.2, spacing: 24 } },
+			},
+		});
+		</script>
+
+		<!-- Services switcher -->
+		<script>
+		(function () {
+			const services = [
+				{
+					description:
+						"Curated selection of sustainable, low-impact interior materials that meet both environmental and aesthetic standards.",
+				},
+				{
+					description:
+						"Design and integration of high-performance lighting, smart home, and energy systems for optimal interior performance.",
+				},
+				{
+					description:
+						"Comprehensive evaluation of environmental impacts of interior design choices and development of sustainable strategies.",
+				},
+			];
+			const buttons = document.querySelectorAll("[data-service-index]");
+			const images = document.querySelectorAll('[id^="service-image-"]');
+			const descEl = document.getElementById("active-description");
+
+			buttons.forEach((btn, i) => {
+				btn.addEventListener("click", () => {
+					buttons.forEach((b, j) => {
+						b.classList.toggle("inactive", j !== i);
+						b.classList.toggle("active", j === i);
+					});
+					images.forEach((img, j) => {
+						img.style.display = j === i ? "block" : "none";
+					});
+					if (descEl) descEl.textContent = services[i].description;
+				});
+			});
+		})();
+		</script>
+
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

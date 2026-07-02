@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Enlightr — Build Lightning-Fast Websites with Astro</title>
+		<meta
+			name="description"
+			content="A premium Astro course for frontend developers, designers, and indie makers who want leaner, faster websites."
+		>
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Love+Ya+Like+A+Sister&display=swap"
+			rel="stylesheet"
+		>
+		<link
+			rel="stylesheet"
+			href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap"
+		>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css"
+		>
+		<link rel="stylesheet" href="styles.css">
+		<style>
+		/* ── Extra tokens & components used only on this page ─────── */
+		:root {
+			--color-violet-200: #ddd6fe;
+			--color-violet-950: #2e1065;
+			--color-blue-100: #dbeafe;
+			--color-blue-200: #bfdbfe;
+			--color-blue-700: #1d4ed8;
+			--color-blue-900: #1e3a8a;
+			--color-blue-950: #172554;
+			--color-yellow-200: #fef08a;
+			--color-yellow-950: #422006;
+			/* Correct exact values for base */
+			--color-base-50: #f9f9f9;
+			--color-base-100: #f3f4f4;
+			--color-base-200: #e8e8e8;
+			--color-accent-100: #f0fdf4;
+			--color-accent-200: #bbf7d0;
+		}
+
+		/* ── NAVBAR ────────────────────────────────────────────────── */
+		#site-nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 50;
+			transition:
+				background-color 300ms ease,
+				backdrop-filter 300ms ease,
+				border-color 300ms ease;
+			border-bottom: 1px solid transparent;
+		}
+		#site-nav.scrolled {
+			background-color: rgba(255, 255, 255, 0.85);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-color: var(--color-base-200);
+		}
+		.nav-inner {
+			max-width: 80rem;
+			margin: 0 auto;
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+		}
+		.nav-logo {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-family: "Clash Grotesk", sans-serif;
+			font-weight: 600;
+			font-size: 0.875rem;
+			text-transform: uppercase;
+			color: var(--color-base-900);
+			text-decoration: none;
+		}
+		.enlightr-logo-svg {
+			height: 1rem;
+			width: auto;
+			color: var(--color-base-900);
+		}
+		#nav-cta {
+			display: none;
+		}
+		@media (min-width: 768px) {
+			#nav-cta {
+				display: inline-flex;
+			}
+		}
+		.nav-links {
+			display: none;
+			align-items: center;
+			gap: 2rem;
+		}
+		@media (min-width: 768px) {
+			.nav-links {
+				display: flex;
+			}
+		}
+		.nav-links a {
+			font-size: 0.75rem;
+			color: var(--color-base-700);
+			text-decoration: none;
+			transition: color 150ms;
+		}
+		.nav-links a:hover {
+			color: var(--color-accent-500);
+		}
+		.nav-right {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+		.btn-pill {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0.5rem 1.25rem;
+			border-radius: 9999px;
+			font-size: 0.875rem;
+			font-weight: 500;
+			cursor: pointer;
+			text-decoration: none;
+			transition:
+				background-color 150ms,
+				color 150ms,
+				border-color 150ms;
+			border: 1px solid transparent;
+		}
+		.btn-primary {
+			background-color: var(--color-base-900);
+			color: #fff;
+			border-color: var(--color-base-900);
+		}
+		.btn-primary:hover {
+			background-color: var(--color-base-700);
+			border-color: var(--color-base-700);
+		}
+		.btn-outline {
+			background-color: transparent;
+			color: var(--color-base-900);
+			border-color: var(--color-base-200);
+		}
+		.btn-outline:hover {
+			background-color: var(--color-base-50);
+		}
+		/* hamburger */
+		#hamburger {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			width: 24px;
+			cursor: pointer;
+			background: none;
+			border: none;
+			padding: 0;
+		}
+		@media (min-width: 768px) {
+			#hamburger {
+				display: none;
+			}
+		}
+		#hamburger span {
+			display: block;
+			height: 2px;
+			background: var(--color-base-900);
+			border-radius: 2px;
+			transition:
+				transform 300ms,
+				opacity 300ms;
+		}
+		#hamburger.open span:nth-child(1) {
+			transform: translateY(7px) rotate(45deg);
+		}
+		#hamburger.open span:nth-child(2) {
+			opacity: 0;
+		}
+		#hamburger.open span:nth-child(3) {
+			transform: translateY(-7px) rotate(-45deg);
+		}
+
+		/* mobile overlay */
+		#mobile-menu {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 49;
+			background: #fff;
+			flex-direction: column;
+			padding: 6rem 2rem 2rem;
+			gap: 1.5rem;
+		}
+		#mobile-menu.open {
+			display: flex;
+		}
+		#mobile-menu a {
+			font-size: 1.25rem;
+			font-weight: 500;
+			color: var(--color-base-900);
+			text-decoration: none;
+			border-bottom: 1px solid var(--color-base-100);
+			padding-bottom: 1rem;
+		}
+
+		/* ── HERO ──────────────────────────────────────────────────── */
+		.hero-section {
+			padding-top: 12rem;
+			padding-bottom: 3rem;
+			padding-left: 1.5rem;
+			padding-right: 1.5rem;
+			max-width: 80rem;
+			margin: 0 auto;
+		}
+		.hero-label {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.75rem;
+			font-weight: 500;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--color-base-500);
+			margin-bottom: 1.5rem;
+		}
+		.hero-label-dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--color-accent-400);
+			display: inline-block;
+		}
+		.hero-h1 {
+			font-family: "Clash Grotesk", sans-serif;
+			font-size: clamp(2.25rem, 5vw, 3.75rem);
+			font-weight: 500;
+			line-height: 1;
+			letter-spacing: -0.01em;
+			text-transform: uppercase;
+			color: var(--color-accent-950);
+			max-width: 48rem;
+			margin-bottom: 0;
+		}
+		.hero-tagline {
+			font-size: 1rem;
+			color: var(--color-base-500);
+			max-width: 480px;
+			line-height: 1.6;
+			margin-bottom: 2rem;
+		}
+		@media (min-width: 1024px) {
+			.hero-bottom-grid {
+				grid-template-columns: 1fr 1fr !important;
+				align-items: end;
+			}
+		}
+		.hero-cta {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			flex-wrap: wrap;
+		}
+		.hero-cta-circle-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2.5rem;
+			height: 2.5rem;
+			border-radius: 9999px;
+			background: var(--color-accent-200);
+			color: var(--color-base-900);
+			border: 1px solid var(--color-accent-200);
+			text-decoration: none;
+			flex-shrink: 0;
+			transition: background 500ms ease-in-out;
+		}
+		.hero-cta-circle-btn:hover {
+			background: var(--color-accent-400);
+			border-color: var(--color-accent-400);
+		}
+		.hero-cta-discover {
+			font-family: "Clash Grotesk", sans-serif;
+			font-size: 1.125rem;
+			font-weight: 500;
+			text-transform: uppercase;
+			color: var(--color-base-900);
+		}
+
+		/* ── PHOTO GRID ────────────────────────────────────────────── */
+		.photo-grid-wrapper {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			overflow: hidden;
+		}
+		.photo-grid {
+			display: grid;
+			grid-template-columns: repeat(9, 1fr);
+			gap: 0;
+			flex-shrink: 0;
+		}
+		.photo-col {
+			width: 120px;
+			display: flex;
+			flex-direction: column;
+		}
+		@media (min-width: 640px) {
+			.photo-col {
+				width: 140px;
+			}
+		}
+		@media (min-width: 768px) {
+			.photo-col {
+				width: 160px;
+			}
+		}
+		.photo-col img {
+			width: 100%;
+			aspect-ratio: 1 / 1;
+			object-fit: cover;
+			object-position: center;
+		}
+		.gradient-spacer {
+			background: linear-gradient(to top, var(--color-base-100), transparent);
+			width: 100%;
+		}
+		.gradient-bottom {
+			background: linear-gradient(
+				to bottom,
+				var(--color-base-100),
+				transparent
+			);
+			width: 100%;
+		}
+		.stat-box {
+			padding: 1rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			aspect-ratio: 1 / 1;
+		}
+		.stat-box .stat-number {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			font-size: clamp(1.25rem, 3vw, 2rem);
+			line-height: 1;
+			font-weight: 400;
+		}
+		.stat-box .stat-label {
+			font-size: 0.6rem;
+			font-weight: 500;
+			margin-top: 0.5rem;
+		}
+
+		/* ── SECTION COMMON ────────────────────────────────────────── */
+		.section-wrap {
+			max-width: 80rem;
+			margin: 0 auto;
+			padding: 5rem 1.5rem;
+		}
+		.section-label {
+			display: inline-block;
+			font-size: 0.75rem;
+			font-weight: 500;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--color-base-500);
+			margin-bottom: 1rem;
+		}
+		.section-h2 {
+			font-family: "Clash Grotesk", sans-serif;
+			font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+			font-weight: 600;
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+			color: var(--color-base-900);
+		}
+		.section-p {
+			font-size: 0.9375rem;
+			color: var(--color-base-500);
+			line-height: 1.7;
+		}
+
+		/* ── "EVERYTHING YOU NEED" ─────────────────────────────────── */
+		.everything-section {
+			padding: 5rem 1.5rem;
+			text-align: center;
+		}
+		.everything-section .section-h2 {
+			max-width: 42rem;
+			margin: 0 auto 1.5rem;
+		}
+		.everything-section .section-p {
+			max-width: 42rem;
+			margin: 0 auto;
+		}
+
+		/* ── WHO IT'S FOR / COURSE EXPERIENCE ─────────────────────── */
+		.tinted-section {
+			padding: 3rem 1.5rem;
+		}
+		@media (min-width: 1024px) {
+			.tinted-section {
+				padding: 5rem;
+			}
+		}
+		.three-col-sidebar {
+			max-width: 80rem;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 3rem;
+		}
+		@media (min-width: 1024px) {
+			.three-col-sidebar {
+				grid-template-columns: 1fr 2fr;
+			}
+		}
+		.sidebar-sticky {
+			position: sticky;
+			top: 6rem;
+			align-self: start;
+		}
+		.feature-list-item {
+			padding: 1.5rem 0;
+			border-top: 1px solid var(--color-accent-200);
+		}
+		.feature-list-item:last-child {
+			border-bottom: 1px solid var(--color-accent-200);
+		}
+		.feature-list-item h3 {
+			font-family: "Clash Grotesk", sans-serif;
+			font-size: 1rem;
+			font-weight: 600;
+			color: var(--color-base-900);
+			margin-bottom: 0.4rem;
+		}
+		.feature-list-item p {
+			font-size: 0.875rem;
+			color: var(--color-base-500);
+			line-height: 1.6;
+		}
+		/* blue section dividers */
+		.feature-list-item.blue-divider {
+			border-top-color: var(--color-blue-200);
+		}
+		.feature-list-item.blue-divider:last-child {
+			border-bottom-color: var(--color-blue-200);
+		}
+
+		/* ── LATEST COURSES ────────────────────────────────────────── */
+		.courses-section {
+			padding: 5rem 1.5rem;
+			max-width: 80rem;
+			margin: 0 auto;
+		}
+		.courses-header {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			margin-bottom: 3rem;
+			align-items: end;
+		}
+		@media (min-width: 768px) {
+			.courses-header {
+				grid-template-columns: 1fr auto;
+			}
+		}
+		.course-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+		@media (min-width: 640px) {
+			.course-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		.course-card {
+			background: var(--color-base-50);
+			border-radius: 0.75rem;
+			padding: 1.5rem;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+		.course-price {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			font-size: 3rem;
+			line-height: 1;
+			color: var(--color-base-900);
+		}
+		.course-price.free {
+			color: var(--color-accent-600);
+		}
+		.course-date {
+			font-size: 0.75rem;
+			color: var(--color-base-400);
+			font-family: "Space Mono", monospace;
+		}
+		.course-meta {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+			font-size: 0.75rem;
+			color: var(--color-base-500);
+			font-family: "Space Mono", monospace;
+		}
+		.course-meta-item {
+			display: flex;
+			flex-direction: column;
+			gap: 0.1rem;
+		}
+		.course-meta-item .meta-label {
+			font-size: 0.65rem;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: var(--color-base-400);
+		}
+		.course-title {
+			font-family: "Clash Grotesk", sans-serif;
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: var(--color-base-900);
+			line-height: 1.3;
+		}
+		.course-desc {
+			font-size: 0.875rem;
+			color: var(--color-base-500);
+			line-height: 1.6;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+		.course-card-footer {
+			margin-top: auto;
+		}
+
+		/* ── STATS ROW ─────────────────────────────────────────────── */
+		.stats-section {
+			padding: 2rem 1.5rem;
+			max-width: 80rem;
+			margin: 0 auto;
+		}
+		.stats-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1rem;
+		}
+		@media (min-width: 1024px) {
+			.stats-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+		.stat-card {
+			background: var(--color-base-50);
+			border-radius: 0;
+			padding: 2rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			min-height: 200px;
+		}
+		.stat-card .number {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			font-size: clamp(2rem, 4vw, 3.5rem);
+			line-height: 1;
+			color: var(--color-accent-950);
+		}
+		.stat-card .label {
+			font-size: 1rem;
+			color: var(--color-base-500);
+			text-align: right;
+		}
+
+		/* ── TESTIMONIALS ──────────────────────────────────────────── */
+		.testimonials-outer {
+			display: grid;
+			grid-template-columns: 1fr;
+		}
+		@media (min-width: 1024px) {
+			.testimonials-outer {
+				grid-template-columns: 1fr 1fr;
+				min-height: 480px;
+			}
+		}
+		.testimonials-left {
+			padding: 3rem 1.5rem;
+			max-width: 480px;
+		}
+		@media (min-width: 1024px) {
+			.testimonials-left {
+				padding: 5rem;
+				max-width: none;
+			}
+		}
+		.testimonials-right {
+			background: var(--color-blue-200);
+			overflow: hidden;
+			padding: 2rem 0 2rem 2rem;
+			display: flex;
+			align-items: center;
+		}
+		.slider-controls {
+			display: flex;
+			gap: 0.75rem;
+			margin-top: 2rem;
+		}
+		.slider-btn {
+			width: 2.5rem;
+			height: 2.5rem;
+			border-radius: 50%;
+			border: 1px solid var(--color-base-200);
+			background: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: background-color 150ms;
+		}
+		.slider-btn:hover {
+			background: var(--color-base-50);
+		}
+		/* keen-slider */
+		#keen-slider {
+			width: 100%;
+		}
+		#keen-slider .keen-slider__slide {
+			opacity: 0;
+			transition: opacity 0.5s ease;
+		}
+		.testimonial-card {
+			background: #fff;
+			border-radius: 0.75rem;
+			padding: 1.5rem;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			height: 100%;
+			box-sizing: border-box;
+		}
+		.testimonial-quote {
+			font-family: "Instrument Serif", serif;
+			font-style: italic;
+			font-size: 1rem;
+			color: var(--color-base-700);
+			line-height: 1.65;
+			flex: 1;
+		}
+		.testimonial-footer {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+		}
+		.testimonial-avatar {
+			width: 36px;
+			height: 36px;
+			border-radius: 50%;
+			object-fit: cover;
+			flex-shrink: 0;
+		}
+		.testimonial-name {
+			font-size: 0.875rem;
+			font-weight: 600;
+			color: var(--color-base-900);
+		}
+		.testimonial-role {
+			font-size: 0.75rem;
+			color: var(--color-base-500);
+		}
+
+		/* ── FOOTER ────────────────────────────────────────────────── */
+		footer {
+			border-top: 1px solid var(--color-base-200);
+			padding: 3rem 1.5rem 2rem;
+		}
+		.footer-inner {
+			max-width: 80rem;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		@media (min-width: 1024px) {
+			.footer-inner {
+				grid-template-columns: 1fr 2fr;
+			}
+		}
+		.footer-logo-col .footer-tagline {
+			font-size: 0.875rem;
+			color: var(--color-base-500);
+			margin-top: 1rem;
+			max-width: 240px;
+			line-height: 1.6;
+		}
+		.footer-nav-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
+		}
+		@media (min-width: 640px) {
+			.footer-nav-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+		.footer-nav-col h4 {
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: var(--color-base-900);
+			margin-bottom: 0.75rem;
+		}
+		.footer-nav-col ul {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+		.footer-nav-col a {
+			font-size: 0.875rem;
+			color: var(--color-base-500);
+			text-decoration: none;
+			transition: color 150ms;
+		}
+		.footer-nav-col a:hover {
+			color: var(--color-base-900);
+		}
+		.footer-bottom {
+			max-width: 80rem;
+			margin: 2rem auto 0;
+			padding-top: 2rem;
+			border-top: 1px solid var(--color-base-200);
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			justify-content: space-between;
+			font-size: 0.8rem;
+			color: var(--color-base-400);
+		}
+
+		/* ── SEARCH FAB ────────────────────────────────────────────── */
+		#search-fab {
+			position: fixed;
+			bottom: 1.5rem;
+			right: 1.5rem;
+			z-index: 50;
+			width: 3rem;
+			height: 3rem;
+			border-radius: 50%;
+			background: var(--color-base-900);
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+			transition: background 150ms;
+		}
+		#search-fab:hover {
+			background: var(--color-base-700);
+		}
+
+		/* ── SEARCH MODAL ──────────────────────────────────────────── */
+		#search-modal {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 100;
+			background: rgba(0, 0, 0, 0.5);
+			align-items: flex-start;
+			justify-content: center;
+			padding-top: 6rem;
+		}
+		#search-modal.open {
+			display: flex;
+		}
+		.search-modal-inner {
+			background: #fff;
+			border-radius: 1rem;
+			padding: 1.5rem;
+			width: 90%;
+			max-width: 480px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+		}
+		.search-input-wrap {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			border: 1px solid var(--color-base-200);
+			border-radius: 0.5rem;
+			padding: 0.625rem 1rem;
+		}
+		#search-input {
+			border: none;
+			outline: none;
+			font-family: inherit;
+			font-size: 1rem;
+			flex: 1;
+			background: transparent;
+		}
+		#search-results {
+			margin-top: 1rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+		.search-result-item {
+			padding: 0.75rem 1rem;
+			border-radius: 0.5rem;
+			background: var(--color-base-50);
+			cursor: pointer;
+			text-decoration: none;
+			color: var(--color-base-900);
+			display: block;
+			transition: background 150ms;
+		}
+		.search-result-item:hover {
+			background: var(--color-base-100);
+		}
+		.search-result-item .result-title {
+			font-weight: 600;
+			font-size: 0.875rem;
+		}
+		.search-result-item .result-desc {
+			font-size: 0.8rem;
+			color: var(--color-base-500);
+			margin-top: 0.2rem;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- ─────────────────────────────────────────────────── NAVBAR -->
+		<nav id="site-nav" aria-label="Main navigation">
+			<div class="nav-inner">
+				<a href="index.html" class="nav-logo">
+					<svg
+						class="enlightr-logo-svg"
+						viewBox="0 0 125 126"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path
+							d="M51.2591 125.74H29.6763C13.2894 125.74 0 112.451 0 96.064V74.4813H10.8913V96.064C10.8913 106.356 19.2847 114.749 29.5764 114.749H51.1592V125.74H51.2591Z"
+							fill="currentColor"
+						/>
+						<path
+							d="M95.3237 125.74H73.741V114.849H95.3237C105.615 114.849 114.009 106.456 114.009 96.164V74.4813H124.9V96.064C125 112.351 111.611 125.74 95.3237 125.74Z"
+							fill="currentColor"
+						/>
+						<path
+							d="M125 51.9993H114.109V30.4166C114.109 20.1248 105.715 11.7315 95.4236 11.7315H73.741V0.840195H95.3237C111.711 0.840195 125 14.1296 125 30.5165V51.9993Z"
+							fill="currentColor"
+						/>
+						<path
+							d="M10.9913 51.9993H0.100098V30.4166C0.100098 14.0297 13.3894 0.740295 29.7763 0.740295H51.359V11.6315H29.7763C19.4845 11.6315 11.0913 20.0248 11.0913 30.3166V51.9993H10.9913Z"
+							fill="currentColor"
+						/>
+					</svg>
+					<span>Enlightr®</span>
+				</a>
+
+				<div class="nav-links" role="list">
+					<a href="system-overview.html">Overview</a>
+					<a href="pricing.html">Pricing</a>
+					<a href="https://lexingtonthemes.com/" target="_blank" rel="noopener"
+						>Buy Enlightr</a
+					>
+					<a href="sign-in.html">Sign in</a>
+				</div>
+
+				<div class="nav-right">
+					<a href="pricing.html" class="btn-pill btn-primary" id="nav-cta"
+						>Get started</a
+					>
+					<button id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+						<span></span><span></span><span></span>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<!-- mobile menu -->
+		<div
+			id="mobile-menu"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Mobile navigation"
+		>
+			<a href="system-overview.html">Overview</a>
+			<a href="pricing.html">Pricing</a>
+			<a href="https://lexingtonthemes.com/" target="_blank" rel="noopener"
+				>Buy Enlightr</a
+			>
+			<a href="sign-in.html">Sign in</a>
+			<a
+				href="pricing.html"
+				class="btn-pill btn-primary"
+				style="width:fit-content;margin-top:1rem;"
+				>Get started</a
+			>
+		</div>
+
+		<main>
+			<!-- ───────────────────────────────────────────────── HERO -->
+			<section aria-labelledby="hero-heading">
+				<div class="hero-section">
+					<div style="max-width:48rem;">
+						<h1 class="hero-h1" id="hero-heading">
+							Build Lightning-Fast Websites with Astro
+						</h1>
+						<div
+							style="display:grid; grid-template-columns:1fr; gap:2rem; margin-top:2rem;"
+							class="hero-bottom-grid"
+						>
+							<p
+								style="font-size:0.875rem; color:var(--color-base-500); line-height:1.6;"
+							>
+								A complete beginner-to-pro course on mastering Astro, the modern
+								framework for content-focused web development.
+							</p>
+							<div class="hero-cta">
+								<a
+									href="courses.html"
+									class="hero-cta-circle-btn"
+									aria-label="Discover more courses"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										width="20"
+										height="20"
+									>
+										<path d="M12 5l0 14" />
+										<path d="M5 12l14 0" />
+									</svg>
+								</a>
+								<p class="hero-cta-discover">discover more</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Photo grid: matches source 9-col layout with images and colored stat boxes -->
+				<div class="photo-grid-wrapper">
+					<div class="photo-grid" aria-hidden="true">
+						<!-- Col 1 -->
+						<div class="photo-col">
+							<div class="gradient-spacer" style="aspect-ratio:1/1;"></div>
+							<img src="assets/images/customer-1.webp" alt="">
+							<img src="assets/images/customer-2.webp" alt="">
+						</div>
+						<!-- Col 2 -->
+						<div class="photo-col">
+							<div class="gradient-spacer" style="aspect-ratio:1/1.5;"></div>
+							<img src="assets/images/customer-3.webp" alt="">
+							<div class="stat-box" style="background:var(--color-accent-200);">
+								<div class="stat-number" style="color:var(--color-accent-900);">
+									4.9/5
+								</div>
+								<div class="stat-label" style="color:var(--color-accent-800);">
+									Average Rating
+								</div>
+							</div>
+							<div class="gradient-bottom" style="aspect-ratio:1/1;"></div>
+						</div>
+						<!-- Col 3 -->
+						<div class="photo-col">
+							<div class="gradient-spacer" style="aspect-ratio:1/1;"></div>
+							<img src="assets/images/customer-4.webp" alt="">
+							<div class="gradient-bottom" style="aspect-ratio:1/1;"></div>
+						</div>
+						<!-- Col 4 -->
+						<div class="photo-col">
+							<div class="gradient-spacer" style="aspect-ratio:1/1.5;"></div>
+							<div class="stat-box" style="background:#ddd6fe;">
+								<div class="stat-number" style="color:#2e1065;">48</div>
+								<div class="stat-label" style="color:#2e1065;">
+									Lessons Included
+								</div>
+							</div>
+							<div class="gradient-bottom" style="aspect-ratio:1/1;"></div>
+						</div>
+						<!-- Col 5 -->
+						<div class="photo-col">
+							<div class="gradient-spacer" style="aspect-ratio:1/1;"></div>
+							<img src="assets/images/customer-5.webp" alt="">
+							<div class="gradient-bottom" style="aspect-ratio:1/1;"></div>
+						</div>
+						<!-- Col 6 -->
+						<div class="photo-col">
+							<div class="gradient-spacer" style="aspect-ratio:1/1.5;"></div>
+							<div class="stat-box" style="background:#fef08a;">
+								<div class="stat-number" style="color:#422006;">4,200+</div>
+								<div class="stat-label" style="color:#422006;">
+									Students Enrolled
+								</div>
+							</div>
+							<div class="gradient-bottom" style="aspect-ratio:1/1;"></div>
+						</div>
+						<!-- Col 7 -->
+						<div class="photo-col">
+							<div class="gradient-spacer" style="aspect-ratio:1/1;"></div>
+							<img src="assets/images/customer-8.webp" alt="">
+							<div class="gradient-bottom" style="aspect-ratio:1/1;"></div>
+						</div>
+						<!-- Col 8 -->
+						<div class="photo-col">
+							<div class="gradient-spacer" style="aspect-ratio:1/1.5;"></div>
+							<img src="assets/images/customer-7.webp" alt="">
+							<div class="stat-box" style="background:#bfdbfe;">
+								<div class="stat-number" style="color:#1e3a8a;">12+</div>
+								<div class="stat-label" style="color:#1e3a8a;">
+									Hours of Content
+								</div>
+							</div>
+							<div class="gradient-bottom" style="aspect-ratio:1/1;"></div>
+						</div>
+						<!-- Col 9 -->
+						<div class="photo-col">
+							<div class="gradient-spacer" style="aspect-ratio:1/1;"></div>
+							<img src="assets/images/customer-6.webp" alt="">
+							<img src="assets/images/customer-1.webp" alt="">
+							<div class="gradient-bottom" style="aspect-ratio:1/1;"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ───────────────────────── EVERYTHING YOU NEED -->
+			<section class="everything-section" aria-labelledby="everything-heading">
+				<h2 class="section-h2" id="everything-heading">
+					Everything you need to build modern, high-performance websites
+				</h2>
+				<p class="section-p" style="max-width:42rem; margin:1.5rem auto 0;">
+					Enlightr gives you a structured path through Astro's most powerful
+					features — from content collections and component islands to
+					deployment pipelines and performance optimization. Whether you're
+					migrating from React or starting fresh, this course meets you where
+					you are and takes you where you want to go. No fluff, no filler — just
+					the knowledge you need to ship real projects with confidence.
+				</p>
+			</section>
+
+			<!-- ─────────────────────────────── WHO IT'S FOR -->
+			<section
+				style="background:var(--color-accent-100);"
+				aria-labelledby="who-heading"
+			>
+				<div class="tinted-section">
+					<div class="three-col-sidebar">
+						<!-- Sidebar -->
+						<div class="sidebar-sticky">
+							<span class="section-label">02 Who It's For</span>
+							<h2
+								class="section-h2"
+								id="who-heading"
+								style="margin-top:0.5rem; margin-bottom:1rem;"
+							>
+								Built for builders who care about performance
+							</h2>
+							<p class="section-p">
+								If you've ever felt frustrated by slow builds, bloated
+								JavaScript bundles, or framework lock-in — this course was
+								designed with you in mind.
+							</p>
+						</div>
+						<!-- Feature list -->
+						<div>
+							<div class="feature-list-item">
+								<h3>New to Astro?</h3>
+								<p>
+									We start from scratch so you never feel lost. Every concept is
+									explained before it's applied, and every project builds on the
+									last.
+								</p>
+							</div>
+							<div class="feature-list-item">
+								<h3>Frontend devs who want leaner builds</h3>
+								<p>
+									If you're used to React or Vue and want to ship less
+									JavaScript by default, Astro's island architecture will change
+									how you think about the web.
+								</p>
+							</div>
+							<div class="feature-list-item">
+								<h3>Designers and indie makers</h3>
+								<p>
+									You don't need to be a hardcore engineer. If you understand
+									HTML and CSS, Astro lets you build powerful, production-ready
+									sites without a backend.
+								</p>
+							</div>
+							<div class="feature-list-item">
+								<h3>Content creators &amp; bloggers</h3>
+								<p>
+									Astro's content collections are a game changer for anyone
+									managing lots of markdown. We'll show you how to build a
+									blazing-fast blog or docs site.
+								</p>
+							</div>
+							<div class="feature-list-item">
+								<h3>Framework-curious folks</h3>
+								<p>
+									Astro plays nicely with React, Vue, Svelte, and more. If
+									you're curious about the new wave of meta-frameworks, this is
+									the perfect entry point.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ──────────────────────── COURSE EXPERIENCE -->
+			<section
+				style="background:var(--color-blue-100);"
+				aria-labelledby="experience-heading"
+			>
+				<div class="tinted-section">
+					<div class="three-col-sidebar" style="grid-template-columns: 1fr;">
+						<div
+							style="display:grid; grid-template-columns:1fr; gap:3rem;"
+							id="experience-grid"
+						>
+							<!-- Feature list (left) -->
+							<div>
+								<div class="feature-list-item blue-divider">
+									<h3>Build real projects, not just examples</h3>
+									<p>
+										Every lesson is grounded in a real-world use case. You'll
+										ship a blog, a product landing page, and a documentation
+										site — all before the course ends.
+									</p>
+								</div>
+								<div class="feature-list-item blue-divider">
+									<h3>Set your own pace</h3>
+									<p>
+										Lifetime access means you learn on your schedule. Revisit
+										any lesson whenever you need a refresher — no expiry dates,
+										no pressure.
+									</p>
+								</div>
+								<div class="feature-list-item blue-divider">
+									<h3>Start from scratch, step by step</h3>
+									<p>
+										We assume nothing but basic web knowledge. Each video walks
+										you through every command, every config, every decision —
+										with clear reasoning.
+									</p>
+								</div>
+								<div class="feature-list-item blue-divider">
+									<h3>Finish strong with a certificate</h3>
+									<p>
+										Complete all lessons and earn a certificate of completion
+										you can share on LinkedIn or attach to your portfolio to
+										show potential clients or employers.
+									</p>
+								</div>
+								<div class="feature-list-item blue-divider">
+									<h3>Access forever — updates included</h3>
+									<p>
+										Astro ships fast. When new versions land, we update the
+										course. You get access to every future lesson without paying
+										again.
+									</p>
+								</div>
+							</div>
+							<!-- Sidebar (right) -->
+							<div class="sidebar-sticky" id="experience-sidebar">
+								<span class="section-label">03 Course Experience</span>
+								<h2
+									class="section-h2"
+									id="experience-heading"
+									style="margin-top:0.5rem; margin-bottom:1rem;"
+								>
+									A learning experience designed to get you shipping
+								</h2>
+								<p class="section-p">
+									We cut the filler and focused on what matters. Our curriculum
+									is built around projects, not lectures — so you spend more
+									time building and less time watching.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ───────────────────────────── LATEST COURSES -->
+			<section aria-labelledby="courses-heading">
+				<div class="courses-section">
+					<div class="courses-header">
+						<div>
+							<span class="section-label">04 Latest Courses</span>
+							<h2
+								class="section-h2"
+								id="courses-heading"
+								style="margin-top:0.5rem;"
+							>
+								What will you master next?
+							</h2>
+							<p class="section-p" style="margin-top:0.75rem;">
+								New courses drop regularly. Stay sharp by enrolling in what's
+								next.
+							</p>
+						</div>
+						<a href="pricing.html" class="btn-pill btn-primary"
+							>Get pro access</a
+						>
+					</div>
+					<div class="course-grid">
+						<!-- Card 1 -->
+						<article class="course-card">
+							<div class="course-price">$39</div>
+							<div class="course-date">June 15, 2025</div>
+							<div class="course-meta">
+								<div class="course-meta-item">
+									<span class="meta-label">Duration</span>
+									<span>1:47:22</span>
+								</div>
+								<div class="course-meta-item">
+									<span class="meta-label">Lessons</span>
+									<span>0</span>
+								</div>
+								<div class="course-meta-item">
+									<span class="meta-label">Teacher</span>
+									<span>Lucia Herrera</span>
+								</div>
+							</div>
+							<h3 class="course-title">
+								Astro Content Collections Masterclass
+							</h3>
+							<p class="course-desc">
+								Master Astro's content collections API to build type-safe,
+								scalable content management systems. Learn to organize, query,
+								and render structured content like a pro.
+							</p>
+							<div class="course-card-footer">
+								<a
+									href="courses.html"
+									class="btn-pill btn-primary"
+									style="width:100%; text-align:center; margin-top:0.5rem;"
+									>Enroll now</a
+								>
+							</div>
+						</article>
+						<!-- Card 2 -->
+						<article class="course-card">
+							<div class="course-price free">Free</div>
+							<div class="course-date">June 12, 2025</div>
+							<div class="course-meta">
+								<div class="course-meta-item">
+									<span class="meta-label">Duration</span>
+									<span>33:24</span>
+								</div>
+								<div class="course-meta-item">
+									<span class="meta-label">Lessons</span>
+									<span>0</span>
+								</div>
+								<div class="course-meta-item">
+									<span class="meta-label">Teacher</span>
+									<span>Matteo Romano</span>
+								</div>
+							</div>
+							<h3 class="course-title">Astro Fundamentals</h3>
+							<p class="course-desc">
+								Build blazing-fast websites from scratch with Astro. This free
+								intro course covers the core concepts you need to get up and
+								running quickly.
+							</p>
+							<div class="course-card-footer">
+								<a
+									href="courses.html"
+									class="btn-pill btn-outline"
+									style="width:100%; text-align:center; margin-top:0.5rem;"
+									>Enroll now</a
+								>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- ──────────────────────────────── STATS ROW -->
+			<section class="stats-section" aria-label="Course statistics">
+				<div class="stats-grid">
+					<div class="stat-card">
+						<div class="number">4,200+</div>
+						<div class="label">Students Enrolled</div>
+					</div>
+					<div class="stat-card">
+						<div class="number">4.9/5</div>
+						<div class="label">Average Rating</div>
+					</div>
+					<div class="stat-card">
+						<div class="number">48</div>
+						<div class="label">Lessons Included</div>
+					</div>
+					<div class="stat-card">
+						<div class="number">12+</div>
+						<div class="label">Hours of Content</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ──────────────────────────── TESTIMONIALS -->
+			<section aria-labelledby="testimonials-heading">
+				<div class="testimonials-outer">
+					<!-- Left panel -->
+					<div class="testimonials-left">
+						<span class="section-label">05 Our Students</span>
+						<h2
+							class="section-h2"
+							id="testimonials-heading"
+							style="margin-top:0.5rem; margin-bottom:1rem;"
+						>
+							Our alumni found work at companies like Stripe, Astro and Polar
+						</h2>
+						<p class="section-p">
+							Don't take our word for it — hear from the developers, designers,
+							and makers who've been through Enlightr and taken their careers to
+							the next level.
+						</p>
+						<div class="slider-controls">
+							<button
+								class="slider-btn"
+								id="keen-slider-previous"
+								aria-label="Previous testimonial"
+							>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 16 16"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M10 3L5 8l5 5"
+										stroke="#374151"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<button
+								class="slider-btn"
+								id="keen-slider-next"
+								aria-label="Next testimonial"
+							>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 16 16"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6 3l5 5-5 5"
+										stroke="#374151"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<!-- Right panel: carousel -->
+					<div class="testimonials-right">
+						<div id="keen-slider" class="keen-slider">
+							<!-- Card 1 -->
+							<div class="keen-slider__slide">
+								<div class="testimonial-card">
+									<blockquote class="testimonial-quote">
+										"I had dabbled with static site generators before, but
+										Enlightr's Astro course made everything click. The
+										project-based approach meant I was actually building things
+										from day one, and the instructor's pace was perfect —
+										thorough without being slow."
+									</blockquote>
+									<footer class="testimonial-footer">
+										<img
+											src="assets/images/avatar-1.webp"
+											alt="Sofia Lundarez"
+											class="testimonial-avatar"
+										>
+										<div>
+											<div class="testimonial-name">Sofia Lundarez</div>
+											<div class="testimonial-role">
+												Frontend Developer Intern
+											</div>
+										</div>
+									</footer>
+								</div>
+							</div>
+							<!-- Card 2 -->
+							<div class="keen-slider__slide">
+								<div class="testimonial-card">
+									<blockquote class="testimonial-quote">
+										"I always struggled with consistency in my side projects.
+										Enlightr gave me a clear structure and the confidence to
+										actually ship. I launched my portfolio site in a week after
+										finishing the fundamentals module."
+									</blockquote>
+									<footer class="testimonial-footer">
+										<img
+											src="assets/images/avatar-2.webp"
+											alt="Alba Ferrucci"
+											class="testimonial-avatar"
+										>
+										<div>
+											<div class="testimonial-name">Alba Ferrucci</div>
+											<div class="testimonial-role">Design Student</div>
+										</div>
+									</footer>
+								</div>
+							</div>
+							<!-- Card 3 -->
+							<div class="keen-slider__slide">
+								<div class="testimonial-card">
+									<blockquote class="testimonial-quote">
+										"I was hesitant to switch from React-heavy stacks, but the
+										course showed me exactly where Astro makes the tradeoffs
+										worthwhile. My Lighthouse scores went from the 60s to
+										near-perfect after rebuilding my client sites."
+									</blockquote>
+									<footer class="testimonial-footer">
+										<img
+											src="assets/images/avatar-3.webp"
+											alt="Inés Marquina"
+											class="testimonial-avatar"
+										>
+										<div>
+											<div class="testimonial-name">Inés Marquina</div>
+											<div class="testimonial-role">
+												Freelance Frontend Developer
+											</div>
+										</div>
+									</footer>
+								</div>
+							</div>
+							<!-- Card 4 -->
+							<div class="keen-slider__slide">
+								<div class="testimonial-card">
+									<blockquote class="testimonial-quote">
+										"I've always struggled with overly complex tooling. Astro's
+										simplicity is refreshing, and Enlightr presented it in a way
+										that never felt overwhelming. The content collections module
+										alone was worth the price of admission."
+									</blockquote>
+									<footer class="testimonial-footer">
+										<img
+											src="assets/images/avatar-4.webp"
+											alt="Miro Salonen"
+											class="testimonial-avatar"
+										>
+										<div>
+											<div class="testimonial-name">Miro Salonen</div>
+											<div class="testimonial-role">
+												UI Designer turned Developer
+											</div>
+										</div>
+									</footer>
+								</div>
+							</div>
+							<!-- Card 5 -->
+							<div class="keen-slider__slide">
+								<div class="testimonial-card">
+									<blockquote class="testimonial-quote">
+										"Coming from a pure marketing background, I was intimidated
+										by web development. Enlightr bridged the gap perfectly — I
+										can now build and maintain my own landing pages without
+										relying on a developer for every change."
+									</blockquote>
+									<footer class="testimonial-footer">
+										<img
+											src="assets/images/avatar-5.webp"
+											alt="Elena Rodriguez"
+											class="testimonial-avatar"
+										>
+										<div>
+											<div class="testimonial-name">Elena Rodriguez</div>
+											<div class="testimonial-role">
+												Marketing Manager turned Tech Entrepreneur
+											</div>
+										</div>
+									</footer>
+								</div>
+							</div>
+							<!-- Card 6 -->
+							<div class="keen-slider__slide">
+								<div class="testimonial-card">
+									<blockquote class="testimonial-quote">
+										"I've been writing APIs and database logic for years but
+										always avoided frontend work. Enlightr's Astro course
+										finally gave me a frontend framework I actually enjoy using.
+										The TypeScript integration and content collections feel like
+										something a backend dev designed."
+									</blockquote>
+									<footer class="testimonial-footer">
+										<img
+											src="assets/images/avatar-6.webp"
+											alt="James Chen"
+											class="testimonial-avatar"
+										>
+										<div>
+											<div class="testimonial-name">James Chen</div>
+											<div class="testimonial-role">
+												Backend Engineer seeking Frontend Mastery
+											</div>
+										</div>
+									</footer>
+								</div>
+							</div>
+							<!-- Card 7 -->
+							<div class="keen-slider__slide">
+								<div class="testimonial-card">
+									<blockquote class="testimonial-quote">
+										"After 5 years of WordPress development, I was ready to move
+										on but didn't know where to start. Enlightr made the
+										transition to Astro feel natural. I've already migrated
+										three client sites and the performance improvements speak
+										for themselves."
+									</blockquote>
+									<footer class="testimonial-footer">
+										<img
+											src="assets/images/avatar-7.webp"
+											alt="Marcus Thompson"
+											class="testimonial-avatar"
+										>
+										<div>
+											<div class="testimonial-name">Marcus Thompson</div>
+											<div class="testimonial-role">
+												WordPress Freelancer turned Modern Developer
+											</div>
+										</div>
+									</footer>
+								</div>
+							</div>
+							<!-- Card 8 -->
+							<div class="keen-slider__slide">
+								<div class="testimonial-card">
+									<blockquote class="testimonial-quote">
+										"My machine learning models were solving real problems but
+										nobody could access them elegantly. Enlightr taught me to
+										build customer-facing dashboards with Astro's island
+										architecture — now my ML outputs have beautiful, fast
+										interfaces."
+									</blockquote>
+									<footer class="testimonial-footer">
+										<img
+											src="assets/images/avatar-8.webp"
+											alt="Sarah Kim"
+											class="testimonial-avatar"
+										>
+										<div>
+											<div class="testimonial-name">Sarah Kim</div>
+											<div class="testimonial-role">
+												Data Scientist building Customer-Facing Dashboards
+											</div>
+										</div>
+									</footer>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ──────────────────────────────────────── FOOTER -->
+		<footer>
+			<div class="footer-inner">
+				<!-- Logo col -->
+				<div class="footer-logo-col">
+					<a href="index.html" class="nav-logo" style="display:inline-flex;">
+						<svg
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+						>
+							<rect width="24" height="24" rx="6" fill="#111827" />
+							<path
+								d="M7 8h10M7 12h7M7 16h10"
+								stroke="#4ade80"
+								stroke-width="2"
+								stroke-linecap="round"
+							/>
+						</svg>
+						Enlightr<sup>®</sup>
+					</a>
+					<p class="footer-tagline">
+						Premium multipage themes crafted with Astro and Tailwind CSS.
+					</p>
+				</div>
+				<!-- Nav grid -->
+				<nav class="footer-nav-grid" aria-label="Footer navigation">
+					<div class="footer-nav-col">
+						<h4>Navigation</h4>
+						<ul>
+							<li><a href="system-overview.html">Overview</a></li>
+							<li><a href="system-overview.html#buttons">Buttons</a></li>
+							<li><a href="system-overview.html#links">Links</a></li>
+							<li><a href="system-overview.html#colors">Colors</a></li>
+							<li><a href="system-overview.html#typography">Typography</a></li>
+						</ul>
+					</div>
+					<div class="footer-nav-col">
+						<h4>Stay Updated</h4>
+						<ul>
+							<li><a href="#">License</a></li>
+							<li><a href="#">Documentation</a></li>
+						</ul>
+					</div>
+					<div class="footer-nav-col">
+						<h4>Socials</h4>
+						<ul>
+							<li>
+								<a
+									href="https://twitter.com/lexingtonthemes"
+									target="_blank"
+									rel="noopener"
+									>@lexingtonthemes</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://twitter.com/Mike_Andreuzza"
+									target="_blank"
+									rel="noopener"
+									>@Mike_Andreuzza</a
+								>
+							</li>
+						</ul>
+					</div>
+					<div class="footer-nav-col">
+						<h4>More Themes</h4>
+						<ul>
+							<li>
+								<a
+									href="https://lexingtonthemes.com/"
+									target="_blank"
+									rel="noopener"
+									>Lexington Themes</a
+								>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<div class="footer-bottom">
+				<span>© 2025 Enlightr. All rights reserved.</span>
+				<span>Made with Astro &amp; Tailwind CSS</span>
+			</div>
+		</footer>
+
+		<!-- ────────────────────────────── SEARCH FAB -->
+		<button id="search-fab" aria-label="Search courses">
+			<svg
+				width="18"
+				height="18"
+				viewBox="0 0 18 18"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<circle cx="8" cy="8" r="5.5" stroke="white" stroke-width="1.5" />
+				<path
+					d="M12.5 12.5L16 16"
+					stroke="white"
+					stroke-width="1.5"
+					stroke-linecap="round"
+				/>
+			</svg>
+		</button>
+
+		<!-- ────────────────────────────── SEARCH MODAL -->
+		<div id="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+			<div class="search-modal-inner">
+				<div class="search-input-wrap">
+					<svg
+						width="16"
+						height="16"
+						viewBox="0 0 16 16"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<circle cx="7" cy="7" r="4.5" stroke="#6b7280" stroke-width="1.5" />
+						<path
+							d="M11 11L14 14"
+							stroke="#6b7280"
+							stroke-width="1.5"
+							stroke-linecap="round"
+						/>
+					</svg>
+					<input
+						type="search"
+						id="search-input"
+						placeholder="Search courses..."
+						autocomplete="off"
+					>
+					<button
+						onclick="closeSearch()"
+						style="background:none;border:none;cursor:pointer;padding:0;color:#6b7280;font-size:1.25rem;line-height:1;"
+						aria-label="Close search"
+					>
+						✕
+					</button>
+				</div>
+				<div
+					id="search-results"
+					role="listbox"
+					aria-label="Search results"
+				></div>
+			</div>
+		</div>
+
+		<!-- ────────────────────────────── SCRIPTS -->
+		<script>
+		// ── Nav scroll blur ──────────────────────────────────────────
+		const nav = document.getElementById("site-nav");
+		const navCta = document.getElementById("nav-cta");
+		// Show CTA always
+		navCta.style.display = "inline-flex";
+
+		window.addEventListener(
+			"scroll",
+			() => {
+				if (window.scrollY > 50) {
+					nav.classList.add("scrolled");
+				} else {
+					nav.classList.remove("scrolled");
+				}
+			},
+			{ passive: true },
+		);
+
+		// ── Mobile hamburger ─────────────────────────────────────────
+		const hamburger = document.getElementById("hamburger");
+		const mobileMenu = document.getElementById("mobile-menu");
+
+		hamburger.addEventListener("click", () => {
+			const isOpen = mobileMenu.classList.toggle("open");
+			hamburger.classList.toggle("open", isOpen);
+			hamburger.setAttribute("aria-expanded", String(isOpen));
+			document.body.style.overflow = isOpen ? "hidden" : "";
+		});
+
+		mobileMenu.querySelectorAll("a").forEach((link) => {
+			link.addEventListener("click", () => {
+				mobileMenu.classList.remove("open");
+				hamburger.classList.remove("open");
+				hamburger.setAttribute("aria-expanded", "false");
+				document.body.style.overflow = "";
+			});
+		});
+
+		// ── Course experience grid: sidebar on right at lg ───────────
+		function applyExperienceLayout() {
+			const grid = document.getElementById("experience-grid");
+			const sidebar = document.getElementById("experience-sidebar");
+			if (!grid || !sidebar) return;
+			if (window.innerWidth >= 1024) {
+				grid.style.gridTemplateColumns = "2fr 1fr";
+				sidebar.style.order = "2";
+			} else {
+				grid.style.gridTemplateColumns = "1fr";
+				sidebar.style.order = "";
+			}
+		}
+		applyExperienceLayout();
+		window.addEventListener("resize", applyExperienceLayout);
+
+		// ── Search ────────────────────────────────────────────────────
+		const COURSES = [
+			{
+				id: 1,
+				title: "Astro Content Collections Masterclass",
+				description:
+					"Master Astro's content collections API to build type-safe, scalable content management systems.",
+				price: "$39",
+				teacher: "Lucia Herrera",
+				url: "courses.html",
+			},
+			{
+				id: 2,
+				title: "Astro Fundamentals",
+				description: "Build blazing-fast websites from scratch with Astro.",
+				price: "Free",
+				teacher: "Matteo Romano",
+				url: "courses.html",
+			},
+		];
+
+		const searchModal = document.getElementById("search-modal");
+		const searchInput = document.getElementById("search-input");
+		const searchResults = document.getElementById("search-results");
+		const fab = document.getElementById("search-fab");
+
+		fab.addEventListener("click", openSearch);
+
+		searchModal.addEventListener("click", (e) => {
+			if (e.target === searchModal) closeSearch();
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") closeSearch();
+		});
+
+		function openSearch() {
+			searchModal.classList.add("open");
+			searchInput.value = "";
+			searchResults.innerHTML = "";
+			setTimeout(() => searchInput.focus(), 50);
+		}
+
+		function closeSearch() {
+			searchModal.classList.remove("open");
+		}
+
+		window.closeSearch = closeSearch;
+
+		searchInput.addEventListener("input", () => {
+			const q = searchInput.value.trim().toLowerCase();
+			if (!q) {
+				searchResults.innerHTML = "";
+				return;
+			}
+			const hits = COURSES.filter(
+				(c) =>
+					c.title.toLowerCase().includes(q) ||
+					c.description.toLowerCase().includes(q) ||
+					c.teacher.toLowerCase().includes(q),
+			);
+			if (!hits.length) {
+				searchResults.innerHTML =
+					'<p style="font-size:0.875rem;color:#6b7280;padding:0.5rem 0;">No courses found.</p>';
+				return;
+			}
+			searchResults.innerHTML = hits
+				.map(
+					(c) => `
+      <a class="search-result-item" href="${c.url}" role="option">
+        <div class="result-title">${c.title}</div>
+        <div class="result-desc">${c.price} · ${c.teacher}</div>
+      </a>
+    `,
+				)
+				.join("");
+		});
+		</script>
+
+		<script type="module">
+		import KeenSlider from "https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm";
+
+		// ── Autoplay plugin ──────────────────────────────────────────
+		function autoplay(delay) {
+			let timeout;
+			let mouseOver = false;
+			function clearNextTimeout() {
+				clearTimeout(timeout);
+			}
+			function nextTimeout() {
+				clearTimeout(timeout);
+				if (mouseOver) return;
+				timeout = setTimeout(() => {
+					slider.next();
+				}, delay);
+			}
+			let slider;
+			return {
+				created(s) {
+					slider = s;
+					s.container.addEventListener("mouseover", () => {
+						mouseOver = true;
+						clearNextTimeout();
+					});
+					s.container.addEventListener("mouseout", () => {
+						mouseOver = false;
+						nextTimeout();
+					});
+					nextTimeout();
+				},
+				destroyed() {
+					clearNextTimeout();
+				},
+				dragStarted: clearNextTimeout,
+				animationEnded: nextTimeout,
+				updated: nextTimeout,
+			};
+		}
+
+		// ── Init ─────────────────────────────────────────────────────
+		const slider = new KeenSlider(
+			"#keen-slider",
+			{
+				loop: true,
+				defaultAnimation: { duration: 1000 },
+				detailsChanged(s) {
+					s.slides.forEach((slide, idx) => {
+						slide.style.opacity = s.track.details.slides[idx].portion;
+					});
+				},
+				slides: { origin: "auto", perView: 1.2, spacing: 4 },
+				breakpoints: {
+					"(min-width: 1024px)": {
+						slides: { origin: "auto", perView: 1.5, spacing: 8 },
+					},
+				},
+			},
+			[autoplay(3000)],
+		);
+
+		document
+			.getElementById("keen-slider-previous")
+			.addEventListener("click", () => slider.prev());
+		document
+			.getElementById("keen-slider-next")
+			.addEventListener("click", () => slider.next());
+		</script>
+	</body>
+</html>

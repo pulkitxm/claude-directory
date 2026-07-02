@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ACME — The modern landing page for React developers</title>
+<meta name="description" content="The easiest way to build a React landing page in seconds. Save time and focus on your project." />
+<link rel="stylesheet" href="css/styles.css" />
+<script>
+	// No-flash theme boot: apply saved / preferred theme before first paint.
+	(function () {
+		try {
+			var saved = localStorage.getItem("theme");
+			var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			var theme = saved || (prefersDark ? "dark" : "light");
+			document.documentElement.className = theme === "dark" ? "dark-theme" : "light-theme";
+		} catch (e) {}
+	})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px;">Skip to content</a>
+
+<header class="navbar">
+	<div class="navbar-inner">
+		<a class="brand" href="#">
+			<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect fill="currentColor" opacity="0"/><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>
+			ACME
+		</a>
+
+		<nav aria-label="Primary">
+			<ul class="nav-links">
+				<li class="nav-dropdown">
+					<button class="nav-dropdown-trigger" id="featuresTrigger" aria-haspopup="true" aria-expanded="false">
+						Features
+						<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</button>
+					<div class="nav-dropdown-panel" id="featuresPanel" role="menu">
+						<div class="dropdown-item" role="menuitem">
+							<span class="icon icon-orange"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 3 4 14h7l-1 7 9-11h-7l1-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+							<div><h4>Autoscaling</h4><p>ACME scales apps to meet user demand, automagically, based on load.</p></div>
+						</div>
+						<div class="dropdown-item" role="menuitem">
+							<span class="icon icon-purple"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 17 9 11 13 15 21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+							<div><h4>Usage Metrics</h4><p>Real-time metrics to debug issues. Slow query added? We&rsquo;ll show you exactly where.</p></div>
+						</div>
+						<div class="dropdown-item" role="menuitem">
+							<span class="icon icon-blue"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2 4 14h7l-1 8 9-13h-7l1-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+							<div><h4>Production Ready</h4><p>ACME runs on ACME, join us and others serving requests at web scale.</p></div>
+						</div>
+						<div class="dropdown-item" role="menuitem">
+							<span class="icon icon-green"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="6" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="13" width="18" height="6" rx="1.5" stroke="currentColor" stroke-width="2"/></svg></span>
+							<div><h4>+99% Uptime</h4><p>Applications stay on the grid with high availability and high uptime guarantees.</p></div>
+						</div>
+						<div class="dropdown-item" role="menuitem">
+							<span class="icon icon-pink"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+							<div><h4>+Supreme Support</h4><p>Overcome any challenge with a supporting team ready to respond.</p></div>
+						</div>
+					</div>
+				</li>
+				<li><a class="nav-link active" href="#customers">Customers</a></li>
+				<li><a class="nav-link" href="#pricing">Pricing</a></li>
+				<li><a class="nav-link" href="#company">Company</a></li>
+			</ul>
+		</nav>
+
+		<div class="navbar-right">
+			<a class="login-link" href="#">Login</a>
+			<a class="btn btn-primary" href="#">Start free trial</a>
+			<a class="icon-link" href="https://github.com/Siumauricio/landing-template-nextui" target="_blank" rel="noopener" aria-label="View source on GitHub">
+				<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.454-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.607.069-.607 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"/></svg>
+			</a>
+			<button class="theme-switch" id="themeSwitch" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+				<span class="thumb">
+					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+				</span>
+			</button>
+			<button class="nav-toggle" id="mobileOpen" type="button" aria-label="Open menu">
+				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+			</button>
+		</div>
+	</div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay">
+	<div class="mobile-overlay-header">
+		<a class="brand" href="#">
+			<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>
+			ACME
+		</a>
+		<button class="mobile-overlay-close" id="mobileClose" type="button" aria-label="Close menu">
+			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+		</button>
+	</div>
+	<ul class="mobile-overlay-links">
+		<li><a href="#">Features</a></li>
+		<li><a href="#customers">Customers</a></li>
+		<li><a href="#pricing">Pricing</a></li>
+		<li><a href="#company">Company</a></li>
+		<li><span class="mobile-legal">Legal</span></li>
+	</ul>
+	<div class="mobile-overlay-icons">
+		<a class="icon-link" href="https://github.com/Siumauricio/landing-template-nextui" target="_blank" rel="noopener" aria-label="View source on GitHub">
+			<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.454-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.607.069-.607 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"/></svg>
+		</a>
+	</div>
+	<div class="mobile-overlay-footer">
+		<a class="login-link" href="#">Login</a>
+		<a class="btn btn-primary btn-full" href="#">Start free trial</a>
+	</div>
+</div>
+
+<main id="main">
+
+	<!-- Hero -->
+	<section class="hero container">
+		<div class="hero-grid">
+			<div>
+				<h1>The modern landing page for <span class="accent">React developers</span></h1>
+				<p>The easiest way to build React Landing page in seconds. Save time and focus on your project.</p>
+				<form class="hero-form" onsubmit="return false">
+					<input type="email" placeholder="Enter your email address" aria-label="Email address" required />
+					<button class="btn btn-primary" type="submit">Start Free Trial</button>
+				</form>
+				<ul class="trust-badges">
+					<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>No credit card required.</li>
+					<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>14-day free trial.</li>
+					<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Cancel anytime.</li>
+				</ul>
+			</div>
+			<div class="hero-mock">
+				<img src="assets/images/mock.png" alt="Product screenshot placeholder" />
+			</div>
+		</div>
+	</section>
+
+	<!-- Logo cloud -->
+	<section class="section section--first" id="customers">
+		<div class="container center">
+			<h2 class="section-title">Trusted by over 10000+ customers</h2>
+			<p class="section-sub center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<div class="logo-grid">
+				<div class="logo-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>Company 1</div>
+				<div class="logo-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>Company 2</div>
+				<div class="logo-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>Company 3</div>
+				<div class="logo-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>Company 4</div>
+				<div class="logo-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>Company 5</div>
+				<div class="logo-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>Company 6</div>
+				<div class="logo-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>Company 7</div>
+				<div class="logo-item"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>Company 8</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Feature A -->
+	<section class="section">
+		<div class="container">
+			<div class="feature-split">
+				<div>
+					<p class="eyebrow">Awesome Feature</p>
+					<h2 class="section-title">Your title here</h2>
+					<p class="section-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl, nec tincidunt nisl lorem eu nunc. Sed euismod, nisl ut aliquam lacinia,</p>
+					<div class="feature-list">
+						<div class="feature-list-item">
+							<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Your title here</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl,</p>
+						</div>
+						<div class="feature-list-item">
+							<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Your title here</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl,</p>
+						</div>
+						<div class="feature-list-item">
+							<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Your title here</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl,</p>
+						</div>
+					</div>
+				</div>
+				<div class="feature-media">
+					<img src="assets/images/illustration.svg" alt="Illustration of a person working on a laptop" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Feature B -->
+	<section class="section">
+		<div class="container">
+			<div class="feature-split reverse">
+				<div>
+					<p class="eyebrow">Awesome Feature</p>
+					<h2 class="section-title">Your title here</h2>
+					<p class="section-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl, nec tincidunt nisl lorem eu nunc. Sed euismod, nisl ut aliquam lacinia,</p>
+					<div class="feature-b-pairs">
+						<div class="feature-list-item">
+							<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Your title here</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl,</p>
+						</div>
+						<div class="feature-list-item">
+							<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Your title here</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl,</p>
+						</div>
+					</div>
+				</div>
+				<div class="feature-media">
+					<img src="assets/images/illustration.svg" alt="Illustration of a person working on a laptop" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Feature C: card grid -->
+	<section class="section" id="company">
+		<div class="container">
+			<div class="center">
+				<p class="eyebrow">Awesome Feature</p>
+				<h2 class="section-title">Your title here</h2>
+				<p class="section-sub center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl, nec</p>
+			</div>
+			<div class="card-grid">
+				<div class="feature-card">
+					<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Your Title</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl, nec</p>
+				</div>
+				<div class="feature-card">
+					<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Your Title</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl, nec</p>
+				</div>
+				<div class="feature-card">
+					<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Your Title</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl, nec</p>
+				</div>
+				<div class="feature-card">
+					<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Your Title</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl, nec</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Testimonials -->
+	<section class="section">
+		<div class="container">
+			<div class="testimonials-grid">
+				<div>
+					<p class="eyebrow">Awesome Feature</p>
+					<h2 class="section-title">Testimonials</h2>
+					<p class="section-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl, nec tincidunt nisl lorem eu nunc. Sed euismod, nisl ut aliquam lacinia,</p>
+					<a class="btn btn-primary" href="#">Read case studies</a>
+				</div>
+				<div class="testimonial-list">
+					<div class="testimonial-card">
+						<span class="quote-mark">&ldquo;</span>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl,</p>
+						<div class="author"><strong>Jennifer Ford</strong> - CEO at Company</div>
+					</div>
+					<div class="testimonial-card">
+						<span class="quote-mark">&ldquo;</span>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl,</p>
+						<div class="author"><strong>Jennifer Ford</strong> - CEO at Company</div>
+					</div>
+					<div class="testimonial-card">
+						<span class="quote-mark">&ldquo;</span>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet nisl,</p>
+						<div class="author"><strong>Jennifer Ford</strong> - CEO at Company</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Stats -->
+	<section class="section">
+		<div class="container center">
+			<h2 class="section-title">Over 8000+ projects completed</h2>
+			<p class="section-sub center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto provident omnis deleniti temporibus pariatur corporis aperiam</p>
+			<div class="stats-grid">
+				<div><div class="stat-value">$500K+</div><div class="stat-label">Revenue</div></div>
+				<div><div class="stat-value">10+</div><div class="stat-label">Products</div></div>
+				<div><div class="stat-value">$150+</div><div class="stat-label">Components</div></div>
+				<div><div class="stat-value">10+</div><div class="stat-label">Employees</div></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Pricing -->
+	<section class="section" id="pricing">
+		<div class="container">
+			<div class="center">
+				<p class="eyebrow">Awesome Feature</p>
+				<h2 class="section-title">Flexible Plans</h2>
+			</div>
+			<div class="pricing-grid">
+				<div class="pricing-card">
+					<h3>Free</h3>
+					<p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, elit</p>
+					<div class="price">$0<span>/mo</span></div>
+					<a class="btn btn-primary btn-full" href="#">Get Started</a>
+					<ul>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>1 Team Members</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>1 Website</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>1 GB Storage</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>1 TB Transfer</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Email Support</li>
+					</ul>
+				</div>
+				<div class="pricing-card highlight">
+					<h3>Premiun</h3>
+					<p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, elit</p>
+					<div class="price">$19<span>/mo</span></div>
+					<a class="btn btn-primary btn-full" href="#">Get Started</a>
+					<ul>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>5 Team Members</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>5 Website</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>5 GB Storage</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>5 TB Transfer</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Email Support</li>
+					</ul>
+				</div>
+				<div class="pricing-card">
+					<h3>Startup</h3>
+					<p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, elit</p>
+					<div class="price">$99<span>/mo</span></div>
+					<a class="btn btn-primary btn-full" href="#">Get Started</a>
+					<ul>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>30 Team Members</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>30 Website</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>30 GB Storage</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>30 TB Transfer</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Email Support</li>
+					</ul>
+				</div>
+				<div class="pricing-card">
+					<h3>Entreprise</h3>
+					<p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, elit</p>
+					<div class="price">$199<span>/mo</span></div>
+					<a class="btn btn-primary btn-full" href="#">Get Started</a>
+					<ul>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100 Team Members</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100 Website</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100 GB Storage</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100 TB Transfer</li>
+						<li><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Email Support</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="section">
+		<div class="container">
+			<div class="center">
+				<p class="eyebrow">FAQ</p>
+				<h2 class="section-title">You Have Questions?</h2>
+				<p class="section-sub center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet</p>
+			</div>
+			<div class="faq-list">
+				<div class="faq-item">
+					<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Lorem ipsum dolor sit amet, consectetur adipisicing elit?</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet Lorem ipsum dolor sit amet, aliquam lacinia, nisl nisl aliquet aliquet</p>
+					<p>elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet</p>
+				</div>
+				<div class="faq-item">
+					<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Lorem ipsum dolor sit amet, consectetur adipisicing elit?</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet Lorem ipsum dolor sit amet, consectetur adipiscing adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet</p>
+					<p>elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet elit. Sed condimentum, aliquet</p>
+				</div>
+				<div class="faq-item">
+					<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Lorem ipsum dolor sit amet, consectetur adipisicing elit?</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet</p>
+					<p>elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet elit. Sed condimentum, Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet</p>
+				</div>
+				<div class="faq-item">
+					<h3><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m3 8 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Lorem ipsum dolor sit amet, consectetur adipisicing elit?</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+					<p>elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet elit. Sed condimentum, nisl ut aliquam lacinia, nisl nisl aliquet aliquet</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="section cta-section">
+		<div class="container">
+			<h2 class="section-title">Start your free trials</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum, nisl</p>
+			<a class="btn btn-primary" href="#">Button</a>
+		</div>
+	</section>
+
+</main>
+
+<footer class="footer">
+	<div class="container">
+		<div class="footer-grid">
+			<div class="footer-brand">
+				<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg>
+			</div>
+			<div class="footer-col">
+				<h4>Resources</h4>
+				<ul><li><a href="#">First Link</a></li><li><a href="#">Second Link</a></li><li><a href="#">Third Link</a></li><li><a href="#">Forth Link</a></li></ul>
+			</div>
+			<div class="footer-col">
+				<h4>Contact</h4>
+				<ul><li><a href="#">First Link</a></li><li><a href="#">Second Link</a></li><li><a href="#">Third Link</a></li><li><a href="#">Forth Link</a></li></ul>
+			</div>
+			<div class="footer-col">
+				<h4>Legal</h4>
+				<ul><li><a href="#">First Link</a></li><li><a href="#">Second Link</a></li><li><a href="#">Third Link</a></li><li><a href="#">Forth Link</a></li></ul>
+			</div>
+			<div class="footer-col">
+				<h4>Press</h4>
+				<ul><li><a href="#">First Link</a></li><li><a href="#">Second Link</a></li><li><a href="#">Third Link</a></li><li><a href="#">Forth Link</a></li></ul>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="footer-socials">
+				<a href="#" aria-label="Facebook"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg></a>
+				<a href="#" aria-label="Instagram"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg></a>
+				<a href="#" aria-label="Twitter"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg></a>
+				<a href="https://github.com/Siumauricio/landing-template-nextui" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3 3 27h5.2L16 12.6 23.8 27H29L16 3Z" fill="currentColor"/></svg></a>
+			</div>
+			<div class="footer-legal">
+				<a href="#">Terms of Service</a>
+				<a href="#">Privacy Policy</a>
+			</div>
+			<div class="footer-copyright">&copy; Copyright 2021 Acme Inc.</div>
+		</div>
+	</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

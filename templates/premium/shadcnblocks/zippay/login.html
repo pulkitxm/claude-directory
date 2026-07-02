@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sign In — Zippay</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("zippay-theme");
+				if (
+					t === "dark" ||
+					(!t && matchMedia("(prefers-color-scheme: dark)").matches)
+				)
+					document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="icon" href="assets/favicon/favicon.svg">
+		<link rel="stylesheet" href="css/styles.css">
+		<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+		main {
+			flex: 1;
+		}
+		.auth {
+			background: var(--forest);
+			color: #fff;
+			padding: 5rem 0 6rem;
+		}
+		.auth-inner {
+			max-width: 26rem;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.auth-logo {
+			width: 56px;
+			height: 56px;
+			margin: 0 auto 1.5rem;
+		}
+		.auth h1 {
+			font-size: 2rem;
+			font-weight: 700;
+		}
+		.auth .sub {
+			color: rgba(255, 255, 255, 0.7);
+			margin-top: 0.5rem;
+			font-size: 0.95rem;
+		}
+		.auth-form {
+			margin-top: 2.5rem;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			text-align: left;
+		}
+		.btn-oauth {
+			width: 100%;
+			justify-content: center;
+			background: rgba(255, 255, 255, 0.05);
+			color: #fff;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			padding: 0.85rem 1.4rem;
+		}
+		.btn-oauth:hover {
+			background: rgba(255, 255, 255, 0.12);
+		}
+		.btn-oauth img,
+		.btn-oauth svg {
+			width: 18px;
+			height: 18px;
+		}
+		.or {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			color: rgba(255, 255, 255, 0.5);
+			font-size: 0.8rem;
+			margin: 0.5rem 0;
+		}
+		.or::before,
+		.or::after {
+			content: "";
+			flex: 1;
+			height: 1px;
+			background: rgba(255, 255, 255, 0.15);
+		}
+		.auth-form input {
+			width: 100%;
+			padding: 0.85rem 1rem;
+			border-radius: 0.65rem;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			background: rgba(255, 255, 255, 0.06);
+			color: #fff;
+			font: inherit;
+		}
+		.auth-form input::placeholder {
+			color: rgba(255, 255, 255, 0.5);
+		}
+		.auth-form input:focus {
+			outline: 2px solid var(--primary);
+			outline-offset: 0;
+		}
+		.btn-email {
+			width: 100%;
+			justify-content: center;
+			margin-top: 0.5rem;
+			padding: 0.9rem 1.4rem;
+		}
+		.auth-alt {
+			text-align: center;
+			color: rgba(255, 255, 255, 0.7);
+			font-size: 0.9rem;
+			margin-top: 1.5rem;
+		}
+		.auth-alt a {
+			color: #fff;
+			text-decoration: underline;
+			font-weight: 600;
+		}
+		</style>
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="container nav">
+				<a class="brand" href="index.html"
+					><img
+						src="assets/images/layout/logo.svg"
+						alt="Zippay"
+						style="width:auto;height:26px"
+					></a
+				>
+				<nav class="nav-links">
+					<div class="nav-item">
+						<button>
+							Product
+							<svg
+								width="14"
+								height="14"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path d="m6 9 6 6 6-6" />
+							</svg>
+						</button>
+						<div class="dropdown">
+							<a href="feature1.html">Feature 1</a
+							><a href="feature2.html">Feature 2</a>
+						</div>
+					</div>
+					<a href="integrations.html">Integrations</a>
+					<a href="about.html">About us</a>
+					<a href="pricing.html">Pricing</a>
+					<a href="faq.html">FAQ</a>
+					<a href="blog.html">Blog</a>
+					<a href="contact.html">Contact</a>
+				</nav>
+				<div class="nav-actions">
+					<button
+						class="theme-toggle"
+						data-theme-toggle
+						aria-label="Toggle theme"
+					>
+						<svg
+							class="sun"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<circle cx="12" cy="12" r="4" />
+							<path
+								d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+							/>
+						</svg>
+						<svg
+							class="moon"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+						</svg>
+					</button>
+					<a href="login.html" class="btn btn-ghost">Sign In</a>
+					<a href="signup.html" class="btn btn-primary">Get Started</a>
+					<button class="hamburger" data-hamburger aria-label="Menu">
+						<svg
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M3 6h18M3 12h18M3 18h18" />
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div class="mobile-menu" data-mobile-menu>
+				<a href="feature1.html">Feature 1</a
+				><a href="feature2.html">Feature 2</a
+				><a href="integrations.html">Integrations</a
+				><a href="about.html">About us</a><a href="pricing.html">Pricing</a
+				><a href="faq.html">FAQ</a><a href="blog.html">Blog</a
+				><a href="contact.html">Contact</a><a href="login.html">Sign In</a
+				><a href="signup.html" class="btn btn-primary" style="margin-top:.5rem"
+					>Get Started</a
+				>
+			</div>
+		</header>
+
+		<main>
+			<section class="auth">
+				<div class="container">
+					<div class="auth-inner reveal">
+						<img
+							class="auth-logo"
+							src="assets/images/logos/white.svg"
+							alt="Zippay"
+						>
+						<h1>Welcome Back!</h1>
+						<p class="sub">Please enter your details to sign in your account</p>
+						<form class="auth-form" onsubmit="return false">
+							<button type="button" class="btn btn-oauth">
+								<img
+									src="https://www.google.com/favicon.ico"
+									alt=""
+									onerror="this.style.display='none'"
+								>
+								Continue with Google
+							</button>
+							<button type="button" class="btn btn-oauth">
+								<img src="assets/icons/x.svg" alt="">
+								Continue with Twitter
+							</button>
+							<div class="or">OR</div>
+							<input type="email" placeholder="Email" aria-label="Email">
+							<input
+								type="password"
+								placeholder="Password"
+								aria-label="Password"
+							>
+							<button type="submit" class="btn btn-primary btn-email">
+								Continue with Email
+							</button>
+						</form>
+						<p class="auth-alt">
+							Don't have an account? <a href="signup.html">Sign Up</a>
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-brand">
+						<a class="brand" href="index.html"
+							><img
+								src="assets/images/logos/white.svg"
+								alt="Zippay"
+								style="width:auto;height:26px"
+							></a
+						>
+						<p>Zippay Technologies, LLC 2026</p>
+						<p class="follow">Follow us on:</p>
+						<div class="socials">
+							<a href="#"><img src="assets/icons/in.svg" alt=""></a
+							><a href="#"><img src="assets/icons/x.svg" alt=""></a
+							><a href="#"><img src="assets/icons/yt.svg" alt=""></a>
+						</div>
+					</div>
+					<div class="footer-col">
+						<h4>Product</h4>
+						<a href="feature1.html">Feature 1</a
+						><a href="feature2.html">Feature 2</a
+						><a href="integrations.html">Integrations</a>
+					</div>
+					<div class="footer-col">
+						<h4>Company</h4>
+						<a href="about.html">About Us</a><a href="pricing.html">Pricing</a
+						><a href="faq.html">FAQ</a><a href="contact.html">Contatct</a>
+					</div>
+					<div class="footer-col">
+						<h4>Resources</h4>
+						<a href="blog.html">Blog</a><a href="login.html">Sign In</a
+						><a href="signup.html">Sign Up</a>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<a href="privacy.html">Privacy Policy</a
+					><a href="terms.html">Terms of Service</a>
+				</div>
+			</div>
+		</footer>
+		<script src="js/main.js"></script>
+	</body>
+</html>

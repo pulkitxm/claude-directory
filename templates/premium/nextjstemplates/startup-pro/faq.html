@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Page - Startup Pro</title>
+  <script>
+    (function(){
+      var theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .accordion-btn.open .icon {
+      transform: rotate(180deg);
+    }
+    .icon {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:transform 0.3s ease;
+      flex-shrink:0;
+    }
+    .faq-cta {
+      background: var(--bg-alt, #f8fafb);
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .dark .faq-cta {
+      background: var(--bg-alt-dark, #1e2a3a);
+    }
+    .faq-cta h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-heading, #090e34);
+      margin-bottom: 1rem;
+    }
+    .dark .faq-cta h2 {
+      color: #fff;
+    }
+    .faq-cta p {
+      font-size: 1rem;
+      color: var(--text-muted, #637381);
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="assets/images/logo/logo.svg" alt="Startup Pro" id="logo-img">
+    </a>
+    <nav class="nav">
+      <div class="nav-item">
+        <a href="index.html" class="nav-link">Home <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l5 5 5-5"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="index.html">Home Page 1</a>
+          <a href="index-2.html">Home Page 2</a>
+        </div>
+      </div>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="blogs.html" class="nav-link">Blog</a>
+      <a href="docs.html" class="nav-link">Docs</a>
+      <div class="nav-item">
+        <a href="#" class="nav-link">Pages <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l5 5 5-5"/></svg></a>
+        <div class="nav-dropdown pages-dropdown">
+          <a href="about.html">About Page</a>
+          <a href="contact.html">Contact Page</a>
+          <a href="pricing.html">Pricing Page</a>
+          <a href="faq.html">FAQ Page</a>
+          <a href="blogs.html">Blog Grid Page</a>
+          <a href="blogs-2.html">Blog Grid 2 Page</a>
+          <a href="signin.html">Sign In Page</a>
+          <a href="signup.html">Sign Up Page</a>
+          <a href="error.html">Error Page</a>
+        </div>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="signin.html" class="btn btn-outline" style="padding:0.625rem 1.25rem;font-size:0.875rem;">Sign In</a>
+      <a href="signup.html" class="btn btn-primary" style="padding:0.625rem 1.25rem;font-size:0.875rem;">Sign Up</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="mobile-nav" id="mobile-nav">
+      <ul>
+        <li><button class="mobile-nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Home <span>&#9662;</span></button>
+          <div class="mobile-sub"><a href="index.html">Home Page 1</a><a href="index-2.html">Home Page 2</a></div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blogs.html">Blog</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><button class="mobile-nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Pages <span>&#9662;</span></button>
+          <div class="mobile-sub">
+            <a href="about.html">About Page</a>
+            <a href="contact.html">Contact Page</a>
+            <a href="pricing.html">Pricing Page</a>
+            <a href="faq.html">FAQ Page</a>
+            <a href="signin.html">Sign In Page</a>
+            <a href="signup.html">Sign Up Page</a>
+            <a href="error.html">Error Page</a>
+          </div>
+        </li>
+      </ul>
+      <div class="mobile-actions">
+        <a href="signin.html" class="btn btn-outline">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <h1>FAQ Page</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero.</p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span>FAQ Page</span>
+    </nav>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-tag">FAQ</span>
+      <h2>Frequently asked questions</h2>
+      <p>Our user-friendly interface and intuitive dashboards make it easy for you to explore and analyze your data, regardless of your technical expertise.</p>
+    </div>
+
+    <div class="accordion" style="max-width:800px;margin:0 auto;">
+
+      <!-- Item 1 -->
+      <div class="accordion-item">
+        <button class="accordion-btn" type="button">
+          What are startup templates?
+          <span class="icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="6" y1="0" x2="6" y2="12"/>
+              <line x1="0" y1="6" x2="12" y2="6" class="horiz-line"/>
+            </svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <p>Startup templates are pre-designed frameworks or documents that provide a structured starting point for entrepreneurs and business founders. They are designed to help streamline the process of creating essential business materials such as business plans, pitch decks, financial models, and marketing strategies. These templates are typically created by experienced business professionals or investors and are tailored to meet the specific needs of startups.</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="accordion-item">
+        <button class="accordion-btn" type="button">
+          Are startup templates suitable for all types of businesses?
+          <span class="icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="6" y1="0" x2="6" y2="12"/>
+              <line x1="0" y1="6" x2="12" y2="6" class="horiz-line"/>
+            </svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <p>No, startup templates may not be suitable for all types of businesses. While they offer a structured starting point, they are generally designed with specific types of businesses in mind, such as tech startups or small to medium-sized enterprises. Businesses in highly specialized industries, non-profits, or large corporations may find that generic startup templates don't adequately address their unique needs or complexities. It's always important to adapt and customize any template to fit the specific requirements and context of your business.</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="accordion-item">
+        <button class="accordion-btn" type="button">
+          Are startup templates free?
+          <span class="icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="6" y1="0" x2="6" y2="12"/>
+              <line x1="0" y1="6" x2="12" y2="6" class="horiz-line"/>
+            </svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <p>Startup templates can be both free and paid, depending on the source and the level of sophistication of the template. Many websites and platforms offer basic startup templates for free as a way to attract users and provide value. However, more advanced, comprehensive, or specialized templates often come with a price tag. Paid templates are typically crafted by industry experts and may include additional features such as detailed guidance, customizable elements, and customer support.</p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="accordion-item">
+        <button class="accordion-btn" type="button">
+          Can startup templates help secure funding for my business?
+          <span class="icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="6" y1="0" x2="6" y2="12"/>
+              <line x1="0" y1="6" x2="12" y2="6" class="horiz-line"/>
+            </svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <p>Yes, startup templates can play a significant role in helping secure funding for your business. Templates for business plans and pitch decks, in particular, are designed to present your business idea in a clear and professional manner that appeals to investors. A well-crafted business plan template can help you outline your business model, market analysis, financial projections, and growth strategy in a way that demonstrates the viability and potential of your startup to potential investors or lenders.</p>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="accordion-item">
+        <button class="accordion-btn" type="button">
+          Where can I find startup templates?
+          <span class="icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="6" y1="0" x2="6" y2="12"/>
+              <line x1="0" y1="6" x2="12" y2="6" class="horiz-line"/>
+            </svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <p>Startup templates can be found on a variety of online platforms. Some popular sources include Canva, which offers a wide range of design templates including pitch decks and business plans; HubSpot, which provides various business and marketing templates; Score.org, a non-profit that offers free business planning and financial projection templates; and Microsoft Office and Google Docs, both of which offer a variety of business templates. Additionally, many startup-focused websites, blogs, and online communities share templates specifically designed for new businesses.</p>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="accordion-item">
+        <button class="accordion-btn" type="button">
+          Can startup templates be customized?
+          <span class="icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="6" y1="0" x2="6" y2="12"/>
+              <line x1="0" y1="6" x2="12" y2="6" class="horiz-line"/>
+            </svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <p>Yes, most startup templates are designed to be customizable. In fact, customization is a key aspect of using templates effectively. While templates provide a structured framework, they are meant to be adapted to fit the unique aspects of your business. This can involve modifying the content to reflect your specific products or services, adjusting financial models to match your business's numbers, or tailoring the design to align with your brand identity. The degree to which a template can be customized may vary depending on the format and the platform where you found it.</p>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="accordion-item">
+        <button class="accordion-btn" type="button">
+          How do I choose the right startup template?
+          <span class="icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="6" y1="0" x2="6" y2="12"/>
+              <line x1="0" y1="6" x2="12" y2="6" class="horiz-line"/>
+            </svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <p>Choosing the right startup template involves considering several key factors: your industry and business model, as some templates are tailored for specific sectors or types of businesses; your specific goals, such as whether you need a template for fundraising, operational planning, or marketing; the level of detail required, since some templates offer a high-level overview while others go into greater depth; ease of use, especially if you're not particularly tech-savvy; and the reputation and credibility of the source providing the template. It's also advisable to review multiple templates and perhaps even combine elements from different ones to create a comprehensive document tailored to your needs.</p>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="accordion-item">
+        <button class="accordion-btn" type="button">
+          Can I use a startup template if I have already started my business?
+          <span class="icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="6" y1="0" x2="6" y2="12"/>
+              <line x1="0" y1="6" x2="12" y2="6" class="horiz-line"/>
+            </svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <p>Yes, absolutely. Startup templates are not just for businesses in the initial planning stages; they can be incredibly useful even after you have started your business. For instance, if you're looking to secure additional funding, a business plan or pitch deck template can help you present your current status and future plans to investors. Financial model templates can assist in ongoing financial planning and analysis. Marketing strategy templates can help you refine and articulate your marketing efforts. The key is to adapt the template to reflect the current state and future direction of your business.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<div class="faq-cta">
+  <div class="container">
+    <h2>Any questions? Reach out to us right away!</h2>
+    <p>We'll get back to you in 1-2 business days.</p>
+    <a href="contact.html" class="btn btn-primary" style="padding:0.875rem 2rem;font-size:1rem;">Open Support Ticket</a>
+  </div>
+</div>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-text">
+        <h3>Sign Up for More Offers</h3>
+        <p>Subscribe to the newsletter for exclusive deals and updates.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="email" class="form-control" placeholder="Enter your email">
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="assets/images/logo/logo-2.svg" alt="Startup Pro">
+        </div>
+        <p class="footer-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="Facebook">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Twitter">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="YouTube">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#090E34"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Useful Links</h4>
+        <ul class="footer-links">
+          <li><a href="blogs.html">Blog</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">TOS</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support &amp; Help</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html">Open Support Ticket</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Open Support Ticket</h4>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.61);line-height:1.8;margin-bottom:1rem;">Our support team will get back to you ASAP via email.</p>
+        <a href="contact.html" class="btn btn-primary" style="font-size:0.875rem;padding:0.625rem 1.25rem;">Open a Ticket</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Startup Pro. Crafted by <a href="#">Next.js Templates</a>.</p>
+      <ul style="display:flex;gap:1.5rem;list-style:none;">
+        <li><a href="#" style="font-size:0.875rem;color:rgba(255,255,255,0.61);">Privacy Policy</a></li>
+        <li><a href="#" style="font-size:0.875rem;color:rgba(255,255,255,0.61);">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<script>
+(function(){
+  // Theme
+  var htmlEl = document.documentElement;
+  var toggleBtn = document.getElementById('theme-toggle');
+  var logoImg = document.getElementById('logo-img');
+  function updateLogo() {
+    if (logoImg) {
+      logoImg.src = htmlEl.classList.contains('dark')
+        ? 'assets/images/logo/logo-2.svg'
+        : 'assets/images/logo/logo.svg';
+    }
+  }
+  updateLogo();
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      htmlEl.classList.toggle('dark');
+      localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
+      updateLogo();
+    });
+  }
+
+  // Sticky header
+  var header = document.querySelector('.header');
+  if (header) {
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('sticky', window.scrollY > 20);
+    }, {passive: true});
+  }
+
+  // Scroll to top
+  var scrollTopBtn = document.getElementById('scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, {passive: true});
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  }
+
+  // Mobile nav
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (header && !header.contains(e.target)) mobileNav.classList.remove('open');
+    });
+  }
+
+  // Accordion
+  document.querySelectorAll('.accordion-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var body = this.nextElementSibling;
+      var isOpen = this.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.accordion-btn').forEach(function(b) {
+        b.classList.remove('open');
+        b.nextElementSibling.classList.remove('open');
+      });
+      // Open clicked if was closed
+      if (!isOpen) {
+        this.classList.add('open');
+        body.classList.add('open');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

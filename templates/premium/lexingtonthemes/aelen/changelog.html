@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Changelog — Ælen CRM</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		>
+		<style>
+		:root {
+			--white: oklch(95% 0.0187 80.72);
+			--black: oklch(29% 0 0);
+			--orange: oklch(60% 0.1499 37.55);
+			--cyan: oklch(80% 0.0456 250.63);
+			--yellow: oklch(75% 0.1081 64.85);
+			--gray: oklch(83% 0.0018 325.59);
+			--font-sans: "Geist", sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			font-family: var(--font-sans);
+			color: var(--black);
+			background: white;
+		}
+
+		body {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+
+		/* Header */
+		header {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			background: white;
+		}
+
+		/* Hero */
+		.hero {
+			padding-top: 12.5rem;
+			padding-bottom: 0;
+			padding-left: 1rem;
+			padding-right: 1rem;
+			background: white;
+		}
+
+		.hero h1 {
+			font-size: clamp(4rem, 12vw, 12rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1;
+			color: var(--black);
+		}
+
+		.hero p {
+			font-size: clamp(1rem, 2vw, 1.5rem);
+			color: var(--black);
+			opacity: 0.6;
+			margin-top: 1rem;
+			font-weight: 500;
+		}
+
+		.stacked-bars {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			margin-top: 4rem;
+		}
+
+		.bar-2 {
+			height: 2px;
+			background: var(--black);
+		}
+		.bar-4 {
+			height: 4px;
+			background: var(--black);
+		}
+		.bar-8 {
+			height: 8px;
+			background: var(--black);
+		}
+		.bar-12 {
+			height: 12px;
+			background: var(--black);
+		}
+
+		.black-band {
+			display: flex;
+			align-items: center;
+			padding: 2rem;
+			background: var(--black);
+		}
+
+		.black-band span {
+			font-size: clamp(1.2rem, 3vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			color: white;
+		}
+
+		/* Entries section */
+		.entries-section {
+			padding: 2rem 1rem;
+			background: white;
+		}
+
+		.entries-list {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+		}
+
+		.entry {
+			border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+			padding-bottom: 2rem;
+		}
+
+		.entry-inner {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			align-items: start;
+		}
+
+		.entry-date {
+			font-size: clamp(3rem, 7vw, 4.5rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			line-height: 1;
+			color: var(--black);
+		}
+
+		.entry-image {
+			position: relative;
+			width: 100%;
+			aspect-ratio: 16 / 8;
+			overflow: hidden;
+			background: var(--gray);
+		}
+		.entry-image::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: color-mix(in oklab, var(--cyan) 80%, transparent);
+		}
+
+		.entry-title {
+			font-size: clamp(2.5rem, 6vw, 4.5rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			line-height: 1;
+			color: var(--black);
+			margin-top: 1rem;
+		}
+
+		.entry-desc {
+			font-size: clamp(1rem, 2vw, 1.25rem);
+			line-height: 1.5;
+			color: var(--black);
+			font-weight: 500;
+			max-width: 36rem;
+			margin-top: 0.5rem;
+		}
+
+		.entry-link {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 2rem;
+			height: 3.5rem;
+			padding: 0.75rem 1.5rem;
+			font-size: 1.25rem;
+			font-weight: 500;
+			color: white;
+			background: var(--black);
+			border-radius: 0.25rem;
+			text-decoration: none;
+			transition: background 300ms;
+		}
+
+		.entry-link:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+
+		@media (min-width: 1024px) {
+			.entry-inner {
+				grid-template-columns: repeat(3, 1fr);
+			}
+			.entry-date {
+				position: sticky;
+				top: 0;
+				font-size: clamp(3rem, 5vw, 4.5rem);
+			}
+			.entry-body {
+				grid-column: span 2;
+				padding-left: 2rem;
+				border-left: 1px dashed rgba(0, 0, 0, 0.2);
+			}
+		}
+
+		/* Mega menu animation */
+		#megaMenu {
+			transition: opacity 0.2s;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- HEADER -->
+		<header>
+			<div style="max-width:100%;padding:0 1rem;width:100%;background:white;">
+				<div style="padding:0.5rem 0;border-bottom:1px dashed rgba(0,0,0,0.2);">
+					<div
+						style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;width:100%;"
+					>
+						<a
+							href="index.html"
+							style="color:var(--black);text-decoration:none;"
+						>
+							<svg
+								style="height:2rem;"
+								viewBox="0 0 1051 289"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+									fill="currentColor"
+								/>
+							</svg>
+						</a>
+						<div
+							style="display:flex;align-items:center;margin-left:auto;gap:0.5rem;"
+						>
+							<a
+								href="system-overview.html"
+								style="font-weight:600;color:var(--black);text-decoration:none;"
+								>Overview</a
+							>
+							<a
+								href="sign-up.html"
+								style="font-weight:600;color:white;background:var(--black);padding:0.4rem 1rem;border-radius:0.25rem;text-decoration:none;"
+								>Sign up</a
+							>
+							<button
+								id="menuToggle"
+								style="background:var(--black);color:white;border:none;padding:0.4rem;border-radius:0.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;width:2rem;height:2rem;"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									style="width:1.25rem;height:1.25rem;"
+								>
+									<path d="M4 6h16M7 12h13M10 18h10" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				id="megaMenu"
+				style="display:none;position:fixed;inset:0;background:var(--yellow);z-index:9998;padding:1rem;"
+			>
+				<button
+					id="megaMenuClose"
+					style="display:flex;align-items:center;justify-content:center;padding:0.5rem;margin-left:auto;background:white;border:none;border-radius:0.25rem;cursor:pointer;"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						style="width:1.5rem;height:1.5rem;"
+					>
+						<path d="M18 6l-12 12M6 6l12 12" />
+					</svg>
+				</button>
+				<nav
+					style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem;"
+				>
+					<a
+						href="system-overview.html"
+						style="font-size:clamp(2rem,8vw,4rem);font-weight:700;color:white;border-bottom:1px dashed rgba(0,0,0,0.2);padding-bottom:0.5rem;text-decoration:none;"
+						>Overview</a
+					>
+					<a
+						href="blog.html"
+						style="font-size:clamp(2rem,8vw,4rem);font-weight:700;color:white;border-bottom:1px dashed rgba(0,0,0,0.2);padding-bottom:0.5rem;text-decoration:none;"
+						>Blog</a
+					>
+					<a
+						href="changelog.html"
+						style="font-size:clamp(2rem,8vw,4rem);font-weight:700;color:white;border-bottom:1px dashed rgba(0,0,0,0.2);padding-bottom:0.5rem;text-decoration:none;"
+						>Changelog</a
+					>
+					<a
+						href="pricing.html"
+						style="font-size:clamp(2rem,8vw,4rem);font-weight:700;color:white;border-bottom:1px dashed rgba(0,0,0,0.2);padding-bottom:0.5rem;text-decoration:none;"
+						>Pricing</a
+					>
+				</nav>
+				<div
+					style="display:flex;flex-direction:column;gap:0.5rem;margin-top:3rem;"
+				>
+					<div style="height:2px;background:var(--black);"></div>
+					<div style="height:4px;background:var(--black);"></div>
+					<div style="height:8px;background:var(--black);"></div>
+					<div style="height:12px;background:var(--black);"></div>
+					<div
+						style="display:flex;align-items:center;padding:2rem;background:var(--black);"
+					>
+						<span
+							style="font-size:clamp(1.5rem,4vw,3rem);font-weight:700;letter-spacing:-0.02em;color:white;"
+							>Ælen CRM — Copyright Lexington Themes 2026</span
+						>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- HERO -->
+		<section class="hero">
+			<h1>Changelog.</h1>
+			<div class="stacked-bars">
+				<div class="bar-2"></div>
+				<div class="bar-4"></div>
+				<div class="bar-8"></div>
+				<div class="bar-12"></div>
+				<div class="black-band">
+					<span>Stay updated.</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- CHANGELOG ENTRIES -->
+		<section class="entries-section">
+			<div class="entries-list">
+				<!-- Entry 1 -->
+				<article class="entry">
+					<div class="entry-inner">
+						<span class="entry-date">May 22, 2025</span>
+						<div class="entry-body">
+							<div class="entry-image"></div>
+							<h2 class="entry-title">Layer 2 Scaling with Sync is Here</h2>
+							<p class="entry-desc">
+								Experience lightning-fast, low-cost transactions with our new
+								zkSync integration. Reduce gas fees and enhance scalability
+								while maintaining Ethereum’s security.
+							</p>
+							<a
+								href="changelog-detail.html"
+								class="entry-link"
+								title="Layer 2 Scaling with Sync is Here"
+								aria-label="Layer 2 Scaling with Sync is Here"
+								>Read further</a
+							>
+						</div>
+					</div>
+				</article>
+
+				<!-- Entry 2 -->
+				<article class="entry">
+					<div class="entry-inner">
+						<span class="entry-date">May 21, 2025</span>
+						<div class="entry-body">
+							<div class="entry-image"></div>
+							<h2 class="entry-title">
+								Automate Your Smart Contracts with Ease
+							</h2>
+							<p class="entry-desc">
+								Introducing smart contract automation—streamline your
+								decentralized workflows with automated execution and
+								gas-optimized transactions. Take full control of your on-chain
+								operations with next-gen efficiency.
+							</p>
+							<a
+								href="changelog-detail.html"
+								class="entry-link"
+								title="Automate Your Smart Contracts with Ease"
+								aria-label="Automate Your Smart Contracts with Ease"
+								>Read further</a
+							>
+						</div>
+					</div>
+				</article>
+
+				<!-- Entry 3 -->
+				<article class="entry">
+					<div class="entry-inner">
+						<span class="entry-date">May 20, 2025</span>
+						<div class="entry-body">
+							<div class="entry-image"></div>
+							<h2 class="entry-title">
+								Introducing the Decentralized Dashboard
+							</h2>
+							<p class="entry-desc">
+								Experience the future of decentralized dashboards—offering
+								intuitive navigation, enhanced security, and seamless access to
+								on-chain data. Discover how our latest update empowers users
+								with full control over their digital assets and workflows.
+							</p>
+							<a
+								href="changelog-detail.html"
+								class="entry-link"
+								title="Introducing the Decentralized Dashboard"
+								aria-label="Introducing the Decentralized Dashboard"
+								>Read further</a
+							>
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer style="overflow:hidden;">
+			<div
+				style="max-width:100%;padding:0 1rem;width:100%;padding-top:12rem;padding-bottom:1rem;"
+			>
+				<svg
+					style="color:var(--black);width:100%;"
+					viewBox="0 0 1051 289"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+						fill="currentColor"
+					/>
+				</svg>
+				<div
+					style="display:flex;flex-direction:column;gap:0.5rem;width:100%;margin-top:0.25rem;"
+				>
+					<div style="height:2px;background:var(--black);"></div>
+					<div style="height:4px;background:var(--black);"></div>
+					<div style="height:8px;background:var(--black);"></div>
+					<div style="height:12px;background:var(--black);"></div>
+					<div
+						style="display:flex;align-items:center;padding:2rem;background:var(--black);"
+					>
+						<span
+							style="font-size:clamp(1.2rem,3vw,3rem);font-weight:700;letter-spacing:-0.02em;color:white;"
+							>⊙ Copyright Lexington Themes 2026</span
+						>
+					</div>
+				</div>
+				<div style="display:flex;flex-wrap:wrap;margin-top:1rem;gap:1rem;">
+					<a
+						href="system-overview.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Overview</a
+					>
+					<a
+						href="about.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>About</a
+					>
+					<a
+						href="about.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Careers</a
+					>
+					<a
+						href="contact.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Contact</a
+					>
+					<a
+						href="blog.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Blog</a
+					>
+					<a
+						href="changelog.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Changelog</a
+					>
+					<a
+						href="pricing.html"
+						style="font-weight:700;color:var(--black);border-bottom:1px dashed rgba(0,0,0,0.2);text-decoration:none;"
+						>Pricing</a
+					>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		const toggle = document.getElementById("menuToggle");
+		const menu = document.getElementById("megaMenu");
+		const close = document.getElementById("megaMenuClose");
+
+		toggle.addEventListener("click", () => {
+			menu.style.display = "block";
+			document.body.style.overflow = "hidden";
+		});
+
+		close.addEventListener("click", () => {
+			menu.style.display = "none";
+			document.body.style.overflow = "";
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && menu.style.display === "block") {
+				menu.style.display = "none";
+				document.body.style.overflow = "";
+			}
+		});
+		</script>
+	</body>
+</html>

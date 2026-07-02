@@ -1,5 +1,7 @@
 # Animated Shader Hero — WebGL2 Ember Field Hero Section (React + TypeScript + WebGL2 + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport hero section backed by a live WebGL2 fragment shader rendering a drifting fractal ember field by Matthias Hurrle ([@atzedent](https://twitter.com/atzedent)) that reacts to pointer drags. The reusable `Hero` component accepts `trustBadge`, `headline`, `subtitle`, and `buttons` props, and pairs with a live uniforms HUD in the corner reporting real-time `time`, `resolution`, `pointerCount`, and FPS — proving it is a live WebGL program rather than a video loop. Built as a drop-in for shadcn + Tailwind CSS + TypeScript projects. Generated with Claude Fable 5.
 
 This project adapts the prompt's "integrate this component into a shadcn/Tailwind/TS

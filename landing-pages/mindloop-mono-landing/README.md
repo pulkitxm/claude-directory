@@ -1,5 +1,7 @@
 # Mindloop — Dark Monochrome Newsletter Landing Page (React + Vite + Tailwind CSS + Framer Motion)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A pure-black (#000) monochrome landing page for Mindloop, a newsletter and content platform, where white typography does the talking — Inter for structure and Instrument Serif italics for accent words. The seven-section page flows through a fixed glass navbar, a full-viewport MP4 hero with email capture, an AI-platform awareness section, a scroll-driven word-by-word opacity reveal, a solution feature grid with a 3:1 video panel, an HLS-streamed CTA section via hls.js (with native Safari fallback), and a minimal footer — with Framer Motion entrances and a liquid-glass CSS border effect throughout. Generated with Claude Fable 5.
 
 ## Stack

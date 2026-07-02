@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Terms — Ælen CRM</title>
+		<meta
+			name="description"
+			content="All the terms that you agree to when you sign up for a Lexington product."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		>
+		<style>
+		:root {
+			--white: oklch(95% 0.0187 80.72);
+			--black: oklch(29% 0 0);
+			--orange: oklch(60% 0.1499 37.55);
+			--cyan: oklch(80% 0.0456 250.63);
+			--yellow: oklch(75% 0.1081 64.85);
+			--gray: oklch(83% 0.0018 325.59);
+			--font-sans: "Geist", sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: var(--font-sans);
+			background: white;
+			color: var(--black);
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		/* ── HEADER ── */
+		header {
+			background: white;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			height: 49px;
+			display: flex;
+			align-items: center;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		.header-inner {
+			width: 100%;
+			padding: 0 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.header-logo svg {
+			height: 32px;
+		}
+		.header-logo {
+			color: var(--black);
+			transition: color 300ms;
+		}
+		.header-logo:hover {
+			color: var(--orange);
+		}
+
+		.header-right {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin-left: auto;
+		}
+		.nav-link {
+			font-weight: 600;
+			color: var(--black);
+			transition: opacity 300ms;
+		}
+		.nav-link:hover {
+			opacity: 0.7;
+		}
+
+		.btn-signup {
+			background: var(--black);
+			color: white;
+			font-weight: 600;
+			padding: 8px 16px;
+			border: none;
+			cursor: pointer;
+			font-family: var(--font-sans);
+			font-size: 0.875rem;
+			transition: background 300ms;
+			display: inline-flex;
+			align-items: center;
+		}
+		.btn-signup:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+
+		.hamburger {
+			display: none;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 4px;
+			color: var(--black);
+		}
+		.mobile-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: white;
+			z-index: 200;
+			flex-direction: column;
+			padding: 1rem;
+		}
+		.mobile-overlay.active {
+			display: flex;
+		}
+		.mobile-overlay-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 2rem;
+		}
+		.mobile-nav {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+		.mobile-nav a {
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+		.close-menu {
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		/* ── LEGAL HERO ── */
+		.legal-hero {
+			padding-top: 200px;
+			padding-bottom: 0.5rem;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		.legal-hero h1 {
+			font-size: clamp(3.75rem, 13vw, 12rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1;
+		}
+		.stacked-bars {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0.5rem;
+		}
+		.stacked-bars div {
+			width: 100%;
+			background: var(--black);
+		}
+
+		.updated-band {
+			background: var(--black);
+			padding: 2rem;
+			display: flex;
+			align-items: center;
+		}
+		.updated-band span {
+			color: white;
+			font-size: clamp(1.875rem, 4vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+		}
+
+		.breadcrumb-band {
+			background: var(--black);
+			padding: 2rem;
+			margin-top: 0.5rem;
+		}
+		.breadcrumb-band ol {
+			list-style: none;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.875rem;
+		}
+		.breadcrumb-band a,
+		.breadcrumb-band span {
+			color: white;
+			font-weight: 500;
+		}
+		.breadcrumb-band svg {
+			width: 16px;
+			height: 16px;
+			color: white;
+		}
+
+		/* ── PROSE BODY ── */
+		.prose-block {
+			background: var(--orange);
+			padding: 6rem 2rem;
+			margin-top: 0.5rem;
+		}
+		.prose {
+			max-width: 36rem;
+			margin: 0 auto;
+			color: white;
+		}
+		.prose h1 {
+			font-size: clamp(1.75rem, 5vw, 2.75rem);
+			font-weight: 600;
+			color: var(--black);
+			letter-spacing: -0.02em;
+			line-height: 1.1;
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
+		.prose h2 {
+			font-size: clamp(1.5rem, 4vw, 2rem);
+			font-weight: 600;
+			color: var(--black);
+			letter-spacing: -0.01em;
+			line-height: 1.15;
+			margin-top: 2.5rem;
+			margin-bottom: 1rem;
+		}
+		.prose > h1:first-child,
+		.prose > h2:first-child {
+			margin-top: 0;
+		}
+		.prose p {
+			font-size: 1rem;
+			line-height: 1.75;
+			margin-bottom: 1.25rem;
+		}
+		.prose strong {
+			color: var(--black);
+			font-weight: 700;
+		}
+		.prose a {
+			color: var(--black);
+			font-weight: 600;
+			text-decoration: underline;
+			text-decoration-style: dashed;
+			text-underline-offset: 3px;
+		}
+		.prose ol,
+		.prose ul {
+			margin: 0 0 1.25rem 1.25rem;
+			padding: 0;
+		}
+		.prose li {
+			font-size: 1rem;
+			line-height: 1.75;
+			margin-bottom: 0.75rem;
+		}
+		.prose li::marker {
+			color: white;
+		}
+		.prose ul li {
+			margin-bottom: 0.5rem;
+		}
+
+		/* ── FOOTER ── */
+		footer {
+			margin-top: auto;
+			overflow: hidden;
+		}
+		.footer-inner {
+			padding: 12rem 1rem 1rem;
+		}
+		.footer-top-wordmark svg {
+			width: 100%;
+			height: auto;
+			color: var(--black);
+			display: block;
+		}
+		.footer-dividers {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0.25rem;
+		}
+		.footer-dividers div {
+			width: 100%;
+			background: var(--black);
+		}
+		.footer-copy-band {
+			background: var(--black);
+			padding: 2rem;
+			display: flex;
+			align-items: center;
+		}
+		.footer-copy-band span {
+			color: white;
+			font-size: clamp(1.875rem, 4vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+		}
+		.footer-links {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			margin-top: 1rem;
+		}
+		.footer-links a {
+			font-size: 1rem;
+			font-weight: 700;
+			color: var(--black);
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			transition: color 300ms;
+		}
+		.footer-links a:hover {
+			color: var(--orange);
+		}
+
+		@media (max-width: 768px) {
+			.hamburger {
+				display: flex;
+			}
+			.header-right .nav-link,
+			.header-right .btn-signup {
+				display: none;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- MOBILE OVERLAY -->
+		<div class="mobile-overlay" id="mobileMenu">
+			<div class="mobile-overlay-header">
+				<a href="index.html" style="color:var(--black)">
+					<svg
+						style="height:32px"
+						viewBox="0 0 1051 289"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</a>
+				<button class="close-menu" id="closeMenu" aria-label="Close menu">
+					✕
+				</button>
+			</div>
+			<nav class="mobile-nav">
+				<a href="system-overview.html">Overview</a>
+				<a href="about.html">About</a>
+				<a href="contact.html">Contact</a>
+				<a href="integrations.html">Integrations</a>
+			</nav>
+		</div>
+
+		<!-- HEADER -->
+		<header>
+			<div class="header-inner">
+				<a href="index.html" class="header-logo">
+					<svg
+						style="height:32px"
+						viewBox="0 0 1051 289"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</a>
+				<div class="header-right">
+					<a href="system-overview.html" class="nav-link">Overview</a>
+					<a href="sign-up.html" class="btn-signup">Sign up</a>
+					<button class="hamburger" id="menuToggle" aria-label="Open menu">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							style="width:20px;height:20px"
+						>
+							<line x1="3" y1="6" x2="21" y2="6" />
+							<line x1="3" y1="12" x2="21" y2="12" />
+							<line x1="3" y1="18" x2="21" y2="18" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<main class="grow">
+			<section class="legal-hero">
+				<h1>Terms</h1>
+				<div class="stacked-bars">
+					<div style="height:2px"></div>
+					<div style="height:4px"></div>
+					<div style="height:8px"></div>
+					<div style="height:12px"></div>
+					<div class="updated-band">
+						<span
+							>Last updated on
+							<time datetime="2023-11-30T00:00:00.000Z"
+								>November 30, 2023</time
+							></span
+						>
+					</div>
+				</div>
+
+				<div class="breadcrumb-band">
+					<nav aria-label="Breadcrumb">
+						<ol>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M9 6l6 6l-6 6" />
+								</svg>
+							</li>
+							<li><span>Terms</span></li>
+						</ol>
+					</nav>
+				</div>
+
+				<div class="prose-block">
+					<div class="prose">
+						<h2
+							id="all-the-terms-that-you-agree-to-when-you-sign-up-for-a-lexington-product"
+						>
+							All the terms that you agree to when you sign up for a Lexington
+							product.
+						</h2>
+						<p>
+							From everyone at Lexington, thank you for using our products! We
+							build them to help you do your best work. There are millions of
+							people using Lexington products every day. Because we don’t know
+							every one of our customers personally, we have to put in place
+							some Terms of Service to help keep the ship afloat.
+						</p>
+						<p>
+							When we say “Company”, “we”, “our”, or “us” in this document, we
+							are referring to <a href="#_">Lexington LLC</a>. We spun off
+							Highrise HQ, LLC in the past, but it has since rejoined Lexington
+							LLC.
+						</p>
+						<p>
+							When we say “Services”, we mean our websites, including
+							Lexington.com, hey.com, and Lexington.com, and any product created
+							and maintained by Lexington LLC. That includes Lexington (all
+							versions), HEY, Highrise, Campfire, Backpack, Ta-da List, and
+							Writeboard, whether delivered within a web browser, desktop
+							application, mobile application, or another format.
+						</p>
+						<p>
+							When we say “You” or “your”, we are referring to the people or
+							organizations that own an account with one or more of our
+							Services. We have specific ownership policies for our products:
+							<a href="#_">Lexington 4</a>, <a href="#_">Lexington 2</a>,
+							<a href="#_">Lexington Classic</a>,
+							<a href="#_">HEY for Domains</a>, <a href="#_">Highrise</a>,
+							<a href="#_">Campfire</a>
+							and <a href="#_">Backpack</a>.
+						</p>
+						<p>
+							We may update these Terms of Service (“Terms”) in the future. You
+							can track all changes made since mid-2018
+							<a href="#_">on GitHub</a>. Typically these changes have been to
+							clarify some of these terms by linking to an expanded related
+							policy. Whenever we make a significant change to our policies, we
+							will refresh the date at the top of this page and take any other
+							appropriate steps to notify account holders.
+						</p>
+						<p>
+							When you use our Services, now or in the future, you are agreeing
+							to the latest Terms. There may be times where we do not exercise
+							or enforce a right or provision of the Terms; however, that does
+							not mean we are waiving that right or provision.
+							<strong
+								>These Terms do contain a limitation of our liability.</strong
+							>
+						</p>
+						<p>
+							If you violate any of the Terms, we may terminate your account.
+							That’s a broad statement and it means you need to place a lot of
+							trust in us. We do our best to deserve that trust by being open
+							about <a href="#_">who we are</a>, <a href="#_">how we work</a>,
+							and keeping an open door to <a href="#_">your feedback</a>.
+						</p>
+						<h2 id="account-terms">Account Terms</h2>
+						<ol>
+							<li>
+								You are responsible for maintaining the security of your account
+								and password and for ensuring that any of your users do the
+								same. The Company cannot and will not be liable for any loss or
+								damage from your failure to comply with this security
+								obligation. We recommend all users set up
+								<a href="#_">two-factor authentication</a>
+								for added security. In some of our Services, we may require it.
+							</li>
+							<li>
+								You may not use the Services for any purpose outlined in our
+								<a href="#_">Use Restrictions policy</a>, and you may not permit
+								any of your users to do so, either.
+							</li>
+							<li>
+								You are responsible for all content posted to and activity that
+								occurs under your account, including content posted by and
+								activity of any users in your account.
+							</li>
+							<li>
+								You must be a human. Accounts registered by “bots” or other
+								automated methods are not permitted.
+							</li>
+						</ol>
+						<h2 id="payment-refunds-and-plan-changes">
+							Payment, Refunds, and Plan Changes
+						</h2>
+						<ol>
+							<li>
+								If you are using a free version of one of our Services, it is
+								really free: we do not ask you for your credit card and — just
+								like for customers who pay for our Services — we do not sell
+								your data.
+							</li>
+							<li>
+								For paid Services that offer a free trial, we explain the length
+								of trial when you sign up. After the trial period, you need to
+								pay in advance to keep using the Service. If you do not pay, we
+								will freeze your account and it will be inaccessible until you
+								make payment. If your account has been frozen for a while, we
+								will queue it up for auto-cancellation. See our
+								<a href="#_">Cancellation policy</a>
+								for more details.
+							</li>
+							<li>
+								If you are upgrading from a free plan to a paid plan, we will
+								charge your card immediately and your billing cycle starts on
+								the day of upgrade. For other upgrades or downgrades in plan
+								level, the new rate starts from the next billing cycle.
+							</li>
+							<li>
+								All fees are exclusive of all taxes, levies, or duties imposed
+								by taxing authorities. Where required, we will collect those
+								taxes on behalf of the taxing authority and remit those taxes to
+								taxing authorities. See our <a href="#_">Taxes policy</a> for
+								more details. Otherwise, you are responsible for payment of all
+								taxes, levies, or duties.
+							</li>
+							<li>
+								We process refunds according to our
+								<a href="#_">Fair Refund policy</a>.
+							</li>
+						</ol>
+						<h2 id="cancellation-and-termination">
+							Cancellation and Termination
+						</h2>
+						<ol>
+							<li>
+								You are solely responsible for properly canceling your account.
+								Within each of our Services, we provide a simple
+								no-questions-asked cancellation link. You can find instructions
+								for how to cancel your account in our
+								<a href="#_">Cancellation policy</a>. An email or phone request
+								to cancel your account is not automatically considered
+								cancellation. If you need help canceling your account, you can
+								always <a href="#_">contact our Support team</a>.
+							</li>
+							<li>
+								All of your content will be inaccessible from the Services
+								immediately upon account cancellation. Within 30 days, all
+								content will be permanently deleted from active systems and
+								logs. Within 60 days, all content will be permanently deleted
+								from our backups. We cannot recover this information once it has
+								been permanently deleted. If you want to export any data before
+								your account is canceled, we‘ve provided instructions for
+								<a href="#_">HEY</a>, <a href="#_">Lexington 4</a>,
+								<a href="#_">Lexington 2</a>,
+								<a href="#_">Lexington Classic</a>, <a href="#_">Highrise</a>,
+								<a href="#_">Campfire</a>, and <a href="#_">Backpack</a>.
+							</li>
+							<li>
+								If you cancel the Service before the end of your current paid up
+								month, your cancellation will take effect immediately, and you
+								will not be charged again. We do not automatically prorate
+								unused time in the last billing cycle. See our
+								<a href="#_">Fair Refund policy</a>
+								for more details.
+							</li>
+							<li>
+								We have the right to suspend or terminate your account and
+								refuse any and all current or future use of our Services for any
+								reason at any time. Suspension means you and any other users on
+								your account will not be able to access the account or any
+								content in the account. Termination will furthermore result in
+								the deletion of your account or your access to your account, and
+								the forfeiture and relinquishment of all content in your
+								account. We also reserve the right to refuse the use of the
+								Services to anyone for any reason at any time. We have this
+								clause because statistically speaking, out of the hundreds of
+								thousands of accounts on our Services, there is at least one
+								doing something nefarious. There are some things we staunchly
+								stand against and this clause is how we exercise that stance.
+								For more details, see our
+								<a href="#_">Use Restrictions policy</a>.
+							</li>
+							<li>
+								Verbal, physical, written or other abuse (including threats of
+								abuse or retribution) of a Company employee or officer will
+								result in immediate account termination.
+							</li>
+						</ol>
+						<h2 id="modifications-to-the-service-and-prices">
+							Modifications to the Service and Prices
+						</h2>
+						<ol>
+							<li>
+								We make a promise to our customers to support our Services
+								<a href="#_">until the end of the Internet</a>. That means when
+								it comes to security, privacy, and customer support, we will
+								continue to maintain any legacy Services. Sometimes it becomes
+								technically impossible to continue a feature or we redesign a
+								part of our Services because we think it could be better or we
+								decide to close new signups of a product. We reserve the right
+								at any time to modify or discontinue, temporarily or
+								permanently, any part of our Services with or without notice.
+							</li>
+							<li>
+								Sometimes we change the pricing structure for our products. When
+								we do that, we tend to exempt existing customers from those
+								changes. However, we may choose to change the prices for
+								existing customers. If we do so, we will give at least 30 days
+								notice and will notify you via the email address on record. We
+								may also post a notice about changes on our websites or the
+								affected Services themselves.
+							</li>
+						</ol>
+						<h2 id="uptime-security-and-privacy">
+							Uptime, Security, and Privacy
+						</h2>
+						<ol>
+							<li>
+								<p>
+									Your use of the Services is at your sole risk. We provide
+									these Services on an “as is” and “as available” basis. We do
+									not offer service-level agreements for most of our Services —
+									here’s <a href="#_">the one exception</a> — but do take uptime
+									of our applications seriously. Visit
+									<a href="#_">https://www.37status.com</a>
+									to see the status of our Services.
+								</p>
+							</li>
+							<li>
+								<p>
+									We reserve the right to temporarily disable your account if
+									your usage significantly exceeds the average usage of other
+									customers of the Services. Of course, we’ll reach out to the
+									account owner before taking any action except in rare cases
+									where the level of use may negatively impact the performance
+									of the Service for other customers.
+								</p>
+							</li>
+							<li>
+								<p>
+									We take many measures to protect and secure your data through
+									backups, redundancies, and encryption. We enforce encryption
+									for data transmission from the public Internet. There are some
+									edge cases where we may send your data through our network
+									unencrypted. Please refer to our
+									<a href="#_">Security Overview</a>
+									for full details and our
+									<a href="#_">Security Response page</a>
+									for how to report a security incident or threat.
+								</p>
+							</li>
+							<li>
+								<p>
+									When you use our Services, you entrust us with your data. We
+									take that trust to heart. You agree that Lexington may process
+									your data as described in our
+									<a href="#_">Privacy Policy</a>
+									and for no other purpose. We as humans can access your data
+									for the following reasons:
+								</p>
+								<ul>
+									<li>
+										<strong>To help you with support requests you make.</strong>
+										We’ll ask for express consent before accessing your account.
+									</li>
+									<li>
+										<strong
+											>On the rare occasions when an error occurs that stops an
+											automated process partway through.</strong
+										>
+										We get automated alerts when such errors occur. When we can
+										fix the issue and restart automated processing without
+										looking at any personal data, we do. In rare cases, we have
+										to look at a minimum amount of personal data to fix the
+										issue. In these rare cases, we aim to fix the root cause to
+										prevent the errors from recurring.
+									</li>
+									<li>
+										<strong>To safeguard Lexington.</strong>
+										We’ll look at logs and metadata as part of our work to
+										ensure the security of your data and the Services as a
+										whole. If necessary, we may also access accounts as part of
+										an <a href="#_">abuse report investigation</a>.
+									</li>
+									<li>
+										<strong>To the extent required by applicable law.</strong>
+										As a US company with all data infrastructure located in the
+										US, we only preserve or share customer data if compelled by
+										a US government authority with a legally binding order or
+										proper request under the Stored Communications Act, or in
+										limited circumstances in the event of an emergency request.
+										If a non-US authority approaches Lexington for assistance,
+										our default stance is to refuse unless the order has been
+										approved by the US government, which compels us to comply
+										through procedures outlined in an established mutual legal
+										assistance treaty or agreement mechanism. If Lexington is
+										audited by a tax authority, we only share the bare minimum
+										billing information needed to complete the audit.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<p>
+									We use third party vendors and hosting partners to provide the
+									necessary hardware, software, networking, storage, and related
+									technology required to run the Services. You can see a list of
+									all subprocessors who handle personal data for
+									<a href="#_">Lexington</a>, <a href="#_">HEY</a>,
+									<a href="#_">Highrise</a>, <a href="#_">Campfire</a>, and
+									<a href="#_">Backpack</a>, as well as a list of
+									<a href="#_">Company processors</a>.
+								</p>
+							</li>
+							<li>
+								<p>
+									Under the California Consumer Privacy Act (“CCPA”), Lexington
+									is a “service provider”, not a “business” or “third party”,
+									with respect to your use of the Services. That means we
+									process any data you share with us only for the purpose you
+									signed up for and as described in these Terms, the
+									<a href="#_">Privacy policy</a>, and
+									<a href="#_">other policies</a>. We do not retain, use,
+									disclose, or sell any of that information for any other
+									commercial purposes unless we have your explicit permission.
+									And on the flip-side, you agree to comply with your
+									requirements under the CCPA and not use Lexington’s Services
+									in a way that violates the regulations.
+								</p>
+							</li>
+							<li>
+								<p>
+									These Terms incorporate the
+									<a href="#_">Lexington Data Processing Addendum (“DPA”)</a>
+									when the EU General Data Protection Regulation (“GDPR”) or
+									United Kingdom General Data Protection Regulation (“UK GDPR”)
+									applies to your use of Lexington Services to process Customer
+									Data as defined in the DPA. The DPA linked above supersedes
+									any previously agreed data processing addendum between you and
+									Lexington LLC relating to your use of the Lexington Services.
+								</p>
+							</li>
+						</ol>
+						<h2 id="copyright-and-content-ownership">
+							Copyright and Content Ownership
+						</h2>
+						<ol>
+							<li>
+								All content posted on the Services must comply with U.S.
+								copyright law. We provide details on
+								<a href="#_">how to file a copyright infringement claim</a>.
+							</li>
+							<li>
+								You give us a limited license to use the content posted by you
+								and your users in order to provide the Services to you, but we
+								claim no ownership rights over those materials. All materials
+								you submit to the Services remain yours.
+							</li>
+							<li>
+								We do not pre-screen content, but we reserve the right (but not
+								the obligation) in our sole discretion to refuse or remove any
+								content that is available via the Service.
+							</li>
+							<li>
+								The Company or its licensors own all right, title, and interest
+								in and to the Services, including all intellectual property
+								rights therein, and you obtain no ownership rights in the
+								Services as a result of your use. You may not duplicate, copy,
+								or reuse any portion of the HTML, CSS, JavaScript, or visual
+								design elements without express written permission from the
+								Company. You must request permission to use the Company’s logos
+								or any Service logos for promotional purposes. Please
+								<a href="#_">email us</a>
+								requests to use logos. We reserve the right to rescind any
+								permissions if you violate these Terms.
+							</li>
+							<li>
+								You agree not to reproduce, duplicate, copy, sell, resell or
+								exploit any portion of the Services, use of the Services, or
+								access to the Services without the express written permission of
+								the Company.
+							</li>
+						</ol>
+						<h2 id="features-and-bugs">Features and Bugs</h2>
+						<p>
+							We design our Services with care, based on our own experience and
+							the experiences of customers who share their time and feedback.
+							However, there is no such thing as a service that pleases
+							everybody. We make no guarantees that our Services will meet your
+							specific requirements or expectations.
+						</p>
+						<p>
+							We also test all of our features extensively before shipping them.
+							As with any software, our Services inevitably have some bugs. We
+							track the bugs reported to us and work through priority ones,
+							especially any related to security or privacy. Not all reported
+							bugs will get fixed and we don’t guarantee completely error-free
+							Services.
+						</p>
+						<h2 id="services-adaptations-and-api-terms">
+							Services Adaptations and API Terms
+						</h2>
+						<p>
+							We offer Application Program Interfaces (“API”s) for some of our
+							Services (currently Lexington, Highrise, Campfire, and Backpack).
+							Any use of the API, including through a third-party product that
+							accesses the Services, is bound by these Terms plus the following
+							specific terms:
+						</p>
+						<ol>
+							<li>
+								You expressly understand and agree that we are not liable for
+								any damages or losses resulting from your use of the API or
+								third-party products that access data via the API.
+							</li>
+							<li>
+								Third parties may not access and employ the API if the
+								functionality is part of an application that remotely records,
+								monitors, or reports a Service user’s activity
+								<em>other than time tracking</em>, both inside and outside the
+								applications. The Company, in its sole discretion, will
+								determine if an integration service violates this bylaw. A third
+								party that has built and deployed an integration for the purpose
+								of remote user surveillance will be required to remove that
+								integration.
+							</li>
+							<li>
+								Abuse or excessively frequent requests to the Services via the
+								API may result in the temporary or permanent suspension of your
+								account’s access to the API. The Company, in its sole
+								discretion, will determine abuse or excessive usage of the API.
+								If we need to suspend your account’s access, we will attempt to
+								warn the account owner first. If your API usage could or has
+								caused downtime, we may cut off access without prior notice.
+							</li>
+						</ol>
+						<p>
+							Some third-party providers have created integrations between our
+							Services and theirs. You can find some of those integrations for
+							Lexington at <a href="#_">https://Lexington.com/extras</a> and for
+							Highrise at <a href="#_">https://highrisehq.com/extras</a>. We are
+							not liable or accountable for any of these third-party
+							integrations.
+						</p>
+						<h2 id="liability">Liability</h2>
+						<p>
+							We mention liability throughout these Terms but to put it all in
+							one section:
+						</p>
+						<p>
+							<strong
+								><em
+									>You expressly understand and agree that the Company shall not
+									be liable, in law or in equity, to you or to any third party
+									for any direct, indirect, incidental, lost profits, special,
+									consequential, punitive or exemplary damages, including, but
+									not limited to, damages for loss of profits, goodwill, use,
+									data or other intangible losses (even if the Company has been
+									advised of the possibility of such damages), resulting from:
+									(i) the use or the inability to use the Services; (ii) the
+									cost of procurement of substitute goods and services resulting
+									from any goods, data, information or services purchased or
+									obtained or messages received or transactions entered into
+									through or from the Services; (iii) unauthorized access to or
+									alteration of your transmissions or data; (iv) statements or
+									conduct of any third party on the service; (v) or any other
+									matter relating to these Terms or the Services, whether as a
+									breach of contract, tort (including negligence whether active
+									or passive), or any other theory of liability.</em
+								></strong
+							>
+						</p>
+						<p>
+							In other words: choosing to use our Services does mean you are
+							making a bet on us. If the bet does not work out, that’s on you,
+							not us. We do our darnedest to be as safe a bet as possible
+							through careful management of the business; investments in
+							security, infrastructure, and talent; and in general
+							<a href="#_">giving a damn</a>. If you choose to use our Services,
+							thank you for betting on us.
+						</p>
+						<p>
+							If you have a question about any of these Terms, please
+							<a href="#_">contact our Support team</a>.
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-inner">
+				<div class="footer-top-wordmark">
+					<svg
+						viewBox="0 0 1051 289"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</div>
+				<div class="footer-dividers">
+					<div style="height:2px"></div>
+					<div style="height:4px"></div>
+					<div style="height:8px"></div>
+					<div style="height:12px"></div>
+					<div class="footer-copy-band">
+						<span
+							>ⓒ Copyright Lexington Themes <span id="year">2026</span></span
+						>
+					</div>
+				</div>
+				<div class="footer-links">
+					<a href="system-overview.html">Overview</a>
+					<a href="about.html">About</a>
+					<a href="about.html">Careers</a>
+					<a href="contact.html">Contact</a>
+					<a href="#_">X</a>
+					<a href="#_">Linkedin</a>
+					<a href="#_">Youtube</a>
+					<a href="#_">Instagram</a>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		const menuToggle = document.getElementById("menuToggle");
+		const mobileMenu = document.getElementById("mobileMenu");
+		const closeMenu = document.getElementById("closeMenu");
+		menuToggle?.addEventListener("click", () =>
+			mobileMenu.classList.add("active"),
+		);
+		closeMenu?.addEventListener("click", () =>
+			mobileMenu.classList.remove("active"),
+		);
+		document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+	</body>
+</html>

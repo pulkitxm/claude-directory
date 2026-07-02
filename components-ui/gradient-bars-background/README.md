@@ -1,5 +1,7 @@
 # Gradient Bars — Animated CSS Equalizer Background Component (React + shadcn/ui + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn/ui integration of the `GradientBars` background component: a wall of pulsing vertical CSS `linear-gradient` bars shaped like an equalizer, staggered via `@keyframes scaleY` animation for a rolling-wave ripple — no canvas, no WebGL, no images. The verbatim component lives at `@/components/ui/gradient-bars-background.tsx` and is wrapped in a full "component lab" page with a live hero, an interactive control deck (bar count, color picker, six presets, background color), a copyable usage snippet, a props API table, and integration story for shadcn/ui projects. Ideal as a dramatic animated background for dark-mode landing pages or loading screens. Generated with Claude Fable 5.
 
 ## What's inside

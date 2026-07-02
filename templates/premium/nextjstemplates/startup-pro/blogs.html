@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Grid Page - Startup Pro</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Blog Grid specific styles */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+    @media (max-width: 640px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Recent posts in sidebar */
+    .recent-post {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .recent-post:last-child { border-bottom: none; }
+    .recent-post-img {
+      width: 70px;
+      height: 55px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .recent-post-info { flex: 1; }
+    .recent-post-info h5 {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--color-dark);
+      line-height: 1.4;
+      margin-bottom: 0.25rem;
+      transition: color var(--transition-base);
+    }
+    .recent-post-info h5:hover { color: var(--color-primary); cursor: pointer; }
+    .recent-post-info span {
+      font-size: var(--font-size-xs);
+      color: var(--color-body);
+    }
+
+    /* Category list */
+    .category-list { display: flex; flex-direction: column; gap: 0; }
+    .category-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+      transition: color var(--transition-base);
+      cursor: pointer;
+    }
+    .category-item:last-child { border-bottom: none; }
+    .category-item:hover { color: var(--color-primary); }
+    .category-item span {
+      background: var(--color-gray-light);
+      color: var(--color-body);
+      font-size: var(--font-size-xs);
+      border-radius: var(--radius-full);
+      padding: 0.1rem 0.5rem;
+      font-weight: 600;
+    }
+    .dark .category-item span { background: var(--color-bg-alt); }
+
+    /* Blog card category badge */
+    .cat-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      background: rgba(74, 108, 247, 0.1);
+      color: var(--color-primary);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo/logo.svg" alt="Startup Pro" class="logo-light" />
+        <img src="assets/images/logo/logo-2.svg" alt="Startup Pro" class="logo-dark" style="display:none;" />
+      </a>
+
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">Home
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="index.html">Home Page 1</a>
+            <a href="index-2.html">Home Page 2</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="about.html" class="nav-link">About</a>
+        </div>
+        <div class="nav-item">
+          <a href="blogs.html" class="nav-link">Blog
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="blogs.html">Blog Grid Page</a>
+            <a href="blogs-2.html">Blog Grid 2 Page</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="docs.html" class="nav-link">Docs</a>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Pages
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown pages-dropdown">
+            <a href="about.html">About Page</a>
+            <a href="contact.html">Contact Page</a>
+            <a href="pricing.html">Pricing Page</a>
+            <a href="faq.html">FAQ Page</a>
+            <a href="blogs.html">Blog Grid Page</a>
+            <a href="blogs-2.html">Blog Grid 2 Page</a>
+            <a href="signin.html">Sign In Page</a>
+            <a href="signup.html">Sign Up Page</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+        <a href="signin.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Sign In</a>
+        <a href="signup.html" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Sign Up</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="mobile-nav" id="mobileNav">
+        <ul>
+          <li>
+            <button class="mobile-nav-toggle" onclick="toggleMobileSub(this)">
+              Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="mobile-sub">
+              <a href="index.html">Home Page 1</a>
+              <a href="index-2.html">Home Page 2</a>
+            </div>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li>
+            <button class="mobile-nav-toggle" onclick="toggleMobileSub(this)">
+              Blog <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="mobile-sub">
+              <a href="blogs.html">Blog Grid Page</a>
+              <a href="blogs-2.html">Blog Grid 2 Page</a>
+            </div>
+          </li>
+          <li><a href="docs.html">Docs</a></li>
+          <li>
+            <button class="mobile-nav-toggle" onclick="toggleMobileSub(this)">
+              Pages <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="mobile-sub">
+              <a href="about.html">About Page</a>
+              <a href="contact.html">Contact Page</a>
+              <a href="pricing.html">Pricing Page</a>
+              <a href="faq.html">FAQ Page</a>
+              <a href="signin.html">Sign In Page</a>
+              <a href="signup.html">Sign Up Page</a>
+            </div>
+          </li>
+        </ul>
+        <div class="mobile-actions">
+          <a href="signin.html" class="btn btn-outline">Sign In</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Page Hero ── -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Blog Grid</h1>
+      <p style="color: var(--color-body); font-size: var(--font-size-base); margin-bottom: 1rem;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero.
+      </p>
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Blog Grid Page</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ── Blog Content ── -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="blog-layout">
+
+        <!-- Blog Grid -->
+        <div>
+          <div class="blog-grid">
+
+            <!-- Card 1 -->
+            <article class="blog-card">
+              <a href="blog-detail.html">
+                <img src="assets/images/blog/blog-01.jpg" alt="The MERN Stack" class="blog-card-img" />
+              </a>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="cat-badge">Design</span>
+                </div>
+                <a href="blog-detail.html"><h3>The MERN Stack: A Go-To Choice for Modern Web Development</h3></a>
+                <p>In the world of web development, staying ahead of the curve is crucial. One technology stack that has gained immense popularity is the MERN stack.</p>
+                <div class="blog-card-author">
+                  <img src="assets/images/blog/author-01.png" alt="Musharof Chy" />
+                  <div>
+                    <p class="name">Musharof Chy</p>
+                    <p class="date">Jan 6</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="blog-card">
+              <a href="blog-detail.html">
+                <img src="assets/images/blog/blog-02.jpg" alt="The Power of UI/UX" class="blog-card-img" />
+              </a>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="cat-badge">Computer</span>
+                </div>
+                <a href="blog-detail.html"><h3>The Power of UI/UX: Elevating Digital Experiences</h3></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor.</p>
+                <div class="blog-card-author">
+                  <img src="assets/images/blog/author-01.png" alt="Musharof Chy" />
+                  <div>
+                    <p class="name">Musharof Chy</p>
+                    <p class="date">Jan 6</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="blog-card">
+              <a href="blog-detail.html">
+                <img src="assets/images/blog/blog-03.jpg" alt="Exploring the MERN Stack" class="blog-card-img" />
+              </a>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="cat-badge">Creative</span>
+                </div>
+                <a href="blog-detail.html"><h3>Exploring the MERN Stack: Powering Modern Web Development</h3></a>
+                <p>In the world of web development, staying ahead of the curve is crucial. One technology stack that has gained immense popularity is the MERN stack.</p>
+                <div class="blog-card-author">
+                  <img src="assets/images/blog/author-01.png" alt="Musharof Chy" />
+                  <div>
+                    <p class="name">Musharof Chy</p>
+                    <p class="date">Jan 6</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="blog-card">
+              <a href="blog-detail.html">
+                <img src="assets/images/blog/blog-04.jpg" alt="The Rise of SaaS Startups" class="blog-card-img" />
+              </a>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="cat-badge">Design</span>
+                </div>
+                <a href="blog-detail.html"><h3>The Rise of SaaS Startups: Revolutionizing Business Solutions</h3></a>
+                <p>In today's digital age, startups are constantly pushing the boundaries of innovation, transforming traditional industries.</p>
+                <div class="blog-card-author">
+                  <img src="assets/images/blog/author-02.png" alt="Amrin" />
+                  <div>
+                    <p class="name">Amrin</p>
+                    <p class="date">Jan 6</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="blog-card">
+              <a href="blog-detail.html">
+                <img src="assets/images/blog/blog-05.jpg" alt="UI/UX Design" class="blog-card-img" />
+              </a>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="cat-badge">Computer</span>
+                </div>
+                <a href="blog-detail.html"><h3>UI/UX Design Allows Companies to Establish Brand Identity</h3></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor.</p>
+                <div class="blog-card-author">
+                  <img src="assets/images/blog/author-02.png" alt="Amrin" />
+                  <div>
+                    <p class="name">Amrin</p>
+                    <p class="date">Jan 6</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="blog-card">
+              <a href="blog-detail.html">
+                <img src="assets/images/blog/blog-06.jpg" alt="Best UI Components" class="blog-card-img" />
+              </a>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="cat-badge">Creative</span>
+                </div>
+                <a href="blog-detail.html"><h3>Best UI Components for Modern Websites</h3></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor.</p>
+                <div class="blog-card-author">
+                  <img src="assets/images/blog/author-03.png" alt="Shafiq Hammad" />
+                  <div>
+                    <p class="name">Shafiq Hammad</p>
+                    <p class="date">Jan 6</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 7 -->
+            <article class="blog-card">
+              <a href="blog-detail.html">
+                <img src="assets/images/blog/blog-07.jpg" alt="Improve Coding Speed" class="blog-card-img" />
+              </a>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span class="cat-badge">Design</span>
+                </div>
+                <a href="blog-detail.html"><h3>Tips to Quickly Improve Your Coding Speed in 2025</h3></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor.</p>
+                <div class="blog-card-author">
+                  <img src="assets/images/blog/author-01.png" alt="Musharof Chy" />
+                  <div>
+                    <p class="name">Musharof Chy</p>
+                    <p class="date">Jan 6</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div><!-- /.blog-grid -->
+        </div><!-- /blog main -->
+
+        <!-- Sidebar -->
+        <aside>
+
+          <!-- Search -->
+          <div class="sidebar-widget">
+            <h3>Search</h3>
+            <div class="sidebar-search">
+              <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <input type="text" placeholder="Search here..." />
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="sidebar-widget">
+            <h3>Categories</h3>
+            <ul class="category-list">
+              <li class="category-item">Computer <span>3</span></li>
+              <li class="category-item">Design <span>3</span></li>
+              <li class="category-item">Creative <span>2</span></li>
+              <li class="category-item">Development <span>5</span></li>
+              <li class="category-item">Front-end <span>4</span></li>
+            </ul>
+          </div>
+
+          <!-- Tags -->
+          <div class="sidebar-widget">
+            <h3>Popular Tags</h3>
+            <div class="sidebar-tags">
+              <span class="tag-badge">Design</span>
+              <span class="tag-badge">Computer</span>
+              <span class="tag-badge">Creative</span>
+              <span class="tag-badge">Development</span>
+              <span class="tag-badge">UI/UX</span>
+              <span class="tag-badge">Startup</span>
+              <span class="tag-badge">SaaS</span>
+              <span class="tag-badge">MERN Stack</span>
+            </div>
+          </div>
+
+          <!-- Recent Posts -->
+          <div class="sidebar-widget">
+            <h3>Recent Posts</h3>
+            <a href="blog-detail.html" style="text-decoration:none;">
+              <div class="recent-post">
+                <img src="assets/images/blog/blog-01.jpg" alt="MERN Stack" class="recent-post-img" />
+                <div class="recent-post-info">
+                  <h5>The MERN Stack: A Go-To Choice for Modern Web Development</h5>
+                  <span>Jan 6, 2025</span>
+                </div>
+              </div>
+            </a>
+            <a href="blog-detail.html" style="text-decoration:none;">
+              <div class="recent-post">
+                <img src="assets/images/blog/blog-02.jpg" alt="UI/UX" class="recent-post-img" />
+                <div class="recent-post-info">
+                  <h5>The Power of UI/UX: Elevating Digital Experiences</h5>
+                  <span>Jan 6, 2025</span>
+                </div>
+              </div>
+            </a>
+            <a href="blog-detail.html" style="text-decoration:none;">
+              <div class="recent-post">
+                <img src="assets/images/blog/blog-03.jpg" alt="MERN Stack" class="recent-post-img" />
+                <div class="recent-post-info">
+                  <h5>Exploring the MERN Stack: Powering Modern Web Development</h5>
+                  <span>Jan 6, 2025</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </aside><!-- /sidebar -->
+      </div><!-- /.blog-layout -->
+    </div>
+  </section>
+
+  <!-- ── Newsletter ── -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="newsletter-text">
+          <h3>Subscribe to Our Newsletter</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" class="form-control" placeholder="Enter your email" />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">
+            <img src="assets/images/logo/logo-2.svg" alt="Startup Pro" />
+          </div>
+          <p class="footer-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Useful Links</h4>
+          <ul class="footer-links">
+            <li><a href="blogs.html">Blog</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Terms TOS</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support &amp; Help</h4>
+          <ul class="footer-links">
+            <li><a href="#">Open Support Ticket</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Startup Pro. Crafted by <a href="#">Next.js Templates</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Scroll to Top ── -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script>
+    // Theme toggle
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const logoLight = document.querySelector('.logo-light');
+    const logoDark = document.querySelector('.logo-dark');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        html.classList.remove('light');
+        if (logoLight) logoLight.style.display = 'none';
+        if (logoDark) logoDark.style.display = 'block';
+      } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        if (logoLight) logoLight.style.display = 'block';
+        if (logoDark) logoDark.style.display = 'none';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = html.classList.contains('dark');
+      const newTheme = isDark ? 'light' : 'dark';
+      localStorage.setItem('theme', newTheme);
+      applyTheme(newTheme);
+    });
+
+    // Sticky header
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('sticky', window.scrollY > 50);
+    });
+
+    // Scroll to top
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+
+    function toggleMobileSub(btn) {
+      const sub = btn.nextElementSibling;
+      sub.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

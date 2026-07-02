@@ -1,5 +1,7 @@
 # Shader Lines Showcase — GLSL Line-Field Component Integration for shadcn (Three.js + React + TypeScript)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A shadcn-style component library documentation page that integrates the **Shader Lines** GLSL fragment shader — a generative full-screen line field rendered with Three.js inside a single React component (`ShaderAnimation`). The shader accumulates five offset lines per colour channel, producing warm chromatic streaks at 60 fps. The docs page presents it live, documents the drop-in API, and explains its anatomy for teams adopting it in their own shadcn + Tailwind + TypeScript apps. Generated with Claude Fable 5.
 
 ## Run

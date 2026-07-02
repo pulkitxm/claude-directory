@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Charts | Admin Dashboard - DashSpace</title>
+		<link rel="icon" type="image/png" href="assets/favicon.png">
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		(function () {
+			const s = localStorage.getItem("dashspace-theme");
+			const p = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			if (s === "dark" || (!s && p))
+				document.documentElement.classList.add("dark");
+			else document.documentElement.classList.add("light");
+		})();
+		</script>
+	</head>
+	<body>
+		<div class="sidebar-overlay" id="sidebar-overlay"></div>
+		<div class="app-layout">
+			<!-- SIDEBAR -->
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-logo">
+					<a href="index.html">
+						<img
+							class="logo-light"
+							src="assets/images/logo/logo-black.svg"
+							alt="TailGrids Logo"
+						>
+						<img
+							class="logo-dark"
+							src="assets/images/logo/logo-white.svg"
+							alt="TailGrids Logo"
+						>
+					</a>
+					<button
+						class="sidebar-close-btn"
+						id="sidebar-close-btn"
+						aria-label="Close sidebar"
+					>
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M6.75 17.249L17.2479 6.75111M6.75 6.75098L17.2479 17.2489"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</button>
+				</div>
+				<nav class="sidebar-nav">
+					<div class="nav-section">
+						<h4 class="nav-section-label">MENU</h4>
+						<div class="nav-items">
+							<a href="index.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M10.6504 3.70337C11.4503 3.10369 12.5497 3.10369 13.3496 3.70337L19.8496 8.57837C20.4161 9.00322 20.7499 9.6701 20.75 10.3782V18.4993C20.75 19.7419 19.7426 20.7493 18.5 20.7493H5.5C4.25736 20.7493 3.25 19.7419 3.25 18.4993V10.3782C3.25011 9.6701 3.58392 9.00322 4.15039 8.57837L10.6504 3.70337ZM12.4502 4.90356C12.1836 4.70373 11.8164 4.70373 11.5498 4.90356L5.0498 9.77856C4.86123 9.92015 4.75011 10.1424 4.75 10.3782V18.4993C4.75 18.9135 5.08579 19.2493 5.5 19.2493H11.25V16.2502C11.25 15.836 11.5858 15.5002 12 15.5002C12.4142 15.5002 12.75 15.836 12.75 16.2502V19.2493H18.5C18.9142 19.2493 19.25 18.9135 19.25 18.4993V10.3782C19.2499 10.1424 19.1388 9.92015 18.9502 9.77856L12.4502 4.90356Z"
+											fill="currentColor"
+										/>
+									</svg></span
+								>
+								<span>Dashboard</span>
+							</a>
+							<a href="calendar.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M8.00055 2.75V4.5M16.0005 2.75V4.5M4.00055 9H20.0005M5.50055 20.5H18.5005C19.329 20.5 20.0005 19.8284 20.0005 19V6C20.0005 5.17157 19.329 4.5 18.5005 4.5H5.50055C4.67212 4.5 4.00055 5.17157 4.00055 6V19C4.00055 19.8284 4.67212 20.5 5.50055 20.5Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Calendar</span>
+							</a>
+							<a href="tables.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M3.25 4C3.25 3.58579 3.58579 3.25 4 3.25H20C20.4142 3.25 20.75 3.58579 20.75 4V20C20.75 20.4142 20.4142 20.75 20 20.75H4C3.58579 20.75 3.25 20.4142 3.25 20V4ZM4.75 4.75V9.25H19.25V4.75H4.75ZM4.75 10.75V14.25H19.25V10.75H4.75ZM4.75 15.75V19.25H19.25V15.75H4.75Z"
+											fill="currentColor"
+										/>
+									</svg></span
+								>
+								<span>Tables</span>
+							</a>
+						</div>
+					</div>
+					<div class="nav-section">
+						<h4 class="nav-section-label">FORMS</h4>
+						<div class="nav-items">
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="forms-dropdown"
+							>
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M15.0016 14.5H9.00156M12.0016 17.5H9.00156M5.38583 9.00073C5.45951 8.00297 6.29058 7.24597 7.2911 7.25H16.7121C17.7126 7.24597 18.5437 8.00297 18.6174 9.00073L19.3674 19.0007C19.4475 20.0668 18.6167 20.9866 17.5477 21.0513C17.4831 21.0554 17.4183 21.0553 17.3538 21.0511H6.65012C5.5806 20.9914 4.74714 20.0762 4.80684 19.0067C4.81097 18.9337 4.81913 18.861 4.83125 18.789L5.38583 9.00073ZM8.25156 7.25V5.75C8.25156 4.64543 9.14699 3.75 10.2516 3.75H13.7516C14.8561 3.75 15.7516 4.64543 15.7516 5.75V7.25H8.25156Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Forms</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="forms-dropdown">
+								<a href="#">Form Elements</a><a href="#">Form Layout</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav-section">
+						<h4 class="nav-section-label">PAGES</h4>
+						<div class="nav-items">
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="pages-dropdown"
+							>
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M9 7H15M9 12H15M9 17H12M5 3H19C19.5523 3 20 3.44772 20 4V20C20 20.5523 19.5523 21 19 21H5C4.44772 21 4 20.5523 4 20V4C4 3.44772 4.44772 3 5 3Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Pages</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="pages-dropdown">
+								<a href="#">Blank Page</a><a href="#">404 Page</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav-section">
+						<h4 class="nav-section-label">OTHERS</h4>
+						<div class="nav-items">
+							<a href="profile.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12ZM12 12C8.13401 12 5 15.134 5 19V21H19V19C19 15.134 15.866 12 12 12Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Profile</span>
+							</a>
+							<a href="charts.html" class="nav-item active">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M21.25 17.5H4.75V3.25M8.25 13.5V17.5M12 10V17.5M15.75 6.5V17.5M19.5 3.5V17.5"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Charts</span>
+							</a>
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="auth-dropdown"
+							>
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M12 2C9.23858 2 7 4.23858 7 7V10H5C4.44772 10 4 10.4477 4 11V21C4 21.5523 4.44772 22 5 22H19C19.5523 22 20 21.5523 20 21V11C20 10.4477 19.5523 10 19 10H17V7C17 4.23858 14.7614 2 12 2ZM15.5 10H8.5V7C8.5 5.067 10.067 3.5 12 3.5C13.933 3.5 15.5 5.067 15.5 7V10ZM12 14C12.8284 14 13.5 14.6716 13.5 15.5C13.5 16.3284 12.8284 17 12 17C11.1716 17 10.5 16.3284 10.5 15.5C10.5 14.6716 11.1716 14 12 14Z"
+											fill="currentColor"
+										/>
+									</svg></span
+								>
+								<span>Authentication</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="auth-dropdown">
+								<a href="#">Sign In</a><a href="#">Sign Up</a
+								><a href="#">Reset Password</a>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<div class="sidebar-footer">
+					<div class="upgrade-card">
+						<div>
+							<h4>Pro Plan</h4>
+							<p>Unlock all features</p>
+						</div>
+						<a href="#" class="btn-upgrade">Upgrade Now</a>
+					</div>
+				</div>
+			</aside>
+
+			<div class="main-area">
+				<header class="main-header">
+					<button
+						class="hamburger-btn"
+						id="hamburger-btn"
+						aria-label="Open sidebar"
+					>
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M4 6H20M4 12H20M4 18H20"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+							/>
+						</svg>
+					</button>
+					<div class="header-title">
+						<h1>Charts</h1>
+						<p>View your analytics</p>
+					</div>
+					<div class="header-spacer"></div>
+					<div class="search-bar">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M21 21L16.5 16.5M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+							/>
+						</svg>
+						<input type="text" placeholder="Search...">
+					</div>
+					<div class="header-actions">
+						<button
+							class="icon-btn"
+							id="theme-toggle"
+							aria-label="Toggle theme"
+						></button>
+						<button class="icon-btn" aria-label="Notifications">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M12 22C13.1046 22 14 21.1046 14 20H10C10 21.1046 10.8954 22 12 22ZM18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span class="notif-dot"></span>
+						</button>
+						<button class="user-menu-btn" aria-label="User menu">
+							<img
+								src="assets/images/owner.jpg"
+								alt="Musharof"
+								class="user-avatar"
+							>
+							<span class="user-name">Musharof</span>
+							<svg
+								class="user-chevron"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M6 9L12 15L18 9"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+					</div>
+				</header>
+
+				<main class="content">
+					<!-- Analytics + Sessions (same as dashboard) -->
+					<div class="chart-grid" style="margin-bottom:1.5rem">
+						<div class="card">
+							<div class="card-header">
+								<div>
+									<h3 class="card-title">Analytics</h3>
+									<p class="card-subtitle">Visitor analytics of last 30 days</p>
+								</div>
+								<div class="chart-tabs" id="analytics-tabs">
+									<button class="chart-tab" data-period="12months">
+										12 months
+									</button>
+									<button class="chart-tab active" data-period="30days">
+										30 days
+									</button>
+									<button class="chart-tab" data-period="7days">7 days</button>
+									<button class="chart-tab" data-period="24hours">
+										24 hours
+									</button>
+								</div>
+							</div>
+							<div id="analytics-chart" style="min-height:280px"></div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Sessions</h3>
+								<button class="more-btn">
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<circle cx="12" cy="5" r="1" fill="currentColor" />
+										<circle cx="12" cy="12" r="1" fill="currentColor" />
+										<circle cx="12" cy="19" r="1" fill="currentColor" />
+									</svg>
+								</button>
+							</div>
+							<div
+								id="sessions-chart"
+								style="display:flex;justify-content:center;padding:1rem 0"
+							></div>
+							<div
+								style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1rem"
+								id="sessions-legend"
+							></div>
+						</div>
+					</div>
+
+					<!-- Line Charts Row -->
+					<div
+						style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem"
+					>
+						<div class="card">
+							<h3 class="card-title" style="margin-bottom:1rem">
+								Line Chart 1
+							</h3>
+							<div id="line-chart-1" style="min-height:220px"></div>
+						</div>
+						<div class="card">
+							<h3 class="card-title" style="margin-bottom:1rem">
+								Line Chart 2
+							</h3>
+							<div id="line-chart-2" style="min-height:220px"></div>
+						</div>
+					</div>
+
+					<!-- More Charts Row -->
+					<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+						<div class="card">
+							<h3 class="card-title" style="margin-bottom:1rem">Bar Chart</h3>
+							<div id="bar-chart-2" style="min-height:220px"></div>
+						</div>
+						<div class="card">
+							<h3 class="card-title" style="margin-bottom:1rem">Donut Chart</h3>
+							<div
+								id="donut-chart-2"
+								style="display:flex;justify-content:center;min-height:220px"
+							></div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/apexcharts@3/dist/apexcharts.min.js"
+		></script>
+		<script src="app.js"></script>
+		<script>
+		const analyticsData30 = [
+			165000, 380000, 300000, 195000, 185000, 290000, 190000, 380000, 120000,
+			140000, 130000, 145000, 270000, 165000, 190000, 130000, 210000, 305000,
+			180000, 195000, 105000, 380000, 220000, 280000, 280000, 135000, 280000,
+			285000, 380000, 310000,
+		];
+		const analyticsData7 = [
+			120000, 250000, 180000, 320000, 290000, 210000, 340000,
+		];
+		const analyticsData12 = [
+			280000, 310000, 250000, 380000, 320000, 290000, 340000, 380000, 295000,
+			265000, 310000, 360000,
+		];
+		const analyticsData24 = [
+			12000, 8000, 5000, 4000, 6000, 9000, 15000, 22000, 28000, 32000, 35000,
+			38000, 40000, 42000, 45000, 43000, 41000, 38000, 35000, 30000, 25000,
+			20000, 16000, 13000,
+		];
+
+		function getChartColors() {
+			const isDark = document.documentElement.classList.contains("dark");
+			return {
+				barColor: "#3758f9",
+				gridColor: isDark ? "#111827" : "#e5e7eb",
+				textColor: isDark ? "#6b7280" : "#9ca3af",
+				bgColor: isDark ? "#1f2937" : "#ffffff",
+			};
+		}
+
+		let analyticsChart,
+			sessionsChart,
+			lineChart1,
+			lineChart2,
+			barChart2,
+			donutChart2;
+
+		function createAnalyticsChart(data, categories) {
+			const c = getChartColors();
+			if (analyticsChart) analyticsChart.destroy();
+			analyticsChart = new ApexCharts(
+				document.getElementById("analytics-chart"),
+				{
+					series: [{ name: "Visitors", data }],
+					chart: {
+						type: "bar",
+						height: 280,
+						toolbar: { show: false },
+						background: "transparent",
+					},
+					plotOptions: { bar: { columnWidth: "60%", borderRadius: 3 } },
+					colors: [c.barColor],
+					dataLabels: { enabled: false },
+					grid: { borderColor: c.gridColor, xaxis: { lines: { show: false } } },
+					xaxis: {
+						categories,
+						labels: { style: { colors: c.textColor, fontSize: "11px" } },
+						axisBorder: { show: false },
+						axisTicks: { show: false },
+					},
+					yaxis: {
+						labels: {
+							style: { colors: c.textColor, fontSize: "11px" },
+							formatter: (v) => (v >= 1000 ? Math.round(v / 1000) + "K" : v),
+						},
+					},
+					tooltip: {
+						theme: document.documentElement.classList.contains("dark")
+							? "dark"
+							: "light",
+					},
+				},
+			);
+			analyticsChart.render();
+		}
+
+		function createSessionsChart() {
+			const c = getChartColors();
+			if (sessionsChart) sessionsChart.destroy();
+			sessionsChart = new ApexCharts(
+				document.getElementById("sessions-chart"),
+				{
+					series: [1225, 980, 245],
+					chart: { type: "donut", height: 240, background: "transparent" },
+					colors: ["#3758f9", "#91aeff", "#c7d7ff"],
+					labels: ["Desktop", "Mobile", "Tablet"],
+					plotOptions: {
+						pie: {
+							donut: {
+								size: "72%",
+								labels: {
+									show: true,
+									total: {
+										show: true,
+										label: "Total Sessions",
+										formatter: () => "2,450",
+										fontSize: "14px",
+										fontWeight: "600",
+										color: c.textColor,
+									},
+									value: { show: false },
+								},
+							},
+						},
+					},
+					dataLabels: { enabled: false },
+					legend: { show: false },
+					stroke: { width: 2, colors: [c.bgColor] },
+					tooltip: {
+						theme: document.documentElement.classList.contains("dark")
+							? "dark"
+							: "light",
+					},
+				},
+			);
+			sessionsChart.render();
+			const l = document.getElementById("sessions-legend");
+			if (l)
+				l.innerHTML = [
+					["#3758f9", "Desktop"],
+					["#91aeff", "Mobile"],
+					["#c7d7ff", "Tablet"],
+				]
+					.map(
+						([color, label]) =>
+							`<span style="display:flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--text-muted)"><svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="${color}"/></svg>${label}</span>`,
+					)
+					.join("");
+		}
+
+		const lineData1 = [
+			180, 175, 190, 200, 195, 210, 225, 230, 220, 235, 245, 250,
+		];
+		const lineData2 = [40, 45, 60, 55, 70, 65, 80, 85, 90, 100, 95, 110];
+
+		function createLineChart(id, series) {
+			const c = getChartColors();
+			return new ApexCharts(document.getElementById(id), {
+				series,
+				chart: {
+					type: "area",
+					height: 220,
+					toolbar: { show: false },
+					background: "transparent",
+				},
+				colors: ["#3758f9", "#91aeff"],
+				fill: {
+					type: "gradient",
+					gradient: {
+						shadeIntensity: 1,
+						opacityFrom: 0.3,
+						opacityTo: 0.05,
+						stops: [0, 100],
+					},
+				},
+				dataLabels: { enabled: false },
+				stroke: { curve: "smooth", width: 2 },
+				grid: { borderColor: c.gridColor },
+				xaxis: {
+					categories: [
+						"Jan",
+						"Feb",
+						"Mar",
+						"Apr",
+						"May",
+						"Jun",
+						"Jul",
+						"Aug",
+						"Sep",
+						"Oct",
+						"Nov",
+						"Dec",
+					],
+					labels: { style: { colors: c.textColor, fontSize: "11px" } },
+					axisBorder: { show: false },
+					axisTicks: { show: false },
+				},
+				yaxis: { labels: { style: { colors: c.textColor, fontSize: "11px" } } },
+				tooltip: {
+					theme: document.documentElement.classList.contains("dark")
+						? "dark"
+						: "light",
+				},
+				legend: { show: true },
+			});
+		}
+
+		function updateChartsTheme() {
+			createAnalyticsChart(
+				analyticsData30,
+				Array.from({ length: 30 }, (_, i) => String(i + 1)),
+			);
+			createSessionsChart();
+			if (lineChart1) {
+				lineChart1.destroy();
+				lineChart1 = createLineChart("line-chart-1", [
+					{ name: "Series 1", data: lineData1 },
+					{ name: "Series 2", data: lineData2 },
+				]);
+				lineChart1.render();
+			}
+			if (lineChart2) {
+				lineChart2.destroy();
+				lineChart2 = createLineChart("line-chart-2", [
+					{ name: "Series 1", data: lineData2 },
+					{ name: "Series 2", data: lineData1 },
+				]);
+				lineChart2.render();
+			}
+			if (barChart2) {
+				const c = getChartColors();
+				barChart2.destroy();
+				barChart2 = new ApexCharts(document.getElementById("bar-chart-2"), {
+					series: [
+						{ name: "Sales", data: [44, 55, 57, 56, 61, 58, 63, 60, 66] },
+					],
+					chart: {
+						type: "bar",
+						height: 220,
+						toolbar: { show: false },
+						background: "transparent",
+					},
+					plotOptions: { bar: { columnWidth: "60%", borderRadius: 3 } },
+					colors: ["#3758f9"],
+					dataLabels: { enabled: false },
+					grid: { borderColor: c.gridColor },
+					xaxis: {
+						categories: [
+							"Feb",
+							"Mar",
+							"Apr",
+							"May",
+							"Jun",
+							"Jul",
+							"Aug",
+							"Sep",
+							"Oct",
+						],
+						labels: { style: { colors: c.textColor, fontSize: "11px" } },
+						axisBorder: { show: false },
+						axisTicks: { show: false },
+					},
+					yaxis: {
+						labels: { style: { colors: c.textColor, fontSize: "11px" } },
+					},
+					tooltip: {
+						theme: document.documentElement.classList.contains("dark")
+							? "dark"
+							: "light",
+					},
+				});
+				barChart2.render();
+			}
+			if (donutChart2) {
+				const c = getChartColors();
+				donutChart2.destroy();
+				donutChart2 = new ApexCharts(document.getElementById("donut-chart-2"), {
+					series: [44, 55, 41, 17],
+					chart: { type: "donut", height: 220, background: "transparent" },
+					colors: ["#3758f9", "#5e84fc", "#91aeff", "#c7d7ff"],
+					labels: ["Series A", "Series B", "Series C", "Series D"],
+					dataLabels: { enabled: false },
+					legend: { position: "bottom" },
+					stroke: { width: 2, colors: [c.bgColor] },
+					tooltip: {
+						theme: document.documentElement.classList.contains("dark")
+							? "dark"
+							: "light",
+					},
+				});
+				donutChart2.render();
+			}
+		}
+
+		function getAnalyticsData(period) {
+			switch (period) {
+				case "12months":
+					return {
+						data: analyticsData12,
+						cats: [
+							"Jan",
+							"Feb",
+							"Mar",
+							"Apr",
+							"May",
+							"Jun",
+							"Jul",
+							"Aug",
+							"Sep",
+							"Oct",
+							"Nov",
+							"Dec",
+						],
+					};
+				case "7days":
+					return {
+						data: analyticsData7,
+						cats: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+					};
+				case "24hours":
+					return {
+						data: analyticsData24,
+						cats: Array.from({ length: 24 }, (_, i) => `${i}h`),
+					};
+				default:
+					return {
+						data: analyticsData30,
+						cats: Array.from({ length: 30 }, (_, i) => String(i + 1)),
+					};
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const d = getAnalyticsData("30days");
+			createAnalyticsChart(d.data, d.cats);
+			createSessionsChart();
+
+			lineChart1 = createLineChart("line-chart-1", [
+				{ name: "Series 1", data: lineData1 },
+				{ name: "Series 2", data: lineData2 },
+			]);
+			lineChart1.render();
+
+			lineChart2 = createLineChart("line-chart-2", [
+				{ name: "Series 1", data: lineData2 },
+				{ name: "Series 2", data: lineData1 },
+			]);
+			lineChart2.render();
+
+			const c = getChartColors();
+			barChart2 = new ApexCharts(document.getElementById("bar-chart-2"), {
+				series: [{ name: "Sales", data: [44, 55, 57, 56, 61, 58, 63, 60, 66] }],
+				chart: {
+					type: "bar",
+					height: 220,
+					toolbar: { show: false },
+					background: "transparent",
+				},
+				plotOptions: { bar: { columnWidth: "60%", borderRadius: 3 } },
+				colors: ["#3758f9"],
+				dataLabels: { enabled: false },
+				grid: { borderColor: c.gridColor },
+				xaxis: {
+					categories: [
+						"Feb",
+						"Mar",
+						"Apr",
+						"May",
+						"Jun",
+						"Jul",
+						"Aug",
+						"Sep",
+						"Oct",
+					],
+					labels: { style: { colors: c.textColor, fontSize: "11px" } },
+					axisBorder: { show: false },
+					axisTicks: { show: false },
+				},
+				yaxis: { labels: { style: { colors: c.textColor, fontSize: "11px" } } },
+				tooltip: {
+					theme: document.documentElement.classList.contains("dark")
+						? "dark"
+						: "light",
+				},
+			});
+			barChart2.render();
+
+			donutChart2 = new ApexCharts(document.getElementById("donut-chart-2"), {
+				series: [44, 55, 41, 17],
+				chart: { type: "donut", height: 220, background: "transparent" },
+				colors: ["#3758f9", "#5e84fc", "#91aeff", "#c7d7ff"],
+				labels: ["Series A", "Series B", "Series C", "Series D"],
+				dataLabels: { enabled: false },
+				legend: { position: "bottom" },
+				stroke: { width: 2, colors: [c.bgColor] },
+				tooltip: {
+					theme: document.documentElement.classList.contains("dark")
+						? "dark"
+						: "light",
+				},
+			});
+			donutChart2.render();
+
+			initChartTabs("#analytics-tabs", (period) => {
+				const data = getAnalyticsData(period);
+				createAnalyticsChart(data.data, data.cats);
+			});
+		});
+		</script>
+	</body>
+</html>

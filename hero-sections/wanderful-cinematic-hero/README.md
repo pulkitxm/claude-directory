@@ -1,5 +1,7 @@
 # Wanderful — Cinematic Travel Hero Section (React + TypeScript + GSAP + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport cinematic hero section for a travel brand, **Wanderful**, featuring a fixed looping background video with GSAP-driven mouse parallax drift, a liquid-glass navigation bar, and staggered fade-in headline copy over a pure black canvas. The parallax effect lerps the video position toward the cursor at `0.06` factor per frame via `requestAnimationFrame`, giving an organic depth without any 3D library. Ideal as a high-impact landing hero for travel, lifestyle, or editorial products. Generated with Claude Fable 5.
 
 ## Run

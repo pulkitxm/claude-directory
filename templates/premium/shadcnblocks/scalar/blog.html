@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Blog — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="styles.css">
+		<link rel="icon" href="assets/layout/logo-icon.svg">
+		<style>
+		.blog-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 22px;
+		}
+		.post-card {
+			display: flex;
+			flex-direction: column;
+			padding: 24px;
+			text-decoration: none;
+			color: inherit;
+		}
+		.post-cat {
+			font-size: 12px;
+			font-weight: 600;
+			color: var(--secondary);
+			letter-spacing: 0.01em;
+		}
+		.post-cat.changelog {
+			color: var(--secondary);
+		}
+		.post-title {
+			font-size: 18px;
+			font-weight: 600;
+			margin: 12px 0 8px;
+			color: var(--foreground);
+			line-height: 1.35;
+		}
+		.post-excerpt {
+			font-size: 14px;
+			color: var(--muted-foreground);
+			line-height: 1.6;
+			margin: 0;
+			flex: 1;
+		}
+		.post-foot {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-top: 20px;
+		}
+		.post-foot .meta {
+			display: flex;
+			flex-direction: column;
+		}
+		.post-foot .author {
+			font-size: 13px;
+			font-weight: 500;
+			color: var(--foreground);
+		}
+		.post-foot .date {
+			font-size: 12px;
+			color: var(--muted-foreground);
+		}
+		@media (max-width: 768px) {
+			.blog-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+		</style>
+	</head>
+	<body data-active="Blog" data-prefix="">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<!-- HEADER -->
+			<section
+				class="page-hero frame-pad reveal"
+				style="text-align:left;padding:64px 32px 28px"
+			>
+				<h1 class="page-title-lg">Blog</h1>
+			</section>
+
+			<!-- FILTER + GRID -->
+			<section class="section-divider frame-pad" style="padding:32px 32px 64px">
+				<div
+					class="tabs reveal"
+					data-tabgroup="blog"
+					style="margin-bottom:32px"
+				>
+					<button class="tab active" data-tab="all">All Posts</button>
+					<button class="tab" data-tab="Community">Community</button>
+					<button class="tab" data-tab="Product">Product</button>
+					<button class="tab" data-tab="Guides">Guides</button>
+					<button class="tab" data-tab="Changelog">Changelog</button>
+				</div>
+
+				<div class="blog-grid reveal">
+					<a
+						class="card card-hover post-card"
+						data-tabpanel="blog"
+						data-cat="Product"
+						href="blog/blog-1.html"
+					>
+						<span class="post-cat">Product</span>
+						<h2 class="post-title">Code-first content modeling</h2>
+						<p class="post-excerpt">
+							Explore the advantages of code-first schemas and how Scalar brings
+							structure and flexibility to your stack.
+						</p>
+						<div class="post-foot">
+							<img
+								class="avatar"
+								src="assets/images/blog/authors/robert-austin.webp"
+								width="32"
+								height="32"
+								alt=""
+							>
+							<div class="meta">
+								<span class="author">Rob Austin</span
+								><span class="date">Apr 11, 2025</span>
+							</div>
+						</div>
+					</a>
+					<a
+						class="card card-hover post-card"
+						data-tabpanel="blog"
+						data-cat="Product"
+						href="blog/blog-2.html"
+					>
+						<span class="post-cat">Product</span>
+						<h2 class="post-title">
+							How Scalar generates GraphQL APIs instantly
+						</h2>
+						<p class="post-excerpt">
+							Learn how Scalar turns your content models into ready-to-query
+							GraphQL endpoints — no backend setup required.
+						</p>
+						<div class="post-foot">
+							<img
+								class="avatar"
+								src="assets/images/blog/authors/fedir-davydov.webp"
+								width="32"
+								height="32"
+								alt=""
+							>
+							<div class="meta">
+								<span class="author">Fedir Davydov</span
+								><span class="date">Apr 8, 2025</span>
+							</div>
+						</div>
+					</a>
+					<a
+						class="card card-hover post-card"
+						data-tabpanel="blog"
+						data-cat="Product"
+						href="blog/blog-3.html"
+					>
+						<span class="post-cat">Product</span>
+						<h2 class="post-title">
+							Scaling content teams without slowing down
+						</h2>
+						<p class="post-excerpt">
+							Role-based permissions, draft workflows, and live preview — how
+							Scalar empowers content editors to move fast without breaking
+							things.
+						</p>
+						<div class="post-foot">
+							<img
+								class="avatar"
+								src="assets/images/blog/authors/yassine-zaanouni.webp"
+								width="32"
+								height="32"
+								alt=""
+							>
+							<div class="meta">
+								<span class="author">Yassine Zaanouni</span
+								><span class="date">Apr 5, 2025</span>
+							</div>
+						</div>
+					</a>
+					<a
+						class="card card-hover post-card"
+						data-tabpanel="blog"
+						data-cat="Changelog"
+						href="blog/blog-4.html"
+					>
+						<span class="post-cat changelog">Changelog</span>
+						<h2 class="post-title">Introducing Scalar Cloud</h2>
+						<p class="post-excerpt">
+							We are launching Scalar Cloud — everything you love about Scalar,
+							now hosted with autoscale, team features, and zero setup.
+						</p>
+						<div class="post-foot">
+							<img
+								class="avatar"
+								src="assets/images/blog/authors/yassine-zaanouni.webp"
+								width="32"
+								height="32"
+								alt=""
+							>
+							<div class="meta">
+								<span class="author">Yassine Zaanouni</span
+								><span class="date">Apr 1, 2025</span>
+							</div>
+						</div>
+					</a>
+					<a
+						class="card card-hover post-card"
+						data-tabpanel="blog"
+						data-cat="Guides"
+						href="blog/blog-5.html"
+					>
+						<span class="post-cat">Guides</span>
+						<h2 class="post-title">REST vs GraphQL</h2>
+						<p class="post-excerpt">
+							A practical look at when to use GraphQL vs REST APIs for headless
+							CMS integrations — and how Scalar supports both.
+						</p>
+						<div class="post-foot">
+							<img
+								class="avatar"
+								src="assets/images/blog/authors/yassine-zaanouni.webp"
+								width="32"
+								height="32"
+								alt=""
+							>
+							<div class="meta">
+								<span class="author">Yassine Zaanouni</span
+								><span class="date">Mar 28, 2025</span>
+							</div>
+						</div>
+					</a>
+					<a
+						class="card card-hover post-card"
+						data-tabpanel="blog"
+						data-cat="Guides"
+						href="blog/blog-6.html"
+					>
+						<span class="post-cat">Guides</span>
+						<h2 class="post-title">
+							Building a blog with Scalar, Next.js and Tailwind
+						</h2>
+						<p class="post-excerpt">
+							Follow this step-by-step guide to launch a performant,
+							developer-friendly blog using Scalar CMS and your favorite tools.
+						</p>
+						<div class="post-foot">
+							<img
+								class="avatar"
+								src="assets/images/blog/authors/yassine-zaanouni.webp"
+								width="32"
+								height="32"
+								alt=""
+							>
+							<div class="meta">
+								<span class="author">Yassine Zaanouni</span
+								><span class="date">Mar 22, 2025</span>
+							</div>
+						</div>
+					</a>
+					<a
+						class="card card-hover post-card"
+						data-tabpanel="blog"
+						data-cat="Product"
+						href="blog/blog-7.html"
+					>
+						<span class="post-cat">Product</span>
+						<h2 class="post-title">From markdown to structured content</h2>
+						<p class="post-excerpt">
+							Why content teams are moving away from flat files and free-form
+							markdown toward structured data — and how Scalar makes the switch
+							painless.
+						</p>
+						<div class="post-foot">
+							<img
+								class="avatar"
+								src="assets/images/blog/authors/robert-austin.webp"
+								width="32"
+								height="32"
+								alt=""
+							>
+							<div class="meta">
+								<span class="author">Rob Austin</span
+								><span class="date">Mar 18, 2025</span>
+							</div>
+						</div>
+					</a>
+					<a
+						class="card card-hover post-card"
+						data-tabpanel="blog"
+						data-cat="Community"
+						href="blog/blog-8.html"
+					>
+						<span class="post-cat">Community</span>
+						<h2 class="post-title">
+							How we built Scalar's visual model editor
+						</h2>
+						<p class="post-excerpt">
+							Go behind the scenes with our product team on building Scalar's
+							drag-and-drop schema editor — and what's coming next.
+						</p>
+						<div class="post-foot">
+							<img
+								class="avatar"
+								src="assets/images/blog/authors/fedir-davydov.webp"
+								width="32"
+								height="32"
+								alt=""
+							>
+							<div class="meta">
+								<span class="author">Fedir Davydov</span
+								><span class="date">Mar 14, 2025</span>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="reveal" style="text-align:center;margin-top:48px">
+					<a class="btn btn-pill btn-outline" href="#">Show More Posts</a>
+					<p class="muted" style="font-size:13px;margin-top:16px">
+						Showing 8 of 12 posts
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<div id="site-cta"></div>
+		<div id="site-footer"></div>
+		<script src="shared.js"></script>
+	</body>
+</html>

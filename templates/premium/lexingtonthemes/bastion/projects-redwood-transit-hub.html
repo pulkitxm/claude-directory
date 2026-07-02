@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Redwood Transit Hub — Bastion</title>
+		<meta
+			name="description"
+			content="A multimodal transit hub combining rail, bus, and retail in a durable, high-capacity structure designed for heavy daily usage."
+		>
+		<link rel="stylesheet" href="tokens.css">
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<script src="site.js" defer></script>
+		<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-family: "Inter", sans-serif;
+			background: var(--color-white);
+			color: var(--color-base-900);
+			min-height: 100dvh;
+			display: flex;
+			flex-direction: column;
+		}
+		a {
+			color: inherit;
+		}
+		img {
+			display: block;
+			max-width: 100%;
+		}
+		ul {
+			list-style: none;
+		}
+		.container {
+			max-width: 72rem;
+			margin-inline: auto;
+			padding-inline: 2rem;
+			width: 100%;
+		}
+
+		/* Prose styles */
+		.prose {
+			max-width: 42rem;
+			margin-inline: auto;
+		}
+		.prose h2 {
+			font-size: var(--text-xl);
+			font-weight: var(--fw-medium);
+			color: var(--color-accent-900);
+			margin-top: 2rem;
+			margin-bottom: 0.75rem;
+		}
+		.prose p {
+			color: var(--color-base-700);
+			line-height: 1.7;
+			margin-bottom: 1rem;
+		}
+		.prose ul {
+			margin-bottom: 1rem;
+			padding-left: 1.5rem;
+			list-style: disc;
+		}
+		.prose li {
+			color: var(--color-base-700);
+			line-height: 1.7;
+			margin-bottom: 0.25rem;
+		}
+		.prose strong {
+			color: var(--color-base-900);
+		}
+
+		/* Gallery */
+		.gallery-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+		@media (min-width: 768px) {
+			.gallery-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+		.gallery-grid img {
+			width: 100%;
+			aspect-ratio: 4 / 3;
+			object-fit: cover;
+			border-radius: 0.5rem;
+		}
+
+		/* Stats */
+		.stats-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			text-align: center;
+		}
+		@media (min-width: 768px) {
+			.stats-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		/* Related projects */
+		.projects-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+		@media (min-width: 768px) {
+			.projects-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+		.project-card {
+			border: 1px solid var(--color-base-200);
+			border-radius: 0.5rem;
+			overflow: hidden;
+			text-decoration: none;
+			display: block;
+		}
+		.project-card img {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			object-fit: cover;
+		}
+		.project-card-body {
+			padding: 1.25rem;
+		}
+		.project-card-meta {
+			font-size: var(--text-xs);
+			text-transform: uppercase;
+			color: var(--color-base-500);
+			font-weight: 500;
+			margin-bottom: 0.5rem;
+		}
+		.project-card-title {
+			font-size: var(--text-lg);
+			font-weight: var(--fw-medium);
+			color: var(--color-accent-900);
+			margin-bottom: 0.5rem;
+		}
+		.project-card-desc {
+			font-size: var(--text-sm);
+			color: var(--color-base-600);
+			line-height: 1.6;
+		}
+		</style>
+	</head>
+	<body>
+		<!-- Nav -->
+		<nav class="site-nav" id="site-nav" aria-label="Main navigation">
+			<div class="container">
+				<div class="nav-inner">
+					<a href="index.html" aria-label="Bastion Home" class="nav-logo">
+						<svg
+							viewBox="0 0 394 118"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M115.165 34.8256V2C99.4547 2 89.5225 8.58854 83.5801 16.2918C78.9381 22.3091 77.8196 29.812 76.6882 37.4016C75.8715 42.8796 75.0481 48.4027 72.8882 53.445C69.6729 60.9512 64.6742 66.2306 60.6709 69.1991C57.827 71.1061 52.9896 73.7932 49.743 74.257C49.1892 74.3361 48.45 74.3867 47.574 74.4467C40.3422 74.9421 23.7814 76.0764 25.0878 99.1563C25.1692 97.8544 26.0642 95.0552 28.9936 94.2741H87.3362C87.2548 89.0664 84.2604 78.1139 72.9336 75.9657L72.5308 75.6566C92.7899 79.0407 105.303 66.2841 111.501 54.179C114.536 48.2516 115.165 41.4848 115.165 34.8256ZM31.4347 90.8565C32.6481 90.8565 33.6317 89.8729 33.6317 88.6595C33.6317 87.4462 32.6481 86.4625 31.4347 86.4625C30.2213 86.4625 29.2377 87.4462 29.2377 88.6595C29.2377 89.8729 30.2213 90.8565 31.4347 90.8565Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M8 7.12634V35.2212C8 41.363 8.56475 47.616 11.416 53.0559C18.088 65.785 32.7431 79.0304 57.5546 67.1777C52.5738 64.4027 43.4616 55.7666 42.0354 41.6283C41.9101 40.3856 41.8436 39.1332 41.7771 37.8821C41.6158 34.8438 41.4549 31.8137 40.4524 28.9505C37.0824 19.3258 27.8665 7.12634 8 7.12634Z"
+								fill="currentColor"
+							/>
+							<path
+								d="M108.574 94.5182H87.5803V116C104.961 114.633 108.818 101.109 108.574 94.5182Z"
+								fill="currentColor"
+							/>
+						</svg>
+					</a>
+					<nav class="nav-pill" aria-label="Desktop navigation">
+						<a href="index.html" class="nav-link">Home</a>
+						<a href="about.html" class="nav-link">About</a>
+						<a href="services.html" class="nav-link">Services</a>
+						<a href="projects.html" class="nav-link">Projects</a>
+						<a href="team.html" class="nav-link">Team</a>
+						<a href="careers.html" class="nav-link">Careers</a>
+						<a href="blog.html" class="nav-link">Blog</a>
+						<a href="contact.html" class="nav-link">Contact</a>
+						<a href="system-overview.html" class="nav-link">Overview</a>
+					</nav>
+					<div class="nav-cta">
+						<button
+							class="btn btn-light btn-icon"
+							id="search-toggle"
+							aria-label="Open search"
+						>
+							<svg class="icon icon-md" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M3 10a7 7 0 1 0 14 0A7 7 0 0 0 3 10Zm18 11-6-6" />
+							</svg>
+						</button>
+						<a href="contact.html" class="btn btn-light btn-sm">Get in touch</a>
+					</div>
+					<button
+						class="nav-mobile-btn"
+						id="mobile-menu-toggle"
+						aria-label="Toggle menu"
+						aria-expanded="false"
+					>
+						<svg
+							class="icon icon-lg"
+							id="hamburger-icon"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+						>
+							<path d="M4 6h16M4 12h16M4 18h16" />
+						</svg>
+						<svg
+							class="icon icon-lg"
+							id="close-icon"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+							style="display:none"
+						>
+							<path d="M18 6 6 18M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</nav>
+		<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+			<div class="mobile-menu-inner">
+				<a href="index.html" class="mobile-menu-link">Home</a>
+				<a href="about.html" class="mobile-menu-link">About</a>
+				<a href="services.html" class="mobile-menu-link">Services</a>
+				<a href="projects.html" class="mobile-menu-link">Projects</a>
+				<a href="team.html" class="mobile-menu-link">Team</a>
+				<a href="careers.html" class="mobile-menu-link">Careers</a>
+				<a href="blog.html" class="mobile-menu-link">Blog</a>
+				<a href="contact.html" class="mobile-menu-link">Contact</a>
+				<div
+					style="margin-top:2rem;display:flex;flex-direction:column;gap:0.75rem;"
+				>
+					<a
+						href="contact.html"
+						class="btn btn-light"
+						style="width:100%;height:2.75rem;font-size:var(--text-base);"
+						>Get in touch</a
+					>
+				</div>
+			</div>
+		</div>
+		<div
+			class="search-modal"
+			id="search-modal"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Search"
+		>
+			<div class="search-modal-center">
+				<div class="search-modal-box">
+					<div class="search-modal-header">
+						<span class="search-modal-label">Search</span>
+						<button
+							class="btn btn-dark btn-icon"
+							id="search-close"
+							aria-label="Close search"
+						>
+							<svg class="icon icon-md" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M18 6 6 18M6 6l12 12" />
+							</svg>
+						</button>
+					</div>
+					<div style="padding:1rem 1.5rem 1.5rem;">
+						<div class="search-modal-input-wrap">
+							<span class="search-modal-input-icon"
+								><svg
+									class="icon icon-sm"
+									viewBox="0 0 24 24"
+									aria-hidden="true"
+								>
+									<path d="M3 10a7 7 0 1 0 14 0A7 7 0 0 0 3 10Zm18 11-6-6" />
+								</svg></span
+							>
+							<input
+								type="search"
+								class="search-modal-input"
+								id="search-input"
+								placeholder="Search pages, projects, services..."
+								autocomplete="off"
+							>
+						</div>
+						<div class="search-results" id="search-results"></div>
+						<p
+							class="search-no-results"
+							id="search-no-results"
+							style="display:none;padding:1rem;font-size:var(--text-sm);color:var(--color-base-300);"
+						>
+							No results found
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<main style="flex:1;">
+			<!-- Dark Hero -->
+			<section style="background:var(--color-accent-800);">
+				<div class="container" style="padding-top:8rem;padding-bottom:3rem;">
+					<div
+						style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:end;"
+					>
+						<div style="max-width:42rem;">
+							<p
+								style="font-size:var(--text-sm);text-transform:uppercase;color:var(--color-base-300);letter-spacing:0.05em;"
+							>
+								Transportation Infrastructure &bull; Seattle, WA &bull; 2025
+							</p>
+							<h1
+								style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:var(--fw-medium);color:var(--color-white);letter-spacing:var(--tracking-tight);margin-top:1.5rem;"
+							>
+								Redwood Transit Hub
+							</h1>
+							<p
+								style="font-size:var(--text-lg);color:var(--color-white);margin-top:1rem;max-width:38rem;"
+							>
+								A multimodal transit hub combining rail, bus, and retail in a
+								durable, high-capacity structure designed for heavy daily usage.
+							</p>
+						</div>
+						<div>
+							<ul style="display:flex;flex-direction:column;gap:0.25rem;">
+								<li>
+									<p
+										style="font-size:var(--text-base);color:var(--color-base-400);"
+									>
+										Project Management
+									</p>
+								</li>
+								<li>
+									<p
+										style="font-size:var(--text-base);color:var(--color-base-400);"
+									>
+										General Contracting
+									</p>
+								</li>
+								<li>
+									<p
+										style="font-size:var(--text-base);color:var(--color-base-400);"
+									>
+										Structural Works
+									</p>
+								</li>
+								<li>
+									<p
+										style="font-size:var(--text-base);color:var(--color-base-400);"
+									>
+										MEP Coordination
+									</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Full-width cover image -->
+			<section style="background:var(--color-accent-800);padding-bottom:2rem;">
+				<div class="container">
+					<img
+						src="assets/projects/redwood-transit-hub/cover.webp"
+						alt="Redwood Transit Hub"
+						style="width:100%;height:auto;max-height:36rem;object-fit:cover;object-position:center;"
+					>
+				</div>
+			</section>
+
+			<!-- Stats -->
+			<section style="padding-block:5rem;">
+				<div class="container">
+					<div class="stats-grid">
+						<div>
+							<p
+								style="font-size:clamp(2rem,5vw,3rem);font-weight:var(--fw-medium);color:var(--color-accent-900);font-style:italic;"
+							>
+								22 months
+							</p>
+							<p
+								style="font-size:var(--text-lg);color:var(--color-base-600);margin-top:0.5rem;"
+							>
+								Project duration
+							</p>
+						</div>
+						<div>
+							<p
+								style="font-size:clamp(2rem,5vw,3rem);font-weight:var(--fw-medium);color:var(--color-accent-900);font-style:italic;"
+							>
+								60,000 riders
+							</p>
+							<p
+								style="font-size:var(--text-lg);color:var(--color-base-600);margin-top:0.5rem;"
+							>
+								Daily capacity
+							</p>
+						</div>
+						<div>
+							<p
+								style="font-size:clamp(2rem,5vw,3rem);font-weight:var(--fw-medium);color:var(--color-accent-900);font-style:italic;"
+							>
+								98%
+							</p>
+							<p
+								style="font-size:var(--text-lg);color:var(--color-base-600);margin-top:0.5rem;"
+							>
+								On-time milestones
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Gallery -->
+			<section style="padding-block:2rem;">
+				<div class="container">
+					<h2
+						style="font-size:var(--text-2xl);font-weight:var(--fw-medium);color:var(--color-accent-900);margin-bottom:1.5rem;"
+					>
+						Gallery
+					</h2>
+					<div class="gallery-grid">
+						<img
+							src="assets/projects/redwood-transit-hub/cover.webp"
+							alt="Redwood Transit Hub exterior"
+						>
+						<img
+							src="assets/projects/redwood-transit-hub/cover2.webp"
+							alt="Redwood Transit Hub interior"
+						>
+						<img
+							src="assets/projects/redwood-transit-hub/cover3.webp"
+							alt="Redwood Transit Hub platform"
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- Project Details -->
+			<section style="padding-block:4rem;">
+				<div class="container">
+					<div class="prose">
+						<h2>Project overview</h2>
+						<p>
+							Redwood Transit Authority commissioned a new multimodal transit
+							hub to serve Seattle's growing commuter population. The facility
+							integrates rail, bus, and retail into a single high-capacity
+							structure engineered for continuous heavy daily usage.
+						</p>
+
+						<h2>Scope of work</h2>
+						<p>
+							Our scope covered the full construction cycle from foundation
+							through handover, including structural works, MEP coordination,
+							platform construction, and interior fit-out for retail concourse
+							areas. We managed multiple subcontractor teams simultaneously
+							across overlapping construction phases.
+						</p>
+						<ul>
+							<li>Site preparation and deep foundation works</li>
+							<li>Structural steel and concrete superstructure</li>
+							<li>Rail platform and bus bay construction</li>
+							<li>MEP systems including HVAC, electrical, and plumbing</li>
+							<li>Interior fit-out for retail and passenger waiting areas</li>
+							<li>Wayfinding, safety systems, and accessibility compliance</li>
+						</ul>
+
+						<h2>Deliverables</h2>
+						<p>
+							The completed hub provides rail and bus connections for over
+							60,000 daily riders, with integrated retail space and full
+							accessibility compliance. All mechanical and electrical systems
+							were commissioned and tested prior to handover.
+						</p>
+
+						<h2>Key highlights</h2>
+						<ul>
+							<li>22-month delivery from groundbreaking to handover</li>
+							<li>
+								98% on-time milestone completion across all construction phases
+							</li>
+							<li>Capacity engineered for 60,000 daily riders at peak load</li>
+							<li>Zero lost-time safety incidents across the project</li>
+							<li>
+								Coordinated live utility diversions during active construction
+								phases
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Related Projects -->
+			<section
+				style="padding-block:5rem;border-top:1px solid var(--color-base-200);"
+			>
+				<div class="container">
+					<div
+						style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;"
+					>
+						<div
+							style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;"
+						>
+							<h2
+								style="font-size:var(--text-2xl);font-weight:var(--fw-medium);color:var(--color-accent-900);"
+							>
+								Related projects
+							</h2>
+							<a
+								href="projects.html"
+								style="display:inline-flex;align-items:center;height:2rem;padding-inline:1rem;background:var(--color-base-100);color:var(--color-base-900);border-radius:0.5rem;font-size:var(--text-sm);font-weight:500;text-decoration:none;"
+								>See all projects</a
+							>
+						</div>
+					</div>
+					<div class="projects-grid">
+						<a
+							href="projects-westfield-commercial-complex.html"
+							class="project-card"
+						>
+							<img
+								src="assets/projects/westfield-commercial-complex/cover.webp"
+								alt="Westfield Commercial Complex"
+							>
+							<div class="project-card-body">
+								<p class="project-card-meta">Commercial Construction</p>
+								<h3 class="project-card-title">Westfield Commercial Complex</h3>
+								<p class="project-card-desc">
+									A multi-phase commercial development delivering modern office
+									and retail spaces with a focus on durability, efficiency, and
+									long-term value.
+								</p>
+							</div>
+						</a>
+						<a href="#" class="project-card">
+							<img
+								src="assets/projects/aurora-logistics-park/cover.webp"
+								alt="Aurora Logistics Park"
+							>
+							<div class="project-card-body">
+								<p class="project-card-meta">Industrial Construction</p>
+								<h3 class="project-card-title">Aurora Logistics Park</h3>
+								<p class="project-card-desc">
+									A modern logistics park with high-clearance warehouses,
+									loading bays, and integrated office space built for
+									high-volume operations.
+								</p>
+							</div>
+						</a>
+						<a href="#" class="project-card">
+							<img
+								src="assets/projects/meridian-civic-center/cover.webp"
+								alt="Meridian Civic Center"
+							>
+							<div class="project-card-body">
+								<p class="project-card-meta">Civic Construction</p>
+								<h3 class="project-card-title">Meridian Civic Center</h3>
+								<p class="project-card-desc">
+									A public civic center featuring meeting halls, performance
+									space, and community services, built with durable materials
+									and efficient systems.
+								</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer
+			style="position:relative;overflow:hidden;background:var(--color-accent-950);color:var(--color-base-100);isolation:isolate;"
+		>
+			<div style="position:absolute;inset:0;pointer-events:none;z-index:0;">
+				<video
+					autoplay
+					muted
+					loop
+					playsinline
+					style="width:100%;height:100%;object-fit:cover;"
+				>
+					<source src="assets/night.mp4" type="video/mp4">
+				</video>
+				<div
+					style="position:absolute;inset:0;background:rgba(3,12,20,0.75);"
+				></div>
+			</div>
+			<div class="container" style="position:relative;z-index:1;">
+				<div
+					style="padding:2rem;border-bottom:1px solid rgba(255,255,255,0.15);"
+				>
+					<div
+						style="display:flex;flex-direction:column;gap:2rem;padding:2rem;background:var(--color-accent-950);border-radius:0.25rem;"
+					>
+						<div>
+							<svg
+								style="height:3rem;color:var(--color-white);"
+								viewBox="0 0 394 118"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M115.165 34.8256V2C99.4547 2 89.5225 8.58854 83.5801 16.2918C78.9381 22.3091 77.8196 29.812 76.6882 37.4016C75.8715 42.8796 75.0481 48.4027 72.8882 53.445C69.6729 60.9512 64.6742 66.2306 60.6709 69.1991C57.827 71.1061 52.9896 73.7932 49.743 74.257C49.1892 74.3361 48.45 74.3867 47.574 74.4467C40.3422 74.9421 23.7814 76.0764 25.0878 99.1563C25.1692 97.8544 26.0642 95.0552 28.9936 94.2741H87.3362C87.2548 89.0664 84.2604 78.1139 72.9336 75.9657L72.5308 75.6566C92.7899 79.0407 105.303 66.2841 111.501 54.179C114.536 48.2516 115.165 41.4848 115.165 34.8256ZM31.4347 90.8565C32.6481 90.8565 33.6317 89.8729 33.6317 88.6595C33.6317 87.4462 32.6481 86.4625 31.4347 86.4625C30.2213 86.4625 29.2377 87.4462 29.2377 88.6595C29.2377 89.8729 30.2213 90.8565 31.4347 90.8565Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M8 7.12634V35.2212C8 41.363 8.56475 47.616 11.416 53.0559C18.088 65.785 32.7431 79.0304 57.5546 67.1777C52.5738 64.4027 43.4616 55.7666 42.0354 41.6283C41.9101 40.3856 41.8436 39.1332 41.7771 37.8821C41.6158 34.8438 41.4549 31.8137 40.4524 28.9505C37.0824 19.3258 27.8665 7.12634 8 7.12634Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M108.574 94.5182H87.5803V116C104.961 114.633 108.818 101.109 108.574 94.5182Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<p
+								style="font-size:var(--text-2xl);font-weight:var(--fw-medium);color:var(--color-white);letter-spacing:var(--tracking-tight);max-width:28rem;margin-top:1rem;"
+							>
+								Everyday building with purpose and precision.
+							</p>
+						</div>
+						<a
+							href="contact.html"
+							style="display:inline-flex;align-items:center;justify-content:center;height:2.5rem;padding-inline:1.25rem;background:var(--color-base-100);color:var(--color-base-900);border-radius:0.5rem;font-weight:500;text-decoration:none;align-self:flex-start;"
+							>Get in touch</a
+						>
+					</div>
+				</div>
+				<div
+					style="padding-block:2rem;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;"
+				>
+					<div>
+						<p
+							style="font-size:var(--text-sm);text-transform:uppercase;color:var(--color-base-400);font-weight:500;margin-bottom:1rem;"
+						>
+							Pages
+						</p>
+						<a
+							href="index.html"
+							style="display:block;font-size:var(--text-sm);color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Home</a
+						>
+						<a
+							href="about.html"
+							style="display:block;font-size:var(--text-sm);color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>About</a
+						>
+						<a
+							href="projects.html"
+							style="display:block;font-size:var(--text-sm);color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Projects</a
+						>
+					</div>
+					<div>
+						<p
+							style="font-size:var(--text-sm);text-transform:uppercase;color:var(--color-base-400);font-weight:500;margin-bottom:1rem;"
+						>
+							Legal
+						</p>
+						<a
+							href="legal-privacy.html"
+							style="display:block;font-size:var(--text-sm);color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Privacy</a
+						>
+						<a
+							href="legal-terms.html"
+							style="display:block;font-size:var(--text-sm);color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Terms</a
+						>
+						<a
+							href="legal-cookies.html"
+							style="display:block;font-size:var(--text-sm);color:var(--color-base-300);padding-block:0.25rem;text-decoration:none;"
+							>Cookies</a
+						>
+					</div>
+				</div>
+				<div
+					style="padding-block:1.5rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;"
+				>
+					<span style="font-size:var(--text-sm);color:var(--color-base-400);"
+						>© 2025 Bastion. All rights reserved.</span
+					>
+					<div style="display:flex;gap:1.5rem;">
+						<a
+							href="legal-privacy.html"
+							style="font-size:var(--text-sm);color:var(--color-base-400);text-decoration:none;"
+							>Privacy</a
+						>
+						<a
+							href="legal-terms.html"
+							style="font-size:var(--text-sm);color:var(--color-base-400);text-decoration:none;"
+							>Terms</a
+						>
+						<a
+							href="legal-cookies.html"
+							style="font-size:var(--text-sm);color:var(--color-base-400);text-decoration:none;"
+							>Cookies</a
+						>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

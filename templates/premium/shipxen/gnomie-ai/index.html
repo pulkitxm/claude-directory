@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gnomie AI — Beautiful Garden Designs in Minutes</title>
+		<meta
+			name="description"
+			content="AI-powered garden design and landscaping. Tailored for your region. No design skills required."
+		>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("gnomie-theme");
+				var d = t
+					? t === "dark"
+					: window.matchMedia("(prefers-color-scheme: dark)").matches;
+				if (d) document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..600&family=Hind:wght@400;600&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="./styles.css">
+	</head>
+	<body>
+		<!-- HEADER -->
+		<header class="site-header">
+			<div class="container nav">
+				<a class="brand" href="#">
+					<svg class="gnome" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+						<path d="M16 2 L26 16 H6 Z" fill="var(--primary)" />
+						<circle cx="16" cy="22" r="6" fill="#f2c9a0" />
+						<path d="M11 22 a5 5 0 0 1 10 0 z" fill="#fff" />
+						<circle cx="16" cy="20" r="1.4" fill="var(--secondary-dark)" />
+					</svg>
+					<span>Gnomie AI</span>
+				</a>
+				<nav class="nav-links">
+					<a href="#features">Features</a>
+					<a href="#faq">Docs</a>
+				</nav>
+				<div class="nav-right">
+					<button
+						class="theme-toggle"
+						id="themeToggle"
+						aria-label="Toggle theme"
+					>
+						<svg
+							class="moon"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+						</svg>
+						<svg
+							class="sun"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<circle cx="12" cy="12" r="4" />
+							<path
+								d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+							/>
+						</svg>
+					</button>
+					<a class="btn btn-primary" href="#pricing">Try Gnomie for free</a>
+				</div>
+				<button class="hamburger" id="hamburger" aria-label="Menu">
+					<svg
+						width="22"
+						height="22"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+					>
+						<path d="M3 6h18M3 12h18M3 18h18" />
+					</svg>
+				</button>
+			</div>
+		</header>
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="#features">Features</a>
+			<a href="#faq">Docs</a>
+			<a href="#pricing">Try Gnomie for free</a>
+		</div>
+
+		<!-- HERO -->
+		<section class="hero">
+			<div class="container">
+				<div class="hero-emoji">🌵</div>
+				<h1>Beautiful Garden Designs in Minutes</h1>
+				<p class="lead">
+					AI-powered garden design and landscaping. Tailored for your region. No
+					design skills required.
+				</p>
+				<div class="hero-cta">
+					<a class="btn btn-primary btn-lg" href="#pricing"
+						>Try Gnomie for free</a
+					>
+					<span class="note">No credit card required</span>
+				</div>
+				<div class="hero-media">
+					<div class="frame">
+						<div class="app-shot">
+							<div class="app-side">
+								<span class="app-row">Configure pricing</span>
+								<span class="app-chip">Tier price &amp; features</span>
+								<span class="app-chip">Multi-platform compatibility</span>
+								<span class="app-chip">Real-time</span>
+								<span class="app-chip">Advanced</span>
+								<span class="app-chip alt">Monthly</span>
+							</div>
+							<div class="app-main">
+								<h3>Pricing</h3>
+								<div class="app-cards">
+									<span></span><span></span><span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- MADE WITH GNOMIE -->
+		<section class="userstrip">
+			<div class="container">
+				<div class="section-head reveal">
+					<h2>Made with Gnomie</h2>
+					<p>
+						Thousands of people use Gnomie to reimagine their outdoor spaces,
+						adding plants, flowers, and landscaping elements suited to their
+						specific climate.
+					</p>
+				</div>
+				<div class="user-cards reveal" id="madeUsers"></div>
+				<div class="carousel-nav reveal">
+					<button data-strip="made" data-dir="-1" aria-label="Previous slide">
+						‹
+					</button>
+					<button data-strip="made" data-dir="1" aria-label="Next slide">
+						›
+					</button>
+				</div>
+				<div class="hero-cta" style="margin-top:2rem">
+					<a class="btn btn-primary" href="#pricing">Try Gnomie for free</a>
+					<span class="note">No credit card required</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- FEATURES -->
+		<section id="features">
+			<div class="container split reveal">
+				<div class="split-text">
+					<h2 style="font-size:clamp(1.9rem,3.5vw,2.8rem);margin:0 0 1rem">
+						Superb garden designs.<br>Created in minutes.
+					</h2>
+					<p class="lead">
+						Gnomie is an intuitive garden design tool that makes your outdoor
+						space look beautiful. It automatically suggests plants, flowers, and
+						landscaping features based on your region's climate and soil
+						conditions.
+					</p>
+					<div class="feature-list">
+						<div class="feature-item">
+							<div class="ico">🌱</div>
+							<div>
+								<h4>Automatic plant suggestions</h4>
+								<p>
+									Make your garden redesigns easier to execute while ensuring
+									all plants thrive in your environment.
+								</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div class="ico">📍</div>
+							<div>
+								<h4>Region-specific recommendations</h4>
+								<p>
+									Gnomie automatically recommends plants and features that are
+									perfect for your local climate.
+								</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div class="ico">🎛️</div>
+							<div>
+								<h4>Manual customization</h4>
+								<p>
+									You can also manually include/exclude specific plants and
+									features.
+								</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div class="ico">✏️</div>
+							<div>
+								<h4>Easy editing</h4>
+								<p>
+									Simply drag and drop elements onto your garden design. All the
+									heavy lifting is done automatically, requiring no manual work.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="split-media">
+					<img src="./assets/img/p-59.webp" alt="Garden feature">
+				</div>
+			</div>
+		</section>
+
+		<!-- SAVE $1000s -->
+		<section>
+			<div class="container split reverse reveal">
+				<div class="split-media">
+					<img src="./assets/img/p-71.webp" alt="Saving on your garden">
+				</div>
+				<div class="split-text">
+					<h2 style="font-size:clamp(1.9rem,3.5vw,2.6rem);margin-bottom:1rem">
+						Save $1000s on your garden.
+					</h2>
+					<p class="lead">
+						Gnomie is an intuitive garden design tool that makes your outdoor
+						space look beautiful. It automatically suggests plants, flowers, and
+						landscaping features based on your region's climate and soil
+						conditions.
+					</p>
+					<div class="feature-list">
+						<div class="feature-item">
+							<div class="ico">📷</div>
+							<div>
+								<h4>Capture photos and get recommendations</h4>
+								<p>
+									Gnomie makes it easy to create comprehensive garden redesigns,
+									whether for personal use or professional landscaping.
+								</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div class="ico">📝</div>
+							<div>
+								<h4>Generate a garden plan</h4>
+								<p>
+									Generate a detailed plan for your garden and export it as a
+									PDF.
+								</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div class="ico">🔄</div>
+							<div>
+								<h4>Ongoing Consultation and Adjustments</h4>
+								<p>
+									Make unlimited adjustments to your garden with a click of a
+									button.
+								</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div class="ico">🧭</div>
+							<div>
+								<h4>Guided Assistance</h4>
+								<p>
+									Not sure where to start? Gnomie's AI chat guides you step by
+									step, from selecting the right plants to planning the layout.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="bonus-card">
+						<h4>Personalized Recommendations</h4>
+						<p>
+							The AI learns from your inputs, offering suggestions that match
+							your taste, whether you prefer a lush, vibrant space or a
+							minimalist, low-maintenance garden.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CASE STUDIES -->
+		<section>
+			<div class="container">
+				<div class="section-head reveal">
+					<h2>Your garden, reimagined</h2>
+					<p>
+						See how Gnomie AI completely transformed our customers' gardens,
+						making them more beautiful and easier to maintain.
+					</p>
+				</div>
+				<div class="case-grid reveal">
+					<article class="case-card">
+						<div class="ph">
+							<img src="./assets/img/p-89.webp" alt="Desert Oasis">
+						</div>
+						<div class="body">
+							<h3>Desert Oasis in Phoenix, Arizona</h3>
+							<p class="ba">
+								<b>Before:</b>
+								A barren, rocky yard with minimal shade and sparse vegetation.
+							</p>
+							<p class="ba">
+								<b>After:</b>
+								A serene desert garden with drought-resistant plants that thrive
+								in the intense Arizona heat.
+							</p>
+						</div>
+					</article>
+					<article class="case-card">
+						<div class="ph">
+							<img src="./assets/img/p-95.webp" alt="English Cottage Garden">
+						</div>
+						<div class="body">
+							<h3>Cottage Garden in the English Countryside</h3>
+							<p class="ba">
+								<b>Before:</b>
+								An overgrown, unstructured garden with random patches of grass
+								and weeds.
+							</p>
+							<p class="ba">
+								<b>After:</b>
+								A picturesque cottage garden bursting with color and charm,
+								inspired by classic English gardens.
+							</p>
+						</div>
+					</article>
+					<article class="case-card">
+						<div class="ph">
+							<img src="./assets/img/p-98.webp" alt="Tropical Paradise">
+						</div>
+						<div class="body">
+							<h3>Tropical Paradise in Miami, Florida</h3>
+							<p class="ba">
+								<b>Before:</b>
+								A plain, grassy lawn with little shade and no defined garden
+								areas.
+							</p>
+							<p class="ba">
+								<b>After:</b>
+								A vibrant tropical paradise filled with lush, exotic plants that
+								thrive in Miami's humid climate.
+							</p>
+						</div>
+					</article>
+					<article class="case-card">
+						<div class="ph">
+							<img src="./assets/img/p-106.webp" alt="Coastal Retreat">
+						</div>
+						<div class="body">
+							<h3>Coastal Retreat in Santa Monica, California</h3>
+							<p class="ba">
+								<b>Before:</b>
+								A dry, sandy yard with sparse, struggling plants.
+							</p>
+							<p class="ba">
+								<b>After:</b>
+								A stylish, drought-tolerant coastal garden that thrives in Santa
+								Monica's Mediterranean climate.
+							</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA / SOCIAL PROOF -->
+		<section class="cta-banner">
+			<div class="container">
+				<div class="fancy-overlay reveal">
+					<h2>Transform Your Space with Gnomie</h2>
+					<p>
+						Join thousands of satisfied users who have transformed their gardens
+						into beautiful, personalized outdoor retreats.
+					</p>
+					<a class="btn btn-primary btn-lg" href="#pricing">Start free today</a>
+					<div
+						class="user-cards"
+						id="proofUsers"
+						style="margin-top:2.5rem"
+					></div>
+					<div class="carousel-nav">
+						<button
+							data-strip="proof"
+							data-dir="-1"
+							aria-label="Previous slide"
+						>
+							‹
+						</button>
+						<button data-strip="proof" data-dir="1" aria-label="Next slide">
+							›
+						</button>
+					</div>
+					<div class="hero-cta" style="margin-top:1.8rem">
+						<a class="btn btn-primary" href="#pricing"
+							>Start Your Garden Today</a
+						>
+						<span class="note"
+							>No credit card required ·
+							<a href="#features" style="color:var(--primary)"
+								>More tools inside</a
+							></span
+						>
+					</div>
+					<div class="stat">
+						<span class="avatars"
+							><img src="./assets/img/av-64.webp" alt="">
+							<img src="./assets/img/av-65.webp" alt="">
+							<img src="./assets/img/av-669.webp" alt=""></span
+						>
+						<span>from <b>110k+</b> happy gardeners</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- TESTIMONIALS -->
+		<section>
+			<div class="container">
+				<div class="section-head reveal">
+					<h2>Gardeners Love Gnomie</h2>
+					<p>
+						See what our community of 120k gardeners have to say about Gnomie.
+					</p>
+				</div>
+				<div class="tgrid reveal">
+					<div class="tcard">
+						<p>
+							"Gnomie transformed my backyard into a lush oasis. I can't believe
+							how easy it was!"
+						</p>
+						<div class="who">
+							<img src="./assets/img/av-r7.webp" alt="">
+							<div>
+								<div class="nm">Emily Green</div>
+								<div class="hd">@emilyplants</div>
+							</div>
+						</div>
+					</div>
+					<div class="tcard">
+						<p>
+							"With Gnomie's advice, my garden is thriving like never before."
+						</p>
+						<div class="who">
+							<img src="./assets/img/av-r8.webp" alt="">
+							<div>
+								<div class="nm">Michael Bloom</div>
+								<div class="hd">@bloomingmichael</div>
+							</div>
+						</div>
+					</div>
+					<div class="tcard">
+						<p>
+							"This app is a gardener's dream come true. My flowers have never
+							looked better!"
+						</p>
+						<div class="who">
+							<img src="./assets/img/av-r9.webp" alt="">
+							<div>
+								<div class="nm">Sarah Ivy</div>
+								<div class="hd">@sarahlovesplants</div>
+							</div>
+						</div>
+					</div>
+					<div class="tcard">
+						<p>
+							"I was a complete beginner, but Gnomie made it easy to start my
+							first vegetable garden."
+						</p>
+						<div class="who">
+							<img src="./assets/img/av-r10.webp" alt="">
+							<div>
+								<div class="nm">Jake Stone</div>
+								<div class="hd">@jakestone</div>
+							</div>
+						</div>
+					</div>
+					<div class="tcard">
+						<p>
+							"Highly recommend for anyone looking to enhance their outdoor
+							space!"
+						</p>
+						<div class="who">
+							<img src="./assets/img/av-r11.webp" alt="">
+							<div>
+								<div class="nm">Lily Forrest</div>
+								<div class="hd">@lilyforrest</div>
+							</div>
+						</div>
+					</div>
+					<div class="tcard">
+						<p>
+							"Thanks to Gnomie, my yard is now the envy of the neighborhood."
+						</p>
+						<div class="who">
+							<img src="./assets/img/av-r12.webp" alt="">
+							<div>
+								<div class="nm">Chris Fields</div>
+								<div class="hd">@chrisfields</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="center-link reveal">
+					<a href="#">Read more testimonials →</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- PRICING -->
+		<section id="pricing">
+			<div class="container" style="text-align:center">
+				<div class="section-head reveal">
+					<h2>Affordable Plans for Every Gardener</h2>
+					<p>
+						At Gnomie, we believe that everyone should have access to beautiful,
+						thriving outdoor spaces—whether you're a seasoned gardener or just
+						starting out.
+					</p>
+				</div>
+				<div class="pricing-toggle reveal" id="pricingToggle">
+					<button class="active" data-cycle="1">Monthly</button>
+					<button data-cycle="2">Annually</button>
+				</div>
+				<div class="price-grid reveal">
+					<div class="price-card">
+						<div class="pname">Casual</div>
+						<div class="amt">
+							<span class="amt-val" data-m="$25" data-y="$250">$25</span
+							><span class="amt-suf">/month</span>
+						</div>
+						<p class="pdesc">
+							Use up to 5 photos per months and generate 60 garden variations
+						</p>
+						<ul>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>One-time payment
+							</li>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>5 photos
+							</li>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>60 garden variations
+							</li>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>Object removal
+							</li>
+						</ul>
+						<a class="btn btn-outline" href="#">Get started</a>
+					</div>
+					<div class="price-card featured">
+						<div class="pname">Enthusiast</div>
+						<div class="amt">
+							<span class="amt-val" data-m="$39" data-y="$399">$39</span
+							><span class="amt-suf">/month</span>
+						</div>
+						<p class="pdesc">
+							Use up to 10 photos per months and generate 200 garden variations
+						</p>
+						<ul>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>One-time payment
+							</li>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>10 photos
+							</li>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>200 garden variations
+							</li>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>Object removal
+							</li>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>Decluttering
+							</li>
+							<li>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+								>
+									<path d="M5 12l5 5L20 6" />
+								</svg>Enhanced quality
+							</li>
+						</ul>
+						<a class="btn btn-primary" href="#">Get started</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA BANNER -->
+		<section class="cta-banner">
+			<div class="container">
+				<div class="fancy-overlay reveal">
+					<h2>Transform Your Garden Today</h2>
+					<p>
+						Join thousands of gardeners who are reimagining their outdoor spaces
+						with Gnomie. From planning to planting, we're here to help every
+						step of the way.
+					</p>
+					<a class="btn btn-primary btn-lg" href="#pricing"
+						>Get started in minutes</a
+					>
+					<div class="stat">
+						<span class="avatars"
+							><img src="./assets/img/av-64.webp" alt="">
+							<img src="./assets/img/av-65.webp" alt="">
+							<img src="./assets/img/av-669.webp" alt=""></span
+						>
+						<span>from <b>110k+</b> happy gardeners</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section class="faq-section" id="faq">
+			<div class="container">
+				<div class="section-head reveal">
+					<h2>FAQ</h2>
+					<p>
+						Get answers to your questions about transforming your garden with
+						Gnomie.
+					</p>
+				</div>
+				<div class="faq-list reveal" id="faqList"></div>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer class="site-footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-brand">
+						<a class="brand" href="#">
+							<svg
+								class="gnome"
+								viewBox="0 0 32 32"
+								fill="none"
+								aria-hidden="true"
+							>
+								<path d="M16 2 L26 16 H6 Z" fill="var(--primary)" />
+								<circle cx="16" cy="22" r="6" fill="#f2c9a0" />
+								<path d="M11 22 a5 5 0 0 1 10 0 z" fill="#fff" />
+							</svg>
+							<span>Shipixen</span>
+						</a>
+						<p>
+							Ship Next.js 15 apps with an MDX blog in minutes. TypeScript,
+							Shadcn UI and all components you need to build for your app,
+							website, product or blog. SEO optimized, responsive and
+							performant.
+						</p>
+					</div>
+					<div class="footer-col">
+						<h4>Help</h4>
+						<a href="#">Documentation</a><a href="#">Generating boilerplates</a
+						><a href="#">Writing posts with mdx</a
+						><a href="#">Deploy to Vercel</a
+						><a href="#">Migrate blog from Ghost</a
+						><a href="#">Free for Open Source</a>
+					</div>
+					<div class="footer-col">
+						<h4>Support</h4>
+						<a href="#faq">FAQ</a><a href="#">Terms of Service</a
+						><a href="#">Privacy Policy</a><a href="#">About Shipixen</a
+						><a href="#">Contact Support</a><a href="#">Become an affiliate</a>
+					</div>
+					<div class="footer-col">
+						<h4>Product</h4>
+						<a href="#">Try app</a><a href="#pricing">Pricing</a
+						><a href="#">Release Notes</a><a href="#">Blog</a
+						><a href="#features">All Features</a
+						><a href="#">Generate websites with AI</a>
+					</div>
+					<div class="footer-col">
+						<h4>Tools</h4>
+						<a href="#">Landing Page Components</a
+						><a href="#">Component Explorer</a
+						><a href="#">Pricing Page Generator</a
+						><a href="#">Cron Expression Viewer</a
+						><a href="#">Create step-by-step guides</a><a href="#">Partners</a>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<p>This website was built with Shipixen · © 2026 Shipixen</p>
+					<div class="socials">
+						<a href="#" aria-label="X"
+							><svg
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path d="M18 2h3l-7 8 8 11h-6l-5-6-5 6H2l8-9L2 2h6l4 5z" />
+							</svg></a
+						>
+						<a href="#" aria-label="GitHub"
+							><svg
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M12 2a10 10 0 0 0-3 19.5c.5 0 .7-.2.7-.5v-2c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6 0-.6 0-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1 2.9.8.1-.6.3-1 .6-1.3-2.2-.2-4.5-1.1-4.5-5 0-1.1.4-2 1-2.6-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.6 1 1.5 1 2.6 0 3.9-2.3 4.8-4.5 5 .3.3.6.9.6 1.8v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z"
+								/>
+							</svg></a
+						>
+						<a href="#" aria-label="LinkedIn"
+							><svg
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3 8.5h3.8V21H3V8.5zM9.5 8.5h3.6v1.7h.05c.5-.95 1.7-1.95 3.5-1.95 3.75 0 4.45 2.45 4.45 5.65V21h-3.8v-5.6c0-1.35 0-3.05-1.85-3.05s-2.15 1.45-2.15 2.95V21H9.5V8.5z"
+								/>
+							</svg></a
+						>
+						<a href="#" aria-label="YouTube"
+							><svg
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.7 1.7c1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l6.2 3.3-6.2 3.3z"
+								/>
+							</svg></a
+						>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="./script.js"></script>
+	</body>
+</html>

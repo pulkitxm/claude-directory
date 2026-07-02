@@ -1,5 +1,7 @@
 # STRATA — Horizon Field Scanner WebGL2 Shader (React, TypeScript, Vite, Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A WebGL2 fragment shader that ray-marches 30 steps through repeating horizon strata folded with `mod(d − 2.0, 4.0) − 2.0` over a cosine-tube ground plane, flown toward the vanishing point and tonemapped with `tanh` — framed as a deep-field stratigraphy scanner with a chromatic-split wordmark, a real-time stratigraphy gauge that tracks the shader's marching cadence, live layer readout, GPU-sampled telemetry rail, hold/resume field control, and a CSS fallback for environments without WebGL2. Generated with Claude Fable 5.
 
 ## Stack

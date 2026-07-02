@@ -1,0 +1,20 @@
+import { chromium } from "playwright";
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+p.on("console", (m) => {
+	if (m.type() === "error") console.log("ERR", m.text());
+});
+p.on("pageerror", (e) => console.log("PAGEERR", e.message));
+await p.goto("http://localhost:8799/index.html", { waitUntil: "networkidle" });
+await p.evaluate(async () => {
+	const d = document.body.scrollHeight;
+	for (let y = 0; y < d; y += 500) {
+		window.scrollTo(0, y);
+		await new Promise((r) => setTimeout(r, 60));
+	}
+});
+await p.waitForTimeout(400);
+const tot = await p.$$eval(".reveal", (e) => e.length);
+const inn = await p.$$eval(".reveal.in", (e) => e.length);
+console.log("reveal total", tot, "in", inn);
+await b.close();

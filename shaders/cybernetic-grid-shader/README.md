@@ -1,5 +1,7 @@
 # Cybernetic Grid Shader — Interactive Three.js WebGL Lattice with Mouse Warp (React, TypeScript, GLSL)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive Three.js / WebGL "Cybernetic Grid" shader — a pulsing cobalt lattice with magenta energy crawling the intersections and a bright glow that warps the grid around the cursor — framed inside a lattice-integrity diagnostic console with a live probe caliper, field-health gauge, and real-time telemetry readouts. The component lives at the shadcn `@/components/ui` path and drops cleanly into any Vite + React + TypeScript project with Tailwind CSS. Generated with Claude Fable 5.
 
 ## Integration story (per the brief)

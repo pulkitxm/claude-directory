@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Chargebee Integration — Ælen CRM</title>
+		<meta
+			name="description"
+			content="Accept payments with Chargebee, one of the most popular subscription billing platforms. Sync billing with your CRM in minutes."
+		>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		>
+		<style>
+		:root {
+			--white: oklch(95% 0.0187 80.72);
+			--black: oklch(29% 0 0);
+			--orange: oklch(60% 0.1499 37.55);
+			--cyan: oklch(80% 0.0456 250.63);
+			--yellow: oklch(75% 0.1081 64.85);
+			--gray: oklch(83% 0.0018 325.59);
+			--font-sans: "Geist", sans-serif;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: var(--font-sans);
+			background: white;
+			color: var(--black);
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		/* ── HEADER ── */
+		header {
+			background: white;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			height: 49px;
+			display: flex;
+			align-items: center;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		.header-inner {
+			width: 100%;
+			padding: 0 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.header-logo svg {
+			height: 32px;
+		}
+		.header-logo {
+			color: var(--black);
+			transition: color 300ms;
+		}
+		.header-logo:hover {
+			color: var(--orange);
+		}
+
+		.header-right {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			margin-left: auto;
+		}
+		.nav-link {
+			font-weight: 600;
+			color: var(--black);
+			transition: opacity 300ms;
+		}
+		.nav-link:hover {
+			opacity: 0.7;
+		}
+
+		.btn-signup {
+			background: var(--black);
+			color: white;
+			font-weight: 600;
+			padding: 8px 16px;
+			border: none;
+			cursor: pointer;
+			font-family: var(--font-sans);
+			font-size: 0.875rem;
+			transition: background 300ms;
+			display: inline-flex;
+			align-items: center;
+		}
+		.btn-signup:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+
+		.hamburger {
+			display: none;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 4px;
+			color: var(--black);
+		}
+		.mobile-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: white;
+			z-index: 200;
+			flex-direction: column;
+			padding: 1rem;
+		}
+		.mobile-overlay.active {
+			display: flex;
+		}
+		.mobile-overlay-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 2rem;
+		}
+		.mobile-nav {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+		.mobile-nav a {
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+		.close-menu {
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		/* ── HERO ── */
+		.integration-hero {
+			padding-top: 200px;
+			padding-bottom: 2rem;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		.integration-hero h1 {
+			font-size: clamp(3rem, 12vw, 12rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1;
+			margin-bottom: 1rem;
+		}
+		.integration-hero p {
+			font-size: clamp(1rem, 2vw, 1.25rem);
+			color: color-mix(in oklab, var(--black) 65%, transparent);
+			max-width: 36rem;
+			margin-bottom: 1.5rem;
+			line-height: 1.5;
+		}
+		.stacked-bars {
+			display: flex;
+			flex-direction: column;
+		}
+		.stacked-bars div {
+			width: 100%;
+			background: var(--black);
+		}
+
+		/* ── LOGO DISPLAY (black bar) ── */
+		.logo-bar {
+			display: flex;
+			align-items: center;
+			padding: 2rem;
+			background: var(--black);
+		}
+		.logo-bar img {
+			width: 5rem;
+			height: auto;
+		}
+		@media (min-width: 1024px) {
+			.logo-bar img {
+				width: 8rem;
+			}
+		}
+
+		/* ── CTA BANNER ── */
+		.cta-banner {
+			background: var(--cyan);
+			padding-top: 12rem;
+			padding-bottom: 12rem;
+			text-align: center;
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+		.cta-banner h2 {
+			font-size: clamp(2rem, 6vw, 3.75rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1.05;
+			color: var(--black);
+			text-decoration: underline;
+			font-style: italic;
+			max-width: 64rem;
+			margin: 0 auto;
+		}
+		.cta-banner .cta-inner {
+			max-width: 64rem;
+			margin: 0 auto;
+		}
+
+		/* ── COMPANY DETAILS ── */
+		.company-details {
+			padding: 3rem 1rem;
+		}
+		.details-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.company-details h2 {
+			font-size: clamp(3rem, 6vw, 4.5rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1;
+			color: var(--black);
+		}
+		.detail-list {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+		}
+		.detail-list li {
+			padding-top: 0.5rem;
+			padding-bottom: 2rem;
+			border-top: 1px dashed color-mix(in oklab, var(--black) 20%, transparent);
+		}
+		.detail-list p {
+			font-size: clamp(1.125rem, 3vw, 1.875rem);
+			font-weight: 700;
+			letter-spacing: -0.01em;
+			color: var(--black);
+		}
+		.detail-list a {
+			text-decoration: underline;
+			text-decoration-style: dashed;
+			text-underline-offset: 3px;
+		}
+		.detail-list a:hover {
+			opacity: 0.7;
+		}
+		@media (min-width: 1024px) {
+			.details-grid {
+				grid-template-columns: 1fr 2fr;
+			}
+		}
+
+		/* ── HOW TO INTEGRATE ── */
+		.how-to {
+			padding: 0.5rem 1rem;
+		}
+		.how-to-bg {
+			background: var(--orange);
+			padding: 6rem 2rem;
+			color: white;
+		}
+		.how-to-inner {
+			max-width: 36rem;
+			margin: 0 auto;
+		}
+		.how-to-inner h1 {
+			font-size: 1.875rem;
+			font-weight: 600;
+			color: var(--black);
+			line-height: 1.15;
+			margin-bottom: 1.25rem;
+		}
+		.how-to-inner h2 {
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: var(--black);
+			line-height: 1.2;
+			margin-top: 2rem;
+			margin-bottom: 0.75rem;
+		}
+		.how-to-inner p {
+			font-size: 1.075rem;
+			line-height: 1.75;
+			margin-bottom: 1.25rem;
+		}
+		.how-to-inner ul {
+			margin: 0 0 1.25rem 1.25rem;
+		}
+		.how-to-inner li {
+			line-height: 1.7;
+			margin-bottom: 0.5rem;
+		}
+		.how-to-inner li::marker {
+			color: white;
+		}
+		.how-to-inner a {
+			color: var(--black);
+			font-weight: 600;
+			text-decoration: underline;
+			text-decoration-style: dashed;
+			text-underline-offset: 3px;
+		}
+		.how-to-inner strong {
+			color: var(--black);
+			font-weight: 700;
+		}
+		code {
+			font-family: "Geist Mono", monospace;
+			background: color-mix(in oklab, white 12%, transparent);
+			padding: 1px 6px;
+			font-size: 0.9em;
+		}
+
+		/* ── MODAL ── */
+		.modal {
+			position: fixed;
+			inset: 2rem;
+			z-index: 300;
+			overflow-y: auto;
+			display: none;
+		}
+		.modal.active {
+			display: block;
+		}
+		.modal-overlay {
+			position: fixed;
+			inset: 0;
+			background: var(--yellow);
+		}
+		.modal-panel {
+			position: relative;
+			width: 100%;
+			min-height: 100%;
+			padding: 0 1rem;
+			background: var(--yellow);
+		}
+		.modal-panel h1 {
+			font-size: clamp(2.25rem, 10vw, 8rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			line-height: 1;
+			color: var(--black);
+		}
+		.modal-titlebar {
+			display: flex;
+			align-items: center;
+			padding: 2rem;
+			background: var(--black);
+		}
+		.modal-titlebar span {
+			font-size: clamp(1.875rem, 5vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			color: white;
+		}
+		.modal-body {
+			margin-top: 3rem;
+		}
+		.modal-body > p {
+			font-size: clamp(1.125rem, 4vw, 1.875rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			color: var(--black);
+		}
+		.modal-list {
+			list-style: none;
+			margin-top: 0.5rem;
+			font-weight: 700;
+			color: var(--black);
+		}
+		.modal-list li {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.5rem 0;
+			border-bottom: 1px solid color-mix(in oklab, white 20%, transparent);
+		}
+		.modal-note {
+			font-size: 1rem;
+			margin-top: 1rem;
+			color: var(--black);
+		}
+		.modal-note a {
+			font-weight: 700;
+			color: white;
+			border-bottom: 1px dashed color-mix(in oklab, white 20%, transparent);
+		}
+		.modal-note a:hover {
+			color: color-mix(in oklab, white 50%, transparent);
+		}
+		.modal-actions {
+			margin-top: 3rem;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+			padding-bottom: 2rem;
+		}
+		.btn-modal {
+			width: 100%;
+			height: 56px;
+			padding: 12px 24px;
+			font-size: 1.25rem;
+			font-weight: 500;
+			font-family: var(--font-sans);
+			border: none;
+			cursor: pointer;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			transition: background 300ms;
+		}
+		.btn-modal.cancel {
+			background: var(--black);
+			color: white;
+		}
+		.btn-modal.cancel:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+		.btn-modal.allow {
+			background: white;
+			color: var(--black);
+		}
+		.btn-modal.allow:hover {
+			background: color-mix(in oklab, white 80%, transparent);
+		}
+
+		/* ── BTN (CTA / generic) ── */
+		.btn-connect {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--black);
+			color: white;
+			font-weight: 500;
+			height: 56px;
+			padding: 12px 24px;
+			font-family: var(--font-sans);
+			font-size: 1.25rem;
+			border: none;
+			cursor: pointer;
+			margin: 2rem auto 0;
+			transition: background 300ms;
+		}
+		.btn-connect:hover {
+			background: color-mix(in oklab, var(--black) 80%, transparent);
+		}
+
+		/* ── FOOTER ── */
+		footer {
+			margin-top: auto;
+			overflow: hidden;
+			padding: 0 1rem;
+		}
+		.footer-wordmark svg {
+			width: 100%;
+			height: auto;
+			color: var(--black);
+		}
+		.footer-dividers {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0.25rem;
+		}
+		.footer-dividers div {
+			width: 100%;
+			background: var(--black);
+		}
+		.footer-copy-bar {
+			display: flex;
+			align-items: center;
+			padding: 2rem;
+			background: var(--black);
+		}
+		.footer-copy-bar span {
+			font-size: clamp(1.875rem, 5vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			color: white;
+		}
+		.footer-nav {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			margin-top: 1rem;
+			padding-bottom: 1rem;
+		}
+		.footer-nav a {
+			color: var(--black);
+			font-size: 1rem;
+			font-weight: 700;
+			border-bottom: 1px dashed
+				color-mix(in oklab, var(--black) 20%, transparent);
+			transition: opacity 300ms;
+		}
+		.footer-nav a:hover {
+			opacity: 0.7;
+		}
+
+		@media (max-width: 768px) {
+			.hamburger {
+				display: flex;
+			}
+			.header-right .nav-link,
+			.header-right .btn-signup {
+				display: none;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- MOBILE OVERLAY -->
+		<div class="mobile-overlay" id="mobileMenu">
+			<div class="mobile-overlay-header">
+				<a href="index.html" style="color:var(--black)">
+					<svg
+						style="height:32px"
+						viewBox="0 0 1051 289"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</a>
+				<button class="close-menu" id="closeMenu" aria-label="Close menu">
+					✕
+				</button>
+			</div>
+			<nav class="mobile-nav">
+				<a href="system-overview.html">Overview</a>
+				<a href="about.html">About</a>
+				<a href="contact.html">Contact</a>
+				<a href="integrations.html">Integrations</a>
+			</nav>
+		</div>
+
+		<!-- HEADER -->
+		<header>
+			<div class="header-inner">
+				<a href="index.html" class="header-logo">
+					<svg
+						style="height:32px"
+						viewBox="0 0 1051 289"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</a>
+				<div class="header-right">
+					<a href="system-overview.html" class="nav-link">Overview</a>
+					<a href="sign-up.html" class="btn-signup">Sign up</a>
+					<button class="hamburger" id="menuToggle" aria-label="Open menu">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							style="width:20px;height:20px"
+						>
+							<line x1="3" y1="6" x2="21" y2="6" />
+							<line x1="3" y1="12" x2="21" y2="12" />
+							<line x1="3" y1="18" x2="21" y2="18" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- HERO -->
+		<section class="integration-hero">
+			<h1>Chargebee</h1>
+			<div class="stacked-bars">
+				<div style="height:2px"></div>
+				<div style="height:4px"></div>
+				<div style="height:8px"></div>
+				<div style="height:12px"></div>
+			</div>
+			<div class="logo-bar">
+				<img
+					src="assets/images/chargebee.svg"
+					alt="chargebee Logo"
+					loading="lazy"
+					decoding="async"
+				>
+			</div>
+		</section>
+
+		<!-- CTA BANNER -->
+		<section class="cta-banner">
+			<div class="cta-inner">
+				<h2>
+					<em
+						>Accept payments with chargebee, one of the most popular and secure
+						payment platforms globally.
+					</em>
+				</h2>
+				<button class="btn-connect" id="open-modal">
+					Connect Chargebee to Ælen
+				</button>
+			</div>
+		</section>
+
+		<!-- COMPANY DETAILS -->
+		<section class="company-details">
+			<div class="details-grid">
+				<h2>Company Details</h2>
+				<ul class="detail-list">
+					<li>
+						<p><span>Built by</span> - chargebee, Inc.</p>
+					</li>
+					<li>
+						<p>
+							<span>Website</span>
+							- <a href="https://www.chargebee.com">chargebee.com</a>
+						</p>
+					</li>
+					<li>
+						<p>
+							<span>Category</span>
+							-
+							<a
+								href="https://www.chargebee.com/us/webapps/mpp/chargebee-payments"
+								>Financial Services, Online Payments</a
+							>
+						</p>
+					</li>
+					<li>
+						<p>
+							<span>Docs</span>
+							-
+							<a href="https://developer.chargebee.com/docs/api/overview/"
+								>chargebee Integration Guide</a
+							>
+						</p>
+					</li>
+					<li>
+						<p>
+							<span>Contact</span>
+							-
+							<a href="https://www.chargebee.com/us/smarthelp/contact-us"
+								>chargebee Support</a
+							>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- HOW TO INTEGRATE -->
+		<section class="how-to">
+			<div class="how-to-bg">
+				<div class="how-to-inner">
+					<h1 id="how-to-integrate-chargebee-with-your-app">
+						How to Integrate chargebee with Your App
+					</h1>
+					<p>
+						Integrating chargebee into your app can enhance your payment
+						processing capabilities and offer a secure and convenient payment
+						option for your users. Follow these steps to get started:
+					</p>
+					<h2 id="step-1-visit-the-chargebee-developer-site">
+						Step 1: Visit the chargebee Developer Site
+					</h2>
+					<p>
+						Navigate to the
+						<a href="https://developer.chargebee.com/"
+							>chargebee Developer Site</a
+						>
+						and sign in with your chargebee account. If you don't have an
+						account, you'll need to create one.
+					</p>
+					<h2 id="step-2-create-a-new-app">Step 2: Create a New App</h2>
+					<p>
+						Once logged in, go to the <strong>Dashboard</strong> section and
+						select <strong>My Apps &amp; Credentials</strong>. Here, you can
+						create a new app by clicking on the
+						<strong>Create App</strong>
+						button.
+					</p>
+					<h2 id="step-3-obtain-your-api-keys">Step 3: Obtain Your API Keys</h2>
+					<p>
+						After creating your app, you will be directed to a page with your
+						app details, including your <strong>Client ID</strong> and
+						<strong>Secret</strong>. These are your API keys that will be used
+						to authenticate your integration.
+					</p>
+					<h2 id="step-4-integrate-with-your-app">
+						Step 4: Integrate with Your App
+					</h2>
+					<p>
+						Use the obtained API keys in your application to set up the
+						chargebee SDK. chargebee provides SDKs for different programming
+						languages and platforms, making it easier to integrate:
+					</p>
+					<ul>
+						<li>
+							For server-side implementations, select the SDK that matches your
+							backend technology.
+						</li>
+						<li>
+							For client-side integrations, such as web or mobile apps, use the
+							chargebee JavaScript SDK or mobile SDKs accordingly.
+						</li>
+					</ul>
+					<h2 id="step-5-test-your-integration">
+						Step 5: Test Your Integration
+					</h2>
+					<p>
+						chargebee offers a sandbox environment for you to test your
+						integration without making real payments. Ensure to test all payment
+						flows and scenarios to verify that everything works as expected.
+					</p>
+					<h2 id="getting-help">Getting Help</h2>
+					<p>
+						Should you encounter any issues or have questions during the
+						integration process, you can reach out to chargebee support at
+						<code>integrations@chargebee.com</code>
+						or consult the
+						<a href="https://developer.chargebee.com/docs/"
+							>chargebee Developer Documentation</a
+						>
+						for comprehensive guides and API references.
+					</p>
+					<p>
+						By following these steps, you can successfully integrate chargebee
+						into your app, offering a secure and versatile payment solution to
+						your users.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- MODAL -->
+		<div
+			class="modal"
+			id="modal"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="modal-title"
+		>
+			<div class="modal-overlay" id="modal-overlay"></div>
+			<div class="modal-panel">
+				<div id="modal-content">
+					<h1>Chargebee</h1>
+					<div class="stacked-bars" style="margin-top:0.5rem">
+						<div style="height:2px"></div>
+						<div style="height:4px"></div>
+						<div style="height:8px"></div>
+						<div style="height:12px"></div>
+					</div>
+					<div class="modal-titlebar">
+						<span id="modal-title">Connect Chargebee to Ælen</span>
+					</div>
+					<div class="modal-body">
+						<p>Ælen would like to</p>
+						<ul class="modal-list">
+							<li>— Access company information</li>
+							<li>— Communication and customer service permission</li>
+							<li>— Order Management permission</li>
+							<li>— Payment management permissions from business owner</li>
+						</ul>
+						<p class="modal-note">
+							*We prioritize your privacy, as stated in our
+							<a href="#">Privacy Policy</a>. By clicking "Allow access," you
+							grant Untitled permission to access your information.
+						</p>
+					</div>
+					<div class="modal-actions">
+						<button class="btn-modal cancel" type="button" id="close-modal">
+							Cancel
+						</button>
+						<button class="btn-modal allow" type="submit">Allow access</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- FOOTER -->
+		<footer>
+			<div class="footer-wordmark">
+				<svg
+					viewBox="0 0 1051 289"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M152.8 -1.52588e-05H411.2V62.8H290V110.4H406.4V172.8H290V221.2H414.4V284H211.6V228.8H110L81.6 284H0.8L152.8 -1.52588e-05ZM211.6 160.8V62.4H196.4L145.6 160.8H211.6ZM517.453 284C496.12 284 479.853 278.667 468.653 268C457.453 257.333 451.853 240.533 451.853 217.6V-1.52588e-05H529.453V208.8C529.453 216.267 531.053 221.6 534.253 224.8C537.72 227.733 542.786 229.2 549.453 229.2H561.053V284H517.453ZM699.269 288.8C676.335 288.8 656.069 284.133 638.469 274.8C621.135 265.467 607.669 252.267 598.069 235.2C588.469 218.133 583.669 198.4 583.669 176C583.669 153.6 588.469 133.867 598.069 116.8C607.669 99.7333 621.135 86.5333 638.469 77.2C656.069 67.8667 676.335 63.2 699.269 63.2C722.202 63.2 742.202 68.1333 759.269 78C776.335 87.6 789.402 101.467 798.469 119.6C807.535 137.467 812.069 158.4 812.069 182.4V196H663.669C663.935 208.533 667.402 218.133 674.069 224.8C680.735 231.2 689.669 234.4 700.869 234.4C708.869 234.4 715.535 232.933 720.869 230C726.202 226.8 730.069 221.6 732.469 214.4L809.269 218.4C803.402 241.067 790.735 258.533 771.269 270.8C751.802 282.8 727.802 288.8 699.269 288.8ZM734.469 154.4C734.202 142.133 730.869 132.667 724.469 126C718.335 119.333 709.935 116 699.269 116C689.135 116 680.869 119.467 674.469 126.4C668.069 133.333 664.469 142.667 663.669 154.4H734.469ZM842.869 68H912.469L915.669 136.8L906.069 136C908.469 110.133 915.802 91.6 928.069 80.4C940.335 68.9333 956.469 63.2 976.469 63.2C999.135 63.2 1017.14 70.4 1030.47 84.8C1043.8 98.9333 1050.47 119.067 1050.47 145.2V284H972.869V172C972.869 154.933 971.135 142.533 967.669 134.8C964.469 126.8 957.935 122.8 948.069 122.8C938.469 122.8 931.402 127.067 926.869 135.6C922.602 143.867 920.469 156 920.469 172V284H842.869V68Z"
+						fill="currentColor"
+					/>
+				</svg>
+			</div>
+			<div class="footer-dividers">
+				<div style="height:2px"></div>
+				<div style="height:4px"></div>
+				<div style="height:8px"></div>
+				<div style="height:12px"></div>
+			</div>
+			<div class="footer-copy-bar">
+				<span>ⓒ Copyright Lexington Themes <span id="year">2026</span></span>
+			</div>
+			<nav class="footer-nav">
+				<a href="system-overview.html">Overview</a>
+				<a href="about.html">About</a>
+				<a href="about.html">Careers</a>
+				<a href="contact.html">Contact</a>
+				<a href="#">X</a>
+				<a href="#">Linkedin</a>
+				<a href="#">Youtube</a>
+				<a href="#">Instagram</a>
+			</nav>
+		</footer>
+
+		<script>
+		const menuToggle = document.getElementById("menuToggle");
+		const mobileMenu = document.getElementById("mobileMenu");
+		const closeMenu = document.getElementById("closeMenu");
+		menuToggle?.addEventListener("click", () =>
+			mobileMenu.classList.add("active"),
+		);
+		closeMenu?.addEventListener("click", () =>
+			mobileMenu.classList.remove("active"),
+		);
+
+		// Integration permission modal
+		const modal = document.getElementById("modal");
+		const openModal = document.getElementById("open-modal");
+		const closeModal = document.getElementById("close-modal");
+		const modalOverlay = document.getElementById("modal-overlay");
+		openModal?.addEventListener("click", () => {
+			modal.classList.add("active");
+			document.body.style.overflow = "hidden";
+		});
+		const hideModal = () => {
+			modal.classList.remove("active");
+			document.body.style.overflow = "";
+		};
+		closeModal?.addEventListener("click", hideModal);
+		modalOverlay?.addEventListener("click", hideModal);
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") hideModal();
+		});
+
+		// Current year
+		document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+	</body>
+</html>

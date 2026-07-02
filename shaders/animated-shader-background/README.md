@@ -1,5 +1,7 @@
 # Animated Shader Background — AnoAI Aurora WebGL Hero (React + Three.js + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-viewport WebGL aurora fragment shader background integrated as the hero layer for the AnoAI product landing page. The shader renders a time-animated aurora effect using fractional Brownian motion (FBM) noise and a 35-iteration loop, producing flowing green-to-violet curtains with a subtle camera shake effect. The hero overlays a dark glassmorphic navbar, headline, and CTA buttons on top of the live canvas. A WebGL-unavailable fallback renders an animated CSS aurora instead of crashing the React tree. Built with React 18, TypeScript, Vite, and Tailwind CSS v4 on a shadcn project structure. Generated with Claude Fable 5.
 
 ## Run

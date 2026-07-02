@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sign Up — Snowpeak</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		>
+		<link rel="stylesheet" href="assets/styles.css">
+	</head>
+	<body>
+		<!-- ── Navigation ── -->
+		<nav style="position:relative; z-index:50;">
+			<div class="container">
+				<div class="nav-wrapper">
+					<div style="position:relative;">
+						<div class="nav-pill" id="nav-pill">
+							<a href="index.html" class="nav-logo">Snowpeak</a>
+							<button
+								class="nav-icon-btn orange"
+								id="dropdown-toggle"
+								aria-label="Menu"
+								style="font-size:1.25rem; font-weight:700;"
+							>
+								+
+							</button>
+							<button
+								class="nav-icon-btn dark"
+								id="searchButton"
+								aria-label="Search"
+							>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<circle cx="11" cy="11" r="8" />
+									<path d="m21 21-4.35-4.35" />
+								</svg>
+							</button>
+						</div>
+						<div class="dropdown-panel" id="dropdown-panel">
+							<a href="#" class="dropdown-link pink">Buy Snowpeak</a>
+							<a href="index.html" class="dropdown-link white">Overview</a>
+							<a href="blog.html" class="dropdown-link white">Blog</a>
+							<a href="blog.html" class="dropdown-link white">Top Stories</a>
+							<a href="podcast.html" class="dropdown-link white">Podcast</a>
+							<a href="sign-in.html" class="dropdown-link accent">Sign in</a>
+							<a href="sign-up.html" class="dropdown-link orange">Sign up</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- ── Search Modal ── -->
+		<div class="search-modal" id="searchModal">
+			<div class="search-modal-inner">
+				<div class="search-modal-overlay" id="modalOverlay"></div>
+				<div class="search-modal-content">
+					<input
+						type="text"
+						class="search-input"
+						id="searchInput"
+						placeholder="Search posts or podcasts..."
+						autocomplete="off"
+					>
+					<div class="search-results" id="searchResults"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ── Auth Page ── -->
+		<main class="auth-page">
+			<div class="auth-card">
+				<h1 class="auth-title">Sign up</h1>
+				<p class="auth-subtitle">
+					Create your Snowpeak account and stay informed.
+				</p>
+
+				<form onsubmit="return false;">
+					<div class="auth-field">
+						<label class="auth-label" for="name">Full Name</label>
+						<input
+							type="text"
+							id="name"
+							class="auth-input"
+							placeholder="Your name"
+							autocomplete="name"
+						>
+					</div>
+					<div class="auth-field">
+						<label class="auth-label" for="email">Email</label>
+						<input
+							type="email"
+							id="email"
+							class="auth-input"
+							placeholder="you@example.com"
+							autocomplete="email"
+						>
+					</div>
+					<div class="auth-field">
+						<label class="auth-label" for="password">Password</label>
+						<input
+							type="password"
+							id="password"
+							class="auth-input"
+							placeholder="••••••••"
+							autocomplete="new-password"
+						>
+					</div>
+					<button type="submit" class="auth-submit orange">
+						Create account
+					</button>
+				</form>
+
+				<div class="auth-switch">
+					Already have an account? <a href="sign-in.html">Sign in</a>
+				</div>
+
+				<div
+					style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap;"
+				>
+					<a
+						href="index.html"
+						class="btn btn-white"
+						style="height:2.25rem; padding:0 1rem; border-radius:0.75rem; font-size:0.8rem;"
+						>Overview</a
+					>
+					<a
+						href="blog.html"
+						class="btn btn-white"
+						style="height:2.25rem; padding:0 1rem; border-radius:0.75rem; font-size:0.8rem;"
+						>Blog</a
+					>
+					<a
+						href="podcast.html"
+						class="btn btn-white"
+						style="height:2.25rem; padding:0 1rem; border-radius:0.75rem; font-size:0.8rem;"
+						>Podcast</a
+					>
+				</div>
+			</div>
+		</main>
+
+		<script>
+		const dropdownToggle = document.getElementById("dropdown-toggle");
+		const dropdownPanel = document.getElementById("dropdown-panel");
+		dropdownToggle.addEventListener("click", () => {
+			dropdownPanel.classList.toggle("open");
+			dropdownToggle.textContent = dropdownPanel.classList.contains("open")
+				? "×"
+				: "+";
+		});
+		document.addEventListener("click", (e) => {
+			if (
+				!e.target.closest("#nav-pill") &&
+				!e.target.closest("#dropdown-panel")
+			) {
+				dropdownPanel.classList.remove("open");
+				dropdownToggle.textContent = "+";
+			}
+		});
+
+		const searchButton = document.getElementById("searchButton");
+		const searchModal = document.getElementById("searchModal");
+		const modalOverlay = document.getElementById("modalOverlay");
+		const searchInput = document.getElementById("searchInput");
+		const searchResults = document.getElementById("searchResults");
+
+		searchButton.addEventListener("click", (e) => {
+			e.preventDefault();
+			searchModal.style.display = "block";
+			document.body.style.overflow = "hidden";
+			setTimeout(() => searchInput.focus(), 100);
+		});
+
+		function closeSearch() {
+			searchModal.style.display = "none";
+			document.body.style.overflow = "";
+			searchInput.value = "";
+			searchResults.innerHTML = "";
+			searchResults.style.display = "none";
+		}
+
+		modalOverlay.addEventListener("click", closeSearch);
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && searchModal.style.display !== "none")
+				closeSearch();
+		});
+		</script>
+	</body>
+</html>

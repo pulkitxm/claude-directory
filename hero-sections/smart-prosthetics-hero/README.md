@@ -1,5 +1,7 @@
 # Smart Prosthetics — Cinematic Hero Section (React + TypeScript + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A single-page, full-screen hero section for a smart prosthetics brand featuring a muted autoplaying background video, a centered pill-style navbar with two separate pill components, and bottom-left-aligned hero copy with a badge, headline, subtext, and a CTA with hover micro-interactions. Built with React 18, TypeScript, and Tailwind CSS on Vite; the entire page lives in `src/App.tsx`. Generated with Claude Fable 5.
 
 ## Run

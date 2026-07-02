@@ -1,0 +1,1227 @@
+<!DOCTYPE html><html lang="en"><head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Aubergine — Web Development Subscriptions</title>
+		<meta name="description" content="A design agency without a twist. Web development subscriptions to scale your life and business.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+		<link href="https://api.fontshare.com/v2/css?f[]=clash-display@1&amp;display=swap" rel="stylesheet">
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body data-aos-easing="ease" data-aos-duration="600" data-aos-delay="0">
+		<!-- Grid background -->
+		<div class="grid-bg" aria-hidden="true">
+			<svg xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<pattern id="grid-pattern" width="32" height="32" patternUnits="userSpaceOnUse" x="50%" y="100%" patternTransform="translate(0 -1)">
+						<path d="M0 32V.5H32" fill="none" stroke="currentColor"></path>
+					</pattern>
+				</defs>
+				<rect width="100%" height="100%" fill="url(#grid-pattern)"></rect>
+			</svg>
+		</div>
+
+		<!-- Search button -->
+		<button type="button" id="searchButton" class="search-btn" aria-label="Search posts">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor">
+				<path d="M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+			</svg>
+		</button>
+
+		<!-- Search modal -->
+		<div id="searchModal" class="search-modal" role="dialog" aria-modal="true">
+			<div class="search-modal-wrap">
+				<div class="search-overlay" id="modalOverlay"></div>
+				<div class="search-inner">
+					<input type="text" id="searchInput" placeholder="Search posts..." autocomplete="off" style="">
+					<div id="searchResults" class="scrollbar-hide"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Nav -->
+		<div id="nav-wrapper">
+			<div id="nav-container">
+				<div class="nav-inner">
+					<div class="nav-brand">
+						<a href="index.html" aria-label="Homepage">
+							<svg class="logo-svg" viewBox="0 0 126 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M61.3444 77.0485L54.0444 116.449C53.2444 120.949 56.6443 125.049 61.1443 125.049H64.4444C68.9444 125.049 72.4444 120.949 71.5444 116.449L64.2444 77.0485C63.9444 75.4485 61.6444 75.4485 61.3444 77.0485Z" fill="currentColor"></path>
+								<path d="M67.5443 76.3485L76.8443 115.349C77.9443 119.749 82.7443 122.149 86.8443 120.249L89.8443 118.949C93.9443 117.149 95.4443 111.949 92.8443 108.249L70.1443 75.2486C69.2443 73.8486 67.1443 74.7485 67.5443 76.3485Z" fill="currentColor"></path>
+								<path d="M72.9445 73.1486L97.3444 104.949C100.144 108.549 105.444 108.749 108.444 105.349L110.644 102.849C113.644 99.4485 112.944 94.1485 109.044 91.8485L74.8444 70.9485C73.4444 70.1485 71.9445 71.8486 72.9445 73.1486Z" fill="currentColor"></path>
+								<path d="M76.5443 68.0485L111.744 87.2485C115.744 89.4485 120.744 87.4485 122.144 83.1485L123.144 80.0485C124.544 75.7485 121.644 71.2485 117.144 70.6485L77.4444 65.4485C75.8444 65.1485 75.1443 67.2485 76.5443 68.0485Z" fill="currentColor"></path>
+								<path d="M77.8444 61.9485L117.844 65.1486C122.344 65.5486 126.144 61.6486 125.644 57.1486L125.344 53.8485C124.844 49.3485 120.444 46.3486 116.044 47.6486L77.5444 59.0485C75.9444 59.5485 76.2444 61.8485 77.8444 61.9485Z" fill="currentColor"></path>
+								<path d="M76.4444 55.8485L114.244 42.5485C118.544 41.0485 120.344 36.0485 118.144 32.0485L116.444 29.1486C114.144 25.2486 108.944 24.3485 105.444 27.2485L74.9444 53.3485C73.8444 54.3485 74.9444 56.3485 76.4444 55.8485Z" fill="currentColor"></path>
+								<path d="M72.7444 50.8485L101.844 23.2486C105.144 20.1486 104.744 14.7486 101.144 12.1486L98.4445 10.2486C94.7445 7.54856 89.5444 8.94857 87.6444 12.9486L70.4445 49.1486C69.7445 50.5486 71.5444 51.9485 72.7444 50.8485Z" fill="currentColor"></path>
+								<path d="M67.3444 47.7485L82.7444 10.7485C84.4444 6.54854 81.9444 1.84851 77.5444 0.848515L74.3444 0.148564C69.9444 -0.751436 65.7444 2.54853 65.6444 7.04853L64.6444 47.1486C64.4444 48.7486 66.6444 49.2485 67.3444 47.7485Z" fill="currentColor"></path>
+								<path d="M61.0444 47.1486L60.0444 7.04853C59.9444 2.54853 55.7444 -0.751436 51.3444 0.148564L48.1444 0.848515C43.7444 1.74851 41.2444 6.54854 42.9444 10.7485L58.3444 47.7485C58.9444 49.2485 61.1444 48.7486 61.0444 47.1486Z" fill="currentColor"></path>
+								<path d="M55.1444 49.1485L37.9444 12.9485C36.0444 8.84853 30.8444 7.54851 27.1444 10.2485L24.4444 12.1485C20.7444 14.8485 20.4444 20.1485 23.7444 23.2485L52.8444 50.8485C54.0444 51.9485 55.8444 50.5485 55.1444 49.1485Z" fill="currentColor"></path>
+								<path d="M50.5444 53.3485L20.0444 27.2485C16.6444 24.3485 11.3444 25.2486 9.04443 29.1486L7.34441 32.0485C5.04441 35.9485 6.94444 40.9485 11.2444 42.5485L49.0444 55.8485C50.6444 56.3485 51.7444 54.3485 50.5444 53.3485Z" fill="currentColor"></path>
+								<path d="M48.0443 59.0485L9.64435 47.6486C5.34435 46.3486 0.844327 49.3485 0.344327 53.8485L0.0443394 57.1486C-0.455661 61.6486 3.34433 65.4486 7.84433 65.1486L47.8443 61.9485C49.3443 61.8485 49.6443 59.5485 48.0443 59.0485Z" fill="currentColor"></path>
+								<path d="M48.1444 65.3485L8.44435 70.5485C3.94435 71.1485 1.04435 75.6485 2.44435 79.9485L3.44435 83.0485C4.84435 87.3485 9.84434 89.3486 13.8443 87.1486L49.0444 67.9485C50.4444 67.2485 49.7444 65.1485 48.1444 65.3485Z" fill="currentColor"></path>
+								<path d="M50.7444 71.0485L16.5444 91.9486C12.6444 94.3486 11.9444 99.6486 14.9444 102.949L17.1444 105.449C20.1444 108.849 25.5444 108.649 28.2444 105.049L52.6444 73.2485C53.6444 71.8485 52.1444 70.1485 50.7444 71.0485Z" fill="currentColor"></path>
+								<path d="M55.3443 75.1486L32.6443 108.149C30.0443 111.849 31.5443 117.049 35.6443 118.849L38.6443 120.149C42.7443 121.949 47.5443 119.649 48.6443 115.249L57.9443 76.2485C58.4443 74.7485 56.3443 73.8486 55.3443 75.1486Z" fill="currentColor"></path>
+							</svg>
+						</a>
+						<button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" style="width:1.25rem;height:1.25rem">
+								<path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+							</svg>
+						</button>
+					</div>
+					<nav id="nav-menu">
+						<a href="work/index.html" class="nav-link">Work</a>
+						<a href="index.html#services" class="nav-link">Services</a>
+						<a href="blog/index.html" class="nav-link">Blog</a>
+						<a href="team/index.html" class="nav-link">Team</a>
+						<a href="system/overview.html" class="nav-link">Overview</a>
+						<a href="https://lexingtonthemes.com/templates/aubergine" class="btn btn-accent btn-md">Buy Aubergine</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<main style="position:relative;flex:1;">
+			<!-- Hero -->
+			<section class="hero-section">
+				<div class="container">
+					<div class="hero-content aos-init aos-animate" data-aos="fade-down" data-aos-duration="1500">
+						<h1 class="heading-xl">
+							Web development subscriptions<span class="text-dim-block">to scale your life and business.</span>
+						</h1>
+						<p class="hero-sub">A design agency without a twist</p>
+						<div class="hero-actions">
+							<a href="index.html#pricing" class="btn btn-accent btn-lg">See all plans</a>
+							<a href="work/index.html" class="btn btn-dark btn-lg">Our work</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Logo strip -->
+			<section>
+				<div class="container py-24">
+					<div class="logo-strip">
+						<div class="logo-strip-grid">
+							<div>
+								<p class="logo-strip-label">
+									Some of the amazing companies we have worked with
+								</p>
+							</div>
+							<div class="logo-strip-logos" style="margin-top:2rem;">
+								<img src="assets/images/classpass.svg" alt="ClassPass" loading="lazy">
+								<img src="assets/images/discord.svg" alt="Discord" loading="lazy">
+								<img src="assets/images/splunk.svg" alt="Splunk" loading="lazy">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- How it works -->
+			<section style="overflow:hidden;position:relative;">
+				<div class="container py-24">
+					<div data-aos="fade-up" data-aos-duration="2000" class="section-header aos-init">
+						<h2 class="heading-lg">
+							We did reinvent the
+							<span class="text-dim-block">wheel and also just design</span>
+						</h2>
+					</div>
+					<div class="steps-grid">
+						<div class="step-item aos-init" data-aos="fade-down" data-aos-duration="500">
+							<div class="step-num">1</div>
+							<h3 class="step-title">Submit</h3>
+							<p class="step-desc">
+								Subscribe to a plan &amp; request as many designs as you'd like.
+							</p>
+						</div>
+						<div class="step-item aos-init" data-aos="fade-down" data-aos-duration="1000">
+							<div class="step-num">2</div>
+							<h3 class="step-title">Refine</h3>
+							<p class="step-desc">
+								Receive your design within a few business days on average.
+							</p>
+						</div>
+						<div class="step-item aos-init" data-aos="fade-down" data-aos-duration="1500">
+							<div class="step-num">3</div>
+							<h3 class="step-title">Build</h3>
+							<p class="step-desc">
+								We'll revise the designs until you're 100% satisfied.
+							</p>
+						</div>
+						<div class="step-item aos-init" data-aos="fade-down" data-aos-duration="2500">
+							<div class="step-num">4</div>
+							<h3 class="step-title">Enjoy</h3>
+							<p class="step-desc">Enjoy your marvellous new website!</p>
+						</div>
+					</div>
+
+					<!-- Big quote -->
+					<div class="quote-block aos-init" data-aos="fade-up" data-aos-duration="2000">
+						<blockquote>
+							"Aubergine Studio are a rare breed of designers and developers
+							they understands business needs."
+						</blockquote>
+						<cite>Gerard Depardieu</cite>
+					</div>
+
+					<!-- 3 feature cards -->
+					<div class="features-three-grid">
+						<div class="feature-card-item">
+							<h3>Totally async</h3>
+							<p>
+								Don't like meetings? We don't either; so much so that we've
+								outlawed them.
+							</p>
+						</div>
+						<div class="feature-card-item">
+							<h3>Manage with Trello</h3>
+							<p>
+								Manage your design board using Trello. View active, queued, and
+								completed tasks.
+							</p>
+						</div>
+						<div class="feature-card-item">
+							<h3>Invite unlimited team members</h3>
+							<p>
+								Invite your entire team, so anyone can submit requests and track
+								their progress.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Services -->
+			<section id="services" style="overflow:hidden;scroll-margin-top:5rem;">
+				<div class="container py-24">
+					<div data-aos="fade-up" data-aos-duration="2000" class="aos-init">
+						<h2 class="heading-lg">
+							We can do many things for you,<span class="text-dim-block">but this is what we do best</span>
+						</h2>
+						<div style="margin-top:3rem;">
+							<a href="index.html#pricing" class="btn btn-dark btn-md">Get a grasp of all our services</a>
+						</div>
+					</div>
+					<ul class="services-checklist-4col">
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Websites
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Mobile Apps
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Logos
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Design systems
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							SAAS
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Wireframes
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Stationery
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Pitch decks
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Slide decks
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Direct mail
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Infographics
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Brochures
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Signage
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Brand guides
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Social media graphics
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Billboards
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Trade show banners
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Email graphics
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Resumes
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Business cards
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Packaging
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Blog graphics
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Digital ads
+						</li>
+						<li>
+							<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+								<path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+							</svg>
+							Icons
+						</li>
+					</ul>
+					<div class="service-rows" style="margin-top:2rem;">
+						<div class="service-row group">
+							<h3>
+								3D Design
+								<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+									<path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+								</svg>
+							</h3>
+						</div>
+						<div class="service-row group">
+							<h3>
+								Design systems
+								<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+									<path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+								</svg>
+							</h3>
+						</div>
+						<div class="service-row group">
+							<h3>
+								Design Systems
+								<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+									<path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+								</svg>
+							</h3>
+						</div>
+						<div class="service-row group">
+							<h3>
+								Product Design
+								<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+									<path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+								</svg>
+							</h3>
+						</div>
+						<div class="service-row group">
+							<h3>
+								UI/UX Design
+								<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+									<path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+								</svg>
+							</h3>
+						</div>
+						<div class="service-row group">
+							<h3>
+								Web Development
+								<svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+									<path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+								</svg>
+							</h3>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Work preview -->
+			<section style="overflow:hidden;position:relative;">
+				<div class="container py-24">
+					<div data-aos="fade-up" data-aos-duration="2000" class="aos-init">
+						<h2 class="heading-lg">
+							Non award winning designs,<span class="text-dim-block">and simply just that and that.</span>
+						</h2>
+						<div style="margin-top:3rem;">
+							<a href="work/index.html" class="btn btn-dark btn-md">See all our work</a>
+						</div>
+					</div>
+					<div class="work-brand-grid">
+						<div class="work-brand-card tilt-card" data-tilt="" data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+							<a href="work/index.html" class="work-brand-link" aria-label="JetBrains ToolBox"></a>
+							<img src="assets/images/jetbrains.svg" alt="JetBrains ToolBox" loading="lazy" class="work-brand-logo">
+							<blockquote class="work-brand-quote">
+								<span class="work-brand-year">2024</span>
+								<h3 class="work-brand-title">
+									JetBrains ToolBox / <span>Software Development</span>
+								</h3>
+								<p>
+									IntelliJ IDEA is undoubtedly the top-choice IDE for software
+									developers.
+								</p>
+							</blockquote>
+						<div class="js-tilt-glare" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; border-radius: inherit;"><div class="js-tilt-glare-inner" style="position: absolute; top: 50%; left: 50%; pointer-events: none; background-image: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%); transform: rotate(180deg) translate(-50%, -50%); transform-origin: 0% 0%; opacity: 0; width: 824px; height: 824px;"></div></div></div>
+						<div class="work-brand-card tilt-card" data-tilt="" data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+							<a href="work/index.html" class="work-brand-link" aria-label="Figma"></a>
+							<img src="assets/images/figma.svg" alt="Figma" loading="lazy" class="work-brand-logo">
+							<blockquote class="work-brand-quote">
+								<span class="work-brand-year">2022</span>
+								<h3 class="work-brand-title">
+									Figma /
+									<span>Design &amp; Development Collaboration Platform</span>
+								</h3>
+								<p>
+									Figma is an online whiteboard where everyone who builds
+									products can collaborate.
+								</p>
+							</blockquote>
+						<div class="js-tilt-glare" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; border-radius: inherit;"><div class="js-tilt-glare-inner" style="position: absolute; top: 50%; left: 50%; pointer-events: none; background-image: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%); transform: rotate(180deg) translate(-50%, -50%); transform-origin: 0% 0%; opacity: 0; width: 824px; height: 824px;"></div></div></div>
+						<div class="work-brand-card tilt-card" data-tilt="" data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+							<a href="work/index.html" class="work-brand-link" aria-label="Kayako"></a>
+							<img src="assets/images/kayako.svg" alt="Kayako" loading="lazy" class="work-brand-logo">
+							<blockquote class="work-brand-quote">
+								<span class="work-brand-year">2022</span>
+								<h3 class="work-brand-title">
+									Kayako /
+									<span>Help Desk Software Development &amp; Design</span>
+								</h3>
+								<p>
+									Kayako provides a complete help desk experience with a fully
+									customizable knowledge base.
+								</p>
+							</blockquote>
+						<div class="js-tilt-glare" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; border-radius: inherit;"><div class="js-tilt-glare-inner" style="position: absolute; top: 50%; left: 50%; pointer-events: none; background-image: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%); transform: rotate(180deg) translate(-50%, -50%); transform-origin: 0% 0%; opacity: 0; width: 824px; height: 824px;"></div></div></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Benefits -->
+			<section style="overflow:hidden;position:relative;">
+				<div class="container py-24">
+					<div class="section-header text-center aos-init" data-aos="fade-up" data-aos-duration="2000">
+						<h2 class="heading-md">Membership benefits</h2>
+						<p class="text-muted mt-4">
+							Perks so good you'll never need to go
+							<span class="block-md">anywhere else for your design. Seriously.</span>
+						</p>
+					</div>
+					<div class="benefits-grid">
+						<div class="benefit-item">
+							<div class="benefit-icon aos-init" data-aos="fade-right" data-aos-duration="2000">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" class="benefit-svg">
+									<path d="M26,4V28H6V4H26m0-2H6A2,2,0,0,0,4,4V28a2,2,0,0,0,2,2H26a2,2,0,0,0,2-2V4A2,2,0,0,0,26,2Z"></path>
+									<path d="M9 23H11V25H9zM21 23H23V25H21zM9 18H11V20H9zM21 18H23V20H21zM9 13H11V15H9zM15 23H17V25H15zM15 18H17V20H15zM15 13H17V15H15zM21 13H23V15H21zM9 7H23V10H9z"></path>
+								</svg>
+							</div>
+							<h3 class="benefit-title">Calculable Monthly Costs</h3>
+							<p class="benefit-desc">
+								Replaces a web department, agency, or freelancer with a simple
+								monthly fee, without any hidden fees or contracts.
+							</p>
+						</div>
+						<div class="benefit-item">
+							<div class="benefit-icon aos-init" data-aos="fade-down" data-aos-duration="2000">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" class="benefit-svg">
+									<path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"></path>
+									<path d="M20.59 22L15 16.41 15 7 17 7 17 15.58 22 20.59 20.59 22z"></path>
+								</svg>
+							</div>
+							<h3 class="benefit-title">Get 24/7 Control</h3>
+							<p class="benefit-desc">
+								Submit as many requests as you like. We will adapt respectively
+								and work on them one by one as you submit them.
+							</p>
+						</div>
+						<div class="benefit-item">
+							<div class="benefit-icon aos-init" data-aos="fade-left" data-aos-duration="2000">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" class="benefit-svg">
+									<path d="M4 16H16V18H4zM2 11H12V13H2z"></path>
+									<path d="M29.9189,16.6064l-3-7A.9985.9985,0,0,0,26,9H23V7a1,1,0,0,0-1-1H6V8H21V20.5562A3.9924,3.9924,0,0,0,19.1421,23H12.8579a4,4,0,1,0,0,2h6.2842a3.9806,3.9806,0,0,0,7.7158,0H29a1,1,0,0,0,1-1V17A.9965.9965,0,0,0,29.9189,16.6064ZM9,26a2,2,0,1,1,2-2A2.0023,2.0023,0,0,1,9,26ZM23,11h2.3408l2.1431,5H23Zm0,15a2,2,0,1,1,2-2A2.0023,2.0023,0,0,1,23,26Zm5-3H26.8579A3.9954,3.9954,0,0,0,23,20V18h5Z"></path>
+								</svg>
+							</div>
+							<h3 class="benefit-title">Fast &amp; Professional</h3>
+							<p class="benefit-desc">
+								With more than 5 years of experience in the web industry and
+								more than 100k customers, we deliver high quality.
+							</p>
+						</div>
+						<div class="benefit-item">
+							<div class="benefit-icon aos-init" data-aos="fade-right" data-aos-duration="2000">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" class="benefit-svg">
+									<path d="M30,10.68l-2-6A1,1,0,0,0,27,4H5a1,1,0,0,0-1,.68l-2,6A1.19,1.19,0,0,0,2,11v6a1,1,0,0,0,1,1H4V28H6V18h6V28H28V18h1a1,1,0,0,0,1-1V11A1.19,1.19,0,0,0,30,10.68ZM26,26H14V18H26Zm2-10H24V12H22v4H17V12H15v4H10V12H8v4H4V11.16L5.72,6H26.28L28,11.16Z"></path>
+								</svg>
+							</div>
+							<h3 class="benefit-title">Spend Time on Your Business</h3>
+							<p class="benefit-desc">
+								Simple communication in email or Slack.
+							</p>
+						</div>
+						<div class="benefit-item">
+							<div class="benefit-icon aos-init" data-aos="fade-up" data-aos-duration="2000">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" class="benefit-svg">
+									<path d="M12 8V24H8V8h4m0-2H8A2 2 0 006 8V24a2 2 0 002 2h4a2 2 0 002-2V8a2 2 0 00-2-2zM24 8V24H20V8h4m0-2H20a2 2 0 00-2 2V24a2 2 0 002 2h4a2 2 0 002-2V8a2 2 0 00-2-2z"></path>
+								</svg>
+							</div>
+							<h3 class="benefit-title">Flexibility is Important</h3>
+							<p class="benefit-desc">
+								Pause or cancel your plan anytime. No long-term contracts or
+								unexpected fees.
+							</p>
+						</div>
+						<div class="benefit-item">
+							<div class="benefit-icon aos-init" data-aos="fade-left" data-aos-duration="2000">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" class="benefit-svg">
+									<path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z"></path>
+									<path d="M11.5 11A2.5 2.5 0 1014 13.5 2.48 2.48 0 0011.5 11zM20.5 11A2.5 2.5 0 1023 13.5 2.48 2.48 0 0020.5 11zM16 24a8 8 0 006.85-3.89l-1.71-1a6 6 0 01-10.28 0l-1.71 1A8 8 0 0016 24z"></path>
+								</svg>
+							</div>
+							<h3 class="benefit-title">Satisfaction Guarantee</h3>
+							<p class="benefit-desc">
+								Not happy with the result? Get your money back in your first
+								month.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Testimonials -->
+			<section style="overflow:hidden;">
+				<div class="container py-24">
+					<div class="text-center" style="max-width:48rem;margin:0 auto;">
+						<h2 class="heading-md">
+							We have worked with the creme of the
+							<span class="text-dim-block">crop and this is what they have to say</span>
+						</h2>
+					</div>
+					<ul class="testimonials-masonry mt-12" role="list">
+						<li class="testimonials-masonry-small">
+							<figure class="testimonial-figure">
+								<div class="testimonial-inner">
+									<div class="testimonial-meta">
+										<div>
+											<span class="testimonial-name">Liam Carter</span>
+											<a href="#" class="testimonial-role">Founder of DesignFlow</a>
+										</div>
+									</div>
+									<blockquote>
+										<p class="testimonial-quote">
+											Lexington Themes has been a game-changer for our projects.
+											The attention to detail and clean design aesthetics have
+											helped us launch multiple sites seamlessly.
+										</p>
+									</blockquote>
+								</div>
+							</figure>
+						</li>
+						<li class="testimonials-masonry-large">
+							<figure class="testimonial-figure">
+								<div class="testimonial-inner">
+									<div class="testimonial-meta testimonial-meta-photo">
+										<div class="testimonial-photo-wrap">
+											<img src="assets/images/testimonial-1.webp" alt="Sofia Andersson" loading="lazy" class="testimonial-avatar">
+										</div>
+										<div>
+											<span class="testimonial-name testimonial-name-lg">Sofia Andersson</span>
+											<a href="#" class="testimonial-role testimonial-role-lg">UI/UX Designer at BrightLabs</a>
+										</div>
+									</div>
+									<blockquote>
+										<p class="testimonial-quote testimonial-quote-lg">
+											I've used several templates from Lexington Themes, and
+											they never disappoint. The designs are modern, flexible,
+											and incredibly easy to work with.
+										</p>
+									</blockquote>
+								</div>
+							</figure>
+						</li>
+						<li class="testimonials-masonry-large">
+							<figure class="testimonial-figure">
+								<div class="testimonial-inner">
+									<div class="testimonial-meta testimonial-meta-photo">
+										<div class="testimonial-photo-wrap">
+											<img src="assets/images/testimonial-2.webp" alt="Daniel Fischer" loading="lazy" class="testimonial-avatar">
+										</div>
+										<div>
+											<span class="testimonial-name testimonial-name-lg">Daniel Fischer</span>
+											<a href="#" class="testimonial-role testimonial-role-lg">Founder of LaunchStack</a>
+										</div>
+									</div>
+									<blockquote>
+										<p class="testimonial-quote testimonial-quote-lg">
+											As someone who values both aesthetics and performance, I
+											can confidently say that these templates strike the
+											perfect balance. They have significantly improved our
+											workflow.
+										</p>
+									</blockquote>
+								</div>
+							</figure>
+						</li>
+						<li class="testimonials-masonry-small">
+							<figure class="testimonial-figure">
+								<div class="testimonial-inner">
+									<div class="testimonial-meta">
+										<div>
+											<span class="testimonial-name">Emma Larsen</span>
+											<a href="#" class="testimonial-role">Product Designer at PixelForge</a>
+										</div>
+									</div>
+									<blockquote>
+										<p class="testimonial-quote">
+											Luca's designs have been instrumental in our product
+											success. The layouts are intuitive, and the styling is on
+											point. Highly recommended!
+										</p>
+									</blockquote>
+								</div>
+							</figure>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Pricing -->
+			<section id="pricing" style="scroll-margin-top:5rem;">
+				<div class="container py-24">
+					<div class="section-header aos-init" data-aos="fade-up" data-aos-duration="2000">
+						<h2 class="heading-lg">Memberships levels</h2>
+						<p class="text-muted mt-4">Choose a plan that's right for you.</p>
+					</div>
+					<div class="pricing-grid-v2">
+						<!-- Monthly — accent gradient card -->
+						<div class="pricing-card-v2 pricing-monthly">
+							<p class="pricing-name-v2 pricing-name-dark">Monthly</p>
+							<div class="pricing-price-block">
+								<p class="pricing-price-v2 pricing-price-dark">$7,999/m</p>
+								<p class="pricing-sub pricing-sub-dark">
+									Pause or cancel anytime.
+								</p>
+							</div>
+							<div class="pricing-cta-v2">
+								<a href="#" class="btn btn-dark btn-lg" style="width:100%;">Subscribe</a>
+							</div>
+							<ul class="pricing-features-v2">
+								<li class="pricing-feature-v2 pricing-feature-dark">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Unique one-page website design
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-dark">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Figma desktop &amp; mobile designs
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-dark">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Figma file &amp; styleguide
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-dark">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Video guide &amp; overview
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-dark">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Hand-over support
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-dark">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Slack access
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-muted">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M10 10l4 4m0 -4l-4 4"></path>
+									</svg>Live one-page website
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-muted">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M10 10l4 4m0 -4l-4 4"></path>
+									</svg>Fully responsive
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-muted">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M10 10l4 4m0 -4l-4 4"></path>
+									</svg>Subtle interactions
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-muted">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M10 10l4 4m0 -4l-4 4"></path>
+									</svg>14 day post-launch support
+								</li>
+							</ul>
+						</div>
+						<!-- Quarterly -->
+						<div class="pricing-card-v2 pricing-dark">
+							<p class="pricing-name-v2">Quarterly</p>
+							<div class="pricing-price-block">
+								<p class="pricing-price-v2">$15,499/m</p>
+								<p class="pricing-sub">Save half per month.</p>
+							</div>
+							<div class="pricing-cta-v2">
+								<a href="#" class="btn btn-accent btn-lg" style="width:100%;">Subscribe</a>
+							</div>
+							<ul class="pricing-features-v2">
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Unique one-page website design
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Figma desktop &amp; mobile designs
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Figma file &amp; styleguide
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Video guide &amp; overview
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Hand-over support
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Slack access
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Live one-page website
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Fully responsive
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Subtle interactions
+								</li>
+								<li class="pricing-feature-v2 pricing-feature-muted">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M10 10l4 4m0 -4l-4 4"></path>
+									</svg>14 day post-launch support
+								</li>
+							</ul>
+						</div>
+						<!-- Yearly -->
+						<div class="pricing-card-v2 pricing-dark">
+							<p class="pricing-name-v2">Yearly</p>
+							<div class="pricing-price-block">
+								<p class="pricing-price-v2">$30,999/m</p>
+								<p class="pricing-sub">Save a lot per month.</p>
+							</div>
+							<div class="pricing-cta-v2">
+								<a href="#" class="btn btn-accent btn-lg" style="width:100%;">Subscribe</a>
+							</div>
+							<ul class="pricing-features-v2">
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Unique one-page website design
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Figma desktop &amp; mobile designs
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Figma file &amp; styleguide
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Video guide &amp; overview
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Hand-over support
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Slack access
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Live one-page website
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Fully responsive
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>Subtle interactions
+								</li>
+								<li class="pricing-feature-v2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<circle cx="12" cy="12" r="9"></circle>
+										<path d="M9 12l2 2l4 -4"></path>
+									</svg>14 day post-launch support
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA -->
+			<section>
+				<div class="container py-24">
+					<div class="text-center">
+						<h2 class="heading-lg">
+							Apply now and we will let you know
+							<span class="text-dim-block">if we are the right fit for you in 48h.</span>
+						</h2>
+						<p class="text-muted mt-5 text-center">
+							Clean design and well crafted websites are waiting for you.
+						</p>
+					</div>
+					<div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:3rem;justify-content:center;">
+						<a href="index.html#pricing" class="btn btn-accent btn-lg">See all plans</a>
+						<a href="work/index.html" class="btn btn-dark btn-lg">Our work</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- FAQ -->
+			<section>
+				<div class="container py-24">
+					<div class="section-header aos-init" data-aos="fade-up">
+						<h2 class="heading-lg">Frequently asked questions</h2>
+					</div>
+					<div class="faq-list mt-12 aos-init" data-aos="fade-up">
+						<div class="faq-item">
+							<button class="faq-question">
+								Why not just hire a full-time designer?
+								<svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
+								</svg>
+							</button>
+							<div class="faq-answer">
+								<p>
+									A full-time senior designer costs $100k+/year, and that's
+									before benefits, equipment, and overhead. With Aubergine, you
+									get a senior designer for a fraction of the cost, with the
+									flexibility to scale up or down as needed. Plus, you get
+									access to our entire team's expertise.
+								</p>
+							</div>
+						</div>
+						<div class="faq-item">
+							<button class="faq-question">
+								How fast will I receive my designs?
+								<svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
+								</svg>
+							</button>
+							<div class="faq-answer">
+								<p>
+									Most requests are completed within 2-3 business days. More
+									complex requests may take a bit longer, but we'll always keep
+									you updated on progress. On the Team plan, we offer same-day
+									delivery for most requests.
+								</p>
+							</div>
+						</div>
+						<div class="faq-item">
+							<button class="faq-question">
+								How does the pause feature work?
+								<svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
+								</svg>
+							</button>
+							<div class="faq-answer">
+								<p>
+									We understand design needs fluctuate. You can pause your
+									subscription at any time from your dashboard. The remaining
+									days in your billing cycle are saved and resume when you
+									unpause. No wasted days, ever.
+								</p>
+							</div>
+						</div>
+						<div class="faq-item">
+							<button class="faq-question">
+								What tools do you use?
+								<svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
+								</svg>
+							</button>
+							<div class="faq-answer">
+								<p>
+									We primarily work in Figma for UI/UX and product design. For
+									3D we use Blender and Cinema 4D. Development is done in React,
+									Next.js, Astro, and other modern frameworks depending on your
+									needs.
+								</p>
+							</div>
+						</div>
+						<div class="faq-item">
+							<button class="faq-question">
+								Is there a limit to how many requests I can make?
+								<svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
+								</svg>
+							</button>
+							<div class="faq-answer">
+								<p>
+									No! You can add as many requests to your queue as you like.
+									They'll be completed one at a time (or two on Pro, unlimited
+									on Team) in the order you add them. Think of it like a design
+									queue — the more you plan ahead, the more you get done.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div class="container py-24" style="text-align:center;">
+				<a href="index.html" aria-label="Homepage">
+					<svg class="footer-logo-spin" viewBox="0 0 126 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M61.3444 77.0485L54.0444 116.449C53.2444 120.949 56.6443 125.049 61.1443 125.049H64.4444C68.9444 125.049 72.4444 120.949 71.5444 116.449L64.2444 77.0485C63.9444 75.4485 61.6444 75.4485 61.3444 77.0485Z" fill="currentColor"></path>
+						<path d="M67.5443 76.3485L76.8443 115.349C77.9443 119.749 82.7443 122.149 86.8443 120.249L89.8443 118.949C93.9443 117.149 95.4443 111.949 92.8443 108.249L70.1443 75.2486C69.2443 73.8486 67.1443 74.7485 67.5443 76.3485Z" fill="currentColor"></path>
+						<path d="M72.9445 73.1486L97.3444 104.949C100.144 108.549 105.444 108.749 108.444 105.349L110.644 102.849C113.644 99.4485 112.944 94.1485 109.044 91.8485L74.8444 70.9485C73.4444 70.1485 71.9445 71.8486 72.9445 73.1486Z" fill="currentColor"></path>
+						<path d="M76.5443 68.0485L111.744 87.2485C115.744 89.4485 120.744 87.4485 122.144 83.1485L123.144 80.0485C124.544 75.7485 121.644 71.2485 117.144 70.6485L77.4444 65.4485C75.8444 65.1485 75.1443 67.2485 76.5443 68.0485Z" fill="currentColor"></path>
+						<path d="M77.8444 61.9485L117.844 65.1486C122.344 65.5486 126.144 61.6486 125.644 57.1486L125.344 53.8485C124.844 49.3485 120.444 46.3486 116.044 47.6486L77.5444 59.0485C75.9444 59.5485 76.2444 61.8485 77.8444 61.9485Z" fill="currentColor"></path>
+						<path d="M76.4444 55.8485L114.244 42.5485C118.544 41.0485 120.344 36.0485 118.144 32.0485L116.444 29.1486C114.144 25.2486 108.944 24.3485 105.444 27.2485L74.9444 53.3485C73.8444 54.3485 74.9444 56.3485 76.4444 55.8485Z" fill="currentColor"></path>
+						<path d="M72.7444 50.8485L101.844 23.2486C105.144 20.1486 104.744 14.7486 101.144 12.1486L98.4445 10.2486C94.7445 7.54856 89.5444 8.94857 87.6444 12.9486L70.4445 49.1486C69.7445 50.5486 71.5444 51.9485 72.7444 50.8485Z" fill="currentColor"></path>
+						<path d="M67.3444 47.7485L82.7444 10.7485C84.4444 6.54854 81.9444 1.84851 77.5444 0.848515L74.3444 0.148564C69.9444 -0.751436 65.7444 2.54853 65.6444 7.04853L64.6444 47.1486C64.4444 48.7486 66.6444 49.2485 67.3444 47.7485Z" fill="currentColor"></path>
+						<path d="M61.0444 47.1486L60.0444 7.04853C59.9444 2.54853 55.7444 -0.751436 51.3444 0.148564L48.1444 0.848515C43.7444 1.74851 41.2444 6.54854 42.9444 10.7485L58.3444 47.7485C58.9444 49.2485 61.1444 48.7486 61.0444 47.1486Z" fill="currentColor"></path>
+						<path d="M55.1444 49.1485L37.9444 12.9485C36.0444 8.84853 30.8444 7.54851 27.1444 10.2485L24.4444 12.1485C20.7444 14.8485 20.4444 20.1485 23.7444 23.2485L52.8444 50.8485C54.0444 51.9485 55.8444 50.5485 55.1444 49.1485Z" fill="currentColor"></path>
+						<path d="M50.5444 53.3485L20.0444 27.2485C16.6444 24.3485 11.3444 25.2486 9.04443 29.1486L7.34441 32.0485C5.04441 35.9485 6.94444 40.9485 11.2444 42.5485L49.0444 55.8485C50.6444 56.3485 51.7444 54.3485 50.5444 53.3485Z" fill="currentColor"></path>
+						<path d="M48.0443 59.0485L9.64435 47.6486C5.34435 46.3486 0.844327 49.3485 0.344327 53.8485L0.0443394 57.1486C-0.455661 61.6486 3.34433 65.4486 7.84433 65.1486L47.8443 61.9485C49.3443 61.8485 49.6443 59.5485 48.0443 59.0485Z" fill="currentColor"></path>
+						<path d="M48.1444 65.3485L8.44435 70.5485C3.94435 71.1485 1.04435 75.6485 2.44435 79.9485L3.44435 83.0485C4.84435 87.3485 9.84434 89.3486 13.8443 87.1486L49.0444 67.9485C50.4444 67.2485 49.7444 65.1485 48.1444 65.3485Z" fill="currentColor"></path>
+						<path d="M50.7444 71.0485L16.5444 91.9486C12.6444 94.3486 11.9444 99.6486 14.9444 102.949L17.1444 105.449C20.1444 108.849 25.5444 108.649 28.2444 105.049L52.6444 73.2485C53.6444 71.8485 52.1444 70.1485 50.7444 71.0485Z" fill="currentColor"></path>
+						<path d="M55.3443 75.1486L32.6443 108.149C30.0443 111.849 31.5443 117.049 35.6443 118.849L38.6443 120.149C42.7443 121.949 47.5443 119.649 48.6443 115.249L57.9443 76.2485C58.4443 74.7485 56.3443 73.8486 55.3443 75.1486Z" fill="currentColor"></path>
+					</svg>
+				</a>
+				<p class="footer-attribution">
+					Designed and built in the Åland Islands<br>by Michael Andreuzza.
+				</p>
+				<nav class="footer-system-links">
+					<a href="system/overview.html" class="footer-system-link"><span>Overview</span></a>
+					<a href="system/typography.html" class="footer-system-link"><span>Typography</span></a>
+					<a href="system/buttons.html" class="footer-system-link"><span>Buttons</span></a>
+					<a href="system/colors.html" class="footer-system-link"><span>Colors</span></a>
+					<a href="system/links.html" class="footer-system-link"><span>Links</span></a>
+				</nav>
+				<div class="footer-copy-bottom">
+					<p>© Copyright <span>2025</span>. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
+
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.basic.min.js"></script>
+		<script>
+		(function () {
+			// AOS
+			AOS.init({
+				duration: 600,
+				easing: "ease",
+				once: true,
+				offset: 50,
+				disable: false,
+			});
+
+			// Vanilla Tilt
+			VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+				max: 5,
+				speed: 400,
+				glare: true,
+				"max-glare": 0.2,
+			});
+
+			// Nav scroll expand
+			const navContainer = document.getElementById("nav-container");
+			window.addEventListener("scroll", () => {
+				if (window.pageYOffset > 50) {
+					navContainer.classList.add("expanded");
+				} else {
+					navContainer.classList.remove("expanded");
+				}
+			});
+
+			// Nav toggle
+			const navToggle = document.getElementById("nav-toggle");
+			const navMenu = document.getElementById("nav-menu");
+			navToggle.addEventListener("click", () => {
+				navMenu.classList.toggle("open");
+			});
+
+			// Search
+			const posts = [
+				{
+					title: "The 3-Day Productized Website Sprint",
+					pubDate: "2026-01-01",
+					description:
+						"How we ship a production-ready marketing site in 72 hours with a fixed scope, clear roles, and zero back-and-forth.",
+					slug: "1",
+				},
+				{
+					title: "Onboarding Clients in 24 Hours",
+					pubDate: "2026-01-02",
+					description:
+						"A repeatable intake playbook that moves prospects from curious to ready-to-build in one day.",
+					slug: "2",
+				},
+				{
+					title: "Async Collaboration for Productized Builds",
+					pubDate: "2026-01-03",
+					description:
+						"The rituals, tools, and cadences we use to keep builds moving without endless meetings.",
+					slug: "3",
+				},
+				{
+					title: "Measuring ROI on Productized Design",
+					pubDate: "2026-01-04",
+					description:
+						"Simple metrics to prove the value of a fixed-scope design engagement without drowning in dashboards.",
+					slug: "4",
+				},
+				{
+					title: "Pricing a Productized Service with Confidence",
+					pubDate: "2026-01-05",
+					description:
+						"A lightweight pricing ladder that keeps margins healthy and clients decisive.",
+					slug: "5",
+				},
+				{
+					title: "The Maintenance Blueprint for Productized Sites",
+					pubDate: "2026-01-06",
+					description:
+						"Keep shipped work fast, secure, and consistent with a lightweight monthly plan.",
+					slug: "6",
+				},
+			];
+
+			window.addEventListener("load", () => {
+				const searchButton = document.getElementById("searchButton");
+				const searchModal = document.getElementById("searchModal");
+				const modalOverlay = document.getElementById("modalOverlay");
+				const searchInput = document.getElementById("searchInput");
+				const searchResults = document.getElementById("searchResults");
+
+				const fuse = new Fuse(posts, {
+					keys: ["title", "description", "pubDate"],
+					threshold: 0.3,
+					includeMatches: true,
+				});
+
+				function openSearch(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					searchModal.classList.add("open");
+					document.body.style.overflow = "hidden";
+					setTimeout(() => searchInput.focus(), 100);
+				}
+				function closeSearch() {
+					searchModal.classList.remove("open");
+					document.body.style.overflow = "";
+					searchInput.value = "";
+					searchResults.innerHTML = "";
+					searchResults.classList.remove("visible");
+				}
+
+				function renderResults(results) {
+					if (!searchInput.value.trim()) {
+						searchResults.innerHTML = "";
+						searchResults.classList.remove("visible");
+						return;
+					}
+					if (results.length === 0) {
+						searchResults.innerHTML =
+							'<div class="search-empty">Nothing found for that search.</div>';
+						searchResults.classList.add("visible");
+						return;
+					}
+					searchResults.innerHTML = results
+						.map(
+							(r) =>
+								`<a href="blog/index.html" class="search-result-item"><p class="search-result-date">${new Date(r.item.pubDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "2-digit" })}</p><h3 class="search-result-title">${r.item.title}</h3><p class="search-result-desc">${r.item.description}</p></a>`,
+						)
+						.join("");
+					searchResults.classList.add("visible");
+				}
+
+				searchButton.addEventListener("click", openSearch);
+				modalOverlay.addEventListener("click", closeSearch);
+				searchInput.addEventListener("input", (e) => {
+					const v = e.target.value.trim();
+					renderResults(v ? fuse.search(v) : []);
+				});
+				document.addEventListener("keydown", (e) => {
+					if (e.key === "Escape") closeSearch();
+				});
+			});
+
+			// FAQ accordion
+			document.querySelectorAll(".faq-question").forEach((btn) => {
+				btn.addEventListener("click", () => {
+					const item = btn.closest(".faq-item");
+					const isOpen = item.classList.contains("open");
+					document
+						.querySelectorAll(".faq-item")
+						.forEach((i) => i.classList.remove("open"));
+					if (!isOpen) item.classList.add("open");
+				});
+			});
+		})();
+		</script>
+	
+
+</body></html>

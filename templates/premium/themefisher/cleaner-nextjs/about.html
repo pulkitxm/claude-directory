@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>About Us - Cleaner</title>
+<link rel="shortcut icon" href="assets/images/favicon.png">
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-300.ttf") format("truetype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-500.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-600.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("assets/fonts/rubik-700.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+
+/* ------ about.html page-specific styles ------ */
+.about-story { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.about-story-media { position: relative; }
+.about-story-media img { border-radius: var(--radius-xl); }
+.about-story-media .img-2 {
+  position: absolute; right: -10%; bottom: -12%; width: 55%;
+  border: 6px solid var(--bg-body); border-radius: var(--radius-xl);
+  box-shadow: 0 20px 40px rgba(14,13,57,0.15);
+}
+.about-story-body .eyebrow-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  color: var(--color-primary); font-weight: 600; margin-bottom: 1rem;
+}
+.about-story-body .feature-list { margin-top: 1.5rem; display: grid; gap: 0.85rem; }
+.about-story-body .feature-list li { display: flex; align-items: center; gap: 0.65rem; color: var(--text-color); font-weight: 500; }
+.about-story-body .feature-list svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--color-primary); }
+
+.member-card { text-align: center; padding: 1.75rem 1.25rem 2rem; }
+.member-card .card-img { aspect-ratio: 1/1; border-radius: 50%; width: 140px; height: 140px; margin: 0 auto 1.25rem; }
+.member-card h5 { margin-bottom: 0.25rem; }
+.member-card .role { color: var(--color-primary); font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1rem; }
+.member-card .socials { display: flex; justify-content: center; gap: 0.6rem; }
+.member-card .socials a {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border-color);
+  display: flex; align-items: center; justify-content: center; transition: background-color var(--transition-fast) var(--ease-in-out), border-color var(--transition-fast) var(--ease-in-out), color var(--transition-fast) var(--ease-in-out);
+}
+.member-card .socials svg { width: 14px; height: 14px; }
+.member-card .socials a:hover { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+
+.stats-row { background: var(--color-text); border-radius: var(--radius-xl); padding: clamp(2rem, 1.6rem + 2vw, 3.5rem); }
+.stats-row .grid { text-align: center; }
+.stat-item .stat-number { display: block; font-size: var(--text-h2); font-weight: 700; color: #fff; }
+.stat-item .stat-label { color: rgba(255,255,255,0.65); font-weight: 500; }
+
+.testimonial-card { padding: 2rem; }
+.testimonial-card .stars { color: var(--color-secondary); margin-bottom: 1rem; display: flex; gap: 0.15rem; }
+.testimonial-card .stars svg { width: 16px; height: 16px; }
+.testimonial-card p.quote { font-size: var(--text-lg); color: var(--text-color-dark); }
+.testimonial-author { display: flex; align-items: center; gap: 0.85rem; margin-top: 1.25rem; }
+.testimonial-author .avatar {
+  width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+  background: var(--bg-surface);
+}
+.testimonial-author .avatar img { width: 100%; height: 100%; object-fit: cover; }
+.testimonial-author h6 { margin: 0; }
+.testimonial-author span { color: var(--text-color-dark); font-size: var(--text-sm); }
+
+@media (max-width: 900px) {
+  .about-story { grid-template-columns: 1fr; }
+  .about-story-media { margin-bottom: 2.5rem; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topbar">
+  <div class="container">
+    <p>Need quick cleaning help?</p>
+    <a href="tel:+1-394-495-5993">
+      <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L184.6 167c13.7-11.1 18.4-30 11.6-46.3l-40-96z"/></svg>
+      Call Us: +1 071 281 9795
+    </a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">
+      <img class="logo-dark" src="assets/images/logo-dark.svg" alt="Cleaner logo" width="142" height="40">
+      <img class="logo-light" src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+    </a>
+    <div class="nav-scrim" id="nav-scrim"></div>
+    <ul class="nav" id="nav-menu">
+      <li><a href="about.html" class="nav-item active">About Us</a></li>
+      <li><a href="services.html" class="nav-item">Services</a></li>
+      <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+      <li><a href="blog.html" class="nav-item">Blog</a></li>
+      <li><a href="contact.html" class="nav-item">Contact</a></li>
+    </ul>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a href="appointment.html" class="btn btn-primary btn-sm desktop-only">Make An Appointment</a>
+      <button class="nav-toggle-btn" id="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Page header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 data-aos="fade-up-sm">About Us</h1>
+      <nav class="breadcrumb" data-aos="fade-up-sm" data-aos-delay="100" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>About Us</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Company story / mission -->
+  <section class="section">
+    <div class="container">
+      <div class="about-story">
+        <div class="about-story-media" data-aos="fade-right">
+          <img class="img-1" src="assets/images/home/about/1.avif" alt="Auburn Cleaning Co. team at work" width="560" height="640">
+          <img class="img-2" src="assets/images/home/about/2.avif" alt="Cleaning supplies detail" width="320" height="320">
+        </div>
+        <div class="about-story-body" data-aos="fade-left">
+          <span class="eyebrow-badge">
+            <img src="assets/images/home/about/badge.svg" alt="" width="20" height="20">
+            About Auburn Cleaning Co.
+          </span>
+          <h2>We deliver <span class="text-accent-underline">spotless</span> results, every single time.</h2>
+          <p class="lead">Auburn Cleaning Co. has spent over a decade perfecting reliable, eco-conscious cleaning for homes and businesses. Our mission is simple: give you back your time with a space that feels brand new.</p>
+          <p>From a single home-cleaning crew to a full-service company covering floor care, pest control, and window cleaning, our story has always been about people first — trained, trusted, and equipped with innovative technology to get the job done right.</p>
+          <ul class="feature-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Fully insured &amp; background-checked staff</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Eco-friendly cleaning products</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>100% satisfaction guarantee</li>
+          </ul>
+          <a href="appointment.html" class="btn btn-primary mt-8" style="margin-top:1.75rem;">Make An Appointment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team grid -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center" style="max-width:640px;margin-inline:auto;margin-bottom:3rem;" data-aos="fade-up-sm">
+        <span class="eyebrow">Our Team</span>
+        <h2>Meet the people behind the shine</h2>
+        <p class="lead">A dedicated crew of cleaning professionals committed to making every space spotless.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card member-card" data-aos="fade-up-sm">
+          <div class="card-img"><img src="assets/images/about/member/1.png" alt="Portrait of James Carter, Founder &amp; CEO" width="140" height="140"></div>
+          <h5>James Carter</h5>
+          <p class="role">Founder &amp; CEO</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2C15.9 3.1 14.9 3 13.7 3c-2.5 0-4.2 1.5-4.2 4.3v2.5H6.8V13h2.7v8h4z"/></svg></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.9.1 4.1 4.1 0 0 0 3.8 2.9A8.3 8.3 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.2z"/></svg></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.9-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg></a>
+          </div>
+        </div>
+        <div class="card member-card" data-aos="fade-up-sm" data-aos-delay="100">
+          <div class="card-img"><img src="assets/images/about/member/1.png" alt="Portrait of Sophia Reyes, Operations Manager" width="140" height="140"></div>
+          <h5>Sophia Reyes</h5>
+          <p class="role">Operations Manager</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2C15.9 3.1 14.9 3 13.7 3c-2.5 0-4.2 1.5-4.2 4.3v2.5H6.8V13h2.7v8h4z"/></svg></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.9.1 4.1 4.1 0 0 0 3.8 2.9A8.3 8.3 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.2z"/></svg></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.9-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg></a>
+          </div>
+        </div>
+        <div class="card member-card" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="card-img"><img src="assets/images/about/member/1.png" alt="Portrait of Daniel Kim, Lead Cleaning Technician" width="140" height="140"></div>
+          <h5>Daniel Kim</h5>
+          <p class="role">Lead Cleaning Technician</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2C15.9 3.1 14.9 3 13.7 3c-2.5 0-4.2 1.5-4.2 4.3v2.5H6.8V13h2.7v8h4z"/></svg></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.9.1 4.1 4.1 0 0 0 3.8 2.9A8.3 8.3 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.2z"/></svg></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.9-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg></a>
+          </div>
+        </div>
+        <div class="card member-card" data-aos="fade-up-sm" data-aos-delay="300">
+          <div class="card-img"><img src="assets/images/about/member/1.png" alt="Portrait of Emily Nguyen, Customer Success Lead" width="140" height="140"></div>
+          <h5>Emily Nguyen</h5>
+          <p class="role">Customer Success Lead</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2C15.9 3.1 14.9 3 13.7 3c-2.5 0-4.2 1.5-4.2 4.3v2.5H6.8V13h2.7v8h4z"/></svg></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.9.1 4.1 4.1 0 0 0 3.8 2.9A8.3 8.3 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.2z"/></svg></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.9-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats counters -->
+  <section class="section">
+    <div class="container">
+      <div class="stats-row" data-aos="fade-up-sm">
+        <div class="grid grid-4">
+          <div class="stat-item" data-aos="zoom-in" data-aos-delay="0">
+            <span class="stat-number">12+</span>
+            <span class="stat-label">Years of Experience</span>
+          </div>
+          <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+            <span class="stat-number">3.2K</span>
+            <span class="stat-label">Happy Clients Served</span>
+          </div>
+          <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+            <span class="stat-number">5.4K</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Client Satisfaction Rate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center" style="max-width:640px;margin-inline:auto;margin-bottom:3rem;" data-aos="fade-up-sm">
+        <span class="eyebrow">Testimonials</span>
+        <h2>What our clients say about us</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card testimonial-card" data-aos="fade-up-sm">
+          <div class="stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+          </div>
+          <p class="quote">"Auburn Cleaning Co. transformed our office. The team is punctual, thorough, and always leaves the place spotless. Couldn't ask for better service."</p>
+          <div class="testimonial-author">
+            <div class="avatar"><img src="assets/images/home/review/client/1.svg" alt="" width="48" height="48"></div>
+            <div>
+              <h6>Laura Bennett</h6>
+              <span>Office Manager</span>
+            </div>
+          </div>
+        </div>
+        <div class="card testimonial-card" data-aos="fade-up-sm" data-aos-delay="100">
+          <div class="stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+          </div>
+          <p class="quote">"Booking was effortless and the crew went above and beyond on our move-out clean. Got our full deposit back thanks to them!"</p>
+          <div class="testimonial-author">
+            <div class="avatar"><img src="assets/images/home/review/client/2.svg" alt="" width="48" height="48"></div>
+            <div>
+              <h6>Marcus Ellis</h6>
+              <span>Homeowner</span>
+            </div>
+          </div>
+        </div>
+        <div class="card testimonial-card" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+          </div>
+          <p class="quote">"Reliable, friendly, and detail-oriented. Our floors have never looked better. Highly recommend the recurring cleaning plan."</p>
+          <div class="testimonial-author">
+            <div class="avatar"><img src="assets/images/home/review/client/3.svg" alt="" width="48" height="48"></div>
+            <div>
+              <h6>Priya Anand</h6>
+              <span>Restaurant Owner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner" data-aos="zoom-in">
+        <img class="cta-bg" src="assets/images/cta.png" alt="" aria-hidden="true">
+        <h2>Ready for a spotless space?</h2>
+        <p>Book your first cleaning today and see why Auburn trusts us most.</p>
+        <a href="appointment.html" class="btn btn-secondary">Make An Appointment</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/images/logo.svg" alt="Cleaner logo" width="142" height="40">
+        <p>Professional cleaning services<br>using innovative technology.</p>
+      </div>
+      <div class="footer-col">
+        <h6>Company</h6>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="elements.html">Elements</a></li>
+          <li><a href="contact.html">Contacts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Services</h6>
+        <ul>
+          <li><a href="service-home-cleaning.html">Home Cleaning</a></li>
+          <li><a href="service-window-cleaning.html">Window Cleaning</a></li>
+          <li><a href="service-pest-control.html">Pest Control</a></li>
+          <li><a href="service-floor-cleaning.html">Floor Cleaning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Social</h6>
+        <ul>
+          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="https://www.github.com/" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><a href="https://themefisher.com/" target="_blank" rel="noopener">Themefisher</a> &copy; 2025 All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js" defer></script>
+</body>
+</html>

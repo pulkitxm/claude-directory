@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+	<head>
+		<script>
+		if (
+			localStorage.getItem("theme") === "dark" ||
+			(!("theme" in localStorage) &&
+				window.matchMedia("(prefers-color-scheme: dark)").matches)
+		) {
+			document.documentElement.classList.add("dark");
+			document.documentElement.classList.remove("light");
+		} else {
+			document.documentElement.classList.add("light");
+			document.documentElement.classList.remove("dark");
+		}
+		</script>
+		<meta charset="UTF-8">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;family=Geist:wght@100..900&amp;display=swap"
+			rel="stylesheet"
+		>
+		<link rel="icon" type="image/x-icon" href="/favicon.png">
+		<!-- Primary Meta Tags -->
+		<title>Analytics | React Personal Finance Dashboard Template</title>
+		<meta
+			name="description"
+			content="React finance dashboard template for personal tools built with Tailwind CSS. Track income, expenses, budgets, transactions, cash flow, analytics, and reports."
+		>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://fundex.demos.tailgrids.com">
+		<meta
+			property="og:title"
+			content="Fundex - React Personal Finance Dashboard Template"
+		>
+		<meta
+			property="og:description"
+			content="React finance dashboard template for personal tools built with Tailwind CSS. Track income, expenses, budgets, transactions, cash flow, analytics, and reports."
+		>
+		<meta
+			property="og:image"
+			content="https://assets.tailgrids.com/1768900503106-fundex-lg.png"
+		>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script defer src="app.js"></script>
+		<link rel="stylesheet" href="fonts.css">
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<div id="root">
+			<div
+				class="flex h-screen bg-gray-100 dark:bg-gray-900 font-sans overflow-hidden"
+			>
+				<div
+					class="fixed inset-0 z-40 bg-black/50 transition-opacity xl:hidden opacity-0 pointer-events-none"
+					aria-hidden="true"
+				></div>
+				<aside
+					class="fixed inset-y-0 left-0 z-50 w-70 bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800 transform transition-transform duration-200 ease-in-out xl:translate-x-0 xl:static xl:inset-auto flex flex-col -translate-x-full"
+				>
+					<div class="flex items-center justify-between py-8 px-5">
+						<a href="index.html"
+							><div class="block dark:hidden">
+								<img class="h-8 w-auto" alt="Fundex" src="images/logo/logo.svg">
+							</div>
+							<div class="hidden dark:block">
+								<img
+									class="h-8 w-auto"
+									alt="Fundex"
+									src="images/logo/logo-white.svg"
+								>
+							</div></a
+						><button
+							class="md:hidden p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+							aria-label="Close sidebar"
+						>
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M6.75 17.249L17.2479 6.75111M6.75 6.75098L17.2479 17.2489"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								></path>
+							</svg>
+						</button>
+					</div>
+					<div class="flex-1 pb-6 px-5">
+						<nav class="space-y-3">
+							<a
+								class="flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors text-gray-500 hover:bg-gray-100 dark:hover:bg-violet-500/15 dark:hover:text-violet-400 dark:text-gray-400 hover:text-gray-700"
+								href="index.html"
+								><svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M4 7.24999C4 5.45507 5.45508 4 7.25 4C9.04492 4 10.5 5.45507 10.5 7.24999C10.5 9.04491 9.04492 10.5 7.25 10.5C5.45508 10.5 4 9.04491 4 7.24999Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+									<path
+										d="M4 16.75C4 14.9551 5.45508 13.5 7.25 13.5C9.04492 13.5 10.5 14.9551 10.5 16.75C10.5 18.5449 9.04492 20 7.25 20C5.45508 20 4 18.5449 4 16.75Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+									<path
+										d="M13.5 16.75C13.5 14.9551 14.9551 13.5 16.75 13.5C18.5449 13.5 20 14.9551 20 16.75C20 18.5449 18.5449 20 16.75 20C14.9551 20 13.5 18.5449 13.5 16.75Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+									<path
+										d="M13.5 7.24999C13.5 5.45507 14.9551 4 16.75 4C18.5449 4 20 5.45507 20 7.24999C20 9.04491 18.5449 10.5 16.75 10.5C14.9551 10.5 13.5 9.04491 13.5 7.24999Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+								</svg>Dashboard</a
+							><a
+								class="flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors text-gray-500 hover:bg-gray-100 dark:hover:bg-violet-500/15 dark:hover:text-violet-400 dark:text-gray-400 hover:text-gray-700"
+								href="transactions.html"
+								><svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M18.751 7.37695L5.25098 7.37695M15.3763 4.00098L18.749 7.37587L15.3763 10.751M5.24902 16.625H18.749M8.62373 20.001L5.25098 16.6261L8.62373 13.251"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+								</svg>Transactions</a
+							><a
+								aria-current="page"
+								class="flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors bg-violet-50  dark:bg-violet-500/15 text-violet-500 dark:text-violet-400"
+								href="analytics.html"
+								><svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M5.50177 20H5.8351C6.66353 20 7.3351 19.3284 7.3351 18.5V11.3516C7.3351 10.5231 6.66353 9.85156 5.8351 9.85156H5.50177C4.67334 9.85156 4.00177 10.5231 4.00177 11.3516V18.5C4.00177 19.3284 4.67334 20 5.50177 20Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+									<path
+										d="M11.8348 19.9991H12.1681C12.9965 19.9991 13.6681 19.3275 13.6681 18.4991V5.5C13.6681 4.67157 12.9965 4 12.1681 4H11.8348C11.0064 4 10.3348 4.67157 10.3348 5.5V18.4991C10.3348 19.3275 11.0063 19.9991 11.8348 19.9991Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+									<path
+										d="M18.1678 20H18.5011C19.3295 20 20.0011 19.3284 20.0011 18.5V14.9218C20.0011 14.0934 19.3295 13.4218 18.5011 13.4218H18.1678C17.3394 13.4218 16.6678 14.0934 16.6678 14.9218V18.5C16.6678 19.3284 17.3394 20 18.1678 20Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+								</svg>Analytics</a
+							><a
+								class="flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors text-gray-500 hover:bg-gray-100 dark:hover:bg-violet-500/15 dark:hover:text-violet-400 dark:text-gray-400 hover:text-gray-700"
+								href="budgets.html"
+								><svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M9.0036 3.24642C5.36606 4.49164 2.75092 7.94042 2.75092 12C2.75092 17.1086 6.89228 21.25 12.0009 21.25C16.0592 21.25 19.5071 18.6365 20.7533 15.0007M12.0009 2.75C17.1095 2.75 21.2509 6.89137 21.2509 12H12.0009V2.75Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+								</svg>Budgets</a
+							><a
+								class="flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors text-gray-500 hover:bg-gray-100 dark:hover:bg-violet-500/15 dark:hover:text-violet-400 dark:text-gray-400 hover:text-gray-700"
+								href="settings.html"
+								><svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6.77623 5.51906C6.06635 5.10922 5.15854 5.35238 4.7487 6.06225L3.2327 8.68803C2.82295 9.39774 3.06612 10.3052 3.77583 10.715C4.76504 11.2861 4.76506 12.7139 3.77584 13.285C3.06614 13.6948 2.82298 14.6023 3.23272 15.312L4.74873 17.9378C5.15857 18.6476 6.06638 18.8908 6.77625 18.481C7.76557 17.9098 9.00239 18.6237 9.00239 19.766C9.00239 20.5856 9.66679 21.25 10.4864 21.25H13.5188C14.3382 21.25 15.0024 20.5856 15.0024 19.7663C15.0024 18.6243 16.2386 17.9104 17.2276 18.4813C17.9371 18.891 18.8443 18.6479 19.254 17.9384L20.7704 15.3119C21.1801 14.6022 20.9369 13.6948 20.2273 13.285C19.2381 12.7139 19.2381 11.2861 20.2273 10.715C20.937 10.3053 21.1801 9.39779 20.7704 8.6881L19.254 6.06167C18.8444 5.35214 17.9371 5.10904 17.2276 5.51869C16.2386 6.08967 15.0024 5.37573 15.0024 4.23377C15.0024 3.41437 14.3381 2.75 13.5187 2.75L10.4864 2.75C9.6668 2.75 9.00239 3.41441 9.00239 4.23399C9.00239 5.37637 7.76555 6.09025 6.77623 5.51906Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+									<path
+										d="M15.0865 11.9999C15.0865 13.7037 13.7053 15.0849 12.0015 15.0849C10.2977 15.0849 8.91647 13.7037 8.91647 11.9999C8.91647 10.2961 10.2977 8.91493 12.0015 8.91493C13.7053 8.91493 15.0865 10.2961 15.0865 11.9999Z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+								</svg>Settings</a
+							>
+						</nav>
+					</div>
+					<div class="px-5 py-6">
+						<div>
+							<div
+								class="relative overflow-hidden rounded-2xl bg-linear-to-b from-gray-900 to-violet-950 p-4"
+							>
+								<div
+									class="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-violet-500/40 blur-3xl rounded-full"
+								></div>
+								<div class="relative">
+									<div class="flex items-center gap-2 mb-2">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="text-white fill-white"
+										>
+											<path
+												d="M12.8142 2.75L4.78528 14.0352H11.186L11.186 21.25L19.2149 9.96482L12.8142 9.96482V2.75Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											></path>
+										</svg>
+										<h4 class="text-white text-sm font-medium">
+											Upgrade to pro
+										</h4>
+									</div>
+									<p class="text-gray-400 text-sm mb-4">
+										For more features and unlimited budget setup upgrade now
+									</p>
+									<button
+										class="bg-white inline-flex items-center justify-center text-gray-900 text-sm font-semibold px-5 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+									>
+										Upgrade
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="pt-4">
+							<button
+								class="flex items-center gap-3 w-full px-3 py-2 text-sm rounded-lg font-medium text-red-500 hover:bg-red-50  transition-colors"
+							>
+								<svg
+									width="18"
+									height="18"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M20.0008 5.49609H19.2508H20.0008ZM20.0008 18.497H20.7508H20.0008ZM4.00082 11.245C3.58661 11.245 3.25082 11.5808 3.25082 11.995C3.25082 12.4092 3.58661 12.745 4.00082 12.745V11.995V11.245ZM16.0008 12.745C16.415 12.745 16.7508 12.4092 16.7508 11.995C16.7508 11.5808 16.415 11.245 16.0008 11.245V11.995V12.745ZM8.09458 17.1519C8.38738 17.4449 8.86225 17.4451 9.15524 17.1523C9.44823 16.8595 9.44838 16.3846 9.15558 16.0916L8.62508 16.6218L8.09458 17.1519ZM4.00317 11.9969L3.47272 11.4667C3.18 11.7596 3.17998 12.2342 3.47267 12.5271L4.00317 11.9969ZM9.15559 7.90191C9.44839 7.60891 9.44822 7.13404 9.15522 6.84125C8.86223 6.54846 8.38735 6.54863 8.09456 6.84162L8.62508 7.37177L9.15559 7.90191ZM15.1008 3.99609V4.74609H18.5008V3.99609V3.24609H15.1008V3.99609ZM20.0008 5.49609H19.2508L19.2508 18.497H20.0008H20.7508V5.49609H20.0008ZM18.5008 19.997V19.247H15.1008V19.997V20.747H18.5008V19.997ZM20.0008 18.497H19.2508C19.2508 18.9112 18.915 19.247 18.5008 19.247V19.997V20.747C19.7434 20.747 20.7508 19.7396 20.7508 18.497H20.0008ZM18.5008 3.99609V4.74609C18.915 4.74609 19.2508 5.08188 19.2508 5.49609H20.0008H20.7508C20.7508 4.25345 19.7434 3.24609 18.5008 3.24609V3.99609ZM15.1008 3.99609V3.24609C13.8582 3.24609 12.8508 4.25346 12.8508 5.49609H13.6008H14.3508C14.3508 5.08188 14.6866 4.74609 15.1008 4.74609V3.99609ZM15.1008 19.997V19.247C14.6866 19.247 14.3508 18.9112 14.3508 18.497H13.6008H12.8508C12.8508 19.7396 13.8582 20.747 15.1008 20.747V19.997ZM13.6008 18.497H14.3508V14.2467H13.6008H12.8508V18.497H13.6008ZM13.6008 9.74631H14.3508V5.49609H13.6008H12.8508V9.74631H13.6008ZM4.00082 11.995V12.745H4.00507V11.995V11.245H4.00082V11.995ZM4.00507 11.995L4.00507 12.745L16.0008 12.745V11.995V11.245L4.00507 11.245L4.00507 11.995ZM8.62508 16.6218L9.15558 16.0916L4.53367 11.4668L4.00317 11.9969L3.47267 12.5271L8.09458 17.1519L8.62508 16.6218ZM4.00317 11.9969L4.53362 12.5271L4.53552 12.5252L4.00507 11.995L3.47462 11.4648L3.47272 11.4667L4.00317 11.9969ZM4.00507 11.995L4.53559 12.5252L9.15559 7.90191L8.62508 7.37177L8.09456 6.84162L3.47456 11.4649L4.00507 11.995Z"
+										fill="currentColor"
+									></path>
+								</svg>Log Out
+							</button>
+						</div>
+					</div>
+				</aside>
+				<div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+					<header
+						class="bg-white dark:bg-gray-950 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 sticky top-0 z-30 w-full"
+					>
+						<div class="py-4 px-4  lg:px-6 flex items-center justify-between">
+							<div class="flex items-center flex-1 gap-4">
+								<button
+									type="button"
+									class="xl:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-900 dark:text-white/90 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 mr-2"
+									aria-label="Open sidebar"
+								>
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-6 w-6"
+										aria-hidden="true"
+									>
+										<path
+											d="M4 6L20 6M4 18L20 18M4 12L20 12"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										></path>
+									</svg>
+								</button>
+								<div class="hidden md:flex flex-1 max-w-xs relative">
+									<div class="relative w-full">
+										<div
+											class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+										>
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-4 w-4 text-gray-500 dark:text-gray-400"
+											>
+												<path
+													d="M11.3253 2.92485C15.9645 2.92485 19.7256 6.68564 19.7257 11.3243C19.7256 13.374 18.9897 15.2511 17.7697 16.709L20.8556 19.795C21.1483 20.0878 21.1481 20.5626 20.8556 20.8555C20.5627 21.1484 20.0879 21.1484 19.795 20.8555L16.7091 17.7696C15.2511 18.9882 13.3743 19.7227 11.3253 19.7227C6.68631 19.7225 2.92518 15.9627 2.92493 11.3243C2.92507 6.68575 6.68624 2.92503 11.3253 2.92485ZM11.3253 4.42485C7.51438 4.42503 4.42507 7.51446 4.42493 11.3243C4.42518 15.134 7.51445 18.2225 11.3253 18.2227C15.1363 18.2227 18.2255 15.1341 18.2257 11.3243C18.2256 7.51435 15.1364 4.42485 11.3253 4.42485Z"
+													fill="currentColor"
+												></path>
+											</svg>
+										</div>
+										<input
+											class="block w-full pl-10 pr-3 py-2 border border-gray-200 dark:border-gray-800 bg-transparent rounded-lg leading-5 placeholder:text-gray-500 dark:text-gray-400 text-gray-900 dark:text-white/90 h-10 focus:outline-none focus:ring-2 focus:ring-violet-600/40 sm:text-sm"
+											placeholder="Search transaction, Budget ..."
+											type="text"
+											style=""
+										>
+										<div
+											class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
+										>
+											<span
+												class="text-xs text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-800 rounded px-1.5 py-0.5"
+												>⌘ K</span
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div
+								class="flex items-center gap-2 py-0.5 h-12 bg-gray-100 dark:bg-gray-800/50 px-[3px] rounded-xl border border-gray-200 dark:border-gray-800/40"
+							>
+								<div
+									class="flex items-center gap-1 px-2 py-1 h-10 bg-white dark:bg-gray-950 rounded-lg shadow-sm"
+								>
+									<button
+										class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md transition-colors relative"
+										title="Toggle theme"
+									>
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-[1.2rem] w-[1.2rem] block dark:hidden text-gray-900 dark:text-white/90"
+										>
+											<path
+												d="M12 2.75V4.25M18.541 5.46094L17.4804 6.5216M21.25 12H19.75M18.541 18.5391L17.4804 17.4784M12 19.75V21.25M6.51953 17.4844L5.45887 18.545M4.25 12H2.75M6.51953 6.51562L5.45887 5.45496M7.25 12C7.25 14.6234 9.37665 16.75 12 16.75C14.6234 16.75 16.75 14.6234 16.75 12C16.75 9.37665 14.6234 7.25 12 7.25C9.37665 7.25 7.25 9.37665 7.25 12Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											></path>
+										</svg><svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-[1.2rem] w-[1.2rem] hidden dark:block text-gray-900 dark:text-white/90"
+										>
+											<path
+												d="M7.49609 8.5019C7.49609 12.9213 11.0787 16.5039 15.498 16.5039C17.6023 16.5039 19.5168 15.6916 20.9453 14.3636C19.9007 18.3272 16.2917 21.2499 12 21.2499C6.89137 21.2499 2.75 17.1086 2.75 11.9999C2.75 7.70826 5.67273 4.09922 9.63633 3.05469C8.30831 4.48312 7.49609 6.39766 7.49609 8.5019Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											></path>
+										</svg><span class="sr-only">Toggle theme</span>
+									</button>
+									<div class="relative">
+										<button
+											class="relative p-2 cursor-pointer rounded-full transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800/50"
+										>
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5"
+											>
+												<path
+													d="M11.9999 2.75098V4.25098M11.9999 4.25098C15.7279 4.25098 18.7499 7.27305 18.7499 11.001V14.1168C18.7499 14.2055 18.7659 14.2935 18.7971 14.3766L19.4899 16.2243C19.8577 17.2049 19.1328 18.251 18.0854 18.251H14.3118M11.9999 4.25098C8.27202 4.25098 5.24994 7.27305 5.24994 11.001V14.1168C5.24994 14.2055 5.23398 14.2935 5.20283 14.3766L4.50995 16.2243C4.14221 17.2049 4.86713 18.251 5.91444 18.251H9.68451M9.68451 18.251V18.937C9.68451 20.2142 10.7204 21.2495 11.9981 21.2495C13.2759 21.2495 14.3118 20.2142 14.3118 18.937V18.251M9.68451 18.251H14.3118"
+													stroke="currentColor"
+													stroke-width="1.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												></path>
+											</svg><span
+												class="absolute top-2 right-2 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-950"
+											></span>
+										</button>
+									</div>
+								</div>
+								<div class="relative">
+									<button
+										class="flex items-center  pl-0.5 sm:pr-3 py-1 cursor-pointer bg-white dark:bg-gray-950 rounded-lg h-10  transition-colors shadow-sm"
+									>
+										<div>
+											<img
+												class="size-9 rounded-md object-cover"
+												alt="Gustavo"
+												src="images/avatar/header-avatar-1.png"
+											>
+										</div>
+										<span
+											class="text-sm font-normal ml-1 text-gray-900 dark:text-white/90 hidden sm:block"
+											>Gustavo</span
+										><svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4 sm:ml-3 text-gray-500 dark:text-gray-400 hidden sm:block transition-transform duration-200 "
+										>
+											<path
+												d="M5.75 8.875L12 15.125L18.25 8.875"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											></path>
+										</svg>
+									</button>
+								</div>
+							</div>
+						</div>
+					</header>
+					<main class="flex-1  container mx-auto p-6">
+						<div class="space-y-6">
+							<div>
+								<h1
+									class="text-2xl font-semibold text-gray-900 dark:text-white/90"
+								>
+									Analytics
+								</h1>
+								<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+									Understand trends, spending patterns, and financial
+									performance over time.
+								</p>
+							</div>
+							<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+								<div class="bg-white dark:bg-gray-950 p-6 rounded-2xl">
+									<div class="flex items-center gap-3 mb-4">
+										<div
+											class="inline-flex justify-center items-center  shrink-0 size-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/30"
+										>
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+												class="w-5 h-5 text-emerald-600"
+											>
+												<path
+													d="M17.9975 6.00437L6.0014 18.0005M17.9986 14.9939L17.9958 6.00266L9.00041 5.99951"
+													stroke="currentColor"
+													stroke-width="1.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												></path>
+											</svg>
+										</div>
+										<span class="text-gray-500 dark:text-gray-400 font-medium"
+											>Avg Monthly Income</span
+										>
+									</div>
+									<div class="space-y-1">
+										<h3
+											class="text-3xl font-medium text-gray-900 dark:text-white/90"
+										>
+											$36,780
+										</h3>
+										<div class="flex items-center gap-2 text-sm">
+											<span class="font-semibold text-emerald-600">+11.2%</span
+											><span class="text-gray-500 dark:text-gray-400"
+												>Based on last 6 months</span
+											>
+										</div>
+									</div>
+								</div>
+								<div class="bg-white dark:bg-gray-950 p-6 rounded-2xl">
+									<div class="flex items-center gap-3 mb-4">
+										<div
+											class="inline-flex justify-center items-center  shrink-0 size-10 rounded-lg bg-rose-50 dark:bg-rose-900/30"
+										>
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+												class="w-5 h-5 text-rose-600"
+											>
+												<path
+													d="M17.7462 18.2451L5.75012 6.24896M17.7469 9.25574L17.744 18.247L8.74866 18.2501"
+													stroke="currentColor"
+													stroke-width="1.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												></path>
+											</svg>
+										</div>
+										<span class="text-gray-500 dark:text-gray-400 font-medium"
+											>Avg Monthly Expense</span
+										>
+									</div>
+									<div class="space-y-1">
+										<h3
+											class="text-3xl font-medium text-gray-900 dark:text-white/90"
+										>
+											$26,140
+										</h3>
+										<div class="flex items-center gap-2 text-sm">
+											<span class="font-semibold text-rose-600">-5.3%</span
+											><span class="text-gray-500 dark:text-gray-400"
+												>Based on last 6 months</span
+											>
+										</div>
+									</div>
+								</div>
+								<div class="bg-white dark:bg-gray-950 p-6 rounded-2xl">
+									<div class="flex items-center gap-3 mb-4">
+										<div
+											class="inline-flex justify-center items-center  shrink-0 size-10 rounded-lg bg-violet-50 dark:bg-violet-900/30"
+										>
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+												class="w-5 h-5 text-violet-600"
+											>
+												<path
+													d="M4 8H18.5C19.3284 8 20 8.67157 20 9.5V18.5C20 19.3284 19.3284 20 18.5 20H5.5C4.67157 20 4 19.3284 4 18.5V8ZM4 8V5.5C4 4.67157 4.67157 4 5.5 4H16C16.8284 4 17.5 4.67157 17.5 5.5V8M20 12H16.75C15.9216 12 15.25 12.6716 15.25 13.5V14.5C15.25 15.3284 15.9216 16 16.75 16H20"
+													stroke="currentColor"
+													stroke-width="1.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												></path>
+											</svg>
+										</div>
+										<span class="text-gray-500 dark:text-gray-400 font-medium"
+											>Average Savings Rate</span
+										>
+									</div>
+									<div class="space-y-1">
+										<h3
+											class="text-3xl font-medium text-gray-900 dark:text-white/90"
+										>
+											28%
+										</h3>
+										<div class="flex items-center gap-2 text-sm">
+											<span class="font-semibold text-emerald-600">+2.5%</span
+											><span class="text-gray-500 dark:text-gray-400"
+												>Based on last 6 months</span
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+								<div class="lg:col-span-2 space-y-6">
+									<div class="bg-white dark:bg-gray-950 p-6 rounded-2xl">
+										<div class="flex items-center justify-between mb-6">
+											<div>
+												<h3
+													class="text-lg font-semibold text-gray-900 dark:text-white/90"
+												>
+													Cash Flow
+												</h3>
+												<p class="text-sm text-gray-500 dark:text-gray-400">
+													Income vs Expenses
+												</p>
+											</div>
+											<div class="relative">
+												<select
+													class="appearance-none bg-transparent h-10 pl-3 pr-8 py-1.5 border border-gray-200 dark:border-gray-800 rounded-lg text-sm font-medium text-gray-900 dark:text-white/90 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-violet-600/20 transition-colors cursor-pointer"
+												>
+													<option
+														class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white/90"
+													>
+														Monthly
+													</option>
+													<option
+														class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white/90"
+													>
+														Weekly
+													</option>
+													<option
+														class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white/90"
+													>
+														Yearly
+													</option>
+												</select>
+											</div>
+										</div>
+										<div class="h-56">
+											<div
+												class="recharts-responsive-container"
+												style="width: 100%; height: 100%; min-width: 0px;"
+											>
+												<div
+													class="recharts-wrapper"
+													style="position: relative; cursor: default; width: 100%; height: 100%; max-height: 224px; max-width: 685px;"
+												>
+													<svg
+														class="recharts-surface"
+														width="685"
+														height="224"
+														viewBox="0 0 685 224"
+														style="width: 100%; height: 100%;"
+													>
+														<title></title>
+														<desc></desc>
+														<defs>
+															<clipPath id="recharts3-clip">
+																<rect
+																	x="40"
+																	y="10"
+																	height="184"
+																	width="635"
+																></rect>
+															</clipPath>
+														</defs>
+														<defs>
+															<linearGradient
+																id="colorIncome"
+																x1="0"
+																y1="0"
+																x2="0"
+																y2="1"
+															>
+																<stop
+																	offset="5%"
+																	stop-color="#8b5cf6"
+																	stop-opacity="0.3"
+																></stop>
+																<stop
+																	offset="95%"
+																	stop-color="#8b5cf6"
+																	stop-opacity="0"
+																></stop>
+															</linearGradient>
+															<linearGradient
+																id="colorExpense"
+																x1="0"
+																y1="0"
+																x2="0"
+																y2="1"
+															>
+																<stop
+																	offset="5%"
+																	stop-color="var(--chart-muted)"
+																	stop-opacity="0.3"
+																></stop>
+																<stop
+																	offset="95%"
+																	stop-color="var(--chart-muted)"
+																	stop-opacity="0"
+																></stop>
+															</linearGradient>
+														</defs>
+														<g
+															class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+														>
+															<g class="recharts-cartesian-axis-ticks">
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="bottom"
+																		width="635"
+																		height="30"
+																		stroke="none"
+																		font-size="12"
+																		x="40"
+																		y="212"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="middle"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="40" dy="0.71em">Jan</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="bottom"
+																		width="635"
+																		height="30"
+																		stroke="none"
+																		font-size="12"
+																		x="130.71428571428572"
+																		y="212"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="middle"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="130.71428571428572" dy="0.71em">
+																			Feb
+																		</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="bottom"
+																		width="635"
+																		height="30"
+																		stroke="none"
+																		font-size="12"
+																		x="221.42857142857142"
+																		y="212"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="middle"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="221.42857142857142" dy="0.71em">
+																			Mar
+																		</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="bottom"
+																		width="635"
+																		height="30"
+																		stroke="none"
+																		font-size="12"
+																		x="312.1428571428571"
+																		y="212"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="middle"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="312.1428571428571" dy="0.71em">
+																			Apr
+																		</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="bottom"
+																		width="635"
+																		height="30"
+																		stroke="none"
+																		font-size="12"
+																		x="402.85714285714283"
+																		y="212"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="middle"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="402.85714285714283" dy="0.71em">
+																			May
+																		</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="bottom"
+																		width="635"
+																		height="30"
+																		stroke="none"
+																		font-size="12"
+																		x="493.57142857142856"
+																		y="212"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="middle"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="493.57142857142856" dy="0.71em">
+																			Jun
+																		</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="bottom"
+																		width="635"
+																		height="30"
+																		stroke="none"
+																		font-size="12"
+																		x="584.2857142857142"
+																		y="212"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="middle"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="584.2857142857142" dy="0.71em">
+																			July
+																		</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="bottom"
+																		width="635"
+																		height="30"
+																		stroke="none"
+																		font-size="12"
+																		x="674.6640625"
+																		y="212"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="middle"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="674.6640625" dy="0.71em">
+																			Aug
+																		</tspan>
+																	</text>
+																</g>
+															</g>
+														</g>
+														<g
+															class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
+														>
+															<g class="recharts-cartesian-axis-ticks">
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="left"
+																		width="60"
+																		height="184"
+																		stroke="none"
+																		font-size="12"
+																		x="32"
+																		y="194"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="end"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="32" dy="0.355em">0</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="left"
+																		width="60"
+																		height="184"
+																		stroke="none"
+																		font-size="12"
+																		x="32"
+																		y="148"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="end"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="32" dy="0.355em">20</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="left"
+																		width="60"
+																		height="184"
+																		stroke="none"
+																		font-size="12"
+																		x="32"
+																		y="102"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="end"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="32" dy="0.355em">40</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="left"
+																		width="60"
+																		height="184"
+																		stroke="none"
+																		font-size="12"
+																		x="32"
+																		y="56"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="end"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="32" dy="0.355em">60</tspan>
+																	</text>
+																</g>
+																<g
+																	class="recharts-layer recharts-cartesian-axis-tick"
+																>
+																	<text
+																		orientation="left"
+																		width="60"
+																		height="184"
+																		stroke="none"
+																		font-size="12"
+																		x="32"
+																		y="10"
+																		class="recharts-text recharts-cartesian-axis-tick-value"
+																		text-anchor="end"
+																		fill="var(--chart-text)"
+																	>
+																		<tspan x="32" dy="0.355em">80</tspan>
+																	</text>
+																</g>
+															</g>
+														</g>
+														<g class="recharts-cartesian-grid">
+															<g class="recharts-cartesian-grid-horizontal">
+																<line
+																	stroke="var(--chart-grid)"
+																	fill="none"
+																	x="40"
+																	y="10"
+																	width="635"
+																	height="184"
+																	x1="40"
+																	y1="194"
+																	x2="675"
+																	y2="194"
+																></line>
+																<line
+																	stroke="var(--chart-grid)"
+																	fill="none"
+																	x="40"
+																	y="10"
+																	width="635"
+																	height="184"
+																	x1="40"
+																	y1="148"
+																	x2="675"
+																	y2="148"
+																></line>
+																<line
+																	stroke="var(--chart-grid)"
+																	fill="none"
+																	x="40"
+																	y="10"
+																	width="635"
+																	height="184"
+																	x1="40"
+																	y1="102"
+																	x2="675"
+																	y2="102"
+																></line>
+																<line
+																	stroke="var(--chart-grid)"
+																	fill="none"
+																	x="40"
+																	y="10"
+																	width="635"
+																	height="184"
+																	x1="40"
+																	y1="56"
+																	x2="675"
+																	y2="56"
+																></line>
+																<line
+																	stroke="var(--chart-grid)"
+																	fill="none"
+																	x="40"
+																	y="10"
+																	width="635"
+																	height="184"
+																	x1="40"
+																	y1="10"
+																	x2="675"
+																	y2="10"
+																></line>
+															</g>
+														</g>
+														<g class="recharts-layer recharts-area">
+															<g class="recharts-layer">
+																<defs>
+																	<clipPath
+																		id="animationClipPath-recharts-area-6"
+																	>
+																		<rect
+																			x="40"
+																			y="0"
+																			width="635"
+																			height="197"
+																		></rect>
+																	</clipPath>
+																</defs>
+																<g
+																	class="recharts-layer"
+																	clip-path="url(#animationClipPath-recharts-area-6)"
+																>
+																	<g class="recharts-layer">
+																		<path
+																			stroke-width="3"
+																			fill-opacity="1"
+																			fill="url(#colorIncome)"
+																			width="635"
+																			height="184"
+																			stroke="none"
+																			class="recharts-curve recharts-area-area"
+																			d="M40,90.5C70.238,82.45,100.476,74.4,130.714,74.4C160.952,74.4,191.19,83.6,221.429,83.6C251.667,83.6,281.905,33,312.143,33C342.381,33,372.619,85.9,402.857,85.9C433.095,85.9,463.333,56,493.571,56C523.81,56,554.048,63.667,584.286,67.5C614.524,71.333,644.762,75.167,675,79L675,194C644.762,194,614.524,194,584.286,194C554.048,194,523.81,194,493.571,194C463.333,194,433.095,194,402.857,194C372.619,194,342.381,194,312.143,194C281.905,194,251.667,194,221.429,194C191.19,194,160.952,194,130.714,194C100.476,194,70.238,194,40,194Z"
+																		></path>
+																		<path
+																			stroke="#8b5cf6"
+																			stroke-width="3"
+																			fill-opacity="1"
+																			fill="none"
+																			width="635"
+																			height="184"
+																			class="recharts-curve recharts-area-curve"
+																			d="M40,90.5C70.238,82.45,100.476,74.4,130.714,74.4C160.952,74.4,191.19,83.6,221.429,83.6C251.667,83.6,281.905,33,312.143,33C342.381,33,372.619,85.9,402.857,85.9C433.095,85.9,463.333,56,493.571,56C523.81,56,554.048,63.667,584.286,67.5C614.524,71.333,644.762,75.167,675,79"
+																		></path>
+																	</g>
+																</g>
+															</g>
+														</g>
+														<g class="recharts-layer recharts-area">
+															<g class="recharts-layer">
+																<defs>
+																	<clipPath
+																		id="animationClipPath-recharts-area-7"
+																	>
+																		<rect
+																			x="40"
+																			y="0"
+																			width="635"
+																			height="196"
+																		></rect>
+																	</clipPath>
+																</defs>
+																<g
+																	class="recharts-layer"
+																	clip-path="url(#animationClipPath-recharts-area-7)"
+																>
+																	<g class="recharts-layer">
+																		<path
+																			stroke-width="2"
+																			stroke-dasharray="5 5"
+																			fill="url(#colorExpense)"
+																			width="635"
+																			height="184"
+																			fill-opacity="0.6"
+																			stroke="none"
+																			class="recharts-curve recharts-area-area"
+																			d="M40,125C70.238,121.55,100.476,118.1,130.714,113.5C160.952,108.9,191.19,101.233,221.429,97.4C251.667,93.567,281.905,90.5,312.143,90.5C342.381,90.5,372.619,113.5,402.857,113.5C433.095,113.5,463.333,102,493.571,102C523.81,102,554.048,103.533,584.286,106.6C614.524,109.667,644.762,115.033,675,120.4L675,194C644.762,194,614.524,194,584.286,194C554.048,194,523.81,194,493.571,194C463.333,194,433.095,194,402.857,194C372.619,194,342.381,194,312.143,194C281.905,194,251.667,194,221.429,194C191.19,194,160.952,194,130.714,194C100.476,194,70.238,194,40,194Z"
+																		></path>
+																		<path
+																			stroke="var(--chart-text)"
+																			stroke-width="2"
+																			stroke-dasharray="5 5"
+																			fill="none"
+																			width="635"
+																			height="184"
+																			fill-opacity="0.6"
+																			class="recharts-curve recharts-area-curve"
+																			d="M40,125C70.238,121.55,100.476,118.1,130.714,113.5C160.952,108.9,191.19,101.233,221.429,97.4C251.667,93.567,281.905,90.5,312.143,90.5C342.381,90.5,372.619,113.5,402.857,113.5C433.095,113.5,463.333,102,493.571,102C523.81,102,554.048,103.533,584.286,106.6C614.524,109.667,644.762,115.033,675,120.4"
+																		></path>
+																	</g>
+																</g>
+															</g>
+														</g>
+													</svg>
+													<div
+														tabindex="-1"
+														class="recharts-tooltip-wrapper"
+														style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px;"
+													></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+										<div
+											class="bg-white dark:bg-gray-950 p-6 rounded-2xl flex flex-col"
+										>
+											<div class="mb-5">
+												<h3
+													class="text-lg font-semibold text-gray-900 dark:text-white/90"
+												>
+													Budget
+												</h3>
+												<p class="text-sm text-gray-500 dark:text-gray-400">
+													Monthly expense budget
+												</p>
+											</div>
+											<div>
+												<p
+													class="text-xs text-gray-500 dark:text-gray-400 mb-1"
+												>
+													Progress
+												</p>
+												<div class="flex items-end justify-between mb-4">
+													<h2
+														class="text-3xl font-semibold text-gray-900 dark:text-white/90"
+													>
+														$3,457
+													</h2>
+													<span
+														class="px-2 py-1 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-600 dark:text-green-400 text-xs font-semibold rounded-full"
+														>69%</span
+													>
+												</div>
+												<div class="h-12">
+													<div
+														class="recharts-responsive-container"
+														style="width: 100%; height: 100%; min-width: 0px;"
+													>
+														<div
+															class="recharts-wrapper"
+															style="position: relative; cursor: default; width: 100%; height: 100%; max-height: 48px; max-width: 307px;"
+														>
+															<svg
+																class="recharts-surface"
+																width="307"
+																height="48"
+																viewBox="0 0 307 48"
+																style="width: 100%; height: 100%;"
+															>
+																<title></title>
+																<desc></desc>
+																<defs>
+																	<clipPath id="recharts8-clip">
+																		<rect
+																			x="0"
+																			y="0"
+																			height="48"
+																			width="307"
+																		></rect>
+																	</clipPath>
+																</defs>
+																<g class="recharts-layer recharts-bar">
+																	<g
+																		class="recharts-layer recharts-bar-rectangles"
+																	>
+																		<g class="recharts-layer">
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="2.558333333333333"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="#8B5CF6"
+																					class="recharts-rectangle"
+																					d="M2.558333333333333,10A 10,10,0,0,1,12.558333333333334,0L 12.558333333333334,0A 10,10,0,0,1,
+        22.558333333333334,10L 22.558333333333334,38A 10,10,0,0,1,
+        12.558333333333334,48L 12.558333333333334,48A 10,10,0,0,1,
+        2.558333333333333,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="28.141666666666666"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="#8B5CF6"
+																					class="recharts-rectangle"
+																					d="M28.141666666666666,10A 10,10,0,0,1,38.141666666666666,0L 38.141666666666666,0A 10,10,0,0,1,
+        48.141666666666666,10L 48.141666666666666,38A 10,10,0,0,1,
+        38.141666666666666,48L 38.141666666666666,48A 10,10,0,0,1,
+        28.141666666666666,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="53.724999999999994"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="#8B5CF6"
+																					class="recharts-rectangle"
+																					d="M53.724999999999994,10A 10,10,0,0,1,63.724999999999994,0L 63.724999999999994,0A 10,10,0,0,1,
+        73.725,10L 73.725,38A 10,10,0,0,1,
+        63.724999999999994,48L 63.724999999999994,48A 10,10,0,0,1,
+        53.724999999999994,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="79.30833333333334"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="#8B5CF6"
+																					class="recharts-rectangle"
+																					d="M79.30833333333334,10A 10,10,0,0,1,89.30833333333334,0L 89.30833333333334,0A 10,10,0,0,1,
+        99.30833333333334,10L 99.30833333333334,38A 10,10,0,0,1,
+        89.30833333333334,48L 89.30833333333334,48A 10,10,0,0,1,
+        79.30833333333334,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="104.89166666666667"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="var(--chart-muted)"
+																					class="recharts-rectangle"
+																					d="M104.89166666666667,10A 10,10,0,0,1,114.89166666666667,0L 114.89166666666667,0A 10,10,0,0,1,
+        124.89166666666667,10L 124.89166666666667,38A 10,10,0,0,1,
+        114.89166666666667,48L 114.89166666666667,48A 10,10,0,0,1,
+        104.89166666666667,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="130.475"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="var(--chart-muted)"
+																					class="recharts-rectangle"
+																					d="M130.475,10A 10,10,0,0,1,140.475,0L 140.475,0A 10,10,0,0,1,
+        150.475,10L 150.475,38A 10,10,0,0,1,
+        140.475,48L 140.475,48A 10,10,0,0,1,
+        130.475,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="156.05833333333334"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="var(--chart-muted)"
+																					class="recharts-rectangle"
+																					d="M156.05833333333334,10A 10,10,0,0,1,166.05833333333334,0L 166.05833333333334,0A 10,10,0,0,1,
+        176.05833333333334,10L 176.05833333333334,38A 10,10,0,0,1,
+        166.05833333333334,48L 166.05833333333334,48A 10,10,0,0,1,
+        156.05833333333334,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="181.64166666666665"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="var(--chart-muted)"
+																					class="recharts-rectangle"
+																					d="M181.64166666666665,10A 10,10,0,0,1,191.64166666666665,0L 191.64166666666665,0A 10,10,0,0,1,
+        201.64166666666665,10L 201.64166666666665,38A 10,10,0,0,1,
+        191.64166666666665,48L 191.64166666666665,48A 10,10,0,0,1,
+        181.64166666666665,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="207.225"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="var(--chart-muted)"
+																					class="recharts-rectangle"
+																					d="M207.225,10A 10,10,0,0,1,217.225,0L 217.225,0A 10,10,0,0,1,
+        227.225,10L 227.225,38A 10,10,0,0,1,
+        217.225,48L 217.225,48A 10,10,0,0,1,
+        207.225,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="232.80833333333334"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="var(--chart-muted)"
+																					class="recharts-rectangle"
+																					d="M232.80833333333334,10A 10,10,0,0,1,242.80833333333334,0L 242.80833333333334,0A 10,10,0,0,1,
+        252.80833333333334,10L 252.80833333333334,38A 10,10,0,0,1,
+        242.80833333333334,48L 242.80833333333334,48A 10,10,0,0,1,
+        232.80833333333334,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="258.39166666666665"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="var(--chart-muted)"
+																					class="recharts-rectangle"
+																					d="M258.39166666666665,10A 10,10,0,0,1,268.39166666666665,0L 268.39166666666665,0A 10,10,0,0,1,
+        278.39166666666665,10L 278.39166666666665,38A 10,10,0,0,1,
+        268.39166666666665,48L 268.39166666666665,48A 10,10,0,0,1,
+        258.39166666666665,38Z"
+																				></path>
+																			</g>
+																			<g
+																				class="recharts-layer recharts-bar-rectangle"
+																			>
+																				<path
+																					x="283.97499999999997"
+																					y="0"
+																					width="20"
+																					height="48"
+																					radius="20,20,20,20"
+																					fill="var(--chart-muted)"
+																					class="recharts-rectangle"
+																					d="M283.97499999999997,10A 10,10,0,0,1,293.97499999999997,0L 293.97499999999997,0A 10,10,0,0,1,
+        303.97499999999997,10L 303.97499999999997,38A 10,10,0,0,1,
+        293.97499999999997,48L 293.97499999999997,48A 10,10,0,0,1,
+        283.97499999999997,38Z"
+																				></path>
+																			</g>
+																		</g>
+																	</g>
+																	<g class="recharts-layer"></g>
+																</g>
+															</svg>
+															<div
+																tabindex="-1"
+																class="recharts-tooltip-wrapper"
+																style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px;"
+															></div>
+														</div>
+													</div>
+												</div>
+												<div
+													class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400 mt-2"
+												>
+													<span>Limit</span
+													><span
+														class="text-gray-900 dark:text-white/90 font-medium"
+														>$10,000</span
+													>
+												</div>
+											</div>
+										</div>
+										<div
+											class="bg-white dark:bg-gray-950 p-6 rounded-2xl flex flex-col"
+										>
+											<div class="mb-2">
+												<h3
+													class="text-lg font-semibold text-gray-900 dark:text-white/90"
+												>
+													Target
+												</h3>
+												<p class="text-sm text-gray-500 dark:text-gray-400">
+													Income target progress
+												</p>
+											</div>
+											<div
+												class="flex flex-col items-center justify-center flex-1"
+											>
+												<div class="relative">
+													<div
+														class="recharts-wrapper"
+														style="position: relative; cursor: default; width: 280px; height: 160px;"
+													>
+														<svg
+															cx="50%"
+															cy="50%"
+															class="recharts-surface"
+															width="280"
+															height="160"
+															viewBox="0 0 280 160"
+															style="width: 100%; height: 100%;"
+														>
+															<title></title>
+															<desc></desc>
+															<defs>
+																<clipPath id="recharts1-clip">
+																	<rect
+																		x="5"
+																		y="5"
+																		height="150"
+																		width="270"
+																	></rect>
+																</clipPath>
+															</defs>
+															<g
+																class="recharts-layer recharts-pie"
+																tabindex="0"
+															>
+																<g class="recharts-layer">
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="0"
+																			stroke="none"
+																			fill="#8B5CF6"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 36.165262898282336,155
+    A6,6,0,0,1,30.17435993855476,148.66972477064218
+    A115,115,0,0,1,31.169398768772254,138.64169252834478
+    A6,6,0,0,1,38.28748631629415,133.61216646537352
+  L55.96861128312493,137.15590228830024
+      A6,6,0,0,1,60.737455914328294,143.82754887187988
+      A85,85,0,0,0,60.18496153446942,149.39560439560438
+      A6,6,0,0,1,54.19801764278492,155Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="1"
+																			stroke="none"
+																			fill="#8B5CF6"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 40.03937248467737,126.22037749396807
+    A6,6,0,0,1,35.93566428939053,118.5312369828167
+    A115,115,0,0,1,39.54703776168584,109.12328744161492
+    A6,6,0,0,1,47.74172652488761,106.15505921141627
+  L63.856384759522,114.24814475750503
+      A6,6,0,0,1,66.69126508414432,121.94335110937217
+      A85,85,0,0,0,64.68605334122324,127.16710629325149
+      A6,6,0,0,1,57.43022860485108,130.988853884053Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="2"
+																			stroke="none"
+																			fill="#8B5CF6"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 51.38589362054147,99.48964883217347
+    A6,6,0,0,1,49.461533516519154,90.98905232708388
+    A115,115,0,0,1,55.43213885356856,82.87096112068609
+    A6,6,0,0,1,64.12002829066599,82.17534637022068
+  L77.520976668146,94.24161448673028
+      A6,6,0,0,1,78.22007041263069,102.41253947654445
+      A85,85,0,0,0,74.90489738329855,106.92010202637599
+      A6,6,0,0,1,66.89675224823146,108.68712176266885Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="3"
+																			stroke="none"
+																			fill="#8B5CF6"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 69.39703887558746,76.7108419433408
+    A6,6,0,0,1,69.78902690758011,68.00396832905946
+    A115,115,0,0,1,77.69380167088619,61.75368282617271
+    A6,6,0,0,1,86.25637904136799,63.38020412231552
+  L95.98957027939153,78.56062677780974
+      A6,6,0,0,1,94.50310719851316,86.6255616666934
+      A85,85,0,0,0,90.11398840420216,90.09602684653316
+      A6,6,0,0,1,81.92364290129038,89.68252014080716Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="4"
+																			stroke="none"
+																			fill="#8B5CF6"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 92.79054943516297,59.505637487243064
+    A6,6,0,0,1,95.47097898745325,51.21235103569066
+    A115,115,0,0,1,104.74716234340096,47.274844810548174
+    A6,6,0,0,1,112.57483618853598,51.107706003766936
+  L117.94733987746366,68.32155065822572
+      A6,6,0,0,1,114.38114502349525,75.70633240965726
+      A85,85,0,0,0,109.2305528907427,77.89262905857804
+      A6,6,0,0,1,101.44109835412645,75.32803449515562Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="5"
+																			stroke="none"
+																			fill="var(--chart-muted)"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 119.90098233626284,49.09891732226997
+    A6,6,0,0,1,124.67902687495693,41.80963799310791
+    A115,115,0,0,1,134.6662239565867,40.465232035488114
+    A6,6,0,0,1,141.20172245140108,46.23156207950852
+  L141.83105651614383,64.25333175704948
+      A6,6,0,0,1,136.43901628673063,70.4322191501921
+      A85,85,0,0,0,130.8936344477754,71.17869930079222
+      A6,6,0,0,1,124.05962177355119,66.6455968288322Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="6"
+																			stroke="none"
+																			fill="var(--chart-muted)"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 148.798277548599,46.23156207950852
+    A6,6,0,0,1,155.33377604341337,40.46523203548813
+    A115,115,0,0,1,165.32097312504314,41.80963799310793
+    A6,6,0,0,1,170.0990176637372,49.09891732226998
+  L165.94037822644884,66.64559682883221
+      A6,6,0,0,1,159.10636555222464,71.17869930079222
+      A85,85,0,0,0,153.56098371326942,70.4322191501921
+      A6,6,0,0,1,148.1689434838562,64.25333175704948Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="7"
+																			stroke="none"
+																			fill="var(--chart-muted)"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 177.42516381146407,51.10770600376695
+    A6,6,0,0,1,185.25283765659913,47.27484481054819
+    A115,115,0,0,1,194.52902101254682,51.21235103569069
+    A6,6,0,0,1,197.20945056483708,59.50563748724308
+  L188.5589016458736,75.32803449515563
+      A6,6,0,0,1,180.76944710925736,77.89262905857805
+      A85,85,0,0,0,175.6188549765048,75.70633240965728
+      A6,6,0,0,1,172.0526601225364,68.32155065822573Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="8"
+																			stroke="none"
+																			fill="var(--chart-muted)"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 203.74362095863205,63.38020412231555
+    A6,6,0,0,1,212.3061983291139,61.75368282617278
+    A115,115,0,0,1,220.21097309241998,68.00396832905952
+    A6,6,0,0,1,220.60296112441256,76.71084194334084
+  L208.07635709870965,89.68252014080718
+      A6,6,0,0,1,199.8860115957979,90.0960268465332
+      A85,85,0,0,0,195.49689280148687,86.62556166669343
+      A6,6,0,0,1,194.0104297206085,78.56062677780977Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="9"
+																			stroke="none"
+																			fill="var(--chart-muted)"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 225.87997170933406,82.17534637022074
+    A6,6,0,0,1,234.56786114643145,82.87096112068612
+    A115,115,0,0,1,240.53846648348087,90.98905232708394
+    A6,6,0,0,1,238.61410637945855,99.4896488321735
+  L223.10324775176855,108.68712176266887
+      A6,6,0,0,1,215.09510261670147,106.92010202637601
+      A85,85,0,0,0,211.77992958736934,102.4125394765445
+      A6,6,0,0,1,212.47902333185402,94.24161448673033Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="10"
+																			stroke="none"
+																			fill="var(--chart-muted)"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 242.2582734751124,106.15505921141627
+    A6,6,0,0,1,250.45296223831417,109.12328744161492
+    A115,115,0,0,1,254.06433571060947,118.53123698281671
+    A6,6,0,0,1,249.96062751532264,126.22037749396807
+  L232.5697713951489,130.98885388405301
+      A6,6,0,0,1,225.31394665877676,127.16710629325149
+      A85,85,0,0,0,223.30873491585567,121.94335110937217
+      A6,6,0,0,1,226.14361524047803,114.24814475750503Z"
+																			role="img"
+																		></path>
+																	</g>
+																	<g
+																		class="recharts-layer recharts-pie-sector"
+																		tabindex="-1"
+																	>
+																		<path
+																			cx="145"
+																			cy="155"
+																			name="11"
+																			stroke="none"
+																			fill="var(--chart-muted)"
+																			tabindex="-1"
+																			class="recharts-sector"
+																			d="M 251.71251368370585,133.61216646537352
+    A6,6,0,0,1,258.8306012312278,138.64169252834478
+    A115,115,0,0,1,259.82564006144526,148.66972477064218
+    A6,6,0,0,1,253.83473710171768,155
+  L235.80198235721508,155
+      A6,6,0,0,1,229.81503846553056,149.39560439560438
+      A85,85,0,0,0,229.26254408567172,143.82754887187988
+      A6,6,0,0,1,234.03138871687509,137.15590228830024Z"
+																			role="img"
+																		></path>
+																	</g>
+																</g>
+															</g>
+														</svg>
+													</div>
+													<div
+														class="absolute inset-0 flex flex-col items-center justify-end pb-2"
+													>
+														<div
+															class="text-xl font-medium text-gray-900 dark:text-white/90"
+														>
+															44.8
+														</div>
+														<div class="flex items-center gap-1.5 mt-0.5">
+															<span
+																class="text-emerald-500 font-semibold text-sm flex items-center gap-0.5"
+																>7.5%<svg
+																	width="12"
+																	height="12"
+																	viewBox="0 0 24 24"
+																	fill="none"
+																	xmlns="http://www.w3.org/2000/svg"
+																	class="text-emerald-500"
+																>
+																	<path
+																		d="M21.2183 7.7184C21.1437 7.31119 20.7532 7.04149 20.3459 7.11584L16.1482 7.88218C15.8497 7.93667 15.6135 8.16562 15.5497 8.46223C15.4858 8.75885 15.607 9.0647 15.8567 9.23711L17.6773 10.4945L15.1879 13.987C14.8856 14.4111 14.2555 14.4111 13.9532 13.987L10.4992 9.14127C9.59882 7.87801 7.72205 7.87798 6.82159 9.14123L2.13933 15.7099C1.89891 16.0472 1.97743 16.5156 2.31473 16.756C2.65202 16.9964 3.12036 16.9179 3.36078 16.5806L8.04305 10.0119C8.34536 9.58777 8.97547 9.58778 9.27778 10.0119L12.7317 14.8576C13.6321 16.1209 15.5089 16.1209 16.4094 14.8576L18.9117 11.347L20.8239 12.6676C21.0735 12.84 21.4024 12.845 21.6572 12.6803C21.912 12.5156 22.0425 12.2136 21.9878 11.9152L21.2183 7.7184Z"
+																		fill="currentColor"
+																	></path>
+																</svg></span
+															><span
+																class="text-gray-500 dark:text-gray-400 text-sm"
+																>Last Month</span
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div
+										class="bg-white dark:bg-gray-950 p-6 rounded-2xl flex flex-col"
+									>
+										<div class="flex items-start justify-between mb-6">
+											<div>
+												<h3
+													class="text-lg font-semibold text-gray-900 dark:text-white/90"
+												>
+													Top Expenses
+												</h3>
+												<p class="text-sm text-gray-500 dark:text-gray-400">
+													Top expenses category
+												</p>
+											</div>
+											<div class="w-28">
+												<div class="relative">
+													<select
+														class="appearance-none bg-transparent pl-3 h-10 pr-8 py-1.5 border border-gray-200 dark:border-gray-800 rounded-lg text-sm font-medium text-gray-900 dark:text-white/90 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-violet-600/20 transition-colors cursor-pointer w-full"
+													>
+														<option
+															class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white/90"
+														>
+															Monthly
+														</option>
+														<option
+															class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white/90"
+														>
+															Weekly
+														</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="h-[300px] relative">
+											<div
+												class="recharts-responsive-container"
+												style="width: 100%; height: 100%; min-width: 0px;"
+											>
+												<div
+													class="recharts-wrapper"
+													style="position: relative; cursor: default; width: 100%; height: 100%; max-height: 300px; max-width: 307px;"
+												>
+													<svg
+														cx="50%"
+														cy="50%"
+														class="recharts-surface"
+														width="307"
+														height="300"
+														viewBox="0 0 307 300"
+														style="width: 100%; height: 100%;"
+													>
+														<title></title>
+														<desc></desc>
+														<defs>
+															<clipPath id="recharts11-clip">
+																<rect
+																	x="5"
+																	y="5"
+																	height="290"
+																	width="297"
+																></rect>
+															</clipPath>
+														</defs>
+														<g class="recharts-layer recharts-pie" tabindex="0">
+															<g class="recharts-layer">
+																<g
+																	class="recharts-layer recharts-pie-sector"
+																	tabindex="-1"
+																>
+																	<path
+																		cx="153.5"
+																		cy="150"
+																		name="Rent"
+																		stroke="#fff"
+																		fill="#a78bfa"
+																		color="#a78bfa"
+																		stroke-width="0"
+																		tabindex="-1"
+																		class="recharts-sector"
+																		d="M 267.34199576606164,150
+    A6,6,0,0,0,273.3336797537491,143.68421052631578
+    A120,120,0,0,0,145.07583720730116,30.296059040472244
+    A6,6,0,0,0,139.54231264380485,37.01689080368381
+  L142.3671515943101,59.883077691390696
+      A6,6,0,0,0,148.66329851958807,65.13772146124415
+      A85,85,0,0,1,238.31503846553056,144.3956043956044
+      A6,6,0,0,0,244.30198235721508,150Z"
+																		role="img"
+																	></path>
+																</g>
+																<g
+																	class="recharts-layer recharts-pie-sector"
+																	tabindex="-1"
+																>
+																	<path
+																		cx="153.5"
+																		cy="150"
+																		name="Food"
+																		stroke="#fff"
+																		fill="#7c3aed"
+																		color="#7c3aed"
+																		stroke-width="0"
+																		tabindex="-1"
+																		class="recharts-sector"
+																		d="M 135.607761642983,37.57283332496682
+    A6,6,0,0,0,128.42876808783325,32.64824956394408
+    A120,120,0,0,0,65.49194477578918,231.57562268013808
+    A6,6,0,0,0,74.19707561731173,231.67647264882112
+  L90.24686839231319,215.14630720018326
+      A6,6,0,0,0,90.39650468703405,206.94689525590036
+      A85,85,0,0,1,134.63510582135024,67.11987109307596
+      A6,6,0,0,0,139.2288981918105,60.326505291807166Z"
+																		role="img"
+																	></path>
+																</g>
+																<g
+																	class="recharts-layer recharts-pie-sector"
+																	tabindex="-1"
+																>
+																	<path
+																		cx="153.5"
+																		cy="150"
+																		name="Bills"
+																		stroke="#fff"
+																		fill="#c4b5fd"
+																		color="#c4b5fd"
+																		stroke-width="0"
+																		tabindex="-1"
+																		class="recharts-sector"
+																		d="M 77.09585260403179,234.39434969650023
+    A6,6,0,0,0,77.75665829704539,243.074949302535
+    A120,120,0,0,0,207.788450009779,257.01758825321997
+    A6,6,0,0,0,210.27462624997372,248.67442330298059
+  L198.7842430984899,228.70411251641727
+      A6,6,0,0,0,190.94076670784108,226.3098223581278
+      A85,85,0,0,1,100.73176331004655,216.63717578524057
+      A6,6,0,0,0,92.55897382435909,217.31412428799655Z"
+																		role="img"
+																	></path>
+																</g>
+																<g
+																	class="recharts-layer recharts-pie-sector"
+																	tabindex="-1"
+																>
+																	<path
+																		cx="153.5"
+																		cy="150"
+																		name="Transportation"
+																		stroke="#fff"
+																		fill="#ddd6fe"
+																		color="#ddd6fe"
+																		stroke-width="0"
+																		tabindex="-1"
+																		class="recharts-sector"
+																		d="M 213.68372839234482,246.63290762880143
+    A6,6,0,0,0,222.21234716793617,248.37994382328654
+    A120,120,0,0,0,260.4749046822153,204.37250930599905
+    A6,6,0,0,0,257.55950398587225,196.16946642765367
+  L236.49932886315915,186.82541796456837
+      A6,6,0,0,0,228.75394140283817,189.52017590216673
+      A85,85,0,0,1,203.09553145003613,219.03103113954245
+      A6,6,0,0,0,201.50339107637353,227.07577080489523Z"
+																		role="img"
+																	></path>
+																</g>
+																<g
+																	class="recharts-layer recharts-pie-sector"
+																	tabindex="-1"
+																>
+																	<path
+																		cx="153.5"
+																		cy="150"
+																		name="Entertaiment"
+																		stroke="#fff"
+																		fill="var(--chart-muted)"
+																		color="var(--chart-muted)"
+																		stroke-width="0"
+																		tabindex="-1"
+																		class="recharts-sector"
+																		d="M 259.10740488898585,192.5097169199444
+    A6,6,0,0,0,267.024067043775,188.88812417487478
+    A120,120,0,0,0,273.0402624399303,160.49407717679816
+    A6,6,0,0,0,267.27264629814874,153.97302835584367
+  L244.24666824295053,153.16894348385608
+      A6,6,0,0,0,238.06778084980792,158.5609837132693
+      A85,85,0,0,1,234.27280547198322,176.4717565753608
+      A6,6,0,0,0,237.7339564674052,183.90635011096427Z"
+																		role="img"
+																	></path>
+																</g>
+															</g>
+														</g>
+													</svg>
+													<div
+														tabindex="-1"
+														class="recharts-tooltip-wrapper"
+														style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px;"
+													></div>
+												</div>
+											</div>
+										</div>
+										<div class="space-y-1.5 mt-2">
+											<div
+												class="flex items-center justify-between group cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors"
+											>
+												<div class="flex items-center gap-3">
+													<div
+														class="w-2.5 h-2.5 rounded-full"
+														style="background-color: rgb(167, 139, 250);"
+													></div>
+													<span
+														class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"
+														>Rent</span
+													>
+												</div>
+												<span
+													class="text-sm font-semibold text-gray-900 dark:text-white/90"
+													>$750.00</span
+												>
+											</div>
+											<div
+												class="flex items-center justify-between group cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors"
+											>
+												<div class="flex items-center gap-3">
+													<div
+														class="w-2.5 h-2.5 rounded-full"
+														style="background-color: rgb(124, 58, 237);"
+													></div>
+													<span
+														class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"
+														>Food</span
+													>
+												</div>
+												<span
+													class="text-sm font-semibold text-gray-900 dark:text-white/90"
+													>$980.00</span
+												>
+											</div>
+											<div
+												class="flex items-center justify-between group cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors"
+											>
+												<div class="flex items-center gap-3">
+													<div
+														class="w-2.5 h-2.5 rounded-full"
+														style="background-color: rgb(196, 181, 253);"
+													></div>
+													<span
+														class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"
+														>Bills</span
+													>
+												</div>
+												<span
+													class="text-sm font-semibold text-gray-900 dark:text-white/90"
+													>$557.00</span
+												>
+											</div>
+											<div
+												class="flex items-center justify-between group cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors"
+											>
+												<div class="flex items-center gap-3">
+													<div
+														class="w-2.5 h-2.5 rounded-full"
+														style="background-color: rgb(221, 214, 254);"
+													></div>
+													<span
+														class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"
+														>Transportation</span
+													>
+												</div>
+												<span
+													class="text-sm font-semibold text-gray-900 dark:text-white/90"
+													>$264.00</span
+												>
+											</div>
+											<div
+												class="flex items-center justify-between group cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors"
+											>
+												<div class="flex items-center gap-3">
+													<div
+														class="w-2.5 h-2.5 rounded-full"
+														style="background-color: var(--chart-muted);"
+													></div>
+													<span
+														class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"
+														>Entertaiment</span
+													>
+												</div>
+												<span
+													class="text-sm font-semibold text-gray-900 dark:text-white/90"
+													>$154.00</span
+												>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</main>
+				</div>
+			</div>
+		</div>
+		<noscript>
+			<h1>Fundex - React Personal Finance Dashboard Template</h1>
+			<p>Please enable JavaScript to use this application.</p>
+		</noscript>
+
+		<span
+			id="recharts_measurement_span"
+			aria-hidden="true"
+			style="position: absolute; top: -20000px; left: 0px; padding: 0px; margin: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; white-space: pre; font-size: 12px; letter-spacing: normal;"
+			>0</span
+		>
+	</body>
+</html>

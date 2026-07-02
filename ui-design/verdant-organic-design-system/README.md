@@ -1,5 +1,7 @@
 # Verdant — Organic / Natural Design System Landing Page (React + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-page landing page and design system showcase built around an **Organic / Natural** aesthetic — wabi-sabi warmth over digital precision, featuring soft amorphous blob shapes, a global paper-grain texture, an earth-drawn palette (moss, clay, sand, rice paper), the Fraunces serif paired with rounded Nunito, colour-tinted soft shadows, and gentle, tactile motion with no harsh snaps. The page presents a fictional small-batch botanical apothecary called Verdant, covering a hero, stats band, feature grid, field-to-cup ritual section, product spotlight, benefits, social proof, pricing, journal, FAQ, and closing CTA. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")

@@ -1,5 +1,7 @@
 # Old Television Shader — Analog CRT Static GLSL Background (React Three Fiber + drei + Vite + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A React Three Fiber fragment shader where flowing sines and a 4-octave fractal noise (FBM) mix two colours into rolling analog snow on a drei `shaderMaterial` quad, wrapped in a **Cathode Vault** broadcast showcase. The shader is the live picture tube of a vintage CRT cabinet; scanline/shadow-mask/vignette glass, a self-typing on-screen channel readout, six tunable channel presets, faders, toggles, and a phosphor signal meter compose a calm broadcast control desk. Built with React + TypeScript + Vite + Tailwind CSS on a shadcn project structure. Generated with Claude Fable 5.
 
 > The component file is named `old-television-shader.tsx`, and the inline

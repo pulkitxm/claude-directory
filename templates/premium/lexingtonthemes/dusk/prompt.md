@@ -1,0 +1,122 @@
+> A SELF-CONTAINED, PIXEL-FAITHFUL REPRODUCTION OF THE DUSK TEMPLATE BY LEXINGTON THEMES, REBUILT AS PLAIN HTML + CSS + VANILLA JS WITH ALL ASSETS VENDORED LOCALLY AND NO BUILD STEP REQUIRED.
+>
+> REFERENCE: `https://lexingtonthemes.com/viewports/dusk`
+
+## SUMMARY
+
+DUSK IS A PREMIUM MULTI-PAGE CONFERENCE / DESIGN-WEEK WEBSITE TEMPLATE BY LEXINGTON THEMES, BUILT WITH ASTRO AND TAILWIND CSS. IT PRESENTS "SWISS DESIGN WEEK" — A FICTIONAL SWISS-DESIGN EVENT IN MONTREAL — WITH A BOLD, GRID-DRIVEN SWISS / INTERNATIONAL-TYPOGRAPHIC AESTHETIC: A CREAM CANVAS, ELECTRIC-BLUE ACCENT, DASHED HAIRLINE GRID DIVIDERS, OVERSIZED CLASH DISPLAY HEADINGS, AND BLOCKY ACCENT-FILLED SQUARES. THE CLONE REPRODUCES EVERY PAGE AS SELF-CONTAINED HTML/CSS/JS WITH IDENTICAL LAYOUT, TYPOGRAPHY, COLOR, AND INTERACTIONS.
+
+THE SOURCE TEMPLATE IS HOSTED AT: `https://dusk-astro.pages.dev/`
+
+## STYLE
+
+### PALETTE
+- ACCENT COLOR SCALE: OKLCH-BASED ELECTRIC-BLUE / INDIGO FAMILY
+  - `--color-accent-50`:  `oklch(94.6% .022 277.53)` — LIGHTEST TINT
+  - `--color-accent-500`: `oklch(45.4% .219 266.27)` — PRIMARY ELECTRIC BLUE (BLOCKS, HEADINGS, LINKS, BUTTONS)
+  - `--color-accent-600`: `oklch(38.8% .183 266.58)` — BUTTON HOVER
+  - `--color-accent-900`: `oklch(16.9% .058 269.23)` — DEEP NAVY
+  - `--color-accent-950`: `oklch(13.3% .035 265.41)` — DARKEST (SEARCH MODAL, DARK SURFACES)
+- BASE NEUTRAL SCALE: WARM OKLCH GREY (NEAR-ZERO CHROMA, SLIGHT YELLOW-GREEN HUE)
+  - `--color-base-50`:  `oklch(97.4% .005 117.64)` — NEAR WHITE
+  - `--color-base-100`: `oklch(94.7% .008 114.05)` — PAGE BACKGROUND (CREAM)
+  - `--color-base-500`: `oklch(58.5% .005 106.38)` — BODY / SUBTEXT GREY
+  - `--color-base-900`: `oklch(22.5% .002 145.3)` — NEAR BLACK (BIG GHOST NUMERALS)
+  - `--color-base-950`: `oklch(17.7% .002 106.5)` — DARKEST
+- WHITE: `#fff`, BLACK: `oklch(12.9% 0 0)`
+- PAGE BODY: `bg-base-100` (CREAM, LIGHT)
+- DASHED HAIRLINE GRID DIVIDERS: `black/5` AND `black/10`
+- DARK SURFACES (SEARCH MODAL): `bg-accent-950` WITH `white/10` BORDER + BACKDROP-BLUR
+
+### FONTS
+- DISPLAY / HEADINGS: `Clash Display` (FONTSHARE, WEIGHTS 200–700) — `font-display` UTILITY, USED UPPERCASE
+- BODY / UI: `General Sans` (FONTSHARE, WEIGHTS 200–700, NORMAL + ITALIC)
+- VENDORED LOCALLY AS WOFF2 UNDER `assets/fonts/`
+
+### TYPE SCALE
+- XS: 0.75REM / SM: 0.875REM / BASE: 1REM / LG: 1.125REM / XL: 1.25REM
+- 2XL: 1.5REM / 3XL: 1.875REM / 4XL: 2.25REM / 5XL: 3REM / 6XL: 3.75REM / 7XL: 4.5REM / 8XL: 6REM / 9XL: 8REM
+- OVERSIZED GHOST NUMERALS: UP TO 25REM (`md:text-[20rem] xl:text-[25rem]`) AT ~6% OPACITY
+- FONT WEIGHTS: THIN (200), NORMAL (400), MEDIUM (500), BOLD (700)
+- HEADINGS UPPERCASE, `leading-tight`, `text-balance`
+
+### RADII
+- SHARP-CORNERED SWISS LOOK — MINIMAL ROUNDING; `--radius-sm: .25rem`; MOST SURFACES ARE SQUARE.
+
+### ANIMATION / EASINGS
+- DEFAULT TRANSITIONS: 300MS · EASE-OUT `cubic-bezier(0, 0, .2, 1)`
+- LOGO CORNER-TICK HOVER: 8 ABSOLUTELY-POSITIONED ACCENT TICKS GROW `w-2/h-2 → w-4/h-4` ON `group-hover` OVER 300MS
+- NAV LINK + BUTTON HOVER: COLOR / BACKGROUND TRANSITION (`bg-accent-500 → bg-accent-600`)
+- SEARCH MODAL: FADE + BACKDROP-BLUR OVERLAY (`bg-white/10 backdrop-blur`)
+
+## LAYOUT & STRUCTURE
+
+### CONTAINER / GRID SYSTEM
+- FULL-BLEED CONTAINER: `max-w-screen 2xl:max-w-[100rem]` CENTERED, `px-8`
+- DASHED VERTICAL BORDERS ON CONTAINER EDGES (`border-x border-dashed border-black/5`)
+- 12-COLUMN GRID FOR NAV; 9- AND 12-COLUMN GRIDS FOR CONTENT; `divide-x divide-dashed` HAIRLINES BETWEEN CELLS
+
+### NAV
+- FIXED, FULL-WIDTH, Z-50, CREAM BACKGROUND WITH DASHED BOTTOM BORDER
+- LEFT: "DUSK." WORDMARK WITH ANIMATED CORNER-TICK FRAME (HOVER GROWS TICKS)
+- DESKTOP (`lg:`): 12-COLUMN ROW OF UPPERCASE LINKS — OVERVIEW · VENUE · HOSTS · PARTNERS · JOURNAL · TICKETS · SCHEDULE · SESSIONS · SPEAKERS · SEARCH · BUY
+- SEARCH: BUTTON OPENS A FULL-SCREEN DARK DIALOG (`#searchModal`) WITH A FUSE.JS FUZZY SEARCH OVER ALL PAGES/POSTS/SPEAKERS/SESSIONS/SPONSORS, RESULTS GROUPED BY TYPE
+- MOBILE: "MENU" BUTTON OPENS A FULL-SCREEN OVERLAY (`#mobile-menu`); "CLOSE" / ESC DISMISSES; `<html>` GETS `overflow-hidden`
+
+### THEME
+- SOURCE IS LIGHT-ONLY; THE CLONE DRIVES ALL COLOR THROUGH THE EXISTING `--color-*` TOKENS AND ADDS A DARK OVERRIDE (`:root.dark` / `prefers-color-scheme: dark`) PLUS A NAV THEME TOGGLE WITH `localStorage` PERSISTENCE AND A NO-FLASH BOOT SCRIPT, SO THE CLONE RENDERS FAITHFULLY IN BOTH LIGHT AND DARK MODE.
+
+### PAGES DISCOVERED AND CLONED (63)
+
+**CORE / MARKETING**
+1. **HOME** (`index.html`) — HERO WITH ACCENT BLOCKS, "SUMMIT FOR SWISS DESIGN", 7/9/6 GHOST-NUMERAL STATS, SESSION HIGHLIGHTS GRID, FEATURED SPEAKERS, ATTEND ON-SITE/ONLINE, NEWSLETTER, FOOTER
+2. **SCHEDULE** (`schedule.html`)
+3. **SESSIONS** (`sessions.html`)
+4. **SPEAKERS** (`speakers.html`)
+5. **TICKETS** (`tickets.html`)
+6. **VENUE** (`venue.html`)
+7. **HOSTS** (`hosts.html`)
+8. **PARTNERS** (`partners.html`)
+9. **SPONSORS** (`sponsors.html`)
+10. **GALLERY** (`gallery.html`)
+11. **RECAP** (`recap.html`)
+12. **FAQ** (`faq.html`) — 12 NATIVE `<details>` ACCORDIONS
+
+**JOURNAL / BLOG**
+13. **BLOG INDEX** (`blog.html`)
+14. **BLOG TAGS INDEX** (`blog-tags.html`)
+15–20. **BLOG POSTS 1–6** (`blog-posts-1.html` … `blog-posts-6.html`)
+21–33. **BLOG TAG PAGES** (`blog-tags-{clarity,digital,event,grids,helvetica,history,minimalism,modern,posters,recap,swiss-design,typography,usability}.html`)
+
+**SPEAKERS DETAIL**
+34–39. **SPEAKER PROFILES** (`speakers-profile-{anna-muller,emil-steiner,javier-garcia,martina-rossi,miguel-santos,sofia-hagblom}.html`)
+
+**SESSIONS / WORKSHOPS DETAIL**
+40–48. **WORKSHOP DETAILS** (`sessions-workshop-{animation-for-ui,art-of-white-space,color-theory,design-systems-collab,designing-with-grids,modular-design-systems,proportion-harmony-ui,typography-mastery,ux-research-essentials}.html`)
+
+**SPONSORS DETAIL**
+49–52. **SPONSOR DETAILS** (`sponsors-details-{google,medium,polar-sh,swissted}.html`)
+
+**FORMS**
+53. **REGISTER** (`forms-register.html`)
+54. **SIGN IN** (`forms-sign-in.html`)
+55. **CONTACT** (`forms-contact.html`)
+
+**DESIGN SYSTEM**
+56. **OVERVIEW** (`system-overview.html`)
+57. **BUTTONS** (`system-buttons.html`)
+58. **COLORS** (`system-colors.html`)
+59. **TYPOGRAPHY** (`system-typography.html`)
+60. **LINK** (`system-link.html`)
+
+**LEGAL / INFO**
+61. **TERMS** (`infopages-terms.html`)
+62. **CODE OF CONDUCT** (`infopages-code-of-conduct.html`)
+63. **PRIVACY** (`legal-privacy.html`)
+
+NOTE: THE SOURCE NAV/FOOTER LINK TO BARE `/register` AND `/contact` ROUTES THAT 404 ON THE LIVE TEMPLATE; THESE ARE MAPPED TO THE REAL FORM PAGES (`forms-register.html`, `forms-contact.html`).
+
+### FOOTER
+- "DUSK." WORDMARK + TAGLINE + EVENT DATES/LOCATION
+- LINK COLUMNS: PROGRAMME (SESSIONS / SPEAKERS / SCHEDULE / TICKETS / JOURNAL) · ESSENTIALS (FAQ / VENUE / PARTNERS / REGISTER / CONTACT)
+- BOTTOM BAR: COPYRIGHT + TERMS / PRIVACY / CODE OF CONDUCT LINKS

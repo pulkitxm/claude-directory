@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Page - Startup Pro</title>
+
+  <!-- No-flash theme init -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.add('light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── About-page specific styles ── */
+
+    /* About section two-column layout */
+    .about-section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 1024px) {
+      .about-section-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    .about-content .tag {
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      background: rgba(74, 108, 247, 0.1);
+      color: var(--color-primary);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+    .about-content h2 {
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      color: var(--color-dark);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+    .about-content p {
+      font-size: var(--font-size-base);
+      color: var(--color-body);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .about-content .about-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .about-content .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: var(--font-size-base);
+      color: var(--color-body);
+    }
+    .about-list-check {
+      width: 1.25rem;
+      height: 1.25rem;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .about-list-check svg { color: #fff; }
+
+    /* About images grid */
+    .about-images {
+      position: relative;
+    }
+    .about-images-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .about-img-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .about-img-wrap:first-child {
+      margin-top: 2rem;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      background: var(--color-bg-dark);
+      padding: 3rem 0;
+    }
+    .dark .stats-bar { background: var(--color-gray-light); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+    .stat-item h3 {
+      font-size: var(--font-size-4xl);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .dark .stat-item h3 { color: var(--color-dark); }
+    .stat-item p {
+      font-size: var(--font-size-sm);
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+    }
+    .dark .stat-item p { color: var(--color-body); }
+
+    /* Team section */
+    .team-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+    .team-card:hover {
+      box-shadow: 0 10px 40px var(--color-shadow);
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+    }
+    .team-avatar {
+      width: 6rem;
+      height: 6rem;
+      border-radius: var(--radius-full);
+      margin: 0 auto 1.25rem;
+      overflow: hidden;
+      background: var(--color-gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .team-card h3 {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-bottom: 0.25rem;
+    }
+    .team-card .role {
+      font-size: var(--font-size-sm);
+      color: var(--color-primary);
+      font-weight: 600;
+      margin-bottom: 0.875rem;
+    }
+    .team-card p {
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .team-socials {
+      display: flex;
+      justify-content: center;
+      gap: 0.625rem;
+    }
+    .team-social-link {
+      width: 2rem;
+      height: 2rem;
+      border-radius: var(--radius-full);
+      background: var(--color-gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-body);
+      transition: all var(--transition-base);
+    }
+    .team-social-link:hover {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    /* CTA / Ready section */
+    .cta-section {
+      background: var(--color-primary);
+      padding: 5rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.06);
+      pointer-events: none;
+    }
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -8%;
+      width: 300px;
+      height: 300px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-size: var(--font-size-4xl);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: var(--font-size-lg);
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-white {
+      background: #fff;
+      color: var(--color-primary);
+      border-color: #fff;
+    }
+    .btn-white:hover {
+      background: var(--color-primary-dark);
+      color: #fff;
+      border-color: var(--color-primary-dark);
+    }
+    .btn-outline-white {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    .btn-outline-white:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #fff;
+    }
+
+    /* Page hero enhanced */
+    .page-hero-about {
+      padding-top: 160px;
+      padding-bottom: 80px;
+      background: linear-gradient(to bottom, var(--color-gray-light), var(--color-bg));
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark .page-hero-about {
+      background: linear-gradient(to bottom, var(--color-bg-dark), var(--color-bg));
+    }
+    .page-hero-about::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%234A6CF7' fill-opacity='0.07'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .page-hero-about h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 1rem;
+    }
+    .page-hero-about .sub {
+      font-size: var(--font-size-lg);
+      color: var(--color-body);
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ HEADER ═══ -->
+  <header class="header" id="header">
+    <div class="container">
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo/logo-2.svg" alt="Startup Pro" class="logo-light" />
+        <img src="assets/images/logo/logo.svg"   alt="Startup Pro" class="logo-dark"  style="display:none;" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">
+            Home
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="index.html">Home Page 1</a>
+            <a href="index-2.html">Home Page 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link" style="color:var(--color-primary);">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="docs.html" class="nav-link">Docs</a>
+        <div class="nav-item">
+          <a href="#" class="nav-link">
+            Pages
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown pages-dropdown">
+            <a href="about.html">About Page</a>
+            <a href="contact.html">Contact Page</a>
+            <a href="pricing.html">Pricing Page</a>
+            <a href="faq.html">FAQ Page</a>
+            <a href="blog-grid.html">Blog Grid Page</a>
+            <a href="blog-grid-2.html">Blog Grid 2 Page</a>
+            <a href="signin.html">Sign In Page</a>
+            <a href="signup.html">Sign Up Page</a>
+            <a href="error.html">Error Page</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <!-- Moon -->
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <!-- Sun -->
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="signin.html" class="btn btn-outline">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div class="mobile-nav" id="mobileNav">
+        <ul>
+          <li>
+            <button class="mobile-nav-toggle" data-target="mobileHome">
+              Home
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="mobile-sub" id="mobileHome">
+              <a href="index.html">Home Page 1</a>
+              <a href="index-2.html">Home Page 2</a>
+            </div>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="docs.html">Docs</a></li>
+          <li>
+            <button class="mobile-nav-toggle" data-target="mobilePages">
+              Pages
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="mobile-sub" id="mobilePages">
+              <a href="about.html">About Page</a>
+              <a href="contact.html">Contact Page</a>
+              <a href="pricing.html">Pricing Page</a>
+              <a href="faq.html">FAQ Page</a>
+              <a href="signin.html">Sign In Page</a>
+              <a href="signup.html">Sign Up Page</a>
+              <a href="error.html">Error Page</a>
+            </div>
+          </li>
+        </ul>
+        <div class="mobile-actions">
+          <a href="signin.html" class="btn btn-outline">Sign In</a>
+          <a href="signup.html" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+  <main>
+
+    <!-- ═══════════════════════════════════════ PAGE HERO ═══ -->
+    <section class="page-hero-about">
+      <div class="container">
+        <h1>About Page</h1>
+        <p class="sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero.</p>
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>About Page</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ ABOUT MISSION ═══ -->
+    <section class="section">
+      <div class="container">
+        <div class="about-section-inner">
+          <!-- Content -->
+          <div class="about-content">
+            <span class="tag">About Us</span>
+            <h2>We're on a mission to make building your business</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero. Pellentesque habitant morbi tristique senectus et netus.</p>
+            <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+            <ul class="about-list">
+              <li>
+                <span class="about-list-check">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Premium quality saas &amp; business solutions.
+              </li>
+              <li>
+                <span class="about-list-check">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Effortless to use without technical knowledge.
+              </li>
+              <li>
+                <span class="about-list-check">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Customizable and scalable for all business needs.
+              </li>
+            </ul>
+            <p style="font-size:var(--font-size-sm);font-weight:700;color:var(--color-dark);">More than 15k+ companies use our products &amp; services.</p>
+            <div style="margin-top:1.75rem;">
+              <a href="signup.html" class="btn btn-primary">Get Started Free</a>
+            </div>
+          </div>
+
+          <!-- Images -->
+          <div class="about-images">
+            <div class="about-images-grid">
+              <div class="about-img-wrap">
+                <img src="assets/images/about/about-image.svg" alt="About Startup Pro" class="about-light" />
+                <img src="assets/images/about/about-image-dark.svg" alt="About Startup Pro" class="about-dark" style="display:none;" />
+              </div>
+              <div class="about-img-wrap" style="margin-top:0;">
+                <img src="assets/images/about/about-image-2.svg" alt="About Startup Pro" class="about-light" />
+                <img src="assets/images/about/about-image-2-dark.svg" alt="About Startup Pro" class="about-dark" style="display:none;" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ STATS ═══ -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3>14K+</h3>
+            <p>Happy Clients</p>
+          </div>
+          <div class="stat-item">
+            <h3>100%</h3>
+            <p>Satisfaction Rate</p>
+          </div>
+          <div class="stat-item">
+            <h3>99.9%</h3>
+            <p>Uptime Guarantee</p>
+          </div>
+          <div class="stat-item">
+            <h3>24/7</h3>
+            <p>World-class Support</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ TEAM ═══ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="tag">Our Team</span>
+          <h2>Meet the Talented Team</h2>
+          <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form.</p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Team Member 1 -->
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="assets/images/testimonials/auth-01.png" alt="Musharof Chowdhury" />
+            </div>
+            <h3>Musharof Chowdhury</h3>
+            <p class="role">CEO &amp; Founder</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus.</p>
+            <div class="team-socials">
+              <a href="#" class="team-social-link" aria-label="Twitter">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.849L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="#" class="team-social-link" aria-label="LinkedIn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="#" class="team-social-link" aria-label="GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="assets/images/testimonials/auth-02.png" alt="Devid Weilium" />
+            </div>
+            <h3>Devid Weilium</h3>
+            <p class="role">Product Designer</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus.</p>
+            <div class="team-socials">
+              <a href="#" class="team-social-link" aria-label="Twitter">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.849L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="#" class="team-social-link" aria-label="LinkedIn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="#" class="team-social-link" aria-label="GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="assets/images/testimonials/auth-03.png" alt="Jaydon Frankie" />
+            </div>
+            <h3>Jaydon Frankie</h3>
+            <p class="role">Lead Developer</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus.</p>
+            <div class="team-socials">
+              <a href="#" class="team-social-link" aria-label="Twitter">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.849L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="#" class="team-social-link" aria-label="LinkedIn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="#" class="team-social-link" aria-label="GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ BRANDS ═══ -->
+    <section class="brands-section">
+      <div class="container">
+        <p style="text-align:center;font-size:var(--font-size-sm);color:var(--color-body);margin-bottom:2rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Trusted by leading companies</p>
+        <div class="brands-grid">
+          <div class="brand-item">
+            <img src="assets/images/brands/formbold.svg"         class="brand-light" alt="FormBold" />
+            <img src="assets/images/brands/formbold-light.svg"   class="brand-dark"  alt="FormBold" style="display:none;" />
+          </div>
+          <div class="brand-item">
+            <img src="assets/images/brands/lineicons.svg"        class="brand-light" alt="LineIcons" />
+            <img src="assets/images/brands/lineicons-light.svg"  class="brand-dark"  alt="LineIcons" style="display:none;" />
+          </div>
+          <div class="brand-item">
+            <img src="assets/images/brands/plainadmin.svg"       class="brand-light" alt="PlainAdmin" />
+            <img src="assets/images/brands/plainadmin-light.svg" class="brand-dark"  alt="PlainAdmin" style="display:none;" />
+          </div>
+          <div class="brand-item">
+            <img src="assets/images/brands/tailadmin.svg"        class="brand-light" alt="TailAdmin" />
+            <img src="assets/images/brands/tailadmin-light.svg"  class="brand-dark"  alt="TailAdmin" style="display:none;" />
+          </div>
+          <div class="brand-item">
+            <img src="assets/images/brands/tailgrids.svg"        class="brand-light" alt="TailGrids" />
+            <img src="assets/images/brands/tailgrids-light.svg"  class="brand-dark"  alt="TailGrids" style="display:none;" />
+          </div>
+          <div class="brand-item">
+            <img src="assets/images/brands/uideck.svg"           class="brand-light" alt="UIDeck" />
+            <img src="assets/images/brands/uideck-light.svg"     class="brand-dark"  alt="UIDeck" style="display:none;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ CTA ═══ -->
+    <section class="cta-section">
+      <div class="container" style="position:relative;z-index:1;">
+        <h2>We are ready to help</h2>
+        <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form.</p>
+        <div class="cta-actions">
+          <a href="signup.html" class="btn btn-white">Get Started Free</a>
+          <a href="contact.html" class="btn btn-outline-white">Contact Sales</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ NEWSLETTER ═══ -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-inner">
+          <div class="newsletter-text">
+            <h3>Stay updated by subscribing to our newsletter.</h3>
+            <p>Stay informed and up-to-date with the latest news and updates from our company by subscribing to our newsletter.</p>
+          </div>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="email" class="form-control" placeholder="Enter your email" />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/images/logo/logo.svg" alt="Startup Pro" />
+          </div>
+          <p class="footer-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.849L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="YouTube">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Useful Links -->
+        <div class="footer-col">
+          <h4>Useful Links</h4>
+          <div class="footer-links">
+            <a href="blog.html">Blog</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+
+        <!-- TOS / Policy -->
+        <div class="footer-col">
+          <h4>Terms</h4>
+          <div class="footer-links">
+            <a href="#">TOS</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Refund Policy</a>
+          </div>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-col">
+          <h4>Support &amp; Help</h4>
+          <div class="footer-links">
+            <a href="#">Open Support Ticket</a>
+            <a href="#">Terms of Use</a>
+            <a href="about.html">About</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Crafted by <a href="https://nextjstemplates.com" target="_blank" rel="noopener">Next.js Templates</a></p>
+        <p>&copy; 2024 Startup Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script>
+    /* ── Theme toggle ── */
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+
+    function applyTheme(dark) {
+      if (dark) {
+        html.classList.add('dark');
+        html.classList.remove('light');
+      } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
+      }
+      syncThemeAssets();
+    }
+
+    function syncThemeAssets() {
+      const isDark = html.classList.contains('dark');
+      // Logo
+      document.querySelectorAll('.logo-light').forEach(el => el.style.display = isDark ? 'none' : '');
+      document.querySelectorAll('.logo-dark').forEach(el  => el.style.display = isDark ? '' : 'none');
+      // About images
+      document.querySelectorAll('.about-light').forEach(el => el.style.display = isDark ? 'none' : '');
+      document.querySelectorAll('.about-dark').forEach(el  => el.style.display = isDark ? '' : 'none');
+      // Brand logos
+      document.querySelectorAll('.brand-light').forEach(el => el.style.display = isDark ? 'none' : '');
+      document.querySelectorAll('.brand-dark').forEach(el  => el.style.display = isDark ? '' : 'none');
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = !html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      applyTheme(isDark);
+    });
+
+    // On load sync
+    syncThemeAssets();
+
+    /* ── Sticky header ── */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('sticky', window.scrollY > 80);
+    });
+
+    /* ── Scroll to top ── */
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ── Mobile nav ── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+        mobileNav.classList.remove('open');
+      }
+    });
+
+    /* Mobile sub-menus */
+    document.querySelectorAll('.mobile-nav-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.getElementById(btn.dataset.target);
+        target.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

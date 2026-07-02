@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Server and Client Components — Taxonomy</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Marketing Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-left">
+        <a href="index.html" class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+          </svg>
+          <span class="logo-text">Taxonomy</span>
+        </a>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html#features">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="blog.html">Blog</a>
+        <a href="docs.html">Documentation</a>
+      </nav>
+      <div class="header-right">
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMobileMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html#features">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="docs.html">Documentation</a>
+    </div>
+  </header>
+
+  <!-- Blog Post -->
+  <main class="blog-post-main">
+    <div class="container prose-container">
+      <a href="blog.html" class="back-link">← Blog</a>
+      <div class="post-header">
+        <time>January 01, 2023</time>
+        <h1>Server and Client Components</h1>
+        <p class="post-byline">by <a href="#">shadcn</a></p>
+      </div>
+      <article class="prose">
+        <p>Next.js 13 introduced server and client components as part of the new App Router. This new paradigm changes how we think about rendering in React applications and provides powerful new capabilities for building modern web apps.</p>
+
+        <h2>Server Components</h2>
+        <p>Server components render on the server and send HTML to the client. They can directly access databases, file systems, and other server-side resources without exposing sensitive data to the browser. Server components have zero JavaScript bundle impact since they never run in the browser.</p>
+        <p>By default, all components in the Next.js 13 app directory are Server Components. This means you get server rendering by default without having to opt in.</p>
+
+        <pre class="code-block"><code>// app/page.tsx
+export default function Page() {
+  return &lt;h1&gt;Hello, World!&lt;/h1&gt;
+}</code></pre>
+
+        <p>Server components can fetch data directly without needing useEffect or useState. They support async/await natively:</p>
+
+        <pre class="code-block"><code>// app/posts/page.tsx
+async function getPosts() {
+  const res = await fetch('https://api.example.com/posts')
+  return res.json()
+}
+
+export default async function PostsPage() {
+  const posts = await getPosts()
+
+  return (
+    &lt;ul&gt;
+      {posts.map((post) =&gt; (
+        &lt;li key={post.id}&gt;{post.title}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  )
+}</code></pre>
+
+        <h2>Client Components</h2>
+        <p>Client components run in the browser and can use React hooks like useState, useEffect, and useContext. They're necessary for any interactive behavior that requires client-side JavaScript.</p>
+        <p>To create a client component, add the <code>'use client'</code> directive at the top of the file:</p>
+
+        <pre class="code-block"><code>'use client'
+
+import { useState } from 'react'
+
+export default function Counter() {
+  const [count, setCount] = useState(0)
+  return (
+    &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+      Count: {count}
+    &lt;/button&gt;
+  )
+}</code></pre>
+
+        <h2>When to Use Each</h2>
+        <p>You can mix server and client components in the same app. Use server components for:</p>
+        <ul>
+          <li>Fetching data from databases or APIs</li>
+          <li>Accessing backend resources directly</li>
+          <li>Keeping sensitive information on the server</li>
+          <li>Reducing client-side JavaScript</li>
+        </ul>
+        <p>Use client components for:</p>
+        <ul>
+          <li>Adding interactivity with event listeners (onClick, onChange)</li>
+          <li>Using React hooks (useState, useEffect, useReducer)</li>
+          <li>Using browser-only APIs (localStorage, window)</li>
+          <li>Custom hooks that depend on state or effects</li>
+        </ul>
+
+        <h2>Composing Server and Client Components</h2>
+        <p>One of the key patterns is being able to nest client components inside server components. You can pass server components as children or props to client components:</p>
+
+        <pre class="code-block"><code>// This is a Server Component
+import ClientComponent from './ClientComponent'
+import ServerComponent from './ServerComponent'
+
+export default function Page() {
+  return (
+    &lt;ClientComponent&gt;
+      &lt;ServerComponent /&gt;
+    &lt;/ClientComponent&gt;
+  )
+}</code></pre>
+
+        <p>This pattern allows you to maintain the server rendering benefits while still having interactive UI elements where needed. The React team calls this "interleaving" — the ability to mix server and client components in the component tree.</p>
+        <p>Understanding when to use each type of component is crucial for building efficient Next.js 13 applications that are both performant and interactive.</p>
+      </article>
+    </div>
+  </main>
+
+  <!-- Marketing Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-text">Built by <a href="#">shadcn</a>. Hosted on <a href="#">Vercel</a>. The source code is available on <a href="https://github.com/shadcn-ui/taxonomy">GitHub</a>.</p>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span id="theme-icon"></span>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeIcon(next);
+    }
+
+    function updateThemeIcon(theme) {
+      var icon = document.getElementById('theme-icon');
+      if (!icon) return;
+      if (theme === 'dark') {
+        icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+      } else {
+        icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+    }
+
+    function toggleMobileMenu() {
+      var menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('open');
+    }
+
+    (function() {
+      var t = document.documentElement.getAttribute('data-theme') || 'light';
+      updateThemeIcon(t);
+    })();
+  </script>
+</body>
+</html>

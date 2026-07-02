@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Examples — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../../styles.css">
+		<link rel="icon" href="../../assets/layout/logo-icon.svg">
+	</head>
+	<body data-active="Docs" data-prefix="../../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<div class="docs-shell frame-pad">
+				<aside class="docs-sidebar">
+					<nav
+						class="docs-sidebar-nav"
+						data-current="docs/guides/examples.html"
+					></nav>
+				</aside>
+				<div class="docs-sidebar-backdrop"></div>
+
+				<article class="docs-main docs-prose prose">
+					<button class="docs-sidebar-toggle">☰ Menu</button>
+					<div class="docs-breadcrumb">
+						<span>Docs</span><span class="sep">/</span><span>Guides</span
+						><span class="sep">/</span><span>Examples</span>
+					</div>
+					<h1 class="docs-title">Examples</h1>
+					<p class="docs-lead">
+						Practical, copy-paste code examples and starter projects to help you
+						build with Scalar CMS faster.
+					</p>
+
+					<h2 id="starter-templates">Starter templates</h2>
+					<p>
+						Clone one of the official starter projects to skip the boilerplate
+						and get a working setup in seconds:
+					</p>
+					<div class="docs-cards">
+						<div class="card docs-card">
+							<h3>Next.js Blog</h3>
+							<p>
+								A fully wired blog with content models, GraphQL queries, and
+								incremental static regeneration. Run
+								<code>npx create-scalar@latest --template blog</code>
+								to scaffold it.
+							</p>
+						</div>
+						<div class="card docs-card">
+							<h3>Astro Docs Site</h3>
+							<p>
+								A documentation site powered by Scalar's rich-text and reference
+								fields, complete with search and a live preview pane. Run
+								<code>npx create-scalar@latest --template docs</code>.
+							</p>
+						</div>
+					</div>
+
+					<h2 id="fetching-a-single-entry">Fetching a single entry</h2>
+					<p>
+						Use <code>findUnique</code> to retrieve one entry by its slug or id:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">post.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com">// fetch a single blog post by slug</span>
+							<span class="tok-kw">const</span>
+							post = <span class="tok-kw">await</span> client.<span
+								class="tok-fn"
+								>findUnique</span
+							>( { model: <span class="tok-str">"blogPost"</span>, where: {
+							slug: <span class="tok-str">"hello-scalar"</span> } , include: [<span
+								class="tok-str"
+								>"author"</span
+							>], });
+
+							<span class="tok-kw">if</span>
+							(!post) <span class="tok-kw">throw new</span>
+							<span class="tok-fn">Error</span>(<span class="tok-str"
+								>"Not found"</span
+							>);
+						</div>
+					</div>
+
+					<h2 id="paginated-queries">Paginated queries</h2>
+					<p>Page through large collections with cursor-based pagination:</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">paginate.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">const</span>
+							page = <span class="tok-kw">await</span> client.<span
+								class="tok-fn"
+								>query</span
+							>( { model: <span class="tok-str">"blogPost"</span>, take:
+							<span class="tok-fn">20</span>, cursor: searchParams.<span
+								class="tok-fn"
+								>get</span
+							>(<span class="tok-str">"cursor"</span>), });
+
+							<span class="tok-com">// page.items, page.nextCursor</span>
+							<span class="tok-kw">console</span>.<span class="tok-fn"
+								>log</span
+							>(page.nextCursor);
+						</div>
+					</div>
+					<div class="callout">
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<path d="M12 16v-4M12 8h.01" />
+						</svg>
+						<div>
+							Always prefer cursor pagination over <code>offset</code> for large
+							datasets — it stays fast and stable even when entries are added or
+							removed between requests.
+						</div>
+					</div>
+
+					<h2 id="filtering-sorting">Filtering &amp; sorting</h2>
+					<p>
+						Combine <code>where</code> filters with <code>orderBy</code> to
+						narrow and arrange results:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">filter.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-kw">const</span>
+							featured = <span class="tok-kw">await</span> client.<span
+								class="tok-fn"
+								>query</span
+							>( { model: <span class="tok-str">"blogPost"</span>, where: {
+							status: <span class="tok-str">"published"</span>, tags: { has:
+							<span class="tok-str">"featured"</span>
+							} , }, orderBy: { publishedAt:
+							<span class="tok-str">"desc"</span>
+							} , take:
+							<span class="tok-fn">5</span>, });
+						</div>
+					</div>
+
+					<h2 id="real-time-subscriptions">Real-time subscriptions</h2>
+					<p>
+						Subscribe to content changes and react to updates as they happen:
+					</p>
+					<div class="code-block">
+						<div class="code-head">
+							<span style="color:var(--muted-foreground)">subscribe.ts</span>
+						</div>
+						<div class="code-body">
+							<span class="tok-com"
+								>// listen for changes to published posts</span
+							>
+							<span class="tok-kw">const</span>
+							unsubscribe = client.<span class="tok-fn">subscribe</span>( {
+							model: <span class="tok-str">"blogPost"</span>, on: [<span
+								class="tok-str"
+								>"create"</span
+							>, <span class="tok-str">"update"</span>], }, (event) => {
+							<span class="tok-kw">console</span>.<span class="tok-fn"
+								>log</span
+							>(event.type, event.entry.id); });
+
+							<span class="tok-com">// later: unsubscribe();</span>
+						</div>
+					</div>
+
+					<nav class="docs-pager">
+						<a class="pg-prev" href="../../docs/guides/tutorials.html"
+							><div class="pg-dir">← Previous</div>
+							<div class="pg-title">Tutorials</div></a
+						>
+						<a class="pg-next" href="../../docs/api/api-reference.html"
+							><div class="pg-dir">Next →</div>
+							<div class="pg-title">API Reference</div></a
+						>
+					</nav>
+				</article>
+
+				<aside class="docs-toc">
+					<div class="docs-toc-title">On this page</div>
+					<a href="#starter-templates">Starter templates</a>
+					<a href="#fetching-a-single-entry">Fetching a single entry</a>
+					<a href="#paginated-queries">Paginated queries</a>
+					<a href="#filtering-sorting">Filtering &amp; sorting</a>
+					<a href="#real-time-subscriptions">Real-time subscriptions</a>
+				</aside>
+			</div>
+		</main>
+
+		<div id="site-footer"></div>
+		<script src="../../shared.js"></script>
+	</body>
+</html>

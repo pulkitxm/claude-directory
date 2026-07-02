@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Profile | Admin Dashboard - DashSpace</title>
+		<link rel="icon" type="image/png" href="assets/favicon.png">
+		<link rel="stylesheet" href="styles.css">
+		<script>
+		(function () {
+			const s = localStorage.getItem("dashspace-theme");
+			const p = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			if (s === "dark" || (!s && p))
+				document.documentElement.classList.add("dark");
+			else document.documentElement.classList.add("light");
+		})();
+		</script>
+	</head>
+	<body>
+		<div class="sidebar-overlay" id="sidebar-overlay"></div>
+		<div class="app-layout">
+			<!-- SIDEBAR -->
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-logo">
+					<a href="index.html">
+						<img
+							class="logo-light"
+							src="assets/images/logo/logo-black.svg"
+							alt="TailGrids Logo"
+						>
+						<img
+							class="logo-dark"
+							src="assets/images/logo/logo-white.svg"
+							alt="TailGrids Logo"
+						>
+					</a>
+					<button
+						class="sidebar-close-btn"
+						id="sidebar-close-btn"
+						aria-label="Close sidebar"
+					>
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M6.75 17.249L17.2479 6.75111M6.75 6.75098L17.2479 17.2489"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</button>
+				</div>
+				<nav class="sidebar-nav">
+					<div class="nav-section">
+						<h4 class="nav-section-label">MENU</h4>
+						<div class="nav-items">
+							<a href="index.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M10.6504 3.70337C11.4503 3.10369 12.5497 3.10369 13.3496 3.70337L19.8496 8.57837C20.4161 9.00322 20.7499 9.6701 20.75 10.3782V18.4993C20.75 19.7419 19.7426 20.7493 18.5 20.7493H5.5C4.25736 20.7493 3.25 19.7419 3.25 18.4993V10.3782C3.25011 9.6701 3.58392 9.00322 4.15039 8.57837L10.6504 3.70337ZM12.4502 4.90356C12.1836 4.70373 11.8164 4.70373 11.5498 4.90356L5.0498 9.77856C4.86123 9.92015 4.75011 10.1424 4.75 10.3782V18.4993C4.75 18.9135 5.08579 19.2493 5.5 19.2493H11.25V16.2502C11.25 15.836 11.5858 15.5002 12 15.5002C12.4142 15.5002 12.75 15.836 12.75 16.2502V19.2493H18.5C18.9142 19.2493 19.25 18.9135 19.25 18.4993V10.3782C19.2499 10.1424 19.1388 9.92015 18.9502 9.77856L12.4502 4.90356Z"
+											fill="currentColor"
+										/>
+									</svg></span
+								>
+								<span>Dashboard</span>
+							</a>
+							<a href="calendar.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M8.00055 2.75V4.5M16.0005 2.75V4.5M4.00055 9H20.0005M5.50055 20.5H18.5005C19.329 20.5 20.0005 19.8284 20.0005 19V6C20.0005 5.17157 19.329 4.5 18.5005 4.5H5.50055C4.67212 4.5 4.00055 5.17157 4.00055 6V19C4.00055 19.8284 4.67212 20.5 5.50055 20.5Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Calendar</span>
+							</a>
+							<a href="tables.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M3.25 4C3.25 3.58579 3.58579 3.25 4 3.25H20C20.4142 3.25 20.75 3.58579 20.75 4V20C20.75 20.4142 20.4142 20.75 20 20.75H4C3.58579 20.75 3.25 20.4142 3.25 20V4ZM4.75 4.75V9.25H19.25V4.75H4.75ZM4.75 10.75V14.25H19.25V10.75H4.75ZM4.75 15.75V19.25H19.25V15.75H4.75Z"
+											fill="currentColor"
+										/>
+									</svg></span
+								>
+								<span>Tables</span>
+							</a>
+						</div>
+					</div>
+					<div class="nav-section">
+						<h4 class="nav-section-label">FORMS</h4>
+						<div class="nav-items">
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="forms-dropdown"
+							>
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M15.0016 14.5H9.00156M12.0016 17.5H9.00156M5.38583 9.00073C5.45951 8.00297 6.29058 7.24597 7.2911 7.25H16.7121C17.7126 7.24597 18.5437 8.00297 18.6174 9.00073L19.3674 19.0007C19.4475 20.0668 18.6167 20.9866 17.5477 21.0513C17.4831 21.0554 17.4183 21.0553 17.3538 21.0511H6.65012C5.5806 20.9914 4.74714 20.0762 4.80684 19.0067C4.81097 18.9337 4.81913 18.861 4.83125 18.789L5.38583 9.00073ZM8.25156 7.25V5.75C8.25156 4.64543 9.14699 3.75 10.2516 3.75H13.7516C14.8561 3.75 15.7516 4.64543 15.7516 5.75V7.25H8.25156Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Forms</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="forms-dropdown">
+								<a href="#">Form Elements</a><a href="#">Form Layout</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav-section">
+						<h4 class="nav-section-label">PAGES</h4>
+						<div class="nav-items">
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="pages-dropdown"
+							>
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M9 7H15M9 12H15M9 17H12M5 3H19C19.5523 3 20 3.44772 20 4V20C20 20.5523 19.5523 21 19 21H5C4.44772 21 4 20.5523 4 20V4C4 3.44772 4.44772 3 5 3Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Pages</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="pages-dropdown">
+								<a href="#">Blank Page</a><a href="#">404 Page</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav-section">
+						<h4 class="nav-section-label">OTHERS</h4>
+						<div class="nav-items">
+							<a href="profile.html" class="nav-item active">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12ZM12 12C8.13401 12 5 15.134 5 19V21H19V19C19 15.134 15.866 12 12 12Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Profile</span>
+							</a>
+							<a href="charts.html" class="nav-item">
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M21.25 17.5H4.75V3.25M8.25 13.5V17.5M12 10V17.5M15.75 6.5V17.5M19.5 3.5V17.5"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg></span
+								>
+								<span>Charts</span>
+							</a>
+							<button
+								class="nav-item nav-item-toggle"
+								data-dropdown="auth-dropdown"
+							>
+								<span class="nav-icon"
+									><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M12 2C9.23858 2 7 4.23858 7 7V10H5C4.44772 10 4 10.4477 4 11V21C4 21.5523 4.44772 22 5 22H19C19.5523 22 20 21.5523 20 21V11C20 10.4477 19.5523 10 19 10H17V7C17 4.23858 14.7614 2 12 2ZM15.5 10H8.5V7C8.5 5.067 10.067 3.5 12 3.5C13.933 3.5 15.5 5.067 15.5 7V10ZM12 14C12.8284 14 13.5 14.6716 13.5 15.5C13.5 16.3284 12.8284 17 12 17C11.1716 17 10.5 16.3284 10.5 15.5C10.5 14.6716 11.1716 14 12 14Z"
+											fill="currentColor"
+										/>
+									</svg></span
+								>
+								<span>Authentication</span>
+								<svg
+									class="nav-chevron"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</button>
+							<div class="nav-dropdown" id="auth-dropdown">
+								<a href="#">Sign In</a><a href="#">Sign Up</a
+								><a href="#">Reset Password</a>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<div class="sidebar-footer">
+					<div class="upgrade-card">
+						<div>
+							<h4>Pro Plan</h4>
+							<p>Unlock all features</p>
+						</div>
+						<a href="#" class="btn-upgrade">Upgrade Now</a>
+					</div>
+				</div>
+			</aside>
+
+			<div class="main-area">
+				<header class="main-header">
+					<button
+						class="hamburger-btn"
+						id="hamburger-btn"
+						aria-label="Open sidebar"
+					>
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M4 6H20M4 12H20M4 18H20"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+							/>
+						</svg>
+					</button>
+					<div class="header-title">
+						<h1>Profile</h1>
+						<p>Manage your profile</p>
+					</div>
+					<div class="header-spacer"></div>
+					<div class="search-bar">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+							<path
+								d="M21 21L16.5 16.5M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+							/>
+						</svg>
+						<input type="text" placeholder="Search...">
+					</div>
+					<div class="header-actions">
+						<button
+							class="icon-btn"
+							id="theme-toggle"
+							aria-label="Toggle theme"
+						></button>
+						<button class="icon-btn" aria-label="Notifications">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M12 22C13.1046 22 14 21.1046 14 20H10C10 21.1046 10.8954 22 12 22ZM18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span class="notif-dot"></span>
+						</button>
+						<button class="user-menu-btn" aria-label="User menu">
+							<img
+								src="assets/images/owner.jpg"
+								alt="Musharof"
+								class="user-avatar"
+							>
+							<span class="user-name">Musharof</span>
+							<svg
+								class="user-chevron"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M6 9L12 15L18 9"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+					</div>
+				</header>
+
+				<main class="content">
+					<h2
+						style="font-size:1.25rem;font-weight:700;color:var(--text-title);margin-bottom:1.5rem"
+					>
+						My Profile
+					</h2>
+
+					<!-- Profile Card -->
+					<div class="card" style="padding:0;overflow:hidden">
+						<!-- Cover -->
+						<div style="position:relative">
+							<div
+								class="profile-cover-placeholder"
+								style="background:linear-gradient(135deg,#d1d5db 0%,#e5e7eb 40%,#f3f4f6 100%)"
+							></div>
+							<div class="profile-cover-actions">
+								<button class="cover-action-btn" aria-label="Edit cover">
+									<svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M11 4H4C3.44772 4 3 4.44772 3 5V20C3 20.5523 3.44772 21 4 21H19C19.5523 21 20 20.5523 20 19V12M18.5 2.5C19.3284 1.67157 20.6716 1.67157 21.5 2.5C22.3284 3.32843 22.3284 4.67157 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</button>
+								<button class="cover-action-btn" aria-label="More options">
+									<svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M12 5C12.5523 5 13 4.55228 13 4C13 3.44772 12.5523 3 12 3C11.4477 3 11 3.44772 11 4C11 4.55228 11.4477 5 12 5Z"
+											fill="currentColor"
+										/>
+										<path
+											d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+											fill="currentColor"
+										/>
+										<path
+											d="M12 21C12.5523 21 13 20.5523 13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20C11 20.5523 11.4477 21 12 21Z"
+											fill="currentColor"
+										/>
+										<path
+											d="M12 5C12.5523 5 13 4.55228 13 4C13 3.44772 12.5523 3 12 3C11.4477 3 11 3.44772 11 4C11 4.55228 11.4477 5 12 5Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+										<path
+											d="M12 21C12.5523 21 13 20.5523 13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20C11 20.5523 11.4477 21 12 21Z"
+											stroke="currentColor"
+											stroke-width="1.5"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<div class="profile-card-inner">
+							<div class="profile-avatar-wrap">
+								<img
+									src="assets/images/profiles/profile-05.jpg"
+									alt="Musharof Chowdhury"
+									class="profile-avatar"
+								>
+								<button class="avatar-camera" aria-label="Change photo">
+									<svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M23 19C23 19.5304 22.7893 20.0391 22.4142 20.4142C22.0391 20.7893 21.5304 21 21 21H3C2.46957 21 1.96086 20.7893 1.58579 20.4142C1.21071 20.0391 1 19.5304 1 19V8C1 7.46957 1.21071 6.96086 1.58579 6.58579C1.96086 6.21071 2.46957 6 3 6H7L9 3H15L17 6H21C21.5304 6 22.0391 6.21071 22.4142 6.58579C22.7893 6.96086 23 7.46957 23 8V19Z"
+											stroke="white"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+										<path
+											d="M12 17C14.2091 17 16 15.2091 16 13C16 10.7909 14.2091 9 12 9C9.79086 9 8 10.7909 8 13C8 15.2091 9.79086 17 12 17Z"
+											stroke="white"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</button>
+							</div>
+
+							<div class="profile-info-row">
+								<div>
+									<h2 class="profile-name">Musharof Chowdhury</h2>
+									<p class="profile-role">CEO &nbsp;|&nbsp; Pimjo</p>
+									<div class="profile-meta">
+										<span class="profile-meta-item">
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+											>
+												<path
+													d="M12 21C16 17 20 13.4183 20 9C20 5.13401 16.4183 2 12 2C7.58172 2 4 5.13401 4 9C4 13.4183 8 17 12 21Z"
+													stroke="currentColor"
+													stroke-width="1.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+												<circle
+													cx="12"
+													cy="9"
+													r="2"
+													stroke="currentColor"
+													stroke-width="1.5"
+												/>
+											</svg>
+											San Fransisco, USA
+										</span>
+										<span class="profile-meta-item">
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+											>
+												<circle
+													cx="12"
+													cy="12"
+													r="10"
+													stroke="currentColor"
+													stroke-width="1.5"
+												/>
+												<path
+													d="M12 2C12 2 8 7 8 12C8 17 12 22 12 22"
+													stroke="currentColor"
+													stroke-width="1.5"
+												/>
+												<path
+													d="M12 2C12 2 16 7 16 12C16 17 12 22 12 22"
+													stroke="currentColor"
+													stroke-width="1.5"
+												/>
+												<path
+													d="M2 12H22"
+													stroke="currentColor"
+													stroke-width="1.5"
+												/>
+											</svg>
+											pimjo.com
+										</span>
+										<span
+											class="profile-meta-item"
+											style="color:var(--text-muted)"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="none"
+											>
+												<circle
+													cx="12"
+													cy="12"
+													r="10"
+													stroke="currentColor"
+													stroke-width="1.5"
+												/>
+												<path
+													d="M12 6V12L16 14"
+													stroke="currentColor"
+													stroke-width="1.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+											Joined 25 Jun 2025
+										</span>
+									</div>
+								</div>
+								<div class="profile-actions">
+									<button class="btn-outline">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+											<path
+												d="M11 4H4C3.44772 4 3 4.44772 3 5V20C3 20.5523 3.44772 21 4 21H19C19.5523 21 20 20.5523 20 19V12M18.5 2.5C19.3284 1.67157 20.6716 1.67157 21.5 2.5C22.3284 3.32843 22.3284 4.67157 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										Edit Profile
+									</button>
+									<button class="btn-outline">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+											<path
+												d="M7 17L17 7M17 7H7M17 7V17"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+										Copy link
+									</button>
+								</div>
+							</div>
+
+							<div class="profile-about">
+								<h4>About</h4>
+								<p>
+									I'm a product designer passionate about creating intuitive and
+									user-friendly digital experiences. With a strong eye for
+									detail and a focus on functionality, I transform ideas into
+									elegant solutions that drive engagement.
+								</p>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+
+		<script src="app.js"></script>
+	</body>
+</html>

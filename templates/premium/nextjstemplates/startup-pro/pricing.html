@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing Page - Startup Pro</title>
+
+  <!-- No-flash theme init -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.add('light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Pricing-page specific styles ── */
+
+    /* Page hero */
+    .page-hero-pricing {
+      padding-top: 160px;
+      padding-bottom: 80px;
+      background: linear-gradient(to bottom, var(--color-gray-light), var(--color-bg));
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark .page-hero-pricing {
+      background: linear-gradient(to bottom, var(--color-bg-dark), var(--color-bg));
+    }
+    .page-hero-pricing::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%234A6CF7' fill-opacity='0.07'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .page-hero-pricing h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 1rem;
+    }
+    .page-hero-pricing .sub {
+      font-size: var(--font-size-lg);
+      color: var(--color-body);
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.7;
+    }
+
+    /* Billing toggle */
+    .billing-toggle {
+      display: inline-flex;
+      align-items: center;
+      background: var(--color-gray-light);
+      border-radius: var(--radius-full);
+      padding: 0.25rem;
+      gap: 0.25rem;
+      margin-bottom: 3.5rem;
+    }
+    .dark .billing-toggle {
+      background: var(--color-bg-alt);
+    }
+    .toggle-btn {
+      position: relative;
+      padding: 0.625rem 1.5rem;
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--color-body);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .toggle-btn.active {
+      background: var(--color-primary);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(74, 108, 247, 0.3);
+    }
+    .toggle-btn:not(.active):hover {
+      color: var(--color-dark);
+    }
+    .dark .toggle-btn:not(.active):hover {
+      color: rgba(255,255,255,0.8);
+    }
+    .save-badge {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      background: rgba(255,255,255,0.25);
+      border-radius: var(--radius-full);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .toggle-btn:not(.active) .save-badge {
+      background: rgba(74, 108, 247, 0.15);
+      color: var(--color-primary);
+    }
+
+    /* Pricing grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      align-items: stretch;
+    }
+    @media (max-width: 1024px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Pricing card enhancements */
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card-header {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .pricing-card.featured .pricing-card-header {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .pricing-card .plan-badge {
+      display: inline-block;
+      padding: 0.25rem 0.875rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .pricing-card:not(.featured) .plan-badge { display: none; }
+    .pricing-card .price-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.25rem;
+      margin-bottom: 0.375rem;
+    }
+    .price-currency {
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1;
+      padding-bottom: 0.4rem;
+    }
+    .pricing-card.featured .price-currency { color: #fff; }
+    .price-amount {
+      font-size: 3.25rem;
+      font-weight: 800;
+      color: var(--color-dark);
+      line-height: 1;
+    }
+    .pricing-card.featured .price-amount { color: #fff; }
+    .price-period {
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+      padding-bottom: 0.5rem;
+      margin-left: 0.125rem;
+    }
+    .pricing-card.featured .price-period { color: rgba(255,255,255,0.7); }
+    .pricing-card .plan-desc {
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+      line-height: 1.6;
+      margin-top: 0.75rem;
+    }
+    .pricing-card.featured .plan-desc { color: rgba(255,255,255,0.75); }
+    .pricing-card .no-cc {
+      font-size: var(--font-size-xs);
+      color: var(--color-body);
+      margin-top: 0.5rem;
+    }
+    .pricing-card.featured .no-cc { color: rgba(255,255,255,0.55); }
+
+    .pricing-features { flex: 1; }
+    .pricing-features li {
+      padding: 0.5rem 0;
+    }
+    .check-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .check-icon svg { display: block; }
+
+    .pricing-card-footer {
+      margin-top: 2rem;
+    }
+    .btn-purchase {
+      display: block;
+      width: 100%;
+      padding: 0.875rem;
+      text-align: center;
+      border-radius: var(--radius);
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      transition: all var(--transition-base);
+      cursor: pointer;
+      border: 1px solid transparent;
+      font-family: inherit;
+    }
+    .btn-purchase-outline {
+      background: transparent;
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .btn-purchase-outline:hover {
+      background: var(--color-primary);
+      color: #fff;
+      box-shadow: var(--shadow-btn);
+    }
+    .btn-purchase-white {
+      background: #fff;
+      color: var(--color-primary);
+      border-color: #fff;
+    }
+    .btn-purchase-white:hover {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* FAQ / Accordion section */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 3.5rem;
+    }
+    @media (max-width: 768px) {
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Contact pricing CTA */
+    .pricing-contact {
+      background: var(--color-gray-light);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    .dark .pricing-contact { background: var(--color-bg-alt); }
+    .pricing-contact h3 {
+      font-size: var(--font-size-2xl);
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 0.75rem;
+    }
+    .pricing-contact p {
+      color: var(--color-body);
+      margin-bottom: 1.5rem;
+    }
+
+    /* "Get Exclusive Plans" comparison strip */
+    .plans-strip {
+      background: var(--color-gray-light);
+      padding: 5rem 0;
+    }
+    .dark .plans-strip { background: var(--color-bg-alt); }
+    .plans-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    @media (max-width: 1024px) {
+      .plans-strip-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .plans-strip-grid { grid-template-columns: 1fr; }
+    }
+    .plan-strip-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+    .plan-strip-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 8px 30px var(--color-shadow);
+    }
+    .plan-strip-card .plan-name-strip {
+      font-size: var(--font-size-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .plan-strip-card .price-strip {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--color-dark);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.15rem;
+    }
+    .price-strip-sup { font-size: var(--font-size-xl); padding-top: 0.4rem; font-weight: 700; }
+    .plan-strip-card p { font-size: var(--font-size-sm); color: var(--color-body); margin: 0.75rem 0 1.25rem; }
+    .plan-strip-features {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      margin-bottom: 1.75rem;
+    }
+    .plan-strip-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+    }
+    .plan-strip-features li .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ HEADER ═══ -->
+  <header class="header" id="header">
+    <div class="container">
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo/logo-2.svg" alt="Startup Pro" class="logo-light" />
+        <img src="assets/images/logo/logo.svg"   alt="Startup Pro" class="logo-dark"  style="display:none;" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">
+            Home
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="index.html">Home Page 1</a>
+            <a href="index-2.html">Home Page 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="docs.html" class="nav-link">Docs</a>
+        <div class="nav-item">
+          <a href="#" class="nav-link">
+            Pages
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown pages-dropdown">
+            <a href="about.html">About Page</a>
+            <a href="contact.html">Contact Page</a>
+            <a href="pricing.html">Pricing Page</a>
+            <a href="faq.html">FAQ Page</a>
+            <a href="blog-grid.html">Blog Grid Page</a>
+            <a href="blog-grid-2.html">Blog Grid 2 Page</a>
+            <a href="signin.html">Sign In Page</a>
+            <a href="signup.html">Sign Up Page</a>
+            <a href="error.html">Error Page</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="signin.html" class="btn btn-outline">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div class="mobile-nav" id="mobileNav">
+        <ul>
+          <li>
+            <button class="mobile-nav-toggle" data-target="mobileHome">
+              Home
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="mobile-sub" id="mobileHome">
+              <a href="index.html">Home Page 1</a>
+              <a href="index-2.html">Home Page 2</a>
+            </div>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="docs.html">Docs</a></li>
+          <li>
+            <button class="mobile-nav-toggle" data-target="mobilePages">
+              Pages
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="mobile-sub" id="mobilePages">
+              <a href="about.html">About Page</a>
+              <a href="contact.html">Contact Page</a>
+              <a href="pricing.html">Pricing Page</a>
+              <a href="faq.html">FAQ Page</a>
+              <a href="signin.html">Sign In Page</a>
+              <a href="signup.html">Sign Up Page</a>
+              <a href="error.html">Error Page</a>
+            </div>
+          </li>
+        </ul>
+        <div class="mobile-actions">
+          <a href="signin.html" class="btn btn-outline">Sign In</a>
+          <a href="signup.html" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+  <main>
+
+    <!-- ═══════════════════════════════════════ PAGE HERO ═══ -->
+    <section class="page-hero-pricing">
+      <div class="container">
+        <h1>Pricing Page</h1>
+        <p class="sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero.</p>
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Pricing Page</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ PRICING CARDS ═══ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="tag">Pricing Plans</span>
+          <h2>Simple and Affordable Pricing</h2>
+          <p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form.</p>
+        </div>
+
+        <!-- Billing Toggle -->
+        <div style="display:flex;justify-content:center;">
+          <div class="billing-toggle">
+            <button class="toggle-btn active" id="monthlyBtn" onclick="setBilling('monthly')">Monthly</button>
+            <button class="toggle-btn" id="annualBtn" onclick="setBilling('annual')">
+              Annual
+              <span class="save-badge">Save 30%</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pricing Cards Grid -->
+        <div class="pricing-grid">
+
+          <!-- Basic -->
+          <div class="pricing-card">
+            <div class="pricing-card-header">
+              <p class="plan-name">Basic Plan</p>
+              <div class="price-row">
+                <span class="price-currency">$</span>
+                <span class="price-amount" data-monthly="40" data-annual="400">40</span>
+                <span class="price-period" data-monthly="/mo" data-annual="/yr">/mo</span>
+              </div>
+              <p class="plan-desc">Perfect for individuals and freelancers just getting started.</p>
+              <p class="no-cc">(No credit card required)</p>
+            </div>
+
+            <ul class="pricing-features">
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                All UI Components
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Use with Unlimited Projects
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Commercial Use
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Email Support
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Lifetime Access
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Free Lifetime Updates
+              </li>
+            </ul>
+
+            <div class="pricing-card-footer">
+              <button class="btn-purchase btn-purchase-outline">Purchase Now</button>
+            </div>
+          </div>
+
+          <!-- Premium (Featured) -->
+          <div class="pricing-card featured">
+            <div class="pricing-card-header">
+              <span class="plan-badge">Most Popular</span>
+              <p class="plan-name">Premium Plan</p>
+              <div class="price-row">
+                <span class="price-currency">$</span>
+                <span class="price-amount" data-monthly="80" data-annual="800">80</span>
+                <span class="price-period" data-monthly="/mo" data-annual="/yr">/mo</span>
+              </div>
+              <p class="plan-desc">Great for growing teams and small businesses with bigger needs.</p>
+              <p class="no-cc">(No credit card required)</p>
+            </div>
+
+            <ul class="pricing-features">
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="rgba(255,255,255,0.2)"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                All UI Components
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="rgba(255,255,255,0.2)"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Use with Unlimited Projects
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="rgba(255,255,255,0.2)"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Commercial Use
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="rgba(255,255,255,0.2)"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Priority Email Support
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="rgba(255,255,255,0.2)"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Lifetime Access
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="rgba(255,255,255,0.2)"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Free Lifetime Updates
+              </li>
+            </ul>
+
+            <div class="pricing-card-footer">
+              <button class="btn-purchase btn-purchase-white">Purchase Now</button>
+            </div>
+          </div>
+
+          <!-- Business -->
+          <div class="pricing-card">
+            <div class="pricing-card-header">
+              <p class="plan-name">Business Plan</p>
+              <div class="price-row">
+                <span class="price-currency">$</span>
+                <span class="price-amount" data-monthly="120" data-annual="1200">120</span>
+                <span class="price-period" data-monthly="/mo" data-annual="/yr">/mo</span>
+              </div>
+              <p class="plan-desc">Ideal for enterprises and agencies with complex requirements.</p>
+              <p class="no-cc">(No credit card required)</p>
+            </div>
+
+            <ul class="pricing-features">
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                All UI Components
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Use with Unlimited Projects
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Commercial Use
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Dedicated Account Manager
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Lifetime Access
+              </li>
+              <li>
+                <span class="check-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#4A6CF7" fill-opacity="0.12"/><path d="M5 8l2 2 4-4" stroke="#4A6CF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Free Lifetime Updates
+              </li>
+            </ul>
+
+            <div class="pricing-card-footer">
+              <button class="btn-purchase btn-purchase-outline">Purchase Now</button>
+            </div>
+          </div>
+
+        </div><!-- /pricing-grid -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ GET EXCLUSIVE PLANS STRIP ═══ -->
+    <section class="plans-strip">
+      <div class="container">
+        <div class="section-title">
+          <span class="tag">Our Plans</span>
+          <h2>Get Exclusive Plans</h2>
+          <p>Choose the plan that best fits your business. All plans include a 14-day free trial, no credit card required.</p>
+        </div>
+        <div class="plans-strip-grid">
+          <!-- Basic -->
+          <div class="plan-strip-card">
+            <p class="plan-name-strip">Basic Plan</p>
+            <div class="price-strip">
+              <span class="price-strip-sup">$</span>
+              <span class="strip-amount" data-monthly="40" data-annual="400">40</span>
+            </div>
+            <p class="strip-period" data-monthly="Per Month" data-annual="Per Year">Per Month</p>
+            <p>(No credit card required)</p>
+            <ul class="plan-strip-features">
+              <li><span class="dot"></span>Sell your accounts in one place</li>
+              <li><span class="dot"></span>Create a budget &amp; manage money</li>
+              <li><span class="dot"></span>Manage your money on the cross desktop + web + mobile</li>
+              <li><span class="dot"></span>Free Lifetime Updates</li>
+            </ul>
+            <button class="btn-purchase btn-purchase-outline">Purchase Now</button>
+          </div>
+
+          <!-- Premium -->
+          <div class="plan-strip-card" style="border-color:var(--color-primary);box-shadow:0 10px 40px var(--color-shadow);">
+            <p class="plan-name-strip">Premium Plan</p>
+            <div class="price-strip">
+              <span class="price-strip-sup">$</span>
+              <span class="strip-amount" data-monthly="80" data-annual="800">80</span>
+            </div>
+            <p class="strip-period" data-monthly="Per Month" data-annual="Per Year">Per Month</p>
+            <p>(No credit card required)</p>
+            <ul class="plan-strip-features">
+              <li><span class="dot"></span>Sell your accounts in one place</li>
+              <li><span class="dot"></span>Create a budget &amp; manage money</li>
+              <li><span class="dot"></span>Manage your money on the cross desktop + web + mobile</li>
+              <li><span class="dot"></span>Free Lifetime Updates</li>
+            </ul>
+            <button class="btn-purchase btn-purchase-outline">Purchase Now</button>
+          </div>
+
+          <!-- Business -->
+          <div class="plan-strip-card">
+            <p class="plan-name-strip">Business Plan</p>
+            <div class="price-strip">
+              <span class="price-strip-sup">$</span>
+              <span class="strip-amount" data-monthly="120" data-annual="1200">120</span>
+            </div>
+            <p class="strip-period" data-monthly="Per Month" data-annual="Per Year">Per Month</p>
+            <p>(No credit card required)</p>
+            <ul class="plan-strip-features">
+              <li><span class="dot"></span>Sell your accounts in one place</li>
+              <li><span class="dot"></span>Create a budget &amp; manage money</li>
+              <li><span class="dot"></span>Manage your money on the cross desktop + web + mobile</li>
+              <li><span class="dot"></span>Free Lifetime Updates</li>
+            </ul>
+            <button class="btn-purchase btn-purchase-outline">Purchase Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ PRICING FAQ ═══ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="tag">FAQ</span>
+          <h2>Frequently Asked Questions</h2>
+          <p>Find answers to common questions about our pricing plans and features.</p>
+        </div>
+
+        <div class="faq-grid">
+          <!-- Column 1 -->
+          <div>
+            <div class="accordion-item">
+              <button class="accordion-btn" data-accordion="faq1">
+                Can I upgrade or downgrade my plan?
+                <span class="icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="accordion-body" id="faq1">
+                Yes, you can upgrade or downgrade your plan at any time. When you upgrade, you'll be charged a prorated amount for the remainder of your billing period. When you downgrade, you'll receive a prorated credit.
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-btn" data-accordion="faq2">
+                Is there a free trial available?
+                <span class="icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="accordion-body" id="faq2">
+                Absolutely! We offer a 14-day free trial on all our plans. No credit card required. You'll get full access to all the features in your chosen plan during the trial period.
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-btn" data-accordion="faq3">
+                What payment methods do you accept?
+                <span class="icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="accordion-body" id="faq3">
+                We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual plans. All payments are processed securely through our payment partners.
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-btn" data-accordion="faq4">
+                Do you offer discounts for non-profits?
+                <span class="icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="accordion-body" id="faq4">
+                Yes, we offer special discounts for registered non-profit organizations, educational institutions, and open-source projects. Please contact our support team with proof of eligibility to receive your discount code.
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div>
+            <div class="accordion-item">
+              <button class="accordion-btn" data-accordion="faq5">
+                What happens when my trial ends?
+                <span class="icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="accordion-body" id="faq5">
+                When your trial ends, you'll be prompted to choose a paid plan to continue using the service. Your data is safely stored, and you can pick up right where you left off. We'll send you reminder emails before your trial expires.
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-btn" data-accordion="faq6">
+                Can I cancel my subscription at any time?
+                <span class="icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="accordion-body" id="faq6">
+                Yes, you can cancel your subscription at any time with no cancellation fees. Your access will continue until the end of your current billing period, and you won't be charged after that.
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-btn" data-accordion="faq7">
+                How does the annual billing work?
+                <span class="icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="accordion-body" id="faq7">
+                With annual billing, you pay for a full year upfront and save 30% compared to monthly billing. Your subscription is renewed automatically each year unless you cancel. You'll receive a single invoice for the entire year.
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-btn" data-accordion="faq8">
+                Is my data secure with your service?
+                <span class="icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="accordion-body" id="faq8">
+                Absolutely. We take data security very seriously. All data is encrypted in transit using TLS and at rest using AES-256. We are fully compliant with GDPR, SOC 2, and ISO 27001 standards. Your data is never sold to third parties.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="pricing-contact">
+          <h3>Still have questions?</h3>
+          <p>Can't find the answer you're looking for? Our friendly team is here to help.</p>
+          <a href="contact.html" class="btn btn-primary">Contact Support</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ NEWSLETTER ═══ -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-inner">
+          <div class="newsletter-text">
+            <h3>Stay updated by subscribing to our newsletter.</h3>
+            <p>Stay informed and up-to-date with the latest news and updates from our company by subscribing to our newsletter.</p>
+          </div>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="email" class="form-control" placeholder="Enter your email" />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/images/logo/logo.svg" alt="Startup Pro" />
+          </div>
+          <p class="footer-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.849L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="YouTube">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Useful Links</h4>
+          <div class="footer-links">
+            <a href="blog.html">Blog</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Terms</h4>
+          <div class="footer-links">
+            <a href="#">TOS</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Refund Policy</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Support &amp; Help</h4>
+          <div class="footer-links">
+            <a href="#">Open Support Ticket</a>
+            <a href="#">Terms of Use</a>
+            <a href="about.html">About</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Crafted by <a href="https://nextjstemplates.com" target="_blank" rel="noopener">Next.js Templates</a></p>
+        <p>&copy; 2024 Startup Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script>
+    /* ── Theme toggle ── */
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+
+    function applyTheme(dark) {
+      if (dark) {
+        html.classList.add('dark');
+        html.classList.remove('light');
+      } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
+      }
+      syncThemeAssets();
+    }
+
+    function syncThemeAssets() {
+      const isDark = html.classList.contains('dark');
+      document.querySelectorAll('.logo-light').forEach(el => el.style.display = isDark ? 'none' : '');
+      document.querySelectorAll('.logo-dark').forEach(el  => el.style.display = isDark ? '' : 'none');
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = !html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      applyTheme(isDark);
+    });
+
+    syncThemeAssets();
+
+    /* ── Sticky header ── */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('sticky', window.scrollY > 80);
+    });
+
+    /* ── Scroll to top ── */
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ── Mobile nav ── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+        mobileNav.classList.remove('open');
+      }
+    });
+    document.querySelectorAll('.mobile-nav-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.getElementById(btn.dataset.target);
+        target.classList.toggle('open');
+      });
+    });
+
+    /* ── Pricing toggle ── */
+    let currentBilling = 'monthly';
+
+    function setBilling(mode) {
+      currentBilling = mode;
+
+      // Update toggle buttons
+      document.getElementById('monthlyBtn').classList.toggle('active', mode === 'monthly');
+      document.getElementById('annualBtn').classList.toggle('active', mode === 'annual');
+
+      // Update main card prices
+      document.querySelectorAll('.price-amount').forEach(el => {
+        el.textContent = el.dataset[mode];
+      });
+      document.querySelectorAll('.price-period').forEach(el => {
+        el.textContent = el.dataset[mode];
+      });
+
+      // Update strip card prices
+      document.querySelectorAll('.strip-amount').forEach(el => {
+        el.textContent = el.dataset[mode];
+      });
+      document.querySelectorAll('.strip-period').forEach(el => {
+        el.textContent = el.dataset[mode];
+      });
+    }
+
+    /* ── FAQ Accordion ── */
+    document.querySelectorAll('.accordion-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.accordion;
+        const body = document.getElementById(targetId);
+        const isOpen = btn.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.accordion-btn').forEach(b => b.classList.remove('open'));
+        document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          btn.classList.add('open');
+          body.classList.add('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

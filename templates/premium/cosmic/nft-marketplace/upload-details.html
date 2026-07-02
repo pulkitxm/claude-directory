@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('unft-theme');
+    var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (dark) document.documentElement.classList.add('dark');
+  } catch(e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>uNFT Marketplace — Create Item</title>
+<meta name="description" content="uNFT Marketplace built with Cosmic CMS, Next.js, and the Stripe API">
+<link rel="icon" href="assets/img/misc/logo.png">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/upload.css">
+</head>
+<body>
+<div data-mount="header"></div>
+
+<section class="section upload-section">
+  <div class="container">
+    <h1>Create single collectible</h1>
+    <div class="upload-layout">
+      <div class="upload-form">
+        <div class="upload-block">
+          <span class="form-label">Upload file</span>
+          <p class="upload-hint">Drag or choose your file to upload</p>
+          <label class="dropzone">
+            <input type="file" class="visually-hidden" accept="image/*,.gif,.webp,.mp4">
+            <span class="dropzone-icon">+</span>
+            <span class="dropzone-text">PNG, GIF, WEBP, MP4</span>
+          </label>
+        </div>
+
+        <div class="upload-block">
+          <h3>Item Details</h3>
+          <label class="form-label" for="item-title">Item title</label>
+          <input id="item-title" class="input" type="text" placeholder="e. g. Readable Title">
+
+          <label class="form-label" for="item-desc">Description</label>
+          <textarea id="item-desc" class="input" rows="4" placeholder="e. g. Description"></textarea>
+
+          <div class="upload-row-3">
+            <div>
+              <label class="form-label" for="item-color">Colors</label>
+              <select id="item-color" class="select">
+                <option>Red</option>
+                <option>Blue</option>
+                <option>Green</option>
+                <option>Purple</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label" for="item-price">Price</label>
+              <input id="item-price" class="input" type="number" placeholder="e. g. Price">
+            </div>
+            <div>
+              <label class="form-label" for="item-count">Count</label>
+              <input id="item-count" class="input" type="number" placeholder="e. g. Count">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="upload-preview">
+        <h3>Preview</h3>
+        <div class="preview-card">
+          <div class="preview-media"><span class="preview-cube">&#9634;</span></div>
+          <div class="preview-meta">
+            <span class="preview-stock">In stock</span>
+            <div class="preview-row">
+              <span>Price $</span>
+              <span>New item &#128293;</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="collection-block">
+      <h3>Choose collection</h3>
+      <p class="collection-hint">Choose an existing Categories</p>
+      <div class="collection-grid" data-collection-grid></div>
+      <button type="button" class="btn btn-primary" data-open-modal>Create item &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<div data-mount="footer"></div>
+<div data-mount="modal"></div>
+
+<script src="assets/data/catalog.js"></script>
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/theme.js"></script>
+<script>
+UnftChrome.mount("", "create");
+var collectionGrid = document.querySelector('[data-collection-grid]');
+if (collectionGrid) {
+  collectionGrid.innerHTML = UNFT_CATALOG.categories.map(function (c) {
+    return '<button type="button" class="collection-tile" data-open-modal>' + c.title + '</button>';
+  }).join('');
+}
+/* The reference site loads this page with the Cosmic auth modal open by
+   default, since creating an item is gated behind authentication. */
+document.addEventListener('DOMContentLoaded', function () {
+  var modal = document.querySelector('[data-modal]');
+  if (modal) modal.classList.add('is-open');
+});
+</script>
+</body>
+</html>

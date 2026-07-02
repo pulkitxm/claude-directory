@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Cal AI — Smart scheduling powered by AI</title>
+		<meta
+			name="description"
+			content="Cal AI transforms your speech into text instantly. Smart scheduling powered by AI."
+		>
+		<link rel="stylesheet" href="./css/styles.css">
+	</head>
+	<body>
+		<!-- ICON DEFS -->
+		<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+			<defs>
+				<symbol
+					id="i-cal"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<rect x="3" y="4" width="18" height="18" rx="2" />
+					<path d="M3 10h18M8 2v4M16 2v4" />
+				</symbol>
+				<symbol
+					id="i-brain"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path
+						d="M12 5a3 3 0 1 0-5.997.142 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"
+					/>
+					<path
+						d="M12 5a3 3 0 1 1 5.997.142 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"
+					/>
+				</symbol>
+				<symbol
+					id="i-clock"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<circle cx="12" cy="12" r="10" />
+					<path d="M12 6v6l4 2" />
+				</symbol>
+				<symbol
+					id="i-cloud"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M17.5 19a4.5 4.5 0 0 0 0-9h-1.8A7 7 0 1 0 4 16.5" />
+				</symbol>
+				<symbol
+					id="i-users"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+					<circle cx="9" cy="7" r="4" />
+					<path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+				</symbol>
+				<symbol
+					id="i-bell"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+					<path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+				</symbol>
+				<symbol
+					id="i-check"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M20 6 9 17l-5-5" />
+				</symbol>
+				<symbol
+					id="i-chev-down"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="m6 9 6 6 6-6" />
+				</symbol>
+				<symbol
+					id="i-chev-right"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="m9 18 6-6-6-6" />
+				</symbol>
+				<symbol
+					id="i-arrow-left"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M19 12H5M12 19l-7-7 7-7" />
+				</symbol>
+				<symbol
+					id="i-arrow-right"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M5 12h14M12 5l7 7-7 7" />
+				</symbol>
+				<symbol
+					id="i-heart"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path
+						d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+					/>
+				</symbol>
+				<symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor">
+					<path
+						d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM8.34 17V10.21H6.13V17zM7.23 9.24a1.28 1.28 0 1 0 0-2.56 1.28 1.28 0 0 0 0 2.56M17.87 17v-3.72c0-1.99-.43-3.52-2.75-3.52a2.4 2.4 0 0 0-2.18 1.2h-.03v-1.01h-2.12V17h2.21v-3.36c0-.89.17-1.75 1.27-1.75s1.1 1.01 1.1 1.8V17z"
+					/>
+				</symbol>
+				<symbol
+					id="i-ig"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<rect x="2" y="2" width="20" height="20" rx="5" />
+					<circle cx="12" cy="12" r="4" />
+					<circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+				</symbol>
+				<symbol id="i-x" viewBox="0 0 24 24" fill="currentColor">
+					<path
+						d="M18.9 1.2h3.7l-8 9.2L24 22.8h-7.4l-5.8-7.6-6.6 7.6H.5l8.6-9.8L0 1.2h7.6l5.2 6.9zm-1.3 19.4h2L6.5 3.3h-2.2z"
+					/>
+				</symbol>
+			</defs>
+		</svg>
+
+		<!-- HEADER -->
+		<header class="header">
+			<div class="header-inner">
+				<a class="brand" href="#"
+					><svg style="color:var(--accent)"><use href="#i-cal" /></svg
+					><span>Cal AI</span></a
+				>
+				<div class="header-desktop">
+					<a class="btn" href="#">Get Started</a>
+				</div>
+				<button
+					class="header-mobile-btn"
+					id="mobile-menu-btn"
+					aria-label="Menu"
+				>
+					<svg viewBox="0 0 512 512" width="24" height="24">
+						<path
+							fill="currentColor"
+							d="M64 384h384v-42.67H64zm0-106.67h384v-42.66H64zM64 128v42.67h384V128z"
+						/>
+					</svg>
+				</button>
+			</div>
+			<hr class="header-hr">
+		</header>
+
+		<main>
+			<!-- HERO -->
+			<section class="hero container reveal">
+				<div class="app-icon">
+					<svg><use href="#i-cal" /></svg>
+				</div>
+				<div class="app-name">Cal AI</div>
+				<h1>Smart scheduling powered by AI.</h1>
+				<p class="sub">
+					Cal AI transforms your speech into text instantly. Perfect for quick
+					note-taking, content creation, and capturing ideas on-the-go.
+				</p>
+				<a href="#"
+					><img
+						class="store"
+						src="./assets/download-black.svg"
+						alt="Download on the App Store"
+					></a
+				>
+			</section>
+
+			<!-- HERO PHONES (5 devices, scroll-linked vertical parallax) -->
+			<div class="hero-phones-wrap">
+				<div class="hero-phones">
+					<img src="./assets/Device-1.png" alt="" loading="lazy">
+					<img src="./assets/Device-2.png" alt="" loading="lazy">
+					<img src="./assets/Device-3.png" alt="" loading="lazy">
+					<img src="./assets/Device-4.png" alt="" loading="lazy">
+					<img src="./assets/Device-5.png" alt="" loading="lazy">
+				</div>
+			</div>
+
+			<!-- EXPERIENCE -->
+			<section class="section container reveal">
+				<p class="eyebrow">Experience</p>
+				<h2 class="headline">an app unlike any other</h2>
+				<div class="phone-strip">
+					<img src="./assets/Device-6.png" alt="" id="exp-phone-1">
+					<img src="./assets/Device-7.png" alt="" id="exp-phone-2">
+					<img src="./assets/Device-8.png" alt="" id="exp-phone-3">
+				</div>
+			</section>
+
+			<!-- FEATURE ROWS (sticky scroll) -->
+			<section class="container">
+				<div style="text-align:center;padding:90px 0 0">
+					<p class="eyebrow">Features</p>
+					<h2 class="headline">powerful features</h2>
+				</div>
+				<div class="feature-row">
+					<div class="feat-text reveal">
+						<h2>AI-Powered<br>Scheduling</h2>
+						<p>
+							Intelligent scheduling that learns your preferences and optimizes
+							your time.
+						</p>
+						<a class="btn" href="#">Get Started</a>
+					</div>
+					<div class="feat-phone"><img src="./assets/Device-2.png" alt=""></div>
+				</div>
+				<div class="feature-row reverse">
+					<div class="feat-text reveal">
+						<h2>Smart Time<br>Blocking</h2>
+						<p>
+							Automatically block time for focused work and personal activities.
+						</p>
+						<a class="btn" href="#">Get Started</a>
+					</div>
+					<div class="feat-phone"><img src="./assets/Device-3.png" alt=""></div>
+				</div>
+				<div class="feature-row">
+					<div class="feat-text reveal">
+						<h2>Predictive<br>Event<br>Planning</h2>
+						<p>
+							AI suggests optimal times for meetings and events based on your
+							habits.
+						</p>
+						<a class="btn" href="#">Get Started</a>
+					</div>
+					<div class="feat-phone"><img src="./assets/Device-4.png" alt=""></div>
+				</div>
+			</section>
+
+			<!-- BENEFITS BENTO -->
+			<section class="section container reveal">
+				<p class="eyebrow">Benefits</p>
+				<h2 class="headline">it does a lot of things</h2>
+				<div class="bento-grid">
+					<div class="bento-cell bento-cell-wide">
+						<h3>AI-Powered Scheduling</h3>
+						<p>
+							Our app uses advanced AI to optimize your calendar, suggesting the
+							best times for meetings and tasks based on your preferences and
+							habits.
+						</p>
+						<img src="./assets/Device-1.png" alt="">
+					</div>
+					<div class="bento-cell">
+						<h3>Smart Time Blocking</h3>
+						<p>
+							Automatically block out time for focused work, breaks, and
+							personal activities to maintain a balanced and productive
+							schedule.
+						</p>
+						<img src="./assets/Device-2.png" alt="">
+					</div>
+					<div class="bento-cell">
+						<h3>Intelligent Reminders</h3>
+						<p>
+							Receive context-aware notifications that adapt to your schedule,
+							ensuring you never miss important events or deadlines.
+						</p>
+						<img src="./assets/Device-3.png" alt="">
+					</div>
+					<div class="bento-cell bento-cell-wide">
+						<h3>Team Collaboration</h3>
+						<p>
+							Effortlessly coordinate schedules with team members and clients,
+							finding optimal meeting times across different time zones.
+						</p>
+						<img src="./assets/Device-4.png" alt="">
+					</div>
+				</div>
+			</section>
+
+			<!-- BENEFITS CAROUSEL -->
+			<section class="section carousel-section reveal">
+				<div class="container">
+					<p class="eyebrow">Benefits</p>
+					<h2 class="headline">what you can do with cal ai</h2>
+				</div>
+				<div class="carousel-scroll" id="carousel-scroll">
+					<div class="carousel-spacer" aria-hidden="true"></div>
+					<div class="carousel-scroll-slide">
+						<div class="carousel-img-wrap">
+							<img
+								src="./assets/Device-6.png"
+								alt="Save hours each week with AI-optimized scheduling."
+								class="carousel-scroll-img"
+							>
+							<div class="carousel-gradient"></div>
+						</div>
+						<h2 class="carousel-caption">
+							Save hours each week with AI-optimized scheduling.
+						</h2>
+					</div>
+					<div class="carousel-scroll-slide">
+						<div class="carousel-img-wrap">
+							<img
+								src="./assets/Device-7.png"
+								alt="Reduce scheduling conflicts and double-bookings."
+								class="carousel-scroll-img"
+							>
+							<div class="carousel-gradient"></div>
+						</div>
+						<h2 class="carousel-caption">
+							Reduce scheduling conflicts and double-bookings.
+						</h2>
+					</div>
+					<div class="carousel-scroll-slide">
+						<div class="carousel-img-wrap">
+							<img
+								src="./assets/Device-8.png"
+								alt="Improve work-life balance with smart time allocation."
+								class="carousel-scroll-img"
+							>
+							<div class="carousel-gradient"></div>
+						</div>
+						<h2 class="carousel-caption">
+							Improve work-life balance with smart time allocation.
+						</h2>
+					</div>
+					<div class="carousel-scroll-slide">
+						<div class="carousel-img-wrap">
+							<img
+								src="./assets/Device-1.png"
+								alt="Increase productivity with AI-driven time management insights."
+								class="carousel-scroll-img"
+							>
+							<div class="carousel-gradient"></div>
+						</div>
+						<h2 class="carousel-caption">
+							Increase productivity with AI-driven time management insights.
+						</h2>
+					</div>
+					<div class="carousel-spacer" aria-hidden="true"></div>
+				</div>
+				<div class="carousel-nav">
+					<button id="prev" aria-label="Previous slide">
+						<svg><use href="#i-arrow-left" /></svg>
+					</button>
+					<button id="next" aria-label="Next slide">
+						<svg><use href="#i-arrow-right" /></svg>
+					</button>
+				</div>
+			</section>
+
+			<!-- FEATURES GRID -->
+			<section class="section container reveal">
+				<p class="eyebrow">Features</p>
+				<h2 class="headline">powerful features</h2>
+				<div class="feat-grid">
+					<div class="feat-cell">
+						<div class="icon">
+							<svg><use href="#i-brain" /></svg>
+						</div>
+						<h3>AI-Powered Scheduling</h3>
+						<p>
+							Intelligent scheduling that learns your preferences and optimizes
+							your time.
+						</p>
+						<a class="learn" href="#">Learn more &gt;</a>
+					</div>
+					<div class="feat-cell">
+						<div class="icon">
+							<svg><use href="#i-clock" /></svg>
+						</div>
+						<h3>Smart Time Blocking</h3>
+						<p>
+							Automatically block time for focused work and personal activities.
+						</p>
+						<a class="learn" href="#">Learn more &gt;</a>
+					</div>
+					<div class="feat-cell">
+						<div class="icon">
+							<svg><use href="#i-cal" /></svg>
+						</div>
+						<h3>Predictive Event Planning</h3>
+						<p>
+							AI suggests optimal times for meetings and events based on your
+							habits.
+						</p>
+						<a class="learn" href="#">Learn more &gt;</a>
+					</div>
+					<div class="feat-cell">
+						<div class="icon">
+							<svg><use href="#i-cloud" /></svg>
+						</div>
+						<h3>Cloud Sync</h3>
+						<p>Access your schedule across all devices in real-time.</p>
+						<a class="learn" href="#">Learn more &gt;</a>
+					</div>
+					<div class="feat-cell">
+						<div class="icon">
+							<svg><use href="#i-users" /></svg>
+						</div>
+						<h3>Team Collaboration</h3>
+						<p>Easily coordinate schedules with team members and clients.</p>
+						<a class="learn" href="#">Learn more &gt;</a>
+					</div>
+					<div class="feat-cell">
+						<div class="icon">
+							<svg><use href="#i-bell" /></svg>
+						</div>
+						<h3>Smart Reminders</h3>
+						<p>
+							Contextual notifications that adapt to your schedule and
+							priorities.
+						</p>
+						<a class="learn" href="#">Learn more &gt;</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- TESTIMONIALS -->
+			<section class="section container reveal">
+				<p class="eyebrow">Testimonials</p>
+				<h2 class="headline">what our users say</h2>
+				<div class="testi-cols" id="testi-cols"></div>
+			</section>
+
+			<!-- PRICING -->
+			<section class="section container reveal">
+				<p class="eyebrow">Pricing</p>
+				<h2 class="headline">simple pricing</h2>
+				<div class="pricing-grid">
+					<div class="price-card">
+						<h3>Basic</h3>
+						<div class="price">$0<span>/month</span></div>
+						<div class="note">Perfect for individual users</div>
+						<ul>
+							<li>
+								<svg><use href="#i-check" /></svg>AI-powered scheduling (up to
+								10 events/month)
+							</li>
+							<li>
+								<svg><use href="#i-check" /></svg>Basic time blocking
+							</li>
+							<li>
+								<svg><use href="#i-check" /></svg>Cloud sync for 1 device
+							</li>
+							<li>
+								<svg><use href="#i-check" /></svg>Email reminders
+							</li>
+						</ul>
+						<a class="btn btn--block" href="#"
+							>Get Started
+							<svg class="chev"><use href="#i-chev-right" /></svg></a
+						>
+					</div>
+					<div class="price-card">
+						<h3>Pro</h3>
+						<div class="price">$12<span>/month</span></div>
+						<div class="note">Ideal for professionals and small teams</div>
+						<ul>
+							<li>
+								<svg><use href="#i-check" /></svg>Unlimited AI-powered
+								scheduling
+							</li>
+							<li>
+								<svg><use href="#i-check" /></svg>Advanced time blocking and
+								analysis
+							</li>
+							<li>
+								<svg><use href="#i-check" /></svg>Cloud sync for unlimited
+								devices
+							</li>
+							<li>
+								<svg><use href="#i-check" /></svg>Smart notifications across all
+								devices
+							</li>
+							<li>
+								<svg><use href="#i-check" /></svg>Team collaboration features
+							</li>
+						</ul>
+						<a class="btn btn--block" href="#"
+							>Get Started
+							<svg class="chev"><use href="#i-chev-right" /></svg></a
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- FAQ -->
+			<section class="section container reveal">
+				<p class="eyebrow">FAQ</p>
+				<h2 class="headline">frequently asked questions</h2>
+				<div class="faq-list" id="faq-list"></div>
+			</section>
+
+			<!-- CTA -->
+			<section class="cta container reveal">
+				<div class="cta-panel">
+					<div class="cta-tweets-wrap" aria-hidden="true">
+						<div class="cta-tweets-rotate">
+							<!-- Row 1: Jack, Jill, John -->
+							<div class="cta-marquee-row">
+								<div class="cta-marquee-track">
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/jack.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">Jack</figcaption>
+												<p class="cta-tweet-handle">@jack</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I've never seen anything like this before. It's amazing. I
+											love it.
+										</blockquote>
+									</figure>
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/jill.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">Jill</figcaption>
+												<p class="cta-tweet-handle">@jill</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I don't know what to say. I'm speechless. This is amazing.
+										</blockquote>
+									</figure>
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/john.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">John</figcaption>
+												<p class="cta-tweet-handle">@john</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I'm at a loss for words. This is amazing. I love it.
+										</blockquote>
+									</figure>
+								</div>
+								<div class="cta-marquee-track" aria-hidden="true">
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/jack.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">Jack</figcaption>
+												<p class="cta-tweet-handle">@jack</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I've never seen anything like this before. It's amazing. I
+											love it.
+										</blockquote>
+									</figure>
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/jill.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">Jill</figcaption>
+												<p class="cta-tweet-handle">@jill</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I don't know what to say. I'm speechless. This is amazing.
+										</blockquote>
+									</figure>
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/john.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">John</figcaption>
+												<p class="cta-tweet-handle">@john</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I'm at a loss for words. This is amazing. I love it.
+										</blockquote>
+									</figure>
+								</div>
+							</div>
+							<!-- Row 2: Jane, Jenny, James (reversed direction) -->
+							<div class="cta-marquee-row cta-marquee-reverse">
+								<div class="cta-marquee-track">
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/jane.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">Jane</figcaption>
+												<p class="cta-tweet-handle">@jane</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I'm at a loss for words. This is amazing. I love it.
+										</blockquote>
+									</figure>
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/jenny.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">Jenny</figcaption>
+												<p class="cta-tweet-handle">@jenny</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I'm at a loss for words. This is amazing. I love it.
+										</blockquote>
+									</figure>
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/james.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">James</figcaption>
+												<p class="cta-tweet-handle">@james</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I'm at a loss for words. This is amazing. I love it.
+										</blockquote>
+									</figure>
+								</div>
+								<div class="cta-marquee-track" aria-hidden="true">
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/jane.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">Jane</figcaption>
+												<p class="cta-tweet-handle">@jane</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I'm at a loss for words. This is amazing. I love it.
+										</blockquote>
+									</figure>
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/jenny.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">Jenny</figcaption>
+												<p class="cta-tweet-handle">@jenny</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I'm at a loss for words. This is amazing. I love it.
+										</blockquote>
+									</figure>
+									<figure class="cta-tweet-card">
+										<div class="cta-tweet-header">
+											<img
+												src="./assets/avatars/james.svg"
+												width="32"
+												height="32"
+												alt=""
+											>
+											<div>
+												<figcaption class="cta-tweet-name">James</figcaption>
+												<p class="cta-tweet-handle">@james</p>
+											</div>
+										</div>
+										<blockquote class="cta-tweet-text">
+											I'm at a loss for words. This is amazing. I love it.
+										</blockquote>
+									</figure>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cta-logo">
+						<svg style="color:var(--accent)"><use href="#i-heart" /></svg>
+					</div>
+					<h2>Stop wasting time on design.</h2>
+					<p>Start your 7-day free trial. No credit card required.</p>
+					<a class="btn" href="#"
+						>Get Started <svg class="chev"><use href="#i-chev-right" /></svg></a
+					>
+				</div>
+			</section>
+		</main>
+
+		<!-- FOOTER -->
+		<footer class="footer container">
+			<div class="footer-top">
+				<a class="brand" href="#"
+					><svg style="color:var(--accent)"><use href="#i-cal" /></svg
+					><span>Cal AI</span></a
+				>
+				<div class="social">
+					<a href="#"
+						><svg><use href="#i-linkedin" /></svg></a
+					><a href="#"
+						><svg><use href="#i-ig" /></svg></a
+					><a href="#"
+						><svg><use href="#i-x" /></svg></a
+					>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="links"><a href="#">Pricing</a><a href="#">Contact</a></div>
+				<div class="rr">All rights reserved.</div>
+			</div>
+		</footer>
+
+		<script src="./js/main.js"></script>
+	</body>
+</html>

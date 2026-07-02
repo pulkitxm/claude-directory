@@ -1,5 +1,7 @@
 # Crystalline Cube Shader — Interactive WebGL Ray-Marched SDF Gem Viewer (React, TypeScript, GLSL, shadcn/ui)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 An interactive WebGL ray-marched crystalline cube rendered entirely on the GPU — a sine-carved SDF box lit by a mouse-driven key light and tinted by an Inigo-Quilez procedural palette — packaged as a shadcn `@/components/ui` component and framed as a lapidary analysis bench with live specimen presets, a facet console, and a telemetry strip. The shader's four props (`complexity`, `colorShift`, `lightIntensity`, `mouseInfluence`) are exposed as calibrated faders with gemological labels, and four crystal presets (Aurora Quartz, Vermilion Garnet, Fissure Beryl, Glacier Spinel) snap all parameters at once. Generated with Claude Fable 5.
 
 ## Stack

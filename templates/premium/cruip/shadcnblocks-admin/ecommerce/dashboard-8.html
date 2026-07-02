@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Dashboard 8 — Shadcnblocks Admin Kit</title>
+		<!-- No-flash theme boot -->
+		<script>
+		(function () {
+			var t = localStorage.getItem("theme"),
+				d =
+					window.matchMedia &&
+					window.matchMedia("(prefers-color-scheme:dark)").matches;
+			if (t === "dark" || (t === null && d))
+				document.documentElement.classList.add("dark");
+		})();
+		</script>
+		<link rel="stylesheet" href="../assets/styles.css">
+		<style>
+		/* ===== LOGO SWAP ===== */
+		.logo-light {
+			display: block;
+		}
+		.logo-dark {
+			display: none;
+		}
+		html.dark .logo-light {
+			display: none;
+		}
+		html.dark .logo-dark {
+			display: block;
+		}
+
+		.sidebar-logo-icon {
+			width: 28px;
+			height: 28px;
+			border: 1px solid var(--border);
+			border-radius: 6px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+		.sidebar-logo-icon img {
+			width: 16px;
+			height: 16px;
+			object-fit: contain;
+		}
+
+		/* ===== KPI SPARKLINE CARDS ===== */
+		.d8-kpi-grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 16px;
+			margin-bottom: 20px;
+		}
+		@media (max-width: 1100px) {
+			.d8-kpi-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+		@media (max-width: 640px) {
+			.d8-kpi-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		.d8-kpi {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 18px 20px 14px;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+		}
+		.d8-kpi-label {
+			font-size: 12px;
+			font-weight: 500;
+			color: var(--muted-foreground);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.d8-kpi-label svg {
+			width: 14px;
+			height: 14px;
+			opacity: 0.55;
+		}
+		.d8-kpi-value {
+			font-size: 24px;
+			font-weight: 700;
+			letter-spacing: -0.03em;
+			color: var(--card-foreground);
+			line-height: 1.1;
+		}
+		.d8-kpi-change {
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+			font-size: 12px;
+			font-weight: 500;
+		}
+		.d8-kpi-change.pos {
+			color: var(--success);
+		}
+		.d8-kpi-change.neg {
+			color: var(--destructive);
+		}
+		.d8-kpi-change.neu {
+			color: var(--muted-foreground);
+		}
+		.d8-kpi-canvas {
+			margin-top: 4px;
+			height: 52px;
+			position: relative;
+		}
+
+		/* ===== CHART ROWS ===== */
+		.d8-row {
+			margin-bottom: 20px;
+		}
+		.d8-row-2col {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 16px;
+			margin-bottom: 0;
+		}
+		@media (max-width: 900px) {
+			.d8-row-2col {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* ===== FUNNEL ===== */
+		.funnel-list {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			margin-top: 16px;
+		}
+		.funnel-row {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+		}
+		.funnel-row-meta {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.funnel-row-label {
+			font-size: 13px;
+			color: var(--foreground);
+			font-weight: 500;
+		}
+		.funnel-row-count {
+			font-size: 12px;
+			color: var(--muted-foreground);
+		}
+		.funnel-bar-track {
+			width: 100%;
+			height: 8px;
+			background: var(--muted);
+			border-radius: 4px;
+			overflow: hidden;
+		}
+		.funnel-bar-fill {
+			height: 100%;
+			border-radius: 4px;
+			background: var(--chart-3);
+			transition: width 0.3s;
+		}
+		.funnel-conversion {
+			margin-top: 14px;
+			padding-top: 12px;
+			border-top: 1px solid var(--border);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.funnel-conv-label {
+			font-size: 13px;
+			color: var(--muted-foreground);
+		}
+		.funnel-conv-value {
+			font-size: 20px;
+			font-weight: 700;
+			color: var(--chart-3);
+			letter-spacing: -0.02em;
+		}
+
+		.theme-label {
+			font-size: 13px;
+			color: var(--muted-foreground);
+		}
+		</style>
+	</head>
+	<body>
+		<div class="app-wrapper">
+			<!-- SIDEBAR -->
+			<div id="sidebar-container" class="sidebar-container">
+				<aside id="sidebar" class="sidebar">
+					<div class="sidebar-header">
+						<div class="sidebar-logo">
+							<div class="sidebar-logo-icon">
+								<img
+									src="../assets/images/logo-black.svg"
+									alt="Shadcnblocks"
+									class="logo-light"
+								>
+								<img
+									src="../assets/images/logo-white.svg"
+									alt="Shadcnblocks"
+									class="logo-dark"
+								>
+							</div>
+							<div>
+								<div class="sidebar-logo-text">Shadcnblocks Admin Kit</div>
+								<div class="sidebar-subtitle" style="padding-left:0">
+									Nextjs + shadcn/ui
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<nav class="sidebar-nav">
+						<!-- ECOMMERCE -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Ecommerce</div>
+
+							<div class="sidebar-item open" data-submenu="sub-dashboard">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1"
+									/>
+								</svg>
+								<span>Dashboard</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m18 15-6-6-6 6" />
+								</svg>
+							</div>
+							<div id="sub-dashboard" class="sidebar-sub open">
+								<a href="dashboard-1.html" class="sidebar-sub-item"
+									>Dashboard 1</a
+								>
+								<a href="dashboard-2.html" class="sidebar-sub-item"
+									>Dashboard 2</a
+								>
+								<a href="dashboard-3.html" class="sidebar-sub-item"
+									>Dashboard 3</a
+								>
+								<a href="dashboard-4.html" class="sidebar-sub-item"
+									>Dashboard 4</a
+								>
+								<a href="dashboard-5.html" class="sidebar-sub-item"
+									>Dashboard 5</a
+								>
+								<a href="dashboard-6.html" class="sidebar-sub-item"
+									>Dashboard 6</a
+								>
+								<a href="dashboard-7.html" class="sidebar-sub-item"
+									>Dashboard 7</a
+								>
+								<a href="dashboard-8.html" class="sidebar-sub-item active"
+									>Dashboard 8</a
+								>
+								<a href="dashboard-9.html" class="sidebar-sub-item"
+									>Dashboard 9</a
+								>
+							</div>
+
+							<div class="sidebar-item" data-submenu="sub-products">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M12 3l8 4.5 0 9L12 21l-8-4.5 0-9z" />
+									<path d="M12 12l8-4.5" />
+									<path d="M12 12v9" />
+									<path d="M12 12L4 7.5" />
+								</svg>
+								<span>Products</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-products" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-orders">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
+									<path d="M15 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0" />
+									<path d="M17 17h-11v-14h-2" />
+									<path d="M6 5l14 1-1 7H6" />
+								</svg>
+								<span>Orders</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-orders" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-customers">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M5 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
+									<path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+									<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+									<path d="M21 21v-2a4 4 0 0 0-3-3.85" />
+								</svg>
+								<span>Customers</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-customers" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-shipments">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"
+									/>
+									<path d="M15 18H9" />
+									<path
+										d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"
+									/>
+									<circle cx="17" cy="18" r="2" />
+									<circle cx="7" cy="18" r="2" />
+								</svg>
+								<span>Shipments</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-shipments" class="sidebar-sub"></div>
+						</div>
+
+						<!-- PROJECT MANAGEMENT -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Project Management</div>
+
+							<div class="sidebar-item" data-submenu="sub-pm-dash">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1"
+									/>
+									<path
+										d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1"
+									/>
+								</svg>
+								<span>Dashboard</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-pm-dash" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-projects">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"
+									/>
+									<path d="M8 10v4" />
+									<path d="M12 10v2" />
+									<path d="M16 10v6" />
+								</svg>
+								<span>Projects</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-projects" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-teams">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M5 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
+									<path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+									<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+									<path d="M21 21v-2a4 4 0 0 0-3-3.85" />
+								</svg>
+								<span>Teams</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-teams" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-members">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
+									<path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+								</svg>
+								<span>Members</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-members" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-issues">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<circle cx="12" cy="12" r="1" />
+									<circle cx="12" cy="12" r="10" />
+								</svg>
+								<span>Issues</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-issues" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-inbox">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+									<path
+										d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+									/>
+								</svg>
+								<span>Inbox</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-inbox" class="sidebar-sub"></div>
+
+							<a href="../original/tasks.html" class="sidebar-item">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M9 11l3 3L22 4" />
+									<path
+										d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+									/>
+								</svg>
+								<span>Tasks</span>
+							</a>
+						</div>
+
+						<!-- MANAGE -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Manage</div>
+
+							<div class="sidebar-item" data-submenu="sub-settings">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+									/>
+									<circle cx="12" cy="12" r="3" />
+								</svg>
+								<span>Settings</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-settings" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-developers">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="16 18 22 12 16 6" />
+									<polyline points="8 6 2 12 8 18" />
+								</svg>
+								<span>Developers</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-developers" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-devtools">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+									/>
+								</svg>
+								<span>Dev Tools</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-devtools" class="sidebar-sub"></div>
+						</div>
+
+						<!-- PAGES -->
+						<div class="sidebar-section">
+							<div class="sidebar-section-label">Pages</div>
+
+							<div class="sidebar-item" data-submenu="sub-auth">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+									<path d="M7 11V7a5 5 0 0 1 10 0v4" />
+								</svg>
+								<span>Auth</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-auth" class="sidebar-sub"></div>
+
+							<div class="sidebar-item" data-submenu="sub-errors">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path
+										d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+									/>
+									<path d="M12 9v4" />
+									<path d="M12 17h.01" />
+								</svg>
+								<span>Errors</span>
+								<svg
+									class="chevron"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</div>
+							<div id="sub-errors" class="sidebar-sub"></div>
+						</div>
+					</nav>
+
+					<div class="sidebar-footer">
+						<div class="sidebar-user">
+							<img
+								src="../assets/images/avatars/ausrobdev-avatar.png"
+								alt="ausrobdev"
+								style="width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;"
+							>
+							<div class="sidebar-user-info">
+								<div class="sidebar-user-name">ausrobdev</div>
+								<div class="sidebar-user-email">rob@shadcnblocks.com</div>
+							</div>
+							<svg
+								class="sidebar-user-icon"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="m7 15 5 5 5-5" />
+								<path d="m7 9 5-5 5 5" />
+							</svg>
+						</div>
+					</div>
+				</aside>
+			</div>
+
+			<div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+			<!-- MAIN AREA -->
+			<div class="main-area">
+				<!-- Header -->
+				<header class="page-header">
+					<div class="header-left">
+						<button
+							id="sidebar-toggle"
+							class="sidebar-toggle"
+							aria-label="Toggle sidebar"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<rect width="18" height="18" x="3" y="3" rx="2" />
+								<path d="M9 3v18" />
+							</svg>
+						</button>
+						<nav class="breadcrumb" aria-label="Breadcrumb">
+							<span class="breadcrumb-item">Ecommerce</span>
+							<span class="breadcrumb-sep">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="12"
+									height="12"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="m9 18 6-6-6-6" />
+								</svg>
+							</span>
+							<span class="breadcrumb-item current">Dashboard 8</span>
+						</nav>
+					</div>
+
+					<div class="header-center">
+						<div class="search-bar" role="search">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<circle cx="11" cy="11" r="8" />
+								<path d="m21 21-4.3-4.3" />
+							</svg>
+							<span class="search-bar-text">Search...</span>
+							<kbd class="search-bar-kbd">⌘K</kbd>
+						</div>
+					</div>
+
+					<div class="header-right">
+						<button class="header-btn" aria-label="Notifications">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+								<path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+							</svg>
+							<span class="notification-badge">2</span>
+						</button>
+						<button
+							id="theme-toggle"
+							class="header-btn"
+							aria-label="Toggle theme"
+						>
+							<span id="theme-icon"></span>
+						</button>
+						<span class="theme-label">Default</span>
+					</div>
+				</header>
+
+				<!-- Page Content -->
+				<main class="page-content">
+					<div class="content-inner">
+						<!-- Row 1: KPI Cards with sparklines -->
+						<div class="d8-kpi-grid">
+							<!-- Card 1: Total Revenue (negative) -->
+							<div class="d8-kpi">
+								<div class="d8-kpi-label">
+									Total Revenue
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<line x1="12" y1="1" x2="12" y2="23" />
+										<path
+											d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+										/>
+									</svg>
+								</div>
+								<div class="d8-kpi-value">$485,000</div>
+								<div class="d8-kpi-change neg">
+									<!-- down arrow -->
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="12"
+										height="12"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="m6 9 6 6 6-6" />
+									</svg>
+									-12.5% vs Last Month
+								</div>
+								<div class="d8-kpi-canvas">
+									<canvas id="sparkRevenue"></canvas>
+								</div>
+							</div>
+
+							<!-- Card 2: Conversion Rate (positive) -->
+							<div class="d8-kpi">
+								<div class="d8-kpi-label">
+									Conversion Rate
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path
+											d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+										/>
+									</svg>
+								</div>
+								<div class="d8-kpi-value">18.5%</div>
+								<div class="d8-kpi-change pos">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="12"
+										height="12"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="m18 15-6-6-6 6" />
+									</svg>
+									+3.2% vs Last Month
+								</div>
+								<div class="d8-kpi-canvas">
+									<canvas id="sparkConversion"></canvas>
+								</div>
+							</div>
+
+							<!-- Card 3: Active Users (positive) -->
+							<div class="d8-kpi">
+								<div class="d8-kpi-label">
+									Active Users
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M5 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0" />
+										<path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+										<path d="M16 3.13a4 4 0 0 1 0 7.75" />
+										<path d="M21 21v-2a4 4 0 0 0-3-3.85" />
+									</svg>
+								</div>
+								<div class="d8-kpi-value">24,891</div>
+								<div class="d8-kpi-change pos">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="12"
+										height="12"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="m18 15-6-6-6 6" />
+									</svg>
+									+8.7% vs Last Month
+								</div>
+								<div class="d8-kpi-canvas">
+									<canvas id="sparkUsers"></canvas>
+								</div>
+							</div>
+
+							<!-- Card 4: Avg Session (neutral/slightly negative) -->
+							<div class="d8-kpi">
+								<div class="d8-kpi-label">
+									Avg Session
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<circle cx="12" cy="12" r="10" />
+										<polyline points="12 6 12 12 16 14" />
+									</svg>
+								</div>
+								<div class="d8-kpi-value">4m 32s</div>
+								<div class="d8-kpi-change neu">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="12"
+										height="12"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="m6 9 6 6 6-6" />
+									</svg>
+									-0.8% vs Last Month
+								</div>
+								<div class="d8-kpi-canvas">
+									<canvas id="sparkSession"></canvas>
+								</div>
+							</div>
+						</div>
+						<!-- /.d8-kpi-grid -->
+
+						<!-- Row 2: Revenue vs Target (full width) -->
+						<div class="d8-row">
+							<div class="chart-card">
+								<div class="chart-card-header">
+									<div>
+										<div class="chart-card-title">Revenue vs Target</div>
+										<div class="chart-card-subtitle">
+											Tracking actual vs projected revenue
+										</div>
+									</div>
+									<div class="chart-legend" style="margin-top:0">
+										<div class="chart-legend-item">
+											<div
+												class="chart-legend-dot"
+												style="background:var(--chart-3)"
+											></div>
+											<span>Actual</span>
+										</div>
+										<div class="chart-legend-item">
+											<div
+												class="chart-legend-dot"
+												style="background:var(--chart-1);opacity:0.7"
+											></div>
+											<span>Target</span>
+										</div>
+									</div>
+								</div>
+								<div class="chart-canvas-wrapper" style="height:240px">
+									<canvas id="revTargetChart"></canvas>
+								</div>
+							</div>
+						</div>
+
+						<!-- Row 3: Traffic Sources + Sales Funnel -->
+						<div class="d8-row-2col">
+							<!-- Traffic Sources -->
+							<div class="chart-card">
+								<div class="chart-card-header">
+									<div>
+										<div class="chart-card-title">Traffic Sources</div>
+										<div class="chart-card-subtitle">
+											Channel breakdown this month
+										</div>
+									</div>
+								</div>
+								<div class="chart-canvas-wrapper" style="height:220px">
+									<canvas id="trafficChart"></canvas>
+								</div>
+							</div>
+
+							<!-- Sales Funnel -->
+							<div class="chart-card">
+								<div class="chart-card-header">
+									<div>
+										<div class="chart-card-title">Sales Funnel</div>
+										<div class="chart-card-subtitle">
+											Visitor-to-purchase progression
+										</div>
+									</div>
+								</div>
+
+								<div class="funnel-list">
+									<div class="funnel-row">
+										<div class="funnel-row-meta">
+											<span class="funnel-row-label">Visitors</span>
+											<span class="funnel-row-count">100,000</span>
+										</div>
+										<div class="funnel-bar-track">
+											<div
+												class="funnel-bar-fill"
+												style="width:100%;background:var(--chart-4)"
+											></div>
+										</div>
+									</div>
+
+									<div class="funnel-row">
+										<div class="funnel-row-meta">
+											<span class="funnel-row-label">Product Views</span>
+											<span class="funnel-row-count">45,200</span>
+										</div>
+										<div class="funnel-bar-track">
+											<div
+												class="funnel-bar-fill"
+												style="width:45.2%;background:var(--chart-3)"
+											></div>
+										</div>
+									</div>
+
+									<div class="funnel-row">
+										<div class="funnel-row-meta">
+											<span class="funnel-row-label">Add to Cart</span>
+											<span class="funnel-row-count">18,400</span>
+										</div>
+										<div class="funnel-bar-track">
+											<div
+												class="funnel-bar-fill"
+												style="width:18.4%;background:var(--chart-3)"
+											></div>
+										</div>
+									</div>
+
+									<div class="funnel-row">
+										<div class="funnel-row-meta">
+											<span class="funnel-row-label">Checkout</span>
+											<span class="funnel-row-count">9,200</span>
+										</div>
+										<div class="funnel-bar-track">
+											<div
+												class="funnel-bar-fill"
+												style="width:9.2%;background:var(--chart-2)"
+											></div>
+										</div>
+									</div>
+
+									<div class="funnel-row">
+										<div class="funnel-row-meta">
+											<span class="funnel-row-label">Purchased</span>
+											<span class="funnel-row-count">4,820</span>
+										</div>
+										<div class="funnel-bar-track">
+											<div
+												class="funnel-bar-fill"
+												style="width:4.82%;background:var(--chart-1)"
+											></div>
+										</div>
+									</div>
+								</div>
+
+								<div class="funnel-conversion">
+									<span class="funnel-conv-label">Overall Conversion Rate</span>
+									<span class="funnel-conv-value">4.82%</span>
+								</div>
+							</div>
+						</div>
+						<!-- /.d8-row-2col -->
+					</div>
+					<!-- /.content-inner -->
+				</main>
+			</div>
+			<!-- /.main-area -->
+		</div>
+		<!-- /.app-wrapper -->
+
+		<script src="../assets/app.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+		<script>
+		(function () {
+			function cssVar(n) {
+				return getComputedStyle(document.documentElement)
+					.getPropertyValue(n)
+					.trim();
+			}
+
+			var charts = {};
+
+			function destroyAll() {
+				Object.values(charts).forEach(function (c) {
+					if (c) c.destroy();
+				});
+				charts = {};
+			}
+
+			function hexToRgba(hex, a) {
+				hex = hex.replace("#", "");
+				if (hex.length === 3)
+					hex = hex
+						.split("")
+						.map(function (c) {
+							return c + c;
+						})
+						.join("");
+				var r = parseInt(hex.slice(0, 2), 16);
+				var g = parseInt(hex.slice(2, 4), 16);
+				var b = parseInt(hex.slice(4, 6), 16);
+				return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+			}
+
+			function makeGradient(ctx, color, h) {
+				var g = ctx.createLinearGradient(0, 0, 0, h);
+				try {
+					g.addColorStop(0, hexToRgba(color, 0.25));
+					g.addColorStop(1, hexToRgba(color, 0));
+				} catch (e) {
+					g.addColorStop(0, "rgba(21,93,252,0.25)");
+					g.addColorStop(1, "rgba(21,93,252,0)");
+				}
+				return g;
+			}
+
+			function buildCharts() {
+				destroyAll();
+
+				var c1 = cssVar("--chart-1");
+				var c2 = cssVar("--chart-2");
+				var c3 = cssVar("--chart-3");
+				var c4 = cssVar("--chart-4");
+				var muted = cssVar("--muted-foreground");
+				var grid = cssVar("--border");
+				var dest = cssVar("--destructive");
+				var succ = cssVar("--success");
+
+				/* ---- SPARKLINE: Total Revenue (declining line) ---- */
+				var ctx1 = document.getElementById("sparkRevenue");
+				if (ctx1) {
+					charts.sRev = new Chart(ctx1, {
+						type: "line",
+						data: {
+							labels: ["", "", "", "", "", "", "", "", "", ""],
+							datasets: [
+								{
+									data: [62, 58, 54, 60, 50, 48, 52, 44, 46, 41],
+									borderColor: dest,
+									backgroundColor: "transparent",
+									borderWidth: 2,
+									pointRadius: 0,
+									tension: 0.4,
+								},
+							],
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							plugins: {
+								legend: { display: false },
+								tooltip: { enabled: false },
+							},
+							scales: { x: { display: false }, y: { display: false } },
+						},
+					});
+				}
+
+				/* ---- SPARKLINE: Conversion Rate (rising line) ---- */
+				var ctx2 = document.getElementById("sparkConversion");
+				if (ctx2) {
+					var g2 = makeGradient(
+						ctx2.getContext("2d"),
+						c3.replace(/\s/g, "") || "#155dfc",
+						52,
+					);
+					charts.sConv = new Chart(ctx2, {
+						type: "line",
+						data: {
+							labels: ["", "", "", "", "", "", "", "", "", ""],
+							datasets: [
+								{
+									data: [13, 14, 14.5, 15, 15.8, 16.2, 17, 17.5, 18, 18.5],
+									borderColor: c3,
+									backgroundColor: g2,
+									fill: true,
+									borderWidth: 2,
+									pointRadius: 0,
+									tension: 0.4,
+								},
+							],
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							plugins: {
+								legend: { display: false },
+								tooltip: { enabled: false },
+							},
+							scales: { x: { display: false }, y: { display: false } },
+						},
+					});
+				}
+
+				/* ---- SPARKLINE: Active Users (bar) ---- */
+				var ctx3 = document.getElementById("sparkUsers");
+				if (ctx3) {
+					charts.sUsers = new Chart(ctx3, {
+						type: "bar",
+						data: {
+							labels: ["", "", "", "", "", "", "", "", "", ""],
+							datasets: [
+								{
+									data: [
+										18200, 19400, 20100, 21000, 21800, 22400, 23100, 23800,
+										24200, 24891,
+									],
+									backgroundColor: c3,
+									borderRadius: 2,
+									barPercentage: 0.7,
+								},
+							],
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							plugins: {
+								legend: { display: false },
+								tooltip: { enabled: false },
+							},
+							scales: { x: { display: false }, y: { display: false } },
+						},
+					});
+				}
+
+				/* ---- SPARKLINE: Avg Session (flat line, slight decline) ---- */
+				var ctx4 = document.getElementById("sparkSession");
+				if (ctx4) {
+					charts.sSess = new Chart(ctx4, {
+						type: "line",
+						data: {
+							labels: ["", "", "", "", "", "", "", "", "", ""],
+							datasets: [
+								{
+									data: [
+										4.8, 4.7, 4.75, 4.65, 4.7, 4.6, 4.62, 4.55, 4.58, 4.53,
+									],
+									borderColor: muted,
+									backgroundColor: "transparent",
+									borderWidth: 2,
+									pointRadius: 0,
+									tension: 0.4,
+								},
+							],
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							plugins: {
+								legend: { display: false },
+								tooltip: { enabled: false },
+							},
+							scales: { x: { display: false }, y: { display: false } },
+						},
+					});
+				}
+
+				/* ---- REVENUE VS TARGET (area + dashed) ---- */
+				var rtvCtx = document.getElementById("revTargetChart");
+				if (rtvCtx) {
+					var gRev = rtvCtx.getContext("2d").createLinearGradient(0, 0, 0, 240);
+					try {
+						gRev.addColorStop(
+							0,
+							hexToRgba(c3.replace(/\s/g, "") || "#155dfc", 0.2),
+						);
+						gRev.addColorStop(
+							1,
+							hexToRgba(c3.replace(/\s/g, "") || "#155dfc", 0),
+						);
+					} catch (e) {
+						gRev.addColorStop(0, "rgba(21,93,252,0.2)");
+						gRev.addColorStop(1, "rgba(21,93,252,0)");
+					}
+					charts.revTarget = new Chart(rtvCtx, {
+						type: "line",
+						data: {
+							labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+							datasets: [
+								{
+									label: "Actual",
+									data: [122000, 98000, 145000, 120000],
+									borderColor: c3,
+									backgroundColor: gRev,
+									fill: true,
+									borderWidth: 2.5,
+									pointRadius: 5,
+									pointHoverRadius: 7,
+									pointBackgroundColor: c3,
+									tension: 0.35,
+								},
+								{
+									label: "Target",
+									data: [130000, 130000, 130000, 130000],
+									borderColor: c1,
+									backgroundColor: "transparent",
+									borderWidth: 2,
+									borderDash: [6, 4],
+									pointRadius: 0,
+									tension: 0,
+								},
+							],
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							plugins: {
+								legend: { display: false },
+								tooltip: {
+									callbacks: {
+										label: function (ctx) {
+											return (
+												" " +
+												ctx.dataset.label +
+												": $" +
+												ctx.parsed.y.toLocaleString()
+											);
+										},
+									},
+								},
+							},
+							scales: {
+								x: {
+									grid: { display: false },
+									ticks: { color: muted, font: { size: 12 } },
+									border: { display: false },
+								},
+								y: {
+									min: 80000,
+									max: 160000,
+									grid: { color: grid },
+									ticks: {
+										color: muted,
+										font: { size: 11 },
+										callback: function (v) {
+											return "$" + v / 1000 + "K";
+										},
+									},
+									border: { display: false },
+								},
+							},
+						},
+					});
+				}
+
+				/* ---- TRAFFIC SOURCES (vertical bar) ---- */
+				var tfCtx = document.getElementById("trafficChart");
+				if (tfCtx) {
+					charts.traffic = new Chart(tfCtx, {
+						type: "bar",
+						data: {
+							labels: ["Organic", "Direct", "Social", "Email"],
+							datasets: [
+								{
+									label: "Share",
+									data: [42, 28, 18, 12],
+									backgroundColor: [c4, c3, c2, c1],
+									borderRadius: 5,
+									borderSkipped: false,
+								},
+							],
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							plugins: {
+								legend: { display: false },
+								tooltip: {
+									callbacks: {
+										label: function (ctx) {
+											return " " + ctx.parsed.y + "%";
+										},
+									},
+								},
+							},
+							scales: {
+								x: {
+									grid: { display: false },
+									ticks: { color: muted, font: { size: 12 } },
+									border: { display: false },
+								},
+								y: {
+									min: 0,
+									max: 50,
+									grid: { color: grid },
+									ticks: {
+										color: muted,
+										font: { size: 11 },
+										callback: function (v) {
+											return v + "%";
+										},
+									},
+									border: { display: false },
+								},
+							},
+						},
+					});
+				}
+			}
+
+			buildCharts();
+
+			var observer = new MutationObserver(function (mutations) {
+				mutations.forEach(function (m) {
+					if (m.attributeName === "class") setTimeout(buildCharts, 50);
+				});
+			});
+			observer.observe(document.documentElement, { attributes: true });
+		})();
+		</script>
+	</body>
+</html>

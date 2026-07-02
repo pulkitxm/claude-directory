@@ -1,5 +1,7 @@
 # Waves Shader Oscilloscope — Coswarp Interference Field with Signal Analyzer Console (React + Three.js + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full-screen black-and-white coswarp interference field rendered on a single Three.js quad, integrated as a shadcn/Tailwind/TypeScript drop-in component and framed as a phosphor waveform observation deck. The shader produces warped concentric wave bands via multi-octave coswarp domain distortion; the surrounding console treats it as a signal under measurement — corner reticles, a phosphor live-trace readout tracking elapsed time and frame rate from the same `requestAnimationFrame` clock, a channel legend labeling the field's component bands, and a bottom scope deck with amplitude, sweep rate, phase-lock meter, and a phosphor sweep head. Generated with Claude Fable 5.
 
 ```bash

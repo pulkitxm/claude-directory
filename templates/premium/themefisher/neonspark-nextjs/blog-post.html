@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI in the Modern Workplace: A Guide for Businesses — NeonSpark Blog" />
+  <title>AI in the Modern Workplace — NeonSpark Blog</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <style>
+    /* ── Article Layout ── */
+    .article-wrap {
+      padding-top: calc(var(--header-h) + var(--spacing-3xl));
+      padding-bottom: var(--spacing-4xl);
+    }
+    .article-container {
+      max-width: 800px;
+      margin-inline: auto;
+      padding-inline: var(--container-pad);
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: var(--size-sm);
+      color: var(--color-muted);
+      margin-bottom: var(--spacing-xl);
+    }
+    .breadcrumb a { color: var(--color-muted); transition: color var(--transition-fast); }
+    .breadcrumb a:hover { color: var(--color-primary); }
+    .breadcrumb-sep { color: var(--color-muted); opacity: 0.5; }
+
+    /* ── Article Header ── */
+    .article-header { margin-bottom: var(--spacing-xl); }
+    .article-meta-top {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+    }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-pill);
+      font-size: var(--size-xs);
+      color: var(--color-muted-2);
+      font-weight: 500;
+    }
+    .article-date { font-size: var(--size-sm); color: var(--color-muted); }
+    .article-header h1 {
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1.2;
+      margin-bottom: var(--spacing-lg);
+    }
+    .article-author-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    .article-author-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .article-author-name { font-size: var(--size-sm); font-weight: 600; color: var(--color-primary); }
+    .article-read-time {
+      font-size: var(--size-sm);
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .article-author-sep { color: var(--color-muted); opacity: 0.4; margin-inline: 0.25rem; }
+
+    /* ── Featured Image ── */
+    .article-featured-img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      aspect-ratio: 16/8;
+      margin-bottom: var(--spacing-3xl);
+      display: block;
+    }
+
+    /* ── Article Content ── */
+    .article-content { color: var(--color-muted); font-size: var(--size-base); line-height: 1.8; }
+    .article-content p { margin-bottom: var(--spacing-lg); }
+    .article-content h2 {
+      font-size: clamp(1.25rem, 2.5vw, var(--size-2xl));
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-top: var(--spacing-2xl);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.2;
+    }
+    .article-content h2 em {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .article-content h3 {
+      font-size: var(--size-xl);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-top: var(--spacing-xl);
+      margin-bottom: var(--spacing-sm);
+    }
+    .article-content ul {
+      list-style: none;
+      margin-bottom: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .article-content ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .article-content ul li::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-muted);
+      flex-shrink: 0;
+      margin-top: 0.55em;
+    }
+    .article-content blockquote {
+      border-left: 3px solid rgba(255,255,255,0.2);
+      margin: var(--spacing-xl) 0;
+      padding: var(--spacing-lg) var(--spacing-xl);
+      background: rgba(255,255,255,0.03);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: var(--size-lg);
+      font-style: italic;
+      color: var(--color-text);
+    }
+    .article-content pre {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      overflow-x: auto;
+      margin: var(--spacing-xl) 0;
+    }
+    .article-content code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.85em;
+      color: #c4c4c4;
+      line-height: 1.6;
+    }
+
+    /* ── Share Row ── */
+    .article-share {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      padding-top: var(--spacing-xl);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: var(--spacing-2xl);
+    }
+    .article-share-label { font-size: var(--size-sm); font-weight: 600; color: var(--color-primary); }
+    .article-share-icons { display: flex; gap: var(--spacing-sm); }
+    .share-icon {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition-fast);
+    }
+    .share-icon:hover { background: rgba(255,255,255,0.12); }
+    .share-icon svg { width: 14px; height: 14px; color: var(--color-muted); }
+
+    /* ── Author Card ── */
+    .author-card-section { padding-block: var(--spacing-3xl); }
+    .author-card {
+      background: var(--color-bg-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      display: flex;
+      gap: var(--spacing-xl);
+      align-items: flex-start;
+    }
+    .author-card-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .author-card-info h4 { font-size: var(--size-lg); color: var(--color-primary); margin-bottom: 0.25rem; }
+    .author-card-role { font-size: var(--size-sm); color: var(--color-muted); margin-bottom: var(--spacing-sm); }
+    .author-card-bio { font-size: var(--size-sm); color: var(--color-muted); line-height: 1.7; }
+
+    /* ── Related Posts ── */
+    .related-section { padding-block: var(--spacing-3xl) var(--spacing-4xl); }
+    .related-section h2 {
+      font-size: clamp(1.5rem, 3vw, var(--size-3xl));
+      font-weight: 700;
+      margin-bottom: var(--spacing-xl);
+    }
+    .related-section h2 em {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-lg); }
+    .related-card {
+      background: var(--color-bg-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--transition-base), transform var(--transition-base);
+    }
+    .related-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-3px); }
+    .related-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+    .related-card-body { padding: var(--spacing-lg); }
+    .related-card-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--spacing-sm);
+      margin-bottom: 0.5rem;
+    }
+    .related-card-title-row h3 {
+      font-size: var(--size-base);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1.35;
+      flex: 1;
+    }
+    .related-arrow {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--transition-fast);
+    }
+    .related-arrow:hover { background: rgba(255,255,255,0.12); }
+    .related-arrow svg { width: 13px; height: 13px; color: var(--color-primary); }
+    .related-card p { font-size: var(--size-sm); color: var(--color-muted); line-height: 1.6; }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .author-card { flex-direction: column; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====================================================
+     HEADER
+     ==================================================== -->
+<header class="header" id="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="28" height="28" rx="6" fill="white"/>
+        <path d="M7 21V7L14 14L21 7V21" stroke="#0c0c0c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Neonspark.
+    </a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="index.html"   class="nav-link">HOME</a>
+      <a href="about.html"   class="nav-link">ABOUT</a>
+      <a href="contact.html" class="nav-link">CONTACT</a>
+      <div class="nav-item">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false" id="pages-btn">
+          PAGES
+          <svg class="dropdown-arrow" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="dropdown" role="menu" aria-labelledby="pages-btn">
+          <a href="blog.html"           role="menuitem">Blog</a>
+          <a href="career.html"         role="menuitem">Career</a>
+          <a href="elements.html"       role="menuitem">Elements</a>
+          <a href="faq.html"            role="menuitem">FAQ</a>
+          <a href="pricing.html"        role="menuitem">Pricing</a>
+          <a href="privacy-policy.html" role="menuitem">Privacy Policy</a>
+          <a href="services.html"       role="menuitem">Services</a>
+          <a href="teams.html"          role="menuitem">Teams</a>
+          <a href="terms.html"          role="menuitem">Terms</a>
+          <a href="work.html"           role="menuitem">Work</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="header-cta">
+      <a href="contact.html" class="btn btn-primary btn-sm">Get Started</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div>
+    <a href="#" id="mobile-pages-toggle" style="display:flex;justify-content:space-between;align-items:center;">
+      Pages
+      <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+        <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="mobile-nav-sub" id="mobile-pages-sub" style="display:none;">
+      <a href="blog.html">Blog</a>
+      <a href="career.html">Career</a>
+      <a href="elements.html">Elements</a>
+      <a href="faq.html">FAQ</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="services.html">Services</a>
+      <a href="teams.html">Teams</a>
+      <a href="terms.html">Terms</a>
+      <a href="work.html">Work</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ====================================================
+     ARTICLE
+     ==================================================== -->
+<main class="article-wrap">
+  <div class="article-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="blog.html">Blog</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span>Post</span>
+    </nav>
+
+    <!-- Article header -->
+    <header class="article-header reveal">
+      <div class="article-meta-top">
+        <span class="article-tag">Artificial Intelligence</span>
+        <span class="article-date">04 Apr, 2025</span>
+      </div>
+      <h1>AI in the Modern Workplace: A Guide for Businesses</h1>
+      <div class="article-author-row">
+        <img
+          src="assets/images/sections/testimonials/Michael Chen.png"
+          alt="John Smith"
+          class="article-author-avatar"
+          loading="lazy"
+        />
+        <span class="article-author-name">John Smith</span>
+        <span class="article-author-sep">·</span>
+        <span class="article-read-time">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          5 min read
+        </span>
+      </div>
+    </header>
+
+    <!-- Featured image -->
+    <img
+      src="assets/images/blog/post-1.jpg"
+      alt="AI in the Modern Workplace"
+      class="article-featured-img reveal"
+      loading="lazy"
+    />
+
+    <!-- Article content -->
+    <article class="article-content reveal">
+
+      <p>The integration of artificial intelligence (AI) into modern workplaces is no longer a futuristic concept — it's happening now. As businesses across industries grapple with increasing competition, evolving customer expectations, and the need for operational efficiency, AI has emerged as a powerful tool for transformation.</p>
+
+      <p>Today's AI applications range from simple chatbots handling customer inquiries to sophisticated machine-learning algorithms optimising supply chains. According to recent studies, over 70% of enterprises are actively exploring or implementing AI solutions, with the majority reporting significant improvements in productivity and decision-making capabilities.</p>
+
+      <h2>The <em>Current State</em> of AI in Business</h2>
+
+      <p>Artificial intelligence is no longer the exclusive domain of large technology companies. Small and medium-sized businesses are leveraging AI-powered tools to compete at a higher level, automating repetitive tasks and gaining data-driven insights that were previously out of reach.</p>
+
+      <h3>Key Areas of AI Implementation</h3>
+
+      <ul>
+        <li><strong>Customer Service and Support</strong> — AI-powered chatbots and virtual assistants are revolutionising customer interactions, providing 24/7 responses while freeing human agents to focus on complex issues requiring emotional intelligence.</li>
+        <li><strong>Data Analysis and Insights</strong> — Machine learning algorithms can process vast amounts of data far more quickly and accurately than human analysts, enabling businesses to identify patterns, predict trends, and make data-driven decisions with unprecedented precision.</li>
+        <li><strong>Process Automation</strong> — Robotic Process Automation (RPA) combined with AI can streamline repetitive tasks across departments, from invoice processing to employee onboarding, reducing errors and accelerating workflows.</li>
+      </ul>
+
+      <h2>Benefits <em>of AI Implementation</em></h2>
+
+      <h3>Enhanced Productivity</h3>
+      <p>AI tools can automate routine tasks, allowing employees to focus on strategic, creative, and relationship-building activities. This shift often results in higher job satisfaction and more meaningful work experiences across all departments.</p>
+
+      <h3>Improved Decision Making</h3>
+      <p>AI systems can analyse complex datasets and provide insights that humans might miss. This capability is particularly valuable in areas like financial forecasting, market analysis, and risk assessment where speed and accuracy are paramount.</p>
+
+      <h3>Cost Reduction</h3>
+      <p>While initial AI implementation requires investment, the long-term cost savings can be substantial. Automated processes reduce labour costs, minimise errors, and increase operational efficiency across the board.</p>
+
+      <blockquote>
+        "The question isn't whether AI will impact your business — it's how quickly you can adapt to leverage its benefits. Organisations that thoughtfully implement AI today will be better positioned to thrive in tomorrow's competitive landscape."
+      </blockquote>
+
+      <h2>Common <em>Challenges and Solutions</em></h2>
+
+      <p>Despite its many advantages, AI implementation comes with challenges that businesses must navigate carefully. Understanding these obstacles in advance allows teams to plan effectively and avoid common pitfalls.</p>
+
+      <h3>Challenge: Employee Resistance</h3>
+      <p>Many workers fear that AI will replace their jobs. <strong>Solution:</strong> Focus on AI as an augmentation tool that enhances human capabilities rather than replaces them. Invest in retraining programs and maintain transparent communication about AI's role within the organisation.</p>
+
+      <h3>Challenge: Data Quality Issues</h3>
+      <p>AI systems are only as good as the data they're trained on. <strong>Solution:</strong> Implement robust data governance practices and invest in data cleaning and preparation processes before any AI deployment to ensure reliable outcomes.</p>
+
+      <h3>Challenge: Integration Complexity</h3>
+      <p>Incorporating AI into existing systems can be technically challenging. <strong>Solution:</strong> Start with pilot projects in specific departments or processes before scaling enterprise-wide, and partner with experienced AI vendors or consultants.</p>
+
+      <h2>Best Practices <em>for AI Implementation</em></h2>
+
+      <ul>
+        <li><strong>Start Small and Scale</strong> — Begin with low-risk, high-impact use cases to build confidence and expertise before expanding across the organisation.</li>
+        <li><strong>Invest in Training</strong> — Ensure your team understands AI capabilities and limitations; this knowledge is crucial for successful implementation and adoption.</li>
+        <li><strong>Prioritise Data Security</strong> — Implement robust security measures to protect sensitive information used in AI systems and comply with relevant regulations.</li>
+        <li><strong>Monitor and Measure</strong> — Establish clear metrics to evaluate AI performance and return on investment, adjusting your approach based on real-world results.</li>
+        <li><strong>Stay Ethical</strong> — Develop guidelines for responsible AI use, including bias prevention and transparency in decision-making processes.</li>
+      </ul>
+
+      <h2>Looking Ahead: <em>The Future of AI in Business</em></h2>
+
+      <p>As AI technology continues to evolve, we can expect to see even more sophisticated applications in the workplace. Emerging trends include generative AI for content creation and design, predictive analytics for proactive problem-solving, and natural language processing for improved human-computer interaction.</p>
+
+      <p>The organisations that thrive will be those that view AI not as a threat but as a strategic partner — one that amplifies human creativity, accelerates decision-making, and opens entirely new avenues for value creation.</p>
+
+      <h2>Conclusion</h2>
+
+      <p>The question isn't whether AI will impact your business — it's how quickly you can adapt to leverage its benefits. Organisations that thoughtfully implement AI today will be better positioned to thrive in tomorrow's competitive landscape.</p>
+
+      <p>Success with AI requires more than just technology; it demands a strategic approach that considers people, processes, and culture. By focusing on augmenting human capabilities rather than replacing them, businesses can create a future where AI and human intelligence work together to achieve unprecedented levels of productivity and innovation.</p>
+
+      <p>Ready to explore AI solutions for your business? <a href="contact.html" style="color:var(--color-primary);">Contact our team</a> to discuss how artificial intelligence can transform your operations and drive growth in the digital age.</p>
+
+      <!-- Code example -->
+      <pre><code>// Simple AI-powered sentiment classifier example
+const classifier = new NLPClassifier({
+  model: 'sentiment-analysis-v2',
+  threshold: 0.85,
+});
+
+const result = await classifier.analyze(customerReview);
+console.log(result.sentiment);  // 'positive' | 'negative' | 'neutral'
+console.log(result.confidence); // 0.94</code></pre>
+
+    </article>
+
+    <!-- Share row -->
+    <div class="article-share reveal">
+      <span class="article-share-label">Share Articles:</span>
+      <div class="article-share-icons">
+        <a href="#" class="share-icon" aria-label="Share on X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="share-icon" aria-label="Share on Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" class="share-icon" aria-label="Share on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" class="share-icon" aria-label="Share on Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /article-container -->
+
+  <!-- Author Card -->
+  <section class="author-card-section">
+    <div class="article-container">
+      <div class="author-card reveal">
+        <img
+          src="assets/images/sections/testimonials/Michael Chen.png"
+          alt="John Smith"
+          class="author-card-avatar"
+          loading="lazy"
+        />
+        <div class="author-card-info">
+          <h4>John Smith</h4>
+          <p class="author-card-role">Senior Technology Writer</p>
+          <p class="author-card-bio">John is a senior technology writer at NeonSpark with over 10 years of experience covering artificial intelligence, digital transformation, and enterprise software. He is passionate about translating complex technical concepts into actionable insights for business leaders navigating the modern digital landscape.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Posts -->
+  <section class="related-section">
+    <div class="article-container">
+      <h2>Similar <em>Posts</em></h2>
+      <div class="related-grid">
+
+        <article class="related-card reveal">
+          <img src="assets/images/blog/post-3.jpg" alt="Cybersecurity in 2025" loading="lazy" />
+          <div class="related-card-body">
+            <div class="related-card-title-row">
+              <h3>Cybersecurity in 2025: Protecting Your B...</h3>
+              <a href="blog-post.html" class="related-arrow" aria-label="Read post">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 15L15 5M15 5H7M15 5v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+            <p>Essential cybersecurity strategies and best practices to safeguard your business from evolving digital threats.</p>
+          </div>
+        </article>
+
+        <article class="related-card reveal reveal-delay-1">
+          <img src="assets/images/blog/post-2.jpg" alt="The Future of Remote Work" loading="lazy" />
+          <div class="related-card-body">
+            <div class="related-card-title-row">
+              <h3>The Future of Remote Work: Building High...</h3>
+              <a href="blog-post.html" class="related-arrow" aria-label="Read post">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 15L15 5M15 5H7M15 5v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+            <p>Discover strategies for creating successful remote teams and maintaining productivity in a distributed work environment.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ====================================================
+     FOOTER
+     ==================================================== -->
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="margin-bottom:1rem;">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="28" height="28" rx="6" fill="white"/>
+            <path d="M7 21V7L14 14L21 7V21" stroke="#0c0c0c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Neonspark.
+        </a>
+        <p>We craft stunning digital experiences that captivate your audience and drive real results. Your success is our mission.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Follow on X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Connect on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Follow on Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Follow on Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <nav class="footer-links" aria-label="Quick links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="work.html">Work</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <nav class="footer-links" aria-label="Support links">
+          <a href="faq.html">FAQ</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="career.html">Career</a>
+          <a href="teams.html">Teams</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="currentColor"/></svg>
+          123 Digital Avenue, San Francisco, CA 94102
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg>
+          hello@neonspark.com
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg>
+          +1 (555) 123-4567
+        </div>
+        <h4 style="margin-top:1.5rem;">Newsletter</h4>
+        <p style="font-size:var(--size-sm);color:var(--color-muted);margin-bottom:0.75rem;">Get the latest updates delivered to your inbox.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">Designed And Developed by <a href="https://themefisher.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">Themefisher</a>.</p>
+      <p class="footer-copy">&copy; <span id="footer-year">2025</span> NeonSpark. All rights reserved.</p>
+    </div>
+  </div>
+
+  <div class="watermark" aria-hidden="true">
+    <span class="watermark-text">NEONSPARK</span>
+  </div>
+</footer>
+
+
+<!-- ====================================================
+     JAVASCRIPT
+     ==================================================== -->
+<script>
+(function () {
+  'use strict';
+
+  const fyEl = document.getElementById('footer-year');
+  if (fyEl) fyEl.textContent = new Date().getFullYear();
+
+  const header = document.getElementById('site-header');
+  function updateHeader() { header.classList.toggle('scrolled', window.scrollY > 20); }
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
+  const hamburger = document.getElementById('hamburger-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', function () {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (!link.id) {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  const mobilePagesTgl = document.getElementById('mobile-pages-toggle');
+  const mobilePagesSub = document.getElementById('mobile-pages-sub');
+  if (mobilePagesTgl && mobilePagesSub) {
+    mobilePagesTgl.addEventListener('click', function (e) {
+      e.preventDefault();
+      mobilePagesSub.style.display = mobilePagesSub.style.display === 'block' ? 'none' : 'block';
+    });
+  }
+
+  const pagesBtn = document.getElementById('pages-btn');
+  if (pagesBtn) {
+    pagesBtn.addEventListener('click', function () {
+      pagesBtn.setAttribute('aria-expanded', String(pagesBtn.getAttribute('aria-expanded') !== 'true'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!pagesBtn.closest('.nav-item').contains(e.target)) pagesBtn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { obs.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+})();
+</script>
+
+</body>
+</html>

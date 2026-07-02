@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>REST vs GraphQL — Scalar</title>
+		<script>
+		(function () {
+			try {
+				var t = localStorage.getItem("scalar-theme");
+				if (!t)
+					t = matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+				if (t === "dark") document.documentElement.classList.add("dark");
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="../styles.css">
+		<link rel="icon" href="../assets/layout/logo-icon.svg">
+		<style>
+		.article-wrap {
+			max-width: 760px;
+			margin: 0 auto;
+		}
+		.back-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 14px;
+			color: var(--muted-foreground);
+			text-decoration: none;
+		}
+		.back-link:hover {
+			color: var(--foreground);
+		}
+		.article-meta {
+			font-size: 13px;
+			color: var(--muted-foreground);
+			margin: 28px 0 14px;
+			display: flex;
+			gap: 10px;
+		}
+		.article-meta .cat {
+			color: var(--secondary);
+			font-weight: 600;
+		}
+		.article-title {
+			font-size: clamp(1.9rem, 4vw, 2.6rem);
+			font-weight: 700;
+			line-height: 1.15;
+		}
+		.author-row {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 24px 0 8px;
+		}
+		.author-row .name {
+			font-size: 14px;
+			font-weight: 500;
+			color: var(--foreground);
+		}
+		.hero-img {
+			width: 100%;
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			margin: 36px 0 8px;
+			overflow: hidden;
+		}
+		.hero-img img {
+			width: 100%;
+			display: block;
+		}
+		</style>
+	</head>
+	<body data-active="Blog" data-prefix="../">
+		<div id="site-header"></div>
+
+		<main class="frame">
+			<article class="frame-pad" style="padding:48px 32px 64px">
+				<div class="article-wrap reveal">
+					<a class="back-link" href="../blog.html"
+						><svg
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						>
+							<path d="m12 19-7-7 7-7M19 12H5" />
+						</svg>
+						Back</a
+					>
+					<div class="article-meta">
+						<span class="cat">Guides</span><span>·</span
+						><span>Mar 28, 2025</span>
+					</div>
+					<h1 class="article-title">REST vs GraphQL</h1>
+					<p class="muted" style="font-size:16px;margin-top:14px">
+						A practical look at when to use GraphQL vs REST APIs for headless
+						CMS integrations — and how Scalar supports both.
+					</p>
+					<div class="author-row">
+						<img
+							class="avatar"
+							src="../assets/images/blog/authors/yassine-zaanouni.webp"
+							width="40"
+							height="40"
+							alt=""
+						>
+						<span class="name">Yassine Zaanouni</span>
+						<span class="muted" style="font-size:13px">· 7 min read</span>
+					</div>
+					<div class="hero-img">
+						<img src="../assets/images/blog/blog-5.webp" alt="REST vs GraphQL">
+					</div>
+					<div class="prose">
+						<p>
+							Should you query your content over REST or GraphQL? Both have
+							their place, and Scalar gives you both for every project. This
+							guide breaks down the tradeoffs so you can pick the right tool for
+							each job.
+						</p>
+
+						<h2>The case for REST</h2>
+						<p>
+							REST is simple, cacheable, and universally understood. For
+							predictable, document-shaped responses — like fetching a single
+							published page — a REST endpoint is hard to beat.
+						</p>
+						<div class="code-block" style="margin:24px 0">
+							<div class="code-head">
+								<span style="margin-left:auto;color:var(--muted-foreground)"
+									>rest.sh</span
+								>
+							</div>
+							<div class="code-body">
+								$ curl https://api.scalar.dev/v1/blogPost/hello-world
+							</div>
+						</div>
+
+						<h2>The case for GraphQL</h2>
+						<p>
+							GraphQL shines when you need exactly the fields you want, across
+							related models, in one request. It eliminates over-fetching and
+							reduces round trips for complex views.
+						</p>
+						<div class="code-block" style="margin:24px 0">
+							<div class="code-head">
+								<span style="margin-left:auto;color:var(--muted-foreground)"
+									>query.graphql</span
+								>
+							</div>
+							<div class="code-body">
+								<span class="tok-kw">query</span>
+								{ blogPost(slug: <span class="tok-str">"hello-world"</span>) {
+								title author { name avatar } } }
+							</div>
+						</div>
+
+						<h2>Comparing the two</h2>
+						<ul>
+							<li>
+								<strong>Caching</strong>
+								— REST wins with simple HTTP caching; GraphQL needs more setup.
+							</li>
+							<li>
+								<strong>Flexibility</strong>
+								— GraphQL wins for nested, client-driven queries.
+							</li>
+							<li>
+								<strong>Learning curve</strong>
+								— REST is more familiar to most teams.
+							</li>
+						</ul>
+
+						<img
+							src="../assets/images/blog/blog-5.webp"
+							alt="REST and GraphQL comparison"
+						>
+
+						<h2>How Scalar supports both</h2>
+						<p>
+							Define your model once and Scalar generates both a REST endpoint
+							and a GraphQL schema. Use whichever fits each surface — REST for
+							static pages, GraphQL for rich app views.
+						</p>
+
+						<h2>Our recommendation</h2>
+						<p>
+							Start with REST for simple content delivery. Reach for GraphQL
+							when your frontend needs to compose data from several related
+							models in a single request.
+						</p>
+
+						<h2>Wrap-up</h2>
+						<p>
+							There's no universal winner — only the right tool per use case.
+							With Scalar you don't have to choose up front; both APIs are
+							always available.
+						</p>
+					</div>
+				</div>
+			</article>
+		</main>
+
+		<div id="site-cta"></div>
+		<div id="site-footer"></div>
+		<script src="../shared.js"></script>
+	</body>
+</html>

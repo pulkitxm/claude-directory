@@ -1,5 +1,7 @@
 # Hero Futuristic — WebGPU Dot-Matrix Portrait Hero (Three.js TSL + React Three Fiber + Tailwind CSS)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A depth-mapped portrait dissolved into a scanning dot-matrix field rendered through a Three.js WebGPU pipeline written entirely in TSL (Three Shading Language). A colour texture and companion depth map feed a node material that displaces the image by cursor position, masks it into a cellular-noise dot grid, and sweeps a depth-driven reveal down the frame — with a TSL post-processing pass adding bloom and a travelling red scan line. Ideal as a cinematic above-the-fold hero for landing pages. Generated with Claude Fable 5.
 
 ```bash

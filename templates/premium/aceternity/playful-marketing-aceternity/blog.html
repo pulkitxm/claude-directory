@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Blog — Playful</title>
+		<link rel="stylesheet" href="css/styles.css">
+		<style>
+		/* ---- Blog page same-to-same overrides ---- */
+		/* Header eyebrow as rounded pill badge */
+		.page-header.blog-header {
+			padding: 72px 24px 48px;
+		}
+		.page-eyebrow.blog-pill {
+			display: inline-block;
+			font-size: 14px;
+			font-weight: 500;
+			text-transform: none;
+			letter-spacing: normal;
+			color: var(--text-primary);
+			background: #fff;
+			border: 1.3px solid #d6d6d6;
+			border-radius: 9999px;
+			padding: 6px 18px;
+			margin-bottom: 14px;
+			box-shadow:
+				0 1px 2px rgba(0, 0, 0, 0.05),
+				0 2px 6px rgba(0, 0, 0, 0.04);
+		}
+		.page-header.blog-header h1 {
+			font-size: clamp(2rem, 5vw, 3rem);
+			font-weight: 600;
+			max-width: 760px;
+		}
+		.page-header.blog-header p {
+			max-width: 560px;
+		}
+
+		/* Borderless / containerless blog cards */
+		.blog-grid.blog-grid-borderless {
+			gap: 24px 32px;
+			row-gap: 56px;
+		}
+		.blog-card.blog-card-bare {
+			background: transparent;
+			border: none;
+			border-radius: 0;
+			overflow: visible;
+		}
+		.blog-card.blog-card-bare:hover {
+			box-shadow: none;
+			transform: none;
+		}
+		.blog-card.blog-card-bare .blog-card-img {
+			height: 320px;
+			border-radius: 16px;
+			transition: box-shadow 0.2s ease;
+		}
+		.blog-card.blog-card-bare:hover .blog-card-img {
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+		}
+		.blog-card.blog-card-bare .blog-card-body {
+			padding: 16px 4px 0;
+		}
+		.blog-card.blog-card-bare .blog-card-title {
+			font-size: 24px;
+			line-height: 1.3;
+			margin-bottom: 10px;
+		}
+		.blog-card.blog-card-bare .blog-card-link {
+			color: var(--text-primary);
+			font-size: 14px;
+			font-weight: 600;
+		}
+		.blog-card.blog-card-bare .blog-card-link:hover {
+			gap: 4px;
+		}
+
+		/* ---- Marketing footer panel ---- */
+		.mkt-footer {
+			padding: 24px 24px 56px;
+		}
+		.mkt-panel {
+			max-width: 1200px;
+			margin: 0 auto;
+			background: #fff;
+			border: 1px solid var(--border);
+			border-radius: 24px;
+			padding: 44px 48px 40px;
+			position: relative;
+			overflow: hidden;
+			background-image: radial-gradient(#e6e6e6 1px, transparent 1px);
+			background-size: 18px 18px;
+			background-position: -9px -9px;
+		}
+		.mkt-logo {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			font-size: 22px;
+			font-weight: 700;
+			color: var(--text-primary);
+			text-decoration: none;
+			margin-bottom: 26px;
+		}
+		.mkt-headline {
+			font-size: clamp(1.6rem, 4.2vw, 3rem);
+			font-weight: 800;
+			line-height: 1.12;
+			letter-spacing: -0.02em;
+			max-width: 640px;
+			color: var(--text-primary);
+			margin: 0;
+		}
+		.mkt-cols {
+			position: absolute;
+			top: 44px;
+			right: 48px;
+			display: flex;
+			gap: 56px;
+		}
+		.mkt-col h4 {
+			font-size: 15px;
+			font-weight: 800;
+			margin: 0 0 16px;
+			color: var(--text-primary);
+		}
+		.mkt-col a {
+			display: block;
+			font-size: 15px;
+			color: #535353;
+			text-decoration: none;
+			margin-bottom: 12px;
+		}
+		.mkt-col a:hover {
+			color: var(--brand);
+		}
+
+		/* decorative tilted cards */
+		.mkt-deco {
+			position: relative;
+			height: 230px;
+			margin-top: 18px;
+		}
+		.mkt-social-card {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 230px;
+			height: 150px;
+			background: #fff;
+			border: 1px solid #ececec;
+			border-radius: 16px;
+			box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+			transform: rotate(-8deg);
+		}
+		.mkt-social-card .mkt-social-label {
+			position: absolute;
+			top: 20px;
+			left: 18px;
+			font-size: 13px;
+			font-weight: 600;
+			color: #6b6b6b;
+			transform: rotate(-6deg);
+		}
+		.mkt-social-icons {
+			position: absolute;
+			left: 8px;
+			bottom: -18px;
+			display: flex;
+			gap: 8px;
+		}
+		.mkt-social-icons span {
+			width: 46px;
+			height: 46px;
+			border-radius: 12px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+		}
+		.mkt-social-icons span:nth-child(1) {
+			background: #5865f2;
+			transform: rotate(-10deg);
+		}
+		.mkt-social-icons span:nth-child(2) {
+			background: linear-gradient(45deg, #feda75, #d62976, #962fbf);
+			transform: rotate(-3deg) translateY(-4px);
+		}
+		.mkt-social-icons span:nth-child(3) {
+			background: #1877f2;
+			transform: rotate(4deg);
+		}
+		.mkt-social-icons span:nth-child(4) {
+			background: #0a66c2;
+			transform: rotate(10deg) translateY(2px);
+		}
+
+		.mkt-interviews {
+			position: absolute;
+			right: 0;
+			bottom: 8px;
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+		.mkt-int-card {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			width: 280px;
+			background: #fff;
+			border: 1px solid #ececec;
+			border-radius: 14px;
+			padding: 12px 14px;
+			box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+		}
+		.mkt-int-card:nth-child(1) {
+			transform: rotate(-3deg);
+		}
+		.mkt-int-card:nth-child(2) {
+			transform: rotate(2deg);
+			margin-left: 24px;
+		}
+		.mkt-int-avatar {
+			width: 34px;
+			height: 34px;
+			border-radius: 50%;
+			background: #25a18e;
+			color: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 12px;
+			font-weight: 700;
+			flex-shrink: 0;
+		}
+		.mkt-int-text {
+			flex: 1;
+		}
+		.mkt-int-text h5 {
+			font-size: 14px;
+			font-weight: 600;
+			margin: 0;
+			color: var(--text-primary);
+		}
+		.mkt-int-text p {
+			font-size: 13px;
+			color: var(--text-secondary);
+			margin: 2px 0 0;
+		}
+		.mkt-int-dots {
+			color: #c0c0c0;
+			font-size: 18px;
+			line-height: 1;
+		}
+
+		.mkt-bottom {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			margin-top: 36px;
+			padding-top: 22px;
+			border-top: 1px solid #efefef;
+		}
+		.mkt-copy {
+			font-size: 14px;
+			color: #6b6b6b;
+		}
+		.mkt-bottom-socials {
+			display: flex;
+			gap: 16px;
+		}
+		.mkt-bottom-socials a {
+			color: #6b6b6b;
+			display: inline-flex;
+		}
+		.mkt-bottom-socials a:hover {
+			color: var(--brand);
+		}
+
+		@media (max-width: 860px) {
+			.mkt-cols {
+				position: static;
+				margin-top: 28px;
+			}
+			.mkt-deco {
+				display: none;
+			}
+			.mkt-bottom {
+				flex-direction: column;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- NAV -->
+		<nav class="nav">
+			<div class="nav-inner">
+				<a href="index.html" class="nav-logo">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M13 2L4.09 12.11C3.73 12.54 3.55 12.76 3.55 13C3.55 13.24 3.73 13.46 4.09 13.89L4.5 14.39C4.86 14.82 5.04 15.04 5.28 15.04C5.52 15.04 5.7 14.82 6.06 14.39L13 6L20 14.39C20.36 14.82 20.54 15.04 20.78 15.04C21.02 15.04 21.2 14.82 21.56 14.39L21.97 13.89C22.33 13.46 22.51 13.24 22.51 13C22.51 12.76 22.33 12.54 21.97 12.11L13 2Z"
+							fill="#25A18E"
+						/>
+						<path
+							d="M13 10L6.5 17.89C6.14 18.32 5.96 18.54 5.96 18.78C5.96 19.02 6.14 19.24 6.5 19.67L6.91 20.17C7.27 20.6 7.45 20.82 7.69 20.82C7.93 20.82 8.11 20.6 8.47 20.17L13 14.7L17.53 20.17C17.89 20.6 18.07 20.82 18.31 20.82C18.55 20.82 18.73 20.6 19.09 20.17L19.5 19.67C19.86 19.24 20.04 19.02 20.04 18.78C20.04 18.54 19.86 18.32 19.5 17.89L13 10Z"
+							fill="#25A18E"
+						/>
+					</svg>
+					Playful
+				</a>
+				<ul class="nav-links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="pricing.html">Pricing</a></li>
+					<li><a href="blog.html" class="active">Blog</a></li>
+				</ul>
+				<a href="sign-up.html" class="btn-primary">Get started →</a>
+				<button class="hamburger" id="hamburger" aria-label="Menu">
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+		</nav>
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="index.html">Home</a>
+			<a href="pricing.html">Pricing</a>
+			<a href="blog.html">Blog</a>
+			<a href="sign-up.html" style="color:#25A18E;font-weight:700;"
+				>Get started →</a
+			>
+		</div>
+
+		<!-- PAGE HEADER -->
+		<section class="page-header blog-header">
+			<span class="page-eyebrow blog-pill">blogs</span>
+			<h1>Knowledge bank to hire better</h1>
+			<p>
+				Read from our endless resources on how to hire the perfect candidate for
+				your ideal job.
+			</p>
+		</section>
+
+		<!-- BLOG GRID -->
+		<section class="section" style="padding-top: 0;">
+			<div class="container">
+				<div class="blog-grid blog-grid-borderless">
+					<!-- Card 1: AI -->
+					<div class="blog-card blog-card-bare">
+						<img
+							src="assets/blog.png"
+							alt="Artificial Intelligence"
+							class="blog-card-img"
+						>
+						<div class="blog-card-body">
+							<h3 class="blog-card-title">Artificial Intelligence</h3>
+							<p class="blog-card-excerpt">
+								Lorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor
+								sit amet, consectetur.
+							</p>
+							<a href="blog-post.html" class="blog-card-link">Read More</a>
+						</div>
+					</div>
+
+					<!-- Card 2: Productivity -->
+					<div class="blog-card blog-card-bare">
+						<img
+							src="assets/productivity.png"
+							alt="Productivity Hacks"
+							class="blog-card-img"
+						>
+						<div class="blog-card-body">
+							<h3 class="blog-card-title">Productivity Hacks</h3>
+							<p class="blog-card-excerpt">
+								Discover practical productivity tips and strategies to optimize
+								your time and achieve your goals efficiently.
+							</p>
+							<a href="#" class="blog-card-link">Read More</a>
+						</div>
+					</div>
+
+					<!-- Card 3: Travel -->
+					<div class="blog-card blog-card-bare">
+						<img
+							src="assets/travel.png"
+							alt="Travel Tips"
+							class="blog-card-img"
+						>
+						<div class="blog-card-body">
+							<h3 class="blog-card-title">Travel Tips</h3>
+							<p class="blog-card-excerpt">
+								Plan the perfect trip with these travel tips covering everything
+								from packing to exploring like a local.
+							</p>
+							<a href="#" class="blog-card-link">Read More</a>
+						</div>
+					</div>
+
+					<!-- Card 4: Web Dev -->
+					<div class="blog-card blog-card-bare">
+						<img
+							src="assets/web-dev.png"
+							alt="Web Development"
+							class="blog-card-img"
+						>
+						<div class="blog-card-body">
+							<h3 class="blog-card-title">Web Development</h3>
+							<p class="blog-card-excerpt">
+								Learn the essentials of modern web development with this guide,
+								exploring frameworks, performance tips, and tools.
+							</p>
+							<a href="#" class="blog-card-link">Read More</a>
+						</div>
+					</div>
+
+					<!-- Card 5: Healthy Living -->
+					<div class="blog-card blog-card-bare">
+						<img
+							src="assets/healthy-living.png"
+							alt="Healthy Living"
+							class="blog-card-img"
+						>
+						<div class="blog-card-body">
+							<h3 class="blog-card-title">Healthy Living</h3>
+							<p class="blog-card-excerpt">
+								Discover practical tips for creating and maintaining a healthy
+								lifestyle, including fitness, nutrition, and mental well-being.
+							</p>
+							<a href="#" class="blog-card-link">Read More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer class="mkt-footer">
+			<div class="mkt-panel">
+				<a href="index.html" class="mkt-logo"
+					><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M13 2L4.09 12.11C3.73 12.54 3.55 12.76 3.55 13C3.55 13.24 3.73 13.46 4.09 13.89L4.5 14.39C4.86 14.82 5.04 15.04 5.28 15.04C5.52 15.04 5.7 14.82 6.06 14.39L13 6L20 14.39C20.36 14.82 20.54 15.04 20.78 15.04C21.02 15.04 21.2 14.82 21.56 14.39L21.97 13.89C22.33 13.46 22.51 13.24 22.51 13C22.51 12.76 22.33 12.54 21.97 12.11L13 2Z"
+							fill="#25A18E"
+						/>
+						<path
+							d="M13 10L6.5 17.89C6.14 18.32 5.96 18.54 5.96 18.78C5.96 19.02 6.14 19.24 6.5 19.67L6.91 20.17C7.27 20.6 7.45 20.82 7.69 20.82C7.93 20.82 8.11 20.6 8.47 20.17L13 14.7L17.53 20.17C17.89 20.6 18.07 20.82 18.31 20.82C18.55 20.82 18.73 20.6 19.09 20.17L19.5 19.67C19.86 19.24 20.04 19.02 20.04 18.78C20.04 18.54 19.86 18.32 19.5 17.89L13 10Z"
+							fill="#25A18E"
+						/>
+					</svg>
+					Playful</a
+				>
+				<p class="mkt-headline">
+					Record interviews. Centralise feedback automatically.
+				</p>
+
+				<div class="mkt-cols">
+					<div class="mkt-col">
+						<h4>Pages</h4>
+						<a href="#">All Products</a>
+						<a href="#">Studio</a>
+						<a href="#">Clients</a>
+						<a href="pricing.html">Pricing</a>
+						<a href="blog.html">Blog</a>
+					</div>
+					<div class="mkt-col">
+						<h4>Legal</h4>
+						<a href="#">Privacy Policy</a>
+						<a href="#">Terms of Service</a>
+						<a href="#">Cookie Policy</a>
+					</div>
+				</div>
+
+				<div class="mkt-deco">
+					<div class="mkt-social-card">
+						<span class="mkt-social-label">Social Media Integrations</span>
+						<div class="mkt-social-icons">
+							<span
+								><svg
+									width="22"
+									height="22"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+								>
+									<path
+										d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.102 18.084.116 18.11.133 18.129a19.9 19.9 0 0 0 5.993 3.03.077.077 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"
+									/>
+								</svg></span
+							>
+							<span
+								><svg
+									width="22"
+									height="22"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+								>
+									<path
+										d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"
+									/>
+								</svg></span
+							>
+							<span
+								><svg
+									width="22"
+									height="22"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+								>
+									<path
+										d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+									/>
+								</svg></span
+							>
+							<span
+								><svg
+									width="22"
+									height="22"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+								>
+									<path
+										d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+									/>
+								</svg></span
+							>
+						</div>
+					</div>
+					<div class="mkt-interviews">
+						<div class="mkt-int-card">
+							<div class="mkt-int-avatar">M</div>
+							<div class="mkt-int-text">
+								<h5>Manu's Interview</h5>
+								<p>Candidate is mid.</p>
+							</div>
+							<div class="mkt-int-dots">&#8942;</div>
+						</div>
+						<div class="mkt-int-card">
+							<div class="mkt-int-avatar">R</div>
+							<div class="mkt-int-text">
+								<h5>Ruru's Interview</h5>
+								<p>Candidate is good.</p>
+							</div>
+							<div class="mkt-int-dots">&#8942;</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mkt-bottom">
+					<p class="mkt-copy">© Playful Aceternity LLC</p>
+					<div class="mkt-bottom-socials">
+						<a href="#" title="Twitter"
+							><svg
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+								/>
+							</svg></a
+						>
+						<a href="#" title="LinkedIn"
+							><svg
+								width="22"
+								height="22"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+								/>
+							</svg></a
+						>
+						<a href="#" title="GitHub"
+							><svg
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 6.844c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z"
+								/>
+							</svg></a
+						>
+						<a href="#" title="Facebook"
+							><svg
+								width="22"
+								height="22"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+								/>
+							</svg></a
+						>
+						<a href="#" title="Instagram"
+							><svg
+								width="22"
+								height="22"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"
+								/>
+							</svg></a
+						>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		const hamburger = document.getElementById("hamburger");
+		const mobileMenu = document.getElementById("mobileMenu");
+		hamburger.addEventListener("click", () =>
+			mobileMenu.classList.toggle("open"),
+		);
+		document.addEventListener("click", (e) => {
+			if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+				mobileMenu.classList.remove("open");
+			}
+		});
+		</script>
+	</body>
+</html>

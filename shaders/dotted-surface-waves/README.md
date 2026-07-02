@@ -2,7 +2,7 @@
 
 A full-viewport Three.js `Points` lattice (40 × 60 = 2,400 dots) whose Y position is displaced by two crossing sine waves, creating a mesmerising animated dot field. Wrapped in a "field generator" showcase with a live dark/light theme toggle that swaps the dot colour palette (light dots on dark, dark dots on light). Ideal as a hero section background or ambient landing page visual. Generated with Claude Fable 5.
 
-![demo](./demo.mp4)
+[![Watch Demo](./poster.jpg)](./demo.mp4)
 
 ## Run
 

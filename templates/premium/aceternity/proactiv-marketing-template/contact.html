@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Contact — Proactiv</title>
+		<link rel="stylesheet" href="./styles.css">
+		<style>
+		/* ---- contact.html overrides (audit fixes) ---- */
+		/* Nav: logo + links grouped to the left */
+		.nav-left {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+		.nav-logo-icon {
+			width: 24px;
+			height: 24px;
+			background: transparent;
+			border-radius: 0;
+		}
+		.nav-logo-icon svg {
+			width: 24px;
+			height: 24px;
+		}
+
+		/* Hero decorative light beams */
+		.contact-beams {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			z-index: 0;
+			pointer-events: none;
+			overflow: hidden;
+		}
+		.contact-beams > div {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.beam-1 {
+			transform: translateY(-350px) rotate(-45deg);
+			width: 560px;
+			height: 1380px;
+			background: radial-gradient(
+				68.54% 68.72% at 55.02% 31.46%,
+				hsla(0, 0%, 85%, 0.08) 0,
+				hsla(0, 0%, 55%, 0.02) 50%,
+				hsla(0, 0%, 45%, 0) 80%
+			);
+		}
+		.beam-2 {
+			transform: rotate(-45deg) translate(5%, -50%);
+			transform-origin: top left;
+			width: 240px;
+			height: 1380px;
+			background: radial-gradient(
+				50% 50% at 50% 50%,
+				hsla(0, 0%, 85%, 0.06) 0,
+				hsla(0, 0%, 45%, 0.02) 80%,
+				transparent 100%
+			);
+		}
+		.beam-3 {
+			border-radius: 20px;
+			transform: rotate(-45deg) translate(-180%, -70%);
+			transform-origin: top left;
+			width: 240px;
+			height: 1380px;
+			background: radial-gradient(
+				50% 50% at 50% 50%,
+				hsla(0, 0%, 85%, 0.04) 0,
+				hsla(0, 0%, 45%, 0.02) 80%,
+				transparent 100%
+			);
+		}
+		.section .container {
+			position: relative;
+			z-index: 1;
+		}
+
+		/* H1: soft white gradient fill, medium weight */
+		.contact-info h1 {
+			font-weight: 500;
+			background: linear-gradient(to bottom, #262626, #ffffff 55%, #ffffff);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+		}
+
+		/* Left-column details: gray plain text, tight spacing */
+		.contact-detail {
+			margin-bottom: 0;
+			gap: 0;
+		}
+		.contact-info .contact-detail p {
+			margin-bottom: 0;
+		}
+		.contact-detail--first {
+			margin-top: 40px;
+		}
+		.contact-detail--rest {
+			margin-top: 16px;
+		}
+		.contact-detail-label {
+			font-weight: 400;
+			color: #e5e5e5;
+		}
+		.contact-detail-value {
+			color: var(--muted);
+			text-decoration: none;
+		}
+
+		/* Form card: gradient panel + masked dot-grid overlay */
+		.contact-form-wrapper {
+			position: relative;
+			overflow: hidden;
+			background: linear-gradient(to bottom, #171717, #0a0a0a);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			border-radius: 24px;
+			padding: 40px;
+			box-shadow: none;
+		}
+		.form-card-pattern {
+			pointer-events: none;
+			position: absolute;
+			inset: 0;
+			background-image: radial-gradient(
+				circle,
+				rgba(255, 255, 255, 0.08) 0.5px,
+				transparent 0.5px
+			);
+			background-size: 20px 20px;
+			-webkit-mask-image: linear-gradient(white, transparent);
+			mask-image: linear-gradient(white, transparent);
+			z-index: 0;
+		}
+		.contact-form-wrapper form {
+			position: relative;
+			z-index: 1;
+		}
+
+		/* Submit button: dark gray, white text, inset top highlight */
+		.btn-submit {
+			background-color: #262626;
+			color: var(--white);
+			box-shadow: 0px 1px 0px 0px #ffffff20 inset;
+		}
+		.btn-submit:hover {
+			background-color: #171717;
+			transform: translateY(-2px);
+		}
+		</style>
+	</head>
+	<body>
+		<!-- ============ NAV ============ -->
+		<nav class="nav-wrapper">
+			<div class="nav-inner" id="nav-inner">
+				<div class="nav-left">
+					<a href="index.html" class="nav-logo">
+						<span class="nav-logo-icon">
+							<svg
+								width="35"
+								height="35"
+								viewBox="0 0 35 35"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<circle cx="17.5" cy="17.5" r="17.5" fill="white"></circle>
+								<path
+									d="M11.0389 19.8912L11.0392 28.5579C12.6769 28.5579 14.0028 27.2273 13.9972 25.5897L13.9712 18.071L13.9899 13.8938C13.9996 11.7406 15.753 10.003 17.9061 10.0126C20.0593 10.0223 21.797 11.7756 21.7873 13.9288L21.7686 18.106L21.7686 18.7764C21.7686 19.3921 22.2677 19.8912 22.8833 19.8911C23.499 19.8911 23.998 19.392 23.998 18.7764L23.998 13.5232C23.998 9.95254 21.1035 7.05796 17.5328 7.05796C13.9735 7.05796 11.0836 9.93487 11.0677 13.4942L11.0389 19.8912Z"
+									fill="#111B21"
+								></path>
+							</svg>
+						</span>
+						Proactiv
+					</a>
+					<div class="nav-links">
+						<a href="features.html" class="nav-link">Features</a>
+						<a href="pricing.html" class="nav-link">Pricing</a>
+						<a href="blog.html" class="nav-link">Blog</a>
+						<a href="contact.html" class="nav-link">Contact</a>
+					</div>
+				</div>
+				<div class="nav-auth">
+					<a href="register.html" class="btn-register">Register</a>
+					<a href="register.html" class="btn-demo">Book a demo</a>
+					<button
+						class="nav-mobile-toggle"
+						id="mobile-toggle"
+						aria-label="Toggle menu"
+					>
+						<svg
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<line x1="3" y1="6" x2="21" y2="6" />
+							<line x1="3" y1="12" x2="21" y2="12" />
+							<line x1="3" y1="18" x2="21" y2="18" />
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div class="nav-mobile-menu" id="mobile-menu">
+				<a href="features.html" class="nav-mobile-link">Features</a>
+				<a href="pricing.html" class="nav-mobile-link">Pricing</a>
+				<a href="blog.html" class="nav-mobile-link">Blog</a>
+				<a href="contact.html" class="nav-mobile-link">Contact</a>
+				<a href="register.html" class="nav-mobile-link">Register</a>
+				<a
+					href="register.html"
+					class="nav-mobile-link"
+					style="color:var(--secondary);"
+					>Book a demo</a
+				>
+			</div>
+		</nav>
+
+		<!-- ============ CONTACT SECTION ============ -->
+		<section
+			class="section"
+			style="padding-top:140px;position:relative;overflow:hidden;"
+		>
+			<div class="contact-beams" aria-hidden="true">
+				<div class="beam-1"></div>
+				<div class="beam-2"></div>
+				<div class="beam-3"></div>
+			</div>
+			<div class="container">
+				<div class="contact-grid fade-in-up">
+					<!-- Left: Info -->
+					<div class="contact-info">
+						<div
+							style="width:44px;height:44px;border-radius:10px;background:rgba(57,195,239,0.1);border:1px solid rgba(57,195,239,0.2);display:flex;align-items:center;justify-content:center;color:var(--secondary);margin-bottom:20px;"
+						>
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path
+									d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+								/>
+								<polyline points="22,6 12,13 2,6" />
+							</svg>
+						</div>
+						<h1>Contact us</h1>
+						<p>
+							We are always looking for ways to improve our products and
+							services. Contact us and let us know how we can help you.
+						</p>
+
+						<div class="contact-detail contact-detail--first">
+							<p class="contact-detail-label">Email</p>
+							<p class="contact-detail-value">contact@proactiv.ai</p>
+						</div>
+						<div class="contact-detail contact-detail--rest">
+							<p class="contact-detail-label">Phone</p>
+							<p class="contact-detail-value">+1 (800) 123 XX21</p>
+						</div>
+						<div class="contact-detail contact-detail--rest">
+							<p class="contact-detail-label">Support</p>
+							<p class="contact-detail-value">support@proactiv.ai</p>
+						</div>
+					</div>
+
+					<!-- Right: Form -->
+					<div class="contact-form-wrapper">
+						<div class="form-card-pattern" aria-hidden="true"></div>
+						<form onsubmit="handleSubmit(event)">
+							<div class="form-group">
+								<label class="form-label" for="full-name">Full name</label>
+								<input
+									class="form-input"
+									type="text"
+									id="full-name"
+									placeholder="Manu Arora"
+								>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="email">Email Address</label>
+								<input
+									class="form-input"
+									type="email"
+									id="email"
+									placeholder="contact@aceternity.com"
+								>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="company">Company</label>
+								<input
+									class="form-input"
+									type="text"
+									id="company"
+									placeholder="contact@aceternity.com"
+								>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="message">Message</label>
+								<textarea
+									class="form-textarea"
+									id="message"
+									placeholder="Type your message here"
+								></textarea>
+							</div>
+							<button type="submit" class="btn-submit">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ FOOTER ============ -->
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div class="footer-brand">
+						<div class="footer-logo">
+							<span
+								class="footer-logo-icon"
+								style="width:24px;height:24px;background:transparent;border-radius:0;"
+							>
+								<svg
+									width="35"
+									height="35"
+									viewBox="0 0 35 35"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+									style="width:24px;height:24px;"
+								>
+									<circle cx="17.5" cy="17.5" r="17.5" fill="white"></circle>
+									<path
+										d="M11.0389 19.8912L11.0392 28.5579C12.6769 28.5579 14.0028 27.2273 13.9972 25.5897L13.9712 18.071L13.9899 13.8938C13.9996 11.7406 15.753 10.003 17.9061 10.0126C20.0593 10.0223 21.797 11.7756 21.7873 13.9288L21.7686 18.106L21.7686 18.7764C21.7686 19.3921 22.2677 19.8912 22.8833 19.8911C23.499 19.8911 23.998 19.392 23.998 18.7764L23.998 13.5232C23.998 9.95254 21.1035 7.05796 17.5328 7.05796C13.9735 7.05796 11.0836 9.93487 11.0677 13.4942L11.0389 19.8912Z"
+										fill="#111B21"
+									></path>
+								</svg>
+							</span>
+							Proactiv
+						</div>
+						<p class="footer-copy">
+							Copyright © 2024 Proactiv INC<br>All rights reserved
+						</p>
+					</div>
+					<div class="footer-col">
+						<ul class="footer-links">
+							<li><a href="pricing.html" class="footer-link">Pricing</a></li>
+							<li><a href="blog.html" class="footer-link">Blog</a></li>
+							<li><a href="contact.html" class="footer-link">Contact</a></li>
+						</ul>
+					</div>
+					<div class="footer-col">
+						<ul class="footer-links">
+							<li><a href="#" class="footer-link">Privacy Policy</a></li>
+							<li><a href="#" class="footer-link">Terms of Service</a></li>
+							<li><a href="#" class="footer-link">Refund Policy</a></li>
+						</ul>
+					</div>
+					<div class="footer-col">
+						<ul class="footer-links">
+							<li>
+								<a href="https://twitter.com/mannupaaji" class="footer-link"
+									>Twitter</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://linkedin.com/in/manuarora28"
+									class="footer-link"
+									>LinkedIn</a
+								>
+							</li>
+							<li>
+								<a href="https://github.com/manuarora700" class="footer-link"
+									>GitHub</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+		// Nav scroll
+		const navInner = document.getElementById("nav-inner");
+		window.addEventListener("scroll", () => {
+			navInner.classList.toggle("scrolled", window.scrollY > 50);
+		});
+
+		// Mobile menu
+		document.getElementById("mobile-toggle").addEventListener("click", () => {
+			document.getElementById("mobile-menu").classList.toggle("open");
+		});
+
+		// Form submit
+		function handleSubmit(e) {
+			e.preventDefault();
+			const btn = e.target.querySelector(".btn-submit");
+			btn.textContent = "Sent!";
+			btn.style.background = "rgba(57,195,239,0.3)";
+			setTimeout(() => {
+				btn.textContent = "Submit";
+				btn.style.background = "";
+				e.target.reset();
+			}, 2500);
+		}
+
+		// Scroll reveal
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((e) => {
+					if (e.isIntersecting) e.target.classList.add("visible");
+				});
+			},
+			{ threshold: 0.05, rootMargin: "0px 0px 200px 0px" },
+		);
+		document
+			.querySelectorAll(".fade-in-up")
+			.forEach((el) => observer.observe(el));
+		</script>
+	</body>
+</html>

@@ -1,5 +1,7 @@
 # Lumina — Minimalist Modern Design System Landing Page (React, Framer Motion, Tailwind CSS v3)
 
+[![Watch Demo](./poster.jpg)](./demo.mp4)
+
 A full landing page for the fictional product-analytics platform Lumina, built end to end as a reference implementation of the Minimalist Modern design system: restraint in element count, confidence in execution — an Electric Blue signature gradient, inverted slate sections, a dual-font Calistoga + Inter voice, animated hero graphic, and motion that makes the interface feel alive across hero, stats, features, pricing, testimonials, and CTA sections. Generated with Claude Fable 5.
 
 ## Sections
