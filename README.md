@@ -25,7 +25,7 @@ Once your `demo.mp4` is in, generate its poster so the directory can show a shar
 
 All PRs get reviewed and merged by Claude Opus, so don't be shy — if the prompt and demo are there, you're golden. 🤙
 
-## Projects (347)
+## Projects (348)
 
 Projects are grouped by what they are. Each lives in its category folder (e.g. `./hero-sections/<project>/`).
 
@@ -444,5 +444,14 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 | [synapse-design-system](./templates/synapse-design-system/) | "Synapse" futuristic vantablack (#030303) design-system landing built same-to-same from a spec — violet (#8B5CF6) + cyan (#06B6D4) neon accents, vendored Instrument Serif + Inter, three floating blurred ambient orbs, a 672px glass nav pill, a massive centered serif hero with a shimmering gradient last word and staggered load entrances, a Shiny Border Button with a 4s spinning conic-gradient border, a 40s infinite metrics ticker, a 6-card reveal-on-scroll feature grid with violet/cyan hover glows, a syntax-highlighted synapse.config.ts IDE block with a copy button, and an emerald "All Systems Operational" pulsing-dot footer; cubic-bezier(0.23,1,0.32,1) motion throughout, fully offline | HTML, CSS, vanilla JS, Instrument Serif, Inter |
 | [terroir-tasting-room](./templates/terroir-tasting-room/) | "Terroir" dark minimalist editorial luxury wine tasting-room landing page rebuilt from a superdesign reference — a #121212/#EDEAE4 palette with Sage/Sienna/Burgundy earth accents, a global baseFrequency-0.65 SVG grain overlay at 5%, vendored Cormorant Garamond + Manrope, a centered-logo blur header, an asymmetrical 96px serif hero with a 24px-indented sage italic and a bouncing arrow, a 4-column hover-reveal Flavor Wall (mix-blend-overlay images, 8px text slide), a 50/50 Staff-Pick spotlight, a live 4/6 sage capacity Case Builder with circular ± controls, a single-hairline Guest/Member split, a grayscale-to-color How It's Made grid, and a 4-column footer; all reveal-up on IntersectionObserver (800ms/20px), fonts + procedural imagery vendored, fully offline | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
 | [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | A single-screen motion study of a vertical text-clip, letter-by-letter slide-down — each glyph of a giant Space Grotesk headline ("MOTION / IN EVERY / LETTER.") is wrapped in an overflow-hidden vertical clip column and pours down from above (translateY(-110%)→0) with an opacity + blur(6px)→0 settle, staggered 70ms per letter continuously across all lines on a cubic-bezier(.22,1,.36,1) expo-out, then auto-loops with a 2.2s hold and a Replay button; near-black #0b0b0c canvas with off-white #f4f2ec type, JetBrains Mono chrome, a warm #e8552d accent, a 4% fractal-noise grain overlay, and a reduced-motion fallback; fonts vendored, fully offline | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
+
+</details>
+
+<details>
+<summary><b>Studies (1)</b></summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [nextra-docs-template](./studies/nextra-docs-template/) | Pixel-faithful clone of the official Nextra "Docs Template" starter theme — a sticky blurred navbar (logo, About/Contact links, CTRL-K search box, GitHub/Discord icons), a left tree sidebar with a collapsible "Advanced" folder and active-item highlighting, a centered MDX-style prose column with breadcrumb, headings, syntax-highlighted code blocks and prev/next pagination, a right "On This Page" TOC rail, and a footer with a System/Light/Dark theme switcher; all 5 discovered pages (Introduction, About, Another Page, Advanced, Satori) reproduced with working search modal, folder toggle, theme switcher, interactive click counters, and a mobile hamburger nav overlay, fully offline | HTML, CSS, vanilla JS |
 
 </details>
