@@ -391,7 +391,7 @@ Projects are grouped by what they are. Each lives in its category folder (e.g. `
 </details>
 
 <details>
-<summary><b>Templates (247)</b></summary>
+<summary><b>Templates (248)</b></summary>
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [atelier-archive-quiet-luxury](./templates/atelier-archive-quiet-luxury/) | "Atelier Archive" quiet-luxury architectural design system — a single cream-paper (#fdfbf9) magazine spread on Zodiak-style serif (Cormorant Garamond, weights 300/400 + italics) and General Sans-style grotesque (Hanken Grotesk), built inside a 1440px page with vertical neutral-200 border-grid; sticky three-column blur header, a 65/35 hero opening spread ("A Study in *Quietude*") with a Fig 1.0 label and animated 1px-underline CTA, an interactive Room Index whose serif titles go faint→black + roman→italic on hover, alternating 70/30 and 40/60 room sections with sticky product-detail cards (Ref. numbers, material/dimension specs, white-on-hover backgrounds), a four-column "Close Inspection" material grid with white-overlay slide-up reveals, and an archival four-column footer; 1.2s translateY fade-ins via IntersectionObserver, 2s cubic-bezier(.2,.8,.2,1) image scales; fonts and procedural grayscale architectural/material SVG imagery vendored locally, fully offline | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Hanken Grotesk |
