@@ -1,4 +1,4 @@
-# Templates (243)
+# Templates (244)
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -209,3 +209,4 @@
 | [seoptic-nextjs](./premium/themefisher/seoptic-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
 | [spydea-nextjs](./premium/themefisher/spydea-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Maven Pro, Merriweather |
 | [novai-nextjs](./premium/themefisher/novai-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Open Sans, Kanit |
+| [optivus-nextjs](./premium/themefisher/optivus-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Rethink Sans |

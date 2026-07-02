@@ -363,7 +363,7 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (243)</b></summary>
+<summary><b>Templates (244)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -570,6 +570,7 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/themefisher/quickdir-nextjs](./templates/premium/themefisher/quickdir-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [premium/themefisher/finprox-nextjs](./templates/premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
 | [premium/themefisher/novai-nextjs](./templates/premium/themefisher/novai-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Open Sans, Kanit |
+| [premium/themefisher/optivus-nextjs](./templates/premium/themefisher/optivus-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Rethink Sans |
 | [premium/nextjstemplates/nextly](./templates/premium/nextjstemplates/nextly/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/nextjstemplates/nextra-docs-template](./templates/premium/nextjstemplates/nextra-docs-template/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/themefisher/devgent-nextjs](./templates/premium/themefisher/devgent-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
