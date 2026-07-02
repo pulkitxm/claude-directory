@@ -363,7 +363,8 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Templates (249)</b></summary>
+<summary><b>Templates (250)</b></summary>
+
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [atelier-archive-quiet-luxury](./templates/atelier-archive-quiet-luxury/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Hanken Grotesk |
@@ -577,5 +578,6 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/nextjstemplates/nextra-docs-template](./templates/premium/nextjstemplates/nextra-docs-template/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [premium/themefisher/bookworm-light-nextjs](./templates/premium/themefisher/bookworm-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Mulish |
 | [premium/themefisher/devgent-nextjs](./templates/premium/themefisher/devgent-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
+| [premium/themefisher/dexler-nextjs](./templates/premium/themefisher/dexler-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Libre Baskerville |
 | [premium/themefisher/visionex-nextjs](./templates/premium/themefisher/visionex-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Raleway, Lato |
 </details>
