@@ -24,17 +24,29 @@ console.log("Launching chromium...");
 // end-to-end against a live remote reference site.)
 const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(URL);
 const legacyChromePath = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
+// The default Playwright-managed Chromium build isn't always downloadable in this
+// sandbox (its CDN fetch can itself be blocked/flaky), so fall back to the older
+// prebuilt Chromium whenever the managed executable isn't actually on disk —
+// needed for both local dev-server captures and remote reference captures.
+let defaultExecutableMissing = false;
+try {
+	const def = chromium.executablePath?.();
+	defaultExecutableMissing = !def || !fs.existsSync(def);
+} catch {
+	defaultExecutableMissing = true;
+}
+const useLegacyChrome = defaultExecutableMissing && fs.existsSync(legacyChromePath);
 const launchOpts = { args: ["--ignore-certificate-errors"] };
+if (useLegacyChrome) {
+	launchOpts.executablePath = legacyChromePath;
+}
 if (!isLocal) {
 	launchOpts.args.push("--ssl-version-max=tls1.2");
-	if (fs.existsSync(legacyChromePath)) {
-		launchOpts.executablePath = legacyChromePath;
-	}
 	if (process.env.PW_PROXY) {
 		launchOpts.args.push(`--proxy-server=${process.env.PW_PROXY}`);
 	}
 }
-const browser = await chromium.launch(isLocal ? {} : launchOpts);
+const browser = await chromium.launch(isLocal && !useLegacyChrome ? {} : launchOpts);
 console.log("Chromium launched. Opening page...");
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 console.log("Page opened. Navigating to:", URL);
