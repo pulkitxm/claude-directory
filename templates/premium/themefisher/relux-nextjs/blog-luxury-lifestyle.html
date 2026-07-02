@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Art of Slow Travel: Embracing Luxury Without Rush — Relux Hotel Blog</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-banner { background-image: url('assets/images/blog/banner.png'); }
+
+    .blog-post-section { padding: var(--section-pad) 0; }
+
+    .blog-post-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      .blog-post-layout { grid-template-columns: 1fr 300px; gap: 5rem; }
+    }
+
+    .post-hero-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 2rem;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-category {
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+    }
+
+    .post-meta .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--color-text);
+    }
+
+    .post-meta .meta-item svg { width: 14px; height: 14px; color: var(--color-primary); }
+
+    .post-title {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-body p {
+      color: var(--color-text);
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .post-body h2 {
+      font-size: 1.5rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--color-dark);
+    }
+
+    .post-body blockquote {
+      border-left: 4px solid var(--color-primary);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--color-light);
+      font-style: italic;
+      color: var(--color-text);
+    }
+
+    .post-body blockquote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-style: normal;
+      font-size: 0.875rem;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 2rem 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .post-tag {
+      background: var(--color-light);
+      color: var(--color-text);
+      font-size: 0.75rem;
+      padding: 0.3rem 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .post-nav a {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      max-width: 45%;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .post-nav a .nav-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+    }
+
+    .post-nav a .nav-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      color: var(--color-dark);
+      text-transform: uppercase;
+    }
+
+    .post-nav a:hover .nav-title { color: var(--color-primary); }
+
+    .post-nav .prev { align-items: flex-start; }
+    .post-nav .next { align-items: flex-end; text-align: right; }
+
+    /* Sidebar */
+    .blog-sidebar { position: sticky; top: 100px; }
+
+    .sidebar-widget {
+      background: var(--color-light);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar-widget h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--color-dark);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--color-primary);
+    }
+
+    .sidebar-post {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .sidebar-post:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .sidebar-post img {
+      width: 72px;
+      height: 64px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .sidebar-post-body .sidebar-post-title {
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      color: var(--color-dark);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.25rem;
+      transition: color 0.3s;
+    }
+
+    .sidebar-post-body .sidebar-post-title:hover { color: var(--color-primary); }
+
+    .sidebar-post-body .sidebar-date { font-size: 0.75rem; color: var(--color-text); }
+
+    .sidebar-cats a {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.875rem;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .sidebar-cats a:hover { color: var(--color-primary); }
+    .sidebar-cats a:last-child { border-bottom: none; }
+
+    .sidebar-cats .count {
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 99px;
+    }
+  </style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle" hidden />
+<label for="nav-toggle" class="nav-overlay"></label>
+<nav class="mobile-nav">
+  <label for="nav-toggle" class="mobile-nav-close" aria-label="Close menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </label>
+  <a href="index.html" class="nav-logo-mobile"><img src="assets/images/logo.svg" alt="Relux" height="32" /></a>
+  <a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="about.html">About</a><a href="cafe-juice.html">Cafe &amp; Juice</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary mt-auto">Book Here</a>
+</nav>
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <label for="nav-toggle" class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="desktop-nav desktop-nav-left">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="rooms.html" class="nav-link">Rooms</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <a href="index.html" class="nav-logo"><img src="assets/images/logo.svg" alt="Relux" height="40" /></a>
+    <nav class="desktop-nav desktop-nav-right">
+      <a href="cafe-juice.html" class="nav-link">Cafe &amp; Juice</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Book Here</a>
+  </div>
+</header>
+
+<section class="page-banner">
+  <div class="page-banner-content container">
+    <p class="page-banner-label">Luxury Lifestyle</p>
+    <h1 class="page-banner-title">Blog &amp; Events</h1>
+    <div class="page-banner-breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="blog.html">Blog</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>Luxury Lifestyle</span>
+    </div>
+  </div>
+</section>
+
+<section class="blog-post-section">
+  <div class="container">
+    <div class="blog-post-layout">
+      <article>
+        <img class="post-hero-img" src="assets/images/blog/2.png" alt="The Art of Slow Travel: Embracing Luxury Without Rush" />
+
+        <div class="post-meta">
+          <span class="post-category">Luxury Lifestyle</span>
+          <span class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            May 28, 2024
+          </span>
+          <span class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            By Admin
+          </span>
+        </div>
+
+        <h1 class="post-title">The Art of Slow Travel: Embracing Luxury Without Rush</h1>
+
+        <div class="post-body">
+          <p>In a world that prizes speed, efficiency, and constant motion, true luxury is increasingly rare — and it takes a surprising form: the freedom to slow down. At Relux, we have built an entire philosophy around this idea. We believe that a stay should not feel like a checkbox on an itinerary. It should feel like an exhale.</p>
+          <p>Luxury, at its finest, is not about the accumulation of opulent objects — it is about the quality of moments, the richness of experiences, and the depth of care that infuses every interaction. At Relux, we have spent years refining this understanding, translating it into an environment where every detail speaks to our guests' highest aspirations.</p>
+
+          <h2>The Essence of the Experience</h2>
+          <p>From the moment a guest arrives — greeted by name, escorted through our palm-lined entrance, offered a hand-crafted welcome drink — the Relux experience is one of thoughtful, personal attention. Our team is trained not merely to serve, but to anticipate: to sense what a guest needs before they have articulated it themselves.</p>
+
+          <blockquote>
+            "The difference between a good hotel and a great one lies not in the thread count or the size of the pool, but in how a place makes you feel. Relux makes you feel like you belong."
+            <cite>— A Recent Guest, 2024</cite>
+          </blockquote>
+
+          <p>The rooms — each carefully designed to balance aesthetic beauty with functional comfort — are spaces where guests find themselves lingering long past check-out time, reluctant to leave an atmosphere that has, in just a few days, begun to feel like home. The morning light through the linen curtains, the scent of freshly brewed coffee, the softness of the bedding — these are not accidents. They are the result of years of careful curation.</p>
+
+          <h2>Looking Forward</h2>
+          <p>As we continue to grow and evolve, our commitment to excellence remains unchanged. New amenities, refined dining experiences, and expanded wellness offerings are on the horizon — each designed with the same devotion to quality that has defined Relux from its first day of operation. We invite you to be part of this ongoing story of luxury, crafted with intention and delivered with heart.</p>
+
+          <p>We look forward to welcoming you — or welcoming you back — very soon.</p>
+        </div>
+
+        <div class="post-tags">
+          <span class="post-tag">Luxury Lifestyle</span>
+          <span class="post-tag">Luxury</span>
+          <span class="post-tag">Hospitality</span>
+          <span class="post-tag">Travel</span>
+        </div>
+
+        <div class="post-nav">
+          <a href="blog-guest-stories.html" class="prev">
+            <span class="nav-label">← Previous</span>
+            <span class="nav-title">A Week in Paradise</span>
+          </a>
+          <a href="blog-suites-stays.html" class="next">
+            <span class="nav-label">Next →</span>
+            <span class="nav-title">Inside the Presidential Suite</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="blog-sidebar">
+        <div class="sidebar-widget">
+          <h4>Recent Posts</h4>
+          <div class="sidebar-post">
+            <img src="assets/images/blog/1.png" alt="Guest Stories" />
+            <div class="sidebar-post-body">
+              <a href="blog-guest-stories.html" class="sidebar-post-title">A Week in Paradise</a>
+              <span class="sidebar-date">June 10, 2024</span>
+            </div>
+          </div>
+          <div class="sidebar-post">
+            <img src="assets/images/blog/2.png" alt="Luxury Lifestyle" />
+            <div class="sidebar-post-body">
+              <a href="blog-luxury-lifestyle.html" class="sidebar-post-title">The Art of Slow Travel</a>
+              <span class="sidebar-date">May 28, 2024</span>
+            </div>
+          </div>
+          <div class="sidebar-post">
+            <img src="assets/images/blog/3.png" alt="Suites" />
+            <div class="sidebar-post-body">
+              <a href="blog-suites-stays.html" class="sidebar-post-title">Inside the Presidential Suite</a>
+              <span class="sidebar-date">May 14, 2024</span>
+            </div>
+          </div>
+          <div class="sidebar-post">
+            <img src="assets/images/blog/4.png" alt="Travel" />
+            <div class="sidebar-post-body">
+              <a href="blog-travel-inspiration.html" class="sidebar-post-title">10 Hidden Gems Nearby</a>
+              <span class="sidebar-date">April 30, 2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4>Categories</h4>
+          <div class="sidebar-cats">
+            <a href="blog.html">Guest Stories <span class="count">1</span></a>
+            <a href="blog.html">Luxury Lifestyle <span class="count">1</span></a>
+            <a href="blog.html">Suites &amp; Stays <span class="count">1</span></a>
+            <a href="blog.html">Travel Inspiration <span class="count">1</span></a>
+            <a href="blog.html">Wellness &amp; Spa <span class="count">1</span></a>
+          </div>
+        </div>
+
+        <div class="sidebar-widget" style="background:var(--color-secondary); color:#fff;">
+          <h4 style="color:#fff; border-bottom-color:rgba(255,255,255,0.2);">Book Your Stay</h4>
+          <p style="color:rgba(255,255,255,0.65); font-size:0.875rem; margin-bottom:1.25rem; line-height:1.6;">Ready to experience it for yourself? Reserve your room today.</p>
+          <a href="contact.html" class="btn btn-primary btn-arrow" style="width:100%; justify-content:center;">
+            <span>Book Now</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h2 class="footer-heading">Begin Your<br>Luxury Journey</h2>
+        <a href="contact.html" class="btn btn-primary btn-arrow">
+          <span>BOOK HERE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="about.html">About</a><a href="cafe-juice.html">Cafe &amp; Juice</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Explore</h4>
+          <a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Contact</h4>
+          <p>123 Luxury Lane,<br>Paradise City, PC 10001</p>
+          <p>+1 (800) 123-4567</p>
+          <p>hello@reluxhotel.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Relux Hotel. All rights reserved.</p>
+      <p>Designed by <a href="https://themefisher.com" target="_blank">Themefisher</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

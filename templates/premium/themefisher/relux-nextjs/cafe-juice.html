@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafe &amp; Juice — Relux Hotel</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-banner {
+      background-image: url('assets/images/cafe-juice/banner.png');
+    }
+
+    /* Gallery duo */
+    .cafe-gallery {
+      padding: var(--section-pad) 0;
+    }
+
+    .cafe-gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .cafe-gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .cafe-gallery-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .cafe-gallery-item img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .cafe-gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .cafe-gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .cafe-gallery-item:hover .cafe-gallery-overlay {
+      opacity: 1;
+    }
+
+    .cafe-gallery-overlay svg {
+      color: #fff;
+      width: 48px;
+      height: 48px;
+    }
+
+    /* Menu section */
+    .menu-section {
+      padding: var(--section-pad) 0;
+      background: var(--color-light);
+    }
+
+    .menu-intro {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .menu-card {
+      background: #fff;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .menu-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+
+    .menu-card-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .menu-card:hover .menu-card-img {
+      transform: scale(1.04);
+    }
+
+    .menu-card-body {
+      padding: 1.5rem;
+    }
+
+    .menu-card-body h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-card-body p {
+      color: var(--color-text);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .menu-price {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* Decorative strip */
+    .cafe-decorative {
+      padding: 3rem 0;
+      background: var(--color-secondary);
+      text-align: center;
+      color: #fff;
+    }
+
+    .cafe-decorative h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .cafe-decorative p {
+      color: rgba(255,255,255,0.7);
+      max-width: 560px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* Specials section */
+    .specials-section {
+      padding: var(--section-pad) 0;
+    }
+
+    .specials-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .specials-row {
+        flex-direction: row;
+        align-items: stretch;
+      }
+    }
+
+    .specials-img {
+      flex: 1;
+    }
+
+    .specials-img img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .specials-content {
+      flex: 1;
+      padding: 2rem;
+      background: var(--color-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .specials-content h2 {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .specials-content p {
+      color: var(--color-text);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .specials-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+    }
+
+    .specials-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed var(--color-border);
+      font-size: 0.95rem;
+    }
+
+    .specials-list li .item-price {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile nav overlay -->
+<input type="checkbox" id="nav-toggle" hidden />
+<label for="nav-toggle" class="nav-overlay"></label>
+<nav class="mobile-nav">
+  <label for="nav-toggle" class="mobile-nav-close" aria-label="Close menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </label>
+  <a href="index.html" class="nav-logo-mobile">
+    <img src="assets/images/logo.svg" alt="Relux" height="32" />
+  </a>
+  <a href="index.html">Home</a>
+  <a href="rooms.html">Rooms</a>
+  <a href="about.html">About</a>
+  <a href="cafe-juice.html">Cafe &amp; Juice</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary mt-auto">Book Here</a>
+</nav>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <label for="nav-toggle" class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </label>
+    <nav class="desktop-nav desktop-nav-left">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="rooms.html" class="nav-link">Rooms</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/logo.svg" alt="Relux" height="40" />
+    </a>
+    <nav class="desktop-nav desktop-nav-right">
+      <a href="cafe-juice.html" class="nav-link">Cafe &amp; Juice</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Book Here</a>
+  </div>
+</header>
+
+<!-- Page Banner -->
+<section class="page-banner">
+  <div class="page-banner-content container">
+    <p class="page-banner-label">Savour</p>
+    <h1 class="page-banner-title">Cafe &amp; Juice</h1>
+    <div class="page-banner-breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>Cafe &amp; Juice</span>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="cafe-gallery">
+  <div class="container">
+    <div class="cafe-gallery-grid">
+      <div class="cafe-gallery-item" data-reveal="fade-right" data-lightbox="assets/images/cafe-juice/g1.png">
+        <img src="assets/images/cafe-juice/g1.png" alt="Cafe Interior" />
+        <div class="cafe-gallery-overlay">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+      </div>
+      <div class="cafe-gallery-item" data-reveal="fade-left" data-lightbox="assets/images/cafe-juice/g2.png">
+        <img src="assets/images/cafe-juice/g2.png" alt="Fresh Juices" />
+        <div class="cafe-gallery-overlay">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu Items -->
+<section class="menu-section">
+  <div class="container">
+    <div class="menu-intro" data-reveal="fade-up">
+      <span class="section-label">Our Menu</span>
+      <h2>Fresh &amp; Artisanal Offerings</h2>
+      <p>From hand-crafted espresso drinks to freshly pressed juices and light bites — every item on our menu celebrates quality ingredients.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card" data-reveal="fade-up">
+        <img class="menu-card-img" src="assets/images/cafe-juice/menu-decorative-1.png" alt="Signature Coffee" />
+        <div class="menu-card-body">
+          <h3>Signature Espresso</h3>
+          <p>Hand-crafted with our single-origin blend, delivering rich, smooth flavors in every sip.</p>
+          <span class="menu-price">$8</span>
+        </div>
+      </div>
+      <div class="menu-card" data-reveal="fade-up">
+        <img class="menu-card-img" src="assets/images/cafe-juice/menu-decorative-2.png" alt="Tropical Juice" />
+        <div class="menu-card-body">
+          <h3>Tropical Sunrise</h3>
+          <p>A vibrant blend of mango, pineapple, and passionfruit, freshly pressed to order.</p>
+          <span class="menu-price">$12</span>
+        </div>
+      </div>
+      <div class="menu-card" data-reveal="fade-up">
+        <img class="menu-card-img" src="assets/images/cafe-juice/g1.png" alt="Artisan Pastry" />
+        <div class="menu-card-body">
+          <h3>Artisan Croissant</h3>
+          <p>Buttery, flaky, and made in-house each morning — the perfect companion to your morning coffee.</p>
+          <span class="menu-price">$6</span>
+        </div>
+      </div>
+      <div class="menu-card" data-reveal="fade-up">
+        <img class="menu-card-img" src="assets/images/cafe-juice/g2.png" alt="Green Detox" />
+        <div class="menu-card-body">
+          <h3>Green Detox Blend</h3>
+          <p>Spinach, cucumber, green apple, and ginger — a refreshing blend that energizes and cleanses.</p>
+          <span class="menu-price">$14</span>
+        </div>
+      </div>
+      <div class="menu-card" data-reveal="fade-up">
+        <img class="menu-card-img" src="assets/images/homepage/cta.png" alt="Afternoon Tea" />
+        <div class="menu-card-body">
+          <h3>Afternoon Tea Set</h3>
+          <p>A curated selection of premium teas, finger sandwiches, and petit fours for two.</p>
+          <span class="menu-price">$38</span>
+        </div>
+      </div>
+      <div class="menu-card" data-reveal="fade-up">
+        <img class="menu-card-img" src="assets/images/blog/5.png" alt="Acai Bowl" />
+        <div class="menu-card-body">
+          <h3>Acai Power Bowl</h3>
+          <p>Organic acai blended with banana, topped with granola, fresh berries, and honey drizzle.</p>
+          <span class="menu-price">$18</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Specials -->
+<section class="specials-section">
+  <div class="container">
+    <div class="specials-row">
+      <div class="specials-img" data-reveal="fade-right">
+        <img src="assets/images/cafe-juice/g2.png" alt="Specials" />
+      </div>
+      <div class="specials-content" data-reveal="fade-left">
+        <span class="section-label">Chef's Picks</span>
+        <h2>Today's Specials</h2>
+        <p>Our chef curates a daily selection of seasonal specialties that showcase the finest local produce.</p>
+        <ul class="specials-list">
+          <li><span>Cold Brew Latte</span><span class="item-price">$10</span></li>
+          <li><span>Berry Blast Smoothie</span><span class="item-price">$13</span></li>
+          <li><span>Avocado Toast Deluxe</span><span class="item-price">$16</span></li>
+          <li><span>French Press for Two</span><span class="item-price">$18</span></li>
+          <li><span>Seasonal Fruit Platter</span><span class="item-price">$22</span></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary btn-arrow">
+          <span>Reserve a Table</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" aria-label="Close">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img src="" alt="Gallery" />
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h2 class="footer-heading">Begin Your<br>Luxury Journey</h2>
+        <a href="contact.html" class="btn btn-primary btn-arrow">
+          <span>BOOK HERE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="rooms.html">Rooms</a>
+          <a href="about.html">About</a>
+          <a href="cafe-juice.html">Cafe &amp; Juice</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Explore</h4>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Contact</h4>
+          <p>123 Luxury Lane,<br>Paradise City, PC 10001</p>
+          <p>+1 (800) 123-4567</p>
+          <p>hello@reluxhotel.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Relux Hotel. All rights reserved.</p>
+      <p>Designed by <a href="https://themefisher.com" target="_blank">Themefisher</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

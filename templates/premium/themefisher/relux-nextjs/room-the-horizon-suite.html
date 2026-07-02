@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Horizon Suite — Relux Hotel</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-banner { background-image: url('assets/images/rooms/banner.png'); }
+
+    /* Room hero */
+    .room-hero {
+      padding: 0 0 var(--section-pad);
+    }
+
+    .room-main-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--color-primary);
+      padding: 10px;
+    }
+
+    @media (min-width: 1024px) {
+      .room-main-img { height: 640px; }
+    }
+
+    /* Room gallery strip */
+    .room-gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .room-gallery-strip img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .room-gallery-strip img:hover { opacity: 0.8; }
+
+    /* Room layout */
+    .room-detail-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding-top: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      .room-detail-layout { grid-template-columns: 1fr 340px; gap: 4rem; }
+    }
+
+    /* Room description */
+    .room-description h1 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .room-price-tag {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .room-price-tag span {
+      font-size: 0.9rem;
+      color: var(--color-text);
+      font-family: var(--font-body);
+    }
+
+    .room-description p {
+      color: var(--color-text);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    /* Specs bar */
+    .room-specs-bar {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      background: var(--color-light);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text);
+    }
+
+    .spec-item svg { color: var(--color-primary); width: 18px; height: 18px; }
+
+    /* Amenities */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--color-text);
+    }
+
+    .amenity-item svg { color: var(--color-primary); width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* Booking sidebar */
+    .room-booking-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    .booking-card {
+      background: var(--color-secondary);
+      padding: 2rem;
+      color: #fff;
+    }
+
+    .booking-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .booking-card .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .booking-card .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.4rem;
+    }
+
+    .booking-card .form-group input,
+    .booking-card .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 0.75rem;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .booking-card .form-group input:focus,
+    .booking-card .form-group select:focus {
+      border-color: var(--color-primary);
+    }
+
+    .booking-card .form-group select option {
+      background: var(--color-secondary);
+    }
+
+    .booking-card .form-group input::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+
+    .booking-total {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .booking-total .label {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.875rem;
+    }
+
+    .booking-total .amount {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+
+    .booking-card .btn-primary {
+      width: 100%;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    /* Nav between rooms */
+    .room-nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem 0;
+      border-top: 1px solid var(--color-border);
+      margin-top: 2rem;
+      gap: 1rem;
+    }
+
+    .room-nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.3s;
+    }
+
+    .room-nav a:hover { color: var(--color-primary); }
+
+    .room-nav .prev { flex-direction: row; }
+    .room-nav .next { flex-direction: row-reverse; text-align: right; }
+  </style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle" hidden />
+<label for="nav-toggle" class="nav-overlay"></label>
+<nav class="mobile-nav">
+  <label for="nav-toggle" class="mobile-nav-close" aria-label="Close menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </label>
+  <a href="index.html" class="nav-logo-mobile"><img src="assets/images/logo.svg" alt="Relux" height="32" /></a>
+  <a href="index.html">Home</a>
+  <a href="rooms.html">Rooms</a>
+  <a href="about.html">About</a>
+  <a href="cafe-juice.html">Cafe &amp; Juice</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary mt-auto">Book Here</a>
+</nav>
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <label for="nav-toggle" class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="desktop-nav desktop-nav-left">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="rooms.html" class="nav-link">Rooms</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <a href="index.html" class="nav-logo"><img src="assets/images/logo.svg" alt="Relux" height="40" /></a>
+    <nav class="desktop-nav desktop-nav-right">
+      <a href="cafe-juice.html" class="nav-link">Cafe &amp; Juice</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Book Here</a>
+  </div>
+</header>
+
+<section class="page-banner">
+  <div class="page-banner-content container">
+    <p class="page-banner-label">Room Detail</p>
+    <h1 class="page-banner-title">The Horizon Suite</h1>
+    <div class="page-banner-breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="rooms.html">Rooms</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>The Horizon Suite</span>
+    </div>
+  </div>
+</section>
+
+<section class="room-hero">
+  <div class="container">
+    <img class="room-main-img" src="assets/images/rooms/room-5-1.png" alt="The Horizon Suite" data-lightbox="assets/images/rooms/room-5-1.png" />
+    <div class="room-gallery-strip">
+      <img src="assets/images/rooms/room-5-2.png" alt="The Horizon Suite view 2" data-lightbox="assets/images/rooms/room-5-2.png" />
+      <img src="assets/images/rooms/room-5-3.png" alt="The Horizon Suite view 3" data-lightbox="assets/images/rooms/room-5-3.png" />
+      <img src="assets/images/rooms/room-5-4.png" alt="The Horizon Suite view 4" data-lightbox="assets/images/rooms/room-5-4.png" />
+    </div>
+
+    <div class="room-detail-layout">
+      <div class="room-description">
+        <span class="section-label">Prestige Residences</span>
+        <h1>The Horizon Suite</h1>
+        <div class="room-price-tag">$520 <span>/ Night</span></div>
+
+        <div class="room-specs-bar">
+          <div class="spec-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>75 m²</span>
+          </div>
+          <div class="spec-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span>3 Guests</span>
+          </div>
+          <div class="spec-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9h20M2 15h20M9 9v12M15 9v12M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
+            <span>King Bed</span>
+          </div>
+        </div>
+
+        <p>The Horizon Suite captures the essence of boundless possibility. Named for the infinite horizon visible from its floor-to-ceiling windows, this 75-square-meter retreat offers an immersive connection to nature without sacrificing a single luxury comfort. A private terrace and exclusive spa access are among its many distinctions.</p>
+        <p>Every detail of this residence has been considered with extraordinary care — from the hand-stitched linens to the custom-designed furniture, from the curated art on the walls to the panoramic views beyond the floor-to-ceiling windows. Staying here is not merely accommodation; it is an experience that redefines the very notion of comfort.</p>
+        <p>Our dedicated in-room dining service operates around the clock, bringing the flavors of our award-winning restaurant directly to your door. Whether you prefer a leisurely breakfast on your private terrace or a late-night tasting of our chef's seasonal creations, we are here to accommodate every preference.</p>
+
+        <h3 style="margin-top:2rem; margin-bottom:1rem; font-family:var(--font-heading); font-size:1.25rem; text-transform:uppercase;">Room Amenities</h3>
+        <div class="amenities-grid">
+          <div class="amenity-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/></svg><span>Horizon View</span></div><div class="amenity-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Private Terrace</span></div><div class="amenity-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Spa Access</span></div><div class="amenity-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg><span>High-Speed WiFi</span></div><div class="amenity-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>24h Room Service</span></div><div class="amenity-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>55" Smart TV</span></div>
+        </div>
+
+        <div class="room-nav">
+          <a href="room-presidential-suite.html" class="prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Previous Room
+          </a>
+          <a href="room-the-view-suite.html" class="next">
+            Next Room
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="room-booking-sidebar">
+        <div class="booking-card">
+          <h3>Reserve This Room</h3>
+          <form action="contact.html">
+            <div class="form-group">
+              <label>Check-In</label>
+              <input type="date" name="check_in" />
+            </div>
+            <div class="form-group">
+              <label>Check-Out</label>
+              <input type="date" name="check_out" />
+            </div>
+            <div class="form-group">
+              <label>Guests</label>
+              <select name="guests">
+                <option>1 Guest</option>
+                <option selected>2 Guests</option>
+                <option>3 Guests</option>
+                <option>4 Guests</option>
+              </select>
+            </div>
+            <div class="booking-total">
+              <span class="label">Starting from</span>
+              <span class="amount">$520</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-arrow">
+              <span>Book Now</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" aria-label="Close">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img src="" alt="Room" />
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h2 class="footer-heading">Begin Your<br>Luxury Journey</h2>
+        <a href="contact.html" class="btn btn-primary btn-arrow">
+          <span>BOOK HERE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="about.html">About</a><a href="cafe-juice.html">Cafe &amp; Juice</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Explore</h4>
+          <a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Contact</h4>
+          <p>123 Luxury Lane,<br>Paradise City, PC 10001</p>
+          <p>+1 (800) 123-4567</p>
+          <p>hello@reluxhotel.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Relux Hotel. All rights reserved.</p>
+      <p>Designed by <a href="https://themefisher.com" target="_blank">Themefisher</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
