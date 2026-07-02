@@ -562,10 +562,11 @@ Responsive interfaces, motion studies and developer tools.
 </details>
 
 <details>
-<summary><b>Studies (1)</b></summary>
+<summary><b>Studies (2)</b></summary>
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [nextly-landing-page](./studies/nextly-landing-page/) | Interface experiment. | HTML, CSS, vanilla JS |
 | [nextra-docs-template](./studies/nextra-docs-template/) | Interface experiment. | HTML, CSS, vanilla JS |
 
 </details>
