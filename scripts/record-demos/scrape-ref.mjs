@@ -12,7 +12,23 @@ if (!URL) {
 fs.mkdirSync(OUT, { recursive: true });
 
 console.log("Launching chromium...");
-const browser = await chromium.launch();
+// Remote HTTPS traffic in this sandbox is re-terminated by an egress proxy whose
+// TLS stack mishandles the default Chromium build's TLS 1.3 ClientHello (GREASE),
+// producing ERR_SSL_PROTOCOL_ERROR. The older prebuilt Chromium at
+// /opt/pw-browsers/chromium-1194 still honors --ssl-version-max=tls1.2 (removed in
+// newer Chrome for Testing builds) and negotiates TLS 1.2 fine through the proxy.
+// Only remote targets need this — localhost captures (dev servers, vision-loop
+// re-scrapes) bypass the proxy entirely.
+const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(URL);
+const legacyChromePath = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
+const launchOpts = { args: ["--ignore-certificate-errors"] };
+if (!isLocal) {
+	launchOpts.args.push("--ssl-version-max=tls1.2");
+	if (fs.existsSync(legacyChromePath)) {
+		launchOpts.executablePath = legacyChromePath;
+	}
+}
+const browser = await chromium.launch(isLocal ? {} : launchOpts);
 console.log("Chromium launched. Opening page...");
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 console.log("Page opened. Navigating to:", URL);
