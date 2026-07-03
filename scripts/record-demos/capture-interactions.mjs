@@ -8,11 +8,15 @@ const OUT = process.argv[3];
 const PAGE_TYPE = process.argv[4] || "generic";
 
 if (!URL || !OUT) {
-	console.error("usage: node capture-interactions.mjs <url> <outDir> <pageType>");
+	console.error(
+		"usage: node capture-interactions.mjs <url> <outDir> <pageType>",
+	);
 	process.exit(2);
 }
 
-const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(URL);
+const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(
+	URL,
+);
 const legacyChromePath = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
 const legacyExists = fs.existsSync(legacyChromePath);
 const launchOpts = { args: ["--ignore-certificate-errors"] };
@@ -45,11 +49,14 @@ async function snap(name, opts = {}) {
 
 async function domSummary(sel) {
 	try {
-		return await page.locator(sel).first().evaluate((el) => ({
-			cls: el.className,
-			display: getComputedStyle(el).display,
-			visible: el.getBoundingClientRect().height > 0,
-		}));
+		return await page
+			.locator(sel)
+			.first()
+			.evaluate((el) => ({
+				cls: el.className,
+				display: getComputedStyle(el).display,
+				visible: el.getBoundingClientRect().height > 0,
+			}));
 	} catch {
 		return null;
 	}
@@ -57,17 +64,22 @@ async function domSummary(sel) {
 
 // 1. Header nav "All Pages" dropdown
 try {
-	const trigger = page.locator('button:has-text("All Pages"), [class*="dropdown" i] >> text=All Pages').first();
+	const trigger = page
+		.locator(
+			'button:has-text("All Pages"), [class*="dropdown" i] >> text=All Pages',
+		)
+		.first();
 	if (await trigger.isVisible({ timeout: 2000 })) {
 		await snap("all-pages-dropdown-before");
 		await trigger.click();
 		await page.waitForTimeout(400);
 		await snap("all-pages-dropdown-after");
-		const items = await page.locator('a:visible').allTextContents();
+		const items = await page.locator("a:visible").allTextContents();
 		interactions.push({
 			name: "all-pages-dropdown",
 			trigger: 'header button:has-text("All Pages")',
-			delta: "Clicking 'All Pages' in the header opens a dropdown/mega-menu panel listing all site pages as links beneath the trigger.",
+			delta:
+				"Clicking 'All Pages' in the header opens a dropdown/mega-menu panel listing all site pages as links beneath the trigger.",
 			before: "all-pages-dropdown-before.png",
 			after: "all-pages-dropdown-after.png",
 		});
@@ -83,14 +95,19 @@ try {
 	await page.setViewportSize({ width: 390, height: 844 });
 	await page.waitForTimeout(500);
 	await snap("mobile-menu-before");
-	const hamburger = page.locator('button[aria-label*="menu" i], [class*="hamburger" i], [class*="menu-toggle" i], button:has(svg)').last();
+	const hamburger = page
+		.locator(
+			'button[aria-label*="menu" i], [class*="hamburger" i], [class*="menu-toggle" i], button:has(svg)',
+		)
+		.last();
 	await hamburger.click({ timeout: 3000 });
 	await page.waitForTimeout(400);
 	await snap("mobile-menu-after");
 	interactions.push({
 		name: "mobile-menu",
 		trigger: "header hamburger button (mobile viewport)",
-		delta: "Clicking the hamburger icon on mobile viewport opens the mobile nav menu (slide-in or full overlay) listing nav links.",
+		delta:
+			"Clicking the hamburger icon on mobile viewport opens the mobile nav menu (slide-in or full overlay) listing nav links.",
 		before: "mobile-menu-before.png",
 		after: "mobile-menu-after.png",
 	});
@@ -104,7 +121,11 @@ try {
 // 3. FAQ accordion (pricing / features pages)
 if (PAGE_TYPE === "pricing" || PAGE_TYPE === "features") {
 	try {
-		const faqQ = page.locator('text=/How secure is my financial data|Do you offer phone support|Can I use my own domain/').first();
+		const faqQ = page
+			.locator(
+				"text=/How secure is my financial data|Do you offer phone support|Can I use my own domain/",
+			)
+			.first();
 		await faqQ.scrollIntoViewIfNeeded();
 		await page.waitForTimeout(300);
 		await snap("faq-before");
@@ -131,11 +152,17 @@ if (PAGE_TYPE === "pricing") {
 		const toggle = page.locator('text="Billed Yearly"').first();
 		await toggle.scrollIntoViewIfNeeded();
 		await snap("pricing-toggle-before");
-		const priceBefore = await page.locator("text=/^\\$[0-9]+/").first().textContent();
+		const priceBefore = await page
+			.locator("text=/^\\$[0-9]+/")
+			.first()
+			.textContent();
 		await toggle.click();
 		await page.waitForTimeout(400);
 		await snap("pricing-toggle-after");
-		const priceAfter = await page.locator("text=/^\\$[0-9]+/").first().textContent();
+		const priceAfter = await page
+			.locator("text=/^\\$[0-9]+/")
+			.first()
+			.textContent();
 		interactions.push({
 			name: "pricing-billing-toggle",
 			trigger: 'text="Billed Yearly" toggle switch',
@@ -151,8 +178,15 @@ if (PAGE_TYPE === "pricing") {
 // 5. Testimonial carousel arrows (home, pricing, about)
 if (["home", "pricing", "about"].includes(PAGE_TYPE)) {
 	try {
-		const nextBtn = page.locator('button:has(svg)').filter({ hasText: "" }).last();
-		const carousel = page.locator('text=/Optimize is super easy to edit|has been instrumental|working at Optimize/').first();
+		const nextBtn = page
+			.locator("button:has(svg)")
+			.filter({ hasText: "" })
+			.last();
+		const carousel = page
+			.locator(
+				"text=/Optimize is super easy to edit|has been instrumental|working at Optimize/",
+			)
+			.first();
 		if (await carousel.isVisible({ timeout: 2000 }).catch(() => false)) {
 			await carousel.scrollIntoViewIfNeeded();
 			await page.waitForTimeout(300);
@@ -160,7 +194,9 @@ if (["home", "pricing", "about"].includes(PAGE_TYPE)) {
 			const textBefore = await carousel.textContent();
 			// find nearby right-arrow button
 			const arrowBtn = page
-				.locator('[class*="carousel" i] button, [class*="testimonial" i] button')
+				.locator(
+					'[class*="carousel" i] button, [class*="testimonial" i] button',
+				)
 				.last();
 			await arrowBtn.click({ timeout: 3000 });
 			await page.waitForTimeout(500);
@@ -188,7 +224,10 @@ if (PAGE_TYPE === "blog") {
 		await search.fill("Wealth");
 		await page.waitForTimeout(500);
 		await snap("blog-search-after");
-		const cardCountAfter = await page.locator('h2, h3').filter({ hasText: /Wealth/i }).count();
+		const cardCountAfter = await page
+			.locator("h2, h3")
+			.filter({ hasText: /Wealth/i })
+			.count();
 		interactions.push({
 			name: "blog-search-filter",
 			trigger: 'input[placeholder*="Search any blog"]',
@@ -207,7 +246,9 @@ try {
 	await page.mouse.move(0, 0);
 	await page.waitForTimeout(200);
 	const hoverTargets = await page
-		.locator('header a, header button, a[class*="btn" i], button[class*="btn" i], [class*="card" i]')
+		.locator(
+			'header a, header button, a[class*="btn" i], button[class*="btn" i], [class*="card" i]',
+		)
 		.all();
 	const hoverDir = path.join(OUT, "hover");
 	fs.mkdirSync(hoverDir, { recursive: true });
@@ -219,15 +260,22 @@ try {
 			if (!(await el.isVisible())) continue;
 			const label = (await el.innerText().catch(() => "")).trim().slice(0, 30);
 			await el.scrollIntoViewIfNeeded();
-			await el.screenshot({ path: path.join(hoverDir, `hov-${count}-rest.png`) });
+			await el.screenshot({
+				path: path.join(hoverDir, `hov-${count}-rest.png`),
+			});
 			await el.hover({ timeout: 2000 });
 			await page.waitForTimeout(300);
-			await el.screenshot({ path: path.join(hoverDir, `hov-${count}-hover.png`) });
+			await el.screenshot({
+				path: path.join(hoverDir, `hov-${count}-hover.png`),
+			});
 			hoverIndex.push({ i: count, label });
 			count++;
 		} catch {}
 	}
-	fs.writeFileSync(path.join(hoverDir, "index.json"), JSON.stringify(hoverIndex, null, 2));
+	fs.writeFileSync(
+		path.join(hoverDir, "index.json"),
+		JSON.stringify(hoverIndex, null, 2),
+	);
 	interactions.push({
 		name: "generic-hover-states",
 		trigger: "various nav links / buttons / cards",
@@ -237,6 +285,9 @@ try {
 	interactions.push({ name: "generic-hover-states", error: e.message });
 }
 
-fs.writeFileSync(path.join(OUT, "interactions.json"), JSON.stringify(interactions, null, 2));
+fs.writeFileSync(
+	path.join(OUT, "interactions.json"),
+	JSON.stringify(interactions, null, 2),
+);
 console.log("Interactions captured:", interactions.length);
 await browser.close();

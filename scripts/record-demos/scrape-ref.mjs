@@ -22,7 +22,9 @@ console.log("Launching chromium...");
 // tried upstream but a plain --proxy-server flag doesn't fix the underlying TLS 1.3
 // handshake failure by itself — this TLS-1.2 pin is the version verified working
 // end-to-end against a live remote reference site.)
-const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(URL);
+const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(
+	URL,
+);
 const legacyChromePath = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
 // The default Playwright-managed Chromium build isn't always downloadable in this
 // sandbox (its CDN fetch can itself be blocked/flaky), so fall back to the older
@@ -52,7 +54,9 @@ if (!isLocal) {
 		launchOpts.args.push(`--proxy-server=${proxyUrl}`);
 	}
 }
-const browser = await chromium.launch(isLocal && !useLegacyChrome ? {} : launchOpts);
+const browser = await chromium.launch(
+	isLocal && !useLegacyChrome ? {} : launchOpts,
+);
 console.log("Chromium launched. Opening page...");
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 console.log("Page opened. Navigating to:", URL);
