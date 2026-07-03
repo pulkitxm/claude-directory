@@ -396,6 +396,43 @@ Responsive interfaces, motion studies and developer tools.
 | [premium/aceternity/minimalist-portfolio-template](./templates/premium/aceternity/minimalist-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Schibsted Grotesk |
 | [nodus-agent-template](./templates/premium/aceternity/nodus-agent-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [playful-marketing-aceternity](./templates/premium/aceternity/playful-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/nextjstemplates/ai-tool](./templates/premium/nextjstemplates/ai-tool/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans |
+| [premium/nextjstemplates/doggystickers](./templates/premium/nextjstemplates/doggystickers/) | Interface experiment. | HTML, CSS, vanilla JS, Josefin Sans |
+| [premium/nextjstemplates/gostartup](./templates/premium/nextjstemplates/gostartup/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
+| [premium/nextjstemplates/landing-template-nextui](./templates/premium/nextjstemplates/landing-template-nextui/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/nextjstemplates/next-saas-starter](./templates/premium/nextjstemplates/next-saas-starter/) | Interface experiment. | HTML, CSS, vanilla JS, Poppins |
+| [premium/nextjstemplates/next-startd](./templates/premium/nextjstemplates/next-startd/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/nextjstemplates/nextadmin](./templates/premium/nextjstemplates/nextadmin/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind CSS v4, Satoshi, ApexCharts |
+| [premium/nextjstemplates/notion-blog](./templates/premium/nextjstemplates/notion-blog/) | Interface experiment. | HTML, CSS, vanilla JS, system font stack, inline SVG |
+| [premium/nextjstemplates/play](./templates/premium/nextjstemplates/play/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/nextjstemplates/plutonium](./templates/premium/nextjstemplates/plutonium/) | Interface experiment. | HTML, CSS, vanilla JS |
+| [premium/nextjstemplates/react-portfolio](./templates/premium/nextjstemplates/react-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Hind |
+| [premium/nextjstemplates/saas-ui](./templates/premium/nextjstemplates/saas-ui/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/nextjstemplates/sandocs](./templates/premium/nextjstemplates/sandocs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/nextjstemplates/solid](./templates/premium/nextjstemplates/solid/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Swiper.js |
+| [premium/nextjstemplates/stablo](./templates/premium/nextjstemplates/stablo/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/nextjstemplates/startup-nextjs](./templates/premium/nextjstemplates/startup-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/nextjstemplates/startup-pro](./templates/premium/nextjstemplates/startup-pro/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
+| [premium/nextjstemplates/tailwind-nextjs-starter-blog](./templates/premium/nextjstemplates/tailwind-nextjs-starter-blog/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk |
+| [premium/nextjstemplates/tx-shadcn](./templates/premium/nextjstemplates/tx-shadcn/) | Interface experiment. | HTML, CSS, vanilla JS, CalSans, Inter |
+| [premium/nextjstemplates/unft-marketplace](./templates/premium/nextjstemplates/unft-marketplace/) | Interface experiment. | HTML, CSS, vanilla JS, Poppins, DM Sans |
+| [premium/themefisher/andromeda-light-nextjs](./templates/premium/themefisher/andromeda-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Poppins |
+| [premium/themefisher/andromeda-nextjs](./templates/premium/themefisher/andromeda-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Poppins |
+| [premium/themefisher/bigspring-nextjs](./templates/premium/themefisher/bigspring-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Urbanist, Poppins, Swiper |
+| [premium/themefisher/clarity](./templates/premium/themefisher/clarity/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi, Clash Grotesk |
+| [premium/themefisher/cleaner-nextjs](./templates/premium/themefisher/cleaner-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Rubik |
+| [premium/themefisher/cloudpeak-nextjs](./templates/premium/themefisher/cloudpeak-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Sora |
+| [premium/themefisher/copper-nextjs](./templates/premium/themefisher/copper-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Quicksand |
+| [premium/themefisher/darkrise-nextjs](./templates/premium/themefisher/darkrise-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
+| [premium/themefisher/glasto](./templates/premium/themefisher/glasto/) | Interface experiment. | HTML, CSS, vanilla JS, Onest, Swiper.js |
+| [premium/themefisher/hyperbit-nextjs](./templates/premium/themefisher/hyperbit-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif, Lenis |
+| [premium/themefisher/kindora-nextjs](./templates/premium/themefisher/kindora-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Swiper, Urbanist |
+| [premium/themefisher/mobit](./templates/premium/themefisher/mobit/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree, AOS |
+| [premium/themefisher/neonspark-nextjs](./templates/premium/themefisher/neonspark-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Epilogue |
+| [premium/themefisher/optimize-nextjs](./templates/premium/themefisher/optimize-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Outfit, Inter, AOS |
+| [premium/themefisher/relux-nextjs](./templates/premium/themefisher/relux-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Namdhinggo, Red Rose |
+| [premium/themefisher/seoptic-nextjs](./templates/premium/themefisher/seoptic-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
+| [premium/themefisher/spydea-nextjs](./templates/premium/themefisher/spydea-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Maven Pro, Merriweather |
 | [proactiv-marketing-template](./templates/premium/aceternity/proactiv-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
 | [productized-agency-template](./templates/premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
 | [premium/aceternity/schedule-marketing-template](./templates/premium/aceternity/schedule-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
