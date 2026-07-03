@@ -33,10 +33,33 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Strip non-deployable content
+        # Two things get dropped from the deploy artifact only (git history is
+        # untouched):
+        #   1. .reference/ dirs -- scrape recon (screenshots, raw HTML/CSS)
+        #      used only while building/auditing clones, never linked live.
+        #   2. "Complex" projects -- anything with a package.json next to its
+        #      prompt.md (React/Next/Vite templates that need a build step).
+        #      These never get a live-preview iframe on the site (only plain
+        #      HTML/CSS/JS projects do), so their source has no reason to be
+        #      in a static Pages deploy. demo.mp4/poster/README/prompt.md are
+        #      kept so the project still has something to show.
+        run: |
+          find . -type d -name '.reference' -prune -exec rm -rf {} +
+
+          find . -name 'prompt.md' -not -path './.git/*' | while read -r prompt; do
+            dir="$(dirname "$prompt")"
+            if [ -f "$dir/package.json" ]; then
+              find "$dir" -mindepth 1 -maxdepth 1 \
+                ! -name 'demo.mp4' ! -name 'poster.*' \
+                ! -name 'README.md' ! -name 'prompt.md' \
+                -exec rm -rf {} +
+            fi
+          done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # Upload entire repository (minus stripped content, see above)
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
