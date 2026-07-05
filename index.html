@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browse the Claude Directory's open-source collection of AI-generated UI experiments."
+    />
+    <title>Claude Directory — Visual Explorer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#gallery">Skip to gallery</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Claude Directory home">
+        <span class="brand-mark" aria-hidden="true">C<span>/</span>D</span>
+        <span class="brand-copy">
+          <strong>Claude Directory</strong>
+          <small>Visual explorer</small>
+        </span>
+      </a>
+      <a
+        class="header-link"
+        href="https://github.com/pulkitxm/claude-directory"
+        target="_blank"
+        rel="noreferrer"
+      >
+        View repository
+        <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Open-source interface archive</p>
+          <h1 id="page-title">Find something<br />worth <em>building</em> from.</h1>
+          <p class="hero-intro">
+            Explore AI-generated landing pages, shaders, components, portfolios,
+            and experiments without digging through folders by hand.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#gallery">Browse the collection <span>↓</span></a>
+            <p><strong id="hero-project-count">550</strong> projects, each with source and a recorded demo.</p>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orbit hero-orbit-one"></div>
+          <div class="hero-orbit hero-orbit-two"></div>
+          <div class="hero-monogram">CD</div>
+          <div class="hero-index">
+            <span>INDEX</span>
+            <strong id="hero-category-count">09</strong>
+            <small>CATEGORIES</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog" id="gallery" aria-labelledby="catalog-title">
+        <div class="catalog-heading">
+          <div>
+            <p class="section-number">01 / DIRECTORY</p>
+            <h2 id="catalog-title">Browse the work</h2>
+          </div>
+          <p>
+            Search by project, technology, or description. Open any card to watch
+            its demo and jump directly to the source.
+          </p>
+        </div>
+
+        <div class="catalog-controls">
+          <label class="search-control" for="project-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-4-4"></path>
+            </svg>
+            <span class="sr-only">Search projects</span>
+            <input
+              id="project-search"
+              type="search"
+              placeholder="Search names, stacks, or ideas..."
+              autocomplete="off"
+            />
+            <kbd>⌘ K</kbd>
+          </label>
+
+          <label class="sort-control" for="project-sort">
+            <span>Sort</span>
+            <select id="project-sort">
+              <option value="latest">Recently updated</option>
+              <option value="name">Name A–Z</option>
+              <option value="category">Category</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="category-filters" id="category-filters" aria-label="Filter by category"></div>
+
+        <div class="results-bar" aria-live="polite">
+          <p><strong id="visible-count">0</strong> <span id="results-label">projects</span></p>
+          <button id="clear-filters" type="button" hidden>Clear filters</button>
+        </div>
+
+        <div class="project-grid" id="project-grid" aria-busy="true">
+          <div class="loading-state">
+            <span></span><span></span><span></span>
+            <p>Reading the directory…</p>
+          </div>
+        </div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <p class="empty-mark">Ø</p>
+          <h3>No matching experiments</h3>
+          <p>Try a broader search or switch to another category.</p>
+          <button type="button" data-clear-filters>Reset the directory</button>
+        </div>
+
+        <div class="load-more-wrap" id="load-more-wrap" hidden>
+          <button class="load-more" id="load-more" type="button">
+            <span>Load more projects</span>
+            <small id="remaining-count"></small>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built as a visual index for the open-source Claude Directory.</p>
+      <p>Source projects belong to their respective contributors.</p>
+    </footer>
+
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" type="button" aria-label="Close preview">×</button>
+      <div class="dialog-media">
+        <video id="dialog-video" controls muted loop playsinline></video>
+        <div class="video-loading" id="video-loading">
+          <span></span>
+          <p>Loading recorded demo…</p>
+        </div>
+      </div>
+      <div class="dialog-content">
+        <p class="dialog-category" id="dialog-category"></p>
+        <h2 id="dialog-title"></h2>
+        <p class="dialog-path" id="dialog-path"></p>
+        <p class="dialog-description" id="dialog-description"></p>
+        <div class="dialog-meta">
+          <div>
+            <span>STACK</span>
+            <p id="dialog-stack"></p>
+          </div>
+          <div>
+            <span>UPDATED</span>
+            <p id="dialog-date"></p>
+          </div>
+        </div>
+        <div class="dialog-actions">
+          <a id="dialog-source" href="#" target="_blank" rel="noreferrer">View source <span>↗</span></a>
+          <a id="dialog-prompt" href="#" target="_blank" rel="noreferrer">Read prompt <span>↗</span></a>
+        </div>
+      </div>
+    </dialog>
+
+    <template id="project-card-template">
+      <article class="project-card">
+        <button class="card-open" type="button">
+          <span class="card-media">
+            <span class="card-image-wrap">
+              <img alt="" loading="lazy" decoding="async" />
+            </span>
+            <span class="card-topline">
+              <span class="card-number"></span>
+              <span class="card-category"></span>
+            </span>
+            <span class="card-play"><span>▶</span> Play demo</span>
+          </span>
+          <span class="card-body">
+            <span class="card-title-row">
+              <span class="card-title"></span>
+              <span class="card-arrow">↗</span>
+            </span>
+            <span class="card-description"></span>
+            <span class="card-footer">
+              <span class="card-tags"></span>
+              <time></time>
+            </span>
+          </span>
+        </button>
+      </article>
+    </template>
+  </body>
+</html>
