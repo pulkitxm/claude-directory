@@ -1,4 +1,3 @@
-// Theme toggle (light/dark, persisted)
 const root = document.documentElement;
 const toggle = document.getElementById("theme-toggle");
 toggle.addEventListener("click", () => {
@@ -7,8 +6,6 @@ toggle.addEventListener("click", () => {
 		localStorage.setItem("theme", isDark ? "dark" : "light");
 	} catch (e) {}
 });
-
-// Accordion (type=multiple, collapsible) with height animation + chevron rotate
 document.querySelectorAll(".accordion-trigger").forEach((btn) => {
 	btn.addEventListener("click", () => {
 		const open = btn.getAttribute("aria-expanded") === "true";
@@ -17,8 +14,6 @@ document.querySelectorAll(".accordion-trigger").forEach((btn) => {
 		content.setAttribute("data-state", open ? "closed" : "open");
 	});
 });
-
-// Copy code button
 document.querySelectorAll(".code-copy").forEach((btn) => {
 	btn.addEventListener("click", () => {
 		const code = btn.closest(".code-figure").querySelector("code");
