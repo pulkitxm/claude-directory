@@ -4,8 +4,7 @@
 		<meta charset="UTF-8">
 		<link rel="icon" type="image/png" href="favicon.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Primary Meta Tags -->
-		<title>404 Not Found | Synth AI</title>
+<title>404 Not Found | Synth AI</title>
 		<meta
 			name="title"
 			content="Synth AI - React AI Business Assistant Website Template"
@@ -14,9 +13,7 @@
 			name="description"
 			content="The page you are looking for does not exist."
 		>
-
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website">
+<meta property="og:type" content="website">
 		<meta property="og:url" content="https://synthai.demos.tailgrids.com/">
 		<meta
 			property="og:title"
@@ -32,18 +29,6 @@
 		>
 
 		<link rel="stylesheet" crossorigin="" href="assets/index.css">
-
-		<script>
-		if (
-			localStorage.theme === "dark" ||
-			(!("theme" in localStorage) &&
-				window.matchMedia("(prefers-color-scheme: dark)").matches)
-		) {
-			document.documentElement.classList.add("dark");
-		} else {
-			document.documentElement.classList.remove("dark");
-		}
-		</script>
 	</head>
 	<body>
 		<div id="root">
@@ -77,7 +62,7 @@
 											viewBox="0 0 20 20"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
-										>
+											>
 											<path
 												fill-rule="evenodd"
 												clip-rule="evenodd"
@@ -94,7 +79,7 @@
 											viewBox="0 0 20 20"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
-										>
+											>
 											<path
 												fill-rule="evenodd"
 												clip-rule="evenodd"
@@ -116,40 +101,28 @@
 
 		<script>
 		document.addEventListener("DOMContentLoaded", () => {
-			// Theme toggle action
-			document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
-				btn.addEventListener("click", () => {
-					if (document.documentElement.classList.contains("dark")) {
-						document.documentElement.classList.remove("dark");
-						localStorage.theme = "light";
-					} else {
-						document.documentElement.classList.add("dark");
-						localStorage.theme = "dark";
-					}
-				});
-			});
-
-			// Mobile hamburger menu toggle
 			const hamburger = document.querySelector(".mobile-hamburger-btn");
 			if (hamburger) {
 				let mobileMenu = document.querySelector(".mobile-menu");
 				if (!mobileMenu) {
 					mobileMenu = document.createElement("div");
+					mobileMenu.id = "mobile-menu";
 					mobileMenu.className =
-						"mobile-menu hidden lg:hidden absolute top-full left-3 right-3 rounded-xl bg-white dark:bg-neutral-950 py-4 px-4 mt-2 flex flex-col space-y-4 z-50 shadow-lg border border-neutral-100 dark:border-neutral-800";
+						"mobile-menu hidden lg:hidden absolute top-full left-3 right-3 rounded-xl bg-white py-4 px-4 mt-2 flex flex-col space-y-4";
 					mobileMenu.innerHTML = `
-              <a class="py-2 px-4 font-mono uppercase text-base rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-900 dark:text-white" href="features.html">Features</a>
-              <a class="py-2 px-4 font-mono uppercase text-base rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-900 dark:text-white" href="pricing.html">Pricing</a>
-              <a class="py-2 px-4 font-mono uppercase text-base rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-900 dark:text-white" href="about.html">About</a>
-              <a class="py-2 px-4 font-mono uppercase text-base rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-900 dark:text-white" href="blog.html">Blog</a>
-              <a class="py-2 px-4 font-mono uppercase text-base rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-900 dark:text-white" href="contacts.html">Contact</a>
-              <a class="text-white text-center py-2.5 px-5 h-11 font-mono uppercase text-base rounded-lg bg-neutral-950 hover:bg-neutral-700" href="contacts.html">Get Started</a>
+              <a class="font-mono uppercase text-base transition-colors rounded-lg px-4 py-2 block hover:text-neutral-900 hover:bg-neutral-50" href="features.html">Features</a>
+              <a class="font-mono uppercase text-base transition-colors rounded-lg px-4 py-2 block hover:text-neutral-900 hover:bg-neutral-50" href="pricing.html">Pricing</a>
+              <a class="font-mono uppercase text-base transition-colors rounded-lg px-4 py-2 block hover:text-neutral-900 hover:bg-neutral-50" href="about.html">About</a>
+              <a class="font-mono uppercase text-base transition-colors rounded-lg px-4 py-2 block hover:text-neutral-900 hover:bg-neutral-50" href="blog.html">Blog</a>
+              <a class="font-mono uppercase text-base transition-colors rounded-lg px-4 py-2 block hover:text-neutral-900 hover:bg-neutral-50" href="contacts.html">Contact</a>
+              <a class="text-white py-3 px-5 font-mono uppercase text-base rounded-lg bg-black transition-colors duration-300 block text-center hover:bg-neutral-700" href="contacts.html">Get Started</a>
             `;
 					hamburger.parentElement.appendChild(mobileMenu);
 				}
 				hamburger.addEventListener("click", (e) => {
 					e.stopPropagation();
 					mobileMenu.classList.toggle("hidden");
+					hamburger.setAttribute("aria-expanded", String(!mobileMenu.classList.contains("hidden")));
 				});
 				document.addEventListener("click", (e) => {
 					if (
@@ -158,11 +131,10 @@
 						e.target !== hamburger
 					) {
 						mobileMenu.classList.add("hidden");
+						hamburger.setAttribute("aria-expanded", "false");
 					}
 				});
 			}
-
-			// Accordions
 			document.querySelectorAll(".divide-y button").forEach((button) => {
 				button.addEventListener("click", () => {
 					const answerContainer = button.nextElementSibling;
@@ -173,8 +145,6 @@
 						const isCollapsed =
 							answerContainer.style.height === "0px" ||
 							!answerContainer.style.height;
-
-						// Close all other FAQs first
 						document.querySelectorAll(".divide-y > div > div").forEach((ac) => {
 							ac.style.height = "0px";
 							ac.style.opacity = "0";
@@ -210,17 +180,16 @@
 					}
 				});
 			});
-
-			// Active Link Styling
 			const pathName =
 				window.location.pathname.split("/").pop() || "index.html";
 			document.querySelectorAll("header nav a, .mobile-menu a").forEach((a) => {
 				const href = a.getAttribute("href");
 				if (href === pathName) {
+					a.setAttribute("aria-current", "page");
 					a.classList.add(
 						"text-neutral-900",
-						"bg-neutral-50",
-						"dark:bg-neutral-900",
+						"bg-neutral-100",
+						"font-medium",
 					);
 				}
 			});
