@@ -1,190 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Sign In — Snowpeak</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@400;500;600;700&display=swap"
-			rel="stylesheet"
-		>
-		<link rel="stylesheet" href="assets/styles.css">
-	</head>
-	<body>
-		<!-- ── Navigation ── -->
-		<nav style="position:relative; z-index:50;">
-			<div class="container">
-				<div class="nav-wrapper">
-					<div style="position:relative;">
-						<div class="nav-pill" id="nav-pill">
-							<a href="index.html" class="nav-logo">Snowpeak</a>
-							<button
-								class="nav-icon-btn orange"
-								id="dropdown-toggle"
-								aria-label="Menu"
-								style="font-size:1.25rem; font-weight:700;"
-							>
-								+
-							</button>
-							<button
-								class="nav-icon-btn dark"
-								id="searchButton"
-								aria-label="Search"
-							>
-								<svg
-									width="16"
-									height="16"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2.5"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								>
-									<circle cx="11" cy="11" r="8" />
-									<path d="m21 21-4.35-4.35" />
-								</svg>
-							</button>
-						</div>
-						<div class="dropdown-panel" id="dropdown-panel">
-							<a href="#" class="dropdown-link pink">Buy Snowpeak</a>
-							<a href="index.html" class="dropdown-link white">Overview</a>
-							<a href="blog.html" class="dropdown-link white">Blog</a>
-							<a href="blog.html" class="dropdown-link white">Top Stories</a>
-							<a href="podcast.html" class="dropdown-link white">Podcast</a>
-							<a href="sign-in.html" class="dropdown-link accent">Sign in</a>
-							<a href="sign-up.html" class="dropdown-link orange">Sign up</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-
-		<!-- ── Search Modal ── -->
-		<div class="search-modal" id="searchModal">
-			<div class="search-modal-inner">
-				<div class="search-modal-overlay" id="modalOverlay"></div>
-				<div class="search-modal-content">
-					<input
-						type="text"
-						class="search-input"
-						id="searchInput"
-						placeholder="Search posts or podcasts..."
-						autocomplete="off"
-					>
-					<div class="search-results" id="searchResults"></div>
-				</div>
-			</div>
-		</div>
-
-		<!-- ── Auth Page ── -->
-		<main class="auth-page">
-			<div class="auth-card">
-				<h1 class="auth-title">Sign in</h1>
-				<p class="auth-subtitle">
-					Welcome back. Sign in to your Snowpeak account.
-				</p>
-
-				<form onsubmit="return false;">
-					<div class="auth-field">
-						<label class="auth-label" for="email">Email</label>
-						<input
-							type="email"
-							id="email"
-							class="auth-input"
-							placeholder="you@example.com"
-							autocomplete="email"
-						>
-					</div>
-					<div class="auth-field">
-						<label class="auth-label" for="password">Password</label>
-						<input
-							type="password"
-							id="password"
-							class="auth-input"
-							placeholder="••••••••"
-							autocomplete="current-password"
-						>
-					</div>
-					<button type="submit" class="auth-submit accent">Sign in</button>
-				</form>
-
-				<div class="auth-switch">
-					Don't have an account? <a href="sign-up.html">Sign up</a>
-				</div>
-
-				<div
-					style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap;"
-				>
-					<a
-						href="index.html"
-						class="btn btn-white"
-						style="height:2.25rem; padding:0 1rem; border-radius:0.75rem; font-size:0.8rem;"
-						>Overview</a
-					>
-					<a
-						href="blog.html"
-						class="btn btn-white"
-						style="height:2.25rem; padding:0 1rem; border-radius:0.75rem; font-size:0.8rem;"
-						>Blog</a
-					>
-					<a
-						href="podcast.html"
-						class="btn btn-white"
-						style="height:2.25rem; padding:0 1rem; border-radius:0.75rem; font-size:0.8rem;"
-						>Podcast</a
-					>
-				</div>
-			</div>
-		</main>
-
-		<script>
-		const dropdownToggle = document.getElementById("dropdown-toggle");
-		const dropdownPanel = document.getElementById("dropdown-panel");
-		dropdownToggle.addEventListener("click", () => {
-			dropdownPanel.classList.toggle("open");
-			dropdownToggle.textContent = dropdownPanel.classList.contains("open")
-				? "×"
-				: "+";
-		});
-		document.addEventListener("click", (e) => {
-			if (
-				!e.target.closest("#nav-pill") &&
-				!e.target.closest("#dropdown-panel")
-			) {
-				dropdownPanel.classList.remove("open");
-				dropdownToggle.textContent = "+";
-			}
-		});
-
-		const searchButton = document.getElementById("searchButton");
-		const searchModal = document.getElementById("searchModal");
-		const modalOverlay = document.getElementById("modalOverlay");
-		const searchInput = document.getElementById("searchInput");
-		const searchResults = document.getElementById("searchResults");
-
-		searchButton.addEventListener("click", (e) => {
-			e.preventDefault();
-			searchModal.style.display = "block";
-			document.body.style.overflow = "hidden";
-			setTimeout(() => searchInput.focus(), 100);
-		});
-
-		function closeSearch() {
-			searchModal.style.display = "none";
-			document.body.style.overflow = "";
-			searchInput.value = "";
-			searchResults.innerHTML = "";
-			searchResults.style.display = "none";
-		}
-
-		modalOverlay.addEventListener("click", closeSearch);
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "Escape" && searchModal.style.display !== "none")
-				closeSearch();
-		});
-		</script>
-	</body>
-</html>
+<!DOCTYPE html><html lang="en" class="selection:bg-orange-500 selection:text-base-900"><head><title>Your Page Title</title>
+<meta name="description" content="A detailed description of your page content.">
+<link rel="canonical" href="https://yoursite.com/current-page">
+<meta property="og:title" content="Your Page Title">
+<meta property="og:description" content="A detailed description of your page content.">
+<meta property="og:url" content="https://yoursite.com/current-page">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://yoursite.com/og-image.jpg">
+<meta property="og:image:alt" content="Open Graph Image Alt">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Your Site Name">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@yoursite">
+<meta name="twitter:creator" content="@yourhandle"><meta property="og:type" content="website"><meta property="og:url" content="https://www.yourwebsite.com/"><meta property="og:title" content="Your Website Title"><meta property="og:description" content="A brief description of your website content."><meta property="og:image" content="https://www.yourwebsite.com/path/to/image.jpg"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://www.yourwebsite.com/"><meta property="twitter:title" content="Your Website Title"><meta property="twitter:description" content="A brief description of your website content."><meta property="twitter:image" content="https://www.yourwebsite.com/path/to/image.jpg"><link rel="canonical" href="https://www.yourwebsite.com/"><meta name="robots" content="index, follow"><meta name="googlebot" content="index, follow"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Your Website Title</title><meta name="description" content="A brief description of your website content."><meta name="keywords" content="keyword1, keyword2, keyword3"><meta name="author" content="Your Name or Company Name"><meta name="theme-color" content="#ffffff"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="preconnect" href="https://rsms.me/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="icon" href="https://snowpeak-astro.pages.dev/favicon.ico" sizes="any"><link rel="icon" href="https://snowpeak-astro.pages.dev/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="https://snowpeak-astro.pages.dev/apple-touch-icon.png"><link rel="manifest" href="https://snowpeak-astro.pages.dev/manifest.webmanifest"><link rel="shortcut icon" href="https://snowpeak-astro.pages.dev/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" sizes="16x16" href="https://snowpeak-astro.pages.dev/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="https://snowpeak-astro.pages.dev/favicon-32x32.png"><link rel="icon" type="image/png" sizes="48x48" href="https://snowpeak-astro.pages.dev/favicon-48x48.png"><link rel="apple-touch-icon" sizes="180x180" href="https://snowpeak-astro.pages.dev/apple-touch-icon.png"><script type="module">var e=window.location.pathname;![`/`,`/index.html`,`/blog`,`/blog.html`].includes(e)&&document.getElementById(`tickerElement`)?.style.setProperty(`display`,`none`);</script><link rel="stylesheet" href="https://rsms.me/inter/inter.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&amp;display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css"><link rel="stylesheet" href="/reference.css"></head><body class="flex flex-col bg-base-500 min-h-svh"><main class="grow">
+  <section><div class="mx-auto max-w-screen 2xl:max-w-[100rem] px-4  py-4">
+      <div class="p-10 rounded-4xl bg-base-900 lg:px-20 lg:h-[calc(100svh-2rem)] flex flex-col justify-center"><div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end mt-auto"><div><a href="/index.html" class="text-base-400 text-xs font-display hover:text-white">Go back</a><h1 class="text-lg  sm:text-xl md:text-2xl lg:text-3xl font-display text-white md:w-1/2 mt-8 text-balance">
+              Sign in and prove you're one of the good ones
+</h1><p class="text-sm  text-base-200 pl-8 mt-4 text-balance">
+              Welcome back. You know the drill,email, password, mild panic when
+              you forget your login. Let’s get you back to the good stuff.
+</p><a class="flex text-center font-display justify-center font-medium items-center duration-500 ease-in-out transition-all focus:ring-2 ring-offset-2 ring-offset-base-500 hover:rounded-full text-base-900 bg-orange-500 hover:bg-orange-600 focus:ring-orange-500 h-10 px-6 py-3 text-sm rounded-xl mt-8 w-fit" href="/index.html">
+              Go back gome
+            </a></div><form action="#" method="POST" class="mt-2"><div class="flex flex-col gap-y-2"><div><label for="email" class="text-sm font-medium text-base-500">Email</label><div class="mt-1"><input type="email" name="email" id="email" autocomplete="email" required="" aria-required="true" aria-describedby="email-error" class="block w-full h-20 px-4 py-2 font-display text-3xl text-white border border-transparent appearance-none bg-base-800 rounded-3xl duration-300 placeholder-base-300 focus:bg-transparent focus:outline-none focus:ring-pink-500 focus:ring-offset-2 focus:ring-2 focus:ring-offset-base-500"><span id="email-error" class="hidden text-sm text-red-600">Please enter a valid email address.</span></div></div><div><label for="password" class="text-sm font-medium text-base-500">Password<a href="/sign-in.html" class="text-pink-600 hover:text-pink-700">Forgot password?</a></label><div class="mt-1"><input type="password" name="password" id="password" autocomplete="current-password" required="" aria-required="true" aria-describedby="password-error" class="block w-full h-20 px-4 py-2 font-display text-3xl text-white border border-transparent appearance-none bg-base-800 rounded-3xl duration-300 placeholder-base-300 focus:bg-transparent focus:outline-none focus:ring-pink-500 focus:ring-offset-2 focus:ring-2 focus:ring-offset-base-500"><span id="password-error" class="hidden text-sm text-red-600">Please enter a valid password.</span></div></div><div class="flex items-center justify-between"><div class="flex items-center gap-3"><input id="remember-me" name="remember-me" type="checkbox" class="rounded size-4 bg-base-900 border-base-700 text-pink-600 focus:ring-pink-600"><label for="remember-me" class="text-sm font-medium text-base-500">Remember me</label></div><p class="text-xs font-display text-white">Dont' have an account?<a href="/sign-up.html" class="font-medium text-pink-500 hover:text-base-500">Sign up</a></p></div></div><div><button class="flex text-center font-display justify-center font-medium items-center duration-500 ease-in-out transition-all focus:ring-2 ring-offset-2 ring-offset-base-500 hover:rounded-full text-white bg-pink-500 hover:bg-pink-600 focus:ring-pink-500 size-20 text-xl rounded-3xl mt-8" type="submit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon size-8" slot="icon"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l14 0"></path><path d="M13 18l6 -6"></path><path d="M13 6l6 6"></path></svg></button></div></form></div></div>
+    </div></section>
+</main><script type="module" src="https://snowpeak-astro.pages.dev/_astro/FuseJS.astro_astro_type_script_index_0_lang.szKh-OPk.js"></script></body></html>
