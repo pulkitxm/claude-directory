@@ -40,6 +40,12 @@
 			box-sizing: border-box;
 		}
 
+		html,
+		body {
+			height: 100%;
+			overflow: hidden;
+		}
+
 		body {
 			margin: 0;
 			min-width: 320px;
@@ -70,17 +76,21 @@
 		}
 
 		.shell {
-			width: min(1480px, calc(100% - 48px));
-			margin: 0 auto;
-			padding: 48px 0 64px;
+			display: flex;
+			width: 100%;
+			height: 100dvh;
+			min-height: 0;
+			flex-direction: column;
+			padding: 18px;
 		}
 
 		.masthead {
 			display: grid;
 			grid-template-columns: minmax(0, 1fr) auto;
-			gap: 32px;
-			align-items: start;
-			margin-bottom: 32px;
+			flex: 0 0 auto;
+			gap: 24px;
+			align-items: center;
+			margin-bottom: 14px;
 		}
 
 		.eyebrow {
@@ -98,14 +108,14 @@
 			margin: 0;
 			font-family:
 				"Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-			font-size: clamp(44px, 7vw, 92px);
+			font-size: clamp(34px, 4vw, 58px);
 			font-weight: 400;
 			letter-spacing: -0.055em;
 			line-height: 0.9;
 		}
 
 		.meta {
-			margin: 18px 0 0;
+			margin: 8px 0 0;
 			color: var(--muted);
 			font-size: 14px;
 		}
@@ -125,7 +135,11 @@
 		}
 
 		.dashboard {
+			display: flex;
 			overflow: hidden;
+			min-height: 0;
+			flex: 1 1 auto;
+			flex-direction: column;
 			border: 1px solid var(--line);
 			border-radius: 22px;
 			background: var(--surface);
@@ -140,6 +154,7 @@
 			padding: 20px;
 			border-bottom: 1px solid var(--line);
 			background: color-mix(in srgb, var(--surface-raised) 58%, var(--surface));
+			flex: 0 0 auto;
 		}
 
 		.field {
@@ -181,16 +196,42 @@
 			display: grid;
 			grid-template-columns: repeat(5, minmax(0, 1fr));
 			border-bottom: 1px solid var(--line);
+			flex: 0 0 auto;
 		}
 
 		.metric {
+			display: block;
+			width: 100%;
 			min-width: 0;
+			border: 0;
 			padding: 22px 20px;
 			border-right: 1px solid var(--line);
+			background: transparent;
+			color: inherit;
+			text-align: left;
 		}
 
 		.metric:last-child {
 			border-right: 0;
+		}
+
+		.metric-button {
+			cursor: pointer;
+			transition: background-color 120ms ease;
+		}
+
+		.metric-button:hover {
+			background: var(--hover);
+		}
+
+		.metric-button .metric-label::after {
+			content: " View cloc";
+			color: var(--accent);
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
 		}
 
 		.metric-label {
@@ -222,6 +263,7 @@
 		.pulse-wrap {
 			padding: 22px 20px 18px;
 			border-bottom: 1px solid var(--line);
+			flex: 0 0 auto;
 		}
 
 		.pulse-label {
@@ -257,7 +299,63 @@
 
 		.table-scroll {
 			overflow: auto;
-			max-height: min(66vh, 760px);
+			min-height: 0;
+			flex: 1 1 auto;
+			overscroll-behavior: contain;
+		}
+
+		dialog {
+			width: min(760px, calc(100% - 32px));
+			max-height: min(80dvh, 760px);
+			border: 1px solid var(--line);
+			border-radius: 18px;
+			background: var(--surface);
+			box-shadow: var(--shadow);
+			color: var(--ink);
+			padding: 0;
+		}
+
+		dialog::backdrop {
+			background: rgba(5, 15, 19, 0.72);
+			backdrop-filter: blur(5px);
+		}
+
+		.dialog-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid var(--line);
+			padding: 18px 20px;
+		}
+
+		.dialog-title {
+			margin: 0;
+			font-family:
+				"Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+			font-size: 26px;
+			font-weight: 400;
+		}
+
+		.dialog-close {
+			border: 1px solid var(--line);
+			border-radius: 999px;
+			background: var(--surface-raised);
+			color: var(--ink);
+			cursor: pointer;
+			padding: 8px 12px;
+			font-weight: 700;
+		}
+
+		.cloc-output {
+			overflow: auto;
+			max-height: calc(80dvh - 72px);
+			margin: 0;
+			padding: 22px;
+			color: var(--ink);
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+			font-size: 12px;
+			line-height: 1.65;
+			white-space: pre;
 		}
 
 		table {
@@ -348,17 +446,12 @@
 
 		@media (max-width: 820px) {
 			.shell {
-				width: min(100% - 24px, 1480px);
-				padding-top: 28px;
+				padding: 10px;
 			}
 
 			.masthead {
-				grid-template-columns: 1fr;
-				gap: 18px;
-			}
-
-			.theme-toggle {
-				justify-self: start;
+				grid-template-columns: minmax(0, 1fr) auto;
+				gap: 10px;
 			}
 
 			.summary {
@@ -438,6 +531,15 @@
 				</div>
 			</section>
 		</main>
+		<dialog id="cloc-dialog" aria-labelledby="cloc-title">
+			<div class="dialog-head">
+				<h2 class="dialog-title" id="cloc-title">Current code footprint</h2>
+				<button class="dialog-close" id="cloc-close" type="button">
+					Close
+				</button>
+			</div>
+			<pre class="cloc-output" id="cloc-output"></pre>
+		</dialog>
 
 		<script>
 		const report = __CONTRI_REPORT_DATA__;
@@ -469,6 +571,8 @@
 		const pulse = document.querySelector("#pulse");
 		const head = document.querySelector("#table-head");
 		const resultCount = document.querySelector("#result-count");
+		const clocDialog = document.querySelector("#cloc-dialog");
+		const clocOutput = document.querySelector("#cloc-output");
 		const minDate = report.rows[0]?.Date ?? "";
 		const maxDate = report.rows.at(-1)?.Date ?? "";
 
@@ -559,16 +663,20 @@
 
 		const renderSummary = (totals) => {
 			const metrics = [
-				["Pull requests", totals.PRs, ""],
-				["Commits", totals.Commits, ""],
-				["Lines added", totals["Lines Added"], "added"],
-				["Lines removed", totals["Lines Removed"], "removed"],
-				["Net LOC", totals["Net LOC"], ""],
+				["Pull requests", totals.PRs, "", false],
+				["Commits", totals.Commits, "", false],
+				["Lines added", totals["Lines Added"], "added", false],
+				["Lines removed", totals["Lines Removed"], "removed", false],
+				["Net LOC", totals["Net LOC"], "", true],
 			];
 			summary.replaceChildren(
-				...metrics.map(([label, value, tone]) => {
-					const metric = document.createElement("div");
-					metric.className = "metric";
+				...metrics.map(([label, value, tone, opensCloc]) => {
+					const metric = document.createElement(opensCloc ? "button" : "div");
+					metric.className = opensCloc ? "metric metric-button" : "metric";
+					if (opensCloc) {
+						metric.type = "button";
+						metric.addEventListener("click", () => clocDialog.showModal());
+					}
 					metric.innerHTML = `<span class="metric-label">${label}</span><strong class="metric-value ${tone}">${number.format(value)}</strong>`;
 					return metric;
 				}),
@@ -649,6 +757,13 @@
 			render();
 		});
 		document.querySelector("#reset").addEventListener("click", resetDates);
+		clocOutput.textContent = report.cloc;
+		document
+			.querySelector("#cloc-close")
+			.addEventListener("click", () => clocDialog.close());
+		clocDialog.addEventListener("click", (event) => {
+			if (event.target === clocDialog) clocDialog.close();
+		});
 
 		const themeToggle = document.querySelector("#theme-toggle");
 		let savedTheme;
