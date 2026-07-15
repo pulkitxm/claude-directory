@@ -1,35 +1,32 @@
-# Optivus — AI SaaS Product Landing Page Template Clone (Vanilla HTML/CSS/JS)
+# Optivus SaaS Marketing Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Optivus is a dark-theme AI/SaaS product marketing template built around the headline "Work Smarter, Not Harder," rebuilt pixel-faithfully as a 19-page, self-contained static clone with no framework and no build step. It reproduces the near-black `#111721` base palette with a neon lime-green `#bbf10a` accent, "Rethink Sans" typography, hover-lift card transitions, single-open FAQ/process accordions, a sticky shrink-on-scroll header, and scroll-triggered reveal animations — including a light/dark theme toggle (persisted to `localStorage`, honoring `prefers-color-scheme`) that was added for this clone since the source template only ships dark mode.
+Optivus is a static recreation of the Themefisher Optivus marketing site. It preserves the complete public design, responsive layouts, mobile navigation, FAQ behavior, testimonial controls, forms, and motion details.
 
-## Pages
+## Routes
 
-Home (hero, industries grid, technology showcase, process accordion, testimonials, blog preview, FAQ, CTA band), Blog index with pagination plus 3 full blog post templates, Contact, two About page variants, an Elements style-guide page, Reviews, Services, Team, How It Works, two Pricing variants (monthly/yearly toggle plus a feature-comparison table), Terms & Conditions, Terms of Service, Privacy Policy, and a custom 404 page. All pages share the same header/footer chrome and design tokens.
+The project contains 31 routes:
 
-## Run
+- Home, two About variants, Contact, Elements, How It Works, two Pricing variants, Reviews, Services, Team, Privacy Policy, Terms and Conditions, Terms of Service, and 404
+- Blog index with a second pagination route
+- 10 individual blog posts
+- Three individual author pages
 
-This is plain HTML/CSS/vanilla JS — there is no `package.json` and no build step. Serve the folder with any static file server from the project root:
+## Run locally
+
+Serve this directory with any static file server:
 
 ```sh
 python3 -m http.server
 ```
 
-Then open `http://localhost:8000/` (or `index.html` directly) in a browser.
+Then open `http://localhost:8000`.
 
-## Notes
+## Verification
 
-- `prompt.md` contains the full build spec — color tokens, typography scale, motion details, and the complete page-by-page layout breakdown used to build this clone.
-- `demo.mp4` (with `poster.jpg` as its thumbnail) shows the site in motion, including hover states and scroll-reveal animations.
-- Assets (fonts, images, CSS, JS) live under `assets/`.
+The `.audit` directory contains route, responsive screenshot, pixel similarity, and interaction verification evidence. The demo video and poster show the current implementation.
 
-## Credits
+## Original design
 
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
-
-**Original:** Themefisher — Optivus (Next.js) — <https://themefisher.com/demo?theme=optivus-nextjs>
-
----
-
-Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of UI templates. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+[Themefisher Optivus demo](https://optivus-nextjs.vercel.app)
