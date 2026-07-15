@@ -1,4 +1,4 @@
-# Digital Epoch — Cinematic Hero Section with Logo Marquee
+# Digital Epoch , Cinematic Hero Section with Logo Marquee
 
 ## Overview
 

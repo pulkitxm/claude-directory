@@ -1,4 +1,4 @@
-# Bookworm Light — Minimal Typography-Focused Blog Theme Clone (HTML/CSS/JS)
+# Bookworm Light , Minimal Typography-Focused Blog Theme Clone (HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -8,15 +8,15 @@ A pixel-faithful, self-contained clone of the [Bookworm Light Next.js theme](htt
 
 | File | Description |
 |---|---|
-| `index.html` | Home — featured post + two-column post grid with pagination |
-| `about.html` | About — portrait image, headline, social icons, bio copy |
-| `contact.html` | Contact — name/email/subject/message form |
+| `index.html` | Home , featured post + two-column post grid with pagination |
+| `about.html` | About , portrait image, headline, social icons, bio copy |
+| `contact.html` | Contact , name/email/subject/message form |
 | `authors.html` | Author cards grid |
 | `authors-john-doe.html`, `authors-mark-dinn.html` | Per-author detail pages listing that author's posts |
 | `categories.html` | Pill links to category detail pages |
 | `categories-accessories.html`, `categories-art.html`, `categories-development.html`, `categories-food.html`, `categories-lifestyle.html` | Per-category post listings |
 | `tags.html` | Pill links for post tags |
-| `elements.html` | Markdown style guide — headings, lists, code blocks, blockquote, tables |
+| `elements.html` | Markdown style guide , headings, lists, code blocks, blockquote, tables |
 | `privacy-policy.html` | Privacy policy copy |
 | `post-1.html`, `post-3.html`, `post-4.html`, `post-7.html` | Single post template with tags, share icons, "Similar Posts" grid |
 
@@ -29,7 +29,7 @@ A pixel-faithful, self-contained clone of the [Bookworm Light Next.js theme](htt
 
 ## Run
 
-No build step required — this is plain static HTML/CSS/JS. Serve it locally or open the files directly:
+No build step required , this is plain static HTML/CSS/JS. Serve it locally or open the files directly:
 
 ```sh
 python3 -m http.server 8080
@@ -48,8 +48,8 @@ There is no automated verify/test script in this project; check visually against
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Themefisher — <https://themefisher.com/demo?theme=bookworm-light-nextjs>
+**Original:** Themefisher , <https://themefisher.com/demo?theme=bookworm-light-nextjs>
 
 ---
 
-Part of the [Themefisher](../) collection in [templates/premium](../../), part of the [Templates](../../../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Themefisher](../) collection in [templates/premium](../../), part of the [Templates](../../../) collection in the [claude-directory](../../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

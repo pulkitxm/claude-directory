@@ -1,4 +1,4 @@
-# dot. — Nokia Typing Hero Landing Page (React 19 + Tailwind CSS v4 + Motion)
+# dot. , Nokia Typing Hero Landing Page (React 19 + Tailwind CSS v4 + Motion)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -20,4 +20,4 @@ See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
 
 ---
 
-Part of the [Animations & loaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Animations & loaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

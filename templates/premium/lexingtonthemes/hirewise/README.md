@@ -1,14 +1,14 @@
-# Hirewise — Job Board Template Clone (Vanilla HTML/CSS/JS + Fuse.js)
+# Hirewise , Job Board Template Clone (Vanilla HTML/CSS/JS + Fuse.js)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Hirewise is an 11-page job board website template — a pixel-faithful plain HTML/CSS/JS recreation of the original Astro + Tailwind design by Lexington Themes. It covers every core page a hiring platform needs: job listings with category filters, detailed job and company pages, a candidate directory, pricing, a blog, and authentication forms. Visual highlights include a no-flash dark/light mode toggle persisted in `localStorage`, a fuzzy search modal powered by Fuse.js, a mega-nav with colorful category tiles, and a responsive card-based layout using the Geist typeface and a custom OKLCH color scale. Generated with Claude Fable 5.
+Hirewise is an 11-page job board website template , a pixel-faithful plain HTML/CSS/JS recreation of the original Astro + Tailwind design by Lexington Themes. It covers every core page a hiring platform needs: job listings with category filters, detailed job and company pages, a candidate directory, pricing, a blog, and authentication forms. Visual highlights include a no-flash dark/light mode toggle persisted in `localStorage`, a fuzzy search modal powered by Fuse.js, a mega-nav with colorful category tiles, and a responsive card-based layout using the Geist typeface and a custom OKLCH color scale. Generated with Claude Fable 5.
 
 ## Pages
 
 | File | Page |
 |---|---|
-| `index.html` | Home — hero, featured jobs, jobs by category, companies, candidates, newsletter |
+| `index.html` | Home , hero, featured jobs, jobs by category, companies, candidates, newsletter |
 | `jobs.html` | Browse all jobs |
 | `job-detail.html` | Single job listing |
 | `companies.html` | Company directory |
@@ -41,8 +41,8 @@ Then open http://localhost:8080 in your browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes — https://lexingtonthemes.com/viewports/hirewise
+**Original:** Lexington Themes , https://lexingtonthemes.com/viewports/hirewise
 
 ---
 
-Part of the [lexingtonthemes](../) templates collection in the [templates](../../) directory — part of the [fable](../../../..) repo, an open-source gallery of UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [lexingtonthemes](../) templates collection in the [templates](../../) directory , part of the [fable](../../../..) repo, an open-source gallery of UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

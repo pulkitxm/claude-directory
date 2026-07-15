@@ -1,4 +1,4 @@
-# RIVR — DeFi Dashboard Glassmorphism Hero Section (React + TypeScript + Vite + Tailwind CSS v4 + Motion)
+# RIVR , DeFi Dashboard Glassmorphism Hero Section (React + TypeScript + Vite + Tailwind CSS v4 + Motion)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -36,4 +36,4 @@ bottom-left stat card positioning, the corner-cutout SVG masks, and the mobile l
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

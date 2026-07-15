@@ -1,4 +1,4 @@
-# LUMINA — PREMIUM EDITORIAL PORTFOLIO TEMPLATE
+# LUMINA , PREMIUM EDITORIAL PORTFOLIO TEMPLATE
 
 > A SAME-TO-SAME REBUILD OF A SUPERDESIGN DRAFT (LIVE TARGET:
 > `HTTPS://P.SUPERDESIGN.DEV/DRAFT/98723433-9EF9-4E9D-AF7A-9D206BD08034`).
@@ -78,17 +78,17 @@ APPLY 'MIX-BLEND-MODE: DIFFERENCE' TO THE FIXED NAV CONTAINER. ENSURE NAVIGATION
 ## IMPLEMENTATION NOTES (DISCOVERED & APPLIED)
 
 THE TARGET LINK COULD NOT BE FETCHED FROM THE BUILD ENVIRONMENT (HOST
-`P.SUPERDESIGN.DEV` IS OUTSIDE THE NETWORK EGRESS ALLOWLIST — HTTP 403). THE
+`P.SUPERDESIGN.DEV` IS OUTSIDE THE NETWORK EGRESS ALLOWLIST , HTTP 403). THE
 REBUILD THEREFORE FOLLOWS THE FULL DESIGN SPEC ABOVE, WHICH IS A COMPLETE,
 GROUND-TRUTH DESCRIPTION OF THE DRAFT. EVERY VALUE BELOW WAS APPLIED VERBATIM.
 
 ### TECH STACK
 
-- **SINGLE STATIC PAGE** — `index.html` + `styles.css` + `main.js`. NO BUILD STEP,
+- **SINGLE STATIC PAGE** , `index.html` + `styles.css` + `main.js`. NO BUILD STEP,
   NO FRAMEWORK, NO CDN. RUNS OFFLINE.
 - **FONTS VENDORED LOCALLY** in `assets/fonts/`: `anton.ttf` (Anton 400) and
   `plus-jakarta-sans-latin.woff2` (variable, weights 300–700).
-- **IMAGERY VENDORED LOCALLY** as hand-authored SVGs in `assets/img/` —
+- **IMAGERY VENDORED LOCALLY** as hand-authored SVGs in `assets/img/` ,
   editorial duotone/grayscale compositions (no external image hosts were
   reachable; all art is generated and self-contained).
 - **NO `cursor: crosshair` GLOBALLY** beyond interactive/hero affordances to keep
@@ -123,7 +123,7 @@ body{background:var(--navy);color:var(--white);
 
 ### KEY MECHANICS
 
-**Mix-blend fixed nav** — white items over a `mix-blend-mode:difference` bar so
+**Mix-blend fixed nav** , white items over a `mix-blend-mode:difference` bar so
 they invert to near-black over the white Portfolio/Capabilities sections:
 
 ```css
@@ -137,7 +137,7 @@ they invert to near-black over the white Portfolio/Capabilities sections:
 .cta:hover{background:#fff;color:#000}
 ```
 
-**Ambient orbs** — 384px circles, 120px blur, 20% opacity, float keyframe:
+**Ambient orbs** , 384px circles, 120px blur, 20% opacity, float keyframe:
 
 ```css
 .orb{position:absolute;width:384px;height:384px;border-radius:50%;
@@ -147,7 +147,7 @@ they invert to near-black over the white Portfolio/Capabilities sections:
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
 ```
 
-**Hero headline** — 18vw Anton, leading .85, second line is the sage outline:
+**Hero headline** , 18vw Anton, leading .85, second line is the sage outline:
 
 ```css
 .hero h1{font-size:18vw;line-height:.85}
@@ -167,14 +167,14 @@ they invert to near-black over the white Portfolio/Capabilities sections:
   display:grid;place-items:center;font-family:"Anton";font-size:14px;letter-spacing:.18em}
 ```
 
-**Asymmetric masonry** — 2 columns, even cards pushed down 4rem:
+**Asymmetric masonry** , 2 columns, even cards pushed down 4rem:
 
 ```css
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
 .grid .card:nth-child(even){margin-top:4rem}
 ```
 
-**Featured offset square** — cyan 20% square behind a grayscale image, -48px offset:
+**Featured offset square** , cyan 20% square behind a grayscale image, -48px offset:
 
 ```css
 .featured .media{position:relative}
@@ -185,7 +185,7 @@ they invert to near-black over the white Portfolio/Capabilities sections:
 .arrow{transition:transform .4s var(--ease)}
 ```
 
-**Capabilities line prefix** — 40px line that grows to 64px on hover:
+**Capabilities line prefix** , 40px line that grows to 64px on hover:
 
 ```css
 .cap-item::before{content:"";display:inline-block;width:40px;height:1px;
@@ -193,11 +193,11 @@ they invert to near-black over the white Portfolio/Capabilities sections:
 .cap-item:hover::before{width:64px}
 ```
 
-**Testimonial carousel** — charcoal bg, giant 30rem navy quote glyph at 30%
+**Testimonial carousel** , charcoal bg, giant 30rem navy quote glyph at 30%
 opacity behind a 5xl Anton quote; JS cycles slides every ~5s with fade. Avatars
 are colored 64px circles. Bio name in Anton.
 
-**Scroll reveals** — `IntersectionObserver` toggles `.in` (was
+**Scroll reveals** , `IntersectionObserver` toggles `.in` (was
 `translateY(10px);opacity:0` → `translateY(0);opacity:1` over 1000ms):
 
 ```js
@@ -209,18 +209,18 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 ### SECTION ORDER & COPY
 
-1. **Nav** — logo `LUMINA`; links `WORK · STUDIO · PROCESS`; CTA `GET IN TOUCH`.
-2. **Hero** — `CREATIVE` / `STUDIO`(outline); kicker `INDEPENDENT DESIGN STUDIO
+1. **Nav** , logo `LUMINA`; links `WORK · STUDIO · PROCESS`; CTA `GET IN TOUCH`.
+2. **Hero** , `CREATIVE` / `STUDIO`(outline); kicker `INDEPENDENT DESIGN STUDIO
    CRAFTING EDITORIAL, BRAND & DIGITAL EXPERIENCES.`; bouncing circular arrow.
-3. **Selected Works** (white) — 6 cards: `MERIDIAN`, `AURELIA`, `NOVA TYPE`,
+3. **Selected Works** (white) , 6 cards: `MERIDIAN`, `AURELIA`, `NOVA TYPE`,
    `SAGE & STONE`, `HORIZON`, `MONOLITH` with category + year.
-4. **Featured** (navy) — label `FEATURED PROJECT`; heading `A QUIET
+4. **Featured** (navy) , label `FEATURED PROJECT`; heading `A QUIET
    REVOLUTION IN BRAND IDENTITY`; taupe body; `VIEW CASE STUDY →`.
-5. **Capabilities** (#fafafa) — list: `BRAND IDENTITY`, `ART DIRECTION`,
+5. **Capabilities** (#fafafa) , list: `BRAND IDENTITY`, `ART DIRECTION`,
    `EDITORIAL DESIGN`, `DIGITAL PRODUCT`, `MOTION`, `TYPOGRAPHY`; big light
    heading with italic taupe accents.
-6. **Testimonials** (charcoal) — 3 rotating quotes with name/role/colored avatar.
-7. **Footer** (navy) — `LET'S CREATE`; email `hello@lumina.studio` (sage, 4xl,
+6. **Testimonials** (charcoal) , 3 rotating quotes with name/role/colored avatar.
+7. **Footer** (navy) , `LET'S CREATE`; email `hello@lumina.studio` (sage, 4xl,
    underline 8px offset); bottom bar `© 2026 LUMINA STUDIO` + legal links.
 
 ### VERIFICATION

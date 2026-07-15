@@ -1,4 +1,4 @@
-# NexStudio — Creative Agency Website Template (Vanilla HTML/CSS/JS)
+# NexStudio , Creative Agency Website Template (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -31,12 +31,12 @@ Then navigate to `http://localhost:8080` in your web browser. Alternatively, ope
 
 ## Features & Notable Techniques
 
-- **Sticky Header & Responsive Menu** — The header transitions padding and shadow dynamically upon scroll. On mobile, a hamburger button reveals a sliding navigation overlay managed entirely via vanilla JavaScript.
-- **Two-Way Text Slide Animations** — Interactive navbar links and pill-shaped action buttons implement a dual-text vertical translation effect on hover.
-- **Infinite Logo Marquee** — An endless scrolling client logo marquee that cycles continuously from right to left using pure CSS animation rules.
-- **Intersection Observer Scroll Reveals** — Key layout sections smoothly fade and translate upwards (`translateY(75px)` to `none`) as they scroll into view.
-- **Swiper.js Testimonials Carousel** — A swipeable testimonials slider configured with Swiper.js, showcasing multiple review cards in a responsive layout.
-- **No-Flash Theme Toggle** — Supports dark-theme boot instantly based on user preferences. Flipped with a navbar toggle button and persisted using `localStorage` on a `data-theme` attribute on the root html.
+- **Sticky Header & Responsive Menu** , The header transitions padding and shadow dynamically upon scroll. On mobile, a hamburger button reveals a sliding navigation overlay managed entirely via vanilla JavaScript.
+- **Two-Way Text Slide Animations** , Interactive navbar links and pill-shaped action buttons implement a dual-text vertical translation effect on hover.
+- **Infinite Logo Marquee** , An endless scrolling client logo marquee that cycles continuously from right to left using pure CSS animation rules.
+- **Intersection Observer Scroll Reveals** , Key layout sections smoothly fade and translate upwards (`translateY(75px)` to `none`) as they scroll into view.
+- **Swiper.js Testimonials Carousel** , A swipeable testimonials slider configured with Swiper.js, showcasing multiple review cards in a responsive layout.
+- **No-Flash Theme Toggle** , Supports dark-theme boot instantly based on user preferences. Flipped with a navbar toggle button and persisted using `localStorage` on a `data-theme` attribute on the root html.
 
 ## Build spec and demo
 
@@ -46,8 +46,8 @@ Then navigate to `http://localhost:8080` in your web browser. Alternatively, ope
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailgrids — <https://nexstudio.demos.tailgrids.com/>
+**Original:** Tailgrids , <https://nexstudio.demos.tailgrids.com/>
 
 ---
 
-Part of the [Templates](../../../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../../) collection in the [claude-directory](../../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

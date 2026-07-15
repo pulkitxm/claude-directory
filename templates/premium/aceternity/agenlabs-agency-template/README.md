@@ -1,8 +1,8 @@
-# Agenlabs Agency Template — Pixel-Faithful HTML Clone
+# Agenlabs Agency Template , Pixel-Faithful HTML Clone
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained clone of the **Agenlabs Agency Template** by Aceternity UI — a minimal, clean agency website showcasing portfolio work, services, pricing packages, and blog content. Built as plain HTML + CSS + vanilla JavaScript with all assets vendored locally. No build step required.
+A pixel-faithful, self-contained clone of the **Agenlabs Agency Template** by Aceternity UI , a minimal, clean agency website showcasing portfolio work, services, pricing packages, and blog content. Built as plain HTML + CSS + vanilla JavaScript with all assets vendored locally. No build step required.
 
 ## Features
 
@@ -68,7 +68,7 @@ node /path/to/fable/scripts/record-demos/scrape-ref.mjs \
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Aceternity UI — https://ui.aceternity.com/template-preview/agenlabs-agency-template
+**Original:** Aceternity UI , https://ui.aceternity.com/template-preview/agenlabs-agency-template
 
 ---
 

@@ -12,7 +12,7 @@ RECREATE THIS EXACT LOVABLE LANDING PAGE 1:1. THIS IS NOT AN INSPIRATION REQUEST
 - REPLACE THE HOME ROUTE WITH THIS IMPLEMENTATION.
 - KEEP ALL MEASUREMENTS, COLORS, TIMINGS, EASING, HOVER BEHAVIOR, AND ASSET PATHS EXACTLY AS SPECIFIED.
 
-## ASSET MANIFEST — SAVE EACH ASSET UNDER `public/vendor/<filename>` WITH THE EXACT FILENAME
+## ASSET MANIFEST , SAVE EACH ASSET UNDER `public/vendor/<filename>` WITH THE EXACT FILENAME
 
 - `public/vendor/core-renderer.js` FROM `https://qclay.design/lovable/webgl/core-renderer.js`
 - `public/vendor/hero-project.js` FROM `https://qclay.design/lovable/webgl/hero-project.js`
@@ -1238,7 +1238,7 @@ const SectionTrustedBy = () => {
         // normalized position across viewport: -1 (left) .. 1 (right)
         const t = (elCenter - cx) / (cx || 1);
         const ct = Math.max(-1.3, Math.min(1.3, t));
-        // smooth bell — modern orbit-like depth curve
+        // smooth bell , modern orbit-like depth curve
         const bulge = Math.cos(Math.max(-1, Math.min(1, ct)) * (Math.PI / 2));
         // subtle orbit: gentle rotateY + tiny y arc
         const rotY = -ct * 26; // deg

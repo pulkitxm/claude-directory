@@ -1,4 +1,4 @@
-# Lumen — Linear / Modern Design System Showcase (React, Framer Motion, Tailwind CSS)
+# Lumen , Linear / Modern Design System Showcase (React, Framer Motion, Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -6,18 +6,18 @@ A polished, single-page showcase that fully expresses the Linear / Modern design
 
 ## Signature elements (the "bold factor")
 
-- **Animated ambient blobs** — four heavily-blurred gradient "light pools" drift
+- **Animated ambient blobs** , four heavily-blurred gradient "light pools" drift
   slowly behind everything (`AmbientBackground`), over a radial base gradient,
   fractal-noise texture, and a 64px technical grid.
-- **Mouse-tracking spotlights** — every `SpotlightCard` renders a 320px radial
+- **Mouse-tracking spotlights** , every `SpotlightCard` renders a 320px radial
   accent glow at the cursor and lifts 4px on hover (expo-out, ~300ms).
-- **Gradient typography** — headlines use a white→translucent vertical fill;
+- **Gradient typography** , headlines use a white→translucent vertical fill;
   the hero key-phrase uses an animated shimmering indigo gradient.
-- **Multi-layer shadows** — cards/CTAs combine border highlight + soft diffuse +
+- **Multi-layer shadows** , cards/CTAs combine border highlight + soft diffuse +
   ambient darkness + accent glow (centralized as `shadow-card`, `shadow-cta`…).
-- **Scroll-linked parallax** — hero content fades `1→0`, scales `1→0.95`, and
+- **Scroll-linked parallax** , hero content fades `1→0`, scales `1→0.95`, and
   translates `0→100px` over the first viewport of scroll.
-- **Precision micro-interactions** — 200–300ms expo-out everywhere; nothing
+- **Precision micro-interactions** , 200–300ms expo-out everywhere; nothing
   bounces or overshoots.
 
 ## Architecture
@@ -37,7 +37,7 @@ Reusable primitives live in `src/components`: `Button` (primary/secondary/ghost)
 - Off-white text (`#EDEDEF`) on near-black for high contrast; muted text meets AA.
 - Prominent accent focus rings on every interactive element; a skip-to-content link.
 - `prefers-reduced-motion` is honoured globally (Framer Motion `MotionConfig`
-  plus a CSS override) — blobs, parallax, shimmer, and scan-lines fall back to
+  plus a CSS override) , blobs, parallax, shimmer, and scan-lines fall back to
   static, fully-visible content.
 - State never relies on colour alone (icons + labels reinforce the "Online" pill,
   build status, etc.).
@@ -46,7 +46,7 @@ Reusable primitives live in `src/components`: `Button` (primary/secondary/ghost)
 
 React 18 · TypeScript · Vite · Tailwind CSS · Framer Motion · Lucide.
 Fonts (Inter + JetBrains Mono variable WOFF2) are **vendored locally** in
-`public/fonts` — no CDN, fully runnable offline.
+`public/fonts` , no CDN, fully runnable offline.
 
 ## Run
 
@@ -58,4 +58,4 @@ npm run build    # type-check + production build
 
 ---
 
-Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [UI design](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,8 +1,8 @@
-# LinkFlow — Boomerang Video Hero Section
+# LinkFlow , Boomerang Video Hero Section
 
 ## Overview
 
-Build a single full-screen hero section for a fictional integration/automation product called **LinkFlow™**. The hero fills the viewport with a looping background video that is rendered through a custom "boomerang" effect: the video's frames are captured into canvases as it plays once, then replayed forward and backward in a seamless loop at 30fps. On top of the video sit a glassmorphic navbar (with a sliding mobile drawer), centered hero copy, a bottom-left CTA block, and a bottom-right "watch the video" link. All animations are pure CSS `transition-*` classes — no animation library.
+Build a single full-screen hero section for a fictional integration/automation product called **LinkFlow™**. The hero fills the viewport with a looping background video that is rendered through a custom "boomerang" effect: the video's frames are captured into canvases as it plays once, then replayed forward and backward in a seamless loop at 30fps. On top of the video sit a glassmorphic navbar (with a sliding mobile drawer), centered hero copy, a bottom-left CTA block, and a bottom-right "watch the video" link. All animations are pure CSS `transition-*` classes , no animation library.
 
 ## Tech Stack
 
@@ -10,10 +10,10 @@ Build a single full-screen hero section for a fictional integration/automation p
 - **Build tool:** Vite `^5.4.2` with `@vitejs/plugin-react` `^4.3.1`
 - **Language:** TypeScript `^5.5.3`
 - **Styling:** Tailwind CSS `^3.4.1` (with `postcss` `^8.4.35` and `autoprefixer` `^10.4.18`)
-- **Icons:** `lucide-react` `^0.344.0` — `LogIn`, `UserPlus`, `Play`, `Sparkles`, `Menu`, `X`
+- **Icons:** `lucide-react` `^0.344.0` , `LogIn`, `UserPlus`, `Play`, `Sparkles`, `Menu`, `X`
 - **Fonts:** Inter (Google Fonts) and Neue Haas Grotesk (Text Pro + Display Pro 55 Roman)
 - **Notable technique:** Canvas-based boomerang video playback driven by `requestVideoFrameCallback` (with `requestAnimationFrame` fallback)
-- **No Framer Motion / Motion** — all motion is CSS transitions
+- **No Framer Motion / Motion** , all motion is CSS transitions
 
 ## Global Setup
 
@@ -85,8 +85,8 @@ The hero background source is a local asset:
 
 Two component files under `src/`:
 
-1. **`BoomerangVideoBg.tsx`** — captures the video's frames into canvases, then plays them forward/backward in a seamless boomerang loop at 30fps (960px max capture width).
-2. **`App.tsx`** — the full hero section.
+1. **`BoomerangVideoBg.tsx`** , captures the video's frames into canvases, then plays them forward/backward in a seamless boomerang loop at 30fps (960px max capture width).
+2. **`App.tsx`** , the full hero section.
 
 ## Layout & Spacing Notes
 
@@ -277,7 +277,7 @@ The full hero. Holds a single piece of state, `menuOpen`, that toggles the mobil
 
 - **Brand (left):** `LinkFlow` with a `<sup>` reading `TM` (`text-[10px] sm:text-xs font-medium`), in container `text-[#2d3a2a]`, brand text `text-lg sm:text-xl md:text-2xl font-semibold tracking-tight`.
 - **Desktop pill nav (`hidden lg:flex`):** maps `navLinks` into `<a>` links (`text-sm px-3 py-2 transition-colors`). The first link (`i === 0`) is `font-semibold text-[#1f2a1d]`; the rest are `font-medium text-[#4b5b47] hover:text-[#1f2a1d]`. Followed by a **Try it Live** button: `ml-2 bg-[#1f2a1d] hover:bg-[#2a3827] text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors`.
-- **Right cluster:** two `hidden sm:flex` links — **Sign Me Up!** (with `UserPlus` icon `w-4 h-4`) and **Enter** (with `LogIn` icon `w-4 h-4`), each `text-sm font-medium hover:opacity-80 transition-opacity` linking to `#signup` / `#login`. Then a `lg:hidden` hamburger toggle button.
+- **Right cluster:** two `hidden sm:flex` links , **Sign Me Up!** (with `UserPlus` icon `w-4 h-4`) and **Enter** (with `LogIn` icon `w-4 h-4`), each `text-sm font-medium hover:opacity-80 transition-opacity` linking to `#signup` / `#login`. Then a `lg:hidden` hamburger toggle button.
 - **Hamburger button:** `w-10 h-10 rounded-full bg-white/70 backdrop-blur-md border border-white/60 text-[#1f2a1d] transition-all duration-300 hover:bg-white/90`. `aria-label` is `Close menu` when open else `Open menu`, with `aria-expanded={menuOpen}`. It layers `Menu` and `X` icons (both `w-5 h-5 absolute transition-all duration-300`) that cross-fade/rotate based on `menuOpen`.
 
 #### Mobile menu overlay
@@ -296,14 +296,14 @@ A right-anchored drawer: `lg:hidden fixed top-0 right-0 bottom-0 z-20 w-[85%] ma
 Centered block `relative z-10 flex flex-col items-center text-center pt-24 sm:pt-28 md:pt-32 px-4 sm:px-6`.
 
 - **Heading (`<h1>`):** `font-normal leading-[0.95] text-[#336443] text-[2rem] sm:text-4xl md:text-5xl lg:text-[4.75rem] xl:text-[5.25rem] max-w-5xl`, with inline `fontFamily: '"Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif'` and `letterSpacing: '-0.035em'`. Copy: `Close the rift ` followed by a `text-[#85AB8B]` span reading `linking` then a `<br className="hidden sm:block" />` and ` signals and action`.
-- **Paragraph (`<p>`):** `mt-6 sm:mt-8 text-[#4b5b47] text-sm sm:text-base md:text-lg leading-relaxed max-w-md px-2` — copy: `Shape scattered signals into meaningful outcomes via AI-driven workflows.`
+- **Paragraph (`<p>`):** `mt-6 sm:mt-8 text-[#4b5b47] text-sm sm:text-base md:text-lg leading-relaxed max-w-md px-2` , copy: `Shape scattered signals into meaningful outcomes via AI-driven workflows.`
 
 #### Bottom-left CTA block
 
 `absolute left-4 right-4 sm:right-auto sm:left-6 md:left-10 bottom-6 sm:bottom-8 md:bottom-10 z-10 max-w-sm`.
 
-- **Eyebrow row:** `flex items-center gap-2 text-[#3d5638] sm:text-white/95 mb-3` — a `Sparkles` icon (`w-4 h-4`) and `FluxEngine` with a `TM` `<sup>` (`text-[10px]`); label `text-sm font-semibold sm:font-medium`.
-- **Paragraph:** `text-[#3d5638]/90 sm:text-white/85 text-xs leading-relaxed mb-6 max-w-xs font-medium sm:font-normal` — copy: `LinkFlow smoothly unites your company systems, streamlining data paths between services without having to write custom scripts.`
+- **Eyebrow row:** `flex items-center gap-2 text-[#3d5638] sm:text-white/95 mb-3` , a `Sparkles` icon (`w-4 h-4`) and `FluxEngine` with a `TM` `<sup>` (`text-[10px]`); label `text-sm font-semibold sm:font-medium`.
+- **Paragraph:** `text-[#3d5638]/90 sm:text-white/85 text-xs leading-relaxed mb-6 max-w-xs font-medium sm:font-normal` , copy: `LinkFlow smoothly unites your company systems, streamlining data paths between services without having to write custom scripts.`
 - **Button row:** `flex items-center gap-4 flex-wrap` containing:
   - **Try it Live** button: `bg-[#3d5638] sm:bg-white hover:bg-[#2d4228] sm:hover:bg-white/90 text-white sm:text-[#1f2a1d] text-sm font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-colors shadow-sm`.
   - **Know More.** button: `text-[#3d5638] sm:text-white text-sm font-semibold sm:font-medium hover:opacity-80 transition-opacity`.

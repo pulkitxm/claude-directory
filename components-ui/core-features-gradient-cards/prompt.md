@@ -1,8 +1,8 @@
-# Core Features — Gradient Cards Section
+# Core Features , Gradient Cards Section
 
 ## Overview
 
-Build a "Core Features" marketing section as a single, centered component containing a header block and three gradient feature cards. The component is purely static styling — no JavaScript, no animations, and no hover effects.
+Build a "Core Features" marketing section as a single, centered component containing a header block and three gradient feature cards. The component is purely static styling , no JavaScript, no animations, and no hover effects.
 
 ## Tech Stack
 
@@ -52,14 +52,14 @@ Build a "Core Features" marketing section as a single, centered component contai
 - `border-radius: 20px`, `height: 340px`, `display: flex`, `flex-direction: column`, `justify-content: flex-end`, `position: relative`, `overflow: hidden`, `text-align: left`, `background: #F4F8F9`, `box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1)`.
 - **Card title (`.c1-card h3`):** `font-size: 1.05rem`, `font-weight: 600`, `color: #1e293b`, `padding: 24px`, `position: relative`, `z-index: 2`.
 
-### Card 1 — Smart Prompt Suggestions (`.c1-card-1`)
+### Card 1 , Smart Prompt Suggestions (`.c1-card-1`)
 
 - **Background:** `radial-gradient(circle at 50% 0%, #FFB347 0%, #F9ED96 30%, #F4F8F9 60%, #F4F8F9 100%)`.
 - **Prompt box (`.c1-prompt-box`):** `position: absolute`, `top: 30px`, `left: 24px`, `right: 24px`, `background: #ffffff`, `border-radius: 12px`, `padding: 16px`, `font-size: 0.8rem`, `color: #475569`, `line-height: 1.6`, `box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04)`. Text content:
 
   > A bright, high-resolution 3D illustration of a **cheerful cartoon** of a **girl character** **centred against a** smooth blue background
 
-  The bold phrases — "cheerful cartoon", "girl character", and "centred against a" — are each wrapped in a `<span class="c1-blur-text">`.
+  The bold phrases , "cheerful cartoon", "girl character", and "centred against a" , are each wrapped in a `<span class="c1-blur-text">`.
 - **Gradient phrase (`.c1-blur-text`):** `background: linear-gradient(90deg, #FFB347, #E5A1F5)` with `-webkit-background-clip: text` / `background-clip: text`, `-webkit-text-fill-color: transparent`, `color: transparent`, `font-weight: 600`.
 - **"Add more details" pill (`.c1-add-details`):** `position: absolute`, `top: 180px`, `left: 40px`, `display: inline-flex`, `align-items: center`, `gap: 6px`, `background: #ffffff`, `border: 1px solid #000000`, `padding: 5px 14px`, `border-radius: 20px`, `font-size: 0.75rem`, `font-weight: 600`, `color: #1e293b`, `box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08)`. Contains a `✦` character in a `<span class="c1-spark">` styled with `color: #a855f7`; `font-size: 1rem`, followed by the text "Add more details".
 - **Cursor SVG arrow (`.c1-cursor`):** `position: absolute`, `top: 205px`, `left: 110px`, `width: 24px`, `height: 24px`, `filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2))`, `z-index: 10`. SVG uses `viewBox="0 0 24 24"` with a single path:
@@ -70,14 +70,14 @@ Build a "Core Features" marketing section as a single, centered component contai
   ```
 - **Heading (`<h3>`):** "Smart Prompt Suggestions".
 
-### Card 2 — API Access (`.c1-card-2`)
+### Card 2 , API Access (`.c1-card-2`)
 
 - **Background:** `radial-gradient(circle at 50% 0%, #E5A1F5 0%, #F8ACA0 30%, #F4F8F9 60%, #F4F8F9 100%)`.
 - **Visual wrapper (`.c1-api-visual`):** `position: absolute`, `top: 0`, `left: 0`, `right: 0`, `bottom: 70px`, `display: flex`, `justify-content: center`, `align-items: center`, `padding: 0 24px`.
 - **Network image (`.c1-network-img`):** `width: 100%`, `height: 180px`, `object-fit: contain`, `margin-top: 20px`. Source: `assets/network.svg`.
 - **Heading (`<h3>`):** "API Access".
 
-### Card 3 — Project Library (`.c1-card-3`)
+### Card 3 , Project Library (`.c1-card-3`)
 
 - **Background:** `radial-gradient(circle at 50% 0%, #F9ED96 0%, #E5A1F5 30%, #F4F8F9 60%, #F4F8F9 100%)`.
 - **Mesh overlay (`.c1-mesh`):** `position: absolute`, `inset: 0`, with a background image of two `linear-gradient`s of `rgba(255, 255, 255, 0.8) 1px, transparent 1px` (one horizontal, one `90deg` vertical), `background-size: 16px 16px`, masked with `radial-gradient(circle at center top, black 0%, transparent 80%)` (include both `-webkit-mask-image` and `mask-image`):
@@ -108,7 +108,7 @@ Build a "Core Features" marketing section as a single, centered component contai
 
 ## Animations
 
-None. This component is purely static styling — no JavaScript behavior and no hover effects. (No data persistence is required for this section.)
+None. This component is purely static styling , no JavaScript behavior and no hover effects. (No data persistence is required for this section.)
 
 ## Color Palette
 
@@ -121,8 +121,8 @@ None. This component is purely static styling — no JavaScript behavior and no 
 
 ## File Structure
 
-- `index.html` — the full markup with the inline `<style>` block.
-- `assets/network.svg` — API network diagram used by Card 2.
-- `assets/library icon.svg` — folder icon used by Card 3 (referenced URL-encoded as `assets/library%20icon.svg`).
+- `index.html` , the full markup with the inline `<style>` block.
+- `assets/network.svg` , API network diagram used by Card 2.
+- `assets/library icon.svg` , folder icon used by Card 3 (referenced URL-encoded as `assets/library%20icon.svg`).
 
 > Note on asset URLs: the assets are vendored locally under `assets/`. An earlier version of this brief referenced them from external R2 storage (`https://pub-f170a2592d2c4a1485466404c36807be.r2.dev/viktor/network.svg` and `https://pub-f170a2592d2c4a1485466404c36807be.r2.dev/viktor/library%20icon.svg`); rebuild against the local `assets/` paths to match the current source.

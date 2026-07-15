@@ -1,4 +1,4 @@
-# MicroVisuals — Boomerang Video Hero Section
+# MicroVisuals , Boomerang Video Hero Section
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a fullscreen hero section for an AI image-generation product called **Micr
 - **Framework:** React 18 (`react` `^18.3.1`, `react-dom` `^18.3.1`) with TypeScript (`~5.6.3`).
 - **Build tool:** Vite (`^6.0.3`) with `@vitejs/plugin-react` (`^4.3.4`).
 - **Styling:** Tailwind CSS (`^3.4.15`) with `postcss` (`^8.4.49`) and `autoprefixer` (`^10.4.20`).
-- **Animation:** GSAP (`gsap` `^3.12.5`) — used only for the parallax `gsap.set` transform.
+- **Animation:** GSAP (`gsap` `^3.12.5`) , used only for the parallax `gsap.set` transform.
 - **Icons:** `lucide-react` (`^0.468.0`) is a dependency. No other UI libraries.
 - **Fonts:** Instrument Serif and Barlow (Google Fonts), plus a self-hosted `Dirtyline` display face.
 - **Notable techniques:** `requestVideoFrameCallback` (with `requestAnimationFrame` fallback) for frame capture; canvas-based boomerang playback; pointer-lerp parallax; CSS "liquid glass" backdrop-filter cards with gradient-masked borders.
@@ -162,11 +162,11 @@ const VIDEO_SRC =
 ```
 
 - **`NAV_LINKS`** = `['Gallery', 'Styles', 'API', 'Pricing', 'Blog']`.
-- **`VIDEO_SRC`** = `'https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260511_080827_a9e5ad52-b6ee-4e79-b393-d936f179cfd7.mp4'`. The URL is case-sensitive — keep it exactly as shown.
+- **`VIDEO_SRC`** = `'https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260511_080827_a9e5ad52-b6ee-4e79-b393-d936f179cfd7.mp4'`. The URL is case-sensitive , keep it exactly as shown.
 
 Use `requestVideoFrameCallback` when available, with a `requestAnimationFrame` fallback.
 
-### `LogoMark` — inline SVG
+### `LogoMark` , inline SVG
 
 Width `44`, height `26`, `viewBox="0 0 44 26"`, `fill="none"`, `aria-hidden="true"`. Three white rects at `y="3"`, height `20`, `rx="3"`:
 
@@ -184,12 +184,12 @@ function LogoMark() {
 
 ### State & refs
 
-- `mounted` — boolean, set `true` in a mount effect to drive the fade-in.
-- `framesReady` — boolean state, flipped `true` once frame capture completes.
-- `videoRef` — `useRef<HTMLVideoElement>(null)`.
-- `videoBgRef` — `useRef<HTMLDivElement>(null)`.
-- `displayCanvasRef` — `useRef<HTMLCanvasElement>(null)`.
-- `framesRef` — `useRef<HTMLCanvasElement[]>([])`.
+- `mounted` , boolean, set `true` in a mount effect to drive the fade-in.
+- `framesReady` , boolean state, flipped `true` once frame capture completes.
+- `videoRef` , `useRef<HTMLVideoElement>(null)`.
+- `videoBgRef` , `useRef<HTMLDivElement>(null)`.
+- `displayCanvasRef` , `useRef<HTMLCanvasElement>(null)`.
+- `framesRef` , `useRef<HTMLCanvasElement[]>([])`.
 
 ```tsx
 const [mounted, setMounted] = useState(false)
@@ -208,7 +208,7 @@ useEffect(() => {
 }, [])
 ```
 
-### Effect 1 — Frame capture (boomerang setup)
+### Effect 1 , Frame capture (boomerang setup)
 
 On mount, grab `videoRef.current`; bail if absent. Play the video once and snapshot every frame into offscreen canvases. Use `requestVideoFrameCallback` when available, with a `requestAnimationFrame` fallback.
 
@@ -288,7 +288,7 @@ useEffect(() => {
 }, [])
 ```
 
-### Effect 2 — Boomerang render
+### Effect 2 , Boomerang render
 
 Runs when `framesReady` is `true`. Ping-pong through the captured frames at ~30fps on the display canvas. Never touches `video.currentTime`.
 
@@ -337,7 +337,7 @@ useEffect(() => {
 }, [framesReady])
 ```
 
-### Effect 3 — Parallax mouse tracking (GSAP)
+### Effect 3 , Parallax mouse tracking (GSAP)
 
 Lerp toward the pointer and move the video background layer with GSAP.
 
@@ -412,8 +412,8 @@ Inside: `<h1 className="hero-title select-none">MicroVisuals</h1>`.
 - `<LogoMark />`.
 - A `<div className="flex items-center gap-5">` mapping `NAV_LINKS` to `<a href="#">` links, each with `className="text-sm font-body font-light text-white/70 hover:text-white transition-colors duration-200"`.
 - A right cluster `<div className="flex items-center gap-3 ml-4">`:
-  - **"Sign in"** — an `<a href="#">` with the same link classes (`text-sm font-body font-light text-white/70 hover:text-white transition-colors duration-200`).
-  - **"Try it free"** — a `<button type="button">` with `className="liquid-glass-strong text-sm font-body font-medium text-white rounded px-4 py-1.5 transition-all duration-200 hover:scale-[1.04] hover:shadow-[0_0_16px_2px_rgba(255,255,255,0.12)] active:scale-[0.97]"`.
+  - **"Sign in"** , an `<a href="#">` with the same link classes (`text-sm font-body font-light text-white/70 hover:text-white transition-colors duration-200`).
+  - **"Try it free"** , a `<button type="button">` with `className="liquid-glass-strong text-sm font-body font-medium text-white rounded px-4 py-1.5 transition-all duration-200 hover:scale-[1.04] hover:shadow-[0_0_16px_2px_rgba(255,255,255,0.12)] active:scale-[0.97]"`.
 
 ### 4. Bottom row
 
@@ -425,7 +425,7 @@ A fixed div, `bottom-12 left-0 right-0 px-10 flex items-end justify-between z-20
     - `<span className="relative z-10">Start generating</span>`.
     - Overlay `<span className="absolute inset-0 bg-gradient-to-b from-white to-white/85 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />`.
   - **Secondary** `<button type="button">` with `className="liquid-glass group text-white text-sm font-body font-medium rounded px-6 py-3 active:scale-[0.97] transition-all duration-200 hover:scale-[1.03] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_2px_rgba(255,255,255,0.07)]"`, label "See templates".
-- **Right `<p>`:** same classes as the left paragraph plus `text-right` (`text-sm font-body font-light text-white/75 max-w-[220px] leading-relaxed text-right`), text: "Describe what you see in your head — get images that actually match."
+- **Right `<p>`:** same classes as the left paragraph plus `text-right` (`text-sm font-body font-light text-white/75 max-w-[220px] leading-relaxed text-right`), text: "Describe what you see in your head , get images that actually match."
 
 ## UI Copy (verbatim)
 
@@ -436,7 +436,7 @@ A fixed div, `bottom-12 left-0 right-0 px-10 flex items-end justify-between z-20
 - Left paragraph: `Forma's AI understands context, composition, and style like a creative director would.`
 - `Start generating`
 - `See templates`
-- Right paragraph: `Describe what you see in your head — get images that actually match.`
+- Right paragraph: `Describe what you see in your head , get images that actually match.`
 
 ## Color Palette
 
@@ -454,15 +454,15 @@ A fixed div, `bottom-12 left-0 right-0 px-10 flex items-end justify-between z-20
 
 ## File Structure
 
-- `index.html` — entry HTML that mounts `/src/main.tsx`.
-- `src/main.tsx` — React entry that renders `<App />` and imports `index.css`.
-- `src/App.tsx` — the hero component (constants, `LogoMark`, three effects, JSX).
-- `src/index.css` — font imports, `@font-face`, Tailwind layers, body styles, `.liquid-glass`, `.liquid-glass-strong`, `.hero-title`.
-- `src/vite-env.d.ts` — Vite type references.
-- `tailwind.config.js`, `postcss.config.js`, `vite.config.ts`, `tsconfig.json` — tooling config.
+- `index.html` , entry HTML that mounts `/src/main.tsx`.
+- `src/main.tsx` , React entry that renders `<App />` and imports `index.css`.
+- `src/App.tsx` , the hero component (constants, `LogoMark`, three effects, JSX).
+- `src/index.css` , font imports, `@font-face`, Tailwind layers, body styles, `.liquid-glass`, `.liquid-glass-strong`, `.hero-title`.
+- `src/vite-env.d.ts` , Vite type references.
+- `tailwind.config.js`, `postcss.config.js`, `vite.config.ts`, `tsconfig.json` , tooling config.
 
 ## Notes
 
 - The Tailwind default border radius is overridden to `9999px` (full pill), so every `rounded` in the markup produces pill corners.
-- Do not use `video.currentTime` to reverse — the boomerang uses the captured `frames[]` array only.
+- Do not use `video.currentTime` to reverse , the boomerang uses the captured `frames[]` array only.
 - The video element stays mounted (hidden once `framesReady`) so the canvas keeps drawing snapshots.

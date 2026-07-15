@@ -1,4 +1,4 @@
-# CodeNest — Cinematic Dark Hero Section
+# CodeNest , Cinematic Dark Hero Section
 
 ## Overview
 
@@ -8,7 +8,7 @@ Build a high-end, dark-themed hero section for a coding-education platform calle
 
 - **Framework:** React with TypeScript.
 - **Styling:** Tailwind CSS.
-- **Icons:** `lucide-react` — `ArrowRight`, `Menu`, `X`.
+- **Icons:** `lucide-react` , `ArrowRight`, `Menu`, `X`.
 - **Video streaming:** `hls.js` for the HLS background stream (instantiated with `enableWorker: false` for stability in sandboxed environments).
 - **Fonts (Google Fonts):** Inter, Plus Jakarta Sans, and Instrument Serif (italic).
 
@@ -76,5 +76,5 @@ Build a high-end, dark-themed hero section for a coding-education platform calle
 ## Required Imports
 
 - **Fonts:** Inter, Plus Jakarta Sans, and Instrument Serif (italic).
-- **Icons:** `lucide-react` — `ArrowRight`, `Menu`, `X`.
+- **Icons:** `lucide-react` , `ArrowRight`, `Menu`, `X`.
 - **Library:** `hls.js` for video streaming.

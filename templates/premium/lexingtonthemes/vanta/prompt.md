@@ -7,10 +7,10 @@ VANTA IS A CLEAN, MINIMAL COURSE/LEARNING PLATFORM TEMPLATE BUILT WITH ASTRO AND
 ## STYLE
 
 - **PALETTE:**
-  - `--color-primary`: `oklch(16.84% 0 0)` — NEAR-BLACK (MAIN TEXT)
-  - `--color-secondary`: `oklch(100% 0 0)` — WHITE (BACKGROUND)
-  - `--color-accent`: `oklch(81.34% .218 130.43)` — LIME GREEN (BUTTONS, HIGHLIGHTS)
-  - DARK THEME: `[data-theme="dark"]` — INVERTS PRIMARY/SECONDARY (BLACK BG, WHITE TEXT)
+  - `--color-primary`: `oklch(16.84% 0 0)` , NEAR-BLACK (MAIN TEXT)
+  - `--color-secondary`: `oklch(100% 0 0)` , WHITE (BACKGROUND)
+  - `--color-accent`: `oklch(81.34% .218 130.43)` , LIME GREEN (BUTTONS, HIGHLIGHTS)
+  - DARK THEME: `[data-theme="dark"]` , INVERTS PRIMARY/SECONDARY (BLACK BG, WHITE TEXT)
 - **FONTS:**
   - SANS: `Geist, sans-serif` (BODY TEXT, UI ELEMENTS)
   - SERIF: `Newsreader, serif` (DESCRIPTIVE PARAGRAPHS)

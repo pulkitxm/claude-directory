@@ -1,4 +1,4 @@
-# Warp Checks Background Lab — Animated Checks-Warp GLSL Background with Live Console (React + @paper-design/shaders-react + Tailwind CSS v4)
+# Warp Checks Background Lab , Animated Checks-Warp GLSL Background with Live Console (React + @paper-design/shaders-react + Tailwind CSS v4)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -6,25 +6,25 @@ A full-viewport animated checks-warp shader background using `@paper-design/shad
 
 ## What it does
 
-- **Fixed, full-viewport shader background** — one `<Warp>` in a
+- **Fixed, full-viewport shader background** , one `<Warp>` in a
   `fixed inset-0 -z-10` layer (verbatim from the prompt) paints the whole page
   behind glassy, backdrop-blurred content.
-- **Live Warp console** — every continuous uniform the prompt lists is a fader:
+- **Live Warp console** , every continuous uniform the prompt lists is a fader:
   `proportion`, `softness`, `distortion`, `swirl`, `swirlIterations`,
   `shapeScale`, `scale`, `rotation`, `speed`. A segmented selector switches the
   Warp `shape` (`checks` / `stripes` / `edge`), and four mood presets (**Prism**
-  — the prompt's verbatim blue·violet·green·purple checks — plus Tide, Ember,
+  , the prompt's verbatim blue·violet·green·purple checks , plus Tide, Ember,
   Obsidian) re-tint and re-shape the same component. Touch anything and the page
   background updates in real time.
-- **Props, live vs prompt** — a `<Warp>` props/API table whose "Live" column
+- **Props, live vs prompt** , a `<Warp>` props/API table whose "Live" column
   tracks the current background and whose "Prompt" column shows the brief's
   verbatim default, so any drift is visible at a glance. **Reset to prompt**
   returns every prop to the literal starting values.
-- **shadcn integration write-up** — how to scaffold Vite + TypeScript + Tailwind
+- **shadcn integration write-up** , how to scaffold Vite + TypeScript + Tailwind
   v4 + shadcn from scratch, why `@/components/ui` is the path that matters, the
   one install step, the steps-to-integrate, and the brief's "Questions to Ask"
   answered.
-- **Live telemetry** — a strip reads real FPS / frame count / uptime off
+- **Live telemetry** , a strip reads real FPS / frame count / uptime off
   `requestAnimationFrame` and echoes the shader speed, so you can see the
   background is genuinely running, not a still.
 
@@ -50,14 +50,14 @@ React 19, TypeScript, Vite 7, Tailwind CSS v4, `@paper-design/shaders-react`
 | Live status | `emerald-300` |
 | Type | Geist Sans + Geist Mono (vendored locally) |
 
-Signature: legible, glassy UI floated directly on the moving checks-warp field —
+Signature: legible, glassy UI floated directly on the moving checks-warp field ,
 a frosted control deck, a live props ledger, an integration brief, and a vertical
 engraved side rail (the prompt's empty `left-8 top-1/2` slot) that reads the
 shader's live coordinates.
 
 ## Assets
 
-The shader is **fully procedural** — no images or textures. The **Geist Sans**
+The shader is **fully procedural** , no images or textures. The **Geist Sans**
 and **Geist Mono** variable fonts are **vendored locally** under
 `assets/fonts/*.woff2` and bundled by Vite, so the project runs entirely offline
 with no CDN or remote font calls. Icons are `lucide-react`; the favicon is an
@@ -83,4 +83,4 @@ palette, and no page/console errors fire.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

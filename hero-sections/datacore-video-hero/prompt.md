@@ -1,4 +1,4 @@
-# Datacore — Cinematic Video Hero Section
+# Datacore , Cinematic Video Hero Section
 
 ## Overview
 
@@ -17,20 +17,20 @@ Build a responsive, full-screen hero section for a hotel/stay-booking web applic
 
 Load and use the following font families:
 
-- **Manrope** — UI / navigation.
-- **Cabin** — buttons / tags.
-- **Instrument Serif** — headlines.
-- **Inter** — body text.
+- **Manrope** , UI / navigation.
+- **Cabin** , buttons / tags.
+- **Instrument Serif** , headlines.
+- **Inter** , body text.
 
 ### Colors
 
 - **Primary color:** purple `#7B39FC`.
 - **Secondary / dark color:** dark purple `#2B2344`.
 
-## Layout — App Shell
+## Layout , App Shell
 
 - Root `<main>` uses `relative min-h-screen overflow-hidden bg-dark`.
-- A full-screen opaque video background sits behind everything (no overlay — keep it opaque):
+- A full-screen opaque video background sits behind everything (no overlay , keep it opaque):
 
   ```tsx
   <video
@@ -55,7 +55,7 @@ Load and use the following font families:
 Top overlay bar that layers above the video.
 
 - **Container:** `<header>` with `relative z-20 w-full bg-transparent`.
-- **Inner row:** `flex w-full items-center px-6 py-[16px] lg:px-[120px]` — full width, transparent, padding `px-6` (mobile) up to `lg:px-[120px]` (desktop), and `py-[16px]`.
+- **Inner row:** `flex w-full items-center px-6 py-[16px] lg:px-[120px]` , full width, transparent, padding `px-6` (mobile) up to `lg:px-[120px]` (desktop), and `py-[16px]`.
 
 ### Logo (left)
 
@@ -85,7 +85,7 @@ Rendered by `src/components/Logo.tsx`.
   - `Services` (with a trailing `ChevronDown` icon, `size={16}`, `strokeWidth={2}`)
   - `Reviews`
   - `Contact us`
-- Each link: `<a href="#">` with `flex items-center gap-1 font-manrope text-[14px] font-medium text-white transition-opacity hover:opacity-80` — Manrope, medium weight, 14px, white, hover `opacity-80`.
+- Each link: `<a href="#">` with `flex items-center gap-1 font-manrope text-[14px] font-medium text-white transition-opacity hover:opacity-80` , Manrope, medium weight, 14px, white, hover `opacity-80`.
 
 ### Action Buttons (right, desktop only)
 
@@ -109,7 +109,7 @@ Rendered by `src/components/Logo.tsx`.
 
 ## Hero (`src/components/Hero.tsx`)
 
-- **Section container:** `relative z-10 mt-32 flex flex-col items-center px-6 pb-28 text-center` — centered horizontally, top margin `mt-32`, `z-10` above the video.
+- **Section container:** `relative z-10 mt-32 flex flex-col items-center px-6 pb-28 text-center` , centered horizontally, top margin `mt-32`, `z-10` above the video.
 
 ### Tagline Pill (glassmorphism)
 
@@ -137,10 +137,10 @@ Rendered by `src/components/Logo.tsx`.
 
 ### Call-to-Action Buttons (row)
 
-- Container: `mt-10 flex flex-col gap-4 sm:flex-row` — stacks on mobile, row on `sm` and up.
-- **Button 1 — `Book a Free Demo`:** primary purple (`#7b39fc`), rounded 10px, Cabin medium 16px, white:
+- Container: `mt-10 flex flex-col gap-4 sm:flex-row` , stacks on mobile, row on `sm` and up.
+- **Button 1 , `Book a Free Demo`:** primary purple (`#7b39fc`), rounded 10px, Cabin medium 16px, white:
   `rounded-[10px] bg-primary px-7 py-3.5 font-cabin text-[16px] font-medium text-white shadow-[0_8px_28px_rgba(123,57,252,0.45)] transition-colors`.
-- **Button 2 — `Get Started Now`:** dark purple (`#2b2344`), rounded 10px, Cabin medium 16px, off-white `#f6f7f9`:
+- **Button 2 , `Get Started Now`:** dark purple (`#2b2344`), rounded 10px, Cabin medium 16px, off-white `#f6f7f9`:
   `rounded-[10px] bg-dark px-7 py-3.5 font-cabin text-[16px] font-medium text-[#f6f7f9] shadow-[0_8px_28px_rgba(20,12,40,0.45)] transition-colors`.
 - Hover effects slightly lighten each button's background.
 
@@ -148,8 +148,8 @@ Rendered by `src/components/Logo.tsx`.
 
 | Token | Hex / value | Usage |
 | --- | --- | --- |
-| `primary` | `#7b39fc` | Primary purple — badges, primary buttons, accents |
-| `dark` | `#2b2344` | Dark purple — app/page background, secondary button |
+| `primary` | `#7b39fc` | Primary purple , badges, primary buttons, accents |
+| `dark` | `#2b2344` | Dark purple , app/page background, secondary button |
 | (literal) | `#171717` | Sign In button text |
 | (literal) | `#fafafa` | Get Started button text |
 | (literal) | `#d4d4d4` | Sign In button border |

@@ -1,9 +1,9 @@
-> SELF-CONTAINED, PIXEL-FAITHFUL REPRODUCTION OF THE TRENDSPOTTER TEMPLATE — EVERY PAGE, THE FULL LOOK & FEEL, HOVER STATES, AND SCROLL/ENTRANCE ANIMATIONS — AS PLAIN HTML/CSS/JS.
+> SELF-CONTAINED, PIXEL-FAITHFUL REPRODUCTION OF THE TRENDSPOTTER TEMPLATE , EVERY PAGE, THE FULL LOOK & FEEL, HOVER STATES, AND SCROLL/ENTRANCE ANIMATIONS , AS PLAIN HTML/CSS/JS.
 > REFERENCE: `https://lexingtonthemes.com/viewports/trendspotter`
 
 ## SUMMARY
 
-TRENDSPOTTER IS A TOOL DIRECTORY / DESIGN SHOWCASE SITE TEMPLATE BUILT BY LEXINGTON THEMES. IT FEATURES A CLEAN, MINIMAL AESTHETIC WITH A LIGHT BACKGROUND, GREEN ACCENT PALETTE, AND INTER FONT THROUGHOUT. THE TEMPLATE INCLUDES A TOOLS LISTING PAGE (HOME), BLOG, STORE, PRICING, SIGN IN/UP FORMS, INDIVIDUAL TOOL DETAIL PAGES, TAG FILTERING, SUBMIT TOOL FLOW, AND DASHBOARD COLLECTIONS — ALL CONNECTED THROUGH A CONSISTENT SHARED NAVIGATION AND FOOTER.
+TRENDSPOTTER IS A TOOL DIRECTORY / DESIGN SHOWCASE SITE TEMPLATE BUILT BY LEXINGTON THEMES. IT FEATURES A CLEAN, MINIMAL AESTHETIC WITH A LIGHT BACKGROUND, GREEN ACCENT PALETTE, AND INTER FONT THROUGHOUT. THE TEMPLATE INCLUDES A TOOLS LISTING PAGE (HOME), BLOG, STORE, PRICING, SIGN IN/UP FORMS, INDIVIDUAL TOOL DETAIL PAGES, TAG FILTERING, SUBMIT TOOL FLOW, AND DASHBOARD COLLECTIONS , ALL CONNECTED THROUGH A CONSISTENT SHARED NAVIGATION AND FOOTER.
 
 ## STYLE
 
@@ -15,7 +15,7 @@ TRENDSPOTTER IS A TOOL DIRECTORY / DESIGN SHOWCASE SITE TEMPLATE BUILT BY LEXING
   - ACCENT-200: oklch(84.4% 0.065 154.46)
   - ACCENT-300: oklch(76.02% 0.1 153.86)
   - ACCENT-400: oklch(68.65% 0.13 151.92)
-  - ACCENT-500: oklch(56.56% 0.108 151.62) — PRIMARY ACCENT
+  - ACCENT-500: oklch(56.56% 0.108 151.62) , PRIMARY ACCENT
   - ACCENT-600: oklch(48.31% 0.091 151.89)
   - ACCENT-700: oklch(39.44% 0.071 152.24)
   - ACCENT-800: oklch(31.05% 0.052 151.99)
@@ -77,7 +77,7 @@ TRENDSPOTTER IS A TOOL DIRECTORY / DESIGN SHOWCASE SITE TEMPLATE BUILT BY LEXING
 
 ### PAGES DISCOVERED
 
-1. **HOME / TOOLS DIRECTORY** (`index.html`) — https://trendspotter-astro.pages.dev/
+1. **HOME / TOOLS DIRECTORY** (`index.html`) , https://trendspotter-astro.pages.dev/
    - TOP NAVIGATION: LEFT LINKS (BLOG, STORE, OVERVIEW, BUY) + RIGHT ACTIONS (SUBMIT A TOOL MODAL, SUBSCRIBE MODAL, SEARCH MODAL)
    - CENTER LOGO: "TRENDSPOTTER" TEXT WITH ICON
    - HORIZONTAL SCROLLING MARQUEE STRIP (TOOL IMAGES)
@@ -87,43 +87,43 @@ TRENDSPOTTER IS A TOOL DIRECTORY / DESIGN SHOWCASE SITE TEMPLATE BUILT BY LEXING
    - FEATURED BLOG POST SECTION
    - FOOTER: MINIMAL WITH NAV LINKS AND LEXINGTON CREDIT
 
-2. **BLOG** (`blog.html`) — https://trendspotter-astro.pages.dev/blog
+2. **BLOG** (`blog.html`) , https://trendspotter-astro.pages.dev/blog
    - NAVIGATION SAME AS HOME
    - BLOG POSTS LIST/GRID
    - EACH POST: COVER IMAGE, TITLE, DATE, EXCERPT
 
-3. **STORE** (`store.html`) — https://trendspotter-astro.pages.dev/store
+3. **STORE** (`store.html`) , https://trendspotter-astro.pages.dev/store
    - NAVIGATION SAME AS HOME
    - PRODUCT CARDS GRID: LEXINGTON THEMES TEMPLATES FOR SALE
 
-4. **STORE SINGLE PRODUCT** (`store/1.html`) — https://trendspotter-astro.pages.dev/store/1
+4. **STORE SINGLE PRODUCT** (`store/1.html`) , https://trendspotter-astro.pages.dev/store/1
    - SINGLE PRODUCT DETAIL VIEW
 
-5. **PRICING** (`pricing.html`) — https://trendspotter-astro.pages.dev/pricing
+5. **PRICING** (`pricing.html`) , https://trendspotter-astro.pages.dev/pricing
    - PRICING TIERS WITH FEATURE LISTS AND CTA BUTTONS
 
-6. **SIGN IN** (`signin.html`) — https://trendspotter-astro.pages.dev/signin
+6. **SIGN IN** (`signin.html`) , https://trendspotter-astro.pages.dev/signin
    - CENTERED SIGN-IN FORM WITH EMAIL/PASSWORD
 
-7. **SIGN UP** (`signup.html`) — https://trendspotter-astro.pages.dev/signup
+7. **SIGN UP** (`signup.html`) , https://trendspotter-astro.pages.dev/signup
    - CENTERED SIGN-UP FORM
 
-8. **TOOLS SUBMIT** (`tools/submit.html`) — https://trendspotter-astro.pages.dev/tools/submit
+8. **TOOLS SUBMIT** (`tools/submit.html`) , https://trendspotter-astro.pages.dev/tools/submit
    - FORM TO SUBMIT A TOOL WITH PREMIUM QUEUE SKIP OPTION
 
-9. **TOOL DETAIL** (`tools/tool/1.html`) — https://trendspotter-astro.pages.dev/tools/tool/1
+9. **TOOL DETAIL** (`tools/tool/1.html`) , https://trendspotter-astro.pages.dev/tools/tool/1
    - SINGLE TOOL DETAIL WITH SCREENSHOT, DESCRIPTION, TAGS, LINKS
 
-10. **TAG PAGE** (`tools/tags/colors.html`) — https://trendspotter-astro.pages.dev/tools/tags/colors
+10. **TAG PAGE** (`tools/tags/colors.html`) , https://trendspotter-astro.pages.dev/tools/tags/colors
     - FILTERED TOOL LISTING BY TAG
 
-11. **SYSTEM OVERVIEW** (`system/overview.html`) — https://trendspotter-astro.pages.dev/system/overview
+11. **SYSTEM OVERVIEW** (`system/overview.html`) , https://trendspotter-astro.pages.dev/system/overview
     - DESIGN SYSTEM OVERVIEW PAGE
 
-12. **DASHBOARD COLLECTIONS** (`dashboard/collections.html`) — https://trendspotter-astro.pages.dev/dashboard/collections
+12. **DASHBOARD COLLECTIONS** (`dashboard/collections.html`) , https://trendspotter-astro.pages.dev/dashboard/collections
     - USER COLLECTIONS DASHBOARD VIEW
 
-13. **INFOPAGES TERMS** (`infopages/terms.html`) — https://trendspotter-astro.pages.dev/infopages/terms
+13. **INFOPAGES TERMS** (`infopages/terms.html`) , https://trendspotter-astro.pages.dev/infopages/terms
     - TERMS OF SERVICE PAGE (PROSE CONTENT)
 
 ### SHARED CHROME

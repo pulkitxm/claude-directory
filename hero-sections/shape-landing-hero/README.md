@@ -1,8 +1,8 @@
-# Shape Landing Hero — Animated Geometric Shapes Hero Component (React + Vite + Framer Motion + Tailwind CSS v4 + shadcn/ui)
+# Shape Landing Hero , Animated Geometric Shapes Hero Component (React + Vite + Framer Motion + Tailwind CSS v4 + shadcn/ui)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-An integration of the `HeroGeometric` component from Kokonut UI — five blurred, gradient-filled shapes drift behind a gradient-clipped headline on a near-black `#030303` canvas, all driven by Framer Motion. The component is dropped into a proper shadcn/ui project structure and wrapped in a landing experience (floating navbar, CTAs, a live props playground, feature grid, install band) that showcases it above the fold. This animated hero section is an ideal starting point for dark-themed SaaS, design tool, or portfolio landing pages. Generated with Claude Fable 5.
+An integration of the `HeroGeometric` component from Kokonut UI , five blurred, gradient-filled shapes drift behind a gradient-clipped headline on a near-black `#030303` canvas, all driven by Framer Motion. The component is dropped into a proper shadcn/ui project structure and wrapped in a landing experience (floating navbar, CTAs, a live props playground, feature grid, install band) that showcases it above the fold. This animated hero section is an ideal starting point for dark-themed SaaS, design tool, or portfolio landing pages. Generated with Claude Fable 5.
 
 ## Stack
 
@@ -32,7 +32,7 @@ screenshots to `screenshots/`.
 
 ### Does the codebase support shadcn / Tailwind / TypeScript?
 
-Yes — this project is configured for all three out of the box. If you are
+Yes , this project is configured for all three out of the box. If you are
 starting from scratch, here is the setup the component expects:
 
 ```sh
@@ -81,7 +81,7 @@ component imports its sibling/helpers with that exact path
 If your project does not have it yet, create `src/components/ui/` and paste the
 component there before importing it.
 
-### Component API — what props are passed?
+### Component API , what props are passed?
 
 `HeroGeometric` is presentational and fully prop-driven (no global state, no
 context, no required assets):
@@ -107,7 +107,7 @@ is identical.
 
 ### Required assets
 
-The component itself needs **no images** — the visuals are pure CSS gradients +
+The component itself needs **no images** , the visuals are pure CSS gradients +
 Framer Motion + one `lucide-react` `Circle` icon. The prompt suggested filling
 image slots with Unsplash photos, but `images.unsplash.com` is not reachable from
 this sandbox's network allowlist, so rather than hotlink a remote URL the
@@ -123,4 +123,4 @@ hamburger menu under `md`. Verified at 1440×900 and 390×844.
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

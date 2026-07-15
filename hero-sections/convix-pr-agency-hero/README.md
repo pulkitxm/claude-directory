@@ -1,4 +1,4 @@
-# Convix PR Agency Hero — Full-Viewport SaaS Hero Section (React + TypeScript + Tailwind CSS)
+# Convix PR Agency Hero , Full-Viewport SaaS Hero Section (React + TypeScript + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -28,4 +28,4 @@ npm run verify   # Playwright checks across desktop / tablet / mobile viewports
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

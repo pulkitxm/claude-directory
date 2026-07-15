@@ -1,8 +1,8 @@
-# Primer — Info-Product / Book-Course Landing Page Clone (Vanilla HTML/CSS/JS)
+# Primer , Info-Product / Book-Course Landing Page Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful clone of the Tailwind Plus "Primer" info-product landing template, rebuilt as a self-contained single-page marketing site for a fictional book + video course ("Everything Starts as a Square") with no build step. It reproduces the editorial blue/slate design same-to-same — a dark book-cover hero, a sticky numbered section-tab navigation that tracks the active section on scroll, a "See more" table-of-contents expand, scroll-entrance reveals via IntersectionObserver, hover states, email-capture forms, and a mobile dropdown menu. Built with plain HTML, CSS, and vanilla JavaScript, all assets vendored locally. Generated with Claude Fable 5.
+A pixel-faithful clone of the Tailwind Plus "Primer" info-product landing template, rebuilt as a self-contained single-page marketing site for a fictional book + video course ("Everything Starts as a Square") with no build step. It reproduces the editorial blue/slate design same-to-same , a dark book-cover hero, a sticky numbered section-tab navigation that tracks the active section on scroll, a "See more" table-of-contents expand, scroll-entrance reveals via IntersectionObserver, hover states, email-capture forms, and a mobile dropdown menu. Built with plain HTML, CSS, and vanilla JavaScript, all assets vendored locally. Generated with Claude Fable 5.
 
 ## Run
 
@@ -31,8 +31,8 @@ Load the page in a browser and check the reproduced interactions:
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailwind Plus (Primer template) — <https://tailwindcss.com/plus/templates/primer/preview>
+**Original:** Tailwind Plus (Primer template) , <https://tailwindcss.com/plus/templates/primer/preview>
 
 ---
 
-Part of the [Templates](../../../README.md) collection in the [claude-directory](../../../../README.md) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../../README.md) collection in the [claude-directory](../../../../README.md) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

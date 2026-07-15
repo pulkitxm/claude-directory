@@ -1,4 +1,4 @@
-# VITRUVIAN ASCII SHADER — COMPONENT INTEGRATION
+# VITRUVIAN ASCII SHADER , COMPONENT INTEGRATION
 
 YOU ARE GIVEN A TASK TO INTEGRATE AN EXISTING REACT COMPONENT IN THE CODEBASE
 
@@ -171,7 +171,7 @@ export default function Home() {
             {/* Description with subtle grid pattern */}
             <div className="relative">
               <p className="text-xs lg:text-base text-gray-300 mb-5 lg:mb-6 leading-relaxed font-mono opacity-80">
-                Where geometry meets humanity — Da Vinci's vision of ideal form
+                Where geometry meets humanity , Da Vinci's vision of ideal form
               </p>
               
               {/* Technical corner accent - desktop only */}

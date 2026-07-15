@@ -1,4 +1,4 @@
-# Asme — Cinematic Dark Hero Landing Page
+# Asme , Cinematic Dark Hero Landing Page
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a full-screen, dark, single-screen (100vh, no scroll) hero landing page fo
 - **Framework:** React 19 (`react` `^19.2.7`, `react-dom` `^19.2.7`) with Vite (`vite` `^8.0.16`) via `@vitejs/plugin-react` `^6.0.2`.
 - **Styling:** Tailwind CSS v4 (`tailwindcss` `^4.3.0`) integrated through `@tailwindcss/vite` `^4.3.0` (the `@import "tailwindcss";` + `@theme` approach, no `tailwind.config.js`).
 - **Animation:** Motion (Framer Motion) `motion` `^12.40.0`, imported from `motion/react` (`motion`, `AnimatePresence`).
-- **Icons:** Lucide (`lucide-react` `^1.17.0`) — `Globe`, `ArrowRight`, `Check`.
+- **Icons:** Lucide (`lucide-react` `^1.17.0`) , `Globe`, `ArrowRight`, `Check`.
 - **Video:** HLS playback via HLS.js (`hls.js` `^1.6.16`), with native HLS fallback for Safari.
 - **Fonts:** Inter (base sans-serif) and Instrument Serif (hero heading), loaded from Google Fonts.
 - **Notable techniques:** glassmorphism with a masked gradient border, gradient-clipped text, typewriter placeholder effect, `AnimatePresence` state toggle between a button and an email form.
@@ -19,7 +19,7 @@ Build a full-screen, dark, single-screen (100vh, no scroll) hero landing page fo
 ### Entry HTML (`index.html`)
 
 - `<html lang="en">`, `<meta charset="UTF-8" />`, `<meta name="viewport" content="width=device-width, initial-scale=1.0" />`.
-- `<title>`: `Asme — A new way to think and create with computers`
+- `<title>`: `Asme , A new way to think and create with computers`
 - `<meta name="description" content="Build a no-code AI app in minutes. Get early access to Asme." />`
 - Favicon is an inline SVG data URI of a white globe icon:
 
@@ -52,8 +52,8 @@ createRoot(document.getElementById("root")).render(
 Import order: both Google Fonts URLs first, then Tailwind, then theme/base rules.
 
 - **Fonts (Google Fonts):**
-  - Inter, weights 300, 400, 500, 600 — base sans-serif font.
-  - Instrument Serif, regular and italic — used for the hero heading.
+  - Inter, weights 300, 400, 500, 600 , base sans-serif font.
+  - Instrument Serif, regular and italic , used for the hero heading.
 
   ```css
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
@@ -86,7 +86,7 @@ Import order: both Google Fonts URLs first, then Tailwind, then theme/base rules
   }
   ```
 
-- **`.liquid-glass`** — glassmorphism surface with a masked gradient border via `::before`:
+- **`.liquid-glass`** , glassmorphism surface with a masked gradient border via `::before`:
 
   ```css
   .liquid-glass {
@@ -129,7 +129,7 @@ Import order: both Google Fonts URLs first, then Tailwind, then theme/base rules
   }
   ```
 
-- **`.glass-pill`** — pill-shaped glass surface (defined for completeness):
+- **`.glass-pill`** , pill-shaped glass surface (defined for completeness):
 
   ```css
   .glass-pill {
@@ -167,7 +167,7 @@ export default function App() {
 
 - Renders an absolutely positioned `<div>` covering the full parent: `absolute inset-0 overflow-hidden pointer-events-none`.
 - Contains a `<video>` element with `autoPlay`, `muted`, `loop`, `playsInline`, classes `w-full h-full object-cover opacity-100`, and a `ref`.
-- **Video source URL** (an HLS stream hosted on Mux — note: this is a Mux `.m3u8` stream, not a CloudFront URL): `https://stream.mux.com/kimF2ha9zLrX64H00UgLGPflCzNtl1T0215MlAmeOztv8.m3u8`
+- **Video source URL** (an HLS stream hosted on Mux , note: this is a Mux `.m3u8` stream, not a CloudFront URL): `https://stream.mux.com/kimF2ha9zLrX64H00UgLGPflCzNtl1T0215MlAmeOztv8.m3u8`
 - **Playback logic with HLS.js:** in a `useEffect`, if the browser natively supports HLS (`video.canPlayType("application/vnd.apple.mpegurl")`), set `video.src` directly. Otherwise, if `Hls.isSupported()`, instantiate `new Hls()`, call `loadSource`, then `attachMedia`, and clean up with `hls.destroy()`. The `.m3u8` format requires HLS.js for non-Safari browsers.
 
 ```jsx
@@ -221,7 +221,7 @@ export default function BackgroundVideo() {
 - Inner container: `liquid-glass rounded-full px-6 py-3 flex items-center justify-between max-w-5xl mx-auto`.
 - **Left side** (`flex items-center gap-8`):
   - **Logo:** `Globe` icon from Lucide (`w-6 h-6 text-white`) + the brand text "Asme" (`text-white font-semibold text-lg`), inside a `flex items-center gap-2` wrapper.
-  - **Nav links:** "Features", "Pricing", "About" — defined as a `NAV_LINKS` array and mapped. Hidden on mobile (`hidden md:flex items-center gap-8 text-white/80 text-sm font-medium`). Each `<a>` uses `href={`#${link.toLowerCase()}`}` and classes `hover:text-white transition-colors duration-300`.
+  - **Nav links:** "Features", "Pricing", "About" , defined as a `NAV_LINKS` array and mapped. Hidden on mobile (`hidden md:flex items-center gap-8 text-white/80 text-sm font-medium`). Each `<a>` uses `href={`#${link.toLowerCase()}`}` and classes `hover:text-white transition-colors duration-300`.
 - **Right side** (`flex items-center gap-4`):
   - **"Sign Up"** plain text button: `text-white hover:text-white/80 transition-colors text-sm font-medium cursor-pointer`.
   - **"Login"** glassmorphism button: `liquid-glass rounded-full px-6 py-2 text-sm font-medium text-white hover:opacity-90 transition-opacity cursor-pointer`.
@@ -385,7 +385,7 @@ export default function Hero() {
 
 - **Background:** `#000000` (`--background`, also applied via `bg-black`).
 - **Foreground / text:** `#ffffff` (`--foreground`).
-- **Glass surfaces:** white at very low opacity — `rgba(255, 255, 255, 0.01)` (`.liquid-glass`), `rgba(255, 255, 255, 0.04)` (`.glass-pill`), `bg-white/[0.02]` (form/button fills), `bg-white/10` and `bg-white/20` (submit button).
+- **Glass surfaces:** white at very low opacity , `rgba(255, 255, 255, 0.01)` (`.liquid-glass`), `rgba(255, 255, 255, 0.04)` (`.glass-pill`), `bg-white/[0.02]` (form/button fills), `bg-white/10` and `bg-white/20` (submit button).
 - **Text opacities:** `text-white/90`, `text-white/80`, `text-white/70` (heading gradient stop), `text-white/40` (hover), `placeholder-white/45`.
 - **Borders:** `border-white/10`, `border-white/20`, `border-white/30`, `border-white/40`.
 - **Heading gradient:** `bg-gradient-to-b from-white via-white/95 to-white/70`, clipped to text.

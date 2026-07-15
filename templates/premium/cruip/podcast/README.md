@@ -1,16 +1,16 @@
-# Indie Stories — Podcast Website Template (Tailwind CSS + Alpine.js + AOS + Swiper.js)
+# Indie Stories , Podcast Website Template (Tailwind CSS + Alpine.js + AOS + Swiper.js)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A three-page dark-themed podcast website template faithfully reproducing the Cruip Podcast design. It features a hero section with an iPhone mockup and animated SVG blobs, an Alpine.js-powered filterable episode list, a Swiper.js carousel, host profile grid, testimonials, and a fully interactive audio player page with playback-speed control and a seek bar — all built with plain HTML, vendored Tailwind CSS utility classes, Alpine.js, AOS (Animate on Scroll), and Swiper.js, with no build step required.
+A three-page dark-themed podcast website template faithfully reproducing the Cruip Podcast design. It features a hero section with an iPhone mockup and animated SVG blobs, an Alpine.js-powered filterable episode list, a Swiper.js carousel, host profile grid, testimonials, and a fully interactive audio player page with playback-speed control and a seek bar , all built with plain HTML, vendored Tailwind CSS utility classes, Alpine.js, AOS (Animate on Scroll), and Swiper.js, with no build step required.
 
 ## Pages
 
 | File | Description |
 |---|---|
-| `index.html` | Home — hero, episode carousel, filterable podcast list, hosts, testimonials, CTA |
-| `podcast.html` | Episode player — audio player with seek bar, speed control, episode notes, related sidebar |
-| `subscribe.html` | Subscribe — centered email capture with feature highlights |
+| `index.html` | Home , hero, episode carousel, filterable podcast list, hosts, testimonials, CTA |
+| `podcast.html` | Episode player , audio player with seek bar, speed control, episode notes, related sidebar |
+| `subscribe.html` | Subscribe , centered email capture with feature highlights |
 
 ## Run
 
@@ -48,8 +48,8 @@ python3 -m http.server 8080
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip — https://cruip.com/demos/podcast/
+**Original:** Cruip , https://cruip.com/demos/podcast/
 
 ---
 
-Part of the [Cruip](../) collection in the [Templates](../../../) — an open-source gallery of UI. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Cruip](../) collection in the [Templates](../../../) , an open-source gallery of UI. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,25 +1,25 @@
-# Superdesign Red Noir — AI Design Tool Landing Page (TanStack Start + React 19 + Tailwind v4)
+# Superdesign Red Noir , AI Design Tool Landing Page (TanStack Start + React 19 + Tailwind v4)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful recreation of the "Red Noir" Superdesign AI design tool landing page, built with **TanStack Start v1**, **React 19**, **TypeScript**, **Tailwind v4**, and **lucide-react** — a dark maroon-and-red hero landing page with parallax starfields, animated gradients, and a bento feature grid. Generated with Claude Fable 5.
+A pixel-faithful recreation of the "Red Noir" Superdesign AI design tool landing page, built with **TanStack Start v1**, **React 19**, **TypeScript**, **Tailwind v4**, and **lucide-react** , a dark maroon-and-red hero landing page with parallax starfields, animated gradients, and a bento feature grid. Generated with Claude Fable 5.
 
 The page is one scrolling document composed of stacked sections, in order:
 
-1. **Hero** — pill badge with a pinging red dot, gradient-clipped `Design Intelligence
+1. **Hero** , pill badge with a pinging red dot, gradient-clipped `Design Intelligence
    / for the Future` headline (with a hand-drawn underline SVG under "Future"), the
    signature conic-gradient **shiny CTA**, a "View on GitHub" secondary button, and an
    "Integrated with" logo strip (OpenAI, Figma, React, Vercel, Stripe). Elements
    stagger in with a `fade-in-up` keyframe.
-2. **Features** — a 4-card bento grid (`lg:h-[700px]`): a 2×2 "Generative UI Systems"
+2. **Features** , a 4-card bento grid (`lg:h-[700px]`): a 2×2 "Generative UI Systems"
    main card with a hover "EXPLORE FEATURE" footer, "Code Export", "Smart Iteration",
    and "Team Sync", each with a per-card radial color glow on hover.
-3. **Testimonial** — a full-bleed `#ef233c` banner with five black stars and the Alex
+3. **Testimonial** , a full-bleed `#ef233c` banner with five black stars and the Alex
    Morgan / CPO at TechFlow quote.
-4. **Pricing** — three tiers (Starter $0, **Pro $49** featured with a RECOMMENDED pill
+4. **Pricing** , three tiers (Starter $0, **Pro $49** featured with a RECOMMENDED pill
    and red glow, Team $199) with `lucide:check` feature lists.
-5. **Waitlist** — a `Ready to Build?` CTA with an email capture form (visual only).
-6. **Footer** — Platform / Company link columns and a giant `15vw` outlined
+5. **Waitlist** , a `Ready to Build?` CTA with an email capture form (visual only).
+6. **Footer** , Platform / Company link columns and a giant `15vw` outlined
    `SUPERDESIGN` text-stroke wordmark.
 
 ## Global background
@@ -68,4 +68,4 @@ A walkthrough recording lives at [`demo.mp4`](./demo.mp4).
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,4 +1,4 @@
-# SkyElite — Premium. Accessible. (Private Jet Hero Section)
+# SkyElite , Premium. Accessible. (Private Jet Hero Section)
 
 ## Overview
 
@@ -8,7 +8,7 @@ Build a premium private-jet landing page hero section: a full-viewport looping v
 
 - **Framework:** React with TypeScript
 - **Styling:** Tailwind CSS
-- **Icons:** Lucide React — `Menu` and `X` icons
+- **Icons:** Lucide React , `Menu` and `X` icons
 - **Font:** Inter (Google Fonts; weights 400, 500, 600, 700), applied to the entire body via CSS
 - **State:** React `useState` hook for the mobile menu toggle
 - **Notable techniques:** full-viewport `object-cover` video background, responsive mobile-first layout
@@ -41,11 +41,11 @@ Use a full-screen height container (`h-screen`).
 
 Centered, pulled upward with `-mt-80`:
 
-- **Eyebrow label:** small uppercase label `Private Jets` — classes `text-sm font-semibold` in `gray-600` with `tracking-wider` and `mb-4`.
+- **Eyebrow label:** small uppercase label `Private Jets` , classes `text-sm font-semibold` in `gray-600` with `tracking-wider` and `mb-4`.
 - **Heading:** a large two-line heading with an overlapping effect.
-  - **Line 1:** `Premium.` — `text-6xl md:text-7xl lg:text-8xl`, `font-normal`, `text-gray-500`, `leading-none`, `tracking-tighter`.
-  - **Line 2:** `Accessible.` — same size, color `#202A36`, negative margin-top of `-12px` for overlap.
-- **Subtitle:** `Your dedication deserves recognition.` — classes `text-lg md:text-xl`, `gray-600`, `mb-6`, `max-w-2xl`.
+  - **Line 1:** `Premium.` , `text-6xl md:text-7xl lg:text-8xl`, `font-normal`, `text-gray-500`, `leading-none`, `tracking-tighter`.
+  - **Line 2:** `Accessible.` , same size, color `#202A36`, negative margin-top of `-12px` for overlap.
+- **Subtitle:** `Your dedication deserves recognition.` , classes `text-lg md:text-xl`, `gray-600`, `mb-6`, `max-w-2xl`.
 - **Call-to-action buttons:** two buttons in a centered row with `gap-4`:
   - **Discover:** `px-4 py-2`, `rounded-full`, `bg-gray-300`, `text-gray-800`, `font-medium`, `hover:bg-gray-400`.
   - **Book Now:** `px-4 py-2`, `rounded-full`, white text, background color `#202A36`, hover color `#1a2229` with smooth transitions.

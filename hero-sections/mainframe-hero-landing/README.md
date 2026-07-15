@@ -1,4 +1,4 @@
-# Mainframe — Mouse-Scrub Video Hero with AI Typewriter (React 19 + TypeScript + Tailwind CSS 3)
+# Mainframe , Mouse-Scrub Video Hero with AI Typewriter (React 19 + TypeScript + Tailwind CSS 3)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -31,4 +31,4 @@ npm run preview
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

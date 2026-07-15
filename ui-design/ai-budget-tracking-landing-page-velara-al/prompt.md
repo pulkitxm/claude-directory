@@ -14,7 +14,7 @@ THIS TEMPLATE IS STRUCTURED FOR A NEXT.JS PROJECT WITH THE APP ROUTER:
 IF YOU SUPPORT THIS EXACT STRUCTURE, APPLY THE FILES BELOW AS WRITTEN.
 
 IF YOUR BUILDER USES A DIFFERENT STRUCTURE (E.G. /SRC DIRECTORY, PAGES
-ROUTER, OR VITE + REACT), ADAPT THE FILE PATHS AND ENTRY POINT — BUT
+ROUTER, OR VITE + REACT), ADAPT THE FILE PATHS AND ENTRY POINT , BUT
 KEEP EVERY COMPONENT FILE'S CODE 100% IDENTICAL TO WHAT'S PROVIDED
 BELOW. DO NOT REWRITE, REFACTOR, OR REINTERPRET ANY COMPONENT.
 
@@ -24,13 +24,13 @@ THE ONLY ADAPTATIONS ALLOWED ARE:
 - REMOVING "USE CLIENT" DIRECTIVES IF YOUR BUILDER DOESN'T USE NEXT.JS
 - REPLACING THE @/COMPONENTS/... ALIAS WITH THE CORRECT RELATIVE PATH
 - REPLACING NEXT.JS-SPECIFIC IMPORTS (E.G. NEXT/IMAGE, NEXT/LINK) WITH
-  STANDARD EQUIVALENTS (<IMG>, <A>) — ONLY IF YOUR BUILDER DOESN'T
+  STANDARD EQUIVALENTS (<IMG>, <A>) , ONLY IF YOUR BUILDER DOESN'T
   SUPPORT NEXT.JS
 - INSTALLING ANY MISSING DEPENDENCIES VIA YOUR BUILDER'S PACKAGE MANAGER
   BEFORE APPLYING THE FILES
 
-EVERYTHING ELSE — JSX, HOOKS, COMPONENT NAMES, DEFAULT EXPORTS, PROPS,
-CLASSNAME VALUES, ANIMATIONS, STYLING, LOGIC — STAYS EXACTLY AS WRITTEN.
+EVERYTHING ELSE , JSX, HOOKS, COMPONENT NAMES, DEFAULT EXPORTS, PROPS,
+CLASSNAME VALUES, ANIMATIONS, STYLING, LOGIC , STAYS EXACTLY AS WRITTEN.
 THE OUTPUT MUST RUN WITHOUT ANY ERRORS.
 
 IF YOUR BUILDER CANNOT SUPPORT REACT + JSX AT ALL, STOP AND TELL THE USER
@@ -456,7 +456,7 @@ export default function WhyChooseUs01Velara({ className }: { className?: string 
           <header className="text-center mb-16">
             <div className="flex items-center justify-center gap-[10px] mb-4">
               <span className="text-[14px] text-[#555555] font-medium">03.</span>
-              <span className="text-[#333333]">—</span>
+              <span className="text-[#333333]">,</span>
               <span className="text-[13px] text-[#555555] font-medium tracking-[2px] uppercase">Why Choose Us</span>
             </div>
             <h2 className="text-[36px] md:text-[52px] font-medium text-white leading-[1.1] max-w-[820px] mx-auto tracking-tight">
@@ -842,7 +842,7 @@ export default function Features02Velara({ className }: { className?: string }) 
           {/* BENTO GRID */}
           <div className="grid grid-cols-1 md:grid-cols-10 gap-6">
 
-            {/* CARD 1 — Encrypted Accounts */}
+            {/* CARD 1 , Encrypted Accounts */}
             <div className="md:col-span-4 bg-[#161616] border border-[#222222] rounded-[24px] p-8 min-h-[520px] flex flex-col overflow-hidden relative group">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1a1a1a] border border-[#252525] rounded-full mb-8 self-start">
                 <Lock size={12} className="text-[#888888]" />
@@ -894,7 +894,7 @@ export default function Features02Velara({ className }: { className?: string }) 
               </div>
             </div>
 
-            {/* CARD 2 — Smart Budgeting */}
+            {/* CARD 2 , Smart Budgeting */}
             <div className="md:col-span-6 bg-[#161616] border border-[#222222] rounded-[24px] p-8 md:p-10 flex flex-col gap-10 overflow-hidden min-h-[520px]">
               <div className="flex flex-col md:flex-row justify-between items-start gap-8">
                 <div className="flex-1">
@@ -948,7 +948,7 @@ export default function Features02Velara({ className }: { className?: string }) 
               </div>
             </div>
 
-            {/* CARD 3 — Clear Insights */}
+            {/* CARD 3 , Clear Insights */}
             <div className="md:col-span-6 bg-[#161616] border border-[#222222] rounded-[24px] p-8 md:p-10 flex flex-col gap-10 overflow-hidden min-h-[440px]">
               <div className="flex flex-col md:flex-row justify-between items-start gap-8">
                 <div className="flex-1">
@@ -1046,9 +1046,9 @@ export default function Features02Velara({ className }: { className?: string }) 
               </div>
             </div>
 
-            {/* RIGHT COLUMN — 2 STACKED SMALL CARDS */}
+            {/* RIGHT COLUMN , 2 STACKED SMALL CARDS */}
             <div className="md:col-span-4 flex flex-col gap-6">
-              {/* MINI CARD 1 — This Month */}
+              {/* MINI CARD 1 , This Month */}
               <div className="bg-[#111111] border border-[#222222] rounded-[32px] p-9 relative overflow-hidden group flex-1 flex flex-col justify-center shadow-xl">
                 <p className="text-[#888888] text-[12px] font-medium mb-2">This month</p>
                 <h4 className="text-white text-[48px] font-normal tracking-tight leading-none">850$</h4>
@@ -1074,7 +1074,7 @@ export default function Features02Velara({ className }: { className?: string }) 
                 </div>
               </div>
 
-              {/* MINI CARD 2 — Investment Growth */}
+              {/* MINI CARD 2 , Investment Growth */}
               <div className="bg-[#111111] border border-[#222222] rounded-[32px] p-9 relative overflow-hidden group flex-1 flex flex-col justify-center shadow-xl">
                 <div className="absolute top-8 left-9 right-9 flex justify-end items-center">
                   <div className="text-[12px] text-[#666666] font-medium cursor-pointer flex items-center gap-1 hover:text-white transition-colors">
@@ -1288,7 +1288,7 @@ export default function Features03Velara({ className }: { className?: string }) 
                   Built For A Global World Move Money Smarter
                 </h2>
                 <p className="text-[17px] text-[#777777] leading-[1.7] mb-8 font-medium">
-                  Managing your finances shouldn't be complicated. Our intelligent payment platform gives you full control over your money — whether you're spending locally or globally.
+                  Managing your finances shouldn't be complicated. Our intelligent payment platform gives you full control over your money , whether you're spending locally or globally.
                 </p>
 
                 <div className="space-y-4 mb-10">
@@ -1493,7 +1493,7 @@ export default function Testimonial01({ className }: { className?: string }) {
             </div>
           </div>
 
-          {/* RIGHT COLUMN — Animated Ticker */}
+          {/* RIGHT COLUMN , Animated Ticker */}
           <div className="w-full lg:w-[70%] h-[600px] lg:h-[750px] relative overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
 
@@ -1555,12 +1555,12 @@ export default function Features06Velara({ className }: { className?: string }) 
         </div>
 
         <div className="max-w-[1450px] mx-auto relative z-10">
-          {/* PART 1 — SECURITY SECTION */}
+          {/* PART 1 , SECURITY SECTION */}
           <div className="mb-[60px] md:mb-[100px]">
             <header className="mb-[50px]">
               <div className="flex items-center gap-[10px] mb-3">
                 <span className="text-[14px] text-[#555555] font-medium">04.</span>
-                <span className="text-[#333333]">—</span>
+                <span className="text-[#333333]">,</span>
                 <span className="text-[13px] text-[#555555] font-medium tracking-[2px] uppercase">Security & Commitment</span>
               </div>
               <motion.h2
@@ -1575,7 +1575,7 @@ export default function Features06Velara({ className }: { className?: string }) 
             </header>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 lg:gap-8 items-start">
-              {/* Feature 1 — lock */}
+              {/* Feature 1 , lock */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1593,7 +1593,7 @@ export default function Features06Velara({ className }: { className?: string }) 
                 <p className="text-[14px] text-white/40 leading-[1.6]">256-bit SSL secure environment for all your sensitive operations.</p>
               </motion.div>
 
-              {/* Feature 2 — globe */}
+              {/* Feature 2 , globe */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1611,7 +1611,7 @@ export default function Features06Velara({ className }: { className?: string }) 
                 <p className="text-[14px] text-white/40 leading-[1.6]">We follow global level security certifications and standards.</p>
               </motion.div>
 
-              {/* Feature 3 — shield */}
+              {/* Feature 3 , shield */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1629,7 +1629,7 @@ export default function Features06Velara({ className }: { className?: string }) 
                 <p className="text-[14px] text-white/40 leading-[1.6]">Always-on protection systems monitoring every transaction.</p>
               </motion.div>
 
-              {/* Feature 4 — dollar/coin */}
+              {/* Feature 4 , dollar/coin */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1649,7 +1649,7 @@ export default function Features06Velara({ className }: { className?: string }) 
             </div>
           </div>
 
-          {/* PART 2 — APP DOWNLOAD BANNER */}
+          {/* PART 2 , APP DOWNLOAD BANNER */}
           <div className="relative">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -1696,7 +1696,7 @@ export default function Features06Velara({ className }: { className?: string }) 
                 </div>
               </div>
 
-              {/* RIGHT SIDE — Dashboard Mockup */}
+              {/* RIGHT SIDE , Dashboard Mockup */}
               <div className="flex-1 relative overflow-hidden hidden lg:flex items-center justify-end">
                 <div className="absolute right-[-40px] top-[60px] w-[640px] bg-[#1a1a1a] rounded-[20px_20px_0_0] border border-[#2a2a2a] overflow-hidden z-10 transition-transform duration-1000 group-hover:translate-x-[-10px] group-hover:translate-y-[-10px]">
                   {/* Browser Chrome */}
@@ -1838,7 +1838,7 @@ export default function Pricing01Velara({ className }: { className?: string }) {
           {/* PRICING CARDS ROW */}
           <div className="flex flex-col lg:flex-row gap-[24px] items-stretch">
 
-            {/* CARD 1 — Basic Plan */}
+            {/* CARD 1 , Basic Plan */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1890,7 +1890,7 @@ export default function Pricing01Velara({ className }: { className?: string }) {
               </div>
             </motion.div>
 
-            {/* CARD 2 — Pro Plan */}
+            {/* CARD 2 , Pro Plan */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1945,7 +1945,7 @@ export default function Pricing01Velara({ className }: { className?: string }) {
               </div>
             </motion.div>
 
-            {/* CARD 3 — Enterprise Plan */}
+            {/* CARD 3 , Enterprise Plan */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -2061,7 +2061,7 @@ export default function FAQ02Velara({ className }: { className?: string }) {
           <header className="mb-[64px] flex flex-col items-center text-center">
             <div className="flex items-center gap-[10px] mb-3">
               <span className="text-[14px] text-[#555555] font-medium">07.</span>
-              <span className="text-[#333333]">—</span>
+              <span className="text-[#333333]">,</span>
               <span className="text-[13px] text-[#555555] font-medium tracking-[2px] uppercase">Questions & Support</span>
             </div>
             <h2 className="text-[36px] md:text-[52px] font-medium text-white leading-[1.1] max-w-[820px] mb-4 tracking-tight">

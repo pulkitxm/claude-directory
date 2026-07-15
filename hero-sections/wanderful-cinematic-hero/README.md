@@ -1,4 +1,4 @@
-# Wanderful — Cinematic Travel Hero Section (React + TypeScript + GSAP + Tailwind CSS)
+# Wanderful , Cinematic Travel Hero Section (React + TypeScript + GSAP + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -54,8 +54,8 @@ useEffect(() => {
 ### `index.html`
 
 - `lang="en"`, `<meta charset="UTF-8" />`, `<meta name="viewport" content="width=device-width, initial-scale=1.0" />`
-- Description meta: `Wanderful — smart itineraries that shape around you. Venture without edges.`
-- Title: `Wanderful — Venture without edges.`
+- Description meta: `Wanderful , smart itineraries that shape around you. Venture without edges.`
+- Title: `Wanderful , Venture without edges.`
 - Inline SVG data-URI favicon (a white circle outline with a white compass-needle path):
 
 ```html
@@ -221,9 +221,9 @@ useEffect(() => {
 
 Fixed top bar: `fixed inset-x-0 top-0 z-50 flex items-center justify-between px-10 py-8`.
 
-- **Left — wordmark:** anchor to `/`, text `Wanderful` followed by `<sup>TM</sup>`. Classes: `text-[17px] font-semibold tracking-tight`.
-- **Center — nav:** a `<nav>` with `liquid-glass hidden items-center gap-1 rounded-full px-2 py-2 md:flex` (hidden below `md`, flex at `md` and up). Links derived from `['JOURNEY', 'BENEFITS', 'JOURNAL', 'GUIDEBOOK']`, each `href` being `#${link.toLowerCase()}`. Each link: `rounded-full px-4 py-1.5 text-[11px] font-medium tracking-[0.12em] text-white/90 transition-colors duration-200 hover:text-white`. Visible labels: `JOURNEY`, `BENEFITS`, `JOURNAL`, `GUIDEBOOK`.
-- **Right — CTA:** anchor `href="#get-roaming"` with `liquid-glass rounded-full px-5 py-2.5 text-[11px] font-medium tracking-[0.12em] text-white/90 transition-colors duration-200 hover:text-white`. Label: `GET ROAMING`.
+- **Left , wordmark:** anchor to `/`, text `Wanderful` followed by `<sup>TM</sup>`. Classes: `text-[17px] font-semibold tracking-tight`.
+- **Center , nav:** a `<nav>` with `liquid-glass hidden items-center gap-1 rounded-full px-2 py-2 md:flex` (hidden below `md`, flex at `md` and up). Links derived from `['JOURNEY', 'BENEFITS', 'JOURNAL', 'GUIDEBOOK']`, each `href` being `#${link.toLowerCase()}`. Each link: `rounded-full px-4 py-1.5 text-[11px] font-medium tracking-[0.12em] text-white/90 transition-colors duration-200 hover:text-white`. Visible labels: `JOURNEY`, `BENEFITS`, `JOURNAL`, `GUIDEBOOK`.
+- **Right , CTA:** anchor `href="#get-roaming"` with `liquid-glass rounded-full px-5 py-2.5 text-[11px] font-medium tracking-[0.12em] text-white/90 transition-colors duration-200 hover:text-white`. Label: `GET ROAMING`.
 
 ## Hero Headline (`src/components/HeroHeadline.tsx`)
 
@@ -231,8 +231,8 @@ Receives a `mounted: boolean` prop. Renders a fixed, centered `<h1>`.
 
 - **Classes:** `fixed inset-x-0 z-20 px-6 text-center transition-all duration-1000`, plus the mount toggle: `translate-y-0 opacity-100` when mounted, otherwise `translate-y-6 opacity-0`.
 - **Inline styles:** `top: '120px'`, `fontFamily: "'Inter', sans-serif"`, `fontWeight: 400`, `fontSize: 'clamp(40px, 5.4vw, 72px)'`, `lineHeight: 1.1`, `letterSpacing: '-0.02em'`.
-- **Line 1 (white):** `<span className="block text-white">` — `Venture without edges.`
-- **Line 2 (`rgba(255,255,255,0.55)`):** `<span className="block" style={{ color: 'rgba(255,255,255,0.55)' }}>` — `Uncover with keen instinct.`
+- **Line 1 (white):** `<span className="block text-white">` , `Venture without edges.`
+- **Line 2 (`rgba(255,255,255,0.55)`):** `<span className="block" style={{ color: 'rgba(255,255,255,0.55)' }}>` , `Uncover with keen instinct.`
 
 **Fade-in on mount:** opacity `0 → 100` and `translate-y-6 → 0` via `transition-all duration-1000`.
 
@@ -243,7 +243,7 @@ Receives a `mounted: boolean` prop. Imports `Lock` from `lucide-react`.
 - **Container:** `fixed inset-x-0 bottom-14 z-20 flex flex-col items-center gap-6 px-6 transition-all delay-300 duration-1000`, plus the mount toggle: `translate-y-0 opacity-100` when mounted, otherwise `translate-y-6 opacity-0` (fade-in with `delay-300`).
 
 1. **Paragraph:** `max-w-[620px] text-center text-[15px] leading-relaxed`, composed of two spans:
-   - White span (`text-white`): `Our smart itineraries shape around you — your rhythm, your vibe, your hunger for adventure.` (the em dash is `&mdash;`)
+   - White span (`text-white`): `Our smart itineraries shape around you , your rhythm, your vibe, your hunger for adventure.` (the em dash is `&mdash;`)
    - Muted span (`text-white/55`), preceded by a literal space (`{' '}`): `Each getaway is tailored, seamless, and wholly yours.`
 2. **Button:** `type="button"`, classes `rounded-full bg-white px-8 py-3.5 text-[15px] font-medium text-black transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_32px_4px_rgba(255,255,255,0.2)] active:scale-[0.97]`. Label: `Plan my escape today`.
 3. **Trust row:** `flex items-center gap-2 text-white/70` containing the `Lock` icon (`size={13} strokeWidth={1.5}`) and a `<span className="text-[11px] font-medium tracking-[0.14em]">` with text: `SECURE BY DESIGN. ZERO DATA LEAKS.`
@@ -310,4 +310,4 @@ wanderful-cinematic-hero/
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

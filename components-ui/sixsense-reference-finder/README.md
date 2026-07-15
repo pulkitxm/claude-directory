@@ -1,8 +1,8 @@
-# Sixsense Reference Finder — Glassy AI Reference-Finder UI (React + Vite + Framer Motion + Tailwind CSS)
+# Sixsense Reference Finder , Glassy AI Reference-Finder UI (React + Vite + Framer Motion + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful recreation of the Sixsense "Let's find the right references for your work" page — a glassy AI reference-finder interface built on React + Vite + TypeScript + Tailwind CSS (shadcn-ui base) with Framer Motion and lucide-react. The design pairs animated canvas pixel-grid backgrounds, layered SVG folder/light stacks, floating reference cards with spring physics, and a glass prompt box with an infinite typewriter and a spinning conic-gradient send button. Use case: AI-powered creative research tools and prompt-input landing pages. Generated with Claude Fable 5.
+A pixel-faithful recreation of the Sixsense "Let's find the right references for your work" page , a glassy AI reference-finder interface built on React + Vite + TypeScript + Tailwind CSS (shadcn-ui base) with Framer Motion and lucide-react. The design pairs animated canvas pixel-grid backgrounds, layered SVG folder/light stacks, floating reference cards with spring physics, and a glass prompt box with an infinite typewriter and a spinning conic-gradient send button. Use case: AI-powered creative research tools and prompt-input landing pages. Generated with Claude Fable 5.
 
 ## What's in it
 
@@ -12,7 +12,7 @@ A pixel-faithful recreation of the Sixsense "Let's find the right references for
   an indefinite ambient flicker, and a window-level **organic hover blob** with
   sine-wobbled radius + deterministic edge noise and per-frame hover flicker.
   Honors `prefers-reduced-motion` (paints the final base state only).
-- **Folder / lights stack** — ten layered SVGs (folders, blue lights, glow
+- **Folder / lights stack** , ten layered SVGs (folders, blue lights, glow
   lights) with staggered framer-motion entrances.
 - **Three floating reference cards** that grow from a 20px seed above the folder
   into their fanned-out final positions, then float on infinite y/rotate loops;
@@ -43,4 +43,4 @@ npm run verify    # headless Playwright checks against the preview server
 
 ---
 
-Part of the [Components & UI](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Components & UI](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

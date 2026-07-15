@@ -1,8 +1,8 @@
-# Grainy Gradient Ripple Card — Interactive WebGL Shader Card (React Three Fiber + Tailwind CSS)
+# Grainy Gradient Ripple Card , Interactive WebGL Shader Card (React Three Fiber + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A faithful integration of a grainy multi-stop gradient shader card rendered on a Three.js quad with React Three Fiber, featuring ripple effects on tap and a complete Chroma Foundry pigment-lab console around it. The card is framed as a live specimen plate with an instrument rail showing pigment-stop references, a field-control deck, a named patch bank, and a telemetry strip reading per-frame shader state — making it ideal as a hero backdrop, feature card, or landing splash. Built on the shadcn project structure with React, TypeScript, Vite, and Tailwind CSS. Generated with Claude Fable 5.
+A faithful integration of a grainy multi-stop gradient shader card rendered on a Three.js quad with React Three Fiber, featuring ripple effects on tap and a complete Chroma Foundry pigment-lab console around it. The card is framed as a live specimen plate with an instrument rail showing pigment-stop references, a field-control deck, a named patch bank, and a telemetry strip reading per-frame shader state , making it ideal as a hero backdrop, feature card, or landing splash. Built on the shadcn project structure with React, TypeScript, Vite, and Tailwind CSS. Generated with Claude Fable 5.
 
 ```bash
 npm install
@@ -13,31 +13,31 @@ npm run verify   # headless WebGL + interaction checks (see below)
 
 ## What you can do
 
-- **Tune the field** — five faders (Grain, Grain Scale, Grain Drift, Warp, Flow)
+- **Tune the field** , five faders (Grain, Grain Scale, Grain Drift, Warp, Flow)
   map straight onto the shader's baked `noise*` / `waveNoise*` uniforms and
   retune the gradient live. Flow scales the three internal wave-speed uniforms in
   the proportion they ship with.
-- **Recall a patch** — five named regimes (Foundry, Silk, Marble, Static, Tide)
+- **Recall a patch** , five named regimes (Foundry, Silk, Marble, Static, Tide)
   each snap the whole field to a stored uniform set. Move any fader and the
   active patch flips to **Custom**.
-- **Cast ripples** — click (or focus + Enter) the plate to send a clean expanding
+- **Cast ripples** , click (or focus + Enter) the plate to send a clean expanding
   ring through the pigment, exactly as the brief's `ripples` prop drives the
   shader. A tactile DOM ring marks each origin, and the **telemetry** strip
   counts live + total ripples straight off the shader loop.
-- **Read the palette** — the rail renders the exact 7 hex stops the shader's
+- **Read the palette** , the rail renders the exact 7 hex stops the shader's
   `multiColorGradient` mixes, as a continuous bar plus labelled chips.
 
 ## Design notes
 
-- **Subject:** an imaginary *pigment foundry* — a bench for mixing a pourable
+- **Subject:** an imaginary *pigment foundry* , a bench for mixing a pourable
   gradient. The shader *is* the hero; no stock photography is needed (the brief's
-  "fill image assets with Unsplash" step doesn't apply — this component renders
+  "fill image assets with Unsplash" step doesn't apply , this component renders
   its own imagery procedurally).
 - **Type:** Fraunces (optical-size display serif), Inter (body/utility),
   JetBrains Mono (telemetry/data). All three are **vendored locally** (latin
-  woff2 in `src/fonts/`) so the project runs fully offline — no runtime CDN
+  woff2 in `src/fonts/`) so the project runs fully offline , no runtime CDN
   calls.
-- **Signature element:** the plate is framed as something *under analysis* —
+- **Signature element:** the plate is framed as something *under analysis* ,
   corner reticle brackets, a registration grid, and a `Telemetry` strip whose
   FPS + clock run on the same `requestAnimationFrame` loop the shader animates
   on (the clock is sampled from the component's imperative handle), so the
@@ -55,7 +55,7 @@ npm run verify   # headless WebGL + interaction checks (see below)
 ## How it was verified
 
 `npm run verify` boots the dev server and drives a headless Chromium
-(CLI-only — no GUI) to assert that:
+(CLI-only , no GUI) to assert that:
 
 1. the R3F `<canvas>` mounts and is sized,
 2. the WebGL frame paints the multi-stop gradient (dozens of distinct colour
@@ -107,7 +107,7 @@ aliases below, components resolve to **`@/components/ui`**:
 ```
 
 The `@` alias must also be declared in `tsconfig.json` (`paths`) and
-`vite.config.ts` (`resolve.alias`) — both are wired up in this repo.
+`vite.config.ts` (`resolve.alias`) , both are wired up in this repo.
 
 ## 2. Why the component goes in `/components/ui`
 
@@ -148,7 +148,7 @@ npm install -D @types/three
 | `onTimeUpdate` | `(time: number) => void`   | per-frame callback with the shader's elapsed clock   |
 | `ref`          | imperative handle          | exposes `{ material, uniforms, getCurrentTime() }`   |
 
-It **must** render inside an `@react-three/fiber` `<Canvas>` — it calls
+It **must** render inside an `@react-three/fiber` `<Canvas>` , it calls
 `useThree()` and `useFrame()`, which require the R3F context provider. The
 component owns its uniforms (via `useMemo`); the parent owns ripple **state** and
 (here) pushes field-control values onto the live uniforms through the ref.
@@ -163,7 +163,7 @@ This integration adds a thin `ShaderStage` wrapper that:
 ## 5. Assets & responsive behaviour
 
 - **Assets:** none external. The component is fully procedural, so the brief's
-  "fill image assets with Unsplash" step is intentionally **not** applicable —
+  "fill image assets with Unsplash" step is intentionally **not** applicable ,
   there is no `<img>` to fill. Fonts and the favicon are vendored locally.
 - **Responsive:** the console is a fold-height layout on desktop (rail + plate
   side by side, rail scrolls internally) and stacks vertically on mobile, with
@@ -173,10 +173,10 @@ This integration adds a thin `ShaderStage` wrapper that:
 ## 6. Where to use it
 
 Anywhere you want a premium, living gradient surface: a hero backdrop, a feature
-card, an auth/landing splash, or — as here — the centrepiece of a controllable
+card, an auth/landing splash, or , as here , the centrepiece of a controllable
 shader showcase. The drop-in `gradient-shader-card` is the reusable piece; the
 `Chroma Foundry` console around it is one opinionated way to present it.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

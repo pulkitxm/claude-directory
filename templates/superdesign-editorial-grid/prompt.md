@@ -1,4 +1,4 @@
-# SUPERDESIGN — EDITORIAL GRID (EDITORIAL TECH AESTHETIC)
+# SUPERDESIGN , EDITORIAL GRID (EDITORIAL TECH AESTHETIC)
 
 > NOTE: THE LIVE REFERENCE LINK (`COMPONENT-287DAD7E-...PREVIEW.SUPERDESIGN.DEV`) WAS BLOCKED BY THE BUILD ENVIRONMENT'S NETWORK EGRESS ALLOWLIST (HTTP 403 ON EVERY `*.SUPERDESIGN.DEV` HOST), SO THE PAGE COULD NOT BE SCRAPED OR SCREENSHOTTED FROM HERE. THE ORIGINAL PROMPT BELOW IS ITSELF A COMPLETE SPEC (EXACT COLORS, FONTS, EASINGS, TIMINGS, AND EVERY SECTION), AND THE BUILD WAS PRODUCED SAME-TO-SAME FROM IT, ENRICHED WITH THE IMPLEMENTATION DETAILS AND CORE CODE BELOW.
 
@@ -82,7 +82,7 @@ MUST: MAINTAIN THE #F7F6F2 BACKGROUND TO AVOID A 'CLINICAL' WHITE LOOK. MUST: US
 
 ## IMPLEMENTATION DETAILS (FOR SAME-TO-SAME REPRODUCTION)
 
-SHIP AS A SINGLE SELF-CONTAINED STATIC PAGE: `INDEX.HTML` + `STYLE.CSS` + INLINE VANILLA JS. NO BUILD STEP. VENDOR ALL THREE FONTS LOCALLY (WOFF2 UNDER `ASSETS/FONTS/`) AND DECLARE WITH `@FONT-FACE` — NO REMOTE FONT HOTLINKS. VENDOR THE WORKFLOW IMAGE LOCALLY UNDER `ASSETS/`.
+SHIP AS A SINGLE SELF-CONTAINED STATIC PAGE: `INDEX.HTML` + `STYLE.CSS` + INLINE VANILLA JS. NO BUILD STEP. VENDOR ALL THREE FONTS LOCALLY (WOFF2 UNDER `ASSETS/FONTS/`) AND DECLARE WITH `@FONT-FACE` , NO REMOTE FONT HOTLINKS. VENDOR THE WORKFLOW IMAGE LOCALLY UNDER `ASSETS/`.
 
 ### DESIGN TOKENS (CSS CUSTOM PROPERTIES)
 
@@ -105,7 +105,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.02em}
 ### FIXED STRUCTURAL GRID (BEHIND EVERYTHING, `position:fixed; z-index:0; pointer-events:none`)
 
 Two stacked layers inside a `.bg-grid` fixed full-viewport element:
-1. Vertical guides — a centered `max-w` column with three 1px `--border` verticals at 25/50/75%. Implement as a centered `1280px` div with `border-left/right` plus two absolutely-positioned 1px lines, OR a repeating linear-gradient sized to the column.
+1. Vertical guides , a centered `max-w` column with three 1px `--border` verticals at 25/50/75%. Implement as a centered `1280px` div with `border-left/right` plus two absolutely-positioned 1px lines, OR a repeating linear-gradient sized to the column.
 2. 40px square grid: `background-image: linear-gradient(var(--border) 1px,transparent 1px), linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:40px 40px;` masked with `-webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.4) 0%, transparent 70%)` so it fades to the edges. All real content sits in a `z-index:1` wrapper.
 
 ### NAV (FIXED, SCROLL STATE)
@@ -114,7 +114,7 @@ Two stacked layers inside a `.bg-grid` fixed full-viewport element:
 
 ### HERO
 
-Center column, `min-height:90vh`, flex column centered. Pulse-dot badge: a `6px` `--primary` dot with `@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}` `2s var(--ease) infinite`, next to a `.label` ("V1.0 — NOW IN PRIVATE BETA"). H1 `font-size:9vw; line-height:.95; text-transform:uppercase` with chosen words wrapped in `<em>` → `font-style:italic; color:var(--muted)`. Below: a `--sans` paragraph (max-width ~520px, color `#666`). Primary CTA = Animated CTA Button.
+Center column, `min-height:90vh`, flex column centered. Pulse-dot badge: a `6px` `--primary` dot with `@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}` `2s var(--ease) infinite`, next to a `.label` ("V1.0 , NOW IN PRIVATE BETA"). H1 `font-size:9vw; line-height:.95; text-transform:uppercase` with chosen words wrapped in `<em>` → `font-style:italic; color:var(--muted)`. Below: a `--sans` paragraph (max-width ~520px, color `#666`). Primary CTA = Animated CTA Button.
 
 ### ANIMATED CTA BUTTON (`.btn`)
 
@@ -152,7 +152,7 @@ Two columns. LEFT: three steps `01/02/03` (mono number + serif title + collapsib
 
 ### USE CASE TABS
 
-Centered pill switcher: buttons `border-radius:2px` (NOT pill >2px — honor the no-rounded rule by using `border:1px solid var(--border)` pills with `border-radius:2px`; the active pill gets `background:var(--primary); color:#fff`). Below, a large bordered card `min-height:360px; background:var(--bg)` with a `240px` serif ghost glyph absolutely centered at `opacity:.05`, tab body copy, and a bottom 3-column benefit grid (mono labels + short serif lines), JS swaps content per tab.
+Centered pill switcher: buttons `border-radius:2px` (NOT pill >2px , honor the no-rounded rule by using `border:1px solid var(--border)` pills with `border-radius:2px`; the active pill gets `background:var(--primary); color:#fff`). Below, a large bordered card `min-height:360px; background:var(--bg)` with a `240px` serif ghost glyph absolutely centered at `opacity:.05`, tab body copy, and a bottom 3-column benefit grid (mono labels + short serif lines), JS swaps content per tab.
 
 ### CONTACT FORM
 
@@ -162,5 +162,5 @@ Two columns: LEFT serif `REQUEST ACCESS` heading + mono sublabel; RIGHT form, in
 
 - ALL transitions/reveals use `var(--ease)` at 700–1000ms (word-reveal opacity is the only fast linear exception).
 - 1px `--border` separators between every section; NO box-shadows for separation (the CTA drop-shadow is the sole intentional shadow).
-- `border-radius` never exceeds 2px anywhere. Solid fills only — no vibrant gradients.
+- `border-radius` never exceeds 2px anywhere. Solid fills only , no vibrant gradients.
 - Section reveal-on-scroll: IntersectionObserver adds `.in` → `opacity:0;translateY(24px)` to `opacity:1;translateY(0)` over `.9s var(--ease)`.

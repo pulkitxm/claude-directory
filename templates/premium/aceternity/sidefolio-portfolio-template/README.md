@@ -1,4 +1,4 @@
-# Sidefolio — Developer Portfolio Website Template Clone (Vanilla HTML/CSS/JS)
+# Sidefolio , Developer Portfolio Website Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -6,7 +6,7 @@ A faithful, pixel-level clone of the "Sidefolio" developer portfolio template, r
 
 ## Run
 
-This project has no build step — it is a set of static files. Serve the folder over HTTP (so relative asset and page links resolve) and open `index.html`:
+This project has no build step , it is a set of static files. Serve the folder over HTTP (so relative asset and page links resolve) and open `index.html`:
 
 ```sh
 python3 -m http.server 8000
@@ -29,8 +29,8 @@ The full build spec is in `prompt.md`, and `demo.mp4` (with `poster.jpg`) shows 
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Aceternity UI (Sidefolio template) — <https://ui.aceternity.com/template-preview/sidefolio-portfolio-template>
+**Original:** Aceternity UI (Sidefolio template) , <https://ui.aceternity.com/template-preview/sidefolio-portfolio-template>
 
 ---
 
-Part of the [Templates](../../../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../../) collection in the [claude-directory](../../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

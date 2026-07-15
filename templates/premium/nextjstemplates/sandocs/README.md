@@ -1,4 +1,4 @@
-# Sandocs — Documentation Site Template (Vanilla HTML/CSS/JS)
+# Sandocs , Documentation Site Template (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -6,12 +6,12 @@ A faithful, self-contained clone of Sandocs, a Next.js + Tailwind CSS documentat
 
 ## Pages
 
-- `index.html` — landing page: hero with CLI install snippet, feature rows, code-window mockup, sponsor logos, footer
+- `index.html` , landing page: hero with CLI install snippet, feature rows, code-window mockup, sponsor logos, footer
 - `docs/index.html` plus 20 docs pages under:
-  - `docs/getting-started/` — intro, prerequisites, environment, installation, browsers
-  - `docs/configuration/` — typography, asset-handling, cli, accessibility, typescript, rendering, lifecycle
-  - `docs/plugins/` — write-plugin, plugin-configuration
-  - `docs/api/` — http-api, app-directive, endpoints, server, client, dom
+  - `docs/getting-started/` , intro, prerequisites, environment, installation, browsers
+  - `docs/configuration/` , typography, asset-handling, cli, accessibility, typescript, rendering, lifecycle
+  - `docs/plugins/` , write-plugin, plugin-configuration
+  - `docs/api/` , http-api, app-directive, endpoints, server, client, dom
 
 Each docs page shares the same shell: a sticky, scrollable left sidebar nav (active item highlighted), a center content column (markdown-style body with prev/next footer nav), and a sticky right rail with a scroll-spy "On This Page" TOC.
 
@@ -42,8 +42,8 @@ Or open `index.html` directly in a browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Sandocs (Web3Templates) — <https://sandocs.vercel.app>
+**Original:** Sandocs (Web3Templates) , <https://sandocs.vercel.app>
 
 ---
 
-Part of the [Web3Templates](../) collection in the [Templates](../../../) — an open-source gallery of UI. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Web3Templates](../) collection in the [Templates](../../../) , an open-source gallery of UI. [Browse the live gallery](https://pulkitxm.com/claude-directory).

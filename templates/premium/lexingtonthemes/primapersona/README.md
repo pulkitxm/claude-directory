@@ -1,8 +1,8 @@
-# PrimaPersona — Minimal Personal Portfolio Template (Vanilla HTML + CSS + JS)
+# PrimaPersona , Minimal Personal Portfolio Template (Vanilla HTML + CSS + JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-PrimaPersona is a clean, minimal personal portfolio template aimed at creative technologists. It ships as plain HTML, CSS, and vanilla JavaScript — no build step required. The single-page layout is anchor-linked across four sections (Work, Projects, Education, and Speaking), anchored by a fixed 4-column grid navigation and capped with a matching footer. Article images use large `2rem` border-radius for a refined editorial feel. Light and dark modes are handled entirely through CSS custom properties toggled via a `dark` class on the `<html>` element, with an automatic `prefers-color-scheme` fallback. The Inter typeface, a neutral monochromatic palette, and an accent green tie the design together. A companion system directory provides standalone showcase pages for colors, typography, links, and buttons. Generated with Claude Fable 5.
+PrimaPersona is a clean, minimal personal portfolio template aimed at creative technologists. It ships as plain HTML, CSS, and vanilla JavaScript , no build step required. The single-page layout is anchor-linked across four sections (Work, Projects, Education, and Speaking), anchored by a fixed 4-column grid navigation and capped with a matching footer. Article images use large `2rem` border-radius for a refined editorial feel. Light and dark modes are handled entirely through CSS custom properties toggled via a `dark` class on the `<html>` element, with an automatic `prefers-color-scheme` fallback. The Inter typeface, a neutral monochromatic palette, and an accent green tie the design together. A companion system directory provides standalone showcase pages for colors, typography, links, and buttons. Generated with Claude Fable 5.
 
 ## Run
 
@@ -37,8 +37,8 @@ Then visit `http://localhost:8000`.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes — https://lexingtonthemes.com/viewports/primapersona
+**Original:** Lexington Themes , https://lexingtonthemes.com/viewports/primapersona
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

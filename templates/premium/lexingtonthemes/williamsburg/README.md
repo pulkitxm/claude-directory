@@ -1,4 +1,4 @@
-# Williamsburg — Lexington Themes E-Commerce Template
+# Williamsburg , Lexington Themes E-Commerce Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -8,7 +8,7 @@ A pixel-faithful static clone of the Williamsburg premium e-commerce template fr
 
 | File | Description |
 |------|-------------|
-| `index.html` | Home page — hero, featured products, categories, blog articles |
+| `index.html` | Home page , hero, featured products, categories, blog articles |
 | `store-home.html` | Store landing page |
 | `all-products.html` | Product grid with filters and sorting |
 | `product-detail.html` | Single product page with image gallery and add-to-cart |
@@ -28,8 +28,8 @@ A pixel-faithful static clone of the Williamsburg premium e-commerce template fr
 ## Design System
 
 ### Fonts
-- **Inter** (variable) — loaded from rsms.me/inter — body text, UI, navigation
-- **Instrument Serif** — loaded from Google Fonts — headings, hero text, editorial
+- **Inter** (variable) , loaded from rsms.me/inter , body text, UI, navigation
+- **Instrument Serif** , loaded from Google Fonts , headings, hero text, editorial
 
 ### Colors
 - Neutral base: white backgrounds with zinc/gray scale

@@ -1,40 +1,40 @@
-# LOUDHOUSE — Neo-Brutalism Design System Showcase (React + TypeScript + Tailwind CSS v4)
+# LOUDHOUSE , Neo-Brutalism Design System Showcase (React + TypeScript + Tailwind CSS v4)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A single-page design-system showcase for a fictional component kit called **LOUDHOUSE**, built to express the Neo-Brutalism aesthetic end to end: thick black borders on every element, hard zero-blur offset shadows, highlighter color-blocked sections, sticker rotations, and mechanical click-down button interactions. The page documents its own design DNA — from the centralized `@theme` token block to a live component playground — making it both a reference implementation and a living style guide. Generated with Claude Fable 5.
+A single-page design-system showcase for a fictional component kit called **LOUDHOUSE**, built to express the Neo-Brutalism aesthetic end to end: thick black borders on every element, hard zero-blur offset shadows, highlighter color-blocked sections, sticker rotations, and mechanical click-down button interactions. The page documents its own design DNA , from the centralized `@theme` token block to a live component playground , making it both a reference implementation and a living style guide. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")
 
-- **Hard offset shadows** — solid ink rectangles, **zero blur, zero spread**,
+- **Hard offset shadows** , solid ink rectangles, **zero blur, zero spread**,
   bottom-right, at four discrete sizes (`4/8/12/16px`). Registered as
   `--shadow-neo*` tokens so the `hover:`/`focus:`/`active:` variants are real
   Tailwind utilities. A white-shadow set is used on black sections.
-- **Mechanical interactions** — buttons **click DOWN** onto their shadow on
+- **Mechanical interactions** , buttons **click DOWN** onto their shadow on
   `:active` (translate `+6px`, shadow removed); cards **lift UP** on hover
   (translate up, shadow grows); badges **spin further** (`hover:rotate-12`).
-  Fast, snappy `ease-out` — nothing fades.
-- **Hollow text-stroke display type** — massive headlines use
+  Fast, snappy `ease-out` , nothing fades.
+- **Hollow text-stroke display type** , massive headlines use
   `-webkit-text-stroke: 2px` with a transparent fill, layered against solid
   color-blocked words rotated like stickers.
-- **Sticker layering & organized chaos** — cards, badges and text blocks are
+- **Sticker layering & organized chaos** , cards, badges and text blocks are
   rotated (`±1–3°`) and slapped on at angles; the hero right side is a
   deliberate "chaos zone" of stacked shapes, overlapping badges, a spinning
   star and a towering background word; layouts favor 60/40 splits.
-- **Two marquees** — a black "warning-tape" trust band of principles under the
+- **Two marquees** , a black "warning-tape" trust band of principles under the
   nav, and a testimonials carousel of rotated quote cards, both via
   `react-fast-marquee` with no gradient edges.
-- **Texture everywhere** — backgrounds are never flat: halftone dots, big
+- **Texture everywhere** , backgrounds are never flat: halftone dots, big
   radial dots, graph-paper grids (light and inverted), a diagonal hatch, and an
   SVG `feTurbulence` noise grain overlay.
-- **Live token gallery** — color swatches print their own hex, the shadow scale
+- **Live token gallery** , color swatches print their own hex, the shadow scale
   is shown on real boxes, geometry and type are spelled out. Everything reads
   from one centralized `@theme` block.
 
 ## Color & geometry (the DNA)
 
 Cream canvas `#FFFDF5`, pure-black ink `#000000`, and three highlighter
-accents — Hot Red `#FF6B6B`, Vivid Yellow `#FFD93D`, Soft Violet `#C4B5FD` —
+accents , Hot Red `#FF6B6B`, Vivid Yellow `#FFD93D`, Soft Violet `#C4B5FD` ,
 plus white for contrast panels. Sharp `0px` corners by default (`rounded-full`
 only for pill badges), `border-4` as the signature thickness (`border-8` for
 major dividers), heavy weights only.
@@ -44,7 +44,7 @@ major dividers), heavy weights only.
 - **`prefers-reduced-motion`** is fully honoured: marquees mount a static,
   wrapped rail instead of the animated library, the count-ups jump to their
   final value, entrance reveals show immediately, and every loop/transition
-  collapses to instant — layout, color blocking, shadows and hierarchy are
+  collapses to instant , layout, color blocking, shadows and hierarchy are
   unchanged.
 - Skip-to-content link, a single `<main>` landmark, semantic `<header>`/`<nav>`,
   thick black focus rings by default with a **yellow-flood** focus on inputs,
@@ -67,7 +67,7 @@ Reusable primitives live in `src/components/` (`Button`, `Card`, `Badge`,
 page section is its own file in `src/sections/`; copy/data is in
 `src/content.ts`; shared behaviour (`useReducedMotion`, `useInView`,
 `useCountUp`) is in `src/hooks.ts`. The **Space Grotesk** font is vendored
-locally under `public/fonts/` — the project runs fully offline.
+locally under `public/fonts/` , the project runs fully offline.
 
 ## Run
 
@@ -98,4 +98,4 @@ Space Grotesk (vendored).
 
 ---
 
-Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [UI design](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

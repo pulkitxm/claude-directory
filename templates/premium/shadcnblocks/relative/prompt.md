@@ -8,7 +8,7 @@ RELATIVE IS A PREMIUM MULTI-PAGE SAAS PRODUCTIVITY-APP MARKETING TEMPLATE BUILT 
 
 ## STYLE
 
-### PALETTE (SHADCN/UI TOKENS — HSL TRIPLETS)
+### PALETTE (SHADCN/UI TOKENS , HSL TRIPLETS)
 - LIGHT (`:root`):
   - `--background: 0 0% 100%` · `--foreground: 240 10% 4%`
   - `--muted: 0 0% 96%` · `--muted-foreground: 0 0% 49%` · `--muted-foreground-subtle: 240 5% 34%`
@@ -25,7 +25,7 @@ RELATIVE IS A PREMIUM MULTI-PAGE SAAS PRODUCTIVITY-APP MARKETING TEMPLATE BUILT 
 - FOREGROUND HEADINGS RENDER AS `rgb(9,9,11)` (ZINC-950); BODY/MUTED COPY AS `rgb(125,125,125)`.
 
 ### FONTS
-- SANS (BODY + HEADINGS): SYSTEM SANS STACK — `ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", ...` (THE LIVE DEMO RENDERS WITH THE SYSTEM STACK; INTER IS DECLARED BUT NOT THE COMPUTED FACE).
+- SANS (BODY + HEADINGS): SYSTEM SANS STACK , `ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", ...` (THE LIVE DEMO RENDERS WITH THE SYSTEM STACK; INTER IS DECLARED BUT NOT THE COMPUTED FACE).
 - MONO: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace`.
 
 ### RADII
@@ -42,18 +42,18 @@ RELATIVE IS A PREMIUM MULTI-PAGE SAAS PRODUCTIVITY-APP MARKETING TEMPLATE BUILT 
 - FOOTER: LOGO + FOUR LINK COLUMNS (Product, Company, Legal, Social) + COPYRIGHT.
 
 ### PAGES
-1. **HOME (`/`)** — HERO ("Say Goodbye to Task Overload") WITH DASHBOARD MOCKUP IMAGE; LOGO MARQUEE ("Used by the world's leading companies"); FEATURES "Smart productivity with AI" (3 cards); "Stay agile with adaptive workflows" (image + 3 feature rows); "Optimize every aspect of your day"; "Accelerate your planning journey" (4 numbered steps w/ images); TESTIMONIALS "What industry experts are saying" (6 cards); PRICING TEASER (3 plans); FAQ TEASER; FINAL CTA.
-2. **ABOUT (`/about`)** — "Empowering Productivity with Purpose" HERO (2 images); STATS (500+/99.9%/20+/100+); LOGO STRIP; "Our Core Values" (3 cards); "The Minds Behind the Mission" TEAM (4 members); TESTIMONIALS; FOOTER.
-3. **PRICING (`/pricing`)** — "Pricing for everyone" (3 plan cards); MONTHLY/YEARLY TOGGLE + DETAILED FEATURE COMPARISON TABLE (Core Tools / Productivity Insights / Workflow Automation); TESTIMONIALS; FAQ TEASER.
-4. **FAQ (`/faq`)** — "Everything You Need to Know" ACCORDION (6 questions); TESTIMONIALS.
-5. **CONTACT (`/contact`)** — "Get in Touch" FORM (Name/Email/Message/Terms checkbox/Submit) + EMAIL/PHONE/OFFICE INFO BLOCKS.
-6. **LOGIN (`/login`)** — CENTERED CARD: "Welcome back", email/password, Remember me + Forgot password, Create an account, Sign up with Google.
-7. **SIGN UP (`/signup`)** — CENTERED CARD: "Start your free trial", name/email/password, Create an account, Sign up with Google.
-8. **TERMS OF SERVICE (`/terms-of-service`)** — CENTERED LEGAL DOCUMENT (Acceptance, User Accounts, Subscriptions, Use of Services, IP, Third-Party, Liability, Termination, Privacy, Changes).
-9. **404 (`/dashboard` AND ANY UNKNOWN ROUTE)** — BIG "404 / Page not found" WITH Return home + Contact support BUTTONS.
+1. **HOME (`/`)** , HERO ("Say Goodbye to Task Overload") WITH DASHBOARD MOCKUP IMAGE; LOGO MARQUEE ("Used by the world's leading companies"); FEATURES "Smart productivity with AI" (3 cards); "Stay agile with adaptive workflows" (image + 3 feature rows); "Optimize every aspect of your day"; "Accelerate your planning journey" (4 numbered steps w/ images); TESTIMONIALS "What industry experts are saying" (6 cards); PRICING TEASER (3 plans); FAQ TEASER; FINAL CTA.
+2. **ABOUT (`/about`)** , "Empowering Productivity with Purpose" HERO (2 images); STATS (500+/99.9%/20+/100+); LOGO STRIP; "Our Core Values" (3 cards); "The Minds Behind the Mission" TEAM (4 members); TESTIMONIALS; FOOTER.
+3. **PRICING (`/pricing`)** , "Pricing for everyone" (3 plan cards); MONTHLY/YEARLY TOGGLE + DETAILED FEATURE COMPARISON TABLE (Core Tools / Productivity Insights / Workflow Automation); TESTIMONIALS; FAQ TEASER.
+4. **FAQ (`/faq`)** , "Everything You Need to Know" ACCORDION (6 questions); TESTIMONIALS.
+5. **CONTACT (`/contact`)** , "Get in Touch" FORM (Name/Email/Message/Terms checkbox/Submit) + EMAIL/PHONE/OFFICE INFO BLOCKS.
+6. **LOGIN (`/login`)** , CENTERED CARD: "Welcome back", email/password, Remember me + Forgot password, Create an account, Sign up with Google.
+7. **SIGN UP (`/signup`)** , CENTERED CARD: "Start your free trial", name/email/password, Create an account, Sign up with Google.
+8. **TERMS OF SERVICE (`/terms-of-service`)** , CENTERED LEGAL DOCUMENT (Acceptance, User Accounts, Subscriptions, Use of Services, IP, Third-Party, Liability, Termination, Privacy, Changes).
+9. **404 (`/dashboard` AND ANY UNKNOWN ROUTE)** , BIG "404 / Page not found" WITH Return home + Contact support BUTTONS.
 
 ### ASSETS (VENDORED LOCALLY UNDER `assets/`)
 - HOMEPAGE: `hero.png`, `features-1.png`, `adaptive-1..3.png`, `optimize-1.png`, `accelerate-1..4.png`.
 - LOGOS/PARTNERS: `zerostatic/notion/slack/github/figma/loom.svg`; SITE LOGO `logo.svg`.
 - TESTIMONIAL AVATARS `1..6.png`; TEAM `1..4.png`; ABOUT `empowering.jpg`, `productivity.jpg`, `purpose.jpeg`.
-- ALL REFERENCED BY RELATIVE LOCAL PATHS — NO REMOTE URLS AT RUNTIME.
+- ALL REFERENCED BY RELATIVE LOCAL PATHS , NO REMOTE URLS AT RUNTIME.

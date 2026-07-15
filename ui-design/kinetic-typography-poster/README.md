@@ -1,36 +1,36 @@
-# Kinetic Typography Poster — Brutalist Motion Design Festival Page (React, Framer Motion, Tailwind CSS v4)
+# Kinetic Typography Poster , Brutalist Motion Design Festival Page (React, Framer Motion, Tailwind CSS v4)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A kinetic, poster-style landing page for a fictional design festival ("MotionType"), built end to end as a reference implementation of the Kinetic Typography design system: high-energy brutalism meets kinetic poster design, with viewport-width headlines, infinite marquees, hard color inversions, and scroll-triggered transforms. Typography is the entire visual structure — motion is the rhythm, and a single acid-yellow accent does all the heavy lifting against near-black and off-white. Generated with Claude Fable 5.
+A kinetic, poster-style landing page for a fictional design festival ("MotionType"), built end to end as a reference implementation of the Kinetic Typography design system: high-energy brutalism meets kinetic poster design, with viewport-width headlines, infinite marquees, hard color inversions, and scroll-triggered transforms. Typography is the entire visual structure , motion is the rhythm, and a single acid-yellow accent does all the heavy lifting against near-black and off-white. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")
 
-- **Viewport-width typography** — the hero uses `clamp(3rem, 12vw, 14rem)`, so
+- **Viewport-width typography** , the hero uses `clamp(3rem, 12vw, 14rem)`, so
   the headline fills the screen and scales fluidly (48px at 320w → 173px at
   1440w).
-- **Two infinite marquees** — a fast acid-yellow stats band (`speed 80`) and a
+- **Two infinite marquees** , a fast acid-yellow stats band (`speed 80`) and a
   slower testimonials rail (`speed 40`), plus a closing footer ticker. No
   gradient edges; `react-fast-marquee` with `autoFill`.
-- **Massive background numbers** — oversized numerals (`05`, `01`, `24`) in
+- **Massive background numbers** , oversized numerals (`05`, `01`, `24`) in
   muted tones sit in the depth layer as graphic shapes, plus per-card numbers in
   the features and process grids.
-- **Hard color inversions on hover** — feature cards, process cells, pricing
+- **Hard color inversions on hover** , feature cards, process cells, pricing
   tiers and FAQ rows flood acid yellow with black text on hover (clean
   `duration-300` flip, coordinated via `group`).
-- **Scroll-triggered transforms** — the hero zooms (scale 1 → 1.2) and fades
+- **Scroll-triggered transforms** , the hero zooms (scale 1 → 1.2) and fades
   (opacity 1 → 0) on scroll via Framer Motion's `useScroll`; sections "stamp in"
   with a clip-path reveal; feature cards physically stack with `sticky`.
-- **Aggressive scale hierarchy** — ~6–10× between the largest display type and
+- **Aggressive scale hierarchy** , ~6–10× between the largest display type and
   body copy, not the usual 2×.
-- **Brutalist geometry** — sharp `0px` corners, `2px` zinc borders, hairline
+- **Brutalist geometry** , sharp `0px` corners, `2px` zinc borders, hairline
   `gap-px` connected grids, no shadows, no gradients.
 
 ## Accessibility
 
 - **`prefers-reduced-motion`** is fully honoured: marquees mount a static rail
   instead of the animated library, scroll/entrance transforms are disabled, and
-  transitions collapse to instant — layout, contrast and hierarchy are
+  transitions collapse to instant , layout, contrast and hierarchy are
   unchanged.
 - Skip-to-content link, acid focus rings everywhere, ≥44px touch targets, an
   accordion that is fully keyboard-operable with `aria-expanded` /
@@ -47,7 +47,7 @@ component reads from one source of truth. Reusable primitives live in
 `SectionLabel`, `BackgroundNumber`, `Reveal`, `Noise`); each page section is its
 own file in `src/sections/`; copy/data is in `src/content.ts`. The
 **Space Grotesk** variable font (weights 300–700) is vendored locally under
-`public/fonts/` — the project runs fully offline.
+`public/fonts/` , the project runs fully offline.
 
 ## Run
 
@@ -74,4 +74,4 @@ react-fast-marquee, Space Grotesk (vendored).
 
 ---
 
-Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [UI design](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

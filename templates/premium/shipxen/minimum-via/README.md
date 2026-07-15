@@ -1,4 +1,4 @@
-# Minimum Via — Minimalist Agency Landing Page Template (Vanilla HTML/CSS/JS)
+# Minimum Via , Minimalist Agency Landing Page Template (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -17,15 +17,15 @@ You can also open `index.html` directly in a browser.
 
 ## Notes
 
-- **Theme toggle** — the header "Toggle dark mode" button toggles the `dark` class on `<html>` and saves the choice to `localStorage` (`mv-theme`). On load, an inline script restores the saved theme or falls back to the OS `prefers-color-scheme` setting.
-- **FAQ accordion** — clicking a question toggles its panel open by animating `max-height` to the panel's `scrollHeight`.
+- **Theme toggle** , the header "Toggle dark mode" button toggles the `dark` class on `<html>` and saves the choice to `localStorage` (`mv-theme`). On load, an inline script restores the saved theme or falls back to the OS `prefers-color-scheme` setting.
+- **FAQ accordion** , clicking a question toggles its panel open by animating `max-height` to the panel's `scrollHeight`.
 - `prompt.md` holds the full build spec, and `demo.mp4` shows the template in motion.
 
 ## Credits
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Shipixen — <https://shipixen.com/demo/landing-page-templates/template/minimum-via>
+**Original:** Shipixen , <https://shipixen.com/demo/landing-page-templates/template/minimum-via>
 
 ---
 

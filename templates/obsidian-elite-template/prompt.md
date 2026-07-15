@@ -1,4 +1,4 @@
-# OBSIDIAN ELITE — "MODERN OBSIDIAN" MONOCHROME EDITORIAL TEMPLATE
+# OBSIDIAN ELITE , "MODERN OBSIDIAN" MONOCHROME EDITORIAL TEMPLATE
 
 > SPECIAL CONTEXT FOR THIS BUILD: THE EXPERIMENT WAS COMMISSIONED AS A SUPERDESIGN-STYLE TEMPLATE TO BE REPRODUCED **SAME-TO-SAME** (PIXEL-FAITHFUL) FROM A REFERENCE DRAFT AT `HTTPS://P.SUPERDESIGN.DEV/DRAFT/ACE14BE0-7BEF-49C3-BDC1-C13FD975C283`. THE TARGET HOST WAS NOT REACHABLE FROM THE BUILD SANDBOX (HTTP 403 / NOT IN EGRESS ALLOWLIST), SO THE BUILD WAS GROUNDED ENTIRELY IN THE DETAILED PROSE SPEC BELOW. SHIP IT AS PLAIN STATIC HTML + CSS + A SMALL AMOUNT OF VANILLA JS, RUNNABLE OFFLINE WITH ALL FONTS VENDORED LOCALLY. NO BUILD STEP REQUIRED. CATEGORY: `templates`.
 
@@ -137,7 +137,7 @@ body{background:var(--obsidian);color:var(--silver);font-family:var(--sans);font
 ```html
 <section class="hero wrap">
   <div class="hero-glass glass"></div>   <!-- opacity:.3 frosted bg with border-radius:4rem -->
-  <p class="mono">EST. 2026 — APPLICATIONS NOW OPEN</p>
+  <p class="mono">EST. 2026 , APPLICATIONS NOW OPEN</p>
   <h1 class="serif hero-title">An elite circle for <span class="silver-text">the obsessed.</span></h1>
   <div class="meta-bar">  <!-- 3-col monospace grid, border-t -->
     <div><span class="mono">EST.</span><p>JUNE 2026</p></div>
@@ -171,8 +171,8 @@ FIXED `bottom:1.5rem`, CENTERED, PILL (`border-radius:999px`), `.mobile-nav-blur
 
 1. NAV (92vw, brand "OBSIDIAN◆" mono left; bordered glass links + white JOIN button right).
 2. HERO (glass bg, italic serif headline w/ silver-gradient span, 3-col metadata bar).
-3. COUNTDOWN ("APPLICATIONS CLOSE IN" — serif HH/MM/SS with slash separators, live JS).
-4. BETA CAPTURE FORM (max-w 2xl glass pill: transparent mono input + silver-btn "REQUEST ACCESS"; JS shows "✓ ON THE LIST — POSITION #0xxx" success state).
+3. COUNTDOWN ("APPLICATIONS CLOSE IN" , serif HH/MM/SS with slash separators, live JS).
+4. BETA CAPTURE FORM (max-w 2xl glass pill: transparent mono input + silver-btn "REQUEST ACCESS"; JS shows "✓ ON THE LIST , POSITION #0xxx" success state).
 5. URGENCY / SOCIAL PROOF (mono stat row: "2,481 APPLICANTS · 500 SEATS · 18% ACCEPTANCE").
 6. BENTO FEATURE GRID (4 cards lg / 2 md / 1 mobile, index "01 / EFFICIENCY" mono + 4xl serif title + mono body; includes the MEMBER REGISTRY CARD with 2x2 grayscale avatars and a large 5%-opacity decorative SVG id-card icon bottom-right).
 7. VALUE PROPOSITION (large centered italic serif statement with silver-gradient emphasis).
@@ -182,4 +182,4 @@ FIXED `bottom:1.5rem`, CENTERED, PILL (`border-radius:999px`), `.mobile-nav-blur
 
 ## VENDORED AVATARS
 
-GRAYSCALE PORTRAIT IMAGES ARE GENERATED LOCALLY AS DETERMINISTIC SVG DATA-PLACEHOLDERS (MONOCHROME GRADIENT DISCS WITH INITIALS) SO THE PROJECT STAYS FULLY OFFLINE AND ON-PALETTE — NO REMOTE IMAGE HOTLINKS.
+GRAYSCALE PORTRAIT IMAGES ARE GENERATED LOCALLY AS DETERMINISTIC SVG DATA-PLACEHOLDERS (MONOCHROME GRADIENT DISCS WITH INITIALS) SO THE PROJECT STAYS FULLY OFFLINE AND ON-PALETTE , NO REMOTE IMAGE HOTLINKS.

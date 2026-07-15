@@ -1,8 +1,8 @@
-# Lumière — Cinematic Streaming Hero Section
+# Lumière , Cinematic Streaming Hero Section
 
 ## Overview
 
-Build a full-viewport cinematic movie/streaming hero section. The entire page is a single full-height hero — no scrolling, no additional sections. A muted, looping background video fills the viewport, a masked backdrop blur fades the bottom of the screen, and every element resolves in with a staggered blur-fade-up entrance animation. All interactive controls use a reusable "liquid glass" treatment, with the lone exception of the solid white "Watch Now" button.
+Build a full-viewport cinematic movie/streaming hero section. The entire page is a single full-height hero , no scrolling, no additional sections. A muted, looping background video fills the viewport, a masked backdrop blur fades the bottom of the screen, and every element resolves in with a staggered blur-fade-up entrance animation. All interactive controls use a reusable "liquid glass" treatment, with the lone exception of the solid white "Watch Now" button.
 
 ## Tech Stack
 
@@ -18,8 +18,8 @@ Build a full-viewport cinematic movie/streaming hero section. The entire page is
 ### `index.html`
 
 - `lang="en"`, charset `UTF-8`, viewport `width=device-width, initial-scale=1.0`.
-- Title: `LUMIÈRE — Step Through. Work Smarter.`
-- Meta description: `A full-viewport cinematic streaming hero — a voyage through forgotten realms, where past and future intertwine.`
+- Title: `LUMIÈRE , Step Through. Work Smarter.`
+- Meta description: `A full-viewport cinematic streaming hero , a voyage through forgotten realms, where past and future intertwine.`
 - Inline SVG favicon (a circle with a play triangle, white stroke/fill):
 
   ```html
@@ -75,11 +75,11 @@ relative flex h-dvh flex-col overflow-hidden bg-black text-white
 
 Stacking order (z-index):
 
-- Background video — `z-0`
-- Bottom blur veil — `z-[1]`
-- Mobile menu dropdown — `z-40`
-- Navbar (`header`) — `z-50`
-- Hero content (`main`) — `z-10`
+- Background video , `z-0`
+- Bottom blur veil , `z-[1]`
+- Mobile menu dropdown , `z-40`
+- Navbar (`header`) , `z-50`
+- Hero content (`main`) , `z-10`
 
 ## Background Video
 
@@ -98,7 +98,7 @@ A full-screen background video plays on loop, muted, autoplaying, covering the e
 
 ## Bottom Blur Overlay (No Gradient Darkening)
 
-Over the video sits a single fixed, full-screen overlay div that applies a strong `backdrop-blur-xl`. It uses a CSS mask so the blur only appears at the bottom and fades to transparent toward the middle of the screen. There is **no** dark gradient overlay — only blur. It is `pointer-events-none` and sits at z-index 1.
+Over the video sits a single fixed, full-screen overlay div that applies a strong `backdrop-blur-xl`. It uses a CSS mask so the blur only appears at the bottom and fades to transparent toward the middle of the screen. There is **no** dark gradient overlay , only blur. It is `pointer-events-none` and sits at z-index 1.
 
 - Element classes: `bottom-blur-mask pointer-events-none fixed inset-0 z-[1] backdrop-blur-xl`, with `aria-hidden="true"`.
 - The mask (with `-webkit-` prefix too):
@@ -112,7 +112,7 @@ Over the video sits a single fixed, full-screen overlay div that applies a stron
 
 ## Liquid Glass Effect
 
-A reusable `.liquid-glass` class used on multiple buttons — a nearly invisible luminosity glass with a gradient stroke painted on a masked `::before` so only the 1.4px rim shows.
+A reusable `.liquid-glass` class used on multiple buttons , a nearly invisible luminosity glass with a gradient stroke painted on a masked `::before` so only the 1.4px rim shows.
 
 ```css
 .liquid-glass {
@@ -228,9 +228,9 @@ A horizontal `header` at z-index 50, relative positioned, with `justify-between`
 relative z-50 flex items-center justify-between px-4 py-4 sm:px-6 md:px-12 md:py-6
 ```
 
-### Left — text logo
+### Left , text logo
 
-An anchor (`href="#"`, `aria-label="LUMIÈRE — home"`) styled `animate-blur-fade-up flex h-8 items-center md:h-10`, with blur-fade-up animation at delay `0ms`. The brand wordmark is `LUMIÈRE`, where the `È` is bolded:
+An anchor (`href="#"`, `aria-label="LUMIÈRE , home"`) styled `animate-blur-fade-up flex h-8 items-center md:h-10`, with blur-fade-up animation at delay `0ms`. The brand wordmark is `LUMIÈRE`, where the `È` is bolded:
 
 ```tsx
 <span className="text-lg font-light leading-none tracking-[0.35em] md:text-xl">
@@ -238,13 +238,13 @@ An anchor (`href="#"`, `aria-label="LUMIÈRE — home"`) styled `animate-blur-fa
 </span>
 ```
 
-### Center — navigation links (desktop only, hidden below lg)
+### Center , navigation links (desktop only, hidden below lg)
 
 - Container `nav`: `hidden items-center gap-8 lg:flex`, `aria-label="Primary"`.
 - Links, in order: `"Movies"`, `"TV Series"`, `"Editor's Pick"`, `"Interviews"`, `"User Reviews"`.
 - Each is an anchor with `animate-blur-fade-up text-sm transition-colors hover:text-gray-300`, and staggered blur-fade-up delays from `100ms` to `300ms` in `50ms` increments via `animationDelay: ${100 + i * 50}ms`.
 
-### Right — buttons
+### Right , buttons
 
 Container `flex items-center gap-3`.
 
@@ -293,7 +293,7 @@ Inside, a `flex flex-col items-end gap-8 md:flex-row` layout.
 
 ### Left side (`w-full flex-1`)
 
-**Metadata row** — a horizontal flex-wrap row, blur-fade-up at `300ms`:
+**Metadata row** , a horizontal flex-wrap row, blur-fade-up at `300ms`:
 
 ```
 animate-blur-fade-up mb-6 flex flex-wrap items-center gap-3 text-xs sm:gap-6 sm:text-sm md:mb-8
@@ -301,11 +301,11 @@ animate-blur-fade-up mb-6 flex flex-wrap items-center gap-3 text-xs sm:gap-6 sm:
 
 Three `span` items (each `flex items-center gap-2`):
 
-- Lucide `Star` icon (`size={16}`, classes `fill-white sm:h-5 sm:w-5`) + `8.7/10 IMDB` — this span is `font-medium`.
+- Lucide `Star` icon (`size={16}`, classes `fill-white sm:h-5 sm:w-5`) + `8.7/10 IMDB` , this span is `font-medium`.
 - Lucide `Clock` icon (`size={16}`) + `132 min`.
 - Lucide `Calendar` icon (`size={16}`) + `April, 2025`.
 
-**Title** — `h1`, blur-fade-up at `400ms`, text `Step Through. Work Smarter.`:
+**Title** , `h1`, blur-fade-up at `400ms`, text `Step Through. Work Smarter.`:
 
 ```
 animate-blur-fade-up mb-4 text-3xl font-normal tracking-[-0.04em] sm:text-5xl md:mb-6 md:text-6xl lg:text-7xl
@@ -313,16 +313,16 @@ animate-blur-fade-up mb-4 text-3xl font-normal tracking-[-0.04em] sm:text-5xl md
 
 (Letter-spacing is `-0.04em` via `tracking-[-0.04em]`.)
 
-**Description** — `p`, blur-fade-up at `500ms`, text `A voyage through forgotten realms, where past and future intertwine.`:
+**Description** , `p`, blur-fade-up at `500ms`, text `A voyage through forgotten realms, where past and future intertwine.`:
 
 ```
 animate-blur-fade-up mb-6 max-w-2xl text-base text-gray-400 sm:text-lg md:mb-12 md:text-xl
 ```
 
-**CTA buttons** — `flex flex-wrap gap-3 sm:gap-4`:
+**CTA buttons** , `flex flex-wrap gap-3 sm:gap-4`:
 
-- **Watch Now** — solid white pill with black text. Classes: `animate-blur-fade-up flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-medium text-black transition-colors hover:bg-gray-200 sm:px-8 sm:py-3`. Lucide `Play` icon (`size={18}`, `className="fill-black"`). Blur-fade-up at `600ms`.
-- **Learn More** — liquid-glass pill. Classes: `liquid-glass animate-blur-fade-up rounded-full px-6 py-2.5 font-medium sm:px-8 sm:py-3`. Blur-fade-up at `700ms`.
+- **Watch Now** , solid white pill with black text. Classes: `animate-blur-fade-up flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-medium text-black transition-colors hover:bg-gray-200 sm:px-8 sm:py-3`. Lucide `Play` icon (`size={18}`, `className="fill-black"`). Blur-fade-up at `600ms`.
+- **Learn More** , liquid-glass pill. Classes: `liquid-glass animate-blur-fade-up rounded-full px-6 py-2.5 font-medium sm:px-8 sm:py-3`. Blur-fade-up at `700ms`.
 
 ### Right side (navigation arrows)
 
@@ -332,8 +332,8 @@ A row of two pill buttons, aligned right on desktop and left on mobile:
 flex w-full items-center gap-3 sm:gap-4 md:w-auto md:justify-end
 ```
 
-- **Previous** — `liquid-glass animate-blur-fade-up flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm sm:px-6 sm:py-3`, with a Lucide `ChevronLeft` icon (`size={18}`) before the text `Previous`. Blur-fade-up at `800ms`.
-- **Next** — same styling, with the text `Next` followed by a Lucide `ChevronRight` icon (`size={18}`). Blur-fade-up at `900ms`.
+- **Previous** , `liquid-glass animate-blur-fade-up flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm sm:px-6 sm:py-3`, with a Lucide `ChevronLeft` icon (`size={18}`) before the text `Previous`. Blur-fade-up at `800ms`.
+- **Next** , same styling, with the text `Next` followed by a Lucide `ChevronRight` icon (`size={18}`). Blur-fade-up at `900ms`.
 
 ## Color Palette
 

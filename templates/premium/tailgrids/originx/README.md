@@ -82,4 +82,4 @@ Since the stylesheet and assets are vendored locally, you can double-click `inde
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailgrids — <https://originx.demos.tailgrids.com/>
+**Original:** Tailgrids , <https://originx.demos.tailgrids.com/>

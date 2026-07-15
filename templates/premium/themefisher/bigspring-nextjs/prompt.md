@@ -10,16 +10,16 @@ BIGSPRING IS A LIGHT, FRIENDLY SAAS/STARTUP MARKETING TEMPLATE (CRM/PRODUCTIVITY
 
 ## STYLE
 
-**PALETTE (LIGHT — DEFAULT / SOURCE THEME):**
+**PALETTE (LIGHT , DEFAULT / SOURCE THEME):**
 - `--color-body: #ffffff` (page background)
 - `--color-dark: #222222` (heading/ink text)
 - `--color-text: #777777` (body/paragraph text)
 - `--color-border: #eaeaea`
 - `--color-light: #edf6f5` (mint/pale-teal section band + accordion fill)
-- `--color-primary: #0aa8a7` (solid teal accent — buttons, links, active nav, icons)
+- `--color-primary: #0aa8a7` (solid teal accent , buttons, links, active nav, icons)
 - `--color-white: #ffffff`
 
-**PALETTE (DARK — SOURCE HAS A NATIVE TOGGLE, TAILWIND `.dark` CLASS):**
+**PALETTE (DARK , SOURCE HAS A NATIVE TOGGLE, TAILWIND `.dark` CLASS):**
 - Body background `#1e262c`, body text `#cbcbcb`, headings turn `#ffffff`, surfaces/cards darken accordingly, accent stays `#0aa8a7`. Theme resolution: stored `localStorage.theme` -> `prefers-color-scheme` -> light default, matching the source's inline boot script (adds/removes `light`/`dark` class on `<html>` pre-paint to avoid flash).
 
 **TYPE:**
@@ -44,22 +44,22 @@ BIGSPRING IS A LIGHT, FRIENDLY SAAS/STARTUP MARKETING TEMPLATE (CRM/PRODUCTIVITY
 
 Site is a Next.js marketing template. Header (logo + mega-menu nav: Home / Company dropdown (About, Team, How It Works, Careers) / Products dropdown (4 products) / Blog dropdown / Pages dropdown (Pricing, FAQ, Case Studies, Terms, Privacy, 404) / Contact + "Get Demo" pill CTA + sun/moon theme toggle + mobile hamburger) and footer (Company/Product/Support link columns + Bigspring logo/blurb + social icon row + copyright bar) are shared chrome across every page. All pages discovered and cloned:
 
-1. **Home** (`/`) — Hero (H1, subhead, banner illustration). Client-logo trust strip (Toshiba, Airbnb, Facebook, Tinder, Microsoft, HubSpot). "The ultimate platform" feature intro + 4 icon-feature cards (Cloud Support, Object Oriented, 24h Service, Faster Response) on a mint band. "Built exclusively for you" video/image block. Alternating text+illustration feature rows (4 sections) on alternating white/mint bands. Testimonials (2-up quote cards) on mint band with carousel dots. "Integrate with all the tools" logo grid. Final "Ready to get started?" CTA band. Footer.
-2. **About** (`/about`) — Hero (H1 + photo). Founder quote/mission band (avatar, name, title) on mint, with "Who we are?" / "Our mission" 2-up cards. 4-stat icon row. 3 icon-feature cards on mint band. "Our Office Culture" gallery section. "Want to Join our Team?" CTA. Footer.
-3. **Team** (`/team`) — Hero + team-member grid (photo, name, role, socials).
-4. **How It Works** (`/how-it-works`) — Step-by-step process sections with illustrations.
-5. **Careers** (`/careers`) — Hero + open-positions listing / culture content.
-6. **Products index** (`/products`) — Grid of product cards, each linking to a detail page.
-7. **Product detail** (shared template, 4 data variants): `/products/product-1` … `/products/product-4` — hero, feature breakdown, CTA.
-8. **Blog index** (`/blog`, paginated `/blog/page/2`) — Grid of post cards (thumbnail, title, excerpt, author/date meta).
-9. **Blog post** (shared template, 8 data variants): `/blog/post-1` … `/blog/post-8` — cover image, title, meta, long-form article body, author bio/share.
-10. **Authors index** (`/authors`) — Grid of author cards (avatar, name, role, bio excerpt).
-11. **Author detail** (shared template, 2 data variants): `/authors/awab-husameldin`, `/authors/joseph-gonzalez` — author bio + list of their posts.
-12. **Case studies index** (`/case-study`) — Grid of case-study cards (client logo, title, excerpt).
-13. **Case study detail** (shared template, 6 data variants): `/case-study/google`, `/iconsquare`, `/jira`, `/slack`, `/spotify`, `/trello` — client hero, challenge/solution/result copy, stats.
-14. **Pricing** (`/pricing`) — 3-tier pricing cards (Basic $0 / Professional $49 "most popular" raised card / Business $199), FAQ accordion (4 Q&A), "Let's work together" CTA with illustration. Footer.
-15. **FAQ** (`/faq`) — Standalone FAQ accordion page.
-16. **Contact** (`/contact`) — Contact form (name/email/message) + contact info panel/illustration.
-17. **Terms & Conditions** (`/terms-condition`) — Legal copy page.
-18. **Privacy Policy** (`/privacy-policy`) — Legal copy page.
-19. **404** (`/404`) — "Page not found" illustration + "Go Back To Home" CTA.
+1. **Home** (`/`) , Hero (H1, subhead, banner illustration). Client-logo trust strip (Toshiba, Airbnb, Facebook, Tinder, Microsoft, HubSpot). "The ultimate platform" feature intro + 4 icon-feature cards (Cloud Support, Object Oriented, 24h Service, Faster Response) on a mint band. "Built exclusively for you" video/image block. Alternating text+illustration feature rows (4 sections) on alternating white/mint bands. Testimonials (2-up quote cards) on mint band with carousel dots. "Integrate with all the tools" logo grid. Final "Ready to get started?" CTA band. Footer.
+2. **About** (`/about`) , Hero (H1 + photo). Founder quote/mission band (avatar, name, title) on mint, with "Who we are?" / "Our mission" 2-up cards. 4-stat icon row. 3 icon-feature cards on mint band. "Our Office Culture" gallery section. "Want to Join our Team?" CTA. Footer.
+3. **Team** (`/team`) , Hero + team-member grid (photo, name, role, socials).
+4. **How It Works** (`/how-it-works`) , Step-by-step process sections with illustrations.
+5. **Careers** (`/careers`) , Hero + open-positions listing / culture content.
+6. **Products index** (`/products`) , Grid of product cards, each linking to a detail page.
+7. **Product detail** (shared template, 4 data variants): `/products/product-1` … `/products/product-4` , hero, feature breakdown, CTA.
+8. **Blog index** (`/blog`, paginated `/blog/page/2`) , Grid of post cards (thumbnail, title, excerpt, author/date meta).
+9. **Blog post** (shared template, 8 data variants): `/blog/post-1` … `/blog/post-8` , cover image, title, meta, long-form article body, author bio/share.
+10. **Authors index** (`/authors`) , Grid of author cards (avatar, name, role, bio excerpt).
+11. **Author detail** (shared template, 2 data variants): `/authors/awab-husameldin`, `/authors/joseph-gonzalez` , author bio + list of their posts.
+12. **Case studies index** (`/case-study`) , Grid of case-study cards (client logo, title, excerpt).
+13. **Case study detail** (shared template, 6 data variants): `/case-study/google`, `/iconsquare`, `/jira`, `/slack`, `/spotify`, `/trello` , client hero, challenge/solution/result copy, stats.
+14. **Pricing** (`/pricing`) , 3-tier pricing cards (Basic $0 / Professional $49 "most popular" raised card / Business $199), FAQ accordion (4 Q&A), "Let's work together" CTA with illustration. Footer.
+15. **FAQ** (`/faq`) , Standalone FAQ accordion page.
+16. **Contact** (`/contact`) , Contact form (name/email/message) + contact info panel/illustration.
+17. **Terms & Conditions** (`/terms-condition`) , Legal copy page.
+18. **Privacy Policy** (`/privacy-policy`) , Legal copy page.
+19. **404** (`/404`) , "Page not found" illustration + "Go Back To Home" CTA.

@@ -10,20 +10,20 @@ ATEMP IS A LIGHT, CLEAN SAAS/MULTIPURPOSE MARKETING TEMPLATE FOR A SOCIAL-MEDIA-
 
 ## STYLE
 
-**PALETTE (LIGHT — DEFAULT / SOURCE THEME):**
+**PALETTE (LIGHT , DEFAULT / SOURCE THEME):**
 - `--color-body: #ffffff` (page background)
 - `--color-surface: #f7f7f7` / `#f4f4f4` (alternating section backgrounds)
 - `--color-card: #ffffff` (card surface, subtle shadow)
 - `--color-border: #e5e7eb` / `#dadada`
-- `--color-accent: #6ee272` (lime-green accent — CTAs, icons, highlights)
-- `--color-dark: #061237` (navy — footer background, CTA band background, dark headings)
+- `--color-accent: #6ee272` (lime-green accent , CTAs, icons, highlights)
+- `--color-dark: #061237` (navy , footer background, CTA band background, dark headings)
 - `--color-heading: #111827`
 - `--color-text: #374151`
 - `--color-muted: #6b7280` / `#9ca3af`
 - `--color-link: #2563eb` (occasional blue link/ring accent)
 - White text on navy sections.
 
-**PALETTE (DARK — ADDED FOR THIS CLONE, SOURCE HAS NO TOGGLE):**
+**PALETTE (DARK , ADDED FOR THIS CLONE, SOURCE HAS NO TOGGLE):**
 - Background `#0b0f14`, surface `#12161c`, card `#171c23`, border `#262c35`, heading `#f5f6f7`, text `#c7ccd3`, muted `#8b93a1`. Accent stays `#6ee272`, navy band becomes `#050912`. All colors are driven through CSS custom properties (`:root` = light source palette; `[data-theme="dark"]` override) honoring `prefers-color-scheme` on first load and persisted via `localStorage`, with a toggle added to the header.
 
 **TYPE:**
@@ -48,34 +48,34 @@ ATEMP IS A LIGHT, CLEAN SAAS/MULTIPURPOSE MARKETING TEMPLATE FOR A SOCIAL-MEDIA-
 Shared chrome on every page: sticky header (logo, nav: Home / About Us / Pricing / Pages ▾ dropdown, language switcher, "Contact Sales" ghost button, "Get Started" green pill button, mobile hamburger) and a dark-navy footer (brand blurb + social icons, Sydney/France office addresses, newsletter signup form, 4 link columns: Company / Integration / Pages / Support, bottom bar with copyright + legal links).
 
 **Home (`/`)**
-- Hero: eyebrow badge, H1 "Bring Your Ideas To Life With Atemp — SaaS Multipurpose Template", subcopy, Get Started + Contact Sales buttons, dashboard-mockup illustration with floating stat cards (revenue, growth chart), decorative circular shapes.
-- Client logo strip ("See Our Client's") — 4-5 grayscale/brand logos.
-- "Main Features Of Atemp" — 3-card feature grid (Manage Your Social Media, Improve Your Workflow, Understand Audience) each with icon badge, heading, copy, and a small illustrative panel (chart/graph mockup).
-- About/stat band — eyebrow, H2 "Build & Launch Without Problems", 3 stat cards (3,524 / 1.24% / 652) with icon, bullet list of value props, avatar/testimonial mini card at right with play button.
-- "Don't Let Your Media Be Just Hunches And Guess" — 3 pill feature tags + illustrated stat card ("Customer Andrew Achieved 12s ROI In The First Month!") with supporting paragraph.
-- "Seamless Integration With All Your Favorite Tools" — logo grid of integrations (Shopify, Dribbble, Twitter, Component, Amazon, Skype, etc.) + "All Integrated Software" button.
-- Pricing teaser — Monthly/Yearly tab toggle, 3 plan cards (Standard $50, Business $64, Enterprise $79) each with plan blurb, price, feature bullet list, Get Started button.
-- CTA band (dark navy) — "Build & Launch Without Problems" heading, Get Started + Contact Sales buttons, floating dashboard illustration cards.
+- Hero: eyebrow badge, H1 "Bring Your Ideas To Life With Atemp , SaaS Multipurpose Template", subcopy, Get Started + Contact Sales buttons, dashboard-mockup illustration with floating stat cards (revenue, growth chart), decorative circular shapes.
+- Client logo strip ("See Our Client's") , 4-5 grayscale/brand logos.
+- "Main Features Of Atemp" , 3-card feature grid (Manage Your Social Media, Improve Your Workflow, Understand Audience) each with icon badge, heading, copy, and a small illustrative panel (chart/graph mockup).
+- About/stat band , eyebrow, H2 "Build & Launch Without Problems", 3 stat cards (3,524 / 1.24% / 652) with icon, bullet list of value props, avatar/testimonial mini card at right with play button.
+- "Don't Let Your Media Be Just Hunches And Guess" , 3 pill feature tags + illustrated stat card ("Customer Andrew Achieved 12s ROI In The First Month!") with supporting paragraph.
+- "Seamless Integration With All Your Favorite Tools" , logo grid of integrations (Shopify, Dribbble, Twitter, Component, Amazon, Skype, etc.) + "All Integrated Software" button.
+- Pricing teaser , Monthly/Yearly tab toggle, 3 plan cards (Standard $50, Business $64, Enterprise $79) each with plan blurb, price, feature bullet list, Get Started button.
+- CTA band (dark navy) , "Build & Launch Without Problems" heading, Get Started + Contact Sales buttons, floating dashboard illustration cards.
 - Footer as above.
 
-**About (`/about/`)** — page header banner, company story/mission copy, team/stat sections, values grid, CTA band, footer.
+**About (`/about/`)** , page header banner, company story/mission copy, team/stat sections, values grid, CTA band, footer.
 
-**Pricing (`/pricing/`)** — page header, Monthly/Yearly toggle, 3 plan cards (same as home teaser but full page context), FAQ accordion, CTA band, footer.
+**Pricing (`/pricing/`)** , page header, Monthly/Yearly toggle, 3 plan cards (same as home teaser but full page context), FAQ accordion, CTA band, footer.
 
-**Features (`/features/`)** — page header, extended feature grid (icon + heading + copy cards), supporting illustration sections, CTA band, footer.
+**Features (`/features/`)** , page header, extended feature grid (icon + heading + copy cards), supporting illustration sections, CTA band, footer.
 
-**Elements (`/elements/`)** — UI kit / style-guide showcase page: typography samples, button variants, color swatches, form elements, card variants, alert/badge components — used as the template's component reference page.
+**Elements (`/elements/`)** , UI kit / style-guide showcase page: typography samples, button variants, color swatches, form elements, card variants, alert/badge components , used as the template's component reference page.
 
-**Career (`/career/`)** — page header, open-positions list/cards (role, department, location, apply link), culture/values copy, CTA band, footer.
+**Career (`/career/`)** , page header, open-positions list/cards (role, department, location, apply link), culture/values copy, CTA band, footer.
 
-**Contact (`/contact/`)** — page header, contact form (name/email/subject/message, submit button) + office info cards (Sydney, France) with map/illustration, footer.
+**Contact (`/contact/`)** , page header, contact form (name/email/subject/message, submit button) + office info cards (Sydney, France) with map/illustration, footer.
 
-**Terms & Conditions (`/terms-conditions/`)** — page header, long-form legal copy in prose sections, footer.
+**Terms & Conditions (`/terms-conditions/`)** , page header, long-form legal copy in prose sections, footer.
 
-**Blog index (`/blog/`, `/blog/page/2/`, `/blog/page/3/`)** — page header, grid of blog post cards (cover image, category tag, title, excerpt, author/date), pagination control at bottom.
+**Blog index (`/blog/`, `/blog/page/2/`, `/blog/page/3/`)** , page header, grid of blog post cards (cover image, category tag, title, excerpt, author/date), pagination control at bottom.
 
-**Blog posts (`/blog/post-1/` … `/blog/post-5/`)** — post header (title, author, date, cover image), prose article body, tags, author bio card, related-posts grid, comment/share affordances.
+**Blog posts (`/blog/post-1/` … `/blog/post-5/`)** , post header (title, author, date, cover image), prose article body, tags, author bio card, related-posts grid, comment/share affordances.
 
-**Integration index (`/integration/`)** — page header, grid of integration cards (icon, name, short blurb, "Learn more" link) linking to each integration detail page.
+**Integration index (`/integration/`)** , page header, grid of integration cards (icon, name, short blurb, "Learn more" link) linking to each integration detail page.
 
-**Integration detail pages (`/integration/mailchimp/`, `/airtable/`, `/discord/`, `/gmail/`, `/google-meet/`, `/slack/`, `/stripe/`, `/zoom/`)** — shared template: hero with integration logo + name + "Connect"/CTA button, feature/benefit list, screenshot mockup, related-integrations grid, CTA band, footer.
+**Integration detail pages (`/integration/mailchimp/`, `/airtable/`, `/discord/`, `/gmail/`, `/google-meet/`, `/slack/`, `/stripe/`, `/zoom/`)** , shared template: hero with integration logo + name + "Connect"/CTA button, feature/benefit list, screenshot mockup, related-integrations grid, CTA band, footer.

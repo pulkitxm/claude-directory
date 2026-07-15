@@ -1,8 +1,8 @@
-# Morphing Light Shader — Interferometry Fringe GLSL Background (React + Three.js + Vite + Tailwind CSS)
+# Morphing Light Shader , Interferometry Fringe GLSL Background (React + Three.js + Vite + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A Three.js fragment shader painting radially symmetric morphing interference fringes (pink-to-cyan spectrum bent around the optical axis) on a full-screen quad, reframed as **FRINGE** — a tabletop interferometer instrument console. The live observation window is the shader; a left rail of beam faders, a source bank, and a live detector strip that reads per-frame GPU state compose a calm, precise instrument interface. Built with React + TypeScript + Vite + Tailwind CSS on a shadcn project structure. Generated with Claude Fable 5.
+A Three.js fragment shader painting radially symmetric morphing interference fringes (pink-to-cyan spectrum bent around the optical axis) on a full-screen quad, reframed as **FRINGE** , a tabletop interferometer instrument console. The live observation window is the shader; a left rail of beam faders, a source bank, and a live detector strip that reads per-frame GPU state compose a calm, precise instrument interface. Built with React + TypeScript + Vite + Tailwind CSS on a shadcn project structure. Generated with Claude Fable 5.
 
 ```bash
 npm install
@@ -12,22 +12,22 @@ npm run build    # tsc -b && vite build
 
 ## What you can do
 
-- **Tune the beam** — four faders (Sweep rate, Inner fringes, Outer fringes,
+- **Tune the beam** , four faders (Sweep rate, Inner fringes, Outer fringes,
   Hue shift) promote the shader's baked-in constants (`2.5`, `4.0`, `8.0`, and a
   new HSV hue rotation) to live uniforms. Every default equals the value the
   original shader hard-coded.
-- **Recall a source** — five named emission sources (Calibration, Sodium-D,
+- **Recall a source** , five named emission sources (Calibration, Sodium-D,
   Argon-Ion, Near-UV, He-Ne) each snap the field to a stored set of uniforms.
   Nudge any fader and the active source flips to **Custom**.
-- **Probe the fringes** — moving the pointer over the window drives a caliper
+- **Probe the fringes** , moving the pointer over the window drives a caliper
   that reports the **fringe order** `m` at the cursor's radius from the optical
   axis, derived from the shader's own ring frequency.
-- **Close the shutter** — freeze the clock without tearing down the GL context.
+- **Close the shutter** , freeze the clock without tearing down the GL context.
 
 ## How it integrates (shadcn / Tailwind / TypeScript)
 
 This repo is already a shadcn-style TypeScript project, so the component lands in
-its canonical home — **`src/components/ui/morphing-light.tsx`** — with the `@/`
+its canonical home , **`src/components/ui/morphing-light.tsx`** , with the `@/`
 alias resolving to `src/` (`components.json` + `vite.config.ts` + `tsconfig`).
 The `@/components/ui` folder matters because that is the path the shadcn CLI and
 the `@/components/ui/...` import in the brief's `demo.tsx` both expect; keeping it
@@ -46,13 +46,13 @@ npm install three @types/three   # the component's only runtime dependency
 
 - **Subject:** a tabletop interferometer. The shader literally draws concentric
   interference fringes, so the instrument frames them as something *measured*,
-  not decorated — no stock photography needed.
+  not decorated , no stock photography needed.
 - **Signature element:** a concentric **fringe reticle** centered on the optical
-  axis — a 72-mark graticule, measurement rings, and counter-rotating sweep that
+  axis , a 72-mark graticule, measurement rings, and counter-rotating sweep that
   mirror the shader's own radial symmetry.
 - **Type:** Sora (technical display), Inter (body/utility), Space Mono
   (telemetry). All vendored locally (latin `woff2` in `src/fonts/`) so the
-  project runs fully offline — no runtime CDN calls.
+  project runs fully offline , no runtime CDN calls.
 - **Telemetry is real:** clock, FPS, axis intensity and spectral cast are read
   from the live render loop via `gl.readPixels` on the center pixel.
 - **`src/demo.tsx`** keeps the verbatim drop-in example from the brief.
@@ -64,4 +64,4 @@ fonts are vendored locally. No remote dependencies at runtime.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

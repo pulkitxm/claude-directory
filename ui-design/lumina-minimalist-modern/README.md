@@ -1,41 +1,41 @@
-# Lumina — Minimalist Modern Design System Landing Page (React, Framer Motion, Tailwind CSS v3)
+# Lumina , Minimalist Modern Design System Landing Page (React, Framer Motion, Tailwind CSS v3)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A full landing page for the fictional product-analytics platform Lumina, built end to end as a reference implementation of the Minimalist Modern design system: restraint in element count, confidence in execution — an Electric Blue signature gradient, inverted slate sections, a dual-font Calistoga + Inter voice, animated hero graphic, and motion that makes the interface feel alive across hero, stats, features, pricing, testimonials, and CTA sections. Generated with Claude Fable 5.
+A full landing page for the fictional product-analytics platform Lumina, built end to end as a reference implementation of the Minimalist Modern design system: restraint in element count, confidence in execution , an Electric Blue signature gradient, inverted slate sections, a dual-font Calistoga + Inter voice, animated hero graphic, and motion that makes the interface feel alive across hero, stats, features, pricing, testimonials, and CTA sections. Generated with Claude Fable 5.
 
 ## Sections
 
-1. **Navbar** — floating glass pill that solidifies on scroll, with a mobile drawer.
-2. **Hero** — asymmetric `1.1fr / 0.9fr` grid, gradient headline word with a soft
+1. **Navbar** , floating glass pill that solidifies on scroll, with a mobile drawer.
+2. **Hero** , asymmetric `1.1fr / 0.9fr` grid, gradient headline word with a soft
    underline bar, and an animated abstract graphic (slow-rotating dashed ring,
    counter-rotating inner ring, two bobbing glass cards, a sculptural gradient
    blob, a 3×3 dot grid, and a solid accent corner block).
-3. **Stats** — inverted dark section with a dot-grid texture, corner glows, and
+3. **Stats** , inverted dark section with a dot-grid texture, corner glows, and
    numbers that count up on scroll into view.
-4. **Features** — bento grid of capability cards with full-gradient icon tiles
+4. **Features** , bento grid of capability cards with full-gradient icon tiles
    and a hover gradient wash; the lead card spans on wider screens.
-5. **How it works** — three-step timeline with oversized step numbers and
+5. **How it works** , three-step timeline with oversized step numbers and
    gradient circular arrow connectors between steps (desktop).
-6. **Pricing** — three tiers; the featured tier floats above its siblings inside
+6. **Pricing** , three tiers; the featured tier floats above its siblings inside
    a 2px gradient-border stroke.
-7. **Testimonials** — offset center card, oversized decorative quote marks, and
+7. **Testimonials** , offset center card, oversized decorative quote marks, and
    gradient accent bars.
-8. **Final CTA** — inverted section with a working email-capture form (validates
+8. **Final CTA** , inverted section with a working email-capture form (validates
    and confirms inline) over an accent glow.
-9. **Footer** — link columns plus a live "all systems operational" pulse.
+9. **Footer** , link columns plus a live "all systems operational" pulse.
 
 ## Signature elements ("Bold Factor")
 
 Gradient text highlights, two inverted sections with dot texture, the animated
 hero graphic, gradient icon backgrounds, the 2px gradient-border featured card,
 oversized decorative elements (120px quote marks, large step numbers), pulsing
-indicators, and arrow connectors — all driven by centralized design tokens.
+indicators, and arrow connectors , all driven by centralized design tokens.
 
 ## Stack
 
 - React 18 + Vite + TypeScript (strict)
-- Tailwind CSS v3 — every design token (colors, shadows, fonts) is a CSS custom
+- Tailwind CSS v3 , every design token (colors, shadows, fonts) is a CSS custom
   property in `src/index.css`, mapped through `tailwind.config.ts`
 - Framer Motion for entrance choreography and continuous motion
   (`<MotionConfig reducedMotion="user">` honors `prefers-reduced-motion`)
@@ -50,7 +50,7 @@ indicators, and arrow connectors — all driven by centralized design tokens.
 npm install
 npm run dev      # http://localhost:5173
 npm run build    # type-check (tsc --noEmit) + production build
-npm run verify   # headless Chromium checks (Playwright) — see below
+npm run verify   # headless Chromium checks (Playwright) , see below
 ```
 
 ## Verification
@@ -71,4 +71,4 @@ is an inline SVG in `public/`.
 
 ---
 
-Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [UI design](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

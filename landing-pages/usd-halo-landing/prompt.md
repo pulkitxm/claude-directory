@@ -1,4 +1,4 @@
-# USD Halo — Premium Fintech Stablecoin Landing Page
+# USD Halo , Premium Fintech Stablecoin Landing Page
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a premium, fintech-style landing page for a stablecoin product called **Ha
 - **Framework:** React 18 (`react` / `react-dom` `^18.3.1`) + TypeScript (`^5.6.3`)
 - **Build tool:** Vite (`^5.4.10`) with `@vitejs/plugin-react` (`^4.3.3`)
 - **Styling:** Tailwind CSS (`^3.4.14`) with `postcss` (`^8.4.49`) and `autoprefixer` (`^10.4.20`)
-- **Icons:** `lucide-react` (`^0.468.0`) — `ArrowRight` only. No other UI libraries.
+- **Icons:** `lucide-react` (`^0.468.0`) , `ArrowRight` only. No other UI libraries.
 - **Primary font:** TT Norms Pro (loaded via `@font-face`); the hero paragraph uses Inter as an inline override
 - **Notable techniques:** custom inline-`<svg>` logo using `currentColor`; CSS `@keyframes` marquees with a duplicated track for seamless looping; `<video>` backgrounds with `autoplay`/`muted`/`loop`/`playsInline`
 
@@ -62,8 +62,8 @@ Build a premium, fintech-style landing page for a stablecoin product called **Ha
 ### HTML document (`index.html`)
 
 - `lang="en"`, favicon at `/favicon.svg`.
-- Meta description: `USD Halo — an automated, reward-powered digital dollar built for native passive earnings and effortless connection into DeFi.`
-- Title: `Halo — Your Wealth Works`
+- Meta description: `USD Halo , an automated, reward-powered digital dollar built for native passive earnings and effortless connection into DeFi.`
+- Title: `Halo , Your Wealth Works`
 - Mount point `<div id="root"></div>` and `<script type="module" src="/src/main.tsx">`.
 
 ### Custom Logo Icon
@@ -122,19 +122,19 @@ All section backgrounds are `#F5F5F5`. All headings use negative letter-spacing 
 - Inner row: `max-w-[88rem] mx-auto flex items-center justify-between`.
 - **Left:** an `a` (`flex items-center gap-2.5`) containing `LogoIcon` (`w-7 h-7 text-black`) + the word "Halo" in a `span` (`text-2xl font-medium tracking-tight text-black`).
 - **Center (hidden below md):** container `hidden md:flex items-center gap-8`. Links **Network**, **Ecosystem**, **Rewards**, **Help**, **News** (from a `NAV_LINKS` array), each `text-base text-gray-700 hover:text-black font-medium transition-colors duration-200`.
-- **Right:** a black pill `<button type="button">` labeled "Open Wallet" — `bg-black text-white text-base font-medium px-7 py-2.5 rounded-full hover:bg-gray-800 transition-colors duration-200`.
+- **Right:** a black pill `<button type="button">` labeled "Open Wallet" , `bg-black text-white text-base font-medium px-7 py-2.5 rounded-full hover:bg-gray-800 transition-colors duration-200`.
 
 ## 2. Hero Section
 
 - **Outer:** `section` with `flex-1 px-6 pt-20 pb-6 flex items-end`.
 - **Inner card:** `relative w-full max-w-[88rem] mx-auto rounded-2xl overflow-hidden` with inline style `height: 'calc(100vh - 96px)'`.
-- **Background video** — `<video>` with `autoPlay muted loop playsInline`, classes `absolute inset-0 w-full h-full object-cover`. Source video:
+- **Background video** , `<video>` with `autoPlay muted loop playsInline`, classes `absolute inset-0 w-full h-full object-cover`. Source video:
   - In source it is vendored locally at `/assets/hf_20260423_161253_c72b1869-400f-45ed-ac0c-52f68c2ed5bd.mp4`.
   - Original asset URL (note: only scheme/host lowercased; path kept verbatim): `https://d8j0ntlcm91z4.cloudfront.net/user_38XZzbokvIgWjottwiXH07Lwa1P/HF_20260423_161253_C72B1869-400F-45ED-AC0C-52F68C2ED5BD.mp4`
 - **Content overlay:** `relative z-10 flex flex-col items-start justify-start h-full p-12 pt-36`.
-  - **H1** with a `<br />`: "Your Wealth" / "Works" — `text-black text-5xl md:text-6xl font-medium leading-tight max-w-xl mb-4`, inline `letterSpacing: '-0.04em'`.
-  - **Paragraph:** "An automated, reward-powered digital dollar built for native passive earnings and effortless connection into DeFi." — `text-black/70 text-base md:text-lg max-w-md mb-8 leading-relaxed`, inline `fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif"`.
-  - **Pill button** "Join us" with arrow circle (`PillButton` with `large` — see below).
+  - **H1** with a `<br />`: "Your Wealth" / "Works" , `text-black text-5xl md:text-6xl font-medium leading-tight max-w-xl mb-4`, inline `letterSpacing: '-0.04em'`.
+  - **Paragraph:** "An automated, reward-powered digital dollar built for native passive earnings and effortless connection into DeFi." , `text-black/70 text-base md:text-lg max-w-md mb-8 leading-relaxed`, inline `fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif"`.
+  - **Pill button** "Join us" with arrow circle (`PillButton` with `large` , see below).
   - Followed by the **brand marquee** below the button.
 
 ### Brand Marquee (inside hero, below button)
@@ -156,22 +156,22 @@ All section backgrounds are `#F5F5F5`. All headings use negative letter-spacing 
 ## 3. Info Section ("Meet USD Halo.")
 
 - `section` is `bg-[#F5F5F5] px-6 py-24` with inner `max-w-[88rem] mx-auto`.
-- **Row 1** — 2-col grid: `grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-start`.
-  - **Left:** H2 "Meet USD Halo." — `text-black text-4xl md:text-5xl font-medium leading-tight mb-8`, inline `letterSpacing: '-0.03em'`. Below it, the black pill `PillButton` labeled "Discover it" (default size, `text-base`).
-  - **Right:** paragraph "USD Halo is a reward-earning dollar coin that lets your savings grow while remaining tied to the U.S. dollar." — `text-black/70 text-2xl md:text-3xl leading-relaxed`.
-- **Row 2** — 4-col card grid: `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4`.
+- **Row 1** , 2-col grid: `grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-start`.
+  - **Left:** H2 "Meet USD Halo." , `text-black text-4xl md:text-5xl font-medium leading-tight mb-8`, inline `letterSpacing: '-0.03em'`. Below it, the black pill `PillButton` labeled "Discover it" (default size, `text-base`).
+  - **Right:** paragraph "USD Halo is a reward-earning dollar coin that lets your savings grow while remaining tied to the U.S. dollar." , `text-black/70 text-2xl md:text-3xl leading-relaxed`.
+- **Row 2** , 4-col card grid: `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4`.
   - **Card 1 (spans 2 cols on lg):** `lg:col-span-2 rounded-2xl p-7 min-h-80 flex flex-col justify-between` with inline background image (`backgroundSize: 'cover'`, `backgroundPosition: 'center'`):
     - In source the image is vendored locally at `/assets/hf_20260423_164207_f243351d-ed59-48ec-83a0-a5e996bdbe3c.webp`.
     - Original asset URL (image proxy wrapping a CloudFront PNG; path kept verbatim): `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38XZzbokvIgWjottwiXH07Lwa1P%2FHF_20260423_164207_F243351D-ED59-48EC-83A0-A5E996BDBE3C.PNG&w=1280&q=85`
-    - **Title (top):** H3 "Savings that bloom" — `text-black text-2xl font-medium leading-snug`, inline `letterSpacing: '-0.02em'`.
-    - **Body (bottom):** "Gain steady returns as your dollar tokens are routed into top-performing DeFi strategies." — `text-black/70 text-base max-w-xs`.
-  - **Card 2:** solid `bg-[#2B2644] rounded-2xl p-7 min-h-80 flex flex-col justify-between`. White H3 with `<br />` "Always fluid," / "always pegged." — `text-white text-2xl font-medium leading-snug`, inline `letterSpacing: '-0.02em'`. Body "Keep fully dollar-anchored with on-demand access to funds — no lockups or waits." — `text-white/60 text-base`.
+    - **Title (top):** H3 "Savings that bloom" , `text-black text-2xl font-medium leading-snug`, inline `letterSpacing: '-0.02em'`.
+    - **Body (bottom):** "Gain steady returns as your dollar tokens are routed into top-performing DeFi strategies." , `text-black/70 text-base max-w-xs`.
+  - **Card 2:** solid `bg-[#2B2644] rounded-2xl p-7 min-h-80 flex flex-col justify-between`. White H3 with `<br />` "Always fluid," / "always pegged." , `text-white text-2xl font-medium leading-snug`, inline `letterSpacing: '-0.02em'`. Body "Keep fully dollar-anchored with on-demand access to funds , no lockups or waits." , `text-white/60 text-base`.
   - **Card 3:** same `bg-[#2B2644]` styling. H3 with `<br />` "Fully" / "automated". Body "Skip the task of tuning positions yourself. USD Halo runs in the background for you."
 
 ## 4. Backed By Section (marquee row)
 
 - `section` is `bg-[#F5F5F5] px-6` with inner `max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-center`.
-- **Left col (1/4):** paragraph `text-black/70 text-base leading-relaxed` with a `<br />` — "Funded by premier partners" / "and forward-thinking leaders."
+- **Left col (1/4):** paragraph `text-black/70 text-base leading-relaxed` with a `<br />` , "Funded by premier partners" / "and forward-thinking leaders."
 - **Right col (3/4):** wrapper `md:col-span-3 overflow-hidden` containing the shared `Marquee` (same pattern as the hero marquee but slower): `trackClass="backers-track"`, `keyframesName="backers-marquee"`, `durationSeconds={30}`, `itemClass="mx-10 shrink-0 text-black/50 whitespace-nowrap"`.
 - Backer list (each a `span` with inline `style`):
 
@@ -190,15 +190,15 @@ All section backgrounds are `#F5F5F5`. All headings use negative letter-spacing 
 
 - `section` is `bg-[#F5F5F5] px-6 py-24`. Inner: `max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start`.
 - **Left column** (`md:pr-12 md:pt-2`):
-  - **Eyebrow:** "USD Halo in Practice" — `text-black/60 text-sm mb-2`.
-  - **H2** "Use modes" — `text-black text-5xl md:text-6xl font-medium leading-none mb-6`, inline `letterSpacing: '-0.04em'`.
-  - **Paragraph:** "USD Halo powers a wide range of modes for builders, companies and treasuries wanting safe and rewarding stablecoin integrations plus more" — `text-black/60 text-base leading-relaxed max-w-sm`.
+  - **Eyebrow:** "USD Halo in Practice" , `text-black/60 text-sm mb-2`.
+  - **H2** "Use modes" , `text-black text-5xl md:text-6xl font-medium leading-none mb-6`, inline `letterSpacing: '-0.04em'`.
+  - **Paragraph:** "USD Halo powers a wide range of modes for builders, companies and treasuries wanting safe and rewarding stablecoin integrations plus more" , `text-black/60 text-base leading-relaxed max-w-sm`.
 - **Right column:** `relative rounded-3xl overflow-hidden min-h-[720px]` with a background `<video>` (`autoPlay muted loop playsInline`, `absolute inset-0 w-full h-full object-cover`):
   - In source the video is vendored locally at `/assets/hf_20260423_183428_ab5e672a-f608-4dcb-b319-f3e040f02e2d.mp4`.
   - Original asset URL (path kept verbatim): `https://d8j0ntlcm91z4.cloudfront.net/user_38XZzbokvIgWjottwiXH07Lwa1P/HF_20260423_183428_AB5E672A-F608-4DCB-B319-F3E040F02E2D.mp4`
   - **Overlay content** `relative z-10 p-10 md:p-12`:
-    - **H3** "Commerce" — `text-black text-4xl md:text-5xl font-medium leading-tight mb-5`, inline `letterSpacing: '-0.03em'`.
-    - **Paragraph:** "Lift customer retention by offering USD Halo, a trusted dollar-backed stablecoin with strong yields, letting your patrons earn with zero effort on your platform." — `text-black/70 text-base max-w-md mb-8`.
+    - **H3** "Commerce" , `text-black text-4xl md:text-5xl font-medium leading-tight mb-5`, inline `letterSpacing: '-0.03em'`.
+    - **Paragraph:** "Lift customer retention by offering USD Halo, a trusted dollar-backed stablecoin with strong yields, letting your patrons earn with zero effort on your platform." , `text-black/70 text-base max-w-md mb-8`.
     - **Inline-flex link** "Know more" with a leading circular icon. The `a` is `group inline-flex items-center gap-3 text-black text-base font-medium`; the circle is `w-9 h-9 rounded-full bg-white/80 backdrop-blur flex items-center justify-center group-hover:bg-white transition-colors duration-200` containing `<ArrowRight className="w-4 h-4 text-black" />`. (Icon precedes the "Know more" label.)
 
 ## Shared Components
@@ -290,7 +290,7 @@ export default function Marquee({
 
 ## Animations & Interactions
 
-- **Two CSS keyframe marquees** — 22s for hero brands (`marquee` / `.marquee-track`) and 30s for backers (`backers-marquee` / `.backers-track`), both `linear infinite` and translating `0 → -50%` on a duplicated track for seamless looping.
+- **Two CSS keyframe marquees** , 22s for hero brands (`marquee` / `.marquee-track`) and 30s for backers (`backers-marquee` / `.backers-track`), both `linear infinite` and translating `0 → -50%` on a duplicated track for seamless looping.
 - All buttons use `transition-colors duration-200` with hover state `hover:bg-gray-800` (or `hover:bg-white` for the white "Know more" circle, which uses `group-hover:bg-white`).
 - Nav links transition on hover from `text-gray-700` to `text-black`.
 - Videos `autoPlay` `muted` with `playsInline` for mobile compatibility.

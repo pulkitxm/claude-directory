@@ -1,10 +1,10 @@
-# REAL MAGIC — HORIZONTAL TICKER-TAPE SCROLL
+# REAL MAGIC , HORIZONTAL TICKER-TAPE SCROLL
 
 ## ORIGINAL PROMPT (VERBATIM)
 
 CREATE A HORIZONTAL SCROLL ANIMATION USING GSAP SCROLLTRIGGER.
 
-LAYOUT: INSTEAD OF FULL-SCREEN SLIDES, I WANT A CONTINUOUS HORIZONTAL TEXT FLOW — IMAGINE A SINGLE, VERY LONG SENTENCE. STRUCTURE: USE A SINGLE FLEX CONTAINER SO ITEMS FLOW NATURALLY NEXT TO EACH OTHER WITH VARIABLE GAPS.
+LAYOUT: INSTEAD OF FULL-SCREEN SLIDES, I WANT A CONTINUOUS HORIZONTAL TEXT FLOW , IMAGINE A SINGLE, VERY LONG SENTENCE. STRUCTURE: USE A SINGLE FLEX CONTAINER SO ITEMS FLOW NATURALLY NEXT TO EACH OTHER WITH VARIABLE GAPS.
 
 CONTENT: THE SENTENCE IS 'IN EVERY BOTTLE, DISCOVER THE UNDENIABLE REAL MAGIC OF SHARING PURE REFRESHMENT THAT BRINGS US TOGETHER'.
 
@@ -52,7 +52,7 @@ continuous baseline:
 ```css
 .line {
   display: flex;
-  flex-wrap: nowrap;      /* never wraps — it is one infinite line */
+  flex-wrap: nowrap;      /* never wraps , it is one infinite line */
   align-items: baseline;
   white-space: nowrap;
   will-change: transform;
@@ -64,7 +64,7 @@ continuous baseline:
 Word sizing: `--line-h: clamp(96px, 20vw, 280px)`; base `.word` uses Anton at
 `var(--line-h)`, `line-height:.86`, uppercase, `letter-spacing:-.01em`.
 
-**Variable gaps** are produced by per-item margins on top of `column-gap` — this
+**Variable gaps** are produced by per-item margins on top of `column-gap` , this
 is what makes the line feel hand-set rather than uniformly spaced. Key rules:
 
 - `.w-faint` (the connective words `the / of / that / us`, and the leading
@@ -75,7 +75,7 @@ is what makes the line feel hand-set rather than uniformly spaced. Key rules:
   `1.08×`, normal case, extra side air `clamp(8px,1.5vw,28px)`.
 - `.accent--huge` (`Magic`, `Together`): `1.18×`, **outline only** via
   `-webkit-text-stroke: 2px var(--cream); color: transparent;` and a wider
-  right margin `clamp(24px,4vw,80px)` — the hollow words are the rhythm breaks.
+  right margin `clamp(24px,4vw,80px)` , the hollow words are the rhythm breaks.
 
 ### THE SENTENCE (EXACT ORDER)
 
@@ -90,12 +90,12 @@ Refreshment that brings us Together"**.
 
 All glyphs are inline `<span class="glyph">` wrapping an inline SVG that draws
 in `currentColor` (cream) and is sized in `em` so it scales with the type. They
-flow **inside** the line — never their own section. Each has its own variable
+flow **inside** the line , never their own section. Each has its own variable
 margin. The set:
 
 - **bottle** (contour Coca-Cola bottle outline, `height:1.5em`) after `every`.
 - **bubbles** (5 rising carbonation circles, `1.7em`, nudged up `-0.18em`) after
-  `bottle,` — reads like an ellipsis.
+  `bottle,` , reads like an ellipsis.
 - **ribbon** (the signature dynamic swoosh, a cubic/smooth `C…S…` path with
   `stroke-width:6`, `1.4em`) after `Magic`.
 - **drop** (teardrop splash, `1.5em`) after `sharing`.
@@ -140,9 +140,9 @@ Looping GSAP tweens, all `repeat:-1, yoyo:true`, independent of scroll:
 - bubbles: each circle `y:14→-10`, `opacity:0→.9`, `2.2 + i*0.35s`,
   `sine.inOut`, staggered `delay:i*0.4`.
 - ribbon: `strokeDasharray = getTotalLength()`, animate `strokeDashoffset
-  len→0`, `2.4s power2.inOut`, `repeatDelay:1.1` — the swoosh self-draws.
+  len→0`, `2.4s power2.inOut`, `repeatDelay:1.1` , the swoosh self-draws.
 - cheers spark: `scale .6→1.15`, `opacity .2→1`, `.9s power1.inOut`.
-- heart: `scale 1→1.12`, `.6s`, `repeatDelay:.7` — a heartbeat.
+- heart: `scale 1→1.12`, `.6s`, `repeatDelay:.7` , a heartbeat.
 - drop: `y 0→6`, `1.8s sine.inOut` bob.
 
 Respect `prefers-reduced-motion`: skip idle loops and use `scrub:true`.

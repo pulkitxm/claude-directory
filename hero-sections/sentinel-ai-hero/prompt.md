@@ -1,8 +1,8 @@
-# Sentinel AI — Cinematic Security Hero Section
+# Sentinel AI , Cinematic Security Hero Section
 
 ## Overview
 
-Build a full-screen, dark hero landing page for a security company called "Sentinel AI". The page floats a fixed transparent navbar and a bottom-left-anchored content block over an embedded Spline 3D scene that fills the viewport. Clicks pass through the content area to the interactive 3D scene, except for the buttons, which re-enable pointer events. There is no light mode and no mobile hamburger menu — the nav links and CTA simply hide below the `md` breakpoint.
+Build a full-screen, dark hero landing page for a security company called "Sentinel AI". The page floats a fixed transparent navbar and a bottom-left-anchored content block over an embedded Spline 3D scene that fills the viewport. Clicks pass through the content area to the interactive 3D scene, except for the buttons, which re-enable pointer events. There is no light mode and no mobile hamburger menu , the nav links and CTA simply hide below the `md` breakpoint.
 
 ## Tech Stack
 
@@ -30,7 +30,7 @@ Load the Sora font in the `<head>`:
 
 ## Color Palette
 
-All colors are HSL CSS custom properties, dark only — there is no light mode. Define them on `:root` in `src/index.css` and map them in Tailwind config using the `hsl(var(--variable))` pattern.
+All colors are HSL CSS custom properties, dark only , there is no light mode. Define them on `:root` in `src/index.css` and map them in Tailwind config using the `hsl(var(--variable))` pattern.
 
 | Token | Value | Notes |
 | --- | --- | --- |
@@ -104,10 +104,10 @@ Add two custom Tailwind color tokens: `nav-button` and `hero-bg`.
 }
 ```
 
-## Tailwind Config — `tailwind.config.ts`
+## Tailwind Config , `tailwind.config.ts`
 
 - `darkMode: ["class"]`, `content: ["./index.html", "./src/**/*.{ts,tsx}"]`.
-- `fontFamily.sora: ["Sora", "sans-serif"]` — the body uses `font-sora antialiased`.
+- `fontFamily.sora: ["Sora", "sans-serif"]` , the body uses `font-sora antialiased`.
 - Map every color token above via `hsl(var(--…))`, including the `primary`, `secondary`, `muted`, and `accent` color groups with their `DEFAULT` + `foreground` members, plus the standalone `border`, `input`, `ring`, `background`, `foreground`, `destructive`, `nav-button`, and `hero-bg` tokens.
 - `borderRadius`: `lg: var(--radius)`, `md: calc(var(--radius) - 2px)`, `sm: calc(var(--radius) - 4px)`.
 - Plugin: `tailwindcss-animate`.
@@ -189,8 +189,8 @@ export default {
 
 Two custom keyframes/animations defined in Tailwind config:
 
-- **`fade-up`** — `0%`: `opacity: 0`, `transform: translateY(20px)`, `filter: blur(4px)`; `100%`: `opacity: 1`, `transform: translateY(0)`, `filter: blur(0)`. Animation: `fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards`.
-- **`fade-in`** — `0%`: `opacity: 0`; `100%`: `opacity: 1`. Animation: `fade-in 0.5s ease-out forwards`.
+- **`fade-up`** , `0%`: `opacity: 0`, `transform: translateY(20px)`, `filter: blur(4px)`; `100%`: `opacity: 1`, `transform: translateY(0)`, `filter: blur(0)`. Animation: `fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards`.
+- **`fade-in`** , `0%`: `opacity: 0`; `100%`: `opacity: 1`. Animation: `fade-in 0.5s ease-out forwards`.
 
 Animated content elements start at `opacity-0` with the `animate-fade-up` class, and stagger their entrance with an inline `style={{ animationDelay: "Xs" }}`.
 
@@ -208,7 +208,7 @@ const App = () => <Index />;
 export default App;
 ```
 
-### Page — `src/pages/Index.tsx`
+### Page , `src/pages/Index.tsx`
 
 A simple wrapper containing `<Navbar />` and `<HeroSection />`:
 
@@ -231,9 +231,9 @@ export default Index;
 Fixed, transparent, floating over the Spline scene.
 
 - **Container:** `<header>` with `fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 lg:px-16 py-5`.
-- **Left — logo:** `<a href="#">` text `SENTINEL`, classes `text-foreground text-xl font-semibold tracking-tight`.
-- **Center — nav links:** a `<nav>` with `hidden md:flex items-center gap-8` (hidden on mobile). Render from the array `["Services", "About Us", "Projects", "Team", "Contacts"]`. Each link is an `<a>` with classes `text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest`, keyed by its label, with `href` derived from the label via a `toAnchor` helper that lowercases and replaces whitespace with hyphens (e.g. `About Us` → `#about-us`).
-- **Right — CTA:** shadcn `Button` with `variant="navCta"` and `size="lg"`, text `Get Quote`, plus classes `hidden md:inline-flex rounded-lg uppercase text-xs tracking-widest px-6`.
+- **Left , logo:** `<a href="#">` text `SENTINEL`, classes `text-foreground text-xl font-semibold tracking-tight`.
+- **Center , nav links:** a `<nav>` with `hidden md:flex items-center gap-8` (hidden on mobile). Render from the array `["Services", "About Us", "Projects", "Team", "Contacts"]`. Each link is an `<a>` with classes `text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest`, keyed by its label, with `href` derived from the label via a `toAnchor` helper that lowercases and replaces whitespace with hyphens (e.g. `About Us` → `#about-us`).
+- **Right , CTA:** shadcn `Button` with `variant="navCta"` and `size="lg"`, text `Get Quote`, plus classes `hidden md:inline-flex rounded-lg uppercase text-xs tracking-widest px-6`.
 
 ```tsx
 import { Button } from "@/components/ui/button";
@@ -294,8 +294,8 @@ Full-screen section with content anchored to the bottom-left.
 2. **Subheading** (`animationDelay: "0.4s"`): a `<p>` reading `We implement security correctly.` Classes: `opacity-0 animate-fade-up text-foreground/80 text-[clamp(1.125rem,2.5vw,1.875rem)] font-light mb-3 md:mb-6`.
 3. **Description** (`animationDelay: "0.55s"`): a `<p>` reading `Enterprise security systems built in days. AI-powered surveillance deployed with zero-trust architecture. Smart access control set up for your entire facility. All of it done right, not just fast.` Classes: `opacity-0 animate-fade-up text-muted-foreground text-[clamp(0.875rem,1.5vw,1.25rem)] font-light mb-4 md:mb-8`.
 4. **Two CTA buttons** (`animationDelay: "0.7s"`): wrapped in `<div className="opacity-0 animate-fade-up flex flex-wrap gap-3 font-bold">`. Both are plain `<button type="button">` elements (not the shadcn `Button`) with `pointer-events-auto` to re-enable clicks:
-   - **`Book a Call`** — `pointer-events-auto bg-primary text-primary-foreground px-6 py-3 md:px-8 md:py-4 text-sm rounded-sm cursor-pointer hover:brightness-110 transition-all active:scale-[0.97]`.
-   - **`Our Work`** — `pointer-events-auto bg-white text-background px-6 py-3 md:px-8 md:py-4 text-sm rounded-sm cursor-pointer hover:brightness-90 transition-all active:scale-[0.97]`.
+   - **`Book a Call`** , `pointer-events-auto bg-primary text-primary-foreground px-6 py-3 md:px-8 md:py-4 text-sm rounded-sm cursor-pointer hover:brightness-110 transition-all active:scale-[0.97]`.
+   - **`Our Work`** , `pointer-events-auto bg-white text-background px-6 py-3 md:px-8 md:py-4 text-sm rounded-sm cursor-pointer hover:brightness-90 transition-all active:scale-[0.97]`.
 5. **Trust line** (`animationDelay: "0.85s"`): a `<p>` reading `Trusted security partner. Columbus, OH. 12 systems deployed.` Classes: `opacity-0 animate-fade-up text-muted-foreground/60 text-xs font-light mt-4 md:mt-6`.
 
 ### `src/components/HeroSection.tsx`
@@ -319,7 +319,7 @@ const HeroSection = () => (
     {/* Dark overlay for content legibility */}
     <div className="absolute inset-0 bg-black/30 z-[1] pointer-events-none" />
 
-    {/* Content — anchored bottom-left, clicks pass through to the scene */}
+    {/* Content , anchored bottom-left, clicks pass through to the scene */}
     <div className="relative z-10 pointer-events-none w-full max-w-[90%] sm:max-w-md lg:max-w-2xl px-6 md:px-10 pb-10 md:pb-10 pt-32">
       <h1
         className="opacity-0 animate-fade-up text-[clamp(3rem,8vw,6rem)] font-bold leading-[1.05] tracking-[-0.05em] text-foreground mb-2 md:mb-4 uppercase"
@@ -377,15 +377,15 @@ export default HeroSection;
 
 ### Spline scene asset
 
-The `<Spline>` `scene` prop points to a locally vendored asset: `/spline/scene.splinecode` (served from `public/spline/scene.splinecode`). The original prompt specifies the exact remote Spline scene URL `https://prod.spline.design/SLK6B8KZ3LRLKIYK/scene.splinecode` — if rebuilding from scratch you can use the remote URL directly, or vendor it locally as done here.
+The `<Spline>` `scene` prop points to a locally vendored asset: `/spline/scene.splinecode` (served from `public/spline/scene.splinecode`). The original prompt specifies the exact remote Spline scene URL `https://prod.spline.design/SLK6B8KZ3LRLKIYK/scene.splinecode` , if rebuilding from scratch you can use the remote URL directly, or vendor it locally as done here.
 
-## shadcn/ui Button — `src/components/ui/button.tsx`
+## shadcn/ui Button , `src/components/ui/button.tsx`
 
-The shadcn `Button` is built with `class-variance-authority`. In addition to the standard variants it defines three custom variants — `navCta`, `hero`, and `heroOutline`:
+The shadcn `Button` is built with `class-variance-authority`. In addition to the standard variants it defines three custom variants , `navCta`, `hero`, and `heroOutline`:
 
-- **`navCta`** — `text-foreground bg-nav-button hover:bg-nav-button/80 active:scale-[0.97] transition-all` (used by the navbar CTA).
-- **`hero`** — `bg-primary text-primary-foreground rounded-sm font-bold hover:brightness-110 active:scale-[0.97] transition-all`.
-- **`heroOutline`** — `bg-white text-background rounded-sm font-bold hover:brightness-90 active:scale-[0.97] transition-all`.
+- **`navCta`** , `text-foreground bg-nav-button hover:bg-nav-button/80 active:scale-[0.97] transition-all` (used by the navbar CTA).
+- **`hero`** , `bg-primary text-primary-foreground rounded-sm font-bold hover:brightness-110 active:scale-[0.97] transition-all`.
+- **`heroOutline`** , `bg-white text-background rounded-sm font-bold hover:brightness-90 active:scale-[0.97] transition-all`.
 
 ```tsx
 import { Slot } from "@radix-ui/react-slot";
@@ -454,8 +454,8 @@ export { Button, buttonVariants };
 - The entire content area uses `pointer-events-none` so clicks pass through to the Spline scene; the two hero buttons re-enable interaction with `pointer-events-auto`.
 - Responsive fluid typography uses `clamp()` for the heading, subheading, and description.
 - The hero content is anchored to the bottom-left of the viewport via `flex items-end` on the section combined with padding-bottom on the content container.
-- No hamburger menu on mobile — the nav links and CTA simply hide (`hidden md:flex` / `hidden md:inline-flex`).
-- Dark only — there is no light mode.
+- No hamburger menu on mobile , the nav links and CTA simply hide (`hidden md:flex` / `hidden md:inline-flex`).
+- Dark only , there is no light mode.
 
 ## File Structure
 

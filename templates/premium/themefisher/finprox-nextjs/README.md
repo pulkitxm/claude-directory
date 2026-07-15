@@ -1,8 +1,8 @@
-# FinProx — Financial SaaS Landing Page Template Clone (Vanilla HTML + CSS + JS)
+# FinProx , Financial SaaS Landing Page Template Clone (Vanilla HTML + CSS + JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Pixel-faithful clone of the Themefisher "FinProx NextJS" template, rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step required. The design targets financial SaaS products with a clean editorial aesthetic: amber/orange primary (`#e48800`), warm off-white backgrounds (`#faf9f8`), and Instrument Sans + Instrument Serif typography. Across 19 pages the template covers every surface a financial SaaS marketing site needs — from home and pricing to blog, case studies, careers, changelog, integrations, and legal pages — with scroll-reveal entrance animations, a testimonial carousel, pricing toggle, accordion FAQ, tabbed content sections, sticky mega-nav with dropdowns, mobile hamburger menu, and an integration filter grid. Generated with Claude Fable 5.
+Pixel-faithful clone of the Themefisher "FinProx NextJS" template, rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step required. The design targets financial SaaS products with a clean editorial aesthetic: amber/orange primary (`#e48800`), warm off-white backgrounds (`#faf9f8`), and Instrument Sans + Instrument Serif typography. Across 19 pages the template covers every surface a financial SaaS marketing site needs , from home and pricing to blog, case studies, careers, changelog, integrations, and legal pages , with scroll-reveal entrance animations, a testimonial carousel, pricing toggle, accordion FAQ, tabbed content sections, sticky mega-nav with dropdowns, mobile hamburger menu, and an integration filter grid. Generated with Claude Fable 5.
 
 ## Pages
 
@@ -53,8 +53,8 @@ All assets (images, icons) are vendored locally under `assets/`. Fonts are loade
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Themefisher — https://themefisher.com/demo?theme=finprox-nextjs
+**Original:** Themefisher , https://themefisher.com/demo?theme=finprox-nextjs
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

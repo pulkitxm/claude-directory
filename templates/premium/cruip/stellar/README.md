@@ -1,8 +1,8 @@
-# Stellar — Dark SaaS Landing Page Template
+# Stellar , Dark SaaS Landing Page Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful clone of the Stellar landing page template by Cruip — a dark-themed, multi-page SaaS marketing website built for API security products. Stellar ships with 11 fully connected pages, smooth scroll animations powered by AOS, a Swiper.js testimonials carousel, interactive tabs and pricing toggles via Alpine.js, and a custom canvas-based particle animation that responds to mouse movement.
+A pixel-faithful clone of the Stellar landing page template by Cruip , a dark-themed, multi-page SaaS marketing website built for API security products. Stellar ships with 11 fully connected pages, smooth scroll animations powered by AOS, a Swiper.js testimonials carousel, interactive tabs and pricing toggles via Alpine.js, and a custom canvas-based particle animation that responds to mouse movement.
 
 ## Features
 
@@ -15,11 +15,11 @@ A pixel-faithful clone of the Stellar landing page template by Cruip — a dark-
 - **Highlighter effect**: CSS `--mouse-x` / `--mouse-y` radial gradient that follows the cursor across card grids
 - **Responsive layout**: Mobile-first, hamburger nav, stacks gracefully across all breakpoints
 - **Inter font**: Clean sans-serif with weights 400, 500, 700, 800 loaded from Google Fonts
-- **All assets vendored locally**: CSS, JS libs, images, and SVGs are served from `assets/` — no external dependencies required at runtime
+- **All assets vendored locally**: CSS, JS libs, images, and SVGs are served from `assets/` , no external dependencies required at runtime
 
 ## Tech Stack
 
-- Plain HTML5 + CSS3 — no build step required
+- Plain HTML5 + CSS3 , no build step required
 - CSS via the original compiled Tailwind stylesheet (vendored locally)
 - Alpine.js v3 for reactive UI components
 - AOS v2 (Animate On Scroll) for entrance animations
@@ -30,17 +30,17 @@ A pixel-faithful clone of the Stellar landing page template by Cruip — a dark-
 
 | File | Description |
 |---|---|
-| `index.html` | Home — hero, features tabs, highlight cards, testimonials carousel, pricing preview |
-| `about.html` | About — team grid (20 members), recruitment CTA |
-| `integrations.html` | Integrations — 24-card grid with hover highlight effect |
+| `index.html` | Home , hero, features tabs, highlight cards, testimonials carousel, pricing preview |
+| `about.html` | About , team grid (20 members), recruitment CTA |
+| `integrations.html` | Integrations , 24-card grid with hover highlight effect |
 | `integrations-single.html` | Integration detail post |
-| `pricing.html` | Pricing — monthly/yearly toggle, 3-plan grid, FAQ accordion |
-| `customers.html` | Customers — logo grid, case study cards, testimonials |
-| `customer.html` | Customer case study post — stats, avatars, quote |
-| `changelog.html` | Changelog — versioned release entries with images |
-| `signin.html` | Sign In — centered auth card |
-| `signup.html` | Sign Up — centered registration card |
-| `reset-password.html` | Reset Password — email form |
+| `pricing.html` | Pricing , monthly/yearly toggle, 3-plan grid, FAQ accordion |
+| `customers.html` | Customers , logo grid, case study cards, testimonials |
+| `customer.html` | Customer case study post , stats, avatars, quote |
+| `changelog.html` | Changelog , versioned release entries with images |
+| `signin.html` | Sign In , centered auth card |
+| `signup.html` | Sign Up , centered registration card |
+| `reset-password.html` | Reset Password , email form |
 
 ## Running Locally
 
@@ -80,4 +80,4 @@ assets/
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip — https://cruip.com/demos/stellar/
+**Original:** Cruip , https://cruip.com/demos/stellar/

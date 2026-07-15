@@ -1,4 +1,4 @@
-# RIVR — DeFi Dashboard Hero Section
+# RIVR , DeFi Dashboard Hero Section
 
 ## Overview
 
@@ -6,7 +6,7 @@ Build a hero section for a DeFi dashboard named RIVR that showcases a sleek, gla
 
 ## Dependencies
 
-- **Icons:** Use `lucide-react` for icons — `ArrowUpRight`, `ChevronRight`, `Sparkles`.
+- **Icons:** Use `lucide-react` for icons , `ArrowUpRight`, `ChevronRight`, `Sparkles`.
 - **Animation:** Use `motion` (imported from `'motion/react'`) for animations.
 - **Font:** A custom "Helvetica Regular" web font, loaded via `@font-face`.
 - **Notable techniques:** Glassmorphism (`backdrop-blur`, translucent white backgrounds), an autoplaying muted looped background video, and an SVG faux-cutout corner mask to make a solid panel appear to be carved out of the rounded card.

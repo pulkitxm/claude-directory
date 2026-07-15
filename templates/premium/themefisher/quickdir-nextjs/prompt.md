@@ -10,17 +10,17 @@ QUICKDIR IS A DIRECTORY / PRODUCT-LISTING SAAS MARKETING TEMPLATE (LIKE A PRODUC
 
 ## STYLE
 
-**PALETTE (LIGHT — DEFAULT / SOURCE THEME):**
+**PALETTE (LIGHT , DEFAULT / SOURCE THEME):**
 - `--body-color: #fff` (page background)
 - `--border-color: #eaeaea`
 - `--dark-color: #1c1f26` (dark surfaces / footer)
 - `--accent-color: #0af` / `#007bff` (link + CTA accent, blue)
 - `--danger-color: #e63946` / `red` (destructive)
-- `--background: var(--body-color)`, `--foreground: var(--text-default-color)`, `--card: var(--body-color)`, `--card-foreground`, `--border: var(--border-color)`, `--accent: var(--accent-color)`, `--destructive: var(--danger-color)` — shadcn-style semantic aliases layered on top of the raw color tokens.
+- `--background: var(--body-color)`, `--foreground: var(--text-default-color)`, `--card: var(--body-color)`, `--card-foreground`, `--border: var(--border-color)`, `--accent: var(--accent-color)`, `--destructive: var(--danger-color)` , shadcn-style semantic aliases layered on top of the raw color tokens.
 - Neutral gray scale `--gray1`…`--gray12` (hsl 0,0% lightness ramp 99%→9%) used for muted text/backgrounds/borders.
 
-**PALETTE (DARK — ADDED FOR THIS CLONE, SOURCE THEME TOKENS INCLUDE DARK-MODE OVERRIDES IN THE SAME STYLESHEET):**
-- `--body-color: #01040f`, `--border-color: #121627`, `--dark-color: #f2f2f2` (inverted), `--info-bg: hsl(215,100%,6%)`, `--error-bg: hsl(358,76%,10%)` etc. — the source stylesheet ships both light and dark values for these tokens (Tailwind `dark:` variants); the clone wires them to `:root` (light) and `[data-theme="dark"]` (dark), honoring `prefers-color-scheme` on first load and persisting the choice via `localStorage`, since the source has no visible in-page toggle but ships full dark-mode tokens.
+**PALETTE (DARK , ADDED FOR THIS CLONE, SOURCE THEME TOKENS INCLUDE DARK-MODE OVERRIDES IN THE SAME STYLESHEET):**
+- `--body-color: #01040f`, `--border-color: #121627`, `--dark-color: #f2f2f2` (inverted), `--info-bg: hsl(215,100%,6%)`, `--error-bg: hsl(358,76%,10%)` etc. , the source stylesheet ships both light and dark values for these tokens (Tailwind `dark:` variants); the clone wires them to `:root` (light) and `[data-theme="dark"]` (dark), honoring `prefers-color-scheme` on first load and persisting the choice via `localStorage`, since the source has no visible in-page toggle but ships full dark-mode tokens.
 
 **TYPE:**
 - Font family: `Inter, "Inter Fallback"` (Google/Next Font, vendored locally as woff2 subsets), fallback `ui-sans-serif, system-ui, sans-serif`.
@@ -40,19 +40,19 @@ Shared chrome across all pages: sticky top navbar (logo, nav links: Products/Pri
 
 Pages discovered and cloned:
 
-1. **Home (`/`)** — hero with headline + search/CTA, "trusted by" logos strip, featured/trending product listing cards grid (logo, name, tagline, category badges, upvote count), category browse section, testimonials, pricing teaser, CTA banner, footer.
-2. **About (`/about`)** — mission statement, story/timeline section, team/stats, CTA banner.
-3. **Authors (`/authors`)** — grid of author/contributor profile cards (avatar, name, role, bio, social links).
-4. **Blog (`/blog`)** — blog post card grid (cover image, category tag, title, excerpt, author, date), pagination.
-5. **Changelog (`/changelog`)** — version-by-version release timeline (date, version tag, list of changes).
-6. **Contact (`/contact`)** — contact form (name/email/subject/message), contact info cards (address/email/phone), map/illustration.
-7. **Docs (`/docs`)** — sidebar navigation of doc sections, article content pane with headings/code blocks, prev/next links.
-8. **Pricing (`/pricing`)** — monthly/yearly toggle, pricing tier cards (Free/Pro/Business) with feature lists and CTA buttons, FAQ accordion.
-9. **Privacy Policy (`/privacy-policy`)** — long-form legal text with heading anchors.
-10. **Products (`/products`)** — full directory listing grid with filter/sort controls and category sidebar, pagination.
-11. **Product listing detail (`/products/listing-1`, representative of `/products/listing-*`)** — product header (logo, name, tagline, upvote/save buttons), screenshot gallery, description, feature list, pricing/CTA sidebar, related products.
-12. **Submit (`/submit`)** — multi-field "submit your product" form (name, URL, tagline, description, category select, logo upload, pricing type), submit CTA.
-13. **Terms & Conditions (`/terms-conditions`)** — long-form legal text with heading anchors.
-14. **404 (`/404`)** — not-found illustration, message, back-to-home CTA.
+1. **Home (`/`)** , hero with headline + search/CTA, "trusted by" logos strip, featured/trending product listing cards grid (logo, name, tagline, category badges, upvote count), category browse section, testimonials, pricing teaser, CTA banner, footer.
+2. **About (`/about`)** , mission statement, story/timeline section, team/stats, CTA banner.
+3. **Authors (`/authors`)** , grid of author/contributor profile cards (avatar, name, role, bio, social links).
+4. **Blog (`/blog`)** , blog post card grid (cover image, category tag, title, excerpt, author, date), pagination.
+5. **Changelog (`/changelog`)** , version-by-version release timeline (date, version tag, list of changes).
+6. **Contact (`/contact`)** , contact form (name/email/subject/message), contact info cards (address/email/phone), map/illustration.
+7. **Docs (`/docs`)** , sidebar navigation of doc sections, article content pane with headings/code blocks, prev/next links.
+8. **Pricing (`/pricing`)** , monthly/yearly toggle, pricing tier cards (Free/Pro/Business) with feature lists and CTA buttons, FAQ accordion.
+9. **Privacy Policy (`/privacy-policy`)** , long-form legal text with heading anchors.
+10. **Products (`/products`)** , full directory listing grid with filter/sort controls and category sidebar, pagination.
+11. **Product listing detail (`/products/listing-1`, representative of `/products/listing-*`)** , product header (logo, name, tagline, upvote/save buttons), screenshot gallery, description, feature list, pricing/CTA sidebar, related products.
+12. **Submit (`/submit`)** , multi-field "submit your product" form (name, URL, tagline, description, category select, logo upload, pricing type), submit CTA.
+13. **Terms & Conditions (`/terms-conditions`)** , long-form legal text with heading anchors.
+14. **404 (`/404`)** , not-found illustration, message, back-to-home CTA.
 
 Interactive behavior reproduced: nav/dropdown hover states, card hover elevation/border-color shifts, pricing monthly/yearly toggle, FAQ accordion expand/collapse, mobile hamburger menu open/close, docs sidebar active-link highlighting, scroll-reveal fade/slide-in animations on section entry, sticky header shadow-on-scroll.

@@ -1,4 +1,4 @@
-# Smart Prosthetics — Cinematic Hero Section (React + TypeScript + Tailwind CSS)
+# Smart Prosthetics , Cinematic Hero Section (React + TypeScript + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -27,4 +27,4 @@ desktop/mobile screenshots under `scripts/`.
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

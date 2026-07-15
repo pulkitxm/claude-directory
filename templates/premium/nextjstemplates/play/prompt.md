@@ -26,20 +26,20 @@ REFERENCE: `https://play.demo.nextjstemplates.com`
 
 ## LAYOUT & STRUCTURE
 
-Shared chrome on every page: fixed/sticky header — logo ("N" mark + "PLAY" wordmark), nav (Home, About, Pricing, Contact, Blog, "Pages" dropdown listing About Page/Pricing Page/Contact Page/Blog Grid Page/Sign Up Page/Sign In Page/Error Page), dark-mode toggle, Sign In link + Sign Up button, hamburger menu on mobile — and a dark-navy footer (brand blurb + socials, "About Us" links, "Features" links, "Our Products" links, "Useful Links" incl. FAQ/Blogs/Support/About, bottom bar with Privacy/Legal/Terms links and "Designed and Developed by TailGrids and Next.js Templates" credit).
+Shared chrome on every page: fixed/sticky header , logo ("N" mark + "PLAY" wordmark), nav (Home, About, Pricing, Contact, Blog, "Pages" dropdown listing About Page/Pricing Page/Contact Page/Blog Grid Page/Sign Up Page/Sign In Page/Error Page), dark-mode toggle, Sign In link + Sign Up button, hamburger menu on mobile , and a dark-navy footer (brand blurb + socials, "About Us" links, "Features" links, "Our Products" links, "Useful Links" incl. FAQ/Blogs/Support/About, bottom bar with Privacy/Legal/Terms links and "Designed and Developed by TailGrids and Next.js Templates" credit).
 
 Pages discovered and cloned:
 
-1. **Home** (`/`) — transparent-over-hero header; hero (eyebrow, H1 "Open-source SaaS Starter Kit and Boilerplate for Next.js", subcopy, Download Now / Star on GitHub buttons, "Play is now available for popular frameworks" tech-icon row, dashboard product screenshot); "Main Features of Play" 4-col icon-card grid; "Brilliant Toolkit to Build Next.js SaaS Websites" two-image + stat-badge (09 years) about band with CTA; full-bleed blue "What Are You Looking For? Get Started Now" CTA band; "Our Pricing Plan" 3-tier pricing cards (Basic/Premium/Business, Premium highlighted); "What our Client Say" 3-card testimonials with star ratings; "Any Questions? Answered" 2-col FAQ accordion (6 items); "Meet Our Team" 4-card team grid with social icons; "Our Recent News" 3-card blog preview; split contact band (info + "Send us a Message" form); footer.
-2. **About** (`/about`) — breadcrumb hero ("About Us Page" / Home / About Us Page), toolkit/about band (headline, two paragraphs, Know More button, two images, 09-years stat badge), "Meet Our Team" 4-card grid, footer.
-3. **Pricing** (`/pricing`) — breadcrumb hero, "Our Pricing Plan" section (same 3-tier cards as home), footer.
-4. **Contact** (`/contact`) — breadcrumb hero, split contact band (Our Location / How Can We Help? info + "Send us a Message" form: name/email/phone/message + Send button), footer.
-5. **Blog grid** (`/blogs`) — breadcrumb hero ("Blog Grid Page"), 3-card blog grid (date tag, title, excerpt, "Blog Example with MDX" / "Bootstrap Template Guide" / "Configuring Contact Form"), footer.
-6. **Blog detail — Blog Example with MDX** (`/blogs/blog-example-with-mdx-file`) — breadcrumb hero, single-column article body (cover image, title, meta, prose), footer.
-7. **Blog detail — Bootstrap Template Guide** (`/blogs/bootstrap-templates`) — same article layout, different content.
-8. **Blog detail — Configuring Contact Form** (`/blogs/contact-form`) — same article layout, different content.
-9. **Sign Up** (`/signup`) — centered card: "Create your account", email/password fields, social sign-up buttons, "Sign in" link.
-10. **Sign In** (`/signin`) — centered card: "Sign in to your account", email/password fields, social sign-in buttons, "Sign up" link.
-11. **Error** (`/error`) — breadcrumb-style hero, large "404"/error illustration or code, message, "Go Home" button, footer.
+1. **Home** (`/`) , transparent-over-hero header; hero (eyebrow, H1 "Open-source SaaS Starter Kit and Boilerplate for Next.js", subcopy, Download Now / Star on GitHub buttons, "Play is now available for popular frameworks" tech-icon row, dashboard product screenshot); "Main Features of Play" 4-col icon-card grid; "Brilliant Toolkit to Build Next.js SaaS Websites" two-image + stat-badge (09 years) about band with CTA; full-bleed blue "What Are You Looking For? Get Started Now" CTA band; "Our Pricing Plan" 3-tier pricing cards (Basic/Premium/Business, Premium highlighted); "What our Client Say" 3-card testimonials with star ratings; "Any Questions? Answered" 2-col FAQ accordion (6 items); "Meet Our Team" 4-card team grid with social icons; "Our Recent News" 3-card blog preview; split contact band (info + "Send us a Message" form); footer.
+2. **About** (`/about`) , breadcrumb hero ("About Us Page" / Home / About Us Page), toolkit/about band (headline, two paragraphs, Know More button, two images, 09-years stat badge), "Meet Our Team" 4-card grid, footer.
+3. **Pricing** (`/pricing`) , breadcrumb hero, "Our Pricing Plan" section (same 3-tier cards as home), footer.
+4. **Contact** (`/contact`) , breadcrumb hero, split contact band (Our Location / How Can We Help? info + "Send us a Message" form: name/email/phone/message + Send button), footer.
+5. **Blog grid** (`/blogs`) , breadcrumb hero ("Blog Grid Page"), 3-card blog grid (date tag, title, excerpt, "Blog Example with MDX" / "Bootstrap Template Guide" / "Configuring Contact Form"), footer.
+6. **Blog detail , Blog Example with MDX** (`/blogs/blog-example-with-mdx-file`) , breadcrumb hero, single-column article body (cover image, title, meta, prose), footer.
+7. **Blog detail , Bootstrap Template Guide** (`/blogs/bootstrap-templates`) , same article layout, different content.
+8. **Blog detail , Configuring Contact Form** (`/blogs/contact-form`) , same article layout, different content.
+9. **Sign Up** (`/signup`) , centered card: "Create your account", email/password fields, social sign-up buttons, "Sign in" link.
+10. **Sign In** (`/signin`) , centered card: "Sign in to your account", email/password fields, social sign-in buttons, "Sign up" link.
+11. **Error** (`/error`) , breadcrumb-style hero, large "404"/error illustration or code, message, "Go Home" button, footer.
 
 All interactive elements (nav "Pages" dropdown, mobile hamburger menu, dark/light theme toggle, FAQ accordion, hover states on nav links/buttons/cards/pricing CTAs/team socials, sticky-header scroll transition, scroll-reveal entrance animations) are reproduced from captured reference states in `.reference/<page>/states/`.

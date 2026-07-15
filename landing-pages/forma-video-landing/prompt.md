@@ -1,4 +1,4 @@
-# Forma — Full-Screen Video-Background Landing Page
+# Forma , Full-Screen Video-Background Landing Page
 
 ## Overview
 
@@ -16,15 +16,15 @@ Build a single-page landing site for a digital product studio called **Forma**. 
 
 ### File Structure
 
-- `src/App.tsx` — the entire page component plus the `SocialBtn` helper.
-- `src/main.tsx` — React entry point; renders `<App />` inside `<StrictMode>` via `createRoot`.
-- `src/index.css` — Google Fonts `@import`, Tailwind directives, and the global font-family rule.
-- `index.html` — Vite HTML shell.
+- `src/App.tsx` , the entire page component plus the `SocialBtn` helper.
+- `src/main.tsx` , React entry point; renders `<App />` inside `<StrictMode>` via `createRoot`.
+- `src/index.css` , Google Fonts `@import`, Tailwind directives, and the global font-family rule.
+- `index.html` , Vite HTML shell.
 - Standard Vite + Tailwind config (`tailwind.config.js`, `postcss.config.js`, `vite.config.ts`, `tsconfig*.json`).
 
 ### `index.html`
 
-- `<title>`: `Forma — We craft bold ideas and ship them as products`
+- `<title>`: `Forma , We craft bold ideas and ship them as products`
 - `<meta name="description">`: `Forma is a digital product studio. We craft bold ideas and ship them as products.`
 - Mounts `<div id="root"></div>` and loads `/src/main.tsx` as a module.
 
@@ -58,7 +58,7 @@ export default {
 };
 ```
 
-### Fonts — `src/index.css`
+### Fonts , `src/index.css`
 
 Import the fonts from Google Fonts, add the Tailwind directives, and set Inter globally:
 
@@ -78,18 +78,18 @@ Instrument Serif (italic, weight 400) is used inline for one accent word in the 
 
 ## Constants (top of `src/App.tsx`)
 
-- **`VIDEO_URL`** — the background video source. The video is vendored locally and served from the public assets folder:
+- **`VIDEO_URL`** , the background video source. The video is vendored locally and served from the public assets folder:
   ```
   /assets/hf_20260602_150901_c45b90ec-18d7-42ff-90e2-b95d7109e330.mp4
   ```
   > Note: the original upstream source was the CloudFront URL `https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260602_150901_c45b90ec-18d7-42ff-90e2-b95d7109e330.mp4`; it has been localized to the `/assets/...` path above. Paths are case-sensitive.
 
-- **`SERVICES`** — service-chip labels, in this exact order:
+- **`SERVICES`** , service-chip labels, in this exact order:
   `Website`, `Mobile App`, `Web App`, `E-Commerce`, `Visual Identity`, `3D & Motion`, `Digital Marketing`, `Growth & Consulting`, `Other`.
 
-- **`NAV_LINKS`** — navbar links, in order: `Our story`, `Expertise`, `Our work`, `Journal`.
+- **`NAV_LINKS`** , navbar links, in order: `Our story`, `Expertise`, `Our work`, `Journal`.
 
-- **`INPUT_CLASS`** — shared input/textarea class string:
+- **`INPUT_CLASS`** , shared input/textarea class string:
   ```
   flex-1 min-w-0 text-sm px-3 py-2.5 rounded-xl border border-gray-200 bg-transparent placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition
   ```
@@ -205,10 +205,10 @@ const NAV_LINKS = ['Our story', 'Expertise', 'Our work', 'Journal'];
 - Row container: `flex flex-row items-center justify-between gap-3 bg-gray-50 rounded-2xl px-4 py-2.5`.
 - **Left** (`min-w-0`): a small grey label `<p className="text-xs text-gray-500">Drop us a line</p>`, then a mailto link to `hello@forma.co` (`href="mailto:hello@forma.co"`) styled `block text-blue-600 font-semibold hover:underline truncate`.
 - **Right** (`flex items-center gap-1.5 shrink-0`): four social buttons rendered via the `SocialBtn` helper, using Lucide icons at `size={13}`:
-  - `Twitter` icon — label `Twitter` — `bg-gray-100 text-gray-800`
-  - `Circle` icon — label `Dribbble` — `bg-pink-100 text-pink-500`
-  - `Instagram` icon — label `Instagram` — `bg-orange-100 text-orange-400`
-  - `Linkedin` icon — label `LinkedIn` — `bg-blue-100 text-blue-600`
+  - `Twitter` icon , label `Twitter` , `bg-gray-100 text-gray-800`
+  - `Circle` icon , label `Dribbble` , `bg-pink-100 text-pink-500`
+  - `Instagram` icon , label `Instagram` , `bg-orange-100 text-orange-400`
+  - `Linkedin` icon , label `LinkedIn` , `bg-blue-100 text-blue-600`
 
 ##### `SocialBtn` helper
 
@@ -268,9 +268,9 @@ When `sent` is true, render in place of the form a centered column `flex flex-co
 
 Component state via `useState`:
 
-- `selected: string[]` — toggled service chips (initial `[]`).
-- `name`, `email`, `message` — strings (initial `''`).
-- `sending`, `sent` — booleans (initial `false`).
+- `selected: string[]` , toggled service chips (initial `[]`).
+- `name`, `email`, `message` , strings (initial `''`).
+- `sending`, `sent` , booleans (initial `false`).
 
 ```tsx
 const toggleService = (service: string) => {
@@ -290,7 +290,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 };
 ```
 
-- **Service chips:** multi-select toggle — clicking adds/removes the service from `selected`.
+- **Service chips:** multi-select toggle , clicking adds/removes the service from `selected`.
 - **Submit:** prevent default, set `sending = true`, await a 1-second fake delay (`new Promise((r) => setTimeout(r, 1000))`), then set `sending = false` and `sent = true`, which swaps the form for the success state.
 
 ## Imports

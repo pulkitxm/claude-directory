@@ -1,4 +1,4 @@
-# Simple — Multi-Page SaaS Landing Page Template Clone (Vanilla HTML/CSS/JS + Alpine.js + AOS)
+# Simple , Multi-Page SaaS Landing Page Template Clone (Vanilla HTML/CSS/JS + Alpine.js + AOS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -6,17 +6,17 @@ A pixel-faithful clone of the Cruip "Simple" multi-page SaaS website builder tem
 
 ## Pages
 
-- `index.html` — Home: hero, integration tabs, planet feature section, testimonials masonry, client logos, CTA
-- `pricing.html` — Pricing: monthly/annual toggle, three-tier cards, comparison table, FAQ accordion
-- `customers.html` — Customers: large testimonial, masonry grid (22 testimonials), video testimonials
-- `blog.html` — Blog: featured article card, article grid
-- `blog-post.html` — Blog Post: full article layout with sidebar
-- `documentation.html` — Docs: scrollspy sidebar navigation, code blocks
-- `support.html` — Support center: category cards
-- `apps.html` — Apps/Integrations: 21 integration logo grid
-- `signin.html` — Sign In: auth form with decorative SVG background
-- `signup.html` — Sign Up: registration form
-- `reset-password.html` — Reset Password: password reset form
+- `index.html` , Home: hero, integration tabs, planet feature section, testimonials masonry, client logos, CTA
+- `pricing.html` , Pricing: monthly/annual toggle, three-tier cards, comparison table, FAQ accordion
+- `customers.html` , Customers: large testimonial, masonry grid (22 testimonials), video testimonials
+- `blog.html` , Blog: featured article card, article grid
+- `blog-post.html` , Blog Post: full article layout with sidebar
+- `documentation.html` , Docs: scrollspy sidebar navigation, code blocks
+- `support.html` , Support center: category cards
+- `apps.html` , Apps/Integrations: 21 integration logo grid
+- `signin.html` , Sign In: auth form with decorative SVG background
+- `signup.html` , Sign Up: registration form
+- `reset-password.html` , Reset Password: password reset form
 
 ## Run
 
@@ -31,16 +31,16 @@ All assets (images, SVGs, CSS, JavaScript vendors) are vendored locally in `imag
 
 ## Stack
 
-- Plain HTML + CSS (obfuscated Tailwind utility classes — use `style.css` as source of truth)
-- Alpine.js — tabs, pricing toggle, dropdowns, mobile menu, FAQ accordions
-- AOS (Animate on Scroll) — scroll-triggered entrance animations (700ms, ease-out-cubic, once)
-- Custom masonry layout via `js/main.js` — JavaScript-driven column positioning
+- Plain HTML + CSS (obfuscated Tailwind utility classes , use `style.css` as source of truth)
+- Alpine.js , tabs, pricing toggle, dropdowns, mobile menu, FAQ accordions
+- AOS (Animate on Scroll) , scroll-triggered entrance animations (700ms, ease-out-cubic, once)
+- Custom masonry layout via `js/main.js` , JavaScript-driven column positioning
 
 ## Credits
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip — https://cruip.com/demos/simple/
+**Original:** Cruip , https://cruip.com/demos/simple/
 
 ---
 

@@ -1,8 +1,8 @@
-# Dusk — Swiss Design Conference & Event Website Template Clone (Vanilla HTML + CSS + JS)
+# Dusk , Swiss Design Conference & Event Website Template Clone (Vanilla HTML + CSS + JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained clone of the **Dusk** premium conference and design-week website template by Lexington Themes, rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step required. Dusk presents a fictional "Swiss Design Week" event in Montreal with a bold International Typographic Style aesthetic: a warm cream canvas, an electric-blue accent, dashed hairline grid dividers, oversized uppercase Clash Display headings, and blocky accent-filled squares. This clone reproduces **all 63 pages** — marketing pages, a six-post journal with thirteen tag archives, six speaker profiles, nine workshop detail pages, four sponsor detail pages, three forms, a five-page design system, and legal/info pages — with identical layout, typography, colour, and interactions. It ports the full-screen Fuse.js fuzzy search modal, the mobile overlay menu, the FAQ accordion, and the animated logo corner-ticks, and adds a token-driven light/dark theme toggle (with `prefers-color-scheme` support and `localStorage` persistence) layered on the template's original OKLCH palette. Clash Display and General Sans are vendored locally as WOFF2, and every image, stylesheet, and the Fuse.js library are served from the project folder so the clone runs fully offline. Generated with Claude Fable 5.
+A pixel-faithful, self-contained clone of the **Dusk** premium conference and design-week website template by Lexington Themes, rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step required. Dusk presents a fictional "Swiss Design Week" event in Montreal with a bold International Typographic Style aesthetic: a warm cream canvas, an electric-blue accent, dashed hairline grid dividers, oversized uppercase Clash Display headings, and blocky accent-filled squares. This clone reproduces **all 63 pages** , marketing pages, a six-post journal with thirteen tag archives, six speaker profiles, nine workshop detail pages, four sponsor detail pages, three forms, a five-page design system, and legal/info pages , with identical layout, typography, colour, and interactions. It ports the full-screen Fuse.js fuzzy search modal, the mobile overlay menu, the FAQ accordion, and the animated logo corner-ticks, and adds a token-driven light/dark theme toggle (with `prefers-color-scheme` support and `localStorage` persistence) layered on the template's original OKLCH palette. Clash Display and General Sans are vendored locally as WOFF2, and every image, stylesheet, and the Fuse.js library are served from the project folder so the clone runs fully offline. Generated with Claude Fable 5.
 
 ## Pages
 
@@ -87,25 +87,25 @@ python3 -m http.server
 # then visit http://localhost:8000
 ```
 
-All assets — the compiled CSS, the Clash Display and General Sans fonts (WOFF2), every image, the favicon, and the Fuse.js search library — are vendored under `assets/` and referenced relative to the project root, so the clone works fully offline.
+All assets , the compiled CSS, the Clash Display and General Sans fonts (WOFF2), every image, the favicon, and the Fuse.js search library , are vendored under `assets/` and referenced relative to the project root, so the clone works fully offline.
 
 ## Verify
 
-- **Search:** click **Search** in the desktop nav and type a query (e.g. `swiss`) — Fuse.js fuzzy-matches across pages, posts, speakers, sessions, and sponsors, grouped by type.
+- **Search:** click **Search** in the desktop nav and type a query (e.g. `swiss`) , Fuse.js fuzzy-matches across pages, posts, speakers, sessions, and sponsors, grouped by type.
 - **Mobile menu:** narrow the viewport and tap **Menu** to open the full-screen overlay; **Close** or `Esc` dismisses it.
 - **FAQ:** open `faq.html` and click any question to expand the native `<details>` accordion.
 - **Theme:** click the sun/moon toggle in the nav to switch between light and dark; the choice persists across pages via `localStorage`, and the initial theme follows your OS `prefers-color-scheme`.
 
 ## Reference
 
-`prompt.md` holds the full build specification — palette, type scale, layout/grid system, animation details, and the complete page inventory. `demo.mp4` shows the template in motion.
+`prompt.md` holds the full build specification , palette, type scale, layout/grid system, animation details, and the complete page inventory. `demo.mp4` shows the template in motion.
 
 ## Credits
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes — <https://lexingtonthemes.com/viewports/dusk>
+**Original:** Lexington Themes , <https://lexingtonthemes.com/viewports/dusk>
 
 ---
 
-Part of the [Lexington Themes](../) collection in the [Templates](../../) directory — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Lexington Themes](../) collection in the [Templates](../../) directory , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

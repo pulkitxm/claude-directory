@@ -1,4 +1,4 @@
-# Viktor Oddy — Creative Studio Landing Page
+# Viktor Oddy , Creative Studio Landing Page
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a single-page marketing landing page for a creative design studio called "
 - **Framework:** React 18 (`react` `^18.3.1`, `react-dom` `^18.3.1`) with TypeScript (`typescript` `^5.7.3`).
 - **Build tool:** Vite (`vite` `^5.4.14`) with `@vitejs/plugin-react` (`^4.3.4`). Build script: `tsc -b && vite build`.
 - **Styling:** Tailwind CSS (`tailwindcss` `^3.4.17`) with `postcss` (`^8.5.1`) and `autoprefixer` (`^10.4.20`).
-- **Icons:** `lucide-react` (`^0.469.0`) — `Quote`, `Star`, `ChevronLeft`, `ChevronRight`, `ArrowUpRight`.
+- **Icons:** `lucide-react` (`^0.469.0`) , `Quote`, `Star`, `ChevronLeft`, `ChevronRight`, `ArrowUpRight`.
 - **Fonts:** PP Neue Montreal (body, loaded from Webflow CDN) and PP Mondwest (serif accent, loaded from a local `/PPMondwest-Regular.woff2` file). The body default font is PP Neue Montreal with system fallbacks (`font-sans`).
 - **Notable techniques:** `IntersectionObserver`-driven scroll reveals, a CSS marquee, a `requestAnimationFrame` parallax image, an auto-playing infinite carousel with snap-back, and a cursor-trail effect that spawns image thumbnails on mouse move.
 
@@ -18,8 +18,8 @@ Build a single-page marketing landing page for a creative design studio called "
 ### `index.html`
 
 - `lang="en"`, charset UTF-8, viewport meta.
-- Description meta: `Viktor Oddy — the creative studio of Viktor Oddy. Build the next wave, the bold way.`
-- Title: `Viktor Oddy — Creative Studio`.
+- Description meta: `Viktor Oddy , the creative studio of Viktor Oddy. Build the next wave, the bold way.`
+- Title: `Viktor Oddy , Creative Studio`.
 - Inline SVG favicon (data URI): a rounded square `fill='%23051A24'` with a serif "V" in `fill='%23F6FCFF'`.
 - Preload the font: `<link rel="preload" href="/PPMondwest-Regular.woff2" as="font" type="font/woff2" crossorigin />`.
 - Root element `<div id="root"></div>` mounted by `/src/main.tsx`.
@@ -41,7 +41,7 @@ createRoot(document.getElementById('root')!).render(
 );
 ```
 
-### `src/index.css` — fonts and global base
+### `src/index.css` , fonts and global base
 
 Includes the three `@tailwind` directives, the `@font-face` declarations, a base layer, and the keyframe animations.
 
@@ -103,8 +103,8 @@ The root `<div id="top">` uses `min-h-screen bg-white pb-32`. Sections render in
 
 ### Shared constants
 
-- `BOOK_URL = 'https://halaskastudio.com/./book'` — used by primary/secondary CTAs throughout.
-- `MARQUEE_IMAGES` — eight GIF paths (also reused by `PartnerSection`):
+- `BOOK_URL = 'https://halaskastudio.com/./book'` , used by primary/secondary CTAs throughout.
+- `MARQUEE_IMAGES` , eight GIF paths (also reused by `PartnerSection`):
 
 ```ts
 const MARQUEE_IMAGES = [
@@ -127,14 +127,14 @@ Centered, narrow column: `<section id="about">` with `mx-auto w-full max-w-[440p
 
 - **Logo text:** `Viktor Oddy` in an `<h1>`, classes `mb-4 font-serif text-[32px] font-semibold tracking-tight text-[#051A24] md:text-[40px] lg:text-[44px]`. Animation delay `0.1s`.
 - **Tagline:** `The creative studio of Viktor Oddy` in a `<p>`, classes `mb-2 font-mono text-xs text-[#051A24] md:text-sm`. Animation delay `0.2s`.
-- **Main heading (`<h2>`):** two lines — `Build the next wave,` / `the bold way.` — where `next wave` and `bold way.` are wrapped in `<span className="font-serif">`. Classes `whitespace-nowrap text-[32px] leading-[1.1] tracking-tight text-[#0D212C] md:text-[40px] lg:text-[44px]`. A `<br />` separates the lines. Animation delay `0.3s`.
+- **Main heading (`<h2>`):** two lines , `Build the next wave,` / `the bold way.` , where `next wave` and `bold way.` are wrapped in `<span className="font-serif">`. Classes `whitespace-nowrap text-[32px] leading-[1.1] tracking-tight text-[#0D212C] md:text-[40px] lg:text-[44px]`. A `<br />` separates the lines. Animation delay `0.3s`.
 - **Description:** a `flex flex-col gap-6` container with classes `mt-5 ... text-sm leading-relaxed text-[#051A24] md:mt-6 md:text-base`, three paragraphs. Animation delay `0.4s`:
   - Paragraph 1: `I spent seven years at Apple crafting products used by over a billion people. I founded Vortex Studio to bring that same level of thinking to innovators shaping what comes next.`
   - Paragraph 2: `The studio is deliberately small. I guide the creative vision on every project, backed by a veteran design crew that moves fast without cutting corners.`
   - Paragraph 3: `Projects start at $5,000 per month.`
 - **Buttons:** a `flex flex-col gap-3 sm:flex-row md:mt-6 md:gap-4` container, `mt-5`, animation delay `0.5s`:
-  - `Start a chat` — `variant="primary"`, `href={BOOK_URL}`.
-  - `View projects` — `variant="secondary"`, `href="#work"`.
+  - `Start a chat` , `variant="primary"`, `href={BOOK_URL}`.
+  - `View projects` , `variant="secondary"`, `href="#work"`.
 
 ## Infinite Marquee (`Marquee` in `src/App.tsx`)
 
@@ -153,9 +153,9 @@ Full-width horizontally scrolling image strip.
 - **Large quote (`<blockquote>`):** `‘I left ` + `<span className="font-serif">Apple</span>` + ` to build the studio I always wanted to work with’` (uses `&lsquo;` / `&rsquo;` curly quotes). Classes `mt-6 text-[32px] leading-[1.1] tracking-tight text-[#0D212C] md:text-[40px] lg:text-[44px]`. Animation delay `0.2s`.
 - **Author:** `Viktor Oddy` in a `<p>`, classes `mt-6 text-sm italic text-[#273C46]`. Animation delay `0.3s`.
 - **Company logos (as text):** a `mt-12 flex items-center justify-center gap-8` row, animation delay `0.4s`. Each is a `<span>` with classes `text-[24px] font-medium text-slate-900` and an inline `width`:
-  - `Apple` — `80px`
-  - `IDEO` — `83px`
-  - `Polygon` — `110px`
+  - `Apple` , `80px`
+  - `IDEO` , `83px`
+  - `Polygon` , `110px`
 - **Parallax image:** a `<div ref={parallaxRef}>` with `mt-16` and animation delay `0.5s`, containing an `<img>`:
   - `src` = `/assets/hf_20260330_103804_7aa5494f-4d5b-432e-9dc7-20715275f143.webp`
   - `alt="Chris Halaska"`, `loading="lazy"`
@@ -178,21 +178,21 @@ const PARALLAX_MAX_OFFSET = 200;
 
 `<section id="services">` with `w-full px-6 py-12`. Inner wrapper `md:flex md:justify-end`; the grid is `grid grid-cols-1 gap-8 md:max-w-4xl md:grid-cols-2` (right-aligned on desktop). Uses `useInViewAnimation`. `BOOK_URL = 'https://halaskastudio.com/./book'`.
 
-### Card 1 — Monthly Partnership (dark)
+### Card 1 , Monthly Partnership (dark)
 
 `<article>` classes: `rounded-[40px] bg-[#051A24] pb-10 pl-10 pr-10 pt-3 shadow-[inset_0_2px_16px_0_rgba(246,252,255,0.12)] md:pr-24`. Animation delay `0.1s`.
 
-- **Title (`<h3>`):** `Monthly Partnership` — `mt-7 text-[22px] font-medium text-[#F6FCFF]`.
-- **Description (`<p>`):** `A dedicated creative design team.` `<br />` `You work directly with Viktor.` — `mt-3 text-sm leading-relaxed text-[#E0EBF0]`.
+- **Title (`<h3>`):** `Monthly Partnership` , `mt-7 text-[22px] font-medium text-[#F6FCFF]`.
+- **Description (`<p>`):** `A dedicated creative design team.` `<br />` `You work directly with Viktor.` , `mt-3 text-sm leading-relaxed text-[#E0EBF0]`.
 - **Price:** `$5,000` in `mt-8 text-2xl text-[#F6FCFF]`, then `Monthly` in `mt-1 text-sm text-[#E0EBF0]`.
 - **Buttons** (`mt-8 flex flex-col gap-3 sm:flex-row`): `Start a chat` (`variant="primary"`) and `How it works` (`variant="secondary"`), both `href={BOOK_URL}`.
 
-### Card 2 — Custom Project (light)
+### Card 2 , Custom Project (light)
 
 `<article>` classes: `rounded-[40px] bg-white pb-10 pl-10 pr-10 pt-3 shadow-[0_4px_16px_rgba(0,0,0,0.08)] md:pr-24`. Animation delay `0.2s`.
 
-- **Title (`<h3>`):** `Custom Project` — `mt-7 text-[22px] font-medium text-[#0D212C]`.
-- **Description (`<p>`):** `Fixed scope, fixed timeline.` `<br />` `Same team, same standards.` — `mt-3 text-sm leading-relaxed text-[#273C46]`.
+- **Title (`<h3>`):** `Custom Project` , `mt-7 text-[22px] font-medium text-[#0D212C]`.
+- **Description (`<p>`):** `Fixed scope, fixed timeline.` `<br />` `Same team, same standards.` , `mt-3 text-sm leading-relaxed text-[#273C46]`.
 - **Price:** `$5,000` in `mt-8 text-2xl text-[#0D212C]`, then `Minimum` in `mt-1 text-sm text-[#273C46]`.
 - **Button** (`mt-8 flex`): `Start a chat` (`variant="tertiary"`), `href={BOOK_URL}`.
 
@@ -231,7 +231,7 @@ Each `<article>`: `shrink-0 rounded-[32px] bg-white px-6 py-8 shadow-[0_4px_16px
 
 Card content:
 
-- **`QuoteMark` SVG** — a custom `28x22` (`viewBox="0 0 28 22"`) double-quote glyph filled `#0D212C`:
+- **`QuoteMark` SVG** , a custom `28x22` (`viewBox="0 0 28 22"`) double-quote glyph filled `#0D212C`:
 
 ```tsx
 <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -259,7 +259,7 @@ Quotes (verbatim):
 
 1. `With very little guidance team delivered designs that were consistently spot on. They understood our brand from day one, and every iteration landed closer than anything we could have briefed ourselves.`
 2. `Viktor led the creation of our best fundraising deck to date! Investors kept commenting on the design before we even got to the numbers. Worth every dollar and then some.`
-3. `Working with Viktor transformed our product vision into an interface our users genuinely love. Every screen feels considered — nothing shipped until it earned its place.`
+3. `Working with Viktor transformed our product vision into an interface our users genuinely love. Every screen feels considered , nothing shipped until it earned its place.`
 4. `The design quality exceeded our expectations at every single milestone. It felt like having a world-class in-house design team without the overhead of building one.`
 5. `Incredible work from start to finish. Fast, opinionated in the best way, and relentlessly polished. The crew moves like a team three times its size.`
 
@@ -272,7 +272,7 @@ Quotes (verbatim):
 Each `ProjectItem` (animation delay `0.1s`):
 
 - Text block offset left: `<div className="ml-20 mb-6 md:ml-28">` with the project name (`<h3>`, `font-serif text-2xl font-semibold text-[#051A24] md:text-3xl`) and description (`<p>`, `mt-2 text-sm text-[#051A24]/70 md:text-base`).
-- Full-width `<img>` below: `w-full rounded-2xl object-cover shadow-lg`, `loading="lazy"`, `alt={\`${name} — ${description}\`}`.
+- Full-width `<img>` below: `w-full rounded-2xl object-cover shadow-lg`, `loading="lazy"`, `alt={\`${name} , ${description}\`}`.
 
 Projects data:
 
@@ -476,19 +476,19 @@ Each element within a section uses staggered `animationDelay` values (`0.1s`, `0
 
 ## File Structure
 
-- `index.html` — favicon, font preload, root mount.
-- `src/main.tsx` — React entry (`StrictMode`, imports `index.css`).
-- `src/App.tsx` — main layout with `Hero`, `Marquee`, and section composition; defines `MARQUEE_IMAGES` and `BOOK_URL`.
-- `src/components/Button.tsx` — reusable button (primary/secondary/tertiary variants).
-- `src/components/TestimonialSection.tsx` — quote with parallax image (`useParallax`).
-- `src/components/PricingSection.tsx` — two pricing cards.
-- `src/components/TestimonialCarousel.tsx` — auto-scrolling testimonial cards.
-- `src/components/ProjectsSection.tsx` — project showcase items.
-- `src/components/PartnerSection.tsx` — interactive mouse-trail CTA section.
-- `src/components/Footer.tsx` — footer with links.
-- `src/components/CopyrightBar.tsx` — copyright line.
-- `src/components/BottomNav.tsx` — fixed floating bottom nav.
-- `src/hooks/useInViewAnimation.ts` — `IntersectionObserver` scroll-trigger hook.
-- `src/index.css` — font faces, marquee animation, fade-in-up animation, cursor-trail animation.
-- `public/PPMondwest-Regular.woff2` — local serif accent font.
-- `public/assets/` — vendored GIF previews, Pexels avatars, and the parallax `.webp`.
+- `index.html` , favicon, font preload, root mount.
+- `src/main.tsx` , React entry (`StrictMode`, imports `index.css`).
+- `src/App.tsx` , main layout with `Hero`, `Marquee`, and section composition; defines `MARQUEE_IMAGES` and `BOOK_URL`.
+- `src/components/Button.tsx` , reusable button (primary/secondary/tertiary variants).
+- `src/components/TestimonialSection.tsx` , quote with parallax image (`useParallax`).
+- `src/components/PricingSection.tsx` , two pricing cards.
+- `src/components/TestimonialCarousel.tsx` , auto-scrolling testimonial cards.
+- `src/components/ProjectsSection.tsx` , project showcase items.
+- `src/components/PartnerSection.tsx` , interactive mouse-trail CTA section.
+- `src/components/Footer.tsx` , footer with links.
+- `src/components/CopyrightBar.tsx` , copyright line.
+- `src/components/BottomNav.tsx` , fixed floating bottom nav.
+- `src/hooks/useInViewAnimation.ts` , `IntersectionObserver` scroll-trigger hook.
+- `src/index.css` , font faces, marquee animation, fade-in-up animation, cursor-trail animation.
+- `public/PPMondwest-Regular.woff2` , local serif accent font.
+- `public/assets/` , vendored GIF previews, Pexels avatars, and the parallax `.webp`.

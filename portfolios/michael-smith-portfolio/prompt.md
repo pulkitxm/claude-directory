@@ -1,4 +1,4 @@
-# Michael Smith — Dark Portfolio Landing Page
+# Michael Smith , Dark Portfolio Landing Page
 
 ## Overview
 
@@ -20,8 +20,8 @@ Build a single-page, forced-dark portfolio landing page for a fictional designer
 ### `index.html`
 
 - `<html lang="en" class="dark">`.
-- `<meta name="description" content="Michael Smith — designer & developer crafting seamless digital interactions in Chicago." />`.
-- `<title>Michael Smith — Portfolio</title>`.
+- `<meta name="description" content="Michael Smith , designer & developer crafting seamless digital interactions in Chicago." />`.
+- `<title>Michael Smith , Portfolio</title>`.
 - Preconnect to `https://fonts.googleapis.com` and `https://fonts.gstatic.com` (the latter `crossorigin`).
 - Inline SVG data-URI favicon: a circle with a `#89aacc → #4e85bf` linear-gradient stroke and italic Georgia serif text "JA" filled `#f5f5f5`.
 - Mounts `<div id="root"></div>` and loads `/src/main.tsx` as a module.
@@ -39,7 +39,7 @@ Tailwind font families (`tailwind.config.ts`):
 - `font-body` → `["Inter", "sans-serif"]`
 - `font-display` → `["'Instrument Serif'", "serif"]`
 
-### CSS custom properties (HSL channels, no `hsl()` wrapper — Tailwind adds it)
+### CSS custom properties (HSL channels, no `hsl()` wrapper , Tailwind adds it)
 
 Defined under `@layer base` in `:root`:
 
@@ -71,7 +71,7 @@ Tailwind config also sets `content: ["./index.html", "./src/**/*.{ts,tsx}"]` and
 ### Base styles (`@layer base`)
 
 - `html { scroll-behavior: smooth; }`.
-- `body` gets `@apply bg-bg font-body text-text-primary antialiased;` — this is the forced dark theme (no light-mode toggle).
+- `body` gets `@apply bg-bg font-body text-text-primary antialiased;` , this is the forced dark theme (no light-mode toggle).
 - `::selection { background: #4e85bf; color: hsl(var(--text)); }`.
 - Custom scrollbar: `::-webkit-scrollbar { width: 10px; }`, track `background: hsl(var(--bg));`, thumb `background: hsl(var(--stroke)); border-radius: 9999px; border: 2px solid hsl(var(--bg));`, thumb hover `background: hsl(var(--muted));`.
 
@@ -86,7 +86,7 @@ Tailwind config also sets `content: ["./index.html", "./src/**/*.{ts,tsx}"]` and
   background: linear-gradient(90deg, #4e85bf 0%, #89aacc 100%);
 }
 
-/* Animated gradient ring — oversized background so gradient-shift has room to travel */
+/* Animated gradient ring , oversized background so gradient-shift has room to travel */
 .accent-gradient-animated {
   background: linear-gradient(90deg, #89aacc 0%, #4e85bf 50%, #89aacc 100%);
   background-size: 200% 200%;
@@ -170,9 +170,9 @@ Shared route-level fade/slide wrapper using Framer Motion `motion.div`:
 
 Wrapped in `<PageTransition>`. Centered `<main>` (`flex min-h-screen flex-col items-center justify-center bg-bg px-6 text-center`):
 
-- Eyebrow: "Error 404" — `mb-6 text-xs uppercase tracking-[0.3em] text-muted`.
-- Heading: "Lost in `space.`" (the word "space." wrapped in `<span className="text-muted">`) — `mb-8 font-display text-7xl italic leading-[0.9] tracking-tight md:text-9xl`.
-- Body: "The page you're looking for doesn't exist — but the work does." — `mb-12 max-w-md text-sm text-muted md:text-base`.
+- Eyebrow: "Error 404" , `mb-6 text-xs uppercase tracking-[0.3em] text-muted`.
+- Heading: "Lost in `space.`" (the word "space." wrapped in `<span className="text-muted">`) , `mb-8 font-display text-7xl italic leading-[0.9] tracking-tight md:text-9xl`.
+- Body: "The page you're looking for doesn't exist , but the work does." , `mb-12 max-w-md text-sm text-muted md:text-base`.
 - `<Link to="/">` "Back home" button: `group relative inline-flex transition-transform duration-300 hover:scale-105` with an `accent-gradient-animated absolute -inset-[2px] rounded-full` ring (opacity 0 → 100 on group hover) and an inner span `relative rounded-full bg-text-primary px-7 py-3.5 text-sm font-medium text-bg ... group-hover:bg-bg group-hover:text-text-primary`.
 
 ## HLS Video Hook (`src/hooks/useHlsVideo.ts`)
@@ -221,7 +221,7 @@ export const HERO_STREAM =
   "https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8";
 ```
 
-> The HLS source path is case-sensitive — use `Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8` exactly.
+> The HLS source path is case-sensitive , use `Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8` exactly.
 
 ## Shared Button: `GradientRingButton` (`src/components/GradientRingButton.tsx`)
 
@@ -237,7 +237,7 @@ Variants (`Variant = "solid" | "outline" | "pill"`):
 - **`outline`:** `border-2 border-stroke bg-bg px-7 py-3.5 text-sm font-medium text-text-primary group-hover:border-transparent`
 - **`pill`:** `border border-stroke bg-bg px-5 py-2.5 text-sm text-muted group-hover:border-transparent group-hover:text-text-primary`
 
-## Section 1 — Loading Screen (`src/components/LoadingScreen.tsx`)
+## Section 1 , Loading Screen (`src/components/LoadingScreen.tsx`)
 
 Full-screen overlay. Props: `onComplete: () => void`.
 
@@ -253,14 +253,14 @@ Behavior:
 - A `requestAnimationFrame` loop counts the progress `000 → 100` over `2700ms` (`setCount(Math.round(progress * 100))`). When progress hits 1, a `400ms` `setTimeout` calls `onComplete`. Uses an `onCompleteRef` (a `useRef` kept in sync) so the effect can run with an empty dependency array. Cleans up via `cancelAnimationFrame` and `clearTimeout`.
 - Rotating words cycle every `900ms` via `setInterval` (`(i) => (i + 1) % WORDS.length`).
 
-Markup — root `motion.div` with `exit={{ opacity: 0 }}`, `transition={{ duration: 0.6, ease: "easeInOut" }}`, `className="fixed inset-0 z-[9999] bg-bg"`, `aria-label="Loading"`:
+Markup , root `motion.div` with `exit={{ opacity: 0 }}`, `transition={{ duration: 0.6, ease: "easeInOut" }}`, `className="fixed inset-0 z-[9999] bg-bg"`, `aria-label="Loading"`:
 
 - **Top-left label** "Portfolio" (`motion.p`): `initial={{ y: -20, opacity: 0 }}`, `animate={{ y: 0, opacity: 1 }}`, `transition={{ duration: 0.6, ease: "easeOut" }}`, `className="absolute left-6 top-6 text-xs uppercase tracking-[0.3em] text-muted md:left-10 md:top-8"`.
 - **Center rotating word** inside `flex h-full items-center justify-center`, wrapped in `<AnimatePresence mode="wait">`. A `motion.span` keyed by `wordIndex`: `initial={{ y: 20, opacity: 0 }}`, `animate={{ y: 0, opacity: 1 }}`, `exit={{ y: -20, opacity: 0 }}`, `transition={{ duration: 0.35, ease: "easeOut" }}`, `className="font-display text-4xl italic text-text-primary/80 md:text-6xl lg:text-7xl"`.
 - **Bottom-right counter** (`absolute bottom-6 right-6 md:bottom-8 md:right-10`): a span `font-display text-6xl tabular-nums leading-none text-text-primary md:text-8xl lg:text-9xl` showing `String(count).padStart(3, "0")`.
 - **Bottom progress bar** (`absolute inset-x-0 bottom-0 h-[3px] bg-stroke/50`): inner div `accent-gradient h-full w-full origin-left` with inline style `{ transform: scaleX(count / 100), boxShadow: "0 0 8px rgba(137, 170, 204, 0.35)" }`.
 
-## Section 2 — Hero (`src/components/Hero.tsx`)
+## Section 2 , Hero (`src/components/Hero.tsx`)
 
 Full-viewport `<section id="home">` with `relative flex min-h-screen items-center justify-center overflow-hidden`. Props: `active: boolean` (the entrance timeline waits until the loading screen has cleared).
 
@@ -305,8 +305,8 @@ tl.fromTo(
 
 - **Eyebrow** "Collection '26": `blur-in mb-8 text-xs uppercase tracking-[0.3em] text-muted opacity-0`.
 - **Name** "Michael Smith": `<h1>` with `name-reveal mb-6 font-display text-6xl italic leading-[0.9] tracking-tight text-text-primary opacity-0 md:text-8xl lg:text-9xl`.
-- **Role line**: `blur-in mb-3 text-base text-muted opacity-0 md:text-lg`, reading `A {role} lives in Chicago.` — the role word is a span keyed by `roleIndex` (to re-trigger the CSS animation) with `animate-role-fade-in inline-block font-display italic text-text-primary`.
-- **Description**: `blur-in mb-12 max-w-md text-sm text-muted opacity-0 md:text-base` — "Designing seamless digital interactions by focusing on the unique nuances which bring systems to life."
+- **Role line**: `blur-in mb-3 text-base text-muted opacity-0 md:text-lg`, reading `A {role} lives in Chicago.` , the role word is a span keyed by `roleIndex` (to re-trigger the CSS animation) with `animate-role-fade-in inline-block font-display italic text-text-primary`.
+- **Description**: `blur-in mb-12 max-w-md text-sm text-muted opacity-0 md:text-base` , "Designing seamless digital interactions by focusing on the unique nuances which bring systems to life."
 - **CTA buttons** inside `blur-in inline-flex gap-4 opacity-0`:
   - `<GradientRingButton variant="solid" href="#work">See Works</GradientRingButton>`
   - `<GradientRingButton variant="outline" href="mailto:hello@michaelsmith.com">Reach out...</GradientRingButton>`
@@ -333,9 +333,9 @@ State & scroll behavior (`useEffect`, listener `{ passive: true }`, also called 
 
 Contents (left to right):
 
-1. **Logo** `<a href="#home" aria-label="Michael Smith — home">`: `group relative mr-1 flex h-9 w-9 shrink-0 items-center justify-center transition-transform duration-300 hover:scale-110`. Two absolute rounded-full ring spans — `accent-gradient absolute inset-0 rounded-full` and `accent-gradient-reverse absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100` (reverses direction on hover). Inner: `relative flex h-[calc(100%-4px)] w-[calc(100%-4px)] items-center justify-center rounded-full bg-bg font-display text-[13px] italic text-text-primary` containing "JA".
-2. **Divider** — `<span aria-hidden className="mx-1 hidden h-5 w-px bg-stroke sm:block" />` (hidden on mobile).
-3. **Nav links** — each `<a>`: `rounded-full px-3 py-1.5 text-xs transition-colors duration-300 sm:px-4 sm:py-2 sm:text-sm`. Active: `bg-stroke/50 text-text-primary`. Inactive: `text-muted hover:bg-stroke/50 hover:text-text-primary`.
+1. **Logo** `<a href="#home" aria-label="Michael Smith , home">`: `group relative mr-1 flex h-9 w-9 shrink-0 items-center justify-center transition-transform duration-300 hover:scale-110`. Two absolute rounded-full ring spans , `accent-gradient absolute inset-0 rounded-full` and `accent-gradient-reverse absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100` (reverses direction on hover). Inner: `relative flex h-[calc(100%-4px)] w-[calc(100%-4px)] items-center justify-center rounded-full bg-bg font-display text-[13px] italic text-text-primary` containing "JA".
+2. **Divider** , `<span aria-hidden className="mx-1 hidden h-5 w-px bg-stroke sm:block" />` (hidden on mobile).
+3. **Nav links** , each `<a>`: `rounded-full px-3 py-1.5 text-xs transition-colors duration-300 sm:px-4 sm:py-2 sm:text-sm`. Active: `bg-stroke/50 text-text-primary`. Inactive: `text-muted hover:bg-stroke/50 hover:text-text-primary`.
 4. **Divider** (again).
 5. **"Say hi" link** `<a href="mailto:hello@michaelsmith.com">`: `group relative ml-1 inline-flex`. Hover ring: `accent-gradient-animated absolute -inset-[2px] rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100`. Inner: `relative inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1.5 text-xs text-text-primary backdrop-blur-md sm:px-4 sm:py-2 sm:text-sm` with the text "Say hi" and an `↗` arrow span `transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5`.
 
@@ -350,7 +350,7 @@ Root `motion.div`: `initial={{ opacity: 0, y: 30 }}`, `whileInView={{ opacity: 1
 - Subtext `<p>`: `max-w-md text-sm text-muted md:text-base`.
 - Optional CTA via `GradientRingButton variant="pill"` with `className="hidden shrink-0 md:inline-flex"` (desktop only), containing the label and an `→` arrow span `transition-transform duration-300 group-hover:translate-x-0.5`.
 
-## Section 3 — Selected Works (`src/components/SelectedWorks.tsx`)
+## Section 3 , Selected Works (`src/components/SelectedWorks.tsx`)
 
 `<section id="work" className="bg-bg py-12 md:py-16">`; inner container `mx-auto max-w-[1200px] px-6 md:px-10 lg:px-16`.
 
@@ -375,10 +375,10 @@ Each project is a `motion.div` keyed by title: `initial={{ opacity: 0, y: 40 }}`
 - `<article className="group relative overflow-hidden rounded-3xl border border-stroke bg-surface {aspect}">`.
 - `<img>` (`loading="lazy"`): `absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105`.
 - **Halftone overlay** (`aria-hidden`): `absolute inset-0 opacity-20 mix-blend-multiply` with inline style `HALFTONE_STYLE = { backgroundImage: "radial-gradient(circle, #000 1px, transparent 1px)", backgroundSize: "4px 4px" }`.
-- **Hover veil + label**: `absolute inset-0 flex items-center justify-center bg-bg/70 opacity-0 backdrop-blur-lg transition-opacity duration-500 group-hover:opacity-100`, containing a pill: outer `relative inline-flex`, ring `accent-gradient-animated absolute -inset-[2px] rounded-full`, inner `relative inline-flex items-center gap-1.5 rounded-full bg-white px-6 py-3 text-sm text-neutral-900` reading `View — <span className="font-display italic">{title}</span>`.
+- **Hover veil + label**: `absolute inset-0 flex items-center justify-center bg-bg/70 opacity-0 backdrop-blur-lg transition-opacity duration-500 group-hover:opacity-100`, containing a pill: outer `relative inline-flex`, ring `accent-gradient-animated absolute -inset-[2px] rounded-full`, inner `relative inline-flex items-center gap-1.5 rounded-full bg-white px-6 py-3 text-sm text-neutral-900` reading `View , <span className="font-display italic">{title}</span>`.
 - **Mobile caption** (`mt-3 flex items-baseline justify-between px-1 md:hidden`): `<h3>` title `font-display text-lg italic text-text-primary` + category span `text-xs uppercase tracking-[0.2em] text-muted`.
 
-## Section 4 — Journal (`src/components/Journal.tsx`)
+## Section 4 , Journal (`src/components/Journal.tsx`)
 
 `<section id="journal" className="bg-bg py-16 md:py-24">`; same `mx-auto max-w-[1200px] px-6 md:px-10 lg:px-16` container.
 
@@ -405,7 +405,7 @@ Each entry is a `motion.article` keyed by title: `initial={{ opacity: 0, y: 24 }
 - Date span `hidden shrink-0 text-sm text-muted lg:block`.
 - Arrow `↗` span (`aria-hidden`): `flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-stroke text-muted transition-all duration-300 group-hover:rotate-45 group-hover:border-text-primary/30 group-hover:text-text-primary sm:mr-2`.
 
-## Section 5 — Explorations / Parallax Gallery (`src/components/Explorations.tsx`)
+## Section 5 , Explorations / Parallax Gallery (`src/components/Explorations.tsx`)
 
 `<section ref={sectionRef} className="relative min-h-[300vh] bg-bg">`. Registers `gsap.registerPlugin(ScrollTrigger)` at module level. State: `lightbox` (`Exploration | null`).
 
@@ -461,14 +461,14 @@ parallax(colTwoRef.current, 260, -620);
 
 Cleanup via `ctx.revert()`. A separate `useEffect` closes the lightbox on `Escape` (only attaches the `keydown` listener while `lightbox` is set).
 
-### Layer 1 — pinned centre (`ref={pinRef}`, `z-10 flex h-screen flex-col items-center justify-center px-6 text-center`)
+### Layer 1 , pinned centre (`ref={pinRef}`, `z-10 flex h-screen flex-col items-center justify-center px-6 text-center`)
 
 - Eyebrow row (`mb-5 flex items-center justify-center gap-4`): rule `h-px w-8 bg-stroke` + "Explorations" span `text-xs uppercase tracking-[0.3em] text-muted` + a second rule `h-px w-8 bg-stroke`.
 - Heading `<h2 className="mb-4 text-4xl tracking-tight text-text-primary md:text-5xl">`: `Visual <span className="font-display italic">playground</span>`.
-- Subtext `mb-10 max-w-md text-sm text-muted md:text-base`: "Off-hours experiments in colour, form, and motion — unfiltered and unfinished on purpose."
+- Subtext `mb-10 max-w-md text-sm text-muted md:text-base`: "Off-hours experiments in colour, form, and motion , unfiltered and unfinished on purpose."
 - `<GradientRingButton variant="pill" href="https://dribbble.com" target="_blank" rel="noreferrer">` reading "Follow on Dribbble" + an `↗` arrow span (`transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5`).
 
-### Layer 2 — parallax columns
+### Layer 2 , parallax columns
 
 Wrapper `pointer-events-none absolute inset-0 z-20 overflow-hidden`; grid `mx-auto grid h-full max-w-[1400px] grid-cols-2 gap-12 px-6 md:gap-40 md:px-12`:
 
@@ -488,7 +488,7 @@ Inside `<AnimatePresence>`, when `lightbox` is set: a `motion.div` overlay `init
 - `motion.figure`: `initial={{ scale: 0.92, opacity: 0 }}`, `animate={{ scale: 1, opacity: 1 }}`, `exit={{ scale: 0.95, opacity: 0 }}`, `transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}`, `onClick={(e) => e.stopPropagation()}`, `className="flex max-w-3xl flex-col items-center gap-5"`. Contains the image `max-h-[75vh] w-auto rounded-3xl border border-stroke object-contain` and a `<figcaption className="flex items-center gap-4 text-sm text-muted">` with the title span `font-display text-lg italic text-text-primary` followed by "Click anywhere to close".
 - Close `<button aria-label="Close lightbox">`: `absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-stroke bg-surface text-text-primary transition-transform duration-300 hover:rotate-90`, containing `✕`.
 
-## Section 6 — Stats (`src/components/Stats.tsx`)
+## Section 6 , Stats (`src/components/Stats.tsx`)
 
 `<section id="resume" className="bg-bg py-16 md:py-24">`; container `mx-auto max-w-[1200px] px-6 md:px-10 lg:px-16`. Grid `grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-stroke`.
 
@@ -500,7 +500,7 @@ Each stat is a `motion.div` keyed by label: `initial={{ opacity: 0, y: 30 }}`, `
 
 Uses Framer Motion `useInView(ref, { once: true, margin: "-80px" })`. When in view, a `requestAnimationFrame` count-up over `1600ms` with cubic ease-out (`eased = 1 - Math.pow(1 - progress, 3)`) sets `display = Math.round(eased * value)`. Rendered as a span `font-display text-6xl tabular-nums leading-none text-text-primary md:text-7xl lg:text-8xl`, with the `display` number followed by the suffix in a `font-display italic` span.
 
-## Section 7 — Contact / Footer (`src/components/Footer.tsx`)
+## Section 7 , Contact / Footer (`src/components/Footer.tsx`)
 
 `<footer id="contact" className="relative overflow-hidden bg-bg pb-8 pt-16 md:pb-12 md:pt-20">`.
 
@@ -531,7 +531,7 @@ Container (`relative z-10`):
 ### Footer bar (`mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-6 border-t border-white/10 px-6 pt-8 sm:flex-row md:px-10 lg:px-16`)
 
 - `<nav aria-label="Social links" className="flex items-center gap-5">` with each social `<a target="_blank" rel="noreferrer">`: `text-sm text-muted transition-colors duration-300 hover:text-text-primary`.
-- Availability indicator (`flex items-center gap-3`): a green pulsing dot — outer `relative flex h-2.5 w-2.5` containing a pinging span `absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75` and a solid span `relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500` — followed by "Available for projects" span `text-sm text-muted`.
+- Availability indicator (`flex items-center gap-3`): a green pulsing dot , outer `relative flex h-2.5 w-2.5` containing a pinging span `absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75` and a solid span `relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500` , followed by "Available for projects" span `text-sm text-muted`.
 - Copyright `<p className="text-sm text-muted">© 2026 Michael Smith</p>`.
 
 ## File Structure
@@ -576,10 +576,10 @@ michael-smith-portfolio/
 | Text | `text-text-primary` | `0 0% 96%` | Primary text |
 | Muted | `text-muted` | `0 0% 53%` | Secondary text |
 | Stroke | `border-stroke` | `0 0% 12%` | Borders, dividers |
-| Accent (var) | — | `0 0% 96%` | `--accent` (unused in components) |
-| Accent gradient | `.accent-gradient` | — | `linear-gradient(90deg, #89aacc 0%, #4e85bf 100%)` |
-| Selection | — | — | `background: #4e85bf` |
-| Available dot | `bg-emerald-400` / `bg-emerald-500` | — | Pulsing status indicator |
+| Accent (var) | , | `0 0% 96%` | `--accent` (unused in components) |
+| Accent gradient | `.accent-gradient` | , | `linear-gradient(90deg, #89aacc 0%, #4e85bf 100%)` |
+| Selection | , | , | `background: #4e85bf` |
+| Available dot | `bg-emerald-400` / `bg-emerald-500` | , | Pulsing status indicator |
 
 ## Assets
 

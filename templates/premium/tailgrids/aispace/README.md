@@ -1,4 +1,4 @@
-# AISpace — Premium AI SaaS Website Template Clone (Vanilla HTML/CSS/JS)
+# AISpace , Premium AI SaaS Website Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -31,8 +31,8 @@ See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailgrids — <https://aispace.demos.tailgrids.com>
+**Original:** Tailgrids , <https://aispace.demos.tailgrids.com>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

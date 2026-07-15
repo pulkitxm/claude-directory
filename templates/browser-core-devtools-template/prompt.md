@@ -1,4 +1,4 @@
-# BROWSER-CORE MODERNISM — DEVTOOLS WORKSPACE LANDING PAGE
+# BROWSER-CORE MODERNISM , DEVTOOLS WORKSPACE LANDING PAGE
 
 > SAME-TO-SAME REPRODUCTION OF A SUPERDESIGN DRAFT.
 >
@@ -111,7 +111,7 @@ html{scrollbar-width:thin;scrollbar-color:#d1d5db #f3f4f6}
 ### BROWSER CHROME FRAME
 - OUTER CARD: `border:1px solid var(--border-strong); border-radius:12px; box-shadow:var(--shadow-panel); overflow:hidden`.
 - TAB STRIP BG `#e5e7eb`; TRAFFIC LIGHTS = THREE 12PX CIRCLES (#FF5F57 / #FEBC2E / #28C840), 8PX GAP.
-- ACTIVE TAB: WHITE BG, TOP CORNERS ROUNDED 8PX, MONO 12PX LABEL `superdesign — devtools`, A FAVICON SQUARE, AND A `×` CLOSE GLYPH.
+- ACTIVE TAB: WHITE BG, TOP CORNERS ROUNDED 8PX, MONO 12PX LABEL `superdesign , devtools`, A FAVICON SQUARE, AND A `×` CLOSE GLYPH.
 - ADDRESS BAR ROW (WHITE, `border-bottom:1px solid var(--border)`): BACK `‹` / FORWARD `›` / RELOAD `⟳` ICON BUTTONS (32PX SQUARE), THEN A PILL URL FIELD (`border:1px solid var(--border-strong); border-radius:9999px`) WITH A LOCK GLYPH + MONO URL `https://browser.core/workspace`, THEN EXTENSION AREA WITH A CYAN-TINTED SQUARE ICON BUTTON (`background:var(--accent-tint); border:1px solid var(--accent)`).
 
 ### HERO
@@ -160,7 +160,7 @@ html{scrollbar-width:thin;scrollbar-color:#d1d5db #f3f4f6}
 - `grid-template-columns:256px 1fr 320px`.
 - LEFT SIDEBAR: VERTICAL EXPLORER ICONS + FILE TREE; FOOTER `SHORTCUTS` BLOCK WITH KEYBINDINGS IN TINY BORDERED `<kbd>` BOXES (`border:1px solid var(--border-strong); border-radius:4px; font:11px var(--ff-mono); padding:1px 5px`).
 - CENTER STAGE: `.pattern-grid` CANVAS HOLDING A FOCUSED UI ELEMENT WRAPPED IN THE **SELECTION BOX** (BELOW) WITH PIXEL-DIMENSION LABELS `1200×400`.
-- RIGHT SIDEBAR: PROPERTY INSPECTOR WITH `Typography` AND `Colors` SECTIONS — DROPDOWNS, TOGGLE BUTTONS (ACTIVE = CYAN), HEX-CODE MONO LABELS.
+- RIGHT SIDEBAR: PROPERTY INSPECTOR WITH `Typography` AND `Colors` SECTIONS , DROPDOWNS, TOGGLE BUTTONS (ACTIVE = CYAN), HEX-CODE MONO LABELS.
 
 ### PROPERTY-INSPECTOR GRID
 ```css

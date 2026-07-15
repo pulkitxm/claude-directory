@@ -1,4 +1,4 @@
-# GroundAI — Interior Design AI Landing Page (TanStack Start, React 19, TypeScript, Tailwind v4, Framer Motion)
+# GroundAI , Interior Design AI Landing Page (TanStack Start, React 19, TypeScript, Tailwind v4, Framer Motion)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -42,4 +42,4 @@ A walkthrough recording lives at [`demo.mp4`](./demo.mp4).
 
 ---
 
-Part of the [Landing pages](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Landing pages](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,4 +1,4 @@
-# ANIMATED SHADER HERO — COMPONENT INTEGRATION
+# ANIMATED SHADER HERO , COMPONENT INTEGRATION
 
 YOU ARE GIVEN A TASK TO INTEGRATE AN EXISTING REACT COMPONENT IN THE CODEBASE
 
@@ -575,7 +575,7 @@ const HeroDemo: React.FC = () => {
           line1: "Launch Your",
           line2: "Workflow Into Orbit"
         }}
-        subtitle="Supercharge productivity with AI-powered automation and integrations built for the next generation of teams — fast, seamless, and limitless."
+        subtitle="Supercharge productivity with AI-powered automation and integrations built for the next generation of teams , fast, seamless, and limitless."
         buttons={{
           primary: {
             text: "Get Started for Free",

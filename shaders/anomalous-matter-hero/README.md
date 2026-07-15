@@ -1,4 +1,4 @@
-# Anomalous Matter Hero — Three.js Icosahedron Wireframe Hero Section (React + TypeScript + Three.js + Tailwind CSS)
+# Anomalous Matter Hero , Three.js Icosahedron Wireframe Hero Section (React + TypeScript + Three.js + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -11,13 +11,13 @@ field) and `AnomalousMatterHero` (the titled hero section). The demo overrides
 the default copy exactly as the brief's `demo.tsx` does, then wraps the fixed
 specimen in a quiet instrument:
 
-- **Containment frame** — corner brackets, a masked surveyor's grid, a slow
+- **Containment frame** , corner brackets, a masked surveyor's grid, a slow
   reticle scope and a film-grain pass so the wireframe never floats on flat
   black.
-- **Control rail (signature element)** — `Flux`, `Glow` and `Tempo` faders wired
+- **Control rail (signature element)** , `Flux`, `Glow` and `Tempo` faders wired
   *straight into the shader uniforms* (`uDisplacement`, `uGlow`, and a
   speed-scaled clock), plus a freeze toggle that parks the simulation.
-- **Live telemetry HUD** — the scene reports center-pixel luminance off the GPU
+- **Live telemetry HUD** , the scene reports center-pixel luminance off the GPU
   through an `onSample` probe; the panel reads it back as a rolling "anomaly
   energy" sparkline alongside a smoothed render-FPS counter and the fixed shader
   recipe (lattice, noise field, light source).
@@ -27,10 +27,10 @@ specimen in a quiet instrument:
 The brief's snippet had two issues that would render the mesh **black**; both are
 reconciled while keeping the shader, geometry and animation faithful:
 
-1. **Uniform name mismatch** — the JS set `pointLightPos` but the fragment shader
+1. **Uniform name mismatch** , the JS set `pointLightPos` but the fragment shader
    read `pointLightPosition`. They now agree on `pointLightPos`, so the
    mouse-tracked diffuse term actually lights the surface.
-2. **Unparseable color** — `new THREE.Color("hsl(var(--sky-300))")` is not a
+2. **Unparseable color** , `new THREE.Color("hsl(var(--sky-300))")` is not a
    string THREE can parse. The real `--sky-300` token (`203 92% 53%`) is now
    resolved off `:root` at runtime via `setHSL`, with a literal-swatch fallback.
 
@@ -46,7 +46,7 @@ Three.js, `lucide-react`. shadcn-style `@/*` path alias → `./src`.
 
 Fully self-contained / offline-ready. The Inter, Space Grotesk and JetBrains
 Mono web fonts (latin subset) are vendored locally to `src/fonts/` and referenced
-via `src/fonts/fonts.css` — no remote font requests at runtime. The visual is
+via `src/fonts/fonts.css` , no remote font requests at runtime. The visual is
 generated entirely on the GPU, so there are **no image assets** (no Unsplash
 imagery is required).
 
@@ -70,31 +70,31 @@ URL=http://localhost:5247/ node verify.mjs
 
 ## Integration notes (per the prompt)
 
-- **Project structure** — this is a Vite + React + TypeScript app with Tailwind
+- **Project structure** , this is a Vite + React + TypeScript app with Tailwind
   CSS and the shadcn `@/components/ui` convention already wired up (the `@` alias
   is configured in both `vite.config.ts` and `tsconfig`). To drop the component
   into your own app instead, scaffold with the shadcn CLI
   (`npx shadcn@latest init`), which sets up Tailwind, TypeScript and the
   `components.json` alias map for you.
-- **Why `/components/ui`** — shadcn treats `components/ui` as the home for
+- **Why `/components/ui`** , shadcn treats `components/ui` as the home for
   primitive, copy-in UI building blocks resolved through the `@/components/ui`
   alias. Keeping the hero there means the brief's import
   (`@/components/ui/anomalous-matter-hero`) resolves unchanged and the component
   sits alongside the rest of your design-system primitives.
-- **Tailwind version** — this project uses Tailwind **3** (`tailwind.config.js`
+- **Tailwind version** , this project uses Tailwind **3** (`tailwind.config.js`
   with the `fadeIn` keyframes + the `--background/--foreground/--sky-300/--gray-300`
   tokens on `:root`). The prompt's tokens are stored space-separated (shadcn
   convention) so both `hsl(var(--x))` and the `hsl(var(--x)/opacity)` slash
   modifier resolve. On a Tailwind 4 project you'd put the same tokens and
   keyframes in your `index.css` instead.
-- **Dependencies** — only `three` is required by the component itself;
+- **Dependencies** , only `three` is required by the component itself;
   `lucide-react` is used by the surrounding demo instruments for icons.
-- **Props / state** — the brief's component took only `title/subtitle/description`.
+- **Props / state** , the brief's component took only `title/subtitle/description`.
   Those are preserved; the scene gains additive, defaulted `displacement`, `glow`,
   `speed`, `paused` and `onSample` props so the demo's faders/telemetry can drive
   it without changing the default look.
-- **Images** — none. The procedural shader is the entire visual.
+- **Images** , none. The procedural shader is the entire visual.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

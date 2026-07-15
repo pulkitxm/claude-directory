@@ -1,4 +1,4 @@
-# Animated Shader Background — AnoAI Aurora WebGL Hero (React + Three.js + Tailwind CSS)
+# Animated Shader Background , AnoAI Aurora WebGL Hero (React + Three.js + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -16,13 +16,13 @@ npm run build    # type-check (tsc -b) + production build
 
 This repo already satisfies the required stack, so no project bootstrap was needed:
 
-- **shadcn project structure** — `components.json` is present, the `@` alias resolves to `./src`
+- **shadcn project structure** , `components.json` is present, the `@` alias resolves to `./src`
   (configured in both `vite.config.ts` and `tsconfig`), the `cn()` helper lives in
   `src/lib/utils.ts`, and UI components live in **`src/components/ui/`**.
-- **Tailwind CSS** — Tailwind **v4** via `@tailwindcss/vite`; the entry stylesheet
+- **Tailwind CSS** , Tailwind **v4** via `@tailwindcss/vite`; the entry stylesheet
   `src/index.css` begins with `@import "tailwindcss";` and `@import "tw-animate-css";` and
   includes the required `@keyframes float`.
-- **TypeScript** — strict mode, project references (`tsconfig.app.json` / `tsconfig.node.json`).
+- **TypeScript** , strict mode, project references (`tsconfig.app.json` / `tsconfig.node.json`).
 
 If you were starting from scratch instead, you would:
 
@@ -44,18 +44,18 @@ writes generated primitives there, and every component import in the ecosystem i
 
 ### Component questions
 
-- **Props / data** — the component is self-contained and takes no required props. The shader reads
+- **Props / data** , the component is self-contained and takes no required props. The shader reads
   `iTime` / `iResolution` uniforms it manages itself. (`ShaderCanvas` takes one internal
   `onUnsupported` callback for the fallback.)
-- **State** — local `useState` only (tracks WebGL availability to switch to the CSS fallback). No
+- **State** , local `useState` only (tracks WebGL availability to switch to the CSS fallback). No
   global store or context provider is required.
-- **Assets** — no external images are required by the shader. The hero adds four locally-generated
+- **Assets** , no external images are required by the shader. The hero adds four locally-generated
   avatar SVGs (`public/assets/`) and a self-hosted **Geist** font (`public/fonts/`). All icons are
-  `lucide-react`. Nothing is hotlinked — the project runs fully offline.
-- **Responsive behavior** — full-bleed on every breakpoint; the nav collapses its links on small
+  `lucide-react`. Nothing is hotlinked , the project runs fully offline.
+- **Responsive behavior** , full-bleed on every breakpoint; the nav collapses its links on small
   screens, the headline scales (`text-5xl → text-7xl`), CTAs stack, chips wrap, and there is no
   horizontal overflow.
-- **Best placement** — as a landing/hero background. The shader canvas is `fixed inset-0 -z-10`, so
+- **Best placement** , as a landing/hero background. The shader canvas is `fixed inset-0 -z-10`, so
   any foreground section can sit on top of it.
 
 ## Robustness
@@ -75,4 +75,4 @@ fallback engaged).
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

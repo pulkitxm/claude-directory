@@ -1,4 +1,4 @@
-# Velorah — Cinematic Hero Landing Section (React + Vite + Tailwind CSS + shadcn/ui)
+# Velorah , Cinematic Hero Landing Section (React + Vite + Tailwind CSS + shadcn/ui)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -21,7 +21,7 @@ See `prompt.md` for the original experiment prompt.
 
 - `<html lang="en">`, `<meta charset="UTF-8" />`, viewport meta `width=device-width, initial-scale=1.0`.
 - `<meta name="theme-color" content="#002b42" />`
-- Meta description: `Velorah — tools for deep thinkers, bold creators, and quiet rebels. Digital spaces for sharp focus and inspired work.`
+- Meta description: `Velorah , tools for deep thinkers, bold creators, and quiet rebels. Digital spaces for sharp focus and inspired work.`
 - Preconnect to `https://fonts.googleapis.com` and `https://fonts.gstatic.com` (the latter with `crossorigin`).
 - Load Google Fonts via stylesheet link:
 
@@ -32,7 +32,7 @@ See `prompt.md` for the original experiment prompt.
   />
   ```
 
-- `<title>Velorah — Where dreams rise through the silence.</title>`
+- `<title>Velorah , Where dreams rise through the silence.</title>`
 - Body contains `<div id="root"></div>` and `<script type="module" src="/src/main.tsx"></script>`.
 
 ### Fonts
@@ -143,7 +143,7 @@ A fullscreen `<video>` element placed first inside the root container:
 - Container: `relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-40 pt-32 text-center py-[90px]`.
 - **Heading (`<h1>`):**
   - Classes: `animate-fade-rise max-w-7xl text-5xl font-normal leading-[0.95] tracking-[-2.46px] sm:text-7xl sm:leading-[0.95] md:text-8xl md:leading-[0.95]`, styled with the `displayFont` (Instrument Serif).
-  - Copy: `Where dreams rise through the silence.` — where the words `dreams` and `through the silence.` are each wrapped in `<em className="not-italic text-muted-foreground">` for color contrast (rendered upright, muted gray).
+  - Copy: `Where dreams rise through the silence.` , where the words `dreams` and `through the silence.` are each wrapped in `<em className="not-italic text-muted-foreground">` for color contrast (rendered upright, muted gray).
 - **Subtext (`<p>`):**
   - Classes: `animate-fade-rise-delay mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg`.
   - Copy: `We're designing tools for deep thinkers, bold creators, and quiet rebels. Amid the chaos, we build digital spaces for sharp focus and inspired work.` (use the `&rsquo;` entity for the apostrophe in "We're").
@@ -309,4 +309,4 @@ velorah-hero-landing/
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,4 +1,4 @@
-# Stellar.ai — Landing Page Hero Section
+# Stellar.ai , Landing Page Hero Section
 
 ## Overview
 
@@ -40,7 +40,7 @@ body {
 ### `index.html`
 
 - `lang="en"`, `charset="UTF-8"`, viewport `width=device-width, initial-scale=1.0`.
-- `<title>`: `Stellar.ai — Work Smarter. Move Faster.`
+- `<title>`: `Stellar.ai , Work Smarter. Move Faster.`
 - `<meta name="description">`: `Intelligent automation syncs with the tools you love to streamline tasks, boost output, and save time.`
 - Root mount: `<div id="root"></div>` with `<script type="module" src="/src/main.jsx"></script>`.
 
@@ -163,11 +163,11 @@ Wrapped in a `<header>` with `animate-fade-in-up` and inline `style={{ opacity: 
 - **Center (hidden on mobile):** `hidden md:flex items-center gap-8`. Four links:
   - `Solutions` with a `ChevronDown` icon (`w-4 h-4`), link classes `flex items-center gap-1 text-sm text-gray-700 hover:text-black transition-colors`.
   - `For Teams` with a `ChevronDown` icon (`w-4 h-4`), same link classes.
-  - `About Us` — `text-sm text-gray-700 hover:text-black transition-colors`.
-  - `Learn Hub` — `text-sm text-gray-700 hover:text-black transition-colors`.
+  - `About Us` , `text-sm text-gray-700 hover:text-black transition-colors`.
+  - `Learn Hub` , `text-sm text-gray-700 hover:text-black transition-colors`.
 - **Right:** `flex items-center gap-4`.
-  - `Login` link — `text-sm text-gray-700 hover:text-black transition-colors`.
-  - `Get started free` button — `bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors`.
+  - `Login` link , `text-sm text-gray-700 hover:text-black transition-colors`.
+  - `Get started free` button , `bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors`.
 
 ## Hero
 
@@ -212,8 +212,8 @@ const TABS = [
 ]
 ```
 
-- **Mobile (`md:hidden`):** a 2×2 grid — `md:hidden grid grid-cols-2 gap-1 bg-gray-100 rounded-lg p-1` — rendering all four buttons.
-- **Desktop (`hidden md:flex`):** a row — `hidden md:flex items-center bg-gray-100 rounded-lg p-1` — with a vertical divider before every button except the first: `<div className="w-px h-5 bg-gray-300 mx-1" />`.
+- **Mobile (`md:hidden`):** a 2×2 grid , `md:hidden grid grid-cols-2 gap-1 bg-gray-100 rounded-lg p-1` , rendering all four buttons.
+- **Desktop (`hidden md:flex`):** a row , `hidden md:flex items-center bg-gray-100 rounded-lg p-1` , with a vertical divider before every button except the first: `<div className="w-px h-5 bg-gray-300 mx-1" />`.
 - **Each tab button:** `flex items-center justify-center gap-2 px-5 py-2 rounded-md text-sm font-medium transition-colors`, with a Lucide icon (`w-4 h-4`) and the label.
   - **Active:** `bg-white text-black shadow-sm`.
   - **Inactive:** `text-gray-600`.
@@ -243,7 +243,7 @@ useEffect(() => {
 
   > **Note:** The original brief referenced a remote CloudFront URL (`https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260319_165750_358b1e72-c921-48b7-aaac-f200994f32fb.mp4`). The asset has since been vendored locally and the source now points to `/assets/hf_20260319_165750_358b1e72-c921-48b7-aaac-f200994f32fb.mp4` (served from `public/assets/`). The local path is the ground truth.
 
-- **Active overlay:** `<ActiveOverlay key={activeTab} />` — the overlay component is chosen from an `OVERLAYS` map keyed by the active tab id, and remounted on each tab change (via the `key`) to retrigger its animation.
+- **Active overlay:** `<ActiveOverlay key={activeTab} />` , the overlay component is chosen from an `OVERLAYS` map keyed by the active tab id, and remounted on each tab change (via the `key`) to retrigger its animation.
 
 ```jsx
 const OVERLAYS = {
@@ -278,7 +278,7 @@ function OverlayCard({ children }) {
 - Backdrop: `absolute inset-0 bg-black/30`.
 - Inner card: `animate-slide-up-overlay absolute top-1/2 left-1/2 w-[calc(100%-3rem)] max-w-sm bg-white rounded-2xl shadow-2xl p-6 text-left` with inline `opacity: 0`.
 
-### Overlay A — Analyse: "Set Up Your AI Workspace"
+### Overlay A , Analyse: "Set Up Your AI Workspace"
 
 A 4-step setup wizard with a purple progress bar at 25%.
 
@@ -286,15 +286,15 @@ A 4-step setup wizard with a purple progress bar at 25%.
 - Subtext (`text-xs text-gray-500 mb-4`): `A few quick steps and Stellar.ai is ready to work.`
 - Progress track: `h-1.5 w-full bg-gray-100 rounded-full mb-5 overflow-hidden` with fill `h-full w-1/4 bg-purple-600 rounded-full`.
 - Step list (`<ul className="space-y-3">`), four items:
-  1. `Connect your tools` — state `active`
-  2. `Import workspace data` — state `pending`
-  3. `Configure AI assistant` — state `pending`
-  4. `Invite your team` — state `pending`
+  1. `Connect your tools` , state `active`
+  2. `Import workspace data` , state `pending`
+  3. `Configure AI assistant` , state `pending`
+  4. `Invite your team` , state `pending`
 - Each step: a numbered badge `w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold` and a label.
   - Active badge: `bg-purple-600 text-white`; active label: `font-medium text-black`.
   - Pending badge: `bg-gray-100 text-gray-400`; pending label: `text-gray-500`.
 
-### Overlay B — Train: "AI Model Training"
+### Overlay B , Train: "AI Model Training"
 
 A training panel with an orange progress bar at 67% and four metric cards.
 
@@ -309,11 +309,11 @@ A training panel with an orange progress bar at 67% and four metric cards.
   - `ETA` → `14 min`
 - Each card: label `text-[11px] uppercase tracking-wide text-gray-400 font-medium` and value `text-sm font-semibold text-black`.
 
-### Overlay C — Testing: "Test Suite Results"
+### Overlay C , Testing: "Test Suite Results"
 
 A green success panel showing 127/127 tests passing.
 
-- Header row (`flex items-center gap-3 mb-4`): an icon badge `w-10 h-10 rounded-full bg-green-100 flex items-center justify-center` with a `CheckCircle2` icon (`w-5 h-5 text-green-600`), then a title block — `<h3 className="text-base font-semibold text-black">Test Suite Results</h3>` and `<p className="text-xs text-green-600 font-medium">All tests passed</p>`.
+- Header row (`flex items-center gap-3 mb-4`): an icon badge `w-10 h-10 rounded-full bg-green-100 flex items-center justify-center` with a `CheckCircle2` icon (`w-5 h-5 text-green-600`), then a title block , `<h3 className="text-base font-semibold text-black">Test Suite Results</h3>` and `<p className="text-xs text-green-600 font-medium">All tests passed</p>`.
 - Count row (`flex items-end justify-between mb-1.5`): `127` in `text-2xl font-bold text-black leading-none` followed by `<span className="text-gray-400 font-medium"> / 127</span>`, and `100% passing` in `text-xs font-medium text-gray-500`.
 - Progress track: `h-1.5 w-full bg-gray-100 rounded-full mb-5 overflow-hidden` with a full green fill `h-full w-full bg-green-500 rounded-full`.
 - Suite list (`<ul className="space-y-2.5">`):
@@ -322,7 +322,7 @@ A green success panel showing 127/127 tests passing.
   - `End-to-end` → `12 passed`
 - Each row (`flex items-center justify-between text-sm`): left side `flex items-center gap-2 text-gray-600` with a `Check` icon (`w-4 h-4 text-green-500`) and the label; right side `font-medium text-black` showing `{count} passed`.
 
-### Overlay D — Deploy: "Deploy to Production"
+### Overlay D , Deploy: "Deploy to Production"
 
 A pre-launch checklist with a deploy button.
 
@@ -342,23 +342,23 @@ Wrapper: `animate-fade-in-up mt-24 flex flex-wrap items-center justify-center ga
 
 Six logo treatments, in order:
 
-1. **Interscope** — `INTERSCOPE` in `text-sm font-semibold tracking-[0.3em]`.
-2. **Spotify** — `SPOTIFY` in `text-sm font-bold tracking-[0.25em]`.
-3. **Nexera** — `flex items-center gap-2`: a 3×3 dot grid (`grid grid-cols-3 gap-0.5` with nine `w-1 h-1 rounded-full bg-gray-400` dots) followed by `Nexera` in `text-base font-semibold tracking-tight`.
-4. **M3** — `M3` in `font-serif italic text-2xl`.
-5. **Laura Cole** — `flex items-center gap-2`: an `LC` circle (`w-7 h-7 rounded-full border border-gray-400 flex items-center justify-center text-[10px] font-semibold`) followed by `LAURA COLE` in `text-xs font-medium tracking-[0.25em]`.
-6. **Vertex** — `flex items-center gap-1.5`: `vertex` in `text-base font-semibold tracking-tight lowercase`, followed by a two-dot cluster (`flex gap-1`) with `w-1.5 h-1.5 rounded-full bg-gray-400` and `w-1.5 h-1.5 rounded-full bg-gray-300`.
+1. **Interscope** , `INTERSCOPE` in `text-sm font-semibold tracking-[0.3em]`.
+2. **Spotify** , `SPOTIFY` in `text-sm font-bold tracking-[0.25em]`.
+3. **Nexera** , `flex items-center gap-2`: a 3×3 dot grid (`grid grid-cols-3 gap-0.5` with nine `w-1 h-1 rounded-full bg-gray-400` dots) followed by `Nexera` in `text-base font-semibold tracking-tight`.
+4. **M3** , `M3` in `font-serif italic text-2xl`.
+5. **Laura Cole** , `flex items-center gap-2`: an `LC` circle (`w-7 h-7 rounded-full border border-gray-400 flex items-center justify-center text-[10px] font-semibold`) followed by `LAURA COLE` in `text-xs font-medium tracking-[0.25em]`.
+6. **Vertex** , `flex items-center gap-1.5`: `vertex` in `text-base font-semibold tracking-tight lowercase`, followed by a two-dot cluster (`flex gap-1`) with `w-1.5 h-1.5 rounded-full bg-gray-400` and `w-1.5 h-1.5 rounded-full bg-gray-300`.
 
 ## Color Palette
 
-Built entirely from Tailwind's default palette utilities — no custom theme colors. Key tokens used:
+Built entirely from Tailwind's default palette utilities , no custom theme colors. Key tokens used:
 
 - **Base:** `bg-white`, `text-black`, `fill-black`.
 - **Grays:** `text-gray-700`, `text-gray-600`, `text-gray-500`, `text-gray-400`, `bg-gray-800` (hover), `bg-gray-100`, `bg-gray-50`, `border-gray-300`, `border-gray-400`, `border-gray-100`, `bg-gray-300`.
 - **Heading gradient:** `bg-gradient-to-r from-black via-gray-500 to-gray-400`.
-- **Accent — purple (Analyse):** `bg-purple-600`.
-- **Accent — orange (Train):** `text-orange-600`, `bg-orange-500`.
-- **Accent — green (Testing/Deploy):** `bg-green-100`, `text-green-600`, `bg-green-500`, `text-green-500`.
+- **Accent , purple (Analyse):** `bg-purple-600`.
+- **Accent , orange (Train):** `text-orange-600`, `bg-orange-500`.
+- **Accent , green (Testing/Deploy):** `bg-green-100`, `text-green-600`, `bg-green-500`, `text-green-500`.
 - **Overlay backdrop:** `bg-black/30`.
 
 ## Icons (Lucide React)
@@ -385,11 +385,11 @@ stellar-ai-landing-hero/
 
 ### `src/App.jsx` component breakdown
 
-- **`Navigation`** — the header/navbar.
-- **`AnalyseOverlay`**, **`TrainOverlay`**, **`TestingOverlay`**, **`DeployOverlay`** — the four tab overlay panels.
-- **`OverlayCard`** — shared backdrop + centered dialog shell for the overlays.
-- **`TabBar`** — the mobile (2×2 grid) and desktop (row with dividers) tab selector.
-- **`CompanyLogos`** — the logo row.
-- **`App`** (default export) — composes everything, owns the `activeTab` state, the auto-cycle `useEffect`, and the `OVERLAYS` map lookup.
+- **`Navigation`** , the header/navbar.
+- **`AnalyseOverlay`**, **`TrainOverlay`**, **`TestingOverlay`**, **`DeployOverlay`** , the four tab overlay panels.
+- **`OverlayCard`** , shared backdrop + centered dialog shell for the overlays.
+- **`TabBar`** , the mobile (2×2 grid) and desktop (row with dividers) tab selector.
+- **`CompanyLogos`** , the logo row.
+- **`App`** (default export) , composes everything, owns the `activeTab` state, the auto-cycle `useEffect`, and the `OVERLAYS` map lookup.
 
 Module-level constants: `TABS`, `VIDEO_SRC`, `OVERLAYS`.

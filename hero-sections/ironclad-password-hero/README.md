@@ -1,4 +1,4 @@
-# Ironclad — Password Manager Hero Section (React 18 + TypeScript + Framer Motion + Tailwind CSS)
+# Ironclad , Password Manager Hero Section (React 18 + TypeScript + Framer Motion + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -29,4 +29,4 @@ Runs 50 Playwright checks across desktop (1440×900) and mobile (390×844): vide
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

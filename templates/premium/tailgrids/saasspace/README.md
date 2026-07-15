@@ -76,4 +76,4 @@ If you have Node.js installed, you can use `npx` to serve the files:
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailgrids — https://saasspace.demos.tailgrids.com
+**Original:** Tailgrids , https://saasspace.demos.tailgrids.com

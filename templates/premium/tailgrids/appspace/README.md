@@ -49,4 +49,4 @@ The template features a cohesive structure across the following 7 pages:
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailgrids Appspace — <https://appspace.demos.tailgrids.com>
+**Original:** Tailgrids Appspace , <https://appspace.demos.tailgrids.com>

@@ -1,16 +1,16 @@
-# Astra — Cinematic Space-Travel Landing Page
+# Astra , Cinematic Space-Travel Landing Page
 
 ## Overview
 
-Build a single-page space-travel landing site with two full-height sections — a hero and a capabilities showcase — both layered over looping background videos that crossfade via a custom rAF-driven JavaScript routine (no CSS transitions). The page shares a "liquid glass" design system for all chrome (nav, chips, cards, CTAs) and uses Motion (Framer Motion) for entrance animations, including a word-by-word blur-in headline. All text is white over full-bleed video with no dark overlay; contrast comes entirely from the liquid-glass chrome.
+Build a single-page space-travel landing site with two full-height sections , a hero and a capabilities showcase , both layered over looping background videos that crossfade via a custom rAF-driven JavaScript routine (no CSS transitions). The page shares a "liquid glass" design system for all chrome (nav, chips, cards, CTAs) and uses Motion (Framer Motion) for entrance animations, including a word-by-word blur-in headline. All text is white over full-bleed video with no dark overlay; contrast comes entirely from the liquid-glass chrome.
 
 ## Tech Stack
 
-- **Runtime / framework:** React 18.3.1 (UMD development build, loaded from CDN — no bundler).
+- **Runtime / framework:** React 18.3.1 (UMD development build, loaded from CDN , no bundler).
 - **JSX compilation:** in-browser via Babel Standalone 7.29.0; every component is a `<script type="text/babel">` file that exports itself onto `window.X = X`.
 - **Animation:** Framer Motion 11.11.17 (UMD build, exposed as `window.Motion`).
 - **Styling:** Tailwind CSS via the CDN `<script>` (`https://cdn.tailwindcss.com`) with an inline `tailwind.config`, plus a hand-written `<style>` block for the liquid-glass utilities.
-- **Fonts:** Google Fonts — Instrument Serif (`ital@0;1`) for headings, Barlow (`wght@300;400;500;600`) for body.
+- **Fonts:** Google Fonts , Instrument Serif (`ital@0;1`) for headings, Barlow (`wght@300;400;500;600`) for body.
 - **Mount point:** a React app mounted on `#root` via `ReactDOM.createRoot`.
 - **Notable techniques:** custom rAF crossfade looping video, IntersectionObserver-triggered blur-in text, liquid-glass gradient borders via a masked `::before` pseudo-element.
 
@@ -19,8 +19,8 @@ Build a single-page space-travel landing site with two full-height sections — 
 ### `index.html`
 
 - `<html lang="en">`, charset UTF-8, responsive viewport meta.
-- `<title>`: `astra — Venture Past Our Sky`.
-- Favicon: an inline SVG data URI — a black `rounded` rect (`rx='16'`) with an italic Georgia serif lowercase white `a` centered.
+- `<title>`: `astra , Venture Past Our Sky`.
+- Favicon: an inline SVG data URI , a black `rounded` rect (`rx='16'`) with an italic Georgia serif lowercase white `a` centered.
 - Body: `<body class="bg-black antialiased">` containing only `<div id="root"></div>` followed by the script tags.
 - `html, body { background: #000; }` set in the `<style>` block.
 
@@ -100,7 +100,7 @@ At the end of `<body>`, load each Babel component file in order:
 
 ## Liquid-Glass Utilities
 
-Two variants in the `<style>` block — `.liquid-glass` (subtle, for nav / chips / cards) and `.liquid-glass-strong` (heavier blur, for the primary CTA). Each draws a gradient border via a masked `::before` pseudo-element.
+Two variants in the `<style>` block , `.liquid-glass` (subtle, for nav / chips / cards) and `.liquid-glass-strong` (heavier blur, for the primary CTA). Each draws a gradient border via a masked `::before` pseudo-element.
 
 ```css
 .liquid-glass {
@@ -161,17 +161,17 @@ Two variants in the `<style>` block — `.liquid-glass` (subtle, for nav / chips
 
 - The strong variant is identical to the subtle one except for: `backdrop-filter: blur(50px)`, the box-shadow (`4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15)`), and the `::before` gradient stops (`0.5 / 0.2 / 0 / 0 / 0.2 / 0.5`).
 
-## Icons — `js/icons.js`
+## Icons , `js/icons.js`
 
 Inline Lucide-style SVG icons (currentColor stroke) plus Material Icon glyphs. Each is assigned to `window`. Wrap everything in an IIFE.
 
-- **`ArrowUpRight({ className })`** — `24×24`, `viewBox="0 0 24 24"`, `fill="none"`, `stroke="currentColor"`, `strokeWidth="2"`, round caps/joins, `aria-hidden`. Two paths: `M7 17L17 7` and `M7 7h10v10`.
-- **`PlayIcon({ className })`** — `24×24`, `viewBox="0 0 24 24"`, `fill="currentColor"`, `stroke="none"`, `aria-hidden`. Filled polygon `points="6 4 20 12 6 20 6 4"`.
-- **`ClockIcon`** — a white `28×28` outline SVG icon (the clock), used for stat card 1.
-- **`GlobeIcon`** — a white `28×28` outline SVG icon (the globe), used for stat card 2.
-- **Material Icons SVG** — a white Material Icons SVG (`fill currentColor`, `h-6 w-6 text-white`), used inside the capability cards.
+- **`ArrowUpRight({ className })`** , `24×24`, `viewBox="0 0 24 24"`, `fill="none"`, `stroke="currentColor"`, `strokeWidth="2"`, round caps/joins, `aria-hidden`. Two paths: `M7 17L17 7` and `M7 7h10v10`.
+- **`PlayIcon({ className })`** , `24×24`, `viewBox="0 0 24 24"`, `fill="currentColor"`, `stroke="none"`, `aria-hidden`. Filled polygon `points="6 4 20 12 6 20 6 4"`.
+- **`ClockIcon`** , a white `28×28` outline SVG icon (the clock), used for stat card 1.
+- **`GlobeIcon`** , a white `28×28` outline SVG icon (the globe), used for stat card 2.
+- **Material Icons SVG** , a white Material Icons SVG (`fill currentColor`, `h-6 w-6 text-white`), used inside the capability cards.
 
-## FadingVideo — `js/FadingVideo.js`
+## FadingVideo , `js/FadingVideo.js`
 
 Custom JS crossfade looping video. No CSS transitions: every fade is rAF-driven, and looping is implemented manually via the `ended` event (the native `loop` attribute is OFF).
 
@@ -193,7 +193,7 @@ Custom JS crossfade looping video. No CSS transitions: every fade is rAF-driven,
 
 **Cleanup on unmount:** cancel the rAF (`cancelAnimationFrame(rafRef.current)`) and remove all three listeners.
 
-## BlurText — `js/BlurText.js`
+## BlurText , `js/BlurText.js`
 
 Word-by-word blur-in headline, triggered at 10% visibility. Pulls `const { motion } = window.Motion`. Constant `STEP_DURATION = 0.35`.
 
@@ -213,9 +213,9 @@ Word-by-word blur-in headline, triggered at 10% visibility. Pulls `const { motio
     ```
     Otherwise stay at `{ filter: 'blur(10px)', opacity: 0, y: 50 }`.
   - `transition={{ duration: STEP_DURATION * 2, times: [0, 0.5, 1], ease: 'easeOut', delay: (i * delay) / 1000 }}`.
-  - `style={{ display: 'inline-block', marginRight: '0.28em' }}` — `marginRight` is used instead of a non-breaking space because the `-4px` letter-spacing eats an nbsp.
+  - `style={{ display: 'inline-block', marginRight: '0.28em' }}` , `marginRight` is used instead of a non-breaking space because the `-4px` letter-spacing eats an nbsp.
 
-## Navbar — `js/Navbar.js`
+## Navbar , `js/Navbar.js`
 
 Floating liquid-glass chrome. Pulls `const { ArrowUpRight } = window`. `NAV_LINKS = ['Home', 'Voyages', 'Worlds', 'Innovation', 'Plan Launch']`.
 
@@ -224,9 +224,9 @@ Floating liquid-glass chrome. Pulls `const { ArrowUpRight } = window`. `NAV_LINK
 - **Center pill (desktop only):** `<div class="hidden md:flex items-center liquid-glass rounded-full px-1.5 py-1.5">` holding:
   - The 5 nav links, each `<a href="#" key={link}>` with `px-3 py-2 text-sm font-medium text-white/90 font-body whitespace-nowrap hover:text-white`.
   - A white pill button: `<a href="#" class="flex items-center gap-1.5 bg-white text-black rounded-full px-4 py-2 text-sm font-medium font-body whitespace-nowrap">` with text `Claim a Spot` followed by `<ArrowUpRight className="h-4 w-4" />`.
-- **Right:** an invisible 48×48 spacer to balance the logo — `<div class="w-12 h-12 invisible shrink-0" aria-hidden="true" />`.
+- **Right:** an invisible 48×48 spacer to balance the logo , `<div class="w-12 h-12 invisible shrink-0" aria-hidden="true" />`.
 
-## Section 1 — Hero (`js/Hero.js`)
+## Section 1 , Hero (`js/Hero.js`)
 
 Full-viewport section: crossfading video, navbar, blur-in headline, CTAs, stat cards, partners row. Pulls `const { motion } = window.Motion` and `const { FadingVideo, BlurText, Navbar, ArrowUpRight, PlayIcon, ClockIcon, GlobeIcon } = window`.
 
@@ -257,7 +257,7 @@ const PARTNERS = ['Aeon', 'Vela', 'Apex', 'Orbit', 'Zeno'];
 ### Layout
 
 - `<section class="relative min-h-screen overflow-hidden bg-black">`.
-- **Background video** — `<FadingVideo>` oversized and anchored to the top of frame (focal point is the top of the frame):
+- **Background video** , `<FadingVideo>` oversized and anchored to the top of frame (focal point is the top of the frame):
   - `src={HERO_VIDEO}`.
   - `className="absolute left-1/2 top-0 -translate-x-1/2 object-cover object-top z-0"`.
   - `style={{ width: '120%', height: '120%' }}`.
@@ -269,13 +269,13 @@ const PARTNERS = ['Aeon', 'Vela', 'Apex', 'Orbit', 'Zeno'];
 `<div class="flex-1 flex flex-col items-center justify-center text-center pt-24 px-4">`:
 
 - **Badge** (`enter(0.4)`): `motion.div` with `liquid-glass rounded-full flex items-center gap-3 p-1`. Contains a white pill chip `<span class="bg-white text-black rounded-full px-3 py-1 text-xs font-semibold font-body">New</span>` and `<span class="text-sm text-white/90 pr-3 font-body">Maiden Crewed Voyage to Mars Arrives 2026</span>`.
-- **Headline** — `<BlurText>` with `text="Venture Past Our Sky Across the Universe"` and `className="mt-6 text-6xl md:text-7xl lg:text-[5.5rem] font-heading italic text-white leading-[0.8] max-w-2xl justify-center tracking-[-4px]"`.
+- **Headline** , `<BlurText>` with `text="Venture Past Our Sky Across the Universe"` and `className="mt-6 text-6xl md:text-7xl lg:text-[5.5rem] font-heading italic text-white leading-[0.8] max-w-2xl justify-center tracking-[-4px]"`.
 - **Subheading** (`enter(0.8)`): `motion.p` with `mt-4 text-sm md:text-base text-white max-w-2xl font-body font-light leading-tight`. Text: `Discover the universe in ways once unimaginable. Our pioneering vessels and breakthrough engineering bring deep-space exploration within reach&mdash;secure and extraordinary.` (the `&mdash;` renders an em dash).
 - **CTAs** (`enter(1.1)`): `motion.div` with `flex items-center gap-6 mt-6`:
   - Primary: `<a href="#" class="liquid-glass-strong rounded-full px-5 py-2.5 text-sm font-medium text-white font-body flex items-center gap-2">` with `Start Your Voyage` + `<ArrowUpRight className="h-5 w-5" />`.
   - Secondary: bare text link `<a href="#" class="flex items-center gap-2 text-sm font-medium text-white font-body">` with `View Liftoff` + `<PlayIcon className="h-4 w-4" />`.
 - **Stats row** (`enter(1.3)`): `motion.div` with `flex items-stretch gap-4 mt-8`. Map over `STATS`; each card `<div key={value} class="liquid-glass p-5 w-[220px] rounded-[1.25rem] flex flex-col items-start text-left">` renders:
-  - `<Icon />` at the top (28×28 white outline icon — clock for card 1, globe for card 2).
+  - `<Icon />` at the top (28×28 white outline icon , clock for card 1, globe for card 2).
   - A bottom block `<div class="mt-auto pt-6">` with the value `<div class="font-heading italic text-white text-4xl tracking-[-1px] leading-none">{value}</div>` and the label `<div class="text-xs text-white font-body font-light mt-2">{label}</div>`.
 
 ### Partners (bottom of hero)
@@ -283,9 +283,9 @@ const PARTNERS = ['Aeon', 'Vela', 'Apex', 'Orbit', 'Zeno'];
 `motion.div` (`enter(1.4)`) with `flex flex-col items-center gap-4 pb-8`:
 
 - A liquid-glass chip: `<div class="liquid-glass rounded-full px-3.5 py-1 text-xs font-medium text-white font-body">Collaborating with top aerospace pioneers globally</div>`.
-- A row of the 5 partner names: `<div class="flex flex-wrap items-center justify-center gap-12 md:gap-16">` mapping `PARTNERS`, each `<span key={name} class="font-heading italic text-white text-2xl md:text-3xl tracking-tight">{name}</span>` — Aeon, Vela, Apex, Orbit, Zeno.
+- A row of the 5 partner names: `<div class="flex flex-wrap items-center justify-center gap-12 md:gap-16">` mapping `PARTNERS`, each `<span key={name} class="font-heading italic text-white text-2xl md:text-3xl tracking-tight">{name}</span>` , Aeon, Vela, Apex, Orbit, Zeno.
 
-## Section 2 — Capabilities (`js/Capabilities.js`)
+## Section 2 , Capabilities (`js/Capabilities.js`)
 
 `min-h-screen` section: full-bleed crossfading video, oversized serif heading, three liquid-glass feature cards. Pulls `const { motion } = window.Motion` and `const { FadingVideo, MaterialIcon } = window`.
 
@@ -313,7 +313,7 @@ const CARDS = [
     tags: ['Natural Context', 'Photo Realism', 'Infinite Settings', 'Eco-Vibe'],
     title: 'AI Scenery',
     body:
-      'AI analyzes your product to create indistinguishable natural environments — from Icelandic cliffs to misty forests.',
+      'AI analyzes your product to create indistinguishable natural environments , from Icelandic cliffs to misty forests.',
   },
   {
     icon: ICON_PATHS.movie,
@@ -370,7 +370,7 @@ const reveal = (delay) => ({
 
 Card titles: **AI Scenery**, **Batch Production**, **Smart Lighting**. Tags and body copy are listed in the `CARDS` data above.
 
-## App — `js/App.js`
+## App , `js/App.js`
 
 Mounts the page on `#root`:
 
@@ -390,7 +390,7 @@ root.render(<App />);
 
 ## Color Palette
 
-- Page / section background: `#000` (black) — `bg-black` and `html, body { background: #000; }`.
+- Page / section background: `#000` (black) , `bg-black` and `html, body { background: #000; }`.
 - All text: white (`text-white`, `text-white/90`, `text-white/80`).
 - White-on-black chips/buttons: `bg-white text-black`.
 - Liquid-glass surfaces: `rgba(255,255,255,0.01)` fill with white-gradient borders and `rgba(255,255,255,0.1)`–`0.15` inset highlights.
@@ -417,7 +417,7 @@ space-voyage-landing/
 ## Notes
 
 - All text is white; no green, no gradient backgrounds.
-- No CSS transitions on the videos — fades must be rAF-driven per the FadingVideo spec.
+- No CSS transitions on the videos , fades must be rAF-driven per the FadingVideo spec.
 - Videos are full-bleed with no dark overlay; contrast comes from the liquid-glass chrome.
-- Framer Motion dev warnings about list keys can be suppressed with the `console.error` filter wrapper — they are benign.
+- Framer Motion dev warnings about list keys can be suppressed with the `console.error` filter wrapper , they are benign.
 - The two background videos are vendored locally under `assets/` and referenced with relative paths (`assets/hf_20260418_...mp4`). The filenames are lowercase; keep the casing exactly as shown.

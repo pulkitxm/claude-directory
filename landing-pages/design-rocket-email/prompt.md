@@ -1,4 +1,4 @@
-# Design Rocket Certificates — Email-Style Marketing Page
+# Design Rocket Certificates , Email-Style Marketing Page
 
 ## Overview
 
@@ -21,7 +21,7 @@ Build a single-page React + TypeScript app that renders an email-style marketing
 - **Title:** `Newsletter Design Build Out`
 - `lang="en"`, `charset="UTF-8"`, viewport `width=device-width, initial-scale=1.0`.
 - Preconnect to `https://fonts.googleapis.com` and `https://fonts.gstatic.com` (the latter with `crossorigin`).
-- Load Google Fonts — Instrument Serif (ital `0;1`) and Inter (weights `400;500;600;700`) with `display=swap`:
+- Load Google Fonts , Instrument Serif (ital `0;1`) and Inter (weights `400;500;600;700`) with `display=swap`:
 
 ```html
 <link
@@ -92,7 +92,7 @@ const VIDEOS = {
 
 - **Outer page:** `min-h-screen bg-[#050505] py-10 px-4 font-sans`
 - **Email container:** `max-w-[640px] mx-auto shadow-2xl overflow-hidden ring-1 ring-white/5`
-- **Content card (`<main>`):** `bg-[#111111] text-[#F2F2F2]` — holds the Hero, Intro, Transform, Roadmap, and Lime CTA sections.
+- **Content card (`<main>`):** `bg-[#111111] text-[#F2F2F2]` , holds the Hero, Intro, Transform, Roadmap, and Lime CTA sections.
 - The `<Footer>` sits inside the email container, below the `<main>` card.
 
 Top-level structure:
@@ -118,7 +118,7 @@ export default function App() {
 
 ## Shared Components
 
-### `Step` — numbered row
+### `Step` , numbered row
 
 - **Props:** `{ number: number; children: ReactNode }`
 - **Wrapper:** `flex items-start gap-5 mb-6 last:mb-0`
@@ -129,25 +129,25 @@ export default function App() {
 
 - `<div className="py-8 flex justify-center">` containing `<div className="h-px w-24 bg-white/20" />`.
 
-### `PrimaryButton` — lime CTA with arrow
+### `PrimaryButton` , lime CTA with arrow
 
 - **Props:** `{ label: string }`; renders an `<a href="#">`.
 - **Classes:** `inline-flex items-center gap-3 bg-[#DCFF00] text-[#0A0A0A] font-bold rounded-lg px-6 py-3 hover:bg-[#c9ea00] hover:-translate-y-0.5 transition-all duration-200`
 - Contains the `{label}` followed by a Lucide `ArrowRight` icon: `<ArrowRight className="w-5 h-5" strokeWidth={2.5} />`.
 
-### `SolidButton` — white pill
+### `SolidButton` , white pill
 
 - **Props:** `{ label: string }`; renders an `<a href="#">`.
 - **Classes:** `inline-block bg-white text-[#0A0A0A] font-bold rounded-lg px-8 py-3 hover:bg-[#E8E8E8] hover:-translate-y-0.5 transition-all duration-200`
 
-### `VideoCard` — rounded hover-zoom video
+### `VideoCard` , rounded hover-zoom video
 
 - **Props:** `{ src: string }`
 - **Outer:** `px-[42px] pb-10`
 - **Anchor:** `<a href="#" className="block overflow-hidden rounded-[14px] group">`
 - **Video:** `autoPlay muted loop playsInline` with `className="w-full h-[370px] object-cover rounded-[14px] transition-transform duration-700 group-hover:scale-[1.03]"`.
 
-## Section 1 — Hero (Video Background)
+## Section 1 , Hero (Video Background)
 
 - **Wrapper `<section>`:** `relative w-full overflow-hidden` with inline `style={{ aspectRatio: '640 / 820' }}`.
 - **Background video** (`VIDEOS.hero`): `autoPlay muted loop playsInline` with `className="absolute inset-0 w-full h-full object-cover"`.
@@ -159,8 +159,8 @@ linear-gradient(to bottom, rgba(17,17,17,0) 45%, rgba(17,17,17,0.45) 68%, rgba(1
 
 - **Foreground stack:** `relative z-10 h-full flex flex-col items-center text-center px-6 pt-12 pb-10`.
 - **Top brand block** (white):
-  - `Design Rocket` — Instrument Serif, `text-[28px] leading-[0.95] tracking-tight`.
-  - `CERTIFICATES` — `text-[13px] tracking-[0.22em] font-medium mt-1`.
+  - `Design Rocket` , Instrument Serif, `text-[28px] leading-[0.95] tracking-tight`.
+  - `CERTIFICATES` , `text-[13px] tracking-[0.22em] font-medium mt-1`.
 - **Spacer + eyebrow:** a `<p>` with `mt-40 text-white text-[13px] tracking-[0.28em] font-semibold` reading `NOW AVAILABLE`.
 - **Flex spacer:** `<div className="flex-1" />` to push the headline to the bottom.
 - **Headline** `<h1>` (Instrument Serif): `text-white text-[58px] leading-[1.02] tracking-tight max-w-[560px]`, with a `<br />`:
@@ -168,11 +168,11 @@ linear-gradient(to bottom, rgba(17,17,17,0) 45%, rgba(17,17,17,0.45) 68%, rgba(1
   > Learn to lead AI
   > and unlock new value
 
-- **CTA pill** — note this uses `#D8F90A` (the lime variant), not the card lime `#DCFF00`:
+- **CTA pill** , note this uses `#D8F90A` (the lime variant), not the card lime `#DCFF00`:
   - `<a href="#">` with `mt-10 inline-flex items-center gap-3 bg-[#D8F90A] text-[#1E1E1E] font-semibold rounded-full px-8 py-4 hover:bg-[#c9ea00] hover:-translate-y-0.5 transition-all duration-200`.
   - Label `Enroll Now` followed by `<ArrowRight className="w-5 h-5" strokeWidth={2.5} />`.
 
-## Section 2 — Intro Copy + CTA
+## Section 2 , Intro Copy + CTA
 
 - Container `px-[78px] pb-8 pt-4` with a centered paragraph `text-center text-[18px] leading-[1.55]`:
 
@@ -181,7 +181,7 @@ linear-gradient(to bottom, rgba(17,17,17,0) 45%, rgba(17,17,17,0.45) 68%, rgba(1
 - `<div className="flex justify-center pb-14">` containing `<PrimaryButton label="Get Started" />`.
 - `<Divider />`.
 
-## Section 3 — "Transform how you lead with AI"
+## Section 3 , "Transform how you lead with AI"
 
 - **Heading** container `px-9 pb-8`; `<h2>` (Instrument Serif) `text-center text-[46px] leading-[1.05] tracking-tight`:
 
@@ -202,7 +202,7 @@ const STEPS = [
 - `<div className="flex justify-center pb-14">` containing `<SolidButton label="Enroll Now" />`.
 - `<Divider />`.
 
-## Section 4 — "Build your AI transformation roadmap"
+## Section 4 , "Build your AI transformation roadmap"
 
 - **Heading** container `pb-7 px-9`; `<h2>` (Instrument Serif) `text-center text-[46px] leading-[1.05] tracking-tight` with a `<br />`:
 
@@ -216,7 +216,7 @@ const STEPS = [
 
 - `<div className="flex justify-center pb-14">` containing `<SolidButton label="Learn More" />`.
 
-## Section 5 — Lime CTA Card
+## Section 5 , Lime CTA Card
 
 - **Outer `<section>`:** `px-14 pb-12`.
 - **Card:** `bg-[#D8F90A] rounded-[10px] px-8 py-12 text-center`.
@@ -261,7 +261,7 @@ const SOCIALS = [
   > If you no longer want to receive updates on Design Rocket Certificates,
   > you can unsubscribe at any time by clicking "unsubscribe" below.
 
-- **Link row:** `<div className="text-[12px] pb-3 space-x-2">` with four `<a href="#" className="hover:underline">` links — `Support`, `Privacy`, `Terms`, `Unsubscribe` — separated by `<span className="text-[#8F8E88]">|</span>` pipes.
+- **Link row:** `<div className="text-[12px] pb-3 space-x-2">` with four `<a href="#" className="hover:underline">` links , `Support`, `Privacy`, `Terms`, `Unsubscribe` , separated by `<span className="text-[#8F8E88]">|</span>` pipes.
 - **Copyright anchor** `<a href="#">`: `text-[12px] text-white/80 hover:text-white inline-block`:
 
   > ©2026 Design Rocket, 660 4th Street #443, San Francisco, CA 94107 USA
@@ -284,7 +284,7 @@ const SOCIALS = [
 
 ## Fonts
 
-- **Display:** Instrument Serif — all large headings and the hero wordmark.
+- **Display:** Instrument Serif , all large headings and the hero wordmark.
 - **Body / UI:** Inter.
 
 ## File Structure

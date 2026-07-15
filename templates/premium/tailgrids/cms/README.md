@@ -2,7 +2,7 @@
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful clone of the [TailGrids CMS](https://cms.demos.tailgrids.com) admin dashboard template. Multi-page HTML/CSS with light/dark mode, SVG charts, and vendored assets — no build step required.
+A pixel-faithful clone of the [TailGrids CMS](https://cms.demos.tailgrids.com) admin dashboard template. Multi-page HTML/CSS with light/dark mode, SVG charts, and vendored assets , no build step required.
 
 ## Pages
 
@@ -28,4 +28,4 @@ A pixel-faithful clone of the [TailGrids CMS](https://cms.demos.tailgrids.com) a
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** TailGrids — https://cms.demos.tailgrids.com
+**Original:** TailGrids , https://cms.demos.tailgrids.com

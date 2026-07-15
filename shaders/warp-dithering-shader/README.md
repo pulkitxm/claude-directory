@@ -1,4 +1,4 @@
-# Warp Dither Lab — 1-Bit WebGL2 Dithering Shader with Live Console (React + WebGL2 + Tailwind CSS)
+# Warp Dither Lab , 1-Bit WebGL2 Dithering Shader with Live Console (React + WebGL2 + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -17,7 +17,7 @@ A full-screen 1-bit dithering shader rendered via a raw WebGL2 fragment shader, 
 - **Bounded GL contexts.** Each canvas owns a WebGL2 context, so shaders mount
   via `IntersectionObserver` only while near the viewport.
 - **Offline & self-contained.** The field is generated entirely in the fragment
-  shader — no images, fonts, or textures to ship. System font stacks only.
+  shader , no images, fonts, or textures to ship. System font stacks only.
 
 ## Props
 
@@ -45,7 +45,7 @@ npm run verify   # headless WebGL2 + interaction checks
 `components.json` carries the canonical shadcn aliases: components resolve to
 **`@/components/ui`** and styles to **`src/index.css`**. The component imports
 itself as `@/components/ui/dithering-shader`, so it must live in
-`components/ui` — that is the folder the shadcn CLI writes primitives into and
+`components/ui` , that is the folder the shadcn CLI writes primitives into and
 the path the `@/` alias points at. If you are not on shadcn yet, run
 `npx shadcn@latest init` in a TypeScript + Tailwind project to register the
 alias, then drop the file in. `DitheringShader` itself is dependency-free
@@ -62,4 +62,4 @@ live canvases, and that the page logs no console errors.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

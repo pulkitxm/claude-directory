@@ -1,8 +1,8 @@
-# Digital Petals — Interactive WebGL Polar-Coordinate Flower Shader (Three.js, GLSL, React, TypeScript)
+# Digital Petals , Interactive WebGL Polar-Coordinate Flower Shader (Three.js, GLSL, React, TypeScript)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A shadcn-style integration of the `DigitalPetalsShader` component — a polar-coordinate GLSL flower rendered on a single full-screen Three.js quad — framed as a herbarium specimen plate for a living digital cultivar, with a Petal Dial radial gauge that tracks the shader's live petal count, a cultivation log reading per-frame GPU state, and mouse-driven bloom lighting. The corolla breathes between three and seven petals, mixing magenta and blue pigments, and the specimen plate catalogues binomial name, plate number, and growth clock — all self-contained, fully offline, and interactive. Generated with Claude Fable 5.
+A shadcn-style integration of the `DigitalPetalsShader` component , a polar-coordinate GLSL flower rendered on a single full-screen Three.js quad , framed as a herbarium specimen plate for a living digital cultivar, with a Petal Dial radial gauge that tracks the shader's live petal count, a cultivation log reading per-frame GPU state, and mouse-driven bloom lighting. The corolla breathes between three and seven petals, mixing magenta and blue pigments, and the specimen plate catalogues binomial name, plate number, and growth clock , all self-contained, fully offline, and interactive. Generated with Claude Fable 5.
 
 ## Stack
 
@@ -10,7 +10,7 @@ A shadcn-style integration of the `DigitalPetalsShader` component — a polar-co
 - Tailwind CSS v3 (shadcn-style `@/` alias, `components/ui` slot, `lib/utils`)
 - Three.js (`ShaderMaterial` on an `OrthographicCamera` full quad)
 - lucide-react icons
-- Fraunces / Inter / JetBrains Mono — all vendored locally in `public/fonts`,
+- Fraunces / Inter / JetBrains Mono , all vendored locally in `public/fonts`,
   so the project runs fully offline.
 
 ## Run
@@ -70,7 +70,7 @@ npx tailwindcss init -p
 
 # 3) shadcn structure (the "@/components/ui" path alias)
 npx shadcn@latest init        # choose the defaults; this wires up @/ and lib/utils
-#   (or set the alias by hand in tsconfig + vite.config — see below)
+#   (or set the alias by hand in tsconfig + vite.config , see below)
 
 # 4) the component's runtime dependency
 npm install three
@@ -101,21 +101,21 @@ resolve: { alias: { "@": path.resolve(__dirname, "./src") } }
 ### Answers to the brief's integration questions
 
 - **What props are passed?** The brief's component takes none. This integration
-  adds three optional, output-neutral props — `fitToParent`, `paused`, and an
-  `onFrame(telemetry)` callback — so the plate can frame the shader and read its
+  adds three optional, output-neutral props , `fitToParent`, `paused`, and an
+  `onFrame(telemetry)` callback , so the plate can frame the shader and read its
   live state. With no props it behaves exactly like the brief (fixed,
   full-viewport, behind content, non-interactive).
 - **State management?** None beyond local React state in the showcase. The shader
   owns a `requestAnimationFrame`/`setAnimationLoop` loop internally; the page
   mirrors props into refs so the loop never has to be torn down and rebuilt.
 - **Required assets?** No images. The brief mentioned Unsplash/lucide-react as
-  general guidance — this shader paints itself entirely on the GPU, so the only
+  general guidance , this shader paints itself entirely on the GPU, so the only
   vendored assets are the three fonts, and lucide-react supplies the plate icons.
 - **Responsive behavior?** The shader sizes to its host box via a
   `ResizeObserver`; the plate reflows from a four-column cultivation log on
   desktop down to a stacked two-column grid on mobile.
 - **Best place to use it?** As an ambient, full-bleed background behind a hero,
-  splash, or loading state — which is the framing shown here.
+  splash, or loading state , which is the framing shown here.
 
 ## Credit
 
@@ -125,4 +125,4 @@ for this experiment.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

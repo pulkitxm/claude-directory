@@ -1,15 +1,15 @@
-# LiquidMetal Foundry — Animated Molten-Metal Background Shader Console (@paper-design/shaders-react + Framer Motion)
+# LiquidMetal Foundry , Animated Molten-Metal Background Shader Console (@paper-design/shaders-react + Framer Motion)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A runnable shadcn component integration of `@paper-design/shaders-react`'s `LiquidMetal` field animated by Framer Motion — framed as a molten-metal foundry console where the live shader pours into a registration-bracketed crucible plate and a right-hand casting deck drives all shader props in real time. Five alloy presets, a full props API dock, and a live copy-paste usage snippet make this a complete interactive showcase for the `LiquidMetal` generative background. Built with React 19, TypeScript, Vite 7, and Tailwind CSS v4. Generated with Claude Fable 5.
+A runnable shadcn component integration of `@paper-design/shaders-react`'s `LiquidMetal` field animated by Framer Motion , framed as a molten-metal foundry console where the live shader pours into a registration-bracketed crucible plate and a right-hand casting deck drives all shader props in real time. Five alloy presets, a full props API dock, and a live copy-paste usage snippet make this a complete interactive showcase for the `LiquidMetal` generative background. Built with React 19, TypeScript, Vite 7, and Tailwind CSS v4. Generated with Claude Fable 5.
 
 The prompt's component is pasted **verbatim** at
 `src/components/ui/background-shades.tsx` (the shadcn path), exactly as given.
 The console renders a reconciled, fully-typed wrapper next to it
 (`src/components/ui/liquid-metal-foundry.tsx`) that preserves the verbatim
-intent — a fixed, `pointer-events-none`, `-z-10` full-bleed layer; the
-`filter: blur(10px)` soft-focus; the 8s opacity/scale/rotate breathing loop —
+intent , a fixed, `pointer-events-none`, `-z-10` full-bleed layer; the
+`filter: blur(10px)` soft-focus; the 8s opacity/scale/rotate breathing loop ,
 while exposing every real `LiquidMetal` prop so it can be themed and driven live.
 
 ## A note on the component API (verbatim → reconciled)
@@ -26,13 +26,13 @@ in the wrapper the console actually renders (and documented in the
    import still resolves.)
 2. **`shape="plane"` is not a `LiquidMetalShape`.** In `0.0.76` the generative
    shapes are `none · circle · daisy · diamond · metaballs`. With no `image`
-   supplied, an invalid shape paints an empty mask — so the wrapper defaults to
+   supplied, an invalid shape paints an empty mask , so the wrapper defaults to
    `circle` (the package's own default) and the console exposes the full shape
    picker.
 
 The accompanying `demo.tsx` from the prompt (a thin
 `<ShadersBackground />` wrapper) is realised here as the console's live
-default — the **Molten Copper** alloy reproduces the verbatim look exactly
+default , the **Molten Copper** alloy reproduces the verbatim look exactly
 (tint `hsl(29, 77%, 49%)`, `repetition 4`, `softness 0.6`, `shiftRed/Blue 0.25`,
 `distortion 0.12`, `contour 1`, `rotation 25°`, `speed 2×`, `blur 10px`).
 
@@ -41,23 +41,23 @@ default — the **Molten Copper** alloy reproduces the verbatim look exactly
 | Control | Drives | Range |
 |---------|--------|-------|
 | **Alloy presets** | the whole `LiquidMetal` parameter set + tint | 5 curated + Random |
-| **Tint** | `colorTint` — color-burn overlay (HSL picker + hue fader) | live |
-| **Shape** | `shape` — generative mask | `none · circle · daisy · diamond · metaballs` |
-| **Repetition** | `repetition` — stripe-pattern density | `1 – 10` |
-| **Softness** | `softness` — edge hardness → smoothness | `0 – 1` |
-| **Distortion** | `distortion` — noise warp on the stripes | `0 – 1` |
-| **Contour** | `contour` — edge-distortion strength | `0 – 1` |
-| **Shift Red / Blue** | `shiftRed` / `shiftBlue` — chromatic dispersion | `−1 … 1` |
-| **Rotation** | `rotation` — overall angle | `0 – 360°` |
-| **Scale** | `scale` — overall zoom | `0.2 – 3×` |
-| **Speed** | `speed` — animation time multiplier | `0 – 5×` |
+| **Tint** | `colorTint` , color-burn overlay (HSL picker + hue fader) | live |
+| **Shape** | `shape` , generative mask | `none · circle · daisy · diamond · metaballs` |
+| **Repetition** | `repetition` , stripe-pattern density | `1 – 10` |
+| **Softness** | `softness` , edge hardness → smoothness | `0 – 1` |
+| **Distortion** | `distortion` , noise warp on the stripes | `0 – 1` |
+| **Contour** | `contour` , edge-distortion strength | `0 – 1` |
+| **Shift Red / Blue** | `shiftRed` / `shiftBlue` , chromatic dispersion | `−1 … 1` |
+| **Rotation** | `rotation` , overall angle | `0 – 360°` |
+| **Scale** | `scale` , overall zoom | `0.2 – 3×` |
+| **Speed** | `speed` , animation time multiplier | `0 – 5×` |
 | **Blur** | the canvas `filter: blur()` (the verbatim soft-focus) | `0 – 30px` |
 | **Forge / Anneal** | dark ↔ light console theme | toggle |
 
 A live telemetry strip across the top reads real **FPS · frame · uptime · shape**
 off `requestAnimationFrame`, the **Usage** tab emits a ready-to-paste
 `<LiquidMetalBackground … />` call that reflects the current deck, and the
-console honours `prefers-reduced-motion` — pausing the `framer-motion` breathing
+console honours `prefers-reduced-motion` , pausing the `framer-motion` breathing
 loop and flagging a blue **"quenched"** status on the bottom bus.
 
 ## shadcn / Tailwind / TypeScript setup
@@ -84,7 +84,7 @@ npm i @paper-design/shaders-react framer-motion lucide-react
 
 ### Why `/components/ui`
 
-shadcn/ui doesn't ship a runtime package — its CLI **copies source into your
+shadcn/ui doesn't ship a runtime package , its CLI **copies source into your
 repo**, and the convention is `@/components/ui`, resolved through a `@/*` path
 alias declared in both `tsconfig` (`paths`) and `vite.config.ts` (`resolve.alias`).
 Putting the component there means:
@@ -92,7 +92,7 @@ Putting the component there means:
 - `npx shadcn@latest add …` drops new primitives in the same predictable place;
 - the import `@/components/ui/background-shades` resolves no matter how deeply
   nested the importing file is;
-- owned UI primitives stay separate from app/feature components — easy to find,
+- owned UI primitives stay separate from app/feature components , easy to find,
   easy to theme.
 
 This project mirrors that exactly: the alias lives in `tsconfig.app.json` +
@@ -102,13 +102,13 @@ This project mirrors that exactly: the alias lives in `tsconfig.app.json` +
 
 ## Where to use it
 
-`ShadersBackground` / `LiquidMetalBackground` is an **app-shell background** —
+`ShadersBackground` / `LiquidMetalBackground` is an **app-shell background** ,
 it renders a fixed, `pointer-events-none`, `-z-10` layer, so it's meant to sit
 once at the root of a page (a hero, a landing shell, an auth screen) with your
 real content layered above it. It takes no data props and needs no context
 providers; the only "state" is the parameter set you pass in (the console keeps
-that state in React and feeds it live). No images are required — the shape is
-generated procedurally — so it's fully self-contained.
+that state in React and feeds it live). No images are required , the shape is
+generated procedurally , so it's fully self-contained.
 
 ## Stack
 
@@ -137,10 +137,10 @@ mark, and a travelling molten-light sweep on the bottom bus.
 
 - **Fonts.** **Space Grotesk** (display) and **JetBrains Mono** (readouts), both
   **SIL OFL** (`assets/fonts/*-OFL.txt`), vendored as variable `*.woff2` under
-  `assets/fonts/` and registered at runtime via the JS FontFace API — **no
+  `assets/fonts/` and registered at runtime via the JS FontFace API , **no
   remote font calls**, fully offline.
 - **Icons.** `lucide-react` (no remote SVGs).
-- **Images.** None — `LiquidMetal` generates its shape procedurally, so the
+- **Images.** None , `LiquidMetal` generates its shape procedurally, so the
   project is image-free and runs offline. (The prompt's "fill image assets with
   Unsplash" step is N/A: this component takes no images.)
 
@@ -163,4 +163,4 @@ Props API table and the integration-notes panel, and no page/console errors fire
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

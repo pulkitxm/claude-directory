@@ -1,4 +1,4 @@
-# EDITORIAL NATURALISM — DIGITAL NATURALISM × BRUTALIST DESIGN SYSTEM
+# EDITORIAL NATURALISM , DIGITAL NATURALISM × BRUTALIST DESIGN SYSTEM
 
 > REFERENCE (SAME-TO-SAME TARGET): `HTTPS://COMPONENT-78AE4F2A-C55A-4F50-A0B1-17C67E8C277D.PREVIEW.SUPERDESIGN.DEV/?PROJECTID=73C75E75-D290-43FD-A5FB-E73CC96EEE4B`
 >
@@ -78,7 +78,7 @@ MUST USE THE NOISE OVERLAY TO PREVENT THE DARK COLORS FROM APPEARING FLAT. MUST 
 
 ---
 
-# IMPLEMENTATION DETAILS (DERIVED — REPRODUCE EXACTLY FOR A SAME-TO-SAME RESULT)
+# IMPLEMENTATION DETAILS (DERIVED , REPRODUCE EXACTLY FOR A SAME-TO-SAME RESULT)
 
 THE LIVE REFERENCE WAS NOT FETCHABLE (HOST EGRESS BLOCKED / 403), SO THE FOLLOWING IS THE PRECISE BUILD SPEC THAT REALIZES THE BRIEF ABOVE. WHEN GIVEN TO OPUS, THIS SECTION PRODUCES THE EXACT SAME OUTPUT.
 
@@ -86,7 +86,7 @@ THE LIVE REFERENCE WAS NOT FETCHABLE (HOST EGRESS BLOCKED / 403), SO THE FOLLOWI
 - SINGLE STATIC `INDEX.HTML` WITH AN INLINE `<STYLE>` BLOCK AND A SMALL `<SCRIPT>` AT THE END. NO FRAMEWORK, NO BUILD.
 - FONTS VENDORED LOCALLY UNDER `ASSETS/FONTS/` AND LOADED VIA `@FONT-FACE` (NEWSREADER 200/300/400 + ITALIC; INSTRUMENT SANS 400/500/600). FALL BACK TO GOOGLE FONTS ONLY IF A WEIGHT IS MISSING.
 - IMAGERY VENDORED LOCALLY UNDER `ASSETS/` AS `.JPG` (HERO + 6 SHOWCASE IMAGES). DOWNLOADED FROM UNSPLASH (ABSTRACT / ARCHITECTURE / NATURE / TEXTURE), 800–1200PX WIDE.
-- ICONS: INLINE LUCIDE SVG PATHS (1.5 STROKE, `currentColor`, NO FILL) — ARROW-UP-RIGHT, SPARKLES, LAYERS, GRID, CIRCLE-DOT.
+- ICONS: INLINE LUCIDE SVG PATHS (1.5 STROKE, `currentColor`, NO FILL) , ARROW-UP-RIGHT, SPARKLES, LAYERS, GRID, CIRCLE-DOT.
 
 ## CSS TOKENS (`:root`)
 ```css
@@ -116,11 +116,11 @@ A FIXED FULL-VIEWPORT `<div class="noise">` AT THE TOP OF `<body>` (Z ABOVE CONT
 - `display:grid; grid-template-columns:5fr 7fr; gap:64px; align-items:center; padding:160px 48px 96px;`
 - LEFT COLUMN:
   - EYEBROW ROW: LIME STATUS DOT + "DIGITAL NATURALISM / V.01".
-  - H1 (`clamp(48px,6vw,84px)`): "A design system for **_naturally_** technical interfaces." — THE WORD "naturally" IS `<em>` ITALIC IN LIME.
+  - H1 (`clamp(48px,6vw,84px)`): "A design system for **_naturally_** technical interfaces." , THE WORD "naturally" IS `<em>` ITALIC IN LIME.
   - SUB-TEXT (`max-width:46ch; color:var(--muted)`).
   - CTA ROW: PRIMARY LIME BUTTON "Explore the system →" + GHOST TEXT LINK "Read the manifesto".
   - SOCIAL PROOF: OVERLAPPING ROW OF 4 AVATAR CIRCLES (`filter:grayscale(1); opacity:.7; margin-left:-10px each; border:2px solid var(--stone-black)`) + CAPTION "Trusted by 2,400+ studios".
-- RIGHT COLUMN — ARCH IMAGE CONTAINER:
+- RIGHT COLUMN , ARCH IMAGE CONTAINER:
   - `border-radius:10rem 10rem 24px 24px; overflow:hidden; aspect-ratio:4/5;` IMAGE `width:100%;height:100%;object-fit:cover;`
   - FLOATING STICKY-NOTE BADGE ABSOLUTELY POSITIONED OVER TOP-LEFT OF THE IMAGE: `background:var(--lime); color:var(--stone-black); transform:rotate(6deg); padding:14px 18px; border-radius:14px; font-family:'Newsreader'; font-style:italic;` GENTLE FLOAT KEYFRAME (`translateY` ±6PX, 6S EASE-IN-OUT INFINITE).
   - CATALOG LABEL BOTTOM-LEFT OVER THE IMAGE (SEE BELOW).
@@ -165,10 +165,10 @@ PLACE ONE AT THE TOP BOUNDARY OF THE TABBED CONTENT SECTION (TEAR POINTS UP, BIT
 - STONE-BLACK, BORDER-TOP `var(--border)`. LARGE SERIF WORDMARK, COLUMN LINK LISTS (SANS, MUTED, HOVER → STONE), AND A BOTTOM MONO ROW WITH COPYRIGHT + "MADE WITH NOISE & LIME".
 
 ## MOTION / JS (MINIMAL, VANILLA)
-1. **NAV SCROLL STATE** — `window.scroll` > 40px TOGGLES `.scrolled` ON NAV (RAISES BLUR + ADDS HAIRLINE BORDER).
-2. **TAB SWITCHER** — CLICK A FOLDER TAB → SET `.active`, FADE THE PANEL OUT (`opacity 0`, 150MS), SWAP CONTENT, FADE BACK IN.
-3. **SCROLL REVEAL** — `IntersectionObserver` ADDS `.in` TO `[data-reveal]` ELEMENTS: BASE STATE `opacity:0; transform:translateY(24px)`, REVEALED `opacity:1; translateY(0)`, TRANSITION `700ms var(--ease)`, STAGGER VIA `transition-delay` INDEX.
-4. **STICKY-NOTE FLOAT** — CSS KEYFRAME ONLY (NO JS).
+1. **NAV SCROLL STATE** , `window.scroll` > 40px TOGGLES `.scrolled` ON NAV (RAISES BLUR + ADDS HAIRLINE BORDER).
+2. **TAB SWITCHER** , CLICK A FOLDER TAB → SET `.active`, FADE THE PANEL OUT (`opacity 0`, 150MS), SWAP CONTENT, FADE BACK IN.
+3. **SCROLL REVEAL** , `IntersectionObserver` ADDS `.in` TO `[data-reveal]` ELEMENTS: BASE STATE `opacity:0; transform:translateY(24px)`, REVEALED `opacity:1; translateY(0)`, TRANSITION `700ms var(--ease)`, STAGGER VIA `transition-delay` INDEX.
+4. **STICKY-NOTE FLOAT** , CSS KEYFRAME ONLY (NO JS).
 ALL TRANSITIONS USE `300ms cubic-bezier(.4,0,.2,1)` UNLESS NOTED. RESPECT `prefers-reduced-motion` (DISABLE FLOAT + REVEAL TRANSFORMS).
 
 ## RESPONSIVE
@@ -178,7 +178,7 @@ ALL TRANSITIONS USE `300ms cubic-bezier(.4,0,.2,1)` UNLESS NOTED. RESPECT `prefe
 ## COPY (USE VERBATIM)
 - BRAND: "STUDIO/NORD". NAV: Foundations · Components · Showcase · About.
 - HERO H1: "A design system for *naturally* technical interfaces."
-- HERO SUB: "An editorial, dark-mode toolkit built on warm stone, acid lime, and analog noise — for teams who want their software to feel made, not generated."
+- HERO SUB: "An editorial, dark-mode toolkit built on warm stone, acid lime, and analog noise , for teams who want their software to feel made, not generated."
 - TABS: Foundations / Components / Motion / Tokens.
 - SHOWCASE TITLES (SERIF ITALIC): "Arch", "Quarry", "Meadow", "Signal", "Strata", "Bloom".
 - STICKY-NOTE: "Let's build something *lasting*." / footer label "START A PROJECT".

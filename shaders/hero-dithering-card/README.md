@@ -1,21 +1,21 @@
-# Dither Press — Hero Dithering Card (@paper-design/shaders-react + React + Tailwind CSS)
+# Dither Press , Hero Dithering Card (@paper-design/shaders-react + React + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A print-house proof room built around a shadcn `components/ui` dithering shader card from `@paper-design/shaders-react`. The `CTASection` component drops in untouched — a transparent-backed `Dithering` shader with Pantone-orange ink under an editorial headline and CTA — then is mounted on a press bed with crop marks, an engraved registration grid, a half-tone dot field, a rotating loupe reticle, and a live telemetry strip that reads ink coverage directly off the plate. A second live shader plate is wired to a full control rack. Generated with Claude Fable 5.
+A print-house proof room built around a shadcn `components/ui` dithering shader card from `@paper-design/shaders-react`. The `CTASection` component drops in untouched , a transparent-backed `Dithering` shader with Pantone-orange ink under an editorial headline and CTA , then is mounted on a press bed with crop marks, an engraved registration grid, a half-tone dot field, a rotating loupe reticle, and a live telemetry strip that reads ink coverage directly off the plate. A second live shader plate is wired to a full control rack. Generated with Claude Fable 5.
 
 ## The proof, framed
 
 The hero is the unmodified component. Around it:
 
-- **Crop marks + loupe** — printer's corner ticks and a spinning registration
+- **Crop marks + loupe** , printer's corner ticks and a spinning registration
   target, the press-room motif.
-- **Live telemetry** — `fps` and `uptime` read from real `requestAnimationFrame`
+- **Live telemetry** , `fps` and `uptime` read from real `requestAnimationFrame`
   deltas; `frames` counts composited frames; **`ink coverage`** is genuinely
   sampled off the dither `<canvas>` by compositing it to a tiny offscreen buffer
   and averaging opaque, ink-coloured pixels.
 
-## Ink console — the same shader, on the faders
+## Ink console , the same shader, on the faders
 
 A second live `Dithering` plate is wired to a control rack so you can feel the
 shader before shipping it. Every control writes straight to a uniform:
@@ -50,21 +50,21 @@ React 19, TypeScript, Vite 7, Tailwind CSS v4, `@paper-design/shaders-react`,
 
 | Token | Value |
 |-------|-------|
-| Press ink (accent) | `#EC4E02` — Pantone 021 Orange |
+| Press ink (accent) | `#EC4E02` , Pantone 021 Orange |
 | Paper (light) | warm newsprint `oklch(0.964 0.011 84)` |
 | Lights-out (dark) | deep press navy `oklch(0.16 0.012 256)` |
 | Display / chrome | Space Grotesk |
 | Editorial headline | Instrument Serif |
 | Spec data / crop marks | JetBrains Mono |
 
-Signature: the verbatim card seated on a press bed — crop marks, a register
+Signature: the verbatim card seated on a press bed , crop marks, a register
 grid, a half-tone dot field, a loupe reticle, and ink coverage read live off the
 plate.
 
 ## Assets
 
 **Space Grotesk**, **Instrument Serif**, and **JetBrains Mono** are **vendored
-locally** under `assets/fonts/*.woff2` and bundled by Vite — the project runs
+locally** under `assets/fonts/*.woff2` and bundled by Vite , the project runs
 fully offline, no CDN or remote font calls. Icons are `lucide-react` (no remote
 SVGs); the favicon is an inline SVG data URI. No raster image assets are needed.
 
@@ -89,4 +89,4 @@ downloaded.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

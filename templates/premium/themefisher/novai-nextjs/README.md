@@ -1,4 +1,4 @@
-# Novai — AI Agent / SaaS Marketing Template Clone (Vanilla HTML/CSS/JS)
+# Novai , AI Agent / SaaS Marketing Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -10,7 +10,7 @@ Home, About, Features (overview grid) plus a shared feature-detail template, Pri
 
 ## Run
 
-This is plain HTML/CSS/vanilla JS — there is no `package.json` and no build step. Serve the folder with any static file server from the project root:
+This is plain HTML/CSS/vanilla JS , there is no `package.json` and no build step. Serve the folder with any static file server from the project root:
 
 ```sh
 python3 -m http.server
@@ -20,7 +20,7 @@ Then open `http://localhost:8000/` (or `index.html` directly) in a browser.
 
 ## Notes
 
-- `prompt.md` contains the full build spec — color tokens, typography scale, motion/animation details, and the complete page-by-page layout breakdown used to build this clone.
+- `prompt.md` contains the full build spec , color tokens, typography scale, motion/animation details, and the complete page-by-page layout breakdown used to build this clone.
 - `demo.mp4` (with `poster.jpg` as its thumbnail) shows the site in motion, including the sticky header pill, scroll-reveal animations, and the FAQ accordion.
 - Repeating content types (blog posts, case studies, individual feature pages) are built once as shared, faithful template pages rather than duplicated per slug, matching the pattern used by sibling `templates/premium/themefisher/*` clones.
 
@@ -28,8 +28,8 @@ Then open `http://localhost:8000/` (or `index.html` directly) in a browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Themefisher — <https://themefisher.com/demo?theme=novai-nextjs>
+**Original:** Themefisher , <https://themefisher.com/demo?theme=novai-nextjs>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of UI experiments. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of UI experiments. [Browse the live gallery](https://pulkitxm.com/claude-directory).

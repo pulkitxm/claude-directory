@@ -1,4 +1,4 @@
-# Fearless Vision Delivered — Full-Screen Cinematic Hero
+# Fearless Vision Delivered , Full-Screen Cinematic Hero
 
 ## Overview
 
@@ -9,8 +9,8 @@ Build a full-screen, fully mobile-responsive hero section with an autoplaying lo
 - **Framework:** React 18 (`react` `^18.3.1`, `react-dom` `^18.3.1`), JSX (`.jsx`, no TypeScript).
 - **Build tool:** Vite (`vite` `^5.4.11`) with `@vitejs/plugin-react` `^4.3.4`.
 - **Styling:** Tailwind CSS 3 (`tailwindcss` `^3.4.17`) with `postcss` `^8.4.49` and `autoprefixer` `^10.4.20`.
-- **Animation:** Framer Motion (`framer-motion` `^11.18.2`) — `motion`.
-- **Icons:** Lucide (`lucide-react` `^0.468.0`) — `ArrowUpRight`, `X`.
+- **Animation:** Framer Motion (`framer-motion` `^11.18.2`) , `motion`.
+- **Icons:** Lucide (`lucide-react` `^0.468.0`) , `ArrowUpRight`, `X`.
 - **Font:** Inter; semibold (600) used throughout.
 - **Notable techniques:** full-viewport autoplaying muted background video, `clamp()` fluid typography, overflow-hidden clip reveal for heading words, staggered load animations via custom variant index.
 
@@ -19,7 +19,7 @@ Build a full-screen, fully mobile-responsive hero section with an autoplaying lo
 ### `index.html`
 
 - `lang="en"`, `<meta charset="UTF-8" />`, `<meta name="viewport" content="width=device-width, initial-scale=1.0" />`.
-- Meta description: `Fearless Vision Delivered — creative studios built around elevating your vision into striking reality.`
+- Meta description: `Fearless Vision Delivered , creative studios built around elevating your vision into striking reality.`
 - `<title>Fearless Vision Delivered</title>`.
 - Uses the Inter font.
 - Mounts `<div id="root"></div>` and loads `/src/main.jsx` as a module.
@@ -99,7 +99,7 @@ The root is a flex column filling at least the viewport:
 
 Three stacked, vertically-arranged zones plus the background video:
 
-1. **Background video** — absolutely positioned, fills the viewport.
+1. **Background video** , absolutely positioned, fills the viewport.
 2. **Nav** (`<header>`, top, fixed height).
 3. **Stats row** (`<section>`, `flex-1`, vertically centered, right-aligned).
 4. **Bottom content** (`<footer>`, pinned to the bottom with padding).
@@ -131,14 +131,14 @@ All foreground zones use `relative z-10` so they layer above the video.
 
 `<header>` is a horizontal flex, items centered, justified between, with padding `px-5 pt-5 sm:px-8 md:px-12 md:pt-6`.
 
-- **Left — logo:** a 32px round div with a 2px accent border, containing a 10px solid accent circle:
+- **Left , logo:** a 32px round div with a 2px accent border, containing a 10px solid accent circle:
   ```jsx
   <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-accent">
     <span className="h-2.5 w-2.5 rounded-full bg-accent" />
   </div>
   ```
-- **Center (hidden on mobile, visible `md+`):** four nav links — "Story", "Expertise", "Studios", "Feedback". Container `hidden items-center gap-10 md:flex`. Each link: `text-sm font-semibold uppercase tracking-widest text-black`, with `href={#${link.toLowerCase()}}`.
-- **Right — hamburger button:** a 36px round black button with three horizontal white lines (three `<span>` elements, each `h-0.5 w-4 bg-white`, stacked with `gap-1`). Classes `flex h-9 w-9 flex-col items-center justify-center gap-1 rounded-full bg-black`. Clicking it opens the mobile menu (`onClick={() => setMenuOpen(true)}`), `aria-label="Open menu"`, `aria-expanded={menuOpen}`.
+- **Center (hidden on mobile, visible `md+`):** four nav links , "Story", "Expertise", "Studios", "Feedback". Container `hidden items-center gap-10 md:flex`. Each link: `text-sm font-semibold uppercase tracking-widest text-black`, with `href={#${link.toLowerCase()}}`.
+- **Right , hamburger button:** a 36px round black button with three horizontal white lines (three `<span>` elements, each `h-0.5 w-4 bg-white`, stacked with `gap-1`). Classes `flex h-9 w-9 flex-col items-center justify-center gap-1 rounded-full bg-black`. Clicking it opens the mobile menu (`onClick={() => setMenuOpen(true)}`), `aria-label="Open menu"`, `aria-expanded={menuOpen}`.
 
 ## Mobile Menu Overlay
 
@@ -158,9 +158,9 @@ Container `<section>`: `flex flex-1 items-center justify-end px-5 py-8 sm:px-8 m
 
 Inner row of three stat items: `flex items-center gap-5 sm:gap-8 md:gap-10`, each `text-right`:
 
-- **+300** — Crafted / Brands
-- **+200** — Digital / Products
-- **+100** — Ventures / Funded
+- **+300** , Crafted / Brands
+- **+200** , Digital / Products
+- **+100** , Ventures / Funded
 
 Data source:
 
@@ -179,24 +179,24 @@ const STATS = [
 
 `<footer>`: `flex flex-col gap-6 px-5 pb-8 sm:px-8 md:gap-12 md:px-12 md:pb-12`.
 
-### Row A — Tagline + CTA
+### Row A , Tagline + CTA
 
 Container: `flex items-center justify-between gap-4`.
 
-- **Left — tagline paragraph:** `max-w-[130px] text-[10px] font-semibold uppercase tracking-widest text-black sm:max-w-[160px] sm:text-xs md:max-w-xs md:text-sm`, with `<br />` line breaks:
+- **Left , tagline paragraph:** `max-w-[130px] text-[10px] font-semibold uppercase tracking-widest text-black sm:max-w-[160px] sm:text-xs md:max-w-xs md:text-sm`, with `<br />` line breaks:
   ```
   Shaping Bold
   Visions Into Power
   For Your Tribe
   ```
-- **Right — CTA link:** "Work With Us" with `ArrowUpRight` icon, accent color, `whitespace-nowrap`. Sizing `gap-1 text-base sm:gap-2 sm:text-xl md:text-2xl`; icon `h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]`.
+- **Right , CTA link:** "Work With Us" with `ArrowUpRight` icon, accent color, `whitespace-nowrap`. Sizing `gap-1 text-base sm:gap-2 sm:text-xl md:text-2xl`; icon `h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]`.
 
-### Row B — Description + Main Heading
+### Row B , Description + Main Heading
 
 Container: `flex items-end justify-between gap-3 sm:gap-4`.
 
-- **Left — description block:** a fixed-width, shrink-0 container `w-[120px] shrink-0 sm:w-[180px] md:w-[280px]`, containing a paragraph: "Creative Studios Built Around Elevating Your Vision Into Striking Reality". Paragraph classes: `text-left text-[9px] font-semibold uppercase tracking-widest text-black sm:text-xs md:text-right md:text-sm`.
-- **Right — main heading (`<h1>`):** three words stacked vertically — "Fearless", "Vision", "Delivered". `text-right font-semibold uppercase text-black`, inline `style={{ fontSize: "clamp(2rem, 9vw, 9rem)", lineHeight: 0.88 }}`. Each word lives in its own `overflow-hidden` wrapper for the clip-reveal effect:
+- **Left , description block:** a fixed-width, shrink-0 container `w-[120px] shrink-0 sm:w-[180px] md:w-[280px]`, containing a paragraph: "Creative Studios Built Around Elevating Your Vision Into Striking Reality". Paragraph classes: `text-left text-[9px] font-semibold uppercase tracking-widest text-black sm:text-xs md:text-right md:text-sm`.
+- **Right , main heading (`<h1>`):** three words stacked vertically , "Fearless", "Vision", "Delivered". `text-right font-semibold uppercase text-black`, inline `style={{ fontSize: "clamp(2rem, 9vw, 9rem)", lineHeight: 0.88 }}`. Each word lives in its own `overflow-hidden` wrapper for the clip-reveal effect:
   ```jsx
   {HEADING_WORDS.map((word, i) => (
     <span key={word} className="block overflow-hidden">

@@ -1,25 +1,25 @@
-# Dithering Swirl Shader — Halftone Press with Bayer Dither & Live Ink Coverage (React, WebGL2, TypeScript)
+# Dithering Swirl Shader , Halftone Press with Bayer Dither & Live Ink Coverage (React, WebGL2, TypeScript)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A WebGL2 shader experiment integrating the `DitheringShader` React component as a live **halftone press** — a swirl procedural field quantised 1-bit cyan-on-magenta through an ordered Bayer dither matrix, with a Bayer threshold-matrix panel, a CRT signal-telemetry readout sampled from the actual GPU framebuffer, and shape/screen/colour controls for switching between seven fields and four dither modes in real time. Generated with Claude Fable 5.
+A WebGL2 shader experiment integrating the `DitheringShader` React component as a live **halftone press** , a swirl procedural field quantised 1-bit cyan-on-magenta through an ordered Bayer dither matrix, with a Bayer threshold-matrix panel, a CRT signal-telemetry readout sampled from the actual GPU framebuffer, and shape/screen/colour controls for switching between seven fields and four dither modes in real time. Generated with Claude Fable 5.
 
 ## What's here
 
-- `src/components/ui/dithering-shader.tsx` — the integrated component. The
+- `src/components/ui/dithering-shader.tsx` , the integrated component. The
   prompt's shader (7 shapes × 4 dither modes) is preserved verbatim; two
   **additive, non-breaking** props were appended (see _Integration notes_).
-- `src/components/ui/dithering-shader.demo.tsx` — the canonical demo from the
+- `src/components/ui/dithering-shader.demo.tsx` , the canonical demo from the
   prompt (`swirl` / `4x4` / cyan on `#220011`), shipped alongside the component.
-- `src/components/signal-telemetry.tsx` — the signature panel: a CRT "beam"
+- `src/components/signal-telemetry.tsx` , the signature panel: a CRT "beam"
   readout whose coverage trace is sampled from the **actual GPU framebuffer**,
   not estimated.
-- `src/components/bayer-matrix.tsx` — renders the exact `bayer2x2/4x4/8x8`
+- `src/components/bayer-matrix.tsx` , renders the exact `bayer2x2/4x4/8x8`
   threshold tables the fragment shader indexes, so the panel always shows the
   math driving the field above it.
-- `src/App.tsx` — the full instrument (field + wordmark + press controls +
+- `src/App.tsx` , the full instrument (field + wordmark + press controls +
   ink telemetry + threshold-matrix panel).
-- `src/lib/utils.ts` — shadcn's `cn()` helper (clsx + tailwind-merge).
+- `src/lib/utils.ts` , shadcn's `cn()` helper (clsx + tailwind-merge).
 
 ## Run it
 
@@ -45,7 +45,7 @@ TypeScript**, so no scaffolding was required. The relevant decisions:
   resolves out of the box, the shadcn CLI (`npx shadcn@latest add …`) drops
   future primitives in the right place, and library components stay separated
   from composed app code.
-- **Props / API** — all optional, all backward-compatible with the pasted file:
+- **Props / API** , all optional, all backward-compatible with the pasted file:
 
   | Prop | Type | Default | Notes |
   |------|------|---------|-------|
@@ -55,10 +55,10 @@ TypeScript**, so no scaffolding was required. The relevant decisions:
   | `pxSize` | `number` | `4` | pixelisation block size |
   | `speed` | `number` | `1` | animation rate (`0` freezes, drawing one frame) |
   | `width` / `height` | `number` | `800` | fixed canvas size (ignored when `fill`) |
-  | `fill` | `boolean` | `false` | **added** — track the parent box via `ResizeObserver` for a full-bleed background |
-  | `onSample` | `(coverage: number) => void` | — | **added** — fires a few times/sec with the lit-pixel fraction read off the GL framebuffer |
+  | `fill` | `boolean` | `false` | **added** , track the parent box via `ResizeObserver` for a full-bleed background |
+  | `onSample` | `(coverage: number) => void` | , | **added** , fires a few times/sec with the lit-pixel fraction read off the GL framebuffer |
 
-- **No context/providers/stores** are needed — the component owns its WebGL
+- **No context/providers/stores** are needed , the component owns its WebGL
   lifecycle; app state is just the current controls, held in `App.tsx`.
 - **External dependencies installed:** `lucide-react` (icons) plus shadcn's
   `clsx` + `tailwind-merge`. The shader itself is dependency-free raw WebGL2.
@@ -68,10 +68,10 @@ TypeScript**, so no scaffolding was required. The relevant decisions:
 
 ### Changes applied to the pasted component
 
-1. **`fill` mode** — an optional `ResizeObserver` path so one component can back
+1. **`fill` mode** , an optional `ResizeObserver` path so one component can back
    a fixed-size demo _and_ a full-viewport instrument. The documented
    `width`/`height` API is unchanged when `fill` is omitted.
-2. **`onSample` probe** — reads the framebuffer once per tick (a single GPU→CPU
+2. **`onSample` probe** , reads the framebuffer once per tick (a single GPU→CPU
    sync) and reports lit-pixel coverage, which drives the telemetry panel.
 3. A frozen shader (`speed={0}`) now draws a single frame instead of staying
    blank.
@@ -88,7 +88,7 @@ npx shadcn@latest init       # creates components.json, the @/ alias, components
 
 ## Assets
 
-Everything is vendored locally for offline use — no runtime CDN calls:
+Everything is vendored locally for offline use , no runtime CDN calls:
 
 - **Fonts** (`public/fonts/`): Space Grotesk (display) and JetBrains Mono
   (telemetry/data), latin `.woff2` subsets self-hosted via `@font-face`.
@@ -105,4 +105,4 @@ integration prompt).
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

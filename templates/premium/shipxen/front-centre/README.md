@@ -1,8 +1,8 @@
-# Front Centre — Front-End Learning Platform Landing Page Template Clone (Vanilla HTML/CSS/JS)
+# Front Centre , Front-End Learning Platform Landing Page Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, fully offline clone of the "Front Centre" landing page template from Shipixen (Page UI), rebuilt as self-contained plain HTML, CSS, and vanilla JavaScript with no build step. This single-page marketing site for a fictional front-end learning platform features a centered cream/pale-yellow hero with a laurel "product of the day" badge and gradient-framed product screenshot, alternating feature rows, an autoplay course-video grid, a masonry testimonial wall, a CTA, and a Radix-style FAQ accordion, closing with the Shipixen marketing footer — all styled with cyan and yellow accents, bold Roboto display headings, and Roboto Mono body copy. It ships light and dark themes (honoring `prefers-color-scheme` on first load) with localStorage persistence and a no-flash boot script, plus IntersectionObserver scroll-reveal animations. Generated with Claude Fable 5.
+A pixel-faithful, fully offline clone of the "Front Centre" landing page template from Shipixen (Page UI), rebuilt as self-contained plain HTML, CSS, and vanilla JavaScript with no build step. This single-page marketing site for a fictional front-end learning platform features a centered cream/pale-yellow hero with a laurel "product of the day" badge and gradient-framed product screenshot, alternating feature rows, an autoplay course-video grid, a masonry testimonial wall, a CTA, and a Radix-style FAQ accordion, closing with the Shipixen marketing footer , all styled with cyan and yellow accents, bold Roboto display headings, and Roboto Mono body copy. It ships light and dark themes (honoring `prefers-color-scheme` on first load) with localStorage persistence and a no-flash boot script, plus IntersectionObserver scroll-reveal animations. Generated with Claude Fable 5.
 
 ## Run
 
@@ -25,8 +25,8 @@ Or simply open `index.html` directly in your browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Shipixen — <https://shipixen.com/demo/landing-page-templates/template/front-centre>
+**Original:** Shipixen , <https://shipixen.com/demo/landing-page-templates/template/front-centre>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../../README.md) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../../README.md) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,8 +1,8 @@
-# Aura — AI-Native Email Client Landing Page
+# Aura , AI-Native Email Client Landing Page
 
 ## Overview
 
-Build a premium, AI-native email client landing page called **Aura**. The aesthetic is dark (base `#0c0c0c`), cinematic, and glassy, featuring a looping fullscreen background video, a shiny gradient headline, a macOS-style menu bar, a realistic inbox mockup, and a custom "liquid-glass" card treatment. Reproduce exactly — fonts, gradient stops, noise filters, copy strings, animation delays, and all values below.
+Build a premium, AI-native email client landing page called **Aura**. The aesthetic is dark (base `#0c0c0c`), cinematic, and glassy, featuring a looping fullscreen background video, a shiny gradient headline, a macOS-style menu bar, a realistic inbox mockup, and a custom "liquid-glass" card treatment. Reproduce exactly , fonts, gradient stops, noise filters, copy strings, animation delays, and all values below.
 
 ## Tech Stack
 
@@ -32,8 +32,8 @@ Build a premium, AI-native email client landing page called **Aura**. The aesthe
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Aura — the premier AI-native inbox platform. Your email. Revitalized." />
-    <title>Aura — Your email. Revitalized</title>
+    <meta name="description" content="Aura , the premier AI-native inbox platform. Your email. Revitalized." />
+    <title>Aura , Your email. Revitalized</title>
     <style>html { background-color: #0c0c0c; }</style>
   </head>
   <body>
@@ -125,8 +125,8 @@ Two lines, hidden on mobile, at the 36rem container edges:
 
 ## Global SVG Noise Filters (two, both `id="c3-noise"`)
 
-- **Root level** (subtle grain, multiply blend) — used by the shiny headline.
-- **Inside the Pricing section** (fractal noise, overlay blend) — used by the watermark.
+- **Root level** (subtle grain, multiply blend) , used by the shiny headline.
+- **Inside the Pricing section** (fractal noise, overlay blend) , used by the watermark.
 
 ### Root filter (in `App.tsx`)
 
@@ -263,7 +263,7 @@ const gradientStyle: CSSProperties = {
 }
 ```
 
-## Section 1 — Navbar (`src/components/Navbar.tsx`)
+## Section 1 , Navbar (`src/components/Navbar.tsx`)
 
 `motion.nav` with `className="relative z-20"`; enters fading/sliding down (`initial={{ opacity: 0, y: -10 }}`, `animate={{ opacity: 1, y: 0 }}`, `transition={{ duration: 0.6, ease: 'easeOut' }}`).
 
@@ -274,7 +274,7 @@ Inner container: `max-w-6xl mx-auto px-6 h-20 flex items-center justify-between`
 - **Right (desktop):** `hidden md:block` wrapping `<AppleButton />` (default label "Download Aura").
 - **Right (mobile):** `md:hidden w-10 h-10 rounded-full border border-white/10 bg-white/5 inline-flex items-center justify-center` button (`aria-label="Open menu"`) containing a `Menu` icon (`w-4 h-4 text-white`).
 
-## Section 2 — Hero (`src/components/Hero.tsx`)
+## Section 2 , Hero (`src/components/Hero.tsx`)
 
 Section: `pt-16 md:pt-28 pb-20 text-center flex flex-col items-center px-6`. Shared easing: `const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]`.
 
@@ -285,7 +285,7 @@ Section: `pt-16 md:pt-28 pb-20 text-center flex flex-col items-center px-6`. Sha
   > Aura is the premier inbox platform for the current era. It leverages powerful AI to organize, prioritize, and refine your messages into total clarity.
 - **`motion.div`** (delay `0.7`), `className="mt-10 flex flex-col items-center gap-3"` containing `<AppleButton />` and `<span className="text-xs text-white/40">Download for Intel / Apple Silicon</span>`.
 
-## Section 3 — macOS Menu Bar Strip (`src/components/MenuBar.tsx`)
+## Section 3 , macOS Menu Bar Strip (`src/components/MenuBar.tsx`)
 
 `motion.div` full-width bar, `className="h-10 bg-black/40 backdrop-blur-md border-t border-b border-white/10"`, entering with `initial={{ opacity: 0 }}`, `animate={{ opacity: 1 }}`, `transition={{ duration: 0.6, delay: 0.9, ease: 'easeOut' }}`.
 
@@ -301,7 +301,7 @@ Inner container: `max-w-6xl mx-auto px-6 h-full flex items-center justify-betwee
   ```
 - **Right** (`flex items-center gap-3 text-white/70`): `<Search className="w-3.5 h-3.5" />` + `<span>Wed May 6 1:09 PM</span>`.
 
-## Section 4 — Inbox Mockup (`src/components/InboxMockup.tsx`)
+## Section 4 , Inbox Mockup (`src/components/InboxMockup.tsx`)
 
 Section: `max-w-6xl mx-auto px-6 py-16 md:py-24`. Shared `EASE = [0.22, 1, 0.36, 1]`. Lucide icons used: `Archive, File, Forward, Inbox, MoreHorizontal, Paperclip, Reply, Search, Send, Sparkles, Star, Trash2`.
 
@@ -309,13 +309,13 @@ Outer `motion.div`: `relative rounded-2xl overflow-hidden border border-white/10
 
 ### Title bar
 
-`relative flex items-center h-10 px-4 border-b border-white/10`. Three traffic lights `['#ff5f57', '#febc2e', '#28c840']`, each `<span className="w-3 h-3 rounded-full" style={{ backgroundColor: color }} />`. Centered label: `<span className="absolute left-1/2 -translate-x-1/2 text-xs text-white/50">Aura — Inbox</span>`.
+`relative flex items-center h-10 px-4 border-b border-white/10`. Three traffic lights `['#ff5f57', '#febc2e', '#28c840']`, each `<span className="w-3 h-3 rounded-full" style={{ backgroundColor: color }} />`. Centered label: `<span className="absolute left-1/2 -translate-x-1/2 text-xs text-white/50">Aura , Inbox</span>`.
 
 ### Body
 
 `grid grid-cols-12 h-[520px]`.
 
-**Sidebar** — `hidden md:block md:col-span-3 border-r border-white/10 bg-black/30 p-4`:
+**Sidebar** , `hidden md:block md:col-span-3 border-r border-white/10 bg-black/30 p-4`:
 
 - Compose button: `w-full inline-flex items-center justify-center gap-1.5 rounded-lg bg-white text-black text-xs font-semibold px-3 py-2 transition-colors hover:bg-white/90` containing `<Sparkles className="w-3.5 h-3.5" />` and the text `Compose with Aura`.
 - Nav (`mt-4 space-y-0.5`), each item an anchor with icon + label + optional count. Active item: `bg-white/10 text-white`; others: `text-white/60 hover:bg-white/5`. Base classes: `flex items-center gap-2.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors`. Icon `w-3.5 h-3.5`, label in `flex-1`, count `text-[10px] text-white/40`. Items:
@@ -331,18 +331,18 @@ Outer `motion.div`: `relative rounded-2xl overflow-hidden border border-white/10
   - Travel `#f59e0b`
   - Finance `#10b981`
 
-**Message list** — `hidden sm:flex sm:flex-col sm:col-span-5 md:col-span-4 border-r border-white/10`:
+**Message list** , `hidden sm:flex sm:flex-col sm:col-span-5 md:col-span-4 border-r border-white/10`:
 
 - Search header: `flex items-center gap-2 px-4 h-11 border-b border-white/10 text-white/40` with `<Search className="w-3.5 h-3.5" />` + `<span className="text-xs">Search mail</span>`.
 - Scroll area `flex-1 overflow-y-auto`. Each message is a button (`w-full text-left px-4 py-3 border-b border-white/5 transition-colors`; active → `bg-white/[0.07]`, else `hover:bg-white/[0.03]`). Top row: name (`text-xs truncate`; unread → `font-semibold text-white`, else `font-medium text-white/70`) + time (`text-[10px] text-white/40 shrink-0`). Second row: if unread, a `w-1.5 h-1.5 rounded-full bg-[#00d2ff] shrink-0` dot, then subject (`text-xs truncate`; unread → `text-white`, else `text-white/60`). Preview: `mt-0.5 text-xs text-white/40 truncate`. Messages:
-  - **Linear** — "Weekly product digest" — "Your team shipped 23 issues this week..." — 9:41 AM — unread + active
-  - **Sophia Chen** — "Re: Q3 roadmap review" — "Thanks for sending the deck over. I had a few thoughts..." — 8:12 AM — unread
-  - **Figma** — "Marcus commented on your file" — "Love the new direction on the landing hero." — Yesterday
-  - **Stripe** — "Payout of $12,480.00 sent" — "Your payout is on its way to your bank..." — Yesterday
-  - **Vercel** — "Deployment ready for aura-web" — "Preview is live at aura-web-g3f.vercel.app" — Mon
-  - **GitHub** — "[aura/core] PR #482 approved" — "david-lim approved your pull request." — Mon
+  - **Linear** , "Weekly product digest" , "Your team shipped 23 issues this week..." , 9:41 AM , unread + active
+  - **Sophia Chen** , "Re: Q3 roadmap review" , "Thanks for sending the deck over. I had a few thoughts..." , 8:12 AM , unread
+  - **Figma** , "Marcus commented on your file" , "Love the new direction on the landing hero." , Yesterday
+  - **Stripe** , "Payout of $12,480.00 sent" , "Your payout is on its way to your bank..." , Yesterday
+  - **Vercel** , "Deployment ready for aura-web" , "Preview is live at aura-web-g3f.vercel.app" , Mon
+  - **GitHub** , "[aura/core] PR #482 approved" , "david-lim approved your pull request." , Mon
 
-**Reader** — `col-span-12 sm:col-span-7 md:col-span-5 flex flex-col`:
+**Reader** , `col-span-12 sm:col-span-7 md:col-span-5 flex flex-col`:
 
 - Toolbar: `flex items-center justify-between px-4 h-11 border-b border-white/10`. Left group (`flex items-center gap-1`) has icon buttons for `Reply` (label "Reply"), `Forward` ("Forward"), `Archive` ("Archive"), `Trash2` ("Delete"), each `w-7 h-7 rounded-md hover:bg-white/5 inline-flex items-center justify-center text-white/60 transition-colors` with a `w-3.5 h-3.5` icon. Right: a `MoreHorizontal` button (`aria-label="More options"`) with the same button classes.
 - Body (`flex-1 overflow-y-auto p-5`):
@@ -355,38 +355,38 @@ Outer `motion.div`: `relative rounded-2xl overflow-hidden border border-white/10
     - "Here is your weekly digest of everything happening across your projects. This was a strong week with significant progress on the Q3 roadmap."
     - "Twenty-three issues were closed, fourteen pull requests were merged, and two customer-facing features went out. The velocity trend continues to climb."
     - "Let me know if you would like a deeper breakdown by project or contributor."
-    - Then a sign-off `<p className="text-xs text-white/50 leading-[1.7]">— The Linear team</p>`.
+    - Then a sign-off `<p className="text-xs text-white/50 leading-[1.7]">, The Linear team</p>`.
   - Attachment pill: `mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-white/70 hover:bg-white/[0.06] transition-colors` with `<Paperclip className="w-3.5 h-3.5" />` and text `digest-may-6.pdf`.
 
-## Section 5 — Feature Triage (`src/components/FeatureTriage.tsx`)
+## Section 5 , Feature Triage (`src/components/FeatureTriage.tsx`)
 
 Section: `max-w-6xl mx-auto px-6 py-20 md:py-28`. Inner grid: `grid md:grid-cols-2 gap-10 md:gap-16 items-start`. Shared `EASE = [0.22, 1, 0.36, 1]`.
 
-**Left column** — `motion.div` (`initial={{ opacity: 0, y: 20 }}`, `whileInView={{ opacity: 1, y: 0 }}`, `viewport={{ once: true, margin: '-80px' }}`, `transition={{ duration: 0.7, ease: EASE }}`):
+**Left column** , `motion.div` (`initial={{ opacity: 0, y: 20 }}`, `whileInView={{ opacity: 1, y: 0 }}`, `viewport={{ once: true, margin: '-80px' }}`, `transition={{ duration: 0.7, ease: EASE }}`):
 
 - `<SectionEyebrow label="Triage" tag="AI-native" />`
 - `<h2 className="mt-5 text-3xl md:text-5xl font-semibold tracking-tight leading-[1.02]">` with "Clear your inbox" `<br />` "in a single pass."
 - `<p className="mt-6 text-white/60 text-base leading-[1.6] max-w-md">`:
-  > Aura reads every message, understands intent, and routes the noise away from the signal. Focus on what moves your day forward — the rest handles itself.
+  > Aura reads every message, understands intent, and routes the noise away from the signal. Focus on what moves your day forward , the rest handles itself.
 - Chips row (`mt-8 flex flex-wrap gap-2`), each `text-xs text-white/70 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03]`: "Auto-categorize", "Snooze for later", "Silent newsletters", "One-tap unsubscribe".
 
-**Right column** — `motion.div` (same enter, with `delay: 0.15`), `className="liquid-glass rounded-2xl p-5"`:
+**Right column** , `motion.div` (same enter, with `delay: 0.15`), `className="liquid-glass rounded-2xl p-5"`:
 
 - Eyebrow: `<p className="text-xs text-white/50">Today · 42 messages triaged</p>`.
 - Four sub-cards (`mt-4 space-y-3`, each `liquid-glass rounded-lg p-3`). Header row (`flex items-center gap-2`): dot `w-2 h-2 rounded-full` (color via inline style), name `text-sm font-medium text-white`, count `text-xs text-white/40` rendered as `({count})`. Items list (`mt-2 space-y-1`), each `text-xs text-white/50 truncate`:
-  - **Priority** (4) `#ffffff` — "Sophia Chen — Q3 review", "David Lim — contract signoff"
-  - **Follow-up** (7) `#e5e5e5` — "Marcus — design review", "Figma — comment thread"
-  - **Updates** (18) `#a3a3a3` — "Vercel — deploy ready", "GitHub — PR #482 merged"
-  - **Archived** (13) `#525252` — "Stripe payout · Newsletter · Receipts"
+  - **Priority** (4) `#ffffff` , "Sophia Chen , Q3 review", "David Lim , contract signoff"
+  - **Follow-up** (7) `#e5e5e5` , "Marcus , design review", "Figma , comment thread"
+  - **Updates** (18) `#a3a3a3` , "Vercel , deploy ready", "GitHub , PR #482 merged"
+  - **Archived** (13) `#525252` , "Stripe payout · Newsletter · Receipts"
 
-## Section 6 — Logo Cloud (`src/components/LogoCloud.tsx`)
+## Section 6 , Logo Cloud (`src/components/LogoCloud.tsx`)
 
 Section: `max-w-6xl mx-auto px-6 py-16 md:py-20`.
 
 - Centered kicker: `<p className="text-center text-xs uppercase tracking-widest text-white/40">Trusted by the world's most thoughtful teams</p>`.
 - Grid `mt-10 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6`, each name a `motion.span` (`initial={{ opacity: 0, y: 10 }}`, `whileInView={{ opacity: 1, y: 0 }}`, `viewport={{ once: true, margin: '-60px' }}`, `transition={{ duration: 0.5, delay: i * 0.05, ease: 'easeOut' }}`), `className="text-center text-sm font-semibold tracking-tight text-white/50 hover:text-white transition-colors cursor-default"`. Names: `Linear`, `Vercel`, `Figma`, `Stripe`, `Ramp`, `Notion`, `Loom`, `Arc`.
 
-## Section 7 — Testimonials (`src/components/Testimonials.tsx`)
+## Section 7 , Testimonials (`src/components/Testimonials.tsx`)
 
 Section: `max-w-6xl mx-auto px-6 py-20 md:py-28 border-t border-white/10`. Grid: `grid md:grid-cols-3 gap-6`. Shared `EASE = [0.22, 1, 0.36, 1]`.
 
@@ -397,11 +397,11 @@ Each `motion.figure` (`initial={{ opacity: 0, y: 20 }}`, `whileInView={{ opacity
 
 Testimonials:
 
-- "Aura gave our leadership team four hours of their week back. It reads like email from the future." — **Parker Wilf**, Group Product Manager, **MERCURY**
-- "The command palette alone has changed how I process messages. I can't imagine going back to a traditional client." — **Andrew von Rosenbach**, Senior Engineering Program Manager, **COHERE**
-- "Triage that actually understands context. Our team stopped dreading Monday morning inboxes." — **Mathies Christensen**, Engineering Manager, **LUNAR**
+- "Aura gave our leadership team four hours of their week back. It reads like email from the future." , **Parker Wilf**, Group Product Manager, **MERCURY**
+- "The command palette alone has changed how I process messages. I can't imagine going back to a traditional client." , **Andrew von Rosenbach**, Senior Engineering Program Manager, **COHERE**
+- "Triage that actually understands context. Our team stopped dreading Monday morning inboxes." , **Mathies Christensen**, Engineering Manager, **LUNAR**
 
-## Section 8 — Pricing (`src/components/Pricing.tsx`)
+## Section 8 , Pricing (`src/components/Pricing.tsx`)
 
 Uses custom CSS classes (not Tailwind) for cinematic typography. Holds a single piece of state: `const [yearly, setYearly] = useState(false)`.
 
@@ -420,7 +420,7 @@ Outer `<section className="c3-pricing-section">` first renders its own `<svg>` d
 
 ### Plans grid
 
-`<div className="c3-grid">` maps over three plans, each `<div className={'c3-card' + (pro ? ' c3-card-pro' : '')}>` rendering: `c3-tier-small` (tier name), `c3-tier-large` (price — shows `yearly` price when the toggle is on, else `monthly`), `c3-desc`, a `c3-list` of feature rows, and a `c3-btn` button labeled "Choose Plan".
+`<div className="c3-grid">` maps over three plans, each `<div className={'c3-card' + (pro ? ' c3-card-pro' : '')}>` rendering: `c3-tier-small` (tier name), `c3-tier-large` (price , shows `yearly` price when the toggle is on, else `monthly`), `c3-desc`, a `c3-list` of feature rows, and a `c3-btn` button labeled "Choose Plan".
 
 Each feature row is `<li>` containing a `<span className="c3-check">` (white circle) wrapping a white check SVG, then the feature text:
 
@@ -444,9 +444,9 @@ Each feature row is `<li>` containing a `<span className="c3-check">` (white cir
 
 Plans:
 
-- **Free** — monthly "Free" / yearly "Free" — "For creators taking their first steps with Forma." — features: "Up to 3 projects in the cloud", "Image export up to 1080p", "Basic editing tools", "Free templates and icons", "Access via web and mobile app". `pro: false`.
-- **Standard** — monthly "$9,99/m" / yearly "$99,99/y" — "For freelancers and small teams who need more freedom and flexibility." — features: "Up to 50 projects in the cloud", "Export up to 4K", "Advanced editing toolkit", "Team collaboration (up to 5 members)", "Access to premium template library". `pro: false`.
-- **Pro** (adds `c3-card-pro`) — monthly "$19,99/m" / yearly "$199,99/y" — "For studios, agencies, and professional creators working with brands." — features: "Unlimited projects", "Export up to 8K + animations", "AI-powered content generation tools", "Unlimited team members", "Brand customization". `pro: true`.
+- **Free** , monthly "Free" / yearly "Free" , "For creators taking their first steps with Forma." , features: "Up to 3 projects in the cloud", "Image export up to 1080p", "Basic editing tools", "Free templates and icons", "Access via web and mobile app". `pro: false`.
+- **Standard** , monthly "$9,99/m" / yearly "$99,99/y" , "For freelancers and small teams who need more freedom and flexibility." , features: "Up to 50 projects in the cloud", "Export up to 4K", "Advanced editing toolkit", "Team collaboration (up to 5 members)", "Access to premium template library". `pro: false`.
+- **Pro** (adds `c3-card-pro`) , monthly "$19,99/m" / yearly "$199,99/y" , "For studios, agencies, and professional creators working with brands." , features: "Unlimited projects", "Export up to 8K + animations", "AI-powered content generation tools", "Unlimited team members", "Brand customization". `pro: true`.
 
 ### Yearly toggle
 
@@ -489,7 +489,7 @@ Plans:
 }
 ```
 
-## Section 9 — Final CTA (`src/components/FinalCTA.tsx`)
+## Section 9 , Final CTA (`src/components/FinalCTA.tsx`)
 
 Section: `max-w-6xl mx-auto px-6 py-20 md:py-32`. Shared `EASE = [0.22, 1, 0.36, 1]`.
 
@@ -499,7 +499,7 @@ Section: `max-w-6xl mx-auto px-6 py-20 md:py-32`. Shared `EASE = [0.22, 1, 0.36,
 - Content wrapper `relative`:
   - `<h2 className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.02]">` with "Close the tabs." `<br />` "Open your day."
   - `<p className="mt-6 text-white/60 max-w-md mx-auto text-sm leading-[1.6]">`:
-    > Join thousands of builders, founders, and operators who treat email like a tool — not an obligation.
+    > Join thousands of builders, founders, and operators who treat email like a tool , not an obligation.
   - Buttons row (`mt-10 flex flex-col sm:flex-row items-center justify-center gap-3`): `<AppleButton label="Download Aura" />` and a secondary button `group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 text-white text-sm font-medium px-5 py-3 hover:bg-white/5 transition-colors` with text "Talk to sales" + `<ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-[1px]" />`.
 
 ## Color Palette

@@ -1,4 +1,4 @@
-# Asme — Liquid Glass Landing Page
+# Asme , Liquid Glass Landing Page
 
 ## Overview
 
@@ -19,8 +19,8 @@ Build a single-page, dark-themed marketing landing site for "Asme" with a full-v
 
 - `<html lang="en" class="bg-black">` and `<body class="bg-black">`.
 - Favicon is an inline SVG data URI of a white globe/circle (`stroke='white'`, `stroke-width='2'`).
-- `<title>`: `Asme — Know it all.`
-- Meta description: `Asme — Know it all. Stay updated with the latest news and insights.`
+- `<title>`: `Asme , Know it all.`
+- Meta description: `Asme , Know it all. Stay updated with the latest news and insights.`
 - Viewport meta: `width=device-width, initial-scale=1.0`.
 - Mounts to `<div id="root"></div>` and loads `/src/main.tsx` as a module.
 
@@ -148,7 +148,7 @@ Constants defined at module scope:
 
 > **Asset note:** All five videos are vendored locally and served from `/assets/`. The filenames originate from CloudFront uploads (e.g. `hf_20260405_074625_a81f018a-956b-43fb-9aee-4d1508e30e6a.mp4`) but the app references the relative `/assets/...` paths, not any external host.
 
-## Section 1 — Hero (full viewport)
+## Section 1 , Hero (full viewport)
 
 Container: `<section className="min-h-screen overflow-hidden relative flex flex-col">`.
 
@@ -156,7 +156,7 @@ Container: `<section className="min-h-screen overflow-hidden relative flex flex-
 
 - `<video>` with `ref={videoRef}`, classes `absolute inset-0 w-full h-full object-cover object-bottom`, `src={HERO_VIDEO_URL}`.
 - Attributes: `muted`, `autoPlay`, `playsInline`, `preload="auto"`, `aria-hidden="true"`, `tabIndex={-1}`.
-- Inline style `style={{ opacity: 0 }}` — starts fully transparent.
+- Inline style `style={{ opacity: 0 }}` , starts fully transparent.
 
 ### Video fade logic (vanilla JS via refs, no CSS transitions)
 
@@ -196,7 +196,7 @@ This produces a seamless loop with a smooth crossfade to black between plays.
 
 `<footer className="relative z-10 flex justify-center gap-4 pb-12">` mapping over `[{ label: 'Instagram', Icon: Instagram }, { label: 'Twitter', Icon: Twitter }, { label: 'Website', Icon: Globe }]`. Each renders an `<a>` (`href="#"`, `aria-label={label}`) with classes `liquid-glass rounded-full p-4 text-white/80 hover:text-white hover:bg-white/5 transition-all` containing the icon at `size={20}`.
 
-## Section 2 — About (`src/components/AboutSection.tsx`)
+## Section 2 , About (`src/components/AboutSection.tsx`)
 
 - Uses `useRef` + `useInView(ref, { once: true, margin: '-100px' })`.
 - Section: `<section ref={ref} className="relative bg-black pt-32 md:pt-44 pb-10 md:pb-14 px-6 overflow-hidden">`.
@@ -208,7 +208,7 @@ This produces a seamless loop with a smooth crossfade to black between plays.
   - `<br className="hidden md:block" />`
   - `minds that ` then `<span className="font-instrument italic text-white/60">create, build, and inspire.</span>`
 
-## Section 3 — Featured Video (`src/components/FeaturedVideoSection.tsx`)
+## Section 3 , Featured Video (`src/components/FeaturedVideoSection.tsx`)
 
 - `FEATURED_VIDEO_URL = '/assets/hf_20260402_054547_9875cfc5-155a-4229-8ec8-b7ba7125cbf8.mp4'`.
 - Same `useInView` pattern (`{ once: true, margin: '-100px' }`).
@@ -222,7 +222,7 @@ This produces a seamless loop with a smooth crossfade to black between plays.
       - Body `<p className="text-white text-sm md:text-base leading-relaxed">`: "We believe in the power of curiosity-driven exploration. Every project starts with a question, and every answer opens a new door to innovation."
     - **Right button** `motion.button` with classes `liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium self-start md:self-auto shrink-0`, text "Explore more", `whileHover={{ scale: 1.05 }}`, `whileTap={{ scale: 0.95 }}`.
 
-## Section 4 — Philosophy / Innovation × Vision (`src/components/PhilosophySection.tsx`)
+## Section 4 , Philosophy / Innovation × Vision (`src/components/PhilosophySection.tsx`)
 
 - `PHILOSOPHY_VIDEO_URL = '/assets/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4'`.
 - `TEXT_BLOCKS` array of two `{ label, body }` objects (see below). Same `useInView` pattern.
@@ -233,10 +233,10 @@ This produces a seamless loop with a smooth crossfade to black between plays.
   - **Right** `motion.div className="flex flex-col justify-center"`, animating `initial={{ opacity: 0, x: 40 }}` → `{ opacity: 1, x: 0 }`, `transition={{ duration: 0.8, delay: 0.2 }}`. Maps over `TEXT_BLOCKS`; for every block after the first, render a divider `<div className="w-full h-px bg-white/10 my-10" aria-hidden="true" />` before it. Each block:
     - Label `<p className="text-white/40 text-xs tracking-widest uppercase mb-4">`.
     - Body `<p className="text-white/70 text-base md:text-lg leading-relaxed">`.
-  - **Block 1** — label "Choose your space"; body: "Every meaningful breakthrough begins at the intersection of disciplined strategy and remarkable creative vision. We operate at that crossroads, turning bold thinking into tangible outcomes that move people and reshape industries."
-  - **Block 2** — label "Shape the future"; body: "We believe that the best work emerges when curiosity meets conviction. Our process is designed to uncover hidden opportunities and translate them into experiences that resonate long after the first impression."
+  - **Block 1** , label "Choose your space"; body: "Every meaningful breakthrough begins at the intersection of disciplined strategy and remarkable creative vision. We operate at that crossroads, turning bold thinking into tangible outcomes that move people and reshape industries."
+  - **Block 2** , label "Shape the future"; body: "We believe that the best work emerges when curiosity meets conviction. Our process is designed to uncover hidden opportunities and translate them into experiences that resonate long after the first impression."
 
-## Section 5 — Services / What We Do (`src/components/ServicesSection.tsx`)
+## Section 5 , Services / What We Do (`src/components/ServicesSection.tsx`)
 
 - `SERVICES` array of two `{ videoUrl, tag, title, description }` objects (see below). Imports `ArrowUpRight` from `lucide-react`. Same `useInView` pattern.
 - Section: `<section ref={ref} className="relative bg-black py-28 md:py-40 px-6 overflow-hidden">`.
@@ -253,13 +253,13 @@ This produces a seamless loop with a smooth crossfade to black between plays.
     - Header row `flex items-center justify-between mb-4`: tag `<p className="uppercase tracking-widest text-white/40 text-xs">{service.tag}</p>` and an `ArrowUpRight` icon (`size={18}`) inside `<span className="liquid-glass rounded-full p-2 text-white" aria-hidden="true">`.
     - Title `<h3 className="text-white text-xl md:text-2xl mb-3 tracking-tight">{service.title}</h3>`.
     - Description `<p className="text-white/50 text-sm leading-relaxed">{service.description}</p>`.
-  - **Card 1** — `videoUrl: '/assets/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4'`; tag "Strategy"; title "Research & Insight"; description: "We dig deep into data, culture, and human behavior to surface the insights that drive meaningful, lasting change."
-  - **Card 2** — `videoUrl: '/assets/hf_20260324_151826_c7218672-6e92-402c-9e45-f1e0f454bdc4.mp4'`; tag "Craft"; title "Design & Execution"; description: "From concept to launch, we obsess over every detail to deliver experiences that feel effortless and look extraordinary."
+  - **Card 1** , `videoUrl: '/assets/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4'`; tag "Strategy"; title "Research & Insight"; description: "We dig deep into data, culture, and human behavior to surface the insights that drive meaningful, lasting change."
+  - **Card 2** , `videoUrl: '/assets/hf_20260324_151826_c7218672-6e92-402c-9e45-f1e0f454bdc4.mp4'`; tag "Craft"; title "Design & Execution"; description: "From concept to launch, we obsess over every detail to deliver experiences that feel effortless and look extraordinary."
 
 ## Color Palette
 
 - **Background:** pure black via `bg-black` / `#000000` (also set on `<html>` and `<body>`).
-- **Foreground text:** white at varying opacities — `text-white`, `text-white/80`, `text-white/70`, `text-white/60`, `text-white/50`, `text-white/40`; placeholder `placeholder:text-white/40`.
+- **Foreground text:** white at varying opacities , `text-white`, `text-white/80`, `text-white/70`, `text-white/60`, `text-white/50`, `text-white/40`; placeholder `placeholder:text-white/40`.
 - **Glass surfaces:** `rgba(255, 255, 255, 0.01)` background, inset highlight `rgba(255, 255, 255, 0.1)`, gradient border stops `rgba(255, 255, 255, 0.45 / 0.15 / 0)`.
 - **Selection:** background `rgba(255, 255, 255, 0.25)`, text `#000`.
 - **Focus outline:** `1px solid rgba(255, 255, 255, 0.5)` with `outline-offset: 2px`.
@@ -267,7 +267,7 @@ This produces a seamless loop with a smooth crossfade to black between plays.
 
 ## Animations Summary
 
-- **Hero video:** vanilla `requestAnimationFrame` opacity crossfade — fade in over 500ms on `canplay`, fade out over 500ms when ≤0.55s remain, and a 100ms-gap restart loop on `ended`.
+- **Hero video:** vanilla `requestAnimationFrame` opacity crossfade , fade in over 500ms on `canplay`, fade out over 500ms when ≤0.55s remain, and a 100ms-gap restart loop on `ended`.
 - **Scroll reveals (Framer Motion `useInView`, `{ once: true, margin: '-100px' }`):**
   - About label: `opacity 0→1`, `y 20→0`, 0.6s.
   - About heading: `opacity 0→1`, `y 40→0`, 0.8s, delay 0.1s.

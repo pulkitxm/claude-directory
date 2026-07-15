@@ -1,4 +1,4 @@
-# Build Faster — AI Website Builder Dark Hero
+# Build Faster , AI Website Builder Dark Hero
 
 ## Overview
 
@@ -54,8 +54,8 @@ body {
 
 - `lang="en"`, `<meta charset="UTF-8" />`, viewport meta `width=device-width, initial-scale=1.0`.
 - `<meta name="theme-color" content="#000000" />`.
-- `<meta name="description" content="Build Faster — create fully functional, SEO-optimized websites in seconds with our advanced AI engine." />`.
-- `<title>Build Faster — AI Website Builder</title>`.
+- `<meta name="description" content="Build Faster , create fully functional, SEO-optimized websites in seconds with our advanced AI engine." />`.
+- `<title>Build Faster , AI Website Builder</title>`.
 - Body contains `<div id="root"></div>` and `<script type="module" src="/src/main.tsx"></script>`.
 
 ### App entry
@@ -92,7 +92,7 @@ A fixed, transparent navbar.
 
 **Container** (`<section>`): `relative min-h-screen w-full overflow-hidden bg-[#000000] text-white`.
 
-**Background video layer** — a `BackgroundVideo` subcomponent:
+**Background video layer** , a `BackgroundVideo` subcomponent:
 - Video source (HLS manifest): `https://stream.mux.com/T6oQJQ02cQ6N01TR6iHwZkKFkbepS34dkkIc9iukgy400g.m3u8` (the path is case-sensitive; use this exact casing).
 - Poster image: vendored locally at `/assets/unsplash-photo-1647356191320-d7a1f80ca777.jpg` (stored under `public/assets/`). The original Unsplash source for this asset was `https://images.unsplash.com/photo-1647356191320-d7a1f80ca777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhcmslMjB0ZWNobm9sb2d5JTIwbmV1cmFsJTIwbmV0d29ya3xlbnwxfHx8fDE3Njg5NzIyNTV8MA&ixlib=rb-4.1.0&q=80&w=1080`; in the implementation it is served from the local path above rather than the remote URL.
 - `<video>` attributes: `muted`, `loop`, `playsInline`, `poster={POSTER_SRC}`, `aria-hidden="true"`.
@@ -125,7 +125,7 @@ A fixed, transparent navbar.
 - Classes: `max-w-xl font-sans text-lg leading-[1.65] text-white sm:text-[20px]` (opacity comes from the animated value below).
 - Animation: `initial={{ opacity: 0 }}` `animate={{ opacity: 0.7 }}` `transition={{ delay: 0.4, duration: 0.6 }}`.
 
-**CTA buttons** — wrapped in a `motion.div`:
+**CTA buttons** , wrapped in a `motion.div`:
 - Wrapper classes: `flex flex-col items-center gap-6 sm:flex-row`.
 - Wrapper animation: `initial={{ opacity: 0, y: 20 }}` `animate={{ opacity: 1, y: 0 }}` `transition={{ delay: 0.6, duration: 0.5 }}`.
 
@@ -234,4 +234,4 @@ ai-builder-dark-hero/
 ## Notes
 
 - The poster image is vendored locally under `public/assets/` and referenced at `/assets/unsplash-photo-1647356191320-d7a1f80ca777.jpg` rather than fetched from the original Unsplash URL (`https://images.unsplash.com/photo-1647356191320-d7a1f80ca777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhcmslMjB0ZWNobm9sb2d5JTIwbmV1cmFsJTIwbmV0d29ya3xlbnwxfHx8fDE3Njg5NzIyNTV8MA&ixlib=rb-4.1.0&q=80&w=1080`).
-- The HLS video manifest path (`T6oQJQ02cQ6N01TR6iHwZkKFkbepS34dkkIc9iukgy400g`) is case-sensitive — copy it exactly.
+- The HLS video manifest path (`T6oQJQ02cQ6N01TR6iHwZkKFkbepS34dkkIc9iukgy400g`) is case-sensitive , copy it exactly.

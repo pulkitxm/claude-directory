@@ -1,23 +1,23 @@
-# Fluid Swirl Shader — FLUX Pigment Lab (React + TypeScript + Raw WebGL + Tailwind CSS)
+# Fluid Swirl Shader , FLUX Pigment Lab (React + TypeScript + Raw WebGL + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A self-contained WebGL shader experiment integrating the `FluidSwirl` component — a procedural fragment field that folds three pigments into an endless paint vortex — into a polished pigment-mixing console called FLUX. Drag to steer the spin, re-mix the three colours live, push contrast and spin, freeze the flow, or flip on a kaleidoscopic polar warp. A rolling oscilloscope panel reads real luminance directly off the GL framebuffer via `readPixels` — nothing is faked. Fully procedural, no image assets required. Generated with Claude Fable 5.
+A self-contained WebGL shader experiment integrating the `FluidSwirl` component , a procedural fragment field that folds three pigments into an endless paint vortex , into a polished pigment-mixing console called FLUX. Drag to steer the spin, re-mix the three colours live, push contrast and spin, freeze the flow, or flip on a kaleidoscopic polar warp. A rolling oscilloscope panel reads real luminance directly off the GL framebuffer via `readPixels` , nothing is faked. Fully procedural, no image assets required. Generated with Claude Fable 5.
 
 ## What's here
 
-- `src/components/ui/fluid-swirl-shader.tsx` — the integrated component. The
+- `src/components/ui/fluid-swirl-shader.tsx` , the integrated component. The
   prompt's vertex + fragment shaders are preserved **verbatim**; the existing
   `render()` uniforms were lifted into an **additive, fully backward-compatible**
   props API (see _Integration notes_).
-- `src/components/ui/fluid-swirl-shader.demo.tsx` — the canonical demo from the
+- `src/components/ui/fluid-swirl-shader.demo.tsx` , the canonical demo from the
   prompt (`<FluidSwirl />` with no props), shipped alongside the component.
-- `src/components/pigment-trace.tsx` — the signature panel: a rolling
+- `src/components/pigment-trace.tsx` , the signature panel: a rolling
   oscilloscope whose trace is sampled from the **actual GL framebuffer** (a real
   `readPixels` luma probe), not estimated.
-- `src/App.tsx` — the full instrument (field + wordmark + mixing console +
+- `src/App.tsx` , the full instrument (field + wordmark + mixing console +
   pigment trace + a footer that doubles as the integration cheatsheet).
-- `src/lib/utils.ts` — shadcn's `cn()` helper (clsx + tailwind-merge).
+- `src/lib/utils.ts` , shadcn's `cn()` helper (clsx + tailwind-merge).
 
 ## Run it
 
@@ -47,7 +47,7 @@ TypeScript**, so no scaffolding was required. The relevant decisions:
 ### Questions the prompt asks
 
 - **What data/props will be passed?** The pasted `FluidSwirl()` took **no
-  props** — every uniform was a constant inside `render()`. The integration
+  props** , every uniform was a constant inside `render()`. The integration
   keeps that exact default and additionally exposes those uniforms as
   **optional** props so the console can drive them (all backward-compatible):
 
@@ -57,18 +57,18 @@ TypeScript**, so no scaffolding was required. The relevant decisions:
   | `contrast` | `number` | `2.0` | paint banding / contrast |
   | `spinAmount` | `number` | `0.36` | how tightly the vortex winds |
   | `spinSpeed` | `number` | `1.0` | flow speed (`0` freezes the field) |
-  | `pixelFilter` | `number` | `700` | pixelisation — lower = chunkier |
+  | `pixelFilter` | `number` | `700` | pixelisation , lower = chunkier |
   | `offset` | `[number, number]` | `[0, 0]` | field recentre |
   | `polar` / `polarRepeat` / `polarZoom` | `boolean` / `number` | `false` / `2` / `1` | kaleidoscopic polar warp |
   | `pointerReactive` | `boolean` | `true` | steer `spin_rotation` with pointer-X (the original demo behaviour) |
-  | `fill` | `boolean` | `false` | **added** — track the parent box via `ResizeObserver` for a full-bleed background instead of `window` size |
-  | `onSample` | `(luminance: number) => void` | — | **added** — fires a few times/sec with the field's average luma, read off the GL framebuffer |
-  | `className` / `style` | — | `"w-full h-screen"` | passthrough to the `<canvas>` |
+  | `fill` | `boolean` | `false` | **added** , track the parent box via `ResizeObserver` for a full-bleed background instead of `window` size |
+  | `onSample` | `(luminance: number) => void` | , | **added** , fires a few times/sec with the field's average luma, read off the GL framebuffer |
+  | `className` / `style` | , | `"w-full h-screen"` | passthrough to the `<canvas>` |
 
 - **State management requirements?** None external. The component owns its WebGL
   lifecycle; all app state is just the current controls, held in `App.tsx` with
   `useState` (no context, no store, no providers).
-- **Required assets (images, icons)?** **No images** — the field is fully
+- **Required assets (images, icons)?** **No images** , the field is fully
   procedural, so the prompt's "fill with Unsplash stock images" step does not
   apply (there is nothing for a photo to fill). Icons use **lucide-react** as
   the prompt directs (`Droplets`, `Aperture`, `Gauge`, `Wind`, `Spline`,
@@ -78,19 +78,19 @@ TypeScript**, so no scaffolding was required. The relevant decisions:
   `ResizeObserver` (fill mode) for any breakpoint and devicePixelRatio. The
   instrument panels float in the corners on desktop and **stack in normal flow**
   below a centred wordmark on mobile; pointer _and_ touch both steer the spin.
-- **Best place to use it?** As an ambient, full-viewport hero/background — which
+- **Best place to use it?** As an ambient, full-viewport hero/background , which
   is exactly how `App.tsx` mounts it (`fill` behind the whole console).
 
 ### Changes applied to the pasted component
 
-1. **Props API** — the constants the original `render()` hard-coded
+1. **Props API** , the constants the original `render()` hard-coded
    (`colors`, `contrast 2.0`, `spin_amount 0.36`, `pixel_filter 700`, the polar
    flags, the offset) are now optional props read live from a ref each frame, so
    changing them never tears down and rebuilds the GL program. With **no props**
    the output is identical to the pasted file.
-2. **`fill` mode** — an optional `ResizeObserver` path so one component can back
+2. **`fill` mode** , an optional `ResizeObserver` path so one component can back
    a fixed full-viewport demo _and_ a responsive full-bleed background.
-3. **`onSample` probe** — `preserveDrawingBuffer` + a throttled `readPixels`
+3. **`onSample` probe** , `preserveDrawingBuffer` + a throttled `readPixels`
    reports average luma, which drives the pigment-trace oscilloscope.
 
 The vertex and fragment shader sources are unchanged from the prompt.
@@ -107,11 +107,11 @@ npx shadcn@latest init       # creates components.json, the @/ alias, components
 
 ## Assets
 
-Everything is vendored locally for offline use — no runtime CDN calls:
+Everything is vendored locally for offline use , no runtime CDN calls:
 
 - **Fonts** (`public/fonts/`): Space Grotesk (display) and JetBrains Mono
   (telemetry/data), latin `.woff2` subsets self-hosted via `@font-face`.
-- **No image assets** — the swirl is 100% procedural (raw WebGL).
+- **No image assets** , the swirl is 100% procedural (raw WebGL).
 
 ## Stack
 
@@ -125,4 +125,4 @@ Component: the **`FluidSwirl`** fluid-swirl shader from the integration prompt
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,8 +1,8 @@
-# Synex — Wealth Management Hero Section (React + TypeScript + Framer Motion + Tailwind CSS)
+# Synex , Wealth Management Hero Section (React + TypeScript + Framer Motion + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A full-viewport hero section for the fictional wealth-management platform Synex. The aesthetic is editorial-minimal with a tactile, organic twist: a warm off-white paper background, large refined Inter Tight typography, two photorealistic stones flanking the bottom corners, and a product dashboard screenshot rising centrally between them. Premium, calm, and confident — Apple keynote crossed with Swiss editorial design, grounded by natural texture. Generated with Claude Fable 5.
+A full-viewport hero section for the fictional wealth-management platform Synex. The aesthetic is editorial-minimal with a tactile, organic twist: a warm off-white paper background, large refined Inter Tight typography, two photorealistic stones flanking the bottom corners, and a product dashboard screenshot rising centrally between them. Premium, calm, and confident , Apple keynote crossed with Swiss editorial design, grounded by natural texture. Generated with Claude Fable 5.
 
 ## Signature interaction
 
@@ -25,7 +25,7 @@ React 18 · Vite · TypeScript · Tailwind CSS v3 · Framer Motion · lucide-rea
 
 ```
 src/
-  pages/Index.tsx              # page entry — <main> + sr-only <h1>, sets title/meta
+  pages/Index.tsx              # page entry , <main> + sr-only <h1>, sets title/meta
   components/synex/
     Hero.tsx                   # full layered composition
     Navbar.tsx                 # fixed 3-column grid navbar + CTA
@@ -35,7 +35,7 @@ src/
 ## Assets
 
 All assets are **vendored locally** under `public/assets/` (Synex wordmark,
-4-point star, four stone PNGs, and the dashboard screenshot — originally from
+4-point star, four stone PNGs, and the dashboard screenshot , originally from
 `qclay.design/lovable/synex`). The **Inter Tight** font is also vendored locally
 as a variable woff2 under `public/fonts/` so the project runs fully offline.
 
@@ -49,4 +49,4 @@ npm run build    # type-check + production build
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

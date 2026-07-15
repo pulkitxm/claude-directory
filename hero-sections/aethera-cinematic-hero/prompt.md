@@ -1,4 +1,4 @@
-# Aethera — Cinematic Hero Section with Looping Video Background
+# Aethera , Cinematic Hero Section with Looping Video Background
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a fullscreen, single-page hero section for a fictional studio brand called
 - **Framework:** React `^18.3.1` with `react-dom` `^18.3.1`
 - **Build tool:** Vite `^6.3.5` with `@vitejs/plugin-react` `^4.4.1`
 - **Language:** TypeScript `^5.8.3`
-- **Styling:** Tailwind CSS `^4.1.7` via the `@tailwindcss/vite` `^4.1.7` plugin (CSS-first config using the `@theme` directive — no `tailwind.config.js`)
+- **Styling:** Tailwind CSS `^4.1.7` via the `@tailwindcss/vite` `^4.1.7` plugin (CSS-first config using the `@theme` directive , no `tailwind.config.js`)
 - **Fonts:** Instrument Serif (display) and Inter (body), loaded from Google Fonts
 - **Testing/tooling:** Playwright `^1.60.0` (dev dependency)
 - **Notable techniques:** custom `requestAnimationFrame`-driven video fade loop, CSS keyframe entrance choreography, `prefers-reduced-motion` support, glassmorphic backdrop blur on the navbar
@@ -19,10 +19,10 @@ Build a fullscreen, single-page hero section for a fictional studio brand called
 ### Entry HTML (`index.html`)
 
 - `<html lang="en">`, `<meta charset="UTF-8" />`, `<meta name="viewport" content="width=device-width, initial-scale=1.0" />`.
-- Meta description: `Aethera — Beyond silence, we build the eternal. Digital havens for deep work and pure flows.`
+- Meta description: `Aethera , Beyond silence, we build the eternal. Digital havens for deep work and pure flows.`
 - Preconnect to Google Fonts: `https://fonts.googleapis.com` and `https://fonts.gstatic.com` (the latter with `crossorigin`).
 - Inline SVG favicon (`data:image/svg+xml,...`): a `32×32` rounded rect (`rx='16'`) filled `#000000` with a centered white (`#ffffff`) letter "A" in `Georgia,serif` at `font-size='18'`.
-- Page `<title>`: `Aethera® — Beyond silence, we build the eternal.`
+- Page `<title>`: `Aethera® , Beyond silence, we build the eternal.`
 - Body contains `<div id="root"></div>` and loads `<script type="module" src="/src/main.tsx"></script>`.
 
 ### React entry (`src/main.tsx`)
@@ -42,7 +42,7 @@ createRoot(document.getElementById("root")!).render(
 
 ### Stylesheet imports (`src/index.css`)
 
-Import order matters — fonts first, then Tailwind, then theme:
+Import order matters , fonts first, then Tailwind, then theme:
 
 ```css
 @import "./styles/fonts.css";
@@ -138,7 +138,7 @@ export default function App() {
 
 ### Source
 
-- The video asset is served locally from `/assets/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4` (a `VIDEO_SRC` constant). The original asset was sourced from `https://d8j0ntlcm91z4.cloudfront.net/USER_38XZZBOKVIGWJOTTWIXH07LWA1P/HF_20260328_083109_283F3553-E28F-428B-A723-D639C617EB2B.MP4` and has been vendored into the project's `public/assets/` directory (the local filename is lowercased). Note: the CloudFront URL appeared fully uppercased in the original brief; only its scheme+host casing has been normalized here (the case-sensitive path segment and `.MP4` extension are preserved as-is) — the local path is the ground-truth source.
+- The video asset is served locally from `/assets/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4` (a `VIDEO_SRC` constant). The original asset was sourced from `https://d8j0ntlcm91z4.cloudfront.net/USER_38XZZBOKVIGWJOTTWIXH07LWA1P/HF_20260328_083109_283F3553-E28F-428B-A723-D639C617EB2B.MP4` and has been vendored into the project's `public/assets/` directory (the local filename is lowercased). Note: the CloudFront URL appeared fully uppercased in the original brief; only its scheme+host casing has been normalized here (the case-sensitive path segment and `.MP4` extension are preserved as-is) , the local path is the ground-truth source.
 
 ### Positioning
 
@@ -200,7 +200,7 @@ export default function VideoBackground() {
       restartTimer = window.setTimeout(() => {
         video.currentTime = 0;
         video.play().catch(() => {
-          /* autoplay interrupted — the rAF loop keeps the layer hidden */
+          /* autoplay interrupted , the rAF loop keeps the layer hidden */
         });
       }, RESTART_DELAY_MS);
     };
@@ -246,19 +246,19 @@ export default function VideoBackground() {
 
 ### Gradient overlay
 
-A sibling `<div>` over the video: `absolute inset-0 bg-gradient-to-b from-background via-transparent to-background` — dissolves the video into the page at the top and bottom edges.
+A sibling `<div>` over the video: `absolute inset-0 bg-gradient-to-b from-background via-transparent to-background` , dissolves the video into the page at the top and bottom edges.
 
 ## Navigation Bar (`src/components/Navbar.tsx`)
 
-- **Header wrapper:** `<header className="relative z-10 bg-white/70 backdrop-blur-md">` — the glassmorphic blur effect.
+- **Header wrapper:** `<header className="relative z-10 bg-white/70 backdrop-blur-md">` , the glassmorphic blur effect.
 - **Nav element:** `aria-label="Primary"`, classes `mx-auto flex max-w-7xl items-center justify-between px-8 py-6`.
 - **Logo:** `Aethera®` where the registered-trademark symbol (`&reg;`) is rendered as a superscript via `<sup className="text-[0.45em]">`. Logo `<a href="#">` styling: `font-display text-3xl tracking-tight text-[#000000]`.
 - **Menu items** (rendered from a `MENU_ITEMS` array, hidden on small screens via `hidden items-center gap-8 md:flex`):
-  - `Home` — `href="#"`, active, color `text-[#000000]`
-  - `Studio` — `href="#studio"`
-  - `About` — `href="#about"`
-  - `Journal` — `href="#journal"`
-  - `Reach Us` — `href="#reach-us"`
+  - `Home` , `href="#"`, active, color `text-[#000000]`
+  - `Studio` , `href="#studio"`
+  - `About` , `href="#about"`
+  - `Journal` , `href="#journal"`
+  - `Reach Us` , `href="#reach-us"`
   - Inactive items: `text-[#6F6F6F] hover:text-[#000000]`. All items: `text-sm transition-colors`. The active item also sets `aria-current="page"`.
 - **CTA button:** label `Begin Journey`, classes `rounded-full bg-[#000000] px-6 py-2.5 text-sm text-white transition-transform duration-300 ease-out hover:scale-103`.
 
@@ -323,7 +323,7 @@ export default function Navbar() {
 
 ### Headline
 
-- **Text:** "Beyond *silence,* we build *the eternal.*" — the words `silence,` and `the eternal.` are wrapped in `<em className="italic text-[#6F6F6F]">` for italic emphasis; the rest is `#000000`.
+- **Text:** "Beyond *silence,* we build *the eternal.*" , the words `silence,` and `the eternal.` are wrapped in `<em className="italic text-[#6F6F6F]">` for italic emphasis; the rest is `#000000`.
 - **Classes:** `animate-fade-rise max-w-7xl font-display text-5xl font-normal text-[#000000] sm:text-7xl md:text-8xl`.
 - **Inline style:** `lineHeight: 0.95`, `letterSpacing: "-2.46px"`.
 - **Font:** Instrument Serif (`font-display`).
@@ -384,7 +384,7 @@ The entrance choreography uses a single `fade-rise` keyframe with three staggere
 - **`.animate-fade-rise`:** `fade-rise 0.8s ease-out both`.
 - **`.animate-fade-rise-delay`:** same as fade-rise but with a `0.2s` delay.
 - **`.animate-fade-rise-delay-2`:** same as fade-rise but with a `0.4s` delay.
-- **Reduced motion:** under `@media (prefers-reduced-motion: reduce)`, all three classes settle instantly (`animation-duration: 0.01ms; animation-delay: 0ms;`) — no rise.
+- **Reduced motion:** under `@media (prefers-reduced-motion: reduce)`, all three classes settle instantly (`animation-duration: 0.01ms; animation-delay: 0ms;`) , no rise.
 
 ```css
 /* ---- Entrance choreography ------------------------------------- */
