@@ -3,17 +3,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Pricing — Every AI</title>
+		<title>Pricing, Every AI</title>
 		<meta
 			name="description"
 			content="Simple pricing for your ease. Choose the plan that works best for you. All plans include a 14-day free trial."
 		>
 		<link rel="stylesheet" href="styles.css">
 	</head>
-	<body>
-		<!-- ======================================================
-     NAVBAR
-     ====================================================== -->
+	<body class="pricing-page">
+
 		<nav class="navbar" id="navbar">
 			<div class="navbar-inner">
 				<a href="index.html" class="logo">
@@ -94,9 +92,7 @@
 			</div>
 		</nav>
 
-		<!-- ======================================================
-     PAGE HEADER
-     ====================================================== -->
+
 		<section class="page-header">
 			<h1>Simple pricing for your ease</h1>
 			<p>
@@ -106,9 +102,7 @@
 			</p>
 		</section>
 
-		<!-- ======================================================
-     BILLING TOGGLE
-     ====================================================== -->
+
 		<div class="billing-toggle-section">
 			<div class="billing-toggle">
 				<button class="toggle-btn active" id="monthlyBtn">Monthly</button>
@@ -116,12 +110,10 @@
 			</div>
 		</div>
 
-		<!-- ======================================================
-     PRICING CARDS
-     ====================================================== -->
+
 		<section class="pricing-grid-section">
 			<div class="pricing-grid">
-				<!-- Hobby -->
+
 				<div class="pricing-card">
 					<div class="pricing-header">
 						<h3>Hobby</h3>
@@ -149,7 +141,7 @@
 					>
 				</div>
 
-				<!-- Starter -->
+
 				<div class="pricing-card">
 					<div class="pricing-header">
 						<h3>Starter</h3>
@@ -177,7 +169,7 @@
 					<a href="signup.html" class="btn btn-primary btn-full">Buy Now</a>
 				</div>
 
-				<!-- Professional (Featured) -->
+
 				<div class="pricing-card pricing-card-featured">
 					<div class="pricing-header">
 						<h3>Professional</h3>
@@ -212,7 +204,7 @@
 					>
 				</div>
 
-				<!-- Enterprise -->
+
 				<div class="pricing-card">
 					<div class="pricing-header">
 						<h3>Enterprise</h3>
@@ -247,9 +239,7 @@
 			</div>
 		</section>
 
-		<!-- ======================================================
-     COMPARISON TABLE
-     ====================================================== -->
+
 		<section class="comparison-table-section">
 			<div class="comparison-table">
 				<table>
@@ -373,9 +363,7 @@
 			</div>
 		</section>
 
-		<!-- ======================================================
-     TRUSTED BY
-     ====================================================== -->
+
 		<section class="trusted-by">
 			<div class="container">
 				<h2>Trusted by the best companies</h2>
@@ -391,9 +379,7 @@
 			</div>
 		</section>
 
-		<!-- ======================================================
-     FOOTER
-     ====================================================== -->
+
 		<footer class="footer">
 			<div class="container">
 				<div class="footer-top">
@@ -476,34 +462,27 @@
 			document.getElementById("mobileMenu").classList.toggle("open");
 		});
 
-		// Billing toggle
-		document
-			.getElementById("monthlyBtn")
-			.addEventListener("click", function () {
-				this.classList.add("active");
-				document.getElementById("yearlyBtn").classList.remove("active");
-				document
-					.querySelectorAll(".price-amount[data-monthly]")
-					.forEach(function (el) {
-						el.textContent = "$" + el.dataset.monthly;
-					});
-				document.querySelectorAll(".price-period").forEach(function (el) {
-					el.textContent = "/mo";
-				});
-			});
-
-		document.getElementById("yearlyBtn").addEventListener("click", function () {
-			this.classList.add("active");
-			document.getElementById("monthlyBtn").classList.remove("active");
+		function setBilling(cycle) {
+			var monthly = cycle === "monthly";
+			document.getElementById("monthlyBtn").classList.toggle("active", monthly);
+			document.getElementById("yearlyBtn").classList.toggle("active", !monthly);
 			document
-				.querySelectorAll(".price-amount[data-yearly]")
-				.forEach(function (el) {
-					el.textContent = "$" + el.dataset.yearly;
+				.querySelectorAll(".price-amount[data-monthly]")
+				.forEach(function (element) {
+					element.textContent =
+						"$" + element.dataset[monthly ? "monthly" : "yearly"];
 				});
-			document.querySelectorAll(".price-period").forEach(function (el) {
-				el.textContent = "/yr";
+			document.querySelectorAll(".price-period").forEach(function (element) {
+				element.textContent = monthly ? "/mo" : "/yr";
 			});
-		});
+		}
+
+		document.getElementById("monthlyBtn").onclick = function () {
+			setBilling("monthly");
+		};
+		document.getElementById("yearlyBtn").onclick = function () {
+			setBilling("yearly");
+		};
 		</script>
 	</body>
 </html>
