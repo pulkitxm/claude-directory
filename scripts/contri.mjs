@@ -31,6 +31,26 @@ const shiftedDateKey = (key, days) => {
 	return dateKey(date);
 };
 
+const parseCloc = (output) => {
+	const languages = [];
+	let summary;
+
+	for (const line of output.split("\n")) {
+		const match = line.match(/^\s*(.+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s*$/);
+		if (!match) continue;
+		const row = {
+			files: Number(match[2]),
+			blank: Number(match[3]),
+			comment: Number(match[4]),
+			code: Number(match[5]),
+		};
+		if (match[1] === "SUM:") summary = row;
+		else languages.push({ language: match[1], ...row });
+	}
+
+	return { languages, summary };
+};
+
 const increment = (counts, key) => counts.set(key, (counts.get(key) ?? 0) + 1);
 
 const nameWithOwner = run("gh", [
@@ -233,7 +253,7 @@ const reportPath = resolve(scriptDirectory, "contri-report.html");
 const reportData = JSON.stringify({
 	repository: nameWithOwner,
 	generatedAt: new Date().toISOString(),
-	cloc,
+	cloc: parseCloc(cloc),
 	rows,
 }).replaceAll("<", "\\u003c");
 const report = readFileSync(templatePath, "utf8").replace(
