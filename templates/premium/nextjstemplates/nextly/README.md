@@ -1,37 +1,34 @@
-# Nextly Landing Page Template Clone — Free Startup SaaS Site (Vanilla HTML/CSS/JS)
+# Nextly Landing Page Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained reproduction of "Nextly" — the popular free Next.js + TailwindCSS landing page and marketing website template for startups and indie projects by Web3Templates. Built as a single, fully responsive scrolling page in plain HTML, CSS, and vanilla JavaScript with no framework or build step: a navbar with a persisted dark/light mode toggle, a hero with a line-art illustration, a "Trusted by" logo cloud of inline-SVG brand marks, two alternating benefit sections, a decorative video-promo card, a testimonials grid, an independently-toggling FAQ accordion, a CTA banner, a full footer, a mobile hamburger menu, and a floating "Contact form" widget with its own animated panel. Generated with Claude Fable 5.
+Nextly is a responsive startup landing page based on the Web3Templates reference design. The single-page layout includes a navigation bar, hero illustration, customer logo cloud, alternating benefit sections, video promotion, testimonials, FAQ, call to action, footer, and contact form widget.
 
 ## Run
 
-This is a static site — no `package.json`, no build step, no dependencies. Serve the folder with any static file server, or open `index.html` directly in a browser:
+Serve the folder with any static web server:
 
 ```sh
-python3 -m http.server
+python3 -m http.server 8000
 ```
 
-Then visit `http://localhost:8000/index.html`.
+Then open `http://localhost:8000/index.html`.
 
-## What to try
+## Interactions
 
-- **Dark mode** — click the sun/moon icon in the navbar; the theme persists across reloads via `localStorage`.
-- **FAQ accordion** — click any of the 4 questions; each toggles independently (not a single-open group), with a rotating chevron.
-- **Contact form widget** — click the floating chat bubble bottom-right to open the "How can we help?" panel (Full Name / Email / Message / Send), then click again (now an X) to close it.
-- **Mobile menu** — resize below 1024px and use the hamburger icon; the nav links and a full-width "Get Started" CTA are injected exactly as in the source (mounted only while open).
-- **Hover states** — nav links, the illustration play button, and all CTAs use the same Tailwind `transition-colors`/`duration-300` timing as the original.
+- Toggle light and dark themes with persisted preference
+- Open the responsive navigation below 1024 pixels
+- Expand each FAQ independently
+- Open and close the responsive contact form widget
+- Play the embedded promotional video
 
-Styling lives in `styles.css` (a faithfully ported copy of the site's compiled Tailwind utility CSS, plus hand-written additions for the widgets that Tailwind's JIT purge doesn't emit as static rules); behavior (theme toggle, mobile menu, FAQ accordion, contact widget, decorative video button) lives in `script.js`. All images, the Inter webfont, and the favicon are vendored locally under `assets/`.
+## Structure
 
-`prompt.md` holds the full design/content spec this clone was built against, and `demo.mp4` (with `poster.jpg`) shows it in motion. Recon artifacts (reference screenshots, computed-style outlines, extracted CSS/JS, and rest/hover state captures) are preserved under `.reference/home/`.
+- `index.html` contains the complete page
+- `styles.css` contains the responsive layout and theme styles
+- `script.js` handles themes and interactive controls
+- `assets/` contains local images and fonts
 
-## Credits
+## Reference
 
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
-
-**Original:** Nextly by Web3Templates — <https://nextly.web3templates.com>
-
----
-
-Part of the [Studies](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+[Nextly by Web3Templates](https://nextly.web3templates.com)
