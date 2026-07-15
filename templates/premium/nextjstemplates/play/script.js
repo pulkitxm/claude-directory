@@ -1,142 +1,196 @@
-// Play (nextjstemplates) clone — shared interactions for every page.
 document.addEventListener("DOMContentLoaded", function () {
-	/* ---------- Sign in / Sign up: Magic Link <-> Password tab toggle ---------- */
 	var tabMagic = document.getElementById("tabMagic");
 	var tabPassword = document.getElementById("tabPassword");
 	var formMagic = document.getElementById("formMagic");
 	var formPassword = document.getElementById("formPassword");
-	var activeTabCls = ["bg-dark-3", "text-white"];
 	if (tabMagic && tabPassword && formMagic && formPassword) {
-		var setTab = function (which) {
+		var setTab = function (which, focus) {
 			var magicActive = which === "magic";
 			tabMagic.classList.toggle("bg-dark-3", magicActive);
 			tabMagic.classList.toggle("text-white", magicActive);
 			tabPassword.classList.toggle("bg-dark-3", !magicActive);
 			tabPassword.classList.toggle("text-white", !magicActive);
+			tabMagic.setAttribute("aria-selected", String(magicActive));
+			tabPassword.setAttribute("aria-selected", String(!magicActive));
+			tabMagic.tabIndex = magicActive ? 0 : -1;
+			tabPassword.tabIndex = magicActive ? -1 : 0;
 			formMagic.classList.toggle("hidden", !magicActive);
 			formPassword.classList.toggle("hidden", magicActive);
+			formMagic.setAttribute("aria-hidden", String(!magicActive));
+			formPassword.setAttribute("aria-hidden", String(magicActive));
+			if (focus) (magicActive ? tabMagic : tabPassword).focus();
 		};
+		if (tabMagic.parentElement) tabMagic.parentElement.setAttribute("role", "tablist");
+		tabMagic.setAttribute("role", "tab");
+		tabPassword.setAttribute("role", "tab");
+		tabMagic.setAttribute("aria-controls", formMagic.id);
+		tabPassword.setAttribute("aria-controls", formPassword.id);
 		tabMagic.addEventListener("click", function () {
-			setTab("magic");
+			setTab("magic", false);
 		});
 		tabPassword.addEventListener("click", function () {
-			setTab("password");
+			setTab("password", false);
 		});
-	}
-
-	/* ---------- Mobile menu toggle ---------- */
-	var toggler = document.getElementById("navbarToggler");
-	var collapse = document.getElementById("navbarCollapse");
-	if (toggler && collapse) {
-		toggler.addEventListener("click", function () {
-			collapse.classList.toggle("navbar-open");
-			var spans = toggler.querySelectorAll("span");
-			spans.forEach(function (s) {
-				s.classList.toggle("open");
+		[tabMagic, tabPassword].forEach(function (tab) {
+			tab.addEventListener("keydown", function (event) {
+				if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+					event.preventDefault();
+					setTab(tab === tabMagic ? "password" : "magic", true);
+				}
 			});
 		});
+		setTab(formMagic.classList.contains("hidden") ? "password" : "magic", false);
 	}
 
-	/* ---------- "Pages" submenu — click toggle on mobile/tablet ---------- */
-	document.querySelectorAll(".submenu-item").forEach(function (item) {
-		var btn = item.querySelector("button");
-		var submenu = item.querySelector(".submenu");
-		if (!btn || !submenu) return;
-		btn.addEventListener("click", function (e) {
-			if (window.innerWidth < 1024) {
-				e.preventDefault();
-				item.classList.toggle("submenu-open");
-				submenu.classList.toggle("hidden");
+	var toggler = document.getElementById("navbarToggler");
+	var collapse = document.getElementById("navbarCollapse");
+	var setNavigation = function (open, restoreFocus) {
+		if (!toggler || !collapse) return;
+		collapse.classList.toggle("navbar-open", open);
+		toggler.setAttribute("aria-expanded", String(open));
+		toggler.querySelectorAll("span").forEach(function (span) {
+			span.classList.toggle("open", open);
+		});
+		if (restoreFocus) toggler.focus();
+	};
+	if (toggler && collapse) {
+		toggler.setAttribute("aria-controls", collapse.id);
+		toggler.setAttribute("aria-expanded", "false");
+		toggler.addEventListener("click", function () {
+			setNavigation(!collapse.classList.contains("navbar-open"), false);
+		});
+		collapse.querySelectorAll("a").forEach(function (link) {
+			link.addEventListener("click", function () {
+				setNavigation(false, false);
+			});
+		});
+		document.addEventListener("click", function (event) {
+			if (!collapse.contains(event.target) && !toggler.contains(event.target)) {
+				setNavigation(false, false);
 			}
 		});
-	});
+	}
 
-	/* ---------- Sticky header on scroll ---------- */
+	var submenuItem = document.querySelector(".submenu-item");
+	var submenuButton = submenuItem && submenuItem.querySelector("button");
+	var submenu = submenuItem && submenuItem.querySelector(".submenu");
+	var setSubmenu = function (open, restoreFocus) {
+		if (!submenuItem || !submenuButton || !submenu) return;
+		submenuItem.classList.toggle("submenu-open", open);
+		submenu.classList.toggle("hidden", !open);
+		submenuButton.setAttribute("aria-expanded", String(open));
+		if (restoreFocus) submenuButton.focus();
+	};
+	if (submenuItem && submenuButton && submenu) {
+		if (!submenu.id) submenu.id = "pages-submenu";
+		submenuButton.setAttribute("aria-controls", submenu.id);
+		submenuButton.setAttribute("aria-haspopup", "true");
+		submenuButton.setAttribute("aria-expanded", "false");
+		submenuButton.addEventListener("click", function (event) {
+			event.preventDefault();
+			setSubmenu(!submenuItem.classList.contains("submenu-open"), false);
+		});
+		document.addEventListener("click", function (event) {
+			if (!submenuItem.contains(event.target)) setSubmenu(false, false);
+		});
+	}
+
 	var header = document.querySelector(".ud-header");
 	if (header) {
 		var onScroll = function () {
-			if (window.scrollY > 80) {
-				header.classList.add("sticky");
-			} else {
-				header.classList.remove("sticky");
-			}
+			header.classList.toggle("sticky", window.scrollY > 80);
 		};
 		window.addEventListener("scroll", onScroll, { passive: true });
 		onScroll();
 	}
 
-	/* ---------- Theme toggler (persisted, next-themes compatible) ---------- */
 	var themeBtn = document.querySelector('[aria-label="theme toggler"]');
+	var syncThemeButton = function () {
+		if (!themeBtn) return;
+		var dark = document.documentElement.classList.contains("dark");
+		themeBtn.setAttribute("aria-pressed", String(dark));
+		themeBtn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+	};
 	if (themeBtn) {
+		syncThemeButton();
 		themeBtn.addEventListener("click", function () {
 			var root = document.documentElement;
-			var isDark = root.classList.contains("dark");
-			var next = isDark ? "light" : "dark";
+			var next = root.classList.contains("dark") ? "light" : "dark";
 			root.classList.remove("light", "dark");
 			root.classList.add(next);
 			root.style.colorScheme = next;
 			try {
 				localStorage.setItem("theme", next);
-			} catch (e) {}
+			} catch (error) {
+				return;
+			} finally {
+				syncThemeButton();
+			}
 		});
 	}
 
-	/* ---------- Scroll-reveal (wow.js equivalent) ----------
-	   Elements are fully visible by default (see .wow{opacity:1} in styles.css) so
-	   full-page captures always show complete content. The IntersectionObserver below
-	   only ADDS a fadeInUp replay as flair when a section scrolls into view for a real
-	   visitor — it never hides anything, so nothing depends on the observer firing. */
 	var wowEls = document.querySelectorAll(".wow");
 	if ("IntersectionObserver" in window && wowEls.length) {
-		var io = new IntersectionObserver(
-			function (entries, obs) {
+		var observer = new IntersectionObserver(
+			function (entries, activeObserver) {
 				entries.forEach(function (entry) {
 					if (entry.isIntersecting) {
-						var el = entry.target;
-						var delay = el.getAttribute("data-wow-delay");
-						if (delay) {
-							el.style.animationDelay = delay;
-						}
-						el.classList.add("animated");
-						obs.unobserve(el);
+						var element = entry.target;
+						var delay = element.getAttribute("data-wow-delay");
+						if (delay) element.style.animationDelay = delay;
+						element.classList.add("animated");
+						activeObserver.unobserve(element);
 					}
 				});
 			},
-			{ threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+			{ threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
 		);
-		wowEls.forEach(function (el) {
-			io.observe(el);
+		wowEls.forEach(function (element) {
+			observer.observe(element);
 		});
 	} else {
-		wowEls.forEach(function (el) {
-			el.classList.add("animated");
+		wowEls.forEach(function (element) {
+			element.classList.add("animated");
 		});
 	}
 
-	/* ---------- Toast helper ---------- */
 	function showToast(message) {
 		var root = document.getElementById("toast-root");
 		if (!root) return;
-		var t = document.createElement("div");
-		t.className = "toast";
-		t.textContent = message;
-		root.appendChild(t);
+		root.setAttribute("aria-live", "polite");
+		var toast = document.createElement("div");
+		toast.className = "toast";
+		toast.setAttribute("role", "status");
+		toast.textContent = message;
+		root.appendChild(toast);
 		setTimeout(function () {
-			t.style.opacity = "0";
-			t.style.transition = "opacity .3s ease";
+			toast.style.opacity = "0";
+			toast.style.transition = "opacity .3s ease";
 			setTimeout(function () {
-				t.remove();
+				toast.remove();
 			}, 300);
 		}, 2800);
 	}
 
-	/* ---------- Forms: contact / signin / signup / forgot-password ---------- */
 	document.querySelectorAll("form").forEach(function (form) {
-		form.addEventListener("submit", function (e) {
-			e.preventDefault();
+		form.addEventListener("submit", function (event) {
+			event.preventDefault();
 			var action = form.getAttribute("data-toast") || "Thanks! Your submission was received.";
 			showToast(action);
 			form.reset();
 		});
+	});
+
+	document.addEventListener("keydown", function (event) {
+		if (event.key === "Escape") {
+			if (submenuItem && submenuItem.classList.contains("submenu-open")) {
+				setSubmenu(false, true);
+			} else if (collapse && collapse.classList.contains("navbar-open")) {
+				setNavigation(false, true);
+			}
+		}
+	});
+	window.addEventListener("resize", function () {
+		if (window.innerWidth >= 1024) setNavigation(false, false);
 	});
 });
