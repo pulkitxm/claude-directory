@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>State Management in React: A Complete Guide  -  John MacTavish</title>
+<meta name="description" content="Explore different state management solutions in React, from local state to global state management with Redux, Zustand, and other modern alternatives.">
+<link rel="icon" href="../assets/images/avatar.webp">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script src="../assets/js/theme-boot.js"></script>
+</head>
+<body class="article-state">
+<header class="site-header wrap">
+  <a class="avatar-link" href="../index.html" aria-label="Home">
+    <img class="avatar" src="../assets/images/avatar.webp" alt="John MacTavish" width="40" height="40">
+  </a>
+  <nav class="nav-pill" aria-label="Primary">
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <div class="nav-links">
+      <a href="../about.html">About</a>
+<a href="../projects.html">Projects</a>
+<a href="../blog.html" aria-current="page">Blog</a>
+<a href="../contact.html">Contact</a>
+
+    </div>
+  </nav>
+<button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button></header>
+<main class="wrap">
+  <div class="post-cover"><img src="../assets/images/project-macbook.png" alt="State Management in React: A Complete Guide cover" loading="lazy"></div>
+  <article class="post-article">
+<h1>State Management in React: A Complete Guide</h1>
+<p>State management is a crucial aspect of React applications. Let's explore different approaches to managing state, from simple local state to complex global state management solutions.</p>
+<h2>Local State Management</h2>
+<h3>1. useState Hook</h3>
+<pre><code class="language-jsx">function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h3>2. useReducer Hook</h3>
+<pre><code class="language-jsx">function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {state.count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; dispatch({ type: 'increment' })}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={() =&gt; dispatch({ type: 'decrement' })}&gt;Decrement&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h2>Context API</h2>
+<h3>1. Basic Context Setup</h3>
+<pre><code class="language-jsx">const ThemeContext = React.createContext();
+
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+
+  return (
+    &lt;ThemeContext.Provider value={{ theme, setTheme }}&gt;
+      {children}
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+}
+</code></pre>
+<h3>2. Context with useReducer</h3>
+<pre><code class="language-jsx">const initialState = {
+  theme: 'light',
+  user: null,
+  notifications: []
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_THEME':
+      return { ...state, theme: action.payload };
+    case 'SET_USER':
+      return { ...state, user: action.payload };
+    case 'ADD_NOTIFICATION':
+      return {
+        ...state,
+        notifications: [...state.notifications, action.payload]
+      };
+    default:
+      return state;
+  }
+}
+
+const AppContext = React.createContext();
+
+function AppProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    &lt;AppContext.Provider value={{ state, dispatch }}&gt;
+      {children}
+    &lt;/AppContext.Provider&gt;
+  );
+}
+</code></pre>
+<h2>Redux</h2>
+<h3>1. Basic Redux Setup</h3>
+<pre><code class="language-jsx">// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './counterSlice';
+
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer
+  }
+});
+
+counterSlice.js
+import { createSlice } from '@reduxjs/toolkit';
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: { value: 0 },
+  reducers: {
+    increment: state =&gt; {
+      state.value += 1;
+    },
+    decrement: state =&gt; {
+      state.value -= 1;
+    }
+  }
+});
+
+export const { increment, decrement } = counterSlice.actions;
+export default counterSlice.reducer;
+</code></pre>
+<h3>2. Redux with Async Actions</h3>
+<pre><code class="language-jsx">// userSlice.js
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+export const fetchUser = createAsyncThunk(
+  'user/fetchUser',
+  async (userId) =&gt; {
+    const response = await fetch(`/api/users/${userId}`);
+    return response.json();
+  }
+);
+
+const userSlice = createSlice({
+  name: 'user',
+  initialState: {
+    data: null,
+    status: 'idle',
+    error: null
+  },
+  reducers: {},
+  extraReducers: (builder) =&gt; {
+    builder
+      .addCase(fetchUser.pending, (state) =&gt; {
+        state.status = 'loading';
+      })
+      .addCase(fetchUser.fulfilled, (state, action) =&gt; {
+        state.status = 'succeeded';
+        state.data = action.payload;
+      })
+      .addCase(fetchUser.rejected, (state, action) =&gt; {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+  }
+});
+</code></pre>
+<h2>Zustand</h2>
+<h3>1. Basic Store</h3>
+<pre><code class="language-jsx">import create from 'zustand';
+
+const useStore = create((set) =&gt; ({
+  count: 0,
+  increment: () =&gt; set((state) =&gt; ({ count: state.count + 1 })),
+  decrement: () =&gt; set((state) =&gt; ({ count: state.count - 1 }))
+}));
+
+function Counter() {
+  const { count, increment, decrement } = useStore();
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={increment}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={decrement}&gt;Decrement&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h3>2. Complex Store with Middleware</h3>
+<pre><code class="language-jsx">import create from 'zustand';
+import { persist } from 'zustand/middleware';
+
+const useStore = create(
+  persist(
+    (set) =&gt; ({
+      user: null,
+      setUser: (user) =&gt; set({ user }),
+      clearUser: () =&gt; set({ user: null }),
+      theme: 'light',
+      toggleTheme: () =&gt; set((state) =&gt; ({
+        theme: state.theme === 'light' ? 'dark' : 'light'
+      }))
+    }),
+    {
+      name: 'app-storage',
+      getStorage: () =&gt; localStorage
+    }
+  )
+);
+</code></pre>
+<h2>Jotai</h2>
+<h3>1. Atomic State Management</h3>
+<pre><code class="language-jsx">import { atom, useAtom } from 'jotai';
+
+const countAtom = atom(0);
+const doubleAtom = atom((get) =&gt; get(countAtom) * 2);
+
+function Counter() {
+  const [count, setCount] = useAtom(countAtom);
+  const [doubled] = useAtom(doubleAtom);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;p&gt;Doubled: {doubled}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h3>2. Async Atoms</h3>
+<pre><code class="language-jsx">import { atom, useAtom } from 'jotai';
+import { atomWithQuery } from 'jotai/query';
+
+const userAtom = atomWithQuery((get) =&gt; ({
+  queryKey: ['user', get(userIdAtom)],
+  queryFn: async ({ queryKey: [, id] }) =&gt; {
+    const response = await fetch(`/api/users/${id}`);
+    return response.json();
+  }
+}));
+</code></pre>
+<h2>Best Practices</h2>
+<ol>
+<li>Choose the right state management solution based on your needs</li>
+<li>Keep state as local as possible</li>
+<li>Use context for theme, authentication, and other global settings</li>
+<li>Consider using Redux for complex applications with many state updates</li>
+<li>Use Zustand or Jotai for simpler applications</li>
+<li>Implement proper error handling and loading states</li>
+<li>Use TypeScript for better type safety</li>
+<li>Implement proper testing for state management</li>
+<li>Consider performance implications</li>
+<li>Use devtools for debugging</li>
+</ol>
+<h2>Conclusion</h2>
+<p>State management in React has evolved significantly over the years, offering various solutions for different use cases. Whether you're building a small application or a large-scale project, there's a state management solution that fits your needs. Remember to choose the right tool for your specific use case and follow best practices to maintain a clean and maintainable codebase.</p>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <span>Built with love by Manu Arora</span>
+  <div class="social-icons">
+    <a href="https://x.com/mannupaaji" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22H16.7l-5.2-6.8L5.5 22H2.4l8.1-9.3L1.4 2h6.8l4.7 6.2L18.9 2zm-1.2 18h1.7L7.4 3.9H5.6L17.7 20z"></path></svg></a>
+    <a href="https://linkedin.com/in/manuarora28" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9z"></path></svg></a>
+    <a href="https://github.com/manuarora700" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.03 3.26 9.29 7.79 10.8.57.1.78-.25.78-.55v-2.15c-3.17.69-3.84-1.36-3.84-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.25 3.32.95.1-.74.4-1.25.72-1.53-2.53-.29-5.2-1.27-5.2-5.63 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.16a10.9 10.9 0 0 1 5.72 0c2.18-1.47 3.14-1.16 3.14-1.16.62 1.57.23 2.73.11 3.02.73.79 1.17 1.81 1.17 3.05 0 4.37-2.68 5.34-5.22 5.62.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12c0-6.28-5.23-11.5-11.5-11.5z"></path></svg></a>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+
+
+</body></html>

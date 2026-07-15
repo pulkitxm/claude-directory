@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mastering React Hooks  -  John MacTavish</title>
+<meta name="description" content="Learn how to effectively use React Hooks to manage state and side effects in your functional components. A comprehensive guide to useState, useEffect, and more.">
+<link rel="icon" href="../assets/images/avatar.webp">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script src="../assets/js/theme-boot.js"></script>
+</head>
+<body class="article-mastering">
+<header class="site-header wrap">
+  <a class="avatar-link" href="../index.html" aria-label="Home">
+    <img class="avatar" src="../assets/images/avatar.webp" alt="John MacTavish" width="40" height="40">
+  </a>
+  <nav class="nav-pill" aria-label="Primary">
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <div class="nav-links">
+      <a href="../about.html">About</a>
+<a href="../projects.html">Projects</a>
+<a href="../blog.html" aria-current="page">Blog</a>
+<a href="../contact.html">Contact</a>
+
+    </div>
+  </nav>
+<button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button></header>
+<main class="wrap">
+  <div class="post-cover"><img src="../assets/images/project-macbook.png" alt="Mastering React Hooks cover" loading="lazy"></div>
+  <article class="post-article">
+<h1>Mastering React Hooks</h1>
+<p>React Hooks have transformed how we write React components by allowing us to use state and other React features in functional components. Let's dive deep into the world of hooks and learn how to use them effectively.</p>
+<h2>Understanding React Hooks</h2>
+<p>React Hooks are functions that let you "hook into" React state and lifecycle features from function components. They were introduced in React 16.8 to allow you to use state and other React features without writing a class.</p>
+<h2>Core Hooks</h2>
+<h3>1. useState</h3>
+<p>The useState hook is the most basic hook that lets you add state to functional components:</p>
+<pre><code class="language-jsx">const [count, setCount] = useState(0);
+</code></pre>
+<h3>2. useEffect</h3>
+<p>useEffect lets you perform side effects in function components:</p>
+<pre><code class="language-jsx">useEffect(() =&gt; {
+  document.title = `Count: ${count}`;
+}, [count]);
+</code></pre>
+<h3>3. useContext</h3>
+<p>useContext provides a way to pass data through the component tree without having to pass props manually:</p>
+<pre><code class="language-jsx">const value = useContext(MyContext);
+</code></pre>
+<h2>Custom Hooks</h2>
+<p>Custom hooks allow you to extract component logic into reusable functions:</p>
+<pre><code class="language-jsx">function useWindowSize() {
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+
+  useEffect(() =&gt; {
+    const handleResize = () =&gt; {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () =&gt; window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return size;
+}
+</code></pre>
+<h2>Best Practices</h2>
+<ol>
+<li>Only call hooks at the top level</li>
+<li>Only call hooks from React function components</li>
+<li>Use multiple useEffect hooks to separate concerns</li>
+<li>Clean up side effects in useEffect</li>
+<li>Use the dependency array correctly</li>
+</ol>
+<h2>Common Use Cases</h2>
+<h3>Form Handling</h3>
+<pre><code class="language-jsx">function useForm(initialValues) {
+  const [values, setValues] = useState(initialValues);
+
+  const handleChange = (e) =&gt; {
+    const { name, value } = e.target;
+    setValues(prev =&gt; ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  return [values, handleChange];
+}
+</code></pre>
+<h3>Data Fetching</h3>
+<pre><code class="language-jsx">function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() =&gt; {
+    fetch(url)
+      .then(res =&gt; res.json())
+      .then(data =&gt; {
+        setData(data);
+        setLoading(false);
+      })
+      .catch(error =&gt; {
+        setError(error);
+        setLoading(false);
+      });
+  }, [url]);
+
+  return { data, loading, error };
+}
+</code></pre>
+<h2>Conclusion</h2>
+<p>React Hooks have made it easier to write and maintain React applications. By understanding and implementing these patterns, you can create more maintainable and reusable code in your React applications.</p>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <span>Built with love by Manu Arora</span>
+  <div class="social-icons">
+    <a href="https://x.com/mannupaaji" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22H16.7l-5.2-6.8L5.5 22H2.4l8.1-9.3L1.4 2h6.8l4.7 6.2L18.9 2zm-1.2 18h1.7L7.4 3.9H5.6L17.7 20z"></path></svg></a>
+    <a href="https://linkedin.com/in/manuarora28" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9z"></path></svg></a>
+    <a href="https://github.com/manuarora700" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.03 3.26 9.29 7.79 10.8.57.1.78-.25.78-.55v-2.15c-3.17.69-3.84-1.36-3.84-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.25 3.32.95.1-.74.4-1.25.72-1.53-2.53-.29-5.2-1.27-5.2-5.63 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.16a10.9 10.9 0 0 1 5.72 0c2.18-1.47 3.14-1.16 3.14-1.16.62 1.57.23 2.73.11 3.02.73.79 1.17 1.81 1.17 3.05 0 4.37-2.68 5.34-5.22 5.62.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12c0-6.28-5.23-11.5-11.5-11.5z"></path></svg></a>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+
+
+</body></html>

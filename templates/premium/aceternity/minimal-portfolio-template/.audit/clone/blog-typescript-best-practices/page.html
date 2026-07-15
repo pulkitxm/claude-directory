@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TypeScript Best Practices for 2024  -  John MacTavish</title>
+<meta name="description" content="Learn the most important TypeScript best practices and patterns that will help you write more maintainable and type-safe code in your projects.">
+<link rel="icon" href="../assets/images/avatar.webp">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script src="../assets/js/theme-boot.js"></script>
+</head>
+<body class="article-typescript">
+<header class="site-header wrap">
+  <a class="avatar-link" href="../index.html" aria-label="Home">
+    <img class="avatar" src="../assets/images/avatar.webp" alt="John MacTavish" width="40" height="40">
+  </a>
+  <nav class="nav-pill" aria-label="Primary">
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <div class="nav-links">
+      <a href="../about.html">About</a>
+<a href="../projects.html">Projects</a>
+<a href="../blog.html" aria-current="page">Blog</a>
+<a href="../contact.html">Contact</a>
+
+    </div>
+  </nav>
+<button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button></header>
+<main class="wrap">
+  <div class="post-cover"><img src="../assets/images/project-macbook.png" alt="TypeScript Best Practices for 2024 cover" loading="lazy"></div>
+  <article class="post-article">
+<h1>TypeScript Best Practices for 2024</h1>
+<p>TypeScript has become an essential tool in modern web development. Let's explore the best practices that will help you write better TypeScript code in 2024.</p>
+<h2>Type Safety First</h2>
+<h3>1. Strict Mode</h3>
+<p>Always enable strict mode in your <code>tsconfig.json</code>:</p>
+<pre><code class="language-json">{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
+  }
+}
+</code></pre>
+<h3>2. Type Inference</h3>
+<p>Let TypeScript infer types when possible:</p>
+<pre><code class="language-typescript">// Good
+const numbers = [1, 2, 3]; Type: number[]
+
+Bad
+const numbers: number[] = [1, 2, 3];
+</code></pre>
+<h2>Interface vs Type</h2>
+<h3>When to Use Interfaces</h3>
+<pre><code class="language-typescript">interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+Extending interfaces
+interface AdminUser extends User {
+  role: 'admin';
+  permissions: string[];
+}
+</code></pre>
+<h3>When to Use Types</h3>
+<pre><code class="language-typescript">type Status = 'pending' | 'approved' | 'rejected';
+
+type ApiResponse&lt;T&gt; = {
+  data: T;
+  status: number;
+  message: string;
+};
+</code></pre>
+<h2>Advanced Type Patterns</h2>
+<h3>1. Utility Types</h3>
+<pre><code class="language-typescript">// Partial
+type PartialUser = Partial&lt;User&gt;;
+
+Pick
+type UserCredentials = Pick&lt;User, 'email' | 'password'&gt;;
+
+Omit
+type PublicUser = Omit&lt;User, 'password'&gt;;
+
+Record
+type UserRoles = Record&lt;string, string[]&gt;;
+</code></pre>
+<h3>2. Type Guards</h3>
+<pre><code class="language-typescript">function isAdmin(user: User): user is AdminUser {
+  return 'role' in user &amp;&amp; user.role === 'admin';
+}
+
+function processUser(user: User) {
+  if (isAdmin(user)) {
+    TypeScript knows user is AdminUser here
+    console.log(user.permissions);
+  }
+}
+</code></pre>
+<h2>Error Handling</h2>
+<h3>1. Custom Error Types</h3>
+<pre><code class="language-typescript">class ValidationError extends Error {
+  constructor(public field: string, message: string) {
+    super(message);
+    this.name = 'ValidationError';
+  }
+}
+
+function validateUser(user: User): void {
+  if (!user.email.includes('@')) {
+    throw new ValidationError('email', 'Invalid email format');
+  }
+}
+</code></pre>
+<h3>2. Result Type Pattern</h3>
+<pre><code class="language-typescript">type Result&lt;T, E = Error&gt; = {
+  success: true;
+  data: T;
+} | {
+  success: false;
+  error: E;
+};
+
+async function fetchUser(id: number): Promise&lt;Result&lt;User&gt;&gt; {
+  try {
+    const response = await api.get(`/users/${id}`);
+    return { success: true, data: response.data };
+  } catch (error) {
+    return { success: false, error: error as Error };
+  }
+}
+</code></pre>
+<h2>React with TypeScript</h2>
+<h3>1. Component Props</h3>
+<pre><code class="language-typescript">interface ButtonProps {
+  variant: 'primary' | 'secondary';
+  size: 'small' | 'medium' | 'large';
+  onClick: () =&gt; void;
+  children: React.ReactNode;
+}
+
+const Button: React.FC&lt;ButtonProps&gt; = ({
+  variant,
+  size,
+  onClick,
+  children
+}) =&gt; {
+  Component implementation
+};
+</code></pre>
+<h3>2. Custom Hooks</h3>
+<pre><code class="language-typescript">function useLocalStorage&lt;T&gt;(key: string, initialValue: T) {
+  const [storedValue, setStoredValue] = useState&lt;T&gt;(() =&gt; {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value: T | ((val: T) =&gt; T)) =&gt; {
+    try {
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return [storedValue, setValue] as const;
+}
+</code></pre>
+<h2>Testing with TypeScript</h2>
+<h3>1. Jest with TypeScript</h3>
+<pre><code class="language-typescript">describe('UserService', () =&gt; {
+  it('should create a new user', async () =&gt; {
+    const user: User = {
+      id: 1,
+      name: 'John Doe',
+      email: 'john@example.com'
+    };
+
+    const result = await createUser(user);
+    expect(result).toEqual(user);
+  });
+});
+</code></pre>
+<h3>2. Mocking</h3>
+<pre><code class="language-typescript">const mockApi = {
+  get: jest.fn&lt;Promise&lt;User&gt;, [string]&gt;(),
+  post: jest.fn&lt;Promise&lt;User&gt;, [string, Partial&lt;User&gt;]&gt;()
+};
+</code></pre>
+<h2>Conclusion</h2>
+<p>Following these TypeScript best practices will help you write more maintainable, type-safe, and robust applications. Remember that TypeScript is a tool to help you catch errors early and provide better developer experience, so use it wisely and consistently throughout your project.</p>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <span>Built with love by Manu Arora</span>
+  <div class="social-icons">
+    <a href="https://x.com/mannupaaji" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22H16.7l-5.2-6.8L5.5 22H2.4l8.1-9.3L1.4 2h6.8l4.7 6.2L18.9 2zm-1.2 18h1.7L7.4 3.9H5.6L17.7 20z"></path></svg></a>
+    <a href="https://linkedin.com/in/manuarora28" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9z"></path></svg></a>
+    <a href="https://github.com/manuarora700" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.03 3.26 9.29 7.79 10.8.57.1.78-.25.78-.55v-2.15c-3.17.69-3.84-1.36-3.84-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.25 3.32.95.1-.74.4-1.25.72-1.53-2.53-.29-5.2-1.27-5.2-5.63 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.16a10.9 10.9 0 0 1 5.72 0c2.18-1.47 3.14-1.16 3.14-1.16.62 1.57.23 2.73.11 3.02.73.79 1.17 1.81 1.17 3.05 0 4.37-2.68 5.34-5.22 5.62.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12c0-6.28-5.23-11.5-11.5-11.5z"></path></svg></a>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+
+
+</body></html>

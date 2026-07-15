@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>State Management in React: A Complete Guide — John MacTavish</title>
+<title>State Management in React: A Complete Guide  -  John MacTavish</title>
 <meta name="description" content="Explore different state management solutions in React, from local state to global state management with Redux, Zustand, and other modern alternatives.">
 <link rel="icon" href="../assets/images/avatar.webp">
 <link rel="stylesheet" href="../assets/css/styles.css">
 <script src="../assets/js/theme-boot.js"></script>
 </head>
-<body>
+<body class="article-state">
 <header class="site-header wrap">
   <a class="avatar-link" href="../index.html" aria-label="Home">
     <img class="avatar" src="../assets/images/avatar.webp" alt="John MacTavish" width="40" height="40">
@@ -30,39 +30,261 @@
 </header>
 <main class="wrap">
   <div class="post-cover"><img src="../assets/images/project-macbook.png" alt="State Management in React: A Complete Guide cover" loading="lazy"></div>
-  <div class="post-meta">Friday, Mar 15, 2024</div>
-  <h1 class="page-title" style="font-size:30px;">State Management in React: A Complete Guide</h1>
-  <p class="lede">Explore different state management solutions in React, from local state to global state management with Redux, Zustand, and other modern alternatives.</p>
   <article class="post-article">
-    
-<h2>Local State vs Global State</h2>
-<p>Explore different state management solutions in React, from local state to global state management with Redux, Zustand, and other modern alternatives.</p>
-<h3>Local State</h3>
-<pre>const [open, setOpen] = useState(false);</pre>
-<h3>Context API</h3>
-<pre>const ThemeContext = createContext('light');
+<h1>State Management in React: A Complete Guide</h1>
+<p>State management is a crucial aspect of React applications. Let's explore different approaches to managing state, from simple local state to complex global state management solutions.</p>
+<h2>Local State Management</h2>
+<h3>1. useState Hook</h3>
+<pre><code class="language-jsx">function Counter() {
+  const [count, setCount] = useState(0);
 
-function App() {
   return (
-    &lt;ThemeContext.Provider value="dark"&gt;
-      &lt;Page /&gt;
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h3>2. useReducer Hook</h3>
+<pre><code class="language-jsx">function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {state.count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; dispatch({ type: 'increment' })}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={() =&gt; dispatch({ type: 'decrement' })}&gt;Decrement&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h2>Context API</h2>
+<h3>1. Basic Context Setup</h3>
+<pre><code class="language-jsx">const ThemeContext = React.createContext();
+
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+
+  return (
+    &lt;ThemeContext.Provider value={{ theme, setTheme }}&gt;
+      {children}
     &lt;/ThemeContext.Provider&gt;
   );
-}</pre>
-<h3>Zustand</h3>
-<pre>const useStore = create((set) => ({
+}
+
+function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+}
+</code></pre>
+<h3>2. Context with useReducer</h3>
+<pre><code class="language-jsx">const initialState = {
+  theme: 'light',
+  user: null,
+  notifications: []
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_THEME':
+      return { ...state, theme: action.payload };
+    case 'SET_USER':
+      return { ...state, user: action.payload };
+    case 'ADD_NOTIFICATION':
+      return {
+        ...state,
+        notifications: [...state.notifications, action.payload]
+      };
+    default:
+      return state;
+  }
+}
+
+const AppContext = React.createContext();
+
+function AppProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    &lt;AppContext.Provider value={{ state, dispatch }}&gt;
+      {children}
+    &lt;/AppContext.Provider&gt;
+  );
+}
+</code></pre>
+<h2>Redux</h2>
+<h3>1. Basic Redux Setup</h3>
+<pre><code class="language-jsx">// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './counterSlice';
+
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer
+  }
+});
+
+counterSlice.js
+import { createSlice } from '@reduxjs/toolkit';
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: { value: 0 },
+  reducers: {
+    increment: state =&gt; {
+      state.value += 1;
+    },
+    decrement: state =&gt; {
+      state.value -= 1;
+    }
+  }
+});
+
+export const { increment, decrement } = counterSlice.actions;
+export default counterSlice.reducer;
+</code></pre>
+<h3>2. Redux with Async Actions</h3>
+<pre><code class="language-jsx">// userSlice.js
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+export const fetchUser = createAsyncThunk(
+  'user/fetchUser',
+  async (userId) =&gt; {
+    const response = await fetch(`/api/users/${userId}`);
+    return response.json();
+  }
+);
+
+const userSlice = createSlice({
+  name: 'user',
+  initialState: {
+    data: null,
+    status: 'idle',
+    error: null
+  },
+  reducers: {},
+  extraReducers: (builder) =&gt; {
+    builder
+      .addCase(fetchUser.pending, (state) =&gt; {
+        state.status = 'loading';
+      })
+      .addCase(fetchUser.fulfilled, (state, action) =&gt; {
+        state.status = 'succeeded';
+        state.data = action.payload;
+      })
+      .addCase(fetchUser.rejected, (state, action) =&gt; {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+  }
+});
+</code></pre>
+<h2>Zustand</h2>
+<h3>1. Basic Store</h3>
+<pre><code class="language-jsx">import create from 'zustand';
+
+const useStore = create((set) =&gt; ({
   count: 0,
-  increment: () => set((s) => ({ count: s.count + 1 })),
-}));</pre>
-<h2>Choosing the Right Tool</h2>
+  increment: () =&gt; set((state) =&gt; ({ count: state.count + 1 })),
+  decrement: () =&gt; set((state) =&gt; ({ count: state.count - 1 }))
+}));
+
+function Counter() {
+  const { count, increment, decrement } = useStore();
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={increment}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={decrement}&gt;Decrement&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h3>2. Complex Store with Middleware</h3>
+<pre><code class="language-jsx">import create from 'zustand';
+import { persist } from 'zustand/middleware';
+
+const useStore = create(
+  persist(
+    (set) =&gt; ({
+      user: null,
+      setUser: (user) =&gt; set({ user }),
+      clearUser: () =&gt; set({ user: null }),
+      theme: 'light',
+      toggleTheme: () =&gt; set((state) =&gt; ({
+        theme: state.theme === 'light' ? 'dark' : 'light'
+      }))
+    }),
+    {
+      name: 'app-storage',
+      getStorage: () =&gt; localStorage
+    }
+  )
+);
+</code></pre>
+<h2>Jotai</h2>
+<h3>1. Atomic State Management</h3>
+<pre><code class="language-jsx">import { atom, useAtom } from 'jotai';
+
+const countAtom = atom(0);
+const doubleAtom = atom((get) =&gt; get(countAtom) * 2);
+
+function Counter() {
+  const [count, setCount] = useAtom(countAtom);
+  const [doubled] = useAtom(doubleAtom);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;p&gt;Doubled: {doubled}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h3>2. Async Atoms</h3>
+<pre><code class="language-jsx">import { atom, useAtom } from 'jotai';
+import { atomWithQuery } from 'jotai/query';
+
+const userAtom = atomWithQuery((get) =&gt; ({
+  queryKey: ['user', get(userIdAtom)],
+  queryFn: async ({ queryKey: [, id] }) =&gt; {
+    const response = await fetch(`/api/users/${id}`);
+    return response.json();
+  }
+}));
+</code></pre>
+<h2>Best Practices</h2>
 <ol>
-<li>Use local state for component-specific UI state</li>
-<li>Use context for low-frequency global data (theme, auth)</li>
-<li>Use a dedicated store (Zustand/Redux) for complex, high-frequency state</li>
+<li>Choose the right state management solution based on your needs</li>
+<li>Keep state as local as possible</li>
+<li>Use context for theme, authentication, and other global settings</li>
+<li>Consider using Redux for complex applications with many state updates</li>
+<li>Use Zustand or Jotai for simpler applications</li>
+<li>Implement proper error handling and loading states</li>
+<li>Use TypeScript for better type safety</li>
+<li>Implement proper testing for state management</li>
+<li>Consider performance implications</li>
+<li>Use devtools for debugging</li>
 </ol>
 <h2>Conclusion</h2>
-<p>There is no one-size-fits-all state manager — pick the simplest tool that solves the problem at hand.</p>
-
+<p>State management in React has evolved significantly over the years, offering various solutions for different use cases. Whether you're building a small application or a large-scale project, there's a state management solution that fits your needs. Remember to choose the right tool for your specific use case and follow best practices to maintain a clean and maintainable codebase.</p>
   </article>
 </main>
 <footer class="site-footer wrap">
