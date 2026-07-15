@@ -1,20 +1,20 @@
-# Indie Stories — Podcast Website Template (Tailwind CSS + Alpine.js + AOS + Swiper.js)
+# Indie Stories: Podcast Website Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A three-page dark-themed podcast website template faithfully reproducing the Cruip Podcast design. It features a hero section with an iPhone mockup and animated SVG blobs, an Alpine.js-powered filterable episode list, a Swiper.js carousel, host profile grid, testimonials, and a fully interactive audio player page with playback-speed control and a seek bar — all built with plain HTML, vendored Tailwind CSS utility classes, Alpine.js, AOS (Animate on Scroll), and Swiper.js, with no build step required.
+A three-page dark-themed podcast website template faithfully reproducing the current Cruip Podcast design. It includes the full landing page, episode player, and subscription platform page with no build step.
 
 ## Pages
 
 | File | Description |
 |---|---|
-| `index.html` | Home — hero, episode carousel, filterable podcast list, hosts, testimonials, CTA |
-| `podcast.html` | Episode player — audio player with seek bar, speed control, episode notes, related sidebar |
-| `subscribe.html` | Subscribe — centered email capture with feature highlights |
+| `index.html` | Home with hero, carousel, filters, hosts, testimonials, and CTA |
+| `podcast.html` | Episode player with seek bar, speed control, notes, and related episodes |
+| `subscribe.html` | Subscription platforms and copyable podcast URL |
 
 ## Run
 
-No build step is required. All CSS, JS, fonts, and images are vendored under `assets/`.
+No build step is required. CSS, JavaScript, fonts, images, audio, and favicons are vendored in their matching root folders.
 
 Open directly in a browser:
 
@@ -26,7 +26,6 @@ Or serve with any static file server:
 
 ```sh
 python3 -m http.server 8080
-# then visit http://localhost:8080
 ```
 
 ## Key Features
@@ -38,7 +37,7 @@ python3 -m http.server 8080
 - Alpine.js category filter tabs (`ALL`, `INDIE STORIES`, `SOFTWARE SOCIAL`, `INTERVIEWS`) with `x-show`
 - Alpine.js audio player on `podcast.html`: play/pause, rewind/forward 10 s, playback speed (1x / 1.5x / 2x), gradient seek bar, time display
 - AOS scroll animations with `ease-out-cubic` easing, 700 ms duration, staggered delays
-- Inter typeface served from local `assets/fonts/`
+- Inter, Permanent Marker, and HK Grotesk typefaces served from local `fonts/`
 
 ## Notes
 
@@ -48,8 +47,6 @@ python3 -m http.server 8080
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip — https://cruip.com/demos/podcast/
+**Original:** Cruip, https://cruip.com/demos/podcast/
 
----
-
-Part of the [Cruip](../) collection in the [Templates](../../../) — an open-source gallery of UI. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Cruip](../) collection in the [Templates](../../../).
