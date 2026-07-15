@@ -1,55 +1,45 @@
-# Ella Mae® — SaaS Operations Workspace Website Template Clone (Vanilla HTML/CSS/JS)
+# Ella Mae®: SaaS Operations Workspace Website Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Pixel-faithful clone of the Ella Mae® SaaS template by Lexington Themes — a bold, geometric operations workspace landing site featuring 15 pages, thick 8px structural borders, pill-shaped buttons with press-down hover states, an infinite-scroll logo marquee, CSS `<details>` FAQ accordion with icon rotation, responsive mobile navigation with smooth opacity/translate transitions, and a large SVG wordmark footer. Built as self-contained plain HTML/CSS/JS with zero build step required; all fonts (Inter Variable), SVGs, and images are vendored locally. Generated with Claude Fable 5.
-
-## Pages
-
-| Page | File |
-|------|------|
-| Home (hero, features, pricing, FAQ) | `index.html` |
-| Changelog | `changelog/index.html` |
-| Customers | `customers/index.html` |
-| Help Center | `helpcenter/index.html` |
-| Integrations | `integrations/index.html` |
-| Blog (with search modal) | `blog/index.html` |
-| System Overview | `system/overview/index.html` |
-| System Buttons | `system/buttons/index.html` |
-| System Colors | `system/colors/index.html` |
-| System Typography | `system/typography/index.html` |
-| System Links | `system/links/index.html` |
-| Login | `forms/login/index.html` |
-| Sign Up | `forms/signup/index.html` |
-| Contact / 404 | `contact/index.html` |
-| 404 | `404.html` |
+Ella Mae® is a 15-page operations workspace template with thick structural borders, pill-shaped controls, an animated logo marquee, native FAQ disclosures, responsive navigation, and a large footer wordmark. It is built with HTML, CSS, and JavaScript and requires no build step.
 
 ## Run
 
-No build step required — open any page directly:
+Serve the project folder with a local static server.
 
 ```sh
-# Static server (recommended)
 python3 -m http.server 8080
-# then open http://localhost:8080
 ```
 
-Or open `index.html` directly in a browser.
+## Key interactions
 
-## Notes
+- **Mobile navigation:** The menu control opens and closes the responsive navigation panel.
+- **Blog search:** Search filters the available journal titles in a modal.
+- **FAQ disclosures:** Questions expand to reveal their answers.
+- **Forms:** Login, sign-up, contact, and newsletter forms use responsive input layouts.
+- **Marquee:** The home page cycles partner logos continuously.
 
-- `styles.css` — shared design tokens (CSS custom properties for the full accent/secondary/base palettes), button system, nav, footer, marquee animation
-- `shared.js` — mobile menu open/close logic used across all inner pages
-- `assets/` — all fonts (via rsms.me CDN), SVG blobs, brand logos, team photos, blog images, and integration icons vendored locally
-- `.reference/` — recon artifacts (screenshots, outlines, source CSS/JS) captured per-page from the live Ellamae demo during cloning
-- `prompt.md` holds the full build spec; `demo.mp4` shows the clone in motion
+## Routes
+
+- `index.html`
+- `changelog/index.html`
+- `customers/index.html`
+- `helpcenter/index.html`
+- `integrations/index.html`
+- `blog/index.html`
+- `system/overview/index.html`
+- `system/buttons/index.html`
+- `system/colors/index.html`
+- `system/typography/index.html`
+- `system/links/index.html`
+- `forms/login/index.html`
+- `forms/signup/index.html`
+- `contact/index.html`
+- `404.html`
 
 ## Credits
 
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
+The original design is from [Lexington Themes](https://lexingtonthemes.com/viewports/ellamae).
 
-**Original:** Lexington Themes — <https://lexingtonthemes.com/viewports/ellamae>
-
----
-
-Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../README.md) collection.
