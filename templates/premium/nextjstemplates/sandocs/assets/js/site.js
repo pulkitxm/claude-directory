@@ -1,54 +1,72 @@
 (function () {
 	"use strict";
 
-	// ---------- theme toggle ----------
 	var root = document.documentElement;
-	var toggle = document.querySelector(".theme-toggle");
+	var themeToggle = document.querySelector(".theme-toggle");
 	function currentTheme() {
 		return root.getAttribute("data-theme") === "dark" ? "dark" : "light";
 	}
-	if (toggle) {
-		toggle.addEventListener("click", function () {
+	function syncThemeLabel() {
+		if (!themeToggle) return;
+		var label = currentTheme() === "dark" ? "Switch to light mode" : "Switch to dark mode";
+		themeToggle.setAttribute("aria-label", label);
+		themeToggle.setAttribute("title", label);
+	}
+	if (themeToggle) {
+		syncThemeLabel();
+		themeToggle.addEventListener("click", function () {
 			var next = currentTheme() === "dark" ? "light" : "dark";
 			root.setAttribute("data-theme", next);
+			syncThemeLabel();
 			try {
 				localStorage.setItem("sandocs-theme", next);
-			} catch (e) {}
+			} catch (error) {}
 		});
 	}
 
-	// ---------- mobile sidebar drawer ----------
 	var menuToggle = document.querySelector(".menu-toggle");
 	var sidebar = document.querySelector(".sticky.border-r");
-	if (menuToggle && sidebar) {
+	var headerNav = document.querySelector("header nav");
+	var menuPanel = sidebar || headerNav;
+	function closeMenu() {
+		if (!menuToggle || !menuPanel) return;
+		menuPanel.classList.remove(sidebar ? "is-open" : "mobile-header-menu");
+		menuToggle.setAttribute("aria-expanded", "false");
+	}
+	if (menuToggle && menuPanel) {
+		if (!menuPanel.id) menuPanel.id = sidebar ? "docs-navigation" : "site-navigation";
+		menuToggle.setAttribute("aria-controls", menuPanel.id);
 		menuToggle.addEventListener("click", function () {
-			var open = sidebar.classList.toggle("is-open");
+			var className = sidebar ? "is-open" : "mobile-header-menu";
+			var open = menuPanel.classList.toggle(className);
 			menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
 		});
-		document.addEventListener("click", function (e) {
-			if (
-				sidebar.classList.contains("is-open") &&
-				!sidebar.contains(e.target) &&
-				!menuToggle.contains(e.target)
-			) {
-				sidebar.classList.remove("is-open");
-				menuToggle.setAttribute("aria-expanded", "false");
+		menuPanel.querySelectorAll("a").forEach(function (link) {
+			link.addEventListener("click", closeMenu);
+		});
+		document.addEventListener("click", function (event) {
+			if (!menuPanel.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
+		});
+		document.addEventListener("keydown", function (event) {
+			if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+				closeMenu();
+				menuToggle.focus();
 			}
 		});
 	}
 
-	// ---------- copy-to-clipboard for the home CLI install pill ----------
-	document.querySelectorAll("[data-copy]").forEach(function (el) {
-		el.addEventListener("click", function () {
-			var text = el.getAttribute("data-copy");
-			var pill = el.closest(".copy-pill") || el.parentElement;
+	document.querySelectorAll("[data-copy]").forEach(function (button) {
+		button.addEventListener("click", function () {
+			var text = button.getAttribute("data-copy");
+			var pill = button.closest(".copy-pill") || button.parentElement;
 			var done = function () {
-				if (pill) {
-					pill.classList.add("copied");
-					setTimeout(function () {
-						pill.classList.remove("copied");
-					}, 1400);
-				}
+				if (!pill) return;
+				pill.classList.add("copied");
+				button.setAttribute("aria-label", "Install command copied");
+				setTimeout(function () {
+					pill.classList.remove("copied");
+					button.setAttribute("aria-label", "Copy install command");
+				}, 1400);
 			};
 			if (navigator.clipboard && navigator.clipboard.writeText) {
 				navigator.clipboard.writeText(text).then(done, done);
@@ -58,28 +76,31 @@
 		});
 	});
 
-	// ---------- TOC scroll-spy (right "On This Page" rail) ----------
 	var tocLinks = Array.prototype.slice.call(document.querySelectorAll("nav.w-64 a[href^='#']"));
 	if (tocLinks.length) {
 		var targets = tocLinks
-			.map(function (a) {
-				var id = decodeURIComponent(a.getAttribute("href").slice(1));
-				return { link: a, el: document.getElementById(id) };
+			.map(function (link) {
+				var id = decodeURIComponent(link.getAttribute("href").slice(1));
+				return { link: link, element: document.getElementById(id) };
 			})
-			.filter(function (t) {
-				return !!t.el;
+			.filter(function (target) {
+				return !!target.element;
 			});
 
 		function onScroll() {
 			var y = window.scrollY + 90;
 			var active = null;
-			targets.forEach(function (t) {
-				if (t.el.offsetTop <= y) active = t;
+			targets.forEach(function (target) {
+				if (target.element.offsetTop <= y) active = target;
 			});
-			tocLinks.forEach(function (a) {
-				a.classList.remove("is-active");
+			tocLinks.forEach(function (link) {
+				link.classList.remove("is-active");
+				link.removeAttribute("aria-current");
 			});
-			if (active) active.link.classList.add("is-active");
+			if (active) {
+				active.link.classList.add("is-active");
+				active.link.setAttribute("aria-current", "location");
+			}
 		}
 		document.addEventListener("scroll", onScroll, { passive: true });
 		onScroll();

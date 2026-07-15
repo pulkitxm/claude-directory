@@ -1,17 +1,17 @@
-# Sandocs — Documentation Site Template (Vanilla HTML/CSS/JS)
+# Sandocs Documentation Site Template (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A faithful, self-contained clone of Sandocs, a Next.js + Tailwind CSS documentation-site template by Web3Templates, rebuilt as plain HTML/CSS/JS with no build step. It reproduces the marketing landing page and all 20 docs pages (Getting Started, Configuration, Plugins, API Reference) with a sticky left sidebar nav, a scroll-spy "On This Page" table of contents, a copy-to-clipboard CLI install snippet, hover-lift feature cards, a mobile hamburger drawer, and a light/dark theme toggle with `localStorage` persistence and a no-flash boot script. Generated with Claude Fable 5.
+A faithful, self-contained clone of Sandocs, a Next.js and Tailwind CSS documentation-site template by Web3Templates, rebuilt as plain HTML, CSS, and JavaScript with no build step. It reproduces the marketing landing page and all 20 docs pages with a sticky left sidebar, a scroll-spy "On This Page" table of contents, a copy-to-clipboard install snippet, hover-lift feature cards, a mobile navigation drawer, and a persistent light or dark theme.
 
 ## Pages
 
-- `index.html` — landing page: hero with CLI install snippet, feature rows, code-window mockup, sponsor logos, footer
+- `index.html`: landing page with CLI install snippet, feature rows, code-window mockup, sponsor logos, and footer
 - `docs/index.html` plus 20 docs pages under:
-  - `docs/getting-started/` — intro, prerequisites, environment, installation, browsers
-  - `docs/configuration/` — typography, asset-handling, cli, accessibility, typescript, rendering, lifecycle
-  - `docs/plugins/` — write-plugin, plugin-configuration
-  - `docs/api/` — http-api, app-directive, endpoints, server, client, dom
+  - `docs/getting-started/`: intro, prerequisites, environment, installation, browsers
+  - `docs/configuration/`: typography, asset-handling, cli, accessibility, typescript, rendering, lifecycle
+  - `docs/plugins/`: write-plugin, plugin-configuration
+  - `docs/api/`: http-api, app-directive, endpoints, server, client, dom
 
 Each docs page shares the same shell: a sticky, scrollable left sidebar nav (active item highlighted), a center content column (markdown-style body with prev/next footer nav), and a sticky right rail with a scroll-spy "On This Page" TOC.
 
@@ -42,8 +42,4 @@ Or open `index.html` directly in a browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Sandocs (Web3Templates) — <https://sandocs.vercel.app>
-
----
-
-Part of the [Web3Templates](../) collection in the [Templates](../../../) — an open-source gallery of UI. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+**Original:** Sandocs by Web3Templates: <https://sandocs.vercel.app>
