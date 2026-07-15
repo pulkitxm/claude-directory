@@ -2,7 +2,7 @@
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Specta is a self-contained, pixel-faithful clone of the dark "Specta" marketing landing page template for a fictional AI-powered video-editing SaaS. It is a single-page template built with plain HTML, CSS, and vanilla JavaScript — no build step, all assets vendored locally, and it runs fully offline. The page ships dark by default with a light/dark theme toggle (driven by CSS custom properties and `localStorage`), and features a sticky nav, a gradient hero headline with a framed autoplay product video, an infinite logo and testimonial ticker marquee, scroll-in reveal animations via `IntersectionObserver`, alternating feature sections, a monetize card grid, a testimonial grid on a pink gradient panel, and a multi-column footer. Generated with Claude Fable 5.
+Specta is a self-contained, pixel-faithful clone of the dark "Specta" marketing landing page template for a fictional video-editing SaaS. It uses plain HTML, CSS, and vanilla JavaScript with no build step, and all assets are vendored locally. The page ships dark by default with a light and dark theme toggle, gradient hero, autoplay product video, ticker marquee, alternating feature sections, monetize grid, testimonials, and multi-column footer.
 
 ## Run
 
@@ -29,4 +29,4 @@ Faithful clone of an existing design, recreated for study/learning. All credit f
 
 ---
 
-Part of the [Templates](../../../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../../) collection in the [claude-directory](../../../../).
