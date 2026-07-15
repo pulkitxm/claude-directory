@@ -2,7 +2,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Sign Up | Foxtrot</title>
-		<meta name="description" content="Sign up for Foxtrot — the powerful SaaS analytics tool.">
+		<meta name="description" content="Sign up for Foxtrot  -  the powerful SaaS analytics tool.">
 		<link rel="stylesheet" href="styles.css">
 		<style>
 		/* =====================================================
@@ -11,24 +11,25 @@
 
 		.signup-main {
 			position: relative;
-			min-height: 70vh;
+			min-height: 57rem;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: flex-start;
-			padding: 2rem 1rem 5rem;
+			padding: 4rem 1rem 4rem;
 		}
 
 		.signup-card {
-			background: transparent;
+			background: white;
 			border: none;
-			border-radius: 0;
-			padding: 2.5rem 2rem;
+			border-radius: 0 0 0.75rem 0.75rem;
+			padding: 4.5rem 2.5rem;
 			width: 100%;
-			max-width: 26rem;
+			max-width: 30rem;
+			min-height: 50rem;
 			position: relative;
 			z-index: 10;
-			box-shadow: none;
+			box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
 		}
 
 		.signup-logo {
@@ -244,12 +245,13 @@
 
 				<h1 class="signup-heading">Signup for Foxtrot</h1>
 
-				<form class="signup-form" onsubmit="return false;">
-					<input type="text" placeholder="Full name" class="signup-input" autocomplete="name" aria-label="Full name" style="">
-					<input type="email" placeholder="Email Address" class="signup-input" autocomplete="email" aria-label="Email address" style="">
-					<input type="password" placeholder="Password" class="signup-input" autocomplete="new-password" aria-label="Password" style="">
+				<form class="signup-form" id="signupForm">
+					<input type="text" placeholder="Full name" class="signup-input" autocomplete="name" aria-label="Full name" name="name" required="" style="">
+					<input type="email" placeholder="Email Address" class="signup-input" autocomplete="email" aria-label="Email address" name="email" required="" style="">
+					<input type="password" placeholder="Password" class="signup-input" autocomplete="new-password" aria-label="Password" name="password" minlength="8" required="" style="">
 					<button type="submit" class="signup-btn">Sign up</button>
 				</form>
+				<p id="signupStatus" role="status" hidden=""></p>
 
 				<div class="signup-divider">
 					<div class="signup-divider-line"></div>
@@ -341,7 +343,31 @@
 				});
 			});
 		}
+
+		const signupForm = document.getElementById("signupForm");
+		const signupStatus = document.getElementById("signupStatus");
+
+		signupForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const submitButton = signupForm.querySelector(".signup-btn");
+			submitButton.disabled = true;
+			submitButton.textContent = "Creating account...";
+			window.setTimeout(() => {
+				submitButton.disabled = false;
+				submitButton.textContent = "Sign up";
+				signupStatus.hidden = false;
+				signupStatus.textContent = "Your account is ready. Welcome to Foxtrot.";
+				signupForm.reset();
+			}, 500);
+		});
+
+		document.querySelectorAll(".social-btn").forEach((button) => {
+			button.addEventListener("click", () => {
+				signupStatus.hidden = false;
+				signupStatus.textContent = `${button.textContent.trim()} is ready to connect.`;
+			});
+		});
 		</script>
-	
+
 
 </body></html>

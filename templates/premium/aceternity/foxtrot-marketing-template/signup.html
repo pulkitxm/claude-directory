@@ -6,34 +6,33 @@
 		<title>Sign Up | Foxtrot</title>
 		<meta
 			name="description"
-			content="Sign up for Foxtrot — the powerful SaaS analytics tool."
+			content="Sign up for Foxtrot  -  the powerful SaaS analytics tool."
 		>
 		<link rel="stylesheet" href="styles.css">
 		<style>
-		/* =====================================================
-       SIGNUP PAGE SPECIFIC STYLES
-       ===================================================== */
+
 
 		.signup-main {
 			position: relative;
-			min-height: 70vh;
+			min-height: 57rem;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: flex-start;
-			padding: 2rem 1rem 5rem;
+			padding: 4rem 1rem 4rem;
 		}
 
 		.signup-card {
-			background: transparent;
+			background: white;
 			border: none;
-			border-radius: 0;
-			padding: 2.5rem 2rem;
+			border-radius: 0 0 0.75rem 0.75rem;
+			padding: 4.5rem 2.5rem;
 			width: 100%;
-			max-width: 26rem;
+			max-width: 30rem;
+			min-height: 50rem;
 			position: relative;
 			z-index: 10;
-			box-shadow: none;
+			box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
 		}
 
 		.signup-logo {
@@ -177,7 +176,7 @@
 		</style>
 	</head>
 	<body class="antialiased">
-		<!-- Announcement Bar -->
+
 		<div class="announcement-bar">
 			Use LAUNCH25 for a 25% discount!<a href="signup.html" class="buy-btn"
 				>Buy Now</a
@@ -186,10 +185,10 @@
 
 		<div class="navbar-spacer"></div>
 
-		<!-- Navbar -->
+
 		<nav>
 			<div class="navbar">
-				<!-- Desktop Nav -->
+
 				<div class="navbar-desktop">
 					<a href="index.html" class="navbar-logo">
 						<span class="logo-icon" aria-hidden="true"></span>
@@ -202,7 +201,7 @@
 					<a href="signup.html" class="navbar-signup">Sign Up</a>
 				</div>
 
-				<!-- Mobile Nav -->
+
 				<div class="navbar-mobile">
 					<div class="navbar-mobile-inner">
 						<a href="index.html" class="navbar-mobile-logo">
@@ -233,7 +232,7 @@
 				</div>
 			</div>
 
-			<!-- Mobile Menu -->
+
 			<div class="mobile-menu" id="mobileMenu" role="menu">
 				<a href="index.html#features">Features</a>
 				<a href="index.html#testimonials">Testimonials</a>
@@ -243,9 +242,9 @@
 			</div>
 		</nav>
 
-		<!-- Main Content -->
+
 		<main class="signup-main antialiased">
-			<!-- Grid background -->
+
 			<div class="grid-bg" aria-hidden="true">
 				<svg aria-hidden="true">
 					<defs>
@@ -269,7 +268,7 @@
 				</svg>
 			</div>
 
-			<!-- Signup Card -->
+
 			<div class="signup-card">
 				<div class="signup-logo">
 					<span class="logo-icon" aria-hidden="true"></span>
@@ -278,13 +277,15 @@
 
 				<h1 class="signup-heading">Signup for Foxtrot</h1>
 
-				<form class="signup-form" onsubmit="return false;">
+				<form class="signup-form" id="signupForm">
 					<input
 						type="text"
 						placeholder="Full name"
 						class="signup-input"
 						autocomplete="name"
 						aria-label="Full name"
+						name="name"
+						required
 					>
 					<input
 						type="email"
@@ -292,6 +293,8 @@
 						class="signup-input"
 						autocomplete="email"
 						aria-label="Email address"
+						name="email"
+						required
 					>
 					<input
 						type="password"
@@ -299,9 +302,13 @@
 						class="signup-input"
 						autocomplete="new-password"
 						aria-label="Password"
+						name="password"
+						minlength="8"
+						required
 					>
 					<button type="submit" class="signup-btn">Sign up</button>
 				</form>
+				<p id="signupStatus" role="status" hidden></p>
 
 				<div class="signup-divider">
 					<div class="signup-divider-line"></div>
@@ -309,13 +316,13 @@
 					<div class="signup-divider-line"></div>
 				</div>
 
-				<!-- Social Sign-In -->
+
 				<button
 					class="social-btn"
 					type="button"
 					aria-label="Sign in with Twitter"
 				>
-					<!-- Twitter icon -->
+
 					<svg
 						class="social-icon"
 						viewBox="0 0 24 24"
@@ -335,7 +342,7 @@
 					type="button"
 					aria-label="Sign in with GitHub"
 				>
-					<!-- GitHub icon -->
+
 					<svg
 						class="social-icon"
 						viewBox="0 0 24 24"
@@ -355,7 +362,7 @@
 					type="button"
 					aria-label="Sign in with Google"
 				>
-					<!-- Google icon -->
+
 					<svg
 						class="social-icon"
 						viewBox="0 0 24 24"
@@ -386,7 +393,7 @@
 			</div>
 		</main>
 
-		<!-- Footer -->
+
 		<footer class="footer">
 			<div class="footer-inner">
 				<a href="index.html" class="footer-logo">
@@ -486,6 +493,30 @@
 				});
 			});
 		}
+
+		const signupForm = document.getElementById("signupForm");
+		const signupStatus = document.getElementById("signupStatus");
+
+		signupForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const submitButton = signupForm.querySelector(".signup-btn");
+			submitButton.disabled = true;
+			submitButton.textContent = "Creating account...";
+			window.setTimeout(() => {
+				submitButton.disabled = false;
+				submitButton.textContent = "Sign up";
+				signupStatus.hidden = false;
+				signupStatus.textContent = "Your account is ready. Welcome to Foxtrot.";
+				signupForm.reset();
+			}, 500);
+		});
+
+		document.querySelectorAll(".social-btn").forEach((button) => {
+			button.addEventListener("click", () => {
+				signupStatus.hidden = false;
+				signupStatus.textContent = `${button.textContent.trim()} is ready to connect.`;
+			});
+		});
 		</script>
 	</body>
 </html>
