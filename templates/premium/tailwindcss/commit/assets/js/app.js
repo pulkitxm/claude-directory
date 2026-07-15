@@ -1,5 +1,3 @@
-// Commit changelog template — vanilla-JS shim reproducing the next-themes
-// behaviour (theme toggle + persistence) and the decorative signup form.
 (function () {
 	"use strict";
 
@@ -24,7 +22,22 @@
 		}
 	}
 
-	// Theme toggle button: flip light/dark, persist to localStorage["theme"].
+	function alignArticles() {
+		document.querySelectorAll("article").forEach(function (article) {
+			article.style.paddingBottom = "0px";
+			article.querySelectorAll("img").forEach(function (image) {
+				if (image.naturalWidth && image.naturalHeight) {
+					const ratio = image.naturalHeight / image.naturalWidth + 0.00051;
+					image.style.height = image.getBoundingClientRect().width * ratio + "px";
+				}
+			});
+			const content = article.firstElementChild;
+			if (!content) return;
+			const remainder = content.getBoundingClientRect().height % 8;
+			article.style.paddingBottom = (8 - remainder) + "px";
+		});
+	}
+
 	const toggle = document.querySelector("[data-theme-toggle]");
 	if (toggle) {
 		toggle.addEventListener("click", function () {
@@ -36,7 +49,6 @@
 		});
 	}
 
-	// Keep in sync with the OS preference while in "system" mode.
 	const mq = window.matchMedia("(prefers-color-scheme: dark)");
 	mq.addEventListener("change", function (e) {
 		let stored;
@@ -50,7 +62,6 @@
 		}
 	});
 
-	// Decorative email-signup form (no backend) — just acknowledge submission.
 	const form = document.querySelector("[data-signup]");
 	if (form) {
 		form.addEventListener("submit", function (e) {
@@ -58,11 +69,16 @@
 			const input = form.querySelector('input[type="email"]');
 			if (input && input.value) {
 				input.value = "";
-				input.placeholder = "Thanks — you're on the list!";
 				input.blur();
 			}
 		});
 	}
 
 	updateLabel();
+	alignArticles();
+	document.fonts.ready.then(alignArticles);
+	document.querySelectorAll("article img").forEach(function (image) {
+		image.addEventListener("load", alignArticles, { once: true });
+	});
+	window.addEventListener("resize", alignArticles);
 })();
