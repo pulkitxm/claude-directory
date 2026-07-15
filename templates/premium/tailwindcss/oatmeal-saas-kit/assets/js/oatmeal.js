@@ -1,7 +1,3 @@
-// oatmeal.js — vanilla-JS reimplementation of the interaction behaviors the
-// original Tailwind Plus "Oatmeal" kit drives via the proprietary
-// @tailwindplus/elements module (command / commandfor invoker API),
-// plus an IntersectionObserver entrance-reveal system. No build step.
 (function () {
 	"use strict";
 
@@ -9,7 +5,6 @@
 		return document.getElementById(id);
 	}
 
-	// ---- command / commandfor invoker API --------------------------------
 	function handleInvoke(btn) {
 		var cmd = btn.getAttribute("command");
 		var targetId = btn.getAttribute("commandfor");
@@ -24,19 +19,13 @@
 			if (typeof target.close === "function") target.close();
 			else target.removeAttribute("open");
 		} else if (cmd === "--toggle") {
-			// disclosure: toggle hidden on panel + aria-expanded on the button
 			var willOpen = target.hasAttribute("hidden");
 			if (willOpen) target.removeAttribute("hidden");
 			else target.setAttribute("hidden", "");
 			btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
 		} else if (cmd === "--copy") {
 			var text = (target.textContent || "").trim();
-			var done = function () {
-				btn.classList.add("copied");
-				setTimeout(function () {
-					btn.classList.remove("copied");
-				}, 1500);
-			};
+			var done = function () {};
 			if (navigator.clipboard && navigator.clipboard.writeText) {
 				navigator.clipboard.writeText(text).then(done, done);
 			} else {
@@ -58,7 +47,6 @@
 		if (btn) handleInvoke(btn);
 	});
 
-	// ---- tab groups (Monthly / Yearly etc.) ------------------------------
 	function selectTab(tab) {
 		var list = tab.closest('[role="tablist"]') || tab.parentElement;
 		if (!list) return;
@@ -98,7 +86,6 @@
 		}
 	});
 
-	// ---- entrance reveal on scroll ---------------------------------------
 	function setupReveal() {
 		if (!("IntersectionObserver" in window)) return;
 		var prefersReduced = window.matchMedia(
@@ -122,10 +109,6 @@
 		});
 	}
 
-	// The original Oatmeal kit is static Tailwind HTML with no scroll-driven
-	// entrance animation, so reveal is opt-in only: elements that explicitly
-	// carry [data-reveal] in the markup are animated, nothing is auto-hidden.
-	// This keeps the clone pixel-faithful to the static reference.
 	if (document.readyState === "loading") {
 		document.addEventListener("DOMContentLoaded", function () {
 			setupReveal();
