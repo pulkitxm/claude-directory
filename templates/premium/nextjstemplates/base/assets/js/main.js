@@ -22,19 +22,29 @@
 	function initMobileNav() {
 		var openBtn = document.querySelector(".navbarOpen");
 		var closeBtn = document.querySelector(".navbarClose");
+		var wrapper = document.querySelector(".menu-wrapper");
 		var nav = document.querySelector(".menu-wrapper nav");
-		if (!openBtn || !nav) return;
+		if (!openBtn || !wrapper || !nav) return;
 		openBtn.addEventListener("click", function () {
+			wrapper.classList.remove("hidden");
+			wrapper.classList.add("flex");
 			nav.classList.add("nav-open");
+			document.body.style.overflow = "hidden";
 		});
 		if (closeBtn) {
 			closeBtn.addEventListener("click", function () {
+				wrapper.classList.add("hidden");
+				wrapper.classList.remove("flex");
 				nav.classList.remove("nav-open");
+				document.body.style.overflow = "";
 			});
 		}
 		nav.querySelectorAll("a").forEach(function (a) {
 			a.addEventListener("click", function () {
+				wrapper.classList.add("hidden");
+				wrapper.classList.remove("flex");
 				nav.classList.remove("nav-open");
+				document.body.style.overflow = "";
 			});
 		});
 	}
@@ -133,12 +143,34 @@
 	/* ---------- Pricing monthly/annually toggle ---------- */
 	function initPricingToggle() {
 		var toggle = document.querySelector("[data-pricing-toggle]");
-		var wrap = document.querySelector("[data-billing]");
+		var wrap = document.querySelector("#pricing");
 		if (!toggle || !wrap) return;
 		toggle.addEventListener("click", function () {
 			var pressed = toggle.getAttribute("aria-pressed") === "true";
 			toggle.setAttribute("aria-pressed", String(!pressed));
 			wrap.setAttribute("data-billing", pressed ? "monthly" : "annual");
+		});
+	}
+
+	function initAuthTabs() {
+		var tabs = document.querySelectorAll("[data-auth-tab]");
+		var panels = document.querySelectorAll("[data-auth-panel]");
+		if (!tabs.length || !panels.length) return;
+		tabs.forEach(function (tab) {
+			tab.addEventListener("click", function () {
+				var active = tab.getAttribute("data-auth-tab");
+				tabs.forEach(function (other) {
+					other.classList.toggle("border", other === tab);
+					other.classList.toggle("bg-primary/5", other === tab);
+					other.classList.toggle("text-primary", other === tab);
+				});
+				panels.forEach(function (panel) {
+					panel.classList.toggle(
+						"hidden",
+						panel.getAttribute("data-auth-panel") !== active,
+					);
+				});
+			});
 		});
 	}
 
@@ -156,7 +188,8 @@
 				var filter = pill.getAttribute("data-filter");
 				items.forEach(function (item) {
 					var show =
-						filter === "all" || item.getAttribute("data-category") === filter;
+						filter === "all" ||
+						item.getAttribute("data-category").split(/\s+/).includes(filter);
 					item.hidden = !show;
 				});
 			});
@@ -279,6 +312,7 @@
 		initSmoothScroll();
 		initReveal();
 		initPricingToggle();
+		initAuthTabs();
 		initPortfolioFilter();
 		initTestimonialCarousel();
 		initCounters();
