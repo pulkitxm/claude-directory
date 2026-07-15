@@ -1,4 +1,4 @@
-.PHONY: cloc format demo demos-fresh
+.PHONY: cloc format demo demos-fresh contri
 
 # Count lines of code across all git-tracked files (excludes .diff files)
 cloc:
@@ -18,7 +18,7 @@ demo:
 
 # Re-record EVERY demo from scratch: delete all demo.mp4 + poster.jpg, re-record
 # them all, then regenerate every poster + the posters.json manifest.
-# Destructive (re-records can take a while) — pass CONFIRM=1 to skip the prompt.
+# Destructive (re-records can take a while). Pass CONFIRM=1 to skip the prompt.
 #   make demos-fresh             # asks before deleting
 #   make demos-fresh CONFIRM=1   # no prompt
 #   make demos-fresh WORKERS=4   # parallel recording (default 3)
@@ -30,3 +30,6 @@ demos-fresh:
 	find . \( -name node_modules -o -name .git \) -prune -o \( -name demo.mp4 -o -name poster.jpg \) -type f -print -delete
 	bash scripts/record-demos/record-all.sh --force $(if $(WORKERS),--workers $(WORKERS),)
 	node scripts/generate-posters/generate-posters.mjs --force
+
+contri:
+	@node scripts/contri.mjs
