@@ -1,143 +1,117 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// --- Dark Mode Switcher ---
-	const themeToggle = document.getElementById("theme-toggle");
-	if (themeToggle) {
-		themeToggle.addEventListener("click", () => {
-			if (document.documentElement.classList.contains("dark")) {
-				document.documentElement.classList.remove("dark");
-				localStorage.setItem("theme", "light");
-			} else {
-				document.documentElement.classList.add("dark");
-				localStorage.setItem("theme", "dark");
-			}
-		});
-	}
-
-	// --- Mobile Menu Toggle ---
-	const mobileMenuBtn = document.querySelector(
-		'button[aria-label="Toggle menu"]',
-	);
-	const mobileMenu = document.getElementById("mobile-menu");
-	if (mobileMenuBtn && mobileMenu) {
-		mobileMenuBtn.addEventListener("click", () => {
-			mobileMenu.classList.toggle("hidden");
-		});
-	}
-
-	// --- Accordion Panels ---
-	const accordions = document.querySelectorAll(
-		".bg-background-soft-100.rounded-xl.p-5",
-	);
-	accordions.forEach((acc) => {
-		const trigger = acc.querySelector(".flex.cursor-pointer");
-		const content = acc.querySelector(".overflow-hidden");
-		const icon = trigger.querySelector("svg");
-
-		if (trigger && content) {
-			trigger.addEventListener("click", () => {
-				const isCollapsed =
-					content.style.height === "0px" || !content.style.height;
-
-				// Collapse all others first
-				accordions.forEach((otherAcc) => {
-					const otherTrigger = otherAcc.querySelector(".flex.cursor-pointer");
-					const otherContent = otherAcc.querySelector(".overflow-hidden");
-					const otherIcon = otherTrigger.querySelector("svg");
-					if (otherContent && otherContent !== content) {
-						otherContent.style.height = "0px";
-						otherContent.style.opacity = "0";
-						if (otherIcon) otherIcon.classList.remove("rotate-180");
-					}
-				});
-
-				if (isCollapsed) {
-					content.style.height = content.scrollHeight + "px";
-					content.style.opacity = "1";
-					if (icon) icon.classList.add("rotate-180");
-				} else {
-					content.style.height = "0px";
-					content.style.opacity = "0";
-					if (icon) icon.classList.remove("rotate-180");
-				}
-			});
-
-			// Initialize heights
-			if (icon && icon.classList.contains("rotate-180")) {
-				content.style.height = content.scrollHeight + "px";
-				content.style.opacity = "1";
-			} else {
-				content.style.height = "0px";
-				content.style.opacity = "0";
-			}
-		}
+	const revealElements = document.querySelectorAll('[style*="opacity: 0"]');
+	revealElements.forEach((element) => {
+		element.style.transition = "none";
+		element.style.opacity = "1";
+		element.style.transform = "none";
 	});
 
-	// --- Monthly / Yearly Pricing Toggle ---
+	const counters = document.querySelectorAll("h3.text-6xl.font-semibold span");
+	const counterTargets = [
+		{ value: 2, suffix: "M+" },
+		{ value: 98, suffix: "%" },
+		{ value: 20, suffix: "%" },
+		{ value: 150, suffix: "+" },
+	];
+	counters.forEach((counter, index) => {
+		const target = counterTargets[index % 4];
+		counter.textContent = `${target.value}${target.suffix}`;
+	});
+
+	const mobileMenu = document.getElementById("mobile-menu");
+	const mobileMenuButtons = document.querySelectorAll(
+		"[data-mobile-menu-toggle]",
+	);
+	const setMenuOpen = (open) => {
+		if (!mobileMenu) return;
+		mobileMenu.classList.toggle("hidden", !open);
+		mobileMenuButtons.forEach((button) => {
+			button.setAttribute("aria-expanded", String(open));
+		});
+	};
+	mobileMenuButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			setMenuOpen(mobileMenu?.classList.contains("hidden") ?? false);
+		});
+	});
+	mobileMenu?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", () => setMenuOpen(false));
+	});
+
+	const accordions = [
+		...document.querySelectorAll(".bg-background-soft-100.rounded-xl.p-5"),
+	].map((container, index) => {
+		const trigger = container.querySelector(".flex.cursor-pointer");
+		const content = container.querySelector(".overflow-hidden");
+		if (!trigger || !content) return null;
+		const contentId = `accordion-panel-${index + 1}`;
+		content.id = contentId;
+		trigger.setAttribute("role", "button");
+		trigger.setAttribute("tabindex", "0");
+		trigger.setAttribute("aria-controls", contentId);
+		return { trigger, content, icon: trigger.querySelector("svg") };
+	}).filter(Boolean);
+
+	const setAccordionOpen = (accordion, open) => {
+		accordion.trigger.setAttribute("aria-expanded", String(open));
+		accordion.content.style.height = open
+			? `${accordion.content.scrollHeight}px`
+			: "0px";
+		accordion.content.style.opacity = open ? "1" : "0";
+		accordion.icon?.classList.toggle("rotate-180", open);
+	};
+	const toggleAccordion = (selected) => {
+		const open = selected.trigger.getAttribute("aria-expanded") !== "true";
+		accordions.forEach((accordion) => {
+			setAccordionOpen(accordion, accordion === selected && open);
+		});
+	};
+	accordions.forEach((accordion) => {
+		setAccordionOpen(
+			accordion,
+			accordion.icon?.classList.contains("rotate-180") ?? false,
+		);
+		accordion.trigger.addEventListener("click", () =>
+			toggleAccordion(accordion),
+		);
+		accordion.trigger.addEventListener("keydown", (event) => {
+			if (event.key !== "Enter" && event.key !== " ") return;
+			event.preventDefault();
+			toggleAccordion(accordion);
+		});
+	});
+
 	const pricingContainer = document.querySelector(
 		".bg-background-soft-100.relative.inline-flex.h-11",
 	);
-	if (pricingContainer) {
-		const buttons = pricingContainer.querySelectorAll("button");
-		const monthlyBtn = buttons[0];
-		const yearlyBtn = buttons[1];
+	if (!pricingContainer) return;
+	const [monthlyButton, yearlyButton] = pricingContainer.querySelectorAll("button");
+	const indicator = pricingContainer.querySelector(".bg-background-50.absolute");
+	if (!monthlyButton || !yearlyButton || !indicator) return;
 
-		if (monthlyBtn && yearlyBtn) {
-			const togglePricingMode = (isYearly) => {
-				// Toggle active button background indicator
-				const indicator = pricingContainer.querySelector(
-					".bg-background-50.absolute",
-				);
-				if (indicator) {
-					if (isYearly) {
-						indicator.parentElement.removeChild(indicator);
-						yearlyBtn.insertBefore(indicator, yearlyBtn.firstChild);
-						monthlyBtn.classList.remove("text-title-50");
-						monthlyBtn.classList.add("text-text-100");
-						yearlyBtn.classList.remove("text-text-100");
-						yearlyBtn.classList.add("text-title-50");
-					} else {
-						indicator.parentElement.removeChild(indicator);
-						monthlyBtn.insertBefore(indicator, monthlyBtn.firstChild);
-						yearlyBtn.classList.remove("text-title-50");
-						yearlyBtn.classList.add("text-text-100");
-						monthlyBtn.classList.remove("text-text-100");
-						monthlyBtn.classList.add("text-title-50");
-					}
-				}
-
-				// Toggle price texts
-				document.querySelectorAll(".price-monthly").forEach((el) => {
-					if (isYearly) el.classList.add("hidden");
-					else el.classList.remove("hidden");
-				});
-				document.querySelectorAll(".price-yearly").forEach((el) => {
-					if (isYearly) el.classList.remove("hidden");
-					else el.classList.add("hidden");
-				});
-
-				// Toggle struck-out values
-				document.querySelectorAll(".price-strike-monthly").forEach((el) => {
-					if (isYearly) el.classList.add("hidden");
-					else el.classList.remove("hidden");
-				});
-				document.querySelectorAll(".price-strike-yearly").forEach((el) => {
-					if (isYearly) el.classList.remove("hidden");
-					else el.classList.add("hidden");
-				});
-
-				// Toggle billing label ("One time payment" vs "Billed annually")
-				document.querySelectorAll(".billing-label-monthly").forEach((el) => {
-					if (isYearly) el.classList.add("hidden");
-					else el.classList.remove("hidden");
-				});
-				document.querySelectorAll(".billing-label-yearly").forEach((el) => {
-					if (isYearly) el.classList.remove("hidden");
-					else el.classList.add("hidden");
-				});
-			};
-
-			monthlyBtn.addEventListener("click", () => togglePricingMode(false));
-			yearlyBtn.addEventListener("click", () => togglePricingMode(true));
-		}
-	}
+	const setHidden = (selector, hidden) => {
+		document.querySelectorAll(selector).forEach((element) => {
+			element.classList.toggle("hidden", hidden);
+		});
+	};
+	const setPricingMode = (yearly) => {
+		const activeButton = yearly ? yearlyButton : monthlyButton;
+		const inactiveButton = yearly ? monthlyButton : yearlyButton;
+		activeButton.insertBefore(indicator, activeButton.firstChild);
+		activeButton.classList.remove("text-text-100");
+		activeButton.classList.add("text-title-50");
+		inactiveButton.classList.remove("text-title-50");
+		inactiveButton.classList.add("text-text-100");
+		monthlyButton.setAttribute("aria-pressed", String(!yearly));
+		yearlyButton.setAttribute("aria-pressed", String(yearly));
+		setHidden(".price-monthly", yearly);
+		setHidden(".price-yearly", !yearly);
+		setHidden(".price-strike-monthly", yearly);
+		setHidden(".price-strike-yearly", !yearly);
+		setHidden(".billing-label-monthly", yearly);
+		setHidden(".billing-label-yearly", !yearly);
+	};
+	monthlyButton.addEventListener("click", () => setPricingMode(false));
+	yearlyButton.addEventListener("click", () => setPricingMode(true));
+	setPricingMode(false);
 });
