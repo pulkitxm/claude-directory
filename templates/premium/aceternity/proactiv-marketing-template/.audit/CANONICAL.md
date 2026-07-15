@@ -10,7 +10,7 @@ The original logo is a 35x35 white circle with a stylized hooked "n" path in #11
 </svg>
 ```
 
-## Footer columns — NO HEADINGS
+## Footer columns - NO HEADINGS
 The original footer is the brand block (logo + "Copyright © 2024 Proactiv INC" / "All rights reserved") on the left, then a `grid-cols-3` of THREE BARE LINK COLUMNS with NO titles:
 - Column 1: Pricing, Blog, Contact
 - Column 2: Privacy Policy, Terms of Service, Refund Policy
