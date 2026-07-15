@@ -1,4 +1,9 @@
 import { execFileSync } from "node:child_process";
+import { readFileSync, writeFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { stdin, stdout } from "node:process";
+import { createInterface } from "node:readline/promises";
+import { fileURLToPath } from "node:url";
 
 const run = (command, args) =>
 	execFileSync(command, args, {
@@ -114,19 +119,35 @@ while (cursor <= today) {
 	cursor.setDate(cursor.getDate() + 1);
 }
 
-const totals = [...commitStats.values()].reduce(
-	(total, stats) => ({
-		added: total.added + stats.added,
-		removed: total.removed + stats.removed,
-	}),
-	{ added: 0, removed: 0 },
+const scriptDirectory = dirname(fileURLToPath(import.meta.url));
+const templatePath = resolve(scriptDirectory, "contri-report-template.html");
+const reportPath = resolve(scriptDirectory, "contri-report.html");
+const reportData = JSON.stringify({
+	repository: nameWithOwner,
+	generatedAt: new Date().toISOString(),
+	rows,
+}).replaceAll("<", "\\u003c");
+const report = readFileSync(templatePath, "utf8").replace(
+	"__CONTRI_REPORT_DATA__",
+	reportData,
 );
-rows.push({
-	Date: "TOTAL",
-	PRs: pullRequestDates.length,
-	Commits: commitTimestamps.length,
-	"Lines Added": totals.added,
-	"Lines Removed": totals.removed,
-	"Net LOC": totals.added - totals.removed,
-});
-console.table(rows);
+writeFileSync(reportPath, report);
+
+console.log(`\nHTML report: ${reportPath}`);
+
+if (stdin.isTTY && stdout.isTTY) {
+	const prompt = createInterface({ input: stdin, output: stdout });
+	const answer = await prompt.question(
+		"Press Enter to open the HTML report, or type anything to skip: ",
+	);
+	prompt.close();
+	if (answer === "") {
+		try {
+			execFileSync("open", [reportPath]);
+		} catch {
+			console.error(
+				`Could not open the report. Open it manually: ${reportPath}`,
+			);
+		}
+	}
+}
