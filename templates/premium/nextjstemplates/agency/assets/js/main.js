@@ -43,6 +43,15 @@
 			hamburger.classList.toggle("is-open");
 			mobileNav.classList.toggle("is-open");
 		});
+		var mobileItems = mobileNav.querySelectorAll("li");
+		if (mobileItems.length > 5) {
+			var mobilePages = mobileItems[4].querySelector("a");
+			mobilePages.textContent = "Pages";
+			mobilePages.addEventListener("click", function (e) {
+				e.preventDefault();
+				mobileNav.classList.toggle("pages-open");
+			});
+		}
 	}
 
 	/* ---------- Pages dropdown (click-toggle, also hover via CSS) ---------- */
