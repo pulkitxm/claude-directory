@@ -1,63 +1,84 @@
-// KEYNOTE / DeceptiConf clone — tab-group behaviour (Headless-UI equivalent)
-(function () {
-	"use strict";
+const groups = [...document.querySelectorAll('[role="tablist"]')];
+const scheduleTabs = [...groups[1].querySelectorAll('[role="tab"]')];
+const schedulePanels = scheduleTabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls")));
+const desktopScheduleLists = [...document.querySelectorAll("section > ol")];
+const mobileListClass = schedulePanels[0].querySelector("ol").className;
 
-	function wireTabGroup(tablistSel, tabAttr, panelSel, isActive) {
-		var tablist = document.querySelector(tablistSel);
-		if (!tablist) return;
-		var tabs = Array.prototype.slice.call(
-			tablist.querySelectorAll('[role="tab"]'),
-		);
-		var panels = Array.prototype.slice.call(
-			document.querySelectorAll(panelSel),
-		);
+schedulePanels.slice(1).forEach((panel, index) => {
+	const list = desktopScheduleLists[index + 1].cloneNode(true);
+	list.className = mobileListClass;
+	panel.replaceChildren(list);
+});
 
-		function select(idx) {
-			tabs.forEach(function (tab, i) {
-				var on = i === idx;
-				tab.setAttribute("aria-selected", on ? "true" : "false");
-				var btn = tab.querySelector("button");
-				if (btn) btn.tabIndex = on ? 0 : -1;
-				if (panels[i]) panels[i].classList.toggle(isActive, on);
-			});
+const selectTab = (tablist, index) => {
+	const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+	const schedule = tablist === groups[1];
+	if (schedule && innerWidth >= 1024) index = 0;
+	tabs.forEach((tab, position) => {
+		const selected = position === index;
+		const panel = document.getElementById(tab.getAttribute("aria-controls"));
+		tab.setAttribute("aria-selected", String(selected));
+		tab.toggleAttribute("data-selected", selected);
+		tab.setAttribute("data-headlessui-state", selected ? "selected" : "");
+		tab.tabIndex = selected ? 0 : -1;
+		if (!panel) return;
+		panel.toggleAttribute("data-selected", selected);
+		panel.setAttribute("data-headlessui-state", selected ? "selected" : "");
+		panel.tabIndex = selected ? 0 : -1;
+		panel.hidden = !selected;
+		if (selected) {
+			panel.removeAttribute("style");
+			panel.removeAttribute("aria-hidden");
+		} else {
+			panel.style.display = "none";
+			panel.setAttribute("aria-hidden", "true");
 		}
+	});
+};
 
-		tabs.forEach(function (tab, i) {
-			var btn = tab.querySelector("button") || tab;
-			btn.addEventListener("click", function () {
-				select(i);
-			});
-			btn.addEventListener("keydown", function (e) {
-				var n = tabs.length;
-				var next = null;
-				if (e.key === "ArrowDown" || e.key === "ArrowRight") next = (i + 1) % n;
-				else if (e.key === "ArrowUp" || e.key === "ArrowLeft")
-					next = (i - 1 + n) % n;
-				else if (e.key === "Home") next = 0;
-				else if (e.key === "End") next = n - 1;
-				if (next !== null) {
-					e.preventDefault();
-					select(next);
-					var b = tabs[next].querySelector("button") || tabs[next];
-					b.focus();
-				}
-			});
+groups.forEach((tablist) => {
+	const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+	tabs.forEach((tab, index) => {
+		tab.addEventListener("click", () => selectTab(tablist, index));
+		tab.addEventListener("keydown", (event) => {
+			const directions = ["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft"];
+			if (!directions.includes(event.key) && !["Home", "End"].includes(event.key)) return;
+			event.preventDefault();
+			let next = index;
+			if (["ArrowDown", "ArrowRight"].includes(event.key)) next = (index + 1) % tabs.length;
+			if (["ArrowUp", "ArrowLeft"].includes(event.key)) next = (index - 1 + tabs.length) % tabs.length;
+			if (event.key === "Home") next = 0;
+			if (event.key === "End") next = tabs.length - 1;
+			selectTab(tablist, next);
+			tabs[next].focus();
 		});
+	});
+	const selected = tabs.findIndex((tab) => tab.getAttribute("aria-selected") === "true");
+	selectTab(tablist, Math.max(0, selected));
+});
+
+addEventListener("resize", () => {
+	groups.forEach((tablist) => {
+		const selected = [...tablist.querySelectorAll('[role="tab"]')].findIndex((tab) => tab.getAttribute("aria-selected") === "true");
+		selectTab(tablist, Math.max(0, selected));
+	});
+});
+
+document.querySelectorAll('a[href="#"]').forEach((link) => {
+	link.addEventListener("click", (event) => {
+		event.preventDefault();
+		document.querySelector("form")?.scrollIntoView({ behavior: "smooth", block: "center" });
+	});
+});
+
+document.querySelector("form")?.addEventListener("submit", (event) => {
+	event.preventDefault();
+	const input = event.currentTarget.querySelector('input[type="email"]');
+	if (!input?.checkValidity()) {
+		input?.reportValidity();
+		return;
 	}
-
-	// Speakers day tabs
-	wireTabGroup(
-		"[data-speakers-tablist]",
-		"data-speakers-tab",
-		"[data-speakers-panel]",
-		"is-active",
-	);
-
-	// Schedule mobile day tabs
-	wireTabGroup(
-		"[data-sched-tablist]",
-		"data-sched-tab",
-		"[data-sched-panel]",
-		"is-active",
-	);
-})();
+	const button = event.currentTarget.querySelector('button[type="submit"], button');
+	button.textContent = "You're on the list";
+	button.disabled = true;
+});

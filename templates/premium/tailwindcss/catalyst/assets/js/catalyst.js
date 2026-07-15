@@ -1,9 +1,7 @@
-// Catalyst clone — vanilla-JS layer reimplementing the Next.js + Headless UI behaviours:
-// theme toggle, mobile slide-in sidebar, account dropdown, team-switcher dropdown.
 (function () {
 	"use strict";
 
-	/* ----------------------------------------------------------- theme ---- */
+
 	const root = document.documentElement;
 	function setTheme(t) {
 		if (t === "dark") root.classList.add("dark");
@@ -16,7 +14,7 @@
 		setTheme(root.classList.contains("dark") ? "light" : "dark");
 	};
 
-	/* ------------------------------------------------- mobile sidebar ----- */
+
 	const mobile = document.querySelector("[data-mobile-sidebar]");
 	function openSidebar() {
 		if (!mobile) return;
@@ -49,7 +47,7 @@
 		if (bd) bd.addEventListener("click", closeSidebar);
 	}
 
-	/* ---------------------------------------------------- dropdown menus -- */
+
 	const ITEM =
 		"rounded-lg px-3.5 py-2.5 text-left text-sm/6 text-zinc-950 " +
 		"data-focus:bg-blue-500 data-focus:text-white dark:text-white " +
@@ -167,11 +165,12 @@
 	let openMenu = null;
 	function closeAll() {
 		if (openMenu) {
+			openMenu.__owner?.setAttribute("aria-expanded", "false");
 			openMenu.remove();
 			openMenu = null;
 		}
 	}
-	function buildMenu(items, width) {
+	function buildMenu(items, width, height) {
 		const m = document.createElement("div");
 		m.setAttribute("role", "menu");
 		m.className =
@@ -180,9 +179,15 @@
 			"dark:bg-zinc-800/95 dark:ring-white/10 transition duration-100 ease-out " +
 			"opacity-0 scale-95 origin-top";
 		m.style.minWidth = (width || 224) + "px";
+		if (height) m.style.minHeight = `${height}px`;
 		m.innerHTML = items.map((i) => (i === "divider" ? divider() : i)).join("");
-		// focus highlight emulation: hover/keyboard sets data-focus
 		m.querySelectorAll('[role="menuitem"]').forEach((it) => {
+			if (it.getAttribute("href") === "#") {
+				it.addEventListener("click", (event) => {
+					event.preventDefault();
+					closeAll();
+				});
+			}
 			it.addEventListener("mouseenter", () => {
 				m.querySelectorAll("[data-focus]").forEach((x) =>
 					x.removeAttribute("data-focus"),
@@ -199,6 +204,7 @@
 		const mr = menu.getBoundingClientRect();
 		let top,
 			left = r.left + window.scrollX;
+		if (mr.width === 256) left -= 4;
 		if (anchor === "top") {
 			top = r.top + window.scrollY - mr.height - 8;
 			menu.classList.remove("origin-top");
@@ -206,7 +212,9 @@
 		} else {
 			top = r.bottom + window.scrollY + 8;
 		}
-		// clamp width to trigger
+		if (anchor === "bottom-end") left = r.right + window.scrollX - mr.width;
+		const edge = window.innerWidth < 640 ? 10 : 8;
+		left = Math.max(edge + window.scrollX, Math.min(left, window.scrollX + window.innerWidth - mr.width - edge));
 		menu.style.minWidth =
 			Math.max(r.width, parseInt(menu.style.minWidth)) + "px";
 		menu.style.top = top + "px";
@@ -215,8 +223,9 @@
 			menu.classList.remove("opacity-0", "scale-95");
 		});
 	}
-	function wireTrigger(trigger, items, anchor) {
+	function wireTrigger(trigger, items, anchor, width, height) {
 		if (!trigger) return;
+		trigger.setAttribute("aria-expanded", "false");
 		trigger.addEventListener("click", (e) => {
 			e.preventDefault();
 			e.stopPropagation();
@@ -225,10 +234,11 @@
 				return;
 			}
 			closeAll();
-			const menu = buildMenu(items);
+			const menu = buildMenu(items, width, height);
 			menu.__owner = trigger;
 			placeMenu(menu, trigger, anchor);
 			openMenu = menu;
+			trigger.setAttribute("aria-expanded", "true");
 		});
 	}
 	document.addEventListener("click", (e) => {
@@ -242,12 +252,7 @@
 	});
 	window.addEventListener("resize", closeAll);
 
-	/* ---- Headless UI data-attribute shim: data-hover / data-active / data-focus ---- */
-	// Tailwind v4 data-hover:* / data-active:* utilities generate CSS that checks
-	// for [data-hover] / [data-active] attributes on the element.  In the original
-	// Next.js + Headless UI app those attributes are set by Headless UI on
-	// pointer-enter/leave and press.  Here we replicate that in vanilla JS so that
-	// nav-item icon fills, background tints, and button press states all work.
+
 	document.querySelectorAll('[class*="data-hover:"]').forEach(function (el) {
 		el.addEventListener("mouseenter", function () {
 			el.setAttribute("data-hover", "");
@@ -268,13 +273,11 @@
 		});
 	});
 
-	// rel path: index/auth at root -> "", detail pages -> "../"
 	const rel = document.querySelector('link[href*="assets/css/catalyst.css"]');
 	const relPath = rel
 		? rel.getAttribute("href").replace("assets/css/catalyst.css", "")
 		: "";
 
-	// account triggers (sidebar footer + mobile header) — both contain erica@example.com
 	document.querySelectorAll("button").forEach((b) => {
 		const txt = b.textContent || "";
 		if (
@@ -291,10 +294,86 @@
 								'href="' + relPath + 'login.html"',
 							),
 				),
-				"top",
+				window.innerWidth < 1024 && b.getBoundingClientRect().top < 80 ? "bottom-end" : "top",
+				256,
+				window.innerWidth < 640 ? 202 : 170,
 			);
 		} else if (txt.includes("Catalyst") && b.closest("[data-slot]") === null) {
-			wireTrigger(b, TEAM_MENU(relPath), "bottom");
+			wireTrigger(b, TEAM_MENU(relPath), "bottom", 256);
 		}
 	});
+
+	document.querySelectorAll('button[aria-label="More options"]').forEach((button) => {
+		const eventLink = button.closest("li")?.querySelector('a[href*="events/"]')?.getAttribute("href") || "#";
+		wireTrigger(button, [menuItem("View", eventLink), menuItem("Edit", "#"), menuItem("Delete", "#")], "bottom-end", 106);
+	});
+
+	const listboxClass = "isolate w-max min-w-[calc(var(--button-width)+1.75rem)] scroll-py-1 rounded-xl p-1 select-none outline outline-transparent focus:outline-hidden overflow-y-auto overscroll-contain bg-white/75 backdrop-blur-xl dark:bg-zinc-800/75 shadow-lg ring-1 ring-zinc-950/10 dark:ring-white/10 dark:ring-inset";
+	const optionClass = "group/option grid cursor-default grid-cols-[--spacing(5)_1fr] items-baseline gap-x-2 rounded-lg py-2.5 pr-3.5 pl-2 sm:grid-cols-[--spacing(4)_1fr] sm:py-1.5 sm:pr-3 sm:pl-1.5 text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white outline-hidden data-focus:bg-blue-500 data-focus:text-white";
+	const checkIcon = '<svg class="relative hidden size-5 self-center stroke-current group-data-selected/option:inline sm:size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8.5l3 3L12 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+	const regions = ["Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon"];
+	const countries = ["Canada", "Mexico", "United States"];
+	const wireListbox = (trigger, values) => {
+		if (!trigger) return;
+		trigger.setAttribute("aria-expanded", "false");
+		trigger.addEventListener("click", (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			if (openMenu?.__owner === trigger) {
+				closeAll();
+				return;
+			}
+			closeAll();
+			const selectedHost = trigger.querySelector("[data-selected-option]");
+			const selected = selectedHost?.textContent.trim() || values[0];
+			const panel = document.createElement("div");
+			panel.setAttribute("role", "listbox");
+			panel.setAttribute("aria-label", trigger.getAttribute("aria-label") || "Options");
+			panel.className = listboxClass;
+			panel.style.position = "absolute";
+			panel.style.maxHeight = "464px";
+			panel.innerHTML = values.map((value) => `<div class="${optionClass}" role="option" tabindex="-1" aria-selected="${value === selected}" ${value === selected ? "data-selected" : ""}>${checkIcon}<span class="col-start-2 truncate">${value}</span></div>`).join("");
+			panel.__owner = trigger;
+			document.body.appendChild(panel);
+			panel.style.minWidth = `${trigger.getBoundingClientRect().width + 28}px`;
+			const triggerRect = trigger.getBoundingClientRect();
+			const panelRect = panel.getBoundingClientRect();
+			const selectedIndex = Math.max(0, values.indexOf(selected));
+			const idealTop = values.length > 6 ? triggerRect.top + window.scrollY - selectedIndex * 36 - 4 : triggerRect.bottom + window.scrollY + 8;
+			const top = Math.max(window.scrollY + 16, Math.min(idealTop, window.scrollY + window.innerHeight - panelRect.height - 16));
+			const left = Math.max(window.scrollX + 16, Math.min(triggerRect.left + window.scrollX - 22, window.scrollX + window.innerWidth - panelRect.width - 16));
+			panel.style.top = `${top}px`;
+			panel.style.left = `${left}px`;
+			panel.querySelectorAll('[role="option"]').forEach((option) => {
+				option.addEventListener("mouseenter", () => option.setAttribute("data-focus", ""));
+				option.addEventListener("mouseleave", () => option.removeAttribute("data-focus"));
+				option.addEventListener("click", () => {
+					const value = option.textContent.trim();
+					const selectedText = selectedHost?.querySelector("span:last-child") || selectedHost;
+					if (selectedText) selectedText.textContent = value;
+					const fieldName = trigger.getAttribute("aria-label") === "Region" ? "region" : "country[name]";
+					const input = trigger.parentElement?.querySelector(`input[name="${fieldName}"]`);
+					if (input) input.value = value;
+					closeAll();
+				});
+			});
+			openMenu = panel;
+			trigger.setAttribute("aria-expanded", "true");
+		});
+	};
+
+	wireListbox(document.querySelector('button[aria-label="Region"]'), regions);
+	wireListbox(document.querySelector('button[aria-label="Country"]'), countries);
+
+	document.querySelectorAll('[role="checkbox"]').forEach((checkbox) => {
+		checkbox.addEventListener("click", () => {
+			const checked = checkbox.getAttribute("aria-checked") === "true";
+			checkbox.setAttribute("aria-checked", String(!checked));
+			checkbox.toggleAttribute("data-checked", !checked);
+			const input = checkbox.parentElement?.querySelector('input[type="checkbox"]');
+			if (input) input.checked = !checked;
+		});
+	});
+
+	document.querySelectorAll("form").forEach((form) => form.addEventListener("submit", (event) => event.preventDefault()));
 })();
