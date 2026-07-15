@@ -1,8 +1,8 @@
-# My SaaS Startup — Next.js SaaS Starter Landing Page Clone (Vanilla HTML/CSS/JS)
+# My SaaS Startup: Next.js SaaS Starter Landing Page Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained clone of the official Next.js SaaS Starter marketing template — a full SaaS landing-page site with a hero, feature rows, pricing table with an animated FAQ accordion, a blog with six articles, contact form, legal pages, and a light/dark theme toggle backed by a no-flash boot script. Rebuilt as plain HTML/CSS/JS with zero build step and zero framework runtime, including every hover state, the mobile drawer, and the click-to-play YouTube facade from the source. Generated with Claude Fable 5.
+A pixel-faithful, self-contained clone of the official Next.js SaaS Starter marketing template, with a hero, feature rows, pricing table, animated FAQ accordion, six-article blog, contact form, legal pages, and persisted light and dark themes. It uses plain HTML, CSS, and JavaScript with no build step or framework runtime.
 
 ## Run
 
@@ -13,7 +13,7 @@ python3 -m http.server 8080
 # then visit http://localhost:8080/index.html
 ```
 
-Or just open `index.html` directly in a browser — all assets (fonts, images, icons, the 404 illustration) are vendored locally under `assets/`, and the site works fully offline except for the optional in-page YouTube embed on `features.html` (clicking the video thumbnail loads a real `youtube.com/embed` iframe, which needs network access; the thumbnail itself is vendored).
+Or just open `index.html` directly in a browser. All assets (fonts, images, icons, the 404 illustration) are vendored locally under `assets/`, and the site works fully offline except for the optional in-page YouTube embed on `features.html` (clicking the video thumbnail loads a real `youtube.com/embed` iframe, which needs network access; the thumbnail itself is vendored).
 
 ## Pages
 
@@ -29,7 +29,7 @@ Or just open `index.html` directly in a browser — all assets (fonts, images, i
 | Cookies policy | `cookies-policy.html` |
 | 404 / Sign up | `404.html`, `sign-up.html` |
 
-`sign-up.html` mirrors `404.html` because the source's own `/sign-up` route (and its other footer placeholder links — Features2, FAQ, Help Center, etc.) resolve to the same themed not-found page; that behavior is reproduced faithfully rather than invented.
+`sign-up.html` mirrors `404.html` because the source's own `/sign-up` route (and its other footer placeholder links, such as Features2, FAQ, and Help Center) resolve to the same themed not-found page; that behavior is reproduced faithfully rather than invented.
 
 ## Notes
 
@@ -41,8 +41,8 @@ Or just open `index.html` directly in a browser — all assets (fonts, images, i
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Next.js SaaS Starter (Vercel/Next.js template) — <https://next-saas-starter-ashy.vercel.app>
+**Original:** Next.js SaaS Starter (Vercel/Next.js template), <https://next-saas-starter-ashy.vercel.app>
 
 ---
 
-Part of the [Templates](../../../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../../) collection. [Browse the live gallery](https://pulkitxm.com/claude-directory).
