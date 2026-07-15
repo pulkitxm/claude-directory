@@ -1,7 +1,5 @@
 (function () {
 	"use strict";
-
-	// ---------- theme (System / Light / Dark) ----------
 	var THEME_KEY = "nextra-clone-theme";
 	var root = document.documentElement;
 	var themeBtn = document.querySelector("[data-theme-btn]");
@@ -36,9 +34,13 @@
 	applyTheme(savedTheme);
 
 	if (themeBtn && themeMenu) {
+		themeBtn.setAttribute("aria-haspopup", "menu");
+		themeBtn.setAttribute("aria-expanded", "false");
+		themeMenu.setAttribute("role", "menu");
 		themeBtn.addEventListener("click", function (e) {
 			e.stopPropagation();
 			themeMenu.classList.toggle("open");
+			themeBtn.setAttribute("aria-expanded", String(themeMenu.classList.contains("open")));
 		});
 		themeMenu.querySelectorAll("[data-theme-option]").forEach(function (btn) {
 			btn.addEventListener("click", function () {
@@ -46,51 +48,62 @@
 				localStorage.setItem(THEME_KEY, mode);
 				applyTheme(mode);
 				themeMenu.classList.remove("open");
+				themeBtn.setAttribute("aria-expanded", "false");
 			});
 		});
 		document.addEventListener("click", function (e) {
 			if (!themeMenu.contains(e.target) && e.target !== themeBtn) {
 				themeMenu.classList.remove("open");
+				themeBtn.setAttribute("aria-expanded", "false");
 			}
 		});
 		document.addEventListener("keydown", function (e) {
-			if (e.key === "Escape") themeMenu.classList.remove("open");
+			if (e.key === "Escape" && themeMenu.classList.contains("open")) {
+				themeMenu.classList.remove("open");
+				themeBtn.setAttribute("aria-expanded", "false");
+				themeBtn.focus();
+			}
 		});
 	}
-
-	// ---------- sidebar folder toggle ----------
 	document.querySelectorAll("[data-folder-toggle]").forEach(function (toggle) {
 		var chevron = toggle.querySelector(".chevron");
 		var childrenId = toggle.getAttribute("data-folder-toggle");
 		var children = document.getElementById(childrenId);
+		toggle.setAttribute("aria-controls", childrenId);
+		toggle.setAttribute("aria-expanded", String(toggle.classList.contains("open")));
 		toggle.addEventListener("click", function (e) {
 			if (e.target.closest(".chevron-hit")) {
 				e.preventDefault();
 				var open = toggle.classList.toggle("open");
+				toggle.setAttribute("aria-expanded", String(open));
 				if (children) children.classList.toggle("open", open);
 			}
 		});
 	});
-
-	// ---------- mobile sidebar ----------
 	var hamburger = document.querySelector("[data-hamburger]");
 	var sidebar = document.querySelector("[data-sidebar]");
 	var scrim = document.querySelector("[data-sidebar-scrim]");
 
-	function closeSidebar() {
+	function closeSidebar(restoreFocus) {
 		if (sidebar) sidebar.classList.remove("open");
 		if (scrim) scrim.classList.remove("open");
+		if (hamburger) hamburger.setAttribute("aria-expanded", "false");
+		document.body.style.overflow = "";
+		if (restoreFocus && hamburger) hamburger.focus();
 	}
 
 	if (hamburger && sidebar) {
+		if (!sidebar.id) sidebar.id = "docs-sidebar";
+		hamburger.setAttribute("aria-controls", sidebar.id);
+		hamburger.setAttribute("aria-expanded", "false");
 		hamburger.addEventListener("click", function () {
 			var open = sidebar.classList.toggle("open");
 			if (scrim) scrim.classList.toggle("open", open);
+			hamburger.setAttribute("aria-expanded", String(open));
+			document.body.style.overflow = open ? "hidden" : "";
 		});
 	}
-	if (scrim) scrim.addEventListener("click", closeSidebar);
-
-	// ---------- search modal ----------
+	if (scrim) scrim.addEventListener("click", function () { closeSidebar(true); });
 	var SEARCH_INDEX = [
 		{ title: "Introduction", section: "What is Nextra?", href: "index.html#what-is-nextra" },
 		{ title: "Introduction", section: "Documentation", href: "index.html#documentation" },
@@ -121,7 +134,7 @@
 		if (!q) {
 			var hint = document.createElement("div");
 			hint.className = "search-empty";
-			hint.textContent = "Start typing to search the docs…";
+			hint.textContent = "Start typing to search the docs...";
 			searchResults.appendChild(hint);
 			return;
 		}
@@ -136,7 +149,7 @@
 			var a = document.createElement("a");
 			a.className = "search-result";
 			a.href = item.href;
-			a.textContent = item.title + " › " + item.section;
+			a.textContent = item.title + " > " + item.section;
 			searchResults.appendChild(a);
 		});
 	}
@@ -144,6 +157,9 @@
 	function openSearch() {
 		if (!searchBackdrop) return;
 		searchBackdrop.classList.add("open");
+		searchBackdrop.setAttribute("aria-hidden", "false");
+		if (searchBox) searchBox.setAttribute("aria-expanded", "true");
+		document.body.style.overflow = "hidden";
 		renderResults("");
 		if (searchInput) {
 			searchInput.value = "";
@@ -153,14 +169,33 @@
 		}
 	}
 
-	function closeSearch() {
+	function closeSearch(restoreFocus) {
 		if (searchBackdrop) searchBackdrop.classList.remove("open");
+		if (searchBackdrop) searchBackdrop.setAttribute("aria-hidden", "true");
+		if (searchBox) searchBox.setAttribute("aria-expanded", "false");
+		document.body.style.overflow = "";
+		if (restoreFocus && searchBox) searchBox.focus();
 	}
 
-	if (searchBox) searchBox.addEventListener("click", openSearch);
+	if (searchBox) {
+		searchBox.setAttribute("role", "button");
+		searchBox.setAttribute("tabindex", "0");
+		searchBox.setAttribute("aria-haspopup", "dialog");
+		searchBox.setAttribute("aria-expanded", "false");
+		searchBox.addEventListener("click", openSearch);
+		searchBox.addEventListener("keydown", function (event) {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				openSearch();
+			}
+		});
+	}
 	if (searchBackdrop) {
+		searchBackdrop.setAttribute("role", "dialog");
+		searchBackdrop.setAttribute("aria-modal", "true");
+		searchBackdrop.setAttribute("aria-hidden", "true");
 		searchBackdrop.addEventListener("click", function (e) {
-			if (e.target === searchBackdrop) closeSearch();
+			if (e.target === searchBackdrop) closeSearch(true);
 		});
 	}
 	if (searchInput) {
@@ -169,14 +204,19 @@
 		});
 	}
 	document.addEventListener("keydown", function (e) {
-		if (e.key === "Escape") closeSearch();
+		if (e.key === "Escape") {
+			if (searchBackdrop && searchBackdrop.classList.contains("open")) {
+				closeSearch(true);
+			}
+			if (sidebar && sidebar.classList.contains("open")) {
+				closeSidebar(true);
+			}
+		}
 		if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
 			e.preventDefault();
 			openSearch();
 		}
 	});
-
-	// ---------- counter buttons ----------
 	document.querySelectorAll("[data-counter]").forEach(function (btn) {
 		var count = 0;
 		btn.addEventListener("click", function () {
@@ -184,8 +224,6 @@
 			btn.textContent = "Clicked " + count + " time" + (count === 1 ? "" : "s");
 		});
 	});
-
-	// ---------- active TOC link on scroll ----------
 	var tocLinks = document.querySelectorAll("[data-toc-link]");
 	if (tocLinks.length) {
 		var headings = Array.prototype.map
