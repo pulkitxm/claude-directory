@@ -1,133 +1,104 @@
-/* SONIC — shared interactions: theme toggle, mobile menu, banner, FAQ, scroll reveal */
-(function () {
-	"use strict";
+const root = document.documentElement;
 
-	/* ---- Mobile menu ---- */
-	const burger = document.querySelector(".hamburger");
-	const menu = document.querySelector(".mobile-menu");
-	function closeMenu() {
-		document.body.classList.remove("menu-open");
-		if (burger) burger.setAttribute("aria-expanded", "false");
-	}
-	if (burger) {
-		burger.addEventListener("click", function () {
-			const open = document.body.classList.toggle("menu-open");
-			burger.setAttribute("aria-expanded", String(open));
-		});
-	}
-	if (menu) {
-		menu
-			.querySelectorAll("a")
-			.forEach((a) => a.addEventListener("click", closeMenu));
-		const bd = menu.querySelector(".backdrop");
-		if (bd) bd.addEventListener("click", closeMenu);
-	}
-	document.addEventListener("keydown", (e) => {
-		if (e.key === "Escape") closeMenu();
+for (const button of document.querySelectorAll('[data-theme-toggle="true"]')) {
+	button.addEventListener("click", () => {
+		const dark = !root.classList.contains("dark");
+		root.classList.toggle("dark", dark);
+		root.classList.toggle("light", !dark);
+		root.style.colorScheme = dark ? "dark" : "light";
+		localStorage.setItem("sonic-theme", dark ? "dark" : "light");
 	});
+}
 
-	/* ---- Promo banner dismiss ---- */
-	const close = document.querySelector(".promo-close");
-	if (close) {
-		if (sessionStorage.getItem("sonic-promo") === "hidden")
-			document.body.classList.add("promo-hidden");
-		close.addEventListener("click", function () {
-			document.body.classList.add("promo-hidden");
-			try {
-				sessionStorage.setItem("sonic-promo", "hidden");
-			} catch (e) {}
-		});
-	}
+const closeBanner = document.querySelector('button[aria-label="Close banner"]');
+closeBanner?.addEventListener("click", () => closeBanner.parentElement.parentElement.remove());
 
-	/* ---- Theme toggle (with view-transition circular mask) ---- */
-	const toggle = document.querySelector(".theme-toggle");
-	function applyTheme(t) {
-		document.documentElement.classList.toggle("dark", t === "dark");
-		try {
-			localStorage.setItem("sonic-theme", t);
-		} catch (e) {}
-	}
-	if (toggle) {
-		toggle.addEventListener("click", function (ev) {
-			const next = document.documentElement.classList.contains("dark")
-				? "light"
-				: "dark";
-			const supportsVT =
-				typeof document.startViewTransition === "function" &&
-				!window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-			if (!supportsVT) {
-				applyTheme(next);
-				return;
-			}
-			const x = ev.clientX,
-				y = ev.clientY;
-			const r = Math.hypot(
-				Math.max(x, innerWidth - x),
-				Math.max(y, innerHeight - y),
-			);
-			const tr = document.startViewTransition(() => applyTheme(next));
-			tr.ready.then(() => {
-				document.documentElement.animate(
-					{
-						clipPath: [
-							`circle(0px at ${x}px ${y}px)`,
-							`circle(${r}px at ${x}px ${y}px)`,
-						],
-					},
-					{
-						duration: 500,
-						easing: "ease-in-out",
-						pseudoElement: "::view-transition-new(root)",
-					},
-				);
-			});
-		});
-	}
+const menuButton = [...document.querySelectorAll("button")].find((button) =>
+	button.textContent.includes("Open main menu"),
+);
+const mobileMenu = menuButton?.closest("header")?.querySelector("div.fixed.inset-x-0");
 
-	/* ---- FAQ accordion ---- */
-	document.querySelectorAll(".faq-q").forEach(function (q) {
-		q.addEventListener("click", function () {
-			const item = q.closest(".faq-item");
-			const wasOpen = item.classList.contains("open");
-			// single-open behavior within a list
-			const list = item.closest(".faq");
-			if (list)
-				list.querySelectorAll(".faq-item.open").forEach((i) => {
-					if (i !== item) i.classList.remove("open");
-				});
-			item.classList.toggle("open", !wasOpen);
-			q.setAttribute("aria-expanded", String(!wasOpen));
-		});
+const setMenu = (open) => {
+	if (!mobileMenu || !menuButton) return;
+	mobileMenu.classList.toggle("invisible", !open);
+	const backdrop = mobileMenu.firstElementChild;
+	const panel = mobileMenu.querySelector("nav");
+	backdrop.classList.toggle("opacity-0", !open);
+	backdrop.classList.toggle("opacity-100", open);
+	panel.classList.toggle("translate-x-full", !open);
+	panel.classList.toggle("opacity-0", !open);
+	panel.classList.toggle("translate-x-0", open);
+	panel.classList.toggle("opacity-100", open);
+	menuButton.setAttribute("aria-expanded", String(open));
+	document.body.style.overflow = open ? "hidden" : "";
+	const bars = menuButton.querySelectorAll("div > span");
+	bars[0]?.classList.toggle("rotate-45", open);
+	bars[0]?.classList.toggle("translate-y-0", open);
+	bars[1]?.classList.toggle("-rotate-45", open);
+	bars[1]?.classList.toggle("translate-y-0", open);
+};
+
+menuButton?.addEventListener("click", () =>
+	setMenu(menuButton.getAttribute("aria-expanded") !== "true"),
+);
+mobileMenu?.firstElementChild.addEventListener("click", () => setMenu(false));
+for (const link of mobileMenu?.querySelectorAll("a") || []) {
+	link.addEventListener("click", () => setMenu(false));
+}
+document.addEventListener("keydown", (event) => {
+	if (event.key === "Escape") setMenu(false);
+});
+
+const answers = {
+	"What makes your speakers stand out?":
+		"Our speakers deliver premium sound quality, sleek design, and long-lasting durability, ensuring an unmatched listening experience.",
+	"Are your speakers compatible with all devices?":
+		"Yes, our speakers connect seamlessly with phones, tablets, laptops, televisions, and other Bluetooth-enabled devices.",
+	"How long does the battery last?":
+		"A full charge provides all-day listening, with up to 24 hours of playback depending on volume and usage.",
+	"Are the speakers waterproof?":
+		"Our portable speakers are water resistant and built to handle splashes, making them ready for everyday indoor and outdoor use.",
+	"Do you offer a warranty?":
+		"Yes, every Sonic speaker includes a limited warranty covering manufacturing defects and dedicated product support.",
+};
+
+const accordionButtons = document.querySelectorAll(
+	'button[data-slot="accordion-trigger"]',
+);
+
+const updateAccordion = (button, open) => {
+	const item = button.closest('[data-slot="accordion-item"]');
+	const heading = button.parentElement;
+	const content = document.getElementById(button.getAttribute("aria-controls"));
+	button.setAttribute("aria-expanded", String(open));
+	button.setAttribute("aria-disabled", String(open));
+	button.dataset.state = open ? "open" : "closed";
+	item.dataset.state = open ? "open" : "closed";
+	heading.dataset.state = open ? "open" : "closed";
+	content.dataset.state = open ? "open" : "closed";
+	content.hidden = !open;
+	content.innerHTML = open
+		? `<div class="pt-0 pb-4 text-base md:pb-6">${answers[button.textContent.trim()]}</div>`
+		: "";
+};
+
+for (const button of accordionButtons) {
+	button.addEventListener("click", () => {
+		if (button.getAttribute("aria-expanded") === "true") return;
+		for (const current of accordionButtons) updateAccordion(current, current === button);
 	});
+}
 
-	/* ---- Scroll reveal ---- */
-	const reveals = document.querySelectorAll(".reveal");
-	if (reveals.length) {
-		if (!("IntersectionObserver" in window)) {
-			reveals.forEach((r) => r.classList.add("in"));
-		} else {
-			const io = new IntersectionObserver(
-				function (entries) {
-					entries.forEach(function (e) {
-						if (e.isIntersecting) {
-							e.target.classList.add("in");
-							io.unobserve(e.target);
-						}
-					});
-				},
-				{ threshold: 0.08, rootMargin: "0px 0px -6% 0px" },
-			);
-			reveals.forEach((r) => io.observe(r));
-			// Failsafe: guarantee no element stays permanently hidden if the
-			// observer never fires for it (fast scroll, full-page capture, etc).
-			// Above-fold items still animate via the observer; this only rescues
-			// anything still hidden a moment after the page settles.
-			const failsafe = () =>
-				document
-					.querySelectorAll(".reveal:not(.in)")
-					.forEach((r) => r.classList.add("in"));
-			window.addEventListener("load", () => setTimeout(failsafe, 1200));
-			setTimeout(failsafe, 2500);
-		}
-	}
-})();
+for (const checkbox of document.querySelectorAll('button[role="checkbox"]')) {
+	checkbox.addEventListener("click", () => {
+		const checked = checkbox.getAttribute("aria-checked") !== "true";
+		checkbox.setAttribute("aria-checked", String(checked));
+		checkbox.dataset.state = checked ? "checked" : "unchecked";
+		const input = checkbox.nextElementSibling;
+		if (input instanceof HTMLInputElement) input.checked = checked;
+	});
+}
+
+for (const form of document.querySelectorAll("form")) {
+	form.addEventListener("submit", (event) => event.preventDefault());
+}
