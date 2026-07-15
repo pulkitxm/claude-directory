@@ -1,31 +1,20 @@
-# Aspect — Fintech SaaS Marketing Website Template Clone (Vanilla HTML/CSS/JS)
+# Aspect Fintech Website
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+[![Watch the demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained clone of the premium **Aspect** shadcn/ui template — a dark-first fintech / financial SaaS marketing site — rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step. The 17-page site reproduces the full chrome and interactions same-to-same: a light/dark theme toggle (persisted, honors `prefers-color-scheme`), a product mega-menu dropdown, a mobile nav drawer, a dismissible announcement banner, FAQ accordions, a monthly/annual pricing billing toggle, a logo marquee, and tabbed feature showcases — across home, features, pricing, about, blog, FAQ, contact, login, signup, and long-form legal pages. The design uses near-black obsidian surfaces, hairline white-alpha borders, a centered max-width container with persistent left/right border rules, the Figtree typeface, and a violet "star" accent driven by HSL custom-property tokens. Generated with Claude Fable 5.
+A self-contained reproduction of the premium Aspect template from Shadcnblocks. The 17-page static site includes the dark-first financial dashboard aesthetic, responsive layouts, theme switching, navigation menus, feature tabs, accordions, billing controls, forms, blog pages, and legal pages.
 
 ## Run
 
-This project is fully static — no install or build step. Serve the folder and open `index.html`:
+Serve this directory with any static file server:
 
 ```sh
 python3 -m http.server
 ```
 
-Then open <http://localhost:8000> in your browser. The theme toggle, accordions, pricing toggle, mega-menu, and feature tabs are all wired up in `app.js`; styles live in `styles.css`.
+Open <http://localhost:8000> in a browser. No build step or package installation is required.
 
-## Notes
+## Reference
 
-- Theme: `app.js` toggles the `.dark` class on `<html>` and persists the choice in `localStorage`; boot defaults to dark and honors the system color scheme without a flash.
-- Interactions in vanilla JS: banner dismiss, radix-style FAQ accordions, product mega-menu, mobile drawer, monthly↔annual pricing toggle, logo marquee, and feature tabs.
-- `prompt.md` holds the full build spec (palette tokens, typography, layout traits, page list); `demo.mp4` shows the site in motion.
-
-## Credits
-
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
-
-**Original:** Aspect — a premium shadcn/ui template by shadcnblocks.com — <https://www.shadcnblocks.com/template/aspect>
-
----
-
-Part of the [Templates](../../../README.md) collection in the [claude-directory](../../../../README.md) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+- [Aspect template listing](https://www.shadcnblocks.com/template/aspect)
+- [Aspect live demo](https://aspect-nextjs-template.vercel.app/)
