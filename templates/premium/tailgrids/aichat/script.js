@@ -1,9 +1,9 @@
-// AI Chat Template — script.js
+
 
 (function () {
 	"use strict";
 
-	// --- Elements ---
+
 	const sidebar = document.getElementById("sidebar");
 	const overlay = document.getElementById("sidebarOverlay");
 	const mobileMenuBtn = document.getElementById("mobileMenuBtn");
@@ -13,24 +13,38 @@
 	const sendBtn = document.getElementById("sendBtn");
 	const chatInputBox = document.getElementById("chatInputBox");
 
-	// --- Mobile sidebar toggle ---
+
 	function openSidebar() {
 		sidebar.classList.add("is-open");
 		overlay.classList.add("is-visible");
+		sidebar.setAttribute("aria-hidden", "false");
+		mobileMenuBtn.setAttribute("aria-expanded", "true");
 		document.body.style.overflow = "hidden";
+		const firstButton = sidebar.querySelector("button");
+		if (firstButton) firstButton.focus();
 	}
 
-	function closeSidebar() {
+	function closeSidebar(restoreFocus) {
 		sidebar.classList.remove("is-open");
 		overlay.classList.remove("is-visible");
+		sidebar.setAttribute("aria-hidden", "true");
+		mobileMenuBtn.setAttribute("aria-expanded", "false");
 		document.body.style.overflow = "";
+		if (restoreFocus) mobileMenuBtn.focus();
 	}
 
-	if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", openSidebar);
-	if (sidebarCloseBtn) sidebarCloseBtn.addEventListener("click", closeSidebar);
-	if (overlay) overlay.addEventListener("click", closeSidebar);
+	if (mobileMenuBtn) {
+		mobileMenuBtn.setAttribute("aria-controls", "sidebar");
+		mobileMenuBtn.setAttribute("aria-expanded", "false");
+		mobileMenuBtn.addEventListener("click", openSidebar);
+	}
+	if (sidebarCloseBtn) sidebarCloseBtn.addEventListener("click", function () { closeSidebar(true); });
+	if (overlay) overlay.addEventListener("click", function () { closeSidebar(true); });
+	document.addEventListener("keydown", function (event) {
+		if (event.key === "Escape" && sidebar.classList.contains("is-open")) closeSidebar(true);
+	});
 
-	// --- Desktop sidebar collapse ---
+
 	let sidebarCollapsed = false;
 	if (sidebarCollapseBtn) {
 		sidebarCollapseBtn.addEventListener("click", function () {
@@ -46,10 +60,12 @@
 				sidebar.style.overflow = "";
 				sidebar.style.borderRight = "";
 			}
+			sidebarCollapseBtn.setAttribute("aria-expanded", String(!sidebarCollapsed));
 		});
+		sidebarCollapseBtn.setAttribute("aria-expanded", "true");
 	}
 
-	// --- Textarea auto-resize + send button enable ---
+
 	function updateTextarea() {
 		if (!chatTextarea) return;
 		chatTextarea.style.height = "auto";
@@ -64,7 +80,7 @@
 	if (chatTextarea) {
 		chatTextarea.addEventListener("input", updateTextarea);
 
-		// Focus border effect on the input box
+
 		chatTextarea.addEventListener("focus", function () {
 			if (chatInputBox) chatInputBox.classList.add("focused");
 		});
@@ -72,7 +88,7 @@
 			if (chatInputBox) chatInputBox.classList.remove("focused");
 		});
 
-		// Submit on Enter (without Shift)
+
 		chatTextarea.addEventListener("keydown", function (e) {
 			if (e.key === "Enter" && !e.shiftKey) {
 				e.preventDefault();
@@ -83,7 +99,7 @@
 		});
 	}
 
-	// --- Send action (demo — just clears the textarea) ---
+
 	function handleSend() {
 		if (chatTextarea) {
 			chatTextarea.value = "";
@@ -95,7 +111,7 @@
 		sendBtn.addEventListener("click", handleSend);
 	}
 
-	// --- Quick action chips fill in placeholder text ---
+
 	const chips = document.querySelectorAll(".chat-action-chip");
 	chips.forEach(function (chip) {
 		chip.addEventListener("click", function () {
@@ -107,7 +123,7 @@
 		});
 	});
 
-	// --- Sidebar nav button highlight ---
+
 	const navBtns = document.querySelectorAll(
 		".sidebar-nav-btn, .sidebar-project-btn, .sidebar-chat-btn",
 	);
@@ -125,6 +141,6 @@
 		});
 	});
 
-	// Initial setup
+
 	updateTextarea();
 })();
