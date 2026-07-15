@@ -1,0 +1,1 @@
+document.addEventListener("alpine:init",function(){Alpine.data("transactionsPage",function(){var n=window.createDataTable({data:window.MosaicData.transactions,pageSize:8});return n.panelOpen=!1,n.panelRow=null,n.openPanel=function(n){this.panelRow=n,this.panelOpen=!0},n.closePanel=function(){this.panelOpen=!1},n})});

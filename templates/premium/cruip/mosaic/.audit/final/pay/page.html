@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en" style="color-scheme: light;"><head>
+    <meta charset="utf-8">
+    <title>Mosaic HTML Demo - Pay</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg">
+    <link rel="shortcut icon" href="./favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <link href="./css/vendors/flatpickr.min.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+    <script>
+        if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
+            document.querySelector('html').classList.remove('dark');
+            document.querySelector('html').style.colorScheme = 'light';
+        } else {
+            document.querySelector('html').classList.add('dark');
+            document.querySelector('html').style.colorScheme = 'dark';
+        }
+    </script>
+</head>
+
+<body class="font-inter antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400">
+
+    <script>
+        if (localStorage.getItem('sidebar-expanded') == 'true') {
+            document.querySelector('body').classList.add('sidebar-expanded');
+        } else {
+            document.querySelector('body').classList.remove('sidebar-expanded');
+        }
+    </script>
+
+
+    <div class="flex h-[100dvh] overflow-hidden">
+
+
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+
+
+            <header class="bg-white dark:bg-gray-900">
+                <div class="px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between h-16 lg:border-b border-gray-200 dark:border-gray-700/60">
+
+
+                        <a class="block" href="index.html">
+                            <svg class="fill-violet-500" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                                <path d="M31.956 14.8C31.372 6.92 25.08.628 17.2.044V5.76a9.04 9.04 0 0 0 9.04 9.04h5.716ZM14.8 26.24v5.716C6.92 31.372.63 25.08.044 17.2H5.76a9.04 9.04 0 0 1 9.04 9.04Zm11.44-9.04h5.716c-.584 7.88-6.876 14.172-14.756 14.756V26.24a9.04 9.04 0 0 1 9.04-9.04ZM.044 14.8C.63 6.92 6.92.628 14.8.044V5.76a9.04 9.04 0 0 1-9.04 9.04H.044Z"></path>
+                            </svg>
+                        </a>
+
+                        <a class="block rounded-fullbg-gray-400/20 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" href="cart.html">
+                            <span class="sr-only">Back</span>
+                            <svg width="32" height="32" viewBox="0 0 32 32">
+                                <path class="fill-current" d="M15.95 14.536l4.242-4.243a1 1 0 111.415 1.414l-4.243 4.243 4.243 4.242a1 1 0 11-1.415 1.415l-4.242-4.243-4.243 4.243a1 1 0 01-1.414-1.415l4.243-4.242-4.243-4.243a1 1 0 011.414-1.414l4.243 4.243z"></path>
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+            </header>
+
+
+            <main class="grow">
+
+                <div class="relative pt-8">
+                    <div class="absolute inset-0 bg-gray-800 overflow-hidden" aria-hidden="true">
+                        <img class="object-cover h-full w-full filter blur-sm opacity-10" src="./images/pay-bg.jpg" width="460" height="180" alt="Pay background">
+                    </div>
+                    <div class="relative px-4 sm:px-6 lg:px-8 max-w-lg mx-auto">
+                        <img class="rounded-t-xl shadow-lg" src="./images/pay-bg.jpg" width="460" height="180" alt="Pay background">
+                    </div>
+                </div>
+
+                <div class="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-lg mx-auto" x-data="{ card: true }">
+                    <div class="bg-white dark:bg-gray-800 px-8 pb-6 rounded-b-xl shadow-xs">
+
+
+                        <div class="text-center mb-6">
+                            <div class="mb-2">
+                                <img class="-mt-8 inline-flex rounded-full" src="./images/user-64-13.jpg" width="64" height="64" alt="User">
+                            </div>
+                            <h1 class="text-xl leading-snug text-gray-800 dark:text-gray-100 font-semibold mb-2">Front-End Learning</h1>
+                            <div class="text-sm">
+                                Learn how to create real web apps using HTML &amp; CSS. Code templates included.
+                            </div>
+                        </div>
+
+
+                        <div class="flex justify-center mb-6">
+                            <div class="relative flex w-full p-1 bg-gray-100 dark:bg-gray-700/30 rounded-sm">
+                                <span class="absolute inset-0 m-1 pointer-events-none" aria-hidden="true">
+                                    <span class="absolute inset-0 w-1/2 bg-white dark:bg-gray-100 rounded-lg border border-gray-200 shadow-xs transition translate-x-0" :class="card ? 'translate-x-0' : 'translate-x-full'"></span>
+                                </span>
+                                <button class="relative flex-1 text-sm font-medium text-gray-600 p-1 transition dark:text-gray-800" :class="card ? 'dark:text-gray-800' : 'dark:text-gray-500'" @click.prevent="card = true">Pay With Card</button>
+                                <button class="relative flex-1 text-sm font-medium text-gray-600 p-1 transition dark:text-gray-500" :class="!card ? 'dark:text-gray-800' : 'dark:text-gray-500'" @click.prevent="card = false">Pay With PayPal</button>
+                            </div>
+                        </div>
+
+
+                        <div x-show="card">
+                            <div class="space-y-4">
+
+                                <div>
+                                    <label class="block text-sm font-medium mb-1" for="card-nr">Card Number <span class="text-red-500">*</span></label>
+                                    <input id="card-nr" class="form-input w-full" type="text" placeholder="1234 1234 1234 1234" style="">
+                                </div>
+
+                                <div class="flex space-x-4">
+                                    <div class="flex-1">
+                                        <label class="block text-sm font-medium mb-1" for="card-expiry">Expiry Date <span class="text-red-500">*</span></label>
+                                        <input id="card-expiry" class="form-input w-full" type="text" placeholder="MM/YY" style="">
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="block text-sm font-medium mb-1" for="card-cvc">CVC <span class="text-red-500">*</span></label>
+                                        <input id="card-cvc" class="form-input w-full" type="text" placeholder="CVC" style="">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium mb-1" for="card-name">Name on Card <span class="text-red-500">*</span></label>
+                                    <input id="card-name" class="form-input w-full" type="text" placeholder="John Doe" style="">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium mb-1" for="card-email">Email <span class="text-red-500">*</span></label>
+                                    <input id="card-email" class="form-input w-full" type="email" placeholder="john@company.com" style="">
+                                </div>
+                            </div>
+
+                            <div class="mt-6">
+                                <div class="mb-4">
+                                    <button class="btn w-full bg-gray-900 text-gray-100 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white">Pay $253.00</button>
+                                </div>
+                                <div class="text-xs text-gray-500 italic text-center">You'll be charged $253, including $48 for VAT in Italy</div>
+                            </div>
+                        </div>
+
+
+                        <div x-show="!card" style="display: none;">
+                            <div>
+                                <div class="mb-4">
+                                    <button class="btn w-full bg-gray-900 text-gray-100 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white">Pay with PayPal - $253.00</button>
+                                </div>
+                                <div class="text-xs text-gray-500 italic text-center">You'll be charged $253, including $48 for VAT in Italy</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="./js/vendors/alpinejs.min.js" defer=""></script>
+    <script src="./js/main.js"></script>
+
+
+
+</body></html>
