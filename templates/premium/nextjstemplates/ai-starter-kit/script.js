@@ -60,6 +60,14 @@
 		}
 		setOpen(item.classList.contains("open"));
 		q.addEventListener("click", function () {
+			document.querySelectorAll(".faq-item").forEach(function (other) {
+				if (other === item) return;
+				other.classList.remove("open");
+				var otherQ = other.querySelector(".faq-q");
+				var otherA = other.querySelector(".faq-a");
+				if (otherQ) otherQ.setAttribute("aria-expanded", "false");
+				if (otherA) otherA.style.maxHeight = "0px";
+			});
 			setOpen(!item.classList.contains("open"));
 		});
 	});
@@ -90,6 +98,17 @@
 	var testimonialsSection = document.querySelector(".testimonials-section");
 	if (showMoreBtn && testimonialsSection) {
 		showMoreBtn.addEventListener("click", function () {
+			var extraGrid = testimonialsSection.querySelector(
+				".testimonial-more .testimonials-grid",
+			);
+			var initialCards = testimonialsSection.querySelectorAll(
+				".testimonials-grid > .testimonial-card",
+			);
+			if (extraGrid && initialCards.length >= 3) {
+				for (var i = 0; i < 3; i += 1) {
+					extraGrid.appendChild(initialCards[i].cloneNode(true));
+				}
+			}
 			testimonialsSection.classList.add("expanded");
 			showMoreBtn.style.display = "none";
 		});
