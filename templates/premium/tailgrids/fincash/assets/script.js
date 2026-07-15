@@ -1,5 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// --- Theme Toggle logic ---
+	const headings = [...document.querySelectorAll("h1")];
+	if (!headings.length) {
+		const main = document.querySelector("main") || document.body;
+		const heading = document.createElement("h1");
+		heading.className = "sr-only";
+		heading.textContent = document.title.split("|")[0].trim();
+		main.prepend(heading);
+	} else {
+		headings.slice(1).forEach((heading) => {
+			const replacement = document.createElement("h2");
+			for (const attribute of heading.attributes) replacement.setAttribute(attribute.name, attribute.value);
+			replacement.innerHTML = heading.innerHTML;
+			heading.replaceWith(replacement);
+		});
+	}
+
 	const themeToggle = document.getElementById("theme-toggle");
 	const darkIcon = document.getElementById("theme-toggle-dark-icon");
 	const lightIcon = document.getElementById("theme-toggle-light-icon");
@@ -16,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	// Initial state check
+
 	updateThemeIcons();
 
 	if (themeToggle) {
@@ -33,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	// --- Sticky Header logic ---
+
 	const header = document.querySelector("header");
 	function checkScroll() {
 		if (window.scrollY > 20) {
@@ -45,25 +60,55 @@ document.addEventListener("DOMContentLoaded", () => {
 	window.addEventListener("scroll", checkScroll);
 	checkScroll(); // Run once in case of initial scroll position
 
-	// --- Mobile Menu Toggle ---
+
 	const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
 	const mobileMenu = document.getElementById("mobile-menu");
 
 	if (mobileMenuToggle && mobileMenu) {
+		const mobileThemeToggle = document.createElement("button");
+		mobileThemeToggle.type = "button";
+		mobileThemeToggle.className = "mx-auto rounded-full border border-white/20 px-5 py-3 text-sm text-white";
+		mobileThemeToggle.textContent = "Toggle theme";
+		mobileThemeToggle.addEventListener("click", () => themeToggle?.click());
+		mobileMenu.append(mobileThemeToggle);
+		const closeMobileMenu = (restoreFocus = false) => {
+			mobileMenu.classList.add("hidden");
+			mobileMenuToggle.setAttribute("aria-expanded", "false");
+			if (restoreFocus) mobileMenuToggle.focus();
+		};
+		mobileMenuToggle.setAttribute("aria-controls", "mobile-menu");
+		mobileMenuToggle.setAttribute("aria-expanded", "false");
 		mobileMenuToggle.addEventListener("click", () => {
 			mobileMenu.classList.toggle("hidden");
+			mobileMenuToggle.setAttribute("aria-expanded", String(!mobileMenu.classList.contains("hidden")));
 		});
 
-		// Close menu when clicking on any links
+
 		const mobileLinks = mobileMenu.querySelectorAll("a");
 		mobileLinks.forEach((link) => {
 			link.addEventListener("click", () => {
-				mobileMenu.classList.add("hidden");
+				closeMobileMenu();
 			});
+		});
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) closeMobileMenu(true);
 		});
 	}
 
-	// --- Scroll reveal (replaces Framer Motion initial states) ---
+	document.querySelectorAll("nav a").forEach((link) => {
+		const href = link.getAttribute("href");
+		if (href && new URL(href, location.href).pathname === location.pathname) link.setAttribute("aria-current", "page");
+	});
+	document.querySelectorAll("button").forEach((button) => {
+		if (button.getAttribute("aria-label") || button.getAttribute("title") || (button.textContent || "").trim()) return;
+		button.setAttribute("aria-label", "Interactive control");
+	});
+	document.querySelectorAll("input, textarea, select").forEach((field) => {
+		if (field.getAttribute("aria-label") || field.closest("label") || (field.id && document.querySelector(`label[for="${field.id}"]`))) return;
+		field.setAttribute("aria-label", field.getAttribute("placeholder") || field.getAttribute("name") || field.id || field.getAttribute("type") || "Form field");
+	});
+
+
 	const revealEls = document.querySelectorAll('[style*="opacity: 0"]');
 	const observer = new IntersectionObserver(
 		(entries) => {
@@ -80,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	);
 	revealEls.forEach((el) => observer.observe(el));
 
-	// --- Swiper Testimonial Carousel ---
+
 	const swiperContainer = document.querySelector(".swiper");
 	if (swiperContainer) {
 		new Swiper(".swiper", {
