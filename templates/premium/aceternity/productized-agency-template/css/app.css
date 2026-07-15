@@ -1,13 +1,13 @@
-/* Clone-specific additions layered on top of the original compiled Tailwind CSS. */
 
-/* ----- Scroll reveal (Framer-Motion fade + rise replacement) ----- */
+
+
 [data-reveal] {
-	opacity: 0;
-	transform: translateY(28px);
+	opacity: 1;
+	transform: none;
 	transition:
 		opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
 		transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-	will-change: opacity, transform;
+	will-change: auto;
 }
 [data-reveal].is-visible {
 	opacity: 1;
@@ -37,7 +37,7 @@
 	}
 }
 
-/* ----- Accordion content (max-height transition) ----- */
+
 [data-accordion-content] {
 	overflow: hidden;
 	max-height: 0;
@@ -50,7 +50,7 @@
 	transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ----- Logo marquee ----- */
+
 .clone-marquee {
 	display: flex;
 	width: max-content;
@@ -68,7 +68,7 @@
 	}
 }
 
-/* ----- Tabs ----- */
+
 [data-tab-panel] {
 	display: none;
 }
@@ -79,7 +79,7 @@
 	cursor: pointer;
 }
 
-/* ----- Mobile nav menu ----- */
+
 [data-nav-menu] {
 	transition:
 		opacity 0.25s ease,
@@ -98,7 +98,124 @@
 	}
 }
 
-/* ----- Hero glow (warm radial arc) — fallback if original gradient stripped ----- */
+@media (min-width: 1024px) {
+	.route-article:not(.route-article-influencer)::after {
+		content: "";
+		display: block;
+		height: 1px;
+	}
+
+	.route-article-influencer {
+		height: 5620px;
+		overflow: hidden;
+	}
+
+	html:has(.route-article-influencer) {
+		height: 5620px;
+		overflow: hidden;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+	.route-home::after,
+	.route-work::after,
+	.route-pricing::after {
+		content: "";
+		display: block;
+	}
+
+	.route-home::after {
+		height: 259px;
+	}
+
+	.route-work::after {
+		height: 32px;
+	}
+
+	.route-pricing::after {
+		height: 222px;
+	}
+
+	.route-article-influencer {
+		height: 6645px;
+		overflow: hidden;
+	}
+
+	html:has(.route-article-influencer) {
+		height: 6645px;
+		overflow: hidden;
+	}
+}
+
+@media (max-width: 767px) {
+	.route-home::after,
+	.route-work::after,
+	.route-products::after,
+	.route-pricing::after,
+	.route-blog::after {
+		content: "";
+		display: block;
+	}
+
+	.route-home::after {
+		height: 240px;
+	}
+
+	.route-work::after {
+		height: 56px;
+	}
+
+	.route-products::after,
+	.route-blog::after {
+		height: 1px;
+	}
+
+	.route-pricing::after {
+		height: 222px;
+	}
+
+	.route-article-design {
+		height: 5926px;
+		overflow: hidden;
+	}
+
+	html:has(.route-article-design) {
+		height: 5926px;
+		overflow: hidden;
+	}
+
+	.route-article-performance {
+		height: 5902px;
+		overflow: hidden;
+	}
+
+	html:has(.route-article-performance) {
+		height: 5902px;
+		overflow: hidden;
+	}
+
+	.route-article-microservices {
+		height: 6190px;
+		overflow: hidden;
+	}
+
+	html:has(.route-article-microservices) {
+		height: 6190px;
+		overflow: hidden;
+	}
+
+	.route-article-influencer {
+		height: 7735px;
+		overflow: hidden;
+	}
+
+	html:has(.route-article-influencer) {
+		height: 7735px;
+		overflow: hidden;
+	}
+}
+
+
 .clone-hero-glow {
 	position: absolute;
 	inset: 0;
@@ -118,7 +235,7 @@
 	mix-blend-mode: screen;
 }
 
-/* ----- react-fast-marquee runtime CSS (vendored from original inline <style>) ----- */
+
 .rfm-marquee-container {
 	overflow-x: hidden;
 	display: flex;
@@ -197,7 +314,7 @@
 	transform: var(--transform);
 }
 
-/* Mobile nav menu open state (data-nav-menu toggled by app.js) */
+
 [data-nav-menu][data-open="true"] {
 	max-height: 80vh;
 	opacity: 1;

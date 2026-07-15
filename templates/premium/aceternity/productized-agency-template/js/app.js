@@ -1,11 +1,4 @@
-/* Shared interactions for the Productized Agency clone.
-   Replaces the original Framer-Motion / Radix runtime with vanilla equivalents:
-   - scroll/entrance reveals (IntersectionObserver)
-   - FAQ / accordion open-close (CSS height keyframes)
-   - tabbed pricing cards
-   - mobile nav menu
-   - logo marquee duplication
-*/
+
 (function () {
 	"use strict";
 
@@ -15,7 +8,7 @@
 			: document.addEventListener("DOMContentLoaded", fn);
 
 	ready(() => {
-		/* ---------- Scroll reveal (Framer Motion replacement) ---------- */
+
 		const reveals = document.querySelectorAll("[data-reveal]");
 		if (reveals.length) {
 			const io = new IntersectionObserver(
@@ -32,7 +25,7 @@
 			reveals.forEach((el) => io.observe(el));
 		}
 
-		/* ---------- FAQ accordion ---------- */
+
 		document.querySelectorAll("[data-accordion]").forEach((root) => {
 			const items = root.querySelectorAll("[data-accordion-item]");
 			items.forEach((item) => {
@@ -41,7 +34,6 @@
 				if (!trigger || !content) return;
 				trigger.addEventListener("click", () => {
 					const open = item.getAttribute("data-open") === "true";
-					// close siblings (single-open behaviour)
 					items.forEach((other) => {
 						if (other !== item) {
 							other.setAttribute("data-open", "false");
@@ -55,7 +47,7 @@
 			});
 		});
 
-		/* ---------- Tabs (pricing / generic) ---------- */
+
 		document.querySelectorAll("[data-tabs]").forEach((tabs) => {
 			const triggers = tabs.querySelectorAll("[data-tab-trigger]");
 			const panels = tabs.querySelectorAll("[data-tab-panel]");
@@ -75,7 +67,7 @@
 			});
 		});
 
-		/* ---------- Mobile nav ---------- */
+
 		const navToggle = document.querySelector("[data-nav-toggle]");
 		const navMenu = document.querySelector("[data-nav-menu]");
 		if (navToggle && navMenu) {
@@ -98,7 +90,7 @@
 				.forEach((a) => a.addEventListener("click", () => setOpen(false)));
 		}
 
-		/* ---------- Testimonial carousels (dot nav + autoplay) ---------- */
+
 		document
 			.querySelectorAll('[aria-label^="Show testimonial 1"]')
 			.forEach((firstDot) => {
@@ -108,8 +100,6 @@
 				const dots = Array.from(
 					dotRow.querySelectorAll('[aria-label^="Show testimonial"]'),
 				);
-				// The track is the translate3d flex row that precedes the dot row.
-				// Search previous siblings / ancestors for it.
 				let track = null;
 				let scope = dotRow;
 				for (let i = 0; i < 6 && scope && !track; i++) {
@@ -163,7 +153,7 @@
 				start();
 			});
 
-		/* ---------- Sticky nav shadow on scroll ---------- */
+
 		const nav = document.querySelector("[data-nav]");
 		if (nav) {
 			const onScroll = () => {
