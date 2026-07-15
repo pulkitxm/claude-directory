@@ -142,7 +142,7 @@ body:is(.dark *), html:is(.dark *) { --tw-bg-opacity: 1; background-color: rgb(2
 .rotate-45 { --tw-rotate: 45deg; }
 .scale-75 { --tw-scale-x: .75; --tw-scale-y: .75; }
 .scale-75, .transform { transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
-@keyframes spin { 
+@keyframes spin {
   100% { transform: rotate(1turn); }
 }
 .animate-spin { animation: 1s linear 0s infinite normal none running spin; }
@@ -356,7 +356,7 @@ body:is(.dark *), html:is(.dark *) { --tw-bg-opacity: 1; background-color: rgb(2
   .xl\:text-xl { font-size: 1.25rem; line-height: 1.75rem; }
   .xl\:leading-tight { line-height: 1.25; }
 }
-/* ---- Nextly clone custom additions (not present in purged Tailwind bundle) ---- */
+
 html, body { background-color: #ffffff; }
 html.dark, body:is(.dark, .dark *) { }
 html.dark { color-scheme: dark; }
@@ -364,40 +364,30 @@ html.dark body { background-color: rgb(23,23,23); }
 
 a { cursor: pointer; }
 
-/* mobile nav panel (same nav-links block used at desktop width via lg:flex; JS toggles .hidden below lg) */
-.mobile-nav-panel { transition: opacity .2s ease-out, transform .2s ease-out; transform-origin: top; }
-.mobile-nav-panel.entering { opacity: 0; transform: translateY(-4px); }
-.mobile-nav-panel.entered { opacity: 1; transform: translateY(0); }
-@media (max-width: 1023px) {
-  .mobile-nav-panel { text-align: left; width: 100%; flex-basis: 100%; }
-  .mobile-nav-panel ul { display: block !important; }
-}
 
-/* faq answer */
+.mobile-menu-panel { transition: opacity .2s ease-out, transform .2s ease-out; transform-origin: top; }
+.mobile-menu-panel.entering { opacity: 0; transform: translateY(-4px); }
+.mobile-menu-panel.entered { opacity: 1; transform: translateY(0); }
+
+
 .faq-answer { overflow: hidden; max-height: 0; opacity: 0; transition: max-height .2s ease, opacity .2s ease, margin .2s ease; }
 .faq-answer.open { max-height: 300px; opacity: 1; }
 .faq-item button .chevron { transition: transform .2s ease; }
 .faq-item button[aria-expanded="true"] .chevron { transform: rotate(180deg); }
 
-/* contact widget */
-.contact-panel { position: fixed; right: 1.25rem; bottom: 5.5rem; width: 350px; max-width: calc(100vw - 2.5rem); background: #fff; border-radius: 1rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,.25); overflow: hidden; z-index: 41; transition: opacity .2s ease-out, transform .2s ease-out; transform-origin: bottom right; }
-html.dark .contact-panel { background: rgb(38,38,38); }
+.contact-panel { position: fixed; z-index: 50; inset: 0 0 100px; transition: opacity .2s ease-out, transform .2s ease-out; transform-origin: bottom right; }
 .contact-panel[hidden] { display: none; }
-.contact-panel.entering { opacity: 0; transform: translateY(8px) scale(.98); }
+.contact-panel.entering { opacity: 0; transform: translateY(20px); }
 .contact-panel.entered { opacity: 1; transform: translateY(0) scale(1); }
-.contact-panel-header { background: rgb(79,70,229); color: #fff; padding: 1.25rem 1.5rem; }
-.contact-panel-header h3 { font-size: 1.125rem; font-weight: 600; margin: 0; }
-.contact-panel-header p { margin: .25rem 0 0; font-size: .875rem; opacity: .85; }
-.contact-panel-body { padding: 1.25rem 1.5rem; }
-.contact-field { margin-bottom: 1rem; }
-.contact-field label { display: block; font-size: .8rem; font-weight: 500; color: rgb(75,85,99); margin-bottom: .3rem; }
-html.dark .contact-field label { color: rgb(209,213,219); }
-.contact-field input, .contact-field textarea { width: 100%; border: 1px solid rgb(209,213,219); border-radius: .5rem; padding: .55rem .75rem; font-size: .9rem; font-family: inherit; color: inherit; background: transparent; }
-html.dark .contact-field input, html.dark .contact-field textarea { border-color: rgb(64,64,64); }
-.contact-field textarea { resize: none; min-height: 72px; }
-.contact-submit { width: 100%; background: rgb(99,102,241); color: #fff; border: none; border-radius: .5rem; padding: .65rem; font-weight: 600; font-size: .95rem; cursor: pointer; transition: background-color .2s; }
-.contact-submit:hover { background: rgb(79,70,229); }
-.contact-powered { text-align: center; font-size: .75rem; color: rgb(156,163,175); margin-top: .75rem; }
+.contact-box { display: flex; flex-direction: column; width: 100%; height: 100%; min-height: 250px; overflow: hidden; background: #fff; border: 1px solid rgb(209,213,219); border-radius: .375rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,.25); }
+.contact-panel-header { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 8rem; padding: 1.25rem; color: #fff; background: rgb(79,70,229); }
+.contact-panel-header h3 { font-size: 1.125rem; margin: 0; }
+.contact-panel-header p { margin: 0; color: #fff; opacity: .5; }
+.contact-panel-body { flex: 1 1 auto; height: 100%; padding: 1.5rem; overflow: auto; background: rgb(249,250,251); }
+
+@media (min-width: 640px) {
+  .contact-panel { inset: auto 1.25rem 100px auto; width: 350px; height: 600px; max-height: calc(100vh - 120px); }
+}
 
 .fab-icon-chat, .fab-icon-close { position: absolute; }
 .fab-icon-close { opacity: 0; transform: rotate(-45deg); }
@@ -408,8 +398,6 @@ html.dark .contact-field input, html.dark .contact-field textarea { border-color
 .hamburger-icon-open, .hamburger-icon-close { transition: opacity .15s ease; }
 .mobile-toggle[aria-expanded="true"] .hamburger-icon-open { display: none; }
 .mobile-toggle[aria-expanded="false"] .hamburger-icon-close { display: none; }
-
-.play-video-btn.is-hidden { display: none; }
 
 @media (max-width: 1023px) {
   .mobile-toggle { display: block; }

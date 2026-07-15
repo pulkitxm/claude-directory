@@ -2,7 +2,7 @@
 	"use strict";
 	var root = document.documentElement;
 
-	/* ---------- Theme toggle ---------- */
+
 	function setTheme(dark) {
 		root.classList.toggle("dark", dark);
 		root.style.colorScheme = dark ? "dark" : "light";
@@ -13,12 +13,10 @@
 	document.addEventListener("click", function (e) {
 		var btn = e.target.closest("button");
 		if (!btn) return;
-		// theme toggle button: contains sun/moon lucide icon or "Toggle theme" sr text
 		if (
 			btn.querySelector(".lucide-sun, .lucide-moon") ||
 			/toggle theme/i.test(btn.textContent)
 		) {
-			// only treat as theme toggle if it's the round size-9 control (not feature icons)
 			if (
 				btn.classList.contains("size-9") ||
 				btn.querySelector(".lucide-sun")
@@ -30,31 +28,20 @@
 		}
 	});
 
-	/* ---------- Banner dismiss ---------- */
+
 	document.addEventListener("click", function (e) {
 		var c = e.target.closest('[aria-label="Close banner"]');
 		if (c) {
-			var node = c;
-			for (var i = 0; i < 6 && node.parentElement; i++) {
-				node = node.parentElement;
-				if (
-					/banner/i.test(node.className) ||
-					node.getAttribute("role") === "banner"
-				)
-					break;
-			}
-			(node || c.parentElement).style.display = "none";
+			var banner = c.closest(".bg-primary.relative");
+			if (banner) banner.style.display = "none";
 		}
 	});
 
-	/* ---------- Accordion (radix-style single) ---------- */
+
 	(function () {
-		// Collect all accordion region elements and set initial state
-		// Regions with data-state="closed" start hidden (height 0)
 		document
 			.querySelectorAll("[role='region'][data-state='closed']")
 			.forEach(function (region) {
-				// Manage height via JS so we can animate open/close smoothly
 				region.style.height = "0";
 				region.style.overflow = "hidden";
 			});
@@ -101,24 +88,19 @@
 			setState(btn, "open");
 			var region = document.getElementById(btn.getAttribute("aria-controls"));
 			if (region) {
-				// Measure natural height
 				region.style.height = "auto";
 				var h = region.scrollHeight;
 				region.style.height = "0";
 				region.style.overflow = "hidden";
-				// Set Radix CSS variable so keyframe animation has a valid endpoint
 				region.style.setProperty("--radix-accordion-content-height", h + "px");
 				region.style.setProperty(
 					"--radix-collapsible-content-height",
 					h + "px",
 				);
-				// Apply JS transition as fallback
 				region.style.transition = "height 0.2s ease-out";
-				// Trigger reflow so height:0 is committed before animating
 				void region.offsetWidth;
 				setState(region, "open");
 				region.style.height = h + "px";
-				// After transition ends, switch to auto so content can reflow
 				setTimeout(function () {
 					region.style.height = "auto";
 					region.style.overflow = "";
@@ -154,7 +136,7 @@
 		}
 	})();
 
-	/* ---------- Pricing billing toggle (monthly / annual) ---------- */
+
 	document
 		.querySelectorAll('[aria-label*="billing" i], [role="switch"]')
 		.forEach(function (sw) {
@@ -184,7 +166,7 @@
 			});
 		});
 
-	/* ---------- Product mega-menu dropdown ---------- */
+
 	(function () {
 		var menu = document.querySelector("[data-product-menu]");
 		if (!menu) return;
@@ -226,14 +208,14 @@
 		btn.addEventListener("mouseenter", show);
 		btn.addEventListener("click", function (e) {
 			e.preventDefault();
-			open ? toggle(false) : show();
+			show();
 		});
 		btn.addEventListener("mouseleave", scheduleHide);
 		menu.addEventListener("mouseenter", show);
 		menu.addEventListener("mouseleave", scheduleHide);
 	})();
 
-	/* ---------- Feature tabs ---------- */
+
 	document.querySelectorAll('[role="tablist"]').forEach(function (list) {
 		var tabs = list.querySelectorAll('[role="tab"]');
 		tabs.forEach(function (tab) {
@@ -252,23 +234,19 @@
 		});
 	});
 
-	/* ---------- Mobile menu (hamburger) ---------- */
+
 	(function () {
 		var header = document.querySelector("header");
 		if (!header) return;
 
-		// Find the hamburger button: has "Open main menu" in its sr-only text
 		var trigger = null;
 		header.querySelectorAll("button").forEach(function (b) {
 			if (trigger) return;
 			var sr = b.querySelector(".sr-only");
 			if (sr && /main menu/i.test(sr.textContent)) trigger = b;
 		});
-		// Also match by data-mobile-trigger if present
 		if (!trigger) trigger = header.querySelector("[data-mobile-trigger]");
 
-		// Find the mobile nav panel: the element that slides in from top
-		// It has -translate-y-full and opacity-0 when closed
 		var panel =
 			header.querySelector("[data-mobile-menu]") ||
 			header.querySelector(".-translate-y-full.opacity-0");
@@ -297,7 +275,6 @@
 			}
 		});
 
-		// Close on outside click
 		document.addEventListener("click", function (e) {
 			if (isOpen && !header.contains(e.target)) {
 				isOpen = false;
@@ -310,7 +287,6 @@
 			}
 		});
 
-		// Mobile sub-menu: Product accordion inside mobile nav
 		panel
 			.querySelectorAll('button[aria-label*="Product" i]')
 			.forEach(function (btn) {
@@ -333,9 +309,7 @@
 			});
 	})();
 
-	/* ---------- Scroll reveal (subtle, self-healing) ----------
-	   Reveal-on-enter, but never leave content invisible: a load fallback
-	   forces everything visible so the resting page is always faithful. */
+
 	if ("IntersectionObserver" in window) {
 		var revealEls = [];
 		document.querySelectorAll("[data-reveal]").forEach(function (el) {
@@ -360,7 +334,6 @@
 		revealEls.forEach(function (el) {
 			io.observe(el);
 		});
-		// safety: anything still hidden after 1.5s becomes visible
 		setTimeout(function () {
 			revealEls.forEach(function (el) {
 				el.style.opacity = "1";
