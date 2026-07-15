@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Sign in — Buio</title>
+		<title>Sign in: Buio</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link
@@ -12,9 +12,7 @@
 		>
 		<link rel="stylesheet" href="assets/styles.css">
 	</head>
-	<body
-		style="display:block; min-height:100vh; background:var(--color-base-950);"
-	>
+	<body class="auth-signin">
 		<!-- Guide lines -->
 		<div class="guide-lines" aria-hidden="true">
 			<div class="guide-lines-inner">
@@ -97,74 +95,75 @@
 			</div>
 		</div>
 
-		<main>
-			<div class="auth-page" style="padding-top:6rem;">
-				<div style="width:100%; max-width:28rem;">
-					<!-- Logo -->
-					<div style="text-align:center; margin-bottom:2rem;">
-						<a
-							href="index.html"
-							style="font-size:1.75rem; font-weight:600; color:#fff; font-family:'Geist',sans-serif;"
-							>buio®</a
-						>
-					</div>
-
-					<div class="auth-box">
+		<main class="auth-signin-layout">
+			<section class="auth-signin-panel">
+				<div class="auth-signin-content">
 						<h1 class="auth-title">Sign in</h1>
-						<p class="auth-subtitle">
-							Welcome back. Enter your credentials to continue.
-						</p>
+						<p class="auth-subtitle">Get in and manage your dashboard</p>
 
 						<form onsubmit="return false;">
 							<div class="form-group">
-								<label class="form-label" for="email">Email address</label>
 								<input
 									type="email"
 									id="email"
 									class="form-input"
-									placeholder="you@example.com"
+									placeholder="Your email"
 									autocomplete="email"
 								>
 							</div>
 							<div class="form-group">
-								<label
-									class="form-label"
-									for="password"
-									style="display:flex; justify-content:space-between; align-items:center;"
-								>
-									Password
-									<a
-										href="#"
-										style="font-size:0.75rem; color:var(--color-base-400);"
-										>Forgot password?</a
-									>
-								</label>
 								<input
 									type="password"
 									id="password"
 									class="form-input"
-									placeholder="••••••••"
+									placeholder="Type password here..."
 									autocomplete="current-password"
 								>
+							</div>
+							<div class="auth-signin-options">
+								<label><input type="checkbox"> Remember me</label>
+								<a href="#">Forgot your password?</a>
 							</div>
 							<button
 								type="submit"
 								class="btn btn-primary btn-lg btn-block"
-								style="margin-top:1rem; border-radius:var(--radius-full);"
 							>
-								Sign in
+								Submit
 							</button>
+							<button type="button" class="btn btn-ghost btn-lg btn-block auth-google">ⓖ&nbsp; Sign in with Google</button>
 						</form>
 
-						<p
-							style="margin-top:1.5rem; font-size:0.875rem; color:var(--color-base-400); text-align:center;"
-						>
-							Don't have an account?
-							<a href="sign-up.html" style="color:#fff;">Sign up</a>
+						<p class="auth-signin-switch">
+							Accountless? <a href="sign-up.html">Sign up now</a>
 						</p>
-					</div>
+						<a href="index.html" class="auth-signin-back">Go back home</a>
 				</div>
-			</div>
+			</section>
+			<section class="auth-signin-code" aria-hidden="true">
+				<pre><code><span class="token-comment">// SPDX-License-Identifier: MIT</span>
+<span class="token-keyword">pragma</span> solidity <span class="token-constant">^0.8.19</span>;
+<span class="token-keyword">interface</span> <span class="token-function">IERC721</span> {
+  <span class="token-keyword">function</span> <span class="token-function">ownerOf</span>(uint256 tokenId) external view returns (address);
+  <span class="token-keyword">function</span> <span class="token-function">transferFrom</span>(address from, address to, uint256 tokenId) external;
+}
+
+<span class="token-keyword">contract</span> <span class="token-function">NFTOwnershipVerifier</span> {
+  event <span class="token-function">OwnershipVerified</span>(address indexed user, uint256 indexed tokenId);
+
+  <span class="token-keyword">function</span> <span class="token-function">verifyOwnership</span>(address nftContract, uint256 tokenId, address user)
+    external view returns (bool) {
+      IERC721 nft = IERC721(nftContract);
+      bool isOwner = nft.ownerOf(tokenId) == user;
+      <span class="token-keyword">return</span> isOwner;
+  }
+
+  <span class="token-keyword">function</span> <span class="token-function">secureTransfer</span>(address nftContract, uint256 tokenId, address from, address to) external {
+    IERC721 nft = IERC721(nftContract);
+    require(nft.ownerOf(tokenId) == from, "Sender does not own the NFT");
+    nft.transferFrom(from, to, tokenId);
+  }
+}</code></pre>
+			</section>
 		</main>
 
 		<script src="assets/shared.js"></script>
