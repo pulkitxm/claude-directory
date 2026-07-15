@@ -24,6 +24,24 @@
 	window.__applineSetTheme = setTheme;
 
 	document.addEventListener("DOMContentLoaded", function () {
+		document.querySelectorAll('[role="tablist"]').forEach(function (tablist) {
+			var triggers = tablist.querySelectorAll("[data-tab-trigger]");
+			triggers.forEach(function (trigger) {
+				trigger.addEventListener("click", function () {
+					var name = trigger.getAttribute("data-tab-trigger");
+					var scope = tablist.parentElement;
+					triggers.forEach(function (other) {
+						var active = other === trigger;
+						other.setAttribute("data-active", String(active));
+						other.setAttribute("aria-selected", String(active));
+					});
+					scope.querySelectorAll("[data-tab-panel]").forEach(function (panel) {
+						panel.hidden = panel.getAttribute("data-tab-panel") !== name;
+					});
+				});
+			});
+		});
+
 		var toggles = document.querySelectorAll("[data-theme-toggle]");
 		toggles.forEach(function (btn) {
 			btn.addEventListener("click", function () {
@@ -79,17 +97,18 @@
 		// ---- Pricing monthly/yearly toggle ----
 		var pricingSwitch = document.querySelector("[data-pricing-toggle]");
 		if (pricingSwitch) {
-			pricingSwitch.addEventListener("click", function () {
-				var isYearly = pricingSwitch.getAttribute("aria-checked") === "true";
-				pricingSwitch.setAttribute("aria-checked", String(!isYearly));
-				document.body.classList.toggle("is-yearly", !isYearly);
+			var pricingInput = pricingSwitch.querySelector("input");
+			pricingInput.addEventListener("change", function () {
+				var isYearly = pricingInput.checked;
+				pricingSwitch.setAttribute("aria-checked", String(isYearly));
+				document.body.classList.toggle("is-yearly", isYearly);
 				document
 					.querySelectorAll("[data-price-monthly]")
 					.forEach(function (el) {
-						el.classList.toggle("hidden", !isYearly);
+						el.classList.toggle("hidden", isYearly);
 					});
 				document.querySelectorAll("[data-price-yearly]").forEach(function (el) {
-					el.classList.toggle("hidden", isYearly);
+					el.classList.toggle("hidden", !isYearly);
 				});
 			});
 		}

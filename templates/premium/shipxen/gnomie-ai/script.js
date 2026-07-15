@@ -82,19 +82,22 @@
 	function renderStrip(key) {
 		var s = strips[key];
 		if (!s || !s.el) return;
-		var n = 4,
+		var n = 3,
 			html = "";
+		var photos = key === "made" ? [15, 33, 59] : [110, 112, 206];
 		for (var i = 0; i < n; i++) {
 			var u = s.data[(s.idx + i) % s.data.length];
 			var ai = (s.idx + i) % av.length;
 			html +=
-				'<div class="user-card"><img src="' +
+				'<div class="user-card"><img class="user-photo" src="./assets/img/p-' +
+				photos[i] +
+				'.webp" alt=""><div class="user-meta"><img src="' +
 				avatar(ai) +
 				'" alt=""><div><div class="nm">' +
 				u[0] +
 				'</div><div class="ct">' +
 				u[1] +
-				"</div></div></div>";
+				"</div></div></div></div>";
 		}
 		s.el.innerHTML = html;
 	}
