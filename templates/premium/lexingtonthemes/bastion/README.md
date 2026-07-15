@@ -1,8 +1,8 @@
-# Bastion — Construction Company Website Template Clone (Vanilla HTML + CSS + JS)
+# Bastion , Construction Company Website Template Clone (Vanilla HTML + CSS + JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained clone of the Bastion premium construction company website template by Lexington Themes, rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step required. The clone reproduces all 23 pages with identical layout, typography, color palette, and interactions — including a full-bleed video hero, a glass-pill fixed navigation that transitions from transparent to white on scroll, scroll-reveal animations, image hover scale effects, a live-filtered search modal, and a Keen Slider carousel. The dark-accented aesthetic uses an OKLCH-based steel-blue/grey palette (accent-950 background for the hero, dark sections, and footer) against a white page body, with Inter Variable as the primary typeface. Generated with Claude Fable 5.
+A pixel-faithful, self-contained clone of the Bastion premium construction company website template by Lexington Themes, rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step required. The clone reproduces all 23 pages with a full-bleed video hero, a glass-pill fixed navigation that transitions from transparent to white on scroll, scroll-reveal animations, image hover scale effects, a live-filtered search modal, and a Keen Slider carousel. The dark-accented aesthetic uses an OKLCH-based steel-blue and grey palette against a white page body, with Inter Variable as the primary typeface.
 
 ## Pages
 
@@ -51,14 +51,14 @@ All assets (CSS, JS, fonts via Inter CDN, Keen Slider via jsDelivr CDN) are refe
 
 ## Reference
 
-`prompt.md` holds the full build specification — palette, type scale, layout system, animation details, and page inventory. `demo.mp4` shows the template in motion.
+`prompt.md` holds the full build specification , palette, type scale, layout system, animation details, and page inventory. `demo.mp4` shows the template in motion.
 
 ## Credits
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes — <https://lexingtonthemes.com/viewports/bastion>
+**Original:** Lexington Themes , <https://lexingtonthemes.com/viewports/bastion>
 
 ---
 
-Part of the [Lexington Themes](../) collection in the [Templates](../../) directory — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Lexington Themes](../) collection. [Browse the live gallery](https://pulkitxm.com/).
