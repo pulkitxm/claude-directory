@@ -1,59 +1,30 @@
-# Williamsburg — Lexington Themes E-Commerce Template
+# Williamsburg Commerce Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful static clone of the Williamsburg premium e-commerce template from [Lexington Themes](https://lexingtonthemes.com/). Built with Inter and Instrument Serif fonts, Tailwind CSS utility classes, and Keen Slider for carousels.
+Williamsburg is a static reproduction of the current Lexington Themes commerce and editorial design. It includes all 71 discoverable routes as plain HTML, CSS, and JavaScript with no build step.
 
-## Pages
+## Highlights
 
-| File | Description |
-|------|-------------|
-| `index.html` | Home page — hero, featured products, categories, blog articles |
-| `store-home.html` | Store landing page |
-| `all-products.html` | Product grid with filters and sorting |
-| `product-detail.html` | Single product page with image gallery and add-to-cart |
-| `blog.html` | Blog index with article cards |
-| `blog-post.html` | Single article page |
-| `contact.html` | Contact form with business information |
-| `pricing.html` | Pricing tiers |
-| `helpcenter.html` | FAQ and support categories |
-| `membership.html` | Membership plans and benefits |
-| `affiliates.html` | Affiliate program page |
-| `sign-in.html` | Sign-in form |
-| `sign-up.html` | Registration form |
-| `about.html` | Brand story and team |
-| `store-tags.html` | Tag/category browsing |
-| `checkout.html` | Checkout with order summary and payment fields |
+- Responsive storefront, product, editorial, account, support, and system layouts across mobile, tablet, and desktop widths
+- Search overlay, mobile navigation, tab navigation, and cart drawer interactions
+- Product, store tag, blog, blog tag, help center, membership, affiliate, legal, and account pages
+- Local static routing with complete audit evidence in `.audit`
 
-## Design System
+## Run
 
-### Fonts
-- **Inter** (variable) — loaded from rsms.me/inter — body text, UI, navigation
-- **Instrument Serif** — loaded from Google Fonts — headings, hero text, editorial
-
-### Colors
-- Neutral base: white backgrounds with zinc/gray scale
-- Primary text: zinc-900 (`#18181B`)
-- Muted: zinc-100/200 for cards, dividers, secondary backgrounds
-- Framework: Tailwind CSS utility classes
-
-## Interactive Features
-
-- Cart drawer (slide-in sidebar)
-- Search modal (full-screen overlay with Fuse.js fuzzy search)
-- Mega menu with tab navigation
-- Hamburger mobile menu
-- Keen Slider carousels
-
-## How to Run
-
-```bash
-cd templates/premium/lexingtonthemes/williamsburg
-python3 -m http.server 8765
+```sh
+python3 -m http.server 8080
 ```
 
-Then open http://localhost:8765 in your browser.
+Open `http://localhost:8080` in a browser.
 
-## Reference
+## Assets
 
-Live demo: https://williamsburg-astro.pages.dev/
+- `demo.mp4` contains the current interaction recording
+- `poster.jpg` is the generated demo poster
+- `reference.css` contains the reproduced design styles
+
+## Credits
+
+The original Williamsburg design is by [Lexington Themes](https://williamsburg-astro.pages.dev/).
