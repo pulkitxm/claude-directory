@@ -23,8 +23,8 @@
 		document.querySelectorAll("[data-logo]").forEach(function (img) {
 			img.src =
 				theme === "light"
-					? "assets/images/logo/logo-dark.svg"
-					: "assets/images/logo/logo-light.svg";
+					? "assets/images/logo/logo-light.svg"
+					: "assets/images/logo/logo-dark.svg";
 		});
 	}
 	function applyTheme(theme) {
@@ -56,6 +56,14 @@
 			header.classList.toggle("menu-open");
 			var expanded = header.classList.contains("menu-open");
 			hamburger.setAttribute("aria-expanded", String(expanded));
+			document.body.style.overflow = expanded ? "hidden" : "";
+		});
+		header.querySelectorAll("a").forEach(function (link) {
+			link.addEventListener("click", function () {
+				header.classList.remove("menu-open");
+				hamburger.setAttribute("aria-expanded", "false");
+				document.body.style.overflow = "";
+			});
 		});
 	}
 
@@ -72,13 +80,16 @@
 					if (o !== item) o.classList.remove("is-open");
 				});
 			item.classList.toggle("is-open", !isOpen);
+			trigger.setAttribute("aria-expanded", String(!isOpen));
 		});
 	});
 	document.addEventListener("click", function () {
 		document
 			.querySelectorAll(".nav__item--dropdown.is-open")
-			.forEach(function (o) {
-				o.classList.remove("is-open");
+				.forEach(function (o) {
+					o.classList.remove("is-open");
+					var trigger = o.querySelector(".nav__trigger");
+					if (trigger) trigger.setAttribute("aria-expanded", "false");
 			});
 	});
 
@@ -94,6 +105,15 @@
 			}
 		});
 	}
+	document.addEventListener("keydown", function (event) {
+		if (event.key !== "Escape") return;
+		if (header && hamburger) {
+			header.classList.remove("menu-open");
+			hamburger.setAttribute("aria-expanded", "false");
+			document.body.style.overflow = "";
+		}
+		if (searchPanel) searchPanel.classList.remove("is-open");
+	});
 
 	/* ---------- scroll-reveal ---------- */
 	var revealEls = document.querySelectorAll(".reveal");
@@ -135,11 +155,27 @@
 	document.querySelectorAll("form[data-demo-form]").forEach(function (form) {
 		form.addEventListener("submit", function (e) {
 			e.preventDefault();
-			var note = form.querySelector("[data-form-note]");
-			if (note) {
-				note.textContent = "Thanks! This is a static demo — no message was actually sent.";
-				note.classList.add("is-visible");
+			if (!form.checkValidity()) {
+				form.reportValidity();
+				return;
 			}
+			var note = form.querySelector("[data-form-note]");
+			var button = form.querySelector('button[type="submit"]');
+			var original = button ? button.textContent : "";
+			if (button) {
+				button.disabled = true;
+				button.textContent = "Sending...";
+			}
+			setTimeout(function () {
+				if (note) {
+					note.textContent = "Thanks! Your request has been received.";
+					note.classList.add("is-visible");
+				}
+				if (button) {
+					button.disabled = false;
+					button.textContent = original;
+				}
+			}, 500);
 		});
 	});
 
