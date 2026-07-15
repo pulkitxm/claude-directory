@@ -2,7 +2,7 @@
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Screenshot Two is a self-contained, same-to-same clone of Shipixen's "Screenshot Two" landing-page template — a single-page marketing site for a fictional screenshot API, rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step. It pairs a sky-blue / indigo accent system with DM Serif Display headings and DM Sans body text, and features a floating header, a centered hero with a large browser mockup, Product Hunt social proof with floating testimonial chips, alternating image-left / image-right feature sections, a full-width indigo CTA band, an autoplay video section, a masonry testimonial grid, a Radix-style FAQ accordion, scroll-reveal entrance animations, and a working light/dark theme toggle. All assets (DM Sans / DM Serif Display fonts, images, video, and avatars) are vendored locally under `assets/`, so it runs fully offline. Generated with Claude Fable 5.
+Screenshot Two is a self-contained clone of Shipixen's "Screenshot Two" landing-page template. This single-page marketing site for a screenshot API uses plain HTML, CSS, and vanilla JavaScript with no build step. It pairs a sky-blue and indigo accent system with DM Serif Display headings and DM Sans body text, with all assets vendored locally.
 
 ## Run
 
@@ -31,4 +31,4 @@ Faithful clone of an existing design, recreated for study/learning. All credit f
 
 ---
 
-Part of the [Templates](../../README.md) collection in the [claude-directory](../../../README.md) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../README.md) collection in the [claude-directory](../../../README.md).
