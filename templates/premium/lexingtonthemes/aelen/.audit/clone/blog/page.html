@@ -101,112 +101,192 @@
 			color: white;
 		}
 
-		/* Blog grid section */
+		/* Blog list section */
 		.blog-section {
-			background: var(--orange);
-			padding: 2rem 1rem;
+			padding: 0.5rem 1rem;
 		}
 
-		.blog-grid {
+		.blog-list {
+			display: flex;
+			flex-direction: column;
+			padding: 0 2rem;
+			background: var(--orange);
+		}
+
+		.post {
+			position: relative;
 			display: grid;
 			grid-template-columns: 1fr;
-			gap: 1rem;
-		}
-
-		@media (min-width: 768px) {
-			.blog-grid {
-				grid-template-columns: repeat(2, 1fr);
-			}
+			gap: 3rem;
+			padding: 2rem 0;
+			border-top: 1px dashed rgba(255, 255, 255, 0.2);
 		}
 
 		@media (min-width: 1024px) {
-			.blog-grid {
-				grid-template-columns: repeat(3, 1fr);
+			.post {
+				grid-template-columns: repeat(5, 1fr);
+				gap: 0;
 			}
 		}
 
-		.blog-card {
-			border: 1px dashed rgba(255, 255, 255, 0.3);
-			padding: 1.5rem;
+		.post-link {
+			position: absolute;
+			inset: 0;
+			z-index: 10;
+		}
+
+		.post-number {
+			font-size: clamp(3rem, 8vw, 4.5rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			line-height: 1;
+			color: white;
+			transition: color 0.3s ease;
+		}
+
+		.post-body {
 			display: flex;
 			flex-direction: column;
-			gap: 0.75rem;
-			transition: background 0.2s ease;
-			cursor: pointer;
+			gap: 6rem;
+			padding-top: 1rem;
 		}
 
-		.blog-card:hover {
-			background: rgba(255, 255, 255, 0.1);
+		@media (min-width: 1024px) {
+			.post-body {
+				grid-column: span 4 / span 4;
+				padding-left: 3rem;
+				border-left: 1px dashed rgba(255, 255, 255, 0.2);
+			}
 		}
 
-		.card-number {
-			font-size: clamp(3rem, 8vw, 5rem);
-			font-weight: 700;
-			color: white;
-			line-height: 1;
-			letter-spacing: -0.04em;
-			opacity: 0.4;
-		}
-
-		.card-meta {
+		.post-meta {
 			display: flex;
 			align-items: center;
-			gap: 0.75rem;
-			flex-wrap: wrap;
-		}
-
-		.card-date,
-		.card-author {
-			font-size: 0.75rem;
-			font-weight: 500;
-			color: rgba(255, 255, 255, 0.6);
-			text-transform: uppercase;
-			letter-spacing: 0.06em;
-		}
-
-		.card-meta-sep {
-			width: 4px;
-			height: 4px;
-			border-radius: 50%;
-			background: rgba(255, 255, 255, 0.4);
-			flex-shrink: 0;
-		}
-
-		.card-title {
-			font-size: clamp(1rem, 2vw, 1.2rem);
-			font-weight: 700;
-			color: white;
-			line-height: 1.3;
-			letter-spacing: -0.01em;
-		}
-
-		.card-link {
-			display: inline-flex;
-			align-items: center;
 			gap: 0.25rem;
-			font-size: 0.875rem;
-			font-weight: 600;
+			font-size: 1rem;
+			font-weight: 500;
 			color: white;
-			text-decoration: none;
-			border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-			padding-bottom: 0.125rem;
-			margin-top: auto;
-			width: fit-content;
-			transition:
-				border-color 0.2s,
-				opacity 0.2s;
+			transition: color 0.3s ease;
 		}
 
-		.card-link:hover {
-			border-color: white;
-			opacity: 0.85;
+		.post-title {
+			font-size: clamp(2.5rem, 6vw, 4.5rem);
+			font-weight: 500;
+			letter-spacing: -0.02em;
+			line-height: 1.05;
+			color: white;
+			margin-top: 1rem;
+			transition: color 0.3s ease;
 		}
 
-		.card-divider {
-			height: 1px;
-			background: rgba(255, 255, 255, 0.15);
-			margin: 0.25rem 0;
+		.post-excerpt {
+			font-size: clamp(1rem, 2vw, 1.25rem);
+			font-weight: 600;
+			max-width: 36rem;
+			color: white;
+			transition: color 0.3s ease;
 		}
+
+		.post:hover .post-number,
+		.post:hover .post-meta,
+		.post:hover .post-title,
+		.post:hover .post-excerpt {
+			color: var(--black);
+		}
+		footer {
+			background: var(--white);
+			display: flex;
+			flex-direction: column;
+			padding: 12rem 1rem 1rem;
+		}
+		.footer-wordmark {
+			background: var(--white);
+			order: 1;
+			padding: 0;
+			text-align: left;
+		}
+		.footer-wordmark svg {
+			color: var(--black);
+			display: block;
+			height: auto;
+			width: 100%;
+		}
+		.footer-bars {
+			background: var(--white);
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			order: 2;
+			padding: 0;
+		}
+		.footer-copyright {
+			background: var(--black);
+			color: var(--white);
+			font-family: "Geist", sans-serif;
+			font-size: clamp(1.875rem, 3vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.03em;
+			order: 3;
+			padding: 2rem;
+			text-align: left;
+		}
+		.footer-nav-row {
+			background: var(--white);
+			order: 4;
+			padding: 1rem 0 0;
+		}
+		.footer-nav-inner {
+			justify-content: flex-start;
+			margin: 0;
+			max-width: none;
+			padding: 0;
+		}
+		.footer-nav-link {
+			color: var(--black);
+			font-size: 1rem;
+			font-weight: 700;
+		}
+		.footer-sep {
+			display: none;
+		}
+		.footer-band {
+			background: var(--white);
+			order: 5;
+			padding: 0;
+		}
+		.footer-band-inner {
+			justify-content: flex-start;
+			margin: 0;
+			max-width: none;
+			padding: 0;
+		}
+		.footer-social-btn {
+			background: transparent;
+			border: 0;
+			border-bottom: 1px dashed color-mix(in oklab, var(--black) 20%, transparent);
+			border-radius: 0;
+			color: var(--black);
+			font-size: 1rem;
+			font-weight: 700;
+			height: auto;
+			width: auto;
+		}
+		.footer-social-btn svg {
+			display: none;
+		}
+		.footer-social-btn:nth-child(1)::after {
+			content: "X";
+		}
+		.footer-social-btn:nth-child(2)::after {
+			content: "Linkedin";
+		}
+		.footer-social-btn:nth-child(3)::after {
+			content: "Youtube";
+		}
+		.footer-social-btn:nth-child(4)::after {
+			content: "Instagram";
+		}
+
 		</style>
 	</head>
 	<body>
@@ -260,7 +340,6 @@
 		<main>
 			<!-- HERO -->
 			<section class="hero">
-				<p class="hero-label">Latest news</p>
 				<h1 class="hero-title">Blog</h1>
 				<div class="stacked-bars">
 					<div class="bar-2"></div>
@@ -268,98 +347,144 @@
 					<div class="bar-8"></div>
 					<div class="bar-12"></div>
 					<div class="bar-band">
-						<span>Insights, guides, and updates from the Ælen team</span>
+						<span>Latest news</span>
 					</div>
 				</div>
 			</section>
 
-			<!-- BLOG GRID -->
+			<!-- BLOG LIST -->
 			<section class="blog-section">
-				<div class="blog-grid">
-					<!-- Card 01 -->
-					<article class="blog-card">
-						<div class="card-number">01</div>
-						<div class="card-divider"></div>
-						<div class="card-meta">
-							<span class="card-date">May 06, 2025</span>
-							<span class="card-meta-sep"></span>
-							<span class="card-author">Sarah Chen</span>
+				<div class="blog-list">
+					<!-- Post 01 -->
+					<article class="post">
+						<a href="blog-post.html" title="Financial Trends in 2025: Navigating an Evolving Market" class="post-link"></a>
+						<span class="post-number">01</span>
+						<div class="post-body">
+							<div>
+								<p class="post-meta">
+									Marco Bianchi<span aria-hidden="true">·</span>
+									<time datetime="May 06, 2025">May 06, 2025</time>
+								</p>
+								<h3 class="post-title">
+									Financial Trends in 2025: Navigating an Evolving Market
+								</h3>
+							</div>
+							<p class="post-excerpt">
+								Analyzing the key financial trends, investment strategies, and
+								market developments shaping the global financial landscape in
+								2025.
+							</p>
 						</div>
-						<h2 class="card-title">How Ælen Transformed Our Sales Pipeline</h2>
-						<a href="blog-post.html" class="card-link">Read more →</a>
 					</article>
 
-					<!-- Card 02 -->
-					<article class="blog-card">
-						<div class="card-number">02</div>
-						<div class="card-divider"></div>
-						<div class="card-meta">
-							<span class="card-date">May 12, 2025</span>
-							<span class="card-meta-sep"></span>
-							<span class="card-author">Marcus Rivera</span>
+					<!-- Post 02 -->
+					<article class="post">
+						<a href="blog-post.html" title="The Global Economic Outlook for 2025: Challenges and Opportunities" class="post-link"></a>
+						<span class="post-number">02</span>
+						<div class="post-body">
+							<div>
+								<p class="post-meta">
+									Samuel Ortiz<span aria-hidden="true">·</span>
+									<time datetime="May 05, 2025">May 05, 2025</time>
+								</p>
+								<h3 class="post-title">
+									The Global Economic Outlook for 2025: Challenges and
+									Opportunities
+								</h3>
+							</div>
+							<p class="post-excerpt">
+								Examining the key economic trends, challenges, and opportunities
+								shaping the global economy in 2025.
+							</p>
 						</div>
-						<h2 class="card-title">
-							5 CRM Automation Strategies That Actually Work
-						</h2>
-						<a href="blog-post.html" class="card-link">Read more →</a>
 					</article>
 
-					<!-- Card 03 -->
-					<article class="blog-card">
-						<div class="card-number">03</div>
-						<div class="card-divider"></div>
-						<div class="card-meta">
-							<span class="card-date">May 18, 2025</span>
-							<span class="card-meta-sep"></span>
-							<span class="card-author">Priya Sharma</span>
+					<!-- Post 03 -->
+					<article class="post">
+						<a href="blog-post.html" title="The Political Landscape of 2025: Key Issues and Challenges" class="post-link"></a>
+						<span class="post-number">03</span>
+						<div class="post-body">
+							<div>
+								<p class="post-meta">
+									Oliver Grant<span aria-hidden="true">·</span>
+									<time datetime="May 04, 2025">May 04, 2025</time>
+								</p>
+								<h3 class="post-title">
+									The Political Landscape of 2025: Key Issues and Challenges
+								</h3>
+							</div>
+							<p class="post-excerpt">
+								Analyzing the major political developments and challenges
+								shaping global politics in 2025, from elections to policy
+								shifts.
+							</p>
 						</div>
-						<h2 class="card-title">
-							Building a Customer-First Culture with Data
-						</h2>
-						<a href="blog-post.html" class="card-link">Read more →</a>
 					</article>
 
-					<!-- Card 04 -->
-					<article class="blog-card">
-						<div class="card-number">04</div>
-						<div class="card-divider"></div>
-						<div class="card-meta">
-							<span class="card-date">May 24, 2025</span>
-							<span class="card-meta-sep"></span>
-							<span class="card-author">James Okafor</span>
+					<!-- Post 04 -->
+					<article class="post">
+						<a href="blog-post.html" title="The Future of Business: Key Strategies for 2025" class="post-link"></a>
+						<span class="post-number">04</span>
+						<div class="post-body">
+							<div>
+								<p class="post-meta">
+									Isaac Turner<span aria-hidden="true">·</span>
+									<time datetime="May 03, 2025">May 03, 2025</time>
+								</p>
+								<h3 class="post-title">
+									The Future of Business: Key Strategies for 2025
+								</h3>
+							</div>
+							<p class="post-excerpt">
+								Examining the major trends and strategies shaping the business
+								landscape in 2025, from digital transformation to sustainability
+								initiatives.
+							</p>
 						</div>
-						<h2 class="card-title">The ROI of AI-Powered Lead Scoring</h2>
-						<a href="blog-post.html" class="card-link">Read more →</a>
 					</article>
 
-					<!-- Card 05 -->
-					<article class="blog-card">
-						<div class="card-number">05</div>
-						<div class="card-divider"></div>
-						<div class="card-meta">
-							<span class="card-date">May 30, 2025</span>
-							<span class="card-meta-sep"></span>
-							<span class="card-author">Leila Nouri</span>
+					<!-- Post 05 -->
+					<article class="post">
+						<a href="blog-post.html" title="Europe’s Shifting Landscape: Key Political and Economic Trends" class="post-link"></a>
+						<span class="post-number">05</span>
+						<div class="post-body">
+							<div>
+								<p class="post-meta">
+									Emma Carter<span aria-hidden="true">·</span>
+									<time datetime="May 02, 2025">May 02, 2025</time>
+								</p>
+								<h3 class="post-title">
+									Europe’s Shifting Landscape: Key Political and Economic Trends
+								</h3>
+							</div>
+							<p class="post-excerpt">
+								Exploring the major political and economic changes shaping
+								Europe in 2025, from policy shifts to economic challenges and
+								opportunities.
+							</p>
 						</div>
-						<h2 class="card-title">
-							From Spreadsheets to CRM: A Migration Guide
-						</h2>
-						<a href="blog-post.html" class="card-link">Read more →</a>
 					</article>
 
-					<!-- Card 06 -->
-					<article class="blog-card">
-						<div class="card-number">06</div>
-						<div class="card-divider"></div>
-						<div class="card-meta">
-							<span class="card-date">Jun 06, 2025</span>
-							<span class="card-meta-sep"></span>
-							<span class="card-author">Tom Weston</span>
+					<!-- Post 06 -->
+					<article class="post">
+						<a href="blog-post.html" title="Global Economic Shifts: What to Expect in 2025" class="post-link"></a>
+						<span class="post-number">06</span>
+						<div class="post-body">
+							<div>
+								<p class="post-meta">
+									David Lee<span aria-hidden="true">·</span>
+									<time datetime="May 01, 2025">May 01, 2025</time>
+								</p>
+								<h3 class="post-title">
+									Global Economic Shifts: What to Expect in 2025
+								</h3>
+							</div>
+							<p class="post-excerpt">
+								An analysis of the major economic trends shaping the world in
+								2025, from market fluctuations to policy changes and their
+								global impact.
+							</p>
 						</div>
-						<h2 class="card-title">
-							Why Your Sales Team Needs Real-Time Insights
-						</h2>
-						<a href="blog-post.html" class="card-link">Read more →</a>
 					</article>
 				</div>
 			</section>

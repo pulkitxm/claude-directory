@@ -178,18 +178,44 @@
 			letter-spacing: -0.04em;
 			line-height: 1;
 		}
+		.hero-dividers {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			width: 100%;
+			margin-top: 0.5rem;
+		}
+		.hero-dividers > div {
+			width: 100%;
+			background: var(--black);
+		}
+		.hero-banner {
+			display: flex;
+			align-items: center;
+			padding: 2rem;
+			background: var(--black);
+		}
+		.hero-banner span {
+			font-size: clamp(1.875rem, 4vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			color: white;
+		}
 
 		/* ── MISSION ── */
 		.mission {
 			background: var(--cyan);
-			padding: 12rem 1rem;
+			padding: 12rem 2rem;
 			text-align: center;
 		}
-		.mission p {
-			font-size: clamp(1.25rem, 3vw, 1.875rem);
-			max-width: 48rem;
+		.mission h2 {
+			font-size: clamp(2.25rem, 5vw, 3.75rem);
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			text-decoration: underline;
+			max-width: 64rem;
 			margin: 0 auto;
-			line-height: 1.4;
+			line-height: 1.1;
 		}
 
 		/* ── EXPERIENCE ── */
@@ -200,17 +226,33 @@
 		.experience-inner {
 			max-width: 64rem;
 		}
+		.experience-inner {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			max-width: none;
+		}
 		.experience h2 {
-			font-size: clamp(3rem, 7vw, 7rem);
+			font-size: clamp(2.25rem, 9vw, 8rem);
 			font-weight: 700;
 			letter-spacing: -0.04em;
 			line-height: 1;
-			margin-bottom: 2rem;
+			max-width: 48rem;
+			color: white;
 		}
 		.experience p {
-			font-size: 1.125rem;
-			line-height: 1.75;
+			font-size: clamp(1rem, 2vw, 1.25rem);
+			line-height: 1.6;
 			max-width: 36rem;
+			font-weight: 600;
+			color: white;
+		}
+		@media (min-width: 1024px) {
+			.experience p {
+				padding-left: 3rem;
+				border-left: 1px solid color-mix(in oklab, white 50%, transparent);
+				margin-left: auto;
+			}
 		}
 
 		/* ── TEAM ── */
@@ -246,10 +288,16 @@
 			background: color-mix(in oklab, var(--black) 4%, transparent);
 		}
 		.team-photo {
-			aspect-ratio: 1;
+			aspect-ratio: 9 / 10;
 			background: var(--gray);
 			width: 100%;
 			margin-bottom: 1rem;
+		}
+		.team-card:nth-child(3n + 1) .team-photo {
+			background: color-mix(in oklab, var(--orange) 50%, var(--gray));
+		}
+		.team-card:nth-child(3n + 2) .team-photo {
+			background: color-mix(in oklab, var(--cyan) 50%, var(--gray));
 		}
 		.team-name {
 			font-size: 1.125rem;
@@ -350,6 +398,100 @@
 				display: none;
 			}
 		}
+		footer {
+			background: var(--white);
+			display: flex;
+			flex-direction: column;
+			padding: 12rem 1rem 1rem;
+		}
+		.footer-wordmark {
+			background: var(--white);
+			order: 1;
+			padding: 0;
+			text-align: left;
+		}
+		.footer-wordmark svg {
+			color: var(--black);
+			display: block;
+			height: auto;
+			width: 100%;
+		}
+		.footer-bars {
+			background: var(--white);
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			order: 2;
+			padding: 0;
+		}
+		.footer-copyright {
+			background: var(--black);
+			color: var(--white);
+			font-family: "Geist", sans-serif;
+			font-size: clamp(1.875rem, 3vw, 3rem);
+			font-weight: 700;
+			letter-spacing: -0.03em;
+			order: 3;
+			padding: 2rem;
+			text-align: left;
+		}
+		.footer-nav-row {
+			background: var(--white);
+			order: 4;
+			padding: 1rem 0 0;
+		}
+		.footer-nav-inner {
+			justify-content: flex-start;
+			margin: 0;
+			max-width: none;
+			padding: 0;
+		}
+		.footer-nav-link {
+			color: var(--black);
+			font-size: 1rem;
+			font-weight: 700;
+		}
+		.footer-sep {
+			display: none;
+		}
+		.footer-band {
+			background: var(--white);
+			order: 5;
+			padding: 0;
+		}
+		.footer-band-inner {
+			justify-content: flex-start;
+			margin: 0;
+			max-width: none;
+			padding: 0;
+		}
+		.footer-social-btn {
+			background: transparent;
+			border: 0;
+			border-bottom: 1px dashed color-mix(in oklab, var(--black) 20%, transparent);
+			border-radius: 0;
+			color: var(--black);
+			font-size: 1rem;
+			font-weight: 700;
+			height: auto;
+			width: auto;
+		}
+		.footer-social-btn svg {
+			display: none;
+		}
+		.footer-social-btn:nth-child(1)::after {
+			content: "X";
+		}
+		.footer-social-btn:nth-child(2)::after {
+			content: "Linkedin";
+		}
+		.footer-social-btn:nth-child(3)::after {
+			content: "Youtube";
+		}
+		.footer-social-btn:nth-child(4)::after {
+			content: "Instagram";
+		}
+
 		</style>
 	</head>
 	<body>
@@ -404,11 +546,23 @@
 		<!-- HERO -->
 		<section class="hero">
 			<h1>About us</h1>
+			<div class="hero-dividers">
+				<div style="height:2px"></div>
+				<div style="height:4px"></div>
+				<div style="height:8px"></div>
+				<div style="height:12px"></div>
+				<div class="hero-banner">
+					<span>We are passionate about the future of our customers</span>
+				</div>
+			</div>
 		</section>
 
 		<!-- MISSION -->
 		<section class="mission">
-			<p>A team of former sales leads, ops pros, and product builders.</p>
+			<h2>
+				A team of former sales leads, ops pros, and product builders, backed by
+				some of the sharpest founders and GTM minds in tech
+			</h2>
 		</section>
 
 		<!-- EXPERIENCE -->
@@ -416,10 +570,13 @@
 			<div class="experience-inner">
 				<h2>We got experience</h2>
 				<p>
-					We're a team of former sales professionals, operations leads, and
-					product builders who spent years frustrated by CRM tools that were
-					built for someone else. So we built our own — one that actually fits
-					how modern teams work.
+					We're a team of former sales leaders, RevOps strategists, and product
+					designers who’ve spent years inside high-growth startups and scaling
+					teams. We've built pipelines from scratch, wrestled with bloated CRMs,
+					and watched deals fall through the cracks because the tools just
+					didn’t work the way people do. Ælen is the result of that experience —
+					a CRM designed by people who’ve actually lived the pain of selling,
+					managing, and growing.
 				</p>
 			</div>
 		</section>
@@ -434,32 +591,32 @@
 				<div class="team-card">
 					<div class="team-photo"></div>
 					<div class="team-name">Cory Swanson</div>
-					<div class="team-role">Co-founder &amp; CEO</div>
+					<div class="team-role">Co-founder &amp; Product</div>
 				</div>
 				<div class="team-card">
 					<div class="team-photo"></div>
-					<div class="team-name">Maya Chen</div>
-					<div class="team-role">Co-founder &amp; CTO</div>
+					<div class="team-name">Trevor Tuzu</div>
+					<div class="team-role">Co-founder &amp; Growth</div>
 				</div>
 				<div class="team-card">
 					<div class="team-photo"></div>
-					<div class="team-name">Jordan Walsh</div>
-					<div class="team-role">Head of Design</div>
+					<div class="team-name">Russ Gilbert</div>
+					<div class="team-role">Engineering Lead</div>
 				</div>
 				<div class="team-card">
 					<div class="team-photo"></div>
-					<div class="team-name">Priya Nair</div>
-					<div class="team-role">Head of Product</div>
+					<div class="team-name">Mikey Blazer</div>
+					<div class="team-role">Customer Success</div>
 				</div>
 				<div class="team-card">
 					<div class="team-photo"></div>
-					<div class="team-name">Liam Torres</div>
-					<div class="team-role">Lead Engineer</div>
+					<div class="team-name">Paul Tellini</div>
+					<div class="team-role">Advisor, GTM Strategy</div>
 				</div>
 				<div class="team-card">
 					<div class="team-photo"></div>
-					<div class="team-name">Aria Hoffman</div>
-					<div class="team-role">Head of Sales</div>
+					<div class="team-name">Huge Soreness</div>
+					<div class="team-role">Advisor, Systems &amp; Ops</div>
 				</div>
 			</div>
 		</section>
