@@ -1,7 +1,3 @@
-/* NextAdmin clone — small hand-written additions on top of the vendored
-   Tailwind build (global-1.css / global-2.css). Everything else is the
-   site's real compiled utility classes, reused verbatim. */
-
 html {
   scroll-behavior: smooth;
 }
@@ -10,7 +6,6 @@ body {
   font-family: var(--font-sans, "Satoshi", ui-sans-serif, system-ui, sans-serif);
 }
 
-/* dropdown panels (notifications / user menu) */
 .dropdown-panel {
   animation: dropdown-in 0.15s ease-out;
 }
@@ -28,7 +23,6 @@ body {
   }
 }
 
-/* sidebar mobile off-canvas */
 @media (max-width: 1023.98px) {
   #app-sidebar {
     position: fixed;
@@ -47,7 +41,6 @@ body {
   display: block;
 }
 
-/* custom scrollbar (thin) to match the original */
 .custom-scrollbar::-webkit-scrollbar {
   width: 5px;
 }
@@ -56,7 +49,6 @@ body {
   border-radius: 9999px;
 }
 
-/* active sidebar link state applied via JS */
 .nav-toplink.is-active,
 .nav-sublink.is-active {
   background: rgba(87, 80, 241, 0.07);
@@ -80,8 +72,6 @@ html.dark .nav-group-btn.is-active {
   transform: rotate(180deg);
 }
 
-/* simple accordion / tabs / modal / popover / tooltip helpers used on the
-   ui-elements showcase pages */
 [data-accordion-panel].is-collapsed {
   display: none;
 }
@@ -99,6 +89,10 @@ html.dark .nav-group-btn.is-active {
 }
 [data-modal-backdrop].is-open {
   display: flex;
+}
+
+[data-modal-backdrop] > [role="dialog"] {
+  max-width: 32.5rem;
 }
 [data-tooltip-el] {
   position: relative;
@@ -119,7 +113,44 @@ html.dark .nav-group-btn.is-active {
   display: block;
 }
 
-/* carousel */
+.generated-popover {
+  position: absolute;
+  z-index: 50;
+  width: 17.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgb(15 23 42 / 12%);
+}
+
+html.dark .generated-popover {
+  border-color: #313d4a;
+  background: #1c2434;
+}
+
+.generated-popover-bottom {
+  top: calc(100% + 0.75rem);
+  left: 0;
+}
+
+.generated-popover-right {
+  top: 50%;
+  left: calc(100% + 0.75rem);
+  transform: translateY(-50%);
+}
+
+.generated-popover-top {
+  bottom: calc(100% + 0.75rem);
+  left: 0;
+}
+
+.generated-popover-left {
+  top: 50%;
+  right: calc(100% + 0.75rem);
+  transform: translateY(-50%);
+}
+
 [data-carousel] {
   position: relative;
   overflow: hidden;
@@ -132,7 +163,58 @@ html.dark .nav-group-btn.is-active {
   flex: 0 0 100%;
 }
 
-/* progress bar animate-in */
+.swiper-wrapper {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.swiper-slide {
+  flex: 0 0 100%;
+  width: 100% !important;
+}
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.swiper-pagination button {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  background: #d1d5db;
+}
+
+.swiper-pagination button[aria-current="true"] {
+  background: #5750f1;
+}
+
 [data-progress-bar] {
   transition: width 1s ease;
+}
+
+.col-span-12 {
+  min-width: 0;
+}
+
+.apexcharts-canvas,
+.apexcharts-canvas > svg {
+  width: 100% !important;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .dropdown-panel,
+  [data-carousel-track],
+  [data-progress-bar] {
+    animation: none;
+    transition: none;
+  }
 }
