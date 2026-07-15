@@ -225,6 +225,22 @@
     });
   }
 
+  function initLocalForms() {
+    document.querySelectorAll('.auth-card form').forEach(function(form) {
+      form.addEventListener('submit', function(e) { e.preventDefault(); });
+    });
+  }
+
+  function initAboutShowMore() {
+    const button = document.querySelector('.about-show-more');
+    if (!button) return;
+    button.addEventListener('click', function() {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
+      button.textContent = expanded ? 'Show more...' : 'Show less';
+    });
+  }
+
   // ============================================================
   // INIT ALL
   // ============================================================
@@ -240,6 +256,8 @@
     initNewsletterForm();
     initContactForm();
     initGenerateButtons();
+    initLocalForms();
+    initAboutShowMore();
   });
 
 })();
