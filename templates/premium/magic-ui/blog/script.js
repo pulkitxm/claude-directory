@@ -1,141 +1,202 @@
-// ----- Theme toggle (next-themes style) -----
 (function () {
-	const stored = localStorage.getItem("theme");
 	const root = document.documentElement;
+	const stored = localStorage.getItem("theme");
 	if (stored === "dark") {
 		root.classList.remove("light");
 		root.classList.add("dark");
 	}
-	window.__toggleTheme = function () {
-		const dark = root.classList.toggle("dark");
-		root.classList.toggle("light", !dark);
-		localStorage.setItem("theme", dark ? "dark" : "light");
-	};
+	const themeButton = document.querySelector("header button");
+	if (themeButton) {
+		themeButton.setAttribute("aria-label", "Toggle theme");
+		themeButton.addEventListener("click", () => {
+			const dark = !root.classList.contains("dark");
+			root.classList.toggle("dark", dark);
+			root.classList.toggle("light", !dark);
+			root.style.colorScheme = dark ? "dark" : "light";
+			localStorage.setItem("theme", dark ? "dark" : "light");
+		});
+	}
 })();
 
-// ----- Animated flickering-grid canvas banner -----
-// Replicates the Magic UI FlickeringGrid component:
-//   squareSize=4, gridGap=6, color="#6B7280", maxOpacity=0.2, flickerChance=0.05
-function initGradientCanvas(canvas) {
+function startGrid(canvas) {
 	if (!canvas) return;
-	const ctx = canvas.getContext("2d");
-	const SQUARE = 4;
-	const GAP = 6;
-	const STEP = SQUARE + GAP;
-	const MAX_OPACITY = 0.2;
-	const FLICKER_CHANCE = 0.05;
-	let cols, rows, opacities;
-
-	function resize() {
-		canvas.width = canvas.offsetWidth * devicePixelRatio;
-		canvas.height = canvas.offsetHeight * devicePixelRatio;
-		ctx.scale(devicePixelRatio, devicePixelRatio);
-		const w = canvas.offsetWidth;
-		const h = canvas.offsetHeight;
-		cols = Math.ceil(w / STEP) + 1;
-		rows = Math.ceil(h / STEP) + 1;
-		opacities = new Float32Array(cols * rows).map(
-			() => Math.random() * MAX_OPACITY,
-		);
-	}
-	resize();
-	window.addEventListener("resize", resize);
-
-	function draw() {
-		const w = canvas.offsetWidth;
-		const h = canvas.offsetHeight;
-		ctx.clearRect(0, 0, w, h);
-		for (let r = 0; r < rows; r++) {
-			for (let c = 0; c < cols; c++) {
-				const idx = r * cols + c;
-				if (Math.random() < FLICKER_CHANCE) {
-					opacities[idx] = Math.random() * MAX_OPACITY;
-				}
-				ctx.globalAlpha = opacities[idx];
-				ctx.fillStyle = "#6B7280";
-				ctx.fillRect(c * STEP, r * STEP, SQUARE, SQUARE);
+	const context = canvas.getContext("2d");
+	let columns = 0;
+	let rows = 0;
+	let opacity = new Float32Array();
+	const resize = () => {
+		const ratio = window.devicePixelRatio || 1;
+		const width = canvas.clientWidth;
+		const height = canvas.clientHeight;
+		canvas.width = Math.round(width * ratio);
+		canvas.height = Math.round(height * ratio);
+		context.setTransform(ratio, 0, 0, ratio, 0, 0);
+		columns = Math.ceil(width / 10) + 1;
+		rows = Math.ceil(height / 10) + 1;
+		opacity = Float32Array.from({ length: columns * rows }, () => Math.random() * 0.2);
+	};
+	const draw = () => {
+		context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+		context.fillStyle = "#6B7280";
+		for (let row = 0; row < rows; row += 1) {
+			for (let column = 0; column < columns; column += 1) {
+				const index = row * columns + column;
+				if (Math.random() < 0.05) opacity[index] = Math.random() * 0.2;
+				context.globalAlpha = opacity[index];
+				context.fillRect(column * 10, row * 10, 4, 4);
 			}
 		}
-		ctx.globalAlpha = 1;
+		context.globalAlpha = 1;
 		requestAnimationFrame(draw);
-	}
+	};
+	resize();
+	window.addEventListener("resize", resize);
 	draw();
 }
 
-// ----- Home category filter -----
-function initFilter() {
-	const buttons = document.querySelectorAll(".filter-btn");
-	const cards = document.querySelectorAll(".post-card");
-	if (!buttons.length) return;
-	function apply(cat) {
-		cards.forEach((c) => {
-			const cats = (c.dataset.cats || "").split("|");
-			c.style.display = cat === "All" || cats.includes(cat) ? "" : "none";
+function startFilters() {
+	const desktop = document.querySelector(".hidden.md\\:flex.flex-wrap.gap-2");
+	if (!desktop) return;
+	const buttons = [...desktop.querySelectorAll("button")];
+	const mobile = desktop.parentElement.querySelector("button.md\\:hidden");
+	const cards = [...document.querySelectorAll("main a[href*='blog/'], .grid a[href*='blog/']")];
+	const tags = [
+		["Components", "React", "UI Frameworks"],
+		["Landing Page Examples", "Portfolio"],
+		["Animation", "React", "UI Frameworks"],
+		["Landing Page Examples", "React", "Templates"],
+		["Animation", "Mobile", "React Native", "UI Frameworks"],
+		["Landing Page Examples", "Portfolio", "React"],
+	];
+	const normal = "border-border hover:bg-muted";
+	const active = "border-primary bg-primary text-primary-foreground";
+	const select = (label) => {
+		buttons.forEach((button) => {
+			const current = button.querySelector("span")?.textContent.trim() === label;
+			button.classList.remove(...normal.split(" "), ...active.split(" "));
+			button.classList.add(...(current ? active : normal).split(" "));
+			button.setAttribute("aria-pressed", String(current));
 		});
-	}
-	buttons.forEach((b) => {
-		b.addEventListener("click", () => {
-			buttons.forEach((x) => x.classList.remove("active"));
-			b.classList.add("active");
-			apply(b.dataset.cat);
-			const ml = document.querySelector(".filters-mobile span");
-			if (ml) ml.textContent = b.dataset.cat;
+		cards.forEach((card, index) => {
+			card.hidden = label !== "All" && !tags[index]?.includes(label);
 		});
+		const labelNode = mobile?.querySelector("span");
+		if (labelNode) labelNode.textContent = label;
+	};
+	buttons.forEach((button) => button.addEventListener("click", () => select(button.querySelector("span")?.textContent.trim() || "All")));
+	if (!mobile) return;
+	mobile.setAttribute("aria-expanded", "false");
+	mobile.setAttribute("aria-haspopup", "menu");
+	const menu = document.createElement("div");
+	menu.className = "audit-mobile-menu";
+	menu.setAttribute("role", "menu");
+	buttons.forEach((button) => {
+		const item = document.createElement("button");
+		item.type = "button";
+		item.setAttribute("role", "menuitem");
+		item.textContent = button.querySelector("span")?.textContent.trim() || "All";
+		item.addEventListener("click", () => {
+			select(item.textContent);
+			menu.classList.remove("open");
+			mobile.setAttribute("aria-expanded", "false");
+		});
+		menu.append(item);
 	});
-	// mobile dropdown
-	const mob = document.querySelector(".filters-mobile");
-	const list = document.querySelector(".filters-mobile-list");
-	if (mob && list)
-		mob.addEventListener("click", () => {
-			list.style.display = list.style.display === "block" ? "none" : "block";
-		});
+	mobile.insertAdjacentElement("afterend", menu);
+	mobile.addEventListener("click", () => {
+		const open = menu.classList.toggle("open");
+		mobile.setAttribute("aria-expanded", String(open));
+	});
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") {
+			menu.classList.remove("open");
+			mobile.setAttribute("aria-expanded", "false");
+		}
+	});
 }
 
-// ----- Article TOC scroll-spy + smooth scroll + heading anchor copy -----
-function initTOC() {
-	const tocButtons = document.querySelectorAll(".toc-card button[data-target]");
-	if (!tocButtons.length) return;
-	const headings = [...tocButtons]
-		.map((b) => document.getElementById(b.dataset.target))
-		.filter(Boolean);
-	tocButtons.forEach((b) =>
-		b.addEventListener("click", () => {
-			const el = document.getElementById(b.dataset.target);
-			if (el)
-				window.scrollTo({
-					top: el.getBoundingClientRect().top + scrollY - 80,
-					behavior: "smooth",
-				});
-		}),
-	);
-	function spy() {
-		let active = headings[0];
-		for (const h of headings) {
-			if (h.getBoundingClientRect().top - 100 <= 0) active = h;
+function startAnchors() {
+	document.querySelectorAll('a[href^="#"]').forEach((link) => {
+		link.addEventListener("click", (event) => {
+			const target = document.querySelector(link.getAttribute("href"));
+			if (!target) return;
+			event.preventDefault();
+			target.scrollIntoView({ behavior: "smooth", block: "start" });
+			history.replaceState(null, "", link.getAttribute("href"));
+		});
+	});
+}
+
+function startToc() {
+	const buttons = [...document.querySelectorAll("button.block.w-full.text-left")];
+	const headings = [...document.querySelectorAll("h2, h3")];
+	const pairs = [];
+	buttons.forEach((button) => {
+		const target = headings.find((heading) => heading.textContent.trim() === button.textContent.trim());
+		if (!target) return;
+		button.addEventListener("click", () => target.scrollIntoView({ behavior: "smooth", block: "start" }));
+		pairs.push([button, target]);
+	});
+	const update = () => {
+		let active = pairs[0];
+		pairs.forEach((pair) => { if (pair[1].getBoundingClientRect().top <= 120) active = pair; });
+		pairs.forEach(([button]) => {
+			const selected = button === active?.[0];
+			button.classList.toggle("text-primary", selected);
+			button.classList.toggle("font-medium", selected);
+			button.classList.toggle("underline", selected);
+			button.classList.toggle("text-muted-foreground", !selected);
+		});
+	};
+	window.addEventListener("scroll", update, { passive: true });
+	update();
+	const floating = document.querySelector("button.lg\\:hidden.fixed");
+	if (!floating || !pairs.length) return;
+	floating.setAttribute("aria-label", "Open table of contents");
+	floating.setAttribute("aria-expanded", "false");
+	const menu = document.createElement("div");
+	menu.hidden = true;
+	menu.className = "fixed bottom-20 right-6 z-50 w-72 max-h-96 overflow-auto rounded-lg border border-border bg-background p-3 shadow-xl";
+	pairs.forEach(([, target]) => {
+		const item = document.createElement("button");
+		item.type = "button";
+		item.className = "block w-full rounded-md px-3 py-2 text-left text-sm hover:bg-muted";
+		item.textContent = target.textContent.trim();
+		item.addEventListener("click", () => {
+			target.scrollIntoView({ behavior: "smooth", block: "start" });
+			menu.hidden = true;
+			floating.setAttribute("aria-expanded", "false");
+		});
+		menu.append(item);
+	});
+	floating.insertAdjacentElement("beforebegin", menu);
+	floating.addEventListener("click", () => {
+		menu.hidden = !menu.hidden;
+		floating.setAttribute("aria-expanded", String(!menu.hidden));
+	});
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") {
+			menu.hidden = true;
+			floating.setAttribute("aria-expanded", "false");
 		}
-		tocButtons.forEach((b) =>
-			b.classList.toggle("active", b.dataset.target === (active && active.id)),
-		);
-	}
-	document.addEventListener("scroll", spy, { passive: true });
-	spy();
-	// heading click-to-copy
-	document.querySelectorAll(".prose h2[id]").forEach((h) =>
-		h.addEventListener("click", () => {
-			const url = location.origin + location.pathname + "#" + h.id;
-			navigator.clipboard && navigator.clipboard.writeText(url);
-		}),
-	);
-	// mobile FAB scrolls to top of TOC / toggles
-	const fab = document.querySelector(".toc-fab");
-	if (fab)
-		fab.addEventListener("click", () =>
-			window.scrollTo({ top: 0, behavior: "smooth" }),
-		);
+	});
+}
+
+function startCopyButtons() {
+	document.querySelectorAll('button[aria-label="Copy Text"]').forEach((button) => {
+		button.addEventListener("click", async () => {
+			const text = button.closest("figure")?.querySelector("code")?.innerText || "";
+			if (navigator.clipboard) await navigator.clipboard.writeText(text);
+			button.setAttribute("aria-label", "Copied");
+			setTimeout(() => button.setAttribute("aria-label", "Copy Text"), 1200);
+		});
+	});
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	initGradientCanvas(document.querySelector(".gradient-banner canvas"));
-	initFilter();
-	initTOC();
+	startGrid(document.querySelector(".audit-grid"));
+	startFilters();
+	startAnchors();
+	startToc();
+	startCopyButtons();
 });
