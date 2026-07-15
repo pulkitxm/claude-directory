@@ -1,13 +1,8 @@
-// ===== Magic UI "Mobile" (Cal AI) clone — behavior =====
-
-// ---- Hero phones (5 devices, scroll-linked vertical parallax) ----
 const heroPhones = document.querySelectorAll(".hero-phones img");
 const baseOffsets = [100, 50, 0, 50, 100];
 heroPhones.forEach((img, i) => {
 	img.style.transform = `translateY(${baseOffsets[i]}px)`;
 });
-
-// ---- Experience phones (scroll-linked vertical parallax) ----
 const expPhoneData = [
 	{ el: document.getElementById("exp-phone-1"), base: 150 },
 	{ el: document.getElementById("exp-phone-2"), base: 200 },
@@ -16,22 +11,16 @@ const expPhoneData = [
 expPhoneData.forEach(({ el, base }) => {
 	if (el) el.style.transform = `translateY(${base}px)`;
 });
-
-// ---- Combined scroll handler ----
 let ticking = false;
 function onScroll() {
 	if (ticking) return;
 	ticking = true;
 	requestAnimationFrame(() => {
 		const y = window.scrollY;
-
-		// Hero phones parallax
 		heroPhones.forEach((img, i) => {
 			const factor = baseOffsets[i] / 100;
 			img.style.transform = `translateY(${baseOffsets[i] - y * factor * 0.1}px)`;
 		});
-
-		// Experience phones parallax
 		expPhoneData.forEach(({ el, base }) => {
 			if (!el) return;
 			const factor = base / 250;
@@ -43,8 +32,6 @@ function onScroll() {
 }
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
-
-// ---- Benefits carousel (scroll-snap, scrollBy navigation) ----
 const scrollEl = document.getElementById("carousel-scroll");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
@@ -57,8 +44,6 @@ if (scrollEl && prevBtn && nextBtn) {
 		scrollEl.scrollBy({ left: scrollEl.clientWidth / 3, behavior: "smooth" });
 	});
 }
-
-// ---- Testimonials vertical marquee (4 columns, alternating) ----
 const testimonials = [
 	[
 		"Alice Johnson",
@@ -186,15 +171,12 @@ const testimonials = [
 		"The AI-driven project timeline suggestions have kept our team ahead of deadlines.",
 	],
 ];
-// Masonry columns layout (CSS handles columns, just render all cards)
 document.getElementById("testi-cols").innerHTML = testimonials
 	.map((t, i) => {
 		const img = `./assets/avatars/p${(i % 9) + 1}.jpg`;
 		return `<div class="testi-card"><div class="top"><img src="${img}" alt="" loading="lazy"/><div><div class="name">${t[0]}</div><div class="role">${t[1]}</div></div></div><div class="quote">${t[2]}</div></div>`;
 	})
 	.join("");
-
-// ---- FAQ accordion (height-animated) ----
 const faqs = [
 	[
 		"How does AI improve my scheduling?",
@@ -245,11 +227,6 @@ faqList.querySelectorAll(".faq-item").forEach((item) => {
 		}
 	});
 });
-
-// ---- Entrance animation on scroll ----
-// Sections are always visible (no opacity:0 hidden initial state).
-// When a section scrolls into view for the first time after the user
-// has begun scrolling, we play a subtle slide-up transition.
 let userScrolled = false;
 window.addEventListener(
 	"scroll",
