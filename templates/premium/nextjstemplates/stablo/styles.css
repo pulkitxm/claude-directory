@@ -1,14 +1,20 @@
-/* ============================================================
-   STABLO BLOG — SHARED STYLES
-   Clone of https://stablo.web3templates.com
-   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* ----------------------------------------------------------
-   0. RESET & BASE
-   ---------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 body {
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji';
@@ -25,9 +31,7 @@ img { display: block; max-width: 100%; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 input, textarea, select { font-family: inherit; }
 
-/* ----------------------------------------------------------
-   1. THEME TOKENS — LIGHT (DEFAULT)
-   ---------------------------------------------------------- */
+
 :root {
   --bg: #ffffff;
   --bg-card: #f3f4f6;
@@ -45,7 +49,7 @@ input, textarea, select { font-family: inherit; }
   --badge-border: #bfdbfe;
   --badge-text: #1d4ed8;
   --shadow-card: none;
-  /* Category colors */
+
   --cat-technology: #2563eb;
   --cat-lifestyle: #db2777;
   --cat-travel: #0d9488;
@@ -53,9 +57,7 @@ input, textarea, select { font-family: inherit; }
   --cat-personal-growth: #9333ea;
 }
 
-/* ----------------------------------------------------------
-   2. DARK MODE TOKENS
-   ---------------------------------------------------------- */
+
 html.dark {
   --bg: #000000;
   --bg-card: #1f2937;
@@ -70,15 +72,11 @@ html.dark {
   --btn-text: #111827;
 }
 
-/* ----------------------------------------------------------
-   3. NO-FLASH THEME SCRIPT (inline in <head>)
-   ---------------------------------------------------------- */
 
-/* ----------------------------------------------------------
-   4. LAYOUT — CONTAINER
-   ---------------------------------------------------------- */
+
+
 .container {
-  max-width: 64rem; /* screen-lg ≈ 1024px */
+  max-width: 64rem;
   margin-inline: auto;
   padding-inline: 2rem;
 }
@@ -87,9 +85,7 @@ html.dark {
   .container { padding-inline: 1.25rem; }
 }
 
-/* ----------------------------------------------------------
-   5. HEADER / NAV
-   ---------------------------------------------------------- */
+
 .site-header {
   border-bottom: 1px solid var(--border);
 }
@@ -144,7 +140,7 @@ html.dark {
 html.dark .logo-light { display: none; }
 html.dark .logo-dark  { display: block; }
 
-/* Hamburger */
+
 .hamburger {
   display: flex;
   align-items: center;
@@ -159,7 +155,7 @@ html.dark .logo-dark  { display: block; }
 
 .hamburger svg { width: 1.5rem; height: 1.5rem; fill: currentColor; }
 
-/* Mobile nav panel */
+
 .mobile-nav {
   display: none;
   flex-direction: column;
@@ -180,7 +176,7 @@ html.dark .logo-dark  { display: block; }
 }
 .mobile-nav a:hover { color: var(--nav-hover); }
 
-/* "new" badge */
+
 .badge-new {
   display: inline-flex;
   align-items: center;
@@ -205,9 +201,7 @@ html.dark .badge-new {
   border-color: #1e40af;
 }
 
-/* ----------------------------------------------------------
-   6. FOOTER
-   ---------------------------------------------------------- */
+
 footer {
   border-top: 1px solid var(--border);
   background-color: var(--bg-footer);
@@ -215,6 +209,7 @@ footer {
   text-align: center;
   font-size: 0.875rem;
   color: var(--text-muted);
+  min-height: 10.5rem;
 }
 
 footer a {
@@ -225,9 +220,7 @@ footer a:hover { color: var(--nav-hover); }
 
 footer p { margin-block: 0.25rem; }
 
-/* ----------------------------------------------------------
-   7. THEME TOGGLE
-   ---------------------------------------------------------- */
+
 .theme-toggle-wrapper {
   position: fixed;
   bottom: 1.5rem;
@@ -256,17 +249,15 @@ footer p { margin-block: 0.25rem; }
   appearance: auto;
 }
 
-/* ----------------------------------------------------------
-   8. POST CARDS
-   ---------------------------------------------------------- */
+
 .post-card {
-  background-color: var(--bg-card);
+  background-color: transparent;
   border-radius: 0.25rem;
   overflow: hidden;
   transition: box-shadow 0.2s;
 }
 
-.post-card:hover { box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.post-card:hover { box-shadow: none; }
 
 .post-card-img-wrap {
   position: relative;
@@ -285,7 +276,7 @@ footer p { margin-block: 0.25rem; }
 .post-card:hover .post-card-img-wrap img { transform: scale(1.05); }
 
 .post-card-body {
-  padding: 1.25rem;
+  padding: 1rem 0 0;
 }
 
 .post-card-cats {
@@ -310,7 +301,7 @@ footer p { margin-block: 0.25rem; }
 .cat-personal-growth { color: var(--cat-personal-growth); }
 
 .post-card-title {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.4;
@@ -328,13 +319,13 @@ footer p { margin-block: 0.25rem; }
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
 }
 
 .author-avatar {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -342,8 +333,8 @@ footer p { margin-block: 0.25rem; }
 }
 
 .author-avatar-placeholder {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
   background: #6b7280;
   flex-shrink: 0;
@@ -357,13 +348,11 @@ footer p { margin-block: 0.25rem; }
 
 .meta-sep { color: var(--border-input); }
 
-/* ----------------------------------------------------------
-   9. HOME PAGE — FEATURED 2-COL + 3-COL GRIDS
-   ---------------------------------------------------------- */
+
 .featured-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 2.5rem;
   margin-bottom: 2rem;
 }
 
@@ -376,7 +365,8 @@ footer p { margin-block: 0.25rem; }
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  column-gap: 2.5rem;
+  row-gap: 2.125rem;
   margin-bottom: 2rem;
 }
 
@@ -388,7 +378,7 @@ footer p { margin-block: 0.25rem; }
   .posts-grid { grid-template-columns: 1fr; }
 }
 
-/* Featured card has bigger title */
+
 .featured-card .post-card-title {
   font-size: 1.125rem;
   -webkit-line-clamp: 3;
@@ -398,9 +388,12 @@ footer p { margin-block: 0.25rem; }
   aspect-ratio: 16/9;
 }
 
-/* ----------------------------------------------------------
-   10. VIEW ALL / PAGINATION
-   ---------------------------------------------------------- */
+.posts-grid .post-card-img-wrap,
+.archive-grid .post-card-img-wrap {
+  aspect-ratio: 1/1;
+}
+
+
 .view-all-wrap {
   text-align: center;
   padding-block: 2rem;
@@ -452,9 +445,7 @@ footer p { margin-block: 0.25rem; }
   pointer-events: none;
 }
 
-/* ----------------------------------------------------------
-   11. ABOUT PAGE
-   ---------------------------------------------------------- */
+
 .page-hero {
   text-align: center;
   padding-block: 3rem 2rem;
@@ -475,9 +466,9 @@ footer p { margin-block: 0.25rem; }
 .team-grid {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 1.5rem;
-  padding-block: 2rem;
+  padding-block: 0 2rem;
 }
 
 .team-member {
@@ -492,14 +483,14 @@ footer p { margin-block: 0.25rem; }
 }
 
 .team-member:nth-child(2) .team-photo {
-  /* Center person is taller */
-  width: 230px;
-  height: 260px;
+  width: 285px;
+  height: 285px;
 }
 
 .team-member:not(:nth-child(2)) .team-photo {
-  width: 210px;
-  height: 230px;
+  width: 285px;
+  height: 285px;
+  margin-top: 64px;
 }
 
 @media (max-width: 640px) {
@@ -507,6 +498,7 @@ footer p { margin-block: 0.25rem; }
   .team-member:nth-child(2) .team-photo,
   .team-member:not(:nth-child(2)) .team-photo {
     width: 200px; height: 200px;
+    margin-top: 0;
   }
 }
 
@@ -530,9 +522,7 @@ footer p { margin-block: 0.25rem; }
 
 .about-body a:hover { color: var(--nav-hover); }
 
-/* ----------------------------------------------------------
-   12. CONTACT PAGE
-   ---------------------------------------------------------- */
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -617,9 +607,7 @@ textarea.form-field {
 
 .btn-submit:hover { opacity: 0.85; }
 
-/* ----------------------------------------------------------
-   13. ARCHIVE PAGE
-   ---------------------------------------------------------- */
+
 .archive-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -635,13 +623,21 @@ textarea.form-field {
   .archive-grid { grid-template-columns: 1fr; }
 }
 
-/* ----------------------------------------------------------
-   14. POST PAGE
-   ---------------------------------------------------------- */
+
 .post-page {
+  max-width: 64rem;
+  margin-inline: auto;
+  padding-bottom: 2rem;
+  position: relative;
+  top: -0.625rem;
+}
+
+.post-category-label,
+.post-title,
+.post-byline {
+  display: flex;
   max-width: 48rem;
   margin-inline: auto;
-  padding-block: 2rem;
 }
 
 .post-category-label {
@@ -657,7 +653,7 @@ textarea.form-field {
   font-size: 2.25rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.2;
+  line-height: 1.375;
   margin-bottom: 1.25rem;
 }
 
@@ -687,17 +683,23 @@ textarea.form-field {
 .post-date-read { font-size: 0.8rem; color: var(--text-muted); }
 
 .post-featured-img {
-  width: 100%;
+  width: min(64rem, calc(100vw - 2rem));
+  max-width: none;
+  height: auto;
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 0.25rem;
   margin-bottom: 2.5rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .post-body {
   color: var(--text-secondary);
   font-size: 1rem;
-  line-height: 1.8;
+  line-height: 1.75;
+  max-width: 41rem;
+  margin-inline: auto;
 }
 
 .post-body p { margin-bottom: 1.25rem; }
@@ -711,6 +713,8 @@ textarea.form-field {
   padding-block: 2rem;
   font-size: 0.875rem;
   color: var(--text-secondary);
+  max-width: 41rem;
+  margin-inline: auto;
 }
 
 .post-view-all a {
@@ -721,13 +725,16 @@ textarea.form-field {
 
 .post-view-all a:hover { color: var(--nav-hover); border-color: var(--nav-hover); }
 
-/* Author bio card */
+
 .author-bio-card {
-  border-top: 1px solid var(--border);
-  padding-top: 2rem;
-  margin-top: 2rem;
+  background: var(--bg-card);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-top: 0.75rem;
+  max-width: 48rem;
+  margin-inline: auto;
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: flex-start;
 }
 
@@ -748,9 +755,9 @@ textarea.form-field {
 }
 
 .author-bio-text {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 0.75rem;
 }
 
@@ -763,13 +770,8 @@ textarea.form-field {
 
 .author-bio-link:hover { color: var(--nav-hover); }
 
-/* ----------------------------------------------------------
-   15. UTILITIES
-   ---------------------------------------------------------- */
+
 .page-main {
   min-height: calc(100vh - 200px);
   padding-block: 2rem;
 }
-
-/* Inter font from Google */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
