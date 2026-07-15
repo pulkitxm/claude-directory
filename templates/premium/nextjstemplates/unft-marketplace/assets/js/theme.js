@@ -1,7 +1,4 @@
-/* Theme toggle wiring. The no-flash boot (reading localStorage / prefers-color-scheme
-   and setting the `dark` class on <html> before first paint) lives inline in the
-   <head> of every page — see the inline script right after <html>. This file only
-   wires up the visible toggle switches once the DOM is ready. */
+
 (function () {
   function isDark() {
     return document.documentElement.classList.contains("dark");
@@ -18,7 +15,7 @@
     try {
       localStorage.setItem("unft-theme", dark ? "dark" : "light");
     } catch (e) {
-      /* ignore (private mode / storage disabled) */
+
     }
     document.querySelectorAll("[data-theme-toggle]").forEach(applyToggleState);
   }

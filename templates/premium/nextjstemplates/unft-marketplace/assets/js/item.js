@@ -4,7 +4,7 @@
   var item = UNFT_CATALOG.items[slug];
   if (!item) return;
 
-  document.title = item.title + " — uNFT Marketplace";
+  document.title = item.title + " - uNFT Marketplace";
 
   document.querySelector("[data-item-image]").src = basePath + item.image_local;
   document.querySelector("[data-item-image]").alt = item.title;
@@ -26,7 +26,7 @@
     if (modal) modal.classList.add("is-open");
   });
 
-  /* Hot bid strip — first 4 catalog items excluding the current one */
+
   var allItems = UnftProductGrid.allItems();
   var related = allItems.filter(function (it) {
     return it.slug !== slug;
@@ -45,7 +45,7 @@
     });
   });
 
-  /* Discover grid with the same category chips as home/search */
+
   var grid = document.querySelector("[data-grid]");
   if (grid) {
     UnftProductGrid.renderGrid(grid, basePath, allItems);

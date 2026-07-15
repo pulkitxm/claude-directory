@@ -1,6 +1,4 @@
-/* Renders product cards from the vendored catalog dataset (assets/data/catalog.js).
-   Shared by the home "Discover" grid, the search page grid, and the item detail
-   page's "Discover" + "Hot bid" strips. */
+
 (function (global) {
   function formatCount(item) {
     var c = item.count;

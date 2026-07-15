@@ -1,7 +1,4 @@
-/* Category-chip filtering for a product grid. Wires [data-filter-chip] buttons
-   inside [data-chip-row] to show/hide cards inside a [data-grid] container
-   based on the card's data-categories attribute (client-side, matching the
-   reference site's category filter chips on Discover/Search). */
+
 (function (global) {
   function wireFilter(chipRowSel, gridSel) {
     var chipRow = document.querySelector(chipRowSel);
