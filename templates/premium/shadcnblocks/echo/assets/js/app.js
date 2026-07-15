@@ -1,180 +1,88 @@
-// Echo clone — shared chrome (header/footer), theme toggle, reveal-on-scroll, copy-link.
 (function () {
-	const I = window.ICONS;
+	"use strict";
 
-	function rel(path) {
-		// resolve a root-relative-ish path to the correct relative prefix based on depth
-		const depth = (
-			location.pathname.replace(/\/index\.html$/, "/").match(/\//g) || []
-		).length;
-		// pages live at /, /projects.html, /projects/<slug>.html
-		// compute prefix to reach the site root
-		let p = location.pathname;
-		p = p.replace(/index\.html$/, "");
-		const segs = p.split("/").filter(Boolean);
-		// last segment is the html file; folders before it determine depth
-		const folders = segs.filter((s) => !s.endsWith(".html"));
-		return "../".repeat(folders.length) + path;
-	}
-	window.assetPrefix = (() => {
-		const segs = location.pathname.split("/").filter(Boolean);
-		const folders = segs.filter((s) => !s.endsWith(".html"));
-		return "../".repeat(folders.length);
-	})();
-
-	function href(page) {
-		return window.assetPrefix + page;
-	}
-
-	function buildHeader() {
-		const active = document.body.dataset.page || "";
-		const nav = (page, icon, label, key) =>
-			`<a class="icon-btn ${active === key ? "active" : ""}" href="${href(page)}" aria-label="${label}">${icon}</a>`;
-		const el = document.createElement("header");
-		el.className = "site-header";
-		el.innerHTML = `<div class="container nav-inner">
-      <nav class="nav-group">
-        ${nav("index.html", I.home, "Home", "home")}
-        ${nav("projects.html", I.grid, "Projects", "projects")}
-        ${nav("about.html", I.user, "Profile", "about")}
-        ${nav("articles.html", I.pen, "Articles", "articles")}
-      </nav>
-      <div class="nav-right">
-        <button class="ghost-icon" id="theme-toggle" aria-label="Toggle theme">${I.moon}</button>
-        <a class="ghost-icon" href="https://x.com" target="_blank" rel="noopener" aria-label="X (Twitter)">${I.x}</a>
-        <a class="stars-btn" href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub Stars">${I.github}<span>11.2k</span></a>
-      </div>
-    </div>`;
-		document.body.prepend(el);
-	}
-
-	function buildFooter() {
-		const el = document.createElement("footer");
-		el.className = "site-footer";
-		// deterministic pseudo-random contribution graph
-		let cells = "";
-		let seed = 1234;
-		const rng = () =>
-			(seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
-		for (let i = 0; i < 280; i++) {
-			cells += `<span class="contrib-cell ${rng() > 0.78 ? "on" : ""}"></span>`;
+	var root = document.documentElement;
+	try {
+		var storedTheme = localStorage.getItem("theme");
+		if (storedTheme) {
+			root.classList.toggle("dark", storedTheme === "dark");
+			root.classList.toggle("light", storedTheme !== "dark");
 		}
-		el.innerHTML = `<div class="container">
-      <div class="contrib-graph" aria-hidden="true">${cells}</div>
-      <p class="footer-email"><a href="mailto:hi@john.me">hi@john.me</a></p>
-    </div>`;
-		document.body.appendChild(el);
-	}
+	} catch (error) {}
+	root.style.colorScheme = root.classList.contains("dark") ? "dark" : "light";
 
-	function themeSetup() {
-		const btn = document.getElementById("theme-toggle");
-		const apply = (mode) => {
-			const dark = mode === "dark";
-			document.documentElement.classList.toggle("dark", dark);
-			document.documentElement.classList.toggle("light", !dark);
-			btn.innerHTML = dark ? I.sun : I.moon;
-		};
-		const stored = localStorage.getItem("echo-theme");
-		const initial =
-			stored ||
-			(window.matchMedia("(prefers-color-scheme: dark)").matches
-				? "dark"
-				: "light");
-		apply(initial);
-		btn.addEventListener("click", () => {
-			const next = document.documentElement.classList.contains("dark")
-				? "light"
-				: "dark";
-			localStorage.setItem("echo-theme", next);
-			apply(next);
-		});
-	}
-
-	let revealIO = null;
-	function observeReveals() {
-		const els = document.querySelectorAll(".reveal:not(.in):not([data-obs])");
-		if (!("IntersectionObserver" in window)) {
-			els.forEach((e) => e.classList.add("in"));
+	document.addEventListener("click", function (event) {
+		var closeBanner = event.target.closest('[aria-label="Close banner"]');
+		if (closeBanner) {
+			var banner = closeBanner.closest(".bg-primary.relative");
+			if (banner) banner.style.display = "none";
 			return;
 		}
-		if (!revealIO) {
-			revealIO = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((e) => {
-						if (e.isIntersecting) {
-							e.target.classList.add("in");
-							revealIO.unobserve(e.target);
-						}
-					});
-				},
-				{ threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
-			);
+		var themeButton = event.target.closest('[aria-label="Toggle theme"]');
+		if (themeButton) {
+			var dark = !root.classList.contains("dark");
+			root.classList.toggle("dark", dark);
+			root.classList.toggle("light", !dark);
+			root.style.colorScheme = dark ? "dark" : "light";
+			try {
+				localStorage.setItem("theme", dark ? "dark" : "light");
+			} catch (error) {}
+			return;
 		}
-		els.forEach((e) => {
-			e.setAttribute("data-obs", "1");
-			revealIO.observe(e);
-		});
-	}
-	// Expose so dynamically-injected sections can register their .reveal nodes.
-	window.observeReveals = observeReveals;
-	function revealSetup() {
-		observeReveals();
-		// Safety net: ensure everything becomes visible even if it never scrolls
-		// into view (e.g. full-page screenshots, very tall viewports, print).
-		setTimeout(
-			() =>
-				document
-					.querySelectorAll(".reveal")
-					.forEach((e) => e.classList.add("in")),
-			1200,
-		);
-	}
+		var copyButton = event.target.closest("button");
+		if (copyButton && /copy link/i.test(copyButton.textContent)) {
+			if (navigator.clipboard) {
+				navigator.clipboard.writeText(location.href).catch(function () {});
+			}
+			var label = copyButton.querySelector("div") || copyButton;
+			var previous = label.textContent;
+			label.textContent = "Copied";
+			setTimeout(function () {
+				label.textContent = previous;
+			}, 1400);
+		}
+	});
 
-	function copyLinkSetup() {
-		document.querySelectorAll("[data-copy-link]").forEach((btn) => {
-			btn.addEventListener("click", () => {
-				navigator.clipboard?.writeText(location.href).catch(() => {});
-				let toast = document.querySelector(".copy-toast");
-				if (!toast) {
-					toast = document.createElement("div");
-					toast.className = "copy-toast";
-					toast.textContent = "Link copied to clipboard";
-					document.body.appendChild(toast);
-				}
-				toast.classList.add("show");
-				clearTimeout(window.__toastT);
-				window.__toastT = setTimeout(
-					() => toast.classList.remove("show"),
-					1800,
-				);
+	var categories = {
+		"Echo UI v3": ["featured"],
+		JustOS: ["featured"],
+		"Happy Stats": ["featured"],
+		"Cactus Plant": ["open-source"],
+		Stellar: ["personal"],
+		Neobase: ["open-source"],
+		Charter: ["personal"],
+		Echo: ["open-source"],
+		Plasma: ["personal"],
+		Scalar: ["open-source"],
+		Sonic: ["personal"],
+		Streamline: ["personal"],
+		Relative: ["personal"],
+		Bloom: ["personal"],
+	};
+	var tabList = document.querySelector('[role="tablist"]');
+	if (tabList) {
+		var tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+		var cards = Array.from(document.querySelectorAll("main ul.grid > li"));
+		cards.forEach(function (card) {
+			var title = Object.keys(categories).find(function (name) {
+				return card.textContent.includes(name);
+			});
+			card.dataset.categories = title ? categories[title].join(" ") : "";
+		});
+		tabs.forEach(function (tab) {
+			tab.addEventListener("click", function () {
+				var filter = tab.textContent.trim().toLowerCase().replaceAll(" ", "-");
+				tabs.forEach(function (candidate) {
+					var active = candidate === tab;
+					candidate.setAttribute("aria-selected", String(active));
+					candidate.setAttribute("data-state", active ? "active" : "inactive");
+				});
+				cards.forEach(function (card) {
+					card.hidden =
+						filter !== "all" &&
+						!card.dataset.categories.split(" ").includes(filter);
+				});
 			});
 		});
 	}
-
-	function tabsSetup() {
-		document.querySelectorAll("[data-tabs]").forEach((group) => {
-			const tabs = group.querySelectorAll(".tab");
-			const grid = document.querySelector(group.dataset.target);
-			tabs.forEach((tab) =>
-				tab.addEventListener("click", () => {
-					tabs.forEach((t) => t.classList.remove("active"));
-					tab.classList.add("active");
-					const f = tab.dataset.filter;
-					grid?.querySelectorAll("[data-cats]").forEach((card) => {
-						const cats = (card.dataset.cats || "").split(",");
-						card.style.display = f === "all" || cats.includes(f) ? "" : "none";
-					});
-				}),
-			);
-		});
-	}
-
-	document.addEventListener("DOMContentLoaded", () => {
-		buildHeader();
-		buildFooter();
-		themeSetup();
-		revealSetup();
-		copyLinkSetup();
-		tabsSetup();
-	});
 })();
