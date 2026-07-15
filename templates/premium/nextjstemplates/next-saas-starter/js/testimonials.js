@@ -1,4 +1,4 @@
-/* Testimonial carousel — ported from the source's Swiper-based slider
+/* Testimonial carousel, ported from the source's Swiper-based slider
    (prev/next arrows + pagination dots), reimplemented with plain JS so no
    external runtime dependency is required. */
 (function () {
@@ -13,6 +13,7 @@
 		});
 		dots.forEach(function (dot, i) {
 			dot.classList.toggle("active", i === index);
+			dot.setAttribute("aria-current", i === index ? "true" : "false");
 		});
 		current = index;
 	}
@@ -30,8 +31,18 @@
 		});
 	}
 	dots.forEach(function (dot, i) {
+		dot.setAttribute("role", "button");
+		dot.setAttribute("tabindex", "0");
+		dot.setAttribute("aria-label", "Show testimonial " + (i + 1));
 		dot.addEventListener("click", function () {
 			show(i);
 		});
+		dot.addEventListener("keydown", function (event) {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				show(i);
+			}
+		});
 	});
+	show(0);
 })();

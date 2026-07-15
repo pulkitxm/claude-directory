@@ -55,7 +55,7 @@ testimonial_slides = "\n".join(
 dots = "\n".join(f'<span class="{"active" if i == 0 else ""}" data-dot="{i}"></span>' for i in range(len(testimonials)))
 
 html = head(
-	"My SaaS Startup — Make Your Life Easier With Our SaaS",
+	"My SaaS Startup: Make Your Life Easier With Our SaaS",
 	"Clone of the Next.js SaaS Starter marketing landing page: hero, partners, feature rows, dark CTA bands, signing-in feature grid, and testimonials.",
 	'<link rel="stylesheet" href="css/home.css" />',
 ) + f"""<body class="next-light-theme">
@@ -73,7 +73,7 @@ html = head(
 			</div>
 		</div>
 		<div class="hero-art">
-			<img src="assets/demo-illustration-1.svg" alt="Illustration of a person working on a laptop" width="450" height="294" loading="eager" />
+			<img src="assets/hero-illustration.svg" alt="Illustration of a person working on a laptop" width="450" height="426" loading="eager" />
 		</div>
 	</div>
 </section>
