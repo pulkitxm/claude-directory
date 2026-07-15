@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// === 1. THEME MANAGEMENT ===
+
 	const themeToggleBtns = document.querySelectorAll(
 		'button[title="Toggle theme"]',
 	);
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	// === 2. MOBILE SIDEBAR NAVIGATION ===
+
 	const openSidebarBtn = document.querySelector(
 		'button[aria-label="Open sidebar"]',
 	);
@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	);
 	const sidebar = document.querySelector("aside");
 	const backdrop = document.querySelector(".bg-black\\/50");
+	if (sidebar) sidebar.id = "fundex-sidebar";
+	if (openSidebarBtn) {
+		openSidebarBtn.setAttribute("aria-controls", "fundex-sidebar");
+		openSidebarBtn.setAttribute("aria-expanded", "false");
+	}
 
 	const openSidebar = () => {
 		if (sidebar) {
@@ -42,9 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			backdrop.classList.remove("opacity-0", "pointer-events-none");
 			backdrop.classList.add("opacity-100");
 		}
+		openSidebarBtn?.setAttribute("aria-expanded", "true");
 	};
 
-	const closeSidebar = () => {
+	const closeSidebar = (restoreFocus = false) => {
 		if (sidebar) {
 			sidebar.classList.remove("translate-x-0");
 			sidebar.classList.add("-translate-x-full");
@@ -53,13 +59,18 @@ document.addEventListener("DOMContentLoaded", () => {
 			backdrop.classList.remove("opacity-100");
 			backdrop.classList.add("opacity-0", "pointer-events-none");
 		}
+		openSidebarBtn?.setAttribute("aria-expanded", "false");
+		if (restoreFocus) openSidebarBtn?.focus();
 	};
 
 	if (openSidebarBtn) openSidebarBtn.addEventListener("click", openSidebar);
-	if (closeSidebarBtn) closeSidebarBtn.addEventListener("click", closeSidebar);
+	if (closeSidebarBtn) closeSidebarBtn.addEventListener("click", () => closeSidebar(true));
 	if (backdrop) backdrop.addEventListener("click", closeSidebar);
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape" && sidebar?.classList.contains("translate-x-0")) closeSidebar(true);
+	});
 
-	// === 3. CARD CAROUSEL (DASHBOARD) ===
+
 	const carouselContainer = document.querySelector(
 		".overflow-hidden.mb-4.rounded-2xl.shadow-lg > div",
 	);
@@ -100,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	// === 4. KEYBOARD SHORTCUT (CMD+K) FOR SEARCH ===
+
 	const searchInput = document.querySelector('input[placeholder*="Search"]');
 	document.addEventListener("keydown", (e) => {
 		if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -111,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-	// === 5. SETTINGS TABS (SETTINGS PAGE) ===
+
 	const settingsTabBtns = document.querySelectorAll("main nav button");
 	const settingsContentTitle = document.querySelector("main h2");
 	const settingsFormsContainer = document.querySelector(
@@ -126,29 +137,32 @@ document.addEventListener("DOMContentLoaded", () => {
 	];
 	const inactiveTabClasses = ["text-gray-500", "dark:text-gray-400"];
 
-	settingsTabBtns.forEach((btn) => {
+	settingsTabBtns.forEach((btn, index) => {
+		btn.setAttribute("aria-pressed", String(index === 0));
 		btn.addEventListener("click", () => {
-			// Set active tab styling
+
 			settingsTabBtns.forEach((b) => {
 				b.classList.remove(...activeTabClasses);
 				b.classList.add(...inactiveTabClasses);
+				b.setAttribute("aria-pressed", "false");
 			});
 			btn.classList.add(...activeTabClasses);
 			btn.classList.remove(...inactiveTabClasses);
+			btn.setAttribute("aria-pressed", "true");
 
-			// Mock section transitions
+
 			const tabName = btn.textContent.trim();
 			if (settingsContentTitle) {
 				settingsContentTitle.textContent = `${tabName} Information`;
 			}
 
-			// Update form fields depending on the tab
+
 			if (settingsFormsContainer) {
 				if (tabName === "Profile") {
-					// Profile is default, reload page or show default form
+
 					window.location.reload();
 				} else {
-					// Mock generic form content for other sections
+
 					settingsFormsContainer.innerHTML = `
             <div class="p-6 bg-white dark:bg-gray-950 rounded-xl flex flex-col gap-6">
               <h3 class="text-lg font-medium text-gray-900 dark:text-white/90">${tabName} Preferences</h3>
@@ -156,14 +170,14 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-1.5">
                   <label class="text-sm font-medium text-gray-900 dark:text-white/90 block mb-1.5">Enable ${tabName} Updates</label>
-                  <select class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 focus:border-violet-600 focus:ring-violet-600 text-gray-900 dark:text-white/90">
+                  <select aria-label="${tabName} updates" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 focus:border-violet-600 focus:ring-violet-600 text-gray-900 dark:text-white/90">
                     <option>Yes, enable all features</option>
                     <option>No, turn off notifications</option>
                   </select>
                 </div>
                 <div class="space-y-1.5">
                   <label class="text-sm font-medium text-gray-900 dark:text-white/90 block mb-1.5">Access Scope</label>
-                  <select class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 focus:border-violet-600 focus:ring-violet-600 text-gray-900 dark:text-white/90">
+                  <select aria-label="${tabName} access scope" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 focus:border-violet-600 focus:ring-violet-600 text-gray-900 dark:text-white/90">
                     <option>Standard security check</option>
                     <option>Extended strict mode</option>
                   </select>
@@ -176,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	// === 6. TRANSACTION SEARCH & FILTERS (TRANSACTIONS PAGE) ===
+
 	const txSearchInput = document.querySelector(
 		'input[placeholder*="Search by ID or description"]',
 	);
@@ -199,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	// Helper selectors for budgets
+
 	const budgetActionBtns = Array.from(
 		document.querySelectorAll("button"),
 	).filter((btn) => {
@@ -215,5 +229,18 @@ document.addEventListener("DOMContentLoaded", () => {
 				btn.closest(".bg-white")?.querySelector("h3")?.textContent || "Budget";
 			alert(`${btn.textContent.trim()} action clicked for: ${budgetName}`);
 		});
+	});
+
+	document.querySelectorAll("aside a").forEach((link) => {
+		const href = link.getAttribute("href");
+		if (href && new URL(href, location.href).pathname === location.pathname) link.setAttribute("aria-current", "page");
+	});
+	document.querySelectorAll("button").forEach((button) => {
+		if (button.getAttribute("aria-label") || button.getAttribute("title") || (button.textContent || "").trim()) return;
+		button.setAttribute("aria-label", "Interactive control");
+	});
+	document.querySelectorAll("input, textarea, select").forEach((field) => {
+		if (field.getAttribute("aria-label") || field.closest("label") || (field.id && document.querySelector(`label[for="${field.id}"]`))) return;
+		field.setAttribute("aria-label", field.getAttribute("placeholder") || field.getAttribute("name") || field.id || field.getAttribute("type") || "Form field");
 	});
 });
