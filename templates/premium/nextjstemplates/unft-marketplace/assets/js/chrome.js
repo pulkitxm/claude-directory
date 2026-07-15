@@ -1,6 +1,4 @@
-/* Shared header/footer/mobile-drawer/modal markup, rendered at runtime so every
-   page shares one source of truth without needing a build step. `basePath` is
-   "" for top-level pages and "../" for pages nested one level deep (item/*.html). */
+
 (function (global) {
   function iconSearch() {
     return (
@@ -60,11 +58,11 @@
       "</label>" +
       '<a href="' + b + 'search.html" class="header-search"><span aria-hidden="true">' + iconSearch() + "</span>Search</a>" +
       '<button type="button" class="btn btn-outline btn-sm" data-open-modal>Login</button>' +
-      '<button type="button" class="hamburger" data-open-drawer aria-label="Open menu">' + iconBurger() + "</button>" +
+      '<button type="button" class="hamburger" data-open-drawer aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">' + iconBurger() + "</button>" +
       "</div>" +
       "</div>" +
       "</header>" +
-      '<div class="mobile-drawer" data-drawer>' +
+      '<div class="mobile-drawer" id="mobile-drawer" data-drawer aria-hidden="true">' +
       '<div class="mobile-drawer-top">' +
       '<a href="' + b + 'index.html" class="brand"><img src="' + b + 'assets/img/misc/logo.png" alt="uNFT Marketplace logo" width="36" height="36"></a>' +
       '<label class="theme-toggle" data-theme-toggle aria-label="Toggle dark theme"><input type="checkbox"><span class="knob"></span></label>' +
@@ -131,8 +129,8 @@
       '<h2 id="auth-modal-title">Authentication with <span>Cosmic</span></h2>' +
       "<p>To create an item you need to register an account at " +
       '<a href="https://www.cosmicjs.com" target="_blank" rel="noopener">Cosmic</a></p>' +
-      '<input class="field" type="email" placeholder="Email" autocomplete="off">' +
-      '<input class="field" type="password" placeholder="Password" autocomplete="off">' +
+      '<input class="field" type="email" placeholder="Email" aria-label="Email" autocomplete="email">' +
+      '<input class="field" type="password" placeholder="Password" aria-label="Password" autocomplete="current-password">' +
       '<div class="modal-actions">' +
       '<button type="button" class="btn btn-primary btn-block">Continue</button>' +
       '<button type="button" class="btn btn-outline btn-block" data-close-modal>Cancel</button>' +
@@ -152,36 +150,63 @@
     wire();
   }
 
-  /* Event delegation on document so dynamically-inserted triggers (e.g. the
-     "Choose collection" tiles built after mount() on upload-details.html)
-     open/close the drawer and modal without needing to be re-wired. */
+
   var delegatedWired = false;
+  var lastDrawerTrigger = null;
+  var lastModalTrigger = null;
   function wire() {
     if (delegatedWired) return;
     delegatedWired = true;
     document.addEventListener("click", function (e) {
       var drawer = document.querySelector("[data-drawer]");
       var modal = document.querySelector("[data-modal]");
-      if (e.target.closest("[data-open-drawer]")) {
-        if (drawer) drawer.classList.add("is-open");
+      var drawerTrigger = e.target.closest("[data-open-drawer]");
+      var modalTrigger = e.target.closest("[data-open-modal]");
+      if (drawerTrigger) {
+        lastDrawerTrigger = drawerTrigger;
+        if (drawer) {
+          drawer.classList.add("is-open");
+          drawer.setAttribute("aria-hidden", "false");
+          drawerTrigger.setAttribute("aria-expanded", "true");
+          var firstDrawerLink = drawer.querySelector("a");
+          if (firstDrawerLink) firstDrawerLink.focus();
+        }
       }
       if (e.target.closest("[data-close-drawer]")) {
         if (drawer) drawer.classList.remove("is-open");
+        if (lastDrawerTrigger) {
+          lastDrawerTrigger.setAttribute("aria-expanded", "false");
+          lastDrawerTrigger.focus();
+        }
       }
-      if (e.target.closest("[data-open-modal]")) {
+      if (modalTrigger) {
         e.preventDefault();
-        if (modal) modal.classList.add("is-open");
+        lastModalTrigger = modalTrigger;
+        if (modal) {
+          modal.classList.add("is-open");
+          var firstModalField = modal.querySelector("input");
+          if (firstModalField) firstModalField.focus();
+        }
       }
       if (e.target.closest("[data-close-modal]") || e.target === modal) {
         if (modal) modal.classList.remove("is-open");
+        if (lastModalTrigger) lastModalTrigger.focus();
       }
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") {
         var drawer = document.querySelector("[data-drawer]");
         var modal = document.querySelector("[data-modal]");
-        if (modal) modal.classList.remove("is-open");
-        if (drawer) drawer.classList.remove("is-open");
+        if (modal && modal.classList.contains("is-open")) {
+          modal.classList.remove("is-open");
+          if (lastModalTrigger) lastModalTrigger.focus();
+        } else if (drawer && drawer.classList.contains("is-open")) {
+          drawer.classList.remove("is-open");
+          if (lastDrawerTrigger) {
+            lastDrawerTrigger.setAttribute("aria-expanded", "false");
+            lastDrawerTrigger.focus();
+          }
+        }
       }
     });
   }

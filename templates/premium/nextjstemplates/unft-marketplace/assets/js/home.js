@@ -4,7 +4,7 @@
   var categories = UNFT_CATALOG.categories;
   var reviews = UNFT_CATALOG.reviews;
 
-  /* Hot bid strip — first 4 catalog items, matches reference order */
+
   var hotbid = items.slice(0, 4);
   var track = document.querySelector("[data-hotbid-track]");
   if (track) {
@@ -21,7 +21,7 @@
     });
   });
 
-  /* Hot collections — one tile per category with a mosaic of its item thumbnails */
+
   var catGrid = document.querySelector("[data-category-grid]");
   if (catGrid) {
     catGrid.innerHTML = categories
@@ -46,7 +46,7 @@
       .join("");
   }
 
-  /* Spotlight panel — first item as the big feature, next 3 as the mini list */
+
   var spotlightMain = document.querySelector("[data-spotlight-main]");
   var featured = items[0];
   if (spotlightMain && featured) {
@@ -74,7 +74,7 @@
     }).join("");
   }
 
-  /* Reviews strip */
+
   var reviewsTrack = document.querySelector("[data-reviews-track]");
   if (reviewsTrack) {
     reviewsTrack.innerHTML = reviews.map(function (r) {
@@ -89,7 +89,7 @@
     }).join("");
   }
 
-  /* Discover grid — full catalog with category-chip filtering */
+
   var grid = document.querySelector("[data-grid]");
   if (grid) {
     UnftProductGrid.renderGrid(grid, basePath, items);
