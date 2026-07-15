@@ -1,23 +1,13 @@
-/* Shape.AI Scheduling Template — main.js */
-
-// ===== FAQ ACCORDION =====
 function toggleFaq(questionEl) {
 	const item = questionEl.closest(".faq-item");
 	const isOpen = item.classList.contains("open");
-
-	// Close all
 	document
 		.querySelectorAll(".faq-item")
 		.forEach((el) => el.classList.remove("open"));
-
-	// Open clicked if it wasn't open
 	if (!isOpen) {
 		item.classList.add("open");
 	}
 }
-
-// ===== SCROLL REVEAL =====
-// Elements are always visible; we add a CSS animation class when they enter the viewport
 function initScrollReveal() {
 	const observer = new IntersectionObserver(
 		(entries) => {
@@ -33,10 +23,9 @@ function initScrollReveal() {
 
 	document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 }
-
-// ===== BLOG FILTERS =====
 function initBlogFilters() {
 	const filterBtns = document.querySelectorAll(".blog-filter-btn");
+	const search = document.querySelector(".blog-search");
 
 	filterBtns.forEach((btn) => {
 		btn.addEventListener("click", () => {
@@ -60,9 +49,16 @@ function initBlogFilters() {
 			});
 		});
 	});
-}
 
-// ===== NAV SCROLL SHADOW =====
+	if (search) {
+		search.addEventListener("input", () => {
+			const query = search.value.trim().toLowerCase();
+			document.querySelectorAll(".blog-card").forEach((card) => {
+				card.style.display = card.textContent.toLowerCase().includes(query) ? "" : "none";
+			});
+		});
+	}
+}
 function initNavScroll() {
 	const nav = document.querySelector(".nav");
 	if (!nav) return;
@@ -81,8 +77,6 @@ function initNavScroll() {
 		{ passive: true },
 	);
 }
-
-// ===== SMOOTH ANCHOR SCROLL =====
 function initSmoothScroll() {
 	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 		anchor.addEventListener("click", (e) => {
@@ -97,11 +91,25 @@ function initSmoothScroll() {
 		});
 	});
 }
-
-// ===== INIT =====
 document.addEventListener("DOMContentLoaded", () => {
 	initScrollReveal();
 	initBlogFilters();
 	initNavScroll();
 	initSmoothScroll();
+	document.querySelectorAll(".faq-question").forEach((question, index) => {
+		const answer = question.nextElementSibling;
+		if (!answer) return;
+		answer.id = `faq-answer-${index + 1}`;
+		question.setAttribute("role", "button");
+		question.setAttribute("tabindex", "0");
+		question.setAttribute("aria-controls", answer.id);
+		question.setAttribute("aria-expanded", "false");
+		question.addEventListener("click", () => question.setAttribute("aria-expanded", String(question.closest(".faq-item").classList.contains("open"))));
+		question.addEventListener("keydown", (event) => {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				question.click();
+			}
+		});
+	});
 });
