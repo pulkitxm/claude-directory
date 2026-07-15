@@ -1,355 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-  (function () {
-    try {
-      var stored = localStorage.getItem('theme');
-      var theme = stored || 'dark'; // Darkrise has no native light mode; default stays dark unless the user explicitly toggles (see common.js).
-      document.documentElement.setAttribute('data-theme', theme);
-    } catch (e) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  })();
-</script>
-<link rel="stylesheet" href="/assets/css/tokens.css">
-<link rel="stylesheet" href="/assets/css/base.css">
-<link rel="stylesheet" href="/assets/css/elements.css">
-<title>Elements | Darkrise — UI Kit Showcase</title>
-<meta name="description" content="A collection of UI elements used throughout the Darkrise template: typography, buttons, tabs, accordions, notices, tables, and more.">
-<link rel="shortcut icon" href="/assets/images/favicon.png">
-</head>
-<body>
-<!--
-  partials/header.html — shared site header (logo, primary nav, "All Pages"
-  mega-menu, mobile hamburger, theme toggle, "Get This Template" CTA).
-
-  USAGE: copy-paste this markup inline into each page's <body>, right after
-  the opening tag (zero-build static site — no runtime include needed).
-
-  PER-PAGE CUSTOMIZATION (do this on every copy):
-   1. Top-level nav links ("Integrations" / "Pricing" / "Contact") and the
-      "All Pages" mega-menu links: add class="nav-link active" /
-      class="nav-dropdown-link active" (in place of the plain class) on
-      whichever single link corresponds to the current page, and drop
-      "active" (leave classes as-is) on all others. In the reference
-      source these carried a literal "active"/"false" string in the class
-      list (Next.js conditional class artifact) — just replace that token
-      with either "active" or "" (empty) per link. The Home link is
-      "active" by default below.
-   2. Asset/link paths below are SITE-ROOT-RELATIVE (start with "/"), e.g.
-      "/assets/images/logo.svg" and href="/pricing/". This is deliberate:
-      with ~29 pages at varying nesting depths (/, /pricing/,
-      /integration/hubspot/, /blog/post-1/, ...), root-relative paths work
-      identically from every page without adjustment, as long as the site
-      is served from its project root (e.g. `python3 -m http.server` run
-      IN the project root, or any static host mapping "/" to that root).
-      Do not change these to "./" or "../" relative paths.
--->
-<header class="header sticky top-0 z-30">
-  <nav class="navbar container relative z-10">
-    <div class="order-0">
-      <a class="navbar-brand inline-block" href="/" aria-label="Darkrise home">
-        <img alt="Darkrise" loading="lazy" width="248" height="52" class="inline-block" src="/assets/images/logo.svg">
-      </a>
-    </div>
-
-    <input id="nav-toggle" type="checkbox" class="hidden">
-    <label for="nav-toggle" class="order-3 flex cursor-pointer items-center text-text lg:order-1 lg:hidden">
-      <svg id="show-button" class="block h-6 fill-current" viewBox="0 0 20 20">
-        <title>Menu Open</title>
-        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
-      </svg>
-      <svg id="hide-button" class="hidden h-6 fill-current" viewBox="0 0 20 20">
-        <title>Menu Close</title>
-        <polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"></polygon>
-      </svg>
-    </label>
-
-    <ul id="nav-menu" class="navbar-nav order-3 hidden pb-6 lg:order-1 lg:flex lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-4">
-      <li class="nav-item nav-dropdown group">
-        <span class="nav-link inline-flex items-center cursor-pointer">
-          All Pages
-          <span class="arrow-icon">
-            <svg class="h-4 w-4 fill-current transition-transform" viewBox="0 0 20 20">
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
-            </svg>
-          </span>
-        </span>
-        <div class="mega-menu-wrapper">
-          <div class="nav-dropdown-group">
-            <p class="nav-dropdown-eyebrow">Landing</p>
-            <ul class="nav-dropdown-list" style="width:150px;">
-              <li class="nav-dropdown-item">
-                <a aria-label="Home" class="nav-dropdown-link active" href="/">Home</a>
-                <p class="nav-dropdown-desc">A Colorful Dark World</p>
-              </li>
-              <li class="nav-dropdown-item">
-                <a aria-label="Elements" class="nav-dropdown-link active" href="/elements/">Elements</a>
-                <p class="nav-dropdown-desc">A collection of UI elements</p>
-              </li>
-            </ul>
-          </div>
-          <div class="nav-dropdown-group">
-            <p class="nav-dropdown-eyebrow">Essentials</p>
-            <ul class="nav-dropdown-list">
-              <li class="nav-dropdown-item"><a aria-label="About" class="nav-dropdown-link" href="/about/">About</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Pricing" class="nav-dropdown-link" href="/pricing/">Pricing</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Integrations" class="nav-dropdown-link" href="/integration/">Integrations</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Blog Details" class="nav-dropdown-link" href="/blog/post-1/">Blog Details</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Feature" class="nav-dropdown-link" href="/feature/">Feature</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Blog" class="nav-dropdown-link" href="/blog/">Blog</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Integrations Details" class="nav-dropdown-link" href="/integration/intercom/">Integrations Details</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Changelog" class="nav-dropdown-link" href="/changelog/">Changelog</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Contact" class="nav-dropdown-link" href="/contact/">Contact</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Terms" class="nav-dropdown-link" href="/terms-conditions/">Terms</a></li>
-              <li class="nav-dropdown-item"><a aria-label="Privacy" class="nav-dropdown-link" href="/privacy-policy/">Privacy</a></li>
-              <li class="nav-dropdown-item"><a aria-label="404" class="nav-dropdown-link" href="/404/">404</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item"><a aria-label="Integrations" class="nav-link block" href="/integration/">Integrations</a></li>
-      <li class="nav-item"><a aria-label="Pricing" class="nav-link block" href="/pricing/">Pricing</a></li>
-      <li class="nav-item"><a aria-label="Contact" class="nav-link block" href="/contact/">Contact</a></li>
-
-      <a class="btn btn-primary bg-transparent mt-2 lg:hidden bg-none has-icon" href="https://themefisher.com/products/darkrise-nextjs" target="_blank" rel="noopener">
-        <span class="value"><span data-content="Get This Template">Get This Template</span></span>
-        <span class="icon">
-          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
-        </span>
-      </a>
-    </ul>
-
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-      <a class="btn btn-primary bg-transparent hidden lg:flex bg-none has-icon" href="https://themefisher.com/products/darkrise-nextjs" target="_blank" rel="noopener">
-        <span class="value"><span data-content="Get This Template">Get This Template</span></span>
-        <span class="icon">
-          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" aria-hidden="true"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg>
-        </span>
-      </a>
-
-      <!-- Theme toggle: added for this clone (source template has no
-           toggle). Icon-button styled to match the header. -->
-      <button type="button" data-theme-toggle aria-label="Toggle light and dark theme">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="5"></circle>
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-        </svg>
-      </button>
-    </div>
-  </nav>
-</header>
-<main>
-<section class="section text-center">
-  <div class="container" data-aos="fade-up-sm">
-    <h1 class="has-gradient mb-4">Elements</h1>
-    <p class="text-lg opacity-70">A collection of UI elements</p>
-  </div>
-</section>
-<section class="section">
-  <div class="container">
-    <div class="row justify-center">
-      <div class="lg:col-8">
-        <div class="content" data-aos="fade-up-sm">
-          <h1>Heading 1</h1>
-          <h2>Heading 2</h2>
-          <h3>Heading 3</h3>
-          <h4>Heading 4</h4>
-          <h5>Heading 5</h5>
-          <h6>Heading 6</h6>
-          <hr>
-          <h3>Paragraph</h3>
-          <p>Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you're dealing in stolen ore.</p>
-          <hr>
-          <h3>Emphasis</h3>
-          <ol>
-            <li>Did you come here for something in <strong>particular</strong> or just general</li>
-            <li>Did you come here for something in <ins>particular</ins></li>
-            <li><em>Did you come here</em></li>
-            <li>Did you come here for <strong>something</strong> in particular</li>
-          </ol>
-          <hr>
-          <h3>Link</h3>
-          <p><a href="https://www.google.com">I'm an inline-style link</a></p>
-          <p><a href="https://www.themefisher.com">I'm a reference-style link</a></p>
-          <hr>
-          <h3>Ordered List</h3>
-          <ol><li>List item</li><li>List item</li><li>List item</li></ol>
-          <hr>
-          <h3>Unordered List</h3>
-          <ul><li>List item</li><li>List item</li><li>List item</li></ul>
-          <hr>
-          <h3>Code and Syntax Highlighting</h3>
-          <h4>HTML</h4>
-          <pre><code>&lt;ul&gt;
-  &lt;li class="nav-item"&gt;
-    &lt;a class="nav-link" href="/"&gt;Home&lt;/a&gt;
+<!DOCTYPE html><html data-dpl-id="dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA" lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="https://darkrise-nextjs.vercel.app/images/image-placeholder.png" as="image"/><link rel="stylesheet" href="https://darkrise-nextjs.vercel.app/_next/static/chunks/13n27a1hjy1f6.css?dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA" data-precedence="next"/><link rel="stylesheet" href="https://darkrise-nextjs.vercel.app/_next/static/chunks/2e0nv2zfx9m-q.css?dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="https://darkrise-nextjs.vercel.app/_next/static/chunks/0fb7golrhwup2.js?dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA"/><link rel="preload" href="https://fonts.googleapis.com/css2?family=Figtree&amp;display=swap" as="style"/><link rel="shortcut icon" href="https://darkrise-nextjs.vercel.app/images/favicon.png"/><meta name="theme-name" content="nextplate"/><meta name="msapplication-TileColor" content="#000000"/><meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff"/><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Elements
+</title><meta name="description" content="this is meta description
+"/><meta name="author" content="Themefisher"/><meta property="og:title" content="Elements
+"/><meta property="og:description" content="this is meta description
+"/><meta property="og:type" content="website"/><meta property="og:url" content="https://darkrise-nextjs.vercel.app/elements/"/><meta name="twitter:title" content="Elements
+"/><meta name="twitter:description" content="this is meta description
+"/><meta property="og:image" content="https://darkrise-nextjs.vercel.app/images/og-image.png"/><meta name="twitter:image" content="https://darkrise-nextjs.vercel.app/images/og-image.png"/><meta name="twitter:card" content="summary_large_image"/><link href="https://fonts.googleapis.com/css2?family=Figtree&amp;display=swap" rel="stylesheet"/><style>[data-aos]{opacity:1!important;transform:none!important}</style></head><body><div hidden=""></div><header class="header sticky top-0 z-30 mb-10"><nav class="navbar container relative z-10"><div class="order-0"><a class="navbar-brand inline-block " href="/"><img alt="Darkrise" loading="lazy" width="248" height="52" decoding="async" data-nimg="1" class="inline-block " style="color:transparent;height:26px;width:124px" src="https://darkrise-nextjs.vercel.app/images/logo.svg?dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA"/></a></div><input id="nav-toggle" type="checkbox" class="hidden"/><label for="nav-toggle" class="order-3 flex cursor-pointer items-center text-text lg:order-1 lg:hidden"><svg id="show-button" class="block h-6 fill-current" viewBox="0 0 20 20"><title>Menu Open</title><path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path></svg><svg id="hide-button" class="hidden h-6 fill-current" viewBox="0 0 20 20"><title>Menu Close</title><polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"></polygon></svg></label><ul id="nav-menu" class="navbar-nav order-3 hidden pb-6 lg:order-1 lg:flex lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-4"><li class="nav-item nav-dropdown group"><span class="nav-link inline-flex items-center cursor-pointer ">All Pages<span class="arrow-icon"><svg class="h-4 w-4 fill-current transition-transform " viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg></span></span><div class="mega-menu-wrapper hidden max-lg:flex-col lg:invisible lg:absolute lg:left-0 lg:flex lg:opacity-0 lg:transition-all lg:duration-300 lg:group-hover:visible lg:group-hover:opacity-100"><div class="flex flex-col gap-5"><p class="text-[10px]/none uppercase tracking-wider opacity-50">Landing</p><ul class="nav-dropdown-list flex w-[150px] flex-col gap-5"><li class="nav-dropdown-item"><a aria-label="Home" class="nav-dropdown-link block " href="/">Home</a><p class="text-sm opacity-50">A Colorful Dark World</p></li><li class="nav-dropdown-item"><a aria-label="Elements" class="nav-dropdown-link block active" href="/elements/">Elements</a><p class="text-sm opacity-50">A collection of UI elements</p></li></ul></div><div class="flex flex-col gap-5"><p class="text-[10px]/none uppercase tracking-wider opacity-50">Essentials</p><ul class="nav-dropdown-list gap-x-16 sm:columns-2 md:columns-3 lg:grid lg:grid-cols-[repeat(3,_1fr)]"><li class="nav-dropdown-item"><a aria-label="About" class="nav-dropdown-link block " href="/about/">About</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Pricing" class="nav-dropdown-link block " href="/pricing/">Pricing</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Integrations" class="nav-dropdown-link block " href="/integration/">Integrations</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Blog Details" class="nav-dropdown-link block " href="/blog/post-1/">Blog Details</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Feature" class="nav-dropdown-link block " href="/feature/">Feature</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Blog" class="nav-dropdown-link block " href="/blog/">Blog</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Integrations Details" class="nav-dropdown-link block " href="/integration/intercom/">Integrations Details</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Changelog" class="nav-dropdown-link block " href="/changelog/">Changelog</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Contact" class="nav-dropdown-link block " href="/contact/">Contact</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Terms" class="nav-dropdown-link block " href="/terms-conditions/">Terms</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="Privacy" class="nav-dropdown-link block " href="/privacy-policy/">Privacy</a><p class="text-sm opacity-50"></p></li><li class="nav-dropdown-item"><a aria-label="404" class="nav-dropdown-link block " href="/404/">404</a><p class="text-sm opacity-50"></p></li></ul></div></div></li><li class="nav-item"><a aria-label="Integrations" class="nav-link block false" href="/integration/">Integrations</a></li><li class="nav-item"><a aria-label="Pricing" class="nav-link block false" href="/pricing/">Pricing</a></li><li class="nav-item"><a aria-label="Contact" class="nav-link block false" href="/contact/">Contact</a></li><a class="btn btn-primary bg-transparent mt-2 lg:hidden bg-none has-icon" href="https://themefisher.com/products/darkrise-nextjs" target="_blank"><span class="value"><span data-content="Get This Template">Get This Template</span></span><span class="icon"><span><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="text-xs" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></span><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" aria-hidden="true" class="text-xs" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></span></span></span></a></ul><div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0"><a class="btn btn-primary bg-transparent hidden lg:flex bg-none has-icon" href="https://themefisher.com/products/darkrise-nextjs" target="_blank"><span class="value"><span data-content="Get This Template">Get This Template</span></span><span class="icon"><span><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="text-xs" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></span><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" aria-hidden="true" class="text-xs" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></span></span></span></a></div></nav></header><div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-[-82px] -z-10 h-[424px] w-full -translate-x-1/2 rounded-full from-secondary via-secondary to-red-700 to-90% opacity-60 blur-[100px] bg-gradient-to-r lg:w-[884px] lg:rotate-[-19deg]"></div><main><section class="section"><div class="container text-center" data-aos="fade-up-sm"><div class="rounded-2xl px-8"><h1 class="h2 md:h1 has-gradient mb-4">Elements</h1><p class="text-lg font-medium opacity-70">Last Updated: July 07, 2026</p></div></div></section><section class="section"><div class="container" data-aos="fade-up-sm" data-aos-delay="200"><div class="row justify-center"><div class="lg:col-8"><div class="content"><h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+<hr/>
+<h3>Paragraph</h3>
+<p>Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you’re dealing in stolen ore. But I wanna talk about the assassination attempt on Lieutenant Worf. Could someone survive inside a transporter buffer for 75 years? Fate. It protects fools, little children, and ships.</p>
+<p>Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you’re dealing in stolen ore. But I wanna talk about the assassination attempt on Lieutenant Worf. Could someone survive inside a transporter buffer for 75 years? Fate. It protects fools, little children, and ships.</p>
+<hr/>
+<h3>Emphasis</h3>
+<ol>
+<li>
+<p>Did you come here for something in <strong>particular</strong> or just general</p>
+</li>
+<li>
+<p>Did you come here for something in <ins>particular</ins></p>
+</li>
+<li>
+<p><em>Did you come here</em></p>
+</li>
+<li>
+<p>Did you come here for <strong>something</strong> in particular</p>
+</li>
+<li>
+<p>Did you come here for something in particular</p>
+</li>
+<li>
+<p>Did you come here for something in particular</p>
+</li>
+<li>
+<p>URLs and URLs in angle brackets will automatically get turned into links. <a href="http://www.example.com">http://www.example.com</a> or</p>
+</li>
+<li>
+<p><a href="http://www.example.com">http://www.example.com</a> and sometimes example.com (but not on Github, for example).</p>
+</li>
+</ol>
+<hr/>
+<h3>Link</h3>
+<p><a href="https://www.google.com">I&#x27;m an inline-style link</a></p>
+<p><a href="https://www.google.com" title="Google&#x27;s Homepage">I&#x27;m an inline-style link with title</a></p>
+<p><a href="https://www.themefisher.com">I&#x27;m a reference-style link</a></p>
+<p><a href="../blob/master/LICENSE">I&#x27;m a relative reference to a repository file</a></p>
+<p><a href="https://gethugothemes.com">You can use numbers for reference-style link definitions</a></p>
+<p>Or leave it empty and use the <a href="https://www.getjekyllthemes.com">link text itself</a>.</p>
+<p>example.com (but not on Github, for example).</p>
+<p>Some text to show that the reference links can follow later.</p>
+<hr/>
+<h3>Ordered List</h3>
+<ol>
+<li>List item</li>
+<li>List item</li>
+<li>List item</li>
+<li>List item</li>
+<li>List item</li>
+</ol>
+<hr/>
+<h3>Unordered List</h3>
+<ul>
+<li>List item</li>
+<li>List item</li>
+<li>List item</li>
+<li>List item</li>
+<li>List item</li>
+</ul>
+<hr/>
+<h3>Code and Syntax Highlighting</h3>
+<h4>HTML</h4>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li class=&quot;nav-item&quot;&gt;
+    &lt;a class=&quot;nav-link&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-          <h4>CSS</h4>
-          <pre><code>img {
+  &lt;li class=&quot;nav-item&quot;&gt;
+    &lt;a class=&quot;nav-link&quot; href=&quot;about/&quot;&gt;About&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<hr/>
+<h4>CSS</h4>
+<pre><code class="language-css">img {
   vertical-align: middle;
   border: 0;
   max-width: 100%;
-}</code></pre>
-          <hr>
-          <h3>Button</h3>
-          <a class="btn btn-primary has-icon" href="#"><span class="value"><span>Button</span></span><span class="icon">&rarr;</span></a>
-          <hr>
-          <h3>Quote</h3>
-          <blockquote><p>Did you come here for something in particular or just general Riker-bashing?</p></blockquote>
-          <hr>
-          <h3>Notice</h3>
-          <div class="notice note"><div class="notice-head">Note</div><div class="notice-body">This is a simple note.</div></div>
-          <div class="notice tip"><div class="notice-head">Tip</div><div class="notice-body">This is a simple note.</div></div>
-          <div class="notice info"><div class="notice-head">Info</div><div class="notice-body">This is a simple note.</div></div>
-          <div class="notice warning"><div class="notice-head">Warning</div><div class="notice-body">This is a simple note.</div></div>
-          <hr>
-          <h3>Tab</h3>
-          <div class="tab" data-tab>
-            <ul class="tab-nav" role="tablist">
-              <li class="tab-nav-item active" role="tab" tabindex="0">Tab 1</li>
-              <li class="tab-nav-item" role="tab" tabindex="-1">Tab 2</li>
-              <li class="tab-nav-item" role="tab" tabindex="-1">Tab 3</li>
-            </ul>
-            <div class="tab-content block"><h4>Did you come here for something in particular?</h4><p>Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once.</p></div>
-            <div class="tab-content hidden"><h4>I wanna talk about the assassination attempt</h4><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p></div>
-            <div class="tab-content hidden"><h4>We know you're dealing in stolen ore</h4><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p></div>
-          </div>
-          <hr>
-          <h3>Table</h3>
-          <table>
-            <thead><tr><th>#</th><th>First</th><th>Last</th><th>Handle</th></tr></thead>
-            <tbody>
-              <tr><td>1</td><td>Row:1 Cell:1</td><td>Row:1 Cell:2</td><td>Row:1 Cell:3</td></tr>
-              <tr><td>2</td><td>Row:2 Cell:1</td><td>Row:2 Cell:2</td><td>Row:2 Cell:3</td></tr>
-              <tr><td>3</td><td>Row:3 Cell:1</td><td>Row:3 Cell:2</td><td>Row:3 Cell:3</td></tr>
-            </tbody>
-          </table>
-          <hr>
-          <h3>Accordion</h3>
-          <div class="accordion" data-accordion>
-            <button class="accordion-header" type="button">Why should you need to do this?<span class="accordion-icon">&darr;</span></button>
-            <div class="accordion-content"><ul><li>This is a thing.</li><li>This is a thing.</li><li>This is a thing.</li></ul></div>
-          </div>
-          <div class="accordion" data-accordion>
-            <button class="accordion-header" type="button">How can I adjust horizontal centering?<span class="accordion-icon">&darr;</span></button>
-            <div class="accordion-content"><ul><li>This is a thing.</li><li>This is a thing.</li><li>This is a thing.</li></ul></div>
-          </div>
-          <div class="accordion" data-accordion>
-            <button class="accordion-header" type="button">Should you use negative margin?<span class="accordion-icon">&darr;</span></button>
-            <div class="accordion-content"><ul><li>This is a thing.</li><li>This is a thing.</li><li>This is a thing.</li></ul></div>
-          </div>
-          <hr>
-          <h3>Custom video</h3>
-          <video class="elements-video" width="100%" height="auto" controls>
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Tabs
-  document.querySelectorAll('[data-tab]').forEach(function (tab) {
-    var items = tab.querySelectorAll('.tab-nav-item');
-    var panels = tab.querySelectorAll('.tab-content');
-    items.forEach(function (item, i) {
-      item.addEventListener('click', function () {
-        items.forEach(function (it) { it.classList.remove('active'); });
-        panels.forEach(function (p) { p.classList.add('hidden'); p.classList.remove('block'); });
-        item.classList.add('active');
-        panels[i].classList.remove('hidden');
-        panels[i].classList.add('block');
-      });
-    });
-  });
-  // Accordions
-  document.querySelectorAll('[data-accordion]').forEach(function (acc) {
-    var header = acc.querySelector('.accordion-header');
-    header.addEventListener('click', function () {
-      acc.classList.toggle('open');
-    });
-  });
+  height: auto;
+}
+</code></pre>
+<hr/>
+<h4>JavaScript</h4>
+<pre><code class="language-javascript">window.addEventListener(&quot;load&quot;, (e) =&gt; {
+  document.querySelector(&quot;.preloader&quot;).style.display = &quot;none&quot;;
 });
-</script>
-<!--
-  partials/footer.html — shared site footer (brand, link columns, legal bar).
-  USAGE: copy-paste inline at the end of each page's <body>, before the
-  closing </body> tag (and before the <script src="/assets/js/common.js">
-  tag, or after — order doesn't matter since common.js defers to DOMContentLoaded).
-  Paths are site-root-relative (see header.html for rationale) — do not
-  change to "./" or "../" relative paths.
--->
-<footer class="footer" data-aos="fade-up-sm">
-  <div class="container">
-    <div class="row gy-6 justify-between">
-      <div class="col-12" style="padding-bottom: 3.5rem;">
-        <a class="navbar-brand inline-block" href="/" aria-label="Darkrise home">
-          <img alt="Darkrise" loading="lazy" width="450" height="96" class="inline-block" src="/assets/images/logo.svg">
-        </a>
-      </div>
-
-      <div class="sm:col-6 md:col-auto">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/feature/">Product Features</a></li>
-          <li><a href="/changelog/">Changelog</a></li>
-          <li><a href="/contact/">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="sm:col-6 md:col-auto">
-        <h3>Product</h3>
-        <ul>
-          <li><a href="/pricing/">Pricing &amp; Plans</a></li>
-          <li><a href="/feature/">Product Features</a></li>
-          <li><a href="/integration/">Integration</a></li>
-          <li><a href="/integration/kickstarter/">Integration Details</a></li>
-        </ul>
-      </div>
-
-      <div class="sm:col-6 md:col-auto">
-        <h3>Resources</h3>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/blog/post-1/">Blog Details</a></li>
-          <li><a href="/changelog/">Changelog</a></li>
-        </ul>
-      </div>
-
-      <div class="sm:col-6 md:col-auto">
-        <h3>Services</h3>
-        <ul>
-          <li><a href="/elements/">Elements</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/404/">404</a></li>
-        </ul>
-      </div>
-
-      <div class="col-12" style="padding-top: 1.25rem;">
-        <div class="footer-bottom">
-          <p>Copyright &copy; 2025 Darkrise. All Rights Reserved</p>
-          <ul class="footer-legal">
-            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="/terms-conditions/">Terms &amp; Conditions</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="/assets/js/common.js" defer></script>
-</body>
-</html>
+</code></pre>
+<hr/>
+<h3>Button</h3>
+<a class="btn btn mb-4 me-4 no-underline text-white  btn-primary has-icon" href="#" target="_self"><span class="value"><span data-content="Button">Button</span></span><span class="icon"><span><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="text-xs" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></span><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" aria-hidden="true" class="text-xs" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></span></span></span></a>
+<hr/>
+<h3>Quote</h3>
+<blockquote>
+<p>Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once.</p>
+</blockquote>
+<hr/>
+<h3>Notice</h3>
+<div class="notice note"><div class="notice-head"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 9V14M10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10C19 14.9706 14.9706 19 10 19ZM10.0498 6V6.1L9.9502 6.1002V6H10.0498Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><p class="my-0 ml-1.5">Note</p></div><div class="notice-body">This is a simple note.</div></div>
+<div class="notice tip"><div class="notice-head"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0ZM12 2.4C6.69807 2.4 2.4 6.69807 2.4 12C2.4 17.3019 6.69807 21.6 12 21.6C17.3019 21.6 21.6 17.3019 21.6 12C21.6 6.69807 17.3019 2.4 12 2.4ZM15.9515 7.55147L9.6 13.9029L8.04853 12.3515C7.5799 11.8828 6.8201 11.8828 6.35147 12.3515C5.88284 12.8201 5.88284 13.5799 6.35147 14.0485L8.75147 16.4485C9.2201 16.9172 9.9799 16.9172 10.4485 16.4485L17.6485 9.24853C18.1172 8.7799 18.1172 8.0201 17.6485 7.55147C17.1799 7.08284 16.4201 7.08284 15.9515 7.55147Z" fill="currentColor"></path></svg><p class="my-0 ml-1.5">Tip</p></div><div class="notice-body">This is a simple note.</div></div>
+<div class="notice info"><div class="notice-head"><svg width="20" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.16109 0.993016C9.97971 1.03952 10.6611 1.42989 11.0721 2.22339L17.7981 15.8014C18.4502 17.1739 17.4403 19.0208 15.7832 19.0474H2.23859C0.730337 19.0234 -0.507163 17.3108 0.231587 15.7864L7.08321 2.20877C7.21146 1.96502 7.26996 1.89452 7.38059 1.76664C7.82534 1.25102 8.31171 0.975016 9.16109 0.993016ZM9.05046 2.49189C8.79284 2.50464 8.55696 2.64902 8.42834 2.87327C6.06134 7.36539 3.77946 11.9036 1.56546 16.4734C1.36071 16.9328 1.71209 17.5223 2.22621 17.547C6.74871 17.6201 11.2731 17.6201 15.7956 17.547C16.2925 17.523 16.666 16.953 16.459 16.4783C14.2866 11.9093 12.0471 7.37102 9.72171 2.87814C9.58446 2.63402 9.38309 2.48739 9.05046 2.49189Z" fill="currentColor"></path><path d="M9.61323 13.2153H8.35773L8.21973 7.04688H9.75723L9.61323 13.2153ZM8.17773 15.1015C8.17773 14.8731 8.25161 14.6841 8.39973 14.5338C8.54823 14.3838 8.75036 14.3084 9.00648 14.3084C9.26298 14.3084 9.46511 14.3838 9.61323 14.5338C9.76136 14.6841 9.83561 14.8731 9.83561 15.1015C9.83561 15.3216 9.76323 15.5057 9.61923 15.6539C9.47486 15.802 9.27086 15.8762 9.00648 15.8762C8.74211 15.8762 8.53811 15.802 8.39373 15.6539C8.24973 15.5057 8.17773 15.3216 8.17773 15.1015Z" fill="currentColor"></path></svg><p class="my-0 ml-1.5">Info</p></div><div class="notice-body">This is a simple note.</div></div>
+<div class="notice warning"><div class="notice-head"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 0C15.522 0 20 4.478 20 10C20 15.522 15.522 20 10 20C4.478 20 0 15.522 0 10C0 4.478 4.478 0 10 0ZM10 2C5.589 2 2 5.589 2 10C2 14.411 5.589 18 10 18C14.411 18 18 14.411 18 10C18 5.589 14.411 2 10 2ZM12.293 6.293L13.707 7.707L11.414 10L13.707 12.293L12.293 13.707L10 11.414L7.707 13.707L6.293 12.293L8.586 10L6.293 7.707L7.707 6.293L10 8.586L12.293 6.293Z" fill="currentColor"></path></svg><p class="my-0 ml-1.5">Warning</p></div><div class="notice-body">This is a simple note.</div></div>
+<hr/>
+<h3>Tab</h3>
+<div class="tab"><ul class="tab-nav" role="tablist"><li class="tab-nav-item active" role="tab" tabindex="0">Tab 1</li><li class="tab-nav-item " role="tab" tabindex="-1">Tab 2</li><li class="tab-nav-item " role="tab" tabindex="-1">Tab 3</li></ul><div class="tab-content block"><h4>Did you come here for something in particular?</h4><p>Did you come here for something in particular or just general Riker-bashing? And blowing into maximum warp speed, you appeared for an instant to be in two places at once. We have a saboteur aboard. We know you’re dealing in stolen ore. But I wanna talk about the assassination attempt on Lieutenant Worf.</p></div><div class="tab-content hidden"><h4>I wanna talk about the assassination attempt</h4><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p></div><div class="tab-content hidden"><h4>We know you’re dealing in stolen ore</h4><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo</p></div></div>
+<hr/>
+<h3>Table</h3>
+<table><thead><tr><th style="text-align:left">#</th><th style="text-align:center">First</th><th style="text-align:center">Last</th><th style="text-align:right">Handle</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:center">Row:1 Cell:1</td><td style="text-align:center">Row:1 Cell:2</td><td style="text-align:right">Row:1 Cell:3</td></tr><tr><td style="text-align:left">2</td><td style="text-align:center">Row:2 Cell:1</td><td style="text-align:center">Row:2 Cell:2</td><td style="text-align:right">Row:2 Cell:3</td></tr><tr><td style="text-align:left">3</td><td style="text-align:center">Row:3 Cell:1</td><td style="text-align:center">Row:3 Cell:2</td><td style="text-align:right">Row:3 Cell:3</td></tr></tbody></table>
+<hr/>
+<h3>Accordion</h3>
+<div class="accordion false undefined"><button class="accordion-header">Why should you need to do this?<svg class="accordion-icon" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path fill="currentColor" d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0 s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667 C514.096,145.416,514.096,131.933,505.755,123.592z"></path></svg></button><div class="accordion-content"><ul>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+</ul></div></div>
+<div class="accordion false undefined"><button class="accordion-header">How can I adjust Horizontal centering<svg class="accordion-icon" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path fill="currentColor" d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0 s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667 C514.096,145.416,514.096,131.933,505.755,123.592z"></path></svg></button><div class="accordion-content"><ul>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+</ul></div></div>
+<div class="accordion false undefined"><button class="accordion-header">Should you use Negative margin?<svg class="accordion-icon" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path fill="currentColor" d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0 s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667 C514.096,145.416,514.096,131.933,505.755,123.592z"></path></svg></button><div class="accordion-content"><ul>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+<li>This is a thing.</li>
+</ul></div></div>
+<hr/>
+<h3>Image</h3>
+<p><img src="https://darkrise-nextjs.vercel.app/images/image-placeholder.png" alt="image"/></p>
+<hr/>
+<h3>Youtube video</h3>
+<lite-youtube videoid="C0DPdy98e4c" videotitle="Play:Youtube"></lite-youtube>
+<hr/>
+<h3>Custom video</h3>
+<video class="overflow-hidden rounded-lg" width="100%" height="auto" controls=""><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"/></video></div></div></div></div></section><section class="section"><div class="container"><div class="relative overflow-hidden rounded-2xl border border-border bg-dark/60 p-7 !pb-0 md:p-10 lg:pl-16 lg:pr-0 lg:pt-16"><div class="row relative z-10 lg:gy-0"><div class="lg:col-5"><div class="min-h-full pb-16"><div><h2 class="has-gradient mb-6" data-aos="fade-up-sm">Grow your sales now</h2><div data-aos="fade-up-sm" data-aos-delay="50"><p class="text-lg/[inherit] opacity-50">Gain invaluable predictive analytics and actionable insights empowering your to make data-driven decisions.</p></div></div><a class="btn btn-primary mt-8 lg:mt-16 xl:mt-36 has-icon" href="/contact/" data-aos="fade-up-sm" data-aos-delay="100" target="_self"><span class="value"><span data-content="Explore All Tools">Explore All Tools</span></span><span class="icon"><span><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="text-xs" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></span><span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" aria-hidden="true" class="text-xs" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></span></span></span></a></div></div><div class="lg:col-7" data-aos="fade-right-sm" data-aos-delay="150"><img alt="sales report" loading="lazy" width="1000" height="1000" decoding="async" data-nimg="1" class="-mb-px h-[450px] w-full rounded-t-xl border border-border bg-body object-cover object-left-top lg:ml-28 lg:rounded-3xl lg:rounded-b-none" style="color:transparent" srcSet="https://darkrise-nextjs.vercel.app/_next/image/?url=%2Fimages%2Fcall-to-action.png&amp;w=1080&amp;q=75&amp;dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA 1x, https://darkrise-nextjs.vercel.app/_next/image/?url=%2Fimages%2Fcall-to-action.png&amp;w=2048&amp;q=75&amp;dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA 2x" src="https://darkrise-nextjs.vercel.app/_next/image/?url=%2Fimages%2Fcall-to-action.png&amp;w=2048&amp;q=75&amp;dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA"/></div></div><div aria-hidden="true"><img alt="background pattern image" loading="lazy" width="1000" height="1000" decoding="async" data-nimg="1" class="absolute inset-0 z-0 h-full w-full object-contain object-left-bottom" style="color:transparent" srcSet="https://darkrise-nextjs.vercel.app/_next/image/?url=%2Fimages%2Fcall-to-action-bg.png&amp;w=1080&amp;q=75&amp;dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA 1x, https://darkrise-nextjs.vercel.app/_next/image/?url=%2Fimages%2Fcall-to-action-bg.png&amp;w=2048&amp;q=75&amp;dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA 2x" src="https://darkrise-nextjs.vercel.app/_next/image/?url=%2Fimages%2Fcall-to-action-bg.png&amp;w=2048&amp;q=75&amp;dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA"/></div></div></div></section></main><footer class="py-10 md:py-16 xl:py-24"><div class="container" data-aos="fade-up-sm"><div class="row gy-6 justify-between lg:g-4"><div class="col-12 pb-7 md:pb-14"><a class="navbar-brand inline-block " href="/"><img alt="Darkrise" loading="lazy" width="450" height="96" decoding="async" data-nimg="1" class="inline-block " style="color:transparent;height:48px;width:225px" src="https://darkrise-nextjs.vercel.app/images/logo.svg?dpl=dpl_61ryDBAXe9pi4ro3fwTxCX3EkmiA"/></a></div><div class="sm:col-6 md:col-auto"><h3 class="mb-8 text-base tracking-none text-white/50">Company</h3><ul class="flex flex-col gap-3"><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/about/">About</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/feature/">Product Features</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/changelog/">Changelog</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/contact/">Contact</a></li></ul></div><div class="sm:col-6 md:col-auto"><h3 class="mb-8 text-base tracking-none text-white/50">Product</h3><ul class="flex flex-col gap-3"><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/pricing/">Pricing &amp; Plans</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/feature/">Product Features</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/integration/">Integration</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/integration/kickstar/">Integration Details</a></li></ul></div><div class="sm:col-6 md:col-auto"><h3 class="mb-8 text-base tracking-none text-white/50">Resources</h3><ul class="flex flex-col gap-3"><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/blog/">Blog</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/blog/post-1/">Blog Details</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/changelog/">Changelog</a></li></ul></div><div class="sm:col-6 md:col-auto"><h3 class="mb-8 text-base tracking-none text-white/50">Services</h3><ul class="flex flex-col gap-3"><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/elements">Elements</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/contact/">Contact</a></li><li><a class="font-medium transition text-text/90 hover:text-text/60" href="/404/">404</a></li></ul></div><div class="col-12 pt-5 md:pt-20"><div class="flex flex-col md:flex-row justify-between border-t border-border pt-10 pb-5"><div><p class="text-sm text-white/60">Copyright © 2026 Darkrise. All Rights Reserved</p></div><div><ul class="flex md:justify-end gap-4"><li><a class="text-sm text-white/60 transition hover:text-secondary" href="/privacy-policy/">Privacy Policy</a></li><li><a class="text-sm text-white/60 transition hover:text-secondary" href="/terms-conditions/">Terms &amp; Conditions</a></li></ul></div></div></div></div></div></footer></body></html>
