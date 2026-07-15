@@ -346,16 +346,72 @@
 			font-weight: 700;
 		}
 
-		.cloc-output {
+		.cloc-content {
 			overflow: auto;
 			max-height: calc(80dvh - 72px);
-			margin: 0;
 			padding: 22px;
-			color: var(--ink);
+		}
+
+		.cloc-summary {
+			display: grid;
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+			margin-bottom: 18px;
+			border: 1px solid var(--line);
+			border-radius: 12px;
+			background: var(--surface-raised);
+		}
+
+		.cloc-stat {
+			min-width: 0;
+			border-right: 1px solid var(--line);
+			padding: 14px;
+		}
+
+		.cloc-stat:last-child {
+			border-right: 0;
+		}
+
+		.cloc-stat-label {
+			display: block;
+			margin-bottom: 5px;
+			color: var(--muted);
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+		}
+
+		.cloc-stat-value {
+			display: block;
 			font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-			font-size: 12px;
-			line-height: 1.65;
-			white-space: pre;
+			font-size: clamp(15px, 2vw, 21px);
+			font-variant-numeric: tabular-nums;
+			font-weight: 800;
+			letter-spacing: -0.04em;
+		}
+
+		.cloc-table-wrap {
+			overflow: hidden;
+			border: 1px solid var(--line);
+			border-radius: 12px;
+		}
+
+		.cloc-language {
+			min-width: 180px;
+		}
+
+		.code-share {
+			height: 3px;
+			margin-top: 7px;
+			border-radius: 999px;
+			background: var(--surface-raised);
+		}
+
+		.code-share-fill {
+			display: block;
+			height: 100%;
+			border-radius: inherit;
+			background: var(--accent);
 		}
 
 		table {
@@ -444,6 +500,23 @@
 			text-align: center;
 		}
 
+		.cloc-table th {
+			position: static;
+			padding: 11px 14px;
+			color: var(--muted);
+			font-size: 10px;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+		}
+
+		.cloc-table td {
+			padding: 11px 14px;
+		}
+
+		.cloc-table tfoot td {
+			position: static;
+		}
+
 		@media (max-width: 820px) {
 			.shell {
 				padding: 10px;
@@ -456,6 +529,14 @@
 
 			.summary {
 				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+
+			.cloc-summary {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+
+			.cloc-stat {
+				border-bottom: 1px solid var(--line);
 			}
 
 			.metric {
@@ -538,7 +619,24 @@
 					Close
 				</button>
 			</div>
-			<pre class="cloc-output" id="cloc-output"></pre>
+			<div class="cloc-content">
+				<div class="cloc-summary" id="cloc-summary"></div>
+				<div class="cloc-table-wrap">
+					<table class="cloc-table">
+						<thead>
+							<tr>
+								<th scope="col">Language</th>
+								<th scope="col">Files</th>
+								<th scope="col">Blank</th>
+								<th scope="col">Comments</th>
+								<th scope="col">Code</th>
+							</tr>
+						</thead>
+						<tbody id="cloc-table-body"></tbody>
+						<tfoot id="cloc-table-foot"></tfoot>
+					</table>
+				</div>
+			</div>
 		</dialog>
 
 		<script>
@@ -572,7 +670,9 @@
 		const head = document.querySelector("#table-head");
 		const resultCount = document.querySelector("#result-count");
 		const clocDialog = document.querySelector("#cloc-dialog");
-		const clocOutput = document.querySelector("#cloc-output");
+		const clocSummary = document.querySelector("#cloc-summary");
+		const clocTableBody = document.querySelector("#cloc-table-body");
+		const clocTableFoot = document.querySelector("#cloc-table-foot");
 		const minDate = report.rows[0]?.Date ?? "";
 		const maxDate = report.rows.at(-1)?.Date ?? "";
 
@@ -732,6 +832,59 @@
 			foot.replaceChildren(totalRow);
 		};
 
+		const renderCloc = () => {
+			const { languages, summary: totals } = report.cloc;
+			const metrics = [
+				["Languages", languages.length],
+				["Files", totals.files],
+				["Blank", totals.blank],
+				["Comments", totals.comment],
+				["Code", totals.code],
+			];
+			clocSummary.replaceChildren(
+				...metrics.map(([label, value]) => {
+					const metric = document.createElement("div");
+					metric.className = "cloc-stat";
+					metric.innerHTML = `<span class="cloc-stat-label">${label}</span><strong class="cloc-stat-value">${number.format(value)}</strong>`;
+					return metric;
+				}),
+			);
+			const peak = Math.max(...languages.map(({ code }) => code), 1);
+			clocTableBody.replaceChildren(
+				...languages.map((language) => {
+					const row = document.createElement("tr");
+					const languageCell = document.createElement("td");
+					languageCell.className = "cloc-language";
+					const name = document.createElement("span");
+					name.textContent = language.language;
+					const share = document.createElement("div");
+					share.className = "code-share";
+					const fill = document.createElement("span");
+					fill.className = "code-share-fill";
+					fill.style.width = `${(language.code / peak) * 100}%`;
+					share.append(fill);
+					languageCell.append(name, share);
+					row.append(
+						languageCell,
+						...[
+							language.files,
+							language.blank,
+							language.comment,
+							language.code,
+						].map((value) => {
+							const cell = document.createElement("td");
+							cell.textContent = number.format(value);
+							return cell;
+						}),
+					);
+					return row;
+				}),
+			);
+			const totalRow = document.createElement("tr");
+			totalRow.innerHTML = `<td>Total</td><td>${number.format(totals.files)}</td><td>${number.format(totals.blank)}</td><td>${number.format(totals.comment)}</td><td>${number.format(totals.code)}</td>`;
+			clocTableFoot.replaceChildren(totalRow);
+		};
+
 		const render = () => {
 			const rows = getVisibleRows();
 			const totals = totalRows(rows);
@@ -757,7 +910,7 @@
 			render();
 		});
 		document.querySelector("#reset").addEventListener("click", resetDates);
-		clocOutput.textContent = report.cloc;
+		renderCloc();
 		document
 			.querySelector("#cloc-close")
 			.addEventListener("click", () => clocDialog.close());
