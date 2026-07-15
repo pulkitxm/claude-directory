@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Web Performance Optimization: A Comprehensive Guide — John MacTavish</title>
+<title>Web Performance Optimization: A Comprehensive Guide  -  John MacTavish</title>
 <meta name="description" content="Learn essential techniques and best practices for optimizing web performance, from code splitting to image optimization and everything in between.">
 <link rel="icon" href="../assets/images/avatar.webp">
 <link rel="stylesheet" href="../assets/css/styles.css">
 <script src="../assets/js/theme-boot.js"></script>
 </head>
-<body>
+<body class="article-performance">
 <header class="site-header wrap">
   <a class="avatar-link" href="../index.html" aria-label="Home">
     <img class="avatar" src="../assets/images/avatar.webp" alt="John MacTavish" width="40" height="40">
@@ -30,26 +30,176 @@
 </header>
 <main class="wrap">
   <div class="post-cover"><img src="../assets/images/project-macbook.png" alt="Web Performance Optimization: A Comprehensive Guide cover" loading="lazy"></div>
-  <div class="post-meta">Friday, Mar 1, 2024</div>
-  <h1 class="page-title" style="font-size:30px;">Web Performance Optimization: A Comprehensive Guide</h1>
-  <p class="lede">Learn essential techniques and best practices for optimizing web performance, from code splitting to image optimization and everything in between.</p>
   <article class="post-article">
-    
-<h2>Measuring Performance</h2>
-<p>Learn essential techniques and best practices for optimizing web performance, from code splitting to image optimization and everything in between.</p>
-<h3>Code Splitting</h3>
-<pre>const Modal = lazy(() => import('./Modal'));</pre>
-<h3>Image Optimization</h3>
-<pre>&lt;img src="hero.webp" width="800" height="400" loading="lazy" alt="Hero"&gt;</pre>
+<h1>Web Performance Optimization: A Comprehensive Guide</h1>
+<p>Web performance optimization is crucial for providing a better user experience and improving your site's SEO ranking. Let's explore various techniques and best practices to make your web applications faster and more efficient.</p>
 <h2>Core Web Vitals</h2>
-<ol>
-<li>Largest Contentful Paint (LCP)</li>
-<li>Cumulative Layout Shift (CLS)</li>
-<li>Interaction to Next Paint (INP)</li>
-</ol>
-<h2>Conclusion</h2>
-<p>Consistent measurement and incremental optimization keep your application fast as it grows.</p>
+<h3>1. Largest Contentful Paint (LCP)</h3>
+<pre><code class="language-javascript">// Monitor LCP
+new PerformanceObserver((entryList) =&gt; {
+  for (const entry of entryList.getEntries()) {
+    console.log('LCP:', entry.startTime);
+  }
+}).observe({ entryTypes: ['largest-contentful-paint'] });
+</code></pre>
+<h3>2. First Input Delay (FID)</h3>
+<pre><code class="language-javascript">// Monitor FID
+new PerformanceObserver((entryList) =&gt; {
+  for (const entry of entryList.getEntries()) {
+    console.log('FID:', entry.processingStart - entry.startTime);
+  }
+}).observe({ entryTypes: ['first-input'] });
+</code></pre>
+<h2>Code Optimization</h2>
+<h3>1. Code Splitting</h3>
+<pre><code class="language-javascript">// React example with dynamic imports
+const MyComponent = React.lazy(() =&gt; import('./MyComponent'));
 
+function App() {
+  return (
+    &lt;Suspense fallback={&lt;div&gt;Loading...&lt;/div&gt;}&gt;
+      &lt;MyComponent /&gt;
+    &lt;/Suspense&gt;
+  );
+}
+</code></pre>
+<h3>2. Tree Shaking</h3>
+<pre><code class="language-javascript">// webpack.config.js
+module.exports = {
+  mode: 'production',
+  optimization: {
+    usedExports: true,
+    sideEffects: true
+  }
+};
+</code></pre>
+<h2>Image Optimization</h2>
+<h3>1. Responsive Images</h3>
+<pre><code class="language-html">&lt;picture&gt;
+  &lt;source
+    srcset="image-small.webp 300w,
+            image-medium.webp 600w,
+            image-large.webp 900w"
+    sizes="(max-width: 600px) 300px,
+           (max-width: 900px) 600px,
+           900px"
+    type="image/webp"&gt;
+  &lt;img src="fallback.jpg" alt="Description"&gt;
+&lt;/picture&gt;
+</code></pre>
+<h3>2. Lazy Loading</h3>
+<pre><code class="language-html">&lt;img
+  src="image.jpg"
+  loading="lazy"
+  alt="Description"
+  width="800"
+  height="600"&gt;
+</code></pre>
+<h2>Caching Strategies</h2>
+<h3>1. Service Worker</h3>
+<pre><code class="language-javascript">// service-worker.js
+const CACHE_NAME = 'v1';
+const urlsToCache = [
+  '/',
+  '/styles.css',
+  '/app.js'
+];
+
+self.addEventListener('install', event =&gt; {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache =&gt; cache.addAll(urlsToCache))
+  );
+});
+
+self.addEventListener('fetch', event =&gt; {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response =&gt; response || fetch(event.request))
+  );
+});
+</code></pre>
+<h3>2. HTTP Caching Headers</h3>
+<pre><code class="language-nginx"># nginx.conf
+location /static/ {
+    expires 1y;
+    add_header Cache-Control "public, no-transform";
+}
+</code></pre>
+<h2>Resource Optimization</h2>
+<h3>1. Minification</h3>
+<pre><code class="language-javascript">// webpack.config.js
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
+};
+</code></pre>
+<h3>2. Compression</h3>
+<pre><code class="language-javascript">// Express.js example
+const compression = require('compression');
+app.use(compression());
+</code></pre>
+<h2>Performance Monitoring</h2>
+<h3>1. Real User Monitoring (RUM)</h3>
+<pre><code class="language-javascript">// Basic RUM implementation
+window.addEventListener('load', () =&gt; {
+  const timing = window.performance.timing;
+  const metrics = {
+    dns: timing.domainLookupEnd - timing.domainLookupStart,
+    tcp: timing.connectEnd - timing.connectStart,
+    request: timing.responseEnd - timing.requestStart,
+    dom: timing.domComplete - timing.domLoading,
+    load: timing.loadEventEnd - timing.navigationStart
+  };
+
+  Send metrics to analytics
+  sendToAnalytics(metrics);
+});
+</code></pre>
+<h3>2. Performance Budgets</h3>
+<pre><code class="language-javascript">// webpack.config.js
+module.exports = {
+  performance: {
+    maxAssetSize: 244000,
+    maxEntrypointSize: 244000,
+    hints: 'error'
+  }
+};
+</code></pre>
+<h2>Best Practices</h2>
+<ol>
+<li>Implement code splitting and lazy loading</li>
+<li>Optimize and compress images</li>
+<li>Use appropriate caching strategies</li>
+<li>Minimize and compress assets</li>
+<li>Monitor performance metrics</li>
+<li>Implement progressive enhancement</li>
+<li>Use modern image formats (WebP, AVIF)</li>
+<li>Optimize third-party scripts</li>
+<li>Implement critical CSS</li>
+<li>Use resource hints (preload, prefetch)</li>
+</ol>
+<h2>Tools and Resources</h2>
+<h3>1. Performance Testing Tools</h3>
+<ul>
+<li>Lighthouse</li>
+<li>WebPageTest</li>
+<li>Chrome DevTools Performance panel</li>
+<li>GTmetrix</li>
+</ul>
+<h3>2. Optimization Tools</h3>
+<ul>
+<li>ImageOptim</li>
+<li>Webpack Bundle Analyzer</li>
+<li>Compression plugins</li>
+<li>Minification tools</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Web performance optimization is an ongoing process that requires attention to detail and regular monitoring. By implementing these techniques and best practices, you can significantly improve your website's performance and provide a better user experience. Remember to measure and monitor your performance metrics regularly to ensure your optimizations are effective.</p>
   </article>
 </main>
 <footer class="site-footer wrap">

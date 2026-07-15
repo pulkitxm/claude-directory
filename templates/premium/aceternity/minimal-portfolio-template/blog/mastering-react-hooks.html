@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mastering React Hooks — John MacTavish</title>
+<title>Mastering React Hooks  -  John MacTavish</title>
 <meta name="description" content="Learn how to effectively use React Hooks to manage state and side effects in your functional components. A comprehensive guide to useState, useEffect, and more.">
 <link rel="icon" href="../assets/images/avatar.webp">
 <link rel="stylesheet" href="../assets/css/styles.css">
 <script src="../assets/js/theme-boot.js"></script>
 </head>
-<body>
+<body class="article-mastering">
 <header class="site-header wrap">
   <a class="avatar-link" href="../index.html" aria-label="Home">
     <img class="avatar" src="../assets/images/avatar.webp" alt="John MacTavish" width="40" height="40">
@@ -30,44 +30,97 @@
 </header>
 <main class="wrap">
   <div class="post-cover"><img src="../assets/images/project-macbook.png" alt="Mastering React Hooks cover" loading="lazy"></div>
-  <div class="post-meta">Monday, Jan 15, 2024</div>
-  <h1 class="page-title" style="font-size:30px;">Mastering React Hooks</h1>
-  <p class="lede">Learn how to effectively use React Hooks to manage state and side effects in your functional components. A comprehensive guide to useState, useEffect, and more.</p>
   <article class="post-article">
-    
+<h1>Mastering React Hooks</h1>
+<p>React Hooks have transformed how we write React components by allowing us to use state and other React features in functional components. Let's dive deep into the world of hooks and learn how to use them effectively.</p>
 <h2>Understanding React Hooks</h2>
-<p>Learn how to effectively use React Hooks to manage state and side effects in your functional components. A comprehensive guide to useState, useEffect, and more.</p>
-<h3>useState</h3>
-<pre>const [count, setCount] = useState(0);
+<p>React Hooks are functions that let you "hook into" React state and lifecycle features from function components. They were introduced in React 16.8 to allow you to use state and other React features without writing a class.</p>
+<h2>Core Hooks</h2>
+<h3>1. useState</h3>
+<p>The useState hook is the most basic hook that lets you add state to functional components:</p>
+<pre><code class="language-jsx">const [count, setCount] = useState(0);
+</code></pre>
+<h3>2. useEffect</h3>
+<p>useEffect lets you perform side effects in function components:</p>
+<pre><code class="language-jsx">useEffect(() =&gt; {
+  document.title = `Count: ${count}`;
+}, [count]);
+</code></pre>
+<h3>3. useContext</h3>
+<p>useContext provides a way to pass data through the component tree without having to pass props manually:</p>
+<pre><code class="language-jsx">const value = useContext(MyContext);
+</code></pre>
+<h2>Custom Hooks</h2>
+<p>Custom hooks allow you to extract component logic into reusable functions:</p>
+<pre><code class="language-jsx">function useWindowSize() {
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
 
-function increment() {
-  setCount((c) => c + 1);
-}</pre>
-<h3>useEffect</h3>
-<pre>useEffect(() => {
-  const id = setInterval(() => setCount((c) => c + 1), 1000);
-  return () => clearInterval(id);
-}, []);</pre>
-<h3>Custom Hooks</h3>
-<pre>function useWindowWidth() {
-  const [width, setWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const onResize = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+  useEffect(() =&gt; {
+    const handleResize = () =&gt; {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () =&gt; window.removeEventListener('resize', handleResize);
   }, []);
-  return width;
-}</pre>
+
+  return size;
+}
+</code></pre>
 <h2>Best Practices</h2>
 <ol>
-<li>Keep hooks at the top level of your component</li>
-<li>Use the dependency array correctly in useEffect</li>
-<li>Extract reusable logic into custom hooks</li>
-<li>Avoid unnecessary re-renders with useMemo and useCallback</li>
+<li>Only call hooks at the top level</li>
+<li>Only call hooks from React function components</li>
+<li>Use multiple useEffect hooks to separate concerns</li>
+<li>Clean up side effects in useEffect</li>
+<li>Use the dependency array correctly</li>
 </ol>
-<h2>Conclusion</h2>
-<p>Mastering hooks unlocks a cleaner, more composable way to write React components without the ceremony of class components.</p>
+<h2>Common Use Cases</h2>
+<h3>Form Handling</h3>
+<pre><code class="language-jsx">function useForm(initialValues) {
+  const [values, setValues] = useState(initialValues);
 
+  const handleChange = (e) =&gt; {
+    const { name, value } = e.target;
+    setValues(prev =&gt; ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  return [values, handleChange];
+}
+</code></pre>
+<h3>Data Fetching</h3>
+<pre><code class="language-jsx">function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() =&gt; {
+    fetch(url)
+      .then(res =&gt; res.json())
+      .then(data =&gt; {
+        setData(data);
+        setLoading(false);
+      })
+      .catch(error =&gt; {
+        setError(error);
+        setLoading(false);
+      });
+  }, [url]);
+
+  return { data, loading, error };
+}
+</code></pre>
+<h2>Conclusion</h2>
+<p>React Hooks have made it easier to write and maintain React applications. By understanding and implementing these patterns, you can create more maintainable and reusable code in your React applications.</p>
   </article>
 </main>
 <footer class="site-footer wrap">

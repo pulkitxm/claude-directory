@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TypeScript Best Practices for 2024 — John MacTavish</title>
+<title>TypeScript Best Practices for 2024  -  John MacTavish</title>
 <meta name="description" content="Learn the most important TypeScript best practices and patterns that will help you write more maintainable and type-safe code in your projects.">
 <link rel="icon" href="../assets/images/avatar.webp">
 <link rel="stylesheet" href="../assets/css/styles.css">
 <script src="../assets/js/theme-boot.js"></script>
 </head>
-<body>
+<body class="article-typescript">
 <header class="site-header wrap">
   <a class="avatar-link" href="../index.html" aria-label="Home">
     <img class="avatar" src="../assets/images/avatar.webp" alt="John MacTavish" width="40" height="40">
@@ -30,33 +30,181 @@
 </header>
 <main class="wrap">
   <div class="post-cover"><img src="../assets/images/project-macbook.png" alt="TypeScript Best Practices for 2024 cover" loading="lazy"></div>
-  <div class="post-meta">Thursday, Feb 1, 2024</div>
-  <h1 class="page-title" style="font-size:30px;">TypeScript Best Practices for 2024</h1>
-  <p class="lede">Learn the most important TypeScript best practices and patterns that will help you write more maintainable and type-safe code in your projects.</p>
   <article class="post-article">
-    
-<h2>Type Everything That Matters</h2>
-<p>Learn the most important TypeScript best practices and patterns that will help you write more maintainable and type-safe code in your projects.</p>
-<h3>Prefer Interfaces for Objects</h3>
-<pre>interface User {
-  id: string;
+<h1>TypeScript Best Practices for 2024</h1>
+<p>TypeScript has become an essential tool in modern web development. Let's explore the best practices that will help you write better TypeScript code in 2024.</p>
+<h2>Type Safety First</h2>
+<h3>1. Strict Mode</h3>
+<p>Always enable strict mode in your <code>tsconfig.json</code>:</p>
+<pre><code class="language-json">{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
+  }
+}
+</code></pre>
+<h3>2. Type Inference</h3>
+<p>Let TypeScript infer types when possible:</p>
+<pre><code class="language-typescript">// Good
+const numbers = [1, 2, 3]; Type: number[]
+
+Bad
+const numbers: number[] = [1, 2, 3];
+</code></pre>
+<h2>Interface vs Type</h2>
+<h3>When to Use Interfaces</h3>
+<pre><code class="language-typescript">interface User {
+  id: number;
   name: string;
   email: string;
-}</pre>
-<h3>Use Discriminated Unions</h3>
-<pre>type Result =
-  | { status: 'success'; data: string }
-  | { status: 'error'; message: string };</pre>
-<h2>Best Practices</h2>
-<ol>
-<li>Enable strict mode in tsconfig.json</li>
-<li>Avoid the any type wherever possible</li>
-<li>Use utility types like Partial, Pick, and Omit</li>
-<li>Model your domain with discriminated unions</li>
-</ol>
-<h2>Conclusion</h2>
-<p>Investing in strong types pays off quickly in fewer runtime bugs and better editor tooling.</p>
+}
 
+Extending interfaces
+interface AdminUser extends User {
+  role: 'admin';
+  permissions: string[];
+}
+</code></pre>
+<h3>When to Use Types</h3>
+<pre><code class="language-typescript">type Status = 'pending' | 'approved' | 'rejected';
+
+type ApiResponse&lt;T&gt; = {
+  data: T;
+  status: number;
+  message: string;
+};
+</code></pre>
+<h2>Advanced Type Patterns</h2>
+<h3>1. Utility Types</h3>
+<pre><code class="language-typescript">// Partial
+type PartialUser = Partial&lt;User&gt;;
+
+Pick
+type UserCredentials = Pick&lt;User, 'email' | 'password'&gt;;
+
+Omit
+type PublicUser = Omit&lt;User, 'password'&gt;;
+
+Record
+type UserRoles = Record&lt;string, string[]&gt;;
+</code></pre>
+<h3>2. Type Guards</h3>
+<pre><code class="language-typescript">function isAdmin(user: User): user is AdminUser {
+  return 'role' in user &amp;&amp; user.role === 'admin';
+}
+
+function processUser(user: User) {
+  if (isAdmin(user)) {
+    TypeScript knows user is AdminUser here
+    console.log(user.permissions);
+  }
+}
+</code></pre>
+<h2>Error Handling</h2>
+<h3>1. Custom Error Types</h3>
+<pre><code class="language-typescript">class ValidationError extends Error {
+  constructor(public field: string, message: string) {
+    super(message);
+    this.name = 'ValidationError';
+  }
+}
+
+function validateUser(user: User): void {
+  if (!user.email.includes('@')) {
+    throw new ValidationError('email', 'Invalid email format');
+  }
+}
+</code></pre>
+<h3>2. Result Type Pattern</h3>
+<pre><code class="language-typescript">type Result&lt;T, E = Error&gt; = {
+  success: true;
+  data: T;
+} | {
+  success: false;
+  error: E;
+};
+
+async function fetchUser(id: number): Promise&lt;Result&lt;User&gt;&gt; {
+  try {
+    const response = await api.get(`/users/${id}`);
+    return { success: true, data: response.data };
+  } catch (error) {
+    return { success: false, error: error as Error };
+  }
+}
+</code></pre>
+<h2>React with TypeScript</h2>
+<h3>1. Component Props</h3>
+<pre><code class="language-typescript">interface ButtonProps {
+  variant: 'primary' | 'secondary';
+  size: 'small' | 'medium' | 'large';
+  onClick: () =&gt; void;
+  children: React.ReactNode;
+}
+
+const Button: React.FC&lt;ButtonProps&gt; = ({
+  variant,
+  size,
+  onClick,
+  children
+}) =&gt; {
+  Component implementation
+};
+</code></pre>
+<h3>2. Custom Hooks</h3>
+<pre><code class="language-typescript">function useLocalStorage&lt;T&gt;(key: string, initialValue: T) {
+  const [storedValue, setStoredValue] = useState&lt;T&gt;(() =&gt; {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value: T | ((val: T) =&gt; T)) =&gt; {
+    try {
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return [storedValue, setValue] as const;
+}
+</code></pre>
+<h2>Testing with TypeScript</h2>
+<h3>1. Jest with TypeScript</h3>
+<pre><code class="language-typescript">describe('UserService', () =&gt; {
+  it('should create a new user', async () =&gt; {
+    const user: User = {
+      id: 1,
+      name: 'John Doe',
+      email: 'john@example.com'
+    };
+
+    const result = await createUser(user);
+    expect(result).toEqual(user);
+  });
+});
+</code></pre>
+<h3>2. Mocking</h3>
+<pre><code class="language-typescript">const mockApi = {
+  get: jest.fn&lt;Promise&lt;User&gt;, [string]&gt;(),
+  post: jest.fn&lt;Promise&lt;User&gt;, [string, Partial&lt;User&gt;]&gt;()
+};
+</code></pre>
+<h2>Conclusion</h2>
+<p>Following these TypeScript best practices will help you write more maintainable, type-safe, and robust applications. Remember that TypeScript is a tool to help you catch errors early and provide better developer experience, so use it wisely and consistently throughout your project.</p>
   </article>
 </main>
 <footer class="site-footer wrap">
