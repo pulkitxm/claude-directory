@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="color-scheme" content="light dark">
+		<title>Contribution ledger</title>
+		<style>
+		:root {
+			--paper: #f2f6f7;
+			--surface: #ffffff;
+			--surface-raised: #e7eef0;
+			--ink: #102630;
+			--muted: #667a82;
+			--line: #cedadd;
+			--accent: #087f95;
+			--accent-soft: #d4eef2;
+			--added: #13795b;
+			--removed: #c54a55;
+			--hover: #e8f5f7;
+			--shadow: 0 20px 60px rgba(27, 55, 65, 0.1);
+		}
+
+		[data-theme="dark"] {
+			--paper: #0b151a;
+			--surface: #112127;
+			--surface-raised: #192d34;
+			--ink: #e9f3f5;
+			--muted: #9cb0b7;
+			--line: #2c444c;
+			--accent: #55c7d9;
+			--accent-soft: #173942;
+			--added: #63d6ad;
+			--removed: #ff8790;
+			--hover: #19343d;
+			--shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-width: 320px;
+			background:
+				linear-gradient(
+					90deg,
+					transparent 0 49px,
+					color-mix(in srgb, var(--line) 38%, transparent) 50px,
+					transparent 51px
+				)
+				0 0 / 100% 100%,
+				var(--paper);
+			color: var(--ink);
+			font-family:
+				Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+				"Segoe UI", sans-serif;
+		}
+
+		button,
+		input {
+			font: inherit;
+		}
+
+		button:focus-visible,
+		input:focus-visible {
+			outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+			outline-offset: 2px;
+		}
+
+		.shell {
+			width: min(1480px, calc(100% - 48px));
+			margin: 0 auto;
+			padding: 48px 0 64px;
+		}
+
+		.masthead {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto;
+			gap: 32px;
+			align-items: start;
+			margin-bottom: 32px;
+		}
+
+		.eyebrow {
+			margin: 0 0 10px;
+			color: var(--accent);
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+		}
+
+		h1 {
+			max-width: 760px;
+			margin: 0;
+			font-family:
+				"Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+			font-size: clamp(44px, 7vw, 92px);
+			font-weight: 400;
+			letter-spacing: -0.055em;
+			line-height: 0.9;
+		}
+
+		.meta {
+			margin: 18px 0 0;
+			color: var(--muted);
+			font-size: 14px;
+		}
+
+		.theme-toggle,
+		.reset-button {
+			border: 1px solid var(--line);
+			border-radius: 999px;
+			background: var(--surface);
+			color: var(--ink);
+			cursor: pointer;
+			font-weight: 700;
+		}
+
+		.theme-toggle {
+			padding: 10px 15px;
+		}
+
+		.dashboard {
+			overflow: hidden;
+			border: 1px solid var(--line);
+			border-radius: 22px;
+			background: var(--surface);
+			box-shadow: var(--shadow);
+		}
+
+		.controls {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			align-items: end;
+			padding: 20px;
+			border-bottom: 1px solid var(--line);
+			background: color-mix(in srgb, var(--surface-raised) 58%, var(--surface));
+		}
+
+		.field {
+			display: grid;
+			gap: 6px;
+		}
+
+		.field label {
+			color: var(--muted);
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		input[type="date"] {
+			min-height: 42px;
+			border: 1px solid var(--line);
+			border-radius: 10px;
+			background: var(--surface);
+			color: var(--ink);
+			padding: 8px 11px;
+		}
+
+		.reset-button {
+			min-height: 42px;
+			padding: 8px 16px;
+		}
+
+		.result-count {
+			margin: 0 0 10px auto;
+			color: var(--muted);
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+			font-size: 12px;
+		}
+
+		.summary {
+			display: grid;
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+			border-bottom: 1px solid var(--line);
+		}
+
+		.metric {
+			min-width: 0;
+			padding: 22px 20px;
+			border-right: 1px solid var(--line);
+		}
+
+		.metric:last-child {
+			border-right: 0;
+		}
+
+		.metric-label {
+			display: block;
+			margin-bottom: 8px;
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		.metric-value {
+			display: block;
+			overflow: hidden;
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+			font-size: clamp(18px, 2.2vw, 28px);
+			font-variant-numeric: tabular-nums;
+			font-weight: 700;
+			letter-spacing: -0.04em;
+			text-overflow: ellipsis;
+		}
+
+		.added {
+			color: var(--added);
+		}
+
+		.removed {
+			color: var(--removed);
+		}
+
+		.pulse-wrap {
+			padding: 22px 20px 18px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.pulse-label {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 12px;
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		.pulse {
+			display: flex;
+			gap: 3px;
+			align-items: end;
+			height: 54px;
+		}
+
+		.pulse-bar {
+			flex: 1 1 4px;
+			min-width: 3px;
+			border-radius: 3px 3px 1px 1px;
+			background: var(--accent);
+			opacity: 0.76;
+			transition:
+				opacity 140ms ease,
+				transform 140ms ease;
+		}
+
+		.pulse-bar:hover {
+			opacity: 1;
+			transform: scaleX(1.35);
+		}
+
+		.table-scroll {
+			overflow: auto;
+			max-height: min(66vh, 760px);
+		}
+
+		table {
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: 0;
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+			font-size: 13px;
+			font-variant-numeric: tabular-nums;
+		}
+
+		th {
+			position: sticky;
+			top: 0;
+			z-index: 2;
+			background: var(--surface);
+			box-shadow: 0 1px 0 var(--line);
+			text-align: right;
+		}
+
+		th:first-child,
+		td:first-child {
+			text-align: left;
+		}
+
+		.sort-button {
+			display: flex;
+			width: 100%;
+			gap: 8px;
+			align-items: center;
+			justify-content: flex-end;
+			border: 0;
+			background: transparent;
+			color: var(--muted);
+			cursor: pointer;
+			padding: 15px 18px;
+			font-family: inherit;
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+			white-space: nowrap;
+		}
+
+		th:first-child .sort-button {
+			justify-content: flex-start;
+		}
+
+		.sort-button:hover,
+		.sort-button[aria-pressed="true"] {
+			color: var(--accent);
+		}
+
+		.sort-indicator {
+			width: 12px;
+		}
+
+		td {
+			padding: 13px 18px;
+			border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+			text-align: right;
+			transition: background-color 100ms ease;
+		}
+
+		tbody tr:hover td {
+			background: var(--hover);
+		}
+
+		tbody tr:last-child td {
+			border-bottom: 0;
+		}
+
+		tfoot td {
+			position: sticky;
+			bottom: 0;
+			z-index: 1;
+			border-top: 1px solid var(--line);
+			border-bottom: 0;
+			background: var(--accent-soft);
+			font-weight: 800;
+		}
+
+		.empty {
+			padding: 54px 20px;
+			color: var(--muted);
+			text-align: center;
+		}
+
+		@media (max-width: 820px) {
+			.shell {
+				width: min(100% - 24px, 1480px);
+				padding-top: 28px;
+			}
+
+			.masthead {
+				grid-template-columns: 1fr;
+				gap: 18px;
+			}
+
+			.theme-toggle {
+				justify-self: start;
+			}
+
+			.summary {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+
+			.metric {
+				border-bottom: 1px solid var(--line);
+			}
+
+			.result-count {
+				width: 100%;
+				margin: 4px 0 0;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			* {
+				scroll-behavior: auto;
+				transition: none;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<main class="shell">
+			<header class="masthead">
+				<div>
+					<p class="eyebrow" id="repository"></p>
+					<h1>Contribution ledger</h1>
+					<p class="meta" id="generated"></p>
+				</div>
+				<button class="theme-toggle" id="theme-toggle" type="button">
+					Dark mode
+				</button>
+			</header>
+
+			<section class="dashboard" aria-label="Repository contribution report">
+				<div class="controls">
+					<div class="field">
+						<label for="date-from">From</label>
+						<input id="date-from" type="date">
+					</div>
+					<div class="field">
+						<label for="date-to">To</label>
+						<input id="date-to" type="date">
+					</div>
+					<button class="reset-button" id="reset" type="button">
+						Reset dates
+					</button>
+					<p class="result-count" id="result-count" aria-live="polite"></p>
+				</div>
+
+				<div class="summary" id="summary"></div>
+
+				<div class="pulse-wrap">
+					<div class="pulse-label">
+						<span>Daily activity pulse</span>
+						<span>Commits + PRs</span>
+					</div>
+					<div
+						class="pulse"
+						id="pulse"
+						role="img"
+						aria-label="Daily activity chart"
+					></div>
+				</div>
+
+				<div class="table-scroll">
+					<table>
+						<thead>
+							<tr id="table-head"></tr>
+						</thead>
+						<tbody id="table-body"></tbody>
+						<tfoot id="table-foot"></tfoot>
+					</table>
+				</div>
+			</section>
+		</main>
+
+		<script>
+		const report = __CONTRI_REPORT_DATA__;
+		const columns = [
+			{ key: "Date", label: "Date", type: "text" },
+			{ key: "PRs", label: "PRs", type: "number" },
+			{ key: "Commits", label: "Commits", type: "number" },
+			{
+				key: "Lines Added",
+				label: "Lines added",
+				type: "number",
+				tone: "added",
+			},
+			{
+				key: "Lines Removed",
+				label: "Lines removed",
+				type: "number",
+				tone: "removed",
+			},
+			{ key: "Net LOC", label: "Net LOC", type: "number" },
+		];
+		const number = new Intl.NumberFormat();
+		const state = { sortKey: "Date", direction: "asc" };
+		const fromInput = document.querySelector("#date-from");
+		const toInput = document.querySelector("#date-to");
+		const body = document.querySelector("#table-body");
+		const foot = document.querySelector("#table-foot");
+		const summary = document.querySelector("#summary");
+		const pulse = document.querySelector("#pulse");
+		const head = document.querySelector("#table-head");
+		const resultCount = document.querySelector("#result-count");
+		const minDate = report.rows[0]?.Date ?? "";
+		const maxDate = report.rows.at(-1)?.Date ?? "";
+
+		document.querySelector("#repository").textContent = report.repository;
+		document.querySelector("#generated").textContent =
+			`Generated ${new Date(report.generatedAt).toLocaleString()}`;
+		fromInput.min = minDate;
+		fromInput.max = maxDate;
+		fromInput.value = minDate;
+		toInput.min = minDate;
+		toInput.max = maxDate;
+		toInput.value = maxDate;
+
+		const getVisibleRows = () => {
+			const visible = report.rows.filter(
+				(row) => row.Date >= fromInput.value && row.Date <= toInput.value,
+			);
+			return visible.sort((left, right) => {
+				const first = left[state.sortKey];
+				const second = right[state.sortKey];
+				const result =
+					typeof first === "number"
+						? first - second
+						: first.localeCompare(second);
+				return state.direction === "asc" ? result : -result;
+			});
+		};
+
+		const totalRows = (rows) =>
+			rows.reduce(
+				(total, row) => ({
+					PRs: total.PRs + row.PRs,
+					Commits: total.Commits + row.Commits,
+					"Lines Added": total["Lines Added"] + row["Lines Added"],
+					"Lines Removed": total["Lines Removed"] + row["Lines Removed"],
+					"Net LOC": total["Net LOC"] + row["Net LOC"],
+				}),
+				{
+					PRs: 0,
+					Commits: 0,
+					"Lines Added": 0,
+					"Lines Removed": 0,
+					"Net LOC": 0,
+				},
+			);
+
+		const renderHead = () => {
+			head.replaceChildren(
+				...columns.map((column) => {
+					const cell = document.createElement("th");
+					cell.setAttribute("scope", "col");
+					cell.setAttribute(
+						"aria-sort",
+						state.sortKey === column.key
+							? state.direction === "asc"
+								? "ascending"
+								: "descending"
+							: "none",
+					);
+					const button = document.createElement("button");
+					button.type = "button";
+					button.className = "sort-button";
+					button.setAttribute(
+						"aria-pressed",
+						String(state.sortKey === column.key),
+					);
+					const indicator =
+						state.sortKey === column.key
+							? state.direction === "asc"
+								? "↑"
+								: "↓"
+							: "↕";
+					button.innerHTML = `<span>${column.label}</span><span class="sort-indicator" aria-hidden="true">${indicator}</span>`;
+					button.addEventListener("click", () => {
+						if (state.sortKey === column.key) {
+							state.direction = state.direction === "asc" ? "desc" : "asc";
+						} else {
+							state.sortKey = column.key;
+							state.direction = column.type === "number" ? "desc" : "asc";
+						}
+						render();
+					});
+					cell.append(button);
+					return cell;
+				}),
+			);
+		};
+
+		const renderSummary = (totals) => {
+			const metrics = [
+				["Pull requests", totals.PRs, ""],
+				["Commits", totals.Commits, ""],
+				["Lines added", totals["Lines Added"], "added"],
+				["Lines removed", totals["Lines Removed"], "removed"],
+				["Net LOC", totals["Net LOC"], ""],
+			];
+			summary.replaceChildren(
+				...metrics.map(([label, value, tone]) => {
+					const metric = document.createElement("div");
+					metric.className = "metric";
+					metric.innerHTML = `<span class="metric-label">${label}</span><strong class="metric-value ${tone}">${number.format(value)}</strong>`;
+					return metric;
+				}),
+			);
+		};
+
+		const renderPulse = (rows) => {
+			const peak = Math.max(...rows.map((row) => row.PRs + row.Commits), 1);
+			pulse.replaceChildren(
+				...rows.map((row) => {
+					const activity = row.PRs + row.Commits;
+					const bar = document.createElement("span");
+					bar.className = "pulse-bar";
+					bar.style.height = `${Math.max(4, Math.sqrt(activity / peak) * 100)}%`;
+					bar.title = `${row.Date}: ${number.format(row.Commits)} commits, ${number.format(row.PRs)} PRs`;
+					return bar;
+				}),
+			);
+		};
+
+		const renderTable = (rows, totals) => {
+			if (rows.length === 0) {
+				body.innerHTML =
+					'<tr><td class="empty" colspan="6">No activity falls within this date range.</td></tr>';
+				foot.replaceChildren();
+				return;
+			}
+			body.replaceChildren(
+				...rows.map((row) => {
+					const tableRow = document.createElement("tr");
+					tableRow.replaceChildren(
+						...columns.map((column) => {
+							const cell = document.createElement("td");
+							cell.className = column.tone ?? "";
+							cell.textContent =
+								column.type === "number"
+									? number.format(row[column.key])
+									: row[column.key];
+							return cell;
+						}),
+					);
+					return tableRow;
+				}),
+			);
+			const totalRow = document.createElement("tr");
+			totalRow.innerHTML = `<td>Visible total</td>${columns
+				.slice(1)
+				.map(
+					(column) =>
+						`<td class="${column.tone ?? ""}">${number.format(totals[column.key])}</td>`,
+				)
+				.join("")}`;
+			foot.replaceChildren(totalRow);
+		};
+
+		const render = () => {
+			const rows = getVisibleRows();
+			const totals = totalRows(rows);
+			resultCount.textContent = `${number.format(rows.length)} ${rows.length === 1 ? "day" : "days"} shown`;
+			renderHead();
+			renderSummary(totals);
+			renderPulse(rows);
+			renderTable(rows, totals);
+		};
+
+		const resetDates = () => {
+			fromInput.value = minDate;
+			toInput.value = maxDate;
+			render();
+		};
+
+		fromInput.addEventListener("change", () => {
+			if (fromInput.value > toInput.value) toInput.value = fromInput.value;
+			render();
+		});
+		toInput.addEventListener("change", () => {
+			if (toInput.value < fromInput.value) fromInput.value = toInput.value;
+			render();
+		});
+		document.querySelector("#reset").addEventListener("click", resetDates);
+
+		const themeToggle = document.querySelector("#theme-toggle");
+		let savedTheme;
+		try {
+			savedTheme = localStorage.getItem("contri-theme");
+		} catch {}
+		const preferredTheme = matchMedia("(prefers-color-scheme: dark)").matches
+			? "dark"
+			: "light";
+		const setTheme = (theme) => {
+			document.documentElement.dataset.theme = theme;
+			themeToggle.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+			try {
+				localStorage.setItem("contri-theme", theme);
+			} catch {}
+		};
+		setTheme(savedTheme ?? preferredTheme);
+		themeToggle.addEventListener("click", () => {
+			setTheme(
+				document.documentElement.dataset.theme === "dark" ? "light" : "dark",
+			);
+		});
+
+		render();
+		</script>
+	</body>
+</html>
