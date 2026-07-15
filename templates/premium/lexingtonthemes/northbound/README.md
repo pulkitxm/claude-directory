@@ -1,64 +1,45 @@
-# Northbound — Wedding Website Template Clone (Vanilla HTML/CSS/JS + Tailwind CSS)
+# Northbound: Wedding Website Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Northbound is a pixel-faithful HTML/CSS/JS clone of the Northbound wedding website template by Lexington Themes — an elegant, editorial design for couples sharing ceremony details, gallery albums, RSVP forms, wishlists, and schedules with guests. The clone reproduces all 13 pages (home, RSVP, info, gallery index, three gallery albums, people, events, FAQ, wishlist, journal, and system overview) using plain HTML with the original compiled Tailwind CSS v4 utility classes, Noto Serif Display and Noto Serif fonts (Google Fonts), Inter (rsms.me), and Keen Slider for the intro image carousel. All images and CSS assets are vendored locally; no build step is required. Generated with Claude Fable 5.
+Northbound is a complete static HTML reproduction of the Northbound wedding website by Lexington Themes. Its editorial design combines expressive serif typography, restrained monochrome styling, full-bleed photography, and clear guest information.
+
+The project contains all 70 pages currently reachable from the live reference, including the wedding overview, RSVP, guest information, galleries, wedding party profiles, events, wishlist items, journal posts, tag archives, locations, system guide, and not-found page.
+
+## Page groups
+
+- 9 primary pages
+- 5 gallery albums
+- 6 wedding party profiles
+- 7 event details
+- 9 wishlist item details
+- 8 journal posts
+- 19 journal tag pages
+- 5 design system pages
+- 2 location and utility pages
+
+## Interactions
+
+- Responsive mobile navigation
+- Search modal with keyboard controls and real-time filtering
+- RSVP form controls
+- Image hover treatments and editorial transitions
+- Responsive gallery and content layouts
 
 ## Run
 
-This is a self-contained, plain HTML/CSS/JS project — no build step required.
+Serve the project directory with any static file server:
 
 ```sh
-# Serve locally (any static server works)
 python3 -m http.server 8080
-# then open http://localhost:8080/index.html
 ```
 
-Or simply open `index.html` directly in a browser (some interactions such as fonts may require a server context to load correctly from cross-origin CDNs).
-
-## Pages
-
-| File | Route | Description |
-|---|---|---|
-| `index.html` | `/` | Home — hero, intro slider, story, schedule, CTA cards, gallery preview |
-| `rsvp.html` | `/rsvp` | RSVP form with split layout (photo + dark panel) |
-| `info.html` | `/info` | Venue details, maps, accommodation, dress code |
-| `gallery.html` | `/gallery` | Gallery album index (6 albums) |
-| `gallery/getting-ready.html` | `/gallery/getting-ready` | Getting Ready album (3 photos) |
-| `gallery/ceremony.html` | `/gallery/ceremony` | Ceremony album (3 photos) |
-| `gallery/reception.html` | `/gallery/reception` | Reception album (3 photos) |
-| `people.html` | `/people` | Wedding party grid (bride, groom, attendants) |
-| `events.html` | `/events` | Full schedule of wedding events |
-| `faq.html` | `/faq` | FAQ (event details, travel, food, photos, gifts) |
-| `wishlist.html` | `/wishlist` | Wishlist grouped by category (experiences, kitchen, bedroom, outdoor) |
-| `blog.html` | `/blog` | Journal/blog with featured post + grid |
-| `system/overview.html` | `/system/overview` | Developer reference page |
+Then open `http://localhost:8080`.
 
 ## Assets
 
-All images and CSS are vendored under `assets/`:
-
-- `assets/images/` — 53 `.webp` photos from the original Northbound demo
-- `assets/css/main.css` — compiled Tailwind CSS v4 (downloaded from the live site)
-- `assets/css/keen-slider.min.css` — Keen Slider CSS (CDN copy)
-- `assets/css/custom.css` — custom token overrides and missing Tailwind utilities
-
-Fonts are loaded from Google Fonts CDN and rsms.me (Inter) — an internet connection is needed for fonts to render correctly.
-
-## Notes
-
-- The full build specification is in `prompt.md`.
-- `demo.mp4` records a full scroll of the home page at 1280×800, 30 fps.
-- Images use `filter: saturate(0.5)` at rest and `saturate(1)` on hover (`transition-all duration-300`), matching the original's editorial desaturated aesthetic.
-- The mobile hamburger menu is reproduced faithfully in vanilla JS.
-- The intro slider uses [Keen Slider 6.8.6](https://keen-slider.io) loaded from CDN.
+The page markup and styles mirror the original deployment. Images, fonts, and supporting scripts load from the provider's published asset URLs.
 
 ## Credits
 
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
-
-**Original:** Lexington Themes — <https://lexingtonthemes.com/viewports/northbound>
-
----
-
-Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+The original Northbound design is by [Lexington Themes](https://lexingtonthemes.com/viewports/northbound).
