@@ -1,13 +1,8 @@
-/* Compass clone — vanilla-JS shim reproducing the Headless UI + Next.js behaviours
-   the original template ships. Pure DOM, no dependencies. */
+
 (() => {
 	"use strict";
 
-	/* ---------- Headless-UI-style data-hover / data-focus / data-active ---------- */
-	// Tailwind utilities like `data-hover:before:bg-...` only apply when the element
-	// carries data-hover / data-focus attributes (Headless UI adds these). We mirror
-	// native :hover / :focus-visible / :active onto those attributes for every button
-	// and link that uses them.
+
 	function wireInteractiveStates() {
 		const els = document.querySelectorAll(
 			"button, a, [data-headlessui-state], [role='menuitem']",
@@ -30,18 +25,14 @@
 		});
 	}
 
-	/* ---------- Sidebar collapse ---------- */
+
 	function wireSidebar() {
 		const group = document.querySelector(".group");
 		if (!group) return;
-		// Collapse buttons: the icon button inside the course nav AND the icon button
-		// in the top bar (xl:hidden / re-expand). Both carry the "panel" svg viewBox 0 0 16 14.
 		const buttons = document.querySelectorAll("button");
 		buttons.forEach((btn) => {
 			const svg = btn.querySelector('svg[viewBox="0 0 16 14"]');
 			if (!svg) return;
-			// The top-bar button (xl:hidden) opens the mobile drawer instead of toggling
-			// the desktop collapse state — handled by wireMobileDrawer().
 			if (btn.classList.contains("xl:hidden")) return;
 			btn.addEventListener("click", () => {
 				if (group.hasAttribute("data-sidebar-collapsed")) {
@@ -53,22 +44,19 @@
 		});
 	}
 
-	/* ---------- Account dropdown menu ---------- */
+
 	function wireMenus() {
 		document.querySelectorAll('button[aria-haspopup="menu"]').forEach((btn) => {
 			const menu =
 				btn.parentElement.querySelector('[role="menu"]') ||
 				document.getElementById(btn.getAttribute("aria-controls") || "");
-			// Build menu if it isn't in the static DOM (we ship the markup inline below the button)
 			let panel = btn.nextElementSibling;
 			if (!panel || panel.getAttribute("role") !== "menu") {
 				panel = document.createElement("div");
 				panel.setAttribute("role", "menu");
-				// Positioned via JS (fixed) against the button's rect so it always
-				// right-aligns directly under the Account trigger, exactly like the
-				// original Headless UI <MenuItems anchor="bottom end">.
 				panel.className =
-					"fixed z-50 min-w-38 rounded-lg bg-white/75 p-1 shadow-lg outline outline-gray-950/5 backdrop-blur-sm dark:bg-gray-950/75 dark:outline-white/10";
+					"fixed z-50 min-w-38 rounded-lg bg-white/75 shadow-lg outline outline-gray-950/5 backdrop-blur-sm dark:bg-gray-950/75 dark:outline-white/10";
+				panel.style.padding = "2px";
 				panel.innerHTML = [
 					["Settings", "#"],
 					["Support", "#"],
@@ -85,11 +73,8 @@
 
 			const position = () => {
 				const r = btn.getBoundingClientRect();
-				// bottom-end: panel's right edge aligns with the button's right edge,
-				// top of panel sits just below the button (mt-2 ~= 8px).
-				panel.style.top = `${Math.round(r.bottom + 8)}px`;
-				// use right offset from viewport's right edge for true right-alignment
-				panel.style.right = `${Math.round(window.innerWidth - r.right)}px`;
+				panel.style.top = `${Math.round(r.bottom + 4)}px`;
+				panel.style.right = `${Math.round(window.innerWidth - r.right - 4)}px`;
 				panel.style.left = "auto";
 			};
 			const open = () => {
@@ -115,7 +100,6 @@
 				e.stopPropagation();
 				panel.hidden ? open() : close();
 			});
-			// hover highlight on menu items
 			panel.querySelectorAll('[role="menuitem"]').forEach((mi) => {
 				mi.addEventListener("pointerenter", () =>
 					mi.setAttribute("data-focus", ""),
@@ -134,7 +118,7 @@
 		});
 	}
 
-	/* ---------- Table-of-contents scroll-spy ---------- */
+
 	function wireTOC() {
 		const tocLinks = Array.from(
 			document.querySelectorAll('nav a[href^="#"]'),
@@ -155,10 +139,8 @@
 			tocLinks.forEach((a) => a.removeAttribute("aria-current"));
 			if (link) link.setAttribute("aria-current", "location");
 		};
-		// Scroll-position based: highlight the last heading whose top is above a band
-		// near the top of the viewport (mirrors the original scroll-spy feel).
 		const onScroll = () => {
-			const offset = 120; // matches scroll-pt-16 + breathing room
+			const offset = 120;
 			let current = sections[0];
 			for (const sec of sections) {
 				if (sec.getBoundingClientRect().top - offset <= 0) current = sec;
@@ -171,7 +153,7 @@
 		window.addEventListener("resize", onScroll);
 	}
 
-	/* ---------- Lesson video: dock to mini-player when scrolled off-screen ---------- */
+
 	function wireVideo() {
 		const video = document.getElementById("video");
 		if (!video) return;
@@ -197,7 +179,7 @@
 		io.observe(wrapper);
 	}
 
-	/* ---------- Entrance reveal (subtle, matches original's fade-in feel) ---------- */
+
 	function wireReveal() {
 		const targets = document.querySelectorAll("[data-reveal]");
 		if (!targets.length) return;
@@ -215,9 +197,7 @@
 		targets.forEach((t) => io.observe(t));
 	}
 
-	/* ---------- Mobile sidebar drawer (below xl) ---------- */
-	// Below the xl breakpoint the course nav <aside> is hidden (max-xl:hidden) and the
-	// top-bar button is the only way to reach it. Open the aside as an overlay drawer.
+
 	function wireMobileDrawer() {
 		const aside = document.querySelector("aside");
 		if (!aside) return;
@@ -228,11 +208,12 @@
 
 		const style = document.createElement("style");
 		style.textContent = `
-      body.nav-open aside { display:block !important; z-index:50;
-        background:#fff; box-shadow:0 10px 40px rgba(0,0,0,.18); }
+      body.nav-open aside { display:block !important; z-index:50; width:320px;
+        background:#fff; }
       body.nav-open aside .max-xl\\:hidden { display:block !important; }
+      body.nav-open aside nav > .mt-3 { margin-top:16px; }
       @media (prefers-color-scheme:dark){ body.nav-open aside{ background:#030712; } }
-      .nav-backdrop{ position:fixed; inset:0; z-index:40; background:rgba(0,0,0,.4);
+      .nav-backdrop{ position:fixed; inset:0; z-index:40; background:rgba(3,7,18,.25);
         opacity:0; transition:opacity .2s ease; }
       body.nav-open .nav-backdrop{ opacity:1; }`;
 		document.head.appendChild(style);
@@ -241,14 +222,22 @@
 		backdrop.className = "nav-backdrop";
 		backdrop.hidden = true;
 		document.body.appendChild(backdrop);
+		const parent = aside.parentElement;
+		const next = aside.nextSibling;
 
 		const open = () => {
 			backdrop.hidden = false;
+			document.body.appendChild(aside);
+			aside.setAttribute("role", "dialog");
+			aside.setAttribute("aria-modal", "true");
 			document.body.classList.add("nav-open");
 		};
 		const close = () => {
 			document.body.classList.remove("nav-open");
 			backdrop.hidden = true;
+			aside.removeAttribute("role");
+			aside.removeAttribute("aria-modal");
+			parent.insertBefore(aside, next);
 		};
 
 		btn.addEventListener("click", (e) => {
@@ -262,9 +251,57 @@
 		document.addEventListener("keydown", (e) => {
 			if (e.key === "Escape") close();
 		});
-		// If the viewport grows past xl, the aside is shown normally again — drop drawer state.
 		window.addEventListener("resize", () => {
 			if (window.innerWidth >= 1280) close();
+		});
+	}
+
+	function wireMobileNavigation() {
+		const button = document.querySelector("button.lg\\:hidden");
+		if (!button) return;
+
+		const portal = document.createElement("div");
+		portal.hidden = true;
+		portal.innerHTML = `<div data-mobile-nav-backdrop></div><div data-mobile-nav-panel><button type="button" aria-label="Close navigation" data-mobile-nav-close>×</button><nav><a href="index.html">Course</a><a href="interviews.html">Interviews</a><a href="resources.html">Resources</a><span>Account</span><a href="#">Settings</a><a href="#">Support</a><a href="#">Sign out</a></nav></div>`;
+		document.body.appendChild(portal);
+
+		const style = document.createElement("style");
+		style.textContent = `
+      [data-mobile-nav-backdrop]{position:fixed;inset:0;z-index:40;background:rgba(3,7,18,.25)}
+      [data-mobile-nav-panel]{position:fixed;inset-block:0;right:0;z-index:50;width:288px;background:#fff;color:#030712}
+      [data-mobile-nav-close]{position:absolute;top:12px;right:16px;display:grid;width:32px;height:32px;place-items:center;border:0;border-radius:6px;background:#f3f4f6;color:#374151;font:20px/1 sans-serif}
+      [data-mobile-nav-panel] nav{display:flex;flex-direction:column;padding:60px 40px 32px;font-size:16px;line-height:24px}
+      [data-mobile-nav-panel] nav a{color:inherit;text-decoration:none}
+      [data-mobile-nav-panel] nav a:nth-child(-n+3){margin-bottom:24px}
+      [data-mobile-nav-panel] nav span{margin-top:16px;margin-bottom:24px;color:#6b7280;font-size:14px;line-height:20px}
+      [data-mobile-nav-panel] nav a:nth-last-child(-n+3){margin-bottom:20px;font-size:14px;font-weight:600}
+      @media(prefers-color-scheme:dark){[data-mobile-nav-panel]{background:#030712;color:#fff}[data-mobile-nav-close]{background:#111827;color:#d1d5db}}`;
+		document.head.appendChild(style);
+
+		const open = () => {
+			portal.setAttribute("data-headlessui-portal", "");
+			portal.querySelector("[data-mobile-nav-panel]").setAttribute("role", "dialog");
+			portal.querySelector("[data-mobile-nav-panel]").setAttribute("aria-modal", "true");
+			portal.hidden = false;
+			button.setAttribute("aria-expanded", "true");
+		};
+		const close = () => {
+			portal.hidden = true;
+			portal.removeAttribute("data-headlessui-portal");
+			portal.querySelector("[data-mobile-nav-panel]").removeAttribute("role");
+			portal.querySelector("[data-mobile-nav-panel]").removeAttribute("aria-modal");
+			button.setAttribute("aria-expanded", "false");
+		};
+
+		button.addEventListener("click", open);
+		portal.querySelector("[data-mobile-nav-backdrop]").addEventListener("click", close);
+		portal.querySelector("[data-mobile-nav-close]").addEventListener("click", close);
+		portal.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape") close();
+		});
+		window.addEventListener("resize", () => {
+			if (window.innerWidth >= 1024) close();
 		});
 	}
 
@@ -272,6 +309,7 @@
 		wireInteractiveStates();
 		wireSidebar();
 		wireMobileDrawer();
+		wireMobileNavigation();
 		wireMenus();
 		wireTOC();
 		wireVideo();
