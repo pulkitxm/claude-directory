@@ -1,18 +1,18 @@
-# Gnomie AI — SaaS Landing Page Template Clone (Vanilla HTML/CSS/JS)
+# Gnomie AI SaaS Landing Page Template Clone
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Gnomie AI is a pixel-faithful clone of the "Gnomie AI" garden-design landing-page template (a Shipixen / Page UI demo), rebuilt as a single-page SaaS marketing site in plain HTML, CSS, and vanilla JavaScript with no build step and all assets vendored locally. It pairs a magenta/pink primary accent with a lime-green secondary over white, uses Montserrat for headings and Hind for body, and reproduces the full long-scroll layout: header, hero, a rotating "Made with Gnomie" user strip, alternating feature and benefit sections, a four-card case-study grid, social-proof and CTA banners, a testimonial grid, a two-tier pricing block with a monthly/annual toggle, a ten-item FAQ accordion on a pink panel, and a large multi-column footer. Interactions include a light/dark theme toggle with localStorage persistence, a responsive hamburger menu, the FAQ accordion, the pricing toggle, rotating prev/next user cards, and scroll entrance fades. Generated with Claude Fable 5.
+Gnomie AI is a pixel-faithful clone of the "Gnomie AI" garden-design landing-page template from Shipixen and Page UI. It is rebuilt as a single-page SaaS marketing site in plain HTML, CSS, and vanilla JavaScript with no build step and all assets vendored locally. It reproduces the full long-scroll layout and interactive states.
 
 ## Run
 
-No build step — serve the folder with any static server and open `index.html`:
+No build step is required. Serve the folder with any static server and open `index.html`:
 
 ```sh
 python3 -m http.server
 ```
 
-Then visit the printed local URL (e.g. `http://localhost:8000`).
+Then visit the printed local URL, such as `http://localhost:8000`.
 
 ## Notes
 
@@ -24,8 +24,4 @@ Then visit the printed local URL (e.g. `http://localhost:8000`).
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Shipixen (Page UI) — <https://shipixen.com/demo/landing-page-templates/template/gnomie-ai>
-
----
-
-Part of the [Templates](../../../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+**Original:** Shipixen (Page UI), <https://shipixen.com/demo/landing-page-templates/template/gnomie-ai>
