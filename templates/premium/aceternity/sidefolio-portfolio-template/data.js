@@ -1,4 +1,4 @@
-/* Sidefolio — shared content data */
+
 
 window.PROJECTS = [
 	{
@@ -92,7 +92,7 @@ window.STACK = [
 	{ src: "assets/logos/vercel.png", alt: "Vercel", w: "6rem" },
 ];
 
-/* card renderer (base = "" for root pages, "../" for nested) */
+
 window.renderCards = function (items, base) {
 	base = base || "";
 	return `<div class="cards">${items

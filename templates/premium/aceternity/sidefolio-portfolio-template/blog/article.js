@@ -1,4 +1,4 @@
-/* Renders a single blog article. Expects window.ARTICLE_SLUG. */
+
 
 const LOREM_BODY = [
 	"Velit cillum fugiat proident pariatur anim proident laborum incididunt magna in labore adipisicing veniam quis. Ut et exercitation dolor in enim quis. Et est excepteur exercitation voluptate in qui duis nulla in anim ut commodo deserunt nisi. Dolor pariatur irure occaecat Lorem mollit veniam adipisicing.",
@@ -7,8 +7,6 @@ const LOREM_BODY = [
 	"Consectetur est sunt minim culpa quis aute officia incididunt ea laboris nulla officia dolor. Cupidatat cupidatat esse veniam cillum labore ullamco aliqua ex. Cillum incididunt ipsum laborum dolor enim incididunt consectetur id consectetur magna. Consequat mollit non ea cupidatat exercitation. Consequat reprehenderit eiusmod nisi ea esse id ut est consequat eu aliqua do quis.",
 	"Occaecat commodo velit ea consectetur ut sit. Duis eiusmod ad tempor nisi magna dolore incididunt ea dolore. Commodo proident eiusmod consequat cupidatat consectetur adipisicing dolor commodo tempor labore non dolore Lorem consectetur.",
 ];
-
-// second half of the prose-only articles (after the "Lorem Heading" sub-heading)
 const LOREM_BODY2 = [
 	"Nulla velit veniam velit veniam adipisicing et. Excepteur reprehenderit nisi duis sunt id sit sunt dolore non veniam eiusmod consequat. Consectetur ut minim mollit elit commodo enim aute. Proident pariatur anim culpa ex ea et laborum officia.",
 	"Aliquip et nostrud ex aliqua. Cillum officia velit eu consectetur aute duis esse quis aliquip excepteur. Ex deserunt esse dolore ex in. Enim excepteur amet nulla ipsum aliquip consectetur. Ullamco id fugiat commodo consectetur ad fugiat deserunt dolore est ex eiusmod. Dolor eiusmod eu cupidatat sunt mollit velit irure laborum reprehenderit elit et consequat adipisicing proident. Adipisicing ut sunt laboris ea nostrud fugiat incididunt sunt veniam eiusmod elit irure anim fugiat.",
@@ -99,7 +97,6 @@ function codeBlock(file, code) {
     <pre><code>${esc(code)}</code></pre>
   </div>`;
 }
-// plain code block — no file bar / copy button (as the dark-mode article renders)
 function plainCode(code) {
 	return `<div class="codeblock"><pre><code>${esc(code)}</code></pre></div>`;
 }
@@ -109,8 +106,6 @@ function h2(text) {
 function p(text) {
 	return `<p>${text}</p>`;
 }
-
-// ---- Dark-mode article (full, faithful to source) ----
 const DM_CODE_INSTALL = `npx create-next-app my-app`;
 const DM_CODE_HTML = `<!DOCTYPE html>
 <html>
@@ -342,8 +337,6 @@ function darkModeBody() {
 		),
 	].join("");
 }
-
-// per-article body (faithful to source)
 function bodyFor(slug) {
 	if (slug === "clean-code") {
 		return (
@@ -355,7 +348,6 @@ function bodyFor(slug) {
 	if (slug === "dark-mode-with-nextjs") {
 		return darkModeBody();
 	}
-	// prose-only articles (how-to-win-clients, tailwindcss-tips-and-tricks)
 	return (
 		LOREM_BODY.map(p).join("") +
 		h2("Lorem Heading") +
