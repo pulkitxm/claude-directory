@@ -1,0 +1,1 @@
+AOS.init({once:!0,disable:"phone",duration:700,easing:"ease-out-cubic"});const carouselEl=document.querySelectorAll(".carousel");if(carouselEl.length>0){new Swiper(".carousel",{slidesPerView:"auto",grabCursor:!0,loop:!1,centeredSlides:!1,initialSlide:0,spaceBetween:24,watchSlidesProgress:!0,navigation:{nextEl:".carousel-next",prevEl:".carousel-prev"}})}
