@@ -34,6 +34,12 @@ document.querySelectorAll(".acc-item").forEach((item) => {
 	});
 });
 
+const navToggle = document.querySelector(".nav-toggle");
+navToggle.addEventListener("click", () => {
+	const open = document.querySelector(".nav-right").classList.toggle("open");
+	navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+});
+
 // ---- scroll reveal entrance ----
 const io = new IntersectionObserver(
 	(entries) => {
