@@ -1,31 +1,22 @@
 # TailGrids CMS
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+[![Watch the CMS demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful clone of the [TailGrids CMS](https://cms.demos.tailgrids.com) admin dashboard template. Multi-page HTML/CSS with light/dark mode, SVG charts, and vendored assets — no build step required.
+A responsive publishing dashboard with analytics, content management, member data, revenue reporting, and persistent light and dark themes. The project runs as static HTML, CSS, and JavaScript with no build step.
 
 ## Pages
 
-| File | Route |
-|------|-------|
+| File | View |
+| --- | --- |
 | `index.html` | Dashboard |
 | `analytics.html` | Analytics |
-| `all-posts.html` | All Posts |
-| `create-post.html` | Create Post |
+| `all-posts.html` | All posts |
+| `create-post.html` | Post editor |
 | `drafts.html` | Drafts |
-| `scheduled.html` | Scheduled Posts |
+| `scheduled.html` | Scheduled posts |
 | `members.html` | Members |
-| `revenue.html` | Revenue & Monetization |
+| `revenue.html` | Revenue and monetization |
 
-## Stack
+## Run locally
 
-- Vanilla HTML + CSS (custom properties, no framework)
-- SVG charts (inline, no chart library)
-- DM Sans via Google Fonts
-- Light/dark toggle via `data-theme="dark"` on `<html>`
-
-## Credits
-
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
-
-**Original:** TailGrids — https://cms.demos.tailgrids.com
+Serve this directory with any static file server, then open `index.html`.
