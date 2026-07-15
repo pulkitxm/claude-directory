@@ -1,48 +1,43 @@
-# Navy — SaaS Cloud Hosting Website Template Clone (Vanilla HTML/CSS/JS + Tailwind CSS v4)
+# Navy: SaaS Cloud Hosting Website Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Pixel-faithful clone of the **Navy** SaaS cloud hosting template by Lexington Themes — a clean, minimal white design built for cloud infrastructure and hosting services. The template features a viewport-height hero with teal/green radial-gradient "burst" background accents, dot-pattern overlays, SVG trapezoid corner decorators for section transitions, interactive tab panels with IntersectionObserver scroll-reveal animations, a live stat grid with hover burst effects, and a full pricing page with feature comparison table. All 15 pages are reproduced: home, pricing, sign-in, 6 customer case study detail pages, a customer index, and 5 design-system showcase pages (overview, buttons, links, colors, typography). Built with compiled Tailwind CSS v4, Inter and InterDisplay typefaces, and JetBrains Mono — all assets vendored locally and runnable offline with no build step. Generated with Claude Fable 5.
-
-## Run
-
-No build step required — plain HTML/CSS/JS. Serve from any static HTTP server:
-
-```sh
-# From this folder:
-python3 -m http.server 8080
-# Then open http://localhost:8080/index.html
-```
-
-Or open `index.html` directly in a browser (some assets may require a server due to CORS on font files).
+Navy is a pixel-faithful clone of the Lexington Themes cloud infrastructure template. The visual system combines a clean white canvas, teal and green radial bursts, dot overlays, geometric section transitions, responsive tabs, and subtle scroll reveals.
 
 ## Pages
 
-| Page | File |
-|---|---|
-| Home | `index.html` |
-| Pricing | `pricing.html` |
-| Sign In | `forms/sign-in.html` |
-| Customers Index | `customers/home.html` |
-| Customer 1–6 | `customers/1.html` … `customers/6.html` |
-| System Overview | `system/overview.html` |
-| System Buttons | `system/buttons.html` |
-| System Links | `system/links.html` |
-| System Colors | `system/colors.html` |
-| System Typography | `system/typography.html` |
+The project contains all 81 pages currently reachable from the live reference:
 
-## Assets
+- Home, about, pricing, 404, and 3 form pages
+- 7 customer pages
+- 20 blog and tag pages
+- 5 help-center pages
+- 21 integration pages
+- 4 changelog pages
+- 11 team pages
+- 5 design-system pages
+- Terms page
 
-All fonts (Inter, JetBrains Mono) are loaded via CDN (`rsms.me/inter` and `fontshare`). Logos, dashboard screenshots, and team photos are vendored under `assets/`. The compiled Tailwind CSS v4 stylesheet is vendored at `assets/main.css`.
+## Interactions
 
-`prompt.md` holds the full build spec; `demo.mp4` shows the template in motion.
+- Responsive full-screen mobile navigation
+- Interactive feature tabs with dashboard panels
+- Intersection-based content reveals
+- Customer, integration, and article hover states
+- Responsive forms and detail layouts
+
+## Run locally
+
+```sh
+python3 -m http.server 8080
+```
+
+Open <http://localhost:8080>.
+
+The template uses plain HTML, CSS, and JavaScript. Page imagery and compiled runtime assets load from the original reference deployment. Inter and JetBrains Mono load from their font providers.
 
 ## Credits
 
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
+Faithful clone of an existing design, recreated for study and learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes — <https://lexingtonthemes.com/viewports/navy>
-
----
-
-Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+**Original:** Lexington Themes, <https://lexingtonthemes.com/viewports/navy>
