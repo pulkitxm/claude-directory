@@ -1,5 +1,3 @@
-// No-flash theme boot: reproduces the original next-themes inline script.
-// Reads localStorage "theme" (falls back to "light") and applies it to <html> before paint.
 (function (attribute, storageKey, fallback, forcedTheme, valueList) {
 	var el = document.documentElement;
 	function apply(theme) {
