@@ -1,1236 +1,241 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Projects — Jarvis</title>
-		<meta
-			name="description"
-			content="All projects by Jarvis — themes, tools, and resources for web developers and designers."
-		>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
-			rel="stylesheet"
-		>
-		<script
-			src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"
-		></script>
-
-		<!-- No-flash theme script -->
-		<script>
-		(function () {
-			try {
-				var theme = localStorage.getItem("theme");
-				if (theme === "dark") {
-					document.documentElement.classList.add("dark");
-				}
-			} catch (e) {}
-		})();
-		</script>
-
-		<style>
-		/* ===================== CSS CUSTOM PROPERTIES ===================== */
-		:root {
-			--color-white: #f6f6f4;
-			--color-black: #000;
-			--color-base-50: #fafaf9;
-			--color-base-100: #f4f4f2;
-			--color-base-200: #e8e8e4;
-			--color-base-300: #d4d4ce;
-			--color-base-400: #a8a8a0;
-			--color-base-500: #737370;
-			--color-base-600: #5a5a57;
-			--color-base-700: #3d3d3b;
-			--color-base-800: #292928;
-			--color-base-900: #1a1a19;
-			--color-base-950: #111110;
-			--color-accent-50: oklch(98.6% 0.031 120.757);
-			--color-accent-300: oklch(89.7% 0.196 126.665);
-			--color-accent-400: oklch(84.1% 0.238 128.85);
-			--color-accent-500: oklch(76.8% 0.233 130.85);
-			--color-accent-600: oklch(64.8% 0.2 131.684);
-
-			--bg: var(--color-white);
-			--fg: var(--color-base-950);
-			--muted: var(--color-base-500);
-			--border: var(--color-base-200);
-			--card-bg-from: var(--color-base-50);
-			--card-bg-to: var(--color-base-100);
-			--card-ring: var(--color-base-200);
-			--arrow-bg: var(--color-base-950);
-			--arrow-color: var(--color-white);
-			--logo-filter: invert(1);
-		}
-
-		html.dark {
-			--color-white: #0a0a0b;
-			--color-black: #f6f6f4;
-			--color-base-50: #111110;
-			--color-base-100: #1a1a19;
-			--color-base-200: #292928;
-			--color-base-300: #3d3d3b;
-			--color-base-400: #5a5a57;
-			--color-base-500: #737370;
-			--color-base-600: #a8a8a0;
-			--color-base-700: #d4d4ce;
-			--color-base-800: #e8e8e4;
-			--color-base-900: #f4f4f2;
-			--color-base-950: #fafaf9;
-
-			--bg: var(--color-white);
-			--fg: var(--color-base-950);
-			--muted: var(--color-base-500);
-			--border: var(--color-base-200);
-			--card-bg-from: var(--color-base-100);
-			--card-bg-to: var(--color-base-50);
-			--card-ring: var(--color-base-200);
-			--arrow-bg: var(--color-base-50);
-			--arrow-color: var(--color-base-950);
-			--logo-filter: none;
-		}
-
-		/* ===================== RESET & BASE ===================== */
-		*,
-		*::before,
-		*::after {
-			box-sizing: border-box;
-			margin: 0;
-			padding: 0;
-		}
-
-		html {
-			scroll-behavior: smooth;
-		}
-
-		body {
-			font-family: "Geist", sans-serif;
-			font-weight: 400;
-			background-color: var(--bg);
-			color: var(--fg);
-			line-height: 1.6;
-			transition:
-				background-color 0.2s ease,
-				color 0.2s ease;
-			overflow-x: hidden;
-		}
-
-		a {
-			color: inherit;
-			text-decoration: none;
-		}
-
-		img {
-			max-width: 100%;
-			height: auto;
-		}
-
-		/* ===================== TYPOGRAPHY ===================== */
-		.font-display {
-			font-family: "Instrument Serif", serif;
-			font-style: italic;
-		}
-
-		/* ===================== FIXED BUTTONS ===================== */
-		.fixed-btn {
-			position: fixed;
-			z-index: 50;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 36px;
-			height: 36px;
-			border-radius: 9999px;
-			border: 1px solid var(--border);
-			background-color: var(--bg);
-			color: var(--fg);
-			cursor: pointer;
-			transition:
-				background-color 0.15s ease,
-				border-color 0.15s ease,
-				box-shadow 0.15s ease;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-		}
-
-		.fixed-btn:hover {
-			background-color: var(--color-base-100);
-			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-		}
-
-		html.dark .fixed-btn:hover {
-			background-color: var(--color-base-200);
-		}
-
-		#theme-toggle {
-			bottom: 1.5rem;
-			left: 1.5rem;
-		}
-
-		#search-btn {
-			bottom: 1.5rem;
-			right: 1.5rem;
-		}
-
-		/* ===================== SEARCH MODAL ===================== */
-		#search-modal {
-			position: fixed;
-			inset: 0;
-			z-index: 100;
-			display: flex;
-			align-items: flex-start;
-			justify-content: center;
-			padding-top: 6rem;
-			background: rgba(0, 0, 0, 0.4);
-			opacity: 0;
-			pointer-events: none;
-			transition: opacity 0.2s ease;
-		}
-
-		#search-modal.open {
-			opacity: 1;
-			pointer-events: auto;
-		}
-
-		html.dark #search-modal {
-			background: rgba(0, 0, 0, 0.6);
-		}
-
-		.search-box {
-			background: var(--bg);
-			border: 1px solid var(--border);
-			border-radius: 1rem;
-			width: 100%;
-			max-width: 520px;
-			margin: 0 1rem;
-			overflow: hidden;
-			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-			transform: translateY(-10px);
-			transition: transform 0.2s ease;
-		}
-
-		#search-modal.open .search-box {
-			transform: translateY(0);
-		}
-
-		.search-header {
-			display: flex;
-			align-items: center;
-			gap: 0.75rem;
-			padding: 1rem 1.25rem;
-			border-bottom: 1px solid var(--border);
-		}
-
-		.search-header svg {
-			flex-shrink: 0;
-			color: var(--muted);
-		}
-
-		#search-input {
-			flex: 1;
-			border: none;
-			outline: none;
-			background: transparent;
-			font-family: "Geist", sans-serif;
-			font-size: 0.9375rem;
-			color: var(--fg);
-		}
-
-		#search-input::placeholder {
-			color: var(--muted);
-		}
-
-		.search-close {
-			background: none;
-			border: none;
-			cursor: pointer;
-			color: var(--muted);
-			padding: 0.25rem;
-			border-radius: 0.375rem;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition:
-				color 0.15s ease,
-				background 0.15s ease;
-		}
-
-		.search-close:hover {
-			color: var(--fg);
-			background: var(--color-base-100);
-		}
-
-		html.dark .search-close:hover {
-			background: var(--color-base-200);
-		}
-
-		#search-results {
-			max-height: 320px;
-			overflow-y: auto;
-		}
-
-		.search-result-item {
-			display: flex;
-			align-items: center;
-			gap: 0.75rem;
-			padding: 0.75rem 1.25rem;
-			cursor: pointer;
-			transition: background 0.1s ease;
-			text-decoration: none;
-		}
-
-		.search-result-item:hover {
-			background: var(--color-base-50);
-		}
-
-		html.dark .search-result-item:hover {
-			background: var(--color-base-100);
-		}
-
-		.search-result-type {
-			font-size: 0.6875rem;
-			font-weight: 500;
-			color: var(--color-accent-600);
-			background: var(--color-accent-50);
-			padding: 0.15rem 0.5rem;
-			border-radius: 9999px;
-			white-space: nowrap;
-			flex-shrink: 0;
-		}
-
-		html.dark .search-result-type {
-			background: rgba(132, 204, 22, 0.15);
-			color: var(--color-accent-400);
-		}
-
-		.search-result-title {
-			font-size: 0.875rem;
-			color: var(--fg);
-		}
-
-		.search-empty {
-			padding: 2rem 1.25rem;
-			text-align: center;
-			color: var(--muted);
-			font-size: 0.875rem;
-		}
-
-		/* ===================== HEADER ===================== */
-		header {
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			z-index: 40;
-			height: 3.5rem;
-			display: flex;
-			align-items: center;
-			padding: 0 1.5rem;
-			border-bottom: 1px solid var(--border);
-			background: rgba(246, 246, 244, 0.85);
-			backdrop-filter: blur(12px);
-			-webkit-backdrop-filter: blur(12px);
-			transition:
-				background 0.2s ease,
-				border-color 0.2s ease;
-		}
-
-		html.dark header {
-			background: rgba(10, 10, 11, 0.85);
-		}
-
-		.header-inner {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			width: 100%;
-			max-width: 1280px;
-			margin: 0 auto;
-		}
-
-		.header-logo {
-			font-family: "Instrument Serif", serif;
-			font-style: italic;
-			font-size: 1.25rem;
-			color: var(--fg);
-			transition: opacity 0.15s ease;
-		}
-
-		.header-logo:hover {
-			opacity: 0.7;
-		}
-
-		.header-nav {
-			display: none;
-			align-items: center;
-			gap: 1.25rem;
-		}
-
-		@media (min-width: 640px) {
-			.header-nav {
-				display: flex;
-			}
-		}
-
-		.nav-link {
-			font-size: 0.875rem;
-			color: var(--muted);
-			transition: color 0.15s ease;
-		}
-
-		.nav-link:hover {
-			color: var(--fg);
-		}
-
-		.btn-primary {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.375rem;
-			font-size: 0.875rem;
-			font-weight: 500;
-			padding: 0.375rem 0.875rem;
-			border-radius: 9999px;
-			border: 1px solid var(--color-accent-400);
-			background: var(--color-accent-300);
-			color: var(--color-base-900);
-			cursor: pointer;
-			transition:
-				background 0.15s ease,
-				border-color 0.15s ease,
-				box-shadow 0.15s ease;
-			text-decoration: none;
-		}
-
-		.btn-primary:hover {
-			background: var(--color-accent-400);
-			box-shadow: 0 2px 12px rgba(132, 204, 22, 0.25);
-		}
-
-		html.dark .btn-primary {
-			color: #111110;
-		}
-
-		.hamburger-btn {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			gap: 5px;
-			width: 36px;
-			height: 36px;
-			border: 1px solid var(--border);
-			border-radius: 9999px;
-			background: transparent;
-			cursor: pointer;
-			transition:
-				background 0.15s ease,
-				border-color 0.15s ease;
-		}
-
-		.hamburger-btn:hover {
-			background: var(--color-base-100);
-		}
-
-		html.dark .hamburger-btn:hover {
-			background: var(--color-base-200);
-		}
-
-		.hamburger-line {
-			display: block;
-			width: 14px;
-			height: 1.5px;
-			background: var(--fg);
-			border-radius: 2px;
-			transition: background 0.15s ease;
-		}
-
-		/* ===================== HAMBURGER MENU OVERLAY ===================== */
-		#menu-overlay {
-			position: fixed;
-			inset: 0;
-			z-index: 80;
-			display: flex;
-			flex-direction: column;
-			opacity: 0;
-			pointer-events: none;
-			transition: opacity 0.3s ease;
-			background: rgba(255, 255, 255, 0.2);
-			backdrop-filter: blur(24px);
-			-webkit-backdrop-filter: blur(24px);
-		}
-
-		html.dark #menu-overlay {
-			background: rgba(0, 0, 0, 0.5);
-		}
-
-		#menu-overlay.menu-open {
-			opacity: 1;
-			pointer-events: auto;
-		}
-
-		.menu-header {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			padding: 0 1.5rem;
-			height: 3.5rem;
-			border-bottom: 1px solid var(--border);
-		}
-
-		.menu-close-btn {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 36px;
-			height: 36px;
-			border: 1px solid var(--border);
-			border-radius: 9999px;
-			background: transparent;
-			cursor: pointer;
-			color: var(--fg);
-			transition: background 0.15s ease;
-		}
-
-		.menu-close-btn:hover {
-			background: var(--color-base-100);
-		}
-
-		html.dark .menu-close-btn:hover {
-			background: var(--color-base-200);
-		}
-
-		.menu-nav {
-			flex: 1;
-			display: flex;
-			flex-direction: column;
-			align-items: flex-end;
-			justify-content: center;
-			padding: 2rem 3rem;
-			gap: 0.25rem;
-		}
-
-		.menu-nav-link {
-			font-size: clamp(2rem, 5vw, 3.5rem);
-			font-weight: 500;
-			color: var(--fg);
-			line-height: 1.2;
-			position: relative;
-			display: inline-block;
-			opacity: 0;
-			transform: translateY(20px);
-			transition:
-				opacity 0.3s ease,
-				transform 0.3s ease,
-				color 0.15s ease;
-			text-decoration: none;
-		}
-
-		.menu-nav-link::after {
-			content: "";
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			height: 2px;
-			background: var(--fg);
-			transform: scaleX(0);
-			transform-origin: left;
-			transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		}
-
-		.menu-nav-link:hover::after {
-			transform: scaleX(1);
-		}
-
-		.menu-nav-link:hover {
-			color: var(--muted);
-		}
-
-		#menu-overlay.menu-open .menu-nav-link {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		#menu-overlay.menu-open .menu-nav-link:nth-child(1) {
-			transition-delay: 0.05s;
-		}
-		#menu-overlay.menu-open .menu-nav-link:nth-child(2) {
-			transition-delay: 0.1s;
-		}
-		#menu-overlay.menu-open .menu-nav-link:nth-child(3) {
-			transition-delay: 0.15s;
-		}
-		#menu-overlay.menu-open .menu-nav-link:nth-child(4) {
-			transition-delay: 0.2s;
-		}
-		#menu-overlay.menu-open .menu-nav-link:nth-child(5) {
-			transition-delay: 0.25s;
-		}
-		#menu-overlay.menu-open .menu-nav-link:nth-child(6) {
-			transition-delay: 0.3s;
-		}
-		#menu-overlay.menu-open .menu-nav-link:nth-child(7) {
-			transition-delay: 0.35s;
-		}
-		#menu-overlay.menu-open .menu-nav-link:nth-child(8) {
-			transition-delay: 0.4s;
-		}
-		#menu-overlay.menu-open .menu-nav-link:nth-child(9) {
-			transition-delay: 0.45s;
-		}
-		#menu-overlay.menu-open .menu-nav-link:nth-child(10) {
-			transition-delay: 0.5s;
-		}
-
-		.menu-mobile-only {
-			display: flex;
-		}
-
-		@media (min-width: 640px) {
-			.menu-mobile-only {
-				display: none;
-			}
-		}
-
-		/* ===================== MAIN CONTENT ===================== */
-		main {
-			padding-top: 3.5rem;
-		}
-
-		/* ===================== PAGE HEADING ===================== */
-		.page-heading-section {
-			padding: 4rem 1.5rem 2rem;
-			max-width: 768px;
-			margin: 0 auto;
-		}
-
-		.page-title {
-			font-family: "Instrument Serif", serif;
-			font-style: italic;
-			font-size: clamp(2.5rem, 6vw, 4rem);
-			font-weight: 400;
-			line-height: 1.1;
-			color: var(--fg);
-		}
-
-		/* ===================== PROJECTS LISTING ===================== */
-		.projects-listing-section {
-			padding: 0 1.5rem 5rem;
-			max-width: 768px;
-			margin: 0 auto;
-		}
-
-		.projects-listing-grid {
-			display: grid;
-			grid-template-columns: 1fr;
-			gap: 1rem;
-		}
-
-		@media (min-width: 640px) {
-			.projects-listing-grid {
-				grid-template-columns: repeat(2, 1fr);
-			}
-		}
-
-		/* ===================== PROJECT CARDS ===================== */
-		.project-card {
-			background: linear-gradient(
-				45deg,
-				var(--card-bg-from),
-				var(--card-bg-to)
-			);
-			box-shadow: inset 0 0 0 1px var(--card-ring);
-			border-radius: 1.5rem;
-			min-height: 18rem;
-			padding: 1.5rem;
-			overflow: hidden;
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			transition: box-shadow 0.3s ease;
-			cursor: pointer;
-			text-decoration: none;
-			color: inherit;
-		}
-
-		.project-card:hover {
-			box-shadow:
-				inset 0 0 0 1px var(--card-ring),
-				0 20px 40px rgba(0, 0, 0, 0.1);
-		}
-
-		html.dark .project-card:hover {
-			box-shadow:
-				inset 0 0 0 1px var(--card-ring),
-				0 20px 40px rgba(0, 0, 0, 0.4);
-		}
-
-		.project-card-header {
-			display: flex;
-			align-items: flex-start;
-			justify-content: space-between;
-			gap: 0.75rem;
-		}
-
-		.project-card-title {
-			font-size: 0.875rem;
-			font-weight: 500;
-			letter-spacing: 0.06em;
-			text-transform: uppercase;
-			color: var(--fg);
-			line-height: 1.3;
-		}
-
-		.project-arrow-btn {
-			flex-shrink: 0;
-			width: 30px;
-			height: 30px;
-			border-radius: 9999px;
-			background: var(--arrow-bg);
-			color: var(--arrow-color);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition: transform 0.3s ease;
-		}
-
-		.project-card:hover .project-arrow-btn {
-			transform: rotate(-45deg);
-		}
-
-		.project-card-body {
-			margin-top: auto;
-		}
-
-		.project-card-desc {
-			font-size: 0.9375rem;
-			color: var(--muted);
-			line-height: 1.65;
-			margin-bottom: 1.25rem;
-			transform: translateY(1.25rem);
-			opacity: 0;
-			transition:
-				opacity 0.3s ease,
-				transform 0.3s ease;
-		}
-
-		.project-card:hover .project-card-desc {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		.project-read-more {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.375rem;
-			font-size: 0.75rem;
-			font-weight: 500;
-			padding: 0.375rem 0.875rem;
-			border-radius: 9999px;
-			background: var(--arrow-bg);
-			color: var(--arrow-color);
-			transition: opacity 0.15s ease;
-			white-space: nowrap;
-		}
-
-		.project-card:hover .project-read-more {
-			opacity: 0.85;
-		}
-
-		/* ===================== FOOTER ===================== */
-		footer {
-			border-top: 1px solid var(--border);
-			padding: 3rem 1.5rem;
-			text-align: center;
-		}
-
-		.footer-logo {
-			font-family: "Instrument Serif", serif;
-			font-style: italic;
-			font-size: 1.125rem;
-			color: var(--fg);
-			margin-bottom: 1rem;
-			display: block;
-			transition: opacity 0.15s ease;
-		}
-
-		.footer-logo:hover {
-			opacity: 0.7;
-		}
-
-		.footer-copy {
-			font-size: 0.8125rem;
-			color: var(--muted);
-			margin-bottom: 1.25rem;
-		}
-
-		.footer-socials {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 0.75rem;
-		}
-
-		.social-link {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 34px;
-			height: 34px;
-			border: 1px solid var(--border);
-			border-radius: 9999px;
-			color: var(--muted);
-			transition:
-				color 0.15s ease,
-				border-color 0.15s ease,
-				background 0.15s ease;
-		}
-
-		.social-link:hover {
-			color: var(--fg);
-			border-color: var(--color-base-300);
-			background: var(--color-base-50);
-		}
-
-		html.dark .social-link:hover {
-			background: var(--color-base-100);
-		}
-
-		/* ===================== UTILITY ===================== */
-		.sr-only {
-			position: absolute;
-			width: 1px;
-			height: 1px;
-			padding: 0;
-			margin: -1px;
-			overflow: hidden;
-			clip: rect(0, 0, 0, 0);
-			white-space: nowrap;
-			border-width: 0;
-		}
-		</style>
-	</head>
-	<body>
-		<!-- ===================== FIXED THEME TOGGLE ===================== -->
-		<button class="fixed-btn" id="theme-toggle" aria-label="Toggle theme">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-				viewBox="0 0 24 24"
-				fill="currentColor"
-			>
-				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-			</svg>
-		</button>
-
-		<!-- ===================== FIXED SEARCH BUTTON ===================== -->
-		<button class="fixed-btn" id="search-btn" aria-label="Open search">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<circle cx="11" cy="11" r="8" />
-				<path d="m21 21-4.35-4.35" />
-			</svg>
-		</button>
-
-		<!-- ===================== SEARCH MODAL ===================== -->
-		<div id="search-modal" role="dialog" aria-modal="true" aria-label="Search">
-			<div class="search-box">
-				<div class="search-header">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					>
-						<circle cx="11" cy="11" r="8" />
-						<path d="m21 21-4.35-4.35" />
-					</svg>
-					<input
-						type="text"
-						id="search-input"
-						placeholder="Search posts and projects…"
-						autocomplete="off"
-					>
-					<button
-						class="search-close"
-						id="search-close"
-						aria-label="Close search"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="16"
-							height="16"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<path d="M18 6 6 18M6 6l12 12" />
-						</svg>
-					</button>
-				</div>
-				<div id="search-results">
-					<div class="search-empty">Start typing to search…</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- ===================== HAMBURGER MENU OVERLAY ===================== -->
-		<div id="menu-overlay" aria-hidden="true">
-			<div class="menu-header">
-				<a href="../index.html" class="header-logo">Jarvis</a>
-				<button class="menu-close-btn" id="menu-close" aria-label="Close menu">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="20"
-						height="20"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					>
-						<path d="M18 6 6 18M6 6l12 12" />
-					</svg>
-				</button>
-			</div>
-			<nav class="menu-nav">
-				<a href="#" class="menu-nav-link">Colors</a>
-				<a href="#" class="menu-nav-link">Links</a>
-				<a href="#" class="menu-nav-link">Buttons</a>
-				<a href="#" class="menu-nav-link">Typography</a>
-				<a href="#" class="menu-nav-link">Blog</a>
-				<a href="#" class="menu-nav-link">Store</a>
-				<a href="index.html" class="menu-nav-link">Projects</a>
-				<a href="#" class="menu-nav-link">Studio</a>
-				<a href="#" class="menu-nav-link menu-mobile-only">Overview</a>
-				<a href="#" class="menu-nav-link menu-mobile-only">Buy Flaco</a>
-			</nav>
-		</div>
-
-		<!-- ===================== HEADER ===================== -->
-		<header>
-			<div class="header-inner">
-				<a href="../index.html" class="header-logo">Jarvis</a>
-				<nav class="header-nav">
-					<a href="#" class="nav-link">Overview</a>
-					<a href="#" class="btn-primary">Buy Flaco</a>
-				</nav>
-				<button
-					class="hamburger-btn"
-					id="hamburger-btn"
-					aria-label="Open menu"
-					aria-expanded="false"
-					aria-controls="menu-overlay"
-				>
-					<span class="hamburger-line"></span>
-					<span class="hamburger-line"></span>
-				</button>
-			</div>
-		</header>
-
-		<!-- ===================== MAIN ===================== -->
-		<main>
-			<!-- PAGE HEADING -->
-			<div class="page-heading-section">
-				<h1 class="page-title">Projects</h1>
-			</div>
-
-			<!-- PROJECTS GRID -->
-			<section class="projects-listing-section">
-				<div class="projects-listing-grid">
-					<!-- Card 1: Lexington Themes -->
-					<a href="#" class="project-card">
-						<div class="project-card-header">
-							<h2 class="project-card-title">Lexington Themes</h2>
-							<div class="project-arrow-btn" aria-hidden="true">
-								<!-- Plus / arrow icon (rotates to diagonal arrow on hover) -->
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="16"
-									height="16"
-									viewBox="0 0 256 256"
-									fill="currentColor"
-								>
-									<path
-										d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"
-									/>
-								</svg>
-							</div>
-						</div>
-						<div class="project-card-body">
-							<p class="project-card-desc">
-								Free and premium multipage themes and UI Kits for freelancers,
-								developers, businesses, and personal use.
-							</p>
-							<span class="project-read-more">Read more</span>
-						</div>
-					</a>
-
-					<!-- Card 2: Colors & fonts -->
-					<a href="#" class="project-card">
-						<div class="project-card-header">
-							<h2 class="project-card-title">Colors &amp; fonts</h2>
-							<div class="project-arrow-btn" aria-hidden="true">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="16"
-									height="16"
-									viewBox="0 0 256 256"
-									fill="currentColor"
-								>
-									<path
-										d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"
-									/>
-								</svg>
-							</div>
-						</div>
-						<div class="project-card-body">
-							<p class="project-card-desc">
-								Color &amp; typography tools for web developers &amp; digital
-								designers.
-							</p>
-							<span class="project-read-more">Read more</span>
-						</div>
-					</a>
-
-					<!-- Card 3: Dev Resources -->
-					<a href="#" class="project-card">
-						<div class="project-card-header">
-							<h2 class="project-card-title">Dev Resources</h2>
-							<div class="project-arrow-btn" aria-hidden="true">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="16"
-									height="16"
-									viewBox="0 0 256 256"
-									fill="currentColor"
-								>
-									<path
-										d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"
-									/>
-								</svg>
-							</div>
-						</div>
-						<div class="project-card-body">
-							<p class="project-card-desc">
-								A curated collection of tools, resources, and references for web
-								developers.
-							</p>
-							<span class="project-read-more">Read more</span>
-						</div>
-					</a>
-
-					<!-- Card 4: Open Source Tools -->
-					<a href="#" class="project-card">
-						<div class="project-card-header">
-							<h2 class="project-card-title">Open Source Tools</h2>
-							<div class="project-arrow-btn" aria-hidden="true">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="16"
-									height="16"
-									viewBox="0 0 256 256"
-									fill="currentColor"
-								>
-									<path
-										d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"
-									/>
-								</svg>
-							</div>
-						</div>
-						<div class="project-card-body">
-							<p class="project-card-desc">
-								Open source utilities and components for the web development
-								community.
-							</p>
-							<span class="project-read-more">Read more</span>
-						</div>
-					</a>
-				</div>
-			</section>
-		</main>
-
-		<!-- ===================== FOOTER ===================== -->
-		<footer>
-			<a href="../index.html" class="footer-logo">Jarvis</a>
-			<p class="footer-copy">&copy; 2025 Jarvis. All rights reserved.</p>
-			<div class="footer-socials">
-				<!-- X / Twitter -->
-				<a href="#" class="social-link" aria-label="X (Twitter)">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="15"
-						height="15"
-						viewBox="0 0 24 24"
-						fill="currentColor"
-					>
-						<path
-							d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.713 5.896 5.45-5.896Zm-1.161 17.52h1.833L7.084 4.126H5.117Z"
-						/>
-					</svg>
-				</a>
-				<!-- YouTube -->
-				<a href="#" class="social-link" aria-label="YouTube">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-						viewBox="0 0 24 24"
-						fill="currentColor"
-					>
-						<path
-							d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
-						/>
-					</svg>
-				</a>
-				<!-- GitHub -->
-				<a href="#" class="social-link" aria-label="GitHub">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-						viewBox="0 0 24 24"
-						fill="currentColor"
-					>
-						<path
-							d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-						/>
-					</svg>
-				</a>
-			</div>
-		</footer>
-
-		<!-- ===================== JAVASCRIPT ===================== -->
-		<script>
-		// ---- Theme Toggle ----
-		const htmlEl = document.documentElement;
-		const themeToggle = document.getElementById("theme-toggle");
-
-		themeToggle.addEventListener("click", () => {
-			htmlEl.classList.toggle("dark");
-			try {
-				localStorage.setItem(
-					"theme",
-					htmlEl.classList.contains("dark") ? "dark" : "light",
-				);
-			} catch (e) {}
-		});
-
-		// ---- Hamburger Menu ----
-		const hamburgerBtn = document.getElementById("hamburger-btn");
-		const menuOverlay = document.getElementById("menu-overlay");
-		const menuClose = document.getElementById("menu-close");
-
-		function openMenu() {
-			menuOverlay.classList.add("menu-open");
-			menuOverlay.setAttribute("aria-hidden", "false");
-			hamburgerBtn.setAttribute("aria-expanded", "true");
-			document.body.style.overflow = "hidden";
-		}
-
-		function closeMenu() {
-			menuOverlay.classList.remove("menu-open");
-			menuOverlay.setAttribute("aria-hidden", "true");
-			hamburgerBtn.setAttribute("aria-expanded", "false");
-			document.body.style.overflow = "";
-		}
-
-		hamburgerBtn.addEventListener("click", openMenu);
-		menuClose.addEventListener("click", closeMenu);
-
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "Escape") {
-				closeMenu();
-				closeSearch();
-			}
-		});
-
-		// ---- Search ----
-		const searchBtn = document.getElementById("search-btn");
-		const searchModal = document.getElementById("search-modal");
-		const searchClose = document.getElementById("search-close");
-		const searchInput = document.getElementById("search-input");
-		const searchResults = document.getElementById("search-results");
-
-		const searchData = [
-			{ title: "Lexington Themes", type: "Project", url: "#" },
-			{ title: "Colors & fonts", type: "Project", url: "#" },
-			{ title: "Dev Resources", type: "Project", url: "#" },
-			{ title: "Open Source Tools", type: "Project", url: "#" },
-		];
-
-		const fuse = new Fuse(searchData, {
-			keys: ["title", "type"],
-			threshold: 0.4,
-			includeMatches: true,
-		});
-
-		function openSearch() {
-			searchModal.classList.add("open");
-			document.body.style.overflow = "hidden";
-			setTimeout(() => searchInput.focus(), 80);
-		}
-
-		function closeSearch() {
-			searchModal.classList.remove("open");
-			document.body.style.overflow = "";
-			searchInput.value = "";
-			renderResults([]);
-		}
-
-		function renderResults(results) {
-			if (!searchInput.value.trim()) {
-				searchResults.innerHTML =
-					'<div class="search-empty">Start typing to search…</div>';
-				return;
-			}
-			if (!results.length) {
-				searchResults.innerHTML =
-					'<div class="search-empty">No results found.</div>';
-				return;
-			}
-			searchResults.innerHTML = results
-				.map(
-					(r) =>
-						`<a class="search-result-item" href="${r.item.url}">
-          <span class="search-result-type">${r.item.type}</span>
-          <span class="search-result-title">${r.item.title}</span>
-        </a>`,
-				)
-				.join("");
-		}
-
-		searchBtn.addEventListener("click", openSearch);
-		searchClose.addEventListener("click", closeSearch);
-
-		searchModal.addEventListener("click", (e) => {
-			if (e.target === searchModal) closeSearch();
-		});
-
-		searchInput.addEventListener("input", () => {
-			const q = searchInput.value.trim();
-			renderResults(q ? fuse.search(q) : []);
-		});
-		</script>
-	</body>
-</html>
+<!DOCTYPE html><html lang="en" class="antialiased"><head><title>Projects | Jarvis</title>
+<meta name="description" content="A detailed description of your page content.">
+<link rel="canonical" href="https://yourwebsite.com/current-page">
+<meta property="og:title" content="Your Page Title">
+<meta property="og:description" content="A detailed description of your page content.">
+<meta property="og:url" content="https://yourwebsite.com/current-page">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://yourwebsite.com/og-image.jpg">
+<meta property="og:image:alt" content="Open Graph Image Alt">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Your Site Name">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@yourwebsite">
+<meta name="twitter:creator" content="@yourhandle"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#ffffff"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="robots" content="index, follow"><meta name="googlebot" content="index, follow"><meta name="robots" content="index, follow"><meta name="googlebot" content="index, follow"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;family=Geist:wght@100..900&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"><link rel="icon" href="https://flaco-astro.pages.dev/favicon.ico" sizes="any"><link rel="icon" href="https://flaco-astro.pages.dev/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="https://flaco-astro.pages.dev/apple-touch-icon.png"><link rel="manifest" href="https://flaco-astro.pages.dev/manifest.webmanifest"><link rel="shortcut icon" href="https://flaco-astro.pages.dev/favicon.ico" type="image/x-icon"><link rel="icon" type="image/png" sizes="16x16" href="https://flaco-astro.pages.dev/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="https://flaco-astro.pages.dev/favicon-32x32.png"><link rel="icon" type="image/png" sizes="48x48" href="https://flaco-astro.pages.dev/favicon-48x48.png"><link rel="apple-touch-icon" sizes="180x180" href="https://flaco-astro.pages.dev/apple-touch-icon.png"><script type="module" src="/assets/reference/FuseJS.astro_astro_type_script_index_0_lang.szKh-OPk.js"></script><link rel="stylesheet" href="/reference.css"></head><body class="flex flex-col bg-white min-h-svh dark:bg-base-950 transition-colors duration-300"><button class="flex justify-center text-center rounded-full font-medium items-center duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-4 text-base-950 bg-base-200 hover:bg-base-100 focus:outline-base-300 dark:text-white dark:bg-base-900 dark:hover:bg-base-800 dark:focus:outline-base-800 size-9 text-sm fixed z-50 bottom-2 left-2 lg:bottom-4 lg:left-4" role="switch" aria-checked="false" id="theme-toggle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-4" slot="icon"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm12,24.87a83.53,83.53,0,0,1,24,7.25V203.88a83.53,83.53,0,0,1-24,7.25ZM44,128a84.12,84.12,0,0,1,72-83.13V211.13A84.12,84.12,0,0,1,44,128Zm144,58.71V69.29a83.81,83.81,0,0,1,0,117.42Z"></path></svg></button><script type="module">var e=document.getElementById(`theme-toggle`);function t(t){document.documentElement.classList.toggle(`dark`,t),e.setAttribute(`aria-checked`,t?`true`:`false`),localStorage.setItem(`theme`,t?`dark`:`light`)}function n(){let e=localStorage.getItem(`theme`),n=window.matchMedia(`(prefers-color-scheme: dark)`).matches;t(e?e===`dark`:n)}n(),e.addEventListener(`click`,()=>{t(e.getAttribute(`aria-checked`)!==`true`)});</script><div class="relative"><button class="flex justify-center text-center rounded-full font-medium items-center duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-4 text-base-950 bg-base-200 hover:bg-base-100 focus:outline-base-300 dark:text-white dark:bg-base-900 dark:hover:bg-base-800 dark:focus:outline-base-800 size-9 text-sm fixed z-50 bottom-2 right-2 lg:bottom-4 lg:right-4" type="button" id="searchButton" aria-label="Search posts"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon size-4" slot="icon"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></button><div id="searchModal" class="fixed inset-0 z-50 hidden overflow-y-auto" role="dialog" aria-modal="true"><div class="min-h-screen px-4 text-center"><div class="fixed inset-0 bg-zinc-950/50 backdrop-blur transition-opacity" id="modalOverlay"></div><div class="relative inline-block w-full max-w-2xl px-8 mt-12 mb-8 text-left align-middle lg:mt-48 transition-all transform"><div class="hidden"><button type="button" id="closeSearch" class="ml-auto cursor-pointer text-zinc-400 hover:text-zinc-500" aria-label="Close search"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.877075 7.49988C0.877075 3.84219 3.84222 0.877045 7.49991 0.877045C11.1576 0.877045 14.1227 3.84219 14.1227 7.49988C14.1227 11.1575 11.1576 14.1227 7.49991 14.1227C3.84222 14.1227 0.877075 11.1575 0.877075 7.49988ZM7.49991 1.82704C4.36689 1.82704 1.82708 4.36686 1.82708 7.49988C1.82708 10.6329 4.36689 13.1727 7.49991 13.1727C10.6329 13.1727 13.1727 10.6329 13.1727 7.49988C13.1727 4.36686 10.6329 1.82704 7.49991 1.82704ZM9.85358 5.14644C10.0488 5.3417 10.0488 5.65829 9.85358 5.85355L8.20713 7.49999L9.85358 9.14644C10.0488 9.3417 10.0488 9.65829 9.85358 9.85355C9.65832 10.0488 9.34173 10.0488 9.14647 9.85355L7.50002 8.2071L5.85358 9.85355C5.65832 10.0488 5.34173 10.0488 5.14647 9.85355C4.95121 9.65829 4.95121 9.3417 5.14647 9.14644L6.79292 7.49999L5.14647 5.85355C4.95121 5.65829 4.95121 5.3417 5.14647 5.14644C5.34173 4.95118 5.65832 4.95118 5.85358 5.14644L7.50002 6.79289L9.14647 5.14644C9.34173 4.95118 9.65832 4.95118 9.85358 5.14644Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></button></div><input type="text" id="searchInput" placeholder="Search posts..." class="flex-auto w-full h-10 px-3 py-2 text-center border-transparent rounded-full appearance-none outline outline-base-200 dark:outline-base-800 dark:text-white text-base-900 outline-inset shadow-base-800/5 dark:placeholder:text-base-400 dark:place-holder-text-base-600 duration-300 focus:border-base-500 focus:outline-none focus:outline-4 focus:outline-base-500/10 sm:text-sm bg-base-50 dark:bg-base-800" style=""><div id="searchResults" class="w-full mt-2 overflow-hidden overflow-y-auto bg-white max-h-100 rounded-xl dark:bg-black divide-y divide-zinc-200 border-y border-zinc-200 dark:border-y-black dark:divide-white/5 scrollbar-hide hidden"></div></div></div></div></div><script>(function(){const posts = [{"title":"5 Essential Skills for Web Developers","description":"Web development is a rapidly evolving field, and keeping up with the latest trends and technologies can be challenging. ","slug":"1"},{"title":"The Importance of User-Centered Design","description":"User-centered design (UCD) is a crucial aspect of creating effective user interfaces (UIs). ","slug":"2"},{"title":"Top 10 Web Development Frameworks for 2023","description":"Choosing the right web development framework can make all the difference in your projects. ","slug":"3"},{"title":"Best Practices for Responsive Web Design","description":"Responsive web design (RWD) is essential in today's mobile-first world, but implementing it can be tricky. ","slug":"4"},{"title":"The Rise of AI in Web Development","description":"Artificial Intelligence (AI) is transforming web development in ways we could only imagine a few years ago. ","slug":"5"},{"title":"Sustainable Web Design Principles and Practices","description":"Sustainable web design is about creating websites that are environmentally friendly and efficient in terms of energy consumption. ","slug":"6"}];
+  window.addEventListener("load", () => {
+    const searchButton = document.getElementById("searchButton");
+    const searchModal = document.getElementById("searchModal");
+    const modalOverlay = document.getElementById("modalOverlay");
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+    const closeSearch = document.getElementById("closeSearch");
+    const fuse = new Fuse(posts, {
+      keys: ["title", "description"],
+      threshold: 0.3,
+      includeMatches: true,
+    });
+    searchResults.classList.add("hidden");
+    function openSearch(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      searchModal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+      setTimeout(() => searchInput.focus(), 100);
+    }
+    function closeSearchModal(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      searchModal.classList.add("hidden");
+      document.body.style.overflow = "";
+      searchInput.value = "";
+      searchResults.innerHTML = "";
+      searchResults.classList.add("hidden");
+    }
+    function renderResults(results) {
+      if (!searchInput.value.trim()) {
+        searchResults.innerHTML = "";
+        searchResults.classList.add("hidden");
+        return;
+      }
+      if (results.length === 0) {
+        searchResults.innerHTML = `
+        <div class="p-8">
+            <Text tag="h3" variant="textBase" class="font-medium text-zinc-500">
+              There's nothing here,...
+            </Text>
+        </div>
+        `;
+        searchResults.classList.remove("hidden");
+        return;
+      }
+      searchResults.innerHTML = results
+        .map(
+          (result) => `
+            <a href="/blog/posts/${result.item.slug}" class="block p-8 hover:bg-zinc-100 duration-300 dark:hover:bg-white/5">
+              <h3  class="block text-sm font-medium text-zinc-900 dark:text-white">
+                ${result.item.title}
+              </h3>
+              <p  class="block text-xs text-zinc-500">
+                ${result.item.description}
+              </p>
+            </a>
+          `
+        )
+        .join("");
+      searchResults.classList.remove("hidden");
+    }
+    searchButton.addEventListener("click", openSearch);
+    searchButton.addEventListener("touchend", openSearch);
+    closeSearch.addEventListener("click", closeSearchModal);
+    closeSearch.addEventListener("touchend", closeSearchModal);
+    modalOverlay.addEventListener("click", closeSearchModal);
+    modalOverlay.addEventListener("touchend", closeSearchModal);
+    searchInput.addEventListener("input", (e) => {
+      const value = e.target.value.trim();
+      const results = value ? fuse.search(value) : [];
+      renderResults(results);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !searchModal.classList.contains("hidden")) {
+        closeSearchModal();
+      }
+    });
+  });
+})();</script><header><div class="px-8 mx-auto max-w-3xl">
+    <nav role="navigation" class="items-center w-full py-4 grid grid-cols-2 gap-4"><div class="flex items-center gap-2"><a class="text-lg sm:text-xl md:text-2xl  italic text-center font-display text-base-900 dark:text-white" href="/" aria-label="Go to homepage">
+
+
+          Jarvis
+
+
+</a></div><div class="flex items-center justify-end gap-2"><div class="flex items-center gap-2"><a class="text-sm text-base-500 hover:text-base-900 duration-300 dark:text-base-400 dark:hover:text-white" href="https://flaco-astro.pages.dev/system/overview">Overview</a><a class="text-sm text-base-500 hover:text-base-900 duration-300 dark:text-base-400 dark:hover:text-white" href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU">Buy Flaco</a></div><button type="button" id="menuToggle" aria-controls="menu" aria-expanded="false" aria-label="Open menu" class="focus-visible:outline-none"><span class="sr-only">Toggle menu</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-5 shrink-0 dark:text-white"><path d="M228,160a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,160ZM40,108H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24Z"></path></svg></button><div id="menuContent" class="fixed inset-0 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out bg-white/20 dark:bg-black/50 backdrop-blur-xl"><div class="px-8 mx-auto max-w-3xl relative h-full px-8 py-4">
+            <button id="closeMenu" aria-label="Close menu" class="flex ml-auto text-base-900 dark:text-white"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon transition duration-300 ease-in-out size-5 shrink-0 stroke-base-950 dark:stroke-white"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"></path></svg></button>
+            <nav role="navigation" class="flex flex-col mt-4 gap-y-2"><div class="flex justify-end"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="https://flaco-astro.pages.dev/system/colors" title="Colors" aria-label="Colors">
+
+  Colors
+
+</a></div><div class="flex justify-end"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="https://flaco-astro.pages.dev/system/link" title="Links" aria-label="Links">
+
+  Links
+
+</a></div><div class="flex justify-end"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="https://flaco-astro.pages.dev/system/buttons" title="Buttons" aria-label="Buttons">
+
+  Buttons
+
+</a></div><div class="flex justify-end"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="https://flaco-astro.pages.dev/system/typography" title="Typography" aria-label="Typography">
+
+  Typography
+
+</a></div><div class="flex justify-end"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="/blog" title="Blog" aria-label="Blog">
+
+  Blog
+
+</a></div><div class="flex justify-end"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="/store/" title="Store" aria-label="Store">
+
+  Store
+
+</a></div><div class="flex justify-end"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="/projects/" title="Projects" aria-label="Projects">
+
+  Projects
+
+</a></div><div class="flex justify-end"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="/studio" title="Studio" aria-label="Studio">
+
+  Studio
+
+</a></div><div class="flex justify-end md:hidden"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="https://flaco-astro.pages.dev/system/overview" title="Overview" aria-label="Overview">
+
+
+                  Overview
+
+
+</a></div><div class="flex justify-end md:hidden"><a class="text-lg sm:text-xl md:text-2xl relative group after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 block text-right dark:text-white text-base-900" href="https://buy.polar.sh/polar_cl_8Org8z858D00MUHXL3Jz5x6_VEmLnfI9sCQBW-QRDIU" title="Buy Flaco" aria-label="Buy Flaco">
+
+
+                  Buy Flaco
+
+
+</a></div></nav>
+          </div></div></div></nav>
+  </div></header><script type="module">document.addEventListener(`DOMContentLoaded`,e=>{let t=document.getElementById(`menuToggle`),n=document.getElementById(`menuContent`),r=document.getElementById(`closeMenu`);function i(){let e=n.classList.contains(`opacity-0`);n.classList.toggle(`opacity-0`),n.classList.toggle(`pointer-events-none`),document.body.classList.toggle(`overflow-hidden-no-shift`),e&&setTimeout(()=>a(),10)}function a(){document.querySelectorAll(`nav a`).forEach((e,t)=>{e.style.opacity=`0`,e.style.transform=`translateY(20px)`,e.style.transition=`none`,setTimeout(()=>{e.style.transition=`opacity 0.3s ease-out ${t*.1}s, transform 0.3s ease-out ${t*.1}s`,e.style.opacity=`1`,e.style.transform=`translateY(0)`},50)})}t.addEventListener(`click`,i),r.addEventListener(`click`,i)});</script><main class="relative grow">
+  <section><div class="px-8 mx-auto max-w-3xl py-24">
+      <div class="text-center"><h1 class="text-4xl  sm:text-4xl md:text-5xl lg:text-6xl  text-balance dark:text-white text-base-900">
+
+
+          I like to build
+          <span class="italic tracking-wide font-display dark:text-base-400 text-base-600">projects from scrach</span>
+
+
+</h1><p class="text-base sm:text-lg md:text-xl   mt-4 dark:text-base-400 text-base-600">
+
+
+          When I'm not working I build things that make me explore and learn,
+          and I love to share my projects with the world.
+
+
+</p></div>
+      <div class="flex flex-col mt-6 gap-2"><div class="p-2 shadow grid sm:grid-cols-2 ring-base-200 dark:ring-base-800 duration-300 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950"><div class="relative flex flex-col justify-between h-full p-4 overflow-hidden min-h-72 rounded-2xl"><div class="flex items-center justify-between"><h3 class="text-base  font-medium uppercase dark:text-white text-base-900">
+
+  Lexington Themes
+
+</h3><div class="p-1 text-white bg-black rounded-full dark:bg-base-50 dark:text-base-900 group-hover:-rotate-45 duration-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-5"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"></path></svg></div></div><div class="flex flex-col items-start justify-between sm:-mb-20 sm:group-hover:mb-0 gap-12 duration-300"><p class="text-base  mt-8 dark:text-base-400 text-base-600 leading-6 text-balance">
+
+  Free and premium multipage themes and UI Kits for freelancers, developers, businesses, and personal use.
+
+</p><a href="https://flaco-astro.pages.dev/projects/1" class="flex justify-center text-center rounded-full font-medium items-center duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-4 text-white bg-base-900 hover:bg-base-800 focus:outline-base-800 dark:text-base-950 dark:bg-base-100 dark:hover:bg-base-200 dark:focus:outline-base-300 h-8 px-4 py-3 text-xs" title="Lexington Themes">Read more
+      </a></div></div><img src="/assets/reference/lexington.DEGGDxyj_Zh1tce.svg" alt="Lexington Themes" loading="lazy" decoding="async" width="500" height="800" class="order-first object-cover w-full h-full rounded-2xl sm:order-last"></div><div class="p-2 shadow grid sm:grid-cols-2 ring-base-200 dark:ring-base-800 duration-300 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950"><div class="relative flex flex-col justify-between h-full p-4 overflow-hidden min-h-72 rounded-2xl"><div class="flex items-center justify-between"><h3 class="text-base  font-medium uppercase dark:text-white text-base-900">
+
+  Colors &amp; fonts
+
+</h3><div class="p-1 text-white bg-black rounded-full dark:bg-base-50 dark:text-base-900 group-hover:-rotate-45 duration-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-5"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"></path></svg></div></div><div class="flex flex-col items-start justify-between sm:-mb-20 sm:group-hover:mb-0 gap-12 duration-300"><p class="text-base  mt-8 dark:text-base-400 text-base-600 leading-6 text-balance">
+
+  Color &amp; typography tools for web developers &amp; digital designers
+
+</p><a href="https://flaco-astro.pages.dev/projects/2" class="flex justify-center text-center rounded-full font-medium items-center duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-4 text-white bg-base-900 hover:bg-base-800 focus:outline-base-800 dark:text-base-950 dark:bg-base-100 dark:hover:bg-base-200 dark:focus:outline-base-300 h-8 px-4 py-3 text-xs" title="Colors &amp; fonts">Read more
+      </a></div></div><img src="/assets/reference/caf.DMm8mc9O_Zh1tce.svg" alt="Colors &amp; fonts" loading="lazy" decoding="async" width="500" height="800" class="order-first object-cover w-full h-full rounded-2xl sm:order-last"></div><div class="p-2 shadow grid sm:grid-cols-2 ring-base-200 dark:ring-base-800 duration-300 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950"><div class="relative flex flex-col justify-between h-full p-4 overflow-hidden min-h-72 rounded-2xl"><div class="flex items-center justify-between"><h3 class="text-base  font-medium uppercase dark:text-white text-base-900">
+
+  Sequoia Theme
+
+</h3><div class="p-1 text-white bg-black rounded-full dark:bg-base-50 dark:text-base-900 group-hover:-rotate-45 duration-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-5"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"></path></svg></div></div><div class="flex flex-col items-start justify-between sm:-mb-20 sm:group-hover:mb-0 gap-12 duration-300"><p class="text-base  mt-8 dark:text-base-400 text-base-600 leading-6 text-balance">
+
+  Black, elegant, modern, monochrome or colourful theme for VS Code and other interfaces.
+
+</p><a href="https://flaco-astro.pages.dev/projects/3" class="flex justify-center text-center rounded-full font-medium items-center duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-4 text-white bg-base-900 hover:bg-base-800 focus:outline-base-800 dark:text-base-950 dark:bg-base-100 dark:hover:bg-base-200 dark:focus:outline-base-300 h-8 px-4 py-3 text-xs" title="Sequoia Theme">Read more
+      </a></div></div><img src="/assets/reference/sequoia.f9CY-aTB_Zh1tce.svg" alt="Sequoia Theme" loading="lazy" decoding="async" width="500" height="800" class="order-first object-cover w-full h-full rounded-2xl sm:order-last"></div><div class="p-2 shadow grid sm:grid-cols-2 ring-base-200 dark:ring-base-800 duration-300 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950"><div class="relative flex flex-col justify-between h-full p-4 overflow-hidden min-h-72 rounded-2xl"><div class="flex items-center justify-between"><h3 class="text-base  font-medium uppercase dark:text-white text-base-900">
+
+  Pricing Patterms
+
+</h3><div class="p-1 text-white bg-black rounded-full dark:bg-base-50 dark:text-base-900 group-hover:-rotate-45 duration-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-5"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"></path></svg></div></div><div class="flex flex-col items-start justify-between sm:-mb-20 sm:group-hover:mb-0 gap-12 duration-300"><p class="text-base  mt-8 dark:text-base-400 text-base-600 leading-6 text-balance">
+
+  Real World pricing examples
+
+</p><a href="https://flaco-astro.pages.dev/projects/4" class="flex justify-center text-center rounded-full font-medium items-center duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-4 text-white bg-base-900 hover:bg-base-800 focus:outline-base-800 dark:text-base-950 dark:bg-base-100 dark:hover:bg-base-200 dark:focus:outline-base-300 h-8 px-4 py-3 text-xs" title="Pricing Patterms">Read more
+      </a></div></div><img src="/assets/reference/pp.4dR1pfvZ_Zh1tce.svg" alt="Pricing Patterms" loading="lazy" decoding="async" width="500" height="800" class="order-first object-cover w-full h-full rounded-2xl sm:order-last"></div><div class="p-2 shadow grid sm:grid-cols-2 ring-base-200 dark:ring-base-800 duration-300 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950"><div class="relative flex flex-col justify-between h-full p-4 overflow-hidden min-h-72 rounded-2xl"><div class="flex items-center justify-between"><h3 class="text-base  font-medium uppercase dark:text-white text-base-900">
+
+  Oxbow UI
+
+</h3><div class="p-1 text-white bg-black rounded-full dark:bg-base-50 dark:text-base-900 group-hover:-rotate-45 duration-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-5"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"></path></svg></div></div><div class="flex flex-col items-start justify-between sm:-mb-20 sm:group-hover:mb-0 gap-12 duration-300"><p class="text-base  mt-8 dark:text-base-400 text-base-600 leading-6 text-balance">
+
+  Components and UI Blocks crafted with Tailwind CSS.
+
+</p><a href="https://flaco-astro.pages.dev/projects/5" class="flex justify-center text-center rounded-full font-medium items-center duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-4 text-white bg-base-900 hover:bg-base-800 focus:outline-base-800 dark:text-base-950 dark:bg-base-100 dark:hover:bg-base-200 dark:focus:outline-base-300 h-8 px-4 py-3 text-xs" title="Oxbow UI">Read more
+      </a></div></div><img src="/assets/reference/oxbow.p_im-qR3_Zh1tce.svg" alt="Oxbow UI" loading="lazy" decoding="async" width="500" height="800" class="order-first object-cover w-full h-full rounded-2xl sm:order-last"></div><div class="p-2 shadow grid sm:grid-cols-2 ring-base-200 dark:ring-base-800 duration-300 group rounded-3xl hover:shadow-light dark:hover:shadow-dark bg-linear-45 from-base-50 dark:from-base-800 to-base-100 dark:to-base-950"><div class="relative flex flex-col justify-between h-full p-4 overflow-hidden min-h-72 rounded-2xl"><div class="flex items-center justify-between"><h3 class="text-base  font-medium uppercase dark:text-white text-base-900">
+
+  SVG Doodles
+
+</h3><div class="p-1 text-white bg-black rounded-full dark:bg-base-50 dark:text-base-900 group-hover:-rotate-45 duration-300"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-5"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"></path></svg></div></div><div class="flex flex-col items-start justify-between sm:-mb-20 sm:group-hover:mb-0 gap-12 duration-300"><p class="text-base  mt-8 dark:text-base-400 text-base-600 leading-6 text-balance">
+
+  A free collection of 50 different editable SVG's to spice up your online and offline designs.
+
+</p><a href="https://flaco-astro.pages.dev/projects/6" class="flex justify-center text-center rounded-full font-medium items-center duration-500 ease-in-out transition-colors focus:outline-2 focus:outline-offset-4 text-white bg-base-900 hover:bg-base-800 focus:outline-base-800 dark:text-base-950 dark:bg-base-100 dark:hover:bg-base-200 dark:focus:outline-base-300 h-8 px-4 py-3 text-xs" title="SVG Doodles">Read more
+      </a></div></div><img src="/assets/reference/doodles.CywWimwz_Zh1tce.svg" alt="SVG Doodles" loading="lazy" decoding="async" width="500" height="800" class="order-first object-cover w-full h-full rounded-2xl sm:order-last"></div></div>
+    </div></section>
+</main><footer><div class="px-8 mx-auto max-w-3xl flex flex-col py-24">
+    <a href="/" aria-label="Go to homepage"><svg class="mx-auto size-8 dark:text-white text-base-900" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.7124 69.7373V82.1123L0.837402 82.1123L0.837403 69.7373H40.7124ZM40.7124 54.6123L0.837402 54.6123L0.837403 42.2373H40.7124V54.6123ZM40.7124 27.1123L0.837402 27.1123L0.837403 14.7373L40.7124 14.7373V27.1123ZM42.0874 13.3623V0.987305L81.9624 0.987308V13.3623L42.0874 13.3623ZM42.0874 68.3623V55.9873H81.9624V68.3623L42.0874 68.3623ZM42.0874 40.8623V28.4873H81.9624V40.8623L42.0874 40.8623Z" fill="currentColor" stroke="currentColor" stroke-width="1.375"></path></svg></a>
+
+    <p class="text-base  mt-12 text-center leading-6 dark:text-base-400 text-base-600 text-balance">
+
+
+      © 2026 Copyright Lexington Themes. All rights reserved.
+      Designed and built in the Åland Islands by Michael Andreuzza.
+
+
+</p>
+
+    <div class="flex justify-center mt-12 space-x-6"><a href="#" class="dark:text-base-400 text-base-600 hover:text-white"><span class="sr-only">X</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-4"><path d="M251.09,67.41A12,12,0,0,0,240,60H211.82a52.73,52.73,0,0,0-43.67-24,50.85,50.85,0,0,0-36.6,14.85A51.87,51.87,0,0,0,116,88v.78c-36.83-11.57-66.38-40.9-66.7-41.23a12,12,0,0,0-20.47,7.38C22.52,125.1,53.48,162.72,70.89,178.05,56.4,192.83,36,200.68,35.8,200.76A12,12,0,0,0,30,218.66C32,221.55,43.44,236,80,236c72.25,0,132.7-55.26,139.6-126.63l28.88-28.88A12,12,0,0,0,251.09,67.41ZM199.52,95.52a11.93,11.93,0,0,0-3.49,7.72C192.14,164.23,141.18,212,80,212a90.78,90.78,0,0,1-12.49-.79C78,204.55,89.72,195.07,98,182.66a12,12,0,0,0-3.9-17c-.12-.07-12.33-7.49-23.43-24.42s-17.26-37-18.46-59.78C69.37,94.4,96,110.79,126,115.84A12,12,0,0,0,140,104V88a28,28,0,0,1,8.41-20.07A27.07,27.07,0,0,1,167.86,60a28.83,28.83,0,0,1,25.82,16.81,12,12,0,0,0,11,7.19H211Z"></path></svg></a><a href="#" class="dark:text-base-400 text-base-600 hover:text-white"><span class="sr-only">YouTube</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-4"><path d="M170.49,117.91l-56-36A12,12,0,0,0,96,92v72a12,12,0,0,0,18.49,10.09l56-36a12,12,0,0,0,0-20.18ZM120,142V114l21.81,14Zm118.21-73.5a28.05,28.05,0,0,0-16.93-19.14C186.4,35.91,131.29,36,128,36s-58.4-.09-93.28,13.38A28.05,28.05,0,0,0,17.79,68.52C15.15,78.72,12,97.32,12,128s3.15,49.28,5.79,59.48a28.05,28.05,0,0,0,16.93,19.14C68.21,219.55,120.36,220,127.37,220h1.26c7,0,59.16-.45,92.65-13.38a28.05,28.05,0,0,0,16.93-19.14c2.64-10.2,5.79-28.8,5.79-59.48S240.85,78.72,238.21,68.52ZM215,181.46a4,4,0,0,1-2.34,2.77C182.78,195.76,132.27,196,128.32,196h-.39c-.53,0-53.64.17-84.56-11.77A4,4,0,0,1,41,181.46c-1.88-7.24-5-23.82-5-53.46s3.15-46.22,5-53.46a4,4,0,0,1,2.34-2.77C74.29,59.83,127.39,60,127.92,60h.15c.54,0,53.64-.17,84.56,11.77A4,4,0,0,1,215,74.54c1.88,7.24,5,23.82,5,53.46S216.85,174.22,215,181.46Z"></path></svg></a><a href="#" class="dark:text-base-400 text-base-600 hover:text-white"><span class="sr-only">GitHub</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="icon size-4"><path d="M212.62,75.17A63.7,63.7,0,0,0,206.39,26,12,12,0,0,0,196,20a63.71,63.71,0,0,0-50,24H126A63.71,63.71,0,0,0,76,20a12,12,0,0,0-10.39,6,63.7,63.7,0,0,0-6.23,49.17A61.5,61.5,0,0,0,52,104v8a60.1,60.1,0,0,0,45.76,58.28A43.66,43.66,0,0,0,92,192v4H76a20,20,0,0,1-20-20,44.05,44.05,0,0,0-44-44,12,12,0,0,0,0,24,20,20,0,0,1,20,20,44.05,44.05,0,0,0,44,44H92v12a12,12,0,0,0,24,0V192a20,20,0,0,1,40,0v40a12,12,0,0,0,24,0V192a43.66,43.66,0,0,0-5.76-21.72A60.1,60.1,0,0,0,220,112v-8A61.5,61.5,0,0,0,212.62,75.17ZM196,112a36,36,0,0,1-36,36H112a36,36,0,0,1-36-36v-8a37.87,37.87,0,0,1,6.13-20.12,11.65,11.65,0,0,0,1.58-11.49,39.9,39.9,0,0,1-.4-27.72,39.87,39.87,0,0,1,26.41,17.8A12,12,0,0,0,119.82,68h32.35a12,12,0,0,0,10.11-5.53,39.84,39.84,0,0,1,26.41-17.8,39.9,39.9,0,0,1-.4,27.72,12,12,0,0,0,1.61,11.53A37.85,37.85,0,0,1,196,104Z"></path></svg></a></div>
+  </div></footer></body></html>
