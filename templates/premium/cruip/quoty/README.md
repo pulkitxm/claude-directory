@@ -1,8 +1,8 @@
-# Quoty — Freelancer Quote/Proposal Web App Template Clone
+# Quoty: Freelancer Quote and Proposal Web App Template Clone
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained HTML/CSS/JS clone of the **Quoty** freelancer quote/proposal template by [Cruip](https://cruip.com/demos/quoty/). This reproduction recreates a split-screen client-proposal web app: a sticky left panel with a "Quote for [Client]" summary and a scrolling right panel that swaps between a costs-breakdown table with an accordion of project terms, a line-item details page, a contact form, and a card/PayPal payment form — with a light/dark mode toggle persisted to `localStorage`, all as plain static files with zero build steps.
+A pixel-faithful, self-contained HTML, CSS, and JavaScript clone of the **Quoty** freelancer proposal template by [Cruip](https://cruip.com/demos/quoty/). It includes all four current pages, interactions, and light and dark themes with zero build steps.
 
 ## Features
 
@@ -15,7 +15,7 @@ A pixel-faithful, self-contained HTML/CSS/JS clone of the **Quoty** freelancer q
 - **Pay page**: pill-shaped segmented toggle (Pay with Card / Pay with PayPal) with a sliding thumb indicator via Alpine.js, swapping between a full card form and a PayPal panel
 - **Bottom sticky CTA bar** on the home page ("Contact me" ghost button / "Pay" solid button)
 - **Light/dark mode** switch in the header, toggling a `.dark` class on `<html>`, flipping `colorScheme`, and persisting to `localStorage`
-- **Fonts**: Inter (Google Fonts) for body/UI text, a custom display webfont "Orbiter" for the large client-name heading, and Caveat (Google Fonts) for accent use
+- **Fonts**: locally vendored Inter, Orbiter, and Caveat
 
 ## Pages
 
@@ -33,26 +33,21 @@ No build step required. Open `index.html` directly in a browser, or serve with a
 ```bash
 cd templates/premium/cruip/quoty
 python3 -m http.server 8080
-# then open http://localhost:8080
 ```
 
 ## Verify
 
 ```bash
-# Check all pages exist
 ls templates/premium/cruip/quoty/*.html
-
-# Check assets are present
-ls templates/premium/cruip/quoty/assets/
-
-# Play demo
+ls templates/premium/cruip/quoty/images/
+ls templates/premium/cruip/quoty/fonts/
 open templates/premium/cruip/quoty/demo.mp4
 ```
 
 ## Tech Stack
 
 - Plain HTML5 + CSS3 (compiled Tailwind-style utility classes, custom properties)
-- [Alpine.js](https://alpinejs.dev/) — drives the Project Terms accordion and the Pay page's payment-method segmented toggle
+- [Alpine.js](https://alpinejs.dev/) drives the Project Terms accordion and payment-method toggle
 - Locally vendored fonts (Inter, Orbiter, Caveat)
 - No build tools, no frameworks, no bundler
 
@@ -62,8 +57,6 @@ open templates/premium/cruip/quoty/demo.mp4
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip — <https://cruip.com/demos/quoty/>
-
----
+**Original:** Cruip, <https://cruip.com/demos/quoty/>
 
 Browse more templates in the [premium collection](../../) or return to the [full fable gallery](../../../../README.md).
