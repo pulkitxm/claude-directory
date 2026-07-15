@@ -1,64 +1,40 @@
-# Mølle — Scandinavian Prefab Home Company Website Clone (Vanilla HTML/CSS/JS + Tailwind CSS)
+# Mølle: Scandinavian Prefab Home Website Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Pixel-faithful clone of the Mølle premium Astro + Tailwind CSS e-commerce template by Lexington Themes, reproduced as a self-contained plain HTML/CSS/JS project with no build step required. The design follows Scandinavian minimalist principles: a strict five-column grid, dashed borders as decorative elements throughout, uppercase typography using InterDisplay and Inter, and a black-and-white base palette with a single purple accent colour. All 13 pages of the live preview are reproduced — including the keen-slider product carousel, Gantt-chart process timeline, accordion FAQ, Fuse.js search modal, mobile hamburger navigation, and full-page customer gallery. Generated with Claude Fable 5.
+Mølle is a pixel-faithful clone of the premium Lexington Themes template. Its Scandinavian visual system combines a strict five-column grid, dashed borders, uppercase Inter typography, a monochrome palette, and a focused purple accent.
 
 ## Pages
 
-| File | Description |
-|------|-------------|
-| `index.html` | Home — hero, about, why Mølle, models carousel, process gantt, customer gallery, articles |
-| `homes.html` | Product grid — all 8 cabin models with FAQ accordions |
-| `process.html` | How it works — 8-step detailed process list + images |
-| `about.html` | About — mission, team (Kalle Bergström, Jonas Mikkelsen), story, why Mølle |
-| `customers.html` | Customer photo gallery |
-| `contact.html` | Contact form + three Scandinavian office addresses |
-| `sign-in.html` | Sign-in form |
-| `sign-up.html` | Registration form |
-| `blog.html` | Blog listing — 6 articles |
-| `blog-post.html` | Representative blog post — "Living Lightly: Off-Grid Comfort" |
-| `product.html` | Product detail — Halo X, specs table, floor plan, related models |
-| `system-overview.html` | Design system — colour swatches, type scale, button styles |
-| `helpcenter.html` | Help center — 4 topic categories + contact CTA |
+The project contains all 65 pages currently reachable from the live reference:
 
-## Stack
-
-- **Plain HTML5 + CSS** — no build step, runs directly from the filesystem or any static server
-- **Tailwind CSS** — vendored compiled stylesheet (`assets/css/base.css`) extracted from the source
-- **Inter + InterDisplay** — loaded from `rsms.me/inter/inter.css`
-- **Keen Slider 6.8.6** — vendored (`assets/js/keen-slider.min.js`) for the product carousel
-- **Fuse.js 7.1.0** — vendored (`assets/js/fuse.min.js`) for full-text search across blog posts and products
-
-## Run Locally
-
-```bash
-# Open directly in your browser — no server required
-open index.html
-
-# Or serve with Python (recommended for correct MIME types)
-python3 -m http.server 8080
-# then visit http://localhost:8080
-```
-
-## Assets
-
-All images, fonts (via CDN), and JS libraries are either vendored locally in `assets/` or loaded from stable CDN URLs. The project works fully offline (except Inter from rsms.me and external CDN references in older pages).
+- Home, homes, process, about, customers, contact, sign-in, and sign-up pages
+- 8 individual product pages and 23 product tag pages
+- 6 blog posts, the blog index, and 10 blog tag pages
+- 2 customer detail pages
+- 5 design-system pages
+- Legal terms and a custom 404 page
 
 ## Interactions
 
-- **Mobile nav** — hamburger menu with full-screen overlay and slide-down animation
-- **Search modal** — Fuse.js fuzzy search across blog posts and products, triggered by the fixed bottom-right button
-- **Keen Slider** — draggable product carousel with prev/next controls
-- **FAQ accordions** — native `<details>`/`<summary>` with CSS `group-open` rotation
-- **Hover states** — product card grayscale, nav link colour transitions, button colour changes
+- Responsive full-screen mobile navigation
+- Full-site fuzzy search across blog posts and products
+- Draggable product carousel with previous and next controls
+- Native FAQ accordions
+- Product, navigation, and button hover states
+
+## Run locally
+
+```bash
+python3 -m http.server 8080
+```
+
+Open <http://localhost:8080>.
+
+The template uses plain HTML, CSS, and JavaScript. Page imagery and compiled runtime assets load from the original reference deployment, while Inter loads from rsms.me.
 
 ## Credits
 
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
+Faithful clone of an existing design, recreated for study and learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes — <https://lexingtonthemes.com/viewports/molle>
-
----
-
-[← Lexington Themes](../) · [← Templates](../../) · [← Fable Root](../../../../)
+**Original:** Lexington Themes, <https://lexingtonthemes.com/viewports/molle>
