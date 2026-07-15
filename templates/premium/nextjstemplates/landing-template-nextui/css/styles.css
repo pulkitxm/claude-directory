@@ -36,9 +36,9 @@ button {
 }
 
 .container {
-	max-width: 1200px;
+	max-width: 1280px;
 	margin: 0 auto;
-	padding: 0 1.5rem;
+	padding: 0 0.75rem;
 }
 
 .section {
@@ -134,9 +134,9 @@ button {
 }
 
 .navbar-inner {
-	max-width: 1200px;
+	max-width: 1280px;
 	margin: 0 auto;
-	padding: 0 1.5rem;
+	padding: 0 0.75rem;
 	height: 76px;
 	display: flex;
 	align-items: center;
@@ -472,7 +472,7 @@ button {
 
 /* ---------- Hero ---------- */
 .hero {
-	padding: 5rem 0;
+	padding: 5rem 0.75rem;
 }
 
 .hero-grid {
@@ -483,12 +483,16 @@ button {
 }
 
 .hero h1 {
-	font-size: var(--fs-4xl);
-	font-weight: 800;
-	line-height: 1.2;
+	font-size: var(--fs-5xl);
+	font-weight: 700;
+	line-height: 1.5;
 	letter-spacing: -0.02em;
 	margin: 0 0 1.25rem;
-	max-width: 460px;
+	max-width: none;
+}
+
+.hero h1 > span {
+	display: block;
 }
 
 .hero h1 .accent {
@@ -523,6 +527,12 @@ button {
 
 .hero-form input::placeholder {
 	color: var(--color-text-muted);
+}
+
+.form-status {
+	margin: -0.5rem 0 1rem;
+	color: var(--green-500);
+	font-size: var(--fs-sm);
 }
 
 .trust-badges {
@@ -953,13 +963,43 @@ button {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-	.nav-links,
+	.nav-links {
+		display: none;
+	}
+
+	.navbar-inner {
+		display: grid;
+		grid-template-columns: auto auto 1fr auto auto;
+		gap: 0;
+	}
+
+	.navbar-right {
+		display: contents;
+	}
+
+	.navbar > .navbar-inner > .brand {
+		grid-column: 2;
+		font-size: 0;
+	}
+
 	.navbar-right .login-link {
+		display: inline-flex;
+		grid-column: 4;
+	}
+
+	.navbar-right > .btn {
+		grid-column: 5;
+	}
+
+	.navbar-right > .icon-link,
+	.navbar-right > .theme-switch {
 		display: none;
 	}
 
 	.nav-toggle {
 		display: inline-flex;
+		grid-column: 1;
+		grid-row: 1;
 	}
 
 	.hero-grid,
@@ -991,12 +1031,29 @@ button {
 }
 
 @media (max-width: 640px) {
+	.hero {
+		padding-block: 3rem;
+	}
+
 	.hero h1 {
-		font-size: var(--fs-4xl);
+		font-size: var(--fs-5xl);
 	}
 
 	.hero-form {
 		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.hero-form input {
+		width: 207px;
+	}
+
+	.hero-form .btn {
+		width: 192px;
+	}
+
+	.hero-mock {
+		margin-inline: 0.5625rem;
 	}
 
 	.feature-b-pairs {
