@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  /* Mobile menu */
+
   var toggle = document.querySelector('.menu-toggle');
   var mobileNav = document.querySelector('.mobile-nav');
   if (toggle && mobileNav) {
@@ -20,7 +20,7 @@
     }
   }
 
-  /* Theme toggle */
+
   var root = document.documentElement;
   var themeBtn = document.querySelector('[data-theme-toggle]');
   function currentTheme() {
@@ -41,7 +41,7 @@
     });
   }
 
-  /* Scroll reveal */
+
   var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
@@ -57,7 +57,7 @@
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* Testimonial carousel */
+
   var track = document.querySelector('.testi-track');
   if (track) {
     var cards = Array.prototype.slice.call(track.children);
@@ -84,7 +84,7 @@
     }
   }
 
-  /* Pricing monthly/yearly toggle */
+
   var priceToggle = document.querySelector('.toggle-wrap');
   if (priceToggle) {
     var btns = priceToggle.querySelectorAll('button');
@@ -101,7 +101,7 @@
     });
   }
 
-  /* Elements page demo tabs */
+
   var tabNav = document.querySelector('.tabs-demo-nav');
   if (tabNav) {
     var tabBtns = tabNav.querySelectorAll('button');
