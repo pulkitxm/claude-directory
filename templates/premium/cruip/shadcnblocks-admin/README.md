@@ -1,8 +1,8 @@
-# Shadcnblocks Admin Kit , Ecommerce Admin Dashboard Template (Vanilla HTML + CSS + Chart.js)
+# Shadcnblocks Admin Kit — Ecommerce Admin Dashboard Template (Vanilla HTML + CSS + Chart.js)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained clone of the Shadcnblocks Admin Kit , a multi-page ecommerce admin dashboard UI kit with 9 dashboard variants and 2 data-table pages. Built as plain HTML, CSS, and vanilla JavaScript with zero build tooling, it reproduces the full shadcn/ui design-system aesthetic: a collapsible 256 px sidebar, a sticky header with ⌘K search and theme toggle, CSS custom-property theming for light and dark mode, Inter variable font, and all charts rendered with Chart.js v4. The kit covers KPI cards, revenue line and bar charts, donut charts, sparklines, sortable and paginated data tables with row selection and column filters, and a complete set of sidebar navigation items across ecommerce, project-management, and settings sections. Open any `.html` file directly in a browser , no server or build step required.
+A pixel-faithful, self-contained clone of the Shadcnblocks Admin Kit — a multi-page ecommerce admin dashboard UI kit with 9 dashboard variants and 2 data-table pages. Built as plain HTML, CSS, and vanilla JavaScript with zero build tooling, it reproduces the full shadcn/ui design-system aesthetic: a collapsible 256 px sidebar, a sticky header with ⌘K search and theme toggle, CSS custom-property theming for light and dark mode, Inter variable font, and all charts rendered with Chart.js v4. The kit covers KPI cards, revenue line and bar charts, donut charts, sparklines, sortable and paginated data tables with row selection and column filters, and a complete set of sidebar navigation items across ecommerce, project-management, and settings sections. Open any `.html` file directly in a browser — no server or build step required.
 
 ## Pages
 
@@ -18,8 +18,8 @@ A pixel-faithful, self-contained clone of the Shadcnblocks Admin Kit , a multi-p
 | `ecommerce/dashboard-7.html` | "Dashboard Overview" with date range and platform filter |
 | `ecommerce/dashboard-8.html` | $485 k revenue with MoM delta and conversion rate |
 | `ecommerce/dashboard-9.html` | Tabbed view: Overview / Orders / Products / Customers / Analytics |
-| `original/users.html` | Users data table , 30 rows, 10 per page, status + role badges, sort, filter, row select |
-| `original/tasks.html` | Tasks data table , 100 rows, 10 per page, type / status / priority badges |
+| `original/users.html` | Users data table — 30 rows, 10 per page, status + role badges, sort, filter, row select |
+| `original/tasks.html` | Tasks data table — 100 rows, 10 per page, type / status / priority badges |
 
 ## Stack
 
@@ -35,10 +35,10 @@ A pixel-faithful, self-contained clone of the Shadcnblocks Admin Kit , a multi-p
 No installation or build step is required. Open any page directly:
 
 ```sh
-# Option 1 , open the entry point straight in your browser
+# Option 1 — open the entry point straight in your browser
 open index.html
 
-# Option 2 , serve from a local static server (avoids any file:// quirks)
+# Option 2 — serve from a local static server (avoids any file:// quirks)
 python3 -m http.server 8080
 # then visit http://localhost:8080
 ```
@@ -53,8 +53,8 @@ Navigate between all 11 pages using the sidebar. The theme toggle (top-right) sw
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip / Shadcnblocks , <https://shadcnblocks-admin.vercel.app/>
+**Original:** Cruip / Shadcnblocks — <https://shadcnblocks-admin.vercel.app/>
 
 ---
 
-Part of the [Templates](../../) collection in the [claude-directory](../../../../) , an open-source gallery of UI templates and components. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../) collection in the [claude-directory](../../../../) — an open-source gallery of UI templates and components. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -18,7 +18,7 @@ ENLIGHTR IS A PREMIUM MULTI-PAGE EDUCATIONAL PLATFORM / ONLINE COURSE TEMPLATE B
 - BASE-800: `#1f2937`
 - BASE-900: `#111827`
 - BASE-950: `#030712`
-- ACCENT-100: `#f0fdf4` (light green tint , accent color is green-adjacent)
+- ACCENT-100: `#f0fdf4` (light green tint — accent color is green-adjacent)
 - ACCENT-200: `#bbf7d0`
 - ACCENT-400: `#4ade80`
 - ACCENT-500: `#22c55e`
@@ -37,10 +37,10 @@ ENLIGHTR IS A PREMIUM MULTI-PAGE EDUCATIONAL PLATFORM / ONLINE COURSE TEMPLATE B
 
 ### FONTS
 - BODY / UI: `InterVariable, sans-serif` (via rsms.me/inter)
-- DISPLAY (HEADINGS, LOGO, UPPERCASE LABELS): `"Instrument Serif"` italic (Google Fonts) , used for italic display text
+- DISPLAY (HEADINGS, LOGO, UPPERCASE LABELS): `"Instrument Serif"` italic (Google Fonts) — used for italic display text
 - MONOSPACE: `"Space Mono", monospace` (Google Fonts)
-- DISPLAY UPPERCASE: `Clash Grotesk` (via fontshare.com) , used for uppercase section headings
-- ACCENT DECORATIVE: `"Love Ya Like A Sister"` (Google Fonts) , rare accent use
+- DISPLAY UPPERCASE: `Clash Grotesk` (via fontshare.com) — used for uppercase section headings
+- ACCENT DECORATIVE: `"Love Ya Like A Sister"` (Google Fonts) — rare accent use
 
 ### TYPE SCALE
 - H1 (HERO): 4XL → 6XL RESPONSIVE (2.25REM → 3.75REM), UPPERCASE, FONT-DISPLAY, FONT-MEDIUM
@@ -65,35 +65,35 @@ ENLIGHTR IS A PREMIUM MULTI-PAGE EDUCATIONAL PLATFORM / ONLINE COURSE TEMPLATE B
 
 ### PAGES DISCOVERED
 
-1. **HOME** (`index.html`) , Landing page
+1. **HOME** (`index.html`) — Landing page
    - FIXED NAVIGATION BAR (TRANSPARENT → BLUR ON SCROLL) WITH LOGO + LINKS + CTA
    - HERO SECTION WITH H1, DESCRIPTION, CTA LINKS, AND 9-COLUMN PHOTO GRID OF CUSTOMERS/STATS
    - "EVERYTHING YOU NEED" TEXT SECTION WITH LONG DESCRIPTION
-   - "WHO IT'S FOR" SECTION , ACCENT-100 BG, 3-COL GRID, STICKY SIDEBAR, LIST OF AUDIENCE TYPES
-   - "COURSE EXPERIENCE" SECTION , BLUE-100 BG, 3-COL GRID, STICKY SIDEBAR, FEATURE LIST
-   - "LATEST COURSES" SECTION , COURSE CARDS GRID (2 COURSES SHOWN)
-   - STATS ROW , 4 STAT BOXES (4200+ STUDENTS, 4.9/5 RATING, 48 LESSONS, 12+ HOURS)
-   - "OUR STUDENTS" TESTIMONIALS , KEEN SLIDER CAROUSEL WITH PREV/NEXT CONTROLS
-   - FOOTER , LOGO, DESCRIPTION, 4-COLUMN LINK GRID
+   - "WHO IT'S FOR" SECTION — ACCENT-100 BG, 3-COL GRID, STICKY SIDEBAR, LIST OF AUDIENCE TYPES
+   - "COURSE EXPERIENCE" SECTION — BLUE-100 BG, 3-COL GRID, STICKY SIDEBAR, FEATURE LIST
+   - "LATEST COURSES" SECTION — COURSE CARDS GRID (2 COURSES SHOWN)
+   - STATS ROW — 4 STAT BOXES (4200+ STUDENTS, 4.9/5 RATING, 48 LESSONS, 12+ HOURS)
+   - "OUR STUDENTS" TESTIMONIALS — KEEN SLIDER CAROUSEL WITH PREV/NEXT CONTROLS
+   - FOOTER — LOGO, DESCRIPTION, 4-COLUMN LINK GRID
 
-2. **PRICING** (`pricing.html`) , Pricing plans
+2. **PRICING** (`pricing.html`) — Pricing plans
    - NAVIGATION (SAME AS HOME)
    - PRICING HEADER + PLAN CARDS (FREE VS PRO)
    - FAQ ACCORDION SECTION
    - FOOTER
 
-3. **COURSES** (`courses.html`) , Course catalog
+3. **COURSES** (`courses.html`) — Course catalog
    - NAVIGATION
    - COURSES LISTING GRID WITH FILTER/SEARCH
    - COURSE CARDS (PRICE, DATE, DURATION, LESSONS, TEACHER, ENROLL CTA)
    - FOOTER
 
-4. **SIGN IN** (`sign-in.html`) , Authentication form
+4. **SIGN IN** (`sign-in.html`) — Authentication form
    - CENTERED FORM WITH EMAIL + PASSWORD + SUBMIT
    - LOGO AT TOP
    - LINK TO SIGN UP / FORGOT PASSWORD
 
-5. **SYSTEM/OVERVIEW** (`system-overview.html`) , Design system reference page
+5. **SYSTEM/OVERVIEW** (`system-overview.html`) — Design system reference page
    - BUTTONS, COLORS, TYPOGRAPHY SHOWCASE
 
 ### SHARED CHROME

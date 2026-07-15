@@ -1,4 +1,4 @@
-# mėntality , Cinematic Mental-Health Landing Hero
+# mėntality — Cinematic Mental-Health Landing Hero
 
 ## Overview
 
@@ -8,8 +8,8 @@ Build a modern, highly polished React landing page using Vite, Tailwind CSS, and
 
 - **Framework:** React 19 (`react` `^19.1.0`, `react-dom` `^19.1.0`) with `StrictMode`.
 - **Build tool:** Vite `^6.3.5` with `@vitejs/plugin-react` `^4.5.2`.
-- **Styling:** Tailwind CSS `^4.1.10` via the `@tailwindcss/vite` `^4.1.10` plugin (CSS-first `@theme` configuration , no `tailwind.config.js`).
-- **Animation:** Motion `^12.18.1` (imported from `motion/react` , `motion`, `AnimatePresence`).
+- **Styling:** Tailwind CSS `^4.1.10` via the `@tailwindcss/vite` `^4.1.10` plugin (CSS-first `@theme` configuration — no `tailwind.config.js`).
+- **Animation:** Motion `^12.18.1` (imported from `motion/react` — `motion`, `AnimatePresence`).
 - **Language/types:** TypeScript `^5.8.3`, `@types/react` `^19.1.8`, `@types/react-dom` `^19.1.6`.
 - **Fonts:** Inter (sans / body) and Outfit (display) from Google Fonts.
 - **Notable techniques:** glassmorphism (`backdrop-blur`), gradient masking to blend video into the base color, `clamp()` fluid headline sizing, an animated SVG hamburger, a blinking inline "eye/pupil" pill, and an animated language toggle.
@@ -32,8 +32,8 @@ Build a modern, highly polished React landing page using Vite, Tailwind CSS, and
 ### `index.html`
 
 - `<html lang="en">`, UTF-8, responsive viewport meta.
-- Meta description: `mėntality , information and resources to help you manage your mental wellbeing.`
-- Title: `mėntality , mental health tools`.
+- Meta description: `mėntality — information and resources to help you manage your mental wellbeing.`
+- Title: `mėntality — mental health tools`.
 - Favicon is an inline SVG data URI of the four-circle clover mark (fill `#1a1a1a`):
 
 ```html
@@ -46,7 +46,7 @@ Build a modern, highly polished React landing page using Vite, Tailwind CSS, and
 
 - Mounts `<div id="root"></div>` and loads `<script type="module" src="/src/main.tsx"></script>`.
 
-### Entry point , `src/main.tsx`
+### Entry point — `src/main.tsx`
 
 ```tsx
 import { StrictMode } from "react";
@@ -61,7 +61,7 @@ createRoot(document.getElementById("root")!).render(
 );
 ```
 
-### Typography & global CSS , `src/index.css`
+### Typography & global CSS — `src/index.css`
 
 - Import Inter and Outfit from Google Fonts, then import Tailwind:
 
@@ -91,7 +91,7 @@ createRoot(document.getElementById("root")!).render(
 }
 ```
 
-## Component Structure , `src/App.tsx`
+## Component Structure — `src/App.tsx`
 
 Import `Navbar` and `Hero` and return a wrapper `div` containing `<Navbar />` and `<main><Hero /></main>`. The wrapper carries the classes `min-h-screen bg-bg-base selection:bg-brand-green selection:text-black`.
 
@@ -111,7 +111,7 @@ export default function App() {
 }
 ```
 
-## Navbar , `src/components/Navbar.tsx`
+## Navbar — `src/components/Navbar.tsx`
 
 A fixed, glassmorphic header that fades from a translucent light gray into transparency.
 
@@ -120,9 +120,9 @@ A fixed, glassmorphic header that fades from a translucent light gray into trans
 - `<header>` styling: `fixed top-0 left-0 w-full z-50 py-6 md:py-10 bg-gradient-to-b from-[#f1f1f1]/80 to-transparent backdrop-blur-[2px]`.
 - Inner `<nav aria-label="Primary">` is a 12-column grid: `grid grid-cols-12 max-w-7xl mx-auto items-center gap-x-4 md:gap-x-8 px-8 md:px-16 lg:px-20`.
 
-### Left , brand (cols 1–3)
+### Left — brand (cols 1–3)
 
-- An `<a href="#">` brand link: `col-span-6 md:col-span-3 flex items-center gap-2.5 group`, `aria-label="mėntality , home"`.
+- An `<a href="#">` brand link: `col-span-6 md:col-span-3 flex items-center gap-2.5 group`, `aria-label="mėntality — home"`.
 - A geometric flower/clover SVG icon beside the brand name `mėntality` set in the display font.
 - Brand wordmark span: `font-display text-xl md:text-2xl font-medium tracking-tight text-[#1a1a1a]` with text `mėntality`.
 
@@ -145,14 +145,14 @@ function CloverIcon({ className = "w-6 h-6" }: { className?: string }) {
 
 - Icon instance classes: `w-6 h-6 md:w-7 md:h-7 transition-transform duration-500 ease-out group-hover:rotate-90`.
 
-### Center , desktop links (cols 4–9)
+### Center — desktop links (cols 4–9)
 
 - Defined once as a constant: `const NAV_LINKS = ["service", "patient resources", "about us", "education center"];`
 - Rendered in a `<ul>`: `hidden md:flex col-span-6 items-center justify-center gap-6 lg:gap-9` (desktop only; hidden on mobile).
 - Each link `<a href="#">`: `text-[13px] lowercase tracking-wide text-zinc-600 hover:text-[#1a1a1a] transition-colors duration-200 whitespace-nowrap`.
 - Link labels (lowercase): "service", "patient resources", "about us", "education center".
 
-### Right , actions (cols 10–12)
+### Right — actions (cols 10–12)
 
 - Container: `col-span-6 md:col-span-3 flex items-center justify-end gap-4 lg:gap-6`.
 - A "find help" anchor link (desktop only): `hidden md:inline-block text-[13px] lowercase tracking-wide text-zinc-600 hover:text-[#1a1a1a] transition-colors duration-200 whitespace-nowrap`.
@@ -177,7 +177,7 @@ Wrapped in `AnimatePresence`; rendered when `open` is true.
 - A `<ul className="flex flex-col">` iterating over `[...NAV_LINKS, "find help"]`. Each item is a `motion.li` with `initial={{ opacity: 0, x: -10 }}`, `animate={{ opacity: 1, x: 0 }}`, `transition={{ delay: 0.06 * i + 0.08, duration: 0.3 }}`, classes `border-b border-black/[0.06] last:border-none`. Each contains an `<a href="#">` (closing the drawer on click) with classes `block py-3.5 font-display text-lg lowercase text-[#1a1a1a]`.
 - A trailing `motion.a` "get started" CTA: `initial={{ opacity: 0, y: 8 }}`, `animate={{ opacity: 1, y: 0 }}`, `transition={{ delay: 0.4, duration: 0.3 }}`, classes `mt-5 flex items-center justify-center gap-2 bg-[#1a1a1a] text-white text-sm lowercase tracking-wide rounded-full py-3.5`. Text `get started` followed by a `&rarr;` (→) span (`aria-hidden="true"`). Closes the drawer on click.
 
-## Hero , `src/components/Hero.tsx`
+## Hero — `src/components/Hero.tsx`
 
 ### Section shell
 
@@ -198,7 +198,7 @@ Ensure there are no artificial margins/padding below the video so it occupies ex
     "/assets/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4";
   ```
 
-  This was originally sourced from the CloudFront URL `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4`. (Host/scheme lowercased; the path is reproduced verbatim from the original prompt, which was all-caps , the local vendored file is the ground-truth runtime source.)
+  This was originally sourced from the CloudFront URL `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4`. (Host/scheme lowercased; the path is reproduced verbatim from the original prompt, which was all-caps — the local vendored file is the ground-truth runtime source.)
 
 - **Gradient mask:** inside the wrapper, below the video, add `<div className="absolute top-0 left-0 w-full h-24 sm:h-32 bg-gradient-to-b from-bg-base to-transparent"></div>` to smoothly blend the top of the video into the `#edeef5` background.
 
@@ -212,12 +212,12 @@ Ensure there are no artificial margins/padding below the video so it occupies ex
 - Animation: `initial={{ opacity: 0, y: 15 }}`, `animate={{ opacity: 1, y: 0 }}`, `transition={{ duration: 0.8 }}` (slide-up fade).
 - Classes: `font-display font-medium tracking-[-0.02em] text-[clamp(30px,4.3vw,56px)] leading-[1.12]`.
 - Exact text formatting (with per-segment colors and line breaks):
-  - `[#1a1a1a]` , "Remix: Mentality offers"
-  - `[#8e8e8e]` , "information"
+  - `[#1a1a1a]` — "Remix: Mentality offers"
+  - `[#8e8e8e]` — "information"
   - *(line break)*
-  - `[#8e8e8e]` , "and resources to help you manage"
+  - `[#8e8e8e]` — "and resources to help you manage"
   - *(line break)*
-  - `[#8e8e8e]` , "your" `<EyePill />` "mental wellbeing."
+  - `[#8e8e8e]` — "your" `<EyePill />` "mental wellbeing."
 
 ```tsx
 <motion.h1 /* … */ className="font-display font-medium tracking-[-0.02em] text-[clamp(30px,4.3vw,56px)] leading-[1.12]">
@@ -234,7 +234,7 @@ Ensure there are no artificial margins/padding below the video so it occupies ex
 </motion.h1>
 ```
 
-### EyePill , inline "pupil" element
+### EyePill — inline "pupil" element
 
 Between "your" and "mental", render an inline pill-shaped visual: a rounded-full bordered capsule containing a tiny solid black dot that blinks.
 
@@ -325,11 +325,11 @@ function LanguagePill() {
 }
 ```
 
-- Default selected language is `en`. The two options `pl` and `en` are separated by an `&mdash;` (,) divider. The selected option is `bg-[#1a1a1a] text-white`; unselected is `text-zinc-600 hover:text-[#1a1a1a]`.
+- Default selected language is `en`. The two options `pl` and `en` are separated by an `&mdash;` (—) divider. The selected option is `bg-[#1a1a1a] text-white`; unselected is `text-zinc-600 hover:text-[#1a1a1a]`.
 
-**Bottom-left corner , "2024".** A `motion.span`: `initial={{ opacity: 0 }}`, `animate={{ opacity: 1 }}`, `transition={{ duration: 0.7, delay: 0.6 }}`, classes `absolute bottom-5 left-6 md:left-8 z-20 text-[11px] tracking-[0.18em] text-zinc-700/80 select-none`. Text: `2024`.
+**Bottom-left corner — "2024".** A `motion.span`: `initial={{ opacity: 0 }}`, `animate={{ opacity: 1 }}`, `transition={{ duration: 0.7, delay: 0.6 }}`, classes `absolute bottom-5 left-6 md:left-8 z-20 text-[11px] tracking-[0.18em] text-zinc-700/80 select-none`. Text: `2024`.
 
-**Bottom-right corner , "mental health tools".** A `motion.span`: `initial={{ opacity: 0 }}`, `animate={{ opacity: 1 }}`, `transition={{ duration: 0.7, delay: 0.6 }}`, classes `absolute bottom-5 right-6 md:right-8 z-20 text-[11px] lowercase tracking-[0.18em] text-zinc-700/80 select-none`. Text: `mental health tools`.
+**Bottom-right corner — "mental health tools".** A `motion.span`: `initial={{ opacity: 0 }}`, `animate={{ opacity: 1 }}`, `transition={{ duration: 0.7, delay: 0.6 }}`, classes `absolute bottom-5 right-6 md:right-8 z-20 text-[11px] lowercase tracking-[0.18em] text-zinc-700/80 select-none`. Text: `mental health tools`.
 
 ## Color Palette
 

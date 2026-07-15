@@ -1,4 +1,4 @@
-# Solstice Studio , Warm Editorial Craft UX Designer Portfolio (Vanilla HTML/CSS/JS, Static)
+# Solstice Studio — Warm Editorial Craft UX Designer Portfolio (Vanilla HTML/CSS/JS, Static)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -6,7 +6,7 @@ A single-page, light-mode portfolio landing page for a fictional product and UX 
 
 ## Run
 
-This is a static project , open `index.html` in a browser, or serve the folder:
+This is a static project — open `index.html` in a browser, or serve the folder:
 
 ```sh
 python3 -m http.server 8000
@@ -16,4 +16,4 @@ See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
 
 ---
 
-Part of the [Portfolios](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Portfolios](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

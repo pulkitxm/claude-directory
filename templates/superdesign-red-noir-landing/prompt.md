@@ -1,12 +1,12 @@
-# SUPERDESIGN "RED NOIR" LANDING PAGE , PROJECT PROMPT
+# SUPERDESIGN "RED NOIR" LANDING PAGE — PROJECT PROMPT
 
-BUILD A SINGLE-PAGE REACT + TANSTACK START + TYPESCRIPT + TAILWIND APP THAT EXACTLY RECREATES THE "RED NOIR" SUPERDESIGN AI LANDING PAGE SPECIFIED BELOW. THE GOAL IS A SAME-TO-SAME, PIXEL-FAITHFUL RECREATION OF THE REFERENCE. USE LUCIDE-REACT FOR ICONS (THE REFERENCE USES `lucide:*` ICONS VIA ICONIFY , MAP EACH TO THE MATCHING `lucide-react` COMPONENT). IMPLEMENT THE PAGE IN `SRC/ROUTES/INDEX.TSX` WITH HELPER COMPONENTS IN `SRC/COMPONENTS/`. USE THE EXACT COLORS, FONTS, SIZES, AND ANIMATION TIMINGS GIVEN. DO NOT INVENT EXTRA SECTIONS OR DESIGN TOKENS.
+BUILD A SINGLE-PAGE REACT + TANSTACK START + TYPESCRIPT + TAILWIND APP THAT EXACTLY RECREATES THE "RED NOIR" SUPERDESIGN AI LANDING PAGE SPECIFIED BELOW. THE GOAL IS A SAME-TO-SAME, PIXEL-FAITHFUL RECREATION OF THE REFERENCE. USE LUCIDE-REACT FOR ICONS (THE REFERENCE USES `lucide:*` ICONS VIA ICONIFY — MAP EACH TO THE MATCHING `lucide-react` COMPONENT). IMPLEMENT THE PAGE IN `SRC/ROUTES/INDEX.TSX` WITH HELPER COMPONENTS IN `SRC/COMPONENTS/`. USE THE EXACT COLORS, FONTS, SIZES, AND ANIMATION TIMINGS GIVEN. DO NOT INVENT EXTRA SECTIONS OR DESIGN TOKENS.
 
 REFERENCE LIVE URL: https://component-4739694a-be35-4493-bdef-f43fd1d095ec.preview.superdesign.dev/?projectId=c636c30f-5d52-41e7-a197-20eb42f1c72d
 
 ---
 
-## DESIGN LANGUAGE , "RED NOIR"
+## DESIGN LANGUAGE — "RED NOIR"
 
 - Pure black canvas (`#000000`) with a deep maroon top glow (vertical gradient `from #1a0505 to black`).
 - Single saturated accent: **`--accent-red: #ef233c`** (with glow `rgba(239,35,60,0.5)`). NOTHING else is colored except small per-card icon accents (blue `#3b82f6`, yellow `#facc15`/`text-yellow-400`, purple `#a855f7`/`text-purple-400`) inside the bento grid.
@@ -16,7 +16,7 @@ REFERENCE LIVE URL: https://component-4739694a-be35-4493-bdef-f43fd1d095ec.previ
 ## GLOBAL BACKGROUND (fixed, z-0, pointer-events-none, behind everything)
 
 1. `from-[#1a0505] to-black` vertical gradient fill.
-2. **Two parallax starfields** built from `box-shadow` dot clusters on a 1px/2px element, each translated upward via keyframes `animStar { from translateY(0) to translateY(-2000px) }` , layer 1 `50s linear infinite`, layer 2 `80s linear infinite`. Reproduce these star coordinates exactly:
+2. **Two parallax starfields** built from `box-shadow` dot clusters on a 1px/2px element, each translated upward via keyframes `animStar { from translateY(0) to translateY(-2000px) }` — layer 1 `50s linear infinite`, layer 2 `80s linear infinite`. Reproduce these star coordinates exactly:
    - stars-1: `234px 124px, 654px 345px, 876px 12px, 1200px 800px, 400px 1500px, 1800px 200px, 100px 1000px, 900px 1900px, 500px 600px, 1400px 100px, 300px 400px, 1600px 1200px` (all `#fff`).
    - stars-2: `123px 456px, 789px 234px, 456px 890px, 1100px 300px, 200px 1200px, 1500px 500px, 600px 1700px, 1300px 900px` (all `#fff`).
 3. A centered `800x800` red radial glow: `bg-red-600/5 rounded-full blur-[120px]`, absolutely centered.
@@ -28,8 +28,8 @@ A fixed top **gradient blur header** sits at z-40: `height:120px`, `linear-gradi
 
 Pill nav, `max-w-5xl mx-auto`, `bg-black/60 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-2xl`, flex justify-between.
 - Left: a `w-5 h-5 bg-[#ef233c] rounded-sm rotate-45` diamond + "Superdesign" in `font-manrope font-bold text-lg tracking-tight`.
-- Center (hidden below md): links **Product, Solutions, Resources, Pricing** , `text-sm text-zinc-400 hover:text-white`.
-- Right: "Log In" (hidden below md, `text-zinc-300 hover:text-white`) and a **"Get Access →"** button , a rounded-full button with an animated conic-gradient red sweep on hover (`spin 3s linear infinite`, red conic, opacity 0 → group-hover 100), an inner black fill `inset-[1px]`, and uppercase bold `text-xs tracking-wider` label with a `lucide:arrow-right` that nudges right on hover.
+- Center (hidden below md): links **Product, Solutions, Resources, Pricing** — `text-sm text-zinc-400 hover:text-white`.
+- Right: "Log In" (hidden below md, `text-zinc-300 hover:text-white`) and a **"Get Access →"** button — a rounded-full button with an animated conic-gradient red sweep on hover (`spin 3s linear infinite`, red conic, opacity 0 → group-hover 100), an inner black fill `inset-[1px]`, and uppercase bold `text-xs tracking-wider` label with a `lucide:arrow-right` that nudges right on hover.
 
 ## HERO (`min-h-screen`, centered, `pt-32 pb-20 px-6`)
 
@@ -38,14 +38,14 @@ Each element fades in with keyframe `fade-in-up { opacity 0 translateY(20px) →
 1. **Pill badge**: `rounded-full bg-white/5 border border-white/10 backdrop-blur-md`, a pinging red dot (`animate-ping` halo + solid `#ef233c` core), text "Superdesign AI 2.0 is now live" (`text-xs text-red-100/90 font-manrope`), trailing `lucide:arrow-right` red.
 2. **Headline** `text-6xl md:text-8xl font-semibold tracking-tighter font-manrope leading-[1.1]`, two lines, each filled with `bg-gradient-to-b from-white via-white to-white/40` clipped text:
    - Line 1: "Design Intelligence"
-   - Line 2: "for the **Future**" , where "Future" is `text-[#ef233c]` with a hand-drawn underline SVG beneath it: `<path d="M0 5 Q 50 10 100 5">` stroke currentColor width 2, `opacity-60`, positioned `-bottom-2`.
+   - Line 2: "for the **Future**" — where "Future" is `text-[#ef233c]` with a hand-drawn underline SVG beneath it: `<path d="M0 5 Q 50 10 100 5">` stroke currentColor width 2, `opacity-60`, positioned `-bottom-2`.
 3. **Subhead** `text-xl md:text-2xl text-zinc-400 max-w-2xl`: "Superdesign blends advanced generative algorithms with human creativity to ship world-class products 10x faster."
 4. **CTA row** (flex col → md:row, gap-6):
-   - **Primary "Start Creating →"** , the signature **shiny-cta**: a rounded-full button, black `padding-box` fill, a `conic-gradient(from var(--gradient-angle), transparent 0%, #ef233c 5–30%, transparent 40–100%)` `border-box` 2px border, animated via `@property --gradient-angle` and `border-spin 2.5s linear infinite`, plus a faint dotted radial sparkle overlay (`::before`, `radial-gradient white 0.5px`, `bg-size 4px 4px`, opacity 0.1). Label white `font-medium` + arrow that translates on hover.
-   - **Secondary "View on GitHub"** , `bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-full px-8 py-4`, `lucide:github` icon, hover → `bg-zinc-800 text-white`.
+   - **Primary "Start Creating →"** — the signature **shiny-cta**: a rounded-full button, black `padding-box` fill, a `conic-gradient(from var(--gradient-angle), transparent 0%, #ef233c 5–30%, transparent 40–100%)` `border-box` 2px border, animated via `@property --gradient-angle` and `border-spin 2.5s linear infinite`, plus a faint dotted radial sparkle overlay (`::before`, `radial-gradient white 0.5px`, `bg-size 4px 4px`, opacity 0.1). Label white `font-medium` + arrow that translates on hover.
+   - **Secondary "View on GitHub"** — `bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-full px-8 py-4`, `lucide:github` icon, hover → `bg-zinc-800 text-white`.
 5. **Logo strip** (`mt-32`, `border-y border-white/5 bg-white/[0.02] py-10`, `opacity-60 hover:opacity-100`): label "INTEGRATED WITH:" (`text-zinc-500 uppercase tracking-widest text-sm font-bold`) followed by 5 faux logos (a `w-6 h-6 bg-white/20 rounded-full` dot + name, `font-manrope font-semibold`): **OpenAI, Figma, React, Vercel, Stripe**.
 
-## FEATURES , BENTO GRID (`py-32 px-6`, `max-w-7xl`)
+## FEATURES — BENTO GRID (`py-32 px-6`, `max-w-7xl`)
 
 Centered heading block (`fade-up`): h2 `text-4xl md:text-5xl font-semibold font-manrope` = "The Operating System for" / "**Modern Design Teams**" (second line `text-[#ef233c]`); sub `text-lg text-zinc-400 font-light` = "Replace your fragmented toolset with one cohesive platform driven by AI."
 
@@ -63,9 +63,9 @@ Grid: `grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4`, `lg:h-[700px]`. Every c
 
 Centered heading "Simple, Transparent Pricing" (`text-4xl md:text-5xl font-semibold font-manrope`) + "Start for free, scale as you grow." (`text-zinc-400`).
 Three cards `grid md:grid-cols-3 gap-8`, each `rounded-xl p-8 flex flex-col`:
-- **Starter** , `border-zinc-800 bg-black`, "For individuals exploring AI design possibilities.", **$0/mo**, features (each `lucide:check` red): "1 Project", "Basic AI Generation", "Community Support"; button "GET STARTED" (`bg-white/5 border border-white/10` uppercase).
-- **Pro** (FEATURED) , `border-[#ef233c] bg-zinc-900/40 shadow-[0_0_30px_rgba(239,35,60,0.1)] scale-105 z-10`, a "RECOMMENDED" pill badge centered on the top edge (`bg-[#ef233c] text-white text-[10px] uppercase tracking-widest`), "For professional designers and high-growth freelancers.", **$49/mo**, features: "Unlimited Projects", "Advanced AI Models", "Direct Code Export", "Priority Support"; button "GO PRO" (`bg-[#ef233c] hover:bg-red-700`).
-- **Team** , `border-zinc-800 bg-black`, "For scale-up design teams and creative agencies.", **$199/mo**, features: "Team Collaboration", "Custom Design Systems", "API Access & SSO"; button "CONTACT SALES".
+- **Starter** — `border-zinc-800 bg-black`, "For individuals exploring AI design possibilities.", **$0/mo**, features (each `lucide:check` red): "1 Project", "Basic AI Generation", "Community Support"; button "GET STARTED" (`bg-white/5 border border-white/10` uppercase).
+- **Pro** (FEATURED) — `border-[#ef233c] bg-zinc-900/40 shadow-[0_0_30px_rgba(239,35,60,0.1)] scale-105 z-10`, a "RECOMMENDED" pill badge centered on the top edge (`bg-[#ef233c] text-white text-[10px] uppercase tracking-widest`), "For professional designers and high-growth freelancers.", **$49/mo**, features: "Unlimited Projects", "Advanced AI Models", "Direct Code Export", "Priority Support"; button "GO PRO" (`bg-[#ef233c] hover:bg-red-700`).
+- **Team** — `border-zinc-800 bg-black`, "For scale-up design teams and creative agencies.", **$199/mo**, features: "Team Collaboration", "Custom Design Systems", "API Access & SSO"; button "CONTACT SALES".
 Price rendering: small `$` (`text-zinc-500`), `text-5xl font-bold text-white` number, `/mo` (`text-zinc-500 text-sm`). Buttons are full-width, uppercase, `tracking-wider`, `text-sm font-bold`.
 
 ## CTA WAITLIST (`py-32 px-6 text-center bg-zinc-950/40`)

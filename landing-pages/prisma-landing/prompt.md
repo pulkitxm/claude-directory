@@ -1,16 +1,16 @@
-# Prisma , Creative Studio Landing Page
+# Prisma — Creative Studio Landing Page
 
 ## Overview
 
-Build a single-page, dark, moody and cinematic landing page for a creative studio called **Prisma**. The page has three stacked sections , **Hero**, **About**, and **Features** , over a black background with a warm cream accent palette. Animations use Framer Motion (pull-up text reveals, fade-ins, scroll-linked character opacity, and staggered card entrances) and icons come from Lucide.
+Build a single-page, dark, moody and cinematic landing page for a creative studio called **Prisma**. The page has three stacked sections — **Hero**, **About**, and **Features** — over a black background with a warm cream accent palette. Animations use Framer Motion (pull-up text reveals, fade-ins, scroll-linked character opacity, and staggered card entrances) and icons come from Lucide.
 
 ## Tech Stack
 
 - **Framework:** Vite + React 18.
 - **Language:** TypeScript.
 - **Styling:** Tailwind CSS 3.
-- **Animation:** Framer Motion (`framer-motion`) , pull-up text, fade-in, scroll-linked opacity, card entrances.
-- **Icons:** Lucide (`lucide-react`) , `ArrowRight`, `Check`.
+- **Animation:** Framer Motion (`framer-motion`) — pull-up text, fade-in, scroll-linked opacity, card entrances.
+- **Icons:** Lucide (`lucide-react`) — `ArrowRight`, `Check`.
 - **Fonts:** Almarai (weights 300, 400, 700, 800) as the global default; Instrument Serif (italic only) for accent text.
 - **Notable techniques:** inline SVG `feTurbulence` noise textures, `useInView`-triggered word reveals, `useScroll` + `useTransform` per-character scroll-linked opacity.
 
@@ -20,8 +20,8 @@ Build a single-page, dark, moody and cinematic landing page for a creative studi
 
 Load two Google Fonts in the document head:
 
-- **Almarai** (weights 300, 400, 700, 800) , used as the global default font.
-- **Instrument Serif** (italic only) , used for italic accent text in the About section.
+- **Almarai** (weights 300, 400, 700, 800) — used as the global default font.
+- **Instrument Serif** (italic only) — used for italic accent text in the About section.
 
 ### Global CSS (`src/index.css`)
 
@@ -59,8 +59,8 @@ Two SVG noise-texture utility classes, both built from inline SVG data URIs usin
 }
 ```
 
-- `.noise-overlay` , fractal noise (`baseFrequency` 0.85, `numOctaves` 3), used as an overlay on the hero video.
-- `.bg-noise` , fractal noise (`baseFrequency` 0.9, `numOctaves` 4), used as a subtle background in the Features section.
+- `.noise-overlay` — fractal noise (`baseFrequency` 0.85, `numOctaves` 3), used as an overlay on the hero video.
+- `.bg-noise` — fractal noise (`baseFrequency` 0.9, `numOctaves` 4), used as a subtle background in the Features section.
 
 ### Tailwind config (`tailwind.config.js`)
 
@@ -154,12 +154,12 @@ Wrapper: `absolute bottom-0 left-0 right-0 z-10`. Inner grid: `grid grid-cols-12
   The superscript asterisk sits on the final "a" of "Prisma" via `absolute -right-[0.3em] top-[0.65em] text-[0.31em]`.
 
 - **Right 4 columns** (`col-span-12 flex flex-col items-start gap-5 sm:gap-6 md:col-span-4 md:pb-10`):
-  - **Description paragraph** (`motion.p`): copy verbatim ,
+  - **Description paragraph** (`motion.p`): copy verbatim —
     > "Prisma is a worldwide network of visual artists, filmmakers and storytellers bound not by place, status or labels but by passion and hunger to unlock potential through our unique perspectives."
 
     Classes `max-w-md text-xs text-primary/70 sm:text-sm md:text-base`, inline `style={{ lineHeight: 1.2 }}`. Animation: `initial={{ y: 20, opacity: 0 }}` → `animate={{ y: 0, opacity: 1 }}`, `transition={{ delay: 0.5, duration: 0.9, ease: EASE }}`.
   - **CTA button** (`motion.button`): pill shape `group flex items-center gap-2 rounded-full bg-primary py-1.5 pl-5 pr-1.5 transition-all duration-300 hover:gap-3`.
-    - Label span: `Join the lab` , `text-sm font-medium text-black sm:text-base`.
+    - Label span: `Join the lab` — `text-sm font-medium text-black sm:text-base`.
     - Trailing black circle: `flex h-9 w-9 items-center justify-center rounded-full bg-black transition-transform duration-300 group-hover:scale-110 sm:h-10 sm:w-10`, containing an `ArrowRight` icon `h-4 w-4 sm:h-5 sm:w-5` with inline `style={{ color: '#E1E0CC' }}`.
     - Hover: gap increases (`hover:gap-3`) and the circle scales up (`group-hover:scale-110`).
     - Animation: `initial={{ y: 20, opacity: 0 }}` → `animate={{ y: 0, opacity: 1 }}`, `transition={{ delay: 0.7, duration: 0.9, ease: EASE }}`.
@@ -170,9 +170,9 @@ Wrapper: `absolute bottom-0 left-0 right-0 z-10`. Inner grid: `grid grid-cols-12
 
 - **Top label:** `<p className="text-[10px] text-primary sm:text-xs">Visual arts</p>`.
 - **Main heading** uses `WordsPullUpMultiStyle` (wrapper `mt-6 sm:mt-8`), color `#E1E0CC`, container classes `mx-auto max-w-3xl text-3xl leading-[0.95] sm:text-4xl sm:leading-[0.9] md:text-5xl lg:text-6xl xl:text-7xl`, with three segments:
-  1. `I am Marcus Chen,` , `font-normal` (Almarai)
-  2. `a self-taught director.` , `font-serif italic` (Instrument Serif italic)
-  3. `I have skills in color grading, visual effects, and narrative design.` , `font-normal`
+  1. `I am Marcus Chen,` — `font-normal` (Almarai)
+  2. `a self-taught director.` — `font-serif italic` (Instrument Serif italic)
+  3. `I have skills in color grading, visual effects, and narrative design.` — `font-normal`
 
   Each word animates in with the pull-up effect (`y: 20 → 0`, staggered `delay: i * 0.08`).
 
@@ -183,7 +183,7 @@ Wrapper: `absolute bottom-0 left-0 right-0 z-10`. Inner grid: `grid grid-cols-12
 
 - The paragraph ref drives `useScroll({ target: ref, offset: ['start 0.8', 'end 0.2'] })`.
 - Text is split into words (each word a `span` with `inline-block whitespace-pre`), and each word is split into individual characters, each wrapped in an `AnimatedLetter` `motion.span`.
-- Per-character staggering: `charProgress = index / totalChars`; opacity is `useTransform(progress, [charProgress - 0.1, charProgress + 0.05], [0.2, 1])` , so each character's opacity transitions from `0.2` to `1` based on scroll position, creating a progressive text reveal.
+- Per-character staggering: `charProgress = index / totalChars`; opacity is `useTransform(progress, [charProgress - 0.1, charProgress + 0.05], [0.2, 1])` — so each character's opacity transitions from `0.2` to `1` based on scroll position, creating a progressive text reveal.
 
 ```tsx
 function AnimatedLetter({ char, index, totalChars, progress }: AnimatedLetterProps) {
@@ -203,8 +203,8 @@ Shared constant: `const CARD_EASE: [number, number, number, number] = [0.22, 1, 
 
 Inside `mx-auto mb-12 max-w-3xl text-center md:mb-16`, a `WordsPullUpMultiStyle` (color `#E1E0CC`, classes `text-xl font-normal sm:text-2xl md:text-3xl lg:text-4xl`) with two segments:
 
-1. `Studio-grade workflows for visionary creators.` , class `''` (cream / `#E1E0CC`)
-2. `Built for pure vision. Powered by art.` , `text-gray-500`
+1. `Studio-grade workflows for visionary creators.` — class `''` (cream / `#E1E0CC`)
+2. `Built for pure vision. Powered by art.` — `text-gray-500`
 
 ### Card grid
 
@@ -212,7 +212,7 @@ Grid ref drives `useInView(gridRef, { once: true, margin: '-100px' })`. Grid cla
 
 Each card animates in with a staggered entrance: `initial={{ opacity: 0, scale: 0.95 }}` → `animate={{ opacity: 1, scale: 1 }}` (when in view), `transition={{ duration: 0.7, ease: CARD_EASE }}`. The video card uses `delay: 0`; the three content cards use `delay: (i + 1) * 0.15` (i.e. 0.15s, 0.30s, 0.45s).
 
-**Card 1 , video card:** `relative h-[420px] overflow-hidden rounded-2xl md:h-[480px] lg:h-full`.
+**Card 1 — video card:** `relative h-[420px] overflow-hidden rounded-2xl md:h-[480px] lg:h-full`.
 - Full-bleed video: source `/assets/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4` (local asset; vendored from `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4`), `autoPlay loop muted playsInline`, `absolute inset-0 h-full w-full object-cover`.
 - Gradient: `absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent`.
 - Bottom caption: `absolute bottom-5 left-5 right-5 text-base sm:text-lg`, color `#E1E0CC`, text `Your creative canvas.`
@@ -225,15 +225,15 @@ Each card animates in with a staggered entrance: `initial={{ opacity: 0, scale: 
 
 #### Card data (`const CARDS`)
 
-**Card `01` , `Project Storyboard.`**
+**Card `01` — `Project Storyboard.`**
 - Icon: `/assets/hf_20260405_171918_4a5edc79-d78f-4637-ac8b-53c43c220606.webp` (vendored from `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzzbokvigwjottwixh07lwa1p%2Fhf_20260405_171918_4a5edc79-d78f-4637-ac8b-53c43c220606.png&w=1280&q=85`).
 - 4 checklist items with green check icons.
 
-**Card `02` , `Smart Critiques.`**
+**Card `02` — `Smart Critiques.`**
 - Icon: `/assets/hf_20260405_171741_ed9845ab-f5b2-4018-8ce7-07cc01823522.webp` (vendored from `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzzbokvigwjottwixh07lwa1p%2Fhf_20260405_171741_ed9845ab-f5b2-4018-8ce7-07cc01823522.png&w=1280&q=85`).
 - 3 checklist items about AI analysis, creative notes, and tool integrations.
 
-**Card `03` , `Immersion Capsule.`**
+**Card `03` — `Immersion Capsule.`**
 - Icon: `/assets/hf_20260405_171809_f56666dc-c099-4778-ad82-9ad4f209567b.webp` (vendored from `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzzbokvigwjottwixh07lwa1p%2Fhf_20260405_171809_f56666dc-c099-4778-ad82-9ad4f209567b.png&w=1280&q=85`).
 - 3 checklist items about notification silencing, ambient soundscapes, and schedule syncing.
 

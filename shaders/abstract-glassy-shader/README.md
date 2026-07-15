@@ -1,8 +1,8 @@
-# Abstract Glassy Shader , WebGL2 Metaball Component Lab (React + TypeScript + Vite + Tailwind CSS)
+# Abstract Glassy Shader — WebGL2 Metaball Component Lab (React + TypeScript + Vite + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Abstract Glassy Shader , branded as GLASSWORKS , is a React + TypeScript + Vite + Tailwind CSS v4 project that integrates a raw WebGL2 metaball field: two signed-distance circles fused with a smooth union operator, lit by an exponential glow over a cosine-spectrum palette. The live shader runs as a fixed, full-viewport background; layered above it are a frosted-glass hero, a live telemetry HUD reading the shader's own per-frame state (clock, FPS, blob centres, merge `k`, palette), and a control deck whose faders promote baked-in constants to live uniforms. Below the fold is the integration story , the shadcn drop-in path, copyable source tabs, a shader anatomy walkthrough, and a props/uniforms API reference. The component has a CSS metaball fallback when WebGL2 is unavailable, cleans up its GL program on unmount without losing context, and respects `prefers-reduced-motion`. Generated with Claude Fable 5.
+Abstract Glassy Shader — branded as GLASSWORKS — is a React + TypeScript + Vite + Tailwind CSS v4 project that integrates a raw WebGL2 metaball field: two signed-distance circles fused with a smooth union operator, lit by an exponential glow over a cosine-spectrum palette. The live shader runs as a fixed, full-viewport background; layered above it are a frosted-glass hero, a live telemetry HUD reading the shader's own per-frame state (clock, FPS, blob centres, merge `k`, palette), and a control deck whose faders promote baked-in constants to live uniforms. Below the fold is the integration story — the shadcn drop-in path, copyable source tabs, a shader anatomy walkthrough, and a props/uniforms API reference. The component has a CSS metaball fallback when WebGL2 is unavailable, cleans up its GL program on unmount without losing context, and respects `prefers-reduced-motion`. Generated with Claude Fable 5.
 
 ## Run
 
@@ -16,12 +16,12 @@ npm run build    # type-check (tsc -b) + production build
 
 This repo already satisfies the required stack, so no project bootstrap was needed:
 
-- **shadcn project structure** , `components.json` is present, the `@` alias resolves to `./src`
+- **shadcn project structure** — `components.json` is present, the `@` alias resolves to `./src`
   (configured in both `vite.config.ts` and `tsconfig`), the `cn()` helper lives in
   `src/lib/utils.ts`, and UI components live in **`src/components/ui/`**.
-- **Tailwind CSS** , Tailwind **v4** via `@tailwindcss/vite`; the entry stylesheet
+- **Tailwind CSS** — Tailwind **v4** via `@tailwindcss/vite`; the entry stylesheet
   `src/index.css` begins with `@import "tailwindcss";` and `@import "tw-animate-css";`.
-- **TypeScript** , strict mode with project references (`tsconfig.app.json` / `tsconfig.node.json`).
+- **TypeScript** — strict mode with project references (`tsconfig.app.json` / `tsconfig.node.json`).
 
 If you were starting from scratch instead:
 
@@ -40,29 +40,29 @@ writes generated primitives there, and every component import in the ecosystem i
 `import { ShaderComponent } from "@/components/ui/abstract-glassy-shader"` resolves unchanged, and
 any future `shadcn add` lands its files in the same place without churn. This project's default
 component path **is** `src/components/ui`, so the component was copied there (made TypeScript-correct
-and given optional props , see below).
+and given optional props — see below).
 
 ### Component questions
 
-- **Props / data** , the source component took **no props**; `<ShaderComponent />` still renders the
+- **Props / data** — the source component took **no props**; `<ShaderComponent />` still renders the
   original frame exactly. The integrated version adds three optional props: `settings`
-  (`Partial<ShaderSettings>` , promotes the hard-coded constants such as radii, merge `k`, glow and
+  (`Partial<ShaderSettings>` — promotes the hard-coded constants such as radii, merge `k`, glow and
   palette to live uniforms; omit any field to keep the original value), `onFrame` (a per-frame
   telemetry callback), and `className` / `style`. **Defaults reproduce the source shader
   frame-for-frame.**
-- **State** , local only. The page lifts the `ShaderSettings` into one `useState` in `App.tsx` and
+- **State** — local only. The page lifts the `ShaderSettings` into one `useState` in `App.tsx` and
   feeds per-frame stats through a `ref` (so 60 fps telemetry never thrashes React). No global store
   or context provider is required.
-- **Assets** , **none.** The field is 100% procedural GLSL , no images, no 3D models, no Three.js.
+- **Assets** — **none.** The field is 100% procedural GLSL — no images, no 3D models, no Three.js.
   Type uses a system font stack and all icons are `lucide-react`, so the project runs fully offline.
-  (The prompt's "fill image assets with Unsplash" / "use lucide-react for logos" steps don't apply ,
+  (The prompt's "fill image assets with Unsplash" / "use lucide-react for logos" steps don't apply —
   the component needs no imagery; the brand mark is an inline SVG and UI glyphs are Lucide.)
-- **Responsive behavior** , full-bleed shader on every breakpoint. The hero panel scales
+- **Responsive behavior** — full-bleed shader on every breakpoint. The hero panel scales
   (`text-[2.4rem] → text-[3.1rem]`), the telemetry HUD is shown from `lg` up, the control-deck faders
   reflow from 2 → 3 → 4 columns, the docs tables scroll horizontally rather than overflow the page,
   and there is no horizontal overflow at 390 px.
-- **Best placement** , as a hero / section background. The canvas fills its parent, so the idiomatic
-  use is a `fixed inset-0` (or `relative h-screen`) wrapper with foreground content layered on top ,
+- **Best placement** — as a hero / section background. The canvas fills its parent, so the idiomatic
+  use is a `fixed inset-0` (or `relative h-screen`) wrapper with foreground content layered on top —
   exactly what `App.tsx` and `src/components/ui/demo.tsx` demonstrate.
 
 ## Robustness
@@ -90,4 +90,4 @@ URL=http://localhost:5312/ node scripts/verify.mjs
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

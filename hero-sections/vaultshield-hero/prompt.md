@@ -1,4 +1,4 @@
-# VaultShield , Cinematic Password-Manager Hero Section
+# VaultShield — Cinematic Password-Manager Hero Section
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a fullscreen hero section for a password-manager app called **VaultShield*
 - **Framework:** React with TypeScript
 - **Styling:** Tailwind CSS plus inline `style` objects for fine-grained values
 - **Animation:** Framer Motion
-- **Icons:** Lucide React , icons used: `ArrowRightCircle`, `Zap`, `LockKeyhole`, `Fingerprint`, `Menu`, `X`
+- **Icons:** Lucide React — icons used: `ArrowRightCircle`, `Zap`, `LockKeyhole`, `Fingerprint`, `Menu`, `X`
 - **Fonts:** Helvetica Now Display Bold (headings) and Inter (body, weights 300–900)
 - **Notable techniques:** fullscreen `object-cover` background video, `AnimatePresence` enter/exit transitions, staggered fade-up reveal via Framer Motion variants
 
@@ -141,11 +141,11 @@ export default function Logo({ size = 32 }: { size?: number }) {
 Nav links are defined as `const NAV_LINKS = ['Vault', 'Plans', 'Install', 'News', 'Help'];`. The component holds a `menuOpen` boolean state for the mobile sheet.
 
 - **Left:** the logo, wrapped in `<a href="#" className="flex items-center">`.
-- **Center (desktop only, `hidden items-center gap-8 md:flex`):** the 5 links from `NAV_LINKS` , each an `<a href="#">` with `text-sm font-medium transition-opacity` and an opacity hover effect and inline `color: '#192837'`.
+- **Center (desktop only, `hidden items-center gap-8 md:flex`):** the 5 links from `NAV_LINKS` — each an `<a href="#">` with `text-sm font-medium transition-opacity` and an opacity hover effect and inline `color: '#192837'`.
 - **Right (desktop only, `hidden items-center gap-3 md:flex`):**
-  - **"Start For Free"** button , `rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-opacity` with an opacity hover effect, inline `background: '#7342E2'`.
-  - **"Sign In"** button , `rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity` with an opacity hover effect, inline `background: '#F2F2EE'`, `color: '#192837'`.
-- **Mobile:** a hamburger button (`md:hidden`) , `rounded-full p-2 transition-opacity` with an opacity hover effect, `onClick` sets `menuOpen` true. Renders the Lucide `Menu` icon at `color="#192837"`.
+  - **"Start For Free"** button — `rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-opacity` with an opacity hover effect, inline `background: '#7342E2'`.
+  - **"Sign In"** button — `rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity` with an opacity hover effect, inline `background: '#F2F2EE'`, `color: '#192837'`.
+- **Mobile:** a hamburger button (`md:hidden`) — `rounded-full p-2 transition-opacity` with an opacity hover effect, `onClick` sets `menuOpen` true. Renders the Lucide `Menu` icon at `color="#192837"`.
 - `<MobileMenu open={menuOpen} links={NAV_LINKS} onClose={() => setMenuOpen(false)} />` is rendered at the end of the header.
 
 ## Mobile Menu Sheet (`src/components/MobileMenu.tsx`)
@@ -170,10 +170,10 @@ A right-side slide-in sheet built with `AnimatePresence` + Framer Motion.
 
 - **Header:** `flex items-center justify-between px-6 py-5` containing the `<Logo />` and a close button (`rounded-full p-2 transition-opacity` with an opacity hover effect, `onClick={onClose}`) rendering the Lucide `X` icon at `color="#192837"`.
 - **Divider:** a `div` with `height: 1`, `background: 'rgba(25,40,55,0.15)'`.
-- **Nav links:** `<nav className="flex flex-1 flex-col gap-1 px-6 pt-6">` mapping `links` to `<motion.a href="#">` items , `py-3 text-2xl font-medium transition-opacity` with an opacity hover effect, inline `color: '#192837'`. Staggered entrance: `initial={{ opacity: 0, x: 24 }}`, `animate={{ opacity: 1, x: 0 }}`, `transition={{ delay: 0.18 + i * 0.07, duration: 0.45, ease: EASE }}`.
+- **Nav links:** `<nav className="flex flex-1 flex-col gap-1 px-6 pt-6">` mapping `links` to `<motion.a href="#">` items — `py-3 text-2xl font-medium transition-opacity` with an opacity hover effect, inline `color: '#192837'`. Staggered entrance: `initial={{ opacity: 0, x: 24 }}`, `animate={{ opacity: 1, x: 0 }}`, `transition={{ delay: 0.18 + i * 0.07, duration: 0.45, ease: EASE }}`.
 - **Bottom CTAs:** a `<motion.div className="flex flex-col gap-3 px-6 pb-8">` entering with `initial={{ opacity: 0, y: 16 }}`, `animate={{ opacity: 1, y: 0 }}`, `transition={{ delay: 0.18 + links.length * 0.07, duration: 0.45, ease: EASE }}`. Contains:
-  - **"Start For Free"** , `rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-opacity` with an opacity hover effect, inline `background: '#7342E2'`.
-  - **"Sign In"** , `rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity` with an opacity hover effect, inline `background: '#F2F2EE'`, `color: '#192837'`.
+  - **"Start For Free"** — `rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-opacity` with an opacity hover effect, inline `background: '#7342E2'`.
+  - **"Sign In"** — `rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity` with an opacity hover effect, inline `background: '#F2F2EE'`, `color: '#192837'`.
 
 ## Hero (`src/components/Hero.tsx`)
 
@@ -250,5 +250,5 @@ vaultshield-hero/
 
 - `react`, `react-dom`
 - `framer-motion`
-- `lucide-react` , icons: `ArrowRightCircle`, `Zap`, `LockKeyhole`, `Fingerprint`, `Menu`, `X`
+- `lucide-react` — icons: `ArrowRightCircle`, `Zap`, `LockKeyhole`, `Fingerprint`, `Menu`, `X`
 - Tailwind CSS

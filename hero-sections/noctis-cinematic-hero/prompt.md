@@ -1,4 +1,4 @@
-# Noctis , Cinematic Hero Section
+# Noctis — Cinematic Hero Section
 
 ## Overview
 

@@ -196,7 +196,7 @@ export default function AnimationPage() {
             {/* Description with subtle grid pattern */}
             <div className="relative">
               <p className="text-xs lg:text-base text-gray-300 mb-5 lg:mb-6 leading-relaxed font-mono opacity-80">
-                Like Sisyphus, we push forward , not despite the struggle, but because of it. Every iteration, every pixel, every line of code is our boulder.
+                Like Sisyphus, we push forward — not despite the struggle, but because of it. Every iteration, every pixel, every line of code is our boulder.
               </p>
               
               {/* Technical corner accent - desktop only */}

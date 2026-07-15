@@ -1,8 +1,8 @@
-# Astral Veil , Cosmic Nocturne SaaS Landing Page for Novela (HTML, CSS, Vanilla JS)
+# Astral Veil — Cosmic Nocturne SaaS Landing Page for Novela (HTML, CSS, Vanilla JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A dark, premium multi-section marketing landing page for a fictional software platform called Novela, built in the "Astral Veil" design language , a near-black cosmic nocturne where soft violet and cobalt nebula glows bleed through a veil of frosted glass. Editorial Playfair Display serif headlines sit inside a calm engineering grid, punctuated by glassmorphic cards, a twinkling CSS starfield, drifting UI fragments, an infinite trust marquee, and a floating constellation of integration capsules. Generated with Claude Fable 5.
+A dark, premium multi-section marketing landing page for a fictional software platform called Novela, built in the "Astral Veil" design language — a near-black cosmic nocturne where soft violet and cobalt nebula glows bleed through a veil of frosted glass. Editorial Playfair Display serif headlines sit inside a calm engineering grid, punctuated by glassmorphic cards, a twinkling CSS starfield, drifting UI fragments, an infinite trust marquee, and a floating constellation of integration capsules. Generated with Claude Fable 5.
 
 ## Run
 
@@ -27,4 +27,4 @@ HTML, CSS, Vanilla JS
 
 ---
 
-Part of the [Landing pages](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Landing pages](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

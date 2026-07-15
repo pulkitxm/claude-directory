@@ -1,4 +1,4 @@
-# Cal AI , Mobile App Landing Page Template (Vanilla HTML/CSS/JS, Magic UI clone)
+# Cal AI — Mobile App Landing Page Template (Vanilla HTML/CSS/JS, Magic UI clone)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -6,7 +6,7 @@ A self-contained, pixel-faithful clone of the Magic UI "Mobile" app-landing temp
 
 ## Run
 
-This is a fully static, offline site , no build, no dependencies. Serve the folder with any static server and open it in the browser:
+This is a fully static, offline site — no build, no dependencies. Serve the folder with any static server and open it in the browser:
 
 ```sh
 python3 -m http.server 8000
@@ -19,7 +19,7 @@ You can also open `index.html` directly in a browser. All fonts, images, avatars
 
 There is no test harness. Verify visually:
 
-- Serve the folder and confirm the page loads with no network requests beyond the local files (check the browser devtools Network tab , everything resolves under `./assets/` and `./css/`).
+- Serve the folder and confirm the page loads with no network requests beyond the local files (check the browser devtools Network tab — everything resolves under `./assets/` and `./css/`).
 - Scroll to confirm the two hero phone rows drift horizontally, section content fades in, the testimonial columns auto-scroll vertically (and pause on hover), the benefits carousel arrows page through slides, and the FAQ items expand/collapse with a height animation.
 
 ## Notes
@@ -32,8 +32,8 @@ There is no test harness. Verify visually:
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Magic UI , <https://mobile-magicui.vercel.app/>
+**Original:** Magic UI — <https://mobile-magicui.vercel.app/>
 
 ---
 
-Part of the [Templates](../../../README.md) collection in the [claude-directory](../../../../README.md) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../../README.md) collection in the [claude-directory](../../../../README.md) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,4 +1,4 @@
-# SUPERDESIGN , CINEMATIC EDITORIAL INVITE-ONLY WAITLIST
+# SUPERDESIGN — CINEMATIC EDITORIAL INVITE-ONLY WAITLIST
 
 > REFERENCE: HTTPS://P.SUPERDESIGN.DEV/DRAFT/7F390F1F-3D3D-4B30-A8B2-669A9C6C0E3B
 > A SAME-TO-SAME (PIXEL-IDENTICAL) REPRODUCTION OF THAT SUPERDESIGN DRAFT. THE SECTIONS BELOW ARE THE ORIGINAL PROMPT VERBATIM, FOLLOWED BY THE CORE IMPLEMENTATION SNIPPETS THAT ACTUALLY PRODUCE THE LOOK.
@@ -36,7 +36,7 @@ A VERTICALLY STRUCTURED PAGE WITH A FIXED MINIMAL NAVIGATION, AN OVERSIZED HERO 
 
 ### MINIMAL NAVIGATION
 
-CREATE A HIGH-POSITIONED NAV BAR WITH ABSOLUTE POSITIONING. LEFT SIDE: SMALL BRAND ID IN `#B6A596`, UPPERCASE, WIDE TRACKING (E.G., 'SD,PROTOCOL 01'). CENTER: A 1PX HORIZONTAL LINE IN `#35211A` ACTING AS A SPACER. RIGHT SIDE: A STATUS LABEL 'INVITE ONLY' IN TEXT SIZE 10PX-12PX, COLOR `#35211A`.
+CREATE A HIGH-POSITIONED NAV BAR WITH ABSOLUTE POSITIONING. LEFT SIDE: SMALL BRAND ID IN `#B6A596`, UPPERCASE, WIDE TRACKING (E.G., 'SD—PROTOCOL 01'). CENTER: A 1PX HORIZONTAL LINE IN `#35211A` ACTING AS A SPACER. RIGHT SIDE: A STATUS LABEL 'INVITE ONLY' IN TEXT SIZE 10PX-12PX, COLOR `#35211A`.
 
 ### HERO HEADLINE SECTION
 
@@ -70,7 +70,7 @@ MUST DO: ENSURE THE BACKGROUND NOISE OVERLAY IS FIXED AND COVERS THE ENTIRE VIEW
 
 ---
 
-## IMPLEMENTATION BLUEPRINT (CORE CODE , REPRODUCE EXACTLY)
+## IMPLEMENTATION BLUEPRINT (CORE CODE — REPRODUCE EXACTLY)
 
 ### TECH STACK
 
@@ -120,10 +120,10 @@ MUST DO: ENSURE THE BACKGROUND NOISE OVERLAY IS FIXED AND COVERS THE ENTIRE VIEW
 
 ### NAV / GRID / FORM
 
-- NAV: `position:absolute`, top, 3-part flex , `SD,PROTOCOL 01` (`--label`, uppercase, `letter-spacing:.25em`) · 1px `--umber` line spacer · `INVITE ONLY` (10–12px, `--umber`).
+- NAV: `position:absolute`, top, 3-part flex — `SD—PROTOCOL 01` (`--label`, uppercase, `letter-spacing:.25em`) · 1px `--umber` line spacer · `INVITE ONLY` (10–12px, `--umber`).
 - BOTTOM GRID: `display:grid;grid-template-columns:repeat(12,1fr)`. Statement spans cols 1–5; form spans cols 7–12. Above it a 1px `--umber` divider. Stacks to one column under 768px.
 - STATUS DOT: 8px `--accent` circle + `Batch 003 Filling`.
-- FORM: unified row , `<input>` transparent, 1px `--border`, placeholder `--border`, radius `4px 0 0 4px`; `<button>` solid `--accent`, `#181818` text, bold uppercase, radius `0 4px 4px 0`. Caption `Zero spam. Pure utility.` in `--umber`. JS prevents default submit and swaps button label to `JOINED ✓`.
+- FORM: unified row — `<input>` transparent, 1px `--border`, placeholder `--border`, radius `4px 0 0 4px`; `<button>` solid `--accent`, `#181818` text, bold uppercase, radius `0 4px 4px 0`. Caption `Zero spam. Pure utility.` in `--umber`. JS prevents default submit and swaps button label to `JOINED ✓`.
 
 ### MANDATORY CONSTRAINTS
 

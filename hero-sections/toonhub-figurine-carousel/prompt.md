@@ -1,4 +1,4 @@
-# TOONHUB , 3D Character-Figurine Carousel Hero
+# TOONHUB — 3D Character-Figurine Carousel Hero
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a single, full-viewport hero section: a character-figurine carousel called
 - **Framework:** React with TypeScript.
 - **Build tool:** Vite.
 - **Styling:** Tailwind CSS. Inline `style` objects are used for the dynamic/role-based values.
-- **Icons:** `lucide-react` , `ArrowLeft`, `ArrowRight`.
+- **Icons:** `lucide-react` — `ArrowLeft`, `ArrowRight`.
 - **Fonts (Google Fonts):** Inter (body) and Anton (display).
 - **Notable techniques:** image preloading via `new Image()` on mount, an animation lock keyed to a 650 ms transition window, role-derived per-item CSS, and an inline SVG `fractalNoise` grain overlay.
 
@@ -56,10 +56,10 @@ The whole hero is one default-exported component, `ToonHubHero`.
 
 ### State
 
-- `activeIndex` , number, `0`–`3`, initial `0`.
-- `isAnimating` , boolean lock, initial `false`.
-- `isMobile` , boolean, lazily initialized to `typeof window !== 'undefined' && window.innerWidth < 640`; updated on resize.
-- `lockTimeoutRef` , a `useRef<number | undefined>` holding the lock-release timeout id.
+- `activeIndex` — number, `0`–`3`, initial `0`.
+- `isAnimating` — boolean lock, initial `false`.
+- `isMobile` — boolean, lazily initialized to `typeof window !== 'undefined' && window.innerWidth < 640`; updated on resize.
+- `lockTimeoutRef` — a `useRef<number | undefined>` holding the lock-release timeout id.
 
 ### Effects
 
@@ -187,10 +187,10 @@ Per-role overrides (merged over `base`):
 
 Container: `<div className="absolute bottom-6 left-4 sm:bottom-20 sm:left-24">` with `style={{ zIndex: 60, maxWidth: 320 }}`.
 
-- **Heading `<p>`** , classes `font-bold uppercase tracking-widest mb-2 sm:mb-3 text-base sm:text-[22px]`, inline style `{ color: '#ffffff', opacity: 0.95, letterSpacing: '0.02em' }`. Text: **`TOONHUB FIGURINES`**.
-- **Body `<p>`** (hidden on mobile) , classes `hidden sm:block text-xs sm:text-sm mb-4 sm:mb-5`, inline style `{ color: '#ffffff', opacity: 0.85, lineHeight: 1.6 }`. Text, verbatim:
+- **Heading `<p>`** — classes `font-bold uppercase tracking-widest mb-2 sm:mb-3 text-base sm:text-[22px]`, inline style `{ color: '#ffffff', opacity: 0.95, letterSpacing: '0.02em' }`. Text: **`TOONHUB FIGURINES`**.
+- **Body `<p>`** (hidden on mobile) — classes `hidden sm:block text-xs sm:text-sm mb-4 sm:mb-5`, inline style `{ color: '#ffffff', opacity: 0.85, lineHeight: 1.6 }`. Text, verbatim:
   > The artwork is stunning, shipped fully prepared. The finish is a vision, the 3D craft is flawless. Many thanks! Wishing you the win. Order now.
-- **Button row** , `<div className="flex items-center gap-3 sm:gap-4">` containing two circular buttons:
+- **Button row** — `<div className="flex items-center gap-3 sm:gap-4">` containing two circular buttons:
   - Each `<button type="button">` has classes `w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center bg-transparent transition-[transform,background-color] duration-150 hover:scale-[1.08] hover:bg-white/[0.12]` and inline style `{ border: '2px solid #ffffff', color: '#ffffff' }`.
   - **Previous** button: `aria-label="Previous figurine"`, `onClick={() => navigate('prev')}`, renders `<ArrowLeft size={26} strokeWidth={2.25} />`.
   - **Next** button: `aria-label="Next figurine"`, `onClick={() => navigate('next')}`, renders `<ArrowRight size={26} strokeWidth={2.25} />`.

@@ -33,10 +33,10 @@ CUBE IS A DARK-THEMED SAAS LANDING PAGE TEMPLATE FOR A FICTIONAL USER-ANALYTICS 
 
 ### PAGES DISCOVERED: 4
 
-1. index.html , HOME: Header, Hero, Testimonials Strip, Features Carousel, Features Tabs, Integrations Hub, Pricing Table, Quote, FAQs, CTA, Footer
-2. signin.html , SIGN IN: Logo, auth illustration, sign-in form + Google OAuth, links
-3. signup.html , REQUEST DEMO: Split layout (left: avatars + feature list, right: contact form)
-4. reset-password.html , RESET PASSWORD: Centered form, email input, back to sign-in link
+1. index.html — HOME: Header, Hero, Testimonials Strip, Features Carousel, Features Tabs, Integrations Hub, Pricing Table, Quote, FAQs, CTA, Footer
+2. signin.html — SIGN IN: Logo, auth illustration, sign-in form + Google OAuth, links
+3. signup.html — REQUEST DEMO: Split layout (left: avatars + feature list, right: contact form)
+4. reset-password.html — RESET PASSWORD: Centered form, email input, back to sign-in link
 
 ### HOME SECTIONS
 - HEADER: Logo SVG + Sign In link + Get Started CTA button

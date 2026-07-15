@@ -1,4 +1,4 @@
-# Mainframe , Cinematic Hero Landing Page
+# Mainframe — Cinematic Hero Landing Page
 
 ## Overview
 
@@ -306,16 +306,16 @@ Nav links are defined once as an array: `['LABS', 'STUDIO', 'OPENINGS', 'SHOP']`
 
 The project is scaffolded with `npm create vite@latest` using the react-ts template, with Tailwind CSS v3.
 
-- **`index.html`** , loads the two local font stylesheets via `<link rel="stylesheet">`; standard Vite React HTML boilerplate; `<title>Mainframe</title>`.
-- **`src/main.tsx`** , standard Vite entry: imports `./index.css`, renders `<App />` inside `<StrictMode>` via `createRoot(document.getElementById('root')!)`.
-- **`src/index.css`** , Tailwind layers, the font CSS variables, base/reset styles, and the `blink` keyframe + `.cursor-blink` class.
-- **`src/hooks/useTypewriter.ts`** , the custom typewriter hook.
-- **`src/components/Navbar.tsx`** , navbar with mobile hamburger and overlay.
-- **`src/components/Hero.tsx`** , hero section with video scrub, blurred label, typewriter, and pill buttons.
-- **`src/App.tsx`** , composes `<Navbar />` + `<Hero />`.
-- **`public/fonts/`** , the two `@font-face` CSS files plus their `.woff2`/`.woff`/`.ttf` assets.
-- **`public/assets/`** , the background video MP4.
-- **`tailwind.config.js`** and **`postcss.config.js`** , standard Tailwind v3 config.
+- **`index.html`** — loads the two local font stylesheets via `<link rel="stylesheet">`; standard Vite React HTML boilerplate; `<title>Mainframe</title>`.
+- **`src/main.tsx`** — standard Vite entry: imports `./index.css`, renders `<App />` inside `<StrictMode>` via `createRoot(document.getElementById('root')!)`.
+- **`src/index.css`** — Tailwind layers, the font CSS variables, base/reset styles, and the `blink` keyframe + `.cursor-blink` class.
+- **`src/hooks/useTypewriter.ts`** — the custom typewriter hook.
+- **`src/components/Navbar.tsx`** — navbar with mobile hamburger and overlay.
+- **`src/components/Hero.tsx`** — hero section with video scrub, blurred label, typewriter, and pill buttons.
+- **`src/App.tsx`** — composes `<Navbar />` + `<Hero />`.
+- **`public/fonts/`** — the two `@font-face` CSS files plus their `.woff2`/`.woff`/`.ttf` assets.
+- **`public/assets/`** — the background video MP4.
+- **`tailwind.config.js`** and **`postcss.config.js`** — standard Tailwind v3 config.
 
 ### `src/App.tsx`
 

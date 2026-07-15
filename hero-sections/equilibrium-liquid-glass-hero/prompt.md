@@ -1,4 +1,4 @@
-# Equilibrium , Liquid Glass Hero Section
+# Equilibrium — Liquid Glass Hero Section
 
 ## Overview
 
@@ -93,7 +93,7 @@ export default {
 ### HTML (`index.html`)
 
 - `<html lang="en">`, `<meta charset="UTF-8" />`, viewport meta `width=device-width, initial-scale=1.0`.
-- `<title>`: `Equilibrium , Live Better, Feel Whole Every Day`
+- `<title>`: `Equilibrium — Live Better, Feel Whole Every Day`
 - Body contains `<div id="root"></div>` and `<script type="module" src="/src/main.tsx"></script>`.
 
 ### Entry point (`src/main.tsx`)
@@ -172,7 +172,7 @@ Container: `absolute bottom-0 left-0 z-20 px-6 sm:px-12 pb-10 sm:pb-16 max-w-2xl
 - **Heading `<h1>`:** `text-white text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight tracking-tight mb-4`
   - Text: `Live Better, Feel Whole Every Day`
 - **Paragraph `<p>`:** `text-white/60 text-sm leading-relaxed mb-7 max-w-md`
-  - Text: `Take charge of how you feel with a companion built for your journey,build routines, follow your growth, and unlock tailored insights for a steadier, more vibrant life each day.` (the em dash is written as `&mdash;` in the source).
+  - Text: `Take charge of how you feel with a companion built for your journey—build routines, follow your growth, and unlock tailored insights for a steadier, more vibrant life each day.` (the em dash is written as `&mdash;` in the source).
 - **Buttons row:** `flex flex-wrap items-center gap-3`
   - "Start Today": `bg-white text-black text-sm sm:text-base font-medium px-6 sm:px-7 py-3 rounded-full hover:bg-white/90 transition-colors`
   - "Discover How": `liquid-glass text-white text-sm sm:text-base font-medium px-6 sm:px-7 py-3 rounded-full hover:bg-white/5 transition-colors`

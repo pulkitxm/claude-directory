@@ -1,4 +1,4 @@
-# Taskly , Liquid Glass Hero Section
+# Taskly — Liquid Glass Hero Section
 
 ## Overview
 
@@ -104,12 +104,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 ## Layout (`src/App.tsx`)
 
 - Outer wrapper: `relative min-h-screen overflow-x-clip bg-white`.
-- **Background glow** , a `pointer-events-none absolute inset-0` layer (`aria-hidden="true"`) holding subtle, layered blurred ellipses in the top-left, behind everything, using light blue `#60B1FF` and `#319AFF`:
+- **Background glow** — a `pointer-events-none absolute inset-0` layer (`aria-hidden="true"`) holding subtle, layered blurred ellipses in the top-left, behind everything, using light blue `#60B1FF` and `#319AFF`:
   - `absolute -left-[260px] -top-[220px] h-[620px] w-[940px] rounded-full bg-[#60B1FF] opacity-[0.33] blur-[140px]`
   - `absolute -left-[120px] -top-[140px] h-[430px] w-[640px] rounded-full bg-[#319AFF] opacity-[0.26] blur-[110px]`
 - **Main container (z-10):** `relative z-10 mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-14`, containing the `Navbar`, then a `<main>` with `Hero` and `TrustedBy`.
 
-## Navbar , Strong Liquid Glass (`src/components/Navbar.tsx`)
+## Navbar — Strong Liquid Glass (`src/components/Navbar.tsx`)
 
 A centered, sticky, content-width frosted-glass bar (`aria-label="Primary"`):
 
@@ -220,7 +220,7 @@ Wrapper `reveal` with `delay(0.3)`, rendering the `GlassyOrb` component.
 The hero's right-side visual: a vivid electric-blue orb produced by screen-blending a remote `.webm` over a dark radial energy field.
 
 - **Source URL:** `https://future.co/images/homepage/glassy-orb/orb-purple.webm` (stored as `const ORB_SRC`).
-- **Concept:** the source video is a bright orb on a solid black background. `mix-blend-screen` knocks the black out , but screen-blending over pure white renders nothing (screen only lightens). So a deep ink-blue radial energy field sits *behind* the video: the orb screens over its dark core in vivid electric blue, and the field's fade-to-transparent edge lets the video's black background dissolve seamlessly into the white page.
+- **Concept:** the source video is a bright orb on a solid black background. `mix-blend-screen` knocks the black out — but screen-blending over pure white renders nothing (screen only lightens). So a deep ink-blue radial energy field sits *behind* the video: the orb screens over its dark core in vivid electric blue, and the field's fade-to-transparent edge lets the video's black background dissolve seamlessly into the white page.
 
 ### Structure
 
@@ -237,7 +237,7 @@ absolute inset-0 m-auto aspect-square w-[105%] max-w-none scale-125 object-cover
 - **Attributes:** `autoPlay loop muted playsInline preload="auto"` (HTML: `autoplay loop muted playsinline`).
 - **Blending mode:** `mix-blend-screen` to filter out the black background.
 - **Scaling:** `scale-125` to make it massive and bleed slightly off-center.
-- **Exact color grade (CSS filter):** `hue-rotate(-55deg) saturate(250%) brightness(1.2) contrast(1.1)` , transforms the purple asset into a vibrant, high-end "electric brand blue" matching the primary CTA.
+- **Exact color grade (CSS filter):** `hue-rotate(-55deg) saturate(250%) brightness(1.2) contrast(1.1)` — transforms the purple asset into a vibrant, high-end "electric brand blue" matching the primary CTA.
 
 > Optional resilience (not in the original brief): if the remote `.webm` fails to load, you may swap in a pure-CSS fallback orb. The exact fallback markup, gradient, and load-failure handling are at the implementer's discretion.
 
@@ -247,11 +247,11 @@ A footer-logo section reading "Trusted by Top-tier product companies" with five 
 
 - **Section** (`reveal`, `--d: 0.5s`): `reveal pb-20 pt-10 lg:pb-24 lg:pt-2`.
 - **Heading** (`p`): `text-center font-inter text-[14px] font-medium tracking-[0.02em] text-slate-500`, copy `Trusted by Top-tier product companies`.
-- **Logo row** (`data-logo-row`): `mt-9 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 text-gray-400 lg:gap-x-[100px]` , note the desktop spacing is `gap-[100px]`.
+- **Logo row** (`data-logo-row`): `mt-9 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 text-gray-400 lg:gap-x-[100px]` — note the desktop spacing is `gap-[100px]`.
 
 ### Logo component
 
-Five grayscale SVG logos , placeholder logos for tech companies , each combining a simple geometric mark with a wordmark label. Exact brand names, mark shapes, and SVG geometry are at the implementer's discretion; render them in a single grayscale color so they read as a uniform "trusted by" row.
+Five grayscale SVG logos — placeholder logos for tech companies — each combining a simple geometric mark with a wordmark label. Exact brand names, mark shapes, and SVG geometry are at the implementer's discretion; render them in a single grayscale color so they read as a uniform "trusted by" row.
 
 ## Animations (`src/index.css`)
 

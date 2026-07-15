@@ -1,14 +1,14 @@
-# Celestial Matrix Terminal , Digital Rain WebGL Shader with CRT Boot Sequence (React + Three.js + Tailwind)
+# Celestial Matrix Terminal — Digital Rain WebGL Shader with CRT Boot Sequence (React + Three.js + Tailwind)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A shadcn-style integration of the Three.js Celestial Matrix digital rain shader , a blue-to-green field bent by a cursor-driven gravitational warp , reframed as a deep-space relay terminal (Meridian Station · Orbital Relay 9) with a typed CRT login sequence, live telemetry strip, and cursor reticle. The retro-CRT aesthetic, typed boot-to-ACCESS-GRANTED sequence, and real GPU-sampled telemetry make it a distinctive login page, landing moment, or interactive hero background. Generated with Claude Fable 5.
+A shadcn-style integration of the Three.js Celestial Matrix digital rain shader — a blue-to-green field bent by a cursor-driven gravitational warp — reframed as a deep-space relay terminal (Meridian Station · Orbital Relay 9) with a typed CRT login sequence, live telemetry strip, and cursor reticle. The retro-CRT aesthetic, typed boot-to-ACCESS-GRANTED sequence, and real GPU-sampled telemetry make it a distinctive login page, landing moment, or interactive hero background. Generated with Claude Fable 5.
 
 The shader runs full-viewport behind a bracketed CRT terminal that types out a
 login handshake, lands on **ACCESS GRANTED**, and reveals the station identity.
 A cursor reticle marks the warp lock the lattice falls toward, and the bottom
 telemetry strip (feed clock, warp x·y, render rate, carrier state) is sampled
-straight off the GPU render loop , not faked.
+straight off the GPU render loop — not faked.
 
 > The repo already ships a sibling, `shaders/celestial-matrix-shader`, that
 > frames the same brief as a "signal console." This experiment is a distinct
@@ -21,7 +21,7 @@ straight off the GPU render loop , not faked.
   `frozen` (pause the feed clock), `onSample` (per-frame telemetry callback),
   plus `className` / `style` / `ariaLabel`. With no props it renders exactly the
   brief's fixed, pointer-transparent full-viewport background.
-- **State management?** Local React state only , boot transcript progress, a
+- **State management?** Local React state only — boot transcript progress, a
   freeze toggle, a remount key for "recalibrate," and the latest `MatrixSample`.
   No context or external store needed.
 - **Assets?** No images. Fonts (Space Grotesk, Inter, JetBrains Mono) are
@@ -94,4 +94,4 @@ React 18, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js,
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

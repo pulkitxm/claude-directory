@@ -1,4 +1,4 @@
-# Nexora , The Future of Smarter Automation (Hero Section)
+# Nexora — The Future of Smarter Automation (Hero Section)
 
 ## Overview
 
@@ -11,15 +11,15 @@ Build a single-screen SaaS landing-page hero for a fictional automation product 
 - **Animation:** Framer Motion (`framer-motion` `^11.18.2`) for all entrance animations.
 - **Icons:** Lucide (`lucide-react` `^0.468.0`).
 - **UI primitives:** A shadcn/ui-style `Button` component built with `class-variance-authority` (`^0.7.1`), `@radix-ui/react-slot` (`^1.1.1`), `clsx` (`^2.1.1`) and `tailwind-merge` (`^2.6.0`).
-- **Fonts:** Two Google Fonts imported via CSS , Instrument Serif (display/headings, including italic) and Inter (body text).
+- **Fonts:** Two Google Fonts imported via CSS — Instrument Serif (display/headings, including italic) and Inter (body text).
 - **Notable techniques:** A hand-crafted cubic Bézier SVG area chart (no charting library), semantic Tailwind color tokens driven by HSL CSS variables, and a frosted-glass (`backdrop-blur`) dashboard panel.
 
 ## Global Setup
 
 ### Entry Files
 
-- **`index.html`** , `lang="en"`, root `<div id="root">`, module script `/src/main.tsx`. Document `<title>`: `Nexora , The Future of Smarter Automation`. Meta description: `Automate your busywork with intelligent agents that learn, adapt, and execute , so your team can focus on what matters most.`
-- **`src/main.tsx`** , mounts `<App />` inside `<React.StrictMode>` via `ReactDOM.createRoot`, importing `./index.css`.
+- **`index.html`** — `lang="en"`, root `<div id="root">`, module script `/src/main.tsx`. Document `<title>`: `Nexora — The Future of Smarter Automation`. Meta description: `Automate your busywork with intelligent agents that learn, adapt, and execute — so your team can focus on what matters most.`
+- **`src/main.tsx`** — mounts `<App />` inside `<React.StrictMode>` via `ReactDOM.createRoot`, importing `./index.css`.
 
 ```tsx
 import React from 'react'
@@ -34,7 +34,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 )
 ```
 
-- **`src/App.tsx`** , the whole page is `flex h-screen flex-col overflow-hidden bg-background`, rendering `<Navbar />` then `<Hero />`. The navbar + hero fill exactly 100vh with no scroll.
+- **`src/App.tsx`** — the whole page is `flex h-screen flex-col overflow-hidden bg-background`, rendering `<Navbar />` then `<Hero />`. The navbar + hero fill exactly 100vh with no scroll.
 
 ```tsx
 import Navbar from './components/Navbar'
@@ -192,7 +192,7 @@ A shadcn/ui-style button using `cva`, `@radix-ui/react-slot`, and the `cn` helpe
 ## Navbar (`src/components/Navbar.tsx`)
 
 - `<header>`: `relative z-20 flex items-center justify-between px-6 py-5 font-body md:px-12 lg:px-20`
-- **Left , logo:** an `<a href="#">` with classes `text-xl font-semibold tracking-tight text-foreground`, text `✦ Nexora`.
+- **Left — logo:** an `<a href="#">` with classes `text-xl font-semibold tracking-tight text-foreground`, text `✦ Nexora`.
 - **Right cluster:** `flex items-center gap-8` containing:
   - **Nav links** (`<nav>` `hidden items-center gap-8 md:flex`, `aria-label="Main"`): the array `['Home', 'Pricing', 'About', 'Contact']` rendered as `<a href="#">` links with classes `text-sm text-muted-foreground transition-colors hover:text-foreground`.
   - **CTA button:** `<Button className="rounded-full px-5 text-sm font-medium">` with text `Get Started`.
@@ -221,32 +221,32 @@ const fadeUp = (y: number, duration: number, delay = 0) => ({
 
 ### 1. Badge
 
-- **Animation:** `fadeUp(10, 0.5)` , fade up from `y: 10`, duration `0.5`s.
+- **Animation:** `fadeUp(10, 0.5)` — fade up from `y: 10`, duration `0.5`s.
 - **Element:** `motion.div`, classes `mb-6 inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-4 py-1.5 font-body text-sm text-muted-foreground`.
 - **Content:** a `<span>` with text `Now with GPT-5 support`, followed by a separate `<span aria-hidden="true">` containing `✨`.
 
 ### 2. Headline
 
-- **Animation:** `fadeUp(16, 0.6, 0.1)` , fade up from `y: 16`, duration `0.6`s, delay `0.1`s.
+- **Animation:** `fadeUp(16, 0.6, 0.1)` — fade up from `y: 16`, duration `0.6`s, delay `0.1`s.
 - **Element:** `motion.h1`, classes `max-w-xl text-center font-display text-5xl leading-[0.95] tracking-tight text-foreground md:text-6xl lg:text-[5rem]`.
-- **Content:** `The Future of <em className="italic">Smarter</em> Automation` , the word "Smarter" renders in Instrument Serif italic via the `<em className="italic">`.
+- **Content:** `The Future of <em className="italic">Smarter</em> Automation` — the word "Smarter" renders in Instrument Serif italic via the `<em className="italic">`.
 
 ### 3. Subheadline
 
-- **Animation:** `fadeUp(16, 0.6, 0.2)` , fade up from `y: 16`, duration `0.6`s, delay `0.2`s.
+- **Animation:** `fadeUp(16, 0.6, 0.2)` — fade up from `y: 16`, duration `0.6`s, delay `0.2`s.
 - **Element:** `motion.p`, classes `mt-4 max-w-[650px] text-center font-body text-base leading-relaxed text-muted-foreground md:text-lg`.
-- **Text:** `Automate your busywork with intelligent agents that learn, adapt, and execute,so your team can focus on what matters most.`
+- **Text:** `Automate your busywork with intelligent agents that learn, adapt, and execute—so your team can focus on what matters most.`
 
 ### 4. CTA Buttons
 
-- **Animation:** `fadeUp(16, 0.6, 0.3)` , fade up from `y: 16`, duration `0.6`s, delay `0.3`s.
+- **Animation:** `fadeUp(16, 0.6, 0.3)` — fade up from `y: 16`, duration `0.6`s, delay `0.3`s.
 - **Wrapper:** `motion.div`, classes `mt-5 flex items-center gap-3`.
 - **Primary button:** `<Button className="rounded-full px-6 py-5 font-body text-sm font-medium">` with text `Book a demo`.
 - **Play button:** `<Button variant="ghost" size="icon" aria-label="Watch product video" className="h-11 w-11 rounded-full border-0 bg-background shadow-[0_2px_12px_rgba(0,0,0,0.08)] hover:bg-background/80">` containing a Lucide `Play` icon with classes `h-4 w-4 fill-foreground text-foreground`.
 
 ### 5. Dashboard Preview Wrapper
 
-- **Animation:** `fadeUp(30, 0.8, 0.5)` , fade up from `y: 30`, duration `0.8`s, delay `0.5`s.
+- **Animation:** `fadeUp(30, 0.8, 0.5)` — fade up from `y: 30`, duration `0.8`s, delay `0.5`s.
 - **Outer wrapper:** `motion.div`, classes `mt-8 w-full max-w-5xl`.
 - **Frosted-glass panel:** an inner `<div className="overflow-hidden rounded-2xl p-3 backdrop-blur-xl md:p-4">` with inline styles:
 
@@ -262,7 +262,7 @@ style={{
 
 ## Dashboard Preview (`src/components/DashboardPreview.tsx`)
 
-Entirely coded in React , not an image. The root is `<div className="select-none overflow-hidden rounded-xl border border-border/60 bg-background text-[11px] pointer-events-none">` containing a `<TopBar />`, then a `flex` row of `<Sidebar />` and `<MainContent />`. Base font size is `text-[11px]`; the whole thing is `select-none` and `pointer-events-none`.
+Entirely coded in React — not an image. The root is `<div className="select-none overflow-hidden rounded-xl border border-border/60 bg-background text-[11px] pointer-events-none">` containing a `<TopBar />`, then a `flex` row of `<Sidebar />` and `<MainContent />`. Base font size is `text-[11px]`; the whole thing is `select-none` and `pointer-events-none`.
 
 ### Data
 
@@ -275,7 +275,7 @@ Entirely coded in React , not an image. The root is `<div className="select-none
   - `Capital` (icon `Landmark`)
   - `Accounts` (icon `Wallet`, `chevron: true`)
 - **`WORKFLOW_ITEMS`:**
-  - `Trake rutes` (icon `Route`) , note: spelled `Trake rutes` verbatim
+  - `Trake rutes` (icon `Route`) — note: spelled `Trake rutes` verbatim
   - `Payments` (icon `Send`)
   - `Notifications` (icon `Bell`)
   - `Settings` (icon `Settings`)
@@ -307,13 +307,13 @@ M0 62 C30 58, 50 40, 85 44 C120 48, 140 64, 175 56 C210 48, 225 24, 260 28 C295 
 
 `flex items-center justify-between gap-4 border-b border-border px-3 py-2`, with three groups:
 
-- **Left (logo):** `flex shrink-0 items-center gap-1.5` , a `div` `flex h-5 w-5 items-center justify-center rounded-md bg-primary font-display text-primary-foreground` containing `N`, then `<span className="font-medium text-foreground">Nexora</span>`, then `<ChevronDown className="h-3 w-3 text-muted-foreground" />`.
-- **Center (search):** `hidden max-w-[260px] flex-1 items-center gap-1.5 rounded-md bg-secondary px-2.5 py-1.5 text-muted-foreground sm:flex` , a `Search` icon `h-3 w-3 shrink-0`, a `flex-1` span reading `Search`, and a shortcut `<span className="rounded border border-border bg-background px-1 text-[9px]">⌘K</span>`.
-- **Right (actions):** `flex shrink-0 items-center gap-2.5` , a pill `<span className="rounded-md bg-primary px-2.5 py-1 font-medium text-primary-foreground">Move Money</span>`, a `Bell` icon `h-3.5 w-3.5 text-muted-foreground`, and an avatar `<div className="flex h-5 w-5 items-center justify-center rounded-full bg-accent/15 text-[9px] font-semibold text-accent">JB</div>`.
+- **Left (logo):** `flex shrink-0 items-center gap-1.5` — a `div` `flex h-5 w-5 items-center justify-center rounded-md bg-primary font-display text-primary-foreground` containing `N`, then `<span className="font-medium text-foreground">Nexora</span>`, then `<ChevronDown className="h-3 w-3 text-muted-foreground" />`.
+- **Center (search):** `hidden max-w-[260px] flex-1 items-center gap-1.5 rounded-md bg-secondary px-2.5 py-1.5 text-muted-foreground sm:flex` — a `Search` icon `h-3 w-3 shrink-0`, a `flex-1` span reading `Search`, and a shortcut `<span className="rounded border border-border bg-background px-1 text-[9px]">⌘K</span>`.
+- **Right (actions):** `flex shrink-0 items-center gap-2.5` — a pill `<span className="rounded-md bg-primary px-2.5 py-1 font-medium text-primary-foreground">Move Money</span>`, a `Bell` icon `h-3.5 w-3.5 text-muted-foreground`, and an avatar `<div className="flex h-5 w-5 items-center justify-center rounded-full bg-accent/15 text-[9px] font-semibold text-accent">JB</div>`.
 
 ### Sidebar
 
-`<aside className="hidden w-40 shrink-0 flex-col gap-0.5 border-r border-border p-2 md:flex">` , renders the `NAV_ITEMS` as `SidebarLink`s, then a section label `<p className="mt-3 px-2 pb-1 text-[9px] font-medium uppercase tracking-wider text-muted-foreground">Workflows</p>`, then the `WORKFLOW_ITEMS` as `SidebarLink`s.
+`<aside className="hidden w-40 shrink-0 flex-col gap-0.5 border-r border-border p-2 md:flex">` — renders the `NAV_ITEMS` as `SidebarLink`s, then a section label `<p className="mt-3 px-2 pb-1 text-[9px] font-medium uppercase tracking-wider text-muted-foreground">Workflows</p>`, then the `WORKFLOW_ITEMS` as `SidebarLink`s.
 
 ### MainContent
 
@@ -355,7 +355,7 @@ M0 62 C30 58, 50 40, 85 44 C120 48, 140 64, 175 56 C210 48, 225 24, 260 28 C295 
     - Date cell: `py-1.5 text-muted-foreground`.
     - Description cell: `py-1.5 font-medium text-foreground`.
     - Amount cell: `py-1.5 text-right font-medium` plus `text-success` when `positive`, else `text-foreground`.
-    - Status cell: `py-1.5 text-right` wrapping a pill `<span>` `inline-flex rounded-full px-2 py-0.5 text-[10px] font-medium` , `bg-warning/10 text-warning` when status is `Pending`, otherwise `bg-success/10 text-success`.
+    - Status cell: `py-1.5 text-right` wrapping a pill `<span>` `inline-flex rounded-full px-2 py-0.5 text-[10px] font-medium` — `bg-warning/10 text-warning` when status is `Pending`, otherwise `bg-success/10 text-success`.
 
 ## Animation Summary
 
@@ -371,8 +371,8 @@ All animations use Framer Motion (`opacity: 0 → 1`, translate from `y` to `0`)
 
 ## Key Design Decisions
 
-- The dashboard overflows toward the bottom of the viewport and is clipped by `overflow-hidden` on the page parent , the navbar + hero occupy exactly 100vh with no scroll.
-- Light mode only , no dark mode.
+- The dashboard overflows toward the bottom of the viewport and is clipped by `overflow-hidden` on the page parent — the navbar + hero occupy exactly 100vh with no scroll.
+- Light mode only — no dark mode.
 - All colors use semantic Tailwind tokens (`hsl(var(--token))`), never raw color values in components (the only inline color values are the frosted-glass panel's `rgba(255, 255, 255, …)` and the dashboard shadow).
 - The SVG balance chart uses a hand-crafted cubic Bézier path, not a charting library.
 

@@ -1,4 +1,4 @@
-# Power AI , Cinematic Dark Hero Section
+# Power AI — Cinematic Dark Hero Section
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a full-screen dark hero section for "Power AI," an AI product for talent a
 - **Framework:** React 18 (`react` ^18.3.1, `react-dom` ^18.3.1) with TypeScript (`typescript` ^5.6.3).
 - **Build tool:** Vite ^5.4.10 (`@vitejs/plugin-react` ^4.3.3). Preview server runs on port `4861` (`strictPort`).
 - **Styling:** Tailwind CSS ^3.4.14 with PostCSS ^8.4.49 and Autoprefixer ^10.4.20.
-- **Icons:** Lucide (`lucide-react` ^0.460.0) , `ChevronDown`.
+- **Icons:** Lucide (`lucide-react` ^0.460.0) — `ChevronDown`.
 - **Class utilities:** `class-variance-authority` ^0.7.1, `clsx` ^2.1.1, `tailwind-merge` ^2.6.0 (combined in a `cn()` helper).
 - **Fonts:**
   - Body: **Geist Sans** via `@fontsource/geist-sans` ^5.1.0 (weights 400, 500, 600 imported).
@@ -51,17 +51,17 @@ Build a full-screen dark hero section for "Power AI," an AI product for talent a
 ### `index.html` head
 
 - `lang="en"`, charset UTF-8, responsive viewport.
-- Meta description: `Power AI , the most powerful AI ever deployed in talent acquisition.`
+- Meta description: `Power AI — the most powerful AI ever deployed in talent acquisition.`
 - `theme-color`: `#06010e`.
-- Title: `Power AI , AI for Talent Acquisition`.
+- Title: `Power AI — AI for Talent Acquisition`.
 
 ### Theme & colors (`src/index.css` CSS variables)
 
 Defined under `@layer base` on `:root` (HSL channel values, used via `hsl(var(--…))`):
 
-- `--background: 260 87% 3%` , deep dark blue-purple.
-- `--foreground: 40 6% 95%` , off-white.
-- `--hero-sub: 40 6% 82%` , hero subtitle text.
+- `--background: 260 87% 3%` — deep dark blue-purple.
+- `--foreground: 40 6% 95%` — off-white.
+- `--hero-sub: 40 6% 82%` — hero subtitle text.
 
 Base layer also sets:
 
@@ -114,7 +114,7 @@ The page composes `BackgroundVideo`, `Navbar`, the hero content, and `LogoMarque
 
 - Outer wrapper: `relative min-h-screen overflow-hidden bg-background`, with `<BackgroundVideo />` behind everything.
 - Foreground container: `relative z-10` sits above the video.
-- Hero `<section>`: `relative flex min-h-screen flex-col overflow-visible` (column layout , navbar at top, content centered via `flex-1`, marquee at bottom; `overflow-visible` so the blur plate is not clipped).
+- Hero `<section>`: `relative flex min-h-screen flex-col overflow-visible` (column layout — navbar at top, content centered via `flex-1`, marquee at bottom; `overflow-visible` so the blur plate is not clipped).
 
 The page-level layout:
 
@@ -149,7 +149,7 @@ export default function Index() {
 }
 ```
 
-> **Note on the video URL:** the original brief referenced a remote CloudFront URL (`https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4`). The shipped source vendors the asset locally and uses the path `/assets/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4` , treat the local path as the canonical value.
+> **Note on the video URL:** the original brief referenced a remote CloudFront URL (`https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4`). The shipped source vendors the asset locally and uses the path `/assets/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4` — treat the local path as the canonical value.
 
 ## Background Video (`src/components/BackgroundVideo.tsx`)
 
@@ -160,7 +160,7 @@ A full-bleed `<video>` with a JS-controlled fade loop. No CSS transitions, no gr
 - **Fade behavior (driven by `requestAnimationFrame`):** on each tick, while the video has not ended and has a finite, positive `duration`, compute:
   - `fadeIn = Math.min(currentTime / FADE_SECONDS, 1)`
   - `fadeOut = Math.min(Math.max(duration - currentTime, 0) / FADE_SECONDS, 1)`
-  - Set opacity to `Math.max(0, Math.min(fadeIn, fadeOut)).toFixed(3)` , i.e. 0.5s fade-in at the start, 0.5s fade-out at the end.
+  - Set opacity to `Math.max(0, Math.min(fadeIn, fadeOut)).toFixed(3)` — i.e. 0.5s fade-in at the start, 0.5s fade-out at the end.
 - **On `ended`:** set opacity to `"0"`, wait `100ms`, then reset `currentTime = 0` and replay from the beginning.
 - **Cleanup:** cancel the RAF, clear the replay timer, and remove the `ended` listener on unmount.
 
@@ -241,15 +241,15 @@ A centered blur plate that keeps the headline legible over the video (placed ins
 
 - **Wrapper:** `<header>` with `relative animate-rise`.
 - **Nav bar:** `<nav>` `flex w-full flex-row items-center justify-between px-8 py-5`, `aria-label="Primary"`.
-- **Left , logo:** `<a href="/">` (`flex shrink-0 items-center`, `aria-label="Power AI home"`) wrapping `<img src={logo} alt="Power AI" className="h-8 w-auto" height={32} />`. Logo asset: `src/assets/logo.png`, imported via `import logo from "@/assets/logo.png"`, rendered at 32px height.
-- **Center , nav items:** hidden on mobile, shown as `hidden items-center gap-8 md:flex`. Items, defined in a `NAV_ITEMS` array:
+- **Left — logo:** `<a href="/">` (`flex shrink-0 items-center`, `aria-label="Power AI home"`) wrapping `<img src={logo} alt="Power AI" className="h-8 w-auto" height={32} />`. Logo asset: `src/assets/logo.png`, imported via `import logo from "@/assets/logo.png"`, rendered at 32px height.
+- **Center — nav items:** hidden on mobile, shown as `hidden items-center gap-8 md:flex`. Items, defined in a `NAV_ITEMS` array:
   - `Features` (with chevron)
   - `Solutions`
   - `Plans`
   - `Learning` (with chevron)
   - Each is a `<button type="button">` with `group flex items-center gap-1.5 text-sm font-medium text-foreground/90 transition-colors duration-200 hover:text-foreground`.
   - When `chevron` is true, render a Lucide `<ChevronDown>` with `h-4 w-4 opacity-60 transition-transform duration-200 group-hover:translate-y-0.5 group-hover:opacity-100` and `aria-hidden="true"`.
-- **Right , Sign Up button:** `<Button variant="heroSecondary" className="rounded-full px-4 py-2">Sign Up</Button>`.
+- **Right — Sign Up button:** `<Button variant="heroSecondary" className="rounded-full px-4 py-2">Sign Up</Button>`.
 - **Divider below navbar:** `mt-[3px] h-px w-full bg-gradient-to-r from-transparent via-foreground/20 to-transparent` (a 1px gradient line, offset by `mt-[3px]`).
 
 ## Hero Content
@@ -259,8 +259,8 @@ Vertically centered in the remaining space (`relative flex flex-1 items-center j
 ### Headline
 
 - `<h1>` with `animate-rise font-display text-[88px] font-normal leading-[1.02] tracking-[-0.024em] sm:text-[120px] md:text-[160px] lg:text-[200px] xl:text-[220px]` and `style={{ animationDelay: "0.1s" }}`. (Top-end size `text-[220px]`; uses the General Sans `font-display` family.)
-- `"Power "` , plain `<span className="text-foreground">`.
-- `"AI"` , gradient text via `<span className="bg-clip-text text-transparent">` with inline `style`:
+- `"Power "` — plain `<span className="text-foreground">`.
+- `"AI"` — gradient text via `<span className="bg-clip-text text-transparent">` with inline `style`:
   ```tsx
   style={{
     backgroundImage:
@@ -286,10 +286,10 @@ Pinned to the bottom of the hero, with `pb-10`. Entrance via `animate-rise` at `
 
 - **Outer wrapper:** `relative w-full animate-rise pb-10`.
 - **Inner container:** `mx-auto flex max-w-5xl flex-col items-center gap-12 px-8 md:flex-row` (`gap-12` between the label and the marquee strip; stacks on mobile, row on `md`).
-- **Left , static label:** `<p className="shrink-0 text-center text-sm leading-5 text-foreground/50 md:text-left">` with a `<br />`:
+- **Left — static label:** `<p className="shrink-0 text-center text-sm leading-5 text-foreground/50 md:text-left">` with a `<br />`:
   > Relied on by brands
   > across the globe
-- **Right , scrolling marquee:**
+- **Right — scrolling marquee:**
   - Mask wrapper: `marquee-mask min-w-0 flex-1 self-stretch overflow-hidden md:self-auto`.
   - Track: `flex w-max animate-marquee items-center` containing two `<BrandRow>` instances (the second with `hidden` to duplicate for a seamless loop).
 - **Brands list:** `["Vortex", "Nimbus", "Prysma", "Cirrus", "Kynder", "Halcyn"]` (`as const`).
@@ -412,8 +412,8 @@ A soft fade at both edges of the scrolling logo strip:
 
 ## Animations
 
-- **`rise` (entrance):** `rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both` , from `opacity: 0; translateY(28px)` to `translateY(0)`. The `to` keyframe deliberately omits opacity so each element settles on its own computed opacity (e.g. the subtitle's `opacity-80`). Staggered via inline `animationDelay`: navbar (default), headline `0.1s`, subtitle `0.25s`, CTA `0.35s`, marquee `0.45s`.
-- **`marquee`:** `marquee 20s linear infinite` , `translateX(0%)` → `translateX(-50%)`.
+- **`rise` (entrance):** `rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both` — from `opacity: 0; translateY(28px)` to `translateY(0)`. The `to` keyframe deliberately omits opacity so each element settles on its own computed opacity (e.g. the subtitle's `opacity-80`). Staggered via inline `animationDelay`: navbar (default), headline `0.1s`, subtitle `0.25s`, CTA `0.35s`, marquee `0.45s`.
+- **`marquee`:** `marquee 20s linear infinite` — `translateX(0%)` → `translateX(-50%)`.
 - **Background video:** custom RAF-driven 0.5s fade-in / 0.5s fade-out loop (see Background Video section).
 
 ### Reduced motion (`src/index.css`)
@@ -432,8 +432,8 @@ A soft fade at both edges of the scrolling logo strip:
 
 ## Color Palette
 
-- **Background:** `hsl(260 87% 3%)` , deep dark blue-purple (`--background`).
-- **Foreground:** `hsl(40 6% 95%)` , off-white (`--foreground`).
+- **Background:** `hsl(260 87% 3%)` — deep dark blue-purple (`--background`).
+- **Foreground:** `hsl(40 6% 95%)` — off-white (`--foreground`).
 - **Hero subtitle:** `hsl(40 6% 82%)` (`--hero-sub`).
 - **`theme-color` meta:** `#06010e`.
 - **Headline "AI" gradient:** `linear-gradient(to left, #6366f1, #a855f7, #fcd34d)` (indigo → purple → amber).

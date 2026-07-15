@@ -1,4 +1,4 @@
-# Zippay , Fintech / Spend-Management SaaS Marketing Template Clone (Vanilla HTML/CSS/JS, No Build)
+# Zippay — Fintech / Spend-Management SaaS Marketing Template Clone (Vanilla HTML/CSS/JS, No Build)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -11,8 +11,8 @@ A self-contained, faithful clone of the **Zippay** fintech / spend-management Sa
 ## Stack
 
 - Plain HTML + CSS + vanilla JavaScript, no build tooling.
-- `css/tokens.css` , light/dark theme tokens as CSS custom properties; `css/styles.css` , layout and components.
-- `js/main.js` , theme toggle + persistence, Product dropdown, mobile menu, scroll-reveal, accordions.
+- `css/tokens.css` — light/dark theme tokens as CSS custom properties; `css/styles.css` — layout and components.
+- `js/main.js` — theme toggle + persistence, Product dropdown, mobile menu, scroll-reveal, accordions.
 - Assets vendored locally under `assets/` (images, icons, favicon, fonts).
 
 ## Run
@@ -31,8 +31,8 @@ Then visit the printed local URL (e.g. `http://localhost:8000`).
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** shadcnblocks , Zippay template , <https://www.shadcnblocks.com/template/zippay>
+**Original:** shadcnblocks — Zippay template — <https://www.shadcnblocks.com/template/zippay>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

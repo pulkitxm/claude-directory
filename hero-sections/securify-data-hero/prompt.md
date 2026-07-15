@@ -1,4 +1,4 @@
-# Securify , Data-Security Hero Section
+# Securify — Data-Security Hero Section
 
 ## Overview
 
@@ -28,7 +28,7 @@ Load the Google Font Readex Pro with weights 300, 400, 500, 600, 700. In `index.
 />
 ```
 
-Page `<title>`: `securify , protect your data`. Meta description: `securify , guarding your data with utmost care, empowering you with privacy everywhere.`
+Page `<title>`: `securify — protect your data`. Meta description: `securify — guarding your data with utmost care, empowering you with privacy everywhere.`
 
 ### Global styles (`src/index.css`)
 
@@ -149,9 +149,9 @@ const HEADLINE_BASE =
 
 Per-word positioning (all lowercase):
 
-- `protect` , `left-4 md:left-10 top-[18%]`
-- `your` , `right-4 md:right-10 top-[38%]`
-- `data` , `left-[18%] md:left-[28%] top-[58%]`
+- `protect` — `left-4 md:left-10 top-[18%]`
+- `your` — `right-4 md:right-10 top-[38%]`
+- `data` — `left-[18%] md:left-[28%] top-[58%]`
 
 ### Description paragraph
 
@@ -167,25 +167,25 @@ All stat numbers share:
 const STAT_NUMBER = 'text-4xl md:text-5xl font-medium tracking-tight';
 ```
 
-### Stat block , top-right
+### Stat block — top-right
 
 Container: `absolute right-6 md:right-24 top-[14%]`.
 
-- Row: `flex items-center gap-3 justify-end` , a diagonal divider (`hidden md:block h-px w-24 bg-white/40 rotate-[20deg]`) then the number `+65k` (uses `STAT_NUMBER`).
+- Row: `flex items-center gap-3 justify-end` — a diagonal divider (`hidden md:block h-px w-24 bg-white/40 rotate-[20deg]`) then the number `+65k` (uses `STAT_NUMBER`).
 - Sublabel `<p>`: `startups use` with `text-xs md:text-sm text-white/70 mt-1 text-right`.
 
-### Stat block , bottom-left
+### Stat block — bottom-left
 
 Container: `absolute left-6 md:left-20 bottom-20 md:bottom-24`.
 
-- Row: `flex items-center gap-3` , the number `+1.5b` (uses `STAT_NUMBER`) then a divider `hidden md:block h-px w-24 bg-white/40 rotate-[-20deg]`.
+- Row: `flex items-center gap-3` — the number `+1.5b` (uses `STAT_NUMBER`) then a divider `hidden md:block h-px w-24 bg-white/40 rotate-[-20deg]`.
 - Sublabel `<p>`: `gb data was protected` with `text-xs md:text-sm text-white/70 mt-1`.
 
-### Stat block , bottom-right
+### Stat block — bottom-right
 
 Container: `absolute right-6 md:right-20 bottom-16 md:bottom-20`.
 
-- Row: `flex items-center gap-3 justify-end` , a diagonal divider `hidden md:block h-px w-24 bg-white/40 rotate-[-20deg]` then the number `+300k` (uses `STAT_NUMBER`).
+- Row: `flex items-center gap-3 justify-end` — a diagonal divider `hidden md:block h-px w-24 bg-white/40 rotate-[-20deg]` then the number `+300k` (uses `STAT_NUMBER`).
 - Sublabel `<p>`: `downloads` with `text-xs md:text-sm text-white/70 mt-1 text-right` (right-aligned).
 
 ### Bottom gradient overlay
@@ -211,8 +211,8 @@ A `<div>` with `pointer-events-none absolute bottom-0 left-0 right-0 h-48 bg-gra
 
 ## File Structure
 
-- `index.html` , entry HTML, font preconnect/links, title, meta description, mounts `#root`, loads `/src/main.tsx`.
-- `src/main.tsx` , React entry; renders `<App />` inside `<StrictMode>` via `createRoot`.
+- `index.html` — entry HTML, font preconnect/links, title, meta description, mounts `#root`, loads `/src/main.tsx`.
+- `src/main.tsx` — React entry; renders `<App />` inside `<StrictMode>` via `createRoot`.
 
   ```tsx
   import { StrictMode } from 'react';
@@ -227,9 +227,9 @@ A `<div>` with `pointer-events-none absolute bottom-0 left-0 right-0 h-48 bg-gra
   );
   ```
 
-- `src/App.tsx` , default-exported `App` component plus `Logo` and `Navbar` helper components and the module-level constants (`VIDEO_SRC`, `LOGO_PATH`, `NAV_LINKS`, `HEADLINE_BASE`, `STAT_NUMBER`).
-- `src/index.css` , Tailwind layers, global resets, and the `.hero-title` class.
-- `public/assets/hf_20260418_063509_7d167302-4fd4-480b-8260-18ab572333d4.mp4` , vendored background video.
+- `src/App.tsx` — default-exported `App` component plus `Logo` and `Navbar` helper components and the module-level constants (`VIDEO_SRC`, `LOGO_PATH`, `NAV_LINKS`, `HEADLINE_BASE`, `STAT_NUMBER`).
+- `src/index.css` — Tailwind layers, global resets, and the `.hero-title` class.
+- `public/assets/hf_20260418_063509_7d167302-4fd4-480b-8260-18ab572333d4.mp4` — vendored background video.
 - Config: `tailwind.config.js`, `postcss.config.js`, `vite.config.ts`, `tsconfig.json`.
 
 ## Notes

@@ -1,18 +1,18 @@
-# Shader Animation , Three.js GPU Fragment Shader Hero Integration (React + Vite + Tailwind CSS + Three.js)
+# Shader Animation — Three.js GPU Fragment Shader Hero Integration (React + Vite + Tailwind CSS + Three.js)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A self-contained reference for integrating the `ShaderAnimation` component , a GPU-driven WebGL fragment shader rendering radiating RGB lines on a full-screen Three.js plane , into a shadcn/ui project. The component is zero-prop and self-driving, and this app both uses it as a full-bleed hero and documents the integration end to end: prerequisites, the default `components/ui` path and why it matters, the single `three` runtime dependency, copy-paste usage, and a Q&A on props, state, assets, responsiveness, and mount placement. Built with React + TypeScript + Vite + Tailwind CSS. Generated with Claude Fable 5.
+A self-contained reference for integrating the `ShaderAnimation` component — a GPU-driven WebGL fragment shader rendering radiating RGB lines on a full-screen Three.js plane — into a shadcn/ui project. The component is zero-prop and self-driving, and this app both uses it as a full-bleed hero and documents the integration end to end: prerequisites, the default `components/ui` path and why it matters, the single `three` runtime dependency, copy-paste usage, and a Q&A on props, state, assets, responsiveness, and mount placement. Built with React + TypeScript + Vite + Tailwind CSS. Generated with Claude Fable 5.
 
 ## What's in the box
 
-- **`src/components/ui/shader-animation.tsx`** , the component, pasted verbatim
+- **`src/components/ui/shader-animation.tsx`** — the component, pasted verbatim
   into the shadcn `ui` folder. Initializes a Three.js `WebGLRenderer`, a
   full-screen plane with a custom GLSL vertex + fragment shader, a
   resize-aware `requestAnimationFrame` loop, and a complete teardown on unmount.
-- **`src/components/demo.tsx`** , the brief's `DemoOne` example, rendered
+- **`src/components/demo.tsx`** — the brief's `DemoOne` example, rendered
   untouched (the 650px bordered card with a centered wordmark).
-- **`src/App.tsx`** , the showcase: a full-viewport shader hero, a live preview
+- **`src/App.tsx`** — the showcase: a full-viewport shader hero, a live preview
   of `demo.tsx`, the setup / `components/ui` / install / usage sections, and the
   integration Q&A.
 
@@ -23,7 +23,7 @@ This project ships the canonical shadcn/ui contract so the component's import
 
 | File | Role |
 |------|------|
-| `components.json` | shadcn config , `style`, `tsx`, Tailwind paths, and the `aliases` block (`ui → @/components/ui`). |
+| `components.json` | shadcn config — `style`, `tsx`, Tailwind paths, and the `aliases` block (`ui → @/components/ui`). |
 | `tsconfig.json` | `"@/*": ["./src/*"]` path alias. |
 | `vite.config.ts` | matching Vite `resolve.alias` for `@`. |
 | `src/lib/utils.ts` | the `cn()` helper (`clsx` + `tailwind-merge`). |
@@ -41,7 +41,7 @@ cd my-app
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 
-# shadcn/ui , writes components.json, the @/ alias, lib/utils.ts and CSS tokens
+# shadcn/ui — writes components.json, the @/ alias, lib/utils.ts and CSS tokens
 npx shadcn@latest init
 ```
 
@@ -64,15 +64,15 @@ npm install -D @types/three  # TypeScript users
 
 ## Integration notes
 
-- **Props:** none , it is self-driving (the `resolution` / `time` GLSL uniforms
+- **Props:** none — it is self-driving (the `resolution` / `time` GLSL uniforms
   are managed internally).
-- **State / context:** none , Three.js objects live in `useRef`s; the render loop
+- **State / context:** none — Three.js objects live in `useRef`s; the render loop
   is one self-disposing `useEffect`. No store, no provider.
-- **Assets:** none , the visual is pure GPU maths (no images/textures). Icons on
+- **Assets:** none — the visual is pure GPU maths (no images/textures). Icons on
   the page are `lucide-react`; the Geist fonts are vendored locally.
 - **Responsive:** the renderer listens to `window.resize`, re-reads its container,
   and honours `devicePixelRatio`. Its root is `w-full h-screen`.
-- **Placement:** best as an ambient hero / section background , overlay your
+- **Placement:** best as an ambient hero / section background — overlay your
   headline and CTA on top. The hero in `App.tsx` mounts it inside an
   `absolute inset-0` layer so its `h-screen` measures against a deterministic box
   (a plain flex child gets squeezed and the canvas renders short).
@@ -80,7 +80,7 @@ npm install -D @types/three  # TypeScript users
 ## Stack
 
 React 18 · TypeScript · Vite · Tailwind CSS · **Three.js** · shadcn/ui · Lucide.
-Geist + Geist Mono (variable WOFF2) are **vendored locally** in `public/fonts` ,
+Geist + Geist Mono (variable WOFF2) are **vendored locally** in `public/fonts` —
 no CDN, fully runnable offline. The shader needs no image assets.
 
 ## Run
@@ -93,4 +93,4 @@ npm run build    # type-check + production build
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

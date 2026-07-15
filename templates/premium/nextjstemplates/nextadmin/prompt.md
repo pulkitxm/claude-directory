@@ -32,17 +32,17 @@ NEXTADMIN IS A NEXT.JS + TAILWIND CSS ADMIN DASHBOARD KIT. THE LIVE DEMO IS A LA
 **Shared shell (all in-app pages):** sticky left sidebar (logo, MAIN MENU / SUPPORT / OTHERS sections, collapsible accordion groups, active-route highlighting, mobile off-canvas toggle) + sticky top header (mobile sidebar toggle, static "Dashboard" title, search field, light/dark theme toggle, notifications dropdown, user-menu dropdown) + `<main>` content area.
 
 **Pages (51 total, one static HTML file per route):**
-- `index.html` , eCommerce dashboard: stat cards (views/profit/products/users), Payments Overview area chart, Profit this week bar chart, Used Devices donut, Region labels US map, Top Channels table, Chats list
-- `analytics.html`, `marketing.html`, `crm.html`, `stocks.html` , alternate dashboard variants with their own chart/table mixes
-- `calendar.html` , month grid calendar
-- `profile.html` , cover photo, avatar, bio, personal info
-- `manage-team.html` , team member table/cards
-- `tasks-task-list.html`, `tasks-task-kanban.html` , To Do/In Progress/Completed list and Kanban board
-- `forms-form-elements.html`, `forms-pro-form-elements.html`, `forms-form-layout.html`, `forms-pro-form-layout.html` , form field showcases and layout patterns
-- `tables.html`, `tables-pro-tables.html`, `tables-data-tables.html` , table variants
+- `index.html` — eCommerce dashboard: stat cards (views/profit/products/users), Payments Overview area chart, Profit this week bar chart, Used Devices donut, Region labels US map, Top Channels table, Chats list
+- `analytics.html`, `marketing.html`, `crm.html`, `stocks.html` — alternate dashboard variants with their own chart/table mixes
+- `calendar.html` — month grid calendar
+- `profile.html` — cover photo, avatar, bio, personal info
+- `manage-team.html` — team member table/cards
+- `tasks-task-list.html`, `tasks-task-kanban.html` — To Do/In Progress/Completed list and Kanban board
+- `forms-form-elements.html`, `forms-pro-form-elements.html`, `forms-form-layout.html`, `forms-pro-form-layout.html` — form field showcases and layout patterns
+- `tables.html`, `tables-pro-tables.html`, `tables-data-tables.html` — table variants
 - `pages-settings.html`, `pages-file-manager.html`, `pages-pricing-tables.html`, `pages-error-page.html`, `pages-team.html`, `pages-terms-conditions.html`, `pages-mail-success.html`
 - `messages.html`, `inbox.html`, `invoice.html`
 - `charts-basic-chart.html`, `charts-advanced-chart.html`
-- `ui-elements-accordion.html`, `-alerts`, `-badge`, `-breadcrumbs`, `-buttons`, `-buttons-group`, `-cards`, `-carousel`, `-dropdowns`, `-images`, `-modals`, `-notifications`, `-pagination`, `-popovers`, `-progress`, `-tabs`, `-tooltips`, `-videos` , one component showcase per file
-- `coming-soon.html`, `under-maintenance.html` , standalone countdown pages with illustration
-- `auth-sign-in.html`, `auth-sign-up.html` , standalone split-screen auth forms
+- `ui-elements-accordion.html`, `-alerts`, `-badge`, `-breadcrumbs`, `-buttons`, `-buttons-group`, `-cards`, `-carousel`, `-dropdowns`, `-images`, `-modals`, `-notifications`, `-pagination`, `-popovers`, `-progress`, `-tabs`, `-tooltips`, `-videos` — one component showcase per file
+- `coming-soon.html`, `under-maintenance.html` — standalone countdown pages with illustration
+- `auth-sign-in.html`, `auth-sign-up.html` — standalone split-screen auth forms

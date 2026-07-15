@@ -1,4 +1,4 @@
-# DesignPro , Cinematic Video Hero Section
+# DesignPro — Cinematic Video Hero Section
 
 ## Overview
 
@@ -9,8 +9,8 @@ Build a full-screen, immersive hero section for a product design education platf
 - **Framework:** React 18 (`react` `^18.3.1`, `react-dom` `^18.3.1`) with TypeScript (`typescript` `~5.6.2`).
 - **Build tool:** Vite (`vite` `^6.0.3`) with `@vitejs/plugin-react` `^4.3.4`.
 - **Styling:** Tailwind CSS v4 (`tailwindcss` `^4.0.0`) via the `@tailwindcss/vite` `^4.0.0` plugin, imported with `@import 'tailwindcss';`.
-- **Animation:** Motion / Framer Motion (`framer-motion` `^11.15.0`) , used for entrance fades, the shiny-text sweep, and the mobile menu transitions.
-- **Icons:** Lucide React (`lucide-react` `^0.468.0`) , `ArrowRight`, `ArrowUpRight`, `Menu`, `X`.
+- **Animation:** Motion / Framer Motion (`framer-motion` `^11.15.0`) — used for entrance fades, the shiny-text sweep, and the mobile menu transitions.
+- **Icons:** Lucide React (`lucide-react` `^0.468.0`) — `ArrowRight`, `ArrowUpRight`, `Menu`, `X`.
 - **Font:** Inter (weights 400, 500, 600), loaded from Google Fonts.
 - **Testing:** Playwright (`playwright` `^1.60.0`).
 - **Notable techniques:** `background-clip: text` with a transparent text fill for the gradient shine, animated `backgroundPosition` for the continuous sweep, a `MotionConfig` with `reducedMotion="user"` to respect accessibility preferences, and a legibility gradient scrim over the video.
@@ -20,8 +20,8 @@ Build a full-screen, immersive hero section for a product design education platf
 ### `index.html`
 
 - `lang="en"`, `charset="UTF-8"`, viewport `width=device-width, initial-scale=1.0`.
-- Meta description: `DesignPro , transformative programs that turn emerging product designers into product leaders.`
-- Page title: `DesignPro , Become Product Leader.`
+- Meta description: `DesignPro — transformative programs that turn emerging product designers into product leaders.`
+- Page title: `DesignPro — Become Product Leader.`
 - Preconnect to `https://fonts.googleapis.com` and `https://fonts.gstatic.com` (the latter with `crossorigin`).
 - Load Inter via `https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap`.
 - Inline `<style>` setting `html { background-color: #000000; }`.
@@ -77,10 +77,10 @@ body {
 
 ## Layout (`src/App.tsx`)
 
-- Root is a `<section>` with classes `relative h-screen overflow-hidden bg-black font-sans` , full viewport height, black background, Inter font.
+- Root is a `<section>` with classes `relative h-screen overflow-hidden bg-black font-sans` — full viewport height, black background, Inter font.
 - **Background video:** an `absolute inset-0 h-full w-full object-cover` `<video>` element that is `autoPlay`, `loop`, `muted`, `playsInline`, and `aria-hidden`. Its `src` points to the local asset.
   - Source uses the vendored local path: `/assets/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4` (stored at `public/assets/...`).
-  - Note: the original brief specified an external CloudFront URL , `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4` , but the implementation vendors this video locally. (The scheme/host above are lowercased from the all-caps original; the path is kept verbatim apart from case, since the canonical source uses the local path.)
+  - Note: the original brief specified an external CloudFront URL — `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4` — but the implementation vendors this video locally. (The scheme/host above are lowercased from the all-caps original; the path is kept verbatim apart from case, since the canonical source uses the local path.)
 - **Legibility scrim:** a `pointer-events-none absolute inset-0` div with `bg-gradient-to-b from-black/55 via-black/15 to-black/60`, `aria-hidden`, to keep type crisp over bright video frames.
 - **Content wrapper:** `relative z-10 flex h-full flex-col` so all content sits above the video.
 - **Bottom spacer:** a final `h-10 md:h-14` `aria-hidden` div for breathing room so the centered hero sits optically true.
@@ -145,7 +145,7 @@ const NAV_LINKS = ['Home', 'About Us', 'Courses', 'Instructors', 'Testimonials',
 ### Top Section (below nav)
 
 - Container: `mx-auto w-full max-w-7xl px-4 pt-6 sm:px-6 md:pt-8 lg:px-8`.
-- Grid: `grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8` , two columns on large screens, stacked on mobile.
+- Grid: `grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8` — two columns on large screens, stacked on mobile.
 - **Left paragraph** (`motion.p`, `fadeUp(0.15)`), class `max-w-md text-sm text-white/80 md:text-base`:
   > We deliver transformative programs that empower emerging product designers with cutting-edge expertise and vision to thrive globally.
 - **Right paragraph** (`motion.p`, `fadeUp(0.25)`), right-aligned on lg+, class `text-sm text-white/80 md:text-base lg:text-right`:
@@ -229,7 +229,7 @@ export default function ShinyText({
 
 ### How the sweep works
 
-- The gradient is `linear-gradient(${spread}deg, ${baseColor} 35%, ${shineColor} 50%, ${baseColor} 65%)` , a `spread`-degree (default 100°) sweep with the shine band centered.
+- The gradient is `linear-gradient(${spread}deg, ${baseColor} 35%, ${shineColor} 50%, ${baseColor} 65%)` — a `spread`-degree (default 100°) sweep with the shine band centered.
 - `backgroundSize: '200% 100%'` makes the background twice the element width, and Framer Motion slides `backgroundPosition` from `100% 0%` to `-100% 0%` forever (`repeat: Infinity`, `ease: 'linear'`).
 - Because the tile period equals the background width, the loop restart is seamless; the decreasing position translates the gradient image rightward so the shine band sweeps across the text from left to right.
 - `speed` controls the seconds for one full sweep (default 3s).

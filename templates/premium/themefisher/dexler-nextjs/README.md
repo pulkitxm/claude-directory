@@ -1,4 +1,4 @@
-# Dexler , HR / Workforce-Management SaaS Landing Template (Vanilla HTML/CSS/JS)
+# Dexler — HR / Workforce-Management SaaS Landing Template (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -39,19 +39,19 @@ python3 -m http.server
 
 ## Notable techniques
 
-- **Shared header/footer across all 12 pages** , a sticky header with an "About Us / Service / Pricing / Blog / Pages" nav (Pages dropdown links to Careers, How It Works, Team, Elements, Terms and Conditions) and a dark footer with quick links, support links, contact info, and social icons.
-- **Pastel gradient-blob backgrounds** , large blurred mint, lavender, peach, and sky decorative shapes sit behind alternating white sections.
-- **Serif + sans type pairing** , headlines use a serif display face, body/UI copy uses Inter, both vendored locally.
-- **Scroll-reveal animation** , sections fade up (opacity + translateY) on scroll entry, staggered per card.
-- **Testimonial carousel** , dot-paginated slide/fade carousel on the home page.
-- **Mobile hamburger nav** , the header collapses to a slide/fade mobile menu on small screens.
-- **Pricing toggle & FAQ accordion** , `pricing.html` includes a monthly/yearly billing switch and an FAQ accordion.
+- **Shared header/footer across all 12 pages** — a sticky header with an "About Us / Service / Pricing / Blog / Pages" nav (Pages dropdown links to Careers, How It Works, Team, Elements, Terms and Conditions) and a dark footer with quick links, support links, contact info, and social icons.
+- **Pastel gradient-blob backgrounds** — large blurred mint, lavender, peach, and sky decorative shapes sit behind alternating white sections.
+- **Serif + sans type pairing** — headlines use a serif display face, body/UI copy uses Inter, both vendored locally.
+- **Scroll-reveal animation** — sections fade up (opacity + translateY) on scroll entry, staggered per card.
+- **Testimonial carousel** — dot-paginated slide/fade carousel on the home page.
+- **Mobile hamburger nav** — the header collapses to a slide/fade mobile menu on small screens.
+- **Pricing toggle & FAQ accordion** — `pricing.html` includes a monthly/yearly billing switch and an FAQ accordion.
 
 `prompt.md` holds the full visual specification and `demo.mp4` shows the template in motion.
 
 ## Tech stack
 
-- Vanilla HTML5, CSS3, JavaScript , zero dependencies, zero build step
+- Vanilla HTML5, CSS3, JavaScript — zero dependencies, zero build step
 - Fonts vendored locally under `assets/fonts/`
 - Images vendored locally under `assets/images/`
 
@@ -59,8 +59,8 @@ python3 -m http.server
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Themefisher , <https://themefisher.com/demo?theme=dexler-nextjs>
+**Original:** Themefisher — <https://themefisher.com/demo?theme=dexler-nextjs>
 
 ---
 
-Part of the [Templates](../../../) collection in the [claude-directory](../../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

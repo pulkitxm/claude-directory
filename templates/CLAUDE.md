@@ -1,4 +1,4 @@
-# templates/ , agent notes
+# templates/ — agent notes
 
 ## Layout
 
@@ -9,8 +9,8 @@
 
 ## Counting rule
 
-**Premium templates count toward the total.** Every leaf project , including everything nested
-under `templates/premium/<provider>/` , is one template. The headline count in
+**Premium templates count toward the total.** Every leaf project — including everything nested
+under `templates/premium/<provider>/` — is one template. The headline count in
 `templates/README.md` and the templates table in the root `README.md` must equal the number of
 leaf projects on disk:
 

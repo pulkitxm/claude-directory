@@ -1,14 +1,14 @@
-# Shader Flow Field Rings , Three.js Additive RGB Interference Ring Showcase (React + Vite + Tailwind CSS + Three.js)
+# Shader Flow Field Rings — Three.js Additive RGB Interference Ring Showcase (React + Vite + Tailwind CSS + Three.js)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A full-viewport signal/oscilloscope laboratory showcasing the `ShaderAnimation` Three.js component , a GLSL fragment shader drawing additive R/G/B interference rings on a single full-screen quad: three loops (one per colour channel), each accumulating five thin concentric rings whose radii drift over time, summing to white at the centre bloom. The page's palette is pulled directly from the shader's own three channels , vermilion `#FF2D55` (R), phosphor-green `#39FF7A` (G), signal-blue `#2D7BFF` (B) , over phosphor-black instrument panels. The signature element is a live channel decomposition that draws each colour accumulator as its own rolling sparkline sampled from the running shader. Integrated as a shadcn `@/components/ui` drop-in with TypeScript. Generated with Claude Fable 5.
+A full-viewport signal/oscilloscope laboratory showcasing the `ShaderAnimation` Three.js component — a GLSL fragment shader drawing additive R/G/B interference rings on a single full-screen quad: three loops (one per colour channel), each accumulating five thin concentric rings whose radii drift over time, summing to white at the centre bloom. The page's palette is pulled directly from the shader's own three channels — vermilion `#FF2D55` (R), phosphor-green `#39FF7A` (G), signal-blue `#2D7BFF` (B) — over phosphor-black instrument panels. The signature element is a live channel decomposition that draws each colour accumulator as its own rolling sparkline sampled from the running shader. Integrated as a shadcn `@/components/ui` drop-in with TypeScript. Generated with Claude Fable 5.
 
 ## Design
 
 **A signal/oscilloscope laboratory.** Instead of the default "dark page, one accent," the
-palette is pulled straight from the shader's own three channels , vermilion `#FF2D55` (R),
-phosphor-green `#39FF7A` (G), signal-blue `#2D7BFF` (B) , over phosphor-black instrument
+palette is pulled straight from the shader's own three channels — vermilion `#FF2D55` (R),
+phosphor-green `#39FF7A` (G), signal-blue `#2D7BFF` (B) — over phosphor-black instrument
 panels. Type pairs `Space Grotesk` (display), `Inter` (body), and `JetBrains Mono` (the
 technical/telemetry register).
 
@@ -23,10 +23,10 @@ The component in `components/ui/shader-animation.tsx` is the prompt's component,
 to its vertex/fragment shaders and its `time += 0.05` loop. It adds **optional** props that
 leave the default visual identical:
 
-- `speed` , scales the per-frame time step (1 = canonical look)
-- `paused` , freezes the loop, keeping the last frame on screen
-- `onFrame(frame)` , per-frame telemetry (`time`, `fps`, `uptime`, per-channel intensity)
-- `className` / `style` , so it can embed in a card, not just full-bleed
+- `speed` — scales the per-frame time step (1 = canonical look)
+- `paused` — freezes the loop, keeping the last frame on screen
+- `onFrame(frame)` — per-frame telemetry (`time`, `fps`, `uptime`, per-channel intensity)
+- `className` / `style` — so it can embed in a card, not just full-bleed
 
 It also resizes against its container (via `ResizeObserver`) instead of only the window,
 caps the pixel ratio at 2, and cleans up its WebGL context on unmount.
@@ -35,9 +35,9 @@ caps the pixel ratio at 2, and cleans up its WebGL context on unmount.
 
 - React 18, TypeScript (strict), Vite 5
 - Tailwind CSS 3 (+ `cn` helper, shadcn-style `@/` alias, `components.json`)
-- Three.js (`three` + `@types/three`) , the only runtime dependency
+- Three.js (`three` + `@types/three`) — the only runtime dependency
 - `lucide-react` for icons
-- Fonts vendored locally (`public/fonts/*.woff2`) , runs fully offline
+- Fonts vendored locally (`public/fonts/*.woff2`) — runs fully offline
 
 ## Structure (shadcn convention)
 
@@ -49,7 +49,7 @@ src/
     channel-scope.tsx        # live RGB channel decomposition (signature element)
     code-block.tsx           # copy-to-clipboard source surface
   lib/
-    utils.ts                 # cn() , clsx + tailwind-merge
+    utils.ts                 # cn() — clsx + tailwind-merge
   demo.tsx                   # the prompt's DemoOne, wired into the showcase
   source-snippets.ts         # verbatim copyable source/install strings
   App.tsx                    # the showcase page
@@ -59,8 +59,8 @@ public/fonts/                # vendored Space Grotesk / Inter / JetBrains Mono
 components.json              # shadcn config (aliases ui -> @/components/ui)
 ```
 
-The component lives in `@/components/ui` , the folder shadcn's `components.json` aliases to
-`ui` , so `import { ShaderAnimation } from "@/components/ui/shader-animation"` resolves
+The component lives in `@/components/ui` — the folder shadcn's `components.json` aliases to
+`ui` — so `import { ShaderAnimation } from "@/components/ui/shader-animation"` resolves
 exactly as the demo writes it, with no path rewrites.
 
 ## Run
@@ -103,4 +103,4 @@ npm install three && npm install -D @types/three
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

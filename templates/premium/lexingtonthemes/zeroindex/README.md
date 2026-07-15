@@ -1,8 +1,8 @@
-# ZeroIndex , Documentation & SaaS UI Template Clone (Vanilla HTML/CSS/JS)
+# ZeroIndex — Documentation & SaaS UI Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-ZeroIndex is a faithful pixel-level clone of the Lexington Themes ZeroIndex template , a multi-page documentation and SaaS marketing site built entirely with vanilla HTML, CSS, and JavaScript (no framework, no build step). The template ships a marketing landing page, a sign-in page, a blog index, and a full documentation section covering getting-started guides, component references (accordion, alerts, badges, buttons, tabs, typography, wrappers), navigation pages, and an FAQ , all styled with a design-token CSS system, the Geist and Geist Mono typefaces, and a three-way light/dark/system theme toggle that persists to `localStorage`. Generated with Claude Fable 5.
+ZeroIndex is a faithful pixel-level clone of the Lexington Themes ZeroIndex template — a multi-page documentation and SaaS marketing site built entirely with vanilla HTML, CSS, and JavaScript (no framework, no build step). The template ships a marketing landing page, a sign-in page, a blog index, and a full documentation section covering getting-started guides, component references (accordion, alerts, badges, buttons, tabs, typography, wrappers), navigation pages, and an FAQ — all styled with a design-token CSS system, the Geist and Geist Mono typefaces, and a three-way light/dark/system theme toggle that persists to `localStorage`. Generated with Claude Fable 5.
 
 ## Pages
 
@@ -25,15 +25,15 @@ ZeroIndex is a faithful pixel-level clone of the Lexington Themes ZeroIndex temp
 
 ## Run
 
-This is a plain HTML/CSS/JS project , no build step required.
+This is a plain HTML/CSS/JS project — no build step required.
 
-**Option 1 , open directly in a browser:**
+**Option 1 — open directly in a browser:**
 
 ```sh
 open index.html
 ```
 
-**Option 2 , serve with Python (recommended, avoids path issues):**
+**Option 2 — serve with Python (recommended, avoids path issues):**
 
 ```sh
 cd "/path/to/zeroindex"
@@ -45,17 +45,17 @@ All assets (`assets/tokens.css`, `assets/layout.css`, `assets/main.js`) and inte
 
 ## Notable details
 
-- `assets/tokens.css` , full design-token layer: OKLCH color scales (neutral, sky-blue accent, orange, emerald), Geist/Geist Mono font variables, and semantic mappings for light and dark themes.
-- `assets/layout.css` , layout and component styles built on top of the tokens.
-- `assets/main.js` , vanilla JS initialising theme toggle, mobile sidebar, accordions, active-link highlighting, search, tabs, copy buttons, table-of-contents, and feedback widgets.
+- `assets/tokens.css` — full design-token layer: OKLCH color scales (neutral, sky-blue accent, orange, emerald), Geist/Geist Mono font variables, and semantic mappings for light and dark themes.
+- `assets/layout.css` — layout and component styles built on top of the tokens.
+- `assets/main.js` — vanilla JS initialising theme toggle, mobile sidebar, accordions, active-link highlighting, search, tabs, copy buttons, table-of-contents, and feedback widgets.
 - `prompt.md` holds the full build specification; `demo.mp4` shows the template in motion.
 
 ## Credits
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes , <https://lexingtonthemes.com/viewports/zeroindex>
+**Original:** Lexington Themes — <https://lexingtonthemes.com/viewports/zeroindex>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,4 +1,4 @@
-# Convix Software , Shaping Agencies of Tomorrow (PR Agency Hero)
+# Convix Software — Shaping Agencies of Tomorrow (PR Agency Hero)
 
 ## Overview
 
@@ -19,7 +19,7 @@ Import from Google Fonts:
 ### Background video
 
 - **Element:** `<video>` with classes `pointer-events-none absolute inset-0 h-full w-full object-cover`.
-- **Source:** the demo uses a locally vendored asset at `/assets/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4`. (The original design URL was `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4` , host lowercased per convention; the path is the same filename, now served locally. Note: only the scheme+host were lowercased; the original prompt presented the whole URL in caps.)
+- **Source:** the demo uses a locally vendored asset at `/assets/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4`. (The original design URL was `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4` — host lowercased per convention; the path is the same filename, now served locally. Note: only the scheme+host were lowercased; the original prompt presented the whole URL in caps.)
 - **Poster fallback:** locally vendored `/assets/unsplash-photo-1557683316-973673baf926.jpg` (original design poster: `https://images.unsplash.com/photo-1557683316-973673baf926?w=1600&q=60`).
 - **Attributes:** `autoPlay`, `loop`, `muted`, `playsInline`, `preload="auto"`, `disableRemotePlayback`, plus legacy inline-playback attributes for older iOS / QQ & WeChat (X5) webviews: `webkit-playsinline="true"`, `x5-playsinline="true"`.
 
@@ -48,7 +48,7 @@ Floating pill navbar, responsive with a hamburger menu. Uses `useState` for the 
 ### Logo
 
 - Left, `shrink-0 pl-1.5`, wrapped in `<a href="#" aria-label="Convix Software home">`.
-- `FlowerLogo` SVG: orange `#ef4d23` 8-petal flower , 8 circles at radius 10 around center `(16,16)` plus a center circle, all `r=3.5`, `viewBox="0 0 32 32"`, rendered with `h-7 w-7 sm:h-8 sm:w-8`.
+- `FlowerLogo` SVG: orange `#ef4d23` 8-petal flower — 8 circles at radius 10 around center `(16,16)` plus a center circle, all `r=3.5`, `viewBox="0 0 32 32"`, rendered with `h-7 w-7 sm:h-8 sm:w-8`.
 
 ```tsx
 const ORANGE = '#ef4d23'
@@ -101,7 +101,7 @@ function FlowerLogo({ className }: { className?: string }) {
 ## Hero Content (centered, in `App.tsx`)
 
 - **Container:** `flex flex-col items-center px-4 pb-8 pt-10 text-center sm:pb-12 sm:pt-16`.
-- **Badge:** `inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-[13px] shadow-sm` , an orange dot (`h-2 w-2 rounded-full bg-[#ef4d23]`, `aria-hidden`) followed by the text `Convix Software`.
+- **Badge:** `inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-[13px] shadow-sm` — an orange dot (`h-2 w-2 rounded-full bg-[#ef4d23]`, `aria-hidden`) followed by the text `Convix Software`.
 - **Headline `<h1>`:** classes `mt-5 max-w-4xl text-neutral-900 sm:mt-6` with inline style:
   - `fontSize: 'clamp(36px, 8vw, 72px)'`
   - `lineHeight: 1.05`
@@ -119,12 +119,12 @@ function FlowerLogo({ className }: { className?: string }) {
 
 ### Shared subcomponents
 
-- **`CardHeader({ title, period })`:** `flex items-center justify-between text-[13px]` , orange title (`font-medium text-[#ef4d23]`) + neutral period (`text-neutral-500`).
+- **`CardHeader({ title, period })`:** `flex items-center justify-between text-[13px]` — orange title (`font-medium text-[#ef4d23]`) + neutral period (`text-neutral-500`).
 - **`TogglePill({ active, inactive })`:** `flex rounded-full bg-neutral-100 p-1 text-[12px] font-medium`. The active button: `flex-1 rounded-full bg-white px-3 py-1.5 text-neutral-900 shadow`; the inactive button: `flex-1 rounded-full px-3 py-1.5 text-neutral-500`.
 - **`Dropdown({ label, value })`:** label `mb-1 block text-[12px] text-neutral-700`; button `flex w-full items-center justify-between rounded-lg border border-neutral-200 px-3 py-2 text-left text-[13px] text-neutral-900` with a trailing `ChevronDown` icon `h-4 w-4 text-neutral-500` (`strokeWidth={2}`).
 - **`TargetInput({ label, defaultValue })`:** Label `mb-1 block text-[12px] text-neutral-700`; field wrapper `flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2` with a `#` prefix (`text-[13px] text-neutral-400`) and an `<input type="text">` `w-full bg-transparent text-[13px] text-neutral-900 outline-none`.
 
-### Card 1 , Clicks (`ClicksCard`)
+### Card 1 — Clicks (`ClicksCard`)
 
 - Card: `flex flex-col rounded-2xl bg-white p-5`.
 - Header: title `Clicks`, period `This Month`.
@@ -134,7 +134,7 @@ function FlowerLogo({ className }: { className?: string }) {
 - Gauge (`mt-1`): `<Gauge value={92} color={ORANGE} showLabels min="389K" max="425K" />`.
 - Footer toggle (`mt-auto pt-4`): `<TogglePill active="Impressions" inactive="Clicks" />`.
 
-### Card 2 , Targets Form (`TargetsFormCard`)
+### Card 2 — Targets Form (`TargetsFormCard`)
 
 - Card: `flex flex-col gap-3 rounded-2xl bg-white p-5`.
 - Two dropdown groups:
@@ -148,7 +148,7 @@ function FlowerLogo({ className }: { className?: string }) {
   - Underlined `Cancel` button: `text-[13px] text-neutral-700 underline underline-offset-2`.
   - Close button pushed right (`ml-auto p-1 text-neutral-500 hover:text-neutral-800`, `aria-label="Close"`) holding an `X` icon `h-4 w-4` (`strokeWidth={2}`).
 
-### Card 3 , Video Starts (`VideoStartsCard`)
+### Card 3 — Video Starts (`VideoStartsCard`)
 
 - Card: `flex flex-col rounded-2xl bg-white p-5`.
 - Header: title `Video Starts`, period `today`.
@@ -165,7 +165,7 @@ Reusable semi-circular tick gauge.
 - **Constants:** `TICKS = 40`, `CENTER_X = 100`, `CENTER_Y = 100`, `OUTER_RADIUS = 80`, `INNER_RADIUS = OUTER_RADIUS - 10` (= 70).
 - **Wrapper:** `mx-auto w-full` with inline `style={{ maxWidth: 260 }}`.
 - **SVG:** `viewBox="0 0 200 120"`, class `block w-full`, `role="img"`, `aria-label={`Gauge at ${value}%`}`.
-- **Ticks:** 40 `<line>` marks spanning a 180° arc , angle `Math.PI + (i / (TICKS - 1)) * Math.PI` (i.e. start at π, sweep to 2π). Active tick count = `Math.round((value / 100) * TICKS)`. Each line goes from `INNER_RADIUS` to `OUTER_RADIUS` around center `(100,100)`, `strokeWidth={2.5}`, `strokeLinecap="round"`. Active ticks (`i < activeCount`) use `color`; inactive use `#d4d4d8`.
+- **Ticks:** 40 `<line>` marks spanning a 180° arc — angle `Math.PI + (i / (TICKS - 1)) * Math.PI` (i.e. start at π, sweep to 2π). Active tick count = `Math.round((value / 100) * TICKS)`. Each line goes from `INNER_RADIUS` to `OUTER_RADIUS` around center `(100,100)`, `strokeWidth={2.5}`, `strokeLinecap="round"`. Active ticks (`i < activeCount`) use `color`; inactive use `#d4d4d8`.
 - **Center text:** `<text x={100} y={105} textAnchor="middle" fontSize={22} fontWeight={600}>{value}%</text>` (`fontSize` 22, `fontWeight` 600).
 - **Labels (if `showLabels`):** a small flex row below the SVG: `flex justify-between text-[11px] text-neutral-500` showing `min` (left) and `max` (right).
 
@@ -252,6 +252,6 @@ src/
 
 ## Behavior & Responsiveness
 
-- **No custom animations** , only the native looping muted background video.
+- **No custom animations** — only the native looping muted background video.
 - The **entire hero** (video + content + dashboard) is clipped together by the rounded container, so the dashboard cards bleed off the bottom edge.
 - **Fully responsive:** the navbar collapses to a hamburger menu under `md`, the headline and CTA scale via `clamp()`, and the dashboard grid steps from 1 → 2 → 3 columns (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`).

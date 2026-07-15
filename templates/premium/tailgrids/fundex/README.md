@@ -1,4 +1,4 @@
-# Fundex , Personal Finance Dashboard Template (Vanilla HTML/CSS/JS + CSS Variables)
+# Fundex — Personal Finance Dashboard Template (Vanilla HTML/CSS/JS + CSS Variables)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -41,7 +41,7 @@ The full design requirements and functional specifications are detailed in [prom
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailgrids , https://fundex.demos.tailgrids.com/
+**Original:** Tailgrids — https://fundex.demos.tailgrids.com/
 
 ---
-Part of the [Templates](../../) collection in the [claude-directory](../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../) collection in the [claude-directory](../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,8 +1,8 @@
-# Mesh Gradient Shader Hero , Live Palette Studio with MeshGradient (React + Vite + Tailwind CSS + paper-design/shaders-react)
+# Mesh Gradient Shader Hero — Live Palette Studio with MeshGradient (React + Vite + Tailwind CSS + paper-design/shaders-react)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A full-featured shader hero integration built around the `@paper-design/shaders-react` **`MeshGradient`** component, framed as an interactive **palette studio**. The live hero sits behind a registration-bracketed plate with a frosted veil; a right-hand control deck drives the shader's real props , color stops, distortion, swirl, speed, and offset , in real time. A tabbed dock documents the install, the full props API, a live copy-paste usage snippet, and the shadcn `components/ui` story. Generated with Claude Fable 5.
+A full-featured shader hero integration built around the `@paper-design/shaders-react` **`MeshGradient`** component, framed as an interactive **palette studio**. The live hero sits behind a registration-bracketed plate with a frosted veil; a right-hand control deck drives the shader's real props — color stops, distortion, swirl, speed, and offset — in real time. A tabbed dock documents the install, the full props API, a live copy-paste usage snippet, and the shadcn `components/ui` story. Generated with Claude Fable 5.
 
 ## What's wired up
 
@@ -10,10 +10,10 @@ A full-featured shader hero integration built around the `@paper-design/shaders-
 |---------|--------|-------|
 | **Palette presets** | the whole `colors[]` stop set + matching geometry & copy | 5 curated + Random |
 | **Color stops** | each `colors[i]` (native swatch pickers) | live, per-stop |
-| **Distortion** | `distortion` , organic noise warp | `0 – 2` |
-| **Swirl** | `swirl` , vortex warp | `0 – 2` |
-| **Speed** | `speed` , animation time multiplier | `0 – 2×` |
-| **Offset X** | `offsetX` , horizontal centre offset | `−1 … 1` |
+| **Distortion** | `distortion` — organic noise warp | `0 – 2` |
+| **Swirl** | `swirl` — vortex warp | `0 – 2` |
+| **Speed** | `speed` — animation time multiplier | `0 – 2×` |
+| **Offset X** | `offsetX` — horizontal centre offset | `−1 … 1` |
 | **Light / Dark** | the component's `dark:` veil branch (`bg-white/20 dark:bg-black/25`) | toggle |
 
 A live telemetry strip across the top reads real **FPS · frame · uptime · stops**
@@ -25,8 +25,8 @@ that reflects the current deck state.
 
 The prompt's component targets the **current** `@paper-design/shaders-react`
 API, so it's integrated verbatim with no edits: every prop it passes to
-`MeshGradient` , `colors`, `distortion`, `swirl`, `grainMixer`, `grainOverlay`,
-`speed`, `offsetX`, `width`, `height` , exists in the pinned
+`MeshGradient` — `colors`, `distortion`, `swirl`, `grainMixer`, `grainOverlay`,
+`speed`, `offsetX`, `width`, `height` — exists in the pinned
 **`@paper-design/shaders-react@0.0.76`**. The accompanying `demo.tsx` from the
 prompt (a thin `<HeroSection distortion={1.2} speed={0.8} />` wrapper) is
 realised here as the studio's live default-plus-overrides, rather than copied as
@@ -56,7 +56,7 @@ npm i @paper-design/shaders-react lucide-react
 
 ### Why `/components/ui`
 
-shadcn/ui doesn't ship a runtime package , its CLI **copies source into your
+shadcn/ui doesn't ship a runtime package — its CLI **copies source into your
 repo**, and the convention is `@/components/ui`, resolved through a `@/*` path
 alias declared in both `tsconfig` (`paths`) and `vite.config.ts` (`resolve.alias`).
 Putting the component there means:
@@ -64,7 +64,7 @@ Putting the component there means:
 - `npx shadcn@latest add …` drops new primitives in the same predictable place;
 - the import `@/components/ui/hero-section-with-smooth-bg-shader` resolves no
   matter how deeply nested the importing file is;
-- owned UI primitives stay separate from app/feature components , easy to find,
+- owned UI primitives stay separate from app/feature components — easy to find,
   easy to theme.
 
 This project mirrors that exactly: the alias lives in `tsconfig.app.json` +
@@ -94,16 +94,16 @@ pulsing live tally, and a travelling signal-sweep on the bottom bus.
 
 ## Assets
 
-- **Font.** The component requests `Satoshi` , a Fontshare-proprietary face that
+- **Font.** The component requests `Satoshi` — a Fontshare-proprietary face that
   is *not* redistributable via npm / Google Fonts, so it can't be vendored
-  offline. We vendor **Onest** (SIL OFL, `assets/fonts/Onest-OFL.txt`) , a modern
-  geometric grotesque with near-identical proportions and character , under
+  offline. We vendor **Onest** (SIL OFL, `assets/fonts/Onest-OFL.txt`) — a modern
+  geometric grotesque with near-identical proportions and character — under
   `assets/fonts/*.woff2`, and register it under both `Onest Variable` **and** the
   family name `Satoshi`, so the component's `fontFamily: "Satoshi, …"` resolves
   to the local file with **no remote font calls** and **no edit to the verbatim
   component**.
 - **Icons.** `lucide-react` (no remote SVGs).
-- **Images.** None , the shader hero is image-free, so the project is fully
+- **Images.** None — the shader hero is image-free, so the project is fully
   self-contained and runs offline.
 
 ## Run
@@ -124,4 +124,4 @@ docs dock renders the Props API table, and no page/console errors fire.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,4 +1,4 @@
-# Specta , AI Video-Editing SaaS Landing Page Template Clone (Vanilla HTML/CSS/JS)
+# Specta — AI Video-Editing SaaS Landing Page Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -25,7 +25,7 @@ Then open <http://localhost:8000/> (entry file is `index.html`).
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Page UI (Specta) , <https://shipixen.com/demo/landing-page-templates/template/specta>
+**Original:** Page UI (Specta) — <https://shipixen.com/demo/landing-page-templates/template/specta>
 
 ---
 

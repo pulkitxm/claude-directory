@@ -1,8 +1,8 @@
-# Job Board , Cruip Template Clone
+# Job Board — Cruip Template Clone
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained HTML/CSS/JS clone of the Cruip Job Board template. Four fully reproduced pages , landing page with live job listings, sign-in, post-a-job, and individual job detail , all rendered as plain static files with no build step required.
+A pixel-faithful, self-contained HTML/CSS/JS clone of the Cruip Job Board template. Four fully reproduced pages — landing page with live job listings, sign-in, post-a-job, and individual job detail — all rendered as plain static files with no build step required.
 
 ## Pages
 
@@ -48,7 +48,7 @@ No dependencies, no build step. All fonts and images are vendored under `assets/
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip , <https://cruip.com/demos/jobboard/>
+**Original:** Cruip — <https://cruip.com/demos/jobboard/>
 
 ---
 

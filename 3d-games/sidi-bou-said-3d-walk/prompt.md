@@ -1,12 +1,12 @@
-# Sidi Bou Said , A Procedural 3D Walk Above the Gulf of Tunis
+# Sidi Bou Said — A Procedural 3D Walk Above the Gulf of Tunis
 
 ## Overview
 
 Write a complete, production-ready, single-file HTML/JavaScript application that renders a highly detailed, photo-realistic, navigable 3D scene of the iconic cliffside village of **Sidi Bou Said, Tunisia** using Three.js.
 
-## Critical Instructions , No Lazy Code
+## Critical Instructions — No Lazy Code
 
-- **No external asset URLs.** Do not use any external asset URLs (no external `.gltf`, `.obj`, `.jpg`, or `.png` files) as they can break or fail CORS. All textures, heights, and models must be generated dynamically and procedurally within the script , for example, using an HTML canvas to draw textures, procedural noise algorithms for plaster and stone, or mathematical structures for 3D meshes.
+- **No external asset URLs.** Do not use any external asset URLs (no external `.gltf`, `.obj`, `.jpg`, or `.png` files) as they can break or fail CORS. All textures, heights, and models must be generated dynamically and procedurally within the script — for example, using an HTML canvas to draw textures, procedural noise algorithms for plaster and stone, or mathematical structures for 3D meshes.
 - **No placeholders.** Do not write placeholder comments, truncated code blocks, `// TODO` markers, or "left as an exercise" shorthand. Every single function, shader, loop, and variable must be written out in its entirety.
 - **Single file.** The output must be a single, copy-pasteable HTML file that runs perfectly immediately when opened in a browser.
 

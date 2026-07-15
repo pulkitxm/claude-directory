@@ -1,4 +1,4 @@
-# VaultShield , Cinematic Password-Manager Hero Section (React + TypeScript + Framer Motion)
+# VaultShield — Cinematic Password-Manager Hero Section (React + TypeScript + Framer Motion)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -33,4 +33,4 @@ The script drives headless Chromium through desktop (1440×900) and mobile (390�
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

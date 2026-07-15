@@ -1,13 +1,13 @@
-# Xero , Encryption Hero Section
+# Xero — Encryption Hero Section
 
 ## Overview
 
-Build a single-page React + TypeScript (Vite) landing hero for a product called **Xero**. The page recreates one section exactly: a navbar, a rounded dark hero card featuring an animated icon pipeline (a beam of light that travels between three neumorphic nodes, splashing as it passes through the central Xero "X" logo), and a row of five monochrome brand logos. Styling is plain global CSS , do **not** use Tailwind utility classes for the hero. There is no purple/indigo branding outside the specified pink-magenta gradient arc.
+Build a single-page React + TypeScript (Vite) landing hero for a product called **Xero**. The page recreates one section exactly: a navbar, a rounded dark hero card featuring an animated icon pipeline (a beam of light that travels between three neumorphic nodes, splashing as it passes through the central Xero "X" logo), and a row of five monochrome brand logos. Styling is plain global CSS — do **not** use Tailwind utility classes for the hero. There is no purple/indigo branding outside the specified pink-magenta gradient arc.
 
 ## Tech Stack
 
 - **Framework:** React + TypeScript, built with Vite.
-- **Styling:** Plain CSS in a global stylesheet (CSS variables, neumorphic box-shadows, radial/linear gradients, CSS mask, keyframe animation). No CSS framework , do **not** use Tailwind utility classes for the hero.
+- **Styling:** Plain CSS in a global stylesheet (CSS variables, neumorphic box-shadows, radial/linear gradients, CSS mask, keyframe animation). No CSS framework — do **not** use Tailwind utility classes for the hero.
 - **Font:** Inter from Google Fonts, weights 300, 400, 500, 600, 700, 800.
 - **Notable techniques:** SVG `linearGradient` in `userSpaceOnUse` mode whose bright window is slid along a stroked path; a `requestAnimationFrame` state machine driving the beam; `getBoundingClientRect()` math to recompute the beam path on mount and resize; CSS `mask-image` to clip the grid to the arc; neumorphic (soft-UI) shadows.
 
@@ -33,23 +33,23 @@ Build a single-page React + TypeScript (Vite) landing hero for a product called 
 
 ## Layout & Structure
 
-`App` renders three top-level blocks (no wrapping element , a React fragment), centered on the black page, each constrained to `max-width: 1600px`, in this vertical order:
+`App` renders three top-level blocks (no wrapping element — a React fragment), centered on the black page, each constrained to `max-width: 1600px`, in this vertical order:
 
-1. `<nav>` , top bar (visually at the top; not actually `position: sticky`).
-2. `<section class="hero-card">` , the rounded dark hero card with the animated icon pipeline.
-3. `<div class="brands">` , a row of five monochrome brand logos.
+1. `<nav>` — top bar (visually at the top; not actually `position: sticky`).
+2. `<section class="hero-card">` — the rounded dark hero card with the animated icon pipeline.
+3. `<div class="brands">` — a row of five monochrome brand logos.
 
 ## Navbar
 
 `nav`: `width: 100%; max-width: 1600px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 12px 24px; margin-bottom: 14px;`.
 
-- **Left** , `<span class="nav-logo">Xero</span>`: `font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; justify-self: start;`.
-- **Center** , `<ul class="nav-links">` with three `<a href="#">` items, labels: **Method**, **Pricing**, **Docs** (in that order).
+- **Left** — `<span class="nav-logo">Xero</span>`: `font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; justify-self: start;`.
+- **Center** — `<ul class="nav-links">` with three `<a href="#">` items, labels: **Method**, **Pricing**, **Docs** (in that order).
   - `.nav-links`: `list-style: none; display: flex; align-items: center; gap: 32px;`.
   - `.nav-links a`: color `var(--text-muted)`, `text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s ease;`. Hover: color `var(--text)`.
-- **Right** , `<div class="nav-actions">` (`display: flex; align-items: center; gap: 10px; justify-self: end;`) containing two pill buttons:
-  - `.btn-login` , text **Log in**. `background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border); color: var(--text); font-weight: 500;`. Hover: `background: rgba(255, 255, 255, 0.12);`.
-  - `.btn-signup` , text **Sign up**. `background: #ffffff; border: 1px solid #ffffff; color: #0a0a0f; font-weight: 600;`. Hover: `opacity: 0.88;`.
+- **Right** — `<div class="nav-actions">` (`display: flex; align-items: center; gap: 10px; justify-self: end;`) containing two pill buttons:
+  - `.btn-login` — text **Log in**. `background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border); color: var(--text); font-weight: 500;`. Hover: `background: rgba(255, 255, 255, 0.12);`.
+  - `.btn-signup` — text **Sign up**. `background: #ffffff; border: 1px solid #ffffff; color: #0a0a0f; font-weight: 600;`. Hover: `opacity: 0.88;`.
   - Shared button styles (`.btn-login, .btn-signup`): `font-family: inherit; padding: 7px 18px; border-radius: 999px; font-size: 0.82rem; cursor: pointer; transition: background 0.2s ease, opacity 0.2s ease;`.
 - **`.nav-menu` wrapper** uses `display: contents` on desktop so the `<ul>` and `.nav-actions` become direct grid children of `<nav>`.
 
@@ -128,7 +128,7 @@ Children in this exact order:
 
 ### 1. Beam SVG
 
-`<svg class="beam-svg" aria-hidden="true">` , absolutely positioned over the whole pipeline: `position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: 2; pointer-events: none;`. It contains:
+`<svg class="beam-svg" aria-hidden="true">` — absolutely positioned over the whole pipeline: `position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: 2; pointer-events: none;`. It contains:
 
 - `<defs>` with:
   - `<filter id="glow" x="-50%" y="-50%" width="200%" height="200%">` → `<feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />` then `<feComposite in="SourceGraphic" in2="blur" operator="over" />`.
@@ -145,7 +145,7 @@ Both paths get the same computed `d` (see Beam Animation).
 
 ### 2. Left node (stack / layers icon)
 
-`<div class="icon-node node-light-right" id="node-stack" ref={nodeStackRef}>` , a Lucide-style **Layers** SVG (`viewBox="0 0 24 24"`, three stacked diamonds):
+`<div class="icon-node node-light-right" id="node-stack" ref={nodeStackRef}>` — a Lucide-style **Layers** SVG (`viewBox="0 0 24 24"`, three stacked diamonds):
 
 ```html
 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -157,14 +157,14 @@ Both paths get the same computed `d` (see Beam Animation).
 
 ### 3. Left pipeline line
 
-`<div class="pipeline-line" />` , `width: 160px; height: 1px; flex-shrink: 0; background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.07));`.
+`<div class="pipeline-line" />` — `width: 160px; height: 1px; flex-shrink: 0; background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.07));`.
 
 ### 4. Center wrapper
 
 `<div class="pipeline-center">` (`position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0;`) containing, in order:
 
-- **`.splash`** , `<div class="splash" ref={splashRef} />`: `position: absolute; top: 50%; left: 50%; width: 100px; height: 100px; margin: -50px 0 0 -50px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 77, 200, 0.6) 0%, transparent 70%); opacity: 0; transform: scale(0.4); z-index: 2; pointer-events: none;`.
-- **`.icon-node-center`** , `<div class="icon-node-center" id="node-x" ref={nodeXRef}>` containing the Xero "X" logoipsum SVG (`viewBox="0 0 40 40"`):
+- **`.splash`** — `<div class="splash" ref={splashRef} />`: `position: absolute; top: 50%; left: 50%; width: 100px; height: 100px; margin: -50px 0 0 -50px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 77, 200, 0.6) 0%, transparent 70%); opacity: 0; transform: scale(0.4); z-index: 2; pointer-events: none;`.
+- **`.icon-node-center`** — `<div class="icon-node-center" id="node-x" ref={nodeXRef}>` containing the Xero "X" logoipsum SVG (`viewBox="0 0 40 40"`):
 
   ```html
   <svg viewBox="0 0 40 40" aria-hidden="true">
@@ -174,11 +174,11 @@ Both paths get the same computed `d` (see Beam Animation).
 
 ### 5. Right pipeline line
 
-`<div class="pipeline-line right" />` , same `160px × 1px` line with the gradient reversed: `.pipeline-line.right { background: linear-gradient(90deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.15)); }`.
+`<div class="pipeline-line right" />` — same `160px × 1px` line with the gradient reversed: `.pipeline-line.right { background: linear-gradient(90deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.15)); }`.
 
 ### 6. Right node (shield-check icon)
 
-`<div class="icon-node node-light-left" id="node-shield" ref={nodeShieldRef}>` , a Lucide-style **Shield-Check** SVG (`viewBox="0 0 24 24"`):
+`<div class="icon-node node-light-left" id="node-shield" ref={nodeShieldRef}>` — a Lucide-style **Shield-Check** SVG (`viewBox="0 0 24 24"`):
 
 ```html
 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -199,7 +199,7 @@ box-shadow:
   inset 4px 4px 8px rgba(0, 0, 0, 0.4);
 ```
 
-- `.icon-node::after` , dotted outer ring: `content: ''; position: absolute; inset: -7px; border-radius: 50%; border: 1px dotted #1a1a24; pointer-events: none;`.
+- `.icon-node::after` — dotted outer ring: `content: ''; position: absolute; inset: -7px; border-radius: 50%; border: 1px dotted #1a1a24; pointer-events: none;`.
 - Hover: `transform: translateY(-1px);` with stronger shadows.
 - Active: inset-only shadows.
 - `.icon-node svg`: `width: 20px; height: 20px; stroke: rgba(255, 255, 255, 0.7); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round;`.
@@ -222,8 +222,8 @@ box-shadow:
 
 Shared base (`.node-light-right::before, .node-light-left::before`): `content: ''; position: absolute; inset: -8px; border-radius: 50%; opacity: 0; transition: opacity 300ms ease; z-index: 4; pointer-events: none;`.
 
-- `.node-light-right::before` , `background: radial-gradient(circle at right, rgba(200, 200, 200, 0.45) 0%, transparent 70%);`.
-- `.node-light-left::before` , `background: radial-gradient(circle at left, rgba(200, 100, 255, 0.5) 0%, transparent 70%);`.
+- `.node-light-right::before` — `background: radial-gradient(circle at right, rgba(200, 200, 200, 0.45) 0%, transparent 70%);`.
+- `.node-light-left::before` — `background: radial-gradient(circle at left, rgba(200, 100, 255, 0.5) 0%, transparent 70%);`.
 - When the node has `.active`, the glow becomes `opacity: 1` (`.node-light-right.active::before, .node-light-left.active::before { opacity: 1; }`).
 
 ### Splash keyframe
@@ -320,7 +320,7 @@ Each branch that changes state sets `lastStateChange = now`. The loop re-arms vi
 
 ## Hero Text
 
-`<div class="hero-content">` , `position: relative; max-width: 620px; z-index: 1;`.
+`<div class="hero-content">` — `position: relative; max-width: 620px; z-index: 1;`.
 
 ```html
 <h1 class="hero-heading">
@@ -348,14 +348,14 @@ Each `.brand-item`: `display: flex; align-items: center; gap: 10px; color: rgba(
 
 Five items, in order:
 
-1. **Expedia** , circle + bars, then the text `Expedia`:
+1. **Expedia** — circle + bars, then the text `Expedia`:
    ```html
    <svg viewBox="0 0 24 24" aria-hidden="true">
      <circle cx="12" cy="12" r="10" fill="currentColor" />
      <path fill="var(--bg)" d="M8 9h8v2H8zm0 4h6v2H8z" />
    </svg>
    ```
-2. **asana** , three filled circles, then the text `asana`:
+2. **asana** — three filled circles, then the text `asana`:
    ```html
    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
      <circle cx="12" cy="7" r="4" />
@@ -363,7 +363,7 @@ Five items, in order:
      <circle cx="19" cy="16" r="3.5" />
    </svg>
    ```
-3. **zenefits** , three stroked horizontal polylines, then the text `zenefits`:
+3. **zenefits** — three stroked horizontal polylines, then the text `zenefits`:
    ```html
    <svg
      viewBox="0 0 24 24"
@@ -378,7 +378,7 @@ Five items, in order:
      <polyline points="4 16 20 16" />
    </svg>
    ```
-4. **HubSpot** , small filled circle, stroked circle, and connecting paths, then the text `HubSp` + a superscript dot + `t`:
+4. **HubSpot** — small filled circle, stroked circle, and connecting paths, then the text `HubSp` + a superscript dot + `t`:
    ```html
    <svg viewBox="0 0 24 24" aria-hidden="true">
      <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
@@ -395,7 +395,7 @@ Five items, in order:
    <span>HubSp<span class="hubspot-dot" />t</span>
    ```
    - `.hubspot-dot`: `display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin: 0 1px; transform: translateY(-7px);` (a small round superscript dot).
-5. **loom** , globe-with-X, then the text `loom`:
+5. **loom** — globe-with-X, then the text `loom`:
    ```html
    <svg
      viewBox="0 0 24 24"
@@ -420,12 +420,12 @@ Five items, in order:
 
 ## Z-Index Stack (critical for splash/beam layering)
 
-- `0` , gradient arc (`.hero-card::before`) + grid overlay (`.hero-grid`).
-- `1` , pipeline container (`.icon-pipeline`), hero text (`.hero-content`).
-- `2` , beam SVG (`.beam-svg`), splash (`.splash`).
-- `3` , all icon nodes (`.icon-node`, `.icon-node-center`).
-- `4` , node side-light glows (`.node-light-right::before`, `.node-light-left::before`).
-- `1000` / `1001` , mobile nav overlay (`.nav-menu`) and toggle (`.menu-toggle`).
+- `0` — gradient arc (`.hero-card::before`) + grid overlay (`.hero-grid`).
+- `1` — pipeline container (`.icon-pipeline`), hero text (`.hero-content`).
+- `2` — beam SVG (`.beam-svg`), splash (`.splash`).
+- `3` — all icon nodes (`.icon-node`, `.icon-node-center`).
+- `4` — node side-light glows (`.node-light-right::before`, `.node-light-left::before`).
+- `1000` / `1001` — mobile nav overlay (`.nav-menu`) and toggle (`.menu-toggle`).
 
 ## Implementation Notes
 

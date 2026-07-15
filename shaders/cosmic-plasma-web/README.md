@@ -1,8 +1,8 @@
-# Cosmic Plasma Web , Cursor-Driven OGL Plasma Lattice Shader (React + Vite + Tailwind + shadcn/ui)
+# Cosmic Plasma Web — Cursor-Driven OGL Plasma Lattice Shader (React + Vite + Tailwind + shadcn/ui)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A cursor-reactive OGL fragment shader painting a layered plasma lattice of pulsing nodes, flowing connective streams, and excited particles , integrated verbatim as a shadcn `@/components/ui` drop-in and framed as a field-resonance console with live faders, named presets, cursor-tracking reticle, and real-time telemetry. The `<PlasmaWeb>` component's `uMouse` / `uMouseAttraction` uniforms pull the entire field toward the pointer, making it a vivid full-bleed interactive hero background or animated landing page section. Generated with Claude Fable 5.
+A cursor-reactive OGL fragment shader painting a layered plasma lattice of pulsing nodes, flowing connective streams, and excited particles — integrated verbatim as a shadcn `@/components/ui` drop-in and framed as a field-resonance console with live faders, named presets, cursor-tracking reticle, and real-time telemetry. The `<PlasmaWeb>` component's `uMouse` / `uMouseAttraction` uniforms pull the entire field toward the pointer, making it a vivid full-bleed interactive hero background or animated landing page section. Generated with Claude Fable 5.
 
 The shader is entirely cursor-reactive (its `uMouse` / `uMouseAttraction`
 uniforms pull the field toward the pointer), so the console leans into that: a
@@ -12,13 +12,13 @@ telemetry panel reads render rate + cursor position + an **engagement** signal
 straight off the loop.
 
 > Built for the fable demo recorder: a single, non-scrolling viewport so the
-> recorder takes its **static** path and drives the cursor across the canvas ,
+> recorder takes its **static** path and drives the cursor across the canvas —
 > exactly the mouse-gesture footage this shader wants. `demo.mp4` shows the
 > plasma bending toward the moving reticle.
 
 ## Answers to the integration brief
 
-- **Does the codebase support shadcn / Tailwind / TypeScript?** Yes , this is a
+- **Does the codebase support shadcn / Tailwind / TypeScript?** Yes — this is a
   Vite + React + TypeScript project wired the shadcn way: `@` resolves to
   `./src` (see `vite.config.ts` + `tsconfig.app.json` `paths`), Tailwind is
   configured in `tailwind.config.js` / `postcss.config.js`, and `@/lib/utils`
@@ -31,16 +31,16 @@ straight off the loop.
 - **Default component path → `components/ui`.** The component imports itself as
   `@/components/ui/cosmic-plasma-web`, so it lives at
   `src/components/ui/cosmic-plasma-web.tsx`. Keeping the `components/ui` folder
-  is what lets shadcn's `@/components/ui/*` imports resolve consistently , every
+  is what lets shadcn's `@/components/ui/*` imports resolve consistently — every
   generated primitive (and this drop-in) expects that exact path, so a shared
   alias means no per-file path fixups when you add more pieces.
 - **Dependency installed:** `ogl` (plus `lucide-react` for the console icons).
 - **Props passed to the component:** `hueShift`, `density`, `glowIntensity`,
   `saturation`, `brightness`, `energyFlow`, `pulseIntensity`,
   `attractionStrength`, `speed`, `disableAnimation`, `mouseAttraction`,
-  `mouseInteraction`, `transparent` , all wired to the console's faders /
+  `mouseInteraction`, `transparent` — all wired to the console's faders /
   presets / freeze control.
-- **State management:** none required , local React state in `App.tsx` holds the
+- **State management:** none required — local React state in `App.tsx` holds the
   fader values; the shader owns its own animation + cursor smoothing internally.
 - **Required assets:** none external. No images are needed (the shader is fully
   procedural), so the brief's "fill with Unsplash images" step doesn't apply.
@@ -50,7 +50,7 @@ straight off the loop.
   `resize`; the console is a full-viewport overlay best viewed on desktop
   (≥ 1024px), where the cursor interaction is the point.
 - **Best place to use it:** as a full-bleed hero / section background behind
-  light foreground content, or , as here , as a standalone interactive shader
+  light foreground content, or — as here — as a standalone interactive shader
   showcase.
 
 ## Files
@@ -80,7 +80,7 @@ npm run verify    # boots the app headless and asserts the shader + cursor work
 the `<PlasmaWeb>` canvas mounts, the WebGL context is live and sized, the
 lattice draws and animates, the Hue Shift fader re-drives the shader, the cursor
 excites the field (Engagement climbs `0% → ~98%` on pointer move), the Freeze
-control flips the status to `FROZEN`, and no runtime errors fire , **9/9 pass**.
+control flips the status to `FROZEN`, and no runtime errors fire — **9/9 pass**.
 
 ## Stack
 
@@ -88,4 +88,4 @@ React · TypeScript · Vite · Tailwind CSS · shadcn structure · OGL · Lucide
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

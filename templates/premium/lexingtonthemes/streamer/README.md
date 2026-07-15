@@ -1,8 +1,8 @@
-# Streamer , Lexington Themes
+# Streamer — Lexington Themes
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful HTML/CSS/JS clone of the **Streamer** template by [Lexington Themes](https://lexingtonthemes.com/viewports/streamer) , a music and indie media platform with blog, podcast, jobs, authors, pricing, and a full design system.
+A pixel-faithful HTML/CSS/JS clone of the **Streamer** template by [Lexington Themes](https://lexingtonthemes.com/viewports/streamer) — a music and indie media platform with blog, podcast, jobs, authors, pricing, and a full design system.
 
 ## Pages (14)
 
@@ -35,9 +35,9 @@ A pixel-faithful HTML/CSS/JS clone of the **Streamer** template by [Lexington Th
 
 | Token | Value |
 |-------|-------|
-| `base-900` | `#0d0d0d` , nav background, cards |
-| `base-300` | `#f5f0e8` , page background, nav text |
-| `accent-500` | `oklch(70.5% .213 47.604)` , orange/amber accent |
+| `base-900` | `#0d0d0d` — nav background, cards |
+| `base-300` | `#f5f0e8` — page background, nav text |
+| `accent-500` | `oklch(70.5% .213 47.604)` — orange/amber accent |
 
 ## Run locally
 

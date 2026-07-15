@@ -1,20 +1,20 @@
-# Open PRO , Dark SaaS Landing Page Template Clone (Alpine.js + AOS + Vanilla HTML/CSS/JS)
+# Open PRO — Dark SaaS Landing Page Template Clone (Alpine.js + AOS + Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Open PRO is a pixel-faithful clone of Cruip's premium dark-themed multi-page SaaS marketing site template, spanning 12 pages and built with Alpine.js, AOS (Animate on Scroll), and plain HTML/CSS/JS , no build step required. The design pairs a near-black `#030712` background with indigo accent gradients and the Inter typeface, and ships standout features including an animated gradient headline, spotlight hover cards driven by CSS custom properties on `mousemove`, a masonry blog grid, a billing-toggle pricing section, AOS scroll-entrance animations, and an Alpine.js-powered sticky header with a resources dropdown and mobile hamburger menu. It covers every screen a SaaS marketing site needs: marketing, auth, support, and content.
+Open PRO is a pixel-faithful clone of Cruip's premium dark-themed multi-page SaaS marketing site template, spanning 12 pages and built with Alpine.js, AOS (Animate on Scroll), and plain HTML/CSS/JS — no build step required. The design pairs a near-black `#030712` background with indigo accent gradients and the Inter typeface, and ships standout features including an animated gradient headline, spotlight hover cards driven by CSS custom properties on `mousemove`, a masonry blog grid, a billing-toggle pricing section, AOS scroll-entrance animations, and an Alpine.js-powered sticky header with a resources dropdown and mobile hamburger menu. It covers every screen a SaaS marketing site needs: marketing, auth, support, and content.
 
 ## Features
 
 - Animated gradient H1 headline (indigo-to-white shimmer, 6 s linear loop)
-- Spotlight hover cards , CSS `--mouse-x` / `--mouse-y` custom properties updated on `mousemove`
+- Spotlight hover cards — CSS `--mouse-x` / `--mouse-y` custom properties updated on `mousemove`
 - AOS scroll-entrance animations (`ease-out-sine`, 600 ms, fires once, disabled on phones)
 - Alpine.js sticky header with resources dropdown and hamburger mobile menu
 - Annual / monthly billing toggle on Home and Pricing pages
 - Masonry blog grid (15 posts)
 - Near-black palette (`#030712`) with indigo-500 (`#6366f1`) accent gradients
 - Inter typeface (weights 400–900) loaded from Google Fonts
-- All assets vendored locally , runs fully offline
+- All assets vendored locally — runs fully offline
 
 ## Pages
 
@@ -65,8 +65,8 @@ python3 -m http.server 8080
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip , https://cruip.com/demos/open-pro/
+**Original:** Cruip — https://cruip.com/demos/open-pro/
 
 ---
 
-Part of the [Cruip](../) premium templates in the [Templates](../../../) collection of the [claude-directory](../../../../) , a gallery of UI experiments and premium template clones.
+Part of the [Cruip](../) premium templates in the [Templates](../../../) collection of the [claude-directory](../../../../) — a gallery of UI experiments and premium template clones.

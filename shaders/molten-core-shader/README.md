@@ -1,4 +1,4 @@
-# Molten Core Shader , Procedural FBM Lava Background with Telemetry HUD (React + Three.js + Vite + Tailwind CSS)
+# Molten Core Shader — Procedural FBM Lava Background with Telemetry HUD (React + Three.js + Vite + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -13,12 +13,12 @@ npm run build    # tsc -b && vite build
 ## Design notes
 
 - **Subject:** an imaginary foundry's molten-core containment cell ("Astra Forge
-  · Core-09"). The shader *is* the hero , no stock photography needed.
+  · Core-09"). The shader *is* the hero — no stock photography needed.
 - **Type:** Cormorant Garamond (display serif, used once for the title), Space
   Mono (telemetry / data), Inter (utility). All three are **vendored locally**
   (latin woff2 in `src/fonts/`) so the project runs fully offline.
 - **Signature element:** `CoreTelemetry` maps the shader's centre-pixel
-  luminance , read straight off the GPU via `gl.readPixels` , to a plausible
+  luminance — read straight off the GPU via `gl.readPixels` — to a plausible
   temperature (≈760–1480 °C), viscosity, flux, and a rolling thermal sparkline.
   Nothing is faked; the panel breathes with the lava.
 - **Palette:** an `ember`/`forge` ramp derived from the shader's own lava stops
@@ -56,7 +56,7 @@ Make sure your `tsconfig.json` and bundler resolve the `@/*` alias to `src/*`
 ## 2. Why `/components/ui`
 
 The prompt asks the component be placed in `/components/ui`. That folder is the
-shadcn convention for **primitive, reusable UI building blocks** , the things you
+shadcn convention for **primitive, reusable UI building blocks** — the things you
 compose pages out of. Keeping `MoltenCoreShader` there (rather than next to a
 single page) means:
 
@@ -82,7 +82,7 @@ npm install -D @types/three   # TypeScript types
 `lucide-react` is used by the surrounding showcase (icons), per the prompt's
 "use lucide-react icons" guideline; the shader itself does not require it.
 
-## 4. Component contract , props & state
+## 4. Component contract — props & state
 
 The original component took no props and read the OS theme once. It has been
 integrated as a typed, controllable primitive while keeping the original
@@ -90,10 +90,10 @@ behaviour as the default:
 
 | Prop        | Type                              | Default     | Purpose |
 |-------------|-----------------------------------|-------------|---------|
-| `theme`     | `"light" \| "dark" \| "system"`   | `"system"`  | Drives the `theme` uniform , lava melts onto white / black, or follows the OS preference (original behaviour). Eased so toggles cross-fade. |
+| `theme`     | `"light" \| "dark" \| "system"`   | `"system"`  | Drives the `theme` uniform — lava melts onto white / black, or follows the OS preference (original behaviour). Eased so toggles cross-fade. |
 | `intensity` | `number` (0–1)                    | `0.8`       | Blend of lava over the base (the original's fixed `0.8`). |
-| `onSample`  | `(luminance: number) => void`     | ,           | Fires ~12×/s with the rendered frame's centre luminance, for external HUDs. |
-| `className` | `string`                          | ,           | Overrides the default fixed full-viewport container class. |
+| `onSample`  | `(luminance: number) => void`     | —           | Fires ~12×/s with the rendered frame's centre luminance, for external HUDs. |
+| `className` | `string`                          | —           | Overrides the default fixed full-viewport container class. |
 
 State is internal: a single `useEffect` owns the Three.js scene, renderer,
 animation loop, and cleanup. No context providers or external state libraries
@@ -102,7 +102,7 @@ rebuilding the WebGL context on every change.
 
 ## 5. Assets
 
-None required by the component , it draws procedurally, so there are **no
+None required by the component — it draws procedurally, so there are **no
 images** to fill in. (The prompt's "fill image assets with Unsplash" step does
 not apply: a generated lava field needs no photography, and vendoring fonts
 keeps the project self-contained.)
@@ -117,7 +117,7 @@ shader as the focus on mobile.
 
 ## 7. Where to use it
 
-It's an ambient **full-page background** for a landing/hero , anything that
+It's an ambient **full-page background** for a landing/hero — anything that
 benefits from a living, warm, generative backdrop (a forge/energy/AI product, a
 launch teaser, a "now playing" wall). Mount it once near the root with your real
 content layered above at a higher `z-index`, exactly as `demo.tsx` does.
@@ -132,11 +132,11 @@ src/
     core-telemetry.tsx         # signature live GPU readout
     forge-controls.tsx         # theme toggle + intensity dial
   lib/utils.ts                 # shadcn cn() helper
-  demo.tsx                     # DemoOne , the integration in use
+  demo.tsx                     # DemoOne — the integration in use
   App.tsx · main.tsx · index.css
   fonts/                       # vendored woff2 (offline)
 ```
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

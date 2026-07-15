@@ -1,4 +1,4 @@
-# Mainframe® , Cursor-Scrubbed Contact Hero
+# Mainframe® — Cursor-Scrubbed Contact Hero
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a modern, interactive contact hero section for a studio called **Mainframe
 - **Framework:** React 18.3 (`react` / `react-dom` `^18.3.1`) with `StrictMode`.
 - **Build tool:** Vite `^6.0.3` with `@vitejs/plugin-react` `^4.3.4`.
 - **Language:** TypeScript `~5.6.2` (build runs `tsc --noEmit && vite build`).
-- **Styling:** Tailwind CSS `^4.0.0` via the `@tailwindcss/vite` `^4.0.0` plugin (CSS-first config with `@import 'tailwindcss'` and an `@theme` block , no `tailwind.config.js`).
+- **Styling:** Tailwind CSS `^4.0.0` via the `@tailwindcss/vite` `^4.0.0` plugin (CSS-first config with `@import 'tailwindcss'` and an `@theme` block — no `tailwind.config.js`).
 - **Animation:** Motion `^12.0.0`, imported from `motion/react` (`motion`, `AnimatePresence`).
 - **Icons:** `lucide-react` `^0.468.0` (`Check`, `ArrowRight`).
 - **Font:** Inter (variable, italic + roman) from Google Fonts.
@@ -77,7 +77,7 @@ Wrap the entire application in a container `div` with these classes:
 Inside, in order:
 
 1. `<Navbar />`
-2. `<BackgroundVideo />` , the background film, scrubbed by the cursor on desktop, autoplaying on mobile.
+2. `<BackgroundVideo />` — the background film, scrubbed by the cursor on desktop, autoplaying on mobile.
 3. A content grouping layer, stacked above the video:
    - Outer `div`: `relative z-10 flex flex-col order-first lg:order-none w-full bg-white lg:bg-transparent pb-8 lg:pb-0 lg:min-h-screen`
    - Inside it, the overarching layout engine `<main>`:
@@ -118,7 +118,7 @@ export default function App() {
 
 ### Constants
 
-- `DESKTOP_MIN_WIDTH = 1024` , breakpoint below which scrubbing is disabled and normal playback kicks in.
+- `DESKTOP_MIN_WIDTH = 1024` — breakpoint below which scrubbing is disabled and normal playback kicks in.
 
 ### Scrubbing / playback logic (`useEffect` hooks)
 
@@ -127,7 +127,7 @@ export default function App() {
   - Store the mouse's previous X coordinate to compute the delta against the current X.
   - Update the target scrub time based on `(delta / window.innerWidth) * 0.8 * video.duration`. Clamp the time between `0` and `duration`. Set `video.currentTime = targetTime`.
   - Bind a `seeked` event listener to ensure smooth tracking frame to frame.
-- **Mobile autoplay hook:** because scrubbing is disabled on mobile frames, trigger normal playback for screens `< 1024` wide , set `video.autoplay = true` and call `video.play()` (catching/ignoring muted-autoplay policy rejections).
+- **Mobile autoplay hook:** because scrubbing is disabled on mobile frames, trigger normal playback for screens `< 1024` wide — set `video.autoplay = true` and call `video.play()` (catching/ignoring muted-autoplay policy rejections).
 
 ```tsx
 import { useEffect, useRef } from 'react';
@@ -314,8 +314,8 @@ A third `motion.div` wrapping `<ServicePicker />`, delayed `0.2s` (`transition={
 - Use `useState<string[]>([])` (`services` / `setServices`) to track selections over the options `const SERVICE_OPTIONS = ['Brand', 'Digital', 'Campaign', 'Other'];`.
 - `toggleService(option)` adds the option if absent, removes it if present (multi-select).
 - Wrap everything in `<section aria-label="Service selection">`.
-- **Prompt title:** `What sort of service?` , `<h2 className="text-2xl font-medium tracking-tight mb-2">`.
-- **Subtitle:** `Select all that apply` , `<p className="opacity-85 text-[#738273] mb-8">`.
+- **Prompt title:** `What sort of service?` — `<h2 className="text-2xl font-medium tracking-tight mb-2">`.
+- **Subtitle:** `Select all that apply` — `<p className="opacity-85 text-[#738273] mb-8">`.
 
 ### Pills
 

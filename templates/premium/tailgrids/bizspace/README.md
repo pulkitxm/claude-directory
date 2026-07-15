@@ -85,4 +85,4 @@ bizspace/
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailgrids Bizspace , https://bizspace.demos.tailgrids.com
+**Original:** Tailgrids Bizspace — https://bizspace.demos.tailgrids.com

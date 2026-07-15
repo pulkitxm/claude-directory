@@ -1,8 +1,8 @@
-# Changelog , Release Notes Timeline Template Clone (Vanilla HTML/CSS/JS)
+# Changelog — Release Notes Timeline Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A self-contained, no-build clone of the Magic UI "Changelog" template: a minimal, editorial release-notes page built on the shadcn/ui design language. It features a vertical timeline of release entries , each with a date and version badge, category pills, media, feature bullets, a syntax-highlighted code block, and collapsible "Features" / "Bug Fixes" accordions , plus a light/dark theme toggle that is system-aware and persisted to `localStorage`. Built with plain HTML, CSS (OKLCH design tokens, vendored GeistSans), and vanilla JavaScript, no framework or build step. Generated with Claude Fable 5.
+A self-contained, no-build clone of the Magic UI "Changelog" template: a minimal, editorial release-notes page built on the shadcn/ui design language. It features a vertical timeline of release entries — each with a date and version badge, category pills, media, feature bullets, a syntax-highlighted code block, and collapsible "Features" / "Bug Fixes" accordions — plus a light/dark theme toggle that is system-aware and persisted to `localStorage`. Built with plain HTML, CSS (OKLCH design tokens, vendored GeistSans), and vanilla JavaScript, no framework or build step. Generated with Claude Fable 5.
 
 ## Run
 
@@ -25,8 +25,8 @@ Then visit the printed local URL (e.g. <http://localhost:8000>). You can also op
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Magic UI , <https://changelog-magicui.vercel.app/>
+**Original:** Magic UI — <https://changelog-magicui.vercel.app/>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,4 +1,4 @@
-# Dynamic Waveform Shader , Interactive GLSL Waveform Fragment Shader (React + TypeScript + Three.js)
+# Dynamic Waveform Shader — Interactive GLSL Waveform Fragment Shader (React + TypeScript + Three.js)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -18,4 +18,4 @@ See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

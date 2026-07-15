@@ -1,8 +1,8 @@
-# Spydea , SaaS Document Management Landing Page Clone
+# Spydea — SaaS Document Management Landing Page Clone
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful HTML/CSS/JS clone of the [Spydea Next.js template](https://themefisher.com/demo?theme=spydea-nextjs) by Themefisher. No build step required , open `index.html` directly in a browser.
+A pixel-faithful HTML/CSS/JS clone of the [Spydea Next.js template](https://themefisher.com/demo?theme=spydea-nextjs) by Themefisher. No build step required — open `index.html` directly in a browser.
 
 ## Features
 
@@ -15,22 +15,22 @@ A pixel-faithful HTML/CSS/JS clone of the [Spydea Next.js template](https://them
 - AOS scroll-triggered animations throughout
 - Infinite-scrolling brand logos marquee
 - Interactive feature tabs, pricing toggle (monthly/annual), and FAQ accordion
-- Locally vendored images , zero external image CDN dependency
+- Locally vendored images — zero external image CDN dependency
 
 ## Pages
 
 | File | Description |
 |------|-------------|
-| `index.html` | Home , hero, brands, features tabs, integrations, testimonials, stats, pricing, blog preview, CTA |
-| `about.html` | About , mission/vision, stats, 8-person team grid |
-| `pricing.html` | Pricing , 3-tier cards with monthly/annual toggle, FAQ accordion |
-| `contact.html` | Contact , info boxes, full contact form |
-| `blog.html` | Blog , 6-article grid with pagination |
+| `index.html` | Home — hero, brands, features tabs, integrations, testimonials, stats, pricing, blog preview, CTA |
+| `about.html` | About — mission/vision, stats, 8-person team grid |
+| `pricing.html` | Pricing — 3-tier cards with monthly/annual toggle, FAQ accordion |
+| `contact.html` | Contact — info boxes, full contact form |
+| `blog.html` | Blog — 6-article grid with pagination |
 
 ## Run
 
 ```bash
-# No build step , open directly in browser
+# No build step — open directly in browser
 open index.html
 # Or serve with any static server
 python3 -m http.server 8080

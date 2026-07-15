@@ -1,8 +1,8 @@
-# Emerald AI , AI SaaS Landing Page Template Clone (Vanilla HTML/CSS/JS)
+# Emerald AI — AI SaaS Landing Page Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, fully offline clone of the "Emerald AI" landing page template from Shipixen, rebuilt as self-contained plain HTML, CSS, and vanilla JavaScript with no build step. This single-page dark AI SaaS product landing page features a sticky header, a split hero with product screenshot and "$350 off" pricing pill, alternating feature sections, a testimonial wall, a bento feature grid, and an FAQ accordion , all styled with glassy dark panels, violet-to-fuchsia gradient accents, and a teal/emerald glass glow. It ships light and dark themes (defaulting to dark) with localStorage persistence and no-flash boot, plus a mobile hamburger menu and IntersectionObserver scroll-reveal animations. Generated with Claude Fable 5.
+A pixel-faithful, fully offline clone of the "Emerald AI" landing page template from Shipixen, rebuilt as self-contained plain HTML, CSS, and vanilla JavaScript with no build step. This single-page dark AI SaaS product landing page features a sticky header, a split hero with product screenshot and "$350 off" pricing pill, alternating feature sections, a testimonial wall, a bento feature grid, and an FAQ accordion — all styled with glassy dark panels, violet-to-fuchsia gradient accents, and a teal/emerald glass glow. It ships light and dark themes (defaulting to dark) with localStorage persistence and no-flash boot, plus a mobile hamburger menu and IntersectionObserver scroll-reveal animations. Generated with Claude Fable 5.
 
 ## Run
 
@@ -25,8 +25,8 @@ Or simply open `index.html` directly in your browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Shipixen , <https://shipixen.com/demo/landing-page-templates/template/emerald-ai>
+**Original:** Shipixen — <https://shipixen.com/demo/landing-page-templates/template/emerald-ai>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../../README.md) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../../README.md) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

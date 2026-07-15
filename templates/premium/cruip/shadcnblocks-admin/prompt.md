@@ -1,4 +1,4 @@
-> A SELF-CONTAINED, PIXEL-FAITHFUL REPRODUCTION OF THE SHADCNBLOCKS ADMIN KIT , AN ECOMMERCE ADMIN DASHBOARD TEMPLATE WITH 9 DASHBOARD VARIANTS AND 2 DATA-TABLE PAGES , REBUILT AS PLAIN HTML + CSS + VANILLA JS WITH NO BUILD STEP. EVERY PAGE, THE FULL LOOK & FEEL, SIDEBAR NAVIGATION, CHART COMPONENTS, DATA TABLES, HOVER STATES, AND LIGHT/DARK THEME TOGGLE ARE REPRODUCED FROM CAPTURED REFERENCE ARTIFACTS. ALL ASSETS ARE VENDORED LOCALLY AND IT RUNS OFFLINE.
+> A SELF-CONTAINED, PIXEL-FAITHFUL REPRODUCTION OF THE SHADCNBLOCKS ADMIN KIT — AN ECOMMERCE ADMIN DASHBOARD TEMPLATE WITH 9 DASHBOARD VARIANTS AND 2 DATA-TABLE PAGES — REBUILT AS PLAIN HTML + CSS + VANILLA JS WITH NO BUILD STEP. EVERY PAGE, THE FULL LOOK & FEEL, SIDEBAR NAVIGATION, CHART COMPONENTS, DATA TABLES, HOVER STATES, AND LIGHT/DARK THEME TOGGLE ARE REPRODUCED FROM CAPTURED REFERENCE ARTIFACTS. ALL ASSETS ARE VENDORED LOCALLY AND IT RUNS OFFLINE.
 
 REFERENCE: `https://shadcnblocks-admin.vercel.app/`
 
@@ -54,7 +54,7 @@ AN ADMIN DASHBOARD UI KIT BUILT ON NEXT.JS + SHADCN/UI (CRUIP), FEATURING A PERS
 
 ### SPACING / RADII / SHADOWS
 
-- **--radius**: 0.625rem (10px) , used for cards, buttons, inputs
+- **--radius**: 0.625rem (10px) — used for cards, buttons, inputs
 - Sidebar width: 256px
 - Header height: ~69px (padding 16px 24px)
 - Card padding: typically 24px
@@ -91,14 +91,14 @@ THE CLONE IS ORGANIZED AS 11 HTML FILES WITH SHARED CHROME (SIDEBAR + HEADER) AN
 ### PAGES
 
 1. **index.html** → redirects / is ecommerce/dashboard-1.html
-2. **ecommerce/dashboard-1.html** , KPI cards (Monthly Revenue $148,230 / Orders 18,452 / New Customers 4,120 / Refunds $9,821), Total Revenue line chart (this year vs prev year, Jan–Dec, up to $80K), Revenue by Channel horizontal bar chart (Online/In-Store/Wholesale/Marketplace), Average Order Value sparkline ($959 / +2.4%), Average Sales sparkline (837 / +1.3%), Product Categories donut (Electronics 38%, Clothing 27%, Home & Garden 21%, Sports 14%), Last 28 Days bar at bottom
-3. **ecommerce/dashboard-2.html** , "Welcome Back, John! Today you have 12 orders to fulfill, 3 returns pending" header with Export button; alternate widget layout
-4. **ecommerce/dashboard-3.html** , Similar welcome header; alternate stats layout
-5. **ecommerce/dashboard-4.html** , Date range tabs (1 Year / 3 Months / 30 Days) with charts
-6. **ecommerce/dashboard-5.html** , $276,000.00 Total Revenue (Last 6 Months) with This Year vs Prev Year toggle
-7. **ecommerce/dashboard-6.html** , $1,800,000.00 Total Revenue / +12.0% / Avg Fulfillment 2.4 days / Orders 9,420 / 4.2% return rate
-8. **ecommerce/dashboard-7.html** , "Dashboard Overview" header with Jan 1–31 2025 date range / All Platforms dropdown
-9. **ecommerce/dashboard-8.html** , Total Revenue $485,000 / -12.5% vs Last Month / Conversion Rate 18.5%
-10. **ecommerce/dashboard-9.html** , Tabs: Overview / Orders / Products / Customers / Analytics; breadcrumb "Acme Store / Overview"
-11. **original/users.html** , Data table: users with columns (name, email, phone, created date, last active, status badge, role badge); 30 rows / 10 per page / pagination; row checkbox select; column sort; status filter; "Open menu" row actions
-12. **original/tasks.html** , Data table: tasks with columns (TASK-ID, type badge, description, status badge, priority badge); 100 rows / 10 per page / pagination; row actions
+2. **ecommerce/dashboard-1.html** — KPI cards (Monthly Revenue $148,230 / Orders 18,452 / New Customers 4,120 / Refunds $9,821), Total Revenue line chart (this year vs prev year, Jan–Dec, up to $80K), Revenue by Channel horizontal bar chart (Online/In-Store/Wholesale/Marketplace), Average Order Value sparkline ($959 / +2.4%), Average Sales sparkline (837 / +1.3%), Product Categories donut (Electronics 38%, Clothing 27%, Home & Garden 21%, Sports 14%), Last 28 Days bar at bottom
+3. **ecommerce/dashboard-2.html** — "Welcome Back, John! Today you have 12 orders to fulfill, 3 returns pending" header with Export button; alternate widget layout
+4. **ecommerce/dashboard-3.html** — Similar welcome header; alternate stats layout
+5. **ecommerce/dashboard-4.html** — Date range tabs (1 Year / 3 Months / 30 Days) with charts
+6. **ecommerce/dashboard-5.html** — $276,000.00 Total Revenue (Last 6 Months) with This Year vs Prev Year toggle
+7. **ecommerce/dashboard-6.html** — $1,800,000.00 Total Revenue / +12.0% / Avg Fulfillment 2.4 days / Orders 9,420 / 4.2% return rate
+8. **ecommerce/dashboard-7.html** — "Dashboard Overview" header with Jan 1–31 2025 date range / All Platforms dropdown
+9. **ecommerce/dashboard-8.html** — Total Revenue $485,000 / -12.5% vs Last Month / Conversion Rate 18.5%
+10. **ecommerce/dashboard-9.html** — Tabs: Overview / Orders / Products / Customers / Analytics; breadcrumb "Acme Store / Overview"
+11. **original/users.html** — Data table: users with columns (name, email, phone, created date, last active, status badge, role badge); 30 rows / 10 per page / pagination; row checkbox select; column sort; status filter; "Open menu" row actions
+12. **original/tasks.html** — Data table: tasks with columns (TASK-ID, type badge, description, status badge, priority badge); 100 rows / 10 per page / pagination; row actions

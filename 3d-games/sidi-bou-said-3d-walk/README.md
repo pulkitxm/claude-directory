@@ -1,8 +1,8 @@
-# Sidi Bou Said , Procedural 3D Walkthrough Scene (Three.js + GLSL + HTML Canvas)
+# Sidi Bou Said — Procedural 3D Walkthrough Scene (Three.js + GLSL + HTML Canvas)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A single-file Three.js scene that recreates the cliffside village of Sidi Bou Said, Tunisia, and lets you navigate its winding blue-and-white alleyway at eye level. Every texture and mesh is generated procedurally in-script , no external assets , so the whole thing runs from one copy-pasteable HTML file. Generated with Claude Fable 5.
+A single-file Three.js scene that recreates the cliffside village of Sidi Bou Said, Tunisia, and lets you navigate its winding blue-and-white alleyway at eye level. Every texture and mesh is generated procedurally in-script — no external assets — so the whole thing runs from one copy-pasteable HTML file. Generated with Claude Fable 5.
 
 The scene leans on the village's signature look: white-washed plaster walls (procedural stucco bump maps on a matte-white material), flat roofs with traditional domes (*koubba*), and vibrant Sidi Bou Said blue on arched doors, window grates, and *mushrabiya* screens. A sloped cobblestone street (canvas-generated displacement/roughness) climbs to a cliff-edge overlook above the Gulf of Tunis, where a shader-driven sea glitters under a warm Mediterranean sky. Instanced bougainvillea petals drape the walls and terracotta pots line the alley.
 
@@ -10,7 +10,7 @@ Lighting pairs a high-intensity `DirectionalLight` (PCF soft shadows) with a sky
 
 ## Run
 
-This is a static project , open `sidi-bou-said.html` in a browser, or serve the folder:
+This is a static project — open `sidi-bou-said.html` in a browser, or serve the folder:
 
 ```sh
 python3 -m http.server 8000
@@ -20,4 +20,4 @@ See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
 
 ---
 
-Part of the [3D & games](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [3D & games](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

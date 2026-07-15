@@ -1,12 +1,12 @@
-# STARTD , SaaS Landing Page Template Clone (Vanilla HTML/CSS/JS)
+# STARTD — SaaS Landing Page Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained reproduction of the STARTD SaaS/startup landing page template, rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step and all assets vendored locally. The single-page layout covers a nav with mobile hamburger menu, a hero with a "watch the video" play button, a logo strip, a numbered "transform your business" list, a 6-card feature grid, a dark navy case-studies band with an animated particle-dot background, a two-item testimonial carousel with prev/next arrows, a pricing/CTA panel, and a footer newsletter form , plus an added light/dark theme toggle not present in the original. Generated with Claude Fable 5.
+A pixel-faithful, self-contained reproduction of the STARTD SaaS/startup landing page template, rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step and all assets vendored locally. The single-page layout covers a nav with mobile hamburger menu, a hero with a "watch the video" play button, a logo strip, a numbered "transform your business" list, a 6-card feature grid, a dark navy case-studies band with an animated particle-dot background, a two-item testimonial carousel with prev/next arrows, a pricing/CTA panel, and a footer newsletter form — plus an added light/dark theme toggle not present in the original. Generated with Claude Fable 5.
 
 ## Run
 
-This is a static site with no dependencies or build tooling , just serve the folder:
+This is a static site with no dependencies or build tooling — just serve the folder:
 
 ```sh
 python3 -m http.server
@@ -25,8 +25,8 @@ or simply open `index.html` directly in a browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** STARTD template by jkytoela , <https://next-startd.vercel.app>
+**Original:** STARTD template by jkytoela — <https://next-startd.vercel.app>
 
 ---
 
-Part of the [Templates](../../) collection in the [claude-directory](../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../) collection in the [claude-directory](../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

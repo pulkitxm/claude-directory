@@ -1,8 +1,8 @@
-# Quoty , Freelancer Quote/Proposal Web App Template Clone
+# Quoty — Freelancer Quote/Proposal Web App Template Clone
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained HTML/CSS/JS clone of the **Quoty** freelancer quote/proposal template by [Cruip](https://cruip.com/demos/quoty/). This reproduction recreates a split-screen client-proposal web app: a sticky left panel with a "Quote for [Client]" summary and a scrolling right panel that swaps between a costs-breakdown table with an accordion of project terms, a line-item details page, a contact form, and a card/PayPal payment form , with a light/dark mode toggle persisted to `localStorage`, all as plain static files with zero build steps.
+A pixel-faithful, self-contained HTML/CSS/JS clone of the **Quoty** freelancer quote/proposal template by [Cruip](https://cruip.com/demos/quoty/). This reproduction recreates a split-screen client-proposal web app: a sticky left panel with a "Quote for [Client]" summary and a scrolling right panel that swaps between a costs-breakdown table with an accordion of project terms, a line-item details page, a contact form, and a card/PayPal payment form — with a light/dark mode toggle persisted to `localStorage`, all as plain static files with zero build steps.
 
 ## Features
 
@@ -52,7 +52,7 @@ open templates/premium/cruip/quoty/demo.mp4
 ## Tech Stack
 
 - Plain HTML5 + CSS3 (compiled Tailwind-style utility classes, custom properties)
-- [Alpine.js](https://alpinejs.dev/) , drives the Project Terms accordion and the Pay page's payment-method segmented toggle
+- [Alpine.js](https://alpinejs.dev/) — drives the Project Terms accordion and the Pay page's payment-method segmented toggle
 - Locally vendored fonts (Inter, Orbiter, Caveat)
 - No build tools, no frameworks, no bundler
 
@@ -62,7 +62,7 @@ open templates/premium/cruip/quoty/demo.mp4
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip , <https://cruip.com/demos/quoty/>
+**Original:** Cruip — <https://cruip.com/demos/quoty/>
 
 ---
 

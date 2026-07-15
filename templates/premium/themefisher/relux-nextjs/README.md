@@ -1,8 +1,8 @@
-# Relux , Luxury Hotel Template Clone
+# Relux — Luxury Hotel Template Clone
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful, self-contained HTML/CSS/vanilla-JS clone of the **Relux Next.js** luxury hotel template by [Themefisher](https://themefisher.com). Every page, hover state, scroll-entrance animation, gallery lightbox, testimonial slider, and responsive layout has been reproduced without any build step , open an HTML file and it works.
+A pixel-faithful, self-contained HTML/CSS/vanilla-JS clone of the **Relux Next.js** luxury hotel template by [Themefisher](https://themefisher.com). Every page, hover state, scroll-entrance animation, gallery lightbox, testimonial slider, and responsive layout has been reproduced without any build step — open an HTML file and it works.
 
 ## Overview
 
@@ -10,10 +10,10 @@ Relux is a premium multi-page hotel website template featuring an elegant warm p
 
 This clone faithfully reproduces:
 
-- **17 HTML pages** , home, rooms listing, 5 room detail pages, about, cafe & juice, blog listing, 5 blog post pages, contact, and privacy policy
-- **Shared design system** , CSS custom properties for all colors, typography scale, spacing, radii, and easings in `styles.css`
-- **Interactive components** , testimonial slider, gallery lightbox, sticky/scrolled header, mobile hamburger nav overlay, back-to-top button, and scroll-reveal IntersectionObserver animations
-- **Locally vendored assets** , all images, fonts (via Google Fonts CDN), and icons are self-contained; no external asset requests beyond Google Fonts
+- **17 HTML pages** — home, rooms listing, 5 room detail pages, about, cafe & juice, blog listing, 5 blog post pages, contact, and privacy policy
+- **Shared design system** — CSS custom properties for all colors, typography scale, spacing, radii, and easings in `styles.css`
+- **Interactive components** — testimonial slider, gallery lightbox, sticky/scrolled header, mobile hamburger nav overlay, back-to-top button, and scroll-reveal IntersectionObserver animations
+- **Locally vendored assets** — all images, fonts (via Google Fonts CDN), and icons are self-contained; no external asset requests beyond Google Fonts
 
 ## Pages
 
@@ -44,7 +44,7 @@ This clone faithfully reproduces:
 - **Light background:** `#f9f3f0`
 - **Heading font:** Namdhinggo (Google Fonts)
 - **Body font:** Red Rose (Google Fonts)
-- **Animations:** fade-up, fade-down, fade-right, fade-left , all driven by IntersectionObserver with CSS keyframes
+- **Animations:** fade-up, fade-down, fade-right, fade-left — all driven by IntersectionObserver with CSS keyframes
 
 ## Running Locally
 
@@ -92,7 +92,7 @@ relux-nextjs/
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Themefisher , <https://themefisher.com/demo?theme=relux-nextjs>
+**Original:** Themefisher — <https://themefisher.com/demo?theme=relux-nextjs>
 
 ---
 

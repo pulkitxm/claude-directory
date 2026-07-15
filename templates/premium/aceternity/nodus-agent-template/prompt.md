@@ -4,7 +4,7 @@
 
 ## SUMMARY
 
-- NODUS (BRANDED "NOTUS" IN THE LIVE BUILD) IS A MARKETING / LANDING-PAGE TEMPLATE FOR AN AI AGENTIC-WORKFLOW SAAS PRODUCT , A PLATFORM TO "MANAGE AND SIMULATE AGENTIC WORKFLOWS".
+- NODUS (BRANDED "NOTUS" IN THE LIVE BUILD) IS A MARKETING / LANDING-PAGE TEMPLATE FOR AN AI AGENTIC-WORKFLOW SAAS PRODUCT — A PLATFORM TO "MANAGE AND SIMULATE AGENTIC WORKFLOWS".
 - THE UNDERLYING LIVE APP IS A NEXT.JS + TAILWIND V4 SITE SERVED AT `https://notus-agent-marketing-template.vercel.app/`. THIS CLONE IS A STATIC, FRAMEWORK-FREE HTML/CSS/VANILLA-JS REBUILD.
 - KEY FEATURES: LIGHT/DARK THEME TOGGLE (CLASS-BASED, LOCALSTORAGE-PERSISTED, NO-FLASH BOOT), STICKY CENTERED NAV, MULTIPLE MARKETING SECTIONS WITH SCROLL-REVEAL ENTRANCES, DOTTED-GRID DECORATIVE PANELS, A MONTHLY/YEARLY PRICING TOGGLE, A PRICING COMPARISON TABLE, AN ACCORDION FAQ, AND A SHARED HEADER/FOOTER ACROSS EVERY PAGE.
 
@@ -16,7 +16,7 @@
   - DARK THEME (`.dark` ON `<html>`): PRIMARY `--color-neutral-100`, CANVAS LINES neutral-700, DOTTED GRID neutral-800, CARD FILL neutral-800, PAGE BG `#0a0a0a`/black, FOOTER LINK neutral-300.
   - NEUTRAL RAMP: gray-100 `#f9f9f9`, gray-200 `#f5f5f5`, gray-300 `#eaedf1`, gray-400 `#d7d7d7`, gray-600 `#8b8b8b`; charcoal-900 `#202020`, charcoal-700 `#343434`.
 - FONTS:
-  - PRIMARY: "Inter Display", sans-serif (HEADINGS + BODY) , INTER USED AS THE WEB-SAFE STAND-IN.
+  - PRIMARY: "Inter Display", sans-serif (HEADINGS + BODY) — INTER USED AS THE WEB-SAFE STAND-IN.
   - MONO: "DM Mono", monospace (EYEBROW LABELS LIKE "TRUSTED BY FAST GROWING STARTUPS", CODE, SMALL CAPS LABELS).
   - WEIGHTS: 400 / 500 / 600 / 700.
 - TYPE SCALE (Tailwind v4 defaults): xs .75rem, sm .875rem, base 1rem, lg 1.125rem, xl 1.25rem, 2xl 1.5rem, 3xl 1.875rem, 4xl 2.25rem, 6xl 3.75rem, 7xl 4.5rem. HERO HEADLINE ~6xl/7xl, SECTION HEADINGS ~4xl, TRACKING-TIGHT (-.025em) ON HEADINGS.
@@ -37,4 +37,4 @@ PAGES (12 distinct + 7 blog posts):
 - `contact.html`: "Contact us" form (Name/Email/Message) + testimonial gradient card, footer.
 - `sign-up.html`: "Create an account" form + social auth + testimonial card, footer.
 - `sign-in.html`: "Sign in" form + social auth + testimonial card, footer.
-- `privacy-policy.html`, `terms-of-service.html`, `cookie-policy.html`: reproduce the original's 404 state (these routes return "404 , This page could not be found." on the live site) with shared header/footer.
+- `privacy-policy.html`, `terms-of-service.html`, `cookie-policy.html`: reproduce the original's 404 state (these routes return "404 — This page could not be found." on the live site) with shared header/footer.

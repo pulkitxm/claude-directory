@@ -1,4 +1,4 @@
-# dot. , Nokia Typing Hero Landing Page
+# dot. — Nokia Typing Hero Landing Page
 
 ## Overview
 
@@ -18,8 +18,8 @@ Build a single-screen React landing page for "dot.", a calm-messaging product. T
 
 Import these Google Fonts:
 
-- **Instrument Serif** , weights 400 + italic 400.
-- **Inter** , weights 100 to 900.
+- **Instrument Serif** — weights 400 + italic 400.
+- **Inter** — weights 100 to 900.
 
 ### Custom Nokia font (`src/index.css`)
 
@@ -89,7 +89,7 @@ export default function App() {
 - **CTA button** (`Link up`):
   - Background `#0871E7`, rounded full, white text `font-sans text-[14px]`.
   - Shadow: `shadow-[inset_0_-4px_4px_rgba(255,255,255,0.39)] outline-1 outline-[#0871E7] -outline-offset-1`.
-  - **Top glint:** an absolutely positioned rectangle inside the button: `w-[80%] h-4 left-[10%] top-[1px] bg-gradient-to-b from-[#DEF0FC] to-transparent rounded-[12px]` , it scales wider on group hover (`group-hover:scale-x-105`).
+  - **Top glint:** an absolutely positioned rectangle inside the button: `w-[80%] h-4 left-[10%] top-[1px] bg-gradient-to-b from-[#DEF0FC] to-transparent rounded-[12px]` — it scales wider on group hover (`group-hover:scale-x-105`).
 
 Define the links as:
 
@@ -131,7 +131,7 @@ A typewriter effect that types and deletes a cycle of short messages on the Noki
   - If deleting and `text.length > 0`: after `DELETING_SPEED_MS`, remove the last character (`message.slice(0, text.length - 1)`).
   - If deleting and text is empty: immediately (`0` ms) set `isDeleting` to `false` and advance to the next message with `(i + 1) % MESSAGES.length`.
   - Always `clearTimeout(timeout)` in the effect cleanup.
-- **Positioning** (wrapper `<div>`): absolutely positioned to sit on the phone screen , `absolute left-[48.5%] md:left-[47.5%] lg:left-[48.5%] -translate-x-1/2 bottom-[32%] z-30 w-[110px] sm:w-[130px] flex justify-start text-left`.
+- **Positioning** (wrapper `<div>`): absolutely positioned to sit on the phone screen — `absolute left-[48.5%] md:left-[47.5%] lg:left-[48.5%] -translate-x-1/2 bottom-[32%] z-30 w-[110px] sm:w-[130px] flex justify-start text-left`.
 - **Text style** (`<p>`): `font-nokia text-[#2A3616] text-[10px] sm:text-[14px] leading-tight break-words min-h-[1.5em]`. Renders `{text}` followed by the cursor.
 - **Cursor:** a blinking `motion.span` styled `inline-block w-1.5 h-3 bg-[#2A3616] ml-1 align-middle`, with `animate={{ opacity: [0, 1, 0] }}` and `transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}`.
 

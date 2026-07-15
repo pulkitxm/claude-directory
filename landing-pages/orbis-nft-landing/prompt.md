@@ -1,4 +1,4 @@
-# Orbis.Nft , Dark Space NFT Landing Page
+# Orbis.Nft — Dark Space NFT Landing Page
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a single-page NFT landing page called **Orbis.Nft** with four full-bleed s
 - **Framework:** React 18 (`react` `^18.3.1`, `react-dom` `^18.3.1`) + TypeScript (`^5.6.3`)
 - **Build tool:** Vite (`^5.4.10`) with `@vitejs/plugin-react` (`^4.3.3`); entry point `src/main.tsx` rendered into `<div id="root">`
 - **Styling:** Tailwind CSS (`^3.4.14`) with `postcss` (`^8.4.49`) and `autoprefixer` (`^10.4.20`)
-- **Icons:** Lucide (`lucide-react` `^0.460.0`) , `Mail`, `Twitter`, `Github`
+- **Icons:** Lucide (`lucide-react` `^0.460.0`) — `Mail`, `Twitter`, `Github`
 - **Fonts:** Anton and Condiment via Google Fonts; system monospace for body copy
 - **Notable techniques:** looping muted autoplay HTML video backgrounds, CSS liquid-glass effect (`backdrop-filter` blur + gradient border mask), fixed full-screen texture overlay with `mix-blend-mode`, padding-bottom square aspect-ratio trick, responsive sizing with `sm:`/`md:`/`lg:` breakpoints
 - **No additional packages** are needed beyond what Vite + React + Tailwind provide.
@@ -20,9 +20,9 @@ Build a single-page NFT landing page called **Orbis.Nft** with four full-bleed s
 
 ### Fonts (Google Fonts)
 
-- **Anton** , used for all headings and navigation text (aliased as `font-grotesk` in Tailwind).
-- **Condiment** , a cursive script used for accent/overlay text (aliased as `font-condiment` in Tailwind).
-- **System monospace font** (`font-mono`) , used for body/description paragraphs.
+- **Anton** — used for all headings and navigation text (aliased as `font-grotesk` in Tailwind).
+- **Condiment** — a cursive script used for accent/overlay text (aliased as `font-condiment` in Tailwind).
+- **System monospace font** (`font-mono`) — used for body/description paragraphs.
 
 Loaded in `index.html` (with preconnect hints):
 
@@ -35,15 +35,15 @@ Loaded in `index.html` (with preconnect hints):
 />
 ```
 
-The document `<title>` is `Orbis.Nft , Beyond Earth` and the meta description is `Orbis.Nft , a collection of space objects beyond earth and its familiar boundaries.`
+The document `<title>` is `Orbis.Nft — Beyond Earth` and the meta description is `Orbis.Nft — a collection of space objects beyond earth and its familiar boundaries.`
 
 ### Color System (Tailwind config)
 
 Extend the Tailwind theme with these named colors:
 
-- `background`: `#010828` , deep dark navy blue
-- `cream`: `#EFF4FF` , off-white, used for all text
-- `neon`: `#6FFF00` , bright green, used for accent cursive text and underline bars
+- `background`: `#010828` — deep dark navy blue
+- `cream`: `#EFF4FF` — off-white, used for all text
+- `neon`: `#6FFF00` — bright green, used for accent cursive text and underline bars
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -186,9 +186,9 @@ export const SOCIALS: Social[] = [
 - **All videos:** `autoPlay loop muted playsInline` attributes.
 - **Casing:** all text is uppercase except the Condiment cursive accents, which are normal-case (`normal-case`). In JSX the copy is written in natural case and rendered uppercase via the `uppercase` utility.
 
-## Section 1 , Hero (`src/components/Hero.tsx`)
+## Section 1 — Hero (`src/components/Hero.tsx`)
 
-Full viewport: `<section className="relative h-screen overflow-hidden rounded-b-[32px]">` , note the `rounded-b-[32px]` bottom corners that clip the video.
+Full viewport: `<section className="relative h-screen overflow-hidden rounded-b-[32px]">` — note the `rounded-b-[32px]` bottom corners that clip the video.
 
 - **Background:** full-bleed looping muted autoplaying video covering the entire section with `object-cover` (`className="absolute inset-0 h-full w-full object-cover"`).
   - **Video:** `/assets/hf_20260331_045634_e1c98c76-1265-4f5c-882a-4276f2080894.mp4`
@@ -235,7 +235,7 @@ function SocialButton({ label, href, Icon }: (typeof SOCIALS)[number]) {
 }
 ```
 
-## Section 2 , About / Intro (`src/components/About.tsx`)
+## Section 2 — About / Intro (`src/components/About.tsx`)
 
 Full viewport: `<section className="relative min-h-screen overflow-hidden">`
 
@@ -262,15 +262,15 @@ Full viewport: `<section className="relative min-h-screen overflow-hidden">`
 
   > A digital object fixed beyond time and place. An exploration of distance, form, and silence in space
 
-### Bottom row , decorative ghost copy
+### Bottom row — decorative ghost copy
 
 `mt-16 flex justify-between` containing two `GhostParagraphs` columns. The right column is `hidden lg:block`.
 
-Each `GhostParagraphs` is a `flex max-w-[266px] flex-col gap-8` column of **2 identical paragraphs** using the same about copy. They are styled `font-mono text-[14px] uppercase leading-relaxed text-[#010828] opacity-10 lg:text-[16px] lg:text-cream` , i.e. nearly invisible decorative copy (`opacity-10`); on mobile the text color is `text-[#010828]` (dark, effectively invisible against the video), switching to `lg:text-cream` on desktop.
+Each `GhostParagraphs` is a `flex max-w-[266px] flex-col gap-8` column of **2 identical paragraphs** using the same about copy. They are styled `font-mono text-[14px] uppercase leading-relaxed text-[#010828] opacity-10 lg:text-[16px] lg:text-cream` — i.e. nearly invisible decorative copy (`opacity-10`); on mobile the text color is `text-[#010828]` (dark, effectively invisible against the video), switching to `lg:text-cream` on desktop.
 
-## Section 3 , NFT Collection Grid (`src/components/Collection.tsx`)
+## Section 3 — NFT Collection Grid (`src/components/Collection.tsx`)
 
-`<section className="bg-[#010828] py-16 md:py-20 lg:py-24">` , solid `#010828` background, **no video**.
+`<section className="bg-[#010828] py-16 md:py-20 lg:py-24">` — solid `#010828` background, **no video**.
 
 - **Container:** same `max-w-[1831px]`, centered, `px-5 sm:px-8 lg:px-12`.
 
@@ -291,7 +291,7 @@ Each `GhostParagraphs` is a `flex max-w-[266px] flex-col gap-8` column of **2 id
 
 ### NFT card grid
 
-`grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3` , 1 column mobile, 2 tablet, 3 desktop, `24px` gap.
+`grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3` — 1 column mobile, 2 tablet, 3 desktop, `24px` gap.
 
 Each card is rendered by `NftCard` from this data:
 
@@ -320,8 +320,8 @@ const CARDS = [
 
 ### `NftCard`
 
-- **Card container:** `<article className="liquid-glass rounded-[32px] p-[18px] transition hover:bg-white/10">` , liquid-glass, `rounded-[32px]`, `18px` padding, `hover:bg-white/10`.
-- **Square video container:** `relative overflow-hidden rounded-[24px] pb-[100%]` , the `pb-[100%]` padding-bottom trick produces a square aspect ratio; the video fills it absolutely (`absolute inset-0 h-full w-full object-cover`).
+- **Card container:** `<article className="liquid-glass rounded-[32px] p-[18px] transition hover:bg-white/10">` — liquid-glass, `rounded-[32px]`, `18px` padding, `hover:bg-white/10`.
+- **Square video container:** `relative overflow-hidden rounded-[24px] pb-[100%]` — the `pb-[100%]` padding-bottom trick produces a square aspect ratio; the video fills it absolutely (`absolute inset-0 h-full w-full object-cover`).
 - **Rarity overlay bar:** a liquid-glass bar pinned to the bottom (`absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-[20px] px-5 py-4`).
   - **Label:** `Rarity score:` in monospace, `text-[11px]`, uppercase, `tracking-wide`, `text-cream/70`.
   - **Score value:** the card's `score` (e.g. `8.7/10`) in Anton, `text-[16px]`, uppercase, `text-cream`.
@@ -343,11 +343,11 @@ const CARDS = [
     </svg>
     ```
 
-## Section 4 , CTA / Final Section (`src/components/Cta.tsx`)
+## Section 4 — CTA / Final Section (`src/components/Cta.tsx`)
 
 `<section className="relative overflow-hidden">`
 
-- **Background:** full-width video that displays at its native aspect ratio , `className="block h-auto w-full"` (i.e. **not** `object-cover`; `w-full h-auto` block).
+- **Background:** full-width video that displays at its native aspect ratio — `className="block h-auto w-full"` (i.e. **not** `object-cover`; `w-full h-auto` block).
   - **Video:** `/assets/hf_20260331_055729_72d66327-b59e-4ae9-bb70-de6ccb5ecdb0.mp4`
 
 ### Text content (positioned absolute over the video)
@@ -392,9 +392,9 @@ orbis-nft-landing/
 │   └── assets/
 │       ├── hf_20260331_045634_e1c98c76-1265-4f5c-882a-4276f2080894.mp4   (Hero)
 │       ├── hf_20260331_151551_992053d1-3d3e-4b8c-abac-45f22158f411.mp4   (About)
-│       ├── hf_20260331_053923_22c0a6a5-313c-474c-85ff-3b50d25e944a.mp4   (Card 1 , 8.7/10)
-│       ├── hf_20260331_054411_511c1b7a-fb2f-42ef-bf6c-32c0b1a06e79.mp4   (Card 2 , 9/10)
-│       ├── hf_20260331_055427_ac7035b5-9f3b-4289-86fc-941b2432317d.mp4   (Card 3 , 8.2/10)
+│       ├── hf_20260331_053923_22c0a6a5-313c-474c-85ff-3b50d25e944a.mp4   (Card 1 — 8.7/10)
+│       ├── hf_20260331_054411_511c1b7a-fb2f-42ef-bf6c-32c0b1a06e79.mp4   (Card 2 — 9/10)
+│       ├── hf_20260331_055427_ac7035b5-9f3b-4289-86fc-941b2432317d.mp4   (Card 3 — 8.2/10)
 │       └── hf_20260331_055729_72d66327-b59e-4ae9-bb70-de6ccb5ecdb0.mp4   (CTA)
 └── src/
     ├── main.tsx

@@ -1,4 +1,4 @@
-# Aurora Sign Up , Two-Column Registration Interface
+# Aurora Sign Up — Two-Column Registration Interface
 
 ## Overview
 
@@ -50,7 +50,7 @@ Build a modern, two-column registration interface called "Aurora Sign Up". The l
 - Split this container into a left column (hero) and a right column (form), each rendered as a `<section>`.
 - The component is the default export: `export default function App()`.
 
-## Left Column , Hero & Background Video
+## Left Column — Hero & Background Video
 
 - Width on large screens is exactly `w-[52%]`. The column is hidden on mobile/tablet and only visible at `lg` (`hidden lg:flex`).
 - Full class list: `hidden lg:flex relative w-[52%] flex-col items-center justify-end pb-32 px-12 rounded-3xl overflow-hidden shadow-2xl h-full`.
@@ -109,11 +109,11 @@ Build a modern, two-column registration interface called "Aurora Sign Up". The l
 ### Steps
 
 - A `space-y-3` container that renders a custom `<StepItem>` component three times, each wrapped in a `motion.div` with `variants={heroItem}`:
-  1. "Register your identity" (active state , passes the `active` prop)
+  1. "Register your identity" (active state — passes the `active` prop)
   2. "Configure your studio"
   3. "Finalize your profile"
 
-## Right Column , Sign Up Form
+## Right Column — Sign Up Form
 
 - A `<section>` with `flex-1 flex flex-col items-center justify-center py-12 lg:py-6 px-4 sm:px-12 lg:px-16 xl:px-24 overflow-y-auto lg:overflow-hidden`.
 - **Animation:** Wrap the interior content in a `motion.div` that fades in (`opacity: 0` to `1`, `duration: 0.8`, `ease: "easeOut"`). Inner width `w-full max-w-xl`, spacing `space-y-8 lg:space-y-6 sm:space-y-10`.
@@ -159,7 +159,7 @@ The `<form>` uses `space-y-5` and calls `event.preventDefault()` on submit.
   - A relative wrapper holding the `<input>` with `id="password"`, `name="password"`, `type={showPassword ? "text" : "password"}`, `placeholder="••••••••"`, `minLength={8}`, `autoComplete="new-password"`, classes `w-full bg-brand-gray border-none rounded-xl h-11 px-4 pr-12 text-sm text-white placeholder:text-white/20 outline-none focus:ring-2 focus:ring-white/20 transition-shadow duration-200`.
   - A custom Lucide toggle button absolutely positioned at the right of the input (`absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors duration-200`) that swaps between the `Eye` and `EyeOff` icons (`h-4 w-4`) and toggles `showPassword`. The `aria-label` reads "Hide password" / "Show password".
   - A tiny helper text "Requires at least 8 symbols." (`text-xs text-white/30`).
-- **Submit Button:** "Create Account" , `w-full h-14 bg-white text-black font-semibold rounded-xl hover:bg-white/90 active:scale-[0.98] mt-4 text-sm transition-all duration-200`.
+- **Submit Button:** "Create Account" — `w-full h-14 bg-white text-black font-semibold rounded-xl hover:bg-white/90 active:scale-[0.98] mt-4 text-sm transition-all duration-200`.
 
 ### Footer Link
 
@@ -222,8 +222,8 @@ import { Chrome, Circle, Eye, EyeOff, Github, type LucideIcon } from "lucide-rea
 
 ## File Structure
 
-- `index.html` , entry document. `lang="en"`, `<title>Aurora Sign Up</title>`, meta description "Aurora Sign Up , register your identity, configure your studio, finalize your profile.", a `<div id="root"></div>`, and `<script type="module" src="/src/main.tsx"></script>`.
-- `src/main.tsx` , mounts `<App />` inside `<StrictMode>` via `createRoot(document.getElementById("root")!)`, imports `./index.css`.
-- `src/App.tsx` , the entire app: `App` default export plus the `StepItem`, `SocialButton`, and `InputGroup` components.
-- `src/index.css` , font import, Tailwind import, `@theme`, and base body styles.
-- `public/assets/hf_20260506_081238_406ed0e3-5d83-436e-a512-0bbff7ec5b95.mp4` , the locally vendored hero background video.
+- `index.html` — entry document. `lang="en"`, `<title>Aurora Sign Up</title>`, meta description "Aurora Sign Up — register your identity, configure your studio, finalize your profile.", a `<div id="root"></div>`, and `<script type="module" src="/src/main.tsx"></script>`.
+- `src/main.tsx` — mounts `<App />` inside `<StrictMode>` via `createRoot(document.getElementById("root")!)`, imports `./index.css`.
+- `src/App.tsx` — the entire app: `App` default export plus the `StepItem`, `SocialButton`, and `InputGroup` components.
+- `src/index.css` — font import, Tailwind import, `@theme`, and base body styles.
+- `public/assets/hf_20260506_081238_406ed0e3-5d83-436e-a512-0bbff7ec5b95.mp4` — the locally vendored hero background video.

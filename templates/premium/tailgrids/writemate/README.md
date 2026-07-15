@@ -1,4 +1,4 @@
-# Writemate , AI Writing Landing Page Template (Vanilla HTML/CSS/JS)
+# Writemate — AI Writing Landing Page Template (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -28,8 +28,8 @@ Then open `http://localhost:8080` in your web browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailgrids , <https://writemate.demos.tailgrids.com/>
+**Original:** Tailgrids — <https://writemate.demos.tailgrids.com/>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

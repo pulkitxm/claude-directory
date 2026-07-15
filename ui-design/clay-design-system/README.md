@@ -1,4 +1,4 @@
-# Claymakers , High-Fidelity Claymorphism Design System (React + Vite + Tailwind CSS v4)
+# Claymakers — High-Fidelity Claymorphism Design System (React + Vite + Tailwind CSS v4)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -6,20 +6,20 @@ A complete, polished showcase landing page that fully expresses the **High-Fidel
 
 ## What it demonstrates
 
-- **Centralized design tokens** , the entire candy-shop palette, the two self-hosted
+- **Centralized design tokens** — the entire candy-shop palette, the two self-hosted
   typefaces, the super-rounded radii, the 4-layer shadow stacks, and every keyframe
   live in one Tailwind v4 `@theme` + `@layer` block (`src/index.css`). Components never
-  hard-code a hex or a one-off shadow , they compose `bg-clay-*`, `shadow-clay-*`,
+  hard-code a hex or a one-off shadow — they compose `bg-clay-*`, `shadow-clay-*`,
   `rounded-clay-*` and the `display` font object.
-- **The depth engine** , four reusable shadow utilities map exactly to the spec:
+- **The depth engine** — four reusable shadow utilities map exactly to the spec:
   `shadow-clay-deep` (surfaces/trays), `shadow-clay-card` (floating cards),
   `shadow-clay-button` (convex buttons), and `shadow-clay-pressed` (recessed inputs &
   active states). Orbs get a hue-tinted drop via a `--orb` custom property.
-- **Composable primitives** , `Card`, `Button`/`ButtonLink`, `Input`, `IconOrb`,
+- **Composable primitives** — `Card`, `Button`/`ButtonLink`, `Input`, `IconOrb`,
   `Badge`, `Blobs`, `ClayShape`, `SectionHeading` and `Reveal` encode the clay physics
   once: convex bulge, concave press, the `active:scale-[0.92]` squish, the hover lift,
   and the springy scroll-in entrance.
-- **The full surface area** , a hero with multi-stop gradient text and an abstract
+- **The full surface area** — a hero with multi-stop gradient text and an abstract
   nested-clay composition, a trusted-by marquee, breathing **stat orbs** that count up,
   an asymmetric **bento feature grid** (a 2×2 hero card with a "peeking" panel), a
   **live playground** (press the buttons to feel the squish, focus the field to watch
@@ -27,7 +27,7 @@ A complete, polished showcase landing page that fully expresses the **High-Fidel
   numbered **how-it-works** circles, a **pricing** trio whose popular tier rests larger
   with a badge breaking its edge, **testimonials**, an ARIA **FAQ accordion** whose open
   panel presses into the surface, a working **email-capture CTA**, and a clay footer.
-- **Buoyant, accessible motion** , four float keyframes, breathing orbs, two-axis
+- **Buoyant, accessible motion** — four float keyframes, breathing orbs, two-axis
   background blobs, count-ups, and a `prefers-reduced-motion` query that stills the
   entire world. WCAG-AA text floor, 44px+ targets, visible focus rings, full keyboard
   support (escape closes the mobile menu).
@@ -37,7 +37,7 @@ A complete, polished showcase landing page that fully expresses the **High-Fidel
 React 18, TypeScript, Vite 6, Tailwind CSS v4, lucide-react.
 
 **Nunito** (display) and **DM Sans** (body) are self-hosted as variable `.woff2` files
-in `public/fonts/` and preloaded , the project runs fully offline, no font CDN.
+in `public/fonts/` and preloaded — the project runs fully offline, no font CDN.
 
 ## Run
 
@@ -49,7 +49,7 @@ npm run build    # type-check + production build
 
 ## Verify
 
-Headless CLI verification (Playwright) asserts the design-system contract , the exact
+Headless CLI verification (Playwright) asserts the design-system contract — the exact
 palette tokens resolve from one place, both self-hosted fonts render, cards & buttons
 carry genuine **4-layer** shadow stacks, inputs rest recessed and rise to white on
 focus, there are **no sharp corners**, the button press registers (the live squish
@@ -67,4 +67,4 @@ npm run verify http://localhost:4173
 
 ---
 
-Part of the [UI design](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,38 +1,38 @@
-# Verdant , Organic / Natural Design System Landing Page (React + Vite + Tailwind CSS)
+# Verdant — Organic / Natural Design System Landing Page (React + Vite + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A full-page landing page and design system showcase built around an **Organic / Natural** aesthetic , wabi-sabi warmth over digital precision, featuring soft amorphous blob shapes, a global paper-grain texture, an earth-drawn palette (moss, clay, sand, rice paper), the Fraunces serif paired with rounded Nunito, colour-tinted soft shadows, and gentle, tactile motion with no harsh snaps. The page presents a fictional small-batch botanical apothecary called Verdant, covering a hero, stats band, feature grid, field-to-cup ritual section, product spotlight, benefits, social proof, pricing, journal, FAQ, and closing CTA. Generated with Claude Fable 5.
+A full-page landing page and design system showcase built around an **Organic / Natural** aesthetic — wabi-sabi warmth over digital precision, featuring soft amorphous blob shapes, a global paper-grain texture, an earth-drawn palette (moss, clay, sand, rice paper), the Fraunces serif paired with rounded Nunito, colour-tinted soft shadows, and gentle, tactile motion with no harsh snaps. The page presents a fictional small-batch botanical apothecary called Verdant, covering a hero, stats band, feature grid, field-to-cup ritual section, product spotlight, benefits, social proof, pricing, journal, FAQ, and closing CTA. Generated with Claude Fable 5.
 
 ## Signature elements (the "bold factor")
 
-- **Global paper grain** , a fixed, full-viewport noise layer (vendored
+- **Global paper grain** — a fixed, full-viewport noise layer (vendored
   `noise.png`) tiling at ~3.5% opacity with `mix-blend-mode: multiply` gives the
   whole interface an unbleached-paper quality; dark sections layer a second
   `overlay`-blend grain so the texture survives on moss/terracotta fills.
-- **Amorphous blob backgrounds** , large, heavily-blurred colour washes drift
+- **Amorphous blob backgrounds** — large, heavily-blurred colour washes drift
   slowly behind the hero, features, product, pricing and CTA. The `Blob`
   primitive splits the ambient **drift** (translate/scale on an outer element)
   from the **morph** (animated organic `border-radius` on the inner element) so
   both run together instead of one CSS `animation` overwriting the other.
-- **Hand-drawn botanical illustrations** , every "photo" (the foraged-jar hero,
+- **Hand-drawn botanical illustrations** — every "photo" (the foraged-jar hero,
   the rotated product tin, the steaming cup, the three journal sprigs) is a
   bespoke SVG drawn in the palette, so the site is license-free and fully
   offline, and reads as genuinely handcrafted rather than stock.
-- **Organic image masks & rotated frames** , the benefits illustration is
+- **Organic image masks & rotated frames** — the benefits illustration is
   clipped into a complex blob radius (`30% 70% 70% 30% / 30% 30% 70% 70%`); the
   product tin sits rotated `-2deg` in a thick paper frame that rights itself on
   hover.
-- **Asymmetric card radii** , the six feature cards cycle through six different
+- **Asymmetric card radii** — the six feature cards cycle through six different
   corner-radius patterns, mixing big organic curves (4–5rem) with the standard
   2rem so the grid never reads mechanically uniform.
-- **Hand-drawn curved connector** , the four-step ritual is threaded by a dashed,
+- **Hand-drawn curved connector** — the four-step ritual is threaded by a dashed,
   curved SVG path rather than a straight rule.
-- **Tactile micro-interactions** , buttons scale up and deepen their colour-tinted
+- **Tactile micro-interactions** — buttons scale up and deepen their colour-tinted
   shadow on hover then press in (`active:scale-95`); feature/step cards lift;
   testimonial cards tilt the opposite way to their resting lean, as if picked off
   a table; stat numbers grow on group-hover.
-- **Varied section backgrounds** , off-white → stone → sand → moss (dark) →
+- **Varied section backgrounds** — off-white → stone → sand → moss (dark) →
   stone → off-white → terracotta (dark) create a breathing, alternating rhythm.
 
 ## Architecture
@@ -68,7 +68,7 @@ ghost pills), `Eyebrow` (the shared kicker used above every section), `Blob`,
 
 React 18 · TypeScript · Vite · Tailwind CSS · Framer Motion · Lucide.
 Fonts (Fraunces + Nunito variable TTFs) and the paper-grain `noise.png` are
-**vendored locally** in `public/assets` , no CDN, fully runnable offline.
+**vendored locally** in `public/assets` — no CDN, fully runnable offline.
 
 ## Run
 
@@ -80,4 +80,4 @@ npm run build    # type-check + production build
 
 ---
 
-Part of the [UI design](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [UI design](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

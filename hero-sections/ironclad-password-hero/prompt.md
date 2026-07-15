@@ -1,4 +1,4 @@
-# Ironclad , Password Manager Landing Hero
+# Ironclad — Password Manager Landing Hero
 
 ## Overview
 
@@ -9,8 +9,8 @@ Build a single-screen landing page hero section for a password manager called Ir
 - **Framework:** React 18 (`react` `^18.3.1`, `react-dom` `^18.3.1`) with `StrictMode`.
 - **Build tooling:** Vite (`^5.4.11`) + TypeScript (`^5.6.3`), `@vitejs/plugin-react` (`^4.3.4`).
 - **Styling:** Tailwind CSS 3 (`^3.4.17`) with the default config and no custom theme extensions, plus inline `style` objects for precise values. PostCSS (`^8.4.49`) + Autoprefixer (`^10.4.20`).
-- **Animation:** Framer Motion (`framer-motion` `^11.18.2`) , variants, `AnimatePresence`, and gesture props (`whileHover`, `whileTap`).
-- **Icons:** Lucide (`lucide-react` `^0.468.0`) , `ArrowRightCircle`, `Zap`, `LockKeyhole`, `Fingerprint`, `Menu`, `X`.
+- **Animation:** Framer Motion (`framer-motion` `^11.18.2`) — variants, `AnimatePresence`, and gesture props (`whileHover`, `whileTap`).
+- **Icons:** Lucide (`lucide-react` `^0.468.0`) — `ArrowRightCircle`, `Zap`, `LockKeyhole`, `Fingerprint`, `Menu`, `X`.
 - **Fonts:** Helvetica Now Display Bold (headings, vendored locally via `@font-face`) and Inter weights 300–900 (body, via Google Fonts).
 - **Notable techniques:** full-viewport `object-cover` background video, sequential fade-up reveal via a shared variant with a `custom` index, right-side slide-in mobile sheet with staggered links, inline SVG logo.
 
@@ -48,7 +48,7 @@ Build a single-screen landing page hero section for a password manager called Ir
 ### `index.html`
 
 - `lang="en"`, `charset="UTF-8"`, viewport meta `width=device-width, initial-scale=1.0`.
-- `<title>`: `Ironclad , Lock Down Your Passwords`.
+- `<title>`: `Ironclad — Lock Down Your Passwords`.
 - Links the heading-font stylesheet (above), renders `<div id="root"></div>`, and loads `/src/main.tsx` as a module script.
 
 ### `index.css`
@@ -101,11 +101,11 @@ export const NAV_LINKS = ['Vault', 'Plans', 'Install', 'News', 'Help'] as const
 
 - Header element: `relative z-10 flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5`, with inline style `maxWidth: 1280` and `margin: '0 auto'` (max-width `1280px`, centered).
 - **Left:** anchor (`href="#"`, `aria-label="Ironclad home"`, `flex items-center`) wrapping the `Logo` component.
-- **Center (desktop, hidden on mobile via `hidden md:flex`):** the 5 nav links , "Vault", "Plans", "Install", "News", "Help" , in a `nav` with `items-center gap-8`. Each link: `text-sm font-medium transition-opacity hover:opacity-70`, color `var(--color-text)`.
+- **Center (desktop, hidden on mobile via `hidden md:flex`):** the 5 nav links — "Vault", "Plans", "Install", "News", "Help" — in a `nav` with `items-center gap-8`. Each link: `text-sm font-medium transition-opacity hover:opacity-70`, color `var(--color-text)`.
 - **Right (desktop, hidden on mobile via `hidden md:flex`):** two pill buttons in a row with `items-center gap-3`:
   - **"Start For Free":** `text-sm font-semibold px-5 py-2.5 rounded-full text-white transition-all hover:shadow-lg active:scale-95`, inline `backgroundColor: '#7342E2'`.
   - **"Sign In":** `text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-lg active:scale-95`, inline `backgroundColor: '#F2F2EE'`, `color: 'var(--color-text)'`.
-- **Mobile (`md:hidden`):** a hamburger button , `md:hidden flex items-center justify-center`, inline styles `color: var(--color-text)`, `background: none`, `border: none`, `padding: 0`, `cursor: pointer`. It uses local state `menuOpen` (`useState(false)`), toggled on click. Shows the Lucide `Menu` icon (size `24`) when closed and the `X` icon (size `24`) when open. `aria-label` is `'Close menu'` / `'Open menu'`; `aria-expanded={menuOpen}`.
+- **Mobile (`md:hidden`):** a hamburger button — `md:hidden flex items-center justify-center`, inline styles `color: var(--color-text)`, `background: none`, `border: none`, `padding: 0`, `cursor: pointer`. It uses local state `menuOpen` (`useState(false)`), toggled on click. Shows the Lucide `Menu` icon (size `24`) when closed and the `X` icon (size `24`) when open. `aria-label` is `'Close menu'` / `'Open menu'`; `aria-expanded={menuOpen}`.
 - The `MobileMenu` is rendered after the header with `open={menuOpen}` and `onClose={() => setMenuOpen(false)}`.
 
 ## Mobile Menu (slide-in sheet)
@@ -211,7 +211,7 @@ ironclad-password-hero/
 
 - `react`, `react-dom` (`^18.3.1`)
 - `framer-motion` (`^11.18.2`)
-- `lucide-react` (`^0.468.0`) , icons used: `ArrowRightCircle`, `Zap`, `LockKeyhole`, `Fingerprint`, `Menu`, `X`
+- `lucide-react` (`^0.468.0`) — icons used: `ArrowRightCircle`, `Zap`, `LockKeyhole`, `Fingerprint`, `Menu`, `X`
 - Tailwind CSS 3 (`^3.4.17`) with the default config and no custom theme extensions
 - Vite (`^5.4.11`) + TypeScript (`^5.6.3`), `@vitejs/plugin-react` (`^4.3.4`), PostCSS (`^8.4.49`), Autoprefixer (`^10.4.20`)
 - `@types/react` (`^18.3.12`), `@types/react-dom` (`^18.3.1`)

@@ -1,6 +1,6 @@
-# SUPERDESIGN , "DESIGN ON REALITY" POSTER-MODERNIST LANDING PAGE
+# SUPERDESIGN — "DESIGN ON REALITY" POSTER-MODERNIST LANDING PAGE
 
-BUILD A PIXEL-FAITHFUL RECREATION OF THE **SUPERDESIGN** LANDING PAGE: A SINGLE-SCREEN, SCROLL-DOWN MARKETING PAGE FOR A DEVELOPER TOOL THAT "DESIGNS ON REALITY, NOT MOCKUPS." THE AESTHETIC IS **POSTER MODERNIST / REALITY-FIRST** , A STRICT 12-COLUMN GRID, MONOCHROMATIC CREAM BASE WITH A SINGLE COBALT-BLUE ACCENT, HEAVY TYPOGRAPHIC CONTRAST, HARD 1PX DIVIDERS, ZERO BORDER-RADIUS, AND ZERO SHADOWS. REPRODUCE THE EXACT COPY, LAYOUT, AND STYLING BELOW SAME-TO-SAME.
+BUILD A PIXEL-FAITHFUL RECREATION OF THE **SUPERDESIGN** LANDING PAGE: A SINGLE-SCREEN, SCROLL-DOWN MARKETING PAGE FOR A DEVELOPER TOOL THAT "DESIGNS ON REALITY, NOT MOCKUPS." THE AESTHETIC IS **POSTER MODERNIST / REALITY-FIRST** — A STRICT 12-COLUMN GRID, MONOCHROMATIC CREAM BASE WITH A SINGLE COBALT-BLUE ACCENT, HEAVY TYPOGRAPHIC CONTRAST, HARD 1PX DIVIDERS, ZERO BORDER-RADIUS, AND ZERO SHADOWS. REPRODUCE THE EXACT COPY, LAYOUT, AND STYLING BELOW SAME-TO-SAME.
 
 ## GLOBAL SHELL & TOKENS
 
@@ -14,50 +14,50 @@ BUILD A PIXEL-FAITHFUL RECREATION OF THE **SUPERDESIGN** LANDING PAGE: A SINGLE-
 
 - `sticky top-0 z-50`, HEIGHT 80PX (`h-20`), BACKGROUND `bg-cream/95` WITH `backdrop-blur-sm`, 1PX BOTTOM BORDER `#C7C7C7`, FULL WIDTH.
 - 12-COLUMN GRID, ITEMS VERTICALLY CENTERED:
-  - COLS 1–3 (`md:col-span-3`, PADDED `px-8`, RIGHT BORDER `#C7C7C7`): LOGO TEXT **"SUPERDESIGN"** , UPPERCASE, FONT-BOLD, `tracking-tight`, BLACK.
+  - COLS 1–3 (`md:col-span-3`, PADDED `px-8`, RIGHT BORDER `#C7C7C7`): LOGO TEXT **"SUPERDESIGN"** — UPPERCASE, FONT-BOLD, `tracking-tight`, BLACK.
   - COLS 4–9 (`md:col-span-6`, CENTERED, RIGHT BORDER `#C7C7C7`): MUTED STATUS TEXT **"System v1.0.4"** (UPPERCASE, 12PX, `tracking-[0.2em]`, `#7A7A7A`). HIDDEN ON MOBILE.
-  - COLS 10–12 (`md:col-span-3`, RIGHT-ALIGNED, `px-8`): **"Login"** LINK , TEXT-SM, FONT-SEMIBOLD, HOVER COLOR → `#1351AA`.
+  - COLS 10–12 (`md:col-span-3`, RIGHT-ALIGNED, `px-8`): **"Login"** LINK — TEXT-SM, FONT-SEMIBOLD, HOVER COLOR → `#1351AA`.
 
-## HERO , "MANIFESTO" (MIN-HEIGHT 85VH, BORDER-BOTTOM)
+## HERO — "MANIFESTO" (MIN-HEIGHT 85VH, BORDER-BOTTOM)
 
 12-COLUMN GRID:
 - **COLS 1–3** (`md:col-span-3`, RIGHT BORDER, `p-8 pt-32`, RELATIVE): SIDEBAR LABEL **"MANIFESTO"** AT TOP; PLACE A SOLID 16PX BLACK SQUARE (`#141414`) BELOW THE LABEL AS A MARKER.
 - **COLS 4–12** (`md:col-span-9`, GENEROUS PADDING `p-16 lg:p-24`, FLEX COLUMN, VERTICALLY CENTERED):
   - MASSIVE HEADLINE, FONT-WEIGHT 900, `line-height: 0.85`, `letter-spacing: -0.04em`, RESPONSIVE `text-6xl md:text-8xl lg:text-9xl`, ACROSS THREE LINES:
     - LINE 1: `Design on`
-    - LINE 2: `Reality.` , THIS WORD COLORED COBALT BLUE `#1351AA`
+    - LINE 2: `Reality.` — THIS WORD COLORED COBALT BLUE `#1351AA`
     - LINE 3: `Not Mockups.`
   - BELOW THE HEADLINE, A 2-COLUMN INTERNAL ROW (`gap`, ITEMS-START):
-    - LEFT (~400PX MAX-WIDTH) BODY PARAGRAPH, `#444343`, 1.125REM, LINE-HEIGHT 1.5: **"Superdesign connects to your real frontend codebase. It reproduces your current UI pixel-perfect , then generates structured, production-ready variations you can actually ship."**
+    - LEFT (~400PX MAX-WIDTH) BODY PARAGRAPH, `#444343`, 1.125REM, LINE-HEIGHT 1.5: **"Superdesign connects to your real frontend codebase. It reproduces your current UI pixel-perfect — then generates structured, production-ready variations you can actually ship."**
     - RIGHT, A CTA CLUSTER (ROW, ITEMS-CENTER, GAP): A SOLID **POSTER BUTTON** PRIMARY LABELED **"INSTALL THE SKILL"**, AND BESIDE IT AN UNDERLINED TEXT LINK **"See It in Action"** (TEXT-SM, FONT-SEMIBOLD).
 
-## SYSTEM , "CAPTURE. ITERATE. REPLACE." (BORDER-BOTTOM)
+## SYSTEM — "CAPTURE. ITERATE. REPLACE." (BORDER-BOTTOM)
 
 12-COLUMN GRID:
 - **COLS 1–3**: STICKY SIDEBAR LABEL **"SYSTEM"**, RIGHT BORDER.
 - **COLS 4–12**: PADDED `p-16 lg:p-24`.
   - HEADLINE STACKED ON THREE LINES, FONT-BOLD, `line-height: 0.9`, `letter-spacing: -0.03em`, `text-5xl md:text-7xl`:
     `Capture.` / `Iterate.` / `Replace.`
-  - SUBHEAD PARAGRAPH, `#444343`: **"Superdesign doesn't generate static screenshots. It understands your layout, your components, your spacing rules , and proposes variations that respect them."**
+  - SUBHEAD PARAGRAPH, `#444343`: **"Superdesign doesn't generate static screenshots. It understands your layout, your components, your spacing rules — and proposes variations that respect them."**
   - BELOW, A 3-COLUMN EQUAL-WIDTH GRID; EACH CELL HAS A 1PX `#C7C7C7` BORDER, PADDING, AND CONTAINS A MONO INDEX, A BOLD H3, AND A SMALL `#444343` PARAGRAPH. ON HOVER THE CELL BACKGROUND → `rgba(255,255,255,0.2)` (LINEAR 0.3S). CELLS:
     - `01` · **Capture live UI** · "Pull any production page into a controlled design canvas. No Figma recreation required."
     - `02` · **Generate variations** · "Explore layout, typography, and structural alternatives instantly with context-aware AI."
     - `03` · **Push to production** · "Choose a direction and write your agent applies the change directly to your codebase."
 
-## PHILOSOPHY , "YOUR CODEBASE IS THE CANVAS." (BORDER-BOTTOM)
+## PHILOSOPHY — "YOUR CODEBASE IS THE CANVAS." (BORDER-BOTTOM)
 
 12-COLUMN GRID:
 - **COLS 1–3**: STICKY SIDEBAR LABEL **"WORKFLOW"**, RIGHT BORDER.
 - **COLS 4–12** PADDED `p-16 lg:p-24`:
   - TWO-LINE HEADLINE, FONT-BOLD, `line-height: 0.9`, `letter-spacing: -0.03em`, `text-5xl md:text-7xl`: `Your Codebase` / `Is the Canvas.`
-  - BELOW, A 2-COLUMN ROW: LEFT A SHORT STACKED LIST OF NEGATIVES IN `#141414` (EACH ON ITS OWN LINE) , **"No exports."**, **"No redesign-from-scratch."**, **"No Figma handoff loops."**; RIGHT A `#444343` PARAGRAPH: **"Superdesign works directly where your product lives. By bypassing the translation layer between design files and code, we eliminate the source of 90% of UI bugs and inconsistencies."**
+  - BELOW, A 2-COLUMN ROW: LEFT A SHORT STACKED LIST OF NEGATIVES IN `#141414` (EACH ON ITS OWN LINE) — **"No exports."**, **"No redesign-from-scratch."**, **"No Figma handoff loops."**; RIGHT A `#444343` PARAGRAPH: **"Superdesign works directly where your product lives. By bypassing the translation layer between design files and code, we eliminate the source of 90% of UI bugs and inconsistencies."**
 
-## DIFFERENTIATION , "THIS ISN'T ANOTHER AI DESIGN TOOL." (BORDER-BOTTOM)
+## DIFFERENTIATION — "THIS ISN'T ANOTHER AI DESIGN TOOL." (BORDER-BOTTOM)
 
 12-COLUMN GRID:
 - **COLS 1–3**: STICKY SIDEBAR LABEL **"WHY DIFFERENT"**, RIGHT BORDER.
 - **COLS 4–12**:
-  - HEADING AT TOP (PADDED), TWO LINES, FONT-BOLD, `text-3xl md:text-5xl`, `letter-spacing: -0.02em`: `This Isn't Another` / `AI Design Tool.` , COLOR THE SECOND LINE COBALT BLUE `#1351AA`.
+  - HEADING AT TOP (PADDED), TWO LINES, FONT-BOLD, `text-3xl md:text-5xl`, `letter-spacing: -0.02em`: `This Isn't Another` / `AI Design Tool.` — COLOR THE SECOND LINE COBALT BLUE `#1351AA`.
   - THEN A VERTICAL STACK OF 4 FULL-WIDTH **TYPOGRAPHIC LIST ITEMS**. EACH ITEM: 1PX TOP BORDER `#C7C7C7`, ~120PX TALL, FLEX-ROW `items-start`, CONTAINS A SMALL MONO INDEX (`#7A7A7A`) AND A LARGE TITLE `text-4xl md:text-5xl` FONT-BOLD BLACK. ON ROW HOVER THE TITLE COLOR TRANSITIONS BLACK → `#1351AA` (LINEAR 0.3S). TITLES:
     - `01` · No synthetic UI demos
     - `02` · No design-system drift
@@ -65,7 +65,7 @@ BUILD A PIXEL-FAITHFUL RECREATION OF THE **SUPERDESIGN** LANDING PAGE: A SINGLE-
     - `04` · No visual hallucinations
   - BELOW THE LIST, A SMALL MUTED CLOSING LINE `#7A7A7A`: **"Everything starts from your actual product."**
 
-## ACCESS / CTA , "START EXPLORING" (MIN-HEIGHT 50VH, BORDER-BOTTOM)
+## ACCESS / CTA — "START EXPLORING" (MIN-HEIGHT 50VH, BORDER-BOTTOM)
 
 12-COLUMN GRID:
 - **COLS 1–3**: STICKY SIDEBAR LABEL **"ACCESS"**, RIGHT BORDER.
@@ -81,7 +81,7 @@ CREAM BACKGROUND, `p-8`, 12-COLUMN GRID `items-end`, `gap-8`:
 - COLS 4–9: MUTED LINE `#444343` **"Design that starts from reality."**
 - COLS 10–12: RIGHT-ALIGNED LINK ROW, GAP-6: **Twitter**, **GitHub**, **Legal** (TEXT-SM, HOVER → `#1351AA`).
 
-## SPECIAL COMPONENT , POSTER BUTTON
+## SPECIAL COMPONENT — POSTER BUTTON
 
 ZERO-RADIUS RECTANGLE, PADDING `16px 32px`, FONT 14PX BOLD UPPERCASE `tracking-wider`.
 - PRIMARY VARIANT: BACKGROUND `#1351AA`, TEXT `#E3E2DE`; ON HOVER BACKGROUND → `#141414` (LINEAR 0.3S).

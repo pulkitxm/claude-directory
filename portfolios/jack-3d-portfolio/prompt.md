@@ -1,4 +1,4 @@
-# Jack , 3D Creator Portfolio Landing Page
+# Jack — 3D Creator Portfolio Landing Page
 
 ## Overview
 
@@ -9,7 +9,7 @@ Build a single-page, dark-themed portfolio landing page for a 3D creator named "
 - **Framework:** React 18 (`react` / `react-dom` `^18.3.1`) with TypeScript (`^5.5.3`).
 - **Build tool:** Vite (`^5.4.2`) with `@vitejs/plugin-react` (`^4.3.1`).
 - **Styling:** Tailwind CSS (`^3.4.1`) with `postcss` (`^8.4.35`) and `autoprefixer` (`^10.4.18`).
-- **Animation:** Framer Motion (`framer-motion` `^12.38.0`) , `motion`, `useScroll`, `useTransform`, `motion.create()`.
+- **Animation:** Framer Motion (`framer-motion` `^12.38.0`) — `motion`, `useScroll`, `useTransform`, `motion.create()`.
 - **Icons:** Lucide React (`lucide-react` `^0.344.0`).
 - **Font:** Kanit from Google Fonts, weights 300–900.
 - **Notable techniques:** scroll-position-driven marquee, mouse-magnetic hover, character-by-character scroll-reveal text, sticky card stacking with scroll-linked scale, fluid `clamp()` typography.
@@ -18,7 +18,7 @@ Build a single-page, dark-themed portfolio landing page for a 3D creator named "
 
 ### Document (`index.html`)
 
-- **Page title:** `Jack , 3D Creator`.
+- **Page title:** `Jack — 3D Creator`.
 - **Fonts:** load Kanit from Google Fonts (weights 300–900).
 - **Root + entry:** `<div id="root"></div>` and `<script type="module" src="/src/main.tsx"></script>`.
 
@@ -103,7 +103,7 @@ All media is vendored locally and served from the `public/assets/` directory (re
 
 **Portrait**
 
-- `/assets/Rectangle_40443.81459862.png` , original: `https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png`
+- `/assets/Rectangle_40443.81459862.png` — original: `https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png`
 
 **Marquee GIFs (21, originals from motionsites.ai)**
 
@@ -133,16 +133,16 @@ All media is vendored locally and served from the `public/assets/` directory (re
 
 **About decorative 3D images (originals from figma.site)**
 
-- `/assets/moon_icon.11395d36.png` , original: `https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png`
-- `/assets/p59_1.4659672e.png` , original: `https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png`
-- `/assets/lego_icon-1.703bb594.png` , original: `https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png`
-- `/assets/Group_134-1.2e04f3ce.png` , original: `https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png`
+- `/assets/moon_icon.11395d36.png` — original: `https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png`
+- `/assets/p59_1.4659672e.png` — original: `https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png`
+- `/assets/lego_icon-1.703bb594.png` — original: `https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png`
+- `/assets/Group_134-1.2e04f3ce.png` — original: `https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png`
 
-**Project images (9 `.webp`)** , originals served via the `images.higgs.ai` proxy pointing at the `d8j0ntlcm91z4.cloudfront.net` bucket; vendored as `.webp` and listed per-project (with their full original proxy source URLs) in the [Projects Section](#5-projects-section).
+**Project images (9 `.webp`)** — originals served via the `images.higgs.ai` proxy pointing at the `d8j0ntlcm91z4.cloudfront.net` bucket; vendored as `.webp` and listed per-project (with their full original proxy source URLs) in the [Projects Section](#5-projects-section).
 
 ## Color Palette
 
-- **Background (dark):** `#0C0C0C` , html, body, `#root`, main wrapper, hero, marquee, projects, and project cards.
+- **Background (dark):** `#0C0C0C` — html, body, `#root`, main wrapper, hero, marquee, projects, and project cards.
 - **Light text / accents:** `#D7E2EA`.
 - **Heading gradient:** `linear-gradient(180deg, #646973 0%, #bbccd7 100%)`.
 - **Services background (light):** `white` (`#FFFFFF`).
@@ -386,9 +386,9 @@ A ghost/outline pill `<button type="button">`. Label: **Live Project**.
 
 ### 1. Hero Section
 
-File: `src/sections/HeroSection.tsx`. A `<section>` with `className="relative flex h-screen flex-col"` and inline `style={{ overflowX: 'clip' }}` , full viewport height, flex column.
+File: `src/sections/HeroSection.tsx`. A `<section>` with `className="relative flex h-screen flex-col"` and inline `style={{ overflowX: 'clip' }}` — full viewport height, flex column.
 
-**Navbar** , a `FadeIn as="nav"` (`delay={0}`, `y={-20}`) with `className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8"`. Four links, each styled `text-sm font-medium uppercase tracking-wider text-[#D7E2EA] transition-opacity duration-200 hover:opacity-70 md:text-lg lg:text-[1.4rem]`:
+**Navbar** — a `FadeIn as="nav"` (`delay={0}`, `y={-20}`) with `className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8"`. Four links, each styled `text-sm font-medium uppercase tracking-wider text-[#D7E2EA] transition-opacity duration-200 hover:opacity-70 md:text-lg lg:text-[1.4rem]`:
 
 | Label | `href` |
 | --- | --- |
@@ -397,16 +397,16 @@ File: `src/sections/HeroSection.tsx`. A `<section>` with `className="relative fl
 | Projects | `#projects` |
 | Contact | _(no href)_ |
 
-**Hero heading** , wrapped in a `overflow-hidden` container, then a `FadeIn` (`delay={0.15}`, `y={40}`) holding an `<h1>` with the `hero-heading` gradient text. Copy: `Hi, i&apos;m jack` (lowercase "i", curly apostrophe via `&apos;`).
+**Hero heading** — wrapped in a `overflow-hidden` container, then a `FadeIn` (`delay={0.15}`, `y={40}`) holding an `<h1>` with the `hero-heading` gradient text. Copy: `Hi, i&apos;m jack` (lowercase "i", curly apostrophe via `&apos;`).
 
 - Classes: `hero-heading mt-6 w-full whitespace-nowrap text-center text-[14vw] font-black uppercase leading-none tracking-tight sm:mt-4 sm:text-[15vw] md:-mt-5 md:text-[16vw] lg:text-[17.5vw]`.
 
-**Hero portrait** , centered, in an absolutely positioned wrapper: `absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 sm:bottom-0 sm:top-auto sm:translate-y-0` (vertically centered on mobile; pinned to the bottom from `sm` up). Inside: `FadeIn` (`delay={0.6}`, `y={30}`) wrapping a `Magnet` (`padding={150}`, `strength={3}`, `activeTransition="transform 0.3s ease-out"`, `inactiveTransition="transform 0.6s ease-in-out"`) wrapping the image.
+**Hero portrait** — centered, in an absolutely positioned wrapper: `absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 sm:bottom-0 sm:top-auto sm:translate-y-0` (vertically centered on mobile; pinned to the bottom from `sm` up). Inside: `FadeIn` (`delay={0.6}`, `y={30}`) wrapping a `Magnet` (`padding={150}`, `strength={3}`, `activeTransition="transform 0.3s ease-out"`, `inactiveTransition="transform 0.6s ease-in-out"`) wrapping the image.
 
 - Image `src`: `/assets/Rectangle_40443.81459862.png`, `alt="Portrait of Jack, 3D creator"`, `draggable={false}`.
 - Image classes: `pointer-events-none w-[280px] select-none sm:w-[360px] md:w-[440px] lg:w-[520px]`.
 
-**Bottom bar** , a flex container pushed to the bottom: `mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10`.
+**Bottom bar** — a flex container pushed to the bottom: `mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10`.
 
 - **Left:** `FadeIn` (`delay={0.35}`, `y={20}`) wrapping a `<p>`. Copy: `a 3d creator driven by crafting striking and unforgettable projects`.
   - Classes: `max-w-[160px] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[220px] md:max-w-[260px]`; inline `style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}`.
@@ -454,7 +454,7 @@ File: `src/sections/AboutSection.tsx`. A full-height centered section: `<section
 | `/assets/lego_icon-1.703bb594.png` (top-right lego) | `top-[4%] right-[1%] sm:right-[2%] md:right-[4%]` | `w-[120px] sm:w-[160px] md:w-[210px]` | `0.15` | `80` |
 | `/assets/Group_134-1.2e04f3ce.png` (bottom-right 3D group) | `bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%]` | `w-[130px] sm:w-[170px] md:w-[220px]` | `0.3` | `80` |
 
-**Content stack** , outer wrapper `flex flex-col items-center gap-16 sm:gap-20 md:gap-24`. Inside, an inner stack `flex flex-col items-center gap-10 sm:gap-14 md:gap-16` containing:
+**Content stack** — outer wrapper `flex flex-col items-center gap-16 sm:gap-20 md:gap-24`. Inside, an inner stack `flex flex-col items-center gap-10 sm:gap-14 md:gap-16` containing:
 
 - **Heading:** `FadeIn` (`delay={0}`, `y={40}`) wrapping an `<h2>`. Copy: `About me`.
   - Classes: `hero-heading text-center font-black uppercase leading-none tracking-tight`; inline `style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}`.
@@ -469,36 +469,36 @@ Below the inner stack: a `FadeIn` (`delay={0.15}`, `y={20}`) wrapping `ContactBu
 
 File: `src/sections/ServicesSection.tsx`. A white-background panel with rounded top corners: `<section id="price" className="relative rounded-t-[40px] bg-white px-5 py-20 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32">`.
 
-**Heading** , `FadeIn` (`delay={0}`, `y={40}`) wrapping an `<h2>`. Copy: `Services`.
+**Heading** — `FadeIn` (`delay={0}`, `y={40}`) wrapping an `<h2>`. Copy: `Services`.
 
 - Classes: `mb-16 text-center font-black uppercase leading-none tracking-tight text-[#0C0C0C] sm:mb-20 md:mb-28`; inline `style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}`.
 
-**Service list** , centered container `mx-auto max-w-5xl`. Five items, each a `FadeIn` with `delay={i * 0.1}` (staggered). Every item except the last gets `className="border-b border-[rgba(12,12,12,0.15)]"`.
+**Service list** — centered container `mx-auto max-w-5xl`. Five items, each a `FadeIn` with `delay={i * 0.1}` (staggered). Every item except the last gets `className="border-b border-[rgba(12,12,12,0.15)]"`.
 
 Each item is a row `flex items-start gap-6 py-8 sm:gap-10 sm:py-10 md:gap-14 md:py-12`:
 
-- **Number** , `<span className="font-black leading-none text-[#0C0C0C]">` with inline `style={{ fontSize: 'clamp(3rem, 10vw, 140px)' }}`.
-- **Name + description** stacked , wrapper `flex flex-col gap-2 pt-1 sm:gap-3 sm:pt-2`:
+- **Number** — `<span className="font-black leading-none text-[#0C0C0C]">` with inline `style={{ fontSize: 'clamp(3rem, 10vw, 140px)' }}`.
+- **Name + description** stacked — wrapper `flex flex-col gap-2 pt-1 sm:gap-3 sm:pt-2`:
   - **Name** `<h3 className="font-medium uppercase text-[#0C0C0C]">`, inline `style={{ fontSize: 'clamp(1rem, 2.2vw, 2.1rem)' }}`.
   - **Description** `<p className="max-w-2xl font-light leading-relaxed text-[#0C0C0C]">`, inline `style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)', opacity: 0.6 }}`.
 
 Service data (verbatim):
 
-1. **01 , 3D Modeling:** `Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.`
-2. **02 , Rendering:** `High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.`
-3. **03 , Motion Design:** `Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.`
-4. **04 , Branding:** `Crafting cohesive visual identities , from logos to full brand systems , that communicate a clear and memorable presence.`
-5. **05 , Web Design:** `Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.`
+1. **01 — 3D Modeling:** `Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.`
+2. **02 — Rendering:** `High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.`
+3. **03 — Motion Design:** `Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.`
+4. **04 — Branding:** `Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear and memorable presence.`
+5. **05 — Web Design:** `Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.`
 
 ### 5. Projects Section
 
 File: `src/sections/ProjectsSection.tsx`. A dark panel pulled up over the services section: `<section id="projects" className="relative z-10 -mt-10 rounded-t-[40px] bg-[#0C0C0C] px-5 pb-16 pt-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 md:-mt-14 md:rounded-t-[60px] md:px-10">`.
 
-**Heading** , `FadeIn` (`delay={0}`, `y={40}`) wrapping an `<h2>` with the `hero-heading` gradient. Copy: `Project` (singular).
+**Heading** — `FadeIn` (`delay={0}`, `y={40}`) wrapping an `<h2>` with the `hero-heading` gradient. Copy: `Project` (singular).
 
 - Classes: `hero-heading mb-16 text-center font-black uppercase leading-none tracking-tight sm:mb-20 md:mb-28`; inline `style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}`.
 
-**Card stack** , container `<div ref={containerRef} className="mx-auto max-w-7xl">`. Scroll progress is tracked with `useScroll({ target: containerRef, offset: ['start start', 'end end'] })`. Three sticky-stacking project cards scale down as you scroll past them.
+**Card stack** — container `<div ref={containerRef} className="mx-auto max-w-7xl">`. Scroll progress is tracked with `useScroll({ target: containerRef, offset: ['start start', 'end end'] })`. Three sticky-stacking project cards scale down as you scroll past them.
 
 **`ProjectCard`** behavior:
 
@@ -511,7 +511,7 @@ File: `src/sections/ProjectsSection.tsx`. A dark panel pulled up over the servic
   const scale = useTransform(progress, [index / total, 1], [1, targetScale])
   ```
 
-**Card top row** , `flex flex-wrap items-center justify-between gap-x-6 gap-y-4 px-2 pb-4 sm:px-4 sm:pb-6 md:px-6 md:pb-8`. Left group `flex items-center gap-4 sm:gap-6 md:gap-8`:
+**Card top row** — `flex flex-wrap items-center justify-between gap-x-6 gap-y-4 px-2 pb-4 sm:px-4 sm:pb-6 md:px-6 md:pb-8`. Left group `flex items-center gap-4 sm:gap-6 md:gap-8`:
 
 - **Number** `<span className="hero-heading font-black leading-none">`, inline `style={{ fontSize: 'clamp(3rem, 10vw, 140px)' }}`.
 - A `flex flex-col gap-1` stack:
@@ -520,30 +520,30 @@ File: `src/sections/ProjectsSection.tsx`. A dark panel pulled up over the servic
 
 On the right: `LiveProjectButton`.
 
-**Card bottom row** , two-column image grid `flex gap-3 sm:gap-4`:
+**Card bottom row** — two-column image grid `flex gap-3 sm:gap-4`:
 
 - **Left column (40%)** `flex w-[40%] flex-col gap-3 sm:gap-4` with two stacked images, both `${CARD_RADIUS} w-full object-cover`:
-  - Top image (`col1[0]`), `alt="${project.name} , visual 1"`, inline `style={{ height: 'clamp(130px, 16vw, 230px)' }}`.
-  - Bottom image (`col1[1]`), `alt="${project.name} , visual 2"`, inline `style={{ height: 'clamp(160px, 22vw, 340px)' }}`.
-- **Right column (60%)** `w-[60%]` with one tall image (`col2`), `alt="${project.name} , visual 3"`, classes `${CARD_RADIUS} h-full w-full object-cover`.
+  - Top image (`col1[0]`), `alt="${project.name} — visual 1"`, inline `style={{ height: 'clamp(130px, 16vw, 230px)' }}`.
+  - Bottom image (`col1[1]`), `alt="${project.name} — visual 2"`, inline `style={{ height: 'clamp(160px, 22vw, 340px)' }}`.
+- **Right column (60%)** `w-[60%]` with one tall image (`col2`), `alt="${project.name} — visual 3"`, classes `${CARD_RADIUS} h-full w-full object-cover`.
 - All images `loading="lazy"`.
 
 **Project data** (numbers, names, categories, and local `.webp` image paths mapped to their original `images.higgs.ai` proxy source URLs):
 
-**Project 01 , Nextlevel Studio (Client)**
-- col1 image 1: `/assets/hf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.webp` , original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85`
-- col1 image 2: `/assets/hf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.webp` , original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85`
-- col2 image: `/assets/hf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.webp` , original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85`
+**Project 01 — Nextlevel Studio (Client)**
+- col1 image 1: `/assets/hf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.webp` — original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85`
+- col1 image 2: `/assets/hf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.webp` — original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85`
+- col2 image: `/assets/hf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.webp` — original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85`
 
-**Project 02 , Aura Brand Identity (Personal)**
-- col1 image 1: `/assets/hf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.webp` , original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85`
-- col1 image 2: `/assets/hf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.webp` , original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85`
-- col2 image: `/assets/hf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.webp` , original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85`
+**Project 02 — Aura Brand Identity (Personal)**
+- col1 image 1: `/assets/hf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.webp` — original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85`
+- col1 image 2: `/assets/hf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.webp` — original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85`
+- col2 image: `/assets/hf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.webp` — original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85`
 
-**Project 03 , Solaris Digital (Client)**
-- col1 image 1: `/assets/hf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.webp` , original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85`
-- col1 image 2: `/assets/hf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.webp` , original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85`
-- col2 image: `/assets/hf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.webp` , original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85`
+**Project 03 — Solaris Digital (Client)**
+- col1 image 1: `/assets/hf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.webp` — original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85`
+- col1 image 2: `/assets/hf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.webp` — original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85`
+- col2 image: `/assets/hf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.webp` — original: `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85`
 
 ## Responsive Breakpoints
 

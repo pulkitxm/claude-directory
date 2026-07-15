@@ -1,22 +1,22 @@
-# AETHER Spooky Smoke Shader , WebGL2 FBM Noise Smoke Animation React Component (Tailwind CSS, shadcn/ui, TypeScript)
+# AETHER Spooky Smoke Shader — WebGL2 FBM Noise Smoke Animation React Component (Tailwind CSS, shadcn/ui, TypeScript)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A séance-themed interactive WebGL2 smoke-field showcase that integrates the `SmokeBackground` React component , a raw WebGL2 fbm-noise smoke animation driven by a single `smokeColor` hex prop , into a polished "vapour reading instrument" UI. The dark, atmospheric design features a reagent tray of alchemical preset colours, a brass-dial color picker, live smoke readout panels, and a headline accent that all respond to one shared hex value. Built on React 18, TypeScript, Vite, Tailwind CSS, and shadcn/ui project structure with no external shader libraries. Generated with Claude Fable 5.
+A séance-themed interactive WebGL2 smoke-field showcase that integrates the `SmokeBackground` React component — a raw WebGL2 fbm-noise smoke animation driven by a single `smokeColor` hex prop — into a polished "vapour reading instrument" UI. The dark, atmospheric design features a reagent tray of alchemical preset colours, a brass-dial color picker, live smoke readout panels, and a headline accent that all respond to one shared hex value. Built on React 18, TypeScript, Vite, Tailwind CSS, and shadcn/ui project structure with no external shader libraries. Generated with Claude Fable 5.
 
 ## What's here
 
-- `src/components/ui/spooky-smoke-animation.tsx` , the integrated component,
+- `src/components/ui/spooky-smoke-animation.tsx` — the integrated component,
   exporting `SmokeBackground`. This is the verbatim component from the prompt with
   two cosmetic bugs fixed (see **Integration notes** below).
-- `src/components/ui/spooky-smoke-animation.demo.tsx` , the canonical demo
+- `src/components/ui/spooky-smoke-animation.demo.tsx` — the canonical demo
   (`Default` + `Customized`) shipped alongside the component.
-- `src/components/VapourConsole.tsx` , the signature element: a reagent tray of
+- `src/components/VapourConsole.tsx` — the signature element: a reagent tray of
   preset colours plus a brass dial wrapping a native `<input type="color">`.
-- `src/hooks/useTunedColor.ts` , single source of truth for the smoke colour.
-- `src/lib/reagents.ts` , the preset palette, framed as alchemical reagents.
-- `src/lib/utils.ts` , shadcn's `cn()` helper (clsx + tailwind-merge).
-- `src/App.tsx` , the full scene.
+- `src/hooks/useTunedColor.ts` — single source of truth for the smoke colour.
+- `src/lib/reagents.ts` — the preset palette, framed as alchemical reagents.
+- `src/lib/utils.ts` — shadcn's `cn()` helper (clsx + tailwind-merge).
+- `src/App.tsx` — the full scene.
 
 ## Run it
 
@@ -42,7 +42,7 @@ TypeScript**, so no scaffolding was required. The relevant decisions:
   CLI (`npx shadcn@latest add ...`) can drop future components in the right place,
   and primitives stay cleanly separated from composed app components.
 - **The component takes one prop:** `smokeColor?: string` (a `#rrggbb` hex,
-  default `#808080`). No context providers, stores, or data fetching are required ,
+  default `#808080`). No context providers, stores, or data fetching are required —
   state is just the current colour, owned here by `useTunedColor`.
 - **External dependencies installed:** `lucide-react` (icons), plus shadcn's
   utility trio `clsx` + `tailwind-merge` + `class-variance-authority`. The shader
@@ -82,4 +82,4 @@ raw WebGL2.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

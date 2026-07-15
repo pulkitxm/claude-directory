@@ -1,15 +1,15 @@
-# Snowpeak , News & Media Publication Website Template Clone (Vanilla HTML/CSS/JS)
+# Snowpeak — News & Media Publication Website Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Pixel-faithful reproduction of the Snowpeak template by Lexington Themes , a modern news and media publication website built as plain HTML, CSS, and vanilla JavaScript with no build step required. The design features a floating glassmorphism navigation pill, a large SVG wordmark hero block, an animated marquee ticker of article headlines, tabbed category-filtered article grids, a podcast listing page with interactive audio players, full-screen search modal, and authentication forms , all styled with a distinctive medium-gray base, near-black/near-white card contrast, and a purple/violet accent. The stack is self-contained HTML files with CSS custom properties (OKLCH color tokens), CSS Grid, Flexbox, Inter Variable font, and Stack Sans Notch display font. Generated with Claude Fable 5.
+Pixel-faithful reproduction of the Snowpeak template by Lexington Themes — a modern news and media publication website built as plain HTML, CSS, and vanilla JavaScript with no build step required. The design features a floating glassmorphism navigation pill, a large SVG wordmark hero block, an animated marquee ticker of article headlines, tabbed category-filtered article grids, a podcast listing page with interactive audio players, full-screen search modal, and authentication forms — all styled with a distinctive medium-gray base, near-black/near-white card contrast, and a purple/violet accent. The stack is self-contained HTML files with CSS custom properties (OKLCH color tokens), CSS Grid, Flexbox, Inter Variable font, and Stack Sans Notch display font. Generated with Claude Fable 5.
 
 ## Pages
 
 | File | Description |
 |---|---|
-| `index.html` | Home page , hero logo, marquee ticker, featured grid, tabbed article sections, footer |
-| `blog.html` | Blog listing , same hero, ticker, featured grid, all posts grid |
+| `index.html` | Home page — hero logo, marquee ticker, featured grid, tabbed article sections, footer |
+| `blog.html` | Blog listing — same hero, ticker, featured grid, all posts grid |
 | `blog/post.html` | Article detail for "Esports Are Already Here" with full prose and sidebar |
 | `blog/tag.html` | Tag-filtered view for the "Tech" category |
 | `podcast.html` | Podcast listing with 10 episodes and interactive audio player controls |
@@ -21,10 +21,10 @@ Pixel-faithful reproduction of the Snowpeak template by Lexington Themes , a mod
 No build step is required. Open any page directly in a browser or serve the folder with a local static server:
 
 ```sh
-# Option 1 , open directly
+# Option 1 — open directly
 open index.html
 
-# Option 2 , local static server (avoids any browser file:// restrictions)
+# Option 2 — local static server (avoids any browser file:// restrictions)
 python3 -m http.server 8080
 # then visit http://localhost:8080
 ```
@@ -48,8 +48,8 @@ python3 -m http.server 8080
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes , https://lexingtonthemes.com/viewports/snowpeak
+**Original:** Lexington Themes — https://lexingtonthemes.com/viewports/snowpeak
 
 ---
 
-Part of the [Templates](../../) collection in the [claude-directory](../../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

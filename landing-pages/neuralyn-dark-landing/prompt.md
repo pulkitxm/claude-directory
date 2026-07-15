@@ -1,4 +1,4 @@
-# Neuralyn , Dark Analytics Landing Page
+# Neuralyn — Dark Analytics Landing Page
 
 ## Overview
 
@@ -9,12 +9,12 @@ Build a dark, full-bleed landing page for **Neuralyn**, an analytics dashboard S
 - **Framework:** React 18 (`react` `^18.3.1`, `react-dom` `^18.3.1`) with Vite (`vite` `^5.4.10`, `@vitejs/plugin-react` `^4.3.3`)
 - **Language:** TypeScript (`typescript` `^5.6.3`)
 - **Styling:** Tailwind CSS (`tailwindcss` `^3.4.14`) with PostCSS (`postcss` `^8.4.49`) and Autoprefixer (`autoprefixer` `^10.4.20`)
-- **Animation:** Framer Motion (`framer-motion` `^11.11.17`) , `useScroll`, `useTransform`, `motion` components
-- **Icons:** Lucide (`lucide-react` `^0.460.0`) , `ChevronDown`
+- **Animation:** Framer Motion (`framer-motion` `^11.11.17`) — `useScroll`, `useTransform`, `motion` components
+- **Icons:** Lucide (`lucide-react` `^0.460.0`) — `ChevronDown`
 - **UI primitives (shadcn/ui style):** `@radix-ui/react-slot` `^1.1.0`, `class-variance-authority` `^0.7.0`, `clsx` `^2.1.1`, `tailwind-merge` `^2.5.4`
 - **Fonts (self-hosted via Fontsource):**
-  - Inter (`@fontsource/inter` `^5.1.0`) , weights 400, 500, 600, 700 , body/UI
-  - Instrument Serif (`@fontsource/instrument-serif` `^5.1.0`) , 400 and 400-italic , for the italic accent word
+  - Inter (`@fontsource/inter` `^5.1.0`) — weights 400, 500, 600, 700 — body/UI
+  - Instrument Serif (`@fontsource/instrument-serif` `^5.1.0`) — 400 and 400-italic — for the italic accent word
 - **Notable techniques:** full-bleed `w-screen` with `marginLeft: calc(-50vw + 50%)`, `mix-blend-mode: luminosity` image compositing, scroll-linked parallax and word-by-word color reveal, CSS "liquid glass" border via masked pseudo-element.
 
 ## Global Setup
@@ -67,7 +67,7 @@ export default function App() {
 - `<html lang="en">`, `<meta name="theme-color" content="#000000" />`
 - Favicon: `<link rel="icon" type="image/png" href="/src/assets/logo.png" />`
 - Meta description: "Neuralyn helps teams track metrics, goals, and progress with precision."
-- Title: `Neuralyn , Your Insights. One Clear Overview.`
+- Title: `Neuralyn — Your Insights. One Clear Overview.`
 - Inline style to avoid flash: `html { background: #000; }`
 
 ### Tailwind config (`tailwind.config.ts`)
@@ -167,7 +167,7 @@ Add to `src/index.css`. Provides a frosted pill with a masked gradient border:
 }
 ```
 
-## Section 1 , Hero (`src/components/Hero.tsx`)
+## Section 1 — Hero (`src/components/Hero.tsx`)
 
 The whole section is `relative h-screen overflow-hidden` (full viewport height) with `data-testid="hero"`. A `sectionRef` (`useRef<HTMLElement>`) drives the scroll-linked parallax.
 
@@ -191,33 +191,33 @@ const dashboardY = useTransform(scrollYProgress, [0, 1], [0, -250]);
 
 `<header>` is `relative z-40 flex items-center justify-between px-8 py-4 md:px-28`.
 
-- **Left cluster** , `flex items-center gap-12 md:gap-20`:
+- **Left cluster** — `flex items-center gap-12 md:gap-20`:
   - Logo link (`<a href="/">`, `flex items-center gap-2.5`):
     - `<img src={logo} alt="Neuralyn logo" className="h-8 w-8" />`
     - Brand text: `<span className="text-xl font-bold tracking-tight">Neuralyn</span>`
-  - Nav (`hidden items-center gap-1 md:flex`, `aria-label="Main"`) , links rendered from `const NAV_LINKS = ["Home", "Services", "Reviews", "Contact us"];`. Links are hidden on mobile. Each link: `<a href="#">` with `flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground`. The **Services** link additionally renders a `<ChevronDown className="h-4 w-4" aria-hidden="true" />` after its label.
-- **Right** , Sign In button (the shadcn `Button` component): `rounded-lg bg-foreground text-sm font-semibold text-background transition-opacity hover:bg-foreground hover:opacity-90`. Label: `Sign In`.
+  - Nav (`hidden items-center gap-1 md:flex`, `aria-label="Main"`) — links rendered from `const NAV_LINKS = ["Home", "Services", "Reviews", "Contact us"];`. Links are hidden on mobile. Each link: `<a href="#">` with `flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground`. The **Services** link additionally renders a `<ChevronDown className="h-4 w-4" aria-hidden="true" />` after its label.
+- **Right** — Sign In button (the shadcn `Button` component): `rounded-lg bg-foreground text-sm font-semibold text-background transition-opacity hover:bg-foreground hover:opacity-90`. Label: `Sign In`.
 
 ### Hero content
 
 A `motion.div` (`data-testid="hero-content"`) styled with `{ y: contentY, opacity: contentOpacity }` and classes `relative z-20 mt-16 flex flex-col items-center px-4 text-center md:mt-20`. Contains, in order:
 
-1. **Tag pill** , `motion.div` with class `liquid-glass mb-6 flex items-center gap-2 rounded-lg px-3 py-2`:
+1. **Tag pill** — `motion.div` with class `liquid-glass mb-6 flex items-center gap-2 rounded-lg px-3 py-2`:
    - Inner "New" badge: `<span className="rounded-md bg-white px-2 py-0.5 text-sm font-medium text-black">New</span>`
    - Label: `<span className="text-sm font-medium text-muted-foreground">Say Hello to Corewave v3.2</span>`
-2. **Title** , `motion.h1` with `mb-3 text-5xl font-medium leading-tight tracking-[-2px] md:text-7xl md:leading-[1.15]`:
+2. **Title** — `motion.h1` with `mb-3 text-5xl font-medium leading-tight tracking-[-2px] md:text-7xl md:leading-[1.15]`:
    - Line 1: `Your Insights.`
    - `<br />`
    - Line 2: `One Clear ` then the accent word in Instrument Serif italic: `<span className="font-serif font-normal italic">Overview.</span>`
-3. **Subtitle** , `motion.p` (`data-testid="hero-subtitle"`) with `mb-8 text-lg font-normal leading-6 opacity-90` and inline `style={{ color: "hsl(var(--hero-subtitle))" }}`:
+3. **Subtitle** — `motion.p` (`data-testid="hero-subtitle"`) with `mb-8 text-lg font-normal leading-6 opacity-90` and inline `style={{ color: "hsl(var(--hero-subtitle))" }}`:
    - `Neuralyn helps teams track metrics, goals,` `<br />` `and progress with precision.`
-4. **CTA button** , `motion.button` with `rounded-full bg-foreground px-8 py-3.5 text-base font-medium text-background`, `whileHover={{ scale: 1.03 }}`, `whileTap={{ scale: 0.98 }}`. Label: `Get Started for Free`.
+4. **CTA button** — `motion.button` with `rounded-full bg-foreground px-8 py-3.5 text-base font-medium text-background`, `whileHover={{ scale: 1.03 }}`, `whileTap={{ scale: 0.98 }}`. Label: `Get Started for Free`.
 
 ### Dashboard + video area
 
 A `motion.div` (`data-testid="dashboard-area"`) with `relative z-10 mt-12 w-screen md:mt-16` and inline `style={{ marginLeft: "calc(-50vw + 50%)", aspectRatio: "16 / 9" }}` to break out to full viewport width.
 
-- **Background video** , `<video>` with `absolute inset-0 h-full w-full object-cover`, attributes `autoPlay muted loop playsInline`. `src` is `VIDEO_URL`:
+- **Background video** — `<video>` with `absolute inset-0 h-full w-full object-cover`, attributes `autoPlay muted loop playsInline`. `src` is `VIDEO_URL`:
 
   ```tsx
   const VIDEO_URL =
@@ -226,7 +226,7 @@ A `motion.div` (`data-testid="dashboard-area"`) with `relative z-10 mt-12 w-scre
 
   > Note: the original prompt referenced the remote source `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4`. The asset has since been vendored locally to `public/assets/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4` and is referenced via the local path above. (The original URL was supplied in all-caps in the prompt; scheme and host are lowercased here per convention while the path is preserved verbatim.)
 
-- **Dashboard image** , wrapped in `<div className="absolute inset-0 flex items-center justify-center">`, the image is a `motion.img` (`data-testid="dashboard-image"`) with `src={heroDashboard}`, `alt="Neuralyn analytics dashboard"`, class `w-[90%] max-w-5xl rounded-2xl`, and inline `style={{ y: dashboardY, mixBlendMode: "luminosity" }}`.
+- **Dashboard image** — wrapped in `<div className="absolute inset-0 flex items-center justify-center">`, the image is a `motion.img` (`data-testid="dashboard-image"`) with `src={heroDashboard}`, `alt="Neuralyn analytics dashboard"`, class `w-[90%] max-w-5xl rounded-2xl`, and inline `style={{ y: dashboardY, mixBlendMode: "luminosity" }}`.
 
 ### Bottom gradient fade
 
@@ -255,7 +255,7 @@ import logo from "@/assets/logo.png";
 import heroDashboard from "@/assets/hero-dashboard.png";
 ```
 
-## Section 2 , Testimonial (`src/components/Testimonial.tsx`)
+## Section 2 — Testimonial (`src/components/Testimonial.tsx`)
 
 Section is `flex min-h-screen items-center justify-center px-8 py-24 md:px-28 md:py-32` with `data-testid="testimonial"`. Inside, a container `<div ref={containerRef}>` is `mx-auto flex w-full max-w-3xl flex-col items-start gap-10` (max width `3xl`, left-aligned, gap-10 between elements).
 
@@ -268,9 +268,9 @@ const QUOTE =
 
 ### Layout, top to bottom
 
-1. **Quote symbol image** , `<img src={quoteSymbol} alt="" aria-hidden="true" className="h-10 w-14 object-contain" />`.
-2. **Testimonial paragraph** , `<p data-testid="testimonial-quote" className="flex flex-wrap text-4xl font-medium leading-[1.2] md:text-5xl">`. The quote is split on spaces (`QUOTE.split(" ")`) and each word is rendered as a `<Word>` component. After the words, a closing quotation mark: `<span className="ml-2 text-muted-foreground">&rdquo;</span>`.
-3. **Author row** , `<div className="flex items-center gap-4">`:
+1. **Quote symbol image** — `<img src={quoteSymbol} alt="" aria-hidden="true" className="h-10 w-14 object-contain" />`.
+2. **Testimonial paragraph** — `<p data-testid="testimonial-quote" className="flex flex-wrap text-4xl font-medium leading-[1.2] md:text-5xl">`. The quote is split on spaces (`QUOTE.split(" ")`) and each word is rendered as a `<Word>` component. After the words, a closing quotation mark: `<span className="ml-2 text-muted-foreground">&rdquo;</span>`.
+3. **Author row** — `<div className="flex items-center gap-4">`:
    - Avatar: `<img src={avatar} alt="Brooklyn Simmons" className="h-14 w-14 rounded-full border-[3px] border-foreground object-cover" />`
    - Name: `<p className="text-base font-semibold leading-7 text-foreground">Brooklyn Simmons</p>`
    - Role: `<p className="text-sm font-normal leading-5 text-muted-foreground">Product Manager</p>`
@@ -393,10 +393,10 @@ export { Button, buttonVariants };
 
 Stored under `src/assets/` and imported via the `@/assets/...` alias:
 
-- `logo.png` , small logo icon (also used as the favicon)
-- `hero-dashboard.png` , dashboard screenshot
-- `quote-symbol.png` , decorative quote mark
-- `testimonial-avatar.png` , circular headshot
+- `logo.png` — small logo icon (also used as the favicon)
+- `hero-dashboard.png` — dashboard screenshot
+- `quote-symbol.png` — decorative quote mark
+- `testimonial-avatar.png` — circular headshot
 
 Background video lives in `public/assets/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4` and is served from `/assets/...`.
 

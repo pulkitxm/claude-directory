@@ -1,6 +1,6 @@
-# Shader Spectral Clock , WebGL Spectral-Field Clock with Live Telemetry (React + TypeScript + Vite + Tailwind CSS v4)
+# Shader Spectral Clock — WebGL Spectral-Field Clock with Live Telemetry (React + TypeScript + Vite + Tailwind CSS v4)
 
-A self-contained React + TypeScript + Vite + Tailwind CSS v4 project integrating `shader-clock.tsx` , a raw WebGL spectral-field shader that maps wavelength-to-RGB colour through an eight-iteration cosine/sine domain warp , framed as **SPECTRA CLOCK**, a shadcn-style component lab. The live shader fills the hero stage; over it floats a frosted clock card with editable location and °C/°F temperature toggle, a live telemetry HUD reading `iTime`, measured FPS, and the centre-pixel colour straight off the GPU, plus a viewfinder reticle and cursor crosshair. A control deck promotes the four GLSL constants to live uniforms and a world-preset bank snaps the field and clock to six cities at once. Generated with Claude Fable 5.
+A self-contained React + TypeScript + Vite + Tailwind CSS v4 project integrating `shader-clock.tsx` — a raw WebGL spectral-field shader that maps wavelength-to-RGB colour through an eight-iteration cosine/sine domain warp — framed as **SPECTRA CLOCK**, a shadcn-style component lab. The live shader fills the hero stage; over it floats a frosted clock card with editable location and °C/°F temperature toggle, a live telemetry HUD reading `iTime`, measured FPS, and the centre-pixel colour straight off the GPU, plus a viewfinder reticle and cursor crosshair. A control deck promotes the four GLSL constants to live uniforms and a world-preset bank snaps the field and clock to six cities at once. Generated with Claude Fable 5.
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -16,12 +16,12 @@ npm run build    # type-check (tsc -b) + production build
 
 This repo already satisfies the required stack, so no project bootstrap was needed:
 
-- **shadcn project structure** , `components.json` is present, the `@` alias resolves to `./src`
+- **shadcn project structure** — `components.json` is present, the `@` alias resolves to `./src`
   (configured in both `vite.config.ts` and `tsconfig`), the `cn()` helper lives in
   `src/lib/utils.ts`, and UI components live in **`src/components/ui/`**.
-- **Tailwind CSS** , Tailwind **v4** via `@tailwindcss/vite`; the entry stylesheet
+- **Tailwind CSS** — Tailwind **v4** via `@tailwindcss/vite`; the entry stylesheet
   `src/index.css` begins with `@import "tailwindcss";` and `@import "tw-animate-css";`.
-- **TypeScript** , strict mode with project references (`tsconfig.app.json` / `tsconfig.node.json`).
+- **TypeScript** — strict mode with project references (`tsconfig.app.json` / `tsconfig.node.json`).
 
 If you were starting from scratch instead:
 
@@ -45,28 +45,28 @@ component path **is** `src/components/ui`, so the component (`shader-clock.tsx`)
 
 ### Component questions
 
-- **Props / data** , the source component takes **no props**; `<ShaderBackground />`, `<TimeDisplay />`
+- **Props / data** — the source component takes **no props**; `<ShaderBackground />`, `<TimeDisplay />`
   and the default `<Dashboard />` render exactly as in the brief. The integrated `ShaderBackground`
-  adds optional props , `iterations`, `warpScale`, `spectralSpread`, `speed`, `paused`, `onTelemetry`,
-  `onReady`, `className` , every one of which **defaults to the brief's exact baked value** (8 / 2.0 /
+  adds optional props — `iterations`, `warpScale`, `spectralSpread`, `speed`, `paused`, `onTelemetry`,
+  `onReady`, `className` — every one of which **defaults to the brief's exact baked value** (8 / 2.0 /
   50 / 1.0), so the untouched render is byte-for-byte the original.
-- **State** , local only. `TimeDisplay` keeps the clock interval, the editable-city string, the
+- **State** — local only. `TimeDisplay` keeps the clock interval, the editable-city string, the
   temperature value and its °C/°F unit in `useState`. The lab lifts the four uniforms and the selected
   preset into `useState` in `App.tsx` and feeds per-frame telemetry through a `ref`. No store, context
   or provider is required.
-- **Assets** , the widget itself needs **none** (colour is procedural GLSL). The brief asks to "fill
+- **Assets** — the widget itself needs **none** (colour is procedural GLSL). The brief asks to "fill
   image assets with Unsplash" and "use lucide-react for icons": the sandbox's network proxy blocks
   `images.unsplash.com` (and every image CDN) with HTTP 403, so to keep the project self-contained and
   offline-runnable the six world-preset skyline stills are **generated locally** (`scripts/gen-assets.mjs`,
   vendored to `assets/images/*.jpg`) instead of hotlinked, and all chrome icons are **lucide-react**.
   Fonts (Space Grotesk + JetBrains Mono) are vendored to `assets/fonts/*.woff2`.
-- **Responsive behavior** , the canvas fills its container and resizes on `window.resize`; the clock
+- **Responsive behavior** — the canvas fills its container and resizes on `window.resize`; the clock
   is centred with `flex` and scales via `clamp()`. The control deck reflows from one to two columns,
   the preset grid from two to three, tables scroll rather than overflow, and there is no horizontal
   overflow at 390 px.
-- **Best placement** , as an ambient hero / dashboard background, a "now" screen, or a login/splash
+- **Best placement** — as an ambient hero / dashboard background, a "now" screen, or a login/splash
   backdrop. The canvas fills its parent, so the idiomatic use is a `relative h-screen` (or `fixed
-  inset-0`) wrapper with foreground content layered on top , exactly what the default `Dashboard`
+  inset-0`) wrapper with foreground content layered on top — exactly what the default `Dashboard`
   export and the verbatim `demo.tsx` demonstrate.
 
 ## Robustness
@@ -103,4 +103,4 @@ node scripts/gen-assets.mjs    # writes assets/images/*.jpg
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

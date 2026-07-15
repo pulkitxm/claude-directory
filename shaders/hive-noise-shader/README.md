@@ -1,6 +1,6 @@
-# Hive , Noise Field Shader Lab (WebGL2, React, TypeScript, Tailwind CSS v4)
+# Hive — Noise Field Shader Lab (WebGL2, React, TypeScript, Tailwind CSS v4)
 
-A full-viewport WebGL2 fragment shader component that raymarches a 20-step noise field and tints it with a warm amber-to-magenta cosine spectrum flowing right to left , integrated as HIVE, a shadcn-style component lab with a frosted-glass hero, shader-spec HUD surfacing real uniforms and raymarch step count, and a full integration guide covering setup, the `components/ui` alias, and render-pipeline walkthrough. Generated with Claude Fable 5.
+A full-viewport WebGL2 fragment shader component that raymarches a 20-step noise field and tints it with a warm amber-to-magenta cosine spectrum flowing right to left — integrated as HIVE, a shadcn-style component lab with a frosted-glass hero, shader-spec HUD surfacing real uniforms and raymarch step count, and a full integration guide covering setup, the `components/ui` alias, and render-pipeline walkthrough. Generated with Claude Fable 5.
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -16,12 +16,12 @@ npm run build    # type-check (tsc -b) + production build
 
 This repo already satisfies the required stack, so no project bootstrap was needed:
 
-- **shadcn project structure** , `components.json` is present, the `@` alias resolves to `./src`
+- **shadcn project structure** — `components.json` is present, the `@` alias resolves to `./src`
   (configured in both `vite.config.ts` and `tsconfig`), the `cn()` helper lives in
   `src/lib/utils.ts`, and UI components live in **`src/components/ui/`**.
-- **Tailwind CSS** , Tailwind **v4** via `@tailwindcss/vite`; the entry stylesheet
+- **Tailwind CSS** — Tailwind **v4** via `@tailwindcss/vite`; the entry stylesheet
   `src/index.css` begins with `@import "tailwindcss";` and `@import "tw-animate-css";`.
-- **TypeScript** , strict mode with project references (`tsconfig.app.json` / `tsconfig.node.json`)
+- **TypeScript** — strict mode with project references (`tsconfig.app.json` / `tsconfig.node.json`)
   and the `@/* → ./src/*` path mapping.
 
 If you were starting from scratch instead:
@@ -51,33 +51,33 @@ verbatim.
 
 ### Component questions
 
-- **Props / data** , **none.** `ShaderDemo` takes no props and is fully self-driving; the only thing
+- **Props / data** — **none.** `ShaderDemo` takes no props and is fully self-driving; the only thing
   a caller controls is the size of the wrapping element, which the `<canvas>` fills. The component is
   used exactly as provided.
-- **State** , local only, and entirely inside one `useEffect`: the GL context, the linked program,
+- **State** — local only, and entirely inside one `useEffect`: the GL context, the linked program,
   the `u_res`/`u_time` uniform locations and the `requestAnimationFrame` handle. Nothing is lifted to
   props or context; no global store or provider is required.
-- **Hooks / context** , only React's built-in `useRef` and `useEffect`. There is no custom hook to
+- **Hooks / context** — only React's built-in `useRef` and `useEffect`. There is no custom hook to
   install and no provider to mount.
-- **Assets** , **none.** The visual is 100% procedural GLSL , no images, no textures, no 3D models,
+- **Assets** — **none.** The visual is 100% procedural GLSL — no images, no textures, no 3D models,
   no Three.js. Type uses a system font stack and every glyph in the lab is `lucide-react`, so the
-  project runs fully offline. (The prompt's "fill image assets with Unsplash" step doesn't apply ,
+  project runs fully offline. (The prompt's "fill image assets with Unsplash" step doesn't apply —
   the shader needs no imagery; the brand mark is an inline SVG and all UI icons are Lucide, per the
   "use lucide-react for svgs/logos" step.)
-- **Responsive behavior** , full-bleed shader on every breakpoint. The component's own resize handler
+- **Responsive behavior** — full-bleed shader on every breakpoint. The component's own resize handler
   re-matches the drawing buffer to the element on each `resize` event, clamping DPR to **1–2×** so it
   stays crisp on retina without over-rendering on phones. The hero headline scales via
   `clamp(2.6rem, 7vw, 4.6rem)`, the spec HUD is shown from `lg` up, the docs grids reflow from 1 → 2
   → 3 columns, and there is no horizontal overflow at 390 px.
-- **Best placement** , as a hero / section background. The canvas fills its parent, so the idiomatic
+- **Best placement** — as a hero / section background. The canvas fills its parent, so the idiomatic
   use is a `fixed inset-0 -z-10` (or `relative h-screen`) wrapper with foreground content layered on
-  top , exactly what `App.tsx` and `src/components/ui/demo.tsx` demonstrate.
+  top — exactly what `App.tsx` and `src/components/ui/demo.tsx` demonstrate.
 
 ## Verification
 
 `scripts/verify.mjs` is a headless check (Playwright, run against a live dev server) that asserts no
 console/page errors, that the **WebGL2 canvas mounts and paints visible light** (it decodes a
-screenshot of the canvas , not just `readPixels` , and confirms the warm cosine palette by checking
+screenshot of the canvas — not just `readPixels` — and confirms the warm cosine palette by checking
 red > blue), that the top bar / hero / docs / anatomy / "why `/components/ui`" sections all render,
 that a docs copy button toggles to **Copied**, and it captures a desktop and a mobile screenshot.
 
@@ -92,4 +92,4 @@ URL=http://localhost:5314/ node scripts/verify.mjs
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

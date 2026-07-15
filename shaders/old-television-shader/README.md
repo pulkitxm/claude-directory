@@ -1,11 +1,11 @@
-# Old Television Shader , Analog CRT Static GLSL Background (React Three Fiber + drei + Vite + Tailwind CSS)
+# Old Television Shader — Analog CRT Static GLSL Background (React Three Fiber + drei + Vite + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
 A React Three Fiber fragment shader where flowing sines and a 4-octave fractal noise (FBM) mix two colours into rolling analog snow on a drei `shaderMaterial` quad, wrapped in a **Cathode Vault** broadcast showcase. The shader is the live picture tube of a vintage CRT cabinet; scanline/shadow-mask/vignette glass, a self-typing on-screen channel readout, six tunable channel presets, faders, toggles, and a phosphor signal meter compose a calm broadcast control desk. Built with React + TypeScript + Vite + Tailwind CSS on a shadcn project structure. Generated with Claude Fable 5.
 
 > The component file is named `old-television-shader.tsx`, and the inline
-> comments mislabel its colours "orange / pink" , but the actual uniforms are
+> comments mislabel its colours "orange / pink" — but the actual uniforms are
 > `#ffffff → #000000`. Mixed through flowing noise under a film-grain overlay,
 > that is exactly old-TV static, so the whole experiment leans into the CRT.
 
@@ -23,14 +23,14 @@ npm run build    # tsc -b && vite build
 ## Design notes
 
 - **Subject:** an imaginary broadcast monitor ("Cathode Vault · Model OT-23").
-  The shader *is* the hero , no stock photography needed.
+  The shader *is* the hero — no stock photography needed.
 - **Type:** Anton (heavy condensed display, the broadcast wordmark + section
   slates), VT323 (pixel CRT face, the on-screen channel readout), Space Grotesk
   (UI body), IBM Plex Mono (telemetry / code). All four are **vendored locally**
   (latin woff2 in `src/fonts/`) so the project runs fully offline.
 - **Signature element:** the `SignalMeter` maps the tube's true centre-pixel
-  luminance , read straight off the GPU via `gl.readPixels` in the shader's
-  `onSample` callback , to a rolling waveform trace and a 16-segment VU
+  luminance — read straight off the GPU via `gl.readPixels` in the shader's
+  `onSample` callback — to a rolling waveform trace and a 16-segment VU
   bargraph. Nothing is faked; the meter breathes with the picture.
 - **Live controls:** the channel presets and three faders drive the component's
   props; `uWave` / `uGrain` / `uBright` promote the shader's previously
@@ -45,7 +45,7 @@ npm run build    # tsc -b && vite build
 # Integration guide (answering the brief)
 
 The brief is a shadcn-style "integrate this component" task. Here are the answers
-it asks for , the live app reproduces all of this below the fold.
+it asks for — the live app reproduces all of this below the fold.
 
 ## 1. Project prerequisites (shadcn + Tailwind + TypeScript)
 
@@ -66,7 +66,7 @@ npx shadcn@latest init      # TypeScript · CSS variables · neutral base
 ```
 
 Make sure your `tsconfig.json` and bundler resolve the `@/*` alias to `src/*`
-(see `tsconfig.json` + `vite.config.ts` here for the exact wiring) , the
+(see `tsconfig.json` + `vite.config.ts` here for the exact wiring) — the
 component imports `cn` from `@/lib/utils`.
 
 ## 2. Why `/components/ui`
@@ -101,11 +101,11 @@ No other runtime context, store, or provider is required. `lucide-react` is used
 by the surrounding showcase for icons, per the brief's guideline; the shader
 itself does not require it.
 
-## 4. Component contract , props & state
+## 4. Component contract — props & state
 
 The brief's component hard-coded its look and used untyped refs plus a
 `useMemo`-wrapped event listener that never actually ran its cleanup. It has been
-ported to a typed, **controllable** primitive , the shader math and the original
+ported to a typed, **controllable** primitive — the shader math and the original
 resting behaviour are preserved as the defaults (`#ffffff → #000000`, all
 intensities `1`), while the cabinet drives the props:
 
@@ -118,19 +118,19 @@ intensities `1`), while the cabinet drives the props:
 | `brightnessPulse` | `number`                      | `1`         | Slow brightness-breathing depth (`uBright`). |
 | `mouseInfluence`  | `number` (0–1)                | `0.05`      | Cursor → `uMouse` lerp factor (the original wiring). |
 | `paused`          | `boolean`                     | `false`     | Freeze the animation clock on a held frame. |
-| `onSample`        | `(lum: number) => void`       | ,           | Per-frame centre-pixel luminance (0–1), read off the GPU. |
+| `onSample`        | `(lum: number) => void`       | —           | Per-frame centre-pixel luminance (0–1), read off the GPU. |
 | `sampleEveryMs`   | `number`                      | `120`       | Throttle for `onSample`, in ms. |
-| `className`       | `string`                      | ,           | Extra classes on the canvas container. |
+| `className`       | `string`                      | —           | Extra classes on the canvas container. |
 
 State is internal: the animation clock, mouse position, and pixel buffer live in
 the component's refs, and `useFrame` reads the latest prop values without
 rebuilding the WebGL context. No context providers or external state libraries
-are needed , the host just holds prop state with `useState` (this demo uses a
+are needed — the host just holds prop state with `useState` (this demo uses a
 channel-preset object).
 
 ## 5. Assets
 
-None required by the component , it draws procedurally, so there are **no
+None required by the component — it draws procedurally, so there are **no
 images** to fill in. (The brief's "fill image assets with Unsplash" step does not
 apply: a generated static field needs no photography, and vendoring fonts keeps
 the project self-contained. Icons come from `lucide-react`, per the guideline.)
@@ -145,7 +145,7 @@ broadcast-bar chips and footer collapse below their breakpoints.
 ## 7. Where to use it
 
 It's an ambient **full-page background** for a hero or login screen, a "dead-air"
-**404 / maintenance** page, or , as here , the live surface of a media /
+**404 / maintenance** page, or — as here — the live surface of a media /
 broadcast product. The brief's `PolishedShader` default export mounts it
 full-screen with zero props; layer your real content above at a higher
 `z-index`. For a tunable instance, use the named `OldTelevisionShader` export.
@@ -165,11 +165,11 @@ src/
   hooks/use-typewriter.ts         # on-screen channel readout typing
   lib/utils.ts                    # shadcn cn() helper
   lib/channels.ts                 # channel presets (live prop bundles)
-  demo.tsx                        # DemoOne , the integration in use
+  demo.tsx                        # DemoOne — the integration in use
   App.tsx · main.tsx · index.css
   fonts/                          # vendored woff2 (offline)
 ```
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,8 +1,8 @@
-# Mosaic , Admin Dashboard UI Kit Clone (Tailwind CSS + Alpine.js + Chart.js)
+# Mosaic — Admin Dashboard UI Kit Clone (Tailwind CSS + Alpine.js + Chart.js)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A faithful, self-contained reproduction of the Cruip Mosaic admin dashboard template , a comprehensive 64-page admin UI kit covering dashboards, e-commerce, community, finance, job board, task management, messaging, calendar, campaigns, settings, authentication, onboarding, and UI component showcases. Built with Tailwind CSS for styling, Alpine.js for interactive behavior (collapsible sidebar, dropdowns, accordions), and Chart.js with Moment.js for data visualization. Features a dark/light mode toggle and a card-based layout system with a fixed left sidebar and top header bar. No build step required , all assets are vendored under `assets/`.
+A faithful, self-contained reproduction of the Cruip Mosaic admin dashboard template — a comprehensive 64-page admin UI kit covering dashboards, e-commerce, community, finance, job board, task management, messaging, calendar, campaigns, settings, authentication, onboarding, and UI component showcases. Built with Tailwind CSS for styling, Alpine.js for interactive behavior (collapsible sidebar, dropdowns, accordions), and Chart.js with Moment.js for data visualization. Features a dark/light mode toggle and a card-based layout system with a fixed left sidebar and top header bar. No build step required — all assets are vendored under `assets/`.
 
 ## Run
 
@@ -17,7 +17,7 @@ python3 -m http.server 8080
 npx serve .
 ```
 
-Alternatively, open `index.html` directly in a browser , relative asset paths work without a server for most pages.
+Alternatively, open `index.html` directly in a browser — relative asset paths work without a server for most pages.
 
 ## Pages (64 total)
 
@@ -40,15 +40,15 @@ Alternatively, open `index.html` directly in a browser , relative asset paths wo
 
 ## Assets
 
-All dependencies are vendored , no CDN calls required:
+All dependencies are vendored — no CDN calls required:
 
-- `assets/css/style.css` , compiled Tailwind CSS
-- `assets/js/main.js` , Alpine.js component logic (sidebar, dark mode, dropdowns)
-- `assets/js/vendors/alpinejs.min.js` , Alpine.js
-- `assets/js/vendors/chart.js` + `chartjs-adapter-moment.js` + `moment.js` , charts
-- `assets/js/vendors/flatpickr.js` , date picker (calendar page)
-- `assets/js/dashboard-charts.js`, `analytics-charts.js`, `fintech-charts.js` , page-specific Chart.js configs
-- `assets/images/` , all images and icons
+- `assets/css/style.css` — compiled Tailwind CSS
+- `assets/js/main.js` — Alpine.js component logic (sidebar, dark mode, dropdowns)
+- `assets/js/vendors/alpinejs.min.js` — Alpine.js
+- `assets/js/vendors/chart.js` + `chartjs-adapter-moment.js` + `moment.js` — charts
+- `assets/js/vendors/flatpickr.js` — date picker (calendar page)
+- `assets/js/dashboard-charts.js`, `analytics-charts.js`, `fintech-charts.js` — page-specific Chart.js configs
+- `assets/images/` — all images and icons
 
 ## Notes
 
@@ -58,8 +58,8 @@ All dependencies are vendored , no CDN calls required:
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Cruip , <https://cruip.com/demos/mosaic/>
+**Original:** Cruip — <https://cruip.com/demos/mosaic/>
 
 ---
 
-Part of the [Templates](../) collection in the [fable](../../) repo , an open-source gallery of UI experiments and clones.
+Part of the [Templates](../) collection in the [fable](../../) repo — an open-source gallery of UI experiments and clones.

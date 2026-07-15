@@ -23,8 +23,8 @@ NEONSPARK IS A DARK-THEME DIGITAL AGENCY / SAAS LANDING PAGE TEMPLATE BY THEMEFI
 
 ### FONTS
 
-- PRIMARY: `Epilogue` (GOOGLE FONTS) , WEIGHTS 400, 500, 600, 700
-- MONO: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace` , CODE BLOCKS
+- PRIMARY: `Epilogue` (GOOGLE FONTS) — WEIGHTS 400, 500, 600, 700
+- MONO: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace` — CODE BLOCKS
 
 ### TYPE SCALE
 
@@ -44,13 +44,13 @@ NEONSPARK IS A DARK-THEME DIGITAL AGENCY / SAAS LANDING PAGE TEMPLATE BY THEMEFI
 
 ### ANIMATION EASINGS & KEYFRAMES
 
-- `@keyframes marquee` , `transform: translate(0) → translate(-100%)` CONTINUOUS LOOP, 20S LINEAR INFINITE
-- `@keyframes rotateBorder` , `--gradient-angle: 0deg → 360deg` ROTATING CONIC GRADIENT BORDER
-- `@keyframes glowPulse` , `drop-shadow(0 0 20px rgba(255,255,255,0.3)) → drop-shadow(0 0 30px rgba(255,255,255,0.4))` 3S EASE-IN-OUT INFINITE
-- `@keyframes dramatic-light-entrance` , `opacity:0 scale(0.5) rotate(-90deg) → opacity:1 scale(1) rotate(0)` 1S
-- `@keyframes light-horizontal-flow` , TRANSLATE X 0→40PX→-40PX LOOP
-- `@keyframes drawPath` , SVG STROKE DASHOFFSET DRAW-IN
-- SCROLL REVEALS: `IntersectionObserver` , ELEMENTS START `opacity:0 translateY(30px)` AND TRANSITION TO `opacity:1 translateY(0)` OVER `0.6s ease`
+- `@keyframes marquee` — `transform: translate(0) → translate(-100%)` CONTINUOUS LOOP, 20S LINEAR INFINITE
+- `@keyframes rotateBorder` — `--gradient-angle: 0deg → 360deg` ROTATING CONIC GRADIENT BORDER
+- `@keyframes glowPulse` — `drop-shadow(0 0 20px rgba(255,255,255,0.3)) → drop-shadow(0 0 30px rgba(255,255,255,0.4))` 3S EASE-IN-OUT INFINITE
+- `@keyframes dramatic-light-entrance` — `opacity:0 scale(0.5) rotate(-90deg) → opacity:1 scale(1) rotate(0)` 1S
+- `@keyframes light-horizontal-flow` — TRANSLATE X 0→40PX→-40PX LOOP
+- `@keyframes drawPath` — SVG STROKE DASHOFFSET DRAW-IN
+- SCROLL REVEALS: `IntersectionObserver` — ELEMENTS START `opacity:0 translateY(30px)` AND TRANSITION TO `opacity:1 translateY(0)` OVER `0.6s ease`
 
 ## LAYOUT & STRUCTURE
 
@@ -74,7 +74,7 @@ NEONSPARK IS A DARK-THEME DIGITAL AGENCY / SAAS LANDING PAGE TEMPLATE BY THEMEFI
 ### PAGE 1: HOME (`index.html`)
 - **HERO**: FULL-VIEWPORT DARK SECTION. EYEBROW TEXT (TYPING/GLOW). H1 "Build Your Digital Future. *We Build Your Website.*" BELOW H1: SHORT PARAGRAPH. "Our Services" + "Our Works" BUTTONS. BOTTOM: LOGOS MARQUEE TICKER (5 BRAND LOGOS SCROLLING).
 - **LIGHT SPHERE**: SVG/PNG RADIAL NEON GLOW ORBS (hero-light.svg ANIMATED WITH glowPulse + light-horizontal-flow)
-- **FEATURES / WHY CHOOSE US**: 4 CARDS IN A GRID , CUSTOM DESIGN SOLUTIONS, LIFETIME SUPPORT, PERSONALISED PLANS, UNLIMITED REVISIONS. EACH CARD: ICON + TITLE + DESCRIPTION.
+- **FEATURES / WHY CHOOSE US**: 4 CARDS IN A GRID — CUSTOM DESIGN SOLUTIONS, LIFETIME SUPPORT, PERSONALISED PLANS, UNLIMITED REVISIONS. EACH CARD: ICON + TITLE + DESCRIPTION.
 - **HOW WE WORK**: 3-STEP PROCESS WITH IMAGES AND ICONS. NUMBERED STEPS: DISCOVER, DEFINE, DELIVER.
 - **SERVICES TAB STRIP**: TABS FOR WEB DESIGN, COPYWRITING, MARKETING, ETC. WITH ANIMATED ACTIVE STATE.
 - **TESTIMONIALS**: CAROUSEL/SLIDER WITH AVATAR, NAME, ROLE, QUOTE. NAVIGATION ARROWS.
@@ -86,7 +86,7 @@ NEONSPARK IS A DARK-THEME DIGITAL AGENCY / SAAS LANDING PAGE TEMPLATE BY THEMEFI
 - **PAGE HERO**: BREADCRUMB PILL "• About" + H1 "About Us" LEFT + DESCRIPTION RIGHT
 - **MISSION STATEMENT**: "We create impactful Experiences For our clients *Customers every time*"
 - **WHO WE ARE**: LEFT IMAGE (who-we-are.png) + RIGHT TEXT BLOCK WITH BULLET POINTS
-- **COUNTER STATS**: 4 METRICS , "Years Experience 0+", "Years Of SEO Expertise 0+", "Projects Completed 0+", "Happy Clients 0+" (COUNT-UP ANIMATION)
+- **COUNTER STATS**: 4 METRICS — "Years Experience 0+", "Years Of SEO Expertise 0+", "Projects Completed 0+", "Happy Clients 0+" (COUNT-UP ANIMATION)
 - **HOW WE WORK**: SAME 3-STEP AS HOME
 - **TESTIMONIALS CAROUSEL**
 - **CONTACT CTA FORM** (INLINE)
@@ -108,23 +108,23 @@ NEONSPARK IS A DARK-THEME DIGITAL AGENCY / SAAS LANDING PAGE TEMPLATE BY THEMEFI
 ### PAGE 5: CAREER (`career.html`)
 - **PAGE HERO**: BREADCRUMB "• Career" + H1 "Join Our Dynamic *Teams.*" + RIGHT DESCRIPTION
 - **OFFICE PHOTOS**: 3 PHOTOS MOSAIC (office-1.png, office-2.png, office-3.png)
-- **VALUES SECTION**: 3 VALUE CARDS , COLLABORATION (SVG), INNOVATION (SVG), INTEGRITY (SVG)
+- **VALUES SECTION**: 3 VALUE CARDS — COLLABORATION (SVG), INNOVATION (SVG), INTEGRITY (SVG)
 - **PERKS GRID**: "Fast Growing Team", FLEXIBLE REMOTE, ETC.
-- **JOB LISTINGS**: TABLE/LIST , Full Stack Developer | Senior Frontend Developer | UI/UX Designer | Junior Web Developer , EACH WITH EMAIL + LOCATION + TYPE + "Apply Now" BUTTON
+- **JOB LISTINGS**: TABLE/LIST — Full Stack Developer | Senior Frontend Developer | UI/UX Designer | Junior Web Developer — EACH WITH EMAIL + LOCATION + TYPE + "Apply Now" BUTTON
 - **FOOTER**
 
 ### PAGE 6: CONTACT (`contact.html`)
 - **PAGE HERO**: BREADCRUMB "• Contact Us" + H1 "Contact *Us*"
 - **CONTACT FORM CARD**: LEFT SIDE: "Have a Project? *Let's talk!*" + 3 CHECK POINTS + AVATAR + SCHEDULE CTA. RIGHT SIDE: FORM (NAME, EMAIL, BUDGET, HEARD FROM, MESSAGE, CHECKBOXES, "Request A Project" BUTTON)
-- **OFFICES**: 2 CARDS , HEADQUARTERS + ASIA OFFICE WITH ADDRESS, EMAIL, PHONE
+- **OFFICES**: 2 CARDS — HEADQUARTERS + ASIA OFFICE WITH ADDRESS, EMAIL, PHONE
 - **FOOTER**
 
 ### PAGE 7: ELEMENTS (`elements.html`)
-- **UI COMPONENTS SHOWCASE**: TYPOGRAPHY, BUTTONS, BADGES, FORMS, ICONS, CARDS, TABS, ACCORDION, MODALS , DEMO OF ALL DESIGN SYSTEM ELEMENTS
+- **UI COMPONENTS SHOWCASE**: TYPOGRAPHY, BUTTONS, BADGES, FORMS, ICONS, CARDS, TABS, ACCORDION, MODALS — DEMO OF ALL DESIGN SYSTEM ELEMENTS
 
 ### PAGE 8: FAQ (`faq.html`)
 - **PAGE HERO**: BREADCRUMB + H1 "Frequently Asked *Questions*"
-- **FAQ ACCORDION**: CATEGORIZED QUESTIONS , GENERAL, PRICING, TECHNICAL. EACH ITEM EXPANDS ON CLICK.
+- **FAQ ACCORDION**: CATEGORIZED QUESTIONS — GENERAL, PRICING, TECHNICAL. EACH ITEM EXPANDS ON CLICK.
 - **FOOTER**
 
 ### PAGE 9: PRICING (`pricing.html`)
@@ -153,7 +153,7 @@ NEONSPARK IS A DARK-THEME DIGITAL AGENCY / SAAS LANDING PAGE TEMPLATE BY THEMEFI
 
 ### PAGE 13: TEAMS (`teams.html`)
 - **PAGE HERO**: BREADCRUMB + H1 "Our *Teams*"
-- **TEAM GRID**: 4-COLUMN GRID OF TEAM MEMBER CARDS , PHOTO, NAME, ROLE, SOCIAL LINKS (HOVER REVEALS OVERLAY)
+- **TEAM GRID**: 4-COLUMN GRID OF TEAM MEMBER CARDS — PHOTO, NAME, ROLE, SOCIAL LINKS (HOVER REVEALS OVERLAY)
 - **FOOTER**
 
 ### PAGE 14: TERMS AND CONDITION (`terms-and-condition.html`)

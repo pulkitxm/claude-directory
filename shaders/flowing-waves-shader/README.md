@@ -1,8 +1,8 @@
-# Flowing Waves Shader , Interactive Cosine Wave Fragment Shader (React + TypeScript + Vite + Tailwind CSS)
+# Flowing Waves Shader — Interactive Cosine Wave Fragment Shader (React + TypeScript + Vite + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A full-viewport interactive Three.js fragment-shader wave field , a nine-iteration cosine displacement rippling across a full-screen quad , wrapped in a tidal field observatory showcase. The shader is the ambient background; layered over it is a live "Meridian Tidal Lab" oceanographic HUD with a buoy telemetry panel (significant wave height, wave period, turbulence index), a sea-state mode selector, a center-clarity toggle, and an amplitude dial. GPU luminance is sampled via `gl.readPixels` to drive real telemetry , nothing faked. Built following the shadcn component structure with full TypeScript typing. Generated with Claude Fable 5.
+A full-viewport interactive Three.js fragment-shader wave field — a nine-iteration cosine displacement rippling across a full-screen quad — wrapped in a tidal field observatory showcase. The shader is the ambient background; layered over it is a live "Meridian Tidal Lab" oceanographic HUD with a buoy telemetry panel (significant wave height, wave period, turbulence index), a sea-state mode selector, a center-clarity toggle, and an amplitude dial. GPU luminance is sampled via `gl.readPixels` to drive real telemetry — nothing faked. Built following the shadcn component structure with full TypeScript typing. Generated with Claude Fable 5.
 
 ```bash
 npm install
@@ -13,12 +13,12 @@ npm run build    # tsc -b && vite build
 ## Design notes
 
 - **Subject:** an imaginary oceanographic field station ("Meridian Tidal Lab ·
-  Buoy-07"). The shader *is* the hero , no stock photography needed.
+  Buoy-07"). The shader *is* the hero — no stock photography needed.
 - **Type:** Fraunces (optical display serif, used once for the title), IBM Plex
   Mono (telemetry / data), Space Grotesk (utility). All three are **vendored
   locally** (latin woff2 in `src/fonts/`) so the project runs fully offline.
-- **Signature element:** `TideTelemetry` maps the shader's sampled luminance ,
-  read straight off the GPU via `gl.readPixels` (three points averaged) , to a
+- **Signature element:** `TideTelemetry` maps the shader's sampled luminance —
+  read straight off the GPU via `gl.readPixels` (three points averaged) — to a
   plausible significant wave height (≈0.4–4.2 m), wave period, turbulence index,
   and a rolling 48-sample trace; the pointer feeds a station bearing/depth.
   Nothing is faked; the panel breathes with the waves.
@@ -83,22 +83,22 @@ npm install -D @types/three   # TypeScript types
 `lucide-react` is used by the surrounding showcase (icons), per the prompt's
 "use lucide-react icons" guideline; the shader itself does not require it.
 
-## 4. Component contract , props & state
+## 4. Component contract — props & state
 
 The original component owned its three booleans internally and used untyped refs
 (`useRef(null)` / `useRef()`) and an untyped `onMouseMove` handler. It has been
-ported to a typed, **controllable** primitive , the three booleans are now
-props, so the showcase drives them , while preserving the original shader math
+ported to a typed, **controllable** primitive — the three booleans are now
+props, so the showcase drives them — while preserving the original shader math
 and resting behaviour as the defaults:
 
 | Prop              | Type                                    | Default     | Purpose |
 |-------------------|-----------------------------------------|-------------|---------|
 | `mode`            | `"neutral" \| "active" \| "upcoming"`   | `"neutral"` | Collapses the original `hasActiveReminders` / `hasUpcomingReminders` booleans into one exclusive color branch (grey / blue / green). Eased so changes cross-fade. |
-| `dimmingDisabled` | `boolean`                               | `false`     | The original `disableCenterDimming` , lifts the soft center vignette. Eased. |
+| `dimmingDisabled` | `boolean`                               | `false`     | The original `disableCenterDimming` — lifts the soft center vignette. Eased. |
 | `intensity`       | `number` (0–1)                          | `1`         | Overall brightness of the field (a natural extension; original behaviour at `1`). |
-| `onSample`        | `(luminance: number) => void`           | ,           | Fires ~12×/s with the rendered frame's averaged luminance, for external HUDs. |
-| `onPointer`       | `(x: number, y: number) => void`        | ,           | Fires with the normalized pointer position over the canvas (the original `iMouse` wiring). |
-| `className`       | `string`                                | ,           | Overrides the default fixed full-viewport container class. |
+| `onSample`        | `(luminance: number) => void`           | —           | Fires ~12×/s with the rendered frame's averaged luminance, for external HUDs. |
+| `onPointer`       | `(x: number, y: number) => void`        | —           | Fires with the normalized pointer position over the canvas (the original `iMouse` wiring). |
+| `className`       | `string`                                | —           | Overrides the default fixed full-viewport container class. |
 
 State is internal: a single `useEffect` owns the Three.js scene, renderer,
 animation loop, and cleanup. No context providers or external state libraries
@@ -107,7 +107,7 @@ rebuilding the WebGL context on every change.
 
 ## 5. Assets
 
-None required by the component , it draws procedurally, so there are **no
+None required by the component — it draws procedurally, so there are **no
 images** to fill in. (The prompt's "fill image assets with Unsplash" step does
 not apply: a generated wave field needs no photography, and vendoring fonts
 keeps the project self-contained. Icons come from `lucide-react`, per the
@@ -123,7 +123,7 @@ leaving the title and the waves as the focus on mobile.
 
 ## 7. Where to use it
 
-It's an ambient **full-page background** for a landing/hero , anything that
+It's an ambient **full-page background** for a landing/hero — anything that
 benefits from a living, cool, generative backdrop (a weather/maritime product, a
 launch teaser, an ambient status wall). The blue/green/grey branches make it a
 natural fit for the original use case too: signalling an app's reminder state
@@ -140,11 +140,11 @@ src/
     tide-telemetry.tsx           # signature live GPU readout
     wave-controls.tsx            # mode selector + clarity toggle + amplitude dial
   lib/utils.ts                   # shadcn cn() helper
-  demo.tsx                       # DemoOne , the integration in use
+  demo.tsx                       # DemoOne — the integration in use
   App.tsx · main.tsx · index.css
   fonts/                         # vendored woff2 (offline)
 ```
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

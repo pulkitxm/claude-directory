@@ -1,8 +1,8 @@
-# Celestial Matrix Shader , Interactive Digital Rain WebGL Background with Cursor Warp (React + Three.js + Tailwind)
+# Celestial Matrix Shader — Interactive Digital Rain WebGL Background with Cursor Warp (React + Three.js + Tailwind)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-An interactive Three.js / WebGL fragment shader rendering a blue-to-green digital rain field that bends around the cursor through a gravitational warp , framed inside a deep-space signal console with live telemetry and cursor-tracking reticle. The verbatim shadcn `@/components/ui` drop-in makes the shader's hidden cursor interaction legible through a HUD reporting render rate, feed time, and warp coordinates live from the GPU loop , suited to hero sections, dashboards, or interactive landing pages. Generated with Claude Fable 5.
+An interactive Three.js / WebGL fragment shader rendering a blue-to-green digital rain field that bends around the cursor through a gravitational warp — framed inside a deep-space signal console with live telemetry and cursor-tracking reticle. The verbatim shadcn `@/components/ui` drop-in makes the shader's hidden cursor interaction legible through a HUD reporting render rate, feed time, and warp coordinates live from the GPU loop — suited to hero sections, dashboards, or interactive landing pages. Generated with Claude Fable 5.
 
 The shader component is the verbatim drop-in from the integration brief
 (`src/components/ui/martrix-shader.tsx`), placed in the shadcn `components/ui`
@@ -17,7 +17,7 @@ coordinates, and a frequency rail pulses with the frame rate.
 - Tailwind CSS (shadcn-style structure, `@/` → `src/`)
 - Three.js (WebGL shader background)
 - lucide-react (HUD icons)
-- Space Grotesk / Inter / JetBrains Mono , vendored locally in `public/fonts`
+- Space Grotesk / Inter / JetBrains Mono — vendored locally in `public/fonts`
 
 ## Run
 
@@ -30,12 +30,12 @@ npm run verify     # headless Chromium checks (canvas, warp, freeze)
 
 ## Controls
 
-- **Move the cursor** , bends the falling matrix around a gravitational warp.
-- **Freeze feed** , pauses the animation clock; the rain holds in place.
-- **Recalibrate** , resets the shader clock to zero.
+- **Move the cursor** — bends the falling matrix around a gravitational warp.
+- **Freeze feed** — pauses the animation clock; the rain holds in place.
+- **Recalibrate** — resets the shader clock to zero.
 
-Everything is self-contained and runs offline , no remote assets.
+Everything is self-contained and runs offline — no remote assets.
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

@@ -1,12 +1,12 @@
-# Interactive Flux Shader , Cursor-Reactive WebGL FBM Field Synthesizer (React + TypeScript + WebGL2)
+# Interactive Flux Shader — Cursor-Reactive WebGL FBM Field Synthesizer (React + TypeScript + WebGL2)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A full-screen WebGL2 fractal-noise (FBM) field whose hue, speed, intensity, and complexity are live uniforms and whose flow warps toward the cursor , integrated as a shadcn `@/components/ui` component and framed as **FLUX·01**, a Eurorack-style "field synthesizer." The four shader parameters become engraved aluminium faders, the generative field sits in a recessed scope window with a tracking crosshair reticle, and a live telemetry stack reads per-frame GPU output via `gl.readPixels`. Built with React, TypeScript, Vite, and Tailwind CSS following the shadcn project structure, with no external rendering dependency , raw WebGL2 only. Generated with Claude Fable 5.
+A full-screen WebGL2 fractal-noise (FBM) field whose hue, speed, intensity, and complexity are live uniforms and whose flow warps toward the cursor — integrated as a shadcn `@/components/ui` component and framed as **FLUX·01**, a Eurorack-style "field synthesizer." The four shader parameters become engraved aluminium faders, the generative field sits in a recessed scope window with a tracking crosshair reticle, and a live telemetry stack reads per-frame GPU output via `gl.readPixels`. Built with React, TypeScript, Vite, and Tailwind CSS following the shadcn project structure, with no external rendering dependency — raw WebGL2 only. Generated with Claude Fable 5.
 
 ## Design notes
 
-- **Subject:** a single hardware synth module , "Aperture Labs · FLUX·01 · Field
+- **Subject:** a single hardware synth module — "Aperture Labs · FLUX·01 · Field
   Synthesizer." The shader *is* the instrument's output, so no stock photography
   is needed.
 - **Type:** Space Grotesk (machined display grotesque, used once for the
@@ -16,7 +16,7 @@ A full-screen WebGL2 fractal-noise (FBM) field whose hue, speed, intensity, and 
 - **Signature element:** the engraved **fader bank** plus a live **signal
   scope.** Each fader is milled into the faceplate with an amber LED level fill;
   beside the field, the scope plots the shader's sampled centre luminance over
-  time , data read straight off the framebuffer via `gl.readPixels` , and a
+  time — data read straight off the framebuffer via `gl.readPixels` — and a
   swatch reports the field's dominant hue. Drag the Hue fader and the readout
   hue follows the pixels, not the slider.
 - **Palette:** a cool brushed-graphite chassis (`chassis` / `alu` ramps) with a
@@ -56,7 +56,7 @@ Make sure your `tsconfig.json` and bundler resolve the `@/*` alias to `src/*`
 ## 2. Why `/components/ui`
 
 The prompt asks the component be placed in `/components/ui`. That folder is the
-shadcn convention for **primitive, reusable UI building blocks** , the things you
+shadcn convention for **primitive, reusable UI building blocks** — the things you
 compose pages out of. Keeping `interactive-shader` there (rather than next to a
 single page) means:
 
@@ -73,11 +73,11 @@ utils → `src/lib/utils`, styles → `src/index.css` (see `components.json`).
 ## 3. Dependencies
 
 The component needs **no external runtime libraries.** It is raw **WebGL2** (with
-a WebGL fallback) , there is no `three.js` and nothing to `npm install` for the
+a WebGL fallback) — there is no `three.js` and nothing to `npm install` for the
 shader itself:
 
 ```bash
-# nothing required for the component , it is dependency-free WebGL
+# nothing required for the component — it is dependency-free WebGL
 ```
 
 `lucide-react` is used by the surrounding showcase (a few module icons) per the
@@ -87,7 +87,7 @@ shadcn `cn()` helper. The shader does not require any of them.
 The source was authored with **untyped** params and refs; it has been ported to
 **TypeScript** so the strict build passes, with behaviour preserved exactly.
 
-## 4. Component contract , props & state
+## 4. Component contract — props & state
 
 The default export `ShaderComponent` is the prompt's component verbatim (its own
 title + glass slider panel). To make the field observable by a host UI without
@@ -97,10 +97,10 @@ optional callback:
 | Export                | Kind      | Purpose |
 |-----------------------|-----------|---------|
 | `ShaderComponent`     | default   | The brief's self-contained component (sliders + title). |
-| `ShaderCanvas`        | named     | Just the field canvas , props `hue`, `speed`, `intensity`, `complexity`, optional `onSample`, optional `className`. |
+| `ShaderCanvas`        | named     | Just the field canvas — props `hue`, `speed`, `intensity`, `complexity`, optional `onSample`, optional `className`. |
 | `useShaderAnimation`  | named     | The WebGL hook, so a host can reuse the exact shader. |
 | `ShaderParams`        | type      | `{ hue; speed; intensity; complexity }`. |
-| `ShaderSample`        | type      | `{ luminance; hue; fps }` , the per-frame readout. |
+| `ShaderSample`        | type      | `{ luminance; hue; fps }` — the per-frame readout. |
 
 `ShaderCanvas` / `useShaderAnimation` props:
 
@@ -110,7 +110,7 @@ optional callback:
 | `speed`      | `number`                      | 0–2.0           | Flow speed multiplier. |
 | `intensity`  | `number`                      | 0.1–3.0         | Field brightness / contrast. |
 | `complexity` | `number`                      | 1–10            | FBM octave count. |
-| `onSample`   | `(s: ShaderSample) => void`   | , (opt-in)      | Fires ~12×/s with the rendered frame's sampled luminance, dominant hue and draw rate, read off the GPU. Sampling is skipped entirely when omitted, so the default `ShaderComponent` is untouched. |
+| `onSample`   | `(s: ShaderSample) => void`   | — (opt-in)      | Fires ~12×/s with the rendered frame's sampled luminance, dominant hue and draw rate, read off the GPU. Sampling is skipped entirely when omitted, so the default `ShaderComponent` is untouched. |
 | `className`  | `string`                      | full-bleed      | Overrides the default absolute-fill canvas class. |
 
 State is internal: a single `useEffect` owns the WebGL context, program,
@@ -121,7 +121,7 @@ down the GL context.
 
 ## 5. Assets
 
-None required by the component , it draws procedurally, so there are **no
+None required by the component — it draws procedurally, so there are **no
 images** to fill in. (The prompt's "fill image assets with Unsplash" step does
 not apply: a generated noise field needs no photography, and vendoring fonts
 keeps the project self-contained.)
@@ -137,7 +137,7 @@ down to 390 px.
 
 ## 7. Where to use it
 
-`ShaderComponent` is a drop-in **interactive full-page background / hero** ,
+`ShaderComponent` is a drop-in **interactive full-page background / hero** —
 anything that benefits from a living, tunable, generative backdrop with a
 cursor-reactive warp (a creative-tools landing, a launch teaser, a generative-art
 wall). Mount it once near the root with real content layered above; or use
@@ -154,11 +154,11 @@ src/
     flux-faders.tsx            # signature engraved fader bank
     signal-telemetry.tsx       # live GPU readout (luminance scope, hue, fps, octaves)
   lib/utils.ts                 # shadcn cn() helper
-  demo.tsx                     # DemoOne , the FLUX·01 integration in use
+  demo.tsx                     # DemoOne — the FLUX·01 integration in use
   App.tsx · main.tsx · index.css
   fonts/                       # vendored variable woff2 (offline)
 ```
 
 ---
 
-Part of the [Shaders](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Shaders](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

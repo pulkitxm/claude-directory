@@ -1,4 +1,4 @@
-# Bigspring , SaaS/CRM Marketing Template Clone (Vanilla HTML/CSS/JS)
+# Bigspring — SaaS/CRM Marketing Template Clone (Vanilla HTML/CSS/JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -10,7 +10,7 @@ Home, About, Team, How It Works, Careers, Products index plus 4 product detail p
 
 ## Run
 
-This is plain HTML/CSS/vanilla JS , there is no `package.json` and no build step. Serve the folder with any static file server from the project root:
+This is plain HTML/CSS/vanilla JS — there is no `package.json` and no build step. Serve the folder with any static file server from the project root:
 
 ```sh
 python3 -m http.server
@@ -20,7 +20,7 @@ Then open `http://localhost:8000/` (or `index.html` directly) in a browser.
 
 ## Notes
 
-- `prompt.md` contains the full build spec , color tokens, typography scale, motion/theme-toggle details, and the complete page-by-page layout breakdown used to build this clone.
+- `prompt.md` contains the full build spec — color tokens, typography scale, motion/theme-toggle details, and the complete page-by-page layout breakdown used to build this clone.
 - `demo.mp4` (with `poster.jpg` as its thumbnail) shows the site in motion, including the theme toggle and FAQ accordion.
 - Assets (vendored fonts, images, CSS, JS, and the Swiper library) live under `assets/`; shared header/footer markup lives under `partials/`.
 
@@ -28,8 +28,8 @@ Then open `http://localhost:8000/` (or `index.html` directly) in a browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Themefisher , <https://themefisher.com/demo?theme=bigspring-nextjs>
+**Original:** Themefisher — <https://themefisher.com/demo?theme=bigspring-nextjs>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

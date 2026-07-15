@@ -1,4 +1,4 @@
-# Smart Prosthetics , Cinematic Hero Section
+# Smart Prosthetics — Cinematic Hero Section
 
 ## Overview
 
@@ -11,7 +11,7 @@ Build a single-page, full-screen hero section for a smart-prosthetics brand. A m
 - **Language:** TypeScript (`typescript` `^5.6.3`), `@types/react` `^18.3.12`, `@types/react-dom` `^18.3.1`.
 - **Styling:** Tailwind CSS (`tailwindcss` `^3.4.17`) with PostCSS (`postcss` `^8.4.49`) and Autoprefixer (`autoprefixer` `^10.4.20`).
 - **Icons:** `lucide-react` `^0.468.0` is installed, but the only graphic used is an inline SVG logo (no Lucide icon is rendered in the hero).
-- **Fonts:** Default Tailwind sans-serif system font stack , no custom font is loaded.
+- **Fonts:** Default Tailwind sans-serif system font stack — no custom font is loaded.
 - **Notable techniques:** full-bleed `<video>` background with `object-cover`, group-hover arrow micro-interactions, fully responsive spacing/typography via Tailwind breakpoints.
 
 > Allowed libraries are limited to `react`, `react-dom`, `lucide-react`, and Tailwind CSS. Do not add any other libraries.
@@ -21,7 +21,7 @@ Build a single-page, full-screen hero section for a smart-prosthetics brand. A m
 ### `index.html`
 
 - `lang="en"`, `<meta charset="UTF-8" />`, `<meta name="viewport" content="width=device-width, initial-scale=1.0" />`.
-- Title: `Smart Prosthetics , Reclaim Your Movement`.
+- Title: `Smart Prosthetics — Reclaim Your Movement`.
 - Body contains `<div id="root"></div>` and `<script type="module" src="/src/main.tsx"></script>`.
 
 ### `src/main.tsx`
@@ -72,12 +72,12 @@ const VIDEO_URL =
 const NAV_LINKS = ['Story', 'Products', 'Help', 'Support']
 ```
 
-- **Video asset:** the background video is served locally from `public/assets/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4` (vendored). The original source was a CloudFront URL , `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4` , but the project references the local `/assets/...` path. Use the local path.
+- **Video asset:** the background video is served locally from `public/assets/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4` (vendored). The original source was a CloudFront URL — `https://d8j0ntlcm91z4.cloudfront.net/user_38xzzbokvigwjottwixh07lwa1p/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4` — but the project references the local `/assets/...` path. Use the local path.
 
 ## Layout
 
 - **Root wrapper** `<div>`: `relative min-h-screen overflow-hidden bg-[#f0f0ee]`.
-- **Background `<video>`:** absolutely positioned, full-bleed , `absolute inset-0 w-full h-full object-cover`. Attributes: `src={VIDEO_URL}`, `autoPlay`, `muted`, `loop`, `playsInline`.
+- **Background `<video>`:** absolutely positioned, full-bleed — `absolute inset-0 w-full h-full object-cover`. Attributes: `src={VIDEO_URL}`, `autoPlay`, `muted`, `loop`, `playsInline`.
 - **Foreground content wrapper** `<div>`: `relative z-10 flex flex-col min-h-screen`.
 
 ## Logo (Inline SVG Component)
@@ -136,12 +136,12 @@ function Logo() {
 ## Animations / Micro-Interactions
 
 - Arrow spans translate right by `0.5` on group hover (`group-hover:translate-x-0.5`).
-- The CTA fills blue on hover , background, text, and border all transition (`hover:bg-blue-500 hover:text-white hover:border-blue-500`, `transition-all duration-200`).
+- The CTA fills blue on hover — background, text, and border all transition (`hover:bg-blue-500 hover:text-white hover:border-blue-500`, `transition-all duration-200`).
 - Nav links shift from `text-gray-700` to `text-gray-900` on hover (`transition-colors duration-200`).
 
 ## Typography
 
-- Default Tailwind sans-serif system font stack , no custom font.
+- Default Tailwind sans-serif system font stack — no custom font.
 - All sizes are exact pixel/rem values: `11.5px`, `12px`, `13px`, `14px`, `1.5rem`, `1.75rem`.
 
 ## Color Palette

@@ -1,4 +1,4 @@
-# AI Builder Dark Hero , Dark-Mode AI Website Builder Hero Section (React + Vite + HLS.js + Motion)
+# AI Builder Dark Hero — Dark-Mode AI Website Builder Hero Section (React + Vite + HLS.js + Motion)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -25,4 +25,4 @@ overlays), and saves desktop + mobile screenshots to `screenshots/`.
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

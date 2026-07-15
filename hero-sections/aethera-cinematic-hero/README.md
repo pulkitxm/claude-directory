@@ -1,4 +1,4 @@
-# Aethera , Cinematic Video Hero Section (React + Vite + Tailwind CSS v4)
+# Aethera — Cinematic Video Hero Section (React + Vite + Tailwind CSS v4)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -8,7 +8,7 @@ Fullscreen single-page hero section for the fictional studio brand "Aethera," pa
 
 A navbar toggle flips light/dark. Every surface paints from three palette
 tokens (`--color-background`/`--color-ink`/`--color-muted`), so dark mode is
-just an override of those tokens under `html.dark` in `src/styles/theme.css` ,
+just an override of those tokens under `html.dark` in `src/styles/theme.css` —
 one swap inverts the whole page, eased by a 0.5s color transition. The initial
 theme is applied before first paint by an inline script in `index.html`
 (stored choice in `localStorage`, falling back to the OS `prefers-color-scheme`),
@@ -50,4 +50,4 @@ node scripts/record-demo.mjs   # writes demo.mp4
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

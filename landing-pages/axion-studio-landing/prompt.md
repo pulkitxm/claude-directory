@@ -1,15 +1,15 @@
-# Axion Studio , Design Agency Landing Page
+# Axion Studio — Design Agency Landing Page
 
 ## Overview
 
-Build a single-page landing site for "Axion Studio", a strategy-led design agency. The page is composed of three stacked sections , a full-viewport animated-shader hero, an introductory "about" section, and a featured case-studies section , rendered as a React + Vite + TypeScript app styled with Tailwind CSS. Match every concrete detail below exactly.
+Build a single-page landing site for "Axion Studio", a strategy-led design agency. The page is composed of three stacked sections — a full-viewport animated-shader hero, an introductory "about" section, and a featured case-studies section — rendered as a React + Vite + TypeScript app styled with Tailwind CSS. Match every concrete detail below exactly.
 
 ## Tech Stack
 
 - **Framework:** React 18 (`react` `^18.3.1`, `react-dom` `^18.3.1`) + TypeScript (`~5.6.3`) + Vite (`^5.4.11`, via `@vitejs/plugin-react` `^4.3.4`)
 - **Styling:** Tailwind CSS `^3.4.17` (default config, no custom theme extensions), with `postcss` `^8.4.49` and `autoprefixer` `^10.4.20`
-- **Shaders:** `shaders` `^2.5.129` , the hero background uses `Shader`, `Swirl`, `ChromaFlow`, `FlutedGlass`, and `FilmGrain` imported from `shaders/react`. (`pixi.js` `^8.0.0` is a required peer dependency of `shaders`.)
-- **Icons:** `lucide-react` `^0.515.0` , `ArrowRight`, `Clock`, `Menu`, `X`
+- **Shaders:** `shaders` `^2.5.129` — the hero background uses `Shader`, `Swirl`, `ChromaFlow`, `FlutedGlass`, and `FilmGrain` imported from `shaders/react`. (`pixi.js` `^8.0.0` is a required peer dependency of `shaders`.)
+- **Icons:** `lucide-react` `^0.515.0` — `ArrowRight`, `Clock`, `Menu`, `X`
 - **Font:** system default (no custom font loaded)
 - **Notable techniques:** animated WebGL shader stack, a hover "text-roll" CTA interaction, a live London wall-clock, a slide-up mobile bottom-sheet menu, and CSS hover-expanding pill buttons over autoplaying video
 - **Testing:** `playwright` `^1.60.0`; a `verify` script (`node scripts/verify.mjs`)
@@ -19,7 +19,7 @@ Build a single-page landing site for "Axion Studio", a strategy-led design agenc
 ### `index.html`
 
 - `lang="en"`, charset `UTF-8`, viewport `width=device-width, initial-scale=1.0`.
-- `<title>`: `Axion Studio , We craft digital experiences`
+- `<title>`: `Axion Studio — We craft digital experiences`
 - Meta description: `Axion Studio is a strategy-led design agency crafting digital experiences for brands ready to dominate their category online.`
 - Root `<div id="root">` plus `<script type="module" src="/src/main.tsx">`.
 
@@ -196,23 +196,23 @@ import { ChromaFlow, FilmGrain, FlutedGlass, Shader, Swirl } from "shaders/react
 
 ### Layout
 
-After the shader, render `<Navbar />`, then a flexible spacer `<div className="flex-1" />`, then the hero content , this pins the content to the bottom of the viewport.
+After the shader, render `<Navbar />`, then a flexible spacer `<div className="flex-1" />`, then the hero content — this pins the content to the bottom of the viewport.
 
 ### Hero content
 
 Container: `relative z-20 mx-auto w-full max-w-[1440px] px-5 pb-14 sm:px-8 sm:pb-16 lg:px-12 lg:pb-20`.
 
-- **Small label** `<p>`: text `Axion Studio` , `mb-5 text-[13px] tracking-wide text-gray-900 sm:mb-8 sm:text-[14px]`.
+- **Small label** `<p>`: text `Axion Studio` — `mb-5 text-[13px] tracking-wide text-gray-900 sm:mb-8 sm:text-[14px]`.
 - **Headline** `<h1>`: `text-[length:clamp(1.75rem,7vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 sm:text-[length:clamp(2.5rem,5vw,4.2rem)]`. Copy with line breaks hidden on mobile (each `<br className="hidden sm:block" />` paired with a `<span className="sm:hidden"> </span>` fallback space):
   - `We craft digital experiences`
   - `for brands ready to dominate`
   - `their category online.`
 - **CTA row** `<div className="mt-8 flex flex-col items-start gap-4 sm:mt-12 sm:flex-row sm:items-center sm:gap-5">`:
-  - **Orange `RollButton`** , `label="Start a project"`, `className="bg-[#F26522] py-2 pl-5 pr-2 text-[13px] text-white hover:bg-[#e05a1a] sm:pl-6 sm:text-[14px]"`, `circleClassName="h-7 w-7 sm:h-8 sm:w-8"`, `arrowClassName="text-[#F26522]"`.
-  - **Partner badge** , an `<a href="#">`: `flex items-center gap-2 rounded-[4px] bg-white px-3 py-2 shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-shadow duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] sm:gap-2.5 sm:px-4 sm:py-2.5`. Contains:
+  - **Orange `RollButton`** — `label="Start a project"`, `className="bg-[#F26522] py-2 pl-5 pr-2 text-[13px] text-white hover:bg-[#e05a1a] sm:pl-6 sm:text-[14px]"`, `circleClassName="h-7 w-7 sm:h-8 sm:w-8"`, `arrowClassName="text-[#F26522]"`.
+  - **Partner badge** — an `<a href="#">`: `flex items-center gap-2 rounded-[4px] bg-white px-3 py-2 shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-shadow duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] sm:gap-2.5 sm:px-4 sm:py-2.5`. Contains:
     - `<PartnerIcon className="h-5 w-5 fill-current text-[#E8704E] sm:h-6 sm:w-6" />`
-    - `<span>` `Certified Partner` , `text-[13px] font-medium text-gray-900 sm:text-[14px]`
-    - `<span>` `Featured` , `rounded bg-gray-900 px-1.5 py-0.5 text-[10px] text-white sm:px-2 sm:text-[11px]`
+    - `<span>` `Certified Partner` — `text-[13px] font-medium text-gray-900 sm:text-[14px]`
+    - `<span>` `Featured` — `rounded bg-gray-900 px-1.5 py-0.5 text-[10px] text-white sm:px-2 sm:text-[11px]`
 
 ## Navbar (`src/components/Navbar.tsx`)
 
@@ -226,14 +226,14 @@ Outer container: `relative z-[70] mx-auto max-w-[1440px] p-2 sm:p-3`. Inside, a 
 
 **Left group** (`flex items-center gap-6 pl-0 md:pr-2`):
 
-- **Logo** , `<a href="#" aria-label="Axion Studio home">` styled `flex h-9 w-9 items-center justify-center rounded-full bg-gray-900 sm:h-10 sm:w-10`, containing a `<span>` with text `AX` (`text-[10px] font-bold tracking-tight text-white sm:text-[11px]`).
-- **Nav links** (`hidden items-center gap-6 md:flex`) , map over `NAV_LINKS`, each an `<a href="#">` with `text-[14px] text-gray-900 transition-colors duration-300 hover:text-gray-500`.
+- **Logo** — `<a href="#" aria-label="Axion Studio home">` styled `flex h-9 w-9 items-center justify-center rounded-full bg-gray-900 sm:h-10 sm:w-10`, containing a `<span>` with text `AX` (`text-[10px] font-bold tracking-tight text-white sm:text-[11px]`).
+- **Nav links** (`hidden items-center gap-6 md:flex`) — map over `NAV_LINKS`, each an `<a href="#">` with `text-[14px] text-gray-900 transition-colors duration-300 hover:text-gray-500`.
 
 **Right group** (`hidden items-center gap-5 md:flex`):
 
-- `<span>` `Taking on projects for Q1 2026` , `hidden text-[13px] text-gray-600 lg:block`.
+- `<span>` `Taking on projects for Q1 2026` — `hidden text-[13px] text-gray-600 lg:block`.
 - Time `<span>` `flex items-center gap-1.5 text-[13px] text-gray-600` containing `<Clock size={14} />` followed by `{time} in London`.
-- **`RollButton`** , `label="Book a strategy call"`, `className="bg-gray-900 py-2 pl-5 pr-2 text-[13px] text-white"`, `circleClassName="h-6 w-6"`, `arrowClassName="text-gray-900"`, `arrowSize={12}`.
+- **`RollButton`** — `label="Book a strategy call"`, `className="bg-gray-900 py-2 pl-5 pr-2 text-[13px] text-white"`, `circleClassName="h-6 w-6"`, `arrowClassName="text-gray-900"`, `arrowSize={12}`.
 
 **Mobile toggle** `<button type="button">` (`md:hidden`): `flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2.5 text-[13px] font-medium text-white`, with `aria-expanded={menuOpen}` and `aria-label` of `"Close menu"`/`"Open menu"`. Shows `<X size={15} />` + `Close` when open, else `<Menu size={15} />` + `Menu`.
 
@@ -245,7 +245,7 @@ Wrapper: `fixed inset-0 z-50 md:hidden`. When closed it is `pointer-events-none 
 - **Bottom sheet** `<div>`: `absolute inset-x-0 bottom-0 mx-3 mb-3 rounded-2xl bg-white p-5 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]` toggling `translate-y-0` (open) / `translate-y-[calc(100%+0.75rem)]` (closed). Contains:
   - **Time badge** `<span>`: `inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-[13px] text-gray-600` with `<Clock size={14} />` + `{time} in London`.
   - **Nav** (`mt-6 flex flex-col gap-2`): each link an `<a href="#">` (closes the menu on click) styled `text-[28px] font-medium text-gray-900 sm:text-[32px]`.
-  - **`RollButton`** in `<div className="mt-8 flex">` , `label="Start a project"`, `onClick` closes the menu, `className="bg-[#F26522] py-2 pl-5 text-[13px] text-white hover:bg-[#e05a1a] sm:pl-6 sm:text-[14px] pr-2"`, `circleClassName="h-7 w-7 sm:h-8 sm:w-8"`, `arrowClassName="text-[#F26522]"`.
+  - **`RollButton`** in `<div className="mt-8 flex">` — `label="Start a project"`, `onClick` closes the menu, `className="bg-[#F26522] py-2 pl-5 text-[13px] text-white hover:bg-[#e05a1a] sm:pl-6 sm:text-[14px] pr-2"`, `circleClassName="h-7 w-7 sm:h-8 sm:w-8"`, `arrowClassName="text-[#F26522]"`.
 
 ## Section 2: About (`src/components/About.tsx`)
 
@@ -257,8 +257,8 @@ A small inner `AboutButton` component renders a `RollButton`: `label="About our 
 
 `mb-6 flex items-center gap-3 px-5 sm:mb-8 sm:px-8 lg:px-12`:
 
-- **Numbered circle** `<span>`: text `1` , `flex h-6 w-6 items-center justify-center rounded-full bg-gray-900 text-[11px] font-semibold text-white sm:h-7 sm:w-7 sm:text-[12px]`.
-- **Pill label** `<span>`: text `Introducing Axion` , `rounded-full border border-gray-200 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]`.
+- **Numbered circle** `<span>`: text `1` — `flex h-6 w-6 items-center justify-center rounded-full bg-gray-900 text-[11px] font-semibold text-white sm:h-7 sm:w-7 sm:text-[12px]`.
+- **Pill label** `<span>`: text `Introducing Axion` — `rounded-full border border-gray-200 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]`.
 
 ### Heading
 
@@ -274,19 +274,19 @@ In a `px-5 sm:px-8 lg:px-12` wrapper, `<h2 className="mb-12 text-[length:clamp(1
 - **Paragraph** `<p className="text-[15px] font-medium leading-[1.6] text-gray-900 sm:text-[17px]">`: `Through research, creative thinking and iteration we help growing brands realize their digital full potential.`
 - **Button** in `<div className="mt-6 flex">`: `<AboutButton />`.
 - **Two images** in `<div className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-5">`:
-  - First `<img>` , `aspect-[438/346] w-full rounded-xl object-cover sm:w-[45%] sm:rounded-2xl`, `loading="lazy"`, `alt="Axion Studio team collaborating in the studio"`.
-  - Second `<img>` , `aspect-[900/600] w-full rounded-xl object-cover sm:w-[55%] sm:rounded-2xl`, `loading="lazy"`, `alt="Design work in progress at Axion Studio"`.
+  - First `<img>` — `aspect-[438/346] w-full rounded-xl object-cover sm:w-[45%] sm:rounded-2xl`, `loading="lazy"`, `alt="Axion Studio team collaborating in the studio"`.
+  - Second `<img>` — `aspect-[900/600] w-full rounded-xl object-cover sm:w-[55%] sm:rounded-2xl`, `loading="lazy"`, `alt="Design work in progress at Axion Studio"`.
 
 **Desktop layout** (`hidden grid-cols-[26%_1fr_48%] items-end gap-6 px-12 lg:grid xl:gap-8`):
 
-- **Left column** `<div className="self-end">`: small `<img>` , `aspect-[438/346] w-full rounded-2xl object-cover`, `loading="lazy"`, same alt as above.
+- **Left column** `<div className="self-end">`: small `<img>` — `aspect-[438/346] w-full rounded-2xl object-cover`, `loading="lazy"`, same alt as above.
 - **Center column** `<div className="flex justify-end self-start">` wrapping a `<div>` with:
   - `<p className="whitespace-nowrap text-[16px] font-medium leading-[1.65] text-gray-900 xl:text-[18px]">` using literal `<br/>` between the three lines:
     - `Through research, creative thinking and`
     - `iteration we help growing brands realize`
     - `their digital full potential.`
   - `<div className="mt-8">` with `<AboutButton />`.
-- **Right column** `<div className="self-end">`: large `<img>` , `aspect-[3/2] w-full rounded-2xl object-cover`, `loading="lazy"`, same alt as the second mobile image.
+- **Right column** `<div className="self-end">`: large `<img>` — `aspect-[3/2] w-full rounded-2xl object-cover`, `loading="lazy"`, same alt as the second mobile image.
 
 ### Image sources
 
@@ -304,7 +304,7 @@ const LARGE_IMAGE =
   "/assets/hf_20260516_090133_c157d30b-a99a-4477-bec1-a446149ec3f2.webp";
 ```
 
-> Note: these assets are served from the local `public/assets/` directory (the original CDN images referenced above were vendored locally as `.webp`). Keep the lowercase file paths exactly as shown , paths are case-sensitive.
+> Note: these assets are served from the local `public/assets/` directory (the original CDN images referenced above were vendored locally as `.webp`). Keep the lowercase file paths exactly as shown — paths are case-sensitive.
 
 ## Section 3: Case Studies (`src/components/CaseStudies.tsx`)
 
@@ -315,7 +315,7 @@ const LARGE_IMAGE =
 Same pattern as the About badge row (`mb-6 flex items-center gap-3 px-5 sm:mb-8 sm:px-8 lg:px-12`), but:
 
 - **Numbered circle**: text `2` (same classes as section 2).
-- **Pill label**: text `Featured client work` , note `border-gray-300` instead of `border-gray-200`: `rounded-full border border-gray-300 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]`.
+- **Pill label**: text `Featured client work` — note `border-gray-300` instead of `border-gray-200`: `rounded-full border border-gray-300 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]`.
 
 ### Heading
 
@@ -355,9 +355,9 @@ function LinkIcon({ className }: { className?: string }) {
 **Card 1 (Narrativ):**
 
 - **Video container** `<div className="group relative aspect-[329/246] cursor-pointer overflow-hidden rounded-2xl bg-[#1a1d2e]">`.
-- **Video** , `src={NARRATIV_VIDEO}`, `autoPlay`, `muted`, `loop`, `playsInline`, `className="h-full w-full object-cover"`.
+- **Video** — `src={NARRATIV_VIDEO}`, `autoPlay`, `muted`, `loop`, `playsInline`, `className="h-full w-full object-cover"`.
 - **Hover button** `<div className="absolute bottom-4 left-4 flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-white transition-all duration-300 ease-in-out group-hover:w-[148px]">` containing:
-  - `<span>` `Learn more` , `max-w-0 overflow-hidden whitespace-nowrap text-[13px] font-medium text-gray-900 opacity-0 transition-all delay-100 duration-300 ease-in-out group-hover:mr-2 group-hover:max-w-[110px] group-hover:opacity-100`.
+  - `<span>` `Learn more` — `max-w-0 overflow-hidden whitespace-nowrap text-[13px] font-medium text-gray-900 opacity-0 transition-all delay-100 duration-300 ease-in-out group-hover:mr-2 group-hover:max-w-[110px] group-hover:opacity-100`.
   - `<LinkIcon className="shrink-0 -rotate-45 text-gray-900 transition-transform duration-300 ease-in-out group-hover:rotate-0" />`.
 - **Description** `<p className="mt-4 text-[13px] leading-relaxed text-gray-600 sm:text-[14px]">`: `Winner of Site of the Month 2025 - an interactive 3D showcase driving record engagement`.
 - **Title** `<h3 className="mt-1 text-[14px] font-semibold text-gray-900 sm:text-[15px]">`: `Narrativ`.
@@ -365,9 +365,9 @@ function LinkIcon({ className }: { className?: string }) {
 **Card 2 (Luminar):**
 
 - **Video container** `<div className="group relative aspect-square cursor-pointer overflow-hidden rounded-2xl bg-[#6b6b6b]">`.
-- **Video** , `src={LUMINAR_VIDEO}`, `autoPlay`, `muted`, `loop`, `playsInline`, `className="h-full w-full object-cover"`.
+- **Video** — `src={LUMINAR_VIDEO}`, `autoPlay`, `muted`, `loop`, `playsInline`, `className="h-full w-full object-cover"`.
 - **Hover button** `<div className="absolute bottom-4 left-4 flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-[168px]">` containing:
-  - `<span>` `View case study` , `max-w-0 overflow-hidden whitespace-nowrap text-[13px] font-medium text-white opacity-0 transition-all delay-100 duration-300 ease-in-out group-hover:mr-2 group-hover:max-w-[120px] group-hover:opacity-100`.
+  - `<span>` `View case study` — `max-w-0 overflow-hidden whitespace-nowrap text-[13px] font-medium text-white opacity-0 transition-all delay-100 duration-300 ease-in-out group-hover:mr-2 group-hover:max-w-[120px] group-hover:opacity-100`.
   - `<ArrowRight size={14} className="shrink-0 -rotate-45 text-white transition-transform duration-300 ease-in-out group-hover:rotate-0" />`.
 - **Description** `<p className="mt-4 text-[13px] leading-relaxed text-gray-600 sm:text-[14px]">`: `Transforming a dated platform into a conversion-focused brand experience`.
 - **Title** `<h3 className="mt-1 text-[14px] font-semibold text-gray-900 sm:text-[15px]">`: `Luminar`.

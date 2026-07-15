@@ -1,6 +1,6 @@
 # Hero sections
 
-**41 hero section experiments generated with Claude Fable 5** , full-viewport, video-background, animated, and glassmorphism landing-page hero components built with React, TypeScript, Tailwind CSS, Framer Motion, Three.js, and framework-free HTML/CSS/JS. Part of the [claude-directory](../README.md) collection of AI-generated UI ([live gallery](https://pulkitxm.com/claude-directory)).
+**41 hero section experiments generated with Claude Fable 5** — full-viewport, video-background, animated, and glassmorphism landing-page hero components built with React, TypeScript, Tailwind CSS, Framer Motion, Three.js, and framework-free HTML/CSS/JS. Part of the [claude-directory](../README.md) collection of AI-generated UI ([live gallery](https://pulkitxm.com/claude-directory)).
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -17,7 +17,7 @@
 | [digital-epoch-hero](./digital-epoch-hero/) | Rounded-card hero with looping video background, floating glass bottom navbar, and seamless CSS marquee logo scroller | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
 | [equilibrium-liquid-glass-hero](./equilibrium-liquid-glass-hero/) | Full-screen "Equilibrium" wellness hero with a liquid-glass UI over a looping background video | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [fearless-vision-hero](./fearless-vision-hero/) | Full-screen hero with a background video, deep-purple accent, and Inter typography | React, JavaScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [helix-vault-h55](./helix-vault-h55/) | "Institutional Crypto Terminal" hero for Helix Vault , emerald blade of light, glass portfolio dashboard mockup with count-up balance, growing bar chart, live ticker and scan-line, all framework-free | HTML, CSS, JavaScript, DM Sans |
+| [helix-vault-h55](./helix-vault-h55/) | "Institutional Crypto Terminal" hero for Helix Vault — emerald blade of light, glass portfolio dashboard mockup with count-up balance, growing bar chart, live ticker and scan-line, all framework-free | HTML, CSS, JavaScript, DM Sans |
 | [ironclad-password-hero](./ironclad-password-hero/) | Password-manager hero section for Ironclad with animated product-style presentation | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
 | [kubric-hero-landing](./kubric-hero-landing/) | Desktop-only dark hero for fictional studio "Kubric™" with a looping background video, an 8-layer progressive bottom blur, a self-drawing animated SVG logo, a character-by-character headline, and a video-ready reveal sequence | TanStack Start, React 19, Vite 7, Tailwind CSS v4 |
 | [mainframe-hero-landing](./mainframe-hero-landing/) | Full-screen hero landing page for a creative agency called "Mainframe" with custom Helvetica Now display fonts | React, TypeScript, Vite, Tailwind CSS |
@@ -30,7 +30,7 @@
 | [rivr-defi-hero](./rivr-defi-hero/) | DeFi dashboard hero for RIVR with glassmorphism, badge/cards, and verification script | React, TypeScript, Vite, Tailwind CSS |
 | [securify-data-hero](./securify-data-hero/) | Full-screen hero section for a fictional data-security SaaS called securify | React, TypeScript, Vite, Tailwind CSS |
 | [sentinel-ai-hero](./sentinel-ai-hero/) | Full-screen dark hero for security company "Sentinel AI" with an embedded Spline 3D scene background | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline |
-| [shape-landing-hero](./shape-landing-hero/) | shadcn integration of Kokonut UI's HeroGeometric , animated geometric shapes, gradient headline and a live props playground on a near-black canvas | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide, shadcn/ui |
+| [shape-landing-hero](./shape-landing-hero/) | shadcn integration of Kokonut UI's HeroGeometric — animated geometric shapes, gradient headline and a live props playground on a near-black canvas | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide, shadcn/ui |
 | [skyelite-jet-hero](./skyelite-jet-hero/) | Premium private jet hero section with full-viewport video background and luxury UI treatment | React, TypeScript, Vite, Tailwind CSS |
 | [smart-prosthetics-hero](./smart-prosthetics-hero/) | Single-page hero with a fullscreen video background and pill-style navbar for a smart-prosthetics concept | React, TypeScript, Vite, Tailwind CSS, Lucide |
 | [stellar-ai-landing-hero](./stellar-ai-landing-hero/) | "Stellar.ai" landing hero on a white background with staggered fade-in animations and Inter type | React, TypeScript, Vite, Tailwind CSS, Lucide |
@@ -41,7 +41,7 @@
 | [vanguard-hero-landing](./vanguard-hero-landing/) | Fullscreen hero landing page for the creative agency VANGUARD with looping background video | React, TypeScript, Vite, Tailwind CSS |
 | [vaultshield-hero](./vaultshield-hero/) | VaultShield hero experiment with security-product positioning and CLI/headless verification | React, TypeScript, Vite, Tailwind CSS |
 | [velorah-hero-landing](./velorah-hero-landing/) | Velorah hero landing page built with a modern Tailwind/shadcn-style component approach | React, TypeScript, Vite, Tailwind CSS, shadcn/ui |
-| [verdant-advisory-h10](./verdant-advisory-h10/) | Quiet-luxury advisory hero , oversized forest-green card, Hedvig serif headline, floating glass stat chip, infinite trust marquee, count-up stats and approach cards on a white canvas | HTML, CSS, Vanilla JS |
+| [verdant-advisory-h10](./verdant-advisory-h10/) | Quiet-luxury advisory hero — oversized forest-green card, Hedvig serif headline, floating glass stat chip, infinite trust marquee, count-up stats and approach cards on a white canvas | HTML, CSS, Vanilla JS |
 | [wanderful-cinematic-hero](./wanderful-cinematic-hero/) | Full-viewport cinematic hero for travel brand "Wanderful" with GSAP animation and a custom display font | React, TypeScript, Vite, Tailwind CSS, GSAP, Lucide |
 | [woven-light-hero](./woven-light-hero/) | Interactive hero with 50k cursor-reactive Three.js particles woven into a torus-knot tapestry, integrated as a shadcn-style component | React, TypeScript, Vite, Tailwind CSS, Three.js, Framer Motion |
 | [xero-encryption-hero](./xero-encryption-hero/) | Single-page encryption-product hero for "Xero" with an animated icon pipeline and a pink-magenta gradient arc on a black page, written in plain CSS | React, TypeScript, Vite, CSS |

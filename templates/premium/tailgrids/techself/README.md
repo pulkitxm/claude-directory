@@ -1,4 +1,4 @@
-# TechSelf , Premium Electronics & Gadgets E-Commerce Template (Tailwind CSS + Vanilla JS)
+# TechSelf — Premium Electronics & Gadgets E-Commerce Template (Tailwind CSS + Vanilla JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -27,8 +27,8 @@ Then open `http://localhost:8000` in your web browser. Alternatively, you can op
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Tailgrids , <https://techself.demos.tailgrids.com/>
+**Original:** Tailgrids — <https://techself.demos.tailgrids.com/>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

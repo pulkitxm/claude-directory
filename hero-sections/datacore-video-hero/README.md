@@ -1,4 +1,4 @@
-# Datacore , Cinematic Video Hero Section (React + TypeScript + Tailwind CSS)
+# Datacore — Cinematic Video Hero Section (React + TypeScript + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -27,4 +27,4 @@ npm run verify    # Playwright checks: desktop 1440px + mobile 390px
 
 ---
 
-Part of the [Hero sections](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Hero sections](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

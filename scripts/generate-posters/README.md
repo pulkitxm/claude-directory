@@ -9,7 +9,7 @@ video is buffering (or failing to load).
 
 For each `**/demo.mp4`:
 
-- `poster.jpg` , a representative frame (max 1280px wide, ~75 KB). ffmpeg's
+- `poster.jpg` — a representative frame (max 1280px wide, ~75 KB). ffmpeg's
   `thumbnail` filter picks a content-rich frame from the opening of the clip, so
   black fade-in frames are skipped automatically.
 
@@ -27,7 +27,7 @@ And one root-level `posters.json`, keyed by project path relative to the repo:
 }
 ```
 
-`blurDataURL` is a ~24px JPEG inlined as a data URI , a zero-request placeholder
+`blurDataURL` is a ~24px JPEG inlined as a data URI — a zero-request placeholder
 you can paint instantly (the classic blur-up / LQIP trick).
 
 ## Usage
@@ -48,7 +48,7 @@ the optional `ffmpeg-static` dependency.
 The manifest is designed to fix the "video sometimes doesn't show" problem on the
 consuming gallery. The recommended pattern per card / project page:
 
-1. **Paint `blurDataURL` immediately** as the element background , zero network,
+1. **Paint `blurDataURL` immediately** as the element background — zero network,
    so there is never an empty box.
 2. **Set `poster={poster}`** on the `<video>` (or render `poster.jpg` as an
    `<img>` underlay). A sharp frame now shows before any video byte arrives, and

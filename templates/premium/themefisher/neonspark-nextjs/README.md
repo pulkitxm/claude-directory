@@ -1,4 +1,4 @@
-# NeonSpark , Dark Agency / SaaS Landing Page Template Clone (Vanilla HTML + CSS + JS)
+# NeonSpark — Dark Agency / SaaS Landing Page Template Clone (Vanilla HTML + CSS + JS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
@@ -8,21 +8,21 @@ Pixel-faithful clone of the NeonSpark NextJS template by Themefisher, reproduced
 
 | File | Page |
 |------|------|
-| `index.html` | Home , hero, features, how-we-work, services tabs, testimonials, recent projects, CTA |
-| `about.html` | About , mission, who-we-are, count-up stats, testimonials |
-| `blog.html` | Blog , featured posts grid, latest posts, pagination |
-| `blog-post.html` | Blog Post , article body, blockquotes, code blocks, sidebar |
-| `career.html` | Career , office photos, values, perks, job listings |
-| `contact.html` | Contact , project-request form, two office cards |
-| `elements.html` | Elements , full design-system component showcase |
-| `faq.html` | FAQ , categorised accordion (General, Pricing, Technical) |
-| `pricing.html` | Pricing , monthly/yearly toggle, Professional and Enterprise cards |
-| `privacy-policy.html` | Privacy Policy , long-form legal text |
-| `service-detail.html` | Service Detail , deliverables list, related services |
-| `services.html` | Services , vertical tab panel, stats row, contact form |
-| `teams.html` | Teams , 4-column member grid with hover overlay |
-| `terms-and-condition.html` | Terms and Condition , long-form legal text |
-| `work.html` | Work , project gallery grid (project-1 through project-9) |
+| `index.html` | Home — hero, features, how-we-work, services tabs, testimonials, recent projects, CTA |
+| `about.html` | About — mission, who-we-are, count-up stats, testimonials |
+| `blog.html` | Blog — featured posts grid, latest posts, pagination |
+| `blog-post.html` | Blog Post — article body, blockquotes, code blocks, sidebar |
+| `career.html` | Career — office photos, values, perks, job listings |
+| `contact.html` | Contact — project-request form, two office cards |
+| `elements.html` | Elements — full design-system component showcase |
+| `faq.html` | FAQ — categorised accordion (General, Pricing, Technical) |
+| `pricing.html` | Pricing — monthly/yearly toggle, Professional and Enterprise cards |
+| `privacy-policy.html` | Privacy Policy — long-form legal text |
+| `service-detail.html` | Service Detail — deliverables list, related services |
+| `services.html` | Services — vertical tab panel, stats row, contact form |
+| `teams.html` | Teams — 4-column member grid with hover overlay |
+| `terms-and-condition.html` | Terms and Condition — long-form legal text |
+| `work.html` | Work — project gallery grid (project-1 through project-9) |
 
 ## Run
 
@@ -36,13 +36,13 @@ Then visit `http://localhost:8080` in your browser.
 
 ## Notable techniques
 
-- **Scroll reveals** , `IntersectionObserver` transitions elements from `opacity: 0; transform: translateY(30px)` to `opacity: 1; transform: translateY(0)` over `0.6s ease`.
-- **Marquee ticker** , `@keyframes marquee` runs a continuous `translate(0) → translate(-100%)` loop at `20s linear infinite`.
-- **Rotating gradient border** , `@keyframes rotateBorder` animates `--gradient-angle` from `0deg` to `360deg` on a conic-gradient border to produce the neon card-border effect.
-- **Glow pulse** , `@keyframes glowPulse` cycles a `drop-shadow` filter on the hero light orbs.
-- **Count-up animation** , counters on the About and Services pages animate from zero to their target value on scroll entry.
-- **Epilogue typeface** , loaded from Google Fonts at weights 400, 500, 600, and 700; headings combine upright and italic cuts for the signature mixed-weight style.
-- **Pill navbar** , desktop header has `border-radius: 9999px`, fixed on scroll with a backdrop-blur.
+- **Scroll reveals** — `IntersectionObserver` transitions elements from `opacity: 0; transform: translateY(30px)` to `opacity: 1; transform: translateY(0)` over `0.6s ease`.
+- **Marquee ticker** — `@keyframes marquee` runs a continuous `translate(0) → translate(-100%)` loop at `20s linear infinite`.
+- **Rotating gradient border** — `@keyframes rotateBorder` animates `--gradient-angle` from `0deg` to `360deg` on a conic-gradient border to produce the neon card-border effect.
+- **Glow pulse** — `@keyframes glowPulse` cycles a `drop-shadow` filter on the hero light orbs.
+- **Count-up animation** — counters on the About and Services pages animate from zero to their target value on scroll entry.
+- **Epilogue typeface** — loaded from Google Fonts at weights 400, 500, 600, and 700; headings combine upright and italic cuts for the signature mixed-weight style.
+- **Pill navbar** — desktop header has `border-radius: 9999px`, fixed on scroll with a backdrop-blur.
 
 `prompt.md` holds the full build specification.
 
@@ -50,8 +50,8 @@ Then visit `http://localhost:8080` in your browser.
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Themefisher , <https://themefisher.com/demo?theme=neonspark-nextjs>
+**Original:** Themefisher — <https://themefisher.com/demo?theme=neonspark-nextjs>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

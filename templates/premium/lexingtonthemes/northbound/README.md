@@ -1,12 +1,12 @@
-# Northbound , Wedding Website Template Clone (Vanilla HTML/CSS/JS + Tailwind CSS)
+# Northbound — Wedding Website Template Clone (Vanilla HTML/CSS/JS + Tailwind CSS)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Northbound is a pixel-faithful HTML/CSS/JS clone of the Northbound wedding website template by Lexington Themes , an elegant, editorial design for couples sharing ceremony details, gallery albums, RSVP forms, wishlists, and schedules with guests. The clone reproduces all 13 pages (home, RSVP, info, gallery index, three gallery albums, people, events, FAQ, wishlist, journal, and system overview) using plain HTML with the original compiled Tailwind CSS v4 utility classes, Noto Serif Display and Noto Serif fonts (Google Fonts), Inter (rsms.me), and Keen Slider for the intro image carousel. All images and CSS assets are vendored locally; no build step is required. Generated with Claude Fable 5.
+Northbound is a pixel-faithful HTML/CSS/JS clone of the Northbound wedding website template by Lexington Themes — an elegant, editorial design for couples sharing ceremony details, gallery albums, RSVP forms, wishlists, and schedules with guests. The clone reproduces all 13 pages (home, RSVP, info, gallery index, three gallery albums, people, events, FAQ, wishlist, journal, and system overview) using plain HTML with the original compiled Tailwind CSS v4 utility classes, Noto Serif Display and Noto Serif fonts (Google Fonts), Inter (rsms.me), and Keen Slider for the intro image carousel. All images and CSS assets are vendored locally; no build step is required. Generated with Claude Fable 5.
 
 ## Run
 
-This is a self-contained, plain HTML/CSS/JS project , no build step required.
+This is a self-contained, plain HTML/CSS/JS project — no build step required.
 
 ```sh
 # Serve locally (any static server works)
@@ -20,7 +20,7 @@ Or simply open `index.html` directly in a browser (some interactions such as fon
 
 | File | Route | Description |
 |---|---|---|
-| `index.html` | `/` | Home , hero, intro slider, story, schedule, CTA cards, gallery preview |
+| `index.html` | `/` | Home — hero, intro slider, story, schedule, CTA cards, gallery preview |
 | `rsvp.html` | `/rsvp` | RSVP form with split layout (photo + dark panel) |
 | `info.html` | `/info` | Venue details, maps, accommodation, dress code |
 | `gallery.html` | `/gallery` | Gallery album index (6 albums) |
@@ -38,12 +38,12 @@ Or simply open `index.html` directly in a browser (some interactions such as fon
 
 All images and CSS are vendored under `assets/`:
 
-- `assets/images/` , 53 `.webp` photos from the original Northbound demo
-- `assets/css/main.css` , compiled Tailwind CSS v4 (downloaded from the live site)
-- `assets/css/keen-slider.min.css` , Keen Slider CSS (CDN copy)
-- `assets/css/custom.css` , custom token overrides and missing Tailwind utilities
+- `assets/images/` — 53 `.webp` photos from the original Northbound demo
+- `assets/css/main.css` — compiled Tailwind CSS v4 (downloaded from the live site)
+- `assets/css/keen-slider.min.css` — Keen Slider CSS (CDN copy)
+- `assets/css/custom.css` — custom token overrides and missing Tailwind utilities
 
-Fonts are loaded from Google Fonts CDN and rsms.me (Inter) , an internet connection is needed for fonts to render correctly.
+Fonts are loaded from Google Fonts CDN and rsms.me (Inter) — an internet connection is needed for fonts to render correctly.
 
 ## Notes
 
@@ -57,8 +57,8 @@ Fonts are loaded from Google Fonts CDN and rsms.me (Inter) , an internet connect
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes , <https://lexingtonthemes.com/viewports/northbound>
+**Original:** Lexington Themes — <https://lexingtonthemes.com/viewports/northbound>
 
 ---
 
-Part of the [Templates](../) collection in the [claude-directory](../../) , an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Templates](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).

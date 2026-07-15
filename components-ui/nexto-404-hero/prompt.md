@@ -1,4 +1,4 @@
-# nexto. , 404 "Page Not Found" Hero
+# nexto. — 404 "Page Not Found" Hero
 
 ## Overview
 
@@ -34,7 +34,7 @@ Build a 404 "Page Not Found" hero page as a single full-viewport (`100vh`, no sc
 - **Logo image:** served locally at `/assets/logoipsum-415.svg`, rendered with `filter: brightness(0)` to make it black, height `28px`. (This asset was originally sourced from `https://pub-f170a2592d2c4a1485466404c36807be.r2.dev/tests/logoipsum-415.svg` and is now vendored under `public/assets/`.)
 - **Background spaceship image:** served locally at `/assets/alien-spaceship.png`. (Originally `https://pub-e68758f43067417dba612b2371819aa1.r2.dev/viktor-components/alien-spaceship.png`, now vendored under `public/assets/`.)
 - **Favicon:** `<link rel="icon" type="image/svg+xml" href="/assets/logoipsum-415.svg" />`.
-- **Document title:** `nexto. , Page Not Found`.
+- **Document title:** `nexto. — Page Not Found`.
 
 ## Global Setup & Layout
 
@@ -81,9 +81,9 @@ The `.material-symbols-rounded` class sets `font-family: 'Material Symbols Round
 
 Rendered from `App` (top-level fragment):
 
-- `<Navbar>` , receives `menuOpen` and `onToggleMenu`.
-- `<MobileNav>` , receives `open` and `onClose`.
-- `<main className="main-content">` , lost text, title wrapper (with decorations), subtext, and nav cards.
+- `<Navbar>` — receives `menuOpen` and `onToggleMenu`.
+- `<MobileNav>` — receives `open` and `onClose`.
+- `<main className="main-content">` — lost text, title wrapper (with decorations), subtext, and nav cards.
 
 `App` holds a single `useState` boolean `menuOpen` (initial `false`). The hamburger toggles it (`setMenuOpen((v) => !v)`); mobile links and the mobile CTA close it (`setMenuOpen(false)`).
 
@@ -99,14 +99,14 @@ const NAV_LINKS = ['Our Team', 'Solutions', 'Showcase', 'News']
 - `width: 100%; max-width: 1100px; margin: 0 auto; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 100; flex-shrink: 0`.
 - **Dashed bottom border** via a `::after` pseudo-element: `position: absolute; bottom: 0; left: 40px; right: 40px; height: 1px;` with `background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 2px, transparent 2px); background-size: 6px 1px; background-repeat: repeat-x;`.
 
-### Left , Logo
+### Left — Logo
 
 An `<a href="#home" class="logo">` with `aria-label="nexto home"`: `display: flex; align-items: center; gap: 9px; text-decoration: none`.
 
 - The SVG image (`<img>` with empty `alt`, `draggable={false}`, Tailwind `select-none`): `height: 28px; display: block; filter: brightness(0)`.
 - The text **"nexto."** in a `.logo-text` span (Tailwind `whitespace-nowrap`): `font-size: 20px; font-weight: 700; letter-spacing: -0.3px; color: #111`.
 
-### Center , Nav links
+### Center — Nav links
 
 `<nav class="nav-links" aria-label="Primary">`. Absolutely centered: `position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 36px`.
 
@@ -114,14 +114,14 @@ An `<a href="#home" class="logo">` with `aria-label="nexto home"`: `display: fle
 - Link style: `font-size: 14px; font-weight: 400; color: var(--text-main); text-decoration: none; opacity: 0.65; transition: opacity 0.2s ease`. On hover: `opacity: 1`.
 - The **Solutions** link includes a dropdown arrow character (`&#9662;`, ▾) in a `.drop-arrow` span: `display: inline-block; font-size: 9px; margin-left: 5px; vertical-align: 1px`.
 
-### Right , CTA button
+### Right — CTA button
 
 An `<a href="#connect" class="cta-button">` reading **"Let's Connect"** (`Let&apos;s Connect`):
 
 - `display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(180deg, #2c2c2c 0%, #111111 100%); color: #ffffff; font-size: 13px; font-weight: 500; border: none; border-radius: 40px; padding: 5px 16px 5px 5px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); text-decoration: none; cursor: pointer`.
 - `transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease`.
 - On hover: `transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28); filter: brightness(1.1)`.
-- **Arrow icon** (`.cta-arrow`, `aria-hidden="true"`): a `24px` white circle on the left , `width: 24px; height: 24px; border-radius: 50%; background: #ffffff; color: #111111; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0`. It contains a chevron SVG sized `13px × 13px`:
+- **Arrow icon** (`.cta-arrow`, `aria-hidden="true"`): a `24px` white circle on the left — `width: 24px; height: 24px; border-radius: 50%; background: #ffffff; color: #111111; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0`. It contains a chevron SVG sized `13px × 13px`:
   ```tsx
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
        strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
@@ -135,7 +135,7 @@ A `<button class="hamburger select-none">` with `aria-label="Toggle navigation m
 
 - `.hamburger`: `display: none; flex-direction: column; justify-content: center; gap: 5px; padding: 0; background: none; border: none; cursor: pointer; z-index: 120`.
 - Each bar (`span`): `display: block; width: 24px; height: 2px; border-radius: 2px; background: #111; transition: transform 0.3s ease, opacity 0.3s ease`.
-- When `.active`: bar 1 `transform: translateY(7px) rotate(45deg)`; bar 2 `opacity: 0`; bar 3 `transform: translateY(-7px) rotate(-45deg)` , animating to an X.
+- When `.active`: bar 1 `transform: translateY(7px) rotate(45deg)`; bar 2 `opacity: 0`; bar 3 `transform: translateY(-7px) rotate(-45deg)` — animating to an X.
 - Hidden on desktop; shown (`display: flex`) at max-width `768px`.
 
 ## Mobile Navigation
@@ -193,14 +193,14 @@ Internal structure: a left group (`.card-left`: `display: flex; align-items: cen
 - **Icon container** (`.card-icon`): `width: 48px; height: 48px; border-radius: 50%; background: #eaecf0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.25s ease`. On card hover: `transform: scale(1.05)`.
 - **Card title** (`.card-title`): `margin: 0; font-size: 15px; font-weight: 600`.
 - **Card subtitle** (`.card-sub`): `margin: 0; font-size: 12px; color: var(--text-secondary)`.
-- **Right chevron** (`.card-arrow`, `aria-hidden="true"`): the `&rsaquo;` (›) character , `font-size: 21px; line-height: 1; color: #9a9da3; transition: transform 0.25s ease`. On card hover: `transform: translateX(6px)`.
+- **Right chevron** (`.card-arrow`, `aria-hidden="true"`): the `&rsaquo;` (›) character — `font-size: 21px; line-height: 1; color: #9a9da3; transition: transform 0.25s ease`. On card hover: `transform: translateX(6px)`.
 
-### Card 1 , "Main Page"
+### Card 1 — "Main Page"
 
 - `href="#home"`, title **"Main Page"**, subtitle **"Back where it all begins..."**.
 - **House SVG icon** (`20 × 20`, `viewBox="0 0 24 24"`): body path `M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z` filled `#1a1a1a`, plus a white door path `M9 21V12h6v9` filled `#ffffff`.
 
-### Card 2 , "Showcase"
+### Card 2 — "Showcase"
 
 - `href="#showcase"`, title **"Showcase"**, subtitle **"Where we walk the walk"**.
 - **Circle-dot SVG icon** (`20 × 20`, `viewBox="0 0 24 24"`): an outer `<circle cx="12" cy="12" r="9" fill="#1a1a1a" />` and an inner `<circle cx="12" cy="12" r="3.5" fill="#ffffff" />`.
@@ -239,9 +239,9 @@ Both decorations use `floatSlow` (`ease-in-out infinite`); the cloud runs `5s` w
 
 ## File Structure
 
-- `index.html` , entry document, font/favicon links, `<div id="root">`, `<script type="module" src="/src/main.tsx">`.
-- `src/main.tsx` , bootstraps React into `#root` inside `<StrictMode>` and imports `./index.css`.
-- `src/App.tsx` , all components: `CtaButton`, `Logo`, `Navbar`, `MobileNav`, `HouseIcon`, `CircleDotIcon`, `NavCard`, and default-exported `App`.
-- `src/index.css` , Tailwind directives, design tokens, page shell, and all component styles.
-- `public/assets/logoipsum-415.svg`, `public/assets/alien-spaceship.png` , vendored logo and background.
+- `index.html` — entry document, font/favicon links, `<div id="root">`, `<script type="module" src="/src/main.tsx">`.
+- `src/main.tsx` — bootstraps React into `#root` inside `<StrictMode>` and imports `./index.css`.
+- `src/App.tsx` — all components: `CtaButton`, `Logo`, `Navbar`, `MobileNav`, `HouseIcon`, `CircleDotIcon`, `NavCard`, and default-exported `App`.
+- `src/index.css` — Tailwind directives, design tokens, page shell, and all component styles.
+- `public/assets/logoipsum-415.svg`, `public/assets/alien-spaceship.png` — vendored logo and background.
 - Config: `vite.config.ts`, `tailwind.config.js`, `postcss.config.js`, `tsconfig*.json`, `eslint.config.js`.

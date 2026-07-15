@@ -18,7 +18,7 @@ APPSPACE IS A PREMIUM APP LANDING PAGE AND PROMOTIONAL WEBSITE TEMPLATE DEVELOPE
   - TEXT LIGHT MODE: MAIN `#1F2937` (`--color-title-50`), MUTED `#374151` (`--color-text-50`), LIGHTEST `#6B7280` (`--color-text-100`)
   - TEXT DARK MODE: MAIN `#FFFFFF` (`--color-title-50`), MUTED `#E5E7EB` (`--color-text-50`), LIGHTEST `#9CA3AF` (`--color-text-100`)
 - **FONTS**:
-  - SANS-SERIF: `"DM Sans", sans-serif` , VENDORED AS `assets/fonts/dm-sans.woff2` OR ACCESSED VIA LOCAL SYSTEM FALLBACK.
+  - SANS-SERIF: `"DM Sans", sans-serif` — VENDORED AS `assets/fonts/dm-sans.woff2` OR ACCESSED VIA LOCAL SYSTEM FALLBACK.
 - **TYPE SCALE**:
   - TEXT-XS: `0.75rem` (12px)
   - TEXT-SM: `0.875rem` (14px)

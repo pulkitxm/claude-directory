@@ -1,4 +1,4 @@
-# dot. , Daily Calm Landing Page
+# dot. — Daily Calm Landing Page
 
 ## Overview
 
@@ -31,7 +31,7 @@ Add the Google Fonts for Instrument Serif and Inter in `index.html`, with precon
 - **Instrument Serif:** upright and italic (`ital@0;1`).
 - **Inter:** full weight range (`wght@100..900`).
 
-Set the document `<title>` to `dot. , Short notes. Daily calm.` and a meta description of `Linked with a single anonymous peer. One message every day. A quiet rhythm in the digital noise.`
+Set the document `<title>` to `dot. — Short notes. Daily calm.` and a meta description of `Linked with a single anonymous peer. One message every day. A quiet rhythm in the digital noise.`
 
 ### Custom Nokia font (self-hosted)
 
@@ -41,7 +41,7 @@ The on-screen typing text uses the "Nokia Cellphone FC Small" font. It is self-h
 @import url('/fonts/nokia-cellphone-fc-small.css');
 ```
 
-That stylesheet declares the `@font-face` (sourced from the `440b53b1a1c65037f944ff19259d8014` files in `public/fonts/` , `.eot`, `.woff`, `.woff2`, `.ttf`, `.svg`):
+That stylesheet declares the `@font-face` (sourced from the `440b53b1a1c65037f944ff19259d8014` files in `public/fonts/` — `.eot`, `.woff`, `.woff2`, `.ttf`, `.svg`):
 
 ```css
 @font-face {
@@ -136,12 +136,12 @@ const NAV_LINKS = ["Philosophy", "Trust", "Access", "Tribe"];
 
 A floating pill navbar fixed near the top of the viewport.
 
-- **Container (`<header>`):** fixed to the top with `fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 pointer-events-none` , centered horizontally, 95% width capped at `max-w-5xl`, above other layers, and non-interactive at the wrapper level.
-- **Nav (`<nav>`):** `pointer-events-auto flex items-center justify-between rounded-full border border-black/10 bg-transparent backdrop-blur-md px-5 py-2.5 md:px-7` , interactive, a rounded-full transparent pill with a `border-black/10` border, backdrop blur, and flex space-between layout.
+- **Container (`<header>`):** fixed to the top with `fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 pointer-events-none` — centered horizontally, 95% width capped at `max-w-5xl`, above other layers, and non-interactive at the wrapper level.
+- **Nav (`<nav>`):** `pointer-events-auto flex items-center justify-between rounded-full border border-black/10 bg-transparent backdrop-blur-md px-5 py-2.5 md:px-7` — interactive, a rounded-full transparent pill with a `border-black/10` border, backdrop blur, and flex space-between layout.
 - **Logo:** an `<a href="#">` with text `dot.`, styled `font-instrument text-[28px] tracking-tight text-[#1a1a1a] leading-none`.
 - **Links:** map over `NAV_LINKS` (`Philosophy`, `Trust`, `Access`, `Tribe`). Container is `hidden md:flex items-center gap-10` (hidden on mobile, flex on desktop with `gap-10`). Each link is an `<a>` with `href={`#${link.toLowerCase()}`}` styled `font-sans text-[14px] text-[#1a1a1a] transition-opacity duration-200 hover:opacity-50`.
 - **CTA button ("Link up"):** an `<a href="#access">` styled `group relative overflow-hidden rounded-full bg-[#0871E7] px-5 py-2 font-sans text-[14px] text-white shadow-[inset_0_-4px_4px_rgba(255,255,255,0.39)] outline-1 outline-[#0871E7] -outline-offset-1`.
-  - **Top glint:** an absolutely positioned `<span aria-hidden="true">` inside the button: `absolute w-[80%] h-4 left-[10%] top-[1px] bg-gradient-to-b from-[#DEF0FC] to-transparent rounded-[12px] transition-transform duration-300 group-hover:scale-x-105` , a subtle highlight rectangle near the top that widens slightly on group hover.
+  - **Top glint:** an absolutely positioned `<span aria-hidden="true">` inside the button: `absolute w-[80%] h-4 left-[10%] top-[1px] bg-gradient-to-b from-[#DEF0FC] to-transparent rounded-[12px] transition-transform duration-300 group-hover:scale-x-105` — a subtle highlight rectangle near the top that widens slightly on group hover.
   - **Label:** a `<span className="relative">Link up</span>` so the text sits above the glint.
 
 ## Hero Component
@@ -209,7 +209,7 @@ function TypingMessages() {
 
 ### Positioning and style
 
-- **Wrapper:** `absolute left-[48.5%] md:left-[47.5%] lg:left-[48.5%] -translate-x-1/2 bottom-[32%] z-30 w-[110px] sm:w-[130px] flex justify-start text-left` , absolutely positioned to land on the phone screen across breakpoints.
+- **Wrapper:** `absolute left-[48.5%] md:left-[47.5%] lg:left-[48.5%] -translate-x-1/2 bottom-[32%] z-30 w-[110px] sm:w-[130px] flex justify-start text-left` — absolutely positioned to land on the phone screen across breakpoints.
 - **Text (`<p>`):** `font-nokia text-[#2A3616] text-[10px] sm:text-[14px] leading-tight break-words min-h-[1.5em]`, rendering the current `{text}`.
 - **Cursor:** a blinking `motion.span` styled `inline-block w-1.5 h-3 bg-[#2A3616] ml-1 align-middle`, with `animate={{ opacity: [0, 1, 0] }}` and `transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}`.
 

@@ -1,15 +1,15 @@
-# NHM , Natural History Museum Paleontology Landing
+# NHM — Natural History Museum Paleontology Landing
 
 ## Overview
 
-Build a single-page, monochrome landing page for the Natural History Museum's paleontology collection. The page is one continuous scroll with three sections , a full-viewport hero with a delayed background video and a geometric "NHM" logotype, an "Explore Our World" intro section, and a dark "Ancient Collection" chapter browser featuring an SVG-filter sand/dissolve image transition. The entire page is a single `App.tsx` component plus a `SandTransitionImage` helper and a `LeafIcon` helper in the same file.
+Build a single-page, monochrome landing page for the Natural History Museum's paleontology collection. The page is one continuous scroll with three sections — a full-viewport hero with a delayed background video and a geometric "NHM" logotype, an "Explore Our World" intro section, and a dark "Ancient Collection" chapter browser featuring an SVG-filter sand/dissolve image transition. The entire page is a single `App.tsx` component plus a `SandTransitionImage` helper and a `LeafIcon` helper in the same file.
 
 ## Tech Stack
 
 - **Framework:** React 19 (`react`, `react-dom` `^19.0.1`) with `StrictMode`
 - **Build tool:** Vite 6 (`vite` `^6.2.3`, `@vitejs/plugin-react` `^5.0.4`)
 - **Language:** TypeScript (`typescript` `~5.8.2`, `@types/react` `^19.0.10`, `@types/react-dom` `^19.0.4`)
-- **Styling:** Tailwind CSS 4 (`tailwindcss` `^4.1.14`, `@tailwindcss/vite` `^4.1.14`) , CSS-first config via `@theme`
+- **Styling:** Tailwind CSS 4 (`tailwindcss` `^4.1.14`, `@tailwindcss/vite` `^4.1.14`) — CSS-first config via `@theme`
 - **Animation:** Motion / Framer Motion (`motion` `^12.23.24`), imported from `motion/react`
 - **Icons:** Lucide (`lucide-react` `^0.546.0`)
 - **Fonts (Google Fonts):** Inter (sans, weights 300/400/500/600) and JetBrains Mono (mono, weights 400/500)
@@ -20,8 +20,8 @@ Build a single-page, monochrome landing page for the Natural History Museum's pa
 ### `index.html`
 
 - `lang="en"`, `<meta charset="UTF-8" />`, viewport meta `width=device-width, initial-scale=1.0`.
-- Description meta: `NHM , Natural History Museum. Exploring the story of life on earth through science, discovery and wonder.`
-- Title: `NHM , Natural History Museum`
+- Description meta: `NHM — Natural History Museum. Exploring the story of life on earth through science, discovery and wonder.`
+- Title: `NHM — Natural History Museum`
 - Root: `<div id="root"></div>` and `<script type="module" src="/src/main.tsx"></script>`.
 
 ### `src/main.tsx`
@@ -202,7 +202,7 @@ Root element: `<main className="w-full">` containing three `<section>` blocks.
 
 ---
 
-## Section 1 , Hero (full viewport height)
+## Section 1 — Hero (full viewport height)
 
 Container: `relative flex min-h-screen w-full flex-col overflow-hidden`
 
@@ -213,11 +213,11 @@ Rendered first (sits behind everything), gated by `showVideo` inside `AnimatePre
 - Wrapper `motion.div`: `initial={{ opacity: 0 }}`, `animate={{ opacity: 1 }}`, `transition={{ duration: 1.4, ease: "easeOut" }}`, class `pointer-events-none absolute top-0 left-0 z-0 h-full w-full`.
 - `<video>`: `autoPlay loop muted playsInline`, `src={VIDEO_URL}`, class `h-full w-full object-cover`.
 
-### 1A. Header , NHM logotype
+### 1A. Header — NHM logotype
 
 `motion.header` with `initial="initial" animate="animate" variants={staggerHeader}`, class `relative z-20 px-6 pt-6 md:px-16`.
 
-- `motion.h1` uses `variants={logoVariants}`, class `w-full`. Contains an `<span className="sr-only">NHM , Natural History Museum</span>` plus the inline SVG.
+- `motion.h1` uses `variants={logoVariants}`, class `w-full`. Contains an `<span className="sr-only">NHM — Natural History Museum</span>` plus the inline SVG.
 - SVG: `viewBox="0 0 840 100"`, class `w-full overflow-hidden fill-[#111]`, `aria-hidden="true"`.
 - Letters are data-driven from `LOGO_LETTERS`; each letter is a `<g transform={letter.translate}>`, and each polygon is a `motion.polygon` with `variants={letterBlock}` (slides up from `y: 120`).
 
@@ -258,13 +258,13 @@ const LOGO_LETTERS: { translate: string; polygons: string[] }[] = [
 
 `motion.div` with `variants={fadeUp} transition={fadeUpTransition}`, class `mt-8 flex items-start justify-between gap-3 font-mono text-[10px] tracking-[0.2em] uppercase md:text-[11px]`.
 
-- **Left column** (`w-[15%]`): three `<p>` lines , `Natura` / `History` / `Museum`.
+- **Left column** (`w-[15%]`): three `<p>` lines — `Natura` / `History` / `Museum`.
 - **Arrow separator** (`hidden w-[5%] justify-center md:flex`): Lucide `ArrowRight`, `size={14}`, `strokeWidth={1}`, class `text-gray-400`.
 - **Center column** (`flex-1 leading-relaxed font-mono text-gray-800 md:flex-none md:w-[30%]`): the copy "Exploring the story of life on earth through science, discovery and wonder." split into 3 lines on desktop (`hidden md:block`) and 4 lines on mobile (`md:hidden`):
   - Desktop: `Exploring the story of life` / `on earth through science,` / `discovery and wonder.`
   - Mobile: `Exploring the story` / `of life on earth` / `through science,` / `discovery and wonder.`
 - **Arrow separator** (same as above, `hidden w-[5%] justify-center md:flex`).
-- **Right column / nav** (`hidden w-[15%] md:block`): `<ul className="space-y-1 text-gray-800">` mapping `NAV_LINKS` , Visit, Exhibitions, Discover, Learn, About , each an `<a href="#">` with class `transition-colors hover:text-black hover:underline`.
+- **Right column / nav** (`hidden w-[15%] md:block`): `<ul className="space-y-1 text-gray-800">` mapping `NAV_LINKS` — Visit, Exhibitions, Discover, Learn, About — each an `<a href="#">` with class `transition-colors hover:text-black hover:underline`.
 - **Hamburger button** (far right, `md:hidden`): `<button type="button">` with `aria-label` toggling between `Open menu` / `Close menu`, `aria-expanded={isMobileMenuOpen}`, `onClick` toggling `isMobileMenuOpen`, class `group z-60 flex flex-col items-end gap-[6px] py-2 pl-4 md:hidden`.
   - Two `<span>` bars, each base class `h-[1.5px] bg-black transition-all duration-300`.
   - When open: first bar `w-8 translate-y-[3.75px] rotate-45`; second bar `w-8 -translate-y-[3.75px] -rotate-45` (forms an X).
@@ -301,7 +301,7 @@ const LOGO_LETTERS: { translate: string; polygons: string[] }[] = [
 
 - **Specimen info** (`motion.div variants={fadeUp}`):
   - `<h3 className="font-mono text-[10px] font-bold tracking-widest uppercase">Tyrannosaurus Rex</h3>`
-  - `<p className="mt-2 text-[12px] leading-[1.6] text-gray-600">` , `Late Cretaceous period` / `68-66 million years ago` (with `<br />`).
+  - `<p className="mt-2 text-[12px] leading-[1.6] text-gray-600">` — `Late Cretaceous period` / `68-66 million years ago` (with `<br />`).
 - **Stats** (`motion.div variants={fadeUp}`, class `flex gap-10`): two stacks.
   - Label `<p className="font-mono text-[10px] tracking-widest text-gray-500 uppercase">Length</p>` + value `<p className="mt-1 text-[13px] font-medium">12.3 m</p>`.
   - Label `Height` + value `4.0 m` (same classes).
@@ -318,7 +318,7 @@ const LOGO_LETTERS: { translate: string; polygons: string[] }[] = [
 
 ---
 
-## Section 2 , Explore Our World
+## Section 2 — Explore Our World
 
 Container: `relative z-20 flex min-h-[75vh] w-full flex-col items-center bg-[#fcfcfc] pt-24 pb-0 md:min-h-screen md:pt-32`
 
@@ -347,7 +347,7 @@ Maps `ACTION_PILLS` to `motion.button type="button"` items with `variants={fadeU
 
 ### 2D. Spacer
 
-`<div className="min-h-[220px] w-full md:min-h-[450px]" />` , provides room for the Section 3 pterodactyl image to overlap upward.
+`<div className="min-h-[220px] w-full md:min-h-[450px]" />` — provides room for the Section 3 pterodactyl image to overlap upward.
 
 ### 2E. Bottom text
 
@@ -357,7 +357,7 @@ Maps `ACTION_PILLS` to `motion.button type="button"` items with `variants={fadeU
 
 ---
 
-## Section 3 , Ancient Collection (dark)
+## Section 3 — Ancient Collection (dark)
 
 Container: `relative z-30 flex w-full flex-col bg-[#0a0a0a] text-white`
 
@@ -371,26 +371,26 @@ Container: `relative z-30 flex w-full flex-col bg-[#0a0a0a] text-white`
 
 `<div className="z-10 mb-16 flex flex-col justify-between gap-12 px-8 pt-32 md:px-16 md:pt-48 xl:flex-row">`.
 
-**Left , main heading** `<h2 className="max-w-[860px] text-[1.8rem] leading-[1.15] font-medium tracking-tight text-white md:text-[3rem] lg:text-[3.8rem] xl:text-[4rem]">`:
+**Left — main heading** `<h2 className="max-w-[860px] text-[1.8rem] leading-[1.15] font-medium tracking-tight text-white md:text-[3rem] lg:text-[3.8rem] xl:text-[4rem]">`:
 - Text `Curated from millions of years of wonder` then an inline icon group `<span className="mx-2 inline-flex translate-y-[-4px] gap-2 align-middle md:mx-4 md:gap-3">` then `& discovery.`
 - The icon group maps `[Bone, Dna, Leaf]`; each is `<span className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-600 bg-black text-gray-400 transition-colors duration-300 hover:border-white hover:bg-white hover:text-black md:h-14 md:w-14">` containing the icon at `size={22}`, `strokeWidth={1.5}`.
 
-**Right , tagline + pills** `<div className="shrink-0 xl:text-right">`:
-- Tagline `<p className="mb-6 font-mono text-[9px] leading-relaxed tracking-widest text-gray-400 uppercase md:text-[10px]">` , `WE DON'T JUST DISPLAY FOSSILS` / `WE SHARE EARTH'S STORY` (with `<br />`).
+**Right — tagline + pills** `<div className="shrink-0 xl:text-right">`:
+- Tagline `<p className="mb-6 font-mono text-[9px] leading-relaxed tracking-widest text-gray-400 uppercase md:text-[10px]">` — `WE DON'T JUST DISPLAY FOSSILS` / `WE SHARE EARTH'S STORY` (with `<br />`).
 - Pill row `<div className="flex flex-wrap gap-3 xl:justify-end">` mapping `["Educational", "Authentic", "Inspiring"]` to `<button type="button">` items with class `rounded-full border border-gray-600 px-5 py-2 font-mono text-[9px] tracking-widest text-gray-300 uppercase transition-colors duration-300 hover:border-white hover:bg-white hover:text-black`.
 
 ### 3C. Two-column panel
 
 Preceded by a divider `<div className="z-10 h-[1px] w-full bg-gray-800" />`. Wrapper: `<div className="z-10 flex w-full flex-col md:flex-row">`.
 
-**Left panel , specimen viewer** (`relative flex min-h-[400px] w-full flex-col justify-between border-b border-gray-800 p-8 md:min-h-[500px] md:w-[35%] md:border-r md:border-b-0`):
+**Left panel — specimen viewer** (`relative flex min-h-[400px] w-full flex-col justify-between border-b border-gray-800 p-8 md:min-h-[500px] md:w-[35%] md:border-r md:border-b-0`):
 - Top: `<p className="relative z-10 text-xl tracking-[0.3em] text-gray-500">***</p>`.
 - Center: `<div className="absolute inset-0">` wrapping `<AnimatePresence mode="wait">` and a `SandTransitionImage` keyed by `chaptersData[activeChapter].image`, with `src`/`alt` from the active chapter and class `absolute inset-0 m-auto h-[80%] w-[80%] object-contain mix-blend-lighten`.
-- Bottom , chapter counter `<div className="relative z-10 flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase">`:
+- Bottom — chapter counter `<div className="relative z-10 flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase">`:
   - Animated numeral inside `<span className="relative block h-[14px] w-[18px] overflow-hidden text-[#888]">` → `AnimatePresence mode="wait"` → `motion.div` keyed by `activeChapter`, `initial={{ y: 14 }}`, `animate={{ y: 0 }}`, `exit={{ y: -14 }}`, `transition={{ duration: 0.4, ease: EASE }}`, class `absolute inset-0 leading-[14px]`, rendering `0{activeChapter + 1}`.
   - Divider `<span className="text-[#333]">/</span>` and `<span className="text-[#888]">05</span>`.
 
-**Right panel , chapter list** (`w-full md:w-[65%]`):
+**Right panel — chapter list** (`w-full md:w-[65%]`):
 - Top bar `<div className="flex items-center justify-between border-b border-gray-800 p-8 font-mono text-[10px] tracking-widest text-gray-400 uppercase">`:
   - `<span>Explore the past. Understand the present.</span>`
   - Animated chapter label inside `<span className="relative block h-[14px] w-[72px] overflow-hidden text-right">` → `AnimatePresence mode="wait"` → `motion.span` keyed by `activeChapter`, `initial={{ y: 14 }}`, `animate={{ y: 0 }}`, `exit={{ y: -14 }}`, `transition={{ duration: 0.4, ease: EASE }}`, class `absolute inset-0 leading-[14px]`, rendering `Chapter 0{activeChapter + 1}`.
@@ -407,7 +407,7 @@ Preceded by a divider `<div className="z-10 h-[1px] w-full bg-gray-800" />`. Wra
 
 ## Helper Components
 
-### `SandTransitionImage` , SVG-filter sand/particle dissolve
+### `SandTransitionImage` — SVG-filter sand/particle dissolve
 
 A custom component creating a sand/particle dissolve effect via an SVG filter chain, driven by `requestAnimationFrame`. It uses `usePresence()` from `motion/react` so it cooperates with `AnimatePresence` (delaying removal until the exit animation finishes via `safeToRemove()`). A unique `filterId` is generated per instance via a module-level counter held in `useRef`.
 
@@ -482,7 +482,7 @@ function SandTransitionImage({
 }
 ```
 
-### `LeafIcon` , custom CTA leaf glyph
+### `LeafIcon` — custom CTA leaf glyph
 
 A stylized leaf SVG built from 4 paths.
 
@@ -510,13 +510,13 @@ function LeafIcon({ className }: { className?: string }) {
 
 ## Color Palette
 
-- `#fcfcfc` , off-white page background.
-- `#111` , near-black text / logo fill.
-- `#1a1a1a` , CTA button background/border.
-- `#0a0a0a` , dark Section 3 background.
-- `#888` / `#333` / `#444` / `#999` , dark-section muted grays for counters and inactive chapter rows.
+- `#fcfcfc` — off-white page background.
+- `#111` — near-black text / logo fill.
+- `#1a1a1a` — CTA button background/border.
+- `#0a0a0a` — dark Section 3 background.
+- `#888` / `#333` / `#444` / `#999` — dark-section muted grays for counters and inactive chapter rows.
 - Tailwind gray scale `gray-200` through `gray-900` for borders, labels, and body text.
-- Strictly monochrome black / white / gray , no purple, indigo, or other hues.
+- Strictly monochrome black / white / gray — no purple, indigo, or other hues.
 
 ## Key Design Notes
 

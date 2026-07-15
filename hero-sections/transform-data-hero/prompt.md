@@ -1,4 +1,4 @@
-# Transform Data Quickly , Cinematic Hero Section
+# Transform Data Quickly — Cinematic Hero Section
 
 ## Overview
 
@@ -43,7 +43,7 @@ Each at weights 400, 500, 600, and 700:
 ## Navigation Bar
 
 - **Padding:** 120px horizontal, 16px vertical.
-- **Logo:** text `Logoipsum` , Schibsted Grotesk semibold, 24px, -1.44px tracking.
+- **Logo:** text `Logoipsum` — Schibsted Grotesk semibold, 24px, -1.44px tracking.
 - **Menu items** (Schibsted Grotesk medium, 16px, -0.2px tracking):
   - `Platform`
   - `Features` (with a dropdown chevron icon)
@@ -51,8 +51,8 @@ Each at weights 400, 500, 600, and 700:
   - `Community`
   - `Contact`
 - **Right-side buttons:**
-  - `Sign Up` , transparent background, 82px width.
-  - `Log In` , black background, white text, 101px width.
+  - `Sign Up` — transparent background, 82px width.
+  - `Log In` — black background, white text, 101px width.
 
 ## Hero Content (moved up 50px)
 
@@ -83,7 +83,7 @@ The hero content block is centered with **34px gaps** between elements (badge �
 - Backdrop blur with a dark transparent background (`rgba(0,0,0,0.24)`).
 - Dimensions: 728px max-width, 200px height, rounded 18px.
 
-### Top row , credit info
+### Top row — credit info
 
 - Left: `60/450 credits` with a green `Upgrade` button.
 - Right: AI icon + `Powered by GPT-4o`.
