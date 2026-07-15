@@ -1,48 +1,25 @@
-# Spydea — SaaS Document Management Landing Page Clone
+# Spydea Marketing Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful HTML/CSS/JS clone of the [Spydea Next.js template](https://themefisher.com/demo?theme=spydea-nextjs) by Themefisher. No build step required — open `index.html` directly in a browser.
+Spydea is a static recreation of the Themefisher Spydea marketing site. It preserves the complete public design, responsive layouts, navigation, accordions, tabs, forms, counters, and content routes.
 
-## Features
+## Routes
 
-- **5 pages**: Home, About, Pricing, Contact, Blog
-- Black-and-white design with colorful accents (mint green, salmon, yellow, blue)
-- Decorative vertical dashed-line grid background
-- Diagonal section dividers via CSS `clip-path`
-- Sticky header with scroll shrink and announcement bar
-- Mobile hamburger menu with dropdown navigation
-- AOS scroll-triggered animations throughout
-- Infinite-scrolling brand logos marquee
-- Interactive feature tabs, pricing toggle (monthly/annual), and FAQ accordion
-- Locally vendored images — zero external image CDN dependency
+The project contains 42 discoverable routes covering marketing pages, articles, authors, careers, integrations, account screens, pricing, legal content, and supporting pages.
 
-## Pages
+## Run locally
 
-| File | Description |
-|------|-------------|
-| `index.html` | Home — hero, brands, features tabs, integrations, testimonials, stats, pricing, blog preview, CTA |
-| `about.html` | About — mission/vision, stats, 8-person team grid |
-| `pricing.html` | Pricing — 3-tier cards with monthly/annual toggle, FAQ accordion |
-| `contact.html` | Contact — info boxes, full contact form |
-| `blog.html` | Blog — 6-article grid with pagination |
-
-## Run
-
-```bash
-# No build step — open directly in browser
-open index.html
-# Or serve with any static server
-python3 -m http.server 8080
+```sh
+python3 -m http.server
 ```
 
-## Design Tokens
+Then open `http://localhost:8000`.
 
-- **Fonts**: Maven Pro (headings) + Merriweather (body) via Google Fonts
-- **Primary**: `#000000` | **Secondary (mint)**: `#73CFA8` | **Tertiary (salmon)**: `#FB9289`
-- **Gold**: `#FDE077` | **Blue**: `#73B1FF` | **Background**: `#FFFFFF`
+## Verification
 
----
+The `.audit` directory contains route, responsive screenshot, pixel similarity, and interaction verification evidence. The demo video and poster show the current implementation.
 
-> Template source: [Themefisher Spydea Next.js](https://themefisher.com/demo?theme=spydea-nextjs)
-> Browse more clones: [templates/](../) | [Root directory](../../../)
+## Original design
+
+[Themefisher Spydea demo](https://spydea-nextjs.vercel.app)
