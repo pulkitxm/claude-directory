@@ -1,57 +1,50 @@
-# Matterhaus — Architecture Studio Website Template Clone (Vanilla HTML/CSS/JS + Tailwind CSS v4)
+# Matterhaus: Architecture Studio Website Template Clone (Vanilla HTML/CSS/JS + Tailwind CSS v4)
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-Matterhaus is a pixel-faithful same-to-same clone of the Matterhaus architecture studio theme by Lexington Themes — a minimal, editorial-style multi-page website built for architecture and design studios. The design centers on a recurring two-column split layout: a fixed-position header with `mix-blend-difference` navigation that renders white on any background, a sticky left column with headings and metadata, and a full-height right column for images or scrollable content. All 23 page types are reproduced in plain HTML with Tailwind CSS v4 utility classes, Switzer variable font from Fontshare, and vanilla JavaScript for the mobile menu and Fuse.js-powered full-site search modal. Generated with Claude Fable 5.
+Matterhaus is a pixel-faithful clone of the Matterhaus architecture studio theme by Lexington Themes. The minimal, editorial multi-page design uses a recurring two-column split layout, a fixed header with `mix-blend-difference` navigation, sticky metadata columns, and full-height image or content panels. All discovered page types are reproduced in plain HTML with Tailwind CSS v4 utility classes, the Switzer variable font, a mobile menu, and full-site search.
 
 ## Run
 
-No build step required — all files are plain HTML/CSS/JS.
+No build step is required. All files are plain HTML, CSS, and JavaScript.
 
 ```sh
-# Open directly in a browser
 open index.html
 
-# Or serve statically
 python3 -m http.server 8000
-# Then visit http://localhost:8000
 ```
 
 ## Pages
 
 The clone reproduces all discovered pages from the original:
 
-- **Home** (`index.html`) — split hero with headline + contact details left, full-height image right
-- **Projects** (`projects/index.html`) — sticky heading left, scrollable project listing right (10 projects)
-- **Project Detail** (`projects/[slug].html` × 10) — sticky metadata + thumbnail grid left, prose right
-- **Services** (`services/index.html` + 8 detail pages) — services listing and individual service pages
-- **Studio** (`studio/index.html`) — studio about page with 2-column text and full-height image
-- **Contact** (`contact/index.html`) — contact info left, image right
-- **Careers** (`careers/index.html` + 5 detail pages) — career listings and job detail pages
-- **Blog** (`blog/index.html` + 4 posts + tags pages) — journal listing, individual posts, tag pages
-- **Team** (`team/index.html` + 3 member pages) — team grid and individual profiles
-- **Awards** (`awards/index.html`), **Process** (`process/index.html`) — standalone info pages
-- **System** (`system/overview.html` + colors, typography, buttons, links) — design system documentation
+- **Home** (`index.html`): split hero with headline and contact details on the left, full-height image on the right
+- **Projects** (`projects/index.html`): sticky heading and a list of 10 projects
+- **Project Detail** (`projects/[slug].html` × 10): sticky metadata, image gallery, and prose
+- **Services** (`services/index.html` + 8 detail pages): services listing and individual service pages
+- **Studio** (`studio/index.html`): studio profile with two-column text and a full-height image
+- **Contact** (`contact/index.html`): contact information and imagery
+- **Careers** (`careers/index.html` + 5 detail pages): career listings and job details
+- **Blog** (`blog/index.html` + 4 posts + tags pages): journal listing, posts, and tag pages
+- **Team** (`team/index.html` + 2 member pages): team grid and individual profiles
+- **Awards** (`awards/index.html`), **Process** (`process/index.html`): standalone information pages
+- **System** (`system/overview.html` + colors, typography, buttons, links): design system documentation
 - **Legal** (`legal/` × 5: terms, privacy, cookies, copyright, disclaimer)
 - **404** (`404.html`)
 
 ## Interactions
 
-- **Mobile menu** — hamburger toggle reveals full-width nav panel, closes on outside click
-- **Search modal** — Fuse.js fuzzy search over all content (projects, services, blog, team, careers, legal); triggered by the Search button, keyboard `/`, or `Cmd/Ctrl+K`; `Esc` to close
+- **Mobile menu**: hamburger toggle reveals the navigation panel
+- **Search modal**: full-site fuzzy search triggered by the Search button, `/`, or `Cmd/Ctrl+K`, with `Esc` to close
 
 ## Notes
 
 `prompt.md` contains the full build specification with design token documentation and page-by-page layout breakdown. `demo.mp4` shows the clone in motion.
 
-Assets are vendored locally under `assets/images/`. Switzer font is loaded from the Fontshare CDN (`api.fontshare.com`); all other dependencies are vanilla.
+Switzer is loaded from Fontshare, and page imagery is loaded from the original reference deployment. The template itself uses plain HTML, CSS, and JavaScript.
 
 ## Credits
 
 Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
 
-**Original:** Lexington Themes — <https://lexingtonthemes.com/viewports/matterhaus>
-
----
-
-Part of the [Lexington Themes](../) collection under [Premium Templates](../../) in the [claude-directory](../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+**Original:** Lexington Themes, <https://lexingtonthemes.com/viewports/matterhaus>
