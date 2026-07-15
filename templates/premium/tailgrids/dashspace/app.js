@@ -1,8 +1,8 @@
-// DashSpace - Shared App Logic
 
-// =========================================
-// THEME MANAGEMENT
-// =========================================
+
+
+
+
 (function () {
 	const stored = localStorage.getItem("dashspace-theme");
 	const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -25,9 +25,9 @@ function toggleTheme() {
 		html.classList.add("dark");
 		localStorage.setItem("dashspace-theme", "dark");
 	}
-	// Update theme icon
+
 	updateThemeIcon();
-	// Re-render charts if needed
+
 	if (typeof updateChartsTheme === "function") {
 		updateChartsTheme();
 	}
@@ -52,61 +52,77 @@ function getSunIcon() {
   </svg>`;
 }
 
-// =========================================
-// SIDEBAR MANAGEMENT
-// =========================================
+
+
+
 function initSidebar() {
 	const sidebar = document.getElementById("sidebar");
 	const overlay = document.getElementById("sidebar-overlay");
 	const hamburger = document.getElementById("hamburger-btn");
 	const closeBtn = document.getElementById("sidebar-close-btn");
+	const closeSidebar = (restoreFocus = false) => {
+		if (!sidebar || !overlay) return;
+		sidebar.classList.remove("open");
+		overlay.classList.remove("show");
+		if (hamburger) {
+			hamburger.setAttribute("aria-expanded", "false");
+			if (restoreFocus) hamburger.focus();
+		}
+	};
 
 	if (hamburger) {
+		hamburger.setAttribute("aria-controls", "sidebar");
+		hamburger.setAttribute("aria-expanded", "false");
 		hamburger.addEventListener("click", () => {
 			sidebar.classList.add("open");
 			overlay.classList.add("show");
+			hamburger.setAttribute("aria-expanded", "true");
 		});
 	}
 
 	if (closeBtn) {
-		closeBtn.addEventListener("click", () => {
-			sidebar.classList.remove("open");
-			overlay.classList.remove("show");
-		});
+		closeBtn.addEventListener("click", () => closeSidebar(true));
 	}
 
 	if (overlay) {
-		overlay.addEventListener("click", () => {
-			sidebar.classList.remove("open");
-			overlay.classList.remove("show");
-		});
+		overlay.addEventListener("click", () => closeSidebar());
 	}
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape" && sidebar?.classList.contains("open")) closeSidebar(true);
+	});
+	window.addEventListener("resize", () => {
+		if (window.innerWidth > 1024) closeSidebar();
+	});
 }
 
-// =========================================
-// DROPDOWN NAV ITEMS
-// =========================================
+
+
+
 function initNavDropdowns() {
 	document.querySelectorAll(".nav-item-toggle").forEach((btn) => {
+		const dropdownId = btn.getAttribute("data-dropdown");
+		btn.setAttribute("aria-controls", dropdownId);
+		btn.setAttribute("aria-expanded", String(btn.classList.contains("expanded")));
 		btn.addEventListener("click", () => {
 			const isExpanded = btn.classList.contains("expanded");
-			const dropdownId = btn.getAttribute("data-dropdown");
 			const dropdown = document.getElementById(dropdownId);
 
 			if (isExpanded) {
 				btn.classList.remove("expanded");
+				btn.setAttribute("aria-expanded", "false");
 				if (dropdown) dropdown.classList.remove("open");
 			} else {
 				btn.classList.add("expanded");
+				btn.setAttribute("aria-expanded", "true");
 				if (dropdown) dropdown.classList.add("open");
 			}
 		});
 	});
 }
 
-// =========================================
-// CHART TABS
-// =========================================
+
+
+
 function initChartTabs(containerSelector, onTabChange) {
 	const container = document.querySelector(containerSelector);
 	if (!container) return;
@@ -122,9 +138,9 @@ function initChartTabs(containerSelector, onTabChange) {
 	});
 }
 
-// =========================================
-// VIEW TABS (CALENDAR)
-// =========================================
+
+
+
 function initViewTabs() {
 	document.querySelectorAll(".view-tabs").forEach((container) => {
 		container.querySelectorAll(".view-tab").forEach((tab) => {
@@ -138,9 +154,9 @@ function initViewTabs() {
 	});
 }
 
-// =========================================
-// INIT
-// =========================================
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
 	updateThemeIcon();
 	initSidebar();
@@ -151,4 +167,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (themeBtn) {
 		themeBtn.addEventListener("click", toggleTheme);
 	}
+	document.querySelectorAll(".nav-item.active").forEach((link) => link.setAttribute("aria-current", "page"));
+	document.querySelectorAll("button").forEach((button) => {
+		if (button.getAttribute("aria-label") || button.getAttribute("title") || (button.textContent || "").trim()) return;
+		button.setAttribute("aria-label", button.classList.contains("more-btn") ? "Open item actions" : "Interactive control");
+	});
+	document.querySelectorAll("input, textarea, select").forEach((field) => {
+		if (field.getAttribute("aria-label") || field.closest("label") || (field.id && document.querySelector(`label[for="${field.id}"]`))) return;
+		field.setAttribute("aria-label", field.getAttribute("placeholder") || field.getAttribute("name") || field.id || field.getAttribute("type") || "Form field");
+	});
 });
