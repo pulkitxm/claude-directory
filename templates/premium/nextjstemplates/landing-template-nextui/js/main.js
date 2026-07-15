@@ -60,7 +60,10 @@
 	});
 
 	document.addEventListener("keydown", function (e) {
-		if (e.key === "Escape") closeDropdown();
+		if (e.key === "Escape") {
+			closeDropdown();
+			closeMobile();
+		}
 	});
 
 	// Mobile menu overlay
@@ -85,6 +88,33 @@
 	if (mobileOverlay) {
 		mobileOverlay.querySelectorAll("a").forEach(function (a) {
 			a.addEventListener("click", closeMobile);
+		});
+	}
+
+	var heroForm = document.querySelector(".hero-form");
+	if (heroForm) {
+		heroForm.addEventListener("submit", function (event) {
+			event.preventDefault();
+			if (!heroForm.checkValidity()) {
+				heroForm.reportValidity();
+				return;
+			}
+			var button = heroForm.querySelector('button[type="submit"]');
+			var original = button.textContent;
+			button.disabled = true;
+			button.textContent = "Starting...";
+			setTimeout(function () {
+				var status = document.querySelector(".form-status");
+				if (!status) {
+					status = document.createElement("p");
+					status.className = "form-status";
+					status.setAttribute("role", "status");
+					heroForm.insertAdjacentElement("afterend", status);
+				}
+				status.textContent = "You're ready to start your free trial.";
+				button.disabled = false;
+				button.textContent = original;
+			}, 500);
 		});
 	}
 })();
