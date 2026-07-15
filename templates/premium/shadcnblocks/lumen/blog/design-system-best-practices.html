@@ -1,399 +1,244 @@
-<!doctype html>
-<html lang="en" class="light">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>
-			Building Design Systems That Scale: Best Practices from Top Teams — Lumen
-		</title>
-		<meta
-			name="description"
-			content="How leading teams build design systems that stay consistent as the product grows."
-		>
-		<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link
-			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:opsz,wght@14..32,100..900&display=swap"
-			rel="stylesheet"
-		>
-		<script>
-		(function () {
-			try {
-				var s = localStorage.getItem("lumen-theme");
-				var d = s
-					? s === "dark"
-					: matchMedia("(prefers-color-scheme: dark)").matches;
-				document.documentElement.classList.toggle("dark", d);
-				document.documentElement.classList.toggle("light", !d);
-			} catch (e) {}
-		})();
-		</script>
-		<link rel="stylesheet" href="../assets/css/styles.css">
-	</head>
-	<body data-page="blog-post">
-		<header class="site-header">
-			<div class="container site-header__inner">
-				<a class="brand" href="../index.html" aria-label="Lumen home">
-					<img
-						src="../assets/layout/logo.svg"
-						alt="Lumen"
-						style="width:auto;height:1.5rem"
-					>
-				</a>
-				<nav class="main-nav">
-					<div class="nav-item">
-						<button class="nav-trigger" data-nav-trigger aria-expanded="false">
-							Features
-							<svg
-								width="14"
-								height="14"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-							>
-								<path d="m6 9 6 6 6-6" />
-							</svg>
-						</button>
-						<div class="nav-menu">
-							<a href="../index.html#features"
-								><strong>Feature management</strong
-								><span>Plan, track and ship features with clarity</span></a
-							>
-							<a href="../index.html#features"
-								><strong>Feature intelligence</strong
-								><span>Insights built for modern product teams</span></a
-							>
-							<a href="../index.html#features"
-								><strong>Segment users</strong
-								><span>Group users by feature behavior</span></a
-							>
-							<a href="../index.html#features"
-								><strong>Export insights</strong
-								><span>Tie usage to business impact</span></a
-							>
-						</div>
-					</div>
-					<a href="../about.html">About</a>
-					<a href="../pricing.html">Pricing</a>
-					<a href="../blog.html">Blog</a>
-					<a href="../faq.html">FAQ</a>
-				</nav>
-				<div class="header-actions">
-					<button
-						class="theme-toggle"
-						data-theme-toggle
-						aria-label="Toggle theme"
-					>
-						<svg
-							class="icon-moon"
-							width="18"
-							height="18"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-						</svg>
-						<svg
-							class="icon-sun"
-							width="18"
-							height="18"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<circle cx="12" cy="12" r="4" />
-							<path
-								d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
-							/>
-						</svg>
-					</button>
-					<a class="btn btn-ghost desktop-only" href="../signin.html"
-						>Sign in</a
-					>
-					<a class="btn btn-primary desktop-only" href="../signup.html"
-						>Get started</a
-					>
-					<button class="hamburger" data-hamburger aria-label="Open menu">
-						<svg
-							width="20"
-							height="20"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-						>
-							<path d="M3 12h18M3 6h18M3 18h18" />
-						</svg>
-					</button>
-				</div>
-			</div>
-			<div class="container mobile-menu">
-				<a href="../index.html#features">Features</a>
-				<a href="../about.html">About</a>
-				<a href="../pricing.html">Pricing</a>
-				<a href="../blog.html">Blog</a>
-				<a href="../faq.html">FAQ</a>
-				<a href="../signin.html">Sign in</a>
-				<a
-					class="btn btn-primary"
-					href="../signup.html"
-					style="margin-top:.5rem"
-					>Get started</a
-				>
-			</div>
-		</header>
-		<main>
-			<section class="section">
-				<div class="container container-narrow article-head">
-					<a class="back-link" href="../blog.html">&larr; Back to blog</a>
-					<div class="article-author">
-						<img
-							src="../assets/photos/face-0a1dd7228f2d-400.jpg"
-							alt="Sofia Alvarez"
-						>
-						<div>
-							<strong>Sofia Alvarez</strong>
-							<span
-								>Design Systems Lead &middot; Published on 21 Jul 2025 &middot;
-								9 min read</span
-							>
-						</div>
-					</div>
-					<h1 class="h1">
-						Building Design Systems That Scale: Best Practices from Top Teams
-					</h1>
-					<p class="article-standfirst">
-						How leading teams build design systems that stay consistent as the
-						product grows.
-					</p>
-					<span class="badge article-tag">Design</span>
-				</div>
-				<div class="container container-narrow article-hero">
-					<img src="../assets/photos/img-bebda4e38f71-1200.jpg" alt="">
-				</div>
-				<div class="container container-narrow article-body">
-					<h2>Introduction</h2>
-					<p>
-						Great products are rarely the result of a single moment of
-						inspiration. They emerge from disciplined habits, clear
-						communication, and a willingness to learn from real-world feedback.
-						In this article we break down the approach our teams use every day
-						and the lessons that have shaped how we work.
-					</p>
-					<p>
-						Whether you are just getting started or refining a process you have
-						run for years, the principles below apply across team sizes and
-						industries.
-					</p>
-					<h2>Why it matters</h2>
-					<p>
-						When teams skip the fundamentals, the cost compounds quietly. Small
-						inefficiencies pile up, context gets lost between hand-offs, and the
-						work that should energize a team starts to drain it instead. Getting
-						the basics right pays dividends long after the initial effort.
-					</p>
-					<blockquote>
-						The best teams don't move fast by cutting corners — they move fast
-						because their process removes friction.
-					</blockquote>
-					<h2>Core principles</h2>
-					<p>
-						A handful of ideas show up again and again in the teams that
-						consistently deliver. Keep these front and center:
-					</p>
-					<ul>
-						<li>
-							<strong>Start with the problem, not the solution.</strong>
-							Clarity about the outcome keeps everyone aligned.
-						</li>
-						<li>
-							<strong>Make the work visible.</strong>
-							Shared context beats heroic individual effort every time.
-						</li>
-						<li>
-							<strong>Iterate based on evidence.</strong>
-							Let data and user feedback guide the next step.
-						</li>
-						<li>
-							<strong>Protect focus time.</strong>
-							Deep work is where the real progress happens.
-						</li>
-					</ul>
-					<h3>Putting it into practice</h3>
-					<p>
-						Principles are only useful when they translate into daily habits.
-						Pick one area to improve this week, measure the impact, and build
-						from there. Sustainable change comes from compounding small wins,
-						not sweeping overhauls.
-					</p>
-					<ul>
-						<li>Agree on a single source of truth for status and ownership.</li>
-						<li>Keep feedback loops short — days, not weeks.</li>
-						<li>Document decisions so context survives team changes.</li>
-					</ul>
-					<h2>Common pitfalls</h2>
-					<p>
-						Even strong teams fall into predictable traps: over-planning instead
-						of shipping, optimizing for activity instead of outcomes, and
-						treating process as a goal rather than a tool. Stay alert to these
-						patterns and adjust quickly when you spot them.
-					</p>
-					<h2>Conclusion</h2>
-					<p>
-						There is no shortcut to building great products, but there is a
-						reliable path: understand your users, work in tight feedback loops,
-						and keep improving the way you work. By applying the ideas in this
-						article, your team can ship better work faster — and enjoy the
-						process more along the way.
-					</p>
-				</div>
-				<div class="container related-grid">
-					<h2>Related Articles</h2>
-					<div class="grid grid-3">
-						<article class="card card-hover blog-card">
-							<a
-								class="blog-card__media"
-								href="./software-engineering-best-practices.html"
-								><img
-									src="../assets/photos/img-b8d87734a5a2-1200.jpg"
-									alt=""
-									loading="lazy"
-								></a
-							>
-							<div class="blog-card__body">
-								<span class="badge">Software Engineering</span>
-								<h3 class="blog-card__title">
-									<a href="./software-engineering-best-practices.html"
-										>Software Engineering Best Practices: Data-Driven Insights
-										from 100+ Teams</a
-									>
-								</h3>
-							</div>
-						</article>
-						<article class="card card-hover blog-card">
-							<a
-								class="blog-card__media"
-								href="./design-team-rituals-remote.html"
-								><img
-									src="../assets/photos/img-d09347e92766-1200.jpg"
-									alt=""
-									loading="lazy"
-								></a
-							>
-							<div class="blog-card__body">
-								<span class="badge">Design</span>
-								<h3 class="blog-card__title">
-									<a href="./design-team-rituals-remote.html"
-										>Design Team Rituals That Actually Work (Even Remotely)</a
-									>
-								</h3>
-							</div>
-						</article>
-						<article class="card card-hover blog-card">
-							<a
-								class="blog-card__media"
-								href="./latest-feature-drop-behind-scenes.html"
-								><img
-									src="../assets/photos/img-41bc2dd41cd2-1200.jpg"
-									alt=""
-									loading="lazy"
-								></a
-							>
-							<div class="blog-card__body">
-								<span class="badge">Product</span>
-								<h3 class="blog-card__title">
-									<a href="./latest-feature-drop-behind-scenes.html"
-										>Behind the Scenes of Our Latest Feature Drop</a
-									>
-								</h3>
-							</div>
-						</article>
-					</div>
-				</div>
-			</section>
-		</main>
-		<footer class="site-footer">
-			<div class="container">
-				<div class="footer-grid">
-					<div class="footer-col">
-						<h4>Navigation</h4>
-						<ul>
-							<li><a href="../index.html#features">Features</a></li>
-							<li><a href="../about.html">About</a></li>
-							<li><a href="../pricing.html">Pricing</a></li>
-							<li><a href="../blog.html">Blog</a></li>
-							<li><a href="../faq.html">FAQ</a></li>
-						</ul>
-					</div>
-					<div class="footer-col">
-						<h4>Blog</h4>
-						<ul>
-							<li><a href="../blog.html">All Posts</a></li>
-							<li>
-								<a href="../blog/agile-project-management-tips.html"
-									>Agile Project Management</a
-								>
-							</li>
-							<li>
-								<a href="../blog/customer-onboarding-strategies.html"
-									>Customer Onboarding</a
-								>
-							</li>
-						</ul>
-					</div>
-					<div class="footer-col">
-						<h4>Resources</h4>
-						<ul>
-							<li>
-								<a href="../terms-and-conditions.html"
-									>Terms &amp; Conditions</a
-								>
-							</li>
-							<li><a href="../privacy-policy.html">Privacy Policy</a></li>
-						</ul>
-					</div>
-					<div class="footer-brand">
-						<a class="brand" href="../index.html"
-							><img
-								src="../assets/layout/logo.svg"
-								alt="Lumen"
-								style="width:auto;height:1.5rem"
-							></a
-						>
-						<ul style="display:grid;gap:.6rem">
-							<li><a href="#">Follow on LinkedIn</a></li>
-							<li><a href="#">Follow on X</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="app-badges">
-					<img
-						src="../assets/images/apple-button.png"
-						alt="Download on the App Store"
-					>
-					<img
-						src="../assets/images/google-button.png"
-						alt="Get it on Google Play"
-					>
-				</div>
-				<div class="footer-bottom">
-					<span>© 2026 Shadcnblocks.com</span>
-					<span
-						><a href="../privacy-policy.html">Privacy</a>
-						&nbsp; <a href="../terms-and-conditions.html">Terms</a></span
-					>
-				</div>
-			</div>
-		</footer>
-		<script src="../assets/js/app.js"></script>
-	</body>
-</html>
+<!DOCTYPE html><html lang="en" class="light" style="color-scheme: light;"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="next-size-adjust" content=""><link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../live.css"><script src="../app.js" defer></script></head><body class="flex min-h-screen flex-col antialiased [--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*23)] __variable_8b3a0b"><div hidden=""></div><div class="bg-primary relative overflow-hidden transition-all duration-300 max-h-20 opacity-100" style="display:grid;grid-template-rows:1fr"><div class="overflow-hidden"><div class="container flex items-center justify-between gap-4 py-3 pr-12"><div class="flex flex-1 items-center justify-center gap-3 sm:gap-4"><span class="text-primary-foreground text-center text-sm font-medium">Purchase this theme on <span class="font-semibold">shadcnblocks.com</span></span><a href="https://www.shadcnblocks.com/template/lumen" target="_blank" data-slot="button" class="inline-flex items-center cursor-pointer justify-center whitespace-nowrap text-sm transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive active:scale-98 bg-chart-4 border-[0.8px] font-normal border-foreground/10 before:absolute relative before:-inset-0.25 before:content-[&quot;&quot;] before:chart-4 before:-z-1 after:absolute after:inset-0 after:content-[&quot;&quot;] after:bg-primary/30 hover:after:translate-y-[95%] after:transition-all after:translate-y-[100%] after:blur-md overflow-hidden h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5">Get Template</a></div><button class="absolute top-1/2 right-4 -translate-y-1/2 rounded-sm p-1.5 text-primary-foreground/70 hover:text-primary-foreground transition-all duration-200 hover:scale-110 hover:bg-white/10 focus:ring-2 focus:ring-white/30 focus:outline-none" aria-label="Close banner"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x size-3.5" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></div></div></div><header class="isolate z-50 transition-all duration-300 ease-in-out fixed top-0 right-0 left-0 translate-y-2 px-5.5"><div class="bg-background navbar-container relative z-50 flex items-center justify-between gap-4 transition-all duration-300 ease-in-out h-[calc(var(--header-height)-20px)] max-w-7xl rounded-full shadow-sm backdrop-blur-md"><div class=""><a class="relative block h-6 w-25" href="../index.html"><img alt="Lumen Logo" class="object-contain dark:invert" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="../assets/live/layout/logo.svg"></a></div><div class="flex items-center gap-8"><nav aria-label="Main" data-orientation="horizontal" dir="ltr" data-slot="navigation-menu" data-viewport="false" class="group/navigation-menu relative max-w-max flex-1 items-center justify-center hidden lg:block"><div style="position:relative"><ul data-orientation="horizontal" data-slot="navigation-menu-list" class="group flex flex-1 list-none items-center justify-center gap-1" dir="ltr"><li data-slot="navigation-menu-item" class="relative"><button id="radix-_R_ctb_-trigger-radix-_R_bctb_" data-state="closed" aria-expanded="false" aria-controls="radix-_R_ctb_-content-radix-_R_bctb_" data-slot="navigation-menu-trigger" class="group inline-flex h-9 w-max items-center justify-center rounded-sm bg-background px-4 py-2 text-sm font-medium focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 hover:bg-accent group cursor-pointer [&amp;_svg]:ms-2 [&amp;_svg]:size-4" data-radix-collection-item="">Features <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></li><li data-slot="navigation-menu-item" class="relative"><a data-slot="navigation-menu-link" class="data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:text-accent-foreground [&amp;_svg:not([class*='text-'])]:text-muted-foreground flex-col gap-1 [&amp;_svg:not([class*='size-'])]:size-4 group inline-flex h-9 w-max items-center justify-center rounded-sm bg-background px-4 py-2 text-sm font-medium focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 hover:bg-accent" href="../about.html" data-radix-collection-item="">About</a></li><li data-slot="navigation-menu-item" class="relative"><a data-slot="navigation-menu-link" class="data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:text-accent-foreground [&amp;_svg:not([class*='text-'])]:text-muted-foreground flex-col gap-1 [&amp;_svg:not([class*='size-'])]:size-4 group inline-flex h-9 w-max items-center justify-center rounded-sm bg-background px-4 py-2 text-sm font-medium focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 hover:bg-accent" href="../pricing.html" data-radix-collection-item="">Pricing</a></li><li data-slot="navigation-menu-item" class="relative"><a data-slot="navigation-menu-link" class="data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:text-accent-foreground [&amp;_svg:not([class*='text-'])]:text-muted-foreground flex-col gap-1 [&amp;_svg:not([class*='size-'])]:size-4 group inline-flex h-9 w-max items-center justify-center rounded-sm bg-background px-4 py-2 text-sm font-medium focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 hover:bg-accent" href="../blog.html" data-radix-collection-item="">Blog</a></li><li data-slot="navigation-menu-item" class="relative"><a data-slot="navigation-menu-link" class="data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:text-accent-foreground [&amp;_svg:not([class*='text-'])]:text-muted-foreground flex-col gap-1 [&amp;_svg:not([class*='size-'])]:size-4 group inline-flex h-9 w-max items-center justify-center rounded-sm bg-background px-4 py-2 text-sm font-medium focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 hover:bg-accent" href="../faq.html" data-radix-collection-item="">FAQ</a></li></ul></div></nav><div class="hidden items-center justify-end gap-4 lg:flex"><button data-slot="button" class="inline-flex items-center cursor-pointer justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive active:scale-98 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-8" data-theme-toggle="true"><svg stroke-width="4" stroke-linecap="round" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative"><path d="M70 49.5C70 60.8218 60.8218 70 49.5 70C38.1782 70 29 60.8218 29 49.5C29 38.1782 38.1782 29 49.5 29C39 45 49.5 59.5 70 49.5Z" class="stroke-chart-1 absolute top-0 left-0" opacity="0" stroke-dasharray="20, 1000" stroke-dashoffset="0" filter="blur(0px)" style="transform:scale(2);transform-origin:50% 50%;transform-box:fill-box"></path><g class="stroke-chart-1 stroke-6" stroke-opacity="1" style="stroke-linecap:round"><path class="origin-center" d="M50 2V11" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M85 15L78 22" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M98 50H89" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M85 85L78 78" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M50 98V89" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M23 78L16 84" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M11 50H2" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M23 23L16 16" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path></g><path d="M70 49.5C70 60.8218 60.8218 70 49.5 70C38.1782 70 29 60.8218 29 49.5C29 38.1782 38.1782 29 49.5 29C60 29 69.5 38 70 49.5Z" fill="var(--color-chart-1)" fill-opacity="0.35" stroke-opacity="1" stroke="var(--color-chart-1)" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path></svg></button><a data-slot="button" class="inline-flex items-center cursor-pointer justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive active:scale-98 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 h-8 gap-1.5 px-3 has-[&gt;svg]:px-2.5 rounded-full shadow-none" href="../signin.html">Sign in</a><a data-slot="button" class="inline-flex items-center cursor-pointer justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive active:scale-98 bg-primary text-primary-foreground hover:bg-primary/90 hover:before:bg-primary/80 border-[0.8px] border-background/15 before:absolute relative before:-inset-0.25 before:content-[&quot;&quot;] before:bg-primary before:-z-1 after:absolute after:inset-0 after:content-[&quot;&quot;] after:bg-secondary hover:after:translate-y-full after:transition-all after:translate-y-[105%] after:blur-sm overflow-hidden h-8 gap-1.5 px-3 has-[&gt;svg]:px-2.5 rounded-full shadow-none" href="../signup.html">Get started</a></div><div class="flex items-center gap-2 lg:hidden lg:gap-4"><button data-slot="button" class="inline-flex items-center cursor-pointer justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive active:scale-98 hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-8" data-theme-toggle="true"><svg stroke-width="4" stroke-linecap="round" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative"><path d="M70 49.5C70 60.8218 60.8218 70 49.5 70C38.1782 70 29 60.8218 29 49.5C29 38.1782 38.1782 29 49.5 29C39 45 49.5 59.5 70 49.5Z" class="stroke-chart-1 absolute top-0 left-0" opacity="0" stroke-dasharray="20, 1000" stroke-dashoffset="0" filter="blur(0px)" style="transform:scale(2);transform-origin:50% 50%;transform-box:fill-box"></path><g class="stroke-chart-1 stroke-6" stroke-opacity="1" style="stroke-linecap:round"><path class="origin-center" d="M50 2V11" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M85 15L78 22" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M98 50H89" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M85 85L78 78" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M50 98V89" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M23 78L16 84" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M11 50H2" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path><path d="M23 23L16 16" opacity="1" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="1px 1px" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path></g><path d="M70 49.5C70 60.8218 60.8218 70 49.5 70C38.1782 70 29 60.8218 29 49.5C29 38.1782 38.1782 29 49.5 29C60 29 69.5 38 70 49.5Z" fill="var(--color-chart-1)" fill-opacity="0.35" stroke-opacity="1" stroke="var(--color-chart-1)" style="transform: none; transform-origin: 50% 50%; transform-box: fill-box;"></path></svg></button><button class="text-muted-foreground relative flex size-8 rounded-sm border lg:hidden"><span class="sr-only">Open main menu</span><div class="absolute top-1/2 left-1/2 block w-4 -translate-x-1/2 -translate-y-1/2"><span aria-hidden="true" class="absolute block h-0.25 w-full rounded-full bg-current transition duration-500 ease-in-out -translate-y-1.5"></span><span aria-hidden="true" class="absolute block h-0.25 w-full rounded-full bg-current transition duration-500 ease-in-out"></span><span aria-hidden="true" class="absolute block h-0.25 w-full rounded-full bg-current transition duration-500 ease-in-out translate-y-1.5"></span></div></button></div></div><div class="bg-background/95 text-accent-foreground fixed inset-0 -z-10 flex flex-col justify-between tracking-normal backdrop-blur-md transition-all duration-500 ease-out lg:hidden pt-[calc(var(--header-height)+3rem)] pointer-events-none translate-x-full opacity-0"><div class="container"><nav aria-label="Main" data-orientation="vertical" dir="ltr" data-slot="navigation-menu" data-viewport="true" class="group/navigation-menu relative flex-1 items-center justify-center inline-block w-full max-w-none py-10"><div style="position:relative"><ul data-orientation="vertical" data-slot="navigation-menu-list" class="group flex flex-1 list-none justify-center w-full flex-col items-start gap-0" dir="ltr"><li data-slot="navigation-menu-item" class="relative w-full py-2"><div data-slot="accordion" class="" data-orientation="vertical"><div data-state="closed" data-orientation="vertical" data-slot="accordion-item" class="border-b last:border-b-0"><h3 data-orientation="vertical" data-state="closed" class="flex"><button type="button" aria-controls="radix-_R_6betb_" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-_R_2betb_" data-slot="accordion-trigger" class="focus-visible:border-ring focus-visible:ring-ring/50 flex-1 gap-4 rounded-md text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&amp;[data-state=open]&gt;svg]:rotate-90 flex w-full cursor-pointer items-center justify-between px-2 py-3 text-base font-normal hover:no-underline" data-radix-collection-item="">Features<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus text-muted-foreground stroke-2.5 pointer-events-none size-5 shrink-0 translate-y-0.5 transition-transform duration-200" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></h3><div data-state="closed" id="radix-_R_6betb_" hidden="" role="region" aria-labelledby="radix-_R_2betb_" data-orientation="vertical" data-slot="accordion-content" class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm" style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"></div></div></div></li><li data-slot="navigation-menu-item" class="relative w-full py-2"><a data-slot="navigation-menu-link" class="data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&amp;_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm px-2 py-3 outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&amp;_svg:not([class*='size-'])]:size-4 hover:text-foreground text-base transition-colors" href="../about.html" data-radix-collection-item="">About</a></li><li data-slot="navigation-menu-item" class="relative w-full py-2"><a data-slot="navigation-menu-link" class="data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&amp;_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm px-2 py-3 outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&amp;_svg:not([class*='size-'])]:size-4 hover:text-foreground text-base transition-colors" href="../pricing.html" data-radix-collection-item="">Pricing</a></li><li data-slot="navigation-menu-item" class="relative w-full py-2"><a data-slot="navigation-menu-link" class="data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&amp;_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm px-2 py-3 outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&amp;_svg:not([class*='size-'])]:size-4 hover:text-foreground text-base transition-colors" href="../blog.html" data-radix-collection-item="">Blog</a></li><li data-slot="navigation-menu-item" class="relative w-full py-2"><a data-slot="navigation-menu-link" class="data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&amp;_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm px-2 py-3 outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&amp;_svg:not([class*='size-'])]:size-4 hover:text-foreground text-base transition-colors" href="../faq.html" data-radix-collection-item="">FAQ</a></li></ul></div><div class="absolute top-full left-0 isolate z-50 flex justify-center"></div></nav></div><div class="flex flex-col gap-4.5 border-t px-6 py-4"><a data-slot="button" class="inline-flex items-center cursor-pointer justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive active:scale-98 border bg-background border-input hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 px-4 py-2 has-[&gt;svg]:px-3 h-12 flex-1 rounded-sm shadow-sm" href="../signin.html">Sign in</a><a data-slot="button" class="inline-flex items-center cursor-pointer justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive active:scale-98 bg-primary text-primary-foreground hover:bg-primary/90 hover:before:bg-primary/80 border-[0.8px] border-background/15 before:absolute relative before:-inset-0.25 before:content-[&quot;&quot;] before:bg-primary before:-z-1 after:absolute after:inset-0 after:content-[&quot;&quot;] after:bg-secondary hover:after:translate-y-full after:transition-all after:translate-y-[105%] after:blur-sm overflow-hidden px-4 py-2 has-[&gt;svg]:px-3 h-12 flex-1 rounded-sm shadow-sm" href="../signup.html">Get started</a></div></div></div></header><main class="flex-1"><div class="section-padding container"><div class="mx-auto max-w-4xl"><header class="mb-8"><a class="group text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm transition-colors" href="../blog.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left size-4 transition-transform group-hover:-translate-x-0.5" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>Back to Blog</a><h1 class="mb-4 text-4xl tracking-tight md:text-5xl lg:text-6xl">Building Design Systems That Scale: Best Practices from Top Teams</h1><p class="text-muted-foreground mb-8 text-lg md:text-xl">Learn how leading design teams create and maintain design systems that grow with their products. Real insights from companies like Airbnb, Shopify, and GitHub.</p></header><div class=""><div class="relative aspect-[16/9] overflow-hidden rounded-xl" style="opacity: 1;"><img alt="Building Design Systems That Scale: Best Practices from Top Teams" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="100vw" src="../assets/live/external/2c52eeb7bd0c273880fe.jpg"></div></div><div class="mt-8 mb-12 flex flex-wrap items-center justify-between gap-4"><div class="flex items-center gap-4"><div class="relative size-14 overflow-hidden rounded-full"><img alt="Samantha Lee" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="100vw" src="../assets/live/external/38224cf5310344a8f396.jpg"></div><div><div class="text-foreground text-2xl font-semibold">Samantha Lee</div><div class="">19 Apr 2025 · 3 min read</div></div></div><div class="bg-background border-input [&amp;_*]:border-input grid grid-cols-3 items-center divide-x rounded-sm border shadow-sm"><a class="flex items-center justify-center px-3 py-2.5 md:px-5" href="https://facebook.com/samantha-lee-design"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook size-4 shrink-0 md:size-5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a><a class="flex items-center justify-center px-3 py-2.5 md:px-5" href="https://twitter.com/samanthalee_ds"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter size-4 shrink-0 md:size-5" aria-hidden="true"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a class="flex items-center justify-center px-3 py-2.5 md:px-5" href="https://linkedin.com/in/samantha-lee-design-systems"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle size-4 shrink-0 md:size-5" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg></a></div></div><article class="prose lg:prose-lg prose-headings:font-weight-display dark:prose-invert prose-headings:tracking-tight prose-p:leading-relaxed prose-li:leading-relaxed prose-img:rounded-xl prose-img:shadow-sm prose-a:text-primary prose-a:no-underline hover:prose-a:underline mx-auto max-w-none"><p>A well-designed system is the backbone of consistent, scalable product design. After analyzing design systems from companies like <a href="https://airbnb.design/building-a-visual-language/">Airbnb's DLS</a>, <a href="https://polaris.shopify.com/">Shopify's Polaris</a>, and <a href="https://primer.style/">GitHub's Primer</a>, I've identified the key practices that separate successful design systems from those that fail to scale.</p>
+<blockquote><p>"A design system is a living, breathing product that evolves with your
+organization." -- Nathan Curtis, EightShapes</p></blockquote>
+<h2>Start Small, Think Big</h2>
+<p>Begin with your most commonly used components--buttons, inputs, typography. Build a solid foundation before expanding to complex patterns.</p>
+<h3>The MVP Approach:</h3>
+<ol>
+<li><strong>Audit existing components</strong> across your products</li>
+<li><strong>Identify the most used patterns</strong> (usually 5-10 components)</li>
+<li><strong>Create a single source of truth</strong> for these components</li>
+<li><strong>Establish naming conventions</strong> early</li>
+<li><strong>Build incrementally</strong> from there</li>
+</ol>
+<h3>Common Starting Components:</h3>
+<ul>
+<li><strong>Typography</strong> (headings, body text, captions)</li>
+<li><strong>Buttons</strong> (primary, secondary, destructive)</li>
+<li><strong>Form inputs</strong> (text fields, selects, checkboxes)</li>
+<li><strong>Colors</strong> (primary, secondary, semantic colors)</li>
+<li><strong>Spacing</strong> (margin, padding scales)</li>
+</ul>
+<p><img src="../assets/live/external/900a690ec6e5cc24aa15.jpg" alt="Design System Components"></p>
+<aside><p><strong>Case Study:</strong> Shopify's Polaris started with just 12 core components and now
+supports their entire ecosystem of products and third-party apps.</p></aside>
+<h2>Documentation is Everything</h2>
+<p>Your design system is only as good as its documentation. Include usage guidelines, do's and don'ts, and code examples.</p>
+<h3>Essential Documentation Elements:</h3>
+<h4>Component Documentation:</h4>
+<ul>
+<li><strong>Purpose and use cases</strong> for each component</li>
+<li><strong>Visual examples</strong> with different states</li>
+<li><strong>Accessibility guidelines</strong> and requirements</li>
+<li><strong>Code snippets</strong> in multiple frameworks</li>
+<li><strong>Design tokens</strong> and customization options</li>
+</ul>
+<h4>Usage Guidelines:</h4>
+<ul>
+<li><strong>When to use</strong> vs. <strong>when not to use</strong></li>
+<li><strong>Common mistakes</strong> and how to avoid them</li>
+<li><strong>Migration guides</strong> for updating existing implementations</li>
+<li><strong>Contributing guidelines</strong> for team members</li>
+</ul>
+<h4>Tools for Documentation:</h4>
+<ul>
+<li><strong><a href="https://storybook.js.org/">Storybook</a></strong> for component documentation</li>
+<li><strong><a href="https://zeroheight.com/">Zeroheight</a></strong> for design system websites</li>
+<li><strong><a href="https://notion.so/">Notion</a></strong> or <strong><a href="https://atlassian.com/software/confluence">Confluence</a></strong> for process documentation</li>
+</ul>
+<h3>Example Documentation Structure:</h3>
+<pre><code class="language-markdown"># Button Component
+
+## Overview
+
+Primary action buttons for user interactions.
+
+## Usage
+
+Use primary buttons for the main action on a page or form.
+
+## Examples
+
+[Visual examples here]
+
+## Accessibility
+
+- Must have sufficient color contrast
+- Should be keyboard accessible
+- Include proper ARIA labels
+
+## Code
+
+```jsx
+&lt;Button variant="primary" size="medium"&gt;
+  Save Changes
+&lt;/Button&gt;
+```
+</code></pre>
+<pre><code>
+## Version Control for Design
+
+Treat your design system like code. Use proper versioning, change logs, and migration guides when updating components.
+
+### Versioning Strategy:
+
+#### Semantic Versioning:
+- **Major versions** (1.0.0 → 2.0.0): Breaking changes
+- **Minor versions** (1.0.0 → 1.1.0): New features, backward compatible
+- **Patch versions** (1.0.0 → 1.0.1): Bug fixes
+
+#### Change Management:
+- **Deprecation warnings** before removing components
+- **Migration guides** for breaking changes
+- **Automated testing** to catch breaking changes
+- **Rollback procedures** for problematic releases
+
+### Tools for Version Control:
+
+- **[npm](https://npmjs.com/)** for package distribution
+- **[GitHub Releases](https://github.com/features/releases)** for change logs
+- **[Conventional Commits](https://conventionalcommits.org/)** for standardized commit messages
+- **[Semantic Release](https://semantic-release.gitbook.io/)** for automated versioning
+
+## Cross-Team Collaboration
+
+Involve developers, product managers, and stakeholders in the design system process. It's not just a design tool--it's a product tool.
+
+### Building Cross-Functional Teams:
+
+#### Core Team Structure:
+- **Design Lead** (system architecture, visual design)
+- **Engineering Lead** (technical implementation, performance)
+- **Product Manager** (roadmap, business alignment)
+- **Content Strategist** (writing guidelines, tone of voice)
+
+#### Stakeholder Involvement:
+- **Regular reviews** with product teams
+- **Feedback sessions** with end users
+- **Executive updates** on adoption metrics
+- **Community contributions** from the broader organization
+
+### Collaboration Tools:
+
+- **[Figma](https://figma.com/)** for design collaboration
+- **[GitHub](https://github.com/)** for code collaboration
+- **[Slack](https://slack.com/)** for team communication
+- **[Linear](https://linear.app/)** or **[Jira](https://atlassian.com/software/jira)** for project management
+
+## Regular Audits and Updates
+
+Schedule regular reviews to identify inconsistencies, deprecated patterns, and opportunities for improvement.
+
+### Audit Schedule:
+
+#### Monthly Reviews:
+- **Component usage analytics** (which components are used most/least)
+- **Bug reports** and user feedback
+- **Performance metrics** (bundle size, load times)
+
+#### Quarterly Reviews:
+- **Design system health** assessment
+- **Team satisfaction** surveys
+- **Technology stack** evaluation
+- **Competitive analysis** of other design systems
+
+#### Annual Reviews:
+- **Strategic planning** for the next year
+- **Major architecture** decisions
+- **Tool evaluation** and potential migrations
+
+### Audit Checklist:
+
+- [ ] **Component inventory** (what exists vs. what's needed)
+- [ ] **Usage patterns** (are components being used as intended?)
+- [ ] **Performance impact** (bundle size, render times)
+- [ ] **Accessibility compliance** (WCAG guidelines)
+- [ ] **Browser compatibility** (supported browsers)
+- [ ] **Mobile responsiveness** (touch targets, spacing)
+
+## Measure Adoption and Impact
+
+Track how teams are using your design system and measure its impact on design consistency and development speed.
+
+### Key Metrics to Track:
+
+#### Adoption Metrics:
+- **Component usage** across products
+- **Team participation** in design system activities
+- **Documentation views** and engagement
+- **Community contributions** and feedback
+
+#### Impact Metrics:
+- **Design consistency** scores
+- **Development velocity** improvements
+- **Bug reduction** in UI components
+- **Time to market** for new features
+
+#### Business Metrics:
+- **Cost savings** from reduced design/development time
+- **User satisfaction** improvements
+- **Brand consistency** across touchpoints
+- **Team productivity** gains
+
+### Tools for Measurement:
+
+- **[Mixpanel](https://mixpanel.com/)** or **[Amplitude](https://amplitude.com/)** for usage analytics
+- **[Hotjar](https://hotjar.com/)** for user behavior analysis
+- **[Lighthouse](https://developers.google.com/web/tools/lighthouse)** for performance monitoring
+- **Custom dashboards** for design system metrics
+
+## Advanced Practices
+
+### Design Tokens
+
+Implement a comprehensive design token system for consistent theming and customization.
+
+```json
+{
+  "colors": {
+    "primary": {
+      "50": "#f0f9ff",
+      "500": "#3b82f6",
+      "900": "#1e3a8a"
+    }
+  },
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px"
+  }
+}
+</code></pre>
+<h3>Automated Testing</h3>
+<p>Implement automated testing for your design system components.</p>
+<ul>
+<li><strong>Visual regression testing</strong> with <a href="https://chromatic.com/">Chromatic</a></li>
+<li><strong>Accessibility testing</strong> with <a href="https://github.com/dequelabs/axe-core">axe-core</a></li>
+<li><strong>Unit testing</strong> with <a href="https://jestjs.io/">Jest</a> and <a href="https://testing-library.com/docs/react-testing-library/intro/">React Testing Library</a></li>
+</ul>
+<h3>Multi-Platform Support</h3>
+<p>Design systems should work across multiple platforms and frameworks.</p>
+<ul>
+<li><strong>Web</strong> (React, Vue, Angular)</li>
+<li><strong>Mobile</strong> (React Native, Flutter)</li>
+<li><strong>Desktop</strong> (Electron, native apps)</li>
+<li><strong>Design tools</strong> (Figma, Sketch, Adobe XD)</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Building a successful design system requires more than just creating components--it's about building a culture of consistency, collaboration, and continuous improvement. The companies that succeed are those that treat their design system as a product, with dedicated teams, clear processes, and measurable outcomes.</p>
+<h3>Getting Started:</h3>
+<ol>
+<li><strong>Assess your current state</strong> and identify pain points</li>
+<li><strong>Start small</strong> with your most critical components</li>
+<li><strong>Invest in documentation</strong> and tooling early</li>
+<li><strong>Build cross-functional teams</strong> with clear ownership</li>
+<li><strong>Measure everything</strong> and iterate based on data</li>
+</ol>
+<p>Remember: a design system is never "done"--it's a living, evolving product that grows with your organization.</p>
+<footer><p><strong>About the Author:</strong> Samantha Lee is a Design Systems Lead with 8+ years of
+experience building scalable design systems at companies like Shopify and
+GitHub. She's a contributor to the <a href="https://designsystems.com/">Design Systems
+Community</a> and speaks regularly at design
+conferences. Connect with her on <a href="https://twitter.com/samanthalee_ds">Twitter</a>
+for more design system insights.</p></footer></article></div><section class="mt-20 lg:mt-24"><h2 class="text-4xl tracking-tight lg:text-5xl">Related Articles</h2><p class="text-muted-foreground mt-3 text-lg leading-snug lg:mt-4">From seamless integrations to productivity wins and fresh feature drops--these stories show how Pulse empowers teams to save time, collaborate better, and stay ahead in fast-paced work environments.</p><div class="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3"><a class="group block h-full" href="design-team-rituals-remote.html"><div data-slot="card" class="bg-card text-card-foreground flex flex-col border group border-input h-full gap-4 overflow-hidden rounded-2xl py-5 shadow-none transition-all duration-200"><div data-slot="card-header" class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 px-5"><div class="relative aspect-[4/3] overflow-hidden rounded-md"><img alt="Design Team Rituals That Actually Work (Even Remotely)" class="object-cover transition-all duration-300 group-hover:scale-102" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="100vw" src="../assets/live/external/b8aecd7a6c4ea1a2c4bb.jpg"></div></div><div data-slot="card-content" class="mb-8 px-5"><div class="mb-3 flex items-center justify-between"><span class="text-lg">Design</span><span class="text-muted-foreground">28 Jul 2025</span></div><h3 class="text-xl">Design Team Rituals That Actually Work (Even Remotely)</h3></div><div data-slot="card-footer" class="[.border-t]:pt-6 mt-auto mb-0 flex flex-wrap items-center justify-between gap-2 justify-self-end px-5"><span class="text-foreground text-sm font-medium group-hover:underline">Read now</span><div class="flex flex-wrap items-center gap-1"><span data-slot="badge" class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent text-primary-foreground [a&amp;]:hover:bg-primary/90 bg-card-foreground capitalize">Design</span><span data-slot="badge" class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent text-primary-foreground [a&amp;]:hover:bg-primary/90 bg-card-foreground capitalize">Remote Work</span></div></div></div></a><a class="group block h-full" href="team-automations-save-time.html"><div data-slot="card" class="bg-card text-card-foreground flex flex-col border group border-input h-full gap-4 overflow-hidden rounded-2xl py-5 shadow-none transition-all duration-200"><div data-slot="card-header" class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 px-5"><div class="relative aspect-[4/3] overflow-hidden rounded-md"><img alt="5 Automations That Saved Our Team 15 Hours This Month" class="object-cover transition-all duration-300 group-hover:scale-102" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="100vw" src="../assets/live/external/0f0fc4a1cd24cd1037d3.jpg"></div></div><div data-slot="card-content" class="mb-8 px-5"><div class="mb-3 flex items-center justify-between"><span class="text-lg">Design</span><span class="text-muted-foreground">22 Apr 2025</span></div><h3 class="text-xl">5 Automations That Saved Our Team 15 Hours This Month</h3></div><div data-slot="card-footer" class="[.border-t]:pt-6 mt-auto mb-0 flex flex-wrap items-center justify-between gap-2 justify-self-end px-5"><span class="text-foreground text-sm font-medium group-hover:underline">Read now</span><div class="flex flex-wrap items-center gap-1"><span data-slot="badge" class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent text-primary-foreground [a&amp;]:hover:bg-primary/90 bg-card-foreground capitalize">Design</span><span data-slot="badge" class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent text-primary-foreground [a&amp;]:hover:bg-primary/90 bg-card-foreground capitalize">Automation</span></div></div></div></a><a class="group block h-full" href="design-team-rituals-remote.html"><div data-slot="card" class="bg-card text-card-foreground flex flex-col border group border-input h-full gap-4 overflow-hidden rounded-2xl py-5 shadow-none transition-all duration-200"><div data-slot="card-header" class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 px-5"><div class="relative aspect-[4/3] overflow-hidden rounded-md"><img alt="Remote Team Collaboration: Tools and Techniques That Actually Work" class="object-cover transition-all duration-300 group-hover:scale-102" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="100vw" src="../assets/live/external/f7510f2061faafb30603.jpg"></div></div><div data-slot="card-content" class="mb-8 px-5"><div class="mb-3 flex items-center justify-between"><span class="text-lg">Design</span><span class="text-muted-foreground">15 Apr 2025</span></div><h3 class="text-xl">Remote Team Collaboration: Tools and Techniques That Actually Work</h3></div><div data-slot="card-footer" class="[.border-t]:pt-6 mt-auto mb-0 flex flex-wrap items-center justify-between gap-2 justify-self-end px-5"><span class="text-foreground text-sm font-medium group-hover:underline">Read now</span><div class="flex flex-wrap items-center gap-1"><span data-slot="badge" class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent text-primary-foreground [a&amp;]:hover:bg-primary/90 bg-card-foreground capitalize">Design</span><span data-slot="badge" class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent text-primary-foreground [a&amp;]:hover:bg-primary/90 bg-card-foreground capitalize">Remote Work</span></div></div></div></a></div></section></div></main><footer class="relative border-t py-12"><div class="pointer-events-none absolute inset-0 bg-[url(/images/noise.webp)] bg-cover bg-center bg-no-repeat opacity-2"></div><div class="container"><div class="grid grid-cols-2 gap-8 md:grid-cols-4"><div class="grid grid-cols-1 gap-8 sm:grid-cols-3 md:col-span-3"><div><h3 class="text-foreground mb-4 font-bold md:mb-8">Navigation</h3><ul class="space-y-3"><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="#">Features</a></li><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="../about.html">About</a></li><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="../pricing.html">Pricing</a></li><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="../blog.html">Blog</a></li><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="../faq.html">FAQ</a></li></ul></div><div><h3 class="text-foreground mb-4 font-bold md:mb-8">Blog</h3><ul class="space-y-3"><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="../blog.html">All Posts</a></li><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="agile-project-management-tips.html">Agile Project Management</a></li><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="customer-onboarding-strategies.html">Customer Onboarding</a></li></ul></div><div><h3 class="text-foreground mb-4 font-bold md:mb-8">Resources</h3><ul class="space-y-3"><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="../terms-and-conditions.html">Terms &amp; Conditions</a></li><li><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="../privacy-policy.html">Privacy Policy</a></li></ul></div></div><div class="flex w-fit flex-col items-start justify-self-end md:col-span-1"><div class=""><a class="relative block h-6 w-25" href="../index.html"><img alt="Lumen Logo" class="object-contain dark:invert" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="../assets/live/layout/logo.svg"></a></div><div class="mt-4 space-y-3 md:mt-8"><a class="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition-colors" target="_blank" rel="noopener noreferrer" href="https://linkedin.com">Follow on LinkedIn</a><a class="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition-colors" target="_blank" rel="noopener noreferrer" href="https://x.com">Follow on X</a></div></div></div><div class="mt-15 flex flex-col items-center justify-between gap-4 md:mt-20 md:flex-row"><div class="flex gap-4"><a href="#"><div class="relative"><img alt="Apple App Store" width="124" height="42.6" class="dark:hidden" style="color:transparent" src="../assets/live/images/apple-button.png"><img alt="Apple App Store" width="124" height="42.6" class="hidden dark:block" style="color:transparent" src="../assets/live/images/apple-button-dark-mode.png"></div></a><a href="#"><div class="relative"><img alt="Google Play Store" width="124" height="42.6" class="dark:hidden" style="color:transparent" src="../assets/live/images/google-button.png"><img alt="Google Play Store" width="124" height="42.6" class="hidden dark:block" style="color:transparent" src="../assets/live/images/google-button-dark-mode.png"></div></a></div><div class="flex gap-6"><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="https://www.shadcnblocks.com">© 2026 Shadcnblocks.com</a><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="../privacy-policy.html">Privacy</a><a class="text-muted-foreground hover:text-foreground text-sm transition-colors" href="../terms-and-conditions.html">Terms</a></div></div></div></footer><title>Lumen - Modern Next.js Template</title><meta name="description" content="A modern, fully featured Next.js template built with Shadcn/UI, TailwindCSS and TypeScript, perfect for your next web application."><meta name="author" content="Lumen - Shadcnblocks.com"><meta name="keywords" content="Next.js,React,JavaScript,TypeScript,TailwindCSS,Template,Shadcn/UI,Web Development"><meta name="creator" content="Lumen - Shadcnblocks.com"><meta name="publisher" content="Lumen"><meta name="robots" content="index, follow"><meta property="og:title" content="Lumen - Modern Next.js Template"><meta property="og:description" content="A modern, fully featured Next.js template built with Shadcn/UI, TailwindCSS and TypeScript, perfect for your next web application."><meta property="og:site_name" content="Lumen"><meta property="og:image" content="https://lumen-nextjs-template.vercel.app/images/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Lumen - Modern Next.js Template"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@shadcnblocks"><meta name="twitter:title" content="Lumen - Modern Next.js Template"><meta name="twitter:description" content="A modern, fully featured Next.js template built with Shadcn/UI, TailwindCSS and TypeScript, perfect for your next web application."><meta name="twitter:image" content="https://lumen-nextjs-template.vercel.app/og-image.jpg"></body></html>

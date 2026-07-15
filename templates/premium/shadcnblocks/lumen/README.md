@@ -1,37 +1,28 @@
-# Lumen — SaaS Marketing Website Template Clone (Vanilla HTML/CSS/JS)
+# Lumen SaaS Marketing Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A self-contained, pixel-faithful clone of the **Lumen** SaaS marketing template (originally Shadcn/UI + Tailwind v4), rebuilt as plain HTML, CSS, and vanilla JavaScript with no build step. This is a full 20-page multi-page site — home, about, pricing, blog index plus 10 blog posts, FAQ, sign in, sign up, contact (rendered as the source's 404 page), terms and conditions, and privacy policy — with light/dark theming on OKLCH design tokens, soft aurora gradients, Inter typography, and reproduced interactions: a header theme toggle (localStorage + `prefers-color-scheme`, no-flash boot), an FAQ accordion, a monthly/annual pricing toggle, blog category filters and sort, a logo marquee, and scroll-reveal entrance animations. Everything runs offline from a static server with assets vendored locally under `assets/`. Generated with Claude Fable 5.
+A self-contained, pixel-faithful implementation of the Lumen SaaS marketing template in HTML, CSS, and JavaScript. The project includes 20 routes, local assets, responsive layouts, persistent light and dark themes, mobile navigation, banner dismissal, FAQ expansion, and monthly or annual pricing.
 
 ## Run
 
-No build step. Serve the folder over a static HTTP server:
+Serve the folder with any static HTTP server:
 
 ```sh
 python3 -m http.server 8000
 ```
 
-Then open <http://localhost:8000/index.html>.
+Open <http://localhost:8000/index.html>.
 
-## Pages
+## Routes
 
-- `index.html` — home (hero, logo marquee, features grid, feature showcase, testimonials, FAQ, pricing CTA)
-- `about.html`, `pricing.html`, `faq.html`
-- `blog.html` — blog index with category filter tabs, sort, and pagination
-- `blog/<slug>.html` — 10 blog post articles
-- `signin.html`, `signup.html`
-- `contact.html` — reproduces the source's 404 "page not found" state
-- `terms-and-conditions.html`, `privacy-policy.html`
+- Home, About, Pricing, Blog, FAQ, Contact
+- Sign in and Sign up
+- Terms and Conditions and Privacy Policy
+- Ten complete blog articles under `blog/`
 
-See `prompt.md` for the full build spec and `demo.mp4` for the template in motion.
+The source Contact route currently renders the template's custom Page Not Found design, which is reproduced here.
 
-## Credits
+## Reference
 
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
-
-**Original:** Lumen by Shadcnblocks — <https://www.shadcnblocks.com/template/lumen>
-
----
-
-Part of the [Templates](../../) collection in the [claude-directory](../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+[Lumen by Shadcnblocks](https://www.shadcnblocks.com/template/lumen)
