@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Theme toggle
   var root = document.documentElement;
   var stored = localStorage.getItem('devgent-theme');
   if (stored) root.setAttribute('data-theme', stored);
@@ -13,8 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('devgent-theme', next);
     });
   }
-
-  // Mobile menu
   var menuToggle = document.querySelector('.menu-toggle');
   var header = document.querySelector('.site-header');
   if (menuToggle && header) {
@@ -22,8 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
       header.classList.toggle('mobile-open');
     });
   }
-
-  // Tabs
   document.querySelectorAll('.tabs').forEach(function (tabs) {
     var panels = tabs.parentElement.querySelectorAll('.tab-panel');
     tabs.querySelectorAll('.tab-btn').forEach(function (btn, i) {
@@ -35,8 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
-
-  // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(function (item) {
     var q = item.querySelector('.faq-q');
     if (q) q.addEventListener('click', function () {
@@ -45,8 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!wasOpen) item.classList.add('open');
     });
   });
-
-  // Pricing toggle
   document.querySelectorAll('.switch').forEach(function (sw) {
     sw.addEventListener('click', function () {
       sw.classList.toggle('on');
@@ -63,8 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
-
-  // Testimonial carousel
   document.querySelectorAll('.carousel').forEach(function (car) {
     var slides = car.querySelectorAll('.testimonial-card');
     var idx = 0;
@@ -77,8 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (prev) prev.addEventListener('click', function () { idx = (idx - 1 + slides.length) % slides.length; show(idx); });
     if (next) next.addEventListener('click', function () { idx = (idx + 1) % slides.length; show(idx); });
   });
-
-  // Scroll reveal
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealEls.length) {
     var io = new IntersectionObserver(function (entries) {
