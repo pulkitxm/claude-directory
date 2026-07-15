@@ -1,38 +1,32 @@
-# Semplice — Minimal Photography Portfolio Template Clone (Vanilla HTML/CSS)
+# Semplice Photography Portfolio Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful static clone of the Lexington Themes "Semplice" template — a minimal, editorial photography portfolio spanning three pages: home (gallery listing), gallery detail, and a design-system overview. The implementation uses plain HTML and a single shared CSS file with custom properties; no build step, no framework, no JavaScript runtime. Typography pairs Inter (sans-serif) with Newsreader (serif) against a warm neutral palette (`#dedad0` gallery tan, `oklch(95.81% 0 0)` warm white) with sharp zero-radius edges throughout. Standout details include a full-width SVG wordmark that anchors both the top and footer of the home page, a responsive six-column editorial image grid on the gallery detail page, and CSS custom-property design tokens covering the complete `base-*` and `gallery-*` color scales.
+Semplice is a static reproduction of a minimal editorial photography portfolio. The project contains all 54 HTML routes from the current reference, including gallery collections, articles and tag archives, store pages, studio and team profiles, legal content, and system pages.
 
-## Pages
+## Highlights
 
-| File | Description |
-|---|---|
-| `index.html` | Home — full-width "Semplice" SVG wordmark, four-column editorial nav, single gallery image |
-| `gallery/posts/1/index.html` | Gallery detail — 5-image responsive CSS grid on warm tan background |
-| `system/overview/index.html` | Design-system overview — links to all pages/components in a four-column grid |
+- Responsive layouts for mobile, tablet, and desktop viewports
+- Editorial serif and sans-serif typography pairing
+- Full-width wordmark and photography-led gallery layouts
+- Working article search and navigation hover states
+- Complete local route coverage with working internal links
+- Refreshed demonstration video and poster image
 
 ## Run
 
-No build step required. Open `index.html` directly in a browser, or serve the folder over HTTP:
+Serve the directory with any static file server:
 
 ```sh
-python3 -m http.server
-# then open http://localhost:8000
+python3 -m http.server 8080
 ```
 
-## Source notes
+Then open `http://localhost:8080` in a browser.
 
-- `styles.css` — all design tokens (fonts, palette, spacing, transitions) and layout utilities shared across the three pages
-- `assets/images/` — six vendored `.webp` images
-- `prompt.md` holds the full build specification; `demo.mp4` shows the template in motion
+## Assets
+
+The existing local photography library is preserved. Current reference images, public font stylesheets, and required browser libraries remain linked to their original sources where needed.
 
 ## Credits
 
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
-
-**Original:** Lexington Themes — https://lexingtonthemes.com/viewports/semplice
-
----
-
-Part of the [Lexington Themes](../) provider collection in [Templates](../../) — browse all templates in the [claude-directory](../../../README.md).
+The original Semplice design is by [Lexington Themes](https://semplice-astro.pages.dev/).
