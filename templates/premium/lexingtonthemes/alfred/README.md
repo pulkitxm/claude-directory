@@ -50,4 +50,4 @@ Faithful clone of an existing design, recreated for study/learning. All credit f
 
 ---
 
-Part of the [Lexington Themes](../) provider collection inside [Templates](../../) in the [claude-directory](../../../../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Part of the [Lexington Themes](../) provider collection inside [Templates](../../) in the [claude-directory](../../../../../).
