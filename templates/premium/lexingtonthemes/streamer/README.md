@@ -1,51 +1,30 @@
-# Streamer — Lexington Themes
+# Streamer Music and Media Template
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful HTML/CSS/JS clone of the **Streamer** template by [Lexington Themes](https://lexingtonthemes.com/viewports/streamer) — a music and indie media platform with blog, podcast, jobs, authors, pricing, and a full design system.
+Streamer is a static reproduction of the current Lexington Themes music and media design. It includes all 103 discoverable routes as plain HTML, CSS, and JavaScript with no build step.
 
-## Pages (14)
+## Highlights
 
-| Page | File |
-|------|------|
-| Home | `index.html` |
-| Magazine (Blog) | `blog.html` |
-| Podcast | `podcast.html` |
-| Jobs | `jobs.html` |
-| About | `about.html` |
-| Advertise | `pricing-advertise.html` |
-| Membership | `pricing-membership.html` |
-| Authors | `authors.html` |
-| Blog Post | `blog-post.html` |
-| Podcast Episode | `podcast-episode.html` |
-| System Overview | `system-overview.html` |
-| System Colors | `system-colors.html` |
-| System Buttons | `system-buttons.html` |
-| System Typography | `system-typography.html` |
+- Responsive editorial and audio layouts across mobile, tablet, and desktop widths
+- Search modal, native details menu, ticker, and podcast player controls
+- Article, author, tag, podcast, help center, jobs, pricing, account, legal, and system pages
+- Local static routing with complete audit evidence in `.audit`
 
-## Tech
+## Run
 
-- **Styles**: Tailwind CSS v4 compiled to `assets/BaseLayout.css`
-- **Font**: Inter via rsms.me CDN
-- **Search**: Fuse.js v7.0.0 (client-side, inline data)
-- **Carousel**: Keen-Slider v6.8.6 (home + podcast pages)
-- **Images**: 33 `.webp` assets in `assets/images/`
-
-## Design Tokens
-
-| Token | Value |
-|-------|-------|
-| `base-900` | `#0d0d0d` — nav background, cards |
-| `base-300` | `#f5f0e8` — page background, nav text |
-| `accent-500` | `oklch(70.5% .213 47.604)` — orange/amber accent |
-
-## Run locally
-
-```bash
+```sh
 python3 -m http.server 8080
-# open http://localhost:8080/index.html
 ```
 
-## Source
+Open `http://localhost:8080` in a browser.
 
-Reference: https://lexingtonthemes.com/viewports/streamer
+## Assets
+
+- `demo.mp4` contains the current interaction recording
+- `poster.jpg` is the generated demo poster
+- `reference.css` contains the reproduced design styles
+
+## Credits
+
+The original Streamer design is by [Lexington Themes](https://streamer-astro-8r5.pages.dev/).
