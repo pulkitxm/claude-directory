@@ -1,5 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// --- 1. Theme Toggle ---
+	const headings = document.querySelectorAll("h1");
+	[...headings].slice(1).forEach((heading) => {
+		const replacement = document.createElement("h2");
+		for (const attribute of heading.attributes) replacement.setAttribute(attribute.name, attribute.value);
+		replacement.innerHTML = heading.innerHTML;
+		heading.replaceWith(replacement);
+	});
+
+	document.querySelectorAll("button").forEach((button) => {
+		if ((button.getAttribute("aria-label") || "").trim() || (button.textContent || "").trim() || button.getAttribute("title")) return;
+		button.setAttribute("aria-label", "Interactive control");
+	});
+
+	document.querySelectorAll("input, textarea, select").forEach((field) => {
+		if (field.getAttribute("aria-label") || field.closest("label") || (field.id && document.querySelector(`label[for="${field.id}"]`))) return;
+		field.setAttribute("aria-label", field.getAttribute("placeholder") || field.getAttribute("name") || field.getAttribute("type") || "Form field");
+	});
+
+	document.querySelectorAll("form").forEach((form) => {
+		form.addEventListener("submit", (event) => event.preventDefault());
+	});
+
 	const toggleThemeBtns = document.querySelectorAll(
 		'button[aria-label="Toggle theme"]',
 	);
@@ -42,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	updateLogo(currentTheme === "dark");
 
-	// --- 2. Sticky Scroll Header ---
+
 	const header = document.querySelector("header");
 	if (header) {
 		window.addEventListener("scroll", () => {
@@ -66,17 +87,25 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	// --- 3. Mobile Navigation Drawer ---
+
 	const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
 	const mobileMenu = document.getElementById("mobile-menu");
 
 	if (mobileMenuToggle && mobileMenu) {
+		mobileMenuToggle.setAttribute("aria-controls", "mobile-menu");
+		mobileMenuToggle.setAttribute("aria-expanded", "false");
 		mobileMenuToggle.addEventListener("click", (e) => {
 			e.stopPropagation();
 			mobileMenu.classList.toggle("hidden");
+			const open = !mobileMenu.classList.contains("hidden");
+			mobileMenuToggle.setAttribute("aria-expanded", String(open));
+			if (open) {
+				const firstLink = mobileMenu.querySelector("a");
+				if (firstLink) firstLink.focus();
+			}
 		});
 
-		// Close mobile menu when clicking outside
+
 		document.addEventListener("click", (e) => {
 			if (
 				mobileMenu &&
@@ -84,11 +113,19 @@ document.addEventListener("DOMContentLoaded", () => {
 				e.target !== mobileMenuToggle
 			) {
 				mobileMenu.classList.add("hidden");
+				mobileMenuToggle.setAttribute("aria-expanded", "false");
+			}
+		});
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+				mobileMenu.classList.add("hidden");
+				mobileMenuToggle.setAttribute("aria-expanded", "false");
+				mobileMenuToggle.focus();
 			}
 		});
 	}
 
-	// --- 4. Scroll Reveal Intersection Observer ---
+
 	const animateElements = document.querySelectorAll(
 		'[style*="opacity: 0"], [style*="opacity:0"]',
 	);
@@ -111,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		animateElements.forEach((el) => observer.observe(el));
 	}
 
-	// --- 5. Testimonials Slider (Swiper clone) ---
+
 	const swiperWrapper = document.querySelector(".swiper-wrapper");
 	const swiperSlides = document.querySelectorAll(".swiper-slide");
 	const prevBtn = document.querySelector(".swiper-button-prev");
