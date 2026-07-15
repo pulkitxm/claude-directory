@@ -1,5 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// --- 1. Theme Toggle ---
+	[...document.querySelectorAll("h1")].slice(1).forEach((heading) => {
+		const replacement = document.createElement("h2");
+		for (const attribute of heading.attributes) replacement.setAttribute(attribute.name, attribute.value);
+		replacement.innerHTML = heading.innerHTML;
+		heading.replaceWith(replacement);
+	});
+	document.querySelectorAll("button").forEach((button) => {
+		if ((button.getAttribute("aria-label") || "").trim() || (button.textContent || "").trim() || button.getAttribute("title")) return;
+		button.setAttribute("aria-label", "Interactive control");
+	});
+	document.querySelectorAll("input, textarea, select").forEach((field) => {
+		if (field.getAttribute("aria-label") || field.closest("label") || (field.id && document.querySelector(`label[for="${field.id}"]`))) return;
+		field.setAttribute("aria-label", field.getAttribute("placeholder") || field.getAttribute("name") || field.getAttribute("type") || "Form field");
+	});
+	document.querySelectorAll("form").forEach((form) => form.addEventListener("submit", (event) => event.preventDefault()));
+
 	const toggleThemeBtns = document.querySelectorAll(
 		'button[aria-label="Toggle theme"]',
 	);
@@ -26,14 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	function updateLogo(isDark) {
 		const logos = document.querySelectorAll('img[src*="logo"]');
 		logos.forEach((logo) => {
-			// Tailgrids logo typically uses tailgrids-logo.svg (which looks good in both or needs dark variant)
-			// Let's check if there is a dark logo variant or if it uses the same logo.
-			// If tailgrids-logo.svg is suitable for both, we keep it. If they have special dark logo, we swap it.
-			// Let's keep it as is unless visual loop diffs it.
+
+
+
+
 		});
 	}
 
-	// --- 2. Sticky Scroll Header ---
+
 	const header = document.querySelector("nav");
 	if (header) {
 		window.addEventListener("scroll", () => {
@@ -57,17 +72,20 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	// --- 3. Mobile Navigation Drawer ---
+
 	const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
 	const mobileMenu = document.getElementById("mobile-menu");
 
 	if (mobileMenuToggle && mobileMenu) {
+		mobileMenuToggle.setAttribute("aria-controls", "mobile-menu");
+		mobileMenuToggle.setAttribute("aria-expanded", "false");
 		mobileMenuToggle.addEventListener("click", (e) => {
 			e.stopPropagation();
 			mobileMenu.classList.toggle("hidden");
+			mobileMenuToggle.setAttribute("aria-expanded", String(!mobileMenu.classList.contains("hidden")));
 		});
 
-		// Close mobile menu when clicking outside
+
 		document.addEventListener("click", (e) => {
 			if (
 				mobileMenu &&
@@ -75,13 +93,21 @@ document.addEventListener("DOMContentLoaded", () => {
 				e.target !== mobileMenuToggle
 			) {
 				mobileMenu.classList.add("hidden");
+				mobileMenuToggle.setAttribute("aria-expanded", "false");
+			}
+		});
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+				mobileMenu.classList.add("hidden");
+				mobileMenuToggle.setAttribute("aria-expanded", "false");
+				mobileMenuToggle.focus();
 			}
 		});
 	}
 
-	// --- 4. FAQ Accordion ---
+
 	const faqAccordions = document.querySelectorAll(
-		"section div.max-w-xl.lg:max-w-3xl div.space-y-3 > div",
+		"section div.max-w-xl.lg\\:max-w-3xl div.space-y-3 > div",
 	);
 	faqAccordions.forEach((faqItem) => {
 		const btn = faqItem.querySelector("button");
@@ -92,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			btn.addEventListener("click", () => {
 				const isExpanded = btn.getAttribute("aria-expanded") === "true";
 
-				// Close all other accordions
+
 				faqAccordions.forEach((otherItem) => {
 					const otherBtn = otherItem.querySelector("button");
 					const otherContent = otherItem.querySelector("div.grid");
@@ -108,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					}
 				});
 
-				// Toggle this one
+
 				if (isExpanded) {
 					btn.setAttribute("aria-expanded", "false");
 					contentWrapper.className =
@@ -128,8 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-	// --- 5. Scroll Reveal ---
-	// Cleanly reveal elements that have style opacity: 0
+
+
 	const animateElements = document.querySelectorAll(
 		'[style*="opacity: 0"], [style*="opacity:0"]',
 	);
