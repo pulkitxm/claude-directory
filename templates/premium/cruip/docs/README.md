@@ -2,42 +2,32 @@
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A clean, professional documentation template with a three-column layout: sticky header, collapsible left sidebar navigation, main article content area, and a right-side "On this page" scrollspy TOC.
+A pixel-faithful reconstruction of the current Cruip Docs template, with a three-column documentation layout, nested navigation, search, article content, and responsive controls.
 
 ## Pages
 
-- **index.html** — Basics & Fundamentals (main documentation page)
-- **guides.html** — Marketing API Quick Start guide with image/video modal
-- **help.html** — Help & Support with FAQ accordion and contact form
+- **index.html**: Basics and Fundamentals documentation
+- **guides.html**: Marketing API Quick Start guide with image and video modal
+- **help.html**: Help and Support with FAQ accordions
 
 ## Features
 
-- Sticky 80px header with logo, search modal (keyboard shortcut `/`), and dark/light mode toggle
-- Collapsible 260px left sidebar with 3-level nested navigation and 3D cube section icons (blue/orange/teal)
-- Main article area with H1/H2/H3 headings, paragraphs, bullet lists, and inline code
-- Syntax-highlighted code blocks (dark background, colored keyword/string spans)
-- Info and success callout boxes with icons
-- "On this page" scrollspy TOC (right column, desktop only)
-- Feedback emoji reaction buttons
-- Next/Prev page navigation
-- Article footer with social icon links (Twitter/X, GitHub, Telegram)
-- Mobile hamburger slide-in sidebar with dark backdrop overlay
-- Breadcrumbs bar on mobile
-- FAQ accordion (help page)
-- Contact form with select, input, and textarea fields (help page)
-- Video modal with play button overlay (guides page)
-- CSS custom-property light/dark theming persisted in localStorage with no-flash boot script
-- Fully responsive (mobile, tablet, desktop)
+- Responsive fixed header, nested sidebar, article column, and scrollspy navigation
+- Keyboard-accessible search overlay
+- Persistent light and dark themes
+- Responsive mobile sidebar
+- Expandable navigation groups and FAQ rows
+- Video modal with locally hosted media
+- Local Aspekta, Nothing You Could Do, and PT Mono fonts
+- Local images, favicons, scripts, and video assets
 
 ## Tech Stack
 
-- Plain HTML5
-- CSS with custom properties (zero framework)
-- Vanilla JavaScript (no dependencies)
-- Inter from Google Fonts
+- Static HTML
+- Compiled Tailwind CSS
+- Alpine.js
+- Vanilla JavaScript
 
-## Credits
+## Original
 
-Faithful clone of an existing design, recreated for study/learning. All credit for the original design goes to its creators.
-
-**Original:** Cruip — https://cruip.com/demos/docs/
+https://cruip.com/demos/docs/

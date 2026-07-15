@@ -1,0 +1,785 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="utf-8">
+    <title>Help - Docs Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg">
+    <link rel="shortcut icon" href="./favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <link href="./style.css" rel="stylesheet">
+    <script>
+        if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
+            document.querySelector('html').classList.remove('dark');
+        } else {
+            document.querySelector('html').classList.add('dark');
+        }
+    </script>
+</head>
+
+<body class="font-aspekta antialiased text-slate-800 font-[350] bg-white dark:bg-slate-900 dark:text-slate-200">
+
+
+    <div class="flex flex-col min-h-screen overflow-hidden">
+
+
+        <header class="fixed w-full z-30">
+
+            <div class="absolute inset-0 bg-white/70 border-b border-slate-200 backdrop-blur-sm -z-10 dark:bg-slate-900 dark:border-slate-800" aria-hidden="true"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="flex items-center justify-between h-16 md:h-20">
+
+
+                    <div class="grow">
+                        <div class="flex items-center">
+
+                            <a href="index.html" aria-label="Cruip">
+                                <img src="./images/logo.svg" width="32" height="32" alt="Docs">
+                            </a>
+
+                            <div class="grow ml-4 md:ml-8" x-data="handleSearch">
+                                <button class="w-full sm:w-[380px] text-[15px] bg-white text-slate-400 inline-flex items-center justify-between leading-5 pl-3 pr-2 py-[7px] rounded-sm border border-slate-200 hover:border-slate-300 shadow-xs whitespace-nowrap dark:text-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:hover:border-slate-600" @click.prevent="openSearch" @keydown.slash.window="openSearch" aria-controls="search-modal">
+                                    <div class="flex items-center justify-center">
+                                        <svg class="w-4 h-4 fill-slate-500 mr-3 shrink-0 dark:fill-slate-400" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="m14.707 13.293-1.414 1.414-2.4-2.4 1.414-1.414 2.4 2.4ZM6.8 12.6A5.8 5.8 0 1 1 6.8 1a5.8 5.8 0 0 1 0 11.6Zm0-2a3.8 3.8 0 1 0 0-7.6 3.8 3.8 0 0 0 0 7.6Z"></path>
+                                        </svg>
+                                        <span>Search<span class="hidden sm:inline"> for anything</span>…</span>
+                                    </div>
+                                    <div class="flex items-center justify-center h-5 w-5 font-medium text-slate-500 rounded-sm border border-slate-200 shadow-xs ml-3 dark:bg-slate-700 dark:text-slate-400 dark:border-slate-600">/</div>
+                                </button>
+
+                                <div>
+
+                                    <div class="fixed inset-0 bg-slate-900/20 z-50 transition-opacity" x-show="searchOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-out duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" aria-hidden="true" style="display: none;"></div>
+
+                                    <div id="search-modal" class="fixed inset-0 z-50 overflow-hidden flex items-start top-20 md:top-28 mb-4 justify-center px-4 sm:px-6" role="dialog" aria-modal="true" x-show="searchOpen" x-transition:enter="transition ease-in-out duration-200" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in-out duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4" style="display: none;">
+                                        <div class="bg-white overflow-auto max-w-2xl w-full max-h-full rounded-sm shadow-lg dark:bg-slate-800" @click.outside="closeSearch" @keydown.escape.window="closeSearch">
+
+                                            <form class="border-b border-slate-200 dark:border-slate-700">
+                                                <div class="flex items-center">
+                                                    <label for="modal-search">
+                                                        <span class="sr-only">Search</span>
+                                                        <svg class="w-4 h-4 fill-slate-500 shrink-0 ml-4 dark:fill-slate-400" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="m14.707 13.293-1.414 1.414-2.4-2.4 1.414-1.414 2.4 2.4ZM6.8 12.6A5.8 5.8 0 1 1 6.8 1a5.8 5.8 0 0 1 0 11.6Zm0-2a3.8 3.8 0 1 0 0-7.6 3.8 3.8 0 0 0 0 7.6Z"></path>
+                                                        </svg>
+                                                    </label>
+                                                    <input id="modal-search" class="text-sm w-full bg-white border-0 focus:ring-transparent placeholder-slate-400 appearance-none py-3 pl-2 pr-4 dark:bg-slate-800 dark:placeholder:text-slate-500" type="search" placeholder="Search for anything…" x-ref="searchInput" style="">
+                                                </div>
+                                            </form>
+                                            <div class="py-4 px-2 space-y-4">
+
+                                                <div>
+                                                    <div class="text-sm font-medium text-slate-500 px-2 mb-2 dark:text-slate-400">Popular</div>
+                                                    <ul>
+                                                        <li>
+                                                            <a class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded-sm dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-hidden" href="#0">
+                                                                <svg class="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z"></path>
+                                                                </svg>
+                                                                <span>Alternative Schemas</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded-sm dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-hidden" href="#0">
+                                                                <svg class="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z"></path>
+                                                                </svg>
+                                                                <span>Query string parameters</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded-sm dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-hidden" href="#0">
+                                                                <svg class="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z"></path>
+                                                                </svg>
+                                                                <span>Integrations</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded-sm dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-hidden" href="#0">
+                                                                <svg class="w-3 h-3 fill-slate-400 shrink-0 mr-3 dark:fill-slate-500" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M11.953 4.29a.5.5 0 0 0-.454-.292H6.14L6.984.62A.5.5 0 0 0 6.12.173l-6 7a.5.5 0 0 0 .379.825h5.359l-.844 3.38a.5.5 0 0 0 .864.445l6-7a.5.5 0 0 0 .075-.534Z"></path>
+                                                                </svg>
+                                                                <span>Organize Contacts with Tags</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div>
+                                                    <div class="text-sm font-medium text-slate-500 px-2 mb-2">Actions</div>
+                                                    <ul>
+                                                        <li>
+                                                            <a class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded-sm dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-hidden" href="#0">
+                                                                <svg class="w-3 h-3 fill-blue-600 shrink-0 mr-3" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M11.854.146a.5.5 0 0 0-.525-.116l-11 4a.5.5 0 0 0-.015.934l4.8 1.921 1.921 4.8A.5.5 0 0 0 7.5 12h.008a.5.5 0 0 0 .462-.329l4-11a.5.5 0 0 0-.116-.525Z"></path>
+                                                                </svg>
+                                                                <span class="font-medium">Contact support</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="flex items-center px-2 py-1 leading-6 text-sm text-slate-800 hover:bg-slate-100 rounded-sm dark:text-slate-200 dark:hover:bg-slate-700 focus-within:bg-slate-100 dark:focus-within:bg-slate-700 outline-hidden" href="#0">
+                                                                <svg class="w-3 h-3 fill-purple-500 shrink-0 mr-3" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M6 0C2.691 0 0 2.362 0 5.267c0 2.905 2.691 5.266 6 5.266a6.8 6.8 0 0 0 1.036-.079l2.725 1.485a.5.5 0 0 0 .739-.439V8.711A4.893 4.893 0 0 0 12 5.267C12 2.362 9.309 0 6 0Z"></path>
+                                                                </svg>
+                                                                <span class="font-medium">Submit feedback</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                document.addEventListener('alpine:init', () => {
+                                    Alpine.data('handleSearch', () => ({
+                                        searchOpen: false,
+                                        openSearch() {
+                                            this.searchOpen = true;
+                                            document.body.classList.add('overflow-hidden');
+                                            Alpine.nextTick(() => {
+                                                this.$refs.searchInput.focus();
+                                            })
+                                        },
+                                        closeSearch() {
+                                            this.searchOpen = false;
+                                            document.body.classList.remove('overflow-hidden');
+                                        },
+                                    }))
+                                })
+                            </script>
+                        </div>
+                    </div>
+
+
+                    <nav class="flex">
+
+
+                        <ul class="flex grow justify-end flex-wrap items-center">
+                            <li class="ml-4">
+                                <a class="btn-sm inline-flex items-center text-slate-100 bg-blue-600 hover:bg-blue-700 shadow-xs" href="#0">Support</a>
+                            </li>
+
+                            <li>
+                                <div class="flex flex-col justify-center ml-3">
+                                    <input type="checkbox" name="light-switch" id="light-switch" class="light-switch sr-only" style="">
+                                    <label class="relative cursor-pointer p-2" for="light-switch">
+                                        <svg class="dark:hidden" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-blue-400" d="M7 0h2v2H7zM12.88 1.637l1.414 1.415-1.415 1.413-1.413-1.414zM14 7h2v2h-2zM12.95 14.433l-1.414-1.413 1.413-1.415 1.415 1.414zM7 14h2v2H7zM2.98 14.364l-1.413-1.415 1.414-1.414 1.414 1.415zM0 7h2v2H0zM3.05 1.706 4.463 3.12 3.05 4.535 1.636 3.12z"></path>
+                                            <path class="fill-blue-500" d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z"></path>
+                                        </svg>
+                                        <svg class="hidden dark:block" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="fill-blue-500" d="M6.2 1C3.2 1.8 1 4.6 1 7.9 1 11.8 4.2 15 8.1 15c3.3 0 6-2.2 6.9-5.2C9.7 11.2 4.8 6.3 6.2 1Z"></path>
+                                            <path class="fill-blue-500" d="M12.5 5a.625.625 0 0 1-.625-.625 1.252 1.252 0 0 0-1.25-1.25.625.625 0 1 1 0-1.25 1.252 1.252 0 0 0 1.25-1.25.625.625 0 1 1 1.25 0c.001.69.56 1.249 1.25 1.25a.625.625 0 1 1 0 1.25c-.69.001-1.249.56-1.25 1.25A.625.625 0 0 1 12.5 5Z"></path>
+                                        </svg>
+                                        <span class="sr-only">Switch to light / dark version</span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </nav>
+
+                </div>
+            </div>
+        </header>
+
+
+        <main class="grow">
+
+            <section class="relative">
+
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none -z-10">
+                    <img class="max-w-none" src="./images/hero-illustration.svg" width="1972" height="392" aria-hidden="true">
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+
+                    <div x-data="{ sidebarExpanded: false }">
+
+
+                        <div class="md:hidden fixed inset-0 z-10 bg-slate-900/20 transition-opacity" x-show="sidebarExpanded" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-out duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" aria-hidden="true" style="display: none;"></div>
+
+
+                        <aside id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 h-screen border-r border-slate-200 md:left-auto md:shrink-0 z-10 md:opacity-100! md:block! dark:border-slate-800 dark:bg-slate-900" @click.outside="sidebarExpanded = false" @keydown.escape.window="sidebarExpanded = false" x-show="sidebarExpanded" x-transition:enter="transition ease-out duration-200 transform" x-transition:enter-start="opacity-0 -translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-out duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" style="display: none;">
+
+                            <div class="absolute inset-0 -left-[9999px] bg-linear-to-b from-slate-50 to-white pointer-events-none -z-10 dark:hidden" aria-hidden="true"></div>
+
+                            <div class="fixed top-0 bottom-0 w-64 px-4 sm:px-6 md:pl-0 md:pr-8 overflow-y-auto no-scrollbar">
+                                <div class="pt-24 md:pt-28 pb-8">
+
+
+                                    <nav class="md:block">
+                                        <ul class="text-sm">
+
+                                            <li class="mb-1" x-data="{ open: false }">
+                                                <a class="relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded-sm before:bg-linear-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none before:hidden dark:text-slate-200" href="#0" @click.prevent="open = !open" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+                                                    <svg class="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path class="fill-blue-400" d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"></path>
+                                                        <path class="fill-white dark:fill-slate-800" d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z"></path>
+                                                        <path class="fill-blue-600" d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"></path>
+                                                    </svg>
+                                                    <span>Documentation</span>
+                                                </a>
+
+                                                <ul class="mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 hidden" :class="{ 'hidden': !open }">
+                                                    <li class="mt-3">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="index.html">Fundamentals</a>
+                                                    </li>
+                                                    <li class="mt-3">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="#0">Methods and Parameters</a>
+                                                    </li>
+                                                    <li class="mt-3">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="#0">Merge Fields</a>
+                                                    </li>
+                                                    <li class="mt-3" x-data="{ open: false }">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="#0" @click.prevent="open = !open" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+                                                            <svg class="fill-slate-400 shrink-0 ml-2 dark:fill-slate-500" :class="{ 'rotate-90': open }" width="8" height="10" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z"></path>
+                                                            </svg>
+                                                            <span>Alternative Schemas</span>
+                                                        </a>
+
+                                                        <ul class="mb-3 ml-1 pl-4 border-l border-slate-200 dark:border-slate-800 hidden" :class="{ 'hidden': !open }">
+                                                            <li class="mt-3">
+                                                                <a class="flex items-center space-x-3 text-slate-600 font-normal dark:text-slate-400" href="#0">File system</a>
+                                                            </li>
+                                                            <li class="mt-3">
+                                                                <a class="flex items-center space-x-3 text-slate-600 font-normal dark:text-slate-400" href="#0">Describing responses</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="mt-3" x-data="{ open: false }">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="#0" @click.prevent="open = !open" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+                                                            <svg class="fill-slate-400 shrink-0 ml-2 dark:fill-slate-500" :class="{ 'rotate-90': open }" width="8" height="10" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1 2 2.414.586 6.828 5 2.414 9.414 1 8l3-3z"></path>
+                                                            </svg>
+                                                            <span>E-Commerce</span>
+                                                        </a>
+
+                                                        <ul class="mb-3 ml-1 pl-4 border-l border-slate-200 dark:border-slate-800 hidden" :class="{ 'hidden': !open }">
+                                                            <li class="mt-3">
+                                                                <a class="flex items-center space-x-3 text-slate-600 font-normal dark:text-slate-400" href="#0">Path parameters</a>
+                                                            </li>
+                                                            <li class="mt-3">
+                                                                <a class="flex items-center space-x-3 text-slate-600 font-normal dark:text-slate-400" href="#0">Query string parameters</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="mt-3">
+                                                        <a class="text-slate-800 font-medium dark:text-slate-200" href="#0">Account Exports</a>
+                                                    </li>
+                                                    <li class="mt-3">
+                                                        <a class="text-slate-800 font-medium dark:text-slate-200" href="#0">Integrations</a>
+                                                    </li>
+                                                    <li class="mt-3">
+                                                        <a class="text-slate-800 font-medium dark:text-slate-200" href="#0">Add a contact</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="mb-1" x-data="{ open: false }">
+                                                <a class="relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded-sm before:bg-linear-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none before:hidden dark:text-slate-200" href="#0" @click.prevent="open = !open" aria-haspopup="true" :aria-expanded="open" aria-expanded="false">
+                                                    <svg class="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path class="fill-purple-400" d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"></path>
+                                                        <path class="fill-white dark:fill-slate-800" d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z"></path>
+                                                        <path class="fill-purple-600" d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"></path>
+                                                    </svg>
+                                                    <span>Guides / Tutorials</span>
+                                                </a>
+
+                                                <ul class="mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 hidden" :class="{ 'hidden': !open }">
+                                                    <li class="mt-3">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="guides.html">Marketing API Quick Start</a>
+                                                    </li>
+                                                    <li class="mt-3">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="#0">Create an account</a>
+                                                    </li>
+                                                    <li class="mt-3">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="#0">Generate your API key</a>
+                                                    </li>
+                                                    <li class="mt-3">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="#0">Make your first API call</a>
+                                                    </li>
+                                                    <li class="mt-3">
+                                                        <a class="flex items-center space-x-3 text-slate-800 font-medium dark:text-slate-200" href="#0">Next steps</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="mb-1">
+                                                <a class="relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded-sm before:bg-linear-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200" href="help.html">
+                                                    <svg class="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path class="fill-sky-400" d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"></path>
+                                                        <path class="fill-white dark:fill-slate-800" d="M4.112 7.804a.889.889 0 0 0-.112.43v7.892c0 .31.161.597.426.758l7.11 4.346c.14.085.3.13.464.13v-8.736l-7.888-4.82Z"></path>
+                                                        <path class="fill-sky-600" d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"></path>
+                                                    </svg>
+                                                    <span>Help / Support</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+
+                        </aside>
+
+
+                        <div class="md:grow md:pl-64 lg:pr-6 xl:pr-0">
+                            <div class="pt-24 md:pt-28 pb-8 md:pl-6 lg:pl-12">
+
+
+                                <div class="h-16 flex items-center mb-6">
+                                    <svg width="64" height="54" viewBox="0 0 64 54" xmlns="http://www.w3.org/2000/svg">
+                                        <path class="fill-sky-400" d="M43.832 7.206a1.32 1.32 0 0 0-.47-.492L32.694.195a1.333 1.333 0 0 0-1.39 0L20.64 6.714c-.198.12-.36.29-.471.492L32 14.436l11.832-7.23Z"></path>
+                                        <path class="fill-white dark:fill-slate-800" d="M20.168 7.206c-.11.197-.168.42-.168.645V19.69c0 .464.242.895.639 1.137l10.666 6.519c.21.128.45.195.695.196V14.437L20.168 7.206Z"></path>
+                                        <path class="fill-sky-600" d="M43.832 7.206c.11.197.168.42.168.645V19.69c0 .464-.242.895-.639 1.137l-10.666 6.519c-.21.128-.45.195-.695.196V14.437l11.832-7.231Z"></path>
+                                        <path class="fill-sky-400" d="M63.832 19.451a1.32 1.32 0 0 0-.47-.492l-10.667-6.518a1.333 1.333 0 0 0-1.39 0L40.64 18.959c-.198.12-.36.29-.471.492L52 26.683l11.832-7.232Z"></path>
+                                        <path class="fill-white dark:fill-slate-800" d="M40.168 19.451c-.11.198-.168.42-.168.647v11.837c0 .465.242.896.639 1.138l10.666 6.518c.21.128.45.196.695.196V26.683l-11.832-7.232Z"></path>
+                                        <path class="fill-sky-600" d="M63.832 19.451c.11.198.168.42.168.647v11.837c0 .465-.242.896-.639 1.138L52.695 39.59c-.21.128-.45.196-.695.196V26.683l11.832-7.232Z"></path>
+                                        <path class="fill-sky-400" d="M23.832 19.451a1.32 1.32 0 0 0-.47-.492l-10.667-6.518a1.333 1.333 0 0 0-1.39 0L.64 18.959c-.198.12-.36.29-.471.492L12 26.683l11.832-7.232Z"></path>
+                                        <path class="fill-white dark:fill-slate-800" d="M.168 19.451c-.11.198-.168.42-.168.647v11.837c0 .465.242.896.639 1.138l10.666 6.518c.21.128.45.196.695.196V26.683L.168 19.451Z"></path>
+                                        <path class="fill-sky-600" d="M23.832 19.451c.11.198.168.42.168.647v11.837c0 .465-.242.896-.639 1.138L12.695 39.59c-.21.128-.45.196-.695.196V26.683l11.832-7.232Z"></path>
+                                        <path class="fill-sky-400" d="M43.832 32.769a1.32 1.32 0 0 0-.47-.492l-10.667-6.52a1.333 1.333 0 0 0-1.39 0l-10.666 6.52c-.198.12-.36.29-.471.492L32 39.999l11.832-7.23Z"></path>
+                                        <path class="fill-white dark:fill-slate-800" d="M20.168 32.769c-.11.197-.168.42-.168.645V45.25c0 .465.242.896.639 1.138l10.666 6.518c.21.128.45.196.695.196V40l-11.832-7.23Z"></path>
+                                        <path class="fill-sky-600" d="M43.832 32.769c.11.197.168.42.168.645V45.25c0 .465-.242.896-.639 1.138l-10.666 6.518c-.21.128-.45.196-.695.196V40l11.832-7.23Z"></path>
+                                    </svg>
+                                    <span class="font-nycd text-xl text-sky-600 ml-4">Help / Support</span>
+                                </div>
+
+                                <article class="flex xl:space-x-12">
+
+
+                                    <div class="min-w-0">
+
+
+                                        <div class="md:hidden flex items-center mb-8">
+
+                                            <button class="hamburger" @click.stop="sidebarExpanded = !sidebarExpanded" aria-controls="sidebar" :aria-expanded="sidebarExpanded" aria-expanded="false">
+                                                <span class="sr-only">Menu</span>
+                                                <svg class="w-6 h-6 fill-slate-600 dark:fill-slate-400" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect x="4" y="5" width="16" height="2"></rect>
+                                                    <rect x="4" y="11" width="16" height="2"></rect>
+                                                    <rect x="4" y="17" width="16" height="2"></rect>
+                                                </svg>
+                                            </button>
+
+                                            <div class="flex items-center text-sm whitespace-nowrap min-w-0 ml-3">
+                                                <span class="text-slate-600 dark:text-slate-400">Help / Support</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div>
+                                            <header class="mb-8">
+                                                <h1 class="h2 text-slate-800 mb-4 dark:text-slate-200">How can we help?</h1>
+                                                <p class="text-lg text-slate-600 dark:text-slate-400">Everything you need to know right here at your fingertips. Ask questions, browse
+                                                around for answers, or submit your feature requests.</p>
+                                            </header>
+                                            <div class="text-slate-600 dark:text-slate-400 space-y-8">
+
+
+                                                <div class="space-y-8 mb-12 md:mb-16">
+
+                                                    <section class="space-y-4">
+
+
+                                                        <h2 id="overview" data-scrollspy-target="" class="h4 text-slate-800 scroll-mt-24 dark:text-slate-200">Overview</h2>
+                                                        <ul class="space-y-3">
+                                                            <li x-data="{ expanded: true }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="true">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500 rotate-90" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Does Docs support other data sources, like Excel or Airtable?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Can I collaborate on campaigns with others?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Will you help me build my campaign?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>How can I become a partner?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </section>
+
+                                                    <section class="space-y-4">
+
+
+                                                        <h2 id="support" data-scrollspy-target="" class="h4 text-slate-800 scroll-mt-24 dark:text-slate-200">Support</h2>
+                                                        <ul class="space-y-3">
+                                                            <li x-data="{ expanded: true }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="true">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500 rotate-90" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>How can I talk to someone at Docs?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Why should I connect my clients?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Can I collaborate on campaigns with others?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Is Glide Docs and CCPA compliant?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </section>
+
+                                                    <section class="space-y-4">
+
+
+                                                        <h2 id="security" data-scrollspy-target="" class="h4 text-slate-800 scroll-mt-24 dark:text-slate-200">Security &amp; Privacy</h2>
+                                                        <ul class="space-y-3">
+                                                            <li x-data="{ expanded: true }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="true">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500 rotate-90" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>What are Private Users of Private Pro campaigns?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Does Docs sell or share the content of my campaigns with third parties?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>What access does Docs have to my campaigns?</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </section>
+
+                                                    <section class="space-y-4">
+
+
+                                                        <h2 id="troubleshooting" data-scrollspy-target="" class="h4 text-slate-800 scroll-mt-24 dark:text-slate-200">Troubleshooting</h2>
+                                                        <ul class="space-y-3">
+                                                            <li x-data="{ expanded: true }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="true">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500 rotate-90" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>An error occurred deleting my campaign</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Something went wrong adding the webhook</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Something went wrong updating your payment information</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Something went wrong trying to delete that user's data</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li x-data="{ expanded: false }">
+                                                                <button class="flex items-center w-full text-slate-800 font-medium text-left dark:text-slate-200" @click="expanded = !expanded" :aria-expanded="expanded" aria-expanded="false">
+                                                                    <div class="shrink-0 mr-3">
+                                                                        <svg class="fill-slate-400 dark:fill-slate-500" :class="{ 'rotate-90': expanded }" xmlns="http://www.w3.org/2000/svg" width="8" height="12">
+                                                                            <path d="m4.586 6-4-4L2 .586 7.414 6 2 11.414.586 10z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <span>Something went wrong replacing the campaign</span>
+                                                                </button>
+                                                                <div :class="{ 'hidden': !expanded }" class="hidden">
+                                                                    <div class="pl-5 mt-2">
+                                                                        <p>
+                                                                            There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look. If you are going to use a passage of Lorem Ipsum.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </section>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <footer class="border-t border-slate-200 pt-8 dark:border-slate-800">
+                                            <div class="flex flex-col md:flex-row items-center justify-center md:justify-between">
+                                                <div class="mb-4 md:mb-0">
+                                                    <div class="shrink-0 flex flex-col md:flex-row items-center">
+
+                                                        <a class="inline-flex mb-2 md:mb-0" href="index.html" aria-label="Cruip">
+                                                            <img src="./images/logo.svg" width="32" height="32" alt="Docs">
+                                                        </a>
+                                                        <div class="text-sm text-slate-500 ml-4">Copyright © <a href="https://cruip.com" target="_blank" rel="noopener noreferrer">Cruip.com</a><span class="md:hidden lg:inline">. All rights reserved.</span></div>
+                                                    </div>
+                                                </div>
+
+                                                <ul class="inline-flex space-x-2">
+                                                    <li>
+                                                        <a class="flex justify-center items-center text-blue-500 hover:text-blue-600 transition duration-150 ease-in-out" href="https://x.com/Cruip_com" target="_blank" rel="noreferrer" aria-label="Twitter">
+                                                            <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z"></path>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="flex justify-center items-center text-blue-500 hover:text-blue-600 transition duration-150 ease-in-out" href="https://github.com/cruip" target="_blank" rel="noreferrer" aria-label="Github">
+                                                            <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z"></path>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="flex justify-center items-center text-blue-500 hover:text-blue-600 transition duration-150 ease-in-out" href="#0" aria-label="Telegram">
+                                                            <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M22.968 10.276a.338.338 0 0 0-.232-.253 1.192 1.192 0 0 0-.63.045s-14.019 5.038-14.82 5.596c-.172.121-.23.19-.259.272-.138.4.293.573.293.573l3.613 1.177a.388.388 0 0 0 .183-.011c.822-.519 8.27-5.222 8.7-5.38.068-.02.118 0 .1.049-.172.6-6.606 6.319-6.64 6.354a.138.138 0 0 0-.05.118l-.337 3.528s-.142 1.1.956 0a30.66 30.66 0 0 1 1.9-1.738c1.242.858 2.58 1.806 3.156 2.3a1 1 0 0 0 .732.283.825.825 0 0 0 .7-.622s2.561-10.275 2.646-11.658c.008-.135.021-.217.021-.317a1.177 1.177 0 0 0-.032-.316Z"></path>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </footer>
+
+                                    </div>
+
+
+                                    <nav class="hidden xl:block w-48 shrink-0">
+                                        <div class="fixed bottom-0 h-[calc(100vh-5rem)] w-48 overflow-y-auto pt-32 pb-8 no-scrollbar">
+                                            <div class="border-l border-slate-200 dark:border-slate-800">
+                                                <div class="text-xs font-[650] text-slate-400 uppercase pl-4 py-1.5 dark:text-slate-200">On this page</div>
+                                                <ul class="text-sm">
+                                                    <li>
+
+                                                        <a data-scrollspy-link="" class="relative block pl-4 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5 scrollspy-active" href="#overview">Overview</a>
+                                                    </li>
+                                                    <li>
+
+                                                        <a data-scrollspy-link="" class="relative block pl-4 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5" href="#support">Support</a>
+                                                    </li>
+                                                    <li>
+
+                                                        <a data-scrollspy-link="" class="relative block pl-4 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5" href="#security">Security &amp; Privacy</a>
+                                                    </li>
+                                                    <li>
+
+                                                        <a data-scrollspy-link="" class="relative block pl-4 py-1.5 before:absolute before:-left-px before:top-2 before:bottom-2 before:w-0.5" href="#troubleshooting">Troubleshooting</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </nav>
+
+                                </article>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="./js/vendors/alpinejs.min.js" defer=""></script>
+    <script src="./js/main.js"></script>
+
+
+
+
+</body></html>
