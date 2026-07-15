@@ -1,8 +1,6 @@
-/* NextMerce clone — interactions (vanilla JS + Swiper) */
 (function () {
 	"use strict";
 
-	/* ---------- Sticky header shadow on scroll ---------- */
 	const header = document.querySelector("header");
 	if (header) {
 		const onScroll = () => {
@@ -20,14 +18,15 @@
 		onScroll();
 	}
 
-	/* The template's own page sections already include top padding (pt-[165px] on the
-     breadcrumb banner / hero) to clear the fixed header, so no body offset is added. */
-
-	/* ---------- "All Categories" custom-select dropdown ---------- */
 	document.querySelectorAll(".custom-select").forEach((sel) => {
 		const selected = sel.querySelector(".select-selected");
 		const items = sel.querySelector(".select-items");
 		if (!selected || !items) return;
+		selected.setAttribute("role", "button");
+		selected.setAttribute("tabindex", "0");
+		selected.setAttribute("aria-haspopup", "listbox");
+		selected.setAttribute("aria-expanded", "false");
+		items.setAttribute("role", "listbox");
 		selected.addEventListener("click", (e) => {
 			e.stopPropagation();
 			const hidden = items.hasAttribute("hidden");
@@ -40,9 +39,17 @@
 			if (hidden) {
 				items.removeAttribute("hidden");
 				selected.classList.add("select-arrow-active");
+				selected.setAttribute("aria-expanded", "true");
 			} else {
 				items.setAttribute("hidden", "");
 				selected.classList.remove("select-arrow-active");
+				selected.setAttribute("aria-expanded", "false");
+			}
+		});
+		selected.addEventListener("keydown", (event) => {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				selected.click();
 			}
 		});
 		items.querySelectorAll(".select-item").forEach((it) => {
@@ -50,6 +57,7 @@
 				const lbl = selected.querySelector("span");
 				if (lbl && !it.querySelector("a"))
 					lbl.textContent = it.textContent.trim();
+				selected.setAttribute("aria-expanded", "false");
 			});
 		});
 	});
@@ -59,15 +67,44 @@
 			.forEach((o) => o.setAttribute("hidden", ""));
 		document
 			.querySelectorAll(".select-selected")
-			.forEach((o) => o.classList.remove("select-arrow-active"));
+			.forEach((o) => {
+				o.classList.remove("select-arrow-active");
+				o.setAttribute("aria-expanded", "false");
+			});
+	});
+	document.addEventListener("keydown", (event) => {
+		if (event.key !== "Escape") return;
+		document
+			.querySelectorAll(".select-items")
+			.forEach((items) => items.setAttribute("hidden", ""));
+		document.querySelectorAll(".select-selected").forEach((selected) => {
+			selected.classList.remove("select-arrow-active");
+			selected.setAttribute("aria-expanded", "false");
+		});
 	});
 
-	/* ---------- Mobile hamburger menu ---------- */
 	const toggle = document.getElementById("Toggle");
 	if (toggle) {
 		const navEl = document.querySelector("header nav");
 		const navWrap = navEl ? navEl.parentElement : null;
 		let open = false;
+		toggle.setAttribute("aria-expanded", "false");
+		if (navEl) {
+			if (!navEl.id) navEl.id = "primary-navigation";
+			toggle.setAttribute("aria-controls", navEl.id);
+		}
+		const closeMenu = (restoreFocus) => {
+			open = false;
+			if (!navWrap) return;
+			navWrap.classList.add("invisible", "hidden");
+			navWrap.classList.remove("visible", "flex");
+			navWrap.style.height = "";
+			navWrap.style.padding = "";
+			navWrap.style.background = "";
+			toggle.setAttribute("aria-expanded", "false");
+			document.body.style.overflow = "";
+			if (restoreFocus) toggle.focus();
+		};
 		toggle.addEventListener("click", (e) => {
 			e.stopPropagation();
 			open = !open;
@@ -81,27 +118,29 @@
 				navWrap.style.zIndex = "60";
 				navWrap.style.boxShadow = "0px 6px 24px 0px rgba(235,238,251,0.6)";
 				navWrap.style.borderRadius = "10px";
+				toggle.setAttribute("aria-expanded", "true");
+				document.body.style.overflow = "hidden";
 			} else {
-				navWrap.classList.add("invisible", "hidden");
-				navWrap.classList.remove("visible", "flex");
-				navWrap.style.height = "";
-				navWrap.style.padding = "";
-				navWrap.style.background = "";
+				closeMenu(false);
 			}
+		});
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && open) closeMenu(true);
 		});
 	}
 
-	/* ---------- Mobile dropdown (Pages / Blogs) tap to expand ---------- */
 	if (window.matchMedia("(max-width: 1279px)").matches) {
 		document
 			.querySelectorAll("header nav li.group > a[href='#']")
 			.forEach((a) => {
 				const dd = a.parentElement.querySelector(".dropdown");
 				if (!dd) return;
+				a.setAttribute("aria-expanded", "false");
 				a.addEventListener("click", (e) => {
 					e.preventDefault();
 					const isOpen = dd.style.display === "flex";
 					dd.style.display = isOpen ? "none" : "flex";
+					a.setAttribute("aria-expanded", String(!isOpen));
 					dd.style.visibility = "visible";
 					dd.style.opacity = "1";
 					dd.style.position = "static";
@@ -111,10 +150,8 @@
 			});
 	}
 
-	/* ---------- Swiper carousels ---------- */
 	if (window.Swiper) {
-		// Find prev/next buttons that belong to THIS carousel — they may sit inside the
-		// swiper element (NextMerce pattern) or in a sibling header.
+		const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 		function navFor(el) {
 			let next = el.querySelector(
 				":scope > .swiper-button-next, :scope > * .swiper-button-next",
@@ -122,7 +159,6 @@
 			let prev = el.querySelector(
 				":scope > .swiper-button-prev, :scope > * .swiper-button-prev",
 			);
-			// exclude buttons that belong to a nested swiper-wrapper slide
 			if (next && next.closest(".swiper-slide")) next = null;
 			if (prev && prev.closest(".swiper-slide")) prev = null;
 			if ((!next || !prev) && el.parentElement) {
@@ -138,8 +174,7 @@
 			try {
 				new Swiper(el, opts);
 			} catch (e) {
-				/* ignore malformed carousel */
-			}
+				}
 		}
 
 		document.querySelectorAll(".hero-carousel").forEach((el) => {
@@ -152,7 +187,9 @@
 			init(el, {
 				spaceBetween: 30,
 				loop: true,
-				autoplay: { delay: 4000, disableOnInteraction: false },
+				autoplay: reduceMotion
+					? false
+					: { delay: 4000, disableOnInteraction: false },
 				pagination: { el: pag, clickable: true },
 			});
 		});
@@ -188,7 +225,6 @@
 				el.classList.contains("testimonial-carousel")
 			)
 				return;
-			// skip nested wrappers / non-carousel swiper utility divs with no slides
 			if (
 				!el.querySelector(".swiper-wrapper") ||
 				!el.querySelector(".swiper-slide")
@@ -207,7 +243,6 @@
 		});
 	}
 
-	/* ---------- Countdown timer (home music CTA) ---------- */
 	(function countdown() {
 		const nums = document.querySelectorAll("[data-cd]");
 		if (!nums || nums.length < 4) return;
@@ -230,7 +265,6 @@
 		setInterval(tick, 1000);
 	})();
 
-	/* ---------- Quantity steppers ---------- */
 	document
 		.querySelectorAll(
 			'[aria-label="button for remove product"], [aria-label="button for add product"]',
@@ -248,7 +282,6 @@
 			});
 		});
 
-	/* ---------- Product detail image gallery thumbnail swap ---------- */
 	(function gallery() {
 		const mainImg = document.querySelector(".product-gallery-main img");
 		const thumbs = document.querySelectorAll(".product-gallery-thumb");
@@ -264,7 +297,6 @@
 		}
 	})();
 
-	/* ---------- Product detail tabs ---------- */
 	(function tabs() {
 		const tabBtns = Array.from(document.querySelectorAll("button")).filter(
 			(b) => {
@@ -278,20 +310,32 @@
 		);
 		if (tabBtns.length < 2) return;
 		const tabBar = tabBtns[0].parentElement;
-		const panels = {};
-		const descPanel =
-			tabBar.parentElement && tabBar.parentElement.nextElementSibling;
-		if (descPanel) panels["Description"] = descPanel;
+		const panels = [];
+		let panel = tabBar.nextElementSibling;
+		for (let index = 0; index < tabBtns.length && panel; index += 1) {
+			panels.push(panel);
+			panel = panel.nextElementSibling;
+		}
+		tabBar.setAttribute("role", "tablist");
+		tabBtns.forEach((button, index) => {
+			button.setAttribute("role", "tab");
+			button.setAttribute("aria-selected", String(index === 0));
+			button.setAttribute("tabindex", index === 0 ? "0" : "-1");
+			if (panels[index]) panels[index].setAttribute("role", "tabpanel");
+		});
 		function setActive(name) {
-			tabBtns.forEach((b) => {
+			tabBtns.forEach((b, index) => {
 				const on = b.textContent.trim() === name;
 				b.classList.toggle("text-blue", on);
 				b.classList.toggle("before:w-full", on);
 				b.classList.toggle("text-dark", !on);
 				b.classList.toggle("before:w-0", !on);
-			});
-			Object.keys(panels).forEach((k) => {
-				panels[k].style.display = k === name ? "" : "none";
+				b.setAttribute("aria-selected", String(on));
+				b.setAttribute("tabindex", on ? "0" : "-1");
+				if (panels[index]) {
+					panels[index].classList.toggle("hidden", !on);
+					panels[index].hidden = !on;
+				}
 			});
 		}
 		tabBtns.forEach((b) =>
@@ -299,7 +343,6 @@
 		);
 	})();
 
-	/* ---------- Shop grid / list view toggle ---------- */
 	(function viewToggle() {
 		const gridBtn = document.querySelector(
 			'[aria-label="button for product grid tab"]',
@@ -330,7 +373,39 @@
 		});
 	})();
 
-	/* ---------- Mini-cart drawer ---------- */
+	document.querySelectorAll("header form").forEach((form) => {
+		form.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const input = form.querySelector("input[type='search'], input[type='text']");
+			const query = input ? input.value.trim() : "";
+			window.location.href = query
+				? "shop-without-sidebar.html?query=" + encodeURIComponent(query)
+				: "shop-without-sidebar.html";
+		});
+	});
+
+	document.querySelectorAll("form").forEach((form) => {
+		if (form.closest("header")) return;
+		form.addEventListener("submit", (event) => {
+			event.preventDefault();
+			if (!form.reportValidity()) return;
+			let status = form.querySelector("[role='status']");
+			if (!status) {
+				status = document.createElement("p");
+				status.setAttribute("role", "status");
+				status.className = "nm-form-status";
+				form.appendChild(status);
+			}
+			const page = window.location.pathname.split("/").pop();
+			const submitText = form.querySelector("button[type='submit']")?.textContent.trim().toLowerCase() || "";
+			if (submitText.includes("subscribe")) status.textContent = "Thanks for subscribing. Your preview request was received.";
+			else if (page === "contact.html") status.textContent = "Thanks for reaching out. Your preview message was received.";
+			else if (page === "checkout.html") status.textContent = "Your checkout details are ready for review.";
+			else if (page === "signin.html" || page === "signup.html") status.textContent = "Your details look good. This preview does not create an account.";
+			else status.textContent = "Your selection was updated in this preview.";
+		});
+	});
+
 	(function cartDrawer() {
 		const cartBtn = Array.from(document.querySelectorAll("header button")).find(
 			(b) =>
@@ -342,6 +417,9 @@
 		overlay.className = "nm-overlay";
 		const drawer = document.createElement("div");
 		drawer.className = "nm-cart-drawer";
+		drawer.setAttribute("role", "dialog");
+		drawer.setAttribute("aria-modal", "true");
+		drawer.setAttribute("aria-hidden", "true");
 		drawer.innerHTML =
 			'<div class="nm-cart-head"><h3>Cart View</h3><button class="nm-close" aria-label="close cart">&times;</button></div>' +
 			'<div class="nm-cart-body"><div class="nm-cart-empty"><p>Your cart is empty!</p><a href="index.html" class="nm-btn-dark">Continue Shopping</a></div></div>' +
@@ -352,11 +430,15 @@
 			overlay.classList.add("show");
 			drawer.classList.add("show");
 			document.body.style.overflow = "hidden";
+			drawer.setAttribute("aria-hidden", "false");
+			drawer.querySelector(".nm-close").focus();
 		}
 		function close() {
 			overlay.classList.remove("show");
 			drawer.classList.remove("show");
 			document.body.style.overflow = "";
+			drawer.setAttribute("aria-hidden", "true");
+			cartBtn.focus();
 		}
 		cartBtn.addEventListener("click", (e) => {
 			e.preventDefault();
@@ -369,7 +451,6 @@
 		});
 	})();
 
-	/* ---------- Quick-view modal ---------- */
 	(function quickView() {
 		const qvBtns = document.querySelectorAll(
 			'[aria-label="button for quick view"]',
@@ -379,10 +460,14 @@
 		overlay.className = "nm-overlay nm-qv-overlay";
 		const modal = document.createElement("div");
 		modal.className = "nm-qv-modal";
+		modal.setAttribute("role", "dialog");
+		modal.setAttribute("aria-modal", "true");
+		modal.setAttribute("aria-hidden", "true");
+		modal.setAttribute("aria-labelledby", "quick-view-title");
 		modal.innerHTML =
 			'<button class="nm-close nm-qv-close" aria-label="close quick view">&times;</button>' +
-			'<div class="nm-qv-grid"><div class="nm-qv-img"><img alt="product" src=""></div>' +
-			'<div class="nm-qv-info"><h3 class="nm-qv-title">Product</h3>' +
+			'<div class="nm-qv-grid"><div class="nm-qv-img"><img alt="product" src="assets/images/products/0766155169a618af5f1336006bfe004994191fa9-570x512.png"></div>' +
+			'<div class="nm-qv-info"><h3 class="nm-qv-title" id="quick-view-title">Product</h3>' +
 			'<div class="nm-qv-rating">★★★★★ <span>( 5 reviews )</span></div>' +
 			'<p class="nm-qv-price"></p>' +
 			'<p class="nm-qv-desc">High-quality product with premium build and a sleek finish. Available now at a special price.</p>' +
@@ -390,10 +475,13 @@
 			"</div></div>";
 		document.body.appendChild(overlay);
 		document.body.appendChild(modal);
+		let activeQuickView = null;
 		function close() {
 			overlay.classList.remove("show");
 			modal.classList.remove("show");
 			document.body.style.overflow = "";
+			modal.setAttribute("aria-hidden", "true");
+			if (activeQuickView) activeQuickView.focus();
 		}
 		overlay.addEventListener("click", close);
 		modal.querySelector(".nm-qv-close").addEventListener("click", close);
@@ -403,6 +491,7 @@
 		qvBtns.forEach((btn) => {
 			btn.addEventListener("click", (e) => {
 				e.preventDefault();
+				activeQuickView = btn;
 				const card = btn.closest(".group");
 				if (card) {
 					const img = card.querySelector("img");
@@ -422,6 +511,8 @@
 				overlay.classList.add("show");
 				modal.classList.add("show");
 				document.body.style.overflow = "hidden";
+				modal.setAttribute("aria-hidden", "false");
+				modal.querySelector(".nm-qv-close").focus();
 			});
 		});
 	})();
