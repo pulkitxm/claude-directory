@@ -24639,7 +24639,7 @@ const jw = [
 	{
 		question: "Is it suitable for growing teams?",
 		answer:
-			"Yes, the platform is built to scale with your team — from early-stage startups to enterprise organizations.",
+			"Yes, the platform is built to scale with your team , from early-stage startups to enterprise organizations.",
 	},
 	{
 		question: "Can I cancel my subscription",
@@ -24841,12 +24841,12 @@ function Aw({ className: n }) {
 								f.jsx("p", {
 									className: "mb-8 text-base text-neutral-500",
 									children:
-										"We build AI-powered tools that help modern teams automate operations, simplify workflows, and focus on what truly matters — growth.",
+										"We build AI-powered tools that help modern teams automate operations, simplify workflows, and focus on what truly matters , growth.",
 								}),
 								f.jsx("p", {
 									className: "text-base text-neutral-500",
 									children:
-										"Our mission is to make AI accessible, practical, and impactful for businesses of all sizes. We believe automation should reduce complexity — not create it. Our platform is built to remove repetitive work, unlock real-time insights, and empower teams to move faster with confidence.",
+										"Our mission is to make AI accessible, practical, and impactful for businesses of all sizes. We believe automation should reduce complexity , not create it. Our platform is built to remove repetitive work, unlock real-time insights, and empower teams to move faster with confidence.",
 								}),
 							],
 						}),
@@ -25137,7 +25137,7 @@ const Nw = [
 	{
 		icon: "/images/what-we-do/icon-2.svg",
 		title: "Scalable Infrastructure",
-		description: "Built to grow with your team — from startup to enterprise.",
+		description: "Built to grow with your team , from startup to enterprise.",
 	},
 	{
 		icon: "/images/what-we-do/icon-3.svg",
@@ -26205,7 +26205,7 @@ function Uw() {
 																				: g === "-"
 																					? f.jsx("span", {
 																							className: "text-neutral-300",
-																							children: "—",
+																							children: ",",
 																						})
 																					: g,
 																	},
@@ -26662,7 +26662,7 @@ function Xw({ post: n }) {
 							f.jsx("p", {
 								className: "mb-8",
 								children:
-									"Modern businesses move fast. Teams handle emails, manage tasks, analyze data, respond to customers, and coordinate across multiple tools — often all in the same day. As operations grow more complex, manual processes create friction, slow down productivity, and increase the risk of errors. AI business assistants are changing that.",
+									"Modern businesses move fast. Teams handle emails, manage tasks, analyze data, respond to customers, and coordinate across multiple tools , often all in the same day. As operations grow more complex, manual processes create friction, slow down productivity, and increase the risk of errors. AI business assistants are changing that.",
 							}),
 							f.jsx("h2", {
 								className: "text-2xl font-semibold text-neutral-900 mb-4",
@@ -26710,7 +26710,7 @@ function Xw({ post: n }) {
 							}),
 							f.jsx("p", {
 								children:
-									"The question is no longer whether businesses should adopt AI — it’s how quickly they can integrate it into their daily workflows.",
+									"The question is no longer whether businesses should adopt AI , it’s how quickly they can integrate it into their daily workflows.",
 							}),
 						],
 					}),
@@ -26986,51 +26986,51 @@ function Qw({ className: n }) {
 											f.jsx("input", {
 												type: "text",
 												placeholder: "First Name",
-												className: `w-full rounded-lg bg-neutral-100 px-4 py-3 text-neutral-900 
-               border border-transparent h-11 focus:border-neutral-900 
-               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)] 
+												className: `w-full rounded-lg bg-neutral-100 px-4 py-3 text-neutral-900
+               border border-transparent h-11 focus:border-neutral-900
+               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)]
                `,
 											}),
 											" ",
 											f.jsx("input", {
 												type: "text",
 												placeholder: "Last Name",
-												className: `w-full rounded-lg bg-neutral-100 px-4 py-3 text-neutral-900 
-               border border-transparent h-11 focus:border-neutral-900 
-               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)] 
+												className: `w-full rounded-lg bg-neutral-100 px-4 py-3 text-neutral-900
+               border border-transparent h-11 focus:border-neutral-900
+               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)]
                `,
 											}),
 											" ",
 											f.jsx("input", {
 												type: "email",
 												placeholder: "Email Address",
-												className: `w-full rounded-lg col-span-full bg-neutral-100 px-4 py-3 text-neutral-900 
-               border border-transparent h-11 focus:border-neutral-900 
-               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)] 
+												className: `w-full rounded-lg col-span-full bg-neutral-100 px-4 py-3 text-neutral-900
+               border border-transparent h-11 focus:border-neutral-900
+               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)]
                `,
 											}),
 											" ",
 											f.jsx("input", {
 												type: "text",
 												placeholder: "Subject",
-												className: `w-full rounded-lg col-span-full bg-neutral-100 px-4 py-3 text-neutral-900 
-               border border-transparent h-11 focus:border-neutral-900 
-               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)] 
+												className: `w-full rounded-lg col-span-full bg-neutral-100 px-4 py-3 text-neutral-900
+               border border-transparent h-11 focus:border-neutral-900
+               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)]
                `,
 											}),
 											" ",
 											f.jsx("textarea", {
 												placeholder: "Enter your message here...",
-												className: `w-full rounded-lg col-span-full h-32 bg-neutral-100 px-4 py-3 text-neutral-900 
-               border border-transparent focus:border-neutral-900 
-               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)] 
+												className: `w-full rounded-lg col-span-full h-32 bg-neutral-100 px-4 py-3 text-neutral-900
+               border border-transparent focus:border-neutral-900
+               focus:outline-none focus:shadow-[0px_0px_0px_4px_rgba(128,128,128,0.12)]
                `,
 											}),
 										],
 									}),
 									f.jsx("button", {
 										className: `w-full bg-black font-mono text-white rounded-lg py-3 px-5
-             tracking-widest uppercase text-sm 
+             tracking-widest uppercase text-sm
              hover:bg-neutral-700 transition-colors duration-300`,
 										children: "Send Message",
 									}),
