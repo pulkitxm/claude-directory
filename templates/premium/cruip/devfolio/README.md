@@ -2,7 +2,7 @@
 
 [![Watch Demo](./poster.jpg)](./demo.mp4)
 
-A pixel-faithful clone of the [Cruip Devfolio](https://cruip.com/demos/devfolio/) developer portfolio template — a single-page minimal portfolio for freelance developers featuring a light/dark mode toggle, testimonial carousel, and polished hover animations.
+A pixel-faithful clone of the [Cruip Devfolio](https://cruip.com/demos/devfolio/) developer portfolio template, a single-page minimal portfolio for freelance developers featuring a light/dark mode toggle, testimonial carousel, and polished hover animations.
 
 ## Features
 
@@ -12,7 +12,7 @@ A pixel-faithful clone of the [Cruip Devfolio](https://cruip.com/demos/devfolio/
 - "Available for Work" badge with a diagonal shimmer sweep animation
 - Article and side-hustle arrow icons that rotate 45° on parent hover
 - Gradient `mask-image` fade on carousel sides (desktop)
-- All assets vendored locally — no CDN, no build step required
+- Images, scripts, and icons are vendored locally with no build step required
 
 ## Usage
 
@@ -33,4 +33,4 @@ Open `index.html` directly in a browser. No server or build step needed.
 
 ## Credits
 
-Original: Cruip — https://cruip.com/demos/devfolio/
+Original: Cruip, https://cruip.com/demos/devfolio/
