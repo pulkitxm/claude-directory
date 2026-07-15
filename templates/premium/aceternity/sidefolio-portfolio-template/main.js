@@ -1,4 +1,4 @@
-/* Sidefolio — shared chrome + interactions (vanilla JS) */
+
 
 const ICONS = {
 	home: '<path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"></path>',
@@ -87,21 +87,27 @@ function mountChrome(active, base) {
 	host.innerHTML =
 		renderSidebar(active, base) +
 		`<div class="shell"><div class="panel"><main class="content">${main}</main>` +
-		`<div class="footer"><b>2026 </b>— Built by Manu Arora</div></div></div>`;
-
-	// mobile toggle
+		`<div class="footer"><b>2026 </b>- Built by Manu Arora</div></div></div>`;
 	const toggle = document.getElementById("sidebarToggle");
 	const sidebar = document.getElementById("sidebar");
 	if (toggle && sidebar) {
-		toggle.addEventListener("click", () => sidebar.classList.toggle("open"));
+		toggle.setAttribute("aria-controls", "sidebar");
+		toggle.setAttribute("aria-expanded", "false");
+		const setOpen = (open) => {
+			sidebar.classList.toggle("open", open);
+			toggle.setAttribute("aria-expanded", String(open));
+		};
+		toggle.addEventListener("click", () => setOpen(!sidebar.classList.contains("open")));
 		sidebar
 			.querySelectorAll("a")
-			.forEach((a) =>
-				a.addEventListener("click", () => sidebar.classList.remove("open")),
-			);
+			.forEach((a) => a.addEventListener("click", () => setOpen(false)));
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && sidebar.classList.contains("open")) {
+				setOpen(false);
+				toggle.focus();
+			}
+		});
 	}
-
-	// entrance animation for project / article cards (staggered fade + translate)
 	const cards = document.querySelectorAll(".card");
 	if (cards.length) {
 		const reveal = (el, i) => setTimeout(() => el.classList.add("in"), i * 120);
@@ -120,7 +126,6 @@ function mountChrome(active, base) {
 			c.dataset.idx = i;
 			io.observe(c);
 		});
-		// safety net: if anything is still hidden shortly after load, reveal it
 		setTimeout(
 			() =>
 				cards.forEach((c, i) => {
@@ -129,8 +134,6 @@ function mountChrome(active, base) {
 			800,
 		);
 	}
-
-	// copy buttons (blog code blocks)
 	document.querySelectorAll(".codeblock__copy").forEach((btn) => {
 		btn.addEventListener("click", () => {
 			const code = btn.closest(".codeblock").querySelector("code");
@@ -143,10 +146,19 @@ function mountChrome(active, base) {
 			}
 		});
 	});
-
-	// inert contact form
 	const form = document.getElementById("contactForm");
-	if (form) form.addEventListener("submit", (e) => e.preventDefault());
+	if (form) {
+		form.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const button = form.querySelector("button[type='submit']");
+			if (!button) return;
+			button.textContent = "Sent!";
+			setTimeout(() => {
+				button.textContent = "Submit";
+				form.reset();
+			}, 1800);
+		});
+	}
 }
 
 window.SidefolioChrome = { mountChrome };
