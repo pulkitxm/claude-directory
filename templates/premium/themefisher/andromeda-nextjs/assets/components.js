@@ -170,12 +170,16 @@
       button.addEventListener('click', () => {
         const dialog = document.createElement('dialog');
         dialog.className = 'video-dialog';
-        dialog.innerHTML = '<button type="button" aria-label="Close video">×</button><iframe title="Andromeda introduction video" src="https://www.youtube.com/embed/ResipmZmpDU?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        dialog.innerHTML = '<button type="button" aria-label="Close video">×</button><img src="assets/images/about-video.webp" alt="Andromeda introduction video">';
         document.body.append(dialog);
         dialog.querySelector('button').addEventListener('click', () => dialog.close());
         dialog.addEventListener('close', () => dialog.remove());
         dialog.showModal();
       });
+    });
+
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', event => event.preventDefault());
     });
   }
 
