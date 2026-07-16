@@ -6,7 +6,7 @@ import PhilosophySection from "../components/PhilosophySection";
 import ServicesSection from "../components/ServicesSection";
 
 const HERO_VIDEO_URL =
-	"/assets/hf_20260405_074625_a81f018a-956b-43fb-9aee-4d1508e30e6a.mp4";
+	"./assets/hf_20260405_074625_a81f018a-956b-43fb-9aee-4d1508e30e6a.mp4";
 
 const FADE_MS = 500;
 const FADE_OUT_LEAD_S = 0.55;

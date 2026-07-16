@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const FEATURED_VIDEO_URL =
-	"/assets/hf_20260402_054547_9875cfc5-155a-4229-8ec8-b7ba7125cbf8.mp4";
+	"./assets/hf_20260402_054547_9875cfc5-155a-4229-8ec8-b7ba7125cbf8.mp4";
 
 const FeaturedVideoSection = () => {
 	const ref = useRef<HTMLElement | null>(null);
