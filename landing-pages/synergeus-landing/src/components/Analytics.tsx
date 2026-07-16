@@ -34,11 +34,15 @@ export default function Analytics() {
 
 	return (
 		<section
-			className="overflow-hidden"
+			className="overflow-hidden analytics-section"
 			style={{ background: "#000", padding: "80px 48px" }}
 		>
 			{/* Header */}
-			<div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
+			<div
+				ref={ref}
+				className="section-heading analytics-heading"
+				style={{ textAlign: "center", marginBottom: 64 }}
+			>
 				<div
 					className="font-heading"
 					style={{
@@ -53,6 +57,7 @@ export default function Analytics() {
 				</div>
 
 				<motion.h2
+					className="section-title"
 					initial={{ opacity: 0, filter: "blur(12px)", y: 30 }}
 					animate={
 						isInView ? { opacity: 1, filter: "blur(0px)", y: 0 } : undefined
@@ -107,6 +112,7 @@ export default function Analytics() {
 
 			{/* Cards row */}
 			<div
+				className="analytics-grid"
 				style={{
 					display: "flex",
 					gap: 16,
@@ -117,6 +123,7 @@ export default function Analytics() {
 			>
 				{/* Card 1 — left (wider) */}
 				<motion.div
+					className="analytics-card"
 					initial={{ opacity: 0, x: -60 }}
 					animate={isInView ? { opacity: 1, x: 0 } : undefined}
 					transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
@@ -312,6 +319,7 @@ export default function Analytics() {
 
 				{/* Card 2 — right */}
 				<motion.div
+					className="analytics-card"
 					initial={{ opacity: 0, x: 60 }}
 					animate={isInView ? { opacity: 1, x: 0 } : undefined}
 					transition={{ duration: 0.8, ease: "easeOut", delay: 0.45 }}
