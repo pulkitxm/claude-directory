@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { vendorAsset } from "@/lib/assets";
 
-const A = "/vendor";
+const A = vendorAsset;
 
 const PHRASES = [
 	"Create a finance dashboard design",
@@ -216,7 +217,7 @@ const SendButton = () => {
 					}}
 				>
 					<img
-						src={`${A}/dots.svg`}
+						src={A("dots.svg")}
 						style={{
 							width: "100%",
 							height: "100%",
@@ -254,7 +255,7 @@ const SendButton = () => {
 				>
 					<motion.img
 						key={`out-${arrowToggle}`}
-						src={`${A}/arrow-up.svg`}
+						src={A("arrow-up.svg")}
 						initial={{ y: 0, opacity: 1 }}
 						animate={{ y: -16, opacity: 0 }}
 						transition={{ duration: 0.32, ease: [0.65, 0, 0.35, 1] }}
@@ -269,7 +270,7 @@ const SendButton = () => {
 					/>
 					<motion.img
 						key={`in-${arrowToggle}`}
-						src={`${A}/arrow-up.svg`}
+						src={A("arrow-up.svg")}
 						initial={{ y: 16, opacity: 0 }}
 						animate={{ y: 0, opacity: 1 }}
 						transition={{ duration: 0.32, ease: [0.65, 0, 0.35, 1] }}
@@ -402,7 +403,7 @@ const PromptInput = () => {
 									justifyContent: "center",
 								}}
 							>
-								<img src={`${A}/ai-select.svg`} width={8} height={8} alt="" />
+								<img src={A("ai-select.svg")} width={8} height={8} alt="" />
 							</div>
 							<span
 								style={{

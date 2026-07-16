@@ -4,22 +4,22 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const IMAGES = [
 	{
-		src: "/assets/1.02464a56.png",
+		src: "./assets/1.02464a56.png",
 		bg: "#F4845F",
 		panel: "#F79B7F",
 	},
 	{
-		src: "/assets/2.b977faab.png",
+		src: "./assets/2.b977faab.png",
 		bg: "#6BBF7A",
 		panel: "#85CC92",
 	},
 	{
-		src: "/assets/3.4df853b4.png",
+		src: "./assets/3.4df853b4.png",
 		bg: "#E882B4",
 		panel: "#ED9DC4",
 	},
 	{
-		src: "/assets/4.4457fbce.png",
+		src: "./assets/4.4457fbce.png",
 		bg: "#6EB5FF",
 		panel: "#8DC4FF",
 	},

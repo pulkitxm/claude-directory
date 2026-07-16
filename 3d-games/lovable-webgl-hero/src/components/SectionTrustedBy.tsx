@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { vendorAsset } from "@/lib/assets";
 
-const LOGO_BASE = "/vendor/";
 const LOGOS = [
 	"logo-1.svg",
 	"logo-2.svg",
@@ -33,7 +33,6 @@ const SectionTrustedBy = () => {
 	const pausedRef = useRef(false);
 	const setWidthRef = useRef(0);
 
-	// Repeat the logos to ensure a continuous strip wider than the viewport
 	const REPEATS = 6;
 	const strip = Array.from({ length: REPEATS }).flatMap((_, r) =>
 		LOGOS.map((file, i) => ({
@@ -43,8 +42,6 @@ const SectionTrustedBy = () => {
 		})),
 	);
 
-	// Measure one logical "set" width from the unscaled slot widths so the loop
-	// distance stays constant regardless of per-item transforms.
 	const measure = () => {
 		const slots = slotRefs.current;
 		if (!slots.length) return;
@@ -56,7 +53,6 @@ const SectionTrustedBy = () => {
 			const r = s.getBoundingClientRect();
 			w += r.width;
 		}
-		// include one gap per item (flex gap is between items)
 		const gap = isMobile ? 56 : 88;
 		w += gap * perSet;
 		setWidthRef.current = w;
@@ -73,7 +69,7 @@ const SectionTrustedBy = () => {
 	useEffect(() => {
 		let raf = 0;
 		let last = performance.now();
-		const speed = isMobile ? 55 : 80; // px/s
+		const speed = isMobile ? 55 : 80;
 
 		const tick = (now: number) => {
 			const dt = Math.min(0.05, (now - last) / 1000);
@@ -87,7 +83,6 @@ const SectionTrustedBy = () => {
 				raf = requestAnimationFrame(tick);
 				return;
 			}
-			// seamless wrap using measured set width (stable, never glitches)
 			if (setWidth > 0) {
 				offsetRef.current =
 					((offsetRef.current % setWidth) + setWidth) % setWidth;
@@ -106,16 +101,13 @@ const SectionTrustedBy = () => {
 				if (!slot || !inner) continue;
 				const r = slot.getBoundingClientRect();
 				const elCenter = r.left + r.width / 2 - cLeft;
-				// normalized position across viewport: -1 (left) .. 1 (right)
 				const t = (elCenter - cx) / (cx || 1);
 				const ct = Math.max(-1.3, Math.min(1.3, t));
-				// smooth bell — modern orbit-like depth curve
 				const bulge = Math.cos(Math.max(-1, Math.min(1, ct)) * (Math.PI / 2));
-				// subtle orbit: gentle rotateY + tiny y arc
-				const rotY = -ct * 26; // deg
-				const yArc = (1 - bulge) * -8; // lift edges slightly
+				const rotY = -ct * 26;
+				const yArc = (1 - bulge) * -8;
 				const tz = bulge * 140;
-				const scale = 0.72 + bulge * 0.5; // 0.72 .. 1.22
+				const scale = 0.72 + bulge * 0.5;
 				const edge = Math.max(0, 1 - Math.abs(ct) ** 1.5);
 				const opacity = edge * (0.5 + bulge * 0.5);
 				const blur = (1 - bulge) * 1.4;
@@ -244,7 +236,7 @@ const SectionTrustedBy = () => {
 									}}
 								>
 									<img
-										src={LOGO_BASE + file}
+										src={vendorAsset(file)}
 										alt=""
 										draggable={false}
 										style={{

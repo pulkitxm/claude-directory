@@ -1,7 +1,6 @@
 import PillButton from "./PillButton";
 
-const CARD_IMAGE =
-	"/assets/hf_20260423_164207_f243351d-ed59-48ec-83a0-a5e996bdbe3c.webp";
+const CARD_IMAGE = `${(import.meta as ImportMeta & { env: { BASE_URL: string } }).env.BASE_URL}assets/hf_20260423_164207_f243351d-ed59-48ec-83a0-a5e996bdbe3c.webp`;
 
 export default function InfoSection() {
 	return (
@@ -54,7 +53,7 @@ export default function InfoSection() {
 							always pegged.
 						</h3>
 						<p className="text-white/60 text-base">
-							Keep fully dollar-anchored with on-demand access to funds — no
+							Keep fully dollar-anchored with on-demand access to funds, no
 							lockups or waits.
 						</p>
 					</div>

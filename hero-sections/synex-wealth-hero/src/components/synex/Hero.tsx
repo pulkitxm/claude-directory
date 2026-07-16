@@ -4,6 +4,7 @@ import StoneReveal from "./StoneReveal";
 
 // Expo-out easing for the dashboard rise — a confident, decelerating lift.
 const EXPO_OUT = [0.22, 1, 0.36, 1] as const;
+const BASE_URL = import.meta.env.BASE_URL;
 
 export default function Hero() {
 	return (
@@ -86,8 +87,8 @@ export default function Hero() {
 			{/* Stones — left (zBase 1 / zGrass 2), right (zBase 4 / zGrass 5) */}
 			<StoneReveal
 				side="left"
-				baseSrc="/assets/stone-left.png"
-				grassSrc="/assets/stone-g-left.png"
+				baseSrc={`${BASE_URL}assets/stone-left.png`}
+				grassSrc={`${BASE_URL}assets/stone-g-left.png`}
 				zBase={1}
 				zGrass={2}
 			/>
@@ -105,7 +106,7 @@ export default function Hero() {
 					style={{ maxWidth: "944px" }}
 				>
 					<img
-						src="/assets/Dashboard.png"
+						src={`${BASE_URL}assets/Dashboard.png`}
 						alt="Synex product dashboard"
 						draggable={false}
 						className="block h-auto w-full object-contain"
@@ -121,8 +122,8 @@ export default function Hero() {
 
 			<StoneReveal
 				side="right"
-				baseSrc="/assets/stone-right.png"
-				grassSrc="/assets/stone-g-right.png"
+				baseSrc={`${BASE_URL}assets/stone-right.png`}
+				grassSrc={`${BASE_URL}assets/stone-g-right.png`}
 				zBase={4}
 				zGrass={5}
 			/>
@@ -155,7 +156,7 @@ export default function Hero() {
 				style={{ zIndex: 20, bottom: "10px" }}
 			>
 				<motion.img
-					src="/assets/star.svg"
+					src={`${BASE_URL}assets/star.svg`}
 					alt=""
 					aria-hidden="true"
 					draggable={false}

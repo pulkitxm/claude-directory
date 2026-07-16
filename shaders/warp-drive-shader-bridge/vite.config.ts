@@ -5,6 +5,7 @@ import { defineConfig } from "vite";
 // shadcn-style "@/..." alias resolves to ./src so the component can be
 // imported exactly as written in the prompt: "@/components/ui/animated-shader-hero".
 export default defineConfig({
+	base: "./",
 	plugins: [react()],
 	resolve: {
 		alias: {

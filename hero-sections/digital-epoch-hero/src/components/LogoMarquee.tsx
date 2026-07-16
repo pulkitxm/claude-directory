@@ -4,44 +4,47 @@ interface Logo {
 	gradient: { from: string; to: string };
 }
 
+const assetBase = (import.meta as ImportMeta & { env: { BASE_URL: string } })
+	.env.BASE_URL;
+
 const LOGOS: Logo[] = [
 	{
-		src: "/assets/procure.svg",
+		src: `${assetBase}assets/procure.svg`,
 		alt: "Procure",
 		gradient: { from: "#1d4ed8", to: "#60a5fa" },
 	},
 	{
-		src: "/assets/shopify.svg",
+		src: `${assetBase}assets/shopify.svg`,
 		alt: "Shopify",
 		gradient: { from: "#facc15", to: "#fde047" },
 	},
 	{
-		src: "/assets/blender.svg",
+		src: `${assetBase}assets/blender.svg`,
 		alt: "Blender",
 		gradient: { from: "#2563eb", to: "#93c5fd" },
 	},
 	{
-		src: "/assets/figma.svg",
+		src: `${assetBase}assets/figma.svg`,
 		alt: "Figma",
 		gradient: { from: "#7c3aed", to: "#c4b5fd" },
 	},
 	{
-		src: "/assets/spotify.svg",
+		src: `${assetBase}assets/spotify.svg`,
 		alt: "Spotify",
 		gradient: { from: "#ec4899", to: "#ef4444" },
 	},
 	{
-		src: "/assets/lottielab.svg",
+		src: `${assetBase}assets/lottielab.svg`,
 		alt: "Lottielab",
 		gradient: { from: "#facc15", to: "#84cc16" },
 	},
 	{
-		src: "/assets/google-cloud.svg",
+		src: `${assetBase}assets/google-cloud.svg`,
 		alt: "Google Cloud",
 		gradient: { from: "#7dd3fc", to: "#bae6fd" },
 	},
 	{
-		src: "/assets/bing.svg",
+		src: `${assetBase}assets/bing.svg`,
 		alt: "Bing",
 		gradient: { from: "#06b6d4", to: "#2dd4bf" },
 	},
@@ -68,12 +71,6 @@ function LogoCard({ logo }: { logo: Logo }) {
 	);
 }
 
-/**
- * Seamless infinite logo scroller. The track holds two identical halves
- * (the list rendered twice inline); a pure CSS keyframe animation slides
- * it from translateX(0) to translateX(-50%) — exactly one half-width —
- * so the loop restarts without a visible seam. Hover pauses the animation.
- */
 export default function LogoMarquee() {
 	return (
 		<div

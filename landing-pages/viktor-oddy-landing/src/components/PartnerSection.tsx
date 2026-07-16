@@ -6,7 +6,7 @@ import Button from "./Button";
 const SPAWN_INTERVAL_MS = 80;
 const TRAIL_LIFETIME_MS = 1000;
 
-const AVATAR = "/assets/pexels-415829.jpg";
+const AVATAR = "./assets/pexels-415829.jpg";
 
 interface TrailItem {
 	id: number;

@@ -427,7 +427,7 @@ function IntegrationStory() {
 
 				<ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
 					{steps.map((s, i) => (
-						<li key={s.title} className="flex flex-col">
+						<li key={s.title} className="flex min-w-0 flex-col">
 							<div className="mb-4 flex items-center gap-3">
 								<span className="grid h-9 w-9 place-items-center rounded-md border border-graphite-line bg-ink-800 text-chan-g">
 									{s.icon}

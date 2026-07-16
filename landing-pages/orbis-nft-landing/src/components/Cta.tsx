@@ -1,12 +1,13 @@
 import { SOCIALS } from "../socials";
+import { assetUrl } from "../assets";
 
-const CTA_VIDEO =
-	"/assets/hf_20260331_055729_72d66327-b59e-4ae9-bb70-de6ccb5ecdb0.mp4";
+const CTA_VIDEO = assetUrl(
+	"assets/hf_20260331_055729_72d66327-b59e-4ae9-bb70-de6ccb5ecdb0.mp4",
+);
 
 export default function Cta() {
 	return (
-		<section className="relative overflow-hidden">
-			{/* Native aspect-ratio video, full width */}
+		<section id="contact" className="relative overflow-hidden">
 			<video
 				className="block h-auto w-full"
 				src={CTA_VIDEO}
@@ -16,7 +17,6 @@ export default function Cta() {
 				playsInline
 			/>
 
-			{/* Text content over the video */}
 			<div className="absolute inset-0 flex items-center justify-end px-6 sm:px-10 lg:pl-[15%] lg:pr-[20%]">
 				<div className="relative text-right">
 					<span className="absolute -left-6 -top-4 -rotate-2 font-condiment text-[17px] normal-case text-neon mix-blend-exclusion sm:-left-12 sm:-top-8 sm:text-[34px] md:-left-20 md:text-[51px] lg:-left-28 lg:-top-12 lg:text-[68px]">
@@ -35,7 +35,6 @@ export default function Cta() {
 				</div>
 			</div>
 
-			{/* Social icons — bottom-left */}
 			<div className="liquid-glass absolute bottom-[12%] left-[8%] flex flex-col rounded-[0.5rem] sm:bottom-[14%] sm:rounded-[0.75rem] md:bottom-[16%] md:rounded-[1rem] lg:bottom-[20%] lg:rounded-[1.25rem]">
 				{SOCIALS.map(({ label, href, Icon }, index) => (
 					<a

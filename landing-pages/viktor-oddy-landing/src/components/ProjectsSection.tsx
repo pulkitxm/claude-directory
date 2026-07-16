@@ -10,17 +10,17 @@ const PROJECTS: Project[] = [
 	{
 		name: "evr",
 		description: "From idea to millions raised for a web3 AI product",
-		image: "/assets/hero-evr-ventures-preview-DZxeVFEX.gif",
+		image: "./assets/hero-evr-ventures-preview-DZxeVFEX.gif",
 	},
 	{
 		name: "Automation Machines",
 		description: "Streamlining industrial automation processes",
-		image: "/assets/hero-automation-machines-preview-DlTveRIN.gif",
+		image: "./assets/hero-automation-machines-preview-DlTveRIN.gif",
 	},
 	{
 		name: "xPortfolio",
 		description: "Modern portfolio management platform",
-		image: "/assets/hero-xportfolio-preview-D4A8maiC.gif",
+		image: "./assets/hero-xportfolio-preview-D4A8maiC.gif",
 	},
 ];
 
