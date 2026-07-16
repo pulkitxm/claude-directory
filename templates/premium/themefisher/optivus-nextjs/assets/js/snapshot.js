@@ -1,6 +1,8 @@
 const menuButton = document.querySelector("#nav-toggle-btn")
 const mobileMenu = document.querySelector("#mobile-menu")
 
+document.querySelectorAll(".aos-init").forEach((element) => element.classList.add("aos-animate"))
+
 if (location.pathname === "/") {
   const headlineCounter = [...document.querySelectorAll(".counter")].find((counter) => counter.dataset.target === "100" && counter.dataset.suffix === "%")
   if (headlineCounter) headlineCounter.textContent = "71%"
