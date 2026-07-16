@@ -8,8 +8,7 @@ const PAUSE_BEFORE_DELETE = 2000;
 
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
 
-const VIDEO_SRC =
-	"/assets/hf_20260427_054418_a6d194f0-ac86-4df9-abe5-ded73e596d7c.mp4";
+const VIDEO_SRC = `${import.meta.env.BASE_URL}assets/hf_20260427_054418_a6d194f0-ac86-4df9-abe5-ded73e596d7c.mp4`;
 
 const NAV_LINKS = ["Philosophy", "Trust", "Access", "Tribe"];
 
@@ -100,7 +99,10 @@ function Navbar() {
 
 function Hero() {
 	return (
-		<section className="relative min-h-screen bg-[#F3F4ED] pt-24 md:pt-32 flex flex-col items-center overflow-hidden">
+		<section
+			id="access"
+			className="relative min-h-screen bg-[#F3F4ED] pt-24 md:pt-32 flex flex-col items-center overflow-hidden"
+		>
 			<div className="absolute inset-0 z-0">
 				<video
 					className="h-full w-full object-cover"
