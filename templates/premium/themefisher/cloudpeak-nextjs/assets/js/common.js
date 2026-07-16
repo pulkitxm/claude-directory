@@ -49,11 +49,18 @@
     });
   }
 
+  function initForms() {
+    document.querySelectorAll("form").forEach(function (form) {
+      form.addEventListener("submit", function (event) { event.preventDefault(); });
+    });
+  }
+
   function init() {
     initMobileNav();
     initMegaMenu();
     initPricing();
     initAccordions();
+    initForms();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
