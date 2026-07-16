@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import BoomerangVideoBg from "./BoomerangVideoBg";
 
 const BG_VIDEO =
-	"/assets/hf_20260511_131941_d136af49-e243-493a-be14-6ff3f24e09e6.mp4";
+	"./assets/hf_20260511_131941_d136af49-e243-493a-be14-6ff3f24e09e6.mp4";
 
 function App() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -96,7 +96,6 @@ function App() {
 				</div>
 			</nav>
 
-			{/* Mobile menu overlay */}
 			<div
 				className={`lg:hidden fixed inset-0 z-20 transition-opacity duration-300 ${
 					menuOpen
@@ -108,7 +107,6 @@ function App() {
 				<div className="absolute inset-0 bg-[#1f2a1d]/40 backdrop-blur-sm" />
 			</div>
 
-			{/* Mobile menu drawer */}
 			<div
 				className={`lg:hidden fixed top-0 right-0 bottom-0 z-20 w-[85%] max-w-sm bg-white/95 backdrop-blur-xl shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
 					menuOpen ? "translate-x-0" : "translate-x-full"
@@ -162,7 +160,6 @@ function App() {
 				</div>
 			</div>
 
-			{/* Hero copy */}
 			<div className="relative z-10 flex flex-col items-center text-center pt-24 sm:pt-28 md:pt-32 px-4 sm:px-6">
 				<h1
 					className="font-normal leading-[0.95] text-[#336443] text-[2rem] sm:text-4xl md:text-5xl lg:text-[4.75rem] xl:text-[5.25rem] max-w-5xl"
@@ -184,29 +181,27 @@ function App() {
 				</p>
 			</div>
 
-			{/* Bottom-left CTA block */}
 			<div className="absolute left-4 right-4 sm:right-auto sm:left-6 md:left-10 bottom-6 sm:bottom-8 md:bottom-10 z-10 max-w-sm">
-				<div className="flex items-center gap-2 text-[#3d5638] sm:text-white/95 mb-3">
+				<div className="flex items-center gap-2 text-white/95 mb-3">
 					<Sparkles className="w-4 h-4" />
-					<span className="text-sm font-semibold sm:font-medium">
+					<span className="text-sm font-medium">
 						FluxEngine<sup className="text-[10px]">TM</sup>
 					</span>
 				</div>
-				<p className="text-[#3d5638]/90 sm:text-white/85 text-xs leading-relaxed mb-6 max-w-xs font-medium sm:font-normal">
+				<p className="text-white/85 text-xs leading-relaxed mb-6 max-w-xs font-normal">
 					LinkFlow smoothly unites your company systems, streamlining data paths
 					between services without having to write custom scripts.
 				</p>
 				<div className="flex items-center gap-4 flex-wrap">
-					<button className="bg-[#3d5638] sm:bg-white hover:bg-[#2d4228] sm:hover:bg-white/90 text-white sm:text-[#1f2a1d] text-sm font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-colors shadow-sm">
+					<button className="bg-white hover:bg-white/90 text-[#1f2a1d] text-sm font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-colors shadow-sm">
 						Try it Live
 					</button>
-					<button className="text-[#3d5638] sm:text-white text-sm font-semibold sm:font-medium hover:opacity-80 transition-opacity">
+					<button className="text-white text-sm font-medium hover:opacity-80 transition-opacity">
 						Know More.
 					</button>
 				</div>
 			</div>
 
-			{/* Bottom-right video link */}
 			<div className="hidden sm:flex absolute right-6 md:right-10 bottom-8 md:bottom-10 z-10 items-center gap-2 text-white/90 text-sm">
 				<button className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors">
 					<Play className="w-3 h-3 fill-white text-white ml-0.5" />
