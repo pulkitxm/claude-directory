@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const SLIDES = ["/banner-1.png", "/banner-2.png", "/banner-3.png"];
+const assetBase = (import.meta as ImportMeta & { env: { BASE_URL: string } })
+	.env.BASE_URL;
+const SLIDES = [1, 2, 3].map((index) => `${assetBase}banner-${index}.png`);
 
-/** Autoplay carousel banner for Section 3. */
 export default function AutoplayBanner() {
 	const [activeSlide, setActiveSlide] = useState(0);
 
-	// Advance every 3s; cleanup on unmount and whenever activeSlide changes.
 	useEffect(() => {
 		const id = window.setInterval(() => {
 			setActiveSlide((s) => (s + 1) % SLIDES.length);
@@ -35,7 +35,6 @@ export default function AutoplayBanner() {
 			viewport={{ once: true, margin: "-60px" }}
 			transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
 		>
-			{/* Slides. */}
 			{SLIDES.map((src, i) => (
 				<motion.img
 					key={src}
@@ -58,7 +57,6 @@ export default function AutoplayBanner() {
 				/>
 			))}
 
-			{/* Dot navigation (top-right). */}
 			<div
 				style={{
 					position: "absolute",
@@ -92,7 +90,6 @@ export default function AutoplayBanner() {
 				))}
 			</div>
 
-			{/* Watch CTA with pulsing rings (bottom-left). */}
 			<div
 				style={{
 					position: "absolute",
@@ -152,7 +149,6 @@ export default function AutoplayBanner() {
 				</motion.button>
 			</div>
 
-			{/* Prev / next controls (bottom-right). */}
 			<div
 				style={{
 					position: "absolute",
