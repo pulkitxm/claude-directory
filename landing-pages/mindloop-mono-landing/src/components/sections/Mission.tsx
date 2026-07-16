@@ -9,13 +9,13 @@ import { useRef } from "react";
 import { fadeUp } from "@/lib/motion";
 
 const MISSION_VIDEO =
-	"/assets/hf_20260325_132944_a0d124bb-eaa1-4082-aa30-2310efb42b4b.mp4";
+	"./assets/hf_20260325_132944_a0d124bb-eaa1-4082-aa30-2310efb42b4b.mp4";
 
 const PARAGRAPH_ONE =
-	"We're building a space where curiosity meets clarity — where readers find depth, writers find reach, and every newsletter becomes a conversation worth having.";
+	"We're building a space where curiosity meets clarity, where readers find depth, writers find reach, and every newsletter becomes a conversation worth having.";
 
 const PARAGRAPH_TWO =
-	"A platform where content, community, and insight flow together — with less noise, less friction, and more meaning for everyone involved.";
+	"A platform where content, community, and insight flow together, with less noise, less friction, and more meaning for everyone involved.";
 
 const HIGHLIGHTED = new Set(["curiosity", "meets", "clarity"]);
 
@@ -29,7 +29,6 @@ interface WordProps {
 	highlighted: boolean;
 }
 
-/** A single word whose opacity tracks scroll progress through its range. */
 function Word({ children, progress, range, highlighted }: WordProps) {
 	const opacity = useTransform(progress, range, [0.15, 1]);
 	return (

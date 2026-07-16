@@ -3,18 +3,18 @@ import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/motion";
 
 const SOLUTION_VIDEO =
-	"/assets/hf_20260325_125119_8e5ae31c-0021-4396-bc08-f7aebeb877a2.mp4";
+	"./assets/hf_20260325_125119_8e5ae31c-0021-4396-bc08-f7aebeb877a2.mp4";
 
 const FEATURES = [
 	{
 		title: "Curated Feed",
 		description:
-			"A signal-first stream tuned to your curiosity — no engagement bait, no infinite noise, just writing worth your time.",
+			"A signal-first stream tuned to your curiosity, no engagement bait, no infinite noise, just writing worth your time.",
 	},
 	{
 		title: "Writer Tools",
 		description:
-			"A focused editor, smart drafts, and analytics that explain resonance — everything you need to publish with intent.",
+			"A focused editor, smart drafts, and analytics that explain resonance, everything you need to publish with intent.",
 	},
 	{
 		title: "Community",
@@ -24,7 +24,7 @@ const FEATURES = [
 	{
 		title: "Distribution",
 		description:
-			"Email, web, and AI-readable formats from one publish button — your words travel to wherever answers are made.",
+			"Email, web, and AI-readable formats from one publish button, your words travel to wherever answers are made.",
 	},
 ];
 
