@@ -30,7 +30,7 @@ export function CodeBlock({ code, filename, className }: CodeBlockProps) {
 	return (
 		<div
 			className={cn(
-				"group relative overflow-hidden rounded-lg border border-graphite-line bg-ink-900/90",
+				"group relative min-w-0 max-w-full overflow-hidden rounded-lg border border-graphite-line bg-ink-900/90",
 				className,
 			)}
 		>
