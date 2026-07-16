@@ -1,5 +1,7 @@
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
+const assetPath = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 export interface MediaAbout {
 	overview: string;
 	conclusion: string;
@@ -19,9 +21,9 @@ export interface MediaContentData {
 
 export const sampleMediaContent: Record<"video" | "image", MediaContentData> = {
 	video: {
-		src: "/media/cosmos.mp4",
-		poster: "/media/video-poster.jpg",
-		background: "/media/bg-cosmos.jpg",
+		src: assetPath("media/cosmos.mp4"),
+		poster: assetPath("media/video-poster.jpg"),
+		background: assetPath("media/bg-cosmos.jpg"),
 		title: "Immersive Video Experience",
 		date: "Cosmic Journey",
 		scrollToExpand: "Scroll to expand",
@@ -39,8 +41,8 @@ export const sampleMediaContent: Record<"video" | "image", MediaContentData> = {
 		},
 	},
 	image: {
-		src: "/media/media-mars.jpg",
-		background: "/media/bg-valley.jpg",
+		src: assetPath("media/media-mars.jpg"),
+		background: assetPath("media/bg-valley.jpg"),
 		title: "Dynamic Image Showcase",
 		date: "Quiet Frontier",
 		scrollToExpand: "Scroll to expand",
