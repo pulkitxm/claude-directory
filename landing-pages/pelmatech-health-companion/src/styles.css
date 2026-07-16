@@ -3,16 +3,15 @@
 @import "tw-animate-css";
 
 :root {
-	/* Design tokens (oklch). Do not invent extra tokens. */
-	--background: oklch(0.97 0.005 100); /* near-white, very slight warm */
-	--foreground: oklch(0.18 0.01 100); /* near-black */
+	--background: oklch(0.97 0.005 100);
+	--foreground: oklch(0.18 0.01 100);
 	--muted: oklch(0.93 0.005 100);
 	--muted-foreground: oklch(0.45 0.01 100);
-	--surface: oklch(0.94 0.005 100); /* benefits section background */
+	--surface: oklch(0.94 0.005 100);
 	--accent: oklch(0.55 0.12 155);
 	--accent-foreground: oklch(0.98 0 0);
 	--border: oklch(0.88 0.005 100);
-	--header-bg: oklch(0.25 0.01 100 / 0.85); /* translucent pill bg of nav */
+	--header-bg: oklch(0.25 0.01 100 / 0.85);
 	--ring: oklch(0.45 0.01 100);
 
 	--font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -48,6 +47,7 @@ body {
 	color: var(--foreground);
 	font-family: var(--font-sans);
 	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
 }
 
 h1,
@@ -56,4 +56,141 @@ h3,
 h4 {
 	font-family: var(--font-display);
 	letter-spacing: -0.025em;
+}
+
+.pel-mobile-menu {
+	position: absolute;
+	top: 60px;
+	right: 16px;
+	display: grid;
+	width: min(240px, calc(100vw - 32px));
+	padding: 12px;
+	border-radius: 20px;
+	background: var(--header-bg);
+	color: white;
+	backdrop-filter: blur(16px);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transform: translateY(-8px);
+	transition:
+		opacity 180ms ease,
+		transform 180ms ease,
+		visibility 180ms;
+}
+
+.pel-mobile-menu.is-open {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+
+.pel-mobile-menu a {
+	padding: 13px 16px;
+	border-radius: 12px;
+}
+
+.pel-mobile-menu a:hover,
+.pel-mobile-menu a:focus-visible {
+	background: rgb(255 255 255 / 10%);
+}
+
+@media (min-width: 768px) {
+	.pel-mobile-menu {
+		display: none;
+	}
+}
+
+@media (max-width: 767px) {
+	html {
+		zoom: 1 !important;
+	}
+
+	.pel-header {
+		top: 16px;
+		padding-inline: 16px;
+	}
+
+	.pel-header > img {
+		max-width: 132px;
+	}
+
+	.pel-nav {
+		padding: 4px;
+	}
+
+	.pel-nav-links {
+		display: none;
+	}
+
+	.pel-menu-toggle {
+		margin-left: 0;
+		padding: 8px 12px;
+	}
+
+	.pel-hero-row {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 24px;
+	}
+
+	.pel-hero-title {
+		font-size: clamp(42px, 12vw, 58px) !important;
+	}
+
+	.pel-hero-copy-wrap,
+	.pel-hero-copy {
+		width: 100% !important;
+	}
+
+	.pel-hero-copy {
+		font-size: 17px !important;
+		line-height: 1.45 !important;
+	}
+
+	.pel-hero-actions {
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+
+	.pel-hero-footer {
+		align-items: flex-end;
+		gap: 12px;
+		font-size: 9px !important;
+		letter-spacing: 0.12em;
+	}
+
+	.pel-team-heading {
+		padding-left: 0 !important;
+	}
+
+	.pel-team-heading h2 span {
+		font-size: clamp(38px, 10vw, 52px) !important;
+	}
+
+	.pel-team-row {
+		flex-direction: column;
+		gap: 28px !important;
+	}
+
+	.pel-team-intro,
+	.pel-team-intro span,
+	.pel-team-viewport {
+		width: 100% !important;
+		max-width: 100%;
+	}
+
+	.pel-benefits {
+		overflow: hidden;
+	}
+
+	.pel-benefits .grid > * {
+		min-width: 0;
+	}
+
+	.pel-benefits h2 {
+		font-size: clamp(38px, 11vw, 48px);
+		overflow-wrap: anywhere;
+	}
 }
