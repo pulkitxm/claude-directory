@@ -2,13 +2,8 @@ import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 
 const NAV_LINKS = ["Gallery", "Styles", "API", "Pricing", "Blog"];
-const VIDEO_SRC =
-	"/assets/hf_20260511_080827_a9e5ad52-b6ee-4e79-b393-d936f179cfd7.mp4";
+const VIDEO_SRC = `${import.meta.env.BASE_URL}assets/hf_20260511_080827_a9e5ad52-b6ee-4e79-b393-d936f179cfd7.mp4`;
 
-/**
- * `requestVideoFrameCallback` is not yet in every TS DOM lib, so widen the
- * video element type where the API may exist.
- */
 type VideoWithFrameCallback = HTMLVideoElement & {
 	requestVideoFrameCallback?: (callback: () => void) => number;
 	cancelVideoFrameCallback?: (handle: number) => void;
@@ -42,8 +37,6 @@ export default function App() {
 		setMounted(true);
 	}, []);
 
-	// Effect 1 — Frame capture (boomerang setup): play the video once and
-	// snapshot every frame into offscreen canvases.
 	useEffect(() => {
 		const video = videoRef.current as VideoWithFrameCallback | null;
 		if (!video) return;
@@ -87,7 +80,7 @@ export default function App() {
 		};
 
 		const onLoaded = () => {
-			video.play().catch(() => {});
+			video.play().catch(() => undefined);
 			scheduleCapture();
 		};
 
@@ -111,8 +104,6 @@ export default function App() {
 		};
 	}, []);
 
-	// Effect 2 — Boomerang render: ping-pong through the captured frames at
-	// ~30fps on the display canvas. Never touches video.currentTime.
 	useEffect(() => {
 		if (!framesReady) return;
 		const canvas = displayCanvasRef.current;
@@ -150,8 +141,6 @@ export default function App() {
 		return () => cancelAnimationFrame(rafId);
 	}, [framesReady]);
 
-	// Effect 3 — Parallax mouse tracking: lerp toward the pointer and move the
-	// video background layer with gsap.
 	useEffect(() => {
 		const strength = 20;
 		let targetX = 0;
@@ -191,7 +180,6 @@ export default function App() {
 
 	return (
 		<div className="min-h-screen bg-black text-white font-body overflow-x-hidden">
-			{/* Video background layer */}
 			<div
 				ref={videoBgRef}
 				className="fixed top-0 left-0 w-full h-full z-0 scale-[1.08] origin-center"
@@ -213,19 +201,17 @@ export default function App() {
 				/>
 			</div>
 
-			{/* Hero title */}
 			<div
-				className={`fixed left-0 right-0 z-20 w-full px-4 transition-all duration-1000 ${fadeIn}`}
+				className={`micro-title-wrap fixed left-0 right-0 z-20 w-full px-4 transition-all duration-1000 ${fadeIn}`}
 				style={{ top: "126px" }}
 			>
 				<h1 className="hero-title select-none">MicroVisuals</h1>
 			</div>
 
-			{/* Nav */}
-			<nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 whitespace-nowrap">
-				<div className="liquid-glass flex items-center gap-6 rounded px-4 py-2.5">
+			<nav className="micro-nav fixed top-5 left-1/2 -translate-x-1/2 z-50 whitespace-nowrap">
+				<div className="micro-nav-shell liquid-glass flex items-center gap-6 rounded px-4 py-2.5">
 					<LogoMark />
-					<div className="flex items-center gap-5">
+					<div className="micro-nav-links flex items-center gap-5">
 						{NAV_LINKS.map((link) => (
 							<a
 								key={link}
@@ -239,7 +225,7 @@ export default function App() {
 					<div className="flex items-center gap-3 ml-4">
 						<a
 							href="#"
-							className="text-sm font-body font-light text-white/70 hover:text-white transition-colors duration-200"
+							className="micro-sign-in text-sm font-body font-light text-white/70 hover:text-white transition-colors duration-200"
 						>
 							Sign in
 						</a>
@@ -253,15 +239,14 @@ export default function App() {
 				</div>
 			</nav>
 
-			{/* Bottom row */}
 			<div
-				className={`fixed bottom-12 left-0 right-0 px-10 flex items-end justify-between z-20 transition-all duration-1000 delay-300 ${fadeIn}`}
+				className={`micro-bottom fixed bottom-12 left-0 right-0 px-10 flex items-end justify-between z-20 transition-all duration-1000 delay-300 ${fadeIn}`}
 			>
 				<p className="text-sm font-body font-light text-white/75 max-w-[220px] leading-relaxed">
 					Forma&apos;s AI understands context, composition, and style like a
 					creative director would.
 				</p>
-				<div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex items-center gap-3">
+				<div className="micro-actions absolute left-1/2 -translate-x-1/2 bottom-0 flex items-center gap-3">
 					<button
 						type="button"
 						className="group relative bg-white text-black text-sm font-body font-medium rounded px-6 py-3 overflow-hidden active:scale-[0.97] transition-all duration-200 shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_24px_4px_rgba(255,255,255,0.25)] hover:scale-[1.03]"
@@ -277,7 +262,7 @@ export default function App() {
 					</button>
 				</div>
 				<p className="text-sm font-body font-light text-white/75 max-w-[220px] leading-relaxed text-right">
-					Describe what you see in your head — get images that actually match.
+					Describe what you see in your head, get images that actually match.
 				</p>
 			</div>
 		</div>
