@@ -172,7 +172,7 @@ const ShaderCanvas = ({ onUnsupported }: { onUnsupported: () => void }) => {
 		<div
 			ref={containerRef}
 			aria-hidden="true"
-			className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+			className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
 		/>
 	);
 };
@@ -186,7 +186,7 @@ const ShaderCanvas = ({ onUnsupported }: { onUnsupported: () => void }) => {
 const CssAuroraFallback = () => (
 	<div
 		aria-hidden="true"
-		className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-black"
+		className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-black"
 	>
 		<div
 			className="animate-[drift_18s_ease-in-out_infinite] absolute -left-1/4 top-[-10%] h-[70vh] w-[70vw] rounded-full opacity-70 blur-[80px]"
@@ -227,10 +227,10 @@ const FEATURES: FeatureChip[] = [
 ];
 
 const AVATARS = [
-	{ src: "/assets/avatar-1.svg", name: "Mara Velez" },
-	{ src: "/assets/avatar-2.svg", name: "Idris Cole" },
-	{ src: "/assets/avatar-3.svg", name: "Sana Okafor" },
-	{ src: "/assets/avatar-4.svg", name: "Theo Lindqvist" },
+	{ src: "./assets/avatar-1.svg", name: "Mara Velez" },
+	{ src: "./assets/avatar-2.svg", name: "Idris Cole" },
+	{ src: "./assets/avatar-3.svg", name: "Sana Okafor" },
+	{ src: "./assets/avatar-4.svg", name: "Theo Lindqvist" },
 ];
 
 /* ===========================================================================
@@ -246,7 +246,7 @@ const AnoAI = () => {
 	const handleUnsupported = useCallback(() => setWebglFailed(true), []);
 
 	return (
-		<div className="relative min-h-screen w-full overflow-x-hidden bg-black text-foreground">
+		<div className="relative isolate min-h-screen w-full overflow-x-hidden bg-black text-foreground">
 			{/* Live WebGL aurora — falls back to a CSS aurora if WebGL is unavailable */}
 			{webglFailed ? (
 				<CssAuroraFallback />
@@ -257,7 +257,7 @@ const AnoAI = () => {
 			{/* Readability scrim above the shader, below the UI */}
 			<div
 				aria-hidden="true"
-				className="scrim pointer-events-none fixed inset-0 -z-10"
+				className="scrim pointer-events-none fixed inset-0 z-10"
 			/>
 
 			{/* ---------------- Navbar ---------------- */}
