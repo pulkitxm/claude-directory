@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import WordsPullUp from "./WordsPullUp";
 
 const HERO_VIDEO_URL =
-	"/assets/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4";
+	"./assets/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4";
 
 const NAV_ITEMS = [
 	"Our story",
