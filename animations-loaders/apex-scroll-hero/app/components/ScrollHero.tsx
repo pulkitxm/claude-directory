@@ -2,20 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
-const TOP_SPEED = 217; // km/h shown at full scrub
+const TOP_SPEED = 217;
 
 type ScrollHeroProps = {
-	/** Video in /public, encoded with dense keyframes for smooth seeking. */
 	src?: string;
 };
 
-/**
- * Apple-product-page-style hero: the section pins for ~4.6 viewport heights
- * and the video's currentTime is driven by scroll progress. A rAF loop lerps
- * toward the scroll position so seeks stay smooth even with jumpy wheel input,
- * and the telemetry HUD (speed/gear/rail) is written straight to the DOM to
- * avoid re-rendering React on every frame.
- */
 export default function ScrollHero({ src = "./hero.mp4" }: ScrollHeroProps) {
 	const trackRef = useRef<HTMLElement>(null);
 	const videoRef = useRef<HTMLVideoElement>(null);
@@ -57,9 +49,6 @@ export default function ScrollHero({ src = "./hero.mp4" }: ScrollHeroProps) {
 		};
 		onScroll();
 		window.addEventListener("scroll", onScroll, { passive: true });
-
-		// Safari/iOS won't decode frames for a video that has never played;
-		// a muted play()+pause() on first interaction unlocks seeking.
 		let primed = false;
 		const prime = () => {
 			if (primed) return;
@@ -87,8 +76,6 @@ export default function ScrollHero({ src = "./hero.mp4" }: ScrollHeroProps) {
 				const t = p * Math.max(duration - 0.05, 0);
 				if (Math.abs(video.currentTime - t) > 0.01) video.currentTime = t;
 			}
-
-			// Telemetry: fast launch that tapers as it climbs, like a real pull.
 			const speed = Math.round(TOP_SPEED * (1 - (1 - p) ** 1.8));
 			if (speedRef.current) {
 				speedRef.current.textContent = String(speed).padStart(3, "0");
