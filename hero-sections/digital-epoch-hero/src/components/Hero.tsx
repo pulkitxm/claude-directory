@@ -2,8 +2,9 @@ import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { cn } from "../lib/utils";
 
-const VIDEO_SRC =
-	"/assets/hf_20260505_101331_74f9b798-3f00-4e86-8a01-377aa16ffeaa.mp4";
+const assetBase = (import.meta as ImportMeta & { env: { BASE_URL: string } })
+	.env.BASE_URL;
+const VIDEO_SRC = `${assetBase}assets/hf_20260505_101331_74f9b798-3f00-4e86-8a01-377aa16ffeaa.mp4`;
 
 const NAV_LINKS = ["Products", "Docs"] as const;
 
@@ -12,7 +13,6 @@ const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
 export default function Hero() {
 	return (
 		<section className="relative w-full max-w-[1400px] mx-auto rounded-[48px] bg-white border border-slate-200/50 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.03)] overflow-hidden h-[600px] flex flex-col">
-			{/* Underlying video layer — no overlays */}
 			<div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
 				<video
 					src={VIDEO_SRC}
@@ -24,7 +24,6 @@ export default function Hero() {
 				/>
 			</div>
 
-			{/* Text content */}
 			<div className="relative z-20 flex-1 px-8 md:px-16 pt-12 md:pt-16 flex flex-col items-start">
 				<motion.div
 					initial={{ opacity: 0, y: 28 }}
@@ -53,7 +52,6 @@ export default function Hero() {
 				</motion.div>
 			</div>
 
-			{/* Floating bottom navbar */}
 			<div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30">
 				<motion.nav
 					initial={{ opacity: 0, y: 24 }}
