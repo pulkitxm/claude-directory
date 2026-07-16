@@ -11,7 +11,6 @@ const LINKS = [
 	{ label: "Questions", href: "#faq" },
 ];
 
-/** The wordmark — a three-line tide glyph + name. */
 function Wordmark() {
 	return (
 		<a href="#top" className="flex items-center gap-2.5">
@@ -60,7 +59,6 @@ export function Navbar() {
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
-	// lock scroll while the mobile sheet is open
 	useEffect(() => {
 		document.body.style.overflow = open ? "hidden" : "";
 		return () => {
@@ -75,7 +73,7 @@ export function Navbar() {
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
 				className={cn(
-					"flex w-full max-w-5xl items-center justify-between rounded-pill px-3 py-2.5 pl-5 transition-all duration-500 ease-tide",
+					"relative z-50 flex w-full max-w-5xl items-center justify-between rounded-pill px-3 py-2.5 pl-5 transition-all duration-500 ease-tide",
 					scrolled
 						? "glass shadow-lift"
 						: "border border-transparent bg-transparent",
