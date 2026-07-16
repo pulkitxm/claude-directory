@@ -137,11 +137,6 @@ document.querySelectorAll("button").forEach((button) => {
     const description = heading?.nextElementSibling
     if (heading) heading.innerHTML = `<strong>${step[0]}</strong><br><em>${step[1]}</em>`
     if (description) description.textContent = step[2]
-    panel.querySelectorAll("img").forEach((image) => {
-      image.alt = image.alt.replace(/Discover/gi, label)
-      image.src = image.src.replace(/discover/gi, label.toLowerCase())
-      image.srcset = image.srcset.replace(/discover/gi, label.toLowerCase())
-    })
   })
 })
 
