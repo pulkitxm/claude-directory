@@ -1,9 +1,9 @@
 import RollButton from "./RollButton";
 
 const SMALL_IMAGE =
-	"/assets/hf_20260516_090123_74be96d4-9c1b-40cf-932a-96f4f4babed3.webp";
+	"./assets/hf_20260516_090123_74be96d4-9c1b-40cf-932a-96f4f4babed3.webp";
 const LARGE_IMAGE =
-	"/assets/hf_20260516_090133_c157d30b-a99a-4477-bec1-a446149ec3f2.webp";
+	"./assets/hf_20260516_090133_c157d30b-a99a-4477-bec1-a446149ec3f2.webp";
 
 function AboutButton() {
 	return (
@@ -38,7 +38,6 @@ export default function About() {
 					</h2>
 				</div>
 
-				{/* Mobile / tablet layout */}
 				<div className="px-5 sm:px-8 lg:hidden">
 					<p className="text-[15px] font-medium leading-[1.6] text-gray-900 sm:text-[17px]">
 						Through research, creative thinking and iteration we help growing
@@ -63,7 +62,6 @@ export default function About() {
 					</div>
 				</div>
 
-				{/* Desktop layout */}
 				<div className="hidden grid-cols-[26%_1fr_48%] items-end gap-6 px-12 lg:grid xl:gap-8">
 					<div className="self-end">
 						<img
