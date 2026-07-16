@@ -5,6 +5,20 @@ const applyTheme = (dark) => {
   localStorage.setItem("theme", dark ? "dark" : "light")
 }
 
+const projectRoot = new URL("../../", document.currentScript.src)
+
+document.querySelectorAll('[href^="/"]').forEach((element) => {
+  const href = element.getAttribute("href")
+  if (href?.startsWith("//")) return
+  element.setAttribute("href", new URL(href.slice(1), projectRoot).href)
+})
+
+document.querySelectorAll('[action^="/"]').forEach((element) => {
+  const action = element.getAttribute("action")
+  if (action?.startsWith("//")) return
+  element.setAttribute("action", new URL(action.slice(1), projectRoot).href)
+})
+
 const storedTheme = localStorage.getItem("theme")
 if (storedTheme) applyTheme(storedTheme === "dark")
 
