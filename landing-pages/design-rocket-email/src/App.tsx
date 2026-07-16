@@ -12,11 +12,11 @@ import type { CSSProperties, ReactNode } from "react";
 const displayFont: CSSProperties = { fontFamily: "'Instrument Serif', serif" };
 
 const VIDEOS = {
-	hero: "/assets/hf_20260419_064822_f120e48a-d545-45dd-a02d-facb07829888.mp4",
+	hero: "./assets/hf_20260419_064822_f120e48a-d545-45dd-a02d-facb07829888.mp4",
 	transform:
-		"/assets/hf_20260419_065931_e3ca7b53-d32e-4ad5-81de-dc9d6fcfda6d.mp4",
+		"./assets/hf_20260419_065931_e3ca7b53-d32e-4ad5-81de-dc9d6fcfda6d.mp4",
 	roadmap:
-		"/assets/hf_20260417_110451_9f82b157-dc92-4a9f-a341-c25594ec20e1.mp4",
+		"./assets/hf_20260417_110451_9f82b157-dc92-4a9f-a341-c25594ec20e1.mp4",
 } as const;
 
 const STEPS = [
