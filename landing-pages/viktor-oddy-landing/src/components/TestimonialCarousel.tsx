@@ -17,7 +17,7 @@ const TESTIMONIALS: Testimonial[] = [
 		name: "Marcus Anderson",
 		role: "CEO",
 		company: "Data.storage",
-		avatar: "/assets/pexels-2379004.jpg",
+		avatar: "./assets/pexels-2379004.jpg",
 	},
 	{
 		quote:
@@ -25,7 +25,7 @@ const TESTIMONIALS: Testimonial[] = [
 		name: "alexwu",
 		role: "Founder",
 		company: "Nexgate",
-		avatar: "/assets/pexels-220453.jpg",
+		avatar: "./assets/pexels-220453.jpg",
 	},
 	{
 		quote:
@@ -33,7 +33,7 @@ const TESTIMONIALS: Testimonial[] = [
 		name: "James Mitchell",
 		role: "VP Product",
 		company: "LaunchPad",
-		avatar: "/assets/pexels-614810.jpg",
+		avatar: "./assets/pexels-614810.jpg",
 	},
 	{
 		quote:
@@ -41,7 +41,7 @@ const TESTIMONIALS: Testimonial[] = [
 		name: "Rachel Foster",
 		role: "Co-founder",
 		company: "Nexus Labs",
-		avatar: "/assets/pexels-774909.jpg",
+		avatar: "./assets/pexels-774909.jpg",
 	},
 	{
 		quote:
@@ -49,13 +49,13 @@ const TESTIMONIALS: Testimonial[] = [
 		name: "David Zhang",
 		role: "Head of Design",
 		company: "Paradigm Labs",
-		avatar: "/assets/pexels-1222271.jpg",
+		avatar: "./assets/pexels-1222271.jpg",
 	},
 ];
 
 const COUNT = TESTIMONIALS.length;
 const TRIPLED = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
-const GAP = 24; // gap-6
+const GAP = 24;
 const DESKTOP_CARD_WIDTH = 427.5;
 const AUTOPLAY_MS = 3000;
 
@@ -106,9 +106,6 @@ export default function TestimonialCarousel() {
 		return () => clearInterval(id);
 	}, [hovered, next]);
 
-	// Snap back into the middle copy (without animation) once a transition
-	// finishes outside of it, creating the infinite-scroll illusion. Card
-	// exit transitions bubble up to the track, so only react to its own event.
 	const handleTransitionEnd = useCallback(
 		(event: React.TransitionEvent<HTMLDivElement>) => {
 			if (event.target !== event.currentTarget) return;
