@@ -1,7 +1,8 @@
-// Shared navigation behavior for Ella Mae® clone
-
-// Mobile menu
 document.addEventListener("DOMContentLoaded", function () {
+	for (const image of document.querySelectorAll(".marquee-track img")) {
+		image.loading = "eager";
+	}
+
 	const menuToggle = document.getElementById("menu-toggle");
 	const menuClose = document.getElementById("menu-close");
 	const navMenu = document.getElementById("navigation-menu");
