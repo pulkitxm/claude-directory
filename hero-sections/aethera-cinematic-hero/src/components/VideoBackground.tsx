@@ -1,21 +1,10 @@
 import { useEffect, useRef } from "react";
 
-const VIDEO_SRC =
-	"/assets/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
+const VIDEO_SRC = `${import.meta.env.BASE_URL}assets/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4`;
 
-/** Fade window, in seconds, applied at both ends of each playthrough. */
 const FADE_SECONDS = 0.5;
-
-/** Pause between loops before the video restarts, in milliseconds. */
 const RESTART_DELAY_MS = 100;
 
-/**
- * Fullscreen background video with a custom seamless loop:
- * a requestAnimationFrame loop continuously samples currentTime/duration
- * and drives opacity — fading in over the first 0.5s and out over the
- * final 0.5s — while the `ended` handler snaps opacity to 0, waits 100ms,
- * rewinds, and plays again.
- */
 export default function VideoBackground() {
 	const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -43,19 +32,14 @@ export default function VideoBackground() {
 			video.style.opacity = "0";
 			restartTimer = window.setTimeout(() => {
 				video.currentTime = 0;
-				video.play().catch(() => {
-					/* autoplay interrupted — the rAF loop keeps the layer hidden */
-				});
+				video.play().catch(() => undefined);
 			}, RESTART_DELAY_MS);
 		};
 
 		video.addEventListener("ended", handleEnded);
 		frameId = requestAnimationFrame(updateOpacity);
 
-		video.play().catch(() => {
-			/* Autoplay can be deferred by the browser; muted playback retries
-         automatically once the media is allowed to start. */
-		});
+		video.play().catch(() => undefined);
 
 		return () => {
 			cancelAnimationFrame(frameId);
@@ -81,7 +65,6 @@ export default function VideoBackground() {
 					willChange: "opacity",
 				}}
 			/>
-			{/* Gradient veil: dissolves the video into the page at both edges. */}
 			<div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
 		</div>
 	);

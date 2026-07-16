@@ -37,12 +37,12 @@ export default function Navbar() {
 
 				<div className="flex items-center gap-2">
 					<ThemeToggle />
-					<button
-						type="button"
+					<a
+						href="mailto:hello@aethera.studio?subject=Begin%20a%20journey"
 						className="rounded-full bg-ink px-6 py-2.5 text-sm text-background transition-transform duration-300 ease-out hover:scale-103"
 					>
 						Begin Journey
-					</button>
+					</a>
 				</div>
 			</nav>
 		</header>
