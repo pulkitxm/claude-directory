@@ -6,6 +6,11 @@ if (location.pathname === "/") {
   if (headlineCounter) headlineCounter.textContent = "71%"
 }
 
+document.querySelectorAll(".counter").forEach((counter) => {
+  const target = counter.dataset.target
+  if (target) counter.textContent = `${counter.dataset.prefix || ""}${target}${counter.dataset.suffix || ""}`
+})
+
 menuButton?.addEventListener("click", () => {
   const opening = menuButton.getAttribute("aria-expanded") !== "true"
   menuButton.setAttribute("aria-expanded", String(opening))
@@ -30,6 +35,28 @@ document.querySelectorAll("[role='button'][data-faq-id]").forEach((item) => {
 })
 
 document.querySelectorAll("form").forEach((form) => form.addEventListener("submit", (event) => event.preventDefault()))
+
+document.querySelectorAll("#pricing-toggle").forEach((toggle) => {
+  const monthlyButton = toggle.querySelector("#monthlyBtn")
+  const annualButton = toggle.querySelector("#annuallyBtn")
+  const discount = Number(toggle.dataset.annualDiscount || 0.75)
+  const setAnnual = (annual) => {
+    document.querySelectorAll(".price[data-base]").forEach((price) => {
+      const base = Number(price.dataset.base)
+      price.textContent = String(Math.round(base * (annual ? discount : 1)))
+    })
+    monthlyButton?.classList.toggle("bg-primary", !annual)
+    monthlyButton?.classList.toggle("text-text-dark", !annual)
+    monthlyButton?.classList.toggle("bg-transparent", annual)
+    monthlyButton?.classList.toggle("text-text-light", annual)
+    annualButton?.classList.toggle("bg-primary", annual)
+    annualButton?.classList.toggle("text-text-dark", annual)
+    annualButton?.classList.toggle("bg-transparent", !annual)
+    annualButton?.classList.toggle("text-text-light", !annual)
+  }
+  monthlyButton?.addEventListener("click", () => setAnnual(false))
+  annualButton?.addEventListener("click", () => setAnnual(true))
+})
 
 document.querySelectorAll(".swiper").forEach((slider) => {
   const wrapper = slider.querySelector(".swiper-wrapper")
