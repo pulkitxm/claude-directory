@@ -12,7 +12,7 @@ const DESIGN_HEIGHT = 938;
 
 // Assets are vendored locally under /public/assets so the project is fully
 // self-contained and runnable offline (no qclay.design hotlinks at runtime).
-const ASSET = (name: string) => `/assets/${name}`;
+const ASSET = (name: string) => `./assets/${name}`;
 
 /* ------------------------------------------------------------------ */
 /* Triangle helper for the wave-cut logo mask                          */

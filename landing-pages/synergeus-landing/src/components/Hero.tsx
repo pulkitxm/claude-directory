@@ -17,6 +17,7 @@ const MARQUEE_LOGOS = [
 export default function Hero() {
 	return (
 		<section
+			className="synergeus-hero"
 			style={{
 				position: "relative",
 				overflow: "hidden",
@@ -29,6 +30,7 @@ export default function Hero() {
 
 			{/* Dark overlay */}
 			<div
+				className="hero-content"
 				style={{
 					position: "absolute",
 					inset: 0,
@@ -54,6 +56,7 @@ export default function Hero() {
 				}}
 			>
 				<motion.h1
+					className="hero-title"
 					initial={{ opacity: 0, y: -40 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.9, ease: EASE }}
@@ -125,6 +128,7 @@ export default function Hero() {
 
 			{/* Bottom-left block */}
 			<div
+				className="hero-recognition"
 				style={{
 					position: "absolute",
 					bottom: 40,
@@ -170,6 +174,7 @@ export default function Hero() {
 
 			{/* Bottom-right block */}
 			<div
+				className="hero-summary"
 				style={{
 					position: "absolute",
 					bottom: 40,
