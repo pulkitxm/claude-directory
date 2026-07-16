@@ -49,6 +49,7 @@ function NftCard({ video, score, name }: (typeof CARDS)[number]) {
 					<button
 						type="button"
 						aria-label={`Open ${name}`}
+						onClick={() => document.querySelector("#contact")?.scrollIntoView()}
 						className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#b724ff] to-[#7c3aed] text-cream shadow-lg shadow-purple-500/50 transition hover:scale-110"
 					>
 						<svg
