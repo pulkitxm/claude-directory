@@ -22,14 +22,8 @@ const team: Member[] = [
 	{ img: blurDoctor, role: "CARDIOLOGIST", name: "Dr. Aria Vance" },
 ];
 
-// Left intro text column (~270px text + ~54px right gap); also forces the
-// first card to start at x=335.26 so it aligns with the section heading.
 const INTRO_WIDTH = 324;
-// Pixel gap between intro and cards AND between cards.
 const GAP = 11.26;
-// 3 full cards + a sliver of the 4th visible to the right.
-const visible = 3.25;
-const maxIndex = Math.max(0, Math.ceil(team.length - visible));
 
 interface TeamCarouselProps {
 	intro: React.ReactNode;
@@ -38,6 +32,17 @@ interface TeamCarouselProps {
 export function TeamCarousel({ intro }: TeamCarouselProps) {
 	const [index, setIndex] = React.useState(0);
 	const [hovered, setHovered] = React.useState(false);
+	const [compact, setCompact] = React.useState(false);
+	const visibleCards = compact ? 1.15 : 3.25;
+	const maxIndex = Math.max(0, Math.ceil(team.length - visibleCards));
+
+	React.useEffect(() => {
+		const media = window.matchMedia("(max-width: 767px)");
+		const update = () => setCompact(media.matches);
+		update();
+		media.addEventListener("change", update);
+		return () => media.removeEventListener("change", update);
+	}, []);
 
 	return (
 		<div
@@ -45,21 +50,19 @@ export function TeamCarousel({ intro }: TeamCarouselProps) {
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 		>
-			<div className="flex" style={{ gap: GAP }}>
-				{/* Intro column */}
-				<div className="shrink-0" style={{ width: INTRO_WIDTH }}>
+			<div className="pel-team-row flex" style={{ gap: GAP }}>
+				<div className="pel-team-intro shrink-0" style={{ width: INTRO_WIDTH }}>
 					{intro}
 				</div>
 
-				{/* Viewport */}
-				<div className="relative overflow-hidden flex-1 min-w-0">
+				<div className="pel-team-viewport relative overflow-hidden flex-1 min-w-0">
 					<motion.div
 						className="flex"
 						style={{
 							gap: GAP,
 							width: `calc(${team.length} * ((100% - ${
-								(visible - 1) * GAP
-							}px) / ${visible}) + ${(team.length - 1) * GAP}px)`,
+								(visibleCards - 1) * GAP
+							}px) / ${visibleCards}) + ${(team.length - 1) * GAP}px)`,
 						}}
 						animate={{
 							x: `calc(${-index} * (100% + ${GAP}px) / ${team.length})`,
@@ -95,7 +98,6 @@ export function TeamCarousel({ intro }: TeamCarouselProps) {
 						))}
 					</motion.div>
 
-					{/* Central circular arrow puck (shows on hover) */}
 					<AnimatePresence>
 						{hovered && (
 							<motion.div

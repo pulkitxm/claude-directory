@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
+import { useEffect } from "react";
 import clockLamp from "@/assets/clock-lamp.png";
 import doctorComputer from "@/assets/doctor-computer.png";
 import pills from "@/assets/pills.png";
@@ -19,6 +20,10 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+	useEffect(() => {
+		document.title = "Pelmatech - Your Personal Health Companion";
+	}, []);
+
 	return (
 		<div className="bg-background text-foreground">
 			<Header />
@@ -39,19 +44,18 @@ function Hero() {
 				alt="Doctor working at computer"
 				className="absolute inset-0 w-full h-full object-cover"
 			/>
-			{/* Two stacked dark overlays */}
 			<div className="absolute inset-0 bg-black/25" />
 			<div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
 			<div className="absolute inset-0 flex flex-col justify-end pb-16 px-8 md:px-12">
-				<div className="flex items-end justify-between gap-8">
-					{/* Left column */}
+				<div className="pel-hero-row flex items-end justify-between gap-8">
 					<div className="max-w-3xl">
 						<AnimatedHeading
 							as="h1"
 							className="text-white font-medium leading-[1.05]"
 						>
 							<span
+								className="pel-hero-title"
 								style={{
 									fontSize: "72.73px",
 									lineHeight: 1.05,
@@ -64,9 +68,10 @@ function Hero() {
 							</span>
 						</AnimatedHeading>
 
-						<div className="mt-8 w-max">
+						<div className="pel-hero-copy-wrap mt-8 w-max">
 							<AnimatedText className="text-white/85 max-w-xl leading-relaxed">
 								<span
+									className="pel-hero-copy"
 									style={{
 										fontSize: "20.99px",
 										lineHeight: "28.21px",
@@ -74,7 +79,7 @@ function Hero() {
 										width: "608px",
 									}}
 								>
-									Meet your personal online health companion — a comprehensive
+									Meet your personal online health companion, a comprehensive
 									platform offering tools for tracking your fitness goals,
 									monitoring your nutrition, and scheduling your workouts.
 								</span>
@@ -82,8 +87,7 @@ function Hero() {
 						</div>
 					</div>
 
-					{/* Right column */}
-					<div className="flex items-center gap-6 shrink-0 pb-1">
+					<div className="pel-hero-actions flex items-center gap-6 shrink-0 pb-1">
 						<button
 							type="button"
 							className="bg-white text-foreground rounded-full pl-6 pr-2 py-2 flex items-center gap-3 font-medium text-sm hover:bg-white/90 transition"
@@ -102,9 +106,8 @@ function Hero() {
 					</div>
 				</div>
 
-				{/* Hero footer strip */}
 				<div
-					className="mt-12 pt-5 border-t border-white/20 flex items-center justify-between tracking-[0.2em] text-white/70 uppercase"
+					className="pel-hero-footer mt-12 pt-5 border-t border-white/20 flex items-center justify-between tracking-[0.2em] text-white/70 uppercase"
 					style={{ fontSize: "12px" }}
 				>
 					<span>Enterprise Management Applications</span>
@@ -124,7 +127,7 @@ function Hero() {
 function TeamSection() {
 	return (
 		<section className="py-32 px-8 md:px-12" style={{ fontFamily: TT_HOVES }}>
-			<div style={{ paddingLeft: "335.26px" }}>
+			<div className="pel-team-heading" style={{ paddingLeft: "335.26px" }}>
 				<div
 					className="mb-16 flex gap-24 tracking-[0.2em] uppercase text-muted-foreground"
 					style={{ fontSize: "11.26px", fontFamily: TT_HOVES }}
@@ -208,8 +211,7 @@ const BENEFITS: Benefit[] = [
 
 function BenefitsSection() {
 	return (
-		<section className="py-32 px-8 md:px-12 bg-surface">
-			{/* Top intro grid */}
+		<section className="pel-benefits py-32 px-8 md:px-12 bg-surface">
 			<div className="mb-24 grid grid-cols-12 gap-12">
 				<div className="col-span-12 md:col-span-7">
 					<AnimatedHeading className="text-5xl md:text-6xl font-medium leading-[1.05]">
@@ -227,7 +229,6 @@ function BenefitsSection() {
 				</div>
 			</div>
 
-			{/* 3-card grid with custom borders */}
 			<div
 				className="relative grid grid-cols-1 md:grid-cols-3"
 				style={{
@@ -238,7 +239,6 @@ function BenefitsSection() {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				{/* Horizontal lines: top + bottom of the row, fading at section edges */}
 				<span
 					aria-hidden
 					className="pointer-events-none absolute left-0 right-0 top-0 h-px"
