@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { vendorAsset } from "@/lib/assets";
 
 declare global {
 	interface Window {
@@ -12,9 +13,10 @@ async function loadScript(src: string) {
 	if ((window as unknown as Record<string, boolean>)[cacheKey]) return;
 	const res = await fetch(src, { credentials: "include" });
 	if (!res.ok) throw new Error(`fetch ${src} -> ${res.status}`);
-	const text = await res.text();
-	// Execute in global scope so it can assign to window.* like a normal <script>.
-	// eslint-disable-next-line @typescript-eslint/no-implied-eval
+	const text = (await res.text()).replaceAll(
+		'"/vendor/',
+		`"${vendorAsset("")}`,
+	);
 	new Function(text).call(window);
 	(window as unknown as Record<string, boolean>)[cacheKey] = true;
 }
@@ -29,8 +31,8 @@ export default function HeroShader({ className = "" }: { className?: string }) {
 
 		(async () => {
 			try {
-				await loadScript("/vendor/core-renderer.js");
-				await loadScript("/vendor/hero-project.js");
+				await loadScript(vendorAsset("core-renderer.js"));
+				await loadScript(vendorAsset("hero-project.js"));
 				if (cancelled) return;
 
 				const projectData = window._heroProjectData;
@@ -47,13 +49,11 @@ export default function HeroShader({ className = "" }: { className?: string }) {
 				if (blobUrl) URL.revokeObjectURL(blobUrl);
 
 				if (!cancelled) {
-					// wait for renderer to paint a few frames before fading in
 					setTimeout(() => {
 						if (!cancelled) setReady(true);
 					}, 250);
 				}
 
-				// Nudge a mousemove so any mouse-tracking layers initialize.
 				window.dispatchEvent(
 					new MouseEvent("mousemove", {
 						clientX: window.innerWidth / 2,

@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { vendorAsset } from "@/lib/assets";
 
 type NavItem = { label: string; description?: string; external?: boolean };
 type NavColumn = { heading: string; items: NavItem[]; groups?: NavItem[][] };
@@ -70,7 +71,7 @@ const navLinks: NavLink[] = [
 		],
 		announcement: {
 			eyebrow: "Announcement",
-			image: "/vendor/announcement.jpg",
+			image: vendorAsset("announcement.jpg"),
 			title: "Building is just the beginning: Introducing Discoverability",
 			ctaLabel: "Learn more",
 		},
@@ -81,7 +82,7 @@ const navLinks: NavLink[] = [
 	{ label: "Security" },
 ];
 
-const ARROW_SRC = "/vendor/arrow-right.svg";
+const ARROW_SRC = vendorAsset("arrow-right.svg");
 
 const ArrowButton = ({ children }: { children: React.ReactNode }) => (
 	<button
@@ -245,8 +246,8 @@ const HeroNavbar = () => {
             inset: 0;
             pointer-events: none;
             opacity: 0;
-            -webkit-mask: url(/vendor/logo.svg) no-repeat center / contain;
-            mask: url(/vendor/logo.svg) no-repeat center / contain;
+			-webkit-mask: url(${vendorAsset("logo.svg")}) no-repeat center / contain;
+			mask: url(${vendorAsset("logo.svg")}) no-repeat center / contain;
             background-image: linear-gradient(
               90deg,
               #ffffff 0,
@@ -270,7 +271,11 @@ const HeroNavbar = () => {
 
 				<div className="flex items-center">
 					<a href="/" className="logo-link" aria-label="Lovable">
-						<img src="/vendor/logo.svg" alt="Lovable" className="logo-img" />
+						<img
+							src={vendorAsset("logo.svg")}
+							alt="Lovable"
+							className="logo-img"
+						/>
 						<span className="logo-overlay" aria-hidden="true" />
 					</a>
 				</div>
