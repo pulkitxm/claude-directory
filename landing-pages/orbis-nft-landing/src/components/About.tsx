@@ -1,5 +1,8 @@
-const ABOUT_VIDEO =
-	"/assets/hf_20260331_151551_992053d1-3d3e-4b8c-abac-45f22158f411.mp4";
+import { assetUrl } from "../assets";
+
+const ABOUT_VIDEO = assetUrl(
+	"assets/hf_20260331_151551_992053d1-3d3e-4b8c-abac-45f22158f411.mp4",
+);
 
 const ABOUT_COPY =
 	"A digital object fixed beyond time and place. An exploration of distance, form, and silence in space";
@@ -21,7 +24,7 @@ function GhostParagraphs() {
 
 export default function About() {
 	return (
-		<section className="relative min-h-screen overflow-hidden">
+		<section id="about" className="relative min-h-screen overflow-hidden">
 			<video
 				className="absolute inset-0 h-full w-full object-cover"
 				src={ABOUT_VIDEO}
@@ -32,7 +35,6 @@ export default function About() {
 			/>
 
 			<div className="relative z-10 mx-auto flex min-h-screen max-w-[1831px] flex-col justify-between px-5 py-16 sm:px-8 md:py-20 lg:px-12 lg:py-24">
-				{/* Top row */}
 				<div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
 					<div className="relative">
 						<h2 className="font-grotesk text-[32px] uppercase leading-[1.05] text-cream sm:text-[40px] md:text-[48px] lg:text-[60px]">
@@ -50,7 +52,6 @@ export default function About() {
 					</p>
 				</div>
 
-				{/* Bottom row — decorative ghost copy */}
 				<div className="mt-16 flex justify-between">
 					<GhostParagraphs />
 					<div className="hidden lg:block">

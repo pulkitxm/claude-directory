@@ -1,19 +1,24 @@
+import { assetUrl } from "../assets";
+
 const CARDS = [
 	{
-		video:
-			"/assets/hf_20260331_053923_22c0a6a5-313c-474c-85ff-3b50d25e944a.mp4",
+		video: assetUrl(
+			"assets/hf_20260331_053923_22c0a6a5-313c-474c-85ff-3b50d25e944a.mp4",
+		),
 		score: "8.7/10",
 		name: "Orbis #001",
 	},
 	{
-		video:
-			"/assets/hf_20260331_054411_511c1b7a-fb2f-42ef-bf6c-32c0b1a06e79.mp4",
+		video: assetUrl(
+			"assets/hf_20260331_054411_511c1b7a-fb2f-42ef-bf6c-32c0b1a06e79.mp4",
+		),
 		score: "9/10",
 		name: "Orbis #002",
 	},
 	{
-		video:
-			"/assets/hf_20260331_055427_ac7035b5-9f3b-4289-86fc-941b2432317d.mp4",
+		video: assetUrl(
+			"assets/hf_20260331_055427_ac7035b5-9f3b-4289-86fc-941b2432317d.mp4",
+		),
 		score: "8.2/10",
 		name: "Orbis #003",
 	},
@@ -32,7 +37,6 @@ function NftCard({ video, score, name }: (typeof CARDS)[number]) {
 					playsInline
 				/>
 
-				{/* Rarity overlay bar */}
 				<div className="liquid-glass absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-[20px] px-5 py-4">
 					<div>
 						<p className="font-mono text-[11px] uppercase tracking-wide text-cream/70">
@@ -45,6 +49,7 @@ function NftCard({ video, score, name }: (typeof CARDS)[number]) {
 					<button
 						type="button"
 						aria-label={`Open ${name}`}
+						onClick={() => document.querySelector("#contact")?.scrollIntoView()}
 						className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#b724ff] to-[#7c3aed] text-cream shadow-lg shadow-purple-500/50 transition hover:scale-110"
 					>
 						<svg
@@ -69,9 +74,8 @@ function NftCard({ video, score, name }: (typeof CARDS)[number]) {
 
 export default function Collection() {
 	return (
-		<section className="bg-[#010828] py-16 md:py-20 lg:py-24">
+		<section id="gallery" className="bg-[#010828] py-16 md:py-20 lg:py-24">
 			<div className="mx-auto max-w-[1831px] px-5 sm:px-8 lg:px-12">
-				{/* Header row */}
 				<div className="mb-12 flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between lg:mb-16">
 					<h2 className="font-grotesk text-[32px] uppercase leading-[1.1] text-cream sm:text-[40px] md:text-[48px] lg:text-[60px]">
 						Collection of
@@ -83,7 +87,7 @@ export default function Collection() {
 						</span>
 					</h2>
 
-					<a href="#" className="group inline-block shrink-0">
+					<a href="#gallery" className="group inline-block shrink-0">
 						<span className="flex items-end gap-3">
 							<span className="font-grotesk text-[32px] uppercase leading-none text-cream sm:text-[40px] md:text-[48px] lg:text-[60px]">
 								See
@@ -97,7 +101,6 @@ export default function Collection() {
 					</a>
 				</div>
 
-				{/* Card grid */}
 				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{CARDS.map((card) => (
 						<NftCard key={card.video} {...card} />

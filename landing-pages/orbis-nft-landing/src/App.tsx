@@ -2,6 +2,7 @@ import About from "./components/About";
 import Collection from "./components/Collection";
 import Cta from "./components/Cta";
 import Hero from "./components/Hero";
+import { assetUrl } from "./assets";
 
 export default function App() {
 	return (
@@ -10,8 +11,11 @@ export default function App() {
 			<About />
 			<Collection />
 			<Cta />
-			{/* Full-screen grain overlay above everything */}
-			<div className="texture-overlay" aria-hidden="true" />
+			<div
+				className="texture-overlay"
+				style={{ backgroundImage: `url(${assetUrl("texture.png")})` }}
+				aria-hidden="true"
+			/>
 		</main>
 	);
 }
