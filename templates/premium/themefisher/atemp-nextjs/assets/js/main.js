@@ -1,7 +1,6 @@
 (function () {
   "use strict";
 
-  // Scroll reveal
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) {
@@ -12,7 +11,6 @@
   }, { threshold: 0.15 });
   document.querySelectorAll("[data-aos]").forEach(function (el) { io.observe(el); });
 
-  // Mobile menu
   var hamburger = document.querySelector(".hamburger");
   var mobilePanel = document.querySelector(".mobile-panel");
   var overlay = document.querySelector(".mobile-overlay");
@@ -22,7 +20,6 @@
   if (overlay) overlay.addEventListener("click", closeMobile);
   if (mobileClose) mobileClose.addEventListener("click", closeMobile);
 
-  // Nav dropdown (click toggle for touch, hover handled by CSS)
   document.querySelectorAll(".nav-drop > span").forEach(function (trigger) {
     trigger.addEventListener("click", function () {
       trigger.parentElement.classList.toggle("open");
@@ -34,7 +31,6 @@
     });
   });
 
-  // Accordion (FAQ)
   document.querySelectorAll(".accordion-item").forEach(function (item) {
     var trigger = item.querySelector(".accordion-trigger");
     var panel = item.querySelector(".accordion-panel");
@@ -52,7 +48,6 @@
     });
   });
 
-  // Pricing tabs
   document.querySelectorAll(".tab-toggle").forEach(function (toggle) {
     var buttons = toggle.querySelectorAll("button");
     buttons.forEach(function (btn) {
@@ -67,7 +62,6 @@
     });
   });
 
-  // Theme toggle
   var root = document.documentElement;
   var toggle = document.querySelector(".theme-toggle");
   function applyStoredTheme() {
@@ -85,11 +79,40 @@
     });
   }
 
-  // Sticky header shrink shadow
   var header = document.querySelector(".site-header");
   if (header) {
     window.addEventListener("scroll", function () {
       header.style.boxShadow = window.scrollY > 8 ? "0 4px 16px rgba(0,0,0,.06)" : "none";
     }, { passive: true });
   }
+
+  var noticeClose = document.querySelector("#close-header-learn-more");
+  if (noticeClose) noticeClose.addEventListener("click", function () {
+    var notice = document.querySelector("#close-header-parent");
+    if (notice) notice.hidden = true;
+  });
+
+  document.querySelectorAll(".accordion").forEach(function (item) {
+    var trigger = item.querySelector(".accordion-header");
+    if (trigger) trigger.addEventListener("click", function () { item.classList.toggle("active"); });
+  });
+
+  document.querySelectorAll(".c-tab").forEach(function (tab) {
+    var buttons = tab.querySelectorAll(".c-tab-nav-item");
+    var panels = tab.querySelectorAll(".c-tab-content-panel");
+    var prices = tab.querySelectorAll(".c-tab-content-panel strong.h2");
+    var periods = tab.querySelectorAll(".c-tab-content-panel strong.h2 + span");
+    buttons.forEach(function (button, index) {
+      button.addEventListener("click", function () {
+        buttons.forEach(function (entry) { entry.classList.remove("active"); });
+        panels.forEach(function (entry) { entry.classList.remove("active"); });
+        button.classList.add("active");
+        if (panels[index]) panels[index].classList.add("active");
+        else if (panels[0]) panels[0].classList.add("active");
+        var values = index === 1 ? ["$250", "$352", "$599"] : ["$50", "$64", "$79"];
+        prices.forEach(function (price, priceIndex) { price.textContent = values[priceIndex]; });
+        periods.forEach(function (period) { period.textContent = index === 1 ? "/Year" : "/Month"; });
+      });
+    });
+  });
 })();
