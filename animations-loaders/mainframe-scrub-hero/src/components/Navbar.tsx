@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const NAV_LINKS = ["Labs", "Studio", "Openings", "Shop"];
 
 export function Navbar() {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+	useEffect(() => {
+		const onKeyDown = (event: KeyboardEvent) => {
+			if (event.key === "Escape") setIsMobileMenuOpen(false);
+		};
+		window.addEventListener("keydown", onKeyDown);
+		return () => window.removeEventListener("keydown", onKeyDown);
+	}, []);
+
 	return (
 		<header className="fixed top-0 inset-x-0 z-10 px-5 sm:px-8 py-4 sm:py-5 flex flex-row justify-between items-center bg-transparent">
-			{/* Logo */}
-			<a href="#" className="flex flex-row items-center gap-3">
+			<a href="#spade-hero" className="flex flex-row items-center gap-3">
 				<span className="text-[21px] sm:text-[26px] tracking-tight text-black font-medium select-none">
 					Mainframe&reg;
 				</span>
@@ -20,14 +27,16 @@ export function Navbar() {
 				</span>
 			</a>
 
-			{/* Desktop nav links */}
 			<nav
 				aria-label="Primary"
 				className="hidden md:flex flex-row text-[23px] text-black"
 			>
 				{NAV_LINKS.map((link, index) => (
 					<span key={link} className="flex flex-row">
-						<a href="#" className="hover:opacity-60 transition-opacity">
+						<a
+							href="#spade-hero"
+							className="hover:opacity-60 transition-opacity"
+						>
 							{link}
 						</a>
 						{index < NAV_LINKS.length - 1 && (
@@ -37,19 +46,18 @@ export function Navbar() {
 				))}
 			</nav>
 
-			{/* Desktop CTA */}
 			<a
-				href="#"
+				href="#spade-hero"
 				className="hidden md:inline text-[23px] text-black underline underline-offset-2 hover:opacity-60 transition-opacity"
 			>
 				Get in touch
 			</a>
 
-			{/* Mobile hamburger — kept above the overlay so it can close the menu. */}
 			<button
 				type="button"
 				aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
 				aria-expanded={isMobileMenuOpen}
+				aria-controls="mainframe-mobile-menu"
 				onClick={() => setIsMobileMenuOpen((open) => !open)}
 				className="md:hidden relative z-10 flex flex-col items-center justify-center gap-[5px] w-10 h-10 -mr-2"
 			>
@@ -70,16 +78,14 @@ export function Navbar() {
 				/>
 			</button>
 
-			{/* Mobile navigation overlay. Rendered inside the fixed z-10 header so it
-          stacks above the white content layer (also z-10, later in the DOM);
-          within the header it sits at z-[9], below the hamburger. */}
 			<div
+				id="mainframe-mobile-menu"
 				data-testid="mobile-overlay"
 				aria-hidden={!isMobileMenuOpen}
 				className={`md:hidden fixed inset-0 z-[9] bg-white/95 backdrop-blur-sm transition-opacity duration-300 ${
 					isMobileMenuOpen
-						? "opacity-100 pointer-events-auto"
-						: "opacity-0 pointer-events-none"
+						? "visible opacity-100 pointer-events-auto"
+						: "invisible opacity-0 pointer-events-none"
 				}`}
 			>
 				<nav
@@ -89,7 +95,8 @@ export function Navbar() {
 					{NAV_LINKS.map((link, index) => (
 						<a
 							key={link}
-							href="#"
+							href="#spade-hero"
+							tabIndex={isMobileMenuOpen ? 0 : -1}
 							onClick={() => setIsMobileMenuOpen(false)}
 							className="flex items-baseline gap-3 text-4xl tracking-tight text-black py-2 hover:opacity-60 transition-opacity"
 						>
@@ -100,7 +107,8 @@ export function Navbar() {
 						</a>
 					))}
 					<a
-						href="#"
+						href="#spade-hero"
+						tabIndex={isMobileMenuOpen ? 0 : -1}
 						onClick={() => setIsMobileMenuOpen(false)}
 						className="mt-8 text-lg text-black underline underline-offset-4 hover:opacity-60 transition-opacity"
 					>

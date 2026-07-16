@@ -1,23 +1,16 @@
 import { useEffect, useRef } from "react";
 
-const VIDEO_SRC =
-	"/assets/hf_20260601_110537_3a579fa0-7bbc-4d94-9d25-0e816c7840f5.mp4";
+const BASE_URL = (import.meta as ImportMeta & { env: { BASE_URL: string } }).env
+	.BASE_URL;
+const VIDEO_SRC = `${BASE_URL}assets/hf_20260601_110537_3a579fa0-7bbc-4d94-9d25-0e816c7840f5.mp4`;
 
-/** Breakpoint below which scrubbing is disabled and normal playback kicks in. */
 const DESKTOP_MIN_WIDTH = 1024;
 
-/** Fraction of the timeline covered by one full-viewport-width mouse sweep. */
 const SWEEP_RATIO = 0.8;
 
-/**
- * Full-bleed background video. On desktop (>= 1024px) the cursor's horizontal
- * motion scrubs the film natively via `currentTime`; on smaller screens the
- * video simply autoplays.
- */
 export function BackgroundVideo() {
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	// Desktop mouse scrubbing.
 	useEffect(() => {
 		const video = videoRef.current;
 		if (!video) return;
@@ -27,15 +20,11 @@ export function BackgroundVideo() {
 		let seekInFlight = false;
 		let queuedTime: number | null = null;
 
-		// Issue at most one seek at a time; queue the latest target while the
-		// browser is busy so tracking stays smooth frame to frame.
 		const requestSeek = (time: number) => {
 			if (seekInFlight) {
 				queuedTime = time;
 				return;
 			}
-			// Skip no-op seeks: the browser fires no `seeked` event for them, which
-			// would leave the in-flight flag stuck and wedge the pipeline.
 			if (Math.abs(time - video.currentTime) < 0.002) return;
 			seekInFlight = true;
 			video.currentTime = time;
@@ -55,7 +44,7 @@ export function BackgroundVideo() {
 		};
 
 		const handleMouseMove = (event: MouseEvent) => {
-			if (window.innerWidth < DESKTOP_MIN_WIDTH) return; // scrubbing disabled on mobile frames
+			if (window.innerWidth < DESKTOP_MIN_WIDTH) return;
 
 			if (previousX === null) {
 				previousX = event.clientX;
@@ -86,15 +75,12 @@ export function BackgroundVideo() {
 		};
 	}, []);
 
-	// Mobile autoplay — scrubbing is off below the desktop breakpoint.
 	useEffect(() => {
 		const video = videoRef.current;
 		if (!video) return;
 		if (window.innerWidth < DESKTOP_MIN_WIDTH) {
 			video.autoplay = true;
-			video.play().catch(() => {
-				/* Muted autoplay is normally allowed; ignore policy rejections. */
-			});
+			video.play().catch(() => undefined);
 		}
 	}, []);
 

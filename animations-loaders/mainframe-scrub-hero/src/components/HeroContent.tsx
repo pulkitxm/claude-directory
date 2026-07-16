@@ -9,7 +9,6 @@ export function HeroContent() {
 
 	return (
 		<>
-			{/* Headline */}
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
@@ -23,7 +22,6 @@ export function HeroContent() {
 				</h1>
 			</motion.div>
 
-			{/* Secondary description */}
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
@@ -35,7 +33,6 @@ export function HeroContent() {
 				</p>
 			</motion.div>
 
-			{/* Service selection */}
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}

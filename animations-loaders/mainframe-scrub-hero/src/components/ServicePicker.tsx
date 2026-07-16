@@ -22,7 +22,6 @@ export function ServicePicker() {
 			</h2>
 			<p className="opacity-85 text-[#738273] mb-8">Select all that apply</p>
 
-			{/* Multi-select pills */}
 			<div className="flex flex-wrap gap-3 mb-7">
 				{SERVICE_OPTIONS.map((option) => {
 					const isActive = services.includes(option);
@@ -58,7 +57,6 @@ export function ServicePicker() {
 				})}
 			</div>
 
-			{/* Contingent feedback status banner */}
 			<AnimatePresence mode="wait">
 				{services.length === 0 ? (
 					<motion.p
