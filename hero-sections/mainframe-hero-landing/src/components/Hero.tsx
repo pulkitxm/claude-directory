@@ -58,7 +58,7 @@ export function Hero() {
 			);
 			targetTimeRef.current = newTime;
 
-			if (!seekingRef.current) {
+			if (!seekingRef.current && Math.abs(video.currentTime - newTime) > 0.01) {
 				seekingRef.current = true;
 				video.currentTime = newTime;
 			}
