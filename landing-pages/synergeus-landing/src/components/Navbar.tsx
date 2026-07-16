@@ -5,6 +5,7 @@ const NAV_ITEMS = ["Advisors", "What we do", "AI Intelligence", "Tools"];
 export default function Navbar() {
 	return (
 		<nav
+			className="site-nav"
 			style={{
 				position: "fixed",
 				top: 0,
@@ -15,6 +16,7 @@ export default function Navbar() {
 			}}
 		>
 			<div
+				className="site-nav-row"
 				style={{
 					position: "relative",
 					display: "flex",
@@ -23,7 +25,11 @@ export default function Navbar() {
 				}}
 			>
 				{/* Left: logo */}
-				<a href="#" style={{ display: "inline-flex", alignItems: "center" }}>
+				<a
+					className="site-logo"
+					href="#"
+					style={{ display: "inline-flex", alignItems: "center" }}
+				>
 					<img
 						src={ASSETS.logoLov}
 						alt="Synergeus"
@@ -33,7 +39,7 @@ export default function Navbar() {
 
 				{/* Center pill nav */}
 				<div
-					className="font-heading"
+					className="font-heading site-nav-links"
 					style={{
 						position: "absolute",
 						left: "50%",
@@ -76,6 +82,7 @@ export default function Navbar() {
 
 				{/* Right: login + CTA */}
 				<div
+					className="site-nav-actions"
 					style={{
 						marginLeft: "auto",
 						display: "flex",

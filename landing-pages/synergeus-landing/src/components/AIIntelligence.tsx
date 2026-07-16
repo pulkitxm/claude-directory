@@ -78,6 +78,7 @@ export default function AIIntelligence() {
 
 	return (
 		<section
+			className="intelligence-section"
 			style={{
 				background: "#000",
 				padding: "80px 48px 80px",
@@ -85,7 +86,11 @@ export default function AIIntelligence() {
 			}}
 		>
 			{/* Header */}
-			<div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
+			<div
+				ref={ref}
+				className="section-heading intelligence-heading"
+				style={{ textAlign: "center", marginBottom: 64 }}
+			>
 				<div
 					style={{
 						fontFamily: '"Inter Tight", sans-serif',
@@ -100,6 +105,7 @@ export default function AIIntelligence() {
 				</div>
 
 				<motion.h2
+					className="section-title intelligence-title"
 					initial={{ opacity: 0, filter: "blur(12px)", y: 30 }}
 					animate={
 						isInView ? { opacity: 1, filter: "blur(0px)", y: 0 } : undefined
@@ -155,6 +161,7 @@ export default function AIIntelligence() {
 
 			{/* Cards row */}
 			<div
+				className="intelligence-grid"
 				style={{
 					display: "flex",
 					gap: 16,
@@ -165,6 +172,7 @@ export default function AIIntelligence() {
 			>
 				{/* ---------- CARD 1 — Natural Language Queries ---------- */}
 				<motion.div
+					className="intelligence-card"
 					initial={{ opacity: 0, y: 40 }}
 					animate={isInView ? { opacity: 1, y: 0 } : undefined}
 					transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
@@ -388,6 +396,7 @@ export default function AIIntelligence() {
 
 				{/* ---------- CARD 2 — Predictive Analysis ---------- */}
 				<motion.div
+					className="intelligence-card"
 					initial={{ opacity: 0, y: 40 }}
 					animate={isInView ? { opacity: 1, y: 0 } : undefined}
 					transition={{ duration: 0.7, ease: "easeOut", delay: 0.35 }}
@@ -603,6 +612,7 @@ export default function AIIntelligence() {
 
 				{/* ---------- CARD 3 — Smart Categorization ---------- */}
 				<motion.div
+					className="intelligence-card"
 					initial={{ opacity: 0, y: 40 }}
 					animate={isInView ? { opacity: 1, y: 0 } : undefined}
 					transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
