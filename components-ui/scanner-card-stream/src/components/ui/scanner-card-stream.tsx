@@ -11,17 +11,17 @@ import {
 } from "react";
 import * as THREE from "three";
 
-// --- Default Images (used if no cardImages prop is provided) ---
-// Vendored locally under /assets/cards so the component runs fully offline.
+const assetUrl = (path: string) =>
+	`${(import.meta as ImportMeta & { env: { BASE_URL: string } }).env.BASE_URL}${path}`;
+
 const defaultCardImages = [
-	"/assets/cards/01.jpg",
-	"/assets/cards/02.jpg",
-	"/assets/cards/03.jpg",
-	"/assets/cards/04.jpg",
-	"/assets/cards/05.jpg",
+	assetUrl("assets/cards/01.jpg"),
+	assetUrl("assets/cards/02.jpg"),
+	assetUrl("assets/cards/03.jpg"),
+	assetUrl("assets/cards/04.jpg"),
+	assetUrl("assets/cards/05.jpg"),
 ];
 
-// --- Helper function to generate ASCII-like code ---
 const ASCII_CHARS =
 	"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789(){}[]<>;:,._-+=!@#$%^&*|\\/\"'`~?";
 const generateCode = (width: number, height: number): string => {
@@ -36,7 +36,6 @@ const generateCode = (width: number, height: number): string => {
 	return out;
 };
 
-// --- Component Props Type Definition ---
 export type ScannerCardStreamProps = {
 	showControls?: boolean;
 	showSpeed?: boolean;
@@ -49,7 +48,6 @@ export type ScannerCardStreamProps = {
 	scanEffect?: "clip" | "scramble";
 };
 
-// --- The Main Component ---
 const ScannerCardStream = ({
 	showControls = false,
 	showSpeed = false,
@@ -108,7 +106,6 @@ const ScannerCardStream = ({
 		cardStreamState.current.direction *= -1;
 	}, []);
 
-	// Keep the live cardLineWidth in sync when the card set changes.
 	useEffect(() => {
 		cardStreamState.current.cardLineWidth = (400 + cardGap) * cards.length;
 	}, [cards.length, cardGap]);
@@ -123,7 +120,6 @@ const ScannerCardStream = ({
 		const scrambleIntervals = new Set<ReturnType<typeof setInterval>>();
 		let animationFrameId: number;
 
-		// --- Three.js ambient particle field ---
 		const scene = new THREE.Scene();
 		const camera = new THREE.OrthographicCamera(
 			-window.innerWidth / 2,
@@ -192,7 +188,6 @@ const ScannerCardStream = ({
 		const particles = new THREE.Points(geometry, material);
 		scene.add(particles);
 
-		// --- 2D scanner spark field ---
 		const ctx = scannerCanvas.getContext("2d")!;
 		scannerCanvas.width = window.innerWidth;
 		scannerCanvas.height = 300;
@@ -296,7 +291,6 @@ const ScannerCardStream = ({
 			scannerState.current.isScanning = anyCardIsScanning;
 		};
 
-		// --- Pointer / wheel interaction (drag to scrub, flick for momentum) ---
 		const pointerX = (e: MouseEvent | TouchEvent) =>
 			"touches" in e ? (e.touches[0]?.clientX ?? 0) : e.clientX;
 
@@ -317,7 +311,6 @@ const ScannerCardStream = ({
 			const dt = Math.max((now - s.lastDragTime) / 1000, 1 / 240);
 			s.position += dx;
 			if (dx !== 0) s.direction = dx < 0 ? -1 : 1;
-			// Track instantaneous speed so a flick hands off real momentum.
 			s.velocity = Math.min(Math.abs(dx) / dt, 4000);
 			s.lastMouseX = x;
 			s.lastDragTime = now;
@@ -326,7 +319,6 @@ const ScannerCardStream = ({
 			const s = cardStreamState.current;
 			if (!s.isDragging) return;
 			s.isDragging = false;
-			// Floor the released velocity so the stream keeps gliding.
 			s.velocity = Math.max(s.velocity, initialSpeed);
 			cardLine.style.cursor = "grab";
 		};
@@ -374,7 +366,6 @@ const ScannerCardStream = ({
 			cardLine.style.transform = `translateX(${s.position}px)`;
 			updateCardEffects();
 
-			// Ambient particles
 			const time = currentTime * 0.001;
 			for (let i = 0; i < particleCount; i++) {
 				positions[i * 3] += velocities[i] * 0.016;
@@ -390,7 +381,6 @@ const ScannerCardStream = ({
 			geometry.attributes.alpha.needsUpdate = true;
 			renderer.render(scene, camera);
 
-			// Scanner sparks
 			ctx.clearRect(0, 0, window.innerWidth, 300);
 			const targetCount = scannerState.current.isScanning
 				? scanTargetMaxParticles
@@ -440,7 +430,6 @@ const ScannerCardStream = ({
 
 	return (
 		<main className="relative w-screen h-screen flex items-center justify-center overflow-hidden">
-			{/* Subtle vignette + grid backdrop for depth */}
 			<div
 				aria-hidden
 				className="pointer-events-none absolute inset-0 opacity-[0.35]"
