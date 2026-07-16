@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const PHILOSOPHY_VIDEO_URL =
-	"/assets/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4";
+	"./assets/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4";
 
 const TEXT_BLOCKS = [
 	{
