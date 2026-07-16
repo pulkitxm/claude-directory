@@ -13,31 +13,31 @@ import { AnimatePresence, motion, usePresence } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 const VIDEO_URL =
-	"/assets/magnific_use-img-2-as-the-exact-ba_Piu3X0W42C_wnrc8f.mp4";
+	"./assets/magnific_use-img-2-as-the-exact-ba_Piu3X0W42C_wnrc8f.mp4";
 
 const PTERODACTYL_URL =
-	"/assets/ChatGPT_Image_May_23_2026_12_24_44_PM_1_lv1dne.png";
+	"./assets/ChatGPT_Image_May_23_2026_12_24_44_PM_1_lv1dne.png";
 
 const chaptersData = [
 	{
 		name: "Age of Dinosaurs",
-		image: "/assets/01_udnber.png",
+		image: "./assets/01_udnber.png",
 	},
 	{
 		name: "Fossils of Ancient Life",
-		image: "/assets/02_pmvxxl.png",
+		image: "./assets/02_pmvxxl.png",
 	},
 	{
 		name: "Reptiles of the Mesozoic",
-		image: "/assets/03_hcp3jc.png",
+		image: "./assets/03_hcp3jc.png",
 	},
 	{
 		name: "Marine Fossil Gallery",
-		image: "/assets/04_get63z.png",
+		image: "./assets/04_get63z.png",
 	},
 	{
 		name: "Prehistoric Giants",
-		image: "/assets/05_kz1tyu.png",
+		image: "./assets/05_kz1tyu.png",
 	},
 ];
 
@@ -668,7 +668,7 @@ export default function App() {
 			{/* ============================================================ */}
 			{/* SECTION 3 — ANCIENT COLLECTION (dark)                        */}
 			{/* ============================================================ */}
-			<section className="relative z-30 flex w-full flex-col bg-[#0a0a0a] text-white">
+			<section className="relative z-30 flex w-full flex-col overflow-hidden bg-[#0a0a0a] text-white">
 				{/* 3A. Pterodactyl image, overlapping upward */}
 				<motion.img
 					src={PTERODACTYL_URL}
