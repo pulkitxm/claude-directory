@@ -100,12 +100,18 @@
   document.querySelectorAll(".c-tab").forEach(function (tab) {
     var buttons = tab.querySelectorAll(".c-tab-nav-item");
     var panels = tab.querySelectorAll(".c-tab-content-panel");
+    var prices = tab.querySelectorAll(".c-tab-content-panel strong.h2");
+    var periods = tab.querySelectorAll(".c-tab-content-panel strong.h2 + span");
     buttons.forEach(function (button, index) {
       button.addEventListener("click", function () {
         buttons.forEach(function (entry) { entry.classList.remove("active"); });
         panels.forEach(function (entry) { entry.classList.remove("active"); });
         button.classList.add("active");
         if (panels[index]) panels[index].classList.add("active");
+        else if (panels[0]) panels[0].classList.add("active");
+        var values = index === 1 ? ["$250", "$352", "$599"] : ["$50", "$64", "$79"];
+        prices.forEach(function (price, priceIndex) { price.textContent = values[priceIndex]; });
+        periods.forEach(function (period) { period.textContent = index === 1 ? "/Year" : "/Month"; });
       });
     });
   });
