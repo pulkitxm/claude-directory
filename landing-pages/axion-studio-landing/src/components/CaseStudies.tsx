@@ -1,11 +1,9 @@
 import { ArrowRight } from "lucide-react";
 
 const NARRATIV_VIDEO =
-	"/assets/hf_20260516_122702_390f5305-8719-41d5-ae80-d23ab3796c28.mp4";
+	"./assets/hf_20260516_122702_390f5305-8719-41d5-ae80-d23ab3796c28.mp4";
 const LUMINAR_VIDEO =
-	"/assets/hf_20260516_123323_f909c2b8-ff6c-4edf-882b-8ebcdbe389b5.mp4";
-
-/** Lucide "link" icon drawn manually with its two arc paths. */
+	"./assets/hf_20260516_123323_f909c2b8-ff6c-4edf-882b-8ebcdbe389b5.mp4";
 function LinkIcon({ className }: { className?: string }) {
 	return (
 		<svg
@@ -47,7 +45,6 @@ export default function CaseStudies() {
 				</div>
 
 				<div className="grid grid-cols-1 gap-5 px-5 sm:gap-6 sm:px-8 md:grid-cols-2 lg:gap-7 lg:px-12">
-					{/* Card 1: Narrativ */}
 					<article>
 						<div className="group relative aspect-[329/246] cursor-pointer overflow-hidden rounded-2xl bg-[#1a1d2e]">
 							<video
@@ -74,7 +71,6 @@ export default function CaseStudies() {
 						</h3>
 					</article>
 
-					{/* Card 2: Luminar */}
 					<article>
 						<div className="group relative aspect-square cursor-pointer overflow-hidden rounded-2xl bg-[#6b6b6b]">
 							<video
