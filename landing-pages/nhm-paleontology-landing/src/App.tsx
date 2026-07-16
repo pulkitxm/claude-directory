@@ -668,7 +668,7 @@ export default function App() {
 			{/* ============================================================ */}
 			{/* SECTION 3 — ANCIENT COLLECTION (dark)                        */}
 			{/* ============================================================ */}
-			<section className="relative z-30 flex w-full flex-col bg-[#0a0a0a] text-white">
+			<section className="relative z-30 flex w-full flex-col overflow-hidden bg-[#0a0a0a] text-white">
 				{/* 3A. Pterodactyl image, overlapping upward */}
 				<motion.img
 					src={PTERODACTYL_URL}
