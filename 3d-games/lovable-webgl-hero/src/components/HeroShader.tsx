@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { vendorAsset } from "@/lib/assets";
 
 declare global {
@@ -23,7 +23,6 @@ async function loadScript(src: string) {
 
 export default function HeroShader({ className = "" }: { className?: string }) {
 	const containerRef = useRef<HTMLDivElement | null>(null);
-	const [ready, setReady] = useState(false);
 
 	useEffect(() => {
 		let cancelled = false;
@@ -45,9 +44,6 @@ export default function HeroShader({ className = "" }: { className?: string }) {
 				blobUrl = URL.createObjectURL(blob);
 				container.setAttribute("data-cr-project-src", blobUrl);
 
-				setTimeout(() => {
-					if (!cancelled) setReady(true);
-				}, 250);
 				const renderer = window.CoreRenderer.init();
 				renderer.finally(() => {
 					if (blobUrl) URL.revokeObjectURL(blobUrl);
@@ -83,11 +79,7 @@ export default function HeroShader({ className = "" }: { className?: string }) {
 				height: "100vh",
 				zIndex: 0,
 				overflow: "hidden",
-				opacity: ready ? 1 : 0,
-				transform: ready ? "translateY(0)" : "translateY(40px)",
-				transition:
-					"opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1)",
-				willChange: "opacity, transform",
+				opacity: 1,
 			}}
 		/>
 	);
