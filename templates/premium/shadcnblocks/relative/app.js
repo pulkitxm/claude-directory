@@ -58,7 +58,7 @@ desktopFeatures?.addEventListener("click", () => {
 	desktopFeatures.dataset.state = open ? "open" : "closed";
 	const viewport = desktopFeatures.closest("nav").lastElementChild;
 	viewport.innerHTML = open
-		? `<div data-state="open" data-orientation="horizontal" class="origin-top-center bg-popover text-popover-foreground relative mt-1.5 w-full overflow-hidden rounded-md border shadow md:w-auto"><div data-state="open" data-orientation="horizontal"><ul class="w-[400px] p-4">${featureItems.map(([title, description, hash]) => `<li><a class="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground flex items-center gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none" href="/index.html${hash}"><div><div class="text-sm leading-none font-medium">${title}</div><p class="text-muted-foreground line-clamp-2 text-sm leading-snug">${description}</p></div></a></li>`).join("")}</ul></div></div>`
+		? `<div data-state="open" data-orientation="horizontal" class="origin-top-center bg-popover text-popover-foreground relative mt-1.5 w-full overflow-hidden rounded-md border shadow md:w-auto"><div data-state="open" data-orientation="horizontal"><ul class="w-[400px] p-4">${featureItems.map(([title, description, hash]) => `<li><a class="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground flex items-center gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none" href="./index.html${hash}"><div><div class="text-sm leading-none font-medium">${title}</div><p class="text-muted-foreground line-clamp-2 text-sm leading-snug">${description}</p></div></a></li>`).join("")}</ul></div></div>`
 		: "";
 });
 
