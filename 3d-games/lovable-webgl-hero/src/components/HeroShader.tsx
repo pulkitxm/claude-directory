@@ -45,14 +45,13 @@ export default function HeroShader({ className = "" }: { className?: string }) {
 				blobUrl = URL.createObjectURL(blob);
 				container.setAttribute("data-cr-project-src", blobUrl);
 
-				await window.CoreRenderer.init();
-				if (blobUrl) URL.revokeObjectURL(blobUrl);
-
-				if (!cancelled) {
-					setTimeout(() => {
-						if (!cancelled) setReady(true);
-					}, 250);
-				}
+				const renderer = window.CoreRenderer.init();
+				renderer.finally(() => {
+					if (blobUrl) URL.revokeObjectURL(blobUrl);
+				});
+				setTimeout(() => {
+					if (!cancelled) setReady(true);
+				}, 250);
 
 				window.dispatchEvent(
 					new MouseEvent("mousemove", {
