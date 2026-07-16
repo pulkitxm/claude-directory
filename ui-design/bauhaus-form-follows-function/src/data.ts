@@ -161,7 +161,7 @@ export const TESTIMONIALS: {
 			"It forced every decision onto the grid. Our product finally looks composed instead of decorated.",
 		name: "Anni Brandt",
 		role: "Head of Design, Form Co.",
-		img: "/img/avatar-1.jpg",
+		img: "./img/avatar-1.jpg",
 		accent: "red",
 	},
 	{
@@ -169,7 +169,7 @@ export const TESTIMONIALS: {
 			"Three colours, two border widths, one font. The constraints did more for consistency than any 60-page guideline.",
 		name: "Josef Klee",
 		role: "Principal Engineer, Gropius Labs",
-		img: "/img/avatar-2.jpg",
+		img: "./img/avatar-2.jpg",
 		accent: "blue",
 	},
 	{
@@ -177,7 +177,7 @@ export const TESTIMONIALS: {
 			"Hard shadows and thick borders read instantly. Our hand-off time to engineering basically halved.",
 		name: "Lyonel Albers",
 		role: "Design Systems Lead, Dessau",
-		img: "/img/avatar-3.jpg",
+		img: "./img/avatar-3.jpg",
 		accent: "yellow",
 	},
 ];
@@ -193,21 +193,21 @@ export const POSTS: {
 		title: "Why a three-colour palette beats a hundred shades",
 		tag: "Theory",
 		read: "6 min",
-		img: "/img/journal-1.jpg",
+		img: "./img/journal-1.jpg",
 		round: true,
 	},
 	{
 		title: "Hard shadows: depth without a single blur",
 		tag: "Craft",
 		read: "4 min",
-		img: "/img/journal-2.jpg",
+		img: "./img/journal-2.jpg",
 		round: false,
 	},
 	{
 		title: "Breaking the grid on purpose, and getting away with it",
 		tag: "Layout",
 		read: "8 min",
-		img: "/img/journal-3.jpg",
+		img: "./img/journal-3.jpg",
 		round: true,
 	},
 ];
