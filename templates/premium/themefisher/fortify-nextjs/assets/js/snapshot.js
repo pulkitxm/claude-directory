@@ -1,4 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const navigationToggle = document.querySelector('#nav-toggle');
+  const navigationMenu = document.querySelector('#nav-menu');
+  if (navigationToggle && navigationMenu) {
+    navigationToggle.addEventListener('change', () => {
+      navigationMenu.classList.toggle('hidden', !navigationToggle.checked);
+    });
+    navigationMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => { navigationToggle.checked = false; });
+    });
+  }
+
+  document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+    const trigger = dropdown.querySelector('.nav-link');
+    const panel = dropdown.querySelector('.nav-dropdown-list');
+    if (!trigger || !panel) return;
+    trigger.addEventListener('click', event => {
+      if (window.innerWidth >= 1024) return;
+      event.preventDefault();
+      panel.classList.toggle('static-open');
+    });
+  });
+
   document.querySelectorAll('.pricing-check').forEach(toggle => {
     toggle.addEventListener('change', () => {
       document.querySelectorAll('.data-count').forEach(price => {
