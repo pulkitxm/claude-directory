@@ -183,16 +183,32 @@ async function buildProject(project) {
 
 async function runPool(projects) {
 	let index = 0;
+	const failures = [];
 	async function worker() {
 		while (index < projects.length) {
 			const project = projects[index];
 			index += 1;
-			await buildProject(project);
+			try {
+				await buildProject(project);
+			} catch (error) {
+				failures.push({ project: relative(root, project), error });
+			} finally {
+				await rm(join(project, "node_modules"), {
+					recursive: true,
+					force: true,
+				});
+			}
 		}
 	}
 	await Promise.all(
 		Array.from({ length: Math.min(concurrency, projects.length) }, worker),
 	);
+	if (failures.length > 0) {
+		const summary = failures
+			.map(({ project, error }) => `${project}: ${error.message}`)
+			.join("\n");
+		throw new Error(`${failures.length} preview builds failed\n${summary}`);
+	}
 }
 
 const discovered = await findProjects(root);
