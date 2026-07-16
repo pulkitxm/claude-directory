@@ -30,11 +30,10 @@ export default function Navbar() {
 				aria-label="Primary"
 				className="grid grid-cols-12 max-w-7xl mx-auto items-center gap-x-4 md:gap-x-8 px-8 md:px-16 lg:px-20"
 			>
-				{/* Left — brand (cols 1-3) */}
 				<a
-					href="#"
+					href="#home"
 					className="col-span-6 md:col-span-3 flex items-center gap-2.5 group"
-					aria-label="mėntality — home"
+					aria-label="mėntality home"
 				>
 					<CloverIcon className="w-6 h-6 md:w-7 md:h-7 transition-transform duration-500 ease-out group-hover:rotate-90" />
 					<span className="font-display text-xl md:text-2xl font-medium tracking-tight text-[#1a1a1a]">
@@ -42,12 +41,11 @@ export default function Navbar() {
 					</span>
 				</a>
 
-				{/* Center — desktop links (cols 4-9) */}
 				<ul className="hidden md:flex col-span-6 items-center justify-center gap-6 lg:gap-9">
 					{NAV_LINKS.map((link) => (
 						<li key={link}>
 							<a
-								href="#"
+								href="#home"
 								className="text-[13px] lowercase tracking-wide text-zinc-600 hover:text-[#1a1a1a] transition-colors duration-200 whitespace-nowrap"
 							>
 								{link}
@@ -56,23 +54,21 @@ export default function Navbar() {
 					))}
 				</ul>
 
-				{/* Right — actions (cols 10-12) */}
 				<div className="col-span-6 md:col-span-3 flex items-center justify-end gap-4 lg:gap-6">
 					<a
-						href="#"
+						href="#home"
 						className="hidden md:inline-block text-[13px] lowercase tracking-wide text-zinc-600 hover:text-[#1a1a1a] transition-colors duration-200 whitespace-nowrap"
 					>
 						find help
 					</a>
 					<a
-						href="#"
+						href="#home"
 						className="hidden sm:inline-flex items-center gap-2 bg-[#1a1a1a] text-white text-[13px] lowercase tracking-wide rounded-full pl-5 pr-4 py-2.5 transition-all duration-300 hover:bg-black hover:gap-3 whitespace-nowrap"
 					>
 						get started
 						<span aria-hidden="true">&rarr;</span>
 					</a>
 
-					{/* Mobile hamburger */}
 					<button
 						type="button"
 						onClick={() => setOpen((v) => !v)}
@@ -95,7 +91,6 @@ export default function Navbar() {
 				</div>
 			</nav>
 
-			{/* Mobile drawer */}
 			<AnimatePresence>
 				{open && (
 					<motion.div
@@ -117,7 +112,7 @@ export default function Navbar() {
 										className="border-b border-black/[0.06] last:border-none"
 									>
 										<a
-											href="#"
+											href="#home"
 											onClick={() => setOpen(false)}
 											className="block py-3.5 font-display text-lg lowercase text-[#1a1a1a]"
 										>
@@ -127,7 +122,7 @@ export default function Navbar() {
 								))}
 							</ul>
 							<motion.a
-								href="#"
+								href="#home"
 								onClick={() => setOpen(false)}
 								initial={{ opacity: 0, y: 8 }}
 								animate={{ opacity: 1, y: 0 }}
