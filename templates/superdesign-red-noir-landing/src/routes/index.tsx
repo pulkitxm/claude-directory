@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
 	component: Home,
 });
 
-function Home() {
+export function Home() {
 	return (
 		<div className="min-h-screen bg-black text-white font-inter relative overflow-x-hidden selection-red">
 			<Background />

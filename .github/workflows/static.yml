@@ -1,66 +1,43 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: "**/package-lock.json"
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Strip non-deployable content
-        # Two things get dropped from the deploy artifact only (git history is
-        # untouched):
-        #   1. .reference/ dirs -- scrape recon (screenshots, raw HTML/CSS)
-        #      used only while building/auditing clones, never linked live.
-        #   2. "Complex" projects -- anything with a package.json next to its
-        #      prompt.md (React/Next/Vite templates that need a build step).
-        #      These never get a live-preview iframe on the site (only plain
-        #      HTML/CSS/JS projects do), so their source has no reason to be
-        #      in a static Pages deploy. demo.mp4/poster/README/prompt.md are
-        #      kept so the project still has something to show.
-        run: |
-          find . -type d -name '.reference' -prune -exec rm -rf {} +
-
-          find . -name 'prompt.md' -not -path './.git/*' | while read -r prompt; do
-            dir="$(dirname "$prompt")"
-            if [ -f "$dir/package.json" ]; then
-              find "$dir" -mindepth 1 -maxdepth 1 \
-                ! -name 'demo.mp4' ! -name 'poster.*' \
-                ! -name 'README.md' ! -name 'prompt.md' \
-                -exec rm -rf {} +
-            fi
-          done
+      - name: Build previews
+        run: node scripts/build-pages.mjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository (minus stripped content, see above)
-          path: '.'
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

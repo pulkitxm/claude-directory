@@ -16,7 +16,7 @@ type ScrollHeroProps = {
  * and the telemetry HUD (speed/gear/rail) is written straight to the DOM to
  * avoid re-rendering React on every frame.
  */
-export default function ScrollHero({ src = "/hero.mp4" }: ScrollHeroProps) {
+export default function ScrollHero({ src = "./hero.mp4" }: ScrollHeroProps) {
 	const trackRef = useRef<HTMLElement>(null);
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const introRef = useRef<HTMLDivElement>(null);
