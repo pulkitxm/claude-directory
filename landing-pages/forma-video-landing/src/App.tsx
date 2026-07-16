@@ -7,8 +7,7 @@ import {
 } from "lucide-react";
 import { type FormEvent, useState } from "react";
 
-const VIDEO_URL =
-	"/assets/hf_20260602_150901_c45b90ec-18d7-42ff-90e2-b95d7109e330.mp4";
+const VIDEO_URL = `${import.meta.env.BASE_URL}assets/hf_20260602_150901_c45b90ec-18d7-42ff-90e2-b95d7109e330.mp4`;
 
 const SERVICES = [
 	"Website",
@@ -82,7 +81,6 @@ export default function App() {
 				/>
 
 				<div className="relative z-10 flex flex-col min-h-[calc(100vh-24px)] sm:min-h-[calc(100vh-32px)] md:min-h-[calc(100vh-48px)] lg:h-full p-4 sm:p-6 md:p-8 gap-6">
-					{/* Navbar */}
 					<header className="flex">
 						<nav className="bg-white/60 backdrop-blur-md rounded-2xl shadow-sm pl-3 sm:pl-4 pr-2 py-2 w-full sm:w-auto flex items-center gap-3 sm:gap-6">
 							<a href="#" aria-label="Forma home" className="shrink-0">
@@ -110,19 +108,17 @@ export default function App() {
 									</a>
 								))}
 							</div>
-							<button
-								type="button"
+							<a
+								href="#contact"
 								className="ml-auto bg-black text-white text-sm font-medium px-4 sm:px-5 py-2 rounded-xl hover:bg-gray-800 transition-colors whitespace-nowrap"
 							>
 								Start a project
-							</button>
+							</a>
 						</nav>
 					</header>
 
-					{/* Spacer */}
 					<div className="flex-1 min-h-[2rem]" />
 
-					{/* Bottom row: headline + form */}
 					<div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
 						<p className="text-white text-3xl sm:text-4xl xl:text-5xl font-medium leading-tight drop-shadow-lg lg:max-w-lg xl:max-w-2xl shrink-0">
 							We craft bold ideas
@@ -139,7 +135,10 @@ export default function App() {
 							</span>
 						</p>
 
-						<div className="w-full lg:w-[min(480px,45%)] shrink-0">
+						<div
+							id="contact"
+							className="w-full lg:w-[min(480px,45%)] shrink-0 scroll-mt-6"
+						>
 							<div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden p-4 sm:p-6 flex flex-col gap-4">
 								<h2 className="text-xl sm:text-2xl font-semibold text-black tracking-tight">
 									Say hello! 👋
@@ -209,6 +208,7 @@ export default function App() {
 											<input
 												id="contact-name"
 												type="text"
+												required
 												placeholder="Full name"
 												value={name}
 												onChange={(e) => setName(e.target.value)}
@@ -216,6 +216,7 @@ export default function App() {
 											/>
 											<input
 												type="email"
+												required
 												placeholder="Email"
 												value={email}
 												onChange={(e) => setEmail(e.target.value)}
@@ -224,6 +225,7 @@ export default function App() {
 										</div>
 										<textarea
 											rows={4}
+											required
 											placeholder="What are you looking to build or improve..."
 											value={message}
 											onChange={(e) => setMessage(e.target.value)}
