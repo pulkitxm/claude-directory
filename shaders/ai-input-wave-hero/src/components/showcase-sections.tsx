@@ -145,7 +145,7 @@ export default function Page() {
 
 function CodeBlock({ label, code }: { label: string; code: string }) {
 	return (
-		<div className="code-shell overflow-hidden rounded-2xl">
+		<div className="code-shell min-w-0 max-w-full overflow-hidden rounded-2xl">
 			<div className="flex items-center gap-2 border-b border-white/5 px-4 py-2.5">
 				<span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
 				<span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
@@ -189,10 +189,10 @@ function IntegrationSection() {
 				</Reveal>
 
 				<div className="mt-12 grid gap-5 lg:grid-cols-2">
-					<Reveal>
+					<Reveal className="min-w-0">
 						<CodeBlock label="install.sh" code={INSTALL_SNIPPET} />
 					</Reveal>
-					<Reveal delay={90}>
+					<Reveal className="min-w-0" delay={90}>
 						<CodeBlock label="page.tsx" code={USAGE_SNIPPET} />
 					</Reveal>
 				</div>
