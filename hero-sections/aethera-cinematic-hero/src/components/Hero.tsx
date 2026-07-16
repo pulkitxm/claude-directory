@@ -1,6 +1,7 @@
 export default function Hero() {
 	return (
 		<section
+			id="hero"
 			className="relative z-10 flex flex-col items-center justify-center px-6 pb-40 text-center"
 			style={{ paddingTop: "calc(8rem - 75px)" }}
 		>
@@ -18,12 +19,12 @@ export default function Hero() {
 				flows.
 			</p>
 
-			<button
-				type="button"
+			<a
+				href="mailto:hello@aethera.studio?subject=Begin%20a%20journey"
 				className="animate-fade-rise-delay-2 mt-12 rounded-full bg-ink px-14 py-5 text-base text-background transition-transform duration-300 ease-out hover:scale-103"
 			>
 				Begin Journey
-			</button>
+			</a>
 		</section>
 	);
 }
