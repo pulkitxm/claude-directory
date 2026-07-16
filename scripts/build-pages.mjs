@@ -49,6 +49,24 @@ async function findProjects(directory) {
 }
 
 async function stageRepository(projects) {
+	if (process.env.GITHUB_ACTIONS === "true") {
+		const checkoutEvidence = [];
+		async function collectCheckout(directory) {
+			for (const entry of await readdir(directory, { withFileTypes: true })) {
+				if (!entry.isDirectory() || entry.name === ".git") continue;
+				const path = join(directory, entry.name);
+				if (entry.name === ".reference" || entry.name === ".audit")
+					checkoutEvidence.push(path);
+				else if (path !== output) await collectCheckout(path);
+			}
+		}
+		await collectCheckout(root);
+		await Promise.all(
+			checkoutEvidence.map((path) =>
+				rm(path, { recursive: true, force: true }),
+			),
+		);
+	}
 	await rm(output, { recursive: true, force: true });
 	await mkdir(output, { recursive: true });
 	const archive = await mkdtemp(join(tmpdir(), "fable-pages-"));
@@ -71,24 +89,6 @@ async function stageRepository(projects) {
 	await Promise.all(
 		evidence.map((path) => rm(path, { recursive: true, force: true })),
 	);
-	if (process.env.GITHUB_ACTIONS === "true") {
-		const checkoutEvidence = [];
-		async function collectCheckout(directory) {
-			for (const entry of await readdir(directory, { withFileTypes: true })) {
-				if (!entry.isDirectory() || entry.name === ".git") continue;
-				const path = join(directory, entry.name);
-				if (entry.name === ".reference" || entry.name === ".audit")
-					checkoutEvidence.push(path);
-				else if (path !== output) await collectCheckout(path);
-			}
-		}
-		await collectCheckout(root);
-		await Promise.all(
-			checkoutEvidence.map((path) =>
-				rm(path, { recursive: true, force: true }),
-			),
-		);
-	}
 	for (const project of projects) {
 		const staged = join(output, relative(root, project));
 		const preserved = await mkdtemp(join(tmpdir(), "fable-metadata-"));
