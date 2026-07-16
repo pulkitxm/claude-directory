@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 
 const VIDEO_URL =
-	"/assets/hf_20260530_042513_df96a13b-6155-4f6e-8b93-c9dee66fba08.mp4";
+	"./assets/hf_20260530_042513_df96a13b-6155-4f6e-8b93-c9dee66fba08.mp4";
 
 const SENSITIVITY = 0.8;
 
@@ -58,7 +58,7 @@ export function Hero() {
 			);
 			targetTimeRef.current = newTime;
 
-			if (!seekingRef.current) {
+			if (!seekingRef.current && Math.abs(video.currentTime - newTime) > 0.01) {
 				seekingRef.current = true;
 				video.currentTime = newTime;
 			}
