@@ -1,10 +1,10 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 
-const VIDEO_SRC =
-	"/assets/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4";
+const BASE_URL = (import.meta as ImportMeta & { env: { BASE_URL: string } }).env
+	.BASE_URL;
+const VIDEO_SRC = `${BASE_URL}assets/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4`;
 
-/** Inline pill-shaped "pupil" element nested in the headline. */
 function EyePill() {
 	return (
 		<span className="w-[16px] md:w-[42px] lg:w-[62px] h-[16px] md:h-[26px] lg:h-[34px] border-[2px] border-[#1a1a1a] rounded-full inline-flex items-center justify-center align-middle mx-1 md:mx-2 overflow-hidden">
@@ -58,9 +58,20 @@ function LanguagePill() {
 }
 
 export default function Hero() {
+	const [question, setQuestion] = useState("");
+	const [submitted, setSubmitted] = useState(false);
+
+	function submitQuestion(event: React.FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		if (!question.trim()) return;
+		setSubmitted(true);
+	}
+
 	return (
-		<section className="relative min-h-[110vh] sm:min-h-[140vh] w-full flex flex-col items-center justify-start overflow-hidden bg-bg-base">
-			{/* Background video, blended into the #EDEEF5 base */}
+		<section
+			id="home"
+			className="relative min-h-[110vh] sm:min-h-[140vh] w-full flex flex-col items-center justify-start overflow-hidden bg-bg-base"
+		>
 			<div className="absolute top-[15vh] sm:top-[20vh] left-0 w-full h-[95vh] sm:h-[120vh] z-0 pointer-events-none">
 				<video
 					autoPlay
@@ -73,7 +84,6 @@ export default function Hero() {
 				<div className="absolute top-0 left-0 w-full h-24 sm:h-32 bg-gradient-to-b from-bg-base to-transparent"></div>
 			</div>
 
-			{/* Hero content */}
 			<div className="max-w-7xl w-full mx-auto px-8 md:px-16 lg:px-20 relative z-10 grid grid-cols-12 gap-x-4 md:gap-x-8 pt-28 sm:pt-32 md:pt-44">
 				<div className="col-span-12 md:col-span-10 md:col-start-2">
 					<motion.h1
@@ -94,8 +104,8 @@ export default function Hero() {
 						</span>
 					</motion.h1>
 
-					{/* Search pill */}
-					<motion.div
+					<motion.form
+						onSubmit={submitQuestion}
 						initial={{ opacity: 0, y: 15 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, delay: 0.15 }}
@@ -103,12 +113,17 @@ export default function Hero() {
 					>
 						<input
 							type="text"
+							value={question}
+							onChange={(event) => {
+								setQuestion(event.target.value);
+								setSubmitted(false);
+							}}
 							placeholder="Ask me anything..."
 							aria-label="Ask me anything"
 							className="flex-1 min-w-0 bg-transparent outline-none border-none text-sm md:text-[15px] text-zinc-800 placeholder:text-zinc-400 py-2 pr-3"
 						/>
 						<button
-							type="button"
+							type="submit"
 							aria-label="Submit question"
 							className="bg-[#1a1a1a] text-white w-9 h-9 rounded-full relative shrink-0 transition-transform duration-300 hover:scale-105 active:scale-95"
 						>
@@ -125,11 +140,13 @@ export default function Hero() {
 								<path d="M9 6l6 6-6 6" />
 							</svg>
 						</button>
-					</motion.div>
+					</motion.form>
+					<p aria-live="polite" className="mt-3 text-sm text-zinc-600 min-h-5">
+						{submitted ? "Thanks. Your question is ready for review." : ""}
+					</p>
 				</div>
 			</div>
 
-			{/* Architectural edge anchors */}
 			<LanguagePill />
 			<motion.span
 				initial={{ opacity: 0 }}
