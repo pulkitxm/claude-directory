@@ -1,37 +1,32 @@
 import { useEffect, useRef } from "react";
 
 const MARQUEE_IMAGES = [
-	"/assets/hero-space-voyage-preview-eECLH3Yc.gif",
-	"/assets/hero-codenest-preview-Cgppc2qV.gif",
-	"/assets/hero-vex-ventures-preview-BczMFIiw.gif",
-	"/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif",
-	"/assets/hero-asme-preview-B_nGDnTP.gif",
-	"/assets/hero-transform-data-preview-Cx5OU29N.gif",
-	"/assets/hero-vitara-preview-Cjz2QYyU.gif",
-	"/assets/hero-terra-preview-BFjrCr7T.gif",
-	"/assets/hero-skyelite-preview-DHaZIgUv.gif",
-	"/assets/hero-aethera-preview-DknSlcTa.gif",
-	"/assets/hero-designpro-preview-D8c5_een.gif",
-	"/assets/hero-stellar-ai-preview-D3HL6bw1.gif",
-	"/assets/hero-xportfolio-preview-D4A8maiC.gif",
-	"/assets/hero-orbit-web3-preview-BXt4OttD.gif",
-	"/assets/hero-nexora-preview-cx5HmUgo.gif",
-	"/assets/hero-evr-ventures-preview-DZxeVFEX.gif",
-	"/assets/hero-planet-orbit-preview-DWAP8Z1P.gif",
-	"/assets/hero-new-era-preview-CocuDUm9.gif",
-	"/assets/hero-wealth-preview-B70idl_u.gif",
-	"/assets/hero-luminex-preview-CxOP7ce6.gif",
-	"/assets/hero-celestia-preview-0yO3jXO8.gif",
+	"./assets/hero-space-voyage-preview-eECLH3Yc.gif",
+	"./assets/hero-codenest-preview-Cgppc2qV.gif",
+	"./assets/hero-vex-ventures-preview-BczMFIiw.gif",
+	"./assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif",
+	"./assets/hero-asme-preview-B_nGDnTP.gif",
+	"./assets/hero-transform-data-preview-Cx5OU29N.gif",
+	"./assets/hero-vitara-preview-Cjz2QYyU.gif",
+	"./assets/hero-terra-preview-BFjrCr7T.gif",
+	"./assets/hero-skyelite-preview-DHaZIgUv.gif",
+	"./assets/hero-aethera-preview-DknSlcTa.gif",
+	"./assets/hero-designpro-preview-D8c5_een.gif",
+	"./assets/hero-stellar-ai-preview-D3HL6bw1.gif",
+	"./assets/hero-xportfolio-preview-D4A8maiC.gif",
+	"./assets/hero-orbit-web3-preview-BXt4OttD.gif",
+	"./assets/hero-nexora-preview-cx5HmUgo.gif",
+	"./assets/hero-evr-ventures-preview-DZxeVFEX.gif",
+	"./assets/hero-planet-orbit-preview-DWAP8Z1P.gif",
+	"./assets/hero-new-era-preview-CocuDUm9.gif",
+	"./assets/hero-wealth-preview-B70idl_u.gif",
+	"./assets/hero-luminex-preview-CxOP7ce6.gif",
+	"./assets/hero-celestia-preview-0yO3jXO8.gif",
 ];
 
 const ROW_ONE = MARQUEE_IMAGES.slice(0, 11);
 const ROW_TWO = MARQUEE_IMAGES.slice(11);
 
-/**
- * Rows are tripled and pre-shifted left by one copy (-33.3333%) so the
- * scroll-driven px offset can move them either direction without ever
- * exposing a gap at the edges.
- */
 const rowTransform = (offsetPx: number) =>
 	`translateX(calc(-33.3333% + ${offsetPx}px))`;
 
@@ -59,7 +54,6 @@ function MarqueeRow({
 					key={`${i}-${src}`}
 					src={src}
 					alt=""
-					loading="lazy"
 					className="h-[270px] w-[420px] shrink-0 rounded-2xl object-cover"
 				/>
 			))}
