@@ -14,7 +14,8 @@ import type { CSSProperties } from "react";
 import heroFlowers from "@/assets/hero-flowers.png";
 
 const VIDEO_SRC =
-	"/assets/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4";
+	"./assets/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4";
+const LOGO_SRC = "./logo.png";
 
 const PILLS = ["Artistic Gallery", "AI Generation", "3D Structures"];
 
@@ -24,14 +25,12 @@ const SOCIALS = [
 	{ label: "Instagram", href: "https://instagram.com", Icon: Instagram },
 ];
 
-/** Staggered page-load reveal delay for .animate-rise elements. */
 const rise = (delayMs: number): CSSProperties =>
 	({ "--rise-delay": `${delayMs}ms` }) as CSSProperties;
 
 export default function App() {
 	return (
 		<div className="relative min-h-screen overflow-hidden">
-			{/* Looping video backdrop */}
 			<video
 				className="absolute inset-0 z-0 h-full w-full object-cover"
 				src={VIDEO_SRC}
@@ -41,7 +40,6 @@ export default function App() {
 				playsInline
 			/>
 
-			{/* Everything floats above the video */}
 			<main className="relative z-10 flex min-h-screen flex-row">
 				<LeftPanel />
 				<RightPanel />
@@ -50,21 +48,15 @@ export default function App() {
 	);
 }
 
-/* ------------------------------------------------------------------ */
-/* Left panel — glass slab with nav, hero and quote                    */
-/* ------------------------------------------------------------------ */
-
 function LeftPanel() {
 	return (
 		<section className="relative flex min-h-screen w-full flex-col px-9 py-10 lg:w-[52%] lg:px-14 lg:py-12">
-			{/* Frosted slab behind the whole panel */}
 			<div
 				className="liquid-glass-strong absolute inset-4 rounded-3xl lg:inset-6"
 				aria-hidden="true"
 			/>
 
 			<div className="relative z-10 flex flex-1 flex-col">
-				{/* Nav */}
 				<header
 					className="animate-rise flex items-center justify-between"
 					style={rise(0)}
@@ -75,7 +67,7 @@ function LeftPanel() {
 						aria-label="Bloom home"
 					>
 						<img
-							src="/logo.png"
+							src={LOGO_SRC}
 							alt="Bloom logo"
 							width={32}
 							height={32}
@@ -94,10 +86,9 @@ function LeftPanel() {
 					</button>
 				</header>
 
-				{/* Hero center */}
 				<div className="flex flex-1 flex-col items-center justify-center gap-8 py-14 text-center">
 					<img
-						src="/logo.png"
+						src={LOGO_SRC}
 						alt=""
 						width={80}
 						height={80}
@@ -142,7 +133,6 @@ function LeftPanel() {
 					</ul>
 				</div>
 
-				{/* Bottom quote */}
 				<footer
 					className="animate-rise flex flex-col items-center gap-4 pb-2 text-center"
 					style={rise(420)}
@@ -168,14 +158,9 @@ function LeftPanel() {
 	);
 }
 
-/* ------------------------------------------------------------------ */
-/* Right panel — floating glass widgets (desktop only)                 */
-/* ------------------------------------------------------------------ */
-
 function RightPanel() {
 	return (
 		<aside className="relative hidden min-h-screen w-[48%] flex-col gap-6 py-6 pl-2 pr-6 lg:flex">
-			{/* Top bar */}
 			<div
 				className="animate-rise flex items-center justify-between"
 				style={rise(120)}
@@ -218,7 +203,6 @@ function RightPanel() {
 				</div>
 			</div>
 
-			{/* Community card */}
 			<div
 				className="liquid-glass animate-rise w-56 self-end rounded-3xl p-5"
 				style={rise(220)}
@@ -230,7 +214,6 @@ function RightPanel() {
 				</p>
 			</div>
 
-			{/* Bottom feature section */}
 			<div
 				className="liquid-glass animate-rise mt-auto rounded-[2.5rem] p-3"
 				style={rise(320)}
@@ -244,7 +227,7 @@ function RightPanel() {
 					<FeatureCard
 						Icon={BookOpen}
 						title="Growth Archive"
-						description="Every bloom is versioned — revisit and evolve any stage of growth."
+						description="Every bloom is versioned, revisit and evolve any stage of growth."
 					/>
 				</div>
 
