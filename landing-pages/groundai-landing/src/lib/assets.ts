@@ -1,11 +1,6 @@
-// All media for the GroundAI landing page is referenced through this single `A`
-// object. The original remote source is documented in REMOTE_BASE, but every
-// asset has been vendored locally into /public/assets so the project is fully
-// self-contained and runnable offline. `BASE` therefore points at the local
-// asset root and every value is `${BASE}/<filename>`.
 export const REMOTE_BASE = "https://qclay.design/lovable/groundai";
 
-const BASE = "/assets";
+const BASE = "./assets";
 
 export const A = {
 	BASE,
