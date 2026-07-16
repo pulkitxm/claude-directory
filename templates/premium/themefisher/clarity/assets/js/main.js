@@ -6,6 +6,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', event => event.preventDefault());
+  });
+
   // ===== NAVBAR TOGGLE (mobile) =====
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
@@ -25,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===== NAV DROPDOWNS =====
-  const dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
+  const dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle, [data-dropdown-toggle]');
   dropdownToggles.forEach(toggle => {
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
@@ -51,10 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ===== PRICING TOGGLE =====
-  const pricingToggle = document.getElementById('pricing-toggle');
+  const pricingToggle = document.getElementById('pricing-toggle') || document.querySelector('.pricing-check');
   const monthlyLabel = document.getElementById('billing-monthly');
   const yearlyLabel = document.getElementById('billing-yearly');
-  const pricingSection = document.querySelector('.pricing-section');
+  const pricingSection = document.querySelector('.pricing-section') || pricingToggle?.closest('section');
 
   if (pricingToggle) {
     pricingToggle.addEventListener('click', () => {
@@ -71,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const accordionHeaders = document.querySelectorAll('.accordion-header');
   accordionHeaders.forEach(header => {
     header.addEventListener('click', () => {
+      if (header.closest('details')) return;
       const item = header.closest('.accordion-item');
       const isOpen = item.classList.contains('open');
 
