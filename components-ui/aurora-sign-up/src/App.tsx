@@ -9,8 +9,9 @@ import {
 import { motion, type Variants } from "motion/react";
 import { useState } from "react";
 
-const VIDEO_SRC =
-	"/assets/hf_20260506_081238_406ed0e3-5d83-436e-a512-0bbff7ec5b95.mp4";
+const BASE_URL = (import.meta as ImportMeta & { env: { BASE_URL: string } }).env
+	.BASE_URL;
+const VIDEO_SRC = `${BASE_URL}assets/hf_20260506_081238_406ed0e3-5d83-436e-a512-0bbff7ec5b95.mp4`;
 
 const heroContainer: Variants = {
 	hidden: { opacity: 0 },
@@ -27,10 +28,10 @@ const heroItem: Variants = {
 
 export default function App() {
 	const [showPassword, setShowPassword] = useState(false);
+	const [formStatus, setFormStatus] = useState("");
 
 	return (
 		<main className="flex min-h-screen w-full bg-black selection:bg-white/30 p-2 transition-all duration-500 lg:h-screen lg:overflow-hidden lg:p-4">
-			{/* ── Left column · hero over background video ─────────────────── */}
 			<section className="hidden lg:flex relative w-[52%] flex-col items-center justify-end pb-32 px-12 rounded-3xl overflow-hidden shadow-2xl h-full">
 				<video
 					className="absolute inset-0 w-full h-full object-cover"
@@ -82,7 +83,6 @@ export default function App() {
 				</motion.div>
 			</section>
 
-			{/* ── Right column · sign-up form ──────────────────────────────── */}
 			<section className="flex-1 flex flex-col items-center justify-center py-12 lg:py-6 px-4 sm:px-12 lg:px-16 xl:px-24 overflow-y-auto lg:overflow-hidden">
 				<motion.div
 					initial={{ opacity: 0 }}
@@ -100,8 +100,16 @@ export default function App() {
 					</header>
 
 					<div className="grid grid-cols-2 gap-4">
-						<SocialButton icon={Chrome} label="Google" />
-						<SocialButton icon={Github} label="Github" />
+						<SocialButton
+							icon={Chrome}
+							label="Google"
+							onClick={() => setFormStatus("Google sign-up selected.")}
+						/>
+						<SocialButton
+							icon={Github}
+							label="Github"
+							onClick={() => setFormStatus("Github sign-up selected.")}
+						/>
 					</div>
 
 					<div className="relative">
@@ -120,7 +128,10 @@ export default function App() {
 
 					<form
 						className="space-y-5"
-						onSubmit={(event) => event.preventDefault()}
+						onSubmit={(event) => {
+							event.preventDefault();
+							setFormStatus("Account details are ready to submit.");
+						}}
 					>
 						<div className="grid grid-cols-2 gap-4">
 							<InputGroup label="First Name" placeholder="Ava" type="text" />
@@ -147,6 +158,7 @@ export default function App() {
 									type={showPassword ? "text" : "password"}
 									placeholder="••••••••"
 									minLength={8}
+									required
 									autoComplete="new-password"
 									className="w-full bg-brand-gray border-none rounded-xl h-11 px-4 pr-12 text-sm text-white placeholder:text-white/20 outline-none focus:ring-2 focus:ring-white/20 transition-shadow duration-200"
 								/>
@@ -176,6 +188,13 @@ export default function App() {
 						</button>
 					</form>
 
+					<p
+						className="min-h-5 text-center text-sm text-white/60"
+						role="status"
+					>
+						{formStatus}
+					</p>
+
 					<p className="text-center text-sm text-white/40">
 						Member of the team?{" "}
 						<a
@@ -190,8 +209,6 @@ export default function App() {
 		</main>
 	);
 }
-
-/* ── Reusable components ─────────────────────────────────────────────── */
 
 function StepItem({
 	number,
@@ -225,13 +242,16 @@ function StepItem({
 function SocialButton({
 	icon: Icon,
 	label,
+	onClick,
 }: {
 	icon: LucideIcon;
 	label: string;
+	onClick: () => void;
 }) {
 	return (
 		<button
 			type="button"
+			onClick={onClick}
 			className="flex h-12 items-center justify-center gap-2.5 bg-black border border-white/10 rounded-xl hover:bg-white/5 text-sm font-medium text-white transition-colors duration-200"
 		>
 			<Icon className="h-4 w-4" aria-hidden="true" />
@@ -259,6 +279,7 @@ function InputGroup({
 				id={id}
 				name={id}
 				type={type}
+				required
 				placeholder={placeholder}
 				className="w-full bg-brand-gray border-none rounded-xl h-11 px-4 text-sm text-white placeholder:text-white/20 outline-none focus:ring-2 focus:ring-white/20 transition-shadow duration-200"
 			/>
