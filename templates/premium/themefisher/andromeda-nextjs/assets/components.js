@@ -1,4 +1,3 @@
-/* Shared header + footer injection for Andromeda clone */
 (function() {
   const NAV_LINKS = [
     { href: 'index.html', text: 'Home' },
@@ -144,10 +143,47 @@
     els.forEach(el => obs.observe(el));
   }
 
+  function initStaticInteractions() {
+    const dropdownButton = document.getElementById('dropdown-button');
+    const dropdown = document.getElementById('dropdown');
+    if (dropdownButton && dropdown) {
+      dropdownButton.addEventListener('click', event => {
+        if (window.innerWidth < 1024) {
+          dropdown.classList.toggle('static-open');
+          event.stopPropagation();
+        }
+      });
+    }
+
+    const pricingToggle = document.querySelector('.pricing-check');
+    if (pricingToggle) {
+      const prices = document.querySelectorAll('.h3.inline-flex > span');
+      const periods = document.querySelectorAll('.h3.inline-flex + span');
+      pricingToggle.addEventListener('change', () => {
+        const values = pricingToggle.checked ? ['139', '199', '229'] : ['39', '99', '129'];
+        prices.forEach((price, index) => { price.textContent = values[index]; });
+        periods.forEach(period => { period.textContent = pricingToggle.checked ? '/Year' : '/Month'; });
+      });
+    }
+
+    document.querySelectorAll('.play-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const dialog = document.createElement('dialog');
+        dialog.className = 'video-dialog';
+        dialog.innerHTML = '<button type="button" aria-label="Close video">×</button><iframe title="Andromeda introduction video" src="https://www.youtube.com/embed/ResipmZmpDU?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        document.body.append(dialog);
+        dialog.querySelector('button').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('close', () => dialog.remove());
+        dialog.showModal();
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     injectHeader();
     injectFooter();
     initNav();
     initAOS();
+    initStaticInteractions();
   });
 })();
