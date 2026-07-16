@@ -1,5 +1,4 @@
 (() => {
-	/* ---------- Data ---------- */
 	const projects = [
 		{
 			n: "01",
@@ -53,14 +52,13 @@
 		{ img: "assets/img/marquee-5.jpg", tag: "Vanta", shape: "b" },
 	];
 
-	/* ---------- Build grid ---------- */
 	const grid = document.getElementById("grid");
 	grid.innerHTML = projects
 		.map(
 			(p) => `
     <a class="card" href="#">
       <div class="card__media">
-        <img src="${p.img}" alt="${p.title} — ${p.cat}" loading="lazy" />
+		<img src="${p.img}" alt="${p.title} — ${p.cat}" />
         <div class="card__overlay"></div>
         <span class="card__arrow" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -77,13 +75,12 @@
 		)
 		.join("");
 
-	/* ---------- Build marquee (duplicated group for seamless loop) ---------- */
 	const groupHTML = marquee
 		.concat(marquee)
 		.map(
 			(m) => `
     <figure class="mq-card mq-card--${m.shape}">
-      <img src="${m.img}" alt="" loading="lazy" />
+		<img src="${m.img}" alt="" />
       <figcaption class="mq-card__tag">${m.tag}</figcaption>
     </figure>`,
 		)
@@ -92,7 +89,6 @@
 		g.innerHTML = groupHTML;
 	});
 
-	/* ---------- Hero staggered letter reveal ---------- */
 	document.querySelectorAll(".hero__title .word").forEach((word) => {
 		const text = word.textContent;
 		word.innerHTML = "";
@@ -104,7 +100,6 @@
 			word.appendChild(span);
 		});
 	});
-	// trigger after paint
 	requestAnimationFrame(() =>
 		requestAnimationFrame(() => {
 			document.querySelectorAll(".hero__title .char").forEach((c) => {
@@ -117,7 +112,6 @@
 		}),
 	);
 
-	/* ---------- IntersectionObserver reveals ---------- */
 	const io = new IntersectionObserver(
 		(entries) => {
 			entries.forEach((e) => {
@@ -133,7 +127,6 @@
 		.querySelectorAll(".card, .intro .reveal")
 		.forEach((el) => io.observe(el));
 
-	/* ---------- Menu toggle ---------- */
 	const nav = document.getElementById("nav");
 	const menu = document.getElementById("menu");
 	const toggle = document.getElementById("menuToggle");
@@ -144,6 +137,7 @@
 		nav.classList.toggle("is-open", open);
 		menu.setAttribute("aria-hidden", String(!open));
 		toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+		toggle.setAttribute("aria-expanded", String(open));
 		document.body.style.overflow = open ? "hidden" : "";
 	};
 	toggle.addEventListener("click", () => setMenu(!menuOpen));
@@ -154,7 +148,6 @@
 		if (e.key === "Escape" && menuOpen) setMenu(false);
 	});
 
-	/* ---------- Custom difference cursor (lerp) ---------- */
 	const cursor = document.getElementById("cursor");
 	const fine = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
 	if (fine && !window.matchMedia("(prefers-reduced-motion:reduce)").matches) {
