@@ -1,9 +1,3 @@
-/* Studio clone — vanilla-JS shim reproducing the Framer-Motion / Headless-UI behaviours
-   of the Tailwind Plus "Studio" template:
-     1. Header nav flyout: hamburger expands a black panel (height 0.5rem -> full),
-        pushing the white page sheet down; the icon morphs hamburger <-> X.
-     2. FadeIn scroll-reveal: elements rendered with
-        style="opacity:0;transform:translateY(24px)" fade up into view, staggered. */
 (function () {
 	"use strict";
 
@@ -59,7 +53,6 @@
 			}, 520);
 		}
 
-		// The X-close button(s) inside the panel.
 		panel
 			.querySelectorAll('button[aria-label="Toggle navigation"]')
 			.forEach(function (b) {
@@ -124,17 +117,12 @@
 		nodes.forEach(function (el) {
 			io.observe(el);
 		});
-		// Reveal above-the-fold content immediately so the resting state is correct.
 		window.setTimeout(function () {
 			nodes.forEach(function (el) {
 				var r = el.getBoundingClientRect();
 				if (r.top < window.innerHeight && el.style.opacity === "0") reveal(el);
 			});
 		}, 200);
-		// Safety net: any element still hidden after a beat (e.g. a non-scrolling
-		// full-page capture, or a layout where IO never fires) is force-revealed so
-		// nothing is ever permanently invisible. The on-scroll entrance still plays
-		// for elements that intersect before this fires.
 		window.setTimeout(function () {
 			nodes.forEach(function (el) {
 				if (el.style.opacity === "0") reveal(el);
