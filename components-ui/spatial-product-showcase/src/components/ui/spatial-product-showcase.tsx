@@ -6,33 +6,30 @@ import {
 	Music,
 	Sliders,
 	Wifi,
+	X,
 	Zap,
 } from "lucide-react";
 import { AnimatePresence, motion, type Variants } from "motion/react";
 import { useState } from "react";
 
-// =========================================
-// 1. CONFIGURATION & DATA TYPES
-// =========================================
-
 export type ProductId = "left" | "right";
 
 export interface FeatureMetric {
 	label: string;
-	value: number; // 0-100
+	value: number;
 	icon: LucideIcon;
 }
 
 export interface ProductData {
 	id: ProductId;
-	label: string; // Display name for the switcher
+	label: string;
 	title: string;
 	description: string;
 	image: string;
 	colors: {
-		gradient: string; // Tailwind gradient classes
-		glow: string; // Tailwind color class for accents
-		ring: string; // Tailwind border color for rings
+		gradient: string;
+		glow: string;
+		ring: string;
 	};
 	stats: {
 		connectionStatus: string;
@@ -41,8 +38,6 @@ export interface ProductData {
 	features: FeatureMetric[];
 }
 
-// Default Data (Easy to Modify Here). Images are vendored locally under
-// /public/assets so the showcase runs fully offline.
 const PRODUCT_DATA: Record<ProductId, ProductData> = {
 	left: {
 		id: "left",
@@ -50,7 +45,7 @@ const PRODUCT_DATA: Record<ProductId, ProductData> = {
 		title: "Spatial Anchor",
 		description:
 			"The primary node for binaural synchronization. Handles low-latency transmission and anchors the spatial audio soundstage.",
-		image: "/assets/left-earbud.png",
+		image: "./assets/left-earbud.png",
 		colors: {
 			gradient: "from-blue-600 to-indigo-900",
 			glow: "bg-blue-500",
@@ -68,7 +63,7 @@ const PRODUCT_DATA: Record<ProductId, ProductData> = {
 		title: "Vocal Clarity",
 		description:
 			"Optimized for high-frequency detail and voice pickup. Contains the beamforming microphone array for crystal clear calls.",
-		image: "/assets/right-earbud.png",
+		image: "./assets/right-earbud.png",
 		colors: {
 			gradient: "from-emerald-600 to-teal-900",
 			glow: "bg-emerald-500",
@@ -81,10 +76,6 @@ const PRODUCT_DATA: Record<ProductId, ProductData> = {
 		],
 	},
 };
-
-// =========================================
-// 2. ANIMATION VARIANTS
-// =========================================
 
 const ANIMATIONS = {
 	container: {
@@ -133,10 +124,6 @@ const ANIMATIONS = {
 	}),
 };
 
-// =========================================
-// 3. SUB-COMPONENTS
-// =========================================
-
 const BackgroundGradient = ({ isLeft }: { isLeft: boolean }) => (
 	<div className="fixed inset-0 pointer-events-none">
 		<motion.div
@@ -159,7 +146,6 @@ const ProductVisual = ({
 	isLeft: boolean;
 }) => (
 	<motion.div layout="position" className="relative group shrink-0">
-		{/* Animated Rings */}
 		<motion.div
 			animate={{ rotate: 360 }}
 			transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -171,8 +157,7 @@ const ProductVisual = ({
 			className={`absolute inset-0 rounded-full bg-gradient-to-br ${data.colors.gradient} blur-2xl opacity-40`}
 		/>
 
-		{/* Image Container */}
-		<div className="relative h-80 w-80 md:h-[450px] md:w-[450px] rounded-full border border-white/5 shadow-2xl flex items-center justify-center overflow-hidden bg-black/20 backdrop-blur-sm">
+		<div className="relative h-72 w-72 sm:h-80 sm:w-80 lg:h-[450px] lg:w-[450px] rounded-full border border-white/5 shadow-2xl flex items-center justify-center overflow-hidden bg-black/20 backdrop-blur-sm">
 			<motion.div
 				animate={{ y: [-10, 10, -10] }}
 				transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
@@ -194,7 +179,6 @@ const ProductVisual = ({
 			</motion.div>
 		</div>
 
-		{/* Status Label */}
 		<motion.div
 			layout="position"
 			className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap"
@@ -212,9 +196,11 @@ const ProductVisual = ({
 const ProductDetails = ({
 	data,
 	isLeft,
+	onViewSpecs,
 }: {
 	data: ProductData;
 	isLeft: boolean;
+	onViewSpecs: () => void;
 }) => {
 	const alignClass = isLeft ? "items-start text-left" : "items-end text-right";
 	const flexDirClass = isLeft ? "flex-row" : "flex-row-reverse";
@@ -251,7 +237,6 @@ const ProductDetails = ({
 				{data.description}
 			</motion.p>
 
-			{/* Feature Grid */}
 			<motion.div
 				variants={ANIMATIONS.item}
 				className="w-full space-y-6 bg-zinc-900/40 p-6 rounded-2xl border border-white/5 backdrop-blur-sm"
@@ -288,6 +273,7 @@ const ProductDetails = ({
 				>
 					<button
 						type="button"
+						onClick={onViewSpecs}
 						className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-300 hover:text-white transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-full px-1 py-1"
 					>
 						<Sliders size={14} /> View Specs
@@ -299,7 +285,6 @@ const ProductDetails = ({
 				</div>
 			</motion.div>
 
-			{/* Battery */}
 			<motion.div
 				variants={ANIMATIONS.item}
 				className={`mt-6 flex items-center gap-3 text-zinc-500 ${flexDirClass}`}
@@ -326,7 +311,7 @@ const Switcher = ({
 	}));
 
 	return (
-		<div className="fixed bottom-12 inset-x-0 flex justify-center z-50 pointer-events-none">
+		<div className="relative z-50 mb-6 mt-[-7rem] flex w-full justify-center pointer-events-none sm:mb-8 lg:fixed lg:inset-x-0 lg:bottom-12 lg:mb-0 lg:mt-0">
 			<motion.div
 				layout
 				className="pointer-events-auto flex items-center gap-1 p-1.5 rounded-full bg-zinc-900/80 backdrop-blur-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)] ring-1 ring-white/5"
@@ -372,22 +357,18 @@ const Switcher = ({
 	);
 };
 
-// =========================================
-// 4. MAIN COMPONENT
-// =========================================
-
 export default function EarbudShowcase() {
 	const [activeSide, setActiveSide] = useState<ProductId>("left");
+	const [specsOpen, setSpecsOpen] = useState(false);
 
 	const currentData = PRODUCT_DATA[activeSide];
 	const isLeft = activeSide === "left";
 
 	return (
-		<div className="relative min-h-screen w-full bg-black text-zinc-100 overflow-hidden selection:bg-zinc-800 flex flex-col items-center justify-center">
+		<div className="relative min-h-screen w-full bg-black text-zinc-100 overflow-x-hidden selection:bg-zinc-800 flex flex-col items-center justify-center">
 			<BackgroundGradient isLeft={isLeft} />
 
-			{/* Brand / product header */}
-			<header className="fixed top-0 inset-x-0 z-40 pointer-events-none">
+			<header className="absolute top-0 inset-x-0 z-40 pointer-events-none">
 				<div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between text-xs uppercase tracking-[0.25em]">
 					<span className="flex items-center gap-2 font-display font-semibold text-zinc-200">
 						<span className="inline-flex gap-1">
@@ -402,24 +383,23 @@ export default function EarbudShowcase() {
 				</div>
 			</header>
 
-			<main className="relative z-10 w-full px-6 py-8 flex flex-col justify-center max-w-7xl mx-auto">
+			<main className="relative z-10 w-full px-6 pb-36 pt-40 sm:pb-40 sm:pt-32 lg:py-8 flex flex-col justify-center max-w-7xl mx-auto">
 				<motion.div
 					layout
 					transition={{ type: "spring", bounce: 0, duration: 0.9 }}
-					className={`flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32 lg:gap-48 w-full ${
-						isLeft ? "md:flex-row" : "md:flex-row-reverse"
+					className={`flex flex-col lg:flex-row items-center justify-center gap-14 lg:gap-48 w-full ${
+						isLeft ? "lg:flex-row" : "lg:flex-row-reverse"
 					}`}
 				>
-					{/* Visuals */}
 					<ProductVisual data={currentData} isLeft={isLeft} />
 
-					{/* Content */}
 					<motion.div layout="position" className="w-full max-w-md">
 						<AnimatePresence mode="wait">
 							<ProductDetails
-								key={activeSide} // Key forces re-render for animation
+								key={activeSide}
 								data={currentData}
 								isLeft={isLeft}
+								onViewSpecs={() => setSpecsOpen(true)}
 							/>
 						</AnimatePresence>
 					</motion.div>
@@ -427,6 +407,67 @@ export default function EarbudShowcase() {
 			</main>
 
 			<Switcher activeId={activeSide} onToggle={setActiveSide} />
+
+			<AnimatePresence>
+				{specsOpen && (
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						className="fixed inset-0 z-[70] flex items-center justify-center bg-black/80 px-6 backdrop-blur-xl"
+						onClick={() => setSpecsOpen(false)}
+					>
+						<motion.section
+							initial={{ opacity: 0, y: 24, scale: 0.96 }}
+							animate={{ opacity: 1, y: 0, scale: 1 }}
+							exit={{ opacity: 0, y: 16, scale: 0.98 }}
+							transition={{ type: "spring", stiffness: 260, damping: 24 }}
+							className="relative w-full max-w-lg rounded-3xl border border-white/10 bg-zinc-950 p-7 shadow-2xl"
+							onClick={(event) => event.stopPropagation()}
+							role="dialog"
+							aria-modal="true"
+							aria-label={`${currentData.title} specifications`}
+						>
+							<button
+								type="button"
+								onClick={() => setSpecsOpen(false)}
+								className="absolute right-5 top-5 rounded-full border border-white/10 p-2 text-zinc-500 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+								aria-label="Close specifications"
+							>
+								<X size={16} />
+							</button>
+							<p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-zinc-500">
+								{currentData.label} Earbud
+							</p>
+							<h2 className="mb-7 text-3xl font-bold text-white">
+								{currentData.title} Specs
+							</h2>
+							<div className="grid grid-cols-2 gap-3">
+								{currentData.features.map((feature) => (
+									<div
+										key={feature.label}
+										className="rounded-2xl border border-white/5 bg-white/[0.03] p-4"
+									>
+										<feature.icon className="mb-4 text-zinc-500" size={18} />
+										<p className="text-xs uppercase tracking-wider text-zinc-500">
+											{feature.label}
+										</p>
+										<p className="mt-1 text-2xl font-semibold text-white">
+											{feature.value}%
+										</p>
+									</div>
+								))}
+							</div>
+							<div className="mt-3 flex items-center justify-between rounded-2xl border border-white/5 bg-white/[0.03] p-4">
+								<span className="text-sm text-zinc-500">Battery reserve</span>
+								<span className="font-mono text-sm text-white">
+									{currentData.stats.batteryLevel}%
+								</span>
+							</div>
+						</motion.section>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 }
