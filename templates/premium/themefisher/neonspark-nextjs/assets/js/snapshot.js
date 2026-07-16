@@ -38,6 +38,12 @@ navToggle?.addEventListener("change", () => {
   hideButton?.classList.toggle("hidden", !navToggle.checked)
 })
 
+navMenu?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (navToggle) navToggle.checked = false
+  })
+})
+
 document.querySelectorAll("main .cursor-pointer").forEach((trigger) => {
   const heading = trigger.querySelector("h3")
   const answer = heading ? faqAnswers[heading.textContent.trim()] : null
