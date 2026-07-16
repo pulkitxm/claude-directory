@@ -2,7 +2,7 @@ import ContactButton from "../components/ContactButton";
 import FadeIn from "../components/FadeIn";
 import Magnet from "../components/Magnet";
 
-const PORTRAIT_URL = "/assets/Rectangle_40443.81459862.png";
+const PORTRAIT_URL = "./assets/Rectangle_40443.81459862.png";
 
 const NAV_LINKS = [
 	{ label: "About", href: "#about" },
