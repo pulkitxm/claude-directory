@@ -1,13 +1,11 @@
-/** Vendored recon stills + their fictional fire-control track data. */
 export interface Target {
 	id: string;
 	callsign: string;
 	classify: string;
 	image: string;
-	/** baseline telemetry the acquisition loop animates toward */
 	rangeKm: number;
-	bearingDeg: number; // 0–359, compass
-	azimuthDeg: number; // -30..30, off-boresight
+	bearingDeg: number;
+	azimuthDeg: number;
 	elevationM: number;
 	speedKt: number;
 	threat: "LOW" | "MED" | "HIGH";
@@ -19,7 +17,7 @@ export const TARGETS: Target[] = [
 		id: "TGT-01",
 		callsign: "VESPER",
 		classify: "GROUND // STATIC INSTALLATION",
-		image: "/assets/recon/target-alpha.jpg",
+		image: "./assets/recon/target-alpha.jpg",
 		rangeKm: 14.62,
 		bearingDeg: 273,
 		azimuthDeg: -6,
@@ -32,7 +30,7 @@ export const TARGETS: Target[] = [
 		id: "TGT-02",
 		callsign: "HALYARD",
 		classify: "SURFACE // FAST MOVER",
-		image: "/assets/recon/target-bravo.jpg",
+		image: "./assets/recon/target-bravo.jpg",
 		rangeKm: 31.08,
 		bearingDeg: 91,
 		azimuthDeg: 11,
@@ -45,7 +43,7 @@ export const TARGETS: Target[] = [
 		id: "TGT-03",
 		callsign: "CINDER",
 		classify: "TERRAIN // DEFILADE",
-		image: "/assets/recon/target-charlie.jpg",
+		image: "./assets/recon/target-charlie.jpg",
 		rangeKm: 9.74,
 		bearingDeg: 208,
 		azimuthDeg: 3,
@@ -58,7 +56,7 @@ export const TARGETS: Target[] = [
 		id: "TGT-04",
 		callsign: "OBELISK",
 		classify: "STRUCTURE // HARDENED",
-		image: "/assets/recon/target-delta.jpg",
+		image: "./assets/recon/target-delta.jpg",
 		rangeKm: 22.41,
 		bearingDeg: 344,
 		azimuthDeg: -14,
