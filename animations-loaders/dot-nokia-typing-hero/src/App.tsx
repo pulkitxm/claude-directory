@@ -8,9 +8,6 @@ const TYPING_SPEED_MS = 100;
 const DELETING_SPEED_MS = 50;
 const PAUSE_BEFORE_DELETE_MS = 2000;
 
-/**
- * Types/deletes the message cycle on the Nokia phone screen in the hero video.
- */
 function TypingMessages() {
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [text, setText] = useState("");
@@ -98,12 +95,14 @@ function Navbar() {
 	);
 }
 
-const VIDEO_SRC =
-	"/assets/hf_20260427_054418_a6d194f0-ac86-4df9-abe5-ded73e596d7c.mp4";
+const VIDEO_SRC = `${import.meta.env.BASE_URL}assets/hf_20260427_054418_a6d194f0-ac86-4df9-abe5-ded73e596d7c.mp4`;
 
 function Hero() {
 	return (
-		<section className="relative min-h-screen bg-[#F3F4ED] pt-24 md:pt-32 flex flex-col items-center overflow-hidden">
+		<section
+			id="access"
+			className="relative min-h-screen bg-[#F3F4ED] pt-24 md:pt-32 flex flex-col items-center overflow-hidden"
+		>
 			<video
 				className="absolute inset-0 z-0 w-full h-full object-cover"
 				src={VIDEO_SRC}
