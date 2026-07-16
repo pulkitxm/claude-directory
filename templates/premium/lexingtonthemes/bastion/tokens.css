@@ -3,7 +3,21 @@
    Source: https://lexingtonthemes.com/viewports/bastion
    ================================================================ */
 
-@import url("https://rsms.me/inter/inter.css");
+@font-face {
+	font-family: "InterVariable";
+	src: url("assets/fonts/inter-variable.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "InterVariable";
+	src: url("assets/fonts/inter-variable-italic.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+}
 
 :root {
 	/* Typography */
@@ -391,15 +405,20 @@ a {
 	inset: 0;
 	z-index: 40;
 	background-color: var(--color-accent-950);
-	transform: translateX(100%);
-	transition: transform var(--duration-300) var(--ease-in-out);
+	clip-path: inset(0 0 0 100%);
+	visibility: hidden;
+	transition:
+		clip-path var(--duration-300) var(--ease-in-out),
+		visibility 0s linear var(--duration-300);
 	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
 }
 
 .mobile-menu.is-open {
-	transform: translateX(0);
+	clip-path: inset(0);
+	visibility: visible;
+	transition-delay: 0s;
 }
 
 .mobile-menu-inner {
@@ -422,6 +441,23 @@ a {
 
 .mobile-menu-link:hover {
 	color: var(--color-accent-300);
+}
+
+@media (max-width: 767px) {
+	.about-story-grid,
+	.contact-layout-grid,
+	.contact-offices-grid {
+		grid-template-columns: 1fr !important;
+		gap: 2rem !important;
+	}
+
+	.about-links-grid {
+		grid-template-columns: 1fr !important;
+	}
+
+	.about-stats-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+	}
 }
 
 /* Search modal */
