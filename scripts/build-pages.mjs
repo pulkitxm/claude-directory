@@ -4,6 +4,7 @@ import {
 	mkdtemp,
 	readFile,
 	readdir,
+	rename,
 	rm,
 	writeFile,
 } from "node:fs/promises";
@@ -47,7 +48,7 @@ async function findProjects(directory) {
 	return projects;
 }
 
-async function stageRepository() {
+async function stageRepository(projects) {
 	await rm(output, { recursive: true, force: true });
 	await mkdir(output, { recursive: true });
 	const archive = await mkdtemp(join(tmpdir(), "fable-pages-"));
@@ -56,19 +57,57 @@ async function stageRepository() {
 	await run("tar", ["-xf", tar, "-C", output]);
 	await rm(archive, { recursive: true, force: true });
 	await writeFile(join(output, ".nojekyll"), "");
-	const references = [];
+	const evidence = [];
 	async function collect(directory) {
 		for (const entry of await readdir(directory, { withFileTypes: true })) {
 			if (!entry.isDirectory()) continue;
 			const path = join(directory, entry.name);
-			if (entry.name === ".reference") references.push(path);
+			if (entry.name === ".reference" || entry.name === ".audit")
+				evidence.push(path);
 			else await collect(path);
 		}
 	}
 	await collect(output);
 	await Promise.all(
-		references.map((path) => rm(path, { recursive: true, force: true })),
+		evidence.map((path) => rm(path, { recursive: true, force: true })),
 	);
+	if (process.env.GITHUB_ACTIONS === "true") {
+		const checkoutEvidence = [];
+		async function collectCheckout(directory) {
+			for (const entry of await readdir(directory, { withFileTypes: true })) {
+				if (!entry.isDirectory() || entry.name === ".git") continue;
+				const path = join(directory, entry.name);
+				if (entry.name === ".reference" || entry.name === ".audit")
+					checkoutEvidence.push(path);
+				else if (path !== output) await collectCheckout(path);
+			}
+		}
+		await collectCheckout(root);
+		await Promise.all(
+			checkoutEvidence.map((path) =>
+				rm(path, { recursive: true, force: true }),
+			),
+		);
+	}
+	for (const project of projects) {
+		const staged = join(output, relative(root, project));
+		const preserved = await mkdtemp(join(tmpdir(), "fable-metadata-"));
+		for (const file of [
+			"demo.mp4",
+			"poster.jpg",
+			"poster.png",
+			"README.md",
+			"prompt.md",
+		]) {
+			await cp(join(staged, file), join(preserved, file), {
+				force: false,
+			}).catch(() => {});
+		}
+		await rm(staged, { recursive: true, force: true });
+		await mkdir(staged, { recursive: true });
+		await cp(preserved, staged, { recursive: true });
+		await rm(preserved, { recursive: true, force: true });
+	}
 }
 
 async function buildProject(project) {
@@ -84,27 +123,60 @@ async function buildProject(project) {
 	const isNext = Boolean(
 		packageJson.dependencies?.next || packageJson.devDependencies?.next,
 	);
+	const isTanstack = Boolean(
+		packageJson.dependencies?.["@tanstack/react-start"] ||
+			packageJson.devDependencies?.["@tanstack/react-start"],
+	);
 	if (isNext) await run("npm", ["run", "build"], project);
-	else await run("npm", ["exec", "--", "vite", "build", "--base=./"], project);
+	else if (isTanstack) {
+		const generated = [
+			"_pages-index.html",
+			"_pages-main.tsx",
+			"_pages-vite.config.ts",
+		];
+		await writeFile(
+			join(project, "_pages-index.html"),
+			'<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="root"></div><script type="module" src="/_pages-main.tsx"></script></body></html>',
+		);
+		await writeFile(
+			join(project, "_pages-main.tsx"),
+			'import { StrictMode } from "react"; import { createRoot } from "react-dom/client"; import { Route } from "./src/routes/index"; import "./src/styles.css"; const Component = Route.options.component!; createRoot(document.getElementById("root")!).render(<StrictMode><Component /></StrictMode>);',
+		);
+		await writeFile(
+			join(project, "_pages-vite.config.ts"),
+			packageJson.dependencies?.["vite-tsconfig-paths"] ||
+				packageJson.devDependencies?.["vite-tsconfig-paths"]
+				? 'import tailwindcss from "@tailwindcss/vite"; import viteReact from "@vitejs/plugin-react"; import { resolve } from "node:path"; import { defineConfig } from "vite"; import tsConfigPaths from "vite-tsconfig-paths"; import original from "./vite.config"; export default defineConfig({ resolve: original.resolve, plugins: [tsConfigPaths(), tailwindcss(), viteReact()], build: { rollupOptions: { input: resolve(__dirname, "_pages-index.html") } } });'
+				: 'import tailwindcss from "@tailwindcss/vite"; import viteReact from "@vitejs/plugin-react"; import { resolve } from "node:path"; import { defineConfig } from "vite"; import original from "./vite.config"; export default defineConfig({ resolve: original.resolve, plugins: [tailwindcss(), viteReact()], build: { rollupOptions: { input: resolve(__dirname, "_pages-index.html") } } });',
+		);
+		try {
+			await run(
+				"npm",
+				[
+					"exec",
+					"--",
+					"vite",
+					"build",
+					"--config",
+					"_pages-vite.config.ts",
+					"--base=./",
+				],
+				project,
+			);
+			await rename(
+				join(project, "dist", "_pages-index.html"),
+				join(project, "dist", "index.html"),
+			);
+		} finally {
+			await Promise.all(
+				generated.map((file) => rm(join(project, file), { force: true })),
+			);
+		}
+	} else
+		await run("npm", ["exec", "--", "vite", "build", "--base=./"], project);
 	const built = join(project, isNext ? "out" : "dist");
 	const staged = join(output, name);
-	const preserved = await mkdtemp(join(tmpdir(), "fable-metadata-"));
-	for (const file of [
-		"demo.mp4",
-		"poster.jpg",
-		"poster.png",
-		"README.md",
-		"prompt.md",
-	]) {
-		await cp(join(staged, file), join(preserved, file), { force: false }).catch(
-			() => {},
-		);
-	}
-	await rm(staged, { recursive: true, force: true });
-	await mkdir(staged, { recursive: true });
 	await cp(built, staged, { recursive: true });
-	await cp(preserved, staged, { recursive: true });
-	await rm(preserved, { recursive: true, force: true });
 	await rm(join(project, "node_modules"), { recursive: true, force: true });
 	process.stdout.write(`Built ${name}\n`);
 }
@@ -123,12 +195,17 @@ async function runPool(projects) {
 	);
 }
 
-await stageRepository();
 const discovered = await findProjects(root);
 const projects = requested.length
 	? requested.map((project) => resolve(root, project))
 	: discovered;
+await stageRepository(discovered);
 await runPool(projects);
+await run("node", [
+	join(root, "scripts", "verify-pages.mjs"),
+	output,
+	...projects.map((project) => relative(root, project)),
+]);
 process.stdout.write(
 	`Staged ${projects.length} built previews in ${relative(root, output)}\n`,
 );
