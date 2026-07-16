@@ -1,3 +1,5 @@
+const snapshotAssetRoot = new URL('../', document.currentScript.src);
+
 document.addEventListener('DOMContentLoaded', () => {
   const navigationToggle = document.querySelector('#nav-toggle');
   const navigationMenu = document.querySelector('#nav-menu');
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     player.style.display = 'block';
     player.style.position = 'relative';
     player.style.aspectRatio = '16 / 9';
-    player.style.background = `center / cover no-repeat url("https://i.ytimg.com/vi/${player.getAttribute('videoid')}/maxresdefault.jpg")`;
+    player.style.background = `center / cover no-repeat url("${new URL('images/videos/youtube.jpg', snapshotAssetRoot)}")`;
     const play = document.createElement('button');
     play.type = 'button';
     play.setAttribute('aria-label', player.getAttribute('title') || 'Play video');
