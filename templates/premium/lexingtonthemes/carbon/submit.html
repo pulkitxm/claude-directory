@@ -8,14 +8,6 @@
 			name="description"
 			content="Submit your site to Carbon and get noticed by top designers."
 		>
-		<link rel="preconnect" href="https://rsms.me/">
-		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap"
-			rel="stylesheet"
-		>
 		<link rel="stylesheet" href="./assets/css/main.css">
 		<style>
 		:root {
@@ -297,6 +289,36 @@
 								Submit your website for free and get them noticed by top
 								designers. Every submission is carefully reviewed.
 							</p>
+							<form
+								id="submission-form"
+								class="space-y-4 mt-6 mb-8"
+								onsubmit="return false;"
+							>
+								<div>
+									<label for="site-url" class="block text-sm font-medium text-base-700 mb-1">Website URL</label>
+									<input id="site-url" name="url" type="url" required placeholder="https://example.com" class="block w-full px-4 py-2 text-sm border border-base-200 rounded-lg bg-white text-base-900 placeholder-base-400 focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-100 transition-colors">
+								</div>
+								<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+									<div>
+										<label for="site-name" class="block text-sm font-medium text-base-700 mb-1">Your name</label>
+										<input id="site-name" name="name" type="text" required placeholder="Your name" class="block w-full px-4 py-2 text-sm border border-base-200 rounded-lg bg-white text-base-900 placeholder-base-400 focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-100 transition-colors">
+									</div>
+									<div>
+										<label for="site-email" class="block text-sm font-medium text-base-700 mb-1">Email address</label>
+										<input id="site-email" name="email" type="email" required placeholder="you@example.com" class="block w-full px-4 py-2 text-sm border border-base-200 rounded-lg bg-white text-base-900 placeholder-base-400 focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-100 transition-colors">
+									</div>
+								</div>
+								<div>
+									<label for="site-description" class="block text-sm font-medium text-base-700 mb-1">Description</label>
+									<textarea id="site-description" name="description" required rows="4" placeholder="What makes this website worth studying?" class="block w-full px-4 py-2 text-sm border border-base-200 rounded-lg bg-white text-base-900 placeholder-base-400 focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-100 transition-colors"></textarea>
+								</div>
+								<div>
+									<label for="site-tags" class="block text-sm font-medium text-base-700 mb-1">Tags</label>
+									<input id="site-tags" name="tags" type="text" placeholder="design, typography, astro" class="block w-full px-4 py-2 text-sm border border-base-200 rounded-lg bg-white text-base-900 placeholder-base-400 focus:outline-none focus:border-accent-500 focus:ring-2 focus:ring-accent-100 transition-colors">
+								</div>
+								<button type="submit" class="flex justify-center items-center w-full px-5 py-2.5 text-sm font-medium rounded-lg bg-base-900 hover:bg-base-800 transition-colors" style="color:var(--color-white)">Submit website</button>
+								<p id="submission-status" class="hidden text-sm text-base-700 bg-accent-100 rounded-lg px-4 py-3" role="status">Submission received. We will review your website shortly.</p>
+							</form>
 							<h4
 								style="font-size:0.875rem;font-weight:600;color:var(--color-base-900);margin-bottom:0.5rem"
 							>
@@ -311,12 +333,13 @@
 								guaranteed.
 							</p>
 							<div class="flex items-center gap-2 mt-4">
-								<button
+								<a
+									href="#submission-form"
 									class="flex justify-center items-center px-5 py-2.5 text-sm font-medium rounded-lg bg-base-900 hover:bg-base-800 transition-colors"
 									style="color:var(--color-white)"
 								>
 									Submit a site
-								</button>
+								</a>
 								<a
 									href="./pricing.html"
 									class="flex justify-center items-center px-5 py-2.5 text-sm font-medium rounded-lg bg-base-100 hover:bg-base-200 text-base-900 transition-colors"
@@ -382,5 +405,12 @@
 				</div>
 			</div>
 		</footer>
+		<script>
+		const submissionForm = document.getElementById("submission-form");
+		const submissionStatus = document.getElementById("submission-status");
+		submissionForm?.addEventListener("submit", () => {
+			submissionStatus?.classList.remove("hidden");
+		});
+		</script>
 	</body>
 </html>
