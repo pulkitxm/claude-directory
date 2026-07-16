@@ -6,6 +6,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', event => event.preventDefault());
+  });
+
   // ===== NAVBAR TOGGLE (mobile) =====
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
