@@ -38,6 +38,12 @@ navToggle?.addEventListener("change", () => {
   hideButton?.classList.toggle("hidden", !navToggle.checked)
 })
 
+navMenu?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (navToggle) navToggle.checked = false
+  })
+})
+
 document.querySelectorAll("main .cursor-pointer").forEach((trigger) => {
   const heading = trigger.querySelector("h3")
   const answer = heading ? faqAnswers[heading.textContent.trim()] : null
@@ -131,11 +137,6 @@ document.querySelectorAll("button").forEach((button) => {
     const description = heading?.nextElementSibling
     if (heading) heading.innerHTML = `<strong>${step[0]}</strong><br><em>${step[1]}</em>`
     if (description) description.textContent = step[2]
-    panel.querySelectorAll("img").forEach((image) => {
-      image.alt = image.alt.replace(/Discover/gi, label)
-      image.src = image.src.replace(/discover/gi, label.toLowerCase())
-      image.srcset = image.srcset.replace(/discover/gi, label.toLowerCase())
-    })
   })
 })
 
