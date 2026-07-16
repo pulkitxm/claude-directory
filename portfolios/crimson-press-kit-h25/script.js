@@ -1,8 +1,4 @@
-/* ===========================================================
-   Crimson Press Kit — interactions
-   =========================================================== */
 (() => {
-	/* ---- generated noise texture (data URI) ---- */
 	function makeNoise(size, alpha) {
 		var c = document.createElement("canvas");
 		c.width = c.height = size;
@@ -20,7 +16,6 @@
 	var root = document.documentElement;
 	root.style.setProperty("--noise", `url(${makeNoise(140, 22)})`);
 
-	/* ---- spiral binding coil (inline SVG data URI) ---- */
 	var coil =
 		"data:image/svg+xml," +
 		encodeURIComponent(
@@ -31,7 +26,6 @@
 		);
 	root.style.setProperty("--coil", `url('${coil}')`);
 
-	/* ---- collage grid ---- */
 	var collage = document.getElementById("collage");
 	if (collage) {
 		for (var n = 1; n <= 14; n++) {
@@ -40,7 +34,7 @@
 			var img = document.createElement("img");
 			img.src = `./assets/img/fig-${n}.jpg`;
 			img.alt = `Editorial figure ${n}`;
-			img.loading = "lazy";
+			img.loading = "eager";
 			var tag = document.createElement("span");
 			tag.textContent = `FIG.${n}`;
 			fig.appendChild(img);
@@ -49,7 +43,6 @@
 		}
 	}
 
-	/* ---- scroll reveal ---- */
 	var pages = document.querySelectorAll(".page");
 	if ("IntersectionObserver" in window) {
 		var io = new IntersectionObserver(
@@ -71,11 +64,9 @@
 			p.classList.add("in-view");
 		});
 	}
-	// cover visible immediately
 	var cover = document.getElementById("cover");
 	if (cover) cover.classList.add("in-view");
 
-	/* ---- TOC smooth scroll ---- */
 	document.querySelectorAll(".toc-row").forEach((row) => {
 		row.addEventListener("click", () => {
 			var id = row.getAttribute("data-target");
@@ -84,7 +75,6 @@
 		});
 	});
 
-	/* ---- back-to-contents FAB ---- */
 	var fab = document.getElementById("fab");
 	var contents = document.getElementById("contents");
 	if (fab) {
@@ -102,7 +92,6 @@
 		);
 	}
 
-	/* ---- quick query form ---- */
 	var form = document.getElementById("query-form");
 	var note = document.getElementById("q-note");
 	if (form) {
@@ -118,7 +107,7 @@
 				note.textContent = "That email looks off.";
 				return;
 			}
-			note.textContent = `Sent — I'll be in touch, ${name}.`;
+			note.textContent = `Sent, I'll be in touch, ${name}.`;
 			form.reset();
 		});
 	}
