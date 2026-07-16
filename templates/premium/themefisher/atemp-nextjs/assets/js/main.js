@@ -115,4 +115,24 @@
       });
     });
   });
+
+  document.querySelectorAll(".modal").forEach(function (modal) {
+    var openButton = modal.parentElement && modal.parentElement.querySelector('button[aria-label="Play Video"]');
+    var closeButton = modal.querySelector(".modal-close");
+    var overlay = modal.querySelector(".modal-overlay");
+    function close() {
+      modal.style.display = "none";
+      if (overlay) overlay.style.display = "none";
+    }
+    if (openButton) openButton.addEventListener("click", function () {
+      modal.style.display = "block";
+      if (overlay) overlay.style.display = "block";
+    });
+    if (closeButton) closeButton.addEventListener("click", close);
+    if (overlay) overlay.addEventListener("click", close);
+  });
+
+  document.querySelectorAll("form").forEach(function (form) {
+    form.addEventListener("submit", function (event) { event.preventDefault(); });
+  });
 })();
