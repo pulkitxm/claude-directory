@@ -1,3 +1,10 @@
+const projectBase = "/templates/premium/themefisher/novai-nextjs"
+
+document.querySelectorAll("a[href^='/']").forEach((link) => {
+  const href = link.getAttribute("href")
+  if (href && !href.startsWith(projectBase)) link.setAttribute("href", `${projectBase}${href}`)
+})
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return
@@ -121,7 +128,7 @@ function moveFeatureSlider(direction) {
 document.querySelector(".features-slider-prev")?.addEventListener("click", () => moveFeatureSlider(-1))
 document.querySelector(".features-slider-next")?.addEventListener("click", () => moveFeatureSlider(1))
 
-if (location.pathname === "/blog" || location.pathname === "/blog/") {
+if (location.pathname === `${projectBase}/blog` || location.pathname === `${projectBase}/blog/`) {
   const blogGrid = document.querySelector(".shuffle-container")
   if (blogGrid && innerWidth >= 1200) blogGrid.style.height = "3689.81px"
 }
