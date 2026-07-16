@@ -1,12 +1,10 @@
-/**
- * Datacore mark — the "Future" logo shape. The outline begins with the
- * spec-provided segment (M1.04356 6.35771 L13.6437 0.666504 …) and is
- * completed into an isometric open-core glyph, filled white.
- */
+const BASE_URL = (import.meta as ImportMeta & { env: { BASE_URL: string } }).env
+	.BASE_URL;
+
 export default function Logo() {
 	return (
 		<a
-			href="/"
+			href={BASE_URL}
 			className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
 			aria-label="Datacore home"
 		>
