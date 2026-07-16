@@ -1,4 +1,3 @@
-// Bookworm Light — shared behavior
 (function () {
   var searchTrigger = document.querySelector('[data-search-open]');
   var searchModal = document.querySelector('.search-modal');
@@ -21,8 +20,7 @@
     });
   }
 
-  // sticky header shrink on scroll
-  var header = document.querySelector('.site-header');
+  var header = document.querySelector('header');
   if (header) {
     var onScroll = function () {
       if (window.scrollY > 40) header.classList.add('scrolled');
