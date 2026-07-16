@@ -41,7 +41,21 @@ document.addEventListener('DOMContentLoaded', function () {
       if (show) show.classList.toggle('hidden', navigationToggle.checked);
       if (hide) hide.classList.toggle('hidden', !navigationToggle.checked);
     });
+    navigationMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { navigationToggle.checked = false; });
+    });
   }
+
+  document.querySelectorAll('.nav-dropdown').forEach(function (dropdown) {
+    var trigger = dropdown.querySelector('.nav-link');
+    var panel = dropdown.querySelector('.nav-dropdown-list');
+    if (!trigger || !panel) return;
+    trigger.addEventListener('click', function (event) {
+      if (window.innerWidth >= 1024) return;
+      event.preventDefault();
+      panel.classList.toggle('static-open');
+    });
+  });
 
   document.querySelectorAll('.accordion-header').forEach(function (button) {
     button.addEventListener('click', function () {
