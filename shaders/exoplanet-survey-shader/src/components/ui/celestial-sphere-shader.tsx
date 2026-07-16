@@ -206,7 +206,8 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = memo(
 			const loop = () => {
 				const { clock, sphere } = threeRef.current;
 				const delta = clock?.getDelta();
-				sphere?.rotation.y += delta * rotationSpeedRef.current;
+				if (sphere)
+					sphere.rotation.y += (delta ?? 0) * rotationSpeedRef.current;
 				uniforms.u_time.value = clock?.getElapsedTime();
 
 				renderer.render(scene, camera);
