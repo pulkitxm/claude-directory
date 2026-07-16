@@ -1,6 +1,5 @@
-/* Maison Éclisse — Atelier Noir interactions */
 (() => {
-	/* ---- Header solid on scroll ---- */
+	document.documentElement.classList.add("js");
 	var head = document.getElementById("head");
 	var onScroll = () => {
 		if (window.scrollY > 40) head.classList.add("solid");
@@ -9,27 +8,28 @@
 	window.addEventListener("scroll", onScroll, { passive: true });
 	onScroll();
 
-	/* ---- Scroll reveal ---- */
 	var reveals = document.querySelectorAll(".reveal");
+	var revealVisible = () => {
+		reveals.forEach((element) => {
+			if (
+				!element.classList.contains("in") &&
+				element.getBoundingClientRect().top <= window.innerHeight + 120
+			) {
+				element.classList.add("in");
+			}
+		});
+	};
 	if ("IntersectionObserver" in window) {
 		var io = new IntersectionObserver(
 			(entries) => {
-				entries.forEach((e, i) => {
-					if (e.isIntersecting) {
-						var el = e.target;
-						// light stagger for items sharing a parent grid
-						var delay =
-							el.classList.contains("card") || el.classList.contains("article")
-								? (i % 3) * 90
-								: 0;
-						setTimeout(() => {
-							el.classList.add("in");
-						}, delay);
-						io.unobserve(el);
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("in");
+						io.unobserve(entry.target);
 					}
 				});
 			},
-			{ threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+			{ threshold: 0, rootMargin: "0px 0px 120px 0px" },
 		);
 		reveals.forEach((el) => {
 			io.observe(el);
@@ -39,8 +39,15 @@
 			el.classList.add("in");
 		});
 	}
+	window.addEventListener("scroll", revealVisible, { passive: true });
+	window.addEventListener("resize", revealVisible);
+	revealVisible();
+	setTimeout(() => {
+		reveals.forEach((element) => {
+			element.classList.add("in");
+		});
+	}, 1200);
 
-	/* ---- Overlays (menu + search) ---- */
 	var body = document.body;
 	var menu = document.getElementById("menu");
 	var search = document.getElementById("search");
@@ -79,14 +86,12 @@
 		closeOverlay(search);
 	});
 
-	// close menu when a link is chosen
 	document.querySelectorAll('[data-close="menu"]').forEach((a) => {
 		a.addEventListener("click", () => {
 			closeOverlay(menu);
 		});
 	});
 
-	// Esc closes whichever is open
 	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape") {
 			if (menu.classList.contains("open")) closeOverlay(menu);
@@ -94,7 +99,6 @@
 		}
 	});
 
-	/* ---- Newsletter (no backend) ---- */
 	var form = document.getElementById("newsForm");
 	var done = document.getElementById("newsDone");
 	form.addEventListener("submit", (e) => {
