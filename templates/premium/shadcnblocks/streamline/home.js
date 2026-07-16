@@ -87,10 +87,14 @@ window.pageInit = function () {
 
 	// Feature tabs
 	const ftabs = document.querySelectorAll("#feat-tabs .feat-tab");
+	const featurePreview = document.querySelector(".feat-preview img");
 	ftabs.forEach((t) =>
 		t.addEventListener("click", () => {
 			ftabs.forEach((x) => x.classList.remove("active"));
 			t.classList.add("active");
+			if (featurePreview) {
+				featurePreview.src = `assets/images/homepage/features-tabs/${Number(t.dataset.tab) + 1}.webp`;
+			}
 		}),
 	);
 
