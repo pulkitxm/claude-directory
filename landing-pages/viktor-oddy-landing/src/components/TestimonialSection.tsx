@@ -5,7 +5,7 @@ import { useInViewAnimation } from "../hooks/useInViewAnimation";
 const PARALLAX_MAX_OFFSET = 200;
 
 const PARALLAX_IMAGE =
-	"/assets/hf_20260330_103804_7aa5494f-4d5b-432e-9dc7-20715275f143.webp";
+	"./assets/hf_20260330_103804_7aa5494f-4d5b-432e-9dc7-20715275f143.webp";
 
 const COMPANY_LOGOS = [
 	{ name: "Apple", width: 80 },
@@ -28,7 +28,6 @@ function useParallax<T extends HTMLElement>() {
 			frame = 0;
 			const rect = element.getBoundingClientRect();
 			const viewportHeight = window.innerHeight;
-			// 0 when the element enters from the bottom, 1 when it leaves the top.
 			const progress =
 				(viewportHeight - rect.top) / (viewportHeight + rect.height);
 			const clamped = Math.max(0, Math.min(1, progress));
