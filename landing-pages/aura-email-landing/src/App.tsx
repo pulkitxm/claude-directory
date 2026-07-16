@@ -8,8 +8,7 @@ import Navbar from "./components/Navbar";
 import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 
-const VIDEO_URL =
-	"/assets/hf_20260508_064122_c4750c0e-7476-4b44-94a2-a85a65c63bf2.mp4";
+const VIDEO_URL = `${import.meta.env.BASE_URL}assets/hf_20260508_064122_c4750c0e-7476-4b44-94a2-a85a65c63bf2.mp4`;
 
 export default function App() {
 	return (
