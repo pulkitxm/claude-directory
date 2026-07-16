@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { fadeUp } from "@/lib/motion";
 
 const HERO_VIDEO =
-	"/assets/hf_20260325_120549_0cd82c36-56b3-4dd9-b190-069cfc3a623f.mp4";
+	"./assets/hf_20260325_120549_0cd82c36-56b3-4dd9-b190-069cfc3a623f.mp4";
 
 const AVATARS = [
 	{ src: avatar1, alt: "Subscriber avatar" },
@@ -41,7 +41,6 @@ export function Hero() {
 				playsInline
 				aria-hidden
 			/>
-			{/* Smooth fade into the black page below */}
 			<div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background to-transparent" />
 
 			<div className="relative z-10 flex w-full flex-col items-center px-6 pt-28 text-center md:pt-32">
