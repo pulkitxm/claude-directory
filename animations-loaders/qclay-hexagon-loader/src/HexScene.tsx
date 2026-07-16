@@ -1,17 +1,5 @@
 import { memo, useEffect, useRef, useState } from "react";
 
-/* ──────────────────────────────────────────────────────────────────────────
-   QClay hexagon loader scene.
-
-   Faithful implementation of the supplied spec. Icons are vendored locally
-   under `public/loader/` (served at `/loader/...`) so the loader runs fully
-   offline; the three polygon SVGs live under `public/polygons/`.
-
-   `HexScene` renders the radially-masked polygon cluster. The loading label +
-   progress bar are rendered separately by `LoadingBlock` so they sit *outside*
-   the mask (over the background), exactly as the spec requires.
-   ────────────────────────────────────────────────────────────────────────── */
-
 const ICON_INDEXES = [
 	"01",
 	"02",
@@ -25,18 +13,21 @@ const ICON_INDEXES = [
 	"10",
 	"11",
 ];
-const darkSrc = (n: string) => `/loader/icon-${n}.svg`;
-const whiteSrc = (n: string) => `/loader/icon-w-${n}.svg`;
+const base = (import.meta as ImportMeta & { env: { BASE_URL: string } }).env
+	.BASE_URL;
+const asset = (path: string) => `${base}${path}`;
+const darkSrc = (n: string) => asset(`loader/icon-${n}.svg`);
+const whiteSrc = (n: string) => asset(`loader/icon-w-${n}.svg`);
 
-const M_POLY = "/polygons/m-polygon.svg";
-const S_POLY = "/polygons/s-polygon.svg";
-const C_POLY = "/polygons/c-polygon.svg";
+const M_POLY = asset("polygons/m-polygon.svg");
+const S_POLY = asset("polygons/s-polygon.svg");
+const C_POLY = asset("polygons/c-polygon.svg");
 
 const HEX_W = 141;
 const HEX_H = 155;
 const GAP = 8;
-const STEP_X = HEX_W + GAP; // 149
-const STEP_Y = HEX_H * 0.78 + GAP; // 128.9
+const STEP_X = HEX_W + GAP;
+const STEP_Y = HEX_H * 0.78 + GAP;
 
 type Variant = "s" | "c" | "m";
 type Hex = {
@@ -52,7 +43,6 @@ type IconLayerStatus = "current" | "incoming" | "outgoing";
 type IconLayer = { id: number; icons: string[]; status: IconLayerStatus };
 
 const HEXES: Hex[] = [
-	// Outer ring — all s-polygon, z-index 0
 	{ x: -2 * STEP_X, y: -2 * STEP_Y, variant: "s", z: 0 },
 	{ x: -1 * STEP_X, y: -2 * STEP_Y, variant: "s", z: 0 },
 	{ x: 0, y: -2 * STEP_Y, variant: "s", z: 0 },
@@ -69,21 +59,15 @@ const HEXES: Hex[] = [
 	{ x: 0, y: 2 * STEP_Y, variant: "s", z: 0 },
 	{ x: 1 * STEP_X, y: 2 * STEP_Y, variant: "s", z: 0 },
 	{ x: 2 * STEP_X, y: 2 * STEP_Y, variant: "s", z: 0 },
-
-	// Main row 1 (top), y = -STEP_Y
 	{ x: -1.5 * STEP_X, y: -STEP_Y, variant: "s", z: 1 },
 	{ x: -0.5 * STEP_X, y: -STEP_Y, variant: "c", z: 2 },
 	{ x: 0.5 * STEP_X, y: -STEP_Y, variant: "c", z: 2 },
 	{ x: 1.5 * STEP_X, y: -STEP_Y, variant: "s", z: 1 },
-
-	// Main row 2 (center), y = 0
 	{ x: -2 * STEP_X, y: 0, variant: "s", z: 1 },
 	{ x: -1 * STEP_X, y: 0, variant: "c", z: 4, iconSet: "dark", slot: 0 },
 	{ x: 0, y: 0, variant: "m", z: 5, iconSet: "white", slot: 1 },
 	{ x: 1 * STEP_X, y: 0, variant: "c", z: 4, iconSet: "dark", slot: 2 },
 	{ x: 2 * STEP_X, y: 0, variant: "s", z: 1 },
-
-	// Main row 3 (bottom), y = STEP_Y
 	{ x: -1.5 * STEP_X, y: STEP_Y, variant: "s", z: 1 },
 	{ x: -0.5 * STEP_X, y: STEP_Y, variant: "c", z: 2 },
 	{ x: 0.5 * STEP_X, y: STEP_Y, variant: "c", z: 2 },
@@ -96,8 +80,6 @@ const SRC_BY_VARIANT: Record<Variant, string> = {
 	c: C_POLY,
 };
 
-/** Pick three distinct icon indexes; optionally avoid repeating the previous
- *  icon in the same slot so swaps always look like a change. */
 function pickUniqueTriplet(prev?: string[]): string[] {
 	const pool = [...ICON_INDEXES];
 	for (let i = pool.length - 1; i > 0; i--) {
@@ -116,7 +98,6 @@ function pickUniqueTriplet(prev?: string[]): string[] {
 	return pick;
 }
 
-/** Ring distance from the center hex, used to delay the breathing cascade. */
 function ringOf(h: Hex): number {
 	if (h.variant === "m") return 0;
 	const cx = Math.round((h.x / STEP_X) * 2);
@@ -170,10 +151,7 @@ const HexIconSlot = memo(function HexIconSlot({
 	);
 });
 
-/** The radially-masked polygon cluster (no loading text — that lives outside
- *  the mask). */
 export function HexScene() {
-	// ── Icon swap state ─────────────────────────────────────────────────────
 	const [iconLayers, setIconLayers] = useState<IconLayer[]>(() => [
 		{ id: 0, icons: pickUniqueTriplet(), status: "incoming" },
 	]);
@@ -185,8 +163,6 @@ export function HexScene() {
 		};
 	}
 	const layerIdRef = useRef(0);
-
-	// Preload all 22 icon files once so swaps never blink.
 	useEffect(() => {
 		ICON_INDEXES.forEach((n) => {
 			const a = new Image();
@@ -195,8 +171,6 @@ export function HexScene() {
 			b.src = whiteSrc(n);
 		});
 	}, []);
-
-	// ── Icon cycling timeline ────────────────────────────────────────────────
 	useEffect(() => {
 		let mounted = true;
 		const timeouts: number[] = [];
@@ -218,8 +192,6 @@ export function HexScene() {
 			const nextId = layerIdRef.current + 1;
 			layerIdRef.current = nextId;
 			currentLayerRef.current = { id: nextId, icons: nextIcons };
-
-			// Overlap old + new for a blink-free crossfade.
 			setIconLayers([
 				{ id: previous.id, icons: previous.icons, status: "outgoing" },
 				{ id: nextId, icons: nextIcons, status: "incoming" },
@@ -230,8 +202,6 @@ export function HexScene() {
 				schedule(beginTransition, HOLD);
 			}, FADE);
 		};
-
-		// Settle the initial layer, then start cycling.
 		schedule(() => {
 			const current = currentLayerRef.current;
 			if (!current) return;
@@ -246,8 +216,6 @@ export function HexScene() {
 			timeouts.forEach(clearTimeout);
 		};
 	}, []);
-
-	// ── Breathing animation clock ────────────────────────────────────────────
 	const [t, setT] = useState(0);
 	const startRef = useRef<number | null>(null);
 	useEffect(() => {
@@ -272,15 +240,15 @@ export function HexScene() {
 		return h.variant === "m" ? 1 + AMP * wave : 1 - AMP * w;
 	};
 
-	const sceneW = 7 * STEP_X + HEX_W; // 1184
-	const sceneH = 5 * STEP_Y + HEX_H; // 799.5
+	const sceneW = 7 * STEP_X + HEX_W;
+	const sceneH = 5 * STEP_Y + HEX_H;
 
 	return (
 		<div
 			className="hex-scene-mask"
 			style={{ position: "relative", width: sceneW, height: sceneH }}
 		>
-			{/* Center blue glow circle */}
+			{}
 			<div className="hex-glow" />
 
 			{HEXES.map((h, i) => {
@@ -290,7 +258,6 @@ export function HexScene() {
 
 				return (
 					<div
-						// eslint-disable-next-line react/no-array-index-key
 						key={i}
 						style={{
 							position: "absolute",
@@ -332,8 +299,6 @@ export function HexScene() {
 	);
 }
 
-/** Uneven progress driver — exposed as a hook so the loading block can live
- *  outside the masked scene while sharing the same organic progress logic. */
 export function useUnevenProgress(): number {
 	const [progress, setProgress] = useState(0);
 	useEffect(() => {
@@ -360,8 +325,6 @@ export function useUnevenProgress(): number {
 	return progress;
 }
 
-/** Loading label (shimmering) + uneven progress bar, pinned near the bottom of
- *  the viewport, sitting over the background and outside the scene mask. */
 export function LoadingBlock() {
 	const progress = useUnevenProgress();
 	return (
