@@ -3,10 +3,9 @@ import DashboardPreview from "./components/DashboardPreview";
 import Navbar from "./components/Navbar";
 
 const VIDEO_SRC =
-	"/assets/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4";
-const POSTER_SRC = "/assets/unsplash-photo-1557683316-973673baf926.jpg";
+	"./assets/hf_20260424_064411_9e9d7f84-9277-41f4-ab10-59172d89e6be.mp4";
+const POSTER_SRC = "./assets/unsplash-photo-1557683316-973673baf926.jpg";
 
-/** Legacy inline-playback attributes for older iOS / QQ & WeChat (X5) webviews. */
 const legacyPlaysInlineAttrs = {
 	"webkit-playsinline": "true",
 	"x5-playsinline": "true",
