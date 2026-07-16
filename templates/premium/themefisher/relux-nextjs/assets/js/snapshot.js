@@ -2,8 +2,16 @@ const navToggle = document.querySelector("#nav-toggle")
 const navMenu = document.querySelector("#nav-menu")
 
 navToggle?.addEventListener("change", () => {
-  navMenu?.classList.toggle("hidden", !navToggle.checked)
-  if (navMenu) navMenu.style.display = navToggle.checked ? "flex" : "none"
+  const open = navToggle.checked
+  navMenu?.classList.toggle("hidden", !open)
+  if (navMenu) {
+    navMenu.style.display = open ? "flex" : "none"
+    navMenu.style.pointerEvents = open ? "auto" : "none"
+    navMenu.style.opacity = open ? "1" : "0"
+  }
+  document.body.style.overflow = open ? "hidden" : ""
+  document.querySelector(".menu-text")?.classList.toggle("hidden", open)
+  document.querySelector(".close-text")?.classList.toggle("hidden", !open)
 })
 
 document.querySelectorAll("form").forEach((form) => form.addEventListener("submit", (event) => event.preventDefault()))
@@ -22,7 +30,7 @@ document.querySelectorAll(".swiper").forEach((slider) => {
   area?.querySelectorAll(".swiper-button-prev,.room-swiper-button-prev").forEach((button) => button.addEventListener("click", () => move(-1)))
 })
 
-if (location.pathname.startsWith("/elements")) {
+if (location.pathname.includes("/elements")) {
   const main = document.querySelector("main")
   if (main) main.style.minHeight = `${main.offsetHeight + 634}px`
 }
