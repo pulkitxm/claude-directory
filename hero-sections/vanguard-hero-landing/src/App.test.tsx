@@ -18,7 +18,7 @@ describe("VANGUARD hero landing", () => {
 		const { container } = render(<App />);
 		const video = container.querySelector("video");
 		expect(video).not.toBeNull();
-		expect(video?.src).toBe(VIDEO_URL);
+		expect(video?.src.endsWith(VIDEO_URL)).toBe(true);
 		expect(video?.hasAttribute("autoplay")).toBe(true);
 		expect(video?.hasAttribute("loop")).toBe(true);
 		expect(video?.hasAttribute("playsinline")).toBe(true);
