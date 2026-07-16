@@ -28,7 +28,7 @@ function SectionEyebrow({ index, label }: { index: string; label: string }) {
 
 function CodeBlock({ children }: { children: React.ReactNode }) {
 	return (
-		<pre className="overflow-x-auto rounded-md border border-helm/15 bg-void-900/80 p-4 font-mono text-[12px] leading-relaxed text-frost/90 backdrop-blur-sm">
+		<pre className="min-w-0 max-w-full overflow-x-auto rounded-md border border-helm/15 bg-void-900/80 p-4 font-mono text-[12px] leading-relaxed text-frost/90 backdrop-blur-sm">
 			{children}
 		</pre>
 	);
@@ -119,8 +119,8 @@ export function SetupSection() {
 					to step three — otherwise scaffold from scratch:
 				</p>
 
-				<div className="mt-10 grid gap-6 lg:grid-cols-2">
-					<div className="space-y-6">
+				<div className="mt-10 grid min-w-0 gap-6 lg:grid-cols-2">
+					<div className="min-w-0 space-y-6">
 						<div>
 							<div className="mb-2 flex items-center gap-2">
 								<Terminal className="h-4 w-4 text-helm" strokeWidth={1.5} />
@@ -172,7 +172,7 @@ export function SetupSection() {
 					</div>
 
 					{/* Why /components/ui */}
-					<div className="rounded-md border border-helm/15 bg-void-800/50 p-6 backdrop-blur-sm">
+					<div className="min-w-0 rounded-md border border-helm/15 bg-void-800/50 p-6 backdrop-blur-sm">
 						<div className="flex items-center gap-2">
 							<FolderTree className="h-5 w-5 text-warp" strokeWidth={1.5} />
 							<h3 className="font-display text-base font-semibold text-frost">
@@ -184,7 +184,7 @@ export function SetupSection() {
 							alias to your source root and treats{" "}
 							<code className="font-mono text-helm">components/ui</code> as the
 							home for copy-in primitives. Because the brief imports{" "}
-							<code className="font-mono text-helm">
+							<code className="break-all font-mono text-helm">
 								@/components/ui/warp-drive-shader
 							</code>{" "}
 							literally, that exact path has to exist — otherwise the import
