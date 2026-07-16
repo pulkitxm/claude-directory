@@ -76,7 +76,7 @@ const summary = {
 fs.mkdirSync(path.join(root, ".audit"), { recursive: true });
 fs.writeFileSync(
 	path.join(root, ".audit/interaction-verification.json"),
-	`${JSON.stringify({ summary, results }, null, 2)}\n`,
+	`${JSON.stringify({ summary, results }, null, "\t")}\n`,
 );
 console.log(`Verified ${summary.passed} of ${summary.tested} interactions`);
 if (summary.passed !== summary.tested) process.exitCode = 1;

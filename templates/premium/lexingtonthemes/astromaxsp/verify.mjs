@@ -95,7 +95,7 @@ const report = {
 fs.mkdirSync(path.join(root, ".audit"), { recursive: true });
 fs.writeFileSync(
 	path.join(root, ".audit/pages-verification-390-768-1280.json"),
-	`${JSON.stringify(report, null, 2)}\n`,
+	`${JSON.stringify(report, null, "\t")}\n`,
 );
 console.log(
 	`Verified ${results.length} route and viewport combinations with ${failures.length} failures`,
