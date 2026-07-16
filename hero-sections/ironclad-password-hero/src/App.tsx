@@ -2,7 +2,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 
 const VIDEO_URL =
-	"/assets/hf_20260606_131516_eca35265-ea66-4fbd-8d52-22aae6e1a503.mp4";
+	"./assets/hf_20260606_131516_eca35265-ea66-4fbd-8d52-22aae6e1a503.mp4";
 
 export default function App() {
 	return (
