@@ -96,7 +96,6 @@
 			text-decoration: none;
 		}
 
-		/* ---------- custom cursor ---------- */
 		.cursor {
 			position: fixed;
 			top: 0;
@@ -125,7 +124,6 @@
 			}
 		}
 
-		/* ---------- nav ---------- */
 		header.nav-shell {
 			position: fixed;
 			top: 0;
@@ -215,7 +213,6 @@
 			color: var(--pine);
 		}
 
-		/* ---------- mobile overlay ---------- */
 		.m-menu {
 			position: fixed;
 			inset: 0;
@@ -223,11 +220,18 @@
 			background: var(--bone);
 			display: flex;
 			flex-direction: column;
+			visibility: hidden;
+			pointer-events: none;
 			transform: translateY(-100%);
-			transition: transform 0.55s var(--ease);
+			transition:
+				transform 0.55s var(--ease),
+				visibility 0s linear 0.55s;
 		}
 		.m-menu.open {
+			visibility: visible;
+			pointer-events: auto;
 			transform: translateY(0);
+			transition-delay: 0s;
 		}
 		.m-menu .top {
 			display: flex;
@@ -259,7 +263,6 @@
 			text-align: center;
 		}
 
-		/* ---------- buttons ---------- */
 		.btn {
 			display: inline-flex;
 			align-items: center;
@@ -302,7 +305,6 @@
 			background: var(--forest);
 		}
 
-		/* ---------- reveal ---------- */
 		.reveal {
 			opacity: 0;
 			transform: translateY(26px);
@@ -315,7 +317,6 @@
 			transform: none;
 		}
 
-		/* ---------- HERO ---------- */
 		.hero {
 			padding: 96px var(--pad) 26px;
 		}
@@ -451,7 +452,6 @@
 			}
 		}
 
-		/* ---------- section heads ---------- */
 		.sec {
 			padding: clamp(64px, 9vw, 120px) 0;
 		}
@@ -470,7 +470,6 @@
 			color: var(--txt2);
 		}
 
-		/* ---------- marquee ---------- */
 		.marquee {
 			overflow: hidden;
 			padding: 14px 0 4px;
@@ -523,7 +522,6 @@
 			transform: scale(1.05);
 		}
 
-		/* ---------- pathway ---------- */
 		.pathway-panel {
 			background: var(--ivory);
 			border: 1px solid var(--hair);
@@ -552,9 +550,15 @@
 		}
 		.acc-title {
 			display: flex;
+			width: 100%;
 			align-items: center;
 			justify-content: space-between;
 			gap: 16px;
+			border: 0;
+			padding: 0;
+			background: none;
+			text-align: left;
+			cursor: pointer;
 			font-family: var(--serif);
 			font-size: clamp(20px, 2.2vw, 27px);
 			font-weight: 500;
@@ -607,7 +611,6 @@
 			object-fit: cover;
 		}
 
-		/* ---------- testimonial ---------- */
 		.quote-panel {
 			position: relative;
 			border-radius: 28px;
@@ -670,7 +673,6 @@
 			opacity: 0.72;
 		}
 
-		/* ---------- pricing ---------- */
 		.price-grid {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
@@ -765,7 +767,6 @@
 			justify-content: center;
 		}
 
-		/* ---------- newsletter ---------- */
 		.news-panel {
 			background: var(--pine);
 			color: var(--light);
@@ -819,7 +820,6 @@
 			align-self: flex-start;
 		}
 
-		/* ---------- footer ---------- */
 		footer {
 			background: var(--forest);
 			color: var(--light);
@@ -893,7 +893,6 @@
 			opacity: 0.5;
 		}
 
-		/* ---------- responsive ---------- */
 		@media (max-width: 980px) {
 			.nav-links {
 				display: none;
@@ -945,7 +944,6 @@
 	<body>
 		<div class="cursor" id="cursor" aria-hidden="true"></div>
 
-		<!-- NAV -->
 		<header class="nav-shell">
 			<nav class="pill">
 				<a href="#" class="brand">Lumen<b>·</b>Grove</a>
@@ -968,7 +966,14 @@
 							/>
 						</svg>
 					</a>
-					<button class="burger" id="burger" aria-label="Open menu">
+					<button
+						type="button"
+						class="burger"
+						id="burger"
+						aria-label="Open menu"
+						aria-expanded="false"
+						aria-controls="mMenu"
+					>
 						<svg width="22" height="14" viewBox="0 0 22 14" fill="none">
 							<path
 								d="M1 1h20M1 7h20M1 13h20"
@@ -982,11 +987,15 @@
 			</nav>
 		</header>
 
-		<!-- MOBILE MENU -->
-		<div class="m-menu" id="mMenu">
+		<div class="m-menu" id="mMenu" aria-hidden="true">
 			<div class="top">
 				<span class="brand">Lumen<b>·</b>Grove</span>
-				<button class="burger" id="mClose" aria-label="Close menu">
+				<button
+					type="button"
+					class="burger"
+					id="mClose"
+					aria-label="Close menu"
+				>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M18 6 6 18M6 6l12 12"
@@ -1007,7 +1016,6 @@
 		</div>
 
 		<main>
-			<!-- HERO -->
 			<section class="hero">
 				<div class="hero-card">
 					<div class="hero-left">
@@ -1097,7 +1105,6 @@
 				</div>
 			</section>
 
-			<!-- RITUALS INTRO -->
 			<section class="sec" id="rituals">
 				<div class="wrap sec-center">
 					<span class="eyebrow reveal">The Practice</span>
@@ -1110,12 +1117,10 @@
 				</div>
 			</section>
 
-			<!-- MARQUEE -->
 			<section class="marquee" aria-label="Gallery">
 				<div class="marquee-track" id="mqTrack"></div>
 			</section>
 
-			<!-- PATHWAY -->
 			<section class="sec" id="pathway">
 				<div class="wrap">
 					<div class="pathway-panel reveal">
@@ -1124,11 +1129,16 @@
 							<h2>Define your pathway.<br>Soften your season.</h2>
 							<div class="acc-list" id="acc">
 								<div class="acc-item active" data-i="0">
-									<div class="acc-title">
+									<button
+										type="button"
+										class="acc-title"
+										aria-expanded="true"
+										aria-controls="ritual-panel-0"
+									>
 										<span>Forest Hydrotherapy</span
 										><span class="acc-num">01</span>
-									</div>
-									<div class="acc-body">
+									</button>
+									<div class="acc-body" id="ritual-panel-0">
 										<p>
 											A circuit of mineral baths drawn from spring water,
 											alternating warm and cool to wake circulation and quiet
@@ -1137,10 +1147,15 @@
 									</div>
 								</div>
 								<div class="acc-item" data-i="1">
-									<div class="acc-title">
+									<button
+										type="button"
+										class="acc-title"
+										aria-expanded="false"
+										aria-controls="ritual-panel-1"
+									>
 										<span>Aromatic Steam</span><span class="acc-num">02</span>
-									</div>
-									<div class="acc-body">
+									</button>
+									<div class="acc-body" id="ritual-panel-1">
 										<p>
 											Cedar and eucalyptus steam, infused with hand-foraged
 											botanicals, to open the lungs and release the week from
@@ -1149,11 +1164,16 @@
 									</div>
 								</div>
 								<div class="acc-item" data-i="2">
-									<div class="acc-title">
+									<button
+										type="button"
+										class="acc-title"
+										aria-expanded="false"
+										aria-controls="ritual-panel-2"
+									>
 										<span>Cold Plunge &amp; Breath</span
 										><span class="acc-num">03</span>
-									</div>
-									<div class="acc-body">
+									</button>
+									<div class="acc-body" id="ritual-panel-2">
 										<p>
 											Guided breathwork into a still cold pool — a clean reset
 											for the nervous system, held by an attendant from start to
@@ -1162,11 +1182,16 @@
 									</div>
 								</div>
 								<div class="acc-item" data-i="3">
-									<div class="acc-title">
+									<button
+										type="button"
+										class="acc-title"
+										aria-expanded="false"
+										aria-controls="ritual-panel-3"
+									>
 										<span>Herbal Tea Ceremony</span
 										><span class="acc-num">04</span>
-									</div>
-									<div class="acc-body">
+									</button>
+									<div class="acc-body" id="ritual-panel-3">
 										<p>
 											A slow close: seasonal tisanes poured in the conservatory,
 											where the grove unwinds and conversation softens.
@@ -1193,7 +1218,6 @@
 				</div>
 			</section>
 
-			<!-- TESTIMONIAL -->
 			<section class="sec" style="padding-top:0">
 				<div class="wrap">
 					<div class="quote-panel reveal">
@@ -1221,7 +1245,6 @@
 				</div>
 			</section>
 
-			<!-- MEMBERSHIP -->
 			<section class="sec" id="membership" style="padding-top:0">
 				<div class="wrap">
 					<div class="sec-center reveal">
@@ -1360,7 +1383,6 @@
 				</div>
 			</section>
 
-			<!-- NEWSLETTER -->
 			<section class="sec" id="journal" style="padding-top:0">
 				<div class="wrap">
 					<div class="news-panel reveal">
@@ -1392,7 +1414,6 @@
 			</section>
 		</main>
 
-		<!-- FOOTER -->
 		<footer>
 			<div class="wrap">
 				<div class="foot-grid">
@@ -1442,7 +1463,6 @@
 
 		<script>
 		(() => {
-			// ---- marquee build (duplicated for seamless loop) ----
 			var tiles = [
 				{ src: "assets/img/g1.jpg", w: 320, h: 380 },
 				{ src: "assets/img/g2.jpg", w: 280, h: 360 },
@@ -1461,7 +1481,6 @@
 					var img = document.createElement("img");
 					img.src = t.src;
 					img.alt = "";
-					img.loading = "lazy";
 					d.appendChild(img);
 					track.appendChild(d);
 				});
@@ -1469,7 +1488,6 @@
 			buildSet();
 			buildSet();
 
-			// ---- reveal observer ----
 			var io = new IntersectionObserver(
 				(entries) => {
 					entries.forEach((e) => {
@@ -1485,7 +1503,6 @@
 				io.observe(el);
 			});
 
-			// ---- accordion + image tabs ----
 			var items = document.querySelectorAll(".acc-item");
 			var imgs = document.querySelectorAll(".acc-img");
 			items.forEach((item) => {
@@ -1493,31 +1510,44 @@
 					var i = item.getAttribute("data-i");
 					items.forEach((x) => {
 						x.classList.remove("active");
+						x.querySelector(".acc-title").setAttribute(
+							"aria-expanded",
+							"false",
+						);
 					});
 					imgs.forEach((x) => {
 						x.classList.remove("active");
 					});
 					item.classList.add("active");
+					item
+						.querySelector(".acc-title")
+						.setAttribute("aria-expanded", "true");
 					var target = document.querySelector(`.acc-img[data-i="${i}"]`);
 					if (target) target.classList.add("active");
 				});
 			});
 
-			// ---- mobile menu ----
 			var menu = document.getElementById("mMenu");
-			document.getElementById("burger").addEventListener("click", () => {
+			var burger = document.getElementById("burger");
+			function openMenu() {
 				menu.classList.add("open");
-			});
-			document.getElementById("mClose").addEventListener("click", () => {
+				menu.setAttribute("aria-hidden", "false");
+				burger.setAttribute("aria-expanded", "true");
+			}
+			function closeMenu() {
 				menu.classList.remove("open");
+				menu.setAttribute("aria-hidden", "true");
+				burger.setAttribute("aria-expanded", "false");
+			}
+			burger.addEventListener("click", openMenu);
+			document.getElementById("mClose").addEventListener("click", closeMenu);
+			document.addEventListener("keydown", (event) => {
+				if (event.key === "Escape") closeMenu();
 			});
 			menu.querySelectorAll("a").forEach((a) => {
-				a.addEventListener("click", () => {
-					menu.classList.remove("open");
-				});
+				a.addEventListener("click", closeMenu);
 			});
 
-			// ---- custom cursor ----
 			var cursor = document.getElementById("cursor");
 			var cx = window.innerWidth / 2,
 				cy = window.innerHeight / 2,
