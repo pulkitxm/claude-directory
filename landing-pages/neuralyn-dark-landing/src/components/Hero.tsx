@@ -6,7 +6,7 @@ import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
 const VIDEO_URL =
-	"/assets/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4";
+	"./assets/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4";
 
 const NAV_LINKS = ["Home", "Services", "Reviews", "Contact us"];
 
@@ -28,10 +28,9 @@ export default function Hero() {
 			data-testid="hero"
 			className="relative h-screen overflow-hidden"
 		>
-			{/* Navbar */}
 			<header className="relative z-40 flex items-center justify-between px-8 py-4 md:px-28">
 				<div className="flex items-center gap-12 md:gap-20">
-					<a href="/" className="flex items-center gap-2.5">
+					<a href="#" className="flex items-center gap-2.5">
 						<img src={logo} alt="Neuralyn logo" className="h-8 w-8" />
 						<span className="text-xl font-bold tracking-tight">Neuralyn</span>
 					</a>
@@ -55,7 +54,6 @@ export default function Hero() {
 				</Button>
 			</header>
 
-			{/* Hero content */}
 			<motion.div
 				style={{ y: contentY, opacity: contentOpacity }}
 				data-testid="hero-content"
@@ -112,7 +110,6 @@ export default function Hero() {
 				</motion.button>
 			</motion.div>
 
-			{/* Dashboard + video area */}
 			<motion.div
 				initial={{ opacity: 0, y: 40 }}
 				animate={{ opacity: 1, y: 0 }}
@@ -140,7 +137,6 @@ export default function Hero() {
 				</div>
 			</motion.div>
 
-			{/* Bottom gradient fade */}
 			<div
 				data-testid="hero-fade"
 				className="pointer-events-none absolute bottom-0 left-0 right-0 z-30 h-40 bg-gradient-to-t from-background to-transparent"
