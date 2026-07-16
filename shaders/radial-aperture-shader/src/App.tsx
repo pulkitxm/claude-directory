@@ -60,8 +60,6 @@ export default function App() {
 	const [paused, setPaused] = useState(false);
 	const [fullscreen, setFullscreen] = useState(false);
 
-	// Live telemetry refs — written every frame, read straight by the DOM so the
-	// 60fps stream never triggers a React re-render.
 	const heroFps = useRef<HTMLSpanElement>(null);
 	const heroUptime = useRef<HTMLSpanElement>(null);
 	const heroFrame = useRef<HTMLSpanElement>(null);
@@ -102,7 +100,6 @@ export default function App() {
 		<div className="relative min-h-screen bg-base font-sans text-ash">
 			<Nav />
 
-			{/* ============================================================ HERO */}
 			<section
 				id="top"
 				className="relative isolate min-h-[100svh] overflow-hidden"
@@ -131,8 +128,8 @@ export default function App() {
 							APERTURE
 						</h1>
 
-						<p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-ash/85 copy-legible sm:text-lg">
-							A drop-in radial-bloom shader for shadcn/ui — nine accumulating
+						<p className="mt-6 max-w-xl text-pretty text-[1rem] leading-relaxed text-ash/85 copy-legible sm:text-lg">
+							A drop-in radial-bloom shader for shadcn/ui, nine accumulating
 							blades, an angular smoothstep gate and a{" "}
 							<code className="font-mono text-ember2">tanh</code> tone-map, all
 							on a single full-screen triangle. No three.js. Open the instrument
@@ -152,7 +149,6 @@ export default function App() {
 					</div>
 				</div>
 
-				{/* Telemetry strip */}
 				<div className="pointer-events-none absolute inset-x-0 bottom-0">
 					<div className="mx-auto max-w-6xl px-5 pb-5 sm:px-8">
 						<div className="flex flex-wrap items-center gap-x-7 gap-y-2 border-t border-line/60 pt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-dim">
@@ -177,7 +173,6 @@ export default function App() {
 				</a>
 			</section>
 
-			{/* ===================================================== CONTROL DECK */}
 			<section
 				id="deck"
 				className="relative border-t border-line bg-base bg-grid"
@@ -202,7 +197,6 @@ export default function App() {
 					</div>
 
 					<div className="mt-10 grid gap-6 lg:grid-cols-[1.45fr_1fr]">
-						{/* Live instrument */}
 						<div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-line bg-black">
 							<ApertureCanvas
 								blades={settings.blades}
@@ -237,7 +231,6 @@ export default function App() {
 							</div>
 						</div>
 
-						{/* Controls */}
 						<div className="flex flex-col gap-5 rounded-xl border border-line bg-panel/70 p-5">
 							<Slider
 								label="Blades"
@@ -325,7 +318,6 @@ export default function App() {
 				</div>
 			</section>
 
-			{/* ========================================================= ANATOMY */}
 			<section id="anatomy" className="border-t border-line bg-base">
 				<div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
 					<SectionLabel icon={<Layers className="h-3.5 w-3.5" />} index="02">
@@ -336,7 +328,7 @@ export default function App() {
 					</h2>
 					<p className="mt-3 max-w-2xl text-sm leading-relaxed text-dim">
 						The whole image is one fragment shader over a single oversized
-						triangle — no meshes, no textures, no passes.
+						triangle, with no meshes, textures, or passes.
 					</p>
 
 					<div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -365,7 +357,6 @@ export default function App() {
 				</div>
 			</section>
 
-			{/* ======================================================= SPECIMENS */}
 			<section id="field" className="border-t border-line bg-base bg-rings">
 				<div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
 					<SectionLabel icon={<ImageIcon className="h-3.5 w-3.5" />} index="03">
@@ -377,7 +368,7 @@ export default function App() {
 						</h2>
 						<p className="max-w-md text-xs leading-relaxed text-faint">
 							Real frames rendered headless from this very component and
-							vendored locally — external photo CDNs are blocked in this build
+							vendored locally. External photo CDNs are blocked in this build
 							sandbox, so the gallery is sourced from the shader itself.
 						</p>
 					</div>
@@ -389,7 +380,7 @@ export default function App() {
 								className="group relative overflow-hidden rounded-xl border border-line bg-black"
 							>
 								<img
-									src={`/assets/specimens/${sp.slug}.jpg`}
+									src={`./assets/specimens/${sp.slug}.jpg`}
 									alt={`Radial bloom preset ${sp.name}: ${sp.blades} blades, gain ${sp.gain}, hue ${sp.hue}`}
 									loading="lazy"
 									className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -406,7 +397,6 @@ export default function App() {
 				</div>
 			</section>
 
-			{/* ===================================================== INTEGRATION */}
 			<section id="install" className="border-t border-line bg-base">
 				<div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
 					<SectionLabel icon={<FileCode2 className="h-3.5 w-3.5" />} index="04">
@@ -424,7 +414,7 @@ export default function App() {
 							</p>
 							<ul className="space-y-3">
 								<Check>
-									<b className="text-ash">shadcn structure</b> —{" "}
+									<b className="text-ash">shadcn structure</b>:{" "}
 									<code className="font-mono text-ember2">components.json</code>{" "}
 									is present, the{" "}
 									<code className="font-mono text-ember2">@</code> alias
@@ -451,7 +441,7 @@ export default function App() {
 									.
 								</Check>
 								<Check>
-									<b className="text-ash">TypeScript</b> — strict mode with
+									<b className="text-ash">TypeScript</b>: strict mode with
 									project references.
 								</Check>
 							</ul>
@@ -479,7 +469,7 @@ export default function App() {
 
 							<p>
 								The drop-in itself pulls in{" "}
-								<b className="text-ash">no dependencies</b> beyond React — it is
+								<b className="text-ash">no dependencies</b> beyond React. It is
 								raw WebGL2. The icons,{" "}
 								<code className="font-mono text-ember2">cn()</code> and copy
 								buttons used by <i>this page</i> are the only extras.
@@ -487,7 +477,7 @@ export default function App() {
 						</div>
 
 						<div className="min-w-0 space-y-4">
-							<CodeBlock label="terminal — from scratch" code={SCAFFOLD_SRC} />
+							<CodeBlock label="terminal, from scratch" code={SCAFFOLD_SRC} />
 							<CodeBlock label="src/components/ui/demo.tsx" code={DEMO_SRC} />
 							<CodeBlock label="embed anywhere" code={USAGE_SRC} />
 							<CodeBlock label="src/index.css" code={TAILWIND_SRC} />
@@ -496,7 +486,6 @@ export default function App() {
 				</div>
 			</section>
 
-			{/* ========================================================== DROP-IN */}
 			<section id="dropin" className="border-t border-line bg-base bg-grid">
 				<div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
 					<SectionLabel icon={<Boxes className="h-3.5 w-3.5" />} index="05">
@@ -519,8 +508,8 @@ export default function App() {
 						<code className="font-mono text-ember2">raidal-2.tsx</code> via its
 						exported{" "}
 						<code className="font-mono text-ember2">&lt;ShaderCanvas&gt;</code>{" "}
-						— no promoted uniforms. "Open fullscreen" mounts the literal default
-						export{" "}
+						with no promoted uniforms. "Open fullscreen" mounts the literal
+						default export{" "}
 						<code className="font-mono text-ember2">&lt;Component /&gt;</code>{" "}
 						exactly as the brief's{" "}
 						<code className="font-mono text-ember2">demo.tsx</code> ships it.
@@ -536,7 +525,6 @@ export default function App() {
 				</div>
 			</section>
 
-			{/* ============================================================== API */}
 			<section id="api" className="border-t border-line bg-base">
 				<div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
 					<SectionLabel icon={<Gauge className="h-3.5 w-3.5" />} index="06">
@@ -549,7 +537,7 @@ export default function App() {
 								&lt;ApertureCanvas /&gt; props
 							</h3>
 							<p className="mt-1.5 text-sm text-dim">
-								Additive conveniences — the verbatim drop-in takes none.
+								Additive conveniences. The verbatim drop-in takes none.
 							</p>
 							<div className="mt-5 overflow-hidden rounded-xl border border-line">
 								{PROPS.map((p, i) => (
@@ -629,7 +617,6 @@ export default function App() {
 
 			<Footer />
 
-			{/* =============================================== FULLSCREEN DROP-IN */}
 			{fullscreen && (
 				<>
 					<DemoOne />
@@ -647,7 +634,6 @@ export default function App() {
 	);
 }
 
-/* ----------------------------------------------------------------- Nav --- */
 function Nav() {
 	return (
 		<header className="fixed inset-x-0 top-0 z-50 border-b border-line/60 bg-base/70 backdrop-blur-md">
@@ -689,14 +675,13 @@ function Nav() {
 	);
 }
 
-/* -------------------------------------------------------------- Footer --- */
 function Footer() {
 	return (
 		<footer className="border-t border-line bg-base">
 			<div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
 				<div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-faint">
 					<Aperture className="h-3.5 w-3.5 text-ember" />
-					APERTURE — components/ui · webgl2 · one triangle
+					APERTURE · components/ui · webgl2 · one triangle
 				</div>
 				<span className="font-mono text-[11px] tracking-[0.14em] text-faint">
 					drop-in · zero required props · self-cleaning
@@ -706,7 +691,6 @@ function Footer() {
 	);
 }
 
-/* -------------------------------------------------------- small helpers --- */
 function SectionLabel({
 	icon,
 	index,
@@ -740,7 +724,7 @@ function Telem({
 		<span className="inline-flex items-center gap-1.5">
 			{label}
 			<span ref={inner} className="tabular-nums text-ash">
-				—
+				...
 			</span>
 		</span>
 	);
@@ -832,9 +816,7 @@ function CopyButton({ text, label }: { text: string; label: string }) {
 			onClick={async () => {
 				try {
 					await navigator.clipboard.writeText(text);
-				} catch {
-					/* ignore */
-				}
+				} catch {}
 				setCopied(true);
 				window.setTimeout(() => setCopied(false), 1400);
 			}}
@@ -855,12 +837,11 @@ function Check({ children }: { children: React.ReactNode }) {
 	);
 }
 
-/* ------------------------------------------------------------ content --- */
 const ANATOMY = [
 	{
 		n: "1",
 		title: "One full-screen triangle",
-		body: "The vertex shader emits a single oversized triangle that covers the viewport. Every pixel then runs the fragment program — there is no geometry to speak of.",
+		body: "The vertex shader emits a single oversized triangle that covers the viewport. Every pixel then runs the fragment program, so there is no geometry to speak of.",
 		code: "gl.drawArrays(gl.TRIANGLES, 0, 3);",
 	},
 	{
@@ -929,13 +910,13 @@ const PROPS = [
 	{
 		name: "onFrame",
 		type: "(f: ApertureFrame) => void",
-		def: "—",
+		def: "None",
 		desc: "Per-frame telemetry: fps, time, frame, dpr, size.",
 	},
 	{
 		name: "className / style",
 		type: "string / CSSProperties",
-		def: "—",
+		def: "None",
 		desc: "Forwarded to the <canvas>.",
 	},
 ];
@@ -949,7 +930,7 @@ const UNIFORMS = [
 	{
 		name: "iTime",
 		glsl: "uniform float",
-		desc: "Seconds — already scaled by spin and pausable on the CPU.",
+		desc: "Seconds, already scaled by spin and pausable on the CPU.",
 	},
 	{
 		name: "iFrame",
@@ -981,7 +962,7 @@ const QA = [
 	},
 	{
 		q: "State management",
-		a: "Local refs/useState only — no context or store. Telemetry is written to DOM refs to avoid per-frame re-renders.",
+		a: "Local refs/useState only, with no context or store. Telemetry is written to DOM refs to avoid per-frame re-renders.",
 	},
 	{
 		q: "Assets",
