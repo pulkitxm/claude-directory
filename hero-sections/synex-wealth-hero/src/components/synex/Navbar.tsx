@@ -1,6 +1,7 @@
 import { Globe } from "lucide-react";
 
 const NAV_LINKS = ["Dashboard", "Assets", "Analytics", "Markets"] as const;
+const BASE_URL = import.meta.env.BASE_URL;
 
 /**
  * Fixed top navbar. A 3-column CSS grid keeps the middle nav block
@@ -25,7 +26,7 @@ export default function Navbar() {
 					className="inline-flex items-center"
 				>
 					<img
-						src="/assets/logo.svg"
+						src={`${BASE_URL}assets/logo.svg`}
 						alt="Synex"
 						style={{ height: "28px", width: "auto" }}
 						draggable={false}
@@ -70,17 +71,10 @@ export default function Navbar() {
 
 				<button
 					type="button"
-					className="group inline-flex items-center gap-2 transition-colors duration-200"
+					className="group inline-flex items-center gap-2 bg-[#111111] transition-colors duration-200 hover:bg-[#333333]"
 					style={{
-						backgroundColor: "#111111",
 						borderRadius: "9999px",
 						padding: "10px 20px",
-					}}
-					onMouseEnter={(e) => {
-						e.currentTarget.style.backgroundColor = "#333333";
-					}}
-					onMouseLeave={(e) => {
-						e.currentTarget.style.backgroundColor = "#111111";
 					}}
 				>
 					{/* circular indicator */}
