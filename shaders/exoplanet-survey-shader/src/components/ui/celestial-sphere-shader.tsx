@@ -1,9 +1,6 @@
 import type React from "react";
 import { memo, useEffect, useRef } from "react";
 import * as THREE from "three";
-
-// --- GLSL Shaders ---
-// (Verbatim from the integration brief — untouched.)
 const vertexShader = `
   varying vec2 vUv;
   void main() {
@@ -53,16 +50,10 @@ const fragmentShader = `
     vec2 uv = vUv * 2.0 - 1.0;
     float d = 1.0 - dot(uv, uv);
     if (d < 0.0) discard;
-
-    // map UV onto sphere
     vec3 pos = vec3(uv, sqrt(d));
-
-    // cloud / nebula
     vec3 coord = pos * u_cloud_density + u_time * 0.1;
     float c = fbm(coord);
     vec3 nebula = mix(u_color1, u_color2, smoothstep(0.4, 0.6, c));
-
-    // Fresnel rim glow
     float fresnel = pow(1.0 - dot(normalize(pos), vec3(0,0,1)), 2.0)
                     * u_glow_intensity;
     vec3 glow = fresnel * u_color2;
@@ -71,19 +62,11 @@ const fragmentShader = `
   }
 `;
 
-/**
- * Per-frame telemetry surfaced for the surrounding survey console. This is the
- * only addition over the brief's component: an optional `onFrame` callback and
- * a `fill` flag so the canvas can either own the viewport (default, exactly as
- * shipped) or fill a framed parent container. The shader, uniforms, geometry,
- * and animation loop are otherwise verbatim.
- */
 export interface SphereTelemetry {
-	/** seconds since the WebGL clock started (THREE.Clock.getElapsedTime) */
 	elapsed: number;
-	/** sampled frames-per-second */
+
 	fps: number;
-	/** sphere Y rotation in radians, accumulated by rotationSpeed */
+
 	rotation: number;
 }
 
@@ -93,9 +76,9 @@ export interface ShaderCanvasProps {
 	cloudDensity?: number;
 	glowIntensity?: number;
 	rotationSpeed?: number;
-	/** Fill the parent element (absolute inset:0) instead of the viewport. */
+
 	fill?: boolean;
-	/** Receives live per-frame telemetry. */
+
 	onFrame?: (t: SphereTelemetry) => void;
 }
 
@@ -110,13 +93,8 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = memo(
 		onFrame,
 	}) => {
 		const mountRef = useRef<HTMLDivElement>(null);
-		// Keep the latest callback without re-running the whole effect.
 		const onFrameRef = useRef(onFrame);
 		onFrameRef.current = onFrame;
-		// Live prop values read inside the (one-time) render loop, so changing a
-		// colour or dial mutates the running uniforms in place instead of tearing
-		// down and rebuilding the WebGL scene (which would reset rotation + churn
-		// the GL context on every slider tick).
 		const rotationSpeedRef = useRef(rotationSpeed);
 		rotationSpeedRef.current = rotationSpeed;
 
@@ -138,15 +116,10 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = memo(
 		useEffect(() => {
 			const container = mountRef.current;
 			if (!container) return;
-
-			// The canvas matches its container when `fill` is set, otherwise the
-			// viewport (the brief's original behaviour).
 			const measure = () =>
 				fill
 					? { w: container.clientWidth, h: container.clientHeight }
 					: { w: window.innerWidth, h: window.innerHeight };
-
-			// 1. Scene + Camera
 			const scene = new THREE.Scene();
 			const start = measure();
 			const camera = new THREE.PerspectiveCamera(
@@ -156,15 +129,11 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = memo(
 				1000,
 			);
 			camera.position.z = 1;
-
-			// 2. Renderer (no alpha → we get a visible background color)
 			const renderer = new THREE.WebGLRenderer({ antialias: true });
 			renderer.setSize(start.w, start.h);
 			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-			renderer.setClearColor(0x000000, 1); // BLACK background
+			renderer.setClearColor(0x000000, 1);
 			container.appendChild(renderer.domElement);
-
-			// 3. Uniforms
 			const uniforms = {
 				u_time: { value: 0.0 },
 				u_color1: { value: new THREE.Color(color1) },
@@ -172,22 +141,18 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = memo(
 				u_cloud_density: { value: cloudDensity },
 				u_glow_intensity: { value: glowIntensity },
 			};
-
-			// 4. Sphere mesh with ShaderMaterial
 			const geo = new THREE.SphereGeometry(0.6, 64, 64);
 			const mat = new THREE.ShaderMaterial({
 				uniforms,
 				vertexShader,
 				fragmentShader,
-				transparent: false, // ensure the black clearColor shows through
+				transparent: false,
 			});
 			const sphere = new THREE.Mesh(geo, mat);
 			scene.add(sphere);
 
 			const clock = new THREE.Clock();
 			threeRef.current = { renderer, scene, camera, uniforms, sphere, clock };
-
-			// 5. Handle resize
 			function onResize() {
 				const { w, h } = measure();
 				camera.aspect = w / h;
@@ -195,23 +160,19 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = memo(
 				renderer.setSize(w, h);
 			}
 			window.addEventListener("resize", onResize);
-			// ResizeObserver keeps a filled canvas crisp when the parent reflows.
 			const ro = fill ? new ResizeObserver(onResize) : null;
 			ro?.observe(container);
 			onResize();
-
-			// 6. Animation loop
 			let raf: number;
 			let fpsEMA = 60;
 			const loop = () => {
 				const { clock, sphere } = threeRef.current;
 				const delta = clock?.getDelta();
-				sphere?.rotation.y += delta * rotationSpeedRef.current;
+				if (sphere)
+					sphere.rotation.y += (delta ?? 0) * rotationSpeedRef.current;
 				uniforms.u_time.value = clock?.getElapsedTime();
 
 				renderer.render(scene, camera);
-
-				// Telemetry: smoothed FPS + live clock + accumulated rotation.
 				if (delta > 0) fpsEMA = fpsEMA * 0.9 + (1 / delta) * 0.1;
 				onFrameRef.current?.({
 					elapsed: uniforms.u_time.value,
@@ -222,8 +183,6 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = memo(
 				raf = requestAnimationFrame(loop);
 			};
 			loop();
-
-			// 7. Cleanup
 			return () => {
 				cancelAnimationFrame(raf);
 				window.removeEventListener("resize", onResize);
@@ -235,13 +194,8 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = memo(
 					container.removeChild(renderer.domElement);
 				}
 			};
-			// Only `fill` changes the scene plumbing; colours/dials are synced live
-			// by the effect below without rebuilding the renderer.
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, [fill, glowIntensity, color2, color1, cloudDensity]);
-
-		// Sync the live uniforms in place (no scene rebuild, so the sphere keeps
-		// spinning from where it was and the GL context is never recreated).
 		useEffect(() => {
 			const u = threeRef.current.uniforms;
 			if (!u) return;
@@ -259,7 +213,7 @@ const ShaderCanvas: React.FC<ShaderCanvasProps> = memo(
 					inset: 0,
 					width: fill ? "100%" : "100vw",
 					height: fill ? "100%" : "100vh",
-					backgroundColor: "#000", // fallback CSS background
+					backgroundColor: "#000",
 				}}
 			/>
 		);
