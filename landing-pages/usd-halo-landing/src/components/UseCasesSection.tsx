@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
-const USE_CASES_VIDEO =
-	"/assets/hf_20260423_183428_ab5e672a-f608-4dcb-b319-f3e040f02e2d.mp4";
+const USE_CASES_VIDEO = `${(import.meta as ImportMeta & { env: { BASE_URL: string } }).env.BASE_URL}assets/hf_20260423_183428_ab5e672a-f608-4dcb-b319-f3e040f02e2d.mp4`;
 
 export default function UseCasesSection() {
 	return (
