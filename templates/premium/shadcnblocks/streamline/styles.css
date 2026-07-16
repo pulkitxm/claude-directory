@@ -395,6 +395,46 @@ html.dark .site-footer {
 .footer-socials a:hover {
 	color: #fff;
 }
+.footer-cta {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.footer-cta h2 {
+	max-width: 800px;
+	font-size: clamp(2.75rem, 6vw, 4rem);
+	line-height: 1;
+	margin-bottom: 2.25rem;
+}
+.footer-cta h2 span {
+	color: rgba(255, 255, 255, 0.45);
+}
+.footer-cta .btn {
+	background: #fff;
+	color: #0a0a0b;
+}
+.menu-toggle {
+	display: none;
+	width: 2rem;
+	height: 2rem;
+	position: relative;
+}
+.menu-toggle span {
+	position: absolute;
+	left: 0.4rem;
+	width: 1.2rem;
+	height: 2px;
+	background: currentColor;
+	transition: transform 0.2s, opacity 0.2s;
+}
+.menu-toggle span:nth-child(1) { transform: translateY(-6px); }
+.menu-toggle span:nth-child(3) { transform: translateY(6px); }
+.menu-toggle.open span:nth-child(1) { transform: rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: rotate(-45deg); }
+.mobile-sheet {
+	display: none;
+}
 
 /* ---------- Scroll reveal ---------- */
 .reveal {
@@ -522,6 +562,21 @@ html.dark .site-footer {
 }
 
 @media (max-width: 860px) {
+	.menu-toggle { display: block; }
+	.mobile-sheet {
+		position: absolute;
+		z-index: 60;
+		inset: 100% 0 auto;
+		min-height: calc(100vh - 64px);
+		padding: 2rem 1.5rem;
+		background: hsl(var(--warm));
+		flex-direction: column;
+		gap: 1.5rem;
+		font-size: 1.15rem;
+		transform: translateX(100%);
+		transition: transform 0.3s ease;
+	}
+	.mobile-sheet.open { display: flex; transform: translateX(0); }
 	.nav-links {
 		display: none;
 	}
