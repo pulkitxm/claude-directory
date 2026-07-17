@@ -2,8 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const VIDEO_URL =
-	"/assets/hf_20260517_222138_3e3205be-3364-417b-a64a-bfe087acbec4.mp4";
+const VIDEO_URL = `${import.meta.env.BASE_URL}assets/hf_20260517_222138_3e3205be-3364-417b-a64a-bfe087acbec4.mp4`;
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -132,10 +131,10 @@ export default function App() {
 
 	return (
 		<div
+			id="story"
 			className="relative flex min-h-screen flex-col overflow-hidden text-black"
 			style={{ fontFamily: "'Inter', sans-serif" }}
 		>
-			{/* Background video */}
 			<video
 				className="pointer-events-none absolute inset-0 h-full w-full object-cover"
 				src={VIDEO_URL}
@@ -147,7 +146,6 @@ export default function App() {
 				tabIndex={-1}
 			/>
 
-			{/* Navigation */}
 			<header className="relative z-10 flex items-center justify-between px-5 pt-5 sm:px-8 md:px-12 md:pt-6">
 				<motion.div
 					variants={fadeDown}
@@ -194,8 +192,10 @@ export default function App() {
 				</motion.button>
 			</header>
 
-			{/* Stats row */}
-			<section className="relative z-10 flex flex-1 items-center justify-end px-5 py-8 sm:px-8 md:px-12 md:py-0">
+			<section
+				id="expertise"
+				className="relative z-10 flex flex-1 items-center justify-end px-5 py-8 sm:px-8 md:px-12 md:py-0"
+			>
 				<div className="flex items-center gap-5 sm:gap-8 md:gap-10">
 					{STATS.map((stat, i) => (
 						<motion.div
@@ -226,11 +226,13 @@ export default function App() {
 				</div>
 			</section>
 
-			{/* Bottom section */}
-			<footer className="relative z-10 flex flex-col gap-6 px-5 pb-8 sm:px-8 md:gap-12 md:px-12 md:pb-12">
-				{/* Row A: tagline + CTA */}
+			<footer
+				id="contact"
+				className="relative z-10 flex flex-col gap-6 px-5 pb-8 sm:px-8 md:gap-12 md:px-12 md:pb-12"
+			>
 				<div className="flex items-center justify-between gap-4">
 					<motion.p
+						id="feedback"
 						variants={fadeUp}
 						initial="hidden"
 						animate="visible"
@@ -257,7 +259,6 @@ export default function App() {
 					</motion.div>
 				</div>
 
-				{/* Row B: description + main heading */}
 				<div className="flex items-end justify-between gap-3 sm:gap-4">
 					<motion.div
 						variants={fadeUp}
@@ -273,6 +274,7 @@ export default function App() {
 					</motion.div>
 
 					<h1
+						id="studios"
 						className="text-right font-semibold uppercase text-black"
 						style={{ fontSize: "clamp(2rem, 9vw, 9rem)", lineHeight: 0.88 }}
 					>
@@ -296,7 +298,6 @@ export default function App() {
 				</div>
 			</footer>
 
-			{/* Mobile menu overlay */}
 			<AnimatePresence>
 				{menuOpen && <MobileMenu onClose={() => setMenuOpen(false)} />}
 			</AnimatePresence>
