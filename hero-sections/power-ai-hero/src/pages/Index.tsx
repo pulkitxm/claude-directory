@@ -3,8 +3,7 @@ import LogoMarquee from "@/components/LogoMarquee";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 
-const VIDEO_URL =
-	"/assets/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4";
+const VIDEO_URL = `${import.meta.env.BASE_URL}assets/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4`;
 
 export default function Index() {
 	return (
