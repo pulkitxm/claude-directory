@@ -16,7 +16,7 @@ declare global {
  * blocked. Here it is vendored into /public so the component is fully
  * self-contained — flip this to a CDN URL only if you'd rather not ship the file.
  */
-const THREE_SRC = "/vendor/three.min.js";
+const THREE_SRC = `${import.meta.env.BASE_URL}vendor/three.min.js`;
 
 /**
  * One shared loader for the whole app. Three.js is a global singleton, so a
@@ -122,9 +122,9 @@ export function ShaderAnimation({
 			state.resizeObserver = null;
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [initThreeJS]);
+	}, []);
 
-	const initThreeJS = () => {
+	function initThreeJS() {
 		const container = containerRef.current;
 		if (!container || !window.THREE) return;
 
@@ -235,7 +235,7 @@ export function ShaderAnimation({
 			renderer.render(scene, camera);
 		};
 		animate();
-	};
+	}
 
 	return (
 		<div
