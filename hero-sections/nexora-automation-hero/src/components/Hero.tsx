@@ -3,8 +3,7 @@ import { Play } from "lucide-react";
 import DashboardPreview from "./DashboardPreview";
 import { Button } from "./ui/button";
 
-const VIDEO_URL =
-	"/assets/hf_20260319_015952_e1deeb12-8fb7-4071-a42a-60779fc64ab6.mp4";
+const VIDEO_URL = `${import.meta.env.BASE_URL}assets/hf_20260319_015952_e1deeb12-8fb7-4071-a42a-60779fc64ab6.mp4`;
 
 const fadeUp = (y: number, duration: number, delay = 0) => ({
 	initial: { opacity: 0, y },
