@@ -1,5 +1,4 @@
-const VIDEO_SRC =
-	"/assets/hf_20260418_063509_7d167302-4fd4-480b-8260-18ab572333d4.mp4";
+const VIDEO_SRC = `${import.meta.env.BASE_URL}assets/hf_20260418_063509_7d167302-4fd4-480b-8260-18ab572333d4.mp4`;
 
 const LOGO_PATH =
 	"M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z " +
