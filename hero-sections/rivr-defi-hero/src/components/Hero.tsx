@@ -4,8 +4,7 @@ import BottomRightCorner from "./BottomRightCorner";
 import HeroBadge from "./HeroBadge";
 import Navbar from "./Navbar";
 
-const VIDEO_URL =
-	"/assets/hf_20260428_193507_4286c423-2fd9-4efd-92bd-91a939453fc1.mp4";
+const VIDEO_URL = `${import.meta.env.BASE_URL}assets/hf_20260428_193507_4286c423-2fd9-4efd-92bd-91a939453fc1.mp4`;
 
 export default function Hero() {
 	return (
