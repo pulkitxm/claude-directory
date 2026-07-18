@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-const VIDEO_SRC =
-	"/assets/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4";
+const VIDEO_SRC = `${import.meta.env.BASE_URL}assets/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4`;
 
 const NAV_LINKS = ["Studio", "About", "Journal", "Reach Us"];
 
@@ -23,7 +22,7 @@ export default function App() {
 
 			<header className="relative z-10 mx-auto flex w-full max-w-7xl flex-row items-center justify-between px-8 py-6">
 				<a
-					href="/"
+					href="./"
 					className="text-3xl tracking-tight text-foreground"
 					style={displayFont}
 					aria-label="Velorah home"
@@ -33,7 +32,7 @@ export default function App() {
 
 				<nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
 					<a
-						href="/"
+						href="./"
 						className="text-sm text-foreground transition-colors"
 						aria-current="page"
 					>
