@@ -2,8 +2,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import App from "./App";
 
-const VIDEO_URL =
-	"/assets/hf_20260328_091828_e240eb17-6edc-4129-ad9d-98678e3fd238.mp4";
+const VIDEO_URL = `${import.meta.env.BASE_URL}assets/hf_20260328_091828_e240eb17-6edc-4129-ad9d-98678e3fd238.mp4`;
 
 afterEach(cleanup);
 
