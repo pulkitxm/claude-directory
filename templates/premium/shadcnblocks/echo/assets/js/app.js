@@ -31,12 +31,14 @@
 		}
 		var copyButton = event.target.closest("button");
 		if (copyButton && /copy link/i.test(copyButton.textContent)) {
-			if (navigator.clipboard) {
-				navigator.clipboard.writeText(location.href).catch(function () {});
-			}
 			var label = copyButton.querySelector("div") || copyButton;
 			var previous = label.textContent;
 			label.textContent = "Copied";
+			try {
+				if (navigator.clipboard) {
+					navigator.clipboard.writeText(location.href).catch(function () {});
+				}
+			} catch (error) {}
 			setTimeout(function () {
 				label.textContent = previous;
 			}, 1400);
