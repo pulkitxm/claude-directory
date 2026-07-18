@@ -79,7 +79,7 @@
 	});
 
 	const featureLabels = ["AI-Powered Dashboard", "Natural Language Processing", "Predictive Analytics", "Automated Reporting"];
-	const featureButtons = buttons().filter((button) => featureLabels.includes(button.textContent.trim()));
+	const featureButtons = buttons().filter((button) => featureLabels.some((label) => button.textContent.includes(label)));
 	featureButtons.forEach((button) => {
 		button.addEventListener("click", () => {
 			featureButtons.forEach((item) => {
