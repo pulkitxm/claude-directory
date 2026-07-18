@@ -29,7 +29,7 @@ export function CodeBlock({ code, lang = "tsx", className }: CodeBlockProps) {
 	return (
 		<div
 			className={cn(
-				"group relative overflow-hidden rounded-xl border border-line bg-ink-950/80",
+				"group relative min-w-0 max-w-full overflow-hidden rounded-xl border border-line bg-ink-950/80",
 				className,
 			)}
 		>
