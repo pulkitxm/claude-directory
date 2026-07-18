@@ -458,7 +458,7 @@ export default function App() {
 					{/* step grid */}
 					<div className="mt-10 grid gap-x-10 gap-y-12 lg:grid-cols-2">
 						{/* step 0 — scaffold */}
-						<div>
+						<div className="min-w-0">
 							<StepHead
 								icon={<Terminal className="h-4 w-4" />}
 								n="0"
@@ -476,7 +476,7 @@ export default function App() {
 						</div>
 
 						{/* step 1 — dependency */}
-						<div>
+						<div className="min-w-0">
 							<StepHead
 								icon={<Package className="h-4 w-4" />}
 								n="1"
@@ -516,7 +516,7 @@ export default function App() {
 						</div>
 
 						{/* step 2 — component */}
-						<div className="lg:col-span-2">
+						<div className="min-w-0 lg:col-span-2">
 							<StepHead
 								icon={<FolderTree className="h-4 w-4" />}
 								n="2"
@@ -544,7 +544,7 @@ export default function App() {
 								</p>
 							</div>
 							<div className="grid gap-6 lg:grid-cols-2">
-								<div>
+								<div className="min-w-0">
 									<FileLabel path="src/components/ui/gradient-dots.tsx" />
 									<CodeBlock
 										code={COMPONENT_SOURCE}
@@ -552,7 +552,7 @@ export default function App() {
 										className="max-h-[460px] overflow-y-auto"
 									/>
 								</div>
-								<div>
+								<div className="min-w-0">
 									<FileLabel path="src/components/ui/demo.tsx" />
 									<CodeBlock code={DEMO_SOURCE} lang="tsx" />
 									<div className="mt-4">
