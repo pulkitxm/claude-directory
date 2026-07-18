@@ -466,7 +466,7 @@ function Integration() {
 
 			{/* setup + why /components/ui */}
 			<div className="mt-10 grid gap-5 lg:grid-cols-2">
-				<div className="flex flex-col gap-4">
+				<div className="flex min-w-0 flex-col gap-4">
 					<h3 className="font-display text-lg font-semibold text-fog-200">
 						If you're starting fresh
 					</h3>
@@ -474,7 +474,7 @@ function Integration() {
 					<CodeBlock code={DEP_INSTALL} filename="deps.sh" lang="bash" />
 				</div>
 
-				<Card className="flex flex-col gap-4 bg-ink-850/90">
+				<Card className="flex min-w-0 flex-col gap-4 bg-ink-850/90">
 					<div className="flex items-center gap-2">
 						<MousePointerClick className="h-4 w-4 text-flame-soft" />
 						<h3 className="font-display text-lg font-semibold text-fog-200">
