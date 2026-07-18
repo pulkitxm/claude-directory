@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 const VIDEO_SRC =
 	"https://stream.mux.com/T6oQJQ02cQ6N01TR6iHwZkKFkbepS34dkkIc9iukgy400g.m3u8";
 
-const POSTER_SRC = "/assets/unsplash-photo-1647356191320-d7a1f80ca777.jpg";
+const POSTER_SRC = `${import.meta.env.BASE_URL}assets/unsplash-photo-1647356191320-d7a1f80ca777.jpg`;
 
 function BackgroundVideo() {
 	const videoRef = useRef<HTMLVideoElement>(null);
