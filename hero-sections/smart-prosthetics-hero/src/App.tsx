@@ -1,5 +1,4 @@
-const VIDEO_URL =
-	"/assets/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4";
+const VIDEO_URL = `${import.meta.env.BASE_URL}assets/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4`;
 
 const NAV_LINKS = ["Story", "Products", "Help", "Support"];
 

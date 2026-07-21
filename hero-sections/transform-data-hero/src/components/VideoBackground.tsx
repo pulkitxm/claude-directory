@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const VIDEO_URL =
-	"/assets/hf_20260329_050842_be71947f-f16e-4a14-810c-06e83d23ddb5.mp4";
+const VIDEO_URL = `${import.meta.env.BASE_URL}assets/hf_20260329_050842_be71947f-f16e-4a14-810c-06e83d23ddb5.mp4`;
 
 /** Duration of every fade, in milliseconds. */
 const FADE_MS = 250;

@@ -1,6 +1,6 @@
 import { type ReactNode, useState } from "react";
 
-const LOGO_URL = "/assets/logoipsum-415.svg";
+const LOGO_URL = `${import.meta.env.BASE_URL}assets/logoipsum-415.svg`;
 
 const NAV_LINKS = ["Our Team", "Solutions", "Showcase", "News"];
 

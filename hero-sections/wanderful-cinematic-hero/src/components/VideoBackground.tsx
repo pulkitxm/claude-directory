@@ -1,8 +1,7 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
-const VIDEO_SRC =
-	"/assets/hf_20260510_060007_60275ce7-030c-4668-a160-8f364ec537d3.mp4";
+const VIDEO_SRC = `${import.meta.env.BASE_URL}assets/hf_20260510_060007_60275ce7-030c-4668-a160-8f364ec537d3.mp4`;
 
 /**
  * Fixed full-screen video backdrop with a GSAP-driven mouse parallax.

@@ -17,8 +17,7 @@ const TABS = [
 	{ id: "deploy", label: "Deploy", icon: Rocket },
 ];
 
-const VIDEO_SRC =
-	"/assets/hf_20260319_165750_358b1e72-c921-48b7-aaac-f200994f32fb.mp4";
+const VIDEO_SRC = `${import.meta.env.BASE_URL}assets/hf_20260319_165750_358b1e72-c921-48b7-aaac-f200994f32fb.mp4`;
 
 function Navigation() {
 	return (
