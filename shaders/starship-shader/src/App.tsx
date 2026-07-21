@@ -537,7 +537,9 @@ function IntegrationStory() {
 							way.
 						</p>
 					</div>
-					<CodeBlock label="src/ layout" lang="txt" code={TREE} />
+					<div className="min-w-0">
+						<CodeBlock label="src/ layout" lang="txt" code={TREE} />
+					</div>
 				</div>
 
 				{/* Setup */}
@@ -571,7 +573,7 @@ function IntegrationStory() {
 							</div>
 						))}
 					</div>
-					<div className="mt-4">
+					<div className="mt-4 min-w-0">
 						<CodeBlock label="install dependencies" lang="bash" code={DEPS} />
 					</div>
 				</div>
@@ -584,14 +586,14 @@ function IntegrationStory() {
 						title="Usage & props"
 					/>
 					<div className="grid gap-6 lg:grid-cols-2">
-						<div className="space-y-4">
+						<div className="min-w-0 space-y-4">
 							<CodeBlock label="demo.tsx · the brief verbatim" code={USAGE} />
 							<CodeBlock
 								label="optional props · this integration"
 								code={PROPS_CODE}
 							/>
 						</div>
-						<div className="grid content-start gap-3">
+						<div className="min-w-0 grid content-start gap-3">
 							{QA.map((item) => (
 								<div
 									key={item.q}

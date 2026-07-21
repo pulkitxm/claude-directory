@@ -26,7 +26,7 @@ export function CodeBlock({
 	};
 
 	return (
-		<div className="overflow-hidden rounded-lg border border-hairline bg-void-900">
+		<div className="min-w-0 max-w-full overflow-hidden rounded-lg border border-hairline bg-void-900">
 			<div className="flex items-center justify-between border-b border-hairline bg-void-700/70 px-4 py-2.5">
 				<div className="flex items-center gap-2">
 					<span className="h-2 w-2 rounded-full bg-caution-400/70" />
