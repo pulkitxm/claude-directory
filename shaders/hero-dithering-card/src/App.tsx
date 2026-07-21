@@ -565,7 +565,7 @@ function Integration() {
 
 				<ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
 					{steps.map((s, i) => (
-						<li key={s.title} className="flex flex-col">
+						<li key={s.title} className="min-w-0 flex flex-col">
 							<div className="mb-4 flex items-center gap-3">
 								<span className="grid h-9 w-9 place-items-center rounded-md border border-border bg-card text-press">
 									{s.icon}
