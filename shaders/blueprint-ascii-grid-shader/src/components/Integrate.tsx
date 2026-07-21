@@ -7,7 +7,7 @@ import { Reveal } from "@/components/Reveal";
    never fight JSX escaping for braces / angle brackets / quotes. */
 function Code({ label, children }: { label: string; children: string }) {
 	return (
-		<div className="overflow-hidden rounded-lg border border-[var(--line-strong)] bg-[var(--abyss)]">
+		<div className="min-w-0 max-w-full overflow-hidden rounded-lg border border-[var(--line-strong)] bg-[var(--abyss)]">
 			<div className="flex items-center gap-2 border-b border-[var(--line)] bg-[var(--panel-solid)] px-4 py-2">
 				<span className="h-2.5 w-2.5 rounded-full bg-[var(--line-strong)]" />
 				<span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint">
@@ -153,7 +153,10 @@ export function Integrate() {
 				<Reveal>
 					<div className="grid gap-px overflow-hidden rounded-xl border border-[var(--line-strong)] bg-[var(--line)] md:grid-cols-3">
 						{REQS.map((req) => (
-							<div key={req.name} className="bg-[var(--panel-solid)] p-6">
+							<div
+								key={req.name}
+								className="min-w-0 bg-[var(--panel-solid)] p-6"
+							>
 								<div className="flex items-center gap-2">
 									<PackageCheck className="h-4 w-4 text-cyan" />
 									<h3 className="font-display text-base font-bold text-ink">

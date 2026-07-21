@@ -21,7 +21,7 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
 		<div
 			ref={ref}
 			className={cn(
-				"transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-reduce:transition-none",
+				"min-w-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-reduce:transition-none",
 				shown ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0",
 				className,
 			)}
