@@ -1103,7 +1103,7 @@ function Panel({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className="rounded-lg border border-edge/60 bg-plate/60 p-5 sm:p-6">
+		<div className="min-w-0 rounded-lg border border-edge/60 bg-plate/60 p-5 sm:p-6">
 			<div className="mb-4 flex items-center gap-2">
 				{icon}
 				<h4 className="font-display text-[13px] font-600 tracking-[0.18em] text-white">
@@ -1117,7 +1117,7 @@ function Panel({
 
 function CodeBlock({ children }: { children: React.ReactNode }) {
 	return (
-		<pre className="overflow-x-auto rounded-md border border-edge/60 bg-hull/70 p-4 font-mono text-[12px] leading-relaxed text-[#bcd0e6]">
+		<pre className="max-w-full overflow-x-auto rounded-md border border-edge/60 bg-hull/70 p-4 font-mono text-[12px] leading-relaxed text-[#bcd0e6]">
 			<code>{children}</code>
 		</pre>
 	);

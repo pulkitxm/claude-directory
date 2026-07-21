@@ -381,7 +381,7 @@ export default function App() {
 					</h2>
 
 					<div className="mt-12 grid gap-10 md:grid-cols-[0.85fr_1.15fr]">
-						<ol className="space-y-7">
+						<ol className="min-w-0 space-y-7">
 							{[
 								{
 									n: "1",
@@ -403,7 +403,7 @@ export default function App() {
 									<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-hairline bg-panel font-mono text-[13px] text-gold">
 										{step.n}
 									</span>
-									<div>
+									<div className="min-w-0">
 										<h3 className="font-display text-[16px] font-medium text-ice-3">
 											{step.t}
 										</h3>
@@ -415,7 +415,7 @@ export default function App() {
 							))}
 						</ol>
 
-						<div className="space-y-4">
+						<div className="min-w-0 space-y-4">
 							<div className="overflow-hidden rounded-xl border border-hairline bg-night">
 								<div className="border-b border-hairline px-5 py-3 font-mono text-[11.5px] text-muted">
 									Terminal — dependencies
