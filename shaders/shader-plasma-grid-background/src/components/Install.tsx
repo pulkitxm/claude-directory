@@ -94,7 +94,7 @@ export function Install() {
 				<div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
 					{/* usage code */}
 					<Reveal className="brackets">
-						<div className="panel overflow-hidden rounded-xl">
+						<div className="panel min-w-0 max-w-full overflow-hidden rounded-xl">
 							<div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-2.5">
 								<div className="flex items-center gap-2">
 									<FolderTree className="h-3.5 w-3.5 text-violet" />
@@ -109,7 +109,7 @@ export function Install() {
 							</pre>
 						</div>
 
-						<div className="panel mt-5 rounded-xl p-5">
+						<div className="panel mt-5 min-w-0 max-w-full rounded-xl p-5">
 							<span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
 								file tree
 							</span>
