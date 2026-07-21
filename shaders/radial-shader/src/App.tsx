@@ -196,7 +196,7 @@ function CopyButton({ text }: { text: string }) {
 
 function CodeBlock({ code, lang = "bash" }: { code: string; lang?: string }) {
 	return (
-		<div className="group relative overflow-hidden rounded-xl border border-hairline/70 bg-void-950/80 ring-hairline">
+		<div className="group relative min-w-0 max-w-full overflow-hidden rounded-xl border border-hairline/70 bg-void-950/80 ring-hairline">
 			<div className="flex items-center justify-between border-b border-hairline/60 px-3.5 py-2">
 				<span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide2 text-dim">
 					<span className="flex gap-1.5">
@@ -565,7 +565,7 @@ function Panel({
 	return (
 		<div
 			className={cn(
-				"relative overflow-hidden rounded-2xl border border-hairline/70 bg-void-900/85 p-6 ring-hairline backdrop-blur-sm sm:p-7",
+				"relative min-w-0 max-w-full overflow-hidden rounded-2xl border border-hairline/70 bg-void-900/85 p-6 ring-hairline backdrop-blur-sm sm:p-7",
 				className,
 			)}
 		>
@@ -732,7 +732,7 @@ function Integration() {
 		<section id="integration" className="scroll-mt-24">
 			<SectionLabel index="02">shadcn integration</SectionLabel>
 			<div className="mt-6 grid gap-8 lg:grid-cols-2">
-				<div className="space-y-5">
+				<div className="min-w-0 space-y-5">
 					<h2 className="font-display text-3xl font-semibold leading-tight text-bone sm:text-4xl">
 						Drop it into{" "}
 						<code className="font-mono text-2xl text-signal-amber">
@@ -786,7 +786,7 @@ function Integration() {
 					</div>
 				</div>
 
-				<div className="space-y-4">
+				<div className="min-w-0 space-y-4">
 					<Step n="A" title="Scaffold the codebase (if needed)">
 						<CodeBlock code={STEP_NEW} lang="bash · setup" />
 					</Step>

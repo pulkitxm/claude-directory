@@ -431,7 +431,7 @@ function Dock({
 	];
 
 	return (
-		<div className="module grain rounded-xl border border-line">
+		<div className="module grain min-w-0 max-w-full rounded-xl border border-line">
 			<div className="thin-scroll flex flex-wrap items-center gap-1 overflow-x-auto border-b border-line px-2 py-1.5">
 				{tabs.map((t) => (
 					<button
@@ -454,7 +454,7 @@ function Dock({
 			<div className="p-4">
 				{tab === "install" && (
 					<div className="grid gap-4 lg:grid-cols-2">
-						<div className="space-y-3">
+						<div className="min-w-0 space-y-3">
 							<p className="text-[13px] leading-relaxed text-ink-dim">
 								The hero needs three runtime deps — the shader engine, the
 								motion lib that spins the orbital text, and the icon set. Add
@@ -467,7 +467,7 @@ function Dock({
 								copied={copied === "install"}
 							/>
 						</div>
-						<div className="space-y-3">
+						<div className="min-w-0 space-y-3">
 							<p className="text-[13px] leading-relaxed text-ink-dim">
 								Starting from scratch? Scaffold a Vite + React-TS app, init
 								shadcn (which writes{" "}
@@ -525,7 +525,7 @@ function Dock({
 
 				{tab === "usage" && (
 					<div className="grid gap-4 lg:grid-cols-2">
-						<div className="space-y-2">
+						<div className="min-w-0 space-y-2">
 							<p className="text-[12px] font-medium uppercase tracking-[0.14em] text-ink-dim">
 								Verbatim drop-in
 							</p>
@@ -535,7 +535,7 @@ function Dock({
 								copied={copied === "verbatim"}
 							/>
 						</div>
-						<div className="space-y-2">
+						<div className="min-w-0 space-y-2">
 							<p className="text-[12px] font-medium uppercase tracking-[0.14em] text-ink-dim">
 								Live deck (reflects the controls →)
 							</p>
@@ -655,7 +655,7 @@ function CodeBlock({
 	copied: boolean;
 }) {
 	return (
-		<div className="group relative overflow-hidden rounded-lg border border-line bg-black/40">
+		<div className="group relative min-w-0 max-w-full overflow-hidden rounded-lg border border-line bg-black/40">
 			<button
 				onClick={onCopy}
 				className="absolute right-2 top-2 z-10 flex items-center gap-1 rounded-md border border-line bg-carbon-2/90 px-2 py-1 text-[10px] uppercase tracking-wide text-ink-dim transition-colors hover:text-ink"
