@@ -58,7 +58,7 @@ function CodeBlock({
 	};
 
 	return (
-		<div className="overflow-hidden border border-border/70 bg-ink">
+		<div className="min-w-0 max-w-full overflow-hidden border border-border/70 bg-ink">
 			<div className="flex items-center justify-between border-b border-border/70 bg-panel/70 px-3 py-2">
 				<span className="font-mono text-[11px] text-ash">{title}</span>
 				<div className="flex items-center gap-2">
@@ -100,7 +100,7 @@ function Step({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className="flex flex-col gap-3">
+		<div className="min-w-0 flex flex-col gap-3">
 			<div className="flex items-center gap-2.5">
 				<span className="flex h-6 w-6 items-center justify-center border border-amber/60 font-mono text-[11px] text-amber">
 					{n}
@@ -126,7 +126,7 @@ export function IntegrationDocs() {
 	return (
 		<div className="flex flex-col gap-10">
 			<div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-				<div className="flex flex-col gap-3 border border-border/70 bg-panel/40 p-5">
+				<div className="min-w-0 flex flex-col gap-3 border border-border/70 bg-panel/40 p-5">
 					<div className="flex items-center gap-2 text-amber">
 						<FolderTree className="h-4 w-4" />
 						<span className="font-mono text-[11px] uppercase tracking-widest2">
@@ -156,7 +156,7 @@ export function IntegrationDocs() {
 					</pre>
 				</div>
 
-				<div className="flex flex-col gap-3 border border-border/70 bg-panel/40 p-5">
+				<div className="min-w-0 flex flex-col gap-3 border border-border/70 bg-panel/40 p-5">
 					<div className="flex items-center gap-2 text-amber">
 						<Terminal className="h-4 w-4" />
 						<span className="font-mono text-[11px] uppercase tracking-widest2">
