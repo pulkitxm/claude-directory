@@ -20,7 +20,7 @@ export function Glass({
 	return (
 		<Tag
 			className={cn(
-				"rounded-2xl border border-white/15 bg-black/35 backdrop-blur-xl",
+				"min-w-0 max-w-full rounded-2xl border border-white/15 bg-black/35 backdrop-blur-xl",
 				"shadow-[0_8px_40px_-12px_rgba(0,0,0,0.7)]",
 				className,
 			)}
