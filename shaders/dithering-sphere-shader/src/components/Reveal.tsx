@@ -16,7 +16,7 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
 	return (
 		<div
 			ref={ref}
-			className={cn(shown ? "rise" : "opacity-0", className)}
+			className={cn("min-w-0", shown ? "rise" : "opacity-0", className)}
 			style={shown && delay ? { animationDelay: `${delay}ms` } : undefined}
 		>
 			{children}
