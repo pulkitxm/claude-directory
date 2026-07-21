@@ -392,8 +392,13 @@ export default function App() {
 					</p>
 
 					<div className="mt-10 grid gap-6 lg:grid-cols-2">
-						<CodeBlock code={shadcnInit} label="Terminal" lang="bash" />
-						<div className="flex flex-col gap-4">
+						<CodeBlock
+							code={shadcnInit}
+							label="Terminal"
+							lang="bash"
+							className="w-full min-w-0"
+						/>
+						<div className="min-w-0 flex flex-col gap-4">
 							<div className="rounded-xl border border-border bg-card/40 p-5">
 								<h3 className="mb-3 flex items-center gap-2 text-sm font-semibold">
 									<FolderTree className="size-4 text-primary" />
@@ -552,13 +557,13 @@ export function ShaderAnimation() {
 					</h2>
 
 					<div className="mt-10 grid gap-6 lg:grid-cols-2">
-						<div>
+						<div className="min-w-0">
 							<h3 className="mb-3 text-sm font-medium text-muted-foreground">
 								As a bordered card (the provided demo)
 							</h3>
 							<CodeBlock code={usageSnippet} label="demo.tsx" lang="tsx" />
 						</div>
-						<div>
+						<div className="min-w-0">
 							<h3 className="mb-3 text-sm font-medium text-muted-foreground">
 								As a full-bleed page hero
 							</h3>
