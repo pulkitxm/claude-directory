@@ -2,7 +2,8 @@ import { lazy, Suspense } from "react";
 
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
-const SPLINE_SCENE = "/spline/scene.splinecode";
+const SPLINE_SCENE = new URL("./spline/scene.splinecode", document.baseURI)
+	.href;
 
 const HeroSection = () => (
 	<section className="relative min-h-screen flex items-end bg-hero-bg overflow-hidden">
