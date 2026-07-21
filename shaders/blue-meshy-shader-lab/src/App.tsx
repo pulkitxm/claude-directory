@@ -19,9 +19,9 @@ import { SectionHeader } from "@/components/section";
 import WavyBackground from "@/components/ui/blue-meshy-background";
 
 // Served from public/img — referenced by URL (no import needed for public assets).
-const useOcean = "/img/use-ocean.jpg";
-const useWaves = "/img/use-waves.jpg";
-const useAurora = "/img/use-aurora.jpg";
+const useOcean = `${import.meta.env.BASE_URL}img/use-ocean.jpg`;
+const useWaves = `${import.meta.env.BASE_URL}img/use-waves.jpg`;
+const useAurora = `${import.meta.env.BASE_URL}img/use-aurora.jpg`;
 
 /* Corner reticle bracket — frames the live field as something under
    observation rather than a stock hero. */
