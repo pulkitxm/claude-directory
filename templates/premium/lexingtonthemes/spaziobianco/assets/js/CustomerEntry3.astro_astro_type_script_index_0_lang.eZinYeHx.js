@@ -1,0 +1,1 @@
+var t=new KeenSlider(`#keen-slider`,{loop:!0,slides:{origin:`center`,perView:1.25,spacing:16},breakpoints:{"(min-width: 1024px)":{slides:{origin:`center`,perView:3.3,spacing:32}}}},[]),n=document.getElementById(`keen-slider-previous`),r=document.getElementById(`keen-slider-next`);n?.addEventListener(`click`,()=>t.prev()),r?.addEventListener(`click`,()=>t.next());
