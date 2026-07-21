@@ -72,7 +72,7 @@ function CopyBlock({
 	};
 
 	return (
-		<div className="panel overflow-hidden rounded-xl">
+		<div className="panel min-w-0 max-w-full overflow-hidden rounded-xl">
 			<div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-2.5">
 				<span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-paper-dim">
 					<Icon className="h-3.5 w-3.5" />
