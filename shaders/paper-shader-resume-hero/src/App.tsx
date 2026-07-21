@@ -160,7 +160,7 @@ function Hero() {
 		<section id="top" className="relative scroll-mt-24">
 			<div className="mx-auto max-w-6xl px-5 pb-10 pt-28 sm:px-8 sm:pt-32">
 				<div className="grid items-end gap-6 pb-8 lg:grid-cols-[1.5fr_1fr]">
-					<div>
+					<div className="min-w-0">
 						<SectionLabel index="00">the component, live</SectionLabel>
 						<h1 className="font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl">
 							A résumé hero,
@@ -414,7 +414,7 @@ function IntegrationSection() {
 			<div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
 				<SectionLabel index="03">integration</SectionLabel>
 				<div className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
-					<div>
+					<div className="min-w-0">
 						<h2 className="font-sans text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
 							Wiring it into a shadcn project.
 						</h2>
@@ -475,7 +475,7 @@ function IntegrationSection() {
 						</div>
 					</div>
 
-					<div className="space-y-4">
+					<div className="min-w-0 space-y-4">
 						<CodeBlock
 							code={INSTALL_SOURCE}
 							label="setup · shell"
