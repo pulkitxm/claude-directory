@@ -19,10 +19,7 @@ export default function Hero() {
 					playsInline
 					className="absolute inset-0 w-full h-full object-cover z-0"
 				>
-					<source
-						src="https://res.cloudinary.com/dfonotyfb/video/upload/v1775585556/dds3_1_rqhg7x.mp4"
-						type="video/mp4"
-					/>{" "}
+					<source src="./assets/noctis-feature.mp4" type="video/mp4" />{" "}
 				</video>
 			</div>
 

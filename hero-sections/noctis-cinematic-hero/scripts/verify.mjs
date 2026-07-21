@@ -15,8 +15,7 @@ import { chromium } from "playwright";
 
 const PORT = 4361;
 const URL = `http://localhost:${PORT}/`;
-const VIDEO_SRC =
-	"https://res.cloudinary.com/dfonotyfb/video/upload/v1775585556/dds3_1_rqhg7x.mp4";
+const VIDEO_SRC = "./assets/noctis-feature.mp4";
 
 let passed = 0;
 let failed = 0;
@@ -89,7 +88,7 @@ try {
 	const source = page.locator("video > source");
 	check("video has a single <source> child", (await source.count()) === 1);
 	check(
-		"source src matches the Cloudinary URL",
+		"source src matches the local feature asset",
 		(await source.getAttribute("src")) === VIDEO_SRC,
 	);
 	check(
@@ -113,7 +112,7 @@ try {
 	}));
 	console.log(
 		`  INFO  video readyState=${videoState.readyState} networkState=${videoState.networkState} paused=${videoState.paused}` +
-			" (remote stream availability is network-dependent; the element itself is what the prompt specifies)",
+			" (local feature stream loaded from the production bundle)",
 	);
 
 	console.log("\n— Full-screen dark cinematic frame —");
