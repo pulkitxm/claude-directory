@@ -1896,38 +1896,33 @@
 
 		// ── Autoplay plugin ──────────────────────────────────────────
 		function autoplay(delay) {
-			let timeout;
-			let mouseOver = false;
-			function clearNextTimeout() {
-				clearTimeout(timeout);
-			}
-			function nextTimeout() {
-				clearTimeout(timeout);
-				if (mouseOver) return;
-				timeout = setTimeout(() => {
-					slider.next();
-				}, delay);
-			}
-			let slider;
-			return {
-				created(s) {
-					slider = s;
-					s.container.addEventListener("mouseover", () => {
+			return (slider) => {
+				let timeout;
+				let mouseOver = false;
+				function clearNextTimeout() {
+					clearTimeout(timeout);
+				}
+				function nextTimeout() {
+					clearNextTimeout();
+					if (mouseOver) return;
+					timeout = setTimeout(() => slider.next(), delay);
+				}
+
+				slider.on("created", () => {
+					slider.container.addEventListener("mouseover", () => {
 						mouseOver = true;
 						clearNextTimeout();
 					});
-					s.container.addEventListener("mouseout", () => {
+					slider.container.addEventListener("mouseout", () => {
 						mouseOver = false;
 						nextTimeout();
 					});
 					nextTimeout();
-				},
-				destroyed() {
-					clearNextTimeout();
-				},
-				dragStarted: clearNextTimeout,
-				animationEnded: nextTimeout,
-				updated: nextTimeout,
+				});
+				slider.on("destroyed", clearNextTimeout);
+				slider.on("dragStarted", clearNextTimeout);
+				slider.on("animationEnded", nextTimeout);
+				slider.on("updated", nextTimeout);
 			};
 		}
 
