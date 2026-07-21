@@ -85,7 +85,7 @@ function CodeBlock({
 	return (
 		<pre
 			className={cn(
-				"overflow-x-auto rounded-lg border border-line bg-[#080b12] p-4 font-mono text-[12.5px] leading-relaxed text-mist",
+				"min-w-0 max-w-full overflow-x-auto rounded-lg border border-line bg-[#080b12] p-4 font-mono text-[12.5px] leading-relaxed text-mist",
 				className,
 			)}
 		>
@@ -157,7 +157,7 @@ export function IntegrationSection() {
 				].map((step) => (
 					<div
 						key={step.n}
-						className="rounded-xl border border-line bg-panel/60 p-5"
+						className="min-w-0 rounded-xl border border-line bg-panel/60 p-5"
 					>
 						<div className="mb-3 flex items-center justify-between">
 							<span className="flex h-7 w-7 items-center justify-center rounded border border-line bg-panel2 text-cyan">
