@@ -36,7 +36,7 @@ export function Showcase() {
 									style={{ boxShadow: "var(--shadow-recessed)" }}
 								>
 									<img
-										src="/assets/blueprint-unit.svg"
+										src="./assets/blueprint-unit.svg"
 										alt="Exploded engineering schematic of the SCHEMATIC SX-1 control unit, annotated with dimensions and a bill of materials"
 										loading="lazy"
 										width={640}
