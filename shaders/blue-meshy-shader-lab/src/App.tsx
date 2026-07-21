@@ -387,12 +387,12 @@ export default function App() {
 						</SectionHeader>
 
 						<div className="mt-12 grid gap-6 lg:grid-cols-2">
-							<div className="space-y-5">
+							<div className="min-w-0 space-y-5">
 								<CodeBlock label="terminal" code={SNIP_VITE} />
 								<CodeBlock label="terminal" code={SNIP_TAILWIND} />
 								<CodeBlock label="terminal" code={SNIP_SHADCN} />
 							</div>
-							<div className="space-y-5">
+							<div className="min-w-0 space-y-5">
 								<CodeBlock
 									label="tsconfig.json"
 									language="json"

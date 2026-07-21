@@ -33,7 +33,7 @@ export function CodeBlock({
 	return (
 		<div
 			className={cn(
-				"group relative overflow-hidden rounded-xl border border-hairline/80 bg-abyss-900/80",
+				"group relative min-w-0 max-w-full overflow-hidden rounded-xl border border-hairline/80 bg-abyss-900/80",
 				className,
 			)}
 		>
