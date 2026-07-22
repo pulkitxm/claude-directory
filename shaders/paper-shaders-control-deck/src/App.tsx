@@ -431,7 +431,7 @@ export default function App() {
 				</aside>
 
 				{/* -------- RIGHT: scope viewport -------- */}
-				<section className="relative min-h-0">
+				<section className="relative min-h-[240px] lg:min-h-0">
 					<div className="scope-scan scope-vignette relative h-full w-full overflow-hidden rounded-lg border border-[var(--hairline)] bg-[var(--rail)]">
 						{/* Live shader specimen */}
 						<div className="absolute inset-0">
