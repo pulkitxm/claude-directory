@@ -3,7 +3,44 @@ import { dirname, extname, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const versionParameter = "v";
-const versionedSourceExtensions = new Set([".css", ".html", ".js", ".mjs"]);
+const versionedSourceExtensions = new Set([
+	".css",
+	".html",
+	".js",
+	".json",
+	".mjs",
+]);
+const safeRuntimeAssetExtensions = new Set([
+	".aac",
+	".apng",
+	".avif",
+	".bmp",
+	".css",
+	".eot",
+	".gif",
+	".ico",
+	".jpeg",
+	".jpg",
+	".js",
+	".json",
+	".m4a",
+	".mjs",
+	".mov",
+	".mp3",
+	".mp4",
+	".ogg",
+	".ogv",
+	".otf",
+	".png",
+	".svg",
+	".ttf",
+	".wasm",
+	".wav",
+	".webm",
+	".webp",
+	".woff",
+	".woff2",
+]);
 
 async function findSourceFiles(directory) {
 	const files = [];
@@ -28,9 +65,47 @@ function readAttribute(tag, name) {
 	return { value, start: match.index + match[0].indexOf(value) };
 }
 
-async function localAssetPath(root, sourceFile, value) {
-	if (/^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(value)) return null;
-	const pathname = value.split(/[?#]/, 1)[0];
+async function findSiteHosts(root) {
+	const hosts = new Set();
+	const cname = await readFile(resolve(root, "CNAME"), "utf8").catch(() => "");
+	for (const value of [cname.trim(), process.env.PAGES_SITE_ORIGIN]) {
+		if (!value) continue;
+		try {
+			const url = new URL(value.includes("://") ? value : `https://${value}`);
+			hosts.add(url.host.toLowerCase());
+		} catch {}
+	}
+	return hosts;
+}
+
+function localPathname(value, siteHosts) {
+	if (
+		/^(?:data|blob|mailto|tel|javascript):/i.test(value) ||
+		value.startsWith("#")
+	)
+		return null;
+	if (/^(?:https?:)?\/\//i.test(value)) {
+		let url;
+		try {
+			url = new URL(value.startsWith("//") ? `https:${value}` : value);
+		} catch {
+			return null;
+		}
+		return siteHosts.has(url.host.toLowerCase()) ? url.pathname : null;
+	}
+	if (/^[a-z][a-z\d+.-]*:/i.test(value)) return null;
+	return value.split(/[?#]/, 1)[0];
+}
+
+function isSafeRuntimeAsset(value, siteHosts) {
+	const pathname = localPathname(value, siteHosts);
+	return Boolean(
+		pathname && safeRuntimeAssetExtensions.has(extname(pathname).toLowerCase()),
+	);
+}
+
+async function localAssetPath(root, sourceFile, value, siteHosts) {
+	const pathname = localPathname(value, siteHosts);
 	if (!pathname) return null;
 	let decoded;
 	try {
@@ -60,9 +135,20 @@ function withVersion(value, version) {
 	return `${pathname}?${parameters}${fragment}`;
 }
 
-async function versionValue(root, sourceFile, value, version) {
-	if (!(await localAssetPath(root, sourceFile, value))) return value;
+async function versionValue(root, sourceFile, value, version, siteHosts) {
+	if (!(await localAssetPath(root, sourceFile, value, siteHosts))) return value;
 	return withVersion(value, version);
+}
+
+async function versionSafeRuntimeValue(
+	root,
+	sourceFile,
+	value,
+	version,
+	siteHosts,
+) {
+	if (!isSafeRuntimeAsset(value, siteHosts)) return value;
+	return versionValue(root, sourceFile, value, version, siteHosts);
 }
 
 async function replaceMatches(content, pattern, valueIndexes, replaceValue) {
@@ -75,50 +161,171 @@ async function replaceMatches(content, pattern, valueIndexes, replaceValue) {
 		const value = indexes.map((index) => match[index]).find(Boolean);
 		if (!value) continue;
 		const start = match.index + match[0].indexOf(value);
-		const replacement = await replaceValue(value);
+		const transformed = await replaceValue(value);
+		const replacement =
+			typeof transformed === "string" ? transformed : transformed.content;
 		output += content.slice(cursor, start) + replacement;
 		cursor = start + value.length;
-		if (replacement !== value) references += 1;
+		references +=
+			typeof transformed === "string"
+				? Number(replacement !== value)
+				: transformed.references;
 	}
 	return { content: output + content.slice(cursor), references };
 }
 
-async function versionHtml(root, sourceFile, content, version) {
+async function versionSrcset(root, sourceFile, value, version, siteHosts) {
+	const pieces = value.split(/(,\s*)/);
+	let references = 0;
+	for (let index = 0; index < pieces.length; index += 2) {
+		const candidate = pieces[index];
+		const match = candidate.match(/^(\s*)(\S+)([\s\S]*)$/);
+		if (!match) continue;
+		const replacement = await versionValue(
+			root,
+			sourceFile,
+			match[2],
+			version,
+			siteHosts,
+		);
+		if (replacement !== match[2]) references += 1;
+		pieces[index] = `${match[1]}${replacement}${match[3]}`;
+	}
+	return { content: pieces.join(""), references };
+}
+
+async function versionTagAttribute(
+	root,
+	sourceFile,
+	tag,
+	name,
+	version,
+	siteHosts,
+	mode = "asset",
+) {
+	const attribute = readAttribute(tag, name);
+	if (!attribute) return { content: tag, references: 0 };
+	const transformed =
+		mode === "srcset"
+			? await versionSrcset(
+					root,
+					sourceFile,
+					attribute.value,
+					version,
+					siteHosts,
+				)
+			: {
+					content: await (mode === "safe"
+						? versionSafeRuntimeValue
+						: versionValue)(
+						root,
+						sourceFile,
+						attribute.value,
+						version,
+						siteHosts,
+					),
+					references: 0,
+				};
+	if (mode !== "srcset")
+		transformed.references = Number(transformed.content !== attribute.value);
+	return {
+		content: `${tag.slice(0, attribute.start)}${transformed.content}${tag.slice(attribute.start + attribute.value.length)}`,
+		references: transformed.references,
+	};
+}
+
+function versionsLink(tag, siteHosts) {
+	const rel = readAttribute(tag, "rel");
+	if (!rel) return false;
+	const tokens = rel.value.toLowerCase().split(/\s+/);
+	if (
+		tokens.some((token) =>
+			[
+				"apple-touch-icon",
+				"apple-touch-startup-image",
+				"icon",
+				"manifest",
+				"mask-icon",
+				"modulepreload",
+				"stylesheet",
+			].includes(token),
+		)
+	)
+		return true;
+	if (tokens.includes("preload"))
+		return readAttribute(tag, "as")?.value.toLowerCase() !== "document";
+	if (!tokens.includes("prefetch")) return false;
+	const href = readAttribute(tag, "href");
+	return Boolean(href && isSafeRuntimeAsset(href.value, siteHosts));
+}
+
+async function versionHtml(root, sourceFile, content, version, siteHosts) {
 	return replaceMatches(
 		content,
-		/<(?:link|script)\b[^>]*>/gi,
+		/<(?:audio|embed|feImage|image|img|input|link|meta|object|script|source|track|use|video)\b[^>]*>/gi,
 		0,
 		async (tag) => {
-			const link = /^<link\b/i.test(tag);
-			if (link) {
-				const rel = readAttribute(tag, "rel");
-				if (!rel?.value.split(/\s+/).includes("stylesheet")) return tag;
+			const name = tag.match(/^<\s*([^\s/>]+)/)?.[1].toLowerCase();
+			let output = tag;
+			let references = 0;
+			const apply = async (attribute, mode = "asset") => {
+				const transformed = await versionTagAttribute(
+					root,
+					sourceFile,
+					output,
+					attribute,
+					version,
+					siteHosts,
+					mode,
+				);
+				output = transformed.content;
+				references += transformed.references;
+			};
+			if (name === "link" && versionsLink(output, siteHosts))
+				await apply("href");
+			else if (name === "script") await apply("src");
+			else if (
+				["audio", "img", "input", "source", "track", "video"].includes(name)
+			)
+				await apply("src");
+			else if (name === "embed") await apply("src", "safe");
+			else if (name === "object") await apply("data", "safe");
+			if (name === "video") await apply("poster");
+			if (["img", "source"].includes(name)) await apply("srcset", "srcset");
+			if (name === "link") await apply("imagesrcset", "srcset");
+			if (["feimage", "image", "use"].includes(name)) {
+				await apply("href");
+				await apply("xlink:href");
 			}
-			const attribute = readAttribute(tag, link ? "href" : "src");
-			if (!attribute) return tag;
-			const value = await versionValue(
-				root,
-				sourceFile,
-				attribute.value,
-				version,
-			);
-			return `${tag.slice(0, attribute.start)}${value}${tag.slice(attribute.start + attribute.value.length)}`;
+			if (name === "meta") {
+				const key =
+					readAttribute(output, "property")?.value ??
+					readAttribute(output, "name")?.value ??
+					readAttribute(output, "itemprop")?.value ??
+					"";
+				if (
+					["image", "msapplication-tileimage"].includes(key.toLowerCase()) ||
+					/(?:^|:)image(?::|$)/i.test(key)
+				)
+					await apply("content");
+			}
+			return { content: output, references };
 		},
 	);
 }
 
-async function versionCss(root, sourceFile, content, version) {
+async function versionCss(root, sourceFile, content, version, siteHosts) {
 	const urls = await replaceMatches(
 		content,
 		/url\(\s*(?:"([^"]*)"|'([^']*)'|([^'"\s)][^)]*?))\s*\)/gi,
 		[1, 2, 3],
-		(value) => versionValue(root, sourceFile, value, version),
+		(value) => versionValue(root, sourceFile, value, version, siteHosts),
 	);
 	const imports = await replaceMatches(
 		urls.content,
 		/@import\s+(?:"([^"]*)"|'([^']*)')/gi,
 		[1, 2],
-		(value) => versionValue(root, sourceFile, value, version),
+		(value) => versionValue(root, sourceFile, value, version, siteHosts),
 	);
 	return {
 		content: imports.content,
@@ -126,28 +333,70 @@ async function versionCss(root, sourceFile, content, version) {
 	};
 }
 
-async function versionJavaScript(root, sourceFile, content, version) {
+async function versionJavaScript(
+	root,
+	sourceFile,
+	content,
+	version,
+	siteHosts,
+) {
 	const staticImports = await replaceMatches(
 		content,
 		/\b(?:import|export)\s+(?:[^"']*?\sfrom\s*)?(?:"([^"]*)"|'([^']*)')/g,
 		[1, 2],
-		(value) => versionValue(root, sourceFile, value, version),
+		(value) => versionValue(root, sourceFile, value, version, siteHosts),
 	);
 	const dynamicImports = await replaceMatches(
 		staticImports.content,
 		/\bimport\s*\(\s*(?:"([^"]*)"|'([^']*)')\s*\)/g,
 		[1, 2],
-		(value) => versionValue(root, sourceFile, value, version),
+		(value) => versionValue(root, sourceFile, value, version, siteHosts),
+	);
+	const runtimeAssets = await replaceMatches(
+		dynamicImports.content,
+		/(?:"([^"\\\n]+)"(?!\s*:)|'([^'\\\n]+)'(?!\s*:)|`([^`\\$\n]+)`)/g,
+		[1, 2, 3],
+		(value) =>
+			versionSafeRuntimeValue(root, sourceFile, value, version, siteHosts),
 	);
 	return {
-		content: dynamicImports.content,
-		references: staticImports.references + dynamicImports.references,
+		content: runtimeAssets.content,
+		references:
+			staticImports.references +
+			dynamicImports.references +
+			runtimeAssets.references,
 	};
+}
+
+async function versionJson(root, sourceFile, content, version, siteHosts) {
+	return replaceMatches(
+		content,
+		/("(?:\\.|[^"\\])*")(?=\s*(?:[,}\]]|$))/g,
+		1,
+		async (literal) => {
+			let value;
+			try {
+				value = JSON.parse(literal);
+			} catch {
+				return literal;
+			}
+			if (typeof value !== "string") return literal;
+			const replacement = await versionSafeRuntimeValue(
+				root,
+				sourceFile,
+				value,
+				version,
+				siteHosts,
+			);
+			return replacement === value ? literal : JSON.stringify(replacement);
+		},
+	);
 }
 
 export async function versionPagesAssets(directory, version) {
 	if (!version) throw new Error("A pages asset version is required");
 	const root = resolve(directory);
+	const siteHosts = await findSiteHosts(root);
 	const normalizedVersion = String(version).slice(0, 12);
 	const result = { files: 0, references: 0 };
 	for (const sourceFile of await findSourceFiles(root)) {
@@ -155,15 +404,36 @@ export async function versionPagesAssets(directory, version) {
 		const extension = extname(sourceFile).toLowerCase();
 		const transformed =
 			extension === ".html"
-				? await versionHtml(root, sourceFile, original, normalizedVersion)
+				? await versionHtml(
+						root,
+						sourceFile,
+						original,
+						normalizedVersion,
+						siteHosts,
+					)
 				: extension === ".css"
-					? await versionCss(root, sourceFile, original, normalizedVersion)
-					: await versionJavaScript(
+					? await versionCss(
 							root,
 							sourceFile,
 							original,
 							normalizedVersion,
-						);
+							siteHosts,
+						)
+					: extension === ".json"
+						? await versionJson(
+								root,
+								sourceFile,
+								original,
+								normalizedVersion,
+								siteHosts,
+							)
+						: await versionJavaScript(
+								root,
+								sourceFile,
+								original,
+								normalizedVersion,
+								siteHosts,
+							);
 		if (transformed.content !== original) {
 			await writeFile(sourceFile, transformed.content);
 			result.files += 1;
