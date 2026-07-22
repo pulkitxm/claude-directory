@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
@@ -73,6 +73,180 @@ test("versions local asset graphs and preserves URL state", async () => {
 			await readFile(join(root, "index.html"), "utf8"),
 			/v=fedcba098765/,
 		);
+	} finally {
+		await rm(root, { recursive: true, force: true });
+	}
+});
+
+test("versions HTML media icons preloads srcsets and SVG references", async () => {
+	const root = await mkdtemp(join(tmpdir(), "pages-html-assets-"));
+	try {
+		await mkdir(join(root, "assets"));
+		await mkdir(join(root, "nested", "page"), { recursive: true });
+		await writeFile(join(root, "CNAME"), "claude-directory.pulkitxm.com\n");
+		for (const file of [
+			"asset",
+			"audio.mp3",
+			"favicon.ico",
+			"hero.png",
+			"hero@2x.png",
+			"manifest.json",
+			"mobile.webp",
+			"page.html",
+			"poster.jpg",
+			"sprite.svg",
+			"video.mp4",
+		])
+			await writeFile(join(root, "assets", file), file);
+		const source = [
+			'<link rel="icon" href="../../assets/favicon.ico?theme=dark#icon">',
+			'<link rel="apple-touch-startup-image" href="../../assets/poster.jpg">',
+			'<link rel="manifest" href="/assets/manifest.json">',
+			'<link rel="preload" as="image" href="../../assets/hero.png#preload" imagesrcset="../../assets/hero.png 1x, ../../assets/hero@2x.png 2x">',
+			'<link rel="preload" as="image" href="../../assets/asset"><link rel="preload" as="document" href="../../assets/page.html">',
+			'<link rel="prefetch" href="../../assets/hero.png">',
+			'<link rel="canonical" href="../../assets/hero.png">',
+			'<meta property="og:image" content="../../assets/hero.png#open-graph"><meta name="twitter:image" content="../../assets/hero@2x.png">',
+			'<img src="../../assets/hero.png?size=wide#hero" srcset="../../assets/hero.png 480w, ../../assets/hero@2x.png 960w">',
+			'<img src="../../assets/asset">',
+			'<img srcset="data:image/png;base64,AAAA 1x, ../../assets/hero@2x.png 2x">',
+			'<img src="https://claude-directory.pulkitxm.com/assets/hero.png#same-site">',
+			'<img src="https://example.com/assets/hero.png"><img src="data:image/png;base64,AAAA"><img src="blob:https://example.com/id">',
+			'<picture><source srcset="../../assets/mobile.webp 1x, ../../assets/hero.png 2x"></picture>',
+			'<video src="../../assets/video.mp4" poster="../../assets/poster.jpg"><source src="../../assets/video.mp4"></video>',
+			'<audio src="../../assets/audio.mp3"></audio>',
+			'<object data="../../assets/video.mp4"></object><embed src="../../assets/video.mp4">',
+			'<svg><use href="../../assets/sprite.svg#play"></use><image xlink:href="../../assets/hero.png#art"></image><use href="#local-symbol"></use></svg>',
+			'<a href="../../assets/hero.png">Navigation remains unchanged</a>',
+		].join("");
+		const file = join(root, "nested", "page", "index.html");
+		await writeFile(file, source);
+
+		const first = await versionPagesAssets(root, "abcdef1234567890");
+		assert.deepEqual(first, { files: 1, references: 26 });
+		const html = await readFile(file, "utf8");
+		assert.match(
+			html,
+			/href="\.\.\/\.\.\/assets\/favicon\.ico\?theme=dark&v=abcdef123456#icon"/,
+		);
+		assert.match(html, /href="\/assets\/manifest\.json\?v=abcdef123456"/);
+		assert.match(
+			html,
+			/imagesrcset="\.\.\/\.\.\/assets\/hero\.png\?v=abcdef123456 1x, \.\.\/\.\.\/assets\/hero@2x\.png\?v=abcdef123456 2x"/,
+		);
+		assert.match(
+			html,
+			/src="\.\.\/\.\.\/assets\/hero\.png\?size=wide&v=abcdef123456#hero"/,
+		);
+		assert.match(
+			html,
+			/srcset="\.\.\/\.\.\/assets\/hero\.png\?v=abcdef123456 480w, \.\.\/\.\.\/assets\/hero@2x\.png\?v=abcdef123456 960w"/,
+		);
+		assert.match(
+			html,
+			/src="https:\/\/claude-directory\.pulkitxm\.com\/assets\/hero\.png\?v=abcdef123456#same-site"/,
+		);
+		assert.match(
+			html,
+			/poster="\.\.\/\.\.\/assets\/poster\.jpg\?v=abcdef123456"/,
+		);
+		assert.match(
+			html,
+			/property="og:image" content="\.\.\/\.\.\/assets\/hero\.png\?v=abcdef123456#open-graph"/,
+		);
+		assert.match(
+			html,
+			/srcset="data:image\/png;base64,AAAA 1x, \.\.\/\.\.\/assets\/hero@2x\.png\?v=abcdef123456 2x"/,
+		);
+		assert.match(html, /data="\.\.\/\.\.\/assets\/video\.mp4\?v=abcdef123456"/);
+		assert.match(
+			html,
+			/href="\.\.\/\.\.\/assets\/sprite\.svg\?v=abcdef123456#play"/,
+		);
+		assert.match(
+			html,
+			/xlink:href="\.\.\/\.\.\/assets\/hero\.png\?v=abcdef123456#art"/,
+		);
+		assert.match(html, /rel="canonical" href="\.\.\/\.\.\/assets\/hero\.png"/);
+		assert.match(html, /<a href="\.\.\/\.\.\/assets\/hero\.png">/);
+		assert.match(html, /https:\/\/example\.com\/assets\/hero\.png/);
+		assert.match(html, /data:image\/png;base64,AAAA/);
+		assert.match(html, /blob:https:\/\/example\.com\/id/);
+		assert.match(html, /href="#local-symbol"/);
+		assert.match(html, /src="\.\.\/\.\.\/assets\/asset\?v=abcdef123456"/);
+		assert.match(
+			html,
+			/rel="preload" as="document" href="\.\.\/\.\.\/assets\/page\.html"/,
+		);
+
+		assert.deepEqual(await versionPagesAssets(root, "abcdef1234567890"), {
+			files: 0,
+			references: 0,
+		});
+		assert.deepEqual(await versionPagesAssets(root, "654321fedcba"), {
+			files: 1,
+			references: 26,
+		});
+		assert.doesNotMatch(await readFile(file, "utf8"), /v=abcdef123456/);
+	} finally {
+		await rm(root, { recursive: true, force: true });
+	}
+});
+
+test("versions safe static runtime strings in JavaScript and JSON", async () => {
+	const root = await mkdtemp(join(tmpdir(), "pages-runtime-assets-"));
+	try {
+		await mkdir(join(root, "assets"));
+		await writeFile(join(root, "CNAME"), "claude-directory.pulkitxm.com\n");
+		for (const file of [
+			"config.json",
+			"hero.png",
+			"icon.svg",
+			"page.html",
+			"poster.jpg",
+			"video.mp4",
+		])
+			await writeFile(join(root, "assets", file), file);
+		await writeFile(
+			join(root, "runtime.js"),
+			'const hero="./assets/hero.png?size=wide#crop";const poster=\'./assets/poster.jpg\';const icon="https://claude-directory.pulkitxm.com/assets/icon.svg#mark";const video=`./assets/video.mp4`;const navigation="./assets/page.html";const external="https://example.com/assets/hero.png";const data="data:image/png;base64,AAAA";const blob="blob:https://example.com/id";const mail="mailto:test@example.com";const phone="tel:+10000000000";const hash="#section";const dynamic=`./assets/${name}.png`;const labels={"./assets/icon.svg":"key remains unchanged"};',
+		);
+		await writeFile(
+			join(root, "runtime.json"),
+			'{"hero":"./assets/hero.png#json","nested":{"poster":"./assets/poster.jpg?size=card","config":"./assets/config.json"},"navigation":"./assets/page.html","external":"https://example.com/assets/hero.png","data":"data:image/png;base64,AAAA","./assets/icon.svg":"key remains unchanged"}',
+		);
+
+		const first = await versionPagesAssets(root, "1122334455667788");
+		assert.deepEqual(first, { files: 2, references: 7 });
+		const javaScript = await readFile(join(root, "runtime.js"), "utf8");
+		assert.match(javaScript, /hero\.png\?size=wide&v=112233445566#crop/);
+		assert.match(javaScript, /poster\.jpg\?v=112233445566/);
+		assert.match(
+			javaScript,
+			/https:\/\/claude-directory\.pulkitxm\.com\/assets\/icon\.svg\?v=112233445566#mark/,
+		);
+		assert.match(javaScript, /video\.mp4\?v=112233445566/);
+		assert.match(javaScript, /navigation="\.\/assets\/page\.html"/);
+		assert.match(javaScript, /https:\/\/example\.com\/assets\/hero\.png/);
+		assert.match(javaScript, /data:image\/png;base64,AAAA/);
+		assert.match(javaScript, /blob:https:\/\/example\.com\/id/);
+		assert.match(javaScript, /mailto:test@example\.com/);
+		assert.match(javaScript, /tel:\+10000000000/);
+		assert.match(javaScript, /hash="#section"/);
+		assert.match(javaScript, /`\.\/assets\/\$\{name\}\.png`/);
+		assert.match(javaScript, /"\.\/assets\/icon\.svg":"key remains unchanged"/);
+		const json = await readFile(join(root, "runtime.json"), "utf8");
+		assert.match(json, /hero\.png\?v=112233445566#json/);
+		assert.match(json, /poster\.jpg\?size=card&v=112233445566/);
+		assert.match(json, /config\.json\?v=112233445566/);
+		assert.match(json, /"navigation":"\.\/assets\/page\.html"/);
+		assert.match(json, /"\.\/assets\/icon\.svg":"key remains unchanged"/);
+		assert.match(json, /https:\/\/example\.com\/assets\/hero\.png/);
+		assert.match(json, /data:image\/png;base64,AAAA/);
+		assert.deepEqual(await versionPagesAssets(root, "1122334455667788"), {
+			files: 0,
+			references: 0,
+		});
 	} finally {
 		await rm(root, { recursive: true, force: true });
 	}
