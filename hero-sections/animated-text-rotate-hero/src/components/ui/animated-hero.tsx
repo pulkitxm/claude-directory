@@ -66,11 +66,18 @@ function Hero() {
 							ever.
 						</p>
 					</div>
-					<div className="flex flex-row gap-3">
-						<Button size="lg" className="gap-4" variant="outline">
+					<div className="flex w-full flex-row gap-3 sm:w-auto">
+						<Button
+							size="lg"
+							className="min-w-0 flex-1 gap-2 !px-2 sm:flex-none sm:gap-4 sm:!px-8"
+							variant="outline"
+						>
 							Jump on a call <PhoneCall className="w-4 h-4" />
 						</Button>
-						<Button size="lg" className="gap-4">
+						<Button
+							size="lg"
+							className="min-w-0 flex-1 gap-2 !px-2 sm:flex-none sm:gap-4 sm:!px-8"
+						>
 							Sign up here <MoveRight className="w-4 h-4" />
 						</Button>
 					</div>
