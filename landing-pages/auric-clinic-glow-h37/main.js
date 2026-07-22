@@ -28,6 +28,7 @@
 	const sheet = document.getElementById("sheet");
 	function setMenu(open) {
 		burger.setAttribute("aria-expanded", String(open));
+		burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 		sheet.hidden = !open;
 	}
 	burger.addEventListener("click", () =>
@@ -39,6 +40,11 @@
 	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape") setMenu(false);
 	});
+	window
+		.matchMedia("(max-width: 1080px)")
+		.addEventListener("change", (event) => {
+			if (!event.matches) setMenu(false);
+		});
 
 	// Scroll reveal (non-hero)
 	const reveals = document.querySelectorAll(".reveal:not(.hero .reveal)");
