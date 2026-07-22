@@ -784,7 +784,7 @@ export default function App() {
 	return (
 		<div className="bench relative flex min-h-screen flex-col">
 			{/* ---- Live hero plate (fixed, full-viewport behind the chrome) ---- */}
-			<div className="plate-bracket plate-vignette scanlines pointer-events-none fixed inset-0 z-0">
+			<div className="plate-bracket plate-vignette scanlines pointer-events-none fixed inset-x-0 bottom-0 top-[93px] z-0 sm:top-[61px] [&>div]:h-full [&>div]:min-h-0">
 				<div className="pointer-events-auto absolute inset-0">
 					<ConfigurableShaderBackground ref={plateRef} config={shader}>
 						<Header />
@@ -795,7 +795,7 @@ export default function App() {
 			</div>
 
 			{/* ---- Top utility rail ---- */}
-			<header className="module relative z-20 flex flex-wrap items-center justify-between gap-3 border-b border-line px-4 py-2.5 sm:px-6">
+			<header className="module sticky top-0 z-20 flex flex-wrap items-center justify-between gap-3 border-b border-line px-4 py-2.5 sm:px-6">
 				<div className="flex items-center gap-3">
 					<span className="grid size-8 place-items-center rounded-lg border border-line bg-carbon-2 text-ember">
 						<Sparkles className="size-4" strokeWidth={2} />
@@ -868,8 +868,8 @@ export default function App() {
 				)}
 			>
 				{/* Stage captions over the live hero (which is fixed behind) */}
-				<div className="pointer-events-none relative hidden min-h-[60vh] lg:block">
-					<div className="pointer-events-auto absolute left-0 top-0 flex items-center gap-2 rounded-full border border-line bg-black/40 px-3 py-1.5 backdrop-blur-md">
+				<div className="pointer-events-none relative min-h-[calc(100svh-125px)] sm:min-h-[calc(100svh-93px)] lg:min-h-[60vh]">
+					<div className="pointer-events-auto absolute left-0 top-0 hidden items-center gap-2 rounded-full border border-line bg-black/40 px-3 py-1.5 backdrop-blur-md lg:flex">
 						<CircleDot className="size-3.5 text-ember" strokeWidth={2} />
 						<span className="text-[11px] text-ink">
 							Live specimen ·{" "}
@@ -880,7 +880,7 @@ export default function App() {
 					</div>
 
 					{/* Canvas-signature telemetry — read straight off the shader */}
-					<div className="pointer-events-auto absolute right-0 top-0 flex items-center gap-3 rounded-full border border-line bg-black/40 px-3 py-1.5 font-mono text-[10px] text-ink-dim backdrop-blur-md">
+					<div className="pointer-events-auto absolute right-0 top-0 hidden items-center gap-3 rounded-full border border-line bg-black/40 px-3 py-1.5 font-mono text-[10px] text-ink-dim backdrop-blur-md lg:flex">
 						<span className="flex items-center gap-1.5">
 							<span
 								className="inline-block size-3 rounded-sm border border-line"
@@ -893,7 +893,7 @@ export default function App() {
 						</span>
 					</div>
 
-					<div className="pointer-events-auto absolute bottom-0 left-0 flex items-center gap-2 rounded-full border border-line bg-black/40 px-3 py-1.5 font-mono text-[11px] text-ink-dim backdrop-blur-md">
+					<div className="pointer-events-auto absolute bottom-0 left-0 hidden items-center gap-2 rounded-full border border-line bg-black/40 px-3 py-1.5 font-mono text-[11px] text-ink-dim backdrop-blur-md lg:flex">
 						<Activity className="size-3.5" strokeWidth={1.75} />
 						CTA fired ×{clicks}
 					</div>
