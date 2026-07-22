@@ -201,6 +201,21 @@ async function versionSafeRuntimeValue(
 	return versionValue(root, sourceFile, value, version, siteHosts, baseUrl);
 }
 
+function isBareModuleSpecifier(value) {
+	return !/^(?:\.{1,2}\/|\/|(?:https?:)?\/\/)/i.test(value);
+}
+
+function isModuleSpecifierContext(content, start, value) {
+	if (!isBareModuleSpecifier(value)) return false;
+	const prefix = content.slice(Math.max(0, start - 1000), start);
+	return (
+		/\brequire\s*\(\s*$/.test(prefix) ||
+		/\b(?:define|require)\s*\(\s*\[[^\]]*$/.test(prefix) ||
+		/\bimport\s*(?:\(\s*)?$/.test(prefix) ||
+		/\b(?:import|export)\b[^;\n]*\bfrom\s*$/.test(prefix)
+	);
+}
+
 async function replaceMatches(content, pattern, valueIndexes, replaceValue) {
 	const matches = [...content.matchAll(pattern)];
 	const indexes = Array.isArray(valueIndexes) ? valueIndexes : [valueIndexes];
@@ -211,7 +226,7 @@ async function replaceMatches(content, pattern, valueIndexes, replaceValue) {
 		const value = indexes.map((index) => match[index]).find(Boolean);
 		if (!value) continue;
 		const start = match.index + match[0].indexOf(value);
-		const transformed = await replaceValue(value);
+		const transformed = await replaceValue(value, match, start);
 		const replacement =
 			typeof transformed === "string" ? transformed : transformed.content;
 		output += content.slice(cursor, start) + replacement;
@@ -407,20 +422,28 @@ async function versionJavaScript(
 		content,
 		/\b(?:import|export)\s+(?:[^"']*?\sfrom\s*)?(?:"([^"]*)"|'([^']*)')/g,
 		[1, 2],
-		(value) => versionValue(root, sourceFile, value, version, siteHosts),
+		(value) =>
+			isBareModuleSpecifier(value)
+				? value
+				: versionValue(root, sourceFile, value, version, siteHosts),
 	);
 	const dynamicImports = await replaceMatches(
 		staticImports.content,
 		/\bimport\s*\(\s*(?:"([^"]*)"|'([^']*)')\s*\)/g,
 		[1, 2],
-		(value) => versionValue(root, sourceFile, value, version, siteHosts),
+		(value) =>
+			isBareModuleSpecifier(value)
+				? value
+				: versionValue(root, sourceFile, value, version, siteHosts),
 	);
 	const runtimeAssets = await replaceMatches(
 		dynamicImports.content,
 		/(?:"([^"\\\n]+)"(?!\s*:)|'([^'\\\n]+)'(?!\s*:)|`([^`\\$\n]+)`)/g,
 		[1, 2, 3],
-		(value) =>
-			versionSafeRuntimeValue(root, sourceFile, value, version, siteHosts),
+		(value, match) =>
+			isModuleSpecifierContext(dynamicImports.content, match.index, value)
+				? value
+				: versionSafeRuntimeValue(root, sourceFile, value, version, siteHosts),
 	);
 	return {
 		content: runtimeAssets.content,
