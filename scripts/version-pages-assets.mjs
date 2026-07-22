@@ -1,5 +1,5 @@
 import { readFile, readdir, stat, writeFile } from "node:fs/promises";
-import { dirname, extname, resolve, sep } from "node:path";
+import { dirname, extname, relative, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const versionParameter = "v";
@@ -104,16 +104,57 @@ function isSafeRuntimeAsset(value, siteHosts) {
 	);
 }
 
-async function localAssetPath(root, sourceFile, value, siteHosts) {
-	const pathname = localPathname(value, siteHosts);
-	if (!pathname) return null;
+function htmlDocumentUrl(root, sourceFile) {
+	const pathname = relative(root, sourceFile)
+		.split(sep)
+		.map((segment) => encodeURIComponent(segment))
+		.join("/");
+	return new URL(pathname, "https://pages.local/");
+}
+
+function htmlBaseUrl(root, sourceFile, content) {
+	const documentUrl = htmlDocumentUrl(root, sourceFile);
+	for (const match of content.matchAll(/<base\b[^>]*>/gi)) {
+		const href = readAttribute(match[0], "href");
+		if (!href) continue;
+		try {
+			return new URL(href.value, documentUrl);
+		} catch {}
+	}
+	return documentUrl;
+}
+
+async function localAssetPath(root, sourceFile, value, siteHosts, baseUrl) {
+	if (value.startsWith("#")) return null;
+	let pathname;
+	let fromRoot = false;
+	if (baseUrl) {
+		let url;
+		try {
+			url = new URL(value, baseUrl);
+		} catch {
+			return null;
+		}
+		if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+		if (
+			url.host.toLowerCase() !== "pages.local" &&
+			!siteHosts.has(url.host.toLowerCase())
+		)
+			return null;
+		pathname = url.pathname;
+		fromRoot = true;
+	} else {
+		pathname = localPathname(value, siteHosts);
+		if (!pathname) return null;
+		fromRoot = pathname.startsWith("/");
+	}
 	let decoded;
 	try {
 		decoded = decodeURIComponent(pathname);
 	} catch {
 		return null;
 	}
-	const asset = decoded.startsWith("/")
+	const asset = fromRoot
 		? resolve(root, decoded.replace(/^\/+/, ""))
 		: resolve(dirname(sourceFile), decoded);
 	if (asset !== root && !asset.startsWith(`${root}${sep}`)) return null;
@@ -135,8 +176,16 @@ function withVersion(value, version) {
 	return `${pathname}?${parameters}${fragment}`;
 }
 
-async function versionValue(root, sourceFile, value, version, siteHosts) {
-	if (!(await localAssetPath(root, sourceFile, value, siteHosts))) return value;
+async function versionValue(
+	root,
+	sourceFile,
+	value,
+	version,
+	siteHosts,
+	baseUrl,
+) {
+	if (!(await localAssetPath(root, sourceFile, value, siteHosts, baseUrl)))
+		return value;
 	return withVersion(value, version);
 }
 
@@ -146,9 +195,10 @@ async function versionSafeRuntimeValue(
 	value,
 	version,
 	siteHosts,
+	baseUrl,
 ) {
 	if (!isSafeRuntimeAsset(value, siteHosts)) return value;
-	return versionValue(root, sourceFile, value, version, siteHosts);
+	return versionValue(root, sourceFile, value, version, siteHosts, baseUrl);
 }
 
 async function replaceMatches(content, pattern, valueIndexes, replaceValue) {
@@ -174,7 +224,14 @@ async function replaceMatches(content, pattern, valueIndexes, replaceValue) {
 	return { content: output + content.slice(cursor), references };
 }
 
-async function versionSrcset(root, sourceFile, value, version, siteHosts) {
+async function versionSrcset(
+	root,
+	sourceFile,
+	value,
+	version,
+	siteHosts,
+	baseUrl,
+) {
 	const pieces = value.split(/(,\s*)/);
 	let references = 0;
 	for (let index = 0; index < pieces.length; index += 2) {
@@ -187,6 +244,7 @@ async function versionSrcset(root, sourceFile, value, version, siteHosts) {
 			match[2],
 			version,
 			siteHosts,
+			baseUrl,
 		);
 		if (replacement !== match[2]) references += 1;
 		pieces[index] = `${match[1]}${replacement}${match[3]}`;
@@ -201,6 +259,7 @@ async function versionTagAttribute(
 	name,
 	version,
 	siteHosts,
+	baseUrl,
 	mode = "asset",
 ) {
 	const attribute = readAttribute(tag, name);
@@ -213,6 +272,7 @@ async function versionTagAttribute(
 					attribute.value,
 					version,
 					siteHosts,
+					baseUrl,
 				)
 			: {
 					content: await (mode === "safe"
@@ -223,6 +283,7 @@ async function versionTagAttribute(
 						attribute.value,
 						version,
 						siteHosts,
+						baseUrl,
 					),
 					references: 0,
 				};
@@ -260,6 +321,7 @@ function versionsLink(tag, siteHosts) {
 }
 
 async function versionHtml(root, sourceFile, content, version, siteHosts) {
+	const baseUrl = htmlBaseUrl(root, sourceFile, content);
 	return replaceMatches(
 		content,
 		/<(?:audio|embed|feImage|image|img|input|link|meta|object|script|source|track|use|video)\b[^>]*>/gi,
@@ -276,6 +338,7 @@ async function versionHtml(root, sourceFile, content, version, siteHosts) {
 					attribute,
 					version,
 					siteHosts,
+					baseUrl,
 					mode,
 				);
 				output = transformed.content;
