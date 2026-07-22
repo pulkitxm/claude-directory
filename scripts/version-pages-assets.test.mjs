@@ -209,8 +209,9 @@ test("versions safe static runtime strings in JavaScript and JSON", async () => 
 			await writeFile(join(root, "assets", file), file);
 		await writeFile(
 			join(root, "runtime.js"),
-			'const hero="./assets/hero.png?size=wide#crop";const poster=\'./assets/poster.jpg\';const icon="https://claude-directory.pulkitxm.com/assets/icon.svg#mark";const video=`./assets/video.mp4`;const navigation="./assets/page.html";const external="https://example.com/assets/hero.png";const data="data:image/png;base64,AAAA";const blob="blob:https://example.com/id";const mail="mailto:test@example.com";const phone="tel:+10000000000";const hash="#section";const dynamic=`./assets/${name}.png`;const labels={"./assets/icon.svg":"key remains unchanged"};',
+			'import chart from "chart.js";export { default as exported } from "chart.js";const dynamicChart=import("chart.js");const common= require("chart.js");define(["moment", "chart.js"],()=>chart);require(["moment","chart.js"],()=>chart);const hero="./assets/hero.png?size=wide#crop";const poster=\'./assets/poster.jpg\';const icon="https://claude-directory.pulkitxm.com/assets/icon.svg#mark";const video=`./assets/video.mp4`;const navigation="./assets/page.html";const external="https://example.com/assets/hero.png";const data="data:image/png;base64,AAAA";const blob="blob:https://example.com/id";const mail="mailto:test@example.com";const phone="tel:+10000000000";const hash="#section";const dynamic=`./assets/${name}.png`;const labels={"./assets/icon.svg":"key remains unchanged"};',
 		);
+		await writeFile(join(root, "chart.js"), "export default chart");
 		await writeFile(
 			join(root, "runtime.json"),
 			'{"hero":"./assets/hero.png#json","nested":{"poster":"./assets/poster.jpg?size=card","config":"./assets/config.json"},"navigation":"./assets/page.html","external":"https://example.com/assets/hero.png","data":"data:image/png;base64,AAAA","./assets/icon.svg":"key remains unchanged"}',
@@ -226,6 +227,15 @@ test("versions safe static runtime strings in JavaScript and JSON", async () => 
 			/https:\/\/claude-directory\.pulkitxm\.com\/assets\/icon\.svg\?v=112233445566#mark/,
 		);
 		assert.match(javaScript, /video\.mp4\?v=112233445566/);
+		assert.match(javaScript, /import chart from "chart\.js"/);
+		assert.match(
+			javaScript,
+			/export \{ default as exported \} from "chart\.js"/,
+		);
+		assert.match(javaScript, /import\("chart\.js"\)/);
+		assert.match(javaScript, /require\("chart\.js"\)/);
+		assert.match(javaScript, /define\(\["moment", "chart\.js"\]/);
+		assert.match(javaScript, /require\(\["moment","chart\.js"\]/);
 		assert.match(javaScript, /navigation="\.\/assets\/page\.html"/);
 		assert.match(javaScript, /https:\/\/example\.com\/assets\/hero\.png/);
 		assert.match(javaScript, /data:image\/png;base64,AAAA/);
