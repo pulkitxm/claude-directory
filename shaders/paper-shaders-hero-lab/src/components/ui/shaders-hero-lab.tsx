@@ -80,7 +80,7 @@ export const ConfigurableShaderBackground = forwardRef<
 	const c: ShaderConfig = { ...SHADER_DEFAULTS, ...config };
 
 	return (
-		<div ref={ref} className="min-h-screen w-full relative overflow-hidden">
+		<div ref={ref} className="relative h-full min-h-0 w-full overflow-hidden">
 			{/* SVG Filters — identical to the verbatim drop-in */}
 			<svg className="absolute inset-0 w-0 h-0">
 				<defs>

@@ -165,7 +165,7 @@ export function PulsingCircle() {
 
 export function HeroContent() {
 	return (
-		<main className="absolute bottom-8 left-8 z-20 max-w-lg">
+		<main className="absolute bottom-6 left-6 right-6 z-20 max-w-lg sm:bottom-8 sm:left-8 sm:right-auto">
 			<div className="text-left">
 				<div
 					className="inline-flex items-center px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm mb-4 relative"
@@ -180,7 +180,7 @@ export function HeroContent() {
 				</div>
 
 				{/* Main Heading */}
-				<h1 className="text-5xl md:text-6xl md:leading-16 tracking-tight font-light text-white mb-4">
+				<h1 className="text-4xl sm:text-5xl md:text-6xl md:leading-16 tracking-tight font-light text-white mb-4">
 					<span className="font-medium italic instrument">Beautiful</span>{" "}
 					Shader
 					<br />

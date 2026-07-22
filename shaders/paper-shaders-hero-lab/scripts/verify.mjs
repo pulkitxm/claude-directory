@@ -255,6 +255,100 @@ try {
 	else bad(`console errors: ${consoleErrors.slice(0, 3).join(" | ")}`);
 
 	await ctx.close();
+
+	for (const width of [390, 768, 1280]) {
+		const height = width === 390 ? 844 : width === 768 ? 1024 : 900;
+		const responsiveCtx = await browser.newContext({
+			viewport: { width, height },
+		});
+		const responsivePage = await responsiveCtx.newPage();
+		const responsiveErrors = [];
+		responsivePage.on("pageerror", (e) => responsiveErrors.push(String(e)));
+		responsivePage.on("console", (m) => {
+			if (m.type() === "error") responsiveErrors.push(m.text());
+		});
+		await responsivePage.goto(URL, {
+			waitUntil: "networkidle",
+			timeout: 30000,
+		});
+		await sleep(900);
+		const geometry = await responsivePage.evaluate(() => {
+			const labTitle = [...document.querySelectorAll("h1")].find(
+				(element) => element.textContent?.trim() === "Paper Shaders",
+			);
+			const labHeader = labTitle?.closest("header")?.getBoundingClientRect();
+			const heroLink = [...document.querySelectorAll("a")].find(
+				(element) => element.textContent?.trim() === "Features",
+			);
+			const heroHeader = heroLink?.closest("header")?.getBoundingClientRect();
+			const heroContent = [...document.querySelectorAll("main")]
+				.find((element) => element.classList.contains("absolute"))
+				?.getBoundingClientRect();
+			const paletteTitle = [...document.querySelectorAll("h3")].find(
+				(element) => element.textContent?.trim() === "Palette",
+			);
+			const controls = paletteTitle
+				?.closest("section")
+				?.getBoundingClientRect();
+			const overlapWidth =
+				labHeader && heroHeader
+					? Math.max(
+							0,
+							Math.min(labHeader.right, heroHeader.right) -
+								Math.max(labHeader.left, heroHeader.left),
+						)
+					: 0;
+			const overlapHeight =
+				labHeader && heroHeader
+					? Math.max(
+							0,
+							Math.min(labHeader.bottom, heroHeader.bottom) -
+								Math.max(labHeader.top, heroHeader.top),
+						)
+					: 0;
+			return {
+				innerWidth,
+				overlapArea: overlapWidth * overlapHeight,
+				controlsAfterHero: Boolean(
+					heroContent &&
+						controls &&
+						controls.top >= innerHeight &&
+						heroContent.bottom <= innerHeight,
+				),
+				overflow: document.documentElement.scrollWidth - innerWidth,
+			};
+		});
+		if (
+			geometry.innerWidth === width &&
+			geometry.overlapArea === 0 &&
+			geometry.overflow <= 1 &&
+			(width >= 1024 || geometry.controlsAfterHero)
+		) {
+			ok(`${width}px keeps lab and hero chrome separated`);
+		} else {
+			bad(`${width}px responsive geometry failed: ${JSON.stringify(geometry)}`);
+		}
+		const viewButtons = responsivePage.locator("button[aria-pressed]");
+		await viewButtons.nth(0).click();
+		await sleep(200);
+		const showcasePressed = await viewButtons
+			.nth(0)
+			.getAttribute("aria-pressed");
+		await viewButtons.nth(1).click();
+		await sleep(200);
+		const labPressed = await viewButtons.nth(1).getAttribute("aria-pressed");
+		if (showcasePressed === "true" && labPressed === "true") {
+			ok(`${width}px view controls remain interactive`);
+		} else {
+			bad(`${width}px view controls did not switch`);
+		}
+		if (responsiveErrors.length === 0) {
+			ok(`${width}px has no page or console errors`);
+		} else {
+			bad(`${width}px errors: ${responsiveErrors.slice(0, 3).join(" | ")}`);
+		}
+		await responsiveCtx.close();
+	}
 } catch (e) {
 	bad(`harness threw: ${e.message}`);
 } finally {
