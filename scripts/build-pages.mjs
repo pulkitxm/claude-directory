@@ -11,6 +11,7 @@ import {
 import { tmpdir } from "node:os";
 import { join, relative, resolve } from "node:path";
 import { spawn } from "node:child_process";
+import { versionPagesAssets } from "./version-pages-assets.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const output = resolve(root, process.env.PAGES_OUTPUT ?? "_site");
@@ -24,6 +25,28 @@ function run(command, args, cwd = root) {
 		child.on("exit", (code) => {
 			if (code === 0) resolvePromise();
 			else reject(new Error(`${command} exited with code ${code}`));
+		});
+	});
+}
+
+function capture(command, args, cwd = root) {
+	return new Promise((resolvePromise, reject) => {
+		const child = spawn(command, args, { cwd });
+		let stdout = "";
+		let stderr = "";
+		child.stdout.on("data", (chunk) => {
+			stdout += chunk;
+		});
+		child.stderr.on("data", (chunk) => {
+			stderr += chunk;
+		});
+		child.on("error", reject);
+		child.on("exit", (code) => {
+			if (code === 0) resolvePromise(stdout.trim());
+			else
+				reject(
+					new Error(stderr.trim() || `${command} exited with code ${code}`),
+				);
 		});
 	});
 }
@@ -217,11 +240,17 @@ const projects = requested.length
 	: discovered;
 await stageRepository(discovered);
 await runPool(projects);
+const pagesAssetVersion = (
+	process.env.PAGES_ASSET_VERSION ??
+	process.env.GITHUB_SHA ??
+	(await capture("git", ["rev-parse", "HEAD"]))
+).slice(0, 12);
+const versioned = await versionPagesAssets(output, pagesAssetVersion);
 await run("node", [
 	join(root, "scripts", "verify-pages.mjs"),
 	output,
 	...projects.map((project) => relative(root, project)),
 ]);
 process.stdout.write(
-	`Staged ${projects.length} built previews in ${relative(root, output)}\n`,
+	`Staged ${projects.length} built previews in ${relative(root, output)} with ${versioned.references} versioned asset references\n`,
 );
