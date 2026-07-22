@@ -205,6 +205,10 @@ function isBareModuleSpecifier(value) {
 	return !/^(?:\.{1,2}\/|\/|(?:https?:)?\/\/)/i.test(value);
 }
 
+function isRuntimeAssetUrl(value) {
+	return value.includes("/");
+}
+
 function isModuleSpecifierContext(content, start, value) {
 	if (!isBareModuleSpecifier(value)) return false;
 	const prefix = content.slice(Math.max(0, start - 1000), start);
@@ -441,6 +445,7 @@ async function versionJavaScript(
 		/(?:"([^"\\\n]+)"(?!\s*:)|'([^'\\\n]+)'(?!\s*:)|`([^`\\$\n]+)`)/g,
 		[1, 2, 3],
 		(value, match) =>
+			!isRuntimeAssetUrl(value) ||
 			isModuleSpecifierContext(dynamicImports.content, match.index, value)
 				? value
 				: versionSafeRuntimeValue(root, sourceFile, value, version, siteHosts),
