@@ -251,3 +251,66 @@ test("versions safe static runtime strings in JavaScript and JSON", async () => 
 		await rm(root, { recursive: true, force: true });
 	}
 });
+
+test("resolves nested HTML assets against the first valid base URL", async () => {
+	const root = await mkdtemp(join(tmpdir(), "pages-base-assets-"));
+	try {
+		await mkdir(join(root, "site", "about"), { recursive: true });
+		await mkdir(join(root, "site", "same"), { recursive: true });
+		await mkdir(join(root, "site", "external"), { recursive: true });
+		await mkdir(join(root, "site", "assets"), { recursive: true });
+		await writeFile(join(root, "CNAME"), "claude-directory.pulkitxm.com\n");
+		for (const file of ["app.js", "hero.webp", "page.html", "styles.css"])
+			await writeFile(join(root, "site", "assets", file), file);
+		await writeFile(
+			join(root, "site", "about", "index.html"),
+			'<base href="http://["><base href="../?theme=dark#base"><link rel="stylesheet" href="assets/styles.css"><script src="assets/app.js"></script><img src="assets/hero.webp?size=large#hero" srcset="assets/hero.webp 1x"><a href="assets/page.html">Document link</a>',
+		);
+		await writeFile(
+			join(root, "site", "external", "index.html"),
+			'<base href="https://cdn.example.com/theme/"><img src="assets/hero.webp"><img src="/site/assets/hero.webp"><script src="assets/app.js"></script><img src="https://claude-directory.pulkitxm.com/site/assets/hero.webp#same-site">',
+		);
+		await writeFile(
+			join(root, "site", "same", "index.html"),
+			'<base href="https://claude-directory.pulkitxm.com/site/?theme=dark#base"><img src="assets/hero.webp#same-base">',
+		);
+
+		assert.deepEqual(await versionPagesAssets(root, "base1234567890"), {
+			files: 3,
+			references: 6,
+		});
+		const local = await readFile(
+			join(root, "site", "about", "index.html"),
+			"utf8",
+		);
+		assert.match(local, /href="assets\/styles\.css\?v=base12345678"/);
+		assert.match(local, /src="assets\/app\.js\?v=base12345678"/);
+		assert.match(
+			local,
+			/src="assets\/hero\.webp\?size=large&v=base12345678#hero"/,
+		);
+		assert.match(local, /srcset="assets\/hero\.webp\?v=base12345678 1x"/);
+		assert.match(local, /href="assets\/page\.html"/);
+		const external = await readFile(
+			join(root, "site", "external", "index.html"),
+			"utf8",
+		);
+		assert.match(external, /src="assets\/hero\.webp"/);
+		assert.match(external, /src="\/site\/assets\/hero\.webp"/);
+		assert.match(external, /src="assets\/app\.js"/);
+		assert.match(
+			external,
+			/src="https:\/\/claude-directory\.pulkitxm\.com\/site\/assets\/hero\.webp\?v=base12345678#same-site"/,
+		);
+		assert.match(
+			await readFile(join(root, "site", "same", "index.html"), "utf8"),
+			/src="assets\/hero\.webp\?v=base12345678#same-base"/,
+		);
+		assert.deepEqual(await versionPagesAssets(root, "base1234567890"), {
+			files: 0,
+			references: 0,
+		});
+	} finally {
+		await rm(root, { recursive: true, force: true });
+	}
+});
