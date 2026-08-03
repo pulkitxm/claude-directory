@@ -1,8 +1,14 @@
-# claude-directory — AI-generated UI experiments built with Claude
+# FableForge: Open-Source AI Interface Library
 
-**An open-source gallery of web UI experiments generated with [Claude](https://claude.com/) (Fable 5)** — landing pages, hero sections, GLSL shaders, design systems, animations, portfolios, and 3D/WebGL scenes. Every project is self-contained, ships its prompt, and includes a recorded demo. Browse the live directory at **[pulkitxm.com/claude-directory](https://pulkitxm.com/claude-directory)**.
+<p align="center">
+  <img src="./banner.png" alt="FableForge ASCII art banner: an anvil forging UI components, with a terminal file tree and the FableFox mascot" width="720" />
+</p>
 
-Built mostly with **React, TypeScript, Vite, Tailwind CSS, Three.js, Framer Motion, and GSAP** (plus plenty of framework-free HTML/CSS/JS) — a reference collection of copy-pasteable, AI-generated front-end components and templates for anyone exploring what Claude can build on the web.
+**FableForge is an open-source collection of web interfaces created with [Claude](https://claude.com/) Fable 5.** Browse production-ready landing pages, hero sections, UI components, design systems, animations, GLSL shaders, portfolios, and interactive 3D/WebGL experiences. See it live at **[pulkitxm.com/claude-directory](https://pulkitxm.com/claude-directory)**.
+
+Every project includes its original prompt, complete source code, and a recorded demo, making it easy to study, copy, customize, and plug into your own AI workflow. Built with **React, TypeScript, Tailwind CSS, Three.js, Framer Motion, GSAP, and Vite**.
+
+Explore. Remix. Ship faster.
 
 **Categories:** [Hero sections](./hero-sections/) · [Landing pages](./landing-pages/) · [Shaders](./shaders/) · [UI design systems](./ui-design/) · [Components & UI](./components-ui/) · [Portfolios](./portfolios/) · [Animations & loaders](./animations-loaders/) · [3D & games](./3d-games/) · [Templates](./templates/)
 
