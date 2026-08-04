@@ -38,7 +38,7 @@ const shareText =
 	import.meta.env.VITE_SHARE_TEXT ||
 	"Fresh from the Fable Meme Studio. Remix yours.";
 const communityUrl =
-	import.meta.env.VITE_COMMUNITY_URL || "https://claude-directory.pulkitxm.com";
+	import.meta.env.VITE_COMMUNITY_URL || "https://pulkitxm.com";
 
 function App() {
 	const [template, setTemplate] = useState<MemeTemplate>(templates[0]);
