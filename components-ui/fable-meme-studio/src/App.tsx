@@ -1,6 +1,7 @@
 import type Konva from "konva";
 import {
 	Check,
+	CircleAlert,
 	Download,
 	ImagePlus,
 	Layers3,
@@ -16,6 +17,13 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { MemeCanvas } from "./MemeCanvas";
+import {
+	compactAddress,
+	connectAndCheckHolder,
+	holderConfig,
+	holderVerificationEnabled,
+	type WalletState,
+} from "./solana";
 import {
 	freeStickers,
 	holderStickers,
@@ -40,6 +48,7 @@ function App() {
 	);
 	const [selectedId, setSelectedId] = useState<string | null>(null);
 	const [notice, setNotice] = useState("Canvas ready");
+	const [wallet, setWallet] = useState<WalletState>({ status: "idle" });
 	const uploadRef = useRef<HTMLInputElement>(null);
 	const stageRef = useRef<Konva.Stage>(null);
 
@@ -105,7 +114,7 @@ function App() {
 	};
 
 	const addSticker = (definition: StickerDefinition) => {
-		if (definition.holderOnly) {
+		if (definition.holderOnly && wallet.status !== "holder") {
 			setNotice("Connect a verified holder wallet to unlock this sticker");
 			return;
 		}
@@ -113,6 +122,35 @@ function App() {
 		setItems((current) => [...current, item]);
 		setSelectedId(item.id);
 		setNotice(`${definition.label} added`);
+	};
+
+	const connectWallet = async () => {
+		setWallet({ status: "connecting" });
+		setNotice("Checking wallet access");
+		const nextWallet = await connectAndCheckHolder();
+		setWallet(nextWallet);
+
+		if (nextWallet.status === "holder") {
+			setNotice(
+				`Holder verified with ${nextWallet.balance} ${holderConfig.ticker}`,
+			);
+			return;
+		}
+		if (nextWallet.status === "not-holder") {
+			setNotice(
+				`Wallet connected with ${nextWallet.balance} ${holderConfig.ticker}`,
+			);
+			return;
+		}
+		if (nextWallet.status === "not-configured") {
+			setNotice("Wallet connected. Add the token mint to enable verification.");
+			return;
+		}
+		if (nextWallet.status === "no-wallet") {
+			setNotice("Install Phantom to unlock holder perks");
+			return;
+		}
+		if (nextWallet.status === "error") setNotice(nextWallet.message);
 	};
 
 	const deleteSelected = () => {
@@ -150,13 +188,18 @@ function App() {
 	};
 
 	const downloadPng = () => {
-		const dataUrl = renderPng();
+		const pixelRatio = wallet.status === "holder" ? 2 : 1;
+		const dataUrl = renderPng(pixelRatio);
 		if (!dataUrl) return;
 		const link = document.createElement("a");
 		link.download = `fable-meme-${Date.now()}.png`;
 		link.href = dataUrl;
 		link.click();
-		setNotice("PNG downloaded at 1080 x 1080");
+		setNotice(
+			pixelRatio === 2
+				? "Holder PNG downloaded at 2160 x 2160"
+				: "PNG downloaded at 1080 x 1080",
+		);
 	};
 
 	const shareOnX = () => {
@@ -174,6 +217,20 @@ function App() {
 		setNotice("PNG downloaded. Attach it in the X composer.");
 	};
 
+	const walletLabel = (() => {
+		if (wallet.status === "connecting") return "Checking...";
+		if (
+			wallet.status === "holder" ||
+			wallet.status === "not-holder" ||
+			wallet.status === "not-configured"
+		) {
+			return compactAddress(wallet.address);
+		}
+		return "Connect wallet";
+	})();
+
+	const holderUnlocked = wallet.status === "holder";
+
 	return (
 		<main className="app-shell">
 			<header className="topbar">
@@ -186,12 +243,13 @@ function App() {
 						<span /> Community edition
 					</span>
 					<button
-						className="wallet-button"
+						className={`wallet-button ${holderUnlocked ? "unlocked" : ""}`}
 						type="button"
-						onClick={() => setNotice("Wallet unlock arrives in the next layer")}
+						onClick={connectWallet}
+						disabled={wallet.status === "connecting"}
 					>
-						<Wallet size={16} />
-						Connect wallet
+						{holderUnlocked ? <Check size={16} /> : <Wallet size={16} />}
+						{walletLabel}
 					</button>
 				</div>
 			</header>
@@ -272,7 +330,7 @@ function App() {
 							<span className="status-dot" /> {notice}
 						</div>
 						<div className="toolbar-actions">
-							<span>1080 x 1080</span>
+							<span>{holderUnlocked ? "2160 x 2160" : "1080 x 1080"}</span>
 							<button
 								type="button"
 								onClick={resetCanvas}
@@ -419,24 +477,66 @@ function App() {
 						</div>
 					</div>
 
-					<div className="editor-section holder-section">
+					<div
+						className={`editor-section holder-section ${holderUnlocked ? "unlocked" : ""}`}
+					>
 						<div className="section-title">
 							<span>
-								<LockKeyhole size={15} /> Holder pack
+								{holderUnlocked ? (
+									<Check size={15} />
+								) : (
+									<LockKeyhole size={15} />
+								)}{" "}
+								Holder pack
 							</span>
-							<small>Locked</small>
+							<small>{holderUnlocked ? "Unlocked" : "Locked"}</small>
 						</div>
 						<div className="holder-stickers">
 							{holderStickers.map((sticker) => (
 								<button
 									key={sticker.id}
+									className={holderUnlocked ? "unlocked" : ""}
+									style={
+										holderUnlocked
+											? { background: sticker.background, color: sticker.color }
+											: undefined
+									}
 									type="button"
 									onClick={() => addSticker(sticker)}
 								>
-									<LockKeyhole size={12} /> {sticker.value}
+									{holderUnlocked ? (
+										<Sparkles size={12} />
+									) : (
+										<LockKeyhole size={12} />
+									)}{" "}
+									{sticker.value}
 								</button>
 							))}
 						</div>
+						{!holderUnlocked && (
+							<div className="unlock-card">
+								<CircleAlert size={17} />
+								<div>
+									<strong>
+										{holderVerificationEnabled
+											? `Hold ${holderConfig.minimumBalance} ${holderConfig.ticker}`
+											: "Holder verification ready"}
+									</strong>
+									<p>
+										{holderVerificationEnabled
+											? "Connect to check your public token balance. No signature required."
+											: "Add your pump.fun mint in the site settings to switch this on."}
+									</p>
+								</div>
+								<button
+									type="button"
+									onClick={connectWallet}
+									disabled={wallet.status === "connecting"}
+								>
+									{wallet.status === "connecting" ? "Checking" : "Connect"}
+								</button>
+							</div>
+						)}
 					</div>
 
 					<div className="layer-bar">
