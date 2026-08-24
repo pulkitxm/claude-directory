@@ -7,7 +7,7 @@ on:
 
 # Needed so the job can push the regenerated project-dates.json back to main.
 permissions:
-  contents: write
+  contents: read
 
 # Never run two updaters at once; let an in-progress run finish.
 concurrency:
@@ -17,16 +17,26 @@ concurrency:
 jobs:
   update-dates:
     runs-on: ubuntu-latest
+    environment: pukbot-production
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
         with:
+          client-id: ${{ vars.PUKBOT_CLIENT_ID }}
+          private-key: ${{ secrets.PUKBOT_PRIVATE_KEY }}
+          owner: pulkitxm
+          repositories: claude-directory
+          permission-contents: write
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
           # Full history is required: the script reads each project's last commit
           # date via `git log`, which a shallow (depth 1) checkout cannot see.
           fetch-depth: 0
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
           node-version: 20
 
@@ -39,8 +49,8 @@ jobs:
             echo "project-dates.json is up to date — nothing to commit."
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "pukbot[bot]"
+          git config user.email "320458784+pukbot[bot]@users.noreply.github.com"
           git add project-dates.json
           git commit -m "chore: update project-dates.json [skip ci]"
           git push
