@@ -1,6 +1,6 @@
 # landing-pages
 
-77 independently reviewed experiments. See the root [audit](../IP_AUDIT_REPORT.md) and [provenance](../ASSET_PROVENANCE.md).
+77 reviewed experiments. See the root [audit](../IP_AUDIT_REPORT.md) and [provenance](../ASSET_PROVENANCE.md).
 
 - [aegis-console-h39](./aegis-console-h39/)
 - [almond-hours-h65](./almond-hours-h65/)

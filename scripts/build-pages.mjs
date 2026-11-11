@@ -191,7 +191,7 @@ export async function buildPages(
 		);
 	await writeFile(
 		join(output, "index.html"),
-		`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Independent design experiments</title><style>body{max-width:70rem;margin:3rem auto;padding:1rem;font:1rem/1.6 system-ui;background:#132a36;color:#e7f4ef}a{color:#a7d5bf}ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem;padding:0;list-style:none}</style><h1>Independent design experiments</h1><p>A collection of AI-assisted design experiments using original visuals. Commercial template recreations have been withdrawn. Automated checks supplement manual review and do not establish legal compliance.</p><ul>${selected.map((p) => `<li><a href="./${escape(p.path)}/">${escape(p.path)}</a></li>`).join("")}</ul></html>`,
+		`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Independent design experiments</title><style>body{max-width:70rem;margin:3rem auto;padding:1rem;font:1rem/1.6 system-ui;background:#132a36;color:#e7f4ef}a{color:#a7d5bf}ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem;padding:0;list-style:none}</style><h1>Independent design experiments</h1><p>A collection of AI-assisted design experiments using original or properly licensed visuals. Commercial template recreations have been withdrawn. Automated checks supplement manual review and do not establish legal compliance.</p><ul>${selected.map((p) => `<li><a href="./${escape(p.path)}/">${escape(p.path)}</a></li>`).join("")}</ul></html>`,
 	);
 	await writeFile(
 		join(output, "404.html"),

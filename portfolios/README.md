@@ -1,6 +1,6 @@
 # portfolios
 
-12 independently reviewed experiments. See the root [audit](../IP_AUDIT_REPORT.md) and [provenance](../ASSET_PROVENANCE.md).
+12 reviewed experiments. See the root [audit](../IP_AUDIT_REPORT.md) and [provenance](../ASSET_PROVENANCE.md).
 
 - [circuit-ledger-h15](./circuit-ledger-h15/)
 - [cobalt-bento-folio-h43](./cobalt-bento-folio-h43/)
