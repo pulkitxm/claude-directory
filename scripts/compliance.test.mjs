@@ -303,6 +303,26 @@ test("checks HTML media, stylesheet and script URLs without treating navigation 
 	);
 });
 
+test("distinguishes JSX credit links from resource URLs and reused network requests", async (t) => {
+	const f = await fixture(t);
+	await f.put(
+		"components-ui/example/App.tsx",
+		`export default function App(){return <main><a href="https://source.example.test/license">Source</a><img src="https://cdn.example.test/art.svg"/><a href="https://cdn.example.test/shared.js">Link</a><a href="https://source.example.test/legal" style={{backgroundImage:"url(https://cdn.example.test/background.webp)"}}>Legal</a><a data-href="https://cdn.example.test/data.bin">Metadata</a></main>} fetch("https://cdn.example.test/shared.js");`,
+	);
+	const findings = (await f.scan()).filter(
+		(r) => r.code === "unverified-runtime",
+	);
+	assert.equal(findings.length, 4);
+	for (const resource of [
+		"art.svg",
+		"background.webp",
+		"shared.js",
+		"data.bin",
+	])
+		assert.ok(findings.some((r) => r.message.includes(resource)));
+	assert.ok(findings.every((r) => !r.message.includes("source.example.test")));
+});
+
 test("handles null manifests and records as review failures", async (t) => {
 	const f = await fixture(t);
 	await f.put("ASSET_PROVENANCE.json", {

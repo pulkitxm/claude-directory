@@ -104,6 +104,45 @@ test("accepts reviewed source with exact license and notice snapshots", async (t
 	);
 });
 
+test("requires renewed review for shader source and embedded rendering programs", async (t) => {
+	const f = await fixture(t);
+	const sources = [
+		["effect.frag", "void main(){outputColor=vec4(1.0);}"],
+		["effect.vert", "void main(){gl_Position=vec4(0.0);}"],
+		["effect.glsl", "float intensity(float value){return value*value;}"],
+		[
+			"effect.tsx",
+			"const fragmentShader = `void main(){gl_FragColor=vec4(1.0);}`;",
+		],
+	];
+	for (const [name, content] of sources) {
+		const path = `shaders/example/${name}`;
+		await f.put(path, content);
+		assert.ok(requiresInlineArtworkReview(path, content));
+	}
+	assert.equal(
+		(await f.scan()).filter((r) => r.code === "inline-artwork-unrecorded")
+			.length,
+		4,
+	);
+	for (const [name, content] of sources) {
+		f.manifest.files.push({
+			path: `shaders/example/${name}`,
+			sha256: digest(content),
+			review,
+		});
+	}
+	await f.save();
+	assert.deepEqual(await f.scan(), []);
+	await f.put(
+		"shaders/example/effect.frag",
+		"void main(){outputColor=vec4(0.0);}",
+	);
+	assert.ok(
+		has(await f.scan(), "inline-artwork-hash", "shaders/example/effect.frag"),
+	);
+});
+
 test("reviews CSS and encoded inline media plus SVG namespace construction", async (t) => {
 	const f = await fixture(t);
 	const sources = [

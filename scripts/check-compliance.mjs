@@ -108,6 +108,11 @@ function toolingPath(path) {
 }
 
 function runtimeUrls(text, path) {
+	if (/\.[jt]sx$/i.test(path)) {
+		text = text.replace(/<a\b(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi, (tag) =>
+			tag.replace(/\shref\s*=\s*(["'])(?:https?:)?\/\/[^"']*\1/gi, ' href=""'),
+		);
+	}
 	if (/\.html?$/i.test(path)) {
 		const fragments = [
 			...text.matchAll(/<(script|style)\b[^>]*>([\s\S]*?)<\/\1\s*>/gi),

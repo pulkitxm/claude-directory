@@ -6,4 +6,6 @@ Third-party package code retains its own license. npm dependencies are acquired 
 
 Inline open-source icon geometry keeps its actual MIT, ISC or Apache-2.0 grant and complete notices. The exact matched paths and regions, source URLs and license files are recorded in compliance/inline-icon-provenance.json. Matching a small path does not license the rest of an icon or page. A free design prompt permits only the uses granted by its own terms and does not license premium component code or outside assets.
 
+Third-party component source retains its upstream license and complete notices.
+
 A named reference, public preview, free download, template purchase, or automated check does not establish redistribution permission. Uncertain third-party material must remain outside the repository and publishing output until the precise rights and attribution requirements have been reviewed.
