@@ -5,11 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Studio Index , Sticky Content Switch</title>
 		<style>
-		
-		
-		
-		
-		
+
+
+
+
+
 
 		:root {
 			--ink: #0e0e0c;
@@ -34,7 +34,7 @@
 			overflow-x: hidden;
 		}
 
-		
+
 		.grain {
 			position: fixed;
 			inset: 0;
@@ -48,7 +48,7 @@
 			height: 100%;
 		}
 
-		
+
 		nav {
 			position: fixed;
 			top: 0;
@@ -88,7 +88,7 @@
 			border-radius: 999px;
 		}
 
-		
+
 		.hero {
 			min-height: 100vh;
 			display: flex;
@@ -185,14 +185,14 @@
 			}
 		}
 
-		
+
 		.switch {
 			position: relative;
 			display: flex;
 			align-items: flex-start;
 			padding-left: 96px;
 		}
-		
+
 		.rail {
 			position: fixed;
 			top: 0;
@@ -244,7 +244,7 @@
 			transform: translateX(-5px) scaleX(1.6);
 		}
 
-		
+
 		.switch-left {
 			position: sticky;
 			top: 0;
@@ -335,7 +335,7 @@
 			opacity: 1;
 		}
 
-		
+
 		.switch-right {
 			width: 58%;
 			padding: 0 38px 0 60px;
@@ -354,7 +354,7 @@
 			background: #ddd6c8;
 			box-shadow: 0 30px 80px -40px rgba(14, 14, 12, 0.5);
 		}
-		.panel .frame img {
+		.panel .frame .procedural-visual {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
@@ -364,7 +364,7 @@
 			transition: filter 0.7s var(--ease);
 			will-change: transform, filter;
 		}
-		.panel.is-active .frame img {
+		.panel.is-active .frame .procedural-visual {
 			filter: grayscale(0) brightness(1);
 		}
 		.panel .tag {
@@ -380,7 +380,7 @@
 			mix-blend-mode: difference;
 		}
 
-		
+
 		.outro {
 			min-height: 90vh;
 			display: flex;
@@ -441,7 +441,7 @@
 			pointer-events: none;
 		}
 
-		
+
 		@media (max-width: 900px) {
 			.rail {
 				display: none;
@@ -501,7 +501,13 @@
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .glyph, .subline { opacity: 1 !important; transform: none !important; filter: none !important; } }
 </style>
-	<link rel="icon" type="image/svg+xml" href="./assets/original-mark.svg">
+
+<style>
+.procedural-visual { display: block; aspect-ratio: 4 / 3; min-height: 1px; background: radial-gradient(ellipse at 72% 24%, #70968a 0 17%, transparent 17.5%), repeating-linear-gradient(135deg, transparent 0 8%, #d1a86e55 8.5% 9%, transparent 9.5% 18%), linear-gradient(125deg, #213b46, #d1a86e); background-size: cover; background-position: center; }
+.procedural-visual:nth-child(3n + 2), [data-visual="field-2"] { background-position: 70% 30%; filter: hue-rotate(24deg); }
+.procedural-visual:nth-child(3n), [data-visual="field-3"] { background-position: 30% 70%; filter: hue-rotate(-20deg); }
+</style>
+<link rel="icon" href="data:,">
 </head>
 	<body>
 		<div class="grain">
@@ -527,7 +533,7 @@
 			<div class="scrollpill"><span class="dot">↓</span> Scroll to begin</div>
 		</header>
 
-		
+
 		<div class="rail" id="rail">
 			<div class="rail-track">
 				<div class="rail-fill" id="railFill"></div>
@@ -556,7 +562,7 @@
         kick: "Geometry / Orbit",
         body: "Offset rings circle a still center while warm bars cross the field.",
         meta: ["Form", "Stone", "2026"],
-        img: "original-scene-01.svg",
+        img: "field-2",
     },
     {
         n: "02",
@@ -564,7 +570,7 @@
         kick: "Geometry / Rhythm",
         body: "A measured rhythm of short bands gives the composition its pace.",
         meta: ["Land", "Scale", "2025"],
-        img: "original-scene-02.svg",
+        img: "field-3",
     },
     {
         n: "03",
@@ -572,7 +578,7 @@
         kick: "Geometry / Color",
         body: "Warm geometric marks sit against a muted color field.",
         meta: ["Pigment", "Light", "2026"],
-        img: "original-scene-03.svg",
+        img: "field-1",
     },
     {
         n: "04",
@@ -580,7 +586,7 @@
         kick: "Geometry / Signal",
         body: "Ellipses and repeated bars suggest an orderly flow of signals.",
         meta: ["System", "Signal", "2025"],
-        img: "original-scene-04.svg",
+        img: "field-2",
     },
     {
         n: "05",
@@ -588,7 +594,7 @@
         kick: "Geometry / Balance",
         body: "A single circle balances a series of offset shapes.",
         meta: ["Figure", "Calm", "2026"],
-        img: "original-scene-05.svg",
+        img: "field-3",
     },
     {
         n: "06",
@@ -596,7 +602,7 @@
         kick: "Geometry / Space",
         body: "An open field of rings and bands leaves room for the eye to travel.",
         meta: ["Sky", "Sea", "2026"],
-        img: "original-scene-06.svg",
+        img: "field-1",
     },
 ];
 const TOTAL = DATA.length;
@@ -612,7 +618,7 @@ stage.innerHTML = DATA.map((d) => `
     </article>`).join("");
 document.getElementById("right").innerHTML = DATA.map((d) => `
     <div class="panel">
-      <div class="frame"><img src="./assets/${d.img}" alt="${d.title}"/><span class="tag">${d.n} · ${d.title}</span></div>
+      <div class="frame"><div role="img" data-visual="${d.img}" aria-label="${d.title}" class="procedural-visual"></div><span class="tag">${d.n} · ${d.title}</span></div>
     </div>`).join("");
 document.getElementById("railTicks").innerHTML = DATA.map(() => `<span class="rail-tick"></span>`).join("");
 const panels = [...document.querySelectorAll(".panel")];
@@ -648,7 +654,7 @@ function frame() {
         const r = p.getBoundingClientRect();
         const mid = r.top + r.height / 2;
         const dist = Math.min(1, Math.abs(mid - cy) / vh);
-        const img = p.querySelector("img");
+        const img = p.querySelector(".procedural-visual");
         img.style.transform = `scale(${1 + dist * 0.08})`;
     });
 }

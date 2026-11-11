@@ -2,14 +2,9 @@
 
 import { useEffect, useRef } from "react";
 const TOP_SPEED = 100;
-type ScrollHeroProps = {
-  src?: string;
-};
-export default function ScrollHero({
-  src = "./hero.mp4"
-}: ScrollHeroProps) {
+export default function ScrollHero() {
   const trackRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const sceneRef = useRef<HTMLDivElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
   const outroRef = useRef<HTMLDivElement>(null);
   const cueRef = useRef<HTMLDivElement>(null);
@@ -18,15 +13,9 @@ export default function ScrollHero({
   const railRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const track = trackRef.current;
-    const video = videoRef.current;
-    if (!track || !video) return;
+    const scene = sceneRef.current;
+    if (!track || !scene) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let duration = 0;
-    const onMeta = () => {
-      duration = video.duration || 0;
-    };
-    video.addEventListener("loadedmetadata", onMeta);
-    if (video.readyState >= 1) onMeta();
     let trackTop = 0;
     let trackLen = 1;
     const measure = () => {
@@ -43,20 +32,6 @@ export default function ScrollHero({
     window.addEventListener("scroll", onScroll, {
       passive: true
     });
-    let primed = false;
-    const prime = () => {
-      if (primed) return;
-      primed = true;
-      video.play().then(() => video.pause()).catch(() => {});
-      window.removeEventListener("touchstart", prime);
-      window.removeEventListener("scroll", prime);
-    };
-    window.addEventListener("touchstart", prime, {
-      passive: true
-    });
-    window.addEventListener("scroll", prime, {
-      passive: true
-    });
     let raf = 0;
     let current = 0;
     const tick = () => {
@@ -64,10 +39,7 @@ export default function ScrollHero({
       const next = current + (target - current) * 0.14;
       current = Math.abs(target - next) < 0.0004 ? target : next;
       const p = current;
-      if (!reduced && duration > 0 && video.seekable.length > 0) {
-        const t = p * Math.max(duration - 0.05, 0);
-        if (Math.abs(video.currentTime - t) > 0.01) video.currentTime = t;
-      }
+      scene.style.setProperty("--progress", String(reduced ? target : p));
       const speed = Math.round(TOP_SPEED * (1 - (1 - p) ** 1.8));
       if (speedRef.current) {
         speedRef.current.textContent = String(speed).padStart(3, "0");
@@ -96,16 +68,13 @@ export default function ScrollHero({
     raf = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(raf);
-      video.removeEventListener("loadedmetadata", onMeta);
       window.removeEventListener("resize", measure);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("touchstart", prime);
-      window.removeEventListener("scroll", prime);
     };
   }, []);
   return <section ref={trackRef} className="sh-track" aria-label="Scroll through light">
 			<div className="sh-sticky">
-				<video ref={videoRef} className="sh-video" src={src} muted playsInline preload="auto" aria-hidden tabIndex={-1} />
+				<div ref={sceneRef} className="sh-scene" aria-hidden><div className="sh-orbit" /><div className="sh-light" /></div>
 				<div className="sh-shade" aria-hidden />
 
 				<div ref={introRef} className="sh-intro">

@@ -18,7 +18,7 @@ const NOTES: Note[] = [
 			"We retrofitted SCHEMATIC onto a 30-year-old stamping line in a weekend. The e-stop interlocks alone paid for the year.",
 		name: "Marisol Vega",
 		role: "Plant Engineer · Northgate Robotics",
-		avatar: "./assets/original-visual.svg",
+		avatar: "field-2",
 		tag: "LOG #2241",
 		tilt: "-rotate-1",
 	},
@@ -27,7 +27,7 @@ const NOTES: Note[] = [
 			"The deck feels like real hardware. My operators trust the knobs because they behave like the machines they've run for years.",
 		name: "Daniel Okafor",
 		role: "Ops Lead · Omni-Fab",
-		avatar: "./assets/original-visual.svg",
+		avatar: "field-3",
 		tag: "LOG #1907",
 		tilt: "rotate-1",
 	},
@@ -36,7 +36,7 @@ const NOTES: Note[] = [
 			"Wave rollouts changed how we ship firmware. We watch each cell confirm before the next goes live ,  zero floor-wide outages since.",
 		name: "Hannah Lindqvist",
 		role: "Reliability · Helios Power",
-		avatar: "./assets/original-visual.svg",
+		avatar: "field-1",
 		tag: "LOG #3102",
 		tilt: "-rotate-1",
 	},
@@ -110,14 +110,7 @@ export function Testimonials() {
 											boxShadow: "var(--shadow-recessed-soft)",
 										}}
 									>
-										<img
-											src={n.avatar}
-											alt={`Portrait of ${n.name}`}
-											loading="lazy"
-											width={48}
-											height={48}
-											className="h-full w-full grayscale transition-all duration-500 ease-out hover:grayscale-0"
-										/>
+										<div data-visual={n.avatar} aria-label={`Portrait of ${n.name}`} data-loading="lazy" className={["procedural-visual", "h-full w-full grayscale transition-all duration-500 ease-out hover:grayscale-0"].join(" ")} role="img" />
 									</span>
 									<span className="flex flex-col">
 										<span className="text-sm font-bold text-ink">{n.name}</span>

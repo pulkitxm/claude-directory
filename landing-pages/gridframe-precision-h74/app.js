@@ -44,7 +44,7 @@
     strategy: {
       title: "Methodology",
       desc: "Architectural precision in marketing ,  we engineer systems, not campaigns.",
-      img: "original-visual.svg",
+      img: "field-2",
       c1t: "Approach",
       c1l: ["Structural Audit", "Growth Blueprint", "Position Mapping", "Friction Analysis"],
       c2t: "Insight",
@@ -53,7 +53,7 @@
     capabilities: {
       title: "Divisions",
       desc: "Specialized teams operating with surgical precision across every channel.",
-      img: "original-visual.svg",
+      img: "field-3",
       c1t: "Solutions",
       c1l: ["Market Intelligence", "Brand Engineering", "Performance Media", "Revenue Ops"],
       c2t: "Integration",

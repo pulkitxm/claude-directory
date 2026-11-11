@@ -297,3 +297,24 @@ test("excludes dependencies, generated output and tooling from artwork detection
 	}
 	assert.deepEqual(await f.scan(), []);
 });
+
+test("requires review for DOM and CSS procedural visual renderers", async (t) => {
+	const f = await fixture(t);
+	for (const [path, content] of [
+		[
+			"components-ui/example/index.html",
+			'<div class="procedural-visual"></div>',
+		],
+		[
+			"components-ui/example/style.css",
+			".procedural-visual { background: linear-gradient(red, blue); }",
+		],
+		[
+			"animations-loaders/example/ScrollHero.tsx",
+			'<div className="sh-scene" />',
+		],
+	]) {
+		await f.put(path, content);
+		assert.ok(has(await f.scan(), "inline-artwork-unrecorded", path));
+	}
+});

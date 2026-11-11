@@ -2,29 +2,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const reviews = [{
     t: "card",
     q: "The level of care here is unprecedented. Bella always returns from her spa sessions looking like royalty.",
-    img: "original-visual.svg",
+    img: "field-2",
     nm: "Sarah Jenkins",
     rl: "Bella's Guardian"
   }, {
     t: "card",
     q: "Curated treats my picky companion actually enjoys. The boutique selection is truly top-tier.",
-    img: "original-visual.svg",
+    img: "field-3",
     nm: "Marcus Thorne",
     rl: "Oliver's Human"
   }, {
     t: "cream",
     q: "Amberhaus is the only place I trust with Shadow’s grooming. They are literal magicians.",
-    img: "original-visual.svg",
+    img: "field-1",
     nm: "Thomas Ward",
     rl: "Shadow's Best Friend"
   }, {
     t: "image",
-    img: "original-visual.svg",
+    img: "field-2",
     cap: "Pet Portraits MMXXIV"
   }, {
     t: "card",
     q: "The artisan accessories collection is unmatched. Every piece feels custom-made for our home.",
-    img: "original-visual.svg",
+    img: "field-3",
     nm: "Julian Pierce",
     rl: "Baron's Owner"
   }, {
@@ -34,28 +34,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }, {
     t: "card",
     q: "Holistic care that actually respects the pet. Cooper looks amazing and had zero stress.",
-    img: "original-visual.svg",
+    img: "field-1",
     nm: "Chloe Smith",
     rl: "Cooper's Mom"
   }, {
     t: "image2",
-    img: "original-visual.svg",
+    img: "field-2",
     label: "luna.",
     t1: "Lumina Collection",
     t2: "Luxury Cat Furnishings"
   }];
   const cardHTML = r => {
     if (r.t === "image") {
-      return `<li class="timg"><img src="${r.img}" alt="Original abstract geometric study"><div class="ov"><div></div><span class="t">${r.cap}</span></div></li>`;
+      return `<li class="timg"><div role="img" data-visual="${r.img}" aria-label="Original abstract geometric study" class="procedural-visual"></div><div class="ov"><div></div><span class="t">${r.cap}</span></div></li>`;
     }
     if (r.t === "image2") {
-      return `<li class="timg"><img src="${r.img}" alt="Original abstract geometric study"><div class="ov"><span class="italic">${r.label}</span><div><div class="t">${r.t1}</div><div class="s">${r.t2}</div></div></div></li>`;
+      return `<li class="timg"><div role="img" data-visual="${r.img}" aria-label="Original abstract geometric study" class="procedural-visual"></div><div class="ov"><span class="italic">${r.label}</span><div><div class="t">${r.t1}</div><div class="s">${r.t2}</div></div></div></li>`;
     }
     if (r.t === "amber") {
       return `<li class="tcard amber"><span class="em">${r.em}</span><p>${r.label}</p></li>`;
     }
     const cls = r.t === "cream" ? " cream" : "";
-    return `<li class="tcard${cls}"><p class="quote">"${r.q}"</p><div class="who"><img src="${r.img}" alt="Original abstract geometric study"><div><div class="nm">${r.nm}</div><div class="rl">${r.rl}</div></div></div></li>`;
+    return `<li class="tcard${cls}"><p class="quote">"${r.q}"</p><div class="who"><div role="img" data-visual="${r.img}" aria-label="Original abstract geometric study" class="procedural-visual"></div><div><div class="nm">${r.nm}</div><div class="rl">${r.rl}</div></div></div></li>`;
   };
   const cols = document.querySelectorAll(".tstack[data-dup]");
   const buckets = [[0, 1], [2, 3], [4, 5], [6, 7]];
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ul.innerHTML = items + items;
   });
   document.querySelectorAll("[data-slider]").forEach((slider, sIdx) => {
-    const imgs = slider.querySelectorAll("img");
+    const imgs = slider.querySelectorAll(".procedural-visual");
     let idx = 0;
     setTimeout(() => setInterval(() => {
       imgs[idx].classList.remove("active");

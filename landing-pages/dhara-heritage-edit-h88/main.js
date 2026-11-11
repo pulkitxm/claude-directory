@@ -1,41 +1,41 @@
 (() => {
   var PRODUCTS = [{
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Noorani Silk Tunic",
     mat: "Hand-spun Mulberry Silk",
     price: "14,500"
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Ikat Drape Trousers",
     mat: "Natural Indigo Dye",
     price: "8,900"
   }, {
-    img: "original-visual.svg",
+    img: "field-1",
     name: "Solaris Brass Cuff",
     mat: "Antique Gold Finish",
     price: "4,200"
   }, {
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Studio Khadi Shirt",
     mat: "Hand-woven Bengal Khadi",
     price: "6,500"
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Dawn Mist Banaras Saree",
     mat: "100% Pure Zari",
     price: "42,000"
   }, {
-    img: "original-visual.svg",
+    img: "field-1",
     name: "Slate Nehru Jacket",
     mat: "Organic Linen Blend",
     price: "18,500"
   }, {
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Lotus Kalamkari Tunic",
     mat: "Vegetable Dyes",
     price: "12,000"
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Crescent Silver Drops",
     mat: "925 Sterling Silver",
     price: "3,500"
@@ -43,10 +43,10 @@
   function renderProducts() {
     var grid = document.getElementById("prodGrid");
     if (!grid) return;
-    grid.innerHTML = PRODUCTS.map(p => '<article class="prod">' + '<div class="prod-img">' + '<img src="' + p.img + '" alt="Original abstract geometric study" loading="lazy" />' + '<button class="quick-add">Quick Add ,  ₹' + p.price + "</button>" + "</div>" + "<h3>" + p.name + "</h3>" + '<p class="mat">' + p.mat + "</p>" + "</article>").join("");
+    grid.innerHTML = PRODUCTS.map(p => '<article class="prod">' + '<div class="prod-img">' + '<div role="img" data-visual="' + p.img + '" aria-label="Original abstract geometric study"   class="procedural-visual"></div>' + '<button class="quick-add">Quick Add ,  ₹' + p.price + "</button>" + "</div>" + "<h3>" + p.name + "</h3>" + '<p class="mat">' + p.mat + "</p>" + "</article>").join("");
   }
   function initSlider() {
-    var slides = document.querySelectorAll("#heroSlider img");
+    var slides = document.querySelectorAll("#heroSlider .procedural-visual");
     if (slides.length < 2) return;
     var i = 0;
     setInterval(() => {

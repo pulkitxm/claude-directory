@@ -44,14 +44,7 @@ export function Journal() {
 							>
 								{}
 								<div className="overflow-hidden border border-border">
-									<img
-										src={post.image}
-										alt={`Poster artwork for the article “${post.title}”.`}
-										className="block aspect-[4/3] w-full object-cover transition-transform duration-500 ease-crisp group-hover:scale-105"
-										width={1200}
-										height={900}
-										loading="lazy"
-									/>
+									<div data-visual={post.image} aria-label={`Poster artwork for the article “${post.title}”.`} className={["procedural-visual", "block aspect-[4/3] w-full object-cover transition-transform duration-500 ease-crisp group-hover:scale-105"].join(" ")} data-loading="lazy" role="img" />
 								</div>
 
 								<div className="mt-5 flex items-center gap-3 label-mono">

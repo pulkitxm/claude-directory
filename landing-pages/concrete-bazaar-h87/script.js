@@ -1,7 +1,7 @@
 (() => {
   var star = '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>';
   var products = [{
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Archival Oversized Hoodie",
     rate: "4.8",
     now: "₹2,499",
@@ -9,7 +9,7 @@
     meta: "124 Reviews • Ships in 2 days",
     tags: [["sale", "Sale 40%"], ["dark", "Trending"]]
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Boxy Fit Tee ,  Concrete",
     rate: "4.8",
     now: "₹1,200",
@@ -17,7 +17,7 @@
     meta: "120 Reviews • 100% Cotton",
     tags: [["dark", "New"]]
   }, {
-    img: "original-visual.svg",
+    img: "field-1",
     name: "Minimalist Chelsea Boots",
     rate: "5.0",
     now: "₹5,999",
@@ -25,7 +25,7 @@
     meta: "210 Reviews • Best Value",
     tags: []
   }, {
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Concrete Form Vase",
     rate: "4.7",
     now: "₹1,850",
@@ -33,7 +33,7 @@
     meta: "45 Reviews • Fragile Care",
     tags: []
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Technical Cargo Pants",
     rate: "4.9",
     now: "₹4,500",
@@ -41,7 +41,7 @@
     meta: "56 Reviews • Waterproof",
     tags: [["sale", "Limited"]]
   }, {
-    img: "original-visual.svg",
+    img: "field-1",
     name: "Structured Pleated Trousers",
     rate: "4.9",
     now: "₹3,200",
@@ -49,7 +49,7 @@
     meta: "89 Reviews • Limited Stock",
     tags: [["dark", "New"]]
   }, {
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Archival Beanie",
     rate: "5.0",
     now: "₹850",
@@ -57,7 +57,7 @@
     meta: "32 Reviews • Wool Blend",
     tags: []
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Structural Belt ,  Black",
     rate: "4.6",
     now: "₹1,400",
@@ -90,7 +90,7 @@
   var grid = document.getElementById("grid");
   products.forEach(p => {
     var tagsHtml = p.tags.map(t => `<span class="tag ${t[0]}">${t[1]}</span>`).join("");
-    var card = el('<article class="card reveal">' + '<div class="ph">' + (tagsHtml ? `<div class="tags">${tagsHtml}</div>` : "") + '<img src="' + p.img + '" alt="Original abstract geometric study" loading="lazy">' + '<button class="qadd" type="button">Quick Add to Cart</button>' + "</div>" + '<div class="row"><h3 class="name">' + p.name + "</h3>" + '<span class="rate">' + p.rate + " " + star + "</span></div>" + '<div class="price"><span class="now">' + p.now + '</span><span class="was">' + p.was + "</span></div>" + '<p class="meta">' + p.meta + "</p>" + "</article>");
+    var card = el('<article class="card reveal">' + '<div class="ph">' + (tagsHtml ? `<div class="tags">${tagsHtml}</div>` : "") + '<div role="img" data-visual="' + p.img + '" aria-label="Original abstract geometric study"  class="procedural-visual"></div>' + '<button class="qadd" type="button">Quick Add to Cart</button>' + "</div>" + '<div class="row"><h3 class="name">' + p.name + "</h3>" + '<span class="rate">' + p.rate + " " + star + "</span></div>" + '<div class="price"><span class="now">' + p.now + '</span><span class="was">' + p.was + "</span></div>" + '<p class="meta">' + p.meta + "</p>" + "</article>");
     grid.appendChild(card);
   });
   var rg = document.getElementById("rev-grid");
