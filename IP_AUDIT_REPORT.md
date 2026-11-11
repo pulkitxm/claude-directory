@@ -1,12 +1,12 @@
 # Repository IP audit report
 
-Audit date: 2026-11-11. Baseline: `f3d7e12f34bf7d90130dce3ec3b26cf69c29794e`. Branch: `ip-remediation`. Scope: all 77,104 tracked files and all 546 project directories, including hidden capture trees, every category, root metadata, scripts, agent workflows, licenses and deployment configurations. A separate portfolio checkout and the presentation repository were remediated locally.
+Audit date: 2026-11-11. Baseline: `f3d7e12f34bf7d90130dce3ec3b26cf69c29794e`. Branch: `ip-remediation`. Scope: all 77,104 tracked files and all 546 project directories, including hidden capture trees, every category, root metadata, scripts, agent workflows, licenses and deployment configurations. The portfolio and presentation repositories were also remediated, merged and deployed.
 
 ## Outcome
 
 131 independent projects retained after asset remediation; 415 projects removed from current distribution, including all 199 premium recreations across 10 vendors. Initial classifications: 202 HIGH RISK, 343 MEDIUM RISK, 1 LOW RISK. Retained projects have a LOW RISK engineering assessment after cleanup, subject to the limitations below. Removed projects keep their original risk classification for review.
 
-The owner approved publishing the prepared remediation branches and opening review PRs. Remote checkpoint commits use Pukbot. Merges, deployments, published history rewrites, artifact deletions and cache purges remain unapproved and have not been performed. Do not publish the baseline or backup as evidence.
+The owner approved publication, squash merges and completion of the managed deployments. PRs [1390](https://github.com/pulkitxm/claude-directory/pull/1390), [141](https://github.com/pulkitxm/pulkit.page/pull/141) and [3](https://github.com/pulkitxm/claude-directory-ppt/pull/3) were squash merged through Pukbot with their review branches deleted. Fresh managed-site deployments succeeded. Published history rewriting, force-pushes and historical artifact deletion were not performed. Do not publish the baseline or backup as evidence.
 
 ## Evidence and method
 
@@ -30,15 +30,17 @@ This is a conservative technical remediation, not a legal clearance. Independent
 
 The shared conversation at https://chatgpt.com/share/6af43ab0-f564-83ee-91c9-fccb15864d0d returned only a title shell. Its specific contents were unavailable; the owner was asked to paste the claims. The original written audit requirements and all named examples were applied independently.
 
-Published origin/main and 73 other branch refs retain historical material. No tags or releases and no Actions artifacts were returned by the authenticated API at audit time; this does not prove copies or past downloads are absent. Pages has 619 recorded deployments. See [HISTORY_REMEDIATION_PLAN.md](HISTORY_REMEDIATION_PLAN.md) and [DEPLOYMENT_REMEDIATION.md](DEPLOYMENT_REMEDIATION.md). Current live endpoints are not cleared by local removal. Publication, old deploy refs, caches, portfolio/blog hosting and external embeds remain pending explicit approval or access. The blog publisher was migrated from direct Git writes to guarded Pukbot publication; its missing target-only BLOG_PUBLISH_TOKEN is a concrete access prerequisite.
+The remediated current main tree excludes the withdrawn content. History reachable from main, old branch/PR refs and raw commit URLs can still retain historical material. No tags or releases and no Actions artifacts were returned by the authenticated API at audit time; this does not prove copies or past downloads are absent. Pages has 619 recorded deployments. See [HISTORY_REMEDIATION_PLAN.md](HISTORY_REMEDIATION_PLAN.md) and [DEPLOYMENT_REMEDIATION.md](DEPLOYMENT_REMEDIATION.md). Live verification confirms all 131 retained preview URLs return200, all 415 removed project roots return404, and all 812 checked legacy asset/source/preview URLs return404. The canonical catalog has exactly131 approved links and no premium links. All10 live desktop/mobile smoke checks passed. Portfolio, blog and presentation withdrawals are also deployed; details and response timestamps are in [compliance/deployment-verification.json](compliance/deployment-verification.json) and [DEPLOYMENT_REMEDIATION.md](DEPLOYMENT_REMEDIATION.md). The owner explicitly chose to leave the two linked YouTube recordings unchanged. They remain outside the claimed withdrawal outcome and are not declared cleared by this audit. Historical copies remain separate actions. The blog was published using the guarded Pukbot manual path; its token-free receipt/content verification path is tracked in [portfolio PR142](https://github.com/pulkitxm/pulkit.page/pull/142).
 
 ## Requested pull-request cleanup
 
-All 73 initially open PRs were authored by Dependabot. Closed both reviewed Pukbot batches and verified zero remaining Dependabot PRs with the GitHub API before opening remediation review PRs. No branches, historical objects or deployments were deleted. This authorized metadata action does not publish the remediation source.
+All 73 initially open PRs were authored by Dependabot. Closed both reviewed Pukbot batches and verified zero remaining Dependabot PRs with the GitHub API before opening remediation review PRs. No Dependabot branches or historical objects were deleted by that PR-closing action. The three remediation review branches were later deleted as part of their approved squash merges.
 
 ## Verification
 
-All 131 retained previews built successfully. All 25 automated tests, source safeguards, actionlint, whitespace checks and 1,249 publication links passed. Browser checks passed for 99 static projects and 30 UI projects on desktop/mobile, plus terminal and scroll-video behavior and nine representative UI interactions. Eleven Tailwind globs and two mobile-menu stacking issues were repaired during verification. Final results are recorded in compliance/verification.json. Missing access or approval is reported as pending, never as successful deletion. The original main backup is private local evidence and must not be uploaded or deployed.
+All 131 retained previews built successfully. All 26 automated tests, source safeguards, actionlint, whitespace checks and 1,249 publication links passed. Browser checks passed for 99 static projects and 30 UI projects on desktop/mobile, plus terminal and scroll-video behavior and nine representative UI interactions. Eleven Tailwind globs and two mobile-menu stacking issues were repaired during verification. Final results are recorded in compliance/verification.json. Fresh deployed checks are recorded separately from local checks. Missing access is reported as pending, never as successful deletion. The original main backup is private local evidence and must not be uploaded or deployed.
+
+Git inspection and synthetic fixtures now clear inherited repository-control environment variables. A regression verifies that linked-worktree hooks inspect the intended checkout without changing the caller's Git configuration or index.
 
 ## Every inspected project
 
