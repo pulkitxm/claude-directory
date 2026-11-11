@@ -6,6 +6,8 @@ The current catalog contains **145 projects** with reviewed source and code-gene
 
 The approved main history purge is published. A [fresh network clone](compliance/history-publication-fresh-clone.json) verifies the selected media and withdrawn source are absent from rewritten main history. Start new work from a fresh clone, following [the checkout instructions](HISTORY_REMEDIATION_PLAN.md#contributor-checkout-reset). GitHub-managed PR refs, forks, caches and older artifacts remain separate actions recorded in [the publication receipt](compliance/history-publication.json).
 
+Browse the [recorded preview gallery](https://pulkit.page/claude-directory/) or open the [live experiments](https://claude-directory.pulkitxm.com/). The [final publication record](compliance/recorded-gallery-publication.json) links actual deployed verification and remaining historical limitations.
+
 Run `make compliance`, `make test`, and `make build`. The builder publishes only projects listed in `compliance/projects.json`; it does not archive the repository. Publishing requires a reviewed manual workflow dispatch.
 
 ## 3d-games (1)
