@@ -1,5 +1,15 @@
 export const mediaExtension =
-	/\.(?:avif|apng|bmp|gif|ico|jpe?g|png|svg|webp|tiff?|heic|heif|psd|eps|woff2?|ttf|otf|eot|fnt|mp4|m4v|mov|webm|ogv|mkv|avi|flv|mp3|m4a|wav|ogg|flac|aac|aiff?|pdf|wasm|glb|gltf|obj|fbx|stl|blend|usdz|dds|ktx2?|hdr|exr|zip|tar|gz|tgz|7z|rar|bz2|xz)$/i;
+	/\.(?:avif|apng|bmp|gif|ico|jpe?g|png|svg|webp|tiff?|heic|heif|psd|eps|woff2?|ttf|otf|eot|fnt|mp4|m4v|mov|webm|ogv|mkv|avi|flv|mp3|m4a|wav|ogg|flac|aac|aiff?|pdf|wasm|glb|gltf|obj|fbx|stl|blend|usdz|spline(?:code)?|dds|ktx2?|hdr|exr|zip|tar|gz|tgz|7z|rar|bz2|xz)$/i;
+
+export function hasUnverifiedBinaryContent(bytes) {
+	if (bytes.includes(0)) return true;
+	try {
+		new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+		return false;
+	} catch {
+		return true;
+	}
+}
 
 export function hasMediaSignature(bytes) {
 	const prefix = bytes.subarray(0, 512);

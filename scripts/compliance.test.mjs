@@ -566,7 +566,16 @@ test("original build-hash source filenames require review as well as images", as
 
 test("rejects standalone media even when original ownership and exact provenance are recorded", async (t) => {
 	const f = await fixture(t);
-	for (const extension of ["png", "woff2", "svg", "mp4", "mp3", "zip"]) {
+	for (const extension of [
+		"png",
+		"woff2",
+		"svg",
+		"mp4",
+		"mp3",
+		"zip",
+		"spline",
+		"splinecode",
+	]) {
 		const path = `components-ui/example/original.${extension}`;
 		await recordAsset(f, path, "synthetic original fixture");
 		assert.ok(has(await f.scan(), "standalone-media", path));
@@ -612,4 +621,14 @@ test("rejects tracked media missing from the working tree until its deletion is 
 		env: localGitEnvironment(),
 	});
 	assert.ok(!has(await f.scan(), "standalone-media-index", path));
+});
+
+test("rejects opaque binary bodies under unrelated filenames", async (t) => {
+	const f = await fixture(t);
+	const contents = [Buffer.from([0x61, 0, 0x62]), Buffer.from([0xc3, 0x28])];
+	for (const [index, bytes] of contents.entries()) {
+		const path = `components-ui/example/scene-${index}.dat`;
+		await writeFile(join(f.root, path), bytes);
+		assert.ok(has(await f.scan(), "unverified-binary", path));
+	}
 });
