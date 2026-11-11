@@ -54,6 +54,7 @@ async function fixture(t) {
 			review: "Independent original CSS interaction reviewed manually.",
 		},
 	]);
+	await put("compliance/dependency-licenses.json", []);
 	await put(
 		"components-ui/example/index.html",
 		'<!doctype html><html><body>Original interaction <a href="https://example.test/about">About the creator</a></body></html>',
@@ -85,6 +86,44 @@ function has(findings, code, path) {
 		(finding) => finding.code === code && (!path || finding.path === path),
 	);
 }
+
+test("runs npm provenance checks through the commit and publication compliance entry point", async (t) => {
+	const f = await fixture(t);
+	const dependency = {
+		version: "1.2.3",
+		resolved:
+			"https://registry.npmjs.org/example-runtime/-/example-runtime-1.2.3.tgz",
+		license: "MIT",
+		integrity: `sha512-${Buffer.alloc(64).toString("base64")}`,
+	};
+	await f.put("components-ui/example/package.json", {
+		dependencies: { "example-runtime": "^1.0.0" },
+	});
+	const lock = {
+		lockfileVersion: 3,
+		packages: {
+			"": { dependencies: { "example-runtime": "^1.0.0" } },
+			"node_modules/example-runtime": dependency,
+		},
+	};
+	await f.put("components-ui/example/package-lock.json", lock);
+	assert.ok(has(await f.scan(), "npm-unreviewed"));
+	await f.put("compliance/dependency-licenses.json", [
+		{
+			project: "components-ui/example",
+			package: "example-runtime",
+			version: dependency.version,
+			license: dependency.license,
+			origin: dependency.resolved,
+			redistribution_permission:
+				"Retains upstream license and redistribution notices.",
+		},
+	]);
+	assert.deepEqual(await f.scan(), []);
+	dependency.version = "1.2.4";
+	await f.put("components-ui/example/package-lock.json", lock);
+	assert.ok(has(await f.scan(), "npm-review-stale"));
+});
 
 test("accepts resource references in metadata for an original project", async (t) => {
 	const f = await fixture(t);
@@ -159,6 +198,28 @@ test("rejects tampered, uncertain, missing and duplicated asset records", async 
 	assert.ok(has(findings, "asset-hash", path));
 	assert.ok(has(findings, "duplicate-record", path));
 	assert.ok(has(findings, "stale-record", "missing.svg"));
+});
+
+test("rejects explicit media redistribution denials even when permission keywords are present", async (t) => {
+	const f = await fixture(t);
+	await recordAsset(
+		f,
+		"components-ui/example/art.svg",
+		"original synthetic media",
+	);
+	const manifest = JSON.parse(
+		await readFile(join(f.root, "ASSET_PROVENANCE.json"), "utf8"),
+	);
+	for (const permission of [
+		"Redistribution forbidden",
+		"Redistribution prohibited",
+		"Original work not licensed for redistribution",
+		"Permission denied",
+	]) {
+		manifest.assets[0].redistribution_permission = permission;
+		await f.put("ASSET_PROVENANCE.json", manifest);
+		assert.ok(has(await f.scan(), "asset-rights"));
+	}
 });
 
 test("flags build hashes even when provenance was recorded", async (t) => {

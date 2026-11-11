@@ -5,6 +5,7 @@ import { extname, isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { scanInlineArtwork } from "./check-inline-artwork.mjs";
+import { scanDependencyProvenance } from "./check-dependency-provenance.mjs";
 
 const skippedDirectories = new Set([
 	".git",
@@ -53,7 +54,7 @@ const commercialDomain =
 const suspiciousHash =
 	/(?:^|[._-])(?:[a-f\d]{8,}|[A-Za-z\d_-]{8})[_-]Z[A-Za-z\d_-]+(?=\.)|\.[A-Za-z\d_-]{8}(?=[_.])|(?:^|[-_.])[a-f\d]{12,}(?=[-_.])/;
 const rightsUncertain =
-	/\b(?:unknown|unverified|uncertain|unclear|pending|tbd|todo|none|n\/a|unlicensed|not supplied|not recorded|without permission|not established|not verified|no permission|no license|not authorized|not permitted|all rights reserved)\b/i;
+	/\b(?:unknown|unverified|uncertain|unclear|pending|tbd|todo|none|n\/a|unlicensed|not supplied|not recorded|without permission|not established|not verified|no permission|no license|no redistribution|not authorized|not permitted|not licensed|not granted|denied|forbidden|prohibited|disallowed|all rights reserved)\b/i;
 const agentRequirements = [
 	"Public accessibility is not redistribution permission",
 	"Never automatically download and commit proprietary",
@@ -247,6 +248,13 @@ export async function scanCompliance(directory) {
 	}
 	const provenance = (await json("ASSET_PROVENANCE.json", {})) ?? {};
 	const projects = await json("compliance/projects.json", []);
+	findings.push(
+		...(await scanDependencyProvenance(
+			files,
+			projects,
+			await json("compliance/dependency-licenses.json", null),
+		)),
+	);
 	if (!files.has("LICENSE"))
 		add("license", "LICENSE", "The repository license is missing.");
 	if (
