@@ -465,7 +465,7 @@ textarea:focus-visible {
 }
 .zz {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 64px;
 	align-items: center;
 }
@@ -671,7 +671,7 @@ textarea:focus-visible {
 }
 .cta .wrap {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 56px;
 	align-items: center;
 }
@@ -691,6 +691,7 @@ textarea:focus-visible {
 	margin-bottom: 32px;
 }
 .chip {
+	max-width: 100%;
 	display: inline-flex;
 	align-items: center;
 	gap: 16px;
@@ -699,6 +700,7 @@ textarea:focus-visible {
 	padding: 16px;
 }
 .chip .ico {
+	flex: none;
 	width: 42px;
 	height: 42px;
 	background: var(--ink);
@@ -706,6 +708,10 @@ textarea:focus-visible {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.chip > div {
+	min-width: 0;
+	overflow-wrap: anywhere;
 }
 .chip .label {
 	color: #334155;
@@ -725,10 +731,11 @@ textarea:focus-visible {
 }
 .form-row {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 22px;
 }
 .field {
+	min-width: 0;
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
@@ -742,6 +749,7 @@ textarea:focus-visible {
 .field input,
 .field select,
 .field textarea {
+	min-width: 0;
 	background: var(--surface);
 	border: 1px solid var(--line);
 	padding: 13px 14px;
@@ -756,6 +764,7 @@ textarea:focus-visible {
 	border-color: var(--ink);
 }
 .form .btn {
+	white-space: normal;
 	width: 100%;
 	padding: 16px;
 }
@@ -902,12 +911,23 @@ textarea:focus-visible {
 	}
 }
 @media (max-width: 760px) {
+	.hdr {
+		padding: 16px;
+	}
+	.hdr-right {
+		gap: 8px;
+	}
+	.hdr .btn-sm {
+		padding: 10px 12px;
+		font-size: 10px;
+		letter-spacing: 0.08em;
+	}
 	.hero {
 		align-items: flex-start;
 	}
 	.zz,
 	.zz.rev {
-		grid-template-columns: 1fr;
+		grid-template-columns: minmax(0, 1fr);
 	}
 	.zz.rev .zz-text,
 	.zz.rev .zz-media {
@@ -926,7 +946,7 @@ textarea:focus-visible {
 		grid-template-columns: repeat(2, 1fr);
 	}
 	.cta .wrap {
-		grid-template-columns: 1fr;
+		grid-template-columns: minmax(0, 1fr);
 	}
 	.ftr-grid {
 		grid-template-columns: 1fr;
