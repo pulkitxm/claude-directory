@@ -61,7 +61,9 @@ test("verifies nested assets and SVG data URIs without treating script templates
 		'<html><link rel="stylesheet" href="assets/site.css"><img srcset="assets/art.svg 1x, assets/art.svg 2x"><script>const template = `<img src="assets/${name}.svg">`;</script></html>',
 	);
 	const result = await f.verify();
-	assert.deepEqual(result.errors, []);
+	assert.deepEqual(result.errors, [
+		"Standalone media in output: components-ui/cleared/assets/art.svg",
+	]);
 	assert.equal(result.checked, 4);
 });
 
@@ -104,6 +106,7 @@ test("detects missing cleared indexes, asset paths and license notices", async (
 
 test("validates exact remote assets while allowing ordinary outbound navigation", async (t) => {
 	const f = await fixture(t);
+	await rm(join(f.root, "components-ui/cleared/assets/art.svg"));
 	await f.put(
 		"components-ui/cleared/index.html",
 		'<html><a href="https://example.test/credits">Credits</a><img src="https://cdn.example.test/art.svg"></html>',
@@ -183,4 +186,25 @@ test("collects complete notices including hyphenated licenses, license directori
 		assert.ok(notices.includes(`${name}@1.0.0`));
 		assert.ok(notices.includes(notice));
 	}
+});
+
+test("rejects media signatures hidden under source-like filenames in output", async (t) => {
+	const f = await fixture(t);
+	await f.put(
+		"components-ui/cleared/art.txt",
+		'<svg xmlns="http://www.w3.org/2000/svg"><circle r="2"/></svg>',
+	);
+	await f.put(
+		"components-ui/cleared/frame.dat",
+		Buffer.from("89504e470d0a1a0a", "hex"),
+	);
+	const { errors } = await f.verify();
+	for (const name of ["art.svg", "art.txt", "frame.dat"])
+		assert.ok(
+			errors.some(
+				(error) =>
+					error.endsWith(`/${name}`) &&
+					error.startsWith("Standalone media in output:"),
+			),
+		);
 });

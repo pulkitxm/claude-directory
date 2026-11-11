@@ -17,21 +17,21 @@ const CHAPTERS = [{
   copy: "Reach the final frame, or scroll back to see the sequence in reverse."
 }];
 const SPECS = [{
-  label: "Runtime",
-  value: "5.0",
-  unit: "sec"
+  label: "Motion",
+  value: "Scroll",
+  unit: "driven"
 }, {
   label: "Resolution",
-  value: "720",
-  unit: "p"
+  value: "Fluid",
+  unit: "layout"
 }, {
   label: "Frames",
-  value: "125",
-  unit: "total"
+  value: "Live",
+  unit: "geometry"
 }, {
   label: "Source",
-  value: "Local",
-  unit: "gradient"
+  value: "Code",
+  unit: "only"
 }];
 const MARQUEE = Array.from({
   length: 6

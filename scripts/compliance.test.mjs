@@ -574,3 +574,42 @@ test("rejects standalone media even when original ownership and exact provenance
 	await recordAsset(f, "icon.svg", "synthetic root icon");
 	assert.ok(has(await f.scan(), "standalone-media", "icon.svg"));
 });
+
+test("rejects media signatures under unrelated file extensions without a provenance bypass", async (t) => {
+	const f = await fixture(t);
+	await f.put(
+		"components-ui/example/drawing.txt",
+		'<svg xmlns="http://www.w3.org/2000/svg"><rect width="3"/></svg>',
+	);
+	await mkdir(join(f.root, "components-ui/example"), { recursive: true });
+	await writeFile(
+		join(f.root, "components-ui/example/frame.dat"),
+		Buffer.from("89504e470d0a1a0a", "hex"),
+	);
+	for (const name of ["drawing.txt", "frame.dat"])
+		assert.ok(
+			has(await f.scan(), "standalone-media", `components-ui/example/${name}`),
+		);
+});
+
+test("rejects tracked media missing from the working tree until its deletion is staged", async (t) => {
+	const f = await fixture(t);
+	const path = "components-ui/example/recording.mp4";
+	await f.put(path, "synthetic recording fixture");
+	const execute = promisify(execFile);
+	await execute("git", ["init", "--quiet"], {
+		cwd: f.root,
+		env: localGitEnvironment(),
+	});
+	await execute("git", ["add", path], {
+		cwd: f.root,
+		env: localGitEnvironment(),
+	});
+	await rm(join(f.root, path));
+	assert.ok(has(await f.scan(), "standalone-media-index", path));
+	await execute("git", ["rm", "--cached", path], {
+		cwd: f.root,
+		env: localGitEnvironment(),
+	});
+	assert.ok(!has(await f.scan(), "standalone-media-index", path));
+});
