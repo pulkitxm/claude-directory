@@ -118,7 +118,7 @@ const QA: {
 			<>
 				Zero image assets , the visual is generated entirely on the GPU by the
 				fragment shader. Icons on this page come from <code>lucide-react</code>;
-				fonts are vendored locally for offline use.
+				the interface uses system fonts.
 			</>
 		),
 	},
