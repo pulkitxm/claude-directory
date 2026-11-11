@@ -21,6 +21,13 @@ const generatedDirectories = new Set([
 	"out",
 ]);
 const execute = promisify(execFile);
+
+export function localGitEnvironment() {
+	return Object.fromEntries(
+		Object.entries(process.env).filter(([name]) => !name.startsWith("GIT_")),
+	);
+}
+
 const captureDirectory =
 	/^(?:\.reference|\.audit|\.refs?|references?|captures?|screenshots?|scraped|scrapes)$/i;
 const captureFile =
@@ -189,6 +196,7 @@ export async function scanCompliance(directory) {
 		try {
 			const { stdout } = await execute("git", ["ls-files", "-z"], {
 				cwd: root,
+				env: localGitEnvironment(),
 				maxBuffer: 32 * 1024 * 1024,
 			});
 			for (const path of stdout.split("\0").filter(Boolean)) {
