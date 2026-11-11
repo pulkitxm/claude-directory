@@ -3,9 +3,9 @@
 // `icon` keys map to the lucide icon set in Features (see iconMap there).
 // ─────────────────────────────────────────────────────────────────────────────
 
-import journal01 from "../../assets/images/original-visual.svg";
-import journal02 from "../../assets/images/original-visual.svg";
-import journal03 from "../../assets/images/original-visual.svg";
+const journal01 = "field-1";
+const journal02 = "field-1";
+const journal03 = "field-1";
 
 export const brand = {
 	name: "OBELISK",

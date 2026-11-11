@@ -19,27 +19,27 @@
 })();
 (() => {
   const data = [{
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Sarah Jenkins",
     text: "The broth is liquid gold. I've never had ramen this good outside of Tokyo. The 12 AM vibe is unmatched."
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Mike Tavern",
     text: "Perfect for late-night cravings. The spicy miso has a real kick, and the noodles are always al dente."
   }, {
-    img: "original-visual.svg",
+    img: "field-1",
     name: "Anita Sharma",
     text: "I love the vegan options! Usually vegan broth is thin, but this one is creamy and rich. Highly recommend."
   }, {
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Diego Park",
     text: "Open till 3 AM saved my soul more than once. The lantern glow inside makes you want to linger."
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Mei Lin",
     text: "Hand-pulled noodles you can actually taste the difference in. The chashu melts. Worth every penny."
   }, {
-    img: "original-visual.svg",
+    img: "field-1",
     name: "Tom Becker",
     text: "Cozy, earthy, nostalgic ,  exactly what they promise. The ramen kits made my home dinners legendary."
   }];
@@ -53,7 +53,7 @@
     for (let i = 0; i < n; i++) {
       const r = data[(start + i) % data.length];
       html += `<div class="review">
-        <img src="${r.img}" alt="Original abstract geometric study" loading="lazy">
+        <div role="img" data-visual="${r.img}" aria-label="Original abstract geometric study"  class="procedural-visual"></div>
         <h5>${r.name}</h5>
         <p>"${r.text}"</p>
         <div class="stars">★★★★★</div>

@@ -17,56 +17,56 @@
     q: "Vermillion transformed my Physics prep. I went from a 70 to a 98 in my Class 12 boards. The personalised attention is unmatched.",
     n: "Aryan Sharma",
     r: "98% CBSE · Class 12",
-    a: "original-visual.svg"
+    a: "field-2"
   }, {
     v: "white",
     q: 'Seeing a student’s "aha!" moment is why I teach. Here we have the resources to push every student toward excellence.',
     n: "Dr. Amit K.",
     r: "HOD Chemistry",
-    a: "original-visual.svg"
+    a: "field-3"
   }, {
     v: "navy",
     q: "The faculty is professional yet approachable. They helped my son overcome his fear of Mathematics completely.",
     n: "Meera Iyer",
     r: "Parent · Grade 10",
-    a: "original-visual.svg"
+    a: "field-1"
   }, {
     v: "white",
     q: "Expert teachers and incredible mock tests. I felt genuinely confident walking into my final board exams.",
     n: "Rahul Verma",
     r: "96% ISC · Class 12",
-    a: "original-visual.svg"
+    a: "field-2"
   }];
   const rowB = [{
     v: "white",
     q: "The online portal and doubt-clearing sessions were a lifesaver during my pre-boards. A must for ICSE students.",
     n: "Ishani Patel",
     r: "97.5% ICSE · Class 10",
-    a: "original-visual.svg"
+    a: "field-3"
   }, {
     v: "orange",
     q: "As a parent, the weekly progress reports are fantastic. I always know exactly where my daughter needs help.",
     n: "Sanjay Kapoor",
     r: "Parent · Grade 12",
-    a: "original-visual.svg"
+    a: "field-1"
   }, {
     v: "white",
     q: "The hybrid model lets me reach students exactly where they are. We track with data, but teach with heart.",
     n: "Neha S.",
     r: "Senior Maths Faculty",
-    a: "original-visual.svg"
+    a: "field-2"
   }, {
     v: "navy",
     q: "Vermillion isn’t only about marks ,  they truly care about exam-stress management and student wellbeing.",
     n: "Rajesh Deshmukh",
     r: "Parent · Grade 12",
-    a: "original-visual.svg"
+    a: "field-3"
   }];
   function cardHTML(t) {
     return `<div class="t-card ${t.v === "orange" ? "orange" : t.v === "navy" ? "navy" : ""}">
       ${t.stars ? `<div class="t-stars">${star.repeat(5)}</div>` : ""}
       <p>${t.q}</p>
-      <div class="t-who"><img src="${t.a}" alt="Original abstract geometric study"><div><b>${t.n}</b><small>${t.r}</small></div></div>
+      <div class="t-who"><div role="img" data-visual="${t.a}" aria-label="Original abstract geometric study" class="procedural-visual"></div><div><b>${t.n}</b><small>${t.r}</small></div></div>
     </div>`;
   }
   function buildRow(data, dir) {

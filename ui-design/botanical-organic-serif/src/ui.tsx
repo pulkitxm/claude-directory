@@ -243,13 +243,7 @@ export function ArchImage({
 		<div
 			className={`group/arch overflow-hidden border border-stone bg-clay-soft shadow-bloom ${shape} ${className}`}
 		>
-			<img
-				src={src}
-				alt={alt}
-				loading={priority ? "eager" : "lazy"}
-				decoding="async"
-				className={`h-full w-full object-cover transition-transform duration-700 ease-organic group-hover/arch:scale-105 ${imgClassName}`}
-			/>
+			<div data-visual={src} aria-label={alt} data-loading={priority ? "eager" : "lazy"} data-decoding="async" className={["procedural-visual", `h-full w-full object-cover transition-transform duration-700 ease-organic group-hover/arch:scale-105 ${imgClassName}`].join(" ")} role="img" />
 		</div>
 	);
 }

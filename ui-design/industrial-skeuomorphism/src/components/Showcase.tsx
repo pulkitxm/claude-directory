@@ -35,14 +35,7 @@ export function Showcase() {
 									className="overflow-hidden rounded-md"
 									style={{ boxShadow: "var(--shadow-recessed)" }}
 								>
-									<img
-										src="./assets/original-visual.svg"
-										alt="Exploded engineering schematic of the SCHEMATIC SX-1 control unit, annotated with dimensions and a bill of materials"
-										loading="lazy"
-										width={640}
-										height={480}
-										className="w-full grayscale transition-all duration-500 ease-out group-hover:grayscale-0"
-									/>
+									<div data-visual="field-2" aria-label="Exploded engineering schematic of the SCHEMATIC SX-1 control unit, annotated with dimensions and a bill of materials" data-loading="lazy" className={["procedural-visual", "w-full grayscale transition-all duration-500 ease-out group-hover:grayscale-0"].join(" ")} role="img" />
 								</div>
 								<figcaption className="mt-3 flex items-center justify-between px-1">
 									<MonoLabel>DWG&nbsp;0xA417&nbsp;·&nbsp;REV&nbsp;C</MonoLabel>

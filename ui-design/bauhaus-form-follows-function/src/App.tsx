@@ -183,12 +183,7 @@ function Hero() {
 					>
 						<div className="flex -space-x-2">
 							{TESTIMONIALS.map((t) => (
-								<img
-									key={t.name}
-									src={t.img}
-									alt=""
-									className="size-9 rounded-full border-2 border-ink object-cover grayscale"
-								/>
+								<div key={t.name} data-visual={t.img} aria-label="Procedural color study" className={["procedural-visual", "size-9 rounded-full border-2 border-ink object-cover grayscale"].join(" ")} role="img" />
 							))}
 						</div>
 						<p className="text-sm font-bold uppercase tracking-wider">
@@ -657,11 +652,7 @@ function Testimonials() {
 							/>
 							<p className="text-lg font-bold leading-snug">"{t.quote}"</p>
 							<div className="mt-auto flex items-center gap-3 border-t-2 border-ink/15 pt-5">
-								<img
-									src={t.img}
-									alt={t.name}
-									className="size-12 rounded-full border-2 border-ink object-cover grayscale transition-all duration-300 hover:grayscale-0"
-								/>
+								<div data-visual={t.img} aria-label={t.name} className={["procedural-visual", "size-12 rounded-full border-2 border-ink object-cover grayscale transition-all duration-300 hover:grayscale-0"].join(" ")} role="img" />
 								<div>
 									<p className="text-sm font-black uppercase tracking-tight">
 										{t.name}
@@ -713,14 +704,10 @@ function Journal() {
 							className="group flex flex-col border-2 border-ink bg-white shadow-hard-md transition-transform duration-200 ease-out hover:-translate-y-1.5 sm:border-4"
 						>
 							<div className="overflow-hidden border-b-2 border-ink sm:border-b-4">
-								<img
-									src={p.img}
-									alt=""
-									className={cx(
+								<div data-visual={p.img} aria-label="Procedural color study" className={["procedural-visual", cx(
 										"h-48 w-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0",
 										p.round && "scale-105",
-									)}
-								/>
+									)].join(" ")} role="img" />
 							</div>
 							<div className="flex flex-1 flex-col gap-4 p-6">
 								<div className="flex items-center gap-3">

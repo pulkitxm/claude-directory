@@ -2,7 +2,7 @@
 
 A collection of AI-assisted design experiments and useful starting points for developers. Commercial template recreations and disputed assets have been withdrawn from the current tree. This repository does not redistribute paid templates.
 
-The current catalog contains **145 projects** with reviewed source and authorized assets. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
+The current catalog contains **145 projects** with reviewed source and code-generated visuals. Standalone media files are excluded from project source. Fresh screenshots and recordings belong to the separate gallery publishing process. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
 
 Run `make compliance`, `make test`, and `make build`. The builder publishes only projects listed in `compliance/projects.json`; it does not archive the repository. Publishing requires a reviewed manual workflow dispatch.
 

@@ -1,4 +1,4 @@
-import specimenImg from "../../assets/images/original-visual.svg";
+const specimenImg = "field-1";
 import { Reveal, SectionLabel } from "./Primitives";
 import { Check } from "lucide-react";
 
@@ -62,14 +62,7 @@ export function Specimen() {
 							className="absolute left-2 top-2 -z-10 hidden h-full w-full border border-border md:block"
 						/>
 						<div className="overflow-hidden border border-border">
-							<img
-								src={specimenImg}
-								alt="Type specimen plate showing Inter Tight, an outlined glyph, a Playfair Display italic line, and a mono caption listing the three typefaces."
-								className="block w-full"
-								width={1200}
-								height={702}
-								loading="lazy"
-							/>
+							<div data-visual={specimenImg} aria-label="Procedural color study" className={["procedural-visual", "block w-full"].join(" ")} data-loading="lazy" role="img" />
 						</div>
 					</div>
 				</Reveal>

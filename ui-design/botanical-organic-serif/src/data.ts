@@ -74,7 +74,7 @@ export const COLLECTIONS: Collection[] = [
 		title: "The Atelier",
 		emphasis: "Vessels",
 		body: "Wheel-thrown planters and footed bowls, glazed by hand in mushroom, moss, and warm terracotta.",
-		image: "./images/original-visual.svg",
+		image: "field-2",
 		alt: "An illustrated trio of potted plants on a clay shelf in the ceramics atelier.",
 	},
 	{
@@ -82,7 +82,7 @@ export const COLLECTIONS: Collection[] = [
 		title: "The Garden",
 		emphasis: "Greenery",
 		body: "A curated meadow of foliage ,  ferns, olive, and trailing ivy ,  grown slowly and chosen for their easy temperament.",
-		image: "./images/original-visual.svg",
+		image: "field-3",
 		alt: "An illustrated botanical garden meadow of mixed fronds and seed-heads.",
 	},
 	{
@@ -90,7 +90,7 @@ export const COLLECTIONS: Collection[] = [
 		title: "The Canopy",
 		emphasis: "Foliage",
 		body: "Statement leaves for the corners that ask for them ,  broad, architectural, and quietly dramatic against rice-paper walls.",
-		image: "./images/original-visual.svg",
+		image: "field-1",
 		alt: "An illustrated dense canopy of overlapping botanical leaves.",
 	},
 ];
@@ -181,21 +181,21 @@ export const TESTIMONIALS: Testimonial[] = [
 			"My apartment finally breathes. The fern arrived in a pot so beautiful I rearranged a whole shelf around it.",
 		name: "Marin Okafor",
 		role: "Grove member, two seasons",
-		avatar: "./images/original-visual.svg",
+		avatar: "field-2",
 	},
 	{
 		quote:
 			"It feels less like a subscription and more like a friend who happens to be very good with plants leaving something on your step.",
 		name: "Elise Tremblay",
 		role: "Glasshouse member",
-		avatar: "./images/original-visual.svg",
+		avatar: "field-3",
 	},
 	{
 		quote:
 			"The glaze on my planter has tiny imperfections and I love every one of them. Nothing here feels mass-made.",
 		name: "Theo Lindqvist",
 		role: "Sprig member, first season",
-		avatar: "./images/original-visual.svg",
+		avatar: "field-1",
 	},
 ];
 
@@ -217,7 +217,7 @@ export const POSTS: Post[] = [
 			"Why we let roots take their time in spring water, and what a fortnight of waiting teaches us about tending anything well.",
 		date: "May 2026",
 		read: "6 min",
-		image: "./images/original-visual.svg",
+		image: "field-2",
 		alt: "An illustrated botanical sprig laid across a pale ground.",
 	},
 	{
@@ -227,7 +227,7 @@ export const POSTS: Post[] = [
 			"A walk through the kiln, the palette we mix by hand, and why a little imperfection makes a vessel feel alive.",
 		date: "Apr 2026",
 		read: "8 min",
-		image: "./images/original-visual.svg",
+		image: "field-3",
 		alt: "An illustrated scatter of dried flowers in terracotta and wheat tones.",
 	},
 	{
@@ -237,7 +237,7 @@ export const POSTS: Post[] = [
 			"Forget the watering schedule. Learn to read the weight of the soil and the tilt of the leaves toward the morning light.",
 		date: "Mar 2026",
 		read: "5 min",
-		image: "./images/original-visual.svg",
+		image: "field-1",
 		alt: "An illustrated potted plant with trailing vines spilling over the rim.",
 	},
 ];

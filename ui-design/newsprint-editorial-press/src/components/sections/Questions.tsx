@@ -3,7 +3,7 @@ import { Plus } from "lucide-react";
 import { Kicker } from "@/components/ui/Kicker";
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { cn } from "@/lib/utils";
-import plateEditor from "@/assets/original-visual.svg";
+const plateEditor = "field-1";
 
 const FAQS = [
 	{

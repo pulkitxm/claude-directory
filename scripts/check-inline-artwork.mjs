@@ -54,6 +54,7 @@ export function requiresInlineArtworkReview(path, text) {
 				text,
 			) ||
 			/<(?:svg|path)(?=[\s/:>])/i.test(text) ||
+			/\b(?:procedural-visual|sh-scene|sh-orbit|sh-light)\b/.test(text) ||
 			/data(?::|%3a)(?:image|font|video|audio)(?:\/|%2f)/i.test(text) ||
 			(/\bcreateElementNS\s*\(/.test(text) &&
 				(/http:\/\/www\.w3\.org\/2000\/svg/i.test(text) ||

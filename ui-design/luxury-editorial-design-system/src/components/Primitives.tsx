@@ -64,12 +64,7 @@ export function EditorialImage({
 				className,
 			].join(" ")}
 		>
-			<img
-				src={src}
-				alt={alt}
-				loading="lazy"
-				className="h-full w-full object-cover grayscale transition-all duration-[1500ms] ease-luxe group-hover:grayscale-0 group-hover:scale-105 reduce-motion-noscale"
-			/>
+			<div data-visual={src} aria-label={alt} data-loading="lazy" className={["procedural-visual", "h-full w-full object-cover grayscale transition-all duration-[1500ms] ease-luxe group-hover:grayscale-0 group-hover:scale-105 reduce-motion-noscale"].join(" ")} role="img" />
 			{}
 			<span
 				aria-hidden

@@ -2,10 +2,10 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Kicker } from "@/components/ui/Kicker";
 import { Button } from "@/components/ui/Button";
-import plateSkyline from "@/assets/original-visual.svg";
-import plateGlobe from "@/assets/original-visual.svg";
-import plateTypecase from "@/assets/original-visual.svg";
-import plateQuill from "@/assets/original-visual.svg";
+const plateSkyline = "field-1";
+const plateGlobe = "field-1";
+const plateTypecase = "field-1";
+const plateQuill = "field-1";
 
 interface Dispatch {
 	img: string;
@@ -95,13 +95,7 @@ export function Dispatches() {
 						className="block overflow-hidden border-b border-ink lg:col-span-7 lg:border-b-0 lg:border-r"
 						aria-label={lead.title}
 					>
-						<img
-							src={lead.img}
-							alt={lead.alt}
-							loading="lazy"
-							decoding="async"
-							className="editorial-photo aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-						/>
+						<div data-visual={lead.img} aria-label={lead.alt} data-loading="lazy" data-decoding="async" className={["procedural-visual", "editorial-photo aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"].join(" ")} role="img" />
 					</a>
 					<div className="flex flex-col justify-between gap-6 p-7 lg:col-span-5 lg:p-10">
 						<div>
@@ -145,13 +139,7 @@ export function Dispatches() {
 								className="block overflow-hidden border-b border-ink"
 								aria-label={d.title}
 							>
-								<img
-									src={d.img}
-									alt={d.alt}
-									loading="lazy"
-									decoding="async"
-									className="editorial-photo aspect-[16/9] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
-								/>
+								<div data-visual={d.img} aria-label={d.alt} data-loading="lazy" data-decoding="async" className={["procedural-visual", "editorial-photo aspect-[16/9] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"].join(" ")} role="img" />
 							</a>
 							<div className="flex flex-1 flex-col p-6">
 								<span className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-editorial">

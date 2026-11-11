@@ -29,9 +29,9 @@
       const set = `
         <div class="ticker__set">
           <span class="ticker__txt">${it.label}</span>
-          <img class="ticker__img" src="original-visual.svg" alt="Original abstract geometric study" />
+          <div role="img" class="ticker__img procedural-visual" data-visual="field-2" aria-label="Original abstract geometric study" ></div>
           <span class="ticker__txt">${it.label}</span>
-          <img class="ticker__img" src="original-visual.svg" alt="Original abstract geometric study" />
+          <div role="img" class="ticker__img procedural-visual" data-visual="field-3" aria-label="Original abstract geometric study" ></div>
         </div>`;
       row.innerHTML = `
         <span class="menu-row__label">

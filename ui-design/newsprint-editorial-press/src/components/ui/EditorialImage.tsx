@@ -22,16 +22,10 @@ export function EditorialImage({
 		<figure className={cn("group/photo", className)}>
 			<div className="relative overflow-hidden border border-ink bg-divider">
 				<div aria-hidden className="halftone absolute inset-0 opacity-25" />
-				<img
-					src={src}
-					alt={alt}
-					loading={loading}
-					decoding="async"
-					className={cn(
+				<div data-visual={src} aria-label={alt} data-loading={loading} data-decoding="async" className={["procedural-visual", cn(
 						"editorial-photo relative block h-full w-full object-cover",
 						imgClassName,
-					)}
-				/>
+					)].join(" ")} role="img" />
 			</div>
 			{(fig || caption) && (
 				<figcaption className="mt-2 flex items-baseline gap-2 border-t border-ink/30 pt-2">
