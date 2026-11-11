@@ -1,6 +1,6 @@
 # ui-design
 
-30 independently reviewed experiments. See the root [audit](../IP_AUDIT_REPORT.md) and [provenance](../ASSET_PROVENANCE.md).
+31 reviewed experiments. See the root [audit](../IP_AUDIT_REPORT.md) and [provenance](../ASSET_PROVENANCE.md).
 
 - [academia-classical-showcase](./academia-classical-showcase/)
 - [aperture-minimalist-dark](./aperture-minimalist-dark/)
@@ -11,6 +11,7 @@
 - [bold-typography-design-system](./bold-typography-design-system/)
 - [botanical-organic-serif](./botanical-organic-serif/)
 - [clay-design-system](./clay-design-system/)
+- [copy-machine-setup](./copy-machine-setup/)
 - [corporate-trust-design-system](./corporate-trust-design-system/)
 - [cyberpunk-glitch-design-system](./cyberpunk-glitch-design-system/)
 - [flatline-design-system](./flatline-design-system/)

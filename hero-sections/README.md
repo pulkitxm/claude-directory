@@ -1,6 +1,6 @@
 # hero-sections
 
-5 independently reviewed experiments. See the root [audit](../IP_AUDIT_REPORT.md) and [provenance](../ASSET_PROVENANCE.md).
+5 reviewed experiments. See the root [audit](../IP_AUDIT_REPORT.md) and [provenance](../ASSET_PROVENANCE.md).
 
 - [altitude-index-h38](./altitude-index-h38/)
 - [helix-vault-h55](./helix-vault-h55/)
