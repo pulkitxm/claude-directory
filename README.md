@@ -2,7 +2,7 @@
 
 A collection of AI-assisted design experiments and useful starting points for developers. Commercial template recreations and disputed assets have been withdrawn from the current tree. This repository does not redistribute paid templates.
 
-The current catalog contains **135 projects** with reviewed source and authorized assets. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
+The current catalog contains **136 projects** with reviewed source and authorized assets. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
 
 Run `make compliance`, `make test`, and `make build`. The builder publishes only projects listed in `compliance/projects.json`; it does not archive the repository. Publishing requires a reviewed manual workflow dispatch.
 
@@ -131,7 +131,7 @@ Run `make compliance`, `make test`, and `make build`. The builder publishes only
 - [synapse-design-system](./templates/synapse-design-system/)
 - [vertical-clip-text-slide](./templates/vertical-clip-text-slide/)
 
-## ui-design (31)
+## ui-design (32)
 
 - [academia-classical-showcase](./ui-design/academia-classical-showcase/)
 - [aperture-minimalist-dark](./ui-design/aperture-minimalist-dark/)
@@ -142,6 +142,7 @@ Run `make compliance`, `make test`, and `make build`. The builder publishes only
 - [bold-typography-design-system](./ui-design/bold-typography-design-system/)
 - [botanical-organic-serif](./ui-design/botanical-organic-serif/)
 - [clay-design-system](./ui-design/clay-design-system/)
+- [copy-machine-pixel-perfect](./ui-design/copy-machine-pixel-perfect/)
 - [copy-machine-setup](./ui-design/copy-machine-setup/)
 - [corporate-trust-design-system](./ui-design/corporate-trust-design-system/)
 - [cyberpunk-glitch-design-system](./ui-design/cyberpunk-glitch-design-system/)

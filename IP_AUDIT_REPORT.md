@@ -4,7 +4,7 @@ Audit date: 2026-11-11. Baseline: `f3d7e12f34bf7d90130dce3ec3b26cf69c29794e`. In
 
 ## Outcome
 
-135 projects retained after reviewed source and asset remediation; 411 projects removed from current distribution, including all 199 premium recreations across 10 vendors. Initial classifications: 202 HIGH RISK, 343 MEDIUM RISK, 1 LOW RISK. Retained projects have a LOW RISK engineering assessment after cleanup, subject to the limitations below. Removed projects keep their original risk classification for review.
+136 projects retained after reviewed source and asset remediation; 410 projects removed from current distribution, including all 199 premium recreations across 10 vendors. Initial classifications: 202 HIGH RISK, 343 MEDIUM RISK, 1 LOW RISK. Retained projects have a LOW RISK engineering assessment after cleanup, subject to the limitations below. Removed projects keep their original risk classification for review.
 
 The owner approved publication, squash merges and completion of the managed deployments. PRs [1390](https://github.com/pulkitxm/claude-directory/pull/1390), [141](https://github.com/pulkitxm/pulkit.page/pull/141) and [3](https://github.com/pulkitxm/claude-directory-ppt/pull/3) were squash merged through Pukbot with their review branches deleted. Fresh managed-site deployments succeeded. Published history rewriting, force-pushes and historical artifact deletion were not performed. Do not publish the baseline or backup as evidence.
 
@@ -46,7 +46,7 @@ The owner prioritized current-repository verification before portfolio restorati
 
 The follow-up re-reviewed all216 removed projects outside the premium directory using original baseline documents, implementation and asset hashes, and primary licensing sources. Fourteen conditional restoration candidates were identified: five small independent UI/interaction experiments, six licensed shader integrations, and three integrations of upstream MIT components. The other202 remain withheld because precise code, design, or asset grants are missing or restrictive. A nonpremium folder name, a permissive framework dependency, or free preview access does not establish a right to redistribute a complete template.
 
-The complete decisions are in [compliance/nonpremium-review.json](compliance/nonpremium-review.json), with separate source/licensing records in compliance/nonpremium-reviews/. 4 of those candidates have completed source, asset, license and functionality verification and are included in this review branch. Remaining candidates stay outside the catalog until cleanup and verification finish. Live publication is recorded separately in compliance/restored-projects.json. No paid template is being rebuilt from its former reference. This re-review does not authorize historical rewriting or public removal requests to other repository owners.
+The complete decisions are in [compliance/nonpremium-review.json](compliance/nonpremium-review.json), with separate source/licensing records in compliance/nonpremium-reviews/. 5 of those candidates have completed source, asset, license and functionality verification and are included in this review branch. Remaining candidates stay outside the catalog until cleanup and verification finish. Live publication is recorded separately in compliance/restored-projects.json. No paid template is being rebuilt from its former reference. This re-review does not authorize historical rewriting or public removal requests to other repository owners.
 
 ## Remaining review and limits
 
@@ -592,7 +592,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `ui-design/bold-typography-design-system` | MEDIUM RISK | retained after asset remediation |
 | `ui-design/botanical-organic-serif` | MEDIUM RISK | retained after asset remediation |
 | `ui-design/clay-design-system` | MEDIUM RISK | retained after asset remediation |
-| `ui-design/copy-machine-pixel-perfect` | MEDIUM RISK | removed from current distribution |
+| `ui-design/copy-machine-pixel-perfect` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `ui-design/copy-machine-setup` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `ui-design/corporate-trust-design-system` | MEDIUM RISK | retained after asset remediation |
 | `ui-design/cyberpunk-glitch-design-system` | MEDIUM RISK | retained after asset remediation |
