@@ -1,10 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/**
- * SectionLabel — the consistent pill badge that opens every major section.
- * Accent dot (optionally pulsing) + uppercase mono text. Supports a dark
- * variant for use on the inverted slate sections.
- */
+
 export function SectionLabel({
 	children,
 	pulse = false,

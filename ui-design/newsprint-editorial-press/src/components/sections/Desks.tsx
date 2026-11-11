@@ -30,7 +30,7 @@ const DESKS: Desk[] = [
 	{
 		icon: Columns3,
 		name: "Layout & Setting",
-		body: "A strict twelve-column grid in cold metal type. Zero radius, visible rules, collapsed borders — the page as a printed object.",
+		body: "A strict twelve-column grid in cold metal type. Zero radius, visible rules, collapsed borders ,  the page as a printed object.",
 	},
 	{
 		icon: ShieldCheck,
@@ -49,12 +49,7 @@ const DESKS: Desk[] = [
 	},
 ];
 
-/**
- * The Desks: a six-up feature grid built as a collapsed newspaper column
- * matrix. Bordered icon boxes invert black/white on hover; each cell warms to
- * grey. Vertical rules persist on desktop and dissolve to horizontal rules on
- * mobile, exactly as the responsive strategy prescribes.
- */
+
 export function Desks() {
 	return (
 		<section

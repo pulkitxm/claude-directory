@@ -3,9 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*  Reveal — a quiet scroll-in for blocks of content                          */
-/* -------------------------------------------------------------------------- */
+
+
+
 const revealVariants: Variants = {
 	hidden: { opacity: 0, y: 18 },
 	show: {
@@ -36,7 +36,7 @@ export function Reveal({
 	);
 }
 
-/* stagger container for grids / lists */
+
 export const staggerParent: Variants = {
 	hidden: {},
 	show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
@@ -51,9 +51,9 @@ export const staggerChild: Variants = {
 	},
 };
 
-/* -------------------------------------------------------------------------- */
-/*  Section — consistent rhythm + a max width                                 */
-/* -------------------------------------------------------------------------- */
+
+
+
 export function Section({
 	id,
 	children,
@@ -70,10 +70,10 @@ export function Section({
 	);
 }
 
-/* -------------------------------------------------------------------------- */
-/*  Eyebrow — mono label + a growing rule. Encodes section order as a marker  */
-/*  only where the page is genuinely sequential.                              */
-/* -------------------------------------------------------------------------- */
+
+
+
+
 export function Eyebrow({
 	children,
 	marker,
@@ -101,9 +101,9 @@ export function Eyebrow({
 	);
 }
 
-/* -------------------------------------------------------------------------- */
-/*  Button — three intents, all tuned to the tide palette                     */
-/* -------------------------------------------------------------------------- */
+
+
+
 type ButtonProps = {
 	children: ReactNode;
 	variant?: "primary" | "ghost" | "link";

@@ -31,7 +31,7 @@ export function Testimonials() {
 										: "lg:col-start-9",
 							].join(" ")}
 						>
-							{/* Stars — scale up on card hover */}
+							{}
 							<div className="flex gap-1">
 								{Array.from({ length: 5 }).map((_, s) => (
 									<Star

@@ -9,10 +9,7 @@ import {
 	display,
 } from "./primitives";
 
-/* A 50/50 split. Left: copy + benefit pills that lift on hover. Right: an
-   ABSTRACT 3D composition of nested clay shapes (a recessed tray cradling a
-   stack of convex tablets) — the system's "product detail" pattern, no image.
-   Stacks vertically on mobile, side-by-side on desktop. */
+
 
 const BENEFITS = [
 	{
@@ -25,7 +22,7 @@ const BENEFITS = [
 		icon: <Feather size={22} />,
 		hue: "sky" as const,
 		title: "Featherweight motion",
-		body: "Pure CSS keyframes and transforms — buttery on mobile, with a reduced-motion off-switch.",
+		body: "Pure CSS keyframes and transforms ,  buttery on mobile, with a reduced-motion off-switch.",
 	},
 	{
 		icon: <Sparkles size={22} />,
@@ -40,7 +37,7 @@ export function Benefits() {
 		<section id="benefits" className="py-16 sm:py-24">
 			<Shell>
 				<div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-					{/* ---- Copy + pills ---- */}
+					{}
 					<Reveal>
 						<div>
 							<Eyebrow>Why clay</Eyebrow>
@@ -53,7 +50,7 @@ export function Benefits() {
 							</h2>
 							<p className="mt-5 max-w-xl text-lg leading-relaxed text-clay-muted">
 								Most "soft UI" feels like flat vector art. Claymakers commits to
-								the bit — real multi-layer lighting that makes the screen feel
+								the bit ,  real multi-layer lighting that makes the screen feel
 								like a tray of premium silicone toys.
 							</p>
 
@@ -90,7 +87,7 @@ export function Benefits() {
 						</div>
 					</Reveal>
 
-					{/* ---- Abstract clay composition ---- */}
+					{}
 					<Reveal delay={120}>
 						<BenefitComposition />
 					</Reveal>
@@ -111,10 +108,10 @@ function tablet(hue: string, tint: string): CSSProperties {
 function BenefitComposition() {
 	return (
 		<div className="relative mx-auto aspect-[5/4] w-full max-w-[520px]">
-			{/* recessed tray */}
+			{}
 			<div className="absolute inset-0 rounded-[52px] clay-tray shadow-clay-deep" />
 
-			{/* a fanned stack of convex clay tablets */}
+			{}
 			<div
 				className="absolute left-[14%] top-[18%] h-[36%] w-[58%] -rotate-6 rounded-[28px] shadow-clay-orb"
 				style={tablet(
@@ -146,7 +143,7 @@ function BenefitComposition() {
 				</div>
 			</div>
 
-			{/* floating satellite orbs */}
+			{}
 			<div
 				className="absolute -right-3 top-6 h-16 w-16 animate-clay-float rounded-full shadow-clay-orb"
 				style={tablet(

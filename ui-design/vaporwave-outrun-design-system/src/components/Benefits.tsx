@@ -31,7 +31,7 @@ const FILES: FileEntry[] = [
 		name: "primitives.tsx",
 		size: "8.8K",
 		title: "Composable by design",
-		desc: "Buttons, cards, windows, fields and the diamond icon are reusable primitives — duplication-free, idiomatic React.",
+		desc: "Buttons, cards, windows, fields and the diamond icon are reusable primitives ,  duplication-free, idiomatic React.",
 	},
 	{
 		icon: FileText,
@@ -78,7 +78,7 @@ export function Benefits() {
 						}
 					>
 						<div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr]">
-							{/* file list */}
+							{}
 							<ul className="border-b-2 border-[var(--color-chrome)]/10 md:border-b-0 md:border-r-2">
 								{FILES.map((f, i) => {
 									const selected = i === active;
@@ -112,7 +112,7 @@ export function Benefits() {
 								})}
 							</ul>
 
-							{/* preview pane */}
+							{}
 							<div className="dots min-h-[16rem] p-7">
 								<div className="font-mono text-xs uppercase tracking-widest text-[var(--color-magenta)]">
 									&gt; cat {current.name}

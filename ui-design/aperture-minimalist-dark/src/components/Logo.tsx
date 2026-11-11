@@ -1,10 +1,6 @@
 import { cn } from "../lib/cn";
 
-/**
- * Aperture mark — a stylised camera iris. Six blades rotate around a warm
- * amber core, echoing the product name and the "light through darkness" idea.
- * Pure inline SVG so it stays crisp at any size and ships with the bundle.
- */
+
 export function Logo({ className }: { className?: string }) {
 	return (
 		<svg
@@ -20,7 +16,7 @@ export function Logo({ className }: { className?: string }) {
 					<stop offset="100%" stopColor="#b45309" />
 				</radialGradient>
 			</defs>
-			{/* outer ring */}
+			{}
 			<circle
 				cx="16"
 				cy="16"
@@ -28,7 +24,7 @@ export function Logo({ className }: { className?: string }) {
 				stroke="rgba(255,255,255,0.18)"
 				strokeWidth="1.4"
 			/>
-			{/* iris blades */}
+			{}
 			<g
 				stroke="#f59e0b"
 				strokeWidth="1.6"
@@ -40,7 +36,7 @@ export function Logo({ className }: { className?: string }) {
 				<path d="M16 27 L7.5 22 L11 16 Z" />
 				<path d="M5 16 L7.5 7 L14 10 Z" />
 			</g>
-			{/* glowing core */}
+			{}
 			<circle cx="16" cy="16" r="4.4" fill="url(#ap-core)" />
 			<circle
 				cx="16"

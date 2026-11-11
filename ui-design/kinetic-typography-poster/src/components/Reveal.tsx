@@ -5,15 +5,11 @@ import { usePrefersReducedMotion } from "../hooks";
 type RevealProps = {
 	children: ReactNode;
 	className?: string;
-	/** Stagger offset in seconds. */
+
 	delay?: number;
 };
 
-/**
- * Entrance wrapper: elements scale up from 0.92 and unmask (clip-path) as they
- * enter the viewport — a snappy, poster-like "stamp in" rather than a gentle
- * fade. Honours reduced motion by rendering children with no animation.
- */
+
 export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
 	const reduced = usePrefersReducedMotion();
 

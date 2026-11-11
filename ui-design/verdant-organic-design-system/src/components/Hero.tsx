@@ -6,12 +6,7 @@ import { HeroBotanical } from "./Botanical";
 import { Button } from "./Button";
 import { Eyebrow } from "./Eyebrow";
 
-/**
- * Above-the-fold hero. Two drifting blurred blobs wash the page in moss and
- * clay; a staggered blur-up cascade brings in the eyebrow, headline, copy and
- * CTAs; the foraged-jar illustration floats on the right inside its own soft
- * blob frame with a slow sway.
- */
+
 export function Hero() {
 	const reduced = useReducedMotion();
 
@@ -38,7 +33,7 @@ export function Hero() {
 			id="top"
 			className="relative overflow-hidden px-4 pb-24 pt-16 sm:px-6 sm:pt-20 lg:px-8"
 		>
-			{/* ambient blobs */}
+			{}
 			<Blob
 				shape={1}
 				color="bg-primary/20"
@@ -59,7 +54,7 @@ export function Hero() {
 			/>
 
 			<div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-8">
-				{/* copy column */}
+				{}
 				<motion.div
 					variants={container}
 					initial="hidden"
@@ -105,7 +100,7 @@ export function Hero() {
 						className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground lg:mx-0"
 					>
 						Verdant is a tiny apothecary of hand-foraged, slowly cured botanical
-						blends — built around feelings, not flavour charts. Steeped for
+						blends ,  built around feelings, not flavour charts. Steeped for
 						stillness, packed in paper, planted back into the earth.
 					</motion.p>
 
@@ -125,7 +120,7 @@ export function Hero() {
 						</Button>
 					</motion.div>
 
-					{/* trust strip */}
+					{}
 					<motion.div
 						variants={item}
 						className="mt-9 flex flex-col items-center gap-4 sm:flex-row lg:justify-start"
@@ -159,7 +154,7 @@ export function Hero() {
 					</motion.div>
 				</motion.div>
 
-				{/* illustration column */}
+				{}
 				<motion.div
 					initial={
 						reduced ? false : { opacity: 0, scale: 0.92, filter: "blur(10px)" }
@@ -168,13 +163,13 @@ export function Hero() {
 					transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
 					className="relative mx-auto w-full max-w-md"
 				>
-					{/* soft blob frame behind */}
+					{}
 					<div className="absolute inset-4 -z-10 bg-card shadow-float blob-1" />
 					<div className={`relative ${reduced ? "" : "animate-sway"}`}>
 						<HeroBotanical className="h-auto w-full drop-shadow-[0_18px_40px_rgba(93,112,82,0.18)]" />
 					</div>
 
-					{/* floating spec chips */}
+					{}
 					<div className="absolute -left-2 top-10 rounded-2xl border border-border/60 bg-card/90 px-4 py-2.5 shadow-soft backdrop-blur-sm sm:-left-6">
 						<p className="text-xs font-bold uppercase tracking-wider text-secondary">
 							Whole leaf

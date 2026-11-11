@@ -7,7 +7,7 @@ type Msg = {
 	text: string;
 };
 
-/* IRC-style chat log: <username> angle-bracket syntax, monospace, timestamps. */
+
 const MESSAGES: Msg[] = [
 	{
 		user: "synthlord_88",
@@ -62,7 +62,7 @@ export function Testimonials() {
 								<i className="bg-[var(--color-orange)]" />
 							</div>
 							<span className="font-mono text-xs uppercase tracking-widest text-[var(--color-cyan)]">
-								irc://relay.grid/#neonwave-os
+								#neonwave-os
 							</span>
 						</div>
 
@@ -84,7 +84,7 @@ export function Testimonials() {
 									</span>
 								</Reveal>
 							))}
-							{/* live input line */}
+							{}
 							<div className="mt-3 flex items-baseline gap-2 border-t border-[var(--color-cyan)]/20 pt-3 text-[var(--color-chrome)]/60">
 								<span className="text-[var(--color-orange)]">&lt;you&gt;</span>
 								<span className="cursor">type to join the channel</span>

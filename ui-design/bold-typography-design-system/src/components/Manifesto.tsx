@@ -2,7 +2,7 @@ import { manifesto } from "../data/content";
 import { Reveal, RevealGroup, RevealItem, SectionLabel } from "./Primitives";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Manifesto — an asymmetric 5/7 editorial split. The left rail is a label and a
+// Manifesto ,  an asymmetric 5/7 editorial split. The left rail is a label and a
 // big layered numeral (depth via an offset duplicate in border color, not a
 // shadow). The right column carries the load-bearing statement and body copy
 // constrained to a readable measure.
@@ -15,10 +15,10 @@ export function Manifesto() {
 			className="border-b border-border py-20 md:py-28 lg:py-32"
 		>
 			<div className="container-bold grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
-				{/* Left rail */}
+				{}
 				<Reveal className="lg:col-span-4">
 					<SectionLabel>{manifesto.kicker}</SectionLabel>
-					{/* Layered-text depth: the duplicate <span class="layer"> sits 2px behind */}
+					{}
 					<div className="layered-text mt-8 select-none">
 						<span
 							aria-hidden
@@ -32,7 +32,7 @@ export function Manifesto() {
 					</div>
 				</Reveal>
 
-				{/* Right column */}
+				{}
 				<div className="lg:col-span-7 lg:col-start-6">
 					<Reveal>
 						<h2 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl">

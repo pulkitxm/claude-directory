@@ -2,11 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import type { ButtonHTMLAttributes, ReactNode, Ref } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * AURUM button. Pill-shaped (rounded-full) and emits colored light — the
- * signature crypto CTA. Primary fills with the Burnt → Bitcoin gradient and
- * throws an orange glow; outline/ghost/link stay minimal until hovered.
- */
+
 const button = cva(
 	"group/btn inline-flex min-h-[44px] select-none items-center justify-center gap-2 rounded-full font-body font-semibold uppercase tracking-wider transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-void disabled:pointer-events-none disabled:opacity-50",
 	{

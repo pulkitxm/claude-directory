@@ -6,11 +6,7 @@ import { nav } from "../lib/content";
 import { Button } from "./Button";
 import { Logo } from "./Logo";
 
-/**
- * Sticky floating pill navigation with glassmorphism. The bar detaches slightly
- * from the top and frosts the content scrolling beneath it. On mobile it
- * collapses to a hamburger that opens an organically-rounded dropdown panel.
- */
+
 export function Navbar() {
 	const [open, setOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
@@ -40,7 +36,7 @@ export function Navbar() {
 			>
 				<Logo />
 
-				{/* desktop links */}
+				{}
 				<ul className="hidden items-center gap-1 md:flex">
 					{nav.map((item) => (
 						<li key={item.href}>
@@ -72,7 +68,7 @@ export function Navbar() {
 				</div>
 			</nav>
 
-			{/* mobile dropdown */}
+			{}
 			<AnimatePresence>
 				{open && (
 					<motion.div

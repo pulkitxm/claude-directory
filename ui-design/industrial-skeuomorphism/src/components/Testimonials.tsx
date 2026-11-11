@@ -18,7 +18,7 @@ const NOTES: Note[] = [
 			"We retrofitted SCHEMATIC onto a 30-year-old stamping line in a weekend. The e-stop interlocks alone paid for the year.",
 		name: "Marisol Vega",
 		role: "Plant Engineer · Northgate Robotics",
-		avatar: "./assets/avatar-op-01.svg",
+		avatar: "./assets/original-visual.svg",
 		tag: "LOG #2241",
 		tilt: "-rotate-1",
 	},
@@ -27,16 +27,16 @@ const NOTES: Note[] = [
 			"The deck feels like real hardware. My operators trust the knobs because they behave like the machines they've run for years.",
 		name: "Daniel Okafor",
 		role: "Ops Lead · Omni-Fab",
-		avatar: "./assets/avatar-op-02.svg",
+		avatar: "./assets/original-visual.svg",
 		tag: "LOG #1907",
 		tilt: "rotate-1",
 	},
 	{
 		quote:
-			"Wave rollouts changed how we ship firmware. We watch each cell confirm before the next goes live — zero floor-wide outages since.",
+			"Wave rollouts changed how we ship firmware. We watch each cell confirm before the next goes live ,  zero floor-wide outages since.",
 		name: "Hannah Lindqvist",
 		role: "Reliability · Helios Power",
-		avatar: "./assets/avatar-op-03.svg",
+		avatar: "./assets/original-visual.svg",
 		tag: "LOG #3102",
 		tilt: "-rotate-1",
 	},
@@ -50,7 +50,7 @@ export function Testimonials() {
 					eyebrow="FIELD NOTES"
 					tone="warning"
 					title="Pinned up by the people on the floor"
-					lede="Real reports from the engineers running SCHEMATIC on live lines — straight off the maintenance board."
+					lede="Real reports from the engineers running SCHEMATIC on live lines ,  straight off the maintenance board."
 				/>
 
 				<motion.ul
@@ -66,7 +66,7 @@ export function Testimonials() {
 							variants={slideUp}
 							className={cx("relative", n.tilt)}
 						>
-							{/* red push-pin */}
+							{}
 							<span
 								aria-hidden="true"
 								className="absolute left-1/2 top-1 z-20 h-5 w-5 -translate-x-1/2 rounded-full"
@@ -84,7 +84,7 @@ export function Testimonials() {
 								hover
 								className="flex h-full flex-col p-7 pt-9"
 							>
-								{/* masking-tape label */}
+								{}
 								<span
 									aria-hidden="true"
 									className="absolute -right-2 top-5 -skew-x-12 px-3 py-1 backdrop-blur-sm"

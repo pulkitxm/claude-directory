@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "../data/content";
 
-/* ---- Paper-grain noise overlay: fixed, full-viewport, ~2%, z-50 --------- */
+
 export function GrainOverlay() {
 	return (
 		<div
@@ -12,9 +12,7 @@ export function GrainOverlay() {
 	);
 }
 
-/* ---- Four visible vertical gridlines at column boundaries (desktop) -----
-   Positioned to match the max-w-[1600px] container's px-16 edges and the
-   middle thirds. Fixed, full-height, low opacity, pointer-events disabled. */
+
 export function GridLines() {
 	// Percentages chosen to read as an editorial 12-col frame.
 	const positions = ["16.6%", "38.2%", "61.8%", "83.4%"];
@@ -36,7 +34,7 @@ export function GridLines() {
 	);
 }
 
-/* ---- Editorial navbar — thin, monogram left, links right ---------------- */
+
 export function Navbar() {
 	const [open, setOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
@@ -96,7 +94,7 @@ export function Navbar() {
 				</button>
 			</nav>
 
-			{/* Mobile drawer */}
+			{}
 			{open && (
 				<div className="border-t border-foreground/10 bg-background/95 backdrop-blur-md md:hidden">
 					<ul className="flex flex-col px-8 py-6">

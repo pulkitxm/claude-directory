@@ -1,9 +1,6 @@
 import { TICKER_ITEMS } from "@/data/content";
 
-/**
- * Live-data ticker — a seamless scrolling marquee bounded by subtle top/bottom
- * borders (the design system's preferred section divider). Pauses on hover.
- */
+
 export function Ticker() {
 	// Duplicate the list so the -50% translate loops seamlessly.
 	const items = [...TICKER_ITEMS, ...TICKER_ITEMS];

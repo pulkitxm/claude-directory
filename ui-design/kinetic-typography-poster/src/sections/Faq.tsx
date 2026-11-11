@@ -33,7 +33,7 @@ function FaqItem({
 					<span className="font-bold uppercase tracking-tighter text-bone transition-colors duration-300 group-hover:text-acid-foreground text-xl md:text-3xl lg:text-4xl">
 						{q}
 					</span>
-					{/* Plus/minus mark — rotates to an × when open. */}
+					{}
 					<span
 						aria-hidden="true"
 						className={[
@@ -47,10 +47,7 @@ function FaqItem({
 				</button>
 			</h3>
 
-			{/* The region wrapper stays mounted so the button's aria-controls
-			    always resolves to a real element; AnimatePresence animates the
-			    inner content in/out (preserving the spring exit on close). When
-			    collapsed the region is simply empty. */}
+			{}
 			<div id={panelId} role="region" aria-labelledby={btnId}>
 				<AnimatePresence initial={false}>
 					{open && (
@@ -77,14 +74,7 @@ function FaqItem({
 	);
 }
 
-/**
- * Accordion FAQ. At most one panel is open at a time — opening a row closes any
- * other, and clicking the open row collapses it (all-closed is allowed). Full
- * keyboard support (each header is a real <button>, so Enter/Space toggle
- * natively), with aria-expanded / aria-controls wiring so screen readers
- * announce state. Spring-driven height/opacity, initial={false} so nothing
- * animates on mount.
- */
+
 export function Faq() {
 	const [openIndex, setOpenIndex] = useState<number>(0);
 

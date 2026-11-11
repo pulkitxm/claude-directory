@@ -3,8 +3,7 @@ import { TESTIMONIALS } from "../content";
 import { Marquee } from "../components/Marquee";
 import { SectionLabel } from "../components/Section";
 
-/* A testimonials carousel built on the marquee — rotated quote cards scrolling
-   right, each on a different token background. Five-star rows up top. */
+
 export function Testimonials() {
 	return (
 		<section className="neo-noise relative overflow-hidden border-b-4 border-neo-ink bg-neo-bg">

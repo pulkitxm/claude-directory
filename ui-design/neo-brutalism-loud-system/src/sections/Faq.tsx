@@ -3,10 +3,7 @@ import { Plus } from "lucide-react";
 import { FAQS } from "../content";
 import { SectionLabel } from "../components/Section";
 
-/* Single-open accordion with full ARIA wiring: each trigger is a real <button>
-   with aria-expanded + aria-controls pointing at a region that stays mounted
-   (so no dangling idrefs). The plus icon rotates 45deg into an X when open.
-   Opening one row closes the previously open one. The first row is open. */
+
 export function Faq() {
 	const [open, setOpen] = useState(0);
 	const baseId = useId();

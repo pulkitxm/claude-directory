@@ -14,7 +14,7 @@ export function Faq() {
 		>
 			<div className="mx-auto max-w-[1600px] px-8 md:px-16">
 				<div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-					{/* Heading column — offset, asymmetric */}
+					{}
 					<div className="lg:col-span-4 lg:col-start-1">
 						<Overline>Enquiries</Overline>
 						<h2 className="mt-8 font-serif text-4xl font-normal leading-[0.95] tracking-tight text-foreground sm:text-5xl md:text-6xl">
@@ -28,7 +28,7 @@ export function Faq() {
 						</p>
 					</div>
 
-					{/* Accordion column */}
+					{}
 					<div className="lg:col-span-7 lg:col-start-6">
 						<ul className="border-t border-foreground/15">
 							{faqs.map((item) => {
@@ -56,7 +56,7 @@ export function Faq() {
 												>
 													{item.question}
 												</span>
-												{/* Icon square: rotates 90°, border turns gold on open */}
+												{}
 												<span
 													aria-hidden
 													className={[

@@ -6,12 +6,7 @@ import type {
 import { motion } from "motion/react";
 import { fadeUp, reveal } from "../lib/motion";
 
-/* ============================================================================
-   PRIMITIVES
-   Small, composable building blocks shared by every section. Keeping these in
-   one place means the flat-design rules (no shadow, geometric purity, color
-   blocking) are expressed once and reused — no one-off styles downstream.
-   ========================================================================== */
+
 
 type Tone = "light" | "fog" | "brand" | "grass" | "sun" | "ink";
 
@@ -24,8 +19,7 @@ const toneBg: Record<Tone, string> = {
 	ink: "bg-[var(--color-ink)] text-white on-dark",
 };
 
-/* A full-width color-blocked section. Tone sets the solid background — color,
-   never lines or shadows, separates sections. */
+
 export function Section({
 	id,
 	tone = "light",
@@ -47,7 +41,7 @@ export function Section({
 	);
 }
 
-/* Constrained 12-col grid container (max-w-7xl). */
+
 export function Shell({
 	className = "",
 	children,
@@ -58,7 +52,7 @@ export function Shell({
 	return <div className={`shell ${className}`}>{children}</div>;
 }
 
-/* Uppercase tracked eyebrow. Pass a text-color class to tint it. */
+
 export function Eyebrow({
 	children,
 	className = "",
@@ -69,10 +63,8 @@ export function Eyebrow({
 	return <span className={`eyebrow ${className}`}>{children}</span>;
 }
 
-/* ---- Decorative geometry ------------------------------------------------- */
-/* Large flat shapes positioned absolutely for the "poster" look. They carry
-   visual interest with zero depth — no blur, no shadow, just solid form at
-   low opacity or solid color. */
+
+
 
 export function Blob({ className = "" }: { className?: string }) {
 	return (
@@ -99,7 +91,7 @@ export function Square({
 	);
 }
 
-/* ---- Buttons (thin wrappers over the centralized .btn tokens) ----------- */
+
 type Variant =
 	| "primary"
 	| "secondary"
@@ -155,7 +147,7 @@ export function ButtonLink({
 	);
 }
 
-/* A scroll-revealed wrapper so sections animate in with one consistent motion. */
+
 export function Reveal({
 	children,
 	className = "",

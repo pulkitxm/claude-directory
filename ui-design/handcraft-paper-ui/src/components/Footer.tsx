@@ -24,7 +24,7 @@ export function Footer() {
 				<WavyDivider className="mb-12 text-ink/40" />
 
 				<div className="grid gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)]">
-					{/* brand */}
+					{}
 					<div>
 						<Logo />
 						<p className="mt-4 max-w-xs text-lg text-ink/70">
@@ -48,7 +48,7 @@ export function Footer() {
 						</div>
 					</div>
 
-					{/* link columns */}
+					{}
 					{COLUMNS.map((col) => (
 						<div key={col.heading}>
 							<h3 className="mb-4 inline-block font-[var(--font-marker)] text-xl text-ink underline-wavy">

@@ -3,23 +3,23 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Synapse — Futuristic Dark Design System</title>
+		<title>Synapse:  Futuristic Dark Design System</title>
 		<meta
 			name="description"
 			content="Synapse is a futuristic, dark-themed design system blending editorial typography, ambient light, and high-contrast neon accents."
 		>
-		<link rel="stylesheet" href="./assets/fonts.css">
+
 		<link rel="stylesheet" href="./assets/styles.css">
 	</head>
 	<body>
-		<!-- Ambient orbs -->
+
 		<div class="orbs" aria-hidden="true">
 			<span class="orb orb-1"></span>
 			<span class="orb orb-2"></span>
 			<span class="orb orb-3"></span>
 		</div>
 
-		<!-- Navigation pill -->
+
 		<nav class="nav">
 			<div class="nav-inner">
 				<a class="brand" href="#top">
@@ -36,7 +36,7 @@
 		</nav>
 
 		<main class="page" id="top">
-			<!-- Hero -->
+
 			<section class="hero">
 				<div class="container">
 					<span class="eyebrow reveal" data-d="0"
@@ -66,12 +66,12 @@
 				</div>
 			</section>
 
-			<!-- Metrics ticker -->
+
 			<div class="ticker" aria-hidden="true">
 				<div class="ticker-track" id="ticker"></div>
 			</div>
 
-			<!-- Feature grid -->
+
 			<section class="section" id="features">
 				<div class="container">
 					<div class="section-head reveal">
@@ -79,7 +79,7 @@
 						<h2>A system engineered for contrast and motion</h2>
 						<p>
 							Every surface, type pairing, and accent is tuned for a premium
-							high-tech feel — built on a vantablack foundation.
+							high-tech feel ,  built on a vantablack foundation.
 						</p>
 					</div>
 					<div class="grid">
@@ -162,7 +162,7 @@
 							</div>
 							<h3>Glass Surfaces</h3>
 							<p>
-								High-blur glassmorphism — 16px and above — keeps chrome legible
+								High-blur glassmorphism ,  16px and above ,  keeps chrome legible
 								even over bright ambient orbs.
 							</p>
 						</article>
@@ -212,15 +212,15 @@
 				</div>
 			</section>
 
-			<!-- Code integration block -->
+
 			<section class="section" id="code" style="padding-top:0">
 				<div class="container">
 					<div class="section-head reveal">
 						<span class="kicker">// Integration</span>
 						<h2>Drop the tokens straight into your stack</h2>
 						<p>
-							One config file defines the entire Synapse language — colors,
-							fonts, and motion — ready to consume.
+							One config file defines the entire Synapse language ,  colors,
+							fonts, and motion ,  ready to consume.
 						</p>
 					</div>
 
@@ -248,7 +248,7 @@
 						<pre
 							class="code"
 							id="codeBlock"
-						><span class="t-com">// Synapse design tokens — vantablack foundation</span>
+						><span class="t-com">// Synapse design tokens ,  vantablack foundation</span>
 <span class="t-kw">import</span> { <span class="t-cls">defineSystem</span> } <span class="t-kw">from</span> <span class="t-str">'@synapse/core'</span>
 
 <span class="t-kw">export const</span> <span class="t-fn">theme</span> = <span class="t-cls">defineSystem</span>({
@@ -272,7 +272,7 @@
 			</section>
 		</main>
 
-		<!-- Footer -->
+
 		<footer class="footer">
 			<div class="container">
 				<div class="footer-grid">
@@ -315,92 +315,76 @@
 		</footer>
 
 		<script>
-		(() => {
-			/* ----- Ticker ----- */
-			var pairs = [
-				["Components", "248", "white"],
-				["Uptime", "99.99%", "emerald"],
-				["Response", "12ms", "cyan"],
-				["Tokens", "1.2K", "violet"],
-				["Releases", "v2.0.4", "white"],
-				["Coverage", "98%", "emerald"],
-				["Adoption", "+340%", "violet"],
-				["Latency", "4ms", "cyan"],
-				["Bundles", "38KB", "white"],
-				["Stars", "24.8K", "violet"],
-			];
-			var track = document.getElementById("ticker");
-			function buildSet() {
-				var f = document.createDocumentFragment();
-				pairs.forEach((p) => {
-					var t = document.createElement("span");
-					t.className = "tick";
-					var l = document.createElement("span");
-					l.className = "lbl";
-					l.textContent = p[0];
-					var v = document.createElement("span");
-					v.className = `val v-${p[2]}`;
-					v.textContent = p[1];
-					t.appendChild(l);
-					t.appendChild(v);
-					f.appendChild(t);
-				});
-				return f;
-			}
-			track.appendChild(buildSet());
-			track.appendChild(buildSet()); // duplicate for seamless -50% loop
-
-			/* ----- Hero staggered entrance on load ----- */
-			var heroReveals = document.querySelectorAll(".hero .reveal");
-			var delays = { 0: 100, 1: 300, 2: 500, 4: 1000 };
-			requestAnimationFrame(() => {
-				heroReveals.forEach((el) => {
-					var d = delays[el.getAttribute("data-d")] || 0;
-					setTimeout(() => {
-						el.classList.add("in");
-					}, d);
-				});
-			});
-
-			/* ----- Scroll reveal for sections ----- */
-			var io = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((e) => {
-						if (e.isIntersecting) {
-							e.target.classList.add("in");
-							io.unobserve(e.target);
-						}
-					});
-				},
-				{ threshold: 0.15 },
-			);
-			document
-				.querySelectorAll(".section .reveal, .card.reveal")
-				.forEach((el, i) => {
-					el.style.transitionDelay = `${Math.min(i, 5) * 0.08}s`;
-					io.observe(el);
-				});
-
-			/* ----- Copy button ----- */
-			var btn = document.getElementById("copyBtn");
-			var code = document.getElementById("codeBlock");
-			btn.addEventListener("click", () => {
-				var txt = code.innerText;
-				var done = () => {
-					btn.classList.add("done");
-					btn.querySelector(".copy-txt").textContent = "Copied";
-					setTimeout(() => {
-						btn.classList.remove("done");
-						btn.querySelector(".copy-txt").textContent = "Copy";
-					}, 1800);
-				};
-				if (navigator.clipboard?.writeText) {
-					navigator.clipboard.writeText(txt).then(done).catch(done);
-				} else {
-					done();
-				}
-			});
-		})();
-		</script>
+(() => {
+  var pairs = [["Components", "248", "white"], ["Uptime", "99.99%", "emerald"], ["Response", "12ms", "cyan"], ["Tokens", "1.2K", "violet"], ["Releases", "v2.0.4", "white"], ["Coverage", "98%", "emerald"], ["Adoption", "+340%", "violet"], ["Latency", "4ms", "cyan"], ["Bundles", "38KB", "white"], ["Stars", "24.8K", "violet"]];
+  var track = document.getElementById("ticker");
+  function buildSet() {
+    var f = document.createDocumentFragment();
+    pairs.forEach(p => {
+      var t = document.createElement("span");
+      t.className = "tick";
+      var l = document.createElement("span");
+      l.className = "lbl";
+      l.textContent = p[0];
+      var v = document.createElement("span");
+      v.className = `val v-${p[2]}`;
+      v.textContent = p[1];
+      t.appendChild(l);
+      t.appendChild(v);
+      f.appendChild(t);
+    });
+    return f;
+  }
+  track.appendChild(buildSet());
+  track.appendChild(buildSet());
+  var heroReveals = document.querySelectorAll(".hero .reveal");
+  var delays = {
+    0: 100,
+    1: 300,
+    2: 500,
+    4: 1000
+  };
+  requestAnimationFrame(() => {
+    heroReveals.forEach(el => {
+      var d = delays[el.getAttribute("data-d")] || 0;
+      setTimeout(() => {
+        el.classList.add("in");
+      }, d);
+    });
+  });
+  var io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+  document.querySelectorAll(".section .reveal, .card.reveal").forEach((el, i) => {
+    el.style.transitionDelay = `${Math.min(i, 5) * 0.08}s`;
+    io.observe(el);
+  });
+  var btn = document.getElementById("copyBtn");
+  var code = document.getElementById("codeBlock");
+  btn.addEventListener("click", () => {
+    var txt = code.innerText;
+    var done = () => {
+      btn.classList.add("done");
+      btn.querySelector(".copy-txt").textContent = "Copied";
+      setTimeout(() => {
+        btn.classList.remove("done");
+        btn.querySelector(".copy-txt").textContent = "Copy";
+      }, 1800);
+    };
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(txt).then(done).catch(done);
+    } else {
+      done();
+    }
+  });
+})();
+</script>
 	</body>
 </html>

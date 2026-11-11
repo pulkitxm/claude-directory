@@ -1,8 +1,4 @@
-/* =============================================================================
-   DOPAMINE — interaction layer
-   Scroll-reveal · count-up · FAQ accordion · mobile drawer · newsletter form ·
-   seamless marquee. All motion respects prefers-reduced-motion.
-   ============================================================================= */
+
 (function () {
 	"use strict";
 
@@ -10,7 +6,7 @@
 		"(prefers-reduced-motion: reduce)",
 	).matches;
 
-	/* ------------------------------------------ seamless marquees ---------- */
+
 	// Duplicate the track content so the -50% keyframe loops with no gap.
 	document.querySelectorAll("[data-marquee]").forEach((track) => {
 		const item = track.firstElementChild;
@@ -20,7 +16,7 @@
 		track.appendChild(clone);
 	});
 
-	/* ------------------------------------------ scroll reveal -------------- */
+
 	const reveals = Array.from(document.querySelectorAll(".reveal"));
 	if (prefersReduced || !("IntersectionObserver" in window)) {
 		reveals.forEach((el) => el.classList.add("in"));
@@ -45,7 +41,7 @@
 		reveals.forEach((el) => io.observe(el));
 	}
 
-	/* ------------------------------------------ count-up stats ------------- */
+
 	const counters = Array.from(document.querySelectorAll("[data-count]"));
 	const runCount = (el) => {
 		const target = parseFloat(el.getAttribute("data-count")) || 0;
@@ -83,7 +79,7 @@
 		}
 	}
 
-	/* ------------------------------------------ FAQ accordion -------------- */
+
 	const faqButtons = Array.from(document.querySelectorAll(".faq-q"));
 	const setFaq = (btn, open) => {
 		btn.setAttribute("aria-expanded", String(open));
@@ -116,7 +112,7 @@
 		});
 	});
 
-	/* ------------------------------------------ mobile drawer -------------- */
+
 	const toggle = document.getElementById("navToggle");
 	const drawer = document.getElementById("drawer");
 	const drawerClose = document.getElementById("drawerClose");
@@ -149,7 +145,7 @@
 		});
 	}
 
-	/* ------------------------------------------ newsletter form ----------- */
+
 	const form = document.getElementById("ctaForm");
 	const msg = document.getElementById("ctaMsg");
 	if (form && msg) {
@@ -173,7 +169,7 @@
 		});
 	}
 
-	/* ------------------------------------------ nav active-link state ------ */
+
 	const navLinks = Array.from(document.querySelectorAll(".nav-link"));
 	const sections = navLinks
 		.map((l) => document.querySelector(l.getAttribute("href")))

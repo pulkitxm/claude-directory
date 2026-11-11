@@ -6,15 +6,15 @@ import type {
 } from "react";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Button — the system's primary interactive affordance is an underline, not a
+// Button ,  the system's primary interactive affordance is an underline, not a
 // fill. Three variants, three sizes, all sharp-cornered and uppercase. Renders
 // as <a> when `href` is present, otherwise <button>, so the same styling drives
 // nav links and form actions alike.
 //
 // Variants:
-//   primary  — accent text, animated underline grows scale-x-100 → 110 on hover
-//   outline  — 1px foreground border, full color inversion on hover
-//   ghost    — muted text → foreground, a thin (1px) underline scales 0 → 100
+//   primary  ,  accent text, animated underline grows scale-x-100 → 110 on hover
+//   outline  ,  1px foreground border, full color inversion on hover
+//   ghost    ,  muted text → foreground, a thin (1px) underline scales 0 → 100
 // ─────────────────────────────────────────────────────────────────────────────
 
 type Variant = "primary" | "outline" | "ghost";

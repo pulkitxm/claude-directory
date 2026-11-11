@@ -1,12 +1,12 @@
 import { cn } from "../lib/cn";
 
 type BlobProps = {
-	/** Picks one of the organic radius presets. */
+
 	shape?: 1 | 2 | 3 | 4;
-	/** Tailwind colour class, e.g. "bg-primary/20". */
+
 	color: string;
 	className?: string;
-	/** Disable the slow ambient drift (e.g. on reduced motion at call site). */
+
 	animate?: boolean;
 };
 
@@ -21,12 +21,7 @@ const shapes = {
 	4: "blob-4 animate-morph-b",
 } as const;
 
-/**
- * A large, soft, blurred colour wash — the ambient atmosphere behind hero,
- * features, product and CTA sections. Absolutely positioned by the caller via
- * `className`. The outer element owns position + the slow ambient drift; the
- * inner element owns the colour, blur and the morphing organic radius.
- */
+
 export function Blob({
 	shape = 1,
 	color,

@@ -13,7 +13,7 @@ export function Hero() {
 	return (
 		<section id="top" className="relative px-6 pt-16 pb-20 md:pt-20">
 			<div className="mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-2">
-				{/* ---- Left: copy ---- */}
+				{}
 				<div className="relative">
 					<StickyTag color="postit" className="mb-6">
 						<span className="inline-flex items-center gap-1.5">
@@ -28,7 +28,7 @@ export function Hero() {
 						right on the
 						<span className="relative mx-2 inline-block text-accent">
 							paper
-							{/* hand-drawn highlighter sweep under the word */}
+							{}
 							<svg
 								aria-hidden
 								viewBox="0 0 220 30"
@@ -42,7 +42,7 @@ export function Hero() {
 								<path d="M6 18 Q 110 4 214 16" />
 							</svg>
 						</span>
-						{/* rotating exclamation mark */}
+						{}
 						<span className="ml-1 inline-block origin-bottom animate-[wiggle_2.2s_ease-in-out_infinite] text-pen">
 							!
 						</span>
@@ -50,7 +50,7 @@ export function Hero() {
 
 					<p className="mt-7 max-w-md text-lg text-ink/75 md:text-xl">
 						Scribbly is the messy-on-purpose whiteboard for teams who think with
-						their hands. Sticky notes, doodles, and half-baked arrows — exactly
+						their hands. Sticky notes, doodles, and half-baked arrows ,  exactly
 						like the wall behind your desk, but it never runs out of space.
 					</p>
 
@@ -67,14 +67,14 @@ export function Hero() {
 							See how it works
 						</LinkButton>
 
-						{/* dashed arrow doodle pointing at the primary CTA (desktop only) */}
+						{}
 						<ScribbleArrow className="absolute -right-6 -top-20 hidden h-20 w-28 -scale-x-100 rotate-6 md:block" />
 						<span className="absolute -right-12 -top-24 hidden -rotate-6 font-[var(--font-marker)] text-lg text-ink/70 md:block">
 							start here!
 						</span>
 					</div>
 
-					{/* social proof */}
+					{}
 					<div className="mt-10 flex items-center gap-4">
 						<AvatarStack count={5} />
 						<p className="text-base text-ink/70 md:text-lg">
@@ -86,9 +86,9 @@ export function Hero() {
 					</div>
 				</div>
 
-				{/* ---- Right: hand-drawn board placeholder ---- */}
+				{}
 				<div className="relative">
-					{/* bouncing decorative circle (desktop only) */}
+					{}
 					<span
 						className="anim-bob absolute -left-8 -top-10 hidden h-20 w-20 border-[3px] border-ink bg-postit shadow-[var(--shadow-hard-sm)] md:grid md:place-items-center"
 						style={{
@@ -111,7 +111,7 @@ export function Hero() {
 						>
 							<BoardSketch className="h-auto w-full" />
 						</div>
-						{/* taped caption strip */}
+						{}
 						<div className="mt-4 flex items-center justify-between px-1">
 							<span className="font-[var(--font-marker)] text-lg text-ink">
 								board: “Q3 brainstorm”
@@ -124,7 +124,7 @@ export function Hero() {
 						</div>
 					</div>
 
-					{/* little pinned "live" sticky badge */}
+					{}
 					<span
 						className="absolute -bottom-6 -right-3 -rotate-6 border-2 border-ink bg-accent px-4 py-1.5 text-base text-white shadow-[var(--shadow-hard-sm)] md:text-lg"
 						style={{ borderRadius: radius.wobblyMd }}

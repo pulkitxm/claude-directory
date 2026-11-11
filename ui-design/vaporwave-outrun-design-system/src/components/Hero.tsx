@@ -4,7 +4,7 @@ import { Zap, ArrowRight } from "lucide-react";
 import { ButtonLink, Eyebrow, Shell } from "./primitives";
 import { fadeUp } from "../lib/motion";
 
-/* A self-typing terminal line for the hero's window mockup. */
+
 const BOOT_LINES = [
 	"> initializing neonwave kernel...",
 	"> mounting /dev/grid ............ OK",
@@ -68,7 +68,7 @@ export function Hero() {
 		>
 			<Shell className="relative z-10">
 				<div className="mx-auto grid max-w-5xl items-center gap-12 lg:max-w-7xl lg:grid-cols-[1.05fr_0.95fr]">
-					{/* Left: copy */}
+					{}
 					<div>
 						<motion.div
 							initial="hidden"
@@ -141,7 +141,7 @@ export function Hero() {
 						</motion.div>
 					</div>
 
-					{/* Right: terminal window mockup */}
+					{}
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -159,7 +159,7 @@ export function Hero() {
 							</span>
 						</div>
 						<BootLog />
-						{/* mini perspective grid inside the window for depth */}
+						{}
 						<div className="dots border-t border-[var(--color-cyan)]/30 px-5 py-4">
 							<div className="flex items-center justify-between font-mono text-[0.65rem] uppercase tracking-widest text-[var(--color-chrome)]/50">
 								<span>cpu: synth-z80 @ 88mhz</span>

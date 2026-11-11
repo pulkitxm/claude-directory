@@ -15,7 +15,7 @@ import { Footer } from "./sections/Footer";
 export default function App() {
 	return (
 		<>
-			{/* Keyboard skip link — hidden until focused, then a bold acid chip. */}
+			{}
 			<a
 				href="#main"
 				className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:bg-acid focus:px-4 focus:py-2 focus:font-bold focus:uppercase focus:tracking-tighter focus:text-acid-foreground"

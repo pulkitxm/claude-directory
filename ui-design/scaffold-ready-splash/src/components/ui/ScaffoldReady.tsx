@@ -16,9 +16,9 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*  Static data — the project's own DNA, surfaced as the scaffold splash.      */
-/* -------------------------------------------------------------------------- */
+
+
+
 
 const STACK = [
 	{ label: "Vite + React", note: "dev server & build", icon: PanelsTopLeft },
@@ -67,13 +67,13 @@ const TREE: TreeNode[] = [
 	{ depth: 1, name: "index.css", kind: "file" },
 ];
 
-/* -------------------------------------------------------------------------- */
-/*  Typewriter — types out the "ready" command line once on mount.             */
-/* -------------------------------------------------------------------------- */
 
-const COMMAND = "npm run dev  ›  ready — waiting for first component";
 
-/** Honors the user's prefers-reduced-motion setting (SSR-safe, live-updating). */
+
+
+const COMMAND = "npm run dev  ›  ready ,  waiting for first component";
+
+
 function useReducedMotion() {
 	const [reduced, setReduced] = useState(false);
 	useEffect(() => {
@@ -86,7 +86,7 @@ function useReducedMotion() {
 	return reduced;
 }
 
-/** Types `text` out once on mount; with reduced motion it appears instantly. */
+
 function useTypewriter(
 	text: string,
 	reduced: boolean,
@@ -129,9 +129,9 @@ function useTypewriter(
 	return { out, done };
 }
 
-/* -------------------------------------------------------------------------- */
-/*  Ambient background — drifting orbs + a slow panning grid + grain.          */
-/* -------------------------------------------------------------------------- */
+
+
+
 
 function Ambience({ reduced }: { reduced: boolean }) {
 	return (
@@ -139,7 +139,7 @@ function Ambience({ reduced }: { reduced: boolean }) {
 			aria-hidden
 			className="pointer-events-none absolute inset-0 overflow-hidden"
 		>
-			{/* Base wash */}
+			{}
 			<div className="absolute inset-0 bg-ink-950" />
 			<div
 				className="absolute inset-0 opacity-80"
@@ -149,7 +149,7 @@ function Ambience({ reduced }: { reduced: boolean }) {
 				}}
 			/>
 
-			{/* Panning grid */}
+			{}
 			<div
 				className={cn(
 					"absolute inset-0 opacity-[0.18]",
@@ -166,7 +166,7 @@ function Ambience({ reduced }: { reduced: boolean }) {
 				}}
 			/>
 
-			{/* Drifting orbs */}
+			{}
 			<div
 				className={cn(
 					"absolute left-[10%] top-[18%] h-[26rem] w-[26rem] rounded-full bg-accent/25 blur-[120px]",
@@ -180,24 +180,24 @@ function Ambience({ reduced }: { reduced: boolean }) {
 				)}
 			/>
 
-			{/* Film grain */}
+			{}
 			<div
 				className="absolute inset-0 opacity-[0.05] mix-blend-overlay"
 				style={{
 					backgroundImage:
-						"url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+						"url(\"data:image/svg+xml,%3Csvg xmlns='#' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
 				}}
 			/>
 
-			{/* Vignette */}
+			{}
 			<div className="absolute inset-0 shadow-[inset_0_0_220px_60px_rgba(0,0,0,0.7)]" />
 		</div>
 	);
 }
 
-/* -------------------------------------------------------------------------- */
-/*  Animation presets                                                          */
-/* -------------------------------------------------------------------------- */
+
+
+
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -210,7 +210,7 @@ const fadeUp = {
 	}),
 };
 
-/* -------------------------------------------------------------------------- */
+
 
 export default function ScaffoldReady() {
 	const reduced = useReducedMotion();
@@ -223,7 +223,7 @@ export default function ScaffoldReady() {
 			<Ambience reduced={reduced} />
 
 			<div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center">
-				{/* Status pill */}
+				{}
 				<motion.div
 					variants={fadeUp}
 					initial="hidden"
@@ -242,7 +242,7 @@ export default function ScaffoldReady() {
 					<span className="font-mono text-[11.5px] text-white/45">v1.0.0</span>
 				</motion.div>
 
-				{/* Headline */}
+				{}
 				<motion.h1
 					variants={fadeUp}
 					initial="hidden"
@@ -265,7 +265,7 @@ export default function ScaffoldReady() {
 					custom={2}
 					className="mt-5 max-w-xl text-balance text-center text-[15px] leading-relaxed text-white/55 sm:text-base"
 				>
-					A single-page landing scaffold — Vite, React, TypeScript, Tailwind,
+					A single-page landing scaffold ,  Vite, React, TypeScript, Tailwind,
 					Framer Motion &amp; Lucide, with the{" "}
 					<code className="rounded-md bg-white/5 px-1.5 py-0.5 font-mono text-[13px] text-accent-soft">
 						@/
@@ -281,7 +281,7 @@ export default function ScaffoldReady() {
 					.
 				</motion.p>
 
-				{/* Terminal */}
+				{}
 				<motion.div
 					variants={fadeUp}
 					initial="hidden"
@@ -289,7 +289,7 @@ export default function ScaffoldReady() {
 					custom={3}
 					className="relative mt-10 w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-ink-900/80 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl"
 				>
-					{/* sheen */}
+					{}
 					{!reduced && (
 						<div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
 							<div className="absolute -inset-y-10 left-0 w-1/3 -skew-x-12 animate-sheen bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
@@ -301,7 +301,7 @@ export default function ScaffoldReady() {
 						<span className="h-3 w-3 rounded-full bg-[#28c840]" />
 						<div className="ml-3 flex items-center gap-1.5 text-[12px] text-white/40">
 							<Terminal className="h-3.5 w-3.5" />
-							<span className="font-mono">landing-page-scaffold — zsh</span>
+							<span className="font-mono">landing-page-scaffold ,  zsh</span>
 						</div>
 					</div>
 					<div className="px-5 py-5 font-mono text-[13px] leading-relaxed sm:text-sm">
@@ -324,12 +324,12 @@ export default function ScaffoldReady() {
 							transition={{ duration: 0.4 }}
 							className="mt-2 text-emerald-400/90"
 						>
-							✓ VITE ready — Local: http://localhost:5173/
+							✓ VITE ready ,  Local: #
 						</motion.p>
 					</div>
 				</motion.div>
 
-				{/* Stack chips */}
+				{}
 				<motion.ul
 					variants={fadeUp}
 					initial="hidden"
@@ -349,9 +349,9 @@ export default function ScaffoldReady() {
 					))}
 				</motion.ul>
 
-				{/* Two-column: checklist + file tree */}
+				{}
 				<div className="mt-12 grid w-full gap-5 lg:grid-cols-[1.35fr_1fr]">
-					{/* Checklist */}
+					{}
 					<motion.div
 						variants={fadeUp}
 						initial="hidden"
@@ -391,7 +391,7 @@ export default function ScaffoldReady() {
 						</ol>
 					</motion.div>
 
-					{/* File tree */}
+					{}
 					<motion.div
 						variants={fadeUp}
 						initial="hidden"
@@ -434,7 +434,7 @@ export default function ScaffoldReady() {
 					</motion.div>
 				</div>
 
-				{/* Drop target */}
+				{}
 				<motion.div
 					variants={fadeUp}
 					initial="hidden"
@@ -464,7 +464,7 @@ export default function ScaffoldReady() {
 					</div>
 				</motion.div>
 
-				{/* Footer note */}
+				{}
 				<motion.p
 					variants={fadeUp}
 					initial="hidden"
@@ -473,7 +473,7 @@ export default function ScaffoldReady() {
 					className="mt-10 flex items-center gap-2 font-mono text-[11.5px] text-white/30"
 				>
 					<Layers className="h-3.5 w-3.5" />
-					components render with their own colors, layout &amp; values — the
+					components render with their own colors, layout &amp; values ,  the
 					scaffold stays out of the way
 				</motion.p>
 			</div>

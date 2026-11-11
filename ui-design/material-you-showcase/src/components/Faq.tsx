@@ -5,7 +5,7 @@ import { Plus } from "./icons";
 const FAQS: { q: string; a: string }[] = [
 	{
 		q: "Is Lumi a component library or just tokens?",
-		a: "Both. At its core Lumi is a tonal token engine, but it ships React, Vue and native primitives that consume those tokens out of the box — pills, cards, filled text fields and FABs included.",
+		a: "Both. At its core Lumi is a tonal token engine, but it ships React, Vue and native primitives that consume those tokens out of the box ,  pills, cards, filled text fields and FABs included.",
 	},
 	{
 		q: "Does it follow the real Material Design 3 spec?",
@@ -17,7 +17,7 @@ const FAQS: { q: string; a: string }[] = [
 	},
 	{
 		q: "Can I export to my existing stack?",
-		a: "Tokens export as CSS custom properties, a Tailwind theme, a design-token JSON, or synced straight into Figma and native (iOS/Android) — so there's a single source of truth wherever you ship.",
+		a: "Tokens export as CSS custom properties, a Tailwind theme, a design-token JSON, or synced straight into Figma and native (iOS/Android) ,  so there's a single source of truth wherever you ship.",
 	},
 	{
 		q: "What about dark mode?",

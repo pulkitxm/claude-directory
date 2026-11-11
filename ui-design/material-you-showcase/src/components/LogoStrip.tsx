@@ -1,7 +1,6 @@
 import { Reveal, Shell } from "./primitives";
 
-/* A quiet "trusted by" strip. Wordmarks are set in the on-variant tone so they
-   recede; this keeps the tonal hierarchy intact (no loud logos). */
+
 const BRANDS = [
 	"Northwind",
 	"Aperture",

@@ -11,10 +11,7 @@ import { Cta } from "./components/Cta";
 import { Footer } from "./components/Footer";
 import { Fab } from "./components/Fab";
 
-/* Lumi — a Material You (MD3) showcase landing page.
-   Section flow alternates tonal backgrounds (surface) with the base surface,
-   and uses full-width colored containers (primary Benefits, tertiary CTA)
-   sparingly for emphasis — exactly as the design system prescribes. */
+
 export default function App() {
 	return (
 		<>

@@ -20,7 +20,7 @@ export function CTA() {
 	return (
 		<Section id="cta" className="py-24 sm:py-32">
 			<div className="relative overflow-hidden rounded-[28px] border border-line-bright bg-deep px-6 py-16 text-center sm:px-10 sm:py-24">
-				{/* the tide returns, dimmer, behind the CTA */}
+				{}
 				<div className="pointer-events-none absolute inset-0 opacity-60">
 					<TideCanvas />
 					<div className="absolute inset-0 bg-[radial-gradient(110%_120%_at_50%_120%,transparent_20%,rgb(var(--deep))_75%)]" />
@@ -39,7 +39,7 @@ export function CTA() {
 						is one tap away.
 					</motion.h2>
 					<p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-mist">
-						Start free with one intention a day. No card, no trial countdown —
+						Start free with one intention a day. No card, no trial countdown ,
 						just the tide whenever you need it.
 					</p>
 
@@ -95,7 +95,7 @@ export function CTA() {
 						role={state === "error" ? "alert" : undefined}
 						aria-live="polite"
 					>
-						{state === "error" && "THAT EMAIL DOESN'T LOOK RIGHT — TRY AGAIN"}
+						{state === "error" && "THAT EMAIL DOESN'T LOOK RIGHT ,  TRY AGAIN"}
 						{state === "done" && "CHECK YOUR INBOX FOR THE FIRST SESSION"}
 						{state === "idle" && "FREE FOREVER · NO CARD · LEAVE ANY TIME"}
 					</p>

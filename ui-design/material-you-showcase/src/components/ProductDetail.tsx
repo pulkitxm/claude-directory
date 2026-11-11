@@ -3,15 +3,12 @@ import { ArrowRight, Check, Tune } from "./icons";
 
 const POINTS = [
 	"13 tonal steps per key color, generated instantly",
-	"Roles mapped automatically — surface, container, on-color",
+	"Roles mapped automatically ,  surface, container, on-color",
 	"Light & dark schemes from the same single seed",
 	"Copy any token as CSS, Tailwind or a design-token JSON",
 ];
 
-/* A recessed (shadow-inner) "visualization" container. Inside: the tonal ramps
-   for the three key colors, demonstrating the surface hierarchy the whole
-   system rests on. The recessed look is the spec's shadow-inner on the Product
-   Detail visualization. */
+
 function TonalLab() {
 	const ramps: { label: string; from: string; to: string }[] = [
 		{
@@ -80,7 +77,7 @@ function TonalLab() {
 				))}
 			</div>
 
-			{/* a couple of resolved swatches with on-color text proof */}
+			{}
 			<div className="mt-5 grid grid-cols-2 gap-3">
 				<div className="rounded-2xl bg-[var(--color-md-primary)] p-4 text-[var(--color-md-on-primary)]">
 					<p className="t-label-s opacity-80">On primary</p>
@@ -123,7 +120,7 @@ export function ProductDetail() {
 					<Reveal delay={140}>
 						<p className="t-body-l text-[var(--color-md-on-variant)]">
 							Under the hood, Lumi runs the same tonal math as Material You.
-							Drag the seed and watch thirteen carefully spaced tones redraw —
+							Drag the seed and watch thirteen carefully spaced tones redraw ,
 							then get mapped to roles your components already understand.
 						</p>
 					</Reveal>
@@ -151,7 +148,7 @@ export function ProductDetail() {
 	);
 }
 
-/* tiny hex parser for the ramp interpolation */
+
 function hexToRgb(hex: string): [number, number, number] {
 	const h = hex.replace("#", "");
 	return [

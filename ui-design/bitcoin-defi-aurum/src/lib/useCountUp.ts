@@ -5,11 +5,7 @@ interface CountUpOptions {
 	decimals?: number;
 }
 
-/**
- * Counts a number up from 0 to `end` once the bound element scrolls into view.
- * Returns the live formatted value and a ref to attach to the trigger element.
- * Respects prefers-reduced-motion by snapping straight to the final value.
- */
+
 export function useCountUp(
 	end: number,
 	{ duration = 1600, decimals = 0 }: CountUpOptions = {},

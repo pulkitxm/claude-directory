@@ -5,7 +5,7 @@ import { faqs } from "../data/content";
 import { Reveal, SectionLabel } from "./Primitives";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// FAQ — a hairline-divided accordion. Panels animate height: auto with an opacity
+// FAQ ,  a hairline-divided accordion. Panels animate height: auto with an opacity
 // fade over 200ms ease-out; the toggle swaps Plus ↔ Minus instantly. Full ARIA:
 // each trigger is a <button> controlling its region with aria-expanded/-controls.
 // ─────────────────────────────────────────────────────────────────────────────

@@ -1,8 +1,4 @@
-/* ----------------------------------------------------------------------------
-   Centralized copy + data for the LOUDHOUSE showcase. Keeping content out of
-   the JSX keeps the section components focused on layout/behaviour and makes
-   the page easy to retune.
-   -------------------------------------------------------------------------- */
+
 import type { LucideIcon } from "lucide-react";
 import {
 	Boxes,
@@ -37,9 +33,9 @@ export type Feature = {
 	icon: LucideIcon;
 	title: string;
 	body: string;
-	/** card background token class */
+
 	bg: string;
-	/** sticker rotation utility */
+
 	rotate: string;
 };
 
@@ -68,7 +64,7 @@ export const FEATURES: Feature[] = [
 	{
 		icon: MousePointerClick,
 		title: "Mechanical Interactions",
-		body: "Buttons click DOWN onto their shadow. Cards lift UP. Badges spin further. Everything snaps — nothing fades.",
+		body: "Buttons click DOWN onto their shadow. Cards lift UP. Badges spin further. Everything snaps ,  nothing fades.",
 		bg: "bg-neo-muted",
 		rotate: "-rotate-2",
 	},
@@ -82,7 +78,7 @@ export const FEATURES: Feature[] = [
 	{
 		icon: Zap,
 		title: "Maximal Density",
-		body: "More borders. More uppercase. Halftone, grid and noise on every field. This isn't clutter — it's energy and urgency.",
+		body: "More borders. More uppercase. Halftone, grid and noise on every field. This isn't clutter ,  it's energy and urgency.",
 		bg: "bg-neo-white",
 		rotate: "-rotate-1",
 	},
@@ -98,9 +94,9 @@ export const STATS = [
 export type Token = {
 	name: string;
 	hex: string;
-	/** swatch background class */
+
 	swatch: string;
-	/** text color that reads on the swatch */
+
 	on: string;
 	note: string;
 };
@@ -158,7 +154,7 @@ export type Plan = {
 	features: string[];
 	cta: string;
 	featured: boolean;
-	/** card background token */
+
 	bg: string;
 	rotate: string;
 };
@@ -259,23 +255,23 @@ export type Faq = { q: string; a: string };
 export const FAQS: Faq[] = [
 	{
 		q: "Isn't this just... ugly?",
-		a: "Ugly by polished-SaaS standards, cool by intention. Neo-brutalism is ugly-cool — it trades invisible elegance for visual weight, presence and confidence. If it doesn't have a border, it doesn't exist.",
+		a: "Ugly by polished-SaaS standards, cool by intention. Neo-brutalism is ugly-cool ,  it trades invisible elegance for visual weight, presence and confidence. If it doesn't have a border, it doesn't exist.",
 	},
 	{
 		q: "Is it accessible?",
-		a: "High contrast is built into the palette — black on cream, white on black, black on yellow all clear WCAG AA. Focus states are thick black rings (or a yellow input flood), targets are 44px+, and every loop respects prefers-reduced-motion.",
+		a: "High contrast is built into the palette ,  black on cream, white on black, black on yellow all clear WCAG AA. Focus states are thick black rings (or a yellow input flood), targets are 44px+, and every loop respects prefers-reduced-motion.",
 	},
 	{
 		q: "Where are the gradients and blur?",
-		a: "Gone. No blur, no backdrop-blur, no soft shadows, no smooth gradient fades. Depth comes from hard offset shadows and texture — halftone dots, graph-paper grids, and SVG noise.",
+		a: "Gone. No blur, no backdrop-blur, no soft shadows, no smooth gradient fades. Depth comes from hard offset shadows and texture ,  halftone dots, graph-paper grids, and SVG noise.",
 	},
 	{
 		q: "Can I recolor it for my brand?",
-		a: "Yes. Every color, the radius, and the shadow scale are centralized as design tokens in one @theme block. Swap the three highlighter values and the entire system retunes — components never hardcode a hex.",
+		a: "Yes. Every color, the radius, and the shadow scale are centralized as design tokens in one @theme block. Swap the three highlighter values and the entire system retunes ,  components never hardcode a hex.",
 	},
 	{
 		q: "What's the tech under the hood?",
-		a: "React + TypeScript + Vite with Tailwind CSS v4, Space Grotesk vendored locally, Lucide icons stroked at 3px, and react-fast-marquee for the rails. Fully self-contained — clone it and it runs offline.",
+		a: "React + TypeScript + Vite with Tailwind CSS v4, system font fallbacks, Lucide icons stroked at 3px, and react-fast-marquee for the rails. Fully self-contained ,  clone it and it runs offline.",
 	},
 ];
 
@@ -290,7 +286,7 @@ export const PROCESS = [
 		icon: Boxes,
 		step: "02",
 		title: "Slap On Components",
-		body: "Buttons, cards, badges, inputs and marquees — all reading from the tokens, all bordered, all loud.",
+		body: "Buttons, cards, badges, inputs and marquees ,  all reading from the tokens, all bordered, all loud.",
 	},
 	{
 		icon: Ruler,

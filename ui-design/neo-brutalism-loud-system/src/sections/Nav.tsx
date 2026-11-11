@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, Star, X } from "lucide-react";
 import { NAV_LINKS } from "../content";
 
-/* Sticky top nav. Logo is a bordered accent box. Desktop links snap in a
-   border + red fill + shadow on hover. Mobile collapses to a bordered
-   hamburger square that opens a stacked, bordered slide-in drawer. */
+
 export function Nav() {
 	const [open, setOpen] = useState(false);
 
@@ -22,7 +20,7 @@ export function Nav() {
 				className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6"
 				aria-label="Primary"
 			>
-				{/* Logo */}
+				{}
 				<a
 					href="#top"
 					className="group flex items-center gap-2 rounded-none focus-visible:outline-none"
@@ -38,7 +36,7 @@ export function Nav() {
 					</span>
 				</a>
 
-				{/* Desktop links */}
+				{}
 				<ul className="hidden items-center gap-1 md:flex">
 					{NAV_LINKS.map((link) => (
 						<li key={link.href}>
@@ -52,7 +50,7 @@ export function Nav() {
 					))}
 				</ul>
 
-				{/* Desktop CTA */}
+				{}
 				<a
 					href="#pricing"
 					className="hidden h-11 items-center border-4 border-neo-ink bg-neo-secondary px-5 text-sm font-bold uppercase tracking-wide text-neo-ink shadow-neo-sm transition-all duration-100 ease-out hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-neo active:translate-x-[4px] active:translate-y-[4px] active:shadow-none md:inline-flex"
@@ -60,7 +58,7 @@ export function Nav() {
 					Get The Kit
 				</a>
 
-				{/* Mobile hamburger */}
+				{}
 				<button
 					type="button"
 					aria-label={open ? "Close menu" : "Open menu"}
@@ -77,7 +75,7 @@ export function Nav() {
 				</button>
 			</nav>
 
-			{/* Mobile slide-in drawer */}
+			{}
 			{open && (
 				<div
 					id="mobile-drawer"

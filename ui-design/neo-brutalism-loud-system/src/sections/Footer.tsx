@@ -16,8 +16,7 @@ const COLUMNS = [
 	},
 ];
 
-/* Yellow color-block footer (per the token spec: yellow as footer background).
-   A loud wordmark, link columns, social sticker boxes, and a back-to-top. */
+
 export function Footer() {
 	function toTop() {
 		document
@@ -33,7 +32,7 @@ export function Footer() {
 			/>
 			<div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
 				<div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-					{/* Wordmark */}
+					{}
 					<div className="lg:col-span-4">
 						<a href="#top" className="flex items-center gap-2">
 							<span className="flex h-11 w-11 items-center justify-center border-4 border-neo-ink bg-neo-accent neo-shadow-sm">
@@ -71,7 +70,7 @@ export function Footer() {
 						</div>
 					</div>
 
-					{/* Link columns */}
+					{}
 					<div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-6">
 						{COLUMNS.map((col) => (
 							<div key={col.title}>
@@ -94,7 +93,7 @@ export function Footer() {
 						))}
 					</div>
 
-					{/* Back to top */}
+					{}
 					<div className="lg:col-span-2 lg:text-right">
 						<button
 							type="button"
@@ -104,7 +103,7 @@ export function Footer() {
 							Back To Top
 							<ArrowUp className="h-4 w-4" strokeWidth={3} />
 						</button>
-						{/* Jump links for keyboard users */}
+						{}
 						<ul className="mt-6 flex flex-wrap gap-2 lg:justify-end">
 							{NAV_LINKS.map((l) => (
 								<li key={l.href}>
@@ -120,10 +119,10 @@ export function Footer() {
 					</div>
 				</div>
 
-				{/* Baseline */}
+				{}
 				<div className="mt-14 flex flex-col items-center justify-between gap-4 border-t-4 border-neo-ink pt-6 sm:flex-row">
 					<p className="text-xs font-bold uppercase tracking-widest text-neo-ink">
-						© {new Date().getFullYear()} Loudhouse — Built To Be Seen
+						© {new Date().getFullYear()} Loudhouse ,  Built To Be Seen
 					</p>
 					<p className="text-xs font-bold uppercase tracking-widest text-neo-ink/60">
 						Made With Border-4 &amp; Bad Manners

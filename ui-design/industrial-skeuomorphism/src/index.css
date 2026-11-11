@@ -1,109 +1,48 @@
 @import "tailwindcss";
 
-/* ============================================================================
-   INDUSTRIAL SKEUOMORPHISM — CENTRALIZED DESIGN TOKENS (THE DNA)
-   Every color, shadow, radius and font the system uses lives here once.
-   Components reference these via Tailwind theme keys or var(--token).
-   ========================================================================== */
 
-/* ---- Self-hosted fonts (vendored in /public/fonts, fully offline) -------- */
-@font-face {
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("/fonts/inter-400.woff2") format("woff2");
-}
-@font-face {
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 500;
-	font-display: swap;
-	src: url("/fonts/inter-500.woff2") format("woff2");
-}
-@font-face {
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 600;
-	font-display: swap;
-	src: url("/fonts/inter-600.woff2") format("woff2");
-}
-@font-face {
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src: url("/fonts/inter-700.woff2") format("woff2");
-}
-@font-face {
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 800;
-	font-display: swap;
-	src: url("/fonts/inter-800.woff2") format("woff2");
-}
-@font-face {
-	font-family: "JetBrains Mono";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("/fonts/jetbrains-mono-400.woff2") format("woff2");
-}
-@font-face {
-	font-family: "JetBrains Mono";
-	font-style: normal;
-	font-weight: 500;
-	font-display: swap;
-	src: url("/fonts/jetbrains-mono-500.woff2") format("woff2");
-}
-@font-face {
-	font-family: "JetBrains Mono";
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src: url("/fonts/jetbrains-mono-700.woff2") format("woff2");
-}
 
-/* ---- Tailwind theme: tokens usable as utilities (bg-chassis, etc.) ------- */
+
+
 @theme {
-	/* Industrial palette (strictly light mode) */
-	--color-chassis: #e0e5ec; /* Level 0 — base plastic */
-	--color-panel: #f0f2f5; /* raised panel */
-	--color-recessed: #d1d9e6; /* sunken / muted */
-	--color-ink: #2d3436; /* primary text */
-	--color-label: #4a5568; /* muted text (WCAG-AA) */
-	--color-accent: #ff4757; /* safety orange / Braun red */
-	--color-accent-fg: #ffffff;
-	--color-edge: #babecc; /* neumorphic shadow color */
-	--color-highlight: #ffffff; /* neumorphic highlight color */
-	--color-edge-deep: #a3b1c6; /* deep shadow / divider */
-	--color-online: #22c55e; /* online LED green */
-	--color-warning: #f5a623; /* warning LED amber */
 
-	/* Dark technical surfaces */
+	--color-chassis: #e0e5ec;
+	--color-panel: #f0f2f5;
+	--color-recessed: #d1d9e6;
+	--color-ink: #2d3436;
+	--color-label: #4a5568;
+	--color-accent: #ff4757;
+	--color-accent-fg: #ffffff;
+	--color-edge: #babecc;
+	--color-highlight: #ffffff;
+	--color-edge-deep: #a3b1c6;
+	--color-online: #22c55e;
+	--color-warning: #f5a623;
+
+
 	--color-charcoal: #2d3436;
 	--color-slate: #2c3e50;
 	--color-slate-soft: #a8b2d1;
 
-	/* Radii */
+
 	--radius-sm: 4px;
 	--radius-md: 8px;
 	--radius-lg: 16px;
 	--radius-xl: 24px;
 	--radius-2xl: 30px;
 
-	/* Type */
+
 	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 	--font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
 
-	/* Mechanical easing — spring overshoot */
+
 	--ease-mech: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-	/* Container */
+
 	--container-deck: 72rem;
 }
 
-/* ---- Raw shadow tokens (referenced via shadow-[var(--shadow-*)]) --------- */
+
 :root {
 	--shadow-card: 8px 8px 16px #babecc, -8px -8px 16px #ffffff;
 	--shadow-floating:
@@ -117,15 +56,13 @@
 		4px 4px 8px rgba(0, 0, 0, 0.15), -1px -1px 1px rgba(255, 255, 255, 0.8);
 	--shadow-glow: 0 0 10px 2px rgba(255, 71, 87, 0.6);
 	--shadow-glow-green: 0 0 10px 2px rgba(34, 197, 94, 0.7);
-	/* red-tinted neumorphic pair for the accent button */
+
 	--shadow-accent:
 		5px 5px 12px rgba(166, 50, 60, 0.45),
 		-5px -5px 12px rgba(255, 110, 120, 0.4);
 }
 
-/* ============================================================================
-   BASE
-   ========================================================================== */
+
 * {
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
@@ -140,7 +77,7 @@ body {
 	font-family: var(--font-sans);
 	color: var(--color-ink);
 	background-color: var(--color-chassis);
-	/* Reinforce the top-left light source with a subtle hotspot. */
+
 	background-image: radial-gradient(
 		120% 80% at 12% 0%,
 		rgba(255, 255, 255, 0.55),
@@ -155,7 +92,7 @@ body {
 	color: #fff;
 }
 
-/* Accent, branded focus ring for keyboard users on every interactive atom. */
+
 :where(a, button, input, [tabindex]):focus-visible {
 	outline: none;
 	box-shadow:
@@ -165,29 +102,27 @@ body {
 	border-radius: var(--radius-md);
 }
 
-/* ============================================================================
-   TEXTURE + SURFACE UTILITIES (composition primitives)
-   ========================================================================== */
 
-/* Matte-plastic micro-noise overlay — sits above the page, ignores pointers. */
+
+
 .noise-overlay {
 	position: fixed;
 	inset: 0;
 	z-index: 60;
 	pointer-events: none;
-	background-image: url("/assets/noise.svg");
+	background-image: url("/assets/original-visual.svg");
 	background-size: 220px 220px;
 	opacity: 0.28;
 	mix-blend-mode: overlay;
 }
 
-/* Carbon-fibre weave for tech-heavy dark panels / device bezels. */
+
 .carbon {
-	background-image: url("/assets/carbon-fibre.png");
+	background-image: url("/assets/original-visual.svg");
 	background-size: 14px 14px;
 }
 
-/* CRT scanline overlay for "screen" elements. */
+
 .scanlines {
 	background-image: linear-gradient(
 		rgba(18, 16, 16, 0) 50%,
@@ -196,7 +131,7 @@ body {
 	background-size: 100% 4px;
 }
 
-/* Blueprint / schematic grid for technical sections. */
+
 .blueprint-grid {
 	background-image:
 		linear-gradient(rgba(74, 85, 104, 0.5) 1px, transparent 1px),
@@ -204,7 +139,7 @@ body {
 	background-size: 40px 40px;
 }
 
-/* Corner-screw decoration — four machined screw indentations (12px inset). */
+
 .screws {
 	background-image:
 		radial-gradient(
@@ -234,7 +169,7 @@ body {
 	background-repeat: no-repeat;
 }
 
-/* Engraved / embossed text helpers. */
+
 .emboss {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
@@ -242,7 +177,7 @@ body {
 	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-/* Stamped technical label. */
+
 .stamp {
 	font-family: var(--font-mono);
 	text-transform: uppercase;
@@ -250,9 +185,7 @@ body {
 	font-weight: 700;
 }
 
-/* ============================================================================
-   ANIMATIONS
-   ========================================================================== */
+
 @keyframes radar-sweep {
 	to {
 		transform: rotate(360deg);
@@ -322,7 +255,7 @@ body {
 	animation: eq-bounce 0.9s ease-in-out infinite;
 }
 
-/* Respect reduced-motion: still tactile, but no looping/auto motion. */
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;

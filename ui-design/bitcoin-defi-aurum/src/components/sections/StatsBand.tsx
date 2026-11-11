@@ -4,7 +4,7 @@ import { BIG_STATS, type BigStat } from "@/data/content";
 import { useCountUp } from "@/lib/useCountUp";
 import { cn } from "@/lib/utils";
 
-/** Headline metrics that count up as they enter view. */
+
 export function StatsBand() {
 	return (
 		<section className="relative py-20 md:py-24" aria-label="Protocol metrics">

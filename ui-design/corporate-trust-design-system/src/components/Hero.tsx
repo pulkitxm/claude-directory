@@ -12,7 +12,7 @@ import { Shell, Blob, Pill, cx } from "./primitives";
 import { fadeUp, stagger, popIn, EASE_REFINED } from "../lib/motion";
 import { HERO_HIGHLIGHT_ICON as Sparkles } from "../lib/content";
 
-/* A tiny inline sparkline for the dashboard mock. */
+
 function Sparkline({ className }: { className?: string }) {
 	return (
 		<svg
@@ -50,7 +50,7 @@ function Sparkline({ className }: { className?: string }) {
 export function Hero() {
 	return (
 		<section id="top" className="relative overflow-hidden pt-28 lg:pt-36">
-			{/* Atmospheric blob field */}
+			{}
 			<Blob
 				tone="indigo"
 				className="-left-32 -top-24 h-[34rem] w-[34rem] opacity-70"
@@ -67,7 +67,7 @@ export function Hero() {
 
 			<Shell>
 				<div className="grid items-center gap-14 pb-16 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:pb-24">
-					{/* ---- Left: copy ---- */}
+					{}
 					<motion.div
 						variants={stagger(0.1)}
 						initial="hidden"
@@ -105,7 +105,7 @@ export function Hero() {
 							className="mx-auto mt-6 max-w-xl text-lg text-slate-500 lg:mx-0"
 						>
 							Northwind unifies your tools, automates the busywork, and turns
-							operational data into decisions — with the security and polish
+							operational data into decisions ,  with the security and polish
 							your enterprise expects.
 						</motion.p>
 
@@ -153,7 +153,7 @@ export function Hero() {
 						</motion.ul>
 					</motion.div>
 
-					{/* ---- Right: isometric dashboard card ---- */}
+					{}
 					<motion.div
 						variants={popIn}
 						initial="hidden"
@@ -161,17 +161,16 @@ export function Hero() {
 						className="relative z-10 mx-auto w-full max-w-xl lg:max-w-none"
 					>
 						<div className="scene">
-							{/* The card tilts into an isometric pose at rest and eases toward
-							    the viewer on hover. */}
+							{}
 							<div className="group preserve-3d iso-tilt hover:[transform:rotateX(2deg)_rotateY(-8deg)]">
-								{/* Glow puddle beneath the card */}
+								{}
 								<div
 									aria-hidden="true"
 									className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-indigo-500/30 to-violet-500/30 blur-2xl"
 								/>
 
 								<div className="card !rounded-2xl overflow-hidden !shadow-lift">
-									{/* Window chrome */}
+									{}
 									<div className="flex items-center gap-2 border-b border-slate-100 bg-slate-50/80 px-5 py-3.5">
 										<span className="h-3 w-3 rounded-full bg-rose-500/80" />
 										<span className="h-3 w-3 rounded-full bg-amber-400/90" />
@@ -185,9 +184,9 @@ export function Hero() {
 										</span>
 									</div>
 
-									{/* Body */}
+									{}
 									<div className="space-y-5 p-5 sm:p-6">
-										{/* KPI row */}
+										{}
 										<div className="grid grid-cols-3 gap-3">
 											{[
 												{ label: "Active flows", value: "248", delta: "+12%" },
@@ -215,7 +214,7 @@ export function Hero() {
 											))}
 										</div>
 
-										{/* Chart panel */}
+										{}
 										<div className="rounded-xl border border-slate-100 bg-gradient-to-br from-indigo-50/60 to-violet-50/40 p-4">
 											<div className="mb-2 flex items-center justify-between">
 												<p className="text-sm font-semibold text-slate-700">
@@ -228,7 +227,7 @@ export function Hero() {
 											<Sparkline className="h-16 w-full" />
 										</div>
 
-										{/* Flow row */}
+										{}
 										<div className="flex items-center gap-3 rounded-xl border border-slate-100 bg-white p-3.5">
 											<span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
 												<Workflow className="h-5 w-5" aria-hidden="true" />
@@ -250,7 +249,7 @@ export function Hero() {
 							</div>
 						</div>
 
-						{/* Floating accent cards (gentle pulse) — pop toward the viewer in 3D. */}
+						{}
 						<motion.div
 							initial={{ opacity: 0, scale: 0.85 }}
 							animate={{ opacity: 1, scale: 1 }}

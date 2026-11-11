@@ -1,43 +1,23 @@
-/* =============================================================================
-   SOFTFORM — Neumorphism (Soft UI) Design System
-   Self-contained, offline. All visual interest comes from shadow play on a
-   single base surface colour. Tokens live in :root; a soft-dark variant simply
-   re-points the same tokens. No borders anywhere — shadows define every edge.
-   ============================================================================= */
 
-/* -------- Vendored fonts (local woff2, display=swap per spec) -------------- */
-@font-face {
-	font-family: "DM Sans";
-	src: url("./assets/fonts/dm-sans.woff2") format("woff2");
-	font-weight: 400 700;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Plus Jakarta Sans";
-	src: url("./assets/fonts/plus-jakarta-sans.woff2") format("woff2");
-	font-weight: 500 800;
-	font-style: normal;
-	font-display: swap;
-}
 
-/* ============================ DESIGN TOKENS (DNA) =========================== */
+
+
 :root {
-	/* Cool monochromatic palette */
+
 	--bg: #e0e5ec;
-	--fg: #3d4852; /* 7.5:1 on --bg  (WCAG AAA) */
-	--muted: #6b7280; /* 4.6:1 on --bg  (WCAG AA)  */
+	--fg: #3d4852;
+	--muted: #6b7280;
 	--accent: #6c63ff;
 	--accent-light: #8b84ff;
 	--accent-secondary: #38b2ac;
 	--placeholder: #a0aec0;
 	--on-accent: #f6f5ff;
 
-	/* Shadow source colours — RGBA for smooth blending (never opaque hex) */
-	--sd: 163, 177, 198; /* cool blue-grey dark shadow, bottom-right */
-	--sl: 255, 255, 255; /* white light, top-left                    */
 
-	/* The shadow ladder (the physics) */
+	--sd: 163, 177, 198;
+	--sl: 255, 255, 255;
+
+
 	--shadow-raised:
 		9px 9px 16px rgba(var(--sd), 0.6), -9px -9px 16px rgba(var(--sl), 0.5);
 	--shadow-raised-hover:
@@ -53,34 +33,34 @@
 	--shadow-inset-sm:
 		inset 3px 3px 6px rgba(var(--sd), 0.6),
 		inset -3px -3px 6px rgba(var(--sl), 0.5);
-	/* Pressed feedback that survives on the coloured accent surface */
+
 	--shadow-accent-inset:
 		inset 5px 5px 10px rgba(60, 50, 160, 0.55),
 		inset -5px -5px 10px rgba(170, 165, 255, 0.55);
 
-	/* Radii */
+
 	--r-card: 32px;
 	--r-base: 16px;
 	--r-inner: 12px;
 	--r-full: 9999px;
 
-	/* Type */
+
 	--font-display: "Plus Jakarta Sans", system-ui, sans-serif;
 	--font-body: "DM Sans", system-ui, sans-serif;
 
-	/* Motion */
+
 	--t-ui: 300ms;
 	--t-deep: 500ms;
-	--ease: cubic-bezier(0.22, 0.61, 0.36, 1); /* ease-out */
+	--ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 
-	/* Layout */
+
 	--container: 1200px;
 	--gutter: clamp(1.25rem, 4vw, 2.5rem);
 
 	--ring-offset: var(--bg);
 }
 
-/* Soft dark mode — same physics, a cooler slate clay. Tokens only. */
+
 :root[data-theme="dark"] {
 	--bg: #2c303a;
 	--fg: #e6eaf2;
@@ -89,15 +69,15 @@
 	--accent-light: #a7a1ff;
 	--placeholder: #6c7486;
 	--on-accent: #14121f;
-	--sd: 21, 23, 30; /* deeper shadow */
-	--sl: 64, 70, 86; /* dim highlight */
+	--sd: 21, 23, 30;
+	--sl: 64, 70, 86;
 	--shadow-accent-inset:
 		inset 5px 5px 10px rgba(40, 36, 90, 0.6),
 		inset -5px -5px 10px rgba(150, 144, 255, 0.45);
 	--ring-offset: var(--bg);
 }
 
-/* ================================ RESET ==================================== */
+
 *,
 *::before,
 *::after {
@@ -191,8 +171,8 @@ code {
 	transform: translateY(0);
 }
 
-/* ===================== REUSABLE DEPTH UTILITIES ============================ */
-/* These map 1:1 to the design system's shadow ladder. */
+
+
 .raised {
 	box-shadow: var(--shadow-raised);
 }
@@ -213,8 +193,8 @@ code {
 	color: var(--accent);
 }
 
-/* ============================ FOCUS DISCIPLINE ============================= */
-/* Mandatory, visible accent ring with a 2px surface-coloured offset. */
+
+
 :where(
 	a,
 	button,
@@ -229,7 +209,7 @@ code {
 		0 0 0 4px var(--accent),
 		var(--shadow-raised);
 }
-/* Inset elements keep their carved look while focused. */
+
 .field:focus-visible,
 .segmented .seg:focus-visible {
 	box-shadow:
@@ -238,7 +218,7 @@ code {
 		var(--shadow-inset-deep);
 }
 
-/* ================================ HEADER =================================== */
+
 .site-header {
 	position: sticky;
 	top: 0;
@@ -329,7 +309,7 @@ code {
 	gap: 0.6rem;
 }
 
-/* Icon button — raised knob with an inset well holding the glyph */
+
 .icon-btn {
 	width: 48px;
 	height: 48px;
@@ -385,7 +365,7 @@ code {
 	height: 22px;
 }
 
-/* sun/moon + menu/close crossfade — all four glyphs share the same transition */
+
 .icon-btn .i-sun,
 .icon-btn .i-menu,
 .icon-btn .i-moon,
@@ -427,7 +407,7 @@ code {
 	display: none;
 }
 
-/* Mobile slide-down menu */
+
 .mobile-menu {
 	overflow: hidden;
 	margin-top: 0.85rem;
@@ -462,7 +442,7 @@ code {
 	margin-top: 0.4rem;
 }
 
-/* ================================= BUTTONS ================================= */
+
 .btn {
 	--btn-pad-y: 0.85rem;
 	--btn-pad-x: 1.5rem;
@@ -562,7 +542,7 @@ code {
 	background: var(--accent-secondary);
 }
 
-/* ================================== HERO =================================== */
+
 .hero {
 	padding-block: clamp(3.5rem, 9vw, 8rem) clamp(2.5rem, 6vw, 5rem);
 }
@@ -634,7 +614,7 @@ code {
 	margin-top: 0.3rem;
 }
 
-/* Concentric-circle decorative art (extruded/inset nesting) */
+
 .hero-visual {
 	display: flex;
 	justify-content: center;
@@ -736,7 +716,7 @@ code {
 	stroke-linejoin: round;
 }
 
-/* =============================== MARQUEE =================================== */
+
 .marquee-section {
 	padding-block: clamp(1rem, 3vw, 2rem) clamp(2rem, 5vw, 3.5rem);
 }
@@ -785,7 +765,7 @@ code {
 	}
 }
 
-/* ============================ SECTION SHELL =============================== */
+
 .section {
 	padding-block: clamp(3.5rem, 8vw, 7rem);
 }
@@ -815,7 +795,7 @@ code {
 	max-width: 40rem;
 }
 
-/* Scroll-reveal: elements rise + fade as they enter */
+
 .reveal {
 	opacity: 0;
 	transform: translateY(26px);
@@ -828,7 +808,7 @@ code {
 	transform: none;
 }
 
-/* =============================== PHYSICS =================================== */
+
 .depth-grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -906,7 +886,7 @@ code {
 	box-shadow: var(--shadow-inset-sm);
 }
 
-/* =============================== FEATURES ================================== */
+
 .feature-grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -998,7 +978,7 @@ code {
 	gap: 0.75rem;
 }
 
-/* ============================== PLAYGROUND ================================= */
+
 .play-grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -1030,7 +1010,7 @@ code {
 	margin-bottom: 0;
 }
 
-/* Form */
+
 .play-form {
 	display: flex;
 	flex-direction: column;
@@ -1060,9 +1040,7 @@ code {
 .field:hover {
 	box-shadow: var(--shadow-inset-deep);
 }
-/* Spec: focused inputs deepen the well AND gain an accent ring with a 2px
-   surface-coloured offset. Applied on plain :focus so it shows for both
-   pointer and keyboard users. */
+
 .field:focus {
 	outline: none;
 	box-shadow:
@@ -1107,7 +1085,7 @@ code {
 	flex-wrap: wrap;
 }
 
-/* Switch — inset track, raised thumb */
+
 .switch {
 	padding: 0;
 	border-radius: var(--r-full);
@@ -1139,7 +1117,7 @@ code {
 	box-shadow: var(--shadow-raised-sm);
 }
 
-/* Segmented control — inset track, raised active segment */
+
 .segmented {
 	display: inline-flex;
 	gap: 4px;
@@ -1168,7 +1146,7 @@ code {
 	color: var(--fg);
 }
 
-/* Slider — inset rail, accent fill, raised draggable thumb */
+
 .slider-row {
 	flex-direction: column;
 	align-items: stretch;
@@ -1210,7 +1188,7 @@ code {
 	box-shadow: var(--shadow-inset-sm), var(--shadow-raised-sm);
 }
 
-/* Signup */
+
 .newsletter-panel {
 	display: flex;
 	flex-direction: column;
@@ -1275,7 +1253,7 @@ code {
 	box-shadow: 0 0 6px rgba(56, 178, 172, 0.6);
 }
 
-/* ================================ TOKENS ================================== */
+
 .token-grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -1305,7 +1283,7 @@ code {
 	background: var(--bg);
 	position: relative;
 }
-/* tint sits inside the carved well */
+
 .swatch::after {
 	content: "";
 	position: absolute;
@@ -1386,7 +1364,7 @@ code {
 	color: var(--muted);
 }
 
-/* ================================== CTA =================================== */
+
 .cta-section {
 	padding-bottom: clamp(4rem, 9vw, 8rem);
 }
@@ -1443,7 +1421,7 @@ code {
 	position: relative;
 }
 
-/* ================================ FOOTER ================================== */
+
 .site-footer {
 	padding-block: clamp(2.5rem, 5vw, 4rem);
 }
@@ -1497,7 +1475,7 @@ code {
 	color: var(--fg);
 }
 
-/* ============================== ANIMATIONS ================================ */
+
 @keyframes float {
 	0%,
 	100% {
@@ -1517,7 +1495,7 @@ code {
 	animation: float 5.5s ease-in-out infinite 0.4s;
 }
 
-/* ============================== RESPONSIVE ================================ */
+
 @media (min-width: 640px) {
 	.depth-grid {
 		grid-template-columns: repeat(2, 1fr);
@@ -1591,7 +1569,7 @@ code {
 	}
 }
 
-/* Respect reduced motion */
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;

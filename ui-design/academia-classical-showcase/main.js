@@ -1,9 +1,4 @@
-/* =====================================================================
-   THE ATHENÆUM — interactions
-   Dignified, deliberate behaviour. All scroll reveals use
-   IntersectionObserver (position-driven), count-ups use rAF, and
-   everything respects prefers-reduced-motion.
-   ===================================================================== */
+
 (function () {
 	"use strict";
 
@@ -11,7 +6,7 @@
 		"(prefers-reduced-motion: reduce)",
 	).matches;
 
-	/* ---------- 1. Sticky header state ---------- */
+
 	var header = document.getElementById("site-header");
 	function onScroll() {
 		if (!header) return;
@@ -20,7 +15,7 @@
 	onScroll();
 	window.addEventListener("scroll", onScroll, { passive: true });
 
-	/* ---------- 2. Mobile drawer ---------- */
+
 	var toggle = document.getElementById("nav-toggle");
 	var drawer = document.getElementById("drawer");
 	function setDrawer(open) {
@@ -43,7 +38,7 @@
 		});
 	}
 
-	/* ---------- 3. FAQ accordion (accessible) ---------- */
+
 	var faqButtons = document.querySelectorAll(".faq__q");
 	faqButtons.forEach(function (btn) {
 		var panel = document.getElementById(btn.getAttribute("aria-controls"));
@@ -62,7 +57,7 @@
 		});
 	});
 
-	/* ---------- 4. Scroll reveal via IntersectionObserver ---------- */
+
 	var revealEls = Array.prototype.slice.call(
 		document.querySelectorAll("[data-reveal]"),
 	);
@@ -88,7 +83,7 @@
 		});
 	}
 
-	/* ---------- 5. Stat count-ups (rAF; recorder-friendly) ---------- */
+
 	function animateCount(el) {
 		var target = parseFloat(el.getAttribute("data-count")) || 0;
 		var suffix = el.getAttribute("data-suffix") || "";
@@ -132,13 +127,13 @@
 		});
 	}
 
-	/* ---------- 6. Marquee: duplicate track for seamless loop ---------- */
+
 	var track = document.getElementById("marquee-track");
 	if (track) {
 		track.innerHTML += track.innerHTML; // duplicate so -50% translate loops cleanly
 	}
 
-	/* ---------- 7. Enquiry form (client-side validation) ---------- */
+
 	var form = document.getElementById("enquiry-form");
 	var note = document.getElementById("form-note");
 	function setInvalid(input, bad) {
@@ -175,13 +170,13 @@
 			note.textContent =
 				"Thank you, " +
 				who +
-				". Your name is entered — the Keeper will write with a date for your reading afternoon.";
+				". Your name is entered ,  the Keeper will write with a date for your reading afternoon.";
 			note.className = "form-note is-ok";
 			form.reset();
 		});
 	}
 
-	/* ---------- 8. Smooth-scroll for in-page anchors ---------- */
+
 	document.querySelectorAll('a[href^="#"]').forEach(function (a) {
 		a.addEventListener("click", function (e) {
 			var id = a.getAttribute("href");

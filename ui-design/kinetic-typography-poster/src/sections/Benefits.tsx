@@ -1,13 +1,7 @@
 import { SectionLabel } from "../components/SectionLabel";
 import { BENEFITS } from "../content";
 
-/**
- * Benefit rows. On hover (desktop) the title slides right by 2rem and the
- * description, hidden by default, fades in — two transforms fired together.
- * On mobile there is no hover, so descriptions are shown permanently
- * (opacity-100) and the slide is disabled: the content is never gated behind a
- * pointer interaction.
- */
+
 export function Benefits() {
 	return (
 		<section className="border-b-2 border-line py-24 md:py-32">
@@ -25,7 +19,7 @@ export function Benefits() {
 									{benefit.index}
 								</span>
 								<div className="overflow-hidden">
-									{/* No slide on mobile (no hover); on md+ the title slides +2rem on hover. */}
+									{}
 									<h3 className="font-bold uppercase leading-[0.9] tracking-tighter text-bone transition-transform duration-300 md:group-hover:translate-x-8 text-3xl md:text-4xl lg:text-5xl">
 										{benefit.title}
 									</h3>

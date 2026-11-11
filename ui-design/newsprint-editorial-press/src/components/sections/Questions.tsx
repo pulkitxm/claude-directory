@@ -3,12 +3,12 @@ import { Plus } from "lucide-react";
 import { Kicker } from "@/components/ui/Kicker";
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { cn } from "@/lib/utils";
-import plateEditor from "@/assets/plate-editor.svg";
+import plateEditor from "@/assets/original-visual.svg";
 
 const FAQS = [
 	{
 		q: "Is Newsprint a real newspaper?",
-		a: "It is a publication of record in the editorial sense — a daily edition that treats machine intelligence the way a broadsheet treats the world: sourced, dated, ranked, and printed without a single rounded corner. Every figure on this page is fictional, set to demonstrate the house style.",
+		a: "It is a publication of record in the editorial sense ,  a daily edition that treats machine intelligence the way a broadsheet treats the world: sourced, dated, ranked, and printed without a single rounded corner. Every figure on this page is fictional, set to demonstrate the house style.",
 	},
 	{
 		q: "Why does everything have sharp corners?",
@@ -16,7 +16,7 @@ const FAQS = [
 	},
 	{
 		q: "What is the editorial red used for?",
-		a: "Sparingly, and only with intent — breaking badges, the period after a headline, step numerals, a hovered underline. Ninety-nine percent of the edition is black on warm paper. The red is the front-page exclamation, never the body text.",
+		a: "Sparingly, and only with intent ,  breaking badges, the period after a headline, step numerals, a hovered underline. Ninety-nine percent of the edition is black on warm paper. The red is the front-page exclamation, never the body text.",
 	},
 	{
 		q: "Do you publish corrections?",
@@ -24,15 +24,11 @@ const FAQS = [
 	},
 	{
 		q: "Can I read it on my phone?",
-		a: "Yes. On small screens the twelve-column grid collapses to a single column, the vertical rules become horizontal rules, and the masthead folds into a hamburger index — but the sharp corners, high contrast, and uppercase rubrics all hold.",
+		a: "Yes. On small screens the twelve-column grid collapses to a single column, the vertical rules become horizontal rules, and the masthead folds into a hamburger index ,  but the sharp corners, high contrast, and uppercase rubrics all hold.",
 	},
 ];
 
-/**
- * Letters & Questions: an accordion using the grid-rows-[0fr→1fr] height trick
- * for smooth, layout-stable expansion. The plus glyph rotates 45° to an ×.
- * Paired with an engraved editor portrait in an asymmetric 5/7 split.
- */
+
 export function Questions() {
 	const [open, setOpen] = useState<number | null>(0);
 
@@ -40,7 +36,7 @@ export function Questions() {
 		<section className="newsprint-texture border-b-4 border-ink bg-paper">
 			<div className="mx-auto max-w-screen-xl px-4 py-14 lg:py-16">
 				<div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-					{/* Portrait rail. */}
+					{}
 					<div className="lg:col-span-5 lg:border-r lg:border-ink lg:pr-10">
 						<Kicker>Section 06 · Letters</Kicker>
 						<h2 className="mt-4 font-serif text-4xl font-black uppercase leading-[0.95] tracking-tight lg:text-5xl">
@@ -61,7 +57,7 @@ export function Questions() {
 						</div>
 					</div>
 
-					{/* Accordion. */}
+					{}
 					<div className="lg:col-span-7">
 						<ul className="border-t border-ink">
 							{FAQS.map((item, i) => {

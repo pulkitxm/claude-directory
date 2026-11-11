@@ -2,22 +2,18 @@ import { cn } from "../lib/cn";
 import { brand } from "../lib/content";
 
 type LogoProps = {
-	/** Render the wordmark in pale mist for use on dark sections. */
+
 	onDark?: boolean;
 	className?: string;
 };
 
-/**
- * Brand lockup: a circular moss-green token holding a hand-drawn leaf-sprig
- * (the design-system's "circular moss container with white icon" rule) beside
- * the Fraunces wordmark.
- */
+
 export function Logo({ onDark = false, className }: LogoProps) {
 	return (
 		<a
 			href="#top"
 			className={cn("group inline-flex items-center gap-2.5", className)}
-			aria-label={`${brand.name} — home`}
+			aria-label={`${brand.name} ,  home`}
 		>
 			<span className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-soft transition-transform duration-500 ease-organic group-hover:rotate-[8deg] group-hover:scale-105">
 				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>

@@ -87,7 +87,7 @@ export function Blog() {
 								transitionDelay: `${i * 90}ms`,
 							}}
 						>
-							{/* emoji-sketch placeholder image */}
+							{}
 							<div
 								className="m-3 grid h-36 place-items-center border-2 border-dashed border-ink/40"
 								style={{ background: p.bg, borderRadius: radius.wobblyMd }}

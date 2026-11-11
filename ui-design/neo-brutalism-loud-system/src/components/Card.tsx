@@ -2,19 +2,17 @@ import type { HTMLAttributes, ReactNode } from "react";
 
 type CardProps = HTMLAttributes<HTMLDivElement> & {
 	children: ReactNode;
-	/** background token class, e.g. "bg-neo-white" | "bg-neo-secondary" */
+
 	bg?: string;
-	/** enable the hover lift (translate up + shadow grows). Default true. */
+
 	lift?: boolean;
-	/** resting shadow size */
+
 	shadow?: "md" | "lg";
-	/** white shadow variant for cards on black sections */
+
 	onDark?: boolean;
 };
 
-/* The signature container: bg + border-4 + sharp corners + a deep hard shadow.
-   On hover it physically LIFTS — translates up-left while the shadow grows,
-   the inverse of the button's click-down. */
+
 export function Card({
 	children,
 	bg = "bg-neo-white",

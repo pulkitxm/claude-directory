@@ -2,9 +2,7 @@ import { useState } from "react";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { Button, Input, Badge, ClayShape, display } from "./primitives";
 
-/* Closing CTA cradled in one large glass-clay container (rounded-[48px]+) with
-   orbiting shapes. A working email capture demonstrates the recessed input and
-   the squish button, then swaps to a confirmation. */
+
 export function Cta() {
 	const [email, setEmail] = useState("");
 	const [done, setDone] = useState(false);
@@ -18,7 +16,7 @@ export function Cta() {
 	return (
 		<section id="cta" className="px-5 py-16 sm:px-8 sm:py-24">
 			<div className="relative mx-auto w-full max-w-5xl">
-				{/* orbiting shapes */}
+				{}
 				<ClayShape
 					hue="amber"
 					className="-left-5 top-10 hidden h-16 w-16 animate-clay-float-slow lg:block"
@@ -30,7 +28,7 @@ export function Cta() {
 				/>
 
 				<div className="relative overflow-hidden rounded-[40px] clay-tray p-8 text-center shadow-clay-deep sm:rounded-[56px] sm:p-14">
-					{/* soft inner blob glow */}
+					{}
 					<div
 						aria-hidden
 						className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-clay-accent/15 blur-3xl"
@@ -54,7 +52,7 @@ export function Cta() {
 						</h2>
 						<p className="mt-5 max-w-xl text-lg leading-relaxed text-clay-muted">
 							Join 12,000+ makers building warmer, more tactile products. Free
-							to start — no card, no clay under your fingernails.
+							to start ,  no card, no clay under your fingernails.
 						</p>
 
 						{done ? (

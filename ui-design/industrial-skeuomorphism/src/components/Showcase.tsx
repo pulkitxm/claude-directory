@@ -7,7 +7,7 @@ const SPECS = [
 	"IP67 die-cast aluminium enclosure, fanless to 60°C",
 	"Quad-core 1.2GHz MCU with hardware-isolated safety core",
 	"Signed-firmware boot chain with rollback on fault",
-	"Hot-swappable I/O modules — no downtime to expand",
+	"Hot-swappable I/O modules ,  no downtime to expand",
 ];
 
 export function Showcase() {
@@ -18,11 +18,11 @@ export function Showcase() {
 					className="relative overflow-hidden rounded-2xl bg-chassis p-7 md:p-12"
 					style={{ boxShadow: "var(--shadow-card)" }}
 				>
-					{/* faint blueprint grid wash */}
+					{}
 					<div className="blueprint-grid pointer-events-none absolute inset-0 opacity-[0.08]" />
 
 					<div className="relative grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-						{/* schematic image — grayscale until hovered */}
+						{}
 						<motion.figure
 							variants={slideIn(-36)}
 							initial="hidden"
@@ -36,7 +36,7 @@ export function Showcase() {
 									style={{ boxShadow: "var(--shadow-recessed)" }}
 								>
 									<img
-										src="./assets/blueprint-unit.svg"
+										src="./assets/original-visual.svg"
 										alt="Exploded engineering schematic of the SCHEMATIC SX-1 control unit, annotated with dimensions and a bill of materials"
 										loading="lazy"
 										width={640}
@@ -51,7 +51,7 @@ export function Showcase() {
 							</Panel>
 						</motion.figure>
 
-						{/* copy */}
+						{}
 						<motion.div
 							variants={slideUp}
 							initial="hidden"
@@ -64,7 +64,7 @@ export function Showcase() {
 								eyebrow="THE HARDWARE"
 								tone="alert"
 								title="Engineered like the machines it commands"
-								lede="The SX-1 bridge is built to industrial spec — sealed, signed, and serviceable. It's the tactile core every SCHEMATIC deck is mounted on."
+								lede="The SX-1 bridge is built to industrial spec ,  sealed, signed, and serviceable. It's the tactile core every SCHEMATIC deck is mounted on."
 							/>
 
 							<ul className="mt-1 flex w-full flex-col gap-3">

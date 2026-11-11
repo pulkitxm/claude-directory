@@ -3,15 +3,12 @@ import { cn } from "@/lib/utils";
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 	children: ReactNode;
-	/** Render a pulsing "live network" dot on the left. */
+
 	live?: boolean;
 	tone?: "orange" | "gold" | "muted";
 }
 
-/**
- * Mono pill badge. With `live`, it shows a pinging dot suggesting live
- * on-chain network activity.
- */
+
 export function Badge({
 	className,
 	children,

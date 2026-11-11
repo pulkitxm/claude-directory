@@ -14,11 +14,11 @@ export function ComponentsShowcase() {
 			<SectionHeader
 				eyebrow="Components"
 				title="Primitives, fully wired"
-				lead="Buttons, inputs, badges, and cards — each carrying the system's shadows, glows, and expo-out states out of the box. Everything below is live."
+				lead="Buttons, inputs, badges, and cards ,  each carrying the system's shadows, glows, and expo-out states out of the box. Everything below is live."
 			/>
 
 			<div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
-				{/* Buttons */}
+				{}
 				<Reveal>
 					<SpotlightCard className="h-full">
 						<div className="flex h-full flex-col p-6 sm:p-8">
@@ -45,7 +45,7 @@ export function ComponentsShowcase() {
 					</SpotlightCard>
 				</Reveal>
 
-				{/* Input + badges */}
+				{}
 				<Reveal delay={0.08}>
 					<SpotlightCard className="h-full">
 						<div className="flex h-full flex-col p-6 sm:p-8">

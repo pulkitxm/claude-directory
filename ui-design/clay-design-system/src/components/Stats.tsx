@@ -2,9 +2,7 @@ import type { CSSProperties } from "react";
 import { useCountUp } from "../lib/useCountUp";
 import { Shell, SectionHeading, display, type OrbHue } from "./primitives";
 
-/* Breathing stat orbs. Perfect circles (rounded-full) that inflate/deflate
-   gently and grow on hover. Numbers count up on scroll, set in the display
-   face. 2 columns on mobile → 4 on desktop. */
+
 type Stat = {
 	value: number;
 	suffix: string;
@@ -89,7 +87,7 @@ export function Stats() {
 				<SectionHeading
 					eyebrow="By the numbers"
 					title="Substance you can feel"
-					lead="Every figure below is rendered in clay too — breathing orbs that grow when you reach for them."
+					lead="Every figure below is rendered in clay too ,  breathing orbs that grow when you reach for them."
 				/>
 				<div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4 md:gap-8">
 					{STATS.map((s, i) => (

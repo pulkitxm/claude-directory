@@ -1,10 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/**
- * Grayscale-by-default editorial plate with a printer's "Fig. x.x" caption.
- * Sits in a bordered frame; on hover the photo warms to sepia. A halftone
- * layer sits behind the image so even while it decodes you see print dots.
- */
+
 export function EditorialImage({
 	src,
 	alt,

@@ -49,7 +49,7 @@ const SCAPES: Scape[] = [
 	{
 		name: "Slow Tide",
 		icon: Moon,
-		mood: "The house track. Bioluminescent swells that rise and fall on a six-minute breath — our most-played soundscape, three nights running.",
+		mood: "The house track. Bioluminescent swells that rise and fall on a six-minute breath ,  our most-played soundscape, three nights running.",
 		meta: "Best for: anything",
 		from: "rgb(var(--coral) / 0.16)",
 		to: "rgb(var(--deep) / 0.2)",
@@ -57,7 +57,7 @@ const SCAPES: Scape[] = [
 	},
 ];
 
-/** A tiny animated waveform that lives in the corner of each card. */
+
 function Waveform() {
 	return (
 		<div className="flex items-end gap-[3px]" aria-hidden="true">
@@ -93,7 +93,7 @@ export function Soundscapes() {
 				</div>
 				<p className="max-w-xs text-[0.975rem] leading-relaxed text-mist">
 					Twelve generative beds, each tuned to a kind of work. They never loop,
-					so your ear never learns the pattern — and never tunes them out.
+					so your ear never learns the pattern ,  and never tunes them out.
 				</p>
 			</div>
 
@@ -110,7 +110,7 @@ export function Soundscapes() {
 						variants={staggerChild}
 						className={`group relative flex flex-col justify-between overflow-hidden rounded-card border border-line bg-deep/50 p-6 transition-all duration-300 ease-tide hover:-translate-y-1 hover:border-line-bright hover:shadow-lift ${s.span}`}
 					>
-						{/* mood wash */}
+						{}
 						<div
 							className="pointer-events-none absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-100"
 							style={{

@@ -7,14 +7,9 @@ import type {
 } from "react";
 import { fadeUp, REVEAL_TRANSITION, reveal } from "../lib/motion";
 
-/* ============================================================================
-   PRIMITIVES — the composable atoms of the Vaporwave / Outrun system.
-   Each maps onto a centralized component-token class in index.css so the
-   design rules (skew, glow, dual borders, terminal chrome, gradient text) are
-   defined ONCE and reused everywhere. Layout utilities layer on via className.
-   ========================================================================== */
 
-/* ---- Layout ------------------------------------------------------------- */
+
+
 export function Section({
 	id,
 	className = "",
@@ -41,7 +36,7 @@ export function Shell({
 	return <div className={`shell ${className}`}>{children}</div>;
 }
 
-/* Skewed neon eyebrow badge. */
+
 export function Eyebrow({
 	children,
 	className = "",
@@ -56,7 +51,7 @@ export function Eyebrow({
 	);
 }
 
-/* Section heading with a leading ">" terminal prompt and gradient option. */
+
 export function SectionHeading({
 	prompt = ">",
 	children,
@@ -80,7 +75,7 @@ export function SectionHeading({
 	);
 }
 
-/* ---- Buttons ------------------------------------------------------------ */
+
 type Variant = "primary" | "secondary" | "outline" | "ghost";
 type Size = "sm" | "md" | "lg";
 
@@ -132,7 +127,7 @@ export function ButtonLink({
 	);
 }
 
-/* ---- Card --------------------------------------------------------------- */
+
 export function Card({
 	hover = true,
 	className = "",
@@ -149,7 +144,7 @@ export function Card({
 	);
 }
 
-/* ---- Window chrome (terminal + file-explorer variants) ------------------ */
+
 export function Window({
 	title,
 	className = "",
@@ -209,7 +204,7 @@ export function Explorer({
 	);
 }
 
-/* ---- Terminal input ----------------------------------------------------- */
+
 export function Field({
 	className = "",
 	...rest
@@ -217,7 +212,7 @@ export function Field({
 	return <input className={`field ${className}`} {...rest} />;
 }
 
-/* ---- Rotating diamond icon container ------------------------------------ */
+
 export function Diamond({ children }: { children: ReactNode }) {
 	return (
 		<span className="diamond">
@@ -226,7 +221,7 @@ export function Diamond({ children }: { children: ReactNode }) {
 	);
 }
 
-/* ---- Scroll-revealed wrapper -------------------------------------------- */
+
 export function Reveal({
 	children,
 	className = "",

@@ -8,7 +8,7 @@ import {
 } from "./Primitives";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Testimonials — the only place Playfair Display appears, used for the pull
+// Testimonials ,  the only place Playfair Display appears, used for the pull
 // quotes to create elegant serif contrast against the sans headlines. A large
 // lead quote sits above a 1 → 2 → 3 column grid of supporting voices.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -23,7 +23,7 @@ export function Testimonials() {
 					<SectionLabel>From the studios</SectionLabel>
 				</Reveal>
 
-				{/* Lead pull quote — Playfair Display, oversized */}
+				{}
 				<Reveal className="mt-10 max-w-4xl">
 					<figure>
 						<span
@@ -38,12 +38,12 @@ export function Testimonials() {
 						<figcaption className="mt-8 flex items-center gap-3 label-mono">
 							<span aria-hidden className="h-px w-8 bg-accent" />
 							<span className="text-foreground">{lead.author}</span>
-							<span className="text-muted-foreground">— {lead.role}</span>
+							<span className="text-muted-foreground">,  {lead.role}</span>
 						</figcaption>
 					</figure>
 				</Reveal>
 
-				{/* Supporting voices */}
+				{}
 				<RevealGroup className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 lg:gap-8">
 					{rest.map((t) => (
 						<RevealItem key={t.author} as="div">

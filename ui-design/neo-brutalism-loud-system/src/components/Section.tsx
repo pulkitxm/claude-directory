@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { useInView } from "../hooks";
 
-/* Small all-caps eyebrow label, boxed and bordered like a filing tag. */
+
 export function SectionLabel({
 	children,
 	bg = "bg-neo-secondary",
@@ -20,9 +20,7 @@ export function SectionLabel({
 	);
 }
 
-/* Reveal: snaps children in (translate + opacity) the first time they scroll
-   into view. Fast + mechanical, no soft easing. Reduced motion shows them
-   immediately (useInView reports true at once). The stagger is delay-driven. */
+
 export function Reveal({
 	children,
 	delay = 0,

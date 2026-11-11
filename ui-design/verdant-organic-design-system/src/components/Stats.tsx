@@ -1,11 +1,7 @@
 import { stats } from "../lib/content";
 import { Reveal } from "./Reveal";
 
-/**
- * A quiet stats band on a stone tint. Numbers scale up gently on group-hover,
- * and a thin timber divider runs between columns on wider screens. Each cell is
- * its own group so hover is local.
- */
+
 export function Stats() {
 	return (
 		<section

@@ -1,12 +1,7 @@
 import { Cpu, Radio, Activity } from "lucide-react";
 import { cx } from "./primitives";
 
-/**
- * The hero "device" — a 3D control unit built ENTIRELY in CSS/SVG, no raster
- * image. Outer carbon-fibre bezel with a recessed CRT screen (scanlines), a
- * live abstract dashboard, hardware side-buttons, and a power LED. Scales on
- * hover for tactility.
- */
+
 export function DeviceMockup({ className }: { className?: string }) {
 	return (
 		<div
@@ -14,7 +9,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 			aria-label="SCHEMATIC SX-1 control unit, live dashboard"
 			role="img"
 		>
-			{/* Hardware side buttons (left edge) */}
+			{}
 			<div className="absolute -left-2 top-[26%] z-20 flex flex-col gap-3">
 				{[0, 1, 2].map((i) => (
 					<span
@@ -27,7 +22,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 					/>
 				))}
 			</div>
-			{/* Tactile knob (right edge) */}
+			{}
 			<div className="absolute -right-3 top-[42%] z-20">
 				<span
 					className="block h-12 w-6 rounded-r-xl bg-chassis"
@@ -39,7 +34,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 				</span>
 			</div>
 
-			{/* Outer bezel */}
+			{}
 			<div
 				className="relative rounded-[24px] p-3 transition-transform duration-500 ease-mech group-hover/device:scale-[1.02]"
 				style={{
@@ -50,7 +45,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 			>
 				<div className="carbon pointer-events-none absolute inset-0 rounded-[24px] opacity-20 mix-blend-overlay" />
 
-				{/* Top hardware strip: brand etch + power LED + vents */}
+				{}
 				<div className="mb-2.5 flex items-center justify-between px-1.5">
 					<span className="stamp text-[0.55rem] text-slate-soft/70">
 						SX-1&nbsp;//&nbsp;CTRL
@@ -72,7 +67,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 					</div>
 				</div>
 
-				{/* Recessed screen */}
+				{}
 				<div
 					className="relative aspect-square w-full overflow-hidden rounded-[14px] md:aspect-[4/3]"
 					style={{
@@ -83,7 +78,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 					}}
 				>
 					<Dashboard />
-					{/* Scanlines + glass glare */}
+					{}
 					<div className="scanlines pointer-events-none absolute inset-0 opacity-60" />
 					<div
 						className="pointer-events-none absolute inset-0"
@@ -94,7 +89,7 @@ export function DeviceMockup({ className }: { className?: string }) {
 					/>
 				</div>
 
-				{/* Bottom control row: speaker grille + buttons */}
+				{}
 				<div className="mt-2.5 flex items-center justify-between px-1.5">
 					<div className="flex gap-[3px]">
 						{Array.from({ length: 7 }).map((_, i) => (
@@ -123,11 +118,11 @@ export function DeviceMockup({ className }: { className?: string }) {
 	);
 }
 
-/* The abstract on-screen dashboard — glowing readouts, loaders, EQ, status. */
+
 function Dashboard() {
 	return (
 		<div className="absolute inset-0 flex flex-col gap-3 p-4 font-mono text-[#9fe7c4]">
-			{/* Header readout */}
+			{}
 			<div className="flex items-center justify-between">
 				<span className="flex items-center gap-1.5 text-[0.6rem] tracking-widest text-[#7fb0cc]">
 					<Activity size={12} strokeWidth={2} className="text-accent" />
@@ -138,7 +133,7 @@ function Dashboard() {
 				</span>
 			</div>
 
-			{/* Big metric */}
+			{}
 			<div className="flex items-end gap-2">
 				<span className="text-[2.1rem] font-bold leading-none text-white drop-shadow-[0_0_8px_rgba(159,231,196,0.5)]">
 					98.6
@@ -152,7 +147,7 @@ function Dashboard() {
 				</span>
 			</div>
 
-			{/* Loading status bars */}
+			{}
 			<div className="flex flex-col gap-2">
 				{[
 					{ label: "CORE", w: "animate-bar-load" },
@@ -187,9 +182,9 @@ function Dashboard() {
 				))}
 			</div>
 
-			{/* Bottom row: spinner + EQ + node grid */}
+			{}
 			<div className="mt-auto grid grid-cols-3 items-end gap-2">
-				{/* Spinner */}
+				{}
 				<div className="flex flex-col items-center gap-1.5">
 					<span
 						className="block h-9 w-9 animate-spin rounded-full border-2 border-[#7fb0cc]/25 border-t-accent"
@@ -199,7 +194,7 @@ function Dashboard() {
 						SYNC
 					</span>
 				</div>
-				{/* EQ */}
+				{}
 				<div className="flex h-12 items-end justify-center gap-[3px]">
 					{[0.2, 0.45, 0.3, 0.6, 0.35, 0.5].map((d, i) => (
 						<span
@@ -212,7 +207,7 @@ function Dashboard() {
 						/>
 					))}
 				</div>
-				{/* Node grid */}
+				{}
 				<div className="flex flex-col items-end gap-1.5">
 					<div className="grid grid-cols-3 gap-1">
 						{Array.from({ length: 9 }).map((_, i) => (
@@ -233,7 +228,7 @@ function Dashboard() {
 				</div>
 			</div>
 
-			{/* Corner watermark */}
+			{}
 			<Radio
 				size={64}
 				strokeWidth={1}

@@ -1,9 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/**
- * BrandMark — the Lumina wordmark: a gradient accent glyph + the name.
- * Shared by the navbar and footer so the brand stays in one place.
- */
+
 export function BrandMark({
 	href = "#top",
 	className,

@@ -11,8 +11,7 @@ const LINKS = [
 	{ label: "FAQ", href: "#faq" },
 ];
 
-/* Sticky header: tonal, with the spec's signature border-bottom + backdrop-blur.
-   The mobile drawer slides down on a state-driven height transition. */
+
 export function Nav() {
 	const [open, setOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
@@ -43,7 +42,7 @@ export function Nav() {
 				<a
 					href="#top"
 					className="focus-ring rounded-full"
-					aria-label="Lumi — home"
+					aria-label="Lumi ,  home"
 				>
 					<Logo />
 				</a>
@@ -80,7 +79,7 @@ export function Nav() {
 				</button>
 			</div>
 
-			{/* Mobile drawer — height transition, no layout jump. */}
+			{}
 			<div
 				className={`overflow-hidden border-t border-[var(--color-md-outline-variant)] bg-[var(--color-md-bg)] transition-[max-height,opacity] duration-300 ease-[cubic-bezier(0.2,0,0,1)] md:hidden ${
 					open ? "max-h-[26rem] opacity-100" : "max-h-0 opacity-0"

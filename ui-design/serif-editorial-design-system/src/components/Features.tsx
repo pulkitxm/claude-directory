@@ -11,7 +11,7 @@ const plateFor = {
 export function Features() {
 	return (
 		<Section id="features">
-			{/* lead-in */}
+			{}
 			<div className="mx-auto max-w-3xl text-center">
 				<SectionLabel className="mx-auto mb-8 max-w-sm">The House</SectionLabel>
 				<h2
@@ -21,14 +21,14 @@ export function Features() {
 					Made the slow way, on purpose.
 				</h2>
 				<p className="dropcap prose-editorial mx-auto mt-7 max-w-2xl text-left text-[1.05rem] leading-relaxed text-muted-foreground sm:text-center">
-					Roman &amp; Quill keeps three rooms — one for reading, one for
+					Roman &amp; Quill keeps three rooms ,  one for reading, one for
 					setting, one for binding. A manuscript moves through them in order and
 					at its own pace. What follows is not a feature list so much as a
 					description of the work we refuse to rush.
 				</p>
 			</div>
 
-			{/* feature grid */}
+			{}
 			<div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-7">
 				{features.map((f) => {
 					const Plate = plateFor[f.plate];

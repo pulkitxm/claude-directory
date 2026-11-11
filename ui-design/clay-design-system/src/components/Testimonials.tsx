@@ -2,9 +2,7 @@ import type { CSSProperties } from "react";
 import { Star, Quote } from "lucide-react";
 import { Shell, SectionHeading, Card, Reveal, display } from "./primitives";
 
-/* Testimonial cards that float up on hover. Amber star ratings, a soft quote
-   glyph, and a gradient avatar orb per author. Single column on mobile → three
-   across on desktop. */
+
 
 type Testimonial = {
 	quote: string;
@@ -18,7 +16,7 @@ type Testimonial = {
 const ITEMS: Testimonial[] = [
 	{
 		quote:
-			"We swapped our flat card system for Claymakers in an afternoon. Engagement on our pricing page jumped — people literally want to press the buttons.",
+			"We swapped our flat card system for Claymakers in an afternoon. Engagement on our pricing page jumped ,  people literally want to press the buttons.",
 		name: "Mara Liang",
 		role: "Head of Product, Doughy",
 		avatar: "linear-gradient(135deg,#c4b5fd,#7c3aed)",
@@ -52,7 +50,7 @@ export function Testimonials() {
 				<SectionHeading
 					eyebrow="Loved by makers"
 					title="Squishy, but seriously shippable"
-					lead="Teams across product, design and engineering reach for clay — and their audits and dashboards agree."
+					lead="Teams across product, design and engineering reach for clay ,  and their audits and dashboards agree."
 				/>
 
 				<div className="mt-14 grid gap-6 md:grid-cols-3">

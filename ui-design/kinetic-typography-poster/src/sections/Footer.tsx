@@ -19,11 +19,7 @@ const NAV_COLUMNS = [
 	},
 ];
 
-/**
- * Acid-flooded footer: a closing display lockup, a four-column nav grid, and a
- * final perpetual marquee so the page is still moving as it ends. Black on acid
- * keeps the contrast extreme.
- */
+
 export function Footer() {
 	return (
 		<footer className="bg-acid text-acid-foreground">
@@ -67,7 +63,7 @@ export function Footer() {
 				</div>
 			</div>
 
-			{/* Closing perpetual marquee — black band so motion persists to the end. */}
+			{}
 			<div className="border-t-2 border-acid-foreground bg-ink py-4 text-bone">
 				<KineticMarquee speed={70} label="Sign-off">
 					<span className="px-8 text-xl font-bold uppercase tracking-tighter md:text-3xl">

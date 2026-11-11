@@ -8,27 +8,15 @@ import type {
 import { forwardRef } from "react";
 import { useReveal } from "../lib/useReveal";
 
-/* ============================================================================
-   CLAYMORPHISM PRIMITIVES
-   ----------------------------------------------------------------------------
-   The composable building blocks every section shares. The clay "physics"
-   (convex bulge, concave press, super-rounded radii, the squish, the float)
-   live here exactly once. Sections compose these — they never re-declare a
-   shadow stack or a radius by hand.
-   ========================================================================== */
 
-/* The Nunito display face, applied via inline style as the system mandates for
-   all headings / numbers / labels. Centralized so it's literally one object. */
+
+
 export const display: CSSProperties = { fontFamily: "Nunito, sans-serif" };
 
 const cx = (...parts: (string | false | undefined)[]) =>
 	parts.filter(Boolean).join(" ");
 
-/* ---------------------------------------------------------------------------
-   1. THE UNIVERSAL CARD
-   Glass-clay surface, super-rounded, floats up on hover with a deeper shadow.
-   `as="article"` keeps semantics meaningful where it matters (feature grid).
-   ------------------------------------------------------------------------- */
+
 export function Card({
 	children,
 	className = "",
@@ -53,18 +41,13 @@ export function Card({
 			)}
 			{...rest}
 		>
-			{/* Inner content wrapper so absolute-positioned decorations can peek
-			    behind the content without affecting layout. */}
+			{}
 			<div className="relative z-10 flex h-full flex-col">{children}</div>
 		</Tag>
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   2. THE CLAY BUTTON
-   Bulges out (convex), lifts on hover, and squishes hard on click
-   (scale-[0.92] + the pressed/recessed shadow). One element, every variant.
-   ------------------------------------------------------------------------- */
+
 type Variant = "primary" | "secondary" | "outline" | "ghost";
 type Size = "sm" | "md" | "lg";
 
@@ -141,10 +124,7 @@ export function ButtonLink({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   3. THE RECESSED INPUT
-   Pressed INTO the surface at rest; pops to a raised white surface on focus.
-   ------------------------------------------------------------------------- */
+
 export const Input = forwardRef<
 	HTMLInputElement,
 	InputHTMLAttributes<HTMLInputElement>
@@ -163,11 +143,7 @@ export const Input = forwardRef<
 	);
 });
 
-/* ---------------------------------------------------------------------------
-   ICON ORB — the gradient pill behind every feature/benefit icon. The drop
-   shadow is tinted to the orb's own hue via the --orb custom property so the
-   colored light reads correctly. Square (rounded-2xl) or circular.
-   ------------------------------------------------------------------------- */
+
 export type OrbHue = "violet" | "pink" | "sky" | "emerald" | "amber" | "indigo";
 
 const orbGradient: Record<OrbHue, string> = {
@@ -223,9 +199,7 @@ export function IconOrb({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   BADGE / PILL — small rounded-full chip. Tone tints text + tinted fill.
-   ------------------------------------------------------------------------- */
+
 type BadgeTone = "violet" | "pink" | "sky" | "emerald" | "amber" | "neutral";
 const badgeTone: Record<BadgeTone, string> = {
 	violet: "bg-clay-accent/12 text-clay-accent",
@@ -259,7 +233,7 @@ export function Badge({
 	);
 }
 
-/* Uppercase tracked eyebrow label. */
+
 export function Eyebrow({
 	children,
 	className = "",
@@ -280,7 +254,7 @@ export function Eyebrow({
 	);
 }
 
-/* Constrained content shell. */
+
 export function Shell({
 	children,
 	className = "",
@@ -295,8 +269,7 @@ export function Shell({
 	);
 }
 
-/* A standard section title block (eyebrow + heading + lead) used across the
-   page so every section header has identical rhythm. */
+
 export function SectionHeading({
 	eyebrow,
 	title,
@@ -344,9 +317,7 @@ export function SectionHeading({
 	);
 }
 
-/* A reveal wrapper for arbitrary blocks — keeps the one-shot entrance
-   consistent without each call wiring its own observer. `pop` swaps the rise
-   for a springy pop (used for orbs / badges). */
+
 export function Reveal({
 	children,
 	className = "",
@@ -371,11 +342,7 @@ export function Reveal({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   FLOATING BLOBS — the ambient colored lighting that shows through the glass
-   cards. Fixed, behind everything, drifting on two axes. Rendered once at the
-   app root so every section sits in the same lit "world".
-   ------------------------------------------------------------------------- */
+
 export function Blobs() {
 	return (
 		<div
@@ -390,7 +357,7 @@ export function Blobs() {
 	);
 }
 
-/* A decorative free-floating clay shape (used to orbit the hero headline). */
+
 export function ClayShape({
 	className = "",
 	style,

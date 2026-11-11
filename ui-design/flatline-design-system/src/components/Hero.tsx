@@ -3,16 +3,14 @@ import { ArrowRight, Sparkles, Check } from "lucide-react";
 import { Blob, Square, Shell, ButtonLink } from "./primitives";
 import { fadeUp, stagger } from "../lib/motion";
 
-/* HERO — vibrant Blue full-section color block. Big decorative geometry behind
-   a bold typographic headline, paired with an abstract flat-shape composition.
-   This is the "poster". */
+
 export function Hero() {
 	return (
 		<section
 			id="top"
 			className="on-color relative overflow-hidden bg-[var(--color-brand)] text-white"
 		>
-			{/* Decorative geometry — solid flat shapes, low opacity, no blur. */}
+			{}
 			<Blob className="-right-32 -top-40 h-[34rem] w-[34rem] bg-white/10" />
 			<Blob className="-bottom-44 -left-32 h-[30rem] w-[30rem] bg-[var(--color-brand-deep)]/60" />
 			<Square
@@ -26,7 +24,7 @@ export function Hero() {
 			<Blob className="left-[40%] top-10 h-16 w-16 bg-[var(--color-grass)]/40" />
 
 			<Shell className="relative grid items-center gap-14 py-20 lg:grid-cols-12 lg:py-28">
-				{/* Copy */}
+				{}
 				<motion.div
 					variants={stagger}
 					initial="hidden"
@@ -54,7 +52,7 @@ export function Hero() {
 						className="mt-6 max-w-xl text-lg leading-relaxed text-blue-50 sm:text-xl"
 					>
 						A confidently reductive design system. No shadows, no fake depth, no
-						gradients — just bold color blocks, geometric purity, and typography
+						gradients ,  just bold color blocks, geometric purity, and typography
 						that carries the entire hierarchy.
 					</motion.p>
 
@@ -97,7 +95,7 @@ export function Hero() {
 					</motion.ul>
 				</motion.div>
 
-				{/* Abstract flat-shape composition (the "illustration"). */}
+				{}
 				<motion.div
 					initial={{ opacity: 0, scale: 0.94 }}
 					animate={{ opacity: 1, scale: 1 }}
@@ -111,14 +109,13 @@ export function Hero() {
 	);
 }
 
-/* Pure flat geometry assembled into a balanced poster composition. Every shape
-   is solid color with consistent radii — overlap creates interest, not depth. */
+
 function FlatComposition() {
 	return (
 		<div className="relative mx-auto aspect-square w-full max-w-md">
-			{/* Backdrop card */}
+			{}
 			<div className="absolute inset-0 rounded-lg bg-white" />
-			{/* Header bar */}
+			{}
 			<div className="absolute left-6 right-6 top-6 flex items-center gap-2">
 				<span className="h-3 w-3 rounded-full bg-[var(--color-brand)]" />
 				<span className="h-3 w-3 rounded-full bg-[var(--color-sun)]" />
@@ -126,7 +123,7 @@ function FlatComposition() {
 				<span className="ml-2 h-3 flex-1 rounded-full bg-[var(--color-fog)]" />
 			</div>
 
-			{/* Big tile + circle */}
+			{}
 			<motion.div
 				animate={{ y: [0, -10, 0] }}
 				transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -144,20 +141,20 @@ function FlatComposition() {
 			/>
 			<div className="absolute right-6 top-44 h-[4.5rem] w-[10.5rem] rounded-lg bg-[var(--color-grass)]" />
 
-			{/* Type-scale bars */}
+			{}
 			<div className="absolute bottom-20 left-6 right-6 space-y-3">
 				<div className="h-5 w-3/4 rounded bg-[var(--color-ink)]" />
 				<div className="h-3 w-full rounded bg-[var(--color-fog)]" />
 				<div className="h-3 w-5/6 rounded bg-[var(--color-fog)]" />
 			</div>
 
-			{/* Footer chips */}
+			{}
 			<div className="absolute bottom-6 left-6 right-6 flex gap-3">
 				<div className="h-9 w-24 rounded-md bg-[var(--color-brand)]" />
 				<div className="h-9 w-9 rounded-md border-2 border-[var(--color-hair)]" />
 			</div>
 
-			{/* Floating accent square breaking the frame */}
+			{}
 			<motion.div
 				animate={{ rotate: [10, 18, 10] }}
 				transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}

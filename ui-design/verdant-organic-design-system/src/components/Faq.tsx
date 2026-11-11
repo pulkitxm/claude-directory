@@ -3,11 +3,7 @@ import { faqs } from "../lib/content";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-/**
- * FAQ built on native <details>/<summary> for free keyboard accessibility and
- * no JS state. The chevron rotates via the `group-open:` variant, and each
- * panel is an organically-rounded card with a hover tint.
- */
+
 export function Faq() {
 	return (
 		<section className="relative bg-muted/40 px-4 py-32 sm:px-6 lg:px-8">

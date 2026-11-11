@@ -1,8 +1,4 @@
-/* =============================================================================
-   SOFTFORM — interactions
-   Vanilla JS, no dependencies. Progressive enhancement: the page is fully
-   readable without it; this layer adds the tactile behaviour.
-   ============================================================================= */
+
 (() => {
 	"use strict";
 	const $ = (sel, root = document) => root.querySelector(sel);
@@ -12,7 +8,7 @@
 		"(prefers-reduced-motion: reduce)",
 	).matches;
 
-	/* -------------------------------------------------- Soft dark-mode toggle */
+
 	const root = document.documentElement;
 	const themeToggle = $("#theme-toggle");
 	const THEME_KEY = "softform-theme";
@@ -44,7 +40,7 @@
 		});
 	}
 
-	/* ----------------------------------------------------- Mobile slide menu */
+
 	const burger = $("#burger");
 	const mobileMenu = $("#mobile-menu");
 	function setMenu(open) {
@@ -80,7 +76,7 @@
 		});
 	}
 
-	/* ------------------------------------------------- Sticky-header shadow */
+
 	const header = $(".site-header");
 	if (header) {
 		const onScroll = () =>
@@ -89,14 +85,14 @@
 		window.addEventListener("scroll", onScroll, { passive: true });
 	}
 
-	/* ---------------------------------------------------- Seamless marquee */
+
 	const track = $("#marquee-track");
 	if (track) {
 		// Duplicate the content once so a -50% translate loops seamlessly.
 		track.innerHTML += track.innerHTML;
 	}
 
-	/* ------------------------------------------------------- Scroll reveals */
+
 	const revealEls = $$(
 		".section-head, .depth-card, .feature-card, .panel, .swatch-card, .ladder-card, .cta-card",
 	);
@@ -119,7 +115,7 @@
 		revealEls.forEach((el) => io.observe(el));
 	}
 
-	/* --------------------------------------------------- Hero stat count-ups */
+
 	const stats = $$(".stat-num");
 	function runCount(el) {
 		const target = parseFloat(el.dataset.count || "0");
@@ -163,7 +159,7 @@
 		}
 	}
 
-	/* ------------------------------------------------------------- Switch */
+
 	const sw = $("#demo-switch");
 	if (sw) {
 		sw.addEventListener("click", () => {
@@ -174,7 +170,7 @@
 		});
 	}
 
-	/* -------------------------------------------------- Segmented control */
+
 	$$(".segmented").forEach((group) => {
 		const segs = $$(".seg", group);
 		segs.forEach((seg) => {
@@ -185,7 +181,7 @@
 		});
 	});
 
-	/* -------------------------------------------------------------- Slider */
+
 	const slider = $("#slider");
 	const fill = $("#slider-fill");
 	const thumb = $("#slider-thumb");
@@ -250,7 +246,7 @@
 		setValue(60);
 	}
 
-	/* --------------------------------------------------- Signup validation */
+
 	const form = $("#signup-form");
 	const email = $("#signup-email");
 	const note = $("#signup-note");
@@ -273,7 +269,7 @@
 		});
 		email.addEventListener("input", () => {
 			if (note.dataset.state === "error") {
-				note.textContent = "No spam — just shadow updates.";
+				note.textContent = "No spam ,  just shadow updates.";
 				note.dataset.state = "idle";
 			}
 		});

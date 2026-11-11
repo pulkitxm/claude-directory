@@ -36,14 +36,14 @@ function QuoteCard({ quote }: { quote: Quote }) {
 	return (
 		<RevealItem className={cn(quote.offset && "lg:-translate-y-8")}>
 			<figure className="relative h-full overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-				{/* Oversized decorative quote mark */}
+				{}
 				<span
 					aria-hidden
 					className="pointer-events-none absolute -right-2 -top-6 font-display text-[120px] leading-none text-accent/[0.08]"
 				>
 					&rdquo;
 				</span>
-				{/* Accent bar */}
+				{}
 				<span className="block h-1 w-10 rounded-full bg-gradient-to-r from-accent to-accent-secondary" />
 				<blockquote className="relative mt-6 text-lg leading-relaxed text-foreground/90">
 					{quote.body}

@@ -1,9 +1,4 @@
-/**
- * Fixed, full-viewport SVG noise overlay. feTurbulence (baseFrequency 0.8,
- * numOctaves 4) gives a print/poster grain; it sits at opacity 0.03 with
- * mix-blend-overlay so it never touches readability. Decorative, so it's
- * aria-hidden — but the SVG keeps a <title> for any tooling that inspects it.
- */
+
 export function Noise() {
 	return (
 		<div

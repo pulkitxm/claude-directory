@@ -1,0 +1,31 @@
+# Deployment remediation status
+
+The owner approved branch publication and review PR creation. Merging, deployments, old-artifact removal and deployed verification remain pending separate approval. Closing requested Dependabot PRs is a separate authorized metadata action.
+
+| Published URL or artifact | Hosting/source | Prepared change | Current status and required action |
+| --- | --- | --- | --- |
+| https://claude-directory.pulkitxm.com/ and every project/media URL | `pulkitxm/claude-directory`, GitHub Pages workflow | Allowlisted catalog only, clean output rebuild, independent visuals, source/capture/archive exclusion, manual publication gate | API reports built Pages with this custom domain, workflow publishing and main source. Fresh deployment requires approval. Shell requests return 403, which does not establish withdrawal. Verify every removed project and asset directly after deploying. |
+| https://pulkitxm.github.io/claude-directory/ | Default GitHub Pages hostname | Same artifact | Verify redirect and absence of old files on default/custom hosts after deployment. |
+| https://pulkit.page/claude-directory/ and child project/pagination routes | `pulkitxm/pulkit.page`, portfolio Pages | Separate branch `ip-remediation-portfolio`: text review notice; no previews, code, prompts, search index, downloads or stale gallery bundle | Live browser inspection still shows 550 projects. Local portfolio builds and withdrawal checks pass. Publication and deployed 404 checks pending. |
+| https://www.pulkit.page/claude-directory/ and https://pulkitxm.github.io/pulkit.page/claude-directory/ | Portfolio aliases/default origin | Same portfolio branch | Alias behavior and stale direct routes must be verified after publishing. |
+| https://pulkit.page/projects/, https://pulkit.page/work-with-me/, https://pulkit.page/events/my-first-talk/ | Same portfolio | Remove gallery promotion and two old promotional slides; preserve unrelated portfolio/event work | Prepared, local checks pass; live verification pending. |
+| https://pulkit.blog/my-first-talk/ | Portfolio monorepo blog published to `pulkitxm/pulkit.blog:gh-pages` | Remove old demo/video embeds, promotion and five captures | Live article/capture remains available with max-age=600. Local blog build passes. Approve separate destination publication, then verify old assets and variants return 404 after cache expiry. Publisher now uses Pukbot with artifact, approval, permission and race checks. Missing target-only BLOG_PUBLISH_TOKEN blocks publishing until approved credential setup. |
+| https://www.pulkit.blog/ and https://pulkitxm.github.io/pulkit.blog/ | Blog aliases/default origin | Same blog artifact | Verify redirects, revised article and deleted capture variants on every hostname. |
+| https://pulkitxm.com/claude-directory/ | Legacy linked gallery domain | Remove legacy promotion in docs and portfolio | Shell observes redirect behavior but final hosting/ownership is not verified. Owner must confirm destination, withdraw stale direct routes and check CDN caches. |
+| https://pulkitxm.github.io/claude-directory-ppt/ | Separate `pulkitxm/claude-directory-ppt` Pages repository | Separate deck remediation checkout: withdraw presentation and promo recording, text notice and manual publication gate | Branch `ip-remediation-deck` is prepared and locally verified. Two identical HTML decks with embedded MP4/PNG content and the standalone promo were withdrawn. Live root, deck and promo remain HTTP 200 with max-age=600; approved publication, cache expiry and direct-URL verification pending. |
+| https://youtu.be/mc3AYQplnM8 and https://youtu.be/fYsE_CJn_rY | External launch/talk video hosts | Remove embeds and links locally | Hosted recordings not modified. Owner access/review required to withdraw or replace disputed portions. |
+| GitHub raw URLs, source downloads, old branches/PR refs and deployment records | GitHub | Current-tree removals and history plan | Baseline still publicly accessible. 74 branch refs, no tags/releases/Actions artifacts returned, 619 deployments. Do not confuse closed PRs with removed content. |
+
+The portfolio report is `portfolio-ip-remediation.md` on the separate portfolio branch. It inventories removed file hashes, live observations, all local checks and detailed publication steps. The original main backup is not a deployment destination and must stay private.
+
+## Approved-publication checklist
+
+1. Review all three repository diffs, project classification records, provenance and license notices. Branch publication and review PRs are approved. Review and approve merges and deployments separately. No approval is inferred from elapsed time or passing tests.
+2. Configure required owner approval on the hosting environments. The primary workflow has no push trigger and requires `workflow_dispatch` with `publish=true`; do not restore automatic deployment or use a previously built artifact.
+3. Configure the missing target-only BLOG_PUBLISH_TOKEN in the pulkit-blog environment after approval. The prepared publisher uses Pukbot and fails closed without it. Trigger fresh builds only after approval, against reviewed revisions.
+4. Verify the actual deployed gallery/index and mobile/desktop retained previews. Request every removed project route, source capture, original media, demo.mp4, poster, downloadable archive and generated thumbnail directly on all hostnames. Expect 404/410, not a cached 200 or a successful fallback that still embeds removed content.
+5. Check HTML, CSS, JS, service workers, sitemaps, feeds, image optimizations, social cards, old hashed bundles, GitHub default origins and previously copied artifacts. Ensure no source-based downloader can bypass the catalog.
+6. Recheck after known cache lifetimes, including the observed 600-second blog cache. Request GitHub/CDN purge or support removal if origin replacement does not clear old bytes. Review external videos and social launch posts through their owners.
+7. Record tested URL, approved revision, status, content/hash and timestamp in the final deployment log. Until then, all live cleanup remains pending, even though local builds pass.
+
+No deployed version is claimed remediated by this report. HTTP 403 responses and inaccessible endpoints are unresolved observations, not proof that disputed content has been removed.

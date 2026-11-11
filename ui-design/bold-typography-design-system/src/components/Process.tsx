@@ -2,8 +2,8 @@ import { process } from "../data/content";
 import { Reveal, RevealGroup, RevealItem, SectionLabel } from "./Primitives";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Process ("How It Works") — three steps laid out as number | title | description.
-// The oversized step numerals sit in border color and snap to accent on hover —
+// Process ("How It Works") ,  three steps laid out as number | title | description.
+// The oversized step numerals sit in border color and snap to accent on hover ,
 // a pure 150ms color change, no movement, exactly as the spec describes.
 // ─────────────────────────────────────────────────────────────────────────────
 
