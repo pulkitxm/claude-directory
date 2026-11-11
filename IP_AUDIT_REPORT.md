@@ -42,6 +42,12 @@ The source follow-up was squash merged through [PR1393](https://github.com/pulki
 
 The owner prioritized current-repository verification before portfolio restoration or reconsideration of other removed nonpremium projects. Neither restoration is part of this follow-up. Historical refs, external correspondence and any privately granted rights remain separate review items.
 
+## Removed nonpremium project re-review
+
+The follow-up re-reviewed all216 removed projects outside the premium directory using original baseline documents, implementation and asset hashes, and primary licensing sources. Fourteen conditional restoration candidates were identified: five small independent UI/interaction experiments, six licensed shader integrations, and three integrations of upstream MIT components. The other202 remain withheld because precise code, design, or asset grants are missing or restrictive. A nonpremium folder name, a permissive framework dependency, or free preview access does not establish a right to redistribute a complete template.
+
+The complete decisions are in [compliance/nonpremium-review.json](compliance/nonpremium-review.json), with separate source/licensing records in compliance/nonpremium-reviews/. Candidates remain outside public distribution until old captures/media/fonts/claims are removed, all retained source and licenses are verified, and functionality is tested. No paid template is being rebuilt from its former reference. This re-review does not authorize historical rewriting or public removal requests to other repository owners.
+
 ## Remaining review and limits
 
 This is a conservative technical remediation, not a legal clearance. Independently briefed projects were not compared against every possible outside design or snippet, and generated authorship is not proof of ownership. Review substantial similarity, supplied prompt ownership, trademark/publicity rights and any private licenses with qualified counsel or the relevant creator as appropriate. No disputed project should be restored solely because it builds or its filenames differ.
