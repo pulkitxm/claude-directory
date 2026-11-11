@@ -4,6 +4,8 @@ A collection of AI-assisted design experiments and useful starting points for de
 
 The current catalog contains **145 projects** with reviewed source and code-generated visuals. Standalone media files are excluded from project source. Fresh screenshots and recordings belong to the separate gallery publishing process. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
 
+The approved main history purge is published. A [fresh network clone](compliance/history-publication-fresh-clone.json) verifies the selected media and withdrawn source are absent from rewritten main history. Start new work from a fresh clone, following [the checkout instructions](HISTORY_REMEDIATION_PLAN.md#contributor-checkout-reset). GitHub-managed PR refs, forks, caches and older artifacts remain separate actions recorded in [the publication receipt](compliance/history-publication.json).
+
 Run `make compliance`, `make test`, and `make build`. The builder publishes only projects listed in `compliance/projects.json`; it does not archive the repository. Publishing requires a reviewed manual workflow dispatch.
 
 ## 3d-games (1)
