@@ -1,5 +1,12 @@
 # Repository IP audit report
 
+## Current media-free distribution
+
+All 151 standalone original media files have now been removed from the current source, including 150 SVG drawings and one gradient MP4. All 145 reviewed projects remain. Visible media slots use original CSS-generated visuals; Apex uses a procedural scroll scene. Empty data favicons prevent stale media requests. The coastal 3D scene bundles its pinned, MIT-licensed Three.js package locally. The source guard rejects standalone media even when a provenance entry exists, and the static publication copier excludes media files. Exact removed hashes and renewed source review records are in [compliance/media-removal.json](compliance/media-removal.json). Earlier media counts below describe the named prior snapshots.
+
+Current-source tests and safeguards pass. Final full-build, browser, deployment and historical-purge verification are tracked separately and are not implied by this source change. Premium templates remain excluded. Removing assets does not itself resolve every possible design or other right.
+
+
 Audit date: 2026-11-11. Baseline: `f3d7e12f34bf7d90130dce3ec3b26cf69c29794e`. Initial branch: `ip-remediation`; deeper verification branch: `copyright-verification`. Scope: all 77,104 tracked files and all 546 project directories, including hidden capture trees, every category, root metadata, scripts, agent workflows, licenses and deployment configurations. The portfolio and presentation repositories were also remediated, merged and deployed.
 
 ## Outcome

@@ -100,22 +100,22 @@
       q: "The mock simulations broke down exactly where I lost time. By prelims I had the decisive hour mapped out minute by minute.",
       n: "Aarav Menon",
       r: "UPSC CSE ,  AIR 212",
-      img: "original-visual.svg"
+      img: "field-2"
     }, {
       q: "Speed maths and DI drills here are unlike anything else. The mentors treat every test like the real selection board.",
       n: "Ritika Bansal",
       r: "IBPS PO 2024",
-      img: "original-visual.svg"
+      img: "field-3"
     }, {
       q: "Concept clarity first, then relentless practice. That order is why my reasoning accuracy finally held under pressure.",
       n: "Karan Deshmukh",
       r: "SSC CGL Qualifier",
-      img: "original-visual.svg"
+      img: "field-1"
     }, {
       q: "The performance analysis sessions found weak spots I never knew I had. Two months later I cleared RRB NTPC.",
       n: "Sneha Pillai",
       r: "RRB NTPC Selected",
-      img: "original-visual.svg"
+      img: "field-2"
     }];
     var slots = document.querySelectorAll(".tcard");
     if (slots.length === 2) {
@@ -128,8 +128,8 @@
         foot.classList.add("fade-out");
         setTimeout(() => {
           quote.textContent = `“${d.q}”`;
-          foot.querySelector("img").src = d.img;
-          foot.querySelector("img").alt = d.n;
+          foot.querySelector(".procedural-visual").dataset.visual = d.img;
+          foot.querySelector(".procedural-visual").setAttribute("aria-label", d.n);
           foot.querySelector(".nm").textContent = d.n;
           foot.querySelector(".rl").textContent = d.r;
           quote.classList.remove("fade-out");

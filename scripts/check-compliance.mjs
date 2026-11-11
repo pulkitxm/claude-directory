@@ -386,6 +386,12 @@ export async function scanCompliance(directory) {
 	}
 	for (const [path, absolute] of files) {
 		const entry = assets.get(path);
+		if (mediaExtension.test(path))
+			add(
+				"standalone-media",
+				path,
+				"Standalone media files are excluded from source distribution. Use reviewed code-generated visuals instead; a provenance entry does not override this policy.",
+			);
 		if (suspiciousHash.test(path.split("/").at(-1)) && !entry)
 			add(
 				"build-hash",

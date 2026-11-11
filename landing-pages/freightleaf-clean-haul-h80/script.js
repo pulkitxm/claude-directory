@@ -91,25 +91,25 @@
 		{
 			name: "Sarah Jenkins",
 			role: "VP of Supply Chain",
-			img: "original-visual.svg",
+			img: "field-2",
 			text: "FreightLeaf slashed our transport emissions without adding a single delay to our schedule. A genuine game-changer.",
 		},
 		{
 			name: "Marcus Chen",
 			role: "Logistics Director",
-			img: "original-visual.svg",
+			img: "field-3",
 			text: "Their electric fleet integration was seamless. We hit our sustainability milestones two full years ahead of plan.",
 		},
 		{
 			name: "Elena Rodriguez",
 			role: "Sustainability Lead",
-			img: "original-visual.svg",
+			img: "field-1",
 			text: "Finally, a logistics partner that matches our dedication to the planet. Their carbon-savings reporting is phenomenal.",
 		},
 		{
 			name: "Thomas Wright",
 			role: "Operations Manager",
-			img: "original-visual.svg",
+			img: "field-2",
 			text: "Cost-effective and green usually don’t mix in freight. FreightLeaf proved us wrong. Brilliant, dependable service.",
 		},
 	];
@@ -118,9 +118,9 @@
 	function cardHTML(q) {
 		return (
 			'<article class="quote">' +
-			'<div class="who"><img src="' +
+			'<div class="who"><div role="img" data-visual="' +
 			q.img +
-			'" alt="Original abstract geometric study" />' +
+			'" aria-label="Original abstract geometric study"  class="procedural-visual"></div>' +
 			"<div><h4>" +
 			q.name +
 			"</h4><p>" +

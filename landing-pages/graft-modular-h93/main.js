@@ -49,7 +49,7 @@
   const sysGrid = document.getElementById("sysGrid");
   sysGrid.innerHTML = systems.map((s, i) => `
     <article class="scard" data-reveal data-delay="${i % 3 * 90}">
-      <img src="original-visual.svg" alt="Original abstract geometric study">
+      <div role="img" data-visual="field-2" aria-label="Original abstract geometric study" class="procedural-visual"></div>
       <div class="scard-body">
         <span class="scard-num">${s.n}</span>
         <h4>${s.name}</h4>

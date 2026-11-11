@@ -2,7 +2,7 @@
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const trips = [{
     cat: "mountains",
-    img: "original-visual.svg",
+    img: "field-2",
     region: "Dolomites",
     title: "Alta Via Traverse",
     from: "Bolzano",
@@ -13,7 +13,7 @@
     tick: "IT · 46.5°N"
   }, {
     cat: "coast",
-    img: "original-visual.svg",
+    img: "field-3",
     region: "Lofoten",
     title: "Arctic Sea Trail",
     from: "Svolvær",
@@ -24,7 +24,7 @@
     tick: "NO · 68.1°N"
   }, {
     cat: "desert",
-    img: "original-visual.svg",
+    img: "field-1",
     region: "Wadi Rum",
     title: "Red Sands Crossing",
     from: "Aqaba",
@@ -35,7 +35,7 @@
     tick: "JO · 29.6°N"
   }, {
     cat: "polar",
-    img: "original-visual.svg",
+    img: "field-2",
     region: "Highlands",
     title: "Glacier &amp; Geyser",
     from: "Reykjavík",
@@ -46,7 +46,7 @@
     tick: "IS · 64.9°N"
   }, {
     cat: "mountains",
-    img: "original-visual.svg",
+    img: "field-3",
     region: "Patagonia",
     title: "Torres Circuit",
     from: "El Chaltén",
@@ -57,7 +57,7 @@
     tick: "CL · 50.9°S"
   }, {
     cat: "coast",
-    img: "original-visual.svg",
+    img: "field-1",
     region: "Amalfi",
     title: "Path of the Gods",
     from: "Sorrento",
@@ -68,7 +68,7 @@
     tick: "IT · 40.6°N"
   }, {
     cat: "desert",
-    img: "original-visual.svg",
+    img: "field-2",
     region: "Atacama",
     title: "High Desert Stars",
     from: "Calama",
@@ -79,7 +79,7 @@
     tick: "CL · 23.6°S"
   }, {
     cat: "polar",
-    img: "original-visual.svg",
+    img: "field-3",
     region: "Svalbard",
     title: "Frozen North Sail",
     from: "Longyearbyen",
@@ -95,7 +95,7 @@
   grid.innerHTML = trips.map(t => `
     <article class="card" data-cat="${t.cat}">
       <div class="media frame">
-        <img src="${t.img}" alt="Original abstract geometric study" loading="lazy">
+        <div role="img" data-visual="${t.img}" aria-label="Original abstract geometric study"  class="procedural-visual"></div>
         <span class="region">${t.region}</span>
         <span class="tick">${t.tick}</span>
       </div>
@@ -220,17 +220,17 @@
   }));
   const quotes = [{
     q: '"Wayfare didn\'t book us a holiday ,  they handed us a <span class="clay">version of ourselves</span> we\'d forgotten existed somewhere above the treeline."',
-    img: "original-visual.svg",
+    img: "field-1",
     who: "Priya &amp; Daniel Nair",
     sub: "Torres del Paine Circuit · 2025"
   }, {
     q: '"I\'ve traveled for thirty years. This was the first time the <span class="clay">logistics disappeared</span> entirely and all that was left was the place itself."',
-    img: "original-visual.svg",
+    img: "field-2",
     who: "Marcus Ahlberg",
     sub: "Lofoten Arctic Sea Trail · 2025"
   }, {
     q: '"Our guide knew which dune to climb at dusk and which family would feed us after. You cannot <span class="clay">buy that from a brochure</span>."',
-    img: "original-visual.svg",
+    img: "field-3",
     who: "Lina Haddad",
     sub: "Wadi Rum Red Sands · 2024"
   }];
@@ -241,7 +241,7 @@
   const renderQuote = i => {
     const t = quotes[i];
     box.innerHTML = `<blockquote>${t.q}</blockquote>
-      <div class="attrib"><img src="${t.img}" alt="Original abstract geometric study"">
+      <div class="attrib"><div role="img" data-visual="${t.img}" aria-label="Procedural color study" class="procedural-visual"></div>
       <div class="who"><b>${t.who}</b><small>${t.sub}</small></div></div>`;
     dots.forEach((d, k) => d.classList.toggle("active", k === i));
     qi = i;

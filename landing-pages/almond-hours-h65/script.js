@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     programs: {
       title: "Care Programs",
       desc: "Expertly crafted living experiences centered on medical precision and personal dignity.",
-      img: "original-visual.svg",
+      img: "field-2",
       c1t: "Residential",
       c1l: ["Assisted Living", "Independent Living", "Respite Care", "Hospice Support"],
       c2t: "Specialized",
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     care: {
       title: "Our Philosophy",
       desc: "Treating luxury not as an extra, but as a fundamental component of healing and comfort.",
-      img: "original-visual.svg",
+      img: "field-3",
       c1t: "Dining",
       c1l: ["Chef-Led Kitchen", "Nutrition Planning", "Private Dining", "Social Lounges"],
       c2t: "Lifestyle",

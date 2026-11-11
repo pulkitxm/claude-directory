@@ -265,13 +265,7 @@ function Hero() {
 					>
 						<div className="flex -space-x-3">
 							{TESTIMONIALS.map((t) => (
-								<img
-									key={t.avatar}
-									src={t.avatar}
-									alt=""
-									className="h-10 w-10 rounded-full border-2 border-paper object-cover"
-									loading="eager"
-								/>
+								<div key={t.avatar} data-visual={t.avatar} aria-label="Procedural color study" className={["procedural-visual", "h-10 w-10 rounded-full border-2 border-paper object-cover"].join(" ")} data-loading="eager" role="img" />
 							))}
 						</div>
 						<div className="text-sm leading-tight text-forest/70">
@@ -293,7 +287,7 @@ function Hero() {
 						style={{ animationDelay: "0.25s" }}
 					>
 						<ArchImage
-							src="./images/original-visual.svg"
+							src="field-2"
 							alt="An illustrated arched greenhouse window filled with light and a grand potted plant."
 							priority
 							className="h-full w-full"
@@ -564,7 +558,7 @@ function Story() {
 				{}
 				<Reveal className="relative">
 					<ArchImage
-						src="./images/original-visual.svg"
+						src="field-3"
 						alt="An illustrated ceramics-studio windowsill lined with hand-thrown pots and plants."
 						rounded="soft"
 						className="aspect-[5/6] w-full"
@@ -786,12 +780,7 @@ function Testimonials() {
 									“{t.quote}”
 								</blockquote>
 								<figcaption className="mt-7 flex items-center gap-3.5">
-									<img
-										src={t.avatar}
-										alt=""
-										className="h-12 w-12 rounded-full border border-stone object-cover"
-										loading="lazy"
-									/>
+									<div data-visual={t.avatar} aria-label="Procedural color study" className={["procedural-visual", "h-12 w-12 rounded-full border border-stone object-cover"].join(" ")} data-loading="lazy" role="img" />
 									<div className="leading-tight">
 										<div className="font-semibold text-forest">{t.name}</div>
 										<div className="text-sm text-forest/60">{t.role}</div>
@@ -839,13 +828,7 @@ function Journal() {
 								className="group flex h-full flex-col overflow-hidden rounded-3xl border border-stone bg-white/70 shadow-soft transition-all duration-500 ease-organic hover:-translate-y-1.5 hover:shadow-bloom"
 							>
 								<div className="overflow-hidden">
-									<img
-										src={post.image}
-										alt={post.alt}
-										loading="lazy"
-										decoding="async"
-										className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-organic group-hover:scale-105"
-									/>
+									<div data-visual={post.image} aria-label={post.alt} data-loading="lazy" data-decoding="async" className={["procedural-visual", "aspect-[4/3] w-full object-cover transition-transform duration-700 ease-organic group-hover:scale-105"].join(" ")} role="img" />
 								</div>
 								<div className="flex flex-1 flex-col p-7">
 									<div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-sage">

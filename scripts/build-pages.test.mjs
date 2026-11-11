@@ -119,7 +119,7 @@ test("validates exact remote assets while allowing ordinary outbound navigation"
 	);
 });
 
-test("static copying excludes tools, captures and process artifacts", async (t) => {
+test("static copying excludes standalone media, tools, captures and process artifacts", async (t) => {
 	const f = await fixture(t);
 	for (const path of [
 		"source/index.html",
@@ -146,10 +146,7 @@ test("static copying excludes tools, captures and process artifacts", async (t) 
 		await readFile(join(f.root, "copied/THIRD_PARTY_NOTICES.txt"), "utf8"),
 		"synthetic fixture",
 	);
-	assert.equal(
-		await readFile(join(f.root, "copied/assets/art.svg"), "utf8"),
-		"synthetic fixture",
-	);
+	assert.deepEqual(await readdir(join(f.root, "copied/assets")), ["style.css"]);
 });
 
 test("collects complete notices including hyphenated licenses, license directories and nested dependencies", async (t) => {

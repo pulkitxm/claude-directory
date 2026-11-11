@@ -137,11 +137,6 @@ test("accepts a cleared original project and metadata mentioning removed vendors
 			original_url: "https://lexingtonthemes.com/viewports/example",
 		},
 	]);
-	await recordAsset(
-		f,
-		"components-ui/example/shape.svg",
-		'<svg xmlns="http://www.w3.org/2000/svg"><circle r="5"/></svg>',
-	);
 	assert.deepEqual(await f.scan(), []);
 });
 
@@ -236,7 +231,8 @@ test("flags build hashes even when provenance was recorded", async (t) => {
 	manifest.assets[0].manual_review =
 		"Confirmed original output and source creation record.";
 	await f.put("ASSET_PROVENANCE.json", manifest);
-	assert.deepEqual(await f.scan(), []);
+	assert.ok(has(await f.scan(), "standalone-media"));
+	assert.ok(!has(await f.scan(), "build-hash"));
 });
 
 test("rejects unregistered projects even when they have no assets", async (t) => {
@@ -566,4 +562,15 @@ test("original build-hash source filenames require review as well as images", as
 			"components-ui/example/BaseLayout.DyxwQYAz.css",
 		),
 	);
+});
+
+test("rejects standalone media even when original ownership and exact provenance are recorded", async (t) => {
+	const f = await fixture(t);
+	for (const extension of ["png", "woff2", "svg", "mp4", "mp3", "zip"]) {
+		const path = `components-ui/example/original.${extension}`;
+		await recordAsset(f, path, "synthetic original fixture");
+		assert.ok(has(await f.scan(), "standalone-media", path));
+	}
+	await recordAsset(f, "icon.svg", "synthetic root icon");
+	assert.ok(has(await f.scan(), "standalone-media", "icon.svg"));
 });

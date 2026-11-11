@@ -21,10 +21,11 @@
     for (var n = 1; n <= 14; n++) {
       var fig = document.createElement("div");
       fig.className = "fig";
-      var img = document.createElement("img");
-      img.src = "original-visual.svg";
-      img.alt = `Editorial figure ${n}`;
-      img.loading = "eager";
+      var img = document.createElement("div");
+      img.dataset.visual = "field-2";
+      img.setAttribute("aria-label", `Editorial figure ${n}`);
+      img.className = "procedural-visual";
+      img.setAttribute("role", "img");
       var tag = document.createElement("span");
       tag.textContent = `FIG.${n}`;
       fig.appendChild(img);

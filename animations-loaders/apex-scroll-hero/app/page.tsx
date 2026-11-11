@@ -75,9 +75,9 @@ export default function Home() {
 
 			<footer className="wrap site-footer">
 				<span>
-					Apex <b>{"///"}</b> a five-second film
+					Apex <b>{"///"}</b> an interactive light study
 				</span>
-				<span>Scrubbed by your scroll wheel</span>
+				<span>Drawn by your scroll position</span>
 			</footer>
 		</main>;
 }

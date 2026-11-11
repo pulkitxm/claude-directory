@@ -2,7 +2,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { Kicker } from "@/components/ui/Kicker";
-import plateMachine from "@/assets/original-visual.svg";
+const plateMachine = "field-1";
 
 
 export function FrontPage() {
