@@ -28,17 +28,13 @@ const SOCIAL = [
 	{ icon: Send, label: "Contact the desk" },
 ];
 
-/**
- * The colophon / footer. Asymmetric link grid (2-col nameplate + three link
- * columns), bordered social boxes, and the printer's imprint line. Closes the
- * edition the way a broadsheet does — with where, when, and by whom it was set.
- */
+
 export function Colophon() {
 	return (
 		<footer className="bg-ink text-paper">
 			<div className="mx-auto max-w-screen-xl px-4">
 				<div className="grid grid-cols-2 border-l border-t border-paper/20 lg:grid-cols-5">
-					{/* Nameplate block — 2 columns. */}
+					{}
 					<div className="col-span-2 border-b border-r border-paper/20 p-8 lg:p-10">
 						<div className="flex items-baseline gap-2">
 							<span className="font-serif text-2xl font-black uppercase tracking-tight lg:text-3xl">
@@ -48,7 +44,7 @@ export function Colophon() {
 						</div>
 						<p className="mt-4 max-w-sm font-body text-sm leading-relaxed text-neutral-400">
 							A publication of record for the age of machine intelligence. All
-							the signal that's fit to print — set in cold metal type, filed
+							the signal that's fit to print ,  set in cold metal type, filed
 							before dawn, and kept on the record.
 						</p>
 						<div className="mt-7 flex gap-2">
@@ -65,7 +61,7 @@ export function Colophon() {
 						</div>
 					</div>
 
-					{/* Link columns. */}
+					{}
 					{COLUMNS.map((col) => (
 						<nav
 							key={col.head}
@@ -91,7 +87,7 @@ export function Colophon() {
 					))}
 				</div>
 
-				{/* Imprint line. */}
+				{}
 				<div className="flex flex-col items-start justify-between gap-4 py-7 sm:flex-row sm:items-center">
 					<p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-neutral-400">
 						Edition: Vol 1.0 · Printed in NYC · &copy;{" "}

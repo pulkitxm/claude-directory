@@ -1,18 +1,9 @@
-# Obsidian Meridian — Luxury Real-Estate & Architecture Landing Page (HTML + CSS + Vanilla JS)
+# Obsidian Meridian : Luxury Real-Estate & Architecture Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore luxury real-estate & architecture landing page (html + css + vanilla js).
 
-A single-page marketing landing page for Obsidian Meridian, a fictional elite architecture studio and luxury real-estate developer. The design language is "Cinematic Brutalist Noir" — the hushed restraint of a printed architecture monograph fused with the graded darkness of a film still — on a true-black canvas with warm brass accents and razor hairlines. Features include a per-letter wordmark reveal, an infinite Ken-Burns cinematic hero, a staggered selected-works grid, count-up stats, and a minimal inquiry form — all built with pure HTML, CSS, and vanilla JS.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

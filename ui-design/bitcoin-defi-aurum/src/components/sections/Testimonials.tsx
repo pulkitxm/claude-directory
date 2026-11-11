@@ -20,7 +20,7 @@ export function Testimonials() {
 					kicker="signal"
 					title="Trusted by stackers"
 					accent="& treasuries"
-					description="From independent hodlers to institutional desks — the AURUM network secures digital gold for those who refuse to compromise on custody."
+					description="From independent hodlers to institutional desks ,  the AURUM network secures digital gold for those who refuse to compromise on custody."
 				/>
 
 				<div className="mt-16 grid gap-6 md:grid-cols-2 lg:gap-8">

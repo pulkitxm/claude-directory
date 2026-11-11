@@ -10,7 +10,7 @@ import {
 import { Button } from "./Button";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Pricing — 1 → 2 → 3 columns. The featured tier is differentiated only by a 2px
+// Pricing ,  1 → 2 → 3 columns. The featured tier is differentiated only by a 2px
 // accent border and a small accent badge above its content (no background change),
 // exactly as the spec prescribes. Feature rows use the lucide Check at 1.5px.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -33,7 +33,7 @@ export function Pricing() {
 				<RevealGroup className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 					{pricing.map((tier) => (
 						<RevealItem key={tier.name} as="div" className="relative">
-							{/* accent badge sits above the highlighted card */}
+							{}
 							{tier.featured && tier.badge && (
 								<span className="absolute -top-3 left-8 z-10 bg-accent px-3 py-1 font-mono text-xs uppercase tracking-wider text-accent-foreground">
 									{tier.badge}

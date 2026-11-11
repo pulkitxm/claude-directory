@@ -2,10 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import type { ButtonHTMLAttributes, ReactNode, Ref } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * Newsprint button. Sharp corners, uppercase tracked labels, instant
- * black/white color inversion on hover — never a soft shadow.
- */
+
 const button = cva(
 	"inline-flex min-h-[44px] items-center justify-center gap-2 font-sans text-xs font-semibold uppercase tracking-widest transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:pointer-events-none disabled:opacity-50",
 	{

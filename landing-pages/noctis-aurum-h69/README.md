@@ -1,18 +1,9 @@
-# Noctis Aurum — Fine Jewelry Maison E-Commerce Landing Page (Vanilla HTML/CSS/JS)
+# Noctis Aurum : Fine Jewelry Maison E-Commerce Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore fine jewelry maison e-commerce landing page (vanilla html/css/js).
 
-A multi-section e-commerce landing page for Noctis Aurum, a fictional fine-jewelry maison (atelier de luxe, est. 1989), built on an "Obsidian & Champagne" aesthetic — a deep, nocturnal, old-money luxury language where champagne gold glints against ink-dark obsidian and cool pearl, with Cormorant Garamond serif headlines and generous negative space. Sections flow from an announcement banner and sticky blurred header through a split hero with a 3-image cross-fade slideshow and floating "current focus" card, a circular category rail, a gold marquee strip, an 8-product grid with quick-add simulation, a dark heritage feature, a men's 3-card strip, a bespoke atelier block, and footer — all self-contained and offline-runnable with `prefers-reduced-motion` support.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

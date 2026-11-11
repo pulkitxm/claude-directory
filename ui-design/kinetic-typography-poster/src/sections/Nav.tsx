@@ -2,10 +2,7 @@ import { Button } from "../components/Button";
 
 const LINKS = ["Program", "Process", "Pricing", "FAQ"];
 
-/**
- * Sticky brutalist nav: 2px bottom line, zero radius, ink background. The
- * wordmark uses an acid block so the brand reads even at micro scale.
- */
+
 export function Nav() {
 	return (
 		<header className="sticky top-0 z-50 border-b-2 border-line bg-ink/90 backdrop-blur-sm">

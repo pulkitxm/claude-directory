@@ -1,14 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Reveal-on-scroll hook backed by IntersectionObserver.
- *
- * Returns a ref to attach to an element and a boolean that flips to `true` once
- * the element scrolls into view (one-shot). Pair it with the `.reveal` /
- * `reveal-in` pattern in components for gentle fade-up entrances that honour
- * the design system's "smooth and subtle" motion philosophy. If the user
- * prefers reduced motion, content is shown immediately.
- */
+
 export function useReveal<T extends HTMLElement = HTMLDivElement>(
 	options: { threshold?: number; rootMargin?: string } = {},
 ) {

@@ -15,7 +15,7 @@ const STATS: Stat[] = [
 	{ value: 4.9, suffix: "/5", label: "Operator rating", decimals: 1 },
 ];
 
-/* Count-up that only fires once the band scrolls into view. */
+
 function CountUp({
 	value,
 	decimals = 0,

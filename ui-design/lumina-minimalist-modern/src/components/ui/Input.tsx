@@ -1,10 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * Input — used in the final CTA email capture. Defaults to the dark/inverted
- * styling since the only input in this page lives on the inverted CTA section.
- */
+
 export const Input = forwardRef<
 	HTMLInputElement,
 	React.InputHTMLAttributes<HTMLInputElement>

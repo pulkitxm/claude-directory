@@ -2,11 +2,7 @@ import { forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-/**
- * Button — the design system's primary interactive primitive.
- * Variants follow the spec: gradient primary, outline, and ghost.
- * All variants lift on hover and scale down on press for tactile feedback.
- */
+
 const buttonVariants = cva(
 	"group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-medium transition-all duration-200 ease-out active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50",
 	{

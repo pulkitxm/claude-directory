@@ -1,22 +1,9 @@
-# Verdant Spine — Precision Chiropractic & Movement-Science Clinic Landing Page (Vanilla HTML/CSS/JS)
+# Verdant Spine : Precision Chiropractic & Movement-Science Clinic Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore precision chiropractic & movement-science clinic landing page (vanilla html/css/js).
 
-A full, multi-section, fully responsive marketing landing page for **Verdant Spine**, a fictional high-end chiropractic and movement-science clinic, styled in the "Clinical Calm" aesthetic. The design collides medical precision with the grounded, botanical stillness of a wellness retreat — Scandinavian health-spa meets sports-medicine — carried by a single sage-green brand color (`rgb(97, 142, 100)`) across a soft warm-grey-green paper canvas. The signature feature is a **glassmorphic appointment card** floating over the rounded hero image. Display headlines use Schibsted Grotesk with tight negative tracking over Inter body type, both locally vendored.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-Sections run from a thin deep-forest top bar and navigation, through a split hero with the frosted glass appointment form card, an about block with gradient stat cards and a glass play button, a deep-forest services section with an infinite uppercase marquee, a sticky-panel "how it works" steps layout, a scroll-snap testimonial carousel with frosted glass quote overlays, a three-column blog grid, and a rounded deep-forest footer with newsletter signup.
+Visuals are rendered from source code. Typography uses system fonts.
 
-Motion is soft and deliberate: `IntersectionObserver` fade-ups with `cubic-bezier(0.16, 1, 0.3, 1)` ease, a seamless infinite marquee of giant uppercase type, a subtle vertical float for decorative elements, hover image scale and button/link color shifts, a `scrollBy`-driven testimonial carousel with boundary-aware prev/next buttons, the sticky "how it works" panel, and a right-side slide-in mobile menu that locks body scroll. All fonts and images are vendored locally so the project is offline-runnable.
-
-## Run
-
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

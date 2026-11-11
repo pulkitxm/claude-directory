@@ -1,7 +1,6 @@
 import type { Variants } from "motion/react";
 
-/* Shared motion vocabulary. Snappy, direct, no bounce — the "digital" vibe.
-   Centralized so every section reveals with the same rhythm. */
+
 
 export const fadeUp: Variants = {
 	hidden: { opacity: 0, y: 24 },
@@ -17,7 +16,7 @@ export const stagger: Variants = {
 	show: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
 };
 
-/* Default props for a scroll-revealed block. */
+
 export const reveal = {
 	initial: "hidden" as const,
 	whileInView: "show" as const,

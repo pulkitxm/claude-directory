@@ -4,7 +4,7 @@ const STEPS = [
 	{
 		n: "01",
 		title: "It comes off the wire",
-		body: "Raw signal — a model release, a dataset, a dispatch — arrives on the wire and is timestamped to the millisecond at the moment of intake.",
+		body: "Raw signal ,  a model release, a dataset, a dispatch ,  arrives on the wire and is timestamped to the millisecond at the moment of intake.",
 	},
 	{
 		n: "02",
@@ -19,15 +19,11 @@ const STEPS = [
 	{
 		n: "04",
 		title: "It stands on the record",
-		body: "The edition is archived, dated, and made permanent. Corrections, when they come, run in public on page two — never quietly.",
+		body: "The edition is archived, dated, and made permanent. Corrections, when they come, run in public on page two ,  never quietly.",
 	},
 ];
 
-/**
- * The mandatory inverted section. Black ground, paper-white type, editorial-red
- * step numerals. A faint white graph texture keeps the depth; the numerals
- * carry the only colour in the whole block.
- */
+
 export function HowItsFiled() {
 	return (
 		<section
@@ -46,7 +42,7 @@ export function HowItsFiled() {
 						</h2>
 					</div>
 					<p className="font-body text-sm leading-relaxed text-neutral-400 lg:col-span-4 lg:text-right">
-						From the wire to the record in four movements — the same workflow,
+						From the wire to the record in four movements ,  the same workflow,
 						run every morning before the press at four.
 					</p>
 				</div>

@@ -3,13 +3,7 @@ import { cn } from "./Primitives";
 
 type Variant = "primary" | "outline" | "ghost";
 
-/* ----------------------------------------------------------------------------
-   The Serif button family. Three variants, one component.
-   - primary : burnished gold, subtle lift on hover, returns on active
-   - outline : strong foreground border, fills muted + shifts to accent on hover
-   - ghost   : text-only, growing accent underline on hover
-   All meet the 44px min touch target and carry touch-manipulation.
----------------------------------------------------------------------------- */
+
 export function Button({
 	children,
 	variant = "primary",

@@ -12,10 +12,10 @@ import { features } from "../data/content";
 import { Reveal, RevealGroup, RevealItem, SectionLabel } from "./Primitives";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Features — a 1 → 2 → 3 column grid of the system's principles. Icons map from
+// Features ,  a 1 → 2 → 3 column grid of the system's principles. Icons map from
 // each item's `icon` field (lucide, 1.5px stroke, accent, sitting *above* the
 // label as the spec prescribes). Cards are borderless seams that fill with the
-// muted surface and lighten their border on hover — no lift, no shadow.
+// muted surface and lighten their border on hover ,  no lift, no shadow.
 // ─────────────────────────────────────────────────────────────────────────────
 
 const iconMap: Record<string, LucideIcon> = {
@@ -46,7 +46,7 @@ export function Features() {
 					</p>
 				</Reveal>
 
-				{/* Collapsed-border grid: 1px gap reads as shared seams between cells */}
+				{}
 				<RevealGroup className="mt-14 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
 					{features.map((f, i) => {
 						const Icon = iconMap[f.icon] ?? Zap;

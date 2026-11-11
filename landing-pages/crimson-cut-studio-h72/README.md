@@ -1,18 +1,9 @@
-# Crimson Cut — Short-Form Video Editing Studio Landing Page (Vanilla HTML + CSS + JS)
+# Crimson Cut : Short-Form Video Editing Studio Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore short-form video editing studio landing page (vanilla html + css + js).
 
-A multi-section landing page for **Crimson Cut**, a fictional premium short-form video-editing studio, built in a "Warm-Paper Viral Studio" design language — a confident, editorial agency-portfolio aesthetic on a warm off-white paper canvas (`#EFEEEA`), anchored by a near-black pine-ink and detonated by a single loud crimson-red accent (`#DE103C`). Premium but creator-native, the design speaks the language of TikTok, Reels, and Shorts, with rounded portrait video cards and playful rotated "sticker" accents. Sections alternate paper, white, and pine-ink panels: a floating pill header, a centered hero with an inline rotated palette "sticker" badge, three staggered 9:16 video cards (grayscale-to-color on hover), a 2×2 expertise grid, a dark results bento, case studies, an exclusive FAQ accordion, three-tier pricing, and a right-to-left testimonial marquee. Hand-authored CSS, no external JS libraries.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

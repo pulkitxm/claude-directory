@@ -1,18 +1,9 @@
-# Crimson Press Kit — Editorial Binder Designer Portfolio with Print Aesthetic (HTML + CSS + Vanilla JS)
+# Crimson Press Kit : Editorial Binder Designer Portfolio with Print Aesthetic
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore editorial binder designer portfolio with print aesthetic (html + css + vanilla js).
 
-Crimson Press Kit is a single-page designer portfolio staged as a physical spiral-bound magazine / brand press kit lying open on a dark studio table — a raw, editorial, print-inspired layout where each "page" is a full-bleed card with a heavy drop shadow, joined by metal spiral-binding dividers rendered in pure SVG. Signature crimson anchors the cover and method pages against near-black ink, warm off-white paper, and dark gallery cards, with a generated noise/grain texture overlay in `mix-blend-multiply` to sell the printed feel. The binder flows cover → contents → intro → selected works → the method → contact, using a heavy uppercase grotesk for headlines, monospace for labels, and one italic serif accent word. Vanilla JS handles smooth anchor scrolling, IntersectionObserver page reveals, grayscale-to-color hovers, and a fixed "back to contents" button.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

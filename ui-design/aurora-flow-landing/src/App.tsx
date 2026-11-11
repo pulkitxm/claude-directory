@@ -12,7 +12,7 @@ import { Footer } from "@/components/ui/Footer";
 function App() {
 	return (
 		<main className="relative min-h-screen flex flex-col">
-			{/* fine grain over the whole page */}
+			{}
 			<div
 				aria-hidden="true"
 				className="pointer-events-none fixed inset-0 z-[1] bg-grain opacity-[0.035] mix-blend-soft-light"

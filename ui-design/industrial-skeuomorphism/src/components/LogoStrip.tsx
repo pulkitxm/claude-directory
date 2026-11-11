@@ -1,6 +1,6 @@
 import { Container, MonoLabel } from "./primitives";
 
-/** Stamped partner marks — etched into the chassis like a rating plate. */
+
 const PARTNERS = [
 	"NORTHGATE ROBOTICS",
 	"VALERA GRID",

@@ -1,5 +1,4 @@
-/* Scribbly wordmark — a hand-drawn pencil squiggle that "writes" the dot of the
-   i as a red correction mark. Kept as an inline SVG so it inherits ink color. */
+
 export function Logo({ className }: { className?: string }) {
 	return (
 		<span className={"inline-flex items-center gap-2 " + (className ?? "")}>

@@ -1,5 +1,4 @@
-/* An infinite, terminal-flavored marquee of fictional synth labels — the
-   "trusted by" strip. Duplicated content + translateX(-50%) loop = seamless. */
+
 
 const LABELS = [
 	"SUNSET.SYS",

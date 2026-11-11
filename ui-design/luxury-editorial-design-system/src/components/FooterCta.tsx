@@ -14,7 +14,7 @@ export function FooterCta() {
 
 	return (
 		<footer className="relative z-10 bg-foreground text-background">
-			{/* CTA */}
+			{}
 			<div className="mx-auto max-w-[1600px] px-8 py-20 md:px-16 md:py-32">
 				<div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
 					<div className="lg:col-span-7 lg:col-start-1">
@@ -23,16 +23,16 @@ export function FooterCta() {
 							Receive the <Emphasis>house letter.</Emphasis>
 						</h2>
 						<p className="mt-8 max-w-md font-sans text-base leading-relaxed text-background/70 md:text-lg">
-							A single, unhurried dispatch each season — new editions, atelier
+							A single, unhurried dispatch each season ,  new editions, atelier
 							notes, and quiet invitations. Never more than four a year.
 						</p>
 					</div>
 
-					{/* Underline-only email capture, stacks on small screens */}
+					{}
 					<div className="lg:col-span-4 lg:col-start-9">
 						{sent ? (
 							<p className="border-l-2 border-accent pl-6 font-serif text-xl italic text-background/90">
-								Thank you — your first letter will arrive with the season.
+								Thank you ,  your first letter will arrive with the season.
 							</p>
 						) : (
 							<form onSubmit={onSubmit} className="flex flex-col gap-6">
@@ -59,7 +59,7 @@ export function FooterCta() {
 				</div>
 			</div>
 
-			{/* Lower footer */}
+			{}
 			<div className="border-t border-background/15">
 				<div className="mx-auto flex max-w-[1600px] flex-col gap-10 px-8 py-12 md:flex-row md:items-start md:justify-between md:px-16">
 					<div>
@@ -94,7 +94,7 @@ export function FooterCta() {
 				<div className="mx-auto max-w-[1600px] px-8 pb-12 md:px-16">
 					<div className="flex flex-col gap-3 border-t border-background/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
 						<p className="font-sans text-[10px] uppercase tracking-overline text-background/40">
-							© MMXXIV MAISON — All editions reserved
+							© MMXXIV MAISON ,  All editions reserved
 						</p>
 						<p className="font-sans text-[10px] uppercase tracking-overline text-background/40">
 							Luxury / Editorial Design System

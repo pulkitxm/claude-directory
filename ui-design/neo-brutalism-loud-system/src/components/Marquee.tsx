@@ -6,16 +6,12 @@ type MarqueeProps = {
 	children: ReactNode;
 	direction?: "left" | "right";
 	speed?: number;
-	/** marquee row background token */
+
 	className?: string;
 	ariaLabel?: string;
 };
 
-/* Wraps react-fast-marquee with a reduced-motion guard: when the user prefers
-   reduced motion we DON'T mount the animated track at all — we render the same
-   children in a static, horizontally-clipped strip so the content is still
-   present and readable, it just doesn't move. The library's rail is also
-   pinned in CSS as a backstop. */
+
 export function Marquee({
 	children,
 	direction = "left",

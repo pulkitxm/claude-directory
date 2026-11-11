@@ -39,11 +39,11 @@ export function Masthead() {
 
 	return (
 		<header className="sticky top-0 z-40 bg-paper">
-			{/* Top edition strip — the dateline that runs above every masthead. */}
+			{}
 			<div className="border-b border-ink bg-ink text-paper">
 				<div className="mx-auto flex max-w-screen-xl items-center justify-between gap-4 px-4 py-1.5">
 					<p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] sm:text-[0.65rem]">
-						Vol. 1 — No. 037
+						Vol. 1 ,  No. 037
 					</p>
 					<p className="hidden font-mono text-[0.6rem] uppercase tracking-[0.2em] sm:block sm:text-[0.65rem]">
 						{EDITION_DATE} · New York Edition
@@ -55,7 +55,7 @@ export function Masthead() {
 				</div>
 			</div>
 
-			{/* Masthead title + nameplate. */}
+			{}
 			<div
 				className={cn(
 					"border-b-4 border-ink transition-all duration-200",
@@ -66,7 +66,7 @@ export function Masthead() {
 					<a
 						href="#top"
 						className="group flex items-baseline gap-3"
-						aria-label="The Newsprint — back to top"
+						aria-label="The Newsprint ,  back to top"
 					>
 						<span
 							className={cn(
@@ -126,7 +126,7 @@ export function Masthead() {
 				</div>
 			</div>
 
-			{/* Mobile drawer — full-bleed index of sections. */}
+			{}
 			<div
 				className={cn(
 					"overflow-hidden border-b-4 border-ink bg-paper transition-[max-height,opacity] duration-300 ease-out lg:hidden",
@@ -152,7 +152,7 @@ export function Masthead() {
 					))}
 					<div className="pt-4">
 						<Button variant="primary" size="lg" className="w-full">
-							Subscribe — $4 / week
+							Subscribe ,  $4 / week
 						</Button>
 					</div>
 				</nav>

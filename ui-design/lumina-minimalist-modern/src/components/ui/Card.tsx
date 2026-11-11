@@ -1,10 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * Card — elevated white surface with a subtle border and an accent gradient
- * wash that fades in on hover. The workhorse container of the system.
- */
+
 export const Card = forwardRef<
 	HTMLDivElement,
 	React.HTMLAttributes<HTMLDivElement> & { interactive?: boolean }
@@ -29,10 +26,7 @@ export const Card = forwardRef<
 ));
 Card.displayName = "Card";
 
-/**
- * GradientBorderCard — the 2px gradient-stroke "featured" treatment.
- * A gradient backdrop padded by 2px reveals the stroke around the white inner.
- */
+
 export const GradientBorderCard = forwardRef<
 	HTMLDivElement,
 	React.HTMLAttributes<HTMLDivElement>

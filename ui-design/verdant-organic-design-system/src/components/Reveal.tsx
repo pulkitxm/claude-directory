@@ -4,19 +4,15 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 
 type RevealProps = {
 	children: ReactNode;
-	/** Stagger delay in seconds. */
+
 	delay?: number;
-	/** Travel distance on the y-axis before settling. */
+
 	y?: number;
 	className?: string;
 	as?: "div" | "li" | "section" | "article" | "span";
 };
 
-/**
- * Gentle scroll-into-view reveal — a soft blur-up + rise that completes in
- * ~700ms with an organic ease. Falls back to a plain element (no transform)
- * when the user prefers reduced motion.
- */
+
 export function Reveal({
 	children,
 	delay = 0,

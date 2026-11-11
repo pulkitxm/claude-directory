@@ -1,7 +1,4 @@
-/* =====================================================================
-   NEUROCITRINE // NETRUNNER OS — interaction layer
-   Vanilla JS. No deps. Respects prefers-reduced-motion.
-   ===================================================================== */
+
 (function () {
 	"use strict";
 
@@ -11,9 +8,7 @@
 	const $ = (s, r = document) => r.querySelector(s);
 	const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
-	/* ----------------------------------------------------------------
-     1. Mobile drawer
-  ---------------------------------------------------------------- */
+
 	const drawer = $("#drawer");
 	const openBtn = $("#navToggle");
 	const closeBtn = $("#drawerClose");
@@ -34,9 +29,7 @@
 		if (e.key === "Escape") setDrawer(false);
 	});
 
-	/* ----------------------------------------------------------------
-     2. Typewriter subtitle (cycles through phrases)
-  ---------------------------------------------------------------- */
+
 	const typeEl = $("#typed");
 	if (typeEl) {
 		const phrases = [
@@ -76,9 +69,7 @@
 		}
 	}
 
-	/* ----------------------------------------------------------------
-     3. Live terminal console — boot sequence
-  ---------------------------------------------------------------- */
+
 	const consoleBody = $("#consoleLog");
 	if (consoleBody) {
 		const seq = [
@@ -167,9 +158,7 @@
 		}
 	}
 
-	/* ----------------------------------------------------------------
-     4. Scroll reveals
-  ---------------------------------------------------------------- */
+
 	const reveals = $$(".reveal");
 	if (reveals.length) {
 		if (reduceMotion) {
@@ -191,9 +180,7 @@
 		}
 	}
 
-	/* ----------------------------------------------------------------
-     5. Stat count-up
-  ---------------------------------------------------------------- */
+
 	const stats = $$("[data-count]");
 	const runCount = (el) => {
 		const target = parseFloat(el.dataset.count);
@@ -233,9 +220,7 @@
 		}
 	}
 
-	/* ----------------------------------------------------------------
-     6. HUD meters + equalizer
-  ---------------------------------------------------------------- */
+
 	$$(".meter span").forEach((el) => {
 		const v = el.dataset.v || "60";
 		requestAnimationFrame(() => {
@@ -251,9 +236,7 @@
 		}
 	});
 
-	/* ----------------------------------------------------------------
-     7. FAQ accordion
-  ---------------------------------------------------------------- */
+
 	$$(".faq__item").forEach((item) => {
 		const q = $(".faq__q", item);
 		const a = $(".faq__a", item);
@@ -274,9 +257,7 @@
 		});
 	});
 
-	/* ----------------------------------------------------------------
-     8. Access form (fake submit → terminal confirmation)
-  ---------------------------------------------------------------- */
+
 	const form = $("#accessForm");
 	if (form) {
 		const out = $("#formOut");
@@ -305,9 +286,7 @@
 		});
 	}
 
-	/* ----------------------------------------------------------------
-     9. Footer year + system clock
-  ---------------------------------------------------------------- */
+
 	const yr = $("#year");
 	if (yr) yr.textContent = String(new Date().getFullYear());
 	const clock = $("#sysclock");
@@ -326,9 +305,7 @@
 		if (!reduceMotion) setInterval(tick, 1000);
 	}
 
-	/* ----------------------------------------------------------------
-     10. Pointer-reactive glow on holographic HUD (desktop only)
-  ---------------------------------------------------------------- */
+
 	const hud = $("#hud");
 	if (hud && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
 		hud.addEventListener("pointermove", (e) => {

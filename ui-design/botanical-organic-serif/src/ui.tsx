@@ -1,11 +1,4 @@
-/* ============================================================================
-   VERDANT — design-system primitives.
 
-   Reusable atoms that encode the Botanical / Organic Serif rules ONCE. Pages
-   compose these instead of re-deriving pill shapes, sage focus rings, arch
-   masks, halos, eased reveals, etc. This is where "centralize tokens, minimize
-   one-off styles" actually lives.
-   ========================================================================== */
 
 import {
 	useEffect,
@@ -17,9 +10,9 @@ import {
 } from "react";
 import type { LucideIcon } from "lucide-react";
 
-/* -------------------------------------------------------------------------- */
-/* Reveal-on-scroll: gently fade + float content into place. Honors RM via CSS */
-/* -------------------------------------------------------------------------- */
+
+
+
 export function useReveal<T extends HTMLElement = HTMLDivElement>() {
 	const ref = useRef<T>(null);
 	useEffect(() => {
@@ -45,7 +38,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
 	return ref;
 }
 
-/** A block that fades/floats up when scrolled into view, with optional stagger. */
+
 export function Reveal({
 	children,
 	delay = 0,
@@ -69,9 +62,9 @@ export function Reveal({
 	);
 }
 
-/* -------------------------------------------------------------------------- */
-/* Count-up: stat numbers tick up the first time they enter the viewport.      */
-/* -------------------------------------------------------------------------- */
+
+
+
 export function useCountUp(target: number, duration = 1600) {
 	const [value, setValue] = useState(0);
 	const ref = useRef<HTMLSpanElement>(null);
@@ -92,7 +85,7 @@ export function useCountUp(target: number, duration = 1600) {
 				const start = performance.now();
 				const tick = (now: number) => {
 					const t = Math.min(1, (now - start) / duration);
-					// easeOutCubic — settles gently, never snaps
+					// easeOutCubic ,  settles gently, never snaps
 					const eased = 1 - Math.pow(1 - t, 3);
 					setValue(Math.round(target * eased));
 					if (t < 1) requestAnimationFrame(tick);
@@ -106,9 +99,9 @@ export function useCountUp(target: number, duration = 1600) {
 	return { value, ref };
 }
 
-/* -------------------------------------------------------------------------- */
-/* Eyebrow — uppercase, wide-tracked label, optionally with a leaf bullet.     */
-/* -------------------------------------------------------------------------- */
+
+
+
 export function Eyebrow({
 	children,
 	className = "",
@@ -134,9 +127,9 @@ export function Eyebrow({
 	);
 }
 
-/* -------------------------------------------------------------------------- */
-/* Button — pill, uppercase, wide tracking. Primary forest, secondary sage.    */
-/* -------------------------------------------------------------------------- */
+
+
+
 type Variant = "primary" | "secondary" | "ghost";
 const BUTTON_BASE =
 	"inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-sm font-semibold uppercase tracking-[0.18em] transition-all duration-300 ease-organic focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-sage disabled:opacity-60";
@@ -168,7 +161,7 @@ export function Button({
 	);
 }
 
-/** Same styling as Button, rendered as an anchor (for in-page nav CTAs). */
+
 export function ButtonLink({
 	variant = "primary",
 	className = "",
@@ -187,9 +180,9 @@ export function ButtonLink({
 	);
 }
 
-/* -------------------------------------------------------------------------- */
-/* IconHalo — a thin-stroke Lucide icon floating in a soft, pale circle.       */
-/* -------------------------------------------------------------------------- */
+
+
+
 export function IconHalo({
 	icon: Icon,
 	tone = "sage",
@@ -221,10 +214,10 @@ export function IconHalo({
 	);
 }
 
-/* -------------------------------------------------------------------------- */
-/* ArchImage — a vendored illustration masked into a Roman arch, with a soft    */
-/* hover scale. The whole "iconic architectural moment" of the design.         */
-/* -------------------------------------------------------------------------- */
+
+
+
+
 export function ArchImage({
 	src,
 	alt,
@@ -261,10 +254,10 @@ export function ArchImage({
 	);
 }
 
-/* -------------------------------------------------------------------------- */
-/* VineDivider — a fine, meandering 1px SVG line with leaves, "growing" in.     */
-/* Mimics a vine/root connecting sections.                                      */
-/* -------------------------------------------------------------------------- */
+
+
+
+
 export function VineDivider({ className = "" }: { className?: string }) {
 	const ref = useRef<SVGPathElement>(null);
 	const [grow, setGrow] = useState(false);
@@ -330,9 +323,9 @@ export function VineDivider({ className = "" }: { className?: string }) {
 	);
 }
 
-/* -------------------------------------------------------------------------- */
-/* SectionHeading — eyebrow + big Playfair title (with italic emphasis word).  */
-/* -------------------------------------------------------------------------- */
+
+
+
 export function SectionHeading({
 	eyebrow,
 	title,

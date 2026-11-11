@@ -1,18 +1,9 @@
-# Cobalt Bento Folio — Light-Mode Bento Grid Developer Portfolio (HTML + CSS + Vanilla JS)
+# Cobalt Bento Folio : Light-Mode Bento Grid Developer Portfolio
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore light-mode bento grid developer portfolio (html + css + vanilla js).
 
-Cobalt Bento Folio is a single-page, forced-light personal portfolio for a fictional full-stack engineer (Nora Aveline) in a "Daylight Workbench" aesthetic — a soft, airy bento grid of frosted-glass panels floating over a cool pale-gray backdrop, anchored by one commanding royal-cobalt hero tile. The asymmetric 12-column bento layout interlocks panels of different spans into a continuous dashboard, with Plus Jakarta Sans display type and JetBrains Mono accents (both self-hosted). Vanilla JS drives staggered IntersectionObserver panel reveals, a pointer-parallax cobalt hero with cursor-tracking specular highlight, requestAnimationFrame count-up stats, an animated SVG skill ring, a typewriter role rotator, and a contact form with validation and success state — all gated behind `prefers-reduced-motion`.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

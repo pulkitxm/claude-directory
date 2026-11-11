@@ -1,18 +1,9 @@
-# Verdant — Quiet-Luxury Strategy Advisory Hero Section (Vanilla HTML + CSS + JS)
+# Verdant : Quiet-Luxury Strategy Advisory Hero Section
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore quiet-luxury strategy advisory hero section (vanilla html + css + js).
 
-A refined, editorial hero section for a fictional high-end strategy advisory firm, **Verdant**, built in a "Quiet Luxury Consulting" design language — a calm white canvas with a single oversized forest-green hero card (`#1F514C`), Hedvig Letters Serif display type paired with Inter grotesque, and generous negative space. Beyond the two-column hero card, the page includes a trust marquee, a stats strip, an approach/feature trio, and a footer CTA band. All fonts and assets are vendored locally for offline use with accessible, semantic markup throughout.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

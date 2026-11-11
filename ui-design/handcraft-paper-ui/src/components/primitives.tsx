@@ -1,10 +1,4 @@
-/* ============================================================================
-   Hand-Drawn primitives — the reusable atoms of the system.
 
-   Everything visual in the page is composed from these so there is a single
-   place that owns each recipe (wobbly button, taped card, sticky tag, the SVG
-   scribbles). Components stay declarative; no duplicated magic strings.
-   ========================================================================= */
 import type {
 	AnchorHTMLAttributes,
 	ButtonHTMLAttributes,
@@ -19,10 +13,8 @@ import { radius } from "../lib/tokens";
 const cx = (...c: (string | false | undefined | null)[]) =>
 	c.filter(Boolean).join(" ");
 
-/* ---- Button -------------------------------------------------------------- */
-/* Irregular wobbly oval. White → red on hover (primary) or muted → blue
-   (secondary). Hard offset shadow that reduces on hover and disappears on
-   active so the button "presses flat". */
+
+
 type ButtonVariant = "primary" | "secondary";
 type ButtonProps = {
 	variant?: ButtonVariant;
@@ -62,7 +54,7 @@ export function Button({
 	);
 }
 
-/* Anchor styled identically to Button, for in-page nav CTAs. */
+
 type LinkButtonProps = {
 	variant?: ButtonVariant;
 	className?: string;
@@ -87,9 +79,8 @@ export function LinkButton({
 	);
 }
 
-/* ---- Card ---------------------------------------------------------------- */
-/* White stock, wobbly black border, soft cut-paper shadow. Optional tape or
-   thumbtack decoration, optional post-it yellow stock, optional hover jiggle. */
+
+
 type Decoration = "none" | "tape" | "tack";
 type CardProps = {
 	decoration?: Decoration;
@@ -130,7 +121,7 @@ export function Card({
 	);
 }
 
-/* ---- Sticky-note tag (section eyebrow / label) --------------------------- */
+
 export function StickyTag({
 	children,
 	color = "postit",
@@ -163,7 +154,7 @@ export function StickyTag({
 	);
 }
 
-/* ---- Icon enclosed in a rough hand-drawn circle -------------------------- */
+
 export function IconCircle({
 	icon: Icon,
 	tone = "ink",
@@ -194,7 +185,7 @@ export function IconCircle({
 	);
 }
 
-/* ---- Inputs -------------------------------------------------------------- */
+
 export function Input({
 	className,
 	style,
@@ -231,11 +222,9 @@ export function Textarea({
 	);
 }
 
-/* ============================================================================
-   Hand-drawn SVG decorations & paper effects
-   ========================================================================= */
 
-/* Strip of translucent "tape" across the top center of a card. */
+
+
 export function Tape({ className }: { className?: string }) {
 	return (
 		<span
@@ -249,7 +238,7 @@ export function Tape({ className }: { className?: string }) {
 	);
 }
 
-/* Red circular thumbtack pinned at the top center of a card. */
+
 export function Tack({
 	color = "var(--color-accent)",
 	className,
@@ -271,7 +260,7 @@ export function Tack({
 	);
 }
 
-/* Dashed hand-drawn arrow that curves toward a CTA. */
+
 export function ScribbleArrow({ className }: { className?: string }) {
 	return (
 		<svg
@@ -290,7 +279,7 @@ export function ScribbleArrow({ className }: { className?: string }) {
 	);
 }
 
-/* Squiggly hand-drawn connector used between How-It-Works steps. */
+
 export function SquigglyLine({ className }: { className?: string }) {
 	return (
 		<svg
@@ -312,7 +301,7 @@ export function SquigglyLine({ className }: { className?: string }) {
 	);
 }
 
-/* Corner frame marks for the hero canvas placeholder. */
+
 export function CornerFrames() {
 	const corner = (cls: string, d: string) => (
 		<svg
@@ -337,7 +326,7 @@ export function CornerFrames() {
 	);
 }
 
-/* A torn, hand-drawn wavy horizontal divider. */
+
 export function WavyDivider({ className }: { className?: string }) {
 	return (
 		<svg
@@ -358,7 +347,7 @@ export function WavyDivider({ className }: { className?: string }) {
 	);
 }
 
-/* Overlapping avatar cluster (hand-drawn doodle faces) for social proof. */
+
 const AVATAR_TONES = ["#ffd4d4", "#cfe0f5", "#fff3b0", "#d6f0d6", "#e9d6f5"];
 export function AvatarStack({ count = 5 }: { count?: number }) {
 	return (

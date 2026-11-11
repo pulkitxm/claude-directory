@@ -8,10 +8,7 @@ import {
 	display,
 } from "./primitives";
 
-/* Three pricing tiers. The highlighted tier rests LARGER (md:scale-105) and
-   carries a "Most popular" badge that floats ABOVE the card, breaking its
-   container (the overlapping-elements pattern). A billing toggle proves the
-   numbers are live. Non-highlighted cards grow slightly on hover. */
+
 
 type Tier = {
 	name: string;
@@ -80,7 +77,7 @@ export function Pricing() {
 					lead="Every plan ships the full material. Bigger plans just hand you more layouts, presets and hands-on help."
 				/>
 
-				{/* Billing toggle — a recessed track with a convex sliding knob */}
+				{}
 				<Reveal className="mt-10 flex justify-center" pop>
 					<div className="inline-flex items-center gap-4 rounded-full bg-clay-recess p-1.5 shadow-clay-pressed">
 						<button
@@ -148,7 +145,7 @@ function PricingCard({
 					: "bg-clay-cardBg text-clay-foreground shadow-clay-card hover:-translate-y-1 hover:scale-[1.03] hover:shadow-clay-card-hover"
 			}`}
 		>
-			{/* floating "popular" badge, breaking the top edge */}
+			{}
 			{tier.popular && (
 				<div className="absolute -top-4 left-1/2 -translate-x-1/2">
 					<span

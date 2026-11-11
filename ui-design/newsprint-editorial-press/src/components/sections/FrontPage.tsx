@@ -2,14 +2,9 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { Kicker } from "@/components/ui/Kicker";
-import plateMachine from "@/assets/plate-machine.svg";
+import plateMachine from "@/assets/original-visual.svg";
 
-/**
- * The front page. An asymmetric 8/4 newspaper split: a viewport-dominating
- * serif headline and drop-capped lead on the left, a bordered "stop press"
- * rail of standalone items on the right. Everything is wrapped in collapsed
- * black grid borders so it reads as one printed page.
- */
+
 export function FrontPage() {
 	return (
 		<section
@@ -17,7 +12,7 @@ export function FrontPage() {
 			className="newsprint-texture border-b-4 border-ink"
 		>
 			<div className="mx-auto max-w-screen-xl px-4">
-				{/* Front-page banner rule with edition metadata. */}
+				{}
 				<div className="flex flex-wrap items-center justify-between gap-2 border-b border-ink py-2.5">
 					<Kicker>Front Page · Friday Edition</Kicker>
 					<p className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-ink/60">
@@ -26,7 +21,7 @@ export function FrontPage() {
 				</div>
 
 				<div className="grid grid-cols-1 lg:grid-cols-12">
-					{/* LEAD STORY — 8 columns. */}
+					{}
 					<div className="border-ink py-8 lg:col-span-8 lg:border-r lg:py-12 lg:pr-10">
 						<p className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-editorial [animation:rise_0.6s_cubic-bezier(0.22,1,0.36,1)_both]">
 							Breaking · The Intelligence Desk
@@ -48,7 +43,7 @@ export function FrontPage() {
 						<div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-12">
 							<p className="dropcap col-span-1 text-justify font-body text-[0.95rem] leading-relaxed text-ink/85 sm:col-span-7 sm:text-base">
 								Newsprint is a publication of record for the age of machine
-								intelligence — a daily edition that sets every model, dataset
+								intelligence ,  a daily edition that sets every model, dataset
 								and dispatch in cold metal type. We file the world's noise as
 								front-page certainty: ranked, dated, sourced, and printed
 								without a single rounded corner. No infinite scroll, no
@@ -67,12 +62,12 @@ export function FrontPage() {
 								<ArrowRight className="h-4 w-4" strokeWidth={1.5} />
 							</Button>
 							<Button variant="link" className="w-full justify-start sm:w-auto">
-								Browse the archive — 11,204 issues
+								Browse the archive ,  11,204 issues
 							</Button>
 						</div>
 					</div>
 
-					{/* STOP PRESS RAIL — 4 columns. */}
+					{}
 					<aside className="flex flex-col divide-y divide-ink border-t border-ink lg:col-span-4 lg:border-t-0 lg:pl-8">
 						<div className="py-6 lg:pt-12">
 							<EditorialImage

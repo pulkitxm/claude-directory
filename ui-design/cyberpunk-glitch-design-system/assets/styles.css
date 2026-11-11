@@ -1,65 +1,39 @@
-/* =====================================================================
-   NEUROCITRINE // NETRUNNER OS
-   Cyberpunk / Glitch Design System — self-contained showcase
-   "High-Tech, Low-Life." Every token, every signature, hand-authored.
-   ===================================================================== */
 
-/* ------------------------------------------------------------------ */
-/* 0. FONTS (vendored locally — assets/fonts/*.woff2)                  */
-/* ------------------------------------------------------------------ */
-@font-face {
-	font-family: "Orbitron";
-	font-style: normal;
-	font-weight: 400 900; /* variable weight axis */
-	font-display: swap;
-	src: url("./fonts/orbitron-variable.woff2") format("woff2");
-}
-@font-face {
-	font-family: "JetBrains Mono";
-	font-style: normal;
-	font-weight: 100 800; /* variable weight axis */
-	font-display: swap;
-	src: url("./fonts/jetbrains-mono-variable.woff2") format("woff2");
-}
-@font-face {
-	font-family: "Share Tech Mono";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("./fonts/share-tech-mono-400.woff2") format("woff2");
-}
 
-/* ------------------------------------------------------------------ */
-/* 1. DESIGN TOKENS (THE DNA)                                          */
-/* ------------------------------------------------------------------ */
+
+
+
+
+
+
 :root {
-	/* ---- Colors (dark mode mandatory) ---- */
-	--background: #0a0a0f; /* deep void black, blue undertone   */
-	--foreground: #e0e0e0; /* primary text, not pure white      */
-	--card: #12121a; /* card bg, deep purple-black        */
-	--muted: #1c1c2e; /* UI chrome / elevated bg           */
-	--muted-foreground: #6b7280; /* secondary text                    */
-	--accent: #00ff88; /* PRIMARY NEON — electric green     */
-	--accent-secondary: #ff00ff; /* SECONDARY NEON — hot magenta      */
-	--accent-tertiary: #00d4ff; /* TERTIARY NEON — cyan              */
-	--border: #2a2a3a; /* subtle borders                    */
-	--input: #12121a; /* deep input bg                     */
-	--ring: #00ff88; /* focus ring matches accent         */
-	--destructive: #ff3366; /* error / danger                    */
 
-	/* ---- Typography ---- */
+	--background: #0a0a0f;
+	--foreground: #e0e0e0;
+	--card: #12121a;
+	--muted: #1c1c2e;
+	--muted-foreground: #6b7280;
+	--accent: #00ff88;
+	--accent-secondary: #ff00ff;
+	--accent-tertiary: #00d4ff;
+	--border: #2a2a3a;
+	--input: #12121a;
+	--ring: #00ff88;
+	--destructive: #ff3366;
+
+
 	--font-head: "Orbitron", "Share Tech Mono", monospace;
 	--font-body: "JetBrains Mono", "Fira Code", "Consolas", monospace;
 	--font-label: "Share Tech Mono", "JetBrains Mono", monospace;
 
-	/* ---- Radius ---- */
+
 	--radius-none: 0px;
 	--radius-sm: 2px;
 	--radius-base: 4px;
-	--chamfer: 10px; /* default corner cut size           */
-	--chamfer-sm: 6px; /* small cut (buttons / inputs)      */
+	--chamfer: 10px;
+	--chamfer-sm: 6px;
 
-	/* ---- Neon glow shadow tokens ---- */
+
 	--box-shadow-neon: 0 0 5px #00ff88, 0 0 10px #00ff8840;
 	--box-shadow-neon-sm: 0 0 3px #00ff88, 0 0 6px #00ff8830;
 	--box-shadow-neon-lg:
@@ -67,17 +41,17 @@
 	--box-shadow-neon-secondary: 0 0 5px #ff00ff, 0 0 20px #ff00ff60;
 	--box-shadow-neon-tertiary: 0 0 5px #00d4ff, 0 0 20px #00d4ff60;
 
-	/* ---- Motion ---- */
+
 	--t-snap: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 	--t-digital: all 100ms steps(4);
 
-	/* ---- Layout ---- */
-	--max-w: 80rem; /* ≈ max-w-7xl */
+
+	--max-w: 80rem;
 }
 
-/* ------------------------------------------------------------------ */
-/* 2. RESET & BASE                                                     */
-/* ------------------------------------------------------------------ */
+
+
+
 *,
 *::before,
 *::after {
@@ -104,7 +78,7 @@ body {
 	font-size: 16px;
 	overflow-x: hidden;
 	position: relative;
-	/* faint radial gradient-mesh light leaks in the corners */
+
 	background-image:
 		radial-gradient(
 			60rem 40rem at 100% 0%,
@@ -152,7 +126,7 @@ ul {
 	color: var(--background);
 }
 
-/* Custom scrollbar — terminal flavour */
+
 ::-webkit-scrollbar {
 	width: 10px;
 	height: 10px;
@@ -168,10 +142,10 @@ ul {
 	background: var(--accent);
 }
 
-/* ------------------------------------------------------------------ */
-/* 3. GLOBAL OVERLAYS — scanlines + traveling beam + noise            */
-/* ------------------------------------------------------------------ */
-/* Full-page CRT scanline overlay (mandatory bold choice #2)          */
+
+
+
+
 body::after {
 	content: "";
 	position: fixed;
@@ -188,19 +162,19 @@ body::after {
 	mix-blend-mode: multiply;
 }
 
-/* Slow vignette + signal-noise layer on top of everything            */
+
 .fx-noise {
 	position: fixed;
 	inset: 0;
 	z-index: 8999;
 	pointer-events: none;
 	opacity: 0.05;
-	background: url("./noise.svg");
+	background: url("./original-visual.svg");
 	background-size: 160px 160px;
 	animation: noiseShift 0.6s steps(6) infinite;
 }
 
-/* A single bright scanline that sweeps slowly down the viewport       */
+
 .fx-beam {
 	position: fixed;
 	left: 0;
@@ -221,7 +195,7 @@ body::after {
 	will-change: transform;
 }
 
-/* Corner HUD frame brackets, fixed to viewport                       */
+
 .hud-frame {
 	position: fixed;
 	inset: 14px;
@@ -261,10 +235,10 @@ body::after {
 	border-top: 0;
 }
 
-/* ------------------------------------------------------------------ */
-/* 4. UTILITIES — chamfers, glow, patterns, layout                    */
-/* ------------------------------------------------------------------ */
-/* Chamfered (45° corner-cut) clip — the militaristic tech panel      */
+
+
+
+
 .cyber-chamfer {
 	clip-path: polygon(
 		0 var(--chamfer),
@@ -289,7 +263,7 @@ body::after {
 		0 calc(100% - var(--chamfer-sm))
 	);
 }
-/* Single-cut (top-left + bottom-right) for asymmetric tech panels     */
+
 .cyber-cut-diag {
 	clip-path: polygon(
 		18px 0,
@@ -330,7 +304,7 @@ body::after {
 	text-shadow: 0 0 10px rgba(255, 0, 255, 0.55);
 }
 
-/* Grid / circuit pattern backgrounds                                  */
+
 .bg-grid {
 	background-image:
 		linear-gradient(rgba(0, 255, 136, 0.04) 1px, transparent 1px),
@@ -338,12 +312,12 @@ body::after {
 	background-size: 50px 50px;
 }
 .bg-circuit {
-	background-image: url("./circuit.svg");
+	background-image: url("./original-visual.svg");
 	background-size: 320px 320px;
 	opacity: 0.16;
 }
 
-/* Layout primitives */
+
 .wrap {
 	width: 100%;
 	max-width: var(--max-w);
@@ -372,9 +346,9 @@ body::after {
 	box-shadow: var(--box-shadow-neon-sm);
 }
 
-/* ------------------------------------------------------------------ */
-/* 5. TYPOGRAPHY                                                       */
-/* ------------------------------------------------------------------ */
+
+
+
 h1,
 h2,
 h3,
@@ -417,9 +391,9 @@ h3 {
 	color: var(--muted-foreground);
 }
 
-/* ------------------------------------------------------------------ */
-/* 6. CHROMATIC ABERRATION / GLITCH TEXT (.cyber-glitch)              */
-/* ------------------------------------------------------------------ */
+
+
+
 .cyber-glitch {
 	position: relative;
 	display: inline-block;
@@ -448,7 +422,7 @@ h3 {
 	clip-path: inset(0 0 0 0);
 	animation: glitchBottom 2.6s infinite steps(2);
 }
-/* The hero headline glitch — occasional skip/translate flicker        */
+
 .glitch-head {
 	position: relative;
 	display: inline-block;
@@ -478,7 +452,7 @@ h3 {
 	animation: headGlitchB 5.5s infinite steps(2);
 }
 
-/* Blinking terminal cursor */
+
 .cursor {
 	display: inline-block;
 	width: 0.6ch;
@@ -494,9 +468,9 @@ h3 {
 	box-shadow: var(--box-shadow-neon-tertiary);
 }
 
-/* ------------------------------------------------------------------ */
-/* 7. BUTTONS — default / secondary / outline / ghost / glitch        */
-/* ------------------------------------------------------------------ */
+
+
+
 .btn {
 	--btn-color: var(--accent);
 	--btn-glow: var(--box-shadow-neon);
@@ -505,7 +479,7 @@ h3 {
 	align-items: center;
 	justify-content: center;
 	gap: 0.6rem;
-	min-height: 48px; /* ≥44px touch target */
+	min-height: 48px;
 	padding: 0.85rem 1.7rem;
 	font-family: var(--font-body);
 	font-weight: 700;
@@ -519,7 +493,7 @@ h3 {
 	-webkit-tap-highlight-color: transparent;
 }
 .btn.cyber-chamfer-sm {
-	/* clip applied via class in markup */
+
 }
 .btn svg {
 	width: 18px;
@@ -573,7 +547,7 @@ h3 {
 	filter: drop-shadow(0 0 4px var(--accent));
 }
 
-/* Glitch CTA — solid accent fill, chromatic aberration on the label   */
+
 .btn--glitch {
 	background: var(--accent);
 	color: var(--background);
@@ -611,7 +585,7 @@ h3 {
 	width: 100%;
 }
 
-/* Focus-visible neon ring (accessibility) */
+
 .btn:focus-visible,
 .field input:focus-visible,
 .faq__q:focus-visible,
@@ -622,9 +596,9 @@ h3 {
 	box-shadow: var(--box-shadow-neon);
 }
 
-/* ------------------------------------------------------------------ */
-/* 8. CARDS — default / terminal / holographic                        */
-/* ------------------------------------------------------------------ */
+
+
+
 .card {
 	position: relative;
 	background: var(--card);
@@ -636,7 +610,7 @@ h3 {
 		box-shadow 300ms;
 }
 .card.cyber-chamfer {
-	/* clip applied via class */
+
 }
 .card--hover:hover {
 	transform: translateY(-4px);
@@ -652,7 +626,7 @@ h3 {
 	box-shadow: var(--box-shadow-neon-tertiary);
 }
 
-/* Terminal variant — traffic-light header bar */
+
 .card--terminal {
 	background: var(--background);
 	padding-top: 3.4rem;
@@ -678,7 +652,7 @@ h3 {
 	background: var(--destructive);
 	box-shadow:
 		18px 0 0 #f5c518,
-		/* amber  */ 36px 0 0 var(--accent); /* green  */
+		 36px 0 0 var(--accent);
 	z-index: 2;
 }
 .card--terminal .term-path {
@@ -692,7 +666,7 @@ h3 {
 	text-transform: uppercase;
 }
 
-/* Holographic variant — glassy, accent corner brackets */
+
 .card--holo {
 	background: rgba(28, 28, 46, 0.34);
 	border: 1px solid rgba(0, 255, 136, 0.3);
@@ -732,7 +706,7 @@ h3 {
 	border-top: 0;
 }
 
-/* Icon container — bordered square w/ glow */
+
 .icon-box {
 	display: inline-flex;
 	align-items: center;
@@ -772,9 +746,9 @@ h3 {
 	color: var(--accent-tertiary);
 }
 
-/* ------------------------------------------------------------------ */
-/* 9. NAVBAR                                                           */
-/* ------------------------------------------------------------------ */
+
+
+
 .nav {
 	position: sticky;
 	top: 0;
@@ -867,7 +841,7 @@ h3 {
 .jack-short {
 	display: none;
 }
-/* Abbreviate CTA + tighten nav on small screens to avoid overflow */
+
 @media (max-width: 420px) {
 	.nav__inner {
 		gap: 0.6rem;
@@ -916,7 +890,7 @@ h3 {
 	stroke-width: 1.5;
 }
 
-/* Mobile drawer */
+
 .drawer {
 	position: fixed;
 	inset: 0;
@@ -975,9 +949,9 @@ h3 {
 	stroke-width: 1.5;
 }
 
-/* ------------------------------------------------------------------ */
-/* 10. HERO                                                            */
-/* ------------------------------------------------------------------ */
+
+
+
 .hero {
 	position: relative;
 	overflow: hidden;
@@ -1088,7 +1062,7 @@ h3 {
 	color: var(--accent);
 }
 
-/* Hero HUD panel (hidden on mobile) */
+
 .hud {
 	display: none;
 	position: relative;
@@ -1170,9 +1144,9 @@ h3 {
 	color: var(--accent);
 }
 
-/* ------------------------------------------------------------------ */
-/* 11. MARQUEE (data-stream ticker)                                   */
-/* ------------------------------------------------------------------ */
+
+
+
 .ticker {
 	border-block: 1px solid var(--border);
 	background: var(--card);
@@ -1204,9 +1178,9 @@ h3 {
 	color: var(--accent-secondary);
 }
 
-/* ------------------------------------------------------------------ */
-/* 12. STATS                                                          */
-/* ------------------------------------------------------------------ */
+
+
+
 .stats {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -1254,9 +1228,9 @@ h3 {
 	color: var(--muted-foreground);
 }
 
-/* ------------------------------------------------------------------ */
-/* 13. FEATURES GRID (-skew-y-1 container)                            */
-/* ------------------------------------------------------------------ */
+
+
+
 .features__grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -1265,7 +1239,7 @@ h3 {
 }
 .features__grid > * {
 	transform: skewY(1deg);
-} /* un-skew children */
+}
 .feature h3 {
 	margin-bottom: 0.8rem;
 	margin-top: 1.4rem;
@@ -1303,9 +1277,9 @@ h3 {
 	color: var(--accent);
 }
 
-/* ------------------------------------------------------------------ */
-/* 14. TERMINAL SECTION (live console)                                */
-/* ------------------------------------------------------------------ */
+
+
+
 .terminal-sec {
 	position: relative;
 }
@@ -1425,9 +1399,9 @@ h3 {
 	font-size: 0.95rem;
 }
 
-/* ------------------------------------------------------------------ */
-/* 15. PRICING                                                        */
-/* ------------------------------------------------------------------ */
+
+
+
 .pricing__grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -1520,9 +1494,9 @@ h3 {
 	box-shadow: var(--box-shadow-neon-sm);
 }
 
-/* ------------------------------------------------------------------ */
-/* 16. TESTIMONIALS                                                   */
-/* ------------------------------------------------------------------ */
+
+
+
 .testi__grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -1590,9 +1564,9 @@ h3 {
 	height: 15px;
 }
 
-/* ------------------------------------------------------------------ */
-/* 17. FAQ ACCORDION                                                 */
-/* ------------------------------------------------------------------ */
+
+
+
 .faq {
 	display: grid;
 	gap: 1rem;
@@ -1683,9 +1657,9 @@ h3 {
 	margin-bottom: 0.6rem;
 }
 
-/* ------------------------------------------------------------------ */
-/* 18. CTA / ACCESS SECTION                                           */
-/* ------------------------------------------------------------------ */
+
+
+
 .access {
 	position: relative;
 	text-align: center;
@@ -1713,7 +1687,7 @@ h3 {
 	margin: 0 auto 2.4rem;
 }
 
-/* Field / input */
+
 .field {
 	position: relative;
 	max-width: 30rem;
@@ -1772,9 +1746,9 @@ h3 {
 	min-height: 1.2em;
 }
 
-/* ------------------------------------------------------------------ */
-/* 19. FOOTER                                                         */
-/* ------------------------------------------------------------------ */
+
+
+
 .footer {
 	border-top: 1px solid var(--border);
 	padding-block: 4rem 2.5rem;
@@ -1870,9 +1844,9 @@ h3 {
 	stroke-width: 1.5;
 }
 
-/* ------------------------------------------------------------------ */
-/* 20. KEYFRAMES                                                      */
-/* ------------------------------------------------------------------ */
+
+
+
 @keyframes blink {
 	50% {
 		opacity: 0;
@@ -1940,7 +1914,7 @@ h3 {
 	}
 }
 
-/* Hero headline flicker (occasional, subtle) */
+
 @keyframes headFlicker {
 	0%,
 	92%,
@@ -2001,7 +1975,7 @@ h3 {
 	}
 }
 
-/* .cyber-glitch pseudo clips */
+
 @keyframes glitchTop {
 	0%,
 	100% {
@@ -2049,7 +2023,7 @@ h3 {
 	}
 }
 
-/* Scroll-reveal (JS toggles .in) */
+
 .reveal {
 	opacity: 0;
 	transform: translateY(24px);
@@ -2062,9 +2036,9 @@ h3 {
 	transform: none;
 }
 
-/* ------------------------------------------------------------------ */
-/* 21. RESPONSIVE (mobile-first; layers up at breakpoints)            */
-/* ------------------------------------------------------------------ */
+
+
+
 @media (min-width: 640px) {
 	.stats {
 		grid-template-columns: repeat(4, 1fr);
@@ -2138,7 +2112,7 @@ h3 {
 	.hero__grid {
 		grid-template-columns: 1.2fr 0.85fr;
 		gap: 4rem;
-	} /* ≈60/40 split */
+	}
 	.hud {
 		display: block;
 	}
@@ -2157,9 +2131,9 @@ h3 {
 	align-items: start;
 }
 
-/* ------------------------------------------------------------------ */
-/* 22. REDUCED MOTION — disable glitch/scroll, keep static aberration */
-/* ------------------------------------------------------------------ */
+
+
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
@@ -2173,7 +2147,7 @@ h3 {
 		opacity: 1;
 		transform: none;
 	}
-	/* keep the static chromatic aberration look on the headline */
+
 	.glitch-head {
 		animation: none;
 	}

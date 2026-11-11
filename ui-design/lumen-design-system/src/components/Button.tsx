@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 	variant?: Variant;
 	size?: Size;
-	/** Render as an anchor instead of a button. */
+
 	href?: string;
 }
 

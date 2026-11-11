@@ -1,10 +1,7 @@
 import type { InputHTMLAttributes, Ref } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * Data-terminal input. Bottom-border only, semi-transparent dark fill, and a
- * Bitcoin-orange underline + glow on focus. Clean, precise, purposeful.
- */
+
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	ref?: Ref<HTMLInputElement>;
 }

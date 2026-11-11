@@ -1,11 +1,7 @@
 import { KineticMarquee } from "../components/KineticMarquee";
 import { STATS } from "../content";
 
-/**
- * High-energy stats band. Acid-yellow full-bleed rail, black text, speed 80,
- * raw edges (no gradient). Each item pairs a large number with a small label
- * and an asterisk separator so the rail reads like ticker tape.
- */
+
 export function StatsMarquee() {
 	return (
 		<section

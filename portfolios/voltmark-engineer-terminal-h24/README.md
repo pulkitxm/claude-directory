@@ -1,18 +1,9 @@
-# Voltmark — Dark-Mode Engineer Terminal Portfolio (HTML + CSS + Vanilla JS)
+# Voltmark : Dark-Mode Engineer Terminal Portfolio
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore dark-mode engineer terminal portfolio (html + css + vanilla js).
 
-Voltmark is a single-page, dark-mode personal portfolio for a senior full-stack and systems engineer built around a "developer workstation at 2am" aesthetic — deepest near-black canvas (`#050505`), a single electric-yellow accent, monospace code texture, faint technical grid lines, and soft yellow glow bloom. Sections run a fixed header, a mouse-following blurred yellow blob hero with inline floating "code chip" pills, a tech brand marquee, an about column beside a live typewriter terminal window, a filterable projects grid with rendered code-snippet previews, an experience accordion with animated skill bars, a numbered services grid, an FAQ accordion, and a contact footer with a form. Type is Space Grotesk, Inter, and JetBrains Mono — all self-hosted; vanilla JS drives IntersectionObserver reveals, eased blob parallax, floating animations, the terminal typewriter, count-up counters, the marquee, and project filters.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

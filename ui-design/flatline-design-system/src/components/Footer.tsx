@@ -3,8 +3,7 @@ import type { LucideIcon } from "lucide-react";
 import { Logo } from "./Logo";
 import { Shell, Blob } from "./primitives";
 
-/* FOOTER — dark gray (Gray 900) color block to close the page. Flat link
-   columns, geometric accents, no shadow. */
+
 const COLUMNS: { title: string; links: string[] }[] = [
 	{
 		title: "Product",

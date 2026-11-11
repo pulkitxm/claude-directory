@@ -1,5 +1,3 @@
-/** Terminal CLI design system — public surface. */
-
 export { AsciiBar } from "./AsciiBar";
 export { BracketButton } from "./BracketButton";
 export { CrtOverlay } from "./CrtOverlay";

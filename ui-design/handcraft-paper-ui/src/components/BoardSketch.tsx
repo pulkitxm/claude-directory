@@ -1,6 +1,4 @@
-/* The hero "whiteboard" — a fully hand-drawn SVG sketch of a brainstorm board.
-   Self-contained (no external asset): sticky notes, a doodle arrow, a smiley,
-   a lightbulb and a connector line, all in the system palette. */
+
 export function BoardSketch({ className }: { className?: string }) {
 	return (
 		<svg
@@ -9,7 +7,7 @@ export function BoardSketch({ className }: { className?: string }) {
 			role="img"
 			aria-label="A messy brainstorming board with sticky notes, doodles, and arrows"
 		>
-			{/* faint ruled guide lines */}
+			{}
 			<g stroke="#e5e0d8" strokeWidth="1.5">
 				<line x1="0" y1="70" x2="420" y2="70" />
 				<line x1="0" y1="140" x2="420" y2="140" />
@@ -17,7 +15,7 @@ export function BoardSketch({ className }: { className?: string }) {
 				<line x1="0" y1="280" x2="420" y2="280" />
 			</g>
 
-			{/* yellow sticky note */}
+			{}
 			<g transform="rotate(-5 92 92)">
 				<rect
 					x="36"
@@ -66,7 +64,7 @@ export function BoardSketch({ className }: { className?: string }) {
 				/>
 			</g>
 
-			{/* blue sticky note */}
+			{}
 			<g transform="rotate(4 300 80)">
 				<rect
 					x="250"
@@ -96,7 +94,7 @@ export function BoardSketch({ className }: { className?: string }) {
 				/>
 			</g>
 
-			{/* hand-drawn dashed arrow connecting the two notes */}
+			{}
 			<path
 				d="M150 96 C 190 130, 220 70, 248 84"
 				fill="none"
@@ -114,7 +112,7 @@ export function BoardSketch({ className }: { className?: string }) {
 				strokeLinejoin="round"
 			/>
 
-			{/* lightbulb idea doodle */}
+			{}
 			<g transform="translate(64 188)">
 				<path
 					d="M30 6 a26 26 0 0 1 16 46 q-3 4 -3 9 h-26 q0 -5 -3 -9 a26 26 0 0 1 16 -46Z"
@@ -147,7 +145,7 @@ export function BoardSketch({ className }: { className?: string }) {
 				</g>
 			</g>
 
-			{/* speech-bubble doodle with a smiley */}
+			{}
 			<g transform="translate(232 176)">
 				<path
 					d="M8 8 h150 a14 14 0 0 1 14 14 v60 a14 14 0 0 1 -14 14 h-96 l-22 22 v-22 h-32 a14 14 0 0 1 -14 -14 v-60 a14 14 0 0 1 14 -14Z"
@@ -178,7 +176,7 @@ export function BoardSketch({ className }: { className?: string }) {
 				</g>
 			</g>
 
-			{/* scribble underline accent */}
+			{}
 			<path
 				d="M40 300 q40 -12 80 0 t80 0 t80 0"
 				fill="none"

@@ -3,12 +3,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { Plus, Minus } from "lucide-react";
 import { Shell, Reveal, Eyebrow } from "./primitives";
 
-/* FAQ — the one place we use dividers: thick border-2 between items for
-   structure. Accordion with snappy open/close. No shadow. */
+
 const QA = [
 	{
 		q: "Is this really shadow-free?",
-		a: "Completely. There is not a single box-shadow on any element — focus states use a high-contrast solid ring instead. Depth is replaced by scale, color contrast, and the layering of flat shapes.",
+		a: "Completely. There is not a single box-shadow on any element ,  focus states use a high-contrast solid ring instead. Depth is replaced by scale, color contrast, and the layering of flat shapes.",
 	},
 	{
 		q: "What stack does it target?",
@@ -16,7 +15,7 @@ const QA = [
 	},
 	{
 		q: "Can I retheme the colors?",
-		a: "Yes. Every color, font and radius is a token. Change the seven palette values once and the entire system — buttons, cards, sections, focus rings — updates in lockstep. No hunting for hard-coded values.",
+		a: "Yes. Every color, font and radius is a token. Change the seven palette values once and the entire system ,  buttons, cards, sections, focus rings ,  updates in lockstep. No hunting for hard-coded values.",
 	},
 	{
 		q: "How does it stay accessible without shadows?",
@@ -24,7 +23,7 @@ const QA = [
 	},
 	{
 		q: "Why no gradients on buttons or cards?",
-		a: "Gradients imply depth and dilute the graphic, poster-like clarity. We reserve subtle directional gradients strictly for large background decoration — never on interactive surfaces.",
+		a: "Gradients imply depth and dilute the graphic, poster-like clarity. We reserve subtle directional gradients strictly for large background decoration ,  never on interactive surfaces.",
 	},
 ];
 
@@ -92,14 +91,14 @@ export function Faq() {
 					</h2>
 					<p className="mt-5 leading-relaxed text-gray-600">
 						Everything you might ask before adopting a system this reductive.
-						Thick rules give the list its structure — the one place we allow a
+						Thick rules give the list its structure ,  the one place we allow a
 						divider.
 					</p>
 				</Reveal>
 
 				<div className="lg:col-span-8">
 					<Reveal>
-						{/* top rule to complete the border-2 framing */}
+						{}
 						<div className="border-t-2 border-[var(--color-hair)]">
 							{QA.map((item, i) => (
 								<Item

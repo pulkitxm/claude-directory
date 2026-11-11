@@ -6,16 +6,12 @@ import {
 	type ReactNode,
 } from "react";
 
-/* ----------------------------------------------------------------------------
-   cx — tiny class joiner (no dependency needed for this scale).
-   -------------------------------------------------------------------------- */
+
 export function cx(...parts: Array<string | false | null | undefined>) {
 	return parts.filter(Boolean).join(" ");
 }
 
-/* ============================================================================
-   CONTAINER — the mounting deck. Centralizes max-width + responsive padding.
-   ========================================================================== */
+
 export function Container({
 	className,
 	children,
@@ -31,10 +27,7 @@ export function Container({
 	);
 }
 
-/* ============================================================================
-   LED — status indicator. Solid fill + glow + breathing pulse. Always paired
-   with a label by the caller. Accessible: conveys state via aria-label text.
-   ========================================================================== */
+
 const LED_TONE = {
 	online: { dot: "bg-online", glow: "var(--shadow-glow-green)" },
 	alert: { dot: "bg-accent", glow: "var(--shadow-glow)" },
@@ -70,9 +63,7 @@ export function Led({
 	);
 }
 
-/* ============================================================================
-   MONO LABEL — stamped/printed technical text. Optional leading LED.
-   ========================================================================== */
+
 export function MonoLabel({
 	children,
 	tone,
@@ -95,9 +86,7 @@ export function MonoLabel({
 	);
 }
 
-/* ============================================================================
-   BADGE — small recessed pill, used for eyebrow tags above headings.
-   ========================================================================== */
+
 export function Badge({
 	children,
 	className,
@@ -122,9 +111,7 @@ export function Badge({
 	);
 }
 
-/* ============================================================================
-   SCREWS + VENTS — the signature manufacturing details. Decorative only.
-   ========================================================================== */
+
 export function Vents({ className }: { className?: string }) {
 	return (
 		<div className={cx("flex gap-1", className)} aria-hidden="true">
@@ -139,10 +126,7 @@ export function Vents({ className }: { className?: string }) {
 	);
 }
 
-/* ============================================================================
-   PANEL — a "bolted module". Core surface primitive: chassis card with the
-   neumorphic dual shadow, optional corner screws, vents and hover lift.
-   ========================================================================== */
+
 type PanelProps = HTMLAttributes<HTMLDivElement> & {
 	elevated?: boolean;
 	screws?: boolean;
@@ -183,9 +167,7 @@ export function Panel({
 	);
 }
 
-/* ============================================================================
-   ICON HOUSING — recessed circular mount so icons are never "floating".
-   ========================================================================== */
+
 export function IconHousing({
 	children,
 	size = 56,
@@ -216,9 +198,7 @@ export function IconHousing({
 	);
 }
 
-/* ============================================================================
-   BUTTON — "physical key". Three variants; depresses with shadow inversion.
-   ========================================================================== */
+
 const SIZES = {
 	sm: "min-h-[44px] px-5 text-[0.72rem] rounded-md",
 	md: "min-h-[48px] px-7 text-xs rounded-lg",
@@ -270,7 +250,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				style={{
 					backgroundColor:
 						variant === "primary" ? "var(--color-accent)" : undefined,
-					// Ghost has no resting shadow — leave it to the hover CSS class
+					// Ghost has no resting shadow ,  leave it to the hover CSS class
 					// so an inline value never overrides it.
 					boxShadow: variant === "ghost" ? undefined : restShadow,
 				}}
@@ -304,9 +284,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-/* ============================================================================
-   INPUT — "data slot". Recessed well, monospace, accent LED-backlight focus.
-   ========================================================================== */
+
 type InputProps = InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -336,9 +314,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = "Input";
 
-/* ============================================================================
-   SECTION HEADING — consistent eyebrow + title + lede block.
-   ========================================================================== */
+
 export function SectionHeading({
 	eyebrow,
 	title,

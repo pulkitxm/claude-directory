@@ -7,7 +7,7 @@ export function Footer() {
 		<footer className="relative z-10 border-t border-border bg-background">
 			<div className="container-wide py-20 md:py-24">
 				<div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
-					{/* brand block */}
+					{}
 					<div className="col-span-2 md:col-span-1">
 						<a
 							href="#top"
@@ -27,7 +27,7 @@ export function Footer() {
 						</address>
 					</div>
 
-					{/* link columns */}
+					{}
 					{footer.columns.map((col) => (
 						<nav key={col.heading} aria-label={col.heading}>
 							<h3 className="small-caps mb-5 text-foreground">{col.heading}</h3>
@@ -47,14 +47,14 @@ export function Footer() {
 					))}
 				</div>
 
-				{/* decorative rule with ornament */}
+				{}
 				<div className="mt-16 flex items-center gap-4" aria-hidden>
 					<span className="rule flex-1" />
 					<span className="font-display text-accent">&#10086;</span>
 					<span className="rule flex-1" />
 				</div>
 
-				{/* bottom row */}
+				{}
 				<div className="mt-8 flex flex-col items-center justify-between gap-5 md:flex-row">
 					<p className="small-caps text-muted-foreground">
 						&copy; {year} {brand.name} &middot; {brand.est}

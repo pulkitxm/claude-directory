@@ -1,10 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * Monospace uppercase section label — the recurring "FILED UNDER / SECTION 02"
- * tag that gives every block its newspaper rubric.
- */
+
 export function Kicker({
 	children,
 	className,

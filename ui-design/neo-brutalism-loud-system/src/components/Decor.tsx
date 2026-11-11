@@ -1,10 +1,6 @@
 import { Star } from "lucide-react";
 
-/* ----------------------------------------------------------------------------
-   Primitive shape motifs — bordered squares, circles, and a 5-point star, all
-   with hard shadows. Used as decorative floaters in "chaos zones". Every one
-   is aria-hidden: they're texture, not content.
-   -------------------------------------------------------------------------- */
+
 
 type ShapeProps = { className?: string };
 
@@ -43,7 +39,7 @@ export function TriangleShape({ className = "" }: ShapeProps) {
 	);
 }
 
-/* A spinning bordered star sticker — the recurring motif. */
+
 export function StarSticker({
 	className = "",
 	bg = "bg-neo-secondary",

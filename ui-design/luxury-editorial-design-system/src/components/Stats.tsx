@@ -1,8 +1,7 @@
 import { Overline, Emphasis } from "./Primitives";
 import { stats } from "../data/content";
 
-/* Dark inverted section — provides section rhythm/alternation.
-   bg #1A1A1A, alabaster text, muted text at 60–80% opacity. */
+
 export function Stats() {
 	return (
 		<section
@@ -19,14 +18,14 @@ export function Stats() {
 					</div>
 					<div className="lg:col-span-5 lg:col-start-8">
 						<p className="max-w-md font-sans text-base leading-relaxed text-background/70 md:text-lg">
-							We have changed very little since 1924 — and that is the point.
+							We have changed very little since 1924 ,  and that is the point.
 							The numbers below are not growth metrics. They are a record of
 							restraint.
 						</p>
 					</div>
 				</div>
 
-				{/* Numbers row: 2 cols mobile, 4 on desktop */}
+				{}
 				<dl className="mt-16 grid grid-cols-2 gap-x-8 gap-y-12 border-t border-background/20 pt-14 md:mt-20 lg:grid-cols-4 lg:gap-x-16">
 					{stats.map((s) => (
 						<div key={s.label} className="group">

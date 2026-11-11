@@ -40,7 +40,7 @@ const FEATURES: Feature[] = [
 	{
 		icon: Wand2,
 		title: "Tidy-up, on demand",
-		body: "Hit the magic broom and Scribbly aligns your chaos into something presentable — then lets you mess it right back up.",
+		body: "Hit the magic broom and Scribbly aligns your chaos into something presentable ,  then lets you mess it right back up.",
 		decoration: "tack",
 		tone: "accent",
 		tilt: "rotate-2",

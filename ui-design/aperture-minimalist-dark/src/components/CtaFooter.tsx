@@ -21,7 +21,7 @@ function CtaCard() {
 
 	return (
 		<div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-background-alt/60 px-6 py-14 text-center backdrop-blur-xl md:px-16 md:py-20">
-			{/* inner ambient glow */}
+			{}
 			<div className="pointer-events-none absolute left-1/2 top-0 h-56 w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.1] blur-[90px]" />
 			<div className="grid-layer pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_40%,#000,transparent)]" />
 
@@ -104,7 +104,7 @@ export function CtaFooter() {
 				<div className="hairline opacity-60" />
 
 				<div className="grid gap-12 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-					{/* brand */}
+					{}
 					<div className="flex flex-col gap-4">
 						<a
 							href="#top"
@@ -128,7 +128,7 @@ export function CtaFooter() {
 						</div>
 					</div>
 
-					{/* link columns */}
+					{}
 					{FOOTER_COLUMNS.map((col) => (
 						<div key={col.title} className="flex flex-col gap-4">
 							<h4 className="font-mono text-xs uppercase tracking-wider text-muted-foreground/70">
@@ -149,7 +149,7 @@ export function CtaFooter() {
 
 				<div className="flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] py-8 sm:flex-row">
 					<p className="font-mono text-xs text-muted-foreground/70">
-						© {new Date().getFullYear()} Aperture Labs — a fictional product for
+						© {new Date().getFullYear()} Aperture Labs ,  a fictional product for
 						a design-system demo.
 					</p>
 					<div className="flex items-center gap-6">

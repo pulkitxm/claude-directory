@@ -1,45 +1,39 @@
-/* =====================================================================
-   THE ATHENÆUM — Academia / Classical design system
-   A self-contained showcase. Every value descends from the tokens in
-   :root, so the whole library at night is themeable from one place.
-   ===================================================================== */
 
-@import url("./assets/fonts/fonts.css");
 
-/* ------------------------------------------------------------------ *
- * 1. DESIGN TOKENS (THE DNA)
- * ------------------------------------------------------------------ */
+
+
+
 :root {
-	/* Color system — Library at Night */
-	--background: #1c1714; /* Deep Mahogany   */
-	--background-alt: #251e19; /* Aged Oak        */
-	--foreground: #e8dfd4; /* Antique Parchment */
-	--muted: #3d332b; /* Worn Leather    */
-	--muted-foreground: #9c8b7a; /* Faded Ink       */
-	--border: #4a3f35; /* Wood Grain      */
 
-	--accent: #c9a962; /* Polished Brass  */
-	--accent-bright: #d4b872; /* Brass highlight */
-	--accent-deep: #b8953f; /* Brass shadow    */
-	--accent-secondary: #8b2635; /* Library Crimson */
+	--background: #1c1714;
+	--background-alt: #251e19;
+	--foreground: #e8dfd4;
+	--muted: #3d332b;
+	--muted-foreground: #9c8b7a;
+	--border: #4a3f35;
+
+	--accent: #c9a962;
+	--accent-bright: #d4b872;
+	--accent-deep: #b8953f;
+	--accent-secondary: #8b2635;
 	--accent-secondary-bright: #a6303f;
-	--accent-foreground: #1c1714; /* Dark on Brass   */
+	--accent-foreground: #1c1714;
 
-	/* Translucent brass for borders/rings */
+
 	--accent-30: rgba(201, 169, 98, 0.3);
 	--accent-50: rgba(201, 169, 98, 0.5);
 	--accent-12: rgba(201, 169, 98, 0.12);
 
-	/* Type families */
+
 	--font-heading: "Cormorant Garamond", "Times New Roman", serif;
 	--font-body: "Crimson Pro", Georgia, serif;
 	--font-display: "Cinzel", "Times New Roman", serif;
 
-	/* Radius */
+
 	--radius: 4px;
 	--radius-arch: 40% 40% 0 0 / 20% 20% 0 0;
 
-	/* Brass gradient */
+
 	--brass-gradient: linear-gradient(
 		180deg,
 		#d4b872 0%,
@@ -47,12 +41,12 @@
 		#b8953f 100%
 	);
 
-	/* Effects */
+
 	--sepia: sepia(0.6) contrast(0.95) brightness(0.9);
 	--engraved:
 		1px 1px 1px rgba(0, 0, 0, 0.4), -1px -1px 1px rgba(255, 255, 255, 0.1);
 
-	/* Shadows */
+
 	--shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
 	--shadow-engraved:
 		inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(0, 0, 0, 0.22),
@@ -64,22 +58,20 @@
 		inset 0 2px 4px rgba(255, 255, 255, 0.25),
 		inset 0 -2px 6px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.45);
 
-	/* Motion — dignified, deliberate, ease-out only */
+
 	--t-fast: 150ms;
 	--t-base: 300ms;
 	--t-slow: 500ms;
 	--t-dramatic: 700ms;
-	--ease: cubic-bezier(0.22, 0.61, 0.36, 1); /* ease-out */
+	--ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 
-	/* Layout */
+
 	--max-7xl: 1280px;
 	--max-6xl: 1152px;
 	--max-4xl: 896px;
 }
 
-/* ------------------------------------------------------------------ *
- * 2. RESET & BASE
- * ------------------------------------------------------------------ */
+
 *,
 *::before,
 *::after {
@@ -140,7 +132,7 @@ svg.illus {
 	color: var(--foreground);
 }
 
-/* Brass scrollbar to keep the material language consistent */
+
 * {
 	scrollbar-color: var(--accent-deep) var(--background-alt);
 }
@@ -157,9 +149,7 @@ svg.illus {
 	border-radius: 6px;
 }
 
-/* ------------------------------------------------------------------ *
- * 3. ATMOSPHERIC OVERLAYS (paper grain + vignette) — single fixed els
- * ------------------------------------------------------------------ */
+
 .overlay {
 	position: fixed;
 	inset: 0;
@@ -167,7 +157,7 @@ svg.illus {
 	z-index: 9000;
 }
 .overlay--grain {
-	/* SVG fractal-turbulence noise, ~3% opacity, overlay blend */
+
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 	opacity: 0.035;
 	mix-blend-mode: overlay;
@@ -181,7 +171,7 @@ svg.illus {
 	);
 }
 
-/* Skip link */
+
 .skip-link {
 	position: absolute;
 	left: 50%;
@@ -202,9 +192,7 @@ svg.illus {
 	top: 12px;
 }
 
-/* ------------------------------------------------------------------ *
- * 4. SHARED PRIMITIVES
- * ------------------------------------------------------------------ */
+
 .container {
 	width: 100%;
 	max-width: var(--max-6xl);
@@ -222,7 +210,7 @@ svg.illus {
 	padding-block: 120px;
 	position: relative;
 }
-/* Keep anchored section headings clear of the fixed header on jump. */
+
 :where(section[id], main span[id]) {
 	scroll-margin-top: 92px;
 }
@@ -232,7 +220,7 @@ svg.illus {
 	border-bottom: 1px solid var(--border);
 }
 
-/* Overline label: Cinzel, uppercase, brass, wide tracking */
+
 .overline {
 	font-family: var(--font-display);
 	font-size: 0.72rem;
@@ -243,7 +231,7 @@ svg.illus {
 	display: inline-block;
 }
 
-/* Volume tag (Roman-numeral section index) with flanking brass lines */
+
 .volume {
 	display: inline-flex;
 	align-items: center;
@@ -289,7 +277,7 @@ svg.illus {
 	justify-content: center;
 }
 
-/* Ornate divider with centered glyph */
+
 .divider {
 	position: relative;
 	height: 1px;
@@ -323,7 +311,7 @@ svg.illus {
 	margin-inline: auto;
 }
 
-/* Ornate frame — large 40px brass corner brackets (TL + BR) */
+
 .ornate-frame {
 	position: relative;
 	border: 1px solid var(--border);
@@ -352,7 +340,7 @@ svg.illus {
 	border-top: none;
 }
 
-/* Corner flourish — subtle 24px brass brackets on all four corners */
+
 .flourish {
 	position: relative;
 }
@@ -393,7 +381,7 @@ svg.illus {
 	opacity: 1;
 }
 
-/* Arch-top image container (cathedral arch) with sepia→colour reveal */
+
 .arch {
 	position: relative;
 	overflow: hidden;
@@ -428,7 +416,7 @@ a:hover .arch .illus {
 	aspect-ratio: 4 / 3;
 }
 
-/* Wax seal badge */
+
 .wax-seal {
 	position: absolute;
 	width: 64px;
@@ -463,9 +451,7 @@ a:hover .arch .illus {
 	letter-spacing: 0.1em;
 }
 
-/* ------------------------------------------------------------------ *
- * 5. BUTTONS
- * ------------------------------------------------------------------ */
+
 .btn {
 	display: inline-flex;
 	align-items: center;
@@ -504,7 +490,7 @@ a:hover .arch .illus {
 	font-size: 0.78rem;
 }
 
-/* Primary — brass, engraved */
+
 .btn--primary {
 	background: var(--brass-gradient);
 	color: var(--accent-foreground);
@@ -521,7 +507,7 @@ a:hover .arch .illus {
 	box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* Secondary — outlined brass that transforms to crimson */
+
 .btn--secondary {
 	background: transparent;
 	border-color: var(--accent);
@@ -534,7 +520,7 @@ a:hover .arch .illus {
 	color: var(--foreground);
 }
 
-/* Ghost — minimal brass with underline */
+
 .btn--ghost {
 	background: transparent;
 	border-color: transparent;
@@ -559,9 +545,7 @@ summary:focus-visible {
 		0 0 0 4px var(--accent);
 }
 
-/* ------------------------------------------------------------------ *
- * 6. HEADER / NAV
- * ------------------------------------------------------------------ */
+
 .header {
 	position: fixed;
 	inset: 0 0 auto 0;
@@ -696,7 +680,7 @@ summary:focus-visible {
 	display: block;
 }
 
-/* Mobile drawer */
+
 .drawer {
 	position: fixed;
 	inset: 0;
@@ -739,9 +723,7 @@ summary:focus-visible {
 	width: 180px;
 }
 
-/* ------------------------------------------------------------------ *
- * 7. HERO
- * ------------------------------------------------------------------ */
+
 .hero {
 	padding-top: 150px;
 	padding-bottom: 110px;
@@ -799,7 +781,7 @@ summary:focus-visible {
 	color: var(--muted-foreground);
 	font-size: 1.2rem;
 }
-/* Drop cap on the hero intro */
+
 .dropcap::first-letter {
 	font-family: var(--font-display);
 	font-weight: 600;
@@ -870,9 +852,7 @@ summary:focus-visible {
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* ------------------------------------------------------------------ *
- * 8. MARQUEE (brass motto strip)
- * ------------------------------------------------------------------ */
+
 .marquee {
 	border-top: 1px solid var(--border);
 	border-bottom: 1px solid var(--border);
@@ -924,9 +904,7 @@ summary:focus-visible {
 	}
 }
 
-/* ------------------------------------------------------------------ *
- * 9. STATS BAR
- * ------------------------------------------------------------------ */
+
 .stats {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -981,9 +959,7 @@ summary:focus-visible {
 	opacity: 0.5;
 }
 
-/* ------------------------------------------------------------------ *
- * 10. PROCLAMATION (manifesto / certificate)
- * ------------------------------------------------------------------ */
+
 .proclaim {
 	padding: clamp(36px, 5vw, 72px);
 	text-align: center;
@@ -1049,9 +1025,7 @@ summary:focus-visible {
 	margin-top: 6px;
 }
 
-/* ------------------------------------------------------------------ *
- * 11. CARDS GRID (Collections / Disciplines)
- * ------------------------------------------------------------------ */
+
 .grid-3 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -1135,9 +1109,7 @@ summary:focus-visible {
 	transform: translateX(3px);
 }
 
-/* ------------------------------------------------------------------ *
- * 12. HERITAGE (two-column with arch image + illuminated list)
- * ------------------------------------------------------------------ */
+
 .split {
 	display: grid;
 	grid-template-columns: 0.92fr 1.08fr;
@@ -1185,9 +1157,7 @@ summary:focus-visible {
 	font-size: 1.02rem;
 }
 
-/* ------------------------------------------------------------------ *
- * 13. TIMELINE (Curriculum)
- * ------------------------------------------------------------------ */
+
 .timeline {
 	position: relative;
 	margin-top: 64px;
@@ -1266,9 +1236,7 @@ summary:focus-visible {
 	font-size: 1.02rem;
 }
 
-/* ------------------------------------------------------------------ *
- * 14. MEMBERSHIP (pricing — certificate/ledger cards)
- * ------------------------------------------------------------------ */
+
 .tiers {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -1385,9 +1353,7 @@ summary:focus-visible {
 	border-top: none;
 }
 
-/* ------------------------------------------------------------------ *
- * 15. TESTIMONIALS (Common Room)
- * ------------------------------------------------------------------ */
+
 .quotes {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -1458,9 +1424,7 @@ summary:focus-visible {
 	color: var(--muted-foreground);
 }
 
-/* ------------------------------------------------------------------ *
- * 16. THE QUARTERLY (blog — arch-top image cards)
- * ------------------------------------------------------------------ */
+
 .posts {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -1507,9 +1471,7 @@ summary:focus-visible {
 	font-size: 1.04rem;
 }
 
-/* ------------------------------------------------------------------ *
- * 17. FAQ
- * ------------------------------------------------------------------ */
+
 .faq {
 	max-width: var(--max-4xl);
 	margin-inline: auto;
@@ -1579,9 +1541,7 @@ summary:focus-visible {
 	max-width: 64ch;
 }
 
-/* ------------------------------------------------------------------ *
- * 18. ENQUIRY FORM + CTA
- * ------------------------------------------------------------------ */
+
 .enquiry {
 	display: grid;
 	grid-template-columns: 0.9fr 1.1fr;
@@ -1690,9 +1650,7 @@ summary:focus-visible {
 	font-style: italic;
 }
 
-/* ------------------------------------------------------------------ *
- * 19. FOOTER
- * ------------------------------------------------------------------ */
+
 .footer {
 	border-top: 1px solid var(--border);
 	background: rgba(20, 15, 12, 0.6);
@@ -1754,9 +1712,7 @@ summary:focus-visible {
 	color: var(--accent);
 }
 
-/* ------------------------------------------------------------------ *
- * 20. SCROLL REVEAL
- * ------------------------------------------------------------------ */
+
 [data-reveal] {
 	opacity: 0;
 	transform: translateY(26px);
@@ -1771,9 +1727,7 @@ summary:focus-visible {
 	transform: none;
 }
 
-/* ------------------------------------------------------------------ *
- * 21. RESPONSIVE
- * ------------------------------------------------------------------ */
+
 @media (max-width: 1024px) {
 	.nav {
 		display: none;
@@ -1853,7 +1807,7 @@ summary:focus-visible {
 		grid-template-columns: 1fr;
 	}
 
-	/* Timeline collapses to a single left rail */
+
 	.timeline::before {
 		left: 11px;
 	}
@@ -1878,7 +1832,7 @@ summary:focus-visible {
 		width: 100%;
 	}
 
-	/* Simplify the largest decorative brackets on small screens */
+
 	.flourish > .fl {
 		width: 16px;
 		height: 16px;
@@ -1895,9 +1849,7 @@ summary:focus-visible {
 	}
 }
 
-/* ------------------------------------------------------------------ *
- * 22. REDUCED MOTION
- * ------------------------------------------------------------------ */
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,

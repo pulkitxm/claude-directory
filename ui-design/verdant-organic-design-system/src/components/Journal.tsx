@@ -4,11 +4,7 @@ import { PostArt } from "./Botanical";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-/**
- * The Journal — three field notes. Each card crops a botanical illustration
- * behind a fade overlay that lifts on hover (group-hover) for a slow reveal,
- * with a category pill and a read-time. The whole card lifts gently on hover.
- */
+
 export function Journal() {
 	return (
 		<section id="journal" className="relative px-4 py-32 sm:px-6 lg:px-8">
@@ -37,13 +33,13 @@ export function Journal() {
 								href="#journal"
 								className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-border/50 bg-card shadow-soft transition-all duration-500 ease-organic hover:-translate-y-1.5 hover:shadow-soft-lg"
 							>
-								{/* illustration with fade overlay */}
+								{}
 								<div className="relative overflow-hidden">
 									<PostArt
 										variant={post.art}
 										className="aspect-[16/10] h-auto w-full transition-transform duration-700 ease-organic group-hover:scale-105"
 									/>
-									{/* fade overlay that clears on hover */}
+									{}
 									<div className="absolute inset-0 bg-foreground/15 transition-colors duration-500 group-hover:bg-transparent" />
 									<span className="absolute left-4 top-4 rounded-full border border-border/50 bg-card/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-secondary backdrop-blur-sm">
 										{post.category}

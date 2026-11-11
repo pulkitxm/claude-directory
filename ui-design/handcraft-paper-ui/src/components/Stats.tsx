@@ -23,7 +23,7 @@ const STATS: Stat[] = [
 	},
 ];
 
-/* Count-up that runs once the band scrolls into view. */
+
 function useCountUp(target: number, run: boolean, ms = 1100) {
 	const [n, setN] = useState(0);
 	const started = useRef(false);

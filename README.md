@@ -2,619 +2,161 @@
 
 Responsive interfaces, motion studies and developer tools.
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [aethera-cinematic-hero](./hero-sections/aethera-cinematic-hero/) | Cinematic hero for Aethera with video-driven visual treatment and headless verification | React, TypeScript, Vite, Tailwind CSS |
-| [ai-builder-dark-hero](./hero-sections/ai-builder-dark-hero/) | Dark-mode hero section for an AI website builder with animated reveals and HLS video streaming | React, TypeScript, Vite, Tailwind CSS, Motion, hls.js, Lucide |
-| [altitude-index-h38](./hero-sections/altitude-index-h38/) | Editorial expedition-outfitter bento hero ("Warm Cartography") on warm paper with an ember accent, parallax photo tiles, fullscreen menu, and a scrolling coordinate ticker | HTML, CSS, JavaScript, Space Grotesk |
-| [animated-text-rotate-hero](./hero-sections/animated-text-rotate-hero/) | shadcn/ui animated hero integration with spring word-rotation, hosted in a midnight-teal "Spektr" trade-desk shell with a live ticker | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
-| [bloom-liquid-glass-hero](./hero-sections/bloom-liquid-glass-hero/) | Bloom hero experiment with floral imagery, liquid-glass styling, and generated visual assets | React, TypeScript, Vite, Tailwind CSS |
-| [cinematic-stream-hero](./hero-sections/cinematic-stream-hero/) | LUMIERE full-viewport streaming hero with looping cinematic background video | React, TypeScript, Vite, Tailwind CSS |
-| [codenest-hero](./hero-sections/codenest-hero/) | Dark coding-education hero for "CodeNest" with an HLS (Mux) video background, grid lines, central glow, and a liquid-glass floating card | React, TypeScript, Vite, Tailwind CSS, hls.js, Lucide, Vitest |
-| [convix-pr-agency-hero](./hero-sections/convix-pr-agency-hero/) | Full-viewport hero for PR-agency SaaS "Convix Software" with a rounded-card layout, background video, and floating pill navbar | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [datacore-video-hero](./hero-sections/datacore-video-hero/) | Responsive full-screen hero with a purple palette and an opaque fullscreen video background | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [designpro-video-hero](./hero-sections/designpro-video-hero/) | Full-screen hero for product-design education platform "DesignPro" with a looping video background and animated shiny gradient heading | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [digital-epoch-hero](./hero-sections/digital-epoch-hero/) | Rounded-card hero with looping video background, floating glass bottom navbar, and seamless CSS marquee logo scroller | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
-| [equilibrium-liquid-glass-hero](./hero-sections/equilibrium-liquid-glass-hero/) | Full-screen "Equilibrium" wellness hero with a liquid-glass UI over a looping background video | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [fearless-vision-hero](./hero-sections/fearless-vision-hero/) | Full-screen hero with a background video, deep-purple accent, and Inter typography | React, JavaScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [helix-vault-h55](./hero-sections/helix-vault-h55/) | "Institutional Crypto Terminal" hero for Helix Vault — emerald blade of light, glass portfolio dashboard mockup with count-up balance, growing bar chart, live ticker and scan-line, all framework-free | HTML, CSS, JavaScript, DM Sans |
-| [ironclad-password-hero](./hero-sections/ironclad-password-hero/) | Password-manager hero section for Ironclad with animated product-style presentation | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [kubric-hero-landing](./hero-sections/kubric-hero-landing/) | Desktop-only dark hero for fictional studio "Kubric™" with a looping background video, an 8-layer progressive bottom blur, a self-drawing animated SVG logo, a character-by-character headline, and a video-ready reveal sequence | TanStack Start, React 19, Vite 7, Tailwind CSS v4 |
-| [mainframe-hero-landing](./hero-sections/mainframe-hero-landing/) | Full-screen hero landing page for a creative agency called "Mainframe" with custom Helvetica Now display fonts | React, TypeScript, Vite, Tailwind CSS |
-| [monocrit-studio-h27](./hero-sections/monocrit-studio-h27/) | Interactive near-monochrome Swiss-brutalist studio hero with a cursor-following image card, magnetic headline letters, and movement-driven image cycling | HTML, CSS, JavaScript, Bricolage Grotesque |
-| [nexora-automation-hero](./hero-sections/nexora-automation-hero/) | Single-viewport SaaS automation hero ("Nexora") with Instrument Serif / Inter type and Framer Motion | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
-| [noctis-cinematic-hero](./hero-sections/noctis-cinematic-hero/) | NOCTIS full-screen dark cinematic hero with video background, nav, and timecode details | React, TypeScript, Vite, CSS |
-| [particle-hero](./hero-sections/particle-hero/) | Night-sky particle-canvas hero with a clickable gold-mode invert toggle, rotating spotlights, and a radial-reveal headline | React, TypeScript, Vite, Tailwind CSS, Canvas 2D, shadcn/ui, Lucide |
-| [power-ai-hero](./hero-sections/power-ai-hero/) | Full-screen dark AI hero with a JS-controlled fade-loop background video, headline, CTA, and logo marquee | React, TypeScript, Vite, Tailwind CSS, Geist Sans, Lucide |
-| [prisma-noir-h52](./hero-sections/prisma-noir-h52/) | "Spectral darkroom" creative-director hero with drifting screen-blended color blobs, a clipped rotating-word headline, cursor parallax, and a fullscreen discover menu with hover image tickers | HTML, CSS, JavaScript, Manrope, Titillium Web |
-| [rivr-defi-hero](./hero-sections/rivr-defi-hero/) | DeFi dashboard hero for RIVR with glassmorphism, badge/cards, and verification script | React, TypeScript, Vite, Tailwind CSS |
-| [securify-data-hero](./hero-sections/securify-data-hero/) | Full-screen hero section for a fictional data-security SaaS called securify | React, TypeScript, Vite, Tailwind CSS |
-| [sentinel-ai-hero](./hero-sections/sentinel-ai-hero/) | Full-screen dark hero for security company "Sentinel AI" with an embedded Spline 3D scene background | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline |
-| [shape-landing-hero](./hero-sections/shape-landing-hero/) | shadcn integration of Kokonut UI's HeroGeometric — animated geometric shapes, gradient headline and a live props playground on a near-black canvas | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide, shadcn/ui |
-| [skyelite-jet-hero](./hero-sections/skyelite-jet-hero/) | Premium private jet hero section with full-viewport video background and luxury UI treatment | React, TypeScript, Vite, Tailwind CSS |
-| [smart-prosthetics-hero](./hero-sections/smart-prosthetics-hero/) | Single-page hero with a fullscreen video background and pill-style navbar for a smart-prosthetics concept | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [stellar-ai-landing-hero](./hero-sections/stellar-ai-landing-hero/) | "Stellar.ai" landing hero on a white background with staggered fade-in animations and Inter type | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [synex-wealth-hero](./hero-sections/synex-wealth-hero/) | Editorial-minimal full-viewport hero for fictional wealth platform "Synex" on a warm paper background, with two photorealistic stones that reveal a cursor-following moss patch via a spring-driven radial mask, and a staggered blur-up load cascade | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, Lucide |
-| [taskly-liquid-glass-hero](./hero-sections/taskly-liquid-glass-hero/) | High-fidelity "liquid glass" hero for Taskly with a sticky glass navbar and dual-column layout on a white gradient-glow background | React, Vite |
-| [toonhub-figurine-carousel](./hero-sections/toonhub-figurine-carousel/) | TOONHUB full-viewport character figurine carousel hero | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [transform-data-hero](./hero-sections/transform-data-hero/) | Modern hero with a looping video background and a custom requestAnimationFrame fade system | React, TypeScript, Vite, Tailwind CSS |
-| [vanguard-hero-landing](./hero-sections/vanguard-hero-landing/) | Fullscreen hero landing page for the creative agency VANGUARD with looping background video | React, TypeScript, Vite, Tailwind CSS |
-| [vaultshield-hero](./hero-sections/vaultshield-hero/) | VaultShield hero experiment with security-product positioning and CLI/headless verification | React, TypeScript, Vite, Tailwind CSS |
-| [velorah-hero-landing](./hero-sections/velorah-hero-landing/) | Velorah hero landing page built with a modern Tailwind/shadcn-style component approach | React, TypeScript, Vite, Tailwind CSS, shadcn/ui |
-| [verdant-advisory-h10](./hero-sections/verdant-advisory-h10/) | Quiet-luxury advisory hero — oversized forest-green card, Hedvig serif headline, floating glass stat chip, infinite trust marquee, count-up stats and approach cards on a white canvas | HTML, CSS, Vanilla JS |
-| [wanderful-cinematic-hero](./hero-sections/wanderful-cinematic-hero/) | Full-viewport cinematic hero for travel brand "Wanderful" with GSAP animation and a custom display font | React, TypeScript, Vite, Tailwind CSS, GSAP, Lucide |
-| [woven-light-hero](./hero-sections/woven-light-hero/) | Interactive hero with 50k cursor-reactive Three.js particles woven into a torus-knot tapestry, integrated as a shadcn-style component | React, TypeScript, Vite, Tailwind CSS, Three.js, Framer Motion |
-| [xero-encryption-hero](./hero-sections/xero-encryption-hero/) | Single-page encryption-product hero for "Xero" with an animated icon pipeline and a pink-magenta gradient arc on a black page, written in plain CSS | React, TypeScript, Vite, CSS |
+## 3d-games (1)
 
-</details>
+- [sidi-bou-said-3d-walk](./3d-games/sidi-bou-said-3d-walk/)
 
-<details>
-<summary><b>Landing pages (98)</b></summary>
+## animations-loaders (1)
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [aegis-console-h39](./landing-pages/aegis-console-h39/) | "Precision Grid" cybersecurity SaaS landing for "Aegis" — white/bone canvas with one electric-lime accent, a fading hairline grid hero, a live security-console product mockup (animated lime SVG chart that draws itself, counting threat stats, pulsing status nodes), feature grid, ink count-up metrics band, 01–03 how-it-works with alert-feed/risk-bar/playbook mockups, three-tier pricing, and a gridded final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [almond-hours-h65](./landing-pages/almond-hours-h65/) | "Warm Clinical Editorial" dignified-care senior-living landing for "Almond Hours" — near-white paper with almond-ink neutrals and a butter-cream tint, a floating rounded mega-menu nav with flip hovers, an infinite photo marquee, a dual-headline hero with text-wipe reveal, a horizontal width-morphing programs accordion with layered image stacks, a healthcare bento grid, a single-open FAQ, a wipe-fill CTA banner, and a cursor-reveal giant wordmark | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
-| [amber-foundry-h9](./landing-pages/amber-foundry-h9/) | Warm editorial-intelligence landing page for fictional enterprise-AI consultancy "Amber Foundry" — cream/amber/roasted-brown palette, animated canvas neural-network hero, auto-advancing interactive solutions panel, bento method grid, and a dark pricing flip | HTML, CSS, Vanilla JS, Canvas, vendored fonts |
-| [amberhaus-pet-atelier-h31](./landing-pages/amberhaus-pet-atelier-h31/) | "Amberhaus" warm-amber luxury pet-boutique landing — crisp white paper with a single amber-gold accent and butter-cream tints, Bricolage Grotesque display + Playfair italic flourishes, a crossfading triptych hero with parallax center panel, services+boutique bento, a horizontal-scroll founder story, vertical marquee testimonials, a jumping-type footer canvas, paw cursor, and a slide-up booking overlay | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [archway-summit-h21](./landing-pages/archway-summit-h21/) | "Gallery Arch" tech-conference landing for "Archway Summit" — near-black editorial gallery framing headline speakers inside tall pastel museum arches (pink/blue/beige/yellow), grayscale-to-color portraits, mono schedule with Day 1/Day 2 toggle, FAQ accordion, and an inverted white final-CTA panel | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [asme-hero-landing](./landing-pages/asme-hero-landing/) | Full-screen dark Asme landing page with Mux/HLS-style video, liquid-glass navbar, and email-capture CTA | React, JavaScript, Vite, CSS |
-| [asme-liquid-glass-landing](./landing-pages/asme-liquid-glass-landing/) | Dark cinematic Asme single-page landing site with liquid-glass UI details | React, TypeScript, Vite, Tailwind CSS |
-| [astral-veil-h6](./landing-pages/astral-veil-h6/) | Cosmic-nocturne SaaS landing for "Novela" — near-black canvas, violet/cobalt nebula glows, frosted glass, Playfair Display headlines, CSS starfield, drifting UI fragments, trust marquee, and a floating constellation of integration capsules | HTML, CSS, Vanilla JS |
-| [atelier-noir-h7](./landing-pages/atelier-noir-h7/) | "Maison Éclisse" — a quiet, editorial haute-couture fashion-house lookbook (Atelier Noir aesthetic) on an ink-on-bone palette with Cormorant Garamond serif display, full-bleed hero, rotating seal badge, alternating diptychs, a staggered product grid, an editorial banner, journal, and slide-in menu/search overlays | HTML, CSS, JavaScript, IntersectionObserver, self-hosted fonts |
-| [atelier-press-h51](./landing-pages/atelier-press-h51/) | Interface experiment. | HTML, CSS, vanilla JS, Familjen Grotesk |
-| [aura-email-landing](./landing-pages/aura-email-landing/) | Dark, cinematic landing page for "Aura", an AI-native email client, with fullscreen video, a shiny gradient headline, a macOS-style menu bar, and a liquid-glass inbox mockup | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide, Supabase |
-| [auric-clinic-glow-h37](./landing-pages/auric-clinic-glow-h37/) | "Auric" precision dermaceutical-clinic landing (Clinical Warmth aesthetic) — clay-terracotta on ivory-cream with Archivo, a floating pill nav, full-bleed glowing-skin hero with staggered word reveal, an overlapping three-column action grid, a clay marquee, signature-treatment cards, a count-up science split, a quiet testimonial, and a deep-clay CTA band | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [auroracast-hls-landing](./landing-pages/auroracast-hls-landing/) | Modern landing page with a full-screen HLS video background, glassmorphic navigation header, and bottom-left hero content | React, Vite, hls.js |
-| [azimuth-realty-engine-h36](./landing-pages/azimuth-realty-engine-h36/) | "High-Altitude Precision" real-estate marketing-engine landing for "Azimuth" — deep-navy mission-control palette with a single electric-cobalt accent, Bricolage Grotesque display + JetBrains Mono labels, split grayscale-to-color hero, floating pill navbar with hover mega-menu, bento ecosystem grid, horizontal-scroll property portfolio, cobalt method bento, and a scroll-triggered fanning stacked-card CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [axion-studio-landing](./landing-pages/axion-studio-landing/) | Design agency landing page for Axion Studio with shader-based hero background and multi-section layout | React, TypeScript, Vite, Tailwind CSS, shaders, Lucide |
-| [axis-quotient-h30](./landing-pages/axis-quotient-h30/) | "Quant Brutalist Editorial" landing page for fictional quant-strategy firm Axis Quotient — ink-on-ivory with electric cobalt, animated point-grid hero canvas, colossal QUOTIENT wordmark, ticker marquee, capabilities accordion, count-up metrics, and toggleable engagement pricing | HTML, CSS, Vanilla JS, Canvas, SVG, vendored fonts |
-| [carbon-bloom-h95](./landing-pages/carbon-bloom-h95/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [cerulean-precision-collective-h67](./landing-pages/cerulean-precision-collective-h67/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [cartwright-relocation-h47](./landing-pages/cartwright-relocation-h47/) | "Warm Artisan Logistics" white-glove relocation landing for "Cartwright & Co" — terracotta-on-cream editorial palette with a Fraunces italic serif accent, dual opposite-scrolling hero image tickers, a mega-menu glass navbar, partner marquee, soft service cards, a dark count-up stats band, a staggered three-step process timeline, an auto-cycling stacked testimonial deck, and a split contact panel with a working quote form | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
-| [citron-atlas-h79](./landing-pages/citron-atlas-h79/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
-| [claywell-solene-h5](./landing-pages/claywell-solene-h5/) | Warm-clay editorial landing page for "Solène", a terracotta-and-cream longevity & precision-movement clinic, with an asymmetric split hero, word-by-word heading reveals, zig-zag scroll sections, an infinite marquee, and a dark science band | HTML, CSS, JavaScript, Archivo |
-| [cobalt-repairworks-h78](./landing-pages/cobalt-repairworks-h78/) | "Workbench Editorial" electronics-repair landing for "RepairWorks" — warm paper-cream canvas with one confident cobalt accent, tight Host Grotesk display + IBM Plex Mono labels, square-glyph logo marks, a left-aligned hero with a "what we fix" device-card grid, a hover-pausing brand marquee, a 2-up services grid with mono spec ticks and prices, a 3×2 benefits grid, a tinted identity split, a 4-up image/quote testimonial grid, a 2-up FAQ, and a panelled final CTA; IntersectionObserver staggered scroll reveals, scroll-aware header, prefers-reduced-motion aware, fully offline | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [concrete-bazaar-h87](./landing-pages/concrete-bazaar-h87/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
-| [crimson-cut-studio-h72](./landing-pages/crimson-cut-studio-h72/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
-| [design-rocket-email](./landing-pages/design-rocket-email/) | Email-style marketing landing page for a "Design Rocket Certificates" AI leadership course | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [dhara-heritage-edit-h88](./landing-pages/dhara-heritage-edit-h88/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [dot-daily-calm-landing](./landing-pages/dot-daily-calm-landing/) | "Dot." calm-living landing page with a glassmorphic pill navbar, typing messages, and a Nokia-style accent font | React 19, Vite, Tailwind CSS v4, Motion |
-| [ember-quietude-h26](./landing-pages/ember-quietude-h26/) | Warm paper-calm editorial landing page for focus-first productivity app "Lumo" (Ember Quietude aesthetic) — stone + single ember-orange accent, Instrument Serif display, floating pill nav with hover mega-menu, a fully hand-built HTML/CSS dashboard mockup (sidebar, dark focus timer, tasks, floating AI card), bento planning grid, organize cards, and a monthly/annual pricing toggle | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [evergreen-ledger-h94](./landing-pages/evergreen-ledger-h94/) | "Evergreen Ledger" forward-thinking venture-capital landing for "Meridian Grove" — deep pine/teal ink and a luminous citron-lime accent on warm bone paper, Inter display + Space Mono labels, a full-viewport hero over a darkened cityscape with overlapping white/black/lime stat cards, a sticky-stacking 01–03 capital-services deck, tilted "ethos" cards flanking a lifted center photo, a grayscale "why partner" image band, a strategic-intelligence article grid, and a pine final-CTA + newsletter footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [fernhollow-pet-wellness-h68](./landing-pages/fernhollow-pet-wellness-h68/) | "Forest Apothecary" pet-wellness landing for "Fernhollow" — bone-cream canvas, fern-green ink, and a warm clay accent with Fraunces display type; centered hero with an auto-scrolling photo marquee, count-up stat band, ken-burns showreel panel, split service cards, dark process ritual with grayscale-to-color photos, botanical product grid, single-open FAQ accordion, and an ink-green newsletter CTA with a success state | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [forma-video-landing](./landing-pages/forma-video-landing/) | Full-screen video-background landing page with rounded card layout and contact form | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [freightleaf-clean-haul-h80](./landing-pages/freightleaf-clean-haul-h80/) | "Clean Haul" sustainable-freight landing for "FreightLeaf" — warm paper-gray canvas with charcoal night-highway panels and an electric lime accent; floating pill nav, cinematic ken-burns hero with a floating dashed-divider stat card, staggered mission tiles, sector card grid, dark AI-tech section with count-up metrics, infinite testimonial marquee, and a full-bleed final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [graft-modular-h93](./landing-pages/graft-modular-h93/) | "Matcha Industrial" landing for fictional off-site fabrication firm "Graft Modular" — paper-white Swiss-industrial canvas with sharp zero-radius corners, 1px slate hairlines, and a single matcha-latte green accent; Syne + Inter Tight, a ken-burns hero with a slide-up info card and clip-path highlighter headline plus a capability marquee, a 9-tile numbered sub-systems grid, alternating zig-zag spec rows on rotating backing blocks, a count-up stats band, an 01–04 process row with ghost numbers, and a matcha CTA with a working inquiry form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [groundai-landing](./landing-pages/groundai-landing/) | Single-page landing for interior-design AI product "GroundAI" with a video hero, expanding glass nav pill, brand marquee, and three animated feature cards (style carousel, morphing chat, adaptable list) | TanStack Start, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide |
-| [gridwright-h48](./landing-pages/gridwright-h48/) | "Gridwright" neo-structuralist coding-SaaS landing page on a ruled blueprint grid — paper canvas with diagonal hatch and full-height vertical column rules, structural green accent, Space Grotesk + Space Mono, hard offset shadows, a live-typing terminal hero, count-up stats, asymmetric feature/pricing grids, and a CSS envelope that opens to reveal a postcard | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
-| [gridframe-precision-h74](./landing-pages/gridframe-precision-h74/) | "Precision Grid Studio" enterprise growth-systems landing for "Meridyne" — a Swiss engineering dossier on warm paper, deep forest-green + butter-cream accents, hairline-ruled cells with registration "plus" crosshair markers straddling every frame corner, Inter Tight throughout, a celled nav with flip-up hover links and a hover mega-menu, a cream testimonial-card hero with overlapping portraits, an infinite logo marquee, numbered strategy steps, a four-cell capabilities band, count-up impact stats, a single-open FAQ accordion, and a solid-green CTA panel; scroll reveals and fully offline | HTML, CSS, Vanilla JS, SVG, IntersectionObserver, self-hosted fonts |
-| [grove-kitchen-fresh-h70](./landing-pages/grove-kitchen-fresh-h70/) | "Forest Deli" fresh dog-food D2C landing for "Grove Kitchen" — warm cream paper with forest-green + terracotta accents and a faint kraft-paper grain, Fraunces display serif (italic emphasis) over DM Sans, a crossfading scrim hero with a popup menu card, a dashed-badge trust strip, a six-recipe catalog with add-to-box buttons, a serif marquee ticker, a 2×2 why-fresh bento with a 200°F stat chip, numbered how-it-works steps, monogram testimonials, an accordion FAQ, and a bouncing "FRESH." footer canvas with an overlapping contact card | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [halcyon-mesh-h56](./landing-pages/halcyon-mesh-h56/) | "Obsidian Control Plane" autonomous-ops SaaS landing for "Halcyon Mesh" — near-black engineering canvas under a persistent dashed grid, an aurora teal→violet hero glow, Space Grotesk + Inter + JetBrains Mono, a hand-built "Control Mesh" dashboard mockup (sidebar, live appending execution log, count-up metrics, audit list), hover mega-menu, text-roll buttons, edge-masked logo marquee, animated SVG node-graph feature card, numbered workflow, stats band, three-tier pricing, and a gridded aurora CTA; cursor-reactive glow, scroll reveals, fully offline | HTML, CSS, Vanilla JS, SVG, IntersectionObserver, self-hosted fonts |
-| [harbour-hearth-h64](./landing-pages/harbour-hearth-h64/) | "Warm Sanctuary" compassionate senior-living landing page for fictional boutique care community "Harbour & Hearth" — sun-warmed oat-cream canvas with a single burnt-terracotta accent and cocoa-ink dark sections, Inter Tight, a floating glass pill navbar, a full-viewport scrim hero with a glass feature card, an overlapping about card with fanned polaroid thumbnails, alternating care/service rows, a count-up stats band, an infinite values marquee, a snap testimonial slider, a team grid, and a right-sliding mobile overlay | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
-| [hearthwell-homeware-h71](./landing-pages/hearthwell-homeware-h71/) | "Marmalade Editorial" homeware essentials store landing for fictional D2C brand "Hearthwell" — warm grey paper canvas with a single saturated marmalade-orange accent, Fraunces display serif (italic emphasis) over Inter, a floating glass pill navbar, a centered hero with a 3-slide cross-fade image frame plus an overlaid "featured item" card and clickable slide dots, a pausable value-prop marquee, tall category cards with zoom-on-hover, an 8-item bestseller grid with badges, a 3-slide auto-rotating editorial split, a starred testimonial band, an ink newsletter card with inline validation + success state, and a multi-column footer; IntersectionObserver scroll reveals, reduced-motion aware, fully offline | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
-| [helix-strata-h76](./landing-pages/helix-strata-h76/) | Interface experiment. | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted Inter |
-| [ink-vermilion-personal-brand-h23](./landing-pages/ink-vermilion-personal-brand-h23/) | "Ink & Vermilion" editorial personal-brand landing page for fictional marketing consultant "Marlowe Vane" — warm paper canvas, single vermillion accent, Playfair italic emphasis with hand-drawn SVG scribbles/stars/arrows, a rotated red marquee strip, scroll-reveal sections, a dark gallery band, grayscale-to-color imagery, and fake-submit contact + newsletter forms | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
-| [kairos-academy-h0](./landing-pages/kairos-academy-h0/) | Warm editorial-ember landing page for "Kairos Academy", a competitive-exam coaching institute, with a split-tone hero, floating exam pill tags, count-up stats, program rows, subject cards, a four-phase method grid, auto-rotating testimonials, and an accordion FAQ | HTML, CSS, Vanilla JS |
-| [lantern-broth-midnight-ramen-h8](./landing-pages/lantern-broth-midnight-ramen-h8/) | Warm modular-bento landing page for a late-night Japanese ramen bar "Lantern Broth", with terracotta/mustard/teal tiles, Oswald + DM Sans, scroll-reveal animations, drifting steam, and a vanilla-JS testimonial carousel | HTML, CSS, vanilla JavaScript |
-| [lantern-loft-tutoring-h1](./landing-pages/lantern-loft-tutoring-h1/) | Warm "paper studio" home-tutoring landing page for Lantern & Loft with a Fraunces/Jakarta editorial hero, offset cards, marquee, animated stat counters, tilted cards, and stacked program rows | HTML, CSS, JavaScript |
-| [lumen-grove-h63](./landing-pages/lumen-grove-h63/) | "Verdant Apothecary" botanical-bathhouse & forest-spa landing page for "Lumen Grove" — warm bone canvas with deep pine ink and a single living-chartreuse accent, Fraunces serif + Inter, a rounded split hero card ("Steep. Soften. Return."), avatar social-proof, a seamless staggered photo marquee, an accordion-driven cross-fading rituals panel, a scrim testimonial, three-tier membership pricing, a forest newsletter panel, scroll-reveal, and a trailing chartreuse cursor | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [lumina-maternite-h2](./landing-pages/lumina-maternite-h2/) | "Lumina Maternité" — a calm, editorial maternity & women's-health sanctuary landing page on a bone/moss/blush palette with Fraunces + Geist, drifting hero blobs, an auto-scrolling image marquee, sticky-stacking journey cards, an interactive packages selector, FAQ accordion, and a booking form | HTML, CSS, vanilla JavaScript, IntersectionObserver, self-hosted fonts |
-| [lumen-launch-h44](./landing-pages/lumen-launch-h44/) | "Periwinkle Aurora" landing page for fictional AI product-launch SaaS "Lumen Launch" — lavender/periwinkle aurora-blur motif on crisp white with Outfit + DM Sans, a div-built browser/dashboard hero mockup, infinite logo & testimonial marquees, animated step illustrations, dark testimonial theatre, working monthly/yearly pricing toggle, and a FAQ accordion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [lumen-vector-h92](./landing-pages/lumen-vector-h92/) | "Electric Brutalism" creative-agency landing for "Lumen Vector" — a midnight-indigo hero that explodes into candy-pastel panels, Anton poster type + Geist, floating glossy tag-pills with soft glows, a giant multi-color headline with a glass-ringed CTA, seamless logo marquee, six pastel service cards, a fan-out methodology card deck on scroll, scroll-linked testimonial parallax, two-tier pricing on a blue panel, and a FAQ accordion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [mentality-landing](./landing-pages/mentality-landing/) | MENTALITY landing page with video hero, glassmorphic navbar, and animated mobile drawer | React, TypeScript, Vite, Tailwind CSS, Motion |
-| [meridian-grid-systems-h81](./landing-pages/meridian-grid-systems-h81/) | "Warm Brutalist Grid" intelligent-automation consultancy landing for "Meridian®" — paper-cream canvas organised by hairline rules and flat color blocks (electric green + cobalt blue + ink), Space Grotesk + Inter, a split photo/headline hero with a frosted live-status panel, a ghosted logo marquee, a hairline about grid, count-up stats, a springy staggered 01–04 process row with blend-tinted photos, a working monthly/annual pricing toggle, and a hard-shadow contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [meridian-precision-clinic-h35](./landing-pages/meridian-precision-clinic-h35/) | "Architectural Clinical Editorial" landing page for bespoke precision-medicine clinic "Meridian" — meridian-navy and warm-bone with whisper-quiet brass, Fraunces serif display + Inter, split full-viewport hero with a sliding navy panel, infinite credential marquee, hairline-divided discipline grid that inverts on hover, numbered method, and an underline-only contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [mindloop-mono-landing](./landing-pages/mindloop-mono-landing/) | Pure-black monochrome newsletter/content landing page for Mindloop | React, TypeScript, Vite, Tailwind CSS, shadcn-style UI |
-| [monolith-grid-atelier-h59](./landing-pages/monolith-grid-atelier-h59/) | "Grid Monument" Swiss-modernist landing page for bespoke spatial-design studio "Monolith" — bone-white paper, near-black ink, warm sandstone accent, Space Grotesk + Playfair italic, a mix-blend-difference header, full-viewport grayscale hero ruled by a visible structural grid, modular ethos/stats grid with a rotating SVG seal, 3D flip-card portfolio, and floating-label contact form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [neuralyn-dark-landing](./landing-pages/neuralyn-dark-landing/) | Dark landing page for analytics-dashboard SaaS "Neuralyn" with Framer Motion and shadcn/ui components | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
-| [nhm-paleontology-landing](./landing-pages/nhm-paleontology-landing/) | Paleontology-themed museum landing page with Inter / JetBrains Mono typography | React 19, Vite 6, Tailwind CSS v4, Motion, Lucide |
-| [noctis-aurum-h69](./landing-pages/noctis-aurum-h69/) | "Obsidian & Champagne" fine-jewelry maison landing page (Noctis Aurum, est. 1989) — near-black obsidian and muted champagne gold over warm pearl, Cormorant Garamond serif display + Inter, a 50/50 hero with a slow cross-fade slideshow and floating glass "current focus" card, gold-ringed circular category medallions, an infinite serif marquee, a quick-add product grid, a dark Héritage feature, a men's strip, a bespoke-atelier split, and IntersectionObserver scroll reveals | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [obsidian-lacquer-h57](./landing-pages/obsidian-lacquer-h57/) | "Obsidian Lacquer" cinematic automotive detailing-studio landing — pure-black canvas with a scalpel of vermilion red, Bricolage Grotesque display + Playfair italic accents + Inter Tight, a full-viewport ken-burns/pointer-parallax hero with stats strip, an asymmetric 12-col services grid, hover-reveal 01–03 process cards, testimonials, a snap-scroll before/after gallery with arrow nav, a monthly/yearly pricing toggle, and IntersectionObserver scroll reveals | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [obsidian-meridian-h85](./landing-pages/obsidian-meridian-h85/) | "Cinematic Brutalist Noir" monolithic luxury real-estate & architecture landing for "Obsidian Meridian" — a true-black canvas with one whisper of warm brass, condensed Oswald display, a per-letter wordmark reveal, a glass pill nav, an asymmetric manifesto, a full-bleed ken-burns cinematic hero, a vertically-staggered selected-works grid with brass-inverting year badges, a numbered Protocol band with an offset-framed portrait, a hairline stats strip that counts up on view, a minimal underline inquiry form, and IntersectionObserver scroll reveals | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [ochre-stone-studio-h11](./landing-pages/ochre-stone-studio-h11/) | Warm editorial landing page for a bespoke interior-architecture studio, with a diagonal cutout hero, auto-rotating curation card, bento work grid, and scattered freefall process cards | HTML, CSS, JavaScript |
-| [orbital-frequency-summit-h22](./landing-pages/orbital-frequency-summit-h22/) | "Deep Signal" landing page for a fictional deep-space signals & aerospace-software summit "Orbital Frequency" — observatory-dark void with amber-gold/signal-green accents, Oswald condensed display type, canvas starfield, rotating orbital rings + radar-sweep hero, telemetry strip, mission timeline, floating-beacon pricing passes, and a scroll-tracking signal bar | HTML, CSS, Vanilla JS, Canvas, self-hosted fonts |
-| [orbis-nft-landing](./landing-pages/orbis-nft-landing/) | Dark, space-themed NFT landing page "Orbis.nft" with CloudFront video backgrounds and liquid-glass UI | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [paper-circuit-agentic-saas-h16](./landing-pages/paper-circuit-agentic-saas-h16/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Bricolage Grotesque, Inter Tight, JetBrains Mono |
-| [pelmatech-health-companion](./landing-pages/pelmatech-health-companion/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Lucide |
-| [prisma-landing](./landing-pages/prisma-landing/) | Cinematic landing page for the creative studio PRISMA with dark, moody, warm cream palette | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
-| [riso-rebel-fest-h20](./landing-pages/riso-rebel-fest-h20/) | Floating-pill neo-brutalist landing page for fictional design conference "Riso Rebel Fest" — warm off-white canvas, oversized riso-color bento cards with animated motifs, chunky Shrikhand display serif, grayscale-to-color speaker grid, tiered tickets, and scroll-reveal | HTML, CSS, Vanilla JS, vendored fonts |
-| [saaj-heritage-bazaar-h90](./landing-pages/saaj-heritage-bazaar-h90/) | "Heritage Bazaar Editorial" D2C landing for the Indian solid-wood furniture house Saaj Heritage — a warm cream/paper canvas with a burnt-sienna terracotta accent, Inter Tight display + Playfair Display italic, an oversized "Heritage Living" hero with an angled clip-path image cutout and an auto-rotating floating product card, a 5-up category row, an 8-product bestseller grid with slide-up View Product bars and INR pricing, a values strip, testimonials, a stroke-to-fill numbered craft journey, a sienna consultation CTA with a validated callback form, scroll-reveal, header shrink, and a slide-in mobile menu | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
-| [sencha-atelier-h12](./landing-pages/sencha-atelier-h12/) | Wabi-editorial landing page for "Sencha Atelier", a ceremonial-matcha tea house — oversized Fraunces serif hero on warm paper, flush rounded showcase cards, editorial menu rows, count-up stats ribbon with marquee, and an asymmetric gallery | HTML, CSS, Vanilla JS, IntersectionObserver, Fraunces, Inter Tight |
-| [sentinel-meridian-h77](./landing-pages/sentinel-meridian-h77/) | "Cold War Dossier" sovereign-intelligence advisory landing for Sentinel Meridian — near-black ink with a steel-cyan accent and a single warning-amber signal color, a blueprint grid and grain overlay, a Forum serif display, a live classified dossier strip (ticking UTC clock + blinking LIVE dot), a Ken-Burns grayscale hero with mask-reveal headline and a scrolling mono intelligence-feed ticker, a numbered mandate column with a frosted pull-quote, hairline-split capability cards, a connected three-step method, count-up stats, and an encrypted final CTA | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
-| [slate-stone-architectural-h73](./landing-pages/slate-stone-architectural-h73/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, Familjen Grotesk, Inter |
-| [slow-roast-atelier-h84](./landing-pages/slow-roast-atelier-h84/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [snip-and-snout-grooming-h18](./landing-pages/snip-and-snout-grooming-h18/) | "Brutalist Kennel Club" pet-grooming studio landing for Snip &amp; Snout — warm neo-brutalism with thick ink outlines, hard offset shadows, Archivo black display type, a signature oversized rounded hero-photo corner, a fanned service-card deck, dual infinite testimonial rows, and brutal-press buttons | HTML, CSS, Vanilla JS, IntersectionObserver, vendored fonts |
-| [solace-wellness-grid-h13](./landing-pages/solace-wellness-grid-h13/) | "Quiet luxury wellness" editorial landing page for the holistic studio Solace — an asymmetric bento color-block grid (oat/dusty-rose/lilac/sage panels) with oversized light Manrope display type, a desaturated→color image strip, looping keyword marquee, practices bento, sage stats band, guide portraits, and a reserve form; self-hosted fonts, scroll-reveal, slide-in mobile menu | HTML, CSS, JavaScript, IntersectionObserver, self-hosted fonts |
-| [space-voyage-landing](./landing-pages/space-voyage-landing/) | Cinematic space-travel landing page with two video-backed full-height sections and liquid-glass UI | React via CDN, Tailwind CDN, Framer Motion, single-page HTML |
-| [spectral-orbit-novascale-h17](./landing-pages/spectral-orbit-novascale-h17/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, Instrument Serif |
-| [synergeus-landing](./landing-pages/synergeus-landing/) | Interface experiment. | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, hls.js, Lucide, React Router |
-| [terra-craft-editorial-h58](./landing-pages/terra-craft-editorial-h58/) | "Quiet Craft Editorial" landing page for the artisan furniture house Terra Studio — a warm cream paper canvas with IBM Plex Serif display type, a two-column hero whose charcoal panel holds three overlapping mat-board image cards with mouse-parallax + hover-lift, an infinite materials marquee, a framed product collection grid, an atelier philosophy split, a count-up stats band, and a swap-to-success newsletter CTA; self-hosted fonts, scroll-reveal, mobile menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [terra-siena-atelier-h14](./landing-pages/terra-siena-atelier-h14/) | "Terra Siena" handcrafted-ceramics atelier landing ("Sun-Fired Earth" aesthetic) on a terracotta/ochre/bone palette with Fraunces serif + Inter Tight, a marquee hero, a scroll-triggered fanned card deck that spreads into collections, 3D flip cards, a testimonial grid, an accordion FAQ, and a marquee footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [tide-table-h82](./landing-pages/tide-table-h82/) | "Tide to Table" coastal seafood &amp; oyster bar landing page (Tide &amp; Table) — a salt-washed cream canvas with deep-navy ink and a seafoam accent, Playfair Display serif + Inter Tight, five rhythmic multiply-blended hero image strips that rise on load, a slow Ken-Burns philosophy split, a dark "Seasonal Harvest" menu list with rotated image cards that pop and straighten on hover, an overlapping editorial atmosphere card, a glassy split reservation form with inline confirmation, a full-screen menu overlay, and a paper-grain overlay | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [usd-halo-landing](./landing-pages/usd-halo-landing/) | Premium fintech-style landing page for the stablecoin product "Halo / USD Halo" with a custom logo mark and TT Norms Pro type | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [valmax-photography-landing](./landing-pages/valmax-photography-landing/) | Single-page dark recreation of the "Valmax" photography studio landing with an orchestrated intro sequence, a lime accent, oklch design tokens, and photo-driven sections | TanStack Start, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Lucide |
-| [vantix-precision-medicine-h34](./landing-pages/vantix-precision-medicine-h34/) | "Clinical Obsidian" precision-medicine institute landing page (Vantix) — deep obsidian-navy canvas with electric cyan-blue accents, Bricolage Grotesque display type and JetBrains Mono telemetry labels, an asymmetric split hero with count-up metrics, grayscale-to-color clinical photography, a pulsing rapid-response strip, capabilities/platform/specialists sections, and a consultation form | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [vellum-apothecary-archive-h32](./landing-pages/vellum-apothecary-archive-h32/) | "Archival Apothecary" wellness-sanctuary landing page (Vellum & Verdigris) on a vintage sepia vellum/paper palette with Playfair Display + Instrument Serif + Courier Prime, a paper-grain overlay, a load-time cream curtain reveal over a sepia hero photo, scroll fade-rise reveals, hairline catalogue rules, a numbered philosophy grid, a coded rituals gallery, an ink "Memoirs" testimonials band, and a custom hollow-ring cursor | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [vellum-atelier-h33](./landing-pages/vellum-atelier-h33/) | "Vellum" luxury hair atelier landing ("Sculptural Serif Atelier" aesthetic) on a warm paper/ink/gold palette with Unbounded + Figtree + Sacramento, a character-by-character animated hero wordmark, extreme top-rounded image panels, a dark service menu with cursor-tracked hover previews, an offset 3-up portfolio grid, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [velvet-vellum-agency-h4](./landing-pages/velvet-vellum-agency-h4/) | "Velvet precision" marketing-agency landing page (Velvet Vellum) with an oxblood-maroon hero panel, giant Josefin Sans display type, a bento case-study grid, auto-rotating testimonials, and a faux-3D perspective floor-grid footer | HTML, CSS, Vanilla JS, IntersectionObserver |
-| [verdant-atelier-h40](./landing-pages/verdant-atelier-h40/) | "Forest & Gold" product-photography studio landing page (Verdant Atelier / Maya Kapoor) on deep forest-green with museum-gold + deep-orange accents, Playfair Display + Inter, signature arch-masked still-life imagery, a slow-spinning "View Projects" badge, a 12-column asymmetric editorial hero, dual infinite marquees, staggered work/services galleries, and a hamburger mobile overlay | HTML, CSS, Vanilla JS, IntersectionObserver, SVG, self-hosted fonts |
-| [verdant-pledge-bento-h49](./landing-pages/verdant-pledge-bento-h49/) | "Soft Editorial Bento" conservation-collective landing page (Verdant Pledge) on a white canvas of 40px rounded bento cards with a single electric-lime accent and Inter Tight, featuring a 5/7 lime+photo hero with floating glass map markers, an editorial missions table with rotated hover previews, image problem cards, a dark impact band with count-up stats, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [verdant-salon-h91](./landing-pages/verdant-salon-h91/) | "Heritage Verdant" elite social-strategy agency landing page (Verdant Salon) on a warm paper-beige canvas with midnight-green panels and cocoa-brown ink, Playfair Display + Inter Tight, a centered oversized serif hero with staggered portrait cards that reveal via tiled grid-demask animation, count-up impact stats, hairline service rows with floating rotated hover previews, an alternating heritage gallery, a green inquiry panel with a faked submit, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [verdant-spine-clinic-h66](./landing-pages/verdant-spine-clinic-h66/) | "Clinical Calm" precision-chiropractic & movement-science clinic landing page (Verdant Spine) on a warm grey-green paper canvas with a single sage + deep-forest palette, Schibsted Grotesk + Inter, a split editorial hero with a frosted-glass appointment card floating over the clinic image, gradient stat cards, a deep-forest services panel with an infinite giant-type marquee and zoom-on-hover service cards, a sticky numbered "how it works" track, a glass-quote testimonial carousel, a 3-up journal grid, and scroll-reveal motion | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [verdigris-trail-h50](./landing-pages/verdigris-trail-h50/) | "Architectural Trail" landing page for fictional architecture studio "Verdigris Archi." — fennel-pastel canvas with a single luminous mint accent, Playfair Display serif + Inter Tight, a fixed vertical hairline "trail" with a travelling mint comet, a circular Begin-Trail hero CTA, a pillar marquee, grayscale-to-color brutalist concrete photography, numbered principle columns, a staggered project gallery, an ink count-up stats band, and a pill CTA | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/) | Loud neo-brutalist board-prep academy landing page in vermillion orange + ink navy, with hard 2px borders, offset brutal shadows, a scrolling ticker, an overlapping dashboard stat panel, count-up stats, dual testimonial marquees, and a trial-booking form | HTML, CSS, Vanilla JS |
-| [vermillion-table-h83](./landing-pages/vermillion-table-h83/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [viktor-oddy-landing](./landing-pages/viktor-oddy-landing/) | Single-page landing for creative design studio "Viktor Oddy" with custom PP Neue Montreal / PP Mondwest fonts and staggered animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [voltaic-grid-advisory-h75](./landing-pages/voltaic-grid-advisory-h75/) | "Putty & Voltage" strategic-advisory landing on a warm putty-grey canvas built from large rounded tiles, Host Grotesk + Inter, one electric-lime accent over soft pastel cards, a golden-hour photo hero with social-proof avatars, a 3-up stat grid, a sticky stacking services deck in lavender/yellow/pink/mint, a lavender testimonial panel, an expanding case-study list, an infinite masked insights ticker, a lime CTA, scroll-reveal motion and a mobile dropdown nav | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [voltic-showroom-h89](./landing-pages/voltic-showroom-h89/) | "Electric Stone" premium offline-electronics experience-center landing (Voltic) — a warm stone canvas with near-black ink and a single electric-lime accent, self-hosted Inter, a framed split hero with the stacked touch./feel./choose. headline and lime terminal dots, a floating pill nav, an infinite pausable demo-product marquee, a 4-up zoom-on-hover Curated Zones grid, an interactive accordion that cross-fades a paired image, an ink "Bestseller" pricing-deal trio, a lime WhatsApp/Call CTA band, an inertial lime cursor and a slide-in mobile menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [voltframe-dev-h29](./landing-pages/voltframe-dev-h29/) | "Bracketed Voltage" developer-portfolio landing on a near-black stage with one electric-yellow accent, a hairline framed hero box with glowing corner nodes, hover-yellow title words, floating particles, pulsing orbs, scroll-revealed skills/work/testimonials, and a mobile slide-in menu | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
-| [voltline-automation-h60](./landing-pages/voltline-automation-h60/) | "Bone & Volt" industrial AI-automation landing on a warm off-white canvas with graphite ink and a single electric-lime accent, Space Grotesk + JetBrains Mono, a pure-CSS orbiting 3D cube rig with a glowing lime core, a randomized pixel-fill nav button, starfield-reveal CTAs, a count-up stats strip, a 3-card solutions grid, and a dark starfield mission band | HTML, CSS, Vanilla JS, IntersectionObserver, CSS 3D transforms, self-hosted fonts |
-| [wayfare-expedition-journal-h86](./landing-pages/wayfare-expedition-journal-h86/) | "Expedition Journal" boutique-travel landing page (Wayfare) — a warm aged-paper canvas with espresso ink and clay/moss/ochre field-notebook accents, Fraunces serif + Inter Tight, a dark photographic hero with parallax, a polaroid coordinate tag, a "Now Boarding" stamp and a floating trip-finder card, a partner marquee, a manifesto split with count-up stats, a chip-filterable expedition card grid, a numbered how-it-works, a horizontally-scrolling guides rail, a rotating dark testimonial, and a photo-backed final CTA with a ghosted wordmark footer | HTML, CSS, Vanilla JS, IntersectionObserver, self-hosted fonts |
+- [apex-scroll-hero](./animations-loaders/apex-scroll-hero/)
 
-</details>
+## components-ui (3)
 
-<details>
-<summary><b>Animations &amp; loaders (12)</b></summary>
+- [crimson-mill-supply-card-h61](./components-ui/crimson-mill-supply-card-h61/)
+- [lumen-aurora-vcard-h62](./components-ui/lumen-aurora-vcard-h62/)
+- [terminal-cli-control-deck](./components-ui/terminal-cli-control-deck/)
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [apex-scroll-hero](./animations-loaders/apex-scroll-hero/) | Apple-product-page-style "Apex" hero whose 5-second F1 sunset film is scroll-scrubbed full-screen (scroll drives `video.currentTime`) with a synced speed/gear telemetry HUD | Next.js 16, React 19, TypeScript, Tailwind CSS v4 |
-| [bags-editorial-collage](./animations-loaders/bags-editorial-collage/) | Three-section animated bags landing — a warm cream editorial sticker-collage hero, a scroll-driven unfolding-envelope collection stage, and an orbiting "perfect match" field, tied together by glowing serif accent words | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
-| [bloom-nested-squares](./animations-loaders/bloom-nested-squares/) | The shadcn "Bloom" NestedSquares component (25 violet-gradient squares scaling and rotating forever via Framer Motion) staged in a dark motion-specimen studio — a graticule plate, ambient glow, and a calibration rail of dials that retune the live component's ring count, period, stagger, growth, spin and culture | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
-| [container-scroll-animation](./animations-loaders/container-scroll-animation/) | Integration of the Aceternity "Container Scroll Animation" into a shadcn-style codebase — the same `useScroll`/`useTransform` device card used as three stacked stages that tilt from 20° to flat and stand upright on scroll, with a live rotateX/scale telemetry HUD | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [dot-nokia-typing-hero](./animations-loaders/dot-nokia-typing-hero/) | Single-screen "dot." calm-messaging hero with a full-bleed Nokia-phone background video, a live typing/deleting animation in a Nokia cellphone font overlaid on the phone screen, and a floating glass pill navbar | React 19, Vite, TypeScript, Tailwind CSS v4, Motion |
-| [linkflow-boomerang-hero](./animations-loaders/linkflow-boomerang-hero/) | Linkflow hero concept with boomerang-style visual direction and CSS-only animations | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [mainframe-scrub-hero](./animations-loaders/mainframe-scrub-hero/) | Mainframe contact hero whose background film is scrubbed by cursor movement, with typewriter headline and multi-select service pills | React, TypeScript, Vite, Tailwind CSS, Motion, Lucide |
-| [microvisuals-boomerang-hero](./animations-loaders/microvisuals-boomerang-hero/) | Fullscreen hero with GSAP boomerang-style animation and a custom display font | React, TypeScript, Vite, Tailwind CSS, GSAP, Lucide |
-| [moneta-key-preloader](./animations-loaders/moneta-key-preloader/) | Full-viewport cinematic "Moneta Key" preloader — color-dodge glowing sphere, masked dashed orbit line, wave-cut logo, and a curved canvas-based 0–100 number arc that idles forever | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Canvas 2D |
-| [pallet-ross-landing](./animations-loaders/pallet-ross-landing/) | Scroll-driven landing for fictional artist marketplace "Pallet Ross" where seven artwork cards perform a choreographed intro, then gather into a stack, descend, and fan into a diagonal cascade ladder locked across three full-height sections | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, Lucide |
-| [qclay-hexagon-loader](./animations-loaders/qclay-hexagon-loader/) | Full-screen recreation of the QClay loader — an animated honeycomb of real SVG hexagon tiles with a glowing blue active center, breathing rAF motion, crossfading icons, a shimmering label, and an organic looping progress bar | React, TypeScript, Vite, SVG |
-| [scroll-expansion-hero](./animations-loaders/scroll-expansion-hero/) | Integration of the ScrollExpandMedia hero into a shadcn-style codebase — a compact media card that hijacks the wheel/touch to unfurl into a full-bleed video or image as you scroll, with a splitting title, dissolving backdrop, and an editorial about-section that reveals on full expansion | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
+## hero-sections (5)
 
-</details>
+- [altitude-index-h38](./hero-sections/altitude-index-h38/)
+- [helix-vault-h55](./hero-sections/helix-vault-h55/)
+- [monocrit-studio-h27](./hero-sections/monocrit-studio-h27/)
+- [prisma-noir-h52](./hero-sections/prisma-noir-h52/)
+- [verdant-advisory-h10](./hero-sections/verdant-advisory-h10/)
 
-<details>
-<summary><b>3D &amp; games (2)</b></summary>
+## landing-pages (77)
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [lovable-webgl-hero](./3d-games/lovable-webgl-hero/) | 1:1 recreation of the Lovable landing page — a full-viewport WebGL hero driven by the real CoreRenderer runtime, a glass navbar with full-width dropdowns, an animated typewriter prompt input, and a 3D trusted-by logo carousel | TanStack Start, React 19, Tailwind CSS v4, Framer Motion, Lucide, WebGL |
-| [sidi-bou-said-3d-walk](./3d-games/sidi-bou-said-3d-walk/) | Navigable, fully procedural 3D walk through Sidi Bou Said, Tunisia in a single HTML file | Three.js, single-file HTML/JS |
+- [aegis-console-h39](./landing-pages/aegis-console-h39/)
+- [almond-hours-h65](./landing-pages/almond-hours-h65/)
+- [amber-foundry-h9](./landing-pages/amber-foundry-h9/)
+- [amberhaus-pet-atelier-h31](./landing-pages/amberhaus-pet-atelier-h31/)
+- [archway-summit-h21](./landing-pages/archway-summit-h21/)
+- [astral-veil-h6](./landing-pages/astral-veil-h6/)
+- [atelier-noir-h7](./landing-pages/atelier-noir-h7/)
+- [atelier-press-h51](./landing-pages/atelier-press-h51/)
+- [auric-clinic-glow-h37](./landing-pages/auric-clinic-glow-h37/)
+- [axis-quotient-h30](./landing-pages/axis-quotient-h30/)
+- [azimuth-realty-engine-h36](./landing-pages/azimuth-realty-engine-h36/)
+- [carbon-bloom-h95](./landing-pages/carbon-bloom-h95/)
+- [cartwright-relocation-h47](./landing-pages/cartwright-relocation-h47/)
+- [cerulean-precision-collective-h67](./landing-pages/cerulean-precision-collective-h67/)
+- [citron-atlas-h79](./landing-pages/citron-atlas-h79/)
+- [claywell-solene-h5](./landing-pages/claywell-solene-h5/)
+- [cobalt-repairworks-h78](./landing-pages/cobalt-repairworks-h78/)
+- [concrete-bazaar-h87](./landing-pages/concrete-bazaar-h87/)
+- [crimson-cut-studio-h72](./landing-pages/crimson-cut-studio-h72/)
+- [dhara-heritage-edit-h88](./landing-pages/dhara-heritage-edit-h88/)
+- [ember-quietude-h26](./landing-pages/ember-quietude-h26/)
+- [evergreen-ledger-h94](./landing-pages/evergreen-ledger-h94/)
+- [fernhollow-pet-wellness-h68](./landing-pages/fernhollow-pet-wellness-h68/)
+- [freightleaf-clean-haul-h80](./landing-pages/freightleaf-clean-haul-h80/)
+- [graft-modular-h93](./landing-pages/graft-modular-h93/)
+- [gridframe-precision-h74](./landing-pages/gridframe-precision-h74/)
+- [gridwright-h48](./landing-pages/gridwright-h48/)
+- [grove-kitchen-fresh-h70](./landing-pages/grove-kitchen-fresh-h70/)
+- [halcyon-mesh-h56](./landing-pages/halcyon-mesh-h56/)
+- [harbour-hearth-h64](./landing-pages/harbour-hearth-h64/)
+- [hearthwell-homeware-h71](./landing-pages/hearthwell-homeware-h71/)
+- [helix-strata-h76](./landing-pages/helix-strata-h76/)
+- [ink-vermilion-personal-brand-h23](./landing-pages/ink-vermilion-personal-brand-h23/)
+- [kairos-academy-h0](./landing-pages/kairos-academy-h0/)
+- [lantern-broth-midnight-ramen-h8](./landing-pages/lantern-broth-midnight-ramen-h8/)
+- [lantern-loft-tutoring-h1](./landing-pages/lantern-loft-tutoring-h1/)
+- [lumen-grove-h63](./landing-pages/lumen-grove-h63/)
+- [lumen-launch-h44](./landing-pages/lumen-launch-h44/)
+- [lumen-vector-h92](./landing-pages/lumen-vector-h92/)
+- [lumina-maternite-h2](./landing-pages/lumina-maternite-h2/)
+- [meridian-grid-systems-h81](./landing-pages/meridian-grid-systems-h81/)
+- [meridian-precision-clinic-h35](./landing-pages/meridian-precision-clinic-h35/)
+- [monolith-grid-atelier-h59](./landing-pages/monolith-grid-atelier-h59/)
+- [noctis-aurum-h69](./landing-pages/noctis-aurum-h69/)
+- [obsidian-lacquer-h57](./landing-pages/obsidian-lacquer-h57/)
+- [obsidian-meridian-h85](./landing-pages/obsidian-meridian-h85/)
+- [ochre-stone-studio-h11](./landing-pages/ochre-stone-studio-h11/)
+- [orbital-frequency-summit-h22](./landing-pages/orbital-frequency-summit-h22/)
+- [paper-circuit-agentic-saas-h16](./landing-pages/paper-circuit-agentic-saas-h16/)
+- [riso-rebel-fest-h20](./landing-pages/riso-rebel-fest-h20/)
+- [saaj-heritage-bazaar-h90](./landing-pages/saaj-heritage-bazaar-h90/)
+- [sencha-atelier-h12](./landing-pages/sencha-atelier-h12/)
+- [sentinel-meridian-h77](./landing-pages/sentinel-meridian-h77/)
+- [slate-stone-architectural-h73](./landing-pages/slate-stone-architectural-h73/)
+- [slow-roast-atelier-h84](./landing-pages/slow-roast-atelier-h84/)
+- [snip-and-snout-grooming-h18](./landing-pages/snip-and-snout-grooming-h18/)
+- [solace-wellness-grid-h13](./landing-pages/solace-wellness-grid-h13/)
+- [spectral-orbit-novascale-h17](./landing-pages/spectral-orbit-novascale-h17/)
+- [terra-craft-editorial-h58](./landing-pages/terra-craft-editorial-h58/)
+- [terra-siena-atelier-h14](./landing-pages/terra-siena-atelier-h14/)
+- [tide-table-h82](./landing-pages/tide-table-h82/)
+- [vantix-precision-medicine-h34](./landing-pages/vantix-precision-medicine-h34/)
+- [vellum-apothecary-archive-h32](./landing-pages/vellum-apothecary-archive-h32/)
+- [vellum-atelier-h33](./landing-pages/vellum-atelier-h33/)
+- [velvet-vellum-agency-h4](./landing-pages/velvet-vellum-agency-h4/)
+- [verdant-atelier-h40](./landing-pages/verdant-atelier-h40/)
+- [verdant-pledge-bento-h49](./landing-pages/verdant-pledge-bento-h49/)
+- [verdant-salon-h91](./landing-pages/verdant-salon-h91/)
+- [verdant-spine-clinic-h66](./landing-pages/verdant-spine-clinic-h66/)
+- [verdigris-trail-h50](./landing-pages/verdigris-trail-h50/)
+- [vermillion-cram-h3](./landing-pages/vermillion-cram-h3/)
+- [vermillion-table-h83](./landing-pages/vermillion-table-h83/)
+- [voltaic-grid-advisory-h75](./landing-pages/voltaic-grid-advisory-h75/)
+- [voltframe-dev-h29](./landing-pages/voltframe-dev-h29/)
+- [voltic-showroom-h89](./landing-pages/voltic-showroom-h89/)
+- [voltline-automation-h60](./landing-pages/voltline-automation-h60/)
+- [wayfare-expedition-journal-h86](./landing-pages/wayfare-expedition-journal-h86/)
 
-</details>
+## portfolios (12)
 
-<details>
-<summary><b>Portfolios (14)</b></summary>
+- [circuit-ledger-h15](./portfolios/circuit-ledger-h15/)
+- [cobalt-bento-folio-h43](./portfolios/cobalt-bento-folio-h43/)
+- [crimson-press-kit-h25](./portfolios/crimson-press-kit-h25/)
+- [electric-volt-folio-h45](./portfolios/electric-volt-folio-h45/)
+- [inkpress-atelier-h46](./portfolios/inkpress-atelier-h46/)
+- [lumen-folio-h19](./portfolios/lumen-folio-h19/)
+- [meridian-drafthouse-h54](./portfolios/meridian-drafthouse-h54/)
+- [monogram-terminal-h42](./portfolios/monogram-terminal-h42/)
+- [nocturne-bento-h28](./portfolios/nocturne-bento-h28/)
+- [solstice-craft-studio-h41](./portfolios/solstice-craft-studio-h41/)
+- [voltline-resume-h53](./portfolios/voltline-resume-h53/)
+- [voltmark-engineer-terminal-h24](./portfolios/voltmark-engineer-terminal-h24/)
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [circuit-ledger-h15](./portfolios/circuit-ledger-h15/) | Dark "quiet circuitry" developer portfolio with a live circuit-board canvas, champagne accents, bento stack and typewriter terminal | HTML, CSS, Vanilla JS, Canvas |
-| [cobalt-bento-folio-h43](./portfolios/cobalt-bento-folio-h43/) | "Daylight Workbench" light-glass bento developer portfolio — cool pale-gray canvas with a colossal royal-cobalt PORTFOLIO hero tile, frosted-glass panels, pointer-parallax + specular hero, typewriter rotator, animated skill ring, count-up stats, and a validated contact form | HTML, CSS, Vanilla JS, IntersectionObserver, Plus Jakarta Sans, JetBrains Mono |
-| [crimson-press-kit-h25](./portfolios/crimson-press-kit-h25/) | Editorial spiral-bound magazine portfolio staged as a crimson brand press kit with print grain, collage cover, and scroll reveals | HTML, CSS, Vanilla JS |
-| [electric-volt-folio-h45](./portfolios/electric-volt-folio-h45/) | "Kinetic Brutalism" motion-designer portfolio — acid-green/hot-pink neo-brutalist poster grid, oversized Inter Black type, blocky shadows, marquee, scroll-in counters, and a full-screen overlay nav | HTML, CSS, Vanilla JS, Inter, Space Mono |
-| [inkpress-atelier-h46](./portfolios/inkpress-atelier-h46/) | "Inkpress Atelier" risograph-print graphic-designer portfolio staged as a folded zine — cream paper frame, 4-color registration bar, Anton display type, diamond logo plate, services menu, colored works grid, and scroll reveals | HTML, CSS, Vanilla JS, Anton, Roboto Condensed |
-| [jack-3d-portfolio](./portfolios/jack-3d-portfolio/) | Dark-themed 3D creator portfolio landing page for Jack with gradient hero text | React, TypeScript, Vite, Tailwind CSS, Framer Motion |
-| [lumen-folio-h19](./portfolios/lumen-folio-h19/) | Soft editorial-minimalism personal portfolio with floating glass nav, drag carousel, typewriter hero, and scroll reveals | HTML, CSS, JavaScript |
-| [michael-smith-portfolio](./portfolios/michael-smith-portfolio/) | Dark single-page creator portfolio with GSAP / Framer Motion animations and HLS video | React, TypeScript, Vite, Tailwind CSS, GSAP, Framer Motion, hls.js, React Router |
-| [meridian-drafthouse-h54](./portfolios/meridian-drafthouse-h54/) | "Drafting-Table Brutalism" architect & spatial-designer portfolio — warm ecru paper, blueprint grid, hairline frames, highlighter-yellow accent, masked type-rise hero with an outlined italic word, sliding image reveals, count-up stats, and a numbered approach table | HTML, CSS, Vanilla JS, Instrument Serif, Space Grotesk |
-| [monogram-terminal-h42](./portfolios/monogram-terminal-h42/) | "Monochrome Terminal Editorial" developer portfolio — strict greyscale void, JetBrains Mono headlines, Merriweather italic accents, terminal-card hero, cross-fading featured slider, work timeline, and paginated articles | HTML, CSS, Vanilla JS, JetBrains Mono, Inter, Merriweather |
-| [nocturne-bento-h28](./portfolios/nocturne-bento-h28/) | "Midnight Atelier" dark designer portfolio — animated perspective-grid floor, acid-lime accent, Fraunces serif + Inter Tight, bento-grid glass hero, pointer parallax, scroll reveals, and a validated contact form | HTML, CSS, vanilla JS, Fraunces, Inter Tight, JetBrains Mono |
-| [solstice-craft-studio-h41](./portfolios/solstice-craft-studio-h41/) | "Warm Editorial Craft" light-mode UX designer portfolio — paper canvas, tangerine accent, Space Grotesk + Caveat handwriting, floating design-tool micro-cards, 3D-perspective project ticker, animated process line, and a fullscreen menu | HTML, CSS, Vanilla JS, Space Grotesk, Caveat |
-| [voltline-resume-h53](./portfolios/voltline-resume-h53/) | "Voltline" neo-brutalist engineer résumé portfolio — warm cream paper with an orange dot-grid, dual-offset ink/orange borders, hard offset shadows, skewed experience & education bands, count-up hero stats, parallax wedge, and a printable PDF mode | HTML, CSS, Vanilla JS, Bebas Neue, Space Grotesk, Inter |
-| [voltmark-engineer-terminal-h24](./portfolios/voltmark-engineer-terminal-h24/) | Electric-yellow dark engineer portfolio with terminal typewriter, code-chip hero, marquee, and filterable project grid | HTML, CSS, Vanilla JS |
+## shaders (0)
 
-</details>
+No experiments are currently distributed in this category.
 
-<details>
-<summary><b>Components &amp; UI (15)</b></summary>
+## templates (2)
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [animated-dots-rain](./components-ui/animated-dots-rain/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Canvas, shadcn/ui, Lucide |
-| [animated-hud-targeting-ui](./components-ui/animated-hud-targeting-ui/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, next-themes, Lucide |
-| [aurora-sign-up](./components-ui/aurora-sign-up/) | Two-column "Aurora" registration interface with a background-video hero, staggered Motion reveals, and a multi-step sign-up form | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
-| [background-paths-hero](./components-ui/background-paths-hero/) | Integration of the "Background Paths" shadcn/ui hero — 72 flowing animated SVG paths behind a per-letter spring headline and a glassy CTA, wrapped in a dark/light theme toggle and a preset-headline switcher | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
-| [core-features-gradient-cards](./components-ui/core-features-gradient-cards/) | Static "Core Features" marketing section with three gradient feature cards | Single-file HTML/CSS |
-| [crimson-mill-supply-card-h61](./components-ui/crimson-mill-supply-card-h61/) | Interface experiment. | HTML, CSS, Vanilla JS, IntersectionObserver |
-| [gradient-bars-background](./components-ui/gradient-bars-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Lucide |
-| [gradient-dots-background](./components-ui/gradient-dots-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, framer-motion, shadcn/ui, Lucide |
-| [interactive-3d-spline-scene](./components-ui/interactive-3d-spline-scene/) | shadcn/ui integration of a Spline 3D scene — the exact SplineScene + Card + Spotlight demo, a graceful animated WebGL fallback for when the remote scene is unreachable, a live props playground, and an on-page guide to the shadcn structure, default paths and why components/ui matters | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline, Framer Motion, Lucide, Canvas |
-| [lumen-aurora-vcard-h62](./components-ui/lumen-aurora-vcard-h62/) | Interface experiment. | HTML, CSS, Vanilla JS, vCard, backdrop-filter |
-| [nexto-404-hero](./components-ui/nexto-404-hero/) | Full-viewport 404 "Page Not Found" hero for fictional brand "nexto." with a layered alien-spaceship background, floating gradient Material Symbols, a dashed-gradient navbar, and a morphing mobile menu overlay | React, Vite, Tailwind CSS, Material Symbols |
-| [scanner-card-stream](./components-ui/scanner-card-stream/) | Draggable Three.js card stream that decodes each photo into glitching, scrambling ASCII as it crosses a glowing violet scan line, with an ambient WebGL particle field and a 2D spark burst — packaged as a shadcn-style `@/components/ui` drop | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
-| [sixsense-reference-finder](./components-ui/sixsense-reference-finder/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide, Canvas |
-| [spatial-product-showcase](./components-ui/spatial-product-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
-| [terminal-cli-control-deck](./components-ui/terminal-cli-control-deck/) | "ACME Control Deck" infrastructure panel built in a phosphor-green Terminal CLI design system — centralized tokens, composable windows/panes, ASCII art logo, typewriter headline, raw-data ASCII progress meters, a live syslog feed, an interactive zsh console, a box-less access form, and a subtle CRT scanline overlay | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
+- [cyber-serif-template](./templates/cyber-serif-template/)
+- [synapse-design-system](./templates/synapse-design-system/)
 
-</details>
+## ui-design (30)
 
-<details>
-<summary><b>UI design (34)</b></summary>
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [academia-classical-showcase](./ui-design/academia-classical-showcase/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [ai-budget-tracking-landing-page-velara-al](./ui-design/ai-budget-tracking-landing-page-velara-al/) | "Velara AI" AI budget-tracking landing page — a dark, purple-accented (#A855F7) fintech site assembled from 10 numbered sections: a video-background hero with a glass dashboard mockup (animated wave chart, sidebar, asset list), a feature-grid "Why Choose Us", a 3-step "How It Works" with animated goal/insight mockups, a bento Features grid (stacked encryption cards, smart-alert feed, animated budget bars, sparkline mini-cards), a global-transfers map card with floating glass widgets, an infinite dual-column testimonials ticker, a security band + app-download banner with browser-chrome dashboard, a cosmic-horizon pricing trio with a "Popular" tier, an animated FAQ accordion, and an SVG globe-arc footer with cycling country badges and a glowing VELARAAI wordmark | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [aperture-minimalist-dark](./ui-design/aperture-minimalist-dark/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [art-deco-gatsby-showcase](./ui-design/art-deco-gatsby-showcase/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [aurora-flow-landing](./ui-design/aurora-flow-landing/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [bauhaus-form-follows-function](./ui-design/bauhaus-form-follows-function/) | "WERKBUND" Bauhaus design-system landing page — a constructivist poster brought to life with three primary colours, thick black borders, hard offset shadows, binary radii, geometric circle/square/triangle primitives, color-blocked sections, a stats band, feature grid, pricing tiers, testimonials, journal, and a red/cream FAQ accordion | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
-| [bitcoin-defi-aurum](./ui-design/bitcoin-defi-aurum/) | "AURUM" Bitcoin DeFi design-system landing — a True-Void/Bitcoin-Fire aesthetic with a spinning orbital orb hero ringed by floating glass stat cards, a seamless stats ticker, count-up metrics, a feature grid with hover-reveal icon watermarks, a "How It Works" blockchain timeline (gradient ledger line, pinging nodes, corner-accent cards), asymmetric scaled pricing, glass testimonials, and colored (never black) glows; centralized cva tokens, self-hosted Space Grotesk/Inter/JetBrains Mono, fully offline | React, TypeScript, Vite, Tailwind CSS, CVA, tailwind-merge, Lucide |
-| [bold-typography-design-system](./ui-design/bold-typography-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [botanical-organic-serif](./ui-design/botanical-organic-serif/) | "Verdant" Botanical / Organic Serif design-system showcase — a slow-living wellness landing on centralized tokens, with hand-built fully-offline botanical SVG art masked into Roman arches, the mandatory paper-grain overlay, Playfair Display headlines using italic emphasis words, a sage/clay/terracotta palette, staggered feature & collection grids, count-up stats, soft-shadow pill buttons, a vine-growing divider, an ARIA FAQ accordion, an underlined newsletter input, and a full-screen mobile menu | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
-| [clay-design-system](./ui-design/clay-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
-| [copy-machine-pixel-perfect](./ui-design/copy-machine-pixel-perfect/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [copy-machine-setup](./ui-design/copy-machine-setup/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, tailwind-merge, clsx, Framer Motion, Lucide |
-| [corporate-trust-design-system](./ui-design/corporate-trust-design-system/) | "Northwind" Corporate Trust design-system showcase — a modern enterprise-SaaS landing fully expressing the style: indigo→violet gradients, colored (blue/violet-tinted) shadows, an isometric 3D hero dashboard, soft blurred blobs, a split gradient headline, zig-zag deep-dives on tilted gradient slabs, a count-up stats band, glowing numbered steps, a scaled "popular" pricing tier, a details/summary FAQ, and a dramatic dark final CTA — all on centralized tokens | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
-| [cyberpunk-glitch-design-system](./ui-design/cyberpunk-glitch-design-system/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [flatline-design-system](./ui-design/flatline-design-system/) | Complete flat-design-system showcase landing page — centralized tokens, sharp full-section color blocks (Blue/Emerald/Amber/dark), tinted color-block cards, thick outline buttons, a scaled "popular" pricing tier, multi-color stat count-ups, and high-contrast solid focus rings with zero box-shadows anywhere | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
-| [finsyc-finance-landing](./ui-design/finsyc-finance-landing/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [handcraft-paper-ui](./ui-design/handcraft-paper-ui/) | "Scribbly" Hand-Drawn design-system landing page — a messy-on-purpose whiteboard product rendered entirely in wobbly irregular border-radii (never `rounded-*`), hard zero-blur offset shadows, warm paper-grain dot texture, and self-hosted Kalam / Patrick Hand type; centralized tokens drive composable taped/tacked/post-it cards, a hand-drawn SVG hero whiteboard, squiggly step connectors, a dashed-circled scaled pricing tier, speech-bubble testimonials, and a press-flat button system | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
-| [industrial-skeuomorphism](./ui-design/industrial-skeuomorphism/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
-| [kinetic-typography-poster](./ui-design/kinetic-typography-poster/) | Kinetic Typography design-system showcase — a festival poster page with viewport-width `clamp()` headlines, two infinite marquees, towering background numbers, hard acid-yellow color-inversion hover states, sticky-stacking cards, scroll-driven hero zoom, and a `prefers-reduced-motion` static fallback | React, TypeScript, Vite, Tailwind CSS v4, Framer Motion, react-fast-marquee, Space Grotesk |
-| [lumen-design-system](./ui-design/lumen-design-system/) | Showcase landing page that fully expresses the Linear/Modern design language — four-layer ambient background with floating gradient blobs, mouse-tracking spotlight cards, gradient typography, scroll-linked hero parallax, multi-layer shadows, an asymmetric bento grid, a live token gallery and component playground, and a responsive hamburger menu, all on centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [lumina-minimalist-modern](./ui-design/lumina-minimalist-modern/) | Full "Minimalist Modern" design-system landing page for analytics platform Lumina — Electric Blue signature gradient, inverted slate sections, Calistoga/Inter dual-font type, an animated abstract hero graphic, and centralized design tokens | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [luxury-editorial-design-system](./ui-design/luxury-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [material-you-showcase](./ui-design/material-you-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4 |
-| [maximalism-dopamine-system](./ui-design/maximalism-dopamine-system/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [neo-brutalism-loud-system](./ui-design/neo-brutalism-loud-system/) | "LOUDHOUSE" Neo-brutalism design-system showcase — centralized `@theme` tokens (cream/black + red/yellow/violet highlighters), hard offset shadows (zero blur) as `shadow-neo*` utilities, hollow text-stroke display type, sticker rotations, a chaos-zone hero, live token gallery, count-up stats, an interactive component playground, scaled pricing, two marquees, a keyboard FAQ, mechanical click-down buttons / lift cards / yellow-flood inputs, and a full `prefers-reduced-motion` fallback | React, TypeScript, Vite, Tailwind CSS v4, react-fast-marquee, Lucide, Space Grotesk |
-| [neumorphism-soft-ui](./ui-design/neumorphism-soft-ui/) | "SOFTFORM" Neumorphism (Soft UI) design-system showcase — one cool-grey surface (`#E0E5EC`) where dual opposing RGBA shadows carve every edge: extruded / inset / inset-deep / nested depth states, hyper-rounded 32px corners, floating concentric-circle hero art, a working component playground (buttons in all states, inset inputs with accent focus rings, a switch, segmented control, draggable+keyboard slider), an inset token gallery, a soft-dark theme toggle, and zero borders anywhere; fully offline | HTML, CSS, vanilla JS |
-| [newsprint-editorial-press](./ui-design/newsprint-editorial-press/) | Full editorial landing page expressing the "Newsprint" design system — massive Playfair headlines, zero radius, collapsed grid borders, drop caps, a breaking-news ticker, an inverted black "How It's Filed" section, grayscale halftone engravings, hard offset hover shadows, and sparing editorial red | React, TypeScript, Vite, Tailwind CSS, CVA, tailwind-merge, Lucide |
-| [playful-geometric-design-system](./ui-design/playful-geometric-design-system/) | "Blobby" Playful Geometric design-system showcase — a Memphis-inspired "stable grid, wild decoration" landing with centralized tokens (warm paper + slate + four rotational pop colors), chunky 2px borders, hard no-blur "pop" shadows, varied/blob radii, a blob-masked geometric mascot illustration, confetti shapes, keyword + logo marquees, a dashed-line feature grid, a star-badged scaled pricing tier, a live token gallery, an ARIA FAQ, and a focus-shadowed CTA form — all honoring prefers-reduced-motion | React, TypeScript, Vite, Tailwind CSS v4, Lucide |
-| [retro-90s-nostalgia-design-system](./ui-design/retro-90s-nostalgia-design-system/) | "WEBMASTER 95" Retro / 90s Nostalgia design-system showcase — a faux Windows 95 desktop that documents its own DNA with centralized bevel tokens, a scrolling marquee, animated rainbow text, title-bar windowed cards, a tiled crosshatch background, blue/underlined hyperlinks, alternating rows, groove HR dividers, a glowing green hit counter, pulsing NEW!/HOT! badges, a construction-stripe CTA, dotted focus rings, and zero border-radius; fully offline | HTML, CSS, vanilla JS |
-| [scaffold-ready-splash](./ui-design/scaffold-ready-splash/) | Exact-spec single-page landing scaffold (Vite + React + TypeScript + Tailwind v3, `@/` alias, `cn()` helper, Framer Motion + Lucide) whose App shell — instead of an empty page — renders a polished, self-contained "Scaffold ready" splash: ambient drifting orbs + a panning technical grid, a gradient headline, a self-typing macOS terminal, stack chips, a scroll-sequenced setup checklist, a `src/` file tree, and a dashed "drop your first component" target; fully offline (system fonts) and `prefers-reduced-motion`–aware | React, TypeScript, Vite, Tailwind CSS, Framer Motion, clsx, tailwind-merge, Lucide |
-| [serif-editorial-design-system](./ui-design/serif-editorial-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [swiss-design-system](./ui-design/swiss-design-system/) | Self-contained Swiss International (International Typographic Style) design-system showcase — strict B/W/Swiss-Red tokens, four CSS texture patterns (grid, dots, diagonal, noise), a Bauhaus hero composition, a mathematical type specimen, a 2×2 component gallery, and bold mechanical interactions (color inversions, rotating plus icons, count-up); fully offline | HTML, CSS, vanilla JS, Inter |
-| [vaporwave-outrun-design-system](./ui-design/vaporwave-outrun-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
-| [verdant-organic-design-system](./ui-design/verdant-organic-design-system/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-</details>
-
-<details>
-<summary><b>Shaders (84)</b></summary>
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [abstract-glassy-shader](./shaders/abstract-glassy-shader/) | GLASSWORKS — a drop-in WebGL2 metaball field (two SDF circles fused with a smooth union, an exponential glow and a cosine spectrum) integrated into shadcn `components/ui` and framed as a glass component lab: a live telemetry HUD reading the shader's own blob centres/FPS/clock, a control deck of faders that promote the baked-in constants to live uniforms, copyable source tabs, and a props/uniforms API; fully procedural with a CSS metaball fallback | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
-| [aether-flow-shader](./shaders/aether-flow-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [ai-input-wave-hero](./shaders/ai-input-wave-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, GSAP, Lucide |
-| [animated-shader-background](./shaders/animated-shader-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, three.js, shadcn/ui, Lucide |
-| [animated-shader-hero](./shaders/animated-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, Lucide |
-| [anomalous-matter-hero](./shaders/anomalous-matter-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [atc-tunnel-shader](./shaders/atc-tunnel-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, Lucide |
-| [aura-core-shader](./shaders/aura-core-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, WebGL2, Lucide |
-| [aurora-borealis-shader](./shaders/aurora-borealis-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
-| [blue-meshy-shader-lab](./shaders/blue-meshy-shader-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
-| [blueprint-ascii-grid-shader](./shaders/blueprint-ascii-grid-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
-| [cathedral-raymarch-shader](./shaders/cathedral-raymarch-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
-| [celestial-bloom-shader](./shaders/celestial-bloom-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, Lucide |
-| [celestial-ink-shader](./shaders/celestial-ink-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
-| [celestial-matrix-shader](./shaders/celestial-matrix-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
-| [celestial-matrix-terminal](./shaders/celestial-matrix-terminal/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
-| [celestial-sphere-shader](./shaders/celestial-sphere-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn structure, Three.js, Lucide |
-| [cosmic-plasma-web](./shaders/cosmic-plasma-web/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, OGL, Lucide |
-| [crystal-voronoi-shader](./shaders/crystal-voronoi-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, WebGL, Lucide |
-| [crystalline-cube-shader](./shaders/crystalline-cube-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
-| [cybernetic-grid-shader](./shaders/cybernetic-grid-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
-| [digital-glitch-shader](./shaders/digital-glitch-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
-| [digital-petals-shader](./shaders/digital-petals-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [dithering-shader-lab](./shaders/dithering-shader-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
-| [dithering-sphere-shader](./shaders/dithering-sphere-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
-| [dithering-swirl-shader](./shaders/dithering-swirl-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
-| [dotted-surface-waves](./shaders/dotted-surface-waves/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, next-themes, Lucide |
-| [dynamic-waveform-shader](./shaders/dynamic-waveform-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, three.js, Lucide |
-| [electric-waves-shader](./shaders/electric-waves-shader/) | shadcn/Tailwind v4/TS integration of the prompt's `ElectricWavesShader` (a Three.js fragment shader piling additive R/G/B sine-interference lines onto one full-screen quad), framed as the "ARCWAVE" signal instrument — viewfinder brackets, CRT scanlines, the component's own five-slider uniform deck (wave count / amplitude / frequency / brightness / colour separation), and a live FPS / uptime / resolution telemetry HUD; system fonts, runs offline | React, TypeScript, Vite, Tailwind CSS v4, Three.js, shadcn/ui, Lucide |
-| [endless-pursuit-shader-hero](./shaders/endless-pursuit-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
-| [exoplanet-survey-shader](./shaders/exoplanet-survey-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [flowing-waves-shader](./shaders/flowing-waves-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [fluid-swirl-shader](./shaders/fluid-swirl-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
-| [galactic-spiral-shader](./shaders/galactic-spiral-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
-| [gaming-vibe-shader](./shaders/gaming-vibe-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, Three.js, Lucide |
-| [generative-mountain-scene](./shaders/generative-mountain-scene/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [glsl-hills-shader](./shaders/glsl-hills-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [grain-gradient-corners-lab](./shaders/grain-gradient-corners-lab/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, shadcn/ui, Lucide |
-| [grainy-gradient-ripple-card](./shaders/grainy-gradient-ripple-card/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, framer-motion, Lucide |
-| [hero-button-expandable](./shaders/hero-button-expandable/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
-| [hero-dithering-card](./shaders/hero-dithering-card/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
-| [hero-futuristic-webgpu](./shaders/hero-futuristic-webgpu/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js (WebGPU + TSL), @react-three/fiber, @react-three/drei, Lucide |
-| [hex-shield-shader](./shaders/hex-shield-shader/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS, Three.js, @react-three/fiber, shadcn/ui, Lucide |
-| [hive-noise-shader](./shaders/hive-noise-shader/) | "HIVE" — a faithful shadcn integration of the prompt's verbatim `hive.tsx` component, a single full-screen **WebGL2** fragment shader that raymarches a 20-step noise field and tints it with a flowing amber → magenta cosine spectrum; dropped **unedited** into `@/components/ui` (zero props, zero deps, zero assets) and mounted as a fixed full-viewport backdrop under a frosted shader lab: a hero, a spec HUD reading the shader's real shape (its `u_res`/`u_time` uniforms, raymarch steps, DPR clamp) instead of faked telemetry, an integration ticker, and a below-the-fold integration story (default paths, why `components/ui`, from-scratch setup, copyable source, a render-pipeline walkthrough, and a props/state/assets Q&A); CLI-verified with a headless screenshot light-check | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
-| [horizon-strata-shader](./shaders/horizon-strata-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
-| [interactive-flux-shader](./shaders/interactive-flux-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
-| [launch-shader](./shaders/launch-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
-| [liquid-crystal-shader](./shaders/liquid-crystal-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL, Lucide |
-| [liquid-metal-foundry](./shaders/liquid-metal-foundry/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
-| [living-nebula-shader](./shaders/living-nebula-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, Three.js, shadcn/ui, Lucide |
-| [mesh-gradient-shader-hero](./shaders/mesh-gradient-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, shadcn/ui, Lucide |
-| [molten-core-shader](./shaders/molten-core-shader/) | shadcn-style integration of the `MoltenCoreShader` component — a procedural FBM lava fragment shader rendered full-viewport with Three.js, framed as a live "foundry core monitor" with a base-color toggle, a melt-intensity dial, and a telemetry panel that reads core temperature straight off the GPU | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [morphing-light-shader](./shaders/morphing-light-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
-| [moving-circles-shader](./shaders/moving-circles-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, @react-three/fiber, Lucide |
-| [novatrix-gradient-mesh](./shaders/novatrix-gradient-mesh/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, ogl, WebGL, shadcn/ui, Lucide |
-| [old-television-shader](./shaders/old-television-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, @react-three/fiber, @react-three/drei, three, Lucide |
-| [paper-shader-resume-hero](./shaders/paper-shader-resume-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, shadcn/ui, Lucide |
-| [paper-shaders-control-deck](./shaders/paper-shaders-control-deck/) | Instrument-console "Control Deck" for driving live WebGL shaders — four selectable channels (paper-design Mesh Gradient / Dot Orbit / Combined plus the prompt's custom react-three-fiber GLSL Shader Plane + energy rings), a brushed-graphite scope housing with corner brackets/scanlines/vignette, live FPS·frame·uptime telemetry, and speed/intensity faders wired straight into the shader uniforms | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, @react-three/fiber, three, Lucide |
-| [paper-shaders-hero-lab](./shaders/paper-shaders-hero-lab/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, framer-motion, shadcn/ui, Lucide |
-| [phosphor-30-shader-hero](./shaders/phosphor-30-shader-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, CVA, @radix-ui/react-slot, Lucide |
-| [radial-aperture-shader](./shaders/radial-aperture-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
-| [radial-shader](./shaders/radial-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, WebGL2, shadcn/ui, Lucide |
-| [realistic-fog-background](./shaders/realistic-fog-background/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL, shadcn/ui, Lucide |
-| [sdf-dreamscape-shader](./shaders/sdf-dreamscape-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
-| [shader-animation-integration](./shaders/shader-animation-integration/) | shadcn/ui integration of a zero-prop Three.js WebGL fragment-shader component (radiating RGB lines) — a full-bleed shader hero plus a docs page covering the `components/ui` path, the `three` dependency, copy-paste usage, and a props/state/assets/responsive/placement Q&A | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [shader-flow-field-rings](./shaders/shader-flow-field-rings/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [shader-lines-showcase](./shaders/shader-lines-showcase/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, Lucide |
-| [shader-plasma-grid-background](./shaders/shader-plasma-grid-background/) | "PLASMASIGNAL" showcase for a drop-in WebGL plasma-grid background (shadcn `components/ui`) — the brief's fragment shader ported to TS, wrapped in a "Signal Lab" page with an oscilloscope HUD reading live `iTime`/FPS/`iResolution`, and a control deck of faders that promote the shader's baked-in constants to live uniforms to re-tint/re-shape the whole field in real time | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL, Lucide |
-| [shader-spectral-clock](./shaders/shader-spectral-clock/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, WebGL, Lucide |
-| [sickui-waitlist-mesh-shader](./shaders/sickui-waitlist-mesh-shader/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
-| [simplex-dithering-shader](./shaders/simplex-dithering-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, WebGL2, shadcn/ui, Lucide |
-| [spooky-smoke-shader](./shaders/spooky-smoke-shader/) | "AETHER" séance instrument that integrates a WebGL2 fbm-noise smoke component — a live observation window tuned by a single `smokeColor` prop, an alchemical reagent tray of preset swatches plus a brass colour dial, and two documented specimen panes, all on a shadcn/ui project structure | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide, WebGL2 |
-| [starship-shader](./shaders/starship-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, Lucide |
-| [thermal-shader-imaging](./shaders/thermal-shader-imaging/) | "THERMA — Thermal Imaging Bay" integration of the prompt's verbatim `ThermalEffect` (Apple-style three.js shader painting a pointer-reactive 7-stop thermal gradient inside a logo's alpha mask) dropped into `@/components/ui`, framed as thermographic hardware — bracketed viewports with a reticle, a live sensor-clock/FPS/core-temp telemetry HUD, the brief's `logo × logo` two-up plus a specimen tray, a palette/LUT calibration ramp and props API; logo masks are drawn on a canvas at runtime so it runs fully offline | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, three.js, Lucide |
-| [vitruvian-ascii-shader](./shaders/vitruvian-ascii-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS v4, HTML Canvas, shadcn/ui |
-| [volumetric-beams-shader](./shaders/volumetric-beams-shader/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, Lucide |
-| [warp-checks-background-lab](./shaders/warp-checks-background-lab/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
-| [warp-dithering-shader](./shaders/warp-dithering-shader/) | "DITHER LAB" integration of the verbatim `DitheringShader` WebGL2 component — seven procedural shape fields (warp, simplex, dots, wave, ripple, swirl, sphere) thresholded through random + Bayer 2×2/4×4/8×8 ordered dithering — dropped into shadcn `components/ui` and framed as a live 1-bit CRT console: a full-bleed Warp hero, a driving deck wired straight to the props/uniforms, a click-to-apply shape library, animated Bayer-matrix explainers, and a live props API mirroring the hero state | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, WebGL2, Lucide |
-| [warp-drive-shader-bridge](./shaders/warp-drive-shader-bridge/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, Three.js, Lucide |
-| [warp-shader-hero](./shaders/warp-shader-hero/) | Interface experiment. | React 19, TypeScript, Vite, Tailwind CSS v4, @paper-design/shaders-react, Lucide |
-| [waves-shader-oscilloscope](./shaders/waves-shader-oscilloscope/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, Lucide |
-| [vhs-noise-distortion-hero](./shaders/vhs-noise-distortion-hero/) | Interface experiment. | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Three.js, @react-three/fiber, GSAP, Lucide |
-| [webgl-flowing-gradient-shader](./shaders/webgl-flowing-gradient-shader/) | shadcn/Tailwind v4/TS integration of a raw-WebGL flowing-gradient fragment shader, framed as the "PRISMA Shader Lab" — a cursor-reactive fractal field with viewfinder chrome, a layers/glow/speed control rail, and a live FPS/time/resolution telemetry HUD | React, TypeScript, Vite, Tailwind CSS v4, WebGL, Lucide |
-| [webgl-rgb-shift-shader-hero](./shaders/webgl-rgb-shift-shader-hero/) | "CHROMA OSC" hero integrating the prompt's `WebGLShader` (a single RawShaderMaterial GLSL pass of additive sine ribbons with R/G/B chromatic-aberration) and `LiquidButton`, framed as a live oscilloscope instrument with corner brackets, an RGB-split headline, a sweeping scan line, and mono telemetry strips reading real FPS / shader uptime | React, TypeScript, Vite, Tailwind CSS, shadcn structure, three.js, CVA, Radix Slot, Lucide |
-
-</details>
-
-<details>
-<summary><b>Templates (250)</b></summary>
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [atelier-archive-quiet-luxury](./templates/atelier-archive-quiet-luxury/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Hanken Grotesk |
-| [aurum-neural-ai-landing](./templates/aurum-neural-ai-landing/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Playfair Display, Inter |
-| [browser-core-devtools-template](./templates/browser-core-devtools-template/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Inter, JetBrains Mono |
-| [clinical-luxury-conversion](./templates/clinical-luxury-conversion/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, Newsreader, Inter, JetBrains Mono |
-| [cyber-serif-template](./templates/cyber-serif-template/) | Interface experiment. | Static HTML/CSS/JS, Newsreader, Inter, Space Grotesk |
-| [disruptor-brutalist-template](./templates/disruptor-brutalist-template/) | Interface experiment. | Static HTML/CSS/JS, Ranchers, Space Mono, Plus Jakarta Sans, Archivo |
-| [editorial-naturalism-design-system](./templates/editorial-naturalism-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Newsreader, Instrument Sans |
-| [emerald-glass-system](./templates/emerald-glass-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [enterprise-admin-saas-landing](./templates/enterprise-admin-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
-| [flux-editorial-saas-landing](./templates/flux-editorial-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Satoshi |
-| [forest-sage-organic-store](./templates/forest-sage-organic-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
-| [gen-z-neobrutalist-landing](./templates/gen-z-neobrutalist-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, DM Sans |
-| [heavyweight-brutalist-store](./templates/heavyweight-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Space Grotesk |
-| [kinetic-orange-brutalist-agency](./templates/kinetic-orange-brutalist-agency/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [lumina-neobrutalist-saas-landing](./templates/lumina-neobrutalist-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Satoshi |
-| [lumina-portfolio-template](./templates/lumina-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Plus Jakarta Sans |
-| [midnight-editorial-template](./templates/midnight-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Bricolage Grotesque, Inter |
-| [neon-velocity-style-guide](./templates/neon-velocity-style-guide/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans, Geist Mono |
-| [obsidian-elite-template](./templates/obsidian-elite-template/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
-| [organic-intelligence-wave](./templates/organic-intelligence-wave/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Inter, JetBrains Mono |
-| [premium/aceternity/agenforce-marketing-template](./templates/premium/aceternity/agenforce-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Manrope, Inter |
-| [premium/aceternity/agenlabs-agency-template](./templates/premium/aceternity/agenlabs-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/aceternity/ai-saas-template](./templates/premium/aceternity/ai-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
-| [cryptgen-marketing-aceternity](./templates/premium/aceternity/cryptgen-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [devpro-portfolio-template](./templates/premium/aceternity/devpro-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [foxtrot-marketing-template](./templates/premium/aceternity/foxtrot-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/aceternity/minimalist-portfolio-template](./templates/premium/aceternity/minimalist-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Schibsted Grotesk |
-| [nodus-agent-template](./templates/premium/aceternity/nodus-agent-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
-| [playful-marketing-aceternity](./templates/premium/aceternity/playful-marketing-aceternity/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/nextjstemplates/ai-tool](./templates/premium/nextjstemplates/ai-tool/) | Interface experiment. | HTML, CSS, vanilla JS, Plus Jakarta Sans |
-| [premium/nextjstemplates/doggystickers](./templates/premium/nextjstemplates/doggystickers/) | Interface experiment. | HTML, CSS, vanilla JS, Josefin Sans |
-| [premium/nextjstemplates/gostartup](./templates/premium/nextjstemplates/gostartup/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
-| [premium/nextjstemplates/landing-template-nextui](./templates/premium/nextjstemplates/landing-template-nextui/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/next-saas-starter](./templates/premium/nextjstemplates/next-saas-starter/) | Interface experiment. | HTML, CSS, vanilla JS, Poppins |
-| [premium/nextjstemplates/next-startd](./templates/premium/nextjstemplates/next-startd/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/nextadmin](./templates/premium/nextjstemplates/nextadmin/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind CSS v4, Satoshi, ApexCharts |
-| [premium/nextjstemplates/notion-blog](./templates/premium/nextjstemplates/notion-blog/) | Interface experiment. | HTML, CSS, vanilla JS, system font stack, inline SVG |
-| [premium/nextjstemplates/play](./templates/premium/nextjstemplates/play/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/plutonium](./templates/premium/nextjstemplates/plutonium/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/nextjstemplates/react-portfolio](./templates/premium/nextjstemplates/react-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Hind |
-| [premium/nextjstemplates/saas-ui](./templates/premium/nextjstemplates/saas-ui/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/sandocs](./templates/premium/nextjstemplates/sandocs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/solid](./templates/premium/nextjstemplates/solid/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Swiper.js |
-| [premium/nextjstemplates/stablo](./templates/premium/nextjstemplates/stablo/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/startup-nextjs](./templates/premium/nextjstemplates/startup-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/startup-pro](./templates/premium/nextjstemplates/startup-pro/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/tailwind-nextjs-starter-blog](./templates/premium/nextjstemplates/tailwind-nextjs-starter-blog/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk |
-| [premium/nextjstemplates/tx-shadcn](./templates/premium/nextjstemplates/tx-shadcn/) | Interface experiment. | HTML, CSS, vanilla JS, CalSans, Inter |
-| [premium/nextjstemplates/unft-marketplace](./templates/premium/nextjstemplates/unft-marketplace/) | Interface experiment. | HTML, CSS, vanilla JS, Poppins, DM Sans |
-| [premium/themefisher/andromeda-light-nextjs](./templates/premium/themefisher/andromeda-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Poppins |
-| [premium/themefisher/andromeda-nextjs](./templates/premium/themefisher/andromeda-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Poppins |
-| [premium/themefisher/bigspring-nextjs](./templates/premium/themefisher/bigspring-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Urbanist, Poppins, Swiper |
-| [premium/themefisher/clarity](./templates/premium/themefisher/clarity/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi, Clash Grotesk |
-| [premium/themefisher/cleaner-nextjs](./templates/premium/themefisher/cleaner-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Rubik |
-| [premium/themefisher/cloudpeak-nextjs](./templates/premium/themefisher/cloudpeak-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Sora |
-| [premium/themefisher/copper-nextjs](./templates/premium/themefisher/copper-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Quicksand |
-| [premium/themefisher/darkrise-nextjs](./templates/premium/themefisher/darkrise-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
-| [premium/themefisher/glasto](./templates/premium/themefisher/glasto/) | Interface experiment. | HTML, CSS, vanilla JS, Onest, Swiper.js |
-| [premium/themefisher/hyperbit-nextjs](./templates/premium/themefisher/hyperbit-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif, Lenis |
-| [premium/themefisher/kindora-nextjs](./templates/premium/themefisher/kindora-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Swiper, Urbanist |
-| [premium/themefisher/mobit](./templates/premium/themefisher/mobit/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree, AOS |
-| [premium/themefisher/neonspark-nextjs](./templates/premium/themefisher/neonspark-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Epilogue |
-| [premium/themefisher/optimize-nextjs](./templates/premium/themefisher/optimize-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Outfit, Inter, AOS |
-| [premium/themefisher/relux-nextjs](./templates/premium/themefisher/relux-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Namdhinggo, Red Rose |
-| [premium/themefisher/seoptic-nextjs](./templates/premium/themefisher/seoptic-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
-| [premium/themefisher/spydea-nextjs](./templates/premium/themefisher/spydea-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Maven Pro, Merriweather |
-| [proactiv-marketing-template](./templates/premium/aceternity/proactiv-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [productized-agency-template](./templates/premium/aceternity/productized-agency-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Mono |
-| [premium/aceternity/schedule-marketing-template](./templates/premium/aceternity/schedule-marketing-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/aceternity/minimal-portfolio-template](./templates/premium/aceternity/minimal-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [sidefolio-portfolio-template](./templates/premium/aceternity/sidefolio-portfolio-template/) | Interface experiment. | HTML, CSS, vanilla JS, Cal Sans, Inter |
-| [simplistic-saas-template](./templates/premium/aceternity/simplistic-saas-template/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
-| [startup-landing-page-template](./templates/premium/aceternity/startup-landing-page-template/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/cruip/docs](./templates/premium/cruip/docs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/cruip/appy](./templates/premium/cruip/appy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
-| [premium/cruip/jobboard](./templates/premium/cruip/jobboard/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/cruip/community](./templates/premium/cruip/community/) | Interface experiment. | HTML, CSS, Alpine.js |
-| [premium/lexingtonthemes/alfred](./templates/premium/lexingtonthemes/alfred/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/lexingtonthemes/aelen](./templates/premium/lexingtonthemes/aelen/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
-| [premium/lexingtonthemes/astromaxsp](./templates/premium/lexingtonthemes/astromaxsp/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, FuseJS, Geist |
-| [premium/lexingtonthemes/aubergine](./templates/premium/lexingtonthemes/aubergine/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Vanilla Tilt, Fuse.js, Clash Display, Figtree |
-| [premium/lexingtonthemes/author](./templates/premium/lexingtonthemes/author/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Fuse.js, Inter |
-| [bastion](./templates/premium/lexingtonthemes/bastion/) | Interface experiment. | HTML, CSS, vanilla JS, Keen-Slider, Inter |
-| [premium/themefisher/bigspring-light-nextjs](./templates/premium/themefisher/bigspring-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Lato |
-| [premium/lexingtonthemes/brightlight](./templates/premium/lexingtonthemes/brightlight/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Noto Serif |
-| [premium/lexingtonthemes/buio](./templates/premium/lexingtonthemes/buio/) | Interface experiment. | HTML, CSS, vanilla JS, AOS, Geist, EB Garamond |
-| [premium/lexingtonthemes/carbon](./templates/premium/lexingtonthemes/carbon/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Hedvig Letters Serif |
-| [premium/lexingtonthemes/carriera](./templates/premium/lexingtonthemes/carriera/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Geist, Geist Mono |
-| [carrington](./templates/premium/lexingtonthemes/carrington/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Newsreader, Fuse.js |
-| [premium/lexingtonthemes/copperlane](./templates/premium/lexingtonthemes/copperlane/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Stack Sans Notch, Inter |
-| [dusk](./templates/premium/lexingtonthemes/dusk/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Display, General Sans, Fuse.js |
-| [ellamae](./templates/premium/lexingtonthemes/ellamae/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
-| [premium/lexingtonthemes/enlightr](./templates/premium/lexingtonthemes/enlightr/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Inter, Instrument Serif, Clash Grotesk |
-| [premium/lexingtonthemes/flaco](./templates/premium/lexingtonthemes/flaco/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, Fuse.js |
-| [premium/lexingtonthemes/flabbergasted](./templates/premium/lexingtonthemes/flabbergasted/) | Interface experiment. | HTML, CSS, vanilla JS, Keen Slider, Inter Variable, InterDisplay, Geist Mono |
-| [premium/lexingtonthemes/hemingway](./templates/premium/lexingtonthemes/hemingway/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter |
-| [premium/lexingtonthemes/hirewise](./templates/premium/lexingtonthemes/hirewise/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Geist |
-| [premium/lexingtonthemes/kotei](./templates/premium/lexingtonthemes/kotei/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, AOS, Fuse.js |
-| [matterhaus](./templates/premium/lexingtonthemes/matterhaus/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Switzer, Fuse.js |
-| [molle](./templates/premium/lexingtonthemes/molle/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Keen Slider, Fuse.js |
-| [mulberry](./templates/premium/lexingtonthemes/mulberry/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), STIX Two Text, Inter, Fuse.js |
-| [navy](./templates/premium/lexingtonthemes/navy/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, JetBrains Mono |
-| [newport](./templates/premium/lexingtonthemes/newport/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer, Gambarino, Fuse.js |
-| [northbound](./templates/premium/lexingtonthemes/northbound/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Noto Serif Display, Noto Serif, Inter, Keen Slider |
-| [premium/lexingtonthemes/outkast](./templates/premium/lexingtonthemes/outkast/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
-| [premium/lexingtonthemes/phanatik](./templates/premium/lexingtonthemes/phanatik/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, STIX Two Text, Fuse.js |
-| [premium/lexingtonthemes/primapersona](./templates/premium/lexingtonthemes/primapersona/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/lexingtonthemes/profoliox](./templates/premium/lexingtonthemes/profoliox/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, AOS, Fuse.js |
-| [premium/lexingtonthemes/quartiere](./templates/premium/lexingtonthemes/quartiere/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono, AOS, Fuse.js |
-| [riflesso](./templates/premium/lexingtonthemes/riflesso/) | Interface experiment. | HTML, CSS, vanilla JS, Hanken Grotesk, Fuse.js |
-| [rosewood](./templates/premium/lexingtonthemes/rosewood/) | Interface experiment. | HTML, CSS, vanilla JS, EB Garamond, Switzer, Keen Slider, Fuse.js |
-| [sandstone](./templates/premium/lexingtonthemes/sandstone/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable, Keen Slider |
-| [semplice](./templates/premium/lexingtonthemes/semplice/) | Interface experiment. | HTML, CSS, Inter, Newsreader |
-| [simplexity](./templates/premium/lexingtonthemes/simplexity/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
-| [snowpeak](./templates/premium/lexingtonthemes/snowpeak/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable, Stack Sans Notch, Fuse.js |
-| [spaziobianco](./templates/premium/lexingtonthemes/spaziobianco/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Geist, Geist Mono, AOS, Fuse.js |
-| [premium/lexingtonthemes/streamer](./templates/premium/lexingtonthemes/streamer/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Fuse.js, Keen Slider |
-| [premium/lexingtonthemes/studiomax](./templates/premium/lexingtonthemes/studiomax/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
-| [trendspotter](./templates/premium/lexingtonthemes/trendspotter/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/lexingtonthemes/vanta](./templates/premium/lexingtonthemes/vanta/) | Interface experiment. | HTML, CSS, vanilla JS, Fuse.js, Keen Slider, Geist, Newsreader |
-| [westend](./templates/premium/lexingtonthemes/westend/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Variable |
-| [williamsburg](./templates/premium/lexingtonthemes/williamsburg/) | Interface experiment. | HTML, CSS, vanilla JS, Tailwind (compiled), Inter, Instrument Serif, Keen Slider, Fuse.js |
-| [premium/lexingtonthemes/zeroindex](./templates/premium/lexingtonthemes/zeroindex/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
-| [premium/magic-ui/agent](./templates/premium/magic-ui/agent/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
-| [blog](./templates/premium/magic-ui/blog/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
-| [premium/magic-ui/changelog](./templates/premium/magic-ui/changelog/) | Interface experiment. | HTML, CSS, vanilla JS, GeistSans |
-| [codeforge](./templates/premium/magic-ui/codeforge/) | Interface experiment. | HTML, CSS, vanilla JS, Geist, Geist Mono |
-| [devtool](./templates/premium/magic-ui/devtool/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
-| [mobile](./templates/premium/magic-ui/mobile/) | Interface experiment. | HTML, CSS, vanilla JS, Geist Sans, Geist Mono |
-| [premium/magic-ui/portfolio](./templates/premium/magic-ui/portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Geist |
-| [saas](./templates/premium/magic-ui/saas/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [startup](./templates/premium/magic-ui/startup/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [ai-starter-kit](./templates/premium/nextjstemplates/ai-starter-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Onest |
-| [finorio-saas-landing](./templates/premium/nextjstemplates/finorio-saas-landing/) | Interface experiment. | HTML, CSS, vanilla JS, Stack Sans Text |
-| [nextmerce-saas-ecommerce](./templates/premium/nextjstemplates/nextmerce-saas-ecommerce/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
-| [premium/shadcnblocks/aspect](./templates/premium/shadcnblocks/aspect/) | Interface experiment. | HTML, CSS, vanilla JS, Figtree |
-| [premium/shadcnblocks/charter](./templates/premium/shadcnblocks/charter/) | Interface experiment. | HTML, CSS, vanilla JS, Hubot Sans, Inter, IBM Plex Mono |
-| [echo](./templates/premium/shadcnblocks/echo/) | Interface experiment. | HTML, CSS, vanilla JS, Funnel Sans |
-| [premium/shadcnblocks/hatch](./templates/premium/shadcnblocks/hatch/) | Interface experiment. | HTML, CSS, vanilla JS, Castoro, Inter, IBM Plex Mono, Caveat |
-| [hive](./templates/premium/shadcnblocks/hive/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
-| [premium/shadcnblocks/kinto](./templates/premium/shadcnblocks/kinto/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans, JetBrains Mono |
-| [premium/shadcnblocks/lumen](./templates/premium/shadcnblocks/lumen/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
-| [premium/shadcnblocks/mainline](./templates/premium/shadcnblocks/mainline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
-| [premium/shadcnblocks/metafi](./templates/premium/shadcnblocks/metafi/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [plasma](./templates/premium/shadcnblocks/plasma/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [relative](./templates/premium/shadcnblocks/relative/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [scalar](./templates/premium/shadcnblocks/scalar/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, IBM Plex Mono |
-| [premium/shadcnblocks/sonic](./templates/premium/shadcnblocks/sonic/) | Interface experiment. | HTML, CSS, vanilla JS, SF Pro Display |
-| [premium/shadcnblocks/streamline](./templates/premium/shadcnblocks/streamline/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
-| [premium/shadcnblocks/zippay](./templates/premium/shadcnblocks/zippay/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [emerald-ai](./templates/premium/shipxen/emerald-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Rubik, Roboto Serif |
-| [front-centre](./templates/premium/shipxen/front-centre/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto, Roboto Mono |
-| [premium/shipxen/gnomie-ai](./templates/premium/shipxen/gnomie-ai/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat, Hind |
-| [premium/shipxen/minimum-via](./templates/premium/shipxen/minimum-via/) | Interface experiment. | HTML, CSS, vanilla JS, Roboto Slab, Inter |
-| [screenshot-two](./templates/premium/shipxen/screenshot-two/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, DM Sans |
-| [premium/shipxen/specta](./templates/premium/shipxen/specta/) | Interface experiment. | HTML, CSS, vanilla JS, Syne, Inter |
-| [premium/tailgrids/aichat](./templates/premium/tailgrids/aichat/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/aispace](./templates/premium/tailgrids/aispace/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/appspace](./templates/premium/tailgrids/appspace/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/bizspace](./templates/premium/tailgrids/bizspace/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/dashspace](./templates/premium/tailgrids/dashspace/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [fincash](./templates/premium/tailgrids/fincash/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper |
-| [premium/tailgrids/fundex](./templates/premium/tailgrids/fundex/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/lytic](./templates/premium/tailgrids/lytic/) | Interface experiment. | HTML, CSS, vanilla JS, ApexCharts |
-| [premium/tailgrids/neoxa](./templates/premium/tailgrids/neoxa/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/nexstudio](./templates/premium/tailgrids/nexstudio/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/originx](./templates/premium/tailgrids/originx/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/saasly](./templates/premium/tailgrids/saasly/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/saasspace](./templates/premium/tailgrids/saasspace/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/synthai](./templates/premium/tailgrids/synthai/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/techself](./templates/premium/tailgrids/techself/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/writemate](./templates/premium/tailgrids/writemate/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/cms](./templates/premium/tailgrids/cms/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailgrids/filemanager](./templates/premium/tailgrids/filemanager/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/nextjstemplates/nextjs-demo-tailadmin](./templates/premium/nextjstemplates/nextjs-demo-tailadmin/) | Interface experiment. | HTML, CSS, vanilla JS, Outfit |
-| [premium/tailwindcss/catalyst](./templates/premium/tailwindcss/catalyst/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [commit](./templates/premium/tailwindcss/commit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Mona Sans |
-| [compass](./templates/premium/tailwindcss/compass/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Geist Mono |
-| [premium/tailwindcss/keynote](./templates/premium/tailwindcss/keynote/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
-| [oatmeal-saas-kit](./templates/premium/tailwindcss/oatmeal-saas-kit/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Instrument Serif |
-| [pocket](./templates/premium/tailwindcss/pocket/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [primer](./templates/premium/tailwindcss/primer/) | Interface experiment. | HTML, CSS, vanilla JS, Cabinet Grotesk, Inter |
-| [protocol](./templates/premium/tailwindcss/protocol/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/tailwindcss/radiant](./templates/premium/tailwindcss/radiant/) | Interface experiment. | HTML, CSS, vanilla JS, Switzer |
-| [salient](./templates/premium/tailwindcss/salient/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
-| [studio](./templates/premium/tailwindcss/studio/) | Interface experiment. | HTML, CSS, vanilla JS, Mona Sans |
-| [premium/tailwindcss/syntax](./templates/premium/tailwindcss/syntax/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lexend |
-| [transmit](./templates/premium/tailwindcss/transmit/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi |
-| [raw-form-design-system](./templates/raw-form-design-system/) | Interface experiment. | HTML, Tailwind, vanilla JS, Lucide |
-| [realmagic-ticker-scroll](./templates/realmagic-ticker-scroll/) | Interface experiment. | HTML, CSS, vanilla JS, GSAP, ScrollTrigger, Anton, Instrument Serif |
-| [red-sun-editorial-template](./templates/red-sun-editorial-template/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Manrope |
-| [season-04-brutalist-store](./templates/season-04-brutalist-store/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [stellar](./templates/premium/cruip/stellar/) | Interface experiment. | HTML, CSS, vanilla JS, Alpine.js, Swiper.js, AOS |
-| [mosaic](./templates/premium/cruip/mosaic/) | Interface experiment. | HTML, Tailwind CSS, Alpine.js, Chart.js, Moment.js, Flatpickr |
-| [shadcnblocks-admin](./templates/premium/cruip/shadcnblocks-admin/) | Interface experiment. | HTML, CSS, vanilla JS, Chart.js 4, Inter |
-| [waitlist](./templates/premium/cruip/waitlist/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
-| [simple](./templates/premium/cruip/simple/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
-| [gray](./templates/premium/cruip/gray/) | Interface experiment. | HTML, CSS, Alpine.js |
-| [open-pro](./templates/premium/cruip/open-pro/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
-| [devfolio](./templates/premium/cruip/devfolio/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Inter Tight |
-| [cube](./templates/premium/cruip/cube/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper.js, AOS |
-| [premium/cruip/fintech](./templates/premium/cruip/fintech/) | Interface experiment. | HTML, CSS, vanilla JS, Alpine.js, AOS, Swiper |
-| [tidy](./templates/premium/cruip/tidy/) | Interface experiment. | HTML, CSS, Alpine.js, AOS |
-| [devspace](./templates/premium/cruip/devspace/) | Interface experiment. | HTML, CSS, Alpine.js |
-| [talent](./templates/premium/cruip/talent/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper.js |
-| [podcast](./templates/premium/cruip/podcast/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
-| [quoty](./templates/premium/cruip/quoty/) | Interface experiment. | HTML, CSS, Alpine.js |
-| [premium/cruip/neon](./templates/premium/cruip/neon/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/cruip/creative](./templates/premium/cruip/creative/) | Interface experiment. | HTML, CSS, Alpine.js, AOS, Swiper |
-| [softly-wellness](./templates/softly-wellness/) | Interface experiment. | HTML, Tailwind CSS, Vanilla JS |
-| [stacking-cards-portfolio](./templates/stacking-cards-portfolio/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Instrument Serif, Inter |
-| [sticky-content-switch](./templates/sticky-content-switch/) | Interface experiment. | HTML, CSS, vanilla JS, Anton, Inter |
-| [super-design-industrial-system](./templates/super-design-industrial-system/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Playfair Display |
-| [super-travel-luxury-landing](./templates/super-travel-luxury-landing/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [superdesign-architectural-type](./templates/superdesign-architectural-type/) | Interface experiment. | HTML, CSS, vanilla JS, Inter Tight, Inter, JetBrains Mono |
-| [superdesign-cinematic-agency](./templates/superdesign-cinematic-agency/) | Interface experiment. | HTML, CSS, vanilla JS, Aspekta |
-| [superdesign-crimson-craft](./templates/superdesign-crimson-craft/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Poppins, Space Grotesk |
-| [superdesign-design-on-reality](./templates/superdesign-design-on-reality/) | Interface experiment. | HTML, CSS, General Sans |
-| [superdesign-editorial-grid](./templates/superdesign-editorial-grid/) | Interface experiment. | HTML, CSS, vanilla JS, Playfair Display, Space Grotesk, Space Mono |
-| [superdesign-editorial-manifesto](./templates/superdesign-editorial-manifesto/) | Interface experiment. | HTML, CSS, vanilla JS, Fraunces, Manrope |
-| [superdesign-invite-waitlist](./templates/superdesign-invite-waitlist/) | Interface experiment. | HTML, CSS, vanilla JS, Clash Grotesk, General Sans |
-| [superdesign-midnight-editorial](./templates/superdesign-midnight-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lucide |
-| [superdesign-modern-atmospheric](./templates/superdesign-modern-atmospheric/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Lora, Space Grotesk |
-| [superdesign-modern-obsidian](./templates/superdesign-modern-obsidian/) | Interface experiment. | HTML, CSS, vanilla JS, DM Serif Display, Geist Mono, Inter |
-| [superdesign-neo-brutalist-acid](./templates/superdesign-neo-brutalist-acid/) | Interface experiment. | HTML, CSS, vanilla JS, Dela Gothic One, Space Grotesk, Space Mono |
-| [superdesign-obsidian-lime](./templates/superdesign-obsidian-lime/) | Interface experiment. | HTML, vanilla CSS, vanilla JS |
-| [superdesign-red-noir-landing](./templates/superdesign-red-noir-landing/) | Interface experiment. | React, TanStack Start, TypeScript, Tailwind, lucide-react |
-| [superdesign-studio-editorial](./templates/superdesign-studio-editorial/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, JetBrains Mono |
-| [superdesign-technical-system](./templates/superdesign-technical-system/) | Interface experiment. | HTML, CSS, Space Grotesk, JetBrains Mono |
-| [synapse-design-system](./templates/synapse-design-system/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Serif, Inter |
-| [terroir-tasting-room](./templates/terroir-tasting-room/) | Interface experiment. | HTML, CSS, vanilla JS, SVG, Cormorant Garamond, Manrope |
-| [vertical-clip-text-slide](./templates/vertical-clip-text-slide/) | Interface experiment. | HTML, CSS, vanilla JS, Space Grotesk, JetBrains Mono |
-| [premium/nextjstemplates/agency](./templates/premium/nextjstemplates/agency/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/base](./templates/premium/nextjstemplates/base/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter, Outfit |
-| [premium/nextjstemplates/appline](./templates/premium/nextjstemplates/appline/) | Interface experiment. | HTML, CSS, vanilla JS, Swiper, Inter |
-| [premium/nextjstemplates/crypto](./templates/premium/nextjstemplates/crypto/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/nextjstemplates/nextblog](./templates/premium/nextjstemplates/nextblog/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/themefisher/fortify-nextjs](./templates/premium/themefisher/fortify-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Satoshi, Clash Grotesk |
-| [premium/themefisher/nextspace-nextjs](./templates/premium/themefisher/nextspace-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, DM Sans |
-| [premium/themefisher/quickdir-nextjs](./templates/premium/themefisher/quickdir-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter |
-| [premium/themefisher/finprox-nextjs](./templates/premium/themefisher/finprox-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Instrument Sans, Instrument Serif |
-| [premium/themefisher/atemp-nextjs](./templates/premium/themefisher/atemp-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Montserrat |
-| [premium/themefisher/novai-nextjs](./templates/premium/themefisher/novai-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Open Sans, Kanit |
-| [premium/themefisher/optivus-nextjs](./templates/premium/themefisher/optivus-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Rethink Sans |
-| [premium/nextjstemplates/nextly](./templates/premium/nextjstemplates/nextly/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/nextjstemplates/nextra-docs-template](./templates/premium/nextjstemplates/nextra-docs-template/) | Interface experiment. | HTML, CSS, vanilla JS |
-| [premium/themefisher/bookworm-light-nextjs](./templates/premium/themefisher/bookworm-light-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Mulish |
-| [premium/themefisher/devgent-nextjs](./templates/premium/themefisher/devgent-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, DM Sans |
-| [premium/themefisher/dexler-nextjs](./templates/premium/themefisher/dexler-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Inter, Libre Baskerville |
-| [premium/themefisher/visionex-nextjs](./templates/premium/themefisher/visionex-nextjs/) | Interface experiment. | HTML, CSS, vanilla JS, Raleway, Lato |
-</details>
+- [academia-classical-showcase](./ui-design/academia-classical-showcase/)
+- [aperture-minimalist-dark](./ui-design/aperture-minimalist-dark/)
+- [art-deco-gatsby-showcase](./ui-design/art-deco-gatsby-showcase/)
+- [aurora-flow-landing](./ui-design/aurora-flow-landing/)
+- [bauhaus-form-follows-function](./ui-design/bauhaus-form-follows-function/)
+- [bitcoin-defi-aurum](./ui-design/bitcoin-defi-aurum/)
+- [bold-typography-design-system](./ui-design/bold-typography-design-system/)
+- [botanical-organic-serif](./ui-design/botanical-organic-serif/)
+- [clay-design-system](./ui-design/clay-design-system/)
+- [corporate-trust-design-system](./ui-design/corporate-trust-design-system/)
+- [cyberpunk-glitch-design-system](./ui-design/cyberpunk-glitch-design-system/)
+- [flatline-design-system](./ui-design/flatline-design-system/)
+- [handcraft-paper-ui](./ui-design/handcraft-paper-ui/)
+- [industrial-skeuomorphism](./ui-design/industrial-skeuomorphism/)
+- [kinetic-typography-poster](./ui-design/kinetic-typography-poster/)
+- [lumen-design-system](./ui-design/lumen-design-system/)
+- [lumina-minimalist-modern](./ui-design/lumina-minimalist-modern/)
+- [luxury-editorial-design-system](./ui-design/luxury-editorial-design-system/)
+- [material-you-showcase](./ui-design/material-you-showcase/)
+- [maximalism-dopamine-system](./ui-design/maximalism-dopamine-system/)
+- [neo-brutalism-loud-system](./ui-design/neo-brutalism-loud-system/)
+- [neumorphism-soft-ui](./ui-design/neumorphism-soft-ui/)
+- [newsprint-editorial-press](./ui-design/newsprint-editorial-press/)
+- [playful-geometric-design-system](./ui-design/playful-geometric-design-system/)
+- [retro-90s-nostalgia-design-system](./ui-design/retro-90s-nostalgia-design-system/)
+- [scaffold-ready-splash](./ui-design/scaffold-ready-splash/)
+- [serif-editorial-design-system](./ui-design/serif-editorial-design-system/)
+- [swiss-design-system](./ui-design/swiss-design-system/)
+- [vaporwave-outrun-design-system](./ui-design/vaporwave-outrun-design-system/)
+- [verdant-organic-design-system](./ui-design/verdant-organic-design-system/)

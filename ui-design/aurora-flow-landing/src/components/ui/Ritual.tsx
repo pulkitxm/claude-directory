@@ -13,7 +13,7 @@ const STEPS = [
 		icon: Compass,
 		marker: "01",
 		title: "Set one intention",
-		body: "Name the single thing this block is for. Tide hides everything else, picks a soundscape to match the work, and starts the clock — no setup, no decisions.",
+		body: "Name the single thing this block is for. Tide hides everything else, picks a soundscape to match the work, and starts the clock ,  no setup, no decisions.",
 		aside: "Average setup: 9 seconds",
 	},
 	{
@@ -51,7 +51,7 @@ export function Ritual() {
 				viewport={{ once: true, margin: "-100px" }}
 				className="relative mt-16 space-y-10"
 			>
-				{/* the flowing connector */}
+				{}
 				<span
 					aria-hidden="true"
 					className="absolute left-[27px] top-4 hidden h-[calc(100%-2rem)] w-px bg-gradient-to-b from-tide/60 via-coral/30 to-transparent sm:block"

@@ -1,18 +1,9 @@
-# Obsidian Lacquer — Cinematic Automotive Detailing Studio Landing Page (Vanilla HTML/CSS/JS)
+# Obsidian Lacquer : Cinematic Automotive Detailing Studio Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore cinematic automotive detailing studio landing page (vanilla html/css/js).
 
-A multi-section landing page for Obsidian Lacquer, a fictional high-end automotive detailing and paint-protection studio, built on an "Obsidian Lacquer" design language — a dark, cinematic, showroom-floor aesthetic: wet-look black paint under a single raking light, a scalpel of vermilion red for energy, and pristine editorial type (Playfair Display italic wordmark, Bricolage Grotesque/Inter Tight). Sections include a fixed backdrop-blur navbar, a full-viewport hero with Ken-Burns/parallax background, an asymmetric 12-column services grid, a hover-reveal process section, testimonials, a snap-scroll before/after gallery driven by arrow buttons, a pricing section with monthly/yearly toggle, and a final CTA — with a custom dark scrollbar and `prefers-reduced-motion` support, self-contained and offline-runnable.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

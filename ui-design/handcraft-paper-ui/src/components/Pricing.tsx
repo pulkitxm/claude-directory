@@ -89,7 +89,7 @@ export function Pricing() {
 								transitionDelay: `${i * 110}ms`,
 							}}
 						>
-							{/* dashed circle overlay highlighting the popular tier (desktop) */}
+							{}
 							{t.popular && (
 								<svg
 									aria-hidden

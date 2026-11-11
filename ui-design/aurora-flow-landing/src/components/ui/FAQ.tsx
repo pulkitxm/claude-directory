@@ -11,7 +11,7 @@ const QA = [
 	},
 	{
 		q: "What makes the soundscapes different from a playlist?",
-		a: "They're generated in real time, not recorded. A bed never repeats the same sequence, so your ear never learns the pattern and stops noticing it — the way a real harbor or rainstorm never loops. Twelve of them, each tuned to a kind of work.",
+		a: "They're generated in real time, not recorded. A bed never repeats the same sequence, so your ear never learns the pattern and stops noticing it ,  the way a real harbor or rainstorm never loops. Twelve of them, each tuned to a kind of work.",
 	},
 	{
 		q: "Do I need to wear headphones?",
@@ -23,7 +23,7 @@ const QA = [
 	},
 	{
 		q: "Can my whole team use it?",
-		a: "Yes — the Fleet plan adds shared quiet hours and a focus rhythm board, so a team can protect each other's deep-work time without a single extra meeting about it.",
+		a: "Yes ,  the Fleet plan adds shared quiet hours and a focus rhythm board, so a team can protect each other's deep-work time without a single extra meeting about it.",
 	},
 ];
 

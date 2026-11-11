@@ -10,16 +10,16 @@ const STEPS = [
 	{
 		n: "02",
 		title: "Open the surface",
-		body: "Hit ⌘K from anywhere — your editor, your terminal, your phone. The whole platform fits in one palette.",
+		body: "Hit ⌘K from anywhere ,  your editor, your terminal, your phone. The whole platform fits in one palette.",
 	},
 	{
 		n: "03",
 		title: "Ship, watch, sleep",
-		body: "Deploy streams a live trace. If p99 drifts, Aperture pages you with the exact function — or rolls back itself.",
+		body: "Deploy streams a live trace. If p99 drifts, Aperture pages you with the exact function ,  or rolls back itself.",
 	},
 ];
 
-/** A small, syntax-tinted code sample rendered as styled spans. */
+
 function CodeSample() {
 	return (
 		<pre className="overflow-x-auto p-5 font-mono text-[12.5px] leading-relaxed md:p-6 md:text-[13px]">
@@ -68,7 +68,7 @@ function CodeSample() {
 export function Workflow() {
 	return (
 		<section id="workflow" className="section-y relative">
-			{/* faint top hairline to separate the section in the dark */}
+			{}
 			<div className="container-x">
 				<div className="hairline mb-20 opacity-70 md:mb-28" />
 
@@ -80,9 +80,9 @@ export function Workflow() {
 				/>
 
 				<div className="mt-16 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-					{/* steps */}
+					{}
 					<ol className="relative flex flex-col">
-						{/* vertical guide line */}
+						{}
 						<span className="absolute left-[26px] top-2 h-[calc(100%-3rem)] w-px bg-gradient-to-b from-accent/40 via-white/10 to-transparent" />
 						{STEPS.map((s, i) => (
 							<Reveal
@@ -113,7 +113,7 @@ export function Workflow() {
 						))}
 					</ol>
 
-					{/* code panel */}
+					{}
 					<Reveal delay={120}>
 						<div className="relative">
 							<div className="absolute -inset-6 -z-10 rounded-[2rem] bg-accent/[0.05] blur-3xl" />

@@ -20,7 +20,7 @@ export function ProductDetail() {
 				ref={ref}
 				className="mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-2"
 			>
-				{/* ---- Copy with drop-cap ---- */}
+				{}
 				<div
 					className="transition-all duration-500"
 					style={{
@@ -42,8 +42,8 @@ export function ProductDetail() {
 						>
 							S
 						</span>
-						cribbly keeps the good parts of a physical whiteboard — the speed,
-						the mess, the permission to be wrong — and quietly removes the bad
+						cribbly keeps the good parts of a physical whiteboard ,  the speed,
+						the mess, the permission to be wrong ,  and quietly removes the bad
 						ones. Notes don't fall off. Markers don't dry out. And when the wall
 						fills up, it just gets bigger. Pan out and your whole quarter of
 						thinking is still right there, exactly where you left it.
@@ -54,7 +54,7 @@ export function ProductDetail() {
 					</p>
 				</div>
 
-				{/* ---- Sticky-note checklist card ---- */}
+				{}
 				<div
 					className="relative transition-all duration-500"
 					style={{
@@ -63,7 +63,7 @@ export function ProductDetail() {
 						transitionDelay: "120ms",
 					}}
 				>
-					{/* post-it yellow sticky-note tag on the card */}
+					{}
 					<span
 						className="absolute -left-3 -top-5 z-10 -rotate-6 border-2 border-ink bg-postit px-4 py-1.5 font-[var(--font-marker)] text-lg shadow-[var(--shadow-hard-sm)]"
 						style={{ borderRadius: radius.wobblyMd }}

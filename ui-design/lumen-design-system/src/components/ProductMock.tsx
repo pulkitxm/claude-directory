@@ -14,17 +14,13 @@ const METRICS = [
 	{ label: "A11y score", value: "100", sub: "axe-core" },
 ];
 
-/**
- * An elevated "mock interface" surface that demonstrates the system's
- * background-elevated treatment, multi-layer shadow, inner highlight, and a
- * slow scan-line that reads like a live application warming up.
- */
+
 export function ProductMock() {
 	const reduced = usePrefersReducedMotion();
 
 	return (
 		<div className="edge-hi relative overflow-hidden rounded-2xl border border-white/[0.08] bg-bg-elevated shadow-card-hover">
-			{/* Window chrome */}
+			{}
 			<div className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-3">
 				<span className="h-3 w-3 rounded-full bg-white/15" />
 				<span className="h-3 w-3 rounded-full bg-white/15" />
@@ -38,7 +34,7 @@ export function ProductMock() {
 			</div>
 
 			<div className="grid grid-cols-[180px_1fr] max-[640px]:grid-cols-1">
-				{/* Sidebar */}
+				{}
 				<aside className="hidden flex-col gap-1 border-r border-white/[0.06] p-3 sm:flex">
 					{NAV_ROWS.map((r) => (
 						<div
@@ -69,9 +65,9 @@ export function ProductMock() {
 					</div>
 				</aside>
 
-				{/* Main panel */}
+				{}
 				<div className="relative p-4 sm:p-6">
-					{/* slow vertical scan line */}
+					{}
 					{!reduced && (
 						<div
 							aria-hidden
@@ -96,7 +92,7 @@ export function ProductMock() {
 						))}
 					</div>
 
-					{/* fake area chart */}
+					{}
 					<div className="mt-4 rounded-xl border border-white/[0.06] bg-bg-deep/40 p-4">
 						<div className="mb-3 flex items-center justify-between">
 							<span className="text-[13px] font-medium text-fg">

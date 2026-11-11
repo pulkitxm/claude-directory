@@ -1,17 +1,10 @@
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 
-// Inline SVG fractal-noise texture (data URI) — keeps the project self-contained.
+// Inline SVG fractal-noise texture (data URI) ,  keeps the project self-contained.
 const NOISE_URI =
 	"url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
-/**
- * The fixed, four-layer ambient background that sits behind the whole page:
- *   1. radial base gradient (top-center vertical depth)
- *   2. animated, heavily-blurred gradient "light pools"
- *   3. fractal noise texture (anti-banding, tactile)
- *   4. 64px technical grid overlay
- * Floating motion is disabled under prefers-reduced-motion.
- */
+
 export function AmbientBackground() {
 	const reduced = usePrefersReducedMotion();
 	const floatA = reduced ? "" : "animate-float-a";
@@ -24,10 +17,10 @@ export function AmbientBackground() {
 			aria-hidden
 			className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
 		>
-			{/* Layer 1 — base radial gradient. */}
+			{}
 			<div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#0a0a0f_0%,#050506_50%,#020203_100%)]" />
 
-			{/* Layer 3 — animated gradient blobs (light pools). */}
+			{}
 			<div
 				className={`absolute -top-[28rem] left-1/2 h-[44rem] w-[58rem] -translate-x-1/2 rounded-full blur-[150px] ${floatA}`}
 				style={{
@@ -57,16 +50,16 @@ export function AmbientBackground() {
 				}}
 			/>
 
-			{/* Layer 4 — 64px grid overlay. */}
+			{}
 			<div className="bg-grid absolute inset-0 opacity-[0.02] [mask-image:radial-gradient(ellipse_at_center,black_0%,transparent_85%)]" />
 
-			{/* Layer 2 — fractal noise. */}
+			{}
 			<div
 				className="absolute inset-0 opacity-[0.015] mix-blend-soft-light"
 				style={{ backgroundImage: NOISE_URI, backgroundSize: "200px 200px" }}
 			/>
 
-			{/* Long downward vignette so content the bottom dissolves into the deep. */}
+			{}
 			<div className="absolute inset-x-0 bottom-0 h-80 bg-gradient-to-t from-bg-deep to-transparent" />
 		</div>
 	);

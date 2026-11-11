@@ -1,12 +1,4 @@
-/* ============================================================================
-   VERDANT — a Botanical / Organic Serif design-system showcase, rendered as a
-   living wellness + ceramics landing page.
 
-   The page is assembled from the primitives in ui.tsx and the content in
-   data.ts. Every visual rule (arch imagery, paper grain, Playfair italics,
-   staggered grid, terracotta hovers, vine dividers, soft halos, eased reveals)
-   is expressed here through centralized tokens — never one-off hex/shadows.
-   ========================================================================== */
 
 import { useEffect, useRef, useState } from "react";
 import {
@@ -47,9 +39,9 @@ import {
 	useCountUp,
 } from "./ui";
 
-/* ========================================================================== */
-/* Paper grain — the mandatory, soul-giving texture. Fixed, full-screen.       */
-/* ========================================================================== */
+
+
+
 function PaperGrain() {
 	return (
 		<div
@@ -64,9 +56,9 @@ function PaperGrain() {
 	);
 }
 
-/* ========================================================================== */
-/* Brand mark                                                                  */
-/* ========================================================================== */
+
+
+
 function Wordmark({ tone = "forest" }: { tone?: "forest" | "paper" }) {
 	const color = tone === "paper" ? "text-paper" : "text-forest";
 	const accent = tone === "paper" ? "text-sage-soft" : "text-sage";
@@ -74,7 +66,7 @@ function Wordmark({ tone = "forest" }: { tone?: "forest" | "paper" }) {
 		<a
 			href="#top"
 			className={`group inline-flex items-center gap-2.5 ${color}`}
-			aria-label="Verdant — home"
+			aria-label="Verdant ,  home"
 		>
 			<Leaf
 				strokeWidth={1.5}
@@ -89,9 +81,9 @@ function Wordmark({ tone = "forest" }: { tone?: "forest" | "paper" }) {
 	);
 }
 
-/* ========================================================================== */
-/* Navbar — desktop horizontal nav + full-screen mobile overlay                */
-/* ========================================================================== */
+
+
+
 function Navbar() {
 	const [open, setOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
@@ -163,7 +155,7 @@ function Navbar() {
 				</button>
 			</div>
 
-			{/* Mobile overlay — slides down from the top with a backdrop. */}
+			{}
 			<div
 				className={`fixed inset-0 z-50 md:hidden ${open ? "" : "pointer-events-none"}`}
 				aria-hidden={!open}
@@ -218,13 +210,13 @@ function Navbar() {
 	);
 }
 
-/* ========================================================================== */
-/* Hero — overlapping serif headline, arch image, floating quote card          */
-/* ========================================================================== */
+
+
+
 function Hero() {
 	return (
 		<section id="top" className="relative overflow-hidden px-5 pt-32 sm:px-8">
-			{/* soft ambient blobs behind everything */}
+			{}
 			<div
 				aria-hidden
 				className="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-sage/15 blur-3xl"
@@ -235,7 +227,7 @@ function Hero() {
 			/>
 
 			<div className="mx-auto grid max-w-7xl items-center gap-12 pt-6 md:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-				{/* Left: copy */}
+				{}
 				<div className="relative z-10">
 					<div className="animate-bloom" style={{ animationDelay: "0.05s" }}>
 						<Eyebrow>Slow-grown · Hand-potted</Eyebrow>
@@ -253,7 +245,7 @@ function Hero() {
 						style={{ animationDelay: "0.3s" }}
 					>
 						A seasonal ritual of slow-grown plants and hand-thrown vessels,
-						delivered from our glasshouse to your windowsill — warm, tactile,
+						delivered from our glasshouse to your windowsill ,  warm, tactile,
 						and quietly alive.
 					</p>
 					<div
@@ -266,7 +258,7 @@ function Hero() {
 						</ButtonLink>
 					</div>
 
-					{/* tiny trust row */}
+					{}
 					<div
 						className="animate-bloom mt-12 flex items-center gap-4"
 						style={{ animationDelay: "0.6s" }}
@@ -294,20 +286,20 @@ function Hero() {
 					</div>
 				</div>
 
-				{/* Right: arch image + floating quote card */}
+				{}
 				<div className="relative">
 					<div
 						className="animate-bloom relative mx-auto aspect-[3/4] w-full max-w-md md:aspect-[4/5]"
 						style={{ animationDelay: "0.25s" }}
 					>
 						<ArchImage
-							src="/images/hero.svg"
+							src="./images/original-visual.svg"
 							alt="An illustrated arched greenhouse window filled with light and a grand potted plant."
 							priority
 							className="h-full w-full"
 						/>
 
-						{/* floating glass quote card, slightly overlapping the image */}
+						{}
 						<div className="absolute -bottom-7 -left-5 w-60 rounded-3xl border border-stone/80 bg-paper/70 p-5 shadow-bloom backdrop-blur-md sm:-left-10">
 							<Quote
 								size={22}
@@ -319,11 +311,11 @@ function Hero() {
 								“To plant a garden is to believe in tomorrow.”
 							</p>
 							<p className="mt-2 text-xs uppercase tracking-[0.2em] text-forest/50">
-								— Audrey Hepburn
+								,  Audrey Hepburn
 							</p>
 						</div>
 
-						{/* small swaying leaf accent, top-right */}
+						{}
 						<div
 							className="animate-sway absolute -right-3 -top-3 hidden rounded-full border border-stone bg-clay-soft p-3 shadow-soft sm:block"
 							aria-hidden
@@ -334,15 +326,15 @@ function Hero() {
 				</div>
 			</div>
 
-			{/* logo / values marquee */}
+			{}
 			<Marquee />
 		</section>
 	);
 }
 
-/* ========================================================================== */
-/* Marquee — quiet, slow scroll of brand values                                */
-/* ========================================================================== */
+
+
+
 function Marquee() {
 	const items = [
 		"Peat-free soil",
@@ -383,9 +375,9 @@ function Marquee() {
 	);
 }
 
-/* ========================================================================== */
-/* Rituals — staggered feature grid (every 2nd card drops on md+)              */
-/* ========================================================================== */
+
+
+
 function Rituals() {
 	return (
 		<section id="rituals" className="px-5 py-24 sm:px-8 md:py-32">
@@ -399,7 +391,7 @@ function Rituals() {
 							not haste.
 						</>
 					}
-					intro="Six unhurried practices behind every plant that reaches your door — the small, deliberate acts that let green things settle and thrive."
+					intro="Six unhurried practices behind every plant that reaches your door ,  the small, deliberate acts that let green things settle and thrive."
 				/>
 
 				<div className="mt-16 grid gap-6 sm:grid-cols-2 md:mt-20 md:grid-cols-3 md:gap-8">
@@ -436,9 +428,9 @@ function Rituals() {
 	);
 }
 
-/* ========================================================================== */
-/* Collections — arched image cards (the "atelier")                            */
-/* ========================================================================== */
+
+
+
 function Collections() {
 	return (
 		<section id="atelier" className="bg-cream px-5 py-24 sm:px-8 md:py-32">
@@ -503,9 +495,9 @@ function Collections() {
 	);
 }
 
-/* ========================================================================== */
-/* Stats band — count-up numbers in a clay panel                               */
-/* ========================================================================== */
+
+
+
 function StatItem({
 	value,
 	suffix,
@@ -535,7 +527,7 @@ function Stats() {
 			<div className="mx-auto max-w-7xl">
 				<Reveal>
 					<div className="relative overflow-hidden rounded-[2.5rem] border border-stone bg-clay/45 px-6 py-16 shadow-medium sm:px-12">
-						{/* faint arch watermark */}
+						{}
 						<div
 							aria-hidden
 							className="pointer-events-none absolute -right-16 -top-20 h-72 w-72 rounded-full border border-sage/30"
@@ -556,9 +548,9 @@ function Stats() {
 	);
 }
 
-/* ========================================================================== */
-/* Story — overlapping headline + arch image + checklist                       */
-/* ========================================================================== */
+
+
+
 function Story() {
 	const points = [
 		"Grown in our own peat-free glasshouse",
@@ -569,15 +561,15 @@ function Story() {
 	return (
 		<section className="px-5 py-24 sm:px-8 md:py-32">
 			<div className="mx-auto grid max-w-7xl items-center gap-14 md:grid-cols-2 md:gap-20">
-				{/* image with overlapping headline */}
+				{}
 				<Reveal className="relative">
 					<ArchImage
-						src="/images/story.svg"
+						src="./images/original-visual.svg"
 						alt="An illustrated ceramics-studio windowsill lined with hand-thrown pots and plants."
 						rounded="soft"
 						className="aspect-[5/6] w-full"
 					/>
-					{/* a small badge overlapping the image's lower edge */}
+					{}
 					<div className="absolute -bottom-6 right-6 flex items-center gap-3 rounded-full border border-stone bg-paper/80 px-5 py-3 shadow-bloom backdrop-blur-md">
 						<MapPin size={18} strokeWidth={1.5} className="text-terracotta" />
 						<span className="text-sm font-medium text-forest">
@@ -628,9 +620,9 @@ function Story() {
 	);
 }
 
-/* ========================================================================== */
-/* Pricing — memberships, the middle plan featured (forest, lifted)            */
-/* ========================================================================== */
+
+
+
 function Pricing() {
 	return (
 		<section id="pricing" className="bg-cream px-5 py-24 sm:px-8 md:py-32">
@@ -758,9 +750,9 @@ function Pricing() {
 	);
 }
 
-/* ========================================================================== */
-/* Testimonials — soft clay cards with arch-ish avatars                        */
-/* ========================================================================== */
+
+
+
 function Testimonials() {
 	return (
 		<section className="px-5 py-24 sm:px-8 md:py-32">
@@ -814,9 +806,9 @@ function Testimonials() {
 	);
 }
 
-/* ========================================================================== */
-/* Journal — blog cards: lift card, scale image, arrow translates right        */
-/* ========================================================================== */
+
+
+
 function Journal() {
 	return (
 		<section id="journal" className="bg-cream px-5 py-24 sm:px-8 md:py-32">
@@ -888,9 +880,9 @@ function Journal() {
 	);
 }
 
-/* ========================================================================== */
-/* FAQ — accordion with smooth height + opacity, sage focus, rotating plus      */
-/* ========================================================================== */
+
+
+
 function FaqItem({
 	q,
 	a,
@@ -980,7 +972,7 @@ function Faq() {
 								>
 									hello@verdant.studio
 								</a>{" "}
-								— a real person, usually within a day.
+								,  a real person, usually within a day.
 							</p>
 						</div>
 					</Reveal>
@@ -1005,9 +997,9 @@ function Faq() {
 	);
 }
 
-/* ========================================================================== */
-/* CTA + newsletter — arch-topped forest panel with underlined input           */
-/* ========================================================================== */
+
+
+
 function CtaNewsletter() {
 	const [email, setEmail] = useState("");
 	const [sent, setSent] = useState(false);
@@ -1015,7 +1007,7 @@ function CtaNewsletter() {
 		<section className="px-5 pb-24 sm:px-8 md:pb-32">
 			<Reveal>
 				<div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-forest-deep bg-forest px-6 py-20 text-center text-paper shadow-lift sm:px-12 md:py-28">
-					{/* decorative arch + leaves in the corners */}
+					{}
 					<div
 						aria-hidden
 						className="pointer-events-none absolute -left-20 -top-24 h-72 w-72 rounded-full border border-paper/10"
@@ -1083,7 +1075,7 @@ function CtaNewsletter() {
 						</form>
 						<p className="mt-4 text-sm text-paper/50" aria-live="polite">
 							{sent
-								? "You're on the list — watch for a little green hello."
+								? "You're on the list ,  watch for a little green hello."
 								: "Seasonal letters only. Unsubscribe with one tap."}
 						</p>
 					</div>
@@ -1093,9 +1085,9 @@ function CtaNewsletter() {
 	);
 }
 
-/* ========================================================================== */
-/* Footer — forest, 4-column, wordmark + groups + fine print                   */
-/* ========================================================================== */
+
+
+
 function Footer() {
 	return (
 		<footer className="border-t border-forest-deep/40 bg-forest-deep px-5 pb-12 pt-20 text-paper/80 sm:px-8">
@@ -1159,9 +1151,9 @@ function Footer() {
 	);
 }
 
-/* ========================================================================== */
-/* App                                                                         */
-/* ========================================================================== */
+
+
+
 export default function App() {
 	// Signal to the verifier that the React tree mounted & first paint is done.
 	useEffect(() => {

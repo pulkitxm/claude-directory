@@ -8,8 +8,7 @@ import {
 	type OrbHue,
 } from "./primitives";
 
-/* Three big numbered steps. Each number lives in a convex clay circle that
-   scales up on group-hover. A dashed connector threads them on desktop. */
+
 
 type Step = {
 	n: string;
@@ -32,7 +31,7 @@ const STEPS: Step[] = [
 		hue: "pink",
 		icon: <Combine size={26} />,
 		title: "Compose primitives",
-		body: "Reach for Card, Button, Input, IconOrb and Blobs. They already encode the clay physics — no one-off styling.",
+		body: "Reach for Card, Button, Input, IconOrb and Blobs. They already encode the clay physics ,  no one-off styling.",
 	},
 	{
 		n: "03",
@@ -71,7 +70,7 @@ export function HowItWorks() {
 				/>
 
 				<div className="relative mt-16">
-					{/* dashed connector (desktop) */}
+					{}
 					<div
 						aria-hidden
 						className="absolute left-[16%] right-[16%] top-12 hidden border-t-2 border-dashed border-clay-accent/25 md:block"

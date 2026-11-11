@@ -41,17 +41,13 @@ const socials = [
 	{ icon: Youtube, label: "YouTube" },
 ];
 
-/**
- * Grounding footer with a brand column, three link columns, and social icons
- * in moss-tinted round containers that fill on hover. A faint top border in
- * timber separates it from the page above.
- */
+
 export function Footer() {
 	return (
 		<footer className="relative border-t border-border/60 bg-background px-4 pb-10 pt-20 sm:px-6 lg:px-8">
 			<div className="mx-auto max-w-7xl">
 				<div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
-					{/* brand column */}
+					{}
 					<div className="max-w-sm">
 						<Logo />
 						<p className="mt-5 text-base leading-relaxed text-muted-foreground">
@@ -72,7 +68,7 @@ export function Footer() {
 						</div>
 					</div>
 
-					{/* link columns */}
+					{}
 					{columns.map((col) => (
 						<nav key={col.title} aria-label={col.title}>
 							<h3 className="font-serif text-base font-semibold text-foreground">

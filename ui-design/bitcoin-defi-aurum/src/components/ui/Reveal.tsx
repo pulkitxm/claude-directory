@@ -4,15 +4,12 @@ import { cn } from "@/lib/utils";
 interface RevealProps {
 	children: ReactNode;
 	className?: string;
-	/** Stagger delay in ms. */
+
 	delay?: number;
 	as?: "div" | "li" | "section";
 }
 
-/**
- * Lightweight scroll-reveal: fades + lifts content in once it enters the
- * viewport. Honors prefers-reduced-motion by rendering content immediately.
- */
+
 export function Reveal({
 	children,
 	className,

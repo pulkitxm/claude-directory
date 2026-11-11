@@ -12,7 +12,7 @@ const BENEFITS: Benefit[] = [
 	{
 		icon: <Palette size={26} />,
 		title: "Seeded color",
-		body: "Pick one color and Lumi derives a full tonal palette — primary, secondary, tertiary and every surface in between.",
+		body: "Pick one color and Lumi derives a full tonal palette ,  primary, secondary, tertiary and every surface in between.",
 	},
 	{
 		icon: <Layers size={26} />,
@@ -41,16 +41,14 @@ const BENEFITS: Benefit[] = [
 	},
 ];
 
-/* Benefits sits on a full-width PRIMARY container — the "use colored blocks
-   sparingly for emphasis" move. Cards are glass-morphism (white/10 +
-   backdrop-blur), layered over floating organic blur shapes. */
+
 export function Benefits() {
 	return (
 		<section
 			id="benefits"
 			className="on-color relative scroll-mt-20 overflow-hidden bg-[var(--color-md-primary)] py-20 text-[var(--color-md-on-primary)] sm:py-28"
 		>
-			{/* atmospheric depth */}
+			{}
 			<Blob
 				float="a"
 				className="-left-24 top-8 h-96 w-96 bg-[var(--color-md-tertiary)] opacity-40 mix-blend-screen"

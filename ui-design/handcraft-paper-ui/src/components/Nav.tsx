@@ -15,7 +15,7 @@ const LINKS = [
 export function Nav() {
 	const [open, setOpen] = useState(false);
 
-	/* Lock body scroll while the mobile sheet is open. */
+
 	useEffect(() => {
 		document.body.style.overflow = open ? "hidden" : "";
 		return () => {
@@ -33,7 +33,7 @@ export function Nav() {
 					<Logo />
 				</a>
 
-				{/* Desktop links with wavy underline on hover. */}
+				{}
 				<ul className="hidden items-center gap-7 md:flex">
 					{LINKS.map((l) => (
 						<li key={l.href}>
@@ -53,7 +53,7 @@ export function Nav() {
 					</LinkButton>
 				</div>
 
-				{/* Mobile hamburger */}
+				{}
 				<button
 					type="button"
 					aria-label={open ? "Close menu" : "Open menu"}
@@ -70,7 +70,7 @@ export function Nav() {
 				</button>
 			</nav>
 
-			{/* Mobile sheet — a pinned sticky-note stack of links. */}
+			{}
 			<div
 				className={cx(
 					"md:hidden",

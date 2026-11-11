@@ -10,7 +10,7 @@ const LOGOS = ["Northwind", "Quanta", "Vertex", "Helio", "Monarch"];
 export function Hero() {
 	return (
 		<section id="top" className="relative overflow-hidden pb-24 pt-36 md:pt-44">
-			{/* Atmospheric radial glows at the section corners */}
+			{}
 			<div
 				aria-hidden
 				className="pointer-events-none absolute -left-40 -top-24 h-[36rem] w-[36rem] rounded-full bg-accent/[0.07] blur-[150px]"
@@ -27,7 +27,7 @@ export function Hero() {
 					animate="visible"
 					className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8"
 				>
-					{/* Text column (subtly dominant) */}
+					{}
 					<div>
 						<motion.div variants={fadeInUp}>
 							<SectionLabel pulse>Now in public beta</SectionLabel>
@@ -51,7 +51,7 @@ export function Hero() {
 						>
 							Lumina turns raw product events into a single, calm overview.
 							Track the metrics that matter, surface insights automatically, and
-							ship with confidence — without drowning in dashboards.
+							ship with confidence ,  without drowning in dashboards.
 						</motion.p>
 
 						<motion.div
@@ -85,7 +85,7 @@ export function Hero() {
 						</motion.div>
 					</div>
 
-					{/* Animated abstract graphic — hidden on small screens */}
+					{}
 					<motion.div
 						variants={fadeInUp}
 						className="hidden lg:block"

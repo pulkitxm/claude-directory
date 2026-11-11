@@ -84,7 +84,7 @@ export function Testimonials() {
 								transitionDelay: `${i * 110}ms`,
 							}}
 						>
-							{/* speech bubble */}
+							{}
 							<div
 								className="relative border-2 border-ink bg-card p-6 shadow-[var(--shadow-hard)]"
 								style={{ borderRadius: radius.wobblyLg }}
@@ -106,7 +106,7 @@ export function Testimonials() {
 									“{q.body}”
 								</blockquote>
 
-								{/* geometric border-based tail extending past the card */}
+								{}
 								<span
 									className="absolute -bottom-[18px] left-10 h-0 w-0 border-l-[18px] border-r-[18px] border-t-[18px] border-l-transparent border-r-transparent border-t-ink"
 									aria-hidden

@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-/* Parse a display value like "99.99%", "12,000+", "4.9/5", "180+" into a
-   numeric target plus the prefix/suffix to re-wrap around the animated number,
-   preserving formatting (commas, decimals) on the way up. */
+
 function parse(display: string) {
 	const match = display.match(/-?[\d,]*\.?\d+/);
 	if (!match) return null;
@@ -33,8 +31,7 @@ const prefersReduced = () =>
 	typeof window !== "undefined" &&
 	window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-/* Count up to a formatted target once the element scrolls into view. Generic
-   over the element type so callers can attach the ref without a cast. */
+
 export function useCountUp<T extends HTMLElement = HTMLElement>(
 	display: string,
 	duration = 1500,

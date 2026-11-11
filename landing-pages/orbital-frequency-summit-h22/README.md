@@ -1,18 +1,9 @@
-# Orbital Frequency — Deep-Space Signals Summit Landing Page (HTML + CSS + Vanilla JS)
+# Orbital Frequency : Deep-Space Signals Summit Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore deep-space signals summit landing page (html + css + vanilla js).
 
-A multi-section landing page for Orbital Frequency, a fictional two-day deep-tech summit for aerospace engineers, ground-station operators, and signals-software hackers. The "Deep Signal" aesthetic uses an observatory-at-night visual language built around telemetry, radar sweeps, orbital rings, and mission-control readouts on a near-black backdrop with warm amber-gold and signal-green accents. Features rotating orbital rings, a sweeping radar cone, drifting star particles, a telemetry strip, live count-up stats, and a scroll-depth signal bar — all built with vanilla HTML, CSS custom properties, and JS.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

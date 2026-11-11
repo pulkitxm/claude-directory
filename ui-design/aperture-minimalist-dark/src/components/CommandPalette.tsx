@@ -41,20 +41,15 @@ const ROWS: Row[] = [
 	{ icon: Terminal, label: "Stream live logs", hint: "L", group: "Resources" },
 ];
 
-/** Faux deploy lines that stream after the user "runs" the top command. */
+
 const DEPLOY_LINES = [
 	"→ building image · linux/arm64",
 	"→ uploading 14 functions to 6 regions",
 	"→ warming edge cache · iad fra hnd",
-	"✓ deployed in 11.4s — aperture.sh/v412",
+	"✓ deployed in 11.4s ,  aperture.sh/v412",
 ];
 
-/**
- * An always-on, self-driving command palette mock. It cycles through a small
- * loop: a query types into the search field, the top result highlights, then a
- * deploy "runs" and streams log lines into a mono panel. Purely cosmetic and
- * non-interactive (aria-hidden) — it exists to sell the 2am-developer vibe.
- */
+
 export function CommandPalette({ className }: { className?: string }) {
 	const [typed, setTyped] = useState("");
 	const [active, setActive] = useState(0);
@@ -135,17 +130,17 @@ export function CommandPalette({ className }: { className?: string }) {
 				className,
 			)}
 		>
-			{/* window chrome */}
+			{}
 			<div className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-3">
 				<span className="h-2.5 w-2.5 rounded-full bg-white/15" />
 				<span className="h-2.5 w-2.5 rounded-full bg-white/15" />
 				<span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
 				<span className="ml-3 font-mono text-[11px] tracking-wide text-muted-foreground">
-					aperture — ⌘K
+					aperture ,  ⌘K
 				</span>
 			</div>
 
-			{/* search row */}
+			{}
 			<div className="flex items-center gap-3 border-b border-white/[0.06] px-4 py-3.5">
 				<Search size={16} strokeWidth={1.5} className="text-muted-foreground" />
 				<div className="flex flex-1 items-center font-mono text-sm text-foreground">
@@ -157,7 +152,7 @@ export function CommandPalette({ className }: { className?: string }) {
 				</span>
 			</div>
 
-			{/* results */}
+			{}
 			<div className="px-2 py-2">
 				{grouped.map(([group, rows]) => (
 					<div key={group} className="mb-1">
@@ -208,7 +203,7 @@ export function CommandPalette({ className }: { className?: string }) {
 				))}
 			</div>
 
-			{/* deploy log drawer */}
+			{}
 			<div
 				className={cn(
 					"overflow-hidden border-t border-white/[0.06] transition-all duration-500 ease-out-soft",

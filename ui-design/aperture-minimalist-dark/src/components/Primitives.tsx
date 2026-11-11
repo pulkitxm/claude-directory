@@ -7,10 +7,7 @@ import {
 import { cn } from "../lib/cn";
 import { useReveal } from "../lib/useReveal";
 
-/* ============================================================================
-   Reveal — fade-up wrapper. Composable so any section can opt into the
-   reveal-on-scroll motion with an optional stagger delay.
-   ========================================================================= */
+
 export function Reveal({
 	children,
 	className,
@@ -38,9 +35,7 @@ export function Reveal({
 	);
 }
 
-/* ============================================================================
-   Badge — pill with the signature pulsing amber dot.
-   ========================================================================= */
+
 export function Badge({
 	children,
 	className,
@@ -70,10 +65,7 @@ export function Badge({
 	);
 }
 
-/* ============================================================================
-   Button — primary / secondary / ghost variants from the design system.
-   Renders as <a> when href is provided, else <button>.
-   ========================================================================= */
+
 type ButtonVariant = "primary" | "secondary" | "ghost";
 
 const variantClass: Record<ButtonVariant, string> = {
@@ -119,10 +111,7 @@ export function Button({
 	);
 }
 
-/* ============================================================================
-   GlassCard — semi-transparent, backdrop-blurred surface. Opt into hover
-   lift via `interactive`, or amber emphasis via `highlight`.
-   ========================================================================= */
+
 export function GlassCard({
 	children,
 	className,
@@ -151,10 +140,7 @@ export function GlassCard({
 	);
 }
 
-/* ============================================================================
-   SectionHeading — eyebrow + display headline + optional lede, centered.
-   Keeps every section's header rhythm identical.
-   ========================================================================= */
+
 export function SectionHeading({
 	eyebrow,
 	title,

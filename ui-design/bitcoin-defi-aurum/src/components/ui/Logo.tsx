@@ -1,10 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/**
- * AURUM mark — an orbital node: an inner gradient-filled hexagonal block
- * (a "block" in the chain) ringed by an orbiting dashed circle, echoing the
- * hero orb at glyph scale.
- */
+
 export function Logo({ className }: { className?: string }) {
 	return (
 		<svg
@@ -20,7 +16,7 @@ export function Logo({ className }: { className?: string }) {
 					<stop offset="1" stopColor="#EA580C" />
 				</linearGradient>
 			</defs>
-			{/* orbiting ring */}
+			{}
 			<circle
 				cx="24"
 				cy="24"
@@ -31,7 +27,7 @@ export function Logo({ className }: { className?: string }) {
 				strokeDasharray="3 5"
 				opacity="0.7"
 			/>
-			{/* hex block */}
+			{}
 			<path
 				d="M24 8 L37 15.5 L37 32.5 L24 40 L11 32.5 L11 15.5 Z"
 				fill="url(#aurum-mark)"
@@ -39,7 +35,7 @@ export function Logo({ className }: { className?: string }) {
 				stroke="url(#aurum-mark)"
 				strokeWidth="1.5"
 			/>
-			{/* A monogram */}
+			{}
 			<path
 				d="M18.5 31 L24 17 L29.5 31 M20.7 26.4 L27.3 26.4"
 				fill="none"

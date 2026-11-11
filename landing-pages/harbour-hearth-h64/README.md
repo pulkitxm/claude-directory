@@ -1,18 +1,9 @@
-# Harbour & Hearth — Senior Living Community Landing Page (HTML, CSS, Vanilla JS)
+# Harbour & Hearth : Senior Living Community Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore senior living community landing page (html, css, vanilla js).
 
-A full, multi-section, responsive marketing landing page for a fictional high-end senior-living community built around the **Warm Sanctuary** aesthetic — the feeling of a sun-filled Craftsman home at golden hour, pairing clinical expertise with heart-centered compassion on a soft oat-cream canvas with a single burnt-terracotta accent. Sections include a floating pill navbar, a full-viewport hero with a glass feature card, a polaroid-cluster about section, alternating care-service rows, a count-up stats band, a hover-pausing values marquee, a scroll-snap testimonial slider, and a team grid — all in pure HTML, CSS, and vanilla JS with Inter Tight vendored as WOFF2 and all assets local.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

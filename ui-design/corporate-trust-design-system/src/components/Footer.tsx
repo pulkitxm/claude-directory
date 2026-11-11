@@ -16,8 +16,7 @@ const SOCIALS: { label: string; icon: LucideIcon; href: string }[] = [
 	{ label: "Northwind on YouTube", icon: Youtube, href: "#" },
 ];
 
-/* Dark footer. Columns collapse 4 → 2 → 1 with the viewport. Social icons follow
-   the spec's slate-400 → indigo-400 hover treatment. */
+
 export function Footer() {
 	return (
 		<footer className="on-dark relative overflow-hidden bg-slate-900 text-slate-300">
@@ -27,7 +26,7 @@ export function Footer() {
 			/>
 			<Shell className="py-14 lg:py-16">
 				<div className="grid gap-10 lg:grid-cols-[1.4fr_2.6fr]">
-					{/* Brand + newsletter */}
+					{}
 					<div>
 						<Logo tone="dark" />
 						<p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
@@ -54,7 +53,7 @@ export function Footer() {
 						</form>
 					</div>
 
-					{/* Link columns */}
+					{}
 					<div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
 						{FOOTER_COLUMNS.map((col) => (
 							<nav key={col.title} aria-label={col.title}>
@@ -76,7 +75,7 @@ export function Footer() {
 					</div>
 				</div>
 
-				{/* Bottom bar */}
+				{}
 				<div className="mt-12 flex flex-col items-center gap-5 border-t border-white/10 pt-8 sm:flex-row sm:justify-between">
 					<p className="text-sm text-slate-500">
 						© {new Date().getFullYear()} Northwind, Inc. All rights reserved.

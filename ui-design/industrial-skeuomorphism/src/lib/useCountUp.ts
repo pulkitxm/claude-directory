@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Animate a number from 0 -> target the first time the element scrolls into
- * view. Respects prefers-reduced-motion (jumps straight to the target).
- */
+
 export function useCountUp(target: number, duration = 1400) {
 	const [value, setValue] = useState(0);
 	const ref = useRef<HTMLSpanElement | null>(null);

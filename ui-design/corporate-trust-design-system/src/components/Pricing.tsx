@@ -12,8 +12,7 @@ import {
 import { PRICING } from "../lib/content";
 import { fadeUp } from "../lib/motion";
 
-/* Three tiers, center tier highlighted: it rests larger (md:scale-105), carries
-   the gradient ring + a "Most popular" badge, and inverts to a gradient ground. */
+
 export function Pricing() {
 	return (
 		<Section id="pricing" className="overflow-hidden">

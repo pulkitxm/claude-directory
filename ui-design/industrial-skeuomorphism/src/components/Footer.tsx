@@ -39,7 +39,7 @@ export function Footer() {
 					style={{ boxShadow: "var(--shadow-card)" }}
 				>
 					<div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-						{/* brand col */}
+						{}
 						<div className="flex flex-col items-start gap-4">
 							<Logo />
 							<p className="max-w-[34ch] text-sm leading-relaxed text-label">
@@ -59,7 +59,7 @@ export function Footer() {
 							</span>
 						</div>
 
-						{/* link columns */}
+						{}
 						{COLUMNS.map((col) => (
 							<nav key={col.title} aria-label={col.title}>
 								<h3 className="stamp mb-4 text-[0.62rem] text-label/80">

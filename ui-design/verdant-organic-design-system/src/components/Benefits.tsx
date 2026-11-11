@@ -6,19 +6,13 @@ import { Button } from "./Button";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 
-/**
- * A reasons-to-believe section on a deep moss field — one of the design
- * system's dark "varied section backgrounds". The lifestyle illustration is
- * clipped into a complex organic blob mask (not a rectangle), and the benefits
- * read as a checklist with moss-on-mist checkmarks. A soft grain overlay keeps
- * the paper texture alive against the dark fill.
- */
+
 export function Benefits() {
 	const reduced = useReducedMotion();
 	return (
 		<section className="relative overflow-hidden bg-primary px-4 py-32 text-primary-foreground sm:px-6 lg:px-8">
 			<div className="grain-soft" />
-			{/* faint blob washes within the dark field */}
+			{}
 			<div
 				aria-hidden
 				className="pointer-events-none absolute -right-24 top-10 h-96 w-96 rounded-full bg-secondary/25 blur-3xl"
@@ -29,7 +23,7 @@ export function Benefits() {
 			/>
 
 			<div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
-				{/* image with organic mask */}
+				{}
 				<Reveal className="order-2 lg:order-1">
 					<div className="relative mx-auto w-full max-w-md">
 						<div
@@ -38,7 +32,7 @@ export function Benefits() {
 						>
 							<SteamingCup className="aspect-square h-auto w-full" />
 						</div>
-						{/* floating stat chip */}
+						{}
 						<div className="absolute -bottom-4 -right-2 rounded-2xl border border-white/20 bg-primary/80 px-5 py-3 shadow-float backdrop-blur-sm sm:-right-5">
 							<p className="font-serif text-2xl font-bold text-primary-foreground">
 								1.4k
@@ -50,7 +44,7 @@ export function Benefits() {
 					</div>
 				</Reveal>
 
-				{/* copy + checklist */}
+				{}
 				<div className="order-1 max-w-2xl lg:order-2">
 					<Reveal>
 						<Eyebrow onDark>Why it tastes different</Eyebrow>
@@ -62,7 +56,7 @@ export function Benefits() {
 					</Reveal>
 					<Reveal delay={0.14}>
 						<p className="mt-5 text-lg leading-relaxed text-primary-foreground/80">
-							We measure quality the old way — by what we leave out, and what we
+							We measure quality the old way ,  by what we leave out, and what we
 							put back. No dust, no fillers, no flavourings, and a meadow that's
 							richer for our visit.
 						</p>

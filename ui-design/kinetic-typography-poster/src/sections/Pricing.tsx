@@ -3,12 +3,7 @@ import { SectionHeading } from "../components/SectionHeading";
 import { Button } from "../components/Button";
 import { PRICING } from "../content";
 
-/**
- * Three equal pricing columns connected with gap-px hairlines. The featured
- * tier ships permanently inverted (acid fill, black text); the others hard-flip
- * to acid on hover. Prices are rendered at massive scale so the number reads as
- * a graphic, with a small superscript currency mark.
- */
+
 export function Pricing() {
 	return (
 		<section id="pricing" className="border-b-2 border-line py-24 md:py-32">

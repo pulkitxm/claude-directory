@@ -1,9 +1,4 @@
-/**
- * Design tokens — TypeScript mirror of the CSS custom properties in index.css.
- * Components that need token *values* in JS (the swatch gallery, the SVG
- * illustration, decorative shapes) import from here so there is still a single
- * conceptual source of truth rather than scattered hex literals.
- */
+
 
 export const palette = {
 	background: "#FFFDF5",
@@ -21,7 +16,7 @@ export const palette = {
 	ring: "#8B5CF6",
 } as const;
 
-/** The three "confetti" pops, used rotationally for decoration + emphasis. */
+
 export const confettiColors = [
 	palette.accent,
 	palette.secondary,
@@ -47,7 +42,7 @@ export const radii: { name: string; value: string; px: number }[] = [
 	{ name: "full", value: "9999px", px: 9999 },
 ];
 
-/** Tailwind text-* steps mapped to the 1.25 (Major Third) scale. */
+
 export const typeScale: { step: string; size: string; sample: string }[] = [
 	{ step: "6", size: "3.815rem", sample: "Display" },
 	{ step: "4", size: "2.441rem", sample: "Heading" },

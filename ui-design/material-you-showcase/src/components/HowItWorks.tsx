@@ -20,7 +20,7 @@ const STEPS: Step[] = [
 		n: "02",
 		icon: <Layers size={24} />,
 		title: "Watch the tones bloom",
-		body: "Lumi expands the seed into the full MD3 tonal palette and maps every role — surfaces, containers, on-colors — automatically.",
+		body: "Lumi expands the seed into the full MD3 tonal palette and maps every role ,  surfaces, containers, on-colors ,  automatically.",
 	},
 	{
 		n: "03",
@@ -30,9 +30,7 @@ const STEPS: Step[] = [
 	},
 ];
 
-/* How It Works: numbered badges where a hidden tertiary glow reveals on hover
-   (opacity-0 -> group-hover:opacity-40). A soft connecting line threads the
-   steps on desktop. */
+
 export function HowItWorks() {
 	return (
 		<section
@@ -47,7 +45,7 @@ export function HowItWorks() {
 				/>
 
 				<div className="relative mt-16">
-					{/* connecting line behind the cards (desktop) */}
+					{}
 					<div
 						aria-hidden
 						className="absolute left-0 right-0 top-9 hidden h-0.5 bg-[var(--color-md-outline-variant)] lg:block"
@@ -57,7 +55,7 @@ export function HowItWorks() {
 							<Reveal as="li" key={s.n} delay={i * 110}>
 								<article className="group relative h-full rounded-[var(--radius-md-lg)] bg-[var(--color-md-container)] p-8 shadow-[var(--shadow-md-1)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-1.5 hover:shadow-[var(--shadow-md-2)]">
 									<div className="relative inline-grid place-items-center">
-										{/* hidden glow halo, revealed on hover */}
+										{}
 										<span
 											aria-hidden
 											className="absolute h-16 w-16 rounded-full bg-[var(--color-md-tertiary)] opacity-0 blur-2xl transition-opacity duration-300 ease-[cubic-bezier(0.2,0,0,1)] group-hover:opacity-40"

@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Scroll-reveal hook. Returns a ref to attach and a boolean once the element has
- * entered the viewport (one-shot). Pairs with the `.clay-reveal` /
- * `.clay-pop` CSS classes that animate when `data-shown="true"`.
- *
- * Centralized so every section animates in with one consistent motion instead
- * of each component re-implementing an IntersectionObserver.
- */
+
 export function useReveal<T extends HTMLElement = HTMLDivElement>(options?: {
 	threshold?: number;
 	rootMargin?: string;
@@ -19,7 +12,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(options?: {
 		const el = ref.current;
 		if (!el) return;
 
-		// Respect reduced motion — show immediately, never animate.
+		// Respect reduced motion ,  show immediately, never animate.
 		const prefersReduced = window.matchMedia(
 			"(prefers-reduced-motion: reduce)",
 		).matches;

@@ -1,9 +1,4 @@
-/**
- * Blobby — a working landing page that fully expresses the Playful Geometric
- * design system. Organisms here are composed entirely from the primitives in
- * ui.tsx and the ornaments in shapes.tsx, reading every value from the tokens
- * in index.css / tokens.ts. Concept: "stable grid, wild decoration".
- */
+
 import { useEffect, useId, useRef, useState } from "react";
 import {
 	Menu,
@@ -55,9 +50,7 @@ import {
 	type Tone,
 } from "./data.ts";
 
-/* The four data tones (violet/pink/amber/mint) are a strict subset of Pop, so
-   a tone can be used directly as a shadow color. A tiny lookup keeps the map
-   from a content tone to the matching pop palette swatch readable. */
+
 const TONE_HEX: Record<Tone, string> = {
 	violet: palette.accent,
 	pink: palette.secondary,
@@ -65,9 +58,7 @@ const TONE_HEX: Record<Tone, string> = {
 	mint: palette.quaternary,
 };
 
-/* ===========================================================================
-   NAV — pill-shaped sticker bar; collapses to a popping mobile sheet.
-   =========================================================================== */
+
 function Nav() {
 	const [open, setOpen] = useState(false);
 	useEffect(() => {
@@ -122,7 +113,7 @@ function Nav() {
 				</button>
 			</nav>
 
-			{/* Mobile sheet */}
+			{}
 			{open && (
 				<div className="mx-auto mt-3 max-w-6xl rounded-[var(--radius-lg)] border-2 border-foreground bg-card p-4 pop md:hidden">
 					<ul className="flex flex-col gap-1.5">
@@ -157,23 +148,20 @@ function Nav() {
 	);
 }
 
-/* ===========================================================================
-   HERO — text left, illustration right. Massive amber circle behind the
-   copy; dotted pattern behind the blob illustration; confetti shapes float.
-   =========================================================================== */
+
 function Hero() {
 	return (
 		<section
 			id="top"
 			className="relative overflow-hidden pt-32 pb-20 sm:pt-36 lg:pt-40"
 		>
-			{/* Background pattern wash */}
+			{}
 			<div
 				className="pointer-events-none absolute inset-0 -z-10 grid-lines opacity-60"
 				aria-hidden="true"
 			/>
 
-			{/* Floating confetti — hidden on small screens to avoid text overlap */}
+			{}
 			<Triangle
 				className="left-[4%] top-[22%] hidden lg:block"
 				rotate={-18}
@@ -202,9 +190,9 @@ function Hero() {
 			/>
 
 			<div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-12 lg:gap-8">
-				{/* Copy */}
+				{}
 				<div className="relative lg:col-span-6">
-					{/* Massive yellow circle behind the text */}
+					{}
 					<div
 						className="pointer-events-none absolute -left-24 -top-24 -z-10 hidden size-[520px] rounded-full sm:block"
 						style={{ background: palette.tertiary, opacity: 0.32 }}
@@ -276,17 +264,17 @@ function Hero() {
 					</Reveal>
 				</div>
 
-				{/* Illustration */}
+				{}
 				<div className="relative lg:col-span-6">
 					<Reveal delay={160}>
 						<div className="relative mx-auto max-w-[460px]">
-							{/* Dotted pattern behind the image */}
+							{}
 							<div
 								className="pointer-events-none absolute -right-6 -top-6 -z-10 hidden size-[360px] rounded-[var(--radius-lg)] dot-grid-accent sm:block"
 								aria-hidden="true"
 							/>
 							<HeroScene />
-							{/* Floating sticker callout */}
+							{}
 							<div className="absolute -bottom-4 -left-2 sm:-left-6">
 								<StickerCard
 									pop="pink"
@@ -314,13 +302,11 @@ function Hero() {
 	);
 }
 
-/* ===========================================================================
-   LOGO MARQUEE + keyword marquee — infinite scrolling strips.
-   =========================================================================== */
+
 function MarqueeBand() {
 	return (
 		<section aria-label="Trusted by and keywords" className="relative py-10">
-			{/* Keyword marquee on an accent band, color-inverted */}
+			{}
 			<div className="border-y-2 border-foreground bg-accent py-3">
 				<Marquee>
 					{marqueeWords.map((w, i) => (
@@ -339,7 +325,7 @@ function MarqueeBand() {
 				</Marquee>
 			</div>
 
-			{/* Logo marquee */}
+			{}
 			<div className="mx-auto mt-10 max-w-6xl px-5">
 				<p className="mb-6 text-center text-step--1 font-bold uppercase tracking-[0.18em] text-muted-foreground">
 					Sticker books shipped by
@@ -362,10 +348,7 @@ function MarqueeBand() {
 	);
 }
 
-/* ===========================================================================
-   FEATURES — grid of 3 sticker cards connected by a dashed SVG line.
-   Floating icon badges sit half-out of each card's top border.
-   =========================================================================== */
+
 function Features() {
 	return (
 		<section id="features" className="relative py-24">
@@ -391,7 +374,7 @@ function Features() {
 				</div>
 
 				<div className="relative mt-20">
-					{/* Dashed connector line behind the cards (desktop only) */}
+					{}
 					<svg
 						className="pointer-events-none absolute left-0 right-0 top-[40px] -z-0 hidden h-10 w-full lg:block"
 						viewBox="0 0 1000 40"
@@ -440,7 +423,7 @@ function Features() {
 									large
 									className="group h-full px-7 pb-7 pt-12"
 								>
-									{/* Floating icon, half-out of the top border */}
+									{}
 									<div className="absolute -top-7 left-7">
 										<IconBadge
 											icon={f.icon}
@@ -464,10 +447,7 @@ function Features() {
 	);
 }
 
-/* ===========================================================================
-   HOW IT WORKS — four numbered steps. Squiggle dividers on desktop become
-   vertical rules on mobile (responsive strategy).
-   =========================================================================== */
+
 function HowItWorks() {
 	return (
 		<section id="how" className="relative overflow-hidden py-24">
@@ -505,7 +485,7 @@ function HowItWorks() {
 				<ol className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
 					{steps.map((s, i) => (
 						<Reveal as="li" key={s.title} delay={i * 90} className="relative">
-							{/* Vertical rule between items on mobile; squiggle handles desktop */}
+							{}
 							<div className="flex flex-col gap-4">
 								<div className="flex items-center gap-3">
 									<IconBadge
@@ -541,9 +521,7 @@ function HowItWorks() {
 	);
 }
 
-/* ===========================================================================
-   STATS — a color-blocked band, one big number per pop color.
-   =========================================================================== */
+
 function Stats() {
 	return (
 		<section aria-label="By the numbers" className="px-4 py-10">
@@ -568,10 +546,7 @@ function Stats() {
 	);
 }
 
-/* ===========================================================================
-   PRICING — three tiers; the middle one scales up 1.1 and wears a rotated
-   yellow star badge reading "MOST POPULAR".
-   =========================================================================== */
+
 function StarBadge() {
 	return (
 		<div className="absolute -right-4 -top-7 z-20 rotate-[15deg]">
@@ -706,9 +681,7 @@ function Pricing() {
 	);
 }
 
-/* ===========================================================================
-   TESTIMONIALS — sticker quote cards, each with a colored avatar initial chip.
-   =========================================================================== */
+
 function Testimonials() {
 	return (
 		<section id="loved" className="relative py-24">
@@ -785,10 +758,7 @@ function Testimonials() {
 	);
 }
 
-/* ===========================================================================
-   TOKEN GALLERY — the system shown to itself: swatches, radii, type scale,
-   and a live primitive line-up. Makes the "centralized tokens" idea tangible.
-   =========================================================================== */
+
 function TokenGallery() {
 	return (
 		<section id="tokens" className="relative overflow-hidden py-24">
@@ -816,7 +786,7 @@ function TokenGallery() {
 				</div>
 
 				<div className="mt-12 grid gap-7 lg:grid-cols-12">
-					{/* Color tokens */}
+					{}
 					<Reveal className="lg:col-span-7">
 						<StickerCard interactive={false} className="h-full p-7">
 							<h3 className="text-step-1 font-extrabold">Color tokens</h3>
@@ -839,7 +809,7 @@ function TokenGallery() {
 						</StickerCard>
 					</Reveal>
 
-					{/* Radii + type */}
+					{}
 					<div className="grid gap-7 lg:col-span-5">
 						<Reveal delay={90}>
 							<StickerCard interactive={false} className="p-7">
@@ -891,7 +861,7 @@ function TokenGallery() {
 						</Reveal>
 					</div>
 
-					{/* Live primitives line-up */}
+					{}
 					<Reveal delay={120} className="lg:col-span-12">
 						<StickerCard interactive={false} className="p-7">
 							<h3 className="text-step-1 font-extrabold">Live primitives</h3>
@@ -937,9 +907,7 @@ function TokenGallery() {
 	);
 }
 
-/* ===========================================================================
-   FAQ — accordion. First item open; high-contrast headers; rotating +/- icon.
-   =========================================================================== */
+
 function Faq() {
 	const [open, setOpen] = useState(0);
 	const baseId = useId();
@@ -1023,10 +991,7 @@ function Faq() {
 	);
 }
 
-/* ===========================================================================
-   CTA — bold accent block with the email-capture form. Inputs show the
-   focus-only hard color shadow; submit gives a cheerful inline confirmation.
-   =========================================================================== */
+
 function Cta() {
 	const [sent, setSent] = useState(false);
 	const formRef = useRef<HTMLFormElement>(null);
@@ -1039,7 +1004,7 @@ function Cta() {
 					boxShadow: "10px 10px 0 0 " + palette.foreground,
 				}}
 			>
-				{/* Decorative shapes inside the block (desktop) */}
+				{}
 				<div
 					className="pointer-events-none absolute inset-0 dot-grid-accent opacity-30"
 					aria-hidden="true"
@@ -1113,7 +1078,7 @@ function Cta() {
 										You’re on the list!
 									</h3>
 									<p className="max-w-xs text-step-0 text-muted-foreground">
-										Check your inbox — your starter sticker book is bouncing
+										Check your inbox ,  your starter sticker book is bouncing
 										your way.
 									</p>
 									<Button variant="secondary" onClick={() => setSent(false)}>
@@ -1181,9 +1146,7 @@ function Cta() {
 	);
 }
 
-/* ===========================================================================
-   FOOTER — link columns + a final squiggle sign-off.
-   =========================================================================== */
+
 function Footer() {
 	return (
 		<footer className="border-t-2 border-foreground bg-card">
@@ -1267,10 +1230,7 @@ function Footer() {
 	);
 }
 
-/* ===========================================================================
-   APP — composes the page. Sets data-ready for the headless verifier once the
-   first paint settles.
-   =========================================================================== */
+
 export function App() {
 	useEffect(() => {
 		const id = requestAnimationFrame(() =>

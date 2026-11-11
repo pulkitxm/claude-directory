@@ -1,12 +1,4 @@
-/* Centralized design-token access for inline styles.
- *
- * The wobbly border-radius technique requires per-element inline `borderRadius`
- * values (you can't express an irregular elliptical radius with Tailwind's
- * rounded-* scale). Rather than scatter magic strings through every component,
- * the reusable radii live here once and are imported where needed. The matching
- * CSS classes (.r-wobbly etc.) exist in index.css for the static cases; this map
- * covers the cases that must be inline (e.g. randomized per-card variety).
- */
+
 export const radius = {
 	wobbly: "255px 15px 225px 15px / 15px 225px 15px 255px",
 	wobblyMd: "30px 8px 30px 8px / 8px 30px 8px 30px",
@@ -28,9 +20,7 @@ export const colors = {
 	card: "#ffffff",
 } as const;
 
-/* A small deterministic set of "hand-placed" rotations so repeated elements
-   (cards in a grid) each sit at a slightly different casual angle without
-   relying on Math.random (which would change on every render). */
+
 export const tilts = [
 	"-rotate-2",
 	"rotate-1",

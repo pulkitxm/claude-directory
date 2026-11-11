@@ -1,18 +1,9 @@
-# Meridian Precision Clinic — Architectural Clinical Editorial Landing Page (Vanilla HTML/CSS/JS)
+# Meridian Precision Clinic : Architectural Clinical Editorial Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore architectural clinical editorial landing page (vanilla html/css/js).
 
-A single-page landing site for Meridian, a fictional bespoke precision-medicine clinic for longevity and executive health, styled in an "Architectural Clinical Editorial" aesthetic — the restrained luxury of a high-end architecture monograph fused with the precision of a medical journal, rendered in deep navy and warm bone with whisper-quiet brass accents. Sections include a transparent-to-solid fixed header, a split full-viewport hero with a navy panel that slides in on load, a credentials marquee, a split philosophy editorial, a hairline discipline grid, a numbered method process, a deep-navy contact form, and footer — all hairline-divided, flat, sharp-cornered, and self-contained.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

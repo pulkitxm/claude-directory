@@ -12,7 +12,7 @@ import { Footer } from "@/components/sections/Footer";
 export default function App() {
 	return (
 		<div className="relative min-h-screen overflow-x-hidden bg-void text-white">
-			{/* Global film grain — keeps the void from ever reading as flat black. */}
+			{}
 			<div
 				className="pointer-events-none fixed inset-0 z-[1] bg-noise opacity-[0.025] mix-blend-screen"
 				aria-hidden="true"

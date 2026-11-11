@@ -38,7 +38,7 @@ export const features: Feature[] = [
 	{
 		icon: "Sun",
 		title: "Sun-cured in small batches",
-		body: "We blend forty jars at a time on a worn oak table — small enough that a human nose decides when a blend is finished.",
+		body: "We blend forty jars at a time on a worn oak table ,  small enough that a human nose decides when a blend is finished.",
 	},
 	{
 		icon: "Droplets",
@@ -48,7 +48,7 @@ export const features: Feature[] = [
 	{
 		icon: "Leaf",
 		title: "Rooted in the season",
-		body: "The collection breathes with the year — elderflower in spring, rosehip in the cold — so what you steep is always alive.",
+		body: "The collection breathes with the year ,  elderflower in spring, rosehip in the cold ,  so what you steep is always alive.",
 	},
 	{
 		icon: "Recycle",
@@ -84,7 +84,7 @@ export const steps: Step[] = [
 	{
 		number: "03",
 		title: "Blend",
-		body: "By hand, by smell, by the season's mood — forty tins at a time, each one tasted before it's sealed.",
+		body: "By hand, by smell, by the season's mood ,  forty tins at a time, each one tasted before it's sealed.",
 		icon: "FlaskConical",
 	},
 	{
@@ -99,7 +99,7 @@ export type Benefit = { title: string; body: string };
 export const benefits: Benefit[] = [
 	{
 		title: "Whole-leaf, never dust",
-		body: "We tear nothing into teabag powder — full leaves and petals unfurl in the pot the way the plant intended.",
+		body: "We tear nothing into teabag powder ,  full leaves and petals unfurl in the pot the way the plant intended.",
 	},
 	{
 		title: "Nothing you can't pronounce",
@@ -120,15 +120,15 @@ export type Product = {
 	latin: string;
 	note: string;
 	price: string;
-	/** Label for the caffeine scale, e.g. "Low caffeine". */
+
 	caffeineLabel: string;
-	/** Where the blend sits on the sun→moon scale, 0 (none) to 1 (full). */
+
 	caffeineLevel: number;
 };
 export const featuredProduct: Product = {
 	name: "Morning Meadow",
 	latin: "Camellia · Calendula · Lemon balm",
-	note: "Our most-steeped blend — a soft, golden cup that tastes like first light over wet grass. Whole green tea leaf lifted with hand-picked calendula petals and a breath of lemon balm. Enough to wake you, gentle enough to let you stay a while.",
+	note: "Our most-steeped blend ,  a soft, golden cup that tastes like first light over wet grass. Whole green tea leaf lifted with hand-picked calendula petals and a breath of lemon balm. Enough to wake you, gentle enough to let you stay a while.",
 	price: "$24",
 	caffeineLabel: "Low caffeine",
 	caffeineLevel: 0.34,
@@ -192,7 +192,7 @@ export const posts: Post[] = [
 		category: "Stewardship",
 		title: "What it means to take only what is offered",
 		excerpt:
-			"Regenerative foraging isn't a marketing word for us — it's the difference between a meadow that returns and one that doesn't.",
+			"Regenerative foraging isn't a marketing word for us ,  it's the difference between a meadow that returns and one that doesn't.",
 		read: "8 min",
 		art: "rosehip",
 	},
@@ -243,7 +243,7 @@ export const plans: Plan[] = [
 		price: "$58",
 		cadence: "per month",
 		blurb:
-			"For households that brew all day — four tins, plus the year's rarest harvests.",
+			"For households that brew all day ,  four tins, plus the year's rarest harvests.",
 		perks: [
 			"Four tins, every month",
 			"First pick of rare harvests",
@@ -262,11 +262,11 @@ export const faqs: Faq[] = [
 	},
 	{
 		q: "Is everything really compostable?",
-		a: "The wrapping, the inner paper, and the seed-paper label all return to the soil — plant the label and it grows wildflowers. The tin is built to be refilled and kept; we'll happily top it up forever.",
+		a: "The wrapping, the inner paper, and the seed-paper label all return to the soil ,  plant the label and it grows wildflowers. The tin is built to be refilled and kept; we'll happily top it up forever.",
 	},
 	{
 		q: "Can I steep these if I'm avoiding caffeine?",
-		a: "Yes. Every label carries a small sun-and-moon scale showing exactly where a blend sits, and roughly half the apothecary is naturally caffeine-free — built for the evening rather than the morning.",
+		a: "Yes. Every label carries a small sun-and-moon scale showing exactly where a blend sits, and roughly half the apothecary is naturally caffeine-free ,  built for the evening rather than the morning.",
 	},
 	{
 		q: "What does 'a tree planted with you' mean?",

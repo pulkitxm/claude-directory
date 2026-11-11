@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Count a number up from 0 → target once the element scrolls into view.
- * Returns the live value and a ref to attach. Respects reduced motion by
- * jumping straight to the target.
- */
+
 export function useCountUp(target: number, durationMs = 1600) {
 	const ref = useRef<HTMLSpanElement | null>(null);
 	const [value, setValue] = useState(0);

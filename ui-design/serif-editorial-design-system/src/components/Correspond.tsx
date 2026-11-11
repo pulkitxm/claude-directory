@@ -3,8 +3,7 @@ import { hero } from "../data/content";
 import { Button } from "./Button";
 import { SectionLabel } from "./Primitives";
 
-/* Reusable input following the Serif input spec: h-12, transparent ground,
-   gold focus ring + border, 150ms ease-out, subtle placeholder. */
+
 function Field({
 	id,
 	label,
@@ -55,16 +54,16 @@ export function Correspond() {
 			id="correspond"
 			className="relative z-10 overflow-hidden py-24 md:py-32"
 		>
-			{/* full-bleed inverted panel for contrast — ivory ground breaks here */}
+			{}
 			<div className="container-reading">
 				<div className="relative overflow-hidden rounded-2xl border border-border bg-foreground text-background shadow-lg">
-					{/* ambient gold inside the dark panel */}
+					{}
 					<div
 						aria-hidden
 						className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl"
 					/>
 					<div className="relative grid grid-cols-1 gap-12 p-9 md:grid-cols-[1fr_1fr] md:gap-16 md:p-14">
-						{/* invitation copy */}
+						{}
 						<div className="self-center">
 							<div className="mb-7 flex items-center gap-4">
 								<span className="small-caps text-accent-secondary">
@@ -89,7 +88,7 @@ export function Correspond() {
 							</div>
 						</div>
 
-						{/* request form */}
+						{}
 						<form
 							className="rounded-xl border border-background/15 bg-background/5 p-7 md:p-8"
 							onSubmit={(e) => {
@@ -116,7 +115,7 @@ export function Correspond() {
 								/>
 							</div>
 							<Button type="submit" variant="primary" className="mt-7 w-full">
-								{sent ? "Thank you — we'll be in touch" : "Send my request"}
+								{sent ? "Thank you ,  we'll be in touch" : "Send my request"}
 							</Button>
 							<p className="mt-4 text-center text-xs italic text-background/50">
 								No newsletters. No spam. A single, considered reply.

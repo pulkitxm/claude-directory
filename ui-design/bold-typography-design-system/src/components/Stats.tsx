@@ -2,7 +2,7 @@ import { stats } from "../data/content";
 import { RevealGroup, RevealItem } from "./Primitives";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Stats — a mono-numeral band that goes 1 → 2 → 4 columns. Numbers are large and
+// Stats ,  a mono-numeral band that goes 1 → 2 → 4 columns. Numbers are large and
 // set in JetBrains Mono (the system's "stats/technical details" face), each with
 // a thin top rule and an accent unit. Reveals stagger in as the band scrolls up.
 // ─────────────────────────────────────────────────────────────────────────────

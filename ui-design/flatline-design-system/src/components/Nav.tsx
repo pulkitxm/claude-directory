@@ -67,7 +67,7 @@ export function Nav() {
 				</button>
 			</Shell>
 
-			{/* Mobile sheet — solid color block, no overlay blur. */}
+			{}
 			{open && (
 				<div className="border-t-2 border-[var(--color-hair)] bg-[var(--color-canvas)] md:hidden">
 					<Shell className="flex flex-col gap-1 py-4">

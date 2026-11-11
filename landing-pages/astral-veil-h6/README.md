@@ -1,29 +1,9 @@
-# Astral Veil — Cosmic Nocturne SaaS Landing Page for Novela (HTML, CSS, Vanilla JS)
+# Astral Veil : Cosmic Nocturne SaaS Landing Page for Novela
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore cosmic nocturne saas landing page for novela (html, css, vanilla js).
 
-A dark, premium multi-section marketing landing page for a fictional software platform called Novela, built in the "Astral Veil" design language — a near-black cosmic nocturne where soft violet and cobalt nebula glows bleed through a veil of frosted glass. Editorial Playfair Display serif headlines sit inside a calm engineering grid, punctuated by glassmorphic cards, a twinkling CSS starfield, drifting UI fragments, an infinite trust marquee, and a floating constellation of integration capsules.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-Open `index.html` directly, or serve the folder:
-
-```bash
-python3 -m http.server 5199
-# then visit http://localhost:5199
-```
-
-## Highlights
-
-- Layered hero: starfield + masked grid + dual radial glows, staggered entrance.
-- Glass entry cards with brightening 1px gradient borders.
-- Asymmetric feature bento, 2×2 pure-CSS product mockups, dashed scheduling timeline.
-- Constellation of color-coded integration capsules with individual float rhythms.
-- Scroll-reveal via IntersectionObserver; honors `prefers-reduced-motion`.
-
-## Stack
-
-HTML, CSS, Vanilla JS
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).

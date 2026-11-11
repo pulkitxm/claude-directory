@@ -1,18 +1,9 @@
-# Cobalt Repairworks — Electronics Repair Studio Landing Page (Vanilla HTML + CSS + JS)
+# Cobalt Repairworks : Electronics Repair Studio Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The layout and interactions explore electronics repair studio landing page (vanilla html + css + js).
 
-A single-page, forced-light landing page for **Repairworks**, a fictional neighborhood electronics repair studio, built in a "Workbench Editorial" aesthetic — a warm paper-cream canvas (`RGB(242, 241, 237)`), a single confident cobalt-blue accent (`RGB(22, 103, 217)`), generous whitespace, and a calm, reliable, trade-confident mood. The signature structural device is a 3.5px solid cobalt square glyph used consistently as the logo mark, eyebrow bullet, and metadata tick. Type pairs Host Grotesk (tight neo-grotesque, huge hero) with IBM Plex Mono for uppercase labels and spec ticks. Sections include a sticky blurred header, a hero with a "what we fix" device-card grid, a trusted-brands marquee, a two-up services grid with mono spec ticks and pricing, a six-block benefits grid, an about split, alternating testimonial cards, a two-column FAQ, and a final CTA panel.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+Visuals are rendered from source code. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md).
