@@ -16,3 +16,7 @@ Stop and flag uncertain rights for manual licensing review. Keep uncertain mater
 Before each commit, PR, preview capture, or publication: run `node scripts/check-compliance.mjs`, relevant tests/builds, and inspect provenance and output manually. Verify sources and permissions directly before registering a project. Register only independently reviewed projects in compliance/projects.json. Publishing includes source archives and raw files as well as deployed pages.
 
 Use a dedicated worktree. Make coherent checkpoint commits through Pukbot when remote writes are authorized. Do not automatically push, open a PR, merge, deploy, or rewrite history. Respect session-specific publication restrictions. PR descriptions must be a single line. Evidence must use synthetic data and cleared designs only.
+
+Project source must contain no standalone media files, including images, SVG files, fonts, recordings, model files or media archives. Use reviewed original CSS, canvas, DOM or properly licensed inline geometry. Never embed unverified media to bypass this rule. Fresh gallery screenshots and recordings are produced separately from the verified current publication artifact.
+
+Keep public project documentation focused on features, setup and applicable licenses. Keep internal operational notes, review timelines and publishing records outside public documentation.

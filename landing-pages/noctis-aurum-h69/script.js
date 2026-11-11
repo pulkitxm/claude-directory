@@ -1,42 +1,42 @@
 (() => {
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var products = [{
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Éclat Diamond Pendant",
     meta: "18k Yellow Gold",
     price: "$1,850"
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Atelier Solitaire",
     meta: "Certified 2ct Diamond",
     price: "$5,400"
   }, {
-    img: "original-visual.svg",
+    img: "field-1",
     name: "Celestial Hoops",
     meta: "14k Rose Gold",
     price: "$1,250"
   }, {
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Infinite Link Bracelet",
     meta: "White Gold Pavé",
     price: "$2,100"
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Marquise Halo Ring",
     meta: "18k Yellow Gold",
     price: "$3,200"
   }, {
-    img: "original-visual.svg",
+    img: "field-1",
     name: "Riviera Diamond Choker",
     meta: "White Gold Illusion",
     price: "$7,800"
   }, {
-    img: "original-visual.svg",
+    img: "field-2",
     name: "Empress Pearl Drops",
     meta: "Natural South Sea",
     price: "$1,950"
   }, {
-    img: "original-visual.svg",
+    img: "field-3",
     name: "Aura Tennis Bracelet",
     meta: "5ct TDW White Gold",
     price: "$6,500"
@@ -47,7 +47,7 @@
     products.forEach(p => {
       var card = document.createElement("article");
       card.className = "card reveal";
-      card.innerHTML = '<div class="card-img">' + '<img src="' + p.img + '" alt="Original abstract geometric study">' + '<button class="qadd" aria-label="Save ' + p.name + '">+</button>' + "</div>" + '<div class="card-body">' + '<div class="pname">' + p.name + "</div>" + '<div class="meta">' + p.meta + "</div>" + '<div class="price">' + p.price + "</div>" + "</div>";
+      card.innerHTML = '<div class="card-img">' + '<div role="img" data-visual="' + p.img + '" aria-label="Original abstract geometric study" class="procedural-visual"></div>' + '<button class="qadd" aria-label="Save ' + p.name + '">+</button>' + "</div>" + '<div class="card-body">' + '<div class="pname">' + p.name + "</div>" + '<div class="meta">' + p.meta + "</div>" + '<div class="price">' + p.price + "</div>" + "</div>";
       grid.appendChild(card);
     });
   }

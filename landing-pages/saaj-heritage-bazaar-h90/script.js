@@ -2,51 +2,51 @@
   var products = [{
     name: "The Jodhpur Sofa",
     mat: "Solid Sheesham Wood",
-    img: "original-visual.svg",
+    img: "field-2",
     now: "₹74,999",
     was: "₹89,999",
     badge: "popular"
   }, {
     name: "Vedic 6-Seater Dining",
     mat: "Natural Honey Finish",
-    img: "original-visual.svg",
+    img: "field-3",
     now: "₹52,499",
     was: ""
   }, {
     name: "The Scribe's Desk",
     mat: "Teak & Brass",
-    img: "original-visual.svg",
+    img: "field-1",
     now: "₹28,500",
     was: ""
   }, {
     name: "Haveli Poster Bed",
     mat: "King Size Sheesham",
-    img: "original-visual.svg",
+    img: "field-2",
     now: "₹89,000",
     was: "",
     badge: "new"
   }, {
     name: "Jaali Coffee Table",
     mat: "Hand-carved",
-    img: "original-visual.svg",
+    img: "field-3",
     now: "₹12,999",
     was: ""
   }, {
     name: "Mehraab Wall Mirror",
     mat: "Teak Gold Finish",
-    img: "original-visual.svg",
+    img: "field-1",
     now: "₹8,499",
     was: ""
   }, {
     name: "Brass Inlay Trunk",
     mat: "Storage & Seating",
-    img: "original-visual.svg",
+    img: "field-2",
     now: "₹18,900",
     was: ""
   }, {
     name: "Vedic Bookcase",
     mat: "Acacia Wood",
-    img: "original-visual.svg",
+    img: "field-3",
     now: "₹31,500",
     was: ""
   }];
@@ -55,29 +55,29 @@
     grid.innerHTML = products.map(p => {
       var badge = p.badge ? '<div class="badge ' + p.badge + '">' + (p.badge === "new" ? "New" : "Popular") + "</div>" : "";
       var was = p.was ? `<span class="was">${p.was}</span>` : "";
-      return "" + '<article class="prod">' + '<div class="prod-media">' + '<img src="' + p.img + '" alt="Original abstract geometric study" loading="lazy">' + badge + '<button class="view-bar" type="button">View Product</button>' + "</div>" + "<h3>" + p.name + "</h3>" + '<p class="mat">' + p.mat + "</p>" + '<div class="price"><span class="now">' + p.now + "</span>" + was + "</div>" + "</article>";
+      return "" + '<article class="prod">' + '<div class="prod-media">' + '<div role="img" data-visual="' + p.img + '" aria-label="Original abstract geometric study"  class="procedural-visual"></div>' + badge + '<button class="view-bar" type="button">View Product</button>' + "</div>" + "<h3>" + p.name + "</h3>" + '<p class="mat">' + p.mat + "</p>" + '<div class="price"><span class="now">' + p.now + "</span>" + was + "</div>" + "</article>";
     }).join("");
   }
   var testimonials = [{
     q: "The Jodhpur Sofa set completely transformed my living room. The wood quality is visible from across the room, and the finish is just silk.",
     n: "Anjali R.",
     l: "Gurgaon, Haryana",
-    a: "original-visual.svg"
+    a: "field-1"
   }, {
     q: "Finding authentic solid wood furniture in Mumbai was a chore until Saaj. The Haveli Bed is like sleeping in a palace. Worth every penny.",
     n: "Vikram M.",
     l: "Mumbai, Maharashtra",
-    a: "original-visual.svg"
+    a: "field-2"
   }, {
     q: "The white-glove delivery was a game changer. They assembled everything in an hour and cleaned up. Best D2C experience in India so far.",
     n: "Sana K.",
     l: "Bangalore, Karnataka",
-    a: "original-visual.svg"
+    a: "field-3"
   }];
   var star = '<svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
   var tg = document.getElementById("test-grid");
   if (tg) {
-    tg.innerHTML = testimonials.map((t, _i) => "" + '<div class="test" data-reveal>' + '<div class="stars">' + star.repeat(5) + "</div>" + '<p class="quote">"' + t.q + '"</p>' + '<div class="reviewer">' + '<img src="' + t.a + '" alt="Original abstract geometric study">' + '<div><p class="rn">' + t.n + '</p><p class="rl">' + t.l + "</p></div>" + "</div>" + "</div>").join("");
+    tg.innerHTML = testimonials.map((t, _i) => "" + '<div class="test" data-reveal>' + '<div class="stars">' + star.repeat(5) + "</div>" + '<p class="quote">"' + t.q + '"</p>' + '<div class="reviewer">' + '<div role="img" data-visual="' + t.a + '" aria-label="Original abstract geometric study" class="procedural-visual"></div>' + '<div><p class="rn">' + t.n + '</p><p class="rl">' + t.l + "</p></div>" + "</div>" + "</div>").join("");
   }
   var io = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -120,17 +120,17 @@
     tag: "The Collection",
     title: "Pure Sheesham Wood Craftsmanship",
     desc: "Ethically sourced, seasoned for Indian weather, and finished by master artisans of Rajasthan.",
-    img: "original-visual.svg"
+    img: "field-1"
   }, {
     tag: "The Living Room",
     title: "Handcrafted Heritage Sofas",
     desc: "Sink into the luxury of hand-polished Sheesham frames with premium Indian fabric upholstery.",
-    img: "original-visual.svg"
+    img: "field-2"
   }, {
     tag: "The Bedroom",
     title: "Royal Haveli Poster Beds",
     desc: "Bring the grandeur of Rajasthan to your bedroom with intricately carved teak four-poster beds.",
-    img: "original-visual.svg"
+    img: "field-3"
   }];
   var idx = 0;
   var cContent = document.getElementById("card-content");
@@ -145,7 +145,7 @@
       cContent.classList.add("fade");
       cImg.style.opacity = "0";
       setTimeout(() => {
-        cImg.src = `${d.img}`;
+        cImg.dataset.visual = `${d.img}`;
         cTag.textContent = d.tag;
         cTitle.textContent = d.title;
         cDesc.textContent = d.desc;

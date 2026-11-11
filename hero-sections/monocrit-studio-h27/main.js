@@ -6,7 +6,7 @@
   var ring = document.getElementById("ring");
   var ringLabel = document.getElementById("ring-label");
   var stack = document.getElementById("stack");
-  var imgs = Array.prototype.slice.call(stack.querySelectorAll("img"));
+  var imgs = Array.prototype.slice.call(stack.querySelectorAll(".procedural-visual"));
   var capName = document.getElementById("cap-name");
   var capNum = document.getElementById("cap-num");
   var dotsWrap = document.getElementById("dots");

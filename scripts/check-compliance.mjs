@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { scanInlineArtwork } from "./check-inline-artwork.mjs";
 import { scanDependencyProvenance } from "./check-dependency-provenance.mjs";
+import { hasMediaSignature, mediaExtension } from "./media-policy.mjs";
 
 const skippedDirectories = new Set([
 	".git",
@@ -34,8 +35,6 @@ const captureDirectory =
 	/^(?:\.reference|\.audit|\.refs?|references?|captures?|screenshots?|scraped|scrapes)$/i;
 const captureFile =
 	/^(?:reference|source-capture|captured-source|scraped)(?:[.-].*)?\.(?:html?|css|[cm]?js|json|png|jpe?g|webp|svg)$/i;
-const mediaExtension =
-	/\.(?:avif|apng|bmp|gif|ico|jpe?g|png|svg|webp|tiff?|woff2?|ttf|otf|eot|mp4|m4v|mov|webm|ogv|mp3|m4a|wav|ogg|flac|aac|pdf|wasm|glb|gltf|obj|zip|tar|gz|tgz|7z)$/i;
 const runtimeExtension =
 	/\.(?:html?|css|[cm]?js|jsx|tsx?|svg|glsl|frag|vert)$/i;
 const categories = new Set([
@@ -208,6 +207,12 @@ export async function scanCompliance(directory) {
 				maxBuffer: 32 * 1024 * 1024,
 			});
 			for (const path of stdout.split("\0").filter(Boolean)) {
+				if (mediaExtension.test(path) && !files.has(path))
+					add(
+						"standalone-media-index",
+						path,
+						"Tracked media must satisfy the project resource policy, including paths outside the working checkout.",
+					);
 				if (!(await lstat(join(root, path)).catch(() => null))) continue;
 				const parts = path.split("/");
 				if (parts.some((part) => generatedDirectories.has(part)))
@@ -386,6 +391,15 @@ export async function scanCompliance(directory) {
 	}
 	for (const [path, absolute] of files) {
 		const entry = assets.get(path);
+		if (
+			mediaExtension.test(path) ||
+			hasMediaSignature(await readFile(absolute))
+		)
+			add(
+				"standalone-media",
+				path,
+				"Standalone media files are excluded from source distribution. Use reviewed code-generated visuals instead; a provenance entry does not override this policy.",
+			);
 		if (suspiciousHash.test(path.split("/").at(-1)) && !entry)
 			add(
 				"build-hash",

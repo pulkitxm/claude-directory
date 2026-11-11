@@ -35,19 +35,19 @@
   }
   var content = {
     op: {
-      img: "original-visual.svg",
+      img: "field-2",
       desc: "We eliminate friction from your core operations, deploying automated intelligence and streamlined protocols that let your team focus on high-impact creativity."
     },
     cons: {
-      img: "original-visual.svg",
+      img: "field-3",
       desc: "We build the physical and digital frameworks that support global expansion ,  designed for modularity, ensuring your infrastructure grows at the speed of your ambition."
     },
     hosp: {
-      img: "original-visual.svg",
+      img: "field-1",
       desc: "We craft premium, frictionless touchpoints for every stakeholder, treating each internal and external interaction as a critical piece of your brand experience architecture."
     },
     fire: {
-      img: "original-visual.svg",
+      img: "field-2",
       desc: "For high-stakes environments where failure is not an option, we build redundant, secure, and hyper-reliable systems that protect your most vital assets around the clock."
     }
   };
@@ -65,7 +65,7 @@
     svcDesc.style.opacity = "0";
     svcDesc.style.transform = "translateY(10px)";
     setTimeout(() => {
-      svcImg.src = content[key].img;
+      svcImg.dataset.visual = content[key].img;
       svcDesc.textContent = content[key].desc;
       svcImg.style.opacity = "1";
       svcDesc.style.opacity = "1";
@@ -81,17 +81,17 @@
     });
   });
   var people = [{
-    img: "original-visual.svg",
+    img: "field-3",
     q: '"Helix Strata didn’t just solve our problems; they fundamentally evolved how we think about scale. Their architecture let us 10x our volume without increasing overhead by a single percent."',
     name: "Sarah Lee",
     role: "CEO, TECH INFINITY"
   }, {
-    img: "original-visual.svg",
+    img: "field-1",
     q: '"They re-platformed a fifteen-year-old monolith with zero downtime. What we thought would take two years and a fortune took two quarters. Genuinely the best partner we’ve hired."',
     name: "Marcus Okafor",
     role: "COO, NORTHWIND LOGISTICS"
   }, {
-    img: "original-visual.svg",
+    img: "field-2",
     q: '"The clarity Helix brings to chaos is unmatched. They turned our tangled operations into a clean, observable system we now actually trust to scale us into new markets."',
     name: "Priya Nandakumar",
     role: "CTO, VERITAS HEALTH"
@@ -108,7 +108,7 @@
       el.style.opacity = "0";
     });
     setTimeout(() => {
-      tImg.src = p.img;
+      tImg.dataset.visual = p.img;
       tQuote.textContent = p.q;
       tName.textContent = p.name;
       tRole.textContent = p.role;

@@ -11,7 +11,7 @@ import { spawn } from "node:child_process";
 import { resolve, join, extname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const staticTypes = new Set([".html", ".css", ".js", ".mjs", ".svg", ".mp4"]);
+const staticTypes = new Set([".html", ".css", ".js", ".mjs"]);
 export async function copyStaticProject(from, to) {
 	await mkdir(to, { recursive: true });
 	for (const entry of await readdir(from, { withFileTypes: true })) {

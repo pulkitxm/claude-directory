@@ -23,17 +23,17 @@
     tag: "The Curation",
     title: "Tailored spatial design",
     desc: "We shape rooms around the way you live ,  through the slow selection of material, form and natural light.",
-    img: "original-visual.svg"
+    img: "field-2"
   }, {
     tag: "The Vision",
     title: "Form, married to function",
     desc: "Every square metre earns its place, holding aesthetic clarity without losing the warmth of a home.",
-    img: "original-visual.svg"
+    img: "field-3"
   }, {
     tag: "The Detail",
     title: "Finishes that tell a story",
     desc: "From honed marble to reclaimed oak, we gather materials that carry texture, memory and patina.",
-    img: "original-visual.svg"
+    img: "field-1"
   }];
   var idx = 0;
   var fade = document.getElementById("hcFade");
@@ -51,7 +51,7 @@
         hcTag.textContent = s.tag;
         hcTitle.textContent = s.title;
         hcDesc.textContent = s.desc;
-        hcImg.src = s.img;
+        hcImg.dataset.visual = s.img;
         fade.classList.remove("out");
         hcImg.style.opacity = "1";
       }, 600);

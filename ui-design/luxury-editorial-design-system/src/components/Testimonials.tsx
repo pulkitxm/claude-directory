@@ -50,12 +50,7 @@ export function Testimonials() {
 
 							<figcaption className="mt-8 flex items-center gap-4">
 								<span className="relative block h-12 w-12 overflow-hidden bg-muted-bg">
-									<img
-										src={t.avatar}
-										alt={t.author}
-										loading="lazy"
-										className="h-full w-full object-cover grayscale transition-all duration-[1500ms] ease-luxe group-hover:grayscale-0 reduce-motion-noscale"
-									/>
+									<div data-visual={t.avatar} aria-label={t.author} data-loading="lazy" className={["procedural-visual", "h-full w-full object-cover grayscale transition-all duration-[1500ms] ease-luxe group-hover:grayscale-0 reduce-motion-noscale"].join(" ")} role="img" />
 									<span
 										aria-hidden
 										className="pointer-events-none absolute inset-0 shadow-frame"

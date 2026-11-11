@@ -2,7 +2,7 @@
 
 ## Three.js 0.160.0
 
-The procedural Sidi Bou Said scene imports Three.js and OrbitControls from unpkg. Source and license: https://github.com/mrdoob/three.js/tree/r160 and https://unpkg.com/three@0.160.0/LICENSE.
+The procedural Sidi Bou Said scene bundles Three.js and OrbitControls from the pinned npm package. Source and license: https://github.com/mrdoob/three.js/tree/r160 and https://unpkg.com/three@0.160.0/LICENSE.
 
 The MIT License
 

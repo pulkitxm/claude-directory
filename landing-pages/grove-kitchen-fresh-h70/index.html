@@ -51,7 +51,7 @@
 			overflow-x: hidden;
 			line-height: 1.5;
 		}
-		img {
+		.procedural-visual {
 			display: block;
 			max-width: 100%;
 		}
@@ -363,7 +363,7 @@
 			inset: 0;
 			z-index: 0;
 		}
-		.hero-bg img {
+		.hero-bg .procedural-visual {
 			position: absolute;
 			inset: 0;
 			width: 100%;
@@ -372,7 +372,7 @@
 			opacity: 0;
 			transition: opacity 1.1s ease;
 		}
-		.hero-bg img.active {
+		.hero-bg .procedural-visual.active {
 			opacity: 1;
 		}
 		.hero-scrim {
@@ -437,7 +437,7 @@
 		.avatars {
 			display: flex;
 		}
-		.avatars img {
+		.avatars .procedural-visual {
 			width: 34px;
 			height: 34px;
 			border-radius: 50%;
@@ -445,7 +445,7 @@
 			object-fit: cover;
 			margin-left: -9px;
 		}
-		.avatars img:first-child {
+		.avatars .procedural-visual:first-child {
 			margin-left: 0;
 		}
 		.proof p {
@@ -565,13 +565,13 @@
 			overflow: hidden;
 			background: var(--kraft);
 		}
-		.rcard .pic img {
+		.rcard .pic .procedural-visual {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 			transition: transform 0.7s cubic-bezier(0.2, 1, 0.3, 1);
 		}
-		.rcard:hover .pic img {
+		.rcard:hover .pic .procedural-visual {
 			transform: scale(1.08);
 		}
 		.rcard .tag {
@@ -1208,7 +1208,13 @@
 			}
 		}
 		</style>
-	</head>
+	<style>
+.procedural-visual { display: block; aspect-ratio: 4 / 3; min-height: 1px; background: radial-gradient(ellipse at 72% 24%, #a5c2d8 0 17%, transparent 17.5%), repeating-linear-gradient(135deg, transparent 0 8%, #82904555 8.5% 9%, transparent 9.5% 18%), linear-gradient(125deg, #342b1d, #829045); background-size: cover; background-position: center; }
+.procedural-visual:nth-child(3n + 2), [data-visual="field-2"] { background-position: 70% 30%; filter: hue-rotate(24deg); }
+.procedural-visual:nth-child(3n), [data-visual="field-3"] { background-position: 30% 70%; filter: hue-rotate(-20deg); }
+</style>
+<link rel="icon" href="data:,">
+</head>
 	<body>
 		<div class="grain"></div>
 
@@ -1262,13 +1268,12 @@
 
 			<section class="hero">
 				<div class="hero-bg" id="heroBg">
-					<img
-						src="original-visual.svg"
-						class="active"
-						alt="Original abstract geometric study"
-					>
-					<img src="original-visual.svg" alt="Original abstract geometric study">
-					<img src="original-visual.svg" alt="Original abstract geometric study">
+					<div role="img"
+						data-visual="field-2"
+						class="active procedural-visual"
+						aria-label="Original abstract geometric study"></div>
+					<div role="img" data-visual="field-3" aria-label="Original abstract geometric study" class="procedural-visual"></div>
+					<div role="img" data-visual="field-1" aria-label="Original abstract geometric study" class="procedural-visual"></div>
 				</div>
 				<div class="hero-scrim"></div>
 				<div class="hero-card">
@@ -1289,9 +1294,9 @@
 						>
 						<div class="proof">
 							<div class="avatars">
-								<img src="original-visual.svg" alt="Original abstract geometric study">
-								<img src="original-visual.svg" alt="Original abstract geometric study">
-								<img src="original-visual.svg" alt="Original abstract geometric study">
+								<div role="img" data-visual="field-2" aria-label="Original abstract geometric study" class="procedural-visual"></div>
+								<div role="img" data-visual="field-3" aria-label="Original abstract geometric study" class="procedural-visual"></div>
+								<div role="img" data-visual="field-1" aria-label="Original abstract geometric study" class="procedural-visual"></div>
 							</div>
 							<p>Trusted by<br>40,000+ dogs</p>
 						</div>
@@ -1611,37 +1616,37 @@
 
 		<script>
 const recipes = [{
-  img: "original-visual.svg",
+  img: "field-2",
   tag: "High Protein",
   name: "Prime Beef & Kale",
   price: "$4.90",
   desc: "Grass-fed beef with garden kale, carrots, and sunflower seeds."
 }, {
-  img: "original-visual.svg",
+  img: "field-3",
   tag: "Skin & Coat",
   name: "Wild Salmon Bowl",
   price: "$5.20",
   desc: "Wild-caught salmon, blueberries, and a touch of coconut oil."
 }, {
-  img: "original-visual.svg",
+  img: "field-1",
   tag: "Low Calorie",
   name: "Harvest Turkey",
   price: "$4.70",
   desc: "Lean turkey with sweet potato, pumpkin, and orchard apple."
 }, {
-  img: "original-visual.svg",
+  img: "field-2",
   tag: "Lean Growth",
   name: "Cage-Free Chicken",
   price: "$4.50",
   desc: "Tender chicken, organic spinach, brown rice, and peas."
 }, {
-  img: "original-visual.svg",
+  img: "field-3",
   tag: "Vitality Plus",
   name: "Rustic Lamb & Mint",
   price: "$5.50",
   desc: "Pasture-raised lamb, mint, sweet potato, and flax seeds."
 }, {
-  img: "original-visual.svg",
+  img: "field-1",
   tag: "Exotic",
   name: "Duck & Pear",
   price: "$5.90",
@@ -1686,7 +1691,7 @@ recipes.forEach((r, i) => {
   el.className = "rcard reveal";
   el.style.transitionDelay = `${i % 3 * 0.08}s`;
   el.innerHTML = `
-    <div class="pic"><span class="tag">${r.tag}</span><img src="${r.img}" alt="Original abstract geometric study"></div>
+    <div class="pic"><span class="tag">${r.tag}</span><div role="img" data-visual="${r.img}" aria-label="Original abstract geometric study" class="procedural-visual"></div></div>
     <div class="rbody">
       <div class="top">
         <h3>${r.name}</h3>
@@ -1747,7 +1752,7 @@ document.querySelectorAll(".faq-q").forEach(btn => {
   });
 });
 (() => {
-  const imgs = document.querySelectorAll("#heroBg img");
+  const imgs = document.querySelectorAll("#heroBg .procedural-visual");
   let i = 0;
   setInterval(() => {
     imgs[i].classList.remove("active");

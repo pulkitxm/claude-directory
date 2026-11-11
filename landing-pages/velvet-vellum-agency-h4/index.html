@@ -14,7 +14,13 @@
 			content="Material Design Icons geometry is embedded and styled for this demonstration. Matched paths remain unchanged. License and source: THIRD_PARTY_NOTICES.txt."
 		>
 		<link rel="license" href="./THIRD_PARTY_NOTICES.txt">
-	</head>
+	<style>
+.procedural-visual { display: block; aspect-ratio: 4 / 3; min-height: 1px; background: radial-gradient(ellipse at 72% 24%, #a5c7d8 0 17%, transparent 17.5%), repeating-linear-gradient(135deg, transparent 0 8%, #8a904555 8.5% 9%, transparent 9.5% 18%), linear-gradient(125deg, #34281d, #8a9045); background-size: cover; background-position: center; }
+.procedural-visual:nth-child(3n + 2), [data-visual="field-2"] { background-position: 70% 30%; filter: hue-rotate(24deg); }
+.procedural-visual:nth-child(3n), [data-visual="field-3"] { background-position: 30% 70%; filter: hue-rotate(-20deg); }
+</style>
+<link rel="icon" href="data:,">
+</head>
 	<body id="app">
 		<header class="nav">
 			<nav class="wrap nav-in">
@@ -105,11 +111,10 @@
 								data-reveal
 								style="transition-delay:200ms"
 							>
-								<img
-									src="original-visual.svg"
-									alt="Original abstract geometric study"
-									loading="eager"
-								>
+								<div role="img"
+									data-visual="field-2"
+									aria-label="Original abstract geometric study"
+									 class="procedural-visual"></div>
 							</div>
 						</div>
 					</div>
@@ -238,10 +243,9 @@
 						</div>
 
 						<div class="work-main" data-reveal style="transition-delay:150ms">
-							<img
-								src="original-visual.svg"
-								alt="Original abstract geometric study"
-							>
+							<div role="img"
+								data-visual="field-3"
+								aria-label="Original abstract geometric study" class="procedural-visual"></div>
 							<div class="grad">
 								<span class="kick">Flagship Transformation</span>
 								<h3>The Sterling Method</h3>
@@ -255,10 +259,9 @@
 						<div class="work-right" data-reveal style="transition-delay:200ms">
 							<a class="prow" href="#">
 								<div class="th">
-									<img
-										src="original-visual.svg"
-										alt="Original abstract geometric study"
-									>
+									<div role="img"
+										data-visual="field-1"
+										aria-label="Original abstract geometric study" class="procedural-visual"></div>
 								</div>
 								<div>
 									<h4>Aurora Collection</h4>
@@ -267,10 +270,9 @@
 							</a>
 							<a class="prow" href="#">
 								<div class="th">
-									<img
-										src="original-visual.svg"
-										alt="Original abstract geometric study"
-									>
+									<div role="img"
+										data-visual="field-2"
+										aria-label="Original abstract geometric study" class="procedural-visual"></div>
 								</div>
 								<div>
 									<h4>Vortex Systems</h4>
@@ -279,10 +281,9 @@
 							</a>
 							<a class="prow" href="#">
 								<div class="th">
-									<img
-										src="original-visual.svg"
-										alt="Original abstract geometric study"
-									>
+									<div role="img"
+										data-visual="field-3"
+										aria-label="Original abstract geometric study" class="procedural-visual"></div>
 								</div>
 								<div>
 									<h4>Apex Real Estate</h4>
@@ -367,11 +368,10 @@
 						</blockquote>
 						<div class="who">
 							<div class="av">
-								<img
+								<div role="img"
 									id="t-img"
-									src="original-visual.svg"
-									alt="Original abstract geometric study"
-								>
+									data-visual="field-1"
+									aria-label="Original abstract geometric study" class="procedural-visual"></div>
 							</div>
 							<div>
 								<p class="nm" id="t-name">Julian Sterling</p>
@@ -525,19 +525,19 @@
 					q: '"Velvet Vellum didn\'t just give us a marketing plan; they gave us a new perspective on our own potential. Their strategic clarity is unmatched."',
 					n: "Julian Sterling",
 					t: "CEO, Sterling & Co.",
-					img: "original-visual.svg",
+					img: "field-2",
 				},
 				{
 					q: '"The results speak for themselves. We saw a 142% increase in digital revenue within the first six months of engagement with the Vellum team."',
 					n: "Sarah Chen",
 					t: "CMO, Aurora Collection",
-					img: "original-visual.svg",
+					img: "field-3",
 				},
 				{
 					q: '"They bridge the gap between high-level brand strategy and ruthless performance execution. True partners in our growth."',
 					n: "Marcus Vane",
 					t: "Founder, Vortex Systems",
-					img: "original-visual.svg",
+					img: "field-1",
 				},
 			];
 			var i = 0,
@@ -555,7 +555,7 @@
 					q.textContent = d.q;
 					n.textContent = d.n;
 					t.textContent = d.t;
-					img.src = d.img;
+					img.dataset.visual = d.img;
 					dots.forEach((dot, j) => {
 						dot.classList.toggle("on", j === idx);
 					});

@@ -1,6 +1,8 @@
 # Asset provenance
 
-The only source-declared browser CDN dependency is Three.js 0.160.0 and its OrbitControls module from unpkg. Its MIT rights notice is preserved in THIRD_PARTY_NOTICES.md. Network availability is required for that scene. npm runtime package/version/license records are in compliance/dependency-licenses.json; the publication builder preserves installed license/notice texts in each preview's THIRD_PARTY_NOTICES.txt. These dependency licenses do not license third-party demo media.
+Third-party component source retains its upstream license and complete notices.
+
+There are no source-declared browser CDN dependencies. The procedural coastal scene bundles Three.js 0.160.0 and OrbitControls from the pinned npm package; its complete MIT notice is preserved in the project and the published notices. npm runtime package/version/license records are in compliance/dependency-licenses.json; the publication builder preserves installed license/notice texts in each preview's THIRD_PARTY_NOTICES.txt. These dependency licenses do not license third-party demo media.
 
 Third-party component source retains its upstream license and complete notices.
 
@@ -8,6 +10,6 @@ Inline SVG paths, shader programs and drawing regions also require review. [comp
 
 The live host can also inject Cloudflare's provider-served Web Analytics beacon and email-address decoder into browser responses. These provider scripts are absent from this repository and the built artifact, remain governed by the provider's service terms rather than the repository MIT license, and were not vendored or republished as repository source. These transformations are documented in [Cloudflare's analytics setup](https://developers.cloudflare.com/web-analytics/get-started/) and [email-obfuscation instructions](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/). Provider-service metadata is recorded separately in ASSET_PROVENANCE.json.
 
-To add an asset, establish ownership or an explicit redistribution grant, record the original source and applicable license, preserve required notices, hash the exact file, and update the manifest. Record manual review for suspicious build-hash filenames. Never rename or transform disputed files to disguise origin. Captures and commercial template source remain prohibited even if ignored by Git.
+Standalone media files cannot be added to this repository under the current distribution policy, even with a provenance entry. New inline drawings and procedural graphics require an authorship or source-license review, preserved notices and exact source hashes before publication. Record manual review for suspicious build-hash filenames. Never rename or transform disputed files to disguise origin. Captures and commercial template source remain prohibited even if ignored by Git.
 
 Run `node scripts/check-compliance.mjs` before commits, PRs and publishing. Inspect source permissions and notices as well as check results. Review independent authorship, design similarity, trademark, publicity and other rights manually.

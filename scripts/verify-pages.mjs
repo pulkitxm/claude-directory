@@ -1,6 +1,7 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import { resolve, join, dirname, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { hasMediaSignature, mediaExtension } from "./media-policy.mjs";
 
 const rootFiles = new Set([
 	"index.html",
@@ -102,6 +103,8 @@ export async function verifyPublication(directory, projects, options = {}) {
 				await walk(file);
 				continue;
 			}
+			if (mediaExtension.test(path) || hasMediaSignature(await readFile(file)))
+				errors.push(`Standalone media in output: ${path}`);
 			if (!inProject && !rootFiles.has(path))
 				errors.push(`Unapproved output file: ${path}`);
 			if (
