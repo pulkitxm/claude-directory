@@ -13,7 +13,7 @@ import {
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
-import { scanCompliance } from "./check-compliance.mjs";
+import { localGitEnvironment, scanCompliance } from "./check-compliance.mjs";
 
 const safeRules = `Public accessibility is not redistribution permission.
 Never automatically download and commit proprietary assets.
@@ -330,11 +330,14 @@ test("ignores local build output but rejects tracked captures and generated arti
 	);
 	assert.deepEqual(await f.scan(), []);
 	const execute = promisify(execFile);
-	await execute("git", ["init", "--quiet"], { cwd: f.root });
+	await execute("git", ["init", "--quiet"], {
+		cwd: f.root,
+		env: localGitEnvironment(),
+	});
 	await execute(
 		"git",
 		["add", "components-ui/example/.next", "components-ui/example/out"],
-		{ cwd: f.root },
+		{ cwd: f.root, env: localGitEnvironment() },
 	);
 	const findings = await f.scan();
 	assert.ok(
@@ -351,6 +354,90 @@ test("ignores local build output but rejects tracked captures and generated arti
 			"components-ui/example/.next/.reference/page.html",
 		),
 	);
+});
+
+test("isolates fixture Git operations and tracked scans from an inherited repository", async (t) => {
+	const f = await fixture(t);
+	const parent = await mkdtemp(join(tmpdir(), "compliance-parent-"));
+	t.after(() => rm(parent, { recursive: true, force: true }));
+	const parentGit = join(parent, "parent.git");
+	const parentTree = join(parent, "parent-worktree");
+	await mkdir(parentTree);
+	await writeFile(join(parentTree, "parent-marker.txt"), "Synthetic parent\n");
+	const execute = promisify(execFile);
+	await execute("git", ["init", "--bare", "--quiet", parentGit], {
+		env: localGitEnvironment(),
+	});
+	await execute(
+		"git",
+		["--git-dir", parentGit, "--work-tree", parentTree, "add", "parent-marker.txt"],
+		{ env: localGitEnvironment() },
+	);
+	const configBefore = await readFile(join(parentGit, "config"));
+	const indexBefore = await readFile(join(parentGit, "index"));
+	await f.put(
+		"components-ui/example/.next/.reference/page.html",
+		"Synthetic tracked capture\n",
+	);
+	const moduleUrl = new URL("./check-compliance.mjs", import.meta.url).href;
+	const program = `
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+import { localGitEnvironment, scanCompliance } from ${JSON.stringify(moduleUrl)};
+const execute = promisify(execFile);
+const root = process.argv[1];
+await execute("git", ["init", "--quiet"], { cwd: root, env: localGitEnvironment() });
+await execute("git", ["add", "components-ui/example/.next"], { cwd: root, env: localGitEnvironment() });
+process.stdout.write(JSON.stringify({
+  findings: await scanCompliance(root),
+  pathPreserved: localGitEnvironment().PATH === process.env.PATH,
+  marker: localGitEnvironment().COMPLIANCE_TEST_MARKER
+}));
+`;
+	const child = await execute(
+		process.execPath,
+		["--input-type=module", "--eval", program, f.root],
+		{
+			env: {
+				...process.env,
+				GIT_DIR: parentGit,
+				GIT_COMMON_DIR: parentGit,
+				GIT_WORK_TREE: parentTree,
+				GIT_INDEX_FILE: join(parentGit, "index"),
+				GIT_OBJECT_DIRECTORY: join(parentGit, "objects"),
+				GIT_ALTERNATE_OBJECT_DIRECTORIES: join(parentGit, "objects"),
+				GIT_PREFIX: "inherited/prefix/",
+				GIT_CONFIG_COUNT: "1",
+				GIT_CONFIG_KEY_0: "core.bare",
+				GIT_CONFIG_VALUE_0: "false",
+				COMPLIANCE_TEST_MARKER: "synthetic-marker",
+			},
+		},
+	);
+	assert.deepEqual(await readFile(join(parentGit, "config")), configBefore);
+	assert.deepEqual(await readFile(join(parentGit, "index")), indexBefore);
+	const result = JSON.parse(child.stdout);
+	assert.equal(result.pathPreserved, true);
+	assert.equal(result.marker, "synthetic-marker");
+	assert.ok(
+		has(
+			result.findings,
+			"tracked-capture",
+			"components-ui/example/.next/.reference/page.html",
+		),
+	);
+	assert.ok(
+		has(
+			result.findings,
+			"generated-artifact",
+			"components-ui/example/.next/.reference/page.html",
+		),
+	);
+	const { stdout } = await execute("git", ["ls-files", "-z"], {
+		cwd: f.root,
+		env: localGitEnvironment(),
+	});
+	assert.equal(stdout, "components-ui/example/.next/.reference/page.html\0");
 });
 
 test("distinguishes build and test tooling from implementation runtime URLs", async (t) => {
