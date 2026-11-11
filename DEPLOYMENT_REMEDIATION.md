@@ -1,6 +1,8 @@
 # Deployment remediation status
 
-The owner approved the merges and deployments. Remediation and gallery restoration PRs were squash merged through Pukbot with their review branches deleted. Managed sites received fresh reviewed builds, and the observations below are actual live checks. Current-tree and live-site verification do not erase historical or external copies.
+The release records below describe the completed restoration stage before the subsequent media-free follow-up. The owner has now requested zero standalone media in source and fresh screenshot/video previews of retained projects on the portfolio. Those follow-up source changes, replacement captures, deployments and history rewrite are in progress, so the earlier live checks do not verify the new request.
+
+The owner approved the earlier merges and deployments. Remediation and gallery restoration PRs were squash merged through Pukbot with their review branches deleted. Managed sites received fresh reviewed builds, and the observations below are actual live checks. Current-tree and live-site verification do not erase historical or external copies.
 
 | URL or artifact | Published outcome | Verification and revision |
 | --- | --- | --- |
@@ -30,4 +32,4 @@ The first approved portfolio run published the portfolio, while its old blog job
 
 The two YouTube recordings are an explicit owner exception. Historical support/cache requests, external copies and any legal/licensing decisions remain separate. Keep the full original main backup private and unserved.
 
-The completed portfolio restoration is recorded in [compliance/portfolio-gallery-live-verification.json](compliance/portfolio-gallery-live-verification.json). Its public UI is limited to the145 explicitly approved projects; current source/artwork revocation checks run before commits, PRs and publishing. Original MIT artwork grants do not relicense the integrated software. Main and final publishing CI are green, including real media installation, all verification jobs and both deployment jobs. All current requested merges and managed-site deployments are complete. Published history, independently controlled forks/caches and the owner-kept recordings remain the separate limitations documented above.
+The completed portfolio restoration is recorded in [compliance/portfolio-gallery-live-verification.json](compliance/portfolio-gallery-live-verification.json). Its public UI is limited to the145 explicitly approved projects; current source/artwork revocation checks run before commits, PRs and publishing. Original MIT artwork grants do not relicense the integrated software. Main and final publishing CI are green, including real media installation, all verification jobs and both deployment jobs. That earlier restoration release completed its merges and managed-site deployments; the new media-free follow-up remains pending until its exact builds are published and checked live. Published history, independently controlled forks/caches and the owner-kept recordings remain the separate limitations documented above.
