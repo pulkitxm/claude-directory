@@ -35,7 +35,7 @@ const toolingDirectories = new Set([
 function runtimePath(path) {
 	return (
 		categories.has(path.split("/")[0]) &&
-		/\.(?:html?|css|[cm]?js|jsx|tsx?)$/i.test(path) &&
+		/\.(?:html?|css|[cm]?js|jsx|tsx?|glsl|frag|vert)$/i.test(path) &&
 		!path
 			.split("/")
 			.some(
@@ -49,7 +49,11 @@ function runtimePath(path) {
 export function requiresInlineArtworkReview(path, text) {
 	return (
 		runtimePath(path) &&
-		(/<(?:svg|path)(?=[\s/:>])/i.test(text) ||
+		(/\.(?:glsl|frag|vert)$/i.test(path) ||
+			/\b(?:gl_FragColor|gl_FragCoord|gl_Position|fragmentShader|vertexShader)\b/.test(
+				text,
+			) ||
+			/<(?:svg|path)(?=[\s/:>])/i.test(text) ||
 			/data(?::|%3a)(?:image|font|video|audio)(?:\/|%2f)/i.test(text) ||
 			(/\bcreateElementNS\s*\(/.test(text) &&
 				(/http:\/\/www\.w3\.org\/2000\/svg/i.test(text) ||
