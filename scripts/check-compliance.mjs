@@ -4,6 +4,7 @@ import { lstat, readFile, readdir } from "node:fs/promises";
 import { extname, isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
+import { scanInlineArtwork } from "./check-inline-artwork.mjs";
 
 const skippedDirectories = new Set([
 	".git",
@@ -191,6 +192,7 @@ export async function scanCompliance(directory) {
 		}
 	}
 	await walk(root);
+	findings.push(...(await scanInlineArtwork(root, files)));
 	try {
 		await lstat(join(root, ".git"));
 		try {

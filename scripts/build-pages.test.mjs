@@ -132,13 +132,20 @@ test("static copying excludes tools, captures and process artifacts", async (t) 
 		"source/report.md",
 		"source/source.ts",
 		"source/interaction.test.js",
+		"source/THIRD_PARTY_NOTICES.txt",
+		"source/unapproved.txt",
 	])
 		await f.put(path, "synthetic fixture");
 	await copyStaticProject(join(f.root, "source"), join(f.root, "copied"));
 	assert.deepEqual((await readdir(join(f.root, "copied"))).sort(), [
+		"THIRD_PARTY_NOTICES.txt",
 		"assets",
 		"index.html",
 	]);
+	assert.equal(
+		await readFile(join(f.root, "copied/THIRD_PARTY_NOTICES.txt"), "utf8"),
+		"synthetic fixture",
+	);
 	assert.equal(
 		await readFile(join(f.root, "copied/assets/art.svg"), "utf8"),
 		"synthetic fixture",

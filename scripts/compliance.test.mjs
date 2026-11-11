@@ -41,6 +41,12 @@ async function fixture(t) {
 		assets: [],
 		remote_dependencies: [],
 	});
+	await put("compliance/inline-artwork.json", {
+		version: 1,
+		files: [],
+		licenses: [],
+		notices: [],
+	});
 	await put("compliance/projects.json", [
 		{
 			path: "components-ui/example",
@@ -370,7 +376,14 @@ test("isolates fixture Git operations and tracked scans from an inherited reposi
 	});
 	await execute(
 		"git",
-		["--git-dir", parentGit, "--work-tree", parentTree, "add", "parent-marker.txt"],
+		[
+			"--git-dir",
+			parentGit,
+			"--work-tree",
+			parentTree,
+			"add",
+			"parent-marker.txt",
+		],
 		{ env: localGitEnvironment() },
 	);
 	const configBefore = await readFile(join(parentGit, "config"));

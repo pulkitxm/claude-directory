@@ -9,7 +9,7 @@ Public previews may be examined as inspiration. Public accessibility is not redi
 
 Never automatically download and commit proprietary images, fonts, video, icons, illustrations, logos, or other assets. Never commit captured commercial HTML, CSS, JavaScript, screenshots, computed-style dumps, or other source material without documented authorization. Never reproduce paid templates pixel-for-pixel for public redistribution.
 
-Use original designs, original copy and branding, and original or properly licensed assets. Record every asset and runtime dependency in ASSET_PROVENANCE.json with origin, license, redistribution permission, and SHA-256 for local files. Preserve required third-party license notices. Do not describe third-party materials as MIT-licensed unless their actual license permits that.
+Use original designs, original copy and branding, and original or properly licensed assets. Record every asset and runtime dependency in ASSET_PROVENANCE.json with origin, license, redistribution permission, and SHA-256 for local files. Preserve required third-party license notices. Include inline SVG and embedded artwork in the rights review, record exact licensed geometry in compliance/inline-icon-provenance.json, and refresh compliance/inline-artwork.json only after reviewing changed source and notices. Simple geometry does not authorize unrelated illustration code. Do not describe third-party materials as MIT-licensed unless their actual license permits that.
 
 Stop and flag uncertain rights for manual licensing review. Keep uncertain material outside the repository and publication output. Do not add an excluded template without updated permissions and project policy.
 
