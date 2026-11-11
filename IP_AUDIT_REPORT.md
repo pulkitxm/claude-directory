@@ -4,13 +4,13 @@ Audit date: 2026-11-11. Baseline: `f3d7e12f34bf7d90130dce3ec3b26cf69c29794e`. In
 
 ## Outcome
 
-131 independent projects retained after asset remediation; 415 projects removed from current distribution, including all 199 premium recreations across 10 vendors. Initial classifications: 202 HIGH RISK, 343 MEDIUM RISK, 1 LOW RISK. Retained projects have a LOW RISK engineering assessment after cleanup, subject to the limitations below. Removed projects keep their original risk classification for review.
+145 projects retained after reviewed source and asset remediation; 401 projects removed from current distribution, including all 199 premium recreations across 10 vendors. Initial classifications: 202 HIGH RISK, 343 MEDIUM RISK, 1 LOW RISK. Retained projects have a LOW RISK engineering assessment after cleanup, subject to the limitations below. Removed projects keep their original risk classification for review.
 
 The owner approved publication, squash merges and completion of the managed deployments. PRs [1390](https://github.com/pulkitxm/claude-directory/pull/1390), [141](https://github.com/pulkitxm/pulkit.page/pull/141) and [3](https://github.com/pulkitxm/claude-directory-ppt/pull/3) were squash merged through Pukbot with their review branches deleted. Fresh managed-site deployments succeeded. Published history rewriting, force-pushes and historical artifact deletion were not performed. Do not publish the baseline or backup as evidence.
 
 ## Evidence and method
 
-The complete per-project record is [compliance/project-audit.json](compliance/project-audit.json), including original reference URLs where present, vendor, asset/capture paths, evidence, action and uncertainties. The table below enumerates every project. A tracked-file inventory records 76,919 removed or replaced original paths, Git blob IDs and SHA-256 values verified from the private full main checkout in compliance/removed-files.jsonl. It contains metadata only, not copied content. [Source hash matches](compliance/source-hash-matches.json) records exact comparisons. All 58 recorded capture/implementation pairs were verified with SHA-256 against the private main backup. None of the 131 new local assets matches a baseline file hash. Shared framework/library matches alone are not evidence of proprietary ownership.
+The complete per-project record is [compliance/project-audit.json](compliance/project-audit.json), including original reference URLs where present, vendor, asset/capture paths, evidence, action and uncertainties. The table below enumerates every project. A tracked-file inventory records 76,919 removed or replaced original paths, Git blob IDs and SHA-256 values verified from the private full main checkout in compliance/removed-files.jsonl. It contains metadata only, not copied content. [Source hash matches](compliance/source-hash-matches.json) records exact comparisons. All 58 recorded capture/implementation pairs were verified with SHA-256 against the private main backup. None of the initial 131 replacement local assets matched a baseline file hash; later verified restorations are recorded separately below. Shared framework/library matches alone are not evidence of proprietary ownership.
 
 Every project's README and brief and available implementation text were scanned for external origins, supplied code, branding, marketing copy, source captures, runtime assets and license records. Premium projects were reviewed per project, with detailed content inspection of the priority Lexington projects and captured/distributed source pairs. Nonpremium projects were reviewed using source signals and briefs; undocumented embedded component code was held back rather than assumed independently created. No remote demo assets were downloaded for this audit. Visual similarity was assessed from documented recreation intent and implementation evidence, not an exhaustive side-by-side visual/legal review of every page.
 
@@ -40,7 +40,23 @@ Follow-up local verification passed all 131 preview builds, all 34 tests, all 1,
 
 The source follow-up was squash merged through [PR1393](https://github.com/pulkitxm/claude-directory/pull/1393) at `83879229b486c8eb777187fa01a725d7743c2ca8`; its reviewed and merged trees match. Fresh Pages run43018899063 and deployment7709817357 succeeded. All1480 live targets were verified, including131 retained roots200,415 removed roots404 and812 old file paths404. Every new static notice and affected compiled asset matched its recorded output. Raw HTML differences from Cloudflare analytics/email transformations remain explicit in the record; exact origin hashes were verified by reversing only those provider changes. None of the58 captured/distributed source hashes occurs among the1456 checked current Git files or630 built publication files. This establishes the stated engineering outcome, not legal clearance or historical erasure.
 
-The owner prioritized current-repository verification before portfolio restoration or reconsideration of other removed nonpremium projects. Neither restoration is part of this follow-up. Historical refs, external correspondence and any privately granted rights remain separate review items.
+The owner prioritized current-repository verification before portfolio restoration or reconsideration of other removed nonpremium projects. That source-verification phase did not include restoration. The subsequent nonpremium re-review is recorded below. Historical refs, external correspondence and any privately granted rights remain separate review items.
+
+## Removed nonpremium project re-review
+
+The follow-up re-reviewed all216 removed projects outside the premium directory using original baseline documents, implementation and asset hashes, and primary licensing sources. Fourteen conditional restoration candidates were identified: five small independent UI/interaction experiments, six licensed shader integrations, and three integrations of upstream MIT components. The other202 remain withheld because precise code, design, or asset grants are missing or restrictive. A nonpremium folder name, a permissive framework dependency, or free preview access does not establish a right to redistribute a complete template.
+
+The complete decisions are in [compliance/nonpremium-review.json](compliance/nonpremium-review.json), with separate source/licensing records in compliance/nonpremium-reviews/. 14 of those candidates have completed source, asset, license and functionality verification and are included in this review branch. Remaining candidates stay outside the catalog until cleanup and verification finish. Live publication is recorded separately in compliance/restored-projects.json. No paid template is being rebuilt from its former reference. This re-review does not authorize historical rewriting or public removal requests to other repository owners.
+
+## Completed nonpremium restoration checks
+
+The second review restored 14 projects, producing a 145-project current catalog while keeping all 199 premium projects and 202 other unresolved projects outside distribution. Five restored projects preserve small independent UI or interaction implementations. Nine integrate specifically licensed components or shader packages, with their own MIT or Apache notices retained. No premium template was reconstructed from its old reference.
+
+[compliance/restored-projects.json](compliance/restored-projects.json) records all 272 retained restoration file hashes, before/after comparisons, specific upstream grants, replacement assets and build/interaction checks. Detailed shader records are in compliance/restoration-reviews/. All 14 cleaned projects built and passed desktop/mobile rendering and meaningful control checks. Stale shader source panels now export the actual current licensed component with its full notice, and Grain's mobile controls are accessible through a tested disclosure.
+
+The current media manifest contains 151 files: 150 original geometric SVGs and the generated gradient video. Exact hashes match the retained files, no media hash matches the removed baseline ledger, and none of the 58 recorded captured/distributed source hashes remains in the current tree. All 216 previously removed nonpremium projects have a recorded decision; 202 remain held for precise rights evidence. [compliance/restoration-verification.json](compliance/restoration-verification.json) records the final source checks.
+
+The safeguard suite now has 36 passing tests, including shader-source review pins and a regression distinguishing literal JSX source-credit links from media, style and network-resource URLs. License/notice files are pinned separately. These tests complement the recorded manual source review and do not establish legal clearance. Full-catalog CI and deployed verification are recorded separately when publication completes.
 
 ## Remaining review and limits
 
@@ -56,7 +72,7 @@ All 73 initially open PRs were authored by Dependabot. Closed both reviewed Pukb
 
 ## Verification
 
-All 131 retained previews built successfully. All 34 automated tests, source safeguards, actionlint, whitespace checks and 1,265 publication links passed. Browser checks passed for 99 static projects and 30 UI projects on desktop/mobile, plus terminal and scroll-video behavior and nine representative UI interactions. Eleven Tailwind globs and two mobile-menu stacking issues were repaired during verification. Follow-up build/test/link results are recorded in [compliance/verification-followup.json](compliance/verification-followup.json); earlier baseline browser and interaction evidence remains in compliance/verification.json. Fresh deployed checks are recorded separately from local checks. Missing access is reported as pending, never as successful deletion. The original main backup is private local evidence and must not be uploaded or deployed.
+The initial remediation built all 131 retained previews, with 26 automated tests and 1,249 publication references passing. The retained-source follow-up then passed 34 tests, 1,265 references, source safeguards, actionlint and whitespace checks. Browser checks passed for 99 static projects and 30 UI projects on desktop/mobile, plus terminal and scroll-video behavior and nine representative UI interactions. Eleven Tailwind globs and two mobile-menu stacking issues were repaired during verification. Follow-up build/test/link results are recorded in [compliance/verification-followup.json](compliance/verification-followup.json); earlier baseline browser and interaction evidence remains in compliance/verification.json. Fresh deployed checks are recorded separately from local checks. Missing access is reported as pending, never as successful deletion. The original main backup is private local evidence and must not be uploaded or deployed.
 
 Git inspection and synthetic fixtures now clear inherited repository-control environment variables. A regression verifies that linked-worktree hooks inspect the intended checkout without changing the caller's Git configuration or index.
 
@@ -81,7 +97,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `components-ui/animated-dots-rain` | MEDIUM RISK | removed from current distribution |
 | `components-ui/animated-hud-targeting-ui` | MEDIUM RISK | removed from current distribution |
 | `components-ui/aurora-sign-up` | MEDIUM RISK | removed from current distribution |
-| `components-ui/background-paths-hero` | MEDIUM RISK | removed from current distribution |
+| `components-ui/background-paths-hero` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `components-ui/core-features-gradient-cards` | MEDIUM RISK | removed from current distribution |
 | `components-ui/crimson-mill-supply-card-h61` | MEDIUM RISK | retained after asset remediation |
 | `components-ui/gradient-bars-background` | MEDIUM RISK | removed from current distribution |
@@ -96,7 +112,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `hero-sections/aethera-cinematic-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/ai-builder-dark-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/altitude-index-h38` | MEDIUM RISK | retained after asset remediation |
-| `hero-sections/animated-text-rotate-hero` | MEDIUM RISK | removed from current distribution |
+| `hero-sections/animated-text-rotate-hero` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `hero-sections/bloom-liquid-glass-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/cinematic-stream-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/codenest-hero` | MEDIUM RISK | removed from current distribution |
@@ -119,7 +135,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `hero-sections/rivr-defi-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/securify-data-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/sentinel-ai-hero` | MEDIUM RISK | removed from current distribution |
-| `hero-sections/shape-landing-hero` | MEDIUM RISK | removed from current distribution |
+| `hero-sections/shape-landing-hero` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `hero-sections/skyelite-jet-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/smart-prosthetics-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/stellar-ai-landing-hero` | MEDIUM RISK | removed from current distribution |
@@ -283,7 +299,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `shaders/gaming-vibe-shader` | MEDIUM RISK | removed from current distribution |
 | `shaders/generative-mountain-scene` | MEDIUM RISK | removed from current distribution |
 | `shaders/glsl-hills-shader` | MEDIUM RISK | removed from current distribution |
-| `shaders/grain-gradient-corners-lab` | MEDIUM RISK | removed from current distribution |
+| `shaders/grain-gradient-corners-lab` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `shaders/grainy-gradient-ripple-card` | MEDIUM RISK | removed from current distribution |
 | `shaders/hero-button-expandable` | MEDIUM RISK | removed from current distribution |
 | `shaders/hero-dithering-card` | MEDIUM RISK | removed from current distribution |
@@ -294,7 +310,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `shaders/interactive-flux-shader` | MEDIUM RISK | removed from current distribution |
 | `shaders/launch-shader` | MEDIUM RISK | removed from current distribution |
 | `shaders/liquid-crystal-shader` | MEDIUM RISK | removed from current distribution |
-| `shaders/liquid-metal-foundry` | MEDIUM RISK | removed from current distribution |
+| `shaders/liquid-metal-foundry` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `shaders/living-nebula-shader` | MEDIUM RISK | removed from current distribution |
 | `shaders/mesh-gradient-shader-hero` | MEDIUM RISK | removed from current distribution |
 | `shaders/molten-core-shader` | MEDIUM RISK | removed from current distribution |
@@ -310,9 +326,9 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `shaders/radial-shader` | MEDIUM RISK | removed from current distribution |
 | `shaders/realistic-fog-background` | MEDIUM RISK | removed from current distribution |
 | `shaders/sdf-dreamscape-shader` | MEDIUM RISK | removed from current distribution |
-| `shaders/shader-animation-integration` | MEDIUM RISK | removed from current distribution |
-| `shaders/shader-flow-field-rings` | MEDIUM RISK | removed from current distribution |
-| `shaders/shader-lines-showcase` | MEDIUM RISK | removed from current distribution |
+| `shaders/shader-animation-integration` | MEDIUM RISK | retained after verified nonpremium restoration |
+| `shaders/shader-flow-field-rings` | MEDIUM RISK | retained after verified nonpremium restoration |
+| `shaders/shader-lines-showcase` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `shaders/shader-plasma-grid-background` | MEDIUM RISK | removed from current distribution |
 | `shaders/shader-spectral-clock` | MEDIUM RISK | removed from current distribution |
 | `shaders/sickui-waitlist-mesh-shader` | MEDIUM RISK | removed from current distribution |
@@ -323,7 +339,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `shaders/vhs-noise-distortion-hero` | MEDIUM RISK | removed from current distribution |
 | `shaders/vitruvian-ascii-shader` | MEDIUM RISK | removed from current distribution |
 | `shaders/volumetric-beams-shader` | MEDIUM RISK | removed from current distribution |
-| `shaders/warp-checks-background-lab` | MEDIUM RISK | removed from current distribution |
+| `shaders/warp-checks-background-lab` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `shaders/warp-dithering-shader` | MEDIUM RISK | removed from current distribution |
 | `shaders/warp-drive-shader-bridge` | MEDIUM RISK | removed from current distribution |
 | `shaders/warp-shader-hero` | MEDIUM RISK | removed from current distribution |
@@ -554,8 +570,8 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `templates/red-sun-editorial-template` | MEDIUM RISK | removed from current distribution |
 | `templates/season-04-brutalist-store` | MEDIUM RISK | removed from current distribution |
 | `templates/softly-wellness` | MEDIUM RISK | removed from current distribution |
-| `templates/stacking-cards-portfolio` | MEDIUM RISK | removed from current distribution |
-| `templates/sticky-content-switch` | MEDIUM RISK | removed from current distribution |
+| `templates/stacking-cards-portfolio` | MEDIUM RISK | retained after verified nonpremium restoration |
+| `templates/sticky-content-switch` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `templates/super-design-industrial-system` | MEDIUM RISK | removed from current distribution |
 | `templates/super-travel-luxury-landing` | MEDIUM RISK | removed from current distribution |
 | `templates/superdesign-architectural-type` | MEDIUM RISK | removed from current distribution |
@@ -575,7 +591,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `templates/superdesign-technical-system` | MEDIUM RISK | removed from current distribution |
 | `templates/synapse-design-system` | MEDIUM RISK | retained after asset remediation |
 | `templates/terroir-tasting-room` | MEDIUM RISK | removed from current distribution |
-| `templates/vertical-clip-text-slide` | MEDIUM RISK | removed from current distribution |
+| `templates/vertical-clip-text-slide` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `ui-design/academia-classical-showcase` | MEDIUM RISK | retained after asset remediation |
 | `ui-design/ai-budget-tracking-landing-page-velara-al` | HIGH RISK | removed from current distribution |
 | `ui-design/aperture-minimalist-dark` | MEDIUM RISK | retained after asset remediation |
@@ -586,8 +602,8 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `ui-design/bold-typography-design-system` | MEDIUM RISK | retained after asset remediation |
 | `ui-design/botanical-organic-serif` | MEDIUM RISK | retained after asset remediation |
 | `ui-design/clay-design-system` | MEDIUM RISK | retained after asset remediation |
-| `ui-design/copy-machine-pixel-perfect` | MEDIUM RISK | removed from current distribution |
-| `ui-design/copy-machine-setup` | MEDIUM RISK | removed from current distribution |
+| `ui-design/copy-machine-pixel-perfect` | MEDIUM RISK | retained after verified nonpremium restoration |
+| `ui-design/copy-machine-setup` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `ui-design/corporate-trust-design-system` | MEDIUM RISK | retained after asset remediation |
 | `ui-design/cyberpunk-glitch-design-system` | MEDIUM RISK | retained after asset remediation |
 | `ui-design/finsyc-finance-landing` | HIGH RISK | removed from current distribution |

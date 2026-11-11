@@ -1,10 +1,10 @@
 # Independent design experiments
 
-A collection of AI-assisted design experiments and useful starting points for developers. Commercial template recreations and disputed assets have been withdrawn from this working tree. This repository does not redistribute paid templates.
+A collection of AI-assisted design experiments and useful starting points for developers. Commercial template recreations and disputed assets have been withdrawn from the current tree. This repository does not redistribute paid templates.
 
-The current catalog contains **131 projects** using independent functional briefs, original replacement visuals and system typography. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), and [deployment verification](DEPLOYMENT_REMEDIATION.md). These checks do not establish legal compliance. Live withdrawal results and remaining historical/external actions are documented separately. Audit records contain removed path names and hashes as evidence; the removed implementations and media are absent from the current tree.
+The current catalog contains **145 projects** with reviewed source and authorized assets. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
 
-Run `make compliance`, `make test`, and `make build`. The builder publishes only projects explicitly listed in `compliance/projects.json`; it does not archive the repository. Publishing requires a reviewed manual workflow dispatch.
+Run `make compliance`, `make test`, and `make build`. The builder publishes only projects listed in `compliance/projects.json`; it does not archive the repository. Publishing requires a reviewed manual workflow dispatch.
 
 ## 3d-games (1)
 
@@ -14,18 +14,21 @@ Run `make compliance`, `make test`, and `make build`. The builder publishes only
 
 - [apex-scroll-hero](./animations-loaders/apex-scroll-hero/)
 
-## components-ui (3)
+## components-ui (4)
 
+- [background-paths-hero](./components-ui/background-paths-hero/)
 - [crimson-mill-supply-card-h61](./components-ui/crimson-mill-supply-card-h61/)
 - [lumen-aurora-vcard-h62](./components-ui/lumen-aurora-vcard-h62/)
 - [terminal-cli-control-deck](./components-ui/terminal-cli-control-deck/)
 
-## hero-sections (5)
+## hero-sections (7)
 
 - [altitude-index-h38](./hero-sections/altitude-index-h38/)
+- [animated-text-rotate-hero](./hero-sections/animated-text-rotate-hero/)
 - [helix-vault-h55](./hero-sections/helix-vault-h55/)
 - [monocrit-studio-h27](./hero-sections/monocrit-studio-h27/)
 - [prisma-noir-h52](./hero-sections/prisma-noir-h52/)
+- [shape-landing-hero](./hero-sections/shape-landing-hero/)
 - [verdant-advisory-h10](./hero-sections/verdant-advisory-h10/)
 
 ## landing-pages (77)
@@ -123,16 +126,24 @@ Run `make compliance`, `make test`, and `make build`. The builder publishes only
 - [voltline-resume-h53](./portfolios/voltline-resume-h53/)
 - [voltmark-engineer-terminal-h24](./portfolios/voltmark-engineer-terminal-h24/)
 
-## shaders (0)
+## shaders (6)
 
-No experiments are currently distributed in this category.
+- [grain-gradient-corners-lab](./shaders/grain-gradient-corners-lab/)
+- [liquid-metal-foundry](./shaders/liquid-metal-foundry/)
+- [shader-animation-integration](./shaders/shader-animation-integration/)
+- [shader-flow-field-rings](./shaders/shader-flow-field-rings/)
+- [shader-lines-showcase](./shaders/shader-lines-showcase/)
+- [warp-checks-background-lab](./shaders/warp-checks-background-lab/)
 
-## templates (2)
+## templates (5)
 
 - [cyber-serif-template](./templates/cyber-serif-template/)
+- [stacking-cards-portfolio](./templates/stacking-cards-portfolio/)
+- [sticky-content-switch](./templates/sticky-content-switch/)
 - [synapse-design-system](./templates/synapse-design-system/)
+- [vertical-clip-text-slide](./templates/vertical-clip-text-slide/)
 
-## ui-design (30)
+## ui-design (32)
 
 - [academia-classical-showcase](./ui-design/academia-classical-showcase/)
 - [aperture-minimalist-dark](./ui-design/aperture-minimalist-dark/)
@@ -143,6 +154,8 @@ No experiments are currently distributed in this category.
 - [bold-typography-design-system](./ui-design/bold-typography-design-system/)
 - [botanical-organic-serif](./ui-design/botanical-organic-serif/)
 - [clay-design-system](./ui-design/clay-design-system/)
+- [copy-machine-pixel-perfect](./ui-design/copy-machine-pixel-perfect/)
+- [copy-machine-setup](./ui-design/copy-machine-setup/)
 - [corporate-trust-design-system](./ui-design/corporate-trust-design-system/)
 - [cyberpunk-glitch-design-system](./ui-design/cyberpunk-glitch-design-system/)
 - [flatline-design-system](./ui-design/flatline-design-system/)

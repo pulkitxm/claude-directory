@@ -36,6 +36,20 @@ Closing a PR, squash merging it, or deleting its ordinary branch does not remove
 
 A limited text review covered 123 matching PR conversations/review bodies and did not identify a separate creator-authored claim there. Inline code-review threads and private/external correspondence were outside that review. This does not disprove the creator concern supplied by the owner, establish permission, or replace review of the actual correspondence.
 
+## Confirmed external forks
+
+Read-only metadata checks on 2026-11-11 identified [Saminsami73/projects-directory](https://github.com/Saminsami73/projects-directory) and [forkgitss/pulkitxm-claude-directory](https://github.com/forkgitss/pulkitxm-claude-directory) as public forks of this repository. Both current default branches retain all ten premium-vendor directories. Exact head and tree identities are recorded in [compliance/external-copy-inventory.json](compliance/external-copy-inventory.json). The inspection read repository, ref and tree metadata only; it did not download their source or media. No owner was contacted and no external copy was changed.
+
+These are confirmed additional copies, not a complete fork/cache inventory. Updating this repository or rewriting its history would not update those forks. Owner/provider coordination remains pending and requires separate authorization to send messages or request removal.
+
+## Prepared provider request
+
+The following draft is ready for owner review, not sent:
+
+> I administer this repository and have withdrawn commercial template recreations, disputed assets and captured source from its current distribution. The audit and historical inventories identify the exact affected paths, commits, GitHub-managed pull refs and deployment metadata. Please advise how to remove the identified historical PR diffs, cached commit/raw views, source archives and stored deployment artifacts, and which steps require repository administration or rights-holder participation. The five priority cases are PRs 428, 487, 488, 492 and 497. The repository has not rewritten published history or force-pushed. Two independently controlled forks also retain the premium subtree. Please distinguish actions that affect the primary repository from those requiring each fork owner or the relevant rights holder. I am the repository administrator, not the owner of the third-party template rights.
+
+Attach reviewed metadata inventories and public current-tree audit links first. Do not attach the private backup, original media, claim correspondence or laptop captures without separately reviewing the disclosure scope. A support request or its acknowledgment does not establish that material was purged.
+
 ## Coordinated actions requiring separate authorization
 
 1. Have the owner/admin and relevant licensor or creator review the exact retained refs, project paths and rights issue. Preserve necessary evidence privately as hashes, identities and scoped records. Keep the original backup private, access controlled and unserved. Use sanitized metadata for support coordination and public evidence; review any request for original material separately.
