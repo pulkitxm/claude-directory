@@ -3,9 +3,11 @@ import { isAbsolute, win32 } from "node:path";
 
 const manifestPath = "compliance/dependency-licenses.json";
 const uncertain =
-	/\b(?:unknown|unverified|uncertain|unclear|pending|tbd|todo|none|n\/a|unlicensed|not supplied|not recorded|not established|not verified|no permission|no license|not authorized|not permitted|not allowed|all rights reserved)\b/i;
+	/\b(?:unknown|unverified|uncertain|unclear|pending|tbd|todo|none|n\/a|unlicensed|not supplied|not recorded|not established|not verified|no permission|no license|no redistribution|not authorized|not permitted|not allowed|not granted|not licensed|denied|forbidden|prohibited|disallowed|unauthorized|all rights reserved)\b/i;
 const packageName = /^(?:@[a-z0-9][a-z0-9._-]*\/)?[a-z0-9][a-z0-9._-]*$/;
 const version = /^\d+\.\d+\.\d+(?:-[a-zA-Z0-9.-]+)?(?:\+[a-zA-Z0-9.-]+)?$/;
+const exactVersion = (value) =>
+	typeof value === "string" && version.test(value);
 const object = (value) =>
 	value !== null && typeof value === "object" && !Array.isArray(value);
 const meaningful = (value) =>
@@ -17,12 +19,13 @@ const safePath = (value) =>
 	value.length > 0 &&
 	!isAbsolute(value) &&
 	!win32.isAbsolute(value) &&
-	!/[\\\x00-\x1f\x7f]/.test(value) &&
+	!/[\\:\x00-\x1f\x7f]/.test(value) &&
 	!value.split("/").some((part) => !part || part === "." || part === "..");
 
 function origin(value) {
 	try {
-		if (typeof value !== "string") return false;
+		if (typeof value !== "string" || !value.startsWith("https://"))
+			return false;
 		const url = new URL(value);
 		return (
 			url.protocol === "https:" && !url.username && !url.password && !url.hash
@@ -30,6 +33,17 @@ function origin(value) {
 	} catch {
 		return false;
 	}
+}
+
+function integrity(value) {
+	if (typeof value !== "string") return false;
+	const match = /^sha(256|384|512)-([A-Za-z0-9+/]+={0,2})$/.exec(value);
+	if (!match) return false;
+	const bytes = Buffer.from(match[2], "base64");
+	return (
+		bytes.length === Number(match[1]) / 8 &&
+		bytes.toString("base64") === match[2]
+	);
 }
 
 export async function scanDependencyProvenance(files, projects, records) {
@@ -83,7 +97,7 @@ export async function scanDependencyProvenance(files, projects, records) {
 				`Dependency belongs to an unregistered project: ${record.package}`,
 			);
 		if (
-			!version.test(record.version ?? "") ||
+			!exactVersion(record.version) ||
 			!meaningful(record.license) ||
 			!origin(record.origin) ||
 			!meaningful(record.redistribution_permission) ||
@@ -116,7 +130,8 @@ export async function scanDependencyProvenance(files, projects, records) {
 					!object(file) ||
 					!safePath(file.path) ||
 					!file.path.startsWith(`node_modules/${record.package}/`) ||
-					!/^[a-f\d]{64}$/.test(file.sha256 ?? "") ||
+					typeof file.sha256 !== "string" ||
+					!/^[a-f\d]{64}$/.test(file.sha256) ||
 					(file.bytes !== undefined &&
 						(!Number.isSafeInteger(file.bytes) || file.bytes <= 0)) ||
 					(file.source_url !== undefined && !origin(file.source_url))
@@ -220,12 +235,10 @@ export async function scanDependencyProvenance(files, projects, records) {
 				!object(locked) ||
 				locked.link ||
 				locked.dev ||
-				!version.test(locked.version ?? "") ||
+				!exactVersion(locked.version) ||
 				!origin(locked.resolved) ||
 				!meaningful(locked.license) ||
-				!/^sha(?:256|384|512)-[A-Za-z0-9+/]+={0,2}$/.test(
-					locked.integrity ?? "",
-				)
+				!integrity(locked.integrity)
 			) {
 				add(
 					"npm-lock",

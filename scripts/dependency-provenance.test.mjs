@@ -19,7 +19,7 @@ async function fixture(t) {
 		version: "1.2.3",
 		resolved: "https://registry.npmjs.org/@example/runtime/-/runtime-1.2.3.tgz",
 		license: "MIT",
-		integrity: "sha512-YWJjZA==",
+		integrity: `sha512-${Buffer.alloc(64).toString("base64")}`,
 	};
 	const lock = {
 		lockfileVersion: 3,
@@ -116,6 +116,19 @@ test("requires completed rights records without treating matching SPDX text as a
 				field === "origin" ? "file:local.tgz" : "pending review";
 			assert.ok(has(await f.scan(), "npm-rights"));
 		});
+});
+
+test("rejects explicit denial of redistribution permission", async (t) => {
+	const f = await fixture(t);
+	for (const value of [
+		"Permission denied",
+		"Redistribution not granted",
+		"No redistribution permission",
+		"Redistribution forbidden",
+	]) {
+		f.record.redistribution_permission = value;
+		assert.ok(has(await f.scan(), "npm-rights"));
+	}
 });
 
 test("rejects unsafe project, package and license-file paths without reading outside audited files", async (t) => {
@@ -217,4 +230,20 @@ test("rejects malformed lockfiles and invalid manifest records instead of crashi
 	);
 	f.records.push(null, [], { ...f.record, package: 123 });
 	assert.ok(has(await f.scan(), "npm-record"));
+});
+
+test("rejects non-string or truncated integrity and license hashes", async (t) => {
+	const f = await fixture(t);
+	for (const value of [
+		[f.locked.integrity],
+		"sha512-YWJjZA==",
+		{ sha512: "invalid" },
+	]) {
+		f.locked.integrity = value;
+		assert.ok(has(await f.scan(), "npm-lock"));
+	}
+	f.record.license_files = [
+		{ path: "node_modules/@example/runtime/LICENSE", sha256: ["a".repeat(64)] },
+	];
+	assert.ok(has(await f.scan(), "npm-license-file"));
 });
