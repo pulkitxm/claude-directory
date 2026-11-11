@@ -4,7 +4,7 @@ Audit date: 2026-11-11. Baseline: `f3d7e12f34bf7d90130dce3ec3b26cf69c29794e`. In
 
 ## Outcome
 
-137 projects retained after reviewed source and asset remediation; 409 projects removed from current distribution, including all 199 premium recreations across 10 vendors. Initial classifications: 202 HIGH RISK, 343 MEDIUM RISK, 1 LOW RISK. Retained projects have a LOW RISK engineering assessment after cleanup, subject to the limitations below. Removed projects keep their original risk classification for review.
+140 projects retained after reviewed source and asset remediation; 406 projects removed from current distribution, including all 199 premium recreations across 10 vendors. Initial classifications: 202 HIGH RISK, 343 MEDIUM RISK, 1 LOW RISK. Retained projects have a LOW RISK engineering assessment after cleanup, subject to the limitations below. Removed projects keep their original risk classification for review.
 
 The owner approved publication, squash merges and completion of the managed deployments. PRs [1390](https://github.com/pulkitxm/claude-directory/pull/1390), [141](https://github.com/pulkitxm/pulkit.page/pull/141) and [3](https://github.com/pulkitxm/claude-directory-ppt/pull/3) were squash merged through Pukbot with their review branches deleted. Fresh managed-site deployments succeeded. Published history rewriting, force-pushes and historical artifact deletion were not performed. Do not publish the baseline or backup as evidence.
 
@@ -46,7 +46,7 @@ The owner prioritized current-repository verification before portfolio restorati
 
 The follow-up re-reviewed all216 removed projects outside the premium directory using original baseline documents, implementation and asset hashes, and primary licensing sources. Fourteen conditional restoration candidates were identified: five small independent UI/interaction experiments, six licensed shader integrations, and three integrations of upstream MIT components. The other202 remain withheld because precise code, design, or asset grants are missing or restrictive. A nonpremium folder name, a permissive framework dependency, or free preview access does not establish a right to redistribute a complete template.
 
-The complete decisions are in [compliance/nonpremium-review.json](compliance/nonpremium-review.json), with separate source/licensing records in compliance/nonpremium-reviews/. 6 of those candidates have completed source, asset, license and functionality verification and are included in this review branch. Remaining candidates stay outside the catalog until cleanup and verification finish. Live publication is recorded separately in compliance/restored-projects.json. No paid template is being rebuilt from its former reference. This re-review does not authorize historical rewriting or public removal requests to other repository owners.
+The complete decisions are in [compliance/nonpremium-review.json](compliance/nonpremium-review.json), with separate source/licensing records in compliance/nonpremium-reviews/. 9 of those candidates have completed source, asset, license and functionality verification and are included in this review branch. Remaining candidates stay outside the catalog until cleanup and verification finish. Live publication is recorded separately in compliance/restored-projects.json. No paid template is being rebuilt from its former reference. This re-review does not authorize historical rewriting or public removal requests to other repository owners.
 
 ## Remaining review and limits
 
@@ -87,7 +87,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `components-ui/animated-dots-rain` | MEDIUM RISK | removed from current distribution |
 | `components-ui/animated-hud-targeting-ui` | MEDIUM RISK | removed from current distribution |
 | `components-ui/aurora-sign-up` | MEDIUM RISK | removed from current distribution |
-| `components-ui/background-paths-hero` | MEDIUM RISK | removed from current distribution |
+| `components-ui/background-paths-hero` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `components-ui/core-features-gradient-cards` | MEDIUM RISK | removed from current distribution |
 | `components-ui/crimson-mill-supply-card-h61` | MEDIUM RISK | retained after asset remediation |
 | `components-ui/gradient-bars-background` | MEDIUM RISK | removed from current distribution |
@@ -102,7 +102,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `hero-sections/aethera-cinematic-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/ai-builder-dark-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/altitude-index-h38` | MEDIUM RISK | retained after asset remediation |
-| `hero-sections/animated-text-rotate-hero` | MEDIUM RISK | removed from current distribution |
+| `hero-sections/animated-text-rotate-hero` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `hero-sections/bloom-liquid-glass-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/cinematic-stream-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/codenest-hero` | MEDIUM RISK | removed from current distribution |
@@ -125,7 +125,7 @@ Git inspection and synthetic fixtures now clear inherited repository-control env
 | `hero-sections/rivr-defi-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/securify-data-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/sentinel-ai-hero` | MEDIUM RISK | removed from current distribution |
-| `hero-sections/shape-landing-hero` | MEDIUM RISK | removed from current distribution |
+| `hero-sections/shape-landing-hero` | MEDIUM RISK | retained after verified nonpremium restoration |
 | `hero-sections/skyelite-jet-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/smart-prosthetics-hero` | MEDIUM RISK | removed from current distribution |
 | `hero-sections/stellar-ai-landing-hero` | MEDIUM RISK | removed from current distribution |

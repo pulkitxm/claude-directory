@@ -2,7 +2,7 @@
 
 A collection of AI-assisted design experiments and useful starting points for developers. Commercial template recreations and disputed assets have been withdrawn from the current tree. This repository does not redistribute paid templates.
 
-The current catalog contains **137 projects** with reviewed source and authorized assets. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
+The current catalog contains **140 projects** with reviewed source and authorized assets. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
 
 Run `make compliance`, `make test`, and `make build`. The builder publishes only projects listed in `compliance/projects.json`; it does not archive the repository. Publishing requires a reviewed manual workflow dispatch.
 
@@ -14,18 +14,21 @@ Run `make compliance`, `make test`, and `make build`. The builder publishes only
 
 - [apex-scroll-hero](./animations-loaders/apex-scroll-hero/)
 
-## components-ui (3)
+## components-ui (4)
 
+- [background-paths-hero](./components-ui/background-paths-hero/)
 - [crimson-mill-supply-card-h61](./components-ui/crimson-mill-supply-card-h61/)
 - [lumen-aurora-vcard-h62](./components-ui/lumen-aurora-vcard-h62/)
 - [terminal-cli-control-deck](./components-ui/terminal-cli-control-deck/)
 
-## hero-sections (5)
+## hero-sections (7)
 
 - [altitude-index-h38](./hero-sections/altitude-index-h38/)
+- [animated-text-rotate-hero](./hero-sections/animated-text-rotate-hero/)
 - [helix-vault-h55](./hero-sections/helix-vault-h55/)
 - [monocrit-studio-h27](./hero-sections/monocrit-studio-h27/)
 - [prisma-noir-h52](./hero-sections/prisma-noir-h52/)
+- [shape-landing-hero](./hero-sections/shape-landing-hero/)
 - [verdant-advisory-h10](./hero-sections/verdant-advisory-h10/)
 
 ## landing-pages (77)
