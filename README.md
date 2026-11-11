@@ -2,7 +2,7 @@
 
 A collection of AI-assisted design experiments and useful starting points for developers. Commercial template recreations and disputed assets have been withdrawn from the current tree. This repository does not redistribute paid templates.
 
-The current catalog contains **136 projects** with reviewed source and authorized assets. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
+The current catalog contains **137 projects** with reviewed source and authorized assets. Review [the audit](IP_AUDIT_REPORT.md), [asset provenance](ASSET_PROVENANCE.md), [license scope](LICENSING.md), [nonpremium re-review](compliance/nonpremium-review.json), and [deployment verification](DEPLOYMENT_REMEDIATION.md). Passing checks is not legal clearance. Historical and external copies remain separate actions. Audit records retain path names and hashes as evidence without copying removed implementations or media.
 
 Run `make compliance`, `make test`, and `make build`. The builder publishes only projects listed in `compliance/projects.json`; it does not archive the repository. Publishing requires a reviewed manual workflow dispatch.
 
@@ -122,6 +122,10 @@ Run `make compliance`, `make test`, and `make build`. The builder publishes only
 - [solstice-craft-studio-h41](./portfolios/solstice-craft-studio-h41/)
 - [voltline-resume-h53](./portfolios/voltline-resume-h53/)
 - [voltmark-engineer-terminal-h24](./portfolios/voltmark-engineer-terminal-h24/)
+
+## shaders (1)
+
+- [shader-animation-integration](./shaders/shader-animation-integration/)
 
 ## templates (5)
 
