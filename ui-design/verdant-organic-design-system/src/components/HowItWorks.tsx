@@ -16,12 +16,7 @@ const icons: Record<string, LucideIcon> = {
 	CupSoda,
 };
 
-/**
- * The four-step ritual from field to cup. A hand-drawn, dashed, curved SVG path
- * weaves between the steps on desktop (never a straight connector line), echoing
- * the "no straight lines in nature" tenet. Each step sits in a card with a moss
- * number token.
- */
+
 export function HowItWorks() {
 	return (
 		<section
@@ -41,7 +36,7 @@ export function HowItWorks() {
 				/>
 
 				<div className="relative mt-20">
-					{/* hand-drawn dashed connector, desktop only */}
+					{}
 					<svg
 						className="pointer-events-none absolute inset-x-0 top-12 hidden h-24 w-full text-secondary/60 lg:block"
 						viewBox="0 0 1000 120"

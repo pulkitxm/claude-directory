@@ -1,6 +1,4 @@
-/* All page copy + data in one place — components stay presentational, content
-   is easy to scan and edit, and nothing is hard-coded mid-markup. Northwind is
-   a fictional enterprise operations / workflow platform. */
+
 import {
 	Workflow,
 	ShieldCheck,
@@ -21,7 +19,7 @@ export const NAV_LINKS = [
 	{ label: "FAQ", href: "#faq" },
 ] as const;
 
-/* Trust strip — fictional customer logos rendered as wordmarks. */
+
 export const TRUST_LOGOS = [
 	"Vantstorm",
 	"Helios",
@@ -33,7 +31,7 @@ export const TRUST_LOGOS = [
 	"Mintwave",
 ] as const;
 
-/* Stats band. */
+
 export const STATS: { value: string; label: string }[] = [
 	{ value: "12,000+", label: "Teams onboarded" },
 	{ value: "99.99%", label: "Uptime SLA" },
@@ -41,7 +39,7 @@ export const STATS: { value: string; label: string }[] = [
 	{ value: "180+", label: "Countries served" },
 ];
 
-/* Compact feature grid (3-up cards). */
+
 export const FEATURE_CARDS: {
 	icon: LucideIcon;
 	title: string;
@@ -50,7 +48,7 @@ export const FEATURE_CARDS: {
 	{
 		icon: Workflow,
 		title: "Visual workflow builder",
-		body: "Compose multi-step operations on a drag-and-drop canvas. No glue code, no brittle scripts — just flows your whole team can read.",
+		body: "Compose multi-step operations on a drag-and-drop canvas. No glue code, no brittle scripts ,  just flows your whole team can read.",
 	},
 	{
 		icon: ShieldCheck,
@@ -65,7 +63,7 @@ export const FEATURE_CARDS: {
 	{
 		icon: Boxes,
 		title: "300+ native integrations",
-		body: "Connect the stack you already run — Salesforce, Slack, Snowflake, Stripe — with first-party, fully-maintained connectors.",
+		body: "Connect the stack you already run ,  Salesforce, Slack, Snowflake, Stripe ,  with first-party, fully-maintained connectors.",
 	},
 	{
 		icon: GitBranch,
@@ -79,7 +77,7 @@ export const FEATURE_CARDS: {
 	},
 ];
 
-/* Zig-zag feature deep-dives (alternating layout). */
+
 export const ZIGZAG: {
 	eyebrow: string;
 	icon: LucideIcon;
@@ -93,7 +91,7 @@ export const ZIGZAG: {
 		icon: Zap,
 		title: "Turn busywork into",
 		titleAccent: "background work",
-		body: "Northwind watches for the triggers that matter and runs the response in milliseconds. Approvals, provisioning, reconciliation — handled before anyone has to ask.",
+		body: "Northwind watches for the triggers that matter and runs the response in milliseconds. Approvals, provisioning, reconciliation ,  handled before anyone has to ask.",
 		points: [
 			"Event-driven triggers across every connected tool",
 			"Branching logic with human-in-the-loop approvals",
@@ -105,7 +103,7 @@ export const ZIGZAG: {
 		icon: Users,
 		title: "One workspace your",
 		titleAccent: "whole company trusts",
-		body: "Bring operators, analysts, and leadership onto a single shared surface. Comment in context, assign ownership, and keep a perfect record of who did what — and why.",
+		body: "Bring operators, analysts, and leadership onto a single shared surface. Comment in context, assign ownership, and keep a perfect record of who did what ,  and why.",
 		points: [
 			"Real-time presence and threaded discussion",
 			"Role-based access down to the field level",
@@ -114,7 +112,7 @@ export const ZIGZAG: {
 	},
 ];
 
-/* Three-step "how it works" — uses glowing numbered badges. */
+
 export const STEPS: { title: string; body: string }[] = [
 	{
 		title: "Connect your stack",
@@ -130,7 +128,7 @@ export const STEPS: { title: string; body: string }[] = [
 	},
 ];
 
-/* Pricing tiers — center tier is highlighted ("popular"). */
+
 export const PRICING: {
 	name: string;
 	price: string;
@@ -185,7 +183,7 @@ export const PRICING: {
 	},
 ];
 
-/* Testimonials. */
+
 export const TESTIMONIALS: {
 	quote: string;
 	name: string;
@@ -215,7 +213,7 @@ export const TESTIMONIALS: {
 	},
 ];
 
-/* FAQ — rendered with native details/summary. */
+
 export const FAQS: { q: string; a: string }[] = [
 	{
 		q: "How long does it take to get started?",
@@ -227,7 +225,7 @@ export const FAQS: { q: string; a: string }[] = [
 	},
 	{
 		q: "Can I try it before committing to a plan?",
-		a: "Absolutely. The Starter plan is free forever, and every paid plan includes a 14-day trial with full access to integrations, dashboards, and automation — no credit card needed to begin.",
+		a: "Absolutely. The Starter plan is free forever, and every paid plan includes a 14-day trial with full access to integrations, dashboards, and automation ,  no credit card needed to begin.",
 	},
 	{
 		q: "What happens to my workflows if I downgrade?",

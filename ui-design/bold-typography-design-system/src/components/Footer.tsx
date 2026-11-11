@@ -2,7 +2,7 @@ import { Twitter, Linkedin, Github } from "lucide-react";
 import { brand, footer } from "../data/content";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Footer — a 2 → 4 → 5 column layout. The first (wide) column carries the
+// Footer ,  a 2 → 4 → 5 column layout. The first (wide) column carries the
 // wordmark, blurb and social icons (lucide, 1.5px, 18px, outline only); the
 // remaining columns are mono-labelled link lists. A full-width rule and a fine
 // mono baseline close the page.
@@ -19,7 +19,7 @@ export function Footer() {
 		<footer className="bg-background py-16 md:py-20">
 			<div className="container-bold">
 				<div className="grid grid-cols-2 gap-10 md:grid-cols-4 lg:grid-cols-5">
-					{/* Brand column spans wide */}
+					{}
 					<div className="col-span-2">
 						<a
 							href="#top"
@@ -47,7 +47,7 @@ export function Footer() {
 						</div>
 					</div>
 
-					{/* Link columns */}
+					{}
 					{footer.columns.map((col) => (
 						<nav key={col.title} aria-label={col.title}>
 							<h3 className="label-mono">{col.title}</h3>

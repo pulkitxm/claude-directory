@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp, stagger, viewport } from "@/lib/motion";
 
-/**
- * Reveal — a scroll-triggered container that staggers its direct children up
- * into view. Children should be motion elements using the `fadeInUp` variant
- * (exported via RevealItem) for the staggered cascade to register.
- */
+
 export function Reveal({
 	children,
 	className,
@@ -26,7 +22,7 @@ export function Reveal({
 	);
 }
 
-/** A single child of <Reveal> that fades up as part of the stagger cascade. */
+
 export function RevealItem({
 	children,
 	className,

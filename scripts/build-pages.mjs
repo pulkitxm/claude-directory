@@ -1,256 +1,206 @@
 import {
 	cp,
 	mkdir,
-	mkdtemp,
 	readFile,
 	readdir,
-	rename,
 	rm,
+	stat,
 	writeFile,
 } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import { join, relative, resolve } from "node:path";
 import { spawn } from "node:child_process";
-import { versionPagesAssets } from "./version-pages-assets.mjs";
+import { resolve, join, extname, relative } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = resolve(import.meta.dirname, "..");
-const output = resolve(root, process.env.PAGES_OUTPUT ?? "_site");
-const concurrency = Number(process.env.PAGES_BUILD_CONCURRENCY ?? 4);
-const requested = process.argv.slice(2);
-
-function run(command, args, cwd = root) {
-	return new Promise((resolvePromise, reject) => {
-		const child = spawn(command, args, { cwd, stdio: "inherit" });
-		child.on("error", reject);
-		child.on("exit", (code) => {
-			if (code === 0) resolvePromise();
-			else reject(new Error(`${command} exited with code ${code}`));
-		});
-	});
-}
-
-function capture(command, args, cwd = root) {
-	return new Promise((resolvePromise, reject) => {
-		const child = spawn(command, args, { cwd });
-		let stdout = "";
-		let stderr = "";
-		child.stdout.on("data", (chunk) => {
-			stdout += chunk;
-		});
-		child.stderr.on("data", (chunk) => {
-			stderr += chunk;
-		});
-		child.on("error", reject);
-		child.on("exit", (code) => {
-			if (code === 0) resolvePromise(stdout.trim());
-			else
-				reject(
-					new Error(stderr.trim() || `${command} exited with code ${code}`),
-				);
-		});
-	});
-}
-
-async function findProjects(directory) {
-	const entries = await readdir(directory, { withFileTypes: true });
-	const projects = [];
-	for (const entry of entries) {
+const staticTypes = new Set([".html", ".css", ".js", ".mjs", ".svg", ".mp4"]);
+export async function copyStaticProject(from, to) {
+	await mkdir(to, { recursive: true });
+	for (const entry of await readdir(from, { withFileTypes: true })) {
 		if (
-			!entry.isDirectory() ||
-			entry.name === ".git" ||
-			entry.name === "node_modules" ||
-			resolve(directory, entry.name) === output
+			entry.name.startsWith(".") ||
+			["node_modules", "dist", "out", "scripts", "tests", "__tests__"].includes(
+				entry.name,
+			) ||
+			/^(?:references?|captures?|screenshots?|scraped|scrapes)$/i.test(
+				entry.name,
+			)
 		)
 			continue;
-		const path = join(directory, entry.name);
-		const names = new Set((await readdir(path)).map((item) => item));
-		if (names.has("package.json") && names.has("prompt.md"))
-			projects.push(path);
-		else projects.push(...(await findProjects(path)));
+		const source = join(from, entry.name);
+		const target = join(to, entry.name);
+		if (entry.isDirectory()) await copyStaticProject(source, target);
+		else if (
+			entry.isFile() &&
+			staticTypes.has(extname(entry.name)) &&
+			!/\.(?:test|spec)\./.test(entry.name) &&
+			!/^(?:reference|source-capture|captured-source|scraped)(?:[.-].*)?\.(?:html?|css|[cm]?js|json|png|jpe?g|webp|svg)$/i.test(
+				entry.name,
+			)
+		)
+			await cp(source, target);
 	}
-	return projects;
 }
 
-async function stageRepository(projects) {
-	if (process.env.GITHUB_ACTIONS === "true") {
-		const checkoutEvidence = [];
-		async function collectCheckout(directory) {
-			for (const entry of await readdir(directory, { withFileTypes: true })) {
-				if (!entry.isDirectory() || entry.name === ".git") continue;
-				const path = join(directory, entry.name);
-				if (entry.name === ".reference" || entry.name === ".audit")
-					checkoutEvidence.push(path);
-				else if (path !== output) await collectCheckout(path);
-			}
+export async function collectNotices(directory) {
+	const records = [];
+	async function noticeText(path) {
+		const info = await stat(path);
+		if (info.isFile()) return readFile(path, "utf8");
+		if (!info.isDirectory()) return "";
+		const texts = [];
+		for (const entry of await readdir(path, { withFileTypes: true })) {
+			if (entry.isSymbolicLink())
+				throw new Error(`Symlink in license notices: ${entry.name}`);
+			texts.push(await noticeText(join(path, entry.name)));
 		}
-		await collectCheckout(root);
-		await Promise.all(
-			checkoutEvidence.map((path) =>
-				rm(path, { recursive: true, force: true }),
-			),
-		);
+		return texts.join("\n");
 	}
+	async function walk(path) {
+		const entries = await readdir(path, { withFileTypes: true }).catch(
+			(error) => {
+				if (error.code === "ENOENT") return [];
+				throw error;
+			},
+		);
+		for (const entry of entries) {
+			if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+			const packagePath = join(path, entry.name);
+			if (entry.name.startsWith("@")) {
+				await walk(packagePath);
+				continue;
+			}
+			const pkg = JSON.parse(
+				await readFile(join(packagePath, "package.json"), "utf8").catch(
+					(error) => {
+						if (error.code === "ENOENT") return "{}";
+						throw error;
+					},
+				),
+			);
+			if (!pkg.name) continue;
+			const texts = [];
+			for (const name of await readdir(packagePath)) {
+				if (/^(licen[cs]es?|copying|notice)(?:[-_.]|$)/i.test(name))
+					texts.push(await noticeText(join(packagePath, name)));
+			}
+			records.push(
+				`${pkg.name}@${pkg.version}\nLicense: ${JSON.stringify(pkg.license ?? "See package notice")}\n${texts.join("\n")}`,
+			);
+			await walk(join(packagePath, "node_modules"));
+		}
+	}
+	await walk(join(directory, "node_modules"));
+	return records.join("\n\n");
+}
+
+export async function buildPages(
+	directory = resolve(import.meta.dirname, ".."),
+	requested = [],
+) {
+	const root = resolve(directory);
+	const output = join(root, "_site");
+	const projects = JSON.parse(
+		await readFile(join(root, "compliance/projects.json"), "utf8"),
+	);
+	if (
+		requested.some(
+			(path) =>
+				!projects.some(
+					(project) => project.path === path && project.status === "cleared",
+				),
+		)
+	)
+		throw new Error("Only cleared projects can be built");
+	const selected = projects.filter(
+		(project) =>
+			project.status === "cleared" &&
+			(!requested.length || requested.includes(project.path)),
+	);
+	const run = (command, args, cwd = root) =>
+		new Promise((accept, reject) => {
+			const child = spawn(command, args, { cwd, stdio: "inherit" });
+			child.on("error", reject);
+			child.on("exit", (code) =>
+				code === 0
+					? accept()
+					: reject(
+							new Error(
+								`${command} failed in ${relative(root, cwd)} (${code})`,
+							),
+						),
+			);
+		});
 	await rm(output, { recursive: true, force: true });
+	await run("node", ["scripts/check-compliance.mjs"]);
 	await mkdir(output, { recursive: true });
-	const archive = await mkdtemp(join(tmpdir(), "fable-pages-"));
-	const tar = join(archive, "repository.tar");
-	await run("git", ["archive", "--format=tar", `--output=${tar}`, "HEAD"]);
-	await run("tar", ["-xf", tar, "-C", output]);
-	await rm(archive, { recursive: true, force: true });
-	await writeFile(join(output, ".nojekyll"), "");
-	const evidence = [];
-	async function collect(directory) {
-		for (const entry of await readdir(directory, { withFileTypes: true })) {
-			if (!entry.isDirectory()) continue;
-			const path = join(directory, entry.name);
-			if (entry.name === ".reference" || entry.name === ".audit")
-				evidence.push(path);
-			else await collect(path);
-		}
-	}
-	await collect(output);
-	await Promise.all(
-		evidence.map((path) => rm(path, { recursive: true, force: true })),
-	);
-	for (const project of projects) {
-		const staged = join(output, relative(root, project));
-		const preserved = await mkdtemp(join(tmpdir(), "fable-metadata-"));
-		for (const file of [
-			"demo.mp4",
-			"poster.jpg",
-			"poster.png",
-			"README.md",
-			"prompt.md",
-		]) {
-			await cp(join(staged, file), join(preserved, file), {
-				force: false,
-			}).catch(() => {});
-		}
-		await rm(staged, { recursive: true, force: true });
-		await mkdir(staged, { recursive: true });
-		await cp(preserved, staged, { recursive: true });
-		await rm(preserved, { recursive: true, force: true });
-	}
-}
 
-async function buildProject(project) {
-	const name = relative(root, project);
-	const packageJson = JSON.parse(
-		await readFile(join(project, "package.json"), "utf8"),
-	);
-	await run(
-		"npm",
-		["ci", "--no-audit", "--no-fund", "--prefer-offline"],
-		project,
-	);
-	const isNext = Boolean(
-		packageJson.dependencies?.next || packageJson.devDependencies?.next,
-	);
-	const isTanstack = Boolean(
-		packageJson.dependencies?.["@tanstack/react-start"] ||
-			packageJson.devDependencies?.["@tanstack/react-start"],
-	);
-	if (isNext) await run("npm", ["run", "build"], project);
-	else if (isTanstack) {
-		const generated = [
-			"_pages-index.html",
-			"_pages-main.tsx",
-			"_pages-vite.config.ts",
-		];
-		await writeFile(
-			join(project, "_pages-index.html"),
-			'<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><div id="root"></div><script type="module" src="/_pages-main.tsx"></script></body></html>',
-		);
-		await writeFile(
-			join(project, "_pages-main.tsx"),
-			'import { StrictMode } from "react"; import { createRoot } from "react-dom/client"; import { Route } from "./src/routes/index"; import "./src/styles.css"; const Component = Route.options.component!; createRoot(document.getElementById("root")!).render(<StrictMode><Component /></StrictMode>);',
-		);
-		await writeFile(
-			join(project, "_pages-vite.config.ts"),
-			packageJson.dependencies?.["vite-tsconfig-paths"] ||
-				packageJson.devDependencies?.["vite-tsconfig-paths"]
-				? 'import tailwindcss from "@tailwindcss/vite"; import viteReact from "@vitejs/plugin-react"; import { resolve } from "node:path"; import { defineConfig } from "vite"; import tsConfigPaths from "vite-tsconfig-paths"; import original from "./vite.config"; export default defineConfig({ resolve: original.resolve, plugins: [tsConfigPaths(), tailwindcss(), viteReact()], build: { rollupOptions: { input: resolve(__dirname, "_pages-index.html") } } });'
-				: 'import tailwindcss from "@tailwindcss/vite"; import viteReact from "@vitejs/plugin-react"; import { resolve } from "node:path"; import { defineConfig } from "vite"; import original from "./vite.config"; export default defineConfig({ resolve: original.resolve, plugins: [tailwindcss(), viteReact()], build: { rollupOptions: { input: resolve(__dirname, "_pages-index.html") } } });',
-		);
-		try {
-			await run(
-				"npm",
-				[
-					"exec",
-					"--",
-					"vite",
-					"build",
-					"--config",
-					"_pages-vite.config.ts",
-					"--base=./",
-				],
-				project,
-			);
-			await rename(
-				join(project, "dist", "_pages-index.html"),
-				join(project, "dist", "index.html"),
-			);
-		} finally {
-			await Promise.all(
-				generated.map((file) => rm(join(project, file), { force: true })),
-			);
-		}
-	} else
-		await run("npm", ["exec", "--", "vite", "build", "--base=./"], project);
-	const built = join(project, isNext ? "out" : "dist");
-	const staged = join(output, name);
-	await cp(built, staged, { recursive: true });
-	await rm(join(project, "node_modules"), { recursive: true, force: true });
-	process.stdout.write(`Built ${name}\n`);
-}
-
-async function runPool(projects) {
-	let index = 0;
-	const failures = [];
+	let cursor = 0;
 	async function worker() {
-		while (index < projects.length) {
-			const project = projects[index];
-			index += 1;
-			try {
-				await buildProject(project);
-			} catch (error) {
-				failures.push({ project: relative(root, project), error });
-			} finally {
-				await rm(join(project, "node_modules"), {
+		while (cursor < selected.length) {
+			const project = selected[cursor++];
+			if (!/^[a-z0-9-]+\/[a-z0-9-]+$/.test(project.path))
+				throw new Error("Invalid project path");
+			const source = join(root, project.path);
+			const target = join(output, project.path);
+			const files = await readdir(source);
+			if (files.includes("package.json")) {
+				await run("npm", ["ci", "--no-audit", "--no-fund"], source);
+				const pkg = JSON.parse(
+					await readFile(join(source, "package.json"), "utf8"),
+				);
+				const next = Boolean(pkg.dependencies?.next);
+				await run(
+					"npm",
+					next ? ["run", "build"] : ["run", "build", "--", "--base=./"],
+					source,
+				);
+				await cp(join(source, next ? "out" : "dist"), target, {
 					recursive: true,
-					force: true,
 				});
-			}
+				await writeFile(
+					join(target, "THIRD_PARTY_NOTICES.txt"),
+					await collectNotices(source),
+				);
+			} else await copyStaticProject(source, target);
+			process.stdout.write(`Built ${project.path}\n`);
 		}
 	}
-	await Promise.all(
-		Array.from({ length: Math.min(concurrency, projects.length) }, worker),
+	await Promise.all(Array.from({ length: 4 }, worker));
+	const escape = (s) =>
+		s.replace(
+			/[&<>"']/g,
+			(c) =>
+				({
+					"&": "&amp;",
+					"<": "&lt;",
+					">": "&gt;",
+					'"': "&quot;",
+					"'": "&#39;",
+				})[c],
+		);
+	await writeFile(
+		join(output, "index.html"),
+		`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Independent design experiments</title><style>body{max-width:70rem;margin:3rem auto;padding:1rem;font:1rem/1.6 system-ui;background:#132a36;color:#e7f4ef}a{color:#a7d5bf}ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem;padding:0;list-style:none}</style><h1>Independent design experiments</h1><p>A collection of AI-assisted design experiments using original visuals. Commercial template recreations have been withdrawn. Automated checks supplement manual review and do not establish legal compliance.</p><ul>${selected.map((p) => `<li><a href="./${escape(p.path)}/">${escape(p.path)}</a></li>`).join("")}</ul></html>`,
 	);
-	if (failures.length > 0) {
-		const summary = failures
-			.map(({ project, error }) => `${project}: ${error.message}`)
-			.join("\n");
-		throw new Error(`${failures.length} preview builds failed\n${summary}`);
-	}
+	await writeFile(
+		join(output, "404.html"),
+		'<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Preview unavailable</title><h1>Preview unavailable</h1><p>This experiment is unavailable or has been withdrawn from distribution.</p><a href="/">View current experiments</a></html>',
+	);
+	await writeFile(join(output, ".nojekyll"), "");
+	await cp(join(root, "LICENSE"), join(output, "LICENSE"));
+	await cp(
+		join(root, "THIRD_PARTY_NOTICES.md"),
+		join(output, "THIRD_PARTY_NOTICES.txt"),
+	);
+	await run("node", [
+		"scripts/verify-pages.mjs",
+		output,
+		...selected.map((project) => project.path),
+	]);
+	process.stdout.write(`Built ${selected.length} cleared previews\n`);
 }
 
-const discovered = await findProjects(root);
-const projects = requested.length
-	? requested.map((project) => resolve(root, project))
-	: discovered;
-await stageRepository(discovered);
-await runPool(projects);
-const pagesAssetVersion = (
-	process.env.PAGES_ASSET_VERSION ??
-	process.env.GITHUB_SHA ??
-	(await capture("git", ["rev-parse", "HEAD"]))
-).slice(0, 12);
-const versioned = await versionPagesAssets(output, pagesAssetVersion);
-await run("node", [
-	join(root, "scripts", "verify-pages.mjs"),
-	output,
-	...projects.map((project) => relative(root, project)),
-]);
-process.stdout.write(
-	`Staged ${projects.length} built previews in ${relative(root, output)} with ${versioned.references} versioned asset references\n`,
-);
+if (
+	process.argv[1] &&
+	resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+)
+	await buildPages(undefined, process.argv.slice(2));

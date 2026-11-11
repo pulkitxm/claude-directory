@@ -17,7 +17,7 @@ export function Cta() {
 			<Shell className="max-w-4xl">
 				<Reveal>
 					<div className="relative overflow-hidden border-4 border-[var(--color-cyan)] bg-black/80 p-8 text-center shadow-[0_0_50px_rgba(0,255,255,0.2)] backdrop-blur-md sm:p-14">
-						{/* inner perspective dots */}
+						{}
 						<div className="absolute inset-0 dots opacity-30" aria-hidden />
 
 						<div className="relative">

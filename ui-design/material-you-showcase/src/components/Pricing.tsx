@@ -82,8 +82,7 @@ function FeatureRow({
 	);
 }
 
-/* Pricing: the featured tier rests lifted (md:-translate-y-4) with a primary
-   fill + ring, demonstrating asymmetric elevation. Feature rows slide on hover. */
+
 export function Pricing() {
 	return (
 		<section

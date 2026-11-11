@@ -3,9 +3,9 @@
 // `icon` keys map to the lucide icon set in Features (see iconMap there).
 // ─────────────────────────────────────────────────────────────────────────────
 
-import journal01 from "../../assets/images/journal-01.svg";
-import journal02 from "../../assets/images/journal-02.svg";
-import journal03 from "../../assets/images/journal-03.svg";
+import journal01 from "../../assets/images/original-visual.svg";
+import journal02 from "../../assets/images/original-visual.svg";
+import journal03 from "../../assets/images/original-visual.svg";
 
 export const brand = {
 	name: "OBELISK",
@@ -25,7 +25,7 @@ export const hero = {
 	// Headline is split so the accent word can be colored independently.
 	headline: ["TYPE", "IS THE", "INTERFACE."],
 	accentLine: 1, // index of the line rendered in accent
-	lead: "OBELISK is a poster discipline for the web. No stock photography, no gradients to hide behind — only letterforms, negative space, and a single act of color.",
+	lead: "OBELISK is a poster discipline for the web. No stock photography, no gradients to hide behind ,  only letterforms, negative space, and a single act of color.",
 	primaryCta: "Read the manifesto",
 	secondaryCta: "View specimen",
 };
@@ -51,7 +51,7 @@ export const manifesto = {
 	title: "We set type like it matters,",
 	titleAccent: "because it does.",
 	body: [
-		"Most interfaces treat typography as a final coat of paint. We treat it as the structure. A headline at 128 points is not decoration — it is the argument, the hierarchy and the mood all at once.",
+		"Most interfaces treat typography as a final coat of paint. We treat it as the structure. A headline at 128 points is not decoration ,  it is the argument, the hierarchy and the mood all at once.",
 		"Color exists only to create contrast. Space exists only to frame letterforms. Interaction exists only to reveal a typographic detail. Everything else is noise we choose not to make.",
 	],
 };
@@ -103,7 +103,7 @@ export const process = [
 	{
 		n: "03",
 		title: "Spend one color",
-		body: "Reserve the accent for the few moments that earn it — a key word, a single CTA, an underline.",
+		body: "Reserve the accent for the few moments that earn it ,  a key word, a single CTA, an underline.",
 	},
 ];
 
@@ -179,7 +179,7 @@ export const testimonials = [
 export const faqs = [
 	{
 		q: "Is this only for dark mode?",
-		a: "No. The dark theme is canonical, but every token has an inverted set. The Final CTA below is the same components rendered on a warm-white ground — nothing is hard-coded.",
+		a: "No. The dark theme is canonical, but every token has an inverted set. The Final CTA below is the same components rendered on a warm-white ground ,  nothing is hard-coded.",
 	},
 	{
 		q: "Why no rounded corners or shadows?",

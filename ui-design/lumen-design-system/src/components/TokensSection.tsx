@@ -28,7 +28,7 @@ export function TokensSection() {
 			/>
 
 			<div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-3">
-				{/* Palette */}
+				{}
 				<SpotlightCard className="lg:col-span-2">
 					<div className="p-6 sm:p-7">
 						<div className="mb-5 flex items-center justify-between">
@@ -63,7 +63,7 @@ export function TokensSection() {
 					</div>
 				</SpotlightCard>
 
-				{/* Type scale + radius/shadow */}
+				{}
 				<div className="flex flex-col gap-4">
 					<SpotlightCard className="flex-1">
 						<div className="p-6 sm:p-7">

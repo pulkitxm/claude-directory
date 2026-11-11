@@ -44,7 +44,7 @@ export function Navbar() {
 						</span>
 					</a>
 
-					{/* Desktop nav */}
+					{}
 					<nav
 						className="hidden items-center gap-1 lg:flex"
 						aria-label="Primary"
@@ -67,7 +67,7 @@ export function Navbar() {
 						<Button size="sm">Launch App</Button>
 					</div>
 
-					{/* Mobile toggle */}
+					{}
 					<button
 						type="button"
 						onClick={() => setOpen((v) => !v)}
@@ -80,7 +80,7 @@ export function Navbar() {
 				</Container>
 			</div>
 
-			{/* Mobile drawer */}
+			{}
 			<div
 				className={cn(
 					"overflow-hidden border-b border-white/10 bg-void/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 md:hidden",

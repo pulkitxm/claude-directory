@@ -1,9 +1,7 @@
 import { Blob, ButtonLink, Reveal, Shell } from "./primitives";
 import { ArrowRight, PlayCircle, Sparkle, Star } from "./icons";
 
-/* A compact preview of the app theming itself — a tonal "card" with a seed
-   swatch row, a faux waveform and pill controls. It demonstrates the tonal
-   surface system and pills inside the hero, not just around it. */
+
 function ThemePreview() {
 	const seeds = [
 		"var(--color-md-primary)",
@@ -14,7 +12,7 @@ function ThemePreview() {
 	];
 	return (
 		<div className="card relative w-full overflow-hidden rounded-[var(--radius-md-2xl)] !bg-[var(--color-md-bg)] p-6 shadow-[var(--shadow-md-3)]">
-			{/* header row */}
+			{}
 			<div className="flex items-center justify-between">
 				<div className="flex items-center gap-2">
 					<span className="grid h-9 w-9 place-items-center rounded-full bg-[var(--color-md-primary)] text-[var(--color-md-on-primary)]">
@@ -34,7 +32,7 @@ function ThemePreview() {
 				</span>
 			</div>
 
-			{/* extracted seed swatches */}
+			{}
 			<div className="mt-5 flex gap-2.5">
 				{seeds.map((c, i) => (
 					<span
@@ -46,7 +44,7 @@ function ThemePreview() {
 				))}
 			</div>
 
-			{/* tonal "now generating" tile with a faux equalizer */}
+			{}
 			<div className="mt-4 flex items-center gap-4 rounded-[var(--radius-md-md)] bg-[var(--color-md-primary-container)] p-4">
 				<button
 					type="button"
@@ -69,7 +67,7 @@ function ThemePreview() {
 				</div>
 			</div>
 
-			{/* meta row */}
+			{}
 			<div className="mt-4 flex items-center justify-between">
 				<div className="flex items-center gap-1.5 text-[var(--color-md-tertiary)]">
 					{Array.from({ length: 5 }).map((_, i) => (
@@ -87,9 +85,9 @@ function ThemePreview() {
 export function Hero() {
 	return (
 		<section id="top" className="relative px-3 pt-4 sm:px-5">
-			{/* The hero lives in a single architectural rounded-[48px] surface. */}
+			{}
 			<div className="relative mx-auto max-w-[80rem] overflow-hidden rounded-[28px] bg-[var(--color-md-container)] sm:rounded-[40px] lg:rounded-[var(--radius-md-3xl)]">
-				{/* Atmosphere: layered organic blur shapes + radial gradient washes. */}
+				{}
 				<div
 					aria-hidden
 					className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_color-mix(in_srgb,var(--color-md-tertiary-container)_70%,transparent)_0%,_transparent_45%),radial-gradient(circle_at_bottom_left,_color-mix(in_srgb,var(--color-md-primary-container)_80%,transparent)_0%,_transparent_50%)]"
@@ -108,7 +106,7 @@ export function Hero() {
 				/>
 
 				<Shell className="relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
-					{/* Copy column */}
+					{}
 					<div className="flex flex-col items-start gap-7">
 						<Reveal>
 							<span className="eyebrow">
@@ -144,7 +142,7 @@ export function Hero() {
 						<Reveal delay={130}>
 							<p className="t-body-l max-w-xl text-[var(--color-md-on-variant)]">
 								Lumi is a theming toolkit built on Material You. Seed one color
-								and watch a whole tonal system bloom — soft surfaces, pill
+								and watch a whole tonal system bloom ,  soft surfaces, pill
 								controls, and motion that feels alive. No more stark white
 								dashboards.
 							</p>
@@ -190,7 +188,7 @@ export function Hero() {
 						</Reveal>
 					</div>
 
-					{/* Preview column */}
+					{}
 					<Reveal delay={200} className="relative">
 						<div className="relative mx-auto max-w-md">
 							<ThemePreview />

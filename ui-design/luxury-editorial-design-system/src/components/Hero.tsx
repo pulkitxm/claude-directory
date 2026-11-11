@@ -9,10 +9,10 @@ export function Hero() {
 			className="relative mx-auto max-w-[1600px] px-8 pb-20 pt-36 md:px-16 md:pb-28 md:pt-44 lg:min-h-screen lg:pb-32"
 		>
 			<div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end lg:gap-8">
-				{/* Headline block — bottom-left aligned, asymmetric (offset start) */}
+				{}
 				<div className="order-2 lg:order-1 lg:col-span-7 lg:col-start-1 lg:pb-6">
 					<Overline className="animate-riseIn [animation-delay:120ms]">
-						Editorial — Vol. 01 / The House Collection
+						Editorial ,  Vol. 01 / The House Collection
 					</Overline>
 
 					<h1 className="mt-8 font-serif text-5xl font-normal leading-[0.9] tracking-tight text-foreground sm:text-6xl md:text-8xl lg:text-9xl">
@@ -28,7 +28,7 @@ export function Hero() {
 					</h1>
 
 					<p className="mt-10 max-w-md font-sans text-base leading-relaxed text-muted-fg animate-riseIn [animation-delay:560ms] md:text-lg">
-						MAISON is a design house built on a single belief — that the most
+						MAISON is a design house built on a single belief ,  that the most
 						luxurious thing an object can offer is permanence. We make slowly,
 						and we make to last.
 					</p>
@@ -43,7 +43,7 @@ export function Hero() {
 					</div>
 				</div>
 
-				{/* Portrait image — large, grayscale, vertical writing-mode label */}
+				{}
 				<div className="order-1 lg:order-2 lg:col-span-4 lg:col-start-9">
 					<div className="animate-riseIn [animation-delay:340ms]">
 						<EditorialImage

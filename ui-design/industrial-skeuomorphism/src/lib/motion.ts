@@ -1,10 +1,6 @@
 import type { Variants } from "motion/react";
 
-/**
- * Shared motion language. The mechanical easing curve [0.175,0.885,0.32,1.275]
- * gives the slight spring overshoot the design system asks for, so entrances
- * "settle" like a physical switch rather than glide.
- */
+
 export const MECH_EASE = [0.175, 0.885, 0.32, 1.275] as const;
 
 export const slideUp: Variants = {
@@ -26,5 +22,5 @@ export const stagger: Variants = {
 	show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
 };
 
-/** Re-usable viewport config so sections reveal once, slightly before center. */
+
 export const inView = { once: true, amount: 0.25 } as const;

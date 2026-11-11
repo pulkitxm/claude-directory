@@ -1,8 +1,4 @@
-/* =============================================================================
-   WEBMASTER 95 — interactive behaviors
-   Vanilla JS, no dependencies. Everything degrades gracefully and respects
-   prefers-reduced-motion (counters snap to final value instead of animating).
-   ========================================================================== */
+
 (function () {
 	"use strict";
 
@@ -17,7 +13,7 @@
 		return Array.prototype.slice.call((ctx || document).querySelectorAll(sel));
 	};
 
-	/* ----------------------------------------------------------- LIVE CLOCK */
+
 	function pad(n) {
 		return (n < 10 ? "0" : "") + n;
 	}
@@ -35,7 +31,7 @@
 	tick();
 	setInterval(tick, 1000 * 15);
 
-	/* -------------------------------------------------- DESIGN TOKEN GRID */
+
 	var TOKENS = [
 		{ name: "background", hex: "#C0C0C0", fg: "#000" },
 		{ name: "foreground", hex: "#000000", fg: "#fff" },
@@ -61,7 +57,7 @@
 			btn.type = "button";
 			btn.className = "token";
 			btn.setAttribute("title", "Click to copy " + t.hex);
-			btn.setAttribute("aria-label", t.name + " " + t.hex + " — click to copy");
+			btn.setAttribute("aria-label", t.name + " " + t.hex + " ,  click to copy");
 			btn.innerHTML =
 				'<span class="token__chip" style="background:' +
 				t.hex +
@@ -106,7 +102,7 @@
 		document.body.removeChild(ta);
 	}
 
-	/* ------------------------------------------------- COLOR SQUARE MIXER */
+
 	var SWATCHES = [
 		"#FF0000",
 		"#00FF00",
@@ -170,7 +166,7 @@
 		});
 	}
 
-	/* --------------------------------------------------------------- TABS */
+
 	var tabs = $$(".tab");
 	function selectTab(tab) {
 		var panelId = tab.getAttribute("aria-controls");
@@ -210,7 +206,7 @@
 		});
 	});
 
-	/* --------------------------------- COUNT-UP HELPER (the stat band) */
+
 	function animateCount(el, target, suffix) {
 		suffix = suffix || "";
 		var dur = 1400;
@@ -229,8 +225,8 @@
 		requestAnimationFrame(frame);
 	}
 
-	/* --------------------------------------------------- HIT COUNTER (odometer) */
-	var HIT_TOTAL = 1048576; // 2^20 — a very nostalgic number
+
+	var HIT_TOTAL = 1048576; // 2^20 ,  a very nostalgic number
 	var hitEl = $("#hitCounter");
 	function renderHit(value) {
 		if (!hitEl) return;
@@ -250,7 +246,7 @@
 	}
 	renderHit(0);
 
-	/* -------------------------------------------------- PROGRESS METER */
+
 	var meterBar = $(".meter__bar");
 	var meterPct = $("#meterPct");
 	var meter1 = $("#meter1");
@@ -261,7 +257,7 @@
 			meterBar.style.width = target + "%";
 			if (meter1) meter1.setAttribute("aria-valuenow", String(target));
 			if (meterPct)
-				meterPct.textContent = "Downloading webmaster95.zip — " + target + "%";
+				meterPct.textContent = "Downloading webmaster95.zip ,  " + target + "%";
 			return;
 		}
 		// step the percentage label in time with the CSS width transition
@@ -275,11 +271,11 @@
 			}
 			if (meter1) meter1.setAttribute("aria-valuenow", String(cur));
 			if (meterPct)
-				meterPct.textContent = "Downloading webmaster95.zip — " + cur + "%";
+				meterPct.textContent = "Downloading webmaster95.zip ,  " + cur + "%";
 		}, 30);
 	}
 
-	/* ------------------------------------- SCROLL-TRIGGERED ANIMATIONS */
+
 	function whenVisible(el, cb) {
 		if (!el) return;
 		if (!("IntersectionObserver" in window)) {
@@ -335,7 +331,7 @@
 	// meter fires when components section scrolls in
 	whenVisible($("#components"), runMeter);
 
-	/* ------------------------------------------------- NAV BURGER (mobile) */
+
 	var burger = $("#burger");
 	if (burger) {
 		burger.addEventListener("click", function () {
@@ -351,7 +347,7 @@
 		});
 	}
 
-	/* --------------------------------------------------------- START MENU */
+
 	var startBtn = $("#startBtn");
 	var startMenu = $("#startMenu");
 	function setStart(open) {
@@ -387,7 +383,7 @@
 		});
 	}
 
-	/* --------------------------------------------- MIDI BUTTON (easter egg) */
+
 	var midiBtn = $("#midiBtn");
 	if (midiBtn) {
 		var playing = false;
@@ -426,7 +422,7 @@
 		} catch (e) {}
 	}
 
-	/* ------------------------------------------------------ GUESTBOOK FORM */
+
 	var gbForm = $("#gbForm");
 	var gbList = $("#guestbookList");
 	var gbNote = $("#gbNote");
@@ -467,14 +463,14 @@
 			// bump the visible entry count in the title bar
 			var bar = gbList.closest(".window").querySelector(".window__title");
 			var count = $$(".gb-entry", gbList).length;
-			if (bar) bar.textContent = "guestbook.dat — " + count + " entries";
+			if (bar) bar.textContent = "guestbook.dat ,  " + count + " entries";
 		});
 		gbForm.addEventListener("reset", function () {
 			note(gbNote, "", "");
 		});
 	}
 
-	/* ------------------------------------------------------------ CTA FORM */
+
 	var ctaForm = $("#ctaForm");
 	var ctaNote = $("#ctaNote");
 	if (ctaForm) {
@@ -501,7 +497,7 @@
 		el.textContent = text;
 	}
 
-	/* ----------------------------------------- pressed-state on keyboard */
+
 	// Make Space/Enter on .btn show the inset pressed look (parity with mouse)
 	$$(".btn").forEach(function (b) {
 		b.addEventListener("keydown", function (e) {

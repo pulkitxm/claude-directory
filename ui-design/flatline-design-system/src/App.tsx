@@ -11,9 +11,7 @@ import { Faq } from "./components/Faq";
 import { Cta } from "./components/Cta";
 import { Footer } from "./components/Footer";
 
-/* Section order creates the sharp color rotation the system calls for:
-   White → Blue → White → White → Fog → White → Emerald → Dark → White →
-   White → Amber → Dark. Color blocks separate structure; never lines. */
+
 export default function App() {
 	return (
 		<>

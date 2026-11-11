@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-/* Reveal-on-scroll hook. Returns a ref + a boolean that flips true once the
-   element enters the viewport. Used to fade/rise sections in like notes being
-   pinned to the board. Honors prefers-reduced-motion by revealing immediately. */
+
 export function useReveal<T extends HTMLElement = HTMLDivElement>(
 	rootMargin = "-12% 0px -10% 0px",
 ) {

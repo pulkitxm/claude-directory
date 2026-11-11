@@ -5,13 +5,11 @@ interface IconTileProps {
 	icon: LucideIcon;
 	className?: string;
 	tone?: "orange" | "gold";
-	/** Add a glow on hover of the nearest `group`. */
+
 	glowOnGroupHover?: boolean;
 }
 
-/**
- * Holographic node — a lucide icon wrapped in a colored, glowing container.
- */
+
 export function IconTile({
 	icon: Icon,
 	className,

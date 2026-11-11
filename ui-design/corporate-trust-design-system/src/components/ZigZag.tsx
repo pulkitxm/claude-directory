@@ -4,9 +4,7 @@ import { Section, Shell, Eyebrow, Reveal, Blob, cx } from "./primitives";
 import { ZIGZAG } from "../lib/content";
 import { popIn, fadeUp, stagger, inView } from "../lib/motion";
 
-/* Alternating zig-zag deep-dives. Even rows put the visual on the right; odd
-   rows reverse it. The visual is an isometric gradient slab (rotate-x / rotate-y)
-   holding a small abstract UI — the system's "benefit visualization" pattern. */
+
 export function ZigZag() {
 	return (
 		<Section id="features" className="overflow-hidden">
@@ -22,7 +20,7 @@ export function ZigZag() {
 									reversed ? "lg:flex-row-reverse" : "lg:flex-row",
 								)}
 							>
-								{/* Copy */}
+								{}
 								<Reveal className="flex-1">
 									<Eyebrow icon={item.icon}>{item.eyebrow}</Eyebrow>
 									<h2 className="mt-4 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
@@ -61,7 +59,7 @@ export function ZigZag() {
 									</a>
 								</Reveal>
 
-								{/* Visual */}
+								{}
 								<motion.div
 									variants={popIn}
 									initial="hidden"
@@ -80,8 +78,7 @@ export function ZigZag() {
 	);
 }
 
-/* The isometric gradient slab. Tilts in 3D and carries a different abstract UI
-   per row so the two deep-dives don't look identical. */
+
 function Visual({ reversed, index }: { reversed: boolean; index: number }) {
 	const tilt = reversed
 		? "[transform:rotateX(6deg)_rotateY(10deg)]"
@@ -107,7 +104,7 @@ function Visual({ reversed, index }: { reversed: boolean; index: number }) {
 	);
 }
 
-/* Abstract "automation pipeline" UI for row 1. */
+
 function AutomationUI() {
 	const nodes = [
 		{ label: "Trigger", tone: "bg-indigo-600 text-white" },
@@ -158,7 +155,7 @@ function AutomationUI() {
 	);
 }
 
-/* Abstract "shared workspace" UI for row 2. */
+
 function CollaborationUI() {
 	const people = [
 		{ i: "AK", c: "from-indigo-500 to-indigo-600" },

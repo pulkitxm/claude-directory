@@ -1,10 +1,6 @@
 import type { SVGProps } from "react";
 
-/* ============================================================================
-   ICONS — a small set of inline, rounded "Material Symbols"-style glyphs.
-   Drawn locally (no icon font / no CDN) so the project is fully self-contained.
-   `currentColor` strokes mean each icon inherits the surrounding text color.
-   ========================================================================== */
+
 
 type IconProps = SVGProps<SVGSVGElement> & { size?: number };
 

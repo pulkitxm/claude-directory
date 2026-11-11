@@ -1,7 +1,6 @@
 import { Shell } from "./primitives";
 
-/* A continuous flat logo marquee. Wordmarks only — flat, monochrome ink, no
-   boxes or shadows. Sits on white between the hero and stats. */
+
 const BRANDS = [
 	"Northwind",
 	"Quadrant",

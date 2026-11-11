@@ -4,8 +4,7 @@ import { fadeUp } from "../lib/motion";
 import { motion } from "motion/react";
 import { Route } from "lucide-react";
 
-/* Three-step path. Numbered badges carry the brand gradient + an ethereal glow;
-   a dashed connector ties the steps together on desktop. */
+
 export function HowItWorks() {
 	return (
 		<Section id="how" className="relative overflow-hidden">
@@ -23,7 +22,7 @@ export function HowItWorks() {
 				</Reveal>
 
 				<div className="relative mt-16">
-					{/* Dashed connector behind the badges (desktop). */}
+					{}
 					<div
 						aria-hidden="true"
 						className="absolute left-0 right-0 top-7 hidden border-t-2 border-dashed border-indigo-200 md:block"

@@ -18,10 +18,7 @@ import {
 	type OrbHue,
 } from "./primitives";
 
-/* The Bento feature grid — the centerpiece of the card system. A large hero
-   card (col-span-2 row-span-2) anchors the asymmetric layout; the rest are
-   standard clay cards with varied gradient icon orbs. Single column on mobile
-   → bento on desktop. Every card floats up on hover. */
+
 
 function FeatureCard({
 	hue,
@@ -64,11 +61,11 @@ export function Features() {
 				<SectionHeading
 					eyebrow="The toolkit"
 					title="Everything molded from one material"
-					lead="A complete component kit where the physics of clay — convex bulges, concave presses, and zero-gravity float — are baked into every primitive."
+					lead="A complete component kit where the physics of clay ,  convex bulges, concave presses, and zero-gravity float ,  are baked into every primitive."
 				/>
 
 				<div className="mt-14 grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{/* HERO FEATURE CARD — spans 2x2 on desktop, with a peeking panel */}
+					{}
 					<Reveal className="md:col-span-2 md:row-span-2" delay={0}>
 						<Card as="article" className="h-full hover:scale-[1.02] sm:p-10">
 							<IconOrb hue="violet" size="lg" round>
@@ -82,12 +79,12 @@ export function Features() {
 							</h3>
 							<p className="mt-3 max-w-md text-lg leading-relaxed text-clay-muted">
 								The engine behind the whole world. Outer colored drop, top-left
-								highlight, inner bounce light, and an inner rim — every surface
+								highlight, inner bounce light, and an inner rim ,  every surface
 								gets all four, so clay reads as dense and physical instead of a
 								flat decoration.
 							</p>
 
-							{/* "peeking" panel that emerges from the card bottom */}
+							{}
 							<div className="relative mt-auto pt-10">
 								<div className="-mx-6 -mb-6 rounded-[24px] bg-white/70 p-5 shadow-clay-button-soft backdrop-blur-xl sm:-mx-10 sm:-mb-10">
 									<div className="flex flex-wrap items-center gap-2.5">
@@ -129,7 +126,7 @@ export function Features() {
 							title="Squish-on-press"
 							className="h-full"
 						>
-							Buttons scale to 0.92 and flip to a recessed shadow when clicked —
+							Buttons scale to 0.92 and flip to a recessed shadow when clicked ,
 							a physical compression you feel, not just a color change.
 						</FeatureCard>
 					</Reveal>
@@ -142,7 +139,7 @@ export function Features() {
 							className="h-full"
 						>
 							Cards lift toward you on hover; background blobs drift on two
-							axes. Nothing is statically stuck to the grid — it all breathes.
+							axes. Nothing is statically stuck to the grid ,  it all breathes.
 						</FeatureCard>
 					</Reveal>
 
@@ -153,7 +150,7 @@ export function Features() {
 							title="Candy-shop palette"
 							className="h-full"
 						>
-							Vivid violet, hot pink, sky, emerald and amber — saturated joy,
+							Vivid violet, hot pink, sky, emerald and amber ,  saturated joy,
 							kept readable with a strict charcoal/lavender-gray text floor.
 						</FeatureCard>
 					</Reveal>
@@ -170,7 +167,7 @@ export function Features() {
 						</FeatureCard>
 					</Reveal>
 
-					{/* Wide card spanning 2 cols on the bottom row (desktop) */}
+					{}
 					<Reveal className="md:col-span-2" delay={400}>
 						<Card as="article" className="h-full hover:scale-[1.01] sm:p-9">
 							<div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">

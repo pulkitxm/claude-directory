@@ -1,16 +1,4 @@
-/**
- * Decorative primitives — the "wild decoration" half of the system.
- *
- * These are purely ornamental (aria-hidden) geometric shapes: circles,
- * triangles, squares, pills, plus signs, rings and squiggles. They float
- * behind content and are hidden on small screens where they'd collide with
- * text (per the responsive strategy).
- *
- * Rotation rule: when a shape floats, the float keyframe owns `transform`, so
- * the rotation is carried inside the keyframe via the --float-rot custom prop.
- * When it doesn't float, the wrapper takes a plain static rotate. SVG-based
- * shapes (Triangle/Plus) rotate their inner <svg> so they can also float.
- */
+
 import type { CSSProperties } from "react";
 import { palette } from "./tokens.ts";
 
@@ -18,7 +6,7 @@ type ShapeProps = {
 	className?: string;
 	style?: CSSProperties;
 	color?: string;
-	/** floating animation: off | float | slow */
+
 	float?: false | "float" | "slow";
 	rotate?: number;
 };
@@ -26,7 +14,7 @@ type ShapeProps = {
 const floatClass = (f: ShapeProps["float"]) =>
 	f === "float" ? "animate-float" : f === "slow" ? "animate-float-slow" : "";
 
-/** Wrapper rotation: --float-rot when floating, static transform otherwise. */
+
 function wrapRot(
 	float: ShapeProps["float"],
 	rotate: number | undefined,
@@ -37,7 +25,7 @@ function wrapRot(
 	return { transform: `rotate(${rotate}deg)` };
 }
 
-/** For SVG shapes: keep --float-rot on the wrapper, rotate the <svg> itself. */
+
 function floatVar(
 	float: ShapeProps["float"],
 	rotate: number | undefined,
@@ -128,7 +116,7 @@ export function Triangle({
 	);
 }
 
-/** A plus / cross sign, a Memphis staple. */
+
 export function Plus({
 	className,
 	style,
@@ -161,7 +149,7 @@ export function Plus({
 	);
 }
 
-/** A small ring (outline circle). */
+
 export function Ring({
 	className,
 	style,
@@ -191,7 +179,7 @@ export function Ring({
 	);
 }
 
-/** A little squiggle accent (different curve from the divider squiggle). */
+
 export function Squig({
 	className,
 	style,

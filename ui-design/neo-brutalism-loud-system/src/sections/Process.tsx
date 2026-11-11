@@ -2,8 +2,7 @@ import { PROCESS } from "../content";
 import { Card } from "../components/Card";
 import { SectionLabel, Reveal } from "../components/Section";
 
-/* A four-step "how to ship it" band on cream, each step a numbered bordered
-   card with a huge background step number bleeding behind it. */
+
 export function Process() {
 	return (
 		<section className="neo-noise relative overflow-hidden border-b-4 border-neo-ink bg-neo-bg">

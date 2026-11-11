@@ -7,9 +7,7 @@ import { Card } from "../components/Card";
 import { SectionLabel } from "../components/Section";
 import { StarSticker } from "../components/Decor";
 
-/* Closing CTA on a black color block. A bordered white form card (yellow-flood
-   focus inputs) sits beside a loud pitch. Submitting flips to a bordered
-   success sticker — no network, this is a showcase. */
+
 export function CtaForm() {
 	const [sent, setSent] = useState(false);
 
@@ -25,7 +23,7 @@ export function CtaForm() {
 				aria-hidden="true"
 			/>
 			<div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:py-28">
-				{/* Pitch */}
+				{}
 				<div className="relative">
 					<SectionLabel bg="bg-neo-secondary">Get On The List</SectionLabel>
 					<h2 className="mt-5 text-5xl font-bold uppercase leading-[0.88] tracking-tighter text-neo-white sm:text-7xl">
@@ -34,7 +32,7 @@ export function CtaForm() {
 						<span className="neo-text-stroke-white">Get Loud?</span>
 					</h2>
 					<p className="mt-6 max-w-md text-lg font-bold text-neo-white/80">
-						Drop your details and we&apos;ll send the full kit — tokens,
+						Drop your details and we&apos;ll send the full kit ,  tokens,
 						components, and the rules to break them. No corporate onboarding
 						funnel. Just stickers.
 					</p>
@@ -46,7 +44,7 @@ export function CtaForm() {
 					</div>
 				</div>
 
-				{/* Form card */}
+				{}
 				<Card
 					bg="bg-neo-bg"
 					lift={false}

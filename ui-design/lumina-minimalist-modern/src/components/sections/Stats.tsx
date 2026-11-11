@@ -28,7 +28,7 @@ const STATS: Stat[] = [
 	},
 ];
 
-/** Counts a number up from 0 once it scrolls into view. */
+
 function useCountUp(
 	target: number,
 	run: boolean,
@@ -86,7 +86,7 @@ export function Stats() {
 
 	return (
 		<section className="relative overflow-hidden bg-foreground py-24 text-background md:py-28">
-			{/* Dot-grid texture + corner glow */}
+			{}
 			<div aria-hidden className="dot-texture absolute inset-0" />
 			<div
 				aria-hidden

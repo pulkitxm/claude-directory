@@ -5,7 +5,7 @@ interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
 	children: ReactNode;
 }
 
-/** Centered max-width content well (1280px) with responsive gutters. */
+
 export function Container({ className, children, ...props }: ContainerProps) {
 	return (
 		<div

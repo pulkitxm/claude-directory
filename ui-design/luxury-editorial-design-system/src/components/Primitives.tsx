@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
 
-/* ---- Decorative line + uppercase overline label ------------------------- */
+
 export function Overline({
 	children,
 	tone = "dark",
@@ -14,7 +14,7 @@ export function Overline({
 	const textColor = tone === "dark" ? "text-muted-fg" : "text-background/70";
 	return (
 		<div className={["flex items-center gap-4", className].join(" ")}>
-			{/* Decorative horizontal line: h-px w-8 md:w-12 */}
+			{}
 			<span aria-hidden className={["h-px w-8 md:w-12", lineColor].join(" ")} />
 			<span
 				className={[
@@ -28,12 +28,12 @@ export function Overline({
 	);
 }
 
-/* ---- Mixed-italic / gold-emphasis headline fragment --------------------- */
+
 export function Emphasis({ children }: { children: ReactNode }) {
 	return <em className="font-serif italic text-accent">{children}</em>;
 }
 
-/* ---- Grayscale → colour editorial image, framed, with vertical label ---- */
+
 export function EditorialImage({
 	src,
 	alt,
@@ -70,7 +70,7 @@ export function EditorialImage({
 				loading="lazy"
 				className="h-full w-full object-cover grayscale transition-all duration-[1500ms] ease-luxe group-hover:grayscale-0 group-hover:scale-105 reduce-motion-noscale"
 			/>
-			{/* Subtle inner border framing. */}
+			{}
 			<span
 				aria-hidden
 				className="pointer-events-none absolute inset-0 shadow-frame"
@@ -92,7 +92,7 @@ export function EditorialImage({
 	);
 }
 
-/* ---- Underline-only input with italic Playfair placeholder -------------- */
+
 export function Input({
 	className = "",
 	tone = "dark",

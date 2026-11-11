@@ -18,7 +18,7 @@ export function Features() {
 					kicker="protocol"
 					title="Engineered for"
 					accent="precision &amp; trust"
-					description="Every layer of AURUM is built around Bitcoin's first principles — self-custody, verifiability, and mathematical certainty. No middlemen, no black boxes."
+					description="Every layer of AURUM is built around Bitcoin's first principles ,  self-custody, verifiability, and mathematical certainty. No middlemen, no black boxes."
 				/>
 
 				<div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
@@ -37,7 +37,7 @@ function FeatureCard({ feature }: { feature: Feature }) {
 	const Watermark = feature.icon;
 	return (
 		<Card className="group h-full overflow-hidden">
-			{/* Large rotated watermark icon — reveals on hover */}
+			{}
 			<Watermark
 				className="pointer-events-none absolute -bottom-6 -right-6 h-40 w-40 rotate-12 text-orange opacity-[0.06] transition-all duration-500 group-hover:rotate-6 group-hover:opacity-20"
 				strokeWidth={1}

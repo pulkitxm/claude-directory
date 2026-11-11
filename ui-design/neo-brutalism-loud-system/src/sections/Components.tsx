@@ -5,10 +5,7 @@ import { Badge } from "../components/Badge";
 import { Input } from "../components/Input";
 import { SectionLabel } from "../components/Section";
 
-/* Live component playground — the literal showcase. Each tile demonstrates one
-   signature primitive with a working interaction the visitor can poke at:
-   buttons click down, the input floods yellow on focus, badges spin on hover,
-   the card lifts. */
+
 export function Components() {
 	return (
 		<section
@@ -34,7 +31,7 @@ export function Components() {
 				</div>
 
 				<div className="mt-14 grid grid-cols-1 gap-7 lg:grid-cols-2">
-					{/* Buttons */}
+					{}
 					<Card bg="bg-neo-bg" lift={false} shadow="lg" className="p-6 sm:p-8">
 						<p className="mb-6 text-sm font-bold uppercase tracking-widest text-neo-ink">
 							Buttons · click to press down
@@ -61,7 +58,7 @@ export function Components() {
 						</div>
 					</Card>
 
-					{/* Badges + icon boxes */}
+					{}
 					<Card bg="bg-neo-bg" lift={false} shadow="lg" className="p-6 sm:p-8">
 						<p className="mb-6 text-sm font-bold uppercase tracking-widest text-neo-ink">
 							Badges · hover to spin
@@ -106,7 +103,7 @@ export function Components() {
 						</div>
 					</Card>
 
-					{/* Input */}
+					{}
 					<Card bg="bg-neo-bg" lift={false} shadow="lg" className="p-6 sm:p-8">
 						<p className="mb-6 text-sm font-bold uppercase tracking-widest text-neo-ink">
 							Inputs · focus floods yellow
@@ -126,7 +123,7 @@ export function Components() {
 						</div>
 					</Card>
 
-					{/* Mini lift card */}
+					{}
 					<Card bg="bg-neo-bg" lift={false} shadow="lg" className="p-6 sm:p-8">
 						<p className="mb-6 text-sm font-bold uppercase tracking-widest text-neo-ink">
 							Cards · hover to lift
@@ -142,7 +139,7 @@ export function Components() {
 								/>
 							</div>
 							<p className="mt-3 text-base font-bold leading-snug text-neo-ink">
-								Hover me. I lift off the page and my shadow grows — physical,
+								Hover me. I lift off the page and my shadow grows ,  physical,
 								not a fade.
 							</p>
 						</Card>

@@ -2,17 +2,14 @@ import { SectionLabel } from "../components/SectionLabel";
 import { Reveal } from "../components/Reveal";
 import { BackgroundNumber } from "../components/BackgroundNumber";
 
-/**
- * The manifesto. An ultra-massive heading on the left, a quiet readable column
- * on the right, and a towering background number anchoring the depth layer.
- */
+
 export function Manifesto() {
 	return (
 		<section
 			id="program"
 			className="relative overflow-hidden border-b-2 border-line py-24 md:py-32"
 		>
-			{/* Depth number */}
+			{}
 			<BackgroundNumber className="absolute -left-[3vw] bottom-0 leading-[0.7] text-muted/50 text-[34vw]">
 				01
 			</BackgroundNumber>
@@ -45,7 +42,7 @@ export function Manifesto() {
 							<p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
 								Where traditional design uses a 2× scale difference between
 								headline and body, we use ten. Where others reach for a subtle
-								shadow, we stay brutally flat — sharp borders, hard edges, a
+								shadow, we stay brutally flat ,  sharp borders, hard edges, a
 								single acid accent. The page should scream, not whisper.
 							</p>
 						</Reveal>

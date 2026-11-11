@@ -13,10 +13,7 @@ import { Faq } from "./components/Faq";
 import { Cta } from "./components/Cta";
 import { Footer } from "./components/Footer";
 
-/* The clay world. Blobs render once at the root so every section sits in the
-   same diffused lighting; sections then flow top to bottom exercising the full
-   system: hero → trusted-by → stats orbs → bento features → live playground →
-   split benefits → how-it-works → pricing → testimonials → FAQ → CTA → footer. */
+
 export default function App() {
 	return (
 		<>

@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { RefObject } from "react";
 
-/* Tracks the user's reduced-motion preference reactively. Used to skip mounting
-   animated marquee tracks and to short-circuit count-ups / reveals. */
+
 export function useReducedMotion(): boolean {
 	const [reduced, setReduced] = useState(() => {
 		if (typeof window === "undefined" || !window.matchMedia) return false;
@@ -20,9 +19,7 @@ export function useReducedMotion(): boolean {
 	return reduced;
 }
 
-/* Returns [ref, inView] — flips true the first time the element scrolls into
-   view. Drives the staggered "snap-in" reveals. Honors reduced motion by
-   reporting inView immediately. */
+
 export function useInView<T extends HTMLElement>(
 	options: IntersectionObserverInit = { threshold: 0.2 },
 ): [RefObject<T>, boolean] {
@@ -56,8 +53,7 @@ export function useInView<T extends HTMLElement>(
 	return [ref, inView];
 }
 
-/* Counts up to `target` once `active` is true. Reduced motion jumps straight
-   to the final value. Mechanical, fast (700ms) ease-out. */
+
 export function useCountUp(target: number, active: boolean, durationMs = 700) {
 	const reduced = useReducedMotion();
 	const [value, setValue] = useState(0);

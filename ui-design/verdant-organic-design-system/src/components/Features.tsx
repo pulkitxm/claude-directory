@@ -79,7 +79,7 @@ export function Features() {
 								<article
 									className={`group h-full border border-border/50 bg-card p-8 shadow-soft transition-all duration-500 ease-organic hover:-translate-y-1.5 hover:shadow-soft-lg ${cardShapes[i % cardShapes.length]}`}
 								>
-									{/* icon container fills to solid moss on hover, icon turns white */}
+									{}
 									<span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary/10 text-primary transition-colors duration-500 ease-organic group-hover:bg-primary group-hover:text-primary-foreground">
 										<Icon size={28} strokeWidth={2} />
 									</span>

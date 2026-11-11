@@ -9,7 +9,7 @@ export function Faq() {
 	return (
 		<Section id="faq" className="bg-muted/40">
 			<div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
-				{/* left rail */}
+				{}
 				<div className="lg:sticky lg:top-28 lg:self-start">
 					<SectionLabel align="left" className="mb-7">
 						Enquiries
@@ -34,7 +34,7 @@ export function Faq() {
 					</a>
 				</div>
 
-				{/* accordion */}
+				{}
 				<div className="border-t border-border">
 					{faqs.map((item, i) => {
 						const isOpen = open === i;

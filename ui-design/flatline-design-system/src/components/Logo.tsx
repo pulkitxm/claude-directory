@@ -1,5 +1,4 @@
-/* Flat geometric wordmark — the brand built from the same primitives the design
-   system preaches: a square, a circle, a bar. No gradient, no shadow. */
+
 export function Logo({
 	className = "",
 	onDark = false,

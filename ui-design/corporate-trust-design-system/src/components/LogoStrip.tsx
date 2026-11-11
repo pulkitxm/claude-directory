@@ -1,8 +1,7 @@
 import { Shell } from "./primitives";
 import { TRUST_LOGOS } from "../lib/content";
 
-/* Continuous, pure-CSS marquee of customer wordmarks. Duplicated once so the
-   -50% translate loops seamlessly; masked at both edges. */
+
 export function LogoStrip() {
 	const row = [...TRUST_LOGOS, ...TRUST_LOGOS];
 	return (

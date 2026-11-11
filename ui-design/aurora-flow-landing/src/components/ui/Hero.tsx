@@ -17,10 +17,7 @@ function fmt(total: number) {
 	return `${m}:${s}`;
 }
 
-/**
- * The session dial — a breathing ring with a live countdown. This is the hero's
- * thesis: starting a session is one tap, and the surface keeps your attention.
- */
+
 function SessionDial() {
 	const [running, setRunning] = useState(false);
 	const [remaining, setRemaining] = useState(SESSION_SECONDS);
@@ -54,7 +51,7 @@ function SessionDial() {
 	return (
 		<div className="relative flex flex-col items-center">
 			<div className="relative h-[300px] w-[300px]">
-				{/* soft halo */}
+				{}
 				<div
 					className={cn(
 						"absolute inset-6 rounded-full blur-2xl transition-opacity duration-1000",
@@ -73,7 +70,7 @@ function SessionDial() {
 							<stop offset="1" stopColor="rgb(var(--coral))" />
 						</linearGradient>
 					</defs>
-					{/* track */}
+					{}
 					<circle
 						cx="150"
 						cy="150"
@@ -82,7 +79,7 @@ function SessionDial() {
 						stroke="rgb(var(--line-bright) / 0.6)"
 						strokeWidth="2"
 					/>
-					{/* progress */}
+					{}
 					<circle
 						cx="150"
 						cy="150"
@@ -95,7 +92,7 @@ function SessionDial() {
 						strokeDashoffset={C * (1 - progress)}
 						style={{ transition: "stroke-dashoffset 0.2s linear" }}
 					/>
-					{/* tick marks */}
+					{}
 					{Array.from({ length: 60 }).map((_, i) => {
 						const a = (i / 60) * Math.PI * 2;
 						const r1 = R + 12;
@@ -115,7 +112,7 @@ function SessionDial() {
 					})}
 				</svg>
 
-				{/* center readout */}
+				{}
 				<div className="absolute inset-0 flex flex-col items-center justify-center">
 					<span className="label mb-2 text-haze">
 						{running ? "In the current" : "Ready"}
@@ -158,16 +155,16 @@ export function Hero() {
 			id="top"
 			className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-20 pt-32 sm:px-8"
 		>
-			{/* the living tide */}
+			{}
 			<div className="pointer-events-none absolute inset-0 -z-10">
 				<TideCanvas />
-				{/* vignette + depth so text always reads */}
+				{}
 				<div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_-10%,transparent_30%,rgb(var(--ink))_82%)]" />
 				<div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ink to-transparent" />
 			</div>
 
 			<div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-				{/* copy */}
+				{}
 				<div className="max-w-xl">
 					<motion.div
 						initial={{ opacity: 0, y: 14 }}
@@ -244,7 +241,7 @@ export function Hero() {
 					</motion.p>
 				</div>
 
-				{/* the dial */}
+				{}
 				<motion.div
 					initial={{ opacity: 0, scale: 0.94 }}
 					animate={{ opacity: 1, scale: 1 }}

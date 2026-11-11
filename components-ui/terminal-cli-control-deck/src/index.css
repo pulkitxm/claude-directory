@@ -1,43 +1,19 @@
 @import "tailwindcss";
 
-/* ============================================================================
-   TERMINAL CLI DESIGN SYSTEM — centralized tokens & global primitives
-   ----------------------------------------------------------------------------
-   Everything visual derives from the tokens declared in @theme below. No
-   component re-defines a colour, radius, or font: they consume these names.
-   Vendored fonts (JetBrains Mono + VT323) are loaded from ./assets/fonts.
-   ========================================================================== */
 
-/* --- Vendored fonts (local, offline-safe) -------------------------------- */
-@font-face {
-	font-family: "JetBrains Mono";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("./assets/fonts/jetbrains-mono-400.woff2") format("woff2");
-}
-@font-face {
-	font-family: "JetBrains Mono";
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src: url("./assets/fonts/jetbrains-mono-700.woff2") format("woff2");
-}
-@font-face {
-	font-family: "VT323";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("./assets/fonts/vt323-400.woff2") format("woff2");
-}
 
-/* --- DESIGN TOKENS -------------------------------------------------------- */
+
+
+
+
+
+
 @theme {
-	/* Monospace supremacy: one family, everywhere. */
-	--font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
-	--font-display: "VT323", "JetBrains Mono", monospace;
 
-	/* Phosphor palette (dark mode only). */
+	--font-mono: ui-monospace, monospace;
+	--font-display: ui-monospace, monospace;
+
+
 	--color-bg: #0a0a0a;
 	--color-bg-soft: #0d120d;
 	--color-primary: #33ff00;
@@ -46,27 +22,27 @@
 	--color-accent: #33ff00;
 	--color-error: #ff3333;
 	--color-border: #1f521f;
-	--color-dim: #2a6b2a; /* mid-tone for secondary body copy */
+	--color-dim: #2a6b2a;
 
-	/* Strict modular scale — headers snap to grid sizes, no fluid in-betweens. */
-	--text-2xs: 0.6875rem; /* 11px  */
-	--text-xs: 0.75rem; /*  12px  */
-	--text-sm: 0.8125rem; /* 13px  */
-	--text-base: 0.9375rem; /* 15px */
-	--text-lg: 1.25rem; /*  20px  */
-	--text-xl: 1.75rem; /*  28px  */
-	--text-2xl: 2.5rem; /*  40px  */
-	--text-3xl: 3.5rem; /*  56px  */
 
-	/* Radius: zero. Always. */
+	--text-2xs: 0.6875rem;
+	--text-xs: 0.75rem;
+	--text-sm: 0.8125rem;
+	--text-base: 0.9375rem;
+	--text-lg: 1.25rem;
+	--text-xl: 1.75rem;
+	--text-2xl: 2.5rem;
+	--text-3xl: 3.5rem;
+
+
 	--radius: 0px;
 
-	/* Phosphor glow utilities. */
+
 	--glow-primary: 0 0 5px rgba(51, 255, 0, 0.5);
 	--glow-secondary: 0 0 5px rgba(255, 176, 0, 0.5);
 	--glow-error: 0 0 5px rgba(255, 51, 51, 0.55);
 
-	/* Animations. */
+
 	--animate-blink: blink 1.05s step-end infinite;
 	--animate-flicker: flicker 7s linear infinite;
 	--animate-scan: scan 7.5s linear infinite;
@@ -84,7 +60,7 @@
 	}
 }
 
-/* Whole-screen brightness flicker, the way an old CRT never sits perfectly still. */
+
 @keyframes flicker {
 	0%,
 	100% {
@@ -116,7 +92,7 @@
 	}
 }
 
-/* A bright horizontal sweep that travels down the panel. */
+
 @keyframes scan {
 	0% {
 		transform: translateY(-12%);
@@ -185,7 +161,7 @@
 	}
 }
 
-/* --- BASE ----------------------------------------------------------------- */
+
 @layer base {
 	* {
 		border-radius: var(--radius);
@@ -197,13 +173,13 @@
 	}
 
 	body {
-		font-family: var(--font-mono);
+		font-family: ui-monospace, monospace;
 		background-color: var(--color-bg);
 		color: var(--color-primary);
 		-webkit-font-smoothing: antialiased;
 		text-rendering: optimizeLegibility;
 		letter-spacing: 0.02em;
-		/* faint phosphor floor glow + subtle vertical fade */
+
 		background-image:
 			radial-gradient(
 				120% 80% at 50% -10%,
@@ -225,7 +201,7 @@
 		text-shadow: none;
 	}
 
-	/* Phosphor scrollbar. */
+
 	::-webkit-scrollbar {
 		width: 10px;
 		height: 10px;
@@ -252,7 +228,7 @@
 	}
 }
 
-/* --- DESIGN-SYSTEM UTILITIES --------------------------------------------- */
+
 @layer utilities {
 	.glow {
 		text-shadow: var(--glow-primary);

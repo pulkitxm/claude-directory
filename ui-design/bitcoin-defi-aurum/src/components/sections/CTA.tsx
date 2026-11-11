@@ -20,7 +20,7 @@ export function CTA() {
 		<section className="relative py-24" aria-label="Get started">
 			<Container>
 				<div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-matter shadow-elevate">
-					{/* layered background: grid + texture + glows */}
+					{}
 					<div
 						className="pointer-events-none absolute inset-0 bg-grid-fine opacity-[0.05]"
 						aria-hidden="true"
@@ -87,7 +87,7 @@ export function CTA() {
 							</p>
 						</div>
 
-						{/* Reuse the orbital orb, scaled into the panel */}
+						{}
 						<div className="hidden lg:block">
 							<OrbitalOrb />
 						</div>

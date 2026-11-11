@@ -9,9 +9,7 @@ const SHADOWS: { label: string; cls: string; value: string }[] = [
 	{ label: "XL", cls: "neo-shadow-xl", value: "16px 16px" },
 ];
 
-/* The "DNA" section: a live, interactive token gallery. Color swatches print
-   their own hex; the shadow scale is shown on real boxes; radius + type are
-   spelled out. Everything reads from the centralized @theme tokens. */
+
 export function Tokens() {
 	return (
 		<section
@@ -39,7 +37,7 @@ export function Tokens() {
 					</p>
 				</div>
 
-				{/* Color swatches */}
+				{}
 				<div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
 					{COLOR_TOKENS.map((token, i) => (
 						<Reveal key={token.name} delay={i * 60}>
@@ -66,9 +64,9 @@ export function Tokens() {
 					))}
 				</div>
 
-				{/* Shadow scale + geometry */}
+				{}
 				<div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-3">
-					{/* Shadow scale */}
+					{}
 					<Card
 						bg="bg-neo-bg"
 						lift={false}
@@ -94,7 +92,7 @@ export function Tokens() {
 						</div>
 					</Card>
 
-					{/* Geometry + type */}
+					{}
 					<Card bg="bg-neo-secondary" lift={false} shadow="lg" className="p-6">
 						<p className="mb-5 text-sm font-bold uppercase tracking-widest text-neo-ink">
 							Geometry + Type

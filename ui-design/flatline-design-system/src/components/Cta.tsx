@@ -4,9 +4,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Shell, Blob, Square, Button } from "./primitives";
 import { fadeUp, stagger, reveal } from "../lib/motion";
 
-/* CTA — vibrant Amber color block. Closes the color rotation (Blue, Emerald,
-   Dark, Amber). Houses the Input demo: a gray field that snaps to a hard
-   primary border on focus, no glow. */
+
 export function Cta() {
 	const [email, setEmail] = useState("");
 	const [done, setDone] = useState(false);

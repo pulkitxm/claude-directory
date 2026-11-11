@@ -58,7 +58,7 @@ export function Footer() {
 				</div>
 
 				<div className="flex flex-col items-center justify-between gap-3 border-t border-[var(--color-edge)] py-6 font-mono text-xs uppercase tracking-widest text-[var(--color-chrome)]/40 sm:flex-row">
-					<span>&copy; 2088 NEONWAVE OS — all realities reserved</span>
+					<span>&copy; 2088 NEONWAVE OS ,  all realities reserved</span>
 					<span className="flex items-center gap-2">
 						<span className="pulse-dot inline-block h-2 w-2 rounded-full bg-[var(--color-orange)] text-[var(--color-orange)]" />
 						synthwave servers nominal

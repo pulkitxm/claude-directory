@@ -9,24 +9,24 @@ export function Features() {
 			className="relative border-t border-foreground/10 py-20 md:py-32"
 		>
 			<div className="mx-auto max-w-[1600px] px-8 md:px-16">
-				{/* Intro — offset to column 2, drop cap on the lead paragraph */}
+				{}
 				<div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
 					<div className="lg:col-span-7 lg:col-start-2">
-						<Overline>The House — On Making</Overline>
+						<Overline>The House ,  On Making</Overline>
 						<h2 className="mt-8 max-w-3xl font-serif text-4xl font-normal leading-[0.95] tracking-tight text-foreground sm:text-5xl md:text-7xl">
 							Curated <Emphasis>Excellence</Emphasis>, kept deliberately small.
 						</h2>
 						<p className="dropcap mt-10 max-w-xl font-sans text-base leading-relaxed text-foreground md:text-lg">
 							Three ateliers. A fixed roster of makers. No outsourcing, no
 							shortcuts, and no season that exists only to sell the next one. We
-							build a collection the way one builds a library — patiently, and
+							build a collection the way one builds a library ,  patiently, and
 							with a long memory. Each line below is a discipline unto itself,
 							and each refuses to be hurried.
 						</p>
 					</div>
 				</div>
 
-				{/* Feature rows — asymmetric, alternating side, offset column starts */}
+				{}
 				<div className="mt-20 flex flex-col gap-24 md:mt-28 md:gap-32">
 					{features.map((f, i) => {
 						const imageFirst = i % 2 === 0;
@@ -35,7 +35,7 @@ export function Features() {
 								key={f.index}
 								className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-16"
 							>
-								{/* Image */}
+								{}
 								<div
 									className={[
 										"lg:col-span-5",
@@ -54,7 +54,7 @@ export function Features() {
 									/>
 								</div>
 
-								{/* Text */}
+								{}
 								<div
 									className={[
 										"lg:col-span-5",
@@ -64,7 +64,7 @@ export function Features() {
 									].join(" ")}
 								>
 									<span className="font-serif text-2xl italic text-muted-fg">
-										— {f.index}
+										,  {f.index}
 									</span>
 									<h3 className="mt-4 font-serif text-3xl font-normal leading-[1] tracking-tight text-foreground md:text-5xl">
 										{f.title.lead} <Emphasis>{f.title.emphasis}</Emphasis>

@@ -1,16 +1,7 @@
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * TideCanvas — the page signature.
- *
- * A field of slow horizontal light bands, like an aurora reflected on dark
- * water. Layered sine waves drift continuously and lean gently toward the
- * pointer, so the surface feels alive without ever demanding attention — the
- * visual analogue of being in a deep-focus current.
- *
- * Honors prefers-reduced-motion by painting a single still frame.
- */
+
 export function TideCanvas({ className }: { className?: string }) {
 	const ref = useRef<HTMLCanvasElement>(null);
 

@@ -9,7 +9,7 @@ type Quote = {
 
 const QUOTES: Quote[] = [
 	{
-		body: "We deleted our deploy dashboard. The whole team drives Aperture from ⌘K now — even our designers ship copy fixes at midnight.",
+		body: "We deleted our deploy dashboard. The whole team drives Aperture from ⌘K now ,  even our designers ship copy fixes at midnight.",
 		name: "Priya Raman",
 		role: "Staff Eng, Northwind",
 		initials: "PR",
@@ -59,7 +59,7 @@ export function Testimonials() {
 								interactive
 								className="relative h-full overflow-hidden p-7 md:p-8"
 							>
-								{/* signature glowing accent line */}
+								{}
 								<span className="absolute left-0 top-7 h-12 w-[3px] rounded-full bg-accent shadow-[0_0_14px_2px_rgba(245,158,11,0.55)]" />
 								<p className="pl-4 text-base leading-relaxed text-foreground/90 md:text-lg">
 									“{q.body}”

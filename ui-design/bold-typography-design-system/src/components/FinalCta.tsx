@@ -5,7 +5,7 @@ import { Input } from "./Primitives";
 import { Button } from "./Button";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Final CTA — the system's "inverted section". `.theme-invert` flips the tokens
+// Final CTA ,  the system's "inverted section". `.theme-invert` flips the tokens
 // so this whole block renders as a warm-white poster while every component keeps
 // using the same token names. The email field uses the inverted input treatment
 // (transparent fill, semi-transparent border, accent focus). Input + button stack
@@ -27,7 +27,7 @@ export function FinalCta() {
 			id="final-cta"
 			className="theme-invert relative overflow-hidden bg-background py-24 md:py-32 lg:py-40"
 		>
-			{/* Decorative oversized word behind the headline (hidden on mobile) */}
+			{}
 			<span
 				aria-hidden
 				className="pointer-events-none absolute -left-6 bottom-0 hidden select-none text-[16rem] font-extrabold leading-none tracking-tighter text-foreground/[0.04] md:block lg:text-[24rem]"
@@ -91,7 +91,7 @@ export function FinalCta() {
 									className="sm:flex-1"
 									autoComplete="email"
 								/>
-								{/* Outline button inverts against the white ground */}
+								{}
 								<Button
 									type="submit"
 									variant="outline"

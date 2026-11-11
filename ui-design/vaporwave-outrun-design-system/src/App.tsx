@@ -15,7 +15,7 @@ import { Footer } from "./components/Footer";
 export default function App() {
 	return (
 		<>
-			{/* Fixed atmosphere behind everything */}
+			{}
 			<Backdrop />
 
 			<a
@@ -42,7 +42,7 @@ export default function App() {
 
 			<Footer />
 
-			{/* CRT scanline overlay above all content */}
+			{}
 			<Scanlines />
 		</>
 	);

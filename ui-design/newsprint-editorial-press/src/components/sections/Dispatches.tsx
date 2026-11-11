@@ -2,10 +2,10 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Kicker } from "@/components/ui/Kicker";
 import { Button } from "@/components/ui/Button";
-import plateSkyline from "@/assets/plate-skyline.svg";
-import plateGlobe from "@/assets/plate-globe.svg";
-import plateTypecase from "@/assets/plate-typecase.svg";
-import plateQuill from "@/assets/plate-quill.svg";
+import plateSkyline from "@/assets/original-visual.svg";
+import plateGlobe from "@/assets/original-visual.svg";
+import plateTypecase from "@/assets/original-visual.svg";
+import plateQuill from "@/assets/original-visual.svg";
 
 interface Dispatch {
 	img: string;
@@ -25,7 +25,7 @@ const DISPATCHES: Dispatch[] = [
 		desk: "Investigations",
 		title: "The city that files itself: inside the always-on newsroom",
 		excerpt:
-			"For three months our investigations desk lived on the wire. What we found was less a machine than a metropolis — a skyline of desks, each lit at four in the morning, each setting its own column of the record.",
+			"For three months our investigations desk lived on the wire. What we found was less a machine than a metropolis ,  a skyline of desks, each lit at four in the morning, each setting its own column of the record.",
 		byline: "By E. Marlowe",
 		read: "12 min read",
 		lead: true,
@@ -62,11 +62,7 @@ const DISPATCHES: Dispatch[] = [
 	},
 ];
 
-/**
- * Dispatches: the day's long-form. A lead story spans the full width, then a
- * three-up rail of cards. Each card lifts with the signature hard offset
- * shadow and warms its grayscale plate on hover.
- */
+
 export function Dispatches() {
 	const [lead, ...rest] = DISPATCHES;
 
@@ -89,7 +85,7 @@ export function Dispatches() {
 					</Button>
 				</div>
 
-				{/* LEAD DISPATCH — asymmetric 7/5 split. */}
+				{}
 				<Reveal
 					as="article"
 					className="hard-shadow-hover group mt-10 grid grid-cols-1 border border-ink bg-paper lg:grid-cols-12"
@@ -135,7 +131,7 @@ export function Dispatches() {
 					</div>
 				</Reveal>
 
-				{/* DISPATCH RAIL. */}
+				{}
 				<div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 					{rest.map((d, i) => (
 						<Reveal

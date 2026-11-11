@@ -1,8 +1,4 @@
-/* ============================================================================
-   SCHRIFT — interaction layer. Vanilla JS, no dependencies, progressive.
-   Everything degrades gracefully: with JS off, all content is still readable,
-   the FAQ is just expanded markup, and the page scrolls normally.
-   ============================================================================ */
+
 (function () {
 	"use strict";
 
@@ -10,7 +6,7 @@
 		"(prefers-reduced-motion: reduce)",
 	).matches;
 
-	/* ---------------------------------------------------------------- 1 · MENU */
+
 	const burger = document.getElementById("burger");
 	const drawer = document.getElementById("drawer");
 	if (burger && drawer) {
@@ -30,7 +26,7 @@
 		});
 	}
 
-	/* ----------------------------------------------------------------- 2 · FAQ */
+
 	document.querySelectorAll(".faq__item").forEach((item) => {
 		const btn = item.querySelector(".faq__q");
 		const panel = item.querySelector(".faq__a");
@@ -50,7 +46,7 @@
 		});
 	});
 
-	/* -------------------------------------------------------- 3 · TOGGLE GROUP */
+
 	document.querySelectorAll(".demo-choices").forEach((group) => {
 		const choices = group.querySelectorAll(".choice");
 		choices.forEach((choice) => {
@@ -61,7 +57,7 @@
 		});
 	});
 
-	/* ---------------------------------------------------- 4 · SCROLL REVEAL */
+
 	const reveals = document.querySelectorAll("[data-reveal]");
 	if (reduceMotion || !("IntersectionObserver" in window)) {
 		reveals.forEach((el) => el.classList.add("is-in"));
@@ -80,7 +76,7 @@
 		reveals.forEach((el) => io.observe(el));
 	}
 
-	/* ------------------------------------------------- 5 · STAT COUNT-UP */
+
 	const counters = document.querySelectorAll("[data-count]");
 	const runCount = (el) => {
 		const target = parseFloat(el.getAttribute("data-count")) || 0;
@@ -120,7 +116,7 @@
 		}
 	}
 
-	/* ------------------------------------------------------- 6 · CTA FORM */
+
 	const form = document.getElementById("cta-form");
 	const note = document.getElementById("cta-note");
 	if (form && note) {
@@ -136,7 +132,7 @@
 				if (input) input.focus();
 				return;
 			}
-			note.textContent = "Request received — kit en route.";
+			note.textContent = "Request received ,  kit en route.";
 			note.setAttribute("data-state", "ok");
 			form.reset();
 			window.setTimeout(() => {
@@ -146,6 +142,6 @@
 		});
 	}
 
-	/* --------------------------------------- 7 · ACTIVE NAV ON SCROLL (subtle) */
-	// Mark the brand year etc. — purely decorative; no-op kept minimal.
+
+	// Mark the brand year etc. ,  purely decorative; no-op kept minimal.
 })();

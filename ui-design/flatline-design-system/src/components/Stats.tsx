@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "motion/react";
 import { Shell, Reveal, Eyebrow } from "./primitives";
 
-/* STATS — multi-color numbers, each stat a different accent. White section so
-   the colored numerals pop as pure graphic marks. */
+
 const STATS = [
 	{
 		value: 0,

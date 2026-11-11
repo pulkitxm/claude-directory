@@ -38,12 +38,12 @@ export function Nav() {
 					: "border-b border-transparent"
 			}`}
 		>
-			{/* gradient accent bar at the very top */}
+			{}
 			<div className="h-0.5 w-full bg-gradient-to-r from-[var(--color-magenta)] to-[var(--color-cyan)]" />
 			<nav className="shell flex h-16 items-center justify-between">
 				<Logo />
 
-				{/* Desktop links */}
+				{}
 				<div className="hidden items-center gap-7 md:flex">
 					{LINKS.map((l) => (
 						<a
@@ -63,7 +63,7 @@ export function Nav() {
 					</ButtonLink>
 				</div>
 
-				{/* Mobile toggle */}
+				{}
 				<button
 					type="button"
 					className="grid h-10 w-10 place-items-center border-2 border-[var(--color-magenta)] text-[var(--color-magenta)] transition-colors duration-200 ease-linear hover:bg-[var(--color-magenta)] hover:text-white md:hidden"
@@ -75,7 +75,7 @@ export function Nav() {
 				</button>
 			</nav>
 
-			{/* Mobile sheet */}
+			{}
 			{open && (
 				<div className="border-t border-[var(--color-edge)] bg-[var(--color-void)]/97 backdrop-blur-md md:hidden">
 					<div className="shell flex flex-col gap-1 py-4">

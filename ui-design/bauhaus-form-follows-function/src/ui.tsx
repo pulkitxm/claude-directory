@@ -1,14 +1,7 @@
-/* ----------------------------------------------------------------------------
-   WERKBUND — design-system primitives.
 
-   These are the composable atoms every section is constructed from. Centralizing
-   them here keeps the Bauhaus tokens (thick black borders, hard offset shadows,
-   binary radii, uppercase type) in ONE place instead of being re-typed as
-   one-off utility soups across the page.
----------------------------------------------------------------------------- */
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-/** Tiny className joiner (avoids a clsx dependency for this small surface). */
+
 export function cx(...parts: Array<string | false | null | undefined>): string {
 	return parts.filter(Boolean).join(" ");
 }
@@ -27,14 +20,11 @@ export const ACCENT_TEXT_ON: Record<Accent, string> = {
 	yellow: "text-ink",
 };
 
-/* ------------------------------------------------------------------ Shape -- */
+
 
 type ShapeKind = "circle" | "square" | "triangle";
 
-/**
- * A pure geometric primitive — the literal building block of the system.
- * Circles use rounded-full, squares rounded-none, triangles a clip-path.
- */
+
 export function Shape({
 	kind,
 	className,
@@ -69,9 +59,9 @@ export function Shape({
 	);
 }
 
-/* -------------------------------------------------------------- BrandMark -- */
 
-/** Three primary shapes forming the brand identity. Spins gently on hover. */
+
+
 export function BrandMark({ size = 36 }: { size?: number }) {
 	return (
 		<span
@@ -110,9 +100,9 @@ export function BrandMark({ size = 36 }: { size?: number }) {
 	);
 }
 
-/* ------------------------------------------------------------- Eyebrow ---- */
 
-/** Uppercase, wide-tracked label with a leading shape tick. */
+
+
 export function Eyebrow({
 	children,
 	accent = "red",
@@ -138,7 +128,7 @@ export function Eyebrow({
 	);
 }
 
-/* --------------------------------------------------------------- Button --- */
+
 
 type BtnVariant = "red" | "blue" | "yellow" | "outline" | "ghost" | "ondark";
 type BtnShape = "square" | "pill";
@@ -184,13 +174,9 @@ export function Btn({
 	);
 }
 
-/* ---------------------------------------------------------------- Card ---- */
 
-/**
- * The base bordered card with a hard shadow and a rotating corner shape.
- * The corner decoration cycles through the three primaries to keep the page
- * feeling hand-composed rather than templated.
- */
+
+
 export function Card({
 	children,
 	className,
@@ -237,9 +223,9 @@ export function Card({
 	);
 }
 
-/* ------------------------------------------------------------- Section ---- */
 
-/** Standard section wrapper with the mandatory 4px bottom divider. */
+
+
 export function Section({
 	id,
 	children,
@@ -261,7 +247,7 @@ export function Section({
 	);
 }
 
-/** Centered max-width container — poster-like breadth. */
+
 export function Container({
 	children,
 	className,

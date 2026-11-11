@@ -19,7 +19,7 @@ export function Testimonials() {
 				</h2>
 			</div>
 
-			{/* lead testimonial — large, with oversized gold quote mark */}
+			{}
 			<Card elevated accentTop className="relative overflow-hidden p-9 md:p-14">
 				<span
 					aria-hidden
@@ -48,7 +48,7 @@ export function Testimonials() {
 				</div>
 			</Card>
 
-			{/* supporting testimonials */}
+			{}
 			<div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
 				{rest.map((t) => (
 					<Card key={t.name} hover className="flex flex-col p-8 lg:p-9">

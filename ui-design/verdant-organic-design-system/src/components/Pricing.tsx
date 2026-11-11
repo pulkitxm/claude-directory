@@ -7,12 +7,7 @@ import { Button } from "./Button";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-/**
- * Three subscription tiers. The middle "Ritual" plan is the highlighted /
- * recommended tier — rendered on a moss fill, lifted and scaled above the
- * others, with a floating badge. Outer plans use the soft card treatment with
- * mirrored asymmetric corners so the trio reads balanced but never rigid.
- */
+
 export function Pricing() {
 	const reduced = useReducedMotion();
 	return (

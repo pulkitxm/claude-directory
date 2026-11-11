@@ -1,5 +1,4 @@
-/* Centralised copy + data. Keeping content out of the markup makes the
-   sections easy to re-skin and keeps the JSX focused on layout/motion. */
+
 
 export const STATS = [
 	{ value: "200", label: "Speakers" },
@@ -14,7 +13,7 @@ export const FEATURES = [
 	{
 		index: "01",
 		title: "Type In Motion",
-		body: "Headlines that breathe, stretch, and march across the viewport. We treat the letterform as the primary actor — never a caption to something else.",
+		body: "Headlines that breathe, stretch, and march across the viewport. We treat the letterform as the primary actor ,  never a caption to something else.",
 		tag: "Kinetic",
 	},
 	{
@@ -63,7 +62,7 @@ export const BENEFITS = [
 	{
 		index: "03",
 		title: "Never Still",
-		body: "Three layers of motion — perpetual marquees, reactive hovers, scroll-driven transforms — keep the page alive.",
+		body: "Three layers of motion ,  perpetual marquees, reactive hovers, scroll-driven transforms ,  keep the page alive.",
 	},
 	{
 		index: "04",
@@ -136,11 +135,11 @@ export const PRICING = [
 export const FAQS = [
 	{
 		q: "Is this just dark mode with yellow?",
-		a: "No. Dark mode is a palette swap. This is a system: viewport-scale type, perpetual marquees, hard color inversions, and scroll-driven transforms. Remove those and yes, it collapses into generic dark mode — which is exactly why they stay.",
+		a: "No. Dark mode is a palette swap. This is a system: viewport-scale type, perpetual marquees, hard color inversions, and scroll-driven transforms. Remove those and yes, it collapses into generic dark mode ,  which is exactly why they stay.",
 	},
 	{
 		q: "Why is everything uppercase?",
-		a: "Display text only — headings, buttons, labels. Body copy stays sentence case so it remains comfortable to read. Uppercase display creates the poster-like, confrontational lockup the style is built on.",
+		a: "Display text only ,  headings, buttons, labels. Body copy stays sentence case so it remains comfortable to read. Uppercase display creates the poster-like, confrontational lockup the style is built on.",
 	},
 	{
 		q: "Won't all this motion hurt accessibility?",

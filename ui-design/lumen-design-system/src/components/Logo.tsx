@@ -1,8 +1,4 @@
-/**
- * The Lumen mark — a soft light "aperture" rendered as an inline SVG so the
- * brand asset ships with the bundle (no external request). Concentric arcs
- * read as a lens iris catching ambient light.
- */
+
 export function Logo({ className = "" }: { className?: string }) {
 	return (
 		<svg

@@ -1,8 +1,4 @@
-/* ----------------------------------------------------------------------------
-   WERKBUND — content. Kept separate from presentation so copy can change
-   without touching layout. WERKBUND is a fictional Bauhaus-flavoured design
-   system / component toolkit (a nod to the Deutscher Werkbund).
----------------------------------------------------------------------------- */
+
 import type { Accent } from "./ui";
 
 export type ShapeKind = "circle" | "square" | "triangle";
@@ -41,7 +37,7 @@ export const FEATURES: {
 	{
 		icon: "layers",
 		title: "Hard Layering",
-		body: "Depth comes from honest 4px and 8px offset shadows — never a blur. Surfaces stack like cut paper on a workbench.",
+		body: "Depth comes from honest 4px and 8px offset shadows ,  never a blur. Surfaces stack like cut paper on a workbench.",
 		accent: "blue",
 	},
 	{
@@ -73,7 +69,7 @@ export const FEATURES: {
 export const STEPS: { title: string; body: string }[] = [
 	{
 		title: "Compose",
-		body: "Drop primitives onto the grid. Circle, square, triangle — the alphabet of the whole system.",
+		body: "Drop primitives onto the grid. Circle, square, triangle ,  the alphabet of the whole system.",
 	},
 	{
 		title: "Constrain",
@@ -92,7 +88,7 @@ export const STEPS: { title: string; body: string }[] = [
 export const BENEFITS: string[] = [
 	"Strict three-colour palette that can never drift",
 	"Hard-shadow depth with no blur or guesswork",
-	"Binary radii — squares and circles, nothing fuzzy",
+	"Binary radii ,  squares and circles, nothing fuzzy",
 	"Accessible focus rings and reduced-motion support",
 	"Responsive from poster-scale desktop to mobile",
 	"Every token defined once and reused everywhere",
@@ -161,7 +157,7 @@ export const TESTIMONIALS: {
 			"It forced every decision onto the grid. Our product finally looks composed instead of decorated.",
 		name: "Anni Brandt",
 		role: "Head of Design, Form Co.",
-		img: "./img/avatar-1.jpg",
+		img: "./img/original-visual.svg",
 		accent: "red",
 	},
 	{
@@ -169,7 +165,7 @@ export const TESTIMONIALS: {
 			"Three colours, two border widths, one font. The constraints did more for consistency than any 60-page guideline.",
 		name: "Josef Klee",
 		role: "Principal Engineer, Gropius Labs",
-		img: "./img/avatar-2.jpg",
+		img: "./img/original-visual.svg",
 		accent: "blue",
 	},
 	{
@@ -177,7 +173,7 @@ export const TESTIMONIALS: {
 			"Hard shadows and thick borders read instantly. Our hand-off time to engineering basically halved.",
 		name: "Lyonel Albers",
 		role: "Design Systems Lead, Dessau",
-		img: "./img/avatar-3.jpg",
+		img: "./img/original-visual.svg",
 		accent: "yellow",
 	},
 ];
@@ -193,21 +189,21 @@ export const POSTS: {
 		title: "Why a three-colour palette beats a hundred shades",
 		tag: "Theory",
 		read: "6 min",
-		img: "./img/journal-1.jpg",
+		img: "./img/original-visual.svg",
 		round: true,
 	},
 	{
 		title: "Hard shadows: depth without a single blur",
 		tag: "Craft",
 		read: "4 min",
-		img: "./img/journal-2.jpg",
+		img: "./img/original-visual.svg",
 		round: false,
 	},
 	{
 		title: "Breaking the grid on purpose, and getting away with it",
 		tag: "Layout",
 		read: "8 min",
-		img: "./img/journal-3.jpg",
+		img: "./img/original-visual.svg",
 		round: true,
 	},
 ];
@@ -215,7 +211,7 @@ export const POSTS: {
 export const FAQS: { q: string; a: string }[] = [
 	{
 		q: "Is this a real component library?",
-		a: "WERKBUND is a fictional studio built to demonstrate a Bauhaus design system end to end. The tokens, primitives and patterns are real, working React — the product around them is the showcase.",
+		a: "WERKBUND is a fictional studio built to demonstrate a Bauhaus design system end to end. The tokens, primitives and patterns are real, working React ,  the product around them is the showcase.",
 	},
 	{
 		q: "Why only three colours?",
@@ -223,7 +219,7 @@ export const FAQS: { q: string; a: string }[] = [
 	},
 	{
 		q: "How is depth handled without gradients or blur?",
-		a: "Every elevated surface uses a hard offset shadow — a solid black rectangle nudged 4 to 8 pixels down and right. It reads like cut paper layered on a workbench, honest and instantly legible.",
+		a: "Every elevated surface uses a hard offset shadow ,  a solid black rectangle nudged 4 to 8 pixels down and right. It reads like cut paper layered on a workbench, honest and instantly legible.",
 	},
 	{
 		q: "Is it accessible and responsive?",

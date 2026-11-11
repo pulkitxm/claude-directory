@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Hand-drawn-feel botanical SVG illustrations, drawn entirely in the palette.
 // These stand in for photography so the whole experience is offline, license-
-// free, and unmistakably handcrafted — which suits the organic ethos better
+// free, and unmistakably handcrafted ,  which suits the organic ethos better
 // than stock imagery. Colours reference the design tokens directly.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -16,7 +16,7 @@ const BARK = "#4A4A40";
 
 type Props = { className?: string; title?: string };
 
-/* A single calendula / daisy-like bloom used as a repeating motif. */
+
 function Bloom({
 	cx,
 	cy,
@@ -58,7 +58,7 @@ function Bloom({
 	);
 }
 
-/* A leafy sprig that arcs along a stem. */
+
 function Sprig({
 	d,
 	leaves,
@@ -91,8 +91,7 @@ function Sprig({
 	);
 }
 
-/* ── Hero centrepiece — a tall apothecary jar brimming with botanicals,
-   wreathed in blooms and sprigs, framed by an organic arch. ─────────────── */
+
 export function HeroBotanical({
 	className,
 	title = "An apothecary jar of foraged botanicals",
@@ -105,7 +104,7 @@ export function HeroBotanical({
 			aria-label={title}
 			preserveAspectRatio="xMidYMid meet"
 		>
-			{/* organic backing arch */}
+			{}
 			<path
 				d="M230 18C330 18 412 96 412 220c0 150-70 282-182 282S48 370 48 220C48 96 130 18 230 18Z"
 				fill={STONE}
@@ -115,7 +114,7 @@ export function HeroBotanical({
 				fill={CARD}
 			/>
 
-			{/* back sprigs */}
+			{}
 			<Sprig
 				d="M150 250 C 120 200 118 150 140 96"
 				color={MOSS}
@@ -139,12 +138,12 @@ export function HeroBotanical({
 				]}
 			/>
 
-			{/* the jar */}
+			{}
 			<g>
-				{/* cork lid */}
+				{}
 				<rect x="184" y="150" width="92" height="30" rx="10" fill={CLAY} />
 				<rect x="178" y="172" width="104" height="20" rx="9" fill="#A8743F" />
-				{/* glass body */}
+				{}
 				<path
 					d="M186 192h88c10 0 18 8 18 18 0 0 14 22 14 70v118c0 26-20 44-46 44h-72c-26 0-46-18-46-44V298c0-48 14-70 14-70 0-10 8-18 18-18Z"
 					fill={MOSS}
@@ -157,7 +156,7 @@ export function HeroBotanical({
 					strokeWidth="3"
 					opacity="0.5"
 				/>
-				{/* contents — layered botanicals */}
+				{}
 				<clipPath id="jarClip">
 					<path d="M150 300c0-48 14-70 14-70 0-10 8-18 18-18h96c10 0 18 8 18 18 0 0 14 22 14 70v98c0 26-20 44-46 44h-82c-26 0-46-18-46-44Z" />
 				</clipPath>
@@ -179,7 +178,7 @@ export function HeroBotanical({
 						fill={MOSS}
 						opacity="0.5"
 					/>
-					{/* dried bits */}
+					{}
 					{Array.from({ length: 22 }).map((_, i) => (
 						<circle
 							key={i}
@@ -193,7 +192,7 @@ export function HeroBotanical({
 						/>
 					))}
 				</g>
-				{/* label */}
+				{}
 				<rect
 					x="178"
 					y="312"
@@ -223,7 +222,7 @@ export function HeroBotanical({
 					fill={BARK}
 					opacity="0.22"
 				/>
-				{/* glass highlight */}
+				{}
 				<path
 					d="M198 214c-8 16-10 40-10 70v92"
 					stroke={PAPER}
@@ -234,7 +233,7 @@ export function HeroBotanical({
 				/>
 			</g>
 
-			{/* foreground blooms wreath */}
+			{}
 			<Bloom cx={120} cy={350} r={26} petals={13} petal={CLAY} core={MOSS} />
 			<Bloom cx={344} cy={326} r={22} petals={12} petal="#d6a878" core={MOSS} />
 			<Bloom
@@ -254,7 +253,7 @@ export function HeroBotanical({
 				core={MOSS_DEEP}
 			/>
 
-			{/* little leaves scattered */}
+			{}
 			{[
 				{ x: 96, y: 300, r: -30 },
 				{ x: 372, y: 360, r: 40 },
@@ -272,7 +271,7 @@ export function HeroBotanical({
 	);
 }
 
-/* ── A single product tin, shown rotated in a thick paper frame. ─────────── */
+
 export function ProductTin({
 	className,
 	title = "A tin of Morning Meadow tea",
@@ -285,10 +284,10 @@ export function ProductTin({
 			aria-label={title}
 		>
 			<rect width="360" height="360" rx="28" fill={STONE} />
-			{/* tabletop wash */}
+			{}
 			<ellipse cx="180" cy="288" rx="150" ry="34" fill={MOSS} opacity="0.1" />
 
-			{/* loose leaves around the tin */}
+			{}
 			{[
 				{ x: 70, y: 250, r: -28, c: MOSS },
 				{ x: 290, y: 250, r: 30, c: MOSS_DEEP },
@@ -313,7 +312,7 @@ export function ProductTin({
 				core={MOSS_DEEP}
 			/>
 
-			{/* tin */}
+			{}
 			<g transform="rotate(-3 180 180)">
 				<rect x="106" y="92" width="148" height="184" rx="22" fill={MOSS} />
 				<rect
@@ -325,7 +324,7 @@ export function ProductTin({
 					fill={PAPER}
 					opacity="0.04"
 				/>
-				{/* lid seam */}
+				{}
 				<rect
 					x="106"
 					y="120"
@@ -334,7 +333,7 @@ export function ProductTin({
 					fill={MOSS_DEEP}
 					opacity="0.5"
 				/>
-				{/* paper label band */}
+				{}
 				<rect x="120" y="140" width="120" height="120" rx="14" fill={PAPER} />
 				<Bloom cx={180} cy={176} r={22} petals={13} petal={CLAY} core={MOSS} />
 				<text
@@ -359,10 +358,10 @@ export function ProductTin({
 				>
 					Meadow
 				</text>
-				{/* sun/moon caffeine mark */}
+				{}
 				<circle cx="150" cy="250" r="5" fill={CLAY} />
 				<path d="M168 250a5 5 0 1 1-5-5 4 4 0 0 0 5 5Z" fill={MOSS} />
-				{/* highlight */}
+				{}
 				<rect
 					x="116"
 					y="104"
@@ -377,8 +376,7 @@ export function ProductTin({
 	);
 }
 
-/* ── Benefits image — a steaming cup on a saucer with rising sprig of steam,
-   designed to sit inside a complex organic blob mask. ────────────────────── */
+
 export function SteamingCup({
 	className,
 	title = "A steaming cup of herbal tea",
@@ -393,11 +391,11 @@ export function SteamingCup({
 		>
 			<rect width="420" height="420" fill={SAND} />
 			<rect width="420" height="220" fill={STONE} />
-			{/* sun */}
+			{}
 			<circle cx="312" cy="104" r="58" fill={CLAY} opacity="0.5" />
 			<circle cx="312" cy="104" r="40" fill={CLAY} opacity="0.55" />
 
-			{/* hill */}
+			{}
 			<path
 				d="M0 300C120 250 210 270 300 246s120-18 120-18V420H0Z"
 				fill={MOSS}
@@ -409,7 +407,7 @@ export function SteamingCup({
 				opacity="0.7"
 			/>
 
-			{/* steam */}
+			{}
 			<g
 				stroke={PAPER}
 				strokeWidth="6"
@@ -421,7 +419,7 @@ export function SteamingCup({
 				<path d="M214 196c12-18-12-30 0-50s-10-30 0-48" />
 			</g>
 
-			{/* saucer + cup */}
+			{}
 			<ellipse cx="210" cy="320" rx="118" ry="26" fill={CARD} />
 			<ellipse cx="210" cy="316" rx="118" ry="22" fill={PAPER} />
 			<path
@@ -434,10 +432,10 @@ export function SteamingCup({
 				stroke={SAND}
 				strokeWidth="3"
 			/>
-			{/* tea surface */}
+			{}
 			<ellipse cx="210" cy="240" rx="76" ry="14" fill={CLAY} />
 			<ellipse cx="210" cy="240" rx="76" ry="14" fill={MOSS} opacity="0.25" />
-			{/* handle */}
+			{}
 			<path
 				d="M288 252c34 0 40 44 6 50"
 				fill="none"
@@ -445,7 +443,7 @@ export function SteamingCup({
 				strokeWidth="14"
 				strokeLinecap="round"
 			/>
-			{/* floating petal in tea */}
+			{}
 			<path
 				d="M0 0 C 7 -9 20 -9 27 0 C 20 9 7 9 0 0 Z"
 				fill={CLAY}
@@ -455,7 +453,7 @@ export function SteamingCup({
 	);
 }
 
-/* ── Small blog-card illustrations keyed by plant. ───────────────────────── */
+
 export function PostArt({
 	variant,
 	className,
@@ -485,7 +483,7 @@ export function PostArt({
 		>
 			<rect width="400" height="260" fill={p.bg} />
 			<circle cx="320" cy="56" r="120" fill={p.accent} opacity="0.6" />
-			{/* main sprig */}
+			{}
 			<Sprig
 				d="M120 250 C 150 180 150 110 130 56"
 				color={MOSS}
@@ -507,7 +505,7 @@ export function PostArt({
 					{ x: 248, y: 122, rot: 90, s: 0.95 },
 				]}
 			/>
-			{/* blooms */}
+			{}
 			<Bloom
 				cx={150}
 				cy={70}

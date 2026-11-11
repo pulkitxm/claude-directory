@@ -1,7 +1,4 @@
-/**
- * Serif ornament rule between major sections — three widely-tracked asterisks,
- * the classic printer's "asterism" used to break passages of type.
- */
+
 export function OrnamentDivider({ label }: { label?: string }) {
 	return (
 		<div className="border-y border-ink bg-paper py-7 text-center">

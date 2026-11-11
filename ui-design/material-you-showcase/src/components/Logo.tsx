@@ -1,6 +1,4 @@
-/* The Lumi wordmark — an organic squircle holding a soft "drop" glyph, in the
-   seed purple. Mirrors the favicon. Decorative SVG -> aria-hidden, with the
-   accessible name carried by the adjacent text. */
+
 export function Logo({ className = "" }: { className?: string }) {
 	return (
 		<span className={`inline-flex items-center gap-2.5 ${className}`}>

@@ -1,12 +1,4 @@
-/* ----------------------------------------------------------------------------
-   Editorial "engraving plates" — bespoke inline SVG illustrations rendered in
-   the Serif palette (ivory ground, rich-black line, burnished-gold accent).
-   These are fully offline, crisp at any resolution, and serve as the
-   layered-depth abstract graphics the design system calls for.
 
-   Shared palette refs (keep in lock-step with the CSS tokens):
-     ground  #FCFBF8   line  #2A2722   gold  #B8860B   gold-2 #D4A84B
----------------------------------------------------------------------------- */
 
 const INK = "#2A2722";
 const GOLD = "#B8860B";
@@ -14,7 +6,7 @@ const GOLD2 = "#D4A84B";
 
 type PlateProps = { className?: string; title?: string };
 
-/* A faint repeating hatch used to give plates printed texture. */
+
 function Hatch({ id }: { id: string }) {
 	return (
 		<pattern
@@ -37,7 +29,7 @@ function Hatch({ id }: { id: string }) {
 	);
 }
 
-/* ---- The Standing Volumes — hero plate ---------------------------------- */
+
 export function PlateVolumes({
 	className,
 	title = "An engraving of bound volumes on a shelf",
@@ -82,13 +74,13 @@ export function PlateVolumes({
 				opacity="0.18"
 			/>
 
-			{/* shelf */}
+			{}
 			<g stroke={INK} strokeWidth="1.4" fill="none">
 				<line x1="58" y1="372" x2="362" y2="372" />
 				<line x1="58" y1="378" x2="362" y2="378" opacity="0.5" />
 			</g>
 
-			{/* books */}
+			{}
 			<g>
 				{[
 					{ x: 86, w: 30, h: 150, fill: "#EDE6DA", lean: 0 },
@@ -143,7 +135,7 @@ export function PlateVolumes({
 				))}
 			</g>
 
-			{/* a single open volume resting on top */}
+			{}
 			<g transform="translate(300 300)">
 				<path
 					d="M0 36 Q34 18 70 36 L70 44 Q34 26 0 44 Z"
@@ -158,7 +150,7 @@ export function PlateVolumes({
 				</g>
 			</g>
 
-			{/* gold ribbon bookmark */}
+			{}
 			<path d="M198 200 v92 l8 -10 l8 10 v-92 z" fill={GOLD} opacity="0.9" />
 			<rect
 				x="58"
@@ -174,7 +166,7 @@ export function PlateVolumes({
 	);
 }
 
-/* ---- The Quill & Inkwell — features / process plate --------------------- */
+
 export function PlateQuill({
 	className,
 	title = "An engraving of a quill resting in an inkwell",
@@ -215,7 +207,7 @@ export function PlateQuill({
 				strokeDasharray="2 6"
 			/>
 
-			{/* inkwell */}
+			{}
 			<g>
 				<ellipse
 					cx="150"
@@ -237,7 +229,7 @@ export function PlateQuill({
 				<path d="M150 226 q10 4 0 10 q-10 -6 0 -10" fill={GOLD} opacity="0.7" />
 			</g>
 
-			{/* feather */}
+			{}
 			<g transform="rotate(18 168 150)">
 				<path
 					d="M168 232 C176 150 196 92 236 56"
@@ -269,7 +261,7 @@ export function PlateQuill({
 	);
 }
 
-/* ---- The Specimen — typographic letter plate ---------------------------- */
+
 export function PlateSpecimen({
 	className,
 	title = "A typographic specimen plate",
@@ -358,7 +350,7 @@ export function PlateSpecimen({
 	);
 }
 
-/* ---- The Correspondence — folded letter & wax seal --------------------- */
+
 export function PlateLetter({
 	className,
 	title = "An engraving of a sealed letter",
@@ -401,7 +393,7 @@ export function PlateLetter({
 					<line x1="84" y1="208" x2="190" y2="208" />
 					<line x1="170" y1="196" x2="236" y2="196" />
 				</g>
-				{/* wax seal */}
+				{}
 				<circle cx="160" cy="158" r="22" fill={GOLD} />
 				<circle
 					cx="160"
@@ -447,7 +439,7 @@ export function PlateLetter({
 	);
 }
 
-/* ---- Portrait medallion — for editor/testimonial avatars --------------- */
+
 export function PlatePortrait({
 	className,
 	seed = 0,
@@ -484,7 +476,7 @@ export function PlatePortrait({
 				<circle cx="60" cy="60" r="52" />
 			</clipPath>
 			<g clipPath={`url(#pc-${seed})`}>
-				{/* shoulders / collar */}
+				{}
 				<path
 					d="M22 122 Q60 88 98 122 Z"
 					fill={collar}
@@ -497,7 +489,7 @@ export function PlatePortrait({
 					stroke={INK}
 					strokeWidth="1"
 				/>
-				{/* neck + head */}
+				{}
 				<rect x="52" y="78" width="16" height="16" fill="#E9D9C2" />
 				<circle
 					cx="60"
@@ -507,7 +499,7 @@ export function PlatePortrait({
 					stroke={INK}
 					strokeWidth="1"
 				/>
-				{/* hair */}
+				{}
 				<path
 					d="M38 56 Q40 30 60 30 Q80 30 82 56 Q78 42 60 42 Q42 42 38 56 Z"
 					fill={hair}
@@ -517,7 +509,7 @@ export function PlatePortrait({
 				) : (
 					<path d="M82 56 Q84 70 80 78 L76 60 Z" fill={hair} />
 				)}
-				{/* features */}
+				{}
 				<g stroke={INK} strokeWidth="1" fill="none" opacity="0.7">
 					<path d="M52 56 q3 -3 6 0" />
 					<path d="M62 56 q3 -3 6 0" />
@@ -539,7 +531,7 @@ export function PlatePortrait({
 	);
 }
 
-/* ---- Bound journal — for the journal / blog cards ---------------------- */
+
 export function PlateJournal({
 	className,
 	seed = 0,
@@ -557,7 +549,7 @@ export function PlateJournal({
 		>
 			<rect width="400" height="260" fill="#F4EFE6" />
 			<g transform="rotate(-4 200 130)">
-				{/* pages stack behind */}
+				{}
 				<rect
 					x="118"
 					y="58"
@@ -576,7 +568,7 @@ export function PlateJournal({
 					stroke={INK}
 					strokeWidth="1"
 				/>
-				{/* cover */}
+				{}
 				<rect
 					x="112"
 					y="46"
@@ -597,7 +589,7 @@ export function PlateJournal({
 					strokeWidth="1"
 					opacity="0.8"
 				/>
-				{/* spine band */}
+				{}
 				<rect
 					x="112"
 					y="46"
@@ -606,7 +598,7 @@ export function PlateJournal({
 					fill={INK}
 					opacity="0.12"
 				/>
-				{/* motif */}
+				{}
 				<g
 					transform="translate(200 124)"
 					stroke={GOLD}
@@ -655,7 +647,7 @@ export function PlateJournal({
 	);
 }
 
-/* ---- Atelier scene — for the benefits asymmetric column ---------------- */
+
 export function PlateAtelier({
 	className,
 	title = "An engraving of a writing desk by a tall window",
@@ -681,7 +673,7 @@ export function PlateAtelier({
 			<rect width="360" height="460" fill="#FBF8F1" />
 			<rect width="360" height="460" fill="url(#halo-at)" />
 
-			{/* tall arched window */}
+			{}
 			<g>
 				<path
 					d="M70 60 q70 -52 140 0 v210 H70 Z"
@@ -712,7 +704,7 @@ export function PlateAtelier({
 					strokeWidth="1"
 					opacity="0.6"
 				/>
-				{/* light rays */}
+				{}
 				<g stroke={GOLD} strokeWidth="1" opacity="0.18">
 					<line x1="120" y1="120" x2="40" y2="300" />
 					<line x1="150" y1="120" x2="90" y2="320" />
@@ -720,16 +712,16 @@ export function PlateAtelier({
 				</g>
 			</g>
 
-			{/* desk */}
+			{}
 			<g stroke={INK} strokeWidth="1.6" fill="#EDE5D6">
 				<rect x="40" y="300" width="280" height="20" />
 				<rect x="58" y="320" width="14" height="96" fill="#E6DDCC" />
 				<rect x="288" y="320" width="14" height="96" fill="#E6DDCC" />
 			</g>
 
-			{/* objects on the desk */}
+			{}
 			<g>
-				{/* stacked books */}
+				{}
 				<rect
 					x="74"
 					y="276"
@@ -757,7 +749,7 @@ export function PlateAtelier({
 					stroke={INK}
 					strokeWidth="1.2"
 				/>
-				{/* lamp */}
+				{}
 				<g stroke={INK} strokeWidth="1.4" fill="none">
 					<line x1="250" y1="300" x2="250" y2="250" />
 					<path d="M250 250 q0 -22 24 -22" />
@@ -768,7 +760,7 @@ export function PlateAtelier({
 					/>
 				</g>
 				<ellipse cx="276" cy="244" rx="2.5" ry="2.5" fill={GOLD} />
-				{/* inkwell + page */}
+				{}
 				<rect
 					x="168"
 					y="286"

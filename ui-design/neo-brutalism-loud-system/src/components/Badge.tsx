@@ -2,17 +2,16 @@ import type { ReactNode } from "react";
 
 type BadgeProps = {
 	children: ReactNode;
-	/** background token class */
+
 	bg?: string;
-	/** pill (rounded-full) vs square (sharp + border) */
+
 	shape?: "pill" | "square";
-	/** spins further on hover (sticker physics) */
+
 	spinOnHover?: boolean;
 	className?: string;
 };
 
-/* A sticker. Heavy all-caps, wide tracking, thick border, hard shadow. Often
-   rotated and positioned absolutely over a corner by the caller. */
+
 export function Badge({
 	children,
 	bg = "bg-neo-accent",

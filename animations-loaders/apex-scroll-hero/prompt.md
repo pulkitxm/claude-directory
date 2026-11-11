@@ -1,21 +1,5 @@
-# APEX — SCROLL-SCRUBBED HERO VIDEO
+# Apex : Scroll-Scrubbed Hero Video: independent design brief
 
-USE THE HIGGSFIELD CONNECTOR TO CREATE A VIDEO WITH SEEDANCE 2.0 IN 1080P FOR 5 SECONDS.
+Preserve this experiment's responsive layout and useful interactions with fictional content. Use original geometric visuals and system fonts.
 
-HERE'S THE PROMPT:
-
-> MOTION-STABLE SHOT OF A FORMULA 1 CAR LAUNCHING OFF THE LINE, GOING FROM ZERO
-> TO OVER 200KM/H, WE ZOOM THROUGH THE REAR WING AT HIGH SPEED AND THEN WE
-> ELEVATE AND SEE THE CORNER AHEAD AND ZOOM INTO THE ORANGE SUNSET.
-
-THEN, DOWNLOAD THAT VIDEO, NAME IT HERO.MP4, AND CREATE A WEBSITE WITH A
-SCROLL-ANIMATED HERO VIDEO.
-
-I WANT THE VIDEO TO SCRUB FORWARD AS THE USER SCROLLS — LIKE THE APPLE PRODUCT
-PAGES.
-
-CREATE A NEW COMPONENT AT APP/COMPONENTS/SCROLLHERO.TSX
-(OR SRC/COMPONENTS/SCROLLHERO.TSX IF I'M USING SRC/).
-
-THE VIDEO SHOULD BE PINNED FULL-SCREEN WHILE THE SCROLL DRIVES PLAYBACK, AND
-THE PAGE SHOULD WORK AS A POLISHED STANDALONE SITE AROUND IT.
+Public previews may inform general ideas. Public access does not grant redistribution permission. Use no scraped source, copied branding, commercial preview assets, or exact paid-template reproductions. Record every asset's origin and redistribution license in the root provenance manifest before commit, review, or publication. Stop for manual review if rights are uncertain.

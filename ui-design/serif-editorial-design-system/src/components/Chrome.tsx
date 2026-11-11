@@ -4,13 +4,13 @@ import { brand, nav } from "../data/content";
 import { Button } from "./Button";
 import { cn } from "./Primitives";
 
-/* The house wordmark — Playfair caps with a gold pip between the names. */
+
 function Wordmark({ size = "md" }: { size?: "md" | "lg" }) {
 	return (
 		<a
 			href="#top"
 			className="group inline-flex items-baseline gap-1.5 font-display leading-none tracking-tight text-foreground"
-			aria-label={`${brand.name} — home`}
+			aria-label={`${brand.name} ,  home`}
 		>
 			<span className={cn(size === "lg" ? "text-2xl" : "text-xl")}>Roman</span>
 			<span className="text-accent transition-transform duration-300 group-hover:rotate-12">
@@ -52,7 +52,7 @@ export function Header() {
 			<div className="container-wide flex h-16 items-center justify-between md:h-20">
 				<Wordmark />
 
-				{/* Desktop nav — small-caps, tracked, growing gold underline. */}
+				{}
 				<nav className="hidden items-center gap-9 lg:flex" aria-label="Primary">
 					{nav.map((item) => (
 						<a
@@ -85,7 +85,7 @@ export function Header() {
 				</div>
 			</div>
 
-			{/* Mobile overlay menu */}
+			{}
 			<div
 				className={cn(
 					"fixed inset-0 z-50 transition-opacity duration-300 lg:hidden",

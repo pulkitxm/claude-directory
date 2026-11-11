@@ -1,12 +1,11 @@
 import { Shell, Reveal, Eyebrow, Blob, Square } from "./primitives";
 
-/* HOW IT WORKS — dark gray (Gray 900) color block. Big numbered steps, each
-   step keyed to a different accent color. Bold type on dark, no shadows. */
+
 const STEPS = [
 	{
 		n: "01",
 		title: "Drop in the tokens",
-		body: "One file defines color, type, radius. Import it and the whole palette is live — no theme wiring.",
+		body: "One file defines color, type, radius. Import it and the whole palette is live ,  no theme wiring.",
 		accent: "var(--color-brand)",
 	},
 	{
@@ -18,7 +17,7 @@ const STEPS = [
 	{
 		n: "03",
 		title: "Block with color",
-		body: "Alternate white, gray and bold accent sections. Color separates structure — never a line or shadow.",
+		body: "Alternate white, gray and bold accent sections. Color separates structure ,  never a line or shadow.",
 		accent: "var(--color-grass)",
 	},
 	{

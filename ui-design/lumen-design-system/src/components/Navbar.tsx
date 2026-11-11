@@ -55,7 +55,7 @@ export function Navbar() {
 						</span>
 					</a>
 
-					{/* Desktop links */}
+					{}
 					<div className="hidden items-center gap-1 md:flex">
 						{NAV_LINKS.map((l) => (
 							<a
@@ -77,7 +77,7 @@ export function Navbar() {
 						</Button>
 					</div>
 
-					{/* Mobile toggle */}
+					{}
 					<button
 						type="button"
 						onClick={() => setOpen((v) => !v)}
@@ -100,7 +100,7 @@ export function Navbar() {
 				</nav>
 			</div>
 
-			{/* Mobile dropdown panel */}
+			{}
 			<AnimatePresence>
 				{open && (
 					<motion.div

@@ -27,7 +27,7 @@ const FEATURES: Feature[] = [
 	{
 		icon: Grid3x3,
 		title: "Infinite Grid",
-		desc: "Perspective-transformed wireframe floors that recede toward the horizon — that iconic outrun highway depth, baked into every layout.",
+		desc: "Perspective-transformed wireframe floors that recede toward the horizon ,  that iconic outrun highway depth, baked into every layout.",
 	},
 	{
 		icon: Sparkles,
@@ -37,7 +37,7 @@ const FEATURES: Feature[] = [
 	{
 		icon: MonitorPlay,
 		title: "CRT Scanlines",
-		desc: "A global overlay of horizontal scanlines and subtle RGB chromatic aberration — reality, distorted through a vintage tube.",
+		desc: "A global overlay of horizontal scanlines and subtle RGB chromatic aberration ,  reality, distorted through a vintage tube.",
 	},
 	{
 		icon: Terminal,

@@ -8,7 +8,7 @@ import { fadeInUp, stagger, viewportOnce } from "../motion";
 // section label, accent bar, card, input, and the two scroll-reveal wrappers.
 // ─────────────────────────────────────────────────────────────────────────────
 
-/** All-caps mono eyebrow with an accent tick. Anchors every section header. */
+
 export function SectionLabel({
 	children,
 	className = "",
@@ -24,7 +24,7 @@ export function SectionLabel({
 	);
 }
 
-/** Thin horizontal accent bar (h-1 w-16) used as a visual anchor on key blocks. */
+
 export function AccentBar({ className = "" }: { className?: string }) {
 	return <span aria-hidden className={`accent-bar ${className}`} />;
 }
@@ -32,11 +32,11 @@ export function AccentBar({ className = "" }: { className?: string }) {
 // ── Card ─────────────────────────────────────────────────────────────────────
 type CardProps = {
 	children: ReactNode;
-	/** draw the 1px border (default true) */
+
 	bordered?: boolean;
-	/** featured tier: 2px accent border instead of 1px */
+
 	highlighted?: boolean;
-	/** lighten the border on hover */
+
 	interactive?: boolean;
 	className?: string;
 } & HTMLAttributes<HTMLDivElement>;
@@ -67,9 +67,9 @@ export function Card({
 	);
 }
 
-// ── Input ──────────────────────────────────────────────────────────────────—
+// ── Input ──────────────────────────────────────────────────────────────────,
 type InputProps = {
-	/** invert palette for use on the light Final-CTA ground */
+
 	inverted?: boolean;
 	className?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
@@ -95,14 +95,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 	);
 });
 
-// ── Scroll reveal wrappers ─────────────────────────────────────────────────—
+// ── Scroll reveal wrappers ─────────────────────────────────────────────────,
 type RevealProps = {
 	children: ReactNode;
 	className?: string;
 	as?: "div" | "section" | "li" | "article" | "header";
 };
 
-/** A single fade-in-up element triggered once when scrolled into view. */
+
 export function Reveal({ children, className = "", as = "div" }: RevealProps) {
 	const Comp = motion[as];
 	return (
@@ -118,7 +118,7 @@ export function Reveal({ children, className = "", as = "div" }: RevealProps) {
 	);
 }
 
-/** A container that staggers its <RevealItem> children by 80ms. */
+
 export function RevealGroup({
 	children,
 	className = "",
@@ -138,7 +138,7 @@ export function RevealGroup({
 	);
 }
 
-/** A child of <RevealGroup> that fades up as part of the stagger sequence. */
+
 export function RevealItem({
 	children,
 	className = "",

@@ -1,9 +1,9 @@
-import specimenImg from "../../assets/images/specimen.svg";
+import specimenImg from "../../assets/images/original-visual.svg";
 import { Reveal, SectionLabel } from "./Primitives";
 import { Check } from "lucide-react";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Specimen (Benefits / Product Detail) — a stacked → 2-column side-by-side block.
+// Specimen (Benefits / Product Detail) ,  a stacked → 2-column side-by-side block.
 // The right card uses the system's special depth technique: an absolute accent
 // top bar (h-1 w-16) plus layered text (a duplicate offset behind in border
 // color), giving dimensionality with zero shadows.
@@ -19,7 +19,7 @@ export function Specimen() {
 	return (
 		<section className="border-b border-border py-20 md:py-28 lg:py-32">
 			<div className="container-bold grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-				{/* Copy column */}
+				{}
 				<Reveal>
 					<SectionLabel>The Specimen</SectionLabel>
 					<h2 className="mt-8 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
@@ -48,15 +48,15 @@ export function Specimen() {
 					</ul>
 				</Reveal>
 
-				{/* Specimen plate with accent-top-border + layered-text depth */}
+				{}
 				<Reveal>
 					<div className="relative">
-						{/* absolute accent top bar */}
+						{}
 						<span
 							aria-hidden
 							className="absolute -top-2 left-0 z-10 h-1 w-16 bg-accent"
 						/>
-						{/* layered duplicate, offset behind in border color */}
+						{}
 						<span
 							aria-hidden
 							className="absolute left-2 top-2 -z-10 hidden h-full w-full border border-border md:block"

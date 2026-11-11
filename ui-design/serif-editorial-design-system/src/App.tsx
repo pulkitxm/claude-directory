@@ -13,7 +13,7 @@ import { Footer } from "./components/Footer";
 export default function App() {
 	return (
 		<div className="relative min-h-screen bg-background">
-			{/* Ambient gold glow — warm atmospheric depth behind everything. */}
+			{}
 			<div
 				aria-hidden
 				className="ambient-glow"
@@ -37,7 +37,7 @@ export default function App() {
 				}}
 			/>
 
-			{/* Paper grain overlay across the whole page (~30% opacity). */}
+			{}
 			<div aria-hidden className="paper-grain" />
 
 			<a

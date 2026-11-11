@@ -59,12 +59,7 @@ const PLANS: Plan[] = [
 	},
 ];
 
-/**
- * Subscribe: three pricing columns built as collapsed cards with dashed
- * feature rules (the one sanctioned non-solid border), plus a bottom-border-
- * only newsroom email field. The featured plan inverts to black to draw the
- * single point of emphasis on the page.
- */
+
 export function Subscribe() {
 	const [email, setEmail] = useState("");
 	const [sent, setSent] = useState(false);
@@ -85,7 +80,7 @@ export function Subscribe() {
 					</h2>
 					<p className="mx-auto mt-3 max-w-xl font-body text-sm leading-relaxed text-ink/70 lg:text-base">
 						One price, no tiers of attention. Whichever column you choose, the
-						type is set the same — cold, dated, and on the record.
+						type is set the same ,  cold, dated, and on the record.
 					</p>
 				</div>
 
@@ -163,7 +158,7 @@ export function Subscribe() {
 					))}
 				</div>
 
-				{/* Newsroom email capture — bottom-border-only field. */}
+				{}
 				<div className="mt-10 grid grid-cols-1 items-center gap-8 border border-ink bg-paper p-8 lg:grid-cols-12 lg:p-10">
 					<div className="lg:col-span-5">
 						<Kicker>The Morning Wire</Kicker>
@@ -171,7 +166,7 @@ export function Subscribe() {
 							The front page, in your inbox at four.
 						</h3>
 						<p className="mt-2 font-body text-sm leading-relaxed text-ink/70">
-							One dispatch a morning. No tracking pixels, no open-rate games —
+							One dispatch a morning. No tracking pixels, no open-rate games ,
 							just the day's edition, set and sent.
 						</p>
 					</div>
@@ -190,7 +185,7 @@ export function Subscribe() {
 									<Check className="h-5 w-5" strokeWidth={2} />
 								</span>
 								<p className="font-body text-sm">
-									Filed. Your first edition lands tomorrow at four —{" "}
+									Filed. Your first edition lands tomorrow at four , {" "}
 									<span className="font-mono text-xs tracking-wide">
 										{email}
 									</span>

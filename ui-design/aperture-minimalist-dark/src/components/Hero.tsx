@@ -21,10 +21,10 @@ export function Hero() {
 		>
 			<div className="container-x">
 				<div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-					{/* Left — copy */}
+					{}
 					<div className="flex flex-col items-start">
 						<Reveal>
-							<Badge>v4 — now with edge runtime</Badge>
+							<Badge>v4 ,  now with edge runtime</Badge>
 						</Reveal>
 
 						<Reveal delay={90}>
@@ -37,7 +37,7 @@ export function Hero() {
 
 						<Reveal delay={170}>
 							<p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-								Aperture is the command surface for the quiet hours — deploy,
+								Aperture is the command surface for the quiet hours ,  deploy,
 								trace, and roll back from a single keystroke. No dashboards to
 								hunt through. Just you, the work, and a warm light in the
 								terminal.
@@ -63,19 +63,19 @@ export function Hero() {
 
 						<Reveal delay={330}>
 							<p className="mt-6 font-mono text-xs tracking-wide text-muted-foreground/80">
-								<span className="text-accent">$</span> npx aperture init —{" "}
+								<span className="text-accent">$</span> npx aperture init , {" "}
 								<span className="text-foreground/70">no card required</span>
 							</p>
 						</Reveal>
 					</div>
 
-					{/* Right — command palette mock with ambient glow plinth */}
+					{}
 					<Reveal delay={200} className="relative">
 						<div className="relative">
 							<div className="absolute -inset-8 -z-10 rounded-[2rem] bg-accent/[0.06] blur-3xl" />
 							<div className="absolute -right-6 -top-6 -z-10 h-40 w-40 rounded-full bg-accent/[0.1] blur-2xl" />
 							<CommandPalette className="rotate-[0.4deg]" />
-							{/* floating mono stat chip */}
+							{}
 							<div className="glass-card absolute -bottom-5 -left-4 hidden items-center gap-3 px-4 py-3 sm:flex">
 								<span className="relative flex h-2 w-2">
 									<span className="absolute inline-flex h-full w-full animate-pulse-dot rounded-full bg-emerald-400" />
@@ -90,7 +90,7 @@ export function Hero() {
 					</Reveal>
 				</div>
 
-				{/* trusted-by marquee */}
+				{}
 				<Reveal delay={120} className="mt-24 md:mt-32">
 					<p className="text-center font-mono text-xs uppercase tracking-wider text-muted-foreground/70">
 						Trusted by teams that ship after midnight

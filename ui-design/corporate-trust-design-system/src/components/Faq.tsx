@@ -4,9 +4,7 @@ import { FAQS } from "../lib/content";
 import { fadeUp } from "../lib/motion";
 import { motion } from "motion/react";
 
-/* Accessible accordion built on native <details>/<summary>. The chevron rotates
-   via the group-open variant; the answer is always in the DOM (good for SEO and
-   screen readers) and simply revealed by the native disclosure. */
+
 export function Faq() {
 	return (
 		<Section id="faq">

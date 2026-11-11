@@ -7,12 +7,7 @@ import { Button } from "./Button";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 
-/**
- * Featured-blend spotlight. The product illustration sits rotated -2deg inside a
- * thick white border with a clay-tinted float shadow — a deliberately
- * handcrafted, pinned-photo feel — opposite a column of warm product copy with
- * a caffeine sun/moon scale and price.
- */
+
 export function ProductDetail() {
 	const reduced = useReducedMotion();
 	return (
@@ -34,7 +29,7 @@ export function ProductDetail() {
 			/>
 
 			<div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
-				{/* image */}
+				{}
 				<Reveal className="order-1">
 					<div className="relative mx-auto w-full max-w-md">
 						<Blob
@@ -46,7 +41,7 @@ export function ProductDetail() {
 						<div className="rotate-[-2deg] rounded-[2rem] border-4 border-card bg-card p-2 shadow-float transition-transform duration-700 ease-organic hover:rotate-0">
 							<ProductTin className="h-auto w-full rounded-[1.6rem]" />
 						</div>
-						{/* pinned price tag */}
+						{}
 						<div className="absolute -bottom-5 left-1/2 -translate-x-1/2 rotate-2 rounded-full border border-border/60 bg-card px-6 py-2.5 shadow-soft">
 							<span className="font-serif text-lg font-bold text-foreground">
 								{featuredProduct.price}
@@ -58,7 +53,7 @@ export function ProductDetail() {
 					</div>
 				</Reveal>
 
-				{/* copy */}
+				{}
 				<div className="order-2 max-w-2xl">
 					<Reveal>
 						<Eyebrow
@@ -85,7 +80,7 @@ export function ProductDetail() {
 						</p>
 					</Reveal>
 
-					{/* caffeine scale */}
+					{}
 					<Reveal delay={0.24}>
 						<div className="mt-7 flex items-center gap-4 rounded-[1.5rem] border border-border/50 bg-muted/50 p-4">
 							<div className="flex items-center gap-1.5 text-primary">

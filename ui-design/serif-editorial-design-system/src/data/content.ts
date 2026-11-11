@@ -1,7 +1,4 @@
-/* ----------------------------------------------------------------------------
-   All copy for the Roman & Quill showcase, kept apart from presentation.
-   Brand: a private publishing house for considered writing.
----------------------------------------------------------------------------- */
+
 
 export const brand = {
 	name: "Roman & Quill",
@@ -57,7 +54,7 @@ export const features = [
 	{
 		kicker: "II.",
 		title: "Printed to last",
-		body: "We commit each title to cotton-rag, acid-free stock with a deckle edge. Gilt is applied sparingly — a single thread of gold leaf where the eye should rest, never more.",
+		body: "We commit each title to cotton-rag, acid-free stock with a deckle edge. Gilt is applied sparingly ,  a single thread of gold leaf where the eye should rest, never more.",
 		plate: "letter" as const,
 	},
 	{
@@ -71,7 +68,7 @@ export const features = [
 export const benefits = {
 	label: "The Craft",
 	title: "An atelier, not an algorithm.",
-	lede: "We resist the temptation to publish quickly. Each issue passes through the same five hands it has for nearly four decades — a reader, an editor, a compositor, a binder, and a proof.",
+	lede: "We resist the temptation to publish quickly. Each issue passes through the same five hands it has for nearly four decades ,  a reader, an editor, a compositor, a binder, and a proof.",
 	points: [
 		{
 			title: "The reading",
@@ -87,11 +84,11 @@ export const benefits = {
 		},
 		{
 			title: "The proof",
-			body: "A final, slow proof — read backwards, word by word — before a single copy is sent.",
+			body: "A final, slow proof ,  read backwards, word by word ,  before a single copy is sent.",
 		},
 	],
 	marginNote: "“We have never met a deadline we preferred to a sentence.”",
-	marginAttribution: "— House motto, pressed inside the cover",
+	marginAttribution: ",  House motto, pressed inside the cover",
 };
 
 export const testimonials = [
@@ -121,7 +118,7 @@ export const testimonials = [
 export const pricing = {
 	label: "Membership",
 	title: "Three ways to keep good company.",
-	lede: "Every membership is annual, renewable by hand, and may be passed to a friend. No tier is louder than the others — only more generous.",
+	lede: "Every membership is annual, renewable by hand, and may be passed to a friend. No tier is louder than the others ,  only more generous.",
 	tiers: [
 		{
 			name: "The Reader",
@@ -189,7 +186,7 @@ export const journal = {
 			date: "Spring · No. 41",
 			title: "The deckle edge, and other useless beauties",
 			excerpt:
-				"A defence of the untrimmed margin — the part of the page that does nothing, and is therefore essential.",
+				"A defence of the untrimmed margin ,  the part of the page that does nothing, and is therefore essential.",
 			read: "6 min",
 			seed: 1,
 		},
@@ -208,7 +205,7 @@ export const journal = {
 export const faqs = [
 	{
 		q: "How often will I receive a volume?",
-		a: "Four times a year — one numbered volume each season, posted in glassine with a letter from the editor explaining the choices behind the issue.",
+		a: "Four times a year ,  one numbered volume each season, posted in glassine with a letter from the editor explaining the choices behind the issue.",
 	},
 	{
 		q: "Is everything printed, or is there a digital edition?",

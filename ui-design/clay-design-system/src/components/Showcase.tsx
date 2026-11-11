@@ -12,9 +12,7 @@ import {
 	display,
 } from "./primitives";
 
-/* The live component playground / token gallery. Press the buttons to feel the
-   squish; type in the field to watch it pop from recessed to raised. This is
-   the section that proves the system is interactive, not decorative. */
+
 
 const SWATCHES: { name: string; value: string; text: string }[] = [
 	{ name: "Accent", value: "#7C3AED", text: "#fff" },
@@ -46,7 +44,7 @@ export function Showcase() {
 				/>
 
 				<div className="mt-14 grid gap-6 lg:grid-cols-2">
-					{/* ---- Buttons & states ---- */}
+					{}
 					<Reveal>
 						<Card hover={false} className="h-full">
 							<Badge tone="violet">
@@ -111,7 +109,7 @@ export function Showcase() {
 						</Card>
 					</Reveal>
 
-					{/* ---- Recessed input ---- */}
+					{}
 					<Reveal delay={90}>
 						<Card hover={false} className="h-full">
 							<Badge tone="sky">Inputs</Badge>
@@ -150,7 +148,7 @@ export function Showcase() {
 						</Card>
 					</Reveal>
 
-					{/* ---- Color swatches ---- */}
+					{}
 					<Reveal delay={120}>
 						<Card hover={false} className="h-full">
 							<Badge tone="pink">Palette</Badge>
@@ -179,7 +177,7 @@ export function Showcase() {
 						</Card>
 					</Reveal>
 
-					{/* ---- Radii + shadow specimens ---- */}
+					{}
 					<Reveal delay={150}>
 						<Card hover={false} className="h-full">
 							<Badge tone="amber">Shape & depth</Badge>

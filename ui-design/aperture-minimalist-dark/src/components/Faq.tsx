@@ -10,11 +10,11 @@ const ITEMS = [
 	},
 	{
 		q: "What happens when a deploy goes bad at 3am?",
-		a: "Aperture streams a live trace as it ships. If p99 latency or error rate drifts past your threshold, it pages you with the exact function — and, if you opted in, reverts to the last green snapshot automatically.",
+		a: "Aperture streams a live trace as it ships. If p99 latency or error rate drifts past your threshold, it pages you with the exact function ,  and, if you opted in, reverts to the last green snapshot automatically.",
 	},
 	{
 		q: "Where does my data actually run?",
-		a: "On the edge regions you choose — iad, fra, hnd, gru, syd, cdg, and more. Secrets are encrypted per environment and never printed to a log, even in verbose mode.",
+		a: "On the edge regions you choose ,  iad, fra, hnd, gru, syd, cdg, and more. Secrets are encrypted per environment and never printed to a log, even in verbose mode.",
 	},
 	{
 		q: "Can my whole team use one keyboard surface?",
@@ -22,7 +22,7 @@ const ITEMS = [
 	},
 	{
 		q: "Is there really a free tier forever?",
-		a: "Solo is free with no card, no expiry, and two edge regions. It’s the plan we use for our own side projects — we’d feel weird shipping anything less.",
+		a: "Solo is free with no card, no expiry, and two edge regions. It’s the plan we use for our own side projects ,  we’d feel weird shipping anything less.",
 	},
 ];
 

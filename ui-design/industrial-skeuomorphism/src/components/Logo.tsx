@@ -1,10 +1,6 @@
 import { cx } from "./primitives";
 
-/**
- * SCHEMATIC wordmark. The mark is a machined housing with a recessed
- * accent core — a screw-head / LED motif that echoes the favicon and the
- * design system's signature manufacturing details.
- */
+
 export function Logo({ className }: { className?: string }) {
 	return (
 		<span className={cx("inline-flex items-center gap-2.5", className)}>

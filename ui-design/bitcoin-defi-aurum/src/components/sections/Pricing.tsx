@@ -54,7 +54,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
 				</div>
 			)}
 
-			{/* faint grid on the popular tier for extra depth */}
+			{}
 			{popular && (
 				<div
 					className="pointer-events-none absolute inset-0 rounded-2xl bg-grid-fine opacity-[0.04]"

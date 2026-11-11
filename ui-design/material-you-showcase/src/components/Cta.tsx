@@ -2,9 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Blob, Button, Reveal, Shell } from "./primitives";
 import { ArrowRight, Check, Sparkle } from "./icons";
 
-/* Final CTA: a full-width TERTIARY container at elevation-3, layered with
-   floating organic blur shapes and a radial glow. The email capture uses the
-   MD3 filled text field and confirms inline on submit. */
+
 export function Cta() {
 	const [email, setEmail] = useState("");
 	const [sent, setSent] = useState(false);
@@ -18,7 +16,7 @@ export function Cta() {
 	return (
 		<section id="cta" className="scroll-mt-20 px-3 py-20 sm:px-5 sm:py-28">
 			<div className="on-color relative mx-auto max-w-[80rem] overflow-hidden rounded-[28px] bg-[var(--color-md-tertiary)] px-6 py-16 text-[var(--color-md-on-tertiary)] shadow-[var(--shadow-md-3)] sm:rounded-[40px] sm:px-10 sm:py-20 lg:rounded-[var(--radius-md-3xl)]">
-				{/* atmosphere */}
+				{}
 				<Blob
 					float="a"
 					className="-left-24 -top-20 h-96 w-96 bg-[var(--color-md-primary)] opacity-40 mix-blend-screen"
