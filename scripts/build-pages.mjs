@@ -30,7 +30,8 @@ export async function copyStaticProject(from, to) {
 		if (entry.isDirectory()) await copyStaticProject(source, target);
 		else if (
 			entry.isFile() &&
-			staticTypes.has(extname(entry.name)) &&
+			(staticTypes.has(extname(entry.name)) ||
+				entry.name === "THIRD_PARTY_NOTICES.txt") &&
 			!/\.(?:test|spec)\./.test(entry.name) &&
 			!/^(?:reference|source-capture|captured-source|scraped)(?:[.-].*)?\.(?:html?|css|[cm]?js|json|png|jpe?g|webp|svg)$/i.test(
 				entry.name,
@@ -158,7 +159,18 @@ export async function buildPages(
 				});
 				await writeFile(
 					join(target, "THIRD_PARTY_NOTICES.txt"),
-					await collectNotices(source),
+					[
+						await readFile(
+							join(source, "THIRD_PARTY_NOTICES.txt"),
+							"utf8",
+						).catch((error) => {
+							if (error.code === "ENOENT") return "";
+							throw error;
+						}),
+						await collectNotices(source),
+					]
+						.filter(Boolean)
+						.join("\n\n"),
 				);
 			} else await copyStaticProject(source, target);
 			process.stdout.write(`Built ${project.path}\n`);
