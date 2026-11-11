@@ -6,7 +6,11 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { scanInlineArtwork } from "./check-inline-artwork.mjs";
 import { scanDependencyProvenance } from "./check-dependency-provenance.mjs";
-import { hasMediaSignature, mediaExtension } from "./media-policy.mjs";
+import {
+	hasMediaSignature,
+	hasUnverifiedBinaryContent,
+	mediaExtension,
+} from "./media-policy.mjs";
 
 const skippedDirectories = new Set([
 	".git",
@@ -391,14 +395,18 @@ export async function scanCompliance(directory) {
 	}
 	for (const [path, absolute] of files) {
 		const entry = assets.get(path);
-		if (
-			mediaExtension.test(path) ||
-			hasMediaSignature(await readFile(absolute))
-		)
+		const bytes = await readFile(absolute);
+		if (mediaExtension.test(path) || hasMediaSignature(bytes))
 			add(
 				"standalone-media",
 				path,
 				"Standalone media files are excluded from source distribution. Use reviewed code-generated visuals instead; a provenance entry does not override this policy.",
+			);
+		if (hasUnverifiedBinaryContent(bytes))
+			add(
+				"unverified-binary",
+				path,
+				"Unverified binary content requires manual review. Current distribution permits reviewed UTF-8 source and inline graphics, not opaque asset bodies under renamed paths.",
 			);
 		if (suspiciousHash.test(path.split("/").at(-1)) && !entry)
 			add(

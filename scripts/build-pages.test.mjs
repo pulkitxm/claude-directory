@@ -208,3 +208,23 @@ test("rejects media signatures hidden under source-like filenames in output", as
 			),
 		);
 });
+
+test("rejects native scene files and opaque binary aliases in publication output", async (t) => {
+	const f = await fixture(t);
+	await f.put(
+		"components-ui/cleared/scene.splinecode",
+		"Synthetic scene fixture",
+	);
+	await f.put("components-ui/cleared/scene.dat", Buffer.from([0xc3, 0x28]));
+	const { errors } = await f.verify();
+	assert.ok(
+		errors.includes(
+			"Standalone media in output: components-ui/cleared/scene.splinecode",
+		),
+	);
+	assert.ok(
+		errors.includes(
+			"Unverified binary in output: components-ui/cleared/scene.dat",
+		),
+	);
+});
