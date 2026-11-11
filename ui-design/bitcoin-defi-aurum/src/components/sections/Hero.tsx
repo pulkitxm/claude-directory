@@ -12,12 +12,12 @@ export function Hero() {
 			className="relative overflow-hidden pt-28 md:pt-36"
 			aria-label="Hero"
 		>
-			{/* Signature blockchain grid */}
+			{}
 			<div
 				className="pointer-events-none absolute inset-0 bg-grid-pattern"
 				aria-hidden="true"
 			/>
-			{/* Ambient radial energy fields */}
+			{}
 			<div
 				className="pointer-events-none absolute -left-40 top-10 h-[34rem] w-[34rem] rounded-full bg-orange opacity-[0.10] blur-[140px]"
 				aria-hidden="true"
@@ -26,14 +26,14 @@ export function Hero() {
 				className="pointer-events-none absolute -right-40 top-40 h-[30rem] w-[30rem] rounded-full bg-burnt opacity-[0.10] blur-[150px]"
 				aria-hidden="true"
 			/>
-			{/* Vendored cube texture, barely-there */}
+			{}
 			<div
 				className="pointer-events-none absolute inset-0 bg-cubes opacity-[0.04]"
 				aria-hidden="true"
 			/>
 
 			<Container className="relative grid items-center gap-12 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-28">
-				{/* Copy column */}
+				{}
 				<div className="flex flex-col items-start gap-7">
 					<Badge live>
 						<Sparkles className="h-3 w-3" />
@@ -49,7 +49,7 @@ export function Hero() {
 					<p className="max-w-xl text-base leading-relaxed text-stardust md:text-lg">
 						AURUM is a non-custodial DeFi protocol for Bitcoin. Open audited
 						vaults, earn provable on-chain yield, and settle in milliseconds
-						over Lightning — all without ever surrendering your keys.
+						over Lightning ,  all without ever surrendering your keys.
 					</p>
 
 					<div className="flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -63,7 +63,7 @@ export function Hero() {
 						</Button>
 					</div>
 
-					{/* Trust row */}
+					{}
 					<div className="mt-2 flex flex-col gap-3">
 						<div className="flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-widest text-stardust">
 							<ShieldCheck className="h-3.5 w-3.5 text-orange" />
@@ -82,13 +82,13 @@ export function Hero() {
 					</div>
 				</div>
 
-				{/* Orbital orb column */}
+				{}
 				<div className="relative">
 					<OrbitalOrb />
 				</div>
 			</Container>
 
-			{/* Soft fade into the next (ticker) section */}
+			{}
 			<div
 				className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-void"
 				aria-hidden="true"

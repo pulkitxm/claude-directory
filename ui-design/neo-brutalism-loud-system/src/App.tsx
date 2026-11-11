@@ -12,10 +12,7 @@ import { Faq } from "./sections/Faq";
 import { CtaForm } from "./sections/CtaForm";
 import { Footer } from "./sections/Footer";
 
-/* LOUDHOUSE — a single-page Neo-brutalism design-system showcase.
-   Sections are color-blocked to create a high-contrast rhythm:
-   cream → black tape → cream hero → violet → cream → black → yellow →
-   cream → violet → cream → red → black → yellow footer. */
+
 export default function App() {
 	return (
 		<>

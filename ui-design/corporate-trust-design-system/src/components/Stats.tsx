@@ -17,8 +17,7 @@ function Stat({ value, label }: { value: string; label: string }) {
 	);
 }
 
-/* A dark indigo band — count-up metrics on the brand gradient ground. The
-   inverted section gives the page rhythm and shows the palette at full saturation. */
+
 export function Stats() {
 	return (
 		<section aria-label="Northwind by the numbers" className="py-12 sm:py-16">

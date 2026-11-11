@@ -23,13 +23,13 @@ const FEATURES: Feature[] = [
 	{
 		icon: LineChart,
 		title: "One overview, every metric",
-		body: "Activation, retention, revenue and engagement live on a single calm canvas. No tab-hopping, no stitching dashboards together — just the signal.",
+		body: "Activation, retention, revenue and engagement live on a single calm canvas. No tab-hopping, no stitching dashboards together ,  just the signal.",
 		span: true,
 	},
 	{
 		icon: Wand2,
 		title: "Insights that find you",
-		body: "Lumina watches your data and surfaces what changed, why it changed, and what to do next — in plain language.",
+		body: "Lumina watches your data and surfaces what changed, why it changed, and what to do next ,  in plain language.",
 	},
 	{
 		icon: BellRing,
@@ -88,7 +88,7 @@ export function Features() {
 					</RevealItem>
 					<RevealItem>
 						<p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-							A focused toolkit — not a maze of settings. Each capability earns
+							A focused toolkit ,  not a maze of settings. Each capability earns
 							its place and works the moment you connect your first event.
 						</p>
 					</RevealItem>

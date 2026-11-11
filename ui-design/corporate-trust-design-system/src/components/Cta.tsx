@@ -4,9 +4,7 @@ import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { Shell, Blob } from "./primitives";
 import { fadeUp, stagger, inView } from "../lib/motion";
 
-/* The dramatic dark final CTA. White button on a deep indigo gradient ground,
-   atmospheric blobs, and a working email-capture form that confirms on submit.
-   `.on-dark` flips the global focus ring to white inside this section. */
+
 export function Cta() {
 	const [email, setEmail] = useState("");
 	const [submitted, setSubmitted] = useState(false);
@@ -63,11 +61,11 @@ export function Cta() {
 							variants={fadeUp}
 							className="mx-auto mt-5 max-w-xl text-lg text-indigo-100/80"
 						>
-							Start free in minutes. No credit card, no sales call — just your
+							Start free in minutes. No credit card, no sales call ,  just your
 							first workflow running before your coffee's cold.
 						</motion.p>
 
-						{/* Email capture */}
+						{}
 						<motion.div variants={fadeUp} className="mx-auto mt-9 max-w-md">
 							{submitted ? (
 								<div
@@ -77,7 +75,7 @@ export function Cta() {
 									<span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-indigo-950">
 										<Check className="h-4 w-4" aria-hidden="true" />
 									</span>
-									You're in — check your inbox to finish setting up.
+									You're in ,  check your inbox to finish setting up.
 								</div>
 							) : (
 								<form

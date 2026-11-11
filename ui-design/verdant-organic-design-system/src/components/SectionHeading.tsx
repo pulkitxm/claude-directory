@@ -6,19 +6,15 @@ import { Reveal } from "./Reveal";
 type SectionHeadingProps = {
 	eyebrow: string;
 	title: ReactNode;
-	/** Optional supporting paragraph beneath the title. */
+
 	intro?: ReactNode;
 	align?: "left" | "center";
-	/** Use on dark (moss/terracotta) sections to flip text colours. */
+
 	onDark?: boolean;
 	className?: string;
 };
 
-/**
- * Shared section header: a pill eyebrow + large Fraunces title + optional
- * intro. Keeps every section's lede visually consistent while letting copy and
- * alignment vary. A small leaf-stem rule sits under the eyebrow as a motif.
- */
+
 export function SectionHeading({
 	eyebrow,
 	title,

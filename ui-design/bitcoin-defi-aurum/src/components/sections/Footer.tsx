@@ -42,7 +42,7 @@ export function Footer() {
 			/>
 			<Container className="relative py-16">
 				<div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
-					{/* Brand block */}
+					{}
 					<div className="flex flex-col gap-5">
 						<a
 							href="#top"
@@ -76,7 +76,7 @@ export function Footer() {
 						</div>
 					</div>
 
-					{/* Link columns */}
+					{}
 					<div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
 						{COLUMNS.map((col) => (
 							<div key={col.title} className="flex flex-col gap-4">

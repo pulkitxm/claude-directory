@@ -69,7 +69,7 @@ export function HowItWorks() {
 									</div>
 								</RevealItem>
 
-								{/* Arrow connector between steps (desktop only) */}
+								{}
 								{i < STEPS.length - 1 && (
 									<RevealItem className="hidden self-center md:block">
 										<span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-secondary text-accent-foreground shadow-accent">

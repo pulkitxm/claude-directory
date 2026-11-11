@@ -53,7 +53,7 @@ export function Nav() {
 						<Logo />
 					</a>
 
-					{/* Desktop links */}
+					{}
 					<ul className="hidden items-center gap-1 lg:flex">
 						{LINKS.map((l) => (
 							<li key={l.href}>
@@ -88,7 +88,7 @@ export function Nav() {
 							Deploy Unit
 						</Button>
 
-						{/* Mobile hamburger */}
+						{}
 						<button
 							type="button"
 							aria-label={open ? "Close menu" : "Open menu"}
@@ -108,7 +108,7 @@ export function Nav() {
 				</nav>
 			</Container>
 
-			{/* Mobile drawer */}
+			{}
 			<AnimatePresence>
 				{open && (
 					<motion.div

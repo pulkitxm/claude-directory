@@ -11,8 +11,8 @@ import { Footer } from "@/components/sections/Footer";
 
 export default function App() {
 	// `reducedMotion="user"` makes Framer honor prefers-reduced-motion for every
-	// JS-driven animation in the tree — entrance fades collapse to opacity-only
-	// and the hero's infinite loops stop — which the CSS guard alone can't do.
+	// JS-driven animation in the tree ,  entrance fades collapse to opacity-only
+	// and the hero's infinite loops stop ,  which the CSS guard alone can't do.
 	return (
 		<MotionConfig reducedMotion="user">
 			<div className="relative min-h-screen bg-background">

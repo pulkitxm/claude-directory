@@ -35,7 +35,7 @@ const FEATURES: Feature[] = [
 		icon: SlidersHorizontal,
 		code: "MOD-02",
 		title: "Tactile control plane",
-		body: "Drive setpoints with knobs, switches and sliders that respond like real hardware — every change is logged, signed and reversible.",
+		body: "Drive setpoints with knobs, switches and sliders that respond like real hardware ,  every change is logged, signed and reversible.",
 	},
 	{
 		icon: ShieldCheck,
@@ -76,7 +76,7 @@ export function Features() {
 							<br className="hidden sm:block" /> One machined deck.
 						</>
 					}
-					lede="Every capability is a swappable module bolted onto the same chassis — provision only what your floor needs, upgrade the rest later."
+					lede="Every capability is a swappable module bolted onto the same chassis ,  provision only what your floor needs, upgrade the rest later."
 				/>
 
 				<motion.ul

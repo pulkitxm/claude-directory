@@ -5,7 +5,7 @@ export interface FeatureItem {
 	index: string;
 	image: string;
 	alt: string;
-	/** Headline split so a single word can be italic/gold. */
+
 	title: { lead: string; emphasis: string; trail?: string };
 	body: string;
 	meta: string;
@@ -18,8 +18,8 @@ export const features: FeatureItem[] = [
 		image: images.featureAtelier,
 		alt: "Folded garments and fabric swatches arranged on a studio table",
 		title: { lead: "Curated", emphasis: "Excellence" },
-		body: "Every artefact in the house collection is selected for the way it ages — the patina it earns, the weight it carries in the hand. We measure value not in seasons but in decades.",
-		meta: "Atelier No. 1 — Materials",
+		body: "Every artefact in the house collection is selected for the way it ages ,  the patina it earns, the weight it carries in the hand. We measure value not in seasons but in decades.",
+		meta: "Atelier No. 1 ,  Materials",
 		colStart: "lg:col-start-2",
 	},
 	{
@@ -27,8 +27,8 @@ export const features: FeatureItem[] = [
 		image: images.featureArchitecture,
 		alt: "Minimal modernist architecture with rhythmic concrete columns",
 		title: { lead: "The", emphasis: "Details" },
-		body: "Restraint is the loudest statement we make. A single seam, a cut edge, the precise temperature of a colour — these are the places where intention becomes unmistakable.",
-		meta: "Atelier No. 2 — Form",
+		body: "Restraint is the loudest statement we make. A single seam, a cut edge, the precise temperature of a colour ,  these are the places where intention becomes unmistakable.",
+		meta: "Atelier No. 2 ,  Form",
 		colStart: "lg:col-start-3",
 	},
 	{
@@ -36,8 +36,8 @@ export const features: FeatureItem[] = [
 		image: images.featureStillLife,
 		alt: "Still-life arrangement of sculptural objects in soft daylight",
 		title: { lead: "The", emphasis: "Process" },
-		body: "Nothing is rushed. A piece may rest, unfinished, for months until the hand and the eye agree. Slowness is not an inconvenience — it is the method.",
-		meta: "Atelier No. 3 — Craft",
+		body: "Nothing is rushed. A piece may rest, unfinished, for months until the hand and the eye agree. Slowness is not an inconvenience ,  it is the method.",
+		meta: "Atelier No. 3 ,  Craft",
 		colStart: "lg:col-start-4",
 	},
 ];
@@ -64,7 +64,7 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
 	{
 		quote:
-			"There is a quietness to the work that I have never found elsewhere. It does not ask for attention — it simply earns it, slowly, over years.",
+			"There is a quietness to the work that I have never found elsewhere. It does not ask for attention ,  it simply earns it, slowly, over years.",
 		author: "Isolde Marchetti",
 		role: "Editor-at-Large, Vellum Quarterly",
 		avatar: images.avatar01,
@@ -96,13 +96,13 @@ export const faqs: FaqItem[] = [
 		id: "commission",
 		question: "How does a commission begin?",
 		answer:
-			"Every commission opens with a conversation — never a catalogue. We meet to understand the room, the ritual, and the life the piece will join. Only then does a maker begin. Expect the first proposal within three weeks.",
+			"Every commission opens with a conversation ,  never a catalogue. We meet to understand the room, the ritual, and the life the piece will join. Only then does a maker begin. Expect the first proposal within three weeks.",
 	},
 	{
 		id: "materials",
 		question: "Where do the materials come from?",
 		answer:
-			"We work with a small, fixed circle of mills, foundries, and tanneries — most of them family-held for generations. Provenance is documented for every component, and we decline anything we cannot trace to its source.",
+			"We work with a small, fixed circle of mills, foundries, and tanneries ,  most of them family-held for generations. Provenance is documented for every component, and we decline anything we cannot trace to its source.",
 	},
 	{
 		id: "timeline",
@@ -114,7 +114,7 @@ export const faqs: FaqItem[] = [
 		id: "care",
 		question: "How should a piece be cared for?",
 		answer:
-			"Each edition arrives with a hand-bound care record specific to its materials. Our atelier remains available for restoration and refinishing for the lifetime of the piece — and, in most cases, well beyond it.",
+			"Each edition arrives with a hand-bound care record specific to its materials. Our atelier remains available for restoration and refinishing for the lifetime of the piece ,  and, in most cases, well beyond it.",
 	},
 ];
 

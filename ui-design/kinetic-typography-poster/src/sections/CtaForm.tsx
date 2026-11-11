@@ -3,18 +3,11 @@ import { Button } from "../components/Button";
 import { SectionLabel } from "../components/SectionLabel";
 import { BackgroundNumber } from "../components/BackgroundNumber";
 
-/* Shared oversized-input styling: 96px tall, bottom-border only, transparent,
-   text-4xl uppercase content, muted placeholder, underline flips acid on focus. */
+
 const INPUT_CLASS =
 	"h-20 w-full border-b-2 border-line bg-transparent px-0 font-bold uppercase tracking-tighter text-bone placeholder:text-muted focus:border-acid focus:outline-none text-3xl md:h-24 md:text-4xl";
 
-/**
- * Oversized capture form. Inputs are 96px tall, border-bottom only, transparent,
- * with text-4xl uppercase content and a barely-there muted placeholder; the
- * underline flips to acid on focus (the border is the focus indicator). Labels
- * sit above each field, small + uppercase + tracked-wide. On submit we show an
- * inline acknowledgement instead of navigating anywhere.
- */
+
 export function CtaForm() {
 	const [submitted, setSubmitted] = useState(false);
 
@@ -51,7 +44,7 @@ export function CtaForm() {
 									You're On The List.
 								</p>
 								<p className="mt-4 max-w-md text-base font-medium md:text-lg">
-									Check your inbox — your pass and the full program are on the
+									Check your inbox ,  your pass and the full program are on the
 									way. See you on the floor.
 								</p>
 							</div>

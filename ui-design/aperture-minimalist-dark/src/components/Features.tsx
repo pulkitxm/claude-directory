@@ -14,7 +14,7 @@ type Feature = {
 	icon: LucideIcon;
 	title: string;
 	body: string;
-	/** spans two columns in the bento grid on large screens */
+
 	wide?: boolean;
 	mono?: string;
 };
@@ -50,7 +50,7 @@ const FEATURES: Feature[] = [
 	{
 		icon: Layers,
 		title: "One runtime, six regions",
-		body: "Write once. Aperture replicates state to iad, fra, hnd, gru, syd, and cdg — automatically.",
+		body: "Write once. Aperture replicates state to iad, fra, hnd, gru, syd, and cdg ,  automatically.",
 		wide: true,
 		mono: "6 regions · 42ms p99",
 	},

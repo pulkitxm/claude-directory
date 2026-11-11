@@ -3,10 +3,9 @@ import { Check, ArrowRight } from "lucide-react";
 import { Shell, Blob, Square, ButtonLink } from "./primitives";
 import { fadeUp, stagger, reveal } from "../lib/motion";
 
-/* BENEFITS — vibrant Emerald color block with an abstract overlapping-shape
-   composition. Demonstrates a full bold-color section + geometric layering. */
+
 const POINTS = [
-	"One token file drives color, type, radius — change once, ripple everywhere.",
+	"One token file drives color, type, radius ,  change once, ripple everywhere.",
 	"Composable primitives mean no one-off styles ever creep into the codebase.",
 	"Pure-CSS motion and flat shapes keep bundles tiny and paint cheap.",
 	"Print-inspired clarity that reads instantly on any screen size.",
@@ -23,7 +22,7 @@ export function Benefits() {
 			/>
 
 			<Shell className="relative grid items-center gap-16 lg:grid-cols-2">
-				{/* Abstract overlapping composition */}
+				{}
 				<motion.div
 					variants={fadeUp}
 					{...reveal}
@@ -32,7 +31,7 @@ export function Benefits() {
 					<AbstractStack />
 				</motion.div>
 
-				{/* Copy */}
+				{}
 				<motion.div
 					variants={stagger}
 					{...reveal}
@@ -93,7 +92,7 @@ export function Benefits() {
 	);
 }
 
-/* Overlapping flat shapes — interest from composition, never depth. */
+
 function AbstractStack() {
 	return (
 		<div className="relative mx-auto aspect-[5/4] w-full max-w-lg">
@@ -107,7 +106,7 @@ function AbstractStack() {
 				className="absolute right-[28%] top-[34%] h-24 w-24 rounded-lg bg-white/90"
 			/>
 			<div className="absolute left-[40%] top-[2%] h-16 w-16 rounded-full bg-[var(--color-ink)]" />
-			{/* thin connecting bars to suggest a system/grid */}
+			{}
 			<div className="absolute bottom-[44%] left-[20%] h-2 w-40 rounded-full bg-white/40" />
 			<div className="absolute bottom-[30%] left-[34%] h-2 w-28 rounded-full bg-white/40" />
 		</div>

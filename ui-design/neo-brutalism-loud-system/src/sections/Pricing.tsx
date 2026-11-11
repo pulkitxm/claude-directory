@@ -5,8 +5,7 @@ import { Badge } from "../components/Badge";
 import { Button } from "../components/Button";
 import { SectionLabel, Reveal } from "../components/Section";
 
-/* Three tiers on a violet color block. The featured "Zine" plan is scaled up,
-   rotated straight, and carries a rotated "MOST LOUD" sticker on its corner. */
+
 export function Pricing() {
 	return (
 		<section

@@ -4,12 +4,7 @@ import { Button } from "../components/Button";
 import { BackgroundNumber } from "../components/BackgroundNumber";
 import { usePrefersReducedMotion } from "../hooks";
 
-/**
- * The poster's cover. A viewport-width display lockup — `clamp(3rem,12vw,14rem)`
- * — sits over a towering muted background number. As the user scrolls the hero
- * out, Framer Motion's useScroll drives a zoom-out (scale 1 → 1.2) and fade
- * (opacity 1 → 0), so entering the page feels like pulling back from the print.
- */
+
 export function Hero() {
 	const ref = useRef<HTMLElement>(null);
 	const reduced = usePrefersReducedMotion();
@@ -30,7 +25,7 @@ export function Hero() {
 			ref={ref}
 			className="relative flex min-h-[92vh] items-center overflow-hidden border-b-2 border-line"
 		>
-			{/* Towering decorative background number — pure graphic, behind content. */}
+			{}
 			<BackgroundNumber className="absolute -right-[2vw] top-1/2 -z-10 -translate-y-1/2 leading-none text-muted/60 text-[40vw] md:text-[34vw]">
 				05
 			</BackgroundNumber>
@@ -43,7 +38,7 @@ export function Hero() {
 					<span className="bg-acid px-3 py-1 font-bold text-acid-foreground">
 						Vol. 05
 					</span>
-					<span>Berlin — Oct 24–26</span>
+					<span>Berlin ,  Oct 24–26</span>
 					<span className="hidden md:inline">Kinetic Typography Festival</span>
 				</div>
 
@@ -73,7 +68,7 @@ export function Hero() {
 				</div>
 			</motion.div>
 
-			{/* Scroll cue */}
+			{}
 			<div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-3 text-xs uppercase tracking-widest text-muted-foreground md:flex">
 				<span>Scroll</span>
 				<span className="inline-block h-8 w-px bg-line" aria-hidden="true" />

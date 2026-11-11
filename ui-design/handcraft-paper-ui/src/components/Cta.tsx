@@ -19,7 +19,7 @@ export function Cta() {
 				className="relative mx-auto max-w-3xl overflow-hidden border-[3px] border-ink bg-postit px-7 py-14 text-center shadow-[var(--shadow-hard-lg)] md:px-12"
 				style={{ borderRadius: radius.wobblyLg }}
 			>
-				{/* doodle decorations */}
+				{}
 				<span
 					className="anim-bob absolute -left-3 top-8 hidden h-12 w-12 border-2 border-ink bg-accent md:block"
 					style={{
@@ -38,7 +38,7 @@ export function Cta() {
 					Got a blank wall and a head full of ideas?
 				</h2>
 				<p className="mx-auto mt-5 max-w-xl text-lg text-ink/75 md:text-xl">
-					Start a board in seconds — no card, no tour, no rules. Just type your
+					Start a board in seconds ,  no card, no tour, no rules. Just type your
 					email and we'll hand you a marker.
 				</p>
 
@@ -80,7 +80,7 @@ export function Cta() {
 					Free forever for solo doodlers. Cancel by closing the lid.
 				</p>
 
-				{/* arrow doodle pointing at the form (desktop) */}
+				{}
 				<ScribbleArrow className="absolute bottom-20 right-6 hidden h-16 w-24 rotate-[200deg] md:block" />
 			</div>
 		</section>

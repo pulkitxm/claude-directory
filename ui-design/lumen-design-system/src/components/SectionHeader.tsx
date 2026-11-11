@@ -1,10 +1,7 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 
-/**
- * Consistent section intro: mono eyebrow, gradient headline, muted lead.
- * Centralized so every section shares the same rhythm and type treatment.
- */
+
 export function SectionHeader({
 	eyebrow,
 	title,

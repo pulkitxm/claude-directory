@@ -1,19 +1,9 @@
-# Paper Circuit — Agentic Outbound SaaS Landing Page (DRIFT) (HTML + CSS + Vanilla JS)
+# Paper Circuit : Agentic Outbound SaaS Landing Page
 
-[![Watch Demo](./poster.jpg)](./demo.mp4)
+An independent interface experiment with fictional content. The retained layout and interactions explore agentic outbound saas landing page (drift) (html + css + vanilla js).
 
-A multi-section marketing landing page for Driftworks (product wordmark: "DRIFT"), a fictional autonomous-outbound SaaS. The "Paper Circuit" design language reads like a blueprint printed on graph paper: a light neutral canvas with a faint radial dot grid, crisp hairlines, floating white panels with soft shadows, and color used sparingly as wiring (electric indigo, hot magenta). Sections include a sticky header with hover-dropdown nav, a hero with an auto-advancing icon belt and a detailed product mockup featuring a mouse-driven 3D parallax, a logo strip, a 12-column features bento, portrait testimonials, an enterprise governance layout, an indigo stats/CTA strip with a live mono counter, and a cursor-spotlight wordmark footer — all built with pure HTML, CSS, and vanilla JS. Generated with Claude Fable 5.
+Serve this folder with `python3 -m http.server 8000` and open the displayed address.
 
-## Run
+All image slots use the original `original-visual.svg` geometric composition. Typography uses system fonts.
 
-This is a static project — open `index.html` in a browser, or serve the folder:
-
-```sh
-python3 -m http.server 8000
-```
-
-See `prompt.md` for the full build spec; `demo.mp4` shows it in motion.
-
----
-
-Part of the [Landing pages](../) collection in the [claude-directory](../../) — an open-source gallery of AI-generated UI built with Claude Fable 5. [Browse the live gallery](https://pulkitxm.com/claude-directory).
+Asset and dependency licensing is recorded in the root [provenance manifest](../../ASSET_PROVENANCE.md). Historical posters, recordings, and unverified vendored assets have been removed.

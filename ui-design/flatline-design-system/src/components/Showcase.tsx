@@ -1,9 +1,7 @@
 import { Star, Bell } from "lucide-react";
 import { Shell, Reveal, Eyebrow, Button } from "./primitives";
 
-/* SHOWCASE — an explicit specimen of the system itself: the palette as solid
-   swatches, every button variant, the input field, and tag styles. White
-   section so each component reads as a clean graphic. */
+
 
 const SWATCHES = [
 	{ name: "Primary", sub: "Blue 500", value: "var(--color-brand)", on: "#fff" },
@@ -56,12 +54,12 @@ export function Showcase() {
 						Every part, on the table.
 					</h2>
 					<p className="mt-5 text-lg leading-relaxed text-gray-600">
-						The palette, the buttons, the inputs, the tags — laid out flat so
+						The palette, the buttons, the inputs, the tags ,  laid out flat so
 						you can see exactly what you're composing with.
 					</p>
 				</Reveal>
 
-				{/* Palette */}
+				{}
 				<Reveal className="mt-14">
 					<div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
 						{SWATCHES.map((s) => (
@@ -83,7 +81,7 @@ export function Showcase() {
 					</div>
 				</Reveal>
 
-				{/* Components */}
+				{}
 				<div className="mt-6 grid gap-6 lg:grid-cols-3">
 					<Reveal>
 						<Panel title="Buttons">
@@ -106,7 +104,7 @@ export function Showcase() {
 						<Panel title="Input field">
 							<input
 								type="text"
-								placeholder="Focus me — hard blue border"
+								placeholder="Focus me ,  hard blue border"
 								className="field !bg-white"
 								aria-label="Demo input field"
 							/>

@@ -38,7 +38,7 @@ import {
 	TESTIMONIALS,
 } from "./data";
 
-/* Maps a feature's icon key to a lucide component. */
+
 const FEATURE_ICON = {
 	circle: Circle,
 	square: Square,
@@ -48,7 +48,7 @@ const FEATURE_ICON = {
 	layers: Layers,
 } as const;
 
-/* ============================================================== Navbar === */
+
 
 function Navbar() {
 	const [open, setOpen] = useState(false);
@@ -127,13 +127,13 @@ function Navbar() {
 	);
 }
 
-/* =============================================================== Hero ==== */
+
 
 function Hero() {
 	return (
 		<Section id="top">
 			<div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-				{/* Left — type-driven manifesto */}
+				{}
 				<div className="flex flex-col justify-center gap-7 px-4 py-14 sm:px-6 sm:py-20 lg:border-r-4 lg:border-ink lg:px-12 lg:py-28">
 					<div className="animate-rise" style={{ animationDelay: "60ms" }}>
 						<Eyebrow accent="red">Bauhaus Design System · Est. 1919</Eyebrow>
@@ -161,7 +161,7 @@ function Hero() {
 						style={{ animationDelay: "220ms" }}
 					>
 						A design system built like a 1920s poster. Three primary colours,
-						thick black borders, hard offset shadows — every screen{" "}
+						thick black borders, hard offset shadows ,  every screen{" "}
 						<span className="font-bold">constructed</span>, never merely
 						decorated.
 					</p>
@@ -197,24 +197,24 @@ function Hero() {
 					</div>
 				</div>
 
-				{/* Right — blue color-blocked geometric composition */}
+				{}
 				<div className="relative min-h-[460px] overflow-hidden bg-bauhaus-blue bg-dotgrid-light lg:min-h-0">
-					{/* big spinning ring */}
+					{}
 					<Shape
 						kind="circle"
 						className="animate-spin-slower absolute -left-20 -top-20 size-72 border-[10px] border-ink/20"
 					/>
-					{/* rotated outline square */}
+					{}
 					<span
 						aria-hidden
 						className="absolute right-8 top-12 size-32 rotate-12 border-4 border-ink bg-bauhaus-yellow shadow-hard-md sm:size-40"
 					/>
-					{/* big red circle */}
+					{}
 					<Shape
 						kind="circle"
 						className="absolute -bottom-10 -left-8 size-52 border-4 border-ink bg-bauhaus-red shadow-hard-md sm:size-64"
 					/>
-					{/* centerpiece: square holding a triangle, slightly rotated */}
+					{}
 					<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
 						<div className="relative grid size-44 -rotate-6 place-items-center border-4 border-ink bg-white shadow-hard-lg sm:size-56">
 							<span
@@ -227,7 +227,7 @@ function Hero() {
 							/>
 						</div>
 					</div>
-					{/* floating ticket: poster credit */}
+					{}
 					<div className="absolute bottom-5 right-5 max-w-[210px] border-2 border-ink bg-white px-4 py-3 shadow-hard-sm">
 						<p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-ink/60">
 							Composition № 01
@@ -242,7 +242,7 @@ function Hero() {
 	);
 }
 
-/* ============================================================= Marquee === */
+
 
 function Marquee() {
 	const words = [
@@ -283,7 +283,7 @@ function Marquee() {
 	);
 }
 
-/* =============================================================== Stats === */
+
 
 function Stats() {
 	return (
@@ -331,7 +331,7 @@ function Stats() {
 	);
 }
 
-/* ============================================================ Features === */
+
 
 function Features() {
 	return (
@@ -347,7 +347,7 @@ function Features() {
 						</h2>
 					</div>
 					<p className="max-w-sm text-lg font-medium leading-relaxed text-ink/75">
-						Six structural rules. No subtle effects, no guesswork — only honest,
+						Six structural rules. No subtle effects, no guesswork ,  only honest,
 						declarative composition.
 					</p>
 				</div>
@@ -394,7 +394,7 @@ function Features() {
 	);
 }
 
-/* ============================================================= Process === */
+
 
 function Process() {
 	return (
@@ -412,7 +412,7 @@ function Process() {
 				</div>
 
 				<div className="relative grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
-					{/* connecting line (desktop only) */}
+					{}
 					<div
 						aria-hidden
 						className="absolute left-0 right-0 top-10 hidden h-1 bg-white/40 md:block"
@@ -451,7 +451,7 @@ function Process() {
 	);
 }
 
-/* ============================================================ Benefits === */
+
 
 function Benefits() {
 	return (
@@ -469,7 +469,7 @@ function Benefits() {
 					<p className="max-w-md text-lg font-medium leading-relaxed text-white/90">
 						A rigid system is a creative engine, not a cage. When the palette,
 						borders and shadows are fixed, you spend your energy on composition
-						— where it counts.
+						,  where it counts.
 					</p>
 					<div className="pt-2">
 						<Btn variant="ondark">
@@ -497,7 +497,7 @@ function Benefits() {
 	);
 }
 
-/* ============================================================= Pricing === */
+
 
 function Pricing() {
 	return (
@@ -616,7 +616,7 @@ function Pricing() {
 	);
 }
 
-/* ========================================================= Testimonials == */
+
 
 function Testimonials() {
 	return (
@@ -679,7 +679,7 @@ function Testimonials() {
 	);
 }
 
-/* ============================================================= Journal === */
+
 
 function Journal() {
 	return (
@@ -750,7 +750,7 @@ function Journal() {
 	);
 }
 
-/* ================================================================ FAQ ==== */
+
 
 function Faq() {
 	const [openIdx, setOpenIdx] = useState<number | null>(0);
@@ -835,12 +835,12 @@ function Faq() {
 	);
 }
 
-/* ============================================================ Final CTA == */
+
 
 function FinalCta() {
 	return (
 		<Section className="relative overflow-hidden bg-bauhaus-yellow">
-			{/* large decorative shapes at low opacity in the corners */}
+			{}
 			<Shape
 				kind="circle"
 				className="absolute -left-24 -top-24 size-72 border-[12px] border-ink/40"
@@ -882,7 +882,7 @@ function FinalCta() {
 	);
 }
 
-/* ============================================================== Footer === */
+
 
 function Footer() {
 	const cols = [
@@ -903,7 +903,7 @@ function Footer() {
 						</div>
 						<p className="max-w-xs text-sm font-medium leading-relaxed text-canvas/70">
 							A Bauhaus design system rendered as a working landing page. Form
-							follows function — circle, square, triangle.
+							follows function ,  circle, square, triangle.
 						</p>
 						<div className="flex items-center gap-2 pt-1">
 							<Shape kind="circle" className="size-5 bg-bauhaus-red" />
@@ -945,7 +945,7 @@ function Footer() {
 	);
 }
 
-/* =============================================================== App ===== */
+
 
 export default function App() {
 	// Mark page ready so the recorder's load wait resolves predictably.

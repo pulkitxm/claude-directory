@@ -7,7 +7,7 @@ type QA = { q: string; a: string };
 const ITEMS: QA[] = [
 	{
 		q: "Is this really shadow-everything?",
-		a: "The opposite of flat — yes. Every interactive surface emits colored light through box-shadows, and headings glow via drop-shadow. Shadows here are neon, never dark drops.",
+		a: "The opposite of flat ,  yes. Every interactive surface emits colored light through box-shadows, and headings glow via drop-shadow. Shadows here are neon, never dark drops.",
 	},
 	{
 		q: "What stack does NEONWAVE OS target?",

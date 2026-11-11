@@ -1,47 +1,9 @@
-# Hero sections
+# hero-sections
 
-**41 hero section experiments generated with Claude Fable 5** — full-viewport, video-background, animated, and glassmorphism landing-page hero components built with React, TypeScript, Tailwind CSS, Framer Motion, Three.js, and framework-free HTML/CSS/JS. Part of the [claude-directory](../README.md) collection of AI-generated UI ([live gallery](https://pulkitxm.com/claude-directory)).
+5 independently reviewed experiments. See the root [audit](../IP_AUDIT_REPORT.md) and [provenance](../ASSET_PROVENANCE.md).
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [aethera-cinematic-hero](./aethera-cinematic-hero/) | Cinematic hero for Aethera with video-driven visual treatment and headless verification | React, TypeScript, Vite, Tailwind CSS |
-| [ai-builder-dark-hero](./ai-builder-dark-hero/) | Dark-mode hero section for an AI website builder with animated reveals and HLS video streaming | React, TypeScript, Vite, Tailwind CSS, Motion, hls.js, Lucide |
-| [altitude-index-h38](./altitude-index-h38/) | Editorial expedition-outfitter bento hero ("Warm Cartography") on warm paper with an ember accent, parallax photo tiles, fullscreen menu, and a scrolling coordinate ticker | HTML, CSS, JavaScript, Space Grotesk |
-| [animated-text-rotate-hero](./animated-text-rotate-hero/) | shadcn/ui animated hero integration with spring word-rotation, hosted in a midnight-teal "Spektr" trade-desk shell with a live ticker | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, Lucide |
-| [bloom-liquid-glass-hero](./bloom-liquid-glass-hero/) | Bloom hero experiment with floral imagery, liquid-glass styling, and generated visual assets | React, TypeScript, Vite, Tailwind CSS |
-| [cinematic-stream-hero](./cinematic-stream-hero/) | LUMIERE full-viewport streaming hero with looping cinematic background video | React, TypeScript, Vite, Tailwind CSS |
-| [codenest-hero](./codenest-hero/) | Dark coding-education hero for "CodeNest" with an HLS (Mux) video background, grid lines, central glow, and a liquid-glass floating card | React, TypeScript, Vite, Tailwind CSS, hls.js, Lucide, Vitest |
-| [convix-pr-agency-hero](./convix-pr-agency-hero/) | Full-viewport hero for PR-agency SaaS "Convix Software" with a rounded-card layout, background video, and floating pill navbar | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [datacore-video-hero](./datacore-video-hero/) | Responsive full-screen hero with a purple palette and an opaque fullscreen video background | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [designpro-video-hero](./designpro-video-hero/) | Full-screen hero for product-design education platform "DesignPro" with a looping video background and animated shiny gradient heading | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [digital-epoch-hero](./digital-epoch-hero/) | Rounded-card hero with looping video background, floating glass bottom navbar, and seamless CSS marquee logo scroller | React, TypeScript, Vite, Tailwind CSS v4, Motion, Lucide |
-| [equilibrium-liquid-glass-hero](./equilibrium-liquid-glass-hero/) | Full-screen "Equilibrium" wellness hero with a liquid-glass UI over a looping background video | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [fearless-vision-hero](./fearless-vision-hero/) | Full-screen hero with a background video, deep-purple accent, and Inter typography | React, JavaScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [helix-vault-h55](./helix-vault-h55/) | "Institutional Crypto Terminal" hero for Helix Vault — emerald blade of light, glass portfolio dashboard mockup with count-up balance, growing bar chart, live ticker and scan-line, all framework-free | HTML, CSS, JavaScript, DM Sans |
-| [ironclad-password-hero](./ironclad-password-hero/) | Password-manager hero section for Ironclad with animated product-style presentation | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide |
-| [kubric-hero-landing](./kubric-hero-landing/) | Desktop-only dark hero for fictional studio "Kubric™" with a looping background video, an 8-layer progressive bottom blur, a self-drawing animated SVG logo, a character-by-character headline, and a video-ready reveal sequence | TanStack Start, React 19, Vite 7, Tailwind CSS v4 |
-| [mainframe-hero-landing](./mainframe-hero-landing/) | Full-screen hero landing page for a creative agency called "Mainframe" with custom Helvetica Now display fonts | React, TypeScript, Vite, Tailwind CSS |
-| [monocrit-studio-h27](./monocrit-studio-h27/) | Interactive near-monochrome Swiss-brutalist studio hero with a cursor-following image card, magnetic headline letters, and movement-driven image cycling | HTML, CSS, JavaScript, Bricolage Grotesque |
-| [nexora-automation-hero](./nexora-automation-hero/) | Single-viewport SaaS automation hero ("Nexora") with Instrument Serif / Inter type and Framer Motion | React, TypeScript, Vite, Tailwind CSS, Framer Motion, shadcn/ui, Lucide |
-| [noctis-cinematic-hero](./noctis-cinematic-hero/) | NOCTIS full-screen dark cinematic hero with video background, nav, and timecode details | React, TypeScript, Vite, CSS |
-| [particle-hero](./particle-hero/) | Night-sky particle-canvas hero with a clickable gold-mode invert toggle, rotating spotlights, and a radial-reveal headline | React, TypeScript, Vite, Tailwind CSS, Canvas 2D, shadcn/ui, Lucide |
-| [power-ai-hero](./power-ai-hero/) | Full-screen dark AI hero with a JS-controlled fade-loop background video, headline, CTA, and logo marquee | React, TypeScript, Vite, Tailwind CSS, Geist Sans, Lucide |
-| [prisma-noir-h52](./prisma-noir-h52/) | "Spectral darkroom" creative-director hero with drifting screen-blended color blobs, a clipped rotating-word headline, cursor parallax, and a fullscreen discover menu with hover image tickers | HTML, CSS, JavaScript, Manrope, Titillium Web |
-| [rivr-defi-hero](./rivr-defi-hero/) | DeFi dashboard hero for RIVR with glassmorphism, badge/cards, and verification script | React, TypeScript, Vite, Tailwind CSS |
-| [securify-data-hero](./securify-data-hero/) | Full-screen hero section for a fictional data-security SaaS called securify | React, TypeScript, Vite, Tailwind CSS |
-| [sentinel-ai-hero](./sentinel-ai-hero/) | Full-screen dark hero for security company "Sentinel AI" with an embedded Spline 3D scene background | React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Spline |
-| [shape-landing-hero](./shape-landing-hero/) | shadcn integration of Kokonut UI's HeroGeometric — animated geometric shapes, gradient headline and a live props playground on a near-black canvas | React, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide, shadcn/ui |
-| [skyelite-jet-hero](./skyelite-jet-hero/) | Premium private jet hero section with full-viewport video background and luxury UI treatment | React, TypeScript, Vite, Tailwind CSS |
-| [smart-prosthetics-hero](./smart-prosthetics-hero/) | Single-page hero with a fullscreen video background and pill-style navbar for a smart-prosthetics concept | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [stellar-ai-landing-hero](./stellar-ai-landing-hero/) | "Stellar.ai" landing hero on a white background with staggered fade-in animations and Inter type | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [synex-wealth-hero](./synex-wealth-hero/) | Editorial-minimal full-viewport hero for fictional wealth platform "Synex" on a warm paper background, with two photorealistic stones that reveal a cursor-following moss patch via a spring-driven radial mask, and a staggered blur-up load cascade | React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, Lucide |
-| [taskly-liquid-glass-hero](./taskly-liquid-glass-hero/) | High-fidelity "liquid glass" hero for Taskly with a sticky glass navbar and dual-column layout on a white gradient-glow background | React, Vite |
-| [toonhub-figurine-carousel](./toonhub-figurine-carousel/) | TOONHUB full-viewport character figurine carousel hero | React, TypeScript, Vite, Tailwind CSS, Lucide |
-| [transform-data-hero](./transform-data-hero/) | Modern hero with a looping video background and a custom requestAnimationFrame fade system | React, TypeScript, Vite, Tailwind CSS |
-| [vanguard-hero-landing](./vanguard-hero-landing/) | Fullscreen hero landing page for the creative agency VANGUARD with looping background video | React, TypeScript, Vite, Tailwind CSS |
-| [vaultshield-hero](./vaultshield-hero/) | VaultShield hero experiment with security-product positioning and CLI/headless verification | React, TypeScript, Vite, Tailwind CSS |
-| [velorah-hero-landing](./velorah-hero-landing/) | Velorah hero landing page built with a modern Tailwind/shadcn-style component approach | React, TypeScript, Vite, Tailwind CSS, shadcn/ui |
-| [verdant-advisory-h10](./verdant-advisory-h10/) | Quiet-luxury advisory hero — oversized forest-green card, Hedvig serif headline, floating glass stat chip, infinite trust marquee, count-up stats and approach cards on a white canvas | HTML, CSS, Vanilla JS |
-| [wanderful-cinematic-hero](./wanderful-cinematic-hero/) | Full-viewport cinematic hero for travel brand "Wanderful" with GSAP animation and a custom display font | React, TypeScript, Vite, Tailwind CSS, GSAP, Lucide |
-| [woven-light-hero](./woven-light-hero/) | Interactive hero with 50k cursor-reactive Three.js particles woven into a torus-knot tapestry, integrated as a shadcn-style component | React, TypeScript, Vite, Tailwind CSS, Three.js, Framer Motion |
-| [xero-encryption-hero](./xero-encryption-hero/) | Single-page encryption-product hero for "Xero" with an animated icon pipeline and a pink-magenta gradient arc on a black page, written in plain CSS | React, TypeScript, Vite, CSS |
+- [altitude-index-h38](./altitude-index-h38/)
+- [helix-vault-h55](./helix-vault-h55/)
+- [monocrit-studio-h27](./monocrit-studio-h27/)
+- [prisma-noir-h52](./prisma-noir-h52/)
+- [verdant-advisory-h10](./verdant-advisory-h10/)

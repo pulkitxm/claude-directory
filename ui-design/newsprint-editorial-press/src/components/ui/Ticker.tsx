@@ -4,16 +4,11 @@ import { cn } from "@/lib/utils";
 export interface TickerItem {
 	label: string;
 	value: string;
-	/** Mark a stat as "breaking" to give it the red badge treatment. */
+
 	breaking?: boolean;
 }
 
-/**
- * Breaking-news crawl. Black bar, white type, red badges — a stock-ticker /
- * newsroom wire built from pure CSS translation (no marquee dependency) so the
- * project stays self-contained. The track is duplicated and shifted -50% for a
- * seamless infinite loop; hovering the bar pauses the crawl to read a figure.
- */
+
 export function Ticker({
 	items,
 	className,

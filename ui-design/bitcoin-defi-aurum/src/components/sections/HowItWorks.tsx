@@ -5,11 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { STEPS, type Step } from "@/data/content";
 import { cn } from "@/lib/utils";
 
-/**
- * The "blockchain ledger" — a vertical orange→transparent line threads through
- * numbered circular nodes, with each step rendered as a corner-accented glass
- * "block". Alternates sides on desktop; left-aligns on mobile.
- */
+
 export function HowItWorks() {
 	return (
 		<section
@@ -17,7 +13,7 @@ export function HowItWorks() {
 			className="relative bg-matter py-24"
 			aria-label="How it works"
 		>
-			{/* texture + ambient glow */}
+			{}
 			<div
 				className="pointer-events-none absolute inset-0 bg-cubes opacity-[0.03]"
 				aria-hidden="true"
@@ -32,11 +28,11 @@ export function HowItWorks() {
 					kicker="how_it_works"
 					title="Four blocks to"
 					accent="digital gold"
-					description="From a cold wallet to compounding on-chain yield in minutes. Each step is a verifiable transaction — signed by you, settled by the chain."
+					description="From a cold wallet to compounding on-chain yield in minutes. Each step is a verifiable transaction ,  signed by you, settled by the chain."
 				/>
 
 				<div className="relative mx-auto mt-20 max-w-4xl">
-					{/* The chain line */}
+					{}
 					<div
 						className="absolute left-6 top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-orange via-orange/40 to-transparent md:left-1/2 md:-translate-x-1/2"
 						aria-hidden="true"
@@ -63,7 +59,7 @@ function TimelineStep({ step, index }: { step: Step; index: number }) {
 				"relative grid items-center gap-6 pl-16 md:grid-cols-2 md:gap-12 md:pl-0",
 			)}
 		>
-			{/* Node */}
+			{}
 			<div
 				className="absolute left-6 top-1 z-10 -translate-x-1/2 md:left-1/2"
 				aria-hidden="true"
@@ -76,7 +72,7 @@ function TimelineStep({ step, index }: { step: Step; index: number }) {
 				</div>
 			</div>
 
-			{/* Card — placed on alternating sides at md+ */}
+			{}
 			<div
 				className={cn(
 					isLeft
@@ -110,7 +106,7 @@ function TimelineStep({ step, index }: { step: Step; index: number }) {
 	);
 }
 
-/** Glass card with decorative Bitcoin-orange corner accents (a "selected node"). */
+
 function CornerCard({
 	children,
 	alignRight,
@@ -120,12 +116,12 @@ function CornerCard({
 }) {
 	return (
 		<div className="group relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-orange/40 hover:bg-white/[0.07]">
-			{/* top-left corner accent */}
+			{}
 			<span
 				className="absolute left-3 top-3 h-4 w-4 rounded-tl-md border-l-2 border-t-2 border-orange/70"
 				aria-hidden="true"
 			/>
-			{/* bottom-right corner accent */}
+			{}
 			<span
 				className="absolute bottom-3 right-3 h-4 w-4 rounded-br-md border-b-2 border-r-2 border-orange/70"
 				aria-hidden="true"

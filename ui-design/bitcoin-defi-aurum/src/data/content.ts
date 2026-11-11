@@ -29,7 +29,7 @@ export const NAV_LINKS = [
 	{ label: "Signal", href: "#testimonials" },
 ];
 
-/* ── Hero floating stat cards (orbit the orb) ── */
+
 export interface FloatStat {
 	icon: LucideIcon;
 	label: string;
@@ -62,7 +62,7 @@ export const FLOAT_STATS: FloatStat[] = [
 	},
 ];
 
-/* ── Stats ticker (scrolling marquee under hero) ── */
+
 export interface TickerItem {
 	label: string;
 	value: string;
@@ -80,7 +80,7 @@ export const TICKER_ITEMS: TickerItem[] = [
 	{ label: "Uptime", value: "99.998%" },
 ];
 
-/* ── Headline stats band (count-up) ── */
+
 export interface BigStat {
 	prefix?: string;
 	value: number;
@@ -115,7 +115,7 @@ export const BIG_STATS: BigStat[] = [
 	},
 ];
 
-/* ── Features grid (background icon watermarks) ── */
+
 export interface Feature {
 	icon: LucideIcon;
 	title: string;
@@ -128,7 +128,7 @@ export const FEATURES: Feature[] = [
 		icon: KeyRound,
 		title: "Non-Custodial Vaults",
 		description:
-			"Your keys, your coin. Sign every action from your own wallet — AURUM never touches your private keys or takes custody of a single sat.",
+			"Your keys, your coin. Sign every action from your own wallet ,  AURUM never touches your private keys or takes custody of a single sat.",
 		tag: "self_sovereign",
 	},
 	{
@@ -168,7 +168,7 @@ export const FEATURES: Feature[] = [
 	},
 ];
 
-/* ── How It Works (blockchain timeline) ── */
+
 export interface Step {
 	icon: LucideIcon;
 	title: string;
@@ -181,7 +181,7 @@ export const STEPS: Step[] = [
 		icon: Wallet,
 		title: "Connect Your Wallet",
 		description:
-			"Link any Bitcoin or Lightning wallet in one click. No sign-ups, no KYC, no email — your wallet is your identity.",
+			"Link any Bitcoin or Lightning wallet in one click. No sign-ups, no KYC, no email ,  your wallet is your identity.",
 		hash: "0x9f2a…41be",
 	},
 	{
@@ -202,12 +202,12 @@ export const STEPS: Step[] = [
 		icon: Gem,
 		title: "Withdraw Anytime",
 		description:
-			"Claim your principal and yield instantly over Lightning. No lockups, no withdrawal queues — your digital gold, on demand.",
+			"Claim your principal and yield instantly over Lightning. No lockups, no withdrawal queues ,  your digital gold, on demand.",
 		hash: "0x6a90…cc38",
 	},
 ];
 
-/* ── Pricing tiers ── */
+
 export interface PricingTier {
 	name: string;
 	price: string;
@@ -270,7 +270,7 @@ export const PRICING: PricingTier[] = [
 	},
 ];
 
-/* ── Testimonials ── */
+
 export interface Testimonial {
 	quote: string;
 	name: string;
@@ -309,7 +309,7 @@ export const TESTIMONIALS: Testimonial[] = [
 	},
 ];
 
-/* ── Trust / partner logos (text wordmarks, vendored-free) ── */
+
 export const TRUST_BADGES = [
 	"CertiK",
 	"Trail of Bits",

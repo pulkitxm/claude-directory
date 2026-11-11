@@ -3,21 +3,18 @@ import { cn } from "@/lib/utils";
 import { Badge } from "./Badge";
 
 interface SectionHeadingProps {
-	/** Mono kicker label above the title. */
+
 	kicker: string;
-	/** Plain leading part of the title. */
+
 	title: ReactNode;
-	/** Final word(s) rendered in the orange→gold gradient. */
+
 	accent?: string;
 	description?: ReactNode;
 	align?: "center" | "left";
 	className?: string;
 }
 
-/**
- * Shared section header: a mono kicker badge, a Space Grotesk title with a
- * gradient accent on the final words, and a muted lede.
- */
+
 export function SectionHeading({
 	kicker,
 	title,

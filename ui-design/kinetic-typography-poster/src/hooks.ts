@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 
-/**
- * Tracks the user's `prefers-reduced-motion` setting reactively.
- * Components use this to swap kinetic behaviour for static fallbacks
- * (e.g. a marquee that renders its content once instead of scrolling).
- */
+
 export function usePrefersReducedMotion(): boolean {
 	const query = "(prefers-reduced-motion: reduce)";
 	const [reduced, setReduced] = useState<boolean>(() => {

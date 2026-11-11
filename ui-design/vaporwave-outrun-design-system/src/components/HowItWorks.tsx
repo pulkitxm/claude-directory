@@ -10,7 +10,7 @@ const STEPS: Step[] = [
 	{
 		n: "01",
 		title: "Mount the tokens",
-		desc: "Drop the centralized token sheet into your stylesheet. Colors, fonts, glows, and radii resolve as CSS variables — one source of truth.",
+		desc: "Drop the centralized token sheet into your stylesheet. Colors, fonts, glows, and radii resolve as CSS variables ,  one source of truth.",
 	},
 	{
 		n: "02",
@@ -45,7 +45,7 @@ export function HowItWorks() {
 				</Reveal>
 
 				<div className="relative mx-auto max-w-4xl">
-					{/* central neon checkpoint line (desktop) / left rail (mobile) */}
+					{}
 					<div
 						className="absolute bottom-0 top-0 w-0.5 bg-gradient-to-b from-[var(--color-magenta)] via-[var(--color-cyan)] to-[var(--color-orange)] shadow-[0_0_12px_#FF00FF] max-md:left-3 md:left-1/2 md:-translate-x-1/2"
 						aria-hidden
@@ -56,7 +56,7 @@ export function HowItWorks() {
 							const left = i % 2 === 0;
 							return (
 								<li key={step.n} className="relative">
-									{/* checkpoint node */}
+									{}
 									<span
 										className="absolute top-1 z-10 grid h-7 w-7 -translate-x-1/2 place-items-center rounded-full border-2 border-[var(--color-cyan)] bg-[var(--color-void)] font-mono text-[0.6rem] text-[var(--color-cyan)] shadow-[0_0_12px_#00FFFF] max-md:left-3 md:left-1/2"
 										aria-hidden

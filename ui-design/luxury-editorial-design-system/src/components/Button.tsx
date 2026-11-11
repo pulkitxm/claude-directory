@@ -6,7 +6,7 @@ type Size = "sm" | "md" | "lg";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	variant?: Variant;
 	size?: Size;
-	/** Alabaster base for use on dark sections (e.g. footer CTA). */
+
 	inverted?: boolean;
 	children: ReactNode;
 }
@@ -24,13 +24,7 @@ const base =
 	"focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground " +
 	"disabled:opacity-50 disabled:pointer-events-none select-none whitespace-nowrap";
 
-/**
- * Luxury button system.
- * - primary  : charcoal base, gold layer slides in from the left (translate-x),
- *              white label sits above via z-index. Shadow deepens on hover.
- * - secondary: transparent + thin border, fills charcoal on hover, text inverts.
- * - link     : underline-on-hover, gold accent.
- */
+
 export function Button({
 	variant = "primary",
 	size = "md",
@@ -76,7 +70,7 @@ export function Button({
 		);
 	}
 
-	// primary — charcoal (or alabaster, when inverted) base; gold slides from left.
+	// primary ,  charcoal (or alabaster, when inverted) base; gold slides from left.
 	return (
 		<button
 			className={[
@@ -90,14 +84,12 @@ export function Button({
 			].join(" ")}
 			{...props}
 		>
-			{/* Gold layer slides in from the left. */}
+			{}
 			<span
 				aria-hidden
 				className="absolute inset-0 z-0 -translate-x-full bg-accent transition-transform duration-500 ease-luxe group-hover:translate-x-0 reduce-motion-noscale"
 			/>
-			{/* Label sits above the gold layer via z-index. On the dark default the
-          label stays white (per spec); on the inverted (alabaster) base it
-          becomes charcoal on hover so it reads as charcoal-on-gold (AA). */}
+			{}
 			<span
 				className={[
 					"relative z-10 transition-colors duration-500 ease-luxe",

@@ -2,14 +2,12 @@ import { useId, useState } from "react";
 import { Plus } from "lucide-react";
 import { Shell, SectionHeading, Reveal, display } from "./primitives";
 
-/* Accordion FAQ. Closed items are convex clay cards; an OPEN item presses INTO
-   the surface (shadow-clay-pressed) to read as recessed — the concavity rule.
-   The plus icon rotates to an x. Fully ARIA-wired (button + region). */
+
 
 const FAQS = [
 	{
 		q: "Is this really just shadows and rounded corners?",
-		a: "The corners and color get you in the door, but the depth is the point. Each surface stacks four shadows — a colored outer drop, a top-left highlight, an inner bounce light, and an inner rim — so clay reads as a dense, lit object rather than a flat sticker.",
+		a: "The corners and color get you in the door, but the depth is the point. Each surface stacks four shadows ,  a colored outer drop, a top-left highlight, an inner bounce light, and an inner rim ,  so clay reads as a dense, lit object rather than a flat sticker.",
 	},
 	{
 		q: "What stack does Claymakers target?",
@@ -17,7 +15,7 @@ const FAQS = [
 	},
 	{
 		q: "Won't all this depth hurt performance?",
-		a: "No. Everything is CSS box-shadow, transform and backdrop-blur — GPU-friendly and paint-cheap. There are no images or canvases behind the clay. Background blobs animate on transform only, and motion respects prefers-reduced-motion.",
+		a: "No. Everything is CSS box-shadow, transform and backdrop-blur ,  GPU-friendly and paint-cheap. There are no images or canvases behind the clay. Background blobs animate on transform only, and motion respects prefers-reduced-motion.",
 	},
 	{
 		q: "Is it accessible?",
@@ -25,7 +23,7 @@ const FAQS = [
 	},
 	{
 		q: "Can I retheme the candy-shop palette?",
-		a: "Yes. Because every color is a token in one place, you can swap the accent, pink, sky, emerald and amber values and the whole system — buttons, orbs, blobs, gradients and tinted shadows — re-tints in one shot.",
+		a: "Yes. Because every color is a token in one place, you can swap the accent, pink, sky, emerald and amber values and the whole system ,  buttons, orbs, blobs, gradients and tinted shadows ,  re-tints in one shot.",
 	},
 ];
 

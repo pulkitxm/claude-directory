@@ -16,7 +16,7 @@ export function Hero() {
 			id="top"
 			className="relative overflow-hidden pt-14 pb-20 md:pt-24 md:pb-28"
 		>
-			{/* lighting hotspot, top-left, reinforcing the light source */}
+			{}
 			<div
 				aria-hidden="true"
 				className="pointer-events-none absolute -left-40 -top-40 h-[36rem] w-[36rem] rounded-full"
@@ -32,7 +32,7 @@ export function Hero() {
 					animate="show"
 					className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10"
 				>
-					{/* LEFT — copy (≈60%) */}
+					{}
 					<div className="flex flex-col items-start gap-6">
 						<motion.div variants={slideUp}>
 							<Badge tone="online">SX-1 · SYSTEM OPERATIONAL</Badge>
@@ -73,7 +73,7 @@ export function Hero() {
 						>
 							SCHEMATIC is the machined control plane for hardware fleets.
 							Provision actuators, stream telemetry, and ship firmware from one
-							tactile deck — engineered to feel as solid as the machines it
+							tactile deck ,  engineered to feel as solid as the machines it
 							runs.
 						</motion.p>
 
@@ -110,7 +110,7 @@ export function Hero() {
 							</Button>
 						</motion.div>
 
-						{/* mini spec chips, recessed */}
+						{}
 						<motion.dl
 							variants={slideUp}
 							className="mt-2 grid w-full grid-cols-3 gap-3 sm:max-w-md"
@@ -132,7 +132,7 @@ export function Hero() {
 						</motion.dl>
 					</div>
 
-					{/* RIGHT — device (≈40%) */}
+					{}
 					<motion.div
 						variants={{
 							hidden: { opacity: 0, x: 40, scale: 0.96 },
@@ -150,7 +150,7 @@ export function Hero() {
 						className="relative mx-auto w-full max-w-[24rem] lg:max-w-none"
 					>
 						<DeviceMockup />
-						{/* floating status tag */}
+						{}
 						<div
 							className="absolute -bottom-5 -left-3 hidden items-center gap-2 rounded-lg bg-chassis px-3 py-2 sm:flex"
 							style={{ boxShadow: "var(--shadow-floating)" }}

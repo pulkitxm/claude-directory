@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { marquee } from "../data/content";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Marquee — a full-bleed band of the system's adjectives scrolling on one crisp,
+// Marquee ,  a full-bleed band of the system's adjectives scrolling on one crisp,
 // linear loop. A poster signature that adds motion without decoration. The strip
 // is duplicated so the translate wraps seamlessly; reduced-motion users get the
 // static strip (the CSS in index.css freezes the animation).
@@ -27,7 +27,7 @@ export function Marquee() {
 					</div>
 				))}
 			</motion.div>
-			{/* Accessible, visually-hidden text equivalent for the decorative strip */}
+			{}
 			<span className="sr-only">{marquee.join(", ")}</span>
 		</div>
 	);

@@ -1,8 +1,4 @@
-/* ==========================================================================
-   THE GILDED HOUR — interactions
-   Vanilla JS, no dependencies. Progressive enhancement: if any of this fails,
-   the page still reads correctly (reveal elements fall back to visible).
-   ========================================================================== */
+
 (function () {
 	"use strict";
 
@@ -11,10 +7,7 @@
 		window.matchMedia &&
 		window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-	/* ----------------------------------------------------------------------
-     1. SCROLL REVEAL — staggered fade/slide via IntersectionObserver.
-        Each element reads an optional data-reveal-delay for the stagger.
-     ---------------------------------------------------------------------- */
+
 	function initReveal() {
 		var items = Array.prototype.slice.call(
 			doc.querySelectorAll("[data-reveal]"),
@@ -80,9 +73,7 @@
 		}, 3500);
 	}
 
-	/* ----------------------------------------------------------------------
-     2. HEADER — gold underline + shadow once the page is scrolled.
-     ---------------------------------------------------------------------- */
+
 	function initHeader() {
 		var header = doc.getElementById("site-header");
 		if (!header) return;
@@ -94,9 +85,7 @@
 		window.addEventListener("scroll", update, { passive: true });
 	}
 
-	/* ----------------------------------------------------------------------
-     3. MOBILE NAV — toggle the drawer, manage aria + hidden.
-     ---------------------------------------------------------------------- */
+
 	function initMobileNav() {
 		var toggle = doc.getElementById("nav-toggle");
 		var nav = doc.getElementById("mobile-nav");
@@ -135,9 +124,7 @@
 		});
 	}
 
-	/* ----------------------------------------------------------------------
-     4. FAQ ACCORDION — accessible single-or-multi open with smooth height.
-     ---------------------------------------------------------------------- */
+
 	function initAccordion() {
 		var triggers = Array.prototype.slice.call(
 			doc.querySelectorAll(".acc-trigger"),
@@ -182,9 +169,7 @@
 		});
 	}
 
-	/* ----------------------------------------------------------------------
-     5. ENQUIRE FORM — lightweight client validation + faux confirmation.
-     ---------------------------------------------------------------------- */
+
 	function initForm() {
 		var form = doc.getElementById("enquire-form");
 		var status = doc.getElementById("form-status");
@@ -217,14 +202,12 @@
 				name +
 				". Your card for " +
 				tier +
-				" is received — the maître d’ will reply by hand.";
+				" is received ,  the maître d’ will reply by hand.";
 			form.reset();
 		});
 	}
 
-	/* ----------------------------------------------------------------------
-     Boot.
-     ---------------------------------------------------------------------- */
+
 	function init() {
 		initReveal();
 		initHeader();

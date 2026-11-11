@@ -9,7 +9,7 @@ export function Blog() {
 			className="relative border-t border-foreground/10 py-20 md:py-32"
 		>
 			<div className="mx-auto max-w-[1600px] px-8 md:px-16">
-				{/* Header — title left, link pushed right (asymmetric) */}
+				{}
 				<div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 					<div>
 						<Overline>The Journal</Overline>
@@ -32,7 +32,7 @@ export function Blog() {
 									hoverShadow="hover:shadow-blog-hover"
 								/>
 								<div className="mt-6">
-									{/* Metadata row with decorative h-px divider between items */}
+									{}
 									<div className="flex items-center gap-3 font-sans text-[10px] uppercase tracking-overline text-muted-fg">
 										<span>{post.category}</span>
 										<span aria-hidden className="h-px w-8 bg-foreground/30" />

@@ -20,10 +20,7 @@ const FIGURES = [
 	{ value: "38ms", label: "Filing latency", note: "Wire to page" },
 ];
 
-/**
- * The Brief: a breaking-news crawl over a row of headline figures, framed by a
- * collapsed black grid so each statistic reads as its own boxed column.
- */
+
 export function TheBrief() {
 	return (
 		<section id="the-brief" className="border-b-4 border-ink">

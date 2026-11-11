@@ -11,7 +11,7 @@ type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 // Pill-shaped, tactile buttons. Every variant rounds fully, lifts and deepens
-// its colour-tinted shadow on hover, and presses in on click — like picking up
+// its colour-tinted shadow on hover, and presses in on click ,  like picking up
 // and setting down a smooth river stone. Tokens come from the Tailwind theme.
 const base =
 	"inline-flex items-center justify-center gap-2 rounded-full font-sans font-bold whitespace-nowrap " +

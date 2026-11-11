@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Plus } from "./icons";
 
-/* A Floating Action Button (MD3): tertiary fill, rounded-2xl (28px) square
-   shape, 56x56, elevation-2 -> elevation-3 on hover, with a soft breathing
-   halo. Appears once the hero is scrolled past; jumps back to the seed form. */
+
 export function Fab() {
 	const [visible, setVisible] = useState(false);
 

@@ -1,9 +1,7 @@
 import { Check } from "lucide-react";
 import { Shell, Reveal, Eyebrow, Button } from "./primitives";
 
-/* PRICING — scale carries the hierarchy. The popular tier RESTS larger
-   (lg:scale-105) in a solid Blue block and scales MORE on hover. No shadow,
-   no border — the size and the color do all the work. */
+
 type Plan = {
 	name: string;
 	price: string;
@@ -102,7 +100,7 @@ export function Pricing() {
 					{PLANS.map((plan, i) =>
 						plan.popular ? (
 							<Reveal key={plan.name} delay={i * 0.08}>
-								{/* Popular: solid Blue block, rests larger, scales more. */}
+								{}
 								<div className="on-color group relative z-10 origin-center rounded-lg bg-[var(--color-brand)] p-9 text-white transition-all duration-300 hover:scale-[1.04] lg:scale-105 lg:hover:scale-[1.09]">
 									<span className="inline-flex items-center rounded-full bg-[var(--color-sun)] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[var(--color-ink)]">
 										Most popular
@@ -136,7 +134,7 @@ export function Pricing() {
 							</Reveal>
 						) : (
 							<Reveal key={plan.name} delay={i * 0.08}>
-								{/* Standard: muted block, subtle hover scale. */}
+								{}
 								<div className="group h-full rounded-lg bg-[var(--color-fog)] p-9 transition-all duration-200 hover:scale-[1.02] hover:bg-[var(--color-hair)]">
 									<h3 className="text-2xl font-extrabold tracking-tight">
 										{plan.name}

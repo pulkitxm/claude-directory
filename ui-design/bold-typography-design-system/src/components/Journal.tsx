@@ -4,7 +4,7 @@ import { Reveal, RevealGroup, RevealItem, SectionLabel } from "./Primitives";
 import { Button } from "./Button";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Journal (Blog) — a 1 → 2 → 3 grid of editorial posters. Each card's image lives
+// Journal (Blog) ,  a 1 → 2 → 3 grid of editorial posters. Each card's image lives
 // in an overflow-hidden frame and scales to 105% over 500ms on hover; only the
 // image transforms (no card lift, no shadow). The title underlines on hover.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -23,7 +23,7 @@ export function Journal() {
 							Notes from <span className="text-accent">the press.</span>
 						</h2>
 					</div>
-					{/* Ghost button: muted → foreground, thin underline scales in on hover */}
+					{}
 					<Button
 						href="#journal"
 						variant="ghost"
@@ -42,7 +42,7 @@ export function Journal() {
 								href="#journal"
 								className="group block focus-visible:outline-none"
 							>
-								{/* image frame: overflow-hidden, image scales only */}
+								{}
 								<div className="overflow-hidden border border-border">
 									<img
 										src={post.image}

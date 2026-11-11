@@ -86,7 +86,7 @@ export function Navbar() {
 				</nav>
 			</div>
 
-			{/* Mobile sheet */}
+			{}
 			<div
 				className={cn(
 					"fixed inset-0 top-16 z-40 origin-top transition-all duration-300 ease-out-soft md:hidden",

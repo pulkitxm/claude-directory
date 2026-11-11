@@ -1,16 +1,11 @@
 import { motion } from "framer-motion";
 import { Activity, ArrowUpRight, BarChart3, Sparkles } from "lucide-react";
 
-/**
- * HeroGraphic — the abstract generative composition that anchors the hero.
- * Layers (back to front): radial accent wash, slow-rotating dashed ring,
- * a 3x3 dot grid, two gently-floating glass cards, a sculptural gradient
- * blob, and a solid accent corner block. Hidden on small screens.
- */
+
 export function HeroGraphic() {
 	return (
 		<div className="relative mx-auto aspect-square w-full max-w-[520px]">
-			{/* Atmospheric accent wash */}
+			{}
 			<div
 				aria-hidden
 				className="absolute inset-0 rounded-[3rem]"
@@ -20,7 +15,7 @@ export function HeroGraphic() {
 				}}
 			/>
 
-			{/* Slow rotating dashed ring */}
+			{}
 			<motion.div
 				aria-hidden
 				className="absolute inset-6 rounded-full border border-dashed border-accent/25"
@@ -31,7 +26,7 @@ export function HeroGraphic() {
 				<span className="absolute -bottom-1.5 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-accent-secondary" />
 			</motion.div>
 
-			{/* Inner counter-rotating ring */}
+			{}
 			<motion.div
 				aria-hidden
 				className="absolute inset-20 rounded-full border border-border"
@@ -39,20 +34,20 @@ export function HeroGraphic() {
 				transition={{ duration: 90, ease: "linear", repeat: Infinity }}
 			/>
 
-			{/* 3x3 decorative dot grid */}
+			{}
 			<div className="absolute bottom-10 left-8 grid grid-cols-3 gap-2.5">
 				{Array.from({ length: 9 }).map((_, i) => (
 					<span key={i} className="h-1.5 w-1.5 rounded-full bg-foreground/15" />
 				))}
 			</div>
 
-			{/* Sculptural gradient blob — the "one unexpected curve" */}
+			{}
 			<div className="absolute right-6 top-10 h-28 w-28 rounded-[2.5rem] rounded-tl-[5rem] bg-gradient-to-br from-accent to-accent-secondary opacity-90 shadow-accent-lg" />
 
-			{/* Solid accent corner block */}
+			{}
 			<div className="absolute bottom-12 right-10 h-16 w-16 rounded-2xl bg-accent shadow-accent" />
 
-			{/* Floating card — primary metric */}
+			{}
 			<motion.div
 				className="absolute left-2 top-16 w-56 rounded-2xl border border-border bg-card p-5 shadow-xl sm:left-6"
 				animate={{ y: [0, -10, 0] }}
@@ -73,7 +68,7 @@ export function HeroGraphic() {
 				</div>
 			</motion.div>
 
-			{/* Floating card — mini sparkline */}
+			{}
 			<motion.div
 				className="absolute bottom-6 right-0 w-52 rounded-2xl border border-border bg-card p-5 shadow-xl sm:right-2"
 				animate={{ y: [0, 10, 0] }}
@@ -98,7 +93,7 @@ export function HeroGraphic() {
 				</div>
 			</motion.div>
 
-			{/* Floating pill — "live" indicator */}
+			{}
 			<motion.div
 				className="absolute right-12 top-2 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 shadow-lg"
 				animate={{ y: [0, -8, 0] }}

@@ -22,7 +22,7 @@ const POSTS: Post[] = [
 		tag: "Motion",
 		title: "The one easing curve that fixes your UI",
 		excerpt:
-			"Emphasized decelerate — cubic-bezier(0.2, 0, 0, 1) — and why it makes every transition feel intentional.",
+			"Emphasized decelerate ,  cubic-bezier(0.2, 0, 0, 1) ,  and why it makes every transition feel intentional.",
 		read: "4 min",
 		art: "b",
 	},
@@ -36,9 +36,7 @@ const POSTS: Post[] = [
 	},
 ];
 
-/* Procedurally drawn, fully local "cover art" — organic blobs in the tonal
-   palette, no stock photos, no CDN. Each variant gets a distinct composition.
-   The whole art layer zooms on card hover (group-hover:scale-105). */
+
 function CoverArt({ variant }: { variant: "a" | "b" | "c" }) {
 	const palettes = {
 		a: {
@@ -115,7 +113,7 @@ function CoverArt({ variant }: { variant: "a" | "b" | "c" }) {
 	);
 }
 
-/* Blog cards: tonal surface, large radius, image zoom on hover, lift + shadow. */
+
 export function Journal() {
 	return (
 		<section

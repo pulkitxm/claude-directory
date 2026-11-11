@@ -1,11 +1,4 @@
-/**
- * Content for the Blobby landing page. Kept out of the components so copy and
- * structure are easy to scan and edit in one place.
- *
- * "Blobby" is a fictional product — a no-code kit for building playful,
- * sticker-book style brand sites — used here purely as a vehicle to exercise
- * every part of the Playful Geometric design system.
- */
+
 import {
 	Blocks,
 	MousePointerClick,
@@ -25,7 +18,7 @@ export const nav = [
 	{ label: "Tokens", href: "#tokens" },
 ];
 
-/** Marquee keywords — the "confetti of words" strip under the hero. */
+
 export const marqueeWords = [
 	"STICKER CARDS",
 	"HARD SHADOWS",
@@ -51,7 +44,7 @@ export const features: {
 		icon: Shapes,
 		tone: "violet",
 		title: "Shape library",
-		body: "Circles, triangles, pills and squiggles — drag primitives onto any canvas and snap them to a tidy grid.",
+		body: "Circles, triangles, pills and squiggles ,  drag primitives onto any canvas and snap them to a tidy grid.",
 	},
 	{
 		icon: Palette,
@@ -203,7 +196,7 @@ export const testimonials: {
 export const faqs: { q: string; a: string }[] = [
 	{
 		q: "Is the playful look accessible?",
-		a: "Yes. Body text is slate-800 on warm white (AAA), color is never the only signal — shapes and labels carry meaning too — and focus states are a thick accent border plus a hard shadow.",
+		a: "Yes. Body text is slate-800 on warm white (AAA), color is never the only signal ,  shapes and labels carry meaning too ,  and focus states are a thick accent border plus a hard shadow.",
 	},
 	{
 		q: "What about people who dislike motion?",
@@ -211,11 +204,11 @@ export const faqs: { q: string; a: string }[] = [
 	},
 	{
 		q: "Where do the colors come from?",
-		a: "A single token set: a warm paper background, slate foreground, and four pop colors — violet, hot pink, amber and mint — used rotationally for a confetti effect.",
+		a: "A single token set: a warm paper background, slate foreground, and four pop colors ,  violet, hot pink, amber and mint ,  used rotationally for a confetti effect.",
 	},
 	{
 		q: "Can I make it less loud?",
-		a: "Absolutely. The concept is 'stable grid, wild decoration' — keep the tidy grid and dial the decoration down. Swap pop colors for muted, shrink shadows, and hide floating shapes.",
+		a: "Absolutely. The concept is 'stable grid, wild decoration' ,  keep the tidy grid and dial the decoration down. Swap pop colors for muted, shrink shadows, and hide floating shapes.",
 	},
 ];
 

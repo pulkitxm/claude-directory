@@ -10,22 +10,19 @@ import {
 } from "../components/Decor";
 import { SectionLabel } from "../components/Section";
 
-/* The hero is a 60/40 asymmetric split. Left: hollow-stroke display headline
-   slapped across three lines, each rotated and color-blocked differently.
-   Right: a deliberate "chaos zone" — a tilted spec card under a swarm of
-   rotated badges, floating shapes, and a towering background number. */
+
 export function Hero() {
 	return (
 		<section
 			id="top"
 			className="neo-noise relative overflow-hidden border-b-4 border-neo-ink bg-neo-bg"
 		>
-			{/* Texture field */}
+			{}
 			<div
 				className="neo-dots pointer-events-none absolute inset-0 opacity-[0.18]"
 				aria-hidden="true"
 			/>
-			{/* Towering background word */}
+			{}
 			<span
 				aria-hidden="true"
 				className="neo-text-stroke pointer-events-none absolute -right-6 top-24 select-none text-[28vw] font-bold leading-none tracking-tighter opacity-[0.06] sm:top-10"
@@ -34,7 +31,7 @@ export function Hero() {
 			</span>
 
 			<div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-16 sm:px-6 lg:grid-cols-5 lg:gap-8 lg:py-24">
-				{/* LEFT — 3/5 */}
+				{}
 				<div className="lg:col-span-3">
 					<div className="-rotate-1">
 						<SectionLabel bg="bg-neo-muted">
@@ -76,7 +73,7 @@ export function Hero() {
 						</Button>
 					</div>
 
-					{/* Inline trust row */}
+					{}
 					<div className="mt-10 flex flex-wrap items-center gap-3">
 						<Badge bg="bg-neo-secondary" spinOnHover>
 							<Star
@@ -94,14 +91,14 @@ export function Hero() {
 					</div>
 				</div>
 
-				{/* RIGHT — 2/5 chaos zone */}
+				{}
 				<div className="relative lg:col-span-2">
-					{/* Floating shapes */}
+					{}
 					<SquareShape className="absolute -left-4 top-6 z-0 h-16 w-16 -rotate-6 bg-neo-secondary" />
 					<CircleShape className="absolute -right-2 bottom-10 z-0 h-20 w-20 bg-neo-muted animate-bob" />
 					<TriangleShape className="absolute -right-4 top-0 z-0 h-14 w-14 rotate-12" />
 
-					{/* Tilted spec card */}
+					{}
 					<Card
 						bg="bg-neo-white"
 						shadow="lg"
@@ -143,7 +140,7 @@ export function Hero() {
 						</div>
 					</Card>
 
-					{/* Overlapping badge stickers */}
+					{}
 					<div className="absolute -right-3 -top-4 z-20 rotate-6">
 						<Badge bg="bg-neo-accent" spinOnHover>
 							New

@@ -11,8 +11,7 @@ import {
 import { TESTIMONIALS } from "../lib/content";
 import { fadeUp } from "../lib/motion";
 
-/* Social proof — three elevated quote cards with gradient avatars and a 5-star
-   rating row. Cards lift on hover like the rest of the system. */
+
 export function Testimonials() {
 	return (
 		<Section className="overflow-hidden">

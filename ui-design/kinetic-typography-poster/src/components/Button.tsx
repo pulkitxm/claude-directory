@@ -9,8 +9,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	size?: Size;
 };
 
-/* Heights map 1:1 to the spec (sm 40 / md 56 / lg 80); horizontal padding is
-   ~2x the vertical. All buttons are uppercase, bold, tight-tracked, 0 radius. */
+
 const sizes: Record<Size, string> = {
 	sm: "h-10 px-4 text-sm",
 	md: "h-14 px-8 text-base",
@@ -19,7 +18,7 @@ const sizes: Record<Size, string> = {
 
 const variants: Record<Variant, string> = {
 	// Acid fill, black text. The only motion is a snappy scale (hover 1.05 /
-	// active 0.95) — transition-all so the scale eases, not the colour.
+	// active 0.95) ,  transition-all so the scale eases, not the colour.
 	primary:
 		"bg-acid text-acid-foreground transition-all duration-200 hover:scale-105 active:scale-95",
 	// Transparent with a 2px line; hard-flips to a bone fill + black text.

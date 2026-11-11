@@ -40,7 +40,7 @@ export function FinalCTA() {
 					</RevealItem>
 					<RevealItem>
 						<p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/60">
-							Start free in under two minutes. No credit card, no sales call —
+							Start free in under two minutes. No credit card, no sales call ,
 							just your data, finally making sense.
 						</p>
 					</RevealItem>
@@ -52,7 +52,7 @@ export function FinalCTA() {
 									<Check className="h-4 w-4" strokeWidth={3} />
 								</span>
 								<span className="text-sm font-medium text-background">
-									You're on the list — check {email} for your invite.
+									You're on the list ,  check {email} for your invite.
 								</span>
 							</div>
 						) : (

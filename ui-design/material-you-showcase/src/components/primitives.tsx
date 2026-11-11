@@ -7,17 +7,10 @@ import {
 	type ReactNode,
 } from "react";
 
-/* ============================================================================
-   PRIMITIVES
-   Small, composable building blocks shared by every section. The MD3 rules —
-   tonal surfaces, pill buttons, state layers, large radii, the signature
-   easing — are expressed once (here + index.css) and reused, so no one-off
-   styles creep in downstream.
-   ========================================================================== */
 
-/* ---- Scroll reveal ------------------------------------------------------- */
-/* Adds `.is-in` once an element scrolls into view. The CSS does the fade+rise
-   on the signature easing; `prefers-reduced-motion` neutralizes it in CSS. */
+
+
+
 export function useReveal<T extends HTMLElement = HTMLDivElement>() {
 	const ref = useRef<T | null>(null);
 	const [shown, setShown] = useState(false);
@@ -64,7 +57,7 @@ export function Reveal({
 	);
 }
 
-/* ---- Layout -------------------------------------------------------------- */
+
 export function Shell({
 	className = "",
 	children,
@@ -98,7 +91,7 @@ export function Section({
 	);
 }
 
-/* ---- Eyebrow / section heading cluster ----------------------------------- */
+
 export function Eyebrow({
 	children,
 	icon,
@@ -152,7 +145,7 @@ export function SectionHead({
 	);
 }
 
-/* ---- Buttons (pills; thin wrappers over the centralized .btn tokens) ----- */
+
 type Variant =
 	| "filled"
 	| "tonal"
@@ -210,9 +203,8 @@ export function ButtonLink({
 	);
 }
 
-/* ---- Decorative organic blur shape --------------------------------------- */
-/* Signature MD3 atmosphere: a heavily-blurred tonal shape. One corner is less
-   rounded for the organic squircle silhouette. Purely decorative -> aria-hidden. */
+
+
 export function Blob({
 	className = "",
 	float,

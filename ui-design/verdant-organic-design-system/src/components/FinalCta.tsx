@@ -5,12 +5,7 @@ import { Button } from "./Button";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 
-/**
- * Closing call-to-action on a warm terracotta field (the design system's
- * clay-toned "varied section background"). Intimate max-w-5xl card with a
- * pill-shaped, semi-transparent email capture whose focus ring is a soft moss
- * glow rather than a hard outline. Submitting swaps to a gentle confirmation.
- */
+
 export function FinalCta() {
 	const reduced = useReducedMotion();
 	const [email, setEmail] = useState("");
@@ -25,7 +20,7 @@ export function FinalCta() {
 	return (
 		<section className="relative overflow-hidden bg-secondary px-4 py-32 text-secondary-foreground sm:px-6 lg:px-8">
 			<div className="grain-soft" />
-			{/* organic blobs in the clay field */}
+			{}
 			<div
 				aria-hidden
 				className="pointer-events-none absolute -left-24 -top-10 h-96 w-96 rounded-full bg-white/10 blur-3xl"
@@ -34,7 +29,7 @@ export function FinalCta() {
 				aria-hidden
 				className="pointer-events-none absolute -bottom-20 -right-16 h-[26rem] w-[26rem] rounded-full bg-primary/30 blur-3xl"
 			/>
-			{/* swaying leaf motif */}
+			{}
 			<Leaf
 				aria-hidden
 				size={120}

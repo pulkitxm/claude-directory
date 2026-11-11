@@ -12,17 +12,11 @@ import { ProductDetail } from "./components/ProductDetail";
 import { Stats } from "./components/Stats";
 import { Testimonials } from "./components/Testimonials";
 
-/**
- * Verdant — a full landing page expressing the Organic / Natural design system.
- * The global paper-grain overlay sits above the whole tree (fixed, multiply,
- * ~3.5% opacity) so every section carries the unbleached-paper texture. Section
- * backgrounds alternate between off-white, stone, sand, moss, and terracotta to
- * create the design system's varied, breathing rhythm.
- */
+
 export default function App() {
 	return (
 		<div className="relative min-h-screen bg-background">
-			{/* CRITICAL global texture layer */}
+			{}
 			<div className="grain-overlay" aria-hidden />
 
 			<Navbar />

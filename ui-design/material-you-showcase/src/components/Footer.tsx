@@ -31,7 +31,7 @@ export function Footer() {
 						<Logo />
 						<p className="mt-4 leading-relaxed text-[var(--color-md-on-variant)]">
 							A theming toolkit built on Material You. Seed one color, ship a
-							whole tonal system — warm, personal and accessible by default.
+							whole tonal system ,  warm, personal and accessible by default.
 						</p>
 						<div className="mt-6 flex gap-2">
 							{["X", "Dribbble", "GitHub"].map((s) => (

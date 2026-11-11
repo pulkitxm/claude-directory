@@ -13,8 +13,7 @@ import {
 import { FEATURE_CARDS } from "../lib/content";
 import { fadeUp } from "../lib/motion";
 
-/* The compact 3-up feature grid. Cards lift on hover (the system's elevated-card
-   behavior) and each tile carries a soft indigo icon chip. */
+
 export function Features() {
 	return (
 		<Section id="platform" className="overflow-hidden">

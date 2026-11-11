@@ -11,7 +11,7 @@ const ITEMS = [
 	"Drift",
 ];
 
-/** A seamless strip of the named soundscapes — the product's own vocabulary. */
+
 export function Marquee() {
 	return (
 		<Section className="py-14">

@@ -2,14 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import type { HTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * The "Block" — an elevated surface floating above the void, representing a
- * block in the chain.
- *   - `solid`     Dark Matter card that lifts + glows on hover.
- *   - `glass`     Translucent, backdrop-blurred floating panel.
- *   - `highlight` Featured/popular block with an orange border + tier glow.
- *   - `flat`      Static surface with no hover motion.
- */
+
 const card = cva("relative rounded-2xl border transition-all duration-300", {
 	variants: {
 		variant: {

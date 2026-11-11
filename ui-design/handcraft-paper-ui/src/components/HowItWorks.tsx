@@ -6,7 +6,7 @@ const STEPS = [
 	{
 		n: 1,
 		title: "Open a blank board",
-		body: "Start from nothing — just warm paper and a dot grid. No template to fight, no empty-state guilt.",
+		body: "Start from nothing ,  just warm paper and a dot grid. No template to fight, no empty-state guilt.",
 		emoji: "📄",
 	},
 	{
@@ -38,7 +38,7 @@ export function HowItWorks() {
 				</div>
 
 				<div className="relative grid gap-12 md:grid-cols-3 md:gap-8">
-					{/* squiggly connectors between the three steps (desktop only) */}
+					{}
 					<SquigglyLine className="absolute left-[20%] top-9 hidden h-9 w-[26%] md:block" />
 					<SquigglyLine className="absolute right-[20%] top-9 hidden h-9 w-[26%] md:block" />
 
@@ -52,7 +52,7 @@ export function HowItWorks() {
 								transitionDelay: `${i * 140}ms`,
 							}}
 						>
-							{/* elevated step number */}
+							{}
 							<span
 								className="relative z-10 grid h-20 w-20 place-items-center border-[3px] border-ink bg-card font-[var(--font-marker)] text-4xl font-bold shadow-[var(--shadow-hard)]"
 								style={{

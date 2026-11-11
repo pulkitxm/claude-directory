@@ -1,10 +1,4 @@
-/* ----------------------------------------------------------------------------
-   Layout & atomic primitives for the Corporate Trust system.
 
-   Everything visual composes these so spacing rhythm, gradients, blobs, and
-   reveal motion stay consistent and one-off styles never creep in. Components
-   import from here rather than re-declaring shells / eyebrows / blobs.
-   -------------------------------------------------------------------------- */
 import {
 	forwardRef,
 	type ElementType,
@@ -18,12 +12,12 @@ import { fadeUp, stagger, inView } from "../lib/motion";
 const cx = (...c: (string | false | null | undefined)[]) =>
 	c.filter(Boolean).join(" ");
 
-/* ---- Section: the vertical-rhythm wrapper (py-16 / sm:py-20 / lg:py-24) ---- */
+
 type SectionProps = {
 	id?: string;
 	children: ReactNode;
 	className?: string;
-	/** When true, the section paints on a dark indigo ground (inverts focus ring). */
+
 	dark?: boolean;
 	as?: ElementType;
 };
@@ -48,7 +42,7 @@ export function Section({
 	);
 }
 
-/* The max-w-7xl gutter container. */
+
 export function Shell({
 	children,
 	className,
@@ -59,7 +53,7 @@ export function Shell({
 	return <div className={cx("shell", className)}>{children}</div>;
 }
 
-/* ---- Eyebrow: the uppercase kicker that opens a section ------------------- */
+
 export function Eyebrow({
 	icon: Icon,
 	children,
@@ -85,7 +79,7 @@ export function Eyebrow({
 	);
 }
 
-/* ---- Badge / pill -------------------------------------------------------- */
+
 export function Pill({
 	children,
 	className,
@@ -105,10 +99,10 @@ export function Pill({
 	);
 }
 
-/* ---- Blob: a large, blurred gradient orb for atmospheric depth ----------- */
+
 type BlobProps = {
 	className?: string;
-	/** indigo | violet | mixed — the orb's gradient. */
+
 	tone?: "indigo" | "violet" | "mixed";
 	animate?: boolean;
 	slow?: boolean;
@@ -138,11 +132,11 @@ export function Blob({
 	);
 }
 
-/* ---- Card: the elevated white surface ------------------------------------ */
+
 type CardProps = HTMLAttributes<HTMLDivElement> & {
 	children: ReactNode;
 	className?: string;
-	/** Adds the hover lift + shadow intensification. */
+
 	hover?: boolean;
 	as?: ElementType;
 };
@@ -161,7 +155,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
 	);
 });
 
-/* ---- Icon tile: soft-colored rounded square holding a Lucide icon -------- */
+
 export function IconTile({
 	icon: Icon,
 	className,
@@ -188,7 +182,7 @@ export function IconTile({
 	);
 }
 
-/* ---- Reveal: a whileInView fade-up wrapper (the standard entrance) -------- */
+
 export function Reveal({
 	children,
 	className,
@@ -215,7 +209,7 @@ export function Reveal({
 	);
 }
 
-/* ---- RevealGroup: staggers its <Reveal>-style children -------------------- */
+
 export function RevealGroup({
 	children,
 	className,

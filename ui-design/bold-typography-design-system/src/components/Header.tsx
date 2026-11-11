@@ -6,9 +6,9 @@ import { Button } from "./Button";
 import { CRISP } from "../motion";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Header — a thin, sticky editorial bar: wordmark on the left, mono links in the
+// Header ,  a thin, sticky editorial bar: wordmark on the left, mono links in the
 // middle, a primary underline CTA on the right. Collapses to a full-screen
-// typographic overlay menu on mobile. No fills, no shadow — just a hairline rule.
+// typographic overlay menu on mobile. No fills, no shadow ,  just a hairline rule.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function Header() {
@@ -40,7 +40,7 @@ export function Header() {
 				}`}
 			>
 				<div className="container-bold flex h-16 items-center justify-between md:h-20">
-					{/* Wordmark */}
+					{}
 					<a
 						href="#top"
 						className="group inline-flex items-baseline gap-1.5 text-foreground"
@@ -55,7 +55,7 @@ export function Header() {
 						/>
 					</a>
 
-					{/* Desktop nav */}
+					{}
 					<nav
 						className="hidden items-center gap-7 lg:flex"
 						aria-label="Primary"
@@ -75,7 +75,7 @@ export function Header() {
 						))}
 					</nav>
 
-					{/* Desktop CTA */}
+					{}
 					<div className="hidden lg:block">
 						<Button href="#pricing" variant="primary" size="sm">
 							Get OBELISK
@@ -83,7 +83,7 @@ export function Header() {
 						</Button>
 					</div>
 
-					{/* Mobile toggle — 44px hit area */}
+					{}
 					<button
 						type="button"
 						onClick={() => setOpen((v) => !v)}
@@ -100,7 +100,7 @@ export function Header() {
 				</div>
 			</div>
 
-			{/* Mobile overlay menu — type as the whole interface */}
+			{}
 			<AnimatePresence>
 				{open && (
 					<motion.div

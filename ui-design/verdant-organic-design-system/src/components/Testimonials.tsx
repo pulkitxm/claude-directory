@@ -6,7 +6,7 @@ import { SectionHeading } from "./SectionHeading";
 // Alternating avatar tints so the row doesn't read uniform.
 const tints = ["#5D7052", "#C18C5D", "#A8743F"];
 // Each card rests at a slightly different lean and, on hover, tilts the
-// opposite way — as if you've just picked that particular note off the table.
+// opposite way ,  as if you've just picked that particular note off the table.
 // Resting lean + hover tilt are paired per card so the motion stays varied.
 const leans = [
 	"lg:rotate-[-1.2deg] lg:hover:rotate-1",
@@ -14,11 +14,7 @@ const leans = [
 	"lg:rotate-[1.2deg] lg:hover:-rotate-[0.6deg]",
 ];
 
-/**
- * Testimonials as a row of cards that subtly rotate on hover — as if you've
- * picked a physical note off the table. A large hanging Fraunces quote mark
- * anchors each card.
- */
+
 export function Testimonials() {
 	return (
 		<section className="relative bg-muted/40 px-4 py-32 sm:px-6 lg:px-8">

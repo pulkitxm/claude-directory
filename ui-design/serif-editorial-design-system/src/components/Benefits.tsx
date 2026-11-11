@@ -9,9 +9,9 @@ export function Benefits() {
 				{benefits.label}
 			</SectionLabel>
 
-			{/* asymmetric two-column: 1.3fr / 0.7fr on desktop */}
+			{}
 			<div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16">
-				{/* primary column */}
+				{}
 				<div>
 					<h2
 						className="max-w-xl font-display leading-[1.12] tracking-[-0.01em] text-foreground"
@@ -23,7 +23,7 @@ export function Benefits() {
 						{benefits.lede}
 					</p>
 
-					{/* numbered process — rule-separated rows */}
+					{}
 					<ol className="mt-12 border-t border-border">
 						{benefits.points.map((p, i) => (
 							<li
@@ -46,7 +46,7 @@ export function Benefits() {
 					</ol>
 				</div>
 
-				{/* narrow column — plate + margin note (sticky on desktop) */}
+				{}
 				<aside className="lg:sticky lg:top-28 lg:self-start">
 					<div className="relative">
 						<span
@@ -66,7 +66,7 @@ export function Benefits() {
 						</div>
 					</div>
 
-					{/* pull quote / margin note */}
+					{}
 					<figure className="mt-10 border-l-2 border-accent pl-6">
 						<blockquote className="font-display text-2xl italic leading-snug text-foreground">
 							{benefits.marginNote}

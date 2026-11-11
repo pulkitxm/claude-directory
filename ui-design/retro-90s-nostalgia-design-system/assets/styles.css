@@ -1,80 +1,39 @@
-/* =============================================================================
-   WEBMASTER 95 — Retro / 90s Nostalgia Design System
-   Living documentation. Plain CSS. No build. Runs offline.
 
-   Everything downstream pulls from the tokens in :root. The whole point of the
-   system is that the bevels, the colors, the textures, and the motion are all
-   named constants — change a token here, the whole page shifts with it.
-   ========================================================================== */
 
-/* ----------------------------------------------------------------- @font-face
-   Vendored locally in assets/fonts. MS Sans Serif (98.css) for body, Anton for
-   the Impact/Arial-Black headers, VT323 for the green hit-counter monospace,
-   Pixelify Sans as the "fun" decorative accent (our Comic Sans stand-in). */
-@font-face {
-	font-family: "MS Sans Serif";
-	src: url("./fonts/ms_sans_serif.woff2") format("woff2");
-	font-weight: 400;
-	font-display: swap;
-}
-@font-face {
-	font-family: "MS Sans Serif";
-	src: url("./fonts/ms_sans_serif_bold.woff2") format("woff2");
-	font-weight: 700;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Anton";
-	src: url("./fonts/Anton-Regular.ttf") format("truetype");
-	font-weight: 400 900;
-	font-display: swap;
-}
-@font-face {
-	font-family: "VT323";
-	src: url("./fonts/VT323-Regular.ttf") format("truetype");
-	font-weight: 400;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Pixelify Sans";
-	src: url("./fonts/PixelifySans.ttf") format("truetype");
-	font-weight: 400 700;
-	font-display: swap;
-}
 
-/* ==================================================================== TOKENS */
+
 :root {
-	/* --- Color palette (Windows 95 system colors + early-web hex) --------- */
+
 	--background: #c0c0c0;
 	--foreground: #000000;
 	--muted: #808080;
-	--accent: #0000ff; /* unvisited link blue          */
-	--secondary: #ff0000; /* hot red                       */
-	--tertiary: #ffff00; /* bright yellow                 */
-	--success: #00ff00; /* lime                          */
-	--success-dark: #00aa00; /* readable green                */
+	--accent: #0000ff;
+	--secondary: #ff0000;
+	--tertiary: #ffff00;
+	--success: #00ff00;
+	--success-dark: #00aa00;
 	--border: #000000;
-	--border-light: #ffffff; /* 3D highlight (top/left)       */
-	--border-dark: #808080; /* 3D shadow (bottom/right)      */
-	--bevel-darkest: #404040; /* deepest inner shadow          */
-	--bevel-lightest: #dfdfdf; /* brightest inner highlight     */
-	--title-bar: #000080; /* navy                          */
-	--title-bar-end: #1084d0; /* Win98 active gradient end     */
-	--panel-yellow: #ffffcc; /* notepad/help yellow           */
-	--visited: #800080; /* visited link purple           */
-	--hover-link: #ff0000; /* link hover red                */
+	--border-light: #ffffff;
+	--border-dark: #808080;
+	--bevel-darkest: #404040;
+	--bevel-lightest: #dfdfdf;
+	--title-bar: #000080;
+	--title-bar-end: #1084d0;
+	--panel-yellow: #ffffcc;
+	--visited: #800080;
+	--hover-link: #ff0000;
 	--row-even: #ffffff;
 	--row-odd: #e8e8e8;
-	--teal: #008080; /* classic Win95 desktop teal    */
+	--teal: #008080;
 
-	/* --- Radius: zero. Everywhere. Always. -------------------------------- */
+
 	--radius: 0px;
 
-	/* --- Borders ---------------------------------------------------------- */
-	--bw: 2px; /* standard */
-	--bw-emph: 4px; /* emphasis / section dividers */
 
-	/* --- THE bevel box-shadows (reused as variables for consistency) ------ */
+	--bw: 2px;
+	--bw-emph: 4px;
+
+
 	--bevel-out:
 		inset -1px -1px 0 var(--bevel-darkest),
 		inset 1px 1px 0 var(--bevel-lightest);
@@ -87,35 +46,35 @@
 		inset 1px 1px 0 var(--bevel-darkest),
 		inset -1px -1px 0 var(--bevel-lightest);
 
-	/* --- The 4-value border-color signatures ------------------------------ */
+
 	--edge-out: var(--border-light) var(--border-dark) var(--border-dark)
 		var(--border-light);
 	--edge-in: var(--border-dark) var(--border-light) var(--border-light)
 		var(--border-dark);
 
-	/* --- Type stacks ------------------------------------------------------ */
+
 	--font-body: "MS Sans Serif", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	--font-head: "Anton", "Arial Black", Impact, Haettenschweiler, sans-serif;
 	--font-mono: "VT323", "Courier New", Courier, monospace;
 	--font-fun: "Pixelify Sans", "Comic Sans MS", cursive;
 
-	/* --- Spacing (8px base) ----------------------------------------------- */
+
 	--gap: 8px;
 	--pad: 16px;
 
-	/* --- Layout ----------------------------------------------------------- */
-	--shell: 1024px; /* max-w-5xl — an 800x600-era content column */
 
-	/* --- Motion ----------------------------------------------------------- */
-	--press: 50ms; /* button press — snappy, never smooth */
+	--shell: 1024px;
+
+
+	--press: 50ms;
 }
 
-/* ============================================================ RESET / BASE */
+
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
-	border-radius: var(--radius); /* zero radius enforced globally */
+	border-radius: var(--radius);
 }
 
 html {
@@ -129,7 +88,7 @@ body {
 	line-height: 1.55;
 	color: var(--foreground);
 	background-color: var(--background);
-	/* THE 90s tiled crosshatch — background is never flat */
+
 	background-image:
 		linear-gradient(45deg, #b8b8b8 25%, transparent 25%),
 		linear-gradient(-45deg, #b8b8b8 25%, transparent 25%),
@@ -141,11 +100,11 @@ body {
 		0 2px,
 		2px -2px,
 		-2px 0;
-	-webkit-font-smoothing: none; /* keep the pixels crunchy, not smoothed */
+	-webkit-font-smoothing: none;
 	overflow-x: hidden;
 }
 
-/* Authentic selection: navy block, white text */
+
 ::selection {
 	background: var(--title-bar);
 	color: #fff;
@@ -157,7 +116,7 @@ img {
 	image-rendering: pixelated;
 }
 
-/* ---------------------------------------------------------- accessibility */
+
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -186,7 +145,7 @@ img {
 	top: 8px;
 }
 
-/* Global Windows-95 focus ring: dotted black, 2px offset. Never removed. */
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -199,9 +158,9 @@ textarea:focus-visible,
 	outline-offset: 2px;
 }
 
-/* ============================================================== UTILITIES */
 
-/* The signature bevels as composable utility classes */
+
+
 .bevel-out {
 	border: var(--bw) solid;
 	border-color: var(--edge-out);
@@ -218,7 +177,7 @@ textarea:focus-visible,
 	box-shadow: var(--bevel-in);
 }
 
-/* Construction warning stripes (10px yellow / 10px black @ 45deg) */
+
 .bg-construction {
 	background: repeating-linear-gradient(
 		45deg,
@@ -229,7 +188,7 @@ textarea:focus-visible,
 	);
 }
 
-/* Groove HR — the etched divider */
+
 .hr-groove {
 	border: none;
 	height: 4px;
@@ -243,7 +202,7 @@ textarea:focus-visible,
 	);
 }
 
-/* ============================================================ TYPOGRAPHY */
+
 h1,
 h2,
 h3 {
@@ -282,7 +241,7 @@ p {
 	font-family: var(--font-fun);
 }
 
-/* The text-shadow 3D heading treatment (hard-edged, no blur) */
+
 .text-3d {
 	text-shadow: 3px 3px 0 var(--muted);
 }
@@ -291,7 +250,7 @@ p {
 	text-shadow: 3px 3px 0 var(--title-bar);
 }
 
-/* Rainbow animated text */
+
 .text-rainbow {
 	background: none;
 	animation: rainbow 4s linear infinite;
@@ -320,7 +279,7 @@ p {
 	}
 }
 
-/* Blink — used ultra-sparingly. Harsh on/off, never a fade. */
+
 .blink {
 	animation: blink 1s step-end infinite;
 }
@@ -330,9 +289,7 @@ p {
 	}
 }
 
-/* ----------------------------------------------------------------- LINKS
-   The most iconic element. Blue + always underlined; purple visited; red hover.
-   No transitions, no hover background. */
+
 a.link,
 .prose a {
 	color: var(--accent);
@@ -350,7 +307,7 @@ a.link:active,
 	color: var(--hover-link);
 }
 
-/* ================================================================ LAYOUT */
+
 .shell {
 	width: 100%;
 	max-width: var(--shell);
@@ -377,7 +334,7 @@ a.link:active,
 	margin-bottom: 12px;
 }
 
-/* ====================================================== DESKTOP TOP BAR */
+
 .desktop-bar {
 	background: var(--title-bar);
 	color: #fff;
@@ -411,7 +368,7 @@ a.link:active,
 	border-color: var(--edge-in);
 }
 
-/* ========================================================== MARQUEE BAR */
+
 .marquee {
 	background: #000;
 	border-top: var(--bw) solid #000;
@@ -448,12 +405,12 @@ a.link:active,
 	}
 }
 
-/* secondary slower marquee variant */
+
 .marquee--slow .marquee__track {
 	animation-duration: 34s;
 }
 
-/* ================================================================= NAV */
+
 .topnav {
 	background: var(--background);
 	border-bottom: var(--bw-emph) solid var(--muted);
@@ -498,7 +455,7 @@ a.link:active,
 	display: none;
 }
 
-/* =============================================================== BUTTONS */
+
 .btn {
 	display: inline-flex;
 	align-items: center;
@@ -534,7 +491,7 @@ a.link:active,
 	height: 18px;
 }
 
-/* Variants — bevel edges tinted to match the fill */
+
 .btn--accent {
 	background: var(--accent);
 	color: #fff;
@@ -571,7 +528,7 @@ a.link:active,
 	padding: 12px 26px;
 }
 
-/* Active-edge tints flip on press too (keep the tint, reverse the geometry) */
+
 .btn--accent:active,
 .btn--accent.is-pressed {
 	border-color: #000080 #5555ff #5555ff #000080;
@@ -585,9 +542,7 @@ a.link:active,
 	border-color: #006600 #00ff00 #00ff00 #006600;
 }
 
-/* =============================================================== WINDOWS
-   The signature Windows-95 application window: outset shell, navy gradient
-   title bar, inset sunken content area. */
+
 .window {
 	background: var(--background);
 	border: var(--bw) solid;
@@ -667,7 +622,7 @@ a.link:active,
 		-2px 0;
 }
 
-/* =============================================================== HERO */
+
 .hero {
 	padding: 40px 0 48px;
 	border-bottom: var(--bw-emph) solid var(--muted);
@@ -703,7 +658,7 @@ a.link:active,
 	margin-top: 18px;
 }
 
-/* "Best viewed" retro browser-badge */
+
 .webbadge {
 	display: inline-flex;
 	align-items: center;
@@ -717,7 +672,7 @@ a.link:active,
 	border-color: var(--edge-in);
 }
 
-/* Hero side: the "monitor" showing a beveled OK dialog */
+
 .crt {
 	background: var(--teal);
 	padding: 16px;
@@ -729,7 +684,7 @@ a.link:active,
 	position: relative;
 }
 
-/* ============================================================== BADGES */
+
 .badge {
 	display: inline-flex;
 	align-items: center;
@@ -761,7 +716,7 @@ a.link:active,
 	border-color: #5555ff #000080 #000080 #5555ff;
 }
 
-/* Pulse-glow for the attention badges */
+
 .pulse-glow {
 	animation: pulse-glow 1.5s ease-in-out infinite;
 }
@@ -799,7 +754,7 @@ a.link:active,
 	}
 }
 
-/* ============================================================= TOKEN GRID */
+
 .token-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -833,7 +788,7 @@ a.link:active,
 	color: var(--muted);
 }
 
-/* ====================================================== TYPE SPECIMEN */
+
 .specimen {
 	display: grid;
 	gap: 0;
@@ -862,7 +817,7 @@ a.link:active,
 	overflow: hidden;
 }
 
-/* ============================================ COMPONENT GALLERY (2x2) */
+
 .gallery {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -879,7 +834,7 @@ a.link:active,
 	align-items: stretch;
 }
 
-/* Form inputs */
+
 .field {
 	display: block;
 	margin-bottom: 12px;
@@ -920,7 +875,7 @@ a.link:active,
 	cursor: not-allowed;
 }
 
-/* Square checkbox / radio (text-indicator style) */
+
 .checkbox {
 	display: inline-flex;
 	align-items: center;
@@ -960,7 +915,7 @@ a.link:active,
 	outline-offset: 2px;
 }
 
-/* Tabs */
+
 .tabs {
 	display: flex;
 	gap: 2px;
@@ -999,7 +954,7 @@ a.link:active,
 	display: none;
 }
 
-/* Progress meter (sunken track + segmented blue blocks) */
+
 .meter {
 	background: #fff;
 	border: var(--bw) solid;
@@ -1022,7 +977,7 @@ a.link:active,
 	transition: width 600ms steps(20);
 }
 
-/* ====================================================== HIT COUNTER */
+
 .counter {
 	background: #000;
 	border: var(--bw-emph) solid;
@@ -1062,7 +1017,7 @@ a.link:active,
 	color: var(--success);
 }
 
-/* stats sub-grid under the counter */
+
 .statline {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -1096,7 +1051,7 @@ a.link:active,
 	font-weight: 700;
 }
 
-/* ============================================== FEATURE / ICON BOXES */
+
 .feature-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -1150,7 +1105,7 @@ a.link:active,
 	margin: 0;
 }
 
-/* ========================================= COLOR SQUARE PLAYGROUND */
+
 .swatch-grid {
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
@@ -1202,7 +1157,7 @@ a.link:active,
 	transition: background var(--press) linear;
 }
 
-/* ============================================= STEPS / ROW LIST */
+
 .rowlist {
 	border: var(--bw) solid;
 	border-color: var(--edge-in);
@@ -1240,7 +1195,7 @@ a.link:active,
 	font-size: 13px;
 }
 
-/* ====================================================== PRICING */
+
 .price-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -1307,7 +1262,7 @@ a.link:active,
 	z-index: 3;
 }
 
-/* ====================================================== GUESTBOOK */
+
 .guestbook {
 	display: grid;
 	gap: 0;
@@ -1342,7 +1297,7 @@ a.link:active,
 	margin: 0;
 }
 
-/* form note / status */
+
 .note {
 	font-size: 13px;
 	font-weight: 700;
@@ -1356,7 +1311,7 @@ a.link:active,
 	color: var(--success-dark);
 }
 
-/* ====================================================== CTA (construction) */
+
 .cta {
 	padding: 0;
 }
@@ -1387,7 +1342,7 @@ a.link:active,
 	width: auto;
 }
 
-/* ====================================================== FOOTER */
+
 .footer {
 	background: var(--background);
 	border-top: var(--bw-emph) solid var(--muted);
@@ -1432,7 +1387,7 @@ a.link:active,
 	color: var(--muted);
 }
 
-/* ====================================================== START / TASKBAR */
+
 .taskbar {
 	position: fixed;
 	left: 0;
@@ -1503,7 +1458,7 @@ a.link:active,
 	box-shadow: var(--bevel-in);
 }
 
-/* Start menu popup */
+
 .startmenu {
 	position: fixed;
 	left: 6px;
@@ -1569,7 +1524,7 @@ a.link:active,
 	background: linear-gradient(to bottom, #808080 50%, #fff 50%);
 }
 
-/* dialog-style OK box used inside hero CRT */
+
 .dialog {
 	background: var(--background);
 	border: var(--bw) solid;
@@ -1616,7 +1571,7 @@ a.link:active,
 	margin-top: 6px;
 }
 
-/* small helpers */
+
 .mt-0 {
 	margin-top: 0;
 }
@@ -1638,7 +1593,7 @@ a.link:active,
 	gap: 16px;
 }
 
-/* ====================================================== RESPONSIVE */
+
 @media (max-width: 900px) {
 	.hero__layout {
 		grid-template-columns: 1fr;
@@ -1715,9 +1670,7 @@ a.link:active,
 	}
 }
 
-/* ====================================================== REDUCED MOTION
-   Stop the rainbow (fall back to a single bright color), stop pulsing badges,
-   freeze the marquee, kill blinking. Bevels and colors stay. */
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;

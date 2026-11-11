@@ -24,7 +24,7 @@ export function Cta() {
 							"var(--shadow-card), inset 0 1px 0 rgba(255,255,255,0.06)",
 					}}
 				>
-					{/* radar sweep — signature animated element */}
+					{}
 					<div
 						aria-hidden="true"
 						className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full opacity-30"
@@ -36,7 +36,7 @@ export function Cta() {
 									"conic-gradient(from 0deg, rgba(255,71,87,0) 0deg, rgba(255,71,87,0.45) 70deg, rgba(255,71,87,0) 90deg)",
 							}}
 						/>
-						{/* radar rings */}
+						{}
 						<div className="absolute inset-0 rounded-full border border-accent/20" />
 						<div className="absolute inset-8 rounded-full border border-accent/15" />
 						<div className="absolute inset-16 rounded-full border border-accent/10" />
@@ -75,7 +75,7 @@ export function Cta() {
 									strokeWidth={2}
 								/>
 								<span className="font-mono text-sm text-white">
-									LOGGED — provisioning link sent to {email}
+									LOGGED ,  provisioning link sent to {email}
 								</span>
 							</div>
 						) : (

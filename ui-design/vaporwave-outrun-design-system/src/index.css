@@ -1,61 +1,31 @@
 @import "tailwindcss";
 
-/* ============================================================================
-   VAPORWAVE / OUTRUN DESIGN SYSTEM — "NEONWAVE OS"
-   ----------------------------------------------------------------------------
-   The single source of truth for the design system's DNA. Every color, font,
-   gradient, glow, radius and motion value lives here as a token so the rest of
-   the app (and the reusable primitives in components/primitives.tsx) reference
-   names, never raw values. Change a token here and the whole synthetic reality
-   shifts at once.
 
-   Structure note: under Tailwind v4 the Lightning-based parser does not accept
-   `@media` / `@keyframes` nested inside `@layer`. So component/utility classes
-   live in `@layer` blocks, while all `@keyframes` and responsive `@media`
-   tweaks live at the top level below.
-   ========================================================================== */
 
-/* ---- Self-hosted fonts (vendored in /public/fonts, no remote CDN) -------- */
-@font-face {
-	font-family: "Orbitron";
-	font-style: normal;
-	font-weight: 400 900; /* variable font: covers 400/500/700/900 */
-	font-display: swap;
-	src: url("/fonts/orbitron-latin-var.woff2") format("woff2");
-}
-@font-face {
-	font-family: "Share Tech Mono";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("/fonts/share-tech-mono-latin.woff2") format("woff2");
-}
 
-/* ---- Tokens exposed to Tailwind's utility engine ---------------------- */
+
 @theme {
-	/* Colors — pure digital primaries, dark-mode only */
-	--color-void: #090014; /* background — the infinite digital space   */
-	--color-chrome: #e0e0e0; /* foreground — silver-gray body text        */
-	--color-panel: #1a103c; /* glass card background                     */
-	--color-magenta: #ff00ff; /* primary accent — THE hero color           */
-	--color-cyan: #00ffff; /* secondary accent — links, focus, titles  */
-	--color-orange: #ff9900; /* tertiary accent — sun, sparing highlights */
-	--color-edge: #2d1b4e; /* default, non-interactive border           */
 
-	/* Typography */
+	--color-void: #090014;
+	--color-chrome: #e0e0e0;
+	--color-panel: #1a103c;
+	--color-magenta: #ff00ff;
+	--color-cyan: #00ffff;
+	--color-orange: #ff9900;
+	--color-edge: #2d1b4e;
+
+
 	--font-heading: "Orbitron", sans-serif;
 	--font-mono: "Share Tech Mono", ui-monospace, monospace;
 
-	/* Radii — aggressively geometric */
+
 	--radius-none: 0px;
 
-	/* Motion — snappy, mechanical, digital. No organic curves. */
+
 	--ease-digital: linear;
 }
 
-/* ============================================================================
-   BASE
-   ========================================================================== */
+
 @layer base {
 	:root {
 		color-scheme: dark;
@@ -99,7 +69,7 @@
 		color: #000;
 	}
 
-	/* Neon scrollbar */
+
 	::-webkit-scrollbar {
 		width: 12px;
 		height: 12px;
@@ -123,22 +93,17 @@
 	}
 }
 
-/* ============================================================================
-   COMPONENT TOKENS
-   Reusable classes so the "wow factor" rules (skew, glow, dual borders, gradient
-   text, terminal chrome) are written ONCE and composed everywhere — never as
-   one-off styles. Tailwind utilities still layer on top for spacing/layout.
-   ========================================================================== */
+
 @layer components {
-	/* ---- Layout primitives ------------------------------------------------ */
+
 	.shell {
 		width: 100%;
-		max-width: 80rem; /* max-w-7xl */
+		max-width: 80rem;
 		margin-inline: auto;
 		padding-inline: 1.25rem;
 	}
 
-	/* Skewed, uppercase, neon-edged eyebrow tag — a signature badge. */
+
 	.eyebrow {
 		display: inline-flex;
 		align-items: center;
@@ -157,7 +122,7 @@
 		transform: skewX(12deg);
 	}
 
-	/* ---- Gradient text fill (the iconic sunset gradient) ------------------ */
+
 	.text-sunset {
 		background-image: linear-gradient(
 			to right,
@@ -171,20 +136,19 @@
 		filter: drop-shadow(0 0 30px rgba(255, 0, 255, 0.6));
 	}
 
-	/* White heading with a soft glow */
+
 	.text-glow-white {
 		filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 	}
-	/* Cyan card title with the spec's exact glow */
+
 	.title-cyan {
 		font-family: var(--font-heading);
 		color: var(--color-cyan);
 		filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.8));
 	}
 
-	/* ---- Buttons ---------------------------------------------------------- */
-	/* Base: the skewed container; inner <span> counter-skews so text stays
-	   upright. Un-skews on hover for the kinetic morph. */
+
+
 	.btn {
 		position: relative;
 		display: inline-flex;
@@ -194,7 +158,7 @@
 		transform: skewX(-12deg);
 		border-radius: var(--radius-none);
 		padding-inline: 1.6rem;
-		height: 3rem; /* h-12 default */
+		height: 3rem;
 		font-family: var(--font-mono);
 		font-size: 0.9rem;
 		font-weight: 400;
@@ -277,8 +241,8 @@
 		color: var(--color-cyan);
 	}
 
-	/* ---- Cards ------------------------------------------------------------ */
-	/* Dual-border neon-tube card: cyan laser on top, faint magenta sides. */
+
+
 	.card {
 		position: relative;
 		border: 1px solid rgba(255, 0, 255, 0.3);
@@ -295,7 +259,7 @@
 		box-shadow: 0 0 28px rgba(0, 255, 255, 0.35);
 	}
 
-	/* ---- Terminal / window chrome ----------------------------------------- */
+
 	.window {
 		border: 2px solid var(--color-cyan);
 		background: rgba(0, 0, 0, 0.8);
@@ -321,7 +285,7 @@
 		border-radius: 9999px;
 	}
 
-	/* Neutral file-explorer window (benefits) */
+
 	.explorer {
 		border: 2px solid rgba(224, 224, 224, 0.2);
 		background: rgba(26, 16, 60, 0.9);
@@ -342,7 +306,7 @@
 		padding: 0.35rem 1rem;
 	}
 
-	/* ---- Terminal-style input --------------------------------------------- */
+
 	.field {
 		width: 100%;
 		border: 0;
@@ -365,7 +329,7 @@
 		outline: none;
 	}
 
-	/* ---- Diamond icon container (rotates on hover) ------------------------ */
+
 	.diamond {
 		display: grid;
 		place-items: center;
@@ -390,13 +354,9 @@
 	}
 }
 
-/* ============================================================================
-   GLOBAL OVERLAYS & BACKGROUND TEXTURES
-   The void is never empty: a fixed perspective grid + blurred sun behind
-   everything, and CRT scanlines + RGB chromatic aberration in front of it.
-   ========================================================================== */
+
 @layer utilities {
-	/* Perspective grid floor (fixed, z-0) */
+
 	.grid-floor {
 		position: fixed;
 		inset: 0;
@@ -422,7 +382,7 @@
 		mask-image: linear-gradient(to bottom, transparent, #000 70%);
 	}
 
-	/* Floating sun — giant blurred gradient orb (fixed) */
+
 	.sun {
 		position: fixed;
 		top: 8%;
@@ -442,7 +402,7 @@
 		pointer-events: none;
 	}
 
-	/* Global CRT scanlines + chromatic aberration (fixed, z-50) */
+
 	.scanlines {
 		position: fixed;
 		inset: 0;
@@ -462,7 +422,7 @@
 		animation: scan 8s linear infinite;
 	}
 
-	/* Section dot pattern */
+
 	.dots {
 		background-image: radial-gradient(
 			rgba(255, 0, 255, 0.35) 1px,
@@ -471,7 +431,7 @@
 		background-size: 20px 20px;
 	}
 
-	/* Animated blinking terminal cursor */
+
 	.cursor::after {
 		content: "\2588";
 		margin-left: 0.1em;
@@ -479,7 +439,7 @@
 		animation: blink 1s steps(2, start) infinite;
 	}
 
-	/* Marquee for the logo / status strip */
+
 	.marquee {
 		display: inline-flex;
 		white-space: nowrap;
@@ -487,15 +447,13 @@
 		animation: marquee 28s linear infinite;
 	}
 
-	/* Pulsing glow used on the live trust indicator dot */
+
 	.pulse-dot {
 		animation: pulse-dot 1.4s ease-in-out infinite;
 	}
 }
 
-/* ============================================================================
-   KEYFRAMES (top-level — not nested in @layer for Tailwind v4 compatibility)
-   ========================================================================== */
+
 @keyframes scan {
 	from {
 		background-position:
@@ -536,16 +494,14 @@
 	}
 }
 
-/* ============================================================================
-   RESPONSIVE & MOTION-PREFERENCE TWEAKS (top-level)
-   ========================================================================== */
+
 @media (min-width: 640px) {
 	.shell {
 		padding-inline: 2rem;
 	}
 }
 
-/* Slightly reduce glow intensity on small screens (per spec). */
+
 @media (max-width: 640px) {
 	.sun {
 		height: 420px;
@@ -554,7 +510,7 @@
 	}
 }
 
-/* Respect reduced-motion: still all continuous animations. */
+
 @media (prefers-reduced-motion: reduce) {
 	.scanlines,
 	.marquee,

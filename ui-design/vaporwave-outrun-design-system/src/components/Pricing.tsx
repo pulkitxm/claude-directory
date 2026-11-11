@@ -73,7 +73,7 @@ export function Pricing() {
 						License tiers
 					</SectionHeading>
 					<p className="mt-5 font-mono text-lg text-[var(--color-chrome)]/70">
-						Pick an access level. Prices in synth-credits. Cancel anytime — the
+						Pick an access level. Prices in synth-credits. Cancel anytime ,  the
 						grid forgives.
 					</p>
 				</Reveal>

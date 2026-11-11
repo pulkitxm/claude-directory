@@ -1,5 +1,4 @@
-/* "Doodled by teams at" strip — hand-lettered fake brand names on torn paper
-   chips. No external logos needed; everything stays in the sketch idiom. */
+
 import { radius } from "../lib/tokens";
 
 const BRANDS = [

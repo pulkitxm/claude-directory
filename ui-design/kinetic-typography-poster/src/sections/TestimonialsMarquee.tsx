@@ -3,10 +3,7 @@ import { SectionLabel } from "../components/SectionLabel";
 import { SectionHeading } from "../components/SectionHeading";
 import { TESTIMONIALS } from "../content";
 
-/**
- * The slower marquee (speed 40) for reading content. Wide bordered quote cards
- * with a border-l-4 acid accent, generous spacing between items, raw edges.
- */
+
 export function TestimonialsMarquee() {
 	return (
 		<section className="border-b-2 border-line py-24 md:py-32">

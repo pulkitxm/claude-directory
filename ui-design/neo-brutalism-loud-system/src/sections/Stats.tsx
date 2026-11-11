@@ -27,8 +27,7 @@ function Stat({
 	);
 }
 
-/* A black color-block band with a graph-paper grid and four bordered stat
-   cards that count up the moment the band scrolls into view. */
+
 export function Stats() {
 	const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.4 });
 	return (

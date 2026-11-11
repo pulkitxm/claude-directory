@@ -2,8 +2,7 @@ import { Star } from "lucide-react";
 import { Marquee } from "../components/Marquee";
 import { MARQUEE_TOP } from "../content";
 
-/* A black band marquee directly under the nav — the "warning tape" trust strip.
-   Repeated all-caps slogans separated by spinning stars, scrolling left. */
+
 export function TopMarquee() {
 	return (
 		<div className="border-b-4 border-neo-ink bg-neo-ink">

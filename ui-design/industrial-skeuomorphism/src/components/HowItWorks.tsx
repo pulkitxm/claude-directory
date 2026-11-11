@@ -56,7 +56,7 @@ export function HowItWorks() {
 				/>
 
 				<div className="relative mt-16">
-					{/* The cylindrical connector pipe — desktop only */}
+					{}
 					<div
 						aria-hidden="true"
 						className="absolute left-0 right-0 top-7 hidden px-[12.5%] md:block"
@@ -85,7 +85,7 @@ export function HowItWorks() {
 									variants={slideUp}
 									className="flex flex-col items-center text-center"
 								>
-									{/* node */}
+									{}
 									<div className="relative z-10 mb-5">
 										<IconHousing size={56}>
 											<Icon
@@ -94,7 +94,7 @@ export function HowItWorks() {
 												className="text-accent"
 											/>
 										</IconHousing>
-										{/* step number bezel */}
+										{}
 										<span
 											className="stamp absolute -right-2 -top-2 grid h-7 w-7 place-items-center rounded-full bg-accent text-[0.6rem] text-white"
 											style={{

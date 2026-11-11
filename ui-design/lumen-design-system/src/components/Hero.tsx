@@ -32,7 +32,7 @@ export function Hero() {
 					variants={{ show: { transition: { staggerChildren: 0.08 } } }}
 					className="flex flex-col items-center"
 				>
-					{/* Announcement pill */}
+					{}
 					<motion.a
 						variants={heroItem}
 						href="#features"
@@ -50,7 +50,7 @@ export function Hero() {
 						/>
 					</motion.a>
 
-					{/* Display headline with gradient fill + animated accent phrase */}
+					{}
 					<motion.h1
 						variants={heroItem}
 						className="text-balance text-4xl font-semibold leading-[1.04] tracking-display sm:text-6xl lg:text-7xl"
@@ -63,7 +63,7 @@ export function Hero() {
 						variants={heroItem}
 						className="mt-6 max-w-[600px] text-pretty text-base leading-relaxed text-fg-muted sm:text-lg"
 					>
-						Lumen is a design system for premium developer tools — layered
+						Lumen is a design system for premium developer tools ,  layered
 						ambient lighting, cursor-aware surfaces, and precision
 						micro-interactions, shipped as composable React primitives.
 					</motion.p>
@@ -89,7 +89,7 @@ export function Hero() {
 				</motion.div>
 			</motion.div>
 
-			{/* Product mock floats below the copy, scaling/fading in. */}
+			{}
 			<motion.div
 				initial={{ opacity: 0, y: 40, scale: 0.97 }}
 				animate={{ opacity: 1, y: 0, scale: 1 }}

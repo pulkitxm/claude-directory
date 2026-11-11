@@ -1,16 +1,12 @@
 import type { ReactNode } from "react";
 
-/* ----------------------------------------------------------------------------
-   Shared layout + typographic primitives for the Serif system.
-   Centralising these keeps every section visually consistent and avoids
-   one-off styles.
----------------------------------------------------------------------------- */
+
 
 function cn(...parts: Array<string | false | null | undefined>): string {
 	return parts.filter(Boolean).join(" ");
 }
 
-/** The signature section label: hairline rule · small-caps · hairline rule. */
+
 export function SectionLabel({
 	children,
 	align = "center",
@@ -56,7 +52,7 @@ export function SectionLabel({
 	);
 }
 
-/** A standalone decorative gold rule with a centred ornament. */
+
 export function OrnamentRule({ className }: { className?: string }) {
 	return (
 		<div
@@ -75,7 +71,7 @@ export function OrnamentRule({ className }: { className?: string }) {
 	);
 }
 
-/** Standard editorial card. Composes accentTop / hover / elevated / featured. */
+
 export function Card({
 	children,
 	accentTop = false,
@@ -122,7 +118,7 @@ export function Card({
 	);
 }
 
-/** Section wrapper that applies the generous vertical rhythm of the system. */
+
 export function Section({
 	id,
 	children,

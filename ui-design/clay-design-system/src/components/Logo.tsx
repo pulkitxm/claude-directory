@@ -1,13 +1,11 @@
 import { display } from "./primitives";
 
-/* The Claymakers brand mark: a small convex clay orb (the system's hero shape)
-   beside the wordmark. The orb is a real gradient sphere with a specular
-   highlight, echoing the design language at favicon scale. */
+
 export function Logo({ className = "" }: { className?: string }) {
 	return (
 		<a
 			href="#top"
-			aria-label="Claymakers — home"
+			aria-label="Claymakers ,  home"
 			className={`group inline-flex items-center gap-2.5 rounded-full outline-none focus-visible:ring-4 focus-visible:ring-clay-accent/35 ${className}`}
 		>
 			<span className="relative grid h-9 w-9 place-items-center">

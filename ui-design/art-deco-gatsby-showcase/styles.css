@@ -1,27 +1,21 @@
-/* ==========================================================================
-   THE GILDED HOUR — Art Deco design system
-   Single, token-driven stylesheet. Every component composes from the tokens
-   declared in :root, so there are no one-off colours, spacings, or radii.
-   ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   1. DESIGN TOKENS
-   -------------------------------------------------------------------------- */
+
+
 :root {
-	/* Colour — dark luxury palette */
-	--bg: #0a0a0a; /* obsidian black */
-	--bg-alt: #0d0c0a; /* a breath warmer, for alternating sections */
-	--fg: #f2f0e4; /* champagne cream */
-	--card: #141414; /* rich charcoal */
-	--card-2: #181613; /* charcoal, warmer */
-	--gold: #d4af37; /* metallic gold */
-	--gold-light: #f2e8c4; /* bright gold for hovers/focus */
-	--gold-deep: #8a6d1e; /* shadowed gold for gradients */
-	--blue: #1e3d59; /* midnight blue secondary accent */
-	--muted: #888888; /* pewter */
-	--muted-2: #a39d8c; /* warmer pewter for body */
 
-	/* Gold at opacity, reused everywhere */
+	--bg: #0a0a0a;
+	--bg-alt: #0d0c0a;
+	--fg: #f2f0e4;
+	--card: #141414;
+	--card-2: #181613;
+	--gold: #d4af37;
+	--gold-light: #f2e8c4;
+	--gold-deep: #8a6d1e;
+	--blue: #1e3d59;
+	--muted: #888888;
+	--muted-2: #a39d8c;
+
+
 	--gold-08: rgba(212, 175, 55, 0.08);
 	--gold-15: rgba(212, 175, 55, 0.15);
 	--gold-20: rgba(212, 175, 55, 0.2);
@@ -29,7 +23,7 @@
 	--gold-50: rgba(212, 175, 55, 0.5);
 	--gold-70: rgba(212, 175, 55, 0.7);
 
-	/* Metallic sheens */
+
 	--sheen-gold: linear-gradient(
 		135deg,
 		var(--gold-light) 0%,
@@ -51,35 +45,33 @@
 		transparent
 	);
 
-	/* Glows (never harsh drop shadows) */
+
 	--glow-sm: 0 0 12px rgba(212, 175, 55, 0.18);
 	--glow-md: 0 0 22px rgba(212, 175, 55, 0.28);
 	--glow-lg: 0 0 40px rgba(212, 175, 55, 0.3);
 
-	/* Typography */
+
 	--font-display: "Marcellus", "Times New Roman", serif;
 	--font-body: "Josefin Sans", "Segoe UI", system-ui, sans-serif;
 	--track-wide: 0.18em;
 	--track-wider: 0.28em;
 	--track-widest: 0.4em;
 
-	/* Radius — Art Deco is sharp. Locked to zero. */
+
 	--radius: 0px;
 
-	/* Spacing rhythm (8px base) */
+
 	--section-y: clamp(5rem, 11vw, 9rem);
 	--shell: 1180px;
 	--shell-narrow: 760px;
 
-	/* Motion */
+
 	--t-fast: 300ms;
 	--t-slow: 500ms;
 	--ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* --------------------------------------------------------------------------
-   2. RESET / BASE
-   -------------------------------------------------------------------------- */
+
 *,
 *::before,
 *::after {
@@ -109,7 +101,7 @@ body {
 	text-rendering: optimizeLegibility;
 	overflow-x: hidden;
 	position: relative;
-	/* Deep radial vignette so the obsidian has depth, not flatness */
+
 	background-image:
 		radial-gradient(
 			120% 80% at 50% -10%,
@@ -155,9 +147,7 @@ select {
 	color: var(--bg);
 }
 
-/* --------------------------------------------------------------------------
-   3. PAGE-WIDE OVERLAYS — crosshatch + film grain
-   -------------------------------------------------------------------------- */
+
 .crosshatch {
 	position: fixed;
 	inset: 0;
@@ -179,7 +169,7 @@ select {
 	z-index: 2;
 	pointer-events: none;
 	opacity: 0.55;
-	background-image: url("./assets/grain.png");
+	background-image: url("./assets/original-visual.svg");
 	background-size: 160px 160px;
 	mix-blend-mode: overlay;
 	animation: grainShift 600ms steps(2) infinite;
@@ -197,7 +187,7 @@ select {
 	}
 }
 
-/* Keep real content above the overlays */
+
 .site-header,
 main,
 .site-footer {
@@ -205,9 +195,7 @@ main,
 	z-index: 3;
 }
 
-/* --------------------------------------------------------------------------
-   4. LAYOUT PRIMITIVES
-   -------------------------------------------------------------------------- */
+
 .shell {
 	width: 100%;
 	max-width: var(--shell);
@@ -226,7 +214,7 @@ main,
 
 .section--alt {
 	background-color: var(--bg-alt);
-	/* Hairline gold rules top and bottom — like a floor of a building */
+
 	box-shadow:
 		inset 0 1px 0 var(--gold-15),
 		inset 0 -1px 0 var(--gold-15);
@@ -253,9 +241,7 @@ main,
 	}
 }
 
-/* --------------------------------------------------------------------------
-   5. TYPOGRAPHY HELPERS / SECTION HEADERS
-   -------------------------------------------------------------------------- */
+
 .kicker {
 	display: inline-block;
 	font-family: var(--font-body);
@@ -298,7 +284,7 @@ main,
 	margin: 1.5rem auto 0;
 }
 
-/* Decorative measured divider (gold line · diamond · gold line) */
+
 .section-divider {
 	--w: 132px;
 	position: relative;
@@ -339,9 +325,7 @@ main,
 	font-style: italic;
 }
 
-/* --------------------------------------------------------------------------
-   6. BUTTONS — precision instruments
-   -------------------------------------------------------------------------- */
+
 .btn {
 	--btn-h: 52px;
 	position: relative;
@@ -376,7 +360,7 @@ main,
 	width: 100%;
 }
 
-/* Default: transparent + gold border, fills gold on hover */
+
 .btn--default {
 	background: transparent;
 	color: var(--gold);
@@ -390,7 +374,7 @@ main,
 	box-shadow: var(--glow-lg);
 }
 
-/* Solid: metallic gold, brightens on hover */
+
 .btn--solid {
 	background-image: var(--sheen-gold);
 	color: var(--bg);
@@ -409,7 +393,7 @@ main,
 	box-shadow: var(--glow-lg);
 }
 
-/* Outline: thin border, midnight-blue fill on hover */
+
 .btn--outline {
 	background: transparent;
 	color: var(--gold);
@@ -432,15 +416,13 @@ main,
 	transform: translateY(0);
 }
 
-/* --------------------------------------------------------------------------
-   7. FOCUS / ACCESSIBILITY
-   -------------------------------------------------------------------------- */
+
 :focus-visible {
 	outline: 2px solid var(--gold);
 	outline-offset: 3px;
 }
 
-/* Cards intensify their border on focus instead of a ring */
+
 .card:focus-visible,
 .tier:focus-visible,
 .quote:focus-visible {
@@ -466,9 +448,7 @@ main,
 	top: 1rem;
 }
 
-/* --------------------------------------------------------------------------
-   8. CORNER BRACKETS (shared L-shape embellishment)
-   -------------------------------------------------------------------------- */
+
 .card-bracket {
 	position: absolute;
 	width: 16px;
@@ -503,9 +483,7 @@ main,
 	border-right: 2px solid var(--gold);
 }
 
-/* --------------------------------------------------------------------------
-   9. ROTATED DIAMOND CONTAINER (icons / avatars)
-   -------------------------------------------------------------------------- */
+
 .diamond {
 	position: relative;
 	width: 58px;
@@ -522,7 +500,7 @@ main,
 }
 
 .diamond::after {
-	/* inner frame-within-frame */
+
 	content: "";
 	position: absolute;
 	inset: 6px;
@@ -536,9 +514,7 @@ main,
 	place-items: center;
 }
 
-/* --------------------------------------------------------------------------
-   10. ROMAN NUMERAL ACCENT
-   -------------------------------------------------------------------------- */
+
 .numeral {
 	position: absolute;
 	top: 1.1rem;
@@ -550,9 +526,7 @@ main,
 	transition: color var(--t-slow) var(--ease);
 }
 
-/* --------------------------------------------------------------------------
-   11. HEADER / NAV
-   -------------------------------------------------------------------------- */
+
 .site-header {
 	position: sticky;
 	top: 0;
@@ -727,9 +701,7 @@ main,
 	}
 }
 
-/* --------------------------------------------------------------------------
-   12. HERO
-   -------------------------------------------------------------------------- */
+
 .hero {
 	position: relative;
 	min-height: clamp(640px, 90vh, 900px);
@@ -741,7 +713,7 @@ main,
 	padding-block: 5.25rem 4rem;
 }
 
-/* Sunburst radial behind the hero */
+
 .hero-sunburst {
 	position: absolute;
 	inset: 0;
@@ -770,7 +742,7 @@ main,
 	width: min(1200px, 150vw);
 	aspect-ratio: 1;
 	border-radius: 50%;
-	/* Emanating gold rays */
+
 	background: repeating-conic-gradient(
 		from 0deg,
 		rgba(212, 175, 55, 0.1) 0deg 1.2deg,
@@ -803,7 +775,7 @@ main,
 	}
 }
 
-/* Double frame around the hero content area */
+
 .hero-frame {
 	position: absolute;
 	inset: clamp(1.25rem, 4vw, 3rem);
@@ -818,7 +790,7 @@ main,
 	border: 1px solid var(--gold-15);
 }
 
-/* Corner diamonds on the hero frame */
+
 .hero-frame::after {
 	content: "";
 	position: absolute;
@@ -975,9 +947,7 @@ main,
 	}
 }
 
-/* --------------------------------------------------------------------------
-   13. MARQUEE / BRASS STRIP
-   -------------------------------------------------------------------------- */
+
 .marquee {
 	border-block: 1px solid var(--gold-30);
 	background: linear-gradient(180deg, rgba(212, 175, 55, 0.05), transparent);
@@ -1013,9 +983,7 @@ main,
 	}
 }
 
-/* --------------------------------------------------------------------------
-   14. CARDS (tenets)
-   -------------------------------------------------------------------------- */
+
 .card {
 	position: relative;
 	background: var(--card);
@@ -1028,7 +996,7 @@ main,
 	overflow: hidden;
 }
 
-/* Stepped ziggurat top-edge accent drawn with a pseudo-element */
+
 .card::before {
 	content: "";
 	position: absolute;
@@ -1100,9 +1068,7 @@ main,
 	transform: rotate(0deg);
 }
 
-/* --------------------------------------------------------------------------
-   15. SPLIT (heritage) — double-frame image + copy
-   -------------------------------------------------------------------------- */
+
 .split {
 	display: grid;
 	grid-template-columns: 0.85fr 1fr;
@@ -1131,7 +1097,7 @@ main,
 }
 
 .frame::before {
-	/* outer offset frame */
+
 	content: "";
 	position: absolute;
 	inset: -10px;
@@ -1204,12 +1170,9 @@ main,
 	flex: none;
 }
 
-/* --------------------------------------------------------------------------
-   16. TIMELINE (process) — centre rail, cards alternate left/right.
-   Explicit grid-column placement (no direction hacks) keeps it deterministic.
-   -------------------------------------------------------------------------- */
+
 .timeline {
-	--rail: 72px; /* width of the centre marker column */
+	--rail: 72px;
 	list-style: none;
 	max-width: 920px;
 	margin-inline: auto;
@@ -1226,7 +1189,7 @@ main,
 	padding-bottom: 2.5rem;
 }
 
-/* Marker always sits in the centre column. */
+
 .timeline-marker {
 	grid-column: 2;
 	position: relative;
@@ -1255,7 +1218,7 @@ main,
 	color: var(--gold);
 }
 
-/* Odd steps -> card on the left; even steps -> card on the right. */
+
 .timeline-step:nth-child(odd) .timeline-card {
 	grid-column: 1;
 	text-align: right;
@@ -1265,7 +1228,7 @@ main,
 	text-align: left;
 }
 
-/* The vertical rail runs down the centre, behind the markers. */
+
 .timeline-rail {
 	position: absolute;
 	top: calc(var(--rail) / 2);
@@ -1311,7 +1274,7 @@ main,
 	font-size: 0.98rem;
 }
 
-/* Stack into a single left-aligned rail on small screens. */
+
 @media (max-width: 680px) {
 	.timeline-step {
 		grid-template-columns: 56px 1fr;
@@ -1338,9 +1301,7 @@ main,
 	}
 }
 
-/* --------------------------------------------------------------------------
-   17. PRICING TIERS
-   -------------------------------------------------------------------------- */
+
 .pricing {
 	align-items: stretch;
 }
@@ -1397,7 +1358,7 @@ main,
 }
 
 .tier--featured::after {
-	/* double-frame inset for the featured tier */
+
 	content: "";
 	position: absolute;
 	inset: 6px;
@@ -1519,9 +1480,7 @@ main,
 	margin-top: auto;
 }
 
-/* --------------------------------------------------------------------------
-   18. TESTIMONIALS / QUOTES
-   -------------------------------------------------------------------------- */
+
 .quote {
 	position: relative;
 	background: var(--card);
@@ -1611,9 +1570,7 @@ main,
 	color: var(--muted);
 }
 
-/* --------------------------------------------------------------------------
-   19. FAQ / ACCORDION
-   -------------------------------------------------------------------------- */
+
 .accordion {
 	border-top: 1px solid var(--gold-20);
 }
@@ -1708,9 +1665,7 @@ main,
 	font-size: 1rem;
 }
 
-/* --------------------------------------------------------------------------
-   20. ENQUIRE / FORM
-   -------------------------------------------------------------------------- */
+
 .enquire {
 	position: relative;
 	overflow: hidden;
@@ -1733,7 +1688,7 @@ main,
 }
 
 .enquire-card::after {
-	/* double-frame */
+
 	content: "";
 	position: absolute;
 	inset: 8px;
@@ -1850,9 +1805,7 @@ main,
 	color: #e0917a;
 }
 
-/* --------------------------------------------------------------------------
-   21. FOOTER
-   -------------------------------------------------------------------------- */
+
 .site-footer {
 	position: relative;
 	background: var(--bg-alt);
@@ -1993,9 +1946,7 @@ main,
 	font-size: 0.72rem;
 }
 
-/* --------------------------------------------------------------------------
-   22. SCROLL-REVEAL ANIMATIONS
-   -------------------------------------------------------------------------- */
+
 .reveal {
 	opacity: 0;
 	transform: translateY(28px);
@@ -2010,9 +1961,7 @@ main,
 	transform: translateY(0);
 }
 
-/* --------------------------------------------------------------------------
-   23. REDUCED MOTION
-   -------------------------------------------------------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,

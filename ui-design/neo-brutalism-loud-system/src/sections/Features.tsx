@@ -2,8 +2,7 @@ import { FEATURES } from "../content";
 import { Card } from "../components/Card";
 import { SectionLabel, Reveal } from "../components/Section";
 
-/* Color-blocked feature grid. Each card is a rotated sticker on a different
-   token background, lifting on hover. The icon sits in its own bordered box. */
+
 export function Features() {
 	return (
 		<section
@@ -27,7 +26,7 @@ export function Features() {
 						</h2>
 					</div>
 					<p className="max-w-xs text-lg font-bold leading-snug text-neo-ink">
-						No subtle anything. Each rule is exaggerated on purpose —
+						No subtle anything. Each rule is exaggerated on purpose ,
 						that&apos;s the whole point.
 					</p>
 				</div>

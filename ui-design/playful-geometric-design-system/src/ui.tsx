@@ -1,12 +1,4 @@
-/**
- * Reusable primitives for the Playful Geometric system.
- *
- * Everything that has a recurring "look" lives here exactly once — buttons,
- * sticker cards, enclosed icon badges, form fields, decorative shapes,
- * squiggle dividers, the marquee, and the pop-in reveal. Organisms in App.tsx
- * are composed entirely from these, so the system stays DRY and any visual
- * tweak happens in one place.
- */
+
 import {
 	useEffect,
 	useRef,
@@ -17,7 +9,7 @@ import {
 } from "react";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 
-/* Chunky icon defaults applied to every Lucide icon in the system. */
+
 export const ICON = {
 	strokeWidth: 2.5,
 	strokeLinecap: "round" as const,
@@ -38,11 +30,7 @@ const POP_VARS: Record<Pop, CSSProperties> = {
 	soft: { ["--pop-color" as string]: "var(--color-border)" },
 };
 
-/* ---------------------------------------------------------------------------
-   Button — "The Candy Button" (primary) + outline (secondary) + ghost.
-   Pill shape, dark border, hard pop shadow that lifts on hover / presses on
-   click. Primary carries an ArrowRight inside a circular white chip.
-   --------------------------------------------------------------------------- */
+
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	variant?: "primary" | "secondary" | "ghost";
 	size?: "md" | "lg";
@@ -106,10 +94,7 @@ export function Button({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   IconBadge — an icon is never naked: always enclosed in a colored shape with
-   a dark border. Supports a "floating" mode that sits half-out of a card edge.
-   --------------------------------------------------------------------------- */
+
 type Tone = "violet" | "pink" | "amber" | "mint";
 const TONE_BG: Record<Tone, string> = {
 	violet: "bg-accent",
@@ -117,7 +102,7 @@ const TONE_BG: Record<Tone, string> = {
 	amber: "bg-tertiary",
 	mint: "bg-quaternary",
 };
-/* Amber needs dark glyphs for contrast; the others read well in white. */
+
 const TONE_FG: Record<Tone, string> = {
 	violet: "text-white",
 	pink: "text-white",
@@ -161,10 +146,7 @@ export function IconBadge({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   StickerCard — white, dark-bordered, hard shadow; wiggles (rotate + scale)
-   on hover when interactive. Accepts a tone for the shadow color.
-   --------------------------------------------------------------------------- */
+
 export function StickerCard({
 	children,
 	pop = "soft",
@@ -196,11 +178,7 @@ export function StickerCard({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   Form field — bold uppercase label + input/textarea with a focus-only hard
-   color shadow and accent border. Color is never the sole signal: invalid
-   fields also show a text hint and a triangle marker.
-   --------------------------------------------------------------------------- */
+
 const fieldBase =
 	"w-full rounded-[var(--radius-md)] border-2 border-[var(--color-input-border)] bg-card px-4 text-foreground placeholder:text-muted-foreground transition-[box-shadow,border-color] duration-200 focus:border-accent focus:outline-none focus:shadow-[4px_4px_0_0_var(--color-accent)]";
 
@@ -249,10 +227,7 @@ export function Textarea({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   SectionLabel — small pill "eyebrow" with a colored dot, plus a heading and
-   optional lede. Used to introduce each organism consistently.
-   --------------------------------------------------------------------------- */
+
 export function Eyebrow({
 	children,
 	tone = "violet",
@@ -281,10 +256,7 @@ export function Eyebrow({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   Squiggle — a hand-drawn-feeling SVG underline / divider. Doubles as a
-   horizontal divider on desktop; callers swap it for a vertical rule on mobile.
-   --------------------------------------------------------------------------- */
+
 export function Squiggle({
 	color = "var(--color-accent)",
 	width = 220,
@@ -314,11 +286,7 @@ export function Squiggle({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   Marquee — infinite horizontal scroller. Renders its children twice and
-   slides -50% so the loop is seamless. Pauses on hover; honors reduced motion
-   via the CSS guard. role/aria-hidden left to caller for context.
-   --------------------------------------------------------------------------- */
+
 export function Marquee({
 	children,
 	reverse = false,
@@ -343,12 +311,7 @@ export function Marquee({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   Reveal — pop-in entrance via IntersectionObserver. Children appear with a
-   bounce, scale 0.92 -> 1, with an optional stagger delay. Reduced motion
-   short-circuits to visible. The deterministic recorder advances timers, so
-   reveals fire correctly on scroll during capture.
-   --------------------------------------------------------------------------- */
+
 export function Reveal({
 	children,
 	delay = 0,
@@ -404,10 +367,7 @@ export function Reveal({
 	);
 }
 
-/* ---------------------------------------------------------------------------
-   CheckRow — a feature/inclusion line. The check is never bare: it sits inside
-   a mint circle (icon + shape + text label, so meaning never relies on color).
-   --------------------------------------------------------------------------- */
+
 export function CheckRow({
 	children,
 	tone = "mint",

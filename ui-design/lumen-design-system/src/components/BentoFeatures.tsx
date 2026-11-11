@@ -15,7 +15,7 @@ interface Feature {
 	icon: LucideIcon;
 	title: string;
 	body: string;
-	/** Desktop grid placement — deliberately non-uniform (the bento variety). */
+
 	span: string;
 	feature?: "blobs" | "spotlight" | "shadow" | "none";
 }
@@ -24,7 +24,7 @@ const FEATURES: Feature[] = [
 	{
 		icon: Layers,
 		title: "Layered ambient lighting",
-		body: "Four stacked gradients, fractal noise, and a technical grid compose genuine atmospheric depth — no single element dominates the canvas.",
+		body: "Four stacked gradients, fractal noise, and a technical grid compose genuine atmospheric depth ,  no single element dominates the canvas.",
 		span: "lg:col-span-4 lg:row-span-2",
 		feature: "blobs",
 	},
@@ -44,7 +44,7 @@ const FEATURES: Feature[] = [
 	{
 		icon: Palette,
 		title: "Tokens, not one-offs",
-		body: "Color, radius, shadow, motion — all centralized so the system stays coherent as it grows.",
+		body: "Color, radius, shadow, motion ,  all centralized so the system stays coherent as it grows.",
 		span: "lg:col-span-3",
 	},
 	{
@@ -116,7 +116,7 @@ function FeatureBody({ f }: { f: Feature }) {
 				{f.body}
 			</p>
 
-			{/* The hero card gets a small live visualisation of floating light pools. */}
+			{}
 			{isHero && (
 				<div className="relative mt-auto h-28 overflow-hidden rounded-xl border border-white/[0.06] bg-bg-deep/50">
 					<div className="animate-float-a absolute -left-6 top-2 h-24 w-24 rounded-full bg-accent/30 blur-2xl" />
@@ -126,7 +126,7 @@ function FeatureBody({ f }: { f: Feature }) {
 				</div>
 			)}
 
-			{/* Accessibility micro-callout on the precision card. */}
+			{}
 			{f.feature === "shadow" && (
 				<div className="mt-auto flex items-center gap-2 pt-4 font-mono text-[11px] text-fg-muted/70">
 					<Accessibility size={13} className="text-accent" />

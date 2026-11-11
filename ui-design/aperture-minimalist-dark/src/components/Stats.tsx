@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useReveal } from "../lib/useReveal";
 
 type Stat = {
-	/** numeric target for the count-up */
+
 	value: number;
-	/** how to render the number (decimals) */
+
 	decimals?: number;
 	prefix?: string;
 	suffix?: string;

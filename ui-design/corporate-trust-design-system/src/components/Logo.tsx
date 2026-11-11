@@ -1,5 +1,4 @@
-/* Northwind wordmark — a gradient "compass" mark + name. The mark is an inline
-   SVG so it inherits the brand gradient and scales crisply at any size. */
+
 export function Logo({
 	className,
 	tone = "light",
@@ -34,7 +33,7 @@ export function Logo({
 					</linearGradient>
 				</defs>
 				<rect width="34" height="34" rx="9" fill="url(#nw-mark)" />
-				{/* Stylised "N" / compass needle */}
+				{}
 				<path
 					d="M10 24V10l7 8 7-8v14"
 					stroke="#fff"

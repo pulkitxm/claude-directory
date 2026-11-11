@@ -1,11 +1,10 @@
-/* The NEONWAVE OS wordmark: a small sun-over-grid glyph beside an Orbitron
-   wordmark with a magenta-to-cyan gradient. Used in the nav and footer. */
+
 export function Logo({ className = "" }: { className?: string }) {
 	return (
 		<a
 			href="#top"
 			className={`group inline-flex items-center gap-3 ${className}`}
-			aria-label="NEONWAVE OS — home"
+			aria-label="NEONWAVE OS ,  home"
 		>
 			<svg
 				viewBox="0 0 32 32"

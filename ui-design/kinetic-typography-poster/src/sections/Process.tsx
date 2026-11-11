@@ -2,12 +2,7 @@ import { SectionLabel } from "../components/SectionLabel";
 import { SectionHeading } from "../components/SectionHeading";
 import { PROCESS } from "../content";
 
-/**
- * Three-step process as a connected card system: a single grid with `gap-px`
- * over a line-colored container creates hairline dividers between cells. Each
- * cell carries a massive number used as a graphic shape, and hard-flips to acid
- * on hover.
- */
+
 export function Process() {
 	return (
 		<section id="process" className="border-b-2 border-line py-24 md:py-32">
@@ -27,7 +22,7 @@ export function Process() {
 					</p>
 				</div>
 
-				{/* Hairline-connected grid */}
+				{}
 				<div className="mt-16 grid grid-hairline gap-px border-2 border-line md:grid-cols-3">
 					{PROCESS.map((step) => (
 						<div

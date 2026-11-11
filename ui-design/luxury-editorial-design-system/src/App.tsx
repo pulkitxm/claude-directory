@@ -10,7 +10,7 @@ import { FooterCta } from "./components/FooterCta";
 export default function App() {
 	return (
 		<div className="relative min-h-screen bg-background text-foreground antialiased">
-			{/* Signature bold-factor structural layers */}
+			{}
 			<GridLines />
 			<GrainOverlay />
 

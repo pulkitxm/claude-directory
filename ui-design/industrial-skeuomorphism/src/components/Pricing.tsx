@@ -78,7 +78,7 @@ export function Pricing() {
 					eyebrow="PRICING · PER UNIT"
 					tone="alert"
 					title="Priced like a part, not a platform"
-					lede="Pay for the units you put on the floor. No seat math, no surprise overage — every tier ships with the full tactile control plane."
+					lede="Pay for the units you put on the floor. No seat math, no surprise overage ,  every tier ships with the full tactile control plane."
 				/>
 
 				<motion.div
@@ -94,7 +94,7 @@ export function Pricing() {
 							variants={slideUp}
 							className={cx("relative", t.featured && "lg:-mt-4 lg:mb-4")}
 						>
-							{/* hanging hole — punched price-tag detail */}
+							{}
 							<span
 								aria-hidden="true"
 								className="absolute left-1/2 top-3 z-10 h-3 w-10 -translate-x-1/2 rounded-full bg-recessed"

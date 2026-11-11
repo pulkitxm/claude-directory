@@ -56,7 +56,7 @@ export function Stats() {
 							"var(--shadow-card), inset 0 1px 0 rgba(255,255,255,0.06)",
 					}}
 				>
-					{/* top-left lighting hotspot on the dark panel */}
+					{}
 					<div
 						aria-hidden="true"
 						className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full"
@@ -65,7 +65,7 @@ export function Stats() {
 								"radial-gradient(circle, rgba(127,176,204,0.18), transparent 70%)",
 						}}
 					/>
-					{/* status header */}
+					{}
 					<div className="mb-8 flex items-center justify-center gap-2">
 						<Led tone="online" size={9} label="metrics live" />
 						<span className="stamp text-[0.6rem] text-slate-soft/80">

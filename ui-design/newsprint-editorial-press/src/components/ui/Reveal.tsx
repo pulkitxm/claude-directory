@@ -7,11 +7,7 @@ import {
 } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * Scroll-triggered reveal: a column of type "rises" into place once it enters
- * the viewport. Motion is opacity + transform only (GPU-friendly) and is
- * neutralized by the reduced-motion media query in index.css.
- */
+
 export function Reveal({
 	children,
 	as: Tag = "div",
