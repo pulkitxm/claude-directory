@@ -131,7 +131,7 @@ test("rejects explicit denial of redistribution permission", async (t) => {
 	}
 });
 
-test("rejects unsafe project, package and license-file paths without reading outside audited files", async (t) => {
+test("rejects unsafe project, package and license-file paths without reading outside registered files", async (t) => {
 	for (const change of ["project", "package", "license_file"])
 		await t.test(change, async (t) => {
 			const f = await fixture(t);

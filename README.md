@@ -1,6 +1,17 @@
-# Interface experiments
+# UI experiments
 
-Responsive interfaces, motion studies and developer tools.
+Interactive interfaces, motion studies and developer tools.
+
+Browse the [preview gallery](https://pulkit.page/claude-directory/) or open the [live experiments](https://claude-directory.pulkitxm.com/).
+
+145 projects across nine categories.
+
+## Development
+
+```sh
+make test
+make build
+```
 
 ## 3d-games (1)
 
@@ -173,3 +184,7 @@ Responsive interfaces, motion studies and developer tools.
 - [swiss-design-system](./ui-design/swiss-design-system/)
 - [vaporwave-outrun-design-system](./ui-design/vaporwave-outrun-design-system/)
 - [verdant-organic-design-system](./ui-design/verdant-organic-design-system/)
+
+## License
+
+See [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY_NOTICES.md).

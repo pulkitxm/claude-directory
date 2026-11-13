@@ -1,15 +1,13 @@
-# Asset provenance
+# Resources
 
-Third-party component source retains its upstream license and complete notices.
+Visuals use CSS, DOM elements, canvas, procedural shaders and inline SVG. Typography uses system fonts. Standalone media files are excluded from project source.
 
-There are no source-declared browser CDN dependencies. The procedural coastal scene bundles Three.js 0.160.0 and OrbitControls from the pinned npm package; its complete MIT notice is preserved in the project and the published notices. npm runtime package/version/license records are in compliance/dependency-licenses.json; the publication builder preserves installed license/notice texts in each preview's THIRD_PARTY_NOTICES.txt. These dependency licenses do not license third-party demo media.
+[ASSET_PROVENANCE.json](ASSET_PROVENANCE.json) records remote services and resource origins. [Runtime dependencies](compliance/dependency-licenses.json) record exact package versions, licenses and package origins. Built previews include their applicable `THIRD_PARTY_NOTICES.txt`.
 
-Third-party component source retains its upstream license and complete notices.
+[Source licenses](compliance/source-licenses.json) identify specifically licensed component and shader integrations, their upstream revisions and applicable notices. [Inline icon provenance](compliance/inline-icon-provenance.json) identifies licensed geometry and full license files. [Inline source records](compliance/inline-artwork.json) bind drawings, shader programs and notices to exact source hashes.
 
-Inline SVG paths, shader programs and drawing regions also require review. [compliance/inline-icon-provenance.json](compliance/inline-icon-provenance.json) records exact matches to licensed open-source geometry, the source, applicable license and complete notices. This is scoped to the matched geometry and does not establish the historical import version. Unmatched simple drawings and custom charts were reviewed separately against their original briefs. [compliance/inline-artwork.json](compliance/inline-artwork.json) pins each reviewed source file containing inline artwork or procedural shader code and the required notice/license files; a changed source hash requires renewed manual review. This safeguard does not determine whether an unfamiliar illustration is protected.
+The procedural coastal scene bundles Three.js 0.160.0 and OrbitControls from the pinned npm package. Full notices are included in the project and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-The live host can also inject Cloudflare's provider-served Web Analytics beacon and email-address decoder into browser responses. These provider scripts are absent from this repository and the built artifact, remain governed by the provider's service terms rather than the repository MIT license, and were not vendored or republished as repository source. These transformations are documented in [Cloudflare's analytics setup](https://developers.cloudflare.com/web-analytics/get-started/) and [email-obfuscation instructions](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/). Provider-service metadata is recorded separately in ASSET_PROVENANCE.json.
+Hosting may provide Cloudflare Web Analytics and email-address decoding. These services remain governed by their provider terms and are recorded separately from repository resources.
 
-Standalone media files cannot be added to this repository under the current distribution policy, even with a provenance entry. Native scene formats, including Spline scene files, are included. Opaque binary bodies require manual review even when their filenames use unrelated extensions; the retained distribution uses UTF-8 source text. New inline drawings and procedural graphics require an authorship or source-license review, preserved notices and exact source hashes before publication. Record manual review for suspicious build-hash filenames. Never rename or transform disputed files to disguise origin. Captures and commercial template source remain prohibited even if ignored by Git.
-
-Run `node scripts/check-compliance.mjs` before commits, PRs and publishing. Inspect source permissions and notices as well as check results. Review independent authorship, design similarity, trademark, publicity and other rights manually.
+Resource changes require verified source permissions, applicable attribution and current hashes. Run `make compliance` before submitting changes.
